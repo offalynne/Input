@@ -3,7 +3,7 @@
 
 <p align="center">A cross-platform input management for GameMaker Studio 2.3.0 by <a href="http://www.jujuadams.com/"><b>@jujuadams</b></a></p>
 
-<p align="center"><a href="https://github.com/JujuAdams/input/releases/tag/3.0.0pre000">Download the .yymp</a></p>
+<p align="center"><a href="https://github.com/JujuAdams/input/releases/tag/3.0.0pre000">Download the .yymps</a></p>
 <p align="center">Chat about Input on the <a href="https://discord.gg/8krYCqr">Discord server</a></p>
 
 &nbsp;
