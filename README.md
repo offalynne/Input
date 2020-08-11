@@ -6,6 +6,8 @@
 <p align="center"><a href="https://github.com/JujuAdams/input/releases/tag/3.0.0pre000">Download the .yymp</a></p>
 <p align="center">Chat about Input on the <a href="https://discord.gg/8krYCqr">Discord server</a></p>
 
+&nbsp;
+
 |[![About & Support](https://raw.githubusercontent.com/wiki/JujuAdams/scribble/images/aboutsupport.png)](https://github.com/JujuAdams/input/wiki/About-&-Support)|[![Features](https://raw.githubusercontent.com/wiki/JujuAdams/scribble/images/features.png)](https://github.com/JujuAdams/input/wiki/Features)|[![GML Functions](https://raw.githubusercontent.com/wiki/JujuAdams/scribble/images/functions.png)](https://github.com/JujuAdams/input/wiki/Function-Index)|
 |----------------------|----------------------|----------------------|
 |<p align="center">[About & Support](https://github.com/JujuAdams/input/wiki/About-&-Support)</p>|<p align="center">[Features](https://github.com/JujuAdams/input/wiki/Features)</p>|<p align="center">[Function Index](https://github.com/JujuAdams/input/wiki/Function-Index)</p>|
