@@ -1,10 +1,10 @@
-var _string  = "Left    = " + string(input_value(VERB.LEFT   )) + "\n";
-    _string += "Right   = " + string(input_value(VERB.RIGHT  )) + "\n";
-    _string += "Up      = " + string(input_value(VERB.UP     )) + "\n";
-    _string += "Down    = " + string(input_value(VERB.DOWN   )) + "\n";
-    _string += "Confirm = " + string(input_value(VERB.CONFIRM)) + "\n";
-    _string += "Cancel  = " + string(input_value(VERB.CANCEL )) + "\n";
-    _string += "Pause   = " + string(input_value(VERB.PAUSE  )) + "\n";
+var _string  = "Left    = " + string(input_value(VERB.LEFT   )) + "    " + string(input_binding_get(VERB.LEFT   )) + "\n";
+    _string += "Right   = " + string(input_value(VERB.RIGHT  )) + "    " + string(input_binding_get(VERB.RIGHT  )) + "\n";
+    _string += "Up      = " + string(input_value(VERB.UP     )) + "    " + string(input_binding_get(VERB.UP     )) + "\n";
+    _string += "Down    = " + string(input_value(VERB.DOWN   )) + "    " + string(input_binding_get(VERB.DOWN   )) + "\n";
+    _string += "Confirm = " + string(input_value(VERB.CONFIRM)) + "    " + string(input_binding_get(VERB.CONFIRM)) + "\n";
+    _string += "Cancel  = " + string(input_value(VERB.CANCEL )) + "    " + string(input_binding_get(VERB.CANCEL )) + "\n";
+    _string += "Pause   = " + string(input_value(VERB.PAUSE  )) + "    " + string(input_binding_get(VERB.PAUSE  )) + "\n";
     
 draw_text(10, 10, _string);
 

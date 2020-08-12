@@ -9,6 +9,8 @@ enum VERB
     PAUSE,
 }
 
+rebinding = false;
+
 input_cursor_verbs(VERB.LEFT, VERB.RIGHT, VERB.UP, VERB.DOWN, 5);
 input_cursor_move(room_width/2, room_height/2);
 

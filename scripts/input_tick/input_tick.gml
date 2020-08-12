@@ -308,6 +308,8 @@ function __input_class_player() constructor
         {
             variable_struct_set(verbs, _verb, new __input_class_verb());
         }
+        
+        return _binding_struct;
     }
     
     any_input = function()
