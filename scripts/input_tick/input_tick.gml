@@ -595,9 +595,9 @@ function __input_class_gamepad(_index) constructor
                 
                 switch(type)
                 {
-                    case "button": value = gamepad_button_check(_index, raw); break;
-                    case "axis":   value = gamepad_axis_value(  _index, raw); break;
-                    case "hat":
+                    case "b": value = gamepad_button_check(_index, raw); break;
+                    case "a": value = gamepad_axis_value(  _index, raw); break;
+                    case "h":
                         value = gamepad_hat_value(_index, raw);
                         value = value & hat_direction;
                     break;

@@ -66,6 +66,7 @@ function input_gamepad_get_type(_index)
         }
         else
         {
+			//TODO - Use structs instead?
             var _vp_array = variable_struct_get(global.__input_gamepad_database.by_vendor_product, vendor + product);
             var _os_array = variable_struct_get(global.__input_gamepad_database.by_platform, os_type);
             
@@ -104,6 +105,59 @@ function input_gamepad_get_type(_index)
             if (is_array(_definition))
             {
                 description = _definition[1];
+				
+				var _i = 2;
+				repeat(array_length(_definition) - 3)
+				{
+					var _entry = _definition[_i];
+					var _pos = string_pos(":", _entry);
+					
+					var _entry_0 = string_copy(_entry, 1, _pos-1);
+					var _entry_1 = string_delete(_entry, 1, _pos);
+					
+					var _gm = undefined;
+					switch(_entry_0) //TODO - Use a struct instead?
+					{
+						case "a":             _gm = gp_face1;      break;
+						case "b":             _gm = gp_face2;      break;
+						case "x":             _gm = gp_face3;      break;
+						case "y":             _gm = gp_face4;      break;
+						case "dpup":          _gm = gp_padu;       break;
+						case "dpdown":        _gm = gp_padd;       break;
+						case "dpleft":        _gm = gp_padl;       break;
+						case "dpright":       _gm = gp_padr;       break;
+						case "leftx":         _gm = gp_axislh;     break;
+						case "lefty":         _gm = gp_axislv;     break;
+						case "rightx":        _gm = gp_axisrh;     break;
+						case "righty":        _gm = gp_axisrv;     break;
+						case "leftshoulder":  _gm = gp_shoulderl;  break;
+						case "rightshoulder": _gm = gp_shoulderr;  break;
+						case "lefttrigger":   _gm = gp_shoulderlb; break;
+						case "righttrigger":  _gm = gp_shoulderrb; break;
+						case "back":          _gm = gp_select;     break; //TODO - Do we want to support "guide" as well?
+						case "start":         _gm = gp_start;      break;
+						case "leftstick":     _gm = gp_stickl;     break;
+						case "rightstick":    _gm = gp_stickr;     break;
+					}
+					
+					if (_gm != undefined)
+					{
+						var _raw_type = string_char_at(_entry_1, 1);
+						_entry_1 = string_delete(_entry_1, 1, 1);
+						
+						//TODO - haha wow I am lazy
+						if (_raw_type == "h")
+						{
+							set_mapping(_gm, floor(real(_entry_1)), _raw_type).hat_direction = floor(10*real(_entry_1));
+						}
+						else
+						{
+							set_mapping(_gm, real(_entry_1), _raw_type);
+						}
+					}
+					
+					++_i;
+				}
             }
             else
             {
@@ -112,33 +166,6 @@ function input_gamepad_get_type(_index)
             }
             
             type = description;
-            
-            ////TODO - Read SDL bindings
-            //if ((vendor == "4c05") && (product == "cc09")) //PS4 controller
-            //{
-            //    type = "DualShock 4";
-            //    
-            //    set_mapping(gp_face1     ,  1, "button");
-            //    set_mapping(gp_face2     ,  2, "button");
-            //    set_mapping(gp_face3     ,  0, "button");
-            //    set_mapping(gp_face4     ,  3, "button");
-            //    set_mapping(gp_shoulderl ,  4, "button");
-            //    set_mapping(gp_shoulderr ,  5, "button");
-            //    //6 = Trigger L
-            //    //7 = Trigger R
-            //    set_mapping(gp_select    ,  8, "button");
-            //    set_mapping(gp_start     ,  9, "button");
-            //    set_mapping(gp_stickl    , 10, "button");
-            //    set_mapping(gp_stickr    , 11, "button");
-            //    //12 = Guide
-            //    //13 = Trackpad Click
-            //    set_mapping(gp_axislh    , 0, "axis");
-            //    set_mapping(gp_axislv    , 1, "axis");
-            //    set_mapping(gp_axisrh    , 2, "axis");
-            //    set_mapping(gp_shoulderlb, 3, "axis").limit_range = true;
-            //    set_mapping(gp_shoulderrb, 4, "axis").limit_range = true;
-            //    set_mapping(gp_axisrv    , 5, "axis");
-            //}
         }
     }
 }
