@@ -87,7 +87,7 @@ global.__input_rebind_last_player = undefined;
 global.__input_gamepads = array_create(gamepad_get_device_count(), undefined);
 
 //Our database of SDL2 definitions, used for the aforementioned remapping information
-global.__input_gamepad_database = {
+global.__input_sdl2_database = {
     array             : [],
     by_vendor_product : {},
     by_platform       : {},
@@ -971,9 +971,9 @@ function __input_load_sdl2_database(_filename)
     
     #endregion
     
-    var _db_array             = global.__input_gamepad_database.array;
-    var _db_by_vendor_product = global.__input_gamepad_database.by_vendor_product;
-    var _db_by_platform       = global.__input_gamepad_database.by_platform
+    var _db_array             = global.__input_sdl2_database.array;
+    var _db_by_vendor_product = global.__input_sdl2_database.by_vendor_product;
+    var _db_by_platform       = global.__input_sdl2_database.by_platform
     
     var _y = 0;
     repeat(array_length(_root_array))

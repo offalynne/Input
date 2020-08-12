@@ -72,8 +72,8 @@ function input_gamepad_get_type(_index)
         else
         {
             //TODO - Use structs instead?
-            var _vp_array = variable_struct_get(global.__input_gamepad_database.by_vendor_product, vendor + product);
-            var _os_array = variable_struct_get(global.__input_gamepad_database.by_platform, os_type);
+            var _vp_array = variable_struct_get(global.__input_sdl2_database.by_vendor_product, vendor + product);
+            var _os_array = variable_struct_get(global.__input_sdl2_database.by_platform, os_type);
             
             var _result_array = [];
             
