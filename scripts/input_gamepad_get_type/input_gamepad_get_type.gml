@@ -125,6 +125,7 @@ function input_gamepad_get_type(_index)
                     {
                         var _invert   = false;
                         var _negative = false;
+						var _positive = false; //TODO - Doesn't do anything yet
                         
                         while(true)
                         {
@@ -138,6 +139,10 @@ function input_gamepad_get_type(_index)
                             else if (_char == "-")
                             {
                                 _negative = true;
+                            }
+                            else if (_char == "+")
+                            {
+                                _positive = true; //TODO - Nope, still doesn't do anything
                             }
                             else
                             {
