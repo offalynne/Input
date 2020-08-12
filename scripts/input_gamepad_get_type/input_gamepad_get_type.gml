@@ -60,13 +60,18 @@ function input_gamepad_get_type(_index)
             break;
         }
         
-        if (xinput)
+        if (((vendor == "0079") && (product == "0006"))
+        ||  ((vendor == "11ff") && (product == "3331")))
+        {
+            __input_trace("Warning! Gamepad GUID is for a chipset too many possible remappings. Please remap manually using external software");
+        }
+        else if (xinput)
         {
             type = "XInput";
         }
         else
         {
-			//TODO - Use structs instead?
+            //TODO - Use structs instead?
             var _vp_array = variable_struct_get(global.__input_gamepad_database.by_vendor_product, vendor + product);
             var _os_array = variable_struct_get(global.__input_gamepad_database.by_platform, os_type);
             
@@ -105,59 +110,59 @@ function input_gamepad_get_type(_index)
             if (is_array(_definition))
             {
                 description = _definition[1];
-				
-				var _i = 2;
-				repeat(array_length(_definition) - 3)
-				{
-					var _entry = _definition[_i];
-					var _pos = string_pos(":", _entry);
-					
-					var _entry_0 = string_copy(_entry, 1, _pos-1);
-					var _entry_1 = string_delete(_entry, 1, _pos);
-					
-					var _gm = undefined;
-					switch(_entry_0) //TODO - Use a struct instead?
-					{
-						case "a":             _gm = gp_face1;      break;
-						case "b":             _gm = gp_face2;      break;
-						case "x":             _gm = gp_face3;      break;
-						case "y":             _gm = gp_face4;      break;
-						case "dpup":          _gm = gp_padu;       break;
-						case "dpdown":        _gm = gp_padd;       break;
-						case "dpleft":        _gm = gp_padl;       break;
-						case "dpright":       _gm = gp_padr;       break;
-						case "leftx":         _gm = gp_axislh;     break;
-						case "lefty":         _gm = gp_axislv;     break;
-						case "rightx":        _gm = gp_axisrh;     break;
-						case "righty":        _gm = gp_axisrv;     break;
-						case "leftshoulder":  _gm = gp_shoulderl;  break;
-						case "rightshoulder": _gm = gp_shoulderr;  break;
-						case "lefttrigger":   _gm = gp_shoulderlb; break;
-						case "righttrigger":  _gm = gp_shoulderrb; break;
-						case "back":          _gm = gp_select;     break; //TODO - Do we want to support "guide" as well?
-						case "start":         _gm = gp_start;      break;
-						case "leftstick":     _gm = gp_stickl;     break;
-						case "rightstick":    _gm = gp_stickr;     break;
-					}
-					
-					if (_gm != undefined)
-					{
-						var _raw_type = string_char_at(_entry_1, 1);
-						_entry_1 = string_delete(_entry_1, 1, 1);
-						
-						//TODO - haha wow I am lazy
-						if (_raw_type == "h")
-						{
-							set_mapping(_gm, floor(real(_entry_1)), _raw_type).hat_direction = floor(10*real(_entry_1));
-						}
-						else
-						{
-							set_mapping(_gm, real(_entry_1), _raw_type);
-						}
-					}
-					
-					++_i;
-				}
+                
+                var _i = 2;
+                repeat(array_length(_definition) - 3)
+                {
+                    var _entry = _definition[_i];
+                    var _pos = string_pos(":", _entry);
+                    
+                    var _entry_0 = string_copy(_entry, 1, _pos-1);
+                    var _entry_1 = string_delete(_entry, 1, _pos);
+                    
+                    var _gm = variable_struct_get(global.__input_sdl2_look_up_table, _entry_0);
+                    if (_gm != undefined)
+                    {
+                        var _invert   = false;
+                        var _negative = false;
+                        
+                        while(true)
+                        {
+                            var _char = string_char_at(_entry_1, 1);
+                            _entry_1 = string_delete(_entry_1, 1, 1);
+                            
+                            if (_char == "~")
+                            {
+                                _invert = true;
+                            }
+                            else if (_char == "-")
+                            {
+                                _negative = true;
+                            }
+                            else
+                            {
+                                var _raw_type = _char;
+                                break;
+                            }
+                        }
+                        
+                        var _input_slot = floor(real(_entry_1));
+                        var _mapping = set_mapping(_gm, _input_slot, _raw_type);
+                        
+                        if (_invert) _mapping.invert = true;
+                        if (_negative) _mapping.negative = true;
+                        if (_raw_type == "h") _mapping.hat_direction = floor(10*real(_entry_1)); //TODO - lol haxx
+                        
+                        //Special cases go here:
+                        if (((vendor == "4c05") && (product == "cc09")) && (_raw_type == "a") && ((_input_slot == 3) || (_input_slot == 4)))
+                        {
+                            //PS4 controllers have a weird -1 -> +1 range on their triggers
+                            _mapping.limit_range = true;
+                        }
+                    }
+                    
+                    ++_i;
+                }
             }
             else
             {

@@ -22,34 +22,52 @@ function input_tick()
     }
 }
 
+
+
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------
+//
+// Beneath here lies the internal code for the library (including the initialisation flow)
+// It gets pretty gnarly. Proceed with caution
+//
+//------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
 #region Library Initialisation
 
 __input_trace("Welcome to Input by @jujuadams! This is version ", __INPUT_VERSION, ", ", __INPUT_DATE);
 
-global.__input_frame              = 0;
-global.__input_mouse_x            = 0;
-global.__input_mouse_y            = 0;
-global.__input_mouse_moved        = false;
+//Global frame counter. This is used for input buffering
+global.__input_frame = 0;
+
+//Mouse tracking variables. These are used to detect when the mouse has moved
+global.__input_mouse_x     = 0;
+global.__input_mouse_y     = 0;
+global.__input_mouse_moved = false;
+
+//Cursor tracking variables. This is Input's abstraction layer for the mouse, allowing mouse-like functionality cross-platform
 global.__input_cursor_verb_u      = undefined;
 global.__input_cursor_verb_d      = undefined;
 global.__input_cursor_verb_l      = undefined;
 global.__input_cursor_verb_r      = undefined;
 global.__input_cursor_speed       = 0;
 global.__input_cursor_using_mouse = true;
-global.__input_rebind_last_player = undefined;
-global.__input_keyboard_valid     = false;
-global.__input_mouse_valid        = false;
-global.__input_gamepad_valid      = false;
-global.__input_source_names       = ["none", "keyboard and mouse", "gamepad"];
-global.__input_players            = array_create(INPUT_MAX_PLAYERS, undefined);
-global.__input_default_player     = new __input_class_player();
-global.__input_gamepads           = array_create(gamepad_get_device_count(), undefined);
-global.__input_gamepad_database   = {
-    array             : [],
-    by_vendor_product : {},
-    by_platform       : {},
-}
 
+//Whether these particular input sources are valid
+//This is determined by what default keybindings are set up
+global.__input_keyboard_valid = false;
+global.__input_mouse_valid    = false;
+global.__input_gamepad_valid  = false;
+
+//Names for sources. I suspect this'll get sliced out at some point when I start recoding the binding system to serialise per controller type
+global.__input_source_names = ["none", "keyboard and mouse", "gamepad"];
+
+//Array of players. Each player is a struct (instanceof __input_class_player) that contains lotsa juicy information
+global.__input_players = array_create(INPUT_MAX_PLAYERS, undefined);
 var _p = 0;
 repeat(INPUT_MAX_PLAYERS)
 {
@@ -57,17 +75,70 @@ repeat(INPUT_MAX_PLAYERS)
     ++_p;
 }
 
-if (file_exists("gamecontrollerdb.txt"))
-{
-    __input_trace("Loading \"gamecontrollerdb.txt\"");
-    __input_load_sdl2_database("gamecontrollerdb.txt");
+//The default player. This player struct holds default binding data
+global.__input_default_player = new __input_class_player();
+
+//The last player (struct) that was rebinding a key. Used for input_rebind_undo()
+global.__input_rebind_last_player = undefined;
+
+//Array of currently connected gamepads. If an element is <undefined> then the gamepad is disconnected
+//Each gamepad in this array is an instance of __input_class_gamepad
+//Gamepad structs contain remapping information and current button state
+global.__input_gamepads = array_create(gamepad_get_device_count(), undefined);
+
+//Our database of SDL2 definitions, used for the aforementioned remapping information
+global.__input_gamepad_database = {
+    array             : [],
+    by_vendor_product : {},
+    by_platform       : {},
+};
+
+global.__input_sdl2_look_up_table = {
+    a:             gp_face1,
+    b:             gp_face2,
+    x:             gp_face3,
+    y:             gp_face4,
+    dpup:          gp_padu,
+    dpdown:        gp_padd,
+    dpleft:        gp_padl,
+    dpright:       gp_padr,
+    leftx:         gp_axislh,
+    lefty:         gp_axislv,
+    rightx:        gp_axisrh,
+    righty:        gp_axisrv,
+    leftshoulder:  gp_shoulderl,
+    rightshoulder: gp_shoulderr,
+    lefttrigger:   gp_shoulderlb,
+    righttrigger:  gp_shoulderrb,
+    leftstick:     gp_stickl,
+    rightstick:    gp_stickr,
+    start:         gp_start,
 }
-else
+variable_struct_set(global.__input_sdl2_look_up_table, INPUT_SDL2_GP_SELECT_NAME, gp_select);
+
+//Alright, now that we've set up the requisite data structures, let's load the SDL2 database
+if (INPUT_SDL2_DATABASE_FILENAME != "")
 {
-    __input_trace("Warning! \"gamecontrollerdb.txt\" not found in Included Files");
+    if (file_exists(INPUT_SDL2_DATABASE_FILENAME))
+    {
+        __input_load_sdl2_database(INPUT_SDL2_DATABASE_FILENAME);
+    }
+    else
+    {
+        __input_trace("Warning! \"", INPUT_SDL2_DATABASE_FILENAME, "\" not found in Included Files");
+    }
 }
 
+//PS. Here're some SDL sources
+//https://github.com/gabomdq/SDL_GameControllerDB/
+//https://yachtclubgames.com/2014/03/steam-controller-support/
+//https://github.com/libretro/retroarch-joypad-autoconfig/
+//https://support.steampowered.com/kb_article.php?ref=5199-TOKV-4426
+//http://www.linux-usb.org/usb.ids
+
 #endregion
+
+
 
 #region Classes
 
@@ -488,6 +559,8 @@ function __input_class_verb() constructor
 
 #endregion
 
+
+
 #region Gamepad Class
 
 /// @param index
@@ -632,6 +705,8 @@ function __input_class_gamepad(_index) constructor
 
 #endregion
 
+
+
 #region Binding Functions
 
 //These are globally scoped rather than methods because otherwise they'd get serialised by input_bindings_write()
@@ -658,6 +733,8 @@ function __input_binding_overwrite(_from, _to)
 }
 
 #endregion
+
+
 
 #region Utility
 
@@ -750,6 +827,8 @@ function __input_error()
 
 #endregion
 
+
+
 #region Internal macros
 
 #macro __INPUT_VERSION "3.0.0.pre000"
@@ -767,11 +846,15 @@ enum INPUT_SOURCE
 
 #endregion
 
+
+
 #region Database loading and parsing
 
 function __input_load_sdl2_database(_filename)
 {
     var _t = get_timer();
+    
+    __input_trace("Loading SDL2 database from \"", _filename, "\"");
     
     #region Break down the input database into a 2D array
     
