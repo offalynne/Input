@@ -771,6 +771,8 @@ enum INPUT_SOURCE
 
 function __input_load_sdl2_database(_filename)
 {
+    var _t = get_timer();
+    
     #region Break down the input database into a 2D array
     
     var _cell_delimiter   = ",";
@@ -925,9 +927,9 @@ function __input_load_sdl2_database(_filename)
                     if (_lower == "platform:windows" ) { _platform = os_windows; break; }
                     if (_lower == "platform:mac os x") { _platform = os_macosx;  break; }
                     if (_lower == "platform:mac"     ) { _platform = os_macosx;  break; }
-                    if (_lower == "platform:macis"   ) { _platform = os_macosx;  break; }
-                    if (_lower == "platform:macos x" ) { _platform = os_macosx;  break; }
+                    if (_lower == "platform:macos"   ) { _platform = os_macosx;  break; }
                     if (_lower == "platform:linux"   ) { _platform = os_linux;   break; }
+                    if (_lower == "platform:ubuntu"  ) { _platform = os_linux;   break; }
                     if (_lower == "platform:android" ) { _platform = os_android; break; }
                     if (_lower == "platform:ios"     ) { _platform = os_ios;     break; }
                     if (_lower == "platform:tvos"    ) { _platform = os_tvos;    break; }
@@ -954,6 +956,9 @@ function __input_load_sdl2_database(_filename)
         
         ++_y;
     }
+    
+    __input_trace(array_length(_db_array), " gamepad definitions found");
+    __input_trace("Loaded in ", (get_timer() - _t)/1000, "ms");
 }
 
 #endregion
