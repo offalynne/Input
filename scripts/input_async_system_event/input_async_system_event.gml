@@ -19,8 +19,8 @@ function input_async_system_event()
                 set_mapping(gp_face4     ,  3, "button");
                 set_mapping(gp_shoulderl ,  4, "button");
                 set_mapping(gp_shoulderr ,  5, "button");
-                set_mapping(gp_shoulderlb,  6, "button");
-                set_mapping(gp_shoulderrb,  7, "button");
+				//6 = Trigger L
+				//7 = Trigger R
                 set_mapping(gp_select    ,  8, "button");
                 set_mapping(gp_start     ,  9, "button");
                 set_mapping(gp_stickl    , 10, "button");

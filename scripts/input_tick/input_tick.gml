@@ -6,6 +6,14 @@ function input_tick()
     global.__input_mouse_x = display_mouse_get_x();
     global.__input_mouse_y = display_mouse_get_y();
     
+	var _g = 0;
+	repeat(array_length(global.__input_gamepads))
+	{
+		var _gamepad = global.__input_gamepads[_g];
+		if (is_struct(_gamepad)) _gamepad.tick();
+		++_g;
+	}
+	
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
     {
@@ -476,81 +484,58 @@ function __input_class_gamepad(_index) constructor
     xinput            = undefined;
     mapping_gm_to_raw = {};
     mapping_raw_to_gm = {};
-    no_mapping        = true;
+	mapping_array     = [];
+    custom_mapping    = true;
+	type              = undefined;
+	vendor            = undefined;
+	product           = undefined;
     
-    if (os_type == os_windows)
+	/// @param GMconstant
+    get_held = function(_gm)
     {
-        //Windows uses an older version of SDL
-        vendor  = string_copy(guid, 1, 4);
-        product = string_copy(guid, 5, 4);
-        xinput  = (index < 4);
-    }
-    else if ((os_type == os_macosx) || (os_type == os_linux))
-    {
-        vendor  = string_copy(guid,  9, 4);
-        product = string_copy(guid, 17, 4);
-        xinput  = (index < 4);
-    }
-    else if ((os_type == os_ios) || (os_type == os_android))
-    {
-        vendor  = string_copy(guid,  9, 4);
-        product = string_copy(guid, 17, 4);
-    }
-    else
-    {
-        vendor  = "";
-        product = "";
-    }
-    
-    get_button_held = function(_gm)
-    {
-        if (no_mapping) return gamepad_button_check(index, _gm);
-        
-        var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
-        if (_mapping == undefined) return false;
-        return gamepad_button_check(index, _mapping.raw);
-    }
-    
-    get_button_pressed = function(_gm)
-    {
-        if (no_mapping) return gamepad_button_check_pressed(index, _gm);
-        
-        var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
-        if (_mapping == undefined) return false;
-        return gamepad_button_check_pressed(index, _mapping.raw);
-    }
-    
-    get_button_released = function(_gm)
-    {
-        if (no_mapping) return gamepad_button_check_released(index, _gm);
-        
-        var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
-        if (_mapping == undefined) return false;
-        return gamepad_button_check_released(index, _mapping.raw);
-    }
-    
-    get_axis_value = function(_gm)
-    {
-        if (no_mapping) return gamepad_axis_value(index, _gm);
-        
+        if (!custom_mapping) return gamepad_button_check(index, _gm);
         var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
         if (_mapping == undefined) return 0.0;
-        
-        var _value = gamepad_axis_value(index, _mapping.raw);
-        if (_mapping.negative) _value = -_value;
-        if (_mapping.limit_range) _value = 0.5 + 0.5*_value;
-        if (_mapping.invert) _value = 1 - _value;
-        
-        return _value;
+        return _mapping.held;
     }
     
+	/// @param GMconstant
+    get_pressed = function(_gm)
+    {
+        if (!custom_mapping) return gamepad_button_check_pressed(index, _gm);
+        var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
+        if (_mapping == undefined) return 0.0;
+        return _mapping.press;
+    }
+    
+	/// @param GMconstant
+    get_released = function(_gm)
+    {
+        if (!custom_mapping) return gamepad_button_check_released(index, _gm);
+        var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
+        if (_mapping == undefined) return 0.0;
+        return _mapping.release;
+    }
+    
+	/// @param GMconstant
+    get_value = function(_gm)
+    {
+        if (!custom_mapping) return gamepad_axis_value(index, _gm);
+        var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
+        if (_mapping == undefined) return 0.0;
+        return _mapping.value;
+    }
+    
+	/// @param GMconstant
+	/// @param raw
+	/// @param rawType
     set_mapping = function(_gm, _raw, _type)
     {
-        if (no_mapping)
+        if (!custom_mapping)
         {
-            __input_trace("Gamepad ", index, " has custom mappings, clearing GM's internal mapping string");
+            __input_trace("Gamepad ", index, " has a custom mapping, clearing GM's internal mapping string");
             gamepad_test_mapping(index, "");
-            no_mapping = false;
+            custom_mapping = true;
         }
         
         var _mapping = {
@@ -561,54 +546,71 @@ function __input_class_gamepad(_index) constructor
             negative      : false,
             limit_range   : false,
             hat_direction : undefined,
+			
+			held_previous : false,
+			value         : 0.0,
+			held          : false,
+			press         : false,
+			release       : false,
         };
         
         variable_struct_set(mapping_gm_to_raw, _gm , _mapping);
         variable_struct_set(mapping_raw_to_gm, _raw, _mapping);
+		mapping_array[@ array_length(mapping_array)] = _mapping;
         
         return _mapping;
     }
-    
-    var _string = "Gamepad " + string(index) + " discovered: ";
-    if (xinput != undefined) _string += xinput? "XInput, " : "DInput, ";
-    _string += "\"" + description + "\", vendor=" + vendor + ", product=" + product;
-    __input_trace(_string);
-}
-
-/// @param gamepadIndex
-/// @param GMconstant
-function input_gamepad_button_check(_index, _gm)
-{
-    var _gamepad = global.__input_gamepads[_index];
-    if (!is_struct(_gamepad)) return false;
-    return _gamepad.get_button_held(_gm);
-}
-
-/// @param gamepadIndex
-/// @param GMconstant
-function input_gamepad_button_check_pressed(_index, _gm)
-{
-    var _gamepad = global.__input_gamepads[_index];
-    if (!is_struct(_gamepad)) return false;
-    return _gamepad.get_button_pressed(_gm);
-}
-
-/// @param gamepadIndex
-/// @param GMconstant
-function input_gamepad_button_check_released(_index, _gm)
-{
-    var _gamepad = global.__input_gamepads[_index];
-    if (!is_struct(_gamepad)) return false;
-    return _gamepad.get_button_released(_gm);
-}
-
-/// @param gamepadIndex
-/// @param GMconstant
-function input_gamepad_axis_value(_index, _gm)
-{
-    var _gamepad = global.__input_gamepads[_index];
-    if (!is_struct(_gamepad)) return false;
-    return _gamepad.get_axis_value(_gm);
+	
+	tick = function()
+	{
+		var _index = index;
+		
+		var _i = 0;
+		repeat(array_length(mapping_array))
+		{
+			with(mapping_array[_i])
+			{
+				held_previous = held;
+				value         = 0.0;
+				held          = false;
+				press         = false;
+				release       = false;
+				
+				switch(type)
+				{
+					case "button": value = gamepad_button_check(_index, raw); break;
+					case "axis":   value = gamepad_axis_value(  _index, raw); break;
+					case "hat":
+						value = gamepad_hat_value(_index, raw);
+						value = value & hat_direction;
+					break;
+				}
+				
+		        if (negative) value = -value;
+		        if (limit_range) value = 0.5 + 0.5*value;
+		        if (invert) value = 1 - value;
+				
+				held = (abs(value) > 0.2);
+				
+				if (held_previous != held)
+				{
+					if (held)
+					{
+						press = true;
+					}
+					else
+					{
+						release = true;
+					}
+				}
+			}
+			
+			++_i;
+		}
+	}
+	
+	input_gamepad_get_type(index);
+    __input_trace("Gamepad ", index, " discovered: \"", description, "\", type=\"", type, "\" (vendor=", vendor, ", product=", product, ")");
 }
 
 #endregion
