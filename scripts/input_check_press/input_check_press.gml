@@ -38,3 +38,15 @@ function input_check_press()
         return ((INPUT_BUFFERED_REALTIME? current_time : global.__input_frame) - _verb_struct.press_time) <= _buffer_duration;
     }
 }
+
+/// @param verb
+/// @param [playerIndex]
+/// @param [bufferDuration]
+function input_check_p()
+{
+    var _verb            = argument[0];
+    var _player_index    = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
+    var _buffer_duration = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : 0;
+    
+    return input_check_press(_verb, _player_index, _buffer_duration);
+}
