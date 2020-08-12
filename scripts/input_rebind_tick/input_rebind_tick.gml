@@ -162,7 +162,7 @@ function input_rebind_tick()
                         var _i = 0;
                         repeat(array_length(_button_array))
                         {
-                            if (gamepad_button_check(gamepad, _button_array[_i]))
+                            if (input_gamepad_button_check(gamepad, _button_array[_i]))
                             {
                                 _new_binding = new __input_class_binding("gamepad button", _button_array[_i]);
                             }
@@ -174,7 +174,7 @@ function input_rebind_tick()
                         repeat(array_length(_axis_array))
                         {
                             var _axis     = _axis_array[_i];
-                            var _value    = gamepad_axis_value(gamepad, _axis);
+                            var _value    = input_gamepad_axis_value(gamepad, _axis);
                             var _negative = (_value < 0);
                             
                             if (abs(_value) > input_axis_threshold_get(_axis, _player_index).mini)

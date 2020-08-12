@@ -35,6 +35,7 @@ global.__input_gamepad_valid      = false;
 global.__input_source_names       = ["none", "keyboard and mouse", "gamepad"];
 global.__input_players            = array_create(INPUT_MAX_PLAYERS, undefined);
 global.__input_default_player     = new __input_class_player();
+global.__input_gamepads           = array_create(gamepad_get_device_count(), undefined);
 
 var _p = 0;
 repeat(INPUT_MAX_PLAYERS)
@@ -45,7 +46,7 @@ repeat(INPUT_MAX_PLAYERS)
 
 #endregion
 
-#region Utility
+#region Classes
 
 function __input_class_player() constructor
 {
@@ -195,7 +196,7 @@ function __input_class_player() constructor
                             break;
                             
                             case "gamepad button":
-                                if (gamepad_button_check(gamepad, _binding.value))
+                                if (input_gamepad_button_check(gamepad, _binding.value))
                                 {
                                     _value    = 1.0;
                                     _raw      = 1.0;
@@ -231,7 +232,7 @@ function __input_class_player() constructor
                             break;
                             
                             case "gamepad axis":
-                                var _found_raw = gamepad_axis_value(gamepad, _binding.value);
+                                var _found_raw = input_gamepad_axis_value(gamepad, _binding.value);
                                 var _axis_threshold = axis_threshold_get(_binding.value);
                                 
                                 if (_binding.axis_negative) _found_raw = -_found_raw;
@@ -327,26 +328,26 @@ function __input_class_player() constructor
             case INPUT_SOURCE.GAMEPAD:
                 if (!gamepad_is_connected(gamepad)) return false;
                 
-                return (gamepad_button_check(gamepad, gp_face1)
-                    ||  gamepad_button_check(gamepad, gp_face2)
-                    ||  gamepad_button_check(gamepad, gp_face3)
-                    ||  gamepad_button_check(gamepad, gp_face4)
-                    ||  gamepad_button_check(gamepad, gp_padu)
-                    ||  gamepad_button_check(gamepad, gp_padd)
-                    ||  gamepad_button_check(gamepad, gp_padl)
-                    ||  gamepad_button_check(gamepad, gp_padr)
-                    ||  gamepad_button_check(gamepad, gp_shoulderl)
-                    ||  gamepad_button_check(gamepad, gp_shoulderr)
-                    ||  gamepad_button_check(gamepad, gp_shoulderlb)
-                    ||  gamepad_button_check(gamepad, gp_shoulderrb)
-                    ||  gamepad_button_check(gamepad, gp_start)
-                    ||  gamepad_button_check(gamepad, gp_select)
-                    ||  gamepad_button_check(gamepad, gp_stickl)
-                    ||  gamepad_button_check(gamepad, gp_stickr)
-                    ||  (abs(gamepad_axis_value(gamepad, gp_axislh)) > axis_threshold_get(gp_axislh))
-                    ||  (abs(gamepad_axis_value(gamepad, gp_axislv)) > axis_threshold_get(gp_axislv))
-                    ||  (abs(gamepad_axis_value(gamepad, gp_axisrh)) > axis_threshold_get(gp_axisrh))
-                    ||  (abs(gamepad_axis_value(gamepad, gp_axisrv)) > axis_threshold_get(gp_axisrv)));
+                return (input_gamepad_button_check(gamepad, gp_face1)
+                    ||  input_gamepad_button_check(gamepad, gp_face2)
+                    ||  input_gamepad_button_check(gamepad, gp_face3)
+                    ||  input_gamepad_button_check(gamepad, gp_face4)
+                    ||  input_gamepad_button_check(gamepad, gp_padu)
+                    ||  input_gamepad_button_check(gamepad, gp_padd)
+                    ||  input_gamepad_button_check(gamepad, gp_padl)
+                    ||  input_gamepad_button_check(gamepad, gp_padr)
+                    ||  input_gamepad_button_check(gamepad, gp_shoulderl)
+                    ||  input_gamepad_button_check(gamepad, gp_shoulderr)
+                    ||  input_gamepad_button_check(gamepad, gp_shoulderlb)
+                    ||  input_gamepad_button_check(gamepad, gp_shoulderrb)
+                    ||  input_gamepad_button_check(gamepad, gp_start)
+                    ||  input_gamepad_button_check(gamepad, gp_select)
+                    ||  input_gamepad_button_check(gamepad, gp_stickl)
+                    ||  input_gamepad_button_check(gamepad, gp_stickr)
+                    ||  (abs(input_gamepad_axis_value(gamepad, gp_axislh)) > axis_threshold_get(gp_axislh))
+                    ||  (abs(input_gamepad_axis_value(gamepad, gp_axislv)) > axis_threshold_get(gp_axislv))
+                    ||  (abs(input_gamepad_axis_value(gamepad, gp_axisrh)) > axis_threshold_get(gp_axisrh))
+                    ||  (abs(input_gamepad_axis_value(gamepad, gp_axisrv)) > axis_threshold_get(gp_axisrv)));
             break;
         }
         
@@ -462,6 +463,185 @@ function __input_class_verb() constructor
     analogue = false;
 }
 
+#endregion
+
+#region Gamepad Class
+
+/// @param index
+function __input_class_gamepad(_index) constructor
+{
+    index             = _index;
+    description       = gamepad_get_description(_index);
+    guid              = gamepad_get_guid(_index);
+    xinput            = undefined;
+    mapping_gm_to_raw = {};
+    mapping_raw_to_gm = {};
+    no_mapping        = true;
+    
+    if (os_type == os_windows)
+    {
+        //Windows uses an older version of SDL
+        vendor  = string_copy(guid, 1, 4);
+        product = string_copy(guid, 5, 4);
+        xinput  = (index < 4);
+    }
+    else if ((os_type == os_macosx) || (os_type == os_linux))
+    {
+        vendor  = string_copy(guid,  9, 4);
+        product = string_copy(guid, 17, 4);
+        xinput  = (index < 4);
+    }
+    else if ((os_type == os_ios) || (os_type == os_android))
+    {
+        vendor  = string_copy(guid,  9, 4);
+        product = string_copy(guid, 17, 4);
+    }
+    else
+    {
+        vendor  = "";
+        product = "";
+    }
+    
+    get_button_held = function(_gm)
+    {
+        if (no_mapping) return gamepad_button_check(index, _gm);
+        
+        var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
+        if (_mapping == undefined) return false;
+        return gamepad_button_check(index, _mapping.raw);
+    }
+    
+    get_button_pressed = function(_gm)
+    {
+        if (no_mapping) return gamepad_button_check_pressed(index, _gm);
+        
+        var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
+        if (_mapping == undefined) return false;
+        return gamepad_button_check_pressed(index, _mapping.raw);
+    }
+    
+    get_button_released = function(_gm)
+    {
+        if (no_mapping) return gamepad_button_check_released(index, _gm);
+        
+        var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
+        if (_mapping == undefined) return false;
+        return gamepad_button_check_released(index, _mapping.raw);
+    }
+    
+    get_axis_value = function(_gm)
+    {
+        if (no_mapping) return gamepad_axis_value(index, _gm);
+        
+        var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
+        if (_mapping == undefined) return 0.0;
+        
+        var _value = gamepad_axis_value(index, _mapping.raw);
+        if (_mapping.negative) _value = -_value;
+        if (_mapping.limit_range) _value = 0.5 + 0.5*_value;
+        if (_mapping.invert) _value = 1 - _value;
+        
+        return _value;
+    }
+    
+    set_mapping = function(_gm, _raw, _type)
+    {
+        if (no_mapping)
+        {
+            __input_trace("Gamepad ", index, " has custom mappings, clearing GM's internal mapping string");
+            gamepad_test_mapping(index, "");
+            no_mapping = false;
+        }
+        
+        var _mapping = {
+            gm            : _gm,
+            raw           : _raw,
+            type          : _type,
+            invert        : false,
+            negative      : false,
+            limit_range   : false,
+            hat_direction : undefined,
+        };
+        
+        variable_struct_set(mapping_gm_to_raw, _gm , _mapping);
+        variable_struct_set(mapping_raw_to_gm, _raw, _mapping);
+        
+        return _mapping;
+    }
+    
+    var _string = "Gamepad " + string(index) + " discovered: ";
+    if (xinput != undefined) _string += xinput? "XInput, " : "DInput, ";
+    _string += "\"" + description + "\", vendor=" + vendor + ", product=" + product;
+    __input_trace(_string);
+}
+
+/// @param gamepadIndex
+/// @param GMconstant
+function input_gamepad_button_check(_index, _gm)
+{
+    var _gamepad = global.__input_gamepads[_index];
+    if (!is_struct(_gamepad)) return false;
+    return _gamepad.get_button_held(_gm);
+}
+
+/// @param gamepadIndex
+/// @param GMconstant
+function input_gamepad_button_check_pressed(_index, _gm)
+{
+    var _gamepad = global.__input_gamepads[_index];
+    if (!is_struct(_gamepad)) return false;
+    return _gamepad.get_button_pressed(_gm);
+}
+
+/// @param gamepadIndex
+/// @param GMconstant
+function input_gamepad_button_check_released(_index, _gm)
+{
+    var _gamepad = global.__input_gamepads[_index];
+    if (!is_struct(_gamepad)) return false;
+    return _gamepad.get_button_released(_gm);
+}
+
+/// @param gamepadIndex
+/// @param GMconstant
+function input_gamepad_axis_value(_index, _gm)
+{
+    var _gamepad = global.__input_gamepads[_index];
+    if (!is_struct(_gamepad)) return false;
+    return _gamepad.get_axis_value(_gm);
+}
+
+#endregion
+
+#region Binding Functions
+
+//These are globally scoped because otherwise they'd get serialised by input_bindings_write()
+
+/// @param source
+function __input_binding_duplicate(_source)
+{
+    with(_source)
+    {
+        return new __input_class_binding(type, value, axis_negative);
+    }
+}
+
+/// @param from
+/// @param to
+function __input_binding_overwrite(_from, _to)
+{
+    with(_to)
+    {
+        type          = _from.type;
+        value         = _from.value;
+        axis_negative = _from.axis_negative;
+    }
+}
+
+#endregion
+
+#region Utility
+
 /// @param source
 /// @param [gamepad]
 function __input_source_is_available()
@@ -500,27 +680,6 @@ function __input_source_is_available()
     }
     
     return true;
-}
-
-/// @param source
-function __input_binding_duplicate(_source)
-{
-    with(_source)
-    {
-        return new __input_class_binding(type, value, axis_negative);
-    }
-}
-
-/// @param from
-/// @param to
-function __input_binding_overwrite(_from, _to)
-{
-    with(_to)
-    {
-        type          = _from.type;
-        value         = _from.value;
-        axis_negative = _from.axis_negative;
-    }
 }
 
 function __input_trace()
