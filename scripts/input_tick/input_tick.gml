@@ -6,14 +6,14 @@ function input_tick()
     global.__input_mouse_x = display_mouse_get_x();
     global.__input_mouse_y = display_mouse_get_y();
     
-	var _g = 0;
-	repeat(array_length(global.__input_gamepads))
-	{
-		var _gamepad = global.__input_gamepads[_g];
-		if (is_struct(_gamepad)) _gamepad.tick();
-		++_g;
-	}
-	
+    var _g = 0;
+    repeat(array_length(global.__input_gamepads))
+    {
+        var _gamepad = global.__input_gamepads[_g];
+        if (is_struct(_gamepad)) _gamepad.tick();
+        ++_g;
+    }
+    
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
     {
@@ -482,15 +482,17 @@ function __input_class_gamepad(_index) constructor
     description       = gamepad_get_description(_index);
     guid              = gamepad_get_guid(_index);
     xinput            = undefined;
+	
+    type              = undefined;
+    vendor            = undefined;
+    product           = undefined;
+	
+    custom_mapping    = false;
     mapping_gm_to_raw = {};
     mapping_raw_to_gm = {};
-	mapping_array     = [];
-    custom_mapping    = true;
-	type              = undefined;
-	vendor            = undefined;
-	product           = undefined;
+    mapping_array     = [];
     
-	/// @param GMconstant
+    /// @param GMconstant
     get_held = function(_gm)
     {
         if (!custom_mapping) return gamepad_button_check(index, _gm);
@@ -499,7 +501,7 @@ function __input_class_gamepad(_index) constructor
         return _mapping.held;
     }
     
-	/// @param GMconstant
+    /// @param GMconstant
     get_pressed = function(_gm)
     {
         if (!custom_mapping) return gamepad_button_check_pressed(index, _gm);
@@ -508,7 +510,7 @@ function __input_class_gamepad(_index) constructor
         return _mapping.press;
     }
     
-	/// @param GMconstant
+    /// @param GMconstant
     get_released = function(_gm)
     {
         if (!custom_mapping) return gamepad_button_check_released(index, _gm);
@@ -517,7 +519,7 @@ function __input_class_gamepad(_index) constructor
         return _mapping.release;
     }
     
-	/// @param GMconstant
+    /// @param GMconstant
     get_value = function(_gm)
     {
         if (!custom_mapping) return gamepad_axis_value(index, _gm);
@@ -526,9 +528,9 @@ function __input_class_gamepad(_index) constructor
         return _mapping.value;
     }
     
-	/// @param GMconstant
-	/// @param raw
-	/// @param rawType
+    /// @param GMconstant
+    /// @param raw
+    /// @param rawType
     set_mapping = function(_gm, _raw, _type)
     {
         if (!custom_mapping)
@@ -546,70 +548,70 @@ function __input_class_gamepad(_index) constructor
             negative      : false,
             limit_range   : false,
             hat_direction : undefined,
-			
-			held_previous : false,
-			value         : 0.0,
-			held          : false,
-			press         : false,
-			release       : false,
+            
+            held_previous : false,
+            value         : 0.0,
+            held          : false,
+            press         : false,
+            release       : false,
         };
         
         variable_struct_set(mapping_gm_to_raw, _gm , _mapping);
         variable_struct_set(mapping_raw_to_gm, _raw, _mapping);
-		mapping_array[@ array_length(mapping_array)] = _mapping;
+        mapping_array[@ array_length(mapping_array)] = _mapping;
         
         return _mapping;
     }
-	
-	tick = function()
-	{
-		var _index = index;
-		
-		var _i = 0;
-		repeat(array_length(mapping_array))
-		{
-			with(mapping_array[_i])
-			{
-				held_previous = held;
-				value         = 0.0;
-				held          = false;
-				press         = false;
-				release       = false;
-				
-				switch(type)
-				{
-					case "button": value = gamepad_button_check(_index, raw); break;
-					case "axis":   value = gamepad_axis_value(  _index, raw); break;
-					case "hat":
-						value = gamepad_hat_value(_index, raw);
-						value = value & hat_direction;
-					break;
-				}
-				
-		        if (negative) value = -value;
-		        if (limit_range) value = 0.5 + 0.5*value;
-		        if (invert) value = 1 - value;
-				
-				held = (abs(value) > 0.2);
-				
-				if (held_previous != held)
-				{
-					if (held)
-					{
-						press = true;
-					}
-					else
-					{
-						release = true;
-					}
-				}
-			}
-			
-			++_i;
-		}
-	}
-	
-	input_gamepad_get_type(index);
+    
+    tick = function()
+    {
+        var _index = index;
+        
+        var _i = 0;
+        repeat(array_length(mapping_array))
+        {
+            with(mapping_array[_i])
+            {
+                held_previous = held;
+                value         = 0.0;
+                held          = false;
+                press         = false;
+                release       = false;
+                
+                switch(type)
+                {
+                    case "button": value = gamepad_button_check(_index, raw); break;
+                    case "axis":   value = gamepad_axis_value(  _index, raw); break;
+                    case "hat":
+                        value = gamepad_hat_value(_index, raw);
+                        value = value & hat_direction;
+                    break;
+                }
+                
+                if (negative) value = -value;
+                if (limit_range) value = 0.5 + 0.5*value;
+                if (invert) value = 1 - value;
+                
+                held = (abs(value) > 0.2);
+                
+                if (held_previous != held)
+                {
+                    if (held)
+                    {
+                        press = true;
+                    }
+                    else
+                    {
+                        release = true;
+                    }
+                }
+            }
+            
+            ++_i;
+        }
+    }
+    
+    input_gamepad_get_type(self);
     __input_trace("Gamepad ", index, " discovered: \"", description, "\", type=\"", type, "\" (vendor=", vendor, ", product=", product, ")");
 }
 
