@@ -38,7 +38,7 @@ function __input_hotswap_tick_input(_player_index)
         return { source : INPUT_SOURCE.KEYBOARD_AND_MOUSE, gamepad : undefined };
     }
     else if (global.__input_mouse_valid && __input_source_is_available(INPUT_SOURCE.KEYBOARD_AND_MOUSE)
-            && (global.__input_mouse_moved || mouse_check_button(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
+            && ((INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && global.__input_mouse_moved) || mouse_check_button(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
     {
         return { source : INPUT_SOURCE.KEYBOARD_AND_MOUSE, gamepad : undefined };
     }
@@ -65,10 +65,10 @@ function __input_hotswap_tick_input(_player_index)
                 ||  gamepad_button_check(_g, gp_select)
                 ||  gamepad_button_check(_g, gp_stickl)
                 ||  gamepad_button_check(_g, gp_stickr)
-                ||  (abs(gamepad_axis_value(_g, gp_axislh)) > input_axis_threshold_get(gp_axislh, _player_index).mini)
-                ||  (abs(gamepad_axis_value(_g, gp_axislv)) > input_axis_threshold_get(gp_axislv, _player_index).mini)
-                ||  (abs(gamepad_axis_value(_g, gp_axisrh)) > input_axis_threshold_get(gp_axisrh, _player_index).mini)
-                ||  (abs(gamepad_axis_value(_g, gp_axisrv)) > input_axis_threshold_get(gp_axisrv, _player_index).mini))
+                ||  (INPUT_HOTSWAP_ON_GAMEPAD_AXIS && (abs(gamepad_axis_value(_g, gp_axislh)) > input_axis_threshold_get(gp_axislh, _player_index).mini))
+                ||  (INPUT_HOTSWAP_ON_GAMEPAD_AXIS && (abs(gamepad_axis_value(_g, gp_axislv)) > input_axis_threshold_get(gp_axislv, _player_index).mini))
+                ||  (INPUT_HOTSWAP_ON_GAMEPAD_AXIS && (abs(gamepad_axis_value(_g, gp_axisrh)) > input_axis_threshold_get(gp_axisrh, _player_index).mini))
+                ||  (INPUT_HOTSWAP_ON_GAMEPAD_AXIS && (abs(gamepad_axis_value(_g, gp_axisrv)) > input_axis_threshold_get(gp_axisrv, _player_index).mini)))
                 {
                     return { source : INPUT_SOURCE.GAMEPAD, gamepad : _g };
                 }
