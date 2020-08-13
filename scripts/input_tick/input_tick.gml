@@ -631,10 +631,12 @@ function __input_class_gamepad(_index) constructor
             gm            : _gm,
             raw           : _raw,
             type          : _type,
+            
             invert        : false,
             negative      : false,
+            positive      : false,
             limit_range   : false,
-            hat_direction : undefined,
+            hat_mask      : undefined,
             
             held_previous : false,
             value         : 0.0,
@@ -671,12 +673,13 @@ function __input_class_gamepad(_index) constructor
                     case "a": value = gamepad_axis_value(  _index, raw); break;
                     case "h":
                         value = gamepad_hat_value(_index, raw);
-                        value = value & hat_direction;
+                        value = value & hat_mask;
                     break;
                 }
                 
-                if (negative) value = -value;
                 if (limit_range) value = 0.5 + 0.5*value;
+                if (negative) value = clamp(value, -1, 0);
+                if (positive) value = clamp(value,  0, 1);
                 if (invert) value = 1 - value;
                 
                 held = (abs(value) > 0.2);
