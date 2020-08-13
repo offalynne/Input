@@ -6,7 +6,7 @@
     "path": "folders/Input/Gamepads (Direct).yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_gamepad_button_check",
+  "name": "input_gamepad_value",
   "tags": [],
   "resourceType": "GMScript",
 }

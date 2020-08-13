@@ -290,7 +290,7 @@ function __input_class_player() constructor
                             break;
                             
                             case "gamepad button":
-                                if (input_gamepad_button_check(gamepad, _binding.value))
+                                if (input_gamepad_check(gamepad, _binding.value))
                                 {
                                     _value    = 1.0;
                                     _raw      = 1.0;
@@ -326,7 +326,7 @@ function __input_class_player() constructor
                             break;
                             
                             case "gamepad axis":
-                                var _found_raw = input_gamepad_axis_value(gamepad, _binding.value);
+                                var _found_raw = input_gamepad_value(gamepad, _binding.value);
                                 var _axis_threshold = axis_threshold_get(_binding.value);
                                 
                                 if (_binding.axis_negative) _found_raw = -_found_raw;
@@ -422,26 +422,26 @@ function __input_class_player() constructor
             case INPUT_SOURCE.GAMEPAD:
                 if (!gamepad_is_connected(gamepad)) return false;
                 
-                return (input_gamepad_button_check(gamepad, gp_face1)
-                    ||  input_gamepad_button_check(gamepad, gp_face2)
-                    ||  input_gamepad_button_check(gamepad, gp_face3)
-                    ||  input_gamepad_button_check(gamepad, gp_face4)
-                    ||  input_gamepad_button_check(gamepad, gp_padu)
-                    ||  input_gamepad_button_check(gamepad, gp_padd)
-                    ||  input_gamepad_button_check(gamepad, gp_padl)
-                    ||  input_gamepad_button_check(gamepad, gp_padr)
-                    ||  input_gamepad_button_check(gamepad, gp_shoulderl)
-                    ||  input_gamepad_button_check(gamepad, gp_shoulderr)
-                    ||  input_gamepad_button_check(gamepad, gp_shoulderlb)
-                    ||  input_gamepad_button_check(gamepad, gp_shoulderrb)
-                    ||  input_gamepad_button_check(gamepad, gp_start)
-                    ||  input_gamepad_button_check(gamepad, gp_select)
-                    ||  input_gamepad_button_check(gamepad, gp_stickl)
-                    ||  input_gamepad_button_check(gamepad, gp_stickr)
-                    ||  (abs(input_gamepad_axis_value(gamepad, gp_axislh)) > axis_threshold_get(gp_axislh))
-                    ||  (abs(input_gamepad_axis_value(gamepad, gp_axislv)) > axis_threshold_get(gp_axislv))
-                    ||  (abs(input_gamepad_axis_value(gamepad, gp_axisrh)) > axis_threshold_get(gp_axisrh))
-                    ||  (abs(input_gamepad_axis_value(gamepad, gp_axisrv)) > axis_threshold_get(gp_axisrv)));
+                return (input_gamepad_check(gamepad, gp_face1)
+                    ||  input_gamepad_check(gamepad, gp_face2)
+                    ||  input_gamepad_check(gamepad, gp_face3)
+                    ||  input_gamepad_check(gamepad, gp_face4)
+                    ||  input_gamepad_check(gamepad, gp_padu)
+                    ||  input_gamepad_check(gamepad, gp_padd)
+                    ||  input_gamepad_check(gamepad, gp_padl)
+                    ||  input_gamepad_check(gamepad, gp_padr)
+                    ||  input_gamepad_check(gamepad, gp_shoulderl)
+                    ||  input_gamepad_check(gamepad, gp_shoulderr)
+                    ||  input_gamepad_check(gamepad, gp_shoulderlb)
+                    ||  input_gamepad_check(gamepad, gp_shoulderrb)
+                    ||  input_gamepad_check(gamepad, gp_start)
+                    ||  input_gamepad_check(gamepad, gp_select)
+                    ||  input_gamepad_check(gamepad, gp_stickl)
+                    ||  input_gamepad_check(gamepad, gp_stickr)
+                    ||  (abs(input_gamepad_value(gamepad, gp_axislh)) > axis_threshold_get(gp_axislh))
+                    ||  (abs(input_gamepad_value(gamepad, gp_axislv)) > axis_threshold_get(gp_axislv))
+                    ||  (abs(input_gamepad_value(gamepad, gp_axisrh)) > axis_threshold_get(gp_axisrh))
+                    ||  (abs(input_gamepad_value(gamepad, gp_axisrv)) > axis_threshold_get(gp_axisrv)));
             break;
         }
         
@@ -567,7 +567,7 @@ function __input_class_verb() constructor
 function __input_class_gamepad(_index) constructor
 {
     index             = _index;
-    description       = gamepad_get_description(_index);
+    description       = undefined;
     guid              = gamepad_get_guid(_index);
     xinput            = undefined;
     
@@ -702,7 +702,7 @@ function __input_class_gamepad(_index) constructor
     }
     
     input_gamepad_get_description(self);
-    __input_trace("Gamepad ", index, " discovered: \"", description, "\", type=\"", type, "\" (vendor=", vendor, ", product=", product, ")");
+    __input_trace("Gamepad ", index, " discovered: \"", description, "\" (vendor=", vendor, ", product=", product, ")");
 }
 
 #endregion

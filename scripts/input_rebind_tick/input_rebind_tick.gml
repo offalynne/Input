@@ -162,7 +162,7 @@ function input_rebind_tick()
                         var _i = 0;
                         repeat(array_length(_button_array))
                         {
-                            if (input_gamepad_button_check(gamepad, _button_array[_i]))
+                            if (input_gamepad_check(gamepad, _button_array[_i]))
                             {
                                 _new_binding = new __input_class_binding("gamepad button", _button_array[_i]);
                             }

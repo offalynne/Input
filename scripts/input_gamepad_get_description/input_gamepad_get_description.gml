@@ -1,6 +1,6 @@
 /// @param gamepadIndex
 
-function input_gamepad_get_type(_index)
+function input_gamepad_get_description(_index)
 {
     if (is_struct(_index))
     {
@@ -45,17 +45,17 @@ function input_gamepad_get_type(_index)
         switch(os_type)
         {
             case os_switch:
-                description = "Joy-Con";
+                description = gamepad_get_description(index);
                 return description;
             break;
-        
+            
             case os_ps4:
-                description = "DualShock 4";
+                description = gamepad_get_description(index);
                 return description;
             break;
-        
+            
             case os_xboxone:
-                description = "Xbox One";
+                description = gamepad_get_description(index);
                 return description;
             break;
         }
