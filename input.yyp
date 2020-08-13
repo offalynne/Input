@@ -24,7 +24,7 @@
     {"id":{"name":"input_cursor_limit_box","path":"scripts/input_cursor_limit_box/input_cursor_limit_box.yy",},"order":3,},
     {"id":{"name":"input_async_system_event","path":"scripts/input_async_system_event/input_async_system_event.yy",},"order":2,},
     {"id":{"name":"input_tick","path":"scripts/input_tick/input_tick.yy",},"order":1,},
-    {"id":{"name":"input_gamepad_get_type","path":"scripts/input_gamepad_get_type/input_gamepad_get_type.yy",},"order":4,},
+    {"id":{"name":"input_gamepad_get_description","path":"scripts/input_gamepad_get_description/input_gamepad_get_description.yy",},"order":4,},
     {"id":{"name":"input_hotswap_tick","path":"scripts/input_hotswap_tick/input_hotswap_tick.yy",},"order":1,},
     {"id":{"name":"input_gamepad_button_check_pressed","path":"scripts/input_gamepad_button_check_pressed/input_gamepad_button_check_pressed.yy",},"order":1,},
     {"id":{"name":"input_bindings_copy","path":"scripts/input_bindings_copy/input_bindings_copy.yy",},"order":6,},

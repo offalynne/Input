@@ -6,7 +6,7 @@
     "path": "folders/Input/Gamepads (Direct).yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_gamepad_get_type",
+  "name": "input_gamepad_get_description",
   "tags": [],
   "resourceType": "GMScript",
 }

@@ -571,7 +571,6 @@ function __input_class_gamepad(_index) constructor
     guid              = gamepad_get_guid(_index);
     xinput            = undefined;
     
-    type              = undefined;
     vendor            = undefined;
     product           = undefined;
     
@@ -699,7 +698,7 @@ function __input_class_gamepad(_index) constructor
         }
     }
     
-    input_gamepad_get_type(self);
+    input_gamepad_get_description(self);
     __input_trace("Gamepad ", index, " discovered: \"", description, "\", type=\"", type, "\" (vendor=", vendor, ", product=", product, ")");
 }
 

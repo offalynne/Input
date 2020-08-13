@@ -16,7 +16,7 @@ function input_gamepad_get_type(_index)
     with(_gamepad)
     {
         //If we have a cached value, return it
-        if (type != undefined) return type;
+        if (description != undefined) return description;
         //Otherwise, we discover what kind of gamepad this is...
         
         //Unpack the vendor/product IDs from the gamepad's GUID
@@ -45,18 +45,18 @@ function input_gamepad_get_type(_index)
         switch(os_type)
         {
             case os_switch:
-                type = "Joy-Con";
-                return type;
+                description = "Joy-Con";
+                return description;
             break;
         
             case os_ps4:
-                type = "DualShock 4";
-                return type;
+                description = "DualShock 4";
+                return description;
             break;
         
             case os_xboxone:
-                type = "Xbox One";
-                return type;
+                description = "Xbox One";
+                return description;
             break;
         }
         
@@ -67,7 +67,7 @@ function input_gamepad_get_type(_index)
         }
         else if (xinput)
         {
-            type = "XInput";
+            description = "XInput";
         }
         else
         {
@@ -125,7 +125,13 @@ function input_gamepad_get_type(_index)
                     {
                         var _invert   = false;
                         var _negative = false;
-						var _positive = false; //TODO - Doesn't do anything yet
+						var _positive = false;
+                        
+                        if (string_char_at(_entry_1, string_length(_entry_1)) == "~")
+                        {
+                            _entry_1 = string_delete(_entry_1, string_length(_entry_1), 1);
+                            _invert = true;
+                        }
                         
                         while(true)
                         {
@@ -142,7 +148,7 @@ function input_gamepad_get_type(_index)
                             }
                             else if (_char == "+")
                             {
-                                _positive = true; //TODO - Nope, still doesn't do anything
+                                _positive = true;
                             }
                             else
                             {
@@ -156,7 +162,8 @@ function input_gamepad_get_type(_index)
                         
                         if (_invert) _mapping.invert = true;
                         if (_negative) _mapping.negative = true;
-                        if (_raw_type == "h") _mapping.hat_direction = floor(10*real(_entry_1)); //TODO - lol haxx
+                        if (_positive) _mapping.positive = true;
+                        if (_raw_type == "h") _mapping.hat_mask = floor(10*real(_entry_1)); //TODO - lol haxx
                         
                         //Special cases go here:
                         if (((vendor == "4c05") && (product == "cc09")) && (_raw_type == "a") && ((_input_slot == 3) || (_input_slot == 4)))
@@ -174,8 +181,6 @@ function input_gamepad_get_type(_index)
                 __input_trace("Warning! No SDL defintion found for vendor=", vendor, ", product=", product);
                 description = "Unknown";
             }
-            
-            type = description;
         }
     }
 }
