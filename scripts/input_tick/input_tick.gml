@@ -454,6 +454,8 @@ function __input_class_cursor() constructor
     x = 0;
     y = 0;
     
+    camera = undefined;
+    
     limit_l = undefined;
     limit_t = undefined;
     limit_r = undefined;
