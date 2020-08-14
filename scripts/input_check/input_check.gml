@@ -1,4 +1,4 @@
-/// @param verb
+/// @param verb/array
 /// @param [playerIndex]
 /// @param [bufferDuration]
 
@@ -18,6 +18,18 @@ function input_check()
     {
         __input_error("Player index too large (", _player_index, " vs. ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
         return undefined;
+    }
+    
+    if (is_array(_verb))
+    {
+        var _i = 0;
+        repeat(array_length(_verb))
+        {
+            if (input_check(_verb[_i], _player_index, _buffer_duration)) return true;
+            ++_i;
+        }
+        
+        return false;
     }
     
     var _verb_struct = variable_struct_get(global.__input_players[_player_index].verbs, _verb);

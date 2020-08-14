@@ -1,12 +1,12 @@
-/// @param verb/array
+/// @param camera
 /// @param [playerIndex]
 
-function input_is_analogue()
+function input_cursor_follow_camera()
 {
-    var _verb         = argument[0];
+    var _camera       = argument[0];
     var _player_index = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
     
-    if (_player_index < 0)
+    if ((_player_index < 0) && (_player_index != all))
     {
         __input_error("Invalid player index provided (", _player_index, ")");
         return undefined;
@@ -18,24 +18,17 @@ function input_is_analogue()
         return undefined;
     }
     
-    var _verb_struct = variable_struct_get(global.__input_players[_player_index].verbs, _verb);
-    if (!is_struct(_verb_struct))
-    {
-        __input_error("Verb not recognised (", _verb, ")");
-        return undefined;
-    }
-    
-    if (is_array(_verb))
+    if (_player_index == all)
     {
         var _i = 0;
-        repeat(array_length(_verb))
+        repeat(INPUT_MAX_PLAYERS)
         {
-            if (input_is_analogue(_verb[_i], _player_index)) return true;
+            input_cursor_follow_camera(_camera, _i);
             ++_i;
         }
-        
-        return false;
     }
-    
-    return _verb_struct.analogue;
+    else
+    {
+        global.__input_players[_player_index].cursor.camera = _camera;
+    }
 }

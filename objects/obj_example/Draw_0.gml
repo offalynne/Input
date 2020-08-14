@@ -1,11 +1,35 @@
-var _string  = "Left    = " + string(input_value(VERB.LEFT   )) + "\n";
-    _string += "Right   = " + string(input_value(VERB.RIGHT  )) + "\n";
-    _string += "Up      = " + string(input_value(VERB.UP     )) + "\n";
-    _string += "Down    = " + string(input_value(VERB.DOWN   )) + "\n";
-    _string += "Confirm = " + string(input_value(VERB.CONFIRM)) + "\n";
-    _string += "Cancel  = " + string(input_value(VERB.CANCEL )) + "\n";
-    _string += "Pause   = " + string(input_value(VERB.PAUSE  )) + "\n";
-    
+var _string  = "Left          = " + string(input_value(VERB.LEFT   )) + "    " + string(input_binding_get(VERB.LEFT   )) + "\n";
+    _string += "Right         = " + string(input_value(VERB.RIGHT  )) + "    " + string(input_binding_get(VERB.RIGHT  )) + "\n";
+    _string += "Up            = " + string(input_value(VERB.UP     )) + "    " + string(input_binding_get(VERB.UP     )) + "\n";
+    _string += "Down          = " + string(input_value(VERB.DOWN   )) + "    " + string(input_binding_get(VERB.DOWN   )) + "\n";
+    _string += "Confirm       = " + string(input_value(VERB.CONFIRM)) + "    " + string(input_binding_get(VERB.CONFIRM)) + "\n";
+    _string += "Cancel        = " + string(input_value(VERB.CANCEL )) + "    " + string(input_binding_get(VERB.CANCEL )) + "\n";
+    _string += "Pause         = " + string(input_value(VERB.PAUSE  )) + "    " + string(input_binding_get(VERB.PAUSE  )) + "\n";
+    _string += "Recent (all)  = " + string(input_check_press_most_recent()) + "\n";
+    _string += "Recent (4dir) = " + string(input_check_press_most_recent([VERB.LEFT, VERB.RIGHT, VERB.UP, VERB.DOWN])) + "\n";
+
+//var _gamepad = input_player_gamepad_get(0);
+//var _i = 0;
+//repeat(30)
+//{
+//    if (gamepad_button_check(_gamepad, _i))
+//    {
+//        _string += "b" + string(_i) + "\n";
+//    }
+//    
+//    ++_i;
+//}
+//
+//var _i = 0;
+//repeat(10)
+//{
+//    _string += "a" + string(_i) + " = " + string(gamepad_axis_value(_gamepad, _i)) + "\n";
+//    ++_i;
+//}
+//
+//_string += "a4106 = " + string(gamepad_axis_value(_gamepad, 4106)) + "\n";
+//_string += "a4107 = " + string(gamepad_axis_value(_gamepad, 4107)) + "\n";
+
 draw_text(10, 10, _string);
 
 var _i = 0;

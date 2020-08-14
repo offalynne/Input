@@ -16,5 +16,15 @@ function input_cursor_y()
         return undefined;
     }
     
-    return global.__input_players[_player_index].cursor.y;
+    with(global.__input_players[_player_index].cursor)
+    {
+        if (is_numeric(camera) && (camera >= 0))
+        {
+            return camera_get_view_y(camera) + y;
+        }
+        else
+        {
+            return y;
+        }
+    }
 }

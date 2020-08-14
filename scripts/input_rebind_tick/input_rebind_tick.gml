@@ -15,6 +15,8 @@ function input_rebind_tick()
     var _player_index = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
     var _alternate    = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : 0;
     
+    #region Check input arguments
+    
     if (_player_index < 0)
     {
         __input_error("Invalid player index provided (", _player_index, ")");
@@ -38,6 +40,8 @@ function input_rebind_tick()
         __input_error("\"alternate\" argument too large (", _alternate, " vs. ", INPUT_MAX_ALTERNATE_BINDINGS, ")\nIncrease INPUT_MAX_ALTERNATE_BINDINGS for more alternate binding slots");
         return undefined;
     }
+    
+    #endregion
     
     with(global.__input_players[_player_index])
     {
@@ -65,6 +69,8 @@ function input_rebind_tick()
         }
         else
         {
+            #region Error checking
+            
             if (source == INPUT_SOURCE.NONE)
             {
                 __input_trace("Rebinding failed: Source for player ", _player_index, " is INPUT_SOURCE.NONE");
@@ -107,7 +113,9 @@ function input_rebind_tick()
                 return INPUT_REBIND_EVENT.ERROR;
             }
             
-            if (rebind_state == 1)
+            #endregion
+            
+            if (rebind_state == 1) //Waiting for the player to release all buttons
             {
                 if (!any_input())
                 {
@@ -115,44 +123,38 @@ function input_rebind_tick()
                     rebind_state = 2;
                 }
             }
-            else if (rebind_state == 2)
+            else if (rebind_state == 2) //Now grab the first button pressed
             {
-                var _success = false;
+                var _new_binding = undefined;
+                
+                #region Listeners
                 
                 switch(source)
                 {
                     case INPUT_SOURCE.KEYBOARD_AND_MOUSE:
                         if (keyboard_key > 0)
                         {
-                            set_binding(INPUT_SOURCE.KEYBOARD_AND_MOUSE, _verb, _alternate, new __input_class_binding("key", keyboard_key));
-                            __input_trace("Rebinding success: Player ", _player_index, " verb=", _verb, " (alternate=", _alternate, ") set to key ", keyboard_key);
-                            _success = true;
+                            _new_binding = new __input_class_binding("key", keyboard_key);
                         }
                         else if (mouse_button > 0)
                         {
-                            set_binding(INPUT_SOURCE.KEYBOARD_AND_MOUSE, _verb, _alternate, new __input_class_binding("mouse button", mouse_button));
-                            __input_trace("Rebinding success: Player ", _player_index, " verb=", _verb, " (alternate=", _alternate, ") set to mouse button ", mouse_button);
-                            _success = true;
+                            _new_binding = new __input_class_binding("mouse button", mouse_button);
                         }
                         else if (mouse_wheel_up())
                         {
-                            set_binding(INPUT_SOURCE.KEYBOARD_AND_MOUSE, _verb, _alternate, new __input_class_binding("mouse wheel up"));
-                            __input_trace("Rebinding success: Player ", _player_index, " verb=", _verb, " (alternate=", _alternate, ") set to mouse wheel up");
-                            _success = true;
+                            _new_binding = new __input_class_binding("mouse wheel up");
                         }
                         else if (mouse_wheel_down())
                         {
-                            set_binding(INPUT_SOURCE.KEYBOARD_AND_MOUSE, _verb, _alternate, new __input_class_binding("mouse wheel down"));
-                            __input_trace("Rebinding success: Player ", _player_index, " verb=", _verb, " (alternate=", _alternate, ") set to mouse wheel down");
-                            _success = true;
+                            _new_binding = new __input_class_binding("mouse wheel down");
                         }
                     break;
                     
                     case INPUT_SOURCE.GAMEPAD:
                         var _button_array = [gp_face1, gp_face2, gp_face3, gp_face4, 
-                                                gp_padu, gp_padd, gp_padl, gp_padr, 
-                                                gp_shoulderl, gp_shoulderr, gp_shoulderlb, gp_shoulderrb,
-                                                gp_start, gp_select, gp_stickl, gp_stickr];
+                                             gp_padu, gp_padd, gp_padl, gp_padr, 
+                                             gp_shoulderl, gp_shoulderr, gp_shoulderlb, gp_shoulderrb,
+                                             gp_start, gp_select, gp_stickl, gp_stickr];
                         
                         var _axis_array = [gp_axislh, gp_axislv, gp_axisrh, gp_axisrv,
                                            gp_shoulderlb, gp_shoulderrb];
@@ -160,11 +162,9 @@ function input_rebind_tick()
                         var _i = 0;
                         repeat(array_length(_button_array))
                         {
-                            if (gamepad_button_check(gamepad, _button_array[_i]))
+                            if (input_gamepad_check(gamepad, _button_array[_i]))
                             {
-                                set_binding(INPUT_SOURCE.GAMEPAD, _verb, _alternate, new __input_class_binding("gamepad button", _button_array[_i]));
-                                __input_trace("Rebinding success: Player ", _player_index, " verb=", _verb, " (alternate=", _alternate, ") set to gamepad button ", _button_array[_i]);
-                                _success = true;
+                                _new_binding = new __input_class_binding("gamepad button", _button_array[_i]);
                             }
                             
                             ++_i;
@@ -174,14 +174,12 @@ function input_rebind_tick()
                         repeat(array_length(_axis_array))
                         {
                             var _axis     = _axis_array[_i];
-                            var _value    = gamepad_axis_value(gamepad, _axis);
+                            var _value    = input_gamepad_axis_value(gamepad, _axis);
                             var _negative = (_value < 0);
                             
                             if (abs(_value) > input_axis_threshold_get(_axis, _player_index).mini)
                             {
-                                set_binding(INPUT_SOURCE.GAMEPAD, _verb, _alternate, new __input_class_binding("gamepad axis", _axis_array[_i], _negative));
-                                __input_trace("Rebinding success: Player ", _player_index, " verb=", _verb, " (alternate=", _alternate, ") set to gamepad axis ", _button_array[_i], " (negative=", _negative, ")");
-                                _success = true;
+                                _new_binding = new __input_class_binding("gamepad axis", _axis_array[_i], _negative);
                             }
                             
                             ++_i;
@@ -189,9 +187,63 @@ function input_rebind_tick()
                     break;
                 }
                 
-                if (_success)
+                #endregion
+                
+                if (is_struct(_new_binding))
                 {
-                    input_consume(_verb, _player_index);
+                    #region Check for any binding collisions
+                    
+                    var _found_count = 0;
+                    
+                    var _source_name = global.__input_source_names[source];
+                    var _source_verb_struct = variable_struct_get(config, _source_name);
+                    if (is_struct(_source_verb_struct))
+                    {
+                        var _verb_names = variable_struct_get_names(_source_verb_struct);
+                        var _v = 0;
+                        repeat(array_length(_verb_names))
+                        {
+                            var _verb = _verb_names[_v];
+                            
+                            var _alternate_array = variable_struct_get(_source_verb_struct, _verb);
+                            var _a = 0;
+                            repeat(array_length(_alternate_array))
+                            {
+                                var _binding = _alternate_array[_a];
+                                
+                                if (is_struct(_binding))
+                                {
+                                    if ((_binding.type == _new_binding.type)
+                                    &&  (_binding.value == _new_binding.value)
+                                    &&  (_binding.axis_negative == _new_binding.axis_negative))
+                                    {
+                                        _found_count++;
+                                        if (_found_count == 1)
+                                        {
+                                            __input_binding_overwrite(rebind_backup, _binding);
+                                            __input_trace("Rebinding collision: Player ", _player_index, " verb=", _verb, " (alternate=", _a, ") set to ", rebind_backup);
+                                        }
+                                        else
+                                        {
+                                            __input_error("Duplicate bindings found, please check your bindings");
+                                        }
+                                    }
+                                }
+                                
+                                ++_a;
+                            }
+                            
+                            ++_v;
+                        }
+                    }
+                    
+                    #endregion
+                    
+                    set_binding(source, rebind_verb, rebind_alternate, _new_binding);
+                    __input_trace("Rebinding success: Player ", _player_index, " verb=", rebind_verb, " (alternate=", rebind_alternate, ") set to ", _new_binding);
+                    
+                    input_consume(rebind_verb, _player_index);
+                    
                     rebind_state = -2;
                     return INPUT_REBIND_EVENT.SUCCESS;
                 }

@@ -1,4 +1,4 @@
-/// @param verb
+/// @param verb/array
 /// @param [playerIndex]
 
 function input_value()
@@ -16,6 +16,20 @@ function input_value()
     {
         __input_error("Player index too large (", _player_index, " vs. ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
         return undefined;
+    }
+    
+    if (is_array(_verb))
+    {
+        var _sum = 0;
+        
+        var _i = 0;
+        repeat(array_length(_verb))
+        {
+            _sum += input_value(_verb[_i], _player_index);
+            ++_i;
+        }
+        
+        return _sum;
     }
     
     var _verb_struct = variable_struct_get(global.__input_players[_player_index].verbs, _verb);
