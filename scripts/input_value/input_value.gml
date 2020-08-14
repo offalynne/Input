@@ -18,6 +18,20 @@ function input_value()
         return undefined;
     }
     
+    if (is_array(_verb))
+    {
+        var _sum = 0;
+        
+        var _i = 0;
+        repeat(array_length(_verb))
+        {
+            _sum += input_value(_verb[_i], _player_index);
+            ++_i;
+        }
+        
+        return _sum;
+    }
+    
     var _verb_struct = variable_struct_get(global.__input_players[_player_index].verbs, _verb);
     if (!is_struct(_verb_struct))
     {
