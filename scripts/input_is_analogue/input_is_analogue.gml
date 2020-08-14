@@ -1,4 +1,4 @@
-/// @param verb
+/// @param verb/array
 /// @param [playerIndex]
 
 function input_is_analogue()
@@ -23,6 +23,18 @@ function input_is_analogue()
     {
         __input_error("Verb not recognised (", _verb, ")");
         return undefined;
+    }
+    
+    if (is_array(_verb))
+    {
+        var _i = 0;
+        repeat(array_length(_verb))
+        {
+            if (input_is_analogue(_verb[_i], _player_index)) return true;
+            ++_i;
+        }
+        
+        return false;
     }
     
     return _verb_struct.analogue;

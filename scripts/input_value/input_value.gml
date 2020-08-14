@@ -1,4 +1,4 @@
-/// @param verb
+/// @param verb/array
 /// @param [playerIndex]
 
 function input_value()
