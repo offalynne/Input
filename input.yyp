@@ -94,7 +94,7 @@
     {"CopyToMask":9605333580251374,"filePath":"datafiles","resourceVersion":"1.0","name":"sdl2.txt","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "23.1.1.174",
+    "IDEVersion": "23.1.1.175",
   },
   "resourceVersion": "1.3",
   "name": "input",
