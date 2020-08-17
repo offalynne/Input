@@ -625,7 +625,23 @@ function __input_class_gamepad(_index) constructor
         if (!custom_mapping)
         {
             __input_trace("Gamepad ", index, " has a custom mapping, clearing GM's internal mapping string");
-            gamepad_test_mapping(index, "");
+            
+            if (os_type == os_macosx)
+            {
+                if ((gamepad_get_mapping(index) != "") && (gamepad_get_mapping(index) != "no mapping"))
+                {
+                    __input_trace("Warning! Performing remapping of MacOS controller that already has a remapping. This may well cause glitches and errors (mapping was \"", gamepad_get_mapping(index), "\")");
+                }
+                
+                //As of 2020-08-17, GameMaker has weird in-build remapping rules for gamepad on MacOS
+                //Additionally, gamepad_remove_mapping() doesn't seem to work. Setting the SDL string to something mostly blank does work though
+                gamepad_test_mapping(index, gamepad_get_guid(index) + "," + gamepad_get_description(index) + ",");
+            }
+            else
+            {
+                gamepad_remove_mapping(index);
+            }
+            
             custom_mapping = true;
         }
         

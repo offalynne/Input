@@ -63,11 +63,20 @@ function input_gamepad_get_description(_index)
         if (((vendor == "0079") && (product == "0006"))
         ||  ((vendor == "11ff") && (product == "3331")))
         {
-            __input_trace("Warning! Gamepad GUID is for a chipset too many possible remappings. Please remap manually using external software");
+            __input_trace("Warning! Gamepad GUID is for a chipset that's used in countless different controllers. There are too many possible remappings. Please remap manually using external software");
+            description = gamepad_get_description(index);
+            return description;
         }
         else if (xinput)
         {
             description = "XInput";
+            return description;
+        }
+        else if ((os_type == os_macosx) && ((gamepad_get_mapping(index) == "") || (gamepad_get_mapping(index) == "no mapping")))
+        {
+            __input_trace("Warning! Gamepad already has a native GameMaker remapping");
+            description = gamepad_get_description(index);
+            return description;
         }
         else
         {
