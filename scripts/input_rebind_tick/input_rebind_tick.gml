@@ -174,7 +174,7 @@ function input_rebind_tick()
                         repeat(array_length(_axis_array))
                         {
                             var _axis     = _axis_array[_i];
-                            var _value    = input_gamepad_axis_value(gamepad, _axis);
+                            var _value    = input_gamepad_value(gamepad, _axis);
                             var _negative = (_value < 0);
                             
                             if (abs(_value) > input_axis_threshold_get(_axis, _player_index).mini)
