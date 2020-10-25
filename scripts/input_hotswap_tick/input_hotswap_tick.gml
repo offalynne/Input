@@ -25,9 +25,12 @@ function input_hotswap_tick()
             {
                 input_player_source_set(_new_device.source, _player_index);
                 if (_new_device.source == INPUT_SOURCE.GAMEPAD) input_player_gamepad_set(_new_device.gamepad, _player_index);
+                return true;
             }
         }
     }
+    
+    return false;
 }
 
 /// @param playerIndex
