@@ -106,9 +106,6 @@ function __input_class_player() constructor
             ++_v;
         }
         
-        var _verb_u = variable_struct_get(verbs, global.__input_cursor_verb_u);
-        __input_trace("player: _struct_u.analogue=", _verb_u.analogue);
-        
         with(cursor)
         {
             tick();
