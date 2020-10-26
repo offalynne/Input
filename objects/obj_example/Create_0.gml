@@ -11,7 +11,7 @@ enum VERB
 
 rebinding = false;
 
-input_cursor_verbs(VERB.LEFT, VERB.RIGHT, VERB.UP, VERB.DOWN, 5);
+input_cursor_verbs(VERB.UP, VERB.DOWN, VERB.LEFT, VERB.RIGHT, 5);
 input_cursor_move(room_width/2, room_height/2);
 
 input_default_key(vk_left     , VERB.LEFT    );
