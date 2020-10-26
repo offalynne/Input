@@ -18,8 +18,15 @@ function input_rebind_undo()
             
             if (is_struct(_binding))
             {
-                __input_trace("Rebinding undo successful (source=", rebind_source, ", verb=", rebind_verb, ", alternate=", rebind_alternate, "). Overwriting ", _binding, " with backup ", rebind_backup);
-                __input_binding_overwrite(rebind_backup, _binding);
+                if (is_struct(rebind_backup_collision_ref))
+                {
+                    __input_trace("Rebinding undoing collision");
+                    __input_binding_overwrite(rebind_backup_collision_val, rebind_backup_collision_ref);
+                }
+                
+                __input_trace("Rebinding undo successful (source=", rebind_source, ", verb=", rebind_verb, ", alternate=", rebind_alternate, "). Overwriting ", _binding, " with backup ", rebind_backup_val);
+                __input_binding_overwrite(rebind_backup_val, _binding);
+                
                 return true;
             }
         }

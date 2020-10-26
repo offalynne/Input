@@ -58,14 +58,16 @@ function input_rebind_tick()
         }
         else if (rebind_state == 0)
         {
-            rebind_state     = 1;
-            rebind_source    = source;
-            rebind_gamepad   = gamepad;
-            rebind_verb      = _verb;
-            rebind_alternate = _alternate;
-            rebind_backup    = input_binding_get(_verb, source, _player_index, _alternate);
+            rebind_state                = 1;
+            rebind_source               = source;
+            rebind_gamepad              = gamepad;
+            rebind_verb                 = _verb;
+            rebind_alternate            = _alternate;
+            rebind_backup_val           = input_binding_get(_verb, source, _player_index, _alternate);
+            rebind_backup_collision_ref = undefined;
+            rebind_backup_collision_val = undefined;
             
-            __input_trace("Rebinding started for player ", _player_index, " (source=", rebind_source, ", verb=", rebind_verb, ", alternate=", rebind_alternate, "), backup=", rebind_backup);
+            __input_trace("Rebinding started for player ", _player_index, " (source=", rebind_source, ", verb=", rebind_verb, ", alternate=", rebind_alternate, "), backup=", rebind_backup_val);
         }
         else
         {
@@ -210,7 +212,6 @@ function input_rebind_tick()
                             repeat(array_length(_alternate_array))
                             {
                                 var _binding = _alternate_array[_a];
-                                
                                 if (is_struct(_binding))
                                 {
                                     if ((_binding.type == _new_binding.type)
@@ -220,8 +221,11 @@ function input_rebind_tick()
                                         _found_count++;
                                         if (_found_count == 1)
                                         {
-                                            __input_binding_overwrite(rebind_backup, _binding);
-                                            __input_trace("Rebinding collision: Player ", _player_index, " verb=", _verb, " (alternate=", _a, ") set to ", rebind_backup);
+                                            rebind_backup_collision_ref = _binding;
+                                            rebind_backup_collision_val = __input_binding_overwrite(rebind_backup_collision_ref, {});
+                                            
+                                            __input_binding_overwrite(rebind_backup_val, rebind_backup_collision_ref);
+                                            __input_trace("Rebinding collision: Player ", _player_index, " verb=", _verb, " (alternate=", _a, ") set to ", rebind_backup_val);
                                         }
                                         else
                                         {

@@ -164,6 +164,8 @@ function __input_binding_overwrite(_from, _to)
         value         = _from.value;
         axis_negative = _from.axis_negative;
     }
+    
+    return _to;
 }
 
 #endregion

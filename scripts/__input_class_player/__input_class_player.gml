@@ -14,7 +14,7 @@ function __input_class_player() constructor
     rebind_verb       = undefined;
     rebind_alternate  = undefined;
     rebind_this_frame = false;
-    rebind_backup     = undefined;
+    rebind_backup_val     = undefined;
     
     config = { axis_thresholds : {} };
     
