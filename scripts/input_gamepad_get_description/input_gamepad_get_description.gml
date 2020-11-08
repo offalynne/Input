@@ -78,6 +78,12 @@ function input_gamepad_get_description(_index)
             description = gamepad_get_description(index);
             return description;
         }
+        else if (!INPUT_SDL2_REMAPPING)
+        {
+            __input_trace("Skipping SDL2 remapping");
+            description = gamepad_get_description(index);
+            return description;
+        }
         else
         {
             //TODO - Use structs instead?
