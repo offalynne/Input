@@ -30,6 +30,7 @@
     {"id":{"name":"input_tick","path":"scripts/input_tick/input_tick.yy",},"order":1,},
     {"id":{"name":"input_gamepad_get_description","path":"scripts/input_gamepad_get_description/input_gamepad_get_description.yy",},"order":4,},
     {"id":{"name":"input_hotswap_tick","path":"scripts/input_hotswap_tick/input_hotswap_tick.yy",},"order":1,},
+    {"id":{"name":"obj_debug","path":"objects/obj_debug/obj_debug.yy",},"order":1,},
     {"id":{"name":"input_gamepad_check_press","path":"scripts/input_gamepad_check_press/input_gamepad_check_press.yy",},"order":1,},
     {"id":{"name":"input_bindings_copy","path":"scripts/input_bindings_copy/input_bindings_copy.yy",},"order":6,},
     {"id":{"name":"input_players_connected","path":"scripts/input_players_connected/input_players_connected.yy",},"order":5,},
@@ -51,7 +52,7 @@
     {"id":{"name":"input_cursor_y","path":"scripts/input_cursor_y/input_cursor_y.yy",},"order":6,},
     {"id":{"name":"input_player_connected","path":"scripts/input_player_connected/input_player_connected.yy",},"order":4,},
     {"id":{"name":"input_player_gamepad_get","path":"scripts/input_player_gamepad_get/input_player_gamepad_get.yy",},"order":3,},
-    {"id":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},"order":1,},
+    {"id":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},"order":2,},
   ],
   "Options": [
     {"name":"Amazon Fire","path":"options/amazonfire/options_amazonfire.yy",},
