@@ -4,7 +4,7 @@ _string += "Gamepad " + string(test_index) + "/" + string(gamepad_get_device_cou
 
 var _gamepad = input_player_gamepad_get(0);
 var _i = 0;
-repeat(30)
+repeat(40)
 {
     if (gamepad_button_check(_gamepad, _i))
     {
@@ -16,6 +16,17 @@ repeat(30)
 
 var _i = 0;
 repeat(10)
+{
+    if (gamepad_hat_value(_gamepad, _i))
+    {
+        _string += "h" + string(_i) + " = " + string(gamepad_hat_value(_gamepad, _i)) + "\n";
+    }
+    
+    ++_i;
+}
+
+var _i = 0;
+repeat(12)
 {
     _string += "a" + string(_i) + " = " + string(gamepad_axis_value(_gamepad, _i)) + "\n";
     ++_i;
