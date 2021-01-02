@@ -77,7 +77,7 @@ function input_assignment_tick(_min_players, _max_players, _leave_verb)
                 
                 global.__input_players[_p].tick();
                 
-                if (input_check_press(_leave_verb) && (input_players_connected() < _min_players) && (_min_players > 1))
+                if (input_check_pressed(_leave_verb) && (input_players_connected() < _min_players) && (_min_players > 1))
                 {
                     __input_trace("Assignment: Player ", _p, " aborted");
                     _abort = true;
@@ -95,7 +95,7 @@ function input_assignment_tick(_min_players, _max_players, _leave_verb)
     var _p = 0;
     repeat(_max_players)
     {
-        if (input_check_press(_leave_verb, _p))
+        if (input_check_pressed(_leave_verb, _p))
         {
             __input_trace("Assignment: Player ", _p, " left");
             input_player_source_set(INPUT_SOURCE.NONE, _p);
@@ -126,22 +126,22 @@ function __input_assignment_tick_input(_player_index)
         {
             if (gamepad_is_connected(_g) && __input_source_is_available(INPUT_SOURCE.GAMEPAD, _g))
             {
-                if (input_gamepad_check_press(_g, gp_face1)
-                ||  input_gamepad_check_press(_g, gp_face2)
-                ||  input_gamepad_check_press(_g, gp_face3)
-                ||  input_gamepad_check_press(_g, gp_face4)
-                ||  input_gamepad_check_press(_g, gp_padu)
-                ||  input_gamepad_check_press(_g, gp_padd)
-                ||  input_gamepad_check_press(_g, gp_padl)
-                ||  input_gamepad_check_press(_g, gp_padr)
-                ||  input_gamepad_check_press(_g, gp_shoulderl)
-                ||  input_gamepad_check_press(_g, gp_shoulderr)
-                ||  input_gamepad_check_press(_g, gp_shoulderlb)
-                ||  input_gamepad_check_press(_g, gp_shoulderrb)
-                ||  input_gamepad_check_press(_g, gp_start)
-                ||  input_gamepad_check_press(_g, gp_select)
-                ||  input_gamepad_check_press(_g, gp_stickl)
-                ||  input_gamepad_check_press(_g, gp_stickr))
+                if (input_gamepad_check_pressed(_g, gp_face1)
+                ||  input_gamepad_check_pressed(_g, gp_face2)
+                ||  input_gamepad_check_pressed(_g, gp_face3)
+                ||  input_gamepad_check_pressed(_g, gp_face4)
+                ||  input_gamepad_check_pressed(_g, gp_padu)
+                ||  input_gamepad_check_pressed(_g, gp_padd)
+                ||  input_gamepad_check_pressed(_g, gp_padl)
+                ||  input_gamepad_check_pressed(_g, gp_padr)
+                ||  input_gamepad_check_pressed(_g, gp_shoulderl)
+                ||  input_gamepad_check_pressed(_g, gp_shoulderr)
+                ||  input_gamepad_check_pressed(_g, gp_shoulderlb)
+                ||  input_gamepad_check_pressed(_g, gp_shoulderrb)
+                ||  input_gamepad_check_pressed(_g, gp_start)
+                ||  input_gamepad_check_pressed(_g, gp_select)
+                ||  input_gamepad_check_pressed(_g, gp_stickl)
+                ||  input_gamepad_check_pressed(_g, gp_stickr))
                 {
                     return { source : INPUT_SOURCE.GAMEPAD, gamepad : _g };
                 }
