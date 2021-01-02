@@ -78,6 +78,13 @@ function __input_class_gamepad(_index) constructor
             custom_mapping = true;
         }
         
+        //Correct for weird input index offset on MacOS
+        if (os_type == os_macosx)
+        {
+            if (_type == "a") _raw +=  6;
+            if (_type == "b") _raw += 17;
+        }
+        
         var _mapping = {
             gm            : _gm,
             raw           : _raw,

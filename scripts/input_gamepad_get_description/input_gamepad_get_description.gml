@@ -132,10 +132,10 @@ function input_gamepad_get_description(_index)
                     var _entry = _definition[_i];
                     var _pos = string_pos(":", _entry);
                     
-                    var _entry_0 = string_copy(_entry, 1, _pos-1);
+                    var _entry_name = string_copy(_entry, 1, _pos-1);
                     var _entry_1 = string_delete(_entry, 1, _pos);
                     
-                    var _gm = variable_struct_get(global.__input_sdl2_look_up_table, _entry_0);
+                    var _gm = variable_struct_get(global.__input_sdl2_look_up_table, _entry_name);
                     if (_gm != undefined)
                     {
                         var _invert   = false;
@@ -180,10 +180,10 @@ function input_gamepad_get_description(_index)
                         if (_positive) _mapping.positive = true;
                         if (_raw_type == "h") _mapping.hat_mask = floor(10*real(_entry_1)); //TODO - lol haxx
                         
-                        //Special cases go here:
-                        if (((vendor == "4c05") && (product == "cc09")) && (_raw_type == "a") && ((_input_slot == 3) || (_input_slot == 4)))
+                        var _is_trigger_axis = (_raw_type == "a") && string_pos("trigger", _entry_name);
+                        if (((os_type == os_macosx) && _is_trigger_axis) //MacOS triggers seem to always be from -1 -> +1
+                        ||  ((os_type == os_windows) && ((vendor == "4c05") && (product == "cc09")) && _is_trigger_axis)) //PS4 controllers return -1 -> +1 for their triggers on Windows
                         {
-                            //PS4 controllers have a weird -1 -> +1 range on their triggers
                             _mapping.limit_range = true;
                         }
                     }
