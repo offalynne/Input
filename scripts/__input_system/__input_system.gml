@@ -1,5 +1,5 @@
-#macro __INPUT_VERSION "3.0.0.pre004"
-#macro __INPUT_DATE    "2020-10-26"
+#macro __INPUT_VERSION "3.0.0.pre005"
+#macro __INPUT_DATE    "2020-01-05"
 #macro __INPUT_DEBUG   true
 
 enum INPUT_SOURCE

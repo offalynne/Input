@@ -1,7 +1,5 @@
 function input_async_system_event()
 {
-    __input_trace(json_encode(async_load));
-    
     var _any_changed = false;
     
     if (async_load[? "event_type"] == "gamepad discovered")
