@@ -337,7 +337,7 @@ function input_gamepad_get_description(_index)
                             }
                             
                             var _input_slot = floor(real(_entry_1));
-                            var _mapping = set_mapping(_gm, _input_slot, _raw_type);
+                            var _mapping = set_mapping(_gm, _input_slot, _raw_type, _entry_name);
                             
                             if (_invert) _mapping.invert = true;
                             if (_negative) _mapping.negative = true;

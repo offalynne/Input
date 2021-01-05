@@ -2,7 +2,7 @@ var _string = "";
 
 _string += "Gamepad " + string(test_index) + "/" + string(gamepad_get_device_count()) + ", \"" + string(gamepad_get_description(test_index)) + "\"\n";
 
-var _gamepad = input_player_gamepad_get(0);
+var _gamepad = test_index;
 var _i = 0;
 repeat(40)
 {

@@ -53,7 +53,8 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     /// @param raw
     /// @param rawType
-    set_mapping = function(_gm, _raw, _type)
+    /// @param SDLname
+    set_mapping = function(_gm, _raw, _type, _sdl_name)
     {
         if (!custom_mapping)
         {
@@ -89,6 +90,7 @@ function __input_class_gamepad(_index) constructor
             gm            : _gm,
             raw           : _raw,
             type          : _type,
+            sdl_name      : _sdl_name,
             
             invert        : false,
             negative      : false,
