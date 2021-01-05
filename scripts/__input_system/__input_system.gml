@@ -1,6 +1,7 @@
 #macro __INPUT_VERSION "3.0.0.pre005"
 #macro __INPUT_DATE    "2020-01-05"
 #macro __INPUT_DEBUG   true
+#macro __INPUT_SDL2_DATABASE_FILENAME  "gamecontrollerdb.txt" //Name of the SDL2 database to read gamepad remapping definitions from
 
 enum INPUT_SOURCE
 {
@@ -135,16 +136,13 @@ variable_struct_set(global.__input_sdl2_look_up_table, INPUT_SDL2_GP_SELECT_NAME
 //https://support.steampowered.com/kb_article.php?ref=5199-TOKV-4426
 //http://www.linux-usb.org/usb.ids
 
-if (INPUT_SDL2_DATABASE_FILENAME != "")
+if (file_exists(__INPUT_SDL2_DATABASE_FILENAME))
 {
-    if (file_exists(INPUT_SDL2_DATABASE_FILENAME))
-    {
-        __input_load_sdl2_database(INPUT_SDL2_DATABASE_FILENAME);
-    }
-    else
-    {
-        __input_trace("Warning! \"", INPUT_SDL2_DATABASE_FILENAME, "\" not found in Included Files");
-    }
+    __input_load_sdl2_database(__INPUT_SDL2_DATABASE_FILENAME);
+}
+else
+{
+    __input_trace("Warning! \"", __INPUT_SDL2_DATABASE_FILENAME, "\" not found in Included Files");
 }
 
 //Try to load an external SDL2 database if possible
