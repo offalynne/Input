@@ -11,3 +11,9 @@
 #macro INPUT_SDL2_DATABASE_FILENAME     "sdl2.txt" //Name of the SDL2 database to read gamepad remapping definitions from. Use an empty string to not load any definitions
 #macro INPUT_SDL2_GP_SELECT_NAME        "back"     //SDL2 binding name for gp_select (GameMaker's documentation says "guide" but most SDL2 definitions use "back")
 #macro INPUT_SDL2_ALLOW_EXTERNAL        true       //Whether to allow external SDL2 database loading. *You must turn OFF file system sandboxing for this to work.* The path is given by the environment variable %SDL_GAMECONTROLLERCONFIG%
+
+#region Forbidden Fruit
+
+#macro INPUT_EXTERNAL_DEBUG_LOG  true  //Do NOT set to <true> unless directed (!)
+
+#endregion

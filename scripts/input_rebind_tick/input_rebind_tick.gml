@@ -243,6 +243,7 @@ function input_rebind_tick()
                     
                     #endregion
                     
+                    if (__INPUT_DEBUG) __input_trace("Setting rebinding based on player input");
                     set_binding(source, rebind_verb, rebind_alternate, _new_binding);
                     __input_trace("Rebinding success: Player ", _player_index, " verb=", rebind_verb, " (alternate=", rebind_alternate, ") set to ", _new_binding);
                     

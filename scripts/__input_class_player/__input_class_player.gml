@@ -232,6 +232,12 @@ function __input_class_player() constructor
     /// @param bindingStruct
     set_binding = function(_source, _verb, _alternate, _binding_struct)
     {
+        if (__INPUT_DEBUG)
+        {
+            __input_trace("Setting binding, args=", _source, ", ", _verb, ", ", _alternate, ", ", _binding_struct);
+            __input_trace("callstack = ", debug_get_callstack());
+        }
+        
         if ((_source < 0) || (_source >= INPUT_SOURCE.__SIZE))
         {
             __input_error("Invalid source (", _source, ")");
@@ -253,22 +259,37 @@ function __input_class_player() constructor
         var _source_verb_struct = variable_struct_get(config, global.__input_source_names[_source]);
         if (!is_struct(_source_verb_struct))
         {
+            if (__INPUT_DEBUG) __input_trace("Source verb struct not found, creating a new one");
             _source_verb_struct = {};
             variable_struct_set(config, global.__input_source_names[_source], _source_verb_struct);
+        }
+        else
+        {
+            if (__INPUT_DEBUG) __input_trace("Source verb struct = ", _source_verb_struct);
         }
         
         var _verb_alternate_array = variable_struct_get(_source_verb_struct, _verb);
         if (!is_array(_verb_alternate_array))
         {
+            if (__INPUT_DEBUG) __input_trace("Verb alternate array not found, creating a new one");
             _verb_alternate_array = array_create(INPUT_MAX_ALTERNATE_BINDINGS, undefined);
             variable_struct_set(_source_verb_struct, _verb, _verb_alternate_array);
         }
+        else
+        {
+            if (__INPUT_DEBUG) __input_trace("Verb alternate array = ", _verb_alternate_array);
+        }
         
-        _verb_alternate_array[@ _alternate] = _binding_struct;
+        if (__INPUT_DEBUG) __input_trace("Verb alternate array length = ", array_length(_verb_alternate_array));
+        
+        //FIXME - Workaround for Stadia controller bug maybe? 2020-01-05
+        _verb_alternate_array[_alternate] = _binding_struct;
+        variable_struct_set(_source_verb_struct, _verb, _verb_alternate_array);
         
         //Set up a verb container on the player separate from the bindings
         if (!is_struct(variable_struct_get(verbs, _verb)))
         {
+            if (__INPUT_DEBUG) __input_trace("Verb not found on player, creating a new one");
             variable_struct_set(verbs, _verb, new __input_class_verb());
         }
         
