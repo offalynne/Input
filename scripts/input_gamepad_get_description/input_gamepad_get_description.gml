@@ -344,7 +344,7 @@ function input_gamepad_get_description(_index)
                             if (_positive) _mapping.positive = true;
                             if (_raw_type == "h") _mapping.hat_mask = floor(10*real(_entry_1)); //TODO - lol haxx
                             
-                            if (__INPUT_DEBUG) __input_trace(_entry_name, " = ", _entry);
+                            if (__INPUT_DEBUG) __input_trace(_entry_name, " = ", _raw_type, _entry_1);
                             
                             var _is_trigger_axis = (_raw_type == "a") && string_pos("trigger", _entry_name);
                             if (((os_type == os_macosx) && _is_trigger_axis) //MacOS triggers seem to always be from -1 -> +1
