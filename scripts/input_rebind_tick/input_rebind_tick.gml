@@ -179,7 +179,7 @@ function input_rebind_tick()
                             var _value    = input_gamepad_value(gamepad, _axis);
                             var _negative = (_value < 0);
                             
-                            if (abs(_value) > input_axis_threshold_get(_axis, _player_index).mini)
+                            if ((abs(_value) > input_axis_threshold_get(_axis, _player_index).mini) && (((_axis != gp_shoulderlb) && (_axis != gp_shoulderrb)) || !_negative))
                             {
                                 _new_binding = new __input_class_binding("gamepad axis", _axis_array[_i], _negative);
                             }
