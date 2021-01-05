@@ -95,6 +95,7 @@ function __input_class_gamepad(_index) constructor
             invert        : false,
             negative      : false,
             positive      : false,
+            reverse       : false,
             limit_range   : false,
             hat_mask      : undefined,
             
@@ -141,6 +142,7 @@ function __input_class_gamepad(_index) constructor
                 if (negative) value = clamp(value, -1, 0);
                 if (positive) value = clamp(value,  0, 1);
                 if (invert) value = 1 - value;
+                if (reverse) value = -value;
                 
                 held = (abs(value) > 0.2);
                 

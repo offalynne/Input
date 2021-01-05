@@ -234,6 +234,37 @@ function input_gamepad_get_description(_index)
             else if (xinput)
             {
                 description = "XInput";
+                
+                if (os_type == os_windows)
+                {
+                    set_mapping(gp_padu, 0, "b", "dpup");
+                    set_mapping(gp_padd, 1, "b", "dpdown");
+                    set_mapping(gp_padl, 2, "b", "dpleft");
+                    set_mapping(gp_padr, 3, "b", "dpright");
+                    set_mapping(gp_select, 4, "b", "back");
+                    set_mapping(gp_start,  5, "b", "start");
+                    
+                    set_mapping(gp_stickl, 6, "b", "leftstick");
+                    set_mapping(gp_stickr, 7, "b", "rightstick");
+                    set_mapping(gp_shoulderl, 8, "b", "leftshoulder");
+                    set_mapping(gp_shoulderr, 9, "b", "rightshoulder");
+                    
+                    set_mapping(gp_face1, 12, "b", "a");
+                    set_mapping(gp_face2, 13, "b", "b");
+                    set_mapping(gp_face3, 14, "b", "x");
+                    set_mapping(gp_face4, 15, "b", "y");
+                    
+                    set_mapping(gp_axislh, 0, "a", "leftx");
+                    set_mapping(gp_axislv, 1, "a", "lefty").reverse = true;
+                    set_mapping(gp_axisrh, 2, "a", "rightx");
+                    set_mapping(gp_axisrv, 3, "a", "righty").reverse = true;
+                    
+                    set_mapping(gp_shoulderlb, 4106, "a", "lefttrigger");
+                    set_mapping(gp_shoulderrb, 4107, "a", "righttrigger");
+                }
+                
+                // a:b12,b:b13,x:b14,y:b15,back:b5,start:b4,leftshoulder:b8,rightshoulder:b9,lefttrigger:b10,righttrigger:b11,dpup:b0,dpdown:b1,dpleft:b2,dpright:b3,leftx:a0,lefty:a1~,rightx:a2,righty:a3~,leftstick:b6,rightstick:b7
+                
                 return description;
             }
             else if ((os_type == os_macosx) && ((gamepad_get_mapping(index) == "") || (gamepad_get_mapping(index) == "no mapping")))
