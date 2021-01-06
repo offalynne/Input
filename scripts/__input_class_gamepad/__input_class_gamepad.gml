@@ -51,6 +51,26 @@ function __input_class_gamepad(_index) constructor
     }
     
     /// @param GMconstant
+    is_axis = function(_gm)
+    {
+        if (!custom_mapping)
+        {
+            if ((_gm == gp_shoulderlb) || (_gm == gp_shoulderrb))
+            {
+                //If this is an XInput controller, the triggers are *usually* analogue
+                return xinput;
+            }
+            
+            //Otherwise return true only for the thumbsticks
+            return ((_gm == gp_axislh) || (_gm == gp_axislv) || (_gm == gp_axisrh) || (_gm == gp_axisrv));
+        }
+        
+        var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
+        if (_mapping == undefined) return false;
+        return (_mapping.type == "a");
+    }
+    
+    /// @param GMconstant
     /// @param raw
     /// @param rawType
     /// @param SDLname
