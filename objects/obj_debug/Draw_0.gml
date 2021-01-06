@@ -37,6 +37,29 @@ _string += "a4107 = " + string(gamepad_axis_value(_gamepad, 4107)) + "\n";
 
 draw_text(10, 10, _string);
 
+var _string = "";
+_string += "gp_face1      = " + string(input_gamepad_value(_gamepad, gp_face1     )) + "\n";
+_string += "gp_face2      = " + string(input_gamepad_value(_gamepad, gp_face2     )) + "\n";
+_string += "gp_face3      = " + string(input_gamepad_value(_gamepad, gp_face3     )) + "\n";
+_string += "gp_face4      = " + string(input_gamepad_value(_gamepad, gp_face4     )) + "\n";
+_string += "gp_padu       = " + string(input_gamepad_value(_gamepad, gp_padu      )) + "\n";
+_string += "gp_padd       = " + string(input_gamepad_value(_gamepad, gp_padd      )) + "\n";
+_string += "gp_padl       = " + string(input_gamepad_value(_gamepad, gp_padl      )) + "\n";
+_string += "gp_padr       = " + string(input_gamepad_value(_gamepad, gp_padr      )) + "\n";
+_string += "gp_axislh     = " + string(input_gamepad_value(_gamepad, gp_axislh    )) + "\n";
+_string += "gp_axislv     = " + string(input_gamepad_value(_gamepad, gp_axislv    )) + "\n";
+_string += "gp_axisrh     = " + string(input_gamepad_value(_gamepad, gp_axisrh    )) + "\n";
+_string += "gp_axisrv     = " + string(input_gamepad_value(_gamepad, gp_axisrv    )) + "\n";
+_string += "gp_stickl     = " + string(input_gamepad_value(_gamepad, gp_stickl    )) + "\n";
+_string += "gp_stickr     = " + string(input_gamepad_value(_gamepad, gp_stickr    )) + "\n";
+_string += "gp_shoulderl  = " + string(input_gamepad_value(_gamepad, gp_shoulderl )) + "\n";
+_string += "gp_shoulderlb = " + string(input_gamepad_value(_gamepad, gp_shoulderlb)) + "\n";
+_string += "gp_shoulderr  = " + string(input_gamepad_value(_gamepad, gp_shoulderr )) + "\n";
+_string += "gp_shoulderrb = " + string(input_gamepad_value(_gamepad, gp_shoulderrb)) + "\n";
+_string += "gp_select     = " + string(input_gamepad_value(_gamepad, gp_select    )) + "\n";
+_string += "gp_start      = " + string(input_gamepad_value(_gamepad, gp_start     )) + "\n";
+
+draw_text(270, 30, _string);
 
 
 
@@ -75,3 +98,5 @@ repeat(INPUT_MAX_PLAYERS)
     
     ++_i;
 }
+
+draw_text(500, 740, current_time);
