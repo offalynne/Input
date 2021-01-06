@@ -237,12 +237,12 @@ function input_gamepad_get_description(_index)
                 
                 if (os_type == os_windows)
                 {
-                    set_mapping(gp_padu, 0, "b", "dpup");
-                    set_mapping(gp_padd, 1, "b", "dpdown");
-                    set_mapping(gp_padl, 2, "b", "dpleft");
-                    set_mapping(gp_padr, 3, "b", "dpright");
-                    set_mapping(gp_select, 4, "b", "back");
-                    set_mapping(gp_start,  5, "b", "start");
+                    set_mapping(gp_padu,   0, "b", "dpup");
+                    set_mapping(gp_padd,   1, "b", "dpdown");
+                    set_mapping(gp_padl,   2, "b", "dpleft");
+                    set_mapping(gp_padr,   3, "b", "dpright");
+                    set_mapping(gp_start,  4, "b", "start");
+                    set_mapping(gp_select, 5, "b", "back");
                     
                     set_mapping(gp_stickl, 6, "b", "leftstick");
                     set_mapping(gp_stickr, 7, "b", "rightstick");
@@ -262,8 +262,6 @@ function input_gamepad_get_description(_index)
                     set_mapping(gp_shoulderlb, 4106, "a", "lefttrigger");
                     set_mapping(gp_shoulderrb, 4107, "a", "righttrigger");
                 }
-                
-                // a:b12,b:b13,x:b14,y:b15,back:b5,start:b4,leftshoulder:b8,rightshoulder:b9,lefttrigger:b10,righttrigger:b11,dpup:b0,dpdown:b1,dpleft:b2,dpright:b3,leftx:a0,lefty:a1~,rightx:a2,righty:a3~,leftstick:b6,rightstick:b7
                 
                 return description;
             }
