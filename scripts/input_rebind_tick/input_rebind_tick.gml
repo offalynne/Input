@@ -153,35 +153,30 @@ function input_rebind_tick()
                     break;
                     
                     case INPUT_SOURCE.GAMEPAD:
-                        var _button_array = [gp_face1, gp_face2, gp_face3, gp_face4, 
-                                             gp_padu, gp_padd, gp_padl, gp_padr, 
-                                             gp_shoulderl, gp_shoulderr, gp_shoulderlb, gp_shoulderrb,
-                                             gp_start, gp_select, gp_stickl, gp_stickr];
-                        
-                        var _axis_array = [gp_axislh, gp_axislv, gp_axisrh, gp_axisrv,
-                                           gp_shoulderlb, gp_shoulderrb];
+                        var _check_array = [gp_face1, gp_face2, gp_face3, gp_face4, 
+                                            gp_padu, gp_padd, gp_padl, gp_padr, 
+                                            gp_shoulderl, gp_shoulderr, gp_shoulderlb, gp_shoulderrb,
+                                            gp_start, gp_select, gp_stickl, gp_stickr,
+                                            gp_axislh, gp_axislv, gp_axisrh, gp_axisrv];
                         
                         var _i = 0;
-                        repeat(array_length(_button_array))
+                        repeat(array_length(_check_array))
                         {
-                            if (input_gamepad_check(gamepad, _button_array[_i]))
+                            var _check = _check_array[_i];
+                            if (input_gamepad_is_axis(gamepad, _check))
                             {
-                                _new_binding = new __input_class_binding("gamepad button", _button_array[_i]);
+                                var _value = input_gamepad_value(gamepad, _check);
+                                if (abs(_value) > input_axis_threshold_get(_check, _player_index).mini)
+                                {
+                                    _new_binding = new __input_class_binding("gamepad axis", _check, (_value < 0));
+                                }
                             }
-                            
-                            ++_i;
-                        }
-                        
-                        var _i = 0;
-                        repeat(array_length(_axis_array))
-                        {
-                            var _axis     = _axis_array[_i];
-                            var _value    = input_gamepad_value(gamepad, _axis);
-                            var _negative = (_value < 0);
-                            
-                            if ((abs(_value) > input_axis_threshold_get(_axis, _player_index).mini) && (((_axis != gp_shoulderlb) && (_axis != gp_shoulderrb)) || !_negative))
+                            else
                             {
-                                _new_binding = new __input_class_binding("gamepad axis", _axis_array[_i], _negative);
+                                if (input_gamepad_check(gamepad, _check))
+                                {
+                                    _new_binding = new __input_class_binding("gamepad button", _check);
+                                }
                             }
                             
                             ++_i;
