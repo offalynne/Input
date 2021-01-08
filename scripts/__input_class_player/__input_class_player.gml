@@ -64,15 +64,7 @@ function __input_class_player() constructor
         var _v = 0;
         repeat(array_length(_verb_names))
         {
-            with(variable_struct_get(verbs, _verb_names[_v]))
-            {
-                previous_held = held;
-                
-                held  = false;
-                value = 0.0;
-                raw   = 0.0;
-            }
-            
+            with(variable_struct_get(verbs, _verb_names[_v])) clear();
             ++_v;
         }
         
