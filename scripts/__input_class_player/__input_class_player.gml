@@ -21,7 +21,7 @@ function __input_class_player() constructor
     /// @param axis
     /// @param min
     /// @param max
-    axis_threshold_set = function(_axis, _min, _max)
+    static axis_threshold_set = function(_axis, _min, _max)
     {
         var _axis_struct = variable_struct_get(config.axis_thresholds, _axis);
         if (!is_struct(_axis_struct))
@@ -36,75 +36,40 @@ function __input_class_player() constructor
     }
     
     /// @param axis
-    axis_threshold_get = function(_axis)
+    static axis_threshold_get = function(_axis)
     {
         var _struct = variable_struct_get(config.axis_thresholds, _axis);
         if (is_struct(_struct)) return _struct;
         return axis_threshold_set(_axis, INPUT_DEFAULT_MIN_THRESHOLD, INPUT_DEFAULT_MAX_THRESHOLD);
     }
     
-    tick = function()
+    /// @param verb
+    /// @param value
+    static set_verb = function(_verb_name, _value)
+    {
+        with(variable_struct_get(verbs, _verb_name))
+        {
+            value = _value;
+            tick();
+        }
+    }
+    
+    static tick = function()
     {
         if (!rebind_this_frame && (rebind_state < 0)) rebind_state = 0;
         rebind_this_frame = false;
         
+        //Clear the momentary state for all verbs
         var _verb_names = variable_struct_get_names(verbs);
         var _v = 0;
         repeat(array_length(_verb_names))
         {
-            with(variable_struct_get(verbs, _verb_names[_v]))
-            {
-                previous_held = held;
-                
-                held  = false;
-                value = 0.0;
-                raw   = 0.0;
-            }
-            
+            with(variable_struct_get(verbs, _verb_names[_v])) clear();
             ++_v;
         }
         
         tick_source(global.__input_source_names[source]);
-        
-        var _verb_names = variable_struct_get_names(verbs);
-        var _v = 0;
-        repeat(array_length(_verb_names))
-        {
-            with(variable_struct_get(verbs, _verb_names[_v]))
-            {
-                if (value > 0)
-                {
-                    held      = true;
-                    held_time = INPUT_BUFFERED_REALTIME? current_time : global.__input_frame;
-                    
-                    other.last_input_time = current_time;
-                }
-                
-                if (previous_held == held)
-                {
-                    press   = false;
-                    release = false;
-                }
-                else
-                {
-                    if (held)
-                    {
-                        consumed   = false;
-                        press      = true;
-                        release    = false;
-                        press_time = INPUT_BUFFERED_REALTIME? current_time : global.__input_frame;
-                    }
-                    else
-                    {
-                        press        = false;
-                        release      = true;
-                        release_time = INPUT_BUFFERED_REALTIME? current_time : global.__input_frame;
-                    }
-                }
-            }
-            
-            ++_v;
-        }
+        tick_verbs();
         
         with(cursor)
         {
@@ -113,7 +78,18 @@ function __input_class_player() constructor
         }
     }
     
-    tick_source = function(_source)
+    static tick_verbs = function()
+    {
+        var _verb_names = variable_struct_get_names(verbs);
+        var _v = 0;
+        repeat(array_length(_verb_names))
+        {
+            with(variable_struct_get(verbs, _verb_names[_v])) tick();
+            ++_v;
+        }
+    }
+    
+    static tick_source = function(_source)
     {
         var _source_verb_struct = variable_struct_get(config, _source);
         if (is_struct(_source_verb_struct))
@@ -230,8 +206,14 @@ function __input_class_player() constructor
     /// @param verb
     /// @param alternate
     /// @param bindingStruct
-    set_binding = function(_source, _verb, _alternate, _binding_struct)
+    static set_binding = function(_source, _verb, _alternate, _binding_struct)
     {
+        if (__INPUT_DEBUG)
+        {
+            __input_trace("Setting binding, args=", _source, ", ", _verb, ", ", _alternate, ", ", _binding_struct);
+            __input_trace("callstack = ", debug_get_callstack());
+        }
+        
         if ((_source < 0) || (_source >= INPUT_SOURCE.__SIZE))
         {
             __input_error("Invalid source (", _source, ")");
@@ -253,29 +235,44 @@ function __input_class_player() constructor
         var _source_verb_struct = variable_struct_get(config, global.__input_source_names[_source]);
         if (!is_struct(_source_verb_struct))
         {
+            if (__INPUT_DEBUG) __input_trace("Source verb struct not found, creating a new one");
             _source_verb_struct = {};
             variable_struct_set(config, global.__input_source_names[_source], _source_verb_struct);
+        }
+        else
+        {
+            if (__INPUT_DEBUG) __input_trace("Source verb struct = ", _source_verb_struct);
         }
         
         var _verb_alternate_array = variable_struct_get(_source_verb_struct, _verb);
         if (!is_array(_verb_alternate_array))
         {
+            if (__INPUT_DEBUG) __input_trace("Verb alternate array not found, creating a new one");
             _verb_alternate_array = array_create(INPUT_MAX_ALTERNATE_BINDINGS, undefined);
             variable_struct_set(_source_verb_struct, _verb, _verb_alternate_array);
         }
+        else
+        {
+            if (__INPUT_DEBUG) __input_trace("Verb alternate array = ", _verb_alternate_array);
+        }
         
-        _verb_alternate_array[@ _alternate] = _binding_struct;
+        if (__INPUT_DEBUG) __input_trace("Verb alternate array length = ", array_length(_verb_alternate_array));
+        
+        //FIXME - Workaround for Stadia controller bug maybe? 2020-01-05
+        _verb_alternate_array[_alternate] = _binding_struct;
+        variable_struct_set(_source_verb_struct, _verb, _verb_alternate_array);
         
         //Set up a verb container on the player separate from the bindings
         if (!is_struct(variable_struct_get(verbs, _verb)))
         {
+            if (__INPUT_DEBUG) __input_trace("Verb not found on player, creating a new one");
             variable_struct_set(verbs, _verb, new __input_class_verb());
         }
         
         return _binding_struct;
     }
     
-    any_input = function()
+    static any_input = function()
     {
         switch(source)
         {
@@ -306,10 +303,10 @@ function __input_class_player() constructor
                     ||  input_gamepad_check(gamepad, gp_select)
                     ||  input_gamepad_check(gamepad, gp_stickl)
                     ||  input_gamepad_check(gamepad, gp_stickr)
-                    ||  (abs(input_gamepad_value(gamepad, gp_axislh)) > axis_threshold_get(gp_axislh))
-                    ||  (abs(input_gamepad_value(gamepad, gp_axislv)) > axis_threshold_get(gp_axislv))
-                    ||  (abs(input_gamepad_value(gamepad, gp_axisrh)) > axis_threshold_get(gp_axisrh))
-                    ||  (abs(input_gamepad_value(gamepad, gp_axisrv)) > axis_threshold_get(gp_axisrv)));
+                    ||  (abs(input_gamepad_value(gamepad, gp_axislh)) > axis_threshold_get(gp_axislh).mini)
+                    ||  (abs(input_gamepad_value(gamepad, gp_axislv)) > axis_threshold_get(gp_axislv).mini)
+                    ||  (abs(input_gamepad_value(gamepad, gp_axisrh)) > axis_threshold_get(gp_axisrh).mini)
+                    ||  (abs(input_gamepad_value(gamepad, gp_axisrv)) > axis_threshold_get(gp_axisrv).mini));
             break;
         }
         

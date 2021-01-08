@@ -18,13 +18,6 @@ function input_is_analogue()
         return undefined;
     }
     
-    var _verb_struct = variable_struct_get(global.__input_players[_player_index].verbs, _verb);
-    if (!is_struct(_verb_struct))
-    {
-        __input_error("Verb not recognised (", _verb, ")");
-        return undefined;
-    }
-    
     if (is_array(_verb))
     {
         var _i = 0;
@@ -35,6 +28,13 @@ function input_is_analogue()
         }
         
         return false;
+    }
+    
+    var _verb_struct = variable_struct_get(global.__input_players[_player_index].verbs, _verb);
+    if (!is_struct(_verb_struct))
+    {
+        __input_error("Verb not recognised (", _verb, ")");
+        return undefined;
     }
     
     return _verb_struct.analogue;

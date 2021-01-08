@@ -51,9 +51,30 @@ function __input_class_gamepad(_index) constructor
     }
     
     /// @param GMconstant
+    is_axis = function(_gm)
+    {
+        if (!custom_mapping)
+        {
+            if ((_gm == gp_shoulderlb) || (_gm == gp_shoulderrb))
+            {
+                //If this is an XInput controller, the triggers are *usually* analogue
+                return xinput;
+            }
+            
+            //Otherwise return true only for the thumbsticks
+            return ((_gm == gp_axislh) || (_gm == gp_axislv) || (_gm == gp_axisrh) || (_gm == gp_axisrv));
+        }
+        
+        var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
+        if (_mapping == undefined) return false;
+        return (_mapping.type == "a");
+    }
+    
+    /// @param GMconstant
     /// @param raw
     /// @param rawType
-    set_mapping = function(_gm, _raw, _type)
+    /// @param SDLname
+    set_mapping = function(_gm, _raw, _type, _sdl_name)
     {
         if (!custom_mapping)
         {
@@ -78,14 +99,23 @@ function __input_class_gamepad(_index) constructor
             custom_mapping = true;
         }
         
+        //Correct for weird input index offset on MacOS
+        if (os_type == os_macosx)
+        {
+            if (_type == "a") _raw +=  6;
+            if (_type == "b") _raw += 17;
+        }
+        
         var _mapping = {
             gm            : _gm,
             raw           : _raw,
             type          : _type,
+            sdl_name      : _sdl_name,
             
             invert        : false,
             negative      : false,
             positive      : false,
+            reverse       : false,
             limit_range   : false,
             hat_mask      : undefined,
             
@@ -132,6 +162,7 @@ function __input_class_gamepad(_index) constructor
                 if (negative) value = clamp(value, -1, 0);
                 if (positive) value = clamp(value,  0, 1);
                 if (invert) value = 1 - value;
+                if (reverse) value = -value;
                 
                 held = (abs(value) > 0.2);
                 

@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Checkers",
-    "path": "folders/Input/Checkers.yy",
+    "name": "Gamepads (Direct)",
+    "path": "folders/Input/Gamepads (Direct).yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_check_press",
+  "name": "input_gamepad_is_axis",
   "tags": [],
   "resourceType": "GMScript",
 }

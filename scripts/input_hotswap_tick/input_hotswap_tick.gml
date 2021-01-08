@@ -38,11 +38,13 @@ function __input_hotswap_tick_input(_player_index)
 {
     if (global.__input_keyboard_valid && __input_source_is_available(INPUT_SOURCE.KEYBOARD_AND_MOUSE) && keyboard_check(vk_anykey))
     {
+        if (__INPUT_DEBUG) __input_trace("Hotswapping player ", _player_index, " to keyboard+mouse (via keyboard input)");
         return { source : INPUT_SOURCE.KEYBOARD_AND_MOUSE, gamepad : undefined };
     }
     else if (global.__input_mouse_valid && __input_source_is_available(INPUT_SOURCE.KEYBOARD_AND_MOUSE)
             && ((INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && global.__input_mouse_moved) || mouse_check_button(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
     {
+        if (__INPUT_DEBUG) __input_trace("Hotswapping player ", _player_index, " to keyboard+mouse (via mouse input)");
         return { source : INPUT_SOURCE.KEYBOARD_AND_MOUSE, gamepad : undefined };
     }
     else if (global.__input_gamepad_valid)
@@ -73,6 +75,7 @@ function __input_hotswap_tick_input(_player_index)
                 ||  (INPUT_HOTSWAP_ON_GAMEPAD_AXIS && (abs(input_gamepad_value(_g, gp_axisrh)) > input_axis_threshold_get(gp_axisrh, _player_index).mini))
                 ||  (INPUT_HOTSWAP_ON_GAMEPAD_AXIS && (abs(input_gamepad_value(_g, gp_axisrv)) > input_axis_threshold_get(gp_axisrv, _player_index).mini)))
                 {
+                    if (__INPUT_DEBUG) __input_trace("Hotswapping player ", _player_index, " to gamepad ", _g);
                     return { source : INPUT_SOURCE.GAMEPAD, gamepad : _g };
                 }
             }

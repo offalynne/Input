@@ -2,7 +2,7 @@
 /// @param [playerIndex]
 /// @param [bufferDuration]
 
-function input_check_release()
+function input_check_double()
 {
     var _verb            = argument[0];
     var _player_index    = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
@@ -25,7 +25,7 @@ function input_check_release()
         var _i = 0;
         repeat(array_length(_verb))
         {
-            if (input_check_release(_verb[_i], _player_index, _buffer_duration)) return true;
+            if (input_check(_verb[_i], _player_index, _buffer_duration)) return true;
             ++_i;
         }
         
@@ -43,22 +43,10 @@ function input_check_release()
     
     if (_buffer_duration <= 0)
     {
-        return _verb_struct.release;
+        return _verb_struct.double_held;
     }
     else
     {
-        return ((INPUT_BUFFERED_REALTIME? current_time : global.__input_frame) - _verb_struct.release_time) <= _buffer_duration;
+        return ((INPUT_BUFFERED_REALTIME? current_time : global.__input_frame) - _verb_struct.double_held_time) <= _buffer_duration;
     }
-}
-
-/// @param verb
-/// @param [playerIndex]
-/// @param [bufferDuration]
-function input_check_r()
-{
-    var _verb            = argument[0];
-    var _player_index    = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
-    var _buffer_duration = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : 0;
-    
-    return input_check_press(_verb, _player_index, _buffer_duration);
 }
