@@ -21,7 +21,7 @@ function __input_class_player() constructor
     /// @param axis
     /// @param min
     /// @param max
-    axis_threshold_set = function(_axis, _min, _max)
+    static axis_threshold_set = function(_axis, _min, _max)
     {
         var _axis_struct = variable_struct_get(config.axis_thresholds, _axis);
         if (!is_struct(_axis_struct))
@@ -36,18 +36,30 @@ function __input_class_player() constructor
     }
     
     /// @param axis
-    axis_threshold_get = function(_axis)
+    static axis_threshold_get = function(_axis)
     {
         var _struct = variable_struct_get(config.axis_thresholds, _axis);
         if (is_struct(_struct)) return _struct;
         return axis_threshold_set(_axis, INPUT_DEFAULT_MIN_THRESHOLD, INPUT_DEFAULT_MAX_THRESHOLD);
     }
     
-    tick = function()
+    /// @param verb
+    /// @param value
+    static set_verb = function(_verb_name, _value)
+    {
+        with(variable_struct_get(verbs, _verb_name))
+        {
+            value = _value;
+            tick();
+        }
+    }
+    
+    static tick = function()
     {
         if (!rebind_this_frame && (rebind_state < 0)) rebind_state = 0;
         rebind_this_frame = false;
         
+        //Clear the momentary state for all verbs
         var _verb_names = variable_struct_get_names(verbs);
         var _v = 0;
         repeat(array_length(_verb_names))
@@ -65,46 +77,7 @@ function __input_class_player() constructor
         }
         
         tick_source(global.__input_source_names[source]);
-        
-        var _verb_names = variable_struct_get_names(verbs);
-        var _v = 0;
-        repeat(array_length(_verb_names))
-        {
-            with(variable_struct_get(verbs, _verb_names[_v]))
-            {
-                if (value > 0)
-                {
-                    held      = true;
-                    held_time = INPUT_BUFFERED_REALTIME? current_time : global.__input_frame;
-                    
-                    other.last_input_time = current_time;
-                }
-                
-                if (previous_held == held)
-                {
-                    press   = false;
-                    release = false;
-                }
-                else
-                {
-                    if (held)
-                    {
-                        consumed   = false;
-                        press      = true;
-                        release    = false;
-                        press_time = INPUT_BUFFERED_REALTIME? current_time : global.__input_frame;
-                    }
-                    else
-                    {
-                        press        = false;
-                        release      = true;
-                        release_time = INPUT_BUFFERED_REALTIME? current_time : global.__input_frame;
-                    }
-                }
-            }
-            
-            ++_v;
-        }
+        tick_verbs();
         
         with(cursor)
         {
@@ -113,7 +86,18 @@ function __input_class_player() constructor
         }
     }
     
-    tick_source = function(_source)
+    static tick_verbs = function()
+    {
+        var _verb_names = variable_struct_get_names(verbs);
+        var _v = 0;
+        repeat(array_length(_verb_names))
+        {
+            with(variable_struct_get(verbs, _verb_names[_v])) tick();
+            ++_v;
+        }
+    }
+    
+    static tick_source = function(_source)
     {
         var _source_verb_struct = variable_struct_get(config, _source);
         if (is_struct(_source_verb_struct))
@@ -230,7 +214,7 @@ function __input_class_player() constructor
     /// @param verb
     /// @param alternate
     /// @param bindingStruct
-    set_binding = function(_source, _verb, _alternate, _binding_struct)
+    static set_binding = function(_source, _verb, _alternate, _binding_struct)
     {
         if (__INPUT_DEBUG)
         {
@@ -296,7 +280,7 @@ function __input_class_player() constructor
         return _binding_struct;
     }
     
-    any_input = function()
+    static any_input = function()
     {
         switch(source)
         {

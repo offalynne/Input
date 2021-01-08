@@ -20,4 +20,37 @@ function __input_class_verb() constructor
     
     analogue = false;
     raw_analogue = false;
+    
+    static tick = function()
+    {
+        if (value > 0)
+        {
+            held      = true;
+            held_time = INPUT_BUFFERED_REALTIME? current_time : global.__input_frame;
+                
+            other.last_input_time = current_time;
+        }
+        
+        if (previous_held == held)
+        {
+            press   = false;
+            release = false;
+        }
+        else
+        {
+            if (held)
+            {
+                consumed   = false;
+                press      = true;
+                release    = false;
+                press_time = INPUT_BUFFERED_REALTIME? current_time : global.__input_frame;
+            }
+            else
+            {
+                press        = false;
+                release      = true;
+                release_time = INPUT_BUFFERED_REALTIME? current_time : global.__input_frame;
+            }
+        }
+    }
 }
