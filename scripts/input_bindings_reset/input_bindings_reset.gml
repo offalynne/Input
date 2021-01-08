@@ -18,6 +18,18 @@ function input_bindings_reset()
         return undefined;
     }
     
+    if (((_source < 0) || (_source >= INPUT_SOURCE.__SIZE)) && (_source != all))
+    {
+        __input_error("Source (", _source, ") not recognised\nPlease use the INPUT_SOURCE enum");
+        return undefined;
+    }
+    
+    if (_source == INPUT_SOURCE.NONE)
+    {
+        __input_trace("Warning! Cannot reset bindings for INPUT_SOURCE.NONE");
+        return undefined;
+    }
+    
     if (_player_index == all)
     {
         var _i = 0;
@@ -35,18 +47,18 @@ function input_bindings_reset()
         var _i = 0;
         repeat(INPUT_SOURCE.__SIZE)
         {
-            input_bindings_reset(_i, _player_index);
+            if (_i != INPUT_SOURCE.NONE) input_bindings_reset(_i, _player_index);
             ++_i;
         }
         
         return undefined;
     }
     
-    __input_trace("Resetting bindings for player=", _player_index, ", source=", _source);
+    __input_trace("Resetting ", input_source_get_name(_source), " bindings for player ", _player_index);
     
     with(global.__input_players[_player_index])
     {
-        config = {};
+        config[$ _source] = {};
         
         var _source_verb_struct = variable_struct_get(global.__input_default_player.config, global.__input_source_names[_source]);
         if (is_struct(_source_verb_struct))
