@@ -10,6 +10,9 @@ function input_default_key()
     
     if (__INPUT_DEBUG) __input_trace("Setting default keyboard binding...");
     
+    //Fix uses of straight strings instead of ord("A") etc.
+    if (is_string(_key)) _key = ord(string_upper(_key));
+    
     global.__input_keyboard_valid = true;
     
     global.__input_default_player.set_binding(INPUT_SOURCE.KEYBOARD_AND_MOUSE, _verb, _alternate,
