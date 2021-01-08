@@ -1,7 +1,7 @@
 input_tick();
 input_hotswap_tick();
 
-if (keyboard_check_pressed(vk_enter)) rebinding = true;
+if (keyboard_check_pressed(vk_enter) || input_gamepad_check_pressed(0, gp_start)) rebinding = true;
 
 if (keyboard_check_pressed(ord("S")))
 {

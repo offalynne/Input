@@ -21,7 +21,6 @@
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_test_save_load_reset","path":"objects/obj_test_save_load_reset/obj_test_save_load_reset.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"parent":{"name":"obj_test_save_load_reset","path":"objects/obj_test_save_load_reset/obj_test_save_load_reset.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"parent":{"name":"obj_test_save_load_reset","path":"objects/obj_test_save_load_reset/obj_test_save_load_reset.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":75,"eventType":7,"collisionObjectId":null,"parent":{"name":"obj_test_save_load_reset","path":"objects/obj_test_save_load_reset/obj_test_save_load_reset.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
