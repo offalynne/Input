@@ -13,6 +13,6 @@
 
 #region Forbidden Fruit
 
-#macro INPUT_EXTERNAL_DEBUG_LOG  true  //Do NOT set to <true> unless directed (!)
+#macro INPUT_EXTERNAL_DEBUG_LOG  false  //Do NOT set to <true> unless directed (!)
 
 #endregion
