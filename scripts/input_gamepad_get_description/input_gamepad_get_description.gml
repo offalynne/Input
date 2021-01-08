@@ -259,6 +259,7 @@ function input_gamepad_get_description(_index)
                     set_mapping(gp_axisrh, 2, "a", "rightx");
                     set_mapping(gp_axisrv, 3, "a", "righty").reverse = true;
                     
+                    //This bit is weird but it enables analogue input from triggers so...
                     set_mapping(gp_shoulderlb, 4106, "a", "lefttrigger");
                     set_mapping(gp_shoulderrb, 4107, "a", "righttrigger");
                 }
