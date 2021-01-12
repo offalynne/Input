@@ -134,7 +134,7 @@ function __input_class_player() constructor
                             break;
                             
                             case "mouse button":
-                                if (mouse_check_button(_binding.value))
+                                if (device_mouse_check_button(0, _binding.value))
                                 {
                                     _value        = 1.0;
                                     _raw          = 1.0;
@@ -307,7 +307,7 @@ function __input_class_player() constructor
             break;
             
             case INPUT_SOURCE.KEYBOARD_AND_MOUSE:
-                return (keyboard_check(vk_anykey) || global.__input_mouse_moved || mouse_check_button(mb_any) || mouse_wheel_up() || mouse_wheel_down());
+                return (keyboard_check(vk_anykey) || global.__input_mouse_moved || device_mouse_check_button(0, mb_any) || mouse_wheel_up() || mouse_wheel_down());
             break;
             
             case INPUT_SOURCE.GAMEPAD:

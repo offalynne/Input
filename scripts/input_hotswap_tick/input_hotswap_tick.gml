@@ -42,7 +42,7 @@ function __input_hotswap_tick_input(_player_index)
         return { source : INPUT_SOURCE.KEYBOARD_AND_MOUSE, gamepad : undefined };
     }
     else if (global.__input_mouse_valid && __input_source_is_available(INPUT_SOURCE.KEYBOARD_AND_MOUSE)
-            && ((INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && global.__input_mouse_moved) || mouse_check_button(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
+            && ((INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && global.__input_mouse_moved) || device_mouse_check_button(0, mb_any) || mouse_wheel_up() || mouse_wheel_down()))
     {
         if (__INPUT_DEBUG) __input_trace("Hotswapping player ", _player_index, " to keyboard+mouse (via mouse input)");
         return { source : INPUT_SOURCE.KEYBOARD_AND_MOUSE, gamepad : undefined };

@@ -4,9 +4,9 @@ function input_tick()
     
     global.__input_frame++;
     
-    global.__input_mouse_moved = (point_distance(display_mouse_get_x(), display_mouse_get_y(), global.__input_mouse_x, global.__input_mouse_y) > INPUT_MOUSE_MOVE_DEADZONE);
-    global.__input_mouse_x = display_mouse_get_x();
-    global.__input_mouse_y = display_mouse_get_y();
+    global.__input_mouse_moved = (point_distance(device_mouse_x(0), device_mouse_y(0), global.__input_mouse_x, global.__input_mouse_y) > INPUT_MOUSE_MOVE_DEADZONE);
+    global.__input_mouse_x = device_mouse_x(0);
+    global.__input_mouse_y = device_mouse_y(0);
     
     var _g = 0;
     repeat(array_length(global.__input_gamepads))

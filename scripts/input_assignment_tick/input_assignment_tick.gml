@@ -115,7 +115,7 @@ function __input_assignment_tick_input(_player_index)
         return { source : INPUT_SOURCE.KEYBOARD_AND_MOUSE, gamepad : undefined };
     }
     else if (global.__input_mouse_valid && __input_source_is_available(INPUT_SOURCE.KEYBOARD_AND_MOUSE)
-            && (mouse_check_button_pressed(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
+         &&  (device_mouse_check_button_pressed(0, mb_any) || mouse_wheel_up() || mouse_wheel_down()))
     {
         return { source : INPUT_SOURCE.KEYBOARD_AND_MOUSE, gamepad : undefined };
     }
