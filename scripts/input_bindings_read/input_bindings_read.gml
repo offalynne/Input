@@ -1,5 +1,7 @@
 /// @param string
 /// @param [playerIndex]
+/// 
+/// FIXME - Unfucks a bug in GM where json_parse() doesn't work properly (20201-01-12)
 
 function input_bindings_read()
 {
@@ -25,12 +27,17 @@ function input_bindings_read()
         var _i = 0;
         repeat(INPUT_MAX_PLAYERS)
         {
-            global.__input_players[_i].config = _config[_i];
+            var _config_struct = _config[_i];
+            __input_fix_config_struct(_config_struct);
+            
+            global.__input_players[_i].config = _config_struct;
             ++_i;
         }
     }
     else
     {
+        __input_fix_config_struct(_config);
+        
         global.__input_players[_player_index].config = _config;
     }
 }

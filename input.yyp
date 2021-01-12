@@ -32,6 +32,7 @@
     {"id":{"name":"input_tick","path":"scripts/input_tick/input_tick.yy",},"order":1,},
     {"id":{"name":"obj_test_cursor","path":"objects/obj_test_cursor/obj_test_cursor.yy",},"order":3,},
     {"id":{"name":"input_gamepad_get_description","path":"scripts/input_gamepad_get_description/input_gamepad_get_description.yy",},"order":5,},
+    {"id":{"name":"__input_fix_config_struct","path":"scripts/__input_fix_config_struct/__input_fix_config_struct.yy",},"order":8,},
     {"id":{"name":"input_hotswap_tick","path":"scripts/input_hotswap_tick/input_hotswap_tick.yy",},"order":1,},
     {"id":{"name":"obj_test","path":"objects/obj_test/obj_test.yy",},"order":1,},
     {"id":{"name":"input_gamepad_check_press","path":"scripts/input_gamepad_check_press/input_gamepad_check_press.yy",},"order":1,},
@@ -107,7 +108,7 @@
     {"folderPath":"folders/Input/Gamepads (Direct).yy","order":9,"resourceVersion":"1.0","name":"Gamepads (Direct)","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/(System).yy","order":11,"resourceVersion":"1.0","name":"(System)","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Test Cases.yy","order":3,"resourceVersion":"1.0","name":"Test Cases","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Input/(System)/Deprecated.yy","order":8,"resourceVersion":"1.0","name":"Deprecated","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Input/(System)/Deprecated.yy","order":9,"resourceVersion":"1.0","name":"Deprecated","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
