@@ -7,6 +7,8 @@ enum VERB
     CONFIRM,
     CANCEL,
     PAUSE,
+    X,
+    Y
 }
 
 rebinding = false;
