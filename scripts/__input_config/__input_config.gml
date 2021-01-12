@@ -8,6 +8,7 @@
 
 #macro INPUT_HOTSWAP_DELAY              33         //Number of milliseconds between source swaps. This should be longer than a single frame (>17 ms at 60FPS)
 #macro INPUT_HOTSWAP_ON_MOUSE_MOVEMENT  true       //Whether to trigger a hotswap when the mouse is moved
+#macro INPUT_MOUSE_MODE                 0          //0 = view-space, 1 = GUI-space, 2 = device-space
 #macro INPUT_MOUSE_MOVE_DEADZONE        2          //Size of the deadzone for detecting mouse movement, measured in pixels
 #macro INPUT_HOTSWAP_ON_GAMEPAD_AXIS    true       //Whether to trigger a hotswap when a gamepad axis is moved
 
