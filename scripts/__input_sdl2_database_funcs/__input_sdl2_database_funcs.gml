@@ -1,23 +1,59 @@
-function __input_load_sdl2_database(_filename)
+function __input_load_sdl2_from_file(_filename)
 {
-    var _t = get_timer();
-    
     __input_trace("Loading SDL2 database from \"", _filename, "\"");
-    
-    #region Break down the input database into a 2D array
-    
-    var _cell_delimiter   = ",";
-    var _string_delimiter = "\"";
     
     var _buffer = buffer_load(_filename);
     if (_buffer < 0)
     {
-        show_message("Could not load external SDL2 database \"" + string(_filename) + "\"\n\nCheck the path and that sandboxing is turned OFF for this project");
+        show_message("Could not load external SDL2 database \"" + string(_filename) + "\"");
         return false;
     }
     
-    var _size = buffer_get_size(_buffer) + 1;
-    buffer_resize(_buffer, _size);
+    //Ensure the buffer has a null terminator
+    buffer_resize(_buffer, buffer_get_size(_buffer) + 1);
+    
+    var _result = __input_load_sdl2_from_buffer(_buffer);
+    
+    buffer_delete(_buffer);
+    
+    return _result;
+}
+
+
+
+
+
+function __input_load_sdl2_from_string(_string)
+{
+    __input_trace("Loading SDL2 database from string \"", _string, "\"");
+    
+    //Ensure the buffer has a null terminator
+    var _buffer = buffer_create(string_byte_length(_string) + 1, buffer_fixed, 1);
+    buffer_write(_buffer, buffer_string, _string);
+    
+    var _result = __input_load_sdl2_from_buffer(_buffer);
+    
+    buffer_delete(_buffer);
+    
+    return _result;
+}
+
+
+
+
+
+function __input_load_sdl2_from_buffer(_buffer)
+{
+    var _t = get_timer();
+    
+    __input_trace("Unpacking SDL2 buffer...");
+    
+    var _cell_delimiter = ",";
+    var _string_delimiter = "\"";
+    
+    #region Break down the input database into a 2D array
+    
+    var _size = buffer_get_size(_buffer);
     
     var _cell_delimiter_ord      = ord(_cell_delimiter);
     var _string_delimiter_double = _string_delimiter + _string_delimiter;
@@ -120,8 +156,6 @@ function __input_load_sdl2_database(_filename)
             }
         }
     }
-    
-    buffer_delete(_buffer);
     
     #endregion
     

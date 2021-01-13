@@ -6,7 +6,7 @@
     "path": "folders/Input/(System).yy",
   },
   "resourceVersion": "1.0",
-  "name": "__input_load_sdl2_database",
+  "name": "__input_sdl2_database_funcs",
   "tags": [],
   "resourceType": "GMScript",
 }

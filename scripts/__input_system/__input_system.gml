@@ -138,7 +138,7 @@ variable_struct_set(global.__input_sdl2_look_up_table, INPUT_SDL2_GP_SELECT_NAME
 
 if (file_exists(__INPUT_SDL2_DATABASE_FILENAME))
 {
-    __input_load_sdl2_database(__INPUT_SDL2_DATABASE_FILENAME);
+    __input_load_sdl2_from_file(__INPUT_SDL2_DATABASE_FILENAME);
 }
 else
 {
@@ -148,11 +148,19 @@ else
 //Try to load an external SDL2 database if possible
 if (INPUT_SDL2_ALLOW_EXTERNAL)
 {
-    var _environment_path = environment_get_variable("SDL_GAMECONTROLLERCONFIG");
-    if (_environment_path != "")
+    var _external_string = environment_get_variable("SDL_GAMECONTROLLERCONFIG");
+    if (_external_string != "")
     {
-        __input_trace("External SDL2 database found");
-        __input_load_sdl2_database(_environment_path);
+        __input_trace("External SDL2 string found");
+        
+        try
+        {
+            __input_load_sdl2_from_string(_external_string);
+        }
+        catch(_error)
+        {
+            __input_trace_loud("Error!\n\n%SDL_GAMECONTROLLERCONFIG% could not be parsed.\nYou may see unexpected behaviour when using gamepads.\n\nTo remove this error, clear %SDL_GAMECONTROLLERCONFIG%\n\nInput ", __INPUT_VERSION, "   @jujuadams ", __INPUT_DATE);
+        }
     }
 }
 
@@ -265,6 +273,29 @@ function __input_trace()
         file_text_writeln(_file);
         file_text_close(_file);
     }
+}
+
+function __input_trace_loud()
+{
+    var _string = "";
+    var _i = 0;
+    repeat(argument_count)
+    {
+        _string += string(argument[_i]);
+        ++_i;
+    }
+    
+    show_debug_message("Input: LOUD " + _string);
+    
+    if (INPUT_EXTERNAL_DEBUG_LOG)
+    {
+        var _file = file_text_open_append(global.__input_debug_log);
+        file_text_write_string(_file, _string);
+        file_text_writeln(_file);
+        file_text_close(_file);
+    }
+    
+    show_message(_string);
 }
 
 function __input_error()

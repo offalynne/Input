@@ -14,7 +14,7 @@
 
 #macro INPUT_SDL2_REMAPPING             true       //Whether to use our own SDL2 database to remap controllers
 #macro INPUT_SDL2_GP_SELECT_NAME        "back"     //SDL2 binding name for gp_select (GameMaker's documentation says "guide" but most SDL2 definitions use "back")
-#macro INPUT_SDL2_ALLOW_EXTERNAL        false      //Whether to allow external SDL2 database loading. *You must turn OFF file system sandboxing for this to work.* The path is given by the environment variable %SDL_GAMECONTROLLERCONFIG%
+#macro INPUT_SDL2_ALLOW_EXTERNAL        true      //Whether to allow external SDL2 database loading from environment variable %SDL_GAMECONTROLLERCONFIG%
 
 #region Forbidden Fruit
 
