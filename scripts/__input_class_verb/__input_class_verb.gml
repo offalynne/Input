@@ -41,7 +41,7 @@ function __input_class_verb() constructor
     
     static tick = function()
     {
-        var _time = INPUT_BUFFERED_REALTIME? current_time : global.__input_frame;
+        var _time = __input_get_time();
         
         if (value > 0)
         {

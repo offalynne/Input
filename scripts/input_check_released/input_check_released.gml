@@ -47,7 +47,7 @@ function input_check_released()
     }
     else
     {
-        return ((INPUT_BUFFERED_REALTIME? current_time : global.__input_frame) - _verb_struct.release_time) <= _buffer_duration;
+        return (__input_get_time() - _verb_struct.release_time) <= _buffer_duration;
     }
 }
 

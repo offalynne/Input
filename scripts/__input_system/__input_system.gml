@@ -302,3 +302,8 @@ function __input_error()
     
     show_error("Input:\n" + _string + "\n ", false);
 }
+
+function __input_get_time()
+{
+    return (INPUT_TIMER_MILLISECONDS? current_time : global.__input_frame);
+}

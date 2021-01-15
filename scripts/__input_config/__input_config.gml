@@ -3,8 +3,8 @@
 #macro INPUT_DEFAULT_MIN_THRESHOLD      0.3    //Default minimum threshold for gamepad axes. This value is used for detecting gamepad input in input_hotswap_tick() so make sure you set it above 0.0
 #macro INPUT_DEFAULT_MAX_THRESHOLD      1.0    //Default maximum threshold for gamepad axes
 
-#macro INPUT_BUFFERED_REALTIME          false  //Set to true to use milliseconds instead of frames for input_check_*() functions
-#macro INPUT_DOUBLE_DELAY               12     //Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by INPUT_BUFFERED_REALTIME
+#macro INPUT_TIMER_MILLISECONDS         false  //Set to true to use milliseconds instead of frames for input_check_*() functions
+#macro INPUT_DOUBLE_DELAY               12     //Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by INPUT_TIMER_MILLISECONDS
 
 #macro INPUT_HOTSWAP_DELAY              33     //Number of milliseconds between source swaps. This should be longer than a single frame (>17 ms at 60FPS)
 #macro INPUT_HOTSWAP_ON_MOUSE_MOVEMENT  true   //Whether to trigger a hotswap when the mouse is moved
