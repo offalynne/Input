@@ -13,9 +13,24 @@ enum INPUT_SOURCE
 
 #macro INPUT_NO_GAMEPAD  -1
 
-
-
-
+// gp_axislh     = 32785             32769 = gp_face1
+// gp_axislv     = 32786             32770 = gp_face2
+// gp_axisrh     = 32787             32771 = gp_face3
+// gp_axisrv     = 32788             32772 = gp_face4
+// gp_shoulderlb = 32775             32775 = gp_shoulderlb
+// gp_shoulderrb = 32776             32776 = gp_shoulderrb
+// gp_padu       = 32781             32777 = gp_select
+// gp_padd       = 32782             32778 = gp_start
+// gp_padl       = 32783             32779 = gp_stickl
+// gp_padr       = 32784             32780 = gp_stickr
+// gp_face1      = 32769             32781 = gp_padu
+// gp_face2      = 32770             32782 = gp_padd
+// gp_face3      = 32771             32783 = gp_padl
+// gp_face4      = 32772             32784 = gp_padr
+// gp_stickl     = 32779             32785 = gp_axislh
+// gp_stickr     = 32780             32786 = gp_axislv
+// gp_select     = 32777             32787 = gp_axisrh
+// gp_start      = 32778             32788 = gp_axisrv
 
 //Set up the extended debug functionality
 global.__input_debug_log = "input___" + string_replace_all(string_replace_all(date_datetime_string(date_current_datetime()), ":", "-"), " ", "___") + ".txt";
@@ -26,32 +41,6 @@ if (INPUT_EXTERNAL_DEBUG_LOG && __INPUT_DEBUG)
 }
 
 __input_trace("Welcome to Input by @jujuadams! This is version ", __INPUT_VERSION, ", ", __INPUT_DATE);
-
-if (__INPUT_DEBUG)
-{
-    __input_trace("gp_axislh = ", gp_axislh);
-    __input_trace("gp_axislv = ", gp_axislv);
-    __input_trace("gp_axisrh = ", gp_axisrh);
-    __input_trace("gp_axisrv = ", gp_axisrv);
-    __input_trace("gp_shoulderlb = ", gp_shoulderlb);
-    __input_trace("gp_shoulderrb = ", gp_shoulderrb);
-    
-    __input_trace("gp_padu = ", gp_padu);
-    __input_trace("gp_padd = ", gp_padd);
-    __input_trace("gp_padl = ", gp_padl);
-    __input_trace("gp_padr = ", gp_padr);
-    
-    __input_trace("gp_face1 = ", gp_face1);
-    __input_trace("gp_face2 = ", gp_face2);
-    __input_trace("gp_face3 = ", gp_face3);
-    __input_trace("gp_face4 = ", gp_face4);
-    
-    __input_trace("gp_stickl = ", gp_stickl);
-    __input_trace("gp_stickr = ", gp_stickr);
-    
-    __input_trace("gp_select = ", gp_select);
-    __input_trace("gp_start = ", gp_start);
-}
 
 //Global frame counter. This is used for input buffering
 global.__input_frame = 0;

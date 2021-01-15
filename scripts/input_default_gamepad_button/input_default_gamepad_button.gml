@@ -17,10 +17,12 @@ function input_default_gamepad_button()
         if (_button == gp_face1)
         {
             _button = gp_face2;
+            __input_trace("Default binding for \"", _verb, "\" swapped from A/O to B/X");
         }
         else if (_button == gp_face2)
         {
             _button = gp_face1;
+            __input_trace("Default binding for \"", _verb, "\" swapped from B/X to A/O");
         }
     }
     
