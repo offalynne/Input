@@ -19,8 +19,8 @@ function __input_class_cursor() constructor
         if (global.__input_mouse_valid && (other.source == INPUT_SOURCE.KEYBOARD_AND_MOUSE) && (global.__input_mouse_moved || global.__input_cursor_using_mouse))
         {
             global.__input_cursor_using_mouse = true;
-            x = mouse_x;
-            y = mouse_y;
+            x = global.__input_mouse_x;
+            y = global.__input_mouse_y;
         }
         
         if (!global.__input_mouse_moved)
