@@ -117,8 +117,8 @@ global.__input_sdl2_look_up_table = {
     leftstick:     gp_stickl,
     rightstick:    gp_stickr,
     start:         gp_start,
+    back:          gp_select,
 }
-variable_struct_set(global.__input_sdl2_look_up_table, INPUT_SDL2_GP_SELECT_NAME, gp_select);
 
 //Alright, now that we've set up the requisite data structures, let's load the SDL2 database
 //PS. Here're some SDL sources

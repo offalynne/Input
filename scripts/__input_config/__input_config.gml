@@ -13,7 +13,6 @@
 #macro INPUT_HOTSWAP_ON_GAMEPAD_AXIS    true   //Whether to trigger a hotswap when a gamepad axis is moved
 
 #macro INPUT_SDL2_REMAPPING             true   //Whether to use our own SDL2 database to remap controllers
-#macro INPUT_SDL2_GP_SELECT_NAME        "back" //SDL2 binding name for gp_select (GameMaker's documentation says "guide" but most SDL2 definitions use "back")
 #macro INPUT_SDL2_ALLOW_EXTERNAL        true   //Whether to allow external SDL2 database loading from environment variable %SDL_GAMECONTROLLERCONFIG%
 
 #region Forbidden Fruit
