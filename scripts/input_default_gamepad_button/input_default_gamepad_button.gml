@@ -12,6 +12,18 @@ function input_default_gamepad_button()
     
     global.__input_gamepad_valid = true;
     
+    if (global.__input_swap_ab)
+    {
+        if (_button == gp_face1)
+        {
+            _button = gp_face2;
+        }
+        else if (_button == gp_face2)
+        {
+            _button = gp_face1;
+        }
+    }
+    
     global.__input_default_player.set_binding(INPUT_SOURCE.GAMEPAD, _verb, _alternate,
                                               new __input_class_binding("gamepad button", _button));
     

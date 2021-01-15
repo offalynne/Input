@@ -45,6 +45,7 @@
     {"id":{"name":"input_rebind_undo","path":"scripts/input_rebind_undo/input_rebind_undo.yy",},"order":1,},
     {"id":{"name":"obj_test_custom_triggers","path":"objects/obj_test_custom_triggers/obj_test_custom_triggers.yy",},"order":4,},
     {"id":{"name":"__input_sdl2_database_funcs","path":"scripts/__input_sdl2_database_funcs/__input_sdl2_database_funcs.yy",},"order":6,},
+    {"id":{"name":"input_default_gamepad_swap_ab","path":"scripts/input_default_gamepad_swap_ab/input_default_gamepad_swap_ab.yy",},"order":7,},
     {"id":{"name":"input_check_pressed","path":"scripts/input_check_pressed/input_check_pressed.yy",},"order":1,},
     {"id":{"name":"__input_class_gamepad","path":"scripts/__input_class_gamepad/__input_class_gamepad.yy",},"order":2,},
     {"id":{"name":"__input_system","path":"scripts/__input_system/__input_system.yy",},"order":0,},

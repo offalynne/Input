@@ -75,6 +75,9 @@ global.__input_keyboard_valid = false;
 global.__input_mouse_valid    = false;
 global.__input_gamepad_valid  = false;
 
+//Whether to swap A/B gamepad buttons for default bindings
+global.__input_swap_ab = false;
+
 //Names for sources. I suspect this'll get sliced out at some point when I start recoding the binding system to serialise per controller type
 global.__input_source_names = ["none", "keyboard and mouse", "gamepad"];
 
