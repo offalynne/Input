@@ -1,5 +1,7 @@
 function __input_class_cursor() constructor
 {
+    prev_x = 0;
+    prev_y = 0;
     x = 0;
     y = 0;
     
@@ -14,8 +16,13 @@ function __input_class_cursor() constructor
     limit_y = undefined;
     limit_radius = undefined;
     
+    moved_time = __input_get_time();
+    
     tick = function()
     {
+        prev_x = x;
+        prev_y = y;
+        
         if (global.__input_mouse_valid && (other.source == INPUT_SOURCE.KEYBOARD_AND_MOUSE) && (global.__input_mouse_moved || global.__input_cursor_using_mouse))
         {
             global.__input_cursor_using_mouse = true;
@@ -66,6 +73,8 @@ function __input_class_cursor() constructor
                 }
             }
         }
+        
+        if ((x != prev_x) || (y != prev_y)) moved_time = __input_get_time();
     }
     
     limit = function()
