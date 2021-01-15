@@ -18,7 +18,7 @@ function input_cursor_y()
     
     with(global.__input_players[_player_index].cursor)
     {
-        if (is_numeric(camera) && (camera >= 0))
+        if (is_numeric(camera) && (camera >= 0) && (INPUT_MOUSE_MODE == 0))
         {
             return camera_get_view_y(camera) + y;
         }
