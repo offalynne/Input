@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Default Bindings",
-    "path": "folders/Input/Default Bindings.yy",
+    "name": "Deprecated",
+    "path": "folders/Input/(System)/Deprecated.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_default_gamepad_axis_pair",
+  "name": "__input_default_gamepad_axis_pair__UNUSED",
   "tags": [],
   "resourceType": "GMScript",
 }
