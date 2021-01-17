@@ -40,3 +40,6 @@ input_default_gamepad_button(gp_padl  , VERB.LEFT   , 1);
 input_default_gamepad_button(gp_padr  , VERB.RIGHT  , 1);
 input_default_gamepad_button(gp_padu  , VERB.UP     , 1);
 input_default_gamepad_button(gp_padd  , VERB.DOWN   , 1);
+
+input_history_start();
+input_history_global_include(VERB.LEFT, VERB.RIGHT, VERB.UP, VERB.DOWN, VERB.CONFIRM, VERB.CANCEL, VERB.PAUSE);

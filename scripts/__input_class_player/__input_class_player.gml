@@ -14,7 +14,10 @@ function __input_class_player() constructor
     rebind_verb       = undefined;
     rebind_alternate  = undefined;
     rebind_this_frame = false;
-    rebind_backup_val     = undefined;
+    rebind_backup_val = undefined;
+    
+    history_do    = false;
+    history_array = undefined;
     
     config = { axis_thresholds : {} };
     
@@ -68,8 +71,18 @@ function __input_class_player() constructor
             ++_v;
         }
         
+        //Make sure our source has been updated this frame
         tick_source(global.__input_source_names[source]);
-        tick_verbs();
+        
+        //Update our verbs, and pass in our history array too
+        var _history_array = history_do? history_array : undefined;
+        tick_verbs(_history_array);
+        
+        if (history_do)
+        {
+            //Trim off data that we don't want from the history
+            array_delete(_history_array, 0, array_length(_history_array) - INPUT_HISTORY_LENGTH);
+        }
         
         with(cursor)
         {
@@ -78,13 +91,13 @@ function __input_class_player() constructor
         }
     }
     
-    static tick_verbs = function()
+    static tick_verbs = function(_history_array)
     {
         var _verb_names = variable_struct_get_names(verbs);
         var _v = 0;
         repeat(array_length(_verb_names))
         {
-            with(variable_struct_get(verbs, _verb_names[_v])) tick();
+            with(variable_struct_get(verbs, _verb_names[_v])) tick(_history_array);
             ++_v;
         }
     }
@@ -292,7 +305,11 @@ function __input_class_player() constructor
         if (!is_struct(variable_struct_get(verbs, _verb)))
         {
             if (__INPUT_DEBUG) __input_trace("Verb not found on player, creating a new one");
-            variable_struct_set(verbs, _verb, new __input_class_verb());
+            
+            var _verb_struct = new __input_class_verb();
+            _verb_struct.name = _verb;
+            
+            variable_struct_set(verbs, _verb, _verb_struct);
         }
         
         return _binding_struct;

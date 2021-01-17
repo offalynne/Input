@@ -67,6 +67,9 @@ global.__input_gamepad_valid  = false;
 //Whether to swap A/B gamepad buttons for default bindings
 global.__input_swap_ab = false;
 
+//Struct that contains which verbs to track when recording history
+global.__input_history_include = {};
+
 //Names for sources. I suspect this'll get sliced out at some point when I start recoding the binding system to serialise per controller type
 global.__input_source_names = ["none", "keyboard and mouse", "gamepad"];
 

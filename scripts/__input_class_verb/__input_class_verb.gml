@@ -4,11 +4,15 @@
 
 function __input_class_verb() constructor
 {
-    consumed     = false;
-    value        = 0.0;
-    raw          = 0.0;
-    analogue     = false;
-    raw_analogue = false;
+    name = undefined;
+    
+    consumed = false;
+    
+    previous_value = 0.0;
+    value          = 0.0;
+    raw            = 0.0;
+    analogue       = false;
+    raw_analogue   = false;
     
     previous_held = false;
     press         = false;
@@ -27,21 +31,30 @@ function __input_class_verb() constructor
     
     static clear = function()
     {
+        previous_value = value;
         value = 0.0;
         raw   = 0.0;
         
         previous_held = held;
-        press         = false;
-        held          = false;
-        release       = false;
+        press   = false;
+        held    = false;
+        release = false;
         
         double_press   = false;
         double_release = false;
     }
     
-    static tick = function()
+    static tick = function(_history_array)
     {
         var _time = __input_get_time();
+        
+        if (_history_array != undefined)
+        {
+            if ((previous_value != value) && global.__input_history_include[$ name])
+            {
+                array_push(_history_array, { time : _time, verb : name, value : value });
+            }
+        }
         
         if (value > 0)
         {
