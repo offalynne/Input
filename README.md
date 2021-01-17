@@ -1,9 +1,9 @@
 <p align="center"><img src="https://raw.githubusercontent.com/JujuAdams/input/master/LOGO_small.png" style="display:block; margin:auto; width:300px"></p>
-<h1 align="center">3.0.0 (preview 004)</h1>
+<h1 align="center">3.1.1 (preview 000)</h1>
 
 <p align="center">Comprehensive cross-platform input for GameMaker Studio 2.3.0 by <a href="http://www.jujuadams.com/"><b>@jujuadams</b></a></p>
 
-<p align="center"><a href="https://github.com/JujuAdams/input/releases/tag/3.0.0pre004">Download the .yymps</a></p>
+<p align="center"><a href="https://github.com/JujuAdams/input/releases/tag/3.1.1pre000">Download the .yymps</a></p>
 <p align="center">Chat about Input on the <a href="https://discord.gg/8krYCqr">Discord server</a></p>
 
 &nbsp;
