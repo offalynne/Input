@@ -141,7 +141,9 @@ function __input_assignment_tick_input(_player_index)
                 ||  input_gamepad_check_pressed(_g, gp_start)
                 ||  input_gamepad_check_pressed(_g, gp_select)
                 ||  input_gamepad_check_pressed(_g, gp_stickl)
-                ||  input_gamepad_check_pressed(_g, gp_stickr))
+                ||  input_gamepad_check_pressed(_g, gp_stickr)
+                ||  (INPUT_SDL2_ALLOW_GUIDE && input_gamepad_check(_g, gp_guide))
+                ||  (INPUT_SDL2_ALLOW_MISC1 && input_gamepad_check(_g, gp_misc1)))
                 {
                     return { source : INPUT_SOURCE.GAMEPAD, gamepad : _g };
                 }

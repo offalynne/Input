@@ -12,6 +12,8 @@ enum INPUT_SOURCE
 }
 
 #macro INPUT_NO_GAMEPAD  -1
+#macro gp_guide  32789
+#macro gp_misc1  32790
 
 // gp_axislh     = 32785             32769 = gp_face1
 // gp_axislv     = 32786             32770 = gp_face2
@@ -31,6 +33,9 @@ enum INPUT_SOURCE
 // gp_stickr     = 32780             32786 = gp_axislv
 // gp_select     = 32777             32787 = gp_axisrh
 // gp_start      = 32778             32788 = gp_axisrv
+// Plus custom buttons:
+// gp_guide      = 32789             32789 = gp_guide
+// gp_misc1      = 32790             32790 = gp_misc1
 
 //Set up the extended debug functionality
 global.__input_debug_log = "input___" + string_replace_all(string_replace_all(date_datetime_string(date_current_datetime()), ":", "-"), " ", "___") + ".txt";
@@ -122,6 +127,9 @@ global.__input_sdl2_look_up_table = {
     start:         gp_start,
     back:          gp_select,
 }
+
+if (INPUT_SDL2_ALLOW_GUIDE) global.__input_sdl2_look_up_table.guide = gp_guide;
+if (INPUT_SDL2_ALLOW_MISC1) global.__input_sdl2_look_up_table.misc1 = gp_misc1;
 
 //Alright, now that we've set up the requisite data structures, let's load the SDL2 database
 //PS. Here're some SDL sources
