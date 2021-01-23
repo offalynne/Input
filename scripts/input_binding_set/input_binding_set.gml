@@ -52,7 +52,7 @@ function input_binding_set()
     {
         if (_source == undefined) _source = source;
         
-        __input_trace("Setting player ", _player_index, " binding for source=", input_source_get_name(_source), ", verb=", _verb, ", alt=", _alternate, " to ", _binding);
+        __input_trace("Setting player ", _player_index, " binding for source=", input_source_get_name(_source), ", verb=", _verb, ", alt=", _alternate, " to \"", input_binding_get_name(_binding), "\"");
         set_binding(_source, _verb, _alternate, _binding);
     }
 }

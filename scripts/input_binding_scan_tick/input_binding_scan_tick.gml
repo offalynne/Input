@@ -161,7 +161,7 @@ function input_binding_scan_tick()
                 {
                     rebind_state = -2;
                     
-                    __input_trace("Binding found for player ", _player_index, ": ", _new_binding);
+                    __input_trace("Binding found for player ", _player_index, ": \"", input_binding_get_name(_new_binding), "\"");
                     
                     return _new_binding;
                 }

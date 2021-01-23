@@ -26,9 +26,18 @@ function input_binding_set_safe()
                 __input_trace("Warning! More than one binding collision found, resolution may not be desirable");
             }
             
-            __input_trace("Collision found with verb=", _collisions[0].verb, ", alternate=", _collisions[0].alternate);
+            var _verb_b      = _collisions[0].verb;
+            var _alternate_b = _collisions[0].alternate;
             
-            input_binding_swap(_verb, _alternate, _collisions[0].verb, _collisions[0].alternate, _source, _player_index);
+            if ((_verb != _verb_b) || (_alternate != _alternate_b))
+            {
+                __input_trace("Collision found with source=", _source, ", verb=", _verb_b, ", alternate=", _alternate_b);
+                input_binding_swap(_verb, _alternate, _verb_b, _alternate_b, _source, _player_index);
+            }
+            else
+            {
+                __input_trace("New binding (", input_binding_get_name(_binding), ") is the same as existing binding for source=", _source, ", verb=", _verb, ", alternate=", _alternate);
+            }
         }
         
         input_consume(_verb, _player_index);

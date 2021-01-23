@@ -19,6 +19,8 @@ enum INPUT_SOURCE
 // gp_axislv     = 32786             32770 = gp_face2
 // gp_axisrh     = 32787             32771 = gp_face3
 // gp_axisrv     = 32788             32772 = gp_face4
+// gp_shoulderl  = 32773             32773 = gp_shoulderl
+// gp_shoulderr  = 32774             32774 = gp_shoulderr
 // gp_shoulderlb = 32775             32775 = gp_shoulderlb
 // gp_shoulderrb = 32776             32776 = gp_shoulderrb
 // gp_padu       = 32781             32777 = gp_select
