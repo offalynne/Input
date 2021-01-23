@@ -36,17 +36,7 @@ function input_binding_get()
     
     with(global.__input_players[_player_index])
     {
-        if (_source == undefined) _source = source;
-        var _source_verb_struct = variable_struct_get(config, global.__input_source_names[_source]);
-        if (is_struct(_source_verb_struct))
-        {
-            var _alternate_array = variable_struct_get(_source_verb_struct, _verb);
-            if (is_array(_alternate_array))
-            {
-                var _binding = _alternate_array[_alternate];
-                if (is_struct(_binding)) return _binding;
-            }
-        }
+        return get_binding(_source, _verb, _alternate);
     }
     
     return undefined;

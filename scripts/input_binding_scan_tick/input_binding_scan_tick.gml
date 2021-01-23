@@ -2,7 +2,6 @@
 
 enum INPUT_BINDING_SCAN_EVENT
 {
-    WAITING            =  0,  //Waiting for player input
     SUCCESS_THIS_FRAME = -1,  //input_binding_scan_tick() has been called twice this frame for this player, and the first execution succeeded
     ERROR_THIS_FRAME   = -2,  //input_binding_scan_tick() has been called twice this frame for this player, and the first execution failed due to an error
     SOURCE_INVALID     = -10, //Player source is not rebindable (is INPUT_SOURCE.NONE)
@@ -90,7 +89,7 @@ function input_binding_scan_tick()
             {
                 if (!any_input())
                 {
-                    __input_trace("Now scanning for a new binding from player ". _player_index);
+                    __input_trace("Now scanning for a new binding from player ", _player_index);
                     rebind_state = 2;
                 }
             }
@@ -170,5 +169,5 @@ function input_binding_scan_tick()
         }
     }
     
-    return INPUT_REBIND_EVENT.WAITING;
+    return undefined;
 }

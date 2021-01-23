@@ -1,6 +1,6 @@
 /// @param [playerIndex]
 
-function input_player_stance_set()
+function input_player_stance_get()
 {
     var _player_index = ((argument_count > 0) && (argument[0] != undefined))? argument[0] : 0;
     
