@@ -6,7 +6,7 @@
     "path": "folders/Input/Binding Management.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_rebind_undo",
+  "name": "input_binding_get_collisions",
   "tags": [],
   "resourceType": "GMScript",
 }

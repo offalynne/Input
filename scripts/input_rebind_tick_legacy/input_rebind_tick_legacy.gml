@@ -9,7 +9,7 @@ enum INPUT_REBIND_EVENT
     SUCCESS  =  1,
 }
 
-function input_rebind_tick()
+function input_rebind_tick_legacy()
 {
     var _verb         = argument[0];
     var _player_index = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
@@ -255,4 +255,15 @@ function input_rebind_tick()
     }
     
     return INPUT_REBIND_EVENT.WAITING;
+}
+
+function input_rebind_tick()
+{
+    var _verb         = argument[0];
+    var _player_index = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
+    var _alternate    = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : 0;
+    
+    __input_error("input_rebind_tick() has been deprecated, please use input_rebind_tick_legacy() instead\nThis feature will be replaced in a future update");
+    
+    input_rebind_tick_legacy(_verb, _player_index, _alternate);
 }

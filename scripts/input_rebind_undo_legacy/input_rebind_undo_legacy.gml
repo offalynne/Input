@@ -1,4 +1,4 @@
-function input_rebind_undo()
+function input_rebind_undo_legacy()
 {
     if (instanceof(global.__input_rebind_last_player) == "__input_class_player")
     {
@@ -34,4 +34,11 @@ function input_rebind_undo()
     
     __input_trace("Rebinding undo failed");
     return false;
+}
+
+function input_rebind_undo()
+{
+    __input_error("input_rebind_undo() has been deprecated, please use input_rebind_undo_legacy() instead\nThis feature will be replaced in a future update");
+    
+    input_rebind_undo_legacy();
 }

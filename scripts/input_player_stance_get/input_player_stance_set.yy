@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Binding Management",
-    "path": "folders/Input/Binding Management.yy",
+    "name": "Players",
+    "path": "folders/Input/Players.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_rebind_tick",
+  "name": "input_player_stance_set",
   "tags": [],
   "resourceType": "GMScript",
 }
