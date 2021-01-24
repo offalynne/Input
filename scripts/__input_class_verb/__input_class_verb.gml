@@ -35,7 +35,6 @@ function __input_class_verb() constructor
         value = 0.0;
         raw   = 0.0;
         
-        previous_held = held;
         press   = false;
         held    = false;
         release = false;
@@ -68,6 +67,7 @@ function __input_class_verb() constructor
         {
             if (held)
             {
+                if (__INPUT_DEBUG && consumed) __input_trace("Un-consuming verb \"", name, "\"");
                 consumed = false;
                 
                 if (_time - press_time < INPUT_DOUBLE_DELAY)
@@ -96,6 +96,8 @@ function __input_class_verb() constructor
                 }
             }
         }
+        
+        previous_held = held;
         
         if (double_held) double_held_time = _time;
     }

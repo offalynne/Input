@@ -87,7 +87,7 @@ function __input_class_player() constructor
         
         with(cursor)
         {
-            tick();
+            tick(other.rebind_state);
             limit();
         }
     }

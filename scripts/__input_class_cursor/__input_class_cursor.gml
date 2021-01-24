@@ -18,7 +18,7 @@ function __input_class_cursor() constructor
     
     moved_time = __input_get_time();
     
-    tick = function()
+    tick = function(_rebind_state)
     {
         prev_x = x;
         prev_y = y;
@@ -30,7 +30,8 @@ function __input_class_cursor() constructor
             y = global.__input_mouse_y;
         }
         
-        if (!global.__input_mouse_moved)
+        //Don't update the cursor if the mouse recently moved or we're rebinding controls
+        if (!global.__input_mouse_moved && (_rebind_state <= 0))
         {
             if ((global.__input_cursor_verb_u != undefined)
             &&  (global.__input_cursor_verb_d != undefined)
