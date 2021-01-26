@@ -12,31 +12,10 @@ function input_binding_set_safe()
     
     if (input_value_is_binding(_binding))
     {
-        var _source = undefined;
-        
-        if ((_binding.type == "key")
-        ||  (_binding.type == "mouse button")
-        ||  (_binding.type == "mouse wheel up")
-        ||  (_binding.type == "mouse wheel down"))
-        {
-            _source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
-        }
-        else if ((_binding.type == "gamepad button")
-             ||  (_binding.type == "gamepad axis"))
-        {
-            _source = INPUT_SOURCE.GAMEPAD;
-        }
-        
-        if (_source == undefined)
-        {
-            __input_error("Binding type \"", _binding.type, "\" unrecognised");
-            return false;
-        }
-        
-        var _collisions = input_binding_get_collisions(_binding, _source, _player_index);
+        var _collisions = input_binding_get_collisions(_binding, _player_index);
         if (array_length(_collisions) == 0)
         {
-            input_binding_set(_verb, _binding, _source, _player_index, _alternate);
+            input_binding_set(_verb, _binding, _player_index, _alternate);
         }
         else
         {
@@ -45,17 +24,18 @@ function input_binding_set_safe()
                 __input_trace("Warning! More than one binding collision found, resolution may not be desirable");
             }
             
+            var _source      = __input_binding_get_source(_binding);
             var _verb_b      = _collisions[0].verb;
             var _alternate_b = _collisions[0].alternate;
             
             if ((_verb != _verb_b) || (_alternate != _alternate_b))
             {
-                __input_trace("Collision found with source=", _source, ", verb=", _verb_b, ", alternate=", _alternate_b);
+                __input_trace("Collision found with source=", input_source_get_name(_source), ", verb=", _verb_b, ", alternate=", _alternate_b);
                 input_binding_swap(_verb, _alternate, _verb_b, _alternate_b, _source, _player_index);
             }
             else
             {
-                __input_trace("New binding (", input_binding_get_name(_binding), ") is the same as existing binding for source=", _source, ", verb=", _verb, ", alternate=", _alternate);
+                __input_trace("New binding (", input_binding_get_name(_binding), ") is the same as existing binding for source=", input_source_get_name(_source), ", verb=", _verb, ", alternate=", _alternate);
             }
         }
         

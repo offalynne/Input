@@ -1,6 +1,5 @@
 /// @param verb
 /// @param binding
-/// @param [source]
 /// @param [playerIndex]
 /// @param [alternate]
 
@@ -8,15 +7,8 @@ function input_binding_set()
 {
     var _verb         = argument[0];
     var _binding      = argument[1];
-    var _source       = (argument_count > 2)? argument[2] : undefined;
-    var _player_index = ((argument_count > 3) && (argument[3] != undefined))? argument[3] : 0;
-    var _alternate    = ((argument_count > 4) && (argument[4] != undefined))? argument[4] : 0;
-    
-    if (_source == INPUT_SOURCE.NONE)
-    {
-        __input_error("Cannot set a binding for source \"", input_source_get_name(_source), "\"");
-        return undefined;
-    }
+    var _player_index = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : 0;
+    var _alternate    = ((argument_count > 3) && (argument[3] != undefined))? argument[3] : 0;
     
     if (_player_index < 0)
     {
@@ -50,8 +42,7 @@ function input_binding_set()
     
     with(global.__input_players[_player_index])
     {
-        if (_source == undefined) _source = source;
-        
+        var _source = __input_binding_get_source(_binding)
         __input_trace("Setting player ", _player_index, " binding for source=", input_source_get_name(_source), ", verb=", _verb, ", alt=", _alternate, " to \"", input_binding_get_name(_binding), "\"");
         set_binding(_source, _verb, _alternate, _binding);
     }

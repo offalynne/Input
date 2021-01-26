@@ -62,6 +62,7 @@
     {"id":{"name":"input_check_pressed","path":"scripts/input_check_pressed/input_check_pressed.yy",},"order":1,},
     {"id":{"name":"__input_class_gamepad","path":"scripts/__input_class_gamepad/__input_class_gamepad.yy",},"order":2,},
     {"id":{"name":"__input_system","path":"scripts/__input_system/__input_system.yy",},"order":0,},
+    {"id":{"name":"__input_binding_get_source","path":"scripts/__input_binding_get_source/__input_binding_get_source.yy",},"order":9,},
     {"id":{"name":"input_bindings_write","path":"scripts/input_bindings_write/input_bindings_write.yy",},"order":9,},
     {"id":{"name":"input_binding_get_name","path":"scripts/input_binding_get_name/input_binding_get_name.yy",},"order":7,},
     {"id":{"name":"input_rebind_tick_legacy","path":"scripts/input_rebind_tick_legacy/input_rebind_tick_legacy.yy",},"order":1,},
@@ -129,7 +130,7 @@
     {"folderPath":"folders/Input/Gamepads (Direct).yy","order":9,"resourceVersion":"1.0","name":"Gamepads (Direct)","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/(System).yy","order":11,"resourceVersion":"1.0","name":"(System)","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Test Cases.yy","order":3,"resourceVersion":"1.0","name":"Test Cases","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Input/(System)/Deprecated.yy","order":9,"resourceVersion":"1.0","name":"Deprecated","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Input/(System)/Deprecated.yy","order":10,"resourceVersion":"1.0","name":"Deprecated","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/History.yy","order":2,"resourceVersion":"1.0","name":"History","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [

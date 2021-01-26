@@ -1,12 +1,10 @@
 /// @param binding
-/// @param [source]
 /// @param [playerIndex]
 
 function input_binding_get_collisions()
 {
     var _src_binding  = argument[0];
-    var _source       = (argument_count > 1)? argument[1] : undefined;
-    var _player_index = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : 0;
+    var _player_index = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
     
     if (_player_index < 0)
     {
@@ -30,7 +28,7 @@ function input_binding_get_collisions()
     
     with(global.__input_players[_player_index])
     {
-        if (_source == undefined) _source = source;
+        var _source = __input_binding_get_source(_binding)
         
         var _source_name = global.__input_source_names[_source];
         var _source_verb_struct = variable_struct_get(config, _source_name);
