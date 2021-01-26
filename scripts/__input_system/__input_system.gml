@@ -173,7 +173,9 @@ if (INPUT_SDL2_ALLOW_EXTERNAL)
     }
 }
 
-global.__input_type_dictionary = {};
+//Parse the controller type database
+global.__input_type_dictionary = { none : "xb360" };
+
 if (file_exists(__INPUT_CONTROLLER_TYPE_FILENAME))
 {
     __input_load_type_csv(__INPUT_CONTROLLER_TYPE_FILENAME);
