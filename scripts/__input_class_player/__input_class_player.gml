@@ -2,7 +2,6 @@ function __input_class_player() constructor
 {
     source          = INPUT_SOURCE.NONE;
     gamepad         = INPUT_NO_GAMEPAD;
-    stance          = undefined;
     sources         = array_create(INPUT_SOURCE.__SIZE, undefined);
     verbs           = {};
     axis_thresholds = {};
@@ -117,13 +116,6 @@ function __input_class_player() constructor
                 var _value        = 0.0;
                 var _analogue     = undefined;
                 var _raw_analogue = undefined;
-                
-                var _stance_array = global.__input_verb_stances[$ _verb_name];
-                
-                if (is_array(_stance_array))
-                {
-                    
-                }
                 
                 var _alternate_array = variable_struct_get(_source_verb_struct, _verb_name);
                 var _a = 0;

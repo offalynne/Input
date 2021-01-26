@@ -81,9 +81,6 @@ global.__input_history_include = {};
 //Names for sources. I suspect this'll get sliced out at some point when I start recoding the binding system to serialise per controller type
 global.__input_source_names = ["none", "keyboard and mouse", "gamepad"];
 
-//Dictionary for stance definitions
-global.__input_verb_stances = {};
-
 //Array of players. Each player is a struct (instanceof __input_class_player) that contains lotsa juicy information
 global.__input_players = array_create(INPUT_MAX_PLAYERS, undefined);
 var _p = 0;
