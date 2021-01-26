@@ -21,7 +21,7 @@ if (keyboard_check_pressed(ord("3")) || input_gamepad_check_pressed(input_player
 
 if (rebinding)
 {
-    var _binding = input_binding_scan_tick(0, rebinding_source);
+    var _binding = input_binding_scan_tick(rebinding_source);
     if (_binding != undefined)
     {
         input_binding_set_safe(VERB.UP, _binding);

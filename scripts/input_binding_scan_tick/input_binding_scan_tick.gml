@@ -1,5 +1,5 @@
-/// @param [playerIndex]
 /// @param [source]
+/// @param [playerIndex]
 
 enum INPUT_BINDING_SCAN_EVENT
 {
@@ -14,8 +14,8 @@ enum INPUT_BINDING_SCAN_EVENT
 
 function input_binding_scan_tick()
 {
-    var _player_index  = ((argument_count > 0) && (argument[0] != undefined))? argument[0] : 0;
-    var _filter_source = (argument_count > 1)? argument[1] : undefined;
+    var _filter_source = (argument_count > 0)? argument[0] : undefined;
+    var _player_index  = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
     
     #region Check input arguments
     
