@@ -161,10 +161,10 @@ function input_binding_get_name(_binding)
                     case gp_shoulderlb: return "gamepad axis trigger l"; break;
                     case gp_shoulderrb: return "gamepad axis trigger b"; break;
                     
-                    case gp_axislh: return axis_negative? "gamepad axis thumbstick l left" : "gamepad button thumbstick l right"; break;
-                    case gp_axislv: return axis_negative? "gamepad axis thumbstick l up"   : "gamepad button thumbstick l down";  break;
-                    case gp_axisrh: return axis_negative? "gamepad axis thumbstick r left" : "gamepad button thumbstick r right"; break;
-                    case gp_axisrv: return axis_negative? "gamepad axis thumbstick r up"   : "gamepad button thumbstick r down";  break;
+                    case gp_axislh: return axis_negative? "gamepad axis thumbstick l left" : "gamepad axis thumbstick l right"; break;
+                    case gp_axislv: return axis_negative? "gamepad axis thumbstick l up"   : "gamepad axis thumbstick l down";  break;
+                    case gp_axisrh: return axis_negative? "gamepad axis thumbstick r left" : "gamepad axis thumbstick r right"; break;
+                    case gp_axisrv: return axis_negative? "gamepad axis thumbstick r up"   : "gamepad axis thumbstick r down";  break;
                     
                     default: return "gamepad axis unknown"; break;
                 }
