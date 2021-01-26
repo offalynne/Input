@@ -1,7 +1,8 @@
 #macro __INPUT_VERSION "3.1.1.pre000"
 #macro __INPUT_DATE    "2020-01-17"
 #macro __INPUT_DEBUG   false
-#macro __INPUT_SDL2_DATABASE_FILENAME  "gamecontrollerdb.txt" //Name of the SDL2 database to read gamepad remapping definitions from
+#macro __INPUT_SDL2_DATABASE_FILENAME    "gamecontrollerdb.txt" //Name of the SDL2 database to read gamepad remapping definitions from
+#macro __INPUT_CONTROLLER_TYPE_FILENAME  "controllertypes.csv"  //Name of the controller type database to read gamepad types from
 
 enum INPUT_SOURCE
 {
@@ -172,7 +173,15 @@ if (INPUT_SDL2_ALLOW_EXTERNAL)
     }
 }
 
-
+global.__input_type_dictionary = {};
+if (file_exists(__INPUT_CONTROLLER_TYPE_FILENAME))
+{
+    __input_load_type_csv(__INPUT_CONTROLLER_TYPE_FILENAME);
+}
+else
+{
+    __input_trace("Warning! \"", __INPUT_CONTROLLER_TYPE_FILENAME, "\" not found in Included Files");
+}
 
 
 

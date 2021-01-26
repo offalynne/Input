@@ -27,7 +27,7 @@ input_default_key(vk_enter    , VERB.PAUSE, 1);
 
 input_default_mouse_button(mb_left, VERB.CONFIRM, 1);
 
-input_default_gamepad_swap_ab(true);
+input_default_gamepad_swap_ab(false);
 input_default_gamepad_axis(gp_axislh  , true , VERB.LEFT );
 input_default_gamepad_axis(gp_axislh  , false, VERB.RIGHT);
 input_default_gamepad_axis(gp_axislv  , true , VERB.UP   );

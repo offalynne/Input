@@ -62,8 +62,9 @@
     {"id":{"name":"input_check_pressed","path":"scripts/input_check_pressed/input_check_pressed.yy",},"order":1,},
     {"id":{"name":"__input_class_gamepad","path":"scripts/__input_class_gamepad/__input_class_gamepad.yy",},"order":2,},
     {"id":{"name":"__input_system","path":"scripts/__input_system/__input_system.yy",},"order":0,},
-    {"id":{"name":"__input_binding_get_source","path":"scripts/__input_binding_get_source/__input_binding_get_source.yy",},"order":9,},
+    {"id":{"name":"__input_binding_get_source","path":"scripts/__input_binding_get_source/__input_binding_get_source.yy",},"order":11,},
     {"id":{"name":"input_bindings_write","path":"scripts/input_bindings_write/input_bindings_write.yy",},"order":9,},
+    {"id":{"name":"__input_load_type_csv","path":"scripts/__input_load_type_csv/__input_load_type_csv.yy",},"order":10,},
     {"id":{"name":"input_binding_get_name","path":"scripts/input_binding_get_name/input_binding_get_name.yy",},"order":7,},
     {"id":{"name":"input_rebind_tick_legacy","path":"scripts/input_rebind_tick_legacy/input_rebind_tick_legacy.yy",},"order":1,},
     {"id":{"name":"input_value","path":"scripts/input_value/input_value.yy",},"order":7,},
@@ -72,6 +73,7 @@
     {"id":{"name":"input_is_analogue","path":"scripts/input_is_analogue/input_is_analogue.yy",},"order":6,},
     {"id":{"name":"input_bindings_reset","path":"scripts/input_bindings_reset/input_bindings_reset.yy",},"order":8,},
     {"id":{"name":"input_check_double_pressed","path":"scripts/input_check_double_pressed/input_check_double_pressed.yy",},"order":4,},
+    {"id":{"name":"__input_csv_to_array","path":"scripts/__input_csv_to_array/__input_csv_to_array.yy",},"order":9,},
     {"id":{"name":"__input_exception_handler","path":"scripts/__input_exception_handler/__input_exception_handler.yy",},"order":7,},
     {"id":{"name":"__input_default_gamepad_axis_pair__UNUSED","path":"scripts/__input_default_gamepad_axis_pair__UNUSED/__input_default_gamepad_axis_pair__UNUSED.yy",},"order":3,},
     {"id":{"name":"input_stance_define","path":"scripts/input_stance_define/input_stance_define.yy",},"order":0,},
@@ -130,7 +132,7 @@
     {"folderPath":"folders/Input/Gamepads (Direct).yy","order":9,"resourceVersion":"1.0","name":"Gamepads (Direct)","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/(System).yy","order":11,"resourceVersion":"1.0","name":"(System)","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Test Cases.yy","order":3,"resourceVersion":"1.0","name":"Test Cases","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Input/(System)/Deprecated.yy","order":10,"resourceVersion":"1.0","name":"Deprecated","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Input/(System)/Deprecated.yy","order":12,"resourceVersion":"1.0","name":"Deprecated","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/History.yy","order":2,"resourceVersion":"1.0","name":"History","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
@@ -141,6 +143,7 @@
   ],
   "IncludedFiles": [
     {"CopyToMask":9042383626830062,"filePath":"datafiles","resourceVersion":"1.0","name":"gamecontrollerdb.txt","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"controllertypes.csv","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.1.542",
