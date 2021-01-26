@@ -1,6 +1,5 @@
 /// @param verb
 /// @param binding
-/// @param [source]
 /// @param [playerIndex]
 /// @param [alternate]
 
@@ -8,12 +7,32 @@ function input_binding_set_safe()
 {
     var _verb         = argument[0];
     var _binding      = argument[1];
-    var _source       = (argument_count > 2)? argument[2] : undefined;
-    var _player_index = ((argument_count > 3) && (argument[3] != undefined))? argument[3] : 0;
-    var _alternate    = ((argument_count > 4) && (argument[4] != undefined))? argument[4] : 0;
+    var _player_index = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : 0;
+    var _alternate    = ((argument_count > 3) && (argument[3] != undefined))? argument[3] : 0;
     
     if (input_value_is_binding(_binding))
     {
+        var _source = undefined;
+        
+        if ((_binding.type == "key")
+        ||  (_binding.type == "mouse button")
+        ||  (_binding.type == "mouse wheel up")
+        ||  (_binding.type == "mouse wheel down"))
+        {
+            _source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
+        }
+        else if ((_binding.type == "gamepad button")
+             ||  (_binding.type == "gamepad axis"))
+        {
+            _source = INPUT_SOURCE.GAMEPAD;
+        }
+        
+        if (_source == undefined)
+        {
+            __input_error("Binding type \"", _binding.type, "\" unrecognised");
+            return false;
+        }
+        
         var _collisions = input_binding_get_collisions(_binding, _source, _player_index);
         if (array_length(_collisions) == 0)
         {

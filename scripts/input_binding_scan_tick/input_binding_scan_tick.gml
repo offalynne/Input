@@ -193,7 +193,7 @@ function input_binding_scan_tick()
                     {
                         __input_trace("Binding scan failed: New binding source (", input_source_get_name(_binding_source), ") for ", _player_index, " doesn't match desired rebinding source (", input_source_get_name(rebind_target_source), ")");
                         rebind_state = -1;
-                        return INPUT_BINDING_SCAN_EVENT.BINDING_DOESNT_MATCH_SOURCE
+                        return INPUT_BINDING_SCAN_EVENT.BINDING_DOESNT_MATCH_SOURCE;
                     }
                     else
                     {

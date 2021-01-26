@@ -24,7 +24,7 @@ if (rebinding)
     var _binding = input_binding_scan_tick(0, rebinding_source);
     if (_binding != undefined)
     {
-        input_binding_set_safe(VERB.UP, _binding, rebinding_source);
+        input_binding_set_safe(VERB.UP, _binding);
         rebinding = false;
     }
 }
