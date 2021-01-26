@@ -10,6 +10,7 @@
     {"id":{"name":"input_bindings_read","path":"scripts/input_bindings_read/input_bindings_read.yy",},"order":10,},
     {"id":{"name":"input_player_source_get","path":"scripts/input_player_source_get/input_player_source_get.yy",},"order":1,},
     {"id":{"name":"input_gamepad_check_released","path":"scripts/input_gamepad_check_released/input_gamepad_check_released.yy",},"order":2,},
+    {"id":{"name":"obj_test_rebinding","path":"objects/obj_test_rebinding/obj_test_rebinding.yy",},"order":8,},
     {"id":{"name":"input_player_stance_get","path":"scripts/input_player_stance_get/input_player_stance_get.yy",},"order":7,},
     {"id":{"name":"input_default_gamepad_axis","path":"scripts/input_default_gamepad_axis/input_default_gamepad_axis.yy",},"order":6,},
     {"id":{"name":"input_consume","path":"scripts/input_consume/input_consume.yy",},"order":2,},
@@ -113,8 +114,8 @@
     "children": [],
   },
   "RoomOrderNodes": [
-    {"roomId":{"name":"rm_example","path":"rooms/rm_example/rm_example.yy",},},
     {"roomId":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
+    {"roomId":{"name":"rm_example","path":"rooms/rm_example/rm_example.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Input.yy","order":2,"resourceVersion":"1.0","name":"Input","tags":[],"resourceType":"GMFolder",},
