@@ -14,11 +14,14 @@ function __input_load_type_csv(_filename)
     repeat(array_length(_row_array) - 1)
     {
         var _column_array = _row_array[_y];
-        var _type    = _column_array[0];
-        var _vendor  = _column_array[1];
-        var _product = _column_array[2];
-        
-        global.__input_type_dictionary[$ _vendor + _product] = _type;
+        if (array_length(_column_array) == 3)
+        {
+            var _type    = _column_array[0];
+            var _vendor  = _column_array[1];
+            var _product = _column_array[2];
+            
+            global.__input_type_dictionary[$ _vendor + _product] = _type;
+        }
         
         ++_y;
     }
