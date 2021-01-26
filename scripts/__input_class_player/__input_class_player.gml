@@ -344,9 +344,19 @@ function __input_class_player() constructor
         return undefined;
     }
     
+    /// @param [source]
     static any_input = function()
     {
-        switch(source)
+        var _source = ((argument_count > 0) && (argument[0] != undefined))? argument[0] : source;
+        
+        if (_source == all)
+        {
+            if (any_input(INPUT_SOURCE.KEYBOARD_AND_MOUSE)) return true;
+            if (any_input(INPUT_SOURCE.GAMEPAD)) return true;
+            return false;
+        }
+        
+        switch(_source)
         {
             case INPUT_SOURCE.NONE:
                 return false;
