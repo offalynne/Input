@@ -21,6 +21,7 @@
     {"id":{"name":"input_cursor_x","path":"scripts/input_cursor_x/input_cursor_x.yy",},"order":5,},
     {"id":{"name":"input_binding_get_collisions","path":"scripts/input_binding_get_collisions/input_binding_get_collisions.yy",},"order":5,},
     {"id":{"name":"input_check","path":"scripts/input_check/input_check.yy",},"order":0,},
+    {"id":{"name":"snap_to_csv","path":"scripts/snap_to_csv/snap_to_csv.yy",},"order":15,},
     {"id":{"name":"__input_config","path":"scripts/__input_config/__input_config.yy",},"order":0,},
     {"id":{"name":"input_default_mouse_wheel_down","path":"scripts/input_default_mouse_wheel_down/input_default_mouse_wheel_down.yy",},"order":4,},
     {"id":{"name":"input_cursor_prev_y","path":"scripts/input_cursor_prev_y/input_cursor_prev_y.yy",},"order":8,},
@@ -144,7 +145,7 @@
   "IncludedFiles": [
     {"CopyToMask":9042383626830062,"filePath":"datafiles","resourceVersion":"1.0","name":"gamecontrollerdb.txt","resourceType":"GMIncludedFile",},
     {"CopyToMask":153157610357391598,"filePath":"datafiles","resourceVersion":"1.0","name":"controllertypes.csv","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":".~lock.controllertypes.csv#","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"controllertypes old.csv","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.1.542",
