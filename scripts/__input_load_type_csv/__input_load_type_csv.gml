@@ -22,16 +22,8 @@ function __input_load_type_csv(_filename)
         repeat(array_length(_column_array) - 1)
         {
             var _tag = _column_array[_x];
-            
-            if (string_length(_tag) == 8)
-            {
-                global.__input_type_dictionary[$ _tag] = _type;
-                _count++;
-            }
-            else if (string_length(_tag) > 0)
-            {
-                __input_trace("Warning! Gamepad GUID \"", _tag, "\" from type CSV cannot be parsed");
-            }
+            global.__input_type_dictionary[$ _tag] = _type;
+            _count++;
             
             ++_x;
         }
