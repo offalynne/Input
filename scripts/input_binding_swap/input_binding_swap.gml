@@ -31,6 +31,6 @@ function input_binding_swap()
     var _binding_a = input_binding_get(_verb_a, _source, _player_index, _alternate_a);
     var _binding_b = input_binding_get(_verb_b, _source, _player_index, _alternate_b);
     
-    input_binding_set(_verb_a, _binding_b, _source, _player_index, _alternate_a);
-    input_binding_set(_verb_b, _binding_a, _source, _player_index, _alternate_b);
+    input_binding_set(_verb_a, _binding_b, _player_index, _alternate_a);
+    input_binding_set(_verb_b, _binding_a, _player_index, _alternate_b);
 }
