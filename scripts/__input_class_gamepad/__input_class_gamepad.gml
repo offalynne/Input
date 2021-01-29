@@ -6,6 +6,9 @@ function __input_class_gamepad(_index) constructor
     guid              = gamepad_get_guid(_index);
     xinput            = undefined;
     type              = undefined;
+    guessed_type      = false;
+    blacklisted       = false;
+    sdl2_definition   = undefined;
     
     vendor            = undefined;
     product           = undefined;
@@ -184,8 +187,10 @@ function __input_class_gamepad(_index) constructor
         }
     }
     
-    __input_gamepad_determine_mapping(self);
-    __input_gamepad_determine_type(self);
+    __input_gamepad_set_vid_pid(self);
+    __input_gamepad_find_in_sdl2_database(self); //Also sets gamepad description
+    __input_gamepad_set_type(self);
+    __input_gamepad_set_mapping(self);
     
     __input_trace("Gamepad ", index, " discovered, type = \"", type, "\", description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
 }
