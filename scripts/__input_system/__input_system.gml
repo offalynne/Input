@@ -48,7 +48,7 @@ if (INPUT_EXTERNAL_DEBUG_LOG && __INPUT_DEBUG)
     exception_unhandled_handler(__input_exception_handler);
 }
 
-__input_trace("Welcome to Input by @jujuadams! This is version ", __INPUT_VERSION, ", ", __INPUT_DATE);
+__input_trace("Welcome to Input by @jujuadams and @offalynne! This is version ", __INPUT_VERSION, ", ", __INPUT_DATE);
 
 //Global frame counter. This is used for input buffering
 global.__input_frame = 0;
