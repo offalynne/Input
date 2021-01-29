@@ -63,7 +63,7 @@ function __input_gamepad_set_type(_gamepad)
                 //Catch all remaining PlayStation gamepads as PS3
                 type = "ps3";
             }
-            else if (string_count("switch", _desc))
+            else if (string_count("switch", _desc) || string_count("lic pro controller", _desc))
             {
                 type = "switch";
             }
