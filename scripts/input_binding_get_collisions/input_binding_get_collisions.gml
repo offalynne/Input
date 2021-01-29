@@ -28,7 +28,7 @@ function input_binding_get_collisions()
     
     with(global.__input_players[_player_index])
     {
-        var _source = __input_binding_get_source(_binding)
+        var _source = __input_binding_get_source(_src_binding)
         
         var _source_name = global.__input_source_names[_source];
         var _source_verb_struct = variable_struct_get(config, _source_name);
