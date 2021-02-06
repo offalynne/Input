@@ -20,7 +20,7 @@ function __input_gamepad_set_type(_gamepad)
             break;
             
             case os_xboxone:
-                type = "xbone";
+                type = "xbox one";
                 exit;
             break;
         }
@@ -28,7 +28,7 @@ function __input_gamepad_set_type(_gamepad)
         if (xinput == true)
         {
             //We can't get the actual GUID for XInput controllers for some reason so we have to assume they're all the same :(
-            type = "xb360";
+            type = "xbox 360";
             guessed_type = true;
         }
         else if (variable_struct_exists(global.__input_type_dictionary, vendor + product))
@@ -48,7 +48,7 @@ function __input_gamepad_set_type(_gamepad)
             }
             else if (string_count("saturn", _desc))
             {
-                type = "sat";
+                type = "saturn";
             }
             else if (string_count("ps5", _desc) || string_count("dualsense", _desc))
             {
@@ -60,8 +60,8 @@ function __input_gamepad_set_type(_gamepad)
             }
             else if (string_count("playstation", _desc) || string_count("ps1", _desc) || string_count("ps2", _desc) || string_count("ps3", _desc) || string_count("dualshock", _desc))
             {
-                //Catch all remaining PlayStation gamepads as PS3
-                type = "ps3";
+                //Catch all remaining PlayStation gamepads as PSX
+                type = "psx";
             }
             else if (string_count("switch", _desc) || string_count("lic pro controller", _desc))
             {
@@ -69,19 +69,15 @@ function __input_gamepad_set_type(_gamepad)
             }
             else if (string_count("xbox one", _desc))
             {
-                type = "xbone";
+                type = "xbox one";
             }
             else if (string_count("xbox 360", _desc) || string_count("xbox360", _desc))
             {
-                type = "xb360";
-            }
-            else if (string_count("wii", _desc))
-            {
-                type = "wii";
+                type = "xbox 360";
             }
             else if (string_count("8bitdo", _desc))
             {
-                type = "8bd";
+                type = "8bitdo";
             }
             else
             {
