@@ -110,6 +110,10 @@ function __input_load_type_csv(_filename)
                 case "UnknownNonSteamController":
                     _type = "unknown";
                 break;
+                
+                default:
+                    _type = "unknown";
+                break;
             }
         }
         
