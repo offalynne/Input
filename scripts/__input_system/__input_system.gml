@@ -1,6 +1,6 @@
-#macro __INPUT_VERSION "3.2.1.pre000"
-#macro __INPUT_DATE    "2020-02-01"
-#macro __INPUT_DEBUG   false
+#macro __INPUT_VERSION                   "3.2.2.pre000"
+#macro __INPUT_DATE                      "2020-02-06"
+#macro __INPUT_DEBUG                     false
 #macro __INPUT_SDL2_DATABASE_FILENAME    "gamecontrollerdb.txt"    //Name of the SDL2 database to read gamepad remapping definitions from
 #macro __INPUT_CONTROLLER_TYPE_FILENAME  "controllertypes.csv"     //Name of the controller type database to read gamepad types from
 #macro __INPUT_BLACKLIST_FILENAME        "controllerblacklist.csv" //Name of the controller blacklist database to read from
