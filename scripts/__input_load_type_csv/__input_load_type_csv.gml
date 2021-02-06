@@ -16,7 +16,102 @@ function __input_load_type_csv(_filename)
     {
         var _column_array = _row_array[_y];
         
-        var _type = _column_array[0];
+        var _raw_type = _column_array[0];
+        
+        if (INPUT_SIMPLIFY_CONTROLLER_TYPES)
+        {
+            //Alias the raw type to an internal type
+            var _type = _raw_type;
+            switch(_raw_type)
+            {
+                case "SteamController":
+                case "SteamControllerV2":
+                    _type = "steam";
+                break;
+                
+                case "CommunityLikeXBox":
+                    _type = "xbox";
+                break;
+                
+                case "XBox360Controller":
+                case "CommunityXBox360":
+                    _type = "xbox 360";
+                break;
+                
+                case "XBoxOneController":
+                case "CommunityXBoxOne":
+                    _type = "xbox one";
+                break;
+                
+                case "PS3Controller":
+                case "CommunityPSX":
+                    _type = "psx";
+                break;
+                
+                case "PS4Controller":
+                case "CommunityPS4":
+                    _type = "ps4";
+                break;
+                
+                case "PS5Controller":
+                    _type = "ps5";
+                break;
+                
+                case "AppleController":
+                    _type = "apple";
+                break;
+                
+                case "SwitchProController":
+                    _type = "switch pro";
+                break;
+                
+                case "SwitchJoyConLeft":
+                    _type = "switch joycon left";
+                break;
+                
+                case "SwitchJoyConRight":
+                    _type = "switch joycon right";
+                break;
+                
+                case "SwitchInputOnlyController":
+                case "XInputSwitchController":
+                case "CommunityLikeSwitch":
+                    _type = "switch";
+                break;
+                
+                case "MobileTouch":
+                    _type = "mobile touch";
+                break;
+                
+                case "CommunitySaturn":
+                    _type = "saturn";
+                break;
+                
+                case "CommunitySNES":
+                    _type = "snes";
+                break;
+                
+                case "Community8BitDo":
+                    _type = "8bitdo";
+                break;
+                
+                case "CommunityGameCube":
+                    _type = "gamecube";
+                break;
+                
+                case "CommunityOuya":
+                    _type = "ouya";
+                break;
+                
+                case "CommunityStadia":
+                    _type = "stadia";
+                break;
+                
+                case "UnknownNonSteamController":
+                    _type = "unknown";
+                break;
+            }
+        }
         
         var _x = 1;
         repeat(array_length(_column_array) - 1)
