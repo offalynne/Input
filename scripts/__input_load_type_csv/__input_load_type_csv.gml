@@ -26,15 +26,13 @@ function __input_load_type_csv(_filename)
             {
                 case "SteamController":
                 case "SteamControllerV2":
+                case "MobileTouch":
                     _type = "steam";
-                break;
-                
-                case "CommunityLikeXBox":
-                    _type = "xbox";
                 break;
                 
                 case "XBox360Controller":
                 case "CommunityXBox360":
+                case "CommunityLikeXBox":
                     _type = "xbox 360";
                 break;
                 
@@ -76,11 +74,8 @@ function __input_load_type_csv(_filename)
                 case "SwitchInputOnlyController":
                 case "XInputSwitchController":
                 case "CommunityLikeSwitch":
+                case "Community8BitDo":
                     _type = "switch";
-                break;
-                
-                case "MobileTouch":
-                    _type = "mobile touch";
                 break;
                 
                 case "CommunitySaturn":
@@ -89,10 +84,6 @@ function __input_load_type_csv(_filename)
                 
                 case "CommunitySNES":
                     _type = "snes";
-                break;
-                
-                case "Community8BitDo":
-                    _type = "8bitdo";
                 break;
                 
                 case "CommunityGameCube":
