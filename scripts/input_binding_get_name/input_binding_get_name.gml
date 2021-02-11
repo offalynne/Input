@@ -14,7 +14,7 @@ function input_binding_get_name(_binding)
                     //Latin letters
                     return chr(value);
                 }
-                else if ((value >= vk_f1) && (value <= vk_f12))
+                else if ((value >= vk_f1) && (value <= vk_f1 + 23))
                 {
                     //Function keys
                     return ("F" + string(1 + value - vk_f1));
