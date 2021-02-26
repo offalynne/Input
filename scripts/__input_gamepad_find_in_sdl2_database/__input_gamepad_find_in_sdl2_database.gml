@@ -124,10 +124,21 @@ function __input_gamepad_find_in_sdl2_database(_gamepad)
             exit;
         }
         
-        //TODO - Use structs instead?
+        //Check to see if our device GUID matches the SDL2 database perfectly somewhere
+        var _guid_dict = global.__input_sdl2_database.by_guid;
+        if (variable_struct_exists(_guid_dict, guid))
+        {
+            var _definition = _guid_dict[$ guid];
+            sdl2_definition = _definition;
+            description     = _definition[1];
+            
+            exit;
+        }
+        
+        //Otherwise search through our vendor+product IDs
         var _vp_array = variable_struct_get(global.__input_sdl2_database.by_vendor_product, vendor + product);
         var _os_array = variable_struct_get(global.__input_sdl2_database.by_platform, os_type);
-                
+        
         var _result_array = [];
                 
         var _v = 0;
@@ -163,11 +174,11 @@ function __input_gamepad_find_in_sdl2_database(_gamepad)
         if (is_array(_definition))
         {
             sdl2_definition = _definition;
-            description = _definition[1];
+            description     = _definition[1];
         }
         else
         {
-            __input_trace("Warning! No SDL defintion found for vendor=", vendor, ", product=", product);
+            __input_trace("Warning! No SDL defintion found for ", guid, " (vendor=", vendor, ", product=", product, ")");
             description = "Unknown";
         }
     }
