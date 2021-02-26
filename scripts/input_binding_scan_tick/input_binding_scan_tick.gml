@@ -123,7 +123,7 @@ function input_binding_scan_tick()
                 
                 #region Listeners
                 
-                if (keyboard_key > 0)
+                if ((keyboard_key > 0) && !__input_key_is_ignored(keyboard_key))
                 {
                     //Keyboard
                     _new_binding = new __input_class_binding("key", keyboard_key);

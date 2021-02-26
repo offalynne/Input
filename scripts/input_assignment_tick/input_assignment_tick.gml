@@ -112,7 +112,11 @@ function __input_assignment_tick_input(_player_index)
 {
     if (global.__input_keyboard_valid && __input_source_is_available(INPUT_SOURCE.KEYBOARD_AND_MOUSE) && keyboard_check_pressed(vk_anykey))
     {
-        return { source : INPUT_SOURCE.KEYBOARD_AND_MOUSE, gamepad : undefined };
+        //Ensure that this key isn't one we're trying to ignore
+        if (!__input_key_is_ignored(keyboard_key))
+        {
+            return { source : INPUT_SOURCE.KEYBOARD_AND_MOUSE, gamepad : undefined };
+        }
     }
     else if (global.__input_mouse_valid && __input_source_is_available(INPUT_SOURCE.KEYBOARD_AND_MOUSE)
          &&  (device_mouse_check_button_pressed(0, mb_any) || mouse_wheel_up() || mouse_wheel_down()))

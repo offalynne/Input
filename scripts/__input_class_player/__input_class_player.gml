@@ -356,7 +356,8 @@ function __input_class_player() constructor
             break;
             
             case INPUT_SOURCE.KEYBOARD_AND_MOUSE:
-                return (keyboard_check(vk_anykey) || global.__input_mouse_moved || device_mouse_check_button(0, mb_any) || mouse_wheel_up() || mouse_wheel_down());
+                var _keyboard_valid = (keyboard_check(vk_anykey) && !__input_key_is_ignored(keyboard_key));
+                return (_keyboard_valid || global.__input_mouse_moved || device_mouse_check_button(0, mb_any) || mouse_wheel_up() || mouse_wheel_down());
             break;
             
             case INPUT_SOURCE.GAMEPAD:

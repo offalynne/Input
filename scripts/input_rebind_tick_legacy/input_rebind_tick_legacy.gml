@@ -134,7 +134,7 @@ function input_rebind_tick_legacy()
                 switch(source)
                 {
                     case INPUT_SOURCE.KEYBOARD_AND_MOUSE:
-                        if (keyboard_key > 0)
+                        if ((keyboard_key > 0) && !__input_key_is_ignored(keyboard_key))
                         {
                             _new_binding = new __input_class_binding("key", keyboard_key);
                         }
