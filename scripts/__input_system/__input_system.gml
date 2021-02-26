@@ -105,6 +105,7 @@ global.__input_gamepads = array_create(gamepad_get_device_count(), undefined);
 //Our database of SDL2 definitions, used for the aforementioned remapping information
 global.__input_sdl2_database = {
     array             : [],
+    by_guid           : {},
     by_vendor_product : {},
     by_platform       : {},
 };

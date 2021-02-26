@@ -161,6 +161,7 @@ function __input_load_sdl2_from_buffer(_buffer)
     #endregion
     
     var _db_array             = global.__input_sdl2_database.array;
+    var _db_by_guid           = global.__input_sdl2_database.by_guid;
     var _db_by_vendor_product = global.__input_sdl2_database.by_vendor_product;
     var _db_by_platform       = global.__input_sdl2_database.by_platform
     
@@ -173,11 +174,13 @@ function __input_load_sdl2_from_buffer(_buffer)
             //Ignore comments
             if (string_pos("#", _row_array[0]) <= 0)
             {
+                var _guid = _row_array[0];
+                
                 //Add this definition to the main database array
                 _db_array[@ array_length(_db_array)] = _row_array;
                 
                 //Figure out this definition's vendor+product name is
-                var _result = __input_gamepad_guid_parse(_row_array[0], false);
+                var _result = __input_gamepad_guid_parse(_guid, false);
                 var _vendor_product = _result.vendor + _result.product;
                 
                 //Add this definition to the "by vendor+product" struct
@@ -222,6 +225,24 @@ function __input_load_sdl2_from_buffer(_buffer)
                         variable_struct_set(_db_by_platform, _platform, _os_array);
                     }
                     _os_array[@ array_length(_os_array)] = _row_array;
+                }
+                else
+                {
+                    __input_trace("Warning! Platform not found for ", _row_array);
+                }
+                
+                //Try to add this definition by GUID to our by-GUID database
+                //We ignore any definition that has a platform that's different to our current platform
+                if ((_platform == undefined) || (_platform == os_type))
+                {
+                    if (variable_struct_exists(_db_by_guid, _guid))
+                    {
+                        //We have a GUID collision then it's probably the user overwriting
+                        __input_trace("Warning! Overwriting GUID \"", _guid, "\" with ", _row_array, " (old=", _db_by_guid[$ _guid], ")");
+                    }
+                    
+                    //Add this definition 
+                    _db_by_guid[$ _guid] = _row_array;
                 }
             }
         }
