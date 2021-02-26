@@ -27,6 +27,6 @@ function input_cursor_moved()
     
     with(global.__input_players[_player_index].cursor)
     {
-        return ((__input_get_time() - moved_time) <= _buffer_duration);
+        return ((moved_time >= 0) && ((__input_get_time() - moved_time) <= _buffer_duration));
     }
 }

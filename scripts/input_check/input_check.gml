@@ -47,6 +47,6 @@ function input_check()
     }
     else
     {
-        return (__input_get_time() - _verb_struct.held_time) <= _buffer_duration;
+        return ((_verb_struct.held_time >= 0) && ((__input_get_time() - _verb_struct.held_time) <= _buffer_duration));
     }
 }

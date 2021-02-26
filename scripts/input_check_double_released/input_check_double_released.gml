@@ -47,6 +47,6 @@ function input_check_double_released()
     }
     else
     {
-        return (__input_get_time() - _verb_struct.double_release_time) <= _buffer_duration;
+        return ((_verb_struct.double_release_time >= 0) && ((__input_get_time() - _verb_struct.double_release_time) <= _buffer_duration));
     }
 }

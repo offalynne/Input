@@ -16,7 +16,7 @@ function __input_class_cursor() constructor
     limit_y = undefined;
     limit_radius = undefined;
     
-    moved_time = __input_get_time();
+    moved_time = -1;
     
     tick = function(_rebind_state)
     {

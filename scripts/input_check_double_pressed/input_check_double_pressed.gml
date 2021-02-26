@@ -47,6 +47,6 @@ function input_check_double_pressed()
     }
     else
     {
-        return (__input_get_time() - _verb_struct.double_press_time) <= _buffer_duration;
+        return ((_verb_struct.double_press_time >= 0) && ((__input_get_time() - _verb_struct.double_press_time) <= _buffer_duration));
     }
 }

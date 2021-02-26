@@ -47,7 +47,7 @@ function input_check_pressed()
     }
     else
     {
-        return (__input_get_time() - _verb_struct.press_time) <= _buffer_duration;
+        return ((_verb_struct.press_time >= 0) && ((__input_get_time() - _verb_struct.press_time) <= _buffer_duration));
     }
 }
 
