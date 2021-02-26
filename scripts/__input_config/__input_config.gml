@@ -34,13 +34,6 @@
 //This setting only affects Input and will not filter these keys from native GameMaker functions
 #macro INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL  2
 
-//The following macro controls default key filtering behaviour on Android specifically
-//  0 = Don't ignore any keyboard input
-//  1 = Ignore backspace + escape when using a gamepad
-//  2 = Ignore all keyboard input when using a gamepad
-//This setting only affects Input and will not filter these keys from native GameMaker functions
-#macro INPUT_ANDROID_IGNORE_KEYBOARD_LEVEL  1
-
 #region Forbidden Fruit
 
 #macro INPUT_EXTERNAL_DEBUG_LOG  false  //Do NOT set to <true> unless directed (!)
