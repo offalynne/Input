@@ -79,6 +79,9 @@ global.__input_swap_ab = false;
 //Struct that contains which verbs to track when recording history
 global.__input_history_include = {};
 
+//Struct to store all the keyboard keys we want to ignore
+global.__input_ignore_key_dict = {};
+
 //Names for sources. I suspect this'll get sliced out at some point when I start recoding the binding system to serialise per controller type
 global.__input_source_names = ["none", "keyboard and mouse", "gamepad"];
 
@@ -195,6 +198,62 @@ else
 {
     __input_trace("Warning! \"", __INPUT_BLACKLIST_FILENAME, "\" not found in Included Files");
 }
+
+//Set up ignored keys as directed
+if (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL == 1)
+{
+    input_ignore_key_add(vk_alt);
+    input_ignore_key_add(vk_ralt);
+    input_ignore_key_add(vk_lalt);
+    input_ignore_key_add(91); //left meta
+    input_ignore_key_add(92); //right meta
+}
+else if (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL == 2)
+{
+    input_ignore_key_add(vk_alt);
+    input_ignore_key_add(vk_ralt);
+    input_ignore_key_add(vk_lalt);
+    input_ignore_key_add(91); //left meta
+    input_ignore_key_add(92); //right meta
+    
+    input_ignore_key_add(144); //num lock
+    input_ignore_key_add(145); //scroll lock
+    
+    input_ignore_key_add(0x15); //IME key
+    input_ignore_key_add(0x16); //IME key
+    input_ignore_key_add(0x17); //IME key
+    input_ignore_key_add(0x18); //IME key
+    input_ignore_key_add(0x19); //IME key
+    input_ignore_key_add(0x1A); //IME key
+    input_ignore_key_add(0xE5); //IME key
+    
+    input_ignore_key_add(0xA6); //Browser key
+    input_ignore_key_add(0xA7); //Browser key
+    input_ignore_key_add(0xA8); //Browser key
+    input_ignore_key_add(0xA9); //Browser key
+    input_ignore_key_add(0xAA); //Browser key
+    input_ignore_key_add(0xAB); //Browser key
+    input_ignore_key_add(0xAC); //Browser key
+    
+    input_ignore_key_add(0xAD); //Media key
+    input_ignore_key_add(0xAE); //Media key
+    input_ignore_key_add(0xAF); //Media key
+    input_ignore_key_add(0xB0); //Media key
+    input_ignore_key_add(0xB1); //Media key
+    input_ignore_key_add(0xB2); //Media key
+    input_ignore_key_add(0xB3); //Media key
+    input_ignore_key_add(0xB4); //Media key
+    input_ignore_key_add(0xB5); //Media key
+    input_ignore_key_add(0xB6); //Media key
+    input_ignore_key_add(0xB7); //Media key
+}
+
+
+
+
+
+
+
 
 
 

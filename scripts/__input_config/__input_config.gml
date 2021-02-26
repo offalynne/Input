@@ -20,6 +20,27 @@
 
 #macro INPUT_SIMPLIFY_CONTROLLER_TYPES  true   //Whether to alias the controller database to easier-to-use types
 
+//The following macro controls default key filtering behaviour on desktop platforms (Windows + Mac + Linux)
+//Expected values are:
+//  0 = Don't ignore any keys
+//  1 = Ignore Alt & Windows/Command (Mac) keys
+//  2 = Ignore all reserved and/or system keys:
+//      - Alt & Windows/Command (Mac)
+//      - Num lock & Scroll lock
+//      - IME keys (0x15 - 0x1A, 0xE5)
+//      - Browser keys (0xA6 - 0xAC)
+//      - Media keys (0xAD - 0xB7)
+//You can modify this list at any time by calling input_ignore_key_add() or input_ignore_key_remove()
+//This setting only affects Input and will not filter these keys from native GameMaker functions
+#macro INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL  1
+
+//The following macro controls default key filtering behaviour on Android specifically
+//  0 = Don't ignore any keyboard input
+//  1 = Ignore backspace + escape when using a gamepad
+//  2 = Ignore all keyboard input when using a gamepad
+//This setting only affects Input and will not filter these keys from native GameMaker functions
+#macro INPUT_ANDROID_IGNORE_KEYBOARD_LEVEL  1
+
 #region Forbidden Fruit
 
 #macro INPUT_EXTERNAL_DEBUG_LOG  false  //Do NOT set to <true> unless directed (!)

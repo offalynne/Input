@@ -87,14 +87,14 @@ function __input_key_get_name(_key)
             case vk_pause:       return "pause break";  break;
             
             //Weirdo keys
-            case  12: return "clear";        break; //Numpad 5 key, but with numlock off. Did you know this key existed? I didn't
-            case  20: return "capslock";     break;
-            case  47: return "help";         break;
-            case  91: return "left meta";    break; // Windows/Command/Search key
-            case  92: return "right meta";   break;
-            case  93: return "menu";         break; // Apps key
-            case 144: return "numlock";      break;
-            case 145: return "scrolll lock"; break;
+            case  12: return "clear";       break; //Numpad 5 key, but with numlock off. Did you know this key existed? I didn't
+            case  20: return "capslock";    break;
+            case  47: return "help";        break;
+            case  91: return "left meta";   break; // Windows/Command/Search key
+            case  92: return "right meta";  break;
+            case  93: return "menu";        break; // Apps key
+            case 144: return "numlock";     break;
+            case 145: return "scroll lock"; break;
         }
         
         return chr(_key); //Fallback
