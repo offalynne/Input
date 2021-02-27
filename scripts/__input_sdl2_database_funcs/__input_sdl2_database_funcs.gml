@@ -182,8 +182,8 @@ function __input_load_sdl2_from_buffer(_buffer)
                 var _result = __input_gamepad_guid_parse(_guid, false, true);
                 var _vendor_product = _result.vendor + _result.product;
                 
-                //Find what platform this definition is for
-                //We do this backwards for the sake of efficiency
+                //Find what platform this definition is for by searching through the row's values
+                //We do this backwards for the sake of efficiency since platform is usually tacked on the end
                 var _platform = undefined;
                 var _x = array_length(_row_array)-1;
                 repeat(array_length(_row_array))
