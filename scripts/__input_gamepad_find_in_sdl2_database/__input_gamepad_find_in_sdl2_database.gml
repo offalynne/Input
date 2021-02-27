@@ -166,10 +166,6 @@ function __input_gamepad_find_in_sdl2_database(_gamepad)
         {
             var _definition = _result_array[0];
         }
-        else if (array_length(_vp_array) > 0) //If that fails, try using the binding for this gamepad from any OS
-        {
-            var _definition = _vp_array[0];
-        }
                 
         if (is_array(_definition))
         {
