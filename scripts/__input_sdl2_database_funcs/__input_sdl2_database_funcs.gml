@@ -160,7 +160,6 @@ function __input_load_sdl2_from_buffer(_buffer)
     
     #endregion
     
-    var _db_array             = global.__input_sdl2_database.array;
     var _db_by_guid           = global.__input_sdl2_database.by_guid;
     var _db_by_vendor_product = global.__input_sdl2_database.by_vendor_product;
     
@@ -174,9 +173,6 @@ function __input_load_sdl2_from_buffer(_buffer)
             if (string_pos("#", _row_array[0]) <= 0)
             {
                 var _guid = _row_array[0];
-                
-                //Add this definition to the main database array
-                _db_array[@ array_length(_db_array)] = _row_array;
                 
                 //Figure out this definition's vendor+product name is
                 var _result = __input_gamepad_guid_parse(_guid, false);
