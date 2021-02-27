@@ -135,36 +135,14 @@ function __input_gamepad_find_in_sdl2_database(_gamepad)
             exit;
         }
         
+        var _definition = undefined;
+        
         //Otherwise search through our vendor+product IDs
         var _vp_array = variable_struct_get(global.__input_sdl2_database.by_vendor_product, vendor + product);
-        var _os_array = variable_struct_get(global.__input_sdl2_database.by_platform, os_type);
         
-        var _result_array = [];
-                
-        var _v = 0;
-        repeat(array_length(_vp_array))
+        if (array_length(_vp_array) > 0) //Get the first binding for this vendor+product and OS
         {
-            var _definition = _vp_array[_v];
-                
-            var _o = 0;
-            repeat(array_length(_os_array))
-            {
-                if (_os_array[_o] == _definition)
-                {
-                    _result_array[@ array_length(_result_array)] = _definition;
-                    break;
-                }
-                        
-                ++_o;
-            }
-                    
-            ++_v;
-        }
-                
-        var _definition = undefined;
-        if (array_length(_result_array) > 0) //Get the first binding for this vendor+product and OS
-        {
-            var _definition = _result_array[0];
+            var _definition = _vp_array[0];
         }
                 
         if (is_array(_definition))

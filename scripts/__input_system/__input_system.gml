@@ -110,7 +110,6 @@ global.__input_sdl2_database = {
     array             : [],
     by_guid           : {},
     by_vendor_product : {},
-    by_platform       : {},
 };
 
 global.__input_sdl2_look_up_table = {
