@@ -179,7 +179,7 @@ function __input_load_sdl2_from_buffer(_buffer)
                 var _guid = _row_array[0];
                 
                 //Figure out this definition's vendor+product name is
-                var _result = __input_gamepad_guid_parse(_guid, false);
+                var _result = __input_gamepad_guid_parse(_guid, false, true);
                 var _vendor_product = _result.vendor + _result.product;
                 
                 //Find what platform this definition is for
@@ -211,16 +211,19 @@ function __input_load_sdl2_from_buffer(_buffer)
                 {
                     ++_platform_count;
                     
-                    //Add this definition to the "by vendor+product" struct
-                    var _vp_array = variable_struct_get(_db_by_vendor_product, _vendor_product);
-                    if (!is_array(_vp_array))
+                    if (_vendor_product != "")
                     {
-                        _vp_array = [];
-                        variable_struct_set(_db_by_vendor_product, _vendor_product, _vp_array);
+                        //Add this definition to the "by vendor+product" struct
+                        var _vp_array = variable_struct_get(_db_by_vendor_product, _vendor_product);
+                        if (!is_array(_vp_array))
+                        {
+                            _vp_array = [];
+                            variable_struct_set(_db_by_vendor_product, _vendor_product, _vp_array);
+                        }
+                        
+                        //Push the definition into the vendor+product array
+                        _vp_array[@ array_length(_vp_array)] = _row_array;
                     }
-                    
-                    //Push the definition into the vendor+product array
-                    _vp_array[@ array_length(_vp_array)] = _row_array;
                     
                     if (variable_struct_exists(_db_by_guid, _guid))
                     {
