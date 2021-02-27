@@ -160,6 +160,8 @@ function __input_load_sdl2_from_buffer(_buffer)
     
     #endregion
     
+    var _total_count          = 0;
+    var _platform_count       = 0;
     var _db_by_guid           = global.__input_sdl2_database.by_guid;
     var _db_by_vendor_product = global.__input_sdl2_database.by_vendor_product;
     
@@ -172,6 +174,8 @@ function __input_load_sdl2_from_buffer(_buffer)
             //Ignore comments
             if (string_pos("#", _row_array[0]) <= 0)
             {
+                ++_total_count;
+                
                 var _guid = _row_array[0];
                 
                 //Figure out this definition's vendor+product name is
@@ -205,6 +209,8 @@ function __input_load_sdl2_from_buffer(_buffer)
                 //We ignore any definition that has a platform that's different to our current platform
                 if ((_platform == undefined) || (_platform == os_type))
                 {
+                    ++_platform_count;
+                    
                     //Add this definition to the "by vendor+product" struct
                     var _vp_array = variable_struct_get(_db_by_vendor_product, _vendor_product);
                     if (!is_array(_vp_array))
@@ -231,7 +237,7 @@ function __input_load_sdl2_from_buffer(_buffer)
         ++_y;
     }
     
-    __input_trace(array_length(_db_array), " gamepad definitions found");
+    __input_trace(_total_count, " controller definitions found, of which ", _platform_count, " are active for this platform");
     __input_trace("Loaded in ", (get_timer() - _t)/1000, "ms");
     
     return true;
