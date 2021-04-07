@@ -56,7 +56,7 @@ function __input_gamepad_find_in_sdl2_database(_gamepad)
             case os_macosx:  _os = "mac";     break;
             case os_ios:     _os = "ios";     break;
             case os_tvos:    _os = "tvos";    break;
-            case os_android: _os = "tvos";    break;
+            case os_android: _os = "android";    break;
             
             default:
                 __input_error("OS not supported");
