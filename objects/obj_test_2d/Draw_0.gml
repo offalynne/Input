@@ -1,8 +1,8 @@
 var _string = "";
-_string += "Left  = " + string(input_value(VERB.LEFT   )) + "    " + string(input_binding_get_name(input_binding_get(VERB.LEFT   ))) + "\n";
-_string += "Right = " + string(input_value(VERB.RIGHT  )) + "    " + string(input_binding_get_name(input_binding_get(VERB.RIGHT  ))) + "\n";
-_string += "Up    = " + string(input_value(VERB.UP     )) + "    " + string(input_binding_get_name(input_binding_get(VERB.UP     ))) + "\n";
-_string += "Down  = " + string(input_value(VERB.DOWN   )) + "    " + string(input_binding_get_name(input_binding_get(VERB.DOWN   ))) + "\n";
+_string += "Left  = " + string(input_binding_get_name(input_binding_get(VERB.LEFT ))) + "\n";
+_string += "Right = " + string(input_binding_get_name(input_binding_get(VERB.RIGHT))) + "\n";
+_string += "Up    = " + string(input_binding_get_name(input_binding_get(VERB.UP   ))) + "\n";
+_string += "Down  = " + string(input_binding_get_name(input_binding_get(VERB.DOWN ))) + "\n";
 _string += "\n";
 _string += "x = " + string(input_x(VERB.LEFT, VERB.RIGHT, VERB.UP, VERB.DOWN)) + "\n";
 _string += "y = " + string(input_y(VERB.LEFT, VERB.RIGHT, VERB.UP, VERB.DOWN)) + "\n";
