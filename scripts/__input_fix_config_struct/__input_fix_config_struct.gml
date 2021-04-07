@@ -25,9 +25,6 @@ function __input_fix_config_struct(_config_struct)
                 {
                     if (!variable_struct_exists(_binding_struct, "value"        )) _binding_struct.value         = undefined;
                     if (!variable_struct_exists(_binding_struct, "axis_negative")) _binding_struct.axis_negative = undefined;
-                    
-                    //TODO - Implement axis pair
-                    //if (!variable_struct_exists(_binding_struct, "value_b"      )) _binding_struct.value_b       = undefined;
                 }
                 
                 ++_l;

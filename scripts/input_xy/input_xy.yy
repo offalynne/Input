@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Default Bindings",
-    "path": "folders/Input/Default Bindings.yy",
+    "name": "Checkers",
+    "path": "folders/Input/Checkers.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_default_gamepad_axis",
+  "name": "input_xy",
   "tags": [],
   "resourceType": "GMScript",
 }

@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Deprecated",
-    "path": "folders/Input/(System)/Deprecated.yy",
+    "name": "Checkers",
+    "path": "folders/Input/Checkers.yy",
   },
   "resourceVersion": "1.0",
-  "name": "__input_default_gamepad_axis_pair__UNUSED",
+  "name": "input_y",
   "tags": [],
   "resourceType": "GMScript",
 }

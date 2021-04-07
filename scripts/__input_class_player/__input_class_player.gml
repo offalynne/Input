@@ -198,33 +198,6 @@ function __input_class_player() constructor
                                     _analogue = true;
                                 }
                             break;
-                            
-                            //TODO - Implement axis pair
-                            //case "gamepad axis pair":
-                            //    var _found_raw   = input_gamepad_value(gamepad, _binding.value  );
-                            //    var _found_raw_b = input_gamepad_value(gamepad, _binding.value_b);
-                            //    
-                            //    var _raw_dist = sqrt(_found_raw*_found_raw + _found_raw_b*_found_raw_b);
-                            //    var _found_value = _found_raw / _raw_dist;
-                            //    
-                            //    var _axis_threshold = axis_threshold_get(_binding.value);
-                            //    var _dist = (_raw_dist - _axis_threshold.mini) / (_axis_threshold.maxi - _axis_threshold.mini);
-                            //    _dist = clamp(_dist, 0.0, 1.0);
-                            //    
-                            //    _found_value *= _dist;
-                            //    
-                            //    if (abs(_found_raw) > _raw)
-                            //    {
-                            //        _raw          = _found_raw;
-                            //        _raw_analogue = true;
-                            //    }
-                            //    
-                            //    if (abs(_found_value) > _value)
-                            //    {
-                            //        _value    = _found_value;
-                            //        _analogue = true;
-                            //    }
-                            //break;
                         }
                     }
                     

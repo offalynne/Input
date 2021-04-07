@@ -7,7 +7,4 @@ function input_value_is_binding(_value)
          && variable_struct_exists(_value, "value")
          && variable_struct_exists(_value, "axis_negative")
          && (variable_struct_names_count(_value) == 3));
-         
-         //TODO - Implement axis pair
-         //&& variable_struct_exists(_value, "value_b")
 }
