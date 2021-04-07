@@ -12,21 +12,30 @@ function input_xy()
     var _verb_d       = argument[3];
     var _player_index = ((argument_count > 4) && (argument[4] != undefined))? argument[4] : 0;
     
-    //Check to see if the given player index is suitable
-    if (_player_index < 0)
+    if (!is_struct(_player_index))
     {
-        __input_error("Invalid player index provided (", _player_index, ")");
-        return undefined;
+        //Check to see if the given player index is suitable
+        if (_player_index < 0)
+        {
+            __input_error("Invalid player index provided (", _player_index, ")");
+            return undefined;
+        }
+        
+        if (_player_index >= INPUT_MAX_PLAYERS)
+        {
+            __input_error("Player index too large (", _player_index, " vs. ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
+            return undefined;
+        }
+        
+        //Grab the player's verbs
+        var _player_verbs_struct = global.__input_players[_player_index].verbs;
     }
-    
-    if (_player_index >= INPUT_MAX_PLAYERS)
+    else
     {
-        __input_error("Player index too large (", _player_index, " vs. ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
-        return undefined;
+        //Secret feature that's used internally!
+        //If you provide a player struct instead of an integer index then we pull the verbs struct from that instead
+        var _player_verbs_struct = _player_index.verbs;
     }
-    
-    //Grab the player's verbs
-    var _player_verbs_struct = global.__input_players[_player_index].verbs;
     
     //And pull out verb structs for each verb name passed into the function
     var _verb_struct_l = _player_verbs_struct[$ _verb_l];
