@@ -60,5 +60,6 @@ function input_y()
     
     if (_d <= _min_threshold) return 0.0;
     
+    if (INPUT_2D_CLAMP) _dy /= max(1, _d);
     return _dy;
 }

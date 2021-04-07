@@ -58,7 +58,13 @@ function input_xy()
     var _dy = _value_d - _value_u;
     var _d = sqrt(_dx*_dx + _dy*_dy);
     
-    if (_d <= _min_threshold) return 0.0;
+    if (_d <= _min_threshold) return { x : 0, y : 0 };
+    
+    if (INPUT_2D_CLAMP)
+    {
+        _dx /= max(1, _d);
+        _dy /= max(1, _d);
+    }
     
     return { x : _dx, y : _dy };
 }
