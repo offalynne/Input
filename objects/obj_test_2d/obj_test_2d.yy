@@ -25,11 +25,11 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "input",
-    "path": "input.yyp",
+    "name": "Test Cases",
+    "path": "folders/Test Cases.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_example",
+  "name": "obj_test_2d",
   "tags": [],
   "resourceType": "GMObject",
 }

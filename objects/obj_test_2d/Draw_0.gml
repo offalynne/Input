@@ -4,6 +4,9 @@ _string += "Right = " + string(input_value(VERB.RIGHT  )) + "    " + string(inpu
 _string += "Up    = " + string(input_value(VERB.UP     )) + "    " + string(input_binding_get_name(input_binding_get(VERB.UP     ))) + "\n";
 _string += "Down  = " + string(input_value(VERB.DOWN   )) + "    " + string(input_binding_get_name(input_binding_get(VERB.DOWN   ))) + "\n";
 _string += "\n";
+_string += "x = " + string(input_x(VERB.LEFT, VERB.RIGHT, VERB.UP, VERB.DOWN)) + "\n";
+_string += "y = " + string(input_y(VERB.LEFT, VERB.RIGHT, VERB.UP, VERB.DOWN)) + "\n";
+_string += "xy = " + string(input_xy(VERB.LEFT, VERB.RIGHT, VERB.UP, VERB.DOWN)) + "\n";
 _string += "direction = " + string(input_direction(VERB.LEFT, VERB.RIGHT, VERB.UP, VERB.DOWN)) + "\n";
 _string += "distance = " + string(input_distance(VERB.LEFT, VERB.RIGHT, VERB.UP, VERB.DOWN)) + "\n";
 

@@ -60,7 +60,7 @@
     {"id":{"name":"input_binding_get","path":"scripts/input_binding_get/input_binding_get.yy",},"order":4,},
     {"id":{"name":"input_verb_set","path":"scripts/input_verb_set/input_verb_set.yy",},"order":3,},
     {"id":{"name":"input_rebind_undo_legacy","path":"scripts/input_rebind_undo_legacy/input_rebind_undo_legacy.yy",},"order":2,},
-    {"id":{"name":"obj_test_direction_distance","path":"objects/obj_test_direction_distance/obj_test_direction_distance.yy",},"order":9,},
+    {"id":{"name":"obj_test_2d","path":"objects/obj_test_2d/obj_test_2d.yy",},"order":9,},
     {"id":{"name":"input_cursor_moved","path":"scripts/input_cursor_moved/input_cursor_moved.yy",},"order":9,},
     {"id":{"name":"__input_gamepad_set_vid_pid","path":"scripts/__input_gamepad_set_vid_pid/__input_gamepad_set_vid_pid.yy",},"order":13,},
     {"id":{"name":"__input_key_is_ignored","path":"scripts/__input_key_is_ignored/__input_key_is_ignored.yy",},"order":18,},
