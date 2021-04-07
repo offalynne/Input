@@ -13,6 +13,8 @@ function __input_class_verb() constructor
     raw            = 0.0;
     analogue       = false;
     raw_analogue   = false;
+    min_threshold  = undefined;
+    max_threshold  = undefined;
     
     previous_held = false;
     press         = false;

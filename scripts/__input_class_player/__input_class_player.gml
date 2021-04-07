@@ -4,7 +4,6 @@ function __input_class_player() constructor
     gamepad         = INPUT_NO_GAMEPAD;
     sources         = array_create(INPUT_SOURCE.__SIZE, undefined);
     verbs           = {};
-    axis_thresholds = {};
     last_input_time = -1;
     cursor          = new __input_class_cursor();
     
@@ -19,6 +18,7 @@ function __input_class_player() constructor
     history_do    = false;
     history_array = undefined;
     
+    //This struct is the one that gets serialized/deserialized
     config = { axis_thresholds : {} };
     
     /// @param axis
@@ -111,11 +111,13 @@ function __input_class_player() constructor
             var _v = 0;
             repeat(array_length(_verb_names))
             {
-                var _verb_name    = _verb_names[_v];
-                var _raw          = 0.0;
-                var _value        = 0.0;
-                var _analogue     = undefined;
-                var _raw_analogue = undefined;
+                var _verb_name     = _verb_names[_v];
+                var _raw           = 0.0;
+                var _value         = 0.0;
+                var _analogue      = undefined;
+                var _raw_analogue  = undefined;
+                var _min_threshold = undefined;
+                var _max_threshold = undefined;
                 
                 var _alternate_array = variable_struct_get(_source_verb_struct, _verb_name);
                 var _a = 0;
@@ -188,8 +190,10 @@ function __input_class_player() constructor
                                 
                                 if (_found_raw > _raw)
                                 {
-                                    _raw          = _found_raw;
-                                    _raw_analogue = true;
+                                    _raw           = _found_raw;
+                                    _raw_analogue  = true;
+                                    _min_threshold = _axis_threshold.mini;
+                                    _max_threshold = _axis_threshold.maxi;
                                 }
                                 
                                 if (_found_value > _value)
@@ -207,8 +211,11 @@ function __input_class_player() constructor
                 var _verb_struct = variable_struct_get(verbs, _verb_name);
                 _verb_struct.value = _value;
                 _verb_struct.raw = _raw;
-                if (_analogue != undefined) _verb_struct.analogue = _analogue;
-                if (_raw_analogue != undefined) _verb_struct.raw_analogue = _raw_analogue;
+                
+                if (_raw_analogue != undefined) _verb_struct.raw_analogue  = _raw_analogue;
+                if (_analogue     != undefined) _verb_struct.analogue      = _analogue;
+                _verb_struct.min_threshold = _min_threshold;
+                _verb_struct.max_threshold = _max_threshold;
                 
                 ++_v;
             }
