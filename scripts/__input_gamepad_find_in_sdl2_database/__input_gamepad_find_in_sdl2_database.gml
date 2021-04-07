@@ -65,9 +65,16 @@ function __input_gamepad_find_in_sdl2_database(_gamepad)
         
         //Check the global (OS = "all") blacklists to see if this gamepad is banned
         var _os_filter_dict  = global.__input_blacklist_dictionary[$ _os];
+        var _os_vid_dict     = is_struct(_os_filter_dict)? _os_filter_dict[$ "vid"                 ] : undefined;
         var _os_vid_pid_dict = is_struct(_os_filter_dict)? _os_filter_dict[$ "vid+pid"             ] : undefined;
         var _os_guid_dict    = is_struct(_os_filter_dict)? _os_filter_dict[$ "guid"                ] : undefined;
         var _os_desc_array   = is_struct(_os_filter_dict)? _os_filter_dict[$ "description contains"] : undefined;
+        
+        if (is_struct(_os_vid_dict) && variable_struct_exists(_os_vid_dict, vendor))
+        {
+            __input_trace("Warning! Controller is blacklisted (cross-platform, found by VID \"", vendor, "\")");
+            blacklisted = true;
+        }
         
         if (is_struct(_os_vid_pid_dict) && variable_struct_exists(_os_vid_pid_dict, vendor + product))
         {
