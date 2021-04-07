@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Checkers",
-    "path": "folders/Input/Checkers.yy",
+    "name": "2D Checkers",
+    "path": "folders/Input/2D Checkers.yy",
   },
   "resourceVersion": "1.0",
   "name": "input_xy",
