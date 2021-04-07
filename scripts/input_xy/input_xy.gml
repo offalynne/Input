@@ -5,7 +5,7 @@
 /// @param [playerIndex]
 /// @param [minThreshold]
 
-function input_y()
+function input_xy()
 {
     var _verb_l        = argument[0];
     var _verb_r        = argument[1];
