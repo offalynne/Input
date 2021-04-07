@@ -5,6 +5,8 @@
 
 function input_cursor_move()
 {
+    if (INPUT_WARNING_DEPRECATED) __input_error("This function has been deprecated\n(Set INPUT_WARNING_DEPRECATED to <false> to ignore this warning)");
+    
     var _target_x     = argument[0];
     var _target_y     = argument[1]
     var _max_speed    = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : -1;

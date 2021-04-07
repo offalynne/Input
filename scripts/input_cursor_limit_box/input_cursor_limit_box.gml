@@ -6,6 +6,8 @@
 
 function input_cursor_limit_box()
 {
+    if (INPUT_WARNING_DEPRECATED) __input_error("This function has been deprecated\n(Set INPUT_WARNING_DEPRECATED to <false> to ignore this warning)");
+    
     var _left         = argument[0];
     var _top          = argument[1];
     var _right        = argument[2];

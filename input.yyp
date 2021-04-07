@@ -140,7 +140,7 @@
     {"folderPath":"folders/Input/Checkers.yy","order":4,"resourceVersion":"1.0","name":"Checkers","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/Binding Management.yy","order":6,"resourceVersion":"1.0","name":"Binding Management","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/Source Assignment.yy","order":7,"resourceVersion":"1.0","name":"Source Assignment","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Input/Cursor.yy","order":8,"resourceVersion":"1.0","name":"Cursor","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Input/(System)/Deprecated/Cursor.yy","order":3,"resourceVersion":"1.0","name":"Cursor","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/Other.yy","order":11,"resourceVersion":"1.0","name":"Other","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/Gamepads (Direct).yy","order":10,"resourceVersion":"1.0","name":"Gamepads (Direct)","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/(System).yy","order":12,"resourceVersion":"1.0","name":"(System)","tags":[],"resourceType":"GMFolder",},

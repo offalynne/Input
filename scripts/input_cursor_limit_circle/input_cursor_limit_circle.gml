@@ -5,6 +5,8 @@
 
 function input_cursor_limit_circle()
 {
+    if (INPUT_WARNING_DEPRECATED) __input_error("This function has been deprecated\n(Set INPUT_WARNING_DEPRECATED to <false> to ignore this warning)");
+    
     var _centre_x     = argument[0];
     var _centre_y     = argument[1];
     var _radius       = argument[2];
