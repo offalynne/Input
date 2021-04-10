@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Binding System",
-    "path": "folders/Input/Binding System.yy",
+    "name": "Binding Management",
+    "path": "folders/Input/Binding Management.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_bindings_copy",
+  "name": "input_binding_remove",
   "tags": [],
   "resourceType": "GMScript",
 }
