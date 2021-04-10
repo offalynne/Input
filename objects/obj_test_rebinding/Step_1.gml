@@ -19,6 +19,12 @@ if (keyboard_check_pressed(ord("3")) || input_gamepad_check_pressed(input_player
     rebinding_source = INPUT_SOURCE.GAMEPAD;
 }
 
+if (keyboard_check_pressed(ord("R")))
+{
+    rebinding = false;
+    input_binding_remove(VERB.UP, rebinding_source);
+}
+
 if (rebinding)
 {
     var _binding = input_binding_scan_tick(rebinding_source);
