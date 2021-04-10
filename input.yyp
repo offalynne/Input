@@ -141,7 +141,7 @@
     {"folderPath":"folders/Input/Players.yy","order":2,"resourceVersion":"1.0","name":"Players","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/Default Bindings.yy","order":3,"resourceVersion":"1.0","name":"Default Bindings","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/Checkers.yy","order":4,"resourceVersion":"1.0","name":"Checkers","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Input/Binding Management.yy","order":6,"resourceVersion":"1.0","name":"Binding Management","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Input/Bindings.yy","order":6,"resourceVersion":"1.0","name":"Bindings","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/Source Assignment.yy","order":8,"resourceVersion":"1.0","name":"Source Assignment","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/(System)/Deprecated/Cursor.yy","order":3,"resourceVersion":"1.0","name":"Cursor","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/Other.yy","order":11,"resourceVersion":"1.0","name":"Other","tags":[],"resourceType":"GMFolder",},
