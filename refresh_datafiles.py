@@ -33,8 +33,7 @@ DATA_SOURCES = {
                 "match id": "(.{4}),(.{4})," + marker_id
             }
         }
-    }
-    ,
+    },
 
     "BLACKLIST": {
         "datafile": "controllerblacklist.csv",
