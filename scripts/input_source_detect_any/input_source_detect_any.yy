@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Bindings",
-    "path": "folders/Input/Bindings.yy",
+    "name": "Source Assignment",
+    "path": "folders/Input/Source Assignment.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_binding_scan_tick",
+  "name": "input_source_detect_any",
   "tags": [],
   "resourceType": "GMScript",
 }

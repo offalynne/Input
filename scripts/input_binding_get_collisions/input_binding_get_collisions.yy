@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Binding Management",
-    "path": "folders/Input/Binding Management.yy",
+    "name": "Bindings",
+    "path": "folders/Input/Bindings.yy",
   },
   "resourceVersion": "1.0",
   "name": "input_binding_get_collisions",
