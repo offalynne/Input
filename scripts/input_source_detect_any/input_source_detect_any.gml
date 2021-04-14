@@ -6,12 +6,9 @@ function input_source_detect_any()
         var _g = 0;
         repeat(gamepad_get_device_count())
         {
-            if (gamepad_is_connected(_g) && __input_source_is_available(INPUT_SOURCE.GAMEPAD, _g))
+            if (input_source_detect(INPUT_SOURCE.GAMEPAD, _g))
             {
-                if (input_source_detect(INPUT_SOURCE.GAMEPAD, _g))
-                {
-                    return { source : INPUT_SOURCE.GAMEPAD, gamepad : _g };
-                }
+                return { source : INPUT_SOURCE.GAMEPAD, gamepad : _g };
             }
                     
             ++_g;
@@ -20,7 +17,7 @@ function input_source_detect_any()
     
     if (global.__input_keyboard_valid || global.__input_mouse_valid)
     {
-        if (input_source_detect(INPUT_SOURCE.KEYBOARD_AND_MOUSE, undefined))
+        if (input_source_detect(INPUT_SOURCE.KEYBOARD_AND_MOUSE))
         {
             return { source : INPUT_SOURCE.KEYBOARD_AND_MOUSE, gamepad : undefined };
         }

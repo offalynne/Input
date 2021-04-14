@@ -42,7 +42,7 @@ function __input_hotswap_tick_input(_player_index)
         var _g = 0;
         repeat(gamepad_get_device_count())
         {
-            if (gamepad_is_connected(_g) && __input_source_is_available(INPUT_SOURCE.GAMEPAD, _g))
+            if (gamepad_is_connected(_g) && input_source_is_available(INPUT_SOURCE.GAMEPAD, _g))
             {
                 if (input_gamepad_check(_g, gp_face1)
                 ||  input_gamepad_check(_g, gp_face2)
@@ -77,7 +77,7 @@ function __input_hotswap_tick_input(_player_index)
     }
     
     if (global.__input_keyboard_valid
-    &&  __input_source_is_available(INPUT_SOURCE.KEYBOARD_AND_MOUSE)
+    &&  input_source_is_available(INPUT_SOURCE.KEYBOARD_AND_MOUSE)
     &&  keyboard_check(vk_anykey)
     &&  !__input_key_is_ignored(keyboard_key)) //Ensure that this key isn't one we're trying to ignore
     {
@@ -86,7 +86,7 @@ function __input_hotswap_tick_input(_player_index)
     }
     
     if (global.__input_mouse_valid
-    &&  __input_source_is_available(INPUT_SOURCE.KEYBOARD_AND_MOUSE)
+    &&  input_source_is_available(INPUT_SOURCE.KEYBOARD_AND_MOUSE)
     && ( (INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && global.__input_mouse_moved) || device_mouse_check_button(0, mb_any) || mouse_wheel_up() || mouse_wheel_down()))
     {
         if (__INPUT_DEBUG) __input_trace("Hotswapping player ", _player_index, " to keyboard+mouse (via mouse input)");

@@ -61,6 +61,7 @@
     {"id":{"name":"obj_test_save_load_reset","path":"objects/obj_test_save_load_reset/obj_test_save_load_reset.yy",},"order":2,},
     {"id":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},"order":0,},
     {"id":{"name":"input_binding_get","path":"scripts/input_binding_get/input_binding_get.yy",},"order":4,},
+    {"id":{"name":"input_source_is_available","path":"scripts/input_source_is_available/input_source_is_available.yy",},"order":5,},
     {"id":{"name":"input_verb_set","path":"scripts/input_verb_set/input_verb_set.yy",},"order":3,},
     {"id":{"name":"input_rebind_undo_legacy","path":"scripts/input_rebind_undo_legacy/input_rebind_undo_legacy.yy",},"order":2,},
     {"id":{"name":"obj_test_2d","path":"objects/obj_test_2d/obj_test_2d.yy",},"order":9,},
@@ -165,7 +166,7 @@
     {"CopyToMask":9042383626830062,"filePath":"datafiles","resourceVersion":"1.0","name":"sdl2.txt","resourceType":"GMIncludedFile",},
     {"CopyToMask":153157610357391598,"filePath":"datafiles","resourceVersion":"1.0","name":"controllertypes.csv","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"controllerblacklist.csv","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"sdl2license.txt","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"licenses.txt","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.2.556",
