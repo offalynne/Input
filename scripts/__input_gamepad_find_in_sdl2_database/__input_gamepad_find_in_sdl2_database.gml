@@ -146,10 +146,12 @@ function __input_gamepad_find_in_sdl2_database(_gamepad)
         
         //Otherwise search through our vendor+product IDs
         var _vp_array = variable_struct_get(global.__input_sdl2_database.by_vendor_product, vendor + product);
-        
-        if (array_length(_vp_array) > 0) //Get the first binding for this vendor+product and OS
+        if (is_array(_vp_array))
         {
-            var _definition = _vp_array[0];
+            if (array_length(_vp_array) > 0) //Get the first binding for this vendor+product and OS
+            {
+                var _definition = _vp_array[0];
+            }
         }
                 
         if (is_array(_definition))
