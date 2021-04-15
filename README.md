@@ -8,6 +8,10 @@
 
 &nbsp;
 
+If you're looking to implement some extra haptics for your controllers, take a look at [Good Vibes](https://github.com/mrdaneeyul/good-vibes/) by @mrdaneeyul.
+
+&nbsp;
+
 |[![About & Support](https://raw.githubusercontent.com/wiki/JujuAdams/scribble/images/faq.png)](https://github.com/JujuAdams/input/wiki/About-&-Support)|[![Features](https://raw.githubusercontent.com/wiki/JujuAdams/scribble/images/features.png)](https://github.com/JujuAdams/input/wiki/Features)|[![GML Functions](https://raw.githubusercontent.com/wiki/JujuAdams/scribble/images/code.png)](https://github.com/JujuAdams/input/wiki/Function-Index)|
 |----------------------|----------------------|----------------------|
 |<p align="center">[About & Support](https://github.com/JujuAdams/input/wiki/About-&-Support)</p>|<p align="center">[Features](https://github.com/JujuAdams/input/wiki/Features)</p>|<p align="center">[Function Index](https://github.com/JujuAdams/input/wiki/Function-Index)</p>|
