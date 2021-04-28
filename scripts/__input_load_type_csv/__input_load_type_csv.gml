@@ -98,6 +98,10 @@ function __input_load_type_csv(_filename)
                     _type = "stadia";
                 break;
                 
+                case "CommunityLuna":
+                    _type = "luna";
+                break;
+                
                 case "UnknownNonSteamController":
                     _type = "unknown";
                 break;
