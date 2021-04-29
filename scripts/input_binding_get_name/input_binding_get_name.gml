@@ -34,10 +34,10 @@ function input_binding_get_name(_binding)
             case "gamepad button":
                 switch(value)
                 {
-                    case gp_face1:      return "gamepad button a";                  break;
-                    case gp_face2:      return "gamepad button b";                  break;
-                    case gp_face3:      return "gamepad button x";                  break;
-                    case gp_face4:      return "gamepad button y";                  break;
+                    case gp_face1:      return "gamepad button south";              break;
+                    case gp_face2:      return "gamepad button east";               break;
+                    case gp_face3:      return "gamepad button west";               break;
+                    case gp_face4:      return "gamepad button north";              break;
                     case gp_shoulderl:  return "gamepad button shoulder l";         break;
                     case gp_shoulderr:  return "gamepad button shoulder r";         break;
                     case gp_shoulderlb: return "gamepad button trigger l";          break;
