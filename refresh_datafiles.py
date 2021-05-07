@@ -3,6 +3,7 @@
 # controller data refresher for Input
 # @offalynne for Input: https://github.com/JujuAdams/Input, 2021
 
+import re
 import os
 import sys
 import urllib
@@ -142,7 +143,6 @@ for file in DATA_SOURCES:
             category = source_content[seek_start:seek_end]
 
         # parse ids
-        import re
         regex_categories = source_index.get("match category")
 
         # index categories
