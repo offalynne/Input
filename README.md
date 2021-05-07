@@ -12,3 +12,7 @@
 |----------------------|----------------------|----------------------|
 |<p align="center">[About & Support](https://github.com/JujuAdams/input/wiki/About-&-Support)</p>|<p align="center">[Features](https://github.com/JujuAdams/input/wiki/Features)</p>|<p align="center">[Function Index](https://github.com/JujuAdams/input/wiki/Function-Index)</p>|
 |Who made Input and how to get help| Synopsis of Input's features | Every Input function and how to use them in common situations |
+
+&nbsp;
+
+If you're looking to implement some extra haptics for your controllers, take a look at [Good Vibes](https://github.com/mrdaneeyul/good-vibes/) by @mrdaneeyul.
