@@ -33,7 +33,7 @@ global.__input_simple_type_lookup = {
     XInputSwitchController: "switch",
     CommunityLikeSwitch: "switch",
     
-    Community8BitDo: "switch", //TODO - Is this correct?
+    Community8BitDo: "switch", //Same labels for 8BitDo and Switch controllers
     
     CommunitySaturn: "saturn",
     
