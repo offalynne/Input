@@ -5,7 +5,8 @@ function __input_class_gamepad(_index) constructor
     description       = "Unknown";
     guid              = gamepad_get_guid(_index);
     xinput            = undefined;
-    type              = undefined;
+    raw_type          = undefined;
+    simple_type       = undefined;
     guessed_type      = false;
     blacklisted       = false;
     sdl2_definition   = undefined;
@@ -192,5 +193,5 @@ function __input_class_gamepad(_index) constructor
     __input_gamepad_set_type(self);
     __input_gamepad_set_mapping(self);
     
-    __input_trace("Gamepad ", index, " discovered, type = \"", type, "\", description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
+    __input_trace("Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
 }

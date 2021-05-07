@@ -174,7 +174,7 @@ if (INPUT_SDL2_ALLOW_EXTERNAL)
 }
 
 //Parse the controller type database
-global.__input_type_dictionary = { none : "xb360" };
+global.__input_raw_type_dictionary = { none : "XBox360Controller" };
 
 if (file_exists(__INPUT_CONTROLLER_TYPE_FILENAME))
 {
