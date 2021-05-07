@@ -59,10 +59,6 @@ function __input_load_type_csv(_filename)
                     _type = "apple";
                 break;
                 
-                case "SwitchProController":
-                    _type = "switch pro";
-                break;
-                
                 case "SwitchJoyConLeft":
                     _type = "switch joycon left";
                 break;
@@ -71,6 +67,7 @@ function __input_load_type_csv(_filename)
                     _type = "switch joycon right";
                 break;
                 
+                case "SwitchProController":
                 case "SwitchInputOnlyController":
                 case "XInputSwitchController":
                 case "CommunityLikeSwitch":
