@@ -15,9 +15,11 @@ function input_binding_get_name(_binding)
             case "mouse button":
                 switch(value)
                 {
-                    case mb_left:   return "mouse button left";   break;
-                    case mb_middle: return "mouse button middle"; break;
-                    case mb_right:  return "mouse button right";  break
+                    case mb_left:    return "mouse button left";    break;
+                    case mb_middle:  return "mouse button middle";  break;
+                    case mb_right:   return "mouse button right";   break;
+                    case mb_back:    return "mouse button back";    break;
+                    case mb_forward: return "mouse button forward"; break;
                     
                     default: return "mouse button unknown"; break;
                 }

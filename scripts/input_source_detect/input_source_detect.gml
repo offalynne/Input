@@ -50,7 +50,7 @@ function input_source_detect()
             
             if (global.__input_mouse_valid
             &&  input_source_is_available(INPUT_SOURCE.KEYBOARD_AND_MOUSE)
-            &&  (device_mouse_check_button_pressed(0, mb_any) || mouse_wheel_up() || mouse_wheel_down()))
+            &&  (input_mouse_check_button(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
             {
                return true;
             }
