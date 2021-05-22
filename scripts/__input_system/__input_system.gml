@@ -63,6 +63,11 @@ global.__input_mouse_x     = 0;
 global.__input_mouse_y     = 0;
 global.__input_mouse_moved = false;
 
+//Windows tap-to-click tracking
+global.__input_tap_presses  = 0;
+global.__input_tap_releases = 0;
+global.__input_tap_click    = false;
+
 //Cursor tracking variables. This is Input's abstraction layer for the mouse, allowing mouse-like functionality cross-platform
 global.__input_cursor_verb_u      = undefined;
 global.__input_cursor_verb_d      = undefined;
