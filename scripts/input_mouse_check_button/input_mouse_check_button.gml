@@ -10,7 +10,7 @@ function input_mouse_check_button(_binding)
 			//TODO - Case none/any/left to support touchpad & touchscreen tap
 			case mb_back:
 			case mb_forward:	
-				return keyboard_check_direct(_binding);
+				return (window_has_focus() && keyboard_check_direct(_binding));
 				break;
 			default:
 				return device_mouse_check_button(0, _binding);
