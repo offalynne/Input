@@ -13,6 +13,10 @@ enum INPUT_SOURCE
     __SIZE
 }
 
+//Virtual keys for extended mouse buttons on Windows
+#macro mb_back 5
+#macro mb_forward 6
+
 #macro INPUT_NO_GAMEPAD  -1
 #macro gp_guide  32789
 #macro gp_misc1  32790
@@ -58,6 +62,11 @@ global.__input_frame = 0;
 global.__input_mouse_x     = 0;
 global.__input_mouse_y     = 0;
 global.__input_mouse_moved = false;
+
+//Windows tap-to-click tracking
+global.__input_tap_presses  = 0;
+global.__input_tap_releases = 0;
+global.__input_tap_click    = false;
 
 //Cursor tracking variables. This is Input's abstraction layer for the mouse, allowing mouse-like functionality cross-platform
 global.__input_cursor_verb_u      = undefined;

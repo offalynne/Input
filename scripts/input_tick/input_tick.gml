@@ -35,6 +35,22 @@ function input_tick()
     global.__input_mouse_x = _mouse_x;
     global.__input_mouse_y = _mouse_y;
     
+    //Register clicks from touchpad and touchscreen taps (Windows-only bug, system-setting dependent)
+    global.__input_tap_click = false;
+    if (os_type == os_windows)
+    {
+        global.__input_tap_presses  += device_mouse_check_button_pressed( 0, mb_left);
+        global.__input_tap_releases += device_mouse_check_button_released(0, mb_left);
+    
+        //Resolve press/release desync (where press failed to register on same frame as release)
+        if (global.__input_tap_releases >= global.__input_tap_presses)
+        {
+            global.__input_tap_click    = (global.__input_tap_releases > global.__input_tap_presses);
+            global.__input_tap_presses  = 0;
+            global.__input_tap_releases = 0;
+        }
+    }
+    
     #endregion
     
     #region Update gamepads
