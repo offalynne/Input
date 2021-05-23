@@ -6,7 +6,7 @@
     "path": "folders/Input/Mouse (Direct).yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_mouse_check_button",
+  "name": "input_mouse_check_released",
   "tags": [],
   "resourceType": "GMScript",
 }

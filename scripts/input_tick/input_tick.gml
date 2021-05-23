@@ -35,10 +35,17 @@ function input_tick()
     global.__input_mouse_x = _mouse_x;
     global.__input_mouse_y = _mouse_y;
     
-    //Register clicks from touchpad and touchscreen taps (Windows-only bug, system-setting dependent)
+    //Windows mouse extensions
     global.__input_tap_click = false;
     if (os_type == os_windows)
     {
+        //Browser buttons
+        global.__input_mouse_back_last    = global.__input_mouse_back;
+        global.__input_mouse_forward_last = global.__input_mouse_forward;        
+        global.__input_mouse_back    = (window_has_focus() && keyboard_check_direct(mb_back));
+        global.__input_mouse_forward = (window_has_focus() && keyboard_check_direct(mb_forward));
+        
+        //Track clicks from touchpad and touchscreen taps (system-setting dependent)
         global.__input_tap_presses  += device_mouse_check_button_pressed( 0, mb_left);
         global.__input_tap_releases += device_mouse_check_button_released(0, mb_left);
     

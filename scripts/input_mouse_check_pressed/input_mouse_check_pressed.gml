@@ -1,18 +1,21 @@
 /// @param binding
-function input_mouse_check_button(_binding)
+function input_mouse_check_pressed(_binding)
 {
     //Extended mouse button handling (Windows only)
     if (os_type != os_windows)
     {
-        return (_binding < mb_back && device_mouse_check_button(0, _binding));   
+        return (_binding < mb_back && device_mouse_check_button_pressed(0, _binding));   
     }
     else
     {
-        var _button = device_mouse_check_button(0, _binding);      
+        var _button  = device_mouse_check_button(0, _binding);
+        var _back    = (global.__input_mouse_back    && !global.__input_mouse_back_last);
+        var _forward = (global.__input_mouse_forward && !global.__input_mouse_forward_last);
+        
         switch (_binding)
         {            
             case mb_any:
-                return (_button || global.__input_tap_click || global.__input_mouse_back || global.__input_mouse_forward);
+                return (_button || global.__input_tap_click || _back || _forward);
             break;
 
             case mb_left:
@@ -25,15 +28,15 @@ function input_mouse_check_button(_binding)
             break;
 
             case mb_back:
-                return global.__input_mouse_back;
+                return _back;
             break;
                 
             case mb_forward:	
-                return global.__input_mouse_forward;
+                return _forward;
             break;
             
             case mb_none:
-                return (_button && !(global.__input_tap_click || global.__input_mouse_back || global.__input_mouse_forward));
+                return (_button && !(global.__input_tap_click || _back || _forward));
             break;
         }
     }
