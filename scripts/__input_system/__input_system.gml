@@ -277,7 +277,7 @@ function __input_binding_duplicate(_source)
 {
     with(_source)
     {
-        return new __input_class_binding(type, value, axis_negative);
+        return new __input_class_binding(type, value, axis_negative, label);
     }
 }
 
@@ -290,6 +290,7 @@ function __input_binding_overwrite(_from, _to)
         type          = _from.type;
         value         = _from.value;
         axis_negative = _from.axis_negative;
+        label         = _from.label;
     }
     
     return _to;
