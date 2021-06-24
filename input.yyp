@@ -178,7 +178,7 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"licenses.txt","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2.3.2.560",
+    "IDEVersion": "23.1.1.306",
   },
   "resourceVersion": "1.4",
   "name": "input",

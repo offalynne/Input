@@ -23,7 +23,7 @@ input_default_key(vk_escape,    VERB.PAUSE   );
 input_default_key(vk_enter,     VERB.PAUSE, 1);
 
 input_default_mouse_button(mb_left, VERB.CONFIRM, 1);
-input_default_mouse_button(mb_back, VERB.CANCEL,  1);
+input_default_mouse_button(mb_side1, VERB.CANCEL,  1);
 
 input_default_gamepad_swap_ab(false);
 input_default_gamepad_axis(gp_axislh, true,  VERB.LEFT );

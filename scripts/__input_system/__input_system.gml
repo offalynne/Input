@@ -13,10 +13,6 @@ enum INPUT_SOURCE
     __SIZE
 }
 
-//Virtual keys for extended mouse buttons on Windows
-#macro mb_back 5
-#macro mb_forward 6
-
 #macro INPUT_NO_GAMEPAD  -1
 #macro gp_guide  32789
 #macro gp_misc1  32790

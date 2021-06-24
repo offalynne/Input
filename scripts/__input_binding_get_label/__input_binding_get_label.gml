@@ -12,8 +12,8 @@ function __input_binding_get_label(_type, _value, _axis_negative)
                 case mb_left:    return "mouse button left";    break;
                 case mb_middle:  return "mouse button middle";  break;
                 case mb_right:   return "mouse button right";   break;
-                case mb_back:    return "mouse button back";    break;
-                case mb_forward: return "mouse button forward"; break;
+                case mb_side1:   return "mouse button back";    break;
+                case mb_side2:   return "mouse button forward"; break;
                 
                 default: return "mouse button unknown"; break;
             }
