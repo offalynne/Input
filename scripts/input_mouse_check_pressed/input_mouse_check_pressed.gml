@@ -9,11 +9,7 @@ function input_mouse_check_pressed(_binding)
     else
     {
         var _left = (device_mouse_check_button_pressed(0, mb_left) || global.__input_tap_click);
-        var _any  = ( _left ||
-                     device_mouse_check_button_pressed(0, mb_middle) ||
-                     device_mouse_check_button_pressed(0, mb_right)  ||
-                     device_mouse_check_button_pressed(0, mb_side1)  ||
-                     device_mouse_check_button_pressed(0, mb_side2));
+        var _any  = (_left || (device_mouse_check_button_pressed(0, mb_any) && !device_mouse_check_button_pressed(0, mb_left)));
 
         switch (_binding)
         {
