@@ -1,3 +1,6 @@
+#macro mb_side1 6
+#macro mb_side2 7
+
 function __input_binding_get_label(_type, _value, _axis_negative)
 {
     switch(_type)

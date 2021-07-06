@@ -1,0 +1,1313 @@
+You are using YYP Maker v1.1.2, released in 11-04-2021
+
+
+
+[04-07-2021 09:41:24] Initialized GameMaker Project: Input.yyp
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/animcurves
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/datafiles
+[04-07-2021 09:41:24] Checking sdl2.txt
+[04-07-2021 09:41:24] Checking licenses.txt
+[04-07-2021 09:41:24] Checking controllertypes.csv
+[04-07-2021 09:41:24] Checking controllerblacklist.csv
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/extensions
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/fonts
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/notes
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/objects
+[04-07-2021 09:41:24] Checking obj_test_save_load_reset
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/objects/obj_test_save_load_reset
+[04-07-2021 09:41:24] Checking obj_test_rebinding
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/objects/obj_test_rebinding
+[04-07-2021 09:41:24] Checking obj_test_mp_assignment
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/objects/obj_test_mp_assignment
+[04-07-2021 09:41:24] Checking obj_test_mp
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/objects/obj_test_mp
+[04-07-2021 09:41:24] Checking obj_test_history
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/objects/obj_test_history
+[04-07-2021 09:41:24] Checking obj_test_guide_misc1
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/objects/obj_test_guide_misc1
+[04-07-2021 09:41:24] Checking obj_test_custom_triggers
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/objects/obj_test_custom_triggers
+[04-07-2021 09:41:24] Checking obj_test_2d
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/objects/obj_test_2d
+[04-07-2021 09:41:24] Checking obj_test
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/objects/obj_test
+[04-07-2021 09:41:24] Checking obj_example
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/objects/obj_example
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/objects/obj_example
+[04-07-2021 09:41:24] Checking Step_1.gml
+[04-07-2021 09:41:24] Checking obj_example.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/objects/obj_example/obj_example.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/objects/obj_example/obj_example.yy
+[04-07-2021 09:41:24] Par: "input.yyp" at dir: "C:/Users/al/Documents/GitHub/Input/objects/obj_example/obj_example.yy"
+[04-07-2021 09:41:24] Found Object: obj_example
+[04-07-2021 09:41:24] Checking Draw_0.gml
+[04-07-2021 09:41:24] Checking Create_0.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/objects/obj_test
+[04-07-2021 09:41:24] Checking Step_1.gml
+[04-07-2021 09:41:24] Checking obj_test.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/objects/obj_test/obj_test.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/objects/obj_test/obj_test.yy
+[04-07-2021 09:41:24] Par: "folders/Test Cases" at dir: "C:/Users/al/Documents/GitHub/Input/objects/obj_test/obj_test.yy"
+[04-07-2021 09:41:24] Found Object: obj_test
+[04-07-2021 09:41:24] Checking obj_example.yy
+[04-07-2021 09:41:24] Trash file: obj_example.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Checking Draw_0.gml
+[04-07-2021 09:41:24] Checking Create_0.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/objects/obj_test_2d
+[04-07-2021 09:41:24] Checking Step_1.gml
+[04-07-2021 09:41:24] Checking obj_test_rebinding.yy
+[04-07-2021 09:41:24] Trash file: obj_test_rebinding.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Checking obj_test_2d.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/objects/obj_test_2d/obj_test_2d.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/objects/obj_test_2d/obj_test_2d.yy
+[04-07-2021 09:41:24] Par: "folders/Test Cases" at dir: "C:/Users/al/Documents/GitHub/Input/objects/obj_test_2d/obj_test_2d.yy"
+[04-07-2021 09:41:24] Found Object: obj_test_2d
+[04-07-2021 09:41:24] Checking obj_test.yy
+[04-07-2021 09:41:24] Trash file: obj_test.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Checking obj_example.yy
+[04-07-2021 09:41:24] Trash file: obj_example.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Checking Draw_0.gml
+[04-07-2021 09:41:24] Checking Create_0.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/objects/obj_test_custom_triggers
+[04-07-2021 09:41:24] Checking Step_0.gml
+[04-07-2021 09:41:24] Checking obj_test_save_load_reset.yy
+[04-07-2021 09:41:24] Trash file: obj_test_save_load_reset.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Checking obj_test_custom_triggers.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/objects/obj_test_custom_triggers/obj_test_custom_triggers.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/objects/obj_test_custom_triggers/obj_test_custom_triggers.yy
+[04-07-2021 09:41:24] Par: "folders/Test Cases" at dir: "C:/Users/al/Documents/GitHub/Input/objects/obj_test_custom_triggers/obj_test_custom_triggers.yy"
+[04-07-2021 09:41:24] Found Object: obj_test_custom_triggers
+[04-07-2021 09:41:24] Checking obj_test_custom_trigger.yy
+[04-07-2021 09:41:24] Trash file: obj_test_custom_trigger.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Checking Draw_0.gml
+[04-07-2021 09:41:24] Checking Create_0.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/objects/obj_test_guide_misc1
+[04-07-2021 09:41:24] Checking Step_0.gml
+[04-07-2021 09:41:24] Checking obj_test_guide_misc1.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/objects/obj_test_guide_misc1/obj_test_guide_misc1.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/objects/obj_test_guide_misc1/obj_test_guide_misc1.yy
+[04-07-2021 09:41:24] Par: "folders/Test Cases" at dir: "C:/Users/al/Documents/GitHub/Input/objects/obj_test_guide_misc1/obj_test_guide_misc1.yy"
+[04-07-2021 09:41:24] Found Object: obj_test_guide_misc1
+[04-07-2021 09:41:24] Checking Draw_0.gml
+[04-07-2021 09:41:24] Checking Create_0.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/objects/obj_test_history
+[04-07-2021 09:41:24] Checking Step_0.gml
+[04-07-2021 09:41:24] Checking obj_test_save_load_reset.yy
+[04-07-2021 09:41:24] Trash file: obj_test_save_load_reset.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Checking obj_test_history.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/objects/obj_test_history/obj_test_history.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/objects/obj_test_history/obj_test_history.yy
+[04-07-2021 09:41:24] Par: "folders/Test Cases" at dir: "C:/Users/al/Documents/GitHub/Input/objects/obj_test_history/obj_test_history.yy"
+[04-07-2021 09:41:24] Found Object: obj_test_history
+[04-07-2021 09:41:24] Checking obj_test_custom_triggers.yy
+[04-07-2021 09:41:24] Trash file: obj_test_custom_triggers.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Checking obj_test_custom_trigger.yy
+[04-07-2021 09:41:24] Trash file: obj_test_custom_trigger.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Checking obj_test_axis_pair.yy
+[04-07-2021 09:41:24] Trash file: obj_test_axis_pair.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Checking Draw_0.gml
+[04-07-2021 09:41:24] Checking Create_0.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/objects/obj_test_mp
+[04-07-2021 09:41:24] Checking Step_0.gml
+[04-07-2021 09:41:24] Checking obj_test_mp.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/objects/obj_test_mp/obj_test_mp.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/objects/obj_test_mp/obj_test_mp.yy
+[04-07-2021 09:41:24] Par: "folders/Test Cases" at dir: "C:/Users/al/Documents/GitHub/Input/objects/obj_test_mp/obj_test_mp.yy"
+[04-07-2021 09:41:24] Found Object: obj_test_mp
+[04-07-2021 09:41:24] Checking Draw_0.gml
+[04-07-2021 09:41:24] Checking Create_0.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/objects/obj_test_mp_assignment
+[04-07-2021 09:41:24] Checking Step_0.gml
+[04-07-2021 09:41:24] Checking obj_test_mp_assignment.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/objects/obj_test_mp_assignment/obj_test_mp_assignment.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/objects/obj_test_mp_assignment/obj_test_mp_assignment.yy
+[04-07-2021 09:41:24] Par: "folders/Test Cases" at dir: "C:/Users/al/Documents/GitHub/Input/objects/obj_test_mp_assignment/obj_test_mp_assignment.yy"
+[04-07-2021 09:41:24] Found Object: obj_test_mp_assignment
+[04-07-2021 09:41:24] Checking obj_test_local_mp.yy
+[04-07-2021 09:41:24] Trash file: obj_test_local_mp.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Checking Draw_0.gml
+[04-07-2021 09:41:24] Checking Create_0.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/objects/obj_test_rebinding
+[04-07-2021 09:41:24] Checking Step_1.gml
+[04-07-2021 09:41:24] Checking obj_test_rebinding.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/objects/obj_test_rebinding/obj_test_rebinding.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/objects/obj_test_rebinding/obj_test_rebinding.yy
+[04-07-2021 09:41:24] Par: "folders/Test Cases" at dir: "C:/Users/al/Documents/GitHub/Input/objects/obj_test_rebinding/obj_test_rebinding.yy"
+[04-07-2021 09:41:24] Found Object: obj_test_rebinding
+[04-07-2021 09:41:24] Checking obj_test.yy
+[04-07-2021 09:41:24] Trash file: obj_test.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Checking obj_example.yy
+[04-07-2021 09:41:24] Trash file: obj_example.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Checking Draw_0.gml
+[04-07-2021 09:41:24] Checking Create_0.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/objects/obj_test_save_load_reset
+[04-07-2021 09:41:24] Checking Step_0.gml
+[04-07-2021 09:41:24] Checking obj_test_save_load_reset.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/objects/obj_test_save_load_reset/obj_test_save_load_reset.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/objects/obj_test_save_load_reset/obj_test_save_load_reset.yy
+[04-07-2021 09:41:24] Par: "folders/Test Cases" at dir: "C:/Users/al/Documents/GitHub/Input/objects/obj_test_save_load_reset/obj_test_save_load_reset.yy"
+[04-07-2021 09:41:24] Found Object: obj_test_save_load_reset
+[04-07-2021 09:41:24] Checking Draw_0.gml
+[04-07-2021 09:41:24] Checking Create_0.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/options
+[04-07-2021 09:41:24] Checking xboxone
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/options/xboxone
+[04-07-2021 09:41:24] Checking windowsuap
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/options/windowsuap
+[04-07-2021 09:41:24] Checking windows
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/options/windows
+[04-07-2021 09:41:24] Checking tvos
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/options/tvos
+[04-07-2021 09:41:24] Checking switch
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/options/switch
+[04-07-2021 09:41:24] Checking ps4
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/options/ps4
+[04-07-2021 09:41:24] Checking main
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/options/main
+[04-07-2021 09:41:24] Checking mac
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/options/mac
+[04-07-2021 09:41:24] Checking linux
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/options/linux
+[04-07-2021 09:41:24] Checking ios
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/options/ios
+[04-07-2021 09:41:24] Checking html5
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/options/html5
+[04-07-2021 09:41:24] Checking android
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/options/android
+[04-07-2021 09:41:24] Checking amazonfire
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/options/amazonfire
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/options/amazonfire
+[04-07-2021 09:41:24] Checking options_amazonfire.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/options/amazonfire/options_amazonfire.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/options/amazonfire/options_amazonfire.yy
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/options/android
+[04-07-2021 09:41:24] Checking options_android.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/options/android/options_android.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/options/android/options_android.yy
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/options/html5
+[04-07-2021 09:41:24] Checking options_html5.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/options/html5/options_html5.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/options/html5/options_html5.yy
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/options/ios
+[04-07-2021 09:41:24] Checking options_ios.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/options/ios/options_ios.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/options/ios/options_ios.yy
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/options/linux
+[04-07-2021 09:41:24] Checking options_linux.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/options/linux/options_linux.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/options/linux/options_linux.yy
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/options/mac
+[04-07-2021 09:41:24] Checking options_mac.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/options/mac/options_mac.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/options/mac/options_mac.yy
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/options/main
+[04-07-2021 09:41:24] Checking options_main.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/options/main/options_main.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/options/main/options_main.yy
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/options/ps4
+[04-07-2021 09:41:24] Checking options_ps4.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/options/ps4/options_ps4.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/options/ps4/options_ps4.yy
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/options/switch
+[04-07-2021 09:41:24] Checking options_switch.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/options/switch/options_switch.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/options/switch/options_switch.yy
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/options/tvos
+[04-07-2021 09:41:24] Checking options_tvos.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/options/tvos/options_tvos.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/options/tvos/options_tvos.yy
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/options/windows
+[04-07-2021 09:41:24] Checking options_windows.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/options/windows/options_windows.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/options/windows/options_windows.yy
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/options/windowsuap
+[04-07-2021 09:41:24] Checking options_windowsuap.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/options/windowsuap/options_windowsuap.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/options/windowsuap/options_windowsuap.yy
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/options/xboxone
+[04-07-2021 09:41:24] Checking options_xboxone.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/options/xboxone/options_xboxone.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/options/xboxone/options_xboxone.yy
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/paths
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/rooms
+[04-07-2021 09:41:24] Checking rm_test
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/rooms/rm_test
+[04-07-2021 09:41:24] Checking rm_example
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/rooms/rm_example
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/rooms/rm_example
+[04-07-2021 09:41:24] Checking rm_example.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/rooms/rm_example/rm_example.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/rooms/rm_example/rm_example.yy
+[04-07-2021 09:41:24] Par: "input.yyp" at dir: "C:/Users/al/Documents/GitHub/Input/rooms/rm_example/rm_example.yy"
+[04-07-2021 09:41:24] Found Room: rm_example
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/rooms/rm_test
+[04-07-2021 09:41:24] Checking rm_test.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/rooms/rm_test/rm_test.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/rooms/rm_test/rm_test.yy
+[04-07-2021 09:41:24] Par: "folders/Test Cases" at dir: "C:/Users/al/Documents/GitHub/Input/rooms/rm_test/rm_test.yy"
+[04-07-2021 09:41:24] Found Room: rm_test
+[04-07-2021 09:41:24] Checking rm_main.yy
+[04-07-2021 09:41:24] Trash file: rm_main.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts
+[04-07-2021 09:41:24] Checking __input_system
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_system
+[04-07-2021 09:41:24] Checking __input_sdl2_database_funcs
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_sdl2_database_funcs
+[04-07-2021 09:41:24] Checking __input_load_type_csv
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_load_type_csv
+[04-07-2021 09:41:24] Checking __input_load_blacklist_csv
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_load_blacklist_csv
+[04-07-2021 09:41:24] Checking __input_key_is_ignored
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_key_is_ignored
+[04-07-2021 09:41:24] Checking __input_key_get_name
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_key_get_name
+[04-07-2021 09:41:24] Checking __input_gamepad_set_vid_pid
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_set_vid_pid
+[04-07-2021 09:41:24] Checking __input_gamepad_set_type
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_set_type
+[04-07-2021 09:41:24] Checking __input_gamepad_set_mapping
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_set_mapping
+[04-07-2021 09:41:24] Checking __input_gamepad_find_in_sdl2_database
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_find_in_sdl2_database
+[04-07-2021 09:41:24] Checking __input_fix_config_struct
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_fix_config_struct
+[04-07-2021 09:41:24] Checking __input_exception_handler
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_exception_handler
+[04-07-2021 09:41:24] Checking __input_csv_to_array
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_csv_to_array
+[04-07-2021 09:41:24] Checking __input_config
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_config
+[04-07-2021 09:41:24] Checking __input_class_verb
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_class_verb
+[04-07-2021 09:41:24] Checking __input_class_player
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_class_player
+[04-07-2021 09:41:24] Checking __input_class_gamepad
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_class_gamepad
+[04-07-2021 09:41:24] Checking __input_class_cursor
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_class_cursor
+[04-07-2021 09:41:24] Checking __input_class_binding
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_class_binding
+[04-07-2021 09:41:24] Checking __input_binding_get_source
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_binding_get_source
+[04-07-2021 09:41:24] Checking __input_binding_get_label
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_binding_get_label
+[04-07-2021 09:41:24] Checking snap_to_csv
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/snap_to_csv
+[04-07-2021 09:41:24] Checking input_y
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_y
+[04-07-2021 09:41:24] Checking input_xy
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_xy
+[04-07-2021 09:41:24] Checking input_x
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_x
+[04-07-2021 09:41:24] Checking input_verb_set
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_verb_set
+[04-07-2021 09:41:24] Checking input_value_is_binding
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_value_is_binding
+[04-07-2021 09:41:24] Checking input_value
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_value
+[04-07-2021 09:41:24] Checking input_tick
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_tick
+[04-07-2021 09:41:24] Checking input_source_is_available
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_source_is_available
+[04-07-2021 09:41:24] Checking input_source_get_name
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_source_get_name
+[04-07-2021 09:41:24] Checking input_source_detect_any
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_source_detect_any
+[04-07-2021 09:41:24] Checking input_source_detect
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_source_detect
+[04-07-2021 09:41:24] Checking input_rebind_undo_legacy
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_rebind_undo_legacy
+[04-07-2021 09:41:24] Checking input_rebind_tick_legacy
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_rebind_tick_legacy
+[04-07-2021 09:41:24] Checking input_player_source_set
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_player_source_set
+[04-07-2021 09:41:24] Checking input_player_source_get
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_player_source_get
+[04-07-2021 09:41:24] Checking input_player_gamepad_set
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_set
+[04-07-2021 09:41:24] Checking input_player_gamepad_get_type
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get_type
+[04-07-2021 09:41:24] Checking input_player_gamepad_get_dpad_style
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get_dpad_style
+[04-07-2021 09:41:24] Checking input_player_gamepad_get_description
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get_description
+[04-07-2021 09:41:24] Checking input_player_gamepad_get
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get
+[04-07-2021 09:41:24] Checking input_player_connected
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_player_connected
+[04-07-2021 09:41:24] Checking input_players_connected
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_players_connected
+[04-07-2021 09:41:24] Checking input_mouse_check_released
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_mouse_check_released
+[04-07-2021 09:41:24] Checking input_mouse_check_pressed
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_mouse_check_pressed
+[04-07-2021 09:41:24] Checking input_mouse_check_button
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_mouse_check_button
+[04-07-2021 09:41:24] Checking input_is_analogue
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_is_analogue
+[04-07-2021 09:41:24] Checking input_ignore_key_remove
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_ignore_key_remove
+[04-07-2021 09:41:24] Checking input_ignore_key_add
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_ignore_key_add
+[04-07-2021 09:41:24] Checking input_hotswap_tick
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_hotswap_tick
+[04-07-2021 09:41:24] Checking input_history_start
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_history_start
+[04-07-2021 09:41:24] Checking input_history_global_include
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_history_global_include
+[04-07-2021 09:41:24] Checking input_history_get
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_history_get
+[04-07-2021 09:41:24] Checking input_history_end
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_history_end
+[04-07-2021 09:41:24] Checking input_history_clear
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_history_clear
+[04-07-2021 09:41:24] Checking input_gamepad_value
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_value
+[04-07-2021 09:41:24] Checking input_gamepad_is_connected
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_is_connected
+[04-07-2021 09:41:24] Checking input_gamepad_is_axis
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_is_axis
+[04-07-2021 09:41:24] Checking input_gamepad_get_type
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_get_type
+[04-07-2021 09:41:24] Checking input_gamepad_get_dpad_style
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_get_dpad_style
+[04-07-2021 09:41:24] Checking input_gamepad_get_description
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_get_description
+[04-07-2021 09:41:24] Checking input_gamepad_check_released
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_check_released
+[04-07-2021 09:41:24] Checking input_gamepad_check_pressed
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_check_pressed
+[04-07-2021 09:41:24] Checking input_gamepad_check
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_check
+[04-07-2021 09:41:24] Checking input_distance
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_distance
+[04-07-2021 09:41:24] Checking input_direction
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_direction
+[04-07-2021 09:41:24] Checking input_default_mouse_wheel_up
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_default_mouse_wheel_up
+[04-07-2021 09:41:24] Checking input_default_mouse_wheel_down
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_default_mouse_wheel_down
+[04-07-2021 09:41:24] Checking input_default_mouse_button
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_default_mouse_button
+[04-07-2021 09:41:24] Checking input_default_key
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_default_key
+[04-07-2021 09:41:24] Checking input_default_gamepad_swap_ab
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_default_gamepad_swap_ab
+[04-07-2021 09:41:24] Checking input_default_gamepad_button
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_default_gamepad_button
+[04-07-2021 09:41:24] Checking input_default_gamepad_axis
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_default_gamepad_axis
+[04-07-2021 09:41:24] Checking input_cursor_y
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_y
+[04-07-2021 09:41:24] Checking input_cursor_x
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_x
+[04-07-2021 09:41:24] Checking input_cursor_verbs
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_verbs
+[04-07-2021 09:41:24] Checking input_cursor_prev_y
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_prev_y
+[04-07-2021 09:41:24] Checking input_cursor_prev_x
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_prev_x
+[04-07-2021 09:41:24] Checking input_cursor_moved
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_moved
+[04-07-2021 09:41:24] Checking input_cursor_move
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_move
+[04-07-2021 09:41:24] Checking input_cursor_limit_circle
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_limit_circle
+[04-07-2021 09:41:24] Checking input_cursor_limit_box
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_limit_box
+[04-07-2021 09:41:24] Checking input_cursor_follow_camera
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_follow_camera
+[04-07-2021 09:41:24] Checking input_consume
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_consume
+[04-07-2021 09:41:24] Checking input_check_released
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_check_released
+[04-07-2021 09:41:24] Checking input_check_press_most_recent
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_check_press_most_recent
+[04-07-2021 09:41:24] Checking input_check_pressed
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_check_pressed
+[04-07-2021 09:41:24] Checking input_check_double_released
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_check_double_released
+[04-07-2021 09:41:24] Checking input_check_double_pressed
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_check_double_pressed
+[04-07-2021 09:41:24] Checking input_check_double
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_check_double
+[04-07-2021 09:41:24] Checking input_check
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_check
+[04-07-2021 09:41:24] Checking input_binding_swap
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_binding_swap
+[04-07-2021 09:41:24] Checking input_binding_set_safe
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_binding_set_safe
+[04-07-2021 09:41:24] Checking input_binding_set
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_binding_set
+[04-07-2021 09:41:24] Checking input_binding_scan_tick
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_binding_scan_tick
+[04-07-2021 09:41:24] Checking input_binding_remove
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_binding_remove
+[04-07-2021 09:41:24] Checking input_binding_get_name
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_binding_get_name
+[04-07-2021 09:41:24] Checking input_binding_get_collisions
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_binding_get_collisions
+[04-07-2021 09:41:24] Checking input_binding_get
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_binding_get
+[04-07-2021 09:41:24] Checking input_bindings_write
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_write
+[04-07-2021 09:41:24] Checking input_bindings_reset
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_reset
+[04-07-2021 09:41:24] Checking input_bindings_read
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_read
+[04-07-2021 09:41:24] Checking input_bindings_copy
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_copy
+[04-07-2021 09:41:24] Checking input_axis_threshold_set
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_axis_threshold_set
+[04-07-2021 09:41:24] Checking input_axis_threshold_get
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_axis_threshold_get
+[04-07-2021 09:41:24] Checking input_async_system_event
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_async_system_event
+[04-07-2021 09:41:24] Checking input_assignment_tick
+[04-07-2021 09:41:24] Directory: C:/Users/al/Documents/GitHub/Input/scripts/input_assignment_tick
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_assignment_tick
+[04-07-2021 09:41:24] Checking input_assignment_tick.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_assignment_tick/input_assignment_tick.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_assignment_tick/input_assignment_tick.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Source Assignment" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_assignment_tick/input_assignment_tick.yy"
+[04-07-2021 09:41:24] Found Script: input_assignment_tick
+[04-07-2021 09:41:24] Checking input_assignment_tick.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_async_system_event
+[04-07-2021 09:41:24] Checking input_async_system_event.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_async_system_event/input_async_system_event.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_async_system_event/input_async_system_event.yy
+[04-07-2021 09:41:24] Par: "folders/Input/(System)/Deprecated" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_async_system_event/input_async_system_event.yy"
+[04-07-2021 09:41:24] Found Script: input_async_system_event
+[04-07-2021 09:41:24] Checking input_async_system_event.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_axis_threshold_get
+[04-07-2021 09:41:24] Checking input_axis_threshold_get.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_axis_threshold_get/input_axis_threshold_get.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_axis_threshold_get/input_axis_threshold_get.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Other" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_axis_threshold_get/input_axis_threshold_get.yy"
+[04-07-2021 09:41:24] Found Script: input_axis_threshold_get
+[04-07-2021 09:41:24] Checking input_axis_threshold_get.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_axis_threshold_set
+[04-07-2021 09:41:24] Checking input_axis_threshold_set.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_axis_threshold_set/input_axis_threshold_set.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_axis_threshold_set/input_axis_threshold_set.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Other" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_axis_threshold_set/input_axis_threshold_set.yy"
+[04-07-2021 09:41:24] Found Script: input_axis_threshold_set
+[04-07-2021 09:41:24] Checking input_axis_threshold_set.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_copy
+[04-07-2021 09:41:24] Checking input_bindings_copy.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_copy/input_bindings_copy.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_copy/input_bindings_copy.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Binding System" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_copy/input_bindings_copy.yy"
+[04-07-2021 09:41:24] Found Script: input_bindings_copy
+[04-07-2021 09:41:24] Checking input_bindings_copy.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_read
+[04-07-2021 09:41:24] Checking input_bindings_read.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_read/input_bindings_read.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_read/input_bindings_read.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Binding System" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_read/input_bindings_read.yy"
+[04-07-2021 09:41:24] Found Script: input_bindings_read
+[04-07-2021 09:41:24] Checking input_bindings_read.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_reset
+[04-07-2021 09:41:24] Checking input_bindings_reset.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_reset/input_bindings_reset.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_reset/input_bindings_reset.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Binding System" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_reset/input_bindings_reset.yy"
+[04-07-2021 09:41:24] Found Script: input_bindings_reset
+[04-07-2021 09:41:24] Checking input_bindings_reset.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_write
+[04-07-2021 09:41:24] Checking input_bindings_write.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_write/input_bindings_write.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_write/input_bindings_write.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Binding System" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_bindings_write/input_bindings_write.yy"
+[04-07-2021 09:41:24] Found Script: input_bindings_write
+[04-07-2021 09:41:24] Checking input_bindings_write.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_binding_get
+[04-07-2021 09:41:24] Checking input_binding_get.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_binding_get/input_binding_get.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_binding_get/input_binding_get.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Bindings" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_binding_get/input_binding_get.yy"
+[04-07-2021 09:41:24] Found Script: input_binding_get
+[04-07-2021 09:41:24] Checking input_binding_get.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_binding_get_collisions
+[04-07-2021 09:41:24] Checking input_binding_get_collisions.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_binding_get_collisions/input_binding_get_collisions.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_binding_get_collisions/input_binding_get_collisions.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Bindings" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_binding_get_collisions/input_binding_get_collisions.yy"
+[04-07-2021 09:41:24] Found Script: input_binding_get_collisions
+[04-07-2021 09:41:24] Checking input_binding_get_collisions.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_binding_get_name
+[04-07-2021 09:41:24] Checking input_binding_get_name.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_binding_get_name/input_binding_get_name.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_binding_get_name/input_binding_get_name.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Bindings" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_binding_get_name/input_binding_get_name.yy"
+[04-07-2021 09:41:24] Found Script: input_binding_get_name
+[04-07-2021 09:41:24] Checking input_binding_get_name.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_binding_remove
+[04-07-2021 09:41:24] Checking input_binding_remove.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_binding_remove/input_binding_remove.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_binding_remove/input_binding_remove.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Bindings" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_binding_remove/input_binding_remove.yy"
+[04-07-2021 09:41:24] Found Script: input_binding_remove
+[04-07-2021 09:41:24] Checking input_binding_remove.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_binding_scan_tick
+[04-07-2021 09:41:24] Checking input_binding_scan_tick.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_binding_scan_tick/input_binding_scan_tick.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_binding_scan_tick/input_binding_scan_tick.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Bindings" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_binding_scan_tick/input_binding_scan_tick.yy"
+[04-07-2021 09:41:24] Found Script: input_binding_scan_tick
+[04-07-2021 09:41:24] Checking input_binding_scan_tick.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_binding_set
+[04-07-2021 09:41:24] Checking input_binding_set.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_binding_set/input_binding_set.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_binding_set/input_binding_set.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Bindings" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_binding_set/input_binding_set.yy"
+[04-07-2021 09:41:24] Found Script: input_binding_set
+[04-07-2021 09:41:24] Checking input_binding_set.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_binding_set_safe
+[04-07-2021 09:41:24] Checking input_binding_set_safe.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_binding_set_safe/input_binding_set_safe.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_binding_set_safe/input_binding_set_safe.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Bindings" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_binding_set_safe/input_binding_set_safe.yy"
+[04-07-2021 09:41:24] Found Script: input_binding_set_safe
+[04-07-2021 09:41:24] Checking input_binding_set_safe.gml
+[04-07-2021 09:41:24] Checking input_binding_set.yy
+[04-07-2021 09:41:24] Trash file: input_binding_set.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_binding_swap
+[04-07-2021 09:41:24] Checking input_binding_swap.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_binding_swap/input_binding_swap.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_binding_swap/input_binding_swap.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Bindings" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_binding_swap/input_binding_swap.yy"
+[04-07-2021 09:41:24] Found Script: input_binding_swap
+[04-07-2021 09:41:24] Checking input_binding_swap.gml
+[04-07-2021 09:41:24] Checking input_binding_set.yy
+[04-07-2021 09:41:24] Trash file: input_binding_set.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_check
+[04-07-2021 09:41:24] Checking input_check.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_check/input_check.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_check/input_check.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Checkers" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_check/input_check.yy"
+[04-07-2021 09:41:24] Found Script: input_check
+[04-07-2021 09:41:24] Checking input_check.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_check_double
+[04-07-2021 09:41:24] Checking input_check_double.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_check_double/input_check_double.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_check_double/input_check_double.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Checkers" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_check_double/input_check_double.yy"
+[04-07-2021 09:41:24] Found Script: input_check_double
+[04-07-2021 09:41:24] Checking input_check_double.gml
+[04-07-2021 09:41:24] Checking input_check.yy
+[04-07-2021 09:41:24] Trash file: input_check.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_check_double_pressed
+[04-07-2021 09:41:24] Checking input_check_pressed.yy
+[04-07-2021 09:41:24] Trash file: input_check_pressed.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Checking input_check_double_pressed.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_check_double_pressed/input_check_double_pressed.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_check_double_pressed/input_check_double_pressed.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Checkers" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_check_double_pressed/input_check_double_pressed.yy"
+[04-07-2021 09:41:24] Found Script: input_check_double_pressed
+[04-07-2021 09:41:24] Checking input_check_double_pressed.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_check_double_released
+[04-07-2021 09:41:24] Checking input_check_released.yy
+[04-07-2021 09:41:24] Trash file: input_check_released.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Checking input_check_double_released.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_check_double_released/input_check_double_released.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_check_double_released/input_check_double_released.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Checkers" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_check_double_released/input_check_double_released.yy"
+[04-07-2021 09:41:24] Found Script: input_check_double_released
+[04-07-2021 09:41:24] Checking input_check_double_released.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_check_pressed
+[04-07-2021 09:41:24] Checking input_check_pressed.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_check_pressed/input_check_pressed.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_check_pressed/input_check_pressed.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Checkers" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_check_pressed/input_check_pressed.yy"
+[04-07-2021 09:41:24] Found Script: input_check_pressed
+[04-07-2021 09:41:24] Checking input_check_pressed.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_check_press_most_recent
+[04-07-2021 09:41:24] Checking input_check_press_most_recent.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_check_press_most_recent/input_check_press_most_recent.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_check_press_most_recent/input_check_press_most_recent.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Checkers" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_check_press_most_recent/input_check_press_most_recent.yy"
+[04-07-2021 09:41:24] Found Script: input_check_press_most_recent
+[04-07-2021 09:41:24] Checking input_check_press_most_recent.gml
+[04-07-2021 09:41:24] Checking input_check.yy
+[04-07-2021 09:41:24] Trash file: input_check.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_check_released
+[04-07-2021 09:41:24] Checking input_check_released.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_check_released/input_check_released.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_check_released/input_check_released.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Checkers" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_check_released/input_check_released.yy"
+[04-07-2021 09:41:24] Found Script: input_check_released
+[04-07-2021 09:41:24] Checking input_check_released.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_consume
+[04-07-2021 09:41:24] Checking input_consume.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_consume/input_consume.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_consume/input_consume.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Other" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_consume/input_consume.yy"
+[04-07-2021 09:41:24] Found Script: input_consume
+[04-07-2021 09:41:24] Checking input_consume.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_follow_camera
+[04-07-2021 09:41:24] Checking input_cursor_follow_camera.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_follow_camera/input_cursor_follow_camera.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_follow_camera/input_cursor_follow_camera.yy
+[04-07-2021 09:41:24] Par: "folders/Input/(System)/Deprecated/Cursor" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_follow_camera/input_cursor_follow_camera.yy"
+[04-07-2021 09:41:24] Found Script: input_cursor_follow_camera
+[04-07-2021 09:41:24] Checking input_cursor_follow_camera.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_limit_box
+[04-07-2021 09:41:24] Checking input_cursor_limit_box.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_limit_box/input_cursor_limit_box.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_limit_box/input_cursor_limit_box.yy
+[04-07-2021 09:41:24] Par: "folders/Input/(System)/Deprecated/Cursor" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_limit_box/input_cursor_limit_box.yy"
+[04-07-2021 09:41:24] Found Script: input_cursor_limit_box
+[04-07-2021 09:41:24] Checking input_cursor_limit_box.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_limit_circle
+[04-07-2021 09:41:24] Checking input_cursor_limit_circle.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_limit_circle/input_cursor_limit_circle.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_limit_circle/input_cursor_limit_circle.yy
+[04-07-2021 09:41:24] Par: "folders/Input/(System)/Deprecated/Cursor" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_limit_circle/input_cursor_limit_circle.yy"
+[04-07-2021 09:41:24] Found Script: input_cursor_limit_circle
+[04-07-2021 09:41:24] Checking input_cursor_limit_circle.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_move
+[04-07-2021 09:41:24] Checking input_cursor_move.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_move/input_cursor_move.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_move/input_cursor_move.yy
+[04-07-2021 09:41:24] Par: "folders/Input/(System)/Deprecated/Cursor" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_move/input_cursor_move.yy"
+[04-07-2021 09:41:24] Found Script: input_cursor_move
+[04-07-2021 09:41:24] Checking input_cursor_move.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_moved
+[04-07-2021 09:41:24] Checking input_cursor_moved.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_moved/input_cursor_moved.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_moved/input_cursor_moved.yy
+[04-07-2021 09:41:24] Par: "folders/Input/(System)/Deprecated/Cursor" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_moved/input_cursor_moved.yy"
+[04-07-2021 09:41:24] Found Script: input_cursor_moved
+[04-07-2021 09:41:24] Checking input_cursor_moved.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_prev_x
+[04-07-2021 09:41:24] Checking input_cursor_x.yy
+[04-07-2021 09:41:24] Trash file: input_cursor_x.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Checking input_cursor_prev_x.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_prev_x/input_cursor_prev_x.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_prev_x/input_cursor_prev_x.yy
+[04-07-2021 09:41:24] Par: "folders/Input/(System)/Deprecated/Cursor" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_prev_x/input_cursor_prev_x.yy"
+[04-07-2021 09:41:24] Found Script: input_cursor_prev_x
+[04-07-2021 09:41:24] Checking input_cursor_prev_x.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_prev_y
+[04-07-2021 09:41:24] Checking input_cursor_y.yy
+[04-07-2021 09:41:24] Trash file: input_cursor_y.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Checking input_cursor_prev_y.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_prev_y/input_cursor_prev_y.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_prev_y/input_cursor_prev_y.yy
+[04-07-2021 09:41:24] Par: "folders/Input/(System)/Deprecated/Cursor" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_prev_y/input_cursor_prev_y.yy"
+[04-07-2021 09:41:24] Found Script: input_cursor_prev_y
+[04-07-2021 09:41:24] Checking input_cursor_prev_y.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_verbs
+[04-07-2021 09:41:24] Checking input_cursor_verbs.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_verbs/input_cursor_verbs.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_verbs/input_cursor_verbs.yy
+[04-07-2021 09:41:24] Par: "folders/Input/(System)/Deprecated/Cursor" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_verbs/input_cursor_verbs.yy"
+[04-07-2021 09:41:24] Found Script: input_cursor_verbs
+[04-07-2021 09:41:24] Checking input_cursor_verbs.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_x
+[04-07-2021 09:41:24] Checking input_cursor_x.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_x/input_cursor_x.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_x/input_cursor_x.yy
+[04-07-2021 09:41:24] Par: "folders/Input/(System)/Deprecated/Cursor" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_x/input_cursor_x.yy"
+[04-07-2021 09:41:24] Found Script: input_cursor_x
+[04-07-2021 09:41:24] Checking input_cursor_x.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_y
+[04-07-2021 09:41:24] Checking input_cursor_y.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_y/input_cursor_y.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_y/input_cursor_y.yy
+[04-07-2021 09:41:24] Par: "folders/Input/(System)/Deprecated/Cursor" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_cursor_y/input_cursor_y.yy"
+[04-07-2021 09:41:24] Found Script: input_cursor_y
+[04-07-2021 09:41:24] Checking input_cursor_y.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_default_gamepad_axis
+[04-07-2021 09:41:24] Checking input_default_gamepad_axis.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_default_gamepad_axis/input_default_gamepad_axis.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_default_gamepad_axis/input_default_gamepad_axis.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Default Bindings" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_default_gamepad_axis/input_default_gamepad_axis.yy"
+[04-07-2021 09:41:24] Found Script: input_default_gamepad_axis
+[04-07-2021 09:41:24] Checking input_default_gamepad_axis.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_default_gamepad_button
+[04-07-2021 09:41:24] Checking input_default_gamepad_button.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_default_gamepad_button/input_default_gamepad_button.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_default_gamepad_button/input_default_gamepad_button.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Default Bindings" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_default_gamepad_button/input_default_gamepad_button.yy"
+[04-07-2021 09:41:24] Found Script: input_default_gamepad_button
+[04-07-2021 09:41:24] Checking input_default_gamepad_button.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_default_gamepad_swap_ab
+[04-07-2021 09:41:24] Checking input_default_gamepad_swap_ab.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_default_gamepad_swap_ab/input_default_gamepad_swap_ab.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_default_gamepad_swap_ab/input_default_gamepad_swap_ab.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Default Bindings" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_default_gamepad_swap_ab/input_default_gamepad_swap_ab.yy"
+[04-07-2021 09:41:24] Found Script: input_default_gamepad_swap_ab
+[04-07-2021 09:41:24] Checking input_default_gamepad_swap_ab.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_default_key
+[04-07-2021 09:41:24] Checking input_default_key.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_default_key/input_default_key.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_default_key/input_default_key.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Default Bindings" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_default_key/input_default_key.yy"
+[04-07-2021 09:41:24] Found Script: input_default_key
+[04-07-2021 09:41:24] Checking input_default_key.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_default_mouse_button
+[04-07-2021 09:41:24] Checking input_default_mouse_button.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_default_mouse_button/input_default_mouse_button.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_default_mouse_button/input_default_mouse_button.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Default Bindings" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_default_mouse_button/input_default_mouse_button.yy"
+[04-07-2021 09:41:24] Found Script: input_default_mouse_button
+[04-07-2021 09:41:24] Checking input_default_mouse_button.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_default_mouse_wheel_down
+[04-07-2021 09:41:24] Checking input_default_mouse_wheel_down.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_default_mouse_wheel_down/input_default_mouse_wheel_down.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_default_mouse_wheel_down/input_default_mouse_wheel_down.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Default Bindings" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_default_mouse_wheel_down/input_default_mouse_wheel_down.yy"
+[04-07-2021 09:41:24] Found Script: input_default_mouse_wheel_down
+[04-07-2021 09:41:24] Checking input_default_mouse_wheel_down.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_default_mouse_wheel_up
+[04-07-2021 09:41:24] Checking input_default_mouse_wheel_up.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_default_mouse_wheel_up/input_default_mouse_wheel_up.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_default_mouse_wheel_up/input_default_mouse_wheel_up.yy
+[04-07-2021 09:41:24] Par: "folders/Input/Default Bindings" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_default_mouse_wheel_up/input_default_mouse_wheel_up.yy"
+[04-07-2021 09:41:24] Found Script: input_default_mouse_wheel_up
+[04-07-2021 09:41:24] Checking input_default_mouse_wheel_up.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_direction
+[04-07-2021 09:41:24] Checking input_value.yy
+[04-07-2021 09:41:24] Trash file: input_value.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Checking input_direction.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_direction/input_direction.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_direction/input_direction.yy
+[04-07-2021 09:41:24] Par: "folders/Input/2D Checkers" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_direction/input_direction.yy"
+[04-07-2021 09:41:24] Found Script: input_direction
+[04-07-2021 09:41:24] Checking input_direction.gml
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_distance
+[04-07-2021 09:41:24] Checking input_value.yy
+[04-07-2021 09:41:24] Trash file: input_value.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Checking input_distance.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_distance/input_distance.yy
+[04-07-2021 09:41:24] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_distance/input_distance.yy
+[04-07-2021 09:41:24] Par: "folders/Input/2D Checkers" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_distance/input_distance.yy"
+[04-07-2021 09:41:24] Found Script: input_distance
+[04-07-2021 09:41:24] Checking input_distance.gml
+[04-07-2021 09:41:24] Checking input_direction.yy
+[04-07-2021 09:41:24] Trash file: input_direction.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:24] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_check
+[04-07-2021 09:41:24] Checking input_gamepad_check.yy
+[04-07-2021 09:41:24] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_check/input_gamepad_check.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_check/input_gamepad_check.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Gamepads (Direct)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_check/input_gamepad_check.yy"
+[04-07-2021 09:41:25] Found Script: input_gamepad_check
+[04-07-2021 09:41:25] Checking input_gamepad_check.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_check_pressed
+[04-07-2021 09:41:25] Checking input_gamepad_check_pressed.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_check_pressed/input_gamepad_check_pressed.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_check_pressed/input_gamepad_check_pressed.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Gamepads (Direct)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_check_pressed/input_gamepad_check_pressed.yy"
+[04-07-2021 09:41:25] Found Script: input_gamepad_check_pressed
+[04-07-2021 09:41:25] Checking input_gamepad_check_pressed.gml
+[04-07-2021 09:41:25] Checking input_gamepad_button_check.yy
+[04-07-2021 09:41:25] Trash file: input_gamepad_button_check.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_check_released
+[04-07-2021 09:41:25] Checking input_gamepad_check_released.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_check_released/input_gamepad_check_released.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_check_released/input_gamepad_check_released.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Gamepads (Direct)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_check_released/input_gamepad_check_released.yy"
+[04-07-2021 09:41:25] Found Script: input_gamepad_check_released
+[04-07-2021 09:41:25] Checking input_gamepad_check_released.gml
+[04-07-2021 09:41:25] Checking input_gamepad_button_check_pressed.yy
+[04-07-2021 09:41:25] Trash file: input_gamepad_button_check_pressed.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Checking input_gamepad_button_check.yy
+[04-07-2021 09:41:25] Trash file: input_gamepad_button_check.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_get_description
+[04-07-2021 09:41:25] Checking input_gamepad_get_description.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_get_description/input_gamepad_get_description.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_get_description/input_gamepad_get_description.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Gamepads (Direct)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_get_description/input_gamepad_get_description.yy"
+[04-07-2021 09:41:25] Found Script: input_gamepad_get_description
+[04-07-2021 09:41:25] Checking input_gamepad_get_description.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_get_dpad_style
+[04-07-2021 09:41:25] Checking input_gamepad_get_dpad_style.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_get_dpad_style/input_gamepad_get_dpad_style.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_get_dpad_style/input_gamepad_get_dpad_style.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Gamepads (Direct)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_get_dpad_style/input_gamepad_get_dpad_style.yy"
+[04-07-2021 09:41:25] Found Script: input_gamepad_get_dpad_style
+[04-07-2021 09:41:25] Checking input_gamepad_get_dpad_style.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_get_type
+[04-07-2021 09:41:25] Checking input_gamepad_get_type.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_get_type/input_gamepad_get_type.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_get_type/input_gamepad_get_type.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Gamepads (Direct)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_get_type/input_gamepad_get_type.yy"
+[04-07-2021 09:41:25] Found Script: input_gamepad_get_type
+[04-07-2021 09:41:25] Checking input_gamepad_get_type.gml
+[04-07-2021 09:41:25] Checking input_gamepad_get_description.yy
+[04-07-2021 09:41:25] Trash file: input_gamepad_get_description.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_is_axis
+[04-07-2021 09:41:25] Checking input_gamepad_value.yy
+[04-07-2021 09:41:25] Trash file: input_gamepad_value.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Checking input_gamepad_is_axis.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_is_axis/input_gamepad_is_axis.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_is_axis/input_gamepad_is_axis.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Gamepads (Direct)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_is_axis/input_gamepad_is_axis.yy"
+[04-07-2021 09:41:25] Found Script: input_gamepad_is_axis
+[04-07-2021 09:41:25] Checking input_gamepad_is_axis.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_is_connected
+[04-07-2021 09:41:25] Checking input_gamepad_is_connected.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_is_connected/input_gamepad_is_connected.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_is_connected/input_gamepad_is_connected.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Gamepads (Direct)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_is_connected/input_gamepad_is_connected.yy"
+[04-07-2021 09:41:25] Found Script: input_gamepad_is_connected
+[04-07-2021 09:41:25] Checking input_gamepad_is_connected.gml
+[04-07-2021 09:41:25] Checking input_gamepad_check.yy
+[04-07-2021 09:41:25] Trash file: input_gamepad_check.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_value
+[04-07-2021 09:41:25] Checking input_gamepad_value.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_value/input_gamepad_value.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_value/input_gamepad_value.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Gamepads (Direct)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_gamepad_value/input_gamepad_value.yy"
+[04-07-2021 09:41:25] Found Script: input_gamepad_value
+[04-07-2021 09:41:25] Checking input_gamepad_value.gml
+[04-07-2021 09:41:25] Checking input_gamepad_button_check_released.yy
+[04-07-2021 09:41:25] Trash file: input_gamepad_button_check_released.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Checking input_gamepad_button_check_pressed.yy
+[04-07-2021 09:41:25] Trash file: input_gamepad_button_check_pressed.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Checking input_gamepad_button_check.yy
+[04-07-2021 09:41:25] Trash file: input_gamepad_button_check.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_history_clear
+[04-07-2021 09:41:25] Checking input_player_record_start.yy
+[04-07-2021 09:41:25] Trash file: input_player_record_start.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Checking input_history_clear.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_history_clear/input_history_clear.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_history_clear/input_history_clear.yy
+[04-07-2021 09:41:25] Par: "folders/Input/History" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_history_clear/input_history_clear.yy"
+[04-07-2021 09:41:25] Found Script: input_history_clear
+[04-07-2021 09:41:25] Checking input_history_clear.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_history_end
+[04-07-2021 09:41:25] Checking input_player_record_start.yy
+[04-07-2021 09:41:25] Trash file: input_player_record_start.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Checking input_history_end.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_history_end/input_history_end.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_history_end/input_history_end.yy
+[04-07-2021 09:41:25] Par: "folders/Input/History" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_history_end/input_history_end.yy"
+[04-07-2021 09:41:25] Found Script: input_history_end
+[04-07-2021 09:41:25] Checking input_history_end.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_history_get
+[04-07-2021 09:41:25] Checking input_player_record_start.yy
+[04-07-2021 09:41:25] Trash file: input_player_record_start.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Checking input_history_get.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_history_get/input_history_get.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_history_get/input_history_get.yy
+[04-07-2021 09:41:25] Par: "folders/Input/History" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_history_get/input_history_get.yy"
+[04-07-2021 09:41:25] Found Script: input_history_get
+[04-07-2021 09:41:25] Checking input_history_get.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_history_global_include
+[04-07-2021 09:41:25] Checking input_history_global_include.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_history_global_include/input_history_global_include.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_history_global_include/input_history_global_include.yy
+[04-07-2021 09:41:25] Par: "folders/Input/History" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_history_global_include/input_history_global_include.yy"
+[04-07-2021 09:41:25] Found Script: input_history_global_include
+[04-07-2021 09:41:25] Checking input_history_global_include.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_history_start
+[04-07-2021 09:41:25] Checking input_history_start.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_history_start/input_history_start.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_history_start/input_history_start.yy
+[04-07-2021 09:41:25] Par: "folders/Input/History" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_history_start/input_history_start.yy"
+[04-07-2021 09:41:25] Found Script: input_history_start
+[04-07-2021 09:41:25] Checking input_history_start.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_hotswap_tick
+[04-07-2021 09:41:25] Checking input_hotswap_tick.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_hotswap_tick/input_hotswap_tick.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_hotswap_tick/input_hotswap_tick.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Source Assignment" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_hotswap_tick/input_hotswap_tick.yy"
+[04-07-2021 09:41:25] Found Script: input_hotswap_tick
+[04-07-2021 09:41:25] Checking input_hotswap_tick.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_ignore_key_add
+[04-07-2021 09:41:25] Checking input_ignore_key_add.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_ignore_key_add/input_ignore_key_add.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_ignore_key_add/input_ignore_key_add.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Other" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_ignore_key_add/input_ignore_key_add.yy"
+[04-07-2021 09:41:25] Found Script: input_ignore_key_add
+[04-07-2021 09:41:25] Checking input_ignore_key_add.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_ignore_key_remove
+[04-07-2021 09:41:25] Checking input_ignore_key_remove.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_ignore_key_remove/input_ignore_key_remove.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_ignore_key_remove/input_ignore_key_remove.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Other" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_ignore_key_remove/input_ignore_key_remove.yy"
+[04-07-2021 09:41:25] Found Script: input_ignore_key_remove
+[04-07-2021 09:41:25] Checking input_ignore_key_remove.gml
+[04-07-2021 09:41:25] Checking input_ignore_key_add.yy
+[04-07-2021 09:41:25] Trash file: input_ignore_key_add.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_is_analogue
+[04-07-2021 09:41:25] Checking input_is_analogue.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_is_analogue/input_is_analogue.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_is_analogue/input_is_analogue.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Checkers" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_is_analogue/input_is_analogue.yy"
+[04-07-2021 09:41:25] Found Script: input_is_analogue
+[04-07-2021 09:41:25] Checking input_is_analogue.gml
+[04-07-2021 09:41:25] Checking input_check.yy
+[04-07-2021 09:41:25] Trash file: input_check.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_mouse_check_button
+[04-07-2021 09:41:25] Checking input_mouse_check_button.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_mouse_check_button/input_mouse_check_button.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_mouse_check_button/input_mouse_check_button.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Mouse (Direct)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_mouse_check_button/input_mouse_check_button.yy"
+[04-07-2021 09:41:25] Found Script: input_mouse_check_button
+[04-07-2021 09:41:25] Checking input_mouse_check_button.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_mouse_check_pressed
+[04-07-2021 09:41:25] Checking input_mouse_check_pressed.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_mouse_check_pressed/input_mouse_check_pressed.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_mouse_check_pressed/input_mouse_check_pressed.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Mouse (Direct)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_mouse_check_pressed/input_mouse_check_pressed.yy"
+[04-07-2021 09:41:25] Found Script: input_mouse_check_pressed
+[04-07-2021 09:41:25] Checking input_mouse_check_pressed.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_mouse_check_released
+[04-07-2021 09:41:25] Checking input_mouse_check_released.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_mouse_check_released/input_mouse_check_released.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_mouse_check_released/input_mouse_check_released.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Mouse (Direct)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_mouse_check_released/input_mouse_check_released.yy"
+[04-07-2021 09:41:25] Found Script: input_mouse_check_released
+[04-07-2021 09:41:25] Checking input_mouse_check_released.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_players_connected
+[04-07-2021 09:41:25] Checking input_players_connected.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_players_connected/input_players_connected.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_players_connected/input_players_connected.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Players" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_players_connected/input_players_connected.yy"
+[04-07-2021 09:41:25] Found Script: input_players_connected
+[04-07-2021 09:41:25] Checking input_players_connected.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_player_connected
+[04-07-2021 09:41:25] Checking input_player_connected.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_player_connected/input_player_connected.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_player_connected/input_player_connected.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Players" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_player_connected/input_player_connected.yy"
+[04-07-2021 09:41:25] Found Script: input_player_connected
+[04-07-2021 09:41:25] Checking input_player_connected.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get
+[04-07-2021 09:41:25] Checking input_player_gamepad_get.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get/input_player_gamepad_get.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get/input_player_gamepad_get.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Players" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get/input_player_gamepad_get.yy"
+[04-07-2021 09:41:25] Found Script: input_player_gamepad_get
+[04-07-2021 09:41:25] Checking input_player_gamepad_get.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get_description
+[04-07-2021 09:41:25] Checking input_player_gamepad_get_type.yy
+[04-07-2021 09:41:25] Trash file: input_player_gamepad_get_type.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Checking input_player_gamepad_get_dpad_style.yy
+[04-07-2021 09:41:25] Trash file: input_player_gamepad_get_dpad_style.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Checking input_player_gamepad_get_description.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get_description/input_player_gamepad_get_description.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get_description/input_player_gamepad_get_description.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Players" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get_description/input_player_gamepad_get_description.yy"
+[04-07-2021 09:41:25] Found Script: input_player_gamepad_get_description
+[04-07-2021 09:41:25] Checking input_player_gamepad_get_description.gml
+[04-07-2021 09:41:25] Checking input_player_gamepad_get.yy
+[04-07-2021 09:41:25] Trash file: input_player_gamepad_get.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get_dpad_style
+[04-07-2021 09:41:25] Checking input_player_gamepad_get_dpad_style.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get_dpad_style/input_player_gamepad_get_dpad_style.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get_dpad_style/input_player_gamepad_get_dpad_style.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Players" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get_dpad_style/input_player_gamepad_get_dpad_style.yy"
+[04-07-2021 09:41:25] Found Script: input_player_gamepad_get_dpad_style
+[04-07-2021 09:41:25] Checking input_player_gamepad_get_dpad_style.gml
+[04-07-2021 09:41:25] Checking input_player_gamepad_get.yy
+[04-07-2021 09:41:25] Trash file: input_player_gamepad_get.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get_type
+[04-07-2021 09:41:25] Checking input_player_gamepad_get_type.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get_type/input_player_gamepad_get_type.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get_type/input_player_gamepad_get_type.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Players" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_get_type/input_player_gamepad_get_type.yy"
+[04-07-2021 09:41:25] Found Script: input_player_gamepad_get_type
+[04-07-2021 09:41:25] Checking input_player_gamepad_get_type.gml
+[04-07-2021 09:41:25] Checking input_player_gamepad_get_dpad_style.yy
+[04-07-2021 09:41:25] Trash file: input_player_gamepad_get_dpad_style.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Checking input_player_gamepad_get.yy
+[04-07-2021 09:41:25] Trash file: input_player_gamepad_get.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_set
+[04-07-2021 09:41:25] Checking input_player_gamepad_set.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_set/input_player_gamepad_set.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_set/input_player_gamepad_set.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Players" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_player_gamepad_set/input_player_gamepad_set.yy"
+[04-07-2021 09:41:25] Found Script: input_player_gamepad_set
+[04-07-2021 09:41:25] Checking input_player_gamepad_set.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_player_source_get
+[04-07-2021 09:41:25] Checking input_player_source_get.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_player_source_get/input_player_source_get.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_player_source_get/input_player_source_get.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Players" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_player_source_get/input_player_source_get.yy"
+[04-07-2021 09:41:25] Found Script: input_player_source_get
+[04-07-2021 09:41:25] Checking input_player_source_get.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_player_source_set
+[04-07-2021 09:41:25] Checking input_player_source_set.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_player_source_set/input_player_source_set.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_player_source_set/input_player_source_set.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Players" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_player_source_set/input_player_source_set.yy"
+[04-07-2021 09:41:25] Found Script: input_player_source_set
+[04-07-2021 09:41:25] Checking input_player_source_set.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_rebind_tick_legacy
+[04-07-2021 09:41:25] Checking input_rebind_tick_legacy.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_rebind_tick_legacy/input_rebind_tick_legacy.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_rebind_tick_legacy/input_rebind_tick_legacy.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)/Deprecated" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_rebind_tick_legacy/input_rebind_tick_legacy.yy"
+[04-07-2021 09:41:25] Found Script: input_rebind_tick_legacy
+[04-07-2021 09:41:25] Checking input_rebind_tick_legacy.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_rebind_undo_legacy
+[04-07-2021 09:41:25] Checking input_rebind_undo_legacy.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_rebind_undo_legacy/input_rebind_undo_legacy.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_rebind_undo_legacy/input_rebind_undo_legacy.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)/Deprecated" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_rebind_undo_legacy/input_rebind_undo_legacy.yy"
+[04-07-2021 09:41:25] Found Script: input_rebind_undo_legacy
+[04-07-2021 09:41:25] Checking input_rebind_undo_legacy.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_source_detect
+[04-07-2021 09:41:25] Checking input_source_detect.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_source_detect/input_source_detect.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_source_detect/input_source_detect.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Source Assignment" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_source_detect/input_source_detect.yy"
+[04-07-2021 09:41:25] Found Script: input_source_detect
+[04-07-2021 09:41:25] Checking input_source_detect.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_source_detect_any
+[04-07-2021 09:41:25] Checking input_source_detect_any.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_source_detect_any/input_source_detect_any.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_source_detect_any/input_source_detect_any.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Source Assignment" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_source_detect_any/input_source_detect_any.yy"
+[04-07-2021 09:41:25] Found Script: input_source_detect_any
+[04-07-2021 09:41:25] Checking input_source_detect_any.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_source_get_name
+[04-07-2021 09:41:25] Checking input_source_get_name.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_source_get_name/input_source_get_name.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_source_get_name/input_source_get_name.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Source Assignment" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_source_get_name/input_source_get_name.yy"
+[04-07-2021 09:41:25] Found Script: input_source_get_name
+[04-07-2021 09:41:25] Checking input_source_get_name.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_source_is_available
+[04-07-2021 09:41:25] Checking input_source_is_available.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_source_is_available/input_source_is_available.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_source_is_available/input_source_is_available.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Source Assignment" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_source_is_available/input_source_is_available.yy"
+[04-07-2021 09:41:25] Found Script: input_source_is_available
+[04-07-2021 09:41:25] Checking input_source_is_available.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_tick
+[04-07-2021 09:41:25] Checking input_tick.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_tick/input_tick.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_tick/input_tick.yy
+[04-07-2021 09:41:25] Par: "folders/Input" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_tick/input_tick.yy"
+[04-07-2021 09:41:25] Found Script: input_tick
+[04-07-2021 09:41:25] Checking input_tick.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_value
+[04-07-2021 09:41:25] Checking input_value.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_value/input_value.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_value/input_value.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Checkers" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_value/input_value.yy"
+[04-07-2021 09:41:25] Found Script: input_value
+[04-07-2021 09:41:25] Checking input_value.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_value_is_binding
+[04-07-2021 09:41:25] Checking input_value_is_binding.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_value_is_binding/input_value_is_binding.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_value_is_binding/input_value_is_binding.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Bindings" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_value_is_binding/input_value_is_binding.yy"
+[04-07-2021 09:41:25] Found Script: input_value_is_binding
+[04-07-2021 09:41:25] Checking input_value_is_binding.gml
+[04-07-2021 09:41:25] Checking input_binding_set.yy
+[04-07-2021 09:41:25] Trash file: input_binding_set.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_verb_set
+[04-07-2021 09:41:25] Checking input_verb_set.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_verb_set/input_verb_set.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_verb_set/input_verb_set.yy
+[04-07-2021 09:41:25] Par: "folders/Input/Other" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_verb_set/input_verb_set.yy"
+[04-07-2021 09:41:25] Found Script: input_verb_set
+[04-07-2021 09:41:25] Checking input_verb_set.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_x
+[04-07-2021 09:41:25] Checking input_x.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_x/input_x.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_x/input_x.yy
+[04-07-2021 09:41:25] Par: "folders/Input/2D Checkers" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_x/input_x.yy"
+[04-07-2021 09:41:25] Found Script: input_x
+[04-07-2021 09:41:25] Checking input_x.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_xy
+[04-07-2021 09:41:25] Checking input_y.yy
+[04-07-2021 09:41:25] Trash file: input_y.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Checking input_xy.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_xy/input_xy.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_xy/input_xy.yy
+[04-07-2021 09:41:25] Par: "folders/Input/2D Checkers" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_xy/input_xy.yy"
+[04-07-2021 09:41:25] Found Script: input_xy
+[04-07-2021 09:41:25] Checking input_xy.gml
+[04-07-2021 09:41:25] Checking input_x.yy
+[04-07-2021 09:41:25] Trash file: input_x.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/input_y
+[04-07-2021 09:41:25] Checking input_y.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/input_y/input_y.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/input_y/input_y.yy
+[04-07-2021 09:41:25] Par: "folders/Input/2D Checkers" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/input_y/input_y.yy"
+[04-07-2021 09:41:25] Found Script: input_y
+[04-07-2021 09:41:25] Checking input_y.gml
+[04-07-2021 09:41:25] Checking input_x.yy
+[04-07-2021 09:41:25] Trash file: input_x.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/snap_to_csv
+[04-07-2021 09:41:25] Checking snap_to_csv.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/snap_to_csv/snap_to_csv.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/snap_to_csv/snap_to_csv.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/snap_to_csv/snap_to_csv.yy"
+[04-07-2021 09:41:25] Found Script: snap_to_csv
+[04-07-2021 09:41:25] Checking snap_to_csv.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_binding_get_label
+[04-07-2021 09:41:25] Checking __input_binding_get_label.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_binding_get_label/__input_binding_get_label.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_binding_get_label/__input_binding_get_label.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_binding_get_label/__input_binding_get_label.yy"
+[04-07-2021 09:41:25] Found Script: __input_binding_get_label
+[04-07-2021 09:41:25] Checking __input_binding_get_label.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_binding_get_source
+[04-07-2021 09:41:25] Checking __input_binding_get_source.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_binding_get_source/__input_binding_get_source.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_binding_get_source/__input_binding_get_source.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_binding_get_source/__input_binding_get_source.yy"
+[04-07-2021 09:41:25] Found Script: __input_binding_get_source
+[04-07-2021 09:41:25] Checking __input_binding_get_source.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_class_binding
+[04-07-2021 09:41:25] Checking __input_class_binding.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_class_binding/__input_class_binding.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_class_binding/__input_class_binding.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_class_binding/__input_class_binding.yy"
+[04-07-2021 09:41:25] Found Script: __input_class_binding
+[04-07-2021 09:41:25] Checking __input_class_binding.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_class_cursor
+[04-07-2021 09:41:25] Checking __input_class_cursor.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_class_cursor/__input_class_cursor.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_class_cursor/__input_class_cursor.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_class_cursor/__input_class_cursor.yy"
+[04-07-2021 09:41:25] Found Script: __input_class_cursor
+[04-07-2021 09:41:25] Checking __input_class_cursor.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_class_gamepad
+[04-07-2021 09:41:25] Checking __input_class_gamepad.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_class_gamepad/__input_class_gamepad.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_class_gamepad/__input_class_gamepad.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_class_gamepad/__input_class_gamepad.yy"
+[04-07-2021 09:41:25] Found Script: __input_class_gamepad
+[04-07-2021 09:41:25] Checking __input_class_gamepad.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_class_player
+[04-07-2021 09:41:25] Checking __input_class_player.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_class_player/__input_class_player.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_class_player/__input_class_player.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_class_player/__input_class_player.yy"
+[04-07-2021 09:41:25] Found Script: __input_class_player
+[04-07-2021 09:41:25] Checking __input_class_player.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_class_verb
+[04-07-2021 09:41:25] Checking __input_class_verb.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_class_verb/__input_class_verb.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_class_verb/__input_class_verb.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_class_verb/__input_class_verb.yy"
+[04-07-2021 09:41:25] Found Script: __input_class_verb
+[04-07-2021 09:41:25] Checking __input_class_verb.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_config
+[04-07-2021 09:41:25] Checking __input_config.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_config/__input_config.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_config/__input_config.yy
+[04-07-2021 09:41:25] Par: "folders/Input" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_config/__input_config.yy"
+[04-07-2021 09:41:25] Found Script: __input_config
+[04-07-2021 09:41:25] Checking __input_config.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_csv_to_array
+[04-07-2021 09:41:25] Checking __input_csv_to_array.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_csv_to_array/__input_csv_to_array.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_csv_to_array/__input_csv_to_array.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_csv_to_array/__input_csv_to_array.yy"
+[04-07-2021 09:41:25] Found Script: __input_csv_to_array
+[04-07-2021 09:41:25] Checking __input_csv_to_array.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_exception_handler
+[04-07-2021 09:41:25] Checking __input_exception_handler.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_exception_handler/__input_exception_handler.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_exception_handler/__input_exception_handler.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_exception_handler/__input_exception_handler.yy"
+[04-07-2021 09:41:25] Found Script: __input_exception_handler
+[04-07-2021 09:41:25] Checking __input_exception_handler.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_fix_config_struct
+[04-07-2021 09:41:25] Checking __input_fix_config_struct.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_fix_config_struct/__input_fix_config_struct.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_fix_config_struct/__input_fix_config_struct.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_fix_config_struct/__input_fix_config_struct.yy"
+[04-07-2021 09:41:25] Found Script: __input_fix_config_struct
+[04-07-2021 09:41:25] Checking __input_fix_config_struct.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_find_in_sdl2_database
+[04-07-2021 09:41:25] Checking __input_gamepad_find_in_sdl2_database.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_find_in_sdl2_database/__input_gamepad_find_in_sdl2_database.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_find_in_sdl2_database/__input_gamepad_find_in_sdl2_database.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_find_in_sdl2_database/__input_gamepad_find_in_sdl2_database.yy"
+[04-07-2021 09:41:25] Found Script: __input_gamepad_find_in_sdl2_database
+[04-07-2021 09:41:25] Checking __input_gamepad_find_in_sdl2_database.gml
+[04-07-2021 09:41:25] Checking __input_gamepad_determine_mapping.yy
+[04-07-2021 09:41:25] Trash file: __input_gamepad_determine_mapping.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Checking __input_gamepad_determine_description.yy
+[04-07-2021 09:41:25] Trash file: __input_gamepad_determine_description.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_set_mapping
+[04-07-2021 09:41:25] Checking __input_gamepad_set_mapping.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_set_mapping/__input_gamepad_set_mapping.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_set_mapping/__input_gamepad_set_mapping.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_set_mapping/__input_gamepad_set_mapping.yy"
+[04-07-2021 09:41:25] Found Script: __input_gamepad_set_mapping
+[04-07-2021 09:41:25] Checking __input_gamepad_set_mapping.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_set_type
+[04-07-2021 09:41:25] Checking __input_gamepad_set_type.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_set_type/__input_gamepad_set_type.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_set_type/__input_gamepad_set_type.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_set_type/__input_gamepad_set_type.yy"
+[04-07-2021 09:41:25] Found Script: __input_gamepad_set_type
+[04-07-2021 09:41:25] Checking __input_gamepad_set_type.gml
+[04-07-2021 09:41:25] Checking __input_gamepad_determine_mapping.yy
+[04-07-2021 09:41:25] Trash file: __input_gamepad_determine_mapping.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_set_vid_pid
+[04-07-2021 09:41:25] Checking __input_gamepad_set_vid_pid.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_set_vid_pid/__input_gamepad_set_vid_pid.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_set_vid_pid/__input_gamepad_set_vid_pid.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_gamepad_set_vid_pid/__input_gamepad_set_vid_pid.yy"
+[04-07-2021 09:41:25] Found Script: __input_gamepad_set_vid_pid
+[04-07-2021 09:41:25] Checking __input_gamepad_set_vid_pid.gml
+[04-07-2021 09:41:25] Checking __input_gamepad_determine_mapping.yy
+[04-07-2021 09:41:25] Trash file: __input_gamepad_determine_mapping.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_key_get_name
+[04-07-2021 09:41:25] Checking __input_key_get_name.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_key_get_name/__input_key_get_name.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_key_get_name/__input_key_get_name.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_key_get_name/__input_key_get_name.yy"
+[04-07-2021 09:41:25] Found Script: __input_key_get_name
+[04-07-2021 09:41:25] Checking __input_key_get_name.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_key_is_ignored
+[04-07-2021 09:41:25] Checking __input_key_is_ignored.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_key_is_ignored/__input_key_is_ignored.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_key_is_ignored/__input_key_is_ignored.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_key_is_ignored/__input_key_is_ignored.yy"
+[04-07-2021 09:41:25] Found Script: __input_key_is_ignored
+[04-07-2021 09:41:25] Checking __input_key_is_ignored.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_load_blacklist_csv
+[04-07-2021 09:41:25] Checking __input_load_type_csv.yy
+[04-07-2021 09:41:25] Trash file: __input_load_type_csv.yy, will be moved to ___yyp_maker_trash
+[04-07-2021 09:41:25] Checking __input_load_blacklist_csv.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_load_blacklist_csv/__input_load_blacklist_csv.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_load_blacklist_csv/__input_load_blacklist_csv.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_load_blacklist_csv/__input_load_blacklist_csv.yy"
+[04-07-2021 09:41:25] Found Script: __input_load_blacklist_csv
+[04-07-2021 09:41:25] Checking __input_load_blacklist_csv.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_load_type_csv
+[04-07-2021 09:41:25] Checking __input_load_type_csv.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_load_type_csv/__input_load_type_csv.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_load_type_csv/__input_load_type_csv.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_load_type_csv/__input_load_type_csv.yy"
+[04-07-2021 09:41:25] Found Script: __input_load_type_csv
+[04-07-2021 09:41:25] Checking __input_load_type_csv.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_sdl2_database_funcs
+[04-07-2021 09:41:25] Checking __input_sdl2_database_funcs.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_sdl2_database_funcs/__input_sdl2_database_funcs.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_sdl2_database_funcs/__input_sdl2_database_funcs.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_sdl2_database_funcs/__input_sdl2_database_funcs.yy"
+[04-07-2021 09:41:25] Found Script: __input_sdl2_database_funcs
+[04-07-2021 09:41:25] Checking __input_sdl2_database_funcs.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/scripts/__input_system
+[04-07-2021 09:41:25] Checking __input_system.yy
+[04-07-2021 09:41:25] Parsing C:/Users/al/Documents/GitHub/Input/scripts/__input_system/__input_system.yy
+[04-07-2021 09:41:25] Reading C:/Users/al/Documents/GitHub/Input/scripts/__input_system/__input_system.yy
+[04-07-2021 09:41:25] Par: "folders/Input/(System)" at dir: "C:/Users/al/Documents/GitHub/Input/scripts/__input_system/__input_system.yy"
+[04-07-2021 09:41:25] Found Script: __input_system
+[04-07-2021 09:41:25] Checking __input_system.gml
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/sequences
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/shaders
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/sounds
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/sprites
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/tilesets
+[04-07-2021 09:41:25] Current parent directory: C:/Users/al/Documents/GitHub/Input/timelines
+[04-07-2021 09:41:25] Moving files to trash...
+[04-07-2021 09:41:25] Files yeeted successfully!
+[04-07-2021 09:41:25] Generating YYP...
+[04-07-2021 09:41:25] Input.yyp created successfully!
