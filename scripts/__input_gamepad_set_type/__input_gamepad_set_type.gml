@@ -79,8 +79,8 @@ function __input_gamepad_set_type(_gamepad)
                         raw_type = "SwitchProController";
                     break;
 
-                    case "Handheld":
-                    case "Joy-Con"
+                    case "Handheld": //L+R railed or Lite
+                    case "Joy-Con":  //L+R loose 
                     default:
                         raw_type = "SwitchJoyConPair";
                     break;
