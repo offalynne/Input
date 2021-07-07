@@ -24,6 +24,8 @@ global.__input_simple_type_lookup = {
     AppleController: "apple",
     
     SwitchProController: "switch pro",
+
+    SwitchJoyConPair: "switch joycon pair",
     
     SwitchJoyConLeft: "switch joycon left",
     
