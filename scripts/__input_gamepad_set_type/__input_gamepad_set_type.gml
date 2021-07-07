@@ -64,8 +64,28 @@ function __input_gamepad_set_type(_gamepad)
         switch(os_type)
         {
             case os_switch:
-                //TODO - Collect pro/handheld/individual joycon here
-                raw_type = "SwitchProController";
+                
+                switch(description)
+                {
+                    case "Joy-Con (L)":
+                        raw_type = "SwitchJoyConLeft";
+                    break;
+
+                    case "Joy-Con (R)":
+                        raw_type = "SwitchJoyConRight";
+                    break;
+
+                    case "Pro Controller":
+                        raw_type = "SwitchProController";
+                    break;
+
+                    case "Handheld":
+                    case "Joy-Con"
+                    default:
+                        raw_type = "SwitchJoyConPair";
+                    break;
+                }
+                
                 guessed_type = false;
             break;
             
