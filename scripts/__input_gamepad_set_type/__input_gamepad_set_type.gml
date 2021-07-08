@@ -66,6 +66,14 @@ function __input_gamepad_set_type(_gamepad)
                 
                 switch(description)
                 {
+                    case "Handheld": //JoyCon L+R railed or Lite (Slot 0 only)
+                        raw_type = "SwitchHandheld";
+                    break;
+                        
+                    case "Pro Controller":
+                        raw_type = "SwitchProController";
+                    break;
+                        
                     case "Joy-Con (L)":
                         raw_type = "SwitchJoyConLeft";
                     break;
@@ -75,16 +83,8 @@ function __input_gamepad_set_type(_gamepad)
                     break;
                         
                     case "Joy-Con":
-                        raw_type = "SwitchJoyConPair";
-                    break;
-
-                    case "Pro Controller":
-                        raw_type = "SwitchProController";
-                    break;
-
-                    case "Handheld": //JoyCon L+R railed or Lite (Slot 0 only)
                     default:
-                        raw_type = "SwitchHandheld";
+                        raw_type = "SwitchJoyConPair";
                     break;
                 }
                 
