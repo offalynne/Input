@@ -170,9 +170,9 @@ function __input_gamepad_set_type(_gamepad)
         }
         
         //Discover the simple type from the raw type
-        if (variable_struct_exists(global.__input_raw_type_dictionary, raw_type))
+        if (variable_struct_exists(global.__input_simple_type_lookup, raw_type))
         {
-            simple_type = global.__input_raw_type_dictionary[$ raw_type];
+            simple_type = global.__input_simple_type_lookup[$ raw_type];
         }
         else
         {
