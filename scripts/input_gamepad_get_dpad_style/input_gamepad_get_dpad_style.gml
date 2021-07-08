@@ -22,6 +22,8 @@ function input_gamepad_get_dpad_style(_index)
         break;
         
         case "switch":
+        case "switch handheld":
+        case "switch joycon pair":
             return "buttons";
         break;
         
