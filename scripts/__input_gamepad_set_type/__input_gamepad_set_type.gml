@@ -22,15 +22,13 @@ global.__input_simple_type_lookup = {
     PS5Controller: "ps5",
     
     AppleController: "apple",
-    
-    SwitchProController: "switch pro",
-
-    SwitchHandheld: "switch handheld", //Attached pair, or Switch Lite
 
     SwitchJoyConLeft:  "switch joycon left",
     SwitchJoyConRight: "switch joycon right",
-    SwitchJoyConPair:  "switch joycon pair",
     
+    SwitchHandheld:            "switch", //Attached JoyCon pair or Switch Lite
+    SwitchJoyConPair:          "switch",
+    SwitchProController:       "switch",
     SwitchInputOnlyController: "switch",
     XInputSwitchController:    "switch",
     CommunityLikeSwitch:       "switch",
