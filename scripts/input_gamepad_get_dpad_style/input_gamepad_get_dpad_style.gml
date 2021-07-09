@@ -22,8 +22,6 @@ function input_gamepad_get_dpad_style(_index)
         break;
         
         case "switch":
-        case "switch handheld": //Railed JoyCons or Switch Lite (Slot 0)
-        case "switch pro":
             return "arrows";
         break;
         
@@ -32,10 +30,6 @@ function input_gamepad_get_dpad_style(_index)
             return "stick";
         break;
 
-        case "switch joycon pair":
-            return "buttons";
-        break;
-        
         default:
             return "cross";
         break;
