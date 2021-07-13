@@ -25,9 +25,9 @@ function __input_gamepad_set_mapping(_gamepad)
             set_mapping(gp_face4, gp_face4, "b", "y");
             
             set_mapping(gp_axislh, gp_axislh, "a", "leftx");
-            set_mapping(gp_axislv, gp_axislv, "a", "lefty").reverse = true;
+            set_mapping(gp_axislv, gp_axislv, "a", "lefty");
             set_mapping(gp_axisrh, gp_axisrh, "a", "rightx");
-            set_mapping(gp_axisrv, gp_axisrv, "a", "righty").reverse = true;
+            set_mapping(gp_axisrv, gp_axisrv, "a", "righty");
             set_mapping(gp_stickl, gp_stickl, "b", "leftstick");
             set_mapping(gp_stickr, gp_stickr, "b", "rightstick");
             
@@ -84,9 +84,9 @@ function __input_gamepad_set_mapping(_gamepad)
             }
             
             set_mapping(gp_axislh, gp_axislh, "a", "leftx");
-            set_mapping(gp_axislv, gp_axislv, "a", "lefty").reverse = true;
+            set_mapping(gp_axislv, gp_axislv, "a", "lefty");
             set_mapping(gp_axisrh, gp_axisrh, "a", "rightx");
-            set_mapping(gp_axisrv, gp_axisrv, "a", "righty").reverse = true;
+            set_mapping(gp_axisrv, gp_axisrv, "a", "righty");
             set_mapping(gp_stickl, gp_stickl, "b", "leftstick");
             set_mapping(gp_stickr, gp_stickr, "b", "rightstick");
             
