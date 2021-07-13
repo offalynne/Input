@@ -51,8 +51,8 @@ function __input_binding_get_label(_type, _value, _axis_negative)
                 
                 case gp_axislh: return _axis_negative? "gamepad button thumbstick l left" : "gamepad button thumbstick l right"; break;
                 case gp_axislv: return _axis_negative? "gamepad button thumbstick l up"   : "gamepad button thumbstick l down";  break;
-                case gp_axisrh: return _axis_negative? "gamepad button thumbstick l left" : "gamepad button thumbstick l right"; break;
-                case gp_axisrv: return _axis_negative? "gamepad button thumbstick l up"   : "gamepad button thumbstick l down";  break;
+                case gp_axisrh: return _axis_negative? "gamepad button thumbstick r left" : "gamepad button thumbstick r right"; break;
+                case gp_axisrv: return _axis_negative? "gamepad button thumbstick r up"   : "gamepad button thumbstick r down";  break;
                 
                 default: return "gamepad button unknown"; break;
             }
