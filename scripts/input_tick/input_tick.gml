@@ -65,7 +65,23 @@ function input_tick()
         {
             if (gamepad_is_connected(_g))
             {
-                _gamepad.tick();
+                if (os_type == os_switch)
+                {
+                    //When L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
+                    //Instead we have to check for changes in the description to see if state has changed
+                    if (_gamepad.description != gamepad_get_description(_g))
+                    {
+                        _gamepad.discover();
+                    }
+                    else
+                    {
+                        _gamepad.tick();
+                    }
+                }
+                else
+                {
+                    _gamepad.tick();
+                }
             }
             else
             {
