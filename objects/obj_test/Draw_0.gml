@@ -58,8 +58,30 @@ _string += "gp_shoulderr  = " + string(input_gamepad_value(_gamepad, gp_shoulder
 _string += "gp_shoulderrb = " + string(input_gamepad_value(_gamepad, gp_shoulderrb)) + "\n";
 _string += "gp_select     = " + string(input_gamepad_value(_gamepad, gp_select    )) + "\n";
 _string += "gp_start      = " + string(input_gamepad_value(_gamepad, gp_start     )) + "\n";
+draw_text(200, 30, _string);
 
-draw_text(270, 30, _string);
+var _string = "";
+_string += string(gamepad_button_check(_gamepad, gp_face1     )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_face2     )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_face3     )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_face4     )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_padu      )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_padd      )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_padl      )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_padr      )) + "\n";
+_string += string(gamepad_axis_value(  _gamepad, gp_axislh    )) + "\n";
+_string += string(gamepad_axis_value(  _gamepad, gp_axislv    )) + "\n";
+_string += string(gamepad_axis_value(  _gamepad, gp_axisrh    )) + "\n";
+_string += string(gamepad_axis_value(  _gamepad, gp_axisrv    )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_stickl    )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_stickr    )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_shoulderl )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_shoulderlb)) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_shoulderr )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_shoulderrb)) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_select    )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_start     )) + "\n";
+draw_text(410, 30, _string);
 
 
 
