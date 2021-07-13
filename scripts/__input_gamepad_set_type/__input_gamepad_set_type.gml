@@ -94,7 +94,13 @@ function __input_gamepad_set_type(_gamepad)
                 guessed_type = false;
             break;
             
+            case os_ps5:
+                raw_type = "PS5Controller";
+                guessed_type = false;
+            break;
+            
             case os_xboxone:
+            case os_xboxseriesxs:
                 raw_type = "XBoxOneController";
                 guessed_type = false;
             break;

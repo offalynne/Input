@@ -96,9 +96,17 @@ function __input_class_gamepad(_index) constructor
                 //Additionally, gamepad_remove_mapping() doesn't seem to work. Setting the SDL string to something mostly blank does work though
                 gamepad_test_mapping(index, gamepad_get_guid(index) + "," + gamepad_get_description(index) + ",");
             }
-            else
+            else if ((os_type == os_windows) || (os_type == os_linux) || (os_type == os_android) || (os_type == os_ios) || (os_type == os_tvos))
             {
                 gamepad_remove_mapping(index);
+            }
+            else if ((os_type == os_switch) || (os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
+            {
+                //Do nothing! These platforms have hardcoded behaviours and we don't need to show a warning
+            }
+            else
+            {
+                __input_trace("Cannot remove mapping, this feature is not supported on this platform");
             }
             
             custom_mapping = true;
