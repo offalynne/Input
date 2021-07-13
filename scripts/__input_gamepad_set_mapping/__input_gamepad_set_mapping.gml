@@ -46,16 +46,17 @@ function __input_gamepad_set_mapping(_gamepad)
                 set_mapping(gp_padr, gp_padr, "b", "dpright");
             }
             
-            //Single Joy-Cons in horizontal report L/R/ZL/ZR as shoulder buttons even though they rest in the player's palm. No idea why, but we disallow that
             if ((raw_type == "SwitchJoyConLeft") || (raw_type == "SwitchJoyConRight"))
             {
                 if (INPUT_SWITCH_HORIZONTAL_HOLDTYPE)
                 {
-                    set_mapping(gp_shoulderl,  gp_shoulderl,  "b", "leftshoulder");
-                    set_mapping(gp_shoulderr,  gp_shoulderr,  "b", "rightshoulder");
+                    //Single Joy-Cons in horizontal report L/R/ZL/ZR as shoulder buttons even though they rest in the player's palm. No idea why, but we disallow that
+                    set_mapping(gp_shoulderl,  gp_shoulderl, "b", "leftshoulder");
+                    set_mapping(gp_shoulderr,  gp_shoulderr, "b", "rightshoulder");
                 }
                 else
                 {
+                    //SL/SR are still technically active in vertical mode too but that's silly so we ignore them
                     set_mapping(gp_shoulderl,  gp_shoulderl,  "b", "leftshoulder");
                     set_mapping(gp_shoulderlb, gp_shoulderlb, "b", "lefttrigger");
                 }
@@ -73,8 +74,14 @@ function __input_gamepad_set_mapping(_gamepad)
             set_mapping(gp_face2,  gp_face2,  "b", "b");
             set_mapping(gp_face3,  gp_face3,  "b", "x");
             set_mapping(gp_face4,  gp_face4,  "b", "y");
+            
             set_mapping(gp_start,  gp_start,  "b", "start");
-            set_mapping(gp_select, gp_select, "b", "back");
+            
+            //No select button exists for single Joy-Cons so ignore this entirely
+            if ((raw_type != "SwitchJoyConLeft") && (raw_type != "SwitchJoyConRight"))
+            {
+                set_mapping(gp_select, gp_select, "b", "back");
+            }
             
             set_mapping(gp_axislh, gp_axislh, "a", "leftx");
             set_mapping(gp_axislv, gp_axislv, "a", "lefty").reverse = true;
@@ -92,6 +99,8 @@ function __input_gamepad_set_mapping(_gamepad)
                 
             if (os_type == os_windows)
             {
+                //Default XInput mapping for Windows. This mapping is super common!
+                
                 set_mapping(gp_padu,   0, "b", "dpup");
                 set_mapping(gp_padd,   1, "b", "dpdown");
                 set_mapping(gp_padl,   2, "b", "dpleft");
