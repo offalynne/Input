@@ -4,8 +4,87 @@ function __input_gamepad_set_mapping(_gamepad)
 {
     with(_gamepad)
     {
-        //If we're on a specific OS, don't remap anything
-        if ((os_type == os_switch) || (os_type == os_ps4) || (os_type == os_xboxone)) exit;
+        //If we're on PlayStation or Xbox, don't remap anything special
+        if ((os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
+        {
+            set_mapping(gp_padu,   gp_padu,   "b", "dpup");
+            set_mapping(gp_padd,   gp_padd,   "b", "dpdown");
+            set_mapping(gp_padl,   gp_padl,   "b", "dpleft");
+            set_mapping(gp_padr,   gp_padr,   "b", "dpright");
+            set_mapping(gp_start,  gp_start,  "b", "start");
+            set_mapping(gp_select, gp_select, "b", "back");
+            
+            set_mapping(gp_shoulderl,  gp_shoulderl,  "b", "leftshoulder");
+            set_mapping(gp_shoulderr,  gp_shoulderr,  "b", "rightshoulder");
+            set_mapping(gp_shoulderlb, gp_shoulderlb, "a", "lefttrigger");
+            set_mapping(gp_shoulderrb, gp_shoulderrb, "a", "righttrigger");
+            
+            set_mapping(gp_face1, gp_face1, "b", "a");
+            set_mapping(gp_face2, gp_face2, "b", "b");
+            set_mapping(gp_face3, gp_face3, "b", "x");
+            set_mapping(gp_face4, gp_face4, "b", "y");
+            
+            set_mapping(gp_axislh, gp_axislh, "a", "leftx");
+            set_mapping(gp_axislv, gp_axislv, "a", "lefty").reverse = true;
+            set_mapping(gp_axisrh, gp_axisrh, "a", "rightx");
+            set_mapping(gp_axisrv, gp_axisrv, "a", "righty").reverse = true;
+            set_mapping(gp_stickl, gp_stickl, "b", "leftstick");
+            set_mapping(gp_stickr, gp_stickr, "b", "rightstick");
+            
+            exit;
+        }
+        
+        //Switch requires some extra setup
+        if (os_type == os_switch)
+        {
+            //Disallow dpad input from single Joy-Cons. This happens when moving the thumbstick around in horizontal mode
+            if ((raw_type != "SwitchJoyConLeft") && (raw_type != "SwitchJoyConRight"))
+            {
+                set_mapping(gp_padu, gp_padu, "b", "dpup");
+                set_mapping(gp_padd, gp_padd, "b", "dpdown");
+                set_mapping(gp_padl, gp_padl, "b", "dpleft");
+                set_mapping(gp_padr, gp_padr, "b", "dpright");
+            }
+            
+            //Single Joy-Cons in horizontal report L/R/ZL/ZR as shoulder buttons even though they rest in the player's palm. No idea why, but we disallow that
+            if ((raw_type == "SwitchJoyConLeft") || (raw_type == "SwitchJoyConRight"))
+            {
+                if (INPUT_SWITCH_HORIZONTAL_HOLDTYPE)
+                {
+                    set_mapping(gp_shoulderl,  gp_shoulderl,  "b", "leftshoulder");
+                    set_mapping(gp_shoulderr,  gp_shoulderr,  "b", "rightshoulder");
+                }
+                else
+                {
+                    set_mapping(gp_shoulderl,  gp_shoulderl,  "b", "leftshoulder");
+                    set_mapping(gp_shoulderlb, gp_shoulderlb, "b", "lefttrigger");
+                }
+            }
+            else
+            {
+                //Even in other gamepad modes Switch triggers are digital rather than analogue so we treat those as strict buttons
+                set_mapping(gp_shoulderl,  gp_shoulderl,  "b", "leftshoulder");
+                set_mapping(gp_shoulderr,  gp_shoulderr,  "b", "rightshoulder");
+                set_mapping(gp_shoulderlb, gp_shoulderlb, "b", "lefttrigger");
+                set_mapping(gp_shoulderrb, gp_shoulderrb, "b", "righttrigger");
+            }
+            
+            set_mapping(gp_face1,  gp_face1,  "b", "a");
+            set_mapping(gp_face2,  gp_face2,  "b", "b");
+            set_mapping(gp_face3,  gp_face3,  "b", "x");
+            set_mapping(gp_face4,  gp_face4,  "b", "y");
+            set_mapping(gp_start,  gp_start,  "b", "start");
+            set_mapping(gp_select, gp_select, "b", "back");
+            
+            set_mapping(gp_axislh, gp_axislh, "a", "leftx");
+            set_mapping(gp_axislv, gp_axislv, "a", "lefty").reverse = true;
+            set_mapping(gp_axisrh, gp_axisrh, "a", "rightx");
+            set_mapping(gp_axisrv, gp_axisrv, "a", "righty").reverse = true;
+            set_mapping(gp_stickl, gp_stickl, "b", "leftstick");
+            set_mapping(gp_stickr, gp_stickr, "b", "rightstick");
+            
+            exit;
+        }
         
         if (xinput)
         {
