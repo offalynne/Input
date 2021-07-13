@@ -178,7 +178,7 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"controllerblacklist.csv","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "23.1.1.306",
+    "IDEVersion": "23.1.1.315",
   },
   "resourceVersion": "1.4",
   "name": "Input",
