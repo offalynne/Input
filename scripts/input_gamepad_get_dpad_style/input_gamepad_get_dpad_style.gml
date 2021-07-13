@@ -22,14 +22,14 @@ function input_gamepad_get_dpad_style(_index)
         break;
         
         case "switch":
-            return "buttons";
+            return "arrows";
         break;
         
         case "switch joycon left":
         case "switch joycon right":
             return "stick";
         break;
-        
+
         default:
             return "cross";
         break;

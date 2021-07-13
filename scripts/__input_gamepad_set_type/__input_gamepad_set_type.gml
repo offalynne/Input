@@ -2,38 +2,37 @@
 
 //On boot, create a lookup table for simple types based on raw types
 global.__input_simple_type_lookup = {
-    SteamController: "steam",
+    SteamController:   "steam",
     SteamControllerV2: "steam",
-    MobileTouch: "steam",
+    MobileTouch:       "steam",
     
     XBox360Controller: "xbox 360",
-    CommunityXBox360: "xbox 360",
+    CommunityXBox360:  "xbox 360",
     CommunityLikeXBox: "xbox 360",
     
     XBoxOneController: "xbox one",
-    CommunityXBoxOne: "xbox one",
+    CommunityXBoxOne:  "xbox one",
     
     PS3Controller: "psx",
-    CommunityPSX: "psx",
+    CommunityPSX:  "psx",
     
     PS4Controller: "ps4",
-    CommunityPS4: "ps4",
+    CommunityPS4:  "ps4",
     
     PS5Controller: "ps5",
     
     AppleController: "apple",
-    
-    SwitchProController: "switch pro",
-    
-    SwitchJoyConLeft: "switch joycon left",
-    
+
+    SwitchJoyConLeft:  "switch joycon left",
     SwitchJoyConRight: "switch joycon right",
     
+    SwitchHandheld:            "switch", //Attached JoyCon pair or Switch Lite
+    SwitchJoyConPair:          "switch",
+    SwitchProController:       "switch",
     SwitchInputOnlyController: "switch",
-    XInputSwitchController: "switch",
-    CommunityLikeSwitch: "switch",
-    
-    Community8BitDo: "switch", //Same labels for 8BitDo and Switch controllers
+    XInputSwitchController:    "switch",
+    CommunityLikeSwitch:       "switch",
+    Community8BitDo:           "switch", //Same labels for 8BitDo and Switch controllers
     
     CommunitySaturn: "saturn",
     
@@ -62,8 +61,31 @@ function __input_gamepad_set_type(_gamepad)
         switch(os_type)
         {
             case os_switch:
-                //TODO - Collect pro/handheld/individual joycon here
-                raw_type = "SwitchProController";
+                
+                switch(description)
+                {
+                    case "Handheld": //JoyCon L+R railed or Lite (Slot 0 only)
+                        raw_type = "SwitchHandheld";
+                    break;
+                        
+                    case "Pro Controller":
+                        raw_type = "SwitchProController";
+                    break;
+                        
+                    case "Joy-Con (L)":
+                        raw_type = "SwitchJoyConLeft";
+                    break;
+
+                    case "Joy-Con (R)":
+                        raw_type = "SwitchJoyConRight";
+                    break;
+                        
+                    case "Joy-Con":
+                    default:
+                        raw_type = "SwitchJoyConPair";
+                    break;
+                }
+                
                 guessed_type = false;
             break;
             
@@ -80,7 +102,7 @@ function __input_gamepad_set_type(_gamepad)
             default:
                 if (xinput == true)
                 {
-                    //We can't get the actual GUID for XInput controllers for some reason so we have to assume they're all the same :(
+                    //XInput driver standardizes on X360, does not provide GUID
                     raw_type = "XBox360Controller";
                     guessed_type = true;
                 }
@@ -96,7 +118,11 @@ function __input_gamepad_set_type(_gamepad)
                     __input_trace("Warning! \"", vendor + product, "\" not found in raw type database. Guessing controller type based on \"", description, "\"");
                     
                     var _desc = string_lower(description);
-                    if (string_count("snes", _desc))
+                    if (string_count("8bitdo", _desc))
+                    {
+                        raw_type = "Community8BitDo";
+                    }
+                    else if (string_count("snes", _desc))
                     {
                         raw_type = "CommunitySNES";
                     }
@@ -108,7 +134,7 @@ function __input_gamepad_set_type(_gamepad)
                     {
                         raw_type = "PS5Controller";
                     }
-                    else if (string_count("ps4", _desc) || string_count("dualshock 4", _desc))
+                    else if (string_count("ps4", _desc) || string_count("dualshock 4", _desc) || string_count("sony interactive entertainment wireless controller", _desc))
                     {
                         raw_type = "CommunityPS4";
                     }
@@ -117,9 +143,13 @@ function __input_gamepad_set_type(_gamepad)
                         //Catch all remaining PlayStation gamepads as PSX
                         raw_type = "CommunityPSX";
                     }
-                    else if (string_count("switch", _desc) || string_count("lic pro controller", _desc))
+                    else if (string_count("for switch", _desc) || string_count("for switch", _desc) || string_count("switch controller", _desc) || string_count("lic pro controller", _desc))
                     {
                         raw_type = "CommunityLikeSwitch";
+                    }
+                    else if (string_count("gamecube", _desc))
+                    {
+                        raw_type = "CommunityGameCube";
                     }
                     else if (string_count("xbox one", _desc))
                     {
@@ -128,10 +158,6 @@ function __input_gamepad_set_type(_gamepad)
                     else if (string_count("xbox 360", _desc) || string_count("xbox360", _desc))
                     {
                         raw_type = "CommunityXBox360";
-                    }
-                    else if (string_count("8bitdo", _desc))
-                    {
-                        raw_type = "Community8BitDo";
                     }
                     else
                     {
@@ -142,9 +168,9 @@ function __input_gamepad_set_type(_gamepad)
         }
         
         //Discover the simple type from the raw type
-        if (variable_struct_exists(global.__input_raw_type_dictionary, raw_type))
+        if (variable_struct_exists(global.__input_simple_type_lookup, raw_type))
         {
-            simple_type = global.__input_raw_type_dictionary[$ raw_type];
+            simple_type = global.__input_simple_type_lookup[$ raw_type];
         }
         else
         {
