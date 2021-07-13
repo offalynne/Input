@@ -121,7 +121,7 @@ function __input_class_gamepad(_index) constructor
                 __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
                 gamepad_remove_mapping(index);
             }
-            else if ((os_type == os_switch) || (os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
+            else if (__INPUT_ON_CONSOLE)
             {
                 //Do nothing! These platforms have hardcoded behaviours and we don't need to show any messages/warnings
             }

@@ -13,7 +13,8 @@ function input_default_key()
     //Fix uses of straight strings instead of ord("A") etc.
     if (is_string(_key)) _key = ord(string_upper(_key));
     
-    global.__input_keyboard_valid = true;
+    //Never allow keyboard bindings on console
+    if (!__INPUT_ON_CONSOLE) global.__input_keyboard_valid = true;
     
     global.__input_default_player.set_binding(INPUT_SOURCE.KEYBOARD_AND_MOUSE, _verb, _alternate,
                                               new __input_class_binding("key", _key));

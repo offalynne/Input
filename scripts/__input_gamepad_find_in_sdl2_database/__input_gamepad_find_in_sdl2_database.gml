@@ -5,7 +5,7 @@ function __input_gamepad_find_in_sdl2_database(_gamepad)
     with(_gamepad)
     {
         //If we're on a specific OS, don't remap anything
-        if ((os_type == os_switch) || (os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
+        if (__INPUT_ON_CONSOLE)
         {
             description = gamepad_get_description(index);
             exit;

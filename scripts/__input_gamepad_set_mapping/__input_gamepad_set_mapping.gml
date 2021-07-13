@@ -70,12 +70,12 @@ function __input_gamepad_set_mapping(_gamepad)
                 set_mapping(gp_shoulderrb, gp_shoulderrb, "b", "righttrigger");
             }
             
-            set_mapping(gp_face1,  gp_face1,  "b", "a");
-            set_mapping(gp_face2,  gp_face2,  "b", "b");
-            set_mapping(gp_face3,  gp_face3,  "b", "x");
-            set_mapping(gp_face4,  gp_face4,  "b", "y");
-            
-            set_mapping(gp_start,  gp_start,  "b", "start");
+            set_mapping(gp_face1, gp_face1, "b", "a");
+            set_mapping(gp_face2, gp_face2, "b", "b");
+            set_mapping(gp_face3, gp_face3, "b", "x");
+            set_mapping(gp_face4, gp_face4, "b", "y");
+                                            
+            set_mapping(gp_start, gp_start, "b", "start");
             
             //No select button exists for single Joy-Cons so ignore this entirely
             if ((raw_type != "SwitchJoyConLeft") && (raw_type != "SwitchJoyConRight"))
