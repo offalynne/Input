@@ -278,9 +278,7 @@ function __input_class_player() constructor
         
         if (__INPUT_DEBUG) __input_trace("Verb alternate array length = ", array_length(_verb_alternate_array));
         
-        //FIXME - Workaround for Stadia controller bug maybe? 2020-01-05
-        _verb_alternate_array[_alternate] = _binding_struct;
-        variable_struct_set(_source_verb_struct, _verb, _verb_alternate_array);
+        _verb_alternate_array[@ _alternate] = _binding_struct;
         
         //Set up a verb container on the player separate from the bindings
         if (!is_struct(variable_struct_get(verbs, _verb)))

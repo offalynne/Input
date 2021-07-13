@@ -72,8 +72,7 @@ function input_tick()
                 //Remove our gamepad handler
                 __input_trace("Gamepad ", _g, " disconnected");
                 
-                //FIXME - Workaround for Stadia controller bug maybe? 2020-01-05
-                global.__input_gamepads[_g] = undefined;
+                global.__input_gamepads[@ _g] = undefined;
                 
                 //Also report gamepad changes for any active players
                 var _p = 0;
@@ -101,8 +100,7 @@ function input_tick()
                 __input_trace("Gamepad ", _g, " connected");
                 __input_trace("New gamepad = \"", gamepad_get_description(_g), "\", GUID=\"", gamepad_get_guid(_g), "\"");
                 
-                //FIXME - Workaround for Stadia controller bug maybe? 2020-01-05
-                global.__input_gamepads[_g] = new __input_class_gamepad(_g);
+                global.__input_gamepads[@ _g] = new __input_class_gamepad(_g);
             }
         }
         
