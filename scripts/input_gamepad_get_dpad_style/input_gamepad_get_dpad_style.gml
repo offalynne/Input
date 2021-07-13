@@ -27,7 +27,7 @@ function input_gamepad_get_dpad_style(_index)
         
         case "switch joycon left":
         case "switch joycon right":
-            return "stick";
+            return "none";
         break;
 
         default:
