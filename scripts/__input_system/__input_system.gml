@@ -213,7 +213,6 @@ if (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL == 1)
     input_ignore_key_add(vk_lalt);
     input_ignore_key_add(91); //meta
     input_ignore_key_add(92); //meta
-    input_ignore_key_add(0xff); //vendor
 }
 else if (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL == 2)
 {
@@ -222,48 +221,43 @@ else if (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL == 2)
     input_ignore_key_add(vk_lalt);
     input_ignore_key_add(91); //meta
     input_ignore_key_add(92); //meta
-    input_ignore_key_add(0xff); //vendor
     
     input_ignore_key_add(144); //num lock
     input_ignore_key_add(145); //scroll lock
     
-    input_ignore_key_add(0x15); //IME key
-    input_ignore_key_add(0x16); //IME key
-    input_ignore_key_add(0x17); //IME key
-    input_ignore_key_add(0x18); //IME key
-    input_ignore_key_add(0x19); //IME key
-    input_ignore_key_add(0x1A); //IME key
-    input_ignore_key_add(0xE5); //IME key
-    
-    input_ignore_key_add(0xA6); //Browser key
-    input_ignore_key_add(0xA7); //Browser key
-    input_ignore_key_add(0xA8); //Browser key
-    input_ignore_key_add(0xA9); //Browser key
-    input_ignore_key_add(0xAA); //Browser key
-    input_ignore_key_add(0xAB); //Browser key
-    input_ignore_key_add(0xAC); //Browser key
-    
-    input_ignore_key_add(0xAD); //Media key
-    input_ignore_key_add(0xAE); //Media key
-    input_ignore_key_add(0xAF); //Media key
-    input_ignore_key_add(0xB0); //Media key
-    input_ignore_key_add(0xB1); //Media key
-    input_ignore_key_add(0xB2); //Media key
-    input_ignore_key_add(0xB3); //Media key
-    input_ignore_key_add(0xB4); //Media key
-    input_ignore_key_add(0xB5); //Media key
-    input_ignore_key_add(0xB6); //Media key
-    input_ignore_key_add(0xB7); //Media key
+    if (os_type == os_windows)
+    {
+        input_ignore_key_add(0x15); //IME key
+        input_ignore_key_add(0x16); //IME key
+        input_ignore_key_add(0x17); //IME key
+        input_ignore_key_add(0x18); //IME key
+        input_ignore_key_add(0x19); //IME key
+        input_ignore_key_add(0x1A); //IME key
+        input_ignore_key_add(0xE5); //IME key
+
+        input_ignore_key_add(0xA6); //Browser key
+        input_ignore_key_add(0xA7); //Browser key
+        input_ignore_key_add(0xA8); //Browser key
+        input_ignore_key_add(0xA9); //Browser key
+        input_ignore_key_add(0xAA); //Browser key
+        input_ignore_key_add(0xAB); //Browser key
+        input_ignore_key_add(0xAC); //Browser key
+
+        input_ignore_key_add(0xAD); //Media key
+        input_ignore_key_add(0xAE); //Media key
+        input_ignore_key_add(0xAF); //Media key
+        input_ignore_key_add(0xB0); //Media key
+        input_ignore_key_add(0xB1); //Media key
+        input_ignore_key_add(0xB2); //Media key
+        input_ignore_key_add(0xB3); //Media key
+        input_ignore_key_add(0xB4); //Media key
+        input_ignore_key_add(0xB5); //Media key
+        input_ignore_key_add(0xB6); //Media key
+        input_ignore_key_add(0xB7); //Media key
+
+        input_ignore_key_add(0xFF); //Vendor key
+    }
 }
-
-
-
-
-
-
-
-
-
 
 //These are globally scoped rather than methods because otherwise they'd get serialised by input_bindings_write()
 
