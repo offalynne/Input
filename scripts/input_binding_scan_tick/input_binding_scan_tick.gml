@@ -126,9 +126,13 @@ function input_binding_scan_tick()
                 if ((keyboard_key > 0) && !__input_key_is_ignored(keyboard_key))
                 {
                     //Keyboard
-                    //We manually set the binding label to the actual keyboard character if it's an alphabetic symbol
+                    var _binding_label = undefined;
+
+                    //On Mac we manually set the binding label to the actual keyboard character if it's an alphabetic symbol
                     //This works around problems where a keyboard might be sending a character code for e.g. A but the OS is typing another letter
-                    var _binding_label = (string_lower(keyboard_lastchar) != string_upper(keyboard_lastchar))? string_upper(keyboard_lastchar) : undefined;
+                    if ((os_type == os_macosx) && (string_lower(keyboard_lastchar) != string_upper(keyboard_lastchar)))
+                        _binding_label = string_upper(keyboard_lastchar);
+
                     _new_binding = new __input_class_binding("key", keyboard_key, undefined, _binding_label);
                     _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
                 }
