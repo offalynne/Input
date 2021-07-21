@@ -25,8 +25,6 @@ function __input_key_get_name(_key)
             case os_windows:
               switch(_key)      
               {
-                case 91:  return "left meta";  break;
-                case 92:  return "right meta"; break;
                 case 122: return "F11"; break;
                 case 123: return "F12"; break;
                 case 124: return "F13"; break;
@@ -40,40 +38,48 @@ function __input_key_get_name(_key)
                 case 132: return "F21"; break;
                 case 133: return "F22"; break;
                 case 134: return "F23"; break;
-                case 187: return "=";   break;
-                case 189: return "-";   break;
-                case 222: return "'";   break;
+
+                case 187: return "="; break;
+                case 189: return "-"; break;
+                case 192: return "`"; break;
+                case 222: return "'"; break;
+
+                case 91:  return "left meta";  break;
+                case 92:  return "right meta"; break;
               }
             break;
             
             case os_macosx:
               switch(_key)      
               {
-                case 91:  return "right meta"; break;
-                case 92:  return "left meta";  break;
-                case 24:  return "=";   break;
-                case 109: return "-";   break;
-                case 222: return "'";   break;
                 case 128: return "F11"; break;
                 case 129: return "F12"; break;
+                      
+                case 24:  return "="; break;
+                case 109: return "-"; break;
+                case 222: return "'"; break;
+
+                case 91:  return "right meta"; break;
+                case 92:  return "left meta";  break;
               }
             break;
             
             case os_linux:
               switch(_key)      
               {
-            
-                case 91:  return "left meta";  break;
-                case 92:  return "right meta"; break;
-                case 123: return "{";   break;
-                case 124: return "|";   break;
-                case 125: return "}";   break;
                 case 128: return "F11"; break;
                 case 129: return "F12"; break;
-                case 187: return "=";   break;
-                case 189: return "-";   break;
-                case 192: return "'";   break;
-                case 223: return "`";   break;
+                      
+                case 123: return "{"; break;
+                case 124: return "|"; break;
+                case 125: return "}"; break;
+                case 187: return "="; break;
+                case 189: return "-"; break;
+                case 192: return "'"; break;
+                case 223: return "`"; break;
+                      
+                case 91:  return "left meta";  break;
+                case 92:  return "right meta"; break;
               }
             break;
         }
@@ -88,16 +94,15 @@ function __input_key_get_name(_key)
             case 188: return ",";  break;
             case 190: return ".";  break;
             case 191: return "/";  break;
-            case 192: return "`";  break;
             case 219: return "[";  break;
             case 220: return "\\"; break;
             case 221: return "]";  break;
             
             //Control
             case  12: return "clear";       break;
-            case  20: return "caps lock";    break;
+            case  20: return "caps lock";   break;
             case  93: return "menu";        break;
-            case 144: return "num lock";     break;
+            case 144: return "num lock";    break;
             case 145: return "scroll lock"; break;
                         
             //Numpad
