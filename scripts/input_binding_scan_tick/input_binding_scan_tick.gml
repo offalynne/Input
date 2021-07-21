@@ -135,7 +135,7 @@ function input_binding_scan_tick()
                         var _keychar = string_upper(keyboard_lastchar);
                         
                         //Basic latin only
-                        if ((string_lower(keyboard_lastchar) != _keychar) && (ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z")))
+                        if ((ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z")))
                         {
                             _binding_label = _keychar;
                         }
