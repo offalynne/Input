@@ -130,8 +130,16 @@ function input_binding_scan_tick()
 
                     //On Mac we manually set the binding label to the actual keyboard character if it's an alphabetic symbol
                     //This works around problems where a keyboard might be sending a character code for e.g. A but the OS is typing another letter
-                    if ((os_type == os_macosx) && (string_lower(keyboard_lastchar) != string_upper(keyboard_lastchar)))
-                        _binding_label = string_upper(keyboard_lastchar);
+                    if (os_type == os_macosx)
+                    {
+                        var _keychar = string_upper(keyboard_lastchar);
+                        
+                        //Basic latin only
+                        if ((string_lower(keyboard_lastchar) != _keychar) && (ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z")))
+                        {
+                            _binding_label = _keychar;
+                        }
+                    }
 
                     _new_binding = new __input_class_binding("key", keyboard_key, undefined, _binding_label);
                     _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
