@@ -42,9 +42,6 @@ function __input_key_get_name(_key)
                 case 134: return "F23"; break;
                 case 187: return "=";   break;
                 case 189: return "-";   break;
-                case 219: return "{";   break;
-                case 220: return "|";   break;
-                case 221: return "}";   break;
                 case 222: return "'";   break;
               }
             break;
@@ -56,9 +53,6 @@ function __input_key_get_name(_key)
                 case 92:  return "left meta";  break;
                 case 24:  return "=";   break;
                 case 109: return "-";   break;
-                case 219: return "{";   break;
-                case 220: return "|";   break;
-                case 221: return "}";   break;
                 case 222: return "'";   break;
                 case 128: return "F11"; break;
                 case 129: return "F12"; break;
