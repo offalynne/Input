@@ -1,7 +1,7 @@
 /// @param type
 /// @param [value]
 /// @param [axisNegative]
-/// @param [label]
+/// @param [labelOverride]
 
 function __input_class_binding() constructor
 {
