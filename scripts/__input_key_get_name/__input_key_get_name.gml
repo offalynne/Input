@@ -7,35 +7,104 @@ function __input_key_get_name(_key)
         //Latin letters
         return chr(_key);
     }
-    else if ((_key >= vk_f1) && (_key <= vk_f1 + 23))
-    {
-        //Function keys
-        return ("F" + string(1 + _key - vk_f1));
-    }
     else if (_key >= ord("0")) && (_key <= ord("9"))
     {
         //Top row number keys
         return chr(_key);
     }
+    else if ((_key >= vk_f1) && (_key <= vk_f10))
+    {
+        //Function keys
+        return ("F" + string(1 + _key - vk_f1));
+    }
     else 
     {
+        //Per platform non-latin keycodes
+        switch(os_type)
+        {
+            case os_windows:
+              switch(_key)      
+              {
+                case 122: return "F11"; break;
+                case 123: return "F12"; break;
+                case 124: return "F13"; break;
+                case 125: return "F14"; break;
+                case 126: return "F15"; break;
+                case 127: return "F16"; break;
+                case 128: return "F17"; break;
+                case 129: return "F18"; break;
+                case 130: return "F19"; break;
+                case 131: return "F20"; break;
+                case 132: return "F21"; break;
+                case 133: return "F22"; break;
+                case 134: return "F23"; break;
+
+                case 187: return "="; break;
+                case 189: return "-"; break;
+                case 192: return "`"; break;
+                case 222: return "'"; break;
+
+                case 91:  return "left meta";  break;
+                case 92:  return "right meta"; break;
+              }
+            break;
+            
+            case os_macosx:
+              switch(_key)      
+              {
+                case 128: return "F11"; break;
+                case 129: return "F12"; break;
+                      
+                case 24:  return "="; break;
+                case 109: return "-"; break;
+                case 222: return "'"; break;
+
+                case 91:  return "right meta"; break;
+                case 92:  return "left meta";  break;
+              }
+            break;
+            
+            case os_linux:
+              switch(_key)      
+              {
+                case 128: return "F11"; break;
+                case 129: return "F12"; break;
+                      
+                case 123: return "{"; break;
+                case 124: return "|"; break;
+                case 125: return "}"; break;
+                case 187: return "="; break;
+                case 189: return "-"; break;
+                case 192: return "'"; break;
+                case 223: return "`"; break;
+                      
+                case 91:  return "left meta";  break;
+                case 92:  return "right meta"; break;
+              }
+            break;
+        }
+        
+        //Universal non-latin keycodes
         switch(_key)
         {
             //Symbols
-            case 108: return "|";  break;
+            case  94: return "^";  break;
+            case  95: return "_";  break;
             case 186: return ";";  break;
-            case 187: return "=";  break;
             case 188: return ",";  break;
-            case 189: return "-";  break;
             case 190: return ".";  break;
             case 191: return "/";  break;
-            case 192: return "'";  break;
             case 219: return "[";  break;
             case 220: return "\\"; break;
             case 221: return "]";  break;
-            case 222: return "#";  break;
-            case 223: return "`";  break;
             
+            //Control
+            case  12: return "clear";       break;
+            case  20: return "caps lock";   break;
+            case  93: return "menu";        break;
+            case 144: return "num lock";    break;
+            case 145: return "scroll lock"; break;
+                        
             //Numpad
             case vk_numpad0:  return "numpad 0"; break;
             case vk_numpad1:  return "numpad 1"; break;
@@ -86,15 +155,6 @@ function __input_key_get_name(_key)
             case vk_printscreen: return "print screen"; break;
             case vk_pause:       return "pause break";  break;
             
-            //Weirdo keys
-            case  12: return "clear";       break; //Numpad 5 key, but with numlock off. Did you know this key existed? I didn't
-            case  20: return "capslock";    break;
-            case  47: return "help";        break;
-            case  91: return "left meta";   break; // Windows/Command/Search key
-            case  92: return "right meta";  break;
-            case  93: return "menu";        break; // Apps key
-            case 144: return "numlock";     break;
-            case 145: return "scroll lock"; break;
         }
         
         return chr(_key); //Fallback
