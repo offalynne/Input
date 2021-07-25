@@ -117,13 +117,6 @@ function __input_gamepad_find_in_sdl2_database(_gamepad)
             exit;
         }
         
-        if ((os_type == os_macosx) && ((gamepad_get_mapping(index) == "") || (gamepad_get_mapping(index) == "no mapping")))
-        {
-            __input_trace("Warning! Gamepad already has a native GameMaker remapping");
-            description = gamepad_get_description(index);
-            exit;
-        }
-        
         if (!INPUT_SDL2_REMAPPING)
         {
             __input_trace("Skipping SDL2 remapping");

@@ -11,10 +11,12 @@ function __input_class_gamepad(_index) constructor
     blacklisted       = false;
     sdl2_definition   = undefined;
     
-    vendor            = undefined;
-    product           = undefined;
+    vendor  = undefined;
+    product = undefined;
     
-    custom_mapping    = false;
+    custom_mapping      = false;
+    mac_cleared_mapping = false;
+    
     mapping_gm_to_raw = {};
     mapping_raw_to_gm = {};
     mapping_array     = [];
@@ -110,7 +112,11 @@ function __input_class_gamepad(_index) constructor
             
             if (os_type == os_macosx)
             {
-                __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
+                if ((gamepad_get_mapping(index) != "") && (gamepad_get_mapping(index) != "no mapping"))
+                {
+                    __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
+                    mac_cleared_mapping = true;
+                }
                 
                 //As of 2020-08-17, GameMaker has weird in-build remapping rules for gamepad on MacOS
                 //Additionally, gamepad_remove_mapping() doesn't seem to work. Setting the SDL string to something mostly blank does work though
@@ -131,8 +137,8 @@ function __input_class_gamepad(_index) constructor
             }
         }
         
-        //Correct for weird input index offset on MacOS
-        if (os_type == os_macosx)
+        //Correct for weird input index offset on MacOS if the gamepad already had a native GameMaker mapping
+        if (mac_cleared_mapping && (os_type == os_macosx))
         {
             if (_type == "a") _raw +=  6;
             if (_type == "b") _raw += 17;
