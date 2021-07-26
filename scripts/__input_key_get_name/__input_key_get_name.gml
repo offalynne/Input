@@ -158,14 +158,6 @@ function __input_key_get_name(_key)
                 case 92:  return "right meta"; break;
               }
             break;
-            
-            case os_android:
-            
-                //Unshifted alpha layer
-                if ((_key >= ord("a")) && (_key <= ord("z")))
-                    return string_upper(chr(_key));
-                    
-            break;
         }
         
         return chr(_key); //Default to UTF8 character
