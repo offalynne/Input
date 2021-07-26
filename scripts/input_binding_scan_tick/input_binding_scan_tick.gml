@@ -126,40 +126,35 @@ function input_binding_scan_tick()
                 if ((keyboard_key > 0) && !__input_key_is_ignored(keyboard_key))
                 {
                     //Keyboard
-                    var _binding_label = undefined;
-
+                    _new_binding = (new __input_class_binding()).set_key(keyboard_key);
+                    _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
+                    
                     //On Mac we manually set the binding label to the actual keyboard character if it's an alphabetic symbol
                     //This works around problems where a keyboard might be sending a character code for e.g. A but the OS is typing another letter
                     if (os_type == os_macosx)
                     {
                         var _keychar = string_upper(keyboard_lastchar);
                         
-                        //Basic latin only
-                        if ((ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z")))
-                        {
-                            _binding_label = _keychar;
-                        }
+                        //Basic Latin only
+                        if ((ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z"))) _new_binding.set_label(_keychar);
                     }
-
-                    _new_binding = new __input_class_binding("key", keyboard_key, undefined, _binding_label);
-                    _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
                 }
                 else if (mouse_button > 0)
                 {
                     //Mouse buttons
-                    _new_binding = new __input_class_binding("mouse button", mouse_button);
+                    _new_binding = (new __input_class_binding()).set_mouse_button(mouse_button);
                     _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
                 }
                 else if (mouse_wheel_up())
                 {
                     //Mouse wheel up
-                    _new_binding = new __input_class_binding("mouse wheel up");
+                    _new_binding = (new __input_class_binding()).set_mouse_wheel_up();
                     _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
                 }
                 else if (mouse_wheel_down())
                 {
                     //Mouse wheel down
-                    _new_binding = new __input_class_binding("mouse wheel down");
+                    _new_binding = (new __input_class_binding()).set_mouse_wheel_down();
                     _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
                 }
                 else
@@ -183,7 +178,7 @@ function input_binding_scan_tick()
                             var _value = input_gamepad_value(gamepad, _check);
                             if (abs(_value) > input_axis_threshold_get(_check, _player_index).mini)
                             {
-                                _new_binding = new __input_class_binding("gamepad axis", _check, (_value < 0));
+                                _new_binding = (new __input_class_binding()).set_gamepad_axis(_check, (_value < 0));
                                 _binding_source = INPUT_SOURCE.GAMEPAD;
                             }
                         }
@@ -191,7 +186,7 @@ function input_binding_scan_tick()
                         {
                             if (input_gamepad_check(gamepad, _check))
                             {
-                                _new_binding = new __input_class_binding("gamepad button", _check);
+                                _new_binding = (new __input_class_binding()).set_gamepad_button(_check);
                                 _binding_source = INPUT_SOURCE.GAMEPAD;
                             }
                         }

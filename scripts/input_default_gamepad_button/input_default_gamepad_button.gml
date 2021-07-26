@@ -29,13 +29,13 @@ function input_default_gamepad_button()
     }
     
     global.__input_default_player.set_binding(INPUT_SOURCE.GAMEPAD, _verb, _alternate,
-                                              new __input_class_binding("gamepad button", _button));
+                                              (new __input_class_binding()).set_gamepad_button(_button));
     
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
     {
         global.__input_players[_p].set_binding(INPUT_SOURCE.GAMEPAD, _verb, _alternate,
-                                               new __input_class_binding("gamepad button", _button));
+                                               (new __input_class_binding()).set_gamepad_button(_button));
         ++_p;
     }
 }

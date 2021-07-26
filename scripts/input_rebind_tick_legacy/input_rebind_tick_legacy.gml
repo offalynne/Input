@@ -136,19 +136,19 @@ function input_rebind_tick_legacy()
                     case INPUT_SOURCE.KEYBOARD_AND_MOUSE:
                         if ((keyboard_key > 0) && !__input_key_is_ignored(keyboard_key))
                         {
-                            _new_binding = new __input_class_binding("key", keyboard_key);
+                            _new_binding = (new __input_class_binding()).set_key(keyboard_key);
                         }
                         else if (mouse_button > 0)
                         {
-                            _new_binding = new __input_class_binding("mouse button", mouse_button);
+                            _new_binding = (new __input_class_binding()).set_mouse_button(mouse_button);
                         }
                         else if (mouse_wheel_up())
                         {
-                            _new_binding = new __input_class_binding("mouse wheel up");
+                            _new_binding = (new __input_class_binding()).set_mouse_wheel_up();
                         }
                         else if (mouse_wheel_down())
                         {
-                            _new_binding = new __input_class_binding("mouse wheel down");
+                            _new_binding = (new __input_class_binding()).set_mouse_wheel_down();
                         }
                     break;
                     
@@ -171,14 +171,14 @@ function input_rebind_tick_legacy()
                                 var _value = input_gamepad_value(gamepad, _check);
                                 if (abs(_value) > input_axis_threshold_get(_check, _player_index).mini)
                                 {
-                                    _new_binding = new __input_class_binding("gamepad axis", _check, (_value < 0));
+                                    _new_binding = (new __input_class_binding()).set_gamepad_axis(_check, (_value < 0));
                                 }
                             }
                             else
                             {
                                 if (input_gamepad_check(gamepad, _check))
                                 {
-                                    _new_binding = new __input_class_binding("gamepad button", _check);
+                                    _new_binding = (new __input_class_binding()).set_gamepad_button(_check);
                                 }
                             }
                             

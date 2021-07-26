@@ -136,6 +136,18 @@ function __input_class_player() constructor
                                     _analogue     = false;
                                     _raw_analogue = false;
                                 }
+                                
+                                //If we're on Android then check the alternate keyboard key as well
+                                if (os_type == os_android)
+                                {
+                                    if ((_binding.android_lowercase != undefined) && keyboard_check(_binding.android_lowercase))
+                                    {
+                                        _value        = 1.0;
+                                        _raw          = 1.0;
+                                        _analogue     = false;
+                                        _raw_analogue = false;
+                                    }
+                                }
                             break;
                             
                             case "gamepad button":
