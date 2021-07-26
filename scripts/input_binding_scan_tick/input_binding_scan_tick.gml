@@ -133,6 +133,7 @@ function input_binding_scan_tick()
                     //This works around problems where a keyboard might be sending a character code for e.g. A but the OS is typing another letter
                     if (os_type == os_macosx)
                     {
+                        __input_trace("Binding label for keycode ", string(ord(_new_binding.label)), ", initially set to \"", _new_binding.label, "\"");
                         var _keychar = string_upper(keyboard_lastchar);
                         
                         //Basic Latin only
