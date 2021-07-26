@@ -111,7 +111,7 @@ global.__input_rebind_last_player = undefined;
 //Array of currently connected gamepads. If an element is <undefined> then the gamepad is disconnected
 //Each gamepad in this array is an instance of __input_class_gamepad
 //Gamepad structs contain remapping information and current button state
-global.__input_gamepads = array_create(gamepad_get_device_count(), undefined);
+global.__input_gamepads = array_create(max(1, gamepad_get_device_count()), undefined);
 
 //Our database of SDL2 definitions, used for the aforementioned remapping information
 global.__input_sdl2_database = {
