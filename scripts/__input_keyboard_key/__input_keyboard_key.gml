@@ -1,5 +1,6 @@
 function __input_keyboard_key(){
     
+    if (os_type != os_android) return keyboard_key;
 
     //Android UTF8
     if (keyboard_check(ord(keyboard_lastchar))) return ord(keyboard_lastchar);
