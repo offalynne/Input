@@ -71,9 +71,9 @@ function input_tick()
         else if (os_type == os_macosx){
 
             //Unstick control key double-up
-            if keyboard_check_released(vk_control) { keyboard_key_release(vk_lcontrol); keyboard_key_release(vk_rcontrol); }
-            if keyboard_check_released(vk_shift)   { keyboard_key_release(vk_lshift);   keyboard_key_release(vk_rshift);   }
-            if keyboard_check_released(vk_alt)     { keyboard_key_release(vk_lalt);     keyboard_key_release(vk_ralt);     }
+            if (keyboard_check_released(vk_control)) { keyboard_key_release(vk_lcontrol); keyboard_key_release(vk_rcontrol); }
+            if (keyboard_check_released(vk_shift))   { keyboard_key_release(vk_lshift);   keyboard_key_release(vk_rshift);   }
+            if (keyboard_check_released(vk_alt))     { keyboard_key_release(vk_lalt);     keyboard_key_release(vk_ralt);     }
 
             //Unstick Meta
             //Weird, but seems to be the best way to unstick without spoiling normal operation
