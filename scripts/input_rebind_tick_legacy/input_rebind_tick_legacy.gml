@@ -128,15 +128,16 @@ function input_rebind_tick_legacy()
             else if (rebind_state == 2) //Now grab the first button pressed
             {
                 var _new_binding = undefined;
+                var _keyboard_key = __input_keyboard_key();
                 
                 #region Listeners
                 
                 switch(source)
                 {
                     case INPUT_SOURCE.KEYBOARD_AND_MOUSE:
-                        if ((keyboard_key > 0) && !__input_key_is_ignored(keyboard_key))
+                        if ((_keyboard_key > 0) && !__input_key_is_ignored(_keyboard_key))
                         {
-                            _new_binding = (new __input_class_binding()).set_key(keyboard_key);
+                            _new_binding = (new __input_class_binding()).set_key(_keyboard_key);
                         }
                         else if (mouse_button > 0)
                         {

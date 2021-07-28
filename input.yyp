@@ -35,6 +35,7 @@
     {"id":{"name":"input_check_pressed","path":"scripts/input_check_pressed/input_check_pressed.yy",},"order":4,},
     {"id":{"name":"input_check_press_most_recent","path":"scripts/input_check_press_most_recent/input_check_press_most_recent.yy",},"order":5,},
     {"id":{"name":"input_check_released","path":"scripts/input_check_released/input_check_released.yy",},"order":6,},
+    {"id":{"name":"__input_keyboard_key","path":"scripts/__input_keyboard_key/__input_keyboard_key.yy",},"order":22,},
     {"id":{"name":"input_consume","path":"scripts/input_consume/input_consume.yy",},"order":2,},
     {"id":{"name":"input_cursor_follow_camera","path":"scripts/input_cursor_follow_camera/input_cursor_follow_camera.yy",},"order":0,},
     {"id":{"name":"input_cursor_limit_box","path":"scripts/input_cursor_limit_box/input_cursor_limit_box.yy",},"order":1,},
@@ -179,7 +180,7 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"controllerblacklist.csv","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "23.1.1.319",
+    "IDEVersion": "2.3.3.574",
   },
   "resourceVersion": "1.4",
   "name": "input",

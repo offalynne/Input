@@ -79,7 +79,7 @@ function __input_hotswap_tick_input(_player_index)
     if (global.__input_keyboard_valid
     &&  input_source_is_available(INPUT_SOURCE.KEYBOARD_AND_MOUSE)
     &&  keyboard_check(vk_anykey)
-    &&  !__input_key_is_ignored(keyboard_key)) //Ensure that this key isn't one we're trying to ignore
+    &&  !__input_key_is_ignored(__input_keyboard_key())) //Ensure that this key isn't one we're trying to ignore
     {
         if (__INPUT_DEBUG) __input_trace("Hotswapping player ", _player_index, " to keyboard+mouse (via keyboard input)");
         return { source : INPUT_SOURCE.KEYBOARD_AND_MOUSE, gamepad : undefined };

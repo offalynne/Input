@@ -120,13 +120,14 @@ function input_binding_scan_tick()
             {
                 var _new_binding = undefined;
                 var _binding_source = INPUT_SOURCE.NONE;
+                var _keyboard_key = __input_keyboard_key();
                 
                 #region Listeners
                 
-                if ((keyboard_key > 0) && !__input_key_is_ignored(keyboard_key))
+                if ((_keyboard_key > 0) && !__input_key_is_ignored(_keyboard_key))
                 {
                     //Keyboard
-                    _new_binding = (new __input_class_binding()).set_key(keyboard_key);
+                    _new_binding = (new __input_class_binding()).set_key(_keyboard_key);
                     _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
                     
                     //On Mac we manually set the binding label to the actual keyboard character if it's an alphabetic symbol

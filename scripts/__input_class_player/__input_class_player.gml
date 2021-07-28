@@ -346,7 +346,7 @@ function __input_class_player() constructor
             break;
             
             case INPUT_SOURCE.KEYBOARD_AND_MOUSE:
-                var _keyboard_valid = (keyboard_check(vk_anykey) && !__input_key_is_ignored(keyboard_key));
+                var _keyboard_valid = (keyboard_check(vk_anykey) && !__input_key_is_ignored(__input_keyboard_key()));
                 return (_keyboard_valid || global.__input_mouse_moved || input_mouse_check_button(mb_any) || mouse_wheel_up() || mouse_wheel_down());
             break;
             
