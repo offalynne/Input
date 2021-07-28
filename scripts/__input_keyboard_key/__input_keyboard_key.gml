@@ -11,5 +11,6 @@ function __input_keyboard_key(){
     if (keyboard_check(vk_down))      return vk_down;
     if (keyboard_check(vk_right))     return vk_right;
     if (keyboard_check(vk_backspace)) return vk_backspace;
-    
+
+    return 0;
 }
