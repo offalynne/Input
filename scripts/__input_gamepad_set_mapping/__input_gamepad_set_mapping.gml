@@ -139,17 +139,38 @@ function __input_gamepad_set_mapping()
             var _entry_name = string_copy(_entry, 1, _pos-1);
             var _entry_1 = string_delete(_entry, 1, _pos);
             
-            var _gm = variable_struct_get(global.__input_sdl2_look_up_table, _entry_name);
-            if (_gm != undefined)
+            //Search for leading -/+ in the entry name
+            //This basically only ever gets used for Switch joycons
+            var _output_negative = false;
+            var _output_positive = false;
+            
+            if (string_char_at(_entry_name, 1) == "-")
             {
-                var _invert   = false;
-                var _negative = false;
-    			var _positive = false;
+                _output_negative = true;
+                _entry_name = string_delete(_entry_name, 1, 1);
+            }
+            else if (string_char_at(_entry_name, 1) == "+")
+            {
+                _output_positive = true;
+                _entry_name = string_delete(_entry_name, 1, 1);
+            }
+            
+            //Find the GameMaker-native constant for this entry name e.g. gp_face1, gp_axislh
+            var _gm_constant = variable_struct_get(global.__input_sdl2_look_up_table, _entry_name);
+            if (_gm_constant == undefined)
+            {
+                __input_trace("Warning! Entry name \"", _entry_name, "\" not recognised (full string was \"", _entry, "\")");
+            }
+            else
+            {
+                var _input_invert   = false;
+                var _input_negative = false;
+    			var _input_positive = false;
                 
                 if (string_char_at(_entry_1, string_length(_entry_1)) == "~")
                 {
                     _entry_1 = string_delete(_entry_1, string_length(_entry_1), 1);
-                    _invert = true;
+                    _input_invert = true;
                 }
                 
                 while(true)
@@ -159,15 +180,15 @@ function __input_gamepad_set_mapping()
                     
                     if (_char == "~")
                     {
-                        _invert = true;
+                        _input_invert = true;
                     }
                     else if (_char == "-")
                     {
-                        _negative = true;
+                        _input_negative = true;
                     }
                     else if (_char == "+")
                     {
-                        _positive = true;
+                        _input_positive = true;
                     }
                     else
                     {
@@ -176,13 +197,72 @@ function __input_gamepad_set_mapping()
                     }
                 }
                 
+                //Determine which input index to scan for
+                //We floor this to cope with hats have decimal parts for their mask
                 var _input_slot = floor(real(_entry_1));
-                var _mapping = set_mapping(_gm, _input_slot, _raw_type, _entry_name);
                 
-                if (_invert) _mapping.invert = true;
-                if (_negative) _mapping.negative = true;
-                if (_positive) _mapping.positive = true;
-                if (_raw_type == "h") _mapping.hat_mask = floor(10*real(_entry_1)); //TODO - lol haxx
+                //If we're in hat mode but we have a sign for the output direction then this is a hat-on-axis mode
+                if (_raw_type == "h")
+                {
+                    if (_output_negative || _output_positive) _raw_type = "h->a";
+                }
+                
+                //Try to find out if this constant has been set already
+                var _mapping = mapping_gm_to_raw[$ _gm_constant];
+                if (_raw_type == "h->a")
+                {
+                    //Try to reuse the same mapping struct for hat-on-axis
+                    if (_mapping == undefined)
+                    {
+                        _mapping = set_mapping(_gm_constant, undefined, _raw_type, _entry_name);
+                    }
+                    
+                    if (_output_negative)
+                    {
+                        _mapping.raw_negative = _input_slot;
+                    }
+                    else if (_output_positive)
+                    {
+                        _mapping.raw_positive = _input_slot;
+                    }
+                }
+                else
+                {
+                    if (_mapping == undefined)
+                    {
+                        _mapping = set_mapping(_gm_constant, _input_slot, _raw_type, _entry_name);
+                    }
+                    else 
+                    {
+                        __input_trace("Warning! Mapping for \"", _entry, "\" is a redefinition of entry name \"", _entry_name, "\"");
+                    }
+                }
+                
+                //If necessary, apply modifiers to the mapping input
+                if (_input_invert  ) _mapping.invert = true;
+                if (_input_negative) _mapping.negative = true;
+                if (_input_positive) _mapping.positive = true;
+                
+                //Now manage the hat masks, including setting up hat-on-axis masks
+                if ((_raw_type == "h") || (_raw_type == "h->a"))
+                {
+                    var _hat_mask = floor(10*real(_entry_1)); //TODO - lol haxx
+                    if (_raw_type == "h")
+                    {
+                        _mapping.hat_mask = _hat_mask;
+                    }
+                    else if (_raw_type == "h->a")
+                    {
+                        if (_output_negative)
+                        {
+                            _mapping.hat_mask_negative = _hat_mask;
+                        }
+                        else if (_output_positive)
+                        {
+                            _mapping.hat_mask_positive = _hat_mask;
+                        }
+                    }
+                }
                 
                 if (__INPUT_DEBUG) __input_trace(_entry_name, " = ", _raw_type, _entry_1);
                 

@@ -157,6 +157,13 @@ function __input_class_gamepad(_index) constructor
             limit_range   : false,
             hat_mask      : undefined,
             
+            //These values are used for the hat-on-axis special case mapping
+            //This is by far and away most commonly used for Switch Joycons
+            raw_negative      : undefined,
+            hat_mask_negative : undefined,
+            raw_positive      : undefined,
+            hat_mask_positive : undefined,
+            
             held_previous : false,
             value         : 0.0,
             held          : false,
@@ -164,16 +171,16 @@ function __input_class_gamepad(_index) constructor
             release       : false,
         };
         
-        variable_struct_set(mapping_gm_to_raw, _gm , _mapping);
-        variable_struct_set(mapping_raw_to_gm, _raw, _mapping);
-        mapping_array[@ array_length(mapping_array)] = _mapping;
+        mapping_gm_to_raw[$ _gm] = _mapping;
+        if (_raw != undefined) mapping_raw_to_gm[$ _raw] = _mapping; //_raw can be undefined when setting up hat-on-axis
+        array_push(mapping_array, _mapping);
         
         return _mapping;
     }
     
     static tick = function()
     {
-        var _index = index;
+        var _gamepad = index;
         
         var _i = 0;
         repeat(array_length(mapping_array))
@@ -188,11 +195,13 @@ function __input_class_gamepad(_index) constructor
                 
                 switch(type)
                 {
-                    case "b": value = gamepad_button_check(_index, raw); break;
-                    case "a": value = gamepad_axis_value(  _index, raw); break;
+                    case "b": value = gamepad_button_check(_gamepad, raw); break;
+                    case "a": value = gamepad_axis_value(  _gamepad, raw); break;
                     case "h":
-                        value = gamepad_hat_value(_index, raw);
-                        value = value & hat_mask;
+                        value = ((gamepad_hat_value(_gamepad, raw) & hat_mask) > 0);
+                    break;
+                    case "h->a":
+                        value = ((gamepad_hat_value(_gamepad, raw_positive) & hat_mask_positive) > 0) - ((gamepad_hat_value(_gamepad, raw_negative) & hat_mask_negative) > 0);
                     break;
                 }
                 
