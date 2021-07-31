@@ -97,7 +97,7 @@ function __input_class_gamepad(_index) constructor
         
         var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
         if (_mapping == undefined) return false;
-        return (_mapping.type == "a");
+        return (_mapping.type == __INPUT_MAPPING.AXIS);
     }
     
     /// @param GMconstant
@@ -140,8 +140,8 @@ function __input_class_gamepad(_index) constructor
         //Correct for weird input index offset on MacOS if the gamepad already had a native GameMaker mapping
         if (mac_cleared_mapping && (os_type == os_macosx))
         {
-            if (_type == "a") _raw +=  6;
-            if (_type == "b") _raw += 17;
+            if (_type == __INPUT_MAPPING.AXIS  ) _raw +=  6;
+            if (_type == __INPUT_MAPPING.BUTTON) _raw += 17;
         }
         
         var _mapping = {
@@ -195,14 +195,10 @@ function __input_class_gamepad(_index) constructor
                 
                 switch(type)
                 {
-                    case "b": value = gamepad_button_check(_gamepad, raw); break;
-                    case "a": value = gamepad_axis_value(  _gamepad, raw); break;
-                    case "h":
-                        value = ((gamepad_hat_value(_gamepad, raw) & hat_mask) > 0);
-                    break;
-                    case "h->a":
-                        value = ((gamepad_hat_value(_gamepad, raw_positive) & hat_mask_positive) > 0) - ((gamepad_hat_value(_gamepad, raw_negative) & hat_mask_negative) > 0);
-                    break;
+                    case __INPUT_MAPPING.BUTTON:      value = gamepad_button_check(_gamepad, raw); break;
+                    case __INPUT_MAPPING.AXIS:        value = gamepad_axis_value(  _gamepad, raw); break;
+                    case __INPUT_MAPPING.HAT:         value = ((gamepad_hat_value( _gamepad, raw) & hat_mask) > 0); break;
+                    case __INPUT_MAPPING.HAT_ON_AXIS: value = ((gamepad_hat_value( _gamepad, raw_positive) & hat_mask_positive) > 0) - ((gamepad_hat_value(_gamepad, raw_negative) & hat_mask_negative) > 0); break;
                 }
                 
                 if (limit_range) value = 0.5 + 0.5*value;

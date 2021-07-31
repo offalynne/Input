@@ -17,6 +17,15 @@ enum INPUT_SOURCE
     __SIZE
 }
 
+enum __INPUT_MAPPING
+{
+    BUTTON,
+    AXIS,
+    HAT,
+    HAT_ON_AXIS,
+    __SIZE
+}
+
 #macro INPUT_NO_GAMEPAD  -1
 #macro gp_guide  32789
 #macro gp_misc1  32790
