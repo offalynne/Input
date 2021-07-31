@@ -64,24 +64,46 @@ function input_tick()
             //Unstick Alt Space
             if (keyboard_check(vk_alt) && keyboard_check_pressed(vk_space))
             {
-                keyboard_key_release(vk_alt);  keyboard_key_release(vk_space);
-                keyboard_key_release(vk_lalt); keyboard_key_release(vk_ralt);
+                keyboard_key_release(vk_alt);
+                keyboard_key_release(vk_space);
+                keyboard_key_release(vk_lalt);
+                keyboard_key_release(vk_ralt);
             }
         }
-        else if (os_type == os_macosx){
-
+        else if (os_type == os_macosx)
+        {
             //Unstick control key double-up
-            if (keyboard_check_released(vk_control)) { keyboard_key_release(vk_lcontrol); keyboard_key_release(vk_rcontrol); }
-            if (keyboard_check_released(vk_shift))   { keyboard_key_release(vk_lshift);   keyboard_key_release(vk_rshift);   }
-            if (keyboard_check_released(vk_alt))     { keyboard_key_release(vk_lalt);     keyboard_key_release(vk_ralt);     }
-
+            if (keyboard_check_released(vk_control))
+            {
+                keyboard_key_release(vk_lcontrol);
+                keyboard_key_release(vk_rcontrol);
+            }
+            
+            if (keyboard_check_released(vk_shift))
+            {
+                keyboard_key_release(vk_lshift);
+                keyboard_key_release(vk_rshift);
+            }
+            
+            if (keyboard_check_released(vk_alt))
+            {
+                keyboard_key_release(vk_lalt);
+                keyboard_key_release(vk_ralt);
+            }
+            
             //Unstick Meta
             //Weird, but seems to be the best way to unstick without spoiling normal operation
-            if (keyboard_check_released(91))                            keyboard_key_release(92);
-            else if (keyboard_check_released(92) && keyboard_check(91)) keyboard_key_release(91);
+            if (keyboard_check_released(91))
+            {
+                keyboard_key_release(92);
+            }
+            else if (keyboard_check_released(92) && keyboard_check(91))
+            {
+                keyboard_key_release(91);
+            }
         }
     }
-
+    
     #endregion
     
     #region Update gamepads
