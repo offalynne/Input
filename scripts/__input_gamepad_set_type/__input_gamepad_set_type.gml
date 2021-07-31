@@ -61,7 +61,6 @@ function __input_gamepad_set_type(_gamepad)
         switch(os_type)
         {
             case os_switch:
-                
                 switch(description)
                 {
                     case "Handheld": //JoyCon L+R railed or Lite (Slot 0 only)
