@@ -158,6 +158,12 @@ function __input_key_get_name(_key)
                 case 92:  return "right meta"; break;
               }
             break;
+            
+            case os_android:
+            
+                if (_key == 10) return "enter"; 
+            
+            break;
         }
         
         return chr(_key); //Default to UTF8 character
