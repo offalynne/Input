@@ -49,6 +49,7 @@
     {"id":{"name":"input_default_gamepad_axis","path":"scripts/input_default_gamepad_axis/input_default_gamepad_axis.yy",},"order":0,},
     {"id":{"name":"input_default_gamepad_button","path":"scripts/input_default_gamepad_button/input_default_gamepad_button.yy",},"order":1,},
     {"id":{"name":"input_default_gamepad_swap_ab","path":"scripts/input_default_gamepad_swap_ab/input_default_gamepad_swap_ab.yy",},"order":2,},
+    {"id":{"name":"input_guess_keyboard_layout","path":"scripts/input_guess_keyboard_layout/input_guess_keyboard_layout.yy",},"order":6,},
     {"id":{"name":"input_default_key","path":"scripts/input_default_key/input_default_key.yy",},"order":3,},
     {"id":{"name":"input_default_mouse_button","path":"scripts/input_default_mouse_button/input_default_mouse_button.yy",},"order":4,},
     {"id":{"name":"input_default_mouse_wheel_down","path":"scripts/input_default_mouse_wheel_down/input_default_mouse_wheel_down.yy",},"order":5,},
@@ -179,7 +180,7 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"controllerblacklist.csv","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "23.1.1.319",
+    "IDEVersion": "2.3.3.574",
   },
   "resourceVersion": "1.4",
   "name": "input",
