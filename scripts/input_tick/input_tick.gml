@@ -108,15 +108,9 @@ function input_tick()
     
     #region Update gamepads
     
-    //Expand dynamic device count on Android
-    if (os_type == os_android)
-    {
-        var _device_change = max(0, gamepad_get_device_count() - array_length(global.__input_gamepads))
-        repeat(_device_change)
-        {
-            array_push(global.__input_gamepads, undefined);
-        }
-    }
+    //Expand dynamic device count
+    var _device_change = max(0, gamepad_get_device_count() - array_length(global.__input_gamepads))
+    repeat(_device_change) array_push(global.__input_gamepads, undefined);
     
     var _g = 0;
     repeat(array_length(global.__input_gamepads))
