@@ -166,7 +166,7 @@ else
 if (INPUT_SDL2_ALLOW_EXTERNAL)
 {
     var _external_string = environment_get_variable("SDL_GAMECONTROLLERCONFIG");
-    if (_external_string != "")
+    if (is_string(_external_string) && (_external_string != ""))
     {
         __input_trace("External SDL2 string found");
         
