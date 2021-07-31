@@ -23,6 +23,10 @@ function __input_gamepad_set_vid_pid()
         }
         else
         {
+            vendor  = "";
+            product = "";
+            xinput  = undefined;
+            
             __input_trace("Gamepad description could not be parsed. Bindings for this gamepad may be incorrect (was \"", description, "\")");
         }
         
