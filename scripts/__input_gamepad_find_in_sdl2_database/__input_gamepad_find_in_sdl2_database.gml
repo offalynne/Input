@@ -5,7 +5,7 @@ function __input_gamepad_find_in_sdl2_database(_gamepad)
     with(_gamepad)
     {
         //If we're on a specific OS, don't remap anything
-        if (__INPUT_ON_CONSOLE)
+        if (__INPUT_ON_CONSOLE || __INPUT_ON_HTML5)
         {
             description = gamepad_get_description(index);
             exit;
