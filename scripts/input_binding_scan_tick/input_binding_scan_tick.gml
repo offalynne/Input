@@ -126,7 +126,9 @@ function input_binding_scan_tick()
                 if ((keyboard_key > 0) && !__input_key_is_ignored(keyboard_key))
                 {
                     //Keyboard
-                    _new_binding = (new __input_class_binding()).set_key(keyboard_key);
+                    //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
+                    _new_binding = new __input_class_binding();
+                    _new_binding.set_key(keyboard_key);
                     _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
                     
                     //On Mac we manually set the binding label to the actual keyboard character if it's an alphabetic symbol
@@ -143,19 +145,25 @@ function input_binding_scan_tick()
                 else if (mouse_button > 0)
                 {
                     //Mouse buttons
-                    _new_binding = (new __input_class_binding()).set_mouse_button(mouse_button);
+                    //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
+                    _new_binding = new __input_class_binding();
+                    _new_binding.set_mouse_button(mouse_button);
                     _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
                 }
                 else if (mouse_wheel_up())
                 {
                     //Mouse wheel up
-                    _new_binding = (new __input_class_binding()).set_mouse_wheel_up();
+                    //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
+                    _new_binding = new __input_class_binding();
+                    _new_binding.set_mouse_wheel_up();
                     _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
                 }
                 else if (mouse_wheel_down())
                 {
                     //Mouse wheel down
-                    _new_binding = (new __input_class_binding()).set_mouse_wheel_down();
+                    //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
+                    _new_binding = new __input_class_binding();
+                    _new_binding.set_mouse_wheel_down();
                     _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
                 }
                 else
@@ -179,7 +187,9 @@ function input_binding_scan_tick()
                             var _value = input_gamepad_value(gamepad, _check);
                             if (abs(_value) > input_axis_threshold_get(_check, _player_index).mini)
                             {
-                                _new_binding = (new __input_class_binding()).set_gamepad_axis(_check, (_value < 0));
+                                //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
+                                _new_binding = new __input_class_binding();
+                                _new_binding.set_gamepad_axis(_check, (_value < 0));
                                 _binding_source = INPUT_SOURCE.GAMEPAD;
                             }
                         }
@@ -187,7 +197,9 @@ function input_binding_scan_tick()
                         {
                             if (input_gamepad_check(gamepad, _check))
                             {
-                                _new_binding = (new __input_class_binding()).set_gamepad_button(_check);
+                                //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
+                                _new_binding = new __input_class_binding();
+                                _new_binding.set_gamepad_button(_check);
                                 _binding_source = INPUT_SOURCE.GAMEPAD;
                             }
                         }
