@@ -27,6 +27,10 @@ function __input_gamepad_set_vid_pid(_gamepad)
             {
                 __input_trace("Gamepad description could not be parsed. Bindings for this gamepad may be incorrect (was \"", description, "\")");
             }
+            
+            //Unreverse the VID/PID hex strings
+            if (is_string(vendor )) vendor  = string_copy(vendor,  3, 2) + string_copy(vendor,  1, 2);
+            if (is_string(product)) product = string_copy(product, 3, 2) + string_copy(product, 1, 2);
         }
         else
         {
