@@ -14,14 +14,21 @@ function input_default_gamepad_axis()
     
     global.__input_gamepad_valid = true;
     
-    global.__input_default_player.set_binding(INPUT_SOURCE.GAMEPAD, _verb, _alternate,
-                                              (new __input_class_binding()).set_gamepad_axis(_axis, _negative));
+    //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
+    var _binding = new __input_class_binding();
+    _binding.set_gamepad_axis(_axis, _negative);
+    
+    global.__input_default_player.set_binding(INPUT_SOURCE.GAMEPAD, _verb, _alternate, _binding);
     
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
     {
-        global.__input_players[_p].set_binding(INPUT_SOURCE.GAMEPAD, _verb, _alternate,
-                                               (new __input_class_binding()).set_gamepad_axis(_axis, _negative));
+        //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
+        var _binding = new __input_class_binding();
+        _binding.set_gamepad_axis(_axis, _negative);
+        
+        global.__input_players[_p].set_binding(INPUT_SOURCE.GAMEPAD, _verb, _alternate, _binding);
+        
         ++_p;
     }
 }

@@ -7,6 +7,7 @@
 #macro __INPUT_ON_CONSOLE                ((os_type == os_switch) || (os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
 #macro __INPUT_ON_DESKTOP                ((os_type == os_windows) || (os_type == os_macosx) || (os_type == os_linux))
 #macro __INPUT_ON_MOBILE                 ((os_type == os_ios) || (os_type == os_android))
+#macro __INPUT_ON_HTML5                  (os_browser != browser_not_a_browser)
 
 enum INPUT_SOURCE
 {
@@ -166,7 +167,7 @@ else
 if (INPUT_SDL2_ALLOW_EXTERNAL)
 {
     var _external_string = environment_get_variable("SDL_GAMECONTROLLERCONFIG");
-    if (_external_string != "")
+    if (is_string(_external_string) && (_external_string != ""))
     {
         __input_trace("External SDL2 string found");
         
@@ -176,7 +177,7 @@ if (INPUT_SDL2_ALLOW_EXTERNAL)
         }
         catch(_error)
         {
-            __input_trace_loud("Error!\n\n%SDL_GAMECONTROLLERCONFIG% could not be parsed.\nYou may see unexpected behaviour when using gamepads.\n\nTo remove this error, clear %SDL_GAMECONTROLLERCONFIG%\n\nInput ", __INPUT_VERSION, "   @jujuadams ", __INPUT_DATE);
+            __input_trace_loud("Error!\n\n%SDL_GAMECONTROLLERCONFIG% could not be parsed.\nYou may see unexpected behaviour when using gamepads.\n\nTo remove this error, clear %SDL_GAMECONTROLLERCONFIG%\n\nInput ", __INPUT_VERSION, "   @jujuadams and @offalynne ", __INPUT_DATE);
         }
     }
 }

@@ -28,14 +28,20 @@ function input_default_gamepad_button()
         }
     }
     
-    global.__input_default_player.set_binding(INPUT_SOURCE.GAMEPAD, _verb, _alternate,
-                                              (new __input_class_binding()).set_gamepad_button(_button));
+    //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
+    var _binding = new __input_class_binding();
+    _binding.set_gamepad_button(_button);
+    
+    global.__input_default_player.set_binding(INPUT_SOURCE.GAMEPAD, _verb, _alternate, _binding);
     
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
     {
-        global.__input_players[_p].set_binding(INPUT_SOURCE.GAMEPAD, _verb, _alternate,
-                                               (new __input_class_binding()).set_gamepad_button(_button));
+        //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
+        var _binding = new __input_class_binding();
+        _binding.set_gamepad_button(_button);
+        
+        global.__input_players[_p].set_binding(INPUT_SOURCE.GAMEPAD, _verb, _alternate, _binding);
         ++_p;
     }
 }

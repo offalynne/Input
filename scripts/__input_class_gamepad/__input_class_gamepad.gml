@@ -2,7 +2,7 @@
 function __input_class_gamepad(_index) constructor
 {
     index             = _index;
-    description       = "Unknown";
+    description       = gamepad_get_description(_index);
     guid              = gamepad_get_guid(_index);
     xinput            = undefined;
     raw_type          = undefined;
