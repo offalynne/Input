@@ -21,6 +21,8 @@
 
 #macro INPUT_SWITCH_HORIZONTAL_HOLDTYPE  true  //Whether the game uses the horizontal holdtype for single Joy-Cons. Set this to <false> for vertical holdtype. Input treats these two modes as mutually exclusive (come talk to us if you need to be able to swap at runtime)
 
+#macro INPUT_INCLUDED_FILES_SUBDIRECTORY ""    //The directory that holds Input's Included Files, relative to the root folder that Included Files are stored in
+
 //The following macro controls default key filtering behaviour on desktop platforms (Windows + Mac + Linux)
 //Expected values are:
 //  0 = Don't ignore any keys

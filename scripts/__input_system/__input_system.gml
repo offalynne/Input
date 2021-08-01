@@ -1,9 +1,9 @@
 #macro __INPUT_VERSION                   "3.3.3"
 #macro __INPUT_DATE                      "2020-04-14"
 #macro __INPUT_DEBUG                     false
-#macro __INPUT_SDL2_DATABASE_FILENAME    "sdl2.txt"                //Name of the SDL2 database to read gamepad remapping definitions from
-#macro __INPUT_CONTROLLER_TYPE_FILENAME  "controllertypes.csv"     //Name of the controller type database to read gamepad types from
-#macro __INPUT_BLACKLIST_FILENAME        "controllerblacklist.csv" //Name of the controller blacklist database to read from
+#macro __INPUT_SDL2_DATABASE_FILENAME    INPUT_INCLUDED_FILES_SUBDIRECTORY + "sdl2.txt"                //Name of the SDL2 database to read gamepad remapping definitions from
+#macro __INPUT_CONTROLLER_TYPE_FILENAME  INPUT_INCLUDED_FILES_SUBDIRECTORY + "controllertypes.csv"     //Name of the controller type database to read gamepad types from
+#macro __INPUT_BLACKLIST_FILENAME        INPUT_INCLUDED_FILES_SUBDIRECTORY + "controllerblacklist.csv" //Name of the controller blacklist database to read from
 #macro __INPUT_ON_CONSOLE                ((os_type == os_switch) || (os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
 #macro __INPUT_ON_DESKTOP                ((os_type == os_windows) || (os_type == os_macosx) || (os_type == os_linux))
 #macro __INPUT_ON_MOBILE                 ((os_type == os_ios) || (os_type == os_android))
