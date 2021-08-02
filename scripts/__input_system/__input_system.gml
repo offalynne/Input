@@ -9,26 +9,11 @@
 #macro __INPUT_ON_MOBILE                 ((os_type == os_ios) || (os_type == os_android))
 #macro __INPUT_ON_HTML5                  (os_browser != browser_not_a_browser)
 
-enum INPUT_SOURCE
-{
-    NONE,
-    KEYBOARD_AND_MOUSE,
-    GAMEPAD,
-    __SIZE
-}
-
-enum __INPUT_MAPPING
-{
-    BUTTON,
-    AXIS,
-    HAT,
-    HAT_ON_AXIS,
-    __SIZE
-}
-
-#macro INPUT_NO_GAMEPAD  -1
+//Extra constants
 #macro gp_guide  32789
 #macro gp_misc1  32790
+#macro vk_meta1  91
+#macro vk_meta2  92
 
 // gp_axislh     = 32785             32769 = gp_face1
 // gp_axislv     = 32786             32770 = gp_face2
@@ -54,8 +39,24 @@ enum __INPUT_MAPPING
 // gp_guide      = 32789             32789 = gp_guide
 // gp_misc1      = 32790             32790 = gp_misc1
 
-#macro vk_meta1 91
-#macro vk_meta2 92
+enum INPUT_SOURCE
+{
+    NONE,
+    KEYBOARD_AND_MOUSE,
+    GAMEPAD,
+    __SIZE
+}
+
+enum __INPUT_MAPPING
+{
+    BUTTON,
+    AXIS,
+    HAT,
+    HAT_ON_AXIS,
+    __SIZE
+}
+
+#macro INPUT_NO_GAMEPAD  -1
 
 //Set up the extended debug functionality
 global.__input_debug_log = "input___" + string_replace_all(string_replace_all(date_datetime_string(date_current_datetime()), ":", "-"), " ", "___") + ".txt";
