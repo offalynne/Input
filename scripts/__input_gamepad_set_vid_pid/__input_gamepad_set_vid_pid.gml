@@ -17,7 +17,7 @@ function __input_gamepad_set_vid_pid()
             //Chrome-esque form
             vendor      = string_copy(description, _vendor_pos  + 8, 4);
             product     = string_copy(description, _product_pos + 9, 4);
-            description = string_copy(description, 1, _vendor_pos);
+            description = string_copy(description, 1, _vendor_pos-1);
         }
         else
         {
