@@ -28,7 +28,7 @@ function __input_key_get_name(_key)
             case vk_tab:       return "tab";       break;
             case vk_enter:     return "enter";     break;      
         }
-                
+
         // Desktop platform non-UTF8 keycodes
         if (__INPUT_ON_DESKTOP) 
         {
@@ -37,7 +37,7 @@ function __input_key_get_name(_key)
             {
                 return ("F" + string(1 + _key - vk_f1));
             }
-            
+
             switch(_key)
             {                 
                 //Symbols
