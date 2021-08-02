@@ -28,7 +28,7 @@ function __input_key_get_name(_key)
             case vk_tab:       return "tab";       break;
             case vk_enter:     return "enter";     break;      
         }
-        
+                
         // Desktop platform non-UTF8 keycodes
         if (__INPUT_ON_DESKTOP) 
         {
@@ -96,26 +96,26 @@ function __input_key_get_name(_key)
             }
         }
         
-        //Per platform non-UTF8 keycodes
-        switch(os_type)
-        {
-            case os_windows:
-                switch(_key)      
-                {
-                    case 122: return "F11"; break;
-                    case 123: return "F12"; break;
-                    case 124: return "F13"; break;
-                    case 125: return "F14"; break;
-                    case 126: return "F15"; break;
-                    case 127: return "F16"; break;
-                    case 128: return "F17"; break;
-                    case 129: return "F18"; break;
-                    case 130: return "F19"; break;
-                    case 131: return "F20"; break;
-                    case 132: return "F21"; break;
-                    case 133: return "F22"; break;
-                    case 134: return "F23"; break;
+        //Per platform non-UTF8
+        var _platform = os_type;
 
+        //Browsers normalize keycodes across platforms
+        //See https://github.com/wesbos/keycodes/blob/gh-pages/scripts.js        
+        if (__INPUT_ON_HTML5) _platform = "HTML5";
+        
+        switch(_platform)
+        {
+            case "HTML5":
+            case os_windows:
+                
+                //F11-F32
+                if ((_key >= 122) && (_key <= 143))
+                {
+                    return "F" + string(_key - vk_f1 + 1);
+                }
+            
+                switch(_key)
+                {
                     case 187: return "="; break;
                     case 189: return "-"; break;
                     case 192: return "`"; break;
