@@ -101,11 +101,11 @@ function __input_key_get_name(_key)
 
         //Browsers normalize keycodes across platforms
         //See https://github.com/wesbos/keycodes/blob/gh-pages/scripts.js        
-        if (__INPUT_ON_HTML5) _platform = "HTML5";
+        if (__INPUT_ON_WEB) _platform = "browser";
         
         switch(_platform)
         {
-            case "HTML5":
+            case "browser":
             case os_windows:
                 
                 //F11-F32
