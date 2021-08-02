@@ -7,7 +7,7 @@
 #macro __INPUT_ON_CONSOLE                ((os_type == os_switch) || (os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
 #macro __INPUT_ON_DESKTOP                ((os_type == os_windows) || (os_type == os_macosx) || (os_type == os_linux))
 #macro __INPUT_ON_MOBILE                 ((os_type == os_ios) || (os_type == os_android))
-#macro __INPUT_ON_HTML5                  (os_browser != browser_not_a_browser)
+#macro __INPUT_ON_WEB                    (os_browser != browser_not_a_browser)
 
 //Extra constants
 #macro gp_guide  32789

@@ -3,7 +3,7 @@
 function __input_gamepad_find_in_sdl2_database()
 {
     //If we're on a specific OS, don't remap anything
-    if (__INPUT_ON_CONSOLE || __INPUT_ON_HTML5) exit;
+    if (__INPUT_ON_CONSOLE || __INPUT_ON_WEB) exit;
     
     //Check the global (OS = "all") blacklists to see if this gamepad is banned
     var _os_filter_dict  = global.__input_blacklist_dictionary[$ "all"];

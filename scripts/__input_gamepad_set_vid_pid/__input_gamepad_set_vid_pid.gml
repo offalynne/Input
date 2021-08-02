@@ -2,7 +2,7 @@
 
 function __input_gamepad_set_vid_pid()
 {
-    if (__INPUT_ON_HTML5)
+    if (__INPUT_ON_WEB)
     {
         var _vendor_pos  = string_pos("Vendor: ",  description);
         var _product_pos = string_pos("Product: ", description);
