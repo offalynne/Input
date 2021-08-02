@@ -107,7 +107,6 @@ function __input_key_get_name(_key)
         {
             case "browser":
             case os_windows:
-                
                 //F11-F32
                 if ((_key >= 122) && (_key <= 143))
                 {
@@ -123,8 +122,9 @@ function __input_key_get_name(_key)
             
                     case 12:  return "clear"; break;
                     
-                    case vk_meta1:  return "left meta";  break;
-                    case vk_meta2:  return "right meta"; break;
+                    //Swapped on Mac
+                    case vk_meta1: return (os_type == os_macosx)? "right meta" : "left meta";  break;
+                    case vk_meta2: return (os_type == os_macosx)? "left meta"  : "right meta"; break;
                 }
             break;
             
