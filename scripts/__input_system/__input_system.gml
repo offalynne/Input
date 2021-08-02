@@ -228,6 +228,7 @@ if (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL == 1)
     input_ignore_key_add(vk_lalt);
     input_ignore_key_add(vk_meta1);
     input_ignore_key_add(vk_meta2);
+    if (__INPUT_ON_WEB) input_ignore_key_add(vk_f11);
 }
 else if (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL == 2)
 {
@@ -236,6 +237,7 @@ else if (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL == 2)
     input_ignore_key_add(vk_lalt);
     input_ignore_key_add(91); //meta
     input_ignore_key_add(92); //meta
+    if (__INPUT_ON_WEB) input_ignore_key_add(vk_f11);
     
     input_ignore_key_add(144); //num lock
     input_ignore_key_add(145); //scroll lock

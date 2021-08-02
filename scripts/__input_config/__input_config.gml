@@ -24,13 +24,14 @@
 //The following macro controls default key filtering behaviour on desktop platforms (Windows + Mac + Linux)
 //Expected values are:
 //  0 = Don't ignore any keys
-//  1 = Ignore Alt & Windows/Command (Mac) keys
+//  1 = Ignore Alt & Windows/Command (Mac) keys, and ignore F11 when running through a browser
 //  2 = Ignore all reserved and/or system keys:
 //      - Alt & Windows/Command (Mac)
 //      - Num lock & Scroll lock
 //      - IME keys (0x15 - 0x1A, 0xE5)
 //      - Browser keys (0xA6 - 0xAC)
 //      - Media keys (0xAD - 0xB7)
+//      - F11 (web only)
 //You can modify this list at any time by calling input_ignore_key_add() or input_ignore_key_remove()
 //This setting only affects Input and will not filter these keys from native GameMaker functions
 #macro INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL  2
