@@ -121,9 +121,10 @@ function __input_key_get_name(_key)
                     case 192: return "`"; break;
                     case 222: return "'"; break;
             
-                    case 12:  return "clear";       break;
-                    case 91:  return "left meta";  break;
-                    case 92:  return "right meta"; break;
+                    case 12:  return "clear"; break;
+                    
+                    case vk_meta1:  return "left meta";  break;
+                    case vk_meta2:  return "right meta"; break;
                 }
             break;
             
@@ -137,8 +138,9 @@ function __input_key_get_name(_key)
                     case 109: return "-"; break;
                     case 222: return "'"; break;
                     
-                    case 91:  return "right meta"; break;
-                    case 92:  return "left meta";  break;
+                    //Swapped on Mac
+                    case vk_meta1:  return "right meta"; break;
+                    case vk_meta2:  return "left meta";  break;
                 }
             break;
             
@@ -153,8 +155,8 @@ function __input_key_get_name(_key)
                     case 192: return "'"; break;
                     case 223: return "`"; break;
                     
-                    case 91:  return "left meta";  break;
-                    case 92:  return "right meta"; break;
+                    case vk_meta1:  return "left meta";  break;
+                    case vk_meta2:  return "right meta"; break;
                 }
             break;
             

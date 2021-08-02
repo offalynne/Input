@@ -93,13 +93,13 @@ function input_tick()
             
             //Unstick Meta
             //Weird, but seems to be the best way to unstick without spoiling normal operation
-            if (keyboard_check_released(91))
+            if (keyboard_check_released(vk_meta1))
             {
-                keyboard_key_release(92);
+                keyboard_key_release(vk_meta2);
             }
-            else if (keyboard_check_released(92) && keyboard_check(91))
+            else if (keyboard_check_released(vk_meta2) && keyboard_check(vk_meta1))
             {
-                keyboard_key_release(91);
+                keyboard_key_release(vk_meta1);
             }
         }
     }

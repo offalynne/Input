@@ -30,10 +30,10 @@ function __input_binding_get_label(_type, _value, _axis_negative)
         case "gamepad button":
             switch(_value)
             {
-                case gp_face1:      return "gamepad button a";                  break;
-                case gp_face2:      return "gamepad button b";                  break;
-                case gp_face3:      return "gamepad button x";                  break;
-                case gp_face4:      return "gamepad button y";                  break;
+                case gp_face1:      return "gamepad button south";              break; // xbox A
+                case gp_face2:      return "gamepad button east";               break; // xbox B
+                case gp_face3:      return "gamepad button west";               break; // xbox X
+                case gp_face4:      return "gamepad button north";              break; // xbox Y
                 case gp_shoulderl:  return "gamepad button shoulder l";         break;
                 case gp_shoulderr:  return "gamepad button shoulder r";         break;
                 case gp_shoulderlb: return "gamepad button trigger l";          break;

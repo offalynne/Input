@@ -54,6 +54,9 @@ enum __INPUT_MAPPING
 // gp_guide      = 32789             32789 = gp_guide
 // gp_misc1      = 32790             32790 = gp_misc1
 
+#macro vk_meta1 91
+#macro vk_meta2 92
+
 //Set up the extended debug functionality
 global.__input_debug_log = "input___" + string_replace_all(string_replace_all(date_datetime_string(date_current_datetime()), ":", "-"), " ", "___") + ".txt";
 if (INPUT_EXTERNAL_DEBUG_LOG && __INPUT_DEBUG)
@@ -221,8 +224,8 @@ if (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL == 1)
     input_ignore_key_add(vk_alt);
     input_ignore_key_add(vk_ralt);
     input_ignore_key_add(vk_lalt);
-    input_ignore_key_add(91); //meta
-    input_ignore_key_add(92); //meta
+    input_ignore_key_add(vk_meta1);
+    input_ignore_key_add(vk_meta2);
 }
 else if (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL == 2)
 {
