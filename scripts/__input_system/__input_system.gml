@@ -160,14 +160,7 @@ global.__input_sdl2_look_up_table = {
 if (INPUT_SDL2_ALLOW_GUIDE) global.__input_sdl2_look_up_table.guide = gp_guide;
 if (INPUT_SDL2_ALLOW_MISC1) global.__input_sdl2_look_up_table.misc1 = gp_misc1;
 
-//Alright, now that we've set up the requisite data structures, let's load the SDL2 database
-//PS. Here're some SDL sources
-//https://github.com/gabomdq/SDL_GameControllerDB/
-//https://yachtclubgames.com/2014/03/steam-controller-support/
-//https://github.com/libretro/retroarch-joypad-autoconfig/
-//https://support.steampowered.com/kb_article.php?ref=5199-TOKV-4426
-//http://www.linux-usb.org/usb.ids
-
+//Load the SDL2 database
 if (file_exists(__INPUT_SDL2_DATABASE_FILENAME))
 {
     __input_load_sdl2_from_file(__INPUT_SDL2_DATABASE_FILENAME);
@@ -229,10 +222,10 @@ if (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL == 1)
     input_ignore_key_add(vk_meta1);
     input_ignore_key_add(vk_meta2);
     if (__INPUT_ON_WEB)
-	{
-		input_ignore_key_add(vk_f11);
-		if (os_type == os_macosx) input_ignore_key_add(20); //Caps lock
-	}
+    {
+        input_ignore_key_add(vk_f11);
+        if (os_type == os_macosx) input_ignore_key_add(20); //Caps lock
+    }
 }
 else if (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL == 2)
 {
@@ -241,12 +234,12 @@ else if (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL == 2)
     input_ignore_key_add(vk_lalt);
     input_ignore_key_add(vk_meta1);
     input_ignore_key_add(vk_meta2);
-	
+    
     if (__INPUT_ON_WEB)
-	{
-		input_ignore_key_add(vk_f11);
-		if (os_type == os_macosx) input_ignore_key_add(20); //Caps lock
-	}
+    {
+        input_ignore_key_add(vk_f11);
+        if (os_type == os_macosx) input_ignore_key_add(20); //Caps lock
+    }
     
     input_ignore_key_add(144); //num lock
     input_ignore_key_add(145); //scroll lock

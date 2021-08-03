@@ -28,8 +28,18 @@ function __input_key_get_name(_key)
             case vk_tab:       return "tab";       break;
             case vk_enter:     return "enter";     break;      
         }
+        
+        //Mac + Web exceptions
+        if (__INPUT_ON_WEB && (os_type == os_macosx))
+        {
+            switch(_key)
+            {
+                case vk_meta2: return "left meta";  break;
+                case 93:       return "right meta"; break;                
+            }
+        }
 
-        // Desktop platform non-UTF8 keycodes
+        //Desktop platform non-UTF8 keycodes
         if (__INPUT_ON_DESKTOP) 
         {
             //Common function row (F1 - F10)
@@ -107,8 +117,9 @@ function __input_key_get_name(_key)
         {
             case "browser":
             case os_windows:
-                //F11-F32
-                if ((_key >= 122) && (_key <= 143))
+            
+                //F11 - F32
+                if ((_key >= vk_f11) && (_key <= vk_f1 + 31))
                 {
                     return "F" + string(_key - vk_f1 + 1);
                 }
@@ -122,9 +133,8 @@ function __input_key_get_name(_key)
             
                     case 12:  return "clear"; break;
                     
-                    //Swapped on Mac
-                    case vk_meta1: return (os_type == os_macosx)? "right meta" : "left meta";  break;
-                    case vk_meta2: return (os_type == os_macosx)? "left meta"  : "right meta"; break;
+                    case vk_meta1: return "left meta";  break;
+                    case vk_meta2: return "right meta"; break;
                 }
             break;
             
