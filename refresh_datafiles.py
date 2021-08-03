@@ -59,7 +59,7 @@ DATA_SOURCES = {
                 "match replace": "constexpr uint16_t (.*) = (.*);",
                 "match id": "{0x(.*),0x(.*)}"
 
-            }
+            },
 
             "Input blocklist": {
 
