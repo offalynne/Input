@@ -59,18 +59,7 @@ DATA_SOURCES = {
                 "match replace": "constexpr uint16_t (.*) = (.*);",
                 "match id": "{0x(.*),0x(.*)}"
 
-            },
-
-            "Chromium blocklist (vid)": {
-
-                "source": "https://raw.githubusercontent.com/chromium/chromium/master/device/gamepad/gamepad_blocklist.cc",
-                "header": "linux,vid",
-                "trim before": "}  // namespace",
-                "trim after": "namespace {",
-                "match replace": "constexpr uint16_t k(.*) = (.*);",
-                "match id": "(/s)*k(.*),"
-
-            },
+            }
 
             "Input blocklist": {
 
