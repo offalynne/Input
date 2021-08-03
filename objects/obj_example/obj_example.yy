@@ -25,8 +25,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Input",
-    "path": "Input.yyp",
+    "name": "input",
+    "path": "input.yyp",
   },
   "resourceVersion": "1.0",
   "name": "obj_example",

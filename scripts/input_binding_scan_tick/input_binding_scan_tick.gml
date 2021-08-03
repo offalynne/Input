@@ -9,7 +9,8 @@ enum INPUT_BINDING_SCAN_EVENT
     SOURCE_CHANGED              = -11, //Player source changed
     GAMEPAD_CHANGED             = -12, //Gamepad index changed
     GAMEPAD_INVALID             = -13, //Player gamepad is invalid (is INPUT_NO_GAMEPAD)
-    BINDING_DOESNT_MATCH_SOURCE = -14,
+    BINDING_DOESNT_MATCH_SOURCE = -14, //The new binding doesn't match the source that was targetted for rebinding
+    TIMEOUT                     = -20, //Scanning for a binding timed out - either the player didn't enter a new binding or a stuck key prevented the system from working
 }
 
 function input_binding_scan_tick()
@@ -51,6 +52,7 @@ function input_binding_scan_tick()
             rebind_state         = 1;
             rebind_gamepad       = gamepad;
             rebind_filter_source = _filter_source;
+            rebind_start_time    = current_time;
             
             if (_filter_source == undefined)
             {
@@ -93,6 +95,14 @@ function input_binding_scan_tick()
                 __input_trace("Binding scan failed: Gamepad for player ", _player_index, " is INPUT_NO_GAMEPAD");
                 rebind_state = -1;
                 return INPUT_BINDING_SCAN_EVENT.GAMEPAD_INVALID;
+            }
+            
+            if (current_time - rebind_start_time > INPUT_BINDING_SCAN_TIMEOUT)
+            {
+                __input_trace("Binding scan timed out");
+                rebind_state = -1;
+                    
+                return INPUT_BINDING_SCAN_EVENT.TIMEOUT;
             }
             
             #endregion

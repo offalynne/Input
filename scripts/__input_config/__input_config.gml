@@ -21,6 +21,8 @@
 
 #macro INPUT_SWITCH_HORIZONTAL_HOLDTYPE  true  //Whether the game uses the horizontal holdtype for single Joy-Cons. Set this to <false> for vertical holdtype. Input treats these two modes as mutually exclusive (come talk to us if you need to be able to swap at runtime)
 
+#macro INPUT_BINDING_SCAN_TIMEOUT  10000  //Time (in milliseconds) to wait for a new binding before automatically cancelling the binding scan
+
 //The following macro controls default key filtering behaviour on desktop platforms (Windows + Mac + Linux)
 //Expected values are:
 //  0 = Don't ignore any keys
