@@ -28,48 +28,34 @@ function __input_binding_get_label(_type, _value, _axis_negative)
         break;
         
         case "gamepad button":
-            switch(_value)
-            {
-                case gp_face1:      return "gamepad button south";              break; // xbox A
-                case gp_face2:      return "gamepad button east";               break; // xbox B
-                case gp_face3:      return "gamepad button west";               break; // xbox X
-                case gp_face4:      return "gamepad button north";              break; // xbox Y
-                case gp_shoulderl:  return "gamepad button shoulder l";         break;
-                case gp_shoulderr:  return "gamepad button shoulder r";         break;
-                case gp_shoulderlb: return "gamepad button trigger l";          break;
-                case gp_shoulderrb: return "gamepad button trigger r";          break;
-                case gp_select:     return "gamepad button select";             break;
-                case gp_start:      return "gamepad button start";              break;
-                case gp_stickl:     return "gamepad button thumbstick l click"; break;
-                case gp_stickr:     return "gamepad button thumbstick r click"; break;
-                case gp_padu:       return "gamepad button dpad up";            break;
-                case gp_padd:       return "gamepad button dpad down";          break;
-                case gp_padl:       return "gamepad button dpad left";          break;
-                case gp_padr:       return "gamepad button dpad right"          break;
-                case gp_guide:      return "gamepad button guide";              break;
-                case gp_misc1:      return "gamepad button misc 1";             break;
-                
-                case gp_axislh: return _axis_negative? "gamepad button thumbstick l left" : "gamepad button thumbstick l right"; break;
-                case gp_axislv: return _axis_negative? "gamepad button thumbstick l up"   : "gamepad button thumbstick l down";  break;
-                case gp_axisrh: return _axis_negative? "gamepad button thumbstick r left" : "gamepad button thumbstick r right"; break;
-                case gp_axisrv: return _axis_negative? "gamepad button thumbstick r up"   : "gamepad button thumbstick r down";  break;
-                
-                default: return "gamepad button unknown"; break;
-            }
-        break;
-        
         case "gamepad axis":
             switch(_value)
             {
-                case gp_shoulderlb: return "gamepad axis trigger l"; break;
-                case gp_shoulderrb: return "gamepad axis trigger r"; break;
+                case gp_face1:      return "gamepad south";              break; // Xbox A
+                case gp_face2:      return "gamepad east";               break; // Xbox B
+                case gp_face3:      return "gamepad west";               break; // Xbox X
+                case gp_face4:      return "gamepad north";              break; // Xbox Y
+                case gp_shoulderl:  return "gamepad shoulder l";         break;
+                case gp_shoulderr:  return "gamepad shoulder r";         break;
+                case gp_shoulderlb: return "gamepad trigger l";          break;
+                case gp_shoulderrb: return "gamepad trigger r";          break;
+                case gp_select:     return "gamepad select";             break;
+                case gp_start:      return "gamepad start";              break;
+                case gp_stickl:     return "gamepad thumbstick l click"; break;
+                case gp_stickr:     return "gamepad thumbstick r click"; break;
+                case gp_padu:       return "gamepad dpad up";            break;
+                case gp_padd:       return "gamepad dpad down";          break;
+                case gp_padl:       return "gamepad dpad left";          break;
+                case gp_padr:       return "gamepad dpad right"          break;
+                case gp_guide:      return "gamepad guide";              break;
+                case gp_misc1:      return "gamepad misc 1";             break;
                 
-                case gp_axislh: return _axis_negative? "gamepad axis thumbstick l left" : "gamepad axis thumbstick l right"; break;
-                case gp_axislv: return _axis_negative? "gamepad axis thumbstick l up"   : "gamepad axis thumbstick l down";  break;
-                case gp_axisrh: return _axis_negative? "gamepad axis thumbstick r left" : "gamepad axis thumbstick r right"; break;
-                case gp_axisrv: return _axis_negative? "gamepad axis thumbstick r up"   : "gamepad axis thumbstick r down";  break;
+                case gp_axislh: return _axis_negative? "gamepad thumbstick l left" : "gamepad thumbstick l right"; break;
+                case gp_axislv: return _axis_negative? "gamepad thumbstick l up"   : "gamepad thumbstick l down";  break;
+                case gp_axisrh: return _axis_negative? "gamepad thumbstick r left" : "gamepad thumbstick r right"; break;
+                case gp_axisrv: return _axis_negative? "gamepad thumbstick r up"   : "gamepad thumbstick r down";  break;
                 
-                default: return "gamepad axis unknown"; break;
+                default: return "gamepad input unknown"; break;
             }
         break;
         
