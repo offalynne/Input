@@ -1,9 +1,6 @@
 #macro __INPUT_VERSION                   "3.3.3"
 #macro __INPUT_DATE                      "2020-04-14"
 #macro __INPUT_DEBUG                     false
-#macro __INPUT_SDL2_DATABASE_FILENAME    "sdl2.txt"                //Name of the SDL2 database to read gamepad remapping definitions from
-#macro __INPUT_CONTROLLER_TYPE_FILENAME  "controllertypes.csv"     //Name of the controller type database to read gamepad types from
-#macro __INPUT_BLACKLIST_FILENAME        "controllerblacklist.csv" //Name of the controller blacklist database to read from
 #macro __INPUT_ON_CONSOLE                ((os_type == os_switch) || (os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
 #macro __INPUT_ON_DESKTOP                ((os_type == os_windows) || (os_type == os_macosx) || (os_type == os_linux))
 #macro __INPUT_ON_MOBILE                 ((os_type == os_ios) || (os_type == os_android))
@@ -161,13 +158,13 @@ if (INPUT_SDL2_ALLOW_GUIDE) global.__input_sdl2_look_up_table.guide = gp_guide;
 if (INPUT_SDL2_ALLOW_MISC1) global.__input_sdl2_look_up_table.misc1 = gp_misc1;
 
 //Load the SDL2 database
-if (file_exists(__INPUT_SDL2_DATABASE_FILENAME))
+if (file_exists(INPUT_SDL2_DATABASE_PATH))
 {
-    __input_load_sdl2_from_file(__INPUT_SDL2_DATABASE_FILENAME);
+    __input_load_sdl2_from_file(INPUT_SDL2_DATABASE_PATH);
 }
 else
 {
-    __input_trace("Warning! \"", __INPUT_SDL2_DATABASE_FILENAME, "\" not found in Included Files");
+    __input_trace("Warning! \"", INPUT_SDL2_DATABASE_PATH, "\" not found in Included Files");
 }
 
 //Try to load an external SDL2 database if possible
@@ -192,25 +189,25 @@ if (INPUT_SDL2_ALLOW_EXTERNAL)
 //Parse the controller type database
 global.__input_raw_type_dictionary = { none : "XBox360Controller" };
 
-if (file_exists(__INPUT_CONTROLLER_TYPE_FILENAME))
+if (file_exists(INPUT_CONTROLLER_TYPE_PATH))
 {
-    __input_load_type_csv(__INPUT_CONTROLLER_TYPE_FILENAME);
+    __input_load_type_csv(INPUT_CONTROLLER_TYPE_PATH);
 }
 else
 {
-    __input_trace("Warning! \"", __INPUT_CONTROLLER_TYPE_FILENAME, "\" not found in Included Files");
+    __input_trace("Warning! \"", INPUT_CONTROLLER_TYPE_PATH, "\" not found in Included Files");
 }
 
 //Parse the controller type database
 global.__input_blacklist_dictionary = {};
 
-if (file_exists(__INPUT_BLACKLIST_FILENAME))
+if (file_exists(INPUT_BLACKLIST_PATH))
 {
-    __input_load_blacklist_csv(__INPUT_BLACKLIST_FILENAME);
+    __input_load_blacklist_csv(INPUT_BLACKLIST_PATH);
 }
 else
 {
-    __input_trace("Warning! \"", __INPUT_BLACKLIST_FILENAME, "\" not found in Included Files");
+    __input_trace("Warning! \"", INPUT_BLACKLIST_PATH, "\" not found in Included Files");
 }
 
 //Set up ignored keys as directed
