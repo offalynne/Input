@@ -49,7 +49,7 @@ function __input_class_gamepad(_index) constructor
     {
         if (!custom_mapping) return gamepad_button_check(index, _gm);
         var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
-        if (_mapping == undefined) return 0.0;
+        if (_mapping == undefined) return false;
         return _mapping.held;
     }
     
@@ -58,7 +58,7 @@ function __input_class_gamepad(_index) constructor
     {
         if (!custom_mapping) return gamepad_button_check_pressed(index, _gm);
         var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
-        if (_mapping == undefined) return 0.0;
+        if (_mapping == undefined) return false;
         return _mapping.press;
     }
     
@@ -67,7 +67,7 @@ function __input_class_gamepad(_index) constructor
     {
         if (!custom_mapping) return gamepad_button_check_released(index, _gm);
         var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
-        if (_mapping == undefined) return 0.0;
+        if (_mapping == undefined) return false;
         return _mapping.release;
     }
     
