@@ -371,10 +371,10 @@ function __input_class_player() constructor
                     ||  input_gamepad_check(gamepad, gp_stickr)
                     ||  (INPUT_SDL2_ALLOW_GUIDE && input_gamepad_check(gamepad, gp_guide))
                     ||  (INPUT_SDL2_ALLOW_MISC1 && input_gamepad_check(gamepad, gp_misc1))
-                    ||  (abs(input_gamepad_value(gamepad, gp_axislh)) > axis_threshold_get(gp_axislh).mini)
-                    ||  (abs(input_gamepad_value(gamepad, gp_axislv)) > axis_threshold_get(gp_axislv).mini)
-                    ||  (abs(input_gamepad_value(gamepad, gp_axisrh)) > axis_threshold_get(gp_axisrh).mini)
-                    ||  (abs(input_gamepad_value(gamepad, gp_axisrv)) > axis_threshold_get(gp_axisrv).mini));
+                    ||  (abs(input_gamepad_value(gamepad, gp_axislh)) > INPUT_DEFAULT_MIN_THRESHOLD)
+                    ||  (abs(input_gamepad_value(gamepad, gp_axislv)) > INPUT_DEFAULT_MIN_THRESHOLD)
+                    ||  (abs(input_gamepad_value(gamepad, gp_axisrh)) > INPUT_DEFAULT_MIN_THRESHOLD)
+                    ||  (abs(input_gamepad_value(gamepad, gp_axisrv)) > INPUT_DEFAULT_MIN_THRESHOLD));
             break;
         }
         
