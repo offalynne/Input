@@ -144,6 +144,7 @@ function __input_class_gamepad(_index) constructor
             if (_type == __INPUT_MAPPING.BUTTON) _raw += 17;
         }
         
+        //FIXME - This should be a class
         var _mapping = {
             gm       : _gm,
             raw      : _raw,
@@ -203,9 +204,9 @@ function __input_class_gamepad(_index) constructor
                 
                 switch(type)
                 {
-                    case __INPUT_MAPPING.BUTTON:      value = gamepad_button_check(_gamepad, raw); break;
-                    case __INPUT_MAPPING.AXIS:        value = gamepad_axis_value(  _gamepad, raw); break;
-                    case __INPUT_MAPPING.HAT:         value = ((gamepad_hat_value( _gamepad, raw) & hat_mask) > 0); break;
+                    case __INPUT_MAPPING.BUTTON: value = gamepad_button_check(_gamepad, raw); break;
+                    case __INPUT_MAPPING.AXIS:   value = gamepad_axis_value(  _gamepad, raw); break;
+                    case __INPUT_MAPPING.HAT:    value = ((gamepad_hat_value( _gamepad, raw) & hat_mask) > 0); break;
                     
                     case __INPUT_MAPPING.HAT_ON_AXIS:
                         value = ((gamepad_hat_value( _gamepad, raw_positive) & hat_mask_positive) > 0) - ((gamepad_hat_value(_gamepad, raw_negative) & hat_mask_negative) > 0);
@@ -230,6 +231,7 @@ function __input_class_gamepad(_index) constructor
                 if (invert) value = 1 - value;
                 if (reverse) value = -value;
                 
+                //FIXME - This magic number should be a macro
                 held = (abs(value) > 0.2);
                 
                 if (held_previous != held)
