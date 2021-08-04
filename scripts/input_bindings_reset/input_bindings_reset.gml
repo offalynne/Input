@@ -1,13 +1,9 @@
-/// @param [source]
+/// @param source
 /// @param [playerIndex]
 /// @param [resetThresholds]
 
-function input_bindings_reset()
+function input_bindings_reset(_source, _player_index = all, _reset_thresholds = true)
 {
-    var _source           = (argument_count > 0)? argument[0] : all;
-    var _player_index     = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : all;
-    var _reset_thresholds = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : true;
-    
     if ((_player_index < 0) && (_player_index != all))
     {
         __input_error("Invalid player index provided (", _player_index, ")");
