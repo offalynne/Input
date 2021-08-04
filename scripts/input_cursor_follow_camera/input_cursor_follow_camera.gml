@@ -1,12 +1,9 @@
 /// @param camera
 /// @param [playerIndex]
 
-function input_cursor_follow_camera()
+function input_cursor_follow_camera(_camera, _player_index = 0)
 {
     if (INPUT_WARNING_DEPRECATED) __input_error("This function has been deprecated\n(Set INPUT_WARNING_DEPRECATED to <false> to ignore this warning)");
-    
-    var _camera       = argument[0];
-    var _player_index = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
     
     if ((_player_index < 0) && (_player_index != all))
     {

@@ -8,12 +8,8 @@
 /// 
 /// @jujuadams 2020-06-28
 
-function __input_csv_to_array()
+function __input_csv_to_array(_string, _cell_delimiter = ",", _string_delimiter = "\"")
 {
-    var _string           = argument[0];
-    var _cell_delimiter   = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : ",";
-    var _string_delimiter = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : "\"";
-    
     var _cell_delimiter_ord      = ord(_cell_delimiter);
     var _string_delimiter_double = _string_delimiter + _string_delimiter;
     var _string_delimiter_ord    = ord(_string_delimiter);

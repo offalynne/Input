@@ -2,12 +2,8 @@
 /// @param verb
 /// @param [alternate]
 
-function input_default_key()
+function input_default_key(_key, _verb, _alternate = 0)
 {
-    var _key       = argument[0];
-    var _verb      = argument[1];
-    var _alternate = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : 0;
-    
     if (__INPUT_DEBUG) __input_trace("Setting default keyboard binding...");
     
     //Never allow keyboard bindings on console

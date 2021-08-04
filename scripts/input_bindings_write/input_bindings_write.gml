@@ -1,9 +1,7 @@
 /// @param [playerIndex]
 
-function input_bindings_write()
+function input_bindings_write(_player_index = all)
 {
-    var _player_index = ((argument_count > 0) && (argument[0] != undefined))? argument[0] : all;
-    
     if ((_player_index < 0) && (_player_index != all))
     {
         __input_error("Invalid player index provided (", _player_index, ")");

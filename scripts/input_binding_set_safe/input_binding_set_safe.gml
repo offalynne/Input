@@ -3,13 +3,8 @@
 /// @param [playerIndex]
 /// @param [alternate]
 
-function input_binding_set_safe()
+function input_binding_set_safe(_verb, _binding, _player_index = 0, _alternate = 0)
 {
-    var _verb         = argument[0];
-    var _binding      = argument[1];
-    var _player_index = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : 0;
-    var _alternate    = ((argument_count > 3) && (argument[3] != undefined))? argument[3] : 0;
-    
     if (input_value_is_binding(_binding))
     {
         var _collisions = input_binding_get_collisions(_binding, _player_index);

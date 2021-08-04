@@ -3,11 +3,8 @@
 /// 
 /// FIXME - Unfucks a bug in GM where json_parse() doesn't work properly (20201-01-12)
 
-function input_bindings_read()
+function input_bindings_read(_string, _player_index = all)
 {
-    var _string       = argument[0];
-    var _player_index = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : all;
-    
     if ((_player_index < 0) && (_player_index != all))
     {
         __input_error("Invalid player index provided (", _player_index, ")");

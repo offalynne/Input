@@ -1,11 +1,8 @@
 /// @param verb
 /// @param [alternate]
 
-function input_default_mouse_wheel_down()
+function input_default_mouse_wheel_down(_verb, _alternate = 0)
 {
-    var _verb      = argument[0];
-    var _alternate = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
-    
     if (__INPUT_DEBUG) __input_trace("Setting default mouse wheel down binding...");
     
     //Never allow mouse bindings on console

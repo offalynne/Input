@@ -5,15 +5,8 @@
 /// @param [source]
 /// @param [playerIndex]
 
-function input_binding_swap()
+function input_binding_swap(_verb_a, _alternate_a, _verb_b, _alternate_b, _source = undefined, _player_index = 0)
 {
-    var _verb_a       = argument[0];
-    var _alternate_a  = argument[1];
-    var _verb_b       = argument[2];
-    var _alternate_b  = argument[3];
-    var _source       = (argument_count > 4)? argument[4] : undefined;
-    var _player_index = ((argument_count > 5) && (argument[5] != undefined))? argument[5] : 0;
-    
     if (_player_index < 0)
     {
         __input_error("Invalid player index provided (", _player_index, ")");

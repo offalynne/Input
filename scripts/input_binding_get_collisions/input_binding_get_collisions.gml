@@ -1,11 +1,8 @@
 /// @param binding
 /// @param [playerIndex]
 
-function input_binding_get_collisions()
+function input_binding_get_collisions(_src_binding, _player_index = 0)
 {
-    var _src_binding  = argument[0];
-    var _player_index = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
-    
     if (_player_index < 0)
     {
         __input_error("Invalid player index provided (", _player_index, ")");

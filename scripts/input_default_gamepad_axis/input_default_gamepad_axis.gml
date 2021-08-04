@@ -3,13 +3,8 @@
 /// @param verb
 /// @param [alternate]
 
-function input_default_gamepad_axis()
+function input_default_gamepad_axis(_axis, _negative, _verb, _alternate = 0)
 {
-    var _axis      = argument[0];
-    var _negative  = argument[1];
-    var _verb      = argument[2];
-    var _alternate = ((argument_count > 3) && (argument[3] != undefined))? argument[3] : 0;
-    
     if (__INPUT_DEBUG) __input_trace("Setting default gamepad axis binding...");
     
     global.__input_gamepad_valid = true;

@@ -14,11 +14,8 @@ enum INPUT_BINDING_SCAN_EVENT
     LOST_FOCUS                  = -21, //The game lost focus
 }
 
-function input_binding_scan_tick()
+function input_binding_scan_tick(_source, _player_index = 0)
 {
-    var _source       = argument[0];
-    var _player_index = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
-    
     if (_source == undefined) __input_error("Binding source must be specified");
     
     #region Check input arguments

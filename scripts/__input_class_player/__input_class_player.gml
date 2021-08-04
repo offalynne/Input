@@ -333,10 +333,8 @@ function __input_class_player() constructor
     }
     
     /// @param [source]
-    static any_input = function()
+    static any_input = function(_source = source)
     {
-        var _source = ((argument_count > 0) && (argument[0] != undefined))? argument[0] : source;
-        
         if (_source == all)
         {
             if (any_input(INPUT_SOURCE.KEYBOARD_AND_MOUSE)) return true;

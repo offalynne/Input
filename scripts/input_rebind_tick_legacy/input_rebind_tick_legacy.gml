@@ -9,12 +9,8 @@ enum INPUT_REBIND_EVENT
     SUCCESS  =  1,
 }
 
-function input_rebind_tick_legacy()
+function input_rebind_tick_legacy(_verb, _player_index = 0, _alternate = 0)
 {
-    var _verb         = argument[0];
-    var _player_index = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
-    var _alternate    = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : 0;
-    
     #region Check input arguments
     
     if (_player_index < 0)
@@ -270,12 +266,8 @@ function input_rebind_tick_legacy()
     return INPUT_REBIND_EVENT.WAITING;
 }
 
-function input_rebind_tick()
+function input_rebind_tick(_verb, _player_index = 0, _alternate = 0)
 {
-    var _verb         = argument[0];
-    var _player_index = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
-    var _alternate    = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : 0;
-    
     __input_error("input_rebind_tick() has been deprecated, please use input_rebind_tick_legacy() instead\nThis feature will be replaced in a future update");
     
     input_rebind_tick_legacy(_verb, _player_index, _alternate);
