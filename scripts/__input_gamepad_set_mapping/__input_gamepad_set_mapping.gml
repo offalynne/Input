@@ -108,10 +108,28 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_stickl, 10, __INPUT_MAPPING.BUTTON, "leftstick");
         set_mapping(gp_stickr, 11, __INPUT_MAPPING.BUTTON, "rightstick");
         
-        set_mapping(gp_padu, 12, __INPUT_MAPPING.BUTTON, "dpup");
-        set_mapping(gp_padd, 13, __INPUT_MAPPING.BUTTON, "dpdown");
-        set_mapping(gp_padl, 14, __INPUT_MAPPING.BUTTON, "dpleft");
-        set_mapping(gp_padr, 15, __INPUT_MAPPING.BUTTON, "dpright");
+        if ((os_type == os_linux) && (os_browser == browser_firefox))
+        {
+            //ಠ_ಠ
+            set_mapping(gp_padr, 6, __INPUT_MAPPING.AXIS, "dpright").clamp_positive = true;
+            set_mapping(gp_padd, 7, __INPUT_MAPPING.AXIS, "dpdown" ).clamp_positive = true;
+            
+            var _mapping;
+            _mapping = set_mapping(gp_padl, 6, __INPUT_MAPPING.AXIS, "dpleft" );
+            _mapping.clamp_negative = true;
+            _mapping.reverse = true;
+            
+            _mapping = set_mapping(gp_padu, 7, __INPUT_MAPPING.AXIS, "dpup"   );
+            _mapping.clamp_negative = true;
+            _mapping.reverse = true;
+        }
+        else
+        {
+            set_mapping(gp_padu, 12, __INPUT_MAPPING.BUTTON, "dpup");
+            set_mapping(gp_padd, 13, __INPUT_MAPPING.BUTTON, "dpdown");
+            set_mapping(gp_padl, 14, __INPUT_MAPPING.BUTTON, "dpleft");
+            set_mapping(gp_padr, 15, __INPUT_MAPPING.BUTTON, "dpright");
+        }
         
         set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
         set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
