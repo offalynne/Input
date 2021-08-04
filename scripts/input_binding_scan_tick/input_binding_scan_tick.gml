@@ -61,7 +61,7 @@ function input_binding_scan_tick()
             
             if (source != rebind_target_source)
             {
-                __input_trace("Warning! Player not using target source ", rebind_target_source, ", force-setting their source");
+                __input_trace("Warning! Player not using target source \"", input_source_get_name(rebind_target_source), "\", force-setting their source");
                 input_player_source_set(rebind_target_source, _player_index);
             }
         }
@@ -109,7 +109,7 @@ function input_binding_scan_tick()
             
             if (rebind_state == 1) //Waiting for the player to release all buttons
             {
-                if (!any_input(all))
+                if (!any_input(rebind_target_source))
                 {
                     __input_trace("Now scanning for a new binding from player ", _player_index);
                     rebind_state = 2;

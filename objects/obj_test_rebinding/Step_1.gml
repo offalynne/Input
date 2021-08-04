@@ -1,6 +1,8 @@
 input_tick();
 input_hotswap_tick();
 
+if (keyboard_check_pressed(vk_escape) || input_gamepad_check_pressed(input_player_gamepad_get(), gp_start)) rebinding = false;
+
 if (rebinding)
 {
     var _binding = input_binding_scan_tick(rebinding_source);

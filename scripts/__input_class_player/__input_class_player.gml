@@ -59,7 +59,12 @@ function __input_class_player() constructor
     
     static tick = function()
     {
-        if (!rebind_this_frame && (rebind_state < 0)) rebind_state = 0;
+        if (!rebind_this_frame)
+        {
+            if (rebind_state > 0) __input_trace("Binding scan failed: input_binding_scan_tick() not called last frame");
+            rebind_state = 0;
+        }
+        
         rebind_this_frame = false;
         
         //Clear the momentary state for all verbs
