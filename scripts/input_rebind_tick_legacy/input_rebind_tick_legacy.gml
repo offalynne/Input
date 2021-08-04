@@ -9,7 +9,7 @@ enum INPUT_REBIND_EVENT
     SUCCESS  =  1,
 }
 
-function input_rebind_tick_legacy(_verb, _player_index = 0, _alternate = 0)
+function input_rebind_tick_legacy(_in_verb, _player_index = 0, _alternate = 0)
 {
     #region Check input arguments
     
@@ -57,9 +57,9 @@ function input_rebind_tick_legacy(_verb, _player_index = 0, _alternate = 0)
             rebind_state                = 1;
             rebind_source               = source;
             rebind_gamepad              = gamepad;
-            rebind_verb                 = _verb;
+            rebind_verb                 = _in_verb;
             rebind_alternate            = _alternate;
-            rebind_backup_val           = input_binding_get(_verb, source, _player_index, _alternate);
+            rebind_backup_val           = input_binding_get(_in_verb, source, _player_index, _alternate);
             rebind_backup_collision_ref = undefined;
             rebind_backup_collision_val = undefined;
             
