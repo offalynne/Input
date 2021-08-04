@@ -106,6 +106,7 @@
     {"id":{"name":"__input_class_binding","path":"scripts/__input_class_binding/__input_class_binding.yy",},"order":4,},
     {"id":{"name":"__input_class_cursor","path":"scripts/__input_class_cursor/__input_class_cursor.yy",},"order":5,},
     {"id":{"name":"obj_test_safe_rebinding","path":"objects/obj_test_safe_rebinding/obj_test_safe_rebinding.yy",},"order":10,},
+    {"id":{"name":"obj_test_set_default_bindings_twice","path":"objects/obj_test_set_default_bindings_twice/obj_test_set_default_bindings_twice.yy",},"order":11,},
     {"id":{"name":"__input_class_gamepad","path":"scripts/__input_class_gamepad/__input_class_gamepad.yy",},"order":6,},
     {"id":{"name":"__input_class_player","path":"scripts/__input_class_player/__input_class_player.yy",},"order":7,},
     {"id":{"name":"__input_class_verb","path":"scripts/__input_class_verb/__input_class_verb.yy",},"order":8,},
