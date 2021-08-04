@@ -61,17 +61,6 @@ DATA_SOURCES = {
 
             },
 
-            "Chromium blocklist (vid)": {
-
-                "source": "https://raw.githubusercontent.com/chromium/chromium/master/device/gamepad/gamepad_blocklist.cc",
-                "header": "linux,vid",
-                "trim before": "}  // namespace",
-                "trim after": "namespace {",
-                "match replace": "constexpr uint16_t k(.*) = (.*);",
-                "match id": "(/s)*k(.*),"
-
-            },
-
             "Input blocklist": {
 
                 "source": "https://gist.githubusercontent.com/offalynne/07f78774e3d9ff00fc79200951ac1883/raw",
