@@ -1,4 +1,4 @@
-/// @param [source]
+/// @param source
 /// @param [playerIndex]
 
 enum INPUT_BINDING_SCAN_EVENT
@@ -6,7 +6,7 @@ enum INPUT_BINDING_SCAN_EVENT
     SUCCESS_THIS_FRAME          = -1,  //input_binding_scan_tick() has been called twice this frame for this player, and the first execution succeeded
     ERROR_THIS_FRAME            = -2,  //input_binding_scan_tick() has been called twice this frame for this player, and the first execution failed due to an error
     SOURCE_INVALID              = -10, //Player source is not rebindable (is INPUT_SOURCE.NONE)
-    SOURCE_CHANGED              = -11, //Player source changed
+    //SOURCE_CHANGED              = -11, //Player source changed - No longer used 2021-08-04
     GAMEPAD_CHANGED             = -12, //Gamepad index changed
     GAMEPAD_INVALID             = -13, //Player gamepad is invalid (is INPUT_NO_GAMEPAD)
     BINDING_DOESNT_MATCH_SOURCE = -14, //The new binding doesn't match the source that was targetted for rebinding
@@ -16,8 +16,10 @@ enum INPUT_BINDING_SCAN_EVENT
 
 function input_binding_scan_tick()
 {
-    var _filter_source = (argument_count > 0)? argument[0] : undefined;
-    var _player_index  = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
+    var _source       = argument[0];
+    var _player_index = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
+    
+    if (_source == undefined) __input_error("Binding source must be specified");
     
     #region Check input arguments
     
@@ -52,19 +54,16 @@ function input_binding_scan_tick()
         {
             rebind_state         = 1;
             rebind_gamepad       = gamepad;
-            rebind_filter_source = _filter_source;
+            rebind_target_source = _source;
             rebind_start_time    = current_time;
             
-            if (_filter_source == undefined)
-            {
-                rebind_target_source = source;
-            }
-            else
-            {
-                rebind_target_source = _filter_source;
-            }
+            __input_trace("Binding scan started for player ", _player_index, " (target source=", input_source_get_name(rebind_target_source), ", gamepad=", gamepad, ")");
             
-            __input_trace("Binding scan started for player ", _player_index, " (filter=", input_source_get_name(rebind_filter_source), ", target source=", input_source_get_name(rebind_target_source), ", gamepad=", gamepad, ")");
+            if (source != rebind_target_source)
+            {
+                __input_trace("Warning! Player not using target source ", rebind_target_source, ", force-setting their source");
+                input_player_source_set(rebind_target_source, _player_index);
+            }
         }
         else
         {
@@ -82,13 +81,6 @@ function input_binding_scan_tick()
                 __input_trace("Binding scan failed: Source for player ", _player_index, " is INPUT_SOURCE.NONE");
                 rebind_state = -1;
                 return INPUT_BINDING_SCAN_EVENT.SOURCE_INVALID;
-            }
-            
-            if ((rebind_filter_source == undefined) && (rebind_target_source != source))
-            {
-                __input_trace("Binding scan failed: Source for player ", _player_index, " changed (from ", input_source_get_name(rebind_target_source), " to ", input_source_get_name(source), ")");
-                rebind_state = -1;
-                return INPUT_BINDING_SCAN_EVENT.SOURCE_CHANGED;
             }
             
             if ((rebind_target_source == INPUT_SOURCE.GAMEPAD) && (rebind_gamepad != gamepad))
@@ -117,25 +109,17 @@ function input_binding_scan_tick()
             
             if (rebind_state == 1) //Waiting for the player to release all buttons
             {
-                if (rebind_filter_source == undefined)
+                if (!any_input(all))
                 {
-                    if (!any_input())
-                    {
-                        __input_trace("Now scanning for a new binding from player ", _player_index);
-                        rebind_state = 2;
-                    }
-                }
-                else
-                {
-                    if (!any_input(all))
-                    {
-                        __input_trace("Now scanning for a new binding from player ", _player_index);
-                        rebind_state = 2;
-                    }
+                    __input_trace("Now scanning for a new binding from player ", _player_index);
+                    rebind_state = 2;
                 }
             }
             else if (rebind_state == 2) //Now grab the first button pressed
             {
+                //Don't scan for bindings if the player is using the wrong source
+                if (rebind_target_source != source) return undefined;
+                
                 var _new_binding = undefined;
                 var _binding_source = INPUT_SOURCE.NONE;
                 var _keyboard_key = __input_keyboard_key();
