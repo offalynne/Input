@@ -198,7 +198,7 @@ function __input_gamepad_set_mapping()
             {
                 var _input_invert   = false;
                 var _input_negative = false;
-    			var _input_positive = false;
+                var _input_positive = false;
                 
                 if (string_char_at(_entry_1, string_length(_entry_1)) == "~")
                 {
@@ -333,34 +333,34 @@ function __input_gamepad_set_mapping()
                 }
                 
                 if (__INPUT_DEBUG) __input_trace(_entry_name, " = ", _raw_type, _entry_1);
-				
-				//Set axis range quirks
-				if ((_raw_type == __INPUT_MAPPING.AXIS) || (raw_type == __INPUT_MAPPING.SPLIT_AXIS))
-				{
-					//Identify directional input
-					var _is_directional = false;
-					switch (_gm_constant) {
-					    case gp_padu:   case gp_padd: 
-						case gp_padl:   case gp_padr:
-						case gp_axislh: case gp_axislv:
-						case gp_axisrh: case gp_axisrv:
-							_is_directional = true;
-						break;
-					}
-				
-					//Linux axis ranges affecting directional input are normalized after remapping
-					if ((os_type == os_linux) && _is_directional)
-					{	
-						if (__INPUT_DEBUG) __input_trace("  (Limiting axis range)");
-						_mapping.limit_range = true;
-					}
-	                else if ((os_type != os_linux) && (!_is_directional))
-					{
-						//Nondirectional input uses full axis range (excepting Linux remappings and XInput)
-						if (__INPUT_DEBUG) __input_trace("  (Extending axis range)");
-						_mapping.extend_range = true;
-					}
-				}
+                
+                //Set axis range quirks
+                if ((_raw_type == __INPUT_MAPPING.AXIS) || (raw_type == __INPUT_MAPPING.SPLIT_AXIS))
+                {
+                    //Identify directional input
+                    var _is_directional = false;
+                    switch (_gm_constant) {
+                        case gp_padu:   case gp_padd: 
+                        case gp_padl:   case gp_padr:
+                        case gp_axislh: case gp_axislv:
+                        case gp_axisrh: case gp_axisrv:
+                            _is_directional = true;
+                        break;
+                    }
+                
+                    //Linux axis ranges affecting directional input are normalized after remapping
+                    if ((os_type == os_linux) && _is_directional)
+                    {    
+                        if (__INPUT_DEBUG) __input_trace("  (Limiting axis range)");
+                        _mapping.limit_range = true;
+                    }
+                    else if ((os_type != os_linux) && (!_is_directional))
+                    {
+                        //Nondirectional input uses full axis range (excepting Linux remappings and XInput)
+                        if (__INPUT_DEBUG) __input_trace("  (Extending axis range)");
+                        _mapping.extend_range = true;
+                    }
+                }
             }
             
             ++_i;
