@@ -357,7 +357,8 @@ function __input_gamepad_set_mapping()
                 {
                     //Identify directional input
                     var _is_directional = false;
-                    switch (_gm_constant) {
+                    switch (_gm_constant)
+                    {
                         case gp_padu:   case gp_padd: 
                         case gp_padl:   case gp_padr:
                         case gp_axislh: case gp_axislv:
