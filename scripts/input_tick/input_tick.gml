@@ -110,7 +110,7 @@ function input_tick()
         {
             //Release all
             var _i = 8;
-            repeat(0xFF - 8)
+            repeat(247)
             {
                 keyboard_key_release(_i);
                 _i++;
