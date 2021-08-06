@@ -57,7 +57,7 @@ function input_tick()
     
     #region Unstick keyboard
 
-    if (keyboard_check(vk_anykey))
+    if ((!__INPUT_ON_CONSOLE) && (keyboard_check(vk_anykey)))
     {
         if (os_type == os_windows)
         {
@@ -100,6 +100,20 @@ function input_tick()
             else if (keyboard_check_released(vk_meta2) && keyboard_check(vk_meta1))
             {
                 keyboard_key_release(vk_meta1);
+            }
+        }
+        
+        //Meta release sticks every key held during presss
+        //This is "the nuclear option", but the problem is severe and io_clear does not fix it
+        if ((__INPUT_ON_WEB && __INPUT_ON_APPLE)
+        && (keyboard_check_released(92) || keyboard_check_released(93)))
+        {
+            //Release all
+            var _i = 8;
+            repeat(0xFF - 8)
+            {
+                keyboard_key_release(_i);
+                _i++;
             }
         }
     }

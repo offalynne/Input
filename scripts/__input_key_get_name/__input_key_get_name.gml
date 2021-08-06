@@ -29,18 +29,19 @@ function __input_key_get_name(_key)
             case vk_enter:     return "enter";     break;      
         }
         
-        //Mac + Web exceptions
-        if (__INPUT_ON_WEB && (os_type == os_macosx))
+        //Appple Web exceptions
+        if (__INPUT_ON_APPLE && __INPUT_ON_WEB)
         {
             switch(_key)
             {
-                case vk_meta2: return "left meta";  break;
-                case 93:       return "right meta"; break;                
+                case 12: return "num lock";   break;
+                case 92: return "left meta";  break;
+                case 93: return "right meta"; break;
             }
         }
 
         //Desktop platform non-UTF8 keycodes
-        if (__INPUT_ON_DESKTOP) 
+        if (__INPUT_ON_DESKTOP || __INPUT_ON_WEB) 
         {
             //Common function row (F1 - F10)
             if ((_key >= vk_f1) && (_key <= vk_f10))
@@ -60,11 +61,23 @@ function __input_key_get_name(_key)
                 case 221: return "]";  break;
             
                 //Control
-                case  20: return "caps lock";   break;
                 case  93: return "menu";        break;
                 case 144: return "num lock";    break;
                 case 145: return "scroll lock"; break;
-                        
+                                                   
+                //Command pairs
+                case vk_ralt: return "right alt"; break;
+                case vk_lalt: return "left alt";  break;
+                case vk_alt:  return "alt";       break;
+
+                case vk_rshift: return "right shift"; break;
+                case vk_lshift: return "left shift";  break;
+                case vk_shift:  return "shift";       break;
+            
+                case vk_rcontrol: return "right ctrl"; break;
+                case vk_lcontrol: return "left ctrl";  break;
+                case vk_control:  return "ctrl";       break;
+                
                 //Numpad
                 case vk_numpad0:  return "numpad 0"; break;
                 case vk_numpad1:  return "numpad 1"; break;
@@ -80,21 +93,10 @@ function __input_key_get_name(_key)
                 case vk_decimal:  return "numpad ."; break;
                 case vk_multiply: return "numpad *"; break;
                 case vk_add:      return "numpad +"; break;
-                case vk_subtract: return "numpad -"; break;
-            
-                //Command keys
-                case vk_rshift: return "right shift"; break;
-                case vk_lshift: return "left shift";  break;
-                case vk_shift:  return "shift";       break;
-            
-                case vk_rcontrol: return "right ctrl"; break;
-                case vk_lcontrol: return "left ctrl";  break;
-                case vk_control:  return "ctrl";       break;
-            
-                case vk_ralt: return "right alt"; break;
-                case vk_lalt: return "left alt";  break;
-                case vk_alt:  return "alt";       break;
-            
+                case vk_subtract: return "numpad -"; break;            
+
+                //Misc.
+                case vk_capslock:    return "caps lock";    break;
                 case vk_home:        return "home";         break;
                 case vk_end:         return "end";          break;
                 case vk_insert:      return "insert";       break;

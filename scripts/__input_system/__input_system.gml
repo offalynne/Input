@@ -3,14 +3,16 @@
 #macro __INPUT_DEBUG                     false
 #macro __INPUT_ON_CONSOLE                ((os_type == os_switch) || (os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
 #macro __INPUT_ON_DESKTOP                ((os_type == os_windows) || (os_type == os_macosx) || (os_type == os_linux))
+#macro __INPUT_ON_APPLE                  ((os_type == os_macosx) || (os_type == os_ios) || (os_type == os_tvos))
 #macro __INPUT_ON_MOBILE                 ((os_type == os_ios) || (os_type == os_android))
 #macro __INPUT_ON_WEB                    (os_browser != browser_not_a_browser)
 
 //Extra constants
-#macro gp_guide  32789
-#macro gp_misc1  32790
-#macro vk_meta1  91
-#macro vk_meta2  92
+#macro gp_guide    32789
+#macro gp_misc1    32790
+#macro vk_meta1    91
+#macro vk_meta2    92
+#macro vk_capslock 20
 
 // gp_axislh     = 32785             32769 = gp_face1
 // gp_axislv     = 32786             32770 = gp_face2
@@ -211,68 +213,65 @@ else
 }
 
 //Set up ignored keys as directed
-if (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL == 1)
+switch (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL)
 {
-    input_ignore_key_add(vk_alt);
-    input_ignore_key_add(vk_ralt);
-    input_ignore_key_add(vk_lalt);
-    input_ignore_key_add(vk_meta1);
-    input_ignore_key_add(vk_meta2);
-    if (__INPUT_ON_WEB)
-    {
-        input_ignore_key_add(vk_f11);
-        if (os_type == os_macosx) input_ignore_key_add(20); //Caps lock
-    }
-}
-else if (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL == 2)
-{
-    input_ignore_key_add(vk_alt);
-    input_ignore_key_add(vk_ralt);
-    input_ignore_key_add(vk_lalt);
-    input_ignore_key_add(vk_meta1);
-    input_ignore_key_add(vk_meta2);
-    
-    if (__INPUT_ON_WEB)
-    {
-        input_ignore_key_add(vk_f11);
-        if (os_type == os_macosx) input_ignore_key_add(20); //Caps lock
-    }
-    
-    input_ignore_key_add(144); //num lock
-    input_ignore_key_add(145); //scroll lock
-    
-    if (os_type == os_windows)
-    {
-        input_ignore_key_add(0x15); //IME key
-        input_ignore_key_add(0x16); //IME key
-        input_ignore_key_add(0x17); //IME key
-        input_ignore_key_add(0x18); //IME key
-        input_ignore_key_add(0x19); //IME key
-        input_ignore_key_add(0x1A); //IME key
-        input_ignore_key_add(0xE5); //IME key
+    case 2:
+        input_ignore_key_add(144); //num lock
+        input_ignore_key_add(145); //scroll lock
+        
+        if (os_type == os_windows || __INPUT_ON_WEB)
+        {
+                input_ignore_key_add(0x15); //IME key
+                input_ignore_key_add(0x16); //IME key
+                input_ignore_key_add(0x17); //IME key
+                input_ignore_key_add(0x18); //IME key
+                input_ignore_key_add(0x19); //IME key
+                input_ignore_key_add(0x1A); //IME key
+                input_ignore_key_add(0xE5); //IME key
 
-        input_ignore_key_add(0xA6); //Browser key
-        input_ignore_key_add(0xA7); //Browser key
-        input_ignore_key_add(0xA8); //Browser key
-        input_ignore_key_add(0xA9); //Browser key
-        input_ignore_key_add(0xAA); //Browser key
-        input_ignore_key_add(0xAB); //Browser key
-        input_ignore_key_add(0xAC); //Browser key
+                input_ignore_key_add(0xA6); //Browser key
+                input_ignore_key_add(0xA7); //Browser key
+                input_ignore_key_add(0xA8); //Browser key
+                input_ignore_key_add(0xA9); //Browser key
+                input_ignore_key_add(0xAA); //Browser key
+                input_ignore_key_add(0xAB); //Browser key
+                input_ignore_key_add(0xAC); //Browser key
 
-        input_ignore_key_add(0xAD); //Media key
-        input_ignore_key_add(0xAE); //Media key
-        input_ignore_key_add(0xAF); //Media key
-        input_ignore_key_add(0xB0); //Media key
-        input_ignore_key_add(0xB1); //Media key
-        input_ignore_key_add(0xB2); //Media key
-        input_ignore_key_add(0xB3); //Media key
-        input_ignore_key_add(0xB4); //Media key
-        input_ignore_key_add(0xB5); //Media key
-        input_ignore_key_add(0xB6); //Media key
-        input_ignore_key_add(0xB7); //Media key
-
+                input_ignore_key_add(0xAD); //Media key
+                input_ignore_key_add(0xAE); //Media key
+                input_ignore_key_add(0xAF); //Media key
+                input_ignore_key_add(0xB0); //Media key
+                input_ignore_key_add(0xB1); //Media key
+                input_ignore_key_add(0xB2); //Media key
+                input_ignore_key_add(0xB3); //Media key
+                input_ignore_key_add(0xB4); //Media key
+                input_ignore_key_add(0xB5); //Media key
+                input_ignore_key_add(0xB6); //Media key
+                input_ignore_key_add(0xB7); //Media key
+        }
+    
+    case 1:
+        input_ignore_key_add(vk_alt);
+        input_ignore_key_add(vk_ralt);
+        input_ignore_key_add(vk_lalt);
+        input_ignore_key_add(vk_meta1);
+        input_ignore_key_add(vk_meta2);
+        
+        if (__INPUT_ON_WEB)
+        {
+            if __INPUT_ON_APPLE
+            {
+                input_ignore_key_add(vk_f10); //Fullscreen
+                input_ignore_key_add(vk_capslock);
+            }
+            else
+            {
+                input_ignore_key_add(vk_f11); //Fullscreen
+            }
+        }
+        
         input_ignore_key_add(0xFF); //Vendor key
-    }
+    break;       
 }
 
 //These are globally scoped rather than methods because otherwise they'd get serialised by input_bindings_write()
