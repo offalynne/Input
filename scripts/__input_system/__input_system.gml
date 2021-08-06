@@ -1,8 +1,8 @@
 #macro __INPUT_VERSION                   "3.3.3"
 #macro __INPUT_DATE                      "2020-04-14"
 #macro __INPUT_DEBUG                     false
-#macro __INPUT_ON_CONSOLE                ((os_type == os_switch) || (os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
-#macro __INPUT_ON_DESKTOP                ((os_type == os_windows) || (os_type == os_macosx) || (os_type == os_linux))
+#macro __INPUT_ON_CONSOLE                ((os_type == os_switch) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs) || (os_type == os_ps4) || (os_type == os_ps5))
+#macro __INPUT_ON_DESKTOP                ((os_type == os_macosx) || (os_type == os_windows) || (os_type == os_linux))
 #macro __INPUT_ON_APPLE                  ((os_type == os_macosx) || (os_type == os_ios) || (os_type == os_tvos))
 #macro __INPUT_ON_MOBILE                 ((os_type == os_ios) || (os_type == os_android))
 #macro __INPUT_ON_WEB                    (os_browser != browser_not_a_browser)
@@ -249,13 +249,18 @@ switch (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL)
                 input_ignore_key_add(0xB6); //Media key
                 input_ignore_key_add(0xB7); //Media key
         }
-    
+        
     case 1:
         input_ignore_key_add(vk_alt);
         input_ignore_key_add(vk_ralt);
         input_ignore_key_add(vk_lalt);
         input_ignore_key_add(vk_meta1);
         input_ignore_key_add(vk_meta2);
+        
+        input_ignore_key_add(0xFF); //Vendor key
+        
+        //Screenshot
+        if ((os_type == os_ios) || (os_type == os_tvos)) input_ignore_key_add(vk_f12 + 1);
         
         if (__INPUT_ON_WEB)
         {
@@ -268,9 +273,7 @@ switch (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL)
             {
                 input_ignore_key_add(vk_f11); //Fullscreen
             }
-        }
-        
-        input_ignore_key_add(0xFF); //Vendor key
+        }        
     break;       
 }
 
@@ -324,7 +327,7 @@ function __input_gamepad_guid_parse(_guid, _legacy, _suppress)
     {
         //Check to see if this GUID fits our expected pattern:
         //
-        //  ****0000****0000****0000****0000
+        //  ****0000****0000****0000****????
         //  ^       ^       ^       ^
         //  Driver  Vendor  Product Revision
         //
@@ -332,7 +335,6 @@ function __input_gamepad_guid_parse(_guid, _legacy, _suppress)
         if ((string_copy(_guid,  5, 4) != "0000")
         ||  (string_copy(_guid, 13, 4) != "0000")
         ||  (string_copy(_guid, 21, 4) != "0000")
-        ||  (string_copy(_guid, 29, 4) != "0000"))
         {
             if (!_suppress) __input_trace("Warning! GUID \"", _guid, "\" does not fit expected pattern. VID+PID cannot be extracted");
             return { vendor : "", product : "" };
