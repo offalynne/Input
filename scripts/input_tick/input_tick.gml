@@ -103,7 +103,7 @@ function input_tick()
             }
         }
         
-        //Meta release sticks every key held during presss
+        //Meta release sticks every key pressed during hold
         //This is "the nuclear option", but the problem is severe and io_clear does not fix it
         if ((__INPUT_ON_WEB && __INPUT_ON_APPLE)
         && (keyboard_check_released(92) || keyboard_check_released(93)))
