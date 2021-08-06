@@ -260,7 +260,7 @@ switch(INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL)
         input_ignore_key_add(0xFF); //Vendor key
         
         //Screenshot
-        if ((os_type == os_ios) || (os_type == os_tvos)) input_ignore_key_add(vk_f12 + 1);
+        if ((os_type == os_ios) || (os_type == os_tvos)) input_ignore_key_add(124);
         
         if (__INPUT_ON_WEB)
         {
