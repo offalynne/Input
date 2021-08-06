@@ -1,10 +1,10 @@
-#macro __INPUT_VERSION                   "3.3.3"
-#macro __INPUT_DATE                      "2020-04-14"
-#macro __INPUT_DEBUG                     false
-#macro __INPUT_ON_CONSOLE                ((os_type == os_switch) || (os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
-#macro __INPUT_ON_DESKTOP                ((os_type == os_windows) || (os_type == os_macosx) || (os_type == os_linux))
-#macro __INPUT_ON_MOBILE                 ((os_type == os_ios) || (os_type == os_android))
-#macro __INPUT_ON_WEB                    (os_browser != browser_not_a_browser)
+#macro __INPUT_VERSION     "3.3.3"
+#macro __INPUT_DATE        "2020-04-14"
+#macro __INPUT_DEBUG       false
+#macro __INPUT_ON_CONSOLE  ((os_type == os_switch) || (os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
+#macro __INPUT_ON_DESKTOP  ((os_type == os_windows) || (os_type == os_macosx) || (os_type == os_linux))
+#macro __INPUT_ON_MOBILE   ((os_type == os_ios) || (os_type == os_android))
+#macro __INPUT_ON_WEB      (os_browser != browser_not_a_browser)
 
 //Extra constants
 #macro gp_guide  32789
@@ -157,57 +157,78 @@ global.__input_sdl2_look_up_table = {
 if (INPUT_SDL2_ALLOW_GUIDE) global.__input_sdl2_look_up_table.guide = gp_guide;
 if (INPUT_SDL2_ALLOW_MISC1) global.__input_sdl2_look_up_table.misc1 = gp_misc1;
 
-//Load the SDL2 database
-if (file_exists(INPUT_SDL2_DATABASE_PATH))
+if (__INPUT_ON_CONSOLE || __INPUT_ON_WEB)
 {
-    __input_load_sdl2_from_file(INPUT_SDL2_DATABASE_PATH);
+    __input_trace("Skipping loading SDL database");
 }
 else
 {
-    __input_trace("Warning! \"", INPUT_SDL2_DATABASE_PATH, "\" not found in Included Files");
-}
-
-//Try to load an external SDL2 database if possible
-if (INPUT_SDL2_ALLOW_EXTERNAL)
-{
-    var _external_string = environment_get_variable("SDL_GAMECONTROLLERCONFIG");
-    if (is_string(_external_string) && (_external_string != ""))
+    //Load the SDL2 database
+    if (file_exists(INPUT_SDL2_DATABASE_PATH))
     {
-        __input_trace("External SDL2 string found");
-        
-        try
+        __input_load_sdl2_from_file(INPUT_SDL2_DATABASE_PATH);
+    }
+    else
+    {
+        __input_trace("Warning! \"", INPUT_SDL2_DATABASE_PATH, "\" not found in Included Files");
+    }
+    
+    //Try to load an external SDL2 database if possible
+    if (INPUT_SDL2_ALLOW_EXTERNAL)
+    {
+        var _external_string = environment_get_variable("SDL_GAMECONTROLLERCONFIG");
+        if (is_string(_external_string) && (_external_string != ""))
         {
-            __input_load_sdl2_from_string(_external_string);
-        }
-        catch(_error)
-        {
-            __input_trace_loud("Error!\n\n%SDL_GAMECONTROLLERCONFIG% could not be parsed.\nYou may see unexpected behaviour when using gamepads.\n\nTo remove this error, clear %SDL_GAMECONTROLLERCONFIG%\n\nInput ", __INPUT_VERSION, "   @jujuadams and @offalynne ", __INPUT_DATE);
+            __input_trace("External SDL2 string found");
+            
+            try
+            {
+                __input_load_sdl2_from_string(_external_string);
+            }
+            catch(_error)
+            {
+                __input_trace_loud("Error!\n\n%SDL_GAMECONTROLLERCONFIG% could not be parsed.\nYou may see unexpected behaviour when using gamepads.\n\nTo remove this error, clear %SDL_GAMECONTROLLERCONFIG%\n\nInput ", __INPUT_VERSION, "   @jujuadams and @offalynne ", __INPUT_DATE);
+            }
         }
     }
 }
 
-//Parse the controller type database
-global.__input_raw_type_dictionary = { none : "XBox360Controller" };
-
-if (file_exists(INPUT_CONTROLLER_TYPE_PATH))
+if (__INPUT_ON_CONSOLE)
 {
-    __input_load_type_csv(INPUT_CONTROLLER_TYPE_PATH);
+    __input_trace("Skipping loading controller type database");
 }
 else
 {
-    __input_trace("Warning! \"", INPUT_CONTROLLER_TYPE_PATH, "\" not found in Included Files");
+    //Parse the controller type database
+    global.__input_raw_type_dictionary = { none : "XBox360Controller" };
+
+    if (file_exists(INPUT_CONTROLLER_TYPE_PATH))
+    {
+        __input_load_type_csv(INPUT_CONTROLLER_TYPE_PATH);
+    }
+    else
+    {
+        __input_trace("Warning! \"", INPUT_CONTROLLER_TYPE_PATH, "\" not found in Included Files");
+    }
 }
 
-//Parse the controller type database
-global.__input_blacklist_dictionary = {};
-
-if (file_exists(INPUT_BLACKLIST_PATH))
+if (__INPUT_ON_CONSOLE || __INPUT_ON_WEB)
 {
-    __input_load_blacklist_csv(INPUT_BLACKLIST_PATH);
+    __input_trace("Skipping loading controller blacklist database");
 }
 else
 {
-    __input_trace("Warning! \"", INPUT_BLACKLIST_PATH, "\" not found in Included Files");
+    //Parse the controller type database
+    global.__input_blacklist_dictionary = {};
+    
+    if (file_exists(INPUT_BLACKLIST_PATH))
+    {
+        __input_load_blacklist_csv(INPUT_BLACKLIST_PATH);
+    }
+    else
+    {
+        __input_trace("Warning! \"", INPUT_BLACKLIST_PATH, "\" not found in Included Files");
+    }
 }
 
 //Set up ignored keys as directed
