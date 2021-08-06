@@ -105,6 +105,7 @@ function __input_gamepad_set_vid_pid()
         }
         else
         {
+            description = gamepad_get_description(index);
             vendor  = "";
             product = "";
             xinput  = undefined;

@@ -49,44 +49,44 @@ function __input_gamepad_set_mapping()
             if (INPUT_SWITCH_HORIZONTAL_HOLDTYPE)
             {
                 //Single Joy-Cons in horizontal report L/R/ZL/ZR as shoulder buttons even though they rest in the player's palm. No idea why, but we disallow that
-                set_mapping(gp_shoulderl,  gp_shoulderl, __INPUT_MAPPING.BUTTON, "leftshoulder");
-                set_mapping(gp_shoulderr,  gp_shoulderr, __INPUT_MAPPING.BUTTON, "rightshoulder");
+                set_mapping(gp_shoulderl, 6, __INPUT_MAPPING.BUTTON, "leftshoulder");
+                set_mapping(gp_shoulderr, 7, __INPUT_MAPPING.BUTTON, "rightshoulder");
             }
             else
             {
                 //SL/SR are still technically active in vertical mode too but that's silly so we ignore them
-                set_mapping(gp_shoulderl,  gp_shoulderl,  __INPUT_MAPPING.BUTTON, "leftshoulder");
-                set_mapping(gp_shoulderlb, gp_shoulderlb, __INPUT_MAPPING.BUTTON, "lefttrigger");
+                set_mapping(gp_shoulderl,  8, __INPUT_MAPPING.BUTTON, "leftshoulder");
+                set_mapping(gp_shoulderlb, 9, __INPUT_MAPPING.BUTTON, "lefttrigger");
             }
         }
         else
         {
             //Even in other gamepad modes Switch triggers are digital rather than analogue so we treat those as strict buttons
-            set_mapping(gp_shoulderl,  gp_shoulderl,  __INPUT_MAPPING.BUTTON, "leftshoulder");
-            set_mapping(gp_shoulderr,  gp_shoulderr,  __INPUT_MAPPING.BUTTON, "rightshoulder");
-            set_mapping(gp_shoulderlb, gp_shoulderlb, __INPUT_MAPPING.BUTTON, "lefttrigger");
-            set_mapping(gp_shoulderrb, gp_shoulderrb, __INPUT_MAPPING.BUTTON, "righttrigger");
+            set_mapping(gp_shoulderl,  6, __INPUT_MAPPING.BUTTON, "leftshoulder");
+            set_mapping(gp_shoulderr,  7, __INPUT_MAPPING.BUTTON, "rightshoulder");
+            set_mapping(gp_shoulderlb, 8, __INPUT_MAPPING.BUTTON, "lefttrigger");
+            set_mapping(gp_shoulderrb, 9, __INPUT_MAPPING.BUTTON, "righttrigger");
         }
         
-        set_mapping(gp_face1, gp_face1, __INPUT_MAPPING.BUTTON, "a");
-        set_mapping(gp_face2, gp_face2, __INPUT_MAPPING.BUTTON, "b");
-        set_mapping(gp_face3, gp_face3, __INPUT_MAPPING.BUTTON, "x");
-        set_mapping(gp_face4, gp_face4, __INPUT_MAPPING.BUTTON, "y");
+        set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
+        set_mapping(gp_face2, 0, __INPUT_MAPPING.BUTTON, "b");
+        set_mapping(gp_face3, 3, __INPUT_MAPPING.BUTTON, "x");
+        set_mapping(gp_face4, 2, __INPUT_MAPPING.BUTTON, "y");
                                   
-        set_mapping(gp_start, gp_start, __INPUT_MAPPING.BUTTON, "start");
+        set_mapping(gp_start, 10, __INPUT_MAPPING.BUTTON, "start");
         
         //No select button exists for single Joy-Cons so ignore this entirely
         if ((raw_type != "SwitchJoyConLeft") && (raw_type != "SwitchJoyConRight"))
         {
-            set_mapping(gp_select, gp_select, __INPUT_MAPPING.BUTTON, "back");
+            set_mapping(gp_select, 11, __INPUT_MAPPING.BUTTON, "back");
         }
         
-        set_mapping(gp_axislh, gp_axislh, __INPUT_MAPPING.AXIS,   "leftx");
-        set_mapping(gp_axislv, gp_axislv, __INPUT_MAPPING.AXIS,   "lefty");
-        set_mapping(gp_stickl, gp_stickl, __INPUT_MAPPING.BUTTON, "leftstick");
-        set_mapping(gp_axisrh, gp_axisrh, __INPUT_MAPPING.AXIS,   "rightx");
-        set_mapping(gp_axisrv, gp_axisrv, __INPUT_MAPPING.AXIS,   "righty");
-        set_mapping(gp_stickr, gp_stickr, __INPUT_MAPPING.BUTTON, "rightstick");
+        set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS,   "leftx");
+        set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS,   "lefty");
+        set_mapping(gp_stickl, 4, __INPUT_MAPPING.BUTTON, "leftstick");
+        set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS,   "rightx");
+        set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS,   "righty");
+        set_mapping(gp_stickr, 5, __INPUT_MAPPING.BUTTON, "rightstick");
         
         exit;
     }
