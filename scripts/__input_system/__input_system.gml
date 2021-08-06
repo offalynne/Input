@@ -334,7 +334,7 @@ function __input_gamepad_guid_parse(_guid, _legacy, _suppress)
         //If not, return an invalid VID+PID
         if ((string_copy(_guid,  5, 4) != "0000")
         ||  (string_copy(_guid, 13, 4) != "0000")
-        ||  (string_copy(_guid, 21, 4) != "0000")
+        ||  (string_copy(_guid, 21, 4) != "0000"))
         {
             if (!_suppress) __input_trace("Warning! GUID \"", _guid, "\" does not fit expected pattern. VID+PID cannot be extracted");
             return { vendor : "", product : "" };
