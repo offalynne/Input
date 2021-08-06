@@ -213,7 +213,7 @@ else
 }
 
 //Set up ignored keys as directed
-switch (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL)
+switch(INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL)
 {
     case 2:
         input_ignore_key_add(144); //num lock
