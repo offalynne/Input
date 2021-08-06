@@ -144,7 +144,7 @@ function __input_gamepad_set_type()
                     //Catch all remaining PlayStation gamepads as PSX
                     raw_type = "CommunityPSX";
                 }
-                else if (string_count("for switch", _desc) || string_count("for switch", _desc) || string_count("switch controller", _desc) || string_count("lic pro controller", _desc))
+                else if (string_count("for switch", _desc) || string_count("for nintendo switch", _desc) || string_count("switch controller", _desc) || string_count("lic pro controller", _desc))
                 {
                     raw_type = "CommunityLikeSwitch";
                 }
@@ -152,7 +152,7 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunityGameCube";
                 }
-                else if (string_count("xbox one", _desc))
+                else if (string_count("xbox elite", _desc) || string_count("xbox wireless", _desc) || string_count("xbox one", _desc))
                 {
                     raw_type = "CommunityXBoxOne";
                 }
