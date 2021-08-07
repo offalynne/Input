@@ -91,6 +91,20 @@ function __input_gamepad_set_mapping()
         exit;
     }
     
+    if (blacklisted)
+    {
+        //Apply a blank mapping
+        var _a = variable_struct_get_names(global.__input_sdl2_look_up_table);
+        var _i = 0;
+        repeat(array_length(_a))
+        {
+            set_mapping(variable_struct_get(global.__input_sdl2_look_up_table, _a[_i]), 0, undefined, _a[_i]);
+            _i++;
+        }
+    
+        exit;
+    }
+    
     if (__INPUT_ON_WEB)
     {
         set_mapping(gp_face1, 0, __INPUT_MAPPING.BUTTON, "a");
