@@ -57,52 +57,8 @@ function input_tick()
     
     #region Unstick keyboard
 
-    if ((!__INPUT_ON_CONSOLE) && (keyboard_check(vk_anykey)))
+    if ((!__INPUT_ON_CONSOLE) && keyboard_check(vk_anykey))
     {
-        if (os_type == os_windows)
-        {
-            //Unstick Alt Space
-            if (keyboard_check(vk_alt) && keyboard_check_pressed(vk_space))
-            {
-                keyboard_key_release(vk_alt);
-                keyboard_key_release(vk_space);
-                keyboard_key_release(vk_lalt);
-                keyboard_key_release(vk_ralt);
-            }
-        }
-        else if (os_type == os_macosx)
-        {
-            //Unstick control key double-up
-            if (keyboard_check_released(vk_control))
-            {
-                keyboard_key_release(vk_lcontrol);
-                keyboard_key_release(vk_rcontrol);
-            }
-            
-            if (keyboard_check_released(vk_shift))
-            {
-                keyboard_key_release(vk_lshift);
-                keyboard_key_release(vk_rshift);
-            }
-            
-            if (keyboard_check_released(vk_alt))
-            {
-                keyboard_key_release(vk_lalt);
-                keyboard_key_release(vk_ralt);
-            }
-            
-            //Unstick Meta
-            //Weird, but seems to be the best way to unstick without spoiling normal operation
-            if (keyboard_check_released(vk_meta1))
-            {
-                keyboard_key_release(vk_meta2);
-            }
-            else if (keyboard_check_released(vk_meta2) && keyboard_check(vk_meta1))
-            {
-                keyboard_key_release(vk_meta1);
-            }
-        }
-        
         //Meta release sticks every key pressed during hold
         //This is "the nuclear option", but the problem is severe and io_clear does not fix it
         if ((__INPUT_ON_WEB && __INPUT_ON_APPLE)
@@ -114,6 +70,54 @@ function input_tick()
             {
                 keyboard_key_release(_i);
                 _i++;
+            }
+        }
+        else if (__INPUT_ON_DESKTOP)
+        {
+            switch (os_type)
+            {
+                case os_windows:
+                    //Unstick Alt Space
+                    if (keyboard_check(vk_alt) && keyboard_check_pressed(vk_space))
+                    {
+                        keyboard_key_release(vk_alt);
+                        keyboard_key_release(vk_space);
+                        keyboard_key_release(vk_lalt);
+                        keyboard_key_release(vk_ralt);
+                    }
+                break;
+            
+                case os_macosx:
+                    //Unstick control key double-up
+                    if (keyboard_check_released(vk_control))
+                    {
+                        keyboard_key_release(vk_lcontrol);
+                        keyboard_key_release(vk_rcontrol);
+                    }
+            
+                    if (keyboard_check_released(vk_shift))
+                    {
+                        keyboard_key_release(vk_lshift);
+                        keyboard_key_release(vk_rshift);
+                    }
+            
+                    if (keyboard_check_released(vk_alt))
+                    {
+                        keyboard_key_release(vk_lalt);
+                        keyboard_key_release(vk_ralt);
+                    }
+            
+                    //Unstick Meta
+                    //Weird, but seems to be the best way to unstick without spoiling normal operation
+                    if (keyboard_check_released(vk_meta1))
+                    {
+                        keyboard_key_release(vk_meta2);
+                    }
+                    else if (keyboard_check_released(vk_meta2) && keyboard_check(vk_meta1))
+                    {
+                        keyboard_key_release(vk_meta1);
+                    }
+                break;
             }
         }
     }

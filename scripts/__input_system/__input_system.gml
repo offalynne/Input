@@ -1,11 +1,13 @@
-#macro __INPUT_VERSION     "3.3.3"
-#macro __INPUT_DATE        "2020-04-14"
-#macro __INPUT_DEBUG       false
-#macro __INPUT_ON_CONSOLE  ((os_type == os_switch) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs) || (os_type == os_ps4) || (os_type == os_ps5))
-#macro __INPUT_ON_DESKTOP  ((os_type == os_macosx) || (os_type == os_windows) || (os_type == os_linux))
-#macro __INPUT_ON_APPLE    ((os_type == os_macosx) || (os_type == os_ios) || (os_type == os_tvos))
-#macro __INPUT_ON_MOBILE   ((os_type == os_ios) || (os_type == os_android))
-#macro __INPUT_ON_WEB      (os_browser != browser_not_a_browser)
+#macro __INPUT_VERSION "3.3.3"
+#macro __INPUT_DATE    "2020-04-14"
+#macro __INPUT_DEBUG   false
+
+#macro __INPUT_ON_CONSOLE   ((os_type == os_switch)  || (os_type == os_xboxone) || (os_type == os_xboxseriesxs) || (os_type == os_ps4) || (os_type == os_ps5))
+#macro __INPUT_ON_DESKTOP   ((os_type == os_macosx)  || (os_type == os_windows) || (os_type == os_linux))
+#macro __INPUT_ON_MOBILE    ((os_type == os_android) || (os_type == os_ios)     || (os_type == os_tvos))
+#macro __INPUT_ON_APPLE     ((os_type == os_macosx)  || (os_type == os_ios)     || (os_type == os_tvos))
+#macro __INPUT_ON_WEB       (os_browser != browser_not_a_browser)
+#macro __INPUT_SDL2_SUPPORT ((!__INPUT_ON_WEB) && (__INPUT_ON_DESKTOP || (os_type == os_android)))
 
 //Extra constants
 #macro gp_guide    32789
@@ -159,13 +161,9 @@ global.__input_sdl2_look_up_table = {
 if (INPUT_SDL2_ALLOW_GUIDE) global.__input_sdl2_look_up_table.guide = gp_guide;
 if (INPUT_SDL2_ALLOW_MISC1) global.__input_sdl2_look_up_table.misc1 = gp_misc1;
 
-if (__INPUT_ON_CONSOLE || __INPUT_ON_WEB)
+//Load the SDL2 database
+if (__INPUT_SDL2_SUPPORT && INPUT_SDL2_REMAPPING)
 {
-    __input_trace("Skipping loading SDL database");
-}
-else
-{
-    //Load the SDL2 database
     if (file_exists(INPUT_SDL2_DATABASE_PATH))
     {
         __input_load_sdl2_from_file(INPUT_SDL2_DATABASE_PATH);
@@ -194,14 +192,15 @@ else
         }
     }
 }
-
-if (__INPUT_ON_CONSOLE)
-{
-    __input_trace("Skipping loading controller type database");
-}
 else
 {
-    //Parse the controller type database
+    __input_trace("Skipping loading SDL database");
+}
+
+//Load the controller type database
+if (__INPUT_SDL2_SUPPORT)
+{
+    //Parse controller type database
     global.__input_raw_type_dictionary = { none : "XBox360Controller" };
 
     if (file_exists(INPUT_CONTROLLER_TYPE_PATH))
@@ -212,6 +211,10 @@ else
     {
         __input_trace("Warning! \"", INPUT_CONTROLLER_TYPE_PATH, "\" not found in Included Files");
     }
+}
+else
+{
+    __input_trace("Skipping loading controller type database");
 }
 
 if (__INPUT_ON_CONSOLE || __INPUT_ON_WEB)
@@ -281,11 +284,11 @@ switch(INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL)
         input_ignore_key_add(0xFF); //Vendor key
         
         //Screenshot
-        if ((os_type == os_ios) || (os_type == os_tvos)) input_ignore_key_add(124);
+        if (__INPUT_ON_MOBILE && __INPUT_ON_APPLE) input_ignore_key_add(124);
         
         if (__INPUT_ON_WEB)
         {
-            if __INPUT_ON_APPLE
+            if (__INPUT_ON_APPLE)
             {
                 input_ignore_key_add(vk_f10); //Fullscreen
                 input_ignore_key_add(vk_capslock);
