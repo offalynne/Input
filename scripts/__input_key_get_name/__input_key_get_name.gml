@@ -29,7 +29,7 @@ function __input_key_get_name(_key)
             case vk_enter:     return "enter";     break;      
         }
         
-        //Appple Web exceptions
+        //Apple Web exceptions
         if (__INPUT_ON_APPLE && __INPUT_ON_WEB)
         {
             switch(_key)
