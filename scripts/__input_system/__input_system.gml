@@ -198,7 +198,7 @@ else
 }
 
 //Load the controller type database
-if (__INPUT_SDL2_SUPPORT)
+if (__INPUT_ON_DESKTOP || (os_type == os_android))
 {
     //Parse controller type database
     global.__input_raw_type_dictionary = { none : "XBox360Controller" };
