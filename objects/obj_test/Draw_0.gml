@@ -99,6 +99,15 @@ _string += "Pause         = " + string(input_value(VERB.PAUSE  )) + "    " + str
 _string += "Recent (all)  = " + string(input_check_press_most_recent()) + "\n";
 _string += "Recent (4dir) = " + string(input_check_press_most_recent([VERB.LEFT, VERB.RIGHT, VERB.UP, VERB.DOWN])) + "\n";
 
+_string += "\n\n";
+
+var _i = 8;
+repeat(255)
+{
+	if (keyboard_check(_i)) _string += string(_i) + "  >" + chr(_i) + "<\n";
+	++_i;
+}
+
 draw_text(500, 10, _string);
 
 draw_text(500, 740, current_time);
