@@ -198,12 +198,12 @@ else
     __input_trace("Skipping loading SDL database");
 }
 
+//Parse controller type database
+global.__input_raw_type_dictionary = { none : "XBox360Controller" };
+
 //Load the controller type database
 if (__INPUT_ON_DESKTOP || (os_type == os_android))
 {
-    //Parse controller type database
-    global.__input_raw_type_dictionary = { none : "XBox360Controller" };
-
     if (file_exists(INPUT_CONTROLLER_TYPE_PATH))
     {
         __input_load_type_csv(INPUT_CONTROLLER_TYPE_PATH);
