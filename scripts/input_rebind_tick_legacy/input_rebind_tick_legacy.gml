@@ -137,11 +137,11 @@ function input_rebind_tick_legacy(_in_verb, _player_index = 0, _alternate = 0)
                             _new_binding = new __input_class_binding();
                             _new_binding.set_key(_keyboard_key);
                         }
-                        else if (mouse_button > 0)
+                        else if (__input_mouse_button() > 0)
                         {
                             //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
                             _new_binding = new __input_class_binding();
-                            _new_binding.set_mouse_button(mouse_button);
+                            _new_binding.set_mouse_button(__input_mouse_button());
                         }
                         else if (mouse_wheel_up())
                         {

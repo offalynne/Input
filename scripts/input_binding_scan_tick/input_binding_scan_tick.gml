@@ -142,12 +142,12 @@ function input_binding_scan_tick(_source, _player_index = 0)
                         if ((ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z"))) _new_binding.set_label(_keychar);
                     }
                 }
-                else if (mouse_button > 0)
+                else if (__input_mouse_button() > 0)
                 {
                     //Mouse buttons
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
                     _new_binding = new __input_class_binding();
-                    _new_binding.set_mouse_button(mouse_button);
+                    _new_binding.set_mouse_button(__input_mouse_button());
                     _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
                 }
                 else if (mouse_wheel_up())
