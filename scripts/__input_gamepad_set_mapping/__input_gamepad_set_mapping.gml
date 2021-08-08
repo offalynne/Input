@@ -176,7 +176,6 @@ function __input_gamepad_set_mapping()
         description = "XInput";
         
         //Default XInput mapping for Windows. This mapping is super common!
-            
         set_mapping(gp_padu,   0, __INPUT_MAPPING.BUTTON, "dpup");
         set_mapping(gp_padd,   1, __INPUT_MAPPING.BUTTON, "dpdown");
         set_mapping(gp_padl,   2, __INPUT_MAPPING.BUTTON, "dpleft");
@@ -206,210 +205,217 @@ function __input_gamepad_set_mapping()
         exit;
     }
     
-    if (__INPUT_SDL2_SUPPORT && INPUT_SDL2_REMAPPING && is_array(sdl2_definition))
+    if (__INPUT_SDL2_SUPPORT && INPUT_SDL2_REMAPPING)
     {
-        var _i = 2;
-        repeat(array_length(sdl2_definition) - 3)
+        if (is_array(sdl2_definition))
         {
-            var _entry = sdl2_definition[_i];
-            var _pos = string_pos(":", _entry);
-            
-            var _entry_name = string_copy(_entry, 1, _pos-1);
-            var _entry_1 = string_delete(_entry, 1, _pos);
-            
-            //Search for leading -/+ in the entry name
-            //This basically only ever gets used for Switch joycons
-            var _output_negative = false;
-            var _output_positive = false;
-            
-            if (string_char_at(_entry_name, 1) == "-")
+            var _i = 2;
+            repeat(array_length(sdl2_definition) - 3)
             {
-                _output_negative = true;
-                _entry_name = string_delete(_entry_name, 1, 1);
-            }
-            else if (string_char_at(_entry_name, 1) == "+")
-            {
-                _output_positive = true;
-                _entry_name = string_delete(_entry_name, 1, 1);
-            }
+                var _entry = sdl2_definition[_i];
+                var _pos = string_pos(":", _entry);
             
-            //Find the GameMaker-native constant for this entry name e.g. gp_face1, gp_axislh
-            var _gm_constant = variable_struct_get(global.__input_sdl2_look_up_table, _entry_name);
-            if (_gm_constant == undefined)
-            {
-                __input_trace("Warning! Entry name \"", _entry_name, "\" not recognised (full string was \"", _entry, "\")");
-            }
-            else
-            {
-                var _input_invert   = false;
-                var _input_negative = false;
-                var _input_positive = false;
-                
-                if (string_char_at(_entry_1, string_length(_entry_1)) == "~")
+                var _entry_name = string_copy(_entry, 1, _pos-1);
+                var _entry_1 = string_delete(_entry, 1, _pos);
+            
+                //Search for leading -/+ in the entry name
+                //This basically only ever gets used for Switch joycons
+                var _output_negative = false;
+                var _output_positive = false;
+            
+                if (string_char_at(_entry_name, 1) == "-")
                 {
-                    _entry_1 = string_delete(_entry_1, string_length(_entry_1), 1);
-                    _input_invert = true;
+                    _output_negative = true;
+                    _entry_name = string_delete(_entry_name, 1, 1);
                 }
-                
-                var _raw_type = undefined;
-                do
+                else if (string_char_at(_entry_name, 1) == "+")
                 {
-                    var _char = string_char_at(_entry_1, 1);
-                    _entry_1 = string_delete(_entry_1, 1, 1);
-                    
-                    switch(_char)
-                    {
-                        case "~": _input_invert   = true; break;
-                        case "-": _input_negative = true; break;
-                        case "+": _input_positive = true; break;
-                        
-                        case "b": _raw_type = __INPUT_MAPPING.BUTTON; break;
-                        case "a":
-                            //If we're in axis mode but we have a sign for the output direction then this is a split axis mapping
-                            if (_output_negative || _output_positive)
-                            {
-                                _raw_type = __INPUT_MAPPING.SPLIT_AXIS;
-                            }
-                            else
-                            {
-                                _raw_type = __INPUT_MAPPING.AXIS;
-                            }
-                        break;
-                        
-                        case "h":
-                            //If we're in hat mode but we have a sign for the output direction then this is a hat-on-axis mapping
-                            if (_output_negative || _output_positive)
-                            {
-                                _raw_type = __INPUT_MAPPING.HAT_ON_AXIS;
-                            }
-                            else
-                            {
-                                _raw_type = __INPUT_MAPPING.HAT;
-                            }
-                        break;
-                        
-                        default:
-                            __input_trace("Warning! Mapping entry could not be parsed (full string was \"", _entry, "\")");
-                        break;
-                    }
+                    _output_positive = true;
+                    _entry_name = string_delete(_entry_name, 1, 1);
                 }
-                until(_raw_type != undefined);
-                
-                //Determine which input index to scan for
-                //We floor this to cope with hats have decimal parts for their mask
-                var _input_slot = floor(real(_entry_1));
-                
-                //Try to find out if this constant has been set already
-                var _mapping = mapping_gm_to_raw[$ _gm_constant];
-                if (_raw_type == __INPUT_MAPPING.HAT_ON_AXIS)
+            
+                //Find the GameMaker-native constant for this entry name e.g. gp_face1, gp_axislh
+                var _gm_constant = variable_struct_get(global.__input_sdl2_look_up_table, _entry_name);
+                if (_gm_constant == undefined)
                 {
-                    //Try to reuse the same mapping struct for hat-on-axis
-                    if (_mapping == undefined)
-                    {
-                        _mapping = set_mapping(_gm_constant, undefined, _raw_type, _entry_name);
-                    }
-                    
-                    if (_output_negative)
-                    {
-                        _mapping.raw_negative = _input_slot;
-                    }
-                    else if (_output_positive)
-                    {
-                        _mapping.raw_positive = _input_slot;
-                    }
-                }
-                else if (_raw_type == __INPUT_MAPPING.SPLIT_AXIS)
-                {
-                    //Try to reuse the same mapping struct for hat-on-axis
-                    if (_mapping == undefined)
-                    {
-                        _mapping = set_mapping(_gm_constant, undefined, _raw_type, _entry_name);
-                    }
-                    
-                    if (_output_negative)
-                    {
-                        _mapping.raw_negative = _input_slot;
-                        if (_input_negative) _mapping.negative_clamp_negative = true;
-                        if (_input_positive) _mapping.negative_clamp_positive = true;
-                    }
-                    else if (_output_positive)
-                    {
-                        _mapping.raw_positive = _input_slot;
-                        if (_input_negative) _mapping.positive_clamp_negative = true;
-                        if (_input_positive) _mapping.positive_clamp_positive = true;
-                    }
+                    __input_trace("Warning! Entry name \"", _entry_name, "\" not recognised (full string was \"", _entry, "\")");
                 }
                 else
                 {
-                    if (_mapping == undefined)
-                    {
-                        _mapping = set_mapping(_gm_constant, _input_slot, _raw_type, _entry_name);
-                    }
-                    else 
-                    {
-                        __input_trace("Warning! Mapping for \"", _entry, "\" is a redefinition of entry name \"", _entry_name, "\"");
-                    }
-                    
-                    //If necessary, apply modifiers to the mapping input
-                    if (_input_invert  ) _mapping.invert         = true;
-                    if (_input_negative) _mapping.clamp_negative = true;
-                    if (_input_positive) _mapping.clamp_positive = true;
-                }
+                    var _input_invert   = false;
+                    var _input_negative = false;
+                    var _input_positive = false;
                 
-                //Now manage the hat masks, including setting up hat-on-axis masks
-                if ((_raw_type == __INPUT_MAPPING.HAT) || (_raw_type == __INPUT_MAPPING.HAT_ON_AXIS))
-                {
-                    var _hat_mask = floor(10*real(_entry_1)); //TODO - lol haxx
-                    if (_raw_type == __INPUT_MAPPING.HAT)
+                    if (string_char_at(_entry_1, string_length(_entry_1)) == "~")
                     {
-                        _mapping.hat_mask = _hat_mask;
+                        _entry_1 = string_delete(_entry_1, string_length(_entry_1), 1);
+                        _input_invert = true;
                     }
-                    else if (_raw_type == __INPUT_MAPPING.HAT_ON_AXIS)
+                
+                    var _raw_type = undefined;
+                    do
                     {
+                        var _char = string_char_at(_entry_1, 1);
+                        _entry_1 = string_delete(_entry_1, 1, 1);
+                    
+                        switch(_char)
+                        {
+                            case "~": _input_invert   = true; break;
+                            case "-": _input_negative = true; break;
+                            case "+": _input_positive = true; break;
+                        
+                            case "b": _raw_type = __INPUT_MAPPING.BUTTON; break;
+                            case "a":
+                                //If we're in axis mode but we have a sign for the output direction then this is a split axis mapping
+                                if (_output_negative || _output_positive)
+                                {
+                                    _raw_type = __INPUT_MAPPING.SPLIT_AXIS;
+                                }
+                                else
+                                {
+                                    _raw_type = __INPUT_MAPPING.AXIS;
+                                }
+                            break;
+                        
+                            case "h":
+                                //If we're in hat mode but we have a sign for the output direction then this is a hat-on-axis mapping
+                                if (_output_negative || _output_positive)
+                                {
+                                    _raw_type = __INPUT_MAPPING.HAT_ON_AXIS;
+                                }
+                                else
+                                {
+                                    _raw_type = __INPUT_MAPPING.HAT;
+                                }
+                            break;
+                        
+                            default:
+                                __input_trace("Warning! Mapping entry could not be parsed (full string was \"", _entry, "\")");
+                            break;
+                        }
+                    }
+                    until(_raw_type != undefined);
+                
+                    //Determine which input index to scan for
+                    //We floor this to cope with hats have decimal parts for their mask
+                    var _input_slot = floor(real(_entry_1));
+                
+                    //Try to find out if this constant has been set already
+                    var _mapping = mapping_gm_to_raw[$ _gm_constant];
+                    if (_raw_type == __INPUT_MAPPING.HAT_ON_AXIS)
+                    {
+                        //Try to reuse the same mapping struct for hat-on-axis
+                        if (_mapping == undefined)
+                        {
+                            _mapping = set_mapping(_gm_constant, undefined, _raw_type, _entry_name);
+                        }
+                    
                         if (_output_negative)
                         {
-                            _mapping.hat_mask_negative = _hat_mask;
+                            _mapping.raw_negative = _input_slot;
                         }
                         else if (_output_positive)
                         {
-                            _mapping.hat_mask_positive = _hat_mask;
+                            _mapping.raw_positive = _input_slot;
+                        }
+                    }
+                    else if (_raw_type == __INPUT_MAPPING.SPLIT_AXIS)
+                    {
+                        //Try to reuse the same mapping struct for hat-on-axis
+                        if (_mapping == undefined)
+                        {
+                            _mapping = set_mapping(_gm_constant, undefined, _raw_type, _entry_name);
+                        }
+                    
+                        if (_output_negative)
+                        {
+                            _mapping.raw_negative = _input_slot;
+                            if (_input_negative) _mapping.negative_clamp_negative = true;
+                            if (_input_positive) _mapping.negative_clamp_positive = true;
+                        }
+                        else if (_output_positive)
+                        {
+                            _mapping.raw_positive = _input_slot;
+                            if (_input_negative) _mapping.positive_clamp_negative = true;
+                            if (_input_positive) _mapping.positive_clamp_positive = true;
+                        }
+                    }
+                    else
+                    {
+                        if (_mapping == undefined)
+                        {
+                            _mapping = set_mapping(_gm_constant, _input_slot, _raw_type, _entry_name);
+                        }
+                        else 
+                        {
+                            __input_trace("Warning! Mapping for \"", _entry, "\" is a redefinition of entry name \"", _entry_name, "\"");
+                        }
+                    
+                        //If necessary, apply modifiers to the mapping input
+                        if (_input_invert  ) _mapping.invert         = true;
+                        if (_input_negative) _mapping.clamp_negative = true;
+                        if (_input_positive) _mapping.clamp_positive = true;
+                    }
+                
+                    //Now manage the hat masks, including setting up hat-on-axis masks
+                    if ((_raw_type == __INPUT_MAPPING.HAT) || (_raw_type == __INPUT_MAPPING.HAT_ON_AXIS))
+                    {
+                        var _hat_mask = floor(10*real(_entry_1)); //TODO - lol haxx
+                        if (_raw_type == __INPUT_MAPPING.HAT)
+                        {
+                            _mapping.hat_mask = _hat_mask;
+                        }
+                        else if (_raw_type == __INPUT_MAPPING.HAT_ON_AXIS)
+                        {
+                            if (_output_negative)
+                            {
+                                _mapping.hat_mask_negative = _hat_mask;
+                            }
+                            else if (_output_positive)
+                            {
+                                _mapping.hat_mask_positive = _hat_mask;
+                            }
+                        }
+                    }
+                
+                    if (__INPUT_DEBUG) __input_trace(_entry_name, " = ", _raw_type, _entry_1);
+                
+                    //Set axis range quirks
+                    if ((_raw_type == __INPUT_MAPPING.AXIS) || (raw_type == __INPUT_MAPPING.SPLIT_AXIS))
+                    {
+                        //Identify directional input
+                        var _is_directional = false;
+                        switch (_gm_constant)
+                        {
+                            case gp_padu:   case gp_padd: 
+                            case gp_padl:   case gp_padr:
+                            case gp_axislh: case gp_axislv:
+                            case gp_axisrh: case gp_axisrv:
+                                _is_directional = true;
+                            break;
+                        }
+                
+                        //Linux axis ranges affecting directional input are normalized after remapping
+                        if ((os_type == os_linux) && _is_directional)
+                        {    
+                            if (__INPUT_DEBUG) __input_trace("  (Limiting axis range)");
+                            _mapping.limit_range = true;
+                        }
+                        else if ((os_type != os_linux) && (!_is_directional))
+                        {
+                            //Nondirectional input uses full axis range (excepting Linux remappings and XInput)
+                            if (__INPUT_DEBUG) __input_trace("  (Extending axis range)");
+                            _mapping.extend_range = true;
                         }
                     }
                 }
-                
-                if (__INPUT_DEBUG) __input_trace(_entry_name, " = ", _raw_type, _entry_1);
-                
-                //Set axis range quirks
-                if ((_raw_type == __INPUT_MAPPING.AXIS) || (raw_type == __INPUT_MAPPING.SPLIT_AXIS))
-                {
-                    //Identify directional input
-                    var _is_directional = false;
-                    switch (_gm_constant)
-                    {
-                        case gp_padu:   case gp_padd: 
-                        case gp_padl:   case gp_padr:
-                        case gp_axislh: case gp_axislv:
-                        case gp_axisrh: case gp_axisrv:
-                            _is_directional = true;
-                        break;
-                    }
-                
-                    //Linux axis ranges affecting directional input are normalized after remapping
-                    if ((os_type == os_linux) && _is_directional)
-                    {    
-                        if (__INPUT_DEBUG) __input_trace("  (Limiting axis range)");
-                        _mapping.limit_range = true;
-                    }
-                    else if ((os_type != os_linux) && (!_is_directional))
-                    {
-                        //Nondirectional input uses full axis range (excepting Linux remappings and XInput)
-                        if (__INPUT_DEBUG) __input_trace("  (Extending axis range)");
-                        _mapping.extend_range = true;
-                    }
-                }
-            }
             
-            ++_i;
+                ++_i;
+            }
+        }
+        else
+        {
+            __input_trace("No SDL2 remapping available, falling back to GameMaker's mapping");
         }
     }
     

@@ -132,7 +132,6 @@ function __input_gamepad_find_in_sdl2_database()
         var _definition = _guid_dict[$ guid];
         sdl2_definition = _definition;
         description     = _definition[1];
-            
         exit;
     }
     
@@ -156,6 +155,7 @@ function __input_gamepad_find_in_sdl2_database()
     else
     {
         __input_trace("Warning! No SDL defintion found for ", guid, " (vendor=", vendor, ", product=", product, ")");
-        description = "Unknown";
+        sdl2_definition = undefined;
+        description     = "Unknown";
     }
 }
