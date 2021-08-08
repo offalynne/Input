@@ -2,11 +2,13 @@
 
 function __input_gamepad_set_vid_pid()
 {
+    description = gamepad_get_description(index);
+    vendor  = "";
+    product = "";
+    xinput  = undefined;
+    
     if (__INPUT_ON_WEB)
     {
-        //We have no way of determining XInput status reliably on web (not that it would be especially useful)
-        xinput = undefined;
-        
         //Try to read from Chrome's VID/PID syntax
         // e.g. Description Vendor: xxxx Product: yyyy
         //                          ^VID          ^PID
@@ -75,40 +77,29 @@ function __input_gamepad_set_vid_pid()
             }
             else
             {
-                vendor  = "";
-                product = "";
-            
                 __input_trace("Gamepad description could not be parsed. Bindings for this gamepad may be incorrect (was \"", description, "\")");
             }
         }
         
-        //Unreverse the VID/PID hex strings
+        //Switch VID/PID hex string endianness
         if (is_string(vendor )) vendor  = string_copy(vendor,  3, 2) + string_copy(vendor,  1, 2);
         if (is_string(product)) product = string_copy(product, 3, 2) + string_copy(product, 1, 2);
+        
+        exit;
     }
-    else
+    
+    if (__INPUT_SDL2_SUPPORT)
     {
-        //Unpack the vendor/product IDs from the gamepad's GUID
+        var _use_legacy_guid = false;
+            
         if (os_type == os_windows)
         {
-            var _result = __input_gamepad_guid_parse(guid, true, false); //Windows uses an older version of SDL
-            vendor  = _result.vendor;
-            product = _result.product;
-            xinput  = (index < 4);
+            xinput = (index < 4); //First 3 slots indicate XInput on Windows
+            _use_legacy_guid = true;
         }
-        else if ((os_type == os_macosx) || (os_type == os_linux) || (os_type == os_ios) || (os_type == os_android))
-        {
-            var _result = __input_gamepad_guid_parse(guid, false, false);
-            vendor  = _result.vendor;
-            product = _result.product;
-            xinput  = undefined;
-        }
-        else
-        {
-            description = gamepad_get_description(index);
-            vendor  = "";
-            product = "";
-            xinput  = undefined;
-        }
+        
+        var _result = __input_gamepad_guid_parse(guid, _use_legacy_guid, false);
+        vendor  = _result.vendor;
+        product = _result.product;
     }
 }

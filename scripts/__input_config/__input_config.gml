@@ -19,6 +19,8 @@
 #macro INPUT_SDL2_ALLOW_GUIDE     false  //Whether to allow use of SDL2's "guide" binding, accessed using the gp_guide macro. This generally only works with DInput controllers
 #macro INPUT_SDL2_ALLOW_MISC1     false  //Whether to allow use of SDL2's "misc1" binding, accessed using the gp_misc1 macro. What this maps to varies from controller to controller
 
+#macro INPUT_MOBILE_KEYBOARD_ALLOWED false //Whether to allow (problematic) keyboard input on mobile platforms
+
 #macro INPUT_SWITCH_HORIZONTAL_HOLDTYPE  true  //Whether the game uses the horizontal holdtype for single Joy-Cons. Set this to <false> for vertical holdtype. Input treats these two modes as mutually exclusive (come talk to us if you need to be able to swap at runtime)
 
 #macro INPUT_BINDING_SCAN_TIMEOUT  10000  //Time (in milliseconds) to wait for a new binding before automatically cancelling the binding scan

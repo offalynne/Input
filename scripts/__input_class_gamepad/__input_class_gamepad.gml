@@ -110,28 +110,28 @@ function __input_class_gamepad(_index) constructor
         {
             custom_mapping = true;
             
-            if (os_type == os_macosx)
+            if (__INPUT_SDL2_SUPPORT)
             {
-                if ((gamepad_get_mapping(index) != "") && (gamepad_get_mapping(index) != "no mapping"))
+            
+                //As of 2020-08-17, GameMaker has weird in-build remapping rules for gamepad on MacOS
+                if (os_type == os_macosx)
+                {
+                    if ((gamepad_get_mapping(index) != "") && (gamepad_get_mapping(index) != "no mapping"))
+                    {
+                        __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
+                        mac_cleared_mapping = true;
+                    }
+                
+                    //Additionally, gamepad_remove_mapping() doesn't seem to work. Setting the SDL string to something mostly blank does work though
+                    gamepad_test_mapping(index, gamepad_get_guid(index) + "," + gamepad_get_description(index) + ",");
+                }
+                else
                 {
                     __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
-                    mac_cleared_mapping = true;
+                    gamepad_remove_mapping(index);
                 }
-                
-                //As of 2020-08-17, GameMaker has weird in-build remapping rules for gamepad on MacOS
-                //Additionally, gamepad_remove_mapping() doesn't seem to work. Setting the SDL string to something mostly blank does work though
-                gamepad_test_mapping(index, gamepad_get_guid(index) + "," + gamepad_get_description(index) + ",");
             }
-            else if ((os_type == os_windows) || (os_type == os_linux) || (os_type == os_android) || (os_type == os_ios) || (os_type == os_tvos))
-            {
-                __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
-                gamepad_remove_mapping(index);
-            }
-            else if (__INPUT_ON_CONSOLE)
-            {
-                //Do nothing! These platforms have hardcoded behaviours and we don't need to show any messages/warnings
-            }
-            else
+            else if (!__INPUT_ON_CONSOLE)
             {
                 __input_trace("Gamepad ", index, " cannot remove GameMaker's native mapping string, this feature is not supported by Input on this platform");
             }
