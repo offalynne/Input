@@ -1,6 +1,6 @@
 function __input_mouse_button(){
     
-    //Built-in varirable `mouse_button` reports correctly on desktop-native
+    //Built-in variable `mouse_button` reports correctly on desktop-native
     if (__INPUT_ON_DESKTOP && (!__INPUT_ON_WEB))
     {
         return (mouse_button ? mouse_button : global.__input_tap_click);
