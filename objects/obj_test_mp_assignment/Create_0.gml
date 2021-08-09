@@ -24,4 +24,5 @@ input_default_gamepad_button(gp_face2, VERB.CANCEL );
 //input_player_gamepad_set(0, 1);
 //input_player_gamepad_set(1, 2);
 
-all_assigned = false;
+assigning = true;
+success   = false;
