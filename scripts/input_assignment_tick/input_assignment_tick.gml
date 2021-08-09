@@ -73,18 +73,20 @@ function input_assignment_tick(_min_players, _max_players, _leave_verb)
                 input_player_source_set(_new_device.source, _p);
                 if (_new_device.source == INPUT_SOURCE.GAMEPAD) input_player_gamepad_set(_new_device.gamepad, _p);
                 
-                __input_trace("Assignment: Player ", _p, " joined");
-                
                 global.__input_players[_p].tick();
                 
                 if (input_check_pressed(_leave_verb) && (input_players_connected() < _min_players) && (_min_players > 1))
                 {
-                    __input_trace("Assignment: Player ", _p, " aborted");
+                    __input_trace("Assignment: Player ", _p, " aborted source assignment");
                     _abort = true;
                 }
+                else
+                {
+                    __input_trace("Assignment: Player ", _p, " joined");
+                }
                 
-                //Make sure this doesn't trigger again
-                input_consume(_leave_verb, _p);
+                //Make sure we don't leak input
+                input_consume(all, _p);
             }
         }
         
