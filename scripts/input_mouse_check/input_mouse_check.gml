@@ -1,5 +1,5 @@
 /// @param binding
-function input_mouse_check_button(_binding)
+function input_mouse_check(_binding)
 {
     //Extended touchpad handling (Windows only)
     if (os_type != os_windows)
