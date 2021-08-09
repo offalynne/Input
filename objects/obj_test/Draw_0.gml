@@ -107,8 +107,8 @@ _string += "lastkey = " + string(keyboard_lastkey      ) + "\n";
 var _i = 2;
 repeat(255)
 {
-	if (input_keyboard_check(_i)) _string += string(_i) + "  >" + chr(_i) + "< " + __input_key_get_name(_i) + "\n";
-	++_i;
+   if (input_keyboard_check(_i)) _string += string(_i) + "  >" + chr(_i) + "< " + __input_key_get_name(_i) + "\n";
+   ++_i;
 }
 
 draw_text(500, 10, _string);
