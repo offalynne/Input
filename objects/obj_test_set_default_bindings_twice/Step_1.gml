@@ -1,7 +1,7 @@
 input_tick();
 input_hotswap_tick();
 
-if (keyboard_check_pressed(ord("1")))
+if (input_keyboard_check_pressed(ord("1")))
 {
     mode = 1;
     
@@ -14,7 +14,7 @@ if (keyboard_check_pressed(ord("1")))
     input_default_key(vk_up, TEST_ACTIONS.beam, 2);
 }
 
-if (keyboard_check_pressed(ord("2")))
+if (input_keyboard_check_pressed(ord("2")))
 {
     mode = 2;
     

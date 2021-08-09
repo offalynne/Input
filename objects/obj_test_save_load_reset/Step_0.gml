@@ -1,9 +1,9 @@
 input_tick();
 input_hotswap_tick();
 
-if (keyboard_check_pressed(vk_enter) || input_gamepad_check_pressed(0, gp_start)) rebinding = true;
+if (input_keyboard_check_pressed(vk_enter) || input_gamepad_check_pressed(0, gp_start)) rebinding = true;
 
-if (keyboard_check_pressed(ord("S")))
+if (input_keyboard_check_pressed(ord("S")))
 {
     rebinding = false;
     
@@ -16,7 +16,7 @@ if (keyboard_check_pressed(ord("S")))
     show_debug_message("Saved!");
 }
 
-if (keyboard_check_pressed(ord("L")))
+if (input_keyboard_check_pressed(ord("L")))
 {
     rebinding = false;
     
@@ -28,7 +28,7 @@ if (keyboard_check_pressed(ord("L")))
     show_debug_message("Loaded!");
 }
 
-if (keyboard_check_pressed(ord("R")))
+if (input_keyboard_check_pressed(ord("R")))
 {
     rebinding = false;
     
