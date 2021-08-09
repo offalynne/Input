@@ -7,7 +7,7 @@ function __input_mouse_button(){
     }
     else
     {
-        //Mouse buttons always report correctly via `device_...` functions
+        //Mouse buttons always report correctly on first index via `device_...` functions
         var _i = 5;
         repeat(_i)
         {
