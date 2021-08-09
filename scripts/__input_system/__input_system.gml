@@ -8,8 +8,8 @@
 #macro __INPUT_ON_MOBILE    ((os_type == os_android) || (os_type == os_ios)   || (os_type == os_tvos))
 #macro __INPUT_ON_WEB       (os_browser != browser_not_a_browser)
 
-#macro __INPUT_SDL2_SUPPORT     ((__INPUT_ON_DESKTOP || (os_type == os_android)) && (!__INPUT_ON_WEB))
-#macro __INPUT_KEYBOARD_SUPPORT ((!(__INPUT_ON_APPLE && __INPUT_ON_MOBILE)) || (__INPUT_ON_WEB))
+#macro __INPUT_SDL2_SUPPORT     ((!__INPUT_ON_WEB) && (__INPUT_ON_DESKTOP || (os_type == os_android)))
+#macro __INPUT_KEYBOARD_SUPPORT (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_android) || (os_type == os_switch))
 
 //Extra constants
 #macro gp_guide    32789
