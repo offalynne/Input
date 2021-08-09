@@ -39,9 +39,20 @@ function __input_key_get_name(_key)
                 case 93: return "right meta"; break;
             }
         }
+        
+        //Switch exceptions
+        if (os_type == os_switch)
+        {
+            switch(_key)
+            {
+                case 107: return "+"; break;
+                case 109: return "-"; break;
+                case 110: return "."; break;
+            }
+        }
 
         //Desktop platform non-UTF8 keycodes
-        if (__INPUT_ON_DESKTOP || __INPUT_ON_WEB) 
+        if (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch))
         {
             //Common function row (F1 - F10)
             if ((_key >= vk_f1) && (_key <= vk_f10))
@@ -176,6 +187,19 @@ function __input_key_get_name(_key)
                 switch(_key)      
                 {
                     case 10: return "enter";
+                }
+            break;
+            
+            case os_switch:
+                switch(_key)
+                {
+                    case 2: case 3: case 4: 
+                    case 5: case 6: case 7:
+                        return string(_key);
+                    break;
+                    
+                    case 128: return "F11"; break;
+                    case 129: return "F12"; break; 
                 }
             break;
         }
