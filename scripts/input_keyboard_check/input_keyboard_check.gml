@@ -9,7 +9,7 @@ function input_keyboard_check(_binding)
         return false;
     }
 
-    //Native Apple device keyboard events are catastrophic
+    //Native iOS/tvOS keyboard events are catastrophic
     if (__INPUT_ON_APPLE && __INPUT_ON_MOBILE && (!__INPUT_ON_WEB))
     {
         return false;
