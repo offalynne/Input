@@ -57,7 +57,7 @@ function input_tick()
     
     #region Unstick keyboard
 
-    if ((!__INPUT_ON_CONSOLE) && (keyboard_check(vk_anykey)))
+    if (__INPUT_KEYBOARD_SUPPORT && (keyboard_check(vk_anykey)))
     {
         //Meta release sticks every key pressed during hold
         //This is "the nuclear option", but the problem is severe and io_clear does not fix it

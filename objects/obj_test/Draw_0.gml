@@ -101,13 +101,14 @@ _string += "Recent (4dir) = " + string(input_check_press_most_recent([VERB.LEFT,
 
 _string += "\n\n";
 
-_string += "lastkey = " + string(keyboard_lastkey) + "\n";
+_string += "key     = " + string(__input_keyboard_key()) + "\n";
+_string += "lastkey = " + string(keyboard_lastkey      ) + "\n";
 
-var _i = 8;
+var _i = 2;
 repeat(255)
 {
-	if (keyboard_check(_i)) _string += string(_i) + "  >" + chr(_i) + "< " + __input_key_get_name(_i) + "\n";
-	++_i;
+   if (input_keyboard_check(_i)) _string += string(_i) + "  >" + chr(_i) + "< " + __input_key_get_name(_i) + "\n";
+   ++_i;
 }
 
 draw_text(500, 10, _string);

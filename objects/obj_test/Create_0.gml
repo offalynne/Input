@@ -1,11 +1,11 @@
-//input_default_key(vk_left     , VERB.LEFT    );
-//input_default_key(vk_right    , VERB.RIGHT   );
-//input_default_key(vk_up       , VERB.UP      );
-//input_default_key(vk_down     , VERB.DOWN    );
-//input_default_key(vk_space    , VERB.CONFIRM );
-//input_default_key(vk_backspace, VERB.CANCEL  );
-//input_default_key(vk_escape   , VERB.PAUSE   );
-//input_default_key(vk_enter    , VERB.PAUSE, 1);
+input_default_key(vk_left     , VERB.LEFT    );
+input_default_key(vk_right    , VERB.RIGHT   );
+input_default_key(vk_up       , VERB.UP      );
+input_default_key(vk_down     , VERB.DOWN    );
+input_default_key(vk_space    , VERB.CONFIRM );
+input_default_key(vk_backspace, VERB.CANCEL  );
+input_default_key(vk_escape   , VERB.PAUSE   );
+input_default_key(vk_enter    , VERB.PAUSE, 1);
 
 input_default_mouse_button(mb_left, VERB.CONFIRM, 1);
 
