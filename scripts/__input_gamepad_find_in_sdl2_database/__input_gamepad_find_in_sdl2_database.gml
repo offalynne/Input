@@ -16,14 +16,12 @@ function __input_gamepad_find_in_sdl2_database()
         __input_trace("Warning! Controller is blacklisted (cross-platform, found by VID+PID \"", vendor + product, "\")");
         blacklisted = true;
     }
-    
-    if (is_struct(_os_guid_dict) && variable_struct_exists(_os_guid_dict, guid))
+    else if (is_struct(_os_guid_dict) && variable_struct_exists(_os_guid_dict, guid))
     {
         __input_trace("Warning! Controller is blacklisted (cross-platform, found by GUID \"", guid, "\")");
         blacklisted = true;
     }
-    
-    if (is_array(_os_desc_array))
+    else if (is_array(_os_desc_array))
     {
         var _description_lower = string_lower(gamepad_get_description(index));
         var _i = 0;
@@ -69,20 +67,17 @@ function __input_gamepad_find_in_sdl2_database()
         __input_trace("Warning! Controller is blacklisted (cross-platform, found by VID \"", vendor, "\")");
         blacklisted = true;
     }
-    
-    if (is_struct(_os_vid_pid_dict) && variable_struct_exists(_os_vid_pid_dict, vendor + product))
+    else if (is_struct(_os_vid_pid_dict) && variable_struct_exists(_os_vid_pid_dict, vendor + product))
     {
         __input_trace("Warning! Controller is blacklisted (cross-platform, found by VID+PID \"", vendor + product, "\")");
         blacklisted = true;
     }
-    
-    if (is_struct(_os_guid_dict) && variable_struct_exists(_os_guid_dict, guid))
+    else if (is_struct(_os_guid_dict) && variable_struct_exists(_os_guid_dict, guid))
     {
         __input_trace("Warning! Controller is blacklisted (cross-platform, found by GUID \"", guid, "\")");
         blacklisted = true;
     }
-    
-    if (is_array(_os_desc_array))
+    else if (is_array(_os_desc_array))
     {
         var _description_lower = string_lower(gamepad_get_description(index));
         var _i = 0;
@@ -97,6 +92,13 @@ function __input_gamepad_find_in_sdl2_database()
             
             ++_i;
         }
+    }    
+    
+    //Blacklist Switch Pro over USB on Windows
+    if ((_os == "windows") && (vendor == "7e05") && (product =="0920") && (gamepad_button_count(index) == 23))
+    {
+        __input_trace("Warning! Controller is manually blacklisted (Windows USB Switch Pro, matched on VID+PID and button count)");
+        blacklisted = true;
     }
     
     if (blacklisted)
