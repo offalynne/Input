@@ -415,7 +415,7 @@ function __input_gamepad_set_mapping()
         }
         else
         {
-            __input_trace("No SDL2 remapping available, falling back to GameMaker's mapping");
+            __input_trace("No SDL2 remapping available, falling back to GameMaker's mapping (", gamepad_get_mapping(index), ")");
         }
     }
     
