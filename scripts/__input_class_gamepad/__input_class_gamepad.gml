@@ -74,7 +74,18 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_value = function(_gm)
     {
-        if (!custom_mapping) return gamepad_axis_value(index, _gm);
+        if (!custom_mapping)
+        {
+            if ((_gm == gp_axislh) || (_gm == gp_axislv) || (_gm == gp_axisrh) || (_gm == gp_axisrv))
+            {
+                return gamepad_axis_value(index, _gm);
+            }
+            else
+            {
+                return gamepad_button_check(index, _gm);
+            }
+        }
+        
         var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
         if (_mapping == undefined) return 0.0;
         return _mapping.value;
