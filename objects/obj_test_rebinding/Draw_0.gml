@@ -1,5 +1,7 @@
 var _string = "";
 
+_string += "player gamepad = " + string(input_player_gamepad_get()) + "\n";
+
 if (rebinding)
 {
     _string += "Rebinding (source=" + input_source_get_name(rebinding_source) + ")\n\n";
