@@ -86,7 +86,7 @@
 
 ### [Gamepad (Direct)](Functions-(Gamepad))
 
-**Please note** that Gamepad functions are provided for convenience if you want to implement your own features using Input's SDL implementation. In general, [Player functions](Function-Index#players) are the intended way to use Input and are preferred.
+?> Gamepad functions are provided for convenience if you want to implement your own features using Input's SDL implementation. In general, [Player functions](Function-Index#players) are the intended way to use Input and are preferred.
 
 - [`input_gamepad_check(gamepadIndex, GMconstant)`](Functions-(Gamepad)#input_gamepad_checkgamepadindex-gmconstant)
 - [`input_gamepad_check_pressed(gamepadIndex, GMconstant)`](Functions-(Gamepad)#input_gamepad_check_pressedgamepadindex-gmconstant)
@@ -100,7 +100,7 @@
 
 ### [Keyboard (Direct)](Functions-(Keyboard))
 
-**Please note** that Keyboard functions are provided for convenience if you want to implement your own features using Input's keyboard implementation. In general, [Player functions](Function-Index#players) are the intended way to use Input and are preferred.
+?> Keyboard functions are provided for convenience if you want to implement your own features using Input's keyboard implementation. In general, [Player functions](Function-Index#players) are the intended way to use Input and are preferred.
 
 - [`input_keyboard_check(button)`](Functions-(Keyboard)#input_keyboard_checkkey)
 - [`input_keyboard_check_pressed(button)`](Functions-(Keyboard)#input_keyboard_check_pressedkey)
@@ -108,7 +108,7 @@
 
 ### [Mouse (Direct)](Functions-(Mouse))
 
-**Please note** that Mouse functions are provided for convenience if you want to implement your own features using Input's mouse implementation. In general, [Player functions](Function-Index#players) are the intended way to use Input and are preferred.
+?> Mouse functions are provided for convenience if you want to implement your own features using Input's mouse implementation. In general, [Player functions](Function-Index#players) are the intended way to use Input and are preferred.
 
 - [`input_mouse_check(button)`](Functions-(Mouse)#input_mouse_checkbutton)
 - [`input_mouse_check_pressed(button)`](Functions-(Mouse)#input_mouse_check_pressedbutton)
