@@ -75,8 +75,8 @@ function __input_gamepad_set_mapping()
         
         set_mapping(gp_shoulderl,  gp_shoulderl,  __INPUT_MAPPING.BUTTON, "leftshoulder");
         set_mapping(gp_shoulderr,  gp_shoulderr,  __INPUT_MAPPING.BUTTON, "rightshoulder");
-        set_mapping(gp_shoulderlb, gp_shoulderlb, __INPUT_MAPPING.BUTTON, "lefttrigger");
-        set_mapping(gp_shoulderrb, gp_shoulderrb, __INPUT_MAPPING.BUTTON, "righttrigger");
+        set_mapping(gp_shoulderlb, gp_shoulderlb, __INPUT_MAPPING.AXIS,   "lefttrigger");
+        set_mapping(gp_shoulderrb, gp_shoulderrb, __INPUT_MAPPING.AXIS,   "righttrigger");
         
         set_mapping(gp_face1, gp_face1, __INPUT_MAPPING.BUTTON, "a");
         set_mapping(gp_face2, gp_face2, __INPUT_MAPPING.BUTTON, "b");
