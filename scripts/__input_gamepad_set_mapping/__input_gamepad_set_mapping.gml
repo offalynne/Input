@@ -2,7 +2,6 @@
 
 function __input_gamepad_set_mapping()
 {
-    
     #region Console
     
     //Switch requires some extra setup
@@ -140,11 +139,11 @@ function __input_gamepad_set_mapping()
             set_mapping(gp_padd, 7, __INPUT_MAPPING.AXIS, "dpdown" ).clamp_positive = true;
             
             var _mapping;
-            _mapping = set_mapping(gp_padl, 6, __INPUT_MAPPING.AXIS, "dpleft" );
+            _mapping = set_mapping(gp_padl, 6, __INPUT_MAPPING.AXIS, "dpleft");
             _mapping.clamp_negative = true;
             _mapping.reverse = true;
             
-            _mapping = set_mapping(gp_padu, 7, __INPUT_MAPPING.AXIS, "dpup"   );
+            _mapping = set_mapping(gp_padu, 7, __INPUT_MAPPING.AXIS, "dpup");
             _mapping.clamp_negative = true;
             _mapping.reverse = true;
         }
