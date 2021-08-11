@@ -4,6 +4,12 @@
 
 ---
 
+- [Configuration](Configuration)
+
+- [Function Index](Function-Index)
+
+---
+
 - [Input Sources](Input-Sources)
 
 - [Verbs and Alternate Bindings](Verbs-and-Alternate-Bindings)
