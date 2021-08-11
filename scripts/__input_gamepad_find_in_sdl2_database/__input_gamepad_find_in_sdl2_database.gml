@@ -94,11 +94,34 @@ function __input_gamepad_find_in_sdl2_database()
         }
     }    
     
-    //Blacklist Switch Pro over USB on Windows
-    if ((_os == "windows") && (vendor == "7e05") && (product =="0920") && (gamepad_button_count(index) == 23))
+     //Block devices presenting in bad states on Windows
+    if ((_os == "windows") && (!blacklisted))
     {
-        __input_trace("Warning! Controller is manually blacklisted (Windows USB Switch Pro, matched on VID+PID and button count)");
-        blacklisted = true;
+        var _a = gamepad_axis_count(index); 
+        var _b = gamepad_button_count(index);
+        
+        //Switch Pro Controller over USB
+        if ((vendor == "7e05") && (product == "0920") && (_b == 23))
+        {
+            blacklisted = true;
+        }
+        else
+        {
+            //PS3 Controller
+            if ((vendor == "4c05") && (product == "6802"))
+            {
+                if (((_a == 4) && (_b == 19)) //Bad driver
+                ||  ((_a == 8) && (_b == 0))) //DsHidMini gyro
+                {
+                    blacklisted = true;
+                }
+            }
+        }
+        
+        if (blacklisted)
+        {
+            __input_trace("Warning! Controller manually blacklisted (VID+PID \"", vendor + product, "\", ", _b, " buttons and ", _a, " axes)");
+        }
     }
     
     if (blacklisted)
