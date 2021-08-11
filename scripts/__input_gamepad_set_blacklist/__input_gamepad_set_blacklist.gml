@@ -3,7 +3,7 @@
 function __input_gamepad_set_blacklist()
 {
     //Don't blacklist on preconfigured platforms
-    if (__INPUT_SDL2_SUPPORT) exit;
+    if (!__INPUT_SDL2_SUPPORT) exit;
     
     //Check the global (OS = "all") blacklists to see if this gamepad is banned
     var _os_filter_dict  = global.__input_blacklist_dictionary[$ "all"];
