@@ -17,3 +17,5 @@
 - [Gamepad Operation](Gamepad-Operation)
 
 - [Platform Quirks](Platform-Quirks)
+
+- [Common Keyboard Combos](Common-Keyboard-Combos)
