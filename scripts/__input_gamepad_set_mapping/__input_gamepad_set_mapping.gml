@@ -64,7 +64,7 @@ function __input_gamepad_set_mapping()
     }
     
     //If we're on PlayStation or Xbox, don't remap anything special
-    if (__INPUT_ON_CONSOLE)
+    if ((os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
     {
         set_mapping(gp_padu,   gp_padu,   __INPUT_MAPPING.BUTTON, "dpup");
         set_mapping(gp_padd,   gp_padd,   __INPUT_MAPPING.BUTTON, "dpdown");
@@ -400,7 +400,7 @@ function __input_gamepad_set_mapping()
                             if (__INPUT_DEBUG) __input_trace("  (Limiting axis range)");
                             _mapping.limit_range = true;
                         }
-                        else if ((os_type != os_linux) && (!_is_directional))
+                        else if ((os_type != os_linux) && !_is_directional)
                         {
                             //Nondirectional input uses full axis range (excepting Linux remappings and XInput)
                             if (__INPUT_DEBUG) __input_trace("  (Extending axis range)");
