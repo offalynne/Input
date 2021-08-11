@@ -4,6 +4,10 @@
 
 ---
 
-- [Platform Quirks](Platform-Quirks)
+- [Input Sources](Input-Sources)
+
+- [Verbs and Alternate Bindings](Verbs-and-Alternate-Bindings)
 
 - [Gamepad Operation](Gamepad-Operation)
+
+- [Platform Quirks](Platform-Quirks)
