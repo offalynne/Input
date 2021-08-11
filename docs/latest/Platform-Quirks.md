@@ -1,3 +1,7 @@
+# Platform Quirks
+
+---
+
 _Input works to normalize behavior across supported platforms. Each platform brings it's own eccentricities, so this work is ongoing. Herein notable issues and limitations will be documented that may impact users of Input in their implementations, or impact the experience of players of games that have implemented Input. If you encounter platform-particular problems with Input, please consider [authoring a bug report](https://github.com/JujuAdams/Input/issues) or reaching us to discuss further [on Discord](https://discord.gg/8krYCqr)._
 
 &nbsp;
