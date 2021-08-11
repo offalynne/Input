@@ -64,9 +64,13 @@ Input is developed and maintained on desktop platforms and as a result is most o
 
 - `gp_select` is defined as clicking the touchpad on PlayStation 4 and PlayStation 5 which is GameMaker's default behaviour. This is in contrast to other other platforms where `gp_select` is defined as the SHARE button. [`input_binding_get_name()`](Functions-(Bindings)#input_binding_get_namebinding) will return the correct device-appropriate string.
 
+- Keyboard and mouse are not supported by GameMaker (and Input) on this platform.
+
 ### Xbox One and Xbox Series X/S
 
-- Gamepad descriptions are returned as empty strings but, otherwise, no known quirks. Good luck handling user accounts!
+- Gamepad descriptions are returned as empty strings.
+
+- Keyboard and mouse are not supported by GameMaker (and Input) on this platform.
 
 &nbsp;
 
@@ -81,6 +85,7 @@ Input is developed and maintained on desktop platforms and as a result is most o
 - Many gamepads are not fully supported by iOS due to limited support offered by Apple. At the time of writing, XBox One and PlayStation 4 wireless gamepads are supported by iOS, as are MFi controllers. For an up-to-date list, please check [Apple's communications](https://support.apple.com/en-us/HT210414).
 
 - Users may find the Select (aka Share or View) gamepad button to cause unintended screenshot and video recording actions. These can be toggled on the OS at _Settings > General > Game Controller_
+
 ### Android
 
 - Android keyboard input is problematic and so set to off by default. The most significant issue is keys regularly and irreparably sticking when modified using Shift keys. You can turn keyboard input on by [setting `INPUT_ANDROID_KEYBOARD_ALLOWED` to `true`](Functions-(System)#__input_config). If using this feature, it is not recommended to use bindings besides Arrow keys, Enter, Space, and Backspace.
