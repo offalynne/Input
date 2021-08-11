@@ -72,7 +72,7 @@ function input_tick()
                 _i++;
             }
         }
-        else if (__INPUT_ON_DESKTOP)
+        else
         {
             switch (os_type)
             {

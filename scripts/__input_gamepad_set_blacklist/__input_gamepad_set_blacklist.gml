@@ -95,7 +95,7 @@ function __input_gamepad_set_blacklist()
     }    
     
      //Block devices presenting in bad states on Windows
-    if ((_os == "windows") && (!blacklisted))
+    if ((_os == "windows") && !blacklisted)
     {
         var _a = gamepad_axis_count(index); 
         var _b = gamepad_button_count(index);

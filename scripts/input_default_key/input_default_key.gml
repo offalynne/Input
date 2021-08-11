@@ -11,8 +11,8 @@ function input_default_key(_key, _verb, _alternate = 0)
     {
         //Resolve per-platform allowance
         if (__INPUT_ON_DESKTOP || __INPUT_ON_WEB
-        || (INPUT_ANDROID_KEYBOARD_ALLOWED && os_type == os_android)
-        || (INPUT_SWITCH_KEYBOARD_ALLOWED  && os_type == os_switch))
+        || (os_type == os_android && INPUT_ANDROID_KEYBOARD_ALLOWED)
+        || (os_type == os_switch  && INPUT_SWITCH_KEYBOARD_ALLOWED))
         {
             global.__input_keyboard_valid = true;
         }
