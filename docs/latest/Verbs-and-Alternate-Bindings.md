@@ -1,3 +1,7 @@
+# Verbs and Alternate Bindings
+
+---
+
 Input uses a "verb interface" to coalesce input into easily managed instructions.
 
 Verbs are the basic input actions you want to expose to a player; this includes things like jumping, shooting, pausing the game, or moving in a particular direction. By using verbs we **abstract** user input so that we can change [input source](Input-Sources) whilst playing the game without needing to change anything else. Using verbs also allows for easier key rebinding.
