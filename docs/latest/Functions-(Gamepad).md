@@ -1,4 +1,8 @@
-**Please note** that these functions are provided for convenience if you want to implement your own features using Input's SDL implementation. In general, [Player functions](Functions-(Players)) are the intended way to use Input and are preferred.
+# Functions (Gamepad)
+
+---
+
+?> These functions are provided for convenience if you want to implement your own features using Input's SDL implementation. In general, [Player functions](Functions-(Players)) are the intended way to use Input and are preferred.
 
 &nbsp;
 
