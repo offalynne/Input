@@ -1,3 +1,7 @@
+# Functions (Bindings)
+
+---
+
 ### `input_value_is_binding(value)`
 
 *Returns:* Boolean, if the value is a valid binding struct

@@ -1,3 +1,7 @@
+# Functions (Source Assignment)
+
+---
+
 ### `input_assignment_tick(minPlayers, maxPlayers, leaveVerb)`
 
 *Returns:* Boolean, set to `true` when a player attempts to abort controller assignment

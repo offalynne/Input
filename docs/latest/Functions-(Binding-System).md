@@ -1,4 +1,6 @@
+# Functions (Binding System)
 
+---
 
 ### `input_bindings_reset([source], [playerIndex], [resetThresholds])`
 

@@ -1,3 +1,7 @@
+# Functions (History)
+
+---
+
 ### `input_history_global_include(verb, ...)`
 
 *Returns:* N/A (`undefined`)

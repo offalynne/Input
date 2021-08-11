@@ -1,3 +1,7 @@
+# Functions (Checkers)
+
+---
+
 ### `input_check(verb, [playerIndex], [bufferDuration])`
 
 *Returns:* Boolean, if the verb is currently activate

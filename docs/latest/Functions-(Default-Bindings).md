@@ -1,3 +1,7 @@
+# Functions (Default Bindings)
+
+---
+
 ### `input_default_key(key, verb, [alternate])`
 
 *Returns:* N/A (`undefined`)

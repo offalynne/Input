@@ -1,3 +1,7 @@
+# Functions (Players)
+
+---
+
 ### `input_player_source_set(source, [playerIndex])`
 
 *Returns:* N/A (`undefined`)

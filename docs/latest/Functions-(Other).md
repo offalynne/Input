@@ -1,3 +1,7 @@
+# Functions (Other)
+
+---
+
 ### `input_axis_threshold_set(axis, min, max, [playerIndex])`
 
 *Returns:* A struct with two member variables, `mini` and `maxi`, containing the minimum and maximum thresholds

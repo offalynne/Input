@@ -1,3 +1,7 @@
+# Functions (2D Checkers)
+
+---
+
 ### `input_x(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`
 
 *Returns:* Real, the x-coordinate of the vector represented by the sum of the verb values
