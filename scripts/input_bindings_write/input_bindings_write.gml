@@ -31,5 +31,5 @@ function input_bindings_write(_player_index = all)
         _config = global.__input_players[_player_index].config;
     }
     
-    return __input_struct_to_json(_config);
+    return json_stringify(_config);
 }

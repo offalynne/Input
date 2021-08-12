@@ -78,7 +78,6 @@
     {"id":{"name":"input_hotswap_tick","path":"scripts/input_hotswap_tick/input_hotswap_tick.yy",},"order":1,},
     {"id":{"name":"input_ignore_key_add","path":"scripts/input_ignore_key_add/input_ignore_key_add.yy",},"order":4,},
     {"id":{"name":"input_ignore_key_remove","path":"scripts/input_ignore_key_remove/input_ignore_key_remove.yy",},"order":5,},
-    {"id":{"name":"__input_struct_to_json","path":"scripts/__input_struct_to_json/__input_struct_to_json.yy",},"order":27,},
     {"id":{"name":"input_keyboard_check","path":"scripts/input_keyboard_check/input_keyboard_check.yy",},"order":0,},
     {"id":{"name":"input_is_analogue","path":"scripts/input_is_analogue/input_is_analogue.yy",},"order":7,},
     {"id":{"name":"input_mouse_check","path":"scripts/input_mouse_check/input_mouse_check.yy",},"order":0,},
