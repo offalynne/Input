@@ -17,6 +17,8 @@ function input_bindings_read(_string, _player_index = all)
         return undefined;
     }
     
+    if (__INPUT_ON_WEB) __input_error("Due to up-stream bug in GameMaker's JavaScript runtime, input_bindings_read() and input_bindings_write() are unsupported in HTML5");
+    
     var _config = json_parse(_string);
     
     if (_player_index == all)
