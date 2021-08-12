@@ -107,9 +107,12 @@ _string += "lastkey = " + string(keyboard_lastkey      ) + "\n";
 var _i = 2;
 repeat(255)
 {
-   if (input_keyboard_check(_i)) _string += string(_i) + "  >" + chr(_i) + "< " + __input_key_get_name(_i) + "\n";
+   if (keyboard_check(_i)) _string += string(_i) + "  >" + chr(_i) + "< " + __input_key_get_name(_i) + "\n";
    ++_i;
 }
+
+_string += "mouse = " + string(mouse_x) + "," + string(mouse_y) + "\n";
+_string += "device = " + string(device_mouse_x(0)) + "," + string(device_mouse_y(0)) + "\n";
 
 draw_text(500, 10, _string);
 
