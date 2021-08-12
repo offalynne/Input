@@ -102,10 +102,19 @@ function __input_gamepad_set_vid_pid()
         }
         else
         {
+            __input_trace("Warning! OS type check fell through unexpectedly (os_type = ", os_type, ")");
             description = gamepad_get_description(index);
             vendor  = "";
             product = "";
             xinput  = undefined;
         }
+    }
+    else
+    {
+        //Either UWP or an unsupported platform
+        description = gamepad_get_description(index);
+        vendor  = "";
+        product = "";
+        xinput  = undefined;
     }
 }
