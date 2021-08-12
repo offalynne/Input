@@ -7,12 +7,14 @@ function input_default_key(_key, _verb, _alternate = 0)
     if (__INPUT_DEBUG) __input_trace("Setting default keyboard binding...");
     
     //Set keyboard source validity
-    if (!global.__input_keyboard_valid)
+    if (!global.__input_keyboard_valid && __INPUT_KEYBOARD_SUPPORT)
     {
-        //Resolve per-platform allowance
-        if (__INPUT_ON_DESKTOP || __INPUT_ON_WEB
-        || (os_type == os_android && INPUT_ANDROID_KEYBOARD_ALLOWED)
-        || (os_type == os_switch  && INPUT_SWITCH_KEYBOARD_ALLOWED))
+        if ((!INPUT_ANDROID_KEYBOARD_ALLOWED && (os_type == os_android))
+        ||  (!INPUT_SWITCH_KEYBOARD_ALLOWED  && (os_type == os_switch)))
+        {
+            //Do not enable keyboard input as per platform allowance config
+        }
+        else
         {
             global.__input_keyboard_valid = true;
         }

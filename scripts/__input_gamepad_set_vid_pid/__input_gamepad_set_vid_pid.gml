@@ -111,7 +111,6 @@ function __input_gamepad_set_vid_pid()
     }
     else if (os_type == os_uwp)
     {
-        //Either UWP or an unsupported platform
         description = gamepad_get_description(index);
         vendor  = "";
         product = "";
