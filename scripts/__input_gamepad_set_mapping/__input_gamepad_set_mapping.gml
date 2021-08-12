@@ -64,7 +64,7 @@ function __input_gamepad_set_mapping()
     }
     
     //If we're on PlayStation or Xbox, don't remap anything special
-    if (__INPUT_ON_CONSOLE)
+    if ((os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
     {
         set_mapping(gp_padu,   gp_padu,   __INPUT_MAPPING.BUTTON, "dpup");
         set_mapping(gp_padd,   gp_padd,   __INPUT_MAPPING.BUTTON, "dpdown");
@@ -75,8 +75,8 @@ function __input_gamepad_set_mapping()
         
         set_mapping(gp_shoulderl,  gp_shoulderl,  __INPUT_MAPPING.BUTTON, "leftshoulder");
         set_mapping(gp_shoulderr,  gp_shoulderr,  __INPUT_MAPPING.BUTTON, "rightshoulder");
-        set_mapping(gp_shoulderlb, gp_shoulderlb, __INPUT_MAPPING.BUTTON, "lefttrigger");
-        set_mapping(gp_shoulderrb, gp_shoulderrb, __INPUT_MAPPING.BUTTON, "righttrigger");
+        set_mapping(gp_shoulderlb, gp_shoulderlb, __INPUT_MAPPING.AXIS,   "lefttrigger");
+        set_mapping(gp_shoulderrb, gp_shoulderrb, __INPUT_MAPPING.AXIS,   "righttrigger");
         
         set_mapping(gp_face1, gp_face1, __INPUT_MAPPING.BUTTON, "a");
         set_mapping(gp_face2, gp_face2, __INPUT_MAPPING.BUTTON, "b");
@@ -170,7 +170,7 @@ function __input_gamepad_set_mapping()
     
     #region PC & Mobile
     
-    if ((os_type == os_windows) && xinput)
+    if (__INPUT_ON_MICROSOFT && xinput)
     {
         description = "XInput";
         
@@ -400,7 +400,7 @@ function __input_gamepad_set_mapping()
                             if (__INPUT_DEBUG) __input_trace("  (Limiting axis range)");
                             _mapping.limit_range = true;
                         }
-                        else if ((os_type != os_linux) && (!_is_directional))
+                        else if ((os_type != os_linux) && !_is_directional)
                         {
                             //Nondirectional input uses full axis range (excepting Linux remappings and XInput)
                             if (__INPUT_DEBUG) __input_trace("  (Extending axis range)");

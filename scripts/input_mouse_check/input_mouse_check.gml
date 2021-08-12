@@ -4,6 +4,7 @@ function input_mouse_check(_binding)
     //Extended touchpad handling (Windows only)
     if (os_type != os_windows)
     {
+        //N.B. Fix *not* needed in UWP
         return (device_mouse_check_button(0, _binding));   
     }
     else

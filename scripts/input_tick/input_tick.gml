@@ -39,8 +39,8 @@ function input_tick()
     global.__input_tap_click = false;
     if (os_type == os_windows)
     {
-        
         //Track clicks from touchpad and touchscreen taps (system-setting dependent)
+        //N.B. Fix *not* needed in UWP
         global.__input_tap_presses  += device_mouse_check_button_pressed( 0, mb_left);
         global.__input_tap_releases += device_mouse_check_button_released(0, mb_left);
     
@@ -72,11 +72,12 @@ function input_tick()
                 _i++;
             }
         }
-        else if (__INPUT_ON_DESKTOP)
+        else
         {
             switch (os_type)
             {
                 case os_windows:
+                case os_uwp:
                     //Unstick Alt Space
                     if (keyboard_check(vk_alt) && keyboard_check_pressed(vk_space))
                     {
