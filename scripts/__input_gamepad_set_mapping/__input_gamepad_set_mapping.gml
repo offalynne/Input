@@ -170,7 +170,7 @@ function __input_gamepad_set_mapping()
     
     #region PC & Mobile
     
-    if (__INPUT_ON_MICROSOFT && xinput)
+    if ((os_type == os_uwp) || ((os_type == os_windows) && xinput))
     {
         description = "XInput";
         

@@ -4,13 +4,12 @@
 
 #macro __INPUT_ON_CONSOLE   ((os_type == os_switch)  || (os_type == os_ps4)   || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
 #macro __INPUT_ON_DESKTOP   ((os_type == os_macosx)  || (os_type == os_linux) || (os_type == os_windows))
-#macro __INPUT_ON_MICROSOFT ((os_type == os_windows) || (os_type == os_uwp))
 #macro __INPUT_ON_APPLE     ((os_type == os_macosx)  || (os_type == os_ios)   || (os_type == os_tvos))
 #macro __INPUT_ON_MOBILE    ((os_type == os_android) || (os_type == os_ios)   || (os_type == os_tvos))
 #macro __INPUT_ON_WEB       (os_browser != browser_not_a_browser)
 
 #macro __INPUT_SDL2_SUPPORT     ((__INPUT_ON_DESKTOP || (os_type == os_android)) && !__INPUT_ON_WEB)
-#macro __INPUT_KEYBOARD_SUPPORT (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_android) || (os_type == os_switch))
+#macro __INPUT_KEYBOARD_SUPPORT (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_uwp) || (os_type == os_android) || (os_type == os_switch))
 
 //Extra constants
 #macro gp_guide    32789
@@ -273,7 +272,7 @@ if (INPUT_IGNORE_RESERVED_KEYS_LEVEL > 1)
     input_ignore_key_add(144); //num lock
     input_ignore_key_add(145); //scroll lock
         
-    if (__INPUT_ON_MICROSOFT || __INPUT_ON_WEB)
+    if (__INPUT_ON_WEB || (os_type == os_windows) || (os_type == os_uwp))
     {
         input_ignore_key_add(0x15); //IME key
         input_ignore_key_add(0x16); //IME key
