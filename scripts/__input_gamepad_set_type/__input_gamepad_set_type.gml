@@ -156,7 +156,7 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunityXBoxOne";
                 }
-                else if (string_count("xbox 360", _desc) || string_count("xbox360", _desc))
+                else if (string_count("xbox 360", _desc) || string_count("xbox360", _desc) || string_count("xinput standard gamepad", _desc))
                 {
                     raw_type = "CommunityXBox360";
                 }
