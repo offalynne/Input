@@ -4,6 +4,7 @@ function input_mouse_check_pressed(_binding)
     //Extended mouse button handling (Windows only)
     if (os_type != os_windows)
     {
+        //N.B. Fix *not* needed in UWP
         return (device_mouse_check_button_pressed(0, _binding));   
     }
     else

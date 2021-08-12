@@ -130,7 +130,7 @@ function __input_key_get_name(_key)
         {
             case "browser":
             case os_windows:
-            
+            case os_uwp:
                 //F11 - F32
                 if ((_key >= vk_f11) && (_key <= vk_f1 + 31))
                 {
