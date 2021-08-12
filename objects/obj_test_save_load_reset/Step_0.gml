@@ -32,7 +32,7 @@ if (input_keyboard_check_pressed(ord("R")))
 {
     rebinding = false;
     
-    input_bindings_reset();
+    input_bindings_reset(all);
     
     show_debug_message("Reset!");
 }
