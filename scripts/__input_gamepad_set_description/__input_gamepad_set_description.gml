@@ -2,7 +2,16 @@
 
 function __input_gamepad_set_description()
 {
-    if (!__INPUT_SDL2_SUPPORT)
+    if (xinput)
+    {
+        description = "XInput";
+    }
+    else if (os_type == os_uwp)
+    {
+        //Non-XInput controller return an empty string for their description on UWP
+        description = "Unknown UWP Controller";
+    }
+    else if (!__INPUT_SDL2_SUPPORT)
     {
         __input_trace("SDL2 remapping unsupported for this platform");
         description = gamepad_get_description(index);
@@ -15,10 +24,6 @@ function __input_gamepad_set_description()
     else if (blacklisted)
     {
         description = gamepad_get_description(index);
-    }
-    else if (xinput)
-    {
-        description = "XInput";
     }
     else
     {

@@ -114,7 +114,7 @@ function __input_gamepad_set_vid_pid()
         description = gamepad_get_description(index);
         vendor  = "";
         product = "";
-        xinput  = (description == "Xbox Controller (XInput STANDARD GAMEPAD)"); //Non-XInput devices have their description return as an empty string
+        xinput  = (description == "Xbox Controller (XInput STANDARD GAMEPAD)");
     }
     else
     {

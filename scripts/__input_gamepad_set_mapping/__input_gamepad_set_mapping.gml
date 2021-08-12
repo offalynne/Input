@@ -168,12 +168,10 @@ function __input_gamepad_set_mapping()
     
     #endregion
     
-    #region PC & Mobile
+    #region PC/UWP & Mobile
     
     if ((os_type == os_uwp) || ((os_type == os_windows) && xinput))
     {
-        description = "XInput";
-        
         //Default XInput mapping for Windows. This mapping is super common!
         set_mapping(gp_padu,   0, __INPUT_MAPPING.BUTTON, "dpup");
         set_mapping(gp_padd,   1, __INPUT_MAPPING.BUTTON, "dpdown");
