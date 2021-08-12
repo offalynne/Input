@@ -30,6 +30,12 @@ function __input_fix_config_struct(_config_struct)
                             if (!variable_struct_exists(self, "value"        ) || is_ptr(value        )) value         = undefined;
                             if (!variable_struct_exists(self, "axis_negative") || is_ptr(axis_negative)) axis_negative = undefined;
                             if (!variable_struct_exists(self, "label"        ) || is_ptr(label        )) label         = __input_binding_get_label(type, value, axis_negative);
+                            
+                            if (os_type == os_android)
+                            {
+                                //We have an additional field on Android
+                                if (!variable_struct_exists(self, "android_lowercase") || is_ptr(android_lowercase)) android_lowercase = undefined;
+                            }
                         }
                     }
                     
