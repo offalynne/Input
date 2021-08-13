@@ -93,6 +93,11 @@ global.__input_cursor_verb_r      = undefined;
 global.__input_cursor_speed       = 0;
 global.__input_cursor_using_mouse = true;
 
+//Keyboard tracking
+global.__input_keyboard_string      = "";
+global.__input_prev_keyboard_string = "";
+global.__input_this_keyboard_string = (__INPUT_KEYBOARD_SUPPORT ? keyboard_string : "");
+
 //Whether these particular input sources are valid
 //This is determined by what default keybindings are set up
 global.__input_keyboard_valid = false;

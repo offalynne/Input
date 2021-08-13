@@ -2,8 +2,6 @@ function __input_keyboard_key()
 {
     if (__INPUT_KEYBOARD_SUPPORT && (keyboard_check(vk_anykey)))
     {
-        var _platform = os_type;
-        if __INPUT_ON_WEB _platform = "web";
         
         switch (os_type)
         {
