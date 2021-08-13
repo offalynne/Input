@@ -55,26 +55,52 @@ function input_tick()
     
     #endregion
     
-    #region Unstick keyboard
+    #region Update keyboard
 
-    if (__INPUT_KEYBOARD_SUPPORT && (keyboard_check(vk_anykey)))
+    if (__INPUT_KEYBOARD_SUPPORT)
     {
-        //Meta release sticks every key pressed during hold
-        //This is "the nuclear option", but the problem is severe and io_clear does not fix it
-        if ((__INPUT_ON_WEB && __INPUT_ON_APPLE)
-        && (keyboard_check_released(92) || keyboard_check_released(93)))
+        //Compare keyboard string contents to prior state
+        var _prev = global.__input_prev_keyboard_string;
+        if ((keyboard_string == "")                    //Empty
+        || (keyboard_string == _prev)                  //Unchanged
+        || (string_pos(keyboard_string, _prev) == 1))  //Substring
         {
-            //Release all
-            var _i = 8;
-            repeat(247)
-            {
-                keyboard_key_release(_i);
-                _i++;
-            }
+            global.__input_this_keyboard_string = "";
         }
         else
         {
-            switch (os_type)
+            //Find previous keyboard string contents in the current state
+            var _pos = string_pos(global.__input_prev_keyboard_string, keyboard_string);
+            if (_pos == 0)
+            {
+                //Keyboard string contents are wholly additive
+                global.__input_this_keyboard_string = keyboard_string;
+            }
+            else if (_pos == 1)
+            {
+                //Keyboard string contents are partially additive
+                global.__input_this_keyboard_string = string_copy(keyboard_string, string_length(_prev) + 1, string_length(keyboard_string));
+            }
+        }
+        
+        //Update internal strings
+        global.__input_prev_keyboard_string = keyboard_string;
+        if (global.__input_this_keyboard_string != "")
+        {
+            global.__input_keyboard_string += global.__input_this_keyboard_string;
+        }
+        else if keyboard_check_pressed(vk_backspace)
+        {
+            global.__input_keyboard_string = string_delete(global.__input_keyboard_string, string_length(global.__input_keyboard_string), 1);
+        }
+        
+        //Handle key sticking
+        if (keyboard_check(vk_anykey))
+        {
+            var _platform = os_type
+            if (__INPUT_ON_WEB && __INPUT_ON_APPLE) _platform = "apple_browser";
+                
+            switch (_platform)
             {
                 case os_windows:
                 case os_uwp:
@@ -87,7 +113,22 @@ function input_tick()
                         keyboard_key_release(vk_ralt);
                     }
                 break;
-            
+                
+                case "apple_browser":
+                    //Meta release sticks every key pressed during hold
+                    //This is "the nuclear option", but the problem is severe and io_clear does not fix it
+                    if (keyboard_check_released(92) || keyboard_check_released(93))
+                    {
+                        //Release all
+                        var _i = 8;
+                        repeat(247)
+                        {
+                            keyboard_key_release(_i);
+                            _i++;
+                        }
+                    }
+                break;
+                
                 case os_macosx:
                     //Unstick control key double-up
                     if (keyboard_check_released(vk_control))
