@@ -304,6 +304,10 @@ if (INPUT_IGNORE_RESERVED_KEYS_LEVEL > 1)
     }
 }
 
+//By default GameMaker registers double click (or tap) as right mouse button
+//We want to be able to identify the actual mouse buttons correcty, and have our own double-input handling
+device_mouse_dbclick_enable(false);
+
 //These are globally scoped rather than methods because otherwise they'd get serialised by input_bindings_write()
 
 /// @param source
