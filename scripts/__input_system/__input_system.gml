@@ -11,6 +11,8 @@
 #macro __INPUT_SDL2_SUPPORT     ((__INPUT_ON_DESKTOP || (os_type == os_android)) && !__INPUT_ON_WEB)
 #macro __INPUT_KEYBOARD_SUPPORT (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_uwp) || (os_type == os_android) || (os_type == os_switch))
 
+#macro __INPUT_KEYBOARD_STRING_MAX_LENGTH  1024
+
 //Extra constants
 #macro gp_guide    32789
 #macro gp_misc1    32790

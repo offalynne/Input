@@ -59,32 +59,39 @@ function input_tick()
 
     if (__INPUT_KEYBOARD_SUPPORT)
     {
+        var _keyboard_string = keyboard_string;
+        if (string_length(_keyboard_string) > __INPUT_KEYBOARD_STRING_MAX_LENGTH) //Do YYG's job for them
+        {
+            _keyboard_string = string_copy(_keyboard_string, string_length(_keyboard_string) - (__INPUT_KEYBOARD_STRING_MAX_LENGTH-1), __INPUT_KEYBOARD_STRING_MAX_LENGTH);
+        }
+        
         //Compare keyboard string contents to prior state
         var _prev = global.__input_prev_keyboard_string;
-        if ((keyboard_string == "")                    //Empty
-        || (keyboard_string == _prev)                  //Unchanged
-        || (string_pos(keyboard_string, _prev) == 1))  //Substring
+        if ((_keyboard_string == "")                    //Empty
+        || (_keyboard_string == _prev)                  //Unchanged
+        || (string_pos(_keyboard_string, _prev) == 1))  //Substring
         {
             global.__input_this_keyboard_string = "";
         }
         else
         {
             //Find previous keyboard string contents in the current state
-            var _pos = string_pos(global.__input_prev_keyboard_string, keyboard_string);
+            var _pos = string_pos(global.__input_prev_keyboard_string, _keyboard_string);
             if (_pos == 0)
             {
                 //Keyboard string contents are wholly additive
-                global.__input_this_keyboard_string = keyboard_string;
+                global.__input_this_keyboard_string = _keyboard_string;
             }
             else if (_pos == 1)
             {
                 //Keyboard string contents are partially additive
-                global.__input_this_keyboard_string = string_copy(keyboard_string, string_length(_prev) + 1, string_length(keyboard_string));
+                global.__input_this_keyboard_string = string_copy(_keyboard_string, string_length(_prev) + 1, string_length(_keyboard_string));
             }
         }
         
+        global.__input_prev_keyboard_string = _keyboard_string;
+        
         //Update internal strings
-        global.__input_prev_keyboard_string = keyboard_string;
         if (global.__input_this_keyboard_string != "")
         {
             global.__input_keyboard_string += global.__input_this_keyboard_string;
@@ -92,6 +99,12 @@ function input_tick()
         else if keyboard_check_pressed(vk_backspace)
         {
             global.__input_keyboard_string = string_delete(global.__input_keyboard_string, string_length(global.__input_keyboard_string), 1);
+        }
+        
+        //Make sure we never go over the maximum length
+        if (string_length(global.__input_keyboard_string) > __INPUT_KEYBOARD_STRING_MAX_LENGTH)
+        {
+            global.__input_keyboard_string = string_copy(global.__input_keyboard_string, string_length(global.__input_keyboard_string) - (__INPUT_KEYBOARD_STRING_MAX_LENGTH-1), __INPUT_KEYBOARD_STRING_MAX_LENGTH);
         }
         
         //Handle key sticking
@@ -114,7 +127,7 @@ function input_tick()
                     }
                 break;
                 
-                case "apple_browser":
+                case "apple_browser": //This case applies on iOS, tvOS, and MacOS
                     //Meta release sticks every key pressed during hold
                     //This is "the nuclear option", but the problem is severe and io_clear does not fix it
                     if (keyboard_check_released(92) || keyboard_check_released(93))
