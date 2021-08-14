@@ -14,7 +14,7 @@ function input_string_async_tick(){
             {
                 //Report results
                 var _result = async_load[? "result"];
-                if (global.__input_async_allow_empty || _result != undefined && string(_result) != "")
+                if (global.__input_async_allow_empty || ((_result != undefined) && (string(_result) != "")))
                 {
                     input_string_set(string(_result));
                 }
