@@ -101,10 +101,10 @@ function input_tick()
                 break;
             
                 case "apple_web": //This case applies on iOS, tvOS, and MacOS
-                    //Meta release sticks every key pressed during hold
-                    //This is "the nuclear option", but the problem is severe and io_clear doesn't fix
                     if (keyboard_check_released(92) || keyboard_check_released(93))
                     {
+                        //Meta release sticks every key pressed during hold
+                        //This is "the nuclear option", but the problem is severe
                         var _i = 8;
                         repeat(247)
                         {
@@ -113,7 +113,7 @@ function input_tick()
                         }
                     }
                 break;
-            
+                
                 case os_macosx:
                     //Unstick control key double-ups
                     if (keyboard_check_released(vk_control))
