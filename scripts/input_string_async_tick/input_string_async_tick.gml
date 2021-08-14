@@ -4,7 +4,6 @@ function input_string_async_tick(){
     if ((event_number != (__INPUT_ON_WEB ? 0 : ev_dialog_async)))   
     {
         __input_error("Async tick in invalid event (", object_get_name(object_index), ", ", event_type, ", ", event_number, ")");
-        exit;
     }
     else
     {
