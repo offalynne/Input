@@ -70,7 +70,11 @@ function input_tick()
         
         //Input string
         input_string_set(_string);
-        global.__input_string = keyboard_string;
+        if (os_type != os_uwp || (global.__input_async_id == undefined))
+        {
+            global.__input_string = keyboard_string;
+        }
+        
         if (os_type == os_android) 
         {
             //Trim leading space on Android
