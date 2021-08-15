@@ -52,6 +52,23 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 
 &nbsp;
 
+### `input_check_repeat(verb, [playerIndex], [repeat], [predelay])`
+
+*Returns:* Boolean, if the verb has been re-triggered by a repeater behaviour
+
+|Name           |Datatype                                  |Purpose                                                                                                                      |
+|---------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+|`verb`         |[verb](Verbs-and-Alternate-Bindings)/array|[Verb](Verbs-and-Alternate-Bindings) to check, or an array of [verbs](Verbs-and-Alternate-Bindings) (see below)              |
+|`[playerIndex]`|integer                                   |Player to target. If not specified, player 0 is used                                                                         |
+|`[delay]`      |frames/milliseconds                       |Time between re-triggers; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Functions-(System)#__input_config). The units of this value are determined by [`INPUT_REPEAT_DEFAULT_DELAY`](Functions-(System)#__input_config)|
+|`[predelay]`   |frames/milliseconds                       |Time before the first re-trigger; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Functions-(System)#__input_config). The units of this value are determined by [`INPUT_REPEAT_DEFAULT_PREDELAY`](Functions-(System)#__input_config)|
+
+This function will **not** return `true` on the same frame a verb is activated (unless `predelay` is set to 0). You'll probably want to combine this function with [`input_check_pressed()`](Functions-(Checkers)#input_check_pressedverb-playerindex-bufferduration).
+
+&nbsp;
+
+&nbsp;
+
 ### `input_check_double(verb, [playerIndex], [bufferDuration])`
 
 *Returns:* Boolean, if the verb is currently activate
