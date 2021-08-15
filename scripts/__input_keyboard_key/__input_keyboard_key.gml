@@ -1,8 +1,7 @@
 function __input_keyboard_key()
 {
     if (__INPUT_KEYBOARD_SUPPORT && (keyboard_check(vk_anykey)))
-    {
-        
+    {        
         switch (os_type)
         {
             //Android keyboard test

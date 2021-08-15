@@ -55,84 +55,57 @@ function input_tick()
     
     #endregion
     
-    #region Update keyboard
+    #region Keyboard
 
-    if (__INPUT_KEYBOARD_SUPPORT)
+    if (__INPUT_KEYBOARD_SUPPORT) 
     {
-        var _keyboard_string = keyboard_string;
-        if (string_length(_keyboard_string) > __INPUT_KEYBOARD_STRING_MAX_LENGTH) //Do YYG's job for them
+        //Set keyboard string
+        var _string = keyboard_string;
+        var _prev_string = global.__input_keyboard_prev_string;
+        if ((_string == "") && (string_length(_prev_string) > 1))
         {
-            _keyboard_string = string_copy(_keyboard_string, string_length(_keyboard_string) - (__INPUT_KEYBOARD_STRING_MAX_LENGTH-1), __INPUT_KEYBOARD_STRING_MAX_LENGTH);
+             //Revert if overflowing
+            _string = _prev_string;
         }
         
-        //Compare keyboard string contents to prior state
-        var _prev = global.__input_prev_keyboard_string;
-        if ((_keyboard_string == "")                    //Empty
-        || (_keyboard_string == _prev)                  //Unchanged
-        || (string_pos(_keyboard_string, _prev) == 1))  //Substring
-        {
-            global.__input_this_keyboard_string = "";
-        }
-        else
-        {
-            //Find previous keyboard string contents in the current state
-            var _pos = string_pos(global.__input_prev_keyboard_string, _keyboard_string);
-            if (_pos == 0)
-            {
-                //Keyboard string contents are wholly additive
-                global.__input_this_keyboard_string = _keyboard_string;
-            }
-            else if (_pos == 1)
-            {
-                //Keyboard string contents are partially additive
-                global.__input_this_keyboard_string = string_copy(_keyboard_string, string_length(_prev) + 1, string_length(_keyboard_string));
-            }
-        }
+        //Set input string
+        input_string_set(_string);
+        global.__input_string = keyboard_string;
         
-        global.__input_prev_keyboard_string = _keyboard_string;
-        
-        //Update internal strings
-        if (global.__input_this_keyboard_string != "")
+        if (os_type == os_android) 
         {
-            global.__input_keyboard_string += global.__input_this_keyboard_string;
+            //Trim leading space on Android
+            global.__input_string = string_delete(global.__input_string, 1, 1);
         }
-        else if keyboard_check_pressed(vk_backspace)
-        {
-            global.__input_keyboard_string = string_delete(global.__input_keyboard_string, string_length(global.__input_keyboard_string), 1);
-        }
-        
-        //Make sure we never go over the maximum length
-        if (string_length(global.__input_keyboard_string) > __INPUT_KEYBOARD_STRING_MAX_LENGTH)
-        {
-            global.__input_keyboard_string = string_copy(global.__input_keyboard_string, string_length(global.__input_keyboard_string) - (__INPUT_KEYBOARD_STRING_MAX_LENGTH-1), __INPUT_KEYBOARD_STRING_MAX_LENGTH);
-        }
-        
-        //Handle key sticking
+    
+        //Unstick
         if (keyboard_check(vk_anykey))
         {
-            var _platform = os_type
-            if (__INPUT_ON_WEB && __INPUT_ON_APPLE) _platform = "apple_browser";
-                
+            var _platform = os_type;
+            if (__INPUT_ON_WEB && __INPUT_ON_APPLE)
+            {
+                _platform = "apple_web";
+            }
+
             switch (_platform)
             {
                 case os_windows:
                 case os_uwp:
-                    //Unstick Alt Space
                     if (keyboard_check(vk_alt) && keyboard_check_pressed(vk_space))
                     {
+                        //Unstick Alt Space
                         keyboard_key_release(vk_alt);
                         keyboard_key_release(vk_space);
                         keyboard_key_release(vk_lalt);
                         keyboard_key_release(vk_ralt);
                     }
                 break;
-                
-                case "apple_browser": //This case applies on iOS, tvOS, and MacOS
-                    //Meta release sticks every key pressed during hold
-                    //This is "the nuclear option", but the problem is severe and io_clear does not fix it
+            
+                case "apple_web": //This case applies on iOS, tvOS, and MacOS
                     if (keyboard_check_released(92) || keyboard_check_released(93))
                     {
-                        //Release all
+                        //Meta release sticks every key pressed during hold
+                        //This is "the nuclear option", but the problem is severe
                         var _i = 8;
                         repeat(247)
                         {
@@ -143,7 +116,7 @@ function input_tick()
                 break;
                 
                 case os_macosx:
-                    //Unstick control key double-up
+                    //Unstick control key double-ups
                     if (keyboard_check_released(vk_control))
                     {
                         keyboard_key_release(vk_lcontrol);

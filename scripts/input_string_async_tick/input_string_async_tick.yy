@@ -6,7 +6,7 @@
     "path": "folders/Input/Keyboard (Direct).yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_keyboard_get_string",
+  "name": "input_string_async_tick",
   "tags": [],
   "resourceType": "GMScript",
 }
