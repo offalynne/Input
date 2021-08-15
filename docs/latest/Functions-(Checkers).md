@@ -52,7 +52,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 
 &nbsp;
 
-### `input_check_repeat(verb, [playerIndex], [repeat], [predelay])`
+### `input_check_repeat(verb, [playerIndex], [delay], [predelay])`
 
 *Returns:* Boolean, if the verb has been re-triggered by a repeater behaviour
 
