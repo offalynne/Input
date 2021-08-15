@@ -63,7 +63,7 @@ The array returned by the function contains structs representing verb events: po
 |--------|---------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |`verb`  |[verb](https://github.com/JujuAdams/input3/wiki/Verbs-and-Alternates)|Verb for this event                                                                                                                                                          |
 |`value` |number                                                               |Value of the verb when the state changed. For verbs driven by buttons, a value of `1` indicates a verb has been pressed and a value of `0` indicates a verb has been released|
-|`time`  |number                                                               |The time when the verb's state changed. Time units are controlled by [`INPUT_TIMER_MILLISECONDS`](Functions-(System)#__input_config)                                         |
+|`time`  |number                                                               |The time when the verb's state changed. Time units are controlled by [`INPUT_TIMER_MILLISECONDS`](Configuration)                                         |
 
 &nbsp;
 

@@ -65,7 +65,7 @@ Error codes that this function can return are as follows. These are all elements
 |`.GAMEPAD_CHANGED`   |Player's gamepad changed                                                                                                                                                                         |
 |`.GAMEPAD_INVALID`   |Player's gamepad is invalid, usually because their controller was disconnected during scanning                                                                                                   |
 |`.BINDING_DOESNT_MATCH_SOURCE`|Player pressed a key/button (etc.) on a source that is different to the target source                                                                                                   |
-|`.TIMEOUT`           |Either the player didn't enter a new binding or a stuck key prevented the system from working. The timeout period is defined by [`INPUT_BINDING_SCAN_TIMEOUT`](Functions-(System)#__input_config)|
+|`.TIMEOUT`           |Either the player didn't enter a new binding or a stuck key prevented the system from working. The timeout period is defined by [`INPUT_BINDING_SCAN_TIMEOUT`](Configuration)|
 |`.SUCCESS_THIS_FRAME`|Input scanning has already succeeded this frame - this is a rare error code and should only be returned if `input_binding_scan_tick()` is being called twice in a single frame for some reason   |
 |`.ERROR_THIS_FRAME`  |Input scanning has already failed this frame - this is a rare error code and should only be returned if `input_binding_scan_tick()` is being called twice in a single frame for some reason      |
 

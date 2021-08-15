@@ -10,7 +10,7 @@
 |------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
 |`verb`            |[verb](Verbs-and-Alternate-Bindings)/array|[Verb](Verbs-and-Alternate-Bindings) to check, or an array of [verbs](Verbs-and-Alternate-Bindings) (see below)              |
 |`[playerIndex]`   |integer                                   |Player to target. If not specified, player 0 is used                                                                         |
-|`[bufferDuration]`|frames/milliseconds                       |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Functions-(System)#__input_config)|
+|`[bufferDuration]`|frames/milliseconds                       |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
 
 If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are currently active for the player.
 
@@ -27,7 +27,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 |------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
 |`verb`            |[verb](Verbs-and-Alternate-Bindings)/array|[Verb](Verbs-and-Alternate-Bindings) to check, or an array of [verbs](Verbs-and-Alternate-Bindings) (see below)              |
 |`[playerIndex]`   |integer                                   |Player to target. If not specified, player 0 is used                                                                         |
-|`[bufferDuration]`|frames/milliseconds                       |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Functions-(System)#__input_config)|
+|`[bufferDuration]`|frames/milliseconds                       |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
 
 If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are newly activated this frame for the player.
 
@@ -44,7 +44,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 |------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
 |`verb`            |[verb](Verbs-and-Alternate-Bindings)/array|[Verb](Verbs-and-Alternate-Bindings) to check, or an array of [verbs](Verbs-and-Alternate-Bindings) (see below)              |
 |`[playerIndex]`   |integer                                   |Player to target. If not specified, player 0 is used                                                                         |
-|`[bufferDuration]`|frames/milliseconds                       |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Functions-(System)#__input_config)|
+|`[bufferDuration]`|frames/milliseconds                       |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
 
 If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are newly deactivated this frame for the player.
 
@@ -60,8 +60,8 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 |---------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
 |`verb`         |[verb](Verbs-and-Alternate-Bindings)/array|[Verb](Verbs-and-Alternate-Bindings) to check, or an array of [verbs](Verbs-and-Alternate-Bindings) (see below)              |
 |`[playerIndex]`|integer                                   |Player to target. If not specified, player 0 is used                                                                         |
-|`[delay]`      |frames/milliseconds                       |Time between re-triggers; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Functions-(System)#__input_config). The units of this value are determined by [`INPUT_REPEAT_DEFAULT_DELAY`](Functions-(System)#__input_config)|
-|`[predelay]`   |frames/milliseconds                       |Time before the first re-trigger; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Functions-(System)#__input_config). The units of this value are determined by [`INPUT_REPEAT_DEFAULT_PREDELAY`](Functions-(System)#__input_config)|
+|`[delay]`      |frames/milliseconds                       |Time between re-triggers; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration). The units of this value are determined by [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration)|
+|`[predelay]`   |frames/milliseconds                       |Time before the first re-trigger; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration). The units of this value are determined by [`INPUT_REPEAT_DEFAULT_PREDELAY`](Configuration)|
 
 This function will **not** return `true` on the same frame a verb is activated (unless `predelay` is set to 0). You'll probably want to combine this function with [`input_check_pressed()`](Functions-(Checkers)#input_check_pressedverb-playerindex-bufferduration).
 
@@ -77,9 +77,9 @@ This function will **not** return `true` on the same frame a verb is activated (
 |------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
 |`verb`            |[verb](Verbs-and-Alternate-Bindings)/array|[Verb](Verbs-and-Alternate-Bindings) to check, or an array of [verbs](Verbs-and-Alternate-Bindings) (see below)              |
 |`[playerIndex]`   |integer                                   |Player to target. If not specified, player 0 is used                                                                         |
-|`[bufferDuration]`|frames/milliseconds                       |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Functions-(System)#__input_config)|
+|`[bufferDuration]`|frames/milliseconds                       |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
 
-If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are currently active for the player. The maximum delay between button presses to activate this function is given by [`INPUT_DOUBLE_DELAY`](Functions-(System)#__input_config).
+If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are currently active for the player. The maximum delay between button presses to activate this function is given by [`INPUT_DOUBLE_DELAY`](Configuration).
 
 &nbsp;
 
@@ -93,9 +93,9 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 |------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
 |`verb`            |[verb](Verbs-and-Alternate-Bindings)/array|[Verb](Verbs-and-Alternate-Bindings) to check, or an array of [verbs](Verbs-and-Alternate-Bindings) (see below)              |
 |`[playerIndex]`   |integer                                   |Player to target. If not specified, player 0 is used                                                                         |
-|`[bufferDuration]`|frames/milliseconds                       |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Functions-(System)#__input_config)|
+|`[bufferDuration]`|frames/milliseconds                       |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
 
-If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are newly activated this frame for the player. The maximum delay between button presses to activate this function is given by [`INPUT_DOUBLE_DELAY`](Functions-(System)#__input_config).
+If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are newly activated this frame for the player. The maximum delay between button presses to activate this function is given by [`INPUT_DOUBLE_DELAY`](Configuration).
 
 &nbsp;
 
@@ -109,9 +109,9 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 |------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
 |`verb`            |[verb](Verbs-and-Alternate-Bindings)/array|[Verb](Verbs-and-Alternate-Bindings) to check, or an array of [verbs](Verbs-and-Alternate-Bindings) (see below)              |
 |`[playerIndex]`   |integer                                   |Player to target. If not specified, player 0 is used                                                                         |
-|`[bufferDuration]`|frames/milliseconds                       |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Functions-(System)#__input_config)|
+|`[bufferDuration]`|frames/milliseconds                       |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
 
-If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are newly deactivated this frame for the player. The maximum delay between button presses to activate this function is given by [`INPUT_DOUBLE_DELAY`](Functions-(System)#__input_config).
+If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are newly deactivated this frame for the player. The maximum delay between button presses to activate this function is given by [`INPUT_DOUBLE_DELAY`](Configuration).
 
 &nbsp;
 

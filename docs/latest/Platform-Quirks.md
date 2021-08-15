@@ -58,7 +58,7 @@ Input is developed and maintained on desktop platforms and as a result is most o
 
 ### Switch
 
-- Switch keyboard input is fully functional but unlikely to be needed, and therefore off by default. You can turn keyboard input on by [setting `INPUT_SWITCH_KEYBOARD_ALLOWED` to `true`](Functions-(System)#__input_config).
+- Switch keyboard input is fully functional but unlikely to be needed, and therefore off by default. You can turn keyboard input on by [setting `INPUT_SWITCH_KEYBOARD_ALLOWED` to `true`](Configuration).
 
 - Switch touchscreen input is fully functional. You may not want to allow this for your game, in which case you should omit default mouse input on Switch (via a check against `os_type`) to prevent touchscreen input being registered by Input.
 
@@ -92,7 +92,7 @@ Input is developed and maintained on desktop platforms and as a result is most o
 
 ### Android
 
-- Android keyboard input is problematic and so set to off by default. The most significant issue is keys regularly and irreparably sticking when modified using Shift keys. You can turn keyboard input on by [setting `INPUT_ANDROID_KEYBOARD_ALLOWED` to `true`](Functions-(System)#__input_config). If using this feature, it is not recommended to use bindings besides Arrow keys, Enter, Space, and Backspace.
+- Android keyboard input is problematic and so set to off by default. The most significant issue is keys regularly and irreparably sticking when modified using Shift keys. You can turn keyboard input on by [setting `INPUT_ANDROID_KEYBOARD_ALLOWED` to `true`](Configuration). If using this feature, it is not recommended to use bindings besides Arrow keys, Enter, Space, and Backspace.
 
 - [Controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping. Specifically, the runtime is using an old version of the identifying string used to differentiate controllers, resulting in the feature being marginally limited on the platform.
 
@@ -130,7 +130,7 @@ Input is developed and maintained on desktop platforms and as a result is most o
 
 - Gamepad descriptions are returned as `"XInput"` or `"Unknown UWP Controller"`.
 
-- Gamepads trigger keyboard events. As a result, certain keyboard keys are blocked by default; for more information see [`INPUT_IGNORE_RESERVED_KEYS_LEVEL`](Functions-(System)#__input_config).
+- Gamepads trigger keyboard events. As a result, certain keyboard keys are blocked by default; for more information see [`INPUT_IGNORE_RESERVED_KEYS_LEVEL`](Configuration).
 
 ### UWP on Xbox One and Xbox Series X/S
 
