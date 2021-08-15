@@ -1,8 +1,6 @@
-# Platform Quirks
+_While this information is provided for your benefit, in the best of cases it can be ignored: it is our intent that Input permit otherwise-problematic scenarios to "just work". If you encounter undocumented platform-particular issues with Input, please consider [authoring a bug report](https://github.com/JujuAdams/Input/issues) or reaching us to discuss further [on Discord](https://discord.gg/8krYCqr)._
 
----
-
-_Input works to normalize behavior across supported platforms. Each platform brings it's own eccentricities, so this work is ongoing. Herein notable issues and limitations will be documented that may impact users of Input in their implementations, or impact the experience of players of games that have implemented Input. If you encounter platform-particular problems with Input, please consider [authoring a bug report](https://github.com/JujuAdams/Input/issues) or reaching us to discuss further [on Discord](https://discord.gg/8krYCqr)._
+Input works to normalize behavior across supported platforms. Each platform brings it's own eccentricities, so this work is ongoing. Herein notable issues and limitations will be documented that may impact users of Input in their implementations, or impact the experience of players of games that have implemented Input. For a list of upstream problems we are monitoring and related workarounds, see [upstream bug issues](https://github.com/JujuAdams/Input/issues?q=is%3Aissue+label%3A%22upstream+bug+%F0%9F%92%A7%22+).
 
 &nbsp;
 
@@ -14,13 +12,17 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 ## Desktop
 
-Input is developed and maintained on desktop platforms and as a result is most oriented and thoroughly tested for desktop features. *The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#html5) for information on platform-specific quirks.*
+Input is developed and maintained on desktop platforms and as a result is most oriented and thoroughly tested for desktop features. 
+
+*The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#html5) for information on platform-specific quirks.*
 
 ### Windows
 
 - As per GameMaker's default behaviour, device indexes from 0 to 3 inclusive are XInput gamepads. Devices 4 to 11 inclusive are DInput gamepads. XInput gamepads return less information about themselves than DInput and, as a result, some supplementary data (button labels etc.) may be inaccurate.
 
 - [Controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping. Specifically, the runtime is using an old version of the identifying string used to differentiate controllers, resulting in the feature being marginally limited on the platform.
+
+- On OS versions below Windows 10, some Bluetooth controllers fail to operate correctly. This is a system-level problem beyond our capability to address.
 
 - When windowed, the Alt+Space menu sticks. Input forces Space to release when Alt keys do.
 
@@ -68,7 +70,9 @@ Input is developed and maintained on desktop platforms and as a result is most o
 
 ### Xbox One and Xbox Series X/S
 
-- Gamepad descriptions are returned as empty strings.
+*The following is valid for native (XDK) builds only. If you are using UWP for your game but are running on an Xbox, please see the [UWP section](#uwp-on-xbox-one-and-xbox-series-xs) for information on platform-specific quirks.*
+
+- Gamepad descriptions are returned as empty strings
 
 - Keyboard and mouse are not supported by GameMaker (and Input) on this platform.
 
@@ -102,10 +106,34 @@ Input is developed and maintained on desktop platforms and as a result is most o
 
 ## HTML5
 
-- Web browsers have their own gamepad API, as such Input does not provide [controller mapping](Controller-Mapping) on the platform.
+- When running through HTML5, `input_bindings_write()` and `input_bindings_read()` are blocked. This is due to [up-stream bugs](https://github.com/JujuAdams/Input/issues/152) in GameMaker.
+
+- Web browsers have their own gamepad API, as such Input does not use its own [controller mapping](Controller-Mapping) on the platform. Input will use the browser's gamepad implementation, including button mapping.
 
 - In order for gamepads to present and operate, the user must first press a button with the game in focus.
 
 - On Apple platforms, CapsLock key returns lock state rather than key state (`true` when locked), so is blocked from binding.
 
 - The browser fullscreen toggle key (F10 on Apple devices, F11 elsewhere) is blocked from keyboard binding.
+
+&nbsp;
+
+## UWP
+
+### UWP on Windows
+
+- Keyboard input works with same caveats as on the [native Windows platform](#Windows).
+
+- XInput controllers work as expected. Some devices that fall outside the XInput ecosystem (e.g. Switch Pro, PS4, PS5, Luna and Stadia controllers) will work but may have unusual or partially incorrect bindings.
+
+- Gamepad type information is unavailable for devices except XInput controllers.
+
+- Gamepad descriptions are returned as `"XInput"` or `"Unknown UWP Controller"`.
+
+- Gamepads trigger keyboard events. As a result, certain keyboard keys are blocked by default; for more information see [`INPUT_IGNORE_RESERVED_KEYS_LEVEL`](Functions-(System)#__input_config).
+
+### UWP on Xbox One and Xbox Series X/S
+
+- Gamepad descriptions are returned as `"XInput"`.
+
+- Mouse is not supported by GameMaker (and Input) when running a UWP build on Xbox, but keyboard input curiously _is_ supported (with the same caveats as on the [Windows platform](#Windows)).
