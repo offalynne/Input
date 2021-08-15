@@ -1,5 +1,5 @@
-function input_string_async_tick(){
-
+function input_string_dialog_async_event()
+{
     //Use in async dialog event only
     if ((event_number != (__INPUT_ON_WEB ? 0 : ev_dialog_async)))   
     {

@@ -30,7 +30,7 @@
     {"id":{"name":"input_binding_set_safe","path":"scripts/input_binding_set_safe/input_binding_set_safe.yy",},"order":6,},
     {"id":{"name":"input_binding_swap","path":"scripts/input_binding_swap/input_binding_swap.yy",},"order":7,},
     {"id":{"name":"input_check","path":"scripts/input_check/input_check.yy",},"order":0,},
-    {"id":{"name":"input_string_async_tick","path":"scripts/input_string_async_tick/input_string_async_tick.yy",},"order":6,},
+    {"id":{"name":"input_string_dialog_async_event","path":"scripts/input_string_dialog_async_event/input_string_dialog_async_event.yy",},"order":6,},
     {"id":{"name":"input_check_double","path":"scripts/input_check_double/input_check_double.yy",},"order":1,},
     {"id":{"name":"input_check_double_pressed","path":"scripts/input_check_double_pressed/input_check_double_pressed.yy",},"order":2,},
     {"id":{"name":"input_check_double_released","path":"scripts/input_check_double_released/input_check_double_released.yy",},"order":3,},

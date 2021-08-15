@@ -1,1 +1,1 @@
-input_string_async_tick();
+input_string_dialog_async_event();

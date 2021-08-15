@@ -1,4 +1,5 @@
-//param string
+/// @param [string]
+
 function input_string_set(_string = "")
 {
     _string = string(_string);

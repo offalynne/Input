@@ -1,6 +1,7 @@
-//param prompt
-//param string
-//param allow_empty
+/// @param prompt
+/// @param [string]
+/// @param [allowEmpty]
+
 function input_string_async_get(_prompt, _string = global.__input_string, _allow_empty = global.__input_async_allow_empty)
 {
     if (global.__input_async_id != undefined)
