@@ -34,8 +34,11 @@ Compile time configuration is controlled by macros stored in `__input_config()` 
 
 `INPUT_IGNORE_RESERVED_KEYS_LEVEL` can take the following values:
 
-- `0`: Don't ignore any keys
-- `1`: Ignore Alt & Windows/Command (Mac) keys, and F11 when running through a browser
+- `0`: Don't ignore any keys. This is not recommended!
+- `1`: Ignore a minimal selection of problematic keys:
+    - Alt & Windows/Command (Mac) keys
+    - F11 when running through a browser
+    - Various keyboard keys triggered by gamepads (Windows UWP only)
 - `2`: Ignore all reserved and/or system keys:
     - Alt & Windows/Command (Mac)
     - Num lock & Scroll lock
@@ -43,5 +46,6 @@ Compile time configuration is controlled by macros stored in `__input_config()` 
     - Browser keys (`0xA6  ->  0xAC`)
     - Media keys (`0xAD  -  0xB7`)
     - F11 (web only)
+    - Various keyboard keys triggered by gamepads (Windows UWP only)
 	
 You can modify this list at any time by calling [`input_ignore_key_add()`](Functions-(Other)#input_ignore_key_addkey) or [`input_ignore_key_remove()`](Functions-(Other)#input_ignore_key_removekey). This setting only affects Input and will not filter these keys from native GameMaker functions.
