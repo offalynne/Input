@@ -98,6 +98,7 @@ global.__input_cursor_using_mouse = true;
 //Keyboard texty entry
 global.__input_string               = "";
 global.__input_keyboard_prev_string = "";
+global.__input_string_predialogue   = "";
 global.__input_async_id             = undefined;
 global.__input_async_allow_empty    = false;
 
