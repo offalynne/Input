@@ -1,4 +1,4 @@
-- [Introduction](/)
+- [Introduction](README)
 
 - [Quick Start Guide](Quick-Start-Guide)
 
