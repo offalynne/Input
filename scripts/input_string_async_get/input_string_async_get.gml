@@ -1,12 +1,13 @@
-//param prompt
-//param string
-//param allow_empty
+/// @param prompt
+/// @param [string]
+/// @param [allowEmpty]
+
 function input_string_async_get(_prompt, _string = global.__input_string, _allow_empty = false)
 {
     
     if (os_type == os_linux || os_type == os_ios || os_type == os_tvos)
     {
-        __input_error("Due to lack of up-stream support, input_string_async_get() and input_string_dialog_async_event() are unsupported on Linux, iOS, and tvOS.");
+        __input_error("Due to lack of up-stream support, input_string_async_get() is unsupported on Linux, iOS, and tvOS.");
         return false;
     }
     

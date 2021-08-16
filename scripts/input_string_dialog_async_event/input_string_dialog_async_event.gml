@@ -7,7 +7,6 @@ function input_string_dialog_async_event()
     }
     else
     {
-        //Waiting for status
         if ((global.__input_async_id != undefined) && (async_load != undefined)
         && (async_load[? "id"] == global.__input_async_id) && (async_load[? "status"] != undefined))
         {
@@ -23,4 +22,6 @@ function input_string_dialog_async_event()
             if (os_type == os_uwp) keyboard_string = "";
         }
     }
+  
+    //Waiting for status
 }
