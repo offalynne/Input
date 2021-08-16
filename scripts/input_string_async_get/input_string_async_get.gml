@@ -23,7 +23,7 @@ function input_string_async_get(_prompt, _string = global.__input_string, _allow
     else
     {      
         global.__input_async_id           = get_string_async(_prompt, _string);
-        global.__input_string_predialogue = _string;
+        global.__input_string_predialogue = global.__input_string;
         global.__input_async_allow_empty  = _allow_empty;
         return true;
     }
