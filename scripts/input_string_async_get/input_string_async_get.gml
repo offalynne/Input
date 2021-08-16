@@ -4,7 +4,6 @@
 
 function input_string_async_get(_prompt, _string = global.__input_string, _allow_empty = false)
 {
-    
     if (os_type == os_linux || os_type == os_ios || os_type == os_tvos)
     {
         __input_error("Due to lack of up-stream support, input_string_async_get() is unsupported on Linux, iOS, and tvOS.");
@@ -23,7 +22,7 @@ function input_string_async_get(_prompt, _string = global.__input_string, _allow
     else
     {      
         global.__input_async_id           = get_string_async(_prompt, _string);
-        global.__input_string_predialogue = global.__input_string;
+        global.__input_string_predialogue = input_string_get();
         global.__input_async_allow_empty  = _allow_empty;
         return true;
     }
