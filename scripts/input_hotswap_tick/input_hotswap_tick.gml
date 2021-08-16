@@ -1,9 +1,7 @@
 /// @param [playerIndex]
 
-function input_hotswap_tick()
+function input_hotswap_tick(_player_index = 0)
 {
-    var _player_index = ((argument_count > 0) && (argument[0] != undefined))? argument[0] : 0;
-    
     if (_player_index < 0)
     {
         __input_error("Invalid player index provided (", _player_index, ")");
@@ -79,7 +77,7 @@ function __input_hotswap_tick_input(_player_index)
     if (global.__input_keyboard_valid
     &&  input_source_is_available(INPUT_SOURCE.KEYBOARD_AND_MOUSE)
     &&  keyboard_check(vk_anykey)
-    &&  !__input_key_is_ignored(keyboard_key)) //Ensure that this key isn't one we're trying to ignore
+    &&  !__input_key_is_ignored(__input_keyboard_key())) //Ensure that this key isn't one we're trying to ignore
     {
         if (__INPUT_DEBUG) __input_trace("Hotswapping player ", _player_index, " to keyboard+mouse (via keyboard input)");
         return { source : INPUT_SOURCE.KEYBOARD_AND_MOUSE, gamepad : undefined };
@@ -87,7 +85,7 @@ function __input_hotswap_tick_input(_player_index)
     
     if (global.__input_mouse_valid
     &&  input_source_is_available(INPUT_SOURCE.KEYBOARD_AND_MOUSE)
-    && ( (INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && global.__input_mouse_moved) || device_mouse_check_button(0, mb_any) || mouse_wheel_up() || mouse_wheel_down()))
+    && ( (INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && global.__input_mouse_moved) || input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
     {
         if (__INPUT_DEBUG) __input_trace("Hotswapping player ", _player_index, " to keyboard+mouse (via mouse input)");
         return { source : INPUT_SOURCE.KEYBOARD_AND_MOUSE, gamepad : undefined };

@@ -3,14 +3,9 @@
 /// @param [maxSpeed]
 /// @param [playerIndex]
 
-function input_cursor_move()
+function input_cursor_move(_target_x, _target_y, _max_speed = -1, _player_index = 0)
 {
     if (INPUT_WARNING_DEPRECATED) __input_error("This function has been deprecated\n(Set INPUT_WARNING_DEPRECATED to <false> to ignore this warning)");
-    
-    var _target_x     = argument[0];
-    var _target_y     = argument[1]
-    var _max_speed    = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : -1;
-    var _player_index = ((argument_count > 3) && (argument[3] != undefined))? argument[3] : 0;
     
     if ((_player_index < 0) && (_player_index != all))
     {

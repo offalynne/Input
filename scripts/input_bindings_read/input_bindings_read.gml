@@ -3,11 +3,8 @@
 /// 
 /// FIXME - Unfucks a bug in GM where json_parse() doesn't work properly (20201-01-12)
 
-function input_bindings_read()
+function input_bindings_read(_string, _player_index = all)
 {
-    var _string       = argument[0];
-    var _player_index = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : all;
-    
     if ((_player_index < 0) && (_player_index != all))
     {
         __input_error("Invalid player index provided (", _player_index, ")");
@@ -19,6 +16,8 @@ function input_bindings_read()
         __input_error("Player index too large (", _player_index, " vs. ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
         return undefined;
     }
+    
+    if (__INPUT_ON_WEB) __input_error("Due to up-stream bug in GameMaker's JavaScript runtime, input_bindings_read() and input_bindings_write() are unsupported in HTML5");
     
     var _config = json_parse(_string);
     

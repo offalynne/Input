@@ -1,6 +1,6 @@
 var _string = "";
 
-_string += "Gamepad " + string(test_index) + "/" + string(gamepad_get_device_count()) + ", \"" + string(gamepad_get_description(test_index)) + "\"\n";
+_string += "Gamepad " + string(test_index) + " of " + string(gamepad_get_device_count()) + ", \"" + string(gamepad_get_description(test_index)) + "\"\n\n";
 
 var _gamepad = test_index;
 var _i = 0;
@@ -58,8 +58,30 @@ _string += "gp_shoulderr  = " + string(input_gamepad_value(_gamepad, gp_shoulder
 _string += "gp_shoulderrb = " + string(input_gamepad_value(_gamepad, gp_shoulderrb)) + "\n";
 _string += "gp_select     = " + string(input_gamepad_value(_gamepad, gp_select    )) + "\n";
 _string += "gp_start      = " + string(input_gamepad_value(_gamepad, gp_start     )) + "\n";
+draw_text(200, 50, _string);
 
-draw_text(270, 30, _string);
+var _string = "";
+_string += string(gamepad_button_check(_gamepad, gp_face1     )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_face2     )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_face3     )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_face4     )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_padu      )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_padd      )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_padl      )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_padr      )) + "\n";
+_string += string(gamepad_axis_value(  _gamepad, gp_axislh    )) + "\n";
+_string += string(gamepad_axis_value(  _gamepad, gp_axislv    )) + "\n";
+_string += string(gamepad_axis_value(  _gamepad, gp_axisrh    )) + "\n";
+_string += string(gamepad_axis_value(  _gamepad, gp_axisrv    )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_stickl    )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_stickr    )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_shoulderl )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_shoulderlb)) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_shoulderr )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_shoulderrb)) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_select    )) + "\n";
+_string += string(gamepad_button_check(_gamepad, gp_start     )) + "\n";
+draw_text(410, 50, _string);
 
 
 
@@ -76,6 +98,21 @@ _string += "Cancel        = " + string(input_value(VERB.CANCEL )) + "    " + str
 _string += "Pause         = " + string(input_value(VERB.PAUSE  )) + "    " + string(input_binding_get(VERB.PAUSE  )) + "\n";
 _string += "Recent (all)  = " + string(input_check_press_most_recent()) + "\n";
 _string += "Recent (4dir) = " + string(input_check_press_most_recent([VERB.LEFT, VERB.RIGHT, VERB.UP, VERB.DOWN])) + "\n";
+
+_string += "\n\n";
+
+_string += "key     = " + string(__input_keyboard_key()) + "\n";
+_string += "lastkey = " + string(keyboard_lastkey      ) + "\n";
+
+var _i = 2;
+repeat(255)
+{
+   if (keyboard_check(_i)) _string += string(_i) + "  >" + chr(_i) + "< " + __input_key_get_name(_i) + "\n";
+   ++_i;
+}
+
+_string += "mouse = " + string(mouse_x) + "," + string(mouse_y) + "\n";
+_string += "device = " + string(device_mouse_x(0)) + "," + string(device_mouse_y(0)) + "\n";
 
 draw_text(500, 10, _string);
 

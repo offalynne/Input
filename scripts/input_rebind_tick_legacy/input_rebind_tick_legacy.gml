@@ -9,12 +9,8 @@ enum INPUT_REBIND_EVENT
     SUCCESS  =  1,
 }
 
-function input_rebind_tick_legacy()
+function input_rebind_tick_legacy(_in_verb, _player_index = 0, _alternate = 0)
 {
-    var _verb         = argument[0];
-    var _player_index = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
-    var _alternate    = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : 0;
-    
     #region Check input arguments
     
     if (_player_index < 0)
@@ -61,9 +57,9 @@ function input_rebind_tick_legacy()
             rebind_state                = 1;
             rebind_source               = source;
             rebind_gamepad              = gamepad;
-            rebind_verb                 = _verb;
+            rebind_verb                 = _in_verb;
             rebind_alternate            = _alternate;
-            rebind_backup_val           = input_binding_get(_verb, source, _player_index, _alternate);
+            rebind_backup_val           = input_binding_get(_in_verb, source, _player_index, _alternate);
             rebind_backup_collision_ref = undefined;
             rebind_backup_collision_val = undefined;
             
@@ -128,27 +124,36 @@ function input_rebind_tick_legacy()
             else if (rebind_state == 2) //Now grab the first button pressed
             {
                 var _new_binding = undefined;
+                var _keyboard_key = __input_keyboard_key();
                 
                 #region Listeners
                 
                 switch(source)
                 {
                     case INPUT_SOURCE.KEYBOARD_AND_MOUSE:
-                        if ((keyboard_key > 0) && !__input_key_is_ignored(keyboard_key))
+                        if ((_keyboard_key > 0) && !__input_key_is_ignored(_keyboard_key))
                         {
-                            _new_binding = new __input_class_binding("key", keyboard_key);
+                            //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
+                            _new_binding = new __input_class_binding();
+                            _new_binding.set_key(_keyboard_key);
                         }
-                        else if (mouse_button > 0)
+                        else if (__input_mouse_button() > 0)
                         {
-                            _new_binding = new __input_class_binding("mouse button", mouse_button);
+                            //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
+                            _new_binding = new __input_class_binding();
+                            _new_binding.set_mouse_button(__input_mouse_button());
                         }
                         else if (mouse_wheel_up())
                         {
-                            _new_binding = new __input_class_binding("mouse wheel up");
+                            //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
+                            _new_binding = new __input_class_binding();
+                            _new_binding.set_mouse_wheel_up();
                         }
                         else if (mouse_wheel_down())
                         {
-                            _new_binding = new __input_class_binding("mouse wheel down");
+                            //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
+                            _new_binding = new __input_class_binding();
+                            _new_binding.set_mouse_wheel_down();
                         }
                     break;
                     
@@ -171,14 +176,18 @@ function input_rebind_tick_legacy()
                                 var _value = input_gamepad_value(gamepad, _check);
                                 if (abs(_value) > input_axis_threshold_get(_check, _player_index).mini)
                                 {
-                                    _new_binding = new __input_class_binding("gamepad axis", _check, (_value < 0));
+                                    //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
+                                    _new_binding = new __input_class_binding();
+                                    _new_binding.set_gamepad_axis(_check, (_value < 0));
                                 }
                             }
                             else
                             {
                                 if (input_gamepad_check(gamepad, _check))
                                 {
-                                    _new_binding = new __input_class_binding("gamepad button", _check);
+                                    //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
+                                    _new_binding = new __input_class_binding();
+                                    _new_binding.set_gamepad_button(_check);
                                 }
                             }
                             
@@ -257,12 +266,8 @@ function input_rebind_tick_legacy()
     return INPUT_REBIND_EVENT.WAITING;
 }
 
-function input_rebind_tick()
+function input_rebind_tick(_verb, _player_index = 0, _alternate = 0)
 {
-    var _verb         = argument[0];
-    var _player_index = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
-    var _alternate    = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : 0;
-    
     __input_error("input_rebind_tick() has been deprecated, please use input_rebind_tick_legacy() instead\nThis feature will be replaced in a future update");
     
     input_rebind_tick_legacy(_verb, _player_index, _alternate);

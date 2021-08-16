@@ -1,11 +1,8 @@
 /// @param source
 /// @param [gamepad]
 
-function input_source_is_available()
+function input_source_is_available(_source, _gamepad = INPUT_NO_GAMEPAD)
 {
-    var _source  = argument[0];
-    var _gamepad = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : INPUT_NO_GAMEPAD;
-    
     switch(_source)
     {
         case INPUT_SOURCE.NONE:

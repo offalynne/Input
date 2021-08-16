@@ -7,5 +7,6 @@ var _string  = "Left          = " + string(input_value(VERB.LEFT   )) + "    " +
     _string += "Pause         = " + string(input_value(VERB.PAUSE  )) + "    " + string(input_binding_get_name(input_binding_get(VERB.PAUSE  ))) + "\n";
     _string += "Recent (all)  = " + string(input_check_press_most_recent()) + "\n";
     _string += "Recent (4dir) = " + string(input_check_press_most_recent([VERB.LEFT, VERB.RIGHT, VERB.UP, VERB.DOWN])) + "\n";
+    _string += "Repeat        = " + string(input_check_repeat(VERB.UP));
 
 draw_text(10, 10, _string);

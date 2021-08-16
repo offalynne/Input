@@ -59,7 +59,12 @@ function __input_class_player() constructor
     
     static tick = function()
     {
-        if (!rebind_this_frame && (rebind_state < 0)) rebind_state = 0;
+        if (!rebind_this_frame)
+        {
+            if (rebind_state > 0) __input_trace("Binding scan failed: input_binding_scan_tick() not called last frame");
+            rebind_state = 0;
+        }
+        
         rebind_this_frame = false;
         
         //Clear the momentary state for all verbs
@@ -136,6 +141,18 @@ function __input_class_player() constructor
                                     _analogue     = false;
                                     _raw_analogue = false;
                                 }
+                                
+                                //If we're on Android then check the alternate keyboard key as well
+                                if (os_type == os_android)
+                                {
+                                    if ((_binding.android_lowercase != undefined) && keyboard_check(_binding.android_lowercase))
+                                    {
+                                        _value        = 1.0;
+                                        _raw          = 1.0;
+                                        _analogue     = false;
+                                        _raw_analogue = false;
+                                    }
+                                }
                             break;
                             
                             case "gamepad button":
@@ -149,7 +166,7 @@ function __input_class_player() constructor
                             break;
                             
                             case "mouse button":
-                                if (device_mouse_check_button(0, _binding.value))
+                                if (input_mouse_check(_binding.value))
                                 {
                                     _value        = 1.0;
                                     _raw          = 1.0;
@@ -278,9 +295,7 @@ function __input_class_player() constructor
         
         if (__INPUT_DEBUG) __input_trace("Verb alternate array length = ", array_length(_verb_alternate_array));
         
-        //FIXME - Workaround for Stadia controller bug maybe? 2020-01-05
-        _verb_alternate_array[_alternate] = _binding_struct;
-        variable_struct_set(_source_verb_struct, _verb, _verb_alternate_array);
+        _verb_alternate_array[@ _alternate] = _binding_struct;
         
         //Set up a verb container on the player separate from the bindings
         if (!is_struct(variable_struct_get(verbs, _verb)))
@@ -318,10 +333,8 @@ function __input_class_player() constructor
     }
     
     /// @param [source]
-    static any_input = function()
+    static any_input = function(_source = source)
     {
-        var _source = ((argument_count > 0) && (argument[0] != undefined))? argument[0] : source;
-        
         if (_source == all)
         {
             if (any_input(INPUT_SOURCE.KEYBOARD_AND_MOUSE)) return true;
@@ -336,8 +349,8 @@ function __input_class_player() constructor
             break;
             
             case INPUT_SOURCE.KEYBOARD_AND_MOUSE:
-                var _keyboard_valid = (keyboard_check(vk_anykey) && !__input_key_is_ignored(keyboard_key));
-                return (_keyboard_valid || global.__input_mouse_moved || device_mouse_check_button(0, mb_any) || mouse_wheel_up() || mouse_wheel_down());
+                var _keyboard_valid = (global.__input_keyboard_valid && keyboard_check(vk_anykey) && !__input_key_is_ignored(__input_keyboard_key()));
+                return (_keyboard_valid || global.__input_mouse_moved || input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down());
             break;
             
             case INPUT_SOURCE.GAMEPAD:
@@ -361,10 +374,10 @@ function __input_class_player() constructor
                     ||  input_gamepad_check(gamepad, gp_stickr)
                     ||  (INPUT_SDL2_ALLOW_GUIDE && input_gamepad_check(gamepad, gp_guide))
                     ||  (INPUT_SDL2_ALLOW_MISC1 && input_gamepad_check(gamepad, gp_misc1))
-                    ||  (abs(input_gamepad_value(gamepad, gp_axislh)) > axis_threshold_get(gp_axislh).mini)
-                    ||  (abs(input_gamepad_value(gamepad, gp_axislv)) > axis_threshold_get(gp_axislv).mini)
-                    ||  (abs(input_gamepad_value(gamepad, gp_axisrh)) > axis_threshold_get(gp_axisrh).mini)
-                    ||  (abs(input_gamepad_value(gamepad, gp_axisrv)) > axis_threshold_get(gp_axisrv).mini));
+                    ||  (abs(input_gamepad_value(gamepad, gp_axislh)) > INPUT_DEFAULT_MIN_THRESHOLD)
+                    ||  (abs(input_gamepad_value(gamepad, gp_axislv)) > INPUT_DEFAULT_MIN_THRESHOLD)
+                    ||  (abs(input_gamepad_value(gamepad, gp_axisrh)) > INPUT_DEFAULT_MIN_THRESHOLD)
+                    ||  (abs(input_gamepad_value(gamepad, gp_axisrv)) > INPUT_DEFAULT_MIN_THRESHOLD));
             break;
         }
         

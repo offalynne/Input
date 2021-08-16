@@ -35,9 +35,101 @@ function input_tick()
     global.__input_mouse_x = _mouse_x;
     global.__input_mouse_y = _mouse_y;
     
+    //Windows mouse extensions
+    global.__input_tap_click = false;
+    if (os_type == os_windows)
+    {
+        //Track clicks from touchpad and touchscreen taps (system-setting dependent)
+        //N.B. Fix *not* needed in UWP
+        global.__input_tap_presses  += device_mouse_check_button_pressed( 0, mb_left);
+        global.__input_tap_releases += device_mouse_check_button_released(0, mb_left);
+    
+        //Resolve press/release desync (where press failed to register on same frame as release)
+        if (global.__input_tap_releases >= global.__input_tap_presses)
+        {
+            global.__input_tap_click    = (global.__input_tap_releases > global.__input_tap_presses);
+            global.__input_tap_presses  = 0;
+            global.__input_tap_releases = 0;
+        }
+    }
+    
+    #endregion
+    
+    #region Unstick keyboard
+
+    if (__INPUT_KEYBOARD_SUPPORT && (keyboard_check(vk_anykey)))
+    {
+        //Meta release sticks every key pressed during hold
+        //This is "the nuclear option", but the problem is severe and io_clear does not fix it
+        if ((__INPUT_ON_WEB && __INPUT_ON_APPLE)
+        && (keyboard_check_released(92) || keyboard_check_released(93)))
+        {
+            //Release all
+            var _i = 8;
+            repeat(247)
+            {
+                keyboard_key_release(_i);
+                _i++;
+            }
+        }
+        else
+        {
+            switch (os_type)
+            {
+                case os_windows:
+                case os_uwp:
+                    //Unstick Alt Space
+                    if (keyboard_check(vk_alt) && keyboard_check_pressed(vk_space))
+                    {
+                        keyboard_key_release(vk_alt);
+                        keyboard_key_release(vk_space);
+                        keyboard_key_release(vk_lalt);
+                        keyboard_key_release(vk_ralt);
+                    }
+                break;
+            
+                case os_macosx:
+                    //Unstick control key double-up
+                    if (keyboard_check_released(vk_control))
+                    {
+                        keyboard_key_release(vk_lcontrol);
+                        keyboard_key_release(vk_rcontrol);
+                    }
+            
+                    if (keyboard_check_released(vk_shift))
+                    {
+                        keyboard_key_release(vk_lshift);
+                        keyboard_key_release(vk_rshift);
+                    }
+            
+                    if (keyboard_check_released(vk_alt))
+                    {
+                        keyboard_key_release(vk_lalt);
+                        keyboard_key_release(vk_ralt);
+                    }
+            
+                    //Unstick Meta
+                    //Weird, but seems to be the best way to unstick without spoiling normal operation
+                    if (keyboard_check_released(vk_meta1))
+                    {
+                        keyboard_key_release(vk_meta2);
+                    }
+                    else if (keyboard_check_released(vk_meta2) && keyboard_check(vk_meta1))
+                    {
+                        keyboard_key_release(vk_meta1);
+                    }
+                break;
+            }
+        }
+    }
+    
     #endregion
     
     #region Update gamepads
+    
+    //Expand dynamic device count
+    var _device_change = max(0, gamepad_get_device_count() - array_length(global.__input_gamepads))
+    repeat(_device_change) array_push(global.__input_gamepads, undefined);
     
     var _g = 0;
     repeat(array_length(global.__input_gamepads))
@@ -47,15 +139,30 @@ function input_tick()
         {
             if (gamepad_is_connected(_g))
             {
-                _gamepad.tick();
+                if (os_type == os_switch)
+                {
+                    //When L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
+                    //Instead we have to check for changes in the description to see if state has changed
+                    if (_gamepad.description != gamepad_get_description(_g))
+                    {
+                        _gamepad.discover();
+                    }
+                    else
+                    {
+                        _gamepad.tick();
+                    }
+                }
+                else
+                {
+                    _gamepad.tick();
+                }
             }
             else
             {
                 //Remove our gamepad handler
                 __input_trace("Gamepad ", _g, " disconnected");
                 
-                //FIXME - Workaround for Stadia controller bug maybe? 2020-01-05
-                global.__input_gamepads[_g] = undefined;
+                global.__input_gamepads[@ _g] = undefined;
                 
                 //Also report gamepad changes for any active players
                 var _p = 0;
@@ -83,8 +190,7 @@ function input_tick()
                 __input_trace("Gamepad ", _g, " connected");
                 __input_trace("New gamepad = \"", gamepad_get_description(_g), "\", GUID=\"", gamepad_get_guid(_g), "\"");
                 
-                //FIXME - Workaround for Stadia controller bug maybe? 2020-01-05
-                global.__input_gamepads[_g] = new __input_class_gamepad(_g);
+                global.__input_gamepads[@ _g] = new __input_class_gamepad(_g);
             }
         }
         

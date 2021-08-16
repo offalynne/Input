@@ -1,11 +1,8 @@
 /// @param axis
 /// @param [playerIndex]
 
-function input_axis_threshold_get()
+function input_axis_threshold_get(_axis, _player_index = 0)
 {
-    var _axis         = argument[0];
-    var _player_index = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
-    
     if (_player_index < 0)
     {
         __input_error("Invalid player index provided (", _player_index, ")");

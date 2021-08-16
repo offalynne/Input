@@ -3,13 +3,8 @@
 /// @param [playerIndex]
 /// @param [alternate]
 
-function input_binding_remove()
+function input_binding_remove(_verb, _source, _player_index = 0, _alternate = 0)
 {
-    var _verb         = argument[0];
-    var _source       = argument[1];
-    var _player_index = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : 0;
-    var _alternate    = ((argument_count > 3) && (argument[3] != undefined))? argument[3] : 0;
-    
     if ((_source != INPUT_SOURCE.KEYBOARD_AND_MOUSE) && (_source != INPUT_SOURCE.GAMEPAD))
     {
         __input_error("Invalid source provided (", _source, ")\nPlease use INPUT_SOURCE.KEYBOARD_AND_MOUSE or INPUT_SOURCE.GAMEPAD");

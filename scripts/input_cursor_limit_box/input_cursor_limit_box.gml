@@ -4,15 +4,9 @@
 /// @param bottom
 /// @param [playerIndex]
 
-function input_cursor_limit_box()
+function input_cursor_limit_box(_left, _top, _right, _bottom, _player_index = 0)
 {
     if (INPUT_WARNING_DEPRECATED) __input_error("This function has been deprecated\n(Set INPUT_WARNING_DEPRECATED to <false> to ignore this warning)");
-    
-    var _left         = argument[0];
-    var _top          = argument[1];
-    var _right        = argument[2];
-    var _bottom       = argument[3];
-    var _player_index = ((argument_count > 4) && (argument[4] != undefined))? argument[4] : 0;
     
     if (_player_index < 0)
     {

@@ -1,23 +1,27 @@
 /// @param verb
 /// @param [alternate]
 
-function input_default_mouse_wheel_up()
+function input_default_mouse_wheel_up(_verb, _alternate = 0)
 {
-    var _verb      = argument[0];
-    var _alternate = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : 0;
-    
     if (__INPUT_DEBUG) __input_trace("Setting default mouse wheel up binding...");
     
-    global.__input_mouse_valid = true;
+    //Never allow mouse bindings on console
+    if (!__INPUT_ON_CONSOLE) global.__input_mouse_valid = true;
     
-    global.__input_default_player.set_binding(INPUT_SOURCE.KEYBOARD_AND_MOUSE, _verb, _alternate,
-                                              new __input_class_binding("mouse wheel up"));
+    //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
+    var _binding = new __input_class_binding();
+    _binding.set_mouse_wheel_up();
+    
+    global.__input_default_player.set_binding(INPUT_SOURCE.KEYBOARD_AND_MOUSE, _verb, _alternate, _binding);
     
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
     {
-        global.__input_players[_p].set_binding(INPUT_SOURCE.KEYBOARD_AND_MOUSE, _verb, _alternate,
-                                               new __input_class_binding("mouse wheel up"));
+        //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
+        var _binding = new __input_class_binding();
+        _binding.set_mouse_wheel_up();
+        
+        global.__input_players[_p].set_binding(INPUT_SOURCE.KEYBOARD_AND_MOUSE, _verb, _alternate, _binding);
         ++_p;
     }
 }

@@ -1,10 +1,8 @@
 /// @param [playerIndex]
 
-function input_cursor_prev_x()
+function input_cursor_prev_x(_player_index = 0)
 {
     if (INPUT_WARNING_DEPRECATED) __input_error("This function has been deprecated\n(Set INPUT_WARNING_DEPRECATED to <false> to ignore this warning)");
-    
-    var _player_index = ((argument_count > 0) && (argument[0] != undefined))? argument[0] : 0;
     
     if (_player_index < 0)
     {

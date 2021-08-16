@@ -1,21 +1,22 @@
-#macro __INPUT_VERSION                   "3.3.3"
-#macro __INPUT_DATE                      "2020-04-14"
-#macro __INPUT_DEBUG                     false
-#macro __INPUT_SDL2_DATABASE_FILENAME    "sdl2.txt"                //Name of the SDL2 database to read gamepad remapping definitions from
-#macro __INPUT_CONTROLLER_TYPE_FILENAME  "controllertypes.csv"     //Name of the controller type database to read gamepad types from
-#macro __INPUT_BLACKLIST_FILENAME        "controllerblacklist.csv" //Name of the controller blacklist database to read from
+#macro __INPUT_VERSION "3.3.3"
+#macro __INPUT_DATE    "2020-04-14"
+#macro __INPUT_DEBUG   false
 
-enum INPUT_SOURCE
-{
-    NONE,
-    KEYBOARD_AND_MOUSE,
-    GAMEPAD,
-    __SIZE
-}
+#macro __INPUT_ON_CONSOLE   ((os_type == os_switch)  || (os_type == os_ps4)   || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
+#macro __INPUT_ON_DESKTOP   ((os_type == os_macosx)  || (os_type == os_linux) || (os_type == os_windows))
+#macro __INPUT_ON_APPLE     ((os_type == os_macosx)  || (os_type == os_ios)   || (os_type == os_tvos))
+#macro __INPUT_ON_MOBILE    ((os_type == os_android) || (os_type == os_ios)   || (os_type == os_tvos))
+#macro __INPUT_ON_WEB       (os_browser != browser_not_a_browser)
 
-#macro INPUT_NO_GAMEPAD  -1
-#macro gp_guide  32789
-#macro gp_misc1  32790
+#macro __INPUT_SDL2_SUPPORT     ((__INPUT_ON_DESKTOP || (os_type == os_android)) && !__INPUT_ON_WEB)
+#macro __INPUT_KEYBOARD_SUPPORT (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_uwp) || (os_type == os_android) || (os_type == os_switch))
+
+//Extra constants
+#macro gp_guide    32789
+#macro gp_misc1    32790
+#macro vk_meta1    91
+#macro vk_meta2    92
+#macro vk_capslock 20
 
 // gp_axislh     = 32785             32769 = gp_face1
 // gp_axislv     = 32786             32770 = gp_face2
@@ -41,6 +42,26 @@ enum INPUT_SOURCE
 // gp_guide      = 32789             32789 = gp_guide
 // gp_misc1      = 32790             32790 = gp_misc1
 
+enum INPUT_SOURCE
+{
+    NONE,
+    KEYBOARD_AND_MOUSE,
+    GAMEPAD,
+    __SIZE
+}
+
+enum __INPUT_MAPPING
+{
+    BUTTON,
+    AXIS,
+    HAT,
+    HAT_ON_AXIS,
+    SPLIT_AXIS,
+    __SIZE
+}
+
+#macro INPUT_NO_GAMEPAD  -1
+
 //Set up the extended debug functionality
 global.__input_debug_log = "input___" + string_replace_all(string_replace_all(date_datetime_string(date_current_datetime()), ":", "-"), " ", "___") + ".txt";
 if (INPUT_EXTERNAL_DEBUG_LOG && __INPUT_DEBUG)
@@ -58,6 +79,11 @@ global.__input_frame = 0;
 global.__input_mouse_x     = 0;
 global.__input_mouse_y     = 0;
 global.__input_mouse_moved = false;
+
+//Windows tap-to-click tracking
+global.__input_tap_presses  = 0;
+global.__input_tap_releases = 0;
+global.__input_tap_click    = false;
 
 //Cursor tracking variables. This is Input's abstraction layer for the mouse, allowing mouse-like functionality cross-platform
 global.__input_cursor_verb_u      = undefined;
@@ -137,123 +163,150 @@ global.__input_sdl2_look_up_table = {
 if (INPUT_SDL2_ALLOW_GUIDE) global.__input_sdl2_look_up_table.guide = gp_guide;
 if (INPUT_SDL2_ALLOW_MISC1) global.__input_sdl2_look_up_table.misc1 = gp_misc1;
 
-//Alright, now that we've set up the requisite data structures, let's load the SDL2 database
-//PS. Here're some SDL sources
-//https://github.com/gabomdq/SDL_GameControllerDB/
-//https://yachtclubgames.com/2014/03/steam-controller-support/
-//https://github.com/libretro/retroarch-joypad-autoconfig/
-//https://support.steampowered.com/kb_article.php?ref=5199-TOKV-4426
-//http://www.linux-usb.org/usb.ids
-
-if (file_exists(__INPUT_SDL2_DATABASE_FILENAME))
+//Load the SDL2 database
+if (!__INPUT_SDL2_SUPPORT || !INPUT_SDL2_REMAPPING)
 {
-    __input_load_sdl2_from_file(__INPUT_SDL2_DATABASE_FILENAME);
+    __input_trace("Skipping loading SDL database");
 }
 else
 {
-    __input_trace("Warning! \"", __INPUT_SDL2_DATABASE_FILENAME, "\" not found in Included Files");
-}
-
-//Try to load an external SDL2 database if possible
-if (INPUT_SDL2_ALLOW_EXTERNAL)
-{
-    var _external_string = environment_get_variable("SDL_GAMECONTROLLERCONFIG");
-    if (_external_string != "")
+    if (file_exists(INPUT_SDL2_DATABASE_PATH))
     {
-        __input_trace("External SDL2 string found");
-        
-        try
+        __input_load_sdl2_from_file(INPUT_SDL2_DATABASE_PATH);
+    }
+    else
+    {
+        __input_trace("Warning! \"", INPUT_SDL2_DATABASE_PATH, "\" not found in Included Files");
+    }
+    
+    //Try to load an external SDL2 database if possible
+    if (INPUT_SDL2_ALLOW_EXTERNAL)
+    {
+        var _external_string = environment_get_variable("SDL_GAMECONTROLLERCONFIG");
+        if (is_string(_external_string) && (_external_string != ""))
         {
-            __input_load_sdl2_from_string(_external_string);
-        }
-        catch(_error)
-        {
-            __input_trace_loud("Error!\n\n%SDL_GAMECONTROLLERCONFIG% could not be parsed.\nYou may see unexpected behaviour when using gamepads.\n\nTo remove this error, clear %SDL_GAMECONTROLLERCONFIG%\n\nInput ", __INPUT_VERSION, "   @jujuadams ", __INPUT_DATE);
+            __input_trace("External SDL2 string found");
+            
+            try
+            {
+                __input_load_sdl2_from_string(_external_string);
+            }
+            catch(_error)
+            {
+                __input_trace_loud("Error!\n\n%SDL_GAMECONTROLLERCONFIG% could not be parsed.\nYou may see unexpected behaviour when using gamepads.\n\nTo remove this error, clear %SDL_GAMECONTROLLERCONFIG%\n\nInput ", __INPUT_VERSION, "   @jujuadams and @offalynne ", __INPUT_DATE);
+            }
         }
     }
 }
 
-//Parse the controller type database
-global.__input_type_dictionary = { none : "xb360" };
+//Parse controller type database
+global.__input_raw_type_dictionary = { none : "XBox360Controller" };
 
-if (file_exists(__INPUT_CONTROLLER_TYPE_FILENAME))
+//Load the controller type database
+if (!__INPUT_ON_DESKTOP && (os_type != os_android))
 {
-    __input_load_type_csv(__INPUT_CONTROLLER_TYPE_FILENAME);
+    __input_trace("Skipping loading controller type database");
+}
+else if (file_exists(INPUT_CONTROLLER_TYPE_PATH))
+{
+    __input_load_type_csv(INPUT_CONTROLLER_TYPE_PATH);
 }
 else
 {
-    __input_trace("Warning! \"", __INPUT_CONTROLLER_TYPE_FILENAME, "\" not found in Included Files");
+    __input_trace("Warning! \"", INPUT_CONTROLLER_TYPE_PATH, "\" not found in Included Files");
 }
 
-//Parse the controller type database
-global.__input_blacklist_dictionary = {};
 
-if (file_exists(__INPUT_BLACKLIST_FILENAME))
+if (__INPUT_ON_CONSOLE || __INPUT_ON_WEB)
 {
-    __input_load_blacklist_csv(__INPUT_BLACKLIST_FILENAME);
+    __input_trace("Skipping loading controller blacklist database");
 }
 else
 {
-    __input_trace("Warning! \"", __INPUT_BLACKLIST_FILENAME, "\" not found in Included Files");
-}
-
-//Set up ignored keys as directed
-if (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL == 1)
-{
-    input_ignore_key_add(vk_alt);
-    input_ignore_key_add(vk_ralt);
-    input_ignore_key_add(vk_lalt);
-    input_ignore_key_add(91); //left meta
-    input_ignore_key_add(92); //right meta
-}
-else if (INPUT_DESKTOP_IGNORE_RESERVED_KEYS_LEVEL == 2)
-{
-    input_ignore_key_add(vk_alt);
-    input_ignore_key_add(vk_ralt);
-    input_ignore_key_add(vk_lalt);
-    input_ignore_key_add(91); //left meta
-    input_ignore_key_add(92); //right meta
+    //Parse the controller type database
+    global.__input_blacklist_dictionary = {};
     
+    if (file_exists(INPUT_BLACKLIST_PATH))
+    {
+        __input_load_blacklist_csv(INPUT_BLACKLIST_PATH);
+    }
+    else
+    {
+        __input_trace("Warning! \"", INPUT_BLACKLIST_PATH, "\" not found in Included Files");
+    }
+}
+
+//Keyboard ignore level 1+
+if (INPUT_IGNORE_RESERVED_KEYS_LEVEL > 0)
+{
+    input_ignore_key_add(vk_alt);
+    input_ignore_key_add(vk_ralt);
+    input_ignore_key_add(vk_lalt);
+    input_ignore_key_add(vk_meta1);
+    input_ignore_key_add(vk_meta2);
+        
+    input_ignore_key_add(0xFF); //Vendor key
+        
+    if (__INPUT_ON_MOBILE && __INPUT_ON_APPLE)
+    {
+        input_ignore_key_add(124); //Screenshot
+    }
+        
+    if (__INPUT_ON_WEB)
+    {
+        if (__INPUT_ON_APPLE)
+        {
+            input_ignore_key_add(vk_f10); //Fullscreen
+            input_ignore_key_add(vk_capslock);
+        }
+        else
+        {
+            input_ignore_key_add(vk_f11); //Fullscreen
+        }
+    }
+}
+
+//Keyboard ignore level 2+
+if (INPUT_IGNORE_RESERVED_KEYS_LEVEL > 1)
+{
     input_ignore_key_add(144); //num lock
     input_ignore_key_add(145); //scroll lock
-    
-    input_ignore_key_add(0x15); //IME key
-    input_ignore_key_add(0x16); //IME key
-    input_ignore_key_add(0x17); //IME key
-    input_ignore_key_add(0x18); //IME key
-    input_ignore_key_add(0x19); //IME key
-    input_ignore_key_add(0x1A); //IME key
-    input_ignore_key_add(0xE5); //IME key
-    
-    input_ignore_key_add(0xA6); //Browser key
-    input_ignore_key_add(0xA7); //Browser key
-    input_ignore_key_add(0xA8); //Browser key
-    input_ignore_key_add(0xA9); //Browser key
-    input_ignore_key_add(0xAA); //Browser key
-    input_ignore_key_add(0xAB); //Browser key
-    input_ignore_key_add(0xAC); //Browser key
-    
-    input_ignore_key_add(0xAD); //Media key
-    input_ignore_key_add(0xAE); //Media key
-    input_ignore_key_add(0xAF); //Media key
-    input_ignore_key_add(0xB0); //Media key
-    input_ignore_key_add(0xB1); //Media key
-    input_ignore_key_add(0xB2); //Media key
-    input_ignore_key_add(0xB3); //Media key
-    input_ignore_key_add(0xB4); //Media key
-    input_ignore_key_add(0xB5); //Media key
-    input_ignore_key_add(0xB6); //Media key
-    input_ignore_key_add(0xB7); //Media key
+        
+    if (__INPUT_ON_WEB || (os_type == os_windows) || (os_type == os_uwp))
+    {
+        input_ignore_key_add(0x15); //IME key
+        input_ignore_key_add(0x16); //IME key
+        input_ignore_key_add(0x17); //IME key
+        input_ignore_key_add(0x18); //IME key
+        input_ignore_key_add(0x19); //IME key
+        input_ignore_key_add(0x1A); //IME key
+        input_ignore_key_add(0xE5); //IME key
+
+        input_ignore_key_add(0xA6); //Browser key
+        input_ignore_key_add(0xA7); //Browser key
+        input_ignore_key_add(0xA8); //Browser key
+        input_ignore_key_add(0xA9); //Browser key
+        input_ignore_key_add(0xAA); //Browser key
+        input_ignore_key_add(0xAB); //Browser key
+        input_ignore_key_add(0xAC); //Browser key
+
+        input_ignore_key_add(0xAD); //Media key
+        input_ignore_key_add(0xAE); //Media key
+        input_ignore_key_add(0xAF); //Media key
+        input_ignore_key_add(0xB0); //Media key
+        input_ignore_key_add(0xB1); //Media key
+        input_ignore_key_add(0xB2); //Media key
+        input_ignore_key_add(0xB3); //Media key
+        input_ignore_key_add(0xB4); //Media key
+        input_ignore_key_add(0xB5); //Media key
+        input_ignore_key_add(0xB6); //Media key
+        input_ignore_key_add(0xB7); //Media key
+    }
 }
 
-
-
-
-
-
-
-
-
+//By default GameMaker registers double click (or tap) as right mouse button
+//We want to be able to identify the actual mouse buttons correctly, and have our own double-input handling
+device_mouse_dbclick_enable(false);
 
 //These are globally scoped rather than methods because otherwise they'd get serialised by input_bindings_write()
 
@@ -262,7 +315,7 @@ function __input_binding_duplicate(_source)
 {
     with(_source)
     {
-        return new __input_class_binding(type, value, axis_negative);
+        return new __input_class_binding(type, value, axis_negative, label);
     }
 }
 
@@ -275,6 +328,7 @@ function __input_binding_overwrite(_from, _to)
         type          = _from.type;
         value         = _from.value;
         axis_negative = _from.axis_negative;
+        label         = _from.label;
     }
     
     return _to;
@@ -304,15 +358,14 @@ function __input_gamepad_guid_parse(_guid, _legacy, _suppress)
     {
         //Check to see if this GUID fits our expected pattern:
         //
-        //  ****0000****0000****0000****0000
+        //  ****0000****0000****0000****????
         //  ^       ^       ^       ^
         //  Driver  Vendor  Product Revision
         //
         //If not, return an invalid VID+PID
         if ((string_copy(_guid,  5, 4) != "0000")
         ||  (string_copy(_guid, 13, 4) != "0000")
-        ||  (string_copy(_guid, 21, 4) != "0000")
-        ||  (string_copy(_guid, 29, 4) != "0000"))
+        ||  (string_copy(_guid, 21, 4) != "0000"))
         {
             if (!_suppress) __input_trace("Warning! GUID \"", _guid, "\" does not fit expected pattern. VID+PID cannot be extracted");
             return { vendor : "", product : "" };
@@ -387,6 +440,11 @@ function __input_error()
     }
     
     show_error("Input:\n" + _string + "\n ", false);
+}
+
+function __input_get_previous_time()
+{
+    return INPUT_TIMER_MILLISECONDS? (current_time - delta_time/1000) : (global.__input_frame - 1);
 }
 
 function __input_get_time()
