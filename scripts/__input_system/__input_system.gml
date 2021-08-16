@@ -1,5 +1,5 @@
-#macro __INPUT_VERSION "3.3.3"
-#macro __INPUT_DATE    "2020-04-14"
+#macro __INPUT_VERSION "3.4.0"
+#macro __INPUT_DATE    "2021-08-16"
 #macro __INPUT_DEBUG   false
 
 #macro __INPUT_ON_CONSOLE   ((os_type == os_switch)  || (os_type == os_ps4)   || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
