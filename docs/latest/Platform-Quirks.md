@@ -1,4 +1,4 @@
-#Platform Quirks
+# Platform Quirks
 
 _While this information is provided for your benefit, in the best of cases it can be ignored: it is our intent that Input permit otherwise-problematic scenarios to "just work". If you encounter undocumented platform-particular issues with Input, please consider [authoring a bug report](https://github.com/JujuAdams/Input/issues) or reaching us to discuss further [on Discord](https://discord.gg/8krYCqr)._
 
