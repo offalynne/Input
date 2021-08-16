@@ -69,13 +69,15 @@ function input_tick()
         }
         
         //Set input string
-        input_string_set(_string);
-        global.__input_string = keyboard_string;
-        
-        if (os_type == os_android) 
+        if (global.__input_async_id == undefined)
         {
-            //Trim leading space on Android
-            global.__input_string = string_delete(global.__input_string, 1, 1);
+            input_string_set(_string);
+            global.__input_string = keyboard_string;
+            if (os_type == os_android) 
+            {
+                //Trim leading space on Android
+                global.__input_string = string_delete(global.__input_string, 1, 1);
+            }
         }
     
         //Unstick
