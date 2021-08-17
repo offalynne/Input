@@ -16,14 +16,14 @@ Useful for verifying if a value returned from [`input_binding_scan_tick()`](Func
 
 &nbsp;
 
-### `input_binding_scan_tick([source], [playerIndex])`
+### `input_binding_scan_tick(source, [playerIndex])`
 
 *Returns:* Various, see below
 
-|Name           |Datatype       |Purpose                                                                                                                  |
-|---------------|---------------|-------------------------------------------------------------------------------------------------------------------------|
-|`[source]`     |[`INPUT_SOURCE`](Input-Sources)|[Input source](Input-Sources) to listen to. If not specified, the player's current source is used instead|
-|`[playerIndex]`|integer        |Player to target. If not specified, player 0 is targeted                                                                 |
+|Name           |Datatype       |Purpose                                                   |
+|---------------|---------------|----------------------------------------------------------|
+|`source`       |[`INPUT_SOURCE`](Input-Sources)|[Input source](Input-Sources) to listen to|
+|`[playerIndex]`|integer        |Player to target. If not specified, player 0 is targeted  |
 
 This function will scan for input from a player and then return a binding struct that reflects what input was detected. If something unexpected happens (for example, the player's controller is disconnected) then this function will return a negative integer as an error code. If no input is currently detected from the player then this function will return `undefined`.
 
@@ -34,7 +34,7 @@ Because this function can return multiple different datatypes, it's important to
 if (rebinding)
 {
     //Scan for input from our player
-    var _binding = input_binding_scan_tick();
+    var _binding = input_binding_scan_tick(INPUT_SOURCE.GAMEPAD);
     
     //If we have some sort of result - error or success - then proceed
     if (_binding != undefined)
