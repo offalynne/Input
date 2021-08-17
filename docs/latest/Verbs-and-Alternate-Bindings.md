@@ -39,7 +39,7 @@ if (input_check(eVerb.Left)) x -= 4;
 if (input_check(eVerb.Right)) x += 4;
 
 //If the player pressed the "Shoot" button, shoot a bullet
-if (input_check_press(eVerb.Shoot)) shoot_bullet(x, y);
+if (input_check_pressed(eVerb.Shoot)) shoot_bullet(x, y);
 ```
 
 Now let's add some more bindings so that the player can play with a gamepad:
@@ -74,7 +74,7 @@ if (input_check(eVerb.Left)) x -= 4;
 if (input_check(eVerb.Right)) x += 4;
 
 //If the player pressed the "Shoot" button, shoot a bullet
-if (input_check_press(eVerb.Shoot)) shoot_bullet(x, y);
+if (input_check_pressed(eVerb.Shoot)) shoot_bullet(x, y);
 ```
 
 Did you notice how the Step event code didn't change at all? Because we're using a **verb interface**, all of our binding commands exist separately to our check functions. We can bind multiple kinds of input to the same verb and the relevant binding is used depending on what [input source](Input-Sources) the player is using.
@@ -125,7 +125,7 @@ if (input_check(eVerb.Left)) x -= 4;
 if (input_check(eVerb.Right)) x += 4;
 
 //If the player pressed the "Shoot" button, shoot a bullet
-if (input_check_press(eVerb.Shoot)) shoot_bullet(x, y);
+if (input_check_pressed(eVerb.Shoot)) shoot_bullet(x, y);
 ```
 
 Once again, our Step event didn't change. However, we've now added lots more controls that the player can use to control their character.
