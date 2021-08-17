@@ -19,7 +19,7 @@ This library is a significant improvement on GameMaker's native gamepad implemen
 
 Not only does Input rectify many issues with GameMaker's basic gamepad handling functionality, but it also improves on mouse and keyboard handling. On some platforms, notably MacOS, certain key combinations totally fox GameMaker causing keys to stick and produce unwanted input. Windows has nasty issues with touchscreen input as well, and Input addresses those problems too.
 
-?> Input is a really big library! To get up and running fast, check out our [Quick Start](quick-start) page.
+?> Input is a really big library! To get up and running fast, check out our [Quick Start](Quick-Start-Guide) page.
 
 ---
 
