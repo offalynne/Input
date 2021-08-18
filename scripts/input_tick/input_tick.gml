@@ -72,7 +72,6 @@ function input_tick()
         if (global.__input_async_id == undefined)
         {
             input_string_set(_string);
-            global.__input_string = keyboard_string;
             if (os_type == os_android) 
             {
                 //Trim leading space on Android

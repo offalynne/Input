@@ -4,12 +4,7 @@ function input_string_set(_string = "")
 {
     _string = string(_string);
     
-    if (!__INPUT_KEYBOARD_SUPPORT)
-    {
-        //Set internal string
-        global.__input_string = _string;
-    }
-    else
+    if (__INPUT_KEYBOARD_SUPPORT)
     {
         //Enforce length limit
         _string = string_copy(_string, 1, __INPUT_KEYBOARD_STRING_MAX_LENGTH);
@@ -29,4 +24,7 @@ function input_string_set(_string = "")
         
         global.__input_keyboard_prev_string = _string;
     }
+    
+    //Set internal string
+    global.__input_string = _string;
 }
