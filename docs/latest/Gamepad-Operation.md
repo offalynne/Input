@@ -28,7 +28,7 @@ The following additional setup steps may be necessary for proper gamepad operati
 ### Windows
 - [Xbox 360 Controller driver setup](https://support.xbox.com/help/xbox-360/xbox-on-windows/accessories/xbox-controller-for-windows-setup)
 - [Xbox One Controller driver setup](https://support.xbox.com/help/hardware-network/controller/connect-xbox-wireless-controller-to-pc)
-- [DualShock 3 driver setup with PS Now (subscription not required)](https://www.playstation.com/en-us/explore/playstation-now/ps-now-on-pc/)
+- [DualShock 3 driver setup with PS Now (subscription not required)](https://www.playstation.com/en-us/ps-now/ps-now-on-pc/)
 - [Amazon Luna Bluetooth driver](https://www.amazon.com/gp/help/customer/display.html?nodeId=GZCT4CTFHXLHEB9T)
 
 ### MacOS
