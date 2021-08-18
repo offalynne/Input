@@ -140,6 +140,14 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunitySaturn"
                 }
+                else if (string_count("stadia", _desc))
+                {
+                    raw_type = "CommunityStadia";
+                }
+                else if (string_count("luna", _desc) || string_count("amazon game", _desc))
+                {
+                    raw_type = "CommunityLuna";
+                }
                 else if (string_count("ps5", _desc) || string_count("dualsense", _desc))
                 {
                     raw_type = "PS5Controller";
