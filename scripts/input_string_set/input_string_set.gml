@@ -7,9 +7,8 @@ function input_string_set(_string = "")
     if (__INPUT_KEYBOARD_SUPPORT)
     {
         //Enforce length limit
+        //Enforce format
         _string = string_copy(_string, 1, __INPUT_KEYBOARD_STRING_MAX_LENGTH);
-        
-        //Enforce leading space on Android
         if ((os_type == os_android) && (string_char_at(_string, 1) != " "))
         {
             _string = " " + _string;
@@ -27,4 +26,10 @@ function input_string_set(_string = "")
     
     //Set internal string
     global.__input_string = _string;
+    
+    if (os_type == os_android)
+    {
+        //Trim leading space
+        global.__input_string = string_delete(global.__input_string, 1, 1);
+    }
 }

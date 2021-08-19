@@ -59,24 +59,18 @@ function input_tick()
 
     if (__INPUT_KEYBOARD_SUPPORT) 
     {
-        //Set keyboard string
-        var _string = keyboard_string;
+        //Set internal string
         var _prev_string = global.__input_keyboard_prev_string;
-        if ((_string == "") && (string_length(_prev_string) > 1))
-        {
-             //Revert if overflowing
-            _string = _prev_string;
-        }
-        
-        //Set input string
         if (global.__input_async_id == undefined)
         {
-            input_string_set(_string);
-            if (os_type == os_android) 
+            var _string = keyboard_string;
+            if ((_string == "") && (string_length(_prev_string) > 1))
             {
-                //Trim leading space on Android
-                global.__input_string = string_delete(global.__input_string, 1, 1);
+                //Revert overflow
+                _string = _prev_string;
             }
+        
+            input_string_set(_string);
         }
     
         //Unstick
