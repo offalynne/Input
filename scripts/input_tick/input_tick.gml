@@ -64,10 +64,15 @@ function input_tick()
         if (global.__input_async_id == undefined)
         {
             var _string = keyboard_string;
+
+            //Revert overflow
             if ((_string == "") && (string_length(_prev_string) > 1))
             {
-                //Revert overflow
-                _string = _prev_string;
+                //Empties overflowing string
+                _string = "";
+
+                //NOTE: Ommiting for now, interferes with intentional `keyboard_string` clearing
+                //_string = _prev_string;
             }
         
             input_string_set(_string);
