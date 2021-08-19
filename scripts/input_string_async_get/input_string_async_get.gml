@@ -21,7 +21,7 @@ function input_string_async_get(_prompt, _string = global.__input_string, _allow
     }
     else
     {      
-        global.__input_async_id           = get_string_async(_prompt, _string);
+        global.__input_async_id           = get_string_async(_prompt, (os_type == os_switch ? string_copy(_string, 1, 500) : _string));
         global.__input_string_predialogue = input_string_get();
         global.__input_async_allow_empty  = _allow_empty;
         return true;
