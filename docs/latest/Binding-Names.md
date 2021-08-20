@@ -28,26 +28,26 @@ A list of possible return strings for [`input_binding_get_name()`](Functions-(Bi
 
 ## Gamepad
 
-|Gamepad button                       |                                     |
-|-------------------------------------|-------------------------------------|
-| `gamepad button a`                  | `gamepad button b`                  |
-| `gamepad button x`                  | `gamepad button y`                  |
-| `gamepad button shoulder l`         | `gamepad button shoulder r`         |
-| `gamepad button trigger l`          | `gamepad button trigger r`          |
-| `gamepad button select`             | `gamepad button start`              |
-| `gamepad button guide`              | `gamepad button misc 1`             |
-| `gamepad button dpad up`            | `gamepad button dpad down`          |
-| `gamepad button dpad left`          | `gamepad button dpad right`         |
-| `gamepad button thumbstick l left`  | `gamepad button thumbstick l right` |
-| `gamepad button thumbstick l up`    | `gamepad button thumbstick l down`  |
-| `gamepad button thumbstick r left`  | `gamepad button thumbstick r right` |
-| `gamepad button thumbstick r up`    | `gamepad button thumbstick r down`  |
-| `gamepad button thumbstick l click` | `gamepad button thumbstick r click` |
-| `gamepad button unknown`            |
+| Gamepad digital              |                              |
+|------------------------------|------------------------------|
+| `gamepad face south`         | `gamepad face east`          |
+| `gamepad face west`          | `gamepad face north`         |
+| `gamepad shoulder l`         | `gamepad shoulder r`         |
+| `gamepad trigger l`          | `gamepad trigger r`          |
+| `gamepad select`             | `gamepad start`              |
+| `gamepad guide`              | `gamepad misc 1`             |
+| `gamepad dpad up`            | `gamepad dpad down`          |
+| `gamepad dpad left`          | `gamepad dpad right`         |
+| `gamepad thumbstick l left`  | `gamepad thumbstick l right` |
+| `gamepad thumbstick l up`    | `gamepad thumbstick l down`  |
+| `gamepad thumbstick r left`  | `gamepad thumbstick r right` |
+| `gamepad thumbstick r up`    | `gamepad thumbstick r down`  |
+| `gamepad thumbstick l click` | `gamepad thumbstick r click` |
+| `gamepad unknown`            |
 
 &nbsp;
 
-| Gamepad axis                      |                                   |
+| Gamepad analogue                  |                                   |
 |-----------------------------------|-----------------------------------|
 | `gamepad axis trigger l`          | `gamepad axis trigger r`          |
 | `gamepad axis thumbstick l up`    | `gamepad axis thumbstick l down`  |
@@ -62,7 +62,7 @@ A list of possible return strings for [`input_binding_get_name()`](Functions-(Bi
 
 ## Keyboard
 
-|Primary   |          |          |
+| Primary  |          |          |
 |----------|----------|----------|
 | `0`-`9`  | `A`-`Z`  |`F1`-`F24`|
 
@@ -74,7 +74,7 @@ A list of possible return strings for [`input_binding_get_name()`](Functions-(Bi
 
 &nbsp;
 
-|Numpad        |            |
+| Numpad       |            |
 |--------------|------------|
 | `numpad 0-9` | `numpad .` |
 | `numpad /`   | `numpad *` |
