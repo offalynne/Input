@@ -2,7 +2,7 @@
 
 ---
 
-?> that these functions are provided for convenience if you want to implement your own features using Input's mouse implementation. In general, [Player functions](Functions-(Players)) are the intended way to use Input and are preferred.
+?> These functions are provided for convenience if you want to implement your own features using Input's mouse implementation. In general, [Player functions](Functions-(Players)) are the intended way to use Input and are preferred.
 
 &nbsp;
 
