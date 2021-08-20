@@ -95,6 +95,20 @@ Sets a value directly for a verb. It's recommend that verb values are set before
 
 &nbsp;
 
+### `input_platform_text_source()`
+
+*Returns:* String indicating platform text source, `async` `virtual` or `keyboard`
+
+|Name           |Datatype                                                             |Purpose                                                                         |
+|---------------|---------------------------------------------------------------------|--------------------------------------------------------------------------------|
+|None         | |
+
+Provides a suggestion for text entry handling based on platform target.
+
+&nbsp;
+
+&nbsp;
+
 ### `input_ignore_key_add(key)`
 
 *Returns:* N/A (`undefined`)
