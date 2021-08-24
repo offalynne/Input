@@ -1,8 +1,8 @@
 input_tick();
 input_hotswap_tick();
 
-var _size    = gamepad_get_device_count();
-var _delta   = (input_keyboard_check_pressed(vk_down) - input_keyboard_check_pressed(vk_up));
+var _size = gamepad_get_device_count();
+var _delta = (input_keyboard_check_pressed(vk_down) - input_keyboard_check_pressed(vk_up));
 
 if (__INPUT_ON_CONSOLE || __INPUT_ON_MOBILE)
     _delta = (input_mouse_check_pressed(mb_left) 
