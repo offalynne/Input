@@ -52,7 +52,7 @@ We've got our convienent enum storage unit for our verb list, and we've got the 
 Here's a Step event for yout to put in a character object or whatever!
 
  ```
- //Move the player if the Leftor Down verb is activated
+ //Move the player if the Left or Right verb is activated
 if (input_check(eVerb.Left)) x -= 4;
 if (input_check(eVerb.Right)) x += 4;
 
