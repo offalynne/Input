@@ -100,7 +100,7 @@ input_player_source_set(INPUT_SOURCE.GAMEPAD);
 input_player_gamepad_set(0)
 ```
 
-Congratulations, you now have controller input! and you didn't even have to *touch* the Step event!
+Congratulations, you now have controller input! If you want the player to be able to switch between keyboard and gamepad devices on the fly, add `input_hotswap_tick(0)` to your Step event.
 
-This system is also supposed to be great for rebinding, but you'll have to take a deeper dive into the documentation for information on that.
+This system is also great for rebinding, but you'll have to take a deeper dive into the documentation for information on that.
 
