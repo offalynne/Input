@@ -16,7 +16,7 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 ?> Input is developed and maintained on desktop platforms and as a result is most oriented and thoroughly tested for desktop features. 
 
-!> The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#html5) for information on platform-specific quirks.*
+!> The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#html5) for information on platform-specific quirks.
 
 ### Windows
 
