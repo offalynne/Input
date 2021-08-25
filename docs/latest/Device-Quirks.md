@@ -10,7 +10,7 @@ Input works to normalize behavior across supported platforms. Each platform brin
 
 ### Gamepad on Desktop
 
-*The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#html5) for information on platform-specific quirks.*
+*The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#gamepad-on-html5) for information on platform-specific quirks.*
 
 - On Windows, as per GameMaker’s default behaviour, device indexes from 0 to 3 inclusive are XInput gamepads. Devices 4 to 11 inclusive are DInput gamepads. XInput gamepads return less information about themselves than DInput and, as a result, some supplementary data (button labels etc.) may be inaccurate.
 
@@ -37,6 +37,8 @@ Input works to normalize behavior across supported platforms. Each platform brin
 - On Xbox One and Series native (XDK builds), Gamepad descriptions are returned as empty strings
 
 ### Gamepad on Mobile
+
+*The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#gamepad-on-html5) for information on platform-specific quirks.*
 
 - Many gamepads are not fully supported by iOS due to limited support offered by Apple. At the time of writing, XBox One and PlayStation 4 wireless gamepads are supported by iOS, as are MFi controllers. For an up-to-date list, please check [Apple's communications](https://support.apple.com/en-us/HT210414).
 
@@ -70,7 +72,7 @@ Input works to normalize behavior across supported platforms. Each platform brin
 
 ### Keyboard on Desktop
 
-*The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#html5) for information on platform-specific quirks.*
+*The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#keyboard-on-console-mobile-and-html5) for information on platform-specific quirks.*
 
 - On Windows, when the game is running in a window, the Alt+Space menu sticks. Input forces Space to release when Alt keys do.
 
