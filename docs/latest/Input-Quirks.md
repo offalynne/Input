@@ -8,7 +8,7 @@ Input works to normalize behavior across supported platforms. Each platform brin
 
 &nbsp;
 
-## [Quirks by Platform](Platform-Quirks)
+### [Quirks by Platform](Platform-Quirks)
 - [General](Platform-Quirks?id=general)
 - [Desktop](Platform-Quirks?id=desktop)
    - [Windows](Platform-Quirks?id=windows)
@@ -27,9 +27,7 @@ Input works to normalize behavior across supported platforms. Each platform brin
    - [UWP on Windows](Platform-Quirks?id=uwp-on-xbox-one-and-xbox-series-xs)
    - [UWP on Xbox One and Xbox Series X/S](Platform-Quirks?id=uwp-on-xbox-one-and-xbox-series-xs)
 
-&nbsp;
-
-## [Quirks by Device](Device-Quirks)
+### [Quirks by Device](Device-Quirks)
 - [General](Device-Quirks?id=general)
 - [Gamepad](Device-Quirks?id=gamepad)
    - [Gamepad on Desktop](Device-Quirks?id=gamepad-on-desktop)
