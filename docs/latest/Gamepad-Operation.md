@@ -10,8 +10,8 @@ _The following recommendations should ease configuring USB and Bluetooth console
 
 To ensure your gamepad is working correctly with your device before attempting to configure it with Input, we recommend confirming proper operation using a platform-appropriate tool.
 
-|:Platform |:App      |
-|----------|----------|
+| Platform | App      |
+|:---------|:---------|
 | Windows  | [Game Controller Dialogue (joy.cpl)](https://support.microsoft.com/en-ca/help/831361/how-to-troubleshoot-game-controllers-in-microsoft-games#section-2)|
 | MacOS    | [Controllers Lite](https://itunes.apple.com/us/app/controllers-lite/id673660806)|
 | Ubuntu   | [GTK Joystick Tester](https://jstest-gtk.gitlab.io)|
