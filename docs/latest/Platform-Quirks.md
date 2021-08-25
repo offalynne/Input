@@ -1,4 +1,4 @@
-# Platform Quirks
+# Input Quirks by Platform
 
 ---
 
