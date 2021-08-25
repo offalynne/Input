@@ -48,6 +48,8 @@ Input is developed and maintained on desktop platforms and as a result is most o
 
 - Gamepads are sometimes misreported and often over-reported on the platform so [device blocking](Controller-Mapping#controller-blacklist) is particularly useful.
 
+- On Ubuntu, gamepad joystick axes are not signed. GameMaker attempts to automatically sign joystick axes when they connect, but this change is discarded when gamepads are remapped. Input automatically adjusts joystick axes' range on remapping in order to resolve this.
+
 ### Steam
 
 - Steam Overlay intercepts certain key combinations that should be avoided when building a default keyboard scheme. By default these include `F12` and `Shift+Tab`. For more info see [Common Keyboard Combos](Common-Keyboard-Combos).
@@ -62,9 +64,11 @@ Input is developed and maintained on desktop platforms and as a result is most o
 
 ### Switch
 
-- Switch keyboard input is fully functional but unlikely to be needed, and therefore off by default. You can turn keyboard input on by [setting `INPUT_SWITCH_KEYBOARD_ALLOWED` to `true`](Configuration).
+- Keyboard input is fully functional but unlikely to be needed, and therefore off by default. You can turn keyboard input on by [setting `INPUT_SWITCH_KEYBOARD_ALLOWED` to `true`](Configuration).
 
 - Switch touchscreen input is fully functional. You may not want to allow this for your game, in which case you should omit default mouse input on Switch (via a check against `os_type`) to prevent touchscreen input being registered by Input.
+
+- On Switch, while using individual JoyCons `gp_start` indicates the "+" or "-" buttons, returned as `gamepad start` by [`input_binding_get_name()`](Functions-(Bindings)#input_binding_get_namebinding). This differs from other platforms supporting the JoyCons (Desktop and Android) which use the "Capture" button as `start` on the Left JoyCon.
 
 ### PS4 and PS5
 
@@ -104,7 +108,7 @@ Input is developed and maintained on desktop platforms and as a result is most o
 
 - Due to GameMaker's handling of the Android controller stack, some gamepads do not have functional dpad mappings.
 
-- Switch Joycons are not properly handled by some versions of the Android kernel. As a result, they are not supported in some circumstances.
+- Switch JoyCons are not properly handled by some versions of the Android kernel. As a result, they are not supported in some circumstances.
 
 &nbsp;
 
@@ -124,6 +128,8 @@ Input is developed and maintained on desktop platforms and as a result is most o
 
 ## UWP
 
+- Gamepads trigger keyboard events. As a result, certain keyboard keys are blocked by default; for more information see [`INPUT_IGNORE_RESERVED_KEYS_LEVEL`](Configuration).
+
 ### UWP on Windows
 
 - Keyboard input works with same caveats as on the [native Windows platform](#Windows).
@@ -134,10 +140,8 @@ Input is developed and maintained on desktop platforms and as a result is most o
 
 - Gamepad descriptions are returned as `"XInput"` or `"Unknown UWP Controller"`.
 
-- Gamepads trigger keyboard events. As a result, certain keyboard keys are blocked by default; for more information see [`INPUT_IGNORE_RESERVED_KEYS_LEVEL`](Configuration).
-
 ### UWP on Xbox One and Xbox Series X/S
 
 - Gamepad descriptions are returned as `"XInput"`.
 
-- Mouse is not supported by GameMaker (and Input) when running a UWP build on Xbox, but keyboard input curiously _is_ supported (with the same caveats as on the [Windows platform](#Windows)).
+- Mouse is not supported by GameMaker (and Input) through UWP on Xbox.
