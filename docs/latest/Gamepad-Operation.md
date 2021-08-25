@@ -16,7 +16,7 @@ To ensure your gamepad is working correctly with your device before attempting t
 | MacOS    | [Controllers Lite](https://itunes.apple.com/us/app/controllers-lite/id673660806)|
 | Ubuntu   | [GTK Joystick Tester](https://jstest-gtk.gitlab.io)|
 | Android  | [GamePad Test](https://play.google.com/store/apps/details?id=com.zhangyangjing.gamepadtest)|
-| iOS and tvOS | [Game Controller Tester](https://itunes.apple.com/us/app/game-controller-tester/id859236726)|
+| iOS      | [Game Controller Tester](https://itunes.apple.com/us/app/game-controller-tester/id859236726)|
 | HTML5    | [HTML5 Gamepad Test](https://greggman.github.io/html5-gamepad-test/)|
 
 &nbsp;
