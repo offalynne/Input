@@ -19,7 +19,6 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 &nbsp;
 
 ### `input_check_pressed(verb, [playerIndex], [bufferDuration])`
-### `input_check_p(verb, [playerIndex], [bufferDuration])`
 
 *Returns:* Boolean, if the verb is newly activated this frame
 
