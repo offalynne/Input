@@ -4,8 +4,6 @@ Input works to normalize behavior across supported platforms. Each platform brin
 
 &nbsp;
 
-&nbsp;
-
 ## Gamepad
 
 - GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's game controller mapping](https://wiki.libsdl.org/CategoryGameController) feature. Input offers [a sophisticated reimplementation](Controller-Mapping) on platforms with reliable drivers and available [vendor and product](https://docs.microsoft.com/en-us/windows-hardware/drivers/install/standard-usb-identifiers) information (Desktop platforms and Android), including support for axis inversion and range modifiers, and greatly expands the number of supported devices.
@@ -65,8 +63,6 @@ Input works to normalize behavior across supported platforms. Each platform brin
 - On UWP for Windows, gamepad type information is unavailable for devices except XInput controllers: descriptions are returned as `"XInput"` or `"Unknown UWP Controller"`.
 
 - On UWP on Xbox One and Xbox Series X/S, gamepad descriptions are returned as `"XInput"`.
-
-&nbsp;
 
 &nbsp;
 
