@@ -2,6 +2,10 @@
 
 Input works to normalize behavior across supported platforms. Each platform brings it's own eccentricities, so this work is ongoing. Herein notable issues and limitations will be documented that may impact users of Input in their implementations, or impact the experience of players of games that have implemented Input. For a list of upstream problems we are monitoring and related workarounds, see [upstream bug issues](https://github.com/JujuAdams/Input/issues?q=is%3Aissue+label%3A%22upstream+bug+%F0%9F%92%A7%22+).
 
+&nbsp;
+
+&nbsp;
+
 ## Gamepad
 
 - GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's game controller mapping](https://wiki.libsdl.org/CategoryGameController) feature. Input offers [a sophisticated reimplementation](Controller-Mapping) on platforms with reliable drivers and available [vendor and product](https://docs.microsoft.com/en-us/windows-hardware/drivers/install/standard-usb-identifiers) information (Desktop platforms and Android), including support for axis inversion and range modifiers, and greatly expands the number of supported devices.
@@ -61,6 +65,8 @@ Input works to normalize behavior across supported platforms. Each platform brin
 - On UWP for Windows, gamepad type information is unavailable for devices except XInput controllers: descriptions are returned as `"XInput"` or `"Unknown UWP Controller"`.
 
 - On UWP on Xbox One and Xbox Series X/S, gamepad descriptions are returned as `"XInput"`.
+
+&nbsp;
 
 &nbsp;
 
