@@ -6,7 +6,7 @@ Input works to normalize behavior across supported platforms. Each platform brin
 
 - GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's game controller mapping](https://wiki.libsdl.org/CategoryGameController) feature. Input offers [a sophisticated reimplementation](Controller-Mapping) on platforms with reliable drivers and available [vendor and product](https://docs.microsoft.com/en-us/windows-hardware/drivers/install/standard-usb-identifiers) information (Desktop platforms and Android), including support for axis inversion and range modifiers, and greatly expands the number of supported devices.
 
-### Desktop
+### Gamepad on Desktop
 
 *The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#html5) for information on platform-specific quirks.*
 
@@ -26,7 +26,7 @@ Input works to normalize behavior across supported platforms. Each platform brin
 
 - Steam Input and especially the Steam Controller make use of Mixed Input, an affordance Input is currently not optimized for. Support for Mixed Input should be improved in the future.
 
-### Console
+### Gamepad on Console
 
 - On Switch, while using individual JoyCons `gp_start` indicates the "+" or "-" buttons, returned as `gamepad start` by [`input_binding_get_name()`](Functions-(Bindings)#input_binding_get_namebinding). This differs from other platforms supporting the JoyCons (Desktop and Android) which use the "Capture" button as `start` on the Left JoyCon.
 
@@ -34,7 +34,7 @@ Input works to normalize behavior across supported platforms. Each platform brin
 
 - On Xbox One and Series native (XDK builds), Gamepad descriptions are returned as empty strings
 
-### Mobile
+### Gamepad on Mobile
 
 - Many gamepads are not fully supported by iOS due to limited support offered by Apple. At the time of writing, XBox One and PlayStation 4 wireless gamepads are supported by iOS, as are MFi controllers. For an up-to-date list, please check [Apple's communications](https://support.apple.com/en-us/HT210414).
 
@@ -46,13 +46,13 @@ Input works to normalize behavior across supported platforms. Each platform brin
 
 - Switch JoyCons are not properly handled by some versions of the Android kernel. As a result, they are not supported in some circumstances.
 
-### HTML5
+### Gamepad on HTML5
 
 - Web browsers have their own gamepad API, as such Input does not use its own [controller mapping](Controller-Mapping) on the HTML5 platform. Input will use the browser's gamepad implementation, including button mapping.
 
 - On the HTML5 platform, in order for gamepads to present and operate, the user must first press a button with the game in focus.
 
-### UWP
+### Gamepad on UWP
 
 - Gamepads trigger keyboard events. As a result, certain keyboard keys are blocked by default; for more information see [`INPUT_IGNORE_RESERVED_KEYS_LEVEL`](Configuration).
 
@@ -66,7 +66,7 @@ Input works to normalize behavior across supported platforms. Each platform brin
 
 ## Keyboard
 
-### Desktop
+### Keyboard on Desktop
 
 *The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#html5) for information on platform-specific quirks.*
 
@@ -84,7 +84,7 @@ Input works to normalize behavior across supported platforms. Each platform brin
 
 - Steam Input and especially the Steam Controller make use of Mixed Input, an affordance Input is currently not optimized for. Support for Mixed Input should be improved in the future.
 
-### Console, Mobile, HTML5
+### Keyboard on Console, Mobile and HTML5
 
 - On Switch, Keyboard input is fully functional but unlikely to be needed, and therefore off by default. You can turn keyboard input on by [setting `INPUT_SWITCH_KEYBOARD_ALLOWED` to `true`](Configuration).
 
@@ -94,7 +94,7 @@ Input works to normalize behavior across supported platforms. Each platform brin
 
 - On the HTML platform, the browser fullscreen toggle key (F10 on Apple devices, F11 elsewhere) is blocked from keyboard binding.
 
-### UWP
+### Keyboard on UWP
 
 - Gamepads trigger keyboard events. As a result, certain keyboard keys are blocked by default on the platform; for more information see [`INPUT_IGNORE_RESERVED_KEYS_LEVEL`](Configuration).
 
