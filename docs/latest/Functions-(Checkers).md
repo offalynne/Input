@@ -36,7 +36,6 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 &nbsp;
 
 ### `input_check_released(verb, [playerIndex], [bufferDuration])`
-### `input_check_r(verb, [playerIndex], [bufferDuration])`
 
 *Returns:* Boolean, if the verb is newly deactivated this frame
 
