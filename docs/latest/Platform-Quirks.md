@@ -84,7 +84,7 @@ Input is developed and maintained on desktop platforms and as a result is most o
 
 &nbsp;
 
-## Mobile Native
+## Mobile
 
 *The following is valid for native builds only. If you are using HTML5 for your game but are running on a mobile device, please see the [HTML5 section](#html5) for information on platform-specific quirks.*
 
