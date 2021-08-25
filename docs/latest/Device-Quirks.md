@@ -1,5 +1,7 @@
 # Input Quirks by Device
 
+---
+
 Input works to normalize behavior across supported platforms. Each platform brings it's own eccentricities, so this work is ongoing. Herein notable issues and limitations will be documented that may impact users of Input in their implementations, or impact the experience of players of games that have implemented Input. For a list of upstream problems we are monitoring and related workarounds, see [upstream bug issues](https://github.com/JujuAdams/Input/issues?q=is%3Aissue+label%3A%22upstream+bug+%F0%9F%92%A7%22+).
 
 &nbsp;
@@ -10,7 +12,7 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 ### Gamepad on Desktop
 
-*The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#gamepad-on-html5) for information on platform-specific quirks.*
+!> The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#gamepad-on-html5) for information on platform-specific quirks.
 
 - On Windows, as per GameMaker’s default behaviour, device indexes from 0 to 3 inclusive are XInput gamepads. Devices 4 to 11 inclusive are DInput gamepads. XInput gamepads return less information about themselves than DInput and, as a result, some supplementary data (button labels etc.) may be inaccurate.
 
@@ -38,7 +40,7 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 ### Gamepad on Mobile
 
-*The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#gamepad-on-html5) for information on platform-specific quirks.*
+!> The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#gamepad-on-html5) for information on platform-specific quirks.
 
 - Many gamepads are not fully supported by iOS due to limited support offered by Apple. At the time of writing, XBox One and PlayStation 4 wireless gamepads are supported by iOS, as are MFi controllers. For an up-to-date list, please check [Apple's communications](https://support.apple.com/en-us/HT210414).
 
@@ -74,7 +76,7 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 ### Keyboard on Desktop
 
-*The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#keyboard-on-console-mobile-and-html5) for information on platform-specific quirks.*
+!> The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#keyboard-on-console-mobile-and-html5) for information on platform-specific quirks.
 
 - On Windows, when the game is running in a window, the Alt+Space menu sticks. Input forces Space to release when Alt keys do.
 
