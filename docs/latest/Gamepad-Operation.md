@@ -10,11 +10,14 @@ _The following recommendations should ease configuring USB and Bluetooth console
 
 To ensure your gamepad is working correctly with your device before attempting to configure it with Input, we recommend confirming proper operation using a platform-appropriate tool.
 
-- **Windows**: [Game Controller Dialogue (joy.cpl)](https://support.microsoft.com/en-ca/help/831361/how-to-troubleshoot-game-controllers-in-microsoft-games#section-2)
-- **MacOS**: [Controllers Lite](https://itunes.apple.com/us/app/controllers-lite/id673660806)
-- **Ubuntu**: [GTK Joystick Tester](https://jstest-gtk.gitlab.io)
-- **Android**: [GamePad Test](https://play.google.com/store/apps/details?id=com.zhangyangjing.gamepadtest)
-- **iOS**: [Game Controller Tester](https://itunes.apple.com/us/app/game-controller-tester/id859236726)
+| Platform | Test App |
+|----------|----------|
+| Windows  | [Game Controller Dialogue (joy.cpl)](https://support.microsoft.com/en-ca/help/831361/how-to-troubleshoot-game-controllers-in-microsoft-games#section-2)|
+| MacOS    | [Controllers Lite](https://itunes.apple.com/us/app/controllers-lite/id673660806)|
+| Ubuntu   | [GTK Joystick Tester](https://jstest-gtk.gitlab.io)|
+| Android  | [GamePad Test](https://play.google.com/store/apps/details?id=com.zhangyangjing.gamepadtest)|
+| iOS and tvOS | [Game Controller Tester](https://itunes.apple.com/us/app/game-controller-tester/id859236726)|
+| HTML5    | [HTML5 Gamepad Test](https://greggman.github.io/html5-gamepad-test/)|
 
 &nbsp;
 
