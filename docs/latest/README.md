@@ -4,7 +4,7 @@
 
 <img src="https://raw.githubusercontent.com/JujuAdams/Input/master/LOGO_white.png" width="50%" style="display: block; margin: auto;" />
 <hr>
-<p align="center">Comprehensive cross-platform input for GameMaker 2.3 by <a href="https://twitter.com/jujuadams" target="_blank">Juju Adams</a> and <a href="https://twitter.com/offalynne" target="_blank">Alynne</a></p>
+<p align="center">Comprehensive cross-platform input for GameMaker 2.3 by <a href="https://twitter.com/jujuadams" target="_blank">Juju Adams</a> and <a href="https://twitter.com/offalynne" target="_blank">Alynne Keith</a></p>
 
 <p align="center"><a href="https://github.com/JujuAdams/Input/releases/" target="_blank">Download the .yymps</a></p>
 <p align="center">Talk about Input on the <a href="https://discord.gg/8krYCqr" target="_blank">Discord server</a></p>
@@ -31,7 +31,7 @@ Everything! You might run into edge cases on platforms that we don't regularly t
 
 **How is Input licensed? Can I use it for commercial projects?**
 
-[Input is released under the MIT license](https://github.com/JujuAdams/Input/blob/master/LICENSE). This means you can use it for whatever purpose you want, including commercial projects. It'd mean a lot to me if you'd drop my name in your credits (Juju Adams and offalynne) and/or say thanks, but you're under no obligation to do so.
+[Input is released under the MIT license](https://github.com/JujuAdams/Input/blob/master/LICENSE). This means you can use it for whatever purpose you want, including commercial projects. It'd mean a lot to me if you'd drop my name in your credits (Juju Adams and Alynne Keith) and/or say thanks, but you're under no obligation to do so.
 
 &nbsp;
 
