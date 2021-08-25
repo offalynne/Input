@@ -70,6 +70,8 @@ Input works to normalize behavior across supported platforms. Each platform brin
 
 ## Keyboard
 
+!> Keyboard is not supported by GameMaker (and Input) on the PS4, PS5, Xbox One, Xbox Series X/S, iOS or tvOS platforms.
+
 ### Keyboard on Desktop
 
 *The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#keyboard-on-console-mobile-and-html5) for information on platform-specific quirks.*
@@ -91,8 +93,6 @@ Input works to normalize behavior across supported platforms. Each platform brin
 ### Keyboard on Console, Mobile and HTML5
 
 - On Switch, Keyboard input is fully functional but unlikely to be needed, and therefore off by default. You can turn keyboard input on by [setting `INPUT_SWITCH_KEYBOARD_ALLOWED` to `true`](Configuration).
-
-- Keyboard is not supported by GameMaker (and Input) on the PS4, PS5, Xbox One, Xbox Series X/S, iOS or tvOS platforms.
 
 - Android keyboard input is problematic and so set to off by default. The most significant issue is keys regularly and irreparably sticking when modified using Shift keys. You can turn keyboard input on by [setting `INPUT_ANDROID_KEYBOARD_ALLOWED` to `true`](Configuration). If using this feature, it is not recommended to use bindings besides Arrow keys, Enter, Space, and Backspace.
 
