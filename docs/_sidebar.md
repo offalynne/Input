@@ -12,5 +12,5 @@
 - [Verbs and Alternate Bindings](Verbs-and-Alternate-Bindings)
 - [Binding Names](Binding-Names)
 - [Gamepad Operation](Gamepad-Operation)
-- [Platform Quirks](Platform-Quirks)
+- [Input Quirks](Input-Quirks)
 - [Common Keyboard Combos](Common-Keyboard-Combos)
