@@ -83,7 +83,8 @@ function input_tick()
         switch (_platform)
         {
             case os_uwp:
-                if (keyboard_check(vk_alt) && os_is_paused())
+                if ((INPUT_IGNORE_RESERVED_KEYS_LEVEL > 0) 
+                && keyboard_check(vk_alt) && !keyboard_check_pressed(vk_alt))
                 {
                     keyboard_key_release(vk_alt);
                 }

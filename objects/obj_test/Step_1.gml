@@ -11,7 +11,7 @@ repeat(gamepad_get_device_count())
     ++_gamepad;
 }
 
-if (__INPUT_ON_CONSOLE || __INPUT_ON_MOBILE)
+if (__INPUT_ON_CONSOLE || __INPUT_ON_MOBILE || os_type == os_uwp)
     _delta = (input_mouse_check_pressed(mb_left) 
              || (gamepad_is_connected(_gamepad) && input_gamepad_check_pressed(_gamepad, gp_face1) && input_gamepad_check(_gamepad, gp_shoulderr)));
 
