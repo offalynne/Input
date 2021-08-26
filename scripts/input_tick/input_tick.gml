@@ -86,6 +86,7 @@ function input_tick()
                 if ((INPUT_IGNORE_RESERVED_KEYS_LEVEL > 0) 
                 && keyboard_check(vk_alt) && !keyboard_check_pressed(vk_alt))
                 {
+                    //Unstick Alt Tab
                     keyboard_key_release(vk_alt);
                 }
             //UWP also uses Windows case
