@@ -2,7 +2,7 @@
 
 ---
 
-?> The following recommendations should ease configuring USB and Bluetooth console controllers for operation on desktop and mobile platforms. If you implement Input in your project, consider passing this information on to your players.
+_The following recommendations should ease configuring USB and Bluetooth console controllers for operation on desktop and mobile platforms. If you implement Input in your project, consider passing this information on to your players._
 
 &nbsp;
 
