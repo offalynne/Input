@@ -22,11 +22,10 @@ To ensure your gamepad is working correctly with your device before attempting t
 &nbsp;
 
 ## Platform Troubleshooting
-_Per-platform drivers, software and connectivity troubleshooting tips_
 
 If you encounter trouble using your gamepad with Input, ensure the gamepad device's firmware is up to date, and that it is working correctly on your Operating System. Input includes comprehensive built-in support for a wide variety of controllers, and so disabling intermediary software and unofficial controller applications that may interfere with normal operation is recommended, including Xpadder, JoyToKey, AntiMicro, x360ce, ScpToolkit, MotioninJoy, and InputMapper. 
 
-The following additional setup steps may be necessary for proper gamepad operation on your platform:
+?> Depending on platform and device, certain setups may require extra configuration including device drivers, software and specific connectivity steps. The following additional setup may be necessary for proper operation on your platform.
 
 ### Windows
 - [Xbox 360 Controller driver setup](https://support.xbox.com/help/xbox-360/xbox-on-windows/accessories/xbox-controller-for-windows-setup)
