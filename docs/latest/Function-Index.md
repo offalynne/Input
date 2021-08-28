@@ -87,6 +87,8 @@
 
 ### [String](Functions-(String))
 
+?> String functions are provided for handling text input in a device and platform agnostic context, serving as an extension to the inbuilt [`keyboard_string`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/keyboard_string.htm) value.
+
 - [`input_string_get()`](Functions-(String)#input_string_get)
 - [`input_string_set([string])`](Functions-(String)#input_string_setstring)
 - [`input_string_async_get(prompt, [string], [allow_empty])`](Functions-(String)#input_string_async_getprompt-string-allow_empty)
