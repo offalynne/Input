@@ -11,6 +11,6 @@
 - [Input Sources](Input-Sources)
 - [Verbs and Alternate Bindings](Verbs-and-Alternate-Bindings)
 - [Binding Names](Binding-Names)
-- [Gamepad Operation](Gamepad-Operation)
+- [Gamepad Troubleshooting](Gamepad-Troubleshooting)
 - [Input Quirks](Input-Quirks)
 - [Common Keyboard Combos](Common-Keyboard-Combos)
