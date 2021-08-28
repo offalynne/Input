@@ -4,7 +4,7 @@
 
 function input_string_async_get(_prompt, _string = global.__input_string, _allow_empty = false)
 {
-    //Warn dialog platorm suitability
+    //Warn dialog platform suitability
     var _source = input_platform_text_source();
     if (_source != "async")   __input_trace("Async dialog is not suitable for use on the current platform");
     if (_source == "virtual") __input_trace("Consider showing the virtual keyboard for non-modal text input instead");
