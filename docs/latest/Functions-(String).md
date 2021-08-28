@@ -10,7 +10,7 @@
 |---------------|--------|------------------------------------------------------------------------------------------|
 |None         | |
 
-Returns a string of user entered text via physical keyboard, on-screen virtual keyboard or asychronous dialog prompt. Useful implementing name fields, chat function and other text entry.
+Returns a string of user entered text via physical keyboard, on-screen virtual keyboard or asychronous dialog prompt. Useful for implementing name fields, chat function and other text entry.
 
 &nbsp;
 
