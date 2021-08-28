@@ -66,7 +66,7 @@
 | `Ctrl`+`0`                | Replay save       |
 | `Ctrl`+`M`                | Mic toggle        |
 
-!> All Shortcuts are `Meta` (`Cmd`) instead of `Ctrl` on MacOS
+!> All Shortcuts for GeForce Experience use `Meta` (`Cmd`) instead of `Ctrl` on MacOS
 
 ### Parsec
 | Input                     | Action            |
