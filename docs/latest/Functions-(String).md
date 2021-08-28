@@ -40,7 +40,9 @@ This function is used to set the internal text entry value as returned by `input
 |`[string]`     |string  |Initial value. If not specified, internal string is used                                  |
 |`[allow_empty]`|boolean |Whether a cancelled or returned-empty prompt is treated as valid. `false` if not specified|
 
-Issues a modal prompt for text-entry. Intended for use on console platform targets. Requires use of `input_string_dialog_async_event`.
+Issues a modal prompt for text-entry. Intended for use on console platform targets. 
+
+!>  Requires use of `input_string_dialog_async_event`.
 
 &nbsp;
 
@@ -56,4 +58,4 @@ Issues a modal prompt for text-entry. Intended for use on console platform targe
 
 Sets internal string to the result of a text-entry dialog prompt when issued by `input_string_async_get`.
 
-!> This function be used in the context of an [_Asynchronous Dialogue event_](https://manual.yoyogames.com/The_Asset_Editors/Object_Properties/Async_Events/Dialog.htm) (typically in a persistent instance). Required for use of `input_string_async_get`.
+!> This function must be used in the context of an [_Asynchronous Dialogue event_](https://manual.yoyogames.com/The_Asset_Editors/Object_Properties/Async_Events/Dialog.htm) (typically in a persistent instance). Required for use of `input_string_async_get`.
