@@ -10,7 +10,7 @@
 |---------------|--------|------------------------------------------------------------------------------------------|
 |None         | |
 
-Returns a string of user entered text via keyboard (physical, virtual and asychronous prompt). Useful for implementing name fields, chat functions and other text entry.
+Returns a string of user entered text via physical keyboard, on-screen virtual keyboard or asychronous dialog prompt. Useful implementing name fields, chat function and other text entry.
 
 &nbsp;
 
@@ -24,7 +24,7 @@ Returns a string of user entered text via keyboard (physical, virtual and asychr
 |---------------|--------|------------------------------------------------------------------------------------------|
 |`[string]`     |string  |Sets input string. If not specified, input string is cleared (set to empty).              |
 
-This function is used to set the internal text entry value as returned by `input_string_get()`. If the target platform supports it, this includes setting the value of Game Maker's internal [`keyboard_string`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/keyboard_string.htm) value.
+This function is used to set the internal text entry value as returned by `input_string_get()`. If the target platform supports it, this includes setting the value of Game Maker's internal [`keyboard_string`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/keyboard_string.htm).
 
 &nbsp;
 
@@ -36,11 +36,11 @@ This function is used to set the internal text entry value as returned by `input
 
 |Name           |Datatype|Purpose                                                                                   |
 |---------------|--------|------------------------------------------------------------------------------------------|
-|`prompt`       |string  |Prompt caption                                                                            |
-|`[string]`     |string  |Initial value. If not specified, internal string is used                                  |
-|`[allow_empty]`|boolean |Whether a cancelled or returned-empty prompt is treated as valid. `false` if not specified|
+|`prompt`       |string  |Dialog prompt caption                                                                     |
+|`[string]`     |string  |Initial string value. If not specified, internal string is used                           |
+|`[allow_empty]`|boolean |Whether a cancelled or returned-empty dialog is treated as valid. `false` if not specified|
 
-Issues a modal prompt for text-entry. Intended for use on console platform targets. 
+Issues a dialog prompt for text-entry. Intended for use on console platform targets. 
 
 !>  Requires use of `input_string_dialog_async_event`.
 
