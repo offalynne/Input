@@ -4,8 +4,10 @@
 
 function input_string_async_get(_prompt, _string = global.__input_string, _allow_empty = false)
 {
-    if (!__INPUT_ON_CONSOLE) __input_trace("Async dialogue is not intended for use off of console platforms");
-    if (__INPUT_ON_MOBILE)   __input_trace("Consider showing the virtual keyboard for non-modal text input instead");
+    //Warn dialog platorm suitability
+    var _source = input_platform_text_source();
+    if (_source != "async")   __input_trace("Async dialog is not suitable for use on the current platform");
+    if (_source == "virtual") __input_trace("Consider showing the virtual keyboard for non-modal text input instead");
        
     //Issue modal request when not awaiting response
     if (global.__input_async_id != undefined)
