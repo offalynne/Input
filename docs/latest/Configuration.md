@@ -43,11 +43,11 @@ Compile time configuration is controlled by macros stored in `__input_config()` 
     - Fullscreen on HTML5 (F11, or F10 on Apple platforms)
     - Caps Lock on HTML5 for Apple platforms
     - Various keys triggered by gamepads on UWP platforms
-- `2`: Ignore all reserved and/or system keys (in adittion to those above):
+- `2`: Ignore all reserved and/or system keys (in addition to the above):
     - Num lock & Scroll lock
-    - IME keys (0x15-0x1A, 0xE5)
-    - Browser keys (0xA6-0xAC)
-    - Media keys (0xAD-0xB7)
+    - IME keys (0x15 to 0x1A, 0xE5)
+    - Browser keys (0xA6 to 0xAC)
+    - Media keys (0xAD to 0xB7)
 
 
 You can modify this list at any time by calling [`input_ignore_key_add()`](Functions-(Other)#input_ignore_key_addkey) or [`input_ignore_key_remove()`](Functions-(Other)#input_ignore_key_removekey). This setting only affects Input and will not filter keys from native GameMaker functions.
