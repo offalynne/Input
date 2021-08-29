@@ -72,8 +72,6 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 ## Keyboard
 
-!> Keyboard is not supported by GameMaker (and Input) on the PS4, PS5, Xbox One, Xbox Series X/S, iOS or tvOS platforms.
-
 ### Keyboard on Desktop
 
 !> The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#keyboard-on-console-mobile-and-html5) for information on platform-specific quirks.
@@ -105,3 +103,5 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 - Gamepads trigger keyboard events. As a result, certain keyboard keys are blocked by default on the platform; for more information see [`INPUT_IGNORE_RESERVED_KEYS_LEVEL`](Configuration).
 
 - Keyboard input is supported (with the same caveats as on the [Windows platform](#Windows)).
+
+!> Keyboard is not supported by GameMaker (and Input) on the PS4, PS5, Xbox One, Xbox Series X/S, iOS or tvOS platforms.
