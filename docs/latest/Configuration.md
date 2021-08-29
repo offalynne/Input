@@ -48,5 +48,6 @@ Compile time configuration is controlled by macros stored in `__input_config()` 
     - IME keys (0x15-0x1A, 0xE5)
     - Browser keys (0xA6-0xAC)
     - Media keys (0xAD-0xB7)
-	
+
+
 You can modify this list at any time by calling [`input_ignore_key_add()`](Functions-(Other)#input_ignore_key_addkey) or [`input_ignore_key_remove()`](Functions-(Other)#input_ignore_key_removekey). This setting only affects Input and will not filter keys from native GameMaker functions.
