@@ -38,16 +38,15 @@ Compile time configuration is controlled by macros stored in `__input_config()` 
 
 - `0`: Don't ignore any keys. This is not recommended!
 - `1`: Ignore a minimal selection of problematic keys:
-    - Alt & Windows/Command (Mac) keys
-    - F11 when running through a browser
-    - Various keyboard keys triggered by gamepads (Windows UWP only)
-- `2`: Ignore all reserved and/or system keys:
-    - Alt & Windows/Command (Mac)
+    - Alt keys
+    - Meta or "Windows" key (Command on Mac)
+    - Fullscreen on HTML5 (F11, or F10 on Apple platforms)
+    - Caps Lock on HTML5 for Apple platforms
+    - Various keys triggered by gamepads on UWP platforms
+- `2`: Ignore all reserved and/or system keys (in adittion to those above):
     - Num lock & Scroll lock
-    - IME keys (`0x15  ->  0x1A`, `0xE5`)
-    - Browser keys (`0xA6  ->  0xAC`)
-    - Media keys (`0xAD  -  0xB7`)
-    - F11 (web only)
-    - Various keyboard keys triggered by gamepads (Windows UWP only)
+    - IME keys (0x15-0x1A, 0xE5)
+    - Browser keys (0xA6-0xAC)
+    - Media keys (0xAD-0xB7)
 	
-You can modify this list at any time by calling [`input_ignore_key_add()`](Functions-(Other)#input_ignore_key_addkey) or [`input_ignore_key_remove()`](Functions-(Other)#input_ignore_key_removekey). This setting only affects Input and will not filter these keys from native GameMaker functions.
+You can modify this list at any time by calling [`input_ignore_key_add()`](Functions-(Other)#input_ignore_key_addkey) or [`input_ignore_key_remove()`](Functions-(Other)#input_ignore_key_removekey). This setting only affects Input and will not filter keys from native GameMaker functions.
