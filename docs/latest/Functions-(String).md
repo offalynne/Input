@@ -48,6 +48,20 @@ Issues a dialog prompt for text-entry. Intended for use on console platform targ
 
 &nbsp;
 
+### `input_string_async_is_active()`
+
+*Returns:* Boolean, if an async string request is active
+
+|Name           |Datatype|Purpose                                                                                   |
+|---------------|--------|------------------------------------------------------------------------------------------|
+|None         | |
+
+This function will return `true` if the async dialog is open and awaiting submission.
+
+&nbsp;
+
+&nbsp;
+
 ### `input_string_dialog_async_event()`
 
 *Returns:* N/A (`undefined`)
