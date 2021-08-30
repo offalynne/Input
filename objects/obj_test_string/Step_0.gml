@@ -1,6 +1,6 @@
 input_tick();
 
-if (input_mouse_check_pressed(mb_any))
+if (input_mouse_check_released(mb_any) && !input_string_async_is_active())
 {
     var _x = device_mouse_x(0);
     if (device_mouse_y(0) < 300)

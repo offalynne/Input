@@ -132,6 +132,7 @@
     {"id":{"name":"__input_gamepad_set_type","path":"scripts/__input_gamepad_set_type/__input_gamepad_set_type.yy",},"order":15,},
     {"id":{"name":"__input_gamepad_set_vid_pid","path":"scripts/__input_gamepad_set_vid_pid/__input_gamepad_set_vid_pid.yy",},"order":16,},
     {"id":{"name":"__input_key_get_name","path":"scripts/__input_key_get_name/__input_key_get_name.yy",},"order":17,},
+    {"id":{"name":"input_string_async_is_active","path":"scripts/input_string_async_is_active/input_string_async_is_active.yy",},"order":4,},
     {"id":{"name":"__input_key_is_ignored","path":"scripts/__input_key_is_ignored/__input_key_is_ignored.yy",},"order":18,},
     {"id":{"name":"__input_load_blacklist_csv","path":"scripts/__input_load_blacklist_csv/__input_load_blacklist_csv.yy",},"order":19,},
     {"id":{"name":"__input_load_type_csv","path":"scripts/__input_load_type_csv/__input_load_type_csv.yy",},"order":20,},

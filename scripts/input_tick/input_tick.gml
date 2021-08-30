@@ -60,7 +60,7 @@ function input_tick()
     //Text entry
     if (__INPUT_KEYBOARD_SUPPORT || os_type == os_ios) 
     {
-        if (global.__input_async_id == undefined)
+        if (!input_string_async_is_active())
         {
             var _string = keyboard_string;
 
