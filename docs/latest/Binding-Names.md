@@ -43,7 +43,7 @@ A list of possible return strings for [`input_binding_get_name()`](Functions-(Bi
 | `gamepad thumbstick r left`  | `gamepad thumbstick r right` |
 | `gamepad thumbstick r up`    | `gamepad thumbstick r down`  |
 | `gamepad thumbstick l click` | `gamepad thumbstick r click` |
-| `gamepad unknown`            |
+| `gamepad touchpad click`     | `gamepad unknown`            |
 
 &nbsp;
 
@@ -54,7 +54,7 @@ A list of possible return strings for [`input_binding_get_name()`](Functions-(Bi
 | `gamepad axis thumbstick l left`  | `gamepad axis thumbstick l right` |
 | `gamepad axis thumbstick r up`    | `gamepad axis thumbstick r down`  |
 | `gamepad axis thumbstick r left`  | `gamepad axis thumbstick r right` |
-| `gamepad touchpad click`          | `gamepad axis unknown`            |
+| `gamepad axis unknown`            |
 
 &nbsp;
 
