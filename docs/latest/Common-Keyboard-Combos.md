@@ -4,10 +4,6 @@
 
 Presented below are system-level bindings to mind when defining a control scheme.
 
-&nbsp;
-
-&nbsp;
-
 ### Steam and GOG
 | Input                     | Action            |
 |:--------------------------|:------------------|
