@@ -88,7 +88,7 @@ This function will return `INPUT_NO_GAMEPAD` if the player has no connected game
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
-Returns the same values as [`input_gamepad_get_description()`](https://github.com/JujuAdams/Input/wiki/Functions-(Gamepad)#input_gamepad_get_descriptiongamepadindex).
+Returns the same values as [`input_gamepad_get_description()`](Functions-(Gamepad)#input_gamepad_get_descriptiongamepadindex).
 
 &nbsp;
 
@@ -102,7 +102,7 @@ Returns the same values as [`input_gamepad_get_description()`](https://github.co
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
-Returns the same values as [`input_gamepad_get_type()`](https://github.com/JujuAdams/Input/wiki/Functions-(Gamepad)#input_gamepad_get_typegamepadindex).
+Returns the same values as [`input_gamepad_get_type()`](Functions-(Gamepad)#input_gamepad_get_typegamepadindex).
 
 &nbsp;
 
@@ -116,4 +116,4 @@ Returns the same values as [`input_gamepad_get_type()`](https://github.com/JujuA
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
-Returns the same values as [`input_gamepad_get_dpad_style()`](https://github.com/JujuAdams/Input/wiki/Functions-(Gamepad)#input_gamepad_get_dpad_stylegamepadindex).
+Returns the same values as [`input_gamepad_get_dpad_style()`](Functions-(Gamepad)#input_gamepad_get_dpad_stylegamepadindex).
