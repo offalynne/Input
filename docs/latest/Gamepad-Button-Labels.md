@@ -1,4 +1,4 @@
-# Gamepad Button Labels by Type
+# Button Labels by Gamepad Type
 
 ---
 
