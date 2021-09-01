@@ -3,8 +3,8 @@
 ---
 
 Whether by sprite or text, if you need to display a gamepad button label to match a player's device in hand, consider the following data. 
-Device type can be identified with [`input_player_gamepad_get_type([playerIndex])`](Functions-(Players)#input_player_gamepad_get_typeplayerindex), 
-and [binding names](Binding-Names) can be identified with [`input_binding_get_name(binding)`](Functions-(Bindings)#input_binding_get_namebinding).
+Device type can be identified with [`input_player_gamepad_get_type`](Functions-(Players)#input_player_gamepad_get_typeplayerindex), 
+and [binding names](Binding-Names) can be identified with [`input_binding_get_name`](Functions-(Bindings)#input_binding_get_namebinding).
 
 &nbsp;
 
@@ -69,8 +69,7 @@ and [binding names](Binding-Names) can be identified with [`input_binding_get_na
 |:---------------|:----------------------:|
 | `"ps4", "ps5"` | ![Touchpad][ps_touchpad] |
 
-?> For generalized directional pad appearance, see [input_gamepad_get_dpad_style(gamepadIndex)
-](Functions-(Gamepad)#input_gamepad_get_dpad_stylegamepadindex).
+?> For generalized directional pad appearance, see [input_gamepad_get_dpad_style](Functions-(Gamepad)#input_gamepad_get_dpad_stylegamepadindex).
 
 *Example art courtesy https://thoseawesomeguys.com/prompts (CC0) and https://www.ssbwiki.com (CC BY-SA 3.0)*
 
