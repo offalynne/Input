@@ -98,7 +98,7 @@ and binding names can be identified with [`input_binding_get_name`](Functions-(B
 [ap_start]: https://i.imgur.com/SqQJdSB.png
 [oy_face]: https://i.imgur.com/dMBObGo.png
 [oy_start]: https://i.imgur.com/V6hnmz5.png
-[jc_face]: https://i.imgur.com/ynbwHL4.png
+[jc_face]: https://i.imgur.com/zA8Dyj8.png
 [jc_shld]: https://i.imgur.com/jCs47Mj.png
 [jcl_meta]: https://i.imgur.com/Cr0AhNw.png
 [jcr_meta]: https://i.imgur.com/z0qdUic.png
