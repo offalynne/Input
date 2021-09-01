@@ -5,7 +5,7 @@
 In order to display an image or text label that matches a player's device in hand, consider the following data, 
 referencing [device type](Functions-(Gamepad)#input_gamepad_get_typegamepadindex) and [binding name values](Binding-Names#gamepad).
 Device type can be identified with [`input_player_gamepad_get_type`](Functions-(Players)#input_player_gamepad_get_typeplayerindex), 
-and [binding names](Binding-Names) can be identified with [`input_binding_get_name`](Functions-(Bindings)#input_binding_get_namebinding).
+and binding names can be identified with [`input_binding_get_name`](Functions-(Bindings)#input_binding_get_namebinding).
 
 &nbsp;
 
