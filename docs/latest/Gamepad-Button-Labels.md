@@ -2,7 +2,8 @@
 
 ---
 
-Whether by sprite or text, if you need to display a gamepad button label to match a player's device in hand, consider the following data. 
+In order to display an image or text label that matches a player's device in hand, consider the following data, 
+referencing [device type](Functions-(Gamepad)#input_gamepad_get_typegamepadindex) and [binding name values](Binding-Names#gamepad).
 Device type can be identified with [`input_player_gamepad_get_type`](Functions-(Players)#input_player_gamepad_get_typeplayerindex), 
 and [binding names](Binding-Names) can be identified with [`input_binding_get_name`](Functions-(Bindings)#input_binding_get_namebinding).
 
@@ -10,16 +11,16 @@ and [binding names](Binding-Names) can be identified with [`input_binding_get_na
 
 ### Xbox and Xbox-like
 
-| Gamepad type             |`face south, e[..], w, n`| `shoulder l, r`   | `trigger l, r`     | `select, start`          |
-|:-------------------------|:-----------------------:|:-----------------:|:------------------:|:------------------------:|
-| `"xbox 360", "steam"`    | ![A B X Y][xb_face]     | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![Back Start][xb_meta]   |
-| `"xbox one"`             | *As above*              | *As above*        | *As above*         | ![View Menu][xo_meta]    |
-| `"luna"`                 | *As above*              | *As above*        | *As above*         | ![Action Menu][lu_meta]  |
-| `"stadia"`               | *As above*              | ![L1 R1][ps_shld] | ![L2 R2][ps_trggr] | ![Options Menu][st_meta] |
+| Gamepad type             |`face south, e[…], w, n`| `shoulder l, r`   | `trigger l, r`     | `select, start`          |
+|:-------------------------|:----------------------:|:-----------------:|:------------------:|:------------------------:|
+| `"xbox 360", "steam"`    | ![A B X Y][xb_face]    | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![Back Start][xb_meta]   |
+| `"xbox one"`             | *As above*             | *As above*        | *As above*         | ![View Menu][xo_meta]    |
+| `"luna"`                 | *As above*             | *As above*        | *As above*         | ![Action Menu][lu_meta]  |
+| `"stadia"`               | *As above*             | ![L1 R1][ps_shld] | ![L2 R2][ps_trggr] | ![Options Menu][st_meta] |
 
 ### PlayStation
 
-| Gamepad type | `face south, e[..], w, n`                | `shoulder l, r`   | `trigger l, r`     | `select, start`          |
+| Gamepad type |`face south, e[…], w, n`                  | `shoulder l, r`   | `trigger l, r`     | `select, start`          |
 |:-------------|:----------------------------------------:|:-----------------:|:------------------:|:------------------------:|
 | `"psx"`      | ![Cross Circle Square Triangle][ps_face] | ![L1 R1][ps_shld] | ![L2 R2][ps_trggr] | ![Sel St][ps3_meta]      |
 | `"ps4"`      | *As above*                               | *As above*        | *As above*         | ![Opt Menu][ps4_meta]    |
@@ -28,29 +29,29 @@ and [binding names](Binding-Names) can be identified with [`input_binding_get_na
 
 ### Nintendo
 
-| Gamepad type |`face south, e[..], w, n`| `shoulder l, r`      | `trigger l, r`      | `select, start`          |
-|:-------------|:-----------------------:|:--------------------:|:-------------------:|:------------------------:|
-|`"switch"`    | ![B A Y X][nin_face]    | ![L R][nin_shld]     | ![ZL ZR][nin_trggr] | ![- +][nin_meta]         |
-|`"snes"`      | *As above*              | *As above*           | *N/A*               | ![Sel St][sfc_meta]      |
-|`"gamecube"`  | ![A X B Y][gc_face]     | *N/A*, ![Z][gc_shld] | ![L R][gc_trggr]    | *N/A*, ![Start][gc_start]|
+| Gamepad type |`face south, e[…], w, n`| `shoulder l, r`      | `trigger l, r`      | `select, start`          |
+|:-------------|:----------------------:|:--------------------:|:-------------------:|:------------------------:|
+|`"switch"`    | ![B A Y X][nin_face]   | ![L R][nin_shld]     | ![ZL ZR][nin_trggr] | ![- +][nin_meta]         |
+|`"snes"`      | *As above*             | *As above*           | *N/A*               | ![Sel St][sfc_meta]      |
+|`"gamecube"`  | ![A X B Y][gc_face]    | *N/A*, ![Z][gc_shld] | ![L R][gc_trggr]    | *N/A*, ![Start][gc_start]|
 
 ?> Switch Pro Controllers and JoyCon pairs are handled the same on and off the Switch target platform, identified by the type string `"switch"`.
 
 ### Misc.
 
-| Gamepad type |`face south, e[..], w, n`| `shoulder l, r`  | `trigger l, r`     | `start`             |
-|:-------------|:-----------------------:|:----------------:|:------------------:|:-------------------:|
-| `"saturn"`   | ![A B X Y][xb_face]     | ![L Z][sat_shld] | ![R C][sat_trggr]  | ![Start][sat_start] |
-| `"apple"`    | *As above*              | ![L1 R1][ps_shld]| ![L2 R2][ps_trggr] | ![Pause][ap_start]  |
-| `"ouya"`     | ![O A U Y][oy_face]     | *As above*       | *As above*         | ![Start][oy_start]  |
+| Gamepad type |`face south, e[…], w, n`| `shoulder l, r`  | `trigger l, r`     | `start`             |
+|:-------------|:----------------------:|:----------------:|:------------------:|:-------------------:|
+| `"saturn"`   | ![A B X Y][xb_face]    | ![L Z][sat_shld] | ![R C][sat_trggr]  | ![Start][sat_start] |
+| `"apple"`    | *As above*             | ![L1 R1][ps_shld]| ![L2 R2][ps_trggr] | ![Pause][ap_start]  |
+| `"ouya"`     | ![O A U Y][oy_face]    | *As above*       | *As above*         | ![Start][oy_start]  |
 
 
 ### JoyCons on Desktop and Android Platforms
 
-| Gamepad type         |`face south, e[..], w, n`| `shoulder l, r`   | `select, start`        |
-|:---------------------|:-----------------------:|:-----------------:|:----------------------:|
-|`"switch joycon left"`| ![S W E N][jc_face]     | ![SL SR][jc_shld] | ![- Capture][jcl_meta] |
-|`"switch joycon right"| *As above*              | *As above*        | ![Home +][jcr_meta]    |
+| Gamepad type          |`face south, e[…], w, n`| `shoulder l, r`   | `select, start`        |
+|:----------------------|:----------------------:|:-----------------:|:----------------------:|
+|`"switch joycon left"` | ![S W E N][jc_face]    | ![SL SR][jc_shld] | ![- Capture][jcl_meta] |
+|`"switch joycon right"`| *As above*             | *As above*        | ![Home +][jcr_meta]    |
 
 
 ### JoyCons on the Nintendo Switch Platform
