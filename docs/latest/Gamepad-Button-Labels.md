@@ -96,7 +96,7 @@ and binding names can be identified with [`input_binding_get_name`](Functions-(B
 [sat_shld]: https://i.imgur.com/RMb1tVb.png
 [sat_trggr]: https://i.imgur.com/gH6IdMN.png
 [ap_start]: https://i.imgur.com/SqQJdSB.png
-[oy_face]: https://i.imgur.com/zOpa5FG.png
+[oy_face]: https://i.imgur.com/dMBObGo.png
 [oy_start]: https://i.imgur.com/V6hnmz5.png
 [jc_face]: https://i.imgur.com/ynbwHL4.png
 [jc_shld]: https://i.imgur.com/jCs47Mj.png
@@ -105,5 +105,5 @@ and binding names can be identified with [`input_binding_get_name`](Functions-(B
 [jcl_start]: https://i.imgur.com/6QfR7P1.png
 [jcr_start]: https://i.imgur.com/ssgumqj.png
 [ps_touchpad]: https://i.imgur.com/b3Qai65.png
-[sfc_meta]: https://i.imgur.com/9JSWmIJ.png
-[sat_start]: https://i.imgur.com/koBBIqe.png
+[sfc_meta]: https://i.imgur.com/RXRxJle.png
+[sat_start]: https://i.imgur.com/c5u3a8i.png
