@@ -13,11 +13,9 @@ and [binding names](Binding-Names) can be identified with [`input_binding_get_na
 | Gamepad type             |`face south, e[..], w, n`| `shoulder l, r`   | `trigger l, r`     | `select, start`          |
 |:-------------------------|:-----------------------:|:-----------------:|:------------------:|:------------------------:|
 | `"xbox 360", "steam"`    | ![A B X Y][xb_face]     | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![Back Start][xb_meta]   |
-| `"xbox one"`<sup>1</sup> | *As above*              | *As above*        | *As above*         | ![View Menu][xo_meta]    |
+| `"xbox one"`             | *As above*              | *As above*        | *As above*         | ![View Menu][xo_meta]    |
 | `"luna"`                 | *As above*              | *As above*        | *As above*         | ![Action Menu][lu_meta]  |
 | `"stadia"`               | *As above*              | ![L1 R1][ps_shld] | ![L2 R2][ps_trggr] | ![Options Menu][st_meta] |
-
-<sup>1</sup>Includes Xbox Series S and Series X gamepads
 
 ### PlayStation
 
