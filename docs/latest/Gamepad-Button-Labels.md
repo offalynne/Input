@@ -14,17 +14,17 @@ and binding names can be identified with [`input_binding_get_name`](Functions-(B
 | Gamepad type             |`face south, east, west, north`| `shoulder l, r`   | `trigger l, r`     | `select, start`          |
 |:-------------------------|:-----------------------------:|:-----------------:|:------------------:|:------------------------:|
 | `"xbox 360", "steam"`    | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![Back Start][xb_meta]   |
-| `"xbox one"`             | '' *(as above)*               | *''*              | *''*               | ![View Menu][xo_meta]    |
-| `"luna"`                 | *''*                          | *''*              | *''*               | ![Action Menu][lu_meta]  |
-| `"stadia"`               | *''*                          | ![L1 R1][ps_shld] | ![L2 R2][ps_trggr] | ![Options Menu][st_meta] |
+| `"xbox one"`             | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![View Menu][xo_meta]    |
+| `"luna"`                 | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![Action Menu][lu_meta]  |
+| `"stadia"`               | ![A B X Y][xb_face]           | ![L1 R1][ps_shld] | ![L2 R2][ps_trggr] | ![Options Menu][st_meta] |
 
 ### PlayStation
 
 | Gamepad type |`face south, east, west, north`            | `shoulder l, r`   | `trigger l, r`     | `select, start`          |
 |:-------------|:-----------------------------------------:|:-----------------:|:------------------:|:------------------------:|
 | `"psx"`      | ![Cross Circle Square Triangle][ps_face]  | ![L1 R1][ps_shld] | ![L2 R2][ps_trggr] | ![Sel St][ps3_meta]      |
-| `"ps4"`      | *''*                                      | *''*              | *''*               | ![Opt Menu][ps4_meta]    |
-| `"ps5"`      | *''*                                      | *''*              | *''*               | ![Create Menu][ps5_meta] |
+| `"ps4"`      | ![Cross Circle Square Triangle][ps_face]  | ![L1 R1][ps_shld] | ![L2 R2][ps_trggr] | ![Opt Menu][ps4_meta]    |
+| `"ps5"`      | ![Cross Circle Square Triangle][ps_face]  | ![L1 R1][ps_shld] | ![L2 R2][ps_trggr] | ![Create Menu][ps5_meta] |
 
 
 ### Nintendo
@@ -32,7 +32,7 @@ and binding names can be identified with [`input_binding_get_name`](Functions-(B
 | Gamepad type |`face south, east, west, north`| `shoulder l, r`      | `trigger l, r`      | `select, start`          |
 |:-------------|:-----------------------------:|:--------------------:|:-------------------:|:------------------------:|
 |`"switch"`    | ![B A Y X][nin_face]          | ![L R][nin_shld]     | ![ZL ZR][nin_trggr] | ![- +][nin_meta]         |
-|`"snes"`      | *''*                          | *''*                 | *N/A*               | ![Sel St][sfc_meta]      |
+|`"snes"`      | ![B A Y X][nin_face]          | ![L R][nin_shld]     | *N/A*               | ![Sel St][sfc_meta]      |
 |`"gamecube"`  | ![A X B Y][gc_face]           | *N/A*, ![Z][gc_shld] | ![L R][gc_trggr]    | *N/A*, ![Start][gc_start]|
 
 ?> Switch Pro Controllers and JoyCon pairs are handled the same on and off the Switch target platform, identified by the type string `"switch"`.
@@ -42,8 +42,8 @@ and binding names can be identified with [`input_binding_get_name`](Functions-(B
 | Gamepad type |`face south, east, west, north`| `shoulder l, r`  | `trigger l, r`     | `start`             |
 |:-------------|:-----------------------------:|:----------------:|:------------------:|:-------------------:|
 | `"saturn"`   | ![A B X Y][xb_face]           | ![L Z][sat_shld] | ![R C][sat_trggr]  | ![Start][sat_start] |
-| `"apple"`    | *''*                          | ![L1 R1][ps_shld]| ![L2 R2][ps_trggr] | ![Pause][ap_start]  |
-| `"ouya"`     | ![O A U Y][oy_face]           | *''*             | *''*               | ![Start][oy_start]  |
+| `"apple"`    | ![A B X Y][xb_face]           | ![L1 R1][ps_shld]| ![L2 R2][ps_trggr] | ![Pause][ap_start]  |
+| `"ouya"`     | ![O A U Y][oy_face]           | ![L1 R1][ps_shld]| ![L2 R2][ps_trggr] | ![Start][oy_start]  |
 
 
 ### JoyCons on Desktop and Android Platforms
@@ -51,7 +51,7 @@ and binding names can be identified with [`input_binding_get_name`](Functions-(B
 | Gamepad type          |`face south, east, west, north`| `shoulder l, r`   | `select, start`        |
 |:----------------------|:-----------------------------:|:-----------------:|:----------------------:|
 |`"switch joycon left"` | ![S W E N][jc_face]           | ![SL SR][jc_shld] | ![- Capture][jcl_meta] |
-|`"switch joycon right"`| *''*                          | *''*              | ![Home +][jcr_meta]    |
+|`"switch joycon right"`| ![S W E N][jc_face]           | ![SL SR][jc_shld] | ![Home +][jcr_meta]    |
 
 
 ### JoyCons on the Nintendo Switch Platform
