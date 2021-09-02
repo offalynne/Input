@@ -10,6 +10,9 @@ Input works to normalize behavior across supported platforms. Each platform brin
 
 GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's game controller mapping](https://wiki.libsdl.org/CategoryGameController) feature. Input offers [a sophisticated reimplementation](Controller-Mapping) on platforms with reliable drivers and available [vendor and product](https://docs.microsoft.com/en-us/windows-hardware/drivers/install/standard-usb-identifiers) information (Desktop platforms and Android), including support for axis inversion and range modifiers, and greatly expands the number of supported devices.
 
+By default, GameMaker handles double click on the left mouse button as a [right mouse button press](https://manual.yoyogames.com/index.htm#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FDevice_Input%2Fdevice_mouse_dbclick_enable.htm). Since we aim to correctly support all available mouse buttons and offer comprehensive double-input checking, Input toggles this behaviour off.
+
+
 &nbsp;
 
 ## Desktop
@@ -22,9 +25,9 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 - As per GameMaker's default behaviour, device indexes from 0 to 3 inclusive are XInput gamepads. Devices 4 to 11 inclusive are DInput gamepads. XInput gamepads return less information about themselves than DInput and, as a result, some supplementary data (button labels etc.) may be inaccurate.
 
-- [Controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping. Specifically, the runtime is using an old version of the identifying string used to differentiate controllers, resulting in the feature being marginally limited on the platform.
+- [Game Controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping. Specifically, the runtime is using an old version of the identifying string used to differentiate gamepads, resulting in the feature being marginally limited on the platform.
 
-- On OS versions below Windows 10, some Bluetooth controllers fail to operate correctly. This is a system-level problem beyond our capability to address.
+- On OS versions below Windows 10, some Bluetooth gamepads fail to operate correctly. This is a system-level problem beyond our capability to address.
 
 - When windowed, the Alt+Space menu sticks. Input forces Space to release when Alt keys do.
 
@@ -38,7 +41,7 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 - When the Command key (⌘) is held, any subsequent keyboard input is queued for release when the Command key is. Input ignores all keys when the Command key is released.
 
-- GameMaker's [controller mapping](Controller-Mapping) implementation has a bug regarding remapping devices in the inbuilt remapping database (marked "fixed" by YYG, though it persists). Input fixes this with a value offset for gamepad button and axis inputs.
+- GameMaker's [game controller mapping](Controller-Mapping) implementation has a bug regarding remapping devices in the inbuilt remapping database (marked "fixed" by YYG, though it persists). Input fixes this with a value offset for gamepad button and axis inputs.
 
 ### Ubuntu
 
@@ -52,9 +55,9 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 - Steam Overlay intercepts certain key combinations that should be avoided when building a default keyboard scheme. By default these include `F12` and `Shift+Tab`. For more info see [Common Keyboard Combos](Common-Keyboard-Combos).
 
-- Depending on user configuration, Steam may hide native controller devices from the Game Maker Studio runtime, presenting them as normalized virtual controllers. This is a helpful feature, but gathering more information about devices [may require extension](https://github.com/YAL-GameMaker/steamworks.gml) beyond the scope of Input.
+- Depending on user configuration, Steam may hide native gamepad devices from the Game Maker Studio runtime, presenting them as normalized virtual gamepads. This is a helpful feature, but gathering more information about devices [may require extension](https://github.com/YAL-GameMaker/steamworks.gml) beyond the scope of Input.
 
-- Steam Input and especially the Steam Controller make use of Mixed Input, an affordance Input is currently not optimized for. Support for Mixed Input should be improved in the future.
+- Steam Input and especially the Steam Controller gamepad make use of Mixed Input, an affordance Input is currently not optimized for. Support for Mixed Input should be improved in the future.
 
 &nbsp;
 
@@ -90,7 +93,7 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 - Keyboard input is non-functional on these platforms owing to [unavoidable up-stream bugs](https://github.com/JujuAdams/Input/issues/138)
 
-- Many gamepads are not fully supported by iOS due to limited support offered by Apple. At the time of writing, XBox One and PlayStation 4 wireless gamepads are supported by iOS, as are MFi controllers. For an up-to-date list, please check [Apple's communications](https://support.apple.com/en-us/HT210414).
+- Many gamepads are not fully supported by iOS due to limited support offered by Apple. At the time of writing, XBox One and PlayStation 4 wireless gamepads are supported by iOS, as are MFi gamepads. For an up-to-date list, please check [Apple's communications](https://support.apple.com/en-us/HT210414).
 
 - Users may find the Select (aka Share or View) gamepad button to cause unintended screenshot and video recording actions. These can be toggled on the OS at _Settings > General > Game Controller_
 
@@ -98,11 +101,11 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 - Android keyboard input is problematic and so set to off by default. The most significant issue is keys regularly and irreparably sticking when modified using Shift keys. You can turn keyboard input on by [setting `INPUT_ANDROID_KEYBOARD_ALLOWED` to `true`](Configuration). If using this feature, it is not recommended to use bindings besides Arrow keys, Enter, Space, and Backspace.
 
-- [Controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping. Specifically, the runtime is using an old version of the identifying string used to differentiate controllers, resulting in the feature being marginally limited on the platform.
+- [Game controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping. Specifically, the runtime is using an old version of the identifying string used to differentiate gamepads, resulting in the feature being marginally limited on the platform.
 
 - Gamepads are sometimes misreported and often over-reported on the platform so [device blocking](Controller-Mapping#controller-blacklist) is particularly useful.
 
-- Due to GameMaker's handling of the Android controller stack, some gamepads do not have functional dpad mappings.
+- Due to GameMaker's handling of the Android gamepads stack, some gamepads do not have functional dpad mappings.
 
 - Switch JoyCons are not properly handled by some versions of the Android kernel. As a result, they are not supported in some circumstances.
 
@@ -112,7 +115,7 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 - When running through HTML5, `input_bindings_write()` and `input_bindings_read()` are blocked. This is due to [up-stream bugs](https://github.com/JujuAdams/Input/issues/152) in GameMaker.
 
-- Web browsers have their own gamepad API, as such Input does not use its own [controller mapping](Controller-Mapping) on the platform. Input will use the browser's gamepad implementation, including button mapping.
+- Web browsers have their own gamepad API, as such Input does not use its own [game controller mapping](Controller-Mapping) on the platform. Input will use the browser's gamepad implementation, including button mapping.
 
 - In order for gamepads to present and operate, the user must first press a button with the game in focus.
 
@@ -130,7 +133,7 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 - Keyboard input works with same caveats as on the [native Windows platform](#Windows).
 
-- XInput controllers work as expected. Some devices that fall outside the XInput ecosystem (e.g. Switch Pro, PS4, PS5, Luna and Stadia controllers) will work but may have unusual or partially incorrect bindings.
+- XInput gamepads work as expected. Some devices that fall outside the XInput ecosystem (e.g. Switch Pro, PS4, PS5, Luna and Stadia gamepads) will work but may have unusual or partially incorrect bindings.
 
 - Gamepad type information is unavailable for devices except XInput controllers.
 
