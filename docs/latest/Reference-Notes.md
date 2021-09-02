@@ -4,10 +4,9 @@
 
 The following pages include general information about Input's underlying systems as well as related subjects external to the library itself.
 
-&nbsp;
+### [Controller Mapping](Controller-Mapping)
+*Gamepad data sources, operation and upkeep*
 
-## [Controller Mapping](Controller-Mapping)
-Gamepad data sources, operation and upkeep
 - [Controller Maps](Controller-Mapping#controller-maps)
 - [Controller Type](Controller-Mapping#controller-type)
 - [Controller Blacklist](Controller-Mapping#controller-blacklist)
@@ -16,7 +15,8 @@ Gamepad data sources, operation and upkeep
 &nbsp;
 
 ## [Gamepad Troubleshooting](Gamepad-Troubleshooting)
-Notes on desktop and mobile controller compatibility
+*Notes on desktop and mobile controller compatibility*
+
 - [Testing Apps](Gamepad-Troubleshooting#testing-apps)
 - [Platform Troubleshooting](Gamepad-Troubleshooting#platform-troubleshooting)
 - [Device Mapping](Gamepad-Troubleshooting#device-mapping)
@@ -24,4 +24,4 @@ Notes on desktop and mobile controller compatibility
 &nbsp;
 
 ## [Common Keyboard Combos](Common-Keyboard-Combos)
-System software bindings to mind when defining a default control scheme
+*System software bindings to mind when defining a default control scheme*
