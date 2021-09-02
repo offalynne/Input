@@ -36,8 +36,6 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 - On PS4 and PS5, `gp_select` is defined as clicking the touchpad on PlayStation 4 and PlayStation 5 which is GameMaker's default behaviour. This is in contrast to other other platforms where `gp_select` is defined as the SHARE button. [`input_binding_get_name()`](Functions-(Bindings)#input_binding_get_namebinding) will return the correct device-appropriate string.
 
-- On Xbox One and Series native (XDK builds), Gamepad descriptions are returned as empty strings
-
 ### Gamepad on Mobile
 
 !> The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#gamepad-on-html5) for information on platform-specific quirks.
