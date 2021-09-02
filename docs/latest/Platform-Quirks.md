@@ -78,8 +78,6 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 *The following is valid for native (XDK) builds only. If you are using UWP for your game but are running on an Xbox, please see the [UWP section](#uwp-on-xbox-one-and-xbox-series-xs) for information on platform-specific quirks.*
 
-- Gamepad descriptions are returned as empty strings
-
 - Keyboard and mouse are not supported by GameMaker (and Input) on this platform.
 
 &nbsp;
