@@ -4,6 +4,12 @@
 
 GMS2 has some [roughly-documented features](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/gamepad_test_mapping.html) that attempt parity with [SDL2](https://github.com/libsdl-org/SDL)'s [gamepad mapping feature](https://wiki.libsdl.org/CategoryGameController). These aim to normalize all compatible gamepad devices toward the [XInput spec](https://en.wikipedia.org/wiki/DirectInput#XInput); in simple terms, configuring every device in the style of an Xbox 360 controller. GameMaker supports this feature for desktop targets (Windows, Mac, Ubuntu) and Android.
 
+?> While this information is provided for your benefit, in the best of cases it can be ignored: it is our intent that Input permit otherwise-problematic scenarios to “just work”. If you encounter undocumented platform-particular issues with Input's controller mapping feature, please consider authoring a bug report or reaching us to discuss further on Discord.
+
+&nbsp;
+
+## Controller Maps
+
 In order to expand GMS2's database of supported controllers, all that should be necessary is adding an [updated CSV database file](https://github.com/gabomdq/SDL_GameControllerDB) named `gamecontrollerdb.txt` into the program directory (manually or as an Included File) which the runner should automatically load and parse. Unfortunately GMS2's implementation has a number of outstanding issues including using an old version of the GUID format on Windows, having a peculiar offset value for input indexes on Mac, and other cases where functions do not behave as expected per-platform. See [_Platform Quirks_](Platform-Quirks) for details.
 
 Input attempts to solve GameMaker's issues with our own implementation that circumvents problems encountered with native functionality. When you use Input for gamepad binding, gamepads are automatically detected and configured according to the SDL community specification. Please note: Whilst the expectation for SDL is to name the gamepad remapping database as `gamecontrollerdb.txt`, to avoid conflicts with GameMaker's native implementation, Input reads its gamepad remapping data from a CSV file named `sdl2.txt`. Data in this file is otherwise identical to the SDL community database.
