@@ -22,7 +22,7 @@ The following pages include general information about Input's underlying systems
 - [Miscellaneous](Gamepad-Button-Labels#miscellaneous)
 
 ### [Gamepad Troubleshooting](Gamepad-Troubleshooting)
-*Notes on desktop and mobile controller compatibility*
+*Notes on desktop and mobile gamepad compatibility*
 - [Testing Apps](Gamepad-Troubleshooting#testing-apps)
 - [Platform Troubleshooting](Gamepad-Troubleshooting#platform-troubleshooting)
 - [Device Mapping](Gamepad-Troubleshooting#device-mapping)
