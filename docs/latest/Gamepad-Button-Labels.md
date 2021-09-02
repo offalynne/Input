@@ -8,7 +8,7 @@ These values are dictated by [the SDL project](https://github.com/gabomdq/SDL_Ga
 Gamepad device type can be identified with the [`gamepad_get_type`](Functions-(Players)#input_player_gamepad_get_typeplayerindex) functions, 
 and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#input_binding_get_namebinding).
 
-?> Binding names are simplified below for brevity, for example, "`gamepad axis trigger r"` is shortened to **trigger r**. Refer to [Binding Names](Binding-Names#gamepad) for full strings.
+?> Binding names are simplified below for brevity, for example, `"gamepad axis trigger r"` is shortened to **trigger r**. Refer to [Binding Names](Binding-Names#gamepad) for full strings.
 
 
 &nbsp;
