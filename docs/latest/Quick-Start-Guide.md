@@ -6,7 +6,7 @@
 
 &nbsp;
 
-Hey there! Maybe you heard on the grapevine that the pug has some new tools for you to play with.  Maybe you've tried to get this to work already, and missed one or two crucial details that were required to make it work.  Well, fear no more because I'm about to show you the ropes.  This guide assumes you have a pretty baseline level on how to use GMS, it won't be going into how to make any of the gamey bits, just how to make the input system start y'know, reading your inputs.
+Hey there! Maybe you heard on the grapevine that the pug has some new tools for you to play with.  Maybe you've tried to get this to work already, and missed one or two crucial details that were required to make it work.  Well, fear no more because I'm about to show you the ropes.  This guide assumes you have a pretty baseline level on how to use GMS, it won't be going into how to make any of the gamey bits, just how to make the input system start y'know, reading your input.
 
 &nbsp;
 
@@ -14,7 +14,7 @@ Hey there! Maybe you heard on the grapevine that the pug has some new tools for 
 
 To get this whole rigamaroll on the road, first thing you're gonna want to do is to drag the [.yymps file](https://github.com/JujuAdams/Input/releases) you got into your project.  Some kind of screen will pop up and you just gotta hit "add all" and then "OK".  This will leave you with a new folder in your Asset Browser labeled "Input".  That's good.  You want that.
 
-Now since we're on a roll, why don't you make some kind of controller input object?  I'm gonna call mine `obj_controller_manager`, but you might have a better or funnier name or whatever.  Add yourself a Create event, a Begin Step event, and a Step Event.
+Now since we're on a roll, why don't you make an input manager object?  I'm gonna call mine `obj_input_manager`, but you might have a better or funnier name or whatever.  Add yourself a Create event, a Begin Step event, and a Step Event.
 
 Straight away you're going to want to put [`input_tick()`](Functions-(System)#input_tick) into your Begin Step event.
 [`input_tick()`](Functions-(System)#input_tick) is a function that does a few important things, all you need to know for now is that it belongs there.
@@ -25,9 +25,9 @@ Straight away you're going to want to put [`input_tick()`](Functions-(System)#in
 
 Now that the boring techy stuff is out of the way, we can get to the real fun and power of this input system.  We're going to now be defining our verbs.
 
-"[Verbs](Verbs-and-Alternate-Bindings) are the basic input actions you want to expose to a player; this includes things like jumping, shooting, pausing the game, or moving in a particular direction. By using verbs we **abstract** user input so that we can change [input source](Input-Sources) whilst playing the game without needing to change anything else. Using verbs also allows for easier key rebinding."
+[Verbs](Verbs-and-Alternate-Bindings) are the basic input actions you want to expose to a player; this includes things like jumping, shooting, pausing the game, or moving in a particular direction. By using verbs we **abstract** user input so that we can change [input source](Input-Sources) while the game is played without needing to change anything else. Using verbs also allows for easier key rebinding.
 
-Let's define some verbs then!  You can put this in the Create event of your controller object.. I'm going to define three controls, one for left, right, and shoot, and then we'll set the [input source](Input-Sources).
+Let's define some verbs then! You can put this in the Create event of your object.. I'm going to define three controls, one for left, right, and shoot, and then we'll set the [input source](Input-Sources).
 
 ```
 //Declare an enum that stores verb names
@@ -45,11 +45,11 @@ input_default_key(ord("A"), eVerb.Shoot);
 
 input_player_source_set(INPUT_SOURCE.KEYBOARD_AND_MOUSE);
 ```
-We've got our convienent enum storage unit for our verb list, and we've got the [`input_default_key()`](Functions-(Default-Bindings)#input_default_keykey-verb-alternate) functions taking the normal key inputs for the standard GM input system and then the verb we want to match it to. 
+We've got our convenient enum storage unit for our verb list, and we've got the [`input_default_key()`](Functions-(Default-Bindings)#input_default_keykey-verb-alternate) functions taking the normal key values for the standard GM input features and then the verb we want to assign it to. 
 
-[`input_player_source_set()`](Functions-(Players)#input_player_source_setsource-playerindex) is vital to operations, as it sets what controller you're using.  Since we didn't specify a second argument, it'll automatically set the controller for port 0.  Great!  Now we're only one step away from using these tasty functions in game. By uh, using them. In game.
+[`input_player_source_set()`](Functions-(Players)#input_player_source_setsource-playerindex) sets which device you're using. Now we're only one step away from using these tasty functions in game. By uh, using them. In game.
 
-Here's a Step event for yout to put in a character object or whatever!
+Since GM enums are globally scoped and so is Input, my `obj_input_manager` object will handle everything without needing to be referenced directly. Here's a Step event for you to put in a character object or whatever!
 
  ```
  //Move the player if the Left or Right verb is activated
@@ -100,7 +100,7 @@ input_player_source_set(INPUT_SOURCE.GAMEPAD);
 input_player_gamepad_set(0)
 ```
 
-Congratulations, you now have controller input! If you want the player to be able to switch between keyboard and gamepad devices on the fly, add `input_hotswap_tick(0)` to your Step event.
+Congratulations, you now have gamepad input! If you want the player to be able to switch between keyboard and gamepad devices on the fly, add `input_hotswap_tick(0)` to your Step event.
 
-This system is also great for rebinding, but you'll have to take a deeper dive into the documentation for information on that.
+This system is also great for rebinding, but you'll have to take a deeper dive into the documentation for more information on that.
 
