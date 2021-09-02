@@ -12,5 +12,4 @@
 - [Verbs and Alternate Bindings](Verbs-and-Alternate-Bindings)
 - [Binding Names](Binding-Names)
 - [Input Quirks](Input-Quirks)
-- [Common Keyboard Combos](Common-Keyboard-Combos)
-- [Gamepad Troubleshooting](Gamepad-Troubleshooting)
+- [Reference Notes](Reference-Notes)
