@@ -38,6 +38,14 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 &nbsp;
 
+### DualShock 4 and DualSense on PS4 and PS5
+
+| Gamepad type      |  touchpad click          |
+|:------------------|:------------------------:|
+|  `"ps4"`, `"ps5"` | ![Touchpad][ps_touchpad] |
+
+&nbsp;
+
 ## Nintendo
 
 | Gamepad type | face south, east, west, north |  shoulder l, r       |  trigger l, r       |  select, start           |
@@ -52,10 +60,10 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 ### JoyCons on the Nintendo Switch Platform
 
-| Gamepad type            | face south, east, west, north |  shoulder l, r    |  select, start         |
-|:------------------------|:-----------------------------:|:-----------------:|:----------------------:|
-| `"switch joycon left"`  | ![S W E N][jc_face]           | ![SL SR][jc_shld] | *N/A*, ![-][jcl_start] |
-| `"switch joycon right"` | ![S W E N][jc_face]           | ![SL SR][jc_shld] | *N/A*, ![+][jcr_start] |
+| Gamepad type            | face south, east, west, north |  shoulder l, r    | start          |
+|:------------------------|:-----------------------------:|:-----------------:|:---------------:|
+| `"switch joycon left"`  | ![S W E N][jc_face]           | ![SL SR][jc_shld] | ![-][jcl_start] |
+| `"switch joycon right"` | ![S W E N][jc_face]           | ![SL SR][jc_shld] | ![+][jcr_start] |
 
 &nbsp;
 
@@ -67,14 +75,6 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 | `"switch joycon right"` | ![S W E N][jc_face]           | ![SL SR][jc_shld] | ![Home +][jcr_meta]    |
 
 ?> Unless unified as a pair on Linux or Android (identified as `"switch"`), Input assumes JoyCons will be used in the [horizontal grip](https://en-americas-support.nintendo.com/app/answers/detail/a_id/22740/kw/#:~:text=Joy-Con%20with%20wrist-strap%20being%20held%20in%20a%20solo%20horizontal%20grip) orientation.
-
-&nbsp;
-
-## DualShock 4 and DualSense on PS4 and PS5
-
-| Gamepad type      |  touchpad click          |
-|:------------------|:------------------------:|
-|  `"ps4"`, `"ps5"` | ![Touchpad][ps_touchpad] |
 
 &nbsp;
 
