@@ -17,8 +17,6 @@ Input is built on top of the engine agnostic [SDL2 remapping system](https://git
 
 This library is a significant improvement on GameMaker's native gamepad implementation, which is fraught with cross-platform inconsistencies and the occasional show-stopping bug. It's a massive step up from GameMaker's barebones gamepad and keyboard implementations.
 
-Not only does Input rectify many issues with GameMaker's basic gamepad handling functionality, but it also improves on mouse and keyboard handling. On some platforms, notably MacOS, certain key combinations totally fox GameMaker causing keys to stick and produce unwanted input. Windows has nasty issues with touchscreen input as well, and Input addresses those problems too.
-
 ?> Input is a really big library! To get up and running fast, check out our [Quick Start](Quick-Start-Guide) page.
 
 ---
