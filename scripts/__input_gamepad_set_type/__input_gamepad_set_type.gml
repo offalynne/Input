@@ -169,6 +169,10 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunityXBox360";
                 }
+                else if (__INPUT_ON_MOBILE && __INPUT_ON_APPLE)
+                {
+                    raw_type = "AppleController";
+                }
                 else
                 {
                     raw_type = "Unknown";
