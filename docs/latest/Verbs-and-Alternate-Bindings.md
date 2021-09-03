@@ -120,7 +120,7 @@ input_default_gamepad_button(gp_face4, eVerb.Shoot, 3);
 
 //// Step event ////
 
-//Move the player if the Leftor Down verb is activated
+//Move the player if the Left or Right verb is activated
 if (input_check(eVerb.Left)) x -= 4;
 if (input_check(eVerb.Right)) x += 4;
 
