@@ -1,6 +1,6 @@
 function input_platform_text_source()
 {
-    if (__INPUT_ON_WEB || __INPUT_ON_CONSOLE || (os_type == os_uwp))
+    if (__INPUT_ON_CONSOLE || (__INPUT_ON_WEB && !__INPUT_ON_DESKTOP))
     {
         return "async";
     }
