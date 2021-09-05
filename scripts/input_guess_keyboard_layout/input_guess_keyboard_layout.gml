@@ -1,9 +1,9 @@
-// keyboard latin layout hint
-// returns string indicating guessed keyboard layout (QWERTY, AZERTY, QWERTZ)
-// data source: https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-input-locales-for-windows-language-packs
-function input_guess_keyboard_layout(){
-
-    // resolve language region to it's default latin keyboard layout
+//Keyboard latin layout hint
+//Returns string indicating guessed keyboard layout (QWERTY, AZERTY, QWERTZ)
+//Data source: https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-input-locales-for-windows-language-packs
+function input_guess_keyboard_layout()
+{
+    //Resolve language region to it's default Latin keyboard layout
     var _locale = os_get_language() + "-" + os_get_region();
     switch(_locale)
     {
