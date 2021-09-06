@@ -58,16 +58,7 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 &nbsp;
 
-### JoyCons on the Nintendo Switch Platform
-
-| Gamepad type            | face south, east, west, north |  shoulder l, r    | start          |
-|:------------------------|:-----------------------------:|:-----------------:|:---------------:|
-| `"switch joycon left"`  | ![S W E N][jc_face]           | ![SL SR][jc_shld] | ![-][jcl_start] |
-| `"switch joycon right"` | ![S W E N][jc_face]           | ![SL SR][jc_shld] | ![+][jcr_start] |
-
-&nbsp;
-
-### JoyCons on Desktop and Android Platforms
+### JoyCons
 
 | Gamepad type            | face south, east, west, north |  shoulder l, r    |  select, start         |
 |:------------------------|:-----------------------------:|:-----------------:|:----------------------:|
@@ -122,7 +113,7 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 [oy_start]: https://i.imgur.com/V6hnmz5.png
 [jc_face]: https://i.imgur.com/zA8Dyj8.png
 [jc_shld]: https://i.imgur.com/jCs47Mj.png
-[jcl_meta]: https://i.imgur.com/Cr0AhNw.png
+[jcl_meta]: https://i.imgur.com/fkWIGk7.png
 [jcr_meta]: https://i.imgur.com/z0qdUic.png
 [jcl_start]: https://i.imgur.com/rnz1dLO.png
 [jcr_start]: https://i.imgur.com/gaVBBkz.png
