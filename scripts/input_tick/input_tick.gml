@@ -56,23 +56,6 @@ function input_tick()
     #endregion
     
     #region Keyboard
-
-    //Text entry
-    if (__INPUT_KEYBOARD_SUPPORT || os_type == os_ios) 
-    {
-        if (!input_string_async_is_active())
-        {
-            var _string = keyboard_string;
-
-            //Revert overflow
-            if ((_string == "") && (string_length(global.__input_keyboard_prev_string) > 1))
-            {
-                _string = "";
-            }
-        
-            input_string_set(_string);
-        }
-    }
     
     //Unstick
     if (__INPUT_KEYBOARD_SUPPORT && keyboard_check(vk_anykey))
