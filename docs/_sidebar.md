@@ -12,4 +12,4 @@
 - [Verbs and Alternate Bindings](Verbs-and-Alternate-Bindings)
 - [Binding Names](Binding-Names)
 - [Input Quirks](Input-Quirks)
-- [Reference Notes](Reference-Notes)
+- [Supplementary Notes](Reference-Notes)
