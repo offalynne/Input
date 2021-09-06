@@ -85,16 +85,6 @@
 - [`input_history_get([playerIndex])`](Functions-(History)#input_history_getplayerindex)
 - [`input_history_end([playerIndex])`](Functions-(History)#input_history_endplayerindex)
 
-### [String](Functions-(String))
-
-?> String functions are provided for handling text input in a device and platform agnostic context, serving as an extension to the inbuilt [`keyboard_string`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/keyboard_string.htm) value.
-
-- [`input_string_get()`](Functions-(String)#input_string_get)
-- [`input_string_set([string])`](Functions-(String)#input_string_setstring)
-- [`input_string_async_get(prompt, [string], [allow_empty])`](Functions-(String)#input_string_async_getprompt-string-allow_empty)
-- [`input_string_async_is_active()`](Functions-(String)#input_string_async_is_active)
-- [`input_string_dialog_async_event()`](Functions-(String)#input_string_dialog_async_event)
-
 ### [Gamepad (Direct)](Functions-(Gamepad))
 
 ?> Gamepad functions are provided for convenience if you want to implement your own features using Input's SDL implementation. In general, [Player functions](Function-Index#players) are the intended way to use Input and are preferred.
