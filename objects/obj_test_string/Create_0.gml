@@ -1,0 +1,1 @@
+long_string = string_repeat("A", __INPUT_KEYBOARD_STRING_MAX_LENGTH) + "Z";

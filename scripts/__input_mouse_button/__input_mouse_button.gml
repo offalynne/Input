@@ -1,5 +1,5 @@
-function __input_mouse_button(){
-    
+function __input_mouse_button()
+{    
     //Built-in variable `mouse_button` reports correctly on desktop-native
     if (__INPUT_ON_DESKTOP && (!__INPUT_ON_WEB))
     {

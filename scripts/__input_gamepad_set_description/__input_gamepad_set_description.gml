@@ -2,7 +2,7 @@
 
 function __input_gamepad_set_description()
 {
-    if (xinput)
+    if (xinput || os_type == os_xboxone || os_type == os_xboxseriesxs)
     {
         description = "XInput";
     }

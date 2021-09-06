@@ -89,6 +89,9 @@ draw_rectangle(488, 0, 490, room_height, false);
 
 var _string = "";
 
+_string += "Input gamepad desc = \"" + input_gamepad_get_description(input_player_gamepad_get()) + "\"\n";
+_string += "Input gamepad type = \"" + input_gamepad_get_type(input_player_gamepad_get()) + "\"\n";
+
 _string += "Left          = " + string(input_value(VERB.LEFT   )) + "    " + string(input_binding_get(VERB.LEFT   )) + "\n";
 _string += "Right         = " + string(input_value(VERB.RIGHT  )) + "    " + string(input_binding_get(VERB.RIGHT  )) + "\n";
 _string += "Up            = " + string(input_value(VERB.UP     )) + "    " + string(input_binding_get(VERB.UP     )) + "\n";
@@ -114,6 +117,6 @@ repeat(255)
 _string += "mouse = " + string(mouse_x) + "," + string(mouse_y) + "\n";
 _string += "device = " + string(device_mouse_x(0)) + "," + string(device_mouse_y(0)) + "\n";
 
-draw_text(500, 10, _string);
+draw_text(500, 70, _string);
 
 draw_text(500, 740, current_time);

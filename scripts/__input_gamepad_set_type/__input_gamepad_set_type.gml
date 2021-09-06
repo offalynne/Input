@@ -140,6 +140,14 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunitySaturn"
                 }
+                else if (string_count("stadia", _desc))
+                {
+                    raw_type = "CommunityStadia";
+                }
+                else if (string_count("luna", _desc) || string_count("amazon game", _desc))
+                {
+                    raw_type = "CommunityLuna";
+                }
                 else if (string_count("ps5", _desc) || string_count("dualsense", _desc))
                 {
                     raw_type = "PS5Controller";
@@ -168,6 +176,10 @@ function __input_gamepad_set_type()
                 else if (string_count("xbox 360", _desc) || string_count("xbox360", _desc))
                 {
                     raw_type = "CommunityXBox360";
+                }
+                else if (__INPUT_ON_MOBILE && __INPUT_ON_APPLE)
+                {
+                    raw_type = "AppleController";
                 }
                 else
                 {
