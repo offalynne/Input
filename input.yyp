@@ -48,6 +48,7 @@
     {"id":{"name":"input_cursor_moved","path":"scripts/input_cursor_moved/input_cursor_moved.yy",},"order":4,},
     {"id":{"name":"input_cursor_prev_x","path":"scripts/input_cursor_prev_x/input_cursor_prev_x.yy",},"order":5,},
     {"id":{"name":"input_cursor_prev_y","path":"scripts/input_cursor_prev_y/input_cursor_prev_y.yy",},"order":6,},
+    {"id":{"name":"obj_test_load_mapping","path":"objects/obj_test_load_mapping/obj_test_load_mapping.yy",},"order":13,},
     {"id":{"name":"input_cursor_verbs","path":"scripts/input_cursor_verbs/input_cursor_verbs.yy",},"order":7,},
     {"id":{"name":"input_cursor_x","path":"scripts/input_cursor_x/input_cursor_x.yy",},"order":8,},
     {"id":{"name":"input_cursor_y","path":"scripts/input_cursor_y/input_cursor_y.yy",},"order":9,},
@@ -196,6 +197,7 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"controllertypes.csv","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"controllerblacklist.csv","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"sdl2.txt","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"test_load_mapping.json","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "23.1.1.322",
