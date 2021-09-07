@@ -4,8 +4,9 @@ function __input_gamepad_set_vid_pid()
 {    
     if (__INPUT_ON_WEB)
     {
-        //We have no way of determining XInput status reliably on web (not that it would be especially useful)
-        xinput = undefined;
+        vendor  = "";
+        product = "";
+        xinput  = undefined;
         
         //Try to read from Chrome's VID/PID syntax
         // e.g. Description Vendor: xxxx Product: yyyy

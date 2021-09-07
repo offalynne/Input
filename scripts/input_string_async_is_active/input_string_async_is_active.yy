@@ -6,7 +6,7 @@
     "path": "folders/Input/String.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_string_set",
+  "name": "input_string_async_is_active",
   "tags": [],
   "resourceType": "GMScript",
 }

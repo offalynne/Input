@@ -38,6 +38,7 @@
 //      - Caps lock in browser on Apple platforms
 //      - F10 in browser on Apple platforms
 //      - F11 in browser on other platforms
+//      - Vendor-reserved (0xFF)
 //  2 = Ignore all above keys, and reserved and/or system keys:
 //      - Num lock & Scroll lock
 //      - IME keys (0x15 - 0x1A, 0xE5)

@@ -57,98 +57,93 @@ function input_tick()
     
     #region Keyboard
 
-    if (__INPUT_KEYBOARD_SUPPORT) 
+    //Text entry
+    if (__INPUT_KEYBOARD_SUPPORT || os_type == os_ios) 
     {
-        //Set keyboard string
-        var _string = keyboard_string;
-        var _prev_string = global.__input_keyboard_prev_string;
-        if ((_string == "") && (string_length(_prev_string) > 1))
+        if (!input_string_async_is_active())
         {
-             //Revert if overflowing
-            _string = _prev_string;
-        }
-        
-        //Set input string
-        if (global.__input_async_id == undefined)
-        {
-            input_string_set(_string);
-            global.__input_string = keyboard_string;
-            if (os_type == os_android) 
-            {
-                //Trim leading space on Android
-                global.__input_string = string_delete(global.__input_string, 1, 1);
-            }
-        }
-    
-        //Unstick
-        if (keyboard_check(vk_anykey))
-        {
-            var _platform = os_type;
-            if (__INPUT_ON_WEB && __INPUT_ON_APPLE)
-            {
-                _platform = "apple_web";
-            }
+            var _string = keyboard_string;
 
-            switch (_platform)
+            //Revert overflow
+            if ((_string == "") && (string_length(global.__input_keyboard_prev_string) > 1))
             {
-                case os_windows:
-                case os_uwp:
-                    if (keyboard_check(vk_alt) && keyboard_check_pressed(vk_space))
-                    {
-                        //Unstick Alt Space
-                        keyboard_key_release(vk_alt);
-                        keyboard_key_release(vk_space);
-                        keyboard_key_release(vk_lalt);
-                        keyboard_key_release(vk_ralt);
-                    }
-                break;
-            
-                case "apple_web": //This case applies on iOS, tvOS, and MacOS
-                    if (keyboard_check_released(92) || keyboard_check_released(93))
-                    {
-                        //Meta release sticks every key pressed during hold
-                        //This is "the nuclear option", but the problem is severe
-                        var _i = 8;
-                        repeat(247)
-                        {
-                            keyboard_key_release(_i);
-                            _i++;
-                        }
-                    }
-                break;
-                
-                case os_macosx:
-                    //Unstick control key double-ups
-                    if (keyboard_check_released(vk_control))
-                    {
-                        keyboard_key_release(vk_lcontrol);
-                        keyboard_key_release(vk_rcontrol);
-                    }
-            
-                    if (keyboard_check_released(vk_shift))
-                    {
-                        keyboard_key_release(vk_lshift);
-                        keyboard_key_release(vk_rshift);
-                    }
-            
-                    if (keyboard_check_released(vk_alt))
-                    {
-                        keyboard_key_release(vk_lalt);
-                        keyboard_key_release(vk_ralt);
-                    }
-            
-                    //Unstick Meta
-                    //Weird, but seems to be the best way to unstick without spoiling normal operation
-                    if (keyboard_check_released(vk_meta1))
-                    {
-                        keyboard_key_release(vk_meta2);
-                    }
-                    else if (keyboard_check_released(vk_meta2) && keyboard_check(vk_meta1))
-                    {
-                        keyboard_key_release(vk_meta1);
-                    }
-                break;
+                _string = "";
             }
+        
+            input_string_set(_string);
+        }
+    }
+    
+    //Unstick
+    if (__INPUT_KEYBOARD_SUPPORT && keyboard_check(vk_anykey))
+    {
+        var _platform = os_type;
+        if (__INPUT_ON_WEB && __INPUT_ON_APPLE) _platform = "apple_web";
+
+        switch (_platform)
+        {
+            case os_uwp:
+                if ((INPUT_IGNORE_RESERVED_KEYS_LEVEL > 0) 
+                && keyboard_check(vk_alt) && !keyboard_check_pressed(vk_alt))
+                {
+                    //Unstick Alt Tab
+                    keyboard_key_release(vk_alt);
+                }
+            //UWP also uses Windows case
+            case os_windows:
+                if (keyboard_check(vk_alt) && keyboard_check_pressed(vk_space))
+                {
+                    //Unstick Alt Space
+                    keyboard_key_release(vk_alt);
+                    keyboard_key_release(vk_space);
+                    keyboard_key_release(vk_lalt);
+                    keyboard_key_release(vk_ralt);
+                }
+            break;            
+            case "apple_web": //This case applies on iOS, tvOS, and MacOS
+                if (keyboard_check_released(92) || keyboard_check_released(93))
+                {
+                    //Meta release sticks every key pressed during hold
+                    //This is "the nuclear option", but the problem is severe
+                    var _i = 8;
+                    var _len = 255 - _i;
+                    repeat(_len)
+                    {
+                        keyboard_key_release(_i);
+                        ++_i;
+                    }
+                }
+            break;                
+            case os_macosx:
+                //Unstick doubled-up control keys
+                if (keyboard_check_released(vk_control))
+                {
+                    keyboard_key_release(vk_lcontrol);
+                    keyboard_key_release(vk_rcontrol);
+                }
+            
+                if (keyboard_check_released(vk_shift))
+                {
+                    keyboard_key_release(vk_lshift);
+                    keyboard_key_release(vk_rshift);
+                }
+            
+                if (keyboard_check_released(vk_alt))
+                {
+                    keyboard_key_release(vk_lalt);
+                    keyboard_key_release(vk_ralt);
+                }
+            
+                //Unstick Meta
+                if (keyboard_check_released(vk_meta1))
+                {
+                    keyboard_key_release(vk_meta2);
+                }
+                else if (keyboard_check_released(vk_meta2) && keyboard_check(vk_meta1))
+                {
+                    keyboard_key_release(vk_meta1);
+                }
+            break;
         }
     }
     
