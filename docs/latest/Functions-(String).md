@@ -73,3 +73,17 @@ This function will return `true` if the async dialog is open and awaiting submis
 Sets internal string to the result of a text-entry dialog prompt when issued by `input_string_async_get`.
 
 !> This function must be used in the context of an [_Asynchronous Dialogue event_](https://manual.yoyogames.com/The_Asset_Editors/Object_Properties/Async_Events/Dialog.htm) (typically in a persistent instance). Required for use of `input_string_async_get`.
+
+&nbsp;
+
+&nbsp;
+
+### `input_platform_text_source()`
+
+*Returns:* String, the preferred text entry method for the current platform
+
+|Name|Datatype|Purpose|
+|-------------|-------|
+|None|        |       |
+
+Returns either `"async"`, `"virtual"`, or `"keyboard"` indicating which text input method is most reliable for the given platform. `"async"` indicates that `input_string_async_get()` should be used, `"virtual"` indicates that the [virtual keyboard](https://www.yoyogames.com/en/blog/using-the-virtual-keyboard) should be used, and `"keyboard"` indicates that straight keyboard text entry should be used.

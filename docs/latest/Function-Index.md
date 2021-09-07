@@ -94,6 +94,7 @@
 - [`input_string_async_get(prompt, [string], [allow_empty])`](Functions-(String)#input_string_async_getprompt-string-allow_empty)
 - [`input_string_async_is_active()`](Functions-(String)#input_string_async_is_active)
 - [`input_string_dialog_async_event()`](Functions-(String)#input_string_dialog_async_event)
+- [`input_platform_text_source()`](Functions-(String)#input_platform_text_source)
 
 ### [Gamepad (Direct)](Functions-(Gamepad))
 
