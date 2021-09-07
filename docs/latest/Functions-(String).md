@@ -83,7 +83,7 @@ Sets internal string to the result of a text-entry dialog prompt when issued by 
 *Returns:* String, the preferred text entry method for the current platform
 
 |Name|Datatype|Purpose|
-|-------------|-------|
+|----|--------|-------|
 |None|        |       |
 
 Returns either `"async"`, `"virtual"`, or `"keyboard"` indicating which text input method is most reliable for the given platform. `"async"` indicates that `input_string_async_get()` should be used, `"virtual"` indicates that the [virtual keyboard](https://www.yoyogames.com/en/blog/using-the-virtual-keyboard) should be used, and `"keyboard"` indicates that straight keyboard text entry should be used.
