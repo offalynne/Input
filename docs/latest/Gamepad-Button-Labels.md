@@ -10,7 +10,6 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 ?> Binding names are simplified below for brevity, for example, `"gamepad axis trigger r"` is shortened to **trigger r**. Refer to [Binding Names](Binding-Names#gamepad) for full strings.
 
-
 &nbsp;
 
 ## Xbox and Xbox-like
@@ -65,7 +64,7 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 | `"switch joycon left"`  | ![S W E N][jc_face]           | ![SL SR][jc_shld] | ![- Capture][jcl_meta] |
 | `"switch joycon right"` | ![S W E N][jc_face]           | ![SL SR][jc_shld] | ![Home +][jcr_meta]    |
 
-?> Unless unified as a pair on Linux or Android (identified as `"switch"`), Input assumes JoyCons will be used in the [horizontal grip](https://en-americas-support.nintendo.com/app/answers/detail/a_id/22740/kw/#:~:text=Joy-Con%20with%20wrist-strap%20being%20held%20in%20a%20solo%20horizontal%20grip) orientation.
+?> Input assumes JoyCons will be used in the [solo horizontal grip](https://en-americas-support.nintendo.com/app/answers/detail/a_id/22740/kw/#:~:text=Joy-Con%20with%20wrist-strap%20being%20held%20in%20a%20solo%20horizontal%20grip) orientation, unless unified as a pair on Linux or Android (identified as `"switch"`). The Capture and Home buttons (`gamepad button select`) are not available for binding on the Switch platform.
 
 &nbsp;
 
