@@ -64,7 +64,7 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 | `"switch joycon left"`  | ![S W E N][jc_face]           | ![SL SR][jc_shld] | ![- Capture][jcl_meta] |
 | `"switch joycon right"` | ![S W E N][jc_face]           | ![SL SR][jc_shld] | ![Home +][jcr_meta]    |
 
-?> Input assumes JoyCons will be used in the [solo horizontal grip](https://en-americas-support.nintendo.com/app/answers/detail/a_id/22740/kw/#:~:text=Joy-Con%20with%20wrist-strap%20being%20held%20in%20a%20solo%20horizontal%20grip) orientation, unless unified as a pair on Linux or Android (identified as `"switch"`). The Capture and Home buttons (`gamepad button select`) are not available for binding on the Switch platform.
+?> Input assumes individual JoyCons will be used in the [solo horizontal grip](https://en-americas-support.nintendo.com/app/answers/detail/a_id/22740/kw/#:~:text=Joy-Con%20with%20wrist-strap%20being%20held%20in%20a%20solo%20horizontal%20grip) orientation (unified as a pair they are identified as the `"switch"` type). The Capture and Home buttons (`gamepad button select`) are not available for binding on the Switch platform.
 
 &nbsp;
 
