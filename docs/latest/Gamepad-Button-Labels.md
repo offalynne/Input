@@ -43,6 +43,8 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 |:------------------|:------------------------:|
 |  `"ps4"`, `"ps5"` | ![Touchpad][ps_touchpad] |
 
+?> Share and Create buttons are not available for binding on console platforms.
+
 &nbsp;
 
 ## Nintendo
