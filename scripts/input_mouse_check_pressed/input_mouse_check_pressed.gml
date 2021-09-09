@@ -1,6 +1,12 @@
 /// @param binding
 function input_mouse_check_pressed(_binding)
 {
+    //Disallow mouse input on touch platforms (unless explicitly enabled)
+    if ((__INPUT_TOUCH_SUPPORT && !INPUT_TOUCH_MOUSE_ALLOWED) || (os_type != os_xboxone) || (os_type != os_xboxseriesxs))
+    {
+        return (_binding == mb_none);
+    }
+    
     //Extended mouse button handling (Windows only)
     if (os_type != os_windows)
     {
