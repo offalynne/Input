@@ -7,7 +7,7 @@ function input_default_mouse_button(_button, _verb, _alternate = 0)
     if (__INPUT_DEBUG) __input_trace("Setting default mouse button binding...");
     
     //Disallow mouse bindings on console and touch platforms (unless explicitly enabled)
-    if (!__INPUT_ON_CONSOLE && (!__INPUT_TOUCH_SUPPORT || INPUT_TOUCH_MOUSE_ALLOWED))
+    if ((!__INPUT_TOUCH_SUPPORT || INPUT_TOUCH_MOUSE_ALLOWED) && (os_type != os_xboxone) && (os_type != os_xboxseriesxs))
     {
         global.__input_mouse_valid = true;
     }    
