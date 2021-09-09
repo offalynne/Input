@@ -5,8 +5,11 @@ function input_default_mouse_wheel_down(_verb, _alternate = 0)
 {
     if (__INPUT_DEBUG) __input_trace("Setting default mouse wheel down binding...");
     
-    //Never allow mouse bindings on console
-    if (!__INPUT_ON_CONSOLE) global.__input_mouse_valid = true;
+    //Disallow mouse bindings on console and touch platforms (unless explicitly enabled)
+    if (!__INPUT_ON_CONSOLE && (!__INPUT_TOUCH_SUPPORT || INPUT_TOUCH_MOUSE_ALLOWED))
+    {
+        global.__input_mouse_valid = true;
+    }
     
     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
     var _binding = new __input_class_binding();
