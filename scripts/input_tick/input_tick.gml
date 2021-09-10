@@ -55,7 +55,7 @@ function input_tick()
             {
                 var _retain_block = false;
                 var _i = 1;
-                repeat(4)
+                repeat(5)
                 {
                     if (device_mouse_check_button(0, _i))
                     {
