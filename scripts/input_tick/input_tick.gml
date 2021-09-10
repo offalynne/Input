@@ -40,7 +40,7 @@ function input_tick()
     global.__input_blur = (window_has_focus() == false);    
     
     //Handle mouse button blocking on window focus change
-    if (!global.__input_blur)
+    if (__INPUT_POINTER_SUPPORT && !global.__input_blur)
     {
         if (global.__input_blur_previous)
         {
@@ -50,9 +50,8 @@ function input_tick()
         else
         {
             //Reevaluate mouse block if focus is sustained
-            if (global.__input_mouse_blocked &&
-            ((!__INPUT_TOUCH_SUPPORT || INPUT_TOUCH_MOUSE_ALLOWED) 
-            &&  (os_type != os_xboxone) || (os_type != os_xboxseriesxs)))
+            if (global.__input_mouse_blocked 
+            && (!__INPUT_TOUCH_SUPPORT || INPUT_TOUCH_POINTER_ALLOWED))
             {
                 var _retain_block = false;
                 var _i = 1;
