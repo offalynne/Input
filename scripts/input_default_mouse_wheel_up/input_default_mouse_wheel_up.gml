@@ -5,8 +5,7 @@ function input_default_mouse_wheel_up(_verb, _alternate = 0)
 {
     if (__INPUT_DEBUG) __input_trace("Setting default mouse wheel up binding...");
     
-    //Disallow mouse bindings on console and touch platforms (unless explicitly enabled)
-    if ((!__INPUT_TOUCH_SUPPORT || INPUT_TOUCH_MOUSE_ALLOWED) && (os_type != os_xboxone) && (os_type != os_xboxseriesxs))
+    if (!global.__input_mouse_blocked) 
     {
         global.__input_mouse_valid = true;
     }

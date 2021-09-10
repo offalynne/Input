@@ -83,6 +83,9 @@ global.__input_mouse_x     = 0;
 global.__input_mouse_y     = 0;
 global.__input_mouse_moved = false;
 
+//Windows focus tracking
+global.__input_blur         = false;
+
 //Windows tap-to-click tracking
 global.__input_tap_presses  = 0;
 global.__input_tap_releases = 0;
@@ -108,6 +111,9 @@ global.__input_async_allow_empty    = false;
 global.__input_keyboard_valid = false;
 global.__input_mouse_valid    = false;
 global.__input_gamepad_valid  = false;
+
+//Disallow mouse bindings on console and touch platforms (unless explicitly enabled)
+global.__input_mouse_blocked = ((__INPUT_TOUCH_SUPPORT && !INPUT_TOUCH_MOUSE_ALLOWED) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs));
 
 //Whether to swap A/B gamepad buttons for default bindings
 global.__input_swap_ab = false;

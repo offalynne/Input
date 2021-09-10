@@ -34,6 +34,43 @@ function input_tick()
     global.__input_mouse_moved = (point_distance(_mouse_x, _mouse_y, global.__input_mouse_x, global.__input_mouse_y) > INPUT_MOUSE_MOVE_DEADZONE);
     global.__input_mouse_x = _mouse_x;
     global.__input_mouse_y = _mouse_y;
+
+    //Track Window focus loss and regain (blur is false when focus is true or undefined)
+    global.__input_blur_previous = global.__input_blur;
+    global.__input_blur = (window_has_focus() == false);    
+    
+    //Handle mouse button blocking on window focus change
+    if (!global.__input_blur)
+    {
+        if (global.__input_blur_previous)
+        {
+            //Block mouse buttons on focus regain
+            global.__input_mouse_blocked = true;
+        }
+        else
+        {
+            //Reevaluate mouse block if focus is sustained
+            if (global.__input_mouse_blocked &&
+            ((!__INPUT_TOUCH_SUPPORT || INPUT_TOUCH_MOUSE_ALLOWED) 
+            &&  (os_type != os_xboxone) || (os_type != os_xboxseriesxs)))
+            {
+                var _retain_block = false;
+                var _i = 1;
+                repeat(4)
+                {
+                    if mouse_check_button(_i)
+                    {
+                        _retain_block = true;
+                        break;
+                    }
+                    
+                    ++_i;
+                }
+                
+                global.__input_mouse_blocked = _retain_block;
+            }
+        }
+    }
     
     //Windows mouse extensions
     global.__input_tap_click = false;
