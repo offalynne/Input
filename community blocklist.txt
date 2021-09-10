@@ -1,0 +1,35 @@
+7e050e20000000000000504944564944,all,guid // joycon charger windows
+030000007e0500000e20000000020000,all,guid // joycon charger macos
+030000007e0500000e20000011010000,all,guid // joycon charger linux
+030000007e0500000e20000011810000,all,guid // joycon charger left grip linux
+3c000000000000000000000038010000,all,guid // joycon charger right grip linux
+65366131663736363061313736656431,all,guid // joycon charger android
+31613237643563656561633964393335,all,guid // joycon left android (handled internally)
+39373064396565646338333134303131,all,guid // joycon right android (handled internally)
+030000007e0500000920000000020000,all,guid // switch pro controller macos 
+030000007e0500000920000011010000,all,guid // switch pro controller linux
+61393962646434393836356631636132,all,guid // pro controller android
+71011904000000000000504944564944,all,guid // luna dinput windows
+31730100000000000000504944564944,all,guid // dshidmini d4w mode windows
+5e04050b000000000000504944564944,all,guid // xb elite dinput windows
+39666538356630396233636633333330,all,guid // xb elite s2 usb android
+31343431323332663936386663646631,all,guid // sg-h510 switch android
+61373939383333653939323337373730,all,guid // ps/2 usb adapter android
+37626665373466346563356534326663,all,guid // logitech kbm receiver android
+35623363656536396133623234666231,all,guid // elecom trackball android
+64623037323132643231333433383536,all,guid // headset android
+mouse,android,description contains // mice
+trackball,android,description contains // trackball mice
+keyboard,android,description contains // keyboards
+button jack,android,description contains // trrs interfaces
+headphones,android,description contains // headsets
+jabra,android,description contains // videoconference hardware
+transceiver,android,description contains // mouse/keyboard transceiver
+usb receiver,android,description contains // corsair and logitech keyboards
+surface type,android,description contains // microsoft surface cover keyboard
+touchscreen,android,description contains // touchscreen devices
+digitizer,android,description contains // touchscreen devices
+multitouch,android,description contains // virtual multitouch devices
+headset,android,description contains // headsets and adapters
+sennheiser,android,description contains // sennheiser brand headsets
+corsair,android,description contains // corsair mice, keyboards, adapters
