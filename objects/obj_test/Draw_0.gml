@@ -58,6 +58,8 @@ _string += "gp_shoulderr  = " + string(input_gamepad_value(_gamepad, gp_shoulder
 _string += "gp_shoulderrb = " + string(input_gamepad_value(_gamepad, gp_shoulderrb)) + "\n";
 _string += "gp_select     = " + string(input_gamepad_value(_gamepad, gp_select    )) + "\n";
 _string += "gp_start      = " + string(input_gamepad_value(_gamepad, gp_start     )) + "\n";
+_string += "gp_misc1      = " + string(input_gamepad_value(_gamepad, gp_misc1     )) + "\n";
+_string += "gp_guide      = " + string(input_gamepad_value(_gamepad, gp_guide     )) + "\n";
 draw_text(200, 50, _string);
 
 var _string = "";
@@ -89,8 +91,10 @@ draw_rectangle(488, 0, 490, room_height, false);
 
 var _string = "";
 
+_string += "GUID = \"" + gamepad_get_guid(input_player_gamepad_get()) + "\"\n";
 _string += "Input gamepad desc = \"" + input_gamepad_get_description(input_player_gamepad_get()) + "\"\n";
 _string += "Input gamepad type = \"" + input_gamepad_get_type(input_player_gamepad_get()) + "\"\n";
+_string += "\n";
 
 _string += "Left          = " + string(input_value(VERB.LEFT   )) + "    " + string(input_binding_get(VERB.LEFT   )) + "\n";
 _string += "Right         = " + string(input_value(VERB.RIGHT  )) + "    " + string(input_binding_get(VERB.RIGHT  )) + "\n";
