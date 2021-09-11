@@ -56,7 +56,7 @@ function input_tick()
                 var _i = mb_left;
                 repeat(mb_side2)
                 {
-                    if mouse_check_button(_i)
+                    if (device_mouse_check_button(0, _i))
                     {
                         _retain_block = true;
                         break;
