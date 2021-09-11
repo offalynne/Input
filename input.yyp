@@ -99,8 +99,6 @@
     {"id":{"name":"input_player_gamepad_set","path":"scripts/input_player_gamepad_set/input_player_gamepad_set.yy",},"order":6,},
     {"id":{"name":"input_player_source_get","path":"scripts/input_player_source_get/input_player_source_get.yy",},"order":7,},
     {"id":{"name":"input_player_source_set","path":"scripts/input_player_source_set/input_player_source_set.yy",},"order":8,},
-    {"id":{"name":"input_rebind_tick_legacy","path":"scripts/input_rebind_tick_legacy/input_rebind_tick_legacy.yy",},"order":2,},
-    {"id":{"name":"input_rebind_undo_legacy","path":"scripts/input_rebind_undo_legacy/input_rebind_undo_legacy.yy",},"order":3,},
     {"id":{"name":"input_source_detect","path":"scripts/input_source_detect/input_source_detect.yy",},"order":2,},
     {"id":{"name":"input_source_detect_any","path":"scripts/input_source_detect_any/input_source_detect_any.yy",},"order":3,},
     {"id":{"name":"input_source_get_name","path":"scripts/input_source_get_name/input_source_get_name.yy",},"order":4,},
