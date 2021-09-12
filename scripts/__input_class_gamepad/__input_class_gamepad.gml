@@ -125,7 +125,6 @@ function __input_class_gamepad(_index) constructor
             
             if (__INPUT_SDL2_SUPPORT)
             {
-            
                 //As of 2020-08-17, GameMaker has weird in-build remapping rules for gamepad on MacOS
                 if (os_type == os_macosx)
                 {

@@ -344,6 +344,55 @@ function __input_class_player() constructor
         return global.__input_config_category_names[source];
     }
     
+    static get_invalid_gamepad_bindings = function()
+    {
+        var _output = [];
+        
+        var _source_verb_struct = variable_struct_get(config, get_config_category());
+        if (is_struct(_source_verb_struct))
+        {
+            var _gamepad_mapping_array = input_gamepad_get_map(gamepad);
+            
+            var _verb_names = variable_struct_get_names(_source_verb_struct);
+            var _v = 0;
+            repeat(array_length(_verb_names))
+            {
+                var _verb_name = _verb_names[_v];
+                var _alternate_array = variable_struct_get(_source_verb_struct, _verb_name);
+                
+                var _a = 0;
+                repeat(array_length(_alternate_array))
+                {
+                    if (is_struct(_alternate_array[_a]))
+                    {
+                        var _verb_input = _alternate_array[_a].value;
+                        
+                        var _found = false;
+                        var _m = 0;
+                        repeat(array_length(_gamepad_mapping_array))
+                        {
+                            if (_gamepad_mapping_array[_m] == _verb_input)
+                            {
+                                _found = true;
+                                break;
+                            }
+                            
+                            ++_m;
+                        }
+                        
+                        if (!_found) array_push(_output, { verb: _verb_name, alternate: _a });
+                    }
+                    
+                    ++_a;
+                }
+                
+                ++_v;
+            }
+        }
+        
+        return _output;
+    }
+    
     /// @param binding
     static get_binding_config_category = function(_binding)
     {
