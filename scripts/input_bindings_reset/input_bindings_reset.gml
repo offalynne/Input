@@ -55,7 +55,7 @@ function input_bindings_reset(_source, _player_index = all, _reset_thresholds = 
         
         config[$ _config_category] = {};
         
-        var _source_verb_struct = variable_struct_get(global.__input_default_player.config, _config_category);
+        var _source_verb_struct = global.__input_default_player.config[$ _config_category];
         if (is_struct(_source_verb_struct))
         {
             var _verb_names = variable_struct_get_names(_source_verb_struct);
@@ -63,7 +63,7 @@ function input_bindings_reset(_source, _player_index = all, _reset_thresholds = 
             repeat(array_length(_verb_names))
             {
                 var _verb = _verb_names[_v];
-                var _alternate_array = variable_struct_get(_source_verb_struct, _verb);
+                var _alternate_array = _source_verb_struct[$ _verb];
                 if (is_array(_alternate_array))
                 {
                     var _alternate = 0;

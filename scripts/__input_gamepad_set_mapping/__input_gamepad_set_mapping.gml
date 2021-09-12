@@ -104,7 +104,7 @@ function __input_gamepad_set_mapping()
         var _i = 0;
         repeat(array_length(_a))
         {
-            set_mapping(variable_struct_get(global.__input_sdl2_look_up_table, _a[_i]), 0, undefined, _a[_i]);
+            set_mapping(global.__input_sdl2_look_up_table[$ _a[_i]], 0, undefined, _a[_i]);
             _i++;
         }
 
@@ -232,7 +232,7 @@ function __input_gamepad_set_mapping()
                 }
             
                 //Find the GameMaker-native constant for this entry name e.g. gp_face1, gp_axislh
-                var _gm_constant = variable_struct_get(global.__input_sdl2_look_up_table, _entry_name);
+                var _gm_constant = global.__input_sdl2_look_up_table[$ _entry_name];
                 if (_gm_constant == undefined)
                 {
                     __input_trace("Warning! Entry name \"", _entry_name, "\" not recognised (full string was \"", _entry, "\")");

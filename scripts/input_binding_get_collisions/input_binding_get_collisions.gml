@@ -25,7 +25,7 @@ function input_binding_get_collisions(_src_binding, _player_index = 0)
     
     with(global.__input_players[_player_index])
     {
-        var _source_verb_struct = variable_struct_get(config, get_binding_config_category(_src_binding));
+        var _source_verb_struct = config[$ get_binding_config_category(_src_binding)];
         if (is_struct(_source_verb_struct))
         {
             var _verb_names = variable_struct_get_names(_source_verb_struct);
@@ -34,7 +34,7 @@ function input_binding_get_collisions(_src_binding, _player_index = 0)
             {
                 var _verb = _verb_names[_v];
                 
-                var _alternate_array = variable_struct_get(_source_verb_struct, _verb);
+                var _alternate_array = _source_verb_struct[$ _verb];
                 var _a = 0;
                 repeat(array_length(_alternate_array))
                 {

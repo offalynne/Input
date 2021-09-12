@@ -214,11 +214,11 @@ function __input_load_sdl2_from_buffer(_buffer)
                     if (_vendor_product != "")
                     {
                         //Add this definition to the "by vendor+product" struct
-                        var _vp_array = variable_struct_get(_db_by_vendor_product, _vendor_product);
+                        var _vp_array = _db_by_vendor_product[$ _vendor_product];
                         if (!is_array(_vp_array))
                         {
                             _vp_array = [];
-                            variable_struct_set(_db_by_vendor_product, _vendor_product, _vp_array);
+                            _db_by_vendor_product[$ _vendor_product] = _vp_array;
                         }
                         
                         //Push the definition into the vendor+product array

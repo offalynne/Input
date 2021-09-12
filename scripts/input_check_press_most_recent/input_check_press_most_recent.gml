@@ -24,7 +24,7 @@ function input_check_press_most_recent(_verb_names = all, _player_index = 0)
     repeat(array_length(_verb_names))
     {
         var _verb = _verb_names[_i];
-        var _verb_struct = variable_struct_get(_verbs_array, _verb);
+        var _verb_struct = _verbs_array[$ _verb];
         
         if ((_verb_struct.press_time > _max_time) && input_check(_verb, _player_index))
         {

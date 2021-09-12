@@ -28,7 +28,7 @@ function input_check_released(_verb, _player_index = 0, _buffer_duration = 0)
         return false;
     }
     
-    var _verb_struct = variable_struct_get(global.__input_players[_player_index].verbs, _verb);
+    var _verb_struct = global.__input_players[_player_index].verbs[$ _verb];
     if (!is_struct(_verb_struct))
     {
         __input_error("Verb not recognised (", _verb, ")");

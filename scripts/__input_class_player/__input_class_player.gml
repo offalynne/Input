@@ -26,11 +26,11 @@ function __input_class_player() constructor
     /// @param max
     static axis_threshold_set = function(_axis, _min, _max)
     {
-        var _axis_struct = variable_struct_get(config.axis_thresholds, _axis);
+        var _axis_struct = config.axis_thresholds[$ _axis];
         if (!is_struct(_axis_struct))
         {
             _axis_struct = {};
-            variable_struct_set(config.axis_thresholds, _axis, _axis_struct);
+            config.axis_thresholds[$ _axis] = _axis_struct;
         }
         
         _axis_struct.mini = _min
@@ -41,7 +41,7 @@ function __input_class_player() constructor
     /// @param axis
     static axis_threshold_get = function(_axis)
     {
-        var _struct = variable_struct_get(config.axis_thresholds, _axis);
+        var _struct = config.axis_thresholds[$ _axis];
         if (is_struct(_struct)) return _struct;
         return axis_threshold_set(_axis, INPUT_DEFAULT_MIN_THRESHOLD, INPUT_DEFAULT_MAX_THRESHOLD);
     }
@@ -50,7 +50,7 @@ function __input_class_player() constructor
     /// @param value
     static set_verb = function(_verb_name, _value)
     {
-        with(variable_struct_get(verbs, _verb_name))
+        with(verbs[$ _verb_name])
         {
             value = _value;
             tick();
@@ -72,7 +72,7 @@ function __input_class_player() constructor
         var _v = 0;
         repeat(array_length(_verb_names))
         {
-            with(variable_struct_get(verbs, _verb_names[_v])) clear();
+            with(verbs[$ _verb_names[_v]]) clear();
             ++_v;
         }
         
@@ -101,14 +101,14 @@ function __input_class_player() constructor
         var _v = 0;
         repeat(array_length(_verb_names))
         {
-            with(variable_struct_get(verbs, _verb_names[_v])) tick(_history_array);
+            with(verbs[$ _verb_names[_v]]) tick(_history_array);
             ++_v;
         }
     }
     
     static tick_source = function(_source_name)
     {
-        var _source_verb_struct = variable_struct_get(config, get_config_category());
+        var _source_verb_struct = config[$ get_config_category()];
         if (is_struct(_source_verb_struct))
         {
             var _verb_names = variable_struct_get_names(_source_verb_struct);
@@ -123,7 +123,7 @@ function __input_class_player() constructor
                 var _min_threshold = undefined;
                 var _max_threshold = undefined;
                 
-                var _alternate_array = variable_struct_get(_source_verb_struct, _verb_name);
+                var _alternate_array = _source_verb_struct[$ _verb_name];
                 var _a = 0;
                 repeat(array_length(_alternate_array))
                 {
@@ -224,14 +224,16 @@ function __input_class_player() constructor
                     ++_a;
                 }
                 
-                var _verb_struct = variable_struct_get(verbs, _verb_name);
-                _verb_struct.value = _value;
-                _verb_struct.raw = _raw;
-                
-                if (_raw_analogue != undefined) _verb_struct.raw_analogue  = _raw_analogue;
-                if (_analogue     != undefined) _verb_struct.analogue      = _analogue;
-                _verb_struct.min_threshold = _min_threshold;
-                _verb_struct.max_threshold = _max_threshold;
+                with(verbs[$ _verb_name])
+                {
+                    value = _value;
+                    raw = _raw;
+                    
+                    if (_raw_analogue != undefined) raw_analogue = _raw_analogue;
+                    if (_analogue     != undefined) analogue     = _analogue;
+                    min_threshold = _min_threshold;
+                    max_threshold = _max_threshold;
+                }
                 
                 ++_v;
             }
@@ -268,24 +270,24 @@ function __input_class_player() constructor
             return undefined;
         }
         
-        var _source_verb_struct = variable_struct_get(config, _config_category);
+        var _source_verb_struct = config[$ _config_category];
         if (!is_struct(_source_verb_struct))
         {
             if (__INPUT_DEBUG) __input_trace("Source verb struct not found, creating a new one");
             _source_verb_struct = {};
-            variable_struct_set(config, _config_category, _source_verb_struct);
+            config[$ _config_category] = _source_verb_struct;
         }
         else
         {
             if (__INPUT_DEBUG) __input_trace("Source verb struct = ", _source_verb_struct);
         }
         
-        var _verb_alternate_array = variable_struct_get(_source_verb_struct, _verb);
+        var _verb_alternate_array = _source_verb_struct[$ _verb];
         if (!is_array(_verb_alternate_array))
         {
             if (__INPUT_DEBUG) __input_trace("Verb alternate array not found, creating a new one");
             _verb_alternate_array = array_create(INPUT_MAX_ALTERNATE_BINDINGS, undefined);
-            variable_struct_set(_source_verb_struct, _verb, _verb_alternate_array);
+            _source_verb_struct[$ _verb] = _verb_alternate_array;
         }
         else
         {
@@ -297,14 +299,14 @@ function __input_class_player() constructor
         _verb_alternate_array[@ _alternate] = _binding_struct;
         
         //Set up a verb container on the player separate from the bindings
-        if (!is_struct(variable_struct_get(verbs, _verb)))
+        if (!is_struct(verbs[$ _verb]))
         {
             if (__INPUT_DEBUG) __input_trace("Verb not found on player, creating a new one");
             
             var _verb_struct = new __input_class_verb();
             _verb_struct.name = _verb;
             
-            variable_struct_set(verbs, _verb, _verb_struct);
+            verbs[$ _verb] = _verb_struct;
         }
         
         return _binding_struct;
@@ -315,10 +317,10 @@ function __input_class_player() constructor
     /// @param alternate
     static get_binding = function(_source, _verb, _alternate)
     {
-        var _source_verb_struct = variable_struct_get(config, convert_source_enum_to_config_category(_source));
+        var _source_verb_struct = config[$ convert_source_enum_to_config_category(_source)];
         if (is_struct(_source_verb_struct))
         {
-            var _alternate_array = variable_struct_get(_source_verb_struct, _verb);
+            var _alternate_array = _source_verb_struct[$ _verb];
             if (is_array(_alternate_array))
             {
                 var _binding = _alternate_array[_alternate];
@@ -348,7 +350,7 @@ function __input_class_player() constructor
     {
         var _output = [];
         
-        var _source_verb_struct = variable_struct_get(config, get_config_category());
+        var _source_verb_struct = config[$ get_config_category()];
         if (is_struct(_source_verb_struct))
         {
             var _gamepad_mapping_array = input_gamepad_get_map(gamepad);
@@ -358,7 +360,7 @@ function __input_class_player() constructor
             repeat(array_length(_verb_names))
             {
                 var _verb_name = _verb_names[_v];
-                var _alternate_array = variable_struct_get(_source_verb_struct, _verb_name);
+                var _alternate_array = _source_verb_struct[$ _verb_name];
                 
                 var _a = 0;
                 repeat(array_length(_alternate_array))

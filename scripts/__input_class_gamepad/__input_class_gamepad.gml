@@ -50,7 +50,7 @@ function __input_class_gamepad(_index) constructor
     static get_held = function(_gm)
     {
         if (!custom_mapping) return gamepad_button_check(index, _gm);
-        var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
+        var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
         return _mapping.held;
     }
@@ -59,7 +59,7 @@ function __input_class_gamepad(_index) constructor
     static get_pressed = function(_gm)
     {
         if (!custom_mapping) return gamepad_button_check_pressed(index, _gm);
-        var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
+        var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
         return _mapping.press;
     }
@@ -68,7 +68,7 @@ function __input_class_gamepad(_index) constructor
     static get_released = function(_gm)
     {
         if (!custom_mapping) return gamepad_button_check_released(index, _gm);
-        var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
+        var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
         return _mapping.release;
     }
@@ -88,7 +88,7 @@ function __input_class_gamepad(_index) constructor
             }
         }
         
-        var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
+        var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return 0.0;
         return _mapping.value;
     }
@@ -108,7 +108,7 @@ function __input_class_gamepad(_index) constructor
             return ((_gm == gp_axislh) || (_gm == gp_axislv) || (_gm == gp_axisrh) || (_gm == gp_axisrv));
         }
         
-        var _mapping = variable_struct_get(mapping_gm_to_raw, _gm);
+        var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
         return (_mapping.type == __INPUT_MAPPING.AXIS);
     }

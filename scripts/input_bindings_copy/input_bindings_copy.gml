@@ -54,7 +54,7 @@ function input_bindings_copy(_player_index_s, _player_index_d)
         {
             var _config_category = global.__input_config_category_names[_source];
             
-            var _source_verb_struct = variable_struct_get(_player_s.config, _config_category);
+            var _source_verb_struct = _player_s.config[$ _config_category];
             if (is_struct(_source_verb_struct))
             {
                 var _verb_names = variable_struct_get_names(_source_verb_struct);
@@ -62,7 +62,7 @@ function input_bindings_copy(_player_index_s, _player_index_d)
                 repeat(array_length(_verb_names))
                 {
                     var _verb = _verb_names[_v];
-                    var _alternate_array = variable_struct_get(_source_verb_struct, _verb);
+                    var _alternate_array = _source_verb_struct[$ _verb];
                     if (is_array(_alternate_array))
                     {
                         var _alternate = 0;
