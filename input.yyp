@@ -84,6 +84,7 @@
     {"id":{"name":"input_history_start","path":"scripts/input_history_start/input_history_start.yy",},"order":4,},
     {"id":{"name":"__input_mouse_button","path":"scripts/__input_mouse_button/__input_mouse_button.yy",},"order":24,},
     {"id":{"name":"input_hotswap_tick","path":"scripts/input_hotswap_tick/input_hotswap_tick.yy",},"order":1,},
+    {"id":{"name":"obj_test_joycon","path":"objects/obj_test_joycon/obj_test_joycon.yy",},"order":14,},
     {"id":{"name":"input_ignore_key_add","path":"scripts/input_ignore_key_add/input_ignore_key_add.yy",},"order":4,},
     {"id":{"name":"input_ignore_key_remove","path":"scripts/input_ignore_key_remove/input_ignore_key_remove.yy",},"order":5,},
     {"id":{"name":"input_keyboard_check","path":"scripts/input_keyboard_check/input_keyboard_check.yy",},"order":0,},
@@ -162,8 +163,8 @@
     "children": [],
   },
   "RoomOrderNodes": [
-    {"roomId":{"name":"rm_example","path":"rooms/rm_example/rm_example.yy",},},
     {"roomId":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
+    {"roomId":{"name":"rm_example","path":"rooms/rm_example/rm_example.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Test Cases.yy","order":7,"resourceVersion":"1.0","name":"Test Cases","tags":[],"resourceType":"GMFolder",},
