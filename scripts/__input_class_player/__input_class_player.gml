@@ -341,7 +341,7 @@ function __input_class_player() constructor
     
     static get_config_category = function()
     {
-        //Make sure our source has been updated this frame
+        //Use the joycon config if the player is using a joycon at the moment
         if ((source == INPUT_SOURCE.GAMEPAD) && variable_struct_exists(config, "joycon"))
         {
             var _gamepad_struct = global.__input_gamepads[gamepad];
@@ -367,15 +367,17 @@ function __input_class_player() constructor
         else if ((_binding.type == "gamepad button")
              ||  (_binding.type == "gamepad axis"))
         {
-            if ((source == INPUT_SOURCE.GAMEPAD) && variable_struct_exists(config, "joycon")
-            && is_struct(gamepad) && ((gamepad.raw_type == "SwitchJoyConLeft") || (gamepad.raw_type == "SwitchJoyConRight")))
+            //Use the joycon config if the player is using a joycon at the moment
+            if ((source == INPUT_SOURCE.GAMEPAD) && variable_struct_exists(config, "joycon"))
             {
-                return "joycon";
+                var _gamepad_struct = global.__input_gamepads[gamepad];
+                if (is_struct(_gamepad_struct) && ((_gamepad_struct.raw_type == "SwitchJoyConLeft") || (_gamepad_struct.raw_type == "SwitchJoyConRight")))
+                {
+                    return "joycon";
+                }
             }
-            else
-            {
-                return "gamepad";
-            }
+            
+            return "gamepad";
         }
         
         __input_error("Binding type \"", _binding.type, "\" unrecognised");
