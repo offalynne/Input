@@ -19,7 +19,7 @@ function input_bindings_copy(_player_index_s, _player_index_d)
         
         if (_player_index_s >= INPUT_MAX_PLAYERS)
         {
-            __input_error("Source player index too large (", _player_index_s, " vs. ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
+            __input_error("Source player index too large (", _player_index_s, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
             return undefined;
         }
     }
@@ -40,7 +40,7 @@ function input_bindings_copy(_player_index_s, _player_index_d)
         
         if (_player_index_d >= INPUT_MAX_PLAYERS)
         {
-            __input_error("Destination player index too large (", _player_index_d, " vs. ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
+            __input_error("Destination player index too large (", _player_index_d, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
             return undefined;
         }
     }
