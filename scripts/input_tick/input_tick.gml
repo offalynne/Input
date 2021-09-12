@@ -35,6 +35,41 @@ function input_tick()
     global.__input_mouse_x = _mouse_x;
     global.__input_mouse_y = _mouse_y;
     
+    //Track Window focus loss and regain (focused when true or undefined)
+    global.__input_window_focus_previous = global.__input_window_focus;
+    global.__input_window_focus = (window_has_focus() != false);
+    
+    //Handle mouse button blocking on window focus change
+    if (__INPUT_ON_DESKTOP && (window_get_fullscreen() == false) && global.__input_window_focus)
+    {
+        if (!global.__input_window_focus_previous)
+        {
+            //Block mouse buttons on focus regain
+            global.__input_mouse_blocked = true;
+        }
+        else
+        {
+            //Reevaluate mouse block if focus is sustained
+            if (global.__input_mouse_blocked)
+            {
+                var _retain_block = false;
+                var _i = mb_left;
+                repeat(mb_side2)
+                {
+                    if (device_mouse_check_button(0, _i))
+                    {
+                        _retain_block = true;
+                        break;
+                    }
+                    
+                    ++_i;
+                }
+                
+                global.__input_mouse_blocked = _retain_block;
+            }
+        }
+    }
+    
     //Windows mouse extensions
     global.__input_tap_click = false;
     if (os_type == os_windows)

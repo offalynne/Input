@@ -21,7 +21,7 @@
 #macro INPUT_SDL2_ALLOW_GUIDE     false  //Whether to allow use of SDL2's "guide" binding, accessed using the gp_guide macro. This generally only works with DInput controllers
 #macro INPUT_SDL2_ALLOW_MISC1     false  //Whether to allow use of SDL2's "misc1" binding, accessed using the gp_misc1 macro. What this maps to varies from controller to controller
 
-#macro INPUT_TOUCH_MOUSE_ALLOWED       false   //Whether to allow touch input (real, or simulated by physical mouse) to set mouse bindings on touch-enabled platforms
+#macro INPUT_TOUCH_POINTER_ALLOWED     false   //Whether to allow touch input (real, or simulated by physical mouse) to set mouse bindings on touch-enabled platforms
 #macro INPUT_ANDROID_KEYBOARD_ALLOWED  false   //Whether to allow (problematic) keyboard input on Android platform
 #macro INPUT_SWITCH_KEYBOARD_ALLOWED   false   //Whether to allow keyboard input on Switch platform
 
