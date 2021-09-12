@@ -40,7 +40,7 @@ function input_tick()
     global.__input_window_focus = (window_has_focus() != false);
     
     //Handle mouse button blocking on window focus change
-    if (__INPUT_ON_DESKTOP && (window_get_fullscreen() == false) && global.__input_window_focus)
+    if (__INPUT_ON_DESKTOP && global.__input_window_focus)
     {
         if (!global.__input_window_focus_previous)
         {
