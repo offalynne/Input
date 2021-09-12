@@ -70,7 +70,7 @@ function input_bindings_reset(_source, _player_index = all, _reset_thresholds = 
                     repeat(array_length(_alternate_array))
                     {
                         var _binding = _alternate_array[_alternate];
-                        if (is_struct(_binding)) set_binding(_source, _verb, _alternate, __input_binding_duplicate(_binding)); //TODO
+                        if (is_struct(_binding)) set_binding(_config_category, _verb, _alternate, __input_binding_duplicate(_binding));
                         ++_alternate;
                     }
                 }

@@ -52,7 +52,9 @@ function input_bindings_copy(_player_index_s, _player_index_d)
         var _source = 0;
         repeat(array_length(global.__input_config_category_names))
         {
-            var _source_verb_struct = variable_struct_get(_player_s.config, global.__input_config_category_names[_source]);
+            var _config_category = global.__input_config_category_names[_source];
+            
+            var _source_verb_struct = variable_struct_get(_player_s.config, _config_category);
             if (is_struct(_source_verb_struct))
             {
                 var _verb_names = variable_struct_get_names(_source_verb_struct);
@@ -67,7 +69,7 @@ function input_bindings_copy(_player_index_s, _player_index_d)
                         repeat(array_length(_alternate_array))
                         {
                             var _binding = _alternate_array[_alternate];
-                            if (is_struct(_binding)) set_binding(_source, _verb, _alternate, __input_binding_duplicate(_binding)); //TODO
+                            if (is_struct(_binding)) set_binding(_config_category, _verb, _alternate, __input_binding_duplicate(_binding));
                             ++_alternate;
                         }
                     }
