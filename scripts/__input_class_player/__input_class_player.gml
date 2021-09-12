@@ -342,15 +342,16 @@ function __input_class_player() constructor
     static get_config_category = function()
     {
         //Make sure our source has been updated this frame
-        if ((source == INPUT_SOURCE.GAMEPAD) && variable_struct_exists(config, "joycon")
-        && is_struct(gamepad) && ((gamepad.raw_type == "SwitchJoyConLeft") || (gamepad.raw_type == "SwitchJoyConRight")))
+        if ((source == INPUT_SOURCE.GAMEPAD) && variable_struct_exists(config, "joycon"))
         {
-            return "joycon";
+            var _gamepad_struct = global.__input_gamepads[gamepad];
+            if (is_struct(_gamepad_struct) && ((_gamepad_struct.raw_type == "SwitchJoyConLeft") || (_gamepad_struct.raw_type == "SwitchJoyConRight")))
+            {
+                return "joycon";
+            }
         }
-        else
-        {
-            return global.__input_config_category_names[source];
-        }
+        
+        return global.__input_config_category_names[source];
     }
     
     /// @param binding
