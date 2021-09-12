@@ -328,7 +328,12 @@ function __input_binding_duplicate(_source)
 {
     with(_source)
     {
-        return new __input_class_binding(type, value, axis_negative, label);
+        var _binding = new __input_class_binding();
+        _binding.type          = type;
+        _binding.value         = value;
+        _binding.axis_negative = axis_negative;
+        _binding.label         = label;
+        if (variable_struct_exists(self, "android_lowercase")) _binding.android_lowercase = android_lowercase;
     }
 }
 
