@@ -210,8 +210,7 @@ beef,feed,CommunityXBox360 // Monect
 044f,d003,CommunityPSX // Thrustmaster Run'N' Drive
 044f,d008,CommunityPSX // Thrustmaster Ferrari 150
 044f,d009,CommunityPSX // Thrustmaster
-
-,cad1,CommunityPSX // Thrustmaster Run'N' Drive
+046d,cad1,CommunityPSX // Thrustmaster Run'N' Drive
 054c,1337,CommunityPSX // Playstation Vita
 06a3,0621,CommunityPSX // Saitek PS1000
 06a3,f620,CommunityPSX // Saitek PS2700
