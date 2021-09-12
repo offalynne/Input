@@ -26,7 +26,7 @@ function input_binding_set_safe(_verb, _binding, _player_index = 0, _alternate =
             if ((_verb != _verb_b) || (_alternate != _alternate_b))
             {
                 __input_trace("Collision found with config=", _config_category, ", verb=", _verb_b, ", alternate=", _alternate_b);
-                input_binding_swap(_verb, _alternate, _verb_b, _alternate_b, _source, _player_index);
+                input_binding_swap(_verb, _alternate, _verb_b, _alternate_b, _config_category, _player_index);
             }
             else
             {

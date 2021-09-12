@@ -31,7 +31,7 @@ function input_binding_get(_verb, _source = undefined, _player_index = 0, _alter
     
     with(global.__input_players[_player_index])
     {
-        return get_binding(_source, _verb, _alternate);
+        return get_binding(convert_source_enum_to_config_category(_source), _verb, _alternate);
     }
     
     return undefined;

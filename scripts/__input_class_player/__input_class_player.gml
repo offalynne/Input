@@ -242,17 +242,17 @@ function __input_class_player() constructor
     /// @param verb
     /// @param alternate
     /// @param bindingStruct
-    static set_binding = function(_source_name, _verb, _alternate, _binding_struct)
+    static set_binding = function(_config_category, _verb, _alternate, _binding_struct)
     {
         if (__INPUT_DEBUG)
         {
-            __input_trace("Setting binding, args=", _source_name, ", ", _verb, ", ", _alternate, ", ", _binding_struct);
+            __input_trace("Setting binding, args=", _config_category, ", ", _verb, ", ", _alternate, ", ", _binding_struct);
             __input_trace("callstack = ", debug_get_callstack());
         }
         
-        if ((_source_name != "keyboard and mouse") && (_source_name != "gamepad") && (_source_name != "joycon"))
+        if ((_config_category != "keyboard and mouse") && (_config_category != "gamepad") && (_config_category != "joycon"))
         {
-            __input_error("Invalid source (", _source_name, ")");
+            __input_error("Invalid config (", _config_category, ")");
             return undefined;
         }
         
@@ -264,16 +264,16 @@ function __input_class_player() constructor
             
         if (_alternate >= INPUT_MAX_ALTERNATE_BINDINGS)
         {
-            __input_error("\"alternate\" argument too large (", _alternate, " should be less than ", INPUT_MAX_ALTERNATE_BINDINGS, ")\nIncrease INPUT_MAX_ALTERNATE_BINDINGS for more alternate binding slots");
+            __input_error("\"alternate\" argument too large (", _alternate, " must be less than ", INPUT_MAX_ALTERNATE_BINDINGS, ")\nIncrease INPUT_MAX_ALTERNATE_BINDINGS for more alternate binding slots");
             return undefined;
         }
         
-        var _source_verb_struct = variable_struct_get(config, _source_name);
+        var _source_verb_struct = variable_struct_get(config, _config_category);
         if (!is_struct(_source_verb_struct))
         {
             if (__INPUT_DEBUG) __input_trace("Source verb struct not found, creating a new one");
             _source_verb_struct = {};
-            variable_struct_set(config, _source_name, _source_verb_struct);
+            variable_struct_set(config, _config_category, _source_verb_struct);
         }
         else
         {
@@ -315,17 +315,7 @@ function __input_class_player() constructor
     /// @param alternate
     static get_binding = function(_source, _verb, _alternate)
     {
-        if (_source == undefined) _source = get_config_category();
-        
-        var _source_name = undefined;
-        switch(_source)
-        {
-            case INPUT_SOURCE.NONE:               return undefined;            break;
-            case INPUT_SOURCE.KEYBOARD_AND_MOUSE: return "keyboard and mouse"; break;
-            case INPUT_SOURCE.GAMEPAD:            return "gamepad";            break;
-        }
-        
-        var _source_verb_struct = variable_struct_get(config, _source_name);
+        var _source_verb_struct = variable_struct_get(config, convert_source_enum_to_config_category(_source));
         if (is_struct(_source_verb_struct))
         {
             var _alternate_array = variable_struct_get(_source_verb_struct, _verb);
@@ -382,6 +372,31 @@ function __input_class_player() constructor
         
         __input_error("Binding type \"", _binding.type, "\" unrecognised");
         return undefined;
+    }
+    
+    static convert_source_enum_to_config_category = function(_source)
+    {
+        //If undefined is passed in, use the player's current source
+        if (_source == undefined) return get_config_category();
+        
+        if (is_real(_source))
+        {
+            //Convert enum if necessary
+            switch(_source)
+            {
+                case INPUT_SOURCE.NONE: return undefined; break;
+                
+                case INPUT_SOURCE.KEYBOARD_AND_MOUSE: return "keyboard and mouse"; break;
+                case INPUT_SOURCE.GAMEPAD:            return "gamepad";            break;
+                
+                default:
+                    __input_error("Invalid source (", _source, ")");
+                break;
+            }
+        }
+        
+        //Value is probably a string, return that
+        return _source;
     }
     
     /// @param [source]

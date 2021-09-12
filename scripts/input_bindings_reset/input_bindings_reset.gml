@@ -16,13 +16,7 @@ function input_bindings_reset(_source, _player_index = all, _reset_thresholds = 
         return undefined;
     }
     
-    if (((_source < 0) || (_source >= INPUT_SOURCE.__SIZE)) && (_source != all))
-    {
-        __input_error("Source (", _source, ") not recognised\nPlease use the INPUT_SOURCE enum");
-        return undefined;
-    }
-    
-    if (_source == INPUT_SOURCE.NONE) //TODO
+    if (_source == INPUT_SOURCE.NONE)
     {
         __input_trace("Warning! Cannot reset bindings for INPUT_SOURCE.NONE");
         return undefined;
@@ -43,22 +37,25 @@ function input_bindings_reset(_source, _player_index = all, _reset_thresholds = 
     if (_source == all)
     {
         var _i = 0;
-        repeat(INPUT_SOURCE.__SIZE)
+        repeat(array_length(global.__input_config_category_names))
         {
-            if (_i != INPUT_SOURCE.NONE) input_bindings_reset(_i, _player_index);
+            input_bindings_reset(global.__input_config_category_names[_i], _player_index);
             ++_i;
         }
         
         return undefined;
     }
     
-    __input_trace("Resetting ", input_source_get_name(_source), " bindings for player ", _player_index);
-    
     with(global.__input_players[_player_index])
     {
-        config[$ _source] = {};
+        //Convert the source enum to a config name if necessary
+        var _config_category = convert_source_enum_to_config_category(_source);
         
-        var _source_verb_struct = variable_struct_get(global.__input_default_player.config, global.__input_source_names[_source]);
+        __input_trace("Resetting ", _config_category, " bindings for player ", _player_index);
+        
+        config[$ _config_category] = {};
+        
+        var _source_verb_struct = variable_struct_get(global.__input_default_player.config, _config_category);
         if (is_struct(_source_verb_struct))
         {
             var _verb_names = variable_struct_get_names(_source_verb_struct);
