@@ -50,6 +50,8 @@
 045e,0026,CommunitySaturn // Microsoft SideWinder
 045e,0027,CommunitySaturn // Microsoft SideWinder
 046d,c209,CommunitySaturn // Logitech Wingman
+046d,c20a,CommunitySaturn // Logitech Wingman
+046d,c211,CommunitySaturn // Logitech Wingman
 047d,4003,CommunitySaturn // Gravis Xterminator
 04b4,010a,CommunitySaturn // Saturn USB
 0583,3051,CommunitySaturn // Boeder ActionPad
@@ -208,7 +210,8 @@ beef,feed,CommunityXBox360 // Monect
 044f,d003,CommunityPSX // Thrustmaster Run'N' Drive
 044f,d008,CommunityPSX // Thrustmaster Ferrari 150
 044f,d009,CommunityPSX // Thrustmaster
-046d,cad1,CommunityPSX // Thrustmaster Run'N' Drive
+
+,cad1,CommunityPSX // Thrustmaster Run'N' Drive
 054c,1337,CommunityPSX // Playstation Vita
 06a3,0621,CommunityPSX // Saitek PS1000
 06a3,f620,CommunityPSX // Saitek PS2700
