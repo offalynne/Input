@@ -199,6 +199,7 @@ beef,feed,CommunityXBox360 // Monect
 1949,0402,CommunityXBox360 // Xbox
 146b,0c01,CommunityXBox360 // Nacon GC-400ES	
 0079,0002,CommunityXBox360 // Arcade Board
+0f0d,0150,CommunityXBoxOne // Hori Fighting Commander Octa
 045e,02ff,CommunityXBoxOne // Xbox One
 045e,0b03,CommunityXBoxOne // Xbox One
 045e,0b0c,CommunityXBoxOne // Xbox One
