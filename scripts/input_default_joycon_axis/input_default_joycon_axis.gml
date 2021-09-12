@@ -3,9 +3,9 @@
 /// @param verb
 /// @param [alternate]
 
-function input_default_gamepad_axis(_axis, _negative, _verb, _alternate = 0)
+function input_default_joycon_axis(_axis, _negative, _verb, _alternate = 0)
 {
-    if (__INPUT_DEBUG) __input_trace("Setting default gamepad axis binding...");
+    if (__INPUT_DEBUG) __input_trace("Setting default Joy-Con axis binding...");
     
     global.__input_gamepad_valid = true;
     
@@ -13,7 +13,7 @@ function input_default_gamepad_axis(_axis, _negative, _verb, _alternate = 0)
     var _binding = new __input_class_binding();
     _binding.set_gamepad_axis(_axis, _negative);
     
-    global.__input_default_player.set_binding("gamepad", _verb, _alternate, _binding);
+    global.__input_default_player.set_binding("joycon", _verb, _alternate, _binding);
     
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
@@ -22,7 +22,7 @@ function input_default_gamepad_axis(_axis, _negative, _verb, _alternate = 0)
         var _binding = new __input_class_binding();
         _binding.set_gamepad_axis(_axis, _negative);
         
-        global.__input_players[_p].set_binding("gamepad", _verb, _alternate, _binding);
+        global.__input_players[_p].set_binding("joycon", _verb, _alternate, _binding);
         
         ++_p;
     }

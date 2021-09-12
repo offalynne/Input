@@ -37,8 +37,8 @@ function input_binding_set(_verb, _binding, _player_index = 0, _alternate = 0)
     
     with(global.__input_players[_player_index])
     {
-        var _source = __input_binding_get_source(_binding)
-        __input_trace("Setting player ", _player_index, " binding for source=", input_source_get_name(_source), ", verb=", _verb, ", alt=", _alternate, " to \"", input_binding_get_name(_binding), "\"");
-        set_binding(_source, _verb, _alternate, _binding);
+        var _config_category = get_binding_config_category(_binding);
+        __input_trace("Setting player ", _player_index, " binding for config=", _config_category, ", verb=", _verb, ", alt=", _alternate, " to \"", input_binding_get_name(_binding), "\"");
+        set_binding(_config_category, _verb, _alternate, _binding); //TODO
     }
 }

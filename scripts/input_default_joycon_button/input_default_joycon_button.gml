@@ -2,9 +2,9 @@
 /// @param verb
 /// @param [alternate]
 
-function input_default_gamepad_button(_button, _verb, _alternate = 0)
+function input_default_joycon_button(_button, _verb, _alternate = 0)
 {
-    if (__INPUT_DEBUG) __input_trace("Setting default gamepad button binding...");
+    if (__INPUT_DEBUG) __input_trace("Setting default Joy-Con button binding...");
     if (!INPUT_SDL2_ALLOW_GUIDE && (_button == gp_guide)) __input_error("gp_guide not permitted\nSet INPUT_SDL2_ALLOW_GUIDE to <true> to allow gp_guide");
     if (!INPUT_SDL2_ALLOW_MISC1 && (_button == gp_misc1)) __input_error("gp_misc1 not permitted\nSet INPUT_SDL2_ALLOW_MISC1 to <true> to allow gp_misc1");
     
@@ -28,7 +28,7 @@ function input_default_gamepad_button(_button, _verb, _alternate = 0)
     var _binding = new __input_class_binding();
     _binding.set_gamepad_button(_button);
     
-    global.__input_default_player.set_binding("gamepad", _verb, _alternate, _binding);
+    global.__input_default_player.set_binding("joycon", _verb, _alternate, _binding);
     
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
@@ -37,7 +37,7 @@ function input_default_gamepad_button(_button, _verb, _alternate = 0)
         var _binding = new __input_class_binding();
         _binding.set_gamepad_button(_button);
         
-        global.__input_players[_p].set_binding("gamepad", _verb, _alternate, _binding);
+        global.__input_players[_p].set_binding("joycon", _verb, _alternate, _binding);
         ++_p;
     }
 }

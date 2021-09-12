@@ -38,6 +38,6 @@ function input_binding_remove(_verb, _source, _player_index = 0, _alternate = 0)
     with(global.__input_players[_player_index])
     {
         __input_trace("Removing binding for player ", _player_index, ", source=", input_source_get_name(_source), ", verb=", _verb, ", alt=", _alternate);
-        set_binding(_source, _verb, _alternate, undefined);
+        set_binding(_source, _verb, _alternate, undefined); //TODO
     }
 }

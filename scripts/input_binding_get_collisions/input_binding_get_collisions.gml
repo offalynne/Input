@@ -25,10 +25,7 @@ function input_binding_get_collisions(_src_binding, _player_index = 0)
     
     with(global.__input_players[_player_index])
     {
-        var _source = __input_binding_get_source(_src_binding)
-        
-        var _source_name = global.__input_source_names[_source];
-        var _source_verb_struct = variable_struct_get(config, _source_name);
+        var _source_verb_struct = variable_struct_get(config, get_binding_config_category(_src_binding));
         if (is_struct(_source_verb_struct))
         {
             var _verb_names = variable_struct_get_names(_source_verb_struct);
@@ -48,7 +45,7 @@ function input_binding_get_collisions(_src_binding, _player_index = 0)
                         &&  (_binding.value         == _src_binding.value)
                         &&  (_binding.axis_negative == _src_binding.axis_negative))
                         {
-                            array_push(_output_array, {verb: _verb, alternate: _a});
+                            array_push(_output_array, { verb: _verb, alternate: _a });
                         }
                     }
                     

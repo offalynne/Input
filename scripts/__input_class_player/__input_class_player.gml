@@ -76,8 +76,7 @@ function __input_class_player() constructor
             ++_v;
         }
         
-        //Make sure our source has been updated this frame
-        tick_source(global.__input_source_names[source]);
+        tick_source();
         
         //Update our verbs, and pass in our history array too
         var _history_array = history_do? history_array : undefined;
@@ -107,9 +106,9 @@ function __input_class_player() constructor
         }
     }
     
-    static tick_source = function(_source)
+    static tick_source = function(_source_name)
     {
-        var _source_verb_struct = variable_struct_get(config, _source);
+        var _source_verb_struct = variable_struct_get(config, get_config_category());
         if (is_struct(_source_verb_struct))
         {
             var _verb_names = variable_struct_get_names(_source_verb_struct);
@@ -239,21 +238,21 @@ function __input_class_player() constructor
         }
     }
     
-    /// @param source
+    /// @param sourceName
     /// @param verb
     /// @param alternate
     /// @param bindingStruct
-    static set_binding = function(_source, _verb, _alternate, _binding_struct)
+    static set_binding = function(_source_name, _verb, _alternate, _binding_struct)
     {
         if (__INPUT_DEBUG)
         {
-            __input_trace("Setting binding, args=", _source, ", ", _verb, ", ", _alternate, ", ", _binding_struct);
+            __input_trace("Setting binding, args=", _source_name, ", ", _verb, ", ", _alternate, ", ", _binding_struct);
             __input_trace("callstack = ", debug_get_callstack());
         }
         
-        if ((_source < 0) || (_source >= INPUT_SOURCE.__SIZE))
+        if ((_source_name != "keyboard and mouse") && (_source_name != "gamepad") && (_source_name != "joycon"))
         {
-            __input_error("Invalid source (", _source, ")");
+            __input_error("Invalid source (", _source_name, ")");
             return undefined;
         }
         
@@ -265,16 +264,16 @@ function __input_class_player() constructor
             
         if (_alternate >= INPUT_MAX_ALTERNATE_BINDINGS)
         {
-            __input_error("\"alternate\" argument too large (", _alternate, " vs. ", INPUT_MAX_ALTERNATE_BINDINGS, ")\nIncrease INPUT_MAX_ALTERNATE_BINDINGS for more alternate binding slots");
+            __input_error("\"alternate\" argument too large (", _alternate, " should be less than ", INPUT_MAX_ALTERNATE_BINDINGS, ")\nIncrease INPUT_MAX_ALTERNATE_BINDINGS for more alternate binding slots");
             return undefined;
         }
         
-        var _source_verb_struct = variable_struct_get(config, global.__input_source_names[_source]);
+        var _source_verb_struct = variable_struct_get(config, _source_name);
         if (!is_struct(_source_verb_struct))
         {
             if (__INPUT_DEBUG) __input_trace("Source verb struct not found, creating a new one");
             _source_verb_struct = {};
-            variable_struct_set(config, global.__input_source_names[_source], _source_verb_struct);
+            variable_struct_set(config, _source_name, _source_verb_struct);
         }
         else
         {
@@ -316,9 +315,17 @@ function __input_class_player() constructor
     /// @param alternate
     static get_binding = function(_source, _verb, _alternate)
     {
-        if (_source == undefined) _source = source;
+        if (_source == undefined) _source = get_config_category();
         
-        var _source_verb_struct = variable_struct_get(config, global.__input_source_names[_source]);
+        var _source_name = undefined;
+        switch(_source)
+        {
+            case INPUT_SOURCE.NONE:               return undefined;            break;
+            case INPUT_SOURCE.KEYBOARD_AND_MOUSE: return "keyboard and mouse"; break;
+            case INPUT_SOURCE.GAMEPAD:            return "gamepad";            break;
+        }
+        
+        var _source_verb_struct = variable_struct_get(config, _source_name);
         if (is_struct(_source_verb_struct))
         {
             var _alternate_array = variable_struct_get(_source_verb_struct, _verb);
@@ -329,6 +336,48 @@ function __input_class_player() constructor
             }
         }
         
+        return undefined;
+    }
+    
+    static get_config_category = function()
+    {
+        //Make sure our source has been updated this frame
+        if ((source == INPUT_SOURCE.GAMEPAD) && variable_struct_exists(config, "joycon")
+        && is_struct(gamepad) && ((gamepad.raw_type == "SwitchJoyConLeft") || (gamepad.raw_type == "SwitchJoyConRight")))
+        {
+            return "joycon";
+        }
+        else
+        {
+            return global.__input_config_category_names[source];
+        }
+    }
+    
+    /// @param binding
+    static get_binding_config_category = function(_binding)
+    {
+        if ((_binding.type == "key")
+        ||  (_binding.type == "mouse button")
+        ||  (_binding.type == "mouse wheel up")
+        ||  (_binding.type == "mouse wheel down"))
+        {
+            return "keyboard and mouse";
+        }
+        else if ((_binding.type == "gamepad button")
+             ||  (_binding.type == "gamepad axis"))
+        {
+            if ((source == INPUT_SOURCE.GAMEPAD) && variable_struct_exists(config, "joycon")
+            && is_struct(gamepad) && ((gamepad.raw_type == "SwitchJoyConLeft") || (gamepad.raw_type == "SwitchJoyConRight")))
+            {
+                return "joycon";
+            }
+            else
+            {
+                return "gamepad";
+            }
+        }
+        
+        __input_error("Binding type \"", _binding.type, "\" unrecognised");
         return undefined;
     }
     
