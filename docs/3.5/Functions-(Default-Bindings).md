@@ -117,7 +117,7 @@ This function sets up default bindings for single Switch Joy-Cons. Due to single
 
 Simple games won't need to call `input_default_joycon_button()` or `input_default_joycon_axis()` provided that essential verbs are placed on button/axes that exist on a single Joy-Con. In this situation, calling the standard `input_default_gamepad*()` functions will suffice.
 
-However, if `input_default_joycon_button()` (or `input_default_joycon_axis()`) have been called during the initialization of your game, the binding configuration you've defined using those functions will be used when a player plays with a single Joy-Con. Calling either function also enables a separate rebinding category for Joy-Cons versus other gamepads.
+However, if `input_default_joycon_button()` or `input_default_joycon_axis()` have been called during the initialization of your game, the binding configuration you've defined using those functions will be used when a player plays with a single Joy-Con. Calling either function also enables a separate rebinding category for Joy-Cons versus other gamepads.
 
 !> The state set by `input_default_gamepad_swap_ab()` still applies to single Joy-Cons.
 
@@ -142,4 +142,4 @@ This function sets up default bindings for single Switch Joy-Cons. Due to single
 
 Simple games won't need to call `input_default_joycon_button()` or `input_default_joycon_axis()` provided that essential verbs are placed on button/axes that exist on a single Joy-Con. In this situation, calling the standard `input_default_gamepad*()` functions will suffice.
 
-However, if `input_default_joycon_axis()` (or `input_default_joycon_button()`) have been called during the initialization of your game, the binding configuration you've defined using those functions will be used when a player plays with a single Joy-Con. Calling either function also enables a separate rebinding category for Joy-Cons versus other gamepads.
+However, if `input_default_joycon_axis()` or `input_default_joycon_button()` have been called during the initialization of your game, the binding configuration you've defined using those functions will be used when a player plays with a single Joy-Con. Calling either function also enables a separate rebinding category for Joy-Cons versus other gamepads.
