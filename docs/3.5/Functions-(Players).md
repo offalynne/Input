@@ -138,7 +138,8 @@ Single Switch Joy-Cons are far from the only gamepad with fewer buttons than a "
 
 The array returned by this function contains structs. Each struct contains two member variables:
 
-|Name       |Description                                                                                                  |
-|-----------|-------------------------------------------------------------------------------------------------------------|
-|`verb`     |[Verb](https://www.jujuadams.com/Input/#/3.5/Verbs-and-Alternate-Bindings) that contains the invalid binding |
-|`alternate`|[Alternate index](https://www.jujuadams.com/Input/#/3.5/Verbs-and-Alternate-Bindings) for the invalid binding|
+|Name       |Description                                                                                                                                                                        |
+|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`verb`     |[Verb](https://www.jujuadams.com/Input/#/3.5/Verbs-and-Alternate-Bindings) that contains the invalid binding                                                                       |
+|`alternate`|[Alternate index](https://www.jujuadams.com/Input/#/3.5/Verbs-and-Alternate-Bindings) for the invalid binding                                                                      |
+|`gm`       |[Virtual button/axis constant](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html) that is missing from the player's gamepad|
