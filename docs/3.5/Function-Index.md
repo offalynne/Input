@@ -83,25 +83,6 @@
 - [`input_source_detect_any()`](Functions-(Source-Assignment)#input_source_detect_any)
 - [`input_source_is_available(source, [gamepad])`](Functions-(Source-Assignment)#input_source_is_availablesource-gamepad)
 
-### [History](Functions-(History))
-
-- [`input_history_global_include(verb, ...)`](Functions-(History)#input_history_global_includeverb)
-- [`input_history_start([playerIndex])`](Functions-(History)#input_history_startplayerindex)
-- [`input_history_clear([playerIndex])`](Functions-(History)#input_history_clearplayerindex)
-- [`input_history_get([playerIndex])`](Functions-(History)#input_history_getplayerindex)
-- [`input_history_end([playerIndex])`](Functions-(History)#input_history_endplayerindex)
-
-### [String](Functions-(String))
-
-?> String functions are provided for handling text input in a device and platform agnostic context, serving as an extension to the inbuilt [`keyboard_string`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/keyboard_string.htm) value.
-
-- [`input_string_get()`](Functions-(String)#input_string_get)
-- [`input_string_set([string])`](Functions-(String)#input_string_setstring)
-- [`input_string_async_get(prompt, [string], [allow_empty])`](Functions-(String)#input_string_async_getprompt-string-allow_empty)
-- [`input_string_async_is_active()`](Functions-(String)#input_string_async_is_active)
-- [`input_string_dialog_async_event()`](Functions-(String)#input_string_dialog_async_event)
-- [`input_platform_text_source()`](Functions-(String)#input_platform_text_source)
-
 ### [Other](Functions-(Other))
 
 - [`input_axis_threshold_set(axis, min, max, [playerIndex])`](Functions-(Other)#input_axis_threshold_setaxis-min-max-playerindex)
@@ -143,3 +124,26 @@
 - [`input_mouse_check(button)`](Functions-(Mouse)#input_mouse_checkbutton)
 - [`input_mouse_check_pressed(button)`](Functions-(Mouse)#input_mouse_check_pressedbutton)
 - [`input_mouse_check_released(button)`](Functions-(Mouse)#input_mouse_check_releasedbutton)
+
+### [History](Functions-(History))
+
+!> These functions will be removed in v4.0. They are listed here for legacy use only.
+
+- [`input_history_global_include(verb, ...)`](Functions-(History)#input_history_global_includeverb)
+- [`input_history_start([playerIndex])`](Functions-(History)#input_history_startplayerindex)
+- [`input_history_clear([playerIndex])`](Functions-(History)#input_history_clearplayerindex)
+- [`input_history_get([playerIndex])`](Functions-(History)#input_history_getplayerindex)
+- [`input_history_end([playerIndex])`](Functions-(History)#input_history_endplayerindex)
+
+### [String](Functions-(String))
+
+
+!> These functions will be removed in v4.0, please use Alynne's [Input String](https://github.com/offalynne/input-string) library instead. These functions are listed here for legacy use only.
+?> String functions are provided for handling text input in a device and platform agnostic context, serving as an extension to the inbuilt [`keyboard_string`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/keyboard_string.htm) value.
+
+- [`input_string_get()`](Functions-(String)#input_string_get)
+- [`input_string_set([string])`](Functions-(String)#input_string_setstring)
+- [`input_string_async_get(prompt, [string], [allow_empty])`](Functions-(String)#input_string_async_getprompt-string-allow_empty)
+- [`input_string_async_is_active()`](Functions-(String)#input_string_async_is_active)
+- [`input_string_dialog_async_event()`](Functions-(String)#input_string_dialog_async_event)
+- [`input_platform_text_source()`](Functions-(String)#input_platform_text_source)
