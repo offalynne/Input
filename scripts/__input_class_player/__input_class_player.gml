@@ -382,7 +382,7 @@ function __input_class_player() constructor
                             ++_m;
                         }
                         
-                        if (!_found) array_push(_output, { verb: _verb_name, alternate: _a });
+                        if (!_found) array_push(_output, { verb: _verb_name, alternate: _a, gm: _verb_input });
                     }
                     
                     ++_a;
