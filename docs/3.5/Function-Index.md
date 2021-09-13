@@ -139,6 +139,7 @@
 
 
 !> These functions will be removed in v4.0, please use Alynne's [Input String](https://github.com/offalynne/input-string) library instead. These functions are listed here for legacy use only.
+
 ?> String functions are provided for handling text input in a device and platform agnostic context, serving as an extension to the inbuilt [`keyboard_string`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/keyboard_string.htm) value.
 
 - [`input_string_get()`](Functions-(String)#input_string_get)
