@@ -4,6 +4,83 @@ function input_tick()
     
     global.__input_frame++;
     
+    #region Touch
+    
+    if (__INPUT_TOUCH_SUPPORT)
+    {
+        var _touch_index = undefined;
+        var _touch_press_index = global.__input_pointer_pressed_index;
+    
+        //TODO: Handle PlayStation       
+    
+        var _i = 0;
+        repeat(10)
+        {
+            //Track contact duration per index
+            if (!device_mouse_check_button(_i, mb_left))
+            {
+                global.__input_pointer_durations[_i] = 0;
+            }
+            else
+            {
+                //Get recent active touch
+                global.__input_pointer_durations[_i] += delta_time;
+                if (_touch_index == undefined || (global.__input_pointer_durations[_i] < global.__input_pointer_durations[_touch_index]))
+                {
+                    _touch_index = _i;
+                }
+            }
+    
+            _i++;
+        }
+        
+        //Set active pointer index
+        if (_touch_index == undefined) _touch_index = 0;
+        
+        
+        global.__input_pointer_pressed = device_mouse_check_button_pressed(_touch_index, mb_left);
+        global.__input_pointer_released = (_touch_press_index != undefined) && device_mouse_check_button_released(_touch_press_index, mb_left);
+
+        //Touch edge testing
+        var _w = display_get_gui_width();
+        var _h = display_get_gui_height();
+        if (INPUT_TOUCH_EDGE_DEADZONE > 0)
+        {
+            //Release
+            if (global.__input_pointer_released)
+            {
+                var _tx  = device_mouse_x_to_gui(_touch_press_index);
+                var _ty  = device_mouse_y_to_gui(_touch_press_index);
+    
+                if ((_tx < INPUT_TOUCH_EDGE_DEADZONE) || (_tx > (_w - INPUT_TOUCH_EDGE_DEADZONE))
+                ||  (_ty < INPUT_TOUCH_EDGE_DEADZONE) || (_ty > (_h - INPUT_TOUCH_EDGE_DEADZONE)))
+                {
+                    global.__input_pointer_released = false;
+                }
+            }
+        
+            //Press
+            if (global.__input_pointer_pressed)
+            {
+                var _tx  = device_mouse_x_to_gui(_touch_index);
+                var _ty  = device_mouse_y_to_gui(_touch_index);
+
+                if ((_tx < INPUT_TOUCH_EDGE_DEADZONE) || (_tx > (_w - INPUT_TOUCH_EDGE_DEADZONE))
+                ||  (_ty < INPUT_TOUCH_EDGE_DEADZONE) || (_ty > (_h - INPUT_TOUCH_EDGE_DEADZONE)))
+                {
+                    global.__input_pointer_pressed = false;
+                }
+            }
+        }
+    
+        //Update state
+        global.__input_pointer_index = _touch_index;
+        if (global.__input_pointer_pressed)  global.__input_pointer_pressed_index = _touch_index;
+        if (global.__input_pointer_released) global.__input_pointer_pressed_index = undefined;
+    }
+    
+    #endregion
+    
     #region Mouse
     
     var _mouse_x = 0;
@@ -12,18 +89,18 @@ function input_tick()
     switch(INPUT_MOUSE_MODE)
     {
         case 0:
-            _mouse_x = device_mouse_x(0);
-            _mouse_y = device_mouse_y(0);
+            _mouse_x = device_mouse_x(global.__input_pointer_index);
+            _mouse_y = device_mouse_y(global.__input_pointer_index);
         break;
         
         case 1:
-            _mouse_x = device_mouse_x_to_gui(0);
-            _mouse_y = device_mouse_y_to_gui(0);
+            _mouse_x = device_mouse_x_to_gui(global.__input_pointer_index);
+            _mouse_y = device_mouse_y_to_gui(global.__input_pointer_index);
         break;
         
         case 2:
-            _mouse_x = device_mouse_raw_x(0);
-            _mouse_y = device_mouse_raw_y(0);
+            _mouse_x = device_mouse_raw_x(global.__input_pointer_index);
+            _mouse_y = device_mouse_raw_y(global.__input_pointer_index);
         break;
         
         default:

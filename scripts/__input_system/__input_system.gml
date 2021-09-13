@@ -15,8 +15,7 @@
 
 #macro __INPUT_POINTER_SUPPORT  (!__INPUT_ON_XDK)
 #macro __INPUT_KEYBOARD_SUPPORT (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch) || (os_type == os_uwp) || (os_type == os_android))
-#macro __INPUT_TOUCH_SUPPORT    (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch))
-
+#macro __INPUT_TOUCH_SUPPORT    (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch) || uwp_device_touchscreen_available())
 
 #macro __INPUT_SDL2_SUPPORT     (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || (os_type == os_android)))
 
@@ -98,6 +97,13 @@ global.__input_window_focus = true;
 global.__input_tap_presses  = 0;
 global.__input_tap_releases = 0;
 global.__input_tap_click    = false;
+
+//Touch pointer tracking
+global.__input_pointer_index         = 0;
+global.__input_pointer_pressed       = false;
+global.__input_pointer_released      = false;
+global.__input_pointer_pressed_index = undefined;
+global.__input_pointer_durations     = array_create(10, 0);
 
 //Cursor tracking variables. This is Input's abstraction layer for the mouse, allowing mouse-like functionality cross-platform
 global.__input_cursor_verb_u      = undefined;
