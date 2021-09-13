@@ -137,6 +137,7 @@ An invalid binding occurs when the player's gamepad lacks a button or axis that 
 Single Switch Joy-Cons are far from the only gamepad with fewer buttons than a "standard" Xbox / PlayStation controller. How you respond to devices that lack certain buttons is up to you. In the specific case of single Joy-Cons, Input offers [functionality to handle them automatically](Functions-(Default-Bindings)#input_default_joycon_buttonbutton-verb-alternate).
 
 The array returned by this function contains structs. Each struct contains two member variables:
+
 |Name       |Description                                                                                                  |
 |-----------|-------------------------------------------------------------------------------------------------------------|
 |`verb`     |[Verb](https://www.jujuadams.com/Input/#/3.5/Verbs-and-Alternate-Bindings) that contains the invalid binding |
