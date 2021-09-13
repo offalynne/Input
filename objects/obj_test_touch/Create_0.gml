@@ -1,4 +1,4 @@
-cell_split = 3;
+cell_split = 4;
 
 //grid coords
 cell_count = power(cell_split, 2);
