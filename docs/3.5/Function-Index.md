@@ -15,8 +15,9 @@
 - [`input_player_gamepad_set(gamepad, [playerIndex])`](Functions-(Players)#input_player_gamepad_setgamepad-playerindex)
 - [`input_player_gamepad_get([playerIndex])`](Functions-(Players)#input_player_gamepad_getplayerindex)
 - [`input_player_gamepad_get_description([playerIndex])`](Functions-(Players)#input_player_gamepad_get_descriptionplayerindex)
-- [`input_player_gamepad_get_type([playerIndex])`](Functions-(Players)#input_player_gamepad_get_typeplayerindex)
+- [`input_player_gamepad_get_type([playerIndex])`](Functions-(Players)#input_player_gamepad_get_typeplayerindex
 - [`input_player_gamepad_get_dpad_style([playerIndex])`](Functions-(Players)#input_player_gamepad_get_dpad_styleplayerindex)
+- [`input_player_gamepad_get_invalid_bindings([playerIndex])`](Functions-(Players)#input_player_gamepad_get_invalid_bindingsplayerindex)
 
 ### [Default Bindings](Functions-(Default-Bindings))
 
@@ -101,6 +102,16 @@
 - [`input_string_dialog_async_event()`](Functions-(String)#input_string_dialog_async_event)
 - [`input_platform_text_source()`](Functions-(String)#input_platform_text_source)
 
+### [Other](Functions-(Other))
+
+- [`input_axis_threshold_set(axis, min, max, [playerIndex])`](Functions-(Other)#input_axis_threshold_setaxis-min-max-playerindex)
+- [`input_axis_threshold_get(axis, [playerIndex])`](Functions-(Other)#input_axis_threshold_getaxis-playerindex)
+- [`input_consume(verb, [playerIndex])`](Functions-(Other)#input_consumeverb-playerindex)
+- [`input_guess_keyboard_layout()`](Functions-(Other)#input_guess_keyboard_layout)
+- [`input_verb_set(verb, value, [playerIndex])`](Functions-(Other)#input_verb_setverb-value-playerindex)
+- [`input_ignore_key_add(key)`](Functions-(Other)#input_ignore_key_addkey)
+- [`input_ignore_key_remove(key)`](Functions-(Other)#input_ignore_key_removekey)
+
 ### [Gamepad (Direct)](Functions-(Gamepad))
 
 ?> Gamepad functions are provided for convenience if you want to implement your own features using Input's SDL implementation. In general, [Player functions](Function-Index#players) are the intended way to use Input and are preferred.
@@ -114,6 +125,8 @@
 - [`input_gamepad_get_description(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_get_descriptiongamepadindex)
 - [`input_gamepad_get_type(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_get_typegamepadindex)
 - [`input_gamepad_get_dpad_style(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_get_dpad_stylegamepadindex)
+- [`input_gamepad_gamepad_get_map(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_gamepad_get_mapgamepadindex)
+- [`input_gamepad_constant_get_name(constant)`](Functions-(Gamepad)#input_gamepad_constant_get_nameconstant)
 
 ### [Keyboard (Direct)](Functions-(Keyboard))
 
@@ -130,13 +143,3 @@
 - [`input_mouse_check(button)`](Functions-(Mouse)#input_mouse_checkbutton)
 - [`input_mouse_check_pressed(button)`](Functions-(Mouse)#input_mouse_check_pressedbutton)
 - [`input_mouse_check_released(button)`](Functions-(Mouse)#input_mouse_check_releasedbutton)
-
-### [Other](Functions-(Other))
-
-- [`input_axis_threshold_set(axis, min, max, [playerIndex])`](Functions-(Other)#input_axis_threshold_setaxis-min-max-playerindex)
-- [`input_axis_threshold_get(axis, [playerIndex])`](Functions-(Other)#input_axis_threshold_getaxis-playerindex)
-- [`input_consume(verb, [playerIndex])`](Functions-(Other)#input_consumeverb-playerindex)
-- [`input_guess_keyboard_layout()`](Functions-(Other)#input_guess_keyboard_layout)
-- [`input_verb_set(verb, value, [playerIndex])`](Functions-(Other)#input_verb_setverb-value-playerindex)
-- [`input_ignore_key_add(key)`](Functions-(Other)#input_ignore_key_addkey)
-- [`input_ignore_key_remove(key)`](Functions-(Other)#input_ignore_key_removekey)
