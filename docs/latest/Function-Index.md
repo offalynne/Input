@@ -118,7 +118,7 @@
 - [`input_keyboard_check_pressed(button)`](Functions-(Keyboard)#input_keyboard_check_pressedkey)
 - [`input_keyboard_check_released(button)`](Functions-(Keyboard)#input_keyboard_check_releasedkey)
 
-### [mouse (Direct)](Functions-(Mouse))
+### [Mouse (Direct)](Functions-(Mouse))
 
 ?> Mouse functions are provided for convenience if you want to implement your own features using Input's mouse implementation. In general, [Player functions](Function-Index#players) are the intended way to use Input and are preferred.
 
