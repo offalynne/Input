@@ -6,7 +6,7 @@ function __input_binding_get_label(_type, _value, _axis_negative)
         if (__INPUT_ON_PS)
         {
             if (((_type == "gamepad button") && (_value == gp_select))
-            || ((_type == "mouse button") && (_value == mb_left )))
+            || ((_type == "mouse button") && (_value == mb_left)))
             {
                 return "gamepad touchpad click";
             }
