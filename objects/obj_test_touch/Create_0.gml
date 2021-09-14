@@ -11,5 +11,5 @@ cell_taps = array_create(cell_count, 0);
 
 if (!INPUT_TOUCH_POINTER_ALLOWED)
 {
-    show_message_async("Testing \"obj_test_touch\" requires `INPUT_TOUCH_POINTER_ALLOWED` be TRUE.")
+    show_message_async("Effectively testing \"obj_test_touch\" requires `INPUT_TOUCH_POINTER_ALLOWED` be TRUE.")
 }
