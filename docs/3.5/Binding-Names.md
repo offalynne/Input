@@ -16,6 +16,8 @@ A list of possible return strings for [`input_binding_get_name`](Functions-(Bind
 | `mouse button back`   | `mouse button forward`|
 | `mouse button middle` | `mouse button unknown`|
 
+&nbsp;
+
 | Touchscreen         |
 |---------------------|
 | `touchscreen press` |
