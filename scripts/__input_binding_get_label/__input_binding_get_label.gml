@@ -1,5 +1,22 @@
 function __input_binding_get_label(_type, _value, _axis_negative)
 {
+    if (__INPUT_TOUCH_SUPPORT)
+    {
+        //Touch bindings
+        if (__INPUT_ON_PS)
+        {
+            if (((_type == "gamepad button") && (_value == gp_select))
+            || ((_type == "mouse button") && (_value == mb_left )))
+            {
+                return "gamepad touchpad click";
+            }
+        }
+        else if ((_type == "mouse button") && (_value == mb_left))
+        {
+            return "touchscreen press";
+        }
+    }
+    
     switch(_type)
     {
         case "key":
@@ -31,14 +48,15 @@ function __input_binding_get_label(_type, _value, _axis_negative)
         case "gamepad axis":
             switch(_value)
             {
-                case gp_face1:      return "gamepad face south";         break; // Xbox A
-                case gp_face2:      return "gamepad face east";          break; // Xbox B
-                case gp_face3:      return "gamepad face west";          break; // Xbox X
-                case gp_face4:      return "gamepad face north";         break; // Xbox Y
+                case gp_face1:      return "gamepad face south";         break; //Xbox A, PlayStation Cross, Switch B
+                case gp_face2:      return "gamepad face east";          break; //Xbox B, PlayStation Circle, Switch A
+                case gp_face3:      return "gamepad face west";          break; //Xbox X, PlayStation Square, Switch Y
+                case gp_face4:      return "gamepad face north";         break; //Xbox Y, PlayStation Triangle, Switch X
                 case gp_shoulderl:  return "gamepad shoulder l";         break;
                 case gp_shoulderr:  return "gamepad shoulder r";         break;
                 case gp_shoulderlb: return "gamepad trigger l";          break;
                 case gp_shoulderrb: return "gamepad trigger r";          break;
+                case gp_select:     return "gamepad select";             break;
                 case gp_start:      return "gamepad start";              break;
                 case gp_stickl:     return "gamepad thumbstick l click"; break;
                 case gp_stickr:     return "gamepad thumbstick r click"; break;
@@ -48,14 +66,6 @@ function __input_binding_get_label(_type, _value, _axis_negative)
                 case gp_padr:       return "gamepad dpad right"          break;
                 case gp_guide:      return "gamepad guide";              break;
                 case gp_misc1:      return "gamepad misc 1";             break;
-
-                case gp_select: 
-                    if ((os_type == os_ps4) || (os_type == os_ps5))
-                    {
-                        return "gamepad touchpad click";
-                    }
-                    return "gamepad select";
-                break;
 
                 case gp_axislh: return _axis_negative? "gamepad thumbstick l left" : "gamepad thumbstick l right"; break;
                 case gp_axislv: return _axis_negative? "gamepad thumbstick l up"   : "gamepad thumbstick l down";  break;
