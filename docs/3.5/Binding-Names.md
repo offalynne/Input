@@ -8,7 +8,7 @@ A list of possible return strings for [`input_binding_get_name`](Functions-(Bind
 
 &nbsp;
 
-## Mouse
+## Pointer
 
 | Mouse button          |                       |
 |-----------------------|-----------------------|
@@ -16,11 +16,9 @@ A list of possible return strings for [`input_binding_get_name`](Functions-(Bind
 | `mouse button back`   | `mouse button forward`|
 | `mouse button middle` | `mouse button unknown`|
 
-&nbsp;
-
-| Mouse wheel           |                       |
-|-----------------------|-----------------------|
-| `mouse wheel up`      | `mouse wheel down`    |
+| Touchscreen         |
+|---------------------|
+| `touchscreen press` |
 
 &nbsp;
 
