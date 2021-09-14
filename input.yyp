@@ -208,7 +208,7 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"test_load_mapping.json","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2.3.4.580",
+    "IDEVersion": "23.1.1.379",
   },
   "resourceVersion": "1.4",
   "name": "input",
