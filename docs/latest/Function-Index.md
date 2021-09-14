@@ -125,6 +125,8 @@
 - [`input_mouse_check(button)`](Functions-(Mouse)#input_mouse_checkbutton)
 - [`input_mouse_check_pressed(button)`](Functions-(Mouse)#input_mouse_check_pressedbutton)
 - [`input_mouse_check_released(button)`](Functions-(Mouse)#input_mouse_check_releasedbutton)
+- [`input_mouse_x()`](Functions-(Mouse)#input_mouse_x)
+- [`input_mouse_y()`](Functions-(Mouse)#input_mouse_y)
 
 ### [Other](Functions-(Other))
 
