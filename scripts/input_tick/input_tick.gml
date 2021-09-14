@@ -6,77 +6,87 @@ function input_tick()
     
     #region Touch
     
-    if (__INPUT_TOUCH_SUPPORT)
+    if (__INPUT_TOUCH_SUPPORT && INPUT_TOUCH_POINTER_ALLOWED)
     {
-        var _touch_index = undefined;
-        var _touch_press_index = global.__input_pointer_pressed_index;
-    
-        //TODO: Handle PlayStation       
-    
-        var _i = 0;
-        repeat(10)
+        if (__INPUT_ON_PS)
         {
+            //Use first touch (of 2) on active PlayStation gamepad
+            var _gamepad = input_player_gamepad_get();
+            if (_gamepad >= 0 && _gamepad < 4)
+            {
+                global.__input_pointer_index = _gamepad * 2;
+                global.__input_pointer_pressed  = device_mouse_check_button_pressed( _gamepad * 2, mb_left);
+                global.__input_pointer_released = device_mouse_check_button_released(_gamepad * 2, mb_left);
+            }
+        }
+        else
+        {
+            var _touch_index = undefined;
+            var _touch_press_index = global.__input_pointer_pressed_index;
+    
             //Track contact duration per index
-            if (!device_mouse_check_button(_i, mb_left))
+            var _i = 0;
+            repeat(INPUT_MAX_TOUCHPOINTS)
             {
-                global.__input_pointer_durations[_i] = 0;
-            }
-            else
-            {
-                //Get recent active touch
-                global.__input_pointer_durations[_i] += delta_time;
-                if (_touch_index == undefined || (global.__input_pointer_durations[_i] < global.__input_pointer_durations[_touch_index]))
+                if (!device_mouse_check_button(_i, mb_left))
                 {
-                    _touch_index = _i;
+                    global.__input_pointer_durations[_i] = 0;
                 }
-            }
+                else
+                {
+                    //Get recent active touch
+                    global.__input_pointer_durations[_i] += delta_time;
+                    if (_touch_index == undefined || (global.__input_pointer_durations[_i] < global.__input_pointer_durations[_touch_index]))
+                    {
+                        _touch_index = _i;
+                    }
+                }
     
-            _i++;
-        }
+                _i++;
+            }
         
-        //Set active pointer index
-        if (_touch_index == undefined) _touch_index = 0;
-        
-        
-        global.__input_pointer_pressed = device_mouse_check_button_pressed(_touch_index, mb_left);
-        global.__input_pointer_released = (_touch_press_index != undefined) && device_mouse_check_button_released(_touch_press_index, mb_left);
+            //Set active pointer index
+            if (_touch_index == undefined) _touch_index = 0;
+            global.__input_pointer_pressed = device_mouse_check_button_pressed(_touch_index, mb_left);
+            global.__input_pointer_released = (device_mouse_check_button_released(_touch_press_index, mb_left) && (_touch_press_index != undefined));
 
-        //Touch edge testing
-        var _w = display_get_gui_width();
-        var _h = display_get_gui_height();
-        if (INPUT_TOUCH_EDGE_DEADZONE > 0)
-        {
-            //Release
-            if (global.__input_pointer_released)
+            //Touch edge testing
+            var _w = display_get_gui_width();
+            var _h = display_get_gui_height();
+            if (INPUT_TOUCH_EDGE_DEADZONE > 0)
             {
-                var _tx  = device_mouse_x_to_gui(_touch_press_index);
-                var _ty  = device_mouse_y_to_gui(_touch_press_index);
-    
-                if ((_tx < INPUT_TOUCH_EDGE_DEADZONE) || (_tx > (_w - INPUT_TOUCH_EDGE_DEADZONE))
-                ||  (_ty < INPUT_TOUCH_EDGE_DEADZONE) || (_ty > (_h - INPUT_TOUCH_EDGE_DEADZONE)))
+                //Release
+                if (global.__input_pointer_released)
                 {
-                    global.__input_pointer_released = false;
+                    var _tx  = device_mouse_x_to_gui(_touch_press_index);
+                    var _ty  = device_mouse_y_to_gui(_touch_press_index);
+    
+                    if ((_tx < INPUT_TOUCH_EDGE_DEADZONE) || (_tx > (_w - INPUT_TOUCH_EDGE_DEADZONE))
+                    ||  (_ty < INPUT_TOUCH_EDGE_DEADZONE) || (_ty > (_h - INPUT_TOUCH_EDGE_DEADZONE)))
+                    {
+                        global.__input_pointer_released = false;
+                    }
                 }
-            }
         
-            //Press
-            if (global.__input_pointer_pressed)
-            {
-                var _tx  = device_mouse_x_to_gui(_touch_index);
-                var _ty  = device_mouse_y_to_gui(_touch_index);
-
-                if ((_tx < INPUT_TOUCH_EDGE_DEADZONE) || (_tx > (_w - INPUT_TOUCH_EDGE_DEADZONE))
-                ||  (_ty < INPUT_TOUCH_EDGE_DEADZONE) || (_ty > (_h - INPUT_TOUCH_EDGE_DEADZONE)))
+                //Press
+                if (global.__input_pointer_pressed)
                 {
-                    global.__input_pointer_pressed = false;
+                    var _tx  = device_mouse_x_to_gui(_touch_index);
+                    var _ty  = device_mouse_y_to_gui(_touch_index);
+
+                    if ((_tx < INPUT_TOUCH_EDGE_DEADZONE) || (_tx > (_w - INPUT_TOUCH_EDGE_DEADZONE))
+                    ||  (_ty < INPUT_TOUCH_EDGE_DEADZONE) || (_ty > (_h - INPUT_TOUCH_EDGE_DEADZONE)))
+                    {
+                        global.__input_pointer_pressed = false;
+                    }
                 }
             }
-        }
     
-        //Update state
-        global.__input_pointer_index = _touch_index;
-        if (global.__input_pointer_pressed)  global.__input_pointer_pressed_index = _touch_index;
-        if (global.__input_pointer_released) global.__input_pointer_pressed_index = undefined;
+            //Update state
+            global.__input_pointer_index = _touch_index;
+            if (global.__input_pointer_pressed)  global.__input_pointer_pressed_index = _touch_index;
+            if (global.__input_pointer_released) global.__input_pointer_pressed_index = undefined;
+        }
     }
     
     #endregion

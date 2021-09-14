@@ -5,6 +5,7 @@ input_hotswap_tick();
 var _released = input_mouse_check_released(mb_left)
 if (_released || input_mouse_check(mb_none))
 {
+    //Active
     if (_released && (cell_active == cell_tapped))
     {
         cell_taps[cell_active] += 1;
