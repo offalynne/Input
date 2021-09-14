@@ -103,7 +103,7 @@ global.__input_pointer_index         = 0;
 global.__input_pointer_pressed       = false;
 global.__input_pointer_released      = false;
 global.__input_pointer_pressed_index = undefined;
-global.__input_pointer_durations     = array_create(10, 0);
+global.__input_pointer_durations     = array_create(INPUT_MAX_TOUCHPOINTS, 0);
 
 //Cursor tracking variables. This is Input's abstraction layer for the mouse, allowing mouse-like functionality cross-platform
 global.__input_cursor_verb_u      = undefined;
