@@ -108,7 +108,7 @@ A list of possible return strings for [`input_binding_get_name`](Functions-(Bind
 
 &nbsp;
 
-| Miscellaneou s           |                          |
+| Miscellaneous            |                          |
 |--------------------------|--------------------------|
 | `clear`                  | `help`                   |
 | `menu`<sup>1</sup>       | `scroll lock`            |
