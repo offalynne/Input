@@ -8,7 +8,7 @@ A list of possible return strings for [`input_binding_get_name`](Functions-(Bind
 
 &nbsp;
 
-## Mouse
+## Pointer
 
 | Mouse button          |                       |
 |-----------------------|-----------------------|
@@ -21,6 +21,12 @@ A list of possible return strings for [`input_binding_get_name`](Functions-(Bind
 | Mouse wheel           |                       |
 |-----------------------|-----------------------|
 | `mouse wheel up`      | `mouse wheel down`    |
+
+&nbsp;
+
+| Touchscreen         |
+|---------------------|
+| `touchscreen press` |
 
 &nbsp;
 
@@ -102,12 +108,12 @@ A list of possible return strings for [`input_binding_get_name`](Functions-(Bind
 
 &nbsp;
 
-|Miscellaneous            |                         |
-|-------------------------|-------------------------|
-|`clear`                  |`help`                   |
-|`menu`<sup>1</sup>       |`scroll lock`            |
-|`capslock`               |`numlock`                |
-|`left meta`<sup>2</sup>  |`right meta`<sup>2</sup> |
+| Miscellaneou s           |                          |
+|--------------------------|--------------------------|
+| `clear`                  | `help`                   |
+| `menu`<sup>1</sup>       | `scroll lock`            |
+| `capslock`               | `numlock`                |
+| `left meta`<sup>2</sup>  | `right meta`<sup>2</sup> |
 
 <sup>1</sup>a.k.a. Apps<br>
 <sup>2</sup>a.k.a. Windows, Command (Mac), Search (Chrome OS)
