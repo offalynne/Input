@@ -109,3 +109,23 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 - Keyboard input is supported (with the same caveats as on the [Windows platform](#Windows)).
 
 !> Keyboard is not supported by GameMaker (and Input) on the PS4, PS5, Xbox One, Xbox Series X/S, iOS or tvOS platforms.
+
+## Pointing Devices (Mouse and Touch)
+
+### Pointing Devices on Desktop
+
+- Input blocks mouse button presses that regain window focus in order to prevent undesired game input or binding.
+
+- Touch devices are not supported by GameMaker on desktop platforms, except in cases where they operate system-level mouse cursor events.
+
+### Pointing Devices on Mobile, Switch, and HTML5
+
+- Touchscreen input is functional on devices supporting a device-relative number of touches. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Configuration). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
+
+- Mouse input is partially functional. GameMaker uses the first mouse "device" for both touchscreen input and mouse, so there is no certain way to determine which is in use. By default mouse input is off (see above).
+
+### DualShock 4 and DualSense touchpad input on PS4 and PS5
+
+- The PlayStation touchpad presents as a mouse cursor. By default Input ignores touch input on the touchpad, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Configuration). Input presently supports touchpad input for one player only.
+
+!> Mouse input is not supported by GameMaker (and Input) on the PS4, PS5, Xbox One or Xbox Series X/S platforms.
