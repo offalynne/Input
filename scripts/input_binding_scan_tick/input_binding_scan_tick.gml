@@ -142,7 +142,8 @@ function input_binding_scan_tick(_source, _player_index = 0)
                         if ((ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z"))) _new_binding.set_label(_keychar);
                     }
                 }
-                else if (global.__input_mouse_valid && (__input_mouse_button() > 0))
+                else if (global.__input_mouse_valid && (__input_mouse_button() != mb_none) 
+                     && (!__INPUT_TOUCH_SUPPORT || (__input_mouse_button() != mb_left)))
                 {
                     //Mouse buttons
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
