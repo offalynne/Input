@@ -3,14 +3,19 @@
 # controller data refresher for Input
 # @offalynne for Input: https://github.com/JujuAdams/Input, 2021
 
+import sys
+if sys.version_info[0] != 3:
+    exit('This script requires Python 3.')
+
 import re
 import os
 import sys
-import urllib
+import urllib.request
 import shutil
 
 # sources and parsing expressions per datafile
 marker_id = "$$$"
+github_urlpath = "https://raw.githubusercontent.com/"
 DATA_SOURCES = {
 
     "TYPES": {
@@ -19,8 +24,8 @@ DATA_SOURCES = {
 
             "SDL2 typelist": {
 
-                "source": "https://raw.githubusercontent.com/libsdl-org/SDL/master/src/joystick/controller_type.h",
-                "license": "https://raw.githubusercontent.com/libsdl-org/SDL/main/LICENSE.txt",
+                "source": github_urlpath + "libsdl-org/SDL/master/src/joystick/controller_type.h",
+                "license": github_urlpath + "libsdl-org/SDL/main/LICENSE.txt",
                 "trim before": "k_eControllerType_LastController",
                 "trim after": "k_eControllerType_UnknownSteamController",
                 "match category": "(?<=k_eControllerType_)(.*)(?= = )",
@@ -29,7 +34,7 @@ DATA_SOURCES = {
 
             "Community SDL2 typelist": {
 
-                "source": "https://gist.github.com/offalynne/1cf66d663a26c054f46c26c826666bf9/raw",
+                "source": github_urlpath + "JujuAdams/Input/community-data/community_gamepad_type.txt",
                 "match category": "(?<=.{10})(.{1,})(?= //.*)",
                 "match id": "(.{4}),(.{4})," + marker_id
             }
@@ -42,7 +47,7 @@ DATA_SOURCES = {
 
             "udev Blacklist": {
 
-                "source": "https://raw.githubusercontent.com/denilsonsa/udev-joystick-blacklist/master/generate_rules.py",
+                "source": github_urlpath + "denilsonsa/udev-joystick-blacklist/master/generate_rules.py",
                 "header": "linux,vid+pid",
                 "trim before": "def write_mode",
                 "trim after": "DEVICES = [",
@@ -51,8 +56,8 @@ DATA_SOURCES = {
 
             "Chromium blocklist (vid+pid)": {
 
-                "source": "https://raw.githubusercontent.com/chromium/chromium/master/device/gamepad/gamepad_blocklist.cc",
-                "license": "https://raw.githubusercontent.com/chromium/chromium/master/LICENSE",
+                "source": github_urlpath + "chromium/chromium/master/device/gamepad/gamepad_blocklist.cc",
+                "license": github_urlpath + "chromium/chromium/master/LICENSE",
                 "header": "linux,vid+pid",
                 "trim before": "constexpr uint16_t kBlockedVendors[]",
                 "trim after": "namespace {",
@@ -63,7 +68,7 @@ DATA_SOURCES = {
 
             "Input blocklist": {
 
-                "source": "https://gist.githubusercontent.com/offalynne/07f78774e3d9ff00fc79200951ac1883/raw",
+                "source": github_urlpath + "JujuAdams/Input/community-data/community_blocklist.txt",
                 "match category": "(?<=\,)(.*)(?=\s//)",
                 "match id": "(.*)(?:," + marker_id + ")"
 
@@ -77,19 +82,25 @@ DATA_SOURCES = {
 
             "SDL2 Community map db": {
 
-                "source":  "https://raw.githubusercontent.com/gabomdq/SDL_GameControllerDB/master/gamecontrollerdb.txt"
+                "source":  github_urlpath + "gabomdq/SDL_GameControllerDB/master/gamecontrollerdb.txt"
 
             }
         }
     }
 }
 
-# handle folder
+# handle folders
+print("Setting up directories")
+if os.path.isdir("datafiles.bak"):
+    shutil.rmtree("datafiles.bak")
 if os.path.isdir("datafiles"):
-    shutil.rmtree("datafiles")
-os.mkdir("datafiles")
+    shutil.copytree("datafiles", "datafiles.bak")
+else:
+    os.mkdir("datafiles")
 working_folder = "datafiles"
 license_path = working_folder + "/licenses.txt"
+if os.path.exists(license_path):
+        os.remove(license_path)
 license_handle = open(license_path, "a")
 
 # consume data
@@ -100,26 +111,29 @@ for file in DATA_SOURCES:
     sources = list(data_index.get("sources"))
 
     working_path = working_folder + "/" + filename
+    if os.path.exists(working_path):
+        os.remove(working_path)
     working_handle = open(working_path, "a")
 
-    print "Refreshing " + filename
+    print("Refreshing " + filename)
 
     # index sources
     for source in sources:
         source_index = data_index.get("sources").get(source)
 
-        print "\tLoading " + source
+        print("\tLoading " + source + "…")
 
         # load source content
         source_content = None
         try: 
-            source_content = urllib.urlopen(source_index.get("source")).read()
+            source_content = urllib.request.urlopen(source_index.get("source")).read().decode('utf-8')
             if source_content.lower().find("doctype") != -1 or source_content == "404: Not Found":
                 raise RuntimeError('Invalid source file')
-        except:
+        except Exception as e:
+            print(e)
             exit('Failed to fetch source for ' + source)
 
-        source_content = urllib.urlopen(source_index.get("source")).read()
+        source_content = urllib.request.urlopen(source_index.get("source")).read().decode('utf-8')
 
         # parse categories
         category = source_content
@@ -207,13 +221,19 @@ for file in DATA_SOURCES:
         license_content = None
         if license != None:
             try: 
-                print "\tLoading " + source + " license"
-                license_content = urllib.urlopen(license).read()
+                print("\tLoading " + source + " license" + "…")
+                license_content = urllib.request.urlopen(license).read().decode('utf-8')
                 if license_content.lower().find("doctype") != -1 or license_content == "404: Not Found":
                     raise RuntimeError('Invalid license file')
             except: 
                 exit('Failed to fetch license for ' + source)
 
             # render license
-            license_handle.write(filename + " includes data sourced from " + source + ".\n")
-            license_handle.write(license_content + "\n")
+            license_handle.write("Datafile " + filename + " includes data sourced from " + source + ".\n\n")
+            license_handle.write(license_content)
+
+print("Removing backup")
+if os.path.isdir("datafiles.bak"):
+    shutil.rmtree("datafiles.bak")
+
+print("Done")
