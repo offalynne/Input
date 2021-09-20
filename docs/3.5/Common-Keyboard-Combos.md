@@ -91,7 +91,7 @@ Presented below are system-level bindings to mind when defining a control scheme
 ### Stadia
 | Input                     | Action            |
 |:--------------------------|:------------------|
-| `Escape (held)`           | Exit game prompt  |
+| `Escape` (held)           | Exit game prompt  |
 | `Shift`+`Tab`             | Overlay           |
 | `F11`                     | Exit fullscreen   |
 | `F12`                     | Screen capture    |
