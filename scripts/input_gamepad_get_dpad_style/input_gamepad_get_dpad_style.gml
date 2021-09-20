@@ -8,10 +8,8 @@ function input_gamepad_get_dpad_style(_index)
             return "unknown";
         break;
         
-        case "steam":
         case "xbox 360":
         case "saturn":
-        case "ouya":
             return "disc";
         break;
         
