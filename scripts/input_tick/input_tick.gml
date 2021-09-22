@@ -122,11 +122,10 @@ function input_tick()
     global.__input_mouse_x = _mouse_x;
     global.__input_mouse_y = _mouse_y;
     
-    //Track Window focus loss and regain (focused when true or undefined)
+    //Track Window focus
     global.__input_window_focus_previous = global.__input_window_focus;
     global.__input_window_focus = (window_has_focus() != false);
     
-    //Handle mouse button blocking on window focus change
     if (__INPUT_ON_DESKTOP && global.__input_window_focus)
     {
         if (!global.__input_window_focus_previous)
@@ -136,23 +135,10 @@ function input_tick()
         }
         else
         {
-            //Reevaluate mouse block if focus is sustained
             if (global.__input_mouse_blocked)
             {
-                var _retain_block = false;
-                var _i = mb_left;
-                repeat(mb_side2)
-                {
-                    if (device_mouse_check_button(0, _i))
-                    {
-                        _retain_block = true;
-                        break;
-                    }
-                    
-                    ++_i;
-                }
-                
-                global.__input_mouse_blocked = _retain_block;
+                //Reevaluate mouse block if focus is sustained
+                global.__input_mouse_blocked = (__input_mouse_button() != mb_none);
             }
         }
     }
