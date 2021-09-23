@@ -138,6 +138,7 @@ function input_tick()
             if (global.__input_mouse_blocked)
             {
                 //Reevaluate mouse block if focus is sustained
+                global.__input_mouse_blocked = false;
                 global.__input_mouse_blocked = (__input_mouse_button() != mb_none);
             }
         }
