@@ -1,7 +1,7 @@
 /// @param binding
 function input_mouse_check(_binding)
 { 
-    if (__INPUT_ON_PS && __INPUT_TOUCH_SUPPORT)
+    if (__INPUT_ON_PS && INPUT_TOUCH_POINTER_ALLOWED)
     {
         if (global.__input_pointer_index != undefined)
         {
