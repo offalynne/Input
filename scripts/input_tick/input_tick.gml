@@ -15,8 +15,8 @@ function input_tick()
             if (_gamepad >= 0 && _gamepad < 4)
             {
                 global.__input_pointer_index = _gamepad * 2;
-                global.__input_pointer_pressed  = gamepad_button_check_pressed(_gamepad, mb_left);
-                global.__input_pointer_released = gamepad_button_check_released(_gamepad, mb_left);
+                global.__input_pointer_pressed  = gamepad_button_check_pressed(_gamepad, gp_select);
+                global.__input_pointer_released = gamepad_button_check_released(_gamepad, gp_select);
             }
         }
         else
