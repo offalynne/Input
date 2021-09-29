@@ -1,11 +1,6 @@
 /// @param binding
 function input_mouse_check_released(_binding)
 {
-    if (__INPUT_ON_PS && INPUT_TOUCH_POINTER_ALLOWED && (_binding == mb_left))
-    {
-        return global.__input_pointer_released;
-    }
-    
     if (global.__input_mouse_blocked) 
     {
         return false;
