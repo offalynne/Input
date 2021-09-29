@@ -1,22 +1,7 @@
 /// @param binding
 function input_mouse_check_pressed(_binding)
-{
-    if (__INPUT_ON_PS && INPUT_TOUCH_POINTER_ALLOWED)
-    {
-        var _r = global.__input_pointer_pressed;
-        if ((_binding == mb_left) || (_binding == mb_any))
-        {
-           return _r;
-        }
-        else if (_binding == mb_none)
-        {
-           return !_r;
-        }
-        
-        return false;
-    }
-    
-    if (global.__input_mouse_blocked) 
+{    
+    if (global.__input_mouse_blocked && !(__INPUT_ON_PS && INPUT_TOUCH_POINTER_ALLOWED)) 
     {
         return (_binding == mb_none);
     }
