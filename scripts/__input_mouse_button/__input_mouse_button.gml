@@ -1,5 +1,5 @@
 function __input_mouse_button()
-{    
+{
     //Respect block
     if (global.__input_mouse_blocked)
     {
