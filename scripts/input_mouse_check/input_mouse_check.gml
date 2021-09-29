@@ -1,17 +1,22 @@
 /// @param binding
 function input_mouse_check(_binding)
 { 
-    if (__INPUT_ON_PS && __INPUT_TOUCH_SUPPORT && (global.__input_pointer_index != undefined))
+    if (__INPUT_ON_PS && __INPUT_TOUCH_SUPPORT)
     {
-        var _r = gamepad_button_check(global.__input_pointer_index / 2, gp_select);
-        if (_binding == mb_left || _binding == mb_any)
+        if (global.__input_pointer_index != undefined)
         {
-           return _r;
+            var _r = gamepad_button_check(global.__input_pointer_index / 2, gp_select);
+            if (_binding == mb_left || _binding == mb_any)
+            {
+               return _r;
+            }
+            else if (_binding == mb_none)
+            {
+               return !_r;
+            }
         }
-        else if (_binding == mb_none)
-        {
-           return !_r;
-        }
+        
+        return false;
     }
     
     if (global.__input_mouse_blocked) 
