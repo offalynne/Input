@@ -1,11 +1,6 @@
 /// @param binding
 function input_mouse_check(_binding)
-{
-    if (__INPUT_ON_PS && INPUT_TOUCH_POINTER_ALLOWED && (_binding == mb_left))
-    {
-        return device_mouse_check_button(global.__input_pointer_index, mb_left);
-    }
-    
+{ 
     if (global.__input_mouse_blocked) 
     {
         return (_binding == mb_none);
