@@ -15,8 +15,8 @@ function input_tick()
             if (_gamepad >= 0 && _gamepad < 4)
             {
                 global.__input_pointer_index = _gamepad * 2;
-                global.__input_pointer_pressed  = device_mouse_check_button_pressed( global.__input_pointer_index, mb_left);
-                global.__input_pointer_released = device_mouse_check_button_released(global.__input_pointer_index, mb_left);
+                global.__input_pointer_pressed  = gamepad_button_check_pressed(_gamepad, mb_left);
+                global.__input_pointer_released = gamepad_button_check_released(_gamepad, mb_left);
             }
         }
         else
@@ -96,7 +96,7 @@ function input_tick()
     var _mouse_x = 0;
     var _mouse_y = 0;
     
-    switch(INPUT_MOUSE_MODE)
+    switch (INPUT_MOUSE_MODE)
     {
         case 0:
             _mouse_x = device_mouse_x(global.__input_pointer_index);
