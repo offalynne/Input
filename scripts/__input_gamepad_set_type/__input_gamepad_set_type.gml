@@ -2,53 +2,52 @@
 
 //On boot, create a lookup table for simple types based on raw types
 global.__input_simple_type_lookup = {
-    SteamController:   "steam",
-    SteamControllerV2: "steam",
-    MobileTouch:       "steam",
-    
+	
+    //Xbox
     XBox360Controller: "xbox 360",
     CommunityXBox360:  "xbox 360",
     CommunityLikeXBox: "xbox 360",
-    
+    SteamController:   "xbox 360", //Steam controller and Link app touch controls use Xb360 iconography
+    SteamControllerV2: "xbox 360", //TODO - revise for Deck if necessary
+    MobileTouch:       "xbox 360", 
+	
     XBoxOneController: "xbox one",
     CommunityXBoxOne:  "xbox one",
+    CommunityLuna:     "xbox one", //"luna",   //Luna uses XbOne iconography excepting 'View' button 
+    CommunityStadia:   "xbox one", //"stadia", //Stadia uses XbOne iconography excepting shoulders, triggers, 'View' button
+    AppleController:   "xbox one", //"apple",  //Apple uses XbOne iconography excepting shoulders, triggers, 'View' button
     
+    //PlayStation
     PS3Controller: "psx",
     CommunityPSX:  "psx",
-    
+
     PS4Controller: "ps4",
     CommunityPS4:  "ps4",
-    
-    PS5Controller: "ps5",
-    
-    AppleController: "apple",
 
-    SwitchJoyConLeft:  "switch joycon left",
-    SwitchJoyConRight: "switch joycon right",
+	PS5Controller: "ps5",
     
+    //Switch
     SwitchHandheld:            "switch", //Attached JoyCon pair or Switch Lite
     SwitchJoyConPair:          "switch",
     SwitchProController:       "switch",
-    SwitchInputOnlyController: "switch",
     XInputSwitchController:    "switch",
+    SwitchInputOnlyController: "switch",
     CommunityLikeSwitch:       "switch",
-    Community8BitDo:           "switch", //Same labels for 8BitDo and Switch controllers
-    
-    CommunitySaturn: "saturn",
-    
-    CommunitySNES: "snes",
-    
+    Community8BitDo:           "switch", //8BitDo are Switch gamepads (exceptions are typed appropriatiely)
+
+    SwitchJoyConLeft:  "switch joycon left",
+    SwitchJoyConRight: "switch joycon right",
+	
+    //Legacy
     CommunityGameCube: "gamecube",
+    CommunitySaturn:   "saturn",
+    CommunitySNES:     "snes",
+
+    //CommunityOuya:   "ouya", //Retiring Ouya as a simple type (now "unknown"), remains identifiable by raw type
     
-    CommunityOuya: "ouya",
-    
-    CommunityStadia: "stadia",
-    
-    CommunityLuna: "luna",
-    
-    UnknownNonSteamController: "unknown",
     Unknown: "unknown",
     unknown: "unknown",
+    UnknownNonSteamController: "unknown"
 }
 
 function __input_gamepad_set_type()
