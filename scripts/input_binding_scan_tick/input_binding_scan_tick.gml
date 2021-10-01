@@ -120,6 +120,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
                 var _new_binding = undefined;
                 var _binding_source = INPUT_SOURCE.NONE;
                 var _keyboard_key = __input_keyboard_key();
+                var _mouse_button = __input_mouse_button();
                 
                 #region Listeners
                 
@@ -142,13 +143,13 @@ function input_binding_scan_tick(_source, _player_index = 0)
                         if ((ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z"))) _new_binding.set_label(_keychar);
                     }
                 }
-                else if (global.__input_mouse_valid && (__input_mouse_button() != mb_none) 
-                     && (!__INPUT_TOUCH_SUPPORT || (__input_mouse_button() != mb_left)))
+                else if (global.__input_mouse_valid && !global.__input_mouse_blocked && (_mouse_button != mb_none) 
+                     && (!__INPUT_TOUCH_SUPPORT || (_mouse_button != mb_left)))
                 {
                     //Mouse buttons
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
                     _new_binding = new __input_class_binding();
-                    _new_binding.set_mouse_button(__input_mouse_button());
+                    _new_binding.set_mouse_button(_mouse_button);
                     _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
                 }
                 else if (global.__input_mouse_valid && mouse_wheel_up())

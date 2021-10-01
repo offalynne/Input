@@ -13,7 +13,6 @@
 
 #macro __INPUT_ON_WEB      ((os_browser != browser_not_a_browser) || global.__input_on_operagx)
 
-#macro __INPUT_POINTER_SUPPORT  (!__INPUT_ON_XDK)
 #macro __INPUT_KEYBOARD_SUPPORT (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch) || (os_type == os_uwp) || (os_type == os_android))
 #macro __INPUT_TOUCH_SUPPORT    (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch) || ((os_type == os_uwp) && uwp_device_touchscreen_available()))
 
@@ -130,7 +129,7 @@ global.__input_mouse_valid    = false;
 global.__input_gamepad_valid  = false;
 
 //Disallow mouse bindings on unsupported platforms (unless explicitly enabled)
-global.__input_mouse_blocked = (!__INPUT_POINTER_SUPPORT || (__INPUT_TOUCH_SUPPORT && !INPUT_TOUCH_POINTER_ALLOWED));
+global.__input_mouse_blocked = (__INPUT_ON_PS || __INPUT_ON_XDK || (__INPUT_TOUCH_SUPPORT && !INPUT_TOUCH_POINTER_ALLOWED));
 
 //Whether to swap A/B gamepad buttons for default bindings
 global.__input_swap_ab = false;

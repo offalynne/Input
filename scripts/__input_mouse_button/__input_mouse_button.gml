@@ -1,5 +1,5 @@
 function __input_mouse_button()
-{    
+{
     //Respect block
     if (global.__input_mouse_blocked)
     {
@@ -7,7 +7,7 @@ function __input_mouse_button()
     }
     
     //Built-in variable where it reports correctly
-    if (__INPUT_ON_DESKTOP && (!__INPUT_ON_WEB))
+    if (__INPUT_ON_DESKTOP && !__INPUT_ON_WEB)
     {
         return (mouse_button ? mouse_button : global.__input_tap_click);
     }

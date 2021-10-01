@@ -1,13 +1,14 @@
 /// @param binding
 function input_mouse_check_released(_binding)
-{
-    if (global.__input_mouse_blocked) 
+{    
+    if (global.__input_mouse_blocked && !(__INPUT_ON_PS && INPUT_TOUCH_POINTER_ALLOWED)) 
     {
         return false;
     }
     
     if (__INPUT_TOUCH_SUPPORT)
     {
+        //Extended buttons only report on first index
         var _extended_release = (device_mouse_check_button_released(0, mb_any) && !device_mouse_check_button_released(0, mb_left));
             
         switch (_binding)

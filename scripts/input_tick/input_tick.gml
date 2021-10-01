@@ -15,8 +15,8 @@ function input_tick()
             if (_gamepad >= 0 && _gamepad < 4)
             {
                 global.__input_pointer_index = _gamepad * 2;
-                global.__input_pointer_pressed  = device_mouse_check_button_pressed( _gamepad * 2, mb_left);
-                global.__input_pointer_released = device_mouse_check_button_released(_gamepad * 2, mb_left);
+                global.__input_pointer_pressed  = gamepad_button_check_pressed(_gamepad, gp_select);
+                global.__input_pointer_released = gamepad_button_check_released(_gamepad, gp_select);
             }
         }
         else
@@ -96,7 +96,7 @@ function input_tick()
     var _mouse_x = 0;
     var _mouse_y = 0;
     
-    switch(INPUT_MOUSE_MODE)
+    switch (INPUT_MOUSE_MODE)
     {
         case 0:
             _mouse_x = device_mouse_x(global.__input_pointer_index);
@@ -122,11 +122,10 @@ function input_tick()
     global.__input_mouse_x = _mouse_x;
     global.__input_mouse_y = _mouse_y;
     
-    //Track Window focus loss and regain (focused when true or undefined)
+    //Track Window focus
     global.__input_window_focus_previous = global.__input_window_focus;
     global.__input_window_focus = (window_has_focus() != false);
     
-    //Handle mouse button blocking on window focus change
     if (__INPUT_ON_DESKTOP && global.__input_window_focus)
     {
         if (!global.__input_window_focus_previous)
@@ -136,23 +135,11 @@ function input_tick()
         }
         else
         {
-            //Reevaluate mouse block if focus is sustained
             if (global.__input_mouse_blocked)
             {
-                var _retain_block = false;
-                var _i = mb_left;
-                repeat(mb_side2)
-                {
-                    if (device_mouse_check_button(0, _i))
-                    {
-                        _retain_block = true;
-                        break;
-                    }
-                    
-                    ++_i;
-                }
-                
-                global.__input_mouse_blocked = _retain_block;
+                //Reevaluate mouse block if focus is sustained
+                global.__input_mouse_blocked = false;
+                global.__input_mouse_blocked = (__input_mouse_button() != mb_none);
             }
         }
     }

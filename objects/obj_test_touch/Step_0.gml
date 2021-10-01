@@ -2,7 +2,7 @@ input_tick();
 input_hotswap_tick();
 
 //Release
-var _released = input_mouse_check_released(mb_left)
+var _released = input_mouse_check_released(mb_left);
 if (_released || input_mouse_check(mb_none))
 {
     //Active
