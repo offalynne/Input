@@ -124,7 +124,15 @@ function __input_gamepad_set_type()
             {
                 //Guess the raw type of controller we have based on its description
                 guessed_type = true;
-                __input_trace("Warning! VID+PID \"", vendor + product, "\" not found in raw type database. Guessing controller type based on description = \"", description, "\"");
+                
+                if (vendor + product == "")
+                {
+                    __input_trace("Warning! VID+PID not found. Guessing controller type based on description = \"", description, "\"");
+                }
+                else
+                {
+                    __input_trace("Warning! VID+PID \"", vendor + product, "\" not found in raw type database. Guessing controller type based on description = \"", description, "\"");
+                }
                 
                 var _desc = string_lower(description);
                 if (string_count("8bitdo", _desc))
