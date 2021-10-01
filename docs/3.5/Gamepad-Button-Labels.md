@@ -16,10 +16,8 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 | Gamepad type             | face south, east, west, north |  shoulder l, r    |  trigger l, r      |  select, start           |
 |:-------------------------|:-----------------------------:|:-----------------:|:------------------:|:------------------------:|
-|  `"xbox 360"`, `"steam"` | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![Back Start][xb_meta]   |
+|  `"xbox 360"`,           | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![Back Start][xb_meta]   |
 |  `"xbox one"`            | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![View Menu][xo_meta]    |
-|  `"luna"`                | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![Action Menu][lu_meta]  |
-|  `"stadia"`              | ![A B X Y][xb_face]           | ![L1 R1][ps_shld] | ![L2 R2][ps_trggr] | ![Options Menu][st_meta] |
 
 ?> Xbox Series S and X gamepads are considered Xbox One type on all platforms.
 
@@ -47,12 +45,10 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 &nbsp;
 
-## Nintendo
+## Switch
 
 | Gamepad type | face south, east, west, north |  shoulder l, r       |  trigger l, r       |  select, start           |
 |:-------------|:-----------------------------:|:--------------------:|:-------------------:|:------------------------:|
-| `"snes"`     | ![B A Y X][nin_face]          | ![L R][nin_shld]     | *N/A*               | ![Sel St][sfc_meta]      |
-| `"gamecube"` | ![A X B Y][gc_face]           | *N/A*, ![Z][gc_shld] | ![L R][gc_trggr]    | *N/A*, ![Start][gc_start]|
 | `"switch"`   | ![B A Y X][nin_face]          | ![L R][nin_shld]     | ![ZL ZR][nin_trggr] | ![- +][nin_meta]         |
 
 ?> Switch Lite controls, Pro Controllers and unified pairs of JoyCons (held or docked) are considered the same on and off the Switch target platform, identified by the `"switch"` type.
@@ -72,11 +68,11 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 ## Miscellaneous
 
-| Gamepad type | face south, east, west, north |  shoulder l, r   |  trigger l, r      |  start              |
-|:-------------|:-----------------------------:|:----------------:|:------------------:|:-------------------:|
-| `"saturn"`   | ![A B X Y][xb_face]           | ![L Z][sat_shld] | ![R C][sat_trggr]  | ![Start][sat_start] |
-| `"ouya"`     | ![O A U Y][oy_face]           | ![L1 R1][oy_shld]| ![L2 R2][oy_trggr] | ![Start][oy_start]  |
-| `"apple"`    | ![A B X Y][xb_face]           | ![L1 R1][ps_shld]| ![L2 R2][ps_trggr] | ![Pause][ap_start]  |
+| Gamepad type | face south, east, west, north |  shoulder l, r       |  trigger l, r      |  select, start             |
+|:-------------|:-----------------------------:|:--------------------:|:------------------:|:--------------------------:|
+| `"snes"`     | ![B A Y X][nin_face]          | ![L R][nin_shld]     | *N/A*              | ![Sel St][sfc_meta]        |
+| `"saturn"`   | ![A B X Y][xb_face]           | ![L Z][sat_shld]     | ![R C][sat_trggr]  | *N/A*, ![Start][sat_start] |
+| `"gamecube"` | ![A X B Y][gc_face]           | *N/A*, ![Z][gc_shld] | ![L R][gc_trggr]   | *N/A*, ![Start][gc_start]  |
 
 &nbsp;
 
@@ -94,8 +90,6 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 [ps4_meta]: https://i.imgur.com/3u6CDEl.png
 [ps5_meta]: https://i.imgur.com/7k8dZJI.png
 [xo_meta]: https://i.imgur.com/YFmYk3A.png
-[st_meta]: https://i.imgur.com/e1q0Phl.png
-[lu_meta]: https://i.imgur.com/UEbKUhP.png
 [ps3_meta]: https://i.imgur.com/MPT3cmA.png
 [nin_face]: https://i.imgur.com/OZhHN2h.png
 [nin_shld]: https://i.imgur.com/hMP8Esy.png
@@ -107,11 +101,6 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 [gc_start]: https://i.imgur.com/mvuPfLv.png
 [sat_shld]: https://i.imgur.com/RMb1tVb.png
 [sat_trggr]: https://i.imgur.com/gH6IdMN.png
-[ap_start]: https://i.imgur.com/SqQJdSB.png
-[oy_face]: https://i.imgur.com/dMBObGo.png
-[oy_shld]: https://i.imgur.com/vNeFqhp.png
-[oy_trggr]: https://i.imgur.com/vlUPSQg.png
-[oy_start]: https://i.imgur.com/V6hnmz5.png
 [jc_face]: https://i.imgur.com/zA8Dyj8.png
 [jc_shld]: https://i.imgur.com/jCs47Mj.png
 [jcl_meta]: https://i.imgur.com/fkWIGk7.png
