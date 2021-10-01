@@ -119,13 +119,13 @@ The following are valid strings that this function may return:
 
 This function will return one of the following:
 
-|Results        |Gamepad type                                    |Presentation example |
-|---------------|------------------------------------------------|:-------------------:|
-|`"disc"`       |Xbox 360, Steam Controller, Ouya, Saturn        |<img alt="Disc art example" width="150" src="https://i.imgur.com/IO0DjVQ.png">|
+|Results        |Gamepad type                                    |Presentation example                                                              |
+|---------------|------------------------------------------------|:--------------------------------------------------------------------------------:|
+|`"disc"`       |Xbox 360, Steam Controller, Saturn              |<img alt="Disc art example" width="150" src="https://i.imgur.com/IO0DjVQ.png">    |
 |`"segments"`   |PlayStation                                     |<img alt="Segments art example" width="150" src="https://i.imgur.com/Lmaya8O.png">|
-|`"arrows"`     |Switch (handheld, Pro Controller, dual Joy-Cons)|<img alt="Arrows art example" width="150" src="https://i.imgur.com/V9qOstK.png">|
-|`"none"`       |Switch (single Joy-Con)                         |*N/A*|
-|`"cross"`      |Default                                         |<img alt="Cross art example" width="150" src="https://i.imgur.com/b7f8Gnj.png">|
+|`"arrows"`     |Switch (handheld, Pro Controller, dual Joy-Cons)|<img alt="Arrows art example" width="150" src="https://i.imgur.com/V9qOstK.png">  |
+|`"none"`       |Switch (single Joy-Con)                         |*N/A*                                                                             |
+|`"cross"`      |Default                                         |<img alt="Cross art example" width="150" src="https://i.imgur.com/b7f8Gnj.png">   |
 
 *Example art courtesy https://thoseawesomeguys.com/prompts, CC0*
 
