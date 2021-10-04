@@ -293,6 +293,8 @@ dead,beef,CommunityPSX // Hidromancer
 0925,1801,CommunityPSX // PS3 Adapter
 0925,8800,CommunityPSX // PS2 Adapter
 0925,8868,CommunityPSX // PS2 Adapter
+22ba,0107,CommunityPSX // Technology Innovation PS2 Adapter
+0b43,0003,CommunityPSX // EMS Production PS2 Adapter
 0e8f,0000,CommunityPSX // Unknown PSX
 0e8f,0003,CommunityPSX // Unknown PSX
 0e8f,1009,CommunityPSX // Unknown PSX
