@@ -11,7 +11,7 @@ function __input_gamepad_set_description()
         //Non-XInput controller return an empty string for their description on UWP
         description = "Unknown UWP Controller";
     }
-    else if (__INPUT_ON_OPERAFX)
+    else if (__INPUT_ON_OPERAGX)
     {
         //FIXME - As of 2021-10-01 (runtime 2.3.5.458), Opera GX descriptions return useless information (usually "Standard Gamepad")
         //        It turns out that the GUID is actually a hex-encoded string of the first few characters of the device's name
