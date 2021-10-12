@@ -8,7 +8,7 @@ function __input_gamepad_set_vid_pid()
         product = "";
         xinput  = undefined;
         
-        if (__INPUT_ON_OPERAFX)
+        if (__INPUT_ON_OPERAGX)
         {
             //FIXME - As of 2021-10-01 (runtime 2.3.5.458), Opera GX GUIDs don't give us a VID/PID at all
         }
