@@ -29,11 +29,11 @@ function __input_keyboard_key()
                 if (keyboard_check(ord(keyboard_lastchar))) return ord(keyboard_lastchar);
                 
                 //Switch control
-                var _i = 255;
-                repeat(254)
+                var _i = 254;
+                repeat(248)
                 {
                     if (keyboard_check(_i)) return _i;
-                    _i--;
+                    --_i;
                 }
                 return 0;
             break;

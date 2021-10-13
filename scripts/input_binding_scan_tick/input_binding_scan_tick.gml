@@ -124,7 +124,9 @@ function input_binding_scan_tick(_source, _player_index = 0)
                 
                 #region Listeners
                 
-                if (global.__input_keyboard_valid && (_keyboard_key > 0) && !__input_key_is_ignored(_keyboard_key))
+                if (global.__input_keyboard_valid 
+                && (_keyboard_key > 7) && (_keyboard_key < 57344)
+                && !__input_key_is_ignored(_keyboard_key))
                 {
                     //Keyboard
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
