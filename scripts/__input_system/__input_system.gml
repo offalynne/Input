@@ -85,6 +85,9 @@ __input_trace("Welcome to Input by @jujuadams and @offalynne! This is version ",
 //Global frame counter. This is used for input buffering
 global.__input_frame = 0;
 
+//Minimum hold value for verb
+global.__input_hold_threshold = 0.2;
+
 //Mouse tracking variables. These are used to detect when the mouse has moved
 global.__input_mouse_x     = 0;
 global.__input_mouse_y     = 0;
