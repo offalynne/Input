@@ -19,7 +19,7 @@ function input_bindings_copy(_player_index_s, _player_index_d)
         
         if (_player_index_s >= INPUT_MAX_PLAYERS)
         {
-            __input_error("Source player index too large (", _player_index_s, " vs. ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
+            __input_error("Source player index too large (", _player_index_s, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
             return undefined;
         }
     }
@@ -40,19 +40,21 @@ function input_bindings_copy(_player_index_s, _player_index_d)
         
         if (_player_index_d >= INPUT_MAX_PLAYERS)
         {
-            __input_error("Destination player index too large (", _player_index_d, " vs. ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
+            __input_error("Destination player index too large (", _player_index_d, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
             return undefined;
         }
     }
     
     with(_player_d)
     {
-        sources = array_create(INPUT_SOURCE.__SIZE, undefined);
+        sources = array_create(array_length(global.__input_config_category_names), undefined);
         
         var _source = 0;
-        repeat(INPUT_SOURCE.__SIZE)
+        repeat(array_length(global.__input_config_category_names))
         {
-            var _source_verb_struct = variable_struct_get(_player_s.config, global.__input_source_names[_source]);
+            var _config_category = global.__input_config_category_names[_source];
+            
+            var _source_verb_struct = _player_s.config[$ _config_category];
             if (is_struct(_source_verb_struct))
             {
                 var _verb_names = variable_struct_get_names(_source_verb_struct);
@@ -60,14 +62,14 @@ function input_bindings_copy(_player_index_s, _player_index_d)
                 repeat(array_length(_verb_names))
                 {
                     var _verb = _verb_names[_v];
-                    var _alternate_array = variable_struct_get(_source_verb_struct, _verb);
+                    var _alternate_array = _source_verb_struct[$ _verb];
                     if (is_array(_alternate_array))
                     {
                         var _alternate = 0;
                         repeat(array_length(_alternate_array))
                         {
                             var _binding = _alternate_array[_alternate];
-                            if (is_struct(_binding)) set_binding(_source, _verb, _alternate, __input_binding_duplicate(_binding));
+                            if (is_struct(_binding)) set_binding(_config_category, _verb, _alternate, __input_binding_duplicate(_binding));
                             ++_alternate;
                         }
                     }

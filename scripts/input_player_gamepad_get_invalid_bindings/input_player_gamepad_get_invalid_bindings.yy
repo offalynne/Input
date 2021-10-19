@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Deprecated",
-    "path": "folders/Input/(System)/Deprecated.yy",
+    "name": "Players",
+    "path": "folders/Input/Players.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_rebind_undo_legacy",
+  "name": "input_player_gamepad_get_invalid_bindings",
   "tags": [],
   "resourceType": "GMScript",
 }

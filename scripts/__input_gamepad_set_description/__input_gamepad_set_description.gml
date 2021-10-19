@@ -2,7 +2,7 @@
 
 function __input_gamepad_set_description()
 {
-    if (xinput || os_type == os_xboxone || os_type == os_xboxseriesxs)
+    if (xinput || __INPUT_ON_XDK)
     {
         description = "XInput";
     }
@@ -10,6 +10,29 @@ function __input_gamepad_set_description()
     {
         //Non-XInput controller return an empty string for their description on UWP
         description = "Unknown UWP Controller";
+    }
+    else if (__INPUT_ON_OPERAGX)
+    {
+        //FIXME - As of 2021-10-01 (runtime 2.3.5.458), Opera GX descriptions return useless information (usually "Standard Gamepad")
+        //        It turns out that the GUID is actually a hex-encoded string of the first few characters of the device's name
+        //        This... feels like a bug, but we can at least use that to recover a *little* information about the device
+        
+        description = "";
+        
+        var _work_string = gamepad_get_guid(index);
+        var _i = 1;
+        repeat(string_length(_work_string) div 2)
+        {
+            var _ord_msf = string_byte_at(_work_string, _i  );
+            var _ord_lsf = string_byte_at(_work_string, _i+1);
+            
+            var _value = (((_ord_msf >= 97)? (_ord_msf - 87) : (_ord_msf - 48)) << 4)
+                        | ((_ord_lsf >= 97)? (_ord_lsf - 87) : (_ord_lsf - 48));
+            
+            description += chr(_value);
+            
+            _i += 2;
+        }
     }
     else if (!__INPUT_SDL2_SUPPORT)
     {

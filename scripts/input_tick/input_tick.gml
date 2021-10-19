@@ -4,26 +4,113 @@ function input_tick()
     
     global.__input_frame++;
     
+    #region Touch
+    
+    if (__INPUT_TOUCH_SUPPORT && INPUT_TOUCH_POINTER_ALLOWED)
+    {
+        if (__INPUT_ON_PS)
+        {
+            //Use first touch (of 2) on active PlayStation gamepad
+            var _gamepad = input_player_gamepad_get();
+            if (_gamepad >= 0 && _gamepad < 4)
+            {
+                global.__input_pointer_index = _gamepad * 2;
+                global.__input_pointer_pressed  = gamepad_button_check_pressed(_gamepad, gp_select);
+                global.__input_pointer_released = gamepad_button_check_released(_gamepad, gp_select);
+            }
+        }
+        else
+        {
+            var _touch_index = undefined;
+            var _touch_press_index = global.__input_pointer_pressed_index;
+    
+            //Track contact duration per index
+            var _i = 0;
+            repeat(INPUT_MAX_TOUCHPOINTS)
+            {
+                if (!device_mouse_check_button(_i, mb_left))
+                {
+                    global.__input_pointer_durations[_i] = 0;
+                }
+                else
+                {
+                    //Get recent active touch
+                    global.__input_pointer_durations[_i] += delta_time;
+                    if (_touch_index == undefined || (global.__input_pointer_durations[_i] < global.__input_pointer_durations[_touch_index]))
+                    {
+                        _touch_index = _i;
+                    }
+                }
+    
+                _i++;
+            }
+        
+            //Set active pointer index
+            if (_touch_index == undefined) _touch_index = 0;
+            global.__input_pointer_pressed = device_mouse_check_button_pressed(_touch_index, mb_left);
+            global.__input_pointer_released = (device_mouse_check_button_released(_touch_press_index, mb_left) && (_touch_press_index != undefined));
+
+            //Touch edge testing
+            var _w = display_get_gui_width();
+            var _h = display_get_gui_height();
+            if (INPUT_TOUCH_EDGE_DEADZONE > 0)
+            {
+                //Release
+                if (global.__input_pointer_released)
+                {
+                    var _tx  = device_mouse_x_to_gui(_touch_press_index);
+                    var _ty  = device_mouse_y_to_gui(_touch_press_index);
+    
+                    if ((_tx < INPUT_TOUCH_EDGE_DEADZONE) || (_tx > (_w - INPUT_TOUCH_EDGE_DEADZONE))
+                    ||  (_ty < INPUT_TOUCH_EDGE_DEADZONE) || (_ty > (_h - INPUT_TOUCH_EDGE_DEADZONE)))
+                    {
+                        global.__input_pointer_released = false;
+                    }
+                }
+        
+                //Press
+                if (global.__input_pointer_pressed)
+                {
+                    var _tx  = device_mouse_x_to_gui(_touch_index);
+                    var _ty  = device_mouse_y_to_gui(_touch_index);
+
+                    if ((_tx < INPUT_TOUCH_EDGE_DEADZONE) || (_tx > (_w - INPUT_TOUCH_EDGE_DEADZONE))
+                    ||  (_ty < INPUT_TOUCH_EDGE_DEADZONE) || (_ty > (_h - INPUT_TOUCH_EDGE_DEADZONE)))
+                    {
+                        global.__input_pointer_pressed = false;
+                    }
+                }
+            }
+    
+            //Update state
+            global.__input_pointer_index = _touch_index;
+            if (global.__input_pointer_pressed)  global.__input_pointer_pressed_index = _touch_index;
+            if (global.__input_pointer_released) global.__input_pointer_pressed_index = undefined;
+        }
+    }
+    
+    #endregion
+    
     #region Mouse
     
     var _mouse_x = 0;
     var _mouse_y = 0;
     
-    switch(INPUT_MOUSE_MODE)
+    switch (INPUT_MOUSE_MODE)
     {
         case 0:
-            _mouse_x = device_mouse_x(0);
-            _mouse_y = device_mouse_y(0);
+            _mouse_x = device_mouse_x(global.__input_pointer_index);
+            _mouse_y = device_mouse_y(global.__input_pointer_index);
         break;
         
         case 1:
-            _mouse_x = device_mouse_x_to_gui(0);
-            _mouse_y = device_mouse_y_to_gui(0);
+            _mouse_x = device_mouse_x_to_gui(global.__input_pointer_index);
+            _mouse_y = device_mouse_y_to_gui(global.__input_pointer_index);
         break;
         
         case 2:
-            _mouse_x = device_mouse_raw_x(0);
-            _mouse_y = device_mouse_raw_y(0);
+            _mouse_x = device_mouse_raw_x(global.__input_pointer_index);
+            _mouse_y = device_mouse_raw_y(global.__input_pointer_index);
         break;
         
         default:
@@ -34,6 +121,28 @@ function input_tick()
     global.__input_mouse_moved = (point_distance(_mouse_x, _mouse_y, global.__input_mouse_x, global.__input_mouse_y) > INPUT_MOUSE_MOVE_DEADZONE);
     global.__input_mouse_x = _mouse_x;
     global.__input_mouse_y = _mouse_y;
+    
+    //Track Window focus
+    global.__input_window_focus_previous = global.__input_window_focus;
+    global.__input_window_focus = (window_has_focus() != false);
+    
+    if (__INPUT_ON_DESKTOP && global.__input_window_focus)
+    {
+        if (!global.__input_window_focus_previous)
+        {
+            //Block mouse buttons on focus regain
+            global.__input_mouse_blocked = true;
+        }
+        else
+        {
+            if (global.__input_mouse_blocked)
+            {
+                //Reevaluate mouse block if focus is sustained
+                global.__input_mouse_blocked = false;
+                global.__input_mouse_blocked = (__input_mouse_button() != mb_none);
+            }
+        }
+    }
     
     //Windows mouse extensions
     global.__input_tap_click = false;

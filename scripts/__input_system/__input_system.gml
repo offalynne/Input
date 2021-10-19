@@ -1,17 +1,26 @@
-#macro __INPUT_VERSION "3.4.1"
-#macro __INPUT_DATE    "2021-09-07"
+#macro __INPUT_VERSION "3.5.0"
+#macro __INPUT_DATE    "2021-10-19"
 #macro __INPUT_DEBUG   false
 
-#macro __INPUT_ON_CONSOLE   ((os_type == os_switch)  || (os_type == os_ps4)   || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
-#macro __INPUT_ON_DESKTOP   ((os_type == os_macosx)  || (os_type == os_linux) || (os_type == os_windows))
-#macro __INPUT_ON_APPLE     ((os_type == os_macosx)  || (os_type == os_ios)   || (os_type == os_tvos))
-#macro __INPUT_ON_MOBILE    ((os_type == os_android) || (os_type == os_ios)   || (os_type == os_tvos))
-#macro __INPUT_ON_WEB       (os_browser != browser_not_a_browser)
 
-#macro __INPUT_SDL2_SUPPORT     ((__INPUT_ON_DESKTOP || (os_type == os_android)) && !__INPUT_ON_WEB)
-#macro __INPUT_KEYBOARD_SUPPORT (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_uwp) || (os_type == os_android) || (os_type == os_switch))
+#macro __INPUT_ON_PS       ((os_type == os_ps4)     || (os_type == os_ps5))
+#macro __INPUT_ON_XDK      ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
+#macro __INPUT_ON_CONSOLE  (__INPUT_ON_XDK || __INPUT_ON_PS || (os_type == os_switch))
+
+#macro __INPUT_ON_DESKTOP  ((os_type == os_macosx)  || (os_type == os_linux) || (os_type == os_windows))
+#macro __INPUT_ON_APPLE    ((os_type == os_macosx)  || (os_type == os_ios)   || (os_type == os_tvos))
+#macro __INPUT_ON_MOBILE   ((os_type == os_android) || (os_type == os_ios)   || (os_type == os_tvos))
+
+#macro __INPUT_ON_OPERAGX  (os_type == os_operagx)
+#macro __INPUT_ON_WEB      ((os_browser != browser_not_a_browser) || __INPUT_ON_OPERAGX)
+
+#macro __INPUT_KEYBOARD_SUPPORT (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch) || (os_type == os_uwp) || (os_type == os_android))
+#macro __INPUT_TOUCH_SUPPORT    (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch) || ((os_type == os_uwp) && uwp_device_touchscreen_available()))
+
+#macro __INPUT_SDL2_SUPPORT     (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || (os_type == os_android)))
 
 #macro __INPUT_KEYBOARD_STRING_MAX_LENGTH  1000
+#macro __INPUT_HOLD_THRESHOLD  0.2 //Minimum value from an axis for that axis to be considered activated at the gamepad layer. This is *not* the same as min/max thresholds for players
 
 //Extra constants
 #macro gp_guide    32789
@@ -82,10 +91,20 @@ global.__input_mouse_x     = 0;
 global.__input_mouse_y     = 0;
 global.__input_mouse_moved = false;
 
+//Windows focus tracking
+global.__input_window_focus = true;
+
 //Windows tap-to-click tracking
 global.__input_tap_presses  = 0;
 global.__input_tap_releases = 0;
 global.__input_tap_click    = false;
+
+//Touch pointer tracking
+global.__input_pointer_index         = 0;
+global.__input_pointer_pressed       = false;
+global.__input_pointer_released      = false;
+global.__input_pointer_pressed_index = undefined;
+global.__input_pointer_durations     = array_create(INPUT_MAX_TOUCHPOINTS, 0);
 
 //Cursor tracking variables. This is Input's abstraction layer for the mouse, allowing mouse-like functionality cross-platform
 global.__input_cursor_verb_u      = undefined;
@@ -108,6 +127,9 @@ global.__input_keyboard_valid = false;
 global.__input_mouse_valid    = false;
 global.__input_gamepad_valid  = false;
 
+//Disallow mouse bindings on unsupported platforms (unless explicitly enabled)
+global.__input_mouse_blocked = (__INPUT_ON_PS || __INPUT_ON_XDK || (__INPUT_TOUCH_SUPPORT && !INPUT_TOUCH_POINTER_ALLOWED));
+
 //Whether to swap A/B gamepad buttons for default bindings
 global.__input_swap_ab = false;
 
@@ -118,7 +140,10 @@ global.__input_history_include = {};
 global.__input_ignore_key_dict = {};
 
 //Names for sources. I suspect this'll get sliced out at some point when I start recoding the binding system to serialise per controller type
-global.__input_source_names = ["none", "keyboard and mouse", "gamepad"];
+global.__input_config_category_names = ["none",               //INPUT_SOURCE.NONE
+                                        "keyboard and mouse", //INPUT_SOURCE.KEYBOARD_AND_MOUSE
+                                        "gamepad",            //INPUT_SOURCE.GAMEPAD
+                                        "joycon"];
 
 //Array of players. Each player is a struct (instanceof __input_class_player) that contains lotsa juicy information
 global.__input_players = array_create(INPUT_MAX_PLAYERS, undefined);
@@ -324,7 +349,12 @@ function __input_binding_duplicate(_source)
 {
     with(_source)
     {
-        return new __input_class_binding(type, value, axis_negative, label);
+        var _binding = new __input_class_binding();
+        _binding.type          = type;
+        _binding.value         = value;
+        _binding.axis_negative = axis_negative;
+        _binding.label         = label;
+        if (variable_struct_exists(self, "android_lowercase")) _binding.android_lowercase = android_lowercase;
     }
 }
 

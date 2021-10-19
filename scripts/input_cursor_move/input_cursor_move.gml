@@ -15,7 +15,7 @@ function input_cursor_move(_target_x, _target_y, _max_speed = -1, _player_index 
     
     if (_player_index >= INPUT_MAX_PLAYERS)
     {
-        __input_error("Player index too large (", _player_index, " vs. ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
+        __input_error("Player index too large (", _player_index, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
         return undefined;
     }
     

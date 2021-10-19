@@ -11,7 +11,7 @@ function input_binding_get_collisions(_src_binding, _player_index = 0)
     
     if (_player_index >= INPUT_MAX_PLAYERS)
     {
-        __input_error("Player index too large (", _player_index, " vs. ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
+        __input_error("Player index too large (", _player_index, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
         return undefined;
     }
     
@@ -25,10 +25,7 @@ function input_binding_get_collisions(_src_binding, _player_index = 0)
     
     with(global.__input_players[_player_index])
     {
-        var _source = __input_binding_get_source(_src_binding)
-        
-        var _source_name = global.__input_source_names[_source];
-        var _source_verb_struct = variable_struct_get(config, _source_name);
+        var _source_verb_struct = config[$ get_binding_config_category(_src_binding)];
         if (is_struct(_source_verb_struct))
         {
             var _verb_names = variable_struct_get_names(_source_verb_struct);
@@ -37,7 +34,7 @@ function input_binding_get_collisions(_src_binding, _player_index = 0)
             {
                 var _verb = _verb_names[_v];
                 
-                var _alternate_array = variable_struct_get(_source_verb_struct, _verb);
+                var _alternate_array = _source_verb_struct[$ _verb];
                 var _a = 0;
                 repeat(array_length(_alternate_array))
                 {
@@ -48,7 +45,7 @@ function input_binding_get_collisions(_src_binding, _player_index = 0)
                         &&  (_binding.value         == _src_binding.value)
                         &&  (_binding.axis_negative == _src_binding.axis_negative))
                         {
-                            array_push(_output_array, {verb: _verb, alternate: _a});
+                            array_push(_output_array, { verb: _verb, alternate: _a });
                         }
                     }
                     

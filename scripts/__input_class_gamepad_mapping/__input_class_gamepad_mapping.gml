@@ -65,15 +65,14 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
             break;
         }
         
-        if (limit_range)  value = 2*value - 1;
-        if (extend_range) value = 0.5 + 0.5*value;
+        if (limit_range)    value = 2*value - 1;
+        if (extend_range)   value = 0.5 + 0.5*value;
         if (clamp_negative) value = clamp(value, -1, 0);
         if (clamp_positive) value = clamp(value,  0, 1);
-        if (invert) value = 1 - value;
-        if (reverse) value = -value;
+        if (invert)         value = 1 - value;
+        if (reverse)        value = -value;
         
-        //FIXME - This magic number should be a macro
-        held = (abs(value) > 0.2);
+        held = (abs(value) > __INPUT_HOLD_THRESHOLD);
         
         if (held_previous != held)
         {

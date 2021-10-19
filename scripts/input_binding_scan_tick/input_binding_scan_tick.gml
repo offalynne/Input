@@ -28,7 +28,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
     
     if (_player_index >= INPUT_MAX_PLAYERS)
     {
-        __input_error("Player index too large (", _player_index, " vs. ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
+        __input_error("Player index too large (", _player_index, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
         return undefined;
     }
     
@@ -120,10 +120,13 @@ function input_binding_scan_tick(_source, _player_index = 0)
                 var _new_binding = undefined;
                 var _binding_source = INPUT_SOURCE.NONE;
                 var _keyboard_key = __input_keyboard_key();
+                var _mouse_button = __input_mouse_button();
                 
                 #region Listeners
                 
-                if ((_keyboard_key > 0) && !__input_key_is_ignored(_keyboard_key))
+                if (global.__input_keyboard_valid 
+                && (_keyboard_key > 7) && (_keyboard_key < 57344)
+                && !__input_key_is_ignored(_keyboard_key))
                 {
                     //Keyboard
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
@@ -142,15 +145,16 @@ function input_binding_scan_tick(_source, _player_index = 0)
                         if ((ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z"))) _new_binding.set_label(_keychar);
                     }
                 }
-                else if (__input_mouse_button() > 0)
+                else if (global.__input_mouse_valid && !global.__input_mouse_blocked && (_mouse_button != mb_none) 
+                     && (!__INPUT_TOUCH_SUPPORT || (_mouse_button != mb_left)))
                 {
                     //Mouse buttons
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
                     _new_binding = new __input_class_binding();
-                    _new_binding.set_mouse_button(__input_mouse_button());
+                    _new_binding.set_mouse_button(_mouse_button);
                     _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
                 }
-                else if (mouse_wheel_up())
+                else if (global.__input_mouse_valid && mouse_wheel_up())
                 {
                     //Mouse wheel up
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
@@ -158,7 +162,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
                     _new_binding.set_mouse_wheel_up();
                     _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
                 }
-                else if (mouse_wheel_down())
+                else if (global.__input_mouse_valid && mouse_wheel_down())
                 {
                     //Mouse wheel down
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
@@ -166,7 +170,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
                     _new_binding.set_mouse_wheel_down();
                     _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
                 }
-                else
+                else if (global.__input_gamepad_valid)
                 {
                     //Gamepad buttons and axes
                     var _check_array = [gp_face1, gp_face2, gp_face3, gp_face4, 

@@ -10,7 +10,7 @@ function input_bindings_write(_player_index = all)
     
     if (_player_index >= INPUT_MAX_PLAYERS)
     {
-        __input_error("Player index too large (", _player_index, " vs. ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
+        __input_error("Player index too large (", _player_index, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
         return undefined;
     }
     

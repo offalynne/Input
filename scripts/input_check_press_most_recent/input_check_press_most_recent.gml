@@ -11,7 +11,7 @@ function input_check_press_most_recent(_verb_names = all, _player_index = 0)
     
     if (_player_index >= INPUT_MAX_PLAYERS)
     {
-        __input_error("Player index too large (", _player_index, " vs. ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
+        __input_error("Player index too large (", _player_index, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
         return undefined;
     }
     
@@ -24,7 +24,7 @@ function input_check_press_most_recent(_verb_names = all, _player_index = 0)
     repeat(array_length(_verb_names))
     {
         var _verb = _verb_names[_i];
-        var _verb_struct = variable_struct_get(_verbs_array, _verb);
+        var _verb_struct = _verbs_array[$ _verb];
         
         if ((_verb_struct.press_time > _max_time) && input_check(_verb, _player_index))
         {

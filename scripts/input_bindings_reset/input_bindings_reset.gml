@@ -12,13 +12,7 @@ function input_bindings_reset(_source, _player_index = all, _reset_thresholds = 
     
     if (_player_index >= INPUT_MAX_PLAYERS)
     {
-        __input_error("Player index too large (", _player_index, " vs. ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
-        return undefined;
-    }
-    
-    if (((_source < 0) || (_source >= INPUT_SOURCE.__SIZE)) && (_source != all))
-    {
-        __input_error("Source (", _source, ") not recognised\nPlease use the INPUT_SOURCE enum");
+        __input_error("Player index too large (", _player_index, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
         return undefined;
     }
     
@@ -43,22 +37,25 @@ function input_bindings_reset(_source, _player_index = all, _reset_thresholds = 
     if (_source == all)
     {
         var _i = 0;
-        repeat(INPUT_SOURCE.__SIZE)
+        repeat(array_length(global.__input_config_category_names))
         {
-            if (_i != INPUT_SOURCE.NONE) input_bindings_reset(_i, _player_index);
+            input_bindings_reset(global.__input_config_category_names[_i], _player_index);
             ++_i;
         }
         
         return undefined;
     }
     
-    __input_trace("Resetting ", input_source_get_name(_source), " bindings for player ", _player_index);
-    
     with(global.__input_players[_player_index])
     {
-        config[$ _source] = {};
+        //Convert the source enum to a config name if necessary
+        var _config_category = convert_source_enum_to_config_category(_source);
         
-        var _source_verb_struct = variable_struct_get(global.__input_default_player.config, global.__input_source_names[_source]);
+        __input_trace("Resetting ", _config_category, " bindings for player ", _player_index);
+        
+        config[$ _config_category] = {};
+        
+        var _source_verb_struct = global.__input_default_player.config[$ _config_category];
         if (is_struct(_source_verb_struct))
         {
             var _verb_names = variable_struct_get_names(_source_verb_struct);
@@ -66,14 +63,14 @@ function input_bindings_reset(_source, _player_index = all, _reset_thresholds = 
             repeat(array_length(_verb_names))
             {
                 var _verb = _verb_names[_v];
-                var _alternate_array = variable_struct_get(_source_verb_struct, _verb);
+                var _alternate_array = _source_verb_struct[$ _verb];
                 if (is_array(_alternate_array))
                 {
                     var _alternate = 0;
                     repeat(array_length(_alternate_array))
                     {
                         var _binding = _alternate_array[_alternate];
-                        if (is_struct(_binding)) set_binding(_source, _verb, _alternate, __input_binding_duplicate(_binding));
+                        if (is_struct(_binding)) set_binding(_config_category, _verb, _alternate, __input_binding_duplicate(_binding));
                         ++_alternate;
                     }
                 }

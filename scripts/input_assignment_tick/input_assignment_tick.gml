@@ -10,9 +10,9 @@ function input_assignment_tick(_min_players, _max_players, _leave_verb)
         return undefined;
     }
     
-    if (_max_players > INPUT_MAX_PLAYERS)
+    if (_max_players >= INPUT_MAX_PLAYERS)
     {
-        __input_error("Maximum player count too large (", _max_players, " vs. ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
+        __input_error("Maximum player count too large (", _max_players, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
         return undefined;
     }
     
@@ -22,9 +22,9 @@ function input_assignment_tick(_min_players, _max_players, _leave_verb)
         return undefined;
     }
     
-    if (_min_players > INPUT_MAX_PLAYERS)
+    if (_min_players >= INPUT_MAX_PLAYERS)
     {
-        __input_error("Minimum player count larger than maximum (", _min_players, " vs. ", _max_players, ")");
+        __input_error("Minimum player count larger than maximum (", _min_players, " must be less than ", _max_players, ")");
         return undefined;
     }
     

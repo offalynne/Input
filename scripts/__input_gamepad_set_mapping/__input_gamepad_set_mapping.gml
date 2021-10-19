@@ -64,7 +64,7 @@ function __input_gamepad_set_mapping()
     }
     
     //If we're on PlayStation or Xbox, don't remap anything special
-    if ((os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
+    if (__INPUT_ON_PS || __INPUT_ON_XDK)
     {
         set_mapping(gp_padu,   gp_padu,   __INPUT_MAPPING.BUTTON, "dpup");
         set_mapping(gp_padd,   gp_padd,   __INPUT_MAPPING.BUTTON, "dpdown");
@@ -104,7 +104,7 @@ function __input_gamepad_set_mapping()
         var _i = 0;
         repeat(array_length(_a))
         {
-            set_mapping(variable_struct_get(global.__input_sdl2_look_up_table, _a[_i]), 0, undefined, _a[_i]);
+            set_mapping(global.__input_sdl2_look_up_table[$ _a[_i]], 0, undefined, _a[_i]);
             _i++;
         }
 
@@ -232,7 +232,7 @@ function __input_gamepad_set_mapping()
                 }
             
                 //Find the GameMaker-native constant for this entry name e.g. gp_face1, gp_axislh
-                var _gm_constant = variable_struct_get(global.__input_sdl2_look_up_table, _entry_name);
+                var _gm_constant = global.__input_sdl2_look_up_table[$ _entry_name];
                 if (_gm_constant == undefined)
                 {
                     __input_trace("Warning! Entry name \"", _entry_name, "\" not recognised (full string was \"", _entry, "\")");

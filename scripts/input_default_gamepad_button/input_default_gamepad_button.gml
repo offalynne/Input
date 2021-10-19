@@ -28,7 +28,7 @@ function input_default_gamepad_button(_button, _verb, _alternate = 0)
     var _binding = new __input_class_binding();
     _binding.set_gamepad_button(_button);
     
-    global.__input_default_player.set_binding(INPUT_SOURCE.GAMEPAD, _verb, _alternate, _binding);
+    global.__input_default_player.set_binding("gamepad", _verb, _alternate, _binding);
     
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
@@ -37,7 +37,7 @@ function input_default_gamepad_button(_button, _verb, _alternate = 0)
         var _binding = new __input_class_binding();
         _binding.set_gamepad_button(_button);
         
-        global.__input_players[_p].set_binding(INPUT_SOURCE.GAMEPAD, _verb, _alternate, _binding);
+        global.__input_players[_p].set_binding("gamepad", _verb, _alternate, _binding);
         ++_p;
     }
 }

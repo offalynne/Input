@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Deprecated",
-    "path": "folders/Input/(System)/Deprecated.yy",
+    "name": "Gamepads (Direct)",
+    "path": "folders/Input/Gamepads (Direct).yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_rebind_tick_legacy",
+  "name": "input_gamepad_constant_get_name",
   "tags": [],
   "resourceType": "GMScript",
 }

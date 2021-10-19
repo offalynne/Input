@@ -11,7 +11,7 @@ function input_is_analogue(_verb, _player_index = 0)
     
     if (_player_index >= INPUT_MAX_PLAYERS)
     {
-        __input_error("Player index too large (", _player_index, " vs. ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
+        __input_error("Player index too large (", _player_index, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
         return undefined;
     }
     
@@ -27,7 +27,7 @@ function input_is_analogue(_verb, _player_index = 0)
         return false;
     }
     
-    var _verb_struct = variable_struct_get(global.__input_players[_player_index].verbs, _verb);
+    var _verb_struct = global.__input_players[_player_index].verbs[$ _verb];
     if (!is_struct(_verb_struct))
     {
         __input_error("Verb not recognised (", _verb, ")");
