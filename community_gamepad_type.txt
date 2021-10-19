@@ -97,6 +97,7 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 1d57,0021,CommunitySNES // SNES
 2dc8,02e0,CommunitySNES // 8BitDo N30
 289b,0002,CommunitySNES // Raphnet SNES
+4854,4d43,CommunitySNES // Ystek Micreal SNES
 1002,9000,Community8BitDo // 8BitDo FC30 Pro
 1235,ab12,Community8BitDo // 8BitDo NES30
 1235,2840,Community8BitDo // 8BitDo NES30
