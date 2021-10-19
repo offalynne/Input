@@ -98,12 +98,10 @@ The following are valid strings that this function may return:
 
 |Results              |                        |                         |
 |---------------------|------------------------|-------------------------|
-| `"unknown"`         | `"steam"`              | `"apple"`               |
-| `"ouya"`            | `"stadia" `            | `"luna"`                |
 | `"snes"`            | `"saturn"`             | `"gamecube"`            |
 | `"psx"`             | `"ps4"`                | `"ps5"`                 |
 | `"switch"`          | `"switch joycon left"` | `"switch joycon right"` |
-| `"xbox 360"`        | `"xbox one"`           |                         |
+| `"xbox 360"`        | `"xbox one"`           | `"unknown"`             |
 
 &nbsp;
 
