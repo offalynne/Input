@@ -21,7 +21,7 @@ function input_check_double(_verb, _player_index = 0, _buffer_duration = 0)
         var _i = 0;
         repeat(array_length(_verb))
         {
-            if (input_check(_verb[_i], _player_index, _buffer_duration)) return true;
+            if (input_check_double(_verb[_i], _player_index, _buffer_duration)) return true;
             ++_i;
         }
         
