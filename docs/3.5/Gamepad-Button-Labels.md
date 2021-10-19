@@ -19,7 +19,7 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 |  `"xbox 360"` | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![Back Start][xb_meta] |
 |  `"xbox one"` | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![View Menu][xo_meta]  |
 
-?> Xbox Series S and X gamepads are considered Xbox One type on all platforms.
+?> Xbox Series S|X gamepads are considered Xbox One type on all platforms. Xbox-like and XInput gamepads are categorized by their closest match, eg. the Steam Controller is considered Xbox 360 type, while Stadia is considered Xbox One type.
 
 &nbsp;
 
