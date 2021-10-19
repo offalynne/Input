@@ -98,10 +98,12 @@ The following are valid strings that this function may return:
 
 |Results              |                        |                         |
 |---------------------|------------------------|-------------------------|
+| `"unknown"`         | `"steam"`              | `"apple"`               |
+| `"ouya"`            | `"stadia" `            | `"luna"`                |
 | `"snes"`            | `"saturn"`             | `"gamecube"`            |
 | `"psx"`             | `"ps4"`                | `"ps5"`                 |
 | `"switch"`          | `"switch joycon left"` | `"switch joycon right"` |
-| `"xbox 360"`        | `"xbox one"`           | `"unknown"`             |
+| `"xbox 360"`        | `"xbox one"`           |                         |
 
 &nbsp;
 
@@ -126,31 +128,3 @@ This function will return one of the following:
 |`"cross"`      |Default                                         |<img alt="Cross art example" width="150" src="https://i.imgur.com/b7f8Gnj.png">|
 
 *Example art courtesy https://thoseawesomeguys.com/prompts, CC0*
-
-&nbsp;
-
-&nbsp;
-
-### `input_gamepad_get_map(gamepadIndex)`
-
-*Returns:* Array of integers, the buttons and axes that are mapped for the given gamepad
-
-|Name          |Datatype|Purpose                                               |
-|--------------|--------|------------------------------------------------------|
-|`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
-
-The returned array contains integers that correspond the GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html). These values indicate what buttons/axes have been mapped for the target gamepad.
-
-If there is no gamepad connected for the given index, an empty array will be returned. If no mapping was applied to the gamepad (typically due to the gamepad not being covered by the SDL2 database) then all GameMaker constants are returned in the array.
-
-&nbsp;
-
-&nbsp;
-
-### `input_gamepad_constant_get_name(GMconstant)`
-
-*Returns:* String, the human-readable name of the [virtual button/axis constant](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)
-
-|Name          |Datatype|Purpose                                               |
-|--------------|--------|------------------------------------------------------|
-|`GMconstant`  |integer |Button or axis to stringify, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|

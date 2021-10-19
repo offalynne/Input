@@ -10,6 +10,22 @@ Presented below are system-level bindings to mind when defining a control scheme
 | `Shift`+`Tab`             | Overlay           |
 | `F12`                     | Screenshot        |
 
+### Origin
+| Input                     | Action            |
+|:--------------------------|:------------------|
+|`Shift`+`F1`               | Overlay           |
+
+### Epic
+| Input                     | Action            |
+|:--------------------------|:------------------|
+| `Shift`+`F3`              |  Overlay          |
+
+### UWP
+| Input                     | Action            |
+|:--------------------------|:------------------|
+| `Meta`+`Shift`+`Enter`    | Toggle fullscreen |
+| `Meta`+`Shift`+`Arrow`    | Switch display    |
+
 ### Discord
 | Input                     | Action            |
 |:--------------------------|:------------------|
@@ -25,24 +41,6 @@ Presented below are system-level bindings to mind when defining a control scheme
 |`Meta`+`Alt`+`M`           | Mic toggle        |
 |`Meta`+`Alt`+`B`           | Broadcast toggle  |
 |`Meta`+`Alt`+`W`           | Show camera       |
-
-!> Meta refers to the 'Windows' key
-
-### UWP
-| Input                     | Action            |
-|:--------------------------|:------------------|
-| `Meta`+`Shift`+`Enter`    | Toggle fullscreen |
-| `Meta`+`Shift`+`Arrow`    | Switch display    |
-
-### Epic
-| Input                     | Action            |
-|:--------------------------|:------------------|
-| `Shift`+`F3`              |  Overlay          |
-
-### Origin
-| Input                     | Action            |
-|:--------------------------|:------------------|
-|`Shift`+`F1`               | Overlay           |
 
 ### NVIDIA Shadowplay
 | Input                     | Action            |
@@ -87,16 +85,3 @@ Presented below are system-level bindings to mind when defining a control scheme
 | `Ctrl`+`Shift`+`C`        | Switch display    |
 | `Ctrl`+`Shift`+`S`        | Second screen     |
 | `Ctrl`+`Shift`+`P`        | Enhanced pen      |
-
-### Stadia
-| Input                     | Action            |
-|:--------------------------|:------------------|
-| `Escape` (held)           | Exit game prompt  |
-| `Shift`+`Tab`             | Overlay           |
-| `F11`                     | Exit fullscreen   |
-| `F12`                     | Screen capture    |
-
-### Luna
-| Input                     | Action            |
-|:--------------------------|:------------------|
-| `Shift`+`Tab`             | Overlay           |

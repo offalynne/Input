@@ -17,7 +17,6 @@
 - [`input_player_gamepad_get_description([playerIndex])`](Functions-(Players)#input_player_gamepad_get_descriptionplayerindex)
 - [`input_player_gamepad_get_type([playerIndex])`](Functions-(Players)#input_player_gamepad_get_typeplayerindex)
 - [`input_player_gamepad_get_dpad_style([playerIndex])`](Functions-(Players)#input_player_gamepad_get_dpad_styleplayerindex)
-- [`input_player_gamepad_get_invalid_bindings([playerIndex])`](Functions-(Players)#input_player_gamepad_get_invalid_bindingsplayerindex)
 
 ### [Default Bindings](Functions-(Default-Bindings))
 
@@ -28,11 +27,6 @@
 - [`input_default_gamepad_button(button, verb, [alternate])`](Functions-(Default-Bindings)#input_default_gamepad_buttonbutton-verb-alternate)
 - [`input_default_gamepad_axis(axis, negative, verb, [alternate])`](Functions-(Default-Bindings)#input_default_gamepad_axisaxis-negative-verb-alternate)
 - [`input_default_gamepad_swap_ab(state)`](Functions-(Default-Bindings)#input_default_gamepad_swap_abstate)
-
-?> The following two functions are optional. Please read their description for suggestions for usage
-
-- [`input_default_joycon_button(button, verb, [alternate])`](Functions-(Default-Bindings)#input_default_joycon_buttonbutton-verb-alternate)
-- [`input_default_joycon_axis(axis, negative, verb, [alternate])`](Functions-(Default-Bindings)#input_default_joycon_axisaxis-negative-verb-alternate)
 
 ### [Checkers](Functions-(Checkers))
 
@@ -83,15 +77,24 @@
 - [`input_source_detect_any()`](Functions-(Source-Assignment)#input_source_detect_any)
 - [`input_source_is_available(source, [gamepad])`](Functions-(Source-Assignment)#input_source_is_availablesource-gamepad)
 
-### [Other](Functions-(Other))
+### [History](Functions-(History))
 
-- [`input_axis_threshold_set(axis, min, max, [playerIndex])`](Functions-(Other)#input_axis_threshold_setaxis-min-max-playerindex)
-- [`input_axis_threshold_get(axis, [playerIndex])`](Functions-(Other)#input_axis_threshold_getaxis-playerindex)
-- [`input_consume(verb, [playerIndex])`](Functions-(Other)#input_consumeverb-playerindex)
-- [`input_guess_keyboard_layout()`](Functions-(Other)#input_guess_keyboard_layout)
-- [`input_verb_set(verb, value, [playerIndex])`](Functions-(Other)#input_verb_setverb-value-playerindex)
-- [`input_ignore_key_add(key)`](Functions-(Other)#input_ignore_key_addkey)
-- [`input_ignore_key_remove(key)`](Functions-(Other)#input_ignore_key_removekey)
+- [`input_history_global_include(verb, ...)`](Functions-(History)#input_history_global_includeverb)
+- [`input_history_start([playerIndex])`](Functions-(History)#input_history_startplayerindex)
+- [`input_history_clear([playerIndex])`](Functions-(History)#input_history_clearplayerindex)
+- [`input_history_get([playerIndex])`](Functions-(History)#input_history_getplayerindex)
+- [`input_history_end([playerIndex])`](Functions-(History)#input_history_endplayerindex)
+
+### [String](Functions-(String))
+
+?> String functions are provided for handling text input in a device and platform agnostic context, serving as an extension to the inbuilt [`keyboard_string`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/keyboard_string.htm) value.
+
+- [`input_string_get()`](Functions-(String)#input_string_get)
+- [`input_string_set([string])`](Functions-(String)#input_string_setstring)
+- [`input_string_async_get(prompt, [string], [allow_empty])`](Functions-(String)#input_string_async_getprompt-string-allow_empty)
+- [`input_string_async_is_active()`](Functions-(String)#input_string_async_is_active)
+- [`input_string_dialog_async_event()`](Functions-(String)#input_string_dialog_async_event)
+- [`input_platform_text_source()`](Functions-(String)#input_platform_text_source)
 
 ### [Gamepad (Direct)](Functions-(Gamepad))
 
@@ -106,8 +109,6 @@
 - [`input_gamepad_get_description(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_get_descriptiongamepadindex)
 - [`input_gamepad_get_type(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_get_typegamepadindex)
 - [`input_gamepad_get_dpad_style(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_get_dpad_stylegamepadindex)
-- [`input_gamepad_gamepad_get_map(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_gamepad_get_mapgamepadindex)
-- [`input_gamepad_constant_get_name(constant)`](Functions-(Gamepad)#input_gamepad_constant_get_nameconstant)
 
 ### [Keyboard (Direct)](Functions-(Keyboard))
 
@@ -124,27 +125,15 @@
 - [`input_mouse_check(button)`](Functions-(Mouse)#input_mouse_checkbutton)
 - [`input_mouse_check_pressed(button)`](Functions-(Mouse)#input_mouse_check_pressedbutton)
 - [`input_mouse_check_released(button)`](Functions-(Mouse)#input_mouse_check_releasedbutton)
+- [`input_mouse_x()`](Functions-(Mouse)#input_mouse_x)
+- [`input_mouse_y()`](Functions-(Mouse)#input_mouse_y)
 
-### [History](Functions-(History))
+### [Other](Functions-(Other))
 
-!> These functions will be removed in v4.0. They are listed here for legacy use only.
-
-- [`input_history_global_include(verb, ...)`](Functions-(History)#input_history_global_includeverb)
-- [`input_history_start([playerIndex])`](Functions-(History)#input_history_startplayerindex)
-- [`input_history_clear([playerIndex])`](Functions-(History)#input_history_clearplayerindex)
-- [`input_history_get([playerIndex])`](Functions-(History)#input_history_getplayerindex)
-- [`input_history_end([playerIndex])`](Functions-(History)#input_history_endplayerindex)
-
-### [String](Functions-(String))
-
-
-!> These functions will be removed in v4.0, please use Alynne's [Input String](https://github.com/offalynne/input-string) library instead. These functions are listed here for legacy use only.
-
-?> String functions are provided for handling text input in a device and platform agnostic context, serving as an extension to the inbuilt [`keyboard_string`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/keyboard_string.htm) value.
-
-- [`input_string_get()`](Functions-(String)#input_string_get)
-- [`input_string_set([string])`](Functions-(String)#input_string_setstring)
-- [`input_string_async_get(prompt, [string], [allow_empty])`](Functions-(String)#input_string_async_getprompt-string-allow_empty)
-- [`input_string_async_is_active()`](Functions-(String)#input_string_async_is_active)
-- [`input_string_dialog_async_event()`](Functions-(String)#input_string_dialog_async_event)
-- [`input_platform_text_source()`](Functions-(String)#input_platform_text_source)
+- [`input_axis_threshold_set(axis, min, max, [playerIndex])`](Functions-(Other)#input_axis_threshold_setaxis-min-max-playerindex)
+- [`input_axis_threshold_get(axis, [playerIndex])`](Functions-(Other)#input_axis_threshold_getaxis-playerindex)
+- [`input_consume(verb, [playerIndex])`](Functions-(Other)#input_consumeverb-playerindex)
+- [`input_guess_keyboard_layout()`](Functions-(Other)#input_guess_keyboard_layout)
+- [`input_verb_set(verb, value, [playerIndex])`](Functions-(Other)#input_verb_setverb-value-playerindex)
+- [`input_ignore_key_add(key)`](Functions-(Other)#input_ignore_key_addkey)
+- [`input_ignore_key_remove(key)`](Functions-(Other)#input_ignore_key_removekey)

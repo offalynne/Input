@@ -14,14 +14,12 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 ## Xbox and Xbox-like
 
-| Gamepad type             | face south, east, west, north |  shoulder l, r    |  trigger l, r      |  select, start           |
-|:-------------------------|:-----------------------------:|:-----------------:|:------------------:|:------------------------:|
-|  `"xbox 360"`, `"steam"` | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![Back Start][xb_meta]   |
-|  `"xbox one"`            | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![View Menu][xo_meta]    |
-|  `"luna"`                | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![Action Menu][lu_meta]  |
-|  `"stadia"`              | ![A B X Y][xb_face]           | ![L1 R1][ps_shld] | ![L2 R2][ps_trggr] | ![Options Menu][st_meta] |
+| Gamepad type  | face south, east, west, north |  shoulder l, r    |  trigger l, r      |  select, start         |
+|:--------------|:-----------------------------:|:-----------------:|:------------------:|:----------------------:|
+|  `"xbox 360"` | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![Back Start][xb_meta] |
+|  `"xbox one"` | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![View Menu][xo_meta]  |
 
-?> Xbox Series S and X gamepads are considered Xbox One type on all platforms.
+?> Xbox Series S|X gamepads are considered Xbox One type on all platforms. Xbox-like and XInput gamepads are categorized by their closest match, eg. the Steam Controller is considered Xbox 360 type, while Stadia is considered Xbox One type.
 
 &nbsp;
 
@@ -47,12 +45,10 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 &nbsp;
 
-## Nintendo
+## Switch
 
 | Gamepad type | face south, east, west, north |  shoulder l, r       |  trigger l, r       |  select, start           |
 |:-------------|:-----------------------------:|:--------------------:|:-------------------:|:------------------------:|
-| `"snes"`     | ![B A Y X][nin_face]          | ![L R][nin_shld]     | *N/A*               | ![Sel St][sfc_meta]      |
-| `"gamecube"` | ![A X B Y][gc_face]           | *N/A*, ![Z][gc_shld] | ![L R][gc_trggr]    | *N/A*, ![Start][gc_start]|
 | `"switch"`   | ![B A Y X][nin_face]          | ![L R][nin_shld]     | ![ZL ZR][nin_trggr] | ![- +][nin_meta]         |
 
 ?> Switch Lite controls, Pro Controllers and unified pairs of JoyCons (held or docked) are considered the same on and off the Switch target platform, identified by the `"switch"` type.
@@ -70,13 +66,13 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 &nbsp;
 
-## Miscellaneous
+## Legacy
 
-| Gamepad type | face south, east, west, north |  shoulder l, r   |  trigger l, r      |  start              |
-|:-------------|:-----------------------------:|:----------------:|:------------------:|:-------------------:|
-| `"saturn"`   | ![A B X Y][xb_face]           | ![L Z][sat_shld] | ![R C][sat_trggr]  | ![Start][sat_start] |
-| `"ouya"`     | ![O A U Y][oy_face]           | ![L1 R1][oy_shld]| ![L2 R2][oy_trggr] | ![Start][oy_start]  |
-| `"apple"`    | ![A B X Y][xb_face]           | ![L1 R1][ps_shld]| ![L2 R2][ps_trggr] | ![Pause][ap_start]  |
+| Gamepad type | face south, east, west, north |  shoulder l, r       |  trigger l, r        |  select, start             |
+|:-------------|:-----------------------------:|:--------------------:|:--------------------:|:--------------------------:|
+| `"snes"`     | ![B A Y X][nin_face]          | ![L R][nin_shld]     | *N/A*                | ![Sel St][sfc_meta]        |
+| `"gamecube"` | ![A X B Y][gc_face]           | *N/A*, ![Z][gc_shld] | ![L R][gc_trggr]     | *N/A*, ![Start][gc_start]  |
+| `"saturn"`   | ![A B X Y][xb_face]           | ![L Z][sat_shld]     | ![R C][sat_trggr]    | *N/A*, ![Start][sat_start] |
 
 &nbsp;
 

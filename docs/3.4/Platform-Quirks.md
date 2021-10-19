@@ -17,11 +17,9 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 ## Desktop
 
+?> Input is developed and maintained on desktop platforms and as a result is most oriented and thoroughly tested for desktop features. 
+
 !> The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#html5) for information on platform-specific quirks.
-
-- Input blocks mouse button presses that regain window focus in order to prevent undesired game input or binding.
-
-- Touch devices are not supported by GameMaker on desktop platforms, except in cases where they operate system-level mouse cursor events.
 
 ### Windows
 
@@ -69,9 +67,7 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Keyboard input is fully functional but unlikely to be needed, and therefore off by default. You can turn keyboard input on by [setting `INPUT_SWITCH_KEYBOARD_ALLOWED` to `true`](Configuration).
 
-- Mouse input is partially functional. GameMaker uses the first mouse "device" for both touchscreen input and mouse, so there is no certain way to determine which is in use. Mouse support includes right click and updates when the mouse is moved. By default mouse input is off (see below).
-
-- Switch touchscreen input is fully functional supporting 10 touch points. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Configuration). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
+- Switch touchscreen input is fully functional. You may not want to allow this for your game, in which case you should omit default mouse input on Switch (via a check against `os_type`) to prevent touchscreen input being registered by Input.
 
 - On Switch, while using individual JoyCons `gp_start` indicates the "+" or "-" buttons, returned as `gamepad start` by [`input_binding_get_name()`](Functions-(Bindings)#input_binding_get_namebinding). This differs from other platforms supporting the JoyCons (Desktop and Android) which use the "Capture" button as `start` on the Left JoyCon.
 
@@ -79,9 +75,7 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - `gp_select` is defined as clicking the touchpad on PlayStation 4 and PlayStation 5 which is GameMaker's default behaviour. This is in contrast to other other platforms where `gp_select` is defined as the SHARE button. [`input_binding_get_name()`](Functions-(Bindings)#input_binding_get_namebinding) will return the correct device-appropriate string.
 
-- Keyboard is not supported by GameMaker (and Input) on this platform.
-
-- The PlayStation touchpad presents as a mouse cursor. By default Input ignores touch input on the touchpad, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Configuration). Input presently supports touchpad input for one player only.
+- Keyboard and mouse are not supported by GameMaker (and Input) on this platform.
 
 ### Xbox One and Xbox Series X/S
 
@@ -99,10 +93,6 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Keyboard input is non-functional on these platforms owing to [unavoidable up-stream bugs](https://github.com/JujuAdams/Input/issues/138)
 
-- iOS touchscreen input is fully functional supporting 5 touch points on iPhone and 11 on iPad. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Configuration). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
-
-- Mouse input is partially functional. GameMaker uses the first mouse "device" for both touchscreen input and mouse, so there is no certain way to determine which is in use. Mouse position updates when the mouse is clicked. By default mouse input is off (see above).
-
 - Many gamepads are not fully supported by iOS due to limited support offered by Apple. At the time of writing, XBox One and PlayStation 4 wireless gamepads are supported by iOS, as are MFi gamepads. For an up-to-date list, please check [Apple's communications](https://support.apple.com/en-us/HT210414).
 
 - Users may find the Select (aka Share or View) gamepad button to cause unintended screenshot and video recording actions. These can be toggled on the OS at _Settings > General > Game Controller_
@@ -111,15 +101,11 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Android keyboard input is problematic and so set to off by default. The most significant issue is keys regularly and irreparably sticking when modified using Shift keys. You can turn keyboard input on by [setting `INPUT_ANDROID_KEYBOARD_ALLOWED` to `true`](Configuration). If using this feature, it is not recommended to use bindings besides Arrow keys, Enter, Space, and Backspace.
 
-- Android touchscreen input is fully functional supporting a device-relative number of touches up to 11. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Configuration). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
-
-- Mouse input is partially functional. GameMaker uses the first mouse "device" for both touchscreen input and mouse, so there is no certain way to determine which is in use. Mouse position updates when the mouse is clicked. By default mouse input is off (see above).
-
 - [Game controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping. Specifically, the runtime is using an old version of the identifying string used to differentiate gamepads, resulting in the feature being marginally limited on the platform.
 
 - Gamepads are sometimes misreported and often over-reported on the platform so [device blocking](Controller-Mapping#controller-blacklist) is particularly useful.
 
-- Due to GameMaker's handling of the Android gamepad stack, some gamepads do not have functional dpad mappings.
+- Due to GameMaker's handling of the Android gamepads stack, some gamepads do not have functional dpad mappings.
 
 - Switch JoyCons are not properly handled by some versions of the Android kernel. As a result, they are not supported in some circumstances.
 
@@ -132,8 +118,6 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 - Web browsers have their own gamepad API, as such Input does not use its own [game controller mapping](Controller-Mapping) on the platform. Input will use the browser's gamepad implementation, including button mapping.
 
 - In order for gamepads to present and operate, the user must first press a button with the game in focus.
-
-- Touchscreen input is functional on mobile devices supporting a device-relative number of touches up to 11. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Configuration). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
 
 - On Apple platforms, CapsLock key returns lock state rather than key state (`true` when locked), so is blocked from binding.
 
@@ -160,9 +144,3 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 - Gamepad descriptions are returned as `"XInput"`.
 
 - Mouse is not supported by GameMaker (and Input) through UWP on Xbox.
-
-### UWP on touch devices
-
-- Touchscreen input is functional on devices supporting a device-relative number of touches. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Configuration). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
-
-- Mouse input is partially functional. GameMaker uses the first mouse "device" for both touchscreen input and mouse, so there is no certain way to determine which is in use. Mouse position updates when the mouse is moved. By default mouse input is off (see above).
