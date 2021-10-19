@@ -1,5 +1,5 @@
-#macro __INPUT_VERSION "3.4.1"
-#macro __INPUT_DATE    "2021-09-07"
+#macro __INPUT_VERSION "3.5.0"
+#macro __INPUT_DATE    "2021-10-19"
 #macro __INPUT_DEBUG   false
 
 
@@ -20,6 +20,7 @@
 #macro __INPUT_SDL2_SUPPORT     (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || (os_type == os_android)))
 
 #macro __INPUT_KEYBOARD_STRING_MAX_LENGTH  1000
+#macro __INPUT_HOLD_THRESHOLD  0.2 //Minimum value from an axis for that axis to be considered activated at the gamepad layer. This is *not* the same as min/max thresholds for players
 
 //Extra constants
 #macro gp_guide    32789
@@ -84,9 +85,6 @@ __input_trace("Welcome to Input by @jujuadams and @offalynne! This is version ",
 
 //Global frame counter. This is used for input buffering
 global.__input_frame = 0;
-
-//Minimum hold value for verb
-global.__input_hold_threshold = 0.2;
 
 //Mouse tracking variables. These are used to detect when the mouse has moved
 global.__input_mouse_x     = 0;
