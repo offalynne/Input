@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: UTF-8 -*-
 
 # controller data refresher for Input
 # @offalynne for Input: https://github.com/JujuAdams/Input, 2021
