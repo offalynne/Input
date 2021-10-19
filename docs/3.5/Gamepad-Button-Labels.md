@@ -14,10 +14,10 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 ## Xbox and Xbox-like
 
-| Gamepad type             | face south, east, west, north |  shoulder l, r    |  trigger l, r      |  select, start           |
-|:-------------------------|:-----------------------------:|:-----------------:|:------------------:|:------------------------:|
-|  `"xbox 360"`, `"steam"` | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![Back Start][xb_meta]   |
-|  `"xbox one"`            | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![View Menu][xo_meta]    |
+| Gamepad type  | face south, east, west, north |  shoulder l, r    |  trigger l, r      |  select, start         |
+|:--------------|:-----------------------------:|:-----------------:|:------------------:|:----------------------:|
+|  `"xbox 360"` | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![Back Start][xb_meta] |
+|  `"xbox one"` | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![View Menu][xo_meta]  |
 
 ?> Xbox Series S and X gamepads are considered Xbox One type on all platforms.
 
