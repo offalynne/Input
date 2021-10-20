@@ -1,5 +1,5 @@
-#macro __INPUT_VERSION "3.5.0"
-#macro __INPUT_DATE    "2021-10-19"
+#macro __INPUT_VERSION "3.5.1"
+#macro __INPUT_DATE    "2021-10-20"
 #macro __INPUT_DEBUG   false
 
 
@@ -355,6 +355,8 @@ function __input_binding_duplicate(_source)
         _binding.axis_negative = axis_negative;
         _binding.label         = label;
         if (variable_struct_exists(self, "android_lowercase")) _binding.android_lowercase = android_lowercase;
+        
+        return _binding;
     }
 }
 

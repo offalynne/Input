@@ -430,7 +430,7 @@ function __input_class_player() constructor
         //If undefined is passed in, use the player's current source
         if (_source == undefined) return get_config_category();
         
-        if (is_real(_source))
+        if (is_numeric(_source))
         {
             //Convert enum if necessary
             switch(_source)
