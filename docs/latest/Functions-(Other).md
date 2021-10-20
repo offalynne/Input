@@ -36,10 +36,10 @@ If the axis does not have a threshold definition (as set by `input_axis_threshol
 
 *Returns:* N/A (`undefined`)
 
-|Name           |Datatype                                                             |Purpose                                                                         |
-|---------------|---------------------------------------------------------------------|--------------------------------------------------------------------------------|
-|`verb`         |[verb](https://github.com/JujuAdams/input3/wiki/Verbs-and-Alternates)|[Verb](https://github.com/JujuAdams/input3/wiki/Verbs-and-Alternates) to consume|
-|`[playerIndex]`|integer                                                              |Player to target. If not specified, player 0 is used                            |
+|Name           |Datatype                            |Purpose                                                                                                          |
+|---------------|------------------------------------|-----------------------------------------------------------------------------------------------------------------|
+|`verb`         |[verb](Verbs-and-Alternate-Bindings)|[Verb](Verbs-and-Alternate-Bindings) to consume. If keyword `all` is used, all verbs for the player are consumed.|
+|`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                                                             |
 
 When a verb has been consumed, [check functions](Functions-(Checkers)) that target the verb will return `false` until the button is released and pressed again.
 
@@ -83,11 +83,11 @@ else
 
 *Returns:* N/A (`undefined`)
 
-|Name           |Datatype                                                             |Purpose                                                                                                 |
-|---------------|---------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
-|`verb`         |[verb](https://github.com/JujuAdams/input3/wiki/Verbs-and-Alternates)|[Verb](https://github.com/JujuAdams/input3/wiki/Verbs-and-Alternates) to consume                        |
-|`value`        |number                                                               |Value to set for the verb, from `-1` to `+1` (though most verbs will only expect values from `0` to `+1`|
-|`[playerIndex]`|integer                                                              |Player to target. If not specified, player 0 is used                                                    |
+|Name           |Datatype                             |Purpose                                                                                                 |
+|---------------|-------------------------------------|--------------------------------------------------------------------------------------------------------|
+|`verb`         |[verb](Verbs-and-Alternate-Bindings) |[Verb](Verbs-and-Alternate-Bindings) to consume                                                         |
+|`value`        |number                               |Value to set for the verb, from `-1` to `+1` (though most verbs will only expect values from `0` to `+1`|
+|`[playerIndex]`|integer                              |Player to target. If not specified, player 0 is used                                                    |
 
 Sets a value directly for a verb. It's recommend that verb values are set before executing [`input_tick()`](Functions-(System)#input_tick) in a frame such that pressed/released states are appropriately triggered.
 
