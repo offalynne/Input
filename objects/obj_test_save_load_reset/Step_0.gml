@@ -39,5 +39,10 @@ if (input_keyboard_check_pressed(ord("R")))
 
 if (rebinding)
 {
-    if (input_rebind_tick(VERB.LEFT) != 0) rebinding = false;
+    var _binding = input_binding_scan_tick(input_player_source_get());
+    if (_binding != undefined)
+    {
+        input_binding_set_safe(VERB.LEFT, _binding);
+        rebinding = false;
+    }
 }
