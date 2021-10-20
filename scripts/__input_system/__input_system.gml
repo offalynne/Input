@@ -355,6 +355,8 @@ function __input_binding_duplicate(_source)
         _binding.axis_negative = axis_negative;
         _binding.label         = label;
         if (variable_struct_exists(self, "android_lowercase")) _binding.android_lowercase = android_lowercase;
+        
+        return _binding;
     }
 }
 
