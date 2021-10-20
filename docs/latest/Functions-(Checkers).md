@@ -115,6 +115,54 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 
 &nbsp;
 
+### `input_check_long(verb, [playerIndex], [bufferDuration])`
+
+*Returns:* Boolean, if the verb is currently activate
+
+|Name              |Datatype                                  |Purpose                                                                                                                      |
+|------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+|`verb`            |[verb](Verbs-and-Alternate-Bindings)/array|[Verb](Verbs-and-Alternate-Bindings) to check, or an array of [verbs](Verbs-and-Alternate-Bindings) (see below)              |
+|`[playerIndex]`   |integer                                   |Player to target. If not specified, player 0 is used                                                                         |
+|`[bufferDuration]`|frames/milliseconds                       |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
+
+If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are currently active for the player. The hold time required to activate this function is given by [`INPUT_LONG_DELAY`](Configuration).
+
+&nbsp;
+
+&nbsp;
+
+### `input_check_long_pressed(verb, [playerIndex], [bufferDuration])`
+
+*Returns:* Boolean, if the verb is newly activated this frame
+
+|Name              |Datatype                                  |Purpose                                                                                                                      |
+|------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+|`verb`            |[verb](Verbs-and-Alternate-Bindings)/array|[Verb](Verbs-and-Alternate-Bindings) to check, or an array of [verbs](Verbs-and-Alternate-Bindings) (see below)              |
+|`[playerIndex]`   |integer                                   |Player to target. If not specified, player 0 is used                                                                         |
+|`[bufferDuration]`|frames/milliseconds                       |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
+
+If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are newly activated this frame for the player. The hold time required to activate this function is given by [`INPUT_LONG_DELAY`](Configuration).
+
+&nbsp;
+
+&nbsp;
+
+### `input_check_long_released(verb, [playerIndex], [bufferDuration])`
+
+*Returns:* Boolean, if the verb is newly deactivated this frame
+
+|Name              |Datatype                                  |Purpose                                                                                                                      |
+|------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+|`verb`            |[verb](Verbs-and-Alternate-Bindings)/array|[Verb](Verbs-and-Alternate-Bindings) to check, or an array of [verbs](Verbs-and-Alternate-Bindings) (see below)              |
+|`[playerIndex]`   |integer                                   |Player to target. If not specified, player 0 is used                                                                         |
+|`[bufferDuration]`|frames/milliseconds                       |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
+
+If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are newly deactivated this frame for the player. The hold time required to activate this function is given by [`INPUT_LONG_DELAY`](Configuration).
+
+&nbsp;
+
+&nbsp;
+
 ### `input_value(verb, [playerIndex])`
 
 *Returns:* Real, the analogue value of the input (after calculating the threshold)
