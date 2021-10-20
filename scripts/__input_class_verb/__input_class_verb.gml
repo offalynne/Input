@@ -31,6 +31,13 @@ function __input_class_verb() constructor
     double_held_time    = -1;
     double_release_time = -1;
     
+    long_press        = false;
+    long_held         = false;
+    long_release      = false;
+    long_press_time   = -1;
+    long_held_time    = -1;
+    long_release_time = -1;
+    
     static clear = function()
     {
         previous_value = value;
@@ -43,6 +50,9 @@ function __input_class_verb() constructor
         
         double_press   = false;
         double_release = false;
+        
+        long_press   = false;
+        long_release = false;
     }
     
     static tick = function(_history_array)
@@ -99,8 +109,34 @@ function __input_class_verb() constructor
             }
         }
         
+        if (held)
+        {
+            if (_time - press_time > INPUT_LONG_DELAY)
+            {
+                if (!long_held)
+                {
+                    long_press      = true;
+                    long_press_time = _time;
+                }
+                
+                long_held      = true;
+                long_held_time = _time;
+            }
+        }
+        else
+        {
+            if (long_held)
+            {
+                long_release      = true;
+                long_release_time = _time;
+            }
+            
+            long_held = false;
+        }
+        
         previous_held = held;
         
         if (double_held) double_held_time = _time;
+        if (long_held) long_held_time = _time;
     }
 }
