@@ -45,17 +45,6 @@ A list of possible return strings for [`input_binding_get_name`](Functions-(Bind
 | `gamepad thumbstick l click` | `gamepad thumbstick r click` |
 | `gamepad touchpad click`     | `gamepad unknown`            |
 
-&nbsp;
-
-| Gamepad analogue                  |                                   |
-|-----------------------------------|-----------------------------------|
-| `gamepad axis trigger l`          | `gamepad axis trigger r`          |
-| `gamepad axis thumbstick l up`    | `gamepad axis thumbstick l down`  |
-| `gamepad axis thumbstick l left`  | `gamepad axis thumbstick l right` |
-| `gamepad axis thumbstick r up`    | `gamepad axis thumbstick r down`  |
-| `gamepad axis thumbstick r left`  | `gamepad axis thumbstick r right` |
-| `gamepad axis unknown`            |
-
 ?> For labels specific to gamepad type, see [Button Labels by Gamepad Type](Gamepad-Button-Labels).
 
 &nbsp;
