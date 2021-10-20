@@ -85,7 +85,7 @@ else
 
 |Name           |Datatype                             |Purpose                                                                                                 |
 |---------------|-------------------------------------|--------------------------------------------------------------------------------------------------------|
-|`verb`         |[verb](Verbs-and-Alternate-Bindings) |[Verb](Verbs-and-Alternate-Bindings) to consume                                                         |
+|`verb`         |[verb](Verbs-and-Alternate-Bindings) |[Verb](Verbs-and-Alternate-Bindings) to set                                                             |
 |`value`        |number                               |Value to set for the verb, from `-1` to `+1` (though most verbs will only expect values from `0` to `+1`|
 |`[playerIndex]`|integer                              |Player to target. If not specified, player 0 is used                                                    |
 
