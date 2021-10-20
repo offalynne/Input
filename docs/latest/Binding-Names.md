@@ -34,7 +34,7 @@ A list of possible return strings for [`input_binding_get_name`](Functions-(Bind
 
 ## Gamepad
 
-| Gamepad digital              |                              |
+| Gamepad                      |                              |
 |------------------------------|------------------------------|
 | `gamepad face south`         | `gamepad face east`          |
 | `gamepad face west`          | `gamepad face north`         |
