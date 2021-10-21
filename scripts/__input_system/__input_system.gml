@@ -19,7 +19,6 @@
 
 #macro __INPUT_SDL2_SUPPORT     (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || (os_type == os_android)))
 
-#macro __INPUT_KEYBOARD_STRING_MAX_LENGTH  1000
 #macro __INPUT_HOLD_THRESHOLD  0.2 //Minimum value from an axis for that axis to be considered activated at the gamepad layer. This is *not* the same as min/max thresholds for players
 
 //Extra constants
@@ -113,13 +112,6 @@ global.__input_cursor_verb_l      = undefined;
 global.__input_cursor_verb_r      = undefined;
 global.__input_cursor_speed       = 0;
 global.__input_cursor_using_mouse = true;
-
-//Keyboard texty entry
-global.__input_string               = "";
-global.__input_keyboard_prev_string = "";
-global.__input_string_predialogue   = "";
-global.__input_async_id             = undefined;
-global.__input_async_allow_empty    = false;
 
 //Whether these particular input sources are valid
 //This is determined by what default keybindings are set up
