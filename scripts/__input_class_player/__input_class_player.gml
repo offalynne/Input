@@ -15,9 +15,6 @@ function __input_class_player() constructor
     rebind_this_frame = false;
     rebind_backup_val = undefined;
     
-    history_do    = false;
-    history_array = undefined;
-    
     //This struct is the one that gets serialized/deserialized
     config = { axis_thresholds : {} };
     
@@ -78,15 +75,8 @@ function __input_class_player() constructor
         
         tick_source();
         
-        //Update our verbs, and pass in our history array too
-        var _history_array = history_do? history_array : undefined;
-        tick_verbs(_history_array);
-        
-        if (history_do)
-        {
-            //Trim off data that we don't want from the history
-            array_delete(_history_array, 0, array_length(_history_array) - INPUT_HISTORY_LENGTH);
-        }
+        //Update our verbs
+        tick_verbs();
         
         with(cursor)
         {
@@ -95,13 +85,13 @@ function __input_class_player() constructor
         }
     }
     
-    static tick_verbs = function(_history_array)
+    static tick_verbs = function()
     {
         var _verb_names = variable_struct_get_names(verbs);
         var _v = 0;
         repeat(array_length(_verb_names))
         {
-            with(verbs[$ _verb_names[_v]]) tick(_history_array);
+            with(verbs[$ _verb_names[_v]]) tick();
             ++_v;
         }
     }

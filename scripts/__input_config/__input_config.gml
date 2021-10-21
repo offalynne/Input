@@ -9,7 +9,6 @@
 #macro INPUT_REPEAT_DEFAULT_PREDELAY  30     //Default time between a verb being activated and the first time input_check_repeat() returns <true>
 #macro INPUT_LONG_DELAY               10     //Time before input_check_long() returns <true>. Whether this is in frames or milliseconds is controlled by INPUT_TIMER_MILLISECONDS
 #macro INPUT_DOUBLE_DELAY             12     //Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by INPUT_TIMER_MILLISECONDS
-#macro INPUT_HISTORY_LENGTH           20     //Maximum number of verb events to record. Each event is a struct containing the time, verb name, and verb value
 
 #macro INPUT_HOTSWAP_DELAY              33     //Number of milliseconds between source swaps. This should be longer than a single frame (>17 ms at 60FPS)
 #macro INPUT_HOTSWAP_ON_GAMEPAD_AXIS    true   //Whether to trigger a hotswap when a gamepad axis is moved

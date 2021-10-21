@@ -55,17 +55,9 @@ function __input_class_verb() constructor
         long_release = false;
     }
     
-    static tick = function(_history_array)
+    static tick = function()
     {
         var _time = __input_get_time();
-        
-        if (_history_array != undefined)
-        {
-            if ((previous_value != value) && global.__input_history_include[$ name])
-            {
-                array_push(_history_array, { time : _time, verb : name, value : value });
-            }
-        }
         
         if (value > 0)
         {

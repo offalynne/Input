@@ -125,9 +125,6 @@ global.__input_mouse_blocked = (__INPUT_ON_PS || __INPUT_ON_XDK || (__INPUT_TOUC
 //Whether to swap A/B gamepad buttons for default bindings
 global.__input_swap_ab = false;
 
-//Struct that contains which verbs to track when recording history
-global.__input_history_include = {};
-
 //Struct to store all the keyboard keys we want to ignore
 global.__input_ignore_key_dict = {};
 
