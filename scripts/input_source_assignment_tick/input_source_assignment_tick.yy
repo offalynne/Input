@@ -6,7 +6,7 @@
     "path": "folders/Input/Source Assignment.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_hotswap_tick",
+  "name": "input_source_assignment_tick",
   "tags": [],
   "resourceType": "GMScript",
 }

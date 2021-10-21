@@ -1,6 +1,6 @@
 /// @param [playerIndex]
 
-function input_hotswap_tick(_player_index = 0)
+function input_source_hotswap_tick(_player_index = 0)
 {
     if (_player_index < 0)
     {

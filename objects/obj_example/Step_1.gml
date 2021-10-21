@@ -1,5 +1,5 @@
 input_tick();
-input_hotswap_tick();
+input_source_hotswap_tick();
 
 if (input_check_p("pause")) rebinding = true;
 if (rebinding)

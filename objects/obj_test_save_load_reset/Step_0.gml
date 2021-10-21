@@ -1,5 +1,5 @@
 input_tick();
-input_hotswap_tick();
+input_source_hotswap_tick();
 
 if (input_keyboard_check_pressed(vk_enter) || input_gamepad_check_pressed(0, gp_start)) rebinding = true;
 

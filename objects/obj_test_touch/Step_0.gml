@@ -1,5 +1,5 @@
 input_tick();
-input_hotswap_tick();
+input_source_hotswap_tick();
 
 //Release
 var _released = input_mouse_check_released(mb_left);

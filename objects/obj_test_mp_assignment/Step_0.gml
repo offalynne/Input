@@ -2,7 +2,7 @@ input_tick();
 
 if (assigning)
 {
-    if (input_assignment_tick(3, 3, "cancel"))
+    if (input_source_assignment_tick(3, 3, "cancel"))
     {
         //Source assignment aborted
         assigning = false;
