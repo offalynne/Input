@@ -48,7 +48,7 @@ function input_tick()
             //Set active pointer index
             if (_touch_index == undefined) _touch_index = 0;
             global.__input_pointer_pressed = device_mouse_check_button_pressed(_touch_index, mb_left);
-            global.__input_pointer_released = (device_mouse_check_button_released(_touch_press_index, mb_left) && (_touch_press_index != undefined));
+            global.__input_pointer_released = ((_touch_press_index != undefined) && device_mouse_check_button_released(_touch_press_index, mb_left));
 
             //Touch edge testing
             var _w = display_get_gui_width();
