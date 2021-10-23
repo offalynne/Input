@@ -17,9 +17,9 @@ The following pages include general information about Input's underlying systems
 *Labels for gamepad binding names per device type*
 - [Xbox and Xbox-like](Gamepad-Button-Labels#xbox-and-xbox-like)
 - [PlayStation](Gamepad-Button-Labels#playstation)
-- [Nintendo](Gamepad-Buton-Labels#nintendo)
-- [PS4 and PS5 Platforms](Gamepad-Buton-Labels#dualshock-4-and-dualsense-on-ps4-and-ps5)
-- [Miscellaneous](Gamepad-Button-Labels#miscellaneous)
+- [Switch](Gamepad-Button-Labels#switch)
+- [PS4 and PS5 Platforms](Gamepad-Button-Labels#dualshock-4-and-dualsense-on-ps4-and-ps5)
+- [Legacy](Gamepad-Button-Labels#legacy)
 
 ### [Gamepad Troubleshooting](Gamepad-Troubleshooting)
 *Notes on desktop and mobile gamepad compatibility*
