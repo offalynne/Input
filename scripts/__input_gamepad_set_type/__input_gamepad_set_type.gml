@@ -176,13 +176,17 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunityGameCube";
                 }
-                else if (string_count("xbox elite", _desc) || string_count("xbox wireless", _desc) || string_count("xbox one", _desc))
+                else if (string_count("xbox elite", _desc) || string_count("xbox wireless", _desc) || string_count("xbox one", _desc) || string_count("xbox bluetooth", _desc))
                 {
                     raw_type = "CommunityXBoxOne";
                 }
                 else if (string_count("xbox 360", _desc) || string_count("xbox360", _desc))
                 {
                     raw_type = "CommunityXBox360";
+                }
+                else if (string_count("xbox", _desc))
+                {
+                    raw_type = "CommunityLikeXBox";
                 }
                 else if (__INPUT_ON_MOBILE && __INPUT_ON_APPLE)
                 {
