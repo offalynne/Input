@@ -58,7 +58,7 @@
 0773,0106,CommunitySaturn // Saturn Gamepad
 0e8f,0041,CommunitySaturn // PlaySega
 0e8f,3010,CommunitySaturn // Saturn Adapter
-12bd,d013,CommunitySaturn // Retroling Saturn/SNES
+12bd,d013,CommunitySaturn // Retrolink Saturn/SNES
 289b,0043,CommunitySaturn // Raphnet Saturn
 2dc8,0651,CommunitySaturn // 8BitDo M30
 2dc8,5006,CommunitySaturn // 8BitDo M30
