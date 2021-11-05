@@ -6,7 +6,7 @@ function input_default_mouse_button(_button, _verb, _alternate = 0)
 {
     if (__INPUT_DEBUG) __input_trace("Setting default mouse button binding...");
     
-    if (!global.__input_mouse_blocked)
+    if (global.__input_mouse_allowed)
     {
         global.__input_mouse_valid = true;
     }    

@@ -1,7 +1,7 @@
 /// @param binding
 function input_mouse_check(_binding)
 { 
-    if (global.__input_mouse_blocked)
+    if (!global.__input_mouse_allowed || global.__input_mouse_blocked)
     {
         return (_binding == mb_none);
     }
