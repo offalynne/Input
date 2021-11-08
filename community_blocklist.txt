@@ -33,3 +33,4 @@ multitouch,android,description contains // virtual multitouch devices
 headset,android,description contains // headsets and adapters
 sennheiser,android,description contains // sennheiser brand headsets
 corsair,android,description contains // corsair mice, keyboards, adapters
+bt kb,description contains // gamesir bluetooth keyboards
