@@ -38,8 +38,6 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 ### Gamepad on Console
 
-- On Switch, while using individual JoyCons `gp_start` indicates the "+" or "-" buttons, returned as `gamepad start` by [`input_binding_get_name()`](Functions-(Bindings)#input_binding_get_namebinding). This differs from other platforms supporting the JoyCons (Desktop and Android) which uses the "-" button as `select` and the "Capture" button as `start` on the Left JoyCon.
-
 - On PS4 and PS5, `gp_select` is defined as clicking the touchpad on PlayStation 4 and PlayStation 5 which is GameMaker's default behaviour. This is in contrast to other other platforms where `gp_select` is defined as the SHARE button. [`input_binding_get_name()`](Functions-(Bindings)#input_binding_get_namebinding) will return the correct device-appropriate string.
 
 ### Gamepad on Mobile
