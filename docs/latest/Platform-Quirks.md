@@ -73,8 +73,6 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Switch touchscreen input is fully functional supporting 10 touch points. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Configuration). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
 
-- On Switch, while using individual JoyCons `gp_start` indicates the "+" or "-" buttons, returned as `gamepad start` by [`input_binding_get_name()`](Functions-(Bindings)#input_binding_get_namebinding). This differs from other platforms supporting the JoyCons (Desktop and Android) which use the "Capture" button as `start` on the Left JoyCon.
-
 ### PS4 and PS5
 
 - `gp_select` is defined as clicking the touchpad on PlayStation 4 and PlayStation 5 which is GameMaker's default behaviour. This is in contrast to other other platforms where `gp_select` is defined as the SHARE button. [`input_binding_get_name()`](Functions-(Bindings)#input_binding_get_namebinding) will return the correct device-appropriate string.
