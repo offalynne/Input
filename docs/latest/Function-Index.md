@@ -4,6 +4,8 @@
 
 ### [System](Functions-(System))
 
+!> This function must be called once every frame in a Begin Step event for Input to work.
+
 - [`input_tick()`](Functions-(System)#input_tick)
 
 ### [Players](Functions-(Players))
