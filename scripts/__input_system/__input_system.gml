@@ -66,7 +66,7 @@ enum __INPUT_MAPPING
     BUTTON,
     AXIS,
     HAT,
-    HAT_ON_AXIS,
+    HAT_TO_AXIS,
     AXIS_TO_BUTTON,
     SPLIT_AXIS,
     __SIZE

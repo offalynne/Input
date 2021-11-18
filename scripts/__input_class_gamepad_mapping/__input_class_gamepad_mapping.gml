@@ -52,7 +52,7 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
                 value = (gamepad_axis_value( _gamepad, raw) > direction_sign*__INPUT_AXIS_TO_BUTTON_THRESHOLD);
             break;
             
-            case __INPUT_MAPPING.HAT_ON_AXIS:
+            case __INPUT_MAPPING.HAT_TO_AXIS:
                 value = ((gamepad_hat_value( _gamepad, raw_positive) & hat_mask_positive) > 0) - ((gamepad_hat_value(_gamepad, raw_negative) & hat_mask_negative) > 0);
             break;
             

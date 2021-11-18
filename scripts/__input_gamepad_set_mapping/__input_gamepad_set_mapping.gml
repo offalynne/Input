@@ -289,7 +289,7 @@ function __input_gamepad_set_mapping()
                                 //If we're in hat mode but we have a sign for the output direction then this is a hat-on-axis mapping
                                 if (_output_negative || _output_positive)
                                 {
-                                    _raw_type = __INPUT_MAPPING.HAT_ON_AXIS;
+                                    _raw_type = __INPUT_MAPPING.HAT_TO_AXIS;
                                 }
                                 else
                                 {
@@ -330,7 +330,7 @@ function __input_gamepad_set_mapping()
                             _mapping.direction_sign = 1;
                         }
                     }
-                    else if (_raw_type == __INPUT_MAPPING.HAT_ON_AXIS)
+                    else if (_raw_type == __INPUT_MAPPING.HAT_TO_AXIS)
                     {
                         //Try to reuse the same mapping struct for hat-on-axis
                         if (_mapping == undefined)
@@ -386,14 +386,14 @@ function __input_gamepad_set_mapping()
                     }
                 
                     //Now manage the hat masks, including setting up hat-on-axis masks
-                    if ((_raw_type == __INPUT_MAPPING.HAT) || (_raw_type == __INPUT_MAPPING.HAT_ON_AXIS))
+                    if ((_raw_type == __INPUT_MAPPING.HAT) || (_raw_type == __INPUT_MAPPING.HAT_TO_AXIS))
                     {
                         var _hat_mask = floor(10*real(_entry_1)); //TODO - lol haxx
                         if (_raw_type == __INPUT_MAPPING.HAT)
                         {
                             _mapping.hat_mask = _hat_mask;
                         }
-                        else if (_raw_type == __INPUT_MAPPING.HAT_ON_AXIS)
+                        else if (_raw_type == __INPUT_MAPPING.HAT_TO_AXIS)
                         {
                             if (_output_negative)
                             {
