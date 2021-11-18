@@ -337,7 +337,7 @@ dead,beef,CommunityPSX // Hidromancer
 1532,100a,CommunityPS4 // Razer Raiju TE
 1532,0401,CommunityPS4 // Razer Panthera
 1532,1008,CommunityPS4 // Razer Panthera Evo
-057e,2019,CommunityN64 // Nintendo Switch Online N64
+057e,2019,CommunityN64 // NSO N64
 06f7,0001,CommunityN64 // N64 Adaptoid
 2dc8,9002,CommunityN64 // Retro-bit x 8Bitdo RB8-64 (USB)
 2dc8,3830,CommunityN64 // Retro-bit x 8Bitdo RB8-64 (BT)
