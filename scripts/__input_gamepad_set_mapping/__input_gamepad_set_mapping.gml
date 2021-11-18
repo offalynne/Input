@@ -262,20 +262,15 @@ function __input_gamepad_set_mapping()
                             case "+": _input_positive = true; break;
                         
                             case "b":
-                                //If we're in hat mode but we have a sign for the output direction then this is a button-on-axis mapping
-                                if (_output_negative || _output_positive)
-                                {
-                                    _raw_type = __INPUT_MAPPING.AXIS_TO_BUTTON;
-                                }
-                                else
-                                {
-                                    _raw_type = __INPUT_MAPPING.BUTTON;
-                                }
+                                _raw_type = __INPUT_MAPPING.BUTTON;
                             break;
                             
                             case "a":
-                                //If we're in axis mode but we have a sign for the output direction then this is a split axis mapping
-                                if (_output_negative || _output_positive)
+                                if (__input_sdl_name_is_button(_entry_name) && (_input_negative || _input_positive))
+                                {
+                                    _raw_type = __INPUT_MAPPING.AXIS_TO_BUTTON;
+                                }
+                                else if (_output_negative || _output_positive) //If we're in axis mode but we have a sign for the output direction then this is a split axis mapping
                                 {
                                     _raw_type = __INPUT_MAPPING.SPLIT_AXIS;
                                 }
@@ -321,11 +316,11 @@ function __input_gamepad_set_mapping()
                             __input_trace("Warning! Mapping for \"", _entry, "\" is a redefinition of entry name \"", _entry_name, "\"");
                         }
                     
-                        if (_output_negative)
+                        if (_input_negative)
                         {
                             _mapping.direction_sign = -1;
                         }
-                        else if (_output_positive)
+                        else if (_input_positive)
                         {
                             _mapping.direction_sign = 1;
                         }
@@ -409,7 +404,7 @@ function __input_gamepad_set_mapping()
                     if (__INPUT_DEBUG) __input_trace(_entry_name, " = ", _raw_type, _entry_1);
                 
                     //Set axis range quirks
-                    if ((_raw_type == __INPUT_MAPPING.AXIS) || (raw_type == __INPUT_MAPPING.SPLIT_AXIS))
+                    if ((_raw_type == __INPUT_MAPPING.AXIS) || (_raw_type == __INPUT_MAPPING.SPLIT_AXIS))
                     {
                         //Identify directional input
                         var _is_directional = false;
@@ -448,4 +443,34 @@ function __input_gamepad_set_mapping()
     }
     
     #endregion
+}
+
+function __input_sdl_name_is_button(_sdl_name)
+{
+    switch(_sdl_name)
+    {
+        case "a": return true;
+        case "b": return true;
+        case "x": return true;
+        case "y": return true;
+        
+        case "dpright": return true;
+        case "dpup":    return true;
+        case "dpleft":  return true;
+        case "dpdown":  return true;
+        
+        case "leftstick":  return true;
+        case "rightstick": return true;
+        
+        case "leftshoulder":  return true;
+        case "rightshoulder": return true;
+        
+        case "start":  return true;
+        case "back":   return true;
+        case "guide":  return true;
+        case "misc1":  return true;
+        case "misc2":  return true;
+    }
+    
+    return false;
 }
