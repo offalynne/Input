@@ -48,6 +48,10 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
             case __INPUT_MAPPING.AXIS:   value = gamepad_axis_value(  _gamepad, raw); break;
             case __INPUT_MAPPING.HAT:    value = ((gamepad_hat_value( _gamepad, raw) & hat_mask) > 0); break;
             
+            case __INPUT_MAPPING.AXIS_TO_BUTTON:
+                value = (gamepad_axis_value( _gamepad, raw) > direction_sign*__INPUT_HOLD_THRESHOLD);
+            break;
+            
             case __INPUT_MAPPING.HAT_ON_AXIS:
                 value = ((gamepad_hat_value( _gamepad, raw_positive) & hat_mask_positive) > 0) - ((gamepad_hat_value(_gamepad, raw_negative) & hat_mask_negative) > 0);
             break;

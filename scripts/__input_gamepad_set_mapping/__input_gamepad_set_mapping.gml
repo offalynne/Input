@@ -261,7 +261,18 @@ function __input_gamepad_set_mapping()
                             case "-": _input_negative = true; break;
                             case "+": _input_positive = true; break;
                         
-                            case "b": _raw_type = __INPUT_MAPPING.BUTTON; break;
+                            case "b":
+                                //If we're in hat mode but we have a sign for the output direction then this is a button-on-axis mapping
+                                if (_output_negative || _output_positive)
+                                {
+                                    _raw_type = __INPUT_MAPPING.AXIS_TO_BUTTON;
+                                }
+                                else
+                                {
+                                    _raw_type = __INPUT_MAPPING.BUTTON;
+                                }
+                            break;
+                            
                             case "a":
                                 //If we're in axis mode but we have a sign for the output direction then this is a split axis mapping
                                 if (_output_negative || _output_positive)
@@ -299,7 +310,24 @@ function __input_gamepad_set_mapping()
                 
                     //Try to find out if this constant has been set already
                     var _mapping = mapping_gm_to_raw[$ _gm_constant];
-                    if (_raw_type == __INPUT_MAPPING.HAT_ON_AXIS)
+                    if (_raw_type == __INPUT_MAPPING.AXIS_TO_BUTTON)
+                    {
+                        //Try to reuse the same mapping struct for hat-on-axis
+                        if (_mapping == undefined)
+                        {
+                            _mapping = set_mapping(_gm_constant, undefined, _raw_type, _entry_name);
+                        }
+                    
+                        if (_output_negative)
+                        {
+                            _mapping.direction_sign = -1;
+                        }
+                        else if (_output_positive)
+                        {
+                            _mapping.direction_sign = 1;
+                        }
+                    }
+                    else if (_raw_type == __INPUT_MAPPING.HAT_ON_AXIS)
                     {
                         //Try to reuse the same mapping struct for hat-on-axis
                         if (_mapping == undefined)
