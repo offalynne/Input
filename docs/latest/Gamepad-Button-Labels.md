@@ -68,11 +68,20 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 ## Legacy
 
-| Gamepad type | face south, east, west, north |  shoulder l, r       |  trigger l, r        |  select, start             |
-|:-------------|:-----------------------------:|:--------------------:|:--------------------:|:--------------------------:|
-| `"snes"`     | ![B A Y X][nin_face]          | ![L R][nin_shld]     | *N/A*                | ![Sel St][sfc_meta]        |
-| `"gamecube"` | ![A X B Y][gc_face]           | *N/A*, ![Z][gc_shld] | ![L R][gc_trggr]     | *N/A*, ![Start][gc_start]  |
-| `"saturn"`   | ![A B X Y][xb_face]           | ![L Z][sat_shld]     | ![R C][sat_trggr]    | *N/A*, ![Start][sat_start] |
+| Gamepad type | face south, east, west, north |  shoulder l, r       |  trigger l, r         |  select, start             |
+|:-------------|:-----------------------------:|:--------------------:|:---------------------:|:--------------------------:|
+| `"snes"`     | ![B A Y X][nin_face]          | ![L R][nin_shld]     | *N/A*                 | ![Sel St][sfc_meta]        |
+| `"n64"`      | ![A B][n64_face], *N/A*, *N/A*| ![L R][n64_shld]     | ![Z][n64_trggr], *N/A*| *N/A*, ![Start][n64_start] |
+| `"gamecube"` | ![A X B Y][gc_face]           | *N/A*, ![Z][gc_shld] | ![L R][gc_trggr]      | *N/A*, ![Start][gc_start]  |
+| `"saturn"`   | ![A B X Y][xb_face]           | ![L Z][sat_shld]     | ![R C][sat_trggr]     | *N/A*, ![Start][sat_start] |
+
+### N64
+
+| face south, east | shoulder l, r    | trigger l        | start            |
+|:----------------:|:----------------:|:----------------:|:----------------:|
+| ![A B][n64_face] | ![L R][n64_shld] | ![Z][n64_trggr]  | ![St][n64_meta]  |
+
+
 
 &nbsp;
 
@@ -117,3 +126,7 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 [ps_touchpad]: https://i.imgur.com/b3Qai65.png
 [sfc_meta]: https://i.imgur.com/RXRxJle.png
 [sat_start]: https://i.imgur.com/c5u3a8i.png
+[n64_face]: https://i.imgur.com/slfqguq.png
+[n64_shld]: https://i.imgur.com/JwfK3ud.png
+[n64_trggr]: https://i.imgur.com/eDYKUbW.png
+[n64_start]: https://i.imgur.com/RQQWauR.png
