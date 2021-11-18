@@ -96,12 +96,12 @@ XInput controllers will typically return `"xbox 360"` whereas any unrecognised g
 
 The following are valid strings that this function may return:
 
-|Results              |                        |                         |
-|---------------------|------------------------|-------------------------|
-| `"snes"`            | `"saturn"`             | `"gamecube"`            |
-| `"psx"`             | `"ps4"`                | `"ps5"`                 |
-| `"switch"`          | `"switch joycon left"` | `"switch joycon right"` |
-| `"xbox 360"`        | `"xbox one"`           | `"unknown"`             |
+|Results     |            |                              |
+|------------|------------|------------------------------|
+|`"saturn"`  |`"snes"`    |`"n64"`                       |
+|`"gamecube"`|`"switch"`  |`"switch joycon [left|right]"`|
+|`"psx"`     |`"ps4"`     |`"ps5"`                       |
+|`"xbox 360"`|`"xbox one"`|`"unknown"`                   |
 
 &nbsp;
 
