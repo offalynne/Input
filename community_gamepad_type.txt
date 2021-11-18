@@ -1,5 +1,5 @@
-11c6,0010,CommunityLikeXbox // Tencent Xianyou GP1
-20bc,5052,CommunityLikeXbox // Beitong G3
+11c6,0010,CommunityLikeXBox // Tencent Xianyou GP1
+20bc,5052,CommunityLikeXBox // Beitong G3
 20bc,5500,CommunityLikeXBox // Betop AX1 BFM
 044f,b328,CommunityLikeXBox // Score A
 046d,c216,CommunityLikeXBox // Logitech Dual Action, F310
