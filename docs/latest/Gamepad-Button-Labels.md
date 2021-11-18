@@ -70,16 +70,10 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 | Gamepad type | face south, east, west, north |  shoulder l, r       |  trigger l, r         |  select, start             |
 |:-------------|:-----------------------------:|:--------------------:|:---------------------:|:--------------------------:|
+| `"saturn"`   | ![A B X Y][xb_face]           | ![L Z][sat_shld]     | ![R C][sat_trggr]     | *N/A*, ![Start][sat_start] |
 | `"snes"`     | ![B A Y X][nin_face]          | ![L R][nin_shld]     | *N/A*                 | ![Sel St][sfc_meta]        |
 | `"n64"`      | ![A B][n64_face], *N/A*, *N/A*| ![L R][n64_shld]     | ![Z][n64_trggr], *N/A*| *N/A*, ![Start][n64_start] |
-| `"gamecube"` | ![A X B Y][gc_face]           | *N/A*, ![Z][gc_shld] | ![L R][gc_trggr]      | *N/A*, ![Start][gc_start]  |
-| `"saturn"`   | ![A B X Y][xb_face]           | ![L Z][sat_shld]     | ![R C][sat_trggr]     | *N/A*, ![Start][sat_start] |
-
-### N64
-
-| face south, east | shoulder l, r    | trigger l        | start            |
-|:----------------:|:----------------:|:----------------:|:----------------:|
-| ![A B][n64_face] | ![L R][n64_shld] | ![Z][n64_trggr]  | ![St][n64_meta]  |
+| `"gamecube"` | ![A X B Y][gc_face]           | *N/A*, ![Z][gc_shld] | ![L R][gc_trggr]      | *N/A*, ![Start][gc_start]  
 
 
 
