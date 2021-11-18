@@ -98,8 +98,8 @@ The following are valid strings that this function may return:
 
 |Results     |            |                              |
 |------------|------------|------------------------------|
-|`"saturn"`  |`"snes"`    |`"n64"`                       |
 |`"gamecube"`|`"switch"`  |`"switch joycon [left/right]"`|
+|`"saturn"`  |`"snes"`    |`"n64"`                       |
 |`"psx"`     |`"ps4"`     |`"ps5"`                       |
 |`"xbox 360"`|`"xbox one"`|`"unknown"`                   |
 
