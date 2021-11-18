@@ -340,3 +340,7 @@ dead,beef,CommunityPSX // Hidromancer
 2836,0001,CommunityOuya // Ouya Controller
 18d1,9400,CommunityStadia // Google Stadia Controller
 0171,0419,CommunityLuna // Amazon Luna Controller
+057e,2019,CommunityN64 // Nintendo Switch Online N64
+06f7,0001,CommunityN64 // N64 Adaptoid
+2dc8,9002,CommunityN64 // Retro-bit x 8Bitdo RB8-64 (USB)
+2dc8,3830,CommunityN64 // Retro-bit x 8Bitdo RB8-64 (BT)
