@@ -312,10 +312,13 @@ function __input_gamepad_set_mapping()
                     var _mapping = mapping_gm_to_raw[$ _gm_constant];
                     if (_raw_type == __INPUT_MAPPING.AXIS_TO_BUTTON)
                     {
-                        //Try to reuse the same mapping struct for hat-on-axis
                         if (_mapping == undefined)
                         {
-                            _mapping = set_mapping(_gm_constant, undefined, _raw_type, _entry_name);
+                            _mapping = set_mapping(_gm_constant, _input_slot, _raw_type, _entry_name);
+                        }
+                        else
+                        {
+                            __input_trace("Warning! Mapping for \"", _entry, "\" is a redefinition of entry name \"", _entry_name, "\"");
                         }
                     
                         if (_output_negative)
@@ -371,7 +374,7 @@ function __input_gamepad_set_mapping()
                         {
                             _mapping = set_mapping(_gm_constant, _input_slot, _raw_type, _entry_name);
                         }
-                        else 
+                        else
                         {
                             __input_trace("Warning! Mapping for \"", _entry, "\" is a redefinition of entry name \"", _entry_name, "\"");
                         }
