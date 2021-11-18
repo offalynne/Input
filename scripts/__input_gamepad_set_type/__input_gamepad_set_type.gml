@@ -23,8 +23,7 @@ global.__input_simple_type_lookup = {
 
     PS4Controller: "ps4",
     CommunityPS4:  "ps4",
-
-	PS5Controller: "ps5",
+    PS5Controller: "ps5",
     
     //Switch
     SwitchHandheld:            "switch", //Attached JoyCon pair or Switch Lite
