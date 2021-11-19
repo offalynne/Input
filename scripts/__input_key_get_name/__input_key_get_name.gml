@@ -131,28 +131,32 @@ function __input_key_get_name(_key)
             //UWP uses select keycodes to reflect gamepad input
             //by default this behaviour is ignored (INPUT_IGNORE_RESERVED_KEYS_LEVEL > 0)              
             case os_uwp:
-                case 195: return "gamepad face south";         break;
-                case 196: return "gamepad face east";          break;
-                case 197: return "gamepad face west";          break;
-                case 198: return "gamepad face north ";        break;
-                case 200: return "gamepad shoulder l";         break;
-                case 199: return "gamepad shoulder r";         break;
-                case 201: return "gamepad trigger l";          break;
-                case 202: return "gamepad trigger r";          break;
-                case 208: return "gamepad select";             break;
-                case 207: return "gamepad start";              break;
+                case 195: return "gamepad face south"; break;
+                case 196: return "gamepad face east";  break;
+                case 197: return "gamepad face west";  break;
+                case 198: return "gamepad face north"; break;
+                
+                case 200: return "gamepad shoulder l"; break;
+                case 199: return "gamepad shoulder r"; break;
+                case 201: return "gamepad trigger l";  break;
+                case 202: return "gamepad trigger r";  break;
+                
+                case 208: return "gamepad select"; break;
+                case 207: return "gamepad start";  break;
+                
                 case 209: return "gamepad thumbstick l click"; break;
                 case 210: return "gamepad thumbstick r click"; break;
                 
-                case 203: return "gamepad dpad up";            break;
-                case 204: return "gamepad dpad down";         break;
-                case 205: return "gamepad dpad left";          break;
-                case 206: return "gamepad dpad right";         break;
+                case 203: return "gamepad dpad up";    break;
+                case 204: return "gamepad dpad down";  break;
+                case 205: return "gamepad dpad left";  break;
+                case 206: return "gamepad dpad right"; break;
                 
                 case 214: return "gamepad thumbstick l left";  break;
                 case 213: return "gamepad thumbstick l right"; break;
                 case 211: return "gamepad thumbstick l up";    break;
                 case 212: return "gamepad thumbstick l down";  break;
+                
                 case 218: return "gamepad thumbstick r left";  break;
                 case 217: return "gamepad thumbstick r right"; break;
                 case 215: return "gamepad thumbstick r up";    break;
