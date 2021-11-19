@@ -166,8 +166,8 @@ function __input_key_get_name(_key)
                }
                 
             //UWP also uses Windows case
-            case "browser":
             case os_windows:
+            case "browser":
                 //F11 - F32
                 if ((_key >= vk_f11) && (_key <= vk_f1 + 31))
                 {
