@@ -305,6 +305,11 @@ if (INPUT_IGNORE_RESERVED_KEYS_LEVEL > 0)
         input_ignore_key_add(208); //XInput Back 
         input_ignore_key_add(207); //XInput Start 
         
+        input_ignore_key_add(203); //XInput DP Up 
+        input_ignore_key_add(204); //XInput DP Down 
+        input_ignore_key_add(205); //XInput DP Left
+        input_ignore_key_add(206); //XInput DP Right
+        
         input_ignore_key_add(214); //XInput -LX
         input_ignore_key_add(213); //XInput +LX 
         input_ignore_key_add(211); //XInput -LY 
@@ -313,11 +318,6 @@ if (INPUT_IGNORE_RESERVED_KEYS_LEVEL > 0)
         input_ignore_key_add(217); //XInput +RX 
         input_ignore_key_add(215); //XInput -RY 
         input_ignore_key_add(216); //XInput +RY 
-        
-        input_ignore_key_add(203); //XInput DP Up 
-        input_ignore_key_add(204); //XInput DP Down 
-        input_ignore_key_add(205); //XInput DP Left
-        input_ignore_key_add(206); //XInput DP Right
     }
 }
 
