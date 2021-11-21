@@ -75,6 +75,7 @@
     {"id":{"name":"input_gamepad_get_type","path":"scripts/input_gamepad_get_type/input_gamepad_get_type.yy",},"order":5,},
     {"id":{"name":"input_gamepad_is_axis","path":"scripts/input_gamepad_is_axis/input_gamepad_is_axis.yy",},"order":6,},
     {"id":{"name":"obj_test_double","path":"objects/obj_test_double/obj_test_double.yy",},"order":18,},
+    {"id":{"name":"obj_test_get_default_binding","path":"objects/obj_test_get_default_binding/obj_test_get_default_binding.yy",},"order":20,},
     {"id":{"name":"input_gamepad_is_connected","path":"scripts/input_gamepad_is_connected/input_gamepad_is_connected.yy",},"order":7,},
     {"id":{"name":"input_gamepad_value","path":"scripts/input_gamepad_value/input_gamepad_value.yy",},"order":8,},
     {"id":{"name":"input_keyboard_check_released","path":"scripts/input_keyboard_check_released/input_keyboard_check_released.yy",},"order":2,},
