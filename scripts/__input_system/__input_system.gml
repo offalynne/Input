@@ -289,6 +289,34 @@ if (INPUT_IGNORE_RESERVED_KEYS_LEVEL > 0)
             input_ignore_key_add(vk_f11); //Fullscreen
         }
     }
+    
+    if (os_type == os_uwp)
+    {
+        input_ignore_key_add(195); //XInput A 
+        input_ignore_key_add(196); //XInput B 
+        input_ignore_key_add(197); //XInput X 
+        input_ignore_key_add(198); //XInput Y 
+        input_ignore_key_add(200); //XInput LB 
+        input_ignore_key_add(199); //XInput RB 
+        input_ignore_key_add(201); //XInput LT 
+        input_ignore_key_add(202); //XInput RT 
+        input_ignore_key_add(209); //XInput LS 
+        input_ignore_key_add(210); //XInput RS 
+        input_ignore_key_add(208); //XInput Back 
+        input_ignore_key_add(207); //XInput Start         
+        input_ignore_key_add(203); //XInput DP Up 
+        input_ignore_key_add(204); //XInput DP Down 
+        input_ignore_key_add(205); //XInput DP Left
+        input_ignore_key_add(206); //XInput DP Right        
+        input_ignore_key_add(214); //XInput -LX
+        input_ignore_key_add(213); //XInput +LX 
+        input_ignore_key_add(211); //XInput -LY 
+        input_ignore_key_add(212); //XInput +LY 
+        input_ignore_key_add(218); //XInput -RX 
+        input_ignore_key_add(217); //XInput +RX 
+        input_ignore_key_add(215); //XInput -RY 
+        input_ignore_key_add(216); //XInput +RY 
+    }
 }
 
 //Keyboard ignore level 2+
