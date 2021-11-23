@@ -32,6 +32,8 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 - On Ubuntu, gamepad joystick axes are not signed. GameMaker attempts to automatically sign joystick axes when they connect, but this change is discarded when gamepads are remapped. Input automatically adjusts joystick axes' range on remapping in order to resolve this.
 
+- Steam performs some initial changes in gamepad connection depending on available devices and the configuration of Steam Input. Input waits a configurable number of frames before scanning for connected gamepads to prevent unwanted false connection and disconnection reportage.
+
 - Depending on user configuration, Steam may hide native gamepad devices from the Game Maker Studio runtime, presenting them as normalized virtual gamepads. This is a helpful feature, but gathering more information about devices [may require extension](https://github.com/YAL-GameMaker/steamworks.gml) beyond the scope of Input.
 
 - Steam Input and especially the Steam Controller gamepad make use of Mixed Input, an affordance Input is currently not optimized for. Support for Mixed Input should be improved in the future.
