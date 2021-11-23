@@ -92,16 +92,17 @@
 |--------------|--------------------------|------------------------------------------------------|
 |`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
 
-XInput controllers will typically return `"xbox 360"` whereas any unrecognised gamepad will return `"unknown"`. Xbox Series X/S controllers will return `"xbox one"` owing to similarities across console generations, and that Xbox One gamepads are forwards compatible.
+[XInput](https://wikipedia.org/wiki/DirectInput#XInput) controllers will typically return `"xbox 360"` whereas any unrecognised gamepad will return `"unknown"`. Xbox Series X/S controllers will return `"xbox one"` owing to similarities across console generations, and that Xbox One gamepads are forwards compatible.
 
 The following are valid strings that this function may return:
 
-|Results     |            |                              |
-|------------|------------|------------------------------|
-|`"gamecube"`|`"switch"`  |`"switch joycon [left/right]"`|
-|`"saturn"`  |`"snes"`    |`"n64"`                       |
-|`"psx"`     |`"ps4"`     |`"ps5"`                       |
-|`"xbox 360"`|`"xbox one"`|`"unknown"`                   |
+|Results     |            |            |
+|------------|------------|------------| 
+|`"snes"`    |`"n64"`     |`"gamecube"`|
+|`"switch"`  |`"switch joycon left"`   | `"switch joycon right"`|
+|`"psx"`     |`"ps4"`     |`"ps5"`     |
+|`"xbox 360"`|`"xbox one"`|            |
+|`"saturn"`  |`"unknown"` |            |
 
 &nbsp;
 
