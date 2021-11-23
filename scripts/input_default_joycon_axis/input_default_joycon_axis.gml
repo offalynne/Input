@@ -5,6 +5,8 @@
 
 function input_default_joycon_axis(_axis, _negative, _verb, _alternate = 0)
 {
+	__input_initialize();
+	
     if (__INPUT_DEBUG) __input_trace("Setting default Joy-Con axis binding...");
     
     global.__input_gamepad_valid = true;

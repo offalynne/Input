@@ -3,6 +3,8 @@
 
 function input_default_mouse_wheel_up(_verb, _alternate = 0)
 {
+	__input_initialize();
+	
     if (__INPUT_DEBUG) __input_trace("Setting default mouse wheel up binding...");
     
     if (!global.__input_mouse_blocked) 

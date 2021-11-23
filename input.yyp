@@ -134,6 +134,7 @@
     {"id":{"name":"__input_gamepad_set_type","path":"scripts/__input_gamepad_set_type/__input_gamepad_set_type.yy",},"order":15,},
     {"id":{"name":"__input_gamepad_set_vid_pid","path":"scripts/__input_gamepad_set_vid_pid/__input_gamepad_set_vid_pid.yy",},"order":16,},
     {"id":{"name":"__input_key_get_name","path":"scripts/__input_key_get_name/__input_key_get_name.yy",},"order":17,},
+    {"id":{"name":"__input_initialize","path":"scripts/__input_initialize/__input_initialize.yy",},"order":27,},
     {"id":{"name":"obj_test_touch","path":"objects/obj_test_touch/obj_test_touch.yy",},"order":17,},
     {"id":{"name":"input_default_joycon_axis","path":"scripts/input_default_joycon_axis/input_default_joycon_axis.yy",},"order":7,},
     {"id":{"name":"__input_key_is_ignored","path":"scripts/__input_key_is_ignored/__input_key_is_ignored.yy",},"order":18,},
@@ -201,7 +202,7 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"test_load_mapping.json","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2.3.5.589",
+    "IDEVersion": "2.3.6.595",
   },
   "resourceVersion": "1.4",
   "name": "input",

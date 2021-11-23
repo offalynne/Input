@@ -2,6 +2,8 @@
 
 function input_default_gamepad_swap_ab(_state)
 {
+	__input_initialize();
+	
     with(global.__input_default_player)
     {
         var _source_verb_struct = config[$ "gamepad"];
