@@ -39,6 +39,8 @@ Compile time configuration is controlled by macros stored in `__input_config()` 
 |`INPUT_SDL2_DATABASE_PATH`                |`sdl2.txt`               |Path to the SDL2 database to read gamepad remapping definitions from                                                                                  |
 |`INPUT_CONTROLLER_TYPE_PATH`              |`controllertypes.csv`    |Path to the controller type database to read gamepad types from                                                                                       |
 |`INPUT_BLACKLIST_PATH`                    |`controllerblacklist.csv`|Path to the controller blacklist database to read from                                                                                                |
+|`INPUT_GAMEPADS_TICK_PREDELAY`            |`10`                     |How many frames to wait before scanning for connected gamepads. Works around Steam reporting confusing connection events on boot                 |
+
 
 `INPUT_IGNORE_RESERVED_KEYS_LEVEL` can take the following values:
 
