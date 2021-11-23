@@ -94,15 +94,14 @@
 
 [XInput](https://wikipedia.org/wiki/DirectInput#XInput) controllers will typically return `"xbox 360"` whereas any unrecognised gamepad will return `"unknown"`. Xbox Series X/S controllers will return `"xbox one"` owing to similarities across console generations, and that Xbox One gamepads are forwards compatible.
 
-The following are valid strings that this function may return:
+The following are valid strings this function may return besides `"unknown"`:
 
 |Results     |            |            |
 |------------|------------|------------| 
 |`"snes"`    |`"n64"`     |`"gamecube"`|
 |`"switch"`  |`"switch joycon left"`   | `"switch joycon right"`|
 |`"psx"`     |`"ps4"`     |`"ps5"`     |
-|`"xbox 360"`|`"xbox one"`|            |
-|`"saturn"`  |`"unknown"` |            |
+|`"xbox 360"`|`"xbox one"`|`"saturn"`  |
 
 &nbsp;
 
