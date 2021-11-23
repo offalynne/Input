@@ -98,10 +98,10 @@ The following are valid strings this function may return besides `"unknown"`:
 
 |Results     |            |            |
 |------------|------------|------------| 
-|`"snes"`    |`"n64"`     |`"gamecube"`|
-|`"switch"`  |`"switch joycon left"`   | `"switch joycon right"`|
+|`"switch"`  |`"switch joycon left"` | `"switch joycon right"`|
 |`"psx"`     |`"ps4"`     |`"ps5"`     |
 |`"xbox 360"`|`"xbox one"`|`"saturn"`  |
+|`"snes"`    |`"n64"`     |`"gamecube"`|
 
 &nbsp;
 
