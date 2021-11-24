@@ -125,4 +125,4 @@ For generalized directional pad appearance, see [`input_gamepad_get_dpad_style`]
 [n64_face]: https://i.imgur.com/slfqguq.png
 [n64_shld]: https://i.imgur.com/JwfK3ud.png
 [n64_trggr]: https://i.imgur.com/eDYKUbW.png
-[n64_start]: https://i.imgur.com/RQQWauR.png
+[n64_start]: https://i.imgur.com/9fRnJet.png
