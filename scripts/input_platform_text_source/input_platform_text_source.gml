@@ -8,19 +8,21 @@ function input_platform_text_source()
     {
         if (os_type == os_android)
         {
+            var _ret = "virtual";
             var _map = os_get_info();
             if (ds_exists(_map, ds_type_map))
             {
+                
                 if (_map[? "PHYSICAL_KEYBOARD"])
                 {
-                    return "keyboard";
+                    _ret = "keyboard";
                 }
                 
                 ds_map_destroy(_map);
             }
         }
 
-        return "virtual";
+        return _ret;
     }
     else
     {
