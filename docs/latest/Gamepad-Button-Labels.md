@@ -77,10 +77,11 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 ?> On the N64 controller type, [`"gamepad thumbstick r"` directions](Binding-Names#gamepad) indicate [C buttons](https://www.ssbwiki.com/Category:Button_icons_(N64)#/media/File:ButtonIcon-N64-C.svg).
 
+&nbsp;
 
 ## Directional Pads
 
-For generalized directional pad appearance, see [input_gamepad_get_dpad_style](Functions-(Gamepad)#input_gamepad_get_dpad_stylegamepadindex).
+For generalized directional pad appearance, see [`input_gamepad_get_dpad_style`](Functions-(Gamepad)#input_gamepad_get_dpad_stylegamepadindex).
 
 *Example art courtesy https://thoseawesomeguys.com/prompts (CC0) and https://www.ssbwiki.com (CC BY-SA 3.0)*
 
