@@ -140,7 +140,7 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
     <thead>
     <tr>
 		<th align="left">Gamepad type</th>
-		<th align="left">face south, east, west, north</th>
+		<th align="center">face south, east, west, north</th>
 		<th align="center">shoulder l, r</th>
 		<th align="center">trigger l, r</th>
 		<th align="center">select</th>
@@ -150,7 +150,7 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 	<tbody>
 	<tr>
 		<td align="left"><code>"snes"</code></td>
-		<td align="left"><img src="https://i.imgur.com/OZhHN2h.png" alt="B A Y X"></td>
+		<td align="center"><img src="https://i.imgur.com/OZhHN2h.png" alt="B A Y X"></td>
 		<td align="center"><img src="https://i.imgur.com/hMP8Esy.png" alt="L R"></td>
 		<td align="center"><em>N/A</em></td>
 		<td colspan="2" align="center"><img src="https://i.imgur.com/RXRxJle.png" alt="Sel St"></td>
@@ -172,7 +172,7 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 	</tr>
 	<tr>
 		<td align="left"><code>"gamecube"</code></td>
-		<td align="left"><img src="https://i.imgur.com/VGJomWe.png" alt="A X B Y"></td>
+		<td align="center"><img src="https://i.imgur.com/VGJomWe.png" alt="A X B Y"></td>
 		<td align="center"><em>N/A</em>, <img src="https://i.imgur.com/DYg6lWQ.png" alt="Z"></td>
 		<td align="center"><img src="https://i.imgur.com/GypmO6Z.png" alt="L R"></td>
 		<td align="center"><img src="https://i.imgur.com/mvuPfLv.png" alt="Start"></td>
