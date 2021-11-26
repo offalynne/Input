@@ -164,7 +164,7 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 	</tr>
 	<tr>
 		<td align="left"><code>"n64"</code></td>
-		<td colspan="2" align="center"><img src="https://i.imgur.com/slfqguq.png" alt="A B"><span style="display:inline-block; width:100px; text-align:left;"></td>
+		<td colspan="2" align="center"><img src="https://i.imgur.com/slfqguq.png" alt="A B"></td>
 		<td align="center"><em>N/A</em></td>
 		<td align="center"><em>N/A</em></td>
 		<td colspan="2" align="center"><img src="https://i.imgur.com/JwfK3ud.png" alt="L R"></td>
