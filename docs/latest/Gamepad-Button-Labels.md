@@ -14,10 +14,30 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 ## Xbox and Xbox-like
 
-| Gamepad type  | face south, east, west, north |  shoulder l, r    |  trigger l, r      |  select, start         |
-|:--------------|:-----------------------------:|:-----------------:|:------------------:|:----------------------:|
-|  `"xbox 360"` | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![Back Start][xb_meta] |
-|  `"xbox one"` | ![A B X Y][xb_face]           | ![LB RB][xb_shld] | ![LT RT][xb_trggr] | ![View Menu][xo_meta]  |
+<table>
+	<thead>
+		<tr>
+			<th align="left">Gamepad type</th>
+			<th align="center">face south, east, west, north</th>
+			<th align="center">shoulder l, r</th>
+			<th align="center">trigger l, r</th>
+			<th align="center">select, start</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td align="left"><code>"xbox 360"</code></td>
+			<td rowspan="2" align="center"><img src="https://i.imgur.com/StIK9or.png" alt="A B X Y"></td>
+			<td rowspan="2" align="center"><img src="https://i.imgur.com/W3isGVt.png" alt="LB RB"></td>
+			<td rowspan="2" align="center"><img src="https://i.imgur.com/XtrPne2.png" alt="LT RT"></td>
+			<td align="center"><img src="https://i.imgur.com/S9lZyQe.png" alt="Back Start"></td>
+		</tr>
+	<tr>
+		<td align="left"><code>"xbox one"</code></td>
+		<td align="center"><img src="https://i.imgur.com/YFmYk3A.png" alt="View Menu"></td>
+	</tr>
+	</tbody>
+</table>
 
 ?> Xbox Series S|X gamepads are considered Xbox One type on all platforms. Xbox-like and XInput gamepads are categorized by their closest match, eg. the Steam Controller is considered Xbox 360 type, while Stadia is considered Xbox One type.
 
@@ -25,11 +45,34 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 ## PlayStation
 
-| Gamepad type | face south, east, west, north             |  shoulder l, r    |  trigger l, r      |  select, start           |
-|:-------------|:-----------------------------------------:|:-----------------:|:------------------:|:------------------------:|
-|  `"psx"`     | ![Cross Circle Square Triangle][ps_face]  | ![L1 R1][ps_shld] | ![L2 R2][ps_trggr] | ![Sel St][ps3_meta]      |
-|  `"ps4"`     | ![Cross Circle Square Triangle][ps_face]  | ![L1 R1][ps_shld] | ![L2 R2][ps_trggr] | ![Opt Menu][ps4_meta]    |
-|  `"ps5"`     | ![Cross Circle Square Triangle][ps_face]  | ![L1 R1][ps_shld] | ![L2 R2][ps_trggr] | ![Create Menu][ps5_meta] |
+<table>
+	<thead>
+	<tr>
+	<th align="left">Gamepad type</th>
+	<th align="center">face south, east, west, north</th>
+	<th align="center">shoulder l, r</th>
+	<th align="center">trigger l, r</th>
+	<th align="center">select, start</th>
+	</tr>
+	</thead>
+    <tbody>
+    <tr>
+		<td align="left"><code>"psx"</code></td>
+		<td rowspan="3" align="center"><img src="https://i.imgur.com/lBwBvfL.png" alt="Cross Circle Square Triangle"></td>
+		<td rowspan="3" align="center"><img src="https://i.imgur.com/Y7OzYx5.png" alt="L1 R1"></td>
+		<td rowspan="3" align="center"><img src="https://i.imgur.com/38ifmTB.png" alt="L2 R2"></td>
+		<td align="center"><img src="https://i.imgur.com/MPT3cmA.png" alt="Sel St"></td>
+	</tr>
+	<tr>
+		<td align="left"><code>"ps4"</code></td>
+		<td align="center"><img src="https://i.imgur.com/3u6CDEl.png" alt="Opt Menu"></td>
+	</tr>
+	<tr>
+		<td align="left"><code>"ps5"</code></td>
+		<td align="center"><img src="https://i.imgur.com/7k8dZJI.png" alt="Create Menu"></td>
+	</tr>
+	</tbody>
+</table>
 
 ?> The `"psx"` type encompasses all PlayStation console gamepads prior to and including the PS3, as well as PlayStation Classic gamepads.
 
@@ -57,10 +100,28 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 ### JoyCons
 
-| Gamepad type            | face south, east, west, north |  shoulder l, r    |  select, start         |
-|:------------------------|:-----------------------------:|:-----------------:|:----------------------:|
-| `"switch joycon left"`  | ![S W E N][jc_face]           | ![SL SR][jc_shld] | ![- Capture][jcl_meta] |
-| `"switch joycon right"` | ![S W E N][jc_face]           | ![SL SR][jc_shld] | ![Home +][jcr_meta]    |
+<table>
+	<thead>
+	<tr>
+		<th align="left">Gamepad type</th>
+		<th align="center">face south, east, west, north</th>
+		<th align="center">shoulder l, r</th>
+		<th align="center">select, start</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td align="left"><code>"switch joycon left"</code></td>
+		<td rowspan="2" align="center"><img src="https://i.imgur.com/zA8Dyj8.png" alt="S W E N"></td>
+		<td rowspan="2" align="center"><img src="https://i.imgur.com/jCs47Mj.png" alt="SL SR"></td>
+		<td align="center"><img src="https://i.imgur.com/fkWIGk7.png" alt="- Capture"></td>
+	</tr>
+	<tr>
+		<td align="left"><code>"switch joycon right"</code></td>
+		<td align="center"><img src="https://i.imgur.com/z0qdUic.png" alt="Home +"></td>
+	</tr>
+	</tbody>
+</table>
 
 ?> Input assumes individual JoyCons will be used in the [solo horizontal grip](https://en-americas-support.nintendo.com/app/answers/detail/a_id/22740/kw/#:~:text=Joy-Con%20with%20wrist-strap%20being%20held%20in%20a%20solo%20horizontal%20grip) orientation (unified as a pair they are identified as the `"switch"` type). The Capture and Home buttons (`gamepad button select`) are not available for binding on the Switch platform.
 
@@ -68,12 +129,49 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 ## Legacy
 
-| Gamepad type | face south, east, west, north |  shoulder l, r       |  trigger l, r         |  select, start             |
-|:-------------|:------------------------------|:--------------------:|:---------------------:|:--------------------------:|
-| `"snes"`     | ![B A Y X][nin_face]          | ![L R][nin_shld]     | *N/A*                 | ![Sel St][sfc_meta]        |
-| `"saturn"`   | ![A B X Y][xb_face]           | ![L Z][sat_shld]     | ![R C][sat_trggr]     | *N/A*, ![Start][sat_start] |
-| `"n64"`      | ![A B][n64_face], *N/A*, *N/A*| ![L R][n64_shld]     | ![Z][n64_trggr], *N/A*| *N/A*, ![Start][n64_start] |
-| `"gamecube"` | ![A X B Y][gc_face]           | *N/A*, ![Z][gc_shld] | ![L R][gc_trggr]      | *N/A*, ![Start][gc_start]  |
+<table>
+    <thead>
+    <tr>
+		<th align="left">Gamepad type</th>
+		<th align="left">face south, east, west, north</th>
+		<th align="center">shoulder l, r</th>
+		<th align="center">trigger l, r</th>
+		<th align="center">select</th>
+		<th align="center">start</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td align="left"><code>"snes"</code></td>
+		<td align="left"><img src="https://i.imgur.com/OZhHN2h.png" alt="B A Y X"></td>
+		<td align="center"><img src="https://i.imgur.com/hMP8Esy.png" alt="L R"></td>
+		<td align="center"><em>N/A</em></td>
+		<td colspan="2" align="center"><img src="https://i.imgur.com/RXRxJle.png" alt="Sel St"></td>
+	</tr>
+	<tr>
+		<td align="left"><code>"saturn"</code></td>
+		<td align="left"><img src="https://i.imgur.com/StIK9or.png" alt="A B X Y"></td>
+		<td align="center"><img src="https://i.imgur.com/RMb1tVb.png" alt="L Z"></td>
+		<td align="center"><img src="https://i.imgur.com/gH6IdMN.png" alt="R C"></td>
+		<td rowspan="3" align="center"><em>N/A</em></td>
+		<td align="center"><img src="https://i.imgur.com/c5u3a8i.png" alt="Start"></td>
+	</tr>
+	<tr>
+		<td align="left"><code>"n64"</code></td>
+		<td align="left"><img src="https://i.imgur.com/slfqguq.png" alt="A B">, <em>N/A</em>, <em>N/A</em></td>
+		<td align="center"><img src="https://i.imgur.com/JwfK3ud.png" alt="L R"></td>
+		<td align="center"><img src="https://i.imgur.com/eDYKUbW.png" alt="Z">, <em>N/A</em></td>
+		<td align="center"><img src="https://i.imgur.com/9fRnJet.png" alt="Start"></td>
+	</tr>
+	<tr>
+		<td align="left"><code>"gamecube"</code></td>
+		<td align="left"><img src="https://i.imgur.com/VGJomWe.png" alt="A X B Y"></td>
+		<td align="center"><em>N/A</em>, <img src="https://i.imgur.com/DYg6lWQ.png" alt="Z"></td>
+		<td align="center"><img src="https://i.imgur.com/GypmO6Z.png" alt="L R"></td>
+		<td align="center"><img src="https://i.imgur.com/mvuPfLv.png" alt="Start"></td>
+	</tr>
+	</tbody>
+</table>
 
 ?> On the N64 controller type, [`"gamepad thumbstick r"` directions](Binding-Names#gamepad) indicate [C buttons](https://www.ssbwiki.com/Category:Button_icons_(N64)#/media/File:ButtonIcon-N64-C.svg).
 
