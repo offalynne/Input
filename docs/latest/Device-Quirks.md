@@ -114,7 +114,7 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 ### Pointing Devices on Desktop
 
-- Input blocks mouse button presses that regain window focus in order to prevent undesired game input or binding.
+- Input blocks mouse button presses that change window focus in order to prevent undesired game input or binding.
 
 - Touch devices are not supported by GameMaker on desktop platforms, except in cases where they operate system-level mouse cursor events.
 
