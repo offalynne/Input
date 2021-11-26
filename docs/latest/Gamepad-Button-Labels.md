@@ -140,40 +140,44 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
     <thead>
     <tr>
 		<th align="left">Gamepad type</th>
-		<th align="center">face south, east, west, north</th>
-		<th align="center">shoulder l, r</th>
-		<th align="center">trigger l, r</th>
+		<th colspan="4" align="center">face south, east, west, north</th>
+		<th colspan="2" align="center">shoulder l, r</th>
+		<th colspan="2" align="center">trigger l, r</th>
 		<th colspan="2" align="center">select, start</th>
 	</tr>
 	</thead>
 	<tbody>
 	<tr>
 		<td align="left"><code>"snes"</code></td>
-		<td align="center"><img src="https://i.imgur.com/OZhHN2h.png" alt="B A Y X"></td>
-		<td align="center"><img src="https://i.imgur.com/hMP8Esy.png" alt="L R"></td>
-		<td align="center"><em>N/A</em></td>
+		<td colspan="4" align="center"><img src="https://i.imgur.com/OZhHN2h.png" alt="B A Y X"></td>
+		<td colspan="2" align="center"><img src="https://i.imgur.com/hMP8Esy.png" alt="L R"></td>
+		<td colspan="2" align="center"><em>N/A</em></td>
 		<td colspan="2" align="center"><img src="https://i.imgur.com/RXRxJle.png" alt="Sel St"></td>
 	</tr>
 	<tr>
 		<td align="left"><code>"saturn"</code></td>
-		<td align="center"><img src="https://i.imgur.com/StIK9or.png" alt="A B X Y"></td>
-		<td align="center"><img src="https://i.imgur.com/RMb1tVb.png" alt="L Z"></td>
-		<td align="center"><img src="https://i.imgur.com/gH6IdMN.png" alt="R C"></td>
+		<td colspan="4" align="center"><img src="https://i.imgur.com/StIK9or.png" alt="A B X Y"></td>
+		<td colspan="2" align="center"><img src="https://i.imgur.com/RMb1tVb.png" alt="L Z"></td>
+		<td colspan="2" align="center"><img src="https://i.imgur.com/gH6IdMN.png" alt="R C"></td>
 		<td rowspan="3" align="center"><em>N/A</em></td>
 		<td align="center"><img src="https://i.imgur.com/c5u3a8i.png" alt="Start"></td>
 	</tr>
 	<tr>
 		<td align="left"><code>"n64"</code></td>
-		<td align="center"><img src="https://i.imgur.com/slfqguq.png" alt="A B"><span style="display:inline-block; width:100px; text-align:left;">, <em>N/A</em>, <em>N/A</em><span></td>
-		<td align="center"><img src="https://i.imgur.com/JwfK3ud.png" alt="L R"></td>
-		<td align="center"><img src="https://i.imgur.com/eDYKUbW.png" alt="Z">, <em>N/A</em></td>
+		<td colspan="2" align="center"><img src="https://i.imgur.com/slfqguq.png" alt="A B"><span style="display:inline-block; width:100px; text-align:left;"></td>
+		<td align="center"><em>N/A</em></td>
+		<td align="center"><em>N/A</em></td>
+		<td colspan="2" align="center"><img src="https://i.imgur.com/JwfK3ud.png" alt="L R"></td>
+		<td align="center"><img src="https://i.imgur.com/eDYKUbW.png" alt="Z"></td>
+		<td align="center"><em>N/A</em></td>
 		<td align="center"><img src="https://i.imgur.com/9fRnJet.png" alt="Start"></td>
 	</tr>
 	<tr>
 		<td align="left"><code>"gamecube"</code></td>
-		<td align="center"><img src="https://i.imgur.com/VGJomWe.png" alt="A X B Y"></td>
-		<td align="center"><em>N/A</em>, <img src="https://i.imgur.com/DYg6lWQ.png" alt="Z"></td>
-		<td align="center"><img src="https://i.imgur.com/GypmO6Z.png" alt="L R"></td>
+		<td colspan="4" align="center"><img src="https://i.imgur.com/VGJomWe.png" alt="A X B Y"></td>
+		<td align="center"><em>N/A</em></td>
+		<td align="center"><img src="https://i.imgur.com/DYg6lWQ.png" alt="Z"></td>
+		<td colspan="2" align="center"><img src="https://i.imgur.com/GypmO6Z.png" alt="L R"></td>
 		<td align="center"><img src="https://i.imgur.com/mvuPfLv.png" alt="Start"></td>
 	</tr>
 	</tbody>
