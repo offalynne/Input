@@ -48,13 +48,13 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 - Many gamepads are not fully supported by iOS due to limited support offered by Apple. At the time of writing, XBox One and PlayStation 4 wireless gamepads are supported by iOS, as are MFi gamepads. For an up-to-date list, please check [Apple's communications](https://support.apple.com/en-us/HT210414).
 
-- [Game controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping. Specifically, the runtime is using an old version of the identifying string used to differentiate gamepads, resulting in the feature being marginally limited on the platform.
+- On Android, [Game controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping. Specifically, the runtime is using an old version of the identifying string used to differentiate gamepads, resulting in the feature being marginally limited on the platform.
 
-- Gamepads are sometimes misreported and often over-reported on the platform so [device blocking](Controller-Mapping#controller-blacklist) is particularly useful.
+- On Android, gamepads are sometimes misreported and often over-reported, so [device blocking](Controller-Mapping#controller-blacklist) is particularly useful.
 
-- Due to GameMaker's handling of the Android gamepad stack, some gamepads do not have functional dpad mappings.
+- On Android, due to GameMaker's handling of the Android gamepad stack, some gamepads do not have functional dpad mappings.
 
-- Switch JoyCons are not properly handled by some versions of the Android kernel. As a result, they are not supported in some circumstances.
+- On Android, Switch JoyCons are not properly handled by some versions of the kernel. As a result, they are not supported in some circumstances.
 
 ### Gamepad on HTML5
 
@@ -108,7 +108,7 @@ GameMaker has a naïve (and in many aspects broken) implementation of [SDL2's ga
 
 - Keyboard input is supported (with the same caveats as on the [Windows platform](#Windows)).
 
-!> Keyboard is not supported by GameMaker (and Input) on the PS4, PS5, Xbox One, Xbox Series X/S, iOS or tvOS platforms.
+!> Keyboard is not supported for gameplay by GameMaker (and Input) on the PS4, PS5, Xbox One/X/S native, iOS or tvOS platforms.
 
 ## Pointing Devices (Mouse and Touch)
 
