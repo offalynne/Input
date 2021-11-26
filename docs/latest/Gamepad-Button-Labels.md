@@ -14,14 +14,15 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 ## Xbox and Xbox-like
 
+<div class="table-wrapper">
 <table>
 	<thead>
 		<tr>
-			<th align="left">Gamepad type</th>
-			<th align="center">face south, east, west, north</th>
-			<th align="center">shoulder l, r</th>
-			<th align="center">trigger l, r</th>
-			<th align="center">select, start</th>
+		<th align="left">Gamepad type</th>
+		<th align="center">face south, east, west, north</th>
+		<th align="center">shoulder l, r</th>
+		<th align="center">trigger l, r</th>
+		<th align="center">select, start</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -38,6 +39,7 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 	</tr>
 	</tbody>
 </table>
+</div>
 
 ?> Xbox Series S|X gamepads are considered Xbox One type on all platforms. Xbox-like and XInput gamepads are categorized by their closest match, eg. the Steam Controller is considered Xbox 360 type, while Stadia is considered Xbox One type.
 
@@ -45,14 +47,15 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 ## PlayStation
 
+<div class="table-wrapper">
 <table>
 	<thead>
 	<tr>
-	<th align="left">Gamepad type</th>
-	<th align="center">face south, east, west, north</th>
-	<th align="center">shoulder l, r</th>
-	<th align="center">trigger l, r</th>
-	<th align="center">select, start</th>
+		<th align="left">Gamepad type</th>
+		<th align="center">face south, east, west, north</th>
+		<th align="center">shoulder l, r</th>
+		<th align="center">trigger l, r</th>
+		<th align="center">select, start</th>
 	</tr>
 	</thead>
     <tbody>
@@ -73,6 +76,7 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 	</tr>
 	</tbody>
 </table>
+</div>
 
 ?> The `"psx"` type encompasses all PlayStation console gamepads prior to and including the PS3, as well as PlayStation Classic gamepads.
 
@@ -100,6 +104,7 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 ### JoyCons
 
+<div class="table-wrapper">
 <table>
 	<thead>
 	<tr>
@@ -122,13 +127,15 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 	</tr>
 	</tbody>
 </table>
-
+</div>
+	
 ?> Input assumes individual JoyCons will be used in the [solo horizontal grip](https://en-americas-support.nintendo.com/app/answers/detail/a_id/22740/kw/#:~:text=Joy-Con%20with%20wrist-strap%20being%20held%20in%20a%20solo%20horizontal%20grip) orientation (unified as a pair they are identified as the `"switch"` type). The Capture and Home buttons (`gamepad button select`) are not available for binding on the Switch platform.
 
 &nbsp;
 
 ## Legacy
 
+<div class="table-wrapper">
 <table>
     <thead>
     <tr>
@@ -172,6 +179,7 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 	</tr>
 	</tbody>
 </table>
+</div>
 
 ?> On the N64 controller type, [`"gamepad thumbstick r"` directions](Binding-Names#gamepad) indicate [C buttons](https://www.ssbwiki.com/Category:Button_icons_(N64)#/media/File:ButtonIcon-N64-C.svg).
 
