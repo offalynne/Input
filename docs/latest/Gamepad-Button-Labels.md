@@ -164,15 +164,15 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 	</tr>
 	<tr>
 		<td align="left"><code>"n64"</code></td>
-		<td align="center"><img src="https://i.imgur.com/slfqguq.png" alt="A B"><span style="display:inline-block; width:100px; text-align:left;">, <em>N/A</em>, <em>N/A</em><span></td>
+		<td align="center" style="white-space:nowrap;"><img src="https://i.imgur.com/slfqguq.png" alt="A B"><span style="display:inline-block; width:100px; text-align:left;">, <em>N/A</em>, <em>N/A</em><span></td>
 		<td align="center"><img src="https://i.imgur.com/JwfK3ud.png" alt="L R"></td>
-		<td align="center"><img src="https://i.imgur.com/eDYKUbW.png" alt="Z">, <em>N/A</em></td>
+		<td align="center" style="white-space:nowrap;"><img src="https://i.imgur.com/eDYKUbW.png" alt="Z">, <em>N/A</em></td>
 		<td align="center"><img src="https://i.imgur.com/9fRnJet.png" alt="Start"></td>
 	</tr>
 	<tr>
 		<td align="left"><code>"gamecube"</code></td>
 		<td align="center"><img src="https://i.imgur.com/VGJomWe.png" alt="A X B Y"></td>
-		<td align="center"><em>N/A</em>, <img src="https://i.imgur.com/DYg6lWQ.png" alt="Z"></td>
+		<td align="center" style="white-space:nowrap;"><em>N/A</em>, <img src="https://i.imgur.com/DYg6lWQ.png" alt="Z"></td>
 		<td align="center"><img src="https://i.imgur.com/GypmO6Z.png" alt="L R"></td>
 		<td align="center"><img src="https://i.imgur.com/mvuPfLv.png" alt="Start"></td>
 	</tr>
