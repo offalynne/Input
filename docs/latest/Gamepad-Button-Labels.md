@@ -156,7 +156,7 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 	</tr>
 	<tr>
 		<td align="left"><code>"saturn"</code></td>
-		<td align="left"><img src="https://i.imgur.com/StIK9or.png" alt="A B X Y"></td>
+		<td align="center"><img src="https://i.imgur.com/StIK9or.png" alt="A B X Y"></td>
 		<td align="center"><img src="https://i.imgur.com/RMb1tVb.png" alt="L Z"></td>
 		<td align="center"><img src="https://i.imgur.com/gH6IdMN.png" alt="R C"></td>
 		<td rowspan="3" align="center"><em>N/A</em></td>
@@ -164,7 +164,7 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 	</tr>
 	<tr>
 		<td align="left"><code>"n64"</code></td>
-		<td align="left"><img src="https://i.imgur.com/slfqguq.png" alt="A B">, <em>N/A</em>, <em>N/A</em></td>
+		<td align="center"><img src="https://i.imgur.com/slfqguq.png" alt="A B"><span style="display:inline-block; width:100px;">, <em>N/A</em>, <em>N/A</em><span></td>
 		<td align="center"><img src="https://i.imgur.com/JwfK3ud.png" alt="L R"></td>
 		<td align="center"><img src="https://i.imgur.com/eDYKUbW.png" alt="Z">, <em>N/A</em></td>
 		<td align="center"><img src="https://i.imgur.com/9fRnJet.png" alt="Start"></td>
