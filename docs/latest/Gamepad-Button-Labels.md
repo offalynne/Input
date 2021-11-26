@@ -143,8 +143,7 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 		<th align="center">face south, east, west, north</th>
 		<th align="center">shoulder l, r</th>
 		<th align="center">trigger l, r</th>
-		<th align="center">select</th>
-		<th align="center">start</th>
+		<th colspan="2" align="center">select, start</th>
 	</tr>
 	</thead>
 	<tbody>
