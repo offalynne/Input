@@ -125,7 +125,7 @@ This function will return one of the following:
 |`"disc"`       |Xbox 360, Steam Controller, Saturn              |<img alt="Disc art example" width="150" src="https://i.imgur.com/IO0DjVQ.png">|
 |`"cross"`      |Default                                         |<img alt="Cross art example" width="150" src="https://i.imgur.com/b7f8Gnj.png">|
 
-*Example art courtesy https://thoseawesomeguys.com/prompts, CC0*
+*Example art courtesy https://thoseawesomeguys.com/prompts ([CC0](https://creativecommons.org/share-your-work/public-domain/cc0))*
 
 &nbsp;
 
@@ -151,6 +151,6 @@ If there is no gamepad connected for the given index, an empty array will be ret
 
 *Returns:* String, the human-readable name of the [virtual button/axis constant](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)
 
-|Name          |Datatype|Purpose                                               |
+|Name          |Datatype|Purpose                                               |t
 |--------------|--------|------------------------------------------------------|
 |`GMconstant`  |integer |Button or axis to stringify, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
