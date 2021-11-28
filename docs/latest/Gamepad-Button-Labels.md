@@ -191,7 +191,7 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 For generalized directional pad appearance, see [`input_gamepad_get_dpad_style`](Functions-(Gamepad)#input_gamepad_get_dpad_stylegamepadindex).
 
-*Example art courtesy https://thoseawesomeguys.com/prompts (CC0) and https://www.ssbwiki.com (CC BY-SA 3.0)*
+*Example art courtesy https://thoseawesomeguys.com/prompts ([CC0](https://creativecommons.org/share-your-work/public-domain/cc0)) and https://www.ssbwiki.com ([CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/))*
 
 [xb_face]: https://i.imgur.com/StIK9or.png
 [xb_shld]: https://i.imgur.com/W3isGVt.png
