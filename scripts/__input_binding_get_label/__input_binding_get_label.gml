@@ -48,10 +48,10 @@ function __input_binding_get_label(_type, _value, _axis_negative)
         case "gamepad axis":
             switch(_value)
             {
-                case gp_face1:      return "gamepad face south";         break; //Xbox A, PlayStation Cross, Switch B
-                case gp_face2:      return "gamepad face east";          break; //Xbox B, PlayStation Circle, Switch A
-                case gp_face3:      return "gamepad face west";          break; //Xbox X, PlayStation Square, Switch Y
-                case gp_face4:      return "gamepad face north";         break; //Xbox Y, PlayStation Triangle, Switch X
+                case gp_face1:      return "gamepad face south";         break; //Xbox A, Switch B, PlayStation Cross
+                case gp_face2:      return "gamepad face east";          break; //Xbox B, Switch A, PlayStation Circle
+                case gp_face3:      return "gamepad face west";          break; //Xbox X, Switch Y, PlayStation Square
+                case gp_face4:      return "gamepad face north";         break; //Xbox Y, Switch X, PlayStation Triangle
                 case gp_shoulderl:  return "gamepad shoulder l";         break;
                 case gp_shoulderr:  return "gamepad shoulder r";         break;
                 case gp_shoulderlb: return "gamepad trigger l";          break;
