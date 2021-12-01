@@ -34,3 +34,4 @@ headset,android,description contains // headsets and adapters
 sennheiser,android,description contains // sennheiser brand headsets
 corsair,android,description contains // corsair mice, keyboards, adapters
 bt kb,android,description contains // gamesir bluetooth keyboards
+uinput-fpc,android,description contains // google pixel fingerprint sensor
