@@ -8,12 +8,13 @@
 39373064396565646338333134303131,all,guid // joycon right android (handled internally)
 030000007e0500000920000000020000,all,guid // switch pro controller macos 
 030000007e0500000920000011010000,all,guid // switch pro controller linux
-61393962646434393836356631636132,all,guid // pro controller android
+61393962646434393836356631636132,all,guid // switch pro controller android
 71011904000000000000504944564944,all,guid // luna dinput windows
 31730100000000000000504944564944,all,guid // dshidmini d4w mode windows
 5e04050b000000000000504944564944,all,guid // xb elite dinput windows
 39666538356630396233636633333330,all,guid // xb elite s2 usb android
 31343431323332663936386663646631,all,guid // sg-h510 switch android
+61393962646434393836356631636132,all,guid // 8bitdo lite switch android
 61373939383333653939323337373730,all,guid // ps/2 usb adapter android
 37626665373466346563356534326663,all,guid // logitech kbm receiver android
 35623363656536396133623234666231,all,guid // elecom trackball android
