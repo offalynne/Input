@@ -402,8 +402,9 @@ function __input_gamepad_set_mapping()
                 
                     if (__INPUT_DEBUG) __input_trace(_entry_name, " = ", _raw_type, _entry_1);
                 
-                    //Set axis range quirks
-                    if ((_raw_type == __INPUT_MAPPING.AXIS) || (_raw_type == __INPUT_MAPPING.SPLIT_AXIS))
+                    //Handle unsigned axes for nondirectional input
+                    if ((os_type == os_linux)
+                    && ((_raw_type == __INPUT_MAPPING.AXIS) || (_raw_type == __INPUT_MAPPING.SPLIT_AXIS)))
                     {
                         //Identify directional input
                         var _is_directional = false;
@@ -417,17 +418,10 @@ function __input_gamepad_set_mapping()
                             break;
                         }
                 
-                        //Linux axis ranges affecting directional input are normalized after remapping
-                        if ((os_type == os_linux) && _is_directional)
-                        {    
+                        if (_is_directional)
+                        {
                             if (__INPUT_DEBUG) __input_trace("  (Limiting axis range)");
                             _mapping.limit_range = true;
-                        }
-                        else if ((os_type != os_linux) && !_is_directional)
-                        {
-                            //Nondirectional input uses full axis range (excepting Linux remappings and XInput)
-                            if (__INPUT_DEBUG) __input_trace("  (Extending axis range)");
-                            _mapping.extend_range = true;
                         }
                     }
                 }
