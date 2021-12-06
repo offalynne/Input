@@ -49,7 +49,6 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
             break;
             
             case __INPUT_MAPPING.AXIS:
-            case __INPUT_MAPPING.AXIS_TO_BUTTON:
                 value = gamepad_axis_value(_gamepad, raw);
             break;
             
@@ -60,6 +59,13 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
             case __INPUT_MAPPING.HAT_TO_AXIS:
                 value = ((gamepad_hat_value( _gamepad, raw_positive) & hat_mask_positive) > 0) - ((gamepad_hat_value(_gamepad, raw_negative) & hat_mask_negative) > 0);
             break;
+            
+            case __INPUT_MAPPING.BUTTON_TO_AXIS:
+                var _positive = gamepad_button_check(_gamepad, raw_positive);
+                var _negative = gamepad_button_check(_gamepad, raw_negative);
+                
+                value = _positive - _negative;
+            break;                
             
             case __INPUT_MAPPING.SPLIT_AXIS:
                 var _positive = gamepad_axis_value(_gamepad, raw_positive);
@@ -80,18 +86,6 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
         if (clamp_positive) value = clamp(value,  0, 1);
         if (invert)         value = 1 - value;
         if (reverse)        value = -value;
-        
-        if (type == __INPUT_MAPPING.AXIS_TO_BUTTON)
-        {
-            if (direction_sign < 0)
-            {
-                value = (value < -__INPUT_AXIS_TO_BUTTON_THRESHOLD);
-            }
-            else
-            {
-                value = (value > __INPUT_AXIS_TO_BUTTON_THRESHOLD);
-            }
-        }
         
         held = (abs(value) > __INPUT_HOLD_THRESHOLD);
         

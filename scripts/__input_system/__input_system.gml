@@ -20,7 +20,6 @@
 #macro __INPUT_SDL2_SUPPORT     (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || (os_type == os_android)))
 
 #macro __INPUT_HOLD_THRESHOLD  0.2 //Minimum value from an axis for that axis to be considered activated at the gamepad layer. This is *not* the same as min/max thresholds for players
-#macro __INPUT_AXIS_TO_BUTTON_THRESHOLD  0.75 //Minimum value from an axis to activate buttons that it is mapped to
 
 //Extra constants
 #macro gp_guide    32789
@@ -67,7 +66,7 @@ enum __INPUT_MAPPING
     AXIS,
     HAT,
     HAT_TO_AXIS,
-    AXIS_TO_BUTTON,
+    BUTTON_TO_AXIS,
     SPLIT_AXIS,
     __SIZE
 }
