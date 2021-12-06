@@ -10,7 +10,7 @@ enum INPUT_BINDING_SCAN_EVENT
     GAMEPAD_CHANGED             = -12, //Gamepad index changed
     GAMEPAD_INVALID             = -13, //Player gamepad is invalid (is INPUT_NO_GAMEPAD)
     BINDING_DOESNT_MATCH_SOURCE = -14, //The new binding doesn't match the source that was targetted for rebinding
-    TIMEOUT                     = -20, //Scanning for a binding timed out - either the player didn't enter a new binding or a stuck key prevented the system from working
+    SCAN_TIMEOUT                = -20, //Scanning for a binding timed out - either the player didn't enter a new binding or a stuck key prevented the system from working
     LOST_FOCUS                  = -21, //The game lost focus
 }
 
@@ -99,7 +99,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
                 __input_trace("Binding scan failed: Timed out");
                 rebind_state = -1;
                     
-                return INPUT_BINDING_SCAN_EVENT.TIMEOUT;
+                return INPUT_BINDING_SCAN_EVENT.SCAN_TIMEOUT;
             }
             
             #endregion
