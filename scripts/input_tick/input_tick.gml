@@ -4,6 +4,8 @@ function input_tick()
     
     global.__input_frame++;
     
+	
+	
     #region Touch
     
     if (__INPUT_TOUCH_SUPPORT && INPUT_TOUCH_POINTER_ALLOWED)
@@ -241,77 +243,80 @@ function input_tick()
     
     #endregion
     
-    #region Update gamepads
+    #region Gamepads
     
-    //Expand dynamic device count
-    var _device_change = max(0, gamepad_get_device_count() - array_length(global.__input_gamepads))
-    repeat(_device_change) array_push(global.__input_gamepads, undefined);
-    
-    var _g = 0;
-    repeat(array_length(global.__input_gamepads))
-    {
-        var _gamepad = global.__input_gamepads[_g];
-        if (is_struct(_gamepad))
-        {
-            if (gamepad_is_connected(_g))
-            {
-                if (os_type == os_switch)
-                {
-                    //When L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
-                    //Instead we have to check for changes in the description to see if state has changed
-                    if (_gamepad.description != gamepad_get_description(_g))
-                    {
-                        _gamepad.discover();
-                    }
-                    else
-                    {
-                        _gamepad.tick();
-                    }
-                }
-                else
-                {
-                    _gamepad.tick();
-                }
-            }
-            else
-            {
-                //Remove our gamepad handler
-                __input_trace("Gamepad ", _g, " disconnected");
-                
-                global.__input_gamepads[@ _g] = undefined;
-                
-                //Also report gamepad changes for any active players
-                var _p = 0;
-                repeat(INPUT_MAX_PLAYERS)
-                {
-                    with(global.__input_players[_p])
-                    {
-                        if ((gamepad == _gamepad) && (source == INPUT_SOURCE.GAMEPAD))
-                        {
-                            __input_trace("Player ", _p, " gamepad disconnected");
-                            
-                            source = INPUT_SOURCE.NONE;
-                            _any_changed = true;
-                        }
-                    }
+	if (global.__input_frame > INPUT_GAMEPADS_TICK_PREDELAY)
+	{
+	    //Expand dynamic device count
+	    var _device_change = max(0, gamepad_get_device_count() - array_length(global.__input_gamepads))
+	    repeat(_device_change) array_push(global.__input_gamepads, undefined);
+		
+	    var _g = 0;
+	    repeat(array_length(global.__input_gamepads))
+	    {
+	        var _gamepad = global.__input_gamepads[_g];
+	        if (is_struct(_gamepad))
+	        {
+	            if (gamepad_is_connected(_g))
+	            {
+	                if (os_type == os_switch)
+	                {
+	                    //When L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
+	                    //Instead we have to check for changes in the description to see if state has changed
+	                    if (_gamepad.description != gamepad_get_description(_g))
+	                    {
+	                        _gamepad.discover();
+	                    }
+	                    else
+	                    {
+	                        _gamepad.tick();
+	                    }
+	                }
+	                else
+	                {
+	                    _gamepad.tick();
+	                }
+	            }
+	            else
+	            {
+	                //Remove our gamepad handler
+	                __input_trace("Gamepad ", _g, " disconnected");
+					
+	                global.__input_gamepads[@ _g] = undefined;
+					
+	                //Also report gamepad changes for any active players
+	                var _p = 0;
+	                repeat(INPUT_MAX_PLAYERS)
+	                {
+	                    with(global.__input_players[_p])
+	                    {
+	                        if ((gamepad == _gamepad) && (source == INPUT_SOURCE.GAMEPAD))
+	                        {
+	                            __input_trace("Player ", _p, " gamepad disconnected");
+								
+	                            source = INPUT_SOURCE.NONE;
+	                            _any_changed = true;
+	                        }
+	                    }
                     
-                    ++_p;
-                }
-            }
-        }
-        else
-        {
-            if (gamepad_is_connected(_g))
-            {
-                __input_trace("Gamepad ", _g, " connected");
-                __input_trace("New gamepad = \"", gamepad_get_description(_g), "\", GUID=\"", gamepad_get_guid(_g), "\"");
-                
-                global.__input_gamepads[@ _g] = new __input_class_gamepad(_g);
-            }
-        }
-        
-        ++_g;
-    }
+	                    ++_p;
+	                }
+	            }
+	        }
+	        else
+	        {
+	            if (gamepad_is_connected(_g))
+	            {
+	                __input_trace("Gamepad ", _g, " connected");
+	                __input_trace("New gamepad = \"", gamepad_get_description(_g), "\", GUID=\"", gamepad_get_guid(_g), "\"");
+					
+	                global.__input_gamepads[@ _g] = new __input_class_gamepad(_g);
+	            }
+	        }
+			
+	        ++_g;
+	    }
+	}
     
     #endregion
     

@@ -13,9 +13,9 @@ global.__input_simple_type_lookup = {
 	
     XBoxOneController: "xbox one",
     CommunityXBoxOne:  "xbox one",
-    CommunityLuna:     "xbox one", //"luna",   //Luna uses XbOne iconography excepting 'View' button 
-    CommunityStadia:   "xbox one", //"stadia", //Stadia uses XbOne iconography excepting shoulders, triggers, 'View' button
-    AppleController:   "xbox one", //"apple",  //Apple uses XbOne iconography excepting shoulders, triggers, 'View' button
+    AppleController:   "xbox one", //  Apple uses XbOne iconography excepting shoulders, triggers, 'View' button
+    CommunityStadia:   "xbox one", // Stadia uses XbOne iconography excepting shoulders, triggers, 'View' button
+    CommunityLuna:     "xbox one", //   Luna uses XbOne iconography excepting 'View' button
     
     //PlayStation
     PS3Controller: "psx",
@@ -24,7 +24,7 @@ global.__input_simple_type_lookup = {
     PS4Controller: "ps4",
     CommunityPS4:  "ps4",
 
-	PS5Controller: "ps5",
+    PS5Controller: "ps5",
     
     //Switch
     SwitchHandheld:            "switch", //Attached JoyCon pair or Switch Lite
@@ -42,8 +42,13 @@ global.__input_simple_type_lookup = {
     CommunityGameCube: "gamecube",
     CommunitySaturn:   "saturn",
     CommunitySNES:     "snes",
+    CommunityN64:      "n64",
 
-    //CommunityOuya:   "ouya", //Retiring Ouya as a simple type (now "unknown"), remains identifiable by raw type
+    ////Retired first class types (see "xbox one"), remain identifiable via raw type
+    //AppleController: "apple",
+    //CommunityStadia: "stadia",
+    //CommunityLuna:   "luna",
+    //CommunityOuya:   "ouya",
     
     Unknown: "unknown",
     unknown: "unknown",

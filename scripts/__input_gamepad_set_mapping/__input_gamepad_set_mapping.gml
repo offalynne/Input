@@ -261,7 +261,18 @@ function __input_gamepad_set_mapping()
                             case "-": _input_negative = true; break;
                             case "+": _input_positive = true; break;
                         
-                            case "b": _raw_type = __INPUT_MAPPING.BUTTON; break;
+                            case "b":
+                                //If we're in button mode but we have a sign for the output direction then this is a button-on-axis mapping
+                                if (_output_negative || _output_positive)
+                                {
+                                    _raw_type = __INPUT_MAPPING.BUTTON_TO_AXIS;
+                                }
+                                else
+                                {
+                                    _raw_type = __INPUT_MAPPING.BUTTON;
+                                }
+                            break;
+                            
                             case "a":
                                 //If we're in axis mode but we have a sign for the output direction then this is a split axis mapping
                                 if (_output_negative || _output_positive)
@@ -278,7 +289,7 @@ function __input_gamepad_set_mapping()
                                 //If we're in hat mode but we have a sign for the output direction then this is a hat-on-axis mapping
                                 if (_output_negative || _output_positive)
                                 {
-                                    _raw_type = __INPUT_MAPPING.HAT_ON_AXIS;
+                                    _raw_type = __INPUT_MAPPING.HAT_TO_AXIS;
                                 }
                                 else
                                 {
@@ -299,9 +310,8 @@ function __input_gamepad_set_mapping()
                 
                     //Try to find out if this constant has been set already
                     var _mapping = mapping_gm_to_raw[$ _gm_constant];
-                    if (_raw_type == __INPUT_MAPPING.HAT_ON_AXIS)
+                    if (_raw_type == __INPUT_MAPPING.HAT_TO_AXIS)
                     {
-                        //Try to reuse the same mapping struct for hat-on-axis
                         if (_mapping == undefined)
                         {
                             _mapping = set_mapping(_gm_constant, undefined, _raw_type, _entry_name);
@@ -318,7 +328,6 @@ function __input_gamepad_set_mapping()
                     }
                     else if (_raw_type == __INPUT_MAPPING.SPLIT_AXIS)
                     {
-                        //Try to reuse the same mapping struct for hat-on-axis
                         if (_mapping == undefined)
                         {
                             _mapping = set_mapping(_gm_constant, undefined, _raw_type, _entry_name);
@@ -337,13 +346,29 @@ function __input_gamepad_set_mapping()
                             if (_input_positive) _mapping.positive_clamp_positive = true;
                         }
                     }
+                    else if (_raw_type == __INPUT_MAPPING.BUTTON_TO_AXIS)
+                    {
+                        if (_mapping == undefined)
+                        {
+                            _mapping = set_mapping(_gm_constant, undefined, _raw_type, _entry_name);
+                        }
+                    
+                        if (_output_negative)
+                        {
+                            _mapping.raw_negative = _input_slot;
+                        }
+                        else if (_output_positive)
+                        {
+                            _mapping.raw_positive = _input_slot;
+                        }
+                    }
                     else
                     {
                         if (_mapping == undefined)
                         {
                             _mapping = set_mapping(_gm_constant, _input_slot, _raw_type, _entry_name);
                         }
-                        else 
+                        else
                         {
                             __input_trace("Warning! Mapping for \"", _entry, "\" is a redefinition of entry name \"", _entry_name, "\"");
                         }
@@ -355,14 +380,14 @@ function __input_gamepad_set_mapping()
                     }
                 
                     //Now manage the hat masks, including setting up hat-on-axis masks
-                    if ((_raw_type == __INPUT_MAPPING.HAT) || (_raw_type == __INPUT_MAPPING.HAT_ON_AXIS))
+                    if ((_raw_type == __INPUT_MAPPING.HAT) || (_raw_type == __INPUT_MAPPING.HAT_TO_AXIS))
                     {
                         var _hat_mask = floor(10*real(_entry_1)); //TODO - lol haxx
                         if (_raw_type == __INPUT_MAPPING.HAT)
                         {
                             _mapping.hat_mask = _hat_mask;
                         }
-                        else if (_raw_type == __INPUT_MAPPING.HAT_ON_AXIS)
+                        else if (_raw_type == __INPUT_MAPPING.HAT_TO_AXIS)
                         {
                             if (_output_negative)
                             {
@@ -378,7 +403,7 @@ function __input_gamepad_set_mapping()
                     if (__INPUT_DEBUG) __input_trace(_entry_name, " = ", _raw_type, _entry_1);
                 
                     //Set axis range quirks
-                    if ((_raw_type == __INPUT_MAPPING.AXIS) || (raw_type == __INPUT_MAPPING.SPLIT_AXIS))
+                    if ((_raw_type == __INPUT_MAPPING.AXIS) || (_raw_type == __INPUT_MAPPING.SPLIT_AXIS))
                     {
                         //Identify directional input
                         var _is_directional = false;
