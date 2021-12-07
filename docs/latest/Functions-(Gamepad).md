@@ -151,6 +151,6 @@ If there is no gamepad connected for the given index, an empty array will be ret
 
 *Returns:* String, the human-readable name of the [virtual button/axis constant](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)
 
-|Name          |Datatype|Purpose                                               |t
+|Name          |Datatype|Purpose                                               |
 |--------------|--------|------------------------------------------------------|
 |`GMconstant`  |integer |Button or axis to stringify, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
