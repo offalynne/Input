@@ -111,12 +111,12 @@ In contrast to [`input_binding_set()`](Functions-(Binding-Management)#input_bind
 
 *Returns:* Struct. See below.
 
-|Name           |Datatype                            |Purpose                                                                                            |
-|---------------|------------------------------------|---------------------------------------------------------------------------------------------------|
-|`verb`         |[verb](Verbs-and-Alternate-Bindings)|[Verb](Verbs-and-Alternate-Bindings) to target                                                     |
-|`[source]`     |[`INPUT_SOURCE`](Input-Sources)     |[Input source](Input-Sources) to target. If not specified, the player's current source will be used|
-|`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                                               |
-|`[alternate]`  |integer                             |[Alternate binding](Verbs-and-Alternate-Bindings) to target. If not specified, `0` is used         |
+|Name           |Datatype                            |Purpose                                                                                                                                             |
+|---------------|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+|`verb`         |[verb](Verbs-and-Alternate-Bindings)|[Verb](Verbs-and-Alternate-Bindings) to target                                                                                                      |
+|`[source]`     |[`INPUT_SOURCE`](Input-Sources)     |[Input source](Input-Sources) to target. If not specified, the player's current source will be used                                                 |
+|`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used. You may also use `"default"` as the player index to retrieve the default binding for this verb|
+|`[alternate]`  |integer                             |[Alternate binding](Verbs-and-Alternate-Bindings) to target. If not specified, `0` is used                                                          |
 
 This function returns a struct that describes the binding for the given verb. It has the following member variables:
 
