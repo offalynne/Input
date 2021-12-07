@@ -21,43 +21,35 @@ Straight away you're going to want to put [`input_tick()`](Functions-(System)#in
 
 &nbsp;
 
-## Step 2: The Enum Zone
+## Step 2: The Verb Zone
 
 Now that the boring techy stuff is out of the way, we can get to the real fun and power of this input system.  We're going to now be defining our verbs.
 
 [Verbs](Verbs-and-Alternate-Bindings) are the basic input actions you want to expose to a player; this includes things like jumping, shooting, pausing the game, or moving in a particular direction. By using verbs we **abstract** user input so that we can change [input source](Input-Sources) while the game is played without needing to change anything else. Using verbs also allows for easier key rebinding.
 
-Let's define some verbs then! You can put this in the Create event of your object.. I'm going to define three controls, one for left, right, and shoot, and then we'll set the [input source](Input-Sources).
+Let's define some verbs then! You can put this in the Create event of your object... I'm going to define three controls, one for left, right, and shoot, and then we'll set the [input source](Input-Sources).
 
 ```
-//Declare an enum that stores verb names
-enum eVerb
-{
-    Left,
-    Right,
-    Shoot,
-}
-
 //Bind keyboard controls to verbs
-input_default_key(vk_left, eVerb.Left);
-input_default_key(vk_right, eVerb.Right);
-input_default_key(ord("A"), eVerb.Shoot); 
+input_default_key(vk_left, "left");
+input_default_key(vk_right, "right");
+input_default_key(ord("A"), "shoot"); 
 
 input_player_source_set(INPUT_SOURCE.KEYBOARD_AND_MOUSE);
 ```
-We've got our convenient enum storage unit for our verb list, and we've got the [`input_default_key()`](Functions-(Default-Bindings)#input_default_keykey-verb-alternate) functions taking the normal key values for the standard GM input features and then the verb we want to assign it to. 
+We've got the [`input_default_key()`](Functions-(Default-Bindings)#input_default_keykey-verb-alternate) functions taking the normal key values for the standard GM input features and then the verb we want to assign it to. Verbs can be numbers if you want to use an enum but, for ease of use, we'll stick to strings.
 
 [`input_player_source_set()`](Functions-(Players)#input_player_source_setsource-playerindex) sets which device you're using. Now we're only one step away from using these tasty functions in game. By uh, using them. In game.
 
-Since GM enums are globally scoped and so is Input, my `obj_input_manager` object will handle everything without needing to be referenced directly. Here's a Step event for you to put in a character object or whatever!
+Here's a Step event for you to put in a character object or whatever!
 
  ```
- //Move the player if the Left or Right verb is activated
-if (input_check(eVerb.Left)) x -= 4;
-if (input_check(eVerb.Right)) x += 4;
+//Move the player if the Left or Right verb is activated
+if (input_check("left")) x -= 4;
+if (input_check("right")) x += 4;
 
 //If the player pressed the "Shoot" button, shoot a bullet
-if (input_check_pressed(eVerb.Shoot)) show_debug_message("bang");
+if (input_check_pressed("shoot")) show_debug_message("bang");
 ```
 
 If you're at all familiar with how the standard GML input functions work, this should look pretty familiar to you. [`input_check()`](Functions-(Checkers)#input_checkverb-playerindex-bufferduration) is like [`keyboard_check()`](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/keyboard%20input/keyboard_check.html) and [`input_check_pressed()`](Functions-(Checkers)#input_check_pressedverb-playerindex-bufferduration) is like [`keyboard_check_pressed()`](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/keyboard%20input/keyboard_check_pressed.html) (i *know* how could you juju my muscle memory smh)
@@ -77,23 +69,15 @@ Lets go back to our create event for a hot sec.
 Take a gander at this new code:
 
 ```
-//Declare an enum that stores verb names
-enum eVerb
-{
-    Left,
-    Right,
-    Shoot,
-}
-
 //Bind keyboard controls to verbs
-input_default_key(vk_left, eVerb.Left);
-input_default_key(vk_right, eVerb.Right);
-input_default_key(ord("A"), eVerb.Shoot); 
+input_default_key(vk_left, "left");
+input_default_key(vk_right, "right");
+input_default_key(ord("A"), "shoot"); 
 
 //Bind gamepad controls to verbs
-input_default_gamepad_button(gp_padl, eVerb.Left);
-input_default_gamepad_button(gp_padr, eVerb.Right);
-input_default_gamepad_button(gp_face1, eVerb.Shoot);
+input_default_gamepad_button(gp_padl, "left");
+input_default_gamepad_button(gp_padr, "right";
+input_default_gamepad_button(gp_face1, "shoot");
 
 //input_player_source_set(INPUT_SOURCE.KEYBOARD_AND_MOUSE);
 input_player_source_set(INPUT_SOURCE.GAMEPAD);
