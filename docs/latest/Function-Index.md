@@ -81,8 +81,8 @@
 
 ### [Source Assignment](Functions-(Source-Assignment))
 
-- [`input_assignment_tick(minPlayers, maxPlayers, leaveVerb)`](Functions-(Source-Assignment)#input_assignment_tickminplayers-maxplayers-leaveverb)
-- [`input_hotswap_tick([playerIndex])`](Functions-(Source-Assignment)#input_hotswap_tickplayerindex)
+- [`input_source_assignment_tick(minPlayers, maxPlayers, leaveVerb)`](Functions-(Source-Assignment)#input_source_assignment_tickminplayers-maxplayers-leaveverb)
+- [`input_source_hotswap_tick([playerIndex])`](Functions-(Source-Assignment)#input_source_hotswap_tickplayerindex)
 - [`input_source_get_name(source)`](Functions-(Source-Assignment)#input_source_get_namesource)
 - [`input_source_detect(source, [gamepad])`](Functions-(Source-Assignment)#input_source_detectsource-gamepad)
 - [`input_source_detect_any()`](Functions-(Source-Assignment)#input_source_detect_any)

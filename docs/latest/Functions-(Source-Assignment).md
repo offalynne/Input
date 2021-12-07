@@ -2,7 +2,7 @@
 
 ---
 
-### `input_assignment_tick(minPlayers, maxPlayers, leaveVerb)`
+### `input_source_assignment_tick(minPlayers, maxPlayers, leaveVerb)`
 
 *Returns:* Boolean, set to `true` when a player attempts to abort controller assignment
 
@@ -22,7 +22,7 @@ Players can join the game by pressing any button on their controller. Players ca
 
 &nbsp;
 
-### `input_hotswap_tick([playerIndex])`
+### `input_source_hotswap_tick([playerIndex])`
 
 *Returns:* Boolean, indicating whether the player's [input source](Input-Sources) and/or [gamepad](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html) was changed this frame
 
