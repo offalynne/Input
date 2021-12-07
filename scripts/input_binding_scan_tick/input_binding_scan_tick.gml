@@ -10,7 +10,7 @@ enum INPUT_BINDING_SCAN_EVENT
     GAMEPAD_CHANGED             = -12, //Gamepad index changed
     GAMEPAD_INVALID             = -13, //Player gamepad is invalid (is INPUT_NO_GAMEPAD)
     BINDING_DOESNT_MATCH_SOURCE = -14, //The new binding doesn't match the source that was targetted for rebinding
-    TIMEOUT                     = -20, //Scanning for a binding timed out - either the player didn't enter a new binding or a stuck key prevented the system from working
+    SCAN_TIMEOUT                = -20, //Scanning for a binding timed out - either the player didn't enter a new binding or a stuck key prevented the system from working
     LOST_FOCUS                  = -21, //The game lost focus
 }
 
@@ -99,7 +99,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
                 __input_trace("Binding scan failed: Timed out");
                 rebind_state = -1;
                     
-                return INPUT_BINDING_SCAN_EVENT.TIMEOUT;
+                return INPUT_BINDING_SCAN_EVENT.SCAN_TIMEOUT;
             }
             
             #endregion
@@ -124,7 +124,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
                 
                 #region Listeners
                 
-                if (global.__input_keyboard_valid 
+                if (global.__input_keyboard_default_defined 
                 && (_keyboard_key > 7) && (_keyboard_key < 57344)
                 && !__input_key_is_ignored(_keyboard_key))
                 {
@@ -145,8 +145,9 @@ function input_binding_scan_tick(_source, _player_index = 0)
                         if ((ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z"))) _new_binding.set_label(_keychar);
                     }
                 }
-                else if (global.__input_mouse_valid && !global.__input_mouse_blocked && (_mouse_button != mb_none) 
-                     && (!__INPUT_TOUCH_SUPPORT || (_mouse_button != mb_left)))
+                else if (global.__input_mouse_default_defined && global.__input_mouse_allowed && !global.__input_mouse_blocked
+                     && (_mouse_button != mb_none)
+                     && (!__INPUT_TOUCH_SUPPORT || (_mouse_button != mb_left))) //GM conflates LMB and touch -- don't rebind
                 {
                     //Mouse buttons
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
@@ -154,7 +155,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
                     _new_binding.set_mouse_button(_mouse_button);
                     _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
                 }
-                else if (global.__input_mouse_valid && mouse_wheel_up())
+                else if (global.__input_mouse_default_defined && mouse_wheel_up())
                 {
                     //Mouse wheel up
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
@@ -162,7 +163,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
                     _new_binding.set_mouse_wheel_up();
                     _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
                 }
-                else if (global.__input_mouse_valid && mouse_wheel_down())
+                else if (global.__input_mouse_default_defined && mouse_wheel_down())
                 {
                     //Mouse wheel down
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
@@ -170,7 +171,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
                     _new_binding.set_mouse_wheel_down();
                     _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
                 }
-                else if (global.__input_gamepad_valid)
+                else if (global.__input_gamepad_default_defined)
                 {
                     //Gamepad buttons and axes
                     var _check_array = [gp_face1, gp_face2, gp_face3, gp_face4, 

@@ -1,5 +1,5 @@
 input_tick();
-input_hotswap_tick();
+input_source_hotswap_tick();
 
 if (input_keyboard_check_pressed(ord("1")))
 {

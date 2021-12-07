@@ -2,7 +2,7 @@
 /// @param maxPlayers
 /// @param leaveVerb
 
-function input_assignment_tick(_min_players, _max_players, _leave_verb)
+function input_source_assignment_tick(_min_players, _max_players, _leave_verb)
 {
     if (_max_players < 1)
     {

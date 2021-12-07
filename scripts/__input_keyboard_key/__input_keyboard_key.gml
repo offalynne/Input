@@ -1,12 +1,11 @@
 function __input_keyboard_key()
 {
-    if (__INPUT_KEYBOARD_SUPPORT && (keyboard_check(vk_anykey)))
+    if (global.__input_keyboard_allowed && (keyboard_check(vk_anykey)))
     {        
         switch (os_type)
         {
             //Android keyboard test
             case os_android:
-                if (!INPUT_ANDROID_KEYBOARD_ALLOWED) return 0;
 
                 //Android UTF8
                 if (keyboard_check(ord(keyboard_lastchar))) return ord(keyboard_lastchar);
@@ -23,7 +22,6 @@ function __input_keyboard_key()
             
             //Switch keyboard test
             case os_switch:
-                if (!INPUT_SWITCH_KEYBOARD_ALLOWED) return 0;
                 
                 //Switch UTF8
                 if (keyboard_check(ord(keyboard_lastchar))) return ord(keyboard_lastchar);

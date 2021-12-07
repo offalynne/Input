@@ -1,5 +1,5 @@
 input_tick();
-input_hotswap_tick();
+input_source_hotswap_tick();
 
 if (input_keyboard_check_pressed(vk_escape) || input_gamepad_check_pressed(input_player_gamepad_get(), gp_start)) rebinding = false;
 
@@ -8,7 +8,7 @@ if (rebinding)
     var _binding = input_binding_scan_tick(rebinding_source);
     if (_binding != undefined)
     {
-        input_binding_set_safe(VERB.UP, _binding);
+        input_binding_set_safe("up", _binding);
         rebinding = false;
     }
 }
@@ -35,6 +35,6 @@ else
     if (input_keyboard_check_pressed(ord("R")))
     {
         rebinding = false;
-        input_binding_remove(VERB.UP, rebinding_source);
+        input_binding_remove("up", rebinding_source);
     }
 }

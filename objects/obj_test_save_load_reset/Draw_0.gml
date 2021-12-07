@@ -1,5 +1,5 @@
-var _string  = "Left  = " + string(input_value(VERB.LEFT )) + "    " + string(input_binding_get(VERB.LEFT )) + "    " + string(input_binding_get_name(input_binding_get(VERB.LEFT ))) + "\n";
-    _string += "Right = " + string(input_value(VERB.RIGHT)) + "    " + string(input_binding_get(VERB.RIGHT)) + "    " + string(input_binding_get_name(input_binding_get(VERB.RIGHT))) + "\n";
+var _string  = "Left  = " + string(input_value("left" )) + "    " + string(input_binding_get("left" )) + "    " + string(input_binding_get_name(input_binding_get("left" ))) + "\n";
+    _string += "Right = " + string(input_value("right")) + "    " + string(input_binding_get("right")) + "    " + string(input_binding_get_name(input_binding_get("right"))) + "\n";
 
 _string += "\n";
 _string += "Enter = Start rebinding\n";

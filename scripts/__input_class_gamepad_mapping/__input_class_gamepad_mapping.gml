@@ -44,13 +44,28 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
         
         switch(type)
         {
-            case __INPUT_MAPPING.BUTTON: value = gamepad_button_check(_gamepad, raw); break;
-            case __INPUT_MAPPING.AXIS:   value = gamepad_axis_value(  _gamepad, raw); break;
-            case __INPUT_MAPPING.HAT:    value = ((gamepad_hat_value( _gamepad, raw) & hat_mask) > 0); break;
+            case __INPUT_MAPPING.BUTTON:
+                value = gamepad_button_check(_gamepad, raw);
+            break;
             
-            case __INPUT_MAPPING.HAT_ON_AXIS:
+            case __INPUT_MAPPING.AXIS:
+                value = gamepad_axis_value(_gamepad, raw);
+            break;
+            
+            case __INPUT_MAPPING.HAT:
+                value = ((gamepad_hat_value(_gamepad, raw) & hat_mask) > 0);
+            break;
+            
+            case __INPUT_MAPPING.HAT_TO_AXIS:
                 value = ((gamepad_hat_value( _gamepad, raw_positive) & hat_mask_positive) > 0) - ((gamepad_hat_value(_gamepad, raw_negative) & hat_mask_negative) > 0);
             break;
+            
+            case __INPUT_MAPPING.BUTTON_TO_AXIS:
+                var _positive = gamepad_button_check(_gamepad, raw_positive);
+                var _negative = gamepad_button_check(_gamepad, raw_negative);
+                
+                value = _positive - _negative;
+            break;                
             
             case __INPUT_MAPPING.SPLIT_AXIS:
                 var _positive = gamepad_axis_value(_gamepad, raw_positive);

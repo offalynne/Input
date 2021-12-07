@@ -3,6 +3,8 @@
 
 function input_player_source_set(_source, _player_index = 0)
 {
+	__input_initialize();
+	
     if (_player_index < 0)
     {
         __input_error("Invalid player index provided (", _player_index, ")");

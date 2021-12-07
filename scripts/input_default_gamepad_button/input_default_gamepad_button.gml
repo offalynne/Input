@@ -4,11 +4,13 @@
 
 function input_default_gamepad_button(_button, _verb, _alternate = 0)
 {
+	__input_initialize();
+	
     if (__INPUT_DEBUG) __input_trace("Setting default gamepad button binding...");
     if (!INPUT_SDL2_ALLOW_GUIDE && (_button == gp_guide)) __input_error("gp_guide not permitted\nSet INPUT_SDL2_ALLOW_GUIDE to <true> to allow gp_guide");
     if (!INPUT_SDL2_ALLOW_MISC1 && (_button == gp_misc1)) __input_error("gp_misc1 not permitted\nSet INPUT_SDL2_ALLOW_MISC1 to <true> to allow gp_misc1");
     
-    global.__input_gamepad_valid = true;
+    global.__input_gamepad_default_defined = true;
     
     if (global.__input_swap_ab)
     {
