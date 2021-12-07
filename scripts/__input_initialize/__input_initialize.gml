@@ -51,8 +51,14 @@ function __input_initialize()
 	global.__input_mouse_valid    = false;
 	global.__input_gamepad_valid  = false;
 	
-	//Disallow mouse bindings on unsupported platforms (unless explicitly enabled)
-	global.__input_mouse_blocked = (__INPUT_ON_PS || __INPUT_ON_XDK || (__INPUT_TOUCH_SUPPORT && !INPUT_TOUCH_POINTER_ALLOWED));
+    //Disallow keyboard bindings on specified platforms unless explicitly enabled
+    global.__input_keyboard_allowed = (__INPUT_KEYBOARD_SUPPORT && ((os_type != os_android) || INPUT_ANDROID_KEYBOARD_ALLOWED) && ((os_type != os_switch) || INPUT_SWITCH_KEYBOARD_ALLOWED));
+
+    //Disallow mouse bindings on unsupported platforms (unless explicitly enabled)
+    global.__input_mouse_allowed = !(__INPUT_ON_PS || __INPUT_ON_XDK || (__INPUT_TOUCH_SUPPORT && !INPUT_TOUCH_POINTER_ALLOWED));
+
+    //Whether mouse is blocked due to Window focus state
+    global.__input_mouse_blocked = false;
 	
 	//Whether to swap A/B gamepad buttons for default bindings
 	global.__input_swap_ab = false;

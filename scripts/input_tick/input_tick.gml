@@ -169,7 +169,7 @@ function input_tick()
     #region Keyboard
     
     //Unstick
-    if (__INPUT_KEYBOARD_SUPPORT && keyboard_check(vk_anykey))
+    if (global.__input_keyboard_allowed && keyboard_check(vk_anykey))
     {
         var _platform = os_type;
         if (__INPUT_ON_WEB && __INPUT_ON_APPLE) _platform = "apple_web";
