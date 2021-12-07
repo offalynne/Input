@@ -23,7 +23,7 @@ function __input_class_cursor() constructor
         prev_x = x;
         prev_y = y;
         
-        if (global.__input_mouse_valid && (other.source == INPUT_SOURCE.KEYBOARD_AND_MOUSE) && (global.__input_mouse_moved || global.__input_cursor_using_mouse))
+        if (global.__input_mouse_default_defined && (other.source == INPUT_SOURCE.KEYBOARD_AND_MOUSE) && (global.__input_mouse_moved || global.__input_cursor_using_mouse))
         {
             global.__input_cursor_using_mouse = true;
             x = global.__input_mouse_x;

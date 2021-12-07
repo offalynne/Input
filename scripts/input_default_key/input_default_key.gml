@@ -9,9 +9,9 @@ function input_default_key(_key, _verb, _alternate = 0)
     if (__INPUT_DEBUG) __input_trace("Setting default keyboard binding...");
     
     //Set keyboard source validity
-    if (!global.__input_keyboard_valid && global.__input_keyboard_allowed)
+    if (!global.__input_keyboard_default_defined && global.__input_keyboard_allowed)
     {
-        global.__input_keyboard_valid = true;
+        global.__input_keyboard_default_defined = true;
     }
     
     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms

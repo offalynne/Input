@@ -35,7 +35,7 @@ function input_source_hotswap_tick(_player_index = 0)
 function __input_hotswap_tick_input(_player_index)
 {
     //Check gamepad input before keyboard input to correctly handle Android duplicating button presses with keyboard presses
-    if (global.__input_gamepad_valid)
+    if (global.__input_gamepad_default_defined)
     {
         var _g = 0;
         repeat(gamepad_get_device_count())
@@ -74,7 +74,7 @@ function __input_hotswap_tick_input(_player_index)
         }
     }
     
-    if (global.__input_keyboard_valid
+    if (global.__input_keyboard_default_defined
     &&  input_source_is_available(INPUT_SOURCE.KEYBOARD_AND_MOUSE)
     &&  keyboard_check(vk_anykey)
     &&  !__input_key_is_ignored(__input_keyboard_key())) //Ensure that this key isn't one we're trying to ignore
@@ -83,7 +83,7 @@ function __input_hotswap_tick_input(_player_index)
         return { source : INPUT_SOURCE.KEYBOARD_AND_MOUSE, gamepad : undefined };
     }
     
-    if (global.__input_mouse_valid
+    if (global.__input_mouse_default_defined
     &&  input_source_is_available(INPUT_SOURCE.KEYBOARD_AND_MOUSE)
     && ( (INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && global.__input_mouse_moved) || input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
     {

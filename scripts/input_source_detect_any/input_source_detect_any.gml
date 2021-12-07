@@ -1,7 +1,7 @@
 function input_source_detect_any()
 {
     //Check gamepad input before keyboard input to correctly handle Android duplicating button presses with keyboard presses
-    if (global.__input_gamepad_valid)
+    if (global.__input_gamepad_default_defined)
     {
         var _g = 0;
         repeat(gamepad_get_device_count())
@@ -15,7 +15,7 @@ function input_source_detect_any()
         }
     }
     
-    if (global.__input_keyboard_valid || global.__input_mouse_valid)
+    if (global.__input_keyboard_default_defined || global.__input_mouse_default_defined)
     {
         if (input_source_detect(INPUT_SOURCE.KEYBOARD_AND_MOUSE))
         {

@@ -47,9 +47,9 @@ function __input_initialize()
 	
 	//Whether these particular input sources are valid
 	//This is determined by what default keybindings are set up
-	global.__input_keyboard_valid = false;
-	global.__input_mouse_valid    = false;
-	global.__input_gamepad_valid  = false;
+	global.__input_keyboard_default_defined = false;
+	global.__input_mouse_default_defined    = false;
+	global.__input_gamepad_default_defined  = false;
 	
     //Disallow keyboard bindings on specified platforms unless explicitly enabled
     global.__input_keyboard_allowed = (__INPUT_KEYBOARD_SUPPORT && ((os_type != os_android) || INPUT_ANDROID_KEYBOARD_ALLOWED) && ((os_type != os_switch) || INPUT_SWITCH_KEYBOARD_ALLOWED));
