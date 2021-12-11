@@ -190,6 +190,10 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunityLuna";
                 }
+                else if (string_count("steam", _desc))
+                {
+                    raw_type = "SteamController";
+                }
                 else if (string_count("ps5", _desc) || string_count("dualsense", _desc))
                 {
                     raw_type = "PS5Controller";
@@ -200,8 +204,7 @@ function __input_gamepad_set_type()
                 }
                 else if (string_count("playstation", _desc) || string_count("ps1", _desc) || string_count("ps2", _desc) || string_count("ps3", _desc) || string_count("dualshock", _desc))
                 {
-                    //Catch all remaining PlayStation gamepads as PSX
-                    raw_type = "CommunityPSX";
+                    raw_type = "CommunityPSX"; //Catch all remaining PlayStation gamepads as PSX
                 }
                 else if (string_count("for switch", _desc) || string_count("for nintendo switch", _desc) || string_count("switch controller", _desc) || string_count("lic pro controller", _desc))
                 {
