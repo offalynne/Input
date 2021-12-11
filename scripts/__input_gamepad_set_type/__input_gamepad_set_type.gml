@@ -62,11 +62,10 @@ var _steam_configs = environment_get_variable("EnableConfiguratorSupport");
     
 //Test for Steam environment and valid Steam Input config
 if (is_string(_steam_environ) && (_steam_environ == "1")
-&&  is_string(_steam_configs) && (_steam_configs != "" )
-&&  (_steam_configs == string_digits(_steam_configs)))
+&&  is_string(_steam_configs) && (string_digits(_steam_configs) != ""))
 {
     //Validate Steam Input configuration
-    var _bitmask = real(_steam_configs);
+    var _bitmask = real(string_digits(_steam_configs));
     if ((_bitmask & 1) != 0)
     {
         //Steam Input is configured to use controller type "PlayStation" (1)
