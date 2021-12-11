@@ -64,7 +64,7 @@ var _steam_configs = environment_get_variable("EnableConfiguratorSupport");
 if (is_string(_steam_environ) && (_steam_environ == "1")
 &&  is_string(_steam_configs) && (string_digits(_steam_configs) != ""))
 {
-    //Validate Steam Input configuration
+    //Evaluate Steam Input configuration
     var _bitmask = real(string_digits(_steam_configs));
     if ((_bitmask & 1) != 0)
     {
