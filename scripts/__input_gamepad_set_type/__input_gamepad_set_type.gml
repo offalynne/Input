@@ -13,9 +13,9 @@ global.__input_simple_type_lookup = {
     XBoxOneController: "xbox one",
     CommunityXBoxOne:  "xbox one",
     CommunityLikeXBox: "xbox one",
-    AppleController:   "xbox one", //  Apple uses XbOne iconography excepting shoulders, triggers, 'View' button
-    CommunityStadia:   "xbox one", // Stadia uses XbOne iconography excepting shoulders, triggers, 'View' button
-    CommunityLuna:     "xbox one", //   Luna uses XbOne iconography excepting 'View' button
+    AppleController:   "xbox one", // Apple uses XbOne iconography excepting 'View' button, shoulders, triggers
+    CommunityStadia:   "xbox one", //Stadia uses XbOne iconography excepting 'View' button, shoulders, triggers
+    CommunityLuna:     "xbox one", //  Luna uses XbOne iconography excepting 'View' button
     
     //PlayStation
     PS3Controller: "psx",
