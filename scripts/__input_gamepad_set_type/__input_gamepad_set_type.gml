@@ -55,30 +55,34 @@ global.__input_simple_type_lookup = {
     UnknownNonSteamController: "unknown"
 }
 
+__input_resolve_steam_config();
 
-//Prevent Steam Input from aliasing PlayStation and Switch controllers as Xbox type
-var _steam_environ = environment_get_variable("SteamEnv");
-var _steam_configs = environment_get_variable("EnableConfiguratorSupport");
-    
-//Test for Steam environment and valid Steam Input config
-if (is_string(_steam_environ) && (_steam_environ == "1")
-&&  is_string(_steam_configs) && (string_digits(_steam_configs) != ""))
+function __input_resolve_steam_config()
 {
-    //Evaluate Steam Input configuration
-    var _bitmask = real(string_digits(_steam_configs));
-    if ((_bitmask & 1) != 0)
+    //Prevent Steam Input from aliasing PlayStation and Switch controllers as Xbox type
+    var _steam_environ = environment_get_variable("SteamEnv");
+    var _steam_configs = environment_get_variable("EnableConfiguratorSupport");
+
+    //Test for Steam environment and valid Steam Input config
+    if (is_string(_steam_environ) && (_steam_environ == "1")
+    &&  is_string(_steam_configs) && (string_digits(_steam_configs) != ""))
     {
-        //Steam Input is configured to use controller type "PlayStation" (1)
-        (global.__input_simple_type_lookup).SteamController = "unknown";
-    }
-    else if ((_bitmask & 8) != 0) 
-    {
-        //Steam Input is configured to use controller type "Switch" (8)
-        var _switch_layout = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");                    
-        if (is_string(_switch_layout) && (_switch_layout == "0"))
+        //Evaluate Steam Input configuration
+        var _bitmask = real(string_digits(_steam_configs));
+        if ((_bitmask & 1) != 0)
         {
-            //XInput-style label swap for Switch (A/B, X/Y) is toggled off
+            //Steam Input is configured to use controller type "PlayStation" (1)
             (global.__input_simple_type_lookup).SteamController = "unknown";
+        }
+        else if ((_bitmask & 8) != 0) 
+        {
+            //Steam Input is configured to use controller type "Switch" (8)
+            var _switch_layout = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");                    
+            if (is_string(_switch_layout) && (_switch_layout == "0"))
+            {
+                //XInput-style label swap for Switch (A/B, X/Y) is toggled off
+                (global.__input_simple_type_lookup).SteamController = "unknown";
+            }
         }
     }
 }
