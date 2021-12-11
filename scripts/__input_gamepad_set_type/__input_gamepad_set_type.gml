@@ -7,9 +7,9 @@ global.__input_simple_type_lookup = {
     XBox360Controller: "xbox 360",
     CommunityXBox360:  "xbox 360",
     CommunityLikeXBox: "xbox 360",
-    SteamController:   "xbox 360", //Steam controller and Link app touch controls use Xb360 iconography
-    SteamControllerV2: "xbox 360", //TODO - revise for Deck if necessary
-    MobileTouch:       "xbox 360", 
+    SteamController:   "xbox 360", //Steam Controller uses Xb360 iconography
+    SteamControllerV2: "xbox 360", //TODO - Revise for Deck if necessary
+    MobileTouch:       "xbox 360", //Steam Link touch controls use Xb360 iconography
 	
     XBoxOneController: "xbox one",
     CommunityXBoxOne:  "xbox one",
@@ -54,6 +54,36 @@ global.__input_simple_type_lookup = {
     unknown: "unknown",
     UnknownNonSteamController: "unknown"
 }
+
+
+//Prevent Steam Input from aliasing PlayStation and Switch controllers as Xbox type
+var _steam_environ = environment_get_variable("SteamEnv");
+var _steam_configs = environment_get_variable("EnableConfiguratorSupport");
+    
+//Test for Steam environment and valid Steam Input config
+if (is_string(_steam_environ) && (_steam_environ == "1")
+&&  is_string(_steam_configs) && (_steam_configs != "" )
+&&  (_steam_configs == string_digits(_steam_configs)))
+{
+    //Validate Steam Input configuration
+    var _bitmask = real(_steam_configs);
+    if ((_bitmask & 1) != 0)
+    {
+        //Steam Input is configured to use controller type "PlayStation" (1)
+        (global.__input_simple_type_lookup).SteamController = "unknown";
+    }
+    else if ((_bitmask & 8) != 0) 
+    {
+        //Steam Input is configured to use controller type "Switch" (8)
+        var _switch_layout = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");                    
+        if (is_string(_switch_layout) && (_switch_layout == "0"))
+        {
+            //XInput-style label swap for Switch (A/B, X/Y) is toggled off
+            (global.__input_simple_type_lookup).SteamController = "unknown";
+        }
+    }
+}
+
 
 function __input_gamepad_set_type()
 {
