@@ -80,7 +80,7 @@ function __input_resolve_steam_config()
         {
             //Steam Input is configured to use controller type "Switch" (8)
             var _switch_layout = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");                    
-            if (is_string(_switch_layout) && (_switch_layout == "0"))
+            if ((_switch_layout != "") && is_string(_switch_layout) && (_switch_layout == "0"))
             {
                 //XInput-style label swap for Switch (A/B, X/Y) is toggled off
                 (global.__input_simple_type_lookup).SteamController = "unknown";
