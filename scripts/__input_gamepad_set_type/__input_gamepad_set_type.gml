@@ -6,16 +6,16 @@ global.__input_simple_type_lookup = {
     //Xbox
     XBox360Controller: "xbox 360",
     CommunityXBox360:  "xbox 360",
-    CommunityLikeXBox: "xbox 360",
-    SteamController:   "xbox 360", //Steam controller and Link app touch controls use Xb360 iconography
-    SteamControllerV2: "xbox 360", //TODO - revise for Deck if necessary
-    MobileTouch:       "xbox 360", 
+    SteamController:   "xbox 360", //Steam Controller uses Xb360 iconography
+    SteamControllerV2: "xbox 360", //TODO - Revise for Deck if necessary
+    MobileTouch:       "xbox 360", //Steam Link touch controls use Xb360 iconography
 	
     XBoxOneController: "xbox one",
     CommunityXBoxOne:  "xbox one",
-    AppleController:   "xbox one", //  Apple uses XbOne iconography excepting shoulders, triggers, 'View' button
-    CommunityStadia:   "xbox one", // Stadia uses XbOne iconography excepting shoulders, triggers, 'View' button
-    CommunityLuna:     "xbox one", //   Luna uses XbOne iconography excepting 'View' button
+    CommunityLikeXBox: "xbox one",
+    AppleController:   "xbox one", // Apple uses XbOne iconography excepting 'View' button, shoulders, triggers
+    CommunityStadia:   "xbox one", //Stadia uses XbOne iconography excepting 'View' button, shoulders, triggers
+    CommunityLuna:     "xbox one", //  Luna uses XbOne iconography excepting 'View' button
     
     //PlayStation
     PS3Controller: "psx",
@@ -54,6 +54,41 @@ global.__input_simple_type_lookup = {
     unknown: "unknown",
     UnknownNonSteamController: "unknown"
 }
+
+__input_resolve_steam_config();
+
+function __input_resolve_steam_config()
+{
+    //Prevent Steam Input from aliasing PlayStation and Switch controllers as Xbox type
+    var _steam_environ = environment_get_variable("SteamEnv");
+    var _steam_configs = environment_get_variable("EnableConfiguratorSupport");
+
+    //Test for Steam environment and valid Steam Input config
+    //Check for empty string first per platform-weirdness
+    if ((_steam_environ != ""  ) && (_steam_configs != ""   )
+    && is_string(_steam_environ) && is_string(_steam_configs)
+    && (_steam_environ == "1"  ) && (_steam_configs == string_digits(_steam_configs)))
+    {
+        //Evaluate Steam Input configuration
+        var _bitmask = real(string_digits(_steam_configs));
+        if ((_bitmask & 1) != 0)
+        {
+            //Steam Input is configured to use controller type "PlayStation" (1)
+            global.__input_simple_type_lookup[$ "SteamController"] = "unknown";
+        }
+        else if ((_bitmask & 8) != 0) 
+        {
+            //Steam Input is configured to use controller type "Switch" (8)
+            var _switch_layout = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");                    
+            if ((_switch_layout != "") && is_string(_switch_layout) && (_switch_layout == "0"))
+            {
+                //XInput-style label swap for Switch (A/B, X/Y) is toggled off
+                global.__input_simple_type_lookup[$ "SteamController"] = "unknown";
+            }
+        }
+    }
+}
+
 
 function __input_gamepad_set_type()
 {
@@ -160,6 +195,10 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunityLuna";
                 }
+                else if (string_count("steam", _desc))
+                {
+                    raw_type = "SteamController";
+                }
                 else if (string_count("ps5", _desc) || string_count("dualsense", _desc))
                 {
                     raw_type = "PS5Controller";
@@ -170,8 +209,7 @@ function __input_gamepad_set_type()
                 }
                 else if (string_count("playstation", _desc) || string_count("ps1", _desc) || string_count("ps2", _desc) || string_count("ps3", _desc) || string_count("dualshock", _desc))
                 {
-                    //Catch all remaining PlayStation gamepads as PSX
-                    raw_type = "CommunityPSX";
+                    raw_type = "CommunityPSX"; //Catch all remaining PlayStation gamepads as PSX
                 }
                 else if (string_count("for switch", _desc) || string_count("for nintendo switch", _desc) || string_count("switch controller", _desc) || string_count("lic pro controller", _desc))
                 {
