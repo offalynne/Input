@@ -202,6 +202,55 @@ function __input_gamepad_set_mapping()
         exit;
     }
     
+    #endregion
+    
+    #region Windows Xbox One Wireless BT (New firmware)
+
+    if ((os_type == os_windows) && (vendor == "5e04")                  //Windows (DirectInput) Microsoft's VID
+    && ((product == "e002") || (product == "fd02"))                    //XbOne Wireless Rev. 1 or 2 PID for BT
+    && (gamepad_button_count(index ) == 17)                            //Probably new firmware based on button
+    && (gamepad_axis_value(index, 1) == gamepad_axis_value(index, 2))  //On new firmware axes 1 and 2 are same
+    && (gamepad_axis_value(index, 4) == gamepad_axis_value(index, 5))) //On new firmware axes 4 and 5 are same
+    {
+        __input_trace("Xbox One Wireless controller seems to be in a bad state, using alternate mapping. Trigger data is unavailable.");
+        
+        set_mapping(gp_face1, 0, __INPUT_MAPPING.BUTTON, "a");
+        set_mapping(gp_face2, 1, __INPUT_MAPPING.BUTTON, "b");
+        set_mapping(gp_face3, 3, __INPUT_MAPPING.BUTTON, "x");
+        set_mapping(gp_face4, 4, __INPUT_MAPPING.BUTTON, "y");
+    
+        set_mapping(gp_shoulderl, 6, __INPUT_MAPPING.BUTTON, "leftshoulder");
+        set_mapping(gp_shoulderr, 7, __INPUT_MAPPING.BUTTON, "rightshoulder");
+    
+        set_mapping(gp_select, 15, __INPUT_MAPPING.BUTTON, "back");
+        set_mapping(gp_start,  11, __INPUT_MAPPING.BUTTON, "start");
+    
+        set_mapping(gp_stickl, 13, __INPUT_MAPPING.BUTTON, "leftstick");
+        set_mapping(gp_stickr, 14, __INPUT_MAPPING.BUTTON, "rightstick");
+    
+        set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
+        set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
+        set_mapping(gp_axisrh, 3, __INPUT_MAPPING.AXIS, "rightx");
+        set_mapping(gp_axisrv, 4, __INPUT_MAPPING.AXIS, "righty");
+        
+        set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
+        set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
+        set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
+        set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+    
+        //No trigger data :-(
+        set_mapping(gp_shoulderlb, 0, undefined, "lefttrigger");
+        set_mapping(gp_shoulderrb, 0, undefined, "righttrigger");
+    
+        if (INPUT_SDL2_ALLOW_GUIDE) set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide");
+        
+        exit;
+    }
+    
+    #endregion
+
+    #region Remapping on SDL2 supported platforms
+    
     if (__INPUT_SDL2_SUPPORT && INPUT_SDL2_REMAPPING)
     {
         if (is_array(sdl2_definition))
@@ -382,7 +431,7 @@ function __input_gamepad_set_mapping()
                     //Now manage the hat masks, including setting up hat-on-axis masks
                     if ((_raw_type == __INPUT_MAPPING.HAT) || (_raw_type == __INPUT_MAPPING.HAT_TO_AXIS))
                     {
-                        var _hat_mask = floor(10*real(_entry_1)); //TODO - lol haxx
+                        var _hat_mask = floor(10 * abs((real(_entry_1) mod 1)));
                         if (_raw_type == __INPUT_MAPPING.HAT)
                         {
                             _mapping.hat_mask = _hat_mask;
