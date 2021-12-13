@@ -160,8 +160,8 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
         set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
         
-        if (INPUT_SDL2_ALLOW_GUIDE) set_mapping(gp_guide, 16, __INPUT_MAPPING.AXIS, "guide");
-        if (INPUT_SDL2_ALLOW_MISC1) set_mapping(gp_misc1, 17, __INPUT_MAPPING.AXIS, "misc1");
+        if (INPUT_SDL2_ALLOW_GUIDE) set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide");
+        if (INPUT_SDL2_ALLOW_MISC1) set_mapping(gp_misc1, 17, __INPUT_MAPPING.BUTTON, "misc1");
         
         exit;
     }

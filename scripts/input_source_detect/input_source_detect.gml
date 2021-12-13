@@ -27,8 +27,8 @@ function input_source_detect(_source, _gamepad = INPUT_NO_GAMEPAD)
                     ||  input_gamepad_check_pressed(_gamepad, gp_select)
                     ||  input_gamepad_check_pressed(_gamepad, gp_stickl)
                     ||  input_gamepad_check_pressed(_gamepad, gp_stickr)
-                    ||  (INPUT_SDL2_ALLOW_GUIDE && input_gamepad_check(_gamepad, gp_guide))
-                    ||  (INPUT_SDL2_ALLOW_MISC1 && input_gamepad_check(_gamepad, gp_misc1)))
+                    ||  (INPUT_SDL2_ALLOW_GUIDE && input_gamepad_check_pressed(_gamepad, gp_guide))
+                    ||  (INPUT_SDL2_ALLOW_MISC1 && input_gamepad_check_pressed(_gamepad, gp_misc1)))
                     {
                         return true;
                     }
