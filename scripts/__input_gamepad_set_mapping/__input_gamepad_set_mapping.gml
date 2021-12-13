@@ -431,7 +431,7 @@ function __input_gamepad_set_mapping()
                     //Now manage the hat masks, including setting up hat-on-axis masks
                     if ((_raw_type == __INPUT_MAPPING.HAT) || (_raw_type == __INPUT_MAPPING.HAT_TO_AXIS))
                     {
-                        var _hat_mask = floor(10 * sqrt(sqr((real(_entry_1) mod 1))));
+                        var _hat_mask = floor(10 * abs((real(_entry_1) mod 1)));
                         if (_raw_type == __INPUT_MAPPING.HAT)
                         {
                             _mapping.hat_mask = _hat_mask;
