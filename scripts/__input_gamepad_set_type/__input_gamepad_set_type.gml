@@ -67,10 +67,12 @@ function __input_resolve_steam_config()
     //Check for empty string first per platform-weirdness
     if ((_steam_environ != ""  ) && (_steam_configs != ""   )
     && is_string(_steam_environ) && is_string(_steam_configs)
-    && (_steam_environ == "1"  ) && (_steam_configs == string_digits(_steam_configs)))
+    && (_steam_environ == "1"  ) && (_steam_configs == string_digits(_steam_configs))
+    && (_steam_configs != "65535"))
     {
         //Evaluate Steam Input configuration
         var _bitmask = real(string_digits(_steam_configs));
+    	
         if ((_bitmask & 1) != 0)
         {
             //Steam Input is configured to use controller type "PlayStation" (1)
