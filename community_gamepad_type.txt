@@ -37,6 +37,7 @@
 057e,2008,CommunityLikeSwitch // Linux JoyConD
 11ec,a7e1,CommunityLikeSwitch // Switch Handheld
 1d79,0301,CommunityLikeSwitch // Wii Adapter
+0b49,0644,CommunitySaturn // ASCII Seamic
 0079,0011,CommunitySaturn // Retrolink Saturn/SNES
 289b,0005,CommunitySaturn // Raphnet Saturn
 1781,057e,CommunitySaturn // Saturn Adapter
@@ -246,6 +247,7 @@ beef,feed,CommunityXBox360 // Monect
 0f0d,0026,CommunityPSX // Hori Real Arcade Pro V3 Premium
 0f0d,0027,CommunityPSX // Hori Fighting Stick V3
 0f0d,002d,CommunityPSX // Hori 10B
+0f0d,0025,CommunityPSX // Hori Fighting Commander 3
 0f0d,0032,CommunityPSX // Hori Wireless Fighting Stick 3
 0f0d,003d,CommunityPSX // Hori Real Arcade Pro N3
 0f0d,0040,CommunityPSX // Hori Stick A
