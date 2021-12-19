@@ -204,6 +204,7 @@ beef,feed,CommunityXBox360 // Monect
 1949,0402,CommunityXBox360 // Xbox
 146b,0c01,CommunityXBox360 // Nacon GC-400ES	
 0079,0002,CommunityXBox360 // Arcade Board
+1bad,f503,CommunityXBox360 // Hori Fighting Stick VX
 0e6f,02a7,CommunityXBoxOne // PDP Raven Black
 0f0d,0150,CommunityXBoxOne // Hori Fighting Commander Octa
 045e,0b03,CommunityXBoxOne // Xbox One
@@ -333,12 +334,13 @@ dead,beef,CommunityPSX // Hidromancer
 0c12,57a9,CommunityPS4 // Level Up
 0c12,57aa,CommunityPS4 // PS4 wired controller
 0c12,57ab,CommunityPS4 // Zeroplus Joypad Warrior
-0c12,0e21,CommunityPS4 // Brook Mars
+0c12,0e21,CommunityPS4 // Brook CommunityXBox360Mars
 0c12,0e20,CommunityPS4 // Brook Mars
 1532,1007,CommunityPS4 // Razer Raiju TE
 1532,100a,CommunityPS4 // Razer Raiju TE
 1532,0401,CommunityPS4 // Razer Panthera
 1532,1008,CommunityPS4 // Razer Panthera Evo
+0738,3285,CommunityPS4 // Mad Catz Fightpad
 057e,2019,CommunityN64 // NSO N64
 06f7,0001,CommunityN64 // N64 Adaptoid
 2dc8,9002,CommunityN64 // Retro-bit x 8Bitdo RB8-64 (USB)
