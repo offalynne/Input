@@ -1,23 +1,24 @@
-7e050e20000000000000504944564944,all,guid // joycon charger windows
-030000007e0500000e20000000020000,all,guid // joycon charger macos
-030000007e0500000e20000011010000,all,guid // joycon charger linux
-030000007e0500000e20000011810000,all,guid // joycon charger left grip linux
-3c000000000000000000000038010000,all,guid // joycon charger right grip linux
-65366131663736363061313736656431,all,guid // joycon charger android
-31613237643563656561633964393335,all,guid // joycon left android (handled internally)
-39373064396565646338333134303131,all,guid // joycon right android (handled internally)
-030000007e0500000920000000020000,all,guid // switch pro controller macos 
-030000007e0500000920000011010000,all,guid // switch pro controller linux
-61393962646434393836356631636132,all,guid // switch pro controller android
-71011904000000000000504944564944,all,guid // luna dinput windows
-31730100000000000000504944564944,all,guid // dshidmini d4w mode windows
-5e04050b000000000000504944564944,all,guid // xb elite dinput windows
-39666538356630396233636633333330,all,guid // xb elite s2 usb android
-31343431323332663936386663646631,all,guid // sg-h510 switch android
-61373939383333653939323337373730,all,guid // ps/2 usb adapter android
-37626665373466346563356534326663,all,guid // logitech kbm receiver android
-35623363656536396133623234666231,all,guid // elecom trackball android
-64623037323132643231333433383536,all,guid // headset android
+7e050e20000000000000504944564944,windows,guid // joycon charger
+71011904000000000000504944564944,windows,guid // luna dinput
+31730100000000000000504944564944,windows,guid // dshidmini d4w mode
+5e04050b000000000000504944564944,windows,guid // xb elite dinput
+5e04130b000000000000504944564944,windows,guid // xb series dinput
+030000007e0500000e20000000020000,macos,guid // joycon charger
+030000007e0500000920000000020000,macos,guid // switch pro controller
+030000007e0500000e20000011010000,linux,guid // joycon charger
+030000007e0500000e20000011810000,linux,guid // joycon charger left grip
+3c000000000000000000000038010000,linux,guid // joycon charger right grip 
+030000007e0500000920000011010000,linux,guid // switch pro controller
+65366131663736363061313736656431,android,guid // joycon charger
+31613237643563656561633964393335,android,guid // joycon left (handled internally)
+39373064396565646338333134303131,android,guid // joycon right (handled internally)
+61393962646434393836356631636132,android,guid // switch pro controller
+39666538356630396233636633333330,android,guid // xb elite s2 usb
+31343431323332663936386663646631,android,guid // sg-h510 switch
+61373939383333653939323337373730,android,guid // ps/2 usb adapter
+37626665373466346563356534326663,android,guid // logitech kbm receiver
+35623363656536396133623234666231,android,guid // elecom trackball
+64623037323132643231333433383536,android,guid // headset
 mouse,android,description contains // mice
 trackball,android,description contains // trackball mice
 keyboard,android,description contains // keyboards
