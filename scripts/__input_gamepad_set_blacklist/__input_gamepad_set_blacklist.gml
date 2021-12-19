@@ -94,27 +94,33 @@ function __input_gamepad_set_blacklist()
         }
     }    
     
-     //Block devices presenting in bad states on Windows
     if ((_os == "windows") && !blacklisted)
     {
+        //Block devices presenting in bad states on Windows
         var _a = gamepad_axis_count(index); 
         var _b = gamepad_button_count(index);
-        
-        //Switch Pro Controller over USB
+
         if ((vendor == "7e05") && (product == "0920") && (_b == 23))
         {
+            //Switch Pro Controller over USB
             blacklisted = true;
         }
-        else
+        else if ((vendor == "4c05") && (product == "6802"))
         {
             //PS3 Controller
-            if ((vendor == "4c05") && (product == "6802"))
+            if (((_a == 4) && (_b == 19)) //Bad driver
+            ||  ((_a == 8) && (_b == 0))) //DsHidMini gyro
             {
-                if (((_a == 4) && (_b == 19)) //Bad driver
-                ||  ((_a == 8) && (_b == 0))) //DsHidMini gyro
-                {
-                    blacklisted = true;
-                }
+                blacklisted = true;
+            }
+        }
+        else if ((vendor == "5e04") && (product == "130b"))
+        {
+            //Xbox Series DInput duplicate
+            if (os_version >= 655360)
+            {
+                //Windows 10
+                blacklisted = true;
             }
         }
         
