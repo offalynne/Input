@@ -224,7 +224,7 @@ beef,feed,CommunityXBox360 // Monect
 06a3,f623,CommunityPSX // Saitek Cyborg V1
 0738,3187,CommunityPSX // Mad Catz FightStick
 0738,3282,CommunityPSX // Mad Catz PS3 RF
-0738,3285,CommunityPSX // Madcatz Arcade Fightstick TE S
+0738,3285,CommunityPSX // Mad Catz Arcade Fightstick TE S
 0738,3384,CommunityPSX // Mad Catz FightStick TE S+
 0738,3480,CommunityPSX // Mad Catz FightStick
 0738,3481,CommunityPSX // Mad Catz FightStick TE2+
