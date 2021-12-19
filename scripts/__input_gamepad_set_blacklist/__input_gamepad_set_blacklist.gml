@@ -55,7 +55,7 @@ function __input_gamepad_set_blacklist()
         break;
     }
     
-    //Check the global (OS = "all") blacklists to see if this gamepad is banned
+    //Check the platform blacklists to see if this gamepad is banned
     var _os_filter_dict  = global.__input_blacklist_dictionary[$ _os];
     var _os_vid_dict     = is_struct(_os_filter_dict)? _os_filter_dict[$ "vid"                 ] : undefined;
     var _os_vid_pid_dict = is_struct(_os_filter_dict)? _os_filter_dict[$ "vid+pid"             ] : undefined;
@@ -64,17 +64,17 @@ function __input_gamepad_set_blacklist()
     
     if (is_struct(_os_vid_dict) && variable_struct_exists(_os_vid_dict, vendor))
     {
-        __input_trace("Warning! Controller is blacklisted (cross-platform, found by VID \"", vendor, "\")");
+        __input_trace("Warning! Controller is blacklisted (OS-specific, found by VID \"", vendor, "\")");
         blacklisted = true;
     }
     else if (is_struct(_os_vid_pid_dict) && variable_struct_exists(_os_vid_pid_dict, vendor + product))
     {
-        __input_trace("Warning! Controller is blacklisted (cross-platform, found by VID+PID \"", vendor + product, "\")");
+        __input_trace("Warning! Controller is blacklisted (OS-specific, found by VID+PID \"", vendor + product, "\")");
         blacklisted = true;
     }
     else if (is_struct(_os_guid_dict) && variable_struct_exists(_os_guid_dict, guid))
     {
-        __input_trace("Warning! Controller is blacklisted (cross-platform, found by GUID \"", guid, "\")");
+        __input_trace("Warning! Controller is blacklisted (OS-specific, found by GUID \"", guid, "\")");
         blacklisted = true;
     }
     else if (is_array(_os_desc_array))
