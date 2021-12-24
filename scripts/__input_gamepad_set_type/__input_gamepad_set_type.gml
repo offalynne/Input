@@ -70,7 +70,7 @@ function __input_resolve_steam_config()
     && (_steam_environ == "1"  ) && (_steam_configs == string_digits(_steam_configs)))
     {
         //Evaluate Steam Input configuration
-        var _bitmask = real(string_digits(_steam_configs));
+        var _bitmask = real(_steam_configs);
         if ((_bitmask & 1) != 0)
         {
             //Steam Input is configured to use controller type "PlayStation" (1)
