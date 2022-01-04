@@ -352,8 +352,8 @@ dead,beef,CommunityPSX // Hidromancer
 2f24,008a,CommunityUnknown // JYS Adapter
 2f24,0073,CommunityUnknown // Mayflash Adapter
 2f24,00f7,CommunityUnknown // Mayflash Magic S Pro
-0079,18d2,CommunityUnknown // Mayflash Magic Ns
-20d6,a710,CommunityUnknown // Mayflash Magic Ns
+0079,18d2,CommunityUnknown // Mayflash Magic NS
+20d6,a710,CommunityUnknown // Mayflash Magic NS
 2dc8,3100,CommunityUnknown // 8BitDo Adapter
 2dc8,3105,CommunityUnknown // 8BitDo Adapter 2
 0925,1700,CommunityUnknown // USB Joy Box
