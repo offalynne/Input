@@ -356,5 +356,5 @@ dead,beef,CommunityPSX // Hidromancer
 20d6,a710,CommunityUnknown // Mayflash Magic NS
 2dc8,3100,CommunityUnknown // 8BitDo Adapter
 2dc8,3105,CommunityUnknown // 8BitDo Adapter 2
-0925,1700,CommunityUnknown // USB Joy Box
+0925,1700,CommunityUnknown // WiseGroup USB Joy Box
 10c4,82c0,CommunityUnknown // KADE Adapter
