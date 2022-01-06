@@ -131,6 +131,7 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 2dc8,3230,Community8BitDo // 8BitDo Zero 2
 3820,0009,Community8BitDo // 8BitDo NES30 Pro
 3810,0009,Community8BitDo // 8BitDo FC30 Pro
+2dc8,6006,Community8BitDo // 8BitDo Pro 2
 057e,0337,CommunityGameCube // WiiU GameCube Adapter
 0926,8888,CommunityGameCube // Cyber Gadget GameCube Adapter
 0079,1843,CommunityGameCube // Mayflash GameCube Adapter
