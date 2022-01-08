@@ -83,6 +83,6 @@ input_player_source_set(INPUT_SOURCE.GAMEPAD);
 input_player_gamepad_set(0)
 ```
 
-Just like the keyboard functions, gamepad functions use [normal gamepad input values](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm) from standard GM features. Congratulations, you now have gamepad input! If you want the player to be able to switch between keyboard and gamepad devices on the fly, add `input_hotswap_tick(0)` to your Step event.
+Just like the keyboard functions, gamepad functions use [normal gamepad input values](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm) from standard GM features. Congratulations, you now have gamepad input! If you want the player to be able to switch between keyboard and gamepad devices on the fly, then add `input_hotswap_tick(0);` to your Step event.
 
 Et voilà! This system is also great for rebinding — take a deeper dive into the documentation for more on that, and Input's other features!
