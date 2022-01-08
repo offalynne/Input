@@ -37,7 +37,7 @@ input_default_key(ord("A"), "shoot");
 
 input_player_source_set(INPUT_SOURCE.KEYBOARD_AND_MOUSE);
 ```
-We've got the [`input_default_key()`](Functions-(Default-Bindings)#input_default_keykey-verb-alternate) functions taking the normal key values for the standard GM input features and then the verb we want to assign it to. Verbs can be numbers if you want to use an enum but, for ease of use, we'll stick to strings.
+We've got the [`input_default_key()`](Functions-(Default-Bindings)#input_default_keykey-verb-alternate) functions taking the [normal key values](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/Keyboard_Input.htm) for the standard GM input features and then the verb we want to assign it to. Verbs can be numbers if you want to use an enum but, for ease of use, we'll stick to strings.
 
 [`input_player_source_set()`](Functions-(Players)#input_player_source_setsource-playerindex) sets which device you're using. Now we're only one step away from using these tasty functions in game. By uh, using them. In game.
 
@@ -52,11 +52,10 @@ if (input_check("right")) x += 4;
 if (input_check_pressed("shoot")) show_debug_message("bang");
 ```
 
-If you're at all familiar with how the standard GML input functions work, this should look pretty familiar to you. [`input_check()`](Functions-(Checkers)#input_checkverb-playerindex-bufferduration) is like [`keyboard_check()`](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/keyboard%20input/keyboard_check.html) and [`input_check_pressed()`](Functions-(Checkers)#input_check_pressedverb-playerindex-bufferduration) is like [`keyboard_check_pressed()`](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/keyboard%20input/keyboard_check_pressed.html) (i *know* how could you juju my muscle memory smh)
+If you're at all familiar with how the standard GML input functions work, this should look pretty familiar to you. [`input_check()`](Functions-(Checkers)#input_checkverb-playerindex-bufferduration) is like [`keyboard_check()`](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/keyboard%20input/keyboard_check.html) and [`input_check_pressed()`](Functions-(Checkers)#input_check_pressedverb-playerindex-bufferduration) is like [`keyboard_check_pressed()`](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/keyboard%20input/keyboard_check_pressed.html).
+Now, run the game and look at your hard work! Dang, aren't those inputs tasty? Ooh, looky here, buttons!
 
-Now, compile and look at your hard work! Dang, aren't those inputs just tasty? ooh, looky here, buttons!
-
-But by this point, you must be asking yourself "well grace, why didn't i just use keyboard_check functions and save myself all of this finagling?
+But by this point, you must be asking yourself "well grace, why didn't i just use `keyboard_check` functions and save myself all of this finagling?
 
 Oh you sweet summer child, did you think we were done?
 
@@ -84,7 +83,7 @@ input_player_source_set(INPUT_SOURCE.GAMEPAD);
 input_player_gamepad_set(0)
 ```
 
-Congratulations, you now have gamepad input! If you want the player to be able to switch between keyboard and gamepad devices on the fly, add `input_hotswap_tick(0)` to your Step event.
+Just like the keyboard functions, gamepad functions use [normal gamepad input values](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm) from standard GM features. Congratulations, you now have gamepad input! If you want the player to be able to switch between keyboard and gamepad devices on the fly, add `input_hotswap_tick(0)` to your Step event.
 
-This system is also great for rebinding, but you'll have to take a deeper dive into the documentation for more information on that.
+Et voilà! This system is also great for rebinding (and more!), but you'll have to take a deeper dive into the documentation for more information on that.
 
