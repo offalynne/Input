@@ -46,7 +46,7 @@ input_default_key(vk_space, "shoot");
 
 //Bind gamepad controls to verbs
 input_default_gamepad_button(gp_padl, "left");
-input_default_gamepad_button(gp_padr, "right";
+input_default_gamepad_button(gp_padr, "right");
 input_default_gamepad_button(gp_face1, "shoot");
 
 
@@ -80,11 +80,11 @@ input_default_key(vk_enter, "shoot", 1);
 
 //Bind gamepad controls to verbs
 input_default_gamepad_button(gp_padl, "left");
-input_default_gamepad_button(gp_padr, "right";
+input_default_gamepad_button(gp_padr, "right");
 input_default_gamepad_button(gp_face1, "shoot");
 
 //Alternate gamepad bindings
-input_default_gamepad_axis(gp_axislh, true, "left"), 1);
+input_default_gamepad_axis(gp_axislh, true, "left", 1);
 input_default_gamepad_axis(gp_axislh, false, "right", 1);
 //All the face buttons shoot!
 //Don't forget to use different numbers for different alternate binding slots
