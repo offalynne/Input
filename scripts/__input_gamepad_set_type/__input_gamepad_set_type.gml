@@ -52,7 +52,8 @@ global.__input_simple_type_lookup = {
     
     Unknown: "unknown",
     unknown: "unknown",
-    UnknownNonSteamController: "unknown"
+    UnknownNonSteamController: "unknown",
+    CommunityUnknown: "unknown"
 }
 
 __input_resolve_steam_config();
