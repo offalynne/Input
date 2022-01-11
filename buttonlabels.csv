@@ -24,6 +24,6 @@ CommunityXBoxOne,a:A,b:B,back:View,leftshoulder:LB,lefttrigger:LT,rightshoulder:
 CommunityPSX,a:Cross,b:Circle,back:Select,leftshoulder:L1,leftstick:L3,lefttrigger:L2,rightshoulder:R1,rightstick:R3,righttrigger:R2,start:Start,x:Square,y:Triangle
 CommunityPS4,a:Cross,b:Circle,back:Share,leftshoulder:L1,leftstick:L3,lefttrigger:L2,rightshoulder:R1,rightstick:R3,righttrigger:R2,start:Options,x:Square,y:Triangle
 CommunityN64,a:A,b:B,leftshoulder:L,lefttrigger:Z,rightshoulder:R,rightx:C,righty:C,start:Start
-CommunityOuya,a:O,b:A,leftshoulder:LB,lefttrigger:LT,rightshoulder:RB,righttrigger:RT,start:Start,x:U,y:Y
+CommunityOuya,a:O,b:A,leftshoulder:LB,leftstick:L3,lefttrigger:LT,rightshoulder:RB,rightstick:R3,righttrigger:RT,start:Start,x:U,y:Y
 CommunityStadia,a:A,b:B,back:Options,leftshoulder:L1,leftstick:L3,lefttrigger:L2,rightshoulder:R1,rightstick:R3,righttrigger:R2,start:Menu,x:X,y:Y
 CommunityLuna,a:A,b:B,back:Action,leftshoulder:LB,leftstick:L3,lefttrigger:LT,rightshoulder:RB,rightstick:R3,righttrigger:RT,start:Menu,x:X,y:Y
