@@ -5,7 +5,7 @@ PS3Controller,a:blue,b:red,x:pink,y:green
 PS4Controller,a:blue,b:red,x:pink,y:green
 AppleController,a:red,b:green,x:yellow,y:blue
 MobileTouch,a:green,b:red,x:blue,y:yellow
-CommunityGameCube,a:green,righhtshoulder:purple,rightx:yellow,righty:yellow,x:red,
+CommunityGameCube,a:green,rightshoulder:purple,rightx:yellow,righty:yellow,x:red,
 CommunityXBox360,a:green,b:red,x:blue,y:yellow
 CommunityXBoxOne,a:green,b:red,x:blue,y:yellow
 CommunityPSX,a:blue,b:red,x:pink,y:green
