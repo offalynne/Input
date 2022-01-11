@@ -44,7 +44,7 @@ global.__input_simple_type_lookup = {
     CommunitySNES:     "snes",
     CommunityN64:      "n64",
 
-    ////Retired first class types (see "xbox one"), remain identifiable via raw type
+    ////Retired as first class, identifiable via raw type
     //AppleController: "apple",
     //CommunityStadia: "stadia",
     //CommunityLuna:   "luna",
@@ -195,6 +195,10 @@ function __input_gamepad_set_type()
                 else if (string_count("luna", _desc) || string_count("amazon game", _desc))
                 {
                     raw_type = "CommunityLuna";
+                }
+                else if (string_count("ouya", _desc))
+                {
+                    raw_type = "CommunityOuya";
                 }
                 else if (string_count("steam", _desc))
                 {
