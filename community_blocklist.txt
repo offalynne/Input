@@ -19,6 +19,7 @@
 37626665373466346563356534326663,android,guid // logitech kbm receiver
 35623363656536396133623234666231,android,guid // elecom trackball
 64623037323132643231333433383536,android,guid // headset
+37306138633665393031353462623835,android,guid // tcl beyond tv remote
 mouse,android,description contains // mice
 trackball,android,description contains // trackball mice
 keyboard,android,description contains // keyboards
