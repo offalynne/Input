@@ -46,7 +46,7 @@ function __input_gamepad_set_blacklist()
     }
     else if (is_array(_os_desc_array))
     {
-        var _description_lower = string_lower(gamepad_get_description(index));
+        var _description_lower = string_replace_all(string_lower(gamepad_get_description(index)), " ", "");
         var _i = 0;
         repeat(array_length(_os_desc_array))
         {

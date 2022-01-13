@@ -4,18 +4,19 @@
 global.__input_simple_type_lookup = {
 	
     //Xbox
-    XBox360Controller: "xbox 360",
-    CommunityXBox360:  "xbox 360",
-    SteamController:   "xbox 360", //Steam Controller uses Xb360 iconography
-    SteamControllerV2: "xbox 360", //TODO - Revise for Deck if necessary
-    MobileTouch:       "xbox 360", //Steam Link touch controls use Xb360 iconography
+    XBox360Controller:  "xbox 360",
+    CommunityXBox360:   "xbox 360",
+    CommunityDreamcast: "xbox 360", //Xbox 360 uses Dreamcast iconography
+    SteamController:    "xbox 360", //Steam Controller uses Xbox 360 iconography
+    SteamControllerV2:  "xbox 360", //TODO - Revise for Deck if necessary
+    MobileTouch:        "xbox 360", //Steam Link touch controls use Xb360 iconography
 	
     XBoxOneController: "xbox one",
     CommunityXBoxOne:  "xbox one",
     CommunityLikeXBox: "xbox one",
-    AppleController:   "xbox one", // Apple uses XbOne iconography excepting 'View' button, shoulders, triggers
-    CommunityStadia:   "xbox one", //Stadia uses XbOne iconography excepting 'View' button, shoulders, triggers
-    CommunityLuna:     "xbox one", //  Luna uses XbOne iconography excepting 'View' button
+    AppleController:   "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
+    CommunityStadia:   "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
+    CommunityLuna:     "xbox one", //  Luna uses Xbox One iconography excepting 'View' button
     
     //PlayStation
     PS3Controller: "psx",

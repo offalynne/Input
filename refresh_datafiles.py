@@ -79,12 +79,27 @@ DATA_SOURCES = {
 
     "MAPS": {
         "datafile": "sdl2.txt",
-        "sources": { 
-
+        "sources": {
             "SDL2 Community map db": {
-
                 "source":  github_urlpath + "gabomdq/SDL_GameControllerDB/master/gamecontrollerdb.txt"
+            }
+        }
+    },
 
+    "LABELS": {
+        "datafile": "butonlabels.csv",
+        "sources": {
+            "Gamepad button labels": {
+                "source":  github_urlpath + "JujuAdams/Input/community-data/buttonlabels.csv"
+            }
+        }
+    },
+
+    "COLORS": {
+        "datafile": "buttoncolors.csv",
+        "sources": { 
+            "Gamepad button colors": {
+                "source":  github_urlpath + "JujuAdams/Input/community-data/buttoncolors.csv"
             }
         }
     }
