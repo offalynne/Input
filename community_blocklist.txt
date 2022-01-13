@@ -3,12 +3,12 @@
 31730100000000000000504944564944,windows,guid // dshidmini d4w mode
 5e04050b000000000000504944564944,windows,guid // xb elite dinput
 5e04130b000000000000504944564944,windows,guid // xb series dinput
-030000007e0500000e20000000020000,macos,guid   // joycon charger
-030000007e0500000920000000020000,macos,guid   // switch pro controller
-030000007e0500000e20000011010000,linux,guid   // joycon charger
-030000007e0500000e20000011810000,linux,guid   // joycon charger left grip
-3c000000000000000000000038010000,linux,guid   // joycon charger right grip 
-030000007e0500000920000011010000,linux,guid   // switch pro controller
+030000007e0500000e20000000020000,macos,guid // joycon charger
+030000007e0500000920000000020000,macos,guid // switch pro controller
+030000007e0500000e20000011010000,linux,guid // joycon charger
+030000007e0500000e20000011810000,linux,guid // joycon charger left grip
+3c000000000000000000000038010000,linux,guid // joycon charger right grip 
+030000007e0500000920000011010000,linux,guid // switch pro controller
 65366131663736363061313736656431,android,guid // joycon charger
 31613237643563656561633964393335,android,guid // joycon left
 39373064396565646338333134303131,android,guid // joycon right
@@ -19,22 +19,22 @@
 37626665373466346563356534326663,android,guid // logitech kbm receiver
 35623363656536396133623234666231,android,guid // elecom trackball
 64623037323132643231333433383536,android,guid // headset
-mouse,android,description contains            // mice
-trackball,android,description contains        // trackball mice
-keyboard,android,description contains         // keyboards
-button jack,android,description contains      // trrs interfaces
-headphones,android,description contains       // headsets
-jabra,android,description contains            // videoconference hardware
-transceiver,android,description contains      // mouse/keyboard transceiver
-usb receiver,android,description contains     // corsair and logitech keyboards
-surface type,android,description contains     // microsoft surface cover keyboard
-touchscreen,android,description contains      // touchscreen devices
-digitizer,android,description contains        // touchscreen devices
-multitouch,android,description contains       // virtual multitouch devices
-headset,android,description contains          // headsets and adapters
-sennheiser,android,description contains       // sennheiser brand headsets
-tv remote,android,description contains        // smart tv remote
+mouse,android,description contains // mice
+trackball,android,description contains // trackball mice
+keyboard,android,description contains // keyboards
+button jack,android,description contains // trrs interfaces
+headphones,android,description contains // headsets
+jabra,android,description contains // videoconference hardware
+transceiver,android,description contains // mouse/keyboard transceiver
+usb receiver,android,description contains // corsair and logitech keyboards
+surface type,android,description contains // microsoft surface cover keyboard
+touchscreen,android,description contains // touchscreen devices
+digitizer,android,description contains // touchscreen devices
+multitouch,android,description contains // virtual multitouch devices
+headset,android,description contains // headsets and adapters
+sennheiser,android,description contains // sennheiser brand headsets
+tv remote,android,description contains // smart tv remote
 multimeda remote,android,description contains // smart tv remote
-corsair,android,description contains          // corsair mice, keyboards, adapters
-bt kb,android,description contains            // gamesir bluetooth keyboards
-uinput-fpc,android,description contains       // google pixel fingerprint sensor
+corsair,android,description contains // corsair mice, keyboards, adapters
+bt kb,android,description contains // gamesir bluetooth keyboards
+uinput-fpc,android,description contains // google pixel fingerprint sensor
