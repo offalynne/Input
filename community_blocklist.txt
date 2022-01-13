@@ -34,7 +34,7 @@ multitouch,android,description contains // virtual multitouch devices
 headset,android,description contains // headsets and adapters
 sennheiser,android,description contains // sennheiser brand headsets
 tv remote,android,description contains // smart tv remote
-multimeda remote,android,description contains // smart tv remote
+multimedia remote,android,description contains // smart tv remote
 corsair,android,description contains // corsair mice, keyboards, adapters
 bt kb,android,description contains // gamesir bluetooth keyboards
 uinput-fpc,android,description contains // google pixel fingerprint sensor
