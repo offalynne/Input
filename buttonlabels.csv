@@ -14,7 +14,7 @@ XInputSwitchController,a:B,b:A,back:-,leftshoulder:L,lefttrigger:ZL,rightshoulde
 PS5Controller,a:Cross,b:Circle,back:Create,leftshoulder:L1,leftstick:L3,lefttrigger:L2,rightshoulder:R1,rightstick:R3,righttrigger:R2,start:Menu,x:Square,y:Triangle
 CommunityLikeXBox,a:A,b:B,back:View,leftshoulder:LB,lefttrigger:LT,rightshoulder:RB,righttrigger:RT,start:Menu,x:X,y:Y
 CommunityLikeSwitch,a:B,b:A,back:-,leftshoulder:L,lefttrigger:ZL,rightshoulder:R,righttrigger:ZR,start:+,x:Y,y:X
-CommunitySaturn,a:A,b:B,back:Mode,leftshoulder:L,lefttrigger:R,rightshoulder:Z,righttrigger:C,start:Start,x:X,y:Y
+CommunitySaturn,a:A,b:B,leftshoulder:L,lefttrigger:R,rightshoulder:Z,righttrigger:C,start:Start,x:X,y:Y
 CommunitySNES,a:B,b:A,back:Select,leftshoulder:L,rightshoulder:R,start:Start,x:Y,y:X
 Community8BitDo,a:B,b:A,back:Select,leftshoulder:L,leftstick:L3,lefttrigger:L2,rightshoulder:R,rightstick:R3,righttrigger:R2,start:Start,x:Y,y:X
 CommunityDreamcast,a:A,b:B,lefttrigger:L,righttrigger:R,start:Start,x:X,y:Y
