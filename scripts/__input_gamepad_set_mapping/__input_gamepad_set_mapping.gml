@@ -487,7 +487,21 @@ function __input_gamepad_set_mapping()
         }
         else
         {
-            __input_trace("No SDL2 remapping available, falling back to GameMaker's mapping (", gamepad_get_mapping(index), ")");
+            //if (os_type == os_android)
+            //{
+            //    var _gm_mapping_string = gamepad_get_mapping(index);
+            //    _gm_mapping_string = string_replace_all(_gm_mapping_string, "dpdown:b12",  "dpdown:h0.4");
+            //    _gm_mapping_string = string_replace_all(_gm_mapping_string, "dpleft:b13",  "dpleft:h0.8");
+            //    _gm_mapping_string = string_replace_all(_gm_mapping_string, "dpright:b14", "dpright:h0.2");
+            //    _gm_mapping_string = string_replace_all(_gm_mapping_string, "dpup:b11",    "dpup:h0.1");
+            //    gamepad_test_mapping(index, _gm_mapping_string);
+            //    
+            //    __input_trace("No SDL2 remapping available, falling back to an adjusted GameMaker native mapping (", gamepad_get_mapping(index), ")");
+            //}
+            //else
+            {
+                __input_trace("No SDL2 remapping available, falling back to GameMaker's mapping (", gamepad_get_mapping(index), ")");
+            }
         }
     }
     
