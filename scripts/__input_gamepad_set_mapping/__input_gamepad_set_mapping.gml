@@ -248,6 +248,44 @@ function __input_gamepad_set_mapping()
     }
     
     #endregion
+    
+    #region Ouya Controller on MacOS
+    
+    if ((raw_type == "CommunityOuya") && (os_type == os_macosx))
+    {
+        //Controller doesn't work at all in SDL, but buttons do in GM
+        set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
+        set_mapping(gp_face2, 6, __INPUT_MAPPING.BUTTON, "b");
+        set_mapping(gp_face3, 3, __INPUT_MAPPING.BUTTON, "x");
+        set_mapping(gp_face4, 5, __INPUT_MAPPING.BUTTON, "y");
+    
+        set_mapping(gp_shoulderl, 7, __INPUT_MAPPING.BUTTON, "leftshoulder");
+        set_mapping(gp_shoulderr, 8, __INPUT_MAPPING.BUTTON, "rightshoulder");                    
+                    
+        set_mapping(gp_shoulderlb, 15, __INPUT_MAPPING.BUTTON, "lefttrigger");
+        set_mapping(gp_shoulderrb, 16, __INPUT_MAPPING.BUTTON, "righttrigger");
+    
+        set_mapping(gp_stickl,  9, __INPUT_MAPPING.BUTTON, "leftstick");
+        set_mapping(gp_stickr, 10, __INPUT_MAPPING.BUTTON, "rightstick");
+
+        set_mapping(gp_padu, 11, __INPUT_MAPPING.BUTTON, "dpup"   );
+        set_mapping(gp_padr, 14, __INPUT_MAPPING.BUTTON, "dpright");
+        set_mapping(gp_padd, 12, __INPUT_MAPPING.BUTTON, "dpdown" );
+        set_mapping(gp_padl, 13, __INPUT_MAPPING.BUTTON, "dpleft" );
+                    
+        if (INPUT_SDL2_ALLOW_GUIDE) set_mapping(gp_guide, 18, __INPUT_MAPPING.BUTTON, "guide");
+    
+        set_mapping(gp_select, 0, undefined, "back"  );
+        set_mapping(gp_start,  0, undefined, "start" );    
+        set_mapping(gp_axislh, 0, undefined, "leftx" );
+        set_mapping(gp_axislv, 0, undefined, "lefty" );
+        set_mapping(gp_axisrh, 0, undefined, "rightx");
+        set_mapping(gp_axisrv, 0, undefined, "righty");
+            
+        exit;
+    }
+
+    #endregion
 
     #region Remapping on SDL2 supported platforms
     
@@ -488,6 +526,14 @@ function __input_gamepad_set_mapping()
         else
         {
             __input_trace("No SDL2 remapping available, falling back to GameMaker's mapping (", gamepad_get_mapping(index), ")");
+        }
+               
+        if ((raw_type == "CommunityOuya") && ((os_type == os_windows) || (os_type == os_linux)))
+        {
+            //Guide button issues 2 reports: one a tick after release which is usually too fast for GM's
+            //interupt to catch, and another that's for long press: doesn't work until held for 1 second
+            //SDL map assigns the first but we switch to the second.
+            if (INPUT_SDL2_ALLOW_GUIDE) set_mapping(gp_guide, 15, __INPUT_MAPPING.BUTTON, "guide");
         }
     }
     
