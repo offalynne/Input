@@ -179,6 +179,7 @@ function __input_initialize()
 	    __input_trace("Warning! \"", INPUT_CONTROLLER_TYPE_PATH, "\" not found in Included Files");
 	}
 	
+	global.__input_blacklist_dictionary = {};
 	if (__INPUT_ON_CONSOLE || __INPUT_ON_WEB)
 	{
 	    __input_trace("Skipping loading controller blacklist database");
@@ -186,8 +187,6 @@ function __input_initialize()
 	else
 	{
 	    //Parse the controller type database
-	    global.__input_blacklist_dictionary = {};
-    
 	    if (file_exists(INPUT_BLACKLIST_PATH))
 	    {
 	        __input_load_blacklist_csv(INPUT_BLACKLIST_PATH);
@@ -197,6 +196,30 @@ function __input_initialize()
 	        __input_trace("Warning! \"", INPUT_BLACKLIST_PATH, "\" not found in Included Files");
 	    }
 	}
+    
+	global.__input_button_label_dictionary = {};
+	global.__input_button_color_dictionary = {};
+    
+    if (INPUT_LOAD_BUTTON_LABELS_AND_COLORS)
+    {
+        if (file_exists(INPUT_BUTTON_LABEL_PATH))
+    	{
+    	    __input_load_button_label_csv(INPUT_BUTTON_LABEL_PATH);
+    	}
+    	else
+    	{
+    	    __input_trace("Warning! \"", INPUT_BUTTON_LABEL_PATH, "\" not found in Included Files");
+    	}
+        
+        if (file_exists(INPUT_BUTTON_COLOR_PATH))
+    	{
+    	    __input_load_button_color_csv(INPUT_BUTTON_COLOR_PATH);
+    	}
+    	else
+    	{
+    	    __input_trace("Warning! \"", INPUT_BUTTON_COLOR_PATH, "\" not found in Included Files");
+    	}
+    }
 	
 	//Keyboard ignore level 1+
 	if (INPUT_IGNORE_RESERVED_KEYS_LEVEL > 0)

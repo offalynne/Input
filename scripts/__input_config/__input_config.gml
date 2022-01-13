@@ -21,6 +21,9 @@
 #macro INPUT_SDL2_ALLOW_GUIDE     false  //Whether to allow use of SDL2's "guide" binding, accessed using the gp_guide macro. This generally only works with DInput controllers
 #macro INPUT_SDL2_ALLOW_MISC1     false  //Whether to allow use of SDL2's "misc1" binding, accessed using the gp_misc1 macro. What this maps to varies from controller to controller
 
+#macro INPUT_DEFAULT_BUTTON_LABELS_AND_COLORS  "XBoxOneController"
+#macro INPUT_LOAD_BUTTON_LABELS_AND_COLORS     true
+
 #macro INPUT_MAX_TOUCHPOINTS        11     //Maximum number of touch screen points to query. Touch devices only (excludes PlayStation)
 #macro INPUT_TOUCH_EDGE_DEADZONE    35     //Margin in pixels around the screen edge where gaining or losing a touch point will not register "pressed" or "released". Prevents false positives when dragging on to or off of the edge of a touchscreen.
 #macro INPUT_TOUCH_POINTER_ALLOWED  false  //Whether to allow touch input (real, or simulated by physical mouse) to set mouse bindings on touch-enabled platforms
@@ -55,6 +58,8 @@
 #macro INPUT_SDL2_DATABASE_PATH    "sdl2.txt"                //Path to the SDL2 database to read gamepad remapping definitions from
 #macro INPUT_CONTROLLER_TYPE_PATH  "controllertypes.csv"     //Path to the controller type database to read gamepad types from
 #macro INPUT_BLACKLIST_PATH        "controllerblacklist.csv" //Path to the controller blacklist database to read from
+#macro INPUT_BUTTON_LABEL_PATH     "buttonlabels.csv"        //Path to the button label database to read from
+#macro INPUT_BUTTON_COLOR_PATH     "buttoncolors.csv"        //Path to the button color database to read from
 
 
 
