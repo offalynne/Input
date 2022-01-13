@@ -18,7 +18,7 @@ function __input_load_button_color_csv(_filename)
         var _type = _column_array[0];
         
         var _button_struct = {};
-        global.__input_button_label_dictionary[$ _type] = _button_struct;
+        global.__input_button_color_dictionary[$ _type] = _button_struct;
         
         var _x = 1;
         repeat(array_length(_column_array) - 1)
@@ -46,7 +46,7 @@ function __input_load_button_color_csv(_filename)
     }
     
     //Set the "Unknown" controller type to the same struct as our default controller type
-    global.__input_button_label_dictionary[$ "Unknown"] = global.__input_button_label_dictionary[$ INPUT_DEFAULT_BUTTON_LABELS_AND_COLORS];
+    global.__input_button_color_dictionary[$ "Unknown"] = global.__input_button_color_dictionary[$ INPUT_DEFAULT_BUTTON_LABELS_AND_COLORS];
     
     __input_trace(_count, " button color definitions found");
     __input_trace("Loaded in ", (get_timer() - _t)/1000, "ms");
