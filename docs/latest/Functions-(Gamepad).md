@@ -115,7 +115,7 @@ The following are values this function may return besides `undefined`:
 |Meta buttons  |`"Select"` `"Start"` `"Back"` `"View"` `"Menu"` `"Options"` `"Share"` `"Create"` `"Home"` `"Capture"` `"Action"` `"-"`&nbsp;`"+"` |
 |Thumbsticks   |`"L3"` `"R3"` `"C"` |
 
-!> It is reccomended to present players with graphics instead of text for gamepad labels in order to match non-textual glyphs, as well as to extend support beyond English. In Input this is best accomplished by using [binding name values](https://www.jujuadams.com/Input/#/latest/Binding-Names?id=gamepad) to identify gamepad elements [according to device type](https://www.jujuadams.com/Input/#/latest/Gamepad-Button-Labels). The textual values provided by this function may be useful for testing.
+!> It is reccomended to present players with graphics instead of text for gamepad labels to better match non-textual symbols, as well as to extend support beyond English. In Input this is best accomplished by using [binding name values](https://www.jujuadams.com/Input/#/latest/Binding-Names?id=gamepad) to identify gamepad elements [according to device type](https://www.jujuadams.com/Input/#/latest/Gamepad-Button-Labels). Strings returned by this function are intended as a development aid.
 
 &nbsp;
 
