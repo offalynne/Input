@@ -109,7 +109,7 @@ The following are valid strings this function may return besides `undefined`:
 
 |Gamepad input |Results|
 |:-------------|:------|
-|Face buttons  |`"A"` `"B"` `"X"` `"Y"` `"Cross"` `"Circle"` `"Square"` `"Triangle"` `"C"` `"Z"` `"O"` `"U"` |
+|Face buttons  |`"A"` `"B"` `"C"` `"X"` `"Y"` `"Z"` `"Cross"` `"Circle"` `"Square"` `"Triangle"` `"O"` `"U"` |
 |Shoulders&nbsp;&amp;&nbsp;triggers |`"L"` `"R"` `"LB"` `"RB"` `"LT"` `"RT"` `"L1"` `"R1"` `"L2"` `"R2"` `"ZL"` `"ZR"` `"SL"` `"SR"` |
 |Meta buttons  |`"Select"`, `"Start"`, `"Back"`, `"View"`, `"Menu"`, `"Options"`, `"Share"`, `"Create"`, `"Home"`, `"Capture"`, `"Action"`, `"-"`, `"+"` |
 |Thumbsticks   |`"L3"` `"R3"` `"C"` |
