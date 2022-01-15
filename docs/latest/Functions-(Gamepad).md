@@ -72,6 +72,53 @@
 
 &nbsp;
 
+### `input_gamepad_get_button_color(gamepadIndex, GMconstant)`
+
+*Returns:* String, the gamepad input color
+
+|Name          |Datatype                  |Purpose                                               |
+|--------------|--------------------------|------------------------------------------------------|
+|`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
+|`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html). What physical input this actually checks is determined by Input's own SDL remapping system|
+
+Results are returned for gamepads with a standard color scheme. PS5 and Switch controllers for example will always return `undefined`. In addition, controls that are not color coded, for example Xbox shoulder buttons, or GameCube X and Y buttons will return `unknown`. If you wish to use this function in production for drawing, you will need to [specify a color value](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Drawing/Colour_And_Alpha/Colour_And_Alpha.htm) yourself to match the returned string to suit your game's presentation needs and in order to meet appropriate [contrast specifications](https://webaim.org/resources/contrastchecker/) relative to your other graphics. 
+
+The following are valid strings this function may return besides `undefined`:
+
+|Results |
+|:-------|
+|`"red"` `"green"` `"blue"` `"yellow"` `"pink"` |
+
+&nbsp;
+
+&nbsp;
+
+### `input_gamepad_get_button_value(gamepadIndex, GMconstant)`
+
+*Returns:* String, the gamepad input label
+
+|Name          |Datatype                  |Purpose                                               |
+|--------------|--------------------------|------------------------------------------------------|
+|`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
+|`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html). What physical input this actually checks is determined by Input's own SDL remapping system|
+
+Results are returned for labeled gamepad inputs with a standard name as per brand guidelines. Inputs with no on-device label, no brand-specified name (such as Xbox gamepad thumbsticks), or a label unsuited for use based on context (such as face buttons on single horizontal JoyCons) return `undefined`.
+
+The following are valid strings this function may return besides `undefined`:
+
+|Gamepad input |Result |
+|:-------------|:------|
+|Face buttons  |`"A"` `"B"` `"X"` `"Y"` `"Cross"` `"Circle"` `"Square"` `"Triangle"` `"C"` `"Z"` `"O"` `"U"` |
+|Shoulders&nbsp;&amp;&nbsp;triggers |`"L"` `"R"` `"LB"` `"RB"` `"LT"` `"RT"` `"L1"` `"R1"` `"L2"` `"R2"` `"ZL"` `"ZR"` `"SL"` `"SR"` |
+|Thumbsticks   |`"L3"` `"R3"` `"C"` |
+|Meta buttons  |`"Select"`, `"Start"`, `"Back"`, `"View"`, `"Menu"`, `"Options"`, `"Share"`, `"Create"`, `"Home"`, `"Capture"`, `"Action"`, `"-"`, `"+"` |
+
+!> It is reccomended to present players with graphics instead of text for gamepad labels in order to match non-textual glyphs, as well as to extend support beyond English. In Input this is best accomplished by using [binding name vales](https://www.jujuadams.com/Input/#/latest/Binding-Names?id=gamepad) to [identify gamepad elements according to device type](https://www.jujuadams.com/Input/#/latest/Gamepad-Button-Labels). This function provides a readable alternative which may be useful for testing during development.
+
+&nbsp;
+
+&nbsp;
+
 ### `input_gamepad_get_description(gamepadIndex)`
 
 *Returns:* String, the name of the gamepad (after SDL remapping)
