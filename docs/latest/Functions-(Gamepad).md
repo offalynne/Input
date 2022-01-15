@@ -83,7 +83,7 @@
 
 Results are returned for gamepads with a standard color scheme. PS5 and Switch controllers for example will always return `undefined`. In addition, controls that are not color coded, for example Xbox shoulder buttons and GameCube X and Y buttons will return `undefined`. If you wish to use this function in production for drawing, you will need to specify a [color value](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Drawing/Colour_And_Alpha/Colour_And_Alpha.htm) yourself to match the returned string to suit your game's presentation needs and in order to meet appropriate [contrast specifications](https://webaim.org/resources/contrastchecker/) relative to your other graphics. 
 
-The following are valid strings this function may return besides `undefined`:
+The following are values this function may return besides `undefined`:
 
 |Results |
 |:-------|
@@ -104,7 +104,7 @@ The following are valid strings this function may return besides `undefined`:
 
 Results are returned for labeled gamepad inputs with a standard name as per brand guidelines. Inputs with no on-device label, no brand-specified name (such as Xbox gamepad thumbsticks), or a label unsuited for use based on context (such as face buttons on single horizontal JoyCons) return `undefined`.
 
-The following are valid strings this function may return besides `undefined`:
+The following are values this function may return besides `undefined`:
 
 |Gamepad input |Results|
 |:-------------|:------|
