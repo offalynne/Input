@@ -108,9 +108,9 @@ The following are values this function may return besides `undefined`:
 
 |Gamepad input |Results|
 |:-------------|:------|
-|Face buttons  |`"A"` `"B"` `"C"` `"X"` `"Y"` `"Z"` `"Cross"` `"Circle"` `"Square"` `"Triangle"` `"O"` `"U"` |
-|Shoulders&nbsp;&amp;&nbsp;triggers |`"L"` `"R"` `"LB"` `"RB"` `"LT"` `"RT"` `"L1"` `"R1"` `"L2"` `"R2"` `"ZL"` `"ZR"` `"SL"` `"SR"` |
-|Meta buttons  |`"Select"`, `"Start"`, `"Back"`, `"View"`, `"Menu"`, `"Options"`, `"Share"`, `"Create"`, `"Home"`, `"Capture"`, `"Action"`, `"-"`, `"+"` |
+|Face buttons  |`"A"` `"B"` `"C"` `"X"` `"Y"` `"Z"` `"Cross"` `"Circle"` `"Square"` `"Triangle"` `"O"`&nbsp;`"U"` |
+|Shoulders&nbsp;&amp;&nbsp;triggers |`"L"` `"R"` `"LB"` `"RB"` `"LT"` `"RT"` `"L1"` `"R1"` `"L2"` `"R2"` `"ZL"` `"ZR"` `"SL"`&nbsp;`"SR"` |
+|Meta buttons  |`"Select"` `"Start"` `"Back"` `"View"` `"Menu"` `"Options"` `"Share"` `"Create"` `"Home"` `"Capture"` `"Action"` `"-"`&nbsp;`"+"` |
 |Thumbsticks   |`"L3"` `"R3"` `"C"` |
 
 !> It is reccomended to present players with graphics instead of text for gamepad labels in order to match non-textual glyphs, as well as to extend support beyond English. In Input this is best accomplished by using [binding name values](https://www.jujuadams.com/Input/#/latest/Binding-Names?id=gamepad) to identify gamepad elements [according to device type](https://www.jujuadams.com/Input/#/latest/Gamepad-Button-Labels). The textual values provided by this function may be useful for testing.
