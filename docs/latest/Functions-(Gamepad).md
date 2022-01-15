@@ -85,10 +85,9 @@ Results are returned for gamepads with a standard color scheme. PS5 and Switch c
 
 The following are valid strings this function may return besides `undefined`:
 
-|Results    |         |        |
-|:----------|:--------|:-------|
-|`"red"`    |`"green"`|`"blue"`|
-|`"yellow"` |`"pink"` |        |
+|Results |
+|:-------|
+|`"red"` `"green"` `"blue"` `"yellow"` `"pink"`|
 
 &nbsp;
 
