@@ -28,6 +28,7 @@ Compile time configuration is controlled by macros stored in `__input_config()` 
 |`INPUT_SDL2_ALLOW_EXTERNAL`               |`true`                   |Whether to allow external SDL2 database loading from environment variable `%SDL_GAMECONTROLLERCONFIG%`                                                |
 |`INPUT_SDL2_ALLOW_GUIDE`                  |`false`                  |Whether to allow use of SDL2's "guide" binding, accessed using Input's custom `gp_guide` macro. This generally only works with DInput controllers     |
 |`INPUT_SDL2_ALLOW_MISC1`                  |`false`                  |Whether to allow use of SDL2's "misc1" binding, accessed using Input's custom `gp_misc1` macro. What this maps to varies from controller to controller|
+|`INPUT_DEFAULT_BUTTON_LABELS_AND_COLORS`  |`false`                  |Whether to allow use of SDL2's "misc1" binding, accessed using Input's custom `gp_misc1` macro. What this maps to varies from controller to controller|
 |`INPUT_MAX_TOUCHPOINTS`                   |`11`                     |Maximum number of touch screen points to query. Touch devices only (excludes PlayStation)                                                             |
 |`INPUT_TOUCH_EDGE_DEADZONE`               |`35`                     |Margin in pixels around the screen edge where gaining or losing a touch point will not register "pressed" or "released". Prevents false positives when dragging on to or off of the edge of a touchscreen.|
 |`INPUT_TOUCH_POINTER_ALLOWED`             |`false`                  |Whether to allow touch input (real, or simulated by physical mouse) to set mouse bindings on touch-enabled platforms                                  |
@@ -39,7 +40,9 @@ Compile time configuration is controlled by macros stored in `__input_config()` 
 |`INPUT_SDL2_DATABASE_PATH`                |`sdl2.txt`               |Path to the SDL2 database to read gamepad remapping definitions from                                                                                  |
 |`INPUT_CONTROLLER_TYPE_PATH`              |`controllertypes.csv`    |Path to the controller type database to read gamepad types from                                                                                       |
 |`INPUT_BLACKLIST_PATH`                    |`controllerblacklist.csv`|Path to the controller blacklist database to read from                                                                                                |
-|`INPUT_GAMEPADS_TICK_PREDELAY`            |`10`                     |How many frames to wait before scanning for connected gamepads. Works around Steam reporting confusing connection events on boot                 |
+|`INPUT_BUTTON_LABEL_PATH`                 |`buttonlabels.csv`       |Path to the controller button label database to read from                                                                                             |
+|`INPUT_BUTTON_COLOR_PATH`                 |`buttoncolors.csv`       |Path to the controller color scheme database to read from                                                                                             |
+|`INPUT_GAMEPADS_TICK_PREDELAY`            |`10`                     |How many frames to wait before scanning for connected gamepads. Works around Steam reporting confusing connection events on boot                      |
 
 
 `INPUT_IGNORE_RESERVED_KEYS_LEVEL` can take the following values:
