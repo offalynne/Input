@@ -94,7 +94,7 @@ The following are valid strings this function may return besides `undefined`:
 
 &nbsp;
 
-### `input_gamepad_get_button_value(gamepadIndex, GMconstant)`
+### `input_gamepad_get_button_label(gamepadIndex, GMconstant)`
 
 *Returns:* String, the gamepad input label
 
