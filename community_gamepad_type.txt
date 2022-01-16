@@ -1,3 +1,4 @@
+04b4,2411,CommunityLikeXBox // Flydigi Vader 2
 1d79,0009,CommunityLikeXBox // Nyko Playpad
 11c6,0010,CommunityLikeXBox // Tencent Xianyou GP1
 20bc,5052,CommunityLikeXBox // Beitong G3
