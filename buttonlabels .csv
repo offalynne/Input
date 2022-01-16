@@ -1,4 +1,4 @@
-SteamController,a:A,b:B,back:Back,leftshoulder:LB,lefttrigger:LT,paddle1:LG,paddle2:RG,rightshoulder:RB,righttrigger:RT,start:Start,x:X,y:Y,
+SteamController,a:A,b:B,back:Back,leftshoulder:LB,lefttrigger:LT,paddle1:LG,paddle2:RG,rightshoulder:RB,righttrigger:RT,start:Start,x:X,y:Y
 SteamControllerV2,a:A,b:B,back:View,leftshoulder:L1,leftstick:L3,lefttrigger:L2,paddle1:L4,paddle2:R4,paddle3:L5,paddle4:R5,rightshoulder:R1,rightstick:R3,righttrigger:R2,start:Menu,x:X,y:Y
 XBox360Controller,a:A,b:B,back:Back,leftshoulder:LB,lefttrigger:LT,rightshoulder:RB,righttrigger:RT,start:Start,x:X,y:Y
 XBoxOneController,a:A,b:B,back:View,leftshoulder:LB,lefttrigger:LT,rightshoulder:RB,righttrigger:RT,start:Menu,x:X,y:Y
