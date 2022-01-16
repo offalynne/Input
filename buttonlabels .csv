@@ -20,7 +20,7 @@ Community8BitDo,a:B,b:A,back:Select,leftshoulder:L,leftstick:L3,lefttrigger:L2,r
 CommunityDreamcast,a:A,b:B,lefttrigger:L,righttrigger:R,start:Start,x:X,y:Y
 CommunityGameCube,a:A,b:X,lefttrigger:L,rightshoulder:Z,righttrigger:R,rightx:C,righty:C,start:Start,x:B,y:Y
 CommunityXBox360,a:A,b:B,back:Back,leftshoulder:LB,lefttrigger:LT,rightshoulder:RB,righttrigger:RT,start:Start,x:X,y:Y
-CommunityXBoxOne,a:A,b:B,back:View,leftshoulder:LB,lefttrigger:LT,misc1:Share,paddle1:P1,paddle2:P3,paddle3:P2,paddle4:P4,rightshoulder:RB,righttrigger:RT,start:Menu,x:X,y:Y
+CommunityXBoxOne,a:A,b:B,back:View,leftshoulder:LB,lefttrigger:LT,misc1:Share,paddle1:P2,paddle2:P1,paddle3:P4,paddle4:P3,rightshoulder:RB,righttrigger:RT,start:Menu,x:X,y:Y
 CommunityPSX,a:Cross,b:Circle,back:Select,leftshoulder:L1,leftstick:L3,lefttrigger:L2,rightshoulder:R1,rightstick:R3,righttrigger:R2,start:Start,x:Square,y:Triangle
 CommunityPS4,a:Cross,b:Circle,back:Share,leftshoulder:L1,leftstick:L3,lefttrigger:L2,rightshoulder:R1,rightstick:R3,righttrigger:R2,start:Options,x:Square,y:Triangle
 CommunityN64,a:A,b:B,leftshoulder:L,lefttrigger:Z,rightshoulder:R,rightx:C,righty:C,start:Start
