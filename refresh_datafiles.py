@@ -87,7 +87,7 @@ DATA_SOURCES = {
     },
 
     "LABELS": {
-        "datafile": "butonlabels.csv",
+        "datafile": "buttonlabels.csv",
         "sources": {
             "Gamepad button labels": {
                 "source":  github_urlpath + "JujuAdams/Input/community-data/buttonlabels.csv"

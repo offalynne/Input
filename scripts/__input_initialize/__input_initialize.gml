@@ -121,8 +121,16 @@ function __input_initialize()
 	    back:          gp_select,
 	}
 	
-	if (INPUT_SDL2_ALLOW_GUIDE) global.__input_sdl2_look_up_table.guide = gp_guide;
-	if (INPUT_SDL2_ALLOW_MISC1) global.__input_sdl2_look_up_table.misc1 = gp_misc1;
+	if (INPUT_SDL2_ALLOW_EXTENDED)
+    {
+        global.__input_sdl2_look_up_table.guide    = gp_guide;
+        global.__input_sdl2_look_up_table.misc1    = gp_misc1;
+        global.__input_sdl2_look_up_table.touchpad = gp_touchpad;
+        global.__input_sdl2_look_up_table.paddle1  = gp_paddle1;
+        global.__input_sdl2_look_up_table.paddle2  = gp_paddle2;
+        global.__input_sdl2_look_up_table.paddle3  = gp_paddle3;
+        global.__input_sdl2_look_up_table.paddle4  = gp_paddle4;
+    }
 	
 	//Load the SDL2 database
 	if (!__INPUT_SDL2_SUPPORT || !INPUT_SDL2_REMAPPING)

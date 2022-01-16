@@ -160,8 +160,11 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
         set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
         
-        if (INPUT_SDL2_ALLOW_GUIDE) set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide");
-        if (INPUT_SDL2_ALLOW_MISC1) set_mapping(gp_misc1, 17, __INPUT_MAPPING.BUTTON, "misc1");
+        if (INPUT_SDL2_ALLOW_EXTENDED)
+        {
+            set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide");
+            set_mapping(gp_misc1, 17, __INPUT_MAPPING.BUTTON, "misc1");
+        }
         
         exit;
     }
@@ -242,7 +245,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_shoulderlb, 0, undefined, "lefttrigger");
         set_mapping(gp_shoulderrb, 0, undefined, "righttrigger");
     
-        if (INPUT_SDL2_ALLOW_GUIDE) set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide");
+        if (INPUT_SDL2_ALLOW_EXTENDED){ set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide"); }
         
         exit;
     }
@@ -273,7 +276,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_padd, 12, __INPUT_MAPPING.BUTTON, "dpdown" );
         set_mapping(gp_padl, 13, __INPUT_MAPPING.BUTTON, "dpleft" );
                     
-        if (INPUT_SDL2_ALLOW_GUIDE) set_mapping(gp_guide, 18, __INPUT_MAPPING.BUTTON, "guide");
+        if (INPUT_SDL2_ALLOW_EXTENDED){ set_mapping(gp_guide, 18, __INPUT_MAPPING.BUTTON, "guide"); }
     
         set_mapping(gp_select, 0, undefined, "back"  );
         set_mapping(gp_start,  0, undefined, "start" );    
@@ -494,7 +497,7 @@ function __input_gamepad_set_mapping()
                     {
                         //Identify directional input
                         var _is_directional = false;
-                        switch (_gm_constant)
+                        switch(_gm_constant)
                         {
                             case gp_padu:   case gp_padd: 
                             case gp_padl:   case gp_padr:
@@ -547,7 +550,7 @@ function __input_gamepad_set_mapping()
             //Guide button issues 2 reports: one a tick after release which is usually too fast for GM's
             //interupt to catch, and another that's for long press: doesn't work until held for 1 second
             //SDL map assigns the first but we switch to the second.
-            if (INPUT_SDL2_ALLOW_GUIDE) set_mapping(gp_guide, 15, __INPUT_MAPPING.BUTTON, "guide");
+            if (INPUT_SDL2_ALLOW_EXTENDED){ set_mapping(gp_guide, 15, __INPUT_MAPPING.BUTTON, "guide"); }
         }
     }
     

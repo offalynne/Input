@@ -60,6 +60,11 @@ _string += "gp_select     = " + string(input_gamepad_value(_gamepad, gp_select  
 _string += "gp_start      = " + string(input_gamepad_value(_gamepad, gp_start     )) + "\n";
 _string += "gp_misc1      = " + string(input_gamepad_value(_gamepad, gp_misc1     )) + "\n";
 _string += "gp_guide      = " + string(input_gamepad_value(_gamepad, gp_guide     )) + "\n";
+_string += "gp_touchpad   = " + string(input_gamepad_value(_gamepad, gp_touchpad  )) + "\n";
+_string += "gp_paddle1    = " + string(input_gamepad_value(_gamepad, gp_paddle1   )) + "\n";
+_string += "gp_paddle2    = " + string(input_gamepad_value(_gamepad, gp_paddle2   )) + "\n";
+_string += "gp_paddle3    = " + string(input_gamepad_value(_gamepad, gp_paddle3   )) + "\n";
+_string += "gp_paddle4    = " + string(input_gamepad_value(_gamepad, gp_paddle4   )) + "\n";
 draw_text(200, 50, _string);
 
 var _string = "";
