@@ -95,7 +95,7 @@
 
 Swapping A/O with B/X is a global setting and, once set, cannot be changed during game operation. As a result, this function should be called once at the start of the game before [`input_default_gamepad_button()`](Functions-(Default-Bindings)#input_default_gamepad_buttonbutton-verb-alternate) and [`input_default_joycon_button()`](Functions-(Default-Bindings)#input_default_joycon_buttonbutton-verb-alternate).
 
-If you *would* like to swap A/O with B/X during gameplay, please use the [binding functions](Functions-(Binding-Management)).
+If you *would* like to swap A/O with B/X during gameplay, please use the [binding functions](Functions-(Bindings)).
 
 &nbsp;
 
