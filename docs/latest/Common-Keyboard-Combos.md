@@ -100,3 +100,7 @@ Presented below are system-level bindings to mind when defining a control scheme
 | Input                     | Action            |
 |:--------------------------|:------------------|
 | `Shift`+`Tab`             | Overlay           |
+
+### MacOS and iOS
+
+Select (aka Share or View) gamepad buttons are bound to screenshot and video recording actions. These can be toggled in OS Settings and are on by default.
