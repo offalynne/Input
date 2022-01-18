@@ -2,7 +2,7 @@
 
 ---
 
-Presented below are system-level bindings to mind when defining a control scheme.
+Presented below are system software-level bindings to mind when defining a control scheme.
 
 ### Steam and GOG
 | Input                     | Action            |
