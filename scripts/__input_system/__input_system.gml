@@ -14,8 +14,9 @@
 #macro __INPUT_ON_OPERAGX  (os_type == os_operagx)
 #macro __INPUT_ON_WEB      ((os_browser != browser_not_a_browser) || __INPUT_ON_OPERAGX)
 
-#macro __INPUT_KEYBOARD_SUPPORT (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch) || (os_type == os_uwp) || (os_type == os_android))
-#macro __INPUT_TOUCH_SUPPORT    (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch) || ((os_type == os_uwp) && uwp_device_touchscreen_available()))
+#macro __INPUT_TOUCH_SUPPORT      (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch) || ((os_type == os_uwp) && uwp_device_touchscreen_available()))
+#macro __INPUT_KEYBOARD_NORMATIVE (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch) ||  (os_type == os_uwp))
+#macro __INPUT_KEYBOARD_SUPPORT   (__INPUT_KEYBOARD_NORMATIVE || (os_type == os_android))
 
 #macro __INPUT_SDL2_SUPPORT     (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || (os_type == os_android)))
 
@@ -24,9 +25,26 @@
 //Extra constants
 #macro gp_guide    32789
 #macro gp_misc1    32790
-#macro vk_meta1    91
-#macro vk_meta2    92
-#macro vk_capslock 20
+
+#macro vk_meta1 91
+#macro vk_meta2 92
+
+#macro vk_scrollock 145
+#macro vk_capslock  20
+#macro vk_numlock   ((__INPUT_ON_APPLE && __INPUT_ON_WEB) ? 12 : 144)
+
+#macro vk_semicolon (__INPUT_KEYBOARD_NORMATIVE ? 186 : 59) 
+#macro vk_comma     (__INPUT_KEYBOARD_NORMATIVE ? 188 : 44)
+#macro vk_fslash    (__INPUT_KEYBOARD_NORMATIVE ? 191 : 47) 
+#macro vk_bslash    (__INPUT_KEYBOARD_NORMATIVE ? 220 : 92) 
+#macro vk_lbracket  (__INPUT_KEYBOARD_NORMATIVE ? 219 : 91) 
+#macro vk_rbracket  (__INPUT_KEYBOARD_NORMATIVE ? 221 : 93) 
+
+#macro vk_equals     (__INPUT_KEYBOARD_NORMATIVE ? ((os_type == os_macosx) ?  24 : 187) : 61)
+#macro vk_period     (__INPUT_KEYBOARD_NORMATIVE ? ((os_type == os_switch) ? 110 : 190) : 46)
+
+#macro vk_hyphen     (__INPUT_KEYBOARD_NORMATIVE ? (((os_type == os_switch) || ((os_type == os_macosx) && !__INPUT_ON_WEB)) ? 109 : 189) : 93)
+#macro vk_apostrophe (__INPUT_KEYBOARD_NORMATIVE ? (((os_type == os_linux) && !__INPUT_ON_WEB) ? 222 : 192) : 39)
 
 // gp_axislh     = 32785             32769 = gp_face1
 // gp_axislv     = 32786             32770 = gp_face2
