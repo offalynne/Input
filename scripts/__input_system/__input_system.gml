@@ -43,7 +43,7 @@
 #macro vk_equals     (__INPUT_KEYBOARD_NORMATIVE ? ((os_type == os_macosx) ?  24 : 187) : 61)
 #macro vk_period     (__INPUT_KEYBOARD_NORMATIVE ? ((os_type == os_switch) ? 110 : 190) : 46)
 
-#macro vk_hyphen     (__INPUT_KEYBOARD_NORMATIVE ? (((os_type == os_switch) || ((os_type == os_macosx) && !__INPUT_ON_WEB)) ? 109 : 189) : 93)
+#macro vk_hyphen     (__INPUT_KEYBOARD_NORMATIVE ? (((os_type == os_switch) || ((os_type == os_macosx) && !__INPUT_ON_WEB)) ? 109 : 189) : 45)
 #macro vk_apostrophe (__INPUT_KEYBOARD_NORMATIVE ? (((os_type == os_macosx) && !__INPUT_ON_WEB) ? 192 : 222) : 39)
 
 // gp_axislh     = 32785             32769 = gp_face1
