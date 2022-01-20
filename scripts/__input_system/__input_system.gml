@@ -23,11 +23,11 @@
 #macro __INPUT_HOLD_THRESHOLD  0.2 //Minimum value from an axis for that axis to be considered activated at the gamepad layer. This is *not* the same as min/max thresholds for players
 
 //Extra constants
-#macro gp_guide    32789
-#macro gp_misc1    32790
+#macro gp_guide  32789
+#macro gp_misc1  32790
 
-#macro vk_meta1 91
-#macro vk_meta2 92
+#macro vk_meta1  91
+#macro vk_meta2  92
 
 #macro vk_scrollock 145
 #macro vk_capslock  20
@@ -40,11 +40,11 @@
 #macro vk_lbracket  (__INPUT_KEYBOARD_NORMATIVE ? 219 : 91) 
 #macro vk_rbracket  (__INPUT_KEYBOARD_NORMATIVE ? 221 : 93) 
 
-#macro vk_equals     (__INPUT_KEYBOARD_NORMATIVE ? ((os_type == os_macosx) ?  24 : 187) : 61)
-#macro vk_period     (__INPUT_KEYBOARD_NORMATIVE ? ((os_type == os_switch) ? 110 : 190) : 46)
+#macro vk_equals  (__INPUT_KEYBOARD_NORMATIVE ? ((os_type == os_macosx) ?  24 : 187) : 61)
+#macro vk_period  (__INPUT_KEYBOARD_NORMATIVE ? ((os_type == os_switch) ? 110 : 190) : 46)
 
-#macro vk_hyphen     (__INPUT_KEYBOARD_NORMATIVE ? (((os_type == os_switch) || ((os_type == os_macosx) && !__INPUT_ON_WEB)) ? 109 : 189) : 45)
-#macro vk_apostrophe (__INPUT_KEYBOARD_NORMATIVE ? (((os_type == os_macosx) && !__INPUT_ON_WEB) ? 192 : 222) : 39)
+#macro vk_hyphen      (__INPUT_KEYBOARD_NORMATIVE ? (((os_type == os_switch) || ((os_type == os_macosx) && !__INPUT_ON_WEB)) ? 109 : 189) : 45)
+#macro vk_apostrophe  (__INPUT_KEYBOARD_NORMATIVE ? (((os_type == os_macosx) && !__INPUT_ON_WEB) ? 192 : 222) : 39)
 
 // gp_axislh     = 32785             32769 = gp_face1
 // gp_axislv     = 32786             32770 = gp_face2
