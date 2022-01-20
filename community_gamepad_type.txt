@@ -318,7 +318,7 @@ dead,beef,CommunityPSX // Hidromancer
 25f0,83c4,CommunityPSX // Gioteck VX2
 6666,0667,CommunityPSX // SuperJoy Box Adapter
 6666,8804,CommunityPSX // SuperJoy Box Adapter
-0c12,0e30,CommunityLikePS4 // Brook PS4 plus Audio PCB
+0c12,0e30,CommunityPS4 // Brook PS4 plus Audio PCB
 0c12,0708,CommunityPS4 // Zeroplus PS4 Wired Gamepad
 0c12,0e11,CommunityPS4 // Zeroplus Pro4 Controller
 0c12,0e13,CommunityPS4 // Zeroplus P4 Wired Gamepad
