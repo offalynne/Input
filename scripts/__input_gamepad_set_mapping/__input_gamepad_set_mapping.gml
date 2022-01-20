@@ -260,6 +260,11 @@ function __input_gamepad_set_mapping()
         simple_type = "xbox one";
         raw_type    = "AppleController";
         
+        set_mapping(gp_padl, 0, __INPUT_MAPPING.BUTTON, "dpleft");
+        set_mapping(gp_padd, 1, __INPUT_MAPPING.BUTTON, "dpdown");
+        set_mapping(gp_padr, 2, __INPUT_MAPPING.BUTTON, "dpright");
+        set_mapping(gp_padu, 3, __INPUT_MAPPING.BUTTON, "dpup");
+        
         set_mapping(gp_face1, 4, __INPUT_MAPPING.BUTTON, "a");
         set_mapping(gp_face2, 5, __INPUT_MAPPING.BUTTON, "b");
         set_mapping(gp_face3, 6, __INPUT_MAPPING.BUTTON, "x");
@@ -268,22 +273,17 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_shoulderl, 8, __INPUT_MAPPING.BUTTON, "leftshoulder");
         set_mapping(gp_shoulderr, 9, __INPUT_MAPPING.BUTTON, "rightshoulder");
     
+        set_mapping(gp_stickr, 10, __INPUT_MAPPING.BUTTON, "rightstick");
+        set_mapping(gp_stickl, 11, __INPUT_MAPPING.BUTTON, "leftstick");
+        
         set_mapping(gp_select, 13, __INPUT_MAPPING.BUTTON, "back");
         set_mapping(gp_start,  14, __INPUT_MAPPING.BUTTON, "start");
-    
-        set_mapping(gp_stickl, 11, __INPUT_MAPPING.BUTTON, "leftstick");
-        set_mapping(gp_stickr, 10, __INPUT_MAPPING.BUTTON, "rightstick");
     
         set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
         set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty").reverse = true;
         set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
         set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty").reverse = true;
-        
-        set_mapping(gp_padu, 3, __INPUT_MAPPING.BUTTON, "dpup"   ).hat_mask = 1;
-        set_mapping(gp_padr, 2, __INPUT_MAPPING.BUTTON, "dpright").hat_mask = 2;
-        set_mapping(gp_padd, 1, __INPUT_MAPPING.BUTTON, "dpdown" ).hat_mask = 4;
-        set_mapping(gp_padl, 0, __INPUT_MAPPING.BUTTON, "dpleft" ).hat_mask = 8;
-    
+            
         //No trigger data :-(
         set_mapping(gp_shoulderlb, 0, undefined, "lefttrigger");
         set_mapping(gp_shoulderrb, 0, undefined, "righttrigger");
