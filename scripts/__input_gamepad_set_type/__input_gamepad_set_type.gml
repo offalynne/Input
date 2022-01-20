@@ -239,7 +239,7 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunityLikeXBox";
                 }
-                else if ((__INPUT_ON_MOBILE && __INPUT_ON_APPLE) || string_count("nimbus", _desc) || string_count("horipad ultimate", _desc) || string_count("extended gamepad", _desc))
+                else if ((__INPUT_ON_MOBILE && __INPUT_ON_APPLE) || _desc == "mfi" || string_count("nimbus", _desc) || string_count("horipad ultimate", _desc))
                 {
                     raw_type = "AppleController";
                 }
