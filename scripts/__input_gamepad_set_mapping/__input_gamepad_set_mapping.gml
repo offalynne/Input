@@ -252,9 +252,8 @@ function __input_gamepad_set_mapping()
     #region MFi controller on Windows
 
     if ((os_type == os_windows) && (vendor == "0d00") && (product == "0000")
-    && (gamepad_button_count(index) == 15)
-    && (gamepad_axis_count(index  ) == 4)
-    && (gamepad_hat_count(index   ) == 0))
+    && (gamepad_button_count(index) == 15) && (gamepad_axis_count(index) == 4)
+    && (gamepad_hat_count(index) == 0))
     {
         description = "MFi Extended Controller";
         simple_type = "xbox one";
