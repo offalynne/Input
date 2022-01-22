@@ -23,8 +23,8 @@
 #macro __INPUT_HOLD_THRESHOLD  0.2 //Minimum value from an axis for that axis to be considered activated at the gamepad layer. This is *not* the same as min/max thresholds for players
 
 //Extra constants
-#macro gp_guide  32789
-#macro gp_misc1  32790
+#macro gp_guide    32789
+#macro gp_misc1    32790
 
 #macro vk_meta1  91
 #macro vk_meta2  92
