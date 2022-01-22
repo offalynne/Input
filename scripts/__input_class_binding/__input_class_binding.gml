@@ -17,8 +17,23 @@ function __input_class_binding() constructor
         android_lowercase = undefined;
     }
     
-    static set_key = function(_key)
+    static set_key = function(_key, _player_set)
     {
+        //Fix UTF-8 where used
+        if (!__INPUT_KEYBOARD_NORMATIVE && !_player_set)
+        {
+            if (_key == vk_enter)          { _key = 10; }
+            else if (_key == vk_comma)     { _key = 44; }
+            else if (_key == vk_hyphen)    { _key = 45; }
+            else if (_key == vk_period)    { _key = 46; }
+            else if (_key == vk_fslash)    { _key = 47; }
+            else if (_key == vk_semicolon) { _key = 59; }
+            else if (_key == vk_equals)    { _key = 61; }
+            else if (_key == vk_lbracket)  { _key = 91; }
+            else if (_key == vk_bslash)    { _key = 92; }
+            else if (_key == vk_rbracket)  { _key = 93; }
+        }
+        
         //Fix uses of straight strings instead of ord("A") etc.
         if (is_string(_key)) _key = ord(string_upper(_key));
         
