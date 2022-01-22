@@ -18,7 +18,7 @@
 
 #macro INPUT_SDL2_REMAPPING       true   //Whether to use our own SDL2 database to remap controllers
 #macro INPUT_SDL2_ALLOW_EXTERNAL  true   //Whether to allow external SDL2 database loading from environment variable %SDL_GAMECONTROLLERCONFIG%
-#macro INPUT_SDL2_ALLOW_EXTENDED  true  //Whether to allow use of SDL2's extended bindings, accessed using the gp_... macros
+#macro INPUT_SDL2_ALLOW_EXTENDED  false  //Whether to allow use of SDL2's extended bindings, accessed using the gp_* macros
 
 #macro INPUT_DEFAULT_BUTTON_LABELS_AND_COLORS  "XBoxOneController"
 #macro INPUT_LOAD_BUTTON_LABELS_AND_COLORS     true
