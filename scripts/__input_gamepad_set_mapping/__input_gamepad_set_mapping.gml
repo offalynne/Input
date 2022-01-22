@@ -256,8 +256,8 @@ function __input_gamepad_set_mapping()
     && (gamepad_hat_count(index) == 0))
     {
         description = "MFi Extended Controller";
+        raw_type = "AppleController";
         simple_type = "xbox one";
-        raw_type    = "AppleController";
         
         set_mapping(gp_padl, 0, __INPUT_MAPPING.BUTTON, "dpleft");
         set_mapping(gp_padd, 1, __INPUT_MAPPING.BUTTON, "dpdown");
