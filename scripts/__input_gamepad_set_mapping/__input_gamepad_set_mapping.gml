@@ -287,7 +287,7 @@ function __input_gamepad_set_mapping()
     
     #endregion
     
-    #region NeoGeo Mini on Linux and Windows 
+    #region NeoGeo Mini
 
     //Vendor and product conflict, identify additional properties
     if (((vendor == "6325") && (product == "7505"))
@@ -315,6 +315,14 @@ function __input_gamepad_set_mapping()
 
         exit;
      }
+
+    if ((gamepad_get_guid(index) == "03000000632500007505000000020000") && (os_type == os_macosx))
+    {
+        //Set NeoGeo Mini type on Mac (VID+PID alone conflict with third party PS3 controllers)
+        __input_trace("Overriding gamepad type to NeoGeo Mini");
+        raw_type = "CommunityNeoGeoMini";
+        simple_type = "unknown";
+    }
 
     #endregion
 
@@ -579,14 +587,6 @@ function __input_gamepad_set_mapping()
             //interupt to catch, and another that's for long press: doesn't work until held for 1 second
             //SDL map assigns the first but we switch to the second.
             if (INPUT_SDL2_ALLOW_GUIDE) set_mapping(gp_guide, 15, __INPUT_MAPPING.BUTTON, "guide");
-        }
-        
-        if ((gamepad_get_guid(index) == "03000000632500007505000000020000") && (os_type == os_macosx))
-        {
-            //Set NeoGeo Mini type on Mac (VID+PID alone conflict with third party PS3 controllers)
-            __input_trace("Overriding gamepad type to NeoGeo Mini");
-            raw_type = "CommunityNeoGeoMini";
-            simple_type = "unknown";
         }
     }
     
