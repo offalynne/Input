@@ -292,8 +292,8 @@ function __input_gamepad_set_mapping()
     //Vendor and product conflict, identify additional properties
     if (((vendor == "6325") && (product == "7505"))
     && (((os_type == os_linux)   && (gamepad_get_description(index) == "GHICCod USB Gamepad"))
-    ||  ((os_type == os_windows) && (gamepad_get_description(index) == "USB ") && (gamepad_button_count(index) == 13) && (gamepad_axis_count(index) == 4))))
-    {
+     || ((os_type == os_windows) && (gamepad_get_description(index) == "USB ") && (gamepad_button_count(index) == 13) && (gamepad_axis_count(index) == 4))))
+     {
         __input_trace("Overriding gamepad type and mapping to NeoGeo Mini");
 
         description = "NeoGeo Mini";
@@ -314,7 +314,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
 
         exit;
-    }
+     }
 
     #endregion
 
