@@ -27,3 +27,6 @@ CommunityN64,a:A,b:B,leftshoulder:L,lefttrigger:Z,rightshoulder:R,rightx:C,right
 CommunityOuya,a:O,b:A,leftshoulder:LB,leftstick:L3,lefttrigger:LT,rightshoulder:RB,rightstick:R3,righttrigger:RT,start:Start,x:U,y:Y
 CommunityStadia,a:A,b:B,back:Options,leftshoulder:L1,leftstick:L3,lefttrigger:L2,rightshoulder:R1,rightstick:R3,righttrigger:R2,start:Menu,x:X,y:Y
 CommunityLuna,a:A,b:B,back:Action,leftshoulder:LB,leftstick:L3,lefttrigger:LT,misc1:Mic,rightshoulder:RB,rightstick:R3,righttrigger:RT,start:Menu,x:X,y:Y
+CommunityAstroCity,a:D,b:E,x:A,y:B,rightshoulder:C,righttrigger:F,back:Credit,start:Start
+CommunityNeoGeoMini,a:B,b:D,x:A,y:C,back:Select,start:Start
+CommunityPCEngine,a:II,b:I,back:Select,start:Run
