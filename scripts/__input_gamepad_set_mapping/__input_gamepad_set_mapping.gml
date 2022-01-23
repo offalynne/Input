@@ -544,13 +544,41 @@ function __input_gamepad_set_mapping()
                 __input_trace("No SDL2 remapping available, falling back to GameMaker's mapping (", gamepad_get_mapping(index), ")");
             }
         }
-               
-        if ((raw_type == "CommunityOuya") && ((os_type == os_windows) || (os_type == os_linux)))
+        
+        if (INPUT_SDL2_ALLOW_EXTENDED)
         {
-            //Guide button issues 2 reports: one a tick after release which is usually too fast for GM's
-            //interupt to catch, and another that's for long press: doesn't work until held for 1 second
-            //SDL map assigns the first but we switch to the second.
-            if (INPUT_SDL2_ALLOW_EXTENDED){ set_mapping(gp_guide, 15, __INPUT_MAPPING.BUTTON, "guide"); }
+            //Map touchpad on PS4/PS5 pads
+            if (((os_type == os_windows) || (os_type == os_macosx))
+            &&  ((simple_type == "ps4")  || (simple_type == "ps5)))
+            {
+                var _matched = 0;
+                var _mapping = undefined;
+                var _button_array = [gp_face3, gp_face1, gp_face2, gp_face4];
+                var _offset = ((mac_cleared_mapping && (os_type == os_macosx)) ? 17 : 0);
+
+                repeat(array_length(_button_array))
+                {
+                    //Check mapping match (b0 - b3)
+                    _mapping = mapping_gm_to_raw[$ _button_array[_matched]];
+                    if (!is_struct(_mapping) || (_mapping[$ "raw"] != _matched + _offset)) break;
+                    ++_matched;
+                }
+
+                if (_matched == 4)
+                {
+                    //Buttons match expected PlayStation 4/5 mapping, set touchpad
+                    set_mapping(gp_touchpad, 13 + _offset, __INPUT_MAPPING.BUTTON, "touchpad");
+                }
+            }
+            
+             //Change Ouya guide mapping
+            if (((os_type == os_windows) || (os_type == os_linux)) && (raw_type == "CommunityOuya"))
+            {
+                //Guide button issues 2 reports: one a tick after release which is usually too fast for GM's
+                //interupt to catch, and another that's for long press that works after being held 1 second.
+                //SDL's map assigns the first but we switch to the second which will work reliably for GM.
+                set_mapping(gp_guide, 15, __INPUT_MAPPING.BUTTON, "guide");
+            }
         }
     }
     
