@@ -42,19 +42,9 @@ global.__input_simple_type_lookup = {
     //Legacy
     CommunityGameCube:   "gamecube",
     CommunityN64:        "n64",
-
     CommunitySaturn:     "saturn",
-    CommunityAstroCity:  "saturn",
-    
-    CommunitySNES:        "snes",
-    CommuntyPCEngine:     "snes",
-    CommunityNeoGeoMini:  "snes",
-    
-    ////Retired as first class, identifiable via raw type
-    //AppleController: "apple",
-    //CommunityStadia: "stadia",
-    //CommunityLuna:   "luna",
-    //CommunityOuya:   "ouya",
+    CommunityAstroCity:  "saturn",    
+    CommunitySNES:       "snes",
     
     Unknown: "unknown",
     unknown: "unknown",
