@@ -298,7 +298,7 @@ function __input_gamepad_set_mapping()
 
         description = "NeoGeo Mini";
         raw_type = "CommunityNeoGeoMini";
-        simple_type = "snes";
+        simple_type = "unknown";
 
         set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
         set_mapping(gp_face2, 0, __INPUT_MAPPING.BUTTON, "b");
@@ -586,7 +586,7 @@ function __input_gamepad_set_mapping()
             //Set NeoGeo Mini type on Mac (VID+PID alone conflict with third party PS3 controllers)
             __input_trace("Overriding gamepad type to NeoGeo Mini");
             raw_type = "CommunityNeoGeoMini";
-            simple_type = "snes";
+            simple_type = "unknown";
         }
     }
     
