@@ -549,7 +549,7 @@ function __input_gamepad_set_mapping()
         {
             //Map touchpad on PS4/PS5 pads
             if (((os_type == os_windows) || (os_type == os_macosx))
-            &&  ((simple_type == "ps4")  || (simple_type == "ps5)))
+            &&  ((simple_type == "ps4")  || (simple_type == "ps5")))
             {
                 var _matched = 0;
                 var _mapping = undefined;
