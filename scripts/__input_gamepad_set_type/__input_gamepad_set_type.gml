@@ -40,11 +40,16 @@ global.__input_simple_type_lookup = {
     SwitchJoyConRight: "switch joycon right",
 	
     //Legacy
-    CommunityGameCube: "gamecube",
-    CommunitySaturn:   "saturn",
-    CommunitySNES:     "snes",
-    CommunityN64:      "n64",
+    CommunityGameCube:   "gamecube",
+    CommunityN64:        "n64",
 
+    CommunitySaturn:     "saturn",
+    CommunityAstroCity:  "saturn",
+    
+    CommunitySNES:        "snes",
+    CommuntyPCEngine:     "snes",
+    CommunityNeoGeoMini:  "snes",
+    
     ////Retired as first class, identifiable via raw type
     //AppleController: "apple",
     //CommunityStadia: "stadia",

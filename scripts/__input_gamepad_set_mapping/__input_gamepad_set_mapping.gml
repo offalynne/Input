@@ -284,6 +284,37 @@ function __input_gamepad_set_mapping()
             
         exit;
     }
+    
+    #endregion
+    
+    #region NeoGeo Mini on Linux and Windows 
+
+    //Vendor and product conflict, identify additional properties
+    if (((vendor == "6325") && (product == "7505"))
+    && (((os_type == os_linux)   && (gamepad_get_description(index) == "GHICCod USB Gamepad"))
+    ||  ((os_type == os_windows) && (gamepad_get_description(index) == "USB ") && (gamepad_button_count(index) == 13) && (gamepad_axis_count(index) == 4))))
+    {
+        __input_trace("Overriding gamepad type and mapping to NeoGeo Mini");
+
+        description = "NeoGeo Mini";
+        raw_type = "CommunityNeoGeoMini";
+        simple_type = "unknown";
+
+        set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
+        set_mapping(gp_face2, 0, __INPUT_MAPPING.BUTTON, "b");
+        set_mapping(gp_face3, 2, __INPUT_MAPPING.BUTTON, "x");
+        set_mapping(gp_face4, 3, __INPUT_MAPPING.BUTTON, "y");
+
+        set_mapping(gp_select, 8, __INPUT_MAPPING.BUTTON, "back");
+        set_mapping(gp_start,  9, __INPUT_MAPPING.BUTTON, "start");
+
+        set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
+        set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
+        set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
+        set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+
+        exit;
+    }
 
     #endregion
 
@@ -548,6 +579,14 @@ function __input_gamepad_set_mapping()
             //interupt to catch, and another that's for long press: doesn't work until held for 1 second
             //SDL map assigns the first but we switch to the second.
             if (INPUT_SDL2_ALLOW_GUIDE) set_mapping(gp_guide, 15, __INPUT_MAPPING.BUTTON, "guide");
+        }
+        
+        if ((gamepad_get_guid(index) == "03000000632500007505000000020000") && (os_type == os_macosx))
+        {
+            //Set NeoGeo Mini type on Mac (VID+PID alone conflict with third party PS3 controllers)
+            __input_trace("Overriding gamepad type to NeoGeo Mini");
+            raw_type = "CommunityNeoGeoMini";
+            simple_type = "unknown";
         }
     }
     
