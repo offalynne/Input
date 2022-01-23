@@ -355,6 +355,10 @@ dead,beef,CommunityPSX // Hidromancer
 2836,0001,CommunityOuya // Ouya Controller
 18d1,9400,CommunityStadia // Google Stadia Controller
 0171,0419,CommunityLuna // Amazon Luna Controller
+0f0d,0138,CommuntyPCEngine // NEC CoreGrafx, TG16, PC Engine Mini Controller
+0ca3,0027,CommunityAstroCity // Sega Astro City Mini Controller
+0ca3,0028,CommunityAstroCity // Sega Astro City Mini Arcade Stick
+
 2f24,002d,CommunityUnknown // JYS Adapter
 2f24,008a,CommunityUnknown // JYS Adapter
 2f24,0073,CommunityUnknown // Mayflash Adapter
