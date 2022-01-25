@@ -40,10 +40,7 @@ function __input_class_binding() constructor
         if (os_type == os_android)
         {
             //Force binding to uppercase
-            if ((_key >= ord("a")) && (_key <= ord("z")))
-            {
-                _key = ord(string_upper(chr(_key)));
-            }
+            if (_key >= ord("a")) && (_key <= ord("z")) _key = ord(string_upper(chr(_key)));
 
             //Grab the keyboard character for this key and force it into lowercase
             //If the lowercase and uppercase keys are different then we'll want to check the lowercase key as well
