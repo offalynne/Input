@@ -25,7 +25,7 @@ function __input_class_binding() constructor
         //Fix UTF-8 where used
         if (!__INPUT_KEYBOARD_NORMATIVE && !_player_set)
         {
-            if (_key == vk_enter)          { _key = 10; }
+            if      (_key == vk_enter    ) { _key = 10; }
             else if (_key == vk_comma    ) { _key = 44; }
             else if (_key == vk_hyphen   ) { _key = 45; }
             else if (_key == vk_period   ) { _key = 46; }
@@ -40,7 +40,12 @@ function __input_class_binding() constructor
         if (os_type == os_android)
         {
             //Force binding to uppercase
-            if (_key >= ord("a")) && (_key <= ord("z")) _key = ord(string_upper(chr(_key)));
+            if (((_key >= ord("a")) && (_key <= ord("z"))
+            || ((_key >=  224) && (_key <=  563))
+            || ((_key >= 7681) && (_key <= 7931)))
+            {
+                _key = ord(string_upper(chr(_key)));
+            }
 
             //Grab the keyboard character for this key and force it into lowercase
             //If the lowercase and uppercase keys are different then we'll want to check the lowercase key as well
