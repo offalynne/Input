@@ -42,7 +42,7 @@
 
 #macro vk_apostrophe  (((os_type == os_macosx) && !__INPUT_ON_WEB) ? 192 : 222)
 #macro vk_equals      (((os_type == os_macosx) && !__INPUT_ON_WEB) ?  24 : 187)
-#macro vk_hyphen      ((((os_type == os_macosx) && !__INPUT_ON_WEB) || (os_type == os_switch)) ? 109 : 189)
+#macro vk_hyphen      (((os_type == os_switch) || ((os_type == os_macosx) && !__INPUT_ON_WEB)) ? 109 : 189)
 #macro vk_grave       ((os_type == os_macosx) ? 50 : ((os_type == os_linux) ? 223 : 192))
 #macro vk_period      ((os_type == os_switch) ? 110 : 190)
 
