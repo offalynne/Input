@@ -31,6 +31,8 @@ Outputs a string that contains a JSON definition for the given bindings. This ca
 
 This function also serialises axis thresholds (as set by [`axis_threshold_set()`](Functions-(Other)#input_axis_threshold_setaxis-min-max-playerindex)).
 
+It is reccomended to only use bindings written on the same device, as keyboard scancodes differ across device layouts and platforms.
+
 !> Due to [up-stream bugs](https://github.com/JujuAdams/Input/issues/152) in GameMaker's JavaScript runtime, this function is not supported in HTML5.
 
 &nbsp;
@@ -50,6 +52,8 @@ This function also serialises axis thresholds (as set by [`axis_threshold_set()`
 Reads a JSON string that contains binding definitions. Such a string should be created using [`input_bindings_write()`](Functions-(Binding-Management)#input_bindings_readstring-playerindex).
 
 This function also deserialises axis thresholds (as set by [`axis_threshold_set()`](Functions-(Other)#input_axis_threshold_setaxis-min-max-playerindex)).
+
+While useful for retaining player preferences across sessions, [default bindings](Functions-(Default-Bindings)) must still be set directly before reading bindings with this function. It is reccomended to only use bindings written on the same device, as keyboard scancodes differ across device layouts and platforms.
 
 !> Due to [up-stream bugs](https://github.com/JujuAdams/Input/issues/152) in GameMaker's JavaScript runtime, this function is not supported in HTML5.
 
