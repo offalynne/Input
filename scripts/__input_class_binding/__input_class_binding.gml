@@ -56,7 +56,7 @@ function __input_class_binding() constructor
                 android_lowercase = _key + 32;
             }
             
-            //Some Android devices and soft keyboards use carriage return for enter, others newline
+            //Some Android devices and soft keyboards use carriage return
             if ((_key == 10) || (_key == 13))
             {
                 _key = 10;
