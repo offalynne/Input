@@ -292,7 +292,6 @@ function __input_gamepad_set_mapping()
     //Vendor and product conflict, identify additional properties
     if ((vendor == "6325") && (product == "7505"))
     {
-    
         if (((os_type == os_linux)   && (gamepad_get_description(index) == "GHICCod USB Gamepad"))
         ||  ((os_type == os_windows) && (gamepad_get_description(index) == "USB ") && (gamepad_button_count(index) == 13) && (gamepad_axis_count(index) == 4)))
         {
