@@ -40,9 +40,7 @@ function __input_class_binding() constructor
         if (os_type == os_android)
         {
             //Force binding to uppercase
-            if (((_key >= ord("a")) && (_key <= ord("z"))
-            || ((_key >=  224) && (_key <=  563))
-            || ((_key >= 7681) && (_key <= 7931)))
+            if ((_key >= ord("a")) && (_key <= ord("z")))
             {
                 _key = ord(string_upper(chr(_key)));
             }
