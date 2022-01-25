@@ -41,12 +41,19 @@ function __input_class_binding() constructor
         if (os_type == os_android)
         {
             //Force binding to uppercase
-            if (_key >= ord("a")) && (_key <= ord("z")) _key = ord(string_upper(chr(_key)));
+            if (((_key >= ord("a")) && (_key <= ord("z"))
+            || (((os_type == os_linux) || (os_type == os_android)) && ((_key >= 224 && _key <= 246) || (_key >= 248 && _key <= 254))))
+            {
+                _key -= 32;
+            }
 
             //Grab the keyboard character for this key and force it into lowercase
             //If the lowercase and uppercase keys are different then we'll want to check the lowercase key as well
-            var _android_lowercase = ord(string_lower(chr(_key)));
-            if (_android_lowercase != _key) android_lowercase = _android_lowercase;
+            if (((_key >= ord("A")) && (_key <= ord("Z"))
+            || (((os_type == os_linux) || (os_type == os_android)) && ((_key >= 192 && _key <= 214) || (_key >= 216 && _key <= 222))))
+            {
+                android_lowercase = _key + 32;
+            }
         }
         
         type  = "key";
