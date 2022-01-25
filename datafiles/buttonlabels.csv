@@ -11,7 +11,7 @@ SwitchJoyConRight,back:Home,leftshoulder:SL,rightshoulder:SR,start:+
 SwitchInputOnlyController,a:B,b:A,back:-,leftshoulder:L,lefttrigger:ZL,misc1:Capture,rightshoulder:R,righttrigger:ZR,start:+,x:Y,y:X
 MobileTouch,a:A,b:B,back:Back,leftshoulder:LB,lefttrigger:LT,rightshoulder:RB,righttrigger:RT,start:Start,x:X,y:Y
 XInputSwitchController,a:B,b:A,back:-,leftshoulder:L,lefttrigger:ZL,misc1:Capture,rightshoulder:R,righttrigger:ZR,start:+,x:Y,y:X
-PS5Controller,a:Cross,b:Circle,back:Create,leftshoulder:L1,leftstick:L3,lefttrigger:L2,misc1:Mute,rightshoulder:R1,rightstick:R3,righttrigger:R2,start:Options,x:Square,y:Triangle
+PS5Controller,a:Cross,b:Circle,back:Create,leftshoulder:L1,leftstick:L3,lefttrigger:L2,misc1:Mic,rightshoulder:R1,rightstick:R3,righttrigger:R2,start:Options,x:Square,y:Triangle
 CommunityLikeXBox,a:A,b:B,back:View,leftshoulder:LB,lefttrigger:LT,paddle1:M1,paddle2:M3,paddle3:M2,paddle4:M4,rightshoulder:RB,righttrigger:RT,start:Menu,x:X,y:Y
 CommunityLikeSwitch,a:B,b:A,back:-,leftshoulder:L,lefttrigger:ZL,misc1:Capture,rightshoulder:R,righttrigger:ZR,start:+,x:Y,y:X
 CommunitySaturn,a:A,b:B,leftshoulder:L,lefttrigger:R,rightshoulder:Z,righttrigger:C,start:Start,x:X,y:Y
