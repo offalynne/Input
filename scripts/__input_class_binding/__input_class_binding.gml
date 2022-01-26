@@ -44,8 +44,8 @@ function __input_class_binding() constructor
 
             //Grab the keyboard character for this key and force it into lowercase
             //If the lowercase and uppercase keys are different then we'll want to check the lowercase key as well
-            var _android_lowercase = string_lower(chr(_key));
-            if (_android_lowercase != chr(_key)) android_lowercase = ord(_android_lowercase);
+            var _android_lowercase = ord(string_lower(chr(_key)));
+            if (_android_lowercase != _key) android_lowercase = _android_lowercase;
             
             //Some Android devices and soft keyboards use carriage return
             if ((_key == 10) || (_key == 13))
