@@ -19,7 +19,7 @@ function __input_class_binding() constructor
     
     static set_key = function(_key, _player_set)
     {
-        //Fix uses of straight strings instead of ord("A") etc.
+        //Fix uses of straight strings instead of ord("A")
         if (is_string(_key)) _key = ord(string_upper(_key));
 
         //Fix UTF-8 where used
@@ -40,21 +40,12 @@ function __input_class_binding() constructor
         if (os_type == os_android)
         {
             //Force binding to uppercase
-            if (((_key >= ord("a")) && (_key <= ord("z")))
-            ||  ((_key >= 224) && (_key <= 246))
-            ||  ((_key >= 248) && (_key <= 254)))
-            {
-                _key -= 32;
-            }
+            _key = ord(string_upper(chr(_key)));
 
             //Grab the keyboard character for this key and force it into lowercase
             //If the lowercase and uppercase keys are different then we'll want to check the lowercase key as well
-            if (((_key >= ord("A")) && (_key <= ord("Z")))
-            ||  ((_key >= 192) && (_key <= 214))
-            ||  ((_key >= 216) && (_key <= 222)))
-            {
-                android_lowercase = _key + 32;
-            }
+            var _android_lowercase = string_lower(chr(_key));
+            if (_android_lowercase != chr(_key)) android_lowercase = ord(_android_lowercase);
             
             //Some Android devices and soft keyboards use carriage return
             if ((_key == 10) || (_key == 13))
