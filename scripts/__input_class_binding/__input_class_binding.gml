@@ -47,7 +47,7 @@ function __input_class_binding() constructor
             var _android_lowercase = ord(string_lower(chr(_key)));
             if (_android_lowercase != _key) android_lowercase = _android_lowercase;
             
-            //Some Android devices and soft keyboards use carriage return for enter, some use newline
+            //Some Android devices and soft keyboards use carriage return for Enter, some use newline
             if ((_key == 10) || (_key == 13))
             {
                 _key = 10;
