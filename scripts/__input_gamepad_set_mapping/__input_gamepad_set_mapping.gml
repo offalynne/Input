@@ -163,8 +163,15 @@ function __input_gamepad_set_mapping()
         if (INPUT_SDL2_ALLOW_EXTENDED)
         {
             set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide");
-            set_mapping(gp_misc1, 17, __INPUT_MAPPING.BUTTON, "misc1");
-            //TODO: Check value, add mapping for PS4/PS5 touchpad on Win/MacOS HTML5
+            
+            if ((simple_type == "ps4")  || (simple_type == "ps5"))
+            {
+                set_mapping(gp_touchpad, 17, __INPUT_MAPPING.BUTTON, "touchpad");   
+            }
+            else
+            {
+                set_mapping(gp_misc1, 17, __INPUT_MAPPING.BUTTON, "misc1");
+            }
         }
         
         exit;
