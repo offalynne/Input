@@ -45,6 +45,24 @@ function __input_load_button_label_csv(_filename)
         ++_y;
     }
     
+    if (__INPUT_ON_CONSOLE)
+    {
+        //Remove 'back' label on PS4, PS5, Switch JoyCons
+        var _override_types = ["PS4Controller", "PS5Controller", "SwitchJoyConLeft", "SwitchJoyConRight"];
+        var _label_dict_entry = undefined;
+        
+        var _i = 0;        
+        repeat(array_length(_override_types))
+        {            
+            _label_dict_entry = global.__input_button_label_dictionary[$ _override_types[_i]];
+            if (is_struct(_label_dict_entry)) variable_struct_remove(_label_dict_entry, "back");
+            ++_i;
+        }
+    }
+    
+    //Set the "Unknown" controller type to the same struct as our default controller type
+    global.__input_button_label_dictionary[$ "Unknown"] = global.__input_button_label_dictionary[$ INPUT_DEFAULT_BUTTON_LABELS_AND_COLORS];
+    
     __input_trace(_count, " button label definitions found");
     __input_trace("Loaded in ", (get_timer() - _t)/1000, "ms");
     
