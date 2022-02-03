@@ -522,24 +522,36 @@ function __input_gamepad_set_mapping()
             
                 ++_i;
             }
+            
+            //Reset Android keymapped dpad if necessary
+            if ((os_type == os_android) && (vendor != "") && (product != ""))
+            {
+                var _matched = 0;
+                var _mapping = undefined;
+                var _dpad_array = [gp_padu, gp_padd, gp_padl, gp_padr];
+            
+                repeat(array_length(_dpad_array))
+                {
+                    //Check mapping match (b11 - b14)
+                    _mapping = mapping_gm_to_raw[$ _dpad_array[_matched]];
+                    if (!is_struct(_mapping) || (_mapping[$ "raw"] != 11 + _matched)) break;
+                    ++_matched;
+                }
+            
+                if (_matched == 4)
+                {
+                    //Dpad mapping matches Android keymap, switch to hat
+                    if (__INPUT_DEBUG) __input_trace("  Remapping Android Dpad");                
+                    set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
+                    set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
+                    set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
+                    set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+                }
+            }
         }
         else
         {
-            //if (os_type == os_android)
-            //{
-            //    var _gm_mapping_string = gamepad_get_mapping(index);
-            //    _gm_mapping_string = string_replace_all(_gm_mapping_string, "dpdown:b12",  "dpdown:h0.4");
-            //    _gm_mapping_string = string_replace_all(_gm_mapping_string, "dpleft:b13",  "dpleft:h0.8");
-            //    _gm_mapping_string = string_replace_all(_gm_mapping_string, "dpright:b14", "dpright:h0.2");
-            //    _gm_mapping_string = string_replace_all(_gm_mapping_string, "dpup:b11",    "dpup:h0.1");
-            //    gamepad_test_mapping(index, _gm_mapping_string);
-            //    
-            //    __input_trace("No SDL2 remapping available, falling back to an adjusted GameMaker native mapping (", gamepad_get_mapping(index), ")");
-            //}
-            //else
-            {
-                __input_trace("No SDL2 remapping available, falling back to GameMaker's mapping (", gamepad_get_mapping(index), ")");
-            }
+            __input_trace("No SDL2 remapping available, falling back to GameMaker's mapping (", gamepad_get_mapping(index), ")");
         }
                
         if ((raw_type == "CommunityOuya") && ((os_type == os_windows) || (os_type == os_linux)))
