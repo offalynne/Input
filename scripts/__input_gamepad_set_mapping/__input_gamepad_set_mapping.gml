@@ -526,10 +526,10 @@ function __input_gamepad_set_mapping()
             //Reset Android keymapped dpad if necessary
             if ((os_type == os_android) && (vendor != "") && (product != ""))
             {
-                var _matched = 0;
                 var _mapping = undefined;
                 var _dpad_array = [gp_padu, gp_padd, gp_padl, gp_padr];
-            
+                
+                var _matched = 0;
                 repeat(array_length(_dpad_array))
                 {
                     //Check mapping match (b11 - b14)
@@ -541,7 +541,7 @@ function __input_gamepad_set_mapping()
                 if (_matched == 4)
                 {
                     //Dpad mapping matches Android keymap, switch to hat
-                    if (__INPUT_DEBUG) __input_trace("  Remapping Android Dpad");                
+                    if (__INPUT_DEBUG) __input_trace("  (Remapping dpad buttons to hat)");                
                     set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
                     set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
                     set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
