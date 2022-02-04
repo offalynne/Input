@@ -34,7 +34,7 @@ function __input_class_binding() constructor
             else if (_key == vk_lbracket )  { _key = 91; }
             else if (_key == vk_bslash   )  { _key = 92; }
             else if (_key == vk_rbracket )  { _key = 93; }
-            else if (_key == vk_grave    )  { _key = 96; }
+            else if (_key == vk_backtick )  { _key = 96; }
         }
                 
         if (os_type == os_android)
