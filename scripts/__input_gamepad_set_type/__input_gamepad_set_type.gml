@@ -56,6 +56,8 @@ __input_resolve_steam_config();
 
 function __input_resolve_steam_config()
 {
+    if (__INPUT_ON_WEB || !__INPUT_ON_DESKTOP) exit;
+    
     //Prevent Steam Input from aliasing PlayStation and Switch controllers as Xbox type
     var _steam_environ = environment_get_variable("SteamEnv");
     var _steam_configs = environment_get_variable("EnableConfiguratorSupport");
@@ -157,7 +159,7 @@ function __input_gamepad_set_type()
                 raw_type = global.__input_raw_type_dictionary[$ vendor + product];
                 guessed_type = false;
             }
-            else
+            else if (!__input_gamepad_set_type_unique())
             {
                 //Guess the raw type of controller we have based on its description
                 guessed_type = true;
@@ -232,7 +234,7 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunityLikeXBox";
                 }
-                else if (__INPUT_ON_MOBILE && __INPUT_ON_APPLE)
+                else if ((__INPUT_ON_MOBILE && __INPUT_ON_APPLE) || _desc == "mfi" || string_count("nimbus", _desc) || string_count("horipad ultimate", _desc))
                 {
                     raw_type = "AppleController";
                 }
