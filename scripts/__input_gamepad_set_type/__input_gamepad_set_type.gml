@@ -257,7 +257,7 @@ function __input_gamepad_set_type()
                 guessed_type = false;
             }
 
-	    //NeoGeo Mini (conflicts with common third party PS3 controller)
+            //NeoGeo Mini (conflicts with common third party PS3 controller)
             if ((vendor == "6325") && (product == "7505")
             && (((os_type == os_windows) && (gamepad_get_description(index) == "USB ") && (gamepad_button_count(index) == 13) && (gamepad_axis_count(index) == 4))
              || ((os_type == os_linux  ) && (gamepad_get_description(index) == "GHICCod USB Gamepad"))
