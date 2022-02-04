@@ -281,8 +281,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_shoulderlb, 0, undefined, "lefttrigger");
         set_mapping(gp_shoulderrb, 0, undefined, "righttrigger");
     
-        ////Dependent on https://github.com/JujuAdams/Input/pull/243 
-        //if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
+        if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
         
         exit;
     }
