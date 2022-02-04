@@ -262,7 +262,7 @@ function __input_gamepad_set_mapping()
     
     #region MFi controller on Windows
 
-    if ((raw_type == "AppleController") && (guessed_type == true) && (os_type == os_windows))
+    if ((raw_type == "AppleController") && (guessed_type == false) && (os_type == os_windows))
     {
         set_mapping(gp_padl, 0, __INPUT_MAPPING.BUTTON, "dpleft");
         set_mapping(gp_padd, 1, __INPUT_MAPPING.BUTTON, "dpdown");
