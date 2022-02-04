@@ -159,7 +159,7 @@ function __input_gamepad_set_type()
                 raw_type = global.__input_raw_type_dictionary[$ vendor + product];
                 guessed_type = false;
             }
-            else if (!__input_gamepad_set_type_unique())
+            else
             {
                 //Guess the raw type of controller we have based on its description
                 guessed_type = true;
@@ -243,6 +243,33 @@ function __input_gamepad_set_type()
                     raw_type = "Unknown";
                 }
             }
+            
+            #region Unique gamepad type overrides
+
+            if ((os_type == os_windows) && (vendor == "0d00") && (product == "0000")
+            && (gamepad_button_count(index) == 15) && (gamepad_axis_count(index) == 4) && (gamepad_hat_count(index) == 0))
+            {
+                 __input_trace("Overriding gamepad type to MFi");
+
+                description = "MFi Extended";
+                raw_type = "AppleController";
+                guessed_type = true;
+            }
+
+            if ((vendor == "6325") && (product == "7505")
+            && (((os_type == os_windows) && (gamepad_get_description(index) == "USB ") && (gamepad_button_count(index) == 13) && (gamepad_axis_count(index) == 4))
+             || ((os_type == os_linux  ) && (gamepad_get_description(index) == "GHICCod USB Gamepad"))
+             || ((os_type == os_macosx ) && (gamepad_get_guid(index) == "03000000632500007505000000020000"))))
+             {
+                 __input_trace("Overriding gamepad type to NeoGeo Mini");
+
+                description = "NeoGeo Mini";
+                raw_type = "CommunityNeoGeoMini";
+                guessed_type = false;
+            }
+
+            #endregion
+            
         break;
     }
     

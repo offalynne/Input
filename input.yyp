@@ -106,7 +106,6 @@
     {"id":{"name":"input_player_source_set","path":"scripts/input_player_source_set/input_player_source_set.yy",},"order":9,},
     {"id":{"name":"input_source_detect","path":"scripts/input_source_detect/input_source_detect.yy",},"order":2,},
     {"id":{"name":"input_source_detect_any","path":"scripts/input_source_detect_any/input_source_detect_any.yy",},"order":3,},
-    {"id":{"name":"__input_gamepad_set_type_unique","path":"scripts/__input_gamepad_set_type_unique/__input_gamepad_set_type_unique.yy",},"order":28,},
     {"id":{"name":"input_source_get_name","path":"scripts/input_source_get_name/input_source_get_name.yy",},"order":4,},
     {"id":{"name":"input_gamepad_constant_get_name","path":"scripts/input_gamepad_constant_get_name/input_gamepad_constant_get_name.yy",},"order":12,},
     {"id":{"name":"input_source_is_available","path":"scripts/input_source_is_available/input_source_is_available.yy",},"order":5,},
