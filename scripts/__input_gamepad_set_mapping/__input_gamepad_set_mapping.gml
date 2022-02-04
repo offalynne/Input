@@ -251,14 +251,8 @@ function __input_gamepad_set_mapping()
     
     #region MFi controller on Windows
 
-    if ((os_type == os_windows) && (vendor == "0d00") && (product == "0000")
-    && (gamepad_button_count(index) == 15) && (gamepad_axis_count(index) == 4)
-    && (gamepad_hat_count(index) == 0))
+    if ((raw_type == "AppleController") && (os_type == os_windows))
     {
-        description = "MFi Extended Controller";
-        raw_type = "AppleController";
-        simple_type = "xbox one";
-        
         set_mapping(gp_padl, 0, __INPUT_MAPPING.BUTTON, "dpleft");
         set_mapping(gp_padd, 1, __INPUT_MAPPING.BUTTON, "dpdown");
         set_mapping(gp_padr, 2, __INPUT_MAPPING.BUTTON, "dpright");

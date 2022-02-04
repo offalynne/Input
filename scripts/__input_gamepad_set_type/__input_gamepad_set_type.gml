@@ -164,7 +164,7 @@ function __input_gamepad_set_type()
                 raw_type = global.__input_raw_type_dictionary[$ vendor + product];
                 guessed_type = false;
             }
-            else
+            else if (!__input_gamepad_set_type_unique())
             {
                 //Guess the raw type of controller we have based on its description
                 guessed_type = true;
