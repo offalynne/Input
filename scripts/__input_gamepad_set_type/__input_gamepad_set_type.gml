@@ -253,7 +253,7 @@ function __input_gamepad_set_type()
 
                 description = "MFi Extended";
                 raw_type = "AppleController";
-                guessed_type = true;
+                guessed_type = false;
             }
 
             if ((vendor == "6325") && (product == "7505")
