@@ -46,6 +46,8 @@
 #macro vk_grave       ((os_type == os_macosx) ? 50 : ((os_type == os_linux) ? 223 : 192))
 #macro vk_period      ((os_type == os_switch) ? 110 : 190)
 
+#macro vk_backtick vk_grave
+
 // gp_axislh     = 32785             32769 = gp_face1
 // gp_axislv     = 32786             32770 = gp_face2
 // gp_axisrh     = 32787             32771 = gp_face3
