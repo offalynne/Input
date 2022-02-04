@@ -464,28 +464,50 @@ function __input_class_player() constructor
             case INPUT_SOURCE.GAMEPAD:
                 if (!gamepad_is_connected(gamepad)) return false;
                 
-                return (input_gamepad_check(gamepad, gp_face1)
-                    ||  input_gamepad_check(gamepad, gp_face2)
-                    ||  input_gamepad_check(gamepad, gp_face3)
-                    ||  input_gamepad_check(gamepad, gp_face4)
-                    ||  input_gamepad_check(gamepad, gp_padu)
-                    ||  input_gamepad_check(gamepad, gp_padd)
-                    ||  input_gamepad_check(gamepad, gp_padl)
-                    ||  input_gamepad_check(gamepad, gp_padr)
-                    ||  input_gamepad_check(gamepad, gp_shoulderl)
-                    ||  input_gamepad_check(gamepad, gp_shoulderr)
-                    ||  input_gamepad_check(gamepad, gp_shoulderlb)
-                    ||  input_gamepad_check(gamepad, gp_shoulderrb)
-                    ||  input_gamepad_check(gamepad, gp_start)
-                    ||  input_gamepad_check(gamepad, gp_select)
-                    ||  input_gamepad_check(gamepad, gp_stickl)
-                    ||  input_gamepad_check(gamepad, gp_stickr)
-                    ||  (INPUT_SDL2_ALLOW_GUIDE && input_gamepad_check(gamepad, gp_guide))
-                    ||  (INPUT_SDL2_ALLOW_MISC1 && input_gamepad_check(gamepad, gp_misc1))
-                    ||  (abs(input_gamepad_value(gamepad, gp_axislh)) > INPUT_DEFAULT_MIN_THRESHOLD)
-                    ||  (abs(input_gamepad_value(gamepad, gp_axislv)) > INPUT_DEFAULT_MIN_THRESHOLD)
-                    ||  (abs(input_gamepad_value(gamepad, gp_axisrh)) > INPUT_DEFAULT_MIN_THRESHOLD)
-                    ||  (abs(input_gamepad_value(gamepad, gp_axisrv)) > INPUT_DEFAULT_MIN_THRESHOLD));
+                if (input_gamepad_check(gamepad, gp_face1)
+                ||  input_gamepad_check(gamepad, gp_face2)
+                ||  input_gamepad_check(gamepad, gp_face3)
+                ||  input_gamepad_check(gamepad, gp_face4)
+                ||  input_gamepad_check(gamepad, gp_padu)
+                ||  input_gamepad_check(gamepad, gp_padd)
+                ||  input_gamepad_check(gamepad, gp_padl)
+                ||  input_gamepad_check(gamepad, gp_padr)
+                ||  input_gamepad_check(gamepad, gp_shoulderl)
+                ||  input_gamepad_check(gamepad, gp_shoulderr)
+                ||  input_gamepad_check(gamepad, gp_start)
+                ||  input_gamepad_check(gamepad, gp_select)
+                ||  input_gamepad_check(gamepad, gp_stickl)
+                ||  input_gamepad_check(gamepad, gp_stickr)
+                ||  input_gamepad_check(gamepad, gp_stickr)
+                ||  input_gamepad_check(gamepad, gp_stickr)
+                ||  input_gamepad_check(gamepad, gp_stickr)
+                ||  input_gamepad_check(gamepad, gp_stickr)
+                ||  (abs(input_gamepad_value(gamepad, gp_shoulderlb)) > INPUT_DEFAULT_MIN_THRESHOLD)
+                ||  (abs(input_gamepad_value(gamepad, gp_shoulderrb)) > INPUT_DEFAULT_MIN_THRESHOLD)
+                ||  (abs(input_gamepad_value(gamepad, gp_axislh)) > INPUT_DEFAULT_MIN_THRESHOLD)
+                ||  (abs(input_gamepad_value(gamepad, gp_axislv)) > INPUT_DEFAULT_MIN_THRESHOLD)
+                ||  (abs(input_gamepad_value(gamepad, gp_axisrh)) > INPUT_DEFAULT_MIN_THRESHOLD)
+                ||  (abs(input_gamepad_value(gamepad, gp_axisrv)) > INPUT_DEFAULT_MIN_THRESHOLD))
+                {
+                    return true;
+                }
+                
+                if (INPUT_SDL2_ALLOW_EXTENDED)
+                {
+                    if (input_gamepad_check(gamepad, gp_guide)
+                    ||  input_gamepad_check(gamepad, gp_misc1)
+                    ||  input_gamepad_check(gamepad, gp_touchpad)
+                    ||  input_gamepad_check(gamepad, gp_paddle1)
+                    ||  input_gamepad_check(gamepad, gp_paddle2)
+                    ||  input_gamepad_check(gamepad, gp_paddle3)
+                    ||  input_gamepad_check(gamepad, gp_paddle4))
+                    {
+                        return true;
+                    }
+                }
+                
+                return false;
+                    
             break;
         }
         

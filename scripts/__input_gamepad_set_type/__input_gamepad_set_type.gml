@@ -8,12 +8,12 @@ global.__input_simple_type_lookup = {
     CommunityXBox360:   "xbox 360",
     CommunityDreamcast: "xbox 360", //Xbox 360 uses Dreamcast iconography
     SteamController:    "xbox 360", //Steam Controller uses Xbox 360 iconography
-    SteamControllerV2:  "xbox 360", //TODO - Revise for Deck if necessary
     MobileTouch:        "xbox 360", //Steam Link touch controls use Xb360 iconography
 	
     XBoxOneController: "xbox one",
     CommunityXBoxOne:  "xbox one",
     CommunityLikeXBox: "xbox one",
+    SteamControllerV2: "xbox one",
     AppleController:   "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
     CommunityStadia:   "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
     CommunityLuna:     "xbox one", //  Luna uses Xbox One iconography excepting 'View' button

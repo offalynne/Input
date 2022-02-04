@@ -29,7 +29,7 @@
     "path": "folders/Test Cases.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_test_guide_misc1",
+  "name": "obj_test_gamepad_extended",
   "tags": [],
   "resourceType": "GMObject",
 }
