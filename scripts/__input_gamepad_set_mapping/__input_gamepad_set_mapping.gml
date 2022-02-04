@@ -160,8 +160,19 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
         set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
         
-        if (INPUT_SDL2_ALLOW_GUIDE) set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide");
-        if (INPUT_SDL2_ALLOW_MISC1) set_mapping(gp_misc1, 17, __INPUT_MAPPING.BUTTON, "misc1");
+        if (INPUT_SDL2_ALLOW_EXTENDED)
+        {
+            set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide");
+            
+            if ((simple_type == "ps4")  || (simple_type == "ps5"))
+            {
+                set_mapping(gp_touchpad, 17, __INPUT_MAPPING.BUTTON, "touchpad");   
+            }
+            else
+            {
+                set_mapping(gp_misc1, 17, __INPUT_MAPPING.BUTTON, "misc1");
+            }
+        }
         
         exit;
     }
@@ -242,7 +253,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_shoulderlb, 0, undefined, "lefttrigger");
         set_mapping(gp_shoulderrb, 0, undefined, "righttrigger");
     
-        if (INPUT_SDL2_ALLOW_GUIDE) set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide");
+        if (INPUT_SDL2_ALLOW_EXTENDED){ set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide"); }
         
         exit;
     }
@@ -313,7 +324,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_padd, 12, __INPUT_MAPPING.BUTTON, "dpdown" );
         set_mapping(gp_padl, 13, __INPUT_MAPPING.BUTTON, "dpleft" );
                     
-        if (INPUT_SDL2_ALLOW_GUIDE) set_mapping(gp_guide, 18, __INPUT_MAPPING.BUTTON, "guide");
+        if (INPUT_SDL2_ALLOW_EXTENDED){ set_mapping(gp_guide, 18, __INPUT_MAPPING.BUTTON, "guide"); }
     
         set_mapping(gp_select, 0, undefined, "back"  );
         set_mapping(gp_start,  0, undefined, "start" );    
@@ -558,7 +569,7 @@ function __input_gamepad_set_mapping()
                     {
                         //Identify directional input
                         var _is_directional = false;
-                        switch (_gm_constant)
+                        switch(_gm_constant)
                         {
                             case gp_padu:   case gp_padd: 
                             case gp_padl:   case gp_padr:
@@ -586,19 +597,73 @@ function __input_gamepad_set_mapping()
             
                 ++_i;
             }
+            
+            //Reset Android keymapped dpad if necessary
+            if ((os_type == os_android) && (vendor != "") && (product != ""))
+            {
+                var _mapping = undefined;
+                var _dpad_array = [gp_padu, gp_padd, gp_padl, gp_padr];
+                
+                var _matched = 0;
+                repeat(array_length(_dpad_array))
+                {
+                    //Check mapping match (b11 - b14)
+                    _mapping = mapping_gm_to_raw[$ _dpad_array[_matched]];
+                    if (!is_struct(_mapping) || (_mapping[$ "raw"] != 11 + _matched)) break;
+                    ++_matched;
+                }
+            
+                if (_matched == 4)
+                {
+                    //Dpad mapping matches Android keymap, switch to hat
+                    if (__INPUT_DEBUG) __input_trace("  (Remapping dpad buttons to hat)");                
+                    set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
+                    set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
+                    set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
+                    set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+                }
+            }
         }
         else
         {
-
             __input_trace("No SDL2 remapping available, falling back to GameMaker's mapping (", gamepad_get_mapping(index), ")");
         }
-               
-        if ((raw_type == "CommunityOuya") && ((os_type == os_windows) || (os_type == os_linux)))
+        
+        if (INPUT_SDL2_ALLOW_EXTENDED)
         {
-            //Guide button issues 2 reports: one a tick after release which is usually too fast for GM's
-            //interupt to catch, and another that's for long press: doesn't work until held for 1 second
-            //SDL map assigns the first but we switch to the second.
-            if (INPUT_SDL2_ALLOW_GUIDE) set_mapping(gp_guide, 15, __INPUT_MAPPING.BUTTON, "guide");
+            //Add mapping for touchpad button click on PS4 gamepads on platforms supporting it.
+            //Since the `touchpad` field is a later addition and largely missing from SDL2 data
+            //we're manually mapping it in cases where an otherwise-normal PS4 mapping is found
+            if (((os_type == os_windows) || (os_type == os_macosx)) && (simple_type == "ps4"))
+            {
+                var _matched = 0;
+                var _mapping = undefined;
+                var _button_array = [gp_face3, gp_face1, gp_face2, gp_face4];
+                var _offset = ((mac_cleared_mapping && (os_type == os_macosx)) ? 17 : 0);
+
+                repeat(array_length(_button_array))
+                {
+                    //Check mapping match (b0 - b3)
+                    _mapping = mapping_gm_to_raw[$ _button_array[_matched]];
+                    if (!is_struct(_mapping) || (_mapping[$ "raw"] != _matched + _offset)) break;
+                    ++_matched;
+                }
+
+                if (_matched == 4)
+                {
+                    //Face button mapping matches normative PS4 gamepads, add `touchpad` button
+                    set_mapping(gp_touchpad, 13 + _offset, __INPUT_MAPPING.BUTTON, "touchpad");
+                }
+            }
+            
+             //Change Ouya guide mapping
+            if (((os_type == os_windows) || (os_type == os_linux)) && (raw_type == "CommunityOuya"))
+            {
+                //Guide button issues 2 reports: one a tick after release which is usually too fast for GM's
+                //interupt to catch, and another that's for long press that works after being held 1 second.
+                //SDL's map assigns the first but we switch to the second which will work reliably for GM.
+                set_mapping(gp_guide, 15, __INPUT_MAPPING.BUTTON, "guide");
+            }
         }
     }
     

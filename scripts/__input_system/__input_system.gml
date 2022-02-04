@@ -21,9 +21,14 @@
 
 #macro __INPUT_HOLD_THRESHOLD  0.2 //Minimum value from an axis for that axis to be considered activated at the gamepad layer. This is *not* the same as min/max thresholds for players
 
-//Extra constants
+//Extended constants
 #macro gp_guide    32789
 #macro gp_misc1    32790
+#macro gp_touchpad 32791
+#macro gp_paddle1  32792
+#macro gp_paddle2  32793
+#macro gp_paddle3  32794
+#macro gp_paddle4  32795
 #macro vk_meta1    91
 #macro vk_meta2    92
 #macro vk_capslock 20
@@ -51,6 +56,11 @@
 // Plus custom buttons:
 // gp_guide      = 32789             32789 = gp_guide
 // gp_misc1      = 32790             32790 = gp_misc1
+// gp_touchpad   = 32791             32791 = gp_touchpad
+// gp_paddle1    = 32792             32792 = gp_paddle1
+// gp_paddle2    = 32793             32793 = gp_paddle2
+// gp_paddle3    = 32794             32794 = gp_paddle3
+// gp_paddle4    = 32795             32795 = gp_paddle4
 
 enum INPUT_SOURCE
 {
