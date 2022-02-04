@@ -246,6 +246,7 @@ function __input_gamepad_set_type()
             
             #region Unique gamepad type overrides
 
+            //MFi on Windows (bad GUID)
             if ((os_type == os_windows) && (vendor == "0d00") && (product == "0000")
             && (gamepad_button_count(index) == 15) && (gamepad_axis_count(index) == 4) && (gamepad_hat_count(index) == 0))
             {
@@ -256,6 +257,7 @@ function __input_gamepad_set_type()
                 guessed_type = false;
             }
 
+	    //NeoGeo Mini (conflicts with common third party PS3 controller)
             if ((vendor == "6325") && (product == "7505")
             && (((os_type == os_windows) && (gamepad_get_description(index) == "USB ") && (gamepad_button_count(index) == 13) && (gamepad_axis_count(index) == 4))
              || ((os_type == os_linux  ) && (gamepad_get_description(index) == "GHICCod USB Gamepad"))
