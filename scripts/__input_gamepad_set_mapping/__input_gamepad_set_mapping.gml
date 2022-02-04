@@ -555,9 +555,10 @@ function __input_gamepad_set_mapping()
         
         if (INPUT_SDL2_ALLOW_EXTENDED)
         {
-            //Touchpad mapping for PS4/PS5 gamepads on supported platforms
-            if (((os_type == os_windows) || (os_type == os_macosx))
-            &&  ((simple_type == "ps4")  || (simple_type == "ps5")))
+            //Add mapping for touchpad button click on PS4 gamepads on platforms supporting it.
+            //Since the `touchpad` field is a later addition and largely missing from SDL2 data
+            //we're manually mapping it in cases where an otherwise-normal PS4 mapping is found
+            if (((os_type == os_windows) || (os_type == os_macosx)) &&  (simple_type == "ps4"))
             {
                 var _matched = 0;
                 var _mapping = undefined;
@@ -574,7 +575,7 @@ function __input_gamepad_set_mapping()
 
                 if (_matched == 4)
                 {
-                    //Face button mapping matches normative PS4/5 gamepads, add touchpad button
+                    //Face button mapping matches normative PS4 gamepads, add `touchpad` button
                     set_mapping(gp_touchpad, 13 + _offset, __INPUT_MAPPING.BUTTON, "touchpad");
                 }
             }
