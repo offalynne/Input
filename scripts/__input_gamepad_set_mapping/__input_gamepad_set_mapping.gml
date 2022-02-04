@@ -558,7 +558,7 @@ function __input_gamepad_set_mapping()
             //Add mapping for touchpad button click on PS4 gamepads on platforms supporting it.
             //Since the `touchpad` field is a later addition and largely missing from SDL2 data
             //we're manually mapping it in cases where an otherwise-normal PS4 mapping is found
-            if (((os_type == os_windows) || (os_type == os_macosx)) &&  (simple_type == "ps4"))
+            if (((os_type == os_windows) || (os_type == os_macosx)) && (simple_type == "ps4"))
             {
                 var _matched = 0;
                 var _mapping = undefined;
