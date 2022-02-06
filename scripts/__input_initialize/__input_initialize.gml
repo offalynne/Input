@@ -178,8 +178,8 @@ function __input_initialize()
         CommunityXBox360:   "xbox 360",
         CommunityDreamcast: "xbox 360", //Xbox 360 uses Dreamcast iconography
         SteamController:    "xbox 360", //Steam Controller uses Xbox 360 iconography
-        MobileTouch:        "xbox 360", //Steam Link touch controls use Xb360 iconography
-	
+        MobileTouch:        "xbox 360", //Steam Link uses Xbox 360 iconography
+        
         XBoxOneController: "xbox one",
         CommunityXBoxOne:  "xbox one",
         CommunityLikeXBox: "xbox one",
@@ -187,16 +187,14 @@ function __input_initialize()
         AppleController:   "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
         CommunityStadia:   "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
         CommunityLuna:     "xbox one", //  Luna uses Xbox One iconography excepting 'View' button
-    
+        
         //PlayStation
         PS3Controller: "psx",
         CommunityPSX:  "psx",
-
         PS4Controller: "ps4",
         CommunityPS4:  "ps4",
-
         PS5Controller: "ps5",
-    
+        
         //Switch
         SwitchHandheld:            "switch", //Attached JoyCon pair or Switch Lite
         SwitchJoyConPair:          "switch",
@@ -204,26 +202,25 @@ function __input_initialize()
         XInputSwitchController:    "switch",
         SwitchInputOnlyController: "switch",
         CommunityLikeSwitch:       "switch",
-        Community8BitDo:           "switch", //8BitDo are Switch gamepads (exceptions are typed appropriatiely)
+        Community8BitDo:           "switch", //8BitDo are Switch gamepads (exceptions typed appropriatiely)
 
         SwitchJoyConLeft:  "switch joycon left",
         SwitchJoyConRight: "switch joycon right",
-	
+        
         //Legacy
         CommunityGameCube:   "gamecube",
-        CommunityN64:        "n64",
+        CommunityAstroCity:  "saturn",
         CommunitySaturn:     "saturn",
-        CommunityAstroCity:  "saturn",    
         CommunitySNES:       "snes",
-    
+        CommunityN64:        "n64",
+        
         Unknown: "unknown",
         unknown: "unknown",
         UnknownNonSteamController: "unknown",
         CommunityUnknown: "unknown"
     }
     
-    //Apply Steam Input data to type lookup
-    //Prevents Steam Input from aliasing PlayStation and Switch controllers as Xbox
+    //Prevent Steam Input from aliasing PlayStation and Switch controllers as Xbox
     __input_resolve_steam_config();
 	
 	//Parse controller type database
