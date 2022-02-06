@@ -169,6 +169,62 @@ function __input_initialize()
 	        }
 	    }
 	}
+    
+    //Lookup table for simple gamepad types based on raw types
+    global.__input_simple_type_lookup = {
+	
+        //Xbox
+        XBox360Controller:  "xbox 360",
+        CommunityXBox360:   "xbox 360",
+        CommunityDreamcast: "xbox 360", //Xbox 360 uses Dreamcast iconography
+        SteamController:    "xbox 360", //Steam Controller uses Xbox 360 iconography
+        MobileTouch:        "xbox 360", //Steam Link touch controls use Xb360 iconography
+	
+        XBoxOneController: "xbox one",
+        CommunityXBoxOne:  "xbox one",
+        CommunityLikeXBox: "xbox one",
+        SteamControllerV2: "xbox one",
+        AppleController:   "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
+        CommunityStadia:   "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
+        CommunityLuna:     "xbox one", //  Luna uses Xbox One iconography excepting 'View' button
+    
+        //PlayStation
+        PS3Controller: "psx",
+        CommunityPSX:  "psx",
+
+        PS4Controller: "ps4",
+        CommunityPS4:  "ps4",
+
+        PS5Controller: "ps5",
+    
+        //Switch
+        SwitchHandheld:            "switch", //Attached JoyCon pair or Switch Lite
+        SwitchJoyConPair:          "switch",
+        SwitchProController:       "switch",
+        XInputSwitchController:    "switch",
+        SwitchInputOnlyController: "switch",
+        CommunityLikeSwitch:       "switch",
+        Community8BitDo:           "switch", //8BitDo are Switch gamepads (exceptions are typed appropriatiely)
+
+        SwitchJoyConLeft:  "switch joycon left",
+        SwitchJoyConRight: "switch joycon right",
+	
+        //Legacy
+        CommunityGameCube:   "gamecube",
+        CommunityN64:        "n64",
+        CommunitySaturn:     "saturn",
+        CommunityAstroCity:  "saturn",    
+        CommunitySNES:       "snes",
+    
+        Unknown: "unknown",
+        unknown: "unknown",
+        UnknownNonSteamController: "unknown",
+        CommunityUnknown: "unknown"
+    }
+    
+    //Apply Steam Input data to type lookup
+    //Prevents Steam Input from aliasing PlayStation and Switch controllers as Xbox
+    __input_resolve_steam_config();
 	
 	//Parse controller type database
 	global.__input_raw_type_dictionary = { none : "XBox360Controller" };
