@@ -60,9 +60,6 @@ function __input_load_button_label_csv(_filename)
         }
     }
     
-    //Set the "Unknown" controller type to the same struct as our default controller type
-    global.__input_button_label_dictionary[$ "Unknown"] = global.__input_button_label_dictionary[$ INPUT_DEFAULT_BUTTON_LABELS_AND_COLORS];
-    
     __input_trace(_count, " button label definitions found");
     __input_trace("Loaded in ", (get_timer() - _t)/1000, "ms");
     
