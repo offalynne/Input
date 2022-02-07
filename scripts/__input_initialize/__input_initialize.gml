@@ -209,13 +209,9 @@ function __input_initialize()
         
         //Legacy
         CommunitySNES:     "snes",
+        CommunitySaturn:   "saturn",
         CommunityN64:      "n64",
         CommunityGameCube: "gamecube",
-        CommunitySaturn:   "saturn",
-        
-        //Microconsoles    
-        CommunityAstroCity:  "saturn",
-        CommunityNeoGeoMini: "neogeo mini",
         
         Unknown: "unknown",
         unknown: "unknown",
