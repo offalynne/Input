@@ -184,9 +184,9 @@ function __input_initialize()
         CommunityXBoxOne:  "xbox one",
         CommunityLikeXBox: "xbox one",
         SteamControllerV2: "xbox one",
-        AppleController:   "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
+        AppleController:   "xbox one", //Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
         CommunityStadia:   "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
-        CommunityLuna:     "xbox one", //  Luna uses Xbox One iconography excepting 'View' button
+        CommunityLuna:     "xbox one", //Luna uses Xbox One iconography excepting 'View' button
         
         //PlayStation
         PS3Controller: "psx",
