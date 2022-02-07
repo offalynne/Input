@@ -208,11 +208,14 @@ function __input_initialize()
         SwitchJoyConRight: "switch joycon right",
         
         //Legacy
-        CommunityGameCube:   "gamecube",
+        CommunitySNES:     "snes",
+        CommunityN64:      "n64",
+        CommunityGameCube: "gamecube",
+        CommunitySaturn:   "saturn",
+        
+        //Microconsoles    
         CommunityAstroCity:  "saturn",
-        CommunitySaturn:     "saturn",
-        CommunitySNES:       "snes",
-        CommunityN64:        "n64",
+        CommunityNeoGeoMini: "neogeo mini",
         
         Unknown: "unknown",
         unknown: "unknown",
