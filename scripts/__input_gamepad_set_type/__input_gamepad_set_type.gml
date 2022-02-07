@@ -144,18 +144,8 @@ function __input_gamepad_set_type()
         default:
             if (xinput == true)
             {
-                if (os_type == os_uwp)
-                {
-                    //UWP is used on newer hardware, including XB1 and XBX/S. For compliance, we should show Xbox One icons
-                    raw_type = "XBoxOneController";
-                    guessed_type = true;
-                }
-                else
-                {
-                    //XInput driver standardizes on X360, does not provide GUID
-                    raw_type = "XBox360Controller";
-                    guessed_type = true;
-                }
+                raw_type = "XBoxOneController";
+                guessed_type = true;
             }
             else if (variable_struct_exists(global.__input_raw_type_dictionary, vendor + product))
             {
