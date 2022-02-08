@@ -298,7 +298,6 @@ function __input_gamepad_set_mapping()
     }
     
     #endregion
-
     
     #region Ouya Controller on MacOS
     
