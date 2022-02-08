@@ -338,7 +338,7 @@ function __input_gamepad_set_mapping()
     
     #endregion
     
-    #region NeoGeo Mini
+    #region NeoGeo Mini on Windows and Linux
 
     if ((raw_type == "CommunityNeoGeoMini") && ((os_type == os_windows) || (os_type == os_linux)))
     {
