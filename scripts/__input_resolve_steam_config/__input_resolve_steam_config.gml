@@ -1,7 +1,7 @@
 function __input_resolve_steam_config()
 {
-    //Skip platforms without Steam
-    if (__INPUT_ON_WEB || !__INPUT_ON_DESKTOP) exit;
+    //Skip platforms without Steam or an identifiable Steam Virtual Controller
+    if (!__INPUT_ON_DESKTOP || (os_type == os_windows)) exit;
     
     var _steam_environ = environment_get_variable("SteamEnv");
     var _steam_configs = environment_get_variable("EnableConfiguratorSupport");
