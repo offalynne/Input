@@ -339,7 +339,8 @@ function __input_gamepad_set_mapping()
     
     #region NeoGeo Mini on Windows and Linux
 
-    if ((raw_type == "CommunityNeoGeoMini") && ((os_type == os_windows) || (os_type == os_linux)))
+    if ((raw_type == "CommunityNeoGeoMini") && (guessed_type == false)
+    && ((os_type == os_windows) || (os_type == os_linux)))
     {
         __input_trace("Overriding mapping to NeoGeo Mini");
 
