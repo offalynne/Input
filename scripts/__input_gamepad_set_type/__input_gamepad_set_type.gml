@@ -161,7 +161,6 @@ function __input_gamepad_set_type()
             && (gamepad_button_count(index) == 15) && (gamepad_axis_count(index) == 4) && (gamepad_hat_count(index) == 0))
             {
                  __input_trace("Overriding gamepad type to MFi");
-
                 description = "MFi Extended";
                 raw_type = "AppleController";
                 guessed_type = false;
@@ -174,7 +173,6 @@ function __input_gamepad_set_type()
              || ((os_type == os_macosx ) && (gamepad_get_guid(index) == "03000000632500007505000000020000"))))
              {
                  __input_trace("Overriding gamepad type to NeoGeo Mini");
-
                 description = "NeoGeo Mini";
                 raw_type = "CommunityNeoGeoMini";
                 guessed_type = false;
