@@ -167,15 +167,17 @@ function __input_gamepad_set_type()
             }
 
             //NeoGeo Mini (VID+PID conflict with common third party PS3 controller)
-            if ((vendor == "6325") && (product == "7505")
-            && (((os_type == os_windows) && (gamepad_get_description(index) == "USB ") && (gamepad_button_count(index) == 13) && (gamepad_axis_count(index) == 4))
-             || ((os_type == os_linux  ) && (gamepad_get_description(index) == "GHICCod USB Gamepad"))
-             || ((os_type == os_macosx ) && (gamepad_get_guid(index) == "03000000632500007505000000020000"))))
-             {
-                 __input_trace("Overriding gamepad type to NeoGeo Mini");
-                description = "NeoGeo Mini";
-                raw_type = "CommunityNeoGeoMini";
-                guessed_type = false;
+            if ((vendor == "6325") && (product == "7505"))
+            {
+                if (((os_type == os_windows) && (gamepad_get_description(index) == "USB ") && (gamepad_button_count(index) == 13) && (gamepad_axis_count(index) == 4))
+                ||  ((os_type == os_linux  ) && (gamepad_get_description(index) == "GHICCod USB Gamepad"))
+                ||  ((os_type == os_macosx ) && (gamepad_get_guid(index) == "03000000632500007505000000020000")))
+                {
+                    __input_trace("Overriding gamepad type to NeoGeo Mini");
+                    description = "NeoGeo Mini";
+                    raw_type = "CommunityNeoGeoMini";
+                    guessed_type = false;
+                }
             }
 
             #endregion
