@@ -260,6 +260,45 @@ function __input_gamepad_set_mapping()
     
     #endregion
     
+    #region MFi controller on Windows
+
+    if ((raw_type == "AppleController") && (guessed_type == false) && (os_type == os_windows))
+    {
+        set_mapping(gp_padl, 0, __INPUT_MAPPING.BUTTON, "dpleft");
+        set_mapping(gp_padd, 1, __INPUT_MAPPING.BUTTON, "dpdown");
+        set_mapping(gp_padr, 2, __INPUT_MAPPING.BUTTON, "dpright");
+        set_mapping(gp_padu, 3, __INPUT_MAPPING.BUTTON, "dpup");
+        
+        set_mapping(gp_face1, 4, __INPUT_MAPPING.BUTTON, "a");
+        set_mapping(gp_face2, 5, __INPUT_MAPPING.BUTTON, "b");
+        set_mapping(gp_face3, 6, __INPUT_MAPPING.BUTTON, "x");
+        set_mapping(gp_face4, 7, __INPUT_MAPPING.BUTTON, "y");
+    
+        set_mapping(gp_shoulderl, 8, __INPUT_MAPPING.BUTTON, "leftshoulder");
+        set_mapping(gp_shoulderr, 9, __INPUT_MAPPING.BUTTON, "rightshoulder");
+    
+        set_mapping(gp_stickr, 10, __INPUT_MAPPING.BUTTON, "rightstick");
+        set_mapping(gp_stickl, 11, __INPUT_MAPPING.BUTTON, "leftstick");
+        
+        set_mapping(gp_select, 13, __INPUT_MAPPING.BUTTON, "back");
+        set_mapping(gp_start,  14, __INPUT_MAPPING.BUTTON, "start");
+    
+        set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
+        set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty").reverse = true;
+        set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
+        set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty").reverse = true;
+            
+        //No trigger data :-(
+        set_mapping(gp_shoulderlb, 0, undefined, "lefttrigger");
+        set_mapping(gp_shoulderrb, 0, undefined, "righttrigger");
+    
+        if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
+        
+        exit;
+    }
+    
+    #endregion
+    
     #region Ouya Controller on MacOS
     
     if ((raw_type == "CommunityOuya") && (os_type == os_macosx))
@@ -293,6 +332,31 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axisrh, 0, undefined, "rightx");
         set_mapping(gp_axisrv, 0, undefined, "righty");
             
+        exit;
+    }
+    
+    #endregion
+    
+    #region NeoGeo Mini on Windows and Linux
+
+    if ((raw_type == "CommunityNeoGeoMini") && (guessed_type == false)
+    && ((os_type == os_windows) || (os_type == os_linux)))
+    {
+        __input_trace("Overriding mapping to NeoGeo Mini");
+
+        set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
+        set_mapping(gp_face2, 0, __INPUT_MAPPING.BUTTON, "b");
+        set_mapping(gp_face3, 2, __INPUT_MAPPING.BUTTON, "x");
+        set_mapping(gp_face4, 3, __INPUT_MAPPING.BUTTON, "y");
+
+        set_mapping(gp_select, 8, __INPUT_MAPPING.BUTTON, "back");
+        set_mapping(gp_start,  9, __INPUT_MAPPING.BUTTON, "start");
+
+        set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
+        set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
+        set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
+        set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+
         exit;
     }
 

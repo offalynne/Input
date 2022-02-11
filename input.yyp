@@ -118,6 +118,7 @@
     {"id":{"name":"input_x","path":"scripts/input_x/input_x.yy",},"order":2,},
     {"id":{"name":"input_xy","path":"scripts/input_xy/input_xy.yy",},"order":3,},
     {"id":{"name":"input_y","path":"scripts/input_y/input_y.yy",},"order":4,},
+    {"id":{"name":"__input_resolve_steam_config","path":"scripts/__input_resolve_steam_config/__input_resolve_steam_config.yy",},"order":28,},
     {"id":{"name":"__input_load_button_color_csv","path":"scripts/__input_load_button_color_csv/__input_load_button_color_csv.yy",},"order":20,},
     {"id":{"name":"__input_binding_get_label","path":"scripts/__input_binding_get_label/__input_binding_get_label.yy",},"order":1,},
     {"id":{"name":"input_keyboard_check_pressed","path":"scripts/input_keyboard_check_pressed/input_keyboard_check_pressed.yy",},"order":1,},
