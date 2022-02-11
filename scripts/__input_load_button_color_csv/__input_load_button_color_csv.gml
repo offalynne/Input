@@ -45,9 +45,6 @@ function __input_load_button_color_csv(_filename)
         ++_y;
     }
     
-    //Set the "Unknown" controller type to the same struct as our default controller type
-    global.__input_button_color_dictionary[$ "Unknown"] = global.__input_button_color_dictionary[$ INPUT_DEFAULT_BUTTON_LABELS_AND_COLORS];
-    
     __input_trace(_count, " button color definitions found");
     __input_trace("Loaded in ", (get_timer() - _t)/1000, "ms");
     

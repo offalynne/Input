@@ -20,8 +20,7 @@
 #macro INPUT_SDL2_ALLOW_EXTERNAL  true   //Whether to allow external SDL2 database loading from environment variable %SDL_GAMECONTROLLERCONFIG%
 #macro INPUT_SDL2_ALLOW_EXTENDED  false  //Whether to allow use of SDL2's extended bindings, accessed using the gp_* macros
 
-#macro INPUT_DEFAULT_BUTTON_LABELS_AND_COLORS  "XBoxOneController"
-#macro INPUT_LOAD_BUTTON_LABELS_AND_COLORS     true
+#macro INPUT_LOAD_BUTTON_LABELS_AND_COLORS  true //Whether to load external gamepad button label and color databases
 
 #macro INPUT_MAX_TOUCHPOINTS        11     //Maximum number of touch screen points to query. Touch devices only (excludes PlayStation)
 #macro INPUT_TOUCH_EDGE_DEADZONE    35     //Margin in pixels around the screen edge where gaining or losing a touch point will not register "pressed" or "released". Prevents false positives when dragging on to or off of the edge of a touchscreen.
