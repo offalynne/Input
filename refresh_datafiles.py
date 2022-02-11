@@ -30,7 +30,7 @@ DATA_SOURCES = {
                 "trim before": "k_eControllerType_LastController",
                 "trim after": "k_eControllerType_UnknownSteamController",
                 "match category": "(?<=k_eControllerType_)(.*)(?= = )",
-                "match id": "MAKE_CONTROLLER_ID\((.*),(.*)\),k_eControllerType_" + marker_id + ",",
+                "match id": "MAKE_CONTROLLER_ID\((.*),(.*)\),k_eControllerType_" + marker_id + ","
             },
 
             "Community SDL2 typelist": {
@@ -87,7 +87,7 @@ DATA_SOURCES = {
     },
 
     "LABELS": {
-        "datafile": "butonlabels.csv",
+        "datafile": "buttonlabels.csv",
         "sources": {
             "Gamepad button labels": {
                 "source":  github_urlpath + "JujuAdams/Input/community-data/buttonlabels.csv"

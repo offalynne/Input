@@ -180,8 +180,17 @@ function input_binding_scan_tick(_source, _player_index = 0)
                                         gp_start, gp_select, gp_stickl, gp_stickr,
                                         gp_axislh, gp_axislv, gp_axisrh, gp_axisrv];
                     
-                    if (INPUT_SDL2_ALLOW_GUIDE) array_push(_check_array, gp_guide);
-                    if (INPUT_SDL2_ALLOW_MISC1) array_push(_check_array, gp_misc1);
+                    //Extended buttons
+                    if (INPUT_SDL2_ALLOW_EXTENDED)
+                    {
+                        array_push(_check_array, gp_guide);
+                        array_push(_check_array, gp_misc1);
+                        array_push(_check_array, gp_touchpad);
+                        array_push(_check_array, gp_paddle1);
+                        array_push(_check_array, gp_paddle2);
+                        array_push(_check_array, gp_paddle3);
+                        array_push(_check_array, gp_paddle4);
+                    }
                     
                     var _i = 0;
                     repeat(array_length(_check_array))

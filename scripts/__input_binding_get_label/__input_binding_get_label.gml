@@ -6,7 +6,7 @@ function __input_binding_get_label(_type, _value, _axis_negative)
         if (__INPUT_ON_PS)
         {
             if (((_type == "gamepad button") && (_value == gp_select))
-            || ((_type == "mouse button") && (_value == mb_left)))
+            ||  ((_type == "mouse button"  ) && (_value == mb_left)))
             {
                 return "gamepad touchpad click";
             }
@@ -48,10 +48,10 @@ function __input_binding_get_label(_type, _value, _axis_negative)
         case "gamepad axis":
             switch(_value)
             {
-                case gp_face1:      return "gamepad face south";         break; //Xbox A, Switch B, PlayStation Cross
-                case gp_face2:      return "gamepad face east";          break; //Xbox B, Switch A, PlayStation Circle
-                case gp_face3:      return "gamepad face west";          break; //Xbox X, Switch Y, PlayStation Square
-                case gp_face4:      return "gamepad face north";         break; //Xbox Y, Switch X, PlayStation Triangle
+                case gp_face1:      return "gamepad face south";         break; //Xbox A, Nintendo B, PlayStation Cross
+                case gp_face2:      return "gamepad face east";          break; //Xbox B, Nintendo A, PlayStation Circle
+                case gp_face3:      return "gamepad face west";          break; //Xbox X, Nintendo Y, PlayStation Square
+                case gp_face4:      return "gamepad face north";         break; //Xbox Y, Nintendo X, PlayStation Triangle
                 case gp_shoulderl:  return "gamepad shoulder l";         break;
                 case gp_shoulderr:  return "gamepad shoulder r";         break;
                 case gp_shoulderlb: return "gamepad trigger l";          break;
@@ -64,8 +64,14 @@ function __input_binding_get_label(_type, _value, _axis_negative)
                 case gp_padd:       return "gamepad dpad down";          break;
                 case gp_padl:       return "gamepad dpad left";          break;
                 case gp_padr:       return "gamepad dpad right"          break;
+                
                 case gp_guide:      return "gamepad guide";              break;
                 case gp_misc1:      return "gamepad misc 1";             break;
+                case gp_touchpad:   return "gamepad touchpad click";     break;
+                case gp_paddle1:    return "gamepad paddle 1";           break;
+                case gp_paddle2:    return "gamepad paddle 2";           break;
+                case gp_paddle3:    return "gamepad paddle 3";           break;
+                case gp_paddle4:    return "gamepad paddle 4";           break;
 
                 case gp_axislh: return _axis_negative? "gamepad thumbstick l left" : "gamepad thumbstick l right"; break;
                 case gp_axislv: return _axis_negative? "gamepad thumbstick l up"   : "gamepad thumbstick l down";  break;
