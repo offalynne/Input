@@ -11,6 +11,11 @@ function __input_class_gamepad(_index) constructor
     blacklisted       = false;
     sdl2_definition   = undefined;
     
+	
+	static custom_identifier_source = 0;
+	custom_identifier = custom_identifier_source++;
+	
+	
     vendor  = undefined;
     product = undefined;
     

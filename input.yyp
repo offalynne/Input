@@ -65,6 +65,7 @@
     {"id":{"name":"input_mouse_y","path":"scripts/input_mouse_y/input_mouse_y.yy",},"order":4,},
     {"id":{"name":"input_default_key","path":"scripts/input_default_key/input_default_key.yy",},"order":3,},
     {"id":{"name":"input_default_mouse_button","path":"scripts/input_default_mouse_button/input_default_mouse_button.yy",},"order":4,},
+    {"id":{"name":"input_gamepad_get_identifier","path":"scripts/input_gamepad_get_identifier/input_gamepad_get_identifier.yy",},"order":13,},
     {"id":{"name":"input_default_mouse_wheel_down","path":"scripts/input_default_mouse_wheel_down/input_default_mouse_wheel_down.yy",},"order":5,},
     {"id":{"name":"input_default_mouse_wheel_up","path":"scripts/input_default_mouse_wheel_up/input_default_mouse_wheel_up.yy",},"order":6,},
     {"id":{"name":"input_direction","path":"scripts/input_direction/input_direction.yy",},"order":0,},
