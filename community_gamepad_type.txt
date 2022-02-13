@@ -34,7 +34,7 @@
 289b,002c,CommunityLikeSwitch // Raphnet Wii Adapter
 0079,1800,CommunityLikeSwitch // Mayflash WiiU Adapter
 6957,746f,CommunityLikeSwitch // WiiU Pro
-057e,2017,CommunityLikeSwitch // NSO SNES & MegaDrive
+057e,2017,CommunityLikeSwitch // Nintendo Switch Online SNES & MD
 0925,03e8,CommunityLikeSwitch // Mayflash Wii Adapter
 057e,0330,CommunityLikeSwitch // WiiU Pro
 057e,2008,CommunityLikeSwitch // Linux JoyConD
