@@ -360,6 +360,7 @@ dead,beef,CommunityPSX // Hidromancer
 0f0d,0138,CommuntyPCEngine // NEC CoreGrafx, TG16, PC Engine Mini Controller
 0ca3,0027,CommunityAstroCity // Sega Astro City Mini Controller
 0ca3,0028,CommunityAstroCity // Sega Astro City Mini Arcade Stick
+1292,4e47,CommunityNeoGeo // NeoGeo X Arcade Stick
 2f24,002d,CommunityUnknown // JYS Adapter
 2f24,008a,CommunityUnknown // JYS Adapter
 2f24,0073,CommunityUnknown // Mayflash Adapter
