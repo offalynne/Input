@@ -211,6 +211,7 @@ beef,feed,CommunityXBox360 // Monect
 146b,0c01,CommunityXBox360 // Nacon GC-400ES	
 0079,0002,CommunityXBox360 // Arcade Board
 1bad,f503,CommunityXBox360 // Hori Fighting Stick VX
+0f0d,006d,CommunityXBox360 // Hori EDGE 301
 0e6f,02a7,CommunityXBoxOne // PDP Raven Black
 0f0d,0150,CommunityXBoxOne // Hori Fighting Commander Octa
 045e,0b03,CommunityXBoxOne // Xbox One
