@@ -9,3 +9,4 @@ function input_gamepad_get_button_label(_index, _gm)
     if (!is_struct(_gamepad)) return "unknown";
     var _label = _gamepad.get_button_label(_gm);
     return ((_label == undefined) ? "unknown" : _label);
+}
