@@ -387,7 +387,6 @@ function __input_gamepad_set_mapping()
             if (INPUT_SDL2_ALLOW_EXTENDED) { set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide"); }
             
             exit;
-            
         }
         else if (string_count("Genesis 6btn", description))
         {
