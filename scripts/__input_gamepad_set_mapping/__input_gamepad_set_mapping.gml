@@ -360,6 +360,60 @@ function __input_gamepad_set_mapping()
         exit;
     }
 
+    #endregion    
+    
+    #region Nintendo Switch Online Controllers on Linux
+
+    if ((vendor == "7e05") && (product == "1720") && (os_type == os_linux)
+    && (raw_type == "CommunitySaturn") && (guessed_type == false))
+    {
+        if (string_count("Genesis 3btn", description))
+        {
+            __input_trace("Overriding mapping to Mega Drive 3b");
+            
+            set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
+            set_mapping(gp_face2, 0, __INPUT_MAPPING.BUTTON, "b");
+            
+            set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.BUTTON, "righttrigger"); // C button
+            
+            set_mapping(gp_select, 7, __INPUT_MAPPING.BUTTON, "back");
+            set_mapping(gp_start,  9, __INPUT_MAPPING.BUTTON, "start");
+            
+            set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
+            set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
+            set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
+            set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+            
+            if (INPUT_SDL2_ALLOW_EXTENDED) { set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide"); }
+            
+            exit;
+        }
+        else if (string_count("Genesis 6btn", description))
+        {
+            __input_trace("Overriding mapping to Mega Drive 6b");
+            
+            set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
+            set_mapping(gp_face2, 0, __INPUT_MAPPING.BUTTON, "b");      
+            set_mapping(gp_face3, 6, __INPUT_MAPPING.BUTTON, "x");
+            set_mapping(gp_face4, 2, __INPUT_MAPPING.BUTTON, "y");
+            
+            set_mapping(gp_shoulderr,  4, __INPUT_MAPPING.BUTTON, "rightshoulder"); // Z button
+            set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.BUTTON, "righttrigger");  // C button
+            
+            set_mapping(gp_select, 7, __INPUT_MAPPING.BUTTON, "back");
+            set_mapping(gp_start,  9, __INPUT_MAPPING.BUTTON, "start");
+            
+            set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
+            set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
+            set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
+            set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+            
+            if (INPUT_SDL2_ALLOW_EXTENDED) { set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide"); }
+            
+            exit;
+        }       
+    }
+
     #endregion
 
     #region Remapping on SDL2 supported platforms
