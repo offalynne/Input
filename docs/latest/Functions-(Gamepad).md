@@ -112,8 +112,8 @@ The following are values this function may return besides `"unknown"`:
 |:----------------------------------|:------|
 |Face&nbsp;buttons                  |`"Circle"`, `"Square"`, `"Triangle"`, `"A"`, `"B"`, `"C"`, `"D"`, `"E"`, `"F"`, `"O"`, `"U"`, `"X"`, `"Y"`, `"Z"`, `"I"`, `"II"`|
 |Shoulders&nbsp;&amp;&nbsp;triggers |`"L"`, `"R"`, `"L1"`, `"R1"`, `"L2"`, `"R2"`, `"LB"`, `"RB"`, `"LT"`, `"RT"`, `"SL"`, `"SR"`, `"ZL"`, `"ZR"`|
-|Meta&nbsp;buttons             |`"Select"`, `"Start"`, `"-"`, `"+"`, `"Back"`, `"View"`, `"Menu"`, `"Share"`, `"Options"`, `"Create"`, `"Action"`, `"Credit"`, `"Run"`, `"Home"`, `"Capture"`, `"Mic"`|
 |Thumbsticks                        |`"L3"`, `"R3"`|
+|Meta&nbsp;buttons             |`"Select"`, `"Start"`, `"-"`, `"+"`, `"Back"`, `"View"`, `"Menu"`, `"Share"`, `"Options"`, `"Create"`, `"Action"`, `"Credit"`, `"Run"`, `"Home"`, `"Capture"`, `"Mic"`|
 |Paddles                            |`"LG"`, `"RG"`, `"L4"`, `"R4"`, `"L5"`, `"R5"`, `"M1"`, `"M2"`, `"M3"`, `"M4"`, `"P1"`, `"P2"`, `"P3"`, `"P4"`|
 
 !> It is reccomended to present players with graphics instead of text for gamepad labels to better match non-textual symbols, as well as to extend support beyond English. In Input this is best accomplished by using [binding name values](https://www.jujuadams.com/Input/#/latest/Binding-Names?id=gamepad) to identify gamepad elements [according to device type](https://www.jujuadams.com/Input/#/latest/Gamepad-Button-Labels). Strings returned by this function are intended only as a development aid.
