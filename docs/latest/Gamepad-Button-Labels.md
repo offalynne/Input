@@ -82,7 +82,7 @@ and binding names identified by [`input_binding_get_name`](Functions-(Bindings)#
 
 &nbsp;
 
-### DualShock 4 and DualSense on PS4 and PS5
+### DualShock 4 and DualSense
 
 | Gamepad type      |  touchpad click          |
 |:------------------|:------------------------:|
