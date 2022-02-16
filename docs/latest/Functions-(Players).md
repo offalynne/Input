@@ -80,20 +80,6 @@ This function will return `INPUT_NO_GAMEPAD` if the player has no connected game
 
 &nbsp;
 
-### `input_player_gamepad_get_description([playerIndex])`
-
-*Returns:* String, the name of the player's gamepad (after SDL remapping)
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
-
-Returns the same values as [`input_gamepad_get_description()`](Functions-(Gamepad)#input_gamepad_get_descriptiongamepadindex).
-
-&nbsp;
-
-&nbsp;
-
 ### `input_player_gamepad_get_type([playerIndex])`
 
 *Returns:* String, the player's gamepad's type (after SDL remapping)
@@ -103,20 +89,6 @@ Returns the same values as [`input_gamepad_get_description()`](Functions-(Gamepa
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Returns the same values as [`input_gamepad_get_type()`](Functions-(Gamepad)#input_gamepad_get_typegamepadindex).
-
-&nbsp;
-
-&nbsp;
-
-### `input_player_gamepad_get_dpad_style([playerIndex])`
-
-*Returns:* String, the player's gamepad's dpad style (after SDL remapping)
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
-
-Returns the same values as [`input_gamepad_get_dpad_style()`](Functions-(Gamepad)#input_gamepad_get_dpad_stylegamepadindex).
 
 &nbsp;
 
