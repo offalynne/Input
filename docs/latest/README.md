@@ -55,4 +55,4 @@ Many, many other people have contributed to GameMaker's open source community vi
 
 **Can I send you donations? Are you going to start a Patreon?**
 
-Thank you for wanting to show your appreciation - it really does mean a lot to us personally - but we're fortunate enough to have a stable income from gamedev. We're not looking to join Patreon as a creator at this moment in time. If you'd like to support our work then drop us a credit in your game and/or gimme a shout-out on the social media platform of your choice.
+Thank you for wanting to show your appreciation - it really does mean a lot to us personally - but we're fortunate enough to have a stable income from gamedev. We're not looking to join Patreon as a creator at this moment in time. If you'd like to support our work then drop us a credit in your game and/or give a shout-out on the social media platform of your choice.
