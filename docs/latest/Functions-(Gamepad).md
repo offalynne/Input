@@ -172,7 +172,7 @@ This function will return one of the following:
 |`"none"`       |Switch (single Joy-Con)                         |*N/A*|
 |`"arrows"`     |Switch (handheld, Pro Controller, dual Joy-Cons)|<img alt="Arrows art example" width="150" src="https://i.imgur.com/V9qOstK.png">|
 |`"segments"`   |PlayStation                                     |<img alt="Segments art example" width="150" src="https://i.imgur.com/Lmaya8O.png">|
-|`"disc"`       |Xbox 360, Steam Controller, Saturn              |<img alt="Disc art example" width="150" src="https://i.imgur.com/IO0DjVQ.png">|
+|`"disc"`       |Xbox 360, Saturn                                |<img alt="Disc art example" width="150" src="https://i.imgur.com/IO0DjVQ.png">|
 |`"cross"`      |Default                                         |<img alt="Cross art example" width="150" src="https://i.imgur.com/b7f8Gnj.png">|
 
 *Example art courtesy https://thoseawesomeguys.com/prompts ([CC0](https://creativecommons.org/share-your-work/public-domain/cc0))*
