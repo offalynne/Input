@@ -47,7 +47,7 @@ Please make a [bug report](https://github.com/JujuAdams/Input/issues). Juju chec
 
 **Who made Input?**
 
-Input is built and maintained by [@jujuadams](https://twitter.com/jujuadams) and [@offalynne](https://twitter.com/offalynne) who have been writing and rewriting input systems for a long time. Juju's worked on a lot of [commercial GameMaker games](http://www.jujuadams.com/) and offalynne has been [active in indie dev](https://offalynne.neocities.org/) for years. Input is the product of our combined practical experience working as consultants and dealing with console ports.
+Input is built and maintained by [@jujuadams](https://twitter.com/jujuadams) and [@offalynne](https://twitter.com/offalynne) who have been writing and rewriting input systems for a long time. Juju's worked on a lot of [commercial GameMaker games](http://www.jujuadams.com/) and Alynne has been [active in indie dev](https://offalynne.neocities.org/) for years. Input is the product of our combined practical experience working as consultants and dealing with console ports.
 
 Many, many other people have contributed to GameMaker's open source community via bug reports and feature requests, too many to list here. Input wouldn't exist without them and we're eternally grateful for their creativity and patience.
 
