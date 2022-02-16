@@ -223,7 +223,7 @@ function __input_gamepad_set_mapping()
     && (gamepad_axis_value(index, 1) == gamepad_axis_value(index, 2))  //On new firmware axes 1 and 2 are same
     && (gamepad_axis_value(index, 4) == gamepad_axis_value(index, 5))) //On new firmware axes 4 and 5 are same
     {
-        __input_trace("Xbox One Wireless controller seems to be in a bad state, using alternate mapping. Trigger data is unavailable.");
+        __input_trace("Setting Xbox One Wireless controller to alternate mapping. Trigger data unavailable.");
         
         set_mapping(gp_face1, 0, __INPUT_MAPPING.BUTTON, "a");
         set_mapping(gp_face2, 1, __INPUT_MAPPING.BUTTON, "b");
@@ -264,6 +264,9 @@ function __input_gamepad_set_mapping()
 
     if ((raw_type == "AppleController") && (guessed_type == false) && (os_type == os_windows))
     {
+        //MFi controllers have unreliable VID+PID, type is set on other indicators
+        __input_trace("Setting MFi controller mapping");
+        
         set_mapping(gp_padl, 0, __INPUT_MAPPING.BUTTON, "dpleft");
         set_mapping(gp_padd, 1, __INPUT_MAPPING.BUTTON, "dpdown");
         set_mapping(gp_padr, 2, __INPUT_MAPPING.BUTTON, "dpright");
@@ -303,7 +306,9 @@ function __input_gamepad_set_mapping()
     
     if ((raw_type == "CommunityOuya") && (os_type == os_macosx))
     {
-        //Controller doesn't work at all in SDL, but buttons do in GM
+        //Ouya controller doesn't work at all in SDL on Mac, but buttons do in GM
+        __input_trace("Setting Ouya controller mapping");
+        
         set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
         set_mapping(gp_face2, 6, __INPUT_MAPPING.BUTTON, "b");
         set_mapping(gp_face3, 3, __INPUT_MAPPING.BUTTON, "x");
@@ -599,7 +604,8 @@ function __input_gamepad_set_mapping()
             }
             
             //Reset Android keymapped dpad if necessary
-            if ((os_type == os_android) && (vendor != "") && (product != ""))
+            if ((os_type == os_android) && (gamepad_hat_count(index) != 0)
+            && ((vendor == "") && (product == "")))
             {
                 var _mapping = undefined;
                 var _dpad_array = [gp_padu, gp_padd, gp_padl, gp_padr];
@@ -639,7 +645,7 @@ function __input_gamepad_set_mapping()
                 var _matched = 0;
                 var _mapping = undefined;
                 var _button_array = [gp_face3, gp_face1, gp_face2, gp_face4];
-                var _offset = ((mac_cleared_mapping && (os_type == os_macosx)) ? 17 : 0);
+                var _offset = (mac_cleared_mapping ? 17 : 0);
 
                 repeat(array_length(_button_array))
                 {
@@ -652,6 +658,7 @@ function __input_gamepad_set_mapping()
                 if (_matched == 4)
                 {
                     //Face button mapping matches normative PS4 gamepads, add `touchpad` button
+                    if (__INPUT_DEBUG) __input_trace("  (Adding touchpad mapping)");
                     set_mapping(gp_touchpad, 13 + _offset, __INPUT_MAPPING.BUTTON, "touchpad");
                 }
             }
@@ -662,6 +669,7 @@ function __input_gamepad_set_mapping()
                 //Guide button issues 2 reports: one a tick after release which is usually too fast for GM's
                 //interupt to catch, and another that's for long press that works after being held 1 second.
                 //SDL's map assigns the first but we switch to the second which will work reliably for GM.
+                if (__INPUT_DEBUG) __input_trace("  (Remapping guide button)");
                 set_mapping(gp_guide, 15, __INPUT_MAPPING.BUTTON, "guide");
             }
         }
