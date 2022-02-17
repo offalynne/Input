@@ -4,7 +4,7 @@
 
 ### `input_check(verb, [playerIndex], [bufferDuration])`
 
-*Returns:* Boolean, if the verb is currently activated
+*Returns:* Boolean, if the verb is currently active
 
 |Name              |Datatype                                  |Purpose                                                                                                                      |
 |------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
@@ -69,7 +69,7 @@ This function will **not** return `true` on the same frame a verb is activated (
 
 ### `input_check_double(verb, [playerIndex], [bufferDuration])`
 
-*Returns:* Boolean, if the verb is currently activate
+*Returns:* Boolean, if the verb is currently active
 
 |Name              |Datatype                                  |Purpose                                                                                                                      |
 |------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
@@ -85,7 +85,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 
 ### `input_check_double_pressed(verb, [playerIndex], [bufferDuration])`
 
-*Returns:* Boolean, if the verb is newly activated this frame
+*Returns:* Boolean, if the verb is newly active
 
 |Name              |Datatype                                  |Purpose                                                                                                                      |
 |------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
@@ -117,7 +117,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 
 ### `input_check_long(verb, [playerIndex], [bufferDuration])`
 
-*Returns:* Boolean, if the verb is currently activate
+*Returns:* Boolean, if the verb is currently active
 
 |Name              |Datatype                                  |Purpose                                                                                                                      |
 |------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
