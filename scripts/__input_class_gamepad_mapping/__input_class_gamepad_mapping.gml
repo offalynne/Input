@@ -18,8 +18,8 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name, _label, _col
     clamp_negative = false;
     clamp_positive = false;
     reverse        = false;
-    limit_range    = false;
-    extend_range   = false;
+    limited_range    = false;
+    extended_range   = false;
     hat_mask       = undefined;
     
     //Hat-on-axis and split axis
@@ -89,8 +89,8 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name, _label, _col
             break;
         }
         
-        if (limit_range)    value = 2*value - 1;
-        if (extend_range)   value = 0.5 + 0.5*value;
+        if (limited_range)  value = 2*value - 1; //Expand 0 -> 1 range to the full -1 -> +1
+        if (extended_range) value = 0.5 + 0.5*value; //Reduce -1 -> +1 range to 0 -> 1
         if (clamp_negative) value = clamp(value, -1, 0);
         if (clamp_positive) value = clamp(value,  0, 1);
         if (invert)         value = 1 - value;
