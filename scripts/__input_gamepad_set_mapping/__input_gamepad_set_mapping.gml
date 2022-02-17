@@ -622,24 +622,23 @@ function __input_gamepad_set_mapping()
                     if ((_raw_type == __INPUT_MAPPING.AXIS) || (_raw_type == __INPUT_MAPPING.SPLIT_AXIS))
                     {
                         //Identify directional input
-                        var _is_directional = false;
                         switch(_gm_constant)
                         {
                             case gp_padu:   case gp_padd: 
                             case gp_padl:   case gp_padr:
                             case gp_axislh: case gp_axislv:
                             case gp_axisrh: case gp_axisrv:
-                                _is_directional = true;
+                                _mapping.directional_axis = true;
                             break;
                         }
                 
                         //Linux axis ranges affecting directional input are normalized after remapping
-                        if ((os_type == os_linux) && _is_directional)
+                        if ((os_type == os_linux) && _mapping.directional_axis)
                         {    
                             if (__INPUT_DEBUG) __input_trace("  (Limited axis range)");
                             _mapping.limited_range = true;
                         }
-                        else if ((os_type != os_linux) && !_is_directional && (gamepad_axis_count(index) >= _input_slot))
+                        else if ((os_type != os_linux) && !_mapping.directional_axis && (gamepad_axis_count(index) >= _input_slot))
                         {
                             //Nondirectional axes (triggers) use full axis range (excepting Linux remappings and XInput)
                             if (__INPUT_DEBUG) __input_trace("  (Extended axis range)");
