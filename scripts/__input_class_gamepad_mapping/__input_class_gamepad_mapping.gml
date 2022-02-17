@@ -21,7 +21,6 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name, _label, _col
     limited_range    = false;
     extended_range   = false;
     hat_mask         = undefined;
-    directional_axis = false;
     
     //Hat-on-axis and split axis
     raw_negative = undefined;

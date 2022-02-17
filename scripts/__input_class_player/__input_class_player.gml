@@ -40,7 +40,15 @@ function __input_class_player() constructor
     {
         var _struct = config.axis_thresholds[$ _axis];
         if (is_struct(_struct)) return _struct;
-        return axis_threshold_set(_axis, INPUT_DEFAULT_MIN_THRESHOLD, INPUT_DEFAULT_MAX_THRESHOLD);
+        
+        if (__input_axis_is_directional(_axis))
+        {
+            return axis_threshold_set(_axis, INPUT_DEFAULT_AXIS_MIN_THRESHOLD, INPUT_DEFAULT_AXIS_MAX_THRESHOLD);
+        }
+        else
+        {
+            return axis_threshold_set(_axis, INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD, INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD);
+        }
     }
     
     /// @param verb
@@ -482,12 +490,12 @@ function __input_class_player() constructor
                 ||  input_gamepad_check(gamepad, gp_stickr)
                 ||  input_gamepad_check(gamepad, gp_stickr)
                 ||  input_gamepad_check(gamepad, gp_stickr)
-                ||  (abs(input_gamepad_value(gamepad, gp_shoulderlb)) > INPUT_DEFAULT_MIN_THRESHOLD)
-                ||  (abs(input_gamepad_value(gamepad, gp_shoulderrb)) > INPUT_DEFAULT_MIN_THRESHOLD)
-                ||  (abs(input_gamepad_value(gamepad, gp_axislh)) > INPUT_DEFAULT_MIN_THRESHOLD)
-                ||  (abs(input_gamepad_value(gamepad, gp_axislv)) > INPUT_DEFAULT_MIN_THRESHOLD)
-                ||  (abs(input_gamepad_value(gamepad, gp_axisrh)) > INPUT_DEFAULT_MIN_THRESHOLD)
-                ||  (abs(input_gamepad_value(gamepad, gp_axisrv)) > INPUT_DEFAULT_MIN_THRESHOLD))
+                ||  (abs(input_gamepad_value(gamepad, gp_shoulderlb)) > INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD)
+                ||  (abs(input_gamepad_value(gamepad, gp_shoulderrb)) > INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD)
+                ||  (abs(input_gamepad_value(gamepad, gp_axislh)) > INPUT_DEFAULT_AXIS_MIN_THRESHOLD)
+                ||  (abs(input_gamepad_value(gamepad, gp_axislv)) > INPUT_DEFAULT_AXIS_MIN_THRESHOLD)
+                ||  (abs(input_gamepad_value(gamepad, gp_axisrh)) > INPUT_DEFAULT_AXIS_MIN_THRESHOLD)
+                ||  (abs(input_gamepad_value(gamepad, gp_axisrv)) > INPUT_DEFAULT_AXIS_MIN_THRESHOLD))
                 {
                     return true;
                 }
