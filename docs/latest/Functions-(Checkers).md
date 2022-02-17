@@ -4,7 +4,7 @@
 
 ### `input_check(verb, [playerIndex], [bufferDuration])`
 
-*Returns:* Boolean, if the verb is currently activate
+*Returns:* Boolean, if the verb is currently activated
 
 |Name              |Datatype                                  |Purpose                                                                                                                      |
 |------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
