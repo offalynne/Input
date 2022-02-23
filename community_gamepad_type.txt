@@ -88,14 +88,10 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 0d28,0202,CommunitySNES // Miller Cantroller
 0003,0003,CommunitySNES // Miroof
 0411,00c6,CommunitySNES // Buffalo FC801
-2dc8,2810,CommunitySNES // 8BitDo SFC30
 0810,e501,CommunitySNES // NEXT SNES
-081f,e401,CommunitySNES // RetroUSB Famicom
 0e8f,3013,CommunitySNES // HuiJia SNES
 12bd,d015,CommunitySNES // Tomee SNES
 1235,ab20,CommunitySNES // 8BitDo SN30
-1235,ab21,CommunitySNES // 8BitDo SFC30
-2810,0009,CommunitySNES // 8BitDo SFC30
 2dc8,5103,CommunitySNES // 8BitDo SN30 Modkit
 1781,0a96,CommunitySNES // SNES Atari USB
 0f00,0001,CommunitySNES // Retro NES
@@ -104,12 +100,17 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 2dc8,02e0,CommunitySNES // 8BitDo N30
 289b,0002,CommunitySNES // Raphnet SNES
 4854,4d43,CommunitySNES // Ystek Micreal SNES
+081f,e401,CommunitySuperFamicom // RetroUSB Famicom
+1235,ab21,CommunitySuperFamicom // 8BitDo SFC30
+2810,0009,CommunitySuperFamicom // 8BitDo SFC30
+2dc8,2830,CommunitySuperFamicom // 8BitDo SFC30
+2dc8,ab21,CommunitySuperFamicom // 8BitDo SFC30
+2dc8,2810,CommunitySuperFamicom // 8BitDo SFC30
 1002,9000,Community8BitDo // 8BitDo FC30 Pro
 1235,ab12,Community8BitDo // 8BitDo NES30
 1235,2840,Community8BitDo // 8BitDo NES30
 2002,9000,Community8BitDo // 8BitDo NES30 Pro
 2dc8,2820,Community8BitDo // 8BitDo NES30 Pro
-2dc8,2830,Community8BitDo // 8BitDo SFC30
 2dc8,2840,Community8BitDo // 8BitDo SN30
 2dc8,2862,Community8BitDo // 8BitDo SN30 GP
 2dc8,3000,Community8BitDo // 8BitDo SN30
@@ -117,9 +118,7 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 2dc8,5104,Community8BitDo // 8BitDo SN30
 2dc8,9012,Community8BitDo // 8BitDo SN30
 2dc8,ab20,Community8BitDo // 8BitDo SNES30
-2dc8,ab21,Community8BitDo // 8BitDo SFC30
 2dc8,6001,Community8BitDo // 8BitDo SN30 Pro
-2dc8,6100,Community8BitDo // 8BitDo SF30 Pro
 2dc8,2865,Community8BitDo // 8BitDo N30 Pro 2
 2dc8,3810,Community8BitDo // 8BitDo FC30 Pro
 2dc8,3820,Community8BitDo // 8BitDo NES30 Pro
