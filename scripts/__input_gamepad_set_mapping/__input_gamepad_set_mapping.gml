@@ -301,7 +301,7 @@ function __input_gamepad_set_mapping()
     
     #region USB SNES Controller on desktop
     
-    if (string_count(string_lower(gamepad_get_description(index)), "innext snes") && __INPUT_ON_DESKTOP)
+    if (string_count("innext snes", string_lower(gamepad_get_description(index))) && __INPUT_ON_DESKTOP)
     {
         set_mapping(gp_face1, 2, __INPUT_MAPPING.BUTTON, "a");
         set_mapping(gp_face2, 1, __INPUT_MAPPING.BUTTON, "b");
