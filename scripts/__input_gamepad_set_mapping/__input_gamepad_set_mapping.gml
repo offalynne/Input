@@ -645,7 +645,7 @@ function __input_gamepad_set_mapping()
                 var _matched = 0;
                 var _mapping = undefined;
                 var _button_array = [gp_face3, gp_face1, gp_face2, gp_face4];
-                var _offset = (mac_cleared_mapping ? 17 : 0);
+                var _offset = ((mac_cleared_mapping && (os_type == os_macosx)) ? 17 : 0);
 
                 repeat(array_length(_button_array))
                 {
