@@ -169,6 +169,15 @@ function __input_gamepad_set_type()
                     guessed_type = false;
                 }
             }
+            
+            //USB SNES (GUID conflicts with more common controllers)
+            if (string_count(string_lower(gamepad_get_description(index)), "innext snes"))
+            {
+                __input_trace("Overriding gamepad type to SNES");
+                description = "SNES";
+                raw_type = "CommunitySNES";
+                guessed_type = false;            
+            }
 
             #endregion
             

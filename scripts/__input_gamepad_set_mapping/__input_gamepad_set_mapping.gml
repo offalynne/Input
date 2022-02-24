@@ -299,6 +299,39 @@ function __input_gamepad_set_mapping()
     
     #endregion
     
+    #region USB SNES Controller on Windows and Linux
+    
+    if (string_count(string_lower(gamepad_get_description(index)), "innext snes")
+    && ((os_type == os_windows) || (os_type == os_linux)))
+    {
+        set_mapping(gp_face1, 2, __INPUT_MAPPING.BUTTON, "a");
+        set_mapping(gp_face2, 1, __INPUT_MAPPING.BUTTON, "b");
+        set_mapping(gp_face3, 3, __INPUT_MAPPING.BUTTON, "x");
+        set_mapping(gp_face4, 0, __INPUT_MAPPING.BUTTON, "y");
+        
+        set_mapping(gp_shoulderl, 4, __INPUT_MAPPING.BUTTON, "leftshoulder");
+        set_mapping(gp_shoulderr, 5, __INPUT_MAPPING.BUTTON, "rightshoulder");
+        
+        set_mapping(gp_select, 8, __INPUT_MAPPING.BUTTON, "back");
+        set_mapping(gp_start,  9, __INPUT_MAPPING.BUTTON, "start");
+        
+        set_mapping(gp_padr, 3, __INPUT_MAPPING.AXIS, "dpright").clamp_positive = true;
+        set_mapping(gp_padd, 4, __INPUT_MAPPING.AXIS, "dpdown" ).clamp_positive = true;
+            
+        var _mapping;
+        _mapping = set_mapping(gp_padl, 3, __INPUT_MAPPING.AXIS, "dpleft");
+        _mapping.clamp_negative = true;
+        _mapping.reverse = true;
+            
+        _mapping = set_mapping(gp_padu, 4, __INPUT_MAPPING.AXIS, "dpup");
+        _mapping.clamp_negative = true;
+        _mapping.reverse = true;
+        
+        exit;
+    }
+    
+    #endregion
+    
     #region Ouya Controller on MacOS
     
     if ((raw_type == "CommunityOuya") && (os_type == os_macosx))
