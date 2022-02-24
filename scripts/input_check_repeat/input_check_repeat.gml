@@ -24,7 +24,7 @@ function input_check_repeat(_verb, _player_index = 0, _delay = INPUT_REPEAT_DEFA
         return undefined;
     }
     
-    if (_verb_struct.consumed || global.__input_cleared) return false;
+    if (_verb_struct.consumed) return false;
     if (!_verb_struct.held) return false;
     
     var _time = __input_get_time() - _verb_struct.press_time - _predelay;
