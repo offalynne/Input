@@ -16,6 +16,7 @@ CommunityLikeXBox,a:A,b:B,back:View,leftshoulder:LB,lefttrigger:LT,paddle1:M1,pa
 CommunityLikeSwitch,a:B,b:A,back:-,leftshoulder:L,lefttrigger:ZL,misc1:Capture,rightshoulder:R,righttrigger:ZR,start:+,x:Y,y:X
 CommunitySaturn,a:A,b:B,leftshoulder:L,lefttrigger:R,rightshoulder:Z,righttrigger:C,back:Select,start:Start,x:X,y:Y
 CommunitySNES,a:B,b:A,back:Select,leftshoulder:L,rightshoulder:R,start:Start,x:Y,y:X
+CommunitySuperFamicom,a:B,b:A,back:Select,leftshoulder:L,rightshoulder:R,start:Start,x:Y,y:X
 Community8BitDo,a:B,b:A,back:Select,leftshoulder:L,leftstick:L3,lefttrigger:L2,rightshoulder:R,rightstick:R3,righttrigger:R2,start:Start,x:Y,y:X
 CommunityDreamcast,a:A,b:B,lefttrigger:L,righttrigger:R,start:Start,x:X,y:Y
 CommunityGameCube,a:A,b:X,lefttrigger:L,rightshoulder:Z,righttrigger:R,rightx:C,righty:C,start:Start,x:B,y:Y
