@@ -1,8 +1,9 @@
 /// @param minPlayers
 /// @param maxPlayers
 /// @param leaveVerb
+/// @param [dropDown=true]
 
-function input_source_assignment_tick(_min_players, _max_players, _leave_verb)
+function input_source_assignment_tick(_min_players, _max_players, _leave_verb, _drop_down = true)
 {
     if (_max_players < 1)
     {
@@ -10,9 +11,9 @@ function input_source_assignment_tick(_min_players, _max_players, _leave_verb)
         return undefined;
     }
     
-    if (_max_players >= INPUT_MAX_PLAYERS)
+    if (_max_players > INPUT_MAX_PLAYERS)
     {
-        __input_error("Maximum player count too large (", _max_players, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
+        __input_error("Maximum player count too large (", _max_players, " must not be greater than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
         return undefined;
     }
     
@@ -22,7 +23,7 @@ function input_source_assignment_tick(_min_players, _max_players, _leave_verb)
         return undefined;
     }
     
-    if (_min_players >= INPUT_MAX_PLAYERS)
+    if (_min_players > _max_players)
     {
         __input_error("Minimum player count larger than maximum (", _min_players, " must be less than ", _max_players, ")");
         return undefined;
@@ -30,28 +31,31 @@ function input_source_assignment_tick(_min_players, _max_players, _leave_verb)
     
     var _abort = false;
     
-    //Drop players down into empty spaces
-    do
+    if (_drop_down)
     {
-        var _fail = false;
-        var _p = INPUT_MAX_PLAYERS-1;
-        repeat(INPUT_MAX_PLAYERS-1)
+        //Drop players down into empty spaces
+        do
         {
-            if (input_player_connected(_p) && !input_player_connected(_p-1))
+            var _fail = false;
+            var _p = INPUT_MAX_PLAYERS-1;
+            repeat(INPUT_MAX_PLAYERS-1)
             {
-                __input_trace("Assignment: Moving player ", _p, " (connected) to ", _p-1, " (disconnected)");
+                if (input_player_connected(_p) && !input_player_connected(_p-1))
+                {
+                    __input_trace("Assignment: Moving player ", _p, " (connected) to ", _p-1, " (disconnected)");
+                    
+                    _fail = true;
+                    
+                    var _temp = global.__input_players[_p-1];
+                    global.__input_players[_p-1] = global.__input_players[_p];
+                    global.__input_players[_p] = _temp;
+                }
                 
-                _fail = true;
-                
-                var _temp = global.__input_players[_p-1];
-                global.__input_players[_p-1] = global.__input_players[_p];
-                global.__input_players[_p] = _temp;
+                --_p;
             }
-            
-            --_p;
         }
+        until (!_fail);
     }
-    until (!_fail);
     
     //Disconnect all extraneous players
     var _p = _max_players;

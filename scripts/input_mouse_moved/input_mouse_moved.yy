@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Players",
-    "path": "folders/Input/Players.yy",
+    "name": "Mouse (Direct)",
+    "path": "folders/Input/Mouse (Direct).yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_player_gamepad_get_description",
+  "name": "input_mouse_moved",
   "tags": [],
   "resourceType": "GMScript",
 }

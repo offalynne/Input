@@ -171,12 +171,21 @@ function __input_gamepad_set_type()
             }
             
             //USB SNES (GUID conflicts with more common controllers)
-            if (string_count(string_lower(gamepad_get_description(index)), "innext snes"))
+            if (string_count("innext snes", string_lower(gamepad_get_description(index))))
             {
                 __input_trace("Overriding gamepad type to SNES");
                 description = "SNES";
                 raw_type = "CommunitySNES";
-                guessed_type = false;            
+                guessed_type = false;
+            }
+              
+            //Nintendo Switch Online controllers on Linux (Identifiable on device name only)
+            if ((os_type == os_linux) && (vendor == "7e05") && (product == "1720")
+            && (string_count("mega drive/genesis", string_lower(gamepad_get_description(index)))))
+            {
+                __input_trace("Overriding gamepad type to Saturn");
+                raw_type = "CommunitySaturn";
+                guessed_type = false;
             }
 
             #endregion
