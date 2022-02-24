@@ -16,6 +16,9 @@ function __input_initialize()
 	
 	//Global frame counter. This is used for input buffering
 	global.__input_frame = 0;
+    
+	//Whether momentary input has been cleared
+    global.__input_cleared = false;
 	
 	//Mouse tracking variables. These are used to detect when the mouse has moved
 	global.__input_mouse_x     = 0;
