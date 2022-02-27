@@ -299,10 +299,9 @@ function __input_gamepad_set_mapping()
     
     #endregion
     
-    #region USB SNES Controller on Windows and Linux
+    #region USB SNES Controller on Windows
     
-    if (string_count("innext snes", string_lower(gamepad_get_description(index)))
-    && ((os_type == os_windows) || (os_type == os_linux)))
+    if (string_count("innext snes", string_lower(gamepad_get_description(index))) && (os_type == os_windows))
     {
         set_mapping(gp_face1, 2, __INPUT_MAPPING.BUTTON, "a");
         set_mapping(gp_face2, 1, __INPUT_MAPPING.BUTTON, "b");
