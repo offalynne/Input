@@ -125,7 +125,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
                 #region Listeners
                 
                 if (global.__input_keyboard_default_defined 
-                && (_keyboard_key > 7) && (_keyboard_key < 57344)
+                && (_keyboard_key >= __INPUT_KEYCODE_MIN) && (_keyboard_key <= __INPUT_KEYCODE_MAX)
                 && !__input_key_is_ignored(_keyboard_key))
                 {
                     //Keyboard
@@ -147,7 +147,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
                 }
                 else if (global.__input_mouse_default_defined && global.__input_mouse_allowed && !global.__input_mouse_blocked
                      && (_mouse_button != mb_none)
-                     && (!__INPUT_TOUCH_SUPPORT || (_mouse_button != mb_left))) //GM conflates LMB and touch -- don't rebind
+                     && (!__INPUT_TOUCH_SUPPORT || (_mouse_button != mb_left))) //GM conflates LMB and touch. Don't rebind
                 {
                     //Mouse buttons
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms

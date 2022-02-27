@@ -8,7 +8,8 @@ function input_default_gamepad_button(_button, _verb, _alternate = 0)
 	
     if (__INPUT_DEBUG) __input_trace("Setting default gamepad button binding...");
     
-    if (!INPUT_SDL2_ALLOW_EXTENDED && (_button >= gp_guide)) 
+    if (!INPUT_SDL2_ALLOW_EXTENDED 
+    && ((_button >= gp_guide) && (_button <= gp_paddle4)))
     {
         __input_error("Extended gamepad binding not permitted\nSet INPUT_SDL2_ALLOW_EXTENDED to <true> to allow binding of extended buttons.");
     }
