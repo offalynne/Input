@@ -90,7 +90,7 @@ function input_binding_is_valid(_binding, _player_index = 0)
                 if (((_value >= 16) && (_value <= 19))
                 ||  ((_value >= 96) && (_value <= 122)))
                 {
-                    //Command keys that overlap lowercase alpha are invalid as primary binds
+                    //Command keys that overlap alpha are invalid binds
                     return false;
                 }
                 
