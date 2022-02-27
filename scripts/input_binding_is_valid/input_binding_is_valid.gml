@@ -87,6 +87,13 @@ function input_binding_is_valid(_binding, _player_index = 0)
             
             if (os_type == os_android)
             {
+                if (((_value >= 16) && (_value <= 19))
+                ||  ((_value >= 96) && (_value <= 122)))
+                {
+                    //Command keys that overlap lowercase alpha are invalid as primary binds
+                    return false;
+                }
+                
                 var _lowercase = _binding.android_lowercase;
                 if ((_lowercase != undefined) && !__input_key_is_ignored(_lowercase)
                 &&  (_lowercase >= __INPUT_KEYCODE_MIN) && (_lowercase <= __INPUT_KEYCODE_MAX))
