@@ -129,7 +129,7 @@ function input_binding_is_valid(_binding, _player_index = 0)
                 break;
                 
                 case mb_side1:
-                case mb_side2: //Invalid on console, OperaGX, mobile, UWP, Firefox, or Mac browsers
+                case mb_side2: //Invalid on console, OperaGX, mobile, UWP, Firefox or Mac browsers
                     return !(__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || __INPUT_ON_MOBILE || (os_type == os_uwp) || (os_browser == browser_firefox) || (__INPUT_ON_WEB && (os_type == os_macosx)))
                 break;
                 
