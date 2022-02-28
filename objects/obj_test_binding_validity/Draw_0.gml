@@ -27,7 +27,7 @@ repeat(array_length(_verbs))
     _labels += "\n" + _verb;
     
     //Valid column
-    _values += "\n" + string((_binding != undefined) && input_binding_is_valid(_binding));
+    _values += "\n" + string(input_binding_is_valid(_binding));
     
     //Active column
     _values += string_repeat(" ", 6) + string(input_check(_verb));
