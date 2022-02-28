@@ -17,7 +17,7 @@ function input_binding_is_valid(_binding, _player_index = 0)
     
     if (!input_value_is_binding(_binding))
     {
-        __input_error("Value provided is not a binding");
+        //Invalid binding
         return false;
     }
 
