@@ -15,10 +15,18 @@ function input_binding_is_valid(_binding, _player_index = 0)
         return false;
     }
     
-    if (!input_value_is_binding(_binding))
+    if (_binding == undefined)
     {
-        //Invalid binding
+        //Invalid if, for example, there is no binding set for the source specified when getting a binding
         return false;
+    }
+    else
+    {
+        if (!input_value_is_binding(_binding))
+        {
+            __input_error("Value provided is not a binding");
+            return false;
+        }
     }
 
     var _type  = _binding.type;
@@ -53,8 +61,18 @@ function input_binding_is_valid(_binding, _player_index = 0)
         if (_gamepad.xinput && ((_raw == 4106) || (_raw == 4107))
         && ((_type = "gamepad button") || (_type == "gamepad axis")))
         {
-            //XInput triggers (out of normal range)
+            //Except XInput trigger values from range checks
             return true;
+        }
+        
+        if (_raw == 0)
+        {
+            var _hat_mask = ((_mapping.hat_mask == undefined) ? _mapping.hat_mask_negative : _mapping.hat_mask);        
+            if (_hat_mask != undefined)
+            {
+                //Validate hat mappings
+                return ((_hat_mask == 1) || (_hat_mask == 2) || (_hat_mask == 4) || (_hat_mask == 8));
+            }
         }
         
         switch(_type)
@@ -66,12 +84,8 @@ function input_binding_is_valid(_binding, _player_index = 0)
             case "gamepad axis":
                 return (_raw < gamepad_axis_count(_gamepad_index));
             break;
-
-            case "gamepad hat": //All mappings use one or no hats
-                return (gamepad_hat_count(_gamepad_index) > 0);
-            break;
             
-            default: //Unhandled gamepad type
+            default:
                 return false;
             break;
         }
@@ -91,7 +105,7 @@ function input_binding_is_valid(_binding, _player_index = 0)
                 if (((_value >= 16) && (_value <= 19))
                 ||  ((_value >= 96) && (_value <= 122)))
                 {
-                    //Command keys that overlap alpha are invalid binds
+                    //Command keys that overlap alpha don't register on Android, are invalid binds
                     return false;
                 }
                 
@@ -134,7 +148,7 @@ function input_binding_is_valid(_binding, _player_index = 0)
                     return !(__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || __INPUT_ON_MOBILE || (os_type == os_uwp) || (os_browser == browser_firefox) || (__INPUT_ON_WEB && (os_type == os_macosx)))
                 break;
                 
-                default: //Out of range
+                default:
                     return false;
                 break;
             }
@@ -152,7 +166,7 @@ function input_binding_is_valid(_binding, _player_index = 0)
             return !(__INPUT_ON_CONSOLE || (!__INPUT_ON_WEB && __INPUT_ON_MOBILE));        
         break;
         
-        default: //Unhandled type
+        default:
             return false;
         break;
     }
