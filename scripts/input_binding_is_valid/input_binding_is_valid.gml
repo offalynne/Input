@@ -50,7 +50,8 @@ function input_binding_is_valid(_binding, _player_index = 0)
             return false;
         }
         
-        if (_gamepad.xinput && ((_raw == 4106) || (_raw == 4107)))
+        if (_gamepad.xinput && ((_raw == 4106) || (_raw == 4107))
+        && ((_type = "gamepad button") || (_type == "gamepad axis")))
         {
             //XInput triggers (out of normal range)
             return true;
