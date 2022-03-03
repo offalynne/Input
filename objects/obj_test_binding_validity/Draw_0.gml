@@ -7,10 +7,10 @@ switch(input_player_source_get())
     default:                              _string += "Unknown";            break;
 }
 
+var _gap = string_repeat(" ", 6);
+
 _string += "\n";
 _string += "\n" + "Verb                    Valid Active";
-
-var _gap = string_repeat(" ", 6);
 
 _string += "\n" + "invalid high key            " + string(input_binding_is_valid(input_binding_get("invalid high key", INPUT_SOURCE.KEYBOARD_AND_MOUSE))) + _gap + string(input_check("invalid high key"));
 _string += "\n" + "invalid low key             " + string(input_binding_is_valid(input_binding_get("invalid low key",  INPUT_SOURCE.KEYBOARD_AND_MOUSE))) + _gap + string(input_check("invalid low key"));
