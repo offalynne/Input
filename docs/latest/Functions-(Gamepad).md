@@ -89,7 +89,7 @@ The following are values this function may return besides `"unknown"`:
 |:-------|
 |`"red"` `"green"` `"blue"` `"yellow"` `"pink"`|
 
-!> If you wish to use this function in production for drawing, you will need to specify [color values](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Drawing/Colour_And_Alpha/Colour_And_Alpha.htm) to match the returned string that suit your game's presentation needs and to meet appropriate [contrast specifications](https://webaim.org/resources/contrastchecker/) relative to your other graphics. Do not rely on color alone to specify button prompts.
+!> If you wish to use this function in production for drawing, you will need to specify [color values](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Drawing/Colour_And_Alpha/Colour_And_Alpha.htm) to match the returned string that suit your game's presentation needs and to meet appropriate [contrast specifications](https://webaim.org/resources/contrastchecker/) relative to your other graphics. Do not rely on color alone for button prompts.
 
 &nbsp;
 
