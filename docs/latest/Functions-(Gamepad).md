@@ -81,7 +81,7 @@
 |`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
 |`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html). What physical input this actually checks is determined by Input's own SDL remapping system|
 
-Results are returned for gamepads with a standard button color scheme. PS5 and Switch controllers for example will always return `"unknown"`. In addition, controls that are not color coded, for example Xbox shoulder buttons and GameCube X and Y buttons will return `"unknown"`. 
+Results are returned for gamepads with a standard button color scheme. PS5 and Switch controller inputs for example will always return `"unknown"`. In addition, controls that are not color coded, for example Xbox shoulder buttons and GameCube X and Y buttons will return `"unknown"`. 
 
 The following are values this function may return besides `"unknown"`:
 
