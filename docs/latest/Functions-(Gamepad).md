@@ -83,7 +83,7 @@
 
 Results are returned for gamepads with a standard button color scheme. PS5 and Switch controller inputs for example will always return `unknown`. In addition, controls that are not color coded, for example Xbox shoulder buttons and GameCube X and Y buttons will return `unknown`. 
 
-The following are values this function may return besides `unknown`:
+valid 
 
 |Results |
 |:-------|
@@ -106,7 +106,7 @@ The following are values this function may return besides `unknown`:
 
 Results are returned for labeled gamepad inputs with a standard name as per brand guidelines. Inputs with no on-device label, no brand-specified name (such as Xbox gamepad thumbsticks), or a label unsuited for use based on context (such as face buttons on single horizontal JoyCons) return `unknown`.
 
-The following are values this function may return besides `unknown`:
+The following are valid strings this function may return besides `unknown`:
 
 |Gamepad input                      |Results|
 |:----------------------------------|:------|
@@ -146,8 +146,8 @@ The following are values this function may return besides `unknown`:
 
 The following are valid strings this function may return besides `unknown`:
 
-|Results     |            |            |
-|------------|------------|------------| 
+|Results   |          |          |
+|----------|----------|----------| 
 |`switch`  |`switch joycon left` | `switch joycon right`|
 |`psx`     |`ps4`     |`ps5`     |
 |`xbox 360`|`xbox one`|`saturn`  |
@@ -165,15 +165,15 @@ The following are valid strings this function may return besides `unknown`:
 |--------------|--------------------------|------------------------------------------------------|
 |`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
 
-This function will return one of the following:
+The following are valid strings this function may return:
 
-|Results        |Gamepad type                                    |Presentation example |
-|---------------|------------------------------------------------|:-------------------:|
-|`none`       |Switch (single Joy-Con)                         |*N/A*|
-|`arrows`     |Switch (handheld, Pro Controller, dual Joy-Cons)|<img alt="Arrows art example" width="150" src="https://i.imgur.com/V9qOstK.png">|
-|`segments`   |PlayStation                                     |<img alt="Segments art example" width="150" src="https://i.imgur.com/Lmaya8O.png">|
-|`disc`       |Xbox 360, Saturn                                |<img alt="Disc art example" width="150" src="https://i.imgur.com/IO0DjVQ.png">|
-|`cross`      |Default                                         |<img alt="Cross art example" width="150" src="https://i.imgur.com/b7f8Gnj.png">|
+|Results    |Gamepad type                                    |Presentation example |
+|-----------|------------------------------------------------|:-------------------:|
+|`none`     |Switch (single Joy-Con)                         |*N/A*                |
+|`arrows`   |Switch (handheld, Pro Controller, dual Joy-Cons)|<img alt="Arrows art example" width="150" src="https://i.imgur.com/V9qOstK.png">  |
+|`segments` |PlayStation                                     |<img alt="Segments art example" width="150" src="https://i.imgur.com/Lmaya8O.png">|
+|`disc`     |Xbox 360, Saturn                                |<img alt="Disc art example" width="150" src="https://i.imgur.com/IO0DjVQ.png">    |
+|`cross`    |Default                                         |<img alt="Cross art example" width="150" src="https://i.imgur.com/b7f8Gnj.png">   |
 
 *Example art courtesy https://thoseawesomeguys.com/prompts ([CC0](https://creativecommons.org/share-your-work/public-domain/cc0))*
 
