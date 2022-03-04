@@ -165,7 +165,7 @@ The following are valid strings this function may return besides `unknown`:
 |--------------|--------------------------|------------------------------------------------------|
 |`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
 
-The following are valid strings this function may return:
+The following are valid strings this function may return besides `unknown`:
 
 |Results    |Gamepad type                                    |Presentation example |
 |-----------|------------------------------------------------|:-------------------:|
