@@ -32,7 +32,7 @@ function input_binding_is_valid(_binding, _player_index = 0)
     var _type  = _binding.type;
     var _value = _binding.value;
     
-    //Gamepad validation
+    //Gamepad-specific validations
     if (string_count("gamepad", _type))
     {
         var _gamepad_index = global.__input_players[_player_index].gamepad;
@@ -74,25 +74,18 @@ function input_binding_is_valid(_binding, _player_index = 0)
                 return ((_hat_mask == 1) || (_hat_mask == 2) || (_hat_mask == 4) || (_hat_mask == 8));
             }
         }
-        
-        switch(_type)
-        {
-            case "gamepad button":
-                return (_raw < gamepad_button_count(_gamepad_index));
-            break;
-
-            case "gamepad axis":
-                return (_raw < gamepad_axis_count(_gamepad_index));
-            break;
-            
-            default:
-                return false;
-            break;
-        }
     }
 
     switch(_type)
-    {
+    {            
+        case "gamepad button": //Validate button range
+            return (_raw < gamepad_button_count(_gamepad_index));
+        break;
+
+        case "gamepad axis": //Validate axis range
+            return (_raw < gamepad_axis_count(_gamepad_index));
+        break;
+            
         case "key":
             if (!global.__input_keyboard_allowed)
             {
