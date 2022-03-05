@@ -18,19 +18,24 @@
 #macro __INPUT_KEYBOARD_NORMATIVE (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch) ||  (os_type == os_uwp))
 #macro __INPUT_KEYBOARD_SUPPORT   (__INPUT_KEYBOARD_NORMATIVE || (os_type == os_android))
 
-#macro __INPUT_SDL2_SUPPORT     (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || (os_type == os_android)))
+#macro __INPUT_SDL2_SUPPORT  (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || (os_type == os_android)))
 
 #macro __INPUT_HOLD_THRESHOLD  0.2 //Minimum value from an axis for that axis to be considered activated at the gamepad layer. This is *not* the same as min/max thresholds for players
 
-//Extended constants
-#macro gp_guide    32789
-#macro gp_misc1    32790
-#macro gp_touchpad 32791
-#macro gp_paddle1  32792
-#macro gp_paddle2  32793
-#macro gp_paddle3  32794
-#macro gp_paddle4  32795
+//Valid keycode bounds
+#macro __INPUT_KEYCODE_MIN 8
+#macro __INPUT_KEYCODE_MAX 57343
 
+//Extended gamepad constants
+#macro gp_guide     32789
+#macro gp_misc1     32790
+#macro gp_touchpad  32791
+#macro gp_paddle1   32792
+#macro gp_paddle2   32793
+#macro gp_paddle3   32794
+#macro gp_paddle4   32795
+
+//Extended keycode constants
 #macro vk_meta1  91
 #macro vk_meta2  92
 
