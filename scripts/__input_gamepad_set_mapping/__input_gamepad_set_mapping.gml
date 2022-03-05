@@ -652,7 +652,7 @@ function __input_gamepad_set_mapping()
                 if (_matched == 4)
                 {
                     //Face button mapping matches normative PS4 gamepads, add `touchpad` button
-                    set_mapping(gp_touchpad, 13 + _offset, __INPUT_MAPPING.BUTTON, "touchpad");
+                    set_mapping(gp_touchpad, 13, __INPUT_MAPPING.BUTTON, "touchpad");
                 }
             }
             
