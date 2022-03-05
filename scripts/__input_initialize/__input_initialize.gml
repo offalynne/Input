@@ -208,10 +208,11 @@ function __input_initialize()
         SwitchJoyConRight: "switch joycon right",
         
         //Legacy
-        CommunitySNES:     "snes",
-        CommunitySaturn:   "saturn",
-        CommunityN64:      "n64",
-        CommunityGameCube: "gamecube",
+        CommunitySNES:         "snes",
+        CommunitySuperFamicom: "snes",
+        CommunitySaturn:       "saturn",
+        CommunityN64:          "n64",
+        CommunityGameCube:     "gamecube",
         
         Unknown: "unknown",
         unknown: "unknown",
