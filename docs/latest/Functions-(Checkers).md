@@ -180,6 +180,21 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 
 &nbsp;
 
+### `input_held_time(verb, [playerIndex])`
+
+*Returns:* Number, the length of time that a verb has been active (held)
+
+|Name           |Datatype                            |Purpose                                             |
+|---------------|------------------------------------|----------------------------------------------------|
+|`verb`         |[verb](Verbs-and-Alternate-Bindings)|[Verb](Verbs-and-Alternate-Bindings) to check       |
+|`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used|
+
+The units returned by this function is determined by `INPUT_TIMER_MILLISECONDS`.
+
+&nbsp;
+
+&nbsp;
+
 ### `input_is_analogue(verb, [playerIndex])`
 
 *Returns:* Boolean, if the verb was last triggered by an analogue input (a gamepad axis)
