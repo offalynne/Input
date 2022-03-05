@@ -125,13 +125,13 @@ function input_binding_scan_tick(_source, _player_index = 0)
                 #region Listeners
                 
                 if (global.__input_keyboard_default_defined 
-                && (_keyboard_key > 7) && (_keyboard_key < 57344)
+                && (_keyboard_key >= __INPUT_KEYCODE_MIN) && (_keyboard_key <= __INPUT_KEYCODE_MAX)
                 && !__input_key_is_ignored(_keyboard_key))
                 {
                     //Keyboard
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
                     _new_binding = new __input_class_binding();
-                    _new_binding.set_key(_keyboard_key);
+                    _new_binding.set_key(_keyboard_key, true);
                     _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
                     
                     //On Mac we manually set the binding label to the actual keyboard character if it's an alphabetic symbol
@@ -147,7 +147,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
                 }
                 else if (global.__input_mouse_default_defined && global.__input_mouse_allowed && !global.__input_mouse_blocked
                      && (_mouse_button != mb_none)
-                     && (!__INPUT_TOUCH_SUPPORT || (_mouse_button != mb_left))) //GM conflates LMB and touch -- don't rebind
+                     && (!__INPUT_TOUCH_SUPPORT || (_mouse_button != mb_left))) //GM conflates LMB and touch. Don't rebind
                 {
                     //Mouse buttons
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
@@ -180,8 +180,17 @@ function input_binding_scan_tick(_source, _player_index = 0)
                                         gp_start, gp_select, gp_stickl, gp_stickr,
                                         gp_axislh, gp_axislv, gp_axisrh, gp_axisrv];
                     
-                    if (INPUT_SDL2_ALLOW_GUIDE) array_push(_check_array, gp_guide);
-                    if (INPUT_SDL2_ALLOW_MISC1) array_push(_check_array, gp_misc1);
+                    //Extended buttons
+                    if (INPUT_SDL2_ALLOW_EXTENDED)
+                    {
+                        array_push(_check_array, gp_guide);
+                        array_push(_check_array, gp_misc1);
+                        array_push(_check_array, gp_touchpad);
+                        array_push(_check_array, gp_paddle1);
+                        array_push(_check_array, gp_paddle2);
+                        array_push(_check_array, gp_paddle3);
+                        array_push(_check_array, gp_paddle4);
+                    }
                     
                     var _i = 0;
                     repeat(array_length(_check_array))

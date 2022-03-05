@@ -1,17 +1,26 @@
-function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
+/// @param GMconstant
+/// @param rawIndex
+/// @param rawMappingType
+/// @param SDLname
+/// @param label
+/// @param color
+
+function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name, _label, _color) constructor
 {
     gm       = _gm;
     raw      = _raw;
     type     = _type;
     sdl_name = _sdl_name;
+    label    = _label;
+    color    = _color;
             
-    invert         = false;
-    clamp_negative = false;
-    clamp_positive = false;
-    reverse        = false;
-    limit_range    = false;
-    extend_range   = false;
-    hat_mask       = undefined;
+    invert           = false;
+    clamp_negative   = false;
+    clamp_positive   = false;
+    reverse          = false;
+    limited_range    = false;
+    extended_range   = false;
+    hat_mask         = undefined;
     
     //Hat-on-axis and split axis
     raw_negative = undefined;
@@ -80,8 +89,8 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
             break;
         }
         
-        if (limit_range)    value = 2*value - 1;
-        if (extend_range)   value = 0.5 + 0.5*value;
+        if (limited_range)  value = 2*value - 1; //Expand 0 -> 1 range to the full -1 -> +1
+        if (extended_range) value = 0.5 + 0.5*value; //Reduce -1 -> +1 range to 0 -> 1
         if (clamp_negative) value = clamp(value, -1, 0);
         if (clamp_positive) value = clamp(value,  0, 1);
         if (invert)         value = 1 - value;

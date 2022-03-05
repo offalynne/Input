@@ -26,11 +26,23 @@ function input_source_detect(_source, _gamepad = INPUT_NO_GAMEPAD)
                     ||  input_gamepad_check_pressed(_gamepad, gp_start)
                     ||  input_gamepad_check_pressed(_gamepad, gp_select)
                     ||  input_gamepad_check_pressed(_gamepad, gp_stickl)
-                    ||  input_gamepad_check_pressed(_gamepad, gp_stickr)
-                    ||  (INPUT_SDL2_ALLOW_GUIDE && input_gamepad_check(_gamepad, gp_guide))
-                    ||  (INPUT_SDL2_ALLOW_MISC1 && input_gamepad_check(_gamepad, gp_misc1)))
+                    ||  input_gamepad_check_pressed(_gamepad, gp_stickr))
                     {
                         return true;
+                    }
+                    
+                    if (INPUT_SDL2_ALLOW_EXTENDED)
+                    {
+                        if (input_gamepad_check_pressed(_gamepad, gp_guide)
+                        ||  input_gamepad_check_pressed(_gamepad, gp_misc1)
+                        ||  input_gamepad_check_pressed(_gamepad, gp_touchpad)
+                        ||  input_gamepad_check_pressed(_gamepad, gp_paddle1)
+                        ||  input_gamepad_check_pressed(_gamepad, gp_paddle2)
+                        ||  input_gamepad_check_pressed(_gamepad, gp_paddle3)
+                        ||  input_gamepad_check_pressed(_gamepad, gp_paddle4))
+                        {
+                            return true;                
+                        }
                     }
                 }
             }

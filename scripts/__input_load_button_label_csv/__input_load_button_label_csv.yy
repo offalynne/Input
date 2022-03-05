@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Players",
-    "path": "folders/Input/Players.yy",
+    "name": "(System)",
+    "path": "folders/Input/(System).yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_player_gamepad_get_dpad_style",
+  "name": "__input_load_button_label_csv",
   "tags": [],
   "resourceType": "GMScript",
 }

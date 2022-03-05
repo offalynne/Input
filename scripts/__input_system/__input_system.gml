@@ -1,5 +1,5 @@
-#macro __INPUT_VERSION "4.0.0"
-#macro __INPUT_DATE    "2021-12-07"
+#macro __INPUT_VERSION "4.1.0"
+#macro __INPUT_DATE    "2022-03-05"
 #macro __INPUT_DEBUG   false
 
 
@@ -14,19 +14,47 @@
 #macro __INPUT_ON_OPERAGX  (os_type == os_operagx)
 #macro __INPUT_ON_WEB      ((os_browser != browser_not_a_browser) || __INPUT_ON_OPERAGX)
 
-#macro __INPUT_KEYBOARD_SUPPORT (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch) || (os_type == os_uwp) || (os_type == os_android))
-#macro __INPUT_TOUCH_SUPPORT    (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch) || ((os_type == os_uwp) && uwp_device_touchscreen_available()))
+#macro __INPUT_TOUCH_SUPPORT      (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch) || ((os_type == os_uwp) && uwp_device_touchscreen_available()))
+#macro __INPUT_KEYBOARD_NORMATIVE (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch) ||  (os_type == os_uwp))
+#macro __INPUT_KEYBOARD_SUPPORT   (__INPUT_KEYBOARD_NORMATIVE || (os_type == os_android))
 
-#macro __INPUT_SDL2_SUPPORT     (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || (os_type == os_android)))
+#macro __INPUT_SDL2_SUPPORT  (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || (os_type == os_android)))
 
 #macro __INPUT_HOLD_THRESHOLD  0.2 //Minimum value from an axis for that axis to be considered activated at the gamepad layer. This is *not* the same as min/max thresholds for players
 
-//Extra constants
-#macro gp_guide    32789
-#macro gp_misc1    32790
-#macro vk_meta1    91
-#macro vk_meta2    92
-#macro vk_capslock 20
+//Valid keycode bounds
+#macro __INPUT_KEYCODE_MIN 8
+#macro __INPUT_KEYCODE_MAX 57343
+
+//Extended gamepad constants
+#macro gp_guide     32789
+#macro gp_misc1     32790
+#macro gp_touchpad  32791
+#macro gp_paddle1   32792
+#macro gp_paddle2   32793
+#macro gp_paddle3   32794
+#macro gp_paddle4   32795
+
+//Extended keycode constants
+#macro vk_meta1  91
+#macro vk_meta2  92
+
+#macro vk_capslock   20
+#macro vk_scrollock  145
+#macro vk_numlock    ((__INPUT_ON_APPLE && __INPUT_ON_WEB) ? 12 : 144)
+
+#macro vk_semicolon  186
+#macro vk_comma      188
+#macro vk_fslash     191
+#macro vk_bslash     220
+#macro vk_lbracket   219
+#macro vk_rbracket   221
+
+#macro vk_apostrophe  (((os_type == os_macosx) && !__INPUT_ON_WEB) ? 192 : 222)
+#macro vk_equals      (((os_type == os_macosx) && !__INPUT_ON_WEB) ?  24 : 187)
+#macro vk_hyphen      (((os_type == os_switch) || ((os_type == os_macosx) && !__INPUT_ON_WEB)) ? 109 : 189)
+#macro vk_backtick    ((os_type == os_macosx) ? 50 : ((os_type == os_linux) ? 223 : 192))
+#macro vk_period      ((os_type == os_switch) ? 110 : 190)
 
 // gp_axislh     = 32785             32769 = gp_face1
 // gp_axislv     = 32786             32770 = gp_face2
@@ -51,6 +79,11 @@
 // Plus custom buttons:
 // gp_guide      = 32789             32789 = gp_guide
 // gp_misc1      = 32790             32790 = gp_misc1
+// gp_touchpad   = 32791             32791 = gp_touchpad
+// gp_paddle1    = 32792             32792 = gp_paddle1
+// gp_paddle2    = 32793             32793 = gp_paddle2
+// gp_paddle3    = 32794             32794 = gp_paddle3
+// gp_paddle4    = 32795             32795 = gp_paddle4
 
 enum INPUT_SOURCE
 {
@@ -108,6 +141,12 @@ function __input_binding_overwrite(_from, _to)
     }
     
     return _to;
+}
+
+function __input_axis_is_directional(_axis)
+{
+    return ((_axis == gp_padu)   || (_axis == gp_padd)   || (_axis == gp_padl)   || (_axis == gp_padr)
+         || (_axis == gp_axislh) || (_axis == gp_axislv) || (_axis == gp_axisrh) || (_axis == gp_axisrv));
 }
 
 /// @param GUID

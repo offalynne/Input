@@ -30,7 +30,7 @@ DATA_SOURCES = {
                 "trim before": "k_eControllerType_LastController",
                 "trim after": "k_eControllerType_UnknownSteamController",
                 "match category": "(?<=k_eControllerType_)(.*)(?= = )",
-                "match id": "MAKE_CONTROLLER_ID\((.*),(.*)\),k_eControllerType_" + marker_id + ",",
+                "match id": "MAKE_CONTROLLER_ID\((.*),(.*)\),k_eControllerType_" + marker_id + ","
             },
 
             "Community SDL2 typelist": {
@@ -79,12 +79,27 @@ DATA_SOURCES = {
 
     "MAPS": {
         "datafile": "sdl2.txt",
-        "sources": { 
-
+        "sources": {
             "SDL2 Community map db": {
-
                 "source":  github_urlpath + "gabomdq/SDL_GameControllerDB/master/gamecontrollerdb.txt"
+            }
+        }
+    },
 
+    "LABELS": {
+        "datafile": "buttonlabels.csv",
+        "sources": {
+            "Gamepad button labels": {
+                "source":  github_urlpath + "JujuAdams/Input/community-data/button_labels.csv"
+            }
+        }
+    },
+
+    "COLORS": {
+        "datafile": "buttoncolors.csv",
+        "sources": { 
+            "Gamepad button colors": {
+                "source":  github_urlpath + "JujuAdams/Input/community-data/button_colors.csv"
             }
         }
     }

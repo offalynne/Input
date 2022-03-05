@@ -26,7 +26,7 @@ function __input_key_get_name(_key)
             case vk_backspace: return "backspace"; break;
             case vk_space:     return "space";     break;
             case vk_tab:       return "tab";       break;
-            case vk_enter:     return "enter";     break;      
+            case vk_enter:     return "enter";     break;
         }
         
         //Apple Web exceptions
@@ -52,7 +52,7 @@ function __input_key_get_name(_key)
         }
 
         //Desktop platform non-UTF8 keycodes
-        if (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_uwp) || (os_type == os_switch))
+        if (__INPUT_KEYBOARD_NORMATIVE)
         {
             //Common function row (F1 - F10)
             if ((_key >= vk_f1) && (_key <= vk_f10))

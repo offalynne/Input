@@ -1,8 +1,10 @@
-#macro INPUT_MAX_PLAYERS             4      //Maximum number of players that the game supports
-#macro INPUT_MAX_ALTERNATE_BINDINGS  2      //Maximum number of alternate bindings per verb per input source
-#macro INPUT_DEFAULT_MIN_THRESHOLD   0.3    //Default minimum threshold for gamepad axes. This value is used for detecting gamepad input in input_source_hotswap_tick() so make sure you set it above 0.0
-#macro INPUT_DEFAULT_MAX_THRESHOLD   1.0    //Default maximum threshold for gamepad axes
-#macro INPUT_2D_CLAMP                true   //Whether to clamp 2D input to a maximum distance of 1 unit (affects input_x(), input_y(), input_xy(), input_direction(), and input_distance())
+#macro INPUT_MAX_PLAYERS                     4      //Maximum number of players that the game supports
+#macro INPUT_MAX_ALTERNATE_BINDINGS          2      //Maximum number of alternate bindings per verb per input source
+#macro INPUT_DEFAULT_AXIS_MIN_THRESHOLD      0.3    //Default minimum threshold for directional (thumbstick) axes. This value is used for detecting gamepad input in input_source_hotswap_tick() so make sure you set it above 0.0
+#macro INPUT_DEFAULT_AXIS_MAX_THRESHOLD      1.0    //Default maximum threshold for directional (thumbstick) axes
+#macro INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD   0.02   //Default minimum threshold for non-directional (trigger) axes. This value is used for detecting gamepad input in input_source_hotswap_tick() so make sure you set it above 0.0
+#macro INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD   1.0    //Default maximum threshold for non-directional (trigger) axes
+#macro INPUT_2D_CLAMP                        true   //Whether to clamp 2D input to a maximum distance of 1 unit (affects input_x(), input_y(), input_xy(), input_direction(), and input_distance())
 
 #macro INPUT_TIMER_MILLISECONDS       false  //Set to true to use milliseconds instead of frames for input_check_*() functions
 #macro INPUT_REPEAT_DEFAULT_DELAY     10     //Default time before input_check_repeat() returns <true>
@@ -18,8 +20,9 @@
 
 #macro INPUT_SDL2_REMAPPING       true   //Whether to use our own SDL2 database to remap controllers
 #macro INPUT_SDL2_ALLOW_EXTERNAL  true   //Whether to allow external SDL2 database loading from environment variable %SDL_GAMECONTROLLERCONFIG%
-#macro INPUT_SDL2_ALLOW_GUIDE     false  //Whether to allow use of SDL2's "guide" binding, accessed using the gp_guide macro. This generally only works with DInput controllers
-#macro INPUT_SDL2_ALLOW_MISC1     false  //Whether to allow use of SDL2's "misc1" binding, accessed using the gp_misc1 macro. What this maps to varies from controller to controller
+#macro INPUT_SDL2_ALLOW_EXTENDED  false  //Whether to allow use of SDL2's extended bindings, accessed using the gp_* macros
+
+#macro INPUT_LOAD_BUTTON_LABELS_AND_COLORS  true //Whether to load external gamepad button label and color databases
 
 #macro INPUT_MAX_TOUCHPOINTS        11     //Maximum number of touch screen points to query. Touch devices only (excludes PlayStation)
 #macro INPUT_TOUCH_EDGE_DEADZONE    35     //Margin in pixels around the screen edge where gaining or losing a touch point will not register "pressed" or "released". Prevents false positives when dragging on to or off of the edge of a touchscreen.
@@ -55,6 +58,8 @@
 #macro INPUT_SDL2_DATABASE_PATH    "sdl2.txt"                //Path to the SDL2 database to read gamepad remapping definitions from
 #macro INPUT_CONTROLLER_TYPE_PATH  "controllertypes.csv"     //Path to the controller type database to read gamepad types from
 #macro INPUT_BLACKLIST_PATH        "controllerblacklist.csv" //Path to the controller blacklist database to read from
+#macro INPUT_BUTTON_LABEL_PATH     "buttonlabels.csv"        //Path to the button label database to read from
+#macro INPUT_BUTTON_COLOR_PATH     "buttoncolors.csv"        //Path to the button color database to read from
 
 
 

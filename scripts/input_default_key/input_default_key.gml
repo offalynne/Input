@@ -16,7 +16,7 @@ function input_default_key(_key, _verb, _alternate = 0)
     
     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
     var _binding = new __input_class_binding();
-    _binding.set_key(_key);
+    _binding.set_key(_key, false);
     
     global.__input_default_player.set_binding("keyboard and mouse", _verb, _alternate, _binding);
     
@@ -25,7 +25,7 @@ function input_default_key(_key, _verb, _alternate = 0)
     {
         //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
         var _binding = new __input_class_binding();
-        _binding.set_key(_key);
+        _binding.set_key(_key, false);
         
         global.__input_players[_p].set_binding("keyboard and mouse", _verb, _alternate, _binding);
         

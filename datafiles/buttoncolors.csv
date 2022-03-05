@@ -1,0 +1,17 @@
+SteamController,a:green,b:red,x:blue,y:yellow
+XBox360Controller,a:green,b:red,x:blue,y:yellow
+XBoxOneController,a:green,b:red,x:blue,y:yellow
+PS3Controller,a:blue,b:red,x:pink,y:green
+PS4Controller,a:blue,b:red,x:pink,y:green
+AppleController,a:red,b:green,x:yellow,y:blue
+MobileTouch,a:green,b:red,x:blue,y:yellow
+CommunityGameCube,a:green,rightshoulder:blue,rightx:yellow,righty:yellow,x:red
+CommunityXBox360,a:green,b:red,x:blue,y:yellow
+CommunityXBoxOne,a:green,b:red,x:blue,y:yellow
+CommunityPSX,a:blue,b:red,x:pink,y:green
+CommunityPS4,a:blue,b:red,x:pink,y:green
+CommunityN64,a:blue,b:green,rightx:yellow,righty:yellow,start:red
+CommunityDreamcast,a:red,b:blue,x:yellow,y:green
+CommunityOuya,a:green,b:red,x:blue,y:yellow
+CommunityNeoGeoMini,a:yellow,b:blue,x:red,y:green
+CommunitySuperFamicom,a:yellow,b:red,x:green,y:blue

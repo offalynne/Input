@@ -1,60 +1,4 @@
 /// This function should be called in the scope of a gamepad class
-
-//On boot, create a lookup table for simple types based on raw types
-global.__input_simple_type_lookup = {
-	
-    //Xbox
-    XBox360Controller: "xbox 360",
-    CommunityXBox360:  "xbox 360",
-    CommunityLikeXBox: "xbox 360",
-    SteamController:   "xbox 360", //Steam controller and Link app touch controls use Xb360 iconography
-    SteamControllerV2: "xbox 360", //TODO - revise for Deck if necessary
-    MobileTouch:       "xbox 360", 
-	
-    XBoxOneController: "xbox one",
-    CommunityXBoxOne:  "xbox one",
-    AppleController:   "xbox one", //  Apple uses XbOne iconography excepting shoulders, triggers, 'View' button
-    CommunityStadia:   "xbox one", // Stadia uses XbOne iconography excepting shoulders, triggers, 'View' button
-    CommunityLuna:     "xbox one", //   Luna uses XbOne iconography excepting 'View' button
-    
-    //PlayStation
-    PS3Controller: "psx",
-    CommunityPSX:  "psx",
-
-    PS4Controller: "ps4",
-    CommunityPS4:  "ps4",
-
-    PS5Controller: "ps5",
-    
-    //Switch
-    SwitchHandheld:            "switch", //Attached JoyCon pair or Switch Lite
-    SwitchJoyConPair:          "switch",
-    SwitchProController:       "switch",
-    XInputSwitchController:    "switch",
-    SwitchInputOnlyController: "switch",
-    CommunityLikeSwitch:       "switch",
-    Community8BitDo:           "switch", //8BitDo are Switch gamepads (exceptions are typed appropriatiely)
-
-    SwitchJoyConLeft:  "switch joycon left",
-    SwitchJoyConRight: "switch joycon right",
-	
-    //Legacy
-    CommunityGameCube: "gamecube",
-    CommunitySaturn:   "saturn",
-    CommunitySNES:     "snes",
-    CommunityN64:      "n64",
-
-    ////Retired first class types (see "xbox one"), remain identifiable via raw type
-    //AppleController: "apple",
-    //CommunityStadia: "stadia",
-    //CommunityLuna:   "luna",
-    //CommunityOuya:   "ouya",
-    
-    Unknown: "unknown",
-    unknown: "unknown",
-    UnknownNonSteamController: "unknown"
-}
-
 function __input_gamepad_set_type()
 {
     //If we're on a specific OS, set the gamepad type accordingly
@@ -107,18 +51,8 @@ function __input_gamepad_set_type()
         default:
             if (xinput == true)
             {
-                if (os_type == os_uwp)
-                {
-                    //UWP is used on newer hardware, including XB1 and XBX/S. For compliance, we should show Xbox One icons
-                    raw_type = "XBoxOneController";
-                    guessed_type = true;
-                }
-                else
-                {
-                    //XInput driver standardizes on X360, does not provide GUID
-                    raw_type = "XBox360Controller";
-                    guessed_type = true;
-                }
+                raw_type = "XBoxOneController";
+                guessed_type = true;
             }
             else if (variable_struct_exists(global.__input_raw_type_dictionary, vendor + product))
             {
@@ -160,6 +94,14 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunityLuna";
                 }
+                else if (string_count("ouya", _desc))
+                {
+                    raw_type = "CommunityOuya";
+                }
+                else if (string_count("steam", _desc))
+                {
+                    raw_type = "SteamController";
+                }
                 else if (string_count("ps5", _desc) || string_count("dualsense", _desc))
                 {
                     raw_type = "PS5Controller";
@@ -170,8 +112,7 @@ function __input_gamepad_set_type()
                 }
                 else if (string_count("playstation", _desc) || string_count("ps1", _desc) || string_count("ps2", _desc) || string_count("ps3", _desc) || string_count("dualshock", _desc))
                 {
-                    //Catch all remaining PlayStation gamepads as PSX
-                    raw_type = "CommunityPSX";
+                    raw_type = "CommunityPSX"; //Catch all remaining PlayStation gamepads as PSX
                 }
                 else if (string_count("for switch", _desc) || string_count("for nintendo switch", _desc) || string_count("switch controller", _desc) || string_count("lic pro controller", _desc))
                 {
@@ -193,7 +134,7 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunityLikeXBox";
                 }
-                else if (__INPUT_ON_MOBILE && __INPUT_ON_APPLE)
+                else if ((__INPUT_ON_MOBILE && __INPUT_ON_APPLE) || _desc == "mfi" || string_count("nimbus", _desc) || string_count("horipad ultimate", _desc))
                 {
                     raw_type = "AppleController";
                 }
@@ -202,6 +143,46 @@ function __input_gamepad_set_type()
                     raw_type = "Unknown";
                 }
             }
+            
+            #region Unique gamepad type overrides
+
+            //MFi on Windows (bad GUID)
+            if ((os_type == os_windows) && (vendor == "0d00") && (product == "0000")
+            && (gamepad_button_count(index) == 15) && (gamepad_axis_count(index) == 4) && (gamepad_hat_count(index) == 0))
+            {
+                 __input_trace("Overriding gamepad type to MFi");
+                description = "MFi Extended";
+                raw_type = "AppleController";
+                guessed_type = false;
+            }
+
+            //NeoGeo Mini (VID+PID conflict with common third party PS3 controller)
+            if ((vendor == "6325") && (product == "7505"))
+            {
+                if (((os_type == os_windows) && (gamepad_get_description(index) == "USB ") && (gamepad_button_count(index) == 13) && (gamepad_axis_count(index) == 4))
+                ||  ((os_type == os_linux  ) && (gamepad_get_description(index) == "GHICCod USB Gamepad"))
+                ||  ((os_type == os_macosx ) && (gamepad_get_guid(index) == "03000000632500007505000000020000")))
+                {
+                    __input_trace("Overriding gamepad type to NeoGeo Mini");
+                    description = "NeoGeo Mini";
+                    raw_type = "CommunityNeoGeoMini";
+                    guessed_type = false;
+                }
+            }
+            
+            //Nintendo Switch Online controllers on Linux (Identifiable on device name only)
+            if ((os_type == os_linux) && (vendor == "7e05") && (product == "1720"))
+            {
+                if (string_count("Mega Drive/Genesis", description))
+                {
+                    __input_trace("Overriding gamepad type to Saturn");
+                    raw_type = "CommunitySaturn";
+                    guessed_type = false;
+                }
+            }
+
+            #endregion
+            
         break;
     }
     
