@@ -73,6 +73,7 @@
     {"id":{"name":"input_gamepad_check","path":"scripts/input_gamepad_check/input_gamepad_check.yy",},"order":0,},
     {"id":{"name":"input_gamepad_check_pressed","path":"scripts/input_gamepad_check_pressed/input_gamepad_check_pressed.yy",},"order":1,},
     {"id":{"name":"input_gamepad_check_released","path":"scripts/input_gamepad_check_released/input_gamepad_check_released.yy",},"order":2,},
+    {"id":{"name":"input_clear_momentary","path":"scripts/input_clear_momentary/input_clear_momentary.yy",},"order":9,},
     {"id":{"name":"input_gamepad_get_description","path":"scripts/input_gamepad_get_description/input_gamepad_get_description.yy",},"order":3,},
     {"id":{"name":"input_gamepad_get_dpad_style","path":"scripts/input_gamepad_get_dpad_style/input_gamepad_get_dpad_style.yy",},"order":4,},
     {"id":{"name":"input_gamepad_get_type","path":"scripts/input_gamepad_get_type/input_gamepad_get_type.yy",},"order":5,},
