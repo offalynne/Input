@@ -55,6 +55,7 @@
     {"id":{"name":"input_cursor_prev_y","path":"scripts/input_cursor_prev_y/input_cursor_prev_y.yy",},"order":6,},
     {"id":{"name":"obj_test_load_mapping","path":"objects/obj_test_load_mapping/obj_test_load_mapping.yy",},"order":13,},
     {"id":{"name":"input_cursor_verbs","path":"scripts/input_cursor_verbs/input_cursor_verbs.yy",},"order":7,},
+    {"id":{"name":"input_held_time","path":"scripts/input_held_time/input_held_time.yy",},"order":12,},
     {"id":{"name":"input_cursor_x","path":"scripts/input_cursor_x/input_cursor_x.yy",},"order":8,},
     {"id":{"name":"input_cursor_y","path":"scripts/input_cursor_y/input_cursor_y.yy",},"order":9,},
     {"id":{"name":"input_default_gamepad_axis","path":"scripts/input_default_gamepad_axis/input_default_gamepad_axis.yy",},"order":0,},
