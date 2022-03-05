@@ -223,7 +223,7 @@ function __input_gamepad_set_mapping()
     && (gamepad_axis_value(index, 1) == gamepad_axis_value(index, 2))  //On new firmware axes 1 and 2 are same
     && (gamepad_axis_value(index, 4) == gamepad_axis_value(index, 5))) //On new firmware axes 4 and 5 are same
     {
-        __input_trace("Xbox One Wireless controller seems to be in a bad state, using alternate mapping. Trigger data is unavailable.");
+        __input_trace("Setting Xbox One Wireless controller to alternate mapping. Trigger data unavailable.");
         
         set_mapping(gp_face1, 0, __INPUT_MAPPING.BUTTON, "a");
         set_mapping(gp_face2, 1, __INPUT_MAPPING.BUTTON, "b");
@@ -264,6 +264,9 @@ function __input_gamepad_set_mapping()
 
     if ((raw_type == "AppleController") && (guessed_type == false) && (os_type == os_windows))
     {
+        //MFi controllers have unreliable VID+PID, type is set on other indicators
+        __input_trace("Setting MFi controller mapping");
+        
         set_mapping(gp_padl, 0, __INPUT_MAPPING.BUTTON, "dpleft");
         set_mapping(gp_padd, 1, __INPUT_MAPPING.BUTTON, "dpdown");
         set_mapping(gp_padr, 2, __INPUT_MAPPING.BUTTON, "dpright");
@@ -303,7 +306,9 @@ function __input_gamepad_set_mapping()
     
     if ((raw_type == "CommunityOuya") && (os_type == os_macosx))
     {
-        //Controller doesn't work at all in SDL, but buttons do in GM
+        //Ouya controller doesn't work at all in SDL on Mac, but buttons do in GM
+        __input_trace("Setting Ouya controller mapping");
+        
         set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
         set_mapping(gp_face2, 6, __INPUT_MAPPING.BUTTON, "b");
         set_mapping(gp_face3, 3, __INPUT_MAPPING.BUTTON, "x");
@@ -358,6 +363,60 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
 
         exit;
+    }
+
+    #endregion    
+    
+    #region Nintendo Switch Online Controllers on Linux
+
+    if ((vendor == "7e05") && (product == "1720") && (os_type == os_linux)
+    && (raw_type == "CommunitySaturn") && (guessed_type == false))
+    {
+        if (string_count("Genesis 3btn", description))
+        {
+            __input_trace("Overriding mapping to Mega Drive 3b");
+            
+            set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
+            set_mapping(gp_face2, 0, __INPUT_MAPPING.BUTTON, "b");
+            
+            set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.BUTTON, "righttrigger"); // C button
+            
+            set_mapping(gp_select, 7, __INPUT_MAPPING.BUTTON, "back");
+            set_mapping(gp_start,  9, __INPUT_MAPPING.BUTTON, "start");
+            
+            set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
+            set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
+            set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
+            set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+            
+            if (INPUT_SDL2_ALLOW_EXTENDED) { set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide"); }
+            
+            exit;
+        }
+        else if (string_count("Genesis 6btn", description))
+        {
+            __input_trace("Overriding mapping to Mega Drive 6b");
+            
+            set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
+            set_mapping(gp_face2, 0, __INPUT_MAPPING.BUTTON, "b");      
+            set_mapping(gp_face3, 6, __INPUT_MAPPING.BUTTON, "x");
+            set_mapping(gp_face4, 2, __INPUT_MAPPING.BUTTON, "y");
+            
+            set_mapping(gp_shoulderr,  4, __INPUT_MAPPING.BUTTON, "rightshoulder"); // Z button
+            set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.BUTTON, "righttrigger");  // C button
+            
+            set_mapping(gp_select, 7, __INPUT_MAPPING.BUTTON, "back");
+            set_mapping(gp_start,  9, __INPUT_MAPPING.BUTTON, "start");
+            
+            set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
+            set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
+            set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
+            set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+            
+            if (INPUT_SDL2_ALLOW_EXTENDED) { set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide"); }
+            
+            exit;
+        }       
     }
 
     #endregion
@@ -568,29 +627,19 @@ function __input_gamepad_set_mapping()
                     if ((_raw_type == __INPUT_MAPPING.AXIS) || (_raw_type == __INPUT_MAPPING.SPLIT_AXIS))
                     {
                         //Identify directional input
-                        var _is_directional = false;
-                        switch(_gm_constant)
-                        {
-                            case gp_padu:   case gp_padd: 
-                            case gp_padl:   case gp_padr:
-                            case gp_axislh: case gp_axislv:
-                            case gp_axisrh: case gp_axisrv:
-                                _is_directional = true;
-                            break;
-                        }
+                        var _is_directional = __input_axis_is_directional(_gm_constant);
                 
                         //Linux axis ranges affecting directional input are normalized after remapping
                         if ((os_type == os_linux) && _is_directional)
                         {    
-                            if (__INPUT_DEBUG) __input_trace("  (Limiting axis range)");
-                            _mapping.limit_range = true;
+                            if (__INPUT_DEBUG) __input_trace("  (Limited axis range)");
+                            _mapping.limited_range = true;
                         }
-                        else if ((os_type != os_linux) && !_is_directional
-                             && (gamepad_axis_count(index) >= _input_slot))
+                        else if ((os_type != os_linux) && !_is_directional && (gamepad_axis_count(index) >= _input_slot))
                         {
-                            //Nondirectional input uses full axis range (excepting Linux remappings and XInput)
-                            if (__INPUT_DEBUG) __input_trace("  (Extending axis range)");
-                            _mapping.extend_range = true;
+                            //Nondirectional axes (triggers) use full axis range (excepting Linux remappings and XInput)
+                            if (__INPUT_DEBUG) __input_trace("  (Extended axis range)");
+                            _mapping.extended_range = true;
                         }
                     }
                 }
@@ -599,7 +648,8 @@ function __input_gamepad_set_mapping()
             }
             
             //Reset Android keymapped dpad if necessary
-            if ((os_type == os_android) && (vendor != "") && (product != ""))
+            if ((os_type == os_android) && (gamepad_hat_count(index) != 0)
+            && ((vendor == "") && (product == "")))
             {
                 var _mapping = undefined;
                 var _dpad_array = [gp_padu, gp_padd, gp_padl, gp_padr];
@@ -652,6 +702,7 @@ function __input_gamepad_set_mapping()
                 if (_matched == 4)
                 {
                     //Face button mapping matches normative PS4 gamepads, add `touchpad` button
+                    if (__INPUT_DEBUG) __input_trace("  (Adding touchpad mapping)");
                     set_mapping(gp_touchpad, 13, __INPUT_MAPPING.BUTTON, "touchpad");
                 }
             }
@@ -662,6 +713,7 @@ function __input_gamepad_set_mapping()
                 //Guide button issues 2 reports: one a tick after release which is usually too fast for GM's
                 //interupt to catch, and another that's for long press that works after being held 1 second.
                 //SDL's map assigns the first but we switch to the second which will work reliably for GM.
+                if (__INPUT_DEBUG) __input_trace("  (Remapping guide button)");
                 set_mapping(gp_guide, 15, __INPUT_MAPPING.BUTTON, "guide");
             }
         }
