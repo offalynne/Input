@@ -10,7 +10,22 @@
 |-------|--------|--------------|
 |`value`|N/A     |Value to check|
 
-Useful for verifying if a value returned from [`input_binding_scan_tick()`](Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex) is a valid binding.
+Useful for verifying if a value returned from [`input_binding_scan_tick()`](Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex) or [`input_binding_get()`](Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate) is a binding.
+
+&nbsp;
+
+&nbsp;
+
+### `input_binding_is_valid(binding, [playerIndex])`
+
+*Returns:* Boolean, if the value is a valid binding for the specified player on the current platform
+
+|Name           |Datatype|Purpose                                                                                                                                                                                                                                                       |
+|---------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`binding`      |binding |Binding to check against, as returned by [`input_binding_scan_tick()`](Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex) or [`input_binding_get()`](Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate)|
+|`[playerIndex]`|integer |Player to validate against. If not specified, player 0 is targeted |
+
+Useful for verifying if a binding returned by [`input_binding_get()`](Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate) is valid for the specified player on the current platform, especially when set with [default binding functions](Functions-(Default-Bindings)).
 
 &nbsp;
 
