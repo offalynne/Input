@@ -91,7 +91,7 @@
 
 |Name   |Datatype|Purpose       |
 |-------|--------|--------------|
-|`state`|boolean |[Gamepad axis](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html) to bind|
+|`state`|boolean |Whether to swap A/B bindings internally|
 
 Swapping A/O with B/X is a global setting and, once set, cannot be changed during game operation. As a result, this function should be called once at the start of the game before [`input_default_gamepad_button()`](Functions-(Default-Bindings)#input_default_gamepad_buttonbutton-verb-alternate) and [`input_default_joycon_button()`](Functions-(Default-Bindings)#input_default_joycon_buttonbutton-verb-alternate).
 
