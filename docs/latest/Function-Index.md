@@ -47,6 +47,7 @@
 - [`input_check_long_pressed(verb, [playerIndex], [bufferDuration])`](Functions-(Checkers)#input_check_long_pressedverb-playerindex-bufferduration)
 - [`input_check_long_released(verb, [playerIndex], [bufferDuration])`](Functions-(Checkers)#input_check_long_releasedverb-playerindex-bufferduration)
 - [`input_value(verb, [playerIndex])`](Functions-(Checkers)#input_valueverb-playerindex)
+- [`input_held_time(verb, [playerIndex])`](Functions-(Checkers)#input_held_timeverb-playerIndex)
 - [`input_is_analogue(verb, [playerIndex])`](Functions-(Checkers)#input_is_analogueverb-playerindex)
 - [`input_check_press_most_recent([array], [playerIndex])`](Functions-(Checkers)#input_check_press_most_recentarray-playerindex)
 
@@ -61,6 +62,7 @@
 ### [Bindings](Functions-(Bindings))
 
 - [`input_value_is_binding(value)`](Functions-(Bindings)#input_value_is_bindingvalue)
+- [`input_binding_is_valid(binding, [playerIndex])`](Functions-(Bindings)#input_binding_is_validbinding-playerIndex)
 - [`input_binding_scan_tick([source], [playerIndex])`](Functions-(Bindings)#input_binding_scan_ticksource-playerindex)
 - [`input_binding_set(verb, binding, [playerIndex], [alternate])`](Functions-(Bindings)#input_binding_setverb-binding-playerindex-alternate)
 - [`input_binding_set_safe(verb, binding, [playerIndex], [alternate])`](Functions-(Bindings)#input_binding_set_safeverb-binding-playerindex-alternate)
@@ -91,6 +93,7 @@
 - [`input_axis_threshold_set(axis, min, max, [playerIndex])`](Functions-(Other)#input_axis_threshold_setaxis-min-max-playerindex)
 - [`input_axis_threshold_get(axis, [playerIndex])`](Functions-(Other)#input_axis_threshold_getaxis-playerindex)
 - [`input_consume(verb, [playerIndex])`](Functions-(Other)#input_consumeverb-playerindex)
+- [`input_clear_momentary(state)`](Functions-(Other)#input_clear_momentarystate)
 - [`input_guess_keyboard_layout()`](Functions-(Other)#input_guess_keyboard_layout)
 - [`input_verb_set(verb, value, [playerIndex])`](Functions-(Other)#input_verb_setverb-value-playerindex)
 - [`input_ignore_key_add(key)`](Functions-(Other)#input_ignore_key_addkey)
