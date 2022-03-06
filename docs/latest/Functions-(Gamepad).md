@@ -110,7 +110,7 @@ The following are valid strings this function may return besides `unknown`:
 
 |Gamepad input                      |Results|
 |:----------------------------------|:------|
-|Face&nbsp;buttons                  |`Circle` `Square` `Triangle` `A` `B` `C` `D` `E` `F` `O` `U` `X` `Y` `Z` `I` `II`|
+|Face&nbsp;buttons                  |`Cross` `Circle` `Square` `Triangle` `A` `B` `C` `D` `E` `F` `O` `U` `X` `Y` `Z` `I` `II`|
 |Shoulders&nbsp;&amp;&nbsp;triggers |`L` `R` `L1` `R1` `L2` `R2` `LB` `RB` `LT` `RT` `SL` `SR` `ZL` `ZR`|
 |Thumbsticks                        |`L3` `R3`|
 |Meta&nbsp;buttons                  |`Select` `Start` `-` `+` `Back` `View` `Menu` `Share` `Options` `Create` `Action` `Credit` `Run` `Home` `Capture` `Mic`|
