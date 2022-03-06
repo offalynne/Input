@@ -47,6 +47,20 @@ When a verb has been consumed, [check functions](Functions-(Checkers)) that targ
 
 &nbsp;
 
+### `input_clear_momentary(state)`
+
+*Returns:* N/A (`undefined`)
+
+|Name   |Datatype|Purpose       |
+|-------|--------|--------------|
+|`state`|boolean |Whether to clear all momentary input|
+
+Clear all pressed/released input checkers. This covers verbs as well as keyboard/mouse/gamepad direct checkers. Useful for [fixed timestep patterns](https://gafferongames.com/post/fix_your_timestep/) where momentary checks should only be handled for one cycle (for example [iota](https://github.com/JujuAdams/iota)).
+
+&nbsp;
+
+&nbsp;
+
 ### `input_guess_keyboard_layout()`
 
 *Returns:* String indicating keyboard layout hint, `QWERTY` `AZERTY` or `QWERTZ`
