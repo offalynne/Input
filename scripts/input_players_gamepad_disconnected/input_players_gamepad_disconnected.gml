@@ -10,7 +10,7 @@ function input_players_gamepad_disconnected()
         {
             if (global.__input_gamepad_disconnections[_g] == global.__input_players[_p].gamepad)
             {
-                //Add player if their gamepad index matches a disconnection
+                //Add player index if their gamepad index matches a disconnection
                 array_push(_players, global.__input_gamepad_disconnections[_g]);
                 break;
             }
