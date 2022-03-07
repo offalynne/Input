@@ -251,6 +251,8 @@ function input_tick()
 	    var _device_change = max(0, gamepad_get_device_count() - array_length(global.__input_gamepads))
 	    repeat(_device_change) array_push(global.__input_gamepads, undefined);
 		
+        global.__input_gamepad_disconnections = [];
+        
 	    var _g = 0;
 	    repeat(array_length(global.__input_gamepads))
 	    {
@@ -283,6 +285,7 @@ function input_tick()
 	                __input_trace("Gamepad ", _g, " disconnected");
 					
 	                global.__input_gamepads[@ _g] = undefined;
+	                array_push(global.__input_gamepad_disconnections, _g);
 					
 	                //Also report gamepad changes for any active players
 	                var _p = 0;
