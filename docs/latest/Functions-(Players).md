@@ -38,6 +38,8 @@
 
 Use the macro `INPUT_NO_GAMEPAD` as the `gamepad` argument to indicate the player has no connected gamepad.
 
+!> Consider allowing Input to handle player gamepad assignment automatically using the [source assignment functions](Functions-(Source-Assignment)), or for single player, using [source hotswapping](Functions-(Source-Assignment)?id=input_source_hotswap_tickplayerindex). Avoid handling player gamepad assignment manually, as a gamepads may be disconnected or [blocklisted](Controller-Mapping?id=controller-blacklist), and on many platforms [may not enumerate in a predictable order](Device-Quirks?id=gamepad).
+
 &nbsp;
 
 &nbsp;
