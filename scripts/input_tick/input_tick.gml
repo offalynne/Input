@@ -3,6 +3,7 @@ function input_tick()
     var _any_changed = false;
     
     global.__input_frame++;
+    global.__input_cleared = false;
     
 	
 	

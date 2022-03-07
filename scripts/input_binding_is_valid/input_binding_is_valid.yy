@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Players",
-    "path": "folders/Input/Players.yy",
+    "name": "Bindings",
+    "path": "folders/Input/Bindings.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_player_gamepad_get_dpad_style",
+  "name": "input_binding_is_valid",
   "tags": [],
   "resourceType": "GMScript",
 }

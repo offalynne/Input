@@ -1,7 +1,7 @@
 /// @param binding
 function input_mouse_check_released(_binding)
 {    
-    if (!global.__input_mouse_allowed)
+    if (!global.__input_mouse_allowed || global.__input_cleared)
     {
         return false;
     }

@@ -35,7 +35,7 @@ function input_check_double_released(_verb, _player_index = 0, _buffer_duration 
         return undefined;
     }
     
-    if (_verb_struct.consumed) return false;
+    if (_verb_struct.consumed || global.__input_cleared) return false;
     
     if (_buffer_duration <= 0)
     {

@@ -3,6 +3,8 @@ var _string = "";
 _string += "(held) Confirm = " + string(input_check_long("confirm")) + "\n";
 _string += "(held) Cancel = " + string(input_check_long("cancel")) + "\n";
 _string += "(held) [Confirm, Cancel] = " + string(input_check_long(["confirm", "cancel"])) + "\n";
+_string += "(held time) Confirm = " + string(input_held_time("confirm")) + "\n";
+_string += "(held time) Cancel = " + string(input_held_time("cancel")) + "\n";
 _string += "\n";
 
 _string += "(pressed) Confirm = " + string(input_check_long_pressed("confirm")) + "\n";

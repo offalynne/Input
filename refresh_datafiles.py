@@ -90,7 +90,7 @@ DATA_SOURCES = {
         "datafile": "buttonlabels.csv",
         "sources": {
             "Gamepad button labels": {
-                "source":  github_urlpath + "JujuAdams/Input/community-data/buttonlabels.csv"
+                "source":  github_urlpath + "JujuAdams/Input/community-data/button_labels.csv"
             }
         }
     },
@@ -99,7 +99,7 @@ DATA_SOURCES = {
         "datafile": "buttoncolors.csv",
         "sources": { 
             "Gamepad button colors": {
-                "source":  github_urlpath + "JujuAdams/Input/community-data/buttoncolors.csv"
+                "source":  github_urlpath + "JujuAdams/Input/community-data/button_colors.csv"
             }
         }
     }
