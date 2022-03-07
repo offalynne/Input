@@ -53,7 +53,9 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Gamepads are sometimes misreported and often over-reported on the platform so [device blocking](Controller-Mapping#controller-blacklist) is particularly useful.
 
-- On Ubuntu, gamepad joystick axes are not signed. GameMaker attempts to automatically sign joystick axes when they connect, but this change is discarded when gamepads are remapped. Input automatically adjusts joystick axes' range on remapping in order to resolve this.
+- Gamepad indices do not enumerate predicatbly. Use source assignment or source hotswap features to avoid assigning players a gamepad index manually.
+
+- Gamepad joystick axes are not signed. GameMaker attempts to automatically sign joystick axes when they connect, but this change is discarded when gamepads are remapped. Input automatically adjusts joystick axes' range on remapping in order to resolve this.
 
 ### Steam
 
@@ -76,6 +78,8 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 - Mouse input is partially functional. GameMaker uses the first mouse "device" for both touchscreen input and mouse, so there is no certain way to determine which is in use. Mouse support includes right click and updates when the mouse is moved. By default mouse input is off (see below).
 
 - Switch touchscreen input is fully functional supporting 10 touch points. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Configuration). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
+
+- The first gamepad index is reserved for physically attached Joy-Cons, or the builtin controls on a Switch Lite.
 
 ### PS4 and PS5
 
@@ -107,6 +111,8 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Many gamepads are not fully supported by iOS due to limited support offered by Apple. At the time of writing, XBox One and PlayStation 4 wireless gamepads are supported by iOS, as are MFi gamepads. For an up-to-date list, please check [Apple's communications](https://support.apple.com/en-us/HT210414).
 
+- Gamepad indices start at 1 instead of 0. Use source assignment or source hotswap features to avoid assigning players a gamepad index manually.
+
 - Users may find the Select (aka Share or View) gamepad button to cause unintended screenshot and video recording actions. These can be toggled on the OS at _Settings > General > Game Controller_
 
 ### Android
@@ -120,6 +126,8 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 - [Game controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping. Specifically, the runtime is using an old version of the identifying string used to differentiate gamepads, resulting in the feature being marginally limited on the platform.
 
 - Gamepads are sometimes misreported and often over-reported on the platform so [device blocking](Controller-Mapping#controller-blacklist) is particularly useful.
+
+- Gamepad indices do not enumerate predicatbly. Use source assignment or source hotswap features to avoid assigning players a gamepad index manually.
 
 - Due to GameMaker's handling of the Android gamepad stack, some gamepads do not have functional dpad mappings.
 
