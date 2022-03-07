@@ -46,17 +46,23 @@ On many platforms, gamepad indices do not enumerate predicatbly. Use source assi
 
 - On PS4 and PS5, `gp_select` is defined as clicking the touchpad on PlayStation 4 and PlayStation 5 which is GameMaker's default behaviour. This is in contrast to other other platforms where `gp_select` is defined as the SHARE button. [`input_binding_get_name()`](Functions-(Bindings)#input_binding_get_namebinding) will return the correct device-appropriate string.
 
+- On Switch, the first gamepad index is reserved for physically attached Joy-Cons, or the builtin controls on a the Lite model.
+
 ### Gamepad on Mobile
 
 !> The following is valid for native builds only. If you are using HTML5 for your game but are running on a desktop device, please see the [HTML5 section](#gamepad-on-html5) for information on platform-specific quirks.
 
 - Many gamepads are not fully supported by iOS due to limited support offered by Apple. At the time of writing, XBox One and PlayStation 4 wireless gamepads are supported by iOS, as are MFi gamepads. For an up-to-date list, please check [Apple's communications](https://support.apple.com/en-us/HT210414).
 
-- On iOS, users may find the Select (aka Share or View) gamepad button to cause unintended screenshot and video recording actions. These can be toggled on the OS at _Settings > General > Game Controller_
+- On iOS, users may find the Select (aka Share or View) gamepad button to cause unintended screenshot and video recording actions. These can be toggled on the OS at _Settings > General > Game Controller_.
+
+- On iOS, gamepad indices start at 1 instead of 0.
 
 - On Android, [Game controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping. Specifically, the runtime is using an old version of the identifying string used to differentiate gamepads, resulting in the feature being marginally limited on the platform.
 
 - On Android, gamepads are sometimes misreported and often over-reported, so [device blocking](Controller-Mapping#controller-blacklist) is particularly useful.
+
+- On Android, gamepad indices do not enumerate predictably.
 
 - On Android, due to GameMaker's handling of the Android gamepad stack, some gamepads do not have functional dpad mappings.
 
