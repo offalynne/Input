@@ -53,7 +53,7 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Gamepads are sometimes misreported and often over-reported on the platform so [device blocking](Controller-Mapping#controller-blacklist) is particularly useful.
 
-- Gamepad indices do not enumerate predicatbly. Use source assignment or source hotswap features to avoid assigning players a gamepad index manually.
+- Gamepad indices do not enumerate predictably. Use source assignment or source hotswap features to avoid assigning players a gamepad index manually.
 
 - Gamepad joystick axes are not signed. GameMaker attempts to automatically sign joystick axes when they connect, but this change is discarded when gamepads are remapped. Input automatically adjusts joystick axes' range on remapping in order to resolve this.
 
@@ -127,7 +127,7 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Gamepads are sometimes misreported and often over-reported on the platform so [device blocking](Controller-Mapping#controller-blacklist) is particularly useful.
 
-- Gamepad indices do not enumerate predicatbly. Use source assignment or source hotswap features to avoid assigning players a gamepad index manually.
+- Gamepad indices do not enumerate predictably. Use source assignment or source hotswap features to avoid assigning players a gamepad index manually.
 
 - Due to GameMaker's handling of the Android gamepad stack, some gamepads do not have functional dpad mappings.
 
