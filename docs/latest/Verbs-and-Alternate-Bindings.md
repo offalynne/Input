@@ -8,7 +8,7 @@ Verbs are the basic input actions you want to expose to a player; this includes 
 
 When using Input, you'll need to define your own verb names. A verb name can be either a **string** or a **number**. It is recommend that you use a string to store your verb names, but you're welcome to use whatever method suits you (such as using an enum).
 
-[Several functions](Functions-(Default-Bindings)) also include an optional `[alternate]` argument. You can think of alternate bindings as binding "slots" for each verb. This argument allows you to bind multiple similar inputs to the same verb for the same type of [input source](Input-Sources). This is used, for example, to allow both WASD and arrow keys, or both dpad and thumbstick to simultaneously control player movement. `[alternate]` defaults to `0`, but greater values allow you to read and write alternate binding slots.
+[Several functions](Functions-(Default-Bindings)) also include an optional `[alternate]` argument. You can think of alternate bindings as binding "slots" for each verb. This argument allows you to bind multiple similar inputs to the same verb for the same type of [input source](Input-Sources). This is used, for example, to allow both WASD and arrow keys, or both dpad and thumbstick to simultaneously control player movement. `[alternate]` defaults to `0`, while greater values allow you to read and write alternate binding slots.
 
 -----
 
