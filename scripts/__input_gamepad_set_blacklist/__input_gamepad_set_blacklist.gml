@@ -61,27 +61,39 @@ function __input_gamepad_set_blacklist()
         }
     }    
     
-     //Block devices presenting in bad states on Windows
-    if ((_os == "windows") && !blacklisted)
+     //Block devices presenting in bad states
+    if (!blacklisted)
     {
         var _a = gamepad_axis_count(index); 
         var _b = gamepad_button_count(index);
         
-        //Switch Pro Controller over USB
-        if ((vendor == "7e05") && (product == "0920") && (_b == 23))
+        if (_os == "windows")
         {
-            blacklisted = true;
-        }
-        else
-        {
-            //PS3 Controller
-            if ((vendor == "4c05") && (product == "6802"))
+            //Switch Pro Controller over USB
+            if ((vendor == "7e05") && (product == "0920") && (_b == 23))
             {
-                if (((_a == 4) && (_b == 19)) //Bad driver
-                ||  ((_a == 8) && (_b == 0))) //DsHidMini gyro
+                blacklisted = true;
+            }
+            else
+            {
+                //PS3 Controller
+                if ((vendor == "4c05") && (product == "6802"))
                 {
-                    blacklisted = true;
+                    if (((_a == 4) && (_b == 19)) //Bad driver
+                    ||  ((_a == 8) && (_b == 0))) //DsHidMini gyro
+                    {
+                        blacklisted = true;
+                    }
                 }
+            }
+        
+        }
+        else if (_os == "mac")
+        {
+            //Steam Virtual Controller (Spoofs unsupported Xbox 360 Gamepad)
+            if (guid == "030000005e0400008e02000000000000")
+            {
+                blacklisted = true;
             }
         }
         
@@ -90,5 +102,4 @@ function __input_gamepad_set_blacklist()
             __input_trace("Warning! Controller manually blacklisted (VID+PID \"", vendor + product, "\", ", _b, " buttons and ", _a, " axes)");
         }
     }
-
 }
