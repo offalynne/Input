@@ -57,7 +57,7 @@ function __input_resolve_steam_config()
             //Steam Input is configured to use controller type "PlayStation" (1)
             global.__input_simple_type_lookup[$ "SteamController"] = "unknown";
         }
-        else if (((_bitmask & 8) != 0) && (_steam_switch_ab != "") 
+        else if (((_bitmask & 8) != 0)      && (_steam_switch_ab != "") 
              && is_string(_steam_switch_ab) && (_steam_switch_ab == "0"))
              {
                 //Steam Input is configured to use controller type "Switch" (8)
