@@ -23,9 +23,8 @@ function __input_resolve_steam_config()
             var _blocklist_os = global.__input_blacklist_dictionary[$ "linux"];
             var _blocklist_category = (is_struct(_blocklist_os) ? _blocklist_os[$ "vid+pid"] : undefined);
                 
-            if (is_struct(_blocklist_category) && (array_length(_block_array) == 1))
+            if (is_struct(_blocklist_category) && (array_length(_block_array) > 0))
             {
-                var _category_struct = _blocklist_category;
                 var _value = "";
                 var _vid = "";
                 var _pid = "";
@@ -40,7 +39,7 @@ function __input_resolve_steam_config()
                         _vid = string_copy(_value,  5, 2) + string_copy(_value,  3, 2);
                         _pid = string_copy(_value, 12, 2) + string_copy(_value, 10, 2);
                         
-                        _category_struct[$ _vid + _pid] = true;        
+                        _blocklist_category[$ _vid + _pid] = true;        
                     }
     
                     ++_count;
