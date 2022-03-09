@@ -95,8 +95,8 @@ function __input_initialize()
     //Gamepad structs contain remapping information and current button state
     global.__input_gamepads = array_create(gamepad_get_device_count(), undefined);
     
-    //Array of recently disconnected gamepads. Each element is a gamepad index.
-    global.__input_gamepad_disconnections = [];
+    //Whether a gamepad device has been disconnected
+    global.__input_gamepad_disconnection = false;
     
     //Our database of SDL2 definitions, used for the aforementioned remapping information
     global.__input_sdl2_database = {

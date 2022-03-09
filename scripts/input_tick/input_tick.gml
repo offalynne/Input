@@ -39,7 +39,7 @@ function input_tick()
                 {
                     //Get recent active touch
                     global.__input_pointer_durations[_i] += delta_time;
-                    if (_touch_index == undefined || (global.__input_pointer_durations[_i] < global.__input_pointer_durations[_touch_index]))
+                    if ((_touch_index == undefined) || (global.__input_pointer_durations[_i] < global.__input_pointer_durations[_touch_index]))
                     {
                         _touch_index = _i;
                     }
@@ -252,7 +252,7 @@ function input_tick()
 	    var _device_change = max(0, gamepad_get_device_count() - array_length(global.__input_gamepads))
 	    repeat(_device_change) array_push(global.__input_gamepads, undefined);
 		
-        global.__input_gamepad_disconnections = [];
+        global.__input_gamepad_disconnection = false;
         
 	    var _g = 0;
 	    repeat(array_length(global.__input_gamepads))
@@ -285,8 +285,12 @@ function input_tick()
 	                //Remove our gamepad handler
 	                __input_trace("Gamepad ", _g, " disconnected");
 					
-	                global.__input_gamepads[@ _g] = undefined;
-	                array_push(global.__input_gamepad_disconnections, _g);
+                    if (is_struct(global.__input_gamepads[@ _g]) && !global.__input_gamepads[@ _g].blacklisted)
+                    {
+                        global.__input_gamepad_disconnection = true;
+                    }
+                    
+                    global.__input_gamepads[@ _g] = undefined;
 					
 	                //Also report gamepad changes for any active players
 	                var _p = 0;

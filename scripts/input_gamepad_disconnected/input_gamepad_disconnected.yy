@@ -6,7 +6,7 @@
     "path": "folders/Input/Gamepads (Direct).yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_gamepads_disconnected",
+  "name": "input_gamepad_disconnected",
   "tags": [],
   "resourceType": "GMScript",
 }
