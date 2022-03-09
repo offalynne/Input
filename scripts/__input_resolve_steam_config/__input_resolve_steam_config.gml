@@ -46,7 +46,7 @@ function __input_resolve_steam_config()
                     ++_count;
                 }
 
-                show_message_async(_blocklist_category); //TODO remove
+                show_message_async(_blocklist_category); //TODO confirm and remove
             }
         }
         
