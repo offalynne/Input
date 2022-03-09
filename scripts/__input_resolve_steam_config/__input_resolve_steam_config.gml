@@ -50,7 +50,7 @@ function __input_resolve_steam_config()
             }
         }
         
-        //Unset Steam Input Virtual Controller's gamepad type if unidentifiable
+        //Unset Steam Input Virtual Controller's gamepad type if it is unidentifiable
         var _bitmask = real(_steam_configs);                
         if ((_bitmask & 1) != 0)
         {
