@@ -25,19 +25,19 @@ function __input_resolve_steam_config()
             if ((is_struct(_blocklist_os)) && (is_struct(_blocklist_category)) && (array_length(_block_array) == 1))
             {
                 var _category_struct = _blocklist_category;
-                var _cell = "";
-                var _vid  = "";
-                var _pid  = "";
+                var _value = "";
+                var _vid = "";
+                var _pid = "";
 
                 var _count = 0;
                 repeat(array_length(_block_array[0]))
                 {
-                    _cell = _block_array[0][_count];
+                    _value = _block_array[0][_count];
     
-                    if (string_length(_cell) == 13)
+                    if (string_length(_value) == 13)
                     {
-                        _vid = string_copy(_cell,  5, 2) + string_copy(_cell,  3, 2);
-                        _pid = string_copy(_cell, 12, 2) + string_copy(_cell, 10, 2);
+                        _vid = string_copy(_value,  5, 2) + string_copy(_value,  3, 2);
+                        _pid = string_copy(_value, 12, 2) + string_copy(_value, 10, 2);
                         _category_struct[$ _vid + _pid] = true;        
                     }
     
