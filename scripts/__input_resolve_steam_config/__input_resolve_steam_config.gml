@@ -39,13 +39,14 @@ function __input_resolve_steam_config()
                     {
                         _vid = string_copy(_value,  5, 2) + string_copy(_value,  3, 2);
                         _pid = string_copy(_value, 12, 2) + string_copy(_value, 10, 2);
+                        
                         _category_struct[$ _vid + _pid] = true;        
                     }
     
                     ++_count;
                 }
 
-                show_message_async(_blocklist_category);
+                show_message_async(_blocklist_category); //TODO remove
             }
         }
         
