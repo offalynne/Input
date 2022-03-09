@@ -2,9 +2,10 @@ function __input_resolve_steam_config()
 {
     if ((os_type != os_linux) || __INPUT_ON_WEB) exit;
 
-    var _steam_environ   = environment_get_variable("SteamEnv");
-    var _steam_no_path   = environment_get_variable("LD_LIBRARY_PATH");
-    var _steam_configs   = environment_get_variable("EnableConfiguratorSupport");
+    var _steam_environ = environment_get_variable("SteamEnv");
+    var _steam_no_path = environment_get_variable("LD_LIBRARY_PATH");
+    var _steam_configs = environment_get_variable("EnableConfiguratorSupport");
+    
     var _steam_blocklist = environment_get_variable("SDL_GAMECONTROLLER_IGNORE_DEVICES");
     var _steam_switch_ab = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");
 
