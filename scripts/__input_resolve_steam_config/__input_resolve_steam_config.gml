@@ -44,7 +44,7 @@ function __input_resolve_steam_config()
                     ++_count;
                 }
 
-                show_message(_blocklist_category);
+                show_message_async(_blocklist_category);
             }
         }
         
