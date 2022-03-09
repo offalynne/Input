@@ -55,6 +55,7 @@ function __input_resolve_steam_config()
         if ((_bitmask & 1) != 0)
         {
             //Steam Input is configured to use controller type "PlayStation" (1)
+            //Virtual Controllers may be Steam Controller, Touch Controls, Deck, or PlayStation
             global.__input_simple_type_lookup[$ "SteamController"] = "unknown";
         }
         else if (((_bitmask & 8) != 0)      && (_steam_switch_ab != "") 
@@ -62,6 +63,7 @@ function __input_resolve_steam_config()
              {
                 //Steam Input is configured to use controller type "Switch" (8)
                 //XInput format label swap for Switch buttons (A/B, X/Y) is disabled
+                //Virtual Controllers may be Steam Controller, Touch Controls, Deck, or Switch
                 global.__input_simple_type_lookup[$ "SteamController"] = "unknown";
             }
     }
