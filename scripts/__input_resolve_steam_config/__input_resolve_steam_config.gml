@@ -50,7 +50,7 @@ function __input_resolve_steam_config()
             }
         }
         
-        //Set the Steam Input Virtual Controller's underlying gamepad type if identifiable
+        //Set the Steam Input Virtual Controller's gamepad type if identifiable
         var _bitmask = real(_steam_configs);                
         if ((_bitmask & 1) != 0)
         {
