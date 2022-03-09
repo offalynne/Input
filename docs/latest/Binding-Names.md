@@ -49,7 +49,6 @@ A list of possible return strings for [`input_binding_get_name`](Functions-(Bind
 | `gamepad thumbstick r left`  | `gamepad thumbstick r right` |
 | `gamepad thumbstick r up`    | `gamepad thumbstick r down`  |
 | `gamepad thumbstick l click` | `gamepad thumbstick r click` |
-| `gamepad thumbstick l click` | `gamepad thumbstick r click` |
 | `gamepad paddle 1`           | `gamepad paddle 2`           |
 | `gamepad paddle 3`           | `gamepad paddle 4`           |
 | `gamepad touchpad click`     | `gamepad unknown`            |
