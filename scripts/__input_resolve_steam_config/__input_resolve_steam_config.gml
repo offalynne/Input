@@ -21,9 +21,9 @@ function __input_resolve_steam_config()
         {
             var _block_array = __input_csv_to_array(_steam_blocklist, ",", "");                    
             var _blocklist_os = global.__input_blacklist_dictionary[$ "linux"];
-            var _blocklist_category = _blocklist_os[$ "vid+pid"];
+            var _blocklist_category = (is_struct(_blocklist_category) ? _blocklist_os[$ "vid+pid"] : undefined);
                 
-            if (is_struct(_blocklist_os) && is_struct(_blocklist_category) && (array_length(_block_array) == 1))
+            if (is_struct(_blocklist_category) && (array_length(_block_array) == 1))
             {
                 var _category_struct = _blocklist_category;
                 var _value = "";
