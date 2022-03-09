@@ -57,7 +57,7 @@ function __input_initialize()
     //Disallow keyboard bindings on specified platforms unless explicitly enabled
     global.__input_keyboard_allowed = (__INPUT_KEYBOARD_SUPPORT && ((os_type != os_android) || INPUT_ANDROID_KEYBOARD_ALLOWED) && ((os_type != os_switch) || INPUT_SWITCH_KEYBOARD_ALLOWED));
 
-    //Disallow mouse bindings on unsupported platforms (unless explicitly enabled)
+    //Disallow mouse bindings on specified platforms (unless explicitly enabled)
     global.__input_mouse_allowed = !(__INPUT_ON_PS || __INPUT_ON_XDK || (__INPUT_TOUCH_SUPPORT && !INPUT_TOUCH_POINTER_ALLOWED));
 
     //Whether mouse is blocked due to Window focus state
@@ -135,7 +135,8 @@ function __input_initialize()
         global.__input_sdl2_look_up_table.paddle4  = gp_paddle4;
     }
     
-    //Load the SDL2 database
+    #region Gamepad mapping database
+    
     if (!__INPUT_SDL2_SUPPORT || !INPUT_SDL2_REMAPPING)
     {
         __input_trace("Skipping loading SDL database");
@@ -172,6 +173,10 @@ function __input_initialize()
             }
         }
     }
+    
+    #endregion
+    
+    #region Gamepad type identification
     
     //Lookup table for simple gamepad types based on raw types
     global.__input_simple_type_lookup = {
@@ -223,12 +228,9 @@ function __input_initialize()
         CommunityUnknown: "unknown"
     }
     
-    //Prevent Steam Input from aliasing PlayStation and Switch controllers as Xbox
-    __input_resolve_steam_config();
-    
     //Parse controller type database
-    global.__input_raw_type_dictionary = { none : "XBox360Controller" };
-    
+    global.__input_raw_type_dictionary = { none : "XBoxOneController" };
+        
     //Load the controller type database
     if (!__INPUT_ON_DESKTOP && (os_type != os_android))
     {
@@ -243,8 +245,12 @@ function __input_initialize()
         __input_trace("Warning! \"", INPUT_CONTROLLER_TYPE_PATH, "\" not found in Included Files");
     }
     
+    #endregion
+    
+    #region Gamepad device blocklist
+    
     global.__input_blacklist_dictionary = {};
-    if (__INPUT_ON_CONSOLE || __INPUT_ON_WEB)
+    if (!__INPUT_SDL2_SUPPORT)
     {
         __input_trace("Skipping loading controller blacklist database");
     }
@@ -260,6 +266,10 @@ function __input_initialize()
             __input_trace("Warning! \"", INPUT_BLACKLIST_PATH, "\" not found in Included Files");
         }
     }
+    
+    #endregion
+    
+    #region Gamepad button labels and colors
     
     global.__input_button_label_dictionary = {};
     global.__input_button_color_dictionary = {};
@@ -284,6 +294,10 @@ function __input_initialize()
             __input_trace("Warning! \"", INPUT_BUTTON_COLOR_PATH, "\" not found in Included Files");
         }
     }
+    
+    #endregion
+
+    #region Ignored keys
     
     //Keyboard ignore level 1+
     if (INPUT_IGNORE_RESERVED_KEYS_LEVEL > 0)
@@ -380,6 +394,11 @@ function __input_initialize()
             input_ignore_key_add(0xB7); //Media key
         }
     }
+    
+    #endregion
+    
+    //Handle Steam Input
+    __input_resolve_steam_config();
     
     //By default GameMaker registers double click (or tap) as right mouse button
     //We want to be able to identify the actual mouse buttons correctly, and have our own double-input handling
