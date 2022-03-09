@@ -36,6 +36,7 @@ function __input_resolve_steam_config()
     
                     if (string_length(_value) == 13)
                     {
+                        //Reverse endianness
                         _vid = string_copy(_value,  5, 2) + string_copy(_value,  3, 2);
                         _pid = string_copy(_value, 12, 2) + string_copy(_value, 10, 2);
                         
