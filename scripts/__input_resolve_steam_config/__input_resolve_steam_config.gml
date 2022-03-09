@@ -15,7 +15,7 @@ function __input_resolve_steam_config()
     && is_string(_steam_environ) && is_string(_steam_configs)
     && (_steam_environ == "1"  ) && (_steam_configs == string_digits(_steam_configs)))
     {
-        //If unset (as by default), GM accesses controllers meant to be blocked
+        //If library path is unset, GM accesses controllers meant to be blocked
         //We can fix this by adding the device ignore list to our own blocklist
         if ((_steam_no_path == "") && (_steam_blocklist != "") && is_string(_steam_blocklist))
         {
