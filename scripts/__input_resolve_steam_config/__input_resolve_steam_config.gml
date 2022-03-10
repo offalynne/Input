@@ -87,8 +87,8 @@ function __input_resolve_steam_config()
         if (!_steam_ps && !_steam_generic 
         && (!_steam_switch || ((_steam_switch_ab != "") && is_string(_steam_switch_ab) && (_steam_switch_ab == "1"))))
         {
-            //Remaining configurations are in the sytle of XInput
-            //Steam Controller, Link Touch Control, Deck and Xbox
+            //Remaining configurations are in the style of XInput:
+            //Steam Controller, Link Touch Control, Deck, and Xbox
             global.__input_simple_type_lookup[$ "CommunitySteam"] = "xbox one";
         }
     }
