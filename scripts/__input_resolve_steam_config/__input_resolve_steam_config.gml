@@ -47,36 +47,37 @@ function __input_resolve_steam_config()
             
         //Get Steam Input configuration
         var _bitmask = real(_steam_configs);
+        
+        var _steam_ps     = (_bitmask & 1);
+        var _steam_xbox   = (_bitmask & 2);
+        var _steam_dinput = (_bitmask & 4);
+        var _steam_switch = (_bitmask & 8);
                 
         //If library path is unset, GM accesses controllers meant to be blocked
         //We can fix this by adding the Steam Config types to our own blocklist
         if (_steam_libpath == "")
         {
-            if ((_bitmask & 1) != 0)
+            if (_steam_ps)
             {
-                //Steam Input type 'PlayStation'
                 global.__input_steam_blocklist[$ "psx"] = true;
                 global.__input_steam_blocklist[$ "ps4"] = true;
                 global.__input_steam_blocklist[$ "ps5"] = true;
             }
             
-            if ((_bitmask & 2) != 0)
+            if (_steam_xbox)
             {
-                //Steam Input type 'Xbox'
                 global.__input_steam_blocklist[$ "xbox"    ] = true;
                 global.__input_steam_blocklist[$ "xbox 360"] = true;
                 global.__input_steam_blocklist[$ "xbox one"] = true;
             }
             
-            if ((_bitmask & 8) != 0)
+            if (_steam_switch)
             {
-                //Steam Input type 'Switch'
                 global.__input_steam_blocklist[$ "switch"] = true;
             }
             
-            if ((_bitmask & 4) != 0)
+            if (_steam_dinput)
             {
-                //Steam Input type 'DInput' (or, "everything else")
                 global.__input_steam_blocklist[$ "switch joycon left" ] = true;
                 global.__input_steam_blocklist[$ "switch joycon right"] = true;
                 global.__input_steam_blocklist[$ "snes"               ] = true;
@@ -88,17 +89,14 @@ function __input_resolve_steam_config()
         }
         
         //Unset Steam Input virtual controller's gamepad type if it is unidentifiable        
-        if ((_bitmask & 1) != 0)
+        if (_steam_ps)
         {
-            //Steam Input is configured to use controller type "PlayStation" (1)
             //Virtual Controllers may be Steam Controller, Steam Link Touch Controls, Steam Deck or PlayStation
             global.__input_simple_type_lookup[$ "SteamController"] = "unknown";
         }
         else
-        if (((_bitmask & 8) != 0)    && (_steam_switchx != "") 
-        && is_string(_steam_switchx) && (_steam_switchx == "0"))
+        if (_steam_switch && (_steam_switchx != "") && is_string(_steam_switchx) && (_steam_switchx == "0"))
         {
-            //Steam Input is configured to use controller type "Switch" (8)
             //XInput style label swap for Switch buttons (A/B, X/Y) is disabled
             //Virtual controllers may be Steam Controller, Steam Link Touch Controls, Steam Deck or Switch
             global.__input_simple_type_lookup[$ "SteamController"] = "unknown";
