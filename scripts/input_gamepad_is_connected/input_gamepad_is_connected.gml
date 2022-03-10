@@ -1,10 +1,10 @@
 /// @param gamepadIndex
 
-function input_gamepad_is_connected(_gamepad_index)
+function input_gamepad_is_connected(_index)
 {
-    if (_gamepad_index < 0) return false;
+    if (_index < 0) return false;
     
-    var _gamepad = global.__input_gamepads[_gamepad_index];
+    var _gamepad = global.__input_gamepads[_index];
     if (is_struct(_gamepad))
     {
         if (_gamepad.blacklisted)
@@ -13,5 +13,5 @@ function input_gamepad_is_connected(_gamepad_index)
         }
     }
     
-    return gamepad_is_connected(_gamepad_index);
+    return gamepad_is_connected(_index);
 }
