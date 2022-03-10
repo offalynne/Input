@@ -59,13 +59,14 @@ function __input_resolve_steam_config()
             //Virtual Controllers may be Steam Controller, Steam Link Touch Controls, Steam Deck or PlayStation
             global.__input_simple_type_lookup[$ "SteamController"] = "unknown";
         }
-        else if (((_bitmask & 8) != 0)      && (_steam_switch_ab != "") 
-             && is_string(_steam_switch_ab) && (_steam_switch_ab == "0"))
-             {
-                //Steam Input is configured to use controller type "Switch" (8)
-                //XInput format label swap for Switch buttons (A/B, X/Y) is disabled
-                //Virtual Controllers may be Steam Controller, Steam Link Touch Controls, Steam Deck or Switch
-                global.__input_simple_type_lookup[$ "SteamController"] = "unknown";
-            }
+        else
+        if (((_bitmask & 8) != 0)      && (_steam_switch_ab != "") 
+        && is_string(_steam_switch_ab) && (_steam_switch_ab == "0"))
+        {
+            //Steam Input is configured to use controller type "Switch" (8)
+            //XInput format label swap for Switch buttons (A/B, X/Y) is disabled
+            //Virtual Controllers may be Steam Controller, Steam Link Touch Controls, Steam Deck or Switch
+            global.__input_simple_type_lookup[$ "SteamController"] = "unknown";
+       }
     }
 }
