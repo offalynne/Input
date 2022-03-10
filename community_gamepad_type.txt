@@ -1,3 +1,4 @@
+28de,11ff,CommunitySteam // Steam Virtual Controller
 3250,1002,CommunityLikeXBox // Atari VCS Modern Controller
 04b4,2411,CommunityLikeXBox // Flydigi Vader 2
 04b4,2412,CommunityLikeXBox // Flydigi Vader 2 Pro
