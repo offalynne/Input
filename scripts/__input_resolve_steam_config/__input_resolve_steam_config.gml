@@ -15,7 +15,11 @@ function __input_resolve_steam_config()
         _blacklist_id = (is_struct(_blacklist_os)? _blacklist_os[$ "vid+pid"] : undefined);
     }
     
-    if (is_struct(_blacklist_id))
+    if (!is_struct(_blacklist_id))
+    {
+        exit;
+    }
+    else
     {
         //Block the Steam Virtual controller
         _blacklist_id[$ _id] = true;
