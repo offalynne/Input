@@ -61,13 +61,6 @@ function __input_gamepad_set_blacklist()
         }
     }
     
-    //Check Steam blocklist to see if this gampead is banned
-    if (is_struct(global.__input_steam_blocklist) && variable_struct_exists(global.__input_steam_blocklist, simple_type))
-    {
-        __input_trace("Warning! Controller is blacklisted (Steam Input, found by simple type \"", simple_type, "\")");
-        blacklisted = true;
-    }
-    
     //Block devices presenting in bad states
     if (!blacklisted)
     {
