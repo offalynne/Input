@@ -90,7 +90,7 @@ function __input_resolve_steam_config()
         //Unset Steam Input virtual controller's gamepad type if it is unidentifiable        
         if (_steam_ps)
         {
-            //Virtual Controllers may be Steam Controller, Steam Link Touch Controls, Steam Deck or PlayStation
+            //Virtual controllers may be Steam Controller, Steam Link Touch Controls, Steam Deck or PlayStation
             global.__input_simple_type_lookup[$ "SteamController"] = "unknown";
         }
         else
