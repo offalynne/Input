@@ -34,7 +34,6 @@ function __input_resolve_steam_config()
 
     var _steam_environ   = environment_get_variable("SteamEnv");
     var _steam_configs   = environment_get_variable("EnableConfiguratorSupport");
-    var _steam_switch_ab = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");
 
     //Test for Steam environment and valid Steam Input config
     if ((_steam_environ != "") && is_string(_steam_environ) && (_steam_environ == "1")
@@ -84,8 +83,10 @@ function __input_resolve_steam_config()
             global.__input_steam_blocklist[$ "switch"] = true;
         }
     
-        if (!_steam_ps && !_steam_generic 
-        && (!_steam_switch || ((_steam_switch_ab != "") && is_string(_steam_switch_ab) && (_steam_switch_ab == "1"))))
+        //Check for irreducible type configurations
+        var _steam_switch_labels = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");
+        if ((!_steam_switch  || ((_steam_switch_labels != "") && is_string(_steam_switch_labels) && (_steam_switch_labels == "1")))
+        &&   !_steam_generic &&  !_steam_ps)
         {
             //Remaining configurations are in the style of XInput:
             //Steam Controller, Link Touch Control, Deck, and Xbox
