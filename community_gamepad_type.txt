@@ -177,7 +177,7 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 20d6,89e5,CommunityXBox360 // Moga 2
 27f8,0bbf,CommunityXBox360 // Razer Kishi
 2f24,b700,CommunityXBox360 // ESM 9110
-2f24,0091,CommunityXbox360 // ESM 9101
+2f24,0091,CommunityXBox360 // ESM 9101
 3631,0c86,CommunityXBox360 // Unknown XBox360
 6258,3320,CommunityXBox360 // Unknown XBox360
 6258,4720,CommunityXBox360 // Unknown XBox360
