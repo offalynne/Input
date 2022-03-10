@@ -3,31 +3,33 @@ function __input_resolve_steam_config()
     //Native Linux or MacOS
     if (!((os_type == os_linux) || (os_type == os_macosx)) || __INPUT_ON_WEB) exit;
 
+    //Define the virtual controller's identity
     var _os = ((os_type == os_macosx)? "macos"    : "linux");
     var _id = ((os_type == os_macosx)? "5e048e02" : "de28ff11");
     
+    //Access the blacklist
     var _blacklist_os = (is_struct(global.__input_blacklist_dictionary)? global.__input_blacklist_dictionary[$ _os] : undefined);
     var _blacklist_id = (is_struct(_blacklist_os)? _blacklist_os[$ "vid+pid"] : undefined);
     
     if (is_struct(_blacklist_os) && (_blacklist_id == undefined))
     {
-        //Add blacklist category if missing
+        //Add 'Vendor + Product' category
         _blacklist_os[$ "vid+pid"] = {};
         _blacklist_id = (is_struct(_blacklist_os)? _blacklist_os[$ "vid+pid"] : undefined);
     }
     
     if (!is_struct(_blacklist_id))
     {
-        //Unable to access blacklist
+        //Done, unable to access blacklist
         exit;
     }
     else
     {
-        //Blacklist the Steam Virtual controller
+        //Blacklist the Steam virtual controller
         _blacklist_id[$ _id] = true;
     }
     
-    //Virtual controllers are nonfunctional on Mac
+    //Done, virtual controllers are nonfunctional on Mac
     if (os_type == os_macosx) exit;
 
     var _steam_environ = environment_get_variable("SteamEnv");
@@ -36,14 +38,14 @@ function __input_resolve_steam_config()
     var _steam_switchx = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");
 
     //Test for Steam environment and valid Steam Input config
-    //Check empty string first to prevent EnVar related crash
+    //Check empty string first to prevent envar related crash
     if ((_steam_environ != "") && is_string(_steam_environ) && (_steam_environ == "1")
     &&  (_steam_configs != "") && is_string(_steam_configs) && (_steam_configs == string_digits(_steam_configs)))
     {
-        //Remove Steam Virtual controller block
+        //Remove Steam virtual controller from blocklist
         variable_struct_remove(_blacklist_id, _id);
             
-        //Get Steam Input settings
+        //Get Steam Input configuration
         var _bitmask = real(_steam_configs);
                 
         //If library path is unset, GM accesses controllers meant to be blocked
@@ -85,7 +87,7 @@ function __input_resolve_steam_config()
             }
         }
         
-        //Unset Steam Input Virtual Controller's gamepad type if it is unidentifiable        
+        //Unset Steam Input virtual controller's gamepad type if it is unidentifiable        
         if ((_bitmask & 1) != 0)
         {
             //Steam Input is configured to use controller type "PlayStation" (1)
@@ -98,7 +100,7 @@ function __input_resolve_steam_config()
         {
             //Steam Input is configured to use controller type "Switch" (8)
             //XInput style label swap for Switch buttons (A/B, X/Y) is disabled
-            //Virtual Controllers may be Steam Controller, Steam Link Touch Controls, Steam Deck or Switch
+            //Virtual controllers may be Steam Controller, Steam Link Touch Controls, Steam Deck or Switch
             global.__input_simple_type_lookup[$ "SteamController"] = "unknown";
         }
     }
