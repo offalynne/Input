@@ -85,7 +85,7 @@ function __input_resolve_steam_config()
     
         //Check for irreducible type configurations
         var _steam_switch_labels = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");
-        if ((!_steam_switch  || ((_steam_switch_labels != "") && is_string(_steam_switch_labels) && (_steam_switch_labels == "1")))
+        if ((!_steam_switch || ((_steam_switch_labels != "") && is_string(_steam_switch_labels) && (_steam_switch_labels == "1")))
         &&   !_steam_generic &&  !_steam_ps)
         {
             //Remaining configurations are in the style of XInput:
