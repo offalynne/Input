@@ -43,15 +43,54 @@ function __input_resolve_steam_config()
         //Remove Steam virtual controller from blocklist
         variable_struct_remove(_blacklist_id, _id);
         
-        //Unset Steam Input virtual controller's gamepad type if it is unidentifiable        
+        //Get Steam Input configuration
         var _bitmask = real(_steam_configs);
-        if (_bitmask & 1)
+        
+        var _steam_ps     = (_bitmask & 1);
+        var _steam_xbox   = (_bitmask & 2);
+        var _steam_dinput = (_bitmask & 4);
+        var _steam_switch = (_bitmask & 8);
+                
+        //If overlay is not loaded, GM accesses controllers meant to be blocked
+        //We can fix this by adding the Steam Config types to our own blocklist
+        if (_steam_ps)
+        {
+            global.__input_steam_blocklist[$ "psx"] = true;
+            global.__input_steam_blocklist[$ "ps4"] = true;
+            global.__input_steam_blocklist[$ "ps5"] = true;
+        }
+            
+        if (_steam_xbox)
+        {
+            global.__input_steam_blocklist[$ "xbox"    ] = true;
+            global.__input_steam_blocklist[$ "xbox 360"] = true;
+            global.__input_steam_blocklist[$ "xbox one"] = true;
+        }
+            
+        if (_steam_switch)
+        {
+            global.__input_steam_blocklist[$ "switch"] = true;
+        }
+            
+        if (_steam_dinput)
+        {
+            global.__input_steam_blocklist[$ "switch joycon left" ] = true;
+            global.__input_steam_blocklist[$ "switch joycon right"] = true;
+            global.__input_steam_blocklist[$ "snes"               ] = true;
+            global.__input_steam_blocklist[$ "saturn"             ] = true;
+            global.__input_steam_blocklist[$ "n64"                ] = true;
+            global.__input_steam_blocklist[$ "gamecube"           ] = true;
+            global.__input_steam_blocklist[$ "unknown"            ] = true;
+        }
+        
+        //Unset Steam Input virtual controller's gamepad type if it is unidentifiable        
+        if (_steam_ps)
         {
             //Virtual controllers may be Steam Controller, Steam Link Touch Controls, Steam Deck or PlayStation
             global.__input_simple_type_lookup[$ "SteamController"] = "unknown";
         }
         else
-        if ((_bitmask & 8) && (_steam_switch_ab != "") && is_string(_steam_switch_ab) && (_steam_switch_ab == "0"))
+        if (_steam_switch && (_steam_switch_ab != "") && is_string(_steam_switch_ab) && (_steam_switch_ab == "0"))
         {
             //XInput style label swap for Switch buttons (A/B, X/Y) is not enabled
             //Virtual controllers may be Steam Controller, Steam Link Touch Controls, Steam Deck or Switch

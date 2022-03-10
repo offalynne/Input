@@ -268,6 +268,8 @@ function __input_initialize()
         }
     }
     
+    global.__input_steam_blocklist = {};
+    
     #endregion
     
     #region Gamepad button labels and colors
