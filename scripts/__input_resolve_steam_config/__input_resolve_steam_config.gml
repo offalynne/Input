@@ -1,5 +1,6 @@
 function __input_resolve_steam_config()
 {
+    //Linux or Mac
     if (!((os_type == os_linux) || (os_type == os_macosx)) || __INPUT_ON_WEB) exit;
 
     var _os = ((os_type == os_macosx)? "macos"    : "linux");
@@ -17,14 +18,16 @@ function __input_resolve_steam_config()
     
     if (!is_struct(_blacklist_id))
     {
+        //Unable to access blacklist
         exit;
     }
     else
     {
-        //Block the Steam Virtual controller
+        //Blacklist the Steam Virtual controller
         _blacklist_id[$ _id] = true;
     }
     
+    //Virtual controllers are nonfunctional on Mac
     if (os_type == os_macosx) exit;
 
     var _steam_environ = environment_get_variable("SteamEnv");
