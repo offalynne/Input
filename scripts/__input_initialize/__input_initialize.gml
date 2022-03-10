@@ -192,7 +192,6 @@ function __input_initialize()
         CommunityXBoxOne:  "xbox one",
         CommunityLikeXBox: "xbox one",
         SteamControllerV2: "xbox one",
-        CommunitySteam:    "xbox one",
         AppleController:   "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
         CommunityStadia:   "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
         CommunityLuna:     "xbox one", //  Luna uses Xbox One iconography excepting 'View' button
@@ -225,8 +224,11 @@ function __input_initialize()
         
         Unknown: "unknown",
         unknown: "unknown",
+        
         UnknownNonSteamController: "unknown",
-        CommunityUnknown: "unknown"
+        CommunityUnknown:          "unknown",
+        CommunitySteam:            "unknown"
+
     }
     
     //Parse controller type database
