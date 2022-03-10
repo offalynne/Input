@@ -1,6 +1,6 @@
 function __input_resolve_steam_config()
 {
-    if (((os_type != os_linux) || (os_type != os_macosx)) || __INPUT_ON_WEB) exit;
+    if (!((os_type = os_linux) || (os_type = os_macosx)) || __INPUT_ON_WEB) exit;
 
     var _os = ((os_type == os_macosx)? "mac" : "linux");
     var _id = ((os_type == os_macosx)? "5e048e02" : "de28ff11");
