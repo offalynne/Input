@@ -13,14 +13,14 @@ function __input_resolve_steam_config()
     
     if (is_struct(_blacklist_os) && (_blacklist_id == undefined))
     {
-        //Add 'Vendor + Product' category
+        //Add 'Vendor ID + Product ID' category
         _blacklist_os[$ "vid+pid"] = {};
         _blacklist_id = (is_struct(_blacklist_os)? _blacklist_os[$ "vid+pid"] : undefined);
     }
     
     if (!is_struct(_blacklist_id))
     {
-        //Done, unable to access blacklist
+        //Unable to access blacklist
         exit;
     }
     else
@@ -29,13 +29,12 @@ function __input_resolve_steam_config()
         _blacklist_id[$ _id] = true;
     }
     
-    //Done, virtual controllers are nonfunctional on Mac
+    //Virtual controllers are nonfunctional on Mac
     if (os_type == os_macosx) exit;
 
-    var _steam_environ = environment_get_variable("SteamEnv");
-    var _steam_overlay = environment_get_variable("LD_PRELOAD");
-    var _steam_configs = environment_get_variable("EnableConfiguratorSupport");
-    var _steam_switchx = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");
+    var _steam_environ   = environment_get_variable("SteamEnv");
+    var _steam_configs   = environment_get_variable("EnableConfiguratorSupport");
+    var _steam_switch_ab = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");
 
     //Test for Steam environment and valid Steam Input config
     if ((_steam_environ != "") && is_string(_steam_environ) && (_steam_environ == "1")
@@ -43,58 +42,16 @@ function __input_resolve_steam_config()
     {
         //Remove Steam virtual controller from blocklist
         variable_struct_remove(_blacklist_id, _id);
-            
-        //Get Steam Input configuration
-        var _bitmask = real(_steam_configs);
-        
-        var _steam_ps     = (_bitmask & 1);
-        var _steam_xbox   = (_bitmask & 2);
-        var _steam_dinput = (_bitmask & 4);
-        var _steam_switch = (_bitmask & 8);
-                
-        //If overlay is not loaded, GM accesses controllers meant to be blocked
-        //We can fix this by adding the Steam Config types to our own blocklist
-        if ((_steam_overlay == "") || !is_string(_steam_overlay) || (!string_count("gameoverlayrenderer", _steam_overlay)))
-        {
-            if (_steam_ps)
-            {
-                global.__input_steam_blocklist[$ "psx"] = true;
-                global.__input_steam_blocklist[$ "ps4"] = true;
-                global.__input_steam_blocklist[$ "ps5"] = true;
-            }
-            
-            if (_steam_xbox)
-            {
-                global.__input_steam_blocklist[$ "xbox"    ] = true;
-                global.__input_steam_blocklist[$ "xbox 360"] = true;
-                global.__input_steam_blocklist[$ "xbox one"] = true;
-            }
-            
-            if (_steam_switch)
-            {
-                global.__input_steam_blocklist[$ "switch"] = true;
-            }
-            
-            if (_steam_dinput)
-            {
-                global.__input_steam_blocklist[$ "switch joycon left" ] = true;
-                global.__input_steam_blocklist[$ "switch joycon right"] = true;
-                global.__input_steam_blocklist[$ "snes"               ] = true;
-                global.__input_steam_blocklist[$ "saturn"             ] = true;
-                global.__input_steam_blocklist[$ "n64"                ] = true;
-                global.__input_steam_blocklist[$ "gamecube"           ] = true;
-                global.__input_steam_blocklist[$ "unknown"            ] = true;
-            }
-        }
         
         //Unset Steam Input virtual controller's gamepad type if it is unidentifiable        
-        if (_steam_ps)
+        var _bitmask = real(_steam_configs);
+        if (_bitmask & 1)
         {
             //Virtual controllers may be Steam Controller, Steam Link Touch Controls, Steam Deck or PlayStation
             global.__input_simple_type_lookup[$ "SteamController"] = "unknown";
         }
         else
-        if (_steam_switch && (_steam_switchx != "") && is_string(_steam_switchx) && (_steam_switchx == "0"))
+        if ((_bitmask & 8) && (_steam_switch_ab != "") && is_string(_steam_switch_ab) && (_steam_switch_ab == "0"))
         {
             //XInput style label swap for Switch buttons (A/B, X/Y) is not enabled
             //Virtual controllers may be Steam Controller, Steam Link Touch Controls, Steam Deck or Switch
