@@ -33,7 +33,7 @@ function __input_resolve_steam_config()
     if (os_type == os_macosx) exit;
 
     var _steam_environ = environment_get_variable("SteamEnv");
-    var _steam_libpath = environment_get_variable("LD_LIBRARY_PATH");
+    var _steam_overlay = environment_get_variable("LD_PRELOAD");
     var _steam_configs = environment_get_variable("EnableConfiguratorSupport");
     var _steam_switchx = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");
 
@@ -52,9 +52,9 @@ function __input_resolve_steam_config()
         var _steam_dinput = (_bitmask & 4);
         var _steam_switch = (_bitmask & 8);
                 
-        //If library path is unset, GM accesses controllers meant to be blocked
+        //If overlay is not loaded, GM accesses controllers meant to be blocked
         //We can fix this by adding the Steam Config types to our own blocklist
-        if (_steam_libpath == "")
+        if ((_steam_overlay == "") || !is_string(_steam_overlay) || (!string_count("gameoverlayrenderer", _steam_overlay)))
         {
             if (_steam_ps)
             {
