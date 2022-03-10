@@ -59,9 +59,16 @@ function __input_gamepad_set_blacklist()
             
             ++_i;
         }
-    }    
+    }
     
-     //Block devices presenting in bad states
+    //Check Steam blocklist to see if this gampead is banned
+    if (is_struct(global.__input_steam_blocklist) && variable_struct_exists(global.__input_steam_blocklist, simple_type))
+    {
+        __input_trace("Warning! Controller is blacklisted (Steam Input, found by simple type \"", simple_type, "\")");
+        blacklisted = true;
+    }
+    
+    //Block devices presenting in bad states
     if (!blacklisted)
     {
         var _a = gamepad_axis_count(index); 
@@ -87,14 +94,6 @@ function __input_gamepad_set_blacklist()
                 }
             }
         
-        }
-        else if (_os == "mac")
-        {
-            //Steam Virtual Controller (Spoofs unsupported Xbox 360 Gamepad)
-            if (guid == "030000005e0400008e02000000000000")
-            {
-                blacklisted = true;
-            }
         }
         
         if (blacklisted)

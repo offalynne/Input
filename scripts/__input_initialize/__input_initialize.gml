@@ -267,6 +267,9 @@ function __input_initialize()
         }
     }
     
+    //Array of gamepad types to block per Steam Input
+    global.__input_steam_blocklist = {};
+    
     #endregion
     
     #region Gamepad button labels and colors
