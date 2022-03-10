@@ -38,7 +38,6 @@ function __input_resolve_steam_config()
     var _steam_switchx = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");
 
     //Test for Steam environment and valid Steam Input config
-    //Check empty string first to prevent envar related crash
     if ((_steam_environ != "") && is_string(_steam_environ) && (_steam_environ == "1")
     &&  (_steam_configs != "") && is_string(_steam_configs) && (_steam_configs == string_digits(_steam_configs)))
     {
@@ -97,7 +96,7 @@ function __input_resolve_steam_config()
         else
         if (_steam_switch && (_steam_switchx != "") && is_string(_steam_switchx) && (_steam_switchx == "0"))
         {
-            //XInput style label swap for Switch buttons (A/B, X/Y) is disabled
+            //XInput style label swap for Switch buttons (A/B, X/Y) is not enabled
             //Virtual controllers may be Steam Controller, Steam Link Touch Controls, Steam Deck or Switch
             global.__input_simple_type_lookup[$ "SteamController"] = "unknown";
         }
