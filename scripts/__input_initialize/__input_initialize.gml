@@ -230,7 +230,7 @@ function __input_initialize()
     
     //Parse controller type database
     global.__input_raw_type_dictionary = { none : "XBoxOneController" };
-        
+
     //Load the controller type database
     if (!__INPUT_ON_DESKTOP && (os_type != os_android))
     {
