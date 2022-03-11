@@ -35,61 +35,64 @@ function __input_resolve_steam_config()
     var _steam_environ   = environment_get_variable("SteamEnv");
     var _steam_configs   = environment_get_variable("EnableConfiguratorSupport");
 
-    //Test for Steam environment and valid Steam Input config
     if ((_steam_environ != "") && is_string(_steam_environ) && (_steam_environ == "1")
     &&  (_steam_configs != "") && is_string(_steam_configs) && (_steam_configs == string_digits(_steam_configs)))
     {
-        //Remove Steam virtual controller from blocklist
+        //If the game is run through Steam, remove Steam virtual controller from blocklist
         variable_struct_remove(_blacklist_id, _id);
         
-        //Get Steam Input configuration
+        //Resolve Steam Input configuration
         var _bitmask = real(_steam_configs);
         
         var _steam_ps      = (_bitmask & 1);
         var _steam_xbox    = (_bitmask & 2);
         var _steam_generic = (_bitmask & 4);
         var _steam_switch  = (_bitmask & 8);
-                
-        //If overlay is not loaded, GM accesses controllers meant to be blocked
-        //We can fix this by adding the Steam Config types to our own blocklist
-        if (_steam_ps)
-        {
-            global.__input_steam_blocklist[$ "psx"] = true;
-            global.__input_steam_blocklist[$ "ps4"] = true;
-            global.__input_steam_blocklist[$ "ps5"] = true;
-        }
-            
-        if (_steam_xbox)
-        {
-            global.__input_steam_blocklist[$ "xbox"    ] = true;
-            global.__input_steam_blocklist[$ "xbox 360"] = true;
-            global.__input_steam_blocklist[$ "xbox one"] = true;
-        }
-                    
-        if (_steam_generic)
-        {
-            global.__input_steam_blocklist[$ "switch joycon left" ] = true;
-            global.__input_steam_blocklist[$ "switch joycon right"] = true;
-            
-            global.__input_steam_blocklist[$ "snes"    ] = true;
-            global.__input_steam_blocklist[$ "saturn"  ] = true;
-            global.__input_steam_blocklist[$ "n64"     ] = true;
-            global.__input_steam_blocklist[$ "gamecube"] = true;
-            global.__input_steam_blocklist[$ "unknown" ] = true;
-        }
         
-        if (_steam_switch)
+        var _sdl_ignore_list = environment_get_variable("SDL_GAMECONTROLLER_IGNORE_DEVICES");
+        if ((_sdl_ignore_list == "") || !is_string(_sdl_ignore_list))
         {
-            global.__input_steam_blocklist[$ "switch"] = true;
+            //If overlay is not loaded, GM accesses controllers meant to be blocked
+            //We address this by adding the Steam config types to our own blocklist
+            if (_steam_ps)
+            {
+                global.__input_ignore_gamepad_types[$ "psx"] = true;
+                global.__input_ignore_gamepad_types[$ "ps4"] = true;
+                global.__input_ignore_gamepad_types[$ "ps5"] = true;
+            }
+            
+            if (_steam_xbox)
+            {
+                global.__input_ignore_gamepad_types[$ "xbox"    ] = true;
+                global.__input_ignore_gamepad_types[$ "xbox 360"] = true;
+                global.__input_ignore_gamepad_types[$ "xbox one"] = true;
+            }
+        
+            if (_steam_switch)
+            {
+                global.__input_ignore_gamepad_types[$ "switch"] = true;
+            }
+            
+            if (_steam_generic)
+            {
+                global.__input_ignore_gamepad_types[$ "switch joycon left" ] = true;
+                global.__input_ignore_gamepad_types[$ "switch joycon right"] = true;
+            
+                global.__input_ignore_gamepad_types[$ "snes"    ] = true;
+                global.__input_ignore_gamepad_types[$ "saturn"  ] = true;
+                global.__input_ignore_gamepad_types[$ "n64"     ] = true;
+                global.__input_ignore_gamepad_types[$ "gamecube"] = true;
+                global.__input_ignore_gamepad_types[$ "unknown" ] = true;
+            }
         }
     
-        //Check for irreducible type configurations
+        //Check for a reducible type configuration
         var _steam_switch_labels = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");
         if ((!_steam_switch || ((_steam_switch_labels != "") && is_string(_steam_switch_labels) && (_steam_switch_labels == "1")))
-        &&   !_steam_generic &&  !_steam_ps)
+        &&  !_steam_generic && !_steam_ps)
         {
-            //Remaining configurations are in the style of XInput:
-            //Steam Controller, Link Touch Control, Deck, and Xbox
+            //The remaining configurations are in the Xbox Controller style including:
+            //Steam Controller, Steam Link, Steam Deck, Xbox or Switch with AB/XY swap
             global.__input_simple_type_lookup[$ "CommunitySteam"] = "xbox one";
         }
     }

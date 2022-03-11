@@ -62,7 +62,7 @@ function __input_gamepad_set_blacklist()
     }
     
     //Block device types indicated by Steam Input
-    if ((vendor != "de28") && variable_struct_exists(global.__input_steam_blocklist, simple_type))
+    if ((vendor != "de28") && variable_struct_exists(global.__input_ignore_gamepad_types, simple_type))
     {
         __input_trace("Warning! Controller type is blacklisted by Steam Input (\"", simple_type, "\")");
         blacklisted = true;

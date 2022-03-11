@@ -270,7 +270,7 @@ function __input_initialize()
         }
     }
     
-    global.__input_steam_blocklist = {};
+    global.__input_ignore_gamepad_types = {};
     
     #endregion
     
