@@ -37,12 +37,12 @@ function __input_hotswap_tick_input(_player_index)
     //Check gamepad input before keyboard input to correctly handle Android duplicating button presses with keyboard presses
     if (global.__input_gamepad_default_defined)
     {
-        var _player_gamepad = global.__input_players[_player_index].gamepad;
+        var _player = global.__input_players[_player_index];
         
         var _g = 0;
         repeat(gamepad_get_device_count())
         {
-            if (gamepad_is_connected(_g) && ((_player_gamepad == _g) || (input_source_is_available(INPUT_SOURCE.GAMEPAD, _g))))
+            if (gamepad_is_connected(_g) && ((_player.gamepad == _g) || (input_source_is_available(INPUT_SOURCE.GAMEPAD, _g))))
             {
                 var _active = false;
                 
