@@ -98,7 +98,7 @@ function __input_hotswap_tick_input(_player_index)
                 if (_active)
                 {
                     var _player = global.__input_players[_player_index];
-                    if ((_player.source == INPUT_SOURCE.GAMEPAD) && (_player.gamepad == _g))
+                    if (_player.gamepad == _g)
                     {
                         //Don't swap while the assigned gamepad is active
                         _player.last_input_time = current_time;
