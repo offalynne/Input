@@ -17,6 +17,12 @@ function input_player_gamepad_set(_gamepad, _player_index = 0)
         return undefined;
     }
     
+    if (!input_gamepad_is_connected(_gamepad))
+    {
+        __input_trace("Failed to set player gamepad: device not connected (Index ", _gamepad , ":\"" , gamepad_get_description(_gamepad) ,"\")");
+        return undefined;
+    }
+    
     var _player = global.__input_players[_player_index];
     if (_player.gamepad != _gamepad)
     {
