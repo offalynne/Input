@@ -37,10 +37,12 @@ function __input_hotswap_tick_input(_player_index)
     //Check gamepad input before keyboard input to correctly handle Android duplicating button presses with keyboard presses
     if (global.__input_gamepad_default_defined)
     {
+        var _player_gamepad = global.__input_players[_player_index].gamepad;
+        
         var _g = 0;
         repeat(gamepad_get_device_count())
         {
-            if (gamepad_is_connected(_g))
+            if (gamepad_is_connected(_g) && ((_player_gamepad == _g) || (input_source_is_available(INPUT_SOURCE.GAMEPAD, _g))))
             {
                 var _active = false;
                 
@@ -97,20 +99,16 @@ function __input_hotswap_tick_input(_player_index)
                 
                 if (_active)
                 {
-                    var _player = global.__input_players[_player_index];
                     if (_player.gamepad == _g)
                     {
-                        //Don't swap while the assigned gamepad is active
                         _player.last_input_time = current_time;
-                        return { source : INPUT_SOURCE.NONE };
+                    }
+                    else
+                    {
+                        if (__INPUT_DEBUG) __input_trace("Hotswapping player ", _player_index, " to gamepad ", _g);
                     }
                     
-                    if (input_source_is_available(INPUT_SOURCE.GAMEPAD, _g))
-                    {
-                        //Swap if the active source is available
-                        if (__INPUT_DEBUG) __input_trace("Hotswapping player ", _player_index, " to gamepad ", _g);
-                        return { source : INPUT_SOURCE.GAMEPAD, gamepad : _g };                
-                    }
+                    return { source : INPUT_SOURCE.GAMEPAD, gamepad : _g };
                 }
             }
             
