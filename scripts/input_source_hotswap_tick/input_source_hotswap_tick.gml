@@ -100,7 +100,7 @@ function __input_hotswap_tick_input(_player_index)
                     var _player = global.__input_players[_player_index];
                     if ((_player.source == INPUT_SOURCE.GAMEPAD) && (_player.gamepad == _g))
                     {
-                        //Don't swap if the assigned source is active
+                        //Don't swap while the assigned gamepad is active
                         _player.last_input_time = current_time;
                         return { source : INPUT_SOURCE.NONE };
                     }
