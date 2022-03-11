@@ -49,8 +49,7 @@ function __input_resolve_steam_config()
         var _steam_generic = (_bitmask & 4);
         var _steam_switch  = (_bitmask & 8);
         
-        var _sdl_ignore_list = environment_get_variable("SDL_GAMECONTROLLER_IGNORE_DEVICES");
-        if ((_sdl_ignore_list == "") || !is_string(_sdl_ignore_list))
+        if (environment_get_variable("SDL_GAMECONTROLLER_IGNORE_DEVICES") == "")
         {
             //If overlay is not loaded, GM accesses controllers meant to be blocked
             //We address this by adding the Steam config types to our own blocklist
