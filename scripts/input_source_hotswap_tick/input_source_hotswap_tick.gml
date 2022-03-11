@@ -104,8 +104,10 @@ function __input_hotswap_tick_input(_player_index)
                         _player.last_input_time = current_time;
                         return { source : INPUT_SOURCE.NONE };
                     }
-                    else if (input_source_is_available(INPUT_SOURCE.GAMEPAD, _g))
+                    
+                    if (input_source_is_available(INPUT_SOURCE.GAMEPAD, _g))
                     {
+                        //Swap if the active source is available
                         if (__INPUT_DEBUG) __input_trace("Hotswapping player ", _player_index, " to gamepad ", _g);
                         return { source : INPUT_SOURCE.GAMEPAD, gamepad : _g };
                     }
