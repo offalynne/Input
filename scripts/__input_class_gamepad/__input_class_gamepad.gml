@@ -37,9 +37,9 @@ function __input_class_gamepad(_index) constructor
         }
         
         __input_gamepad_set_vid_pid();
+        __input_gamepad_set_description();
         __input_gamepad_set_type();
         __input_gamepad_set_blacklist();
-        __input_gamepad_set_description();
         __input_gamepad_find_in_sdl2_database();
         __input_gamepad_set_mapping();
         
