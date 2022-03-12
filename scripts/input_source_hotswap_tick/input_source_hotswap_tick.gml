@@ -40,7 +40,7 @@ function __input_hotswap_tick_input(_player_index)
         var _g = 0;
         repeat(gamepad_get_device_count())
         {
-            if (gamepad_is_connected(_g) && input_source_is_available(INPUT_SOURCE.GAMEPAD, _g))
+            if (input_gamepad_is_connected(_g) && input_source_is_available(INPUT_SOURCE.GAMEPAD, _g))
             {
                 //Check buttons
                 if (input_gamepad_check(_g, gp_face1)

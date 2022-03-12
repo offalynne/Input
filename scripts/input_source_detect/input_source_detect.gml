@@ -9,7 +9,7 @@ function input_source_detect(_source, _gamepad = INPUT_NO_GAMEPAD)
             //Check gamepad input before keyboard input to correctly handle Android duplicating button presses with keyboard presses
             if (global.__input_gamepad_default_defined)
             {
-                if (gamepad_is_connected(_gamepad) && input_source_is_available(INPUT_SOURCE.GAMEPAD, _gamepad))
+                if (input_gamepad_is_connected(_gamepad) && input_source_is_available(INPUT_SOURCE.GAMEPAD, _gamepad))
                 {
                     if (input_gamepad_check_pressed(_gamepad, gp_face1)
                     ||  input_gamepad_check_pressed(_gamepad, gp_face2)

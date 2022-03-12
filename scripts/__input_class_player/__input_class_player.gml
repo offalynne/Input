@@ -470,7 +470,7 @@ function __input_class_player() constructor
             break;
             
             case INPUT_SOURCE.GAMEPAD:
-                if (!gamepad_is_connected(gamepad)) return false;
+                if (!input_gamepad_is_connected(gamepad)) return false;
                 
                 if (input_gamepad_check(gamepad, gp_face1)
                 ||  input_gamepad_check(gamepad, gp_face2)
