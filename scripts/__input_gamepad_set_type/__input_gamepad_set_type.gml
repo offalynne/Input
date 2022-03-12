@@ -48,6 +48,34 @@ function __input_gamepad_set_type()
             guessed_type = false;
         break;
         
+        case os_operagx:
+            if (description == "Pro Controller (")
+            {
+                raw_type = "SwitchProController";
+                guessed_type = false;
+            }
+            else if (description == "Joy-Con L+R (STA")
+            {
+                raw_type = "SwitchJoyConPair";
+                guessed_type = false;
+            }
+            else if (description == "Wireless Control")
+            {
+                raw_type = "PS4Controller";
+                guessed_type = true;
+            }
+            else if (string_count("xbox", string_lower(description)))
+            {
+                raw_type = "XBoxOneController";
+                guessed_type = true;
+            }
+            else if (string_count("8bitdo", string_lower(description)))
+            {
+                raw_type = "SwitchProController";
+                guessed_type = true;
+            }
+        break;
+        
         default:
             if (xinput == true)
             {
