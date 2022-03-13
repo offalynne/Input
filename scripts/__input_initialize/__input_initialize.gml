@@ -189,8 +189,8 @@ function __input_initialize()
         XBox360Controller:  "xbox 360",
         CommunityXBox360:   "xbox 360",
         CommunityDreamcast: "xbox 360", //        Xbox 360 uses Dreamcast iconography
-        SteamController:    "xbox 360", //Steam Controller uses Xbox 360 iconography
-        MobileTouch:        "xbox 360", //      Steam Link uses Xbox 360 iconography
+        SteamController:    "xbox 360", //Steam Controller uses X-Box 360 iconography
+        MobileTouch:        "xbox 360", //      Steam Link uses X-Box 360 iconography
         
         //PlayStation
         PS5Controller: "ps5",
