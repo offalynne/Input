@@ -59,27 +59,24 @@ function __input_gamepad_set_type()
                 raw_type = "SwitchJoyConPair";
                 guessed_type = false;
             }
-            else if (string_count("8bitdo", string_lower(description)))
+            else if (description == "Wireless Control") //Sony PS4 and PS5 gamepads
             {
-                raw_type = "SwitchProController";
+                raw_type = "CommunityPS4";
                 guessed_type = true;
             }
-            else if (description == "Wireless Control")
+            else if (description == "Xbox 360 Control") //Any XInput gamepad
             {
-                raw_type = "PS4Controller";
+                raw_type = "CommunityLikeXBox";
                 guessed_type = true;
             }
-            else if (string_count("xbox", string_lower(description)))
-            {
-                raw_type = "XBoxOneController";
-                guessed_type = true;
-            }
-        break;
+            
+            if (raw_type != undefined) break;
         
+        //OperaGX also uses default case
         default:
             if (xinput == true)
             {
-                raw_type = "XBoxOneController";
+                raw_type = "CommunityLikeXBox";
                 guessed_type = true;
             }
             else if (variable_struct_exists(global.__input_raw_type_dictionary, vendor + product))

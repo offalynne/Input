@@ -177,26 +177,27 @@ function __input_initialize()
     global.__input_simple_type_lookup = {
     
         //Xbox
+        CommunityLikeXBox: "xbox one", //Determines the default type assigned to XInput and Xbox-like gamepads
+
+        XBoxOneController: "xbox one",
+        CommunityXBoxOne:  "xbox one",
+        SteamControllerV2: "xbox one",
+        AppleController:   "xbox one", //Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
+        CommunityStadia:   "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
+        CommunityLuna:     "xbox one", //Luna uses Xbox One iconography excepting 'View' button
+
         XBox360Controller:  "xbox 360",
         CommunityXBox360:   "xbox 360",
         CommunityDreamcast: "xbox 360", //Xbox 360 uses Dreamcast iconography
         SteamController:    "xbox 360", //Steam Controller uses Xbox 360 iconography
         MobileTouch:        "xbox 360", //Steam Link uses Xbox 360 iconography
         
-        XBoxOneController: "xbox one",
-        CommunityXBoxOne:  "xbox one",
-        CommunityLikeXBox: "xbox one",
-        SteamControllerV2: "xbox one",
-        AppleController:   "xbox one", //Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
-        CommunityStadia:   "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
-        CommunityLuna:     "xbox one", //Luna uses Xbox One iconography excepting 'View' button
-        
         //PlayStation
-        PS3Controller: "psx",
-        CommunityPSX:  "psx",
+        PS5Controller: "ps5",
         PS4Controller: "ps4",
         CommunityPS4:  "ps4",
-        PS5Controller: "ps5",
+        PS3Controller: "psx",
+        CommunityPSX:  "psx",
         
         //Switch
         SwitchHandheld:            "switch", //Attached JoyCon pair or Switch Lite
@@ -211,11 +212,11 @@ function __input_initialize()
         SwitchJoyConRight: "switch joycon right",
         
         //Legacy
-        CommunitySNES:         "snes",
-        CommunitySuperFamicom: "snes",
-        CommunitySaturn:       "saturn",
-        CommunityN64:          "n64",
         CommunityGameCube:     "gamecube",
+        CommunityN64:          "n64",
+        CommunitySaturn:       "saturn",
+        CommunitySuperFamicom: "snes",
+        CommunitySNES:         "snes",
         
         Unknown: "unknown",
         unknown: "unknown",
@@ -230,7 +231,7 @@ function __input_initialize()
     global.__input_raw_type_dictionary = { none : "XBox360Controller" };
     
     //Load the controller type database
-    if (!__INPUT_ON_DESKTOP && (os_type != os_android))
+    if ((!__INPUT_ON_DESKTOP && (os_type != os_android)) || __INPUT_ON_OPERAGX)
     {
         __input_trace("Skipping loading controller type database");
     }
