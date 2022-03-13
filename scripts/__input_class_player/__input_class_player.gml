@@ -57,7 +57,6 @@ function __input_class_player() constructor
     {
         with(verbs[$ _verb_name])
         {
-            set = true;
             set_value = _value;
         }
     }
@@ -224,10 +223,10 @@ function __input_class_player() constructor
                 
                 with(verbs[$ _verb_name])
                 {
-                    if (set)
+                    if (set_value != undefined)
                     {
                         value = set_value;
-                        set = false;
+                        set_value = undefined;
                     }
                     else
                     {
