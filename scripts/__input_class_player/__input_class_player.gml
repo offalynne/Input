@@ -57,8 +57,8 @@ function __input_class_player() constructor
     {
         with(verbs[$ _verb_name])
         {
-            value = _value;
-            tick();
+            set = true;
+            set_value = _value;
         }
     }
     
@@ -224,13 +224,21 @@ function __input_class_player() constructor
                 
                 with(verbs[$ _verb_name])
                 {
-                    value = _value;
-                    raw = _raw;
+                    if (set)
+                    {
+                        value = set_value;
+                        set = false;
+                    }
+                    else
+                    {
+                        value = _value;
+                        raw = _raw;
                     
-                    if (_raw_analogue != undefined) raw_analogue = _raw_analogue;
-                    if (_analogue     != undefined) analogue     = _analogue;
-                    min_threshold = _min_threshold;
-                    max_threshold = _max_threshold;
+                        if (_raw_analogue != undefined) raw_analogue = _raw_analogue;
+                        if (_analogue     != undefined) analogue     = _analogue;
+                        min_threshold = _min_threshold;
+                        max_threshold = _max_threshold;
+                    }
                 }
                 
                 ++_v;

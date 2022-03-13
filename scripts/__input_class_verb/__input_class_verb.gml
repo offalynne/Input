@@ -7,8 +7,10 @@ function __input_class_verb() constructor
     name = undefined;
     
     consumed = false;
+    set      = false;    
     
     previous_value = 0.0;
+    set_value      = 0.0;
     value          = 0.0;
     raw            = 0.0;
     analogue       = false;
