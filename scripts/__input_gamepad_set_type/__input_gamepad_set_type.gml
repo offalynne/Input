@@ -59,6 +59,11 @@ function __input_gamepad_set_type()
                 raw_type = "SwitchJoyConPair";
                 guessed_type = false;
             }
+            else if (string_count("8bitdo", string_lower(description)))
+            {
+                raw_type = "SwitchProController";
+                guessed_type = true;
+            }
             else if (description == "Wireless Control")
             {
                 raw_type = "PS4Controller";
@@ -67,11 +72,6 @@ function __input_gamepad_set_type()
             else if (string_count("xbox", string_lower(description)))
             {
                 raw_type = "XBoxOneController";
-                guessed_type = true;
-            }
-            else if (string_count("8bitdo", string_lower(description)))
-            {
-                raw_type = "SwitchProController";
                 guessed_type = true;
             }
         break;
