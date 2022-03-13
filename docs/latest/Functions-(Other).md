@@ -103,7 +103,7 @@ else
 |`value`        |number                               |Value to set for the verb, from `-1` to `+1` (though most verbs will only expect values from `0` to `+1`|
 |`[playerIndex]`|integer                              |Player to target. If not specified, player 0 is used                                                    |
 
-Sets a value directly for a verb. It's recommend that verb values are set before executing [`input_tick()`](Functions-(System)#input_tick) in a frame such that pressed/released states are appropriately triggered.
+Sets a value directly for a verb. It is recommend that verb values are set before executing [`input_tick()`](Functions-(System)#input_tick), or the change will not be handled until the following frame.
 
 &nbsp;
 
