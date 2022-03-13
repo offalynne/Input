@@ -32,13 +32,13 @@ function __input_resolve_steam_config()
     //Virtual controllers are nonfunctional on Mac
     if (os_type == os_macosx) exit;
 
-    var _steam_environ   = environment_get_variable("SteamEnv");
-    var _steam_configs   = environment_get_variable("EnableConfiguratorSupport");
+    var _steam_environ = environment_get_variable("SteamEnv");
+    var _steam_configs = environment_get_variable("EnableConfiguratorSupport");
 
     if ((_steam_environ != "") && is_string(_steam_environ) && (_steam_environ == "1")
     &&  (_steam_configs != "") && is_string(_steam_configs) && (_steam_configs == string_digits(_steam_configs)))
     {
-        //If the game is run through Steam, remove Steam virtual controller from blocklist
+        //If run through Steam, remove Steam virtual controller from blocklist
         variable_struct_remove(_blacklist_id, _id);
         
         //Resolve Steam Input configuration
