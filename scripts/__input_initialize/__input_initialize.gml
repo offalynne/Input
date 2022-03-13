@@ -182,15 +182,15 @@ function __input_initialize()
         XBoxOneController: "xbox one",
         CommunityXBoxOne:  "xbox one",
         SteamControllerV2: "xbox one",
-        AppleController:   "xbox one", //Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
+        AppleController:   "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
         CommunityStadia:   "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
-        CommunityLuna:     "xbox one", //Luna uses Xbox One iconography excepting 'View' button
+        CommunityLuna:     "xbox one", //  Luna uses Xbox One iconography excepting 'View' button
 
         XBox360Controller:  "xbox 360",
         CommunityXBox360:   "xbox 360",
-        CommunityDreamcast: "xbox 360", //Xbox 360 uses Dreamcast iconography
+        CommunityDreamcast: "xbox 360", //        Xbox 360 uses Dreamcast iconography
         SteamController:    "xbox 360", //Steam Controller uses Xbox 360 iconography
-        MobileTouch:        "xbox 360", //Steam Link uses Xbox 360 iconography
+        MobileTouch:        "xbox 360", //      Steam Link uses Xbox 360 iconography
         
         //PlayStation
         PS5Controller: "ps5",
@@ -206,7 +206,7 @@ function __input_initialize()
         XInputSwitchController:    "switch",
         SwitchInputOnlyController: "switch",
         CommunityLikeSwitch:       "switch",
-        Community8BitDo:           "switch", //8BitDo are Switch gamepads (exceptions typed appropriatiely)
+        Community8BitDo:           "switch", //8BitDo are Switch gamepads (exceptions typed appropriately)
 
         SwitchJoyConLeft:  "switch joycon left",
         SwitchJoyConRight: "switch joycon right",
