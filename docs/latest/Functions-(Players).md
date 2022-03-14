@@ -90,7 +90,16 @@ This function will return `INPUT_NO_GAMEPAD` if the player has no connected game
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
-Returns the same values as [`input_gamepad_get_type()`](Functions-(Gamepad)#input_gamepad_get_typegamepadindex).
+[XInput](https://wikipedia.org/wiki/DirectInput#XInput) controllers will typically return `xbox one` whereas any unrecognised gamepad will return `unknown`. Xbox Series X/S controllers will return `xbox one` owing to similarities across console generations, and that Xbox One gamepads are forwards compatible.
+
+The following are valid strings this function may return besides `unknown`:
+
+|Results   |          |          |
+|----------|----------|----------| 
+|`switch`  |`switch joycon left` | `switch joycon right`|
+|`psx`     |`ps4`     |`ps5`     |
+|`xbox 360`|`xbox one`|`saturn`  |
+|`snes`    |`n64`     |`gamecube`|
 
 &nbsp;
 
