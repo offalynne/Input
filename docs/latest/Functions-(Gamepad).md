@@ -2,7 +2,7 @@
 
 ---
 
-?> These functions are provided for convenience if you want to implement your own features using Input's SDL implementation. In general, [Player functions](Functions-(Players)) are the intended way to use Input and are preferred.
+?> These functions are provided for convenience if you want to implement your own features using Input's implementation of the SDL gamepad mapping system. In general, [Player functions](Functions-(Players)) are the intended way to use Input and are preferred.
 
 &nbsp;
 
@@ -155,16 +155,7 @@ The following are valid strings this function may return besides `unknown`:
 |--------------|--------------------------|------------------------------------------------------|
 |`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
 
-[XInput](https://wikipedia.org/wiki/DirectInput#XInput) controllers will typically return `xbox one` whereas any unrecognised gamepad will return `unknown`. Xbox Series X/S controllers will return `xbox one` owing to similarities across console generations, and that Xbox One gamepads are forwards compatible.
-
-The following are valid strings this function may return besides `unknown`:
-
-|Results   |          |          |
-|----------|----------|----------| 
-|`switch`  |`switch joycon left` | `switch joycon right`|
-|`psx`     |`ps4`     |`ps5`     |
-|`xbox 360`|`xbox one`|`saturn`  |
-|`snes`    |`n64`     |`gamecube`|
+Returns the same values as [`input_player_gamepad_get_type()`](Functions-(Players)#input_player_gamepad_getplayerindex).
 
 &nbsp;
 
