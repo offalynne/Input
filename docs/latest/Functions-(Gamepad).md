@@ -96,7 +96,7 @@
 
 Results are returned for gamepads with a standard button color scheme. PS5 and Switch controller inputs for example will always return `unknown`. In addition, controls that are not color coded, for example Xbox shoulder buttons and GameCube X and Y buttons will return `unknown`. 
 
-The following are valid strings this function may return besides ’unknown’:
+The following are valid strings this function may return besides `unknown`:
 
 |Results |
 |:-------|
