@@ -69,6 +69,9 @@ function __input_initialize()
     //Struct to store all the keyboard keys we want to ignore
     global.__input_ignore_key_dict = {};
     
+    //Struct to store ignored gamepad types
+    global.__input_ignore_gamepad_types = {}
+    
     //Names for sources. I suspect this'll get sliced out at some point when I start recoding the binding system to serialise per controller type
     global.__input_config_category_names = ["none",               //INPUT_SOURCE.NONE
                                             "keyboard and mouse", //INPUT_SOURCE.KEYBOARD_AND_MOUSE
@@ -157,8 +160,7 @@ function __input_initialize()
         {
             var _external_string = environment_get_variable("SDL_GAMECONTROLLERCONFIG");
 
-            //Check for empty string first per platform-weirdness
-            if ((_external_string != "") && is_string(_external_string))
+            if (_external_string != "")
             {
                 __input_trace("External SDL2 string found");
             
@@ -269,8 +271,6 @@ function __input_initialize()
             __input_trace("Warning! \"", INPUT_BLACKLIST_PATH, "\" not found in Included Files");
         }
     }
-    
-    global.__input_ignore_gamepad_types = {};
     
     #endregion
     
@@ -402,9 +402,82 @@ function __input_initialize()
     
     #endregion
     
-    //Handle Steam Input
-    __input_resolve_steam_config();
+    #region Steam Input
     
+    if (((os_type == os_linux) || (os_type == os_macosx)) && !__INPUT_ON_WEB)
+    {
+        //Define the virtual controller's identity
+        var _os = ((os_type == os_macosx)? "macos"    : "linux");
+        var _id = ((os_type == os_macosx)? "5e048e02" : "de28ff11");
+    
+        //Access the blacklist
+        var _blacklist_os = (is_struct(global.__input_blacklist_dictionary)? global.__input_blacklist_dictionary[$ _os] : undefined);
+        var _blacklist_id = (is_struct(_blacklist_os)? _blacklist_os[$ "vid+pid"] : undefined);
+    
+        if (is_struct(_blacklist_os) && (_blacklist_id == undefined))
+        {
+            //Add 'Vendor ID + Product ID' category
+            _blacklist_os[$ "vid+pid"] = {};
+            _blacklist_id = (is_struct(_blacklist_os)? _blacklist_os[$ "vid+pid"] : undefined);
+        }
+    
+        //Blacklist the Steam virtual controller
+        if (is_struct(_blacklist_id)) _blacklist_id[$ _id] = true;   
+	}
+    
+	if ((os_type == os_linux) && !__INPUT_ON_WEB)
+	{
+	    var _steam_environ = environment_get_variable("SteamEnv");
+	    var _steam_configs = environment_get_variable("EnableConfiguratorSupport");
+		
+		show_message_async(_steam_environ);
+    
+	    if ((_steam_environ != "") && (_steam_environ == "1")
+	    &&  (_steam_configs != "") && (_steam_configs == string_digits(_steam_configs)))
+	    {
+	        //If run through Steam, remove Steam virtual controller from blocklist
+	        variable_struct_remove(_blacklist_id, _id);
+        
+	        //Resolve Steam Input configuration
+	        var _bitmask = real(_steam_configs);
+        
+	        var _steam_ps      = (_bitmask & 1);
+	        var _steam_xbox    = (_bitmask & 2);
+	        var _steam_generic = (_bitmask & 4);
+	        var _steam_switch  = (_bitmask & 8);
+            
+	        var _ignore_list = [];
+        
+	        if (environment_get_variable("SDL_GAMECONTROLLER_IGNORE_DEVICES") == "")
+	        {
+	            //If ignore hint isn't set, GM accesses controllers meant to be blocked
+	            //We address this by adding the Steam config types to our own blocklist
+	            if (_steam_switch)  array_push(_ignore_list, "switch");
+	            if (_steam_ps)      array_push(_ignore_list, "psx", "ps4", "ps5");
+	            if (_steam_xbox)    array_push(_ignore_list, "xbox", "xbox 360", "xbox one");        
+	            if (_steam_generic) array_push(_ignore_list, "snes", "saturn", "n64", "gamecube", "switch joycon left", "switch joycon right", "unknown");
+ 			
+				var _i = 0;
+				repeat(array_length(_ignore_list))
+				{
+					global.__input_ignore_gamepad_types[$ _ignore_list[_i]] = true;
+				}
+			}
+    
+	        //Check for a reducible type configuration
+			var _steam_switch_labels = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");
+	        if (!_steam_generic && !_steam_ps
+			&& (!_steam_switch  || ((_steam_switch_labels != "") && (_steam_switch_labels == "1"))))
+	        {
+	            //The remaining configurations are in the Xbox Controller style including:
+	            //Steam Controller, Steam Link, Steam Deck, Xbox or Switch with AB/XY swap
+	            global.__input_simple_type_lookup[$ "CommunitySteam"] = "xbox one";
+	        }
+	    }
+	}
+
+    #endregion
+	
     //By default GameMaker registers double click (or tap) as right mouse button
     //We want to be able to identify the actual mouse buttons correctly, and have our own double-input handling
     device_mouse_dbclick_enable(false);
