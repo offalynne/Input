@@ -434,11 +434,11 @@ function __input_initialize()
         &&  (_steam_configs != "") && (_steam_configs == string_digits(_steam_configs)))
         {
             //If run through Steam, remove Steam virtual controller from blocklist
-            variable_struct_remove(_blacklist_id, _id);
+            if (is_struct(_blacklist_id)) variable_struct_remove(_blacklist_id, _id);
         
-            //Resolve Steam Input configuration
             var _bitmask = real(_steam_configs);
         
+            //Resolve Steam Input configuration
             var _steam_ps      = (_bitmask & 1);
             var _steam_xbox    = (_bitmask & 2);
             var _steam_generic = (_bitmask & 4);
