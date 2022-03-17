@@ -234,7 +234,7 @@ function __input_initialize()
     }
     
     //Parse controller type database
-    global.__input_raw_type_dictionary = { none : "XBoxOneController" };
+    global.__input_raw_type_dictionary = { none : global.__input_simple_type_lookup[$ "CommunityLikeXBox"] };
 
     //Load the controller type database
     if (!__INPUT_ON_DESKTOP && (os_type != os_android))
@@ -423,61 +423,59 @@ function __input_initialize()
     
         //Blacklist the Steam virtual controller
         if (is_struct(_blacklist_id)) _blacklist_id[$ _id] = true;   
-	}
+    }
     
-	if ((os_type == os_linux) && !__INPUT_ON_WEB)
-	{
-	    var _steam_environ = environment_get_variable("SteamEnv");
-	    var _steam_configs = environment_get_variable("EnableConfiguratorSupport");
-		
-		show_message_async(_steam_environ);
+    if ((os_type == os_linux) && !__INPUT_ON_WEB)
+    {
+        var _steam_environ = environment_get_variable("SteamEnv");
+        var _steam_configs = environment_get_variable("EnableConfiguratorSupport");
     
-	    if ((_steam_environ != "") && (_steam_environ == "1")
-	    &&  (_steam_configs != "") && (_steam_configs == string_digits(_steam_configs)))
-	    {
-	        //If run through Steam, remove Steam virtual controller from blocklist
-	        variable_struct_remove(_blacklist_id, _id);
+        if ((_steam_environ != "") && (_steam_environ == "1")
+        &&  (_steam_configs != "") && (_steam_configs == string_digits(_steam_configs)))
+        {
+            //If run through Steam, remove Steam virtual controller from blocklist
+            variable_struct_remove(_blacklist_id, _id);
         
-	        //Resolve Steam Input configuration
-	        var _bitmask = real(_steam_configs);
+            //Resolve Steam Input configuration
+            var _bitmask = real(_steam_configs);
         
-	        var _steam_ps      = (_bitmask & 1);
-	        var _steam_xbox    = (_bitmask & 2);
-	        var _steam_generic = (_bitmask & 4);
-	        var _steam_switch  = (_bitmask & 8);
+            var _steam_ps      = (_bitmask & 1);
+            var _steam_xbox    = (_bitmask & 2);
+            var _steam_generic = (_bitmask & 4);
+            var _steam_switch  = (_bitmask & 8);
             
-	        var _ignore_list = [];
+            var _ignore_list = [];
         
-	        if (environment_get_variable("SDL_GAMECONTROLLER_IGNORE_DEVICES") == "")
-	        {
-	            //If ignore hint isn't set, GM accesses controllers meant to be blocked
-	            //We address this by adding the Steam config types to our own blocklist
-	            if (_steam_switch)  array_push(_ignore_list, "switch");
-	            if (_steam_ps)      array_push(_ignore_list, "psx", "ps4", "ps5");
-	            if (_steam_xbox)    array_push(_ignore_list, "xbox", "xbox 360", "xbox one");        
-	            if (_steam_generic) array_push(_ignore_list, "snes", "saturn", "n64", "gamecube", "switch joycon left", "switch joycon right", "unknown");
- 			
-				var _i = 0;
-				repeat(array_length(_ignore_list))
-				{
-					global.__input_ignore_gamepad_types[$ _ignore_list[_i]] = true;
-				}
-			}
-    
-	        //Check for a reducible type configuration
-			var _steam_switch_labels = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");
-	        if (!_steam_generic && !_steam_ps
-			&& (!_steam_switch  || ((_steam_switch_labels != "") && (_steam_switch_labels == "1"))))
-	        {
-	            //The remaining configurations are in the Xbox Controller style including:
-	            //Steam Controller, Steam Link, Steam Deck, Xbox or Switch with AB/XY swap
-	            global.__input_simple_type_lookup[$ "CommunitySteam"] = "xbox one";
-	        }
-	    }
-	}
+            if (environment_get_variable("SDL_GAMECONTROLLER_IGNORE_DEVICES") == "")
+            {
+                //If ignore hint isn't set, GM accesses controllers meant to be blocked
+                //We address this by adding the Steam config types to our own blocklist
+                if (_steam_switch)  array_push(_ignore_list, "switch");
+                if (_steam_ps)      array_push(_ignore_list, "psx", "ps4", "ps5");
+                if (_steam_xbox)    array_push(_ignore_list, "xbox", "xbox 360", "xbox one");        
+                if (_steam_generic) array_push(_ignore_list, "snes", "saturn", "n64", "gamecube", "switch joycon left", "switch joycon right", "unknown");
+             
+                var _i = 0;
+                repeat(array_length(_ignore_list))
+                {
+                    global.__input_ignore_gamepad_types[$ _ignore_list[_i]] = true;
+                }
+            }
+            
+            //Check for a reducible type configuration
+            var _steam_switch_labels = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");
+            if (!_steam_generic && !_steam_ps
+            && (!_steam_switch || ((_steam_switch_labels != "") && (_steam_switch_labels == "1"))))
+            {
+                //The remaining configurations are in the Xbox Controller style including:
+                //Steam Controller, Steam Link, Steam Deck, Xbox or Switch with AB/XY swap
+                global.__input_simple_type_lookup[$ "CommunitySteam"] = "xbox one";
+            }
+        }
+    }
 
     #endregion
-	
+    
     //By default GameMaker registers double click (or tap) as right mouse button
     //We want to be able to identify the actual mouse buttons correctly, and have our own double-input handling
     device_mouse_dbclick_enable(false);
