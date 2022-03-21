@@ -215,8 +215,8 @@ function __input_initialize()
         CommunityGameCube:     "gamecube",
         CommunityN64:          "n64",
         CommunitySaturn:       "saturn",
-        CommunitySuperFamicom: "snes",
         CommunitySNES:         "snes",
+        CommunitySuperFamicom: "snes",
         
         Unknown: "unknown",
         unknown: "unknown",
