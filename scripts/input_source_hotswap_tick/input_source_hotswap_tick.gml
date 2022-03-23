@@ -37,11 +37,15 @@ function __input_hotswap_tick_input(_player_index)
     //Check gamepad input before keyboard input to correctly handle Android duplicating button presses with keyboard presses
     if (global.__input_gamepad_default_defined)
     {
+        var _player = global.__input_players[_player_index];
+        
         var _g = 0;
         repeat(gamepad_get_device_count())
         {
-            if (gamepad_is_connected(_g) && input_source_is_available(INPUT_SOURCE.GAMEPAD, _g))
+            if (gamepad_is_connected(_g) && ((_player.gamepad == _g) || (input_source_is_available(INPUT_SOURCE.GAMEPAD, _g))))
             {
+                var _active = false;
+                
                 //Check buttons
                 if (input_gamepad_check(_g, gp_face1)
                 ||  input_gamepad_check(_g, gp_face2)
@@ -60,8 +64,7 @@ function __input_hotswap_tick_input(_player_index)
                 ||  (!input_gamepad_is_axis(_g, gp_shoulderlb) && input_gamepad_check(_g, gp_shoulderlb))
                 ||  (!input_gamepad_is_axis(_g, gp_shoulderrb) && input_gamepad_check(_g, gp_shoulderrb)))
                 {
-                    if (__INPUT_DEBUG) __input_trace("Hotswapping player ", _player_index, " to gamepad ", _g);
-                    return { source : INPUT_SOURCE.GAMEPAD, gamepad : _g };
+                    _active = true;
                 }
                 
                 //Check axes
@@ -75,8 +78,7 @@ function __input_hotswap_tick_input(_player_index)
                     ||  (abs(input_gamepad_value(_g, gp_axisrh)) > input_axis_threshold_get(gp_axisrh, _player_index).mini)
                     ||  (abs(input_gamepad_value(_g, gp_axisrv)) > input_axis_threshold_get(gp_axisrv, _player_index).mini))
                     {
-                        if (__INPUT_DEBUG) __input_trace("Hotswapping player ", _player_index, " to gamepad ", _g);
-                        return { source : INPUT_SOURCE.GAMEPAD, gamepad : _g };
+                        _active = true;
                     }
                 }
                 
@@ -91,9 +93,22 @@ function __input_hotswap_tick_input(_player_index)
                     ||  input_gamepad_check(_g, gp_paddle3)
                     ||  input_gamepad_check(_g, gp_paddle4))
                     {
-                        if (__INPUT_DEBUG) __input_trace("Hotswapping player ", _player_index, " to gamepad ", _g);
-                        return { source : INPUT_SOURCE.GAMEPAD, gamepad : _g };                
+                        _active = true;
                     }
+                }
+                
+                if (_active)
+                {
+                    if (_player.gamepad == _g)
+                    {
+                        _player.last_input_time = current_time;
+                    }
+                    else
+                    {
+                        if (__INPUT_DEBUG) __input_trace("Hotswapping player ", _player_index, " to gamepad ", _g);
+                    }
+                    
+                    return { source : INPUT_SOURCE.GAMEPAD, gamepad : _g };
                 }
             }
             

@@ -17,5 +17,11 @@ function input_player_gamepad_set(_gamepad, _player_index = 0)
         return undefined;
     }
     
-    global.__input_players[_player_index].gamepad = _gamepad;
+    var _player = global.__input_players[_player_index];
+    if (_player.gamepad != _gamepad)
+    {
+        _player.last_input_time = current_time;
+    }
+    
+    _player.gamepad = _gamepad;
 }
