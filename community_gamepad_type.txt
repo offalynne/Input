@@ -23,8 +23,12 @@
 0111,1431,CommunityLikeXBox // SteelSeries Stratus Duo
 05ac,022c,CommunityLikeXBox // iPega 910
 05ac,022d,CommunityLikeXBox // GameSir G2U
-05ac,033d,CommunityLikeXBox // GameSir
-05ac,044d,CommunityLikeXBox // GameSir
+05ac,033d,CommunityLikeXBox // GameSir G3
+05ac,055b,CommunityLikeXBox // GameSir G3w
+05ac,044d,CommunityLikeXBox // GameSir G4
+8555,061b,CommunityLikeXBox // GameSir G4 Pro
+05ac,056b,CommunityXBox360 // GameSir T-2a
+20bc,5656,CommunityXBox360 // GameSir T4w
 18d1,2c40,CommunityLikeXBox // ADT1
 0b05,4500,CommunityLikeXBox // ASUS Gamepad
 0a5c,8502,CommunityLikeXBox // idroid:con
@@ -184,8 +188,6 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 6978,706e,CommunityXBox360 // Xbox 360
 0079,184f,CommunityXBox360 // ZD-T Android
 04b4,2410,CommunityXBox360 // Flydigi Apex
-05ac,056b,CommunityXBox360 // GameSir T-2a
-20bc,5656,CommunityXBox360 // Gamesir T4w
 0f0d,1011,CommunityXBox360 // GameStick
 11c3,9107,CommunityXBox360 // Be1 GC101
 1532,0705,CommunityXBox360 // Razer Raiju
