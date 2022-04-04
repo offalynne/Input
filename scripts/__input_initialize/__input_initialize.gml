@@ -182,7 +182,7 @@ function __input_initialize()
     
     //Lookup table for simple gamepad types based on raw types
     global.__input_simple_type_lookup = {
-
+    
         //Xbox
         XBox360Controller:  "xbox 360",
         CommunityXBox360:   "xbox 360",
