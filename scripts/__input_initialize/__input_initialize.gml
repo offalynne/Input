@@ -451,9 +451,9 @@ function __input_initialize()
                 //If ignore hint isn't set, GM accesses controllers meant to be blocked
                 //We address this by adding the Steam config types to our own blocklist
                 if (_steam_switch)  array_push(_ignore_list, "switch");
-                if (_steam_ps)      array_push(_ignore_list, "psx", "ps4", "ps5");
-                if (_steam_xbox)    array_push(_ignore_list, "xbox", "xbox 360", "xbox one");        
-                if (_steam_generic) array_push(_ignore_list, "snes", "saturn", "n64", "gamecube", "switch joycon left", "switch joycon right", "unknown");
+                if (_steam_ps)      array_push(_ignore_list, "ps4", "ps5");
+                if (_steam_xbox)    array_push(_ignore_list, "xbox 360", "xbox one");        
+                if (_steam_generic) array_push(_ignore_list, "snes", "saturn", "n64", "gamecube", "psx", "xbox" "switch joycon left", "switch joycon right", "unknown");
              
                 var _i = 0;
                 repeat(array_length(_ignore_list))
