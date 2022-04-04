@@ -182,7 +182,7 @@ function __input_initialize()
     
     //Lookup table for simple gamepad types based on raw types
     global.__input_simple_type_lookup = {
-    
+        
         //Xbox
         XBox360Controller:  "xbox 360",
         CommunityXBox360:   "xbox 360",
@@ -191,12 +191,14 @@ function __input_initialize()
         MobileTouch:        "xbox 360", //Steam Link uses Xbox 360 iconography
         
         XBoxOneController: "xbox one",
-        CommunityXBoxOne:  "xbox one",
-        CommunityLikeXBox: "xbox one",
         SteamControllerV2: "xbox one",
+        CommunityXBoxOne:  "xbox one",
         AppleController:   "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
         CommunityStadia:   "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
         CommunityLuna:     "xbox one", //  Luna uses Xbox One iconography excepting 'View' button
+        
+        //Default type assigned to XInput and Xbox-like controllers
+        CommunityLikeXBox: "xbox one",
         
         //PlayStation
         PS3Controller: "psx",
@@ -230,7 +232,7 @@ function __input_initialize()
         UnknownNonSteamController: "unknown",
         CommunityUnknown:          "unknown",
         CommunitySteam:            "unknown"
-
+        
     }
     
     //Parse controller type database
