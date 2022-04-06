@@ -36,4 +36,4 @@ On Linux, some HID devices cause trouble and may misreport as gamepads, indicate
 
 ## Updating Dependencies
 
-Portable script [`refresh_datafiles.py`](https://github.com/JujuAdams/Input/blob/master/refresh_datafiles.py) includes reference to all source files for Input's game controller data, and when run will attempt to update from each respective source. Since many of the upstream repositories are active, we recommend running the script locally prior to ship in order to keep your data up to date.
+Portable Python script [`refresh_datafiles.py`](https://github.com/JujuAdams/Input/blob/master/refresh_datafiles.py) includes reference to all source files for Input's game controller data, and when run will attempt to update from each respective source. Since many of the upstream repositories are active, we recommend running the script locally prior to ship in order to keep your data up to date.
