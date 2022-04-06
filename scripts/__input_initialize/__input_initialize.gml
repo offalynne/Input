@@ -435,7 +435,7 @@ function __input_initialize()
         if ((_steam_environ != "") && (_steam_environ == "1")
         &&  (_steam_configs != "") && (_steam_configs == string_digits(_steam_configs)))
         {
-            //If run through Steam, remove Steam virtual controller from blocklist
+            //If run through Steam remove Steam virtual controller from the blocklist
             if (is_struct(_blacklist_id)) variable_struct_remove(_blacklist_id, _id);
         
             var _bitmask = real(_steam_configs);
