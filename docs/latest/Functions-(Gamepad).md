@@ -62,7 +62,7 @@
 
 ### `input_gamepad_is_connected(gamepadIndex)`
 
-*Returns:* Boolean, whether the given gamepad is connected
+*Returns:* Boolean, whether the given gamepad is connected (omitting [blocked devices](Controller-Mapping?id=controller-blacklist))
 
 |Name          |Datatype|Purpose                                               |
 |--------------|--------|-------------------------------------------------------|
