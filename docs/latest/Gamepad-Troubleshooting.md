@@ -38,7 +38,7 @@ If you encounter trouble using your gamepad with Input, ensure the gamepad devic
 - [Wireless DualShock 4 and Xbox One Controller Bluetooth pairing](https://support.apple.com/en-us/HT210414#mac)
 
 ### Ubuntu
-- [X11 gamepad-mouse double input terminal fix](https://ubuntuforums.org/showthread.php?t=1489328): `sudo rm /usr/share/X11/xorg.conf.d/50-joystick.conf`
+- [PS3 X11 gamepad-mouse double input terminal fix](https://ubuntuforums.org/showthread.php?t=1489328): `sudo rm /usr/share/X11/xorg.conf.d/50-joystick.conf`
 - [Xbox One Wireless Adapter setup](https://github.com/medusalix/xow)
 - [Nintendo Switch Controller setup](https://github.com/nicman23/dkms-hid-nintendo)
 
