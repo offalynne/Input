@@ -256,6 +256,12 @@ function __input_class_player() constructor
             return undefined;
         }
         
+        if (_verb == "")
+        {
+            __input_error("Invalid \"verb\" argument (empty string)");
+            return undefined;
+        }
+        
         if (_alternate < 0)
         {
             __input_error("Invalid \"alternate\" argument (", _alternate, ")");
