@@ -39,7 +39,7 @@ If you encounter trouble using your gamepad with Input, ensure the gamepad devic
 
 ### Ubuntu
 - [PS3 X11 gamepad-mouse double input terminal fix](https://ubuntuforums.org/showthread.php?t=1489328): `sudo rm /usr/share/X11/xorg.conf.d/50-joystick.conf`
-- [Xbox One Wireless Adapter setup](https://github.com/medusalix/xow)
+- [Xbox One Wireless Adapter setup](https://medusalix.github.io/xow/)
 - [Nintendo Switch Controller setup](https://github.com/nicman23/dkms-hid-nintendo)
 
 &nbsp;
