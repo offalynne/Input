@@ -471,7 +471,7 @@ function __input_initialize()
             {
                 //The remaining configurations are in the Xbox Controller style including:
                 //Steam Controller, Steam Link, Steam Deck, Xbox or Switch with AB/XY swap
-                global.__input_simple_type_lookup[$ "CommunitySteam"] = "xbox one";
+                global.__input_simple_type_lookup[$ "CommunitySteam"] = global.__input_simple_type_lookup[$ "CommunityLikeXBox"];
             }
         }
     }
