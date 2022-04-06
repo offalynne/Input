@@ -46,4 +46,4 @@ If you encounter trouble using your gamepad with Input, ensure the gamepad devic
 
 ## Device Mapping
 
-If your gamepad is an uncommon model or variant and seems to be presenting an incorrect button layout, it may be absent from the [SDL gamepad mapping community database](Controller-Mapping). Consider providing data for your device to the [SDL Community Gamepad DB](https://github.com/gabomdq/SDL_GameControllerDB) if you are able, or reaching Input's maintainers [on Discord](https://discord.gg/8krYCqr) to discuss further.
+If your gamepad is an uncommon model or variant and seems to be presenting an incorrect button layout, it may be absent from the [gamepad mapping database](Controller-Mapping). Consider providing data for your device to the [SDL Community Gamepad DB](https://github.com/gabomdq/SDL_GameControllerDB) if you are able, or reaching Input's maintainers [on Discord](https://discord.gg/8krYCqr) to discuss further.
