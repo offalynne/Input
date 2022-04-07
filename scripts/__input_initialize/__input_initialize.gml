@@ -177,6 +177,8 @@ function __input_initialize()
     }
     
     #endregion
+  
+    var _default_xbox_type = "xbox one"; //Default type assigned to XInput and Xbox-like gamepads
     
     #region Gamepad type identification
     
@@ -184,12 +186,8 @@ function __input_initialize()
     global.__input_simple_type_lookup = {
     
         //Xbox
-        XBox360Controller:  "xbox 360",
-        CommunityXBox360:   "xbox 360",
-        CommunityDreamcast: "xbox 360", //Xbox 360 uses Dreamcast iconography
-        SteamController:    "xbox 360", //Steam Controller uses Xbox 360 iconography
-        MobileTouch:        "xbox 360", //Steam Link uses Xbox 360 iconography
-        
+        CommunityLikeXBox: _default_xbox_type,
+
         XBoxOneController: "xbox one",
         SteamControllerV2: "xbox one",
         CommunityXBoxOne:  "xbox one",
@@ -197,15 +195,18 @@ function __input_initialize()
         CommunityStadia:   "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
         CommunityLuna:     "xbox one", //  Luna uses Xbox One iconography excepting 'View' button
         
-        //Default type assigned to XInput and Xbox-like controllers
-        CommunityLikeXBox: "xbox one",
+        XBox360Controller:  "xbox 360",
+        CommunityXBox360:   "xbox 360",
+        CommunityDreamcast: "xbox 360", //        Xbox 360 uses Dreamcast iconography
+        SteamController:    "xbox 360", //Steam Controller uses X-Box 360 iconography
+        MobileTouch:        "xbox 360", //      Steam Link uses X-Box 360 iconography
         
         //PlayStation
-        PS3Controller: "psx",
-        CommunityPSX:  "psx",
+        PS5Controller: "ps5",
         PS4Controller: "ps4",
         CommunityPS4:  "ps4",
-        PS5Controller: "ps5",
+        PS3Controller: "psx",
+        CommunityPSX:  "psx",
         
         //Switch
         SwitchHandheld:            "switch", //Attached JoyCon pair or Switch Lite
@@ -214,17 +215,17 @@ function __input_initialize()
         XInputSwitchController:    "switch",
         SwitchInputOnlyController: "switch",
         CommunityLikeSwitch:       "switch",
-        Community8BitDo:           "switch", //8BitDo are Switch gamepads (exceptions typed appropriatiely)
+        Community8BitDo:           "switch", //8BitDo are Switch gamepads (exceptions typed appropriately)
 
         SwitchJoyConLeft:  "switch joycon left",
         SwitchJoyConRight: "switch joycon right",
         
         //Legacy
+        CommunityGameCube:     "gamecube",
+        CommunityN64:          "n64",
+        CommunitySaturn:       "saturn",
         CommunitySNES:         "snes",
         CommunitySuperFamicom: "snes",
-        CommunitySaturn:       "saturn",
-        CommunityN64:          "n64",
-        CommunityGameCube:     "gamecube",
         
         Unknown: "unknown",
         unknown: "unknown",
@@ -236,10 +237,10 @@ function __input_initialize()
     }
     
     //Parse controller type database
-    global.__input_raw_type_dictionary = { none : global.__input_simple_type_lookup[$ "CommunityLikeXBox"] };
+    global.__input_raw_type_dictionary = { none : _xbox_type };
 
     //Load the controller type database
-    if (!__INPUT_ON_DESKTOP && (os_type != os_android))
+    if (__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || (os_type == os_ios))
     {
         __input_trace("Skipping loading controller type database");
     }
@@ -471,7 +472,7 @@ function __input_initialize()
             {
                 //The remaining configurations are in the Xbox Controller style including:
                 //Steam Controller, Steam Link, Steam Deck, Xbox or Switch with AB/XY swap
-                global.__input_simple_type_lookup[$ "CommunitySteam"] = global.__input_simple_type_lookup[$ "CommunityLikeXBox"];
+                global.__input_simple_type_lookup[$ "CommunitySteam"] = _default_xbox_type;
             }
         }
     }
