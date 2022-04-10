@@ -166,7 +166,7 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 056e,2003,CommunityXBox360 // Elecom JC-U3613M
 0f30,0111,CommunityXBox360 // Saitek Rumble Pad
 02d6,89e5,CommunityXBox360 // Moga 2
-0738,4426,CommunityXBox360 // Unknown XBox360
+0738,4426,CommunityXBox360 // Mad Catz Xbox
 0955,7203,CommunityXBox360 // NVIDIA Shield
 0955,7214,CommunityXBox360 // NVIDIA Shield
 0c45,4320,CommunityXBox360 // Xeox SL 6556
@@ -292,11 +292,11 @@ beef,feed,CommunityXBox360 // Monect
 0f30,1112,CommunityPSX // QanBa Arcade JoyStick 2028
 044f,b320,CommunityPSX // Thrustmaster Dual Trigger
 044f,d001,CommunityPSX // Thrustmaster T Mini
+8888,0308,CommunityPSX // Motioninjoy DS3 Tool
+8888,0408,CommunityPSX // Motioninjoy DS3 Tool
 4c50,5453,CommunityPSX // Unknown PSX
-8888,0308,CommunityPSX // Unknown PSX
-8888,0408,CommunityPSX // Unknown PSX
 00ff,01cb,CommunityPSX // Sony PSP
-0583,2050,CommunityPSX // Unknown 
+0583,2050,CommunityPSX // Rockfire PSX Adapter 
 0583,b031,CommunityPSX // Genius Maxfire Blaze 3, Cideko AK08b
 0d9d,3013,CommunityPSX // Unknown PSX
 0f30,1012,CommunityPSX // Qanba 4RAF
