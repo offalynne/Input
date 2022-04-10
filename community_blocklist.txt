@@ -35,6 +35,7 @@ digitizer,android,description contains // Touchscreen Devices
 multitouch,android,description contains // Virtual Multitouch Devices
 headset,android,description contains // Headsets and Adapters
 sennheiser,android,description contains // Sennheiser Brand Headsets
+blackwire,android,description contains // Plantronics Headsets
 tv remote,android,description contains // Smart TV Remote
 multimedia remote,android,description contains // Smart TV Remote
 corsair,android,description contains // Corsair Mice, Keyboards, Adapters
