@@ -69,13 +69,13 @@ Take a gander at this new code:
 
 ```
 //Bind keyboard controls to verbs
-input_default_key(vk_left, "left");
+input_default_key(vk_left,  "left");
 input_default_key(vk_right, "right");
 input_default_key(ord("A"), "shoot"); 
 
 //Bind gamepad controls to verbs
-input_default_gamepad_button(gp_padl, "left");
-input_default_gamepad_button(gp_padr, "right");
+input_default_gamepad_button(gp_padl,  "left");
+input_default_gamepad_button(gp_padr,  "right");
 input_default_gamepad_button(gp_face1, "shoot");
 
 //input_player_source_set(INPUT_SOURCE.KEYBOARD_AND_MOUSE);
