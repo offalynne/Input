@@ -55,7 +55,7 @@ Compile time configuration is controlled by macros stored in `__input_config()` 
     - Various keys triggered by gamepads on UWP platforms
 - `2`: Ignore all reserved and/or system keys (in addition to the above):
     - Num lock & Scroll lock
-    - IME keys (keycodes `0x15` to `0x1A`, `0xE5`)
+    - IME keys (keycodes `0x15` to `0x1A` and `0xE5`)
     - Browser keys (keycodes `0xA6` to `0xAC`)
     - Media keys (keycodes `0xAD` to `0xB7`)
 
