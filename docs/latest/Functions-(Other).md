@@ -55,7 +55,7 @@ When a verb has been consumed, [check functions](Functions-(Checkers)) that targ
 |-------|--------|--------------|
 |`state`|boolean |Whether to clear all momentary input|
 
-Clear all pressed/released input checkers. This covers verbs as well as keyboard/mouse/gamepad direct checkers. Useful for [fixed timestep patterns](https://gafferongames.com/post/fix_your_timestep/) where momentary checks should only be handled for one cycle (for example [iota](https://github.com/JujuAdams/iota)).
+Clears momentary (pressed/released) input and connection checkers. This covers verbs as well as keyboard/mouse/gamepad direct checkers. Useful for [fixed timestep patterns](https://gafferongames.com/post/fix_your_timestep/) where momentary checks should only be handled for one cycle (for example [iota](https://github.com/JujuAdams/iota)).
 
 &nbsp;
 
