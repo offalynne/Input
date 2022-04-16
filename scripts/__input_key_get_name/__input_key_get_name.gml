@@ -75,7 +75,6 @@ function __input_key_get_name(_key)
                 case  93: return "menu";        break;
                 case 144: return "num lock";    break;
                 case 145: return "scroll lock"; break;
-                case 250: return "play";        break;
                                                    
                 //Command pairs
                 case vk_ralt: return "right alt"; break;
