@@ -74,7 +74,7 @@
 
 ### `input_gamepad_disconnected()`
 
-*Returns:* Boolean, whether any gamepad has been disconnected
+*Returns:* Boolean, whether any gamepad has been momentarily disconnected
 
 |Name  |Datatype  |Purpose  |
 |------|----------|---------|
