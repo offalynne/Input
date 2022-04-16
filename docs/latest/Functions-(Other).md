@@ -75,17 +75,17 @@ _Example usage_
 ```
 if (input_guess_keyboard_layout() == "AZERTY")
 {
-    input_default_key(ord("E"), VERB.UP);
-    input_default_key(ord("S"), VERB.LEFT);
-    input_default_key(ord("D"), VERB.DOWN);
-    input_default_key(ord("F"), VERB.RIGHT);
+    input_default_key(ord("E"), "up");
+    input_default_key(ord("S"), "left");
+    input_default_key(ord("D"), "down");
+    input_default_key(ord("F"), "right");
 }
 else
 {
-    input_default_key(ord("W"), VERB.UP);
-    input_default_key(ord("A"), VERB.LEFT);
-    input_default_key(ord("S"), VERB.DOWN);
-    input_default_key(ord("D"), VERB.RIGHT);
+    input_default_key(ord("W"), "up");
+    input_default_key(ord("A"), "left");
+    input_default_key(ord("S"), "down");
+    input_default_key(ord("D"), "right");
 }
 ```
 
