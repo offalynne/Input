@@ -104,6 +104,16 @@ enum __INPUT_MAPPING
     __SIZE
 }
 
+//INPUT_STATUS.DISCONNECTED *must* be zero so that array_size() initializes gamepad status to disconnected
+//See input_tick() for more details
+enum INPUT_STATUS
+{
+    NEWLY_DISCONNECTED = -1,
+    DISCONNECTED       =  0,
+    NEWLY_CONNECTED    =  1,
+    CONNECTED          =  2,
+}
+
 #macro INPUT_NO_GAMEPAD  -1
 
 

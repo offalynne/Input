@@ -75,6 +75,22 @@ function __input_initialize()
                                             "gamepad",            //INPUT_SOURCE.GAMEPAD
                                             "joycon"];
     
+    //Two structs that are returned by input_players_get_status() and input_gamepads_get_status()
+    //These are "static" structs that are reset and populated by input_tick()
+    global.__input_players_status = {
+        any_changed: false,
+        new_connections: [],
+        new_disconnections: [],
+        players: array_create(INPUT_MAX_PLAYERS, INPUT_STATUS.DISCONNECTED),
+    }
+    
+    global.__input_gamepads_status = {
+        any_changed: false,
+        new_connections: [],
+        new_disconnections: [],
+        gamepads: array_create(gamepad_get_device_count(), INPUT_STATUS.DISCONNECTED),
+    }
+    
     //Array of players. Each player is a struct (instanceof __input_class_player) that contains lotsa juicy information
     global.__input_players = array_create(INPUT_MAX_PLAYERS, undefined);
     var _p = 0;

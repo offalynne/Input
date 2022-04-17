@@ -1,7 +1,5 @@
 function input_tick()
 {
-    var _any_changed = false;
-    
     global.__input_frame++;
     global.__input_cleared = false;
     
@@ -94,6 +92,8 @@ function input_tick()
     
     #endregion
     
+    
+    
     #region Mouse
     
     var _mouse_x = 0;
@@ -166,6 +166,8 @@ function input_tick()
     }
     
     #endregion
+    
+    
     
     #region Keyboard
     
@@ -244,6 +246,8 @@ function input_tick()
     
     #endregion
     
+    
+    
     #region Gamepads
     
 	if (global.__input_frame > INPUT_GAMEPADS_TICK_PREDELAY)
@@ -294,9 +298,7 @@ function input_tick()
 	                        if ((gamepad == _gamepad) && (source == INPUT_SOURCE.GAMEPAD))
 	                        {
 	                            __input_trace("Player ", _p, " gamepad disconnected");
-								
 	                            source = INPUT_SOURCE.NONE;
-	                            _any_changed = true;
 	                        }
 	                    }
                     
@@ -321,6 +323,10 @@ function input_tick()
     
     #endregion
     
+    
+    
+    #region Players
+    
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
     {
@@ -328,5 +334,124 @@ function input_tick()
         ++_p;
     }
     
-    return _any_changed;
+    #endregion
+    
+    
+    
+    #region Players status struct
+    
+    var _any_players_changed = false;
+    
+    var _connection_array    = global.__input_players_status.new_connections;
+    var _disconnection_array = global.__input_players_status.new_disconnections;
+    var _status_array        = global.__input_players_status.players;
+    
+    array_resize(_connection_array,    0);
+    array_resize(_disconnection_array, 0);
+    
+    var _p = 0;
+    repeat(INPUT_MAX_PLAYERS)
+    {
+        var _old_status = _status_array[_p];
+        
+        if (input_player_connected(_p))
+        {
+            if ((_old_status == INPUT_STATUS.NEWLY_DISCONNECTED) || (_old_status == INPUT_STATUS.DISCONNECTED))
+            {
+                _any_players_changed = true;
+                _status_array[@ _p] = INPUT_STATUS.NEWLY_CONNECTED;
+                array_push(global.__input_players_status.new_connections, _p);
+            }
+            else
+            {
+                _status_array[@ _p] = INPUT_STATUS.CONNECTED;
+            }
+        }
+        else
+        {
+            if ((_old_status == INPUT_STATUS.NEWLY_CONNECTED) || (_old_status == INPUT_STATUS.CONNECTED))
+            {
+                _any_players_changed = true;
+                _status_array[@ _p] = INPUT_STATUS.NEWLY_DISCONNECTED;
+                array_push(global.__input_players_status.new_disconnections, _p);
+            }
+            else
+            {
+                _status_array[@ _p] = INPUT_STATUS.DISCONNECTED;
+            }
+        }
+        
+        ++_p;
+    }
+    
+    global.__input_players_status.any_changed = _any_players_changed;
+    
+    #endregion
+    
+    
+    
+    #region Gamepads status struct
+    
+    var _any_gamepads_changed = false;
+    
+    var _connection_array    = global.__input_gamepads_status.new_connections;
+    var _disconnection_array = global.__input_gamepads_status.new_disconnections;
+    var _status_array        = global.__input_gamepads_status.gamepads;
+    
+    array_resize(_connection_array,    0);
+    array_resize(_disconnection_array, 0);
+    
+    if (array_length(_status_array) != gamepad_get_device_count())
+    {
+        //Resize the gamepad status array if the total device count has changed
+        //This should be rare but we need to cover it anyway
+        //array_resize() fills new array elements with zeroes but leaves old array values untouched
+        //Since INPUT_STATUS.DISCONNECTED === 0 this means new gamepads initialize as disconnected
+        array_resize(_status_array, gamepad_get_device_count());
+    }
+    
+    var _g = 0;
+    repeat(INPUT_MAX_PLAYERS)
+    {
+        var _old_status = _status_array[_g];
+        
+        if (input_gamepad_is_connected(_g))
+        {
+            if ((_old_status == INPUT_STATUS.NEWLY_DISCONNECTED) || (_old_status == INPUT_STATUS.DISCONNECTED))
+            {
+                _any_gamepads_changed = true;
+                _status_array[@ _g] = INPUT_STATUS.NEWLY_CONNECTED;
+                array_push(_connection_array, _g);
+            }
+            else
+            {
+                _status_array[@ _g] = INPUT_STATUS.CONNECTED;
+            }
+        }
+        else
+        {
+            if ((_old_status == INPUT_STATUS.NEWLY_CONNECTED) || (_old_status == INPUT_STATUS.CONNECTED))
+            {
+                _any_gamepads_changed = true;
+                _status_array[@ _g] = INPUT_STATUS.NEWLY_DISCONNECTED;
+                array_push(_disconnection_array, _g);
+            }
+            else
+            {
+                _status_array[@ _g] = INPUT_STATUS.DISCONNECTED;
+            }
+        }
+        
+        ++_g;
+    }
+    
+    global.__input_gamepads_status.any_changed = _any_gamepads_changed;
+    
+    #endregion
+    
+    
+    
+    //Legacy behaviour from v4.1 and before
+    //TODO - Remove this and direct users to use input_players_get_status()
+    return _any_players_changed;
 }
