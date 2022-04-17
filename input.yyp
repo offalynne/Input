@@ -150,6 +150,7 @@
     {"id":{"name":"input_default_joycon_axis","path":"scripts/input_default_joycon_axis/input_default_joycon_axis.yy",},"order":7,},
     {"id":{"name":"__input_key_is_ignored","path":"scripts/__input_key_is_ignored/__input_key_is_ignored.yy",},"order":16,},
     {"id":{"name":"__input_load_blacklist_csv","path":"scripts/__input_load_blacklist_csv/__input_load_blacklist_csv.yy",},"order":17,},
+    {"id":{"name":"obj_test_status","path":"objects/obj_test_status/obj_test_status.yy",},"order":23,},
     {"id":{"name":"__input_load_type_csv","path":"scripts/__input_load_type_csv/__input_load_type_csv.yy",},"order":18,},
     {"id":{"name":"__input_sdl2_database_funcs","path":"scripts/__input_sdl2_database_funcs/__input_sdl2_database_funcs.yy",},"order":21,},
     {"id":{"name":"__input_system","path":"scripts/__input_system/__input_system.yy",},"order":22,},
