@@ -268,6 +268,12 @@ function __input_class_player() constructor
             return undefined;
         }
         
+        if (_verb == "")
+        {
+            __input_error("Verb name cannot be an empty string");
+            return undefined;
+        }
+        
         var _source_verb_struct = config[$ _config_category];
         if (!is_struct(_source_verb_struct))
         {
