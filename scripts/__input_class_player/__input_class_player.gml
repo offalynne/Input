@@ -225,14 +225,14 @@ function __input_class_player() constructor
                 {
                     if (set_value != undefined)
                     {
-                        value = clamp(set_value, 0.0, 1.0);
-                        raw = value;
+                        value     = set_value;
+                        raw       = set_value;
                         set_value = undefined;
                     }
                     else
                     {
                         value = _value;
-                        raw = _raw;
+                        raw   = _raw;
                     
                         if (_raw_analogue != undefined) raw_analogue = _raw_analogue;
                         if (_analogue     != undefined) analogue     = _analogue;
