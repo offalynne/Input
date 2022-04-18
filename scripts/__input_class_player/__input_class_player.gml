@@ -225,7 +225,8 @@ function __input_class_player() constructor
                 {
                     if (set_value != undefined)
                     {
-                        value = set_value;
+                        value = clamp(set_value, 0.0, 1.0);
+                        raw = value;
                         set_value = undefined;
                     }
                     else
