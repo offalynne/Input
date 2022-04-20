@@ -44,10 +44,6 @@ function __input_gamepad_set_description()
         __input_trace("Skipping SDL2 remapping");
         description = gamepad_get_description(index);
     }
-    else if (blacklisted)
-    {
-        description = gamepad_get_description(index);
-    }
     else
     {
         //We'll try to set our description based on the SDL2 database
