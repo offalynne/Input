@@ -65,20 +65,14 @@ Oh you sweet summer child, did you think we were done?
 
 Lets go back to our create event for a hot sec.
 
-Take a gander at this new code:
+Take a gander at this new code we'll add:
 
 ```
-//Bind keyboard controls to verbs
-input_default_key(vk_left,  "left");
-input_default_key(vk_right, "right");
-input_default_key(ord("A"), "shoot"); 
-
 //Bind gamepad controls to verbs
 input_default_gamepad_button(gp_padl. "left");
 input_default_gamepad_button(gp_padr. "right");
 input_default_gamepad_button(gp_face1, "shoot");
 
-//input_player_source_set(INPUT_SOURCE.KEYBOARD_AND_MOUSE);
 input_player_source_set(INPUT_SOURCE.GAMEPAD);
 input_player_gamepad_set(0);
 ```
