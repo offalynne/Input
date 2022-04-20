@@ -46,7 +46,7 @@ On many platforms, gamepad indices do not enumerate predicatbly. Use source assi
 
 - On PS4 and PS5, `gp_select` is defined as clicking the touchpad on PlayStation 4 and PlayStation 5 which is GameMaker's default behaviour. This is in contrast to other other platforms where `gp_select` is defined as the SHARE button. [`input_binding_get_name()`](Functions-(Bindings)#input_binding_get_namebinding) will return the correct device-appropriate string.
 
-- On Switch, the first gamepad index is reserved for physically attached Joy-Cons, or the builtin controls on a the Lite model.
+- On Switch, the first gamepad index is reserved for physically attached Joy-Cons, or the builtin controls on the Lite model.
 
 ### Gamepad on Mobile
 
