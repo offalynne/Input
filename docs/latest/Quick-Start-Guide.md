@@ -31,7 +31,7 @@ Let's define some verbs then! You can put this in the Create event of your objec
 
 ```
 //Bind keyboard controls to verbs
-input_default_key(vk_left. "left");
+input_default_key(vk_left,  "left");
 input_default_key(vk_right, "right");
 input_default_key(ord("A"), "shoot"); 
 
