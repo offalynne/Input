@@ -22,6 +22,8 @@ Input sources its gamepad data from  [SDL2 Game Controller Community DB](https:/
 
 Input references datafile `controllertypes.csv` in order to identify controllers by platform type. This information is useful should you want to present players with appropriate art for controller prompts to match their device in-hand, or otherwise configure around controller type. This data is [sourced from SDL](https://github.com/libsdl-org/SDL/blob/main/src/joystick/controller_type.h) combined with a [hand-curated list](https://github.com/JujuAdams/Input/tree/community-data) derived from the [community DB](https://github.com/gabomdq/SDL_GameControllerDB).
 
+Similar data is provided for gamepad button labels and colors according to gamepad type.
+
 See [Functions (Gamepad)](Functions-(Gamepad)#input_gamepad_get_typegamepadindex) for usage.
 
 &nbsp;
