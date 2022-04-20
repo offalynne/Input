@@ -69,7 +69,7 @@ Take a gander at this new code:
 
 ```
 //Bind keyboard controls to verbs
-input_default_key(vk_left. "left");
+input_default_key(vk_left,  "left");
 input_default_key(vk_right, "right");
 input_default_key(ord("A"), "shoot"); 
 
