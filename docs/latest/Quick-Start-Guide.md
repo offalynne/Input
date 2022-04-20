@@ -17,7 +17,7 @@ To get this show on the road, first thing you're gonna want to do is to drag the
 Now since we're on a roll, why don't you make an input manager object. I'm gonna call mine `obj_input_manager`, but you might have a better or funnier name or whatever. Add yourself a Create event, a Begin Step event, and a Begin Step Event.
 
 Straight away you're going to want to put [`input_tick()`](Functions-(System)#input_tick) into your Begin Step event.
-This function handles all things Input behind the scenes, it is important to have [`input_tick()`](Functions-(System)#input_tick) once (and only once). A good way to do this is to make `obj_input_manager` [persistent](https://manual.yoyogames.com/#t=The_Asset_Editors%2FObjects.htm), and place one instance of the object in your first room.
+This function handles all things Input behind the scenes, it is important to have [`input_tick()`](Functions-(System)#input_tick) once (and only once) each step of your game. A good way to do this is by making `obj_input_manager` [persistent](https://manual.yoyogames.com/#t=The_Asset_Editors%2FObjects.htm), and placing one instance in your first room.
 
 &nbsp;
 
