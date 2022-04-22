@@ -73,16 +73,16 @@ if (rebinding)
 
 Error codes that this function can return are as follows. These are all elements of the `INPUT_BINDING_SCAN_EVENT` enum:
 
-|Name                 |Meaning                                                                                                                                                                                          |
-|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`.SOURCE_INVALID`    |Player's source is invalid, usually because their controller was disconnected before scanning started                                                                                            |
-|`.SOURCE_CHANGED`    |Player's source changed, usually because they hotswapped to another source                                                                                                                       |
-|`.GAMEPAD_CHANGED`   |Player's gamepad changed                                                                                                                                                                         |
-|`.GAMEPAD_INVALID`   |Player's gamepad is invalid, usually because their controller was disconnected during scanning                                                                                                   |
-|`.BINDING_DOESNT_MATCH_SOURCE`|Player pressed a key/button (etc.) on a source that is different to the target source                                                                                                   |
-|`.TIMEOUT`           |Either the player didn't enter a new binding or a stuck key prevented the system from working. The timeout period is defined by [`INPUT_BINDING_SCAN_TIMEOUT`](Configuration)|
-|`.SUCCESS_THIS_FRAME`|Input scanning has already succeeded this frame - this is a rare error code and should only be returned if `input_binding_scan_tick()` is being called twice in a single frame for some reason   |
-|`.ERROR_THIS_FRAME`  |Input scanning has already failed this frame - this is a rare error code and should only be returned if `input_binding_scan_tick()` is being called twice in a single frame for some reason      |
+|Name                          |Meaning                                                                                                                                                                                       |
+|------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`.SOURCE_INVALID`             |Player's source is invalid, usually because their controller was disconnected before scanning started                                                                                         |
+|`.GAMEPAD_CHANGED`            |Player's gamepad changed                                                                                                                                                                      |
+|`.GAMEPAD_INVALID`            |Player's gamepad is invalid, usually because their controller was disconnected during scanning                                                                                                |
+|`.BINDING_DOESNT_MATCH_SOURCE`|Player pressed a key/button (etc.) on a source that is different to the target source                                                                                                         |
+|`.SCAN_TIMEOUT`               |Either the player didn't enter a new binding or a stuck key prevented the system from working. The timeout period is defined by [`INPUT_BINDING_SCAN_TIMEOUT`](Configuration)                 |
+|`.LOST_FOCUS`                 |The application lost focus                                                                                                                                                                    |
+|`.SUCCESS_THIS_FRAME`         |Input scanning has already succeeded this frame - this is a rare error code and should only be returned if `input_binding_scan_tick()` is being called twice in a single frame for some reason|
+|`.ERROR_THIS_FRAME`           |Input scanning has already failed this frame - this is a rare error code and should only be returned if `input_binding_scan_tick()` is being called twice in a single frame for some reason   |
 
 &nbsp;
 
@@ -212,7 +212,3 @@ Swaps over the two verb bindings specified.
 |`binding`|binding |Binding to return the name for|
 
 Returns the [name of the binding](Binding-Names) in a way that is (mostly!) human-readable. This string can be the name of a keyboard key or the name of a gamepad axis, including direction of travel. The intention is for this information to be parsed by your own code and then used to display a string or icon to the player indicating which button/key etc. is associated with which verb. All return values are listed as [Binding Names](Binding-Names).
-
-&nbsp;
-
-&nbsp;
