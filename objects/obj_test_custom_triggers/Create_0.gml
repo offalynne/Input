@@ -4,3 +4,6 @@ input_default_key(vk_up,    "up");
 input_default_key(vk_down,  "down");
 
 input_player_source_set(INPUT_SOURCE.KEYBOARD_AND_MOUSE);
+
+//Tick slow to observe momentary values
+room_speed = 10;

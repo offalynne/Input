@@ -12,7 +12,7 @@ function __input_gamepad_set_blacklist()
         case os_windows: _os = "windows"; break;
         case os_uwp:     _os = "uwp";     break;
         case os_linux:   _os = "linux";   break;
-        case os_macosx:  _os = "mac";     break;
+        case os_macosx:  _os = "macos";   break;
         case os_ios:     _os = "ios";     break;
         case os_tvos:    _os = "tvos";    break;
         case os_android: _os = "android"; break;
@@ -31,17 +31,17 @@ function __input_gamepad_set_blacklist()
     
     if (is_struct(_os_vid_dict) && variable_struct_exists(_os_vid_dict, vendor))
     {
-        __input_trace("Warning! Controller is blacklisted (OS-specific, found by VID \"", vendor, "\")");
+        __input_trace("Warning! Controller is blacklisted (found by VID \"", vendor, "\")");
         blacklisted = true;
     }
     else if (is_struct(_os_vid_pid_dict) && variable_struct_exists(_os_vid_pid_dict, vendor + product))
     {
-        __input_trace("Warning! Controller is blacklisted (OS-specific, found by VID+PID \"", vendor + product, "\")");
+        __input_trace("Warning! Controller is blacklisted (found by VID+PID \"", vendor + product, "\")");
         blacklisted = true;
     }
     else if (is_struct(_os_guid_dict) && variable_struct_exists(_os_guid_dict, guid))
     {
-        __input_trace("Warning! Controller is blacklisted (OS-specific, found by GUID \"", guid, "\")");
+        __input_trace("Warning! Controller is blacklisted (found by GUID \"", guid, "\")");
         blacklisted = true;
     }
     else if (is_array(_os_desc_array))
@@ -52,37 +52,48 @@ function __input_gamepad_set_blacklist()
         {
             if (string_pos(_os_desc_array[_i], _description_lower) > 0)
             {
-                __input_trace("Warning! Controller is blacklisted (OS-specific, banned substring \"", _os_desc_array[_i], "\" found in description)");
+                __input_trace("Warning! Controller is blacklisted (banned substring \"", _os_desc_array[_i], "\" found in description)");
                 blacklisted = true;
                 break;
             }
             
             ++_i;
         }
-    }    
+    }
     
-     //Block devices presenting in bad states on Windows
-    if ((_os == "windows") && !blacklisted)
+    //Block device types indicated by Steam Input
+    if ((vendor != "de28") && variable_struct_exists(global.__input_ignore_gamepad_types, simple_type))
+    {
+        __input_trace("Warning! Controller type is blacklisted by Steam Input (\"", simple_type, "\")");
+        blacklisted = true;
+    }
+    
+    //Block devices presenting in bad states
+    if (!blacklisted)
     {
         var _a = gamepad_axis_count(index); 
         var _b = gamepad_button_count(index);
         
-        //Switch Pro Controller over USB
-        if ((vendor == "7e05") && (product == "0920") && (_b == 23))
+        if (_os == "windows")
         {
-            blacklisted = true;
-        }
-        else
-        {
-            //PS3 Controller
-            if ((vendor == "4c05") && (product == "6802"))
+            //Switch Pro Controller over USB
+            if ((vendor == "7e05") && (product == "0920") && (_b == 23))
             {
-                if (((_a == 4) && (_b == 19)) //Bad driver
-                ||  ((_a == 8) && (_b == 0))) //DsHidMini gyro
+                blacklisted = true;
+            }
+            else
+            {
+                //PS3 Controller
+                if ((vendor == "4c05") && (product == "6802"))
                 {
-                    blacklisted = true;
+                    if (((_a == 4) && (_b == 19)) //Bad driver
+                    ||  ((_a == 8) && (_b == 0))) //DsHidMini gyro
+                    {
+                        blacklisted = true;
+                    }
                 }
             }
+        
         }
         
         if (blacklisted)
@@ -90,5 +101,4 @@ function __input_gamepad_set_blacklist()
             __input_trace("Warning! Controller manually blacklisted (VID+PID \"", vendor + product, "\", ", _b, " buttons and ", _a, " axes)");
         }
     }
-
 }

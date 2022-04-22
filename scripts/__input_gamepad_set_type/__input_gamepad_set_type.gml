@@ -48,10 +48,35 @@ function __input_gamepad_set_type()
             guessed_type = false;
         break;
         
+        case os_operagx:
+            if (description == "Pro Controller (")
+            {
+                raw_type = "SwitchProController";
+                guessed_type = false;
+            }
+            else if (description == "Joy-Con L+R (STA")
+            {
+                raw_type = "SwitchJoyConPair";
+                guessed_type = false;
+            }
+            else if (description == "Wireless Control") //Sony PS4 and PS5 gamepads
+            {
+                raw_type = "CommunityPS4";
+                guessed_type = true;
+            }
+            else if (description == "Xbox 360 Control") //Any XInput gamepad
+            {
+                raw_type = "CommunityLikeXBox";
+                guessed_type = true;
+            }
+            
+            if (raw_type != undefined) break;
+        
+        //Opera GX also uses default case
         default:
             if (xinput == true)
             {
-                raw_type = "XBoxOneController";
+                raw_type = "CommunityLikeXBox";
                 guessed_type = true;
             }
             else if (variable_struct_exists(global.__input_raw_type_dictionary, vendor + product))

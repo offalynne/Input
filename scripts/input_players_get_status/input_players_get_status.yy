@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "(System)",
-    "path": "folders/Input/(System).yy",
+    "name": "Players",
+    "path": "folders/Input/Players.yy",
   },
   "resourceVersion": "1.0",
-  "name": "__input_resolve_steam_config",
+  "name": "input_players_get_status",
   "tags": [],
   "resourceType": "GMScript",
 }

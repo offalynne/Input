@@ -17,5 +17,11 @@ function input_player_source_set(_source, _player_index = 0)
         return undefined;
     }
     
-    global.__input_players[_player_index].source = _source;
+    var _player = global.__input_players[_player_index];
+    if (_player.source != _source)
+    {
+        _player.last_input_time = current_time;
+    }
+    
+    _player.source = _source;
 }
