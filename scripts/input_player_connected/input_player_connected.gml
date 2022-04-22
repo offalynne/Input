@@ -16,6 +16,6 @@ function input_player_connected(_player_index = 0)
     
     var _source = input_player_source_get(_player_index);
     if (_source == INPUT_SOURCE.NONE) return false;
-    if (_source == INPUT_SOURCE.GAMEPAD) return gamepad_is_connected(input_player_gamepad_get(_player_index));
+    if (_source == INPUT_SOURCE.GAMEPAD) return input_gamepad_is_connected(input_player_gamepad_get(_player_index));
     return true;
 }

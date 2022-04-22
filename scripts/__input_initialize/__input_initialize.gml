@@ -78,6 +78,22 @@ function __input_initialize()
                                             "gamepad",            //INPUT_SOURCE.GAMEPAD
                                             "joycon"];
     
+    //Two structs that are returned by input_players_get_status() and input_gamepads_get_status()
+    //These are "static" structs that are reset and populated by input_tick()
+    global.__input_players_status = {
+        any_changed: false,
+        new_connections: [],
+        new_disconnections: [],
+        players: array_create(INPUT_MAX_PLAYERS, INPUT_STATUS.DISCONNECTED),
+    }
+    
+    global.__input_gamepads_status = {
+        any_changed: false,
+        new_connections: [],
+        new_disconnections: [],
+        gamepads: array_create(gamepad_get_device_count(), INPUT_STATUS.DISCONNECTED),
+    }
+    
     //Array of players. Each player is a struct (instanceof __input_class_player) that contains lotsa juicy information
     global.__input_players = array_create(INPUT_MAX_PLAYERS, undefined);
     var _p = 0;
@@ -368,38 +384,45 @@ function __input_initialize()
     //Keyboard ignore level 2+
     if (INPUT_IGNORE_RESERVED_KEYS_LEVEL > 1)
     {
-        input_ignore_key_add(144); //num lock
-        input_ignore_key_add(145); //scroll lock
+        input_ignore_key_add(144); //Num Lock
+        input_ignore_key_add(145); //Scroll Lock
         
         if (__INPUT_ON_WEB || (os_type == os_windows) || (os_type == os_uwp))
         {
-            input_ignore_key_add(0x15); //IME key
-            input_ignore_key_add(0x16); //IME key
-            input_ignore_key_add(0x17); //IME key
-            input_ignore_key_add(0x18); //IME key
-            input_ignore_key_add(0x19); //IME key
-            input_ignore_key_add(0x1A); //IME key
-            input_ignore_key_add(0xE5); //IME key
+            input_ignore_key_add(0x15); //IME Kana/Hanguel
+            input_ignore_key_add(0x16); //IME On
+            input_ignore_key_add(0x17); //IME Junja
+            input_ignore_key_add(0x18); //IME Final
+            input_ignore_key_add(0x19); //IME Kanji/Hanja
+            input_ignore_key_add(0x1A); //IME Off
+            input_ignore_key_add(0x1C); //IME Convert
+            input_ignore_key_add(0x1D); //IME Nonconvert
+            input_ignore_key_add(0x1E); //IME Accept
+            input_ignore_key_add(0x1F); //IME Mode Change
+            input_ignore_key_add(0xE5); //IME Process
             
-            input_ignore_key_add(0xA6); //Browser key
-            input_ignore_key_add(0xA7); //Browser key
-            input_ignore_key_add(0xA8); //Browser key
-            input_ignore_key_add(0xA9); //Browser key
-            input_ignore_key_add(0xAA); //Browser key
-            input_ignore_key_add(0xAB); //Browser key
-            input_ignore_key_add(0xAC); //Browser key
+            input_ignore_key_add(0xA6); //Browser Back
+            input_ignore_key_add(0xA7); //Browser Forward
+            input_ignore_key_add(0xA8); //Browser Refresh
+            input_ignore_key_add(0xA9); //Browser Stop
+            input_ignore_key_add(0xAA); //Browser Search
+            input_ignore_key_add(0xAB); //Browser Favorites
+            input_ignore_key_add(0xAC); //Browser Start/Home
             
-            input_ignore_key_add(0xAD); //Media key
-            input_ignore_key_add(0xAE); //Media key
-            input_ignore_key_add(0xAF); //Media key
-            input_ignore_key_add(0xB0); //Media key
-            input_ignore_key_add(0xB1); //Media key
-            input_ignore_key_add(0xB2); //Media key
-            input_ignore_key_add(0xB3); //Media key
-            input_ignore_key_add(0xB4); //Media key
-            input_ignore_key_add(0xB5); //Media key
-            input_ignore_key_add(0xB6); //Media key
-            input_ignore_key_add(0xB7); //Media key
+            input_ignore_key_add(0xAD); //Volume Mute
+            input_ignore_key_add(0xAE); //Volume Down
+            input_ignore_key_add(0xAF); //Volume Up
+            input_ignore_key_add(0xB0); //Next Track
+            input_ignore_key_add(0xB1); //Previous Track
+            input_ignore_key_add(0xB2); //Stop Media
+            input_ignore_key_add(0xB3); //Play/Pause Media
+            
+            input_ignore_key_add(0xB4); //Launch Mail
+            input_ignore_key_add(0xB5); //Launch Media
+            input_ignore_key_add(0xB6); //Laumch App 1
+            input_ignore_key_add(0xB7); //Launch App 2
+            
+            input_ignore_key_add(0xFB); //Zoom
         }
     }
     

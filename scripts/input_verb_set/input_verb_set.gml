@@ -1,8 +1,9 @@
 /// @param verb
 /// @param value
 /// @param [playerIndex]
+/// @param [analogue=true]
 
-function input_verb_set(_verb, _value, _player_index = 0)
+function input_verb_set(_verb, _value, _player_index = 0, _analogue = true)
 {
     if (_player_index < 0)
     {
@@ -16,5 +17,5 @@ function input_verb_set(_verb, _value, _player_index = 0)
         return undefined;
     }
     
-    global.__input_players[_player_index].set_verb(_verb, _value);
+    global.__input_players[_player_index].set_verb(_verb, _value, _analogue);
 }

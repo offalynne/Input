@@ -72,7 +72,7 @@ function __input_gamepad_set_type()
             
             if (raw_type != undefined) break;
         
-        //OperaGX also uses default case
+        //Opera GX also uses default case
         default:
             if (xinput == true)
             {

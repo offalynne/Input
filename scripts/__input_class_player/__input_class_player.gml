@@ -52,13 +52,14 @@ function __input_class_player() constructor
     }
     
     /// @param verb
-    /// @param value
-    static set_verb = function(_verb_name, _value)
+    /// @param forceValue
+    /// @param forceAnalogue
+    static set_verb = function(_verb_name, _value, _analogue)
     {
         with(verbs[$ _verb_name])
         {
-            value = _value;
-            tick();
+            force_value    = _value;
+            force_analogue = _analogue;
         }
     }
     
@@ -104,7 +105,7 @@ function __input_class_player() constructor
         }
     }
     
-    static tick_source = function(_source_name)
+    static tick_source = function()
     {
         var _source_verb_struct = config[$ get_config_category()];
         if (is_struct(_source_verb_struct))
@@ -113,124 +114,156 @@ function __input_class_player() constructor
             var _v = 0;
             repeat(array_length(_verb_names))
             {
-                var _verb_name     = _verb_names[_v];
-                var _raw           = 0.0;
-                var _value         = 0.0;
-                var _analogue      = undefined;
-                var _raw_analogue  = undefined;
-                var _min_threshold = undefined;
-                var _max_threshold = undefined;
+                var _verb_name = _verb_names[_v];
                 
-                var _alternate_array = _source_verb_struct[$ _verb_name];
-                var _a = 0;
-                repeat(array_length(_alternate_array))
+                if ((force_value != undefined) && (force_analogue != undefined))
                 {
-                    var _binding = _alternate_array[_a];
-                    if (is_struct(_binding))
+                    //We've had our value set this frame via input_verb_set()
+                    
+                    with(verbs[$ _verb_name])
                     {
-                        switch(_binding.type)
+                        value = force_value;
+                        raw   = force_value;
+                        
+                        raw_analogue = force_analogue;
+                        analogue     = force_analogue;
+                        
+                        min_threshold = 0;
+                        max_threshold = 1;
+                        
+                        force_value    = undefined;
+                        force_analogue = undefined;
+                    }
+                }
+                else
+                {
+                    //We've not had our value set - better go find out what it is
+                    
+                    var _raw           = 0.0;
+                    var _value         = 0.0;
+                    var _analogue      = undefined;
+                    var _raw_analogue  = undefined;
+                    var _min_threshold = undefined;
+                    var _max_threshold = undefined;
+                
+                    var _alternate_array = _source_verb_struct[$ _verb_name];
+                    var _a = 0;
+                    repeat(array_length(_alternate_array))
+                    {
+                        var _binding = _alternate_array[_a];
+                        if (is_struct(_binding))
                         {
-                            case "key":
-                                if (keyboard_check(_binding.value))
-                                {
-                                    _value        = 1.0;
-                                    _raw          = 1.0;
-                                    _analogue     = false;
-                                    _raw_analogue = false;
-                                }
-                                
-                                //If we're on Android then check the alternate keyboard key as well
-                                if (os_type == os_android)
-                                {
-                                    if ((_binding.android_lowercase != undefined) && keyboard_check(_binding.android_lowercase))
+                            switch(_binding.type)
+                            {
+                                case "key":
+                                    if (keyboard_check(_binding.value))
                                     {
                                         _value        = 1.0;
                                         _raw          = 1.0;
                                         _analogue     = false;
                                         _raw_analogue = false;
                                     }
-                                }
-                            break;
-                            
-                            case "gamepad button":
-                                if (input_gamepad_check(gamepad, _binding.value))
-                                {
-                                    _value        = 1.0;
-                                    _raw          = 1.0;
-                                    _analogue     = false;
-                                    _raw_analogue = false;
-                                }
-                            break;
-                            
-                            case "mouse button":
-                                if (input_mouse_check(_binding.value))
-                                {
-                                    _value        = 1.0;
-                                    _raw          = 1.0;
-                                    _analogue     = false;
-                                    _raw_analogue = false;
-                                }
-                            break;
-                            
-                            case "mouse wheel up":
-                                if (mouse_wheel_up())
-                                {
-                                    _value        = 1.0;
-                                    _raw          = 1.0;
-                                    _analogue     = false;
-                                    _raw_analogue = false;
-                                }
-                            break;
-                            
-                            case "mouse wheel down":
-                                if (mouse_wheel_down())
-                                {
-                                    _value        = 1.0;
-                                    _raw          = 1.0;
-                                    _analogue     = false;
-                                    _raw_analogue = false;
-                                }
-                            break;
-                            
-                            case "gamepad axis":
-                                var _found_raw = input_gamepad_value(gamepad, _binding.value);
-                                var _axis_threshold = axis_threshold_get(_binding.value);
                                 
-                                if (_binding.axis_negative) _found_raw = -_found_raw;
+                                    //If we're on Android then check the alternate keyboard key as well
+                                    if (os_type == os_android)
+                                    {
+                                        if ((_binding.android_lowercase != undefined) && keyboard_check(_binding.android_lowercase))
+                                        {
+                                            _value        = 1.0;
+                                            _raw          = 1.0;
+                                            _analogue     = false;
+                                            _raw_analogue = false;
+                                        }
+                                    }
+                                break;
+                            
+                                case "gamepad button":
+                                    if (input_gamepad_check(gamepad, _binding.value))
+                                    {
+                                        _value        = 1.0;
+                                        _raw          = 1.0;
+                                        _analogue     = false;
+                                        _raw_analogue = false;
+                                    }
+                                break;
+                            
+                                case "mouse button":
+                                    if (input_mouse_check(_binding.value))
+                                    {
+                                        _value        = 1.0;
+                                        _raw          = 1.0;
+                                        _analogue     = false;
+                                        _raw_analogue = false;
+                                    }
+                                break;
+                            
+                                case "mouse wheel up":
+                                    if (mouse_wheel_up())
+                                    {
+                                        _value        = 1.0;
+                                        _raw          = 1.0;
+                                        _analogue     = false;
+                                        _raw_analogue = false;
+                                    }
+                                break;
+                            
+                                case "mouse wheel down":
+                                    if (mouse_wheel_down())
+                                    {
+                                        _value        = 1.0;
+                                        _raw          = 1.0;
+                                        _analogue     = false;
+                                        _raw_analogue = false;
+                                    }
+                                break;
+                            
+                                case "gamepad axis":
+                                    //Grab the raw value directly from the gamepad
+                                    //We keep a hold of this value for use in 2D checkers
+                                    var _found_raw = input_gamepad_value(gamepad, _binding.value);
+                                    
+                                    var _axis_threshold = axis_threshold_get(_binding.value);
+                                    
+                                    //Correct the raw value's sign if needed
+                                    if (_binding.axis_negative) _found_raw = -_found_raw;
+                                    
+                                    //The return value from this binding needs to be corrected using the thresholds previously defined
+                                    var _found_value = _found_raw;
+                                    _found_value = (_found_value - _axis_threshold.mini) / (_axis_threshold.maxi - _axis_threshold.mini);
+                                    _found_value = clamp(_found_value, 0.0, 1.0);
+                                    
+                                    //If this binding is returning a value bigger than whatever we found before, let it override the old value
+                                    //This is useful for situations where both the left + right analogue sticks are bound to movement
+                                    if (_found_raw > _raw)
+                                    {
+                                        _raw           = _found_raw;
+                                        _raw_analogue  = true;
+                                        _min_threshold = _axis_threshold.mini;
+                                        _max_threshold = _axis_threshold.maxi;
+                                    }
                                 
-                                var _found_value = _found_raw;
-                                _found_value = (_found_value - _axis_threshold.mini) / (_axis_threshold.maxi - _axis_threshold.mini);
-                                _found_value = clamp(_found_value, 0.0, 1.0);
-                                
-                                if (_found_raw > _raw)
-                                {
-                                    _raw           = _found_raw;
-                                    _raw_analogue  = true;
-                                    _min_threshold = _axis_threshold.mini;
-                                    _max_threshold = _axis_threshold.maxi;
-                                }
-                                
-                                if (_found_value > _value)
-                                {
-                                    _value    = _found_value;
-                                    _analogue = true;
-                                }
-                            break;
+                                    if (_found_value > _value)
+                                    {
+                                        _value    = _found_value;
+                                        _analogue = true;
+                                    }
+                                break;
+                            }
                         }
+                    
+                        ++_a;
                     }
-                    
-                    ++_a;
-                }
                 
-                with(verbs[$ _verb_name])
-                {
-                    value = _value;
-                    raw = _raw;
-                    
-                    if (_raw_analogue != undefined) raw_analogue = _raw_analogue;
-                    if (_analogue     != undefined) analogue     = _analogue;
-                    min_threshold = _min_threshold;
-                    max_threshold = _max_threshold;
+                    with(verbs[$ _verb_name])
+                    {
+                        value = _value;
+                        raw   = _raw;
+                        
+                        if (_raw_analogue != undefined) raw_analogue = _raw_analogue;
+                        if (_analogue     != undefined) analogue     = _analogue;
+                        min_threshold = _min_threshold;
+                        max_threshold = _max_threshold;
+                    }
                 }
                 
                 ++_v;
@@ -265,6 +298,12 @@ function __input_class_player() constructor
         if (_alternate >= INPUT_MAX_ALTERNATE_BINDINGS)
         {
             __input_error("\"alternate\" argument too large (", _alternate, " must be less than ", INPUT_MAX_ALTERNATE_BINDINGS, ")\nIncrease INPUT_MAX_ALTERNATE_BINDINGS for more alternate binding slots");
+            return undefined;
+        }
+        
+        if (_verb == "")
+        {
+            __input_error("Verb name cannot be an empty string");
             return undefined;
         }
         
