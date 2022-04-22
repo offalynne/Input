@@ -18,6 +18,7 @@
 - [`input_player_gamepad_get([playerIndex])`](Functions-(Players)#input_player_gamepad_getplayerindex)
 - [`input_player_gamepad_get_type([playerIndex])`](Functions-(Players)#input_player_gamepad_get_typeplayerindex)
 - [`input_player_gamepad_get_invalid_bindings([playerIndex])`](Functions-(Players)#input_player_gamepad_get_invalid_bindingsplayerindex)
+- [`input_players_get_status()`](Functions-(Players)#input_players_get_status)
 
 ### [Default Bindings](Functions-(Default-Bindings))
 
@@ -117,6 +118,7 @@
 - [`input_gamepad_get_dpad_style(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_get_dpad_stylegamepadindex)
 - [`input_gamepad_gamepad_get_map(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_gamepad_get_mapgamepadindex)
 - [`input_gamepad_constant_get_name(constant)`](Functions-(Gamepad)#input_gamepad_constant_get_nameconstant)
+- [`input_gamepads_get_status()`](Functions-(Gamepad)#input_gamepads_get_status)
 
 ### [Keyboard (Direct)](Functions-(Keyboard))
 
