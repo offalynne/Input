@@ -208,3 +208,34 @@ If there is no gamepad connected for the given index, an empty array will be ret
 |Name          |Datatype|Purpose                                               |
 |--------------|--------|------------------------------------------------------|
 |`GMconstant`  |integer |Button or axis to stringify, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
+
+&nbsp;
+
+&nbsp;
+
+### `input_gamepads_get_status()`
+
+*Returns:* Struct, detailing the state of gamepad connection and disconnection
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+This function returns a struct that describes the state of each gamepad, following the formatting below.
+
+```
+{
+    any_changes: <boolean that indicates whether anything has changed at all>
+    new_connections: [
+        <array of gamepad indexes that are newly connected this step>
+    ],
+    new_disconnections: [
+        <array of gamepad indexes that are newly disconnected this step>
+    ],
+    gamepads: [
+        <array of values from the INPUT_STATUS enum, one for each gamepad available on this platform>
+    ],
+}
+```
+
+!> Do not edit the struct that this function returns! You may encounter undefined behaviour if you do.
