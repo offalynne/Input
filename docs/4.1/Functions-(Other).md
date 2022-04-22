@@ -93,7 +93,7 @@ else
 
 &nbsp;
 
-### `input_verb_set(verb, value, [playerIndex])`
+### `input_verb_set(verb, value, [playerIndex], [analogue])`
 
 *Returns:* N/A (`undefined`)
 
@@ -102,6 +102,7 @@ else
 |`verb`         |[verb](Verbs-and-Alternate-Bindings) |[Verb](Verbs-and-Alternate-Bindings) to set                                                             |
 |`value`        |number                               |Value to set for the verb, from `-1` to `+1` (though most verbs will only expect values from `0` to `+1`|
 |`[playerIndex]`|integer                              |Player to target. If not specified, player 0 is used                                                    |
+|`[analogue]`   |boolean                              |Whether to treat the verb as analogue or not. If not specified, the verb is treated as an analogue input|
 
 Sets a value directly for a verb. It is recommend that verb values are set before executing [`input_tick()`](Functions-(System)#input_tick), or the change will not take effect until the following frame.
 
