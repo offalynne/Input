@@ -110,7 +110,6 @@
 - [`input_gamepad_value(gamepadIndex, GMconstant)`](Functions-(Gamepad)#input_gamepad_valuegamepadindex-gmconstant)
 - [`input_gamepad_is_axis(gamepadIndex, GMconstant)`](Functions-(Gamepad)#input_gamepad_is_axisgamepadindex-gmconstant)
 - [`input_gamepad_is_connected(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_is_connectedgamepadindex)
-- [`input_gamepad_disconnected()`](Functions-(Gamepad)#input_gamepad_disconnected)
 - [`input_gamepad_get_button_color(gamepadIndex, GMconstant)`](Functions-(Gamepad)#input_gamepad_get_button_colorgamepadindex-gmconstant)
 - [`input_gamepad_get_button_label(gamepadIndex, GMconstant)`](Functions-(Gamepad)#input_gamepad_get_button_labelgamepadindex-gmconstant)
 - [`input_gamepad_get_description(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_get_descriptiongamepadindex)
