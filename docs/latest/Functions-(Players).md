@@ -141,6 +141,8 @@ The array returned by this function contains structs. Each struct contains two m
 
 This function returns a struct that describes the state of each player's connectivity, following the formatting below. This data is useful for detecting a change in player state wherein the game may need to create a new instance for that player or show a disconnection warning.
 
+!> Do not edit the struct that this function returns! You may encounter undefined behaviour if you do.
+
 ```
 {
     any_changes: <boolean that indicates whether anything has changed at all>
@@ -156,4 +158,11 @@ This function returns a struct that describes the state of each player's connect
 }
 ```
 
-!> Do not edit the struct that this function returns! You may encounter undefined behaviour if you do.
+The `INPUT_STATUS` enum contains the following members:
+
+|Name                 |Purpose                                         |
+|---------------------|------------------------------------------------|
+|`.NEWLY_DISCONNECTED`|Player has been disconnected this frame         |
+|`.DISCONNECTED`      |Player is disconnected (for at least two frames)|
+|`.NEWLY_CONNECTED`   |Player has been connected this frame            |
+|`.CONNECTED`         |Player is connected (for at least two frames)   |
