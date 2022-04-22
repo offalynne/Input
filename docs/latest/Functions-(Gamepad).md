@@ -223,6 +223,8 @@ If there is no gamepad connected for the given index, an empty array will be ret
 
 This function returns a struct that describes the state of each gamepad, following the formatting below.
 
+!> Do not edit the struct that this function returns! You may encounter undefined behaviour if you do.
+
 ```
 {
     any_changes: <boolean that indicates whether anything has changed at all>
@@ -238,4 +240,11 @@ This function returns a struct that describes the state of each gamepad, followi
 }
 ```
 
-!> Do not edit the struct that this function returns! You may encounter undefined behaviour if you do.
+The `INPUT_STATUS` enum contains the following members:
+
+|Name                 |Purpose                                          |
+|---------------------|-------------------------------------------------|
+|`.NEWLY_DISCONNECTED`|Gamepad has been disconnected this frame         |
+|`.DISCONNECTED`      |Gamepad is disconnected (for at least two frames)|
+|`.NEWLY_CONNECTED`   |Gamepad has been connected this frame            |
+|`.CONNECTED`         |Gamepad is connected (for at least two frames)   |
