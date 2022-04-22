@@ -126,3 +126,34 @@ The array returned by this function contains structs. Each struct contains two m
 |`verb`     |[Verb](https://www.jujuadams.com/Input/#/3.5/Verbs-and-Alternate-Bindings) that contains the invalid binding                                                                       |
 |`alternate`|[Alternate index](https://www.jujuadams.com/Input/#/3.5/Verbs-and-Alternate-Bindings) for the invalid binding                                                                      |
 |`gm`       |[Virtual button/axis constant](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html) that is missing from the player's gamepad|
+
+&nbsp;
+
+&nbsp;
+
+### `input_players_get_status()`
+
+*Returns:* Struct, detailing the state of player connection and disconnection
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+This function returns a struct that describes the state of each player's connectivity, following the formatting below. This data is useful for detecting a change in player state wherein the game may need to create a new instance for that player or show a disconnection warning.
+
+```
+{
+    any_changes: <boolean that indicates whether anything has changed at all>
+    new_connections: [
+        <array of player indexes that are newly connected this step>
+    ],
+    new_disconnections: [
+        <array of player indexes that are newly disconnected this step>
+    ],
+    players: [
+        <array of values from the INPUT_STATUS enum, one for each player up to INPUT_MAX_PLAYERS>
+    ],
+}
+```
+
+!> Do not edit the struct that this function returns! You may encounter undefined behaviour if you do.
