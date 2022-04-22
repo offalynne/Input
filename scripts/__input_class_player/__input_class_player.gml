@@ -114,7 +114,7 @@ function __input_class_player() constructor
             var _v = 0;
             repeat(array_length(_verb_names))
             {
-                var _verb_name     = _verb_names[_v];
+                var _verb_name = _verb_names[_v];
                 
                 if ((force_value != undefined) && (force_analogue != undefined))
                 {
@@ -218,15 +218,22 @@ function __input_class_player() constructor
                                 break;
                             
                                 case "gamepad axis":
+                                    //Grab the raw value directly from the gamepad
+                                    //We keep a hold of this value for use in 2D checkers
                                     var _found_raw = input_gamepad_value(gamepad, _binding.value);
+                                    
                                     var _axis_threshold = axis_threshold_get(_binding.value);
                                     
+                                    //Correct the raw value's sign if needed
                                     if (_binding.axis_negative) _found_raw = -_found_raw;
-                                
+                                    
+                                    //The return value from this binding needs to be corrected using the thresholds previously defined
                                     var _found_value = _found_raw;
                                     _found_value = (_found_value - _axis_threshold.mini) / (_axis_threshold.maxi - _axis_threshold.mini);
                                     _found_value = clamp(_found_value, 0.0, 1.0);
-                                
+                                    
+                                    //If this binding is returning a value bigger than whatever we found before, let it override the old value
+                                    //This is useful for situations where both the left + right analogue sticks are bound to movement
                                     if (_found_raw > _raw)
                                     {
                                         _raw           = _found_raw;
