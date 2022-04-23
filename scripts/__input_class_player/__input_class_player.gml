@@ -119,7 +119,8 @@ function __input_class_player() constructor
                 
                 if ((_verb.force_value != undefined) && (_verb.force_analogue != undefined))
                 {
-                    //We've had our value set this frame via input_verb_set()                    
+                    //We've had our value set this frame via input_verb_set()
+                    
                     with(_verb)
                     {
                         value = force_value;
