@@ -1,4 +1,4 @@
-#macro __INPUT_VERSION "4.2.0.1"
+#macro __INPUT_VERSION "5.0.0 alpha"
 #macro __INPUT_DATE    "2022-04-23"
 #macro __INPUT_DEBUG   false
 
