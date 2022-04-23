@@ -114,13 +114,15 @@ function __input_class_player() constructor
             var _v = 0;
             repeat(array_length(_verb_names))
             {
-                var _verb_name = _verb_names[_v];
+                var _verb_name = _verb_names[_v];                
+                var _verb      = verbs[$ _verb_name];
+                var _force_value    = _verb.force_value;
+                var _force_analogue = _verb.force_analogue;
                 
-                if ((force_value != undefined) && (force_analogue != undefined))
+                if ((_force_value != undefined) && (_force_analogue != undefined))
                 {
-                    //We've had our value set this frame via input_verb_set()
-                    
-                    with(verbs[$ _verb_name])
+                    //We've had our value set this frame via input_verb_set()                    
+                    with(_verb)
                     {
                         value = force_value;
                         raw   = force_value;
@@ -254,7 +256,7 @@ function __input_class_player() constructor
                         ++_a;
                     }
                 
-                    with(verbs[$ _verb_name])
+                    with(_verb)
                     {
                         value = _value;
                         raw   = _raw;
