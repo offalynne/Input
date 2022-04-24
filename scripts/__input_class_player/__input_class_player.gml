@@ -4,6 +4,7 @@ function __input_class_player() constructor
     gamepad         = INPUT_NO_GAMEPAD;
     sources         = array_create(INPUT_SOURCE.__SIZE, undefined);
     verbs           = {};
+    combo_trackers  = {};
     last_input_time = -1;
     cursor          = new __input_class_cursor();
     
@@ -84,13 +85,74 @@ function __input_class_player() constructor
         
         tick_source();
         
-        //Update our verbs
+        //Update our chords
+        //We directly access verb values to detect state here
+        tick_chord_verbs();
+        
+        //Update our combos
+        //We directly access verb values to detect state here
+        tick_combo_verbs();
+        
+        //Update our basic verbs first
         tick_verbs();
         
         with(cursor)
         {
             tick(other.rebind_state);
             limit();
+        }
+    }
+    
+    static tick_chord_verbs = function()
+    {
+        var _i = 0;
+        repeat(array_length(global.__input_chord_array))
+        {
+            var _verb_name = global.__input_chord_array[_i];
+            var _chord_verb_array = global.__input_chord_dict[$ _verb_name];
+            
+            var _all_held = true;
+            var _j = 0;
+            repeat(array_length(_chord_verb_array))
+            {
+                if (verbs[$ _chord_verb_array[_j]].value <= 0)
+                {
+                    _all_held = false;
+                    break;
+                }
+                
+                ++_j;
+            }
+            
+            if (_all_held)
+            {
+                with(verbs[$ _verb_name])
+                {
+                    value = 1;
+                    raw   = 1;
+                }
+            }
+            
+            ++_i;
+        }
+    }
+    
+    static tick_combo_verbs = function()
+    {
+        var _i = 0;
+        repeat(array_length(global.__input_chord_array))
+        {
+            var _verb_name = global.__input_chord_array[_i];
+            if (combo_trackers[$ _verb_name].__tick() == __INPUT_COMBO_STATE.__SUCCESS)
+            {
+                with(verbs[$ _verb_name])
+                {
+                    value = 1;
+                    raw   = 1;
+                }
+            }
+            
+            ++_i;
         }
     }
     
@@ -339,15 +401,58 @@ function __input_class_player() constructor
         //Set up a verb container on the player separate from the bindings
         if (!is_struct(verbs[$ _verb]))
         {
-            if (__INPUT_DEBUG) __input_trace("Verb not found on player, creating a new one");
+            if (__INPUT_DEBUG) __input_trace("Verb \"", _verb, "\" not found on player, creating a new one as a basic verb");
             
             var _verb_struct = new __input_class_verb();
             _verb_struct.name = _verb;
+            _verb_struct.type = "basic";
             
             verbs[$ _verb] = _verb_struct;
         }
         
         return _binding_struct;
+    }
+    
+    static __add_chord = function(_name)
+    {
+        //Set up a verb container on the player separate from the bindings
+        if (is_struct(verbs[$ _name]))
+        {
+            __input_error("Chord \"", _name, "\" has already been added to this player");
+        }
+        else
+        {
+            if (__INPUT_DEBUG) __input_trace("Verb \"", _name, "\" not found on player, creating a new one as a chord");
+            
+            var _verb_struct = new __input_class_verb();
+            _verb_struct.name     = _name;
+            _verb_struct.type     = "chord";
+            _verb_struct.analogue = false; //Chord verbs are never analogue
+            
+            verbs[$ _name] = _verb_struct;
+        }
+    }
+    
+    static __add_combo = function(_name)
+    {
+        //Set up a verb container on the player separate from the bindings
+        if (is_struct(verbs[$ _name]))
+        {
+            __input_error("Combo \"", _name, "\" has already been added to this player");
+        }
+        else
+        {
+            if (__INPUT_DEBUG) __input_trace("Verb \"", _name, "\" not found on player, creating a new one as a combo");
+            
+            var _verb_struct = new __input_class_verb();
+            _verb_struct.name     = _name;
+            _verb_struct.type     = "combo";
+            _verb_struct.analogue = false; //Combo verbs are never analogue
+            verbs[$ _name] = _verb_struct;
+            
+            //We also need to store additional tracking information for combos
+            combo_trackers[$ _name] = new __input_class_combo_tracker(_name, global.__input_combo_dict[$ _name]);
+        }
     }
     
     /// @param source

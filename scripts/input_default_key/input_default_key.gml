@@ -5,6 +5,7 @@
 function input_default_key(_key, _verb, _alternate = 0)
 {
 	__input_initialize();
+    __input_verb_define(_verb);
 	
     if (__INPUT_DEBUG) __input_trace("Setting default keyboard binding...");
     

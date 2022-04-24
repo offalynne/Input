@@ -66,11 +66,21 @@ function __input_initialize()
     //Whether to swap A/B gamepad buttons for default bindings
     global.__input_swap_ab = false;
     
+    //Arrays/dictionaries to track verbs, chords, and combos
+    global.__input_verb_dict   = {};
+    global.__input_verb_array  = [];
+    
+    global.__input_chord_dict  = {};
+    global.__input_chord_array = [];
+    
+    global.__input_combo_dict  = {};
+    global.__input_combo_array = [];
+    
     //Struct to store all the keyboard keys we want to ignore
     global.__input_ignore_key_dict = {};
     
     //Struct to store ignored gamepad types
-    global.__input_ignore_gamepad_types = {}
+    global.__input_ignore_gamepad_types = {};
     
     //Names for sources. I suspect this'll get sliced out at some point when I start recoding the binding system to serialise per controller type
     global.__input_config_category_names = ["none",               //INPUT_SOURCE.NONE

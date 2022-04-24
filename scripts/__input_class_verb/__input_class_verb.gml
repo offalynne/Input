@@ -1,10 +1,7 @@
-/// @param type
-/// @param value
-/// @param axisNegative
-
 function __input_class_verb() constructor
 {
     name = undefined;
+    type = undefined;
     
     consumed = false;
     

@@ -3,6 +3,7 @@
 function input_default_gamepad_swap_ab(_state)
 {
 	__input_initialize();
+    __input_verb_define(_verb);
 	
     with(global.__input_default_player)
     {

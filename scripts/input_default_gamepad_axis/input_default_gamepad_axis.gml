@@ -6,7 +6,8 @@
 function input_default_gamepad_axis(_axis, _negative, _verb, _alternate = 0)
 {
 	__input_initialize();
-	
+    __input_verb_define(_verb);
+    
     if (__INPUT_DEBUG) __input_trace("Setting default gamepad axis binding...");
     
     global.__input_gamepad_default_defined = true;

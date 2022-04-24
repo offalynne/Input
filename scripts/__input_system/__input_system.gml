@@ -93,6 +93,8 @@ enum INPUT_SOURCE
     __SIZE
 }
 
+#macro INPUT_NO_GAMEPAD  -1
+
 enum __INPUT_MAPPING
 {
     BUTTON,
@@ -114,7 +116,19 @@ enum INPUT_STATUS
     CONNECTED          =  2,
 }
 
-#macro INPUT_NO_GAMEPAD  -1
+enum __INPUT_COMBO_STATE
+{
+    __FAIL    = -1,
+    __WAITING =  0,
+    __SUCCESS =  1,
+}
+
+enum __INPUT_COMBO_PHASE_TYPE
+{
+    __PRESS,
+    __RELEASE,
+    __HOLD_START,
+}
 
 
 
@@ -265,6 +279,35 @@ function __input_error()
     }
     
     show_error("Input:\n" + _string + "\n ", false);
+}
+
+function __input_verb_define(_name)
+{
+    __input_ensure_unique_verb_name(_name);
+    
+    global.__input_verb_dict[$ _name] = true;
+    array_push(global.__input_verb_array, _name);
+}
+
+function __input_ensure_unique_verb_name(_name)
+{
+    if (variable_struct_exists(global.__input_verb_dict, _name))
+    {
+        __input_error("A verb named \"", _name, "\" already exists");
+        return;
+    }
+    
+    if (variable_struct_exists(global.__input_chord_dict, _name))
+    {
+        __input_error("A chord named \"", _name, "\" already exists");
+        return;
+    }
+    
+    if (variable_struct_exists(global.__input_combo_dict, _name))
+    {
+        __input_error("A combo named \"", _name, "\" already exists");
+        return;
+    }
 }
 
 function __input_get_previous_time()
