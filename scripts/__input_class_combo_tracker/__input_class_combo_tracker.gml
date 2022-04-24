@@ -11,7 +11,9 @@ function __input_class_combo_tracker(_name, _combo_definition_struct) constructo
     }
     
     __phase = 0;
-    __held_verbs_array = [];
+    
+    __held_verbs_array     = [];
+    __held_verbs_struct    = {};
     __retrigger_verbs_dict = {};
     
     static __reset = function()
@@ -50,27 +52,31 @@ function __input_class_combo_tracker(_name, _combo_definition_struct) constructo
         {
             case __INPUT_COMBO_PHASE_TYPE.__PRESS:
             case __INPUT_COMBO_PHASE_TYPE.__HOLD_START:
-                
-                //FIXME - .held and .press won't work here!
-                
                 //Check that all the verbs we expect to be held from previous phases are indeed being held
                 var _i = 0;
                 repeat(array_length(__held_verbs_array))
                 {
-                    if (!_player_verbs_struct[$ _phase_verbs_array[_i]].held) return __INPUT_COMBO_STATE.__FAIL;
+                    if (_player_verbs_struct[$ _phase_verbs_array[_i]].value <= 0) return __INPUT_COMBO_STATE.__FAIL;
                     ++_i;
                 }
                 
-                //Check that no incorrect verbs have been pressed
+                //Check that no incorrect verbs are being pressed
                 var _i = 0;
                 repeat(array_length(global.__input_verb_array))
                 {
                     var _verb_name = global.__input_verb_array[_i];
-                    if (_player_verbs_struct[$ _verb_name].press && !variable_struct_exists(_phase_verbs_struct, _verb_name)) return __INPUT_COMBO_STATE.__FAIL;
+                    
+                    if ((_player_verbs_struct[$ _verb_name].value > 0)
+                    &&  !variable_struct_exists(__held_verbs_struct, _verb_name)
+                    &&  !variable_struct_exists(_phase_verbs_struct, _verb_name))
+                    {
+                        return __INPUT_COMBO_STATE.__FAIL;
+                    }
+                    
                     ++_i;
                 }
                 
-                //Check that all the verbs we expect to be held are indeed being held
+                //Retrigger verbs that this phase is checking against
                 var _i = 0;
                 repeat(array_length(_phase_verbs_array))
                 {
@@ -78,7 +84,7 @@ function __input_class_combo_tracker(_name, _combo_definition_struct) constructo
             
                     if (variable_struct_exists(__retrigger_verbs_dict, _verb_name))
                     {
-                        if (!_player_verbs_struct[$ _verb_name].held)
+                        if (_player_verbs_struct[$ _verb_name].value > 0)
                         {
                             return __INPUT_COMBO_STATE.__WAITING;
                         }
@@ -89,7 +95,7 @@ function __input_class_combo_tracker(_name, _combo_definition_struct) constructo
                     }
                     else
                     {
-                        if (!_player_verbs_struct[$ _verb_name].held) return __INPUT_COMBO_STATE.__WAITING;
+                        if (_player_verbs_struct[$ _verb_name].value <= 0) return __INPUT_COMBO_STATE.__WAITING;
                     }
                     
                     ++_i;
@@ -103,7 +109,11 @@ function __input_class_combo_tracker(_name, _combo_definition_struct) constructo
                     var _verb_name = _phase_verbs_array[_i];
                     __retrigger_verbs_dict[$ _verb_name] = true;
                     
-                    if (_phase_type == __INPUT_COMBO_PHASE_TYPE.__HOLD_START) array_push(__held_verbs_array, _verb_name);
+                    if (_phase_type == __INPUT_COMBO_PHASE_TYPE.__HOLD_START)
+                    {
+                        array_push(__held_verbs_array, _verb_name);
+                        __held_verbs_struct[$ _verb_name] = true;
+                    }
                     
                     ++_i;
                 }
@@ -116,14 +126,16 @@ function __input_class_combo_tracker(_name, _combo_definition_struct) constructo
                 repeat(array_length(__held_verbs_array))
                 {
                     //Remove any matching held verbs from our tracking array
-                    if (variable_struct_exists(_phase_verbs_struct, __held_verbs_array[_i]))
+                    var _verb_name = __held_verbs_array[_i];
+                    if (variable_struct_exists(_phase_verbs_struct, _verb_name))
                     {
                         array_delete(__held_verbs_array, _i, 1);
+                        variable_struct_remove(__held_verbs_struct, _verb_name);
                     }
                     else
                     {
                         //Otherwise perform the stardard held verb check
-                        if (!_player_verbs_struct[$ _phase_verbs_array[_i]].held) return __INPUT_COMBO_STATE.__FAIL;
+                        if (_player_verbs_struct[$ _verb_name].value <= 0) return __INPUT_COMBO_STATE.__FAIL;
                         ++_i;
                     }
                 }
@@ -133,7 +145,7 @@ function __input_class_combo_tracker(_name, _combo_definition_struct) constructo
                 repeat(array_length(_phase_verbs_array))
                 {
                     var _verb_name = _phase_verbs_array[_i];
-                    if (_player_verbs_struct[$ _verb_name].held) return __INPUT_COMBO_STATE.__WAITING;
+                    if (_player_verbs_struct[$ _verb_name].value > 0) return __INPUT_COMBO_STATE.__WAITING;
                     
                     //Also remove this verbs from our retrigger dictionary too for good measure
                     variable_struct_remove(__retrigger_verbs_dict, _verb_name);
