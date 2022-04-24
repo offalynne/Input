@@ -1,6 +1,8 @@
-function __input_class_combo_definition(_name) constructor
+function __input_class_combo_definition(_name, _phase_timeout) constructor
 {
-    __name        = _name;
+    __name          = _name;
+    __phase_timeout = _phase_timeout;
+    
     __phase_array = [];
     
     static __ensure_simple_verb = function(_name)
@@ -73,7 +75,7 @@ function __input_class_combo_definition(_name) constructor
         return self;
     }
     
-    static hold_start = function()
+    static hold = function()
     {
         var _verb_array = array_create(argument_count);
         var _verb_struct = {};

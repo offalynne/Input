@@ -140,10 +140,10 @@ function __input_class_player() constructor
     static tick_combo_verbs = function()
     {
         var _i = 0;
-        repeat(array_length(global.__input_chord_array))
+        repeat(array_length(global.__input_combo_array))
         {
-            var _verb_name = global.__input_chord_array[_i];
-            if (combo_trackers[$ _verb_name].__tick() == __INPUT_COMBO_STATE.__SUCCESS)
+            var _verb_name = global.__input_combo_array[_i];
+            if (combo_trackers[$ _verb_name].__tick(verbs) == __INPUT_COMBO_STATE.__SUCCESS)
             {
                 with(verbs[$ _verb_name])
                 {

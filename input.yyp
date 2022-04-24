@@ -107,6 +107,7 @@
     {"id":{"name":"input_player_gamepad_get","path":"scripts/input_player_gamepad_get/input_player_gamepad_get.yy",},"order":3,},
     {"id":{"name":"obj_test_gamepad_map","path":"objects/obj_test_gamepad_map/obj_test_gamepad_map.yy",},"order":15,},
     {"id":{"name":"input_player_gamepad_get_type","path":"scripts/input_player_gamepad_get_type/input_player_gamepad_get_type.yy",},"order":4,},
+    {"id":{"name":"obj_test_chords_and_combos","path":"objects/obj_test_chords_and_combos/obj_test_chords_and_combos.yy",},"order":24,},
     {"id":{"name":"input_player_gamepad_set","path":"scripts/input_player_gamepad_set/input_player_gamepad_set.yy",},"order":6,},
     {"id":{"name":"input_player_source_get","path":"scripts/input_player_source_get/input_player_source_get.yy",},"order":7,},
     {"id":{"name":"input_player_source_set","path":"scripts/input_player_source_set/input_player_source_set.yy",},"order":8,},
