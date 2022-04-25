@@ -21,7 +21,6 @@ input_combo_define("konami")
 
 input_combo_define("sweep right->up")
 .press("right")
-.press("right")
 .press("up")
 .press("accept");
 
@@ -29,5 +28,10 @@ input_combo_define("power attack right")
 .hold("accept")
 .press("right")
 .press("right")
-.press("right")
 .release("accept", "right");
+
+input_combo_define("fireball")
+.press("accept")
+.press("down")
+.press("right")
+.press_or_release("accept");

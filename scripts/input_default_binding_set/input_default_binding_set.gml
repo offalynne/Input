@@ -37,7 +37,8 @@ function input_default_binding_set(_verb, _binding, _alternate = 0)
     {
         //Make sure to create a new binding struct for each player as we don't want a change in one place to propagate to all players
         _binding = _binding.__duplicate();
-        set_binding(_config_category, _verb, _alternate, _binding);
+        global.__input_players[_p].set_binding(_config_category, _verb, _alternate, _binding);
+        
         ++_p;
     }
 }

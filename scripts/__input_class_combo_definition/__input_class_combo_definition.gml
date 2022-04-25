@@ -70,6 +70,32 @@ function __input_class_combo_definition(_name, _phase_timeout) constructor
         return self;
     }
     
+    static press_or_release = function()
+    {
+        var _verb_array = array_create(argument_count);
+        var _verb_struct = {};
+        
+        var _i = 0;
+        repeat(array_length(_verb_array))
+        {
+            var _verb_name = argument[_i];
+            __ensure_verb_is_basic_or_chord(_verb_name);
+            
+            _verb_array[@ _i] = _verb_name;
+            _verb_struct[$ _verb_name] = _i;
+            
+            ++_i;
+        }
+        
+        array_push(__phase_array, {
+            __type:  __INPUT_COMBO_PHASE_TYPE.__PRESS_OR_RELEASE,
+            __verb_array: _verb_array,
+            __verb_struct: _verb_struct,
+        });
+        
+        return self;
+    }
+    
     static hold = function()
     {
         var _verb_array = array_create(argument_count);

@@ -5,26 +5,30 @@ function __input_class_combo_state(_name, _combo_definition_struct) constructor
     __definition_struct = _combo_definition_struct;
     __phase_array = __definition_struct.__phase_array;
     
-    __phase = 0;
-    __phase_start_time = infinity;
     __success = false;
     
     __held_verbs_array    = [];
     __held_verbs_struct   = {};
     __pressed_verbs_array = [];
     __pressed_verbs_dict  = {};
+    __pending_verbs_dict  = {};
+    
+    __phase = 0;
+    __phase_start_time = infinity;
+    __initialized = false;
     
     static __reset = function()
     {
         if (__phase != 0)
         {
-            __phase = 0;
-            
             array_resize(__held_verbs_array, 0);
-            __held_verbs_struct = {};
-            
+            __held_verbs_struct  = {};
             array_resize(__pressed_verbs_array, 0);
             __pressed_verbs_dict = {};
+            __pending_verbs_dict = {};
+            
+            __phase = 0;
+            __initialize_phase();
         }
         
         __success = false;
@@ -35,6 +39,8 @@ function __input_class_combo_state(_name, _combo_definition_struct) constructor
     {
         var _phase_count = array_length(__phase_array);
         if (_phase_count <= 0) __input_error("Combo \"", __definition_struct.__name, "\" has no phases\nPlease add phases with either the .press() or .hold_start() method");
+        
+        if (!__initialized) __initialize_phase();
         
         if (__success)
         {
@@ -68,7 +74,11 @@ function __input_class_combo_state(_name, _combo_definition_struct) constructor
                     ++__phase;
                     __phase_start_time = __input_get_time();
                     
-                    if (__phase >= _phase_count)
+                    if (__phase < _phase_count)
+                    {
+                        __initialize_phase();
+                    }
+                    else
                     {
                         //Success!
                         __success = true;
@@ -105,7 +115,46 @@ function __input_class_combo_state(_name, _combo_definition_struct) constructor
         return __INPUT_COMBO_STATE.__WAITING;
     }
     
-    static __evaluate_phase = function(_player_verbs_struct, _index)
+    static __initialize_phase = function()
+    {
+        __initialized = true;
+        
+        var _phase              = __phase_array[__phase];
+        var _phase_type         = _phase.__type;
+        var _phase_verbs_array  = _phase.__verb_array;
+        var _phase_verbs_struct = _phase.__verb_struct;
+        
+        //Every every verb in this phase to a dictionary
+        //As verbs are pressed/releaed, we remove them from this dictionary
+        //Once the dictionary is empty we can move to the next phase
+        var _i = 0;
+        repeat(array_length(_phase_verbs_array))
+        {
+            __pending_verbs_dict[$ _phase_verbs_array[_i]] = true;    
+            ++_i;
+        }
+        
+        //For release-type phases, we want to remove verbs from the dictionary that we're using to track which verbs should be held
+        if ((_phase_type == __INPUT_COMBO_PHASE_TYPE.__PRESS_OR_RELEASE) || (_phase_type == __INPUT_COMBO_PHASE_TYPE.__RELEASE))
+        {
+            var _i = 0;
+            repeat(array_length(__held_verbs_array))
+            {
+                var _verb_name = __held_verbs_array[_i];
+                if (variable_struct_exists(_phase_verbs_struct, _verb_name))
+                {
+                    array_delete(__held_verbs_array, _i, 1);
+                    variable_struct_remove(__held_verbs_struct, _verb_name);
+                }
+                else
+                {
+                    ++_i;
+                }
+            }
+        }
+    }
+    
+    static __evaluate_phase = function(_player_verbs_struct)
     {
         if (__input_get_time() - __phase_start_time > __definition_struct.__phase_timeout) return __INPUT_COMBO_STATE.__FAIL;
         
@@ -113,12 +162,12 @@ function __input_class_combo_state(_name, _combo_definition_struct) constructor
         var _phase_type         = _phase.__type;
         var _phase_verbs_array  = _phase.__verb_array;
         var _phase_verbs_struct = _phase.__verb_struct;
-                
+        
+        //Check to see if any verbs have been released
         var _i = 0;
         repeat(array_length(__pressed_verbs_array))
         {
             var _verb_name = __pressed_verbs_array[_i];
-            
             if (!_player_verbs_struct[$ _verb_name].held)
             {
                 array_delete(__pressed_verbs_array, _i, 1);
@@ -130,118 +179,102 @@ function __input_class_combo_state(_name, _combo_definition_struct) constructor
             }
         }
         
+        //Check for any erroneous releases
+        var _i = 0;
+        repeat(array_length(__held_verbs_array))
+        {
+            if (!_player_verbs_struct[$ __held_verbs_array[_i]].held) return __INPUT_COMBO_STATE.__FAIL;
+            ++_i;
+        }
+        
+        //Check for any erroneous holds
+        var _i = 0;
+        repeat(array_length(global.__input_verb_array))
+        {
+            var _verb_name = global.__input_verb_array[_i];
+            
+            if ((_player_verbs_struct[$ _verb_name].held)
+            &&  !variable_struct_exists(__held_verbs_struct, _verb_name)  //Not required to be held
+            &&  !variable_struct_exists(__pressed_verbs_dict, _verb_name) //Not pressed in a previous phase
+            &&  !variable_struct_exists(_phase_verbs_struct, _verb_name)) //Not being scanned for this phase
+            {
+                return __INPUT_COMBO_STATE.__FAIL;
+            }
+            
+            ++_i;
+        }
+        
         switch(_phase_type)
         {
             case __INPUT_COMBO_PHASE_TYPE.__PRESS:
             case __INPUT_COMBO_PHASE_TYPE.__HOLD_START:
-                //Check that all the verbs we expect to be held from previous phases are indeed being held
-                var _i = 0;
-                repeat(array_length(__held_verbs_array))
-                {
-                    if (!_player_verbs_struct[$ __held_verbs_array[_i]].held) return __INPUT_COMBO_STATE.__FAIL;
-                    ++_i;
-                }
-                
-                //Check that no incorrect verbs are being pressed
-                var _i = 0;
-                repeat(array_length(global.__input_verb_array))
-                {
-                    var _verb_name = global.__input_verb_array[_i];
-                    
-                    if ((_player_verbs_struct[$ _verb_name].held)
-                    &&  !variable_struct_exists(__held_verbs_struct, _verb_name)
-                    &&  !variable_struct_exists(__pressed_verbs_dict, _verb_name)
-                    &&  !variable_struct_exists(_phase_verbs_struct, _verb_name))
-                    {
-                        return __INPUT_COMBO_STATE.__FAIL;
-                    }
-                    
-                    ++_i;
-                }
-                
                 var _i = 0;
                 repeat(array_length(_phase_verbs_array))
                 {
                     var _verb_name = _phase_verbs_array[_i];
-                    if ((!_player_verbs_struct[$ _verb_name].held) || variable_struct_exists(__pressed_verbs_dict, _verb_name))
+                    if (_player_verbs_struct[$ _verb_name].press)
                     {
-                        return __INPUT_COMBO_STATE.__WAITING;
+                        variable_struct_remove(__pending_verbs_dict, _verb_name);
+                        
+                        if (!variable_struct_exists(__pressed_verbs_dict, _verb_name))
+                        {
+                            array_push(__pressed_verbs_array, _verb_name);
+                            __pressed_verbs_dict[$ _verb_name] = true;
+                        }
+                        
+                        //As we remove verbs from our pending dictionary, add them to the "must hold" dictionary
+                        if (_phase_type == __INPUT_COMBO_PHASE_TYPE.__HOLD_START)
+                        {
+                            array_push(__held_verbs_array, _verb_name);
+                            __held_verbs_struct[$ _verb_name] = true;
+                        }
                     }
                     
                     ++_i;
                 }
                 
-                //For every verb that we pressed add it to our retrigger dictionary
-                //Additionally, if we're starting a hold, then add the held verbs to our array
-                var _i = 0;
-                repeat(array_length(_phase_verbs_array))
-                {
-                    var _verb_name = _phase_verbs_array[_i];
-                    
-                    array_push(__pressed_verbs_array, _verb_name);
-                    __pressed_verbs_dict[$ _verb_name] = true;
-                    
-                    if (_phase_type == __INPUT_COMBO_PHASE_TYPE.__HOLD_START)
-                    {
-                        array_push(__held_verbs_array, _verb_name);
-                        __held_verbs_struct[$ _verb_name] = true;
-                    }
-                    
-                    ++_i;
-                }
-                
-                return __INPUT_COMBO_STATE.__SUCCESS;
+                return (variable_struct_names_count(__pending_verbs_dict) > 0)? __INPUT_COMBO_STATE.__WAITING : __INPUT_COMBO_STATE.__SUCCESS;
             break;
             
             case __INPUT_COMBO_PHASE_TYPE.__RELEASE:
                 var _i = 0;
-                repeat(array_length(__held_verbs_array))
+                repeat(array_length(_phase_verbs_array))
                 {
-                    //Remove any matching held verbs from our tracking array
-                    var _verb_name = __held_verbs_array[_i];
-                    if (variable_struct_exists(_phase_verbs_struct, _verb_name))
-                    {
-                        array_delete(__held_verbs_array, _i, 1);
-                        variable_struct_remove(__held_verbs_struct, _verb_name);
-                    }
-                    else
-                    {
-                        //Otherwise perform the stardard held verb check
-                        if (!_player_verbs_struct[$ _verb_name].held) return __INPUT_COMBO_STATE.__FAIL;
-                        ++_i;
-                    }
-                }
-                
-                //Check that no incorrect verbs are being pressed
-                var _i = 0;
-                repeat(array_length(global.__input_verb_array))
-                {
-                    var _verb_name = global.__input_verb_array[_i];
-                    
-                    if ((_player_verbs_struct[$ _verb_name].held)
-                    &&  !variable_struct_exists(__held_verbs_struct, _verb_name)
-                    &&  !variable_struct_exists(__pressed_verbs_dict, _verb_name))
-                    {
-                        return __INPUT_COMBO_STATE.__FAIL;
-                    }
-                    
+                    var _verb_name = _phase_verbs_array[_i];
+                    var _verb_struct = _player_verbs_struct[$ _verb_name];
+                    if (_verb_struct.release || !_verb_struct.held) variable_struct_remove(__pending_verbs_dict, _verb_name);
                     ++_i;
                 }
                 
-                //Now check to see if all the verbs we want the player to release are no longer held
+                return (variable_struct_names_count(__pending_verbs_dict) > 0)? __INPUT_COMBO_STATE.__WAITING : __INPUT_COMBO_STATE.__SUCCESS;
+            break;
+            
+            case __INPUT_COMBO_PHASE_TYPE.__PRESS_OR_RELEASE:
                 var _i = 0;
                 repeat(array_length(_phase_verbs_array))
                 {
                     var _verb_name = _phase_verbs_array[_i];
-                    if (_player_verbs_struct[$ _verb_name].held) return __INPUT_COMBO_STATE.__WAITING;
+                    var _verb_struct = _player_verbs_struct[$ _verb_name];
                     
-                    //Also remove this verbs from our retrigger dictionary too for good measure
-                    variable_struct_remove(__pressed_verbs_dict, _verb_name);
+                    if (_verb_struct.press)
+                    {
+                        variable_struct_remove(__pending_verbs_dict, _verb_name);
+                        
+                        if (!variable_struct_exists(__pressed_verbs_dict, _verb_name))
+                        {
+                            array_push(__pressed_verbs_array, _verb_name);
+                            __pressed_verbs_dict[$ _verb_name] = true;
+                        }
+                    }
+                    else if (_verb_struct.release)
+                    {
+                        variable_struct_remove(__pending_verbs_dict, _verb_name);
+                    }
                     
                     ++_i;
                 }
                 
-                return __INPUT_COMBO_STATE.__SUCCESS;
+                return (variable_struct_names_count(__pending_verbs_dict) > 0)? __INPUT_COMBO_STATE.__WAITING : __INPUT_COMBO_STATE.__SUCCESS;
             break;
             
             default:
