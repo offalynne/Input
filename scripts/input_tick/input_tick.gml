@@ -121,6 +121,17 @@ function input_tick()
         break;
     }
     
+    //Perform a mouse coordinate transform via the developer-provided method, if one has been set
+    if (is_method(global.__input_mouse_transform_method))
+    {
+        static _transform_struct = {};
+        _transform_struct.x = _mouse_x;
+        _transform_struct.y = _mouse_y;
+        global.__input_mouse_transform_method(_transform_struct);
+        _mouse_x = _transform_struct.x;
+        _mouse_y = _transform_struct.y;
+    }
+    
     global.__input_mouse_moved = (point_distance(_mouse_x, _mouse_y, global.__input_mouse_x, global.__input_mouse_y) > INPUT_MOUSE_MOVE_DEADZONE);
     global.__input_mouse_x = _mouse_x;
     global.__input_mouse_y = _mouse_y;
