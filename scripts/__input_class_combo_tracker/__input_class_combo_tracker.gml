@@ -39,7 +39,7 @@ function __input_class_combo_tracker(_name, _combo_definition_struct) constructo
             var _i = 0;
             repeat(array_length(__held_verbs_array))
             {
-                if (_player_verbs_struct[$ __held_verbs_array[_i]].value <= 0)
+                if (!_player_verbs_struct[$ __held_verbs_array[_i]].held)
                 {
                     __reset();
                     return __INPUT_COMBO_STATE.__FAIL;
@@ -112,7 +112,7 @@ function __input_class_combo_tracker(_name, _combo_definition_struct) constructo
         {
             var _verb_name = __pressed_verbs_array[_i];
             
-            if (_player_verbs_struct[$ _verb_name].value <= 0)
+            if (!_player_verbs_struct[$ _verb_name].held)
             {
                 array_delete(__pressed_verbs_array, _i, 1);
                 variable_struct_remove(__pressed_verbs_dict, _verb_name);
@@ -131,7 +131,7 @@ function __input_class_combo_tracker(_name, _combo_definition_struct) constructo
                 var _i = 0;
                 repeat(array_length(__held_verbs_array))
                 {
-                    if (_player_verbs_struct[$ __held_verbs_array[_i]].value <= 0) return __INPUT_COMBO_STATE.__FAIL;
+                    if (!_player_verbs_struct[$ __held_verbs_array[_i]].held) return __INPUT_COMBO_STATE.__FAIL;
                     ++_i;
                 }
                 
@@ -141,7 +141,7 @@ function __input_class_combo_tracker(_name, _combo_definition_struct) constructo
                 {
                     var _verb_name = global.__input_verb_array[_i];
                     
-                    if ((_player_verbs_struct[$ _verb_name].value > 0)
+                    if ((_player_verbs_struct[$ _verb_name].held)
                     &&  !variable_struct_exists(__held_verbs_struct, _verb_name)
                     &&  !variable_struct_exists(__pressed_verbs_dict, _verb_name)
                     &&  !variable_struct_exists(_phase_verbs_struct, _verb_name))
@@ -156,7 +156,7 @@ function __input_class_combo_tracker(_name, _combo_definition_struct) constructo
                 repeat(array_length(_phase_verbs_array))
                 {
                     var _verb_name = _phase_verbs_array[_i];
-                    if ((_player_verbs_struct[$ _verb_name].value <= 0) || variable_struct_exists(__pressed_verbs_dict, _verb_name))
+                    if ((!_player_verbs_struct[$ _verb_name].held) || variable_struct_exists(__pressed_verbs_dict, _verb_name))
                     {
                         return __INPUT_COMBO_STATE.__WAITING;
                     }
@@ -200,7 +200,7 @@ function __input_class_combo_tracker(_name, _combo_definition_struct) constructo
                     else
                     {
                         //Otherwise perform the stardard held verb check
-                        if (_player_verbs_struct[$ _verb_name].value <= 0) return __INPUT_COMBO_STATE.__FAIL;
+                        if (!_player_verbs_struct[$ _verb_name].held) return __INPUT_COMBO_STATE.__FAIL;
                         ++_i;
                     }
                 }
@@ -211,7 +211,7 @@ function __input_class_combo_tracker(_name, _combo_definition_struct) constructo
                 {
                     var _verb_name = global.__input_verb_array[_i];
                     
-                    if ((_player_verbs_struct[$ _verb_name].value > 0)
+                    if ((_player_verbs_struct[$ _verb_name].held)
                     &&  !variable_struct_exists(__held_verbs_struct, _verb_name)
                     &&  !variable_struct_exists(__pressed_verbs_dict, _verb_name))
                     {
@@ -226,7 +226,7 @@ function __input_class_combo_tracker(_name, _combo_definition_struct) constructo
                 repeat(array_length(_phase_verbs_array))
                 {
                     var _verb_name = _phase_verbs_array[_i];
-                    if (_player_verbs_struct[$ _verb_name].value > 0) return __INPUT_COMBO_STATE.__WAITING;
+                    if (_player_verbs_struct[$ _verb_name].held) return __INPUT_COMBO_STATE.__WAITING;
                     
                     //Also remove this verbs from our retrigger dictionary too for good measure
                     variable_struct_remove(__pressed_verbs_dict, _verb_name);

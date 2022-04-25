@@ -4,6 +4,7 @@ function __input_class_player() constructor
     gamepad         = INPUT_NO_GAMEPAD;
     sources         = array_create(INPUT_SOURCE.__SIZE, undefined);
     verbs           = {};
+    chord_trackers  = {};
     combo_trackers  = {};
     last_input_time = -1;
     cursor          = new __input_class_cursor();
@@ -85,6 +86,9 @@ function __input_class_player() constructor
         
         tick_source();
         
+        //Update our basic verbs first
+        tick_basic_verbs();
+        
         //Update our chords
         //We directly access verb values to detect state here
         tick_chord_verbs();
@@ -93,13 +97,20 @@ function __input_class_player() constructor
         //We directly access verb values to detect state here
         tick_combo_verbs();
         
-        //Update our basic verbs first
-        tick_verbs();
-        
         with(cursor)
         {
             tick(other.rebind_state);
             limit();
+        }
+    }
+    
+    static tick_basic_verbs = function()
+    {
+        var _v = 0;
+        repeat(array_length(global.__input_verb_array))
+        {
+            with(verbs[$ global.__input_verb_array[_v]]) tick();
+            ++_v;
         }
     }
     
@@ -108,29 +119,19 @@ function __input_class_player() constructor
         var _i = 0;
         repeat(array_length(global.__input_chord_array))
         {
-            var _verb_name = global.__input_chord_array[_i];
-            var _chord_verb_array = global.__input_chord_dict[$ _verb_name];
-            
-            var _all_held = true;
-            var _j = 0;
-            repeat(array_length(_chord_verb_array))
+            var _chord_name = global.__input_chord_array[_i];
+            if (chord_trackers[$ _chord_name].__evaluate(verbs))
             {
-                if (verbs[$ _chord_verb_array[_j]].value <= 0)
-                {
-                    _all_held = false;
-                    break;
-                }
-                
-                ++_j;
-            }
-            
-            if (_all_held)
-            {
-                with(verbs[$ _verb_name])
+                with(verbs[$ _chord_name])
                 {
                     value = 1;
                     raw   = 1;
+                    tick();
                 }
+            }
+            else
+            {
+                verbs[$ _chord_name].tick();
             }
             
             ++_i;
@@ -142,28 +143,22 @@ function __input_class_player() constructor
         var _i = 0;
         repeat(array_length(global.__input_combo_array))
         {
-            var _verb_name = global.__input_combo_array[_i];
-            if (combo_trackers[$ _verb_name].__tick(verbs) == __INPUT_COMBO_STATE.__SUCCESS)
+            var _combo_name = global.__input_combo_array[_i];
+            if (combo_trackers[$ _combo_name].__tick(verbs) == __INPUT_COMBO_STATE.__SUCCESS)
             {
-                with(verbs[$ _verb_name])
+                with(verbs[$ _combo_name])
                 {
                     value = 1;
                     raw   = 1;
+                    tick();
                 }
+            }
+            else
+            {
+                verbs[$ _combo_name].tick();
             }
             
             ++_i;
-        }
-    }
-    
-    static tick_verbs = function()
-    {
-        var _verb_names = variable_struct_get_names(verbs);
-        var _v = 0;
-        repeat(array_length(_verb_names))
-        {
-            with(verbs[$ _verb_names[_v]]) tick();
-            ++_v;
         }
     }
     
@@ -428,8 +423,10 @@ function __input_class_player() constructor
             _verb_struct.name     = _name;
             _verb_struct.type     = "chord";
             _verb_struct.analogue = false; //Chord verbs are never analogue
-            
             verbs[$ _name] = _verb_struct;
+            
+            //We also need to store additional tracking information for combos
+            chord_trackers[$ _name] = new __input_class_chord_tracker(_name, global.__input_chord_dict[$ _name]);
         }
     }
     

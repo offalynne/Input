@@ -5,7 +5,7 @@ input_default_key(vk_right,  "right" );
 input_default_key(vk_space,  "accept");
 input_default_key(vk_escape, "cancel");
 
-input_chord_define("up + down", "up", "down");
+input_chord_define("up + down", INPUT_CHORD_DEFAULT_TIME, "up", "down");
 
 input_combo_define("konami")
 .press("up")

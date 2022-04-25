@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Default Bindings",
-    "path": "folders/Input/Bindings/Default Bindings.yy",
+    "name": "(System)",
+    "path": "folders/Input/(System).yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_default_mouse_wheel_down",
+  "name": "__input_class_chord_definition",
   "tags": [],
   "resourceType": "GMScript",
 }

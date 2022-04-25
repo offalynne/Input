@@ -5,21 +5,16 @@ function __input_class_combo_definition(_name, _phase_timeout) constructor
     
     __phase_array = [];
     
-    static __ensure_simple_verb = function(_name)
+    static __ensure_verb_is_basic_or_chord = function(_name)
     {
-        if (variable_struct_exists(global.__input_chord_dict, _name))
-        {
-            __input_error("Combos only accept basic verbs when defining phases. Chord \"", _name, "\" cannot be used");
-        }
-        
         if (variable_struct_exists(global.__input_combo_dict, _name))
         {
-            __input_error("Combos only accept basic verbs when defining phases. Combo \"", _name, "\" cannot be used");
+            __input_error("Combos only accept basic verbs and chords when defining phases. Combo \"", _name, "\" cannot be used");
         }
         
-        if (!variable_struct_exists(global.__input_verb_dict, _name))
+        if (!variable_struct_exists(global.__input_verb_dict, _name) && !variable_struct_exists(global.__input_chord_dict, _name))
         {
-            __input_error("Verb \"", _name, "\" not found. Please define verbs before combos");
+            __input_error("Verb \"", _name, "\" not found either as a basic verb or a chord. Please define verbs and chords before combos");
         }
     }
     
@@ -32,7 +27,7 @@ function __input_class_combo_definition(_name, _phase_timeout) constructor
         repeat(array_length(_verb_array))
         {
             var _verb_name = argument[_i];
-            __ensure_simple_verb(_verb_name);
+            __ensure_verb_is_basic_or_chord(_verb_name);
             
             _verb_array[@ _i] = _verb_name;
             _verb_struct[$ _verb_name] = _i;
@@ -58,7 +53,7 @@ function __input_class_combo_definition(_name, _phase_timeout) constructor
         repeat(array_length(_verb_array))
         {
             var _verb_name = argument[_i];
-            __ensure_simple_verb(_verb_name);
+            __ensure_verb_is_basic_or_chord(_verb_name);
             
             _verb_array[@ _i] = _verb_name;
             _verb_struct[$ _verb_name] = _i;
@@ -84,7 +79,7 @@ function __input_class_combo_definition(_name, _phase_timeout) constructor
         repeat(array_length(_verb_array))
         {
             var _verb_name = argument[_i];
-            __ensure_simple_verb(_verb_name);
+            __ensure_verb_is_basic_or_chord(_verb_name);
             
             _verb_array[@ _i] = _verb_name;
             _verb_struct[$ _verb_name] = _i;
