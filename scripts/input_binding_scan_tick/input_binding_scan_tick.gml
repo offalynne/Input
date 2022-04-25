@@ -5,7 +5,7 @@ enum INPUT_BINDING_SCAN_EVENT
 {
     SUCCESS_THIS_FRAME          = -1,  //input_binding_scan_tick() has been called twice this frame for this player, and the first execution succeeded
     ERROR_THIS_FRAME            = -2,  //input_binding_scan_tick() has been called twice this frame for this player, and the first execution failed due to an error
-    SOURCE_INVALID              = -10, //Player source is not rebindable (is INPUT_SOURCE.NONE)
+    SOURCE_INVALID              = -10, //Player source is not rebindable (is INPUT_SOURCE.NONE or INPUT_SOURCE.GHOST)
     //SOURCE_CHANGED              = -11, //Player source changed - No longer used 2021-08-04
     GAMEPAD_CHANGED             = -12, //Gamepad index changed
     GAMEPAD_INVALID             = -13, //Player gamepad is invalid (is INPUT_NO_GAMEPAD)
@@ -76,6 +76,13 @@ function input_binding_scan_tick(_source, _player_index = 0)
             if (rebind_target_source == INPUT_SOURCE.NONE)
             {
                 __input_trace("Binding scan failed: Source for player ", _player_index, " is INPUT_SOURCE.NONE");
+                rebind_state = -1;
+                return INPUT_BINDING_SCAN_EVENT.SOURCE_INVALID;
+            }
+            
+            if (rebind_target_source == INPUT_SOURCE.GHOST)
+            {
+                __input_trace("Binding scan failed: Source for player ", _player_index, " is INPUT_SOURCE.GHOST");
                 rebind_state = -1;
                 return INPUT_BINDING_SCAN_EVENT.SOURCE_INVALID;
             }

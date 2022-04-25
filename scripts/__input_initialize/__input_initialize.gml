@@ -86,6 +86,7 @@ function __input_initialize()
     global.__input_config_category_names = ["none",               //INPUT_SOURCE.NONE
                                             "keyboard and mouse", //INPUT_SOURCE.KEYBOARD_AND_MOUSE
                                             "gamepad",            //INPUT_SOURCE.GAMEPAD
+                                            "ghost",              //INPUT_SOURCE.GHOST
                                             "joycon"];
     
     //Two structs that are returned by input_players_get_status() and input_gamepads_get_status()

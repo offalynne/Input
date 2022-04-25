@@ -161,20 +161,27 @@ function __input_class_player() constructor
     
     static tick_source = function()
     {
-        var _source_verb_struct = config[$ get_config_category()];
-        if (is_struct(_source_verb_struct))
+        var _config_category = get_config_category();
+        var _source_verb_struct = config[$ _config_category];
+        
+        if (is_struct(_source_verb_struct) || (source == INPUT_SOURCE.GHOST))
         {
-            var _verb_names = variable_struct_get_names(_source_verb_struct);
             var _v = 0;
-            repeat(array_length(_verb_names))
+            repeat(array_length(global.__input_verb_array))
             {
-                var _verb_name = _verb_names[_v];
+                var _verb_name = global.__input_verb_array[_v];
                 var _verb      = verbs[$ _verb_name];
+                
+                var _raw           = 0.0;
+                var _value         = 0.0;
+                var _analogue      = undefined;
+                var _raw_analogue  = undefined;
+                var _min_threshold = undefined;
+                var _max_threshold = undefined;
                 
                 if ((_verb.force_value != undefined) && (_verb.force_analogue != undefined))
                 {
                     //We've had our value set this frame via input_verb_set()
-                    
                     with(_verb)
                     {
                         value = force_value;
@@ -190,17 +197,9 @@ function __input_class_player() constructor
                         force_analogue = undefined;
                     }
                 }
-                else
-                {
-                    //We've not had our value set - better go find out what it is
-                    
-                    var _raw           = 0.0;
-                    var _value         = 0.0;
-                    var _analogue      = undefined;
-                    var _raw_analogue  = undefined;
-                    var _min_threshold = undefined;
-                    var _max_threshold = undefined;
                 
+                if (source != INPUT_SOURCE.GHOST)
+                {
                     var _alternate_array = _source_verb_struct[$ _verb_name];
                     var _a = 0;
                     repeat(array_length(_alternate_array))
@@ -218,7 +217,7 @@ function __input_class_player() constructor
                                         _analogue     = false;
                                         _raw_analogue = false;
                                     }
-                                
+                                    
                                     //If we're on Android then check the alternate keyboard key as well
                                     if (os_type == os_android)
                                     {
@@ -231,7 +230,7 @@ function __input_class_player() constructor
                                         }
                                     }
                                 break;
-                            
+                                
                                 case "gamepad button":
                                     if (input_gamepad_check(gamepad, _binding.value))
                                     {
@@ -241,7 +240,7 @@ function __input_class_player() constructor
                                         _raw_analogue = false;
                                     }
                                 break;
-                            
+                                
                                 case "mouse button":
                                     if (input_mouse_check(_binding.value))
                                     {
@@ -251,7 +250,7 @@ function __input_class_player() constructor
                                         _raw_analogue = false;
                                     }
                                 break;
-                            
+                                
                                 case "mouse wheel up":
                                     if (mouse_wheel_up())
                                     {
@@ -261,7 +260,7 @@ function __input_class_player() constructor
                                         _raw_analogue = false;
                                     }
                                 break;
-                            
+                                
                                 case "mouse wheel down":
                                     if (mouse_wheel_down())
                                     {
@@ -271,7 +270,7 @@ function __input_class_player() constructor
                                         _raw_analogue = false;
                                     }
                                 break;
-                            
+                                
                                 case "gamepad axis":
                                     //Grab the raw value directly from the gamepad
                                     //We keep a hold of this value for use in 2D checkers
@@ -296,7 +295,7 @@ function __input_class_player() constructor
                                         _min_threshold = _axis_threshold.mini;
                                         _max_threshold = _axis_threshold.maxi;
                                     }
-                                
+                                    
                                     if (_found_value > _value)
                                     {
                                         _value    = _found_value;
@@ -305,20 +304,21 @@ function __input_class_player() constructor
                                 break;
                             }
                         }
-                    
+                        
                         ++_a;
                     }
+                }
                 
-                    with(_verb)
-                    {
-                        value = _value;
-                        raw   = _raw;
+                with(_verb)
+                {
+                    value = _value;
+                    raw   = _raw;
                         
-                        if (_raw_analogue != undefined) raw_analogue = _raw_analogue;
-                        if (_analogue     != undefined) analogue     = _analogue;
-                        min_threshold = _min_threshold;
-                        max_threshold = _max_threshold;
-                    }
+                    if (_raw_analogue != undefined) raw_analogue = _raw_analogue;
+                    if (_analogue     != undefined) analogue     = _analogue;
+                    
+                    min_threshold = _min_threshold;
+                    max_threshold = _max_threshold;
                 }
                 
                 ++_v;
@@ -572,7 +572,10 @@ function __input_class_player() constructor
             //Convert enum if necessary
             switch(_source)
             {
-                case INPUT_SOURCE.NONE: return undefined; break;
+                case INPUT_SOURCE.NONE:
+                case INPUT_SOURCE.GHOST:
+                    return undefined;
+                break;
                 
                 case INPUT_SOURCE.KEYBOARD_AND_MOUSE: return "keyboard and mouse"; break;
                 case INPUT_SOURCE.GAMEPAD:            return "gamepad";            break;
@@ -600,6 +603,7 @@ function __input_class_player() constructor
         switch(_source)
         {
             case INPUT_SOURCE.NONE:
+            case INPUT_SOURCE.GHOST:
                 return false;
             break;
             

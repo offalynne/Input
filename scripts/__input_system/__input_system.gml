@@ -90,6 +90,7 @@ enum INPUT_SOURCE
     NONE,
     KEYBOARD_AND_MOUSE,
     GAMEPAD,
+    GHOST,
     __SIZE
 }
 

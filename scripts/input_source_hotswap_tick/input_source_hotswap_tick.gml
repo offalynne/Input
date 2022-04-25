@@ -16,6 +16,12 @@ function input_source_hotswap_tick(_player_index = 0)
     
     with(global.__input_players[_player_index])
     {
+        if (source == INPUT_SOURCE.GHOST)
+        {
+            __input_trace("Warning! Cannot hotswap a player whose source is set to INPUT_SOURCE.GHOST");
+            return false;
+        }
+        
         if ((last_input_time < 0) || (current_time - last_input_time > INPUT_HOTSWAP_DELAY))
         {
             var _new_device = __input_hotswap_tick_input(_player_index);

@@ -22,6 +22,12 @@ function input_bindings_reset(_source, _player_index = all, _reset_thresholds = 
         return undefined;
     }
     
+    if (_source == INPUT_SOURCE.GHOST)
+    {
+        __input_trace("Warning! Cannot reset bindings for INPUT_SOURCE.GHOST");
+        return undefined;
+    }
+    
     if (_player_index == all)
     {
         var _i = 0;

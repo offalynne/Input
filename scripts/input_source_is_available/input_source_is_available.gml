@@ -6,6 +6,7 @@ function input_source_is_available(_source, _gamepad = INPUT_NO_GAMEPAD)
     switch(_source)
     {
         case INPUT_SOURCE.NONE:
+        case INPUT_SOURCE.GHOST:
             return true;
         break;
         

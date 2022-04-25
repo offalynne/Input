@@ -5,7 +5,7 @@
 
 function input_binding_remove(_verb, _source, _player_index = 0, _alternate = 0)
 {
-    if (!is_numeric(_source) && !is_string(_source))
+    if ((!is_numeric(_source) && !is_string(_source)) || (_source == INPUT_SOURCE.NONE) || (_source == INPUT_SOURCE.GHOST))
     {
         __input_error("Invalid source provided (", _source, ")\nPlease use INPUT_SOURCE.KEYBOARD_AND_MOUSE or INPUT_SOURCE.GAMEPAD");
         return undefined;
