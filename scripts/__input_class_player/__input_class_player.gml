@@ -9,13 +9,10 @@ function __input_class_player() constructor
     last_input_time  = -1;
     cursor           = new __input_class_cursor();
     
-    rebind_state      = 0;
-    rebind_source     = undefined;
-    rebind_gamepad    = undefined;
-    rebind_verb       = undefined;
-    rebind_alternate  = undefined;
-    rebind_this_frame = false;
-    rebind_backup_val = undefined;
+    rebind_state         = 0;
+    rebind_gamepad       = undefined;
+    rebind_target_source = undefined;
+    rebind_this_frame    = false;
     
     //This struct is the one that gets serialized/deserialized
     config = { axis_thresholds : {} };
