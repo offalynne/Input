@@ -1,9 +1,9 @@
-input_default_key(vk_up,     "up"    );
-input_default_key(vk_down,   "down"  );
-input_default_key(vk_left,   "left"  );
-input_default_key(vk_right,  "right" );
-input_default_key(vk_space,  "accept");
-input_default_key(vk_escape, "cancel");
+input_binding_set_default("up",     input_binding_key(vk_up    ));
+input_binding_set_default("down",   input_binding_key(vk_down  ));
+input_binding_set_default("left",   input_binding_key(vk_left  ));
+input_binding_set_default("right",  input_binding_key(vk_right ));
+input_binding_set_default("accept", input_binding_key(vk_space ));
+input_binding_set_default("cancel", input_binding_key(vk_escape));
 
 input_chord_define("up + down", INPUT_CHORD_DEFAULT_TIME, "up", "down");
 

@@ -6,7 +6,7 @@
     "path": "folders/Input/Bindings.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_default_binding_set",
+  "name": "input_binding_set_default",
   "tags": [],
   "resourceType": "GMScript",
 }

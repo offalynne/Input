@@ -2,7 +2,7 @@
 /// @param binding
 /// @param [alternate]
 
-function input_default_binding_set(_verb, _binding, _alternate = 0)
+function input_binding_set_default(_verb, _binding, _alternate = 0)
 {
 	__input_initialize();
     __input_verb_define(_verb);

@@ -98,7 +98,7 @@
     {"id":{"name":"input_mouse_x","path":"scripts/input_mouse_x/input_mouse_x.yy",},"order":3,},
     {"id":{"name":"input_check_repeat","path":"scripts/input_check_repeat/input_check_repeat.yy",},"order":4,},
     {"id":{"name":"__input_mouse_button","path":"scripts/__input_mouse_button/__input_mouse_button.yy",},"order":20,},
-    {"id":{"name":"input_default_binding_set","path":"scripts/input_default_binding_set/input_default_binding_set.yy",},"order":0,},
+    {"id":{"name":"input_binding_set_default","path":"scripts/input_binding_set_default/input_binding_set_default.yy",},"order":0,},
     {"id":{"name":"input_source_hotswap_tick","path":"scripts/input_source_hotswap_tick/input_source_hotswap_tick.yy",},"order":1,},
     {"id":{"name":"obj_test_joycon","path":"objects/obj_test_joycon/obj_test_joycon.yy",},"order":14,},
     {"id":{"name":"input_ignore_key_add","path":"scripts/input_ignore_key_add/input_ignore_key_add.yy",},"order":2,},

@@ -6,5 +6,5 @@ function input_default_mouse_button(_button, _verb, _alternate = 0)
 {
     if (INPUT_WARNING_DEPRECATED) __input_error("This function has been deprecated\n(Set INPUT_WARNING_DEPRECATED to <false> to ignore this warning)");
     
-    input_default_binding_set(_verb, input_binding_mouse_button(_button), _alternate);
+    input_binding_set_default(_verb, input_binding_mouse_button(_button), _alternate);
 }
