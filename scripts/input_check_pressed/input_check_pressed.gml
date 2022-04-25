@@ -31,11 +31,3 @@ function input_check_pressed(_verb, _player_index = 0, _buffer_duration = 0)
         return ((_verb_struct.press_time >= 0) && ((__input_get_time() - _verb_struct.press_time) <= _buffer_duration));
     }
 }
-
-/// @param verb
-/// @param [playerIndex]
-/// @param [bufferDuration]
-function input_check_p(_verb, _player_index = 0, _buffer_duration = 0)
-{
-    return input_check_pressed(_verb, _player_index, _buffer_duration);
-}
