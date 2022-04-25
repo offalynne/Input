@@ -6,7 +6,7 @@
     "path": "folders/Input/Binding Creators.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_binding_scan_tick",
+  "name": "input_binding_mouse_wheel_up",
   "tags": [],
   "resourceType": "GMScript",
 }

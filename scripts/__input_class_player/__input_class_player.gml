@@ -545,11 +545,18 @@ function __input_class_player() constructor
         else if ((_binding.type == "gamepad button")
              ||  (_binding.type == "gamepad axis"))
         {
-            //Use the joycon config if the player is using a joycon at the moment
-            if ((source == INPUT_SOURCE.GAMEPAD) && variable_struct_exists(config, "joycon"))
+            if (variable_struct_exists(config, "joycon"))
             {
-                var _gamepad_struct = global.__input_gamepads[gamepad];
-                if (is_struct(_gamepad_struct) && ((_gamepad_struct.raw_type == "SwitchJoyConLeft") || (_gamepad_struct.raw_type == "SwitchJoyConRight")))
+                //Use the joycon config if the player is using a joycon at the moment
+                if (source == INPUT_SOURCE.GAMEPAD)
+                {
+                    var _gamepad_struct = global.__input_gamepads[gamepad];
+                    if (is_struct(_gamepad_struct) && ((_gamepad_struct.raw_type == "SwitchJoyConLeft") || (_gamepad_struct.raw_type == "SwitchJoyConRight")))
+                    {
+                        return "joycon";
+                    }
+                }
+                else if (_binding.joycon) //Or if the binding itself is explicitly for a joycon
                 {
                     return "joycon";
                 }

@@ -128,6 +128,7 @@ enum __INPUT_COMBO_PHASE_TYPE
 {
     __PRESS,
     __RELEASE,
+    __PRESS_OR_RELEASE,
     __HOLD_START,
 }
 

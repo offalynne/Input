@@ -9,6 +9,7 @@ function __input_class_binding() constructor
     value         = undefined;
     axis_negative = undefined;
     label         = undefined;
+    joycon        = false;
     
     if (os_type == os_android)
     {
