@@ -7,6 +7,7 @@ function __input_class_combo_state(_name, _combo_definition_struct) constructor
     
     __phase = 0;
     __phase_start_time = infinity;
+    __success = false;
     
     __held_verbs_array    = [];
     __held_verbs_struct   = {};
@@ -26,6 +27,7 @@ function __input_class_combo_state(_name, _combo_definition_struct) constructor
             __pressed_verbs_dict = {};
         }
         
+        __success = false;
         __phase_start_time = infinity;
     }
     
@@ -34,8 +36,10 @@ function __input_class_combo_state(_name, _combo_definition_struct) constructor
         var _phase_count = array_length(__phase_array);
         if (_phase_count <= 0) __input_error("Combo \"", __definition_struct.__name, "\" has no phases\nPlease add phases with either the .press() or .hold_start() method");
         
-        if (__phase >= _phase_count)
+        if (__success)
         {
+            //Report success until any of the verbs are released
+            
             var _i = 0;
             repeat(array_length(__held_verbs_array))
             {
@@ -66,8 +70,11 @@ function __input_class_combo_state(_name, _combo_definition_struct) constructor
                     
                     if (__phase >= _phase_count)
                     {
-                        //Success! Convert all pressed verbs to held verbs
+                        //Success!
+                        __success = true;
+                        __phase = _phase_count - 1;
                         
+                        //Convert all pressed verbs to held verbs
                         var _i = 0;
                         repeat(array_length(__pressed_verbs_array))
                         {

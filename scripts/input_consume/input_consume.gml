@@ -39,5 +39,9 @@ function input_consume(_verb, _player_index = 0)
             consumed      = true;
             previous_held = true; //Force the held state on to avoid unwanted early reset of a consumed verb
         }
+        
+        //If this verb is a combo then also reset the combo's state
+        var _combo_state = global.__input_players[_player_index].combo_state_dict[$ _verb];
+        if (is_struct(_combo_state)) _combo_state.__reset();
     }
 }
