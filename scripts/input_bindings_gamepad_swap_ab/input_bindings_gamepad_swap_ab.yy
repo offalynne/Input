@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Default Bindings",
-    "path": "folders/Input/Bindings/Default Bindings.yy",
+    "name": "Binding System",
+    "path": "folders/Input/Binding System.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_default_gamepad_swap_ab",
+  "name": "input_bindings_gamepad_swap_ab",
   "tags": [],
   "resourceType": "GMScript",
 }
