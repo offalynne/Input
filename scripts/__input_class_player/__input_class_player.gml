@@ -1,13 +1,13 @@
 function __input_class_player() constructor
 {
-    source          = INPUT_SOURCE.NONE;
-    gamepad         = INPUT_NO_GAMEPAD;
-    sources         = array_create(INPUT_SOURCE.__SIZE, undefined);
-    verbs           = {};
-    chord_trackers  = {};
-    combo_trackers  = {};
-    last_input_time = -1;
-    cursor          = new __input_class_cursor();
+    source           = INPUT_SOURCE.NONE;
+    gamepad          = INPUT_NO_GAMEPAD;
+    sources          = array_create(INPUT_SOURCE.__SIZE, undefined);
+    verbs            = {};
+    chord_state_dict = {};
+    combo_state_dict = {};
+    last_input_time  = -1;
+    cursor           = new __input_class_cursor();
     
     rebind_state      = 0;
     rebind_source     = undefined;
@@ -120,7 +120,7 @@ function __input_class_player() constructor
         repeat(array_length(global.__input_chord_array))
         {
             var _chord_name = global.__input_chord_array[_i];
-            if (chord_trackers[$ _chord_name].__evaluate(verbs))
+            if (chord_state_dict[$ _chord_name].__evaluate(verbs))
             {
                 with(verbs[$ _chord_name])
                 {
@@ -144,7 +144,7 @@ function __input_class_player() constructor
         repeat(array_length(global.__input_combo_array))
         {
             var _combo_name = global.__input_combo_array[_i];
-            if (combo_trackers[$ _combo_name].__tick(verbs) == __INPUT_COMBO_STATE.__SUCCESS)
+            if (combo_state_dict[$ _combo_name].__tick(verbs) == __INPUT_COMBO_STATE.__SUCCESS)
             {
                 with(verbs[$ _combo_name])
                 {
@@ -426,7 +426,7 @@ function __input_class_player() constructor
             verbs[$ _name] = _verb_struct;
             
             //We also need to store additional tracking information for combos
-            chord_trackers[$ _name] = new __input_class_chord_tracker(_name, global.__input_chord_dict[$ _name]);
+            chord_state_dict[$ _name] = new __input_class_chord_state(_name, global.__input_chord_dict[$ _name]);
         }
     }
     
@@ -448,7 +448,7 @@ function __input_class_player() constructor
             verbs[$ _name] = _verb_struct;
             
             //We also need to store additional tracking information for combos
-            combo_trackers[$ _name] = new __input_class_combo_tracker(_name, global.__input_combo_dict[$ _name]);
+            combo_state_dict[$ _name] = new __input_class_combo_state(_name, global.__input_combo_dict[$ _name]);
         }
     }
     

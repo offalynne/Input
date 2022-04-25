@@ -1,4 +1,4 @@
-function __input_class_combo_tracker(_name, _combo_definition_struct) constructor
+function __input_class_combo_state(_name, _combo_definition_struct) constructor
 {
     __name = _name;
     

@@ -1,4 +1,4 @@
-function __input_class_chord_tracker(_name, _chord_definition_struct) constructor
+function __input_class_chord_state(_name, _chord_definition_struct) constructor
 {
     __name = _name;
     __definition_struct = _chord_definition_struct;
