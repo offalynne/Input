@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Default Bindings",
-    "path": "folders/Input/(System)/Deprecated/Default Bindings.yy",
+    "name": "Binding Creators",
+    "path": "folders/Input/Binding Creators.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_default_joycon_axis",
+  "name": "input_binding_gamepad_axis",
   "tags": [],
   "resourceType": "GMScript",
 }

@@ -17,6 +17,18 @@ function __input_class_binding() constructor
         android_lowercase = undefined;
     }
     
+    static __duplicate = function()
+    {
+        var _new = new __input_class_binding();
+        _new.type          = type;
+        _new.value         = value;
+        _new.axis_negative = axis_negative;
+        _new.label         = label;
+        if (os_type == os_android) _new.android_lowercase = android_lowercase;
+        
+        return _new;
+    }
+    
     static set_key = function(_key, _player_set)
     {
         //Fix uses of straight strings instead of ord("A")

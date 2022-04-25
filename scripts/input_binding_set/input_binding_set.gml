@@ -5,6 +5,8 @@
 
 function input_binding_set(_verb, _binding, _player_index = 0, _alternate = 0)
 {
+	__input_initialize();
+    
     if (_player_index < 0)
     {
         __input_error("Invalid player index provided (", _player_index, ")");

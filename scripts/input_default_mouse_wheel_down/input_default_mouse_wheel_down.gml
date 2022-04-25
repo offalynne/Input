@@ -3,6 +3,8 @@
 
 function input_default_mouse_wheel_down(_verb, _alternate = 0)
 {
+    if (INPUT_WARNING_DEPRECATED) __input_error("This function has been deprecated\n(Set INPUT_WARNING_DEPRECATED to <false> to ignore this warning)");
+    
 	__input_initialize();
     __input_verb_define(_verb);
 	
