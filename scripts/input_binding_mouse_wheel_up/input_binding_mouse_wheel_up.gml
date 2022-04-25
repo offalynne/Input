@@ -1,4 +1,4 @@
-function input_binding_mouse_wheel_down()
+function input_binding_mouse_wheel_up()
 {
 	__input_initialize();
 	

@@ -136,7 +136,7 @@ enum __INPUT_COMBO_PHASE_TYPE
 
 
 
-//These are globally scoped rather than methods because otherwise they'd get serialised by input_bindings_write()
+//These are globally scoped rather than methods because otherwise they'd get serialised by input_binding_system_write()
 
 /// @param source
 function __input_binding_duplicate(_source)

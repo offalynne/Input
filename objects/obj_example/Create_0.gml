@@ -12,7 +12,7 @@ input_default_key(vk_enter,     "pause", 1);
 input_default_mouse_button(mb_left, "confirm", 1);
 input_default_mouse_button(mb_side1, "cancel",  1);
 
-input_default_gamepad_swap_ab(false);
+input_binding_system_swap_gamepad_ab(false);
 input_default_gamepad_axis(gp_axislh, true,  "left" );
 input_default_gamepad_axis(gp_axislh, false, "right");
 input_default_gamepad_axis(gp_axislv, true,  "up"   );

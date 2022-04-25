@@ -2,7 +2,7 @@
 /// @param [playerIndex]
 /// @param [resetThresholds]
 
-function input_bindings_reset(_source, _player_index = all, _reset_thresholds = true)
+function input_binding_system_reset(_source, _player_index = all, _reset_thresholds = true)
 {
     if ((_player_index < 0) && (_player_index != all))
     {
@@ -33,7 +33,7 @@ function input_bindings_reset(_source, _player_index = all, _reset_thresholds = 
         var _i = 0;
         repeat(INPUT_MAX_PLAYERS)
         {
-            input_bindings_reset(_source, _i);
+            input_binding_system_reset(_source, _i);
             ++_i;
         }
         
@@ -45,7 +45,7 @@ function input_bindings_reset(_source, _player_index = all, _reset_thresholds = 
         var _i = 0;
         repeat(array_length(global.__input_config_category_names))
         {
-            input_bindings_reset(global.__input_config_category_names[_i], _player_index);
+            input_binding_system_reset(global.__input_config_category_names[_i], _player_index);
             ++_i;
         }
         

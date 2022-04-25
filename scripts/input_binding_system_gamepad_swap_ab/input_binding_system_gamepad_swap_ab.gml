@@ -1,6 +1,6 @@
 /// @param state
 
-function input_default_gamepad_swap_ab(_state)
+function input_binding_system_swap_gamepad_ab(_state)
 {
 	__input_initialize();
 	
@@ -28,7 +28,7 @@ function input_default_gamepad_swap_ab(_state)
                             {
                                 if ((type == "gamepad button") && ((value == gp_face1) || (value == gp_face2)))
                                 {
-                                    __input_error("input_default_gamepad_swap_ab() should be called before input_default_gamepad_button()");
+                                    __input_error("input_binding_system_swap_gamepad_ab() should be called before input_default_gamepad_button()");
                                 }
                             }
                         }

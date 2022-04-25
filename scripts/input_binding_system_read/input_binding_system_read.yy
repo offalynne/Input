@@ -6,7 +6,7 @@
     "path": "folders/Input/Binding System.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_bindings_gamepad_swap_ab",
+  "name": "input_binding_system_read",
   "tags": [],
   "resourceType": "GMScript",
 }

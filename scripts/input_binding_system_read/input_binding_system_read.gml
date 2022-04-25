@@ -3,7 +3,7 @@
 /// 
 /// FIXME - Unfucks a bug in GM where json_parse() doesn't work properly (20201-01-12)
 
-function input_bindings_read(_string, _player_index = all)
+function input_binding_system_read(_string, _player_index = all)
 {
     if ((_player_index < 0) && (_player_index != all))
     {
@@ -17,7 +17,7 @@ function input_bindings_read(_string, _player_index = all)
         return undefined;
     }
     
-    if (__INPUT_ON_WEB) __input_error("Due to up-stream bug in GameMaker's JavaScript runtime, input_bindings_read() and input_bindings_write() are unsupported in HTML5");
+    if (__INPUT_ON_WEB) __input_error("Due to up-stream bug in GameMaker's JavaScript runtime, input_binding_system_read() and input_binding_system_write() are unsupported in HTML5");
     
     var _config = json_parse(_string);
     

@@ -1,7 +1,7 @@
 /// @param source
 /// @param destination
 
-function input_bindings_copy(_player_index_s, _player_index_d)
+function input_binding_system_copy(_player_index_s, _player_index_d)
 {
     if (is_struct(_player_index_s))
     {
