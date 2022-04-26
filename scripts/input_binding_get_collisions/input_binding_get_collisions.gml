@@ -25,35 +25,38 @@ function input_binding_get_collisions(_src_binding, _player_index = 0)
     
     with(global.__input_players[_player_index])
     {
-        var _source_verb_struct = config[$ get_binding_config_category(_src_binding)];
-        if (is_struct(_source_verb_struct))
+        //Get the config for this particular binding
+        var _config_name = get_binding_config_name(_src_binding);
+        
+        //Iterate over every verb
+        var _v = 0;
+        repeat(array_length(global.__input_verb_array))
         {
-            var _verb_names = variable_struct_get_names(_source_verb_struct);
-            var _v = 0;
-            repeat(array_length(_verb_names))
+            var _verb = global.__input_verb_array[_v];
+            
+            //Iterate over every alternate binding
+            var _alternate_index = 0;
+            repeat(INPUT_MAX_ALTERNATE_BINDINGS)
             {
-                var _verb = _verb_names[_v];
+                //Pick up a binding
+                //If this hasn't been defined for the player then it falls through and uses the default binding
+                var _extant_binding = __get_binding(_config_name, _verb, _alternate_index);
                 
-                var _alternate_array = _source_verb_struct[$ _verb];
-                var _a = 0;
-                repeat(array_length(_alternate_array))
+                //A lot of alternate binding slots don't get used so they return <undefined>
+                if (is_struct(_extant_binding))
                 {
-                    var _binding = _alternate_array[_a];
-                    if (is_struct(_binding))
+                    if ((_extant_binding.type          == _src_binding.type)
+                    &&  (_extant_binding.value         == _src_binding.value)
+                    &&  (_extant_binding.axis_negative == _src_binding.axis_negative))
                     {
-                        if ((_binding.type          == _src_binding.type)
-                        &&  (_binding.value         == _src_binding.value)
-                        &&  (_binding.axis_negative == _src_binding.axis_negative))
-                        {
-                            array_push(_output_array, { verb: _verb, alternate: _a });
-                        }
+                        array_push(_output_array, { verb: _verb, alternate: _alternate_index });
                     }
-                    
-                    ++_a;
                 }
                 
-                ++_v;
+                ++_alternate_index;
             }
+            
+            ++_v;
         }
     }
     

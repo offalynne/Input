@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Binding System",
-    "path": "folders/Input/Binding System.yy",
+    "name": "Verbs",
+    "path": "folders/Input/Verbs.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_binding_system_gamepad_swap_ab",
+  "name": "input_verb_build",
   "tags": [],
   "resourceType": "GMScript",
 }

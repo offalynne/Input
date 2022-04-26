@@ -136,39 +136,6 @@ enum __INPUT_COMBO_PHASE_TYPE
 
 
 
-//These are globally scoped rather than methods because otherwise they'd get serialised by input_binding_system_write()
-
-/// @param source
-function __input_binding_duplicate(_source)
-{
-    with(_source)
-    {
-        var _binding = new __input_class_binding();
-        _binding.type          = type;
-        _binding.value         = value;
-        _binding.axis_negative = axis_negative;
-        _binding.label         = label;
-        if (variable_struct_exists(self, "android_lowercase")) _binding.android_lowercase = android_lowercase;
-        
-        return _binding;
-    }
-}
-
-/// @param from
-/// @param to
-function __input_binding_overwrite(_from, _to)
-{
-    with(_to)
-    {
-        type          = _from.type;
-        value         = _from.value;
-        axis_negative = _from.axis_negative;
-        label         = _from.label;
-    }
-    
-    return _to;
-}
-
 function __input_axis_is_directional(_axis)
 {
     return ((_axis == gp_padu)   || (_axis == gp_padd)   || (_axis == gp_padl)   || (_axis == gp_padr)
@@ -281,14 +248,6 @@ function __input_error()
     }
     
     show_error("Input:\n" + _string + "\n ", false);
-}
-
-function __input_verb_define(_name)
-{
-    __input_ensure_unique_verb_name(_name);
-    
-    global.__input_verb_dict[$ _name] = true;
-    array_push(global.__input_verb_array, _name);
 }
 
 function __input_ensure_unique_verb_name(_name)

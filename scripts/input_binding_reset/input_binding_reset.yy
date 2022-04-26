@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Chords and Combos",
-    "path": "folders/Input/Chords and Combos.yy",
+    "name": "Binding Access",
+    "path": "folders/Input/Binding Access.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_combo_define",
+  "name": "input_binding_reset",
   "tags": [],
   "resourceType": "GMScript",
 }

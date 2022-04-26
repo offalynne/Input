@@ -161,8 +161,9 @@ function __input_class_player() constructor
     
     static tick_source = function()
     {
-        var _config_category = get_config_category();
-        var _source_verb_struct = config[$ _config_category];
+        var _config_name = get_config_name();
+        var _source_verb_struct = config[$ _config_name];
+        var _default_source_verb_struct = global.__input_default_player.config[$ _config_name];
         
         if (is_struct(_source_verb_struct) || (source == INPUT_SOURCE.GHOST))
         {
@@ -201,10 +202,14 @@ function __input_class_player() constructor
                 if (source != INPUT_SOURCE.GHOST)
                 {
                     var _alternate_array = _source_verb_struct[$ _verb_name];
-                    var _a = 0;
-                    repeat(array_length(_alternate_array))
+                    var _default_alternate_array = _default_source_verb_struct[$ _verb_name];
+                    
+                    var _alternate = 0;
+                    repeat(INPUT_MAX_ALTERNATE_BINDINGS)
                     {
-                        var _binding = _alternate_array[_a];
+                        var _binding = _alternate_array[_alternate];
+                        if (!is_struct(_binding)) _binding = _default_alternate_array[_alternate];
+                        
                         if (is_struct(_binding))
                         {
                             switch(_binding.type)
@@ -305,7 +310,7 @@ function __input_class_player() constructor
                             }
                         }
                         
-                        ++_a;
+                        ++_alternate;
                     }
                 }
                 
@@ -326,33 +331,14 @@ function __input_class_player() constructor
         }
     }
     
-    /// @param sourceName
+    /// @param configName
     /// @param verb
     /// @param alternate
-    /// @param bindingStruct
-    static set_binding = function(_config_category, _verb, _alternate, _binding_struct)
+    static __ensure_verb = function(_config_name, _verb)
     {
-        if (__INPUT_DEBUG)
+        if ((_config_name != "keyboard and mouse") && (_config_name != "gamepad") && (_config_name != "joycon"))
         {
-            __input_trace("Setting binding, args=", _config_category, ", ", _verb, ", ", _alternate, ", ", _binding_struct);
-            __input_trace("callstack = ", debug_get_callstack());
-        }
-        
-        if ((_config_category != "keyboard and mouse") && (_config_category != "gamepad") && (_config_category != "joycon"))
-        {
-            __input_error("Invalid config (", _config_category, ")");
-            return undefined;
-        }
-        
-        if (_alternate < 0)
-        {
-            __input_error("Invalid \"alternate\" argument (", _alternate, ")");
-            return undefined;
-        }
-            
-        if (_alternate >= INPUT_MAX_ALTERNATE_BINDINGS)
-        {
-            __input_error("\"alternate\" argument too large (", _alternate, " must be less than ", INPUT_MAX_ALTERNATE_BINDINGS, ")\nIncrease INPUT_MAX_ALTERNATE_BINDINGS for more alternate binding slots");
+            __input_error("Invalid config (", _config_name, ")");
             return undefined;
         }
         
@@ -362,12 +348,17 @@ function __input_class_player() constructor
             return undefined;
         }
         
-        var _source_verb_struct = config[$ _config_category];
+        if (!is_struct(verbs[$ _verb]))
+        {
+            verbs[$ _verb] = new __input_class_verb();
+        }
+        
+        var _source_verb_struct = config[$ _config_name];
         if (!is_struct(_source_verb_struct))
         {
             if (__INPUT_DEBUG) __input_trace("Source verb struct not found, creating a new one");
             _source_verb_struct = {};
-            config[$ _config_category] = _source_verb_struct;
+            config[$ _config_name] = _source_verb_struct;
         }
         else
         {
@@ -387,22 +378,75 @@ function __input_class_player() constructor
         }
         
         if (__INPUT_DEBUG) __input_trace("Verb alternate array length = ", array_length(_verb_alternate_array));
-        
-        _verb_alternate_array[@ _alternate] = _binding_struct;
-        
-        //Set up a verb container on the player separate from the bindings
-        if (!is_struct(verbs[$ _verb]))
+    }
+    
+    /// @param configName
+    /// @param verb
+    /// @param alternate
+    /// @param bindingStruct
+    static __set_binding = function(_config_name, _verb, _alternate, _binding_struct)
+    {
+        if (_alternate < 0)
         {
-            if (__INPUT_DEBUG) __input_trace("Verb \"", _verb, "\" not found on player, creating a new one as a basic verb");
+            __input_error("Invalid \"alternate\" argument (", _alternate, ")");
+            return undefined;
+        }
             
-            var _verb_struct = new __input_class_verb();
-            _verb_struct.name = _verb;
-            _verb_struct.type = "basic";
-            
-            verbs[$ _verb] = _verb_struct;
+        if (_alternate >= INPUT_MAX_ALTERNATE_BINDINGS)
+        {
+            __input_error("\"alternate\" argument too large (", _alternate, " must be less than ", INPUT_MAX_ALTERNATE_BINDINGS, ")\nIncrease INPUT_MAX_ALTERNATE_BINDINGS for more alternate binding slots");
+            return undefined;
         }
         
+        config[$ _config_name][$ _verb][@ _alternate] = _binding_struct;
         return _binding_struct;
+    }
+    
+    /// @param configName
+    /// @param verb
+    /// @param alternate
+    static __reset_binding = function(_config_name, _verb, _alternate)
+    {
+        if (_alternate < 0)
+        {
+            __input_error("Invalid \"alternate\" argument (", _alternate, ")");
+            return undefined;
+        }
+            
+        if (_alternate >= INPUT_MAX_ALTERNATE_BINDINGS)
+        {
+            __input_error("\"alternate\" argument too large (", _alternate, " must be less than ", INPUT_MAX_ALTERNATE_BINDINGS, ")\nIncrease INPUT_MAX_ALTERNATE_BINDINGS for more alternate binding slots");
+            return undefined;
+        }
+        
+        config[$ _config_name][$ _verb][@ _alternate] = undefined;
+    }
+    
+    /// @param source
+    /// @param verb
+    /// @param alternate
+    static __get_binding = function(_source, _verb, _alternate)
+    {
+        var _source_verb_struct = config[$ convert_source_enum_to_config_name(_source)];
+        if (is_struct(_source_verb_struct))
+        {
+            var _alternate_array = _source_verb_struct[$ _verb];
+            if (is_array(_alternate_array))
+            {
+                var _binding = _alternate_array[_alternate];
+                if (is_struct(_binding)) return _binding;
+            }
+        }
+        
+        if (self != global.__input_default_player)
+        {
+            return global.__input_default_player.__get_binding(_source, _verb, _alternate);
+        }
+        else
+        {
+            __input_error("Cannot find binding for source=", _source, ", verb=", _verb, " alternate=", _alternate, " on default player");
+            return undefined;
+        }
     }
     
     static __add_chord = function(_name)
@@ -449,26 +493,7 @@ function __input_class_player() constructor
         }
     }
     
-    /// @param source
-    /// @param verb
-    /// @param alternate
-    static get_binding = function(_source, _verb, _alternate)
-    {
-        var _source_verb_struct = config[$ convert_source_enum_to_config_category(_source)];
-        if (is_struct(_source_verb_struct))
-        {
-            var _alternate_array = _source_verb_struct[$ _verb];
-            if (is_array(_alternate_array))
-            {
-                var _binding = _alternate_array[_alternate];
-                if (is_struct(_binding)) return _binding;
-            }
-        }
-        
-        return undefined;
-    }
-    
-    static get_config_category = function()
+    static get_config_name = function()
     {
         //Use the joycon config if the player is using a joycon at the moment
         if ((source == INPUT_SOURCE.GAMEPAD) && variable_struct_exists(config, "joycon"))
@@ -480,14 +505,14 @@ function __input_class_player() constructor
             }
         }
         
-        return global.__input_config_category_names[source];
+        return global.__input_config_name_names[source];
     }
     
     static get_invalid_gamepad_bindings = function()
     {
         var _output = [];
         
-        var _source_verb_struct = config[$ get_config_category()];
+        var _source_verb_struct = config[$ get_config_name()];
         if (is_struct(_source_verb_struct))
         {
             var _gamepad_mapping_array = input_gamepad_get_map(gamepad);
@@ -533,7 +558,7 @@ function __input_class_player() constructor
     }
     
     /// @param binding
-    static get_binding_config_category = function(_binding)
+    static get_binding_config_name = function(_binding)
     {
         if ((_binding.type == "key")
         ||  (_binding.type == "mouse button")
@@ -569,10 +594,10 @@ function __input_class_player() constructor
         return undefined;
     }
     
-    static convert_source_enum_to_config_category = function(_source)
+    static convert_source_enum_to_config_name = function(_source)
     {
         //If undefined is passed in, use the player's current source
-        if (_source == undefined) return get_config_category();
+        if (_source == undefined) return get_config_name();
         
         if (is_numeric(_source))
         {

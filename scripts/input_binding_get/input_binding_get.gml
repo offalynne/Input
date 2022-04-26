@@ -23,7 +23,7 @@ function input_binding_get(_verb, _source = undefined, _player_index = 0, _alter
         
         with(global.__input_default_player)
         {
-            return __input_binding_duplicate(get_binding(convert_source_enum_to_config_category(_source), _verb, _alternate));
+            return __get_binding(convert_source_enum_to_config_name(_source), _verb, _alternate).__duplicate();
         }
     }
     
@@ -41,7 +41,7 @@ function input_binding_get(_verb, _source = undefined, _player_index = 0, _alter
     
     with(global.__input_players[_player_index])
     {
-        return get_binding(convert_source_enum_to_config_category(_source), _verb, _alternate);
+        return __get_binding(convert_source_enum_to_config_name(_source), _verb, _alternate);
     }
     
     return undefined;

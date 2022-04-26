@@ -4,7 +4,7 @@
 /// @param verb2
 /// @param ...
 
-function input_chord_define()
+function input_chord_build()
 {
     var _name     = argument[0];
     var _max_time = argument[1] ?? INPUT_CHORD_DEFAULT_TIME;

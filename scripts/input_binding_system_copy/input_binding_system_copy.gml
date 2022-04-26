@@ -47,14 +47,14 @@ function input_binding_system_copy(_player_index_s, _player_index_d)
     
     with(_player_d)
     {
-        sources = array_create(array_length(global.__input_config_category_names), undefined);
+        sources = array_create(array_length(global.__input_config_name_names), undefined);
         
         var _source = 0;
-        repeat(array_length(global.__input_config_category_names))
+        repeat(array_length(global.__input_config_name_names))
         {
-            var _config_category = global.__input_config_category_names[_source];
+            var _config_name = global.__input_config_name_names[_source];
             
-            var _source_verb_struct = _player_s.config[$ _config_category];
+            var _source_verb_struct = _player_s.config[$ _config_name];
             if (is_struct(_source_verb_struct))
             {
                 var _verb_names = variable_struct_get_names(_source_verb_struct);
@@ -69,7 +69,7 @@ function input_binding_system_copy(_player_index_s, _player_index_d)
                         repeat(array_length(_alternate_array))
                         {
                             var _binding = _alternate_array[_alternate];
-                            if (is_struct(_binding)) set_binding(_config_category, _verb, _alternate, __input_binding_duplicate(_binding));
+                            if (is_struct(_binding)) __set_binding(_config_name, _verb, _alternate, _binding.__duplicate());
                             ++_alternate;
                         }
                     }

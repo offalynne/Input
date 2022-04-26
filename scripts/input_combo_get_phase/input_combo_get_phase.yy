@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Chords and Combos",
-    "path": "folders/Input/Chords and Combos.yy",
+    "name": "Verbs",
+    "path": "folders/Input/Verbs.yy",
   },
   "resourceVersion": "1.0",
   "name": "input_combo_get_phase",

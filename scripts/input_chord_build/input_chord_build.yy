@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Bindings",
-    "path": "folders/Input/Bindings.yy",
+    "name": "Verbs",
+    "path": "folders/Input/Verbs.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_binding_set_default",
+  "name": "input_chord_build",
   "tags": [],
   "resourceType": "GMScript",
 }

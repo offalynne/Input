@@ -43,9 +43,9 @@ function input_binding_system_reset(_source, _player_index = all, _reset_thresho
     if (_source == all)
     {
         var _i = 0;
-        repeat(array_length(global.__input_config_category_names))
+        repeat(array_length(global.__input_config_name_names))
         {
-            input_binding_system_reset(global.__input_config_category_names[_i], _player_index);
+            input_binding_system_reset(global.__input_config_name_names[_i], _player_index);
             ++_i;
         }
         
@@ -55,34 +55,23 @@ function input_binding_system_reset(_source, _player_index = all, _reset_thresho
     with(global.__input_players[_player_index])
     {
         //Convert the source enum to a config name if necessary
-        var _config_category = convert_source_enum_to_config_category(_source);
+        var _config_name = convert_source_enum_to_config_name(_source);
         
-        __input_trace("Resetting ", _config_category, " bindings for player ", _player_index);
+        __input_trace("Resetting ", _config_name, " bindings for player ", _player_index);
         
-        config[$ _config_category] = {};
-        
-        var _source_verb_struct = global.__input_default_player.config[$ _config_category];
-        if (is_struct(_source_verb_struct))
+        var _v = 0;
+        repeat(array_length(global.__input_verb_array))
         {
-            var _verb_names = variable_struct_get_names(_source_verb_struct);
-            var _v = 0;
-            repeat(array_length(_verb_names))
+            var _verb = global.__input_verb_array[_v];
+            
+            var _alternate = 0;
+            repeat(INPUT_MAX_ALTERNATE_BINDINGS)
             {
-                var _verb = _verb_names[_v];
-                var _alternate_array = _source_verb_struct[$ _verb];
-                if (is_array(_alternate_array))
-                {
-                    var _alternate = 0;
-                    repeat(array_length(_alternate_array))
-                    {
-                        var _binding = _alternate_array[_alternate];
-                        if (is_struct(_binding)) set_binding(_config_category, _verb, _alternate, __input_binding_duplicate(_binding));
-                        ++_alternate;
-                    }
-                }
-                
-                ++_v;
+                __reset_binding(_config_name, _verb, _alternate);
+                ++_alternate;
             }
+            
+            ++_v;
         }
         
         if (_reset_thresholds)

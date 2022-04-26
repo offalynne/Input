@@ -1,13 +1,13 @@
-input_binding_set_default("up",     input_binding_key(vk_up    ));
-input_binding_set_default("down",   input_binding_key(vk_down  ));
-input_binding_set_default("left",   input_binding_key(vk_left  ));
-input_binding_set_default("right",  input_binding_key(vk_right ));
-input_binding_set_default("accept", input_binding_key(vk_space ));
-input_binding_set_default("cancel", input_binding_key(vk_escape));
+input_verb_build("up",     input_binding_key(vk_up    ));
+input_verb_build("down",   input_binding_key(vk_down  ));
+input_verb_build("left",   input_binding_key(vk_left  ));
+input_verb_build("right",  input_binding_key(vk_right ));
+input_verb_build("accept", input_binding_key(vk_space ));
+input_verb_build("cancel", input_binding_key(vk_escape));
 
-input_chord_define("up + down", INPUT_CHORD_DEFAULT_TIME, "up", "down");
+input_chord_build("up + down", INPUT_CHORD_DEFAULT_TIME, "up", "down");
 
-input_combo_define("konami")
+input_combo_build("konami")
 .press("up")
 .press("up")
 .press("down")
@@ -19,18 +19,18 @@ input_combo_define("konami")
 .press("cancel")
 .press("accept");
 
-input_combo_define("sweep right->up")
+input_combo_build("sweep right->up")
 .press("right")
 .press("up")
 .press("accept");
 
-input_combo_define("power attack right")
+input_combo_build("power attack right")
 .hold("accept")
 .press("right")
 .press("right")
 .release("accept", "right");
 
-input_combo_define("fireball")
+input_combo_build("fireball")
 .press("accept")
 .press("down")
 .press("right")

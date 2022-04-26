@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Binding Access",
-    "path": "folders/Input/Binding Access.yy",
+    "name": "Verbs",
+    "path": "folders/Input/Verbs.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_binding_get_collisions",
+  "name": "input_combo_build",
   "tags": [],
   "resourceType": "GMScript",
 }
