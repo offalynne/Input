@@ -189,9 +189,9 @@ function __input_class_combo_state(_name, _combo_definition_struct) constructor
         
         //Check for any erroneous holds
         var _i = 0;
-        repeat(array_length(global.__input_verb_array))
+        repeat(array_length(global.__input_basic_verb_array))
         {
-            var _verb_name = global.__input_verb_array[_i];
+            var _verb_name = global.__input_basic_verb_array[_i];
             
             if ((_player_verbs_struct[$ _verb_name].held)
             &&  !variable_struct_exists(__held_verbs_struct, _verb_name)  //Not required to be held

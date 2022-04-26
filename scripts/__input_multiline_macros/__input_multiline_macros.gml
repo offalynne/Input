@@ -15,3 +15,18 @@
                                     __input_error("Verb not recognised (", _verb, ")");\
                                     return undefined;\
                                 }
+                                
+#macro __INPUT_VERIFY_ALTERNATE_INDEX  if (_alternate < 0)\
+                                       {\
+                                           __input_error("Invalid \"alternate\" argument (", _alternate, ")");\
+                                           return undefined;\
+                                       }\
+                                       if (_alternate >= INPUT_MAX_ALTERNATE_BINDINGS)\
+                                       {\
+                                           __input_error("\"alternate\" argument too large (", _alternate, " must be less than ", INPUT_MAX_ALTERNATE_BINDINGS, ")\nIncrease INPUT_MAX_ALTERNATE_BINDINGS for more alternate binding slots");\
+                                           return undefined;\
+                                       }
+
+#macro __INPUT_VERIFY_BASIC_VERB_NAME  if (variable_struct_exists(global.__input_chord_verb_dict, _verb_name)) __input_error("\"", _verb_name, "\" is a chord verb. Verbs passed to this function must be basic verb");\
+                                       if (variable_struct_exists(global.__input_combo_verb_dict, _verb_name)) __input_error("\"", _verb_name, "\" is a combo verb. Verbs passed to this function must be basic verb");\
+                                       if (!variable_struct_exists(global.__input_basic_verb_dict, _verb_name)) __input_error("Verb \"", _verb_name, "\" not recognised");

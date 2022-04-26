@@ -56,6 +56,7 @@ function __input_initialize()
     global.__input_keyboard_default_defined = false;
     global.__input_mouse_default_defined    = false;
     global.__input_gamepad_default_defined  = false;
+    global.__input_joycon_default_defined   = false;
     
     //Disallow keyboard bindings on specified platforms unless explicitly enabled
     global.__input_keyboard_allowed = (__INPUT_KEYBOARD_SUPPORT && ((os_type != os_android) || INPUT_ANDROID_KEYBOARD_ALLOWED) && ((os_type != os_switch) || INPUT_SWITCH_KEYBOARD_ALLOWED));
@@ -70,14 +71,17 @@ function __input_initialize()
     global.__input_swap_ab = false;
     
     //Arrays/dictionaries to track verbs, chords, and combos
-    global.__input_verb_dict   = {};
-    global.__input_verb_array  = [];
+    global.__input_all_verb_dict  = {};
+    global.__input_all_verb_array = [];
     
-    global.__input_chord_dict  = {};
-    global.__input_chord_array = [];
+    global.__input_basic_verb_dict  = {};
+    global.__input_basic_verb_array = [];
     
-    global.__input_combo_dict  = {};
-    global.__input_combo_array = [];
+    global.__input_chord_verb_dict  = {};
+    global.__input_chord_verb_array = [];
+    
+    global.__input_combo_verb_dict  = {};
+    global.__input_combo_verb_array = [];
     
     //Struct to store all the keyboard keys we want to ignore
     global.__input_ignore_key_dict = {};
@@ -86,11 +90,10 @@ function __input_initialize()
     global.__input_ignore_gamepad_types = {};
     
     //Names for sources. I suspect this'll get sliced out at some point when I start recoding the binding system to serialise per controller type
-    global.__input_config_name_names = ["none",               //INPUT_SOURCE.NONE
-                                            "keyboard and mouse", //INPUT_SOURCE.KEYBOARD_AND_MOUSE
-                                            "gamepad",            //INPUT_SOURCE.GAMEPAD
-                                            "ghost",              //INPUT_SOURCE.GHOST
-                                            "joycon"];
+    global.__input_config_name_array = [__INPUT_CONFIG_KEYBOARD,
+                                        __INPUT_CONFIG_MOUSE,
+                                        __INPUT_CONFIG_GAMEPAD,
+                                        __INPUT_CONFIG_JOYCON];
     
     //Two structs that are returned by input_players_get_status() and input_gamepads_get_status()
     //These are "static" structs that are reset and populated by input_tick()

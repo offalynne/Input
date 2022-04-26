@@ -7,12 +7,12 @@ function __input_class_combo_definition(_name, _phase_timeout) constructor
     
     static __ensure_verb_is_basic_or_chord = function(_name)
     {
-        if (variable_struct_exists(global.__input_combo_dict, _name))
+        if (variable_struct_exists(global.__input_combo_verb_dict, _name))
         {
             __input_error("Combos only accept basic verbs and chords when defining phases. Combo \"", _name, "\" cannot be used");
         }
         
-        if (!variable_struct_exists(global.__input_verb_dict, _name) && !variable_struct_exists(global.__input_chord_dict, _name))
+        if (!variable_struct_exists(global.__input_basic_verb_dict, _name) && !variable_struct_exists(global.__input_chord_verb_dict, _name))
         {
             __input_error("Verb \"", _name, "\" not found either as a basic verb or a chord. Please define verbs and chords before combos");
         }

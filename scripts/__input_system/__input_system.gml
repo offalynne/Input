@@ -2,6 +2,20 @@
 #macro __INPUT_DATE    "2022-04-23"
 #macro __INPUT_DEBUG   false
 
+#macro __INPUT_CONFIG_KEYBOARD  "keyboard"
+#macro __INPUT_CONFIG_MOUSE     "mouse"
+#macro __INPUT_CONFIG_GAMEPAD   "gamepad"
+#macro __INPUT_CONFIG_JOYCON    "joycon"
+#macro __INPUT_CONFIG_MIXED     "mixed"
+
+#macro __INPUT_BINDING_KEY               "key"
+#macro __INPUT_BINDING_MOUSE_BUTTON      "mouse button"
+#macro __INPUT_BINDING_MOUSE_WHEEL_UP    "mouse wheel up"
+#macro __INPUT_BINDING_MOUSE_WHEEL_DOWN  "mouse wheel down"
+#macro __INPUT_BINDING_GAMEPAD_BUTTON    "gamepad button"
+#macro __INPUT_BINDING_GAMEPAD_AXIS      "gamepad axis"
+
+
 
 #macro __INPUT_ON_PS       ((os_type == os_ps4)     || (os_type == os_ps5))
 #macro __INPUT_ON_XDK      ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
@@ -88,13 +102,13 @@
 enum INPUT_SOURCE
 {
     NONE,
-    KEYBOARD_AND_MOUSE,
-    GAMEPAD,
     GHOST,
+    KEYBOARD,
+    MOUSE,
+    ALL_GAMEPADS,
+    GAMEPAD,
     __SIZE
 }
-
-#macro INPUT_NO_GAMEPAD  -1
 
 enum __INPUT_MAPPING
 {
@@ -252,19 +266,19 @@ function __input_error()
 
 function __input_ensure_unique_verb_name(_name)
 {
-    if (variable_struct_exists(global.__input_verb_dict, _name))
+    if (variable_struct_exists(global.__input_basic_verb_dict, _name))
     {
-        __input_error("A verb named \"", _name, "\" already exists");
+        __input_error("A basic verb named \"", _name, "\" already exists");
         return;
     }
     
-    if (variable_struct_exists(global.__input_chord_dict, _name))
+    if (variable_struct_exists(global.__input_chord_verb_dict, _name))
     {
         __input_error("A chord named \"", _name, "\" already exists");
         return;
     }
     
-    if (variable_struct_exists(global.__input_combo_dict, _name))
+    if (variable_struct_exists(global.__input_combo_verb_dict, _name))
     {
         __input_error("A combo named \"", _name, "\" already exists");
         return;
@@ -279,4 +293,19 @@ function __input_get_previous_time()
 function __input_get_time()
 {
     return (INPUT_TIMER_MILLISECONDS? current_time : global.__input_frame);
+}
+
+function __input_source_get_name(_source)
+{
+    switch(_source)
+    {
+        case INPUT_SOURCE.NONE:         return "none";         break;
+        case INPUT_SOURCE.GHOST:        return "ghost";        break;
+        case INPUT_SOURCE.KEYBOARD:     return "keyboard";     break;
+        case INPUT_SOURCE.MOUSE:        return "mouse";        break;
+        case INPUT_SOURCE.ALL_GAMEPADS: return "all gamepads"; break;
+        case INPUT_SOURCE.GAMEPAD:      return "gamepad";      break;
+    }
+    
+    return "unknown";
 }

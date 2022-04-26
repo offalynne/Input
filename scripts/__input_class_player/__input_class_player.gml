@@ -1,12 +1,10 @@
 function __input_class_player() constructor
 {
-    source           = INPUT_SOURCE.NONE;
-    gamepad          = INPUT_NO_GAMEPAD;
-    sources          = array_create(INPUT_SOURCE.__SIZE, undefined);
+    __source_array   = [];
     verbs            = {};
     chord_state_dict = {};
     combo_state_dict = {};
-    last_input_time  = -1;
+    last_input_time  = -infinity;
     cursor           = new __input_class_cursor();
     
     rebind_state         = 0;
@@ -16,6 +14,74 @@ function __input_class_player() constructor
     
     //This struct is the one that gets serialized/deserialized
     config = { axis_thresholds : {} };
+    
+    
+    
+    #region Source Manipulation
+    
+    static __clear_sources = function()
+    {
+        array_resize(__source_array, 0);
+        last_input_time = current_time;
+    }
+    
+    static __set_ghost = function()
+    {
+        __clear_sources();
+        __add_source("ghost");
+    }
+    
+    static __add_source = function(_source, _gamepad = undefined)
+    {
+        if ((_source == INPUT_SOURCE.GAMEPAD) && (_gamepad == undefined)) _gamepad = __get_gamepad();
+        
+        if (__is_using_source(_source, _gamepad)) return;
+        
+        array_push(__source_array, new __input_class_source(_source, _gamepad));
+        
+        last_input_time = current_time;
+    }
+    
+    static __is_using_source = function(_source, _gamepad = undefined)
+    {
+        var _i = 0;
+        repeat(array_length(__source_array))
+        {
+            if (__source_array[_i].__collides_with(_source, _gamepad)) return true;
+            ++_i;
+        }
+        
+        return false;
+    }
+    
+    static __is_connected = function()
+    {
+        var _i = 0;
+        repeat(array_length(__source_array))
+        {
+            if (__source_array[_i].__is_connected()) return true;
+            ++_i;
+        }
+        
+        return false;
+    }
+    
+    static __get_gamepad = function()
+    {
+        var _i = 0;
+        repeat(array_length(__source_array))
+        {
+            var _gamepad = __source_array[_i].gamepad;
+            if (_gamepad != undefined) return _gamepad;
+            ++_i;
+        }
+        
+        return undefined;
+    }
+    
+    #endregion
+    
+    
     
     /// @param axis
     /// @param min
@@ -73,15 +139,14 @@ function __input_class_player() constructor
         rebind_this_frame = false;
         
         //Clear the momentary state for all verbs
-        var _verb_names = variable_struct_get_names(verbs);
         var _v = 0;
-        repeat(array_length(_verb_names))
+        repeat(array_length(global.__input_all_verb_array))
         {
-            with(verbs[$ _verb_names[_v]]) clear();
+            with(verbs[$ global.__input_all_verb_array[_v]]) clear();
             ++_v;
         }
         
-        tick_source();
+        __input_player_tick_sources();
         
         //Update our basic verbs first
         tick_basic_verbs();
@@ -104,9 +169,9 @@ function __input_class_player() constructor
     static tick_basic_verbs = function()
     {
         var _v = 0;
-        repeat(array_length(global.__input_verb_array))
+        repeat(array_length(global.__input_basic_verb_array))
         {
-            with(verbs[$ global.__input_verb_array[_v]]) tick();
+            with(verbs[$ global.__input_basic_verb_array[_v]]) tick();
             ++_v;
         }
     }
@@ -114,9 +179,9 @@ function __input_class_player() constructor
     static tick_chord_verbs = function()
     {
         var _i = 0;
-        repeat(array_length(global.__input_chord_array))
+        repeat(array_length(global.__input_chord_verb_array))
         {
-            var _chord_name = global.__input_chord_array[_i];
+            var _chord_name = global.__input_chord_verb_array[_i];
             if (chord_state_dict[$ _chord_name].__evaluate(verbs))
             {
                 with(verbs[$ _chord_name])
@@ -138,9 +203,9 @@ function __input_class_player() constructor
     static tick_combo_verbs = function()
     {
         var _i = 0;
-        repeat(array_length(global.__input_combo_array))
+        repeat(array_length(global.__input_combo_verb_array))
         {
-            var _combo_name = global.__input_combo_array[_i];
+            var _combo_name = global.__input_combo_verb_array[_i];
             if (combo_state_dict[$ _combo_name].__tick(verbs) == __INPUT_COMBO_STATE.__SUCCESS)
             {
                 with(verbs[$ _combo_name])
@@ -159,184 +224,14 @@ function __input_class_player() constructor
         }
     }
     
-    static tick_source = function()
-    {
-        var _config_name = get_config_name();
-        var _source_verb_struct = config[$ _config_name];
-        var _default_source_verb_struct = global.__input_default_player.config[$ _config_name];
-        
-        if (is_struct(_source_verb_struct) || (source == INPUT_SOURCE.GHOST))
-        {
-            var _v = 0;
-            repeat(array_length(global.__input_verb_array))
-            {
-                var _verb_name = global.__input_verb_array[_v];
-                var _verb      = verbs[$ _verb_name];
-                
-                var _raw           = 0.0;
-                var _value         = 0.0;
-                var _analogue      = undefined;
-                var _raw_analogue  = undefined;
-                var _min_threshold = undefined;
-                var _max_threshold = undefined;
-                
-                if ((_verb.force_value != undefined) && (_verb.force_analogue != undefined))
-                {
-                    //We've had our value set this frame via input_verb_set()
-                    with(_verb)
-                    {
-                        value = force_value;
-                        raw   = force_value;
-                        
-                        raw_analogue = force_analogue;
-                        analogue     = force_analogue;
-                        
-                        min_threshold = 0;
-                        max_threshold = 1;
-                        
-                        force_value    = undefined;
-                        force_analogue = undefined;
-                    }
-                }
-                
-                if (source != INPUT_SOURCE.GHOST)
-                {
-                    var _alternate_array = _source_verb_struct[$ _verb_name];
-                    var _default_alternate_array = _default_source_verb_struct[$ _verb_name];
-                    
-                    var _alternate = 0;
-                    repeat(INPUT_MAX_ALTERNATE_BINDINGS)
-                    {
-                        var _binding = _alternate_array[_alternate];
-                        if (!is_struct(_binding)) _binding = _default_alternate_array[_alternate];
-                        
-                        if (is_struct(_binding))
-                        {
-                            switch(_binding.type)
-                            {
-                                case "key":
-                                    if (keyboard_check(_binding.value))
-                                    {
-                                        _value        = 1.0;
-                                        _raw          = 1.0;
-                                        _analogue     = false;
-                                        _raw_analogue = false;
-                                    }
-                                    
-                                    //If we're on Android then check the alternate keyboard key as well
-                                    if (os_type == os_android)
-                                    {
-                                        if ((_binding.android_lowercase != undefined) && keyboard_check(_binding.android_lowercase))
-                                        {
-                                            _value        = 1.0;
-                                            _raw          = 1.0;
-                                            _analogue     = false;
-                                            _raw_analogue = false;
-                                        }
-                                    }
-                                break;
-                                
-                                case "gamepad button":
-                                    if (input_gamepad_check(gamepad, _binding.value))
-                                    {
-                                        _value        = 1.0;
-                                        _raw          = 1.0;
-                                        _analogue     = false;
-                                        _raw_analogue = false;
-                                    }
-                                break;
-                                
-                                case "mouse button":
-                                    if (input_mouse_check(_binding.value))
-                                    {
-                                        _value        = 1.0;
-                                        _raw          = 1.0;
-                                        _analogue     = false;
-                                        _raw_analogue = false;
-                                    }
-                                break;
-                                
-                                case "mouse wheel up":
-                                    if (mouse_wheel_up())
-                                    {
-                                        _value        = 1.0;
-                                        _raw          = 1.0;
-                                        _analogue     = false;
-                                        _raw_analogue = false;
-                                    }
-                                break;
-                                
-                                case "mouse wheel down":
-                                    if (mouse_wheel_down())
-                                    {
-                                        _value        = 1.0;
-                                        _raw          = 1.0;
-                                        _analogue     = false;
-                                        _raw_analogue = false;
-                                    }
-                                break;
-                                
-                                case "gamepad axis":
-                                    //Grab the raw value directly from the gamepad
-                                    //We keep a hold of this value for use in 2D checkers
-                                    var _found_raw = input_gamepad_value(gamepad, _binding.value);
-                                    
-                                    var _axis_threshold = axis_threshold_get(_binding.value);
-                                    
-                                    //Correct the raw value's sign if needed
-                                    if (_binding.axis_negative) _found_raw = -_found_raw;
-                                    
-                                    //The return value from this binding needs to be corrected using the thresholds previously defined
-                                    var _found_value = _found_raw;
-                                    _found_value = (_found_value - _axis_threshold.mini) / (_axis_threshold.maxi - _axis_threshold.mini);
-                                    _found_value = clamp(_found_value, 0.0, 1.0);
-                                    
-                                    //If this binding is returning a value bigger than whatever we found before, let it override the old value
-                                    //This is useful for situations where both the left + right analogue sticks are bound to movement
-                                    if (_found_raw > _raw)
-                                    {
-                                        _raw           = _found_raw;
-                                        _raw_analogue  = true;
-                                        _min_threshold = _axis_threshold.mini;
-                                        _max_threshold = _axis_threshold.maxi;
-                                    }
-                                    
-                                    if (_found_value > _value)
-                                    {
-                                        _value    = _found_value;
-                                        _analogue = true;
-                                    }
-                                break;
-                            }
-                        }
-                        
-                        ++_alternate;
-                    }
-                }
-                
-                with(_verb)
-                {
-                    value = _value;
-                    raw   = _raw;
-                        
-                    if (_raw_analogue != undefined) raw_analogue = _raw_analogue;
-                    if (_analogue     != undefined) analogue     = _analogue;
-                    
-                    min_threshold = _min_threshold;
-                    max_threshold = _max_threshold;
-                }
-                
-                ++_v;
-            }
-        }
-    }
-    
     /// @param configName
     /// @param verb
-    /// @param alternate
     static __ensure_verb = function(_config_name, _verb)
     {
-        if ((_config_name != "keyboard and mouse") && (_config_name != "gamepad") && (_config_name != "joycon"))
+        if ((_config_name != __INPUT_CONFIG_KEYBOARD)
+        &&  (_config_name != __INPUT_CONFIG_MOUSE)
+        &&  (_config_name != __INPUT_CONFIG_GAMEPAD)
+        &&  (_config_name != __INPUT_CONFIG_JOYCON))
         {
             __input_error("Invalid config (", _config_name, ")");
             return undefined;
@@ -369,7 +264,15 @@ function __input_class_player() constructor
         if (!is_array(_verb_alternate_array))
         {
             if (__INPUT_DEBUG) __input_trace("Verb alternate array not found, creating a new one");
-            _verb_alternate_array = array_create(INPUT_MAX_ALTERNATE_BINDINGS, undefined);
+            _verb_alternate_array = array_create(INPUT_MAX_ALTERNATE_BINDINGS);
+            
+            var _i = 0;
+            repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+            {
+                _verb_alternate_array[@ _i] = __INPUT_BINDING_NULL;
+                ++_i;
+            }
+            
             _source_verb_struct[$ _verb] = _verb_alternate_array;
         }
         else
@@ -380,26 +283,28 @@ function __input_class_player() constructor
         if (__INPUT_DEBUG) __input_trace("Verb alternate array length = ", array_length(_verb_alternate_array));
     }
     
-    /// @param configName
     /// @param verb
     /// @param alternate
     /// @param bindingStruct
-    static __set_binding = function(_config_name, _verb, _alternate, _binding_struct)
+    static __set_binding = function(_verb, _alternate, _binding_struct)
     {
-        if (_alternate < 0)
-        {
-            __input_error("Invalid \"alternate\" argument (", _alternate, ")");
-            return undefined;
-        }
-            
-        if (_alternate >= INPUT_MAX_ALTERNATE_BINDINGS)
-        {
-            __input_error("\"alternate\" argument too large (", _alternate, " must be less than ", INPUT_MAX_ALTERNATE_BINDINGS, ")\nIncrease INPUT_MAX_ALTERNATE_BINDINGS for more alternate binding slots");
-            return undefined;
-        }
-        
-        config[$ _config_name][$ _verb][@ _alternate] = _binding_struct;
-        return _binding_struct;
+        config[$ __get_config_name_from_binding(_binding_struct)][$ _verb][@ _alternate] = _binding_struct;
+    }
+    
+    /// @param verb
+    /// @param alternate
+    /// @param bindingStruct
+    static __set_mixed_binding = function(_verb, _alternate, _binding_struct)
+    {
+        config[$ __INPUT_CONFIG_MIXED][$ _verb][@ _alternate] = _binding_struct;
+    }
+    
+    /// @param configName
+    /// @param verb
+    /// @param alternate
+    static __remove_binding = function(_config_name, _verb, _alternate)
+    {
+        config[$ _config_name][$ _verb][@ _alternate] = __INPUT_BINDING_NULL;
     }
     
     /// @param configName
@@ -407,46 +312,22 @@ function __input_class_player() constructor
     /// @param alternate
     static __reset_binding = function(_config_name, _verb, _alternate)
     {
-        if (_alternate < 0)
-        {
-            __input_error("Invalid \"alternate\" argument (", _alternate, ")");
-            return undefined;
-        }
-            
-        if (_alternate >= INPUT_MAX_ALTERNATE_BINDINGS)
-        {
-            __input_error("\"alternate\" argument too large (", _alternate, " must be less than ", INPUT_MAX_ALTERNATE_BINDINGS, ")\nIncrease INPUT_MAX_ALTERNATE_BINDINGS for more alternate binding slots");
-            return undefined;
-        }
+        //Grab the equivalent binding from the default player
+        var _binding = global.__input_default_player.config[$ _config_name][$ _verb][@ _alternate];
         
-        config[$ _config_name][$ _verb][@ _alternate] = undefined;
+        //If the binding is a struct then duplicate so we don't get nasty
+        if (is_struct(_binding)) _binding.__duplicate();
+        
+        //And set the value!
+        config[$ _config_name][$ _verb][@ _alternate] = _binding;
     }
     
-    /// @param source
+    /// @param configName
     /// @param verb
     /// @param alternate
-    static __get_binding = function(_source, _verb, _alternate)
+    static __get_binding = function(_config_name, _verb, _alternate)
     {
-        var _source_verb_struct = config[$ convert_source_enum_to_config_name(_source)];
-        if (is_struct(_source_verb_struct))
-        {
-            var _alternate_array = _source_verb_struct[$ _verb];
-            if (is_array(_alternate_array))
-            {
-                var _binding = _alternate_array[_alternate];
-                if (is_struct(_binding)) return _binding;
-            }
-        }
-        
-        if (self != global.__input_default_player)
-        {
-            return global.__input_default_player.__get_binding(_source, _verb, _alternate);
-        }
-        else
-        {
-            __input_error("Cannot find binding for source=", _source, ", verb=", _verb, " alternate=", _alternate, " on default player");
-            return undefined;
-        }
+        return config[$ _config_name][$ _verb][_alternate];
     }
     
     static __add_chord = function(_name)
@@ -467,7 +348,7 @@ function __input_class_player() constructor
             verbs[$ _name] = _verb_struct;
             
             //We also need to store additional tracking information for combos
-            chord_state_dict[$ _name] = new __input_class_chord_state(_name, global.__input_chord_dict[$ _name]);
+            chord_state_dict[$ _name] = new __input_class_chord_state(_name, global.__input_chord_verb_dict[$ _name]);
         }
     }
     
@@ -489,88 +370,97 @@ function __input_class_player() constructor
             verbs[$ _name] = _verb_struct;
             
             //We also need to store additional tracking information for combos
-            combo_state_dict[$ _name] = new __input_class_combo_state(_name, global.__input_combo_dict[$ _name]);
+            combo_state_dict[$ _name] = new __input_class_combo_state(_name, global.__input_combo_verb_dict[$ _name]);
         }
     }
     
-    static get_config_name = function()
-    {
-        //Use the joycon config if the player is using a joycon at the moment
-        if ((source == INPUT_SOURCE.GAMEPAD) && variable_struct_exists(config, "joycon"))
-        {
-            var _gamepad_struct = global.__input_gamepads[gamepad];
-            if (is_struct(_gamepad_struct) && ((_gamepad_struct.raw_type == "SwitchJoyConLeft") || (_gamepad_struct.raw_type == "SwitchJoyConRight")))
-            {
-                return "joycon";
-            }
-        }
-        
-        return global.__input_config_name_names[source];
-    }
-    
-    static get_invalid_gamepad_bindings = function()
+    static __get_invalid_gamepad_bindings = function()
     {
         var _output = [];
         
-        var _source_verb_struct = config[$ get_config_name()];
-        if (is_struct(_source_verb_struct))
+        var _s = 0;
+        repeat(array_length(__source_array))
         {
-            var _gamepad_mapping_array = input_gamepad_get_map(gamepad);
+            var _source_struct = __source_array[_s];
             
-            var _verb_names = variable_struct_get_names(_source_verb_struct);
-            var _v = 0;
-            repeat(array_length(_verb_names))
+            var _config_verb_struct = config[$ __get_config_name()];
+            if (is_struct(_config_verb_struct))
             {
-                var _verb_name = _verb_names[_v];
-                var _alternate_array = _source_verb_struct[$ _verb_name];
+                var _gamepad_mapping_array = input_gamepad_get_map(gamepad);
                 
-                var _a = 0;
-                repeat(array_length(_alternate_array))
+                var _v = 0;
+                repeat(array_length(global.__input_basic_verb_array))
                 {
-                    if (is_struct(_alternate_array[_a]))
+                    var _verb_name = global.__input_basic_verb_array[_v];
+                    
+                    var _alternate_array = _config_verb_struct[$ _verb_name];
+                    var _a = 0;
+                    repeat(INPUT_MAX_ALTERNATE_BINDINGS)
                     {
-                        var _verb_input = _alternate_array[_a].value;
-                        
-                        var _found = false;
-                        var _m = 0;
-                        repeat(array_length(_gamepad_mapping_array))
+                        if (is_struct(_alternate_array[_a]))
                         {
-                            if (_gamepad_mapping_array[_m] == _verb_input)
+                            var _verb_input = _alternate_array[_a].value;
+                            
+                            var _found = false;
+                            var _m = 0;
+                            repeat(array_length(_gamepad_mapping_array))
                             {
-                                _found = true;
-                                break;
+                                if (_gamepad_mapping_array[_m] == _verb_input)
+                                {
+                                    _found = true;
+                                    break;
+                                }
+                                
+                                ++_m;
                             }
                             
-                            ++_m;
+                            if (!_found) array_push(_output, { verb: _verb_name, alternate: _a, gm: _verb_input });
                         }
                         
-                        if (!_found) array_push(_output, { verb: _verb_name, alternate: _a, gm: _verb_input });
+                        ++_a;
                     }
                     
-                    ++_a;
+                    ++_v;
                 }
-                
-                ++_v;
             }
+            
+            ++_s;
         }
         
         return _output;
     }
     
-    /// @param binding
-    static get_binding_config_name = function(_binding)
+    
+    
+    #region Config name getters
+    
+    static __get_config_name = function()
     {
-        if ((_binding.type == "key")
-        ||  (_binding.type == "mouse button")
-        ||  (_binding.type == "mouse wheel up")
-        ||  (_binding.type == "mouse wheel down"))
+        var _source_count = array_length(sources);
+        if (_source_count <= 0) return undefined;
+        if (_source_count <= 1) return sources[0].__get_config_name();
+        
+        //TODO
+        return undefined;
+    }
+    
+    /// @param binding
+    static __get_config_name_from_binding = function(_binding)
+    {
+        if (_binding.type == __INPUT_BINDING_KEY)
         {
-            return "keyboard and mouse";
+            return __INPUT_CONFIG_KEYBOARD;
         }
-        else if ((_binding.type == "gamepad button")
-             ||  (_binding.type == "gamepad axis"))
+        else if ((_binding.type == __INPUT_BINDING_MOUSE_BUTTON    )
+             ||  (_binding.type == __INPUT_BINDING_MOUSE_WHEEL_UP  )
+             ||  (_binding.type == __INPUT_BINDING_MOUSE_WHEEL_DOWN))
         {
-            if (variable_struct_exists(config, "joycon"))
+            return __INPUT_CONFIG_MOUSE;
+        }
+        else if ((_binding.type == __INPUT_BINDING_GAMEPAD_BUTTON)
+             ||  (_binding.type == __INPUT_BINDING_GAMEPAD_AXIS))
+        {
+            if (global.__input_joycon_default_defined)
             {
                 //Use the joycon config if the player is using a joycon at the moment
                 if (source == INPUT_SOURCE.GAMEPAD)
@@ -578,26 +468,26 @@ function __input_class_player() constructor
                     var _gamepad_struct = global.__input_gamepads[gamepad];
                     if (is_struct(_gamepad_struct) && ((_gamepad_struct.raw_type == "SwitchJoyConLeft") || (_gamepad_struct.raw_type == "SwitchJoyConRight")))
                     {
-                        return "joycon";
+                        return __INPUT_CONFIG_JOYCON;
                     }
                 }
                 else if (_binding.joycon) //Or if the binding itself is explicitly for a joycon
                 {
-                    return "joycon";
+                    return __INPUT_CONFIG_JOYCON;
                 }
             }
             
-            return "gamepad";
+            return __INPUT_CONFIG_GAMEPAD;
         }
         
         __input_error("Binding type \"", _binding.type, "\" unrecognised");
         return undefined;
     }
     
-    static convert_source_enum_to_config_name = function(_source)
+    static __get_config_name_from_source = function(_source)
     {
         //If undefined is passed in, use the player's current source
-        if (_source == undefined) return get_config_name();
+        if (_source == undefined) return __get_config_name();
         
         if (is_numeric(_source))
         {
@@ -609,8 +499,9 @@ function __input_class_player() constructor
                     return undefined;
                 break;
                 
-                case INPUT_SOURCE.KEYBOARD_AND_MOUSE: return "keyboard and mouse"; break;
-                case INPUT_SOURCE.GAMEPAD:            return "gamepad";            break;
+                case INPUT_SOURCE.KEYBOARD: return __INPUT_CONFIG_KEYBOARD; break;
+                case INPUT_SOURCE.MOUSE:    return __INPUT_CONFIG_MOUSE;    break;
+                case INPUT_SOURCE.GAMEPAD:  return __INPUT_CONFIG_GAMEPAD;  break;
                 
                 default:
                     __input_error("Invalid source (", _source, ")");
@@ -621,6 +512,10 @@ function __input_class_player() constructor
         //Value is probably a string, return that
         return _source;
     }
+    
+    #endregion
+    
+    
     
     /// @param [source]
     static any_input = function(_source = source)

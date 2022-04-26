@@ -23,8 +23,11 @@ function input_chord_build()
     var _chord_definition = new __input_class_chord_definition(_name, _max_time, _verb_array);
     
     //Store this globally for uniqueness checks later
-    global.__input_chord_dict[$ _name] = _chord_definition;
-    array_push(global.__input_chord_array, _name);
+    global.__input_all_verb_dict[$ _name] = true;
+    array_push(global.__input_all_verb_array, _name);
+    
+    global.__input_chord_verb_dict[$ _name] = _chord_definition;
+    array_push(global.__input_chord_verb_array, _name);
     
     //Add this chord definition to all players
     var _p = 0;

@@ -3,22 +3,12 @@
 /// @param [playerIndex]
 /// @param [alternate]
 
-function input_binding_set(_verb, _binding, _player_index = 0, _alternate = 0)
+function input_binding_set(_verb_name, _binding, _player_index = 0, _alternate = 0)
 {
 	__input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX
-    
-    if (_alternate < 0)
-    {
-        __input_error("Invalid \"alternate\" argument (", _alternate, ")");
-        return undefined;
-    }
-    
-    if (_alternate >= INPUT_MAX_ALTERNATE_BINDINGS)
-    {
-        __input_error("\"alternate\" argument too large (", _alternate, " must be less than ", INPUT_MAX_ALTERNATE_BINDINGS, ")\nIncrease INPUT_MAX_ALTERNATE_BINDINGS for more alternate binding slots");
-        return undefined;
-    }
+    __INPUT_VERIFY_ALTERNATE_INDEX
+    __INPUT_VERIFY_BASIC_VERB_NAME
     
     if (!input_value_is_binding(_binding))
     {
@@ -26,12 +16,5 @@ function input_binding_set(_verb, _binding, _player_index = 0, _alternate = 0)
         return undefined;
     }
     
-    with(global.__input_players[_player_index])
-    {
-        //Ensure that we have the correct config category for this binding for this player
-        var _config_name = get_binding_config_name(_binding);
-        
-        __input_trace("Setting player ", _player_index, " binding for config=", _config_name, ", verb=", _verb, ", alt=", _alternate, " to \"", input_binding_get_name(_binding), "\"");
-        __set_binding(_config_name, _verb, _alternate, _binding);
-    }
+    global.__input_players[_player_index].__set_binding(_verb_name, _alternate, _binding);
 }

@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Source Assignment",
-    "path": "folders/Input/Source Assignment.yy",
+    "name": "Sources",
+    "path": "folders/Input/Sources.yy",
   },
   "resourceVersion": "1.0",
   "name": "input_source_assignment_tick",

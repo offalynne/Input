@@ -19,6 +19,8 @@
 #macro INPUT_MOUSE_MODE                 0      //0 = view-space, 1 = GUI-space, 2 = device-space
 #macro INPUT_MOUSE_MOVE_DEADZONE        2      //Size of the deadzone for detecting mouse movement, measured in pixels
 
+#macro INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED  true
+
 #macro INPUT_SDL2_REMAPPING       true   //Whether to use our own SDL2 database to remap controllers
 #macro INPUT_SDL2_ALLOW_EXTERNAL  true   //Whether to allow external SDL2 database loading from environment variable %SDL_GAMECONTROLLERCONFIG%
 #macro INPUT_SDL2_ALLOW_EXTENDED  false  //Whether to allow use of SDL2's extended bindings, accessed using the gp_* macros

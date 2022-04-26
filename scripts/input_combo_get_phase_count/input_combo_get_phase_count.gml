@@ -2,7 +2,7 @@
 
 function input_combo_get_phase_count(_name)
 {
-    var _combo_definition = global.__input_combo_dict[$ _name];
+    var _combo_definition = global.__input_combo_verb_dict[$ _name];
     if (!is_struct(_combo_definition))
     {
         __input_error("Combo not recognised (", _name, ")");

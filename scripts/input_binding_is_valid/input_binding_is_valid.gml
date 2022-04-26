@@ -3,17 +3,8 @@
 
 function input_binding_is_valid(_binding, _player_index = 0)
 {
-    if (_player_index < 0)
-    {
-        __input_error("Invalid player index provided (", _player_index, ")");
-        return false;
-    }
-    
-    if (_player_index >= INPUT_MAX_PLAYERS)
-    {
-        __input_error("Player index too large (", _player_index, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
-        return false;
-    }
+	__input_initialize();
+    __INPUT_VERIFY_PLAYER_INDEX
     
     if (_binding == undefined)
     {
@@ -59,7 +50,7 @@ function input_binding_is_valid(_binding, _player_index = 0)
         }
         
         if (_gamepad.xinput && ((_raw == 4106) || (_raw == 4107))
-        && ((_type = "gamepad button") || (_type == "gamepad axis")))
+        && ((_type = __INPUT_BINDING_GAMEPAD_BUTTON) || (_type == __INPUT_BINDING_GAMEPAD_AXIS)))
         {
             //Except XInput trigger values from range checks
             return true;
@@ -78,15 +69,15 @@ function input_binding_is_valid(_binding, _player_index = 0)
 
     switch(_type)
     {            
-        case "gamepad button": //Validate button range
+        case __INPUT_BINDING_GAMEPAD_BUTTON: //Validate button range
             return (_raw < gamepad_button_count(_gamepad_index));
         break;
 
-        case "gamepad axis": //Validate axis range
+        case __INPUT_BINDING_GAMEPAD_AXIS: //Validate axis range
             return (_raw < gamepad_axis_count(_gamepad_index));
         break;
             
-        case "key":
+        case __INPUT_BINDING_KEY:
             if (!global.__input_keyboard_allowed)
             {
                 //Invalid per platform or configuration
@@ -115,7 +106,7 @@ function input_binding_is_valid(_binding, _player_index = 0)
             return (!__input_key_is_ignored(_value) && (_value >= __INPUT_KEYCODE_MIN) && (_value <= __INPUT_KEYCODE_MAX));
         break;
 
-        case "mouse button":
+        case __INPUT_BINDING_MOUSE_BUTTON:
             if (!global.__input_mouse_allowed)
             {
                 //Invalid per platform or configuration
@@ -147,8 +138,8 @@ function input_binding_is_valid(_binding, _player_index = 0)
             }
         break;
 
-        case "mouse wheel up":
-        case "mouse wheel down":
+        case __INPUT_BINDING_MOUSE_WHEEL_UP:
+        case __INPUT_BINDING_MOUSE_WHEEL_DOWN:
             if (!global.__input_mouse_allowed)
             {
                 //Invalid per platform or configuration

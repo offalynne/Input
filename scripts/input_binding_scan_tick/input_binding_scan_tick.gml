@@ -8,7 +8,7 @@ enum INPUT_BINDING_SCAN_EVENT
     SOURCE_INVALID              = -10, //Player source is not rebindable (is INPUT_SOURCE.NONE or INPUT_SOURCE.GHOST)
     //SOURCE_CHANGED              = -11, //Player source changed - No longer used 2021-08-04
     GAMEPAD_CHANGED             = -12, //Gamepad index changed
-    GAMEPAD_INVALID             = -13, //Player gamepad is invalid (is INPUT_NO_GAMEPAD)
+    GAMEPAD_INVALID             = -13, //Player gamepad is invalid
     BINDING_DOESNT_MATCH_SOURCE = -14, //The new binding doesn't match the source that was targetted for rebinding
     SCAN_TIMEOUT                = -20, //Scanning for a binding timed out - either the player didn't enter a new binding or a stuck key prevented the system from working
     LOST_FOCUS                  = -21, //The game lost focus
@@ -40,11 +40,11 @@ function input_binding_scan_tick(_source, _player_index = 0)
             rebind_target_source = _source;
             rebind_start_time    = current_time;
             
-            __input_trace("Binding scan started for player ", _player_index, " (target source=", input_source_get_name(rebind_target_source), ", gamepad=", gamepad, ")");
+            __input_trace("Binding scan started for player ", _player_index, " (target source=", __input_source_get_name(rebind_target_source), ", gamepad=", gamepad, ")");
             
             if (source != rebind_target_source)
             {
-                __input_trace("Warning! Player not using target source \"", input_source_get_name(rebind_target_source), "\", force-setting their source");
+                __input_trace("Warning! Player not using target source \"", __input_source_get_name(rebind_target_source), "\", force-setting their source");
                 input_player_source_set(rebind_target_source, _player_index);
             }
         }
@@ -80,9 +80,9 @@ function input_binding_scan_tick(_source, _player_index = 0)
                 return INPUT_BINDING_SCAN_EVENT.GAMEPAD_CHANGED;
             }
             
-            if ((rebind_target_source == INPUT_SOURCE.GAMEPAD) && (gamepad == INPUT_NO_GAMEPAD))
+            if ((rebind_target_source == INPUT_SOURCE.GAMEPAD) && (gamepad == undefined))
             {
-                __input_trace("Binding scan failed: Gamepad for player ", _player_index, " is INPUT_NO_GAMEPAD");
+                __input_trace("Binding scan failed: Gamepad for player ", _player_index, " is undefined");
                 rebind_state = -1;
                 return INPUT_BINDING_SCAN_EVENT.GAMEPAD_INVALID;
             }
@@ -125,7 +125,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
                     _new_binding = new __input_class_binding();
                     _new_binding.set_key(_keyboard_key, true);
-                    _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
+                    _binding_source = INPUT_SOURCE.KEYBOARD;
                     
                     //On Mac we manually set the binding label to the actual keyboard character if it's an alphabetic symbol
                     //This works around problems where a keyboard might be sending a character code for e.g. A but the OS is typing another letter
@@ -146,7 +146,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
                     _new_binding = new __input_class_binding();
                     _new_binding.set_mouse_button(_mouse_button);
-                    _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
+                    _binding_source = INPUT_SOURCE.MOUSE;
                 }
                 else if (global.__input_mouse_default_defined && mouse_wheel_up())
                 {
@@ -154,7 +154,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
                     _new_binding = new __input_class_binding();
                     _new_binding.set_mouse_wheel_up();
-                    _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
+                    _binding_source = INPUT_SOURCE.MOUSE;
                 }
                 else if (global.__input_mouse_default_defined && mouse_wheel_down())
                 {
@@ -162,7 +162,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
                     _new_binding = new __input_class_binding();
                     _new_binding.set_mouse_wheel_down();
-                    _binding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
+                    _binding_source = INPUT_SOURCE.MOUSE;
                 }
                 else if (global.__input_gamepad_default_defined)
                 {
@@ -221,7 +221,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
                 {
                     if (_binding_source != rebind_target_source)
                     {
-                        __input_trace("Binding scan failed: New binding source (", input_source_get_name(_binding_source), ") for ", _player_index, " doesn't match desired rebinding source (", input_source_get_name(rebind_target_source), ")");
+                        __input_trace("Binding scan failed: New binding source (", __input_source_get_name(_binding_source), ") for ", _player_index, " doesn't match desired rebinding source (", __input_source_get_name(rebind_target_source), ")");
                         rebind_state = -1;
                         return INPUT_BINDING_SCAN_EVENT.BINDING_DOESNT_MATCH_SOURCE;
                     }

@@ -1,7 +1,4 @@
-/// @param type
-/// @param [value]
-/// @param [axisNegative]
-/// @param [labelOverride]
+#macro __INPUT_BINDING_NULL  (new __input_class_binding())
 
 function __input_class_binding() constructor
 {
@@ -11,30 +8,28 @@ function __input_class_binding() constructor
     label         = undefined;
     joycon        = false;
     
-    if (os_type == os_android)
-    {
-        //We have an additional field on Android
-        //This is used to check for uppercase *and* lowercase letters as Android checks for both individually
-        android_lowercase = undefined;
-    }
+    //We have an additional field on Android
+    //This is used to check for uppercase *and* lowercase letters as Android checks for both individually
+    android_lowercase = undefined;
     
     static __duplicate = function()
     {
         var _new = new __input_class_binding();
-        _new.type          = type;
-        _new.value         = value;
-        _new.axis_negative = axis_negative;
-        _new.label         = label;
-        if (os_type == os_android) _new.android_lowercase = android_lowercase;
+        _new.type              = type;
+        _new.value             = value;
+        _new.axis_negative     = axis_negative;
+        _new.label             = label;
+        _new.joycon            = joycon;
+        _new.android_lowercase = android_lowercase;
         
         return _new;
     }
     
-    static set_key = function(_key, _player_set)
+    static __set_key = function(_key, _player_set)
     {
         //Fix uses of straight strings instead of ord("A")
         if (is_string(_key)) _key = ord(string_upper(_key));
-
+        
         //Fix UTF-8 where used
         if (!__INPUT_KEYBOARD_NORMATIVE && !_player_set)
         {
@@ -68,7 +63,7 @@ function __input_class_binding() constructor
             }
         }
         
-        type  = "key";
+        type  = __INPUT_BINDING_KEY;
         value = _key;
         
         set_label();
@@ -76,20 +71,32 @@ function __input_class_binding() constructor
         return self;
     }
     
-    static set_gamepad_axis = function(_axis, _negative)
+    static __set_gamepad_axis = function(_axis, _negative, _is_joycon)
     {
-        type          = "gamepad axis";
+        type          = __INPUT_BINDING_GAMEPAD_AXIS;
         value         = _axis;
         axis_negative = _negative;
+        joycon        = _is_joycon;
         
         set_label();
         
         return self;
     }
     
-    static set_gamepad_button = function(_button)
+    static __set_gamepad_button = function(_button, _is_joycon)
     {
-        type  = "gamepad button";
+        type   = __INPUT_BINDING_GAMEPAD_BUTTON;
+        value  = _button;
+        joycon = _is_joycon;
+        
+        set_label();
+        
+        return self;
+    }
+    
+    static __set_mouse_button = function(_button)
+    {
+        type  = __INPUT_BINDING_MOUSE_BUTTON;
         value = _button;
         
         set_label();
@@ -97,28 +104,18 @@ function __input_class_binding() constructor
         return self;
     }
     
-    static set_mouse_button = function(_button)
+    static __set_mouse_wheel_down = function()
     {
-        type  = "mouse button";
-        value = _button;
+        type = __INPUT_BINDING_MOUSE_WHEEL_DOWN;
         
         set_label();
         
         return self;
     }
     
-    static set_mouse_wheel_down = function()
+    static __set_mouse_wheel_up = function()
     {
-        type = "mouse wheel down";
-        
-        set_label();
-        
-        return self;
-    }
-    
-    static set_mouse_wheel_up = function()
-    {
-        type = "mouse wheel up";
+        type = __INPUT_BINDING_MOUSE_WHEEL_UP;
         
         set_label();
         

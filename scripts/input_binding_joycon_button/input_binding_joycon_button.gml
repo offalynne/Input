@@ -6,8 +6,6 @@ function input_binding_joycon_button(_button)
 	
     if ((_button >= gp_guide) && (_button <= gp_paddle4)) __input_error("Extended gamepad binding not permitted for joycons");
     
-    global.__input_gamepad_default_defined = true;
-    
     if (global.__input_swap_ab)
     {
         if (_button == gp_face1)
@@ -22,10 +20,5 @@ function input_binding_joycon_button(_button)
         }
     }
     
-    //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
-    var _binding = new __input_class_binding();
-    _binding.set_gamepad_button(_button);
-    _binding.joycon = true;
-    
-    return _binding;
+    return (new __input_class_binding()).__set_gamepad_button(_button, true);
 }

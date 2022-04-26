@@ -1,15 +1,33 @@
 /// @param source
 /// @param [gamepad]
 
-function input_source_detect(_source, _gamepad = INPUT_NO_GAMEPAD)
+function input_source_detect(_source, _gamepad = undefined)
 {
     switch(_source)
     {
+        case INPUT_SOURCE.KEYBOARD:
+            if (global.__input_keyboard_default_defined
+            &&  input_source_is_available(INPUT_SOURCE.KEYBOARD)
+            &&  keyboard_check_pressed(vk_anykey)
+            &&  !__input_key_is_ignored(__input_keyboard_key())) //Ensure that this key isn't one we're trying to ignore
+            {
+                return true;
+            }
+        break;
+        
+        case INPUT_SOURCE.MOUSE:
+            if (global.__input_mouse_default_defined
+            &&  input_source_is_available(INPUT_SOURCE.MOUSE)
+            &&  (input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
+            {
+                return true;
+            }
+        break;
+        
         case INPUT_SOURCE.GAMEPAD:
-            //Check gamepad input before keyboard input to correctly handle Android duplicating button presses with keyboard presses
             if (global.__input_gamepad_default_defined)
             {
-                if (gamepad_is_connected(_gamepad) && input_source_is_available(INPUT_SOURCE.GAMEPAD, _gamepad))
+                if (input_gamepad_is_connected(_gamepad) && input_source_is_available(INPUT_SOURCE.GAMEPAD, _gamepad))
                 {
                     if (input_gamepad_check_pressed(_gamepad, gp_face1)
                     ||  input_gamepad_check_pressed(_gamepad, gp_face2)
@@ -45,23 +63,6 @@ function input_source_detect(_source, _gamepad = INPUT_NO_GAMEPAD)
                         }
                     }
                 }
-            }
-        break;
-        
-        case INPUT_SOURCE.KEYBOARD_AND_MOUSE:
-            if (global.__input_keyboard_default_defined
-            &&  input_source_is_available(INPUT_SOURCE.KEYBOARD_AND_MOUSE)
-            &&  keyboard_check_pressed(vk_anykey)
-            &&  !__input_key_is_ignored(__input_keyboard_key())) //Ensure that this key isn't one we're trying to ignore
-            {
-                return true;
-            }
-            
-            if (global.__input_mouse_default_defined
-            &&  input_source_is_available(INPUT_SOURCE.KEYBOARD_AND_MOUSE)
-            &&  (input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
-            {
-               return true;
             }
         break;
     }

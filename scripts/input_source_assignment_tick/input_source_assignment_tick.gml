@@ -61,7 +61,7 @@ function input_source_assignment_tick(_min_players, _max_players, _leave_verb, _
     var _p = _max_players;
     repeat(INPUT_MAX_PLAYERS - _max_players)
     {
-        input_player_source_set(INPUT_SOURCE.NONE, _p);
+        input_player_clear_sources(_p);
         ++_p;
     }
     
@@ -74,10 +74,11 @@ function input_source_assignment_tick(_min_players, _max_players, _leave_verb, _
             var _new_device = input_source_detect_any();
             if (_new_device.source != INPUT_SOURCE.NONE)
             {
-                input_player_source_set(_new_device.source, _p);
-                if (_new_device.source == INPUT_SOURCE.GAMEPAD) input_player_gamepad_set(_new_device.gamepad, _p);
-                
-                global.__input_players[_p].tick();
+                with(global.__input_players[_p])
+                {
+                    __add_source(_new_device.source, _new_device.gamepad);
+                    tick();
+                }
                 
                 if (input_check_pressed(_leave_verb) && (input_players_connected() < _min_players) && (_min_players > 1))
                 {
@@ -104,7 +105,7 @@ function input_source_assignment_tick(_min_players, _max_players, _leave_verb, _
         if (input_check_pressed(_leave_verb, _p))
         {
             __input_trace("Assignment: Player ", _p, " left");
-            input_player_source_set(INPUT_SOURCE.NONE, _p);
+            input_player_clear_sources(_p);
         }
         
         ++_p;
