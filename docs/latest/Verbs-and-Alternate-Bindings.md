@@ -54,7 +54,7 @@ input_default_gamepad_button(gp_face1, "shoot");
 //// Step event ////
 
 // Move the player if the Leftor Down verb is activated
-if (input_check("left")) x -= 4;
+if (input_check("left"))  x -= 4;
 if (input_check("right")) x += 4;
 
 // If the player pressed the shoot button, fire a bullet
