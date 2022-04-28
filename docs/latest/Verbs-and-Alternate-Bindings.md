@@ -74,7 +74,7 @@ input_default_key(vk_right, "right");
 input_default_key(vk_space, "shoot");
 
 //Alternate keyboard bindings
-input_default_key(ord("A"), "left", 1); // We use 1 here to indicate we're setting an alternate binding
+input_default_key(ord("A"), "left",  1); // We use 1 here to indicate we're setting an alternate binding
 input_default_key(ord("S"), "right", 1);
 input_default_key(vk_enter, "shoot", 1);
 
