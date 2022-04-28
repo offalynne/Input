@@ -18,7 +18,7 @@ Here is a simple example for a Space Invaders sort of game:
 //// Game Start event ////
 
 // Bind keyboard controls to verbs
-input_default_key(vk_left, "left");
+input_default_key(vk_left,  "left");
 input_default_key(vk_right, "right");
 input_default_key(vk_space, "shoot");
 
