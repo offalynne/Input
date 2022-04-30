@@ -295,20 +295,8 @@ function __input_get_time()
     return (INPUT_TIMER_MILLISECONDS? current_time : global.__input_frame);
 }
 
-function __input_array_get_index(_array, _value)
+function __input_profile_name_exists(_profile_name)
 {
-    var _i = 0;
-    repeat(array_length(_array))
-    {
-        if (_array[_i] == _value) return _i;
-        ++_i;
-    }
-    
-    return undefined;
-}
-
-function __input_profile_name_exists(_value)
-{
-    if (_value == undefined) return true;
-    return (__input_array_get_index(global.__input_profile_name_array, _value) != undefined);
+    if (_profile_name == undefined) return true;
+    return variable_struct_exists(global.__input_profile_dict, _profile_name);
 }

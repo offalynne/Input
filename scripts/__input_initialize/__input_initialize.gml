@@ -24,9 +24,6 @@ function __input_initialize()
     //Global frame counter. This is used for input buffering
     global.__input_frame = 0;
     
-    //Which player's source is currently being hotswapped. <undefined> indicates no player is being hotswapped
-    global.__input_player_hotswap = undefined;
-    
     //Whether momentary input has been cleared
     global.__input_cleared = false;
     
@@ -92,21 +89,21 @@ function __input_initialize()
     global.__input_combo_verb_dict  = {};
     global.__input_combo_verb_array = [];
     
+    //
+    global.__input_profile_array = [];
+    global.__input_profile_dict  = {};
+    
+    global.__input_auto_profile_first    = undefined;
+    global.__input_auto_profile_keyboard = undefined;
+    global.__input_auto_profile_mouse    = undefined;
+    global.__input_auto_profile_gamepad  = undefined;
+    global.__input_auto_profile_mixed    = undefined;
+    
     //Struct to store all the keyboard keys we want to ignore
     global.__input_ignore_key_dict = {};
     
     //Struct to store ignored gamepad types
     global.__input_ignore_gamepad_types = {};
-    
-    //Names that we expect to exist to facilitate automatic profile switching
-    global.__input_auto_profile_name_array = [];
-    if (__input_array_get_index(global.__input_auto_profile_name_array, INPUT_AUTO_PROFILE_KEYBOARD) == undefined) array_push(global.__input_auto_profile_name_array, INPUT_AUTO_PROFILE_KEYBOARD);
-    if (__input_array_get_index(global.__input_auto_profile_name_array, INPUT_AUTO_PROFILE_MOUSE   ) == undefined) array_push(global.__input_auto_profile_name_array, INPUT_AUTO_PROFILE_MOUSE   );
-    if (__input_array_get_index(global.__input_auto_profile_name_array, INPUT_AUTO_PROFILE_GAMEPAD ) == undefined) array_push(global.__input_auto_profile_name_array, INPUT_AUTO_PROFILE_GAMEPAD );
-    if (__input_array_get_index(global.__input_auto_profile_name_array, INPUT_AUTO_PROFILE_MIXED   ) == undefined) array_push(global.__input_auto_profile_name_array, INPUT_AUTO_PROFILE_MIXED   );
-    
-    global.__input_profile_name_array = [];
-    array_copy(global.__input_profile_name_array, 0, global.__input_auto_profile_name_array, 0, array_length(global.__input_auto_profile_name_array));
     
     //Two structs that are returned by input_players_get_status() and input_gamepads_get_status()
     //These are "static" structs that are reset and populated by input_tick()

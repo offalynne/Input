@@ -1,8 +1,7 @@
-function __input_player_hotswap_tick()
+/// @param playerIndex
+
+function input_source_hotswap_tick(_player_index)
 {
-    var _player_index = global.__input_player_hotswap;
-    if (_player_index == undefined) return;
-    
     with(global.__input_players[_player_index])
     {
         //TODO - Prevent hotswapping when the player is set to ghost or mixed sources

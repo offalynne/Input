@@ -17,13 +17,13 @@ function __input_class_player() constructor
     
     //Set up the default profiles
     var _i = 0;
-    repeat(array_length(global.__input_auto_profile_name_array))
+    repeat(array_length(global.__input_profile_array))
     {
-        __profiles_dict[$ global.__input_auto_profile_name_array[_i]] = {};
+        __profiles_dict[$ global.__input_profile_array[_i]] = {};
         ++_i;
     }
     
-    __profile_name = INPUT_FALLBACK_PROFILE; //Default to gamepad input
+    __profile_name = global.__input_auto_profile_first; //Default to gamepad input
     
     
     
@@ -60,10 +60,10 @@ function __input_class_player() constructor
                     return undefined;
                 break;
                 
-                case INPUT_SOURCE.KEYBOARD:     return INPUT_AUTO_PROFILE_KEYBOARD; break;
-                case INPUT_SOURCE.MOUSE:        return INPUT_AUTO_PROFILE_MOUSE;    break;
-                case INPUT_SOURCE.GAMEPAD:      return INPUT_AUTO_PROFILE_GAMEPAD;  break;
-                case INPUT_SOURCE.ALL_GAMEPADS: return INPUT_AUTO_PROFILE_MIXED;    break;
+                case INPUT_SOURCE.KEYBOARD:     return global.__input_auto_profile_keyboard; break;
+                case INPUT_SOURCE.MOUSE:        return global.__input_auto_profile_mouse;    break;
+                case INPUT_SOURCE.GAMEPAD:      return global.__input_auto_profile_gamepad;  break;
+                case INPUT_SOURCE.ALL_GAMEPADS: return global.__input_auto_profile_mixed;    break;
                 
                 default:
                     __input_error("Invalid source (", __source_array[0].source, ")");
@@ -77,12 +77,12 @@ function __input_class_player() constructor
             if ((__source_array[0].source == INPUT_SOURCE.KEYBOARD) && (__source_array[1].source == INPUT_SOURCE.MOUSE)
             ||  (__source_array[1].source == INPUT_SOURCE.KEYBOARD) && (__source_array[0].source == INPUT_SOURCE.MOUSE))
             {
-                if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED) return INPUT_AUTO_PROFILE_KEYBOARD;
+                if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED) return global.__input_auto_profile_keyboard;
             }
         }
         
         //If we have any more sources than that then return the "mixed" automatic profile
-        return INPUT_AUTO_PROFILE_MIXED;
+        return global.__input_auto_profile_mixed;
     }
     
     #endregion
@@ -201,9 +201,8 @@ function __input_class_player() constructor
     
     #region Verbs
     
-    /// @param profileName
-    /// @param verb
-    static __ensure_verb = function(_profile_name, _verb_name)
+    /// @param verbName
+    static __ensure_verb = function(_verb_name)
     {
         if (_verb_name == "")
         {
@@ -211,40 +210,71 @@ function __input_class_player() constructor
             return undefined;
         }
         
-        if (!is_struct(__verb_state_dict[$ _verb_name]))
-        {
-            __verb_state_dict[$ _verb_name] = new __input_class_verb();
-        }
+        if (!is_struct(__verb_state_dict[$ _verb_name])) __verb_state_dict[$ _verb_name] = new __input_class_verb();
         
-        var _source_verb_struct = __profiles_dict[$ _profile_name];
-        if (!is_struct(_source_verb_struct))
+        var _f = 0;
+        repeat(array_length(global.__input_profile_array))
         {
-            if (__INPUT_DEBUG) __input_trace("Profile struct for \"", _profile_name, "\" not found, creating a new one");
-            _source_verb_struct = {};
-            __profiles_dict[$ _profile_name] = _source_verb_struct;
-        }
-        
-        var _verb_alternate_array = _source_verb_struct[$ _verb_name];
-        if (!is_array(_verb_alternate_array))
-        {
-            if (__INPUT_DEBUG) __input_trace("Verb alternate array not found, creating a new one");
-            _verb_alternate_array = array_create(INPUT_MAX_ALTERNATE_BINDINGS);
+            var _profile_name = global.__input_profile_array[_f];
             
-            var _i = 0;
-            repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+            var _profile_struct = __profiles_dict[$ _profile_name];
+            if (!is_struct(_profile_struct))
             {
-                _verb_alternate_array[@ _i] = __INPUT_BINDING_NULL;
-                ++_i;
+                _profile_struct = {};
+                __profiles_dict[$ _profile_name] = _profile_struct;
             }
             
-            _source_verb_struct[$ _verb_name] = _verb_alternate_array;
+            var _verb_alternate_array = _profile_struct[$ _verb_name];
+            if (!is_array(_verb_alternate_array))
+            {
+                _verb_alternate_array = array_create(INPUT_MAX_ALTERNATE_BINDINGS);
+                
+                var _i = 0;
+                repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+                {
+                    _verb_alternate_array[@ _i] = __INPUT_BINDING_NULL;
+                    ++_i;
+                }
+                
+                _profile_struct[$ _verb_name] = _verb_alternate_array;
+            }
+            
+            ++_f;
         }
-        else
+    }
+    
+    /// @param profileName
+    static __ensure_profile = function(_profile_name)
+    {
+        var _profile_struct = __profiles_dict[$ _profile_name];
+        if (!is_struct(_profile_struct))
         {
-            if (__INPUT_DEBUG) __input_trace("Verb alternate array = ", _verb_alternate_array);
+            _profile_struct = {};
+            __profiles_dict[$ _profile_name] = _profile_struct;
         }
         
-        if (__INPUT_DEBUG) __input_trace("Verb alternate array length = ", array_length(_verb_alternate_array));
+        var _v = 0;
+        repeat(array_length(global.__input_basic_verb_array))
+        {
+            var _verb_name = global.__input_basic_verb_array[_v];
+            
+            var _verb_alternate_array = _profile_struct[$ _verb_name];
+            if (!is_array(_verb_alternate_array))
+            {
+                _verb_alternate_array = array_create(INPUT_MAX_ALTERNATE_BINDINGS);
+                
+                var _i = 0;
+                repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+                {
+                    _verb_alternate_array[@ _i] = __INPUT_BINDING_NULL;
+                    ++_i;
+                }
+                
+                _profile_struct[$ _verb_name] = _verb_alternate_array;
+            }
+            
+            ++_v;
+        }
     }
     
     /// @param verbName

@@ -21,14 +21,6 @@
 
 #macro INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED  true
 
-//These macros store the profile names for Input's automatically assigned profiles
-//
-#macro INPUT_AUTO_PROFILE_KEYBOARD  "auto keyboard and mouse"
-#macro INPUT_AUTO_PROFILE_MOUSE     "auto keyboard and mouse"
-#macro INPUT_AUTO_PROFILE_GAMEPAD   "auto gamepad"
-#macro INPUT_AUTO_PROFILE_MIXED     "auto mixed"
-#macro INPUT_FALLBACK_PROFILE       INPUT_AUTO_PROFILE_GAMEPAD
-
 #macro INPUT_SDL2_REMAPPING       true   //Whether to use our own SDL2 database to remap controllers
 #macro INPUT_SDL2_ALLOW_EXTERNAL  true   //Whether to allow external SDL2 database loading from environment variable %SDL_GAMECONTROLLERCONFIG%
 #macro INPUT_SDL2_ALLOW_EXTENDED  false  //Whether to allow use of SDL2's extended bindings, accessed using the gp_* macros

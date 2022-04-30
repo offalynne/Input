@@ -132,16 +132,31 @@ function __input_class_binding() constructor
         return self;
     }
     
+    static __get_source = function()
+    {
+        switch(type)
+        {
+            case __INPUT_BINDING_KEY:              return INPUT_SOURCE.KEYBOARD; break;
+            case __INPUT_BINDING_MOUSE_BUTTON:     return INPUT_SOURCE.MOUSE;    break;
+            case __INPUT_BINDING_MOUSE_WHEEL_UP:   return INPUT_SOURCE.MOUSE;    break;
+            case __INPUT_BINDING_MOUSE_WHEEL_DOWN: return INPUT_SOURCE.MOUSE;    break;
+            case __INPUT_BINDING_GAMEPAD_BUTTON:   return INPUT_SOURCE.GAMEPAD;  break;
+            case __INPUT_BINDING_GAMEPAD_AXIS:     return INPUT_SOURCE.GAMEPAD;  break;
+        }
+        
+        __input_error("Binding type \"", type, "\" not recognised");
+    }
+    
     static __get_automatic_profile_name = function()
     {
         switch(type)
         {
-            case __INPUT_BINDING_KEY:              return INPUT_AUTO_PROFILE_KEYBOARD; break;
-            case __INPUT_BINDING_MOUSE_BUTTON:     return INPUT_AUTO_PROFILE_MOUSE;    break;
-            case __INPUT_BINDING_MOUSE_WHEEL_UP:   return INPUT_AUTO_PROFILE_MOUSE;    break;
-            case __INPUT_BINDING_MOUSE_WHEEL_DOWN: return INPUT_AUTO_PROFILE_MOUSE;    break;
-            case __INPUT_BINDING_GAMEPAD_BUTTON:   return INPUT_AUTO_PROFILE_GAMEPAD;  break;
-            case __INPUT_BINDING_GAMEPAD_AXIS:     return INPUT_AUTO_PROFILE_GAMEPAD;  break;
+            case __INPUT_BINDING_KEY:              return global.__input_auto_profile_keyboard; break;
+            case __INPUT_BINDING_MOUSE_BUTTON:     return global.__input_auto_profile_mouse;    break;
+            case __INPUT_BINDING_MOUSE_WHEEL_UP:   return global.__input_auto_profile_mouse;    break;
+            case __INPUT_BINDING_MOUSE_WHEEL_DOWN: return global.__input_auto_profile_mouse;    break;
+            case __INPUT_BINDING_GAMEPAD_BUTTON:   return global.__input_auto_profile_gamepad;  break;
+            case __INPUT_BINDING_GAMEPAD_AXIS:     return global.__input_auto_profile_gamepad;  break;
         }
         
         __input_error("Binding type \"", type, "\" not recognised");
