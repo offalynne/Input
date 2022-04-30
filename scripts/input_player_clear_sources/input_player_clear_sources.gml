@@ -9,7 +9,7 @@ function input_player_clear_sources(_player_index = 0)
         var _i = 0;
         repeat(INPUT_MAX_PLAYERS)
         {
-            global.__input_players[_i].__clear_sources();
+            global.__input_players[_i].__sources_clear();
             ++_i;
         }
         
@@ -18,5 +18,5 @@ function input_player_clear_sources(_player_index = 0)
     
     __INPUT_VERIFY_PLAYER_INDEX
     
-    global.__input_players[_player_index].__clear_sources();
+    global.__input_players[_player_index].__sources_clear();
 }

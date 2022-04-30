@@ -33,9 +33,9 @@ function input_binding_system_reset(_source, _player_index = all, _reset_thresho
     if (_source == all)
     {
         var _i = 0;
-        repeat(array_length(global.__input_config_name_array))
+        repeat(array_length(global.__input_profile_name_array))
         {
-            input_binding_system_reset(global.__input_config_name_array[_i], _player_index);
+            input_binding_system_reset(global.__input_profile_name_array[_i], _player_index);
             ++_i;
         }
         
@@ -44,27 +44,32 @@ function input_binding_system_reset(_source, _player_index = all, _reset_thresho
     
     with(global.__input_players[_player_index])
     {
-        //Convert the source enum to a config name if necessary
-        var _config_name = __get_config_name_from_source(_source);
-        
-        var _v = 0;
-        repeat(array_length(global.__input_basic_verb_array))
+        var _f = 0;
+        repeat(array_length(global.__input_profile_name_array))
         {
-            var _verb = global.__input_basic_verb_array[_v];
+            var _profile_name = global.__input_profile_name_array[$ _f];
             
-            var _alternate = 0;
-            repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+            var _v = 0;
+            repeat(array_length(global.__input_basic_verb_array))
             {
-                __reset_binding(_config_name, _verb, _alternate);
-                ++_alternate;
+                var _verb = global.__input_basic_verb_array[_v];
+                
+                var _alternate = 0;
+                repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+                {
+                    __binding_reset(_profile_name, _verb, _alternate);
+                    ++_alternate;
+                }
+                
+                ++_v;
             }
             
-            ++_v;
+            ++_f;
         }
         
         if (_reset_thresholds)
         {
-            config.axis_thresholds = {};
+            __profiles_dict.axis_thresholds = {};
         }
     }
 }

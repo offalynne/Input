@@ -6,7 +6,7 @@ function input_player_share_gamepad(_gamepad, _array)
 	__input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX
     
-    if (!global.__input_gamepad_default_defined)
+    if (!global.__input_any_gamepad_binding_defined)
     {
         __input_error("Players ", _array, " cannot share gamepad ", _gamepad, ", no keyboard bindings have been created");
     }
@@ -18,8 +18,8 @@ function input_player_share_gamepad(_gamepad, _array)
     {
         with(global.__input_players[_player_index])
         {
-            __clear_sources();
-            __add_source(INPUT_SOURCE.GAMEPAD, _gamepad);
+            __sources_clear();
+            __source_add(INPUT_SOURCE.GAMEPAD, _gamepad);
         }
         
         ++_i;

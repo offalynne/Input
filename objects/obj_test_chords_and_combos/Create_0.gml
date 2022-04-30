@@ -35,3 +35,5 @@ input_combo_build("fireball")
 .press("down")
 .press("right")
 .press_or_release("accept");
+
+input_player_hotswap_start();

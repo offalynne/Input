@@ -5,7 +5,7 @@ function input_player_share_keyboard(_array)
 	__input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX
     
-    if (!global.__input_keyboard_default_defined)
+    if (!global.__input_any_keyboard_binding_defined)
     {
         __input_error("Players ", _array, " cannot share the keyboard, no keyboard bindings have been created");
     }
@@ -18,8 +18,8 @@ function input_player_share_keyboard(_array)
     {
         with(global.__input_players[_player_index])
         {
-            __clear_sources();
-            __add_source(INPUT_SOURCE.KEYBOARD);
+            __sources_clear();
+            __source_add(INPUT_SOURCE.KEYBOARD);
         }
         
         ++_i;

@@ -1,13 +1,13 @@
-/// @param configStruct
+/// @param profilesStruct
 
-function __input_fix_config_struct(_config_struct)
+function __input_fix_profile_struct(_profiles_dict)
 {
-    var _source_names = variable_struct_get_names(_config_struct);
+    var _source_names = variable_struct_get_names(_profiles_dict);
     var _j = 0;
     repeat(array_length(_source_names))
     {
         var _source_name = _source_names[_j];
-        var _source_struct = _config_struct[$ _source_name];
+        var _source_struct = _profiles_dict[$ _source_name];
         
         if (_source_name != "axis_thresholds")
         {
@@ -49,5 +49,5 @@ function __input_fix_config_struct(_config_struct)
         ++_j;
     }
     
-    return _config_struct;
+    return _profiles_dict;
 }

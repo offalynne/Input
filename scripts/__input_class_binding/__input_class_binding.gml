@@ -6,7 +6,6 @@ function __input_class_binding() constructor
     value         = undefined;
     axis_negative = undefined;
     label         = undefined;
-    joycon        = false;
     
     //We have an additional field on Android
     //This is used to check for uppercase *and* lowercase letters as Android checks for both individually
@@ -19,7 +18,6 @@ function __input_class_binding() constructor
         _new.value             = value;
         _new.axis_negative     = axis_negative;
         _new.label             = label;
-        _new.joycon            = joycon;
         _new.android_lowercase = android_lowercase;
         
         return _new;
@@ -71,23 +69,21 @@ function __input_class_binding() constructor
         return self;
     }
     
-    static __set_gamepad_axis = function(_axis, _negative, _is_joycon)
+    static __set_gamepad_axis = function(_axis, _negative)
     {
         type          = __INPUT_BINDING_GAMEPAD_AXIS;
         value         = _axis;
         axis_negative = _negative;
-        joycon        = _is_joycon;
         
         set_label();
         
         return self;
     }
     
-    static __set_gamepad_button = function(_button, _is_joycon)
+    static __set_gamepad_button = function(_button)
     {
         type   = __INPUT_BINDING_GAMEPAD_BUTTON;
         value  = _button;
-        joycon = _is_joycon;
         
         set_label();
         
@@ -134,5 +130,20 @@ function __input_class_binding() constructor
         }
         
         return self;
+    }
+    
+    static __get_automatic_profile_name = function()
+    {
+        switch(type)
+        {
+            case __INPUT_BINDING_KEY:              return INPUT_AUTO_PROFILE_KEYBOARD; break;
+            case __INPUT_BINDING_MOUSE_BUTTON:     return INPUT_AUTO_PROFILE_MOUSE;    break;
+            case __INPUT_BINDING_MOUSE_WHEEL_UP:   return INPUT_AUTO_PROFILE_MOUSE;    break;
+            case __INPUT_BINDING_MOUSE_WHEEL_DOWN: return INPUT_AUTO_PROFILE_MOUSE;    break;
+            case __INPUT_BINDING_GAMEPAD_BUTTON:   return INPUT_AUTO_PROFILE_GAMEPAD;  break;
+            case __INPUT_BINDING_GAMEPAD_AXIS:     return INPUT_AUTO_PROFILE_GAMEPAD;  break;
+        }
+        
+        __input_error("Binding type \"", type, "\" not recognised");
     }
 }

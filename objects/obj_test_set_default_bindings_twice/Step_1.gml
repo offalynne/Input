@@ -26,5 +26,5 @@ if (input_keyboard_check_pressed(ord("2")))
     input_default_key(vk_down, TEST_ACTIONS.p2beam);
     input_default_key(vk_up, TEST_ACTIONS.p2beam, 1);
     
-    input_binding_remove(TEST_ACTIONS.beam, INPUT_SOURCE.KEYBOARD_AND_MOUSE, 0, 2);
+    input_binding_remove(TEST_ACTIONS.beam, INPUT_SOURCE.KEYBOARD, 0, 2);
 }

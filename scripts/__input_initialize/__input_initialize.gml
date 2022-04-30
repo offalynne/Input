@@ -4,6 +4,13 @@ function __input_initialize()
 {
     if (variable_global_exists("__input_frame")) exit;
     
+    global.__input_time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
+    {
+        __input_tick();
+    }, -1);
+    
+    time_source_start(global.__input_time_source);
+    
     //Set up the extended debug functionality
     global.__input_debug_log = "input___" + string_replace_all(string_replace_all(date_datetime_string(date_current_datetime()), ":", "-"), " ", "___") + ".txt";
     if (INPUT_EXTERNAL_DEBUG_LOG && __INPUT_DEBUG)
@@ -16,6 +23,9 @@ function __input_initialize()
     
     //Global frame counter. This is used for input buffering
     global.__input_frame = 0;
+    
+    //Which player's source is currently being hotswapped. <undefined> indicates no player is being hotswapped
+    global.__input_player_hotswap = undefined;
     
     //Whether momentary input has been cleared
     global.__input_cleared = false;
@@ -53,10 +63,9 @@ function __input_initialize()
     
     //Whether these particular input sources are valid
     //This is determined by what default keybindings are set up
-    global.__input_keyboard_default_defined = false;
-    global.__input_mouse_default_defined    = false;
-    global.__input_gamepad_default_defined  = false;
-    global.__input_joycon_default_defined   = false;
+    global.__input_any_keyboard_binding_defined = false;
+    global.__input_any_mouse_binding_defined    = false;
+    global.__input_any_gamepad_binding_defined  = false;
     
     //Disallow keyboard bindings on specified platforms unless explicitly enabled
     global.__input_keyboard_allowed = (__INPUT_KEYBOARD_SUPPORT && ((os_type != os_android) || INPUT_ANDROID_KEYBOARD_ALLOWED) && ((os_type != os_switch) || INPUT_SWITCH_KEYBOARD_ALLOWED));
@@ -89,11 +98,15 @@ function __input_initialize()
     //Struct to store ignored gamepad types
     global.__input_ignore_gamepad_types = {};
     
-    //Names for sources. I suspect this'll get sliced out at some point when I start recoding the binding system to serialise per controller type
-    global.__input_config_name_array = [__INPUT_CONFIG_KEYBOARD,
-                                        __INPUT_CONFIG_MOUSE,
-                                        __INPUT_CONFIG_GAMEPAD,
-                                        __INPUT_CONFIG_JOYCON];
+    //Names that we expect to exist to facilitate automatic profile switching
+    global.__input_auto_profile_name_array = [];
+    if (__input_array_get_index(global.__input_auto_profile_name_array, INPUT_AUTO_PROFILE_KEYBOARD) == undefined) array_push(global.__input_auto_profile_name_array, INPUT_AUTO_PROFILE_KEYBOARD);
+    if (__input_array_get_index(global.__input_auto_profile_name_array, INPUT_AUTO_PROFILE_MOUSE   ) == undefined) array_push(global.__input_auto_profile_name_array, INPUT_AUTO_PROFILE_MOUSE   );
+    if (__input_array_get_index(global.__input_auto_profile_name_array, INPUT_AUTO_PROFILE_GAMEPAD ) == undefined) array_push(global.__input_auto_profile_name_array, INPUT_AUTO_PROFILE_GAMEPAD );
+    if (__input_array_get_index(global.__input_auto_profile_name_array, INPUT_AUTO_PROFILE_MIXED   ) == undefined) array_push(global.__input_auto_profile_name_array, INPUT_AUTO_PROFILE_MIXED   );
+    
+    global.__input_profile_name_array = [];
+    array_copy(global.__input_profile_name_array, 0, global.__input_auto_profile_name_array, 0, array_length(global.__input_auto_profile_name_array));
     
     //Two structs that are returned by input_players_get_status() and input_gamepads_get_status()
     //These are "static" structs that are reset and populated by input_tick()
@@ -522,4 +535,17 @@ function __input_initialize()
     //By default GameMaker registers double click (or tap) as right mouse button
     //We want to be able to identify the actual mouse buttons correctly, and have our own double-input handling
     device_mouse_dbclick_enable(false);
+    
+    INPUT_NONE         = new __input_class_source(INPUT_SOURCE.NONE);
+    INPUT_GHOST        = new __input_class_source(INPUT_SOURCE.GHOST);
+    INPUT_KEYBOARD     = new __input_class_source(INPUT_SOURCE.KEYBOARD);
+    INPUT_MOUSE        = new __input_class_source(INPUT_SOURCE.MOUSE);
+    INPUT_ALL_GAMEPADS = new __input_class_source(INPUT_SOURCE.ALL_GAMEPADS);
+    
+    var _g = 0;
+    repeat(__INPUT_MAX_TRACKED_GAMEPADS)
+    {
+        INPUT_GAMEPAD[@ _g] = new __input_class_source(INPUT_SOURCE.GAMEPAD, _g);
+        ++_g;
+    }
 }

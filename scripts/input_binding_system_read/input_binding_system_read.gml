@@ -19,24 +19,24 @@ function input_binding_system_read(_string, _player_index = all)
     
     if (__INPUT_ON_WEB) __input_error("Due to up-stream bug in GameMaker's JavaScript runtime, input_binding_system_read() and input_binding_system_write() are unsupported in HTML5");
     
-    var _config = json_parse(_string);
+    var _profile_from_json = json_parse(_string);
     
     if (_player_index == all)
     {
         var _i = 0;
         repeat(INPUT_MAX_PLAYERS)
         {
-            var _config_struct = _config[_i];
-            __input_fix_config_struct(_config_struct);
+            var _profiles_dict = _profile_from_json[_i];
+            __input_fix_profile_struct(_profiles_dict);
             
-            global.__input_players[_i].config = _config_struct;
+            global.__input_players[_i].__profiles_dict = _profiles_dict;
             ++_i;
         }
     }
     else
     {
-        __input_fix_config_struct(_config);
+        __input_fix_profile_struct(_profile_from_json);
         
-        global.__input_players[_player_index].config = _config;
+        global.__input_players[_player_index].__profiles_dict = _profile_from_json;
     }
 }

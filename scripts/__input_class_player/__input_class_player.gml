@@ -1,11 +1,11 @@
 function __input_class_player() constructor
 {
-    __source_array   = [];
-    verbs            = {};
-    chord_state_dict = {};
-    combo_state_dict = {};
-    last_input_time  = -infinity;
-    cursor           = new __input_class_cursor();
+    __source_array     = [];
+    __verb_state_dict  = {};
+    __chord_state_dict = {};
+    __combo_state_dict = {};
+    __last_input_time  = -infinity;
+    cursor             = new __input_class_cursor();
     
     rebind_state         = 0;
     rebind_gamepad       = undefined;
@@ -13,41 +13,111 @@ function __input_class_player() constructor
     rebind_this_frame    = false;
     
     //This struct is the one that gets serialized/deserialized
-    config = { axis_thresholds : {} };
+    __profiles_dict = { axis_thresholds : {} };
+    
+    //Set up the default profiles
+    var _i = 0;
+    repeat(array_length(global.__input_auto_profile_name_array))
+    {
+        __profiles_dict[$ global.__input_auto_profile_name_array[_i]] = {};
+        ++_i;
+    }
+    
+    __profile_name = INPUT_FALLBACK_PROFILE; //Default to gamepad input
     
     
     
-    #region Source Manipulation
+    #region Profiles
     
-    static __clear_sources = function()
+    /// @param [profileName=undefined]
+    static __get_profile_name = function(_profile_name = undefined)
+    {
+        if (_profile_name == undefined) return __profile_name;
+        __INPUT_VERIFY_PROFILE_NAME
+        return _profile_name;
+    }
+    
+    /// @param [profileName=undefined]
+    static __get_profile_struct = function(_profile_name = undefined)
+    {
+        return __profiles_dict[$ __get_profile_name(_profile_name)];
+    }
+    
+    static __get_automatic_profile_name = function()
+    {
+        var _count = array_length(__source_array);
+        
+        //If there're no sources then return a null value
+        if (_count == 0) return undefined;
+        
+        //If we have one source then return the profile for that source
+        if (_count == 1)
+        {
+            switch(__source_array[0].source)
+            {
+                case INPUT_SOURCE.NONE:
+                case INPUT_SOURCE.GHOST:
+                    return undefined;
+                break;
+                
+                case INPUT_SOURCE.KEYBOARD:     return INPUT_AUTO_PROFILE_KEYBOARD; break;
+                case INPUT_SOURCE.MOUSE:        return INPUT_AUTO_PROFILE_MOUSE;    break;
+                case INPUT_SOURCE.GAMEPAD:      return INPUT_AUTO_PROFILE_GAMEPAD;  break;
+                case INPUT_SOURCE.ALL_GAMEPADS: return INPUT_AUTO_PROFILE_MIXED;    break;
+                
+                default:
+                    __input_error("Invalid source (", __source_array[0].source, ")");
+                break;
+            }
+        }
+        
+        //Special case to handle keyboard+mouse
+        if (_count == 2)
+        {
+            if ((__source_array[0].source == INPUT_SOURCE.KEYBOARD) && (__source_array[1].source == INPUT_SOURCE.MOUSE)
+            ||  (__source_array[1].source == INPUT_SOURCE.KEYBOARD) && (__source_array[0].source == INPUT_SOURCE.MOUSE))
+            {
+                if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED) return INPUT_AUTO_PROFILE_KEYBOARD;
+            }
+        }
+        
+        //If we have any more sources than that then return the "mixed" automatic profile
+        return INPUT_AUTO_PROFILE_MIXED;
+    }
+    
+    #endregion
+    
+    
+    
+    #region Sources
+    
+    static __sources_clear = function()
     {
         array_resize(__source_array, 0);
-        last_input_time = current_time;
+        __last_input_time = current_time;
     }
     
-    static __set_ghost = function()
+    static __source_set_ghost = function()
     {
-        __clear_sources();
-        __add_source("ghost");
+        __sources_clear();
+        __source_add("ghost");
     }
     
-    static __add_source = function(_source, _gamepad = undefined)
+    /// @param source
+    static __source_add = function(_source)
     {
-        if ((_source == INPUT_SOURCE.GAMEPAD) && (_gamepad == undefined)) _gamepad = __get_gamepad();
-        
-        if (__is_using_source(_source, _gamepad)) return;
-        
-        array_push(__source_array, new __input_class_source(_source, _gamepad));
-        
-        last_input_time = current_time;
+        if (__source_using(_source)) return;
+        array_push(__source_array, _source);
+        __last_input_time = current_time;
     }
     
-    static __is_using_source = function(_source, _gamepad = undefined)
+    /// @param source
+    static __source_using = function(_source)
     {
         var _i = 0;
         repeat(array_length(__source_array))
         {
-            if (__source_array[_i].__collides_with(_source, _gamepad)) return true;
+            if (__source_array[_i].__collides_with(_source)) return true;
             ++_i;
         }
         
@@ -66,7 +136,7 @@ function __input_class_player() constructor
         return false;
     }
     
-    static __get_gamepad = function()
+    static __source_get_gamepad = function()
     {
         var _i = 0;
         repeat(array_length(__source_array))
@@ -83,16 +153,160 @@ function __input_class_player() constructor
     
     
     
+    #region Bindings
+    
+    /// @param profileName
+    /// @param verb
+    /// @param alternate
+    static __binding_get = function(_profile_name, _verb, _alternate)
+    {
+        return __get_profile_struct(_profile_name)[$ _verb][_alternate];
+    }
+    
+    /// @param profileName
+    /// @param verb
+    /// @param alternate
+    /// @param bindingStruct
+    static __binding_set = function(_profile_name, _verb, _alternate, _binding_struct)
+    {
+        __get_profile_struct(_profile_name)[$ _verb][@ _alternate] = _binding_struct;
+    }
+    
+    /// @param profileName
+    /// @param verb
+    /// @param alternate
+    static __binding_remove = function(_profile_name, _verb, _alternate)
+    {
+        __get_profile_struct(_profile_name)[$ _verb][@ _alternate] = __INPUT_BINDING_NULL;
+    }
+    
+    /// @param profileName
+    /// @param verb
+    /// @param alternate
+    static __binding_reset = function(_profile_name, _verb, _alternate)
+    {
+        //Grab the equivalent binding from the default player
+        var _binding = global.__input_default_player.__profiles_dict[$ _profile_name][$ _verb][@ _alternate];
+        
+        //If the binding is a struct then duplicate so we don't get nasty
+        if (is_struct(_binding)) _binding.__duplicate();
+        
+        //And set the value!
+        __get_profile_struct(_profile_name)[$ _verb][@ _alternate] = _binding;
+    }
+    
+    #endregion
+    
+    
+    
+    #region Verbs
+    
+    /// @param profileName
+    /// @param verb
+    static __ensure_verb = function(_profile_name, _verb_name)
+    {
+        if (_verb_name == "")
+        {
+            __input_error("Verb name cannot be an empty string");
+            return undefined;
+        }
+        
+        if (!is_struct(__verb_state_dict[$ _verb_name]))
+        {
+            __verb_state_dict[$ _verb_name] = new __input_class_verb();
+        }
+        
+        var _source_verb_struct = __profiles_dict[$ _profile_name];
+        if (!is_struct(_source_verb_struct))
+        {
+            if (__INPUT_DEBUG) __input_trace("Profile struct for \"", _profile_name, "\" not found, creating a new one");
+            _source_verb_struct = {};
+            __profiles_dict[$ _profile_name] = _source_verb_struct;
+        }
+        
+        var _verb_alternate_array = _source_verb_struct[$ _verb_name];
+        if (!is_array(_verb_alternate_array))
+        {
+            if (__INPUT_DEBUG) __input_trace("Verb alternate array not found, creating a new one");
+            _verb_alternate_array = array_create(INPUT_MAX_ALTERNATE_BINDINGS);
+            
+            var _i = 0;
+            repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+            {
+                _verb_alternate_array[@ _i] = __INPUT_BINDING_NULL;
+                ++_i;
+            }
+            
+            _source_verb_struct[$ _verb_name] = _verb_alternate_array;
+        }
+        else
+        {
+            if (__INPUT_DEBUG) __input_trace("Verb alternate array = ", _verb_alternate_array);
+        }
+        
+        if (__INPUT_DEBUG) __input_trace("Verb alternate array length = ", array_length(_verb_alternate_array));
+    }
+    
+    /// @param verbName
+    static __add_chord = function(_verb_name)
+    {
+        //Set up a verb container on the player separate from the bindings
+        if (is_struct(__verb_state_dict[$ _verb_name]))
+        {
+            __input_error("Chord \"", _verb_name, "\" has already been added to this player");
+        }
+        else
+        {
+            if (__INPUT_DEBUG) __input_trace("Verb \"", _verb_name, "\" not found on player, creating a new one as a chord");
+            
+            var _verb_struct = new __input_class_verb();
+            _verb_struct.name     = _verb_name;
+            _verb_struct.type     = "chord";
+            _verb_struct.analogue = false; //Chord verbs are never analogue
+            __verb_state_dict[$ _verb_name] = _verb_struct;
+            
+            //We also need to store additional tracking information for combos
+            __chord_state_dict[$ _verb_name] = new __input_class_chord_state(_verb_name, global.__input_chord_verb_dict[$ _verb_name]);
+        }
+    }
+    
+    /// @param verbName
+    static __add_combo = function(_verb_name)
+    {
+        //Set up a verb container on the player separate from the bindings
+        if (is_struct(__verb_state_dict[$ _verb_name]))
+        {
+            __input_error("Combo \"", _verb_name, "\" has already been added to this player");
+        }
+        else
+        {
+            if (__INPUT_DEBUG) __input_trace("Verb \"", _verb_name, "\" not found on player, creating a new one as a combo");
+            
+            var _verb_struct = new __input_class_verb();
+            _verb_struct.name     = _verb_name;
+            _verb_struct.type     = "combo";
+            _verb_struct.analogue = false; //Combo verbs are never analogue
+            __verb_state_dict[$ _verb_name] = _verb_struct;
+            
+            //We also need to store additional tracking information for combos
+            __combo_state_dict[$ _verb_name] = new __input_class_combo_state(_verb_name, global.__input_combo_verb_dict[$ _verb_name]);
+        }
+    }
+    
+    #endregion
+    
+    
+    
     /// @param axis
     /// @param min
     /// @param max
     static axis_threshold_set = function(_axis, _min, _max)
     {
-        var _axis_struct = config.axis_thresholds[$ _axis];
+        var _axis_struct = __profiles_dict.axis_thresholds[$ _axis];
         if (!is_struct(_axis_struct))
         {
             _axis_struct = {};
-            config.axis_thresholds[$ _axis] = _axis_struct;
+            __profiles_dict.axis_thresholds[$ _axis] = _axis_struct;
         }
         
         _axis_struct.mini = _min
@@ -103,7 +317,7 @@ function __input_class_player() constructor
     /// @param axis
     static axis_threshold_get = function(_axis)
     {
-        var _struct = config.axis_thresholds[$ _axis];
+        var _struct = __profiles_dict.axis_thresholds[$ _axis];
         if (is_struct(_struct)) return _struct;
         
         if (__input_axis_is_directional(_axis))
@@ -121,260 +335,14 @@ function __input_class_player() constructor
     /// @param forceAnalogue
     static set_verb = function(_verb_name, _value, _analogue)
     {
-        with(verbs[$ _verb_name])
+        with(__verb_state_dict[$ _verb_name])
         {
             force_value    = _value;
             force_analogue = _analogue;
         }
     }
     
-    static tick = function()
-    {
-        if (!rebind_this_frame)
-        {
-            if (rebind_state > 0) __input_trace("Binding scan failed: input_binding_scan_tick() not called last frame");
-            rebind_state = 0;
-        }
-        
-        rebind_this_frame = false;
-        
-        //Clear the momentary state for all verbs
-        var _v = 0;
-        repeat(array_length(global.__input_all_verb_array))
-        {
-            with(verbs[$ global.__input_all_verb_array[_v]]) clear();
-            ++_v;
-        }
-        
-        __input_player_tick_sources();
-        
-        //Update our basic verbs first
-        tick_basic_verbs();
-        
-        //Update our chords
-        //We directly access verb values to detect state here
-        tick_chord_verbs();
-        
-        //Update our combos
-        //We directly access verb values to detect state here
-        tick_combo_verbs();
-        
-        with(cursor)
-        {
-            tick(other.rebind_state);
-            limit();
-        }
-    }
-    
-    static tick_basic_verbs = function()
-    {
-        var _v = 0;
-        repeat(array_length(global.__input_basic_verb_array))
-        {
-            with(verbs[$ global.__input_basic_verb_array[_v]]) tick();
-            ++_v;
-        }
-    }
-    
-    static tick_chord_verbs = function()
-    {
-        var _i = 0;
-        repeat(array_length(global.__input_chord_verb_array))
-        {
-            var _chord_name = global.__input_chord_verb_array[_i];
-            if (chord_state_dict[$ _chord_name].__evaluate(verbs))
-            {
-                with(verbs[$ _chord_name])
-                {
-                    value = 1;
-                    raw   = 1;
-                    tick();
-                }
-            }
-            else
-            {
-                verbs[$ _chord_name].tick();
-            }
-            
-            ++_i;
-        }
-    }
-    
-    static tick_combo_verbs = function()
-    {
-        var _i = 0;
-        repeat(array_length(global.__input_combo_verb_array))
-        {
-            var _combo_name = global.__input_combo_verb_array[_i];
-            if (combo_state_dict[$ _combo_name].__tick(verbs) == __INPUT_COMBO_STATE.__SUCCESS)
-            {
-                with(verbs[$ _combo_name])
-                {
-                    value = 1;
-                    raw   = 1;
-                    tick();
-                }
-            }
-            else
-            {
-                verbs[$ _combo_name].tick();
-            }
-            
-            ++_i;
-        }
-    }
-    
-    /// @param configName
-    /// @param verb
-    static __ensure_verb = function(_config_name, _verb)
-    {
-        if ((_config_name != __INPUT_CONFIG_KEYBOARD)
-        &&  (_config_name != __INPUT_CONFIG_MOUSE)
-        &&  (_config_name != __INPUT_CONFIG_GAMEPAD)
-        &&  (_config_name != __INPUT_CONFIG_JOYCON))
-        {
-            __input_error("Invalid config (", _config_name, ")");
-            return undefined;
-        }
-        
-        if (_verb == "")
-        {
-            __input_error("Verb name cannot be an empty string");
-            return undefined;
-        }
-        
-        if (!is_struct(verbs[$ _verb]))
-        {
-            verbs[$ _verb] = new __input_class_verb();
-        }
-        
-        var _source_verb_struct = config[$ _config_name];
-        if (!is_struct(_source_verb_struct))
-        {
-            if (__INPUT_DEBUG) __input_trace("Source verb struct not found, creating a new one");
-            _source_verb_struct = {};
-            config[$ _config_name] = _source_verb_struct;
-        }
-        else
-        {
-            if (__INPUT_DEBUG) __input_trace("Source verb struct = ", _source_verb_struct);
-        }
-        
-        var _verb_alternate_array = _source_verb_struct[$ _verb];
-        if (!is_array(_verb_alternate_array))
-        {
-            if (__INPUT_DEBUG) __input_trace("Verb alternate array not found, creating a new one");
-            _verb_alternate_array = array_create(INPUT_MAX_ALTERNATE_BINDINGS);
-            
-            var _i = 0;
-            repeat(INPUT_MAX_ALTERNATE_BINDINGS)
-            {
-                _verb_alternate_array[@ _i] = __INPUT_BINDING_NULL;
-                ++_i;
-            }
-            
-            _source_verb_struct[$ _verb] = _verb_alternate_array;
-        }
-        else
-        {
-            if (__INPUT_DEBUG) __input_trace("Verb alternate array = ", _verb_alternate_array);
-        }
-        
-        if (__INPUT_DEBUG) __input_trace("Verb alternate array length = ", array_length(_verb_alternate_array));
-    }
-    
-    /// @param verb
-    /// @param alternate
-    /// @param bindingStruct
-    static __set_binding = function(_verb, _alternate, _binding_struct)
-    {
-        config[$ __get_config_name_from_binding(_binding_struct)][$ _verb][@ _alternate] = _binding_struct;
-    }
-    
-    /// @param verb
-    /// @param alternate
-    /// @param bindingStruct
-    static __set_mixed_binding = function(_verb, _alternate, _binding_struct)
-    {
-        config[$ __INPUT_CONFIG_MIXED][$ _verb][@ _alternate] = _binding_struct;
-    }
-    
-    /// @param configName
-    /// @param verb
-    /// @param alternate
-    static __remove_binding = function(_config_name, _verb, _alternate)
-    {
-        config[$ _config_name][$ _verb][@ _alternate] = __INPUT_BINDING_NULL;
-    }
-    
-    /// @param configName
-    /// @param verb
-    /// @param alternate
-    static __reset_binding = function(_config_name, _verb, _alternate)
-    {
-        //Grab the equivalent binding from the default player
-        var _binding = global.__input_default_player.config[$ _config_name][$ _verb][@ _alternate];
-        
-        //If the binding is a struct then duplicate so we don't get nasty
-        if (is_struct(_binding)) _binding.__duplicate();
-        
-        //And set the value!
-        config[$ _config_name][$ _verb][@ _alternate] = _binding;
-    }
-    
-    /// @param configName
-    /// @param verb
-    /// @param alternate
-    static __get_binding = function(_config_name, _verb, _alternate)
-    {
-        return config[$ _config_name][$ _verb][_alternate];
-    }
-    
-    static __add_chord = function(_name)
-    {
-        //Set up a verb container on the player separate from the bindings
-        if (is_struct(verbs[$ _name]))
-        {
-            __input_error("Chord \"", _name, "\" has already been added to this player");
-        }
-        else
-        {
-            if (__INPUT_DEBUG) __input_trace("Verb \"", _name, "\" not found on player, creating a new one as a chord");
-            
-            var _verb_struct = new __input_class_verb();
-            _verb_struct.name     = _name;
-            _verb_struct.type     = "chord";
-            _verb_struct.analogue = false; //Chord verbs are never analogue
-            verbs[$ _name] = _verb_struct;
-            
-            //We also need to store additional tracking information for combos
-            chord_state_dict[$ _name] = new __input_class_chord_state(_name, global.__input_chord_verb_dict[$ _name]);
-        }
-    }
-    
-    static __add_combo = function(_name)
-    {
-        //Set up a verb container on the player separate from the bindings
-        if (is_struct(verbs[$ _name]))
-        {
-            __input_error("Combo \"", _name, "\" has already been added to this player");
-        }
-        else
-        {
-            if (__INPUT_DEBUG) __input_trace("Verb \"", _name, "\" not found on player, creating a new one as a combo");
-            
-            var _verb_struct = new __input_class_verb();
-            _verb_struct.name     = _name;
-            _verb_struct.type     = "combo";
-            _verb_struct.analogue = false; //Combo verbs are never analogue
-            verbs[$ _name] = _verb_struct;
-            
-            //We also need to store additional tracking information for combos
-            combo_state_dict[$ _name] = new __input_class_combo_state(_name, global.__input_combo_verb_dict[$ _name]);
-        }
-    }
-    
-    static __get_invalid_gamepad_bindings = function()
+    static __get_invalid_gamepad_bindings = function(_profile_name = undefined)
     {
         var _output = [];
         
@@ -383,8 +351,8 @@ function __input_class_player() constructor
         {
             var _source_struct = __source_array[_s];
             
-            var _config_verb_struct = config[$ __get_config_name()];
-            if (is_struct(_config_verb_struct))
+            var _profile_verb_struct = __get_profile_struct(_profile_name);
+            if (is_struct(_profile_verb_struct))
             {
                 var _gamepad_mapping_array = input_gamepad_get_map(gamepad);
                 
@@ -393,7 +361,7 @@ function __input_class_player() constructor
                 {
                     var _verb_name = global.__input_basic_verb_array[_v];
                     
-                    var _alternate_array = _config_verb_struct[$ _verb_name];
+                    var _alternate_array = _profile_verb_struct[$ _verb_name];
                     var _a = 0;
                     repeat(INPUT_MAX_ALTERNATE_BINDINGS)
                     {
@@ -432,163 +400,103 @@ function __input_class_player() constructor
     
     
     
-    #region Config name getters
+    #region Tick functions
     
-    static __get_config_name = function()
+    static tick = function()
     {
-        var _source_count = array_length(sources);
-        if (_source_count <= 0) return undefined;
-        if (_source_count <= 1) return sources[0].__get_config_name();
+        if (!rebind_this_frame)
+        {
+            if (rebind_state > 0) __input_trace("Binding scan failed: input_binding_scan_tick() not called last frame");
+            rebind_state = 0;
+        }
         
-        //TODO
-        return undefined;
+        rebind_this_frame = false;
+        
+        //Clear the momentary state for all verbs
+        var _v = 0;
+        repeat(array_length(global.__input_all_verb_array))
+        {
+            with(__verb_state_dict[$ global.__input_all_verb_array[_v]]) clear();
+            ++_v;
+        }
+        
+        __input_player_tick_sources();
+        
+        //Update our basic verbs first
+        tick_basic_verbs();
+        
+        //Update our chords
+        //We directly access verb values to detect state here
+        tick_chord_verbs();
+        
+        //Update our combos
+        //We directly access verb values to detect state here
+        tick_combo_verbs();
+        
+        with(cursor)
+        {
+            tick(other.rebind_state);
+            limit();
+        }
     }
     
-    /// @param binding
-    static __get_config_name_from_binding = function(_binding)
+    static tick_basic_verbs = function()
     {
-        if (_binding.type == __INPUT_BINDING_KEY)
+        var _v = 0;
+        repeat(array_length(global.__input_basic_verb_array))
         {
-            return __INPUT_CONFIG_KEYBOARD;
+            with(__verb_state_dict[$ global.__input_basic_verb_array[_v]]) tick();
+            ++_v;
         }
-        else if ((_binding.type == __INPUT_BINDING_MOUSE_BUTTON    )
-             ||  (_binding.type == __INPUT_BINDING_MOUSE_WHEEL_UP  )
-             ||  (_binding.type == __INPUT_BINDING_MOUSE_WHEEL_DOWN))
+    }
+    
+    static tick_chord_verbs = function()
+    {
+        var _i = 0;
+        repeat(array_length(global.__input_chord_verb_array))
         {
-            return __INPUT_CONFIG_MOUSE;
-        }
-        else if ((_binding.type == __INPUT_BINDING_GAMEPAD_BUTTON)
-             ||  (_binding.type == __INPUT_BINDING_GAMEPAD_AXIS))
-        {
-            if (global.__input_joycon_default_defined)
+            var _chord_name = global.__input_chord_verb_array[_i];
+            if (__chord_state_dict[$ _chord_name].__evaluate(__verb_state_dict))
             {
-                //Use the joycon config if the player is using a joycon at the moment
-                if (source == INPUT_SOURCE.GAMEPAD)
+                with(__verb_state_dict[$ _chord_name])
                 {
-                    var _gamepad_struct = global.__input_gamepads[gamepad];
-                    if (is_struct(_gamepad_struct) && ((_gamepad_struct.raw_type == "SwitchJoyConLeft") || (_gamepad_struct.raw_type == "SwitchJoyConRight")))
-                    {
-                        return __INPUT_CONFIG_JOYCON;
-                    }
+                    value = 1;
+                    raw   = 1;
+                    tick();
                 }
-                else if (_binding.joycon) //Or if the binding itself is explicitly for a joycon
-                {
-                    return __INPUT_CONFIG_JOYCON;
-                }
+            }
+            else
+            {
+                __verb_state_dict[$ _chord_name].tick();
             }
             
-            return __INPUT_CONFIG_GAMEPAD;
+            ++_i;
         }
-        
-        __input_error("Binding type \"", _binding.type, "\" unrecognised");
-        return undefined;
     }
     
-    static __get_config_name_from_source = function(_source)
+    static tick_combo_verbs = function()
     {
-        //If undefined is passed in, use the player's current source
-        if (_source == undefined) return __get_config_name();
-        
-        if (is_numeric(_source))
+        var _i = 0;
+        repeat(array_length(global.__input_combo_verb_array))
         {
-            //Convert enum if necessary
-            switch(_source)
+            var _combo_name = global.__input_combo_verb_array[_i];
+            if (__combo_state_dict[$ _combo_name].__tick(__verb_state_dict) == __INPUT_COMBO_STATE.__SUCCESS)
             {
-                case INPUT_SOURCE.NONE:
-                case INPUT_SOURCE.GHOST:
-                    return undefined;
-                break;
-                
-                case INPUT_SOURCE.KEYBOARD: return __INPUT_CONFIG_KEYBOARD; break;
-                case INPUT_SOURCE.MOUSE:    return __INPUT_CONFIG_MOUSE;    break;
-                case INPUT_SOURCE.GAMEPAD:  return __INPUT_CONFIG_GAMEPAD;  break;
-                
-                default:
-                    __input_error("Invalid source (", _source, ")");
-                break;
+                with(__verb_state_dict[$ _combo_name])
+                {
+                    value = 1;
+                    raw   = 1;
+                    tick();
+                }
             }
+            else
+            {
+                __verb_state_dict[$ _combo_name].tick();
+            }
+            
+            ++_i;
         }
-        
-        //Value is probably a string, return that
-        return _source;
     }
     
     #endregion
-    
-    
-    
-    /// @param [source]
-    static any_input = function(_source = source)
-    {
-        if (_source == all)
-        {
-            if (any_input(INPUT_SOURCE.KEYBOARD_AND_MOUSE)) return true;
-            if (any_input(INPUT_SOURCE.GAMEPAD)) return true;
-            return false;
-        }
-        
-        switch(_source)
-        {
-            case INPUT_SOURCE.NONE:
-            case INPUT_SOURCE.GHOST:
-                return false;
-            break;
-            
-            case INPUT_SOURCE.KEYBOARD_AND_MOUSE:
-                var _keyboard_valid = (global.__input_keyboard_default_defined && keyboard_check(vk_anykey) && !__input_key_is_ignored(__input_keyboard_key()));
-                return (_keyboard_valid || global.__input_mouse_moved || input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down());
-            break;
-            
-            case INPUT_SOURCE.GAMEPAD:
-                if (!gamepad_is_connected(gamepad)) return false;
-                
-                if (input_gamepad_check(gamepad, gp_face1)
-                ||  input_gamepad_check(gamepad, gp_face2)
-                ||  input_gamepad_check(gamepad, gp_face3)
-                ||  input_gamepad_check(gamepad, gp_face4)
-                ||  input_gamepad_check(gamepad, gp_padu)
-                ||  input_gamepad_check(gamepad, gp_padd)
-                ||  input_gamepad_check(gamepad, gp_padl)
-                ||  input_gamepad_check(gamepad, gp_padr)
-                ||  input_gamepad_check(gamepad, gp_shoulderl)
-                ||  input_gamepad_check(gamepad, gp_shoulderr)
-                ||  input_gamepad_check(gamepad, gp_start)
-                ||  input_gamepad_check(gamepad, gp_select)
-                ||  input_gamepad_check(gamepad, gp_stickl)
-                ||  input_gamepad_check(gamepad, gp_stickr)
-                ||  input_gamepad_check(gamepad, gp_stickr)
-                ||  input_gamepad_check(gamepad, gp_stickr)
-                ||  input_gamepad_check(gamepad, gp_stickr)
-                ||  input_gamepad_check(gamepad, gp_stickr)
-                ||  (abs(input_gamepad_value(gamepad, gp_shoulderlb)) > INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD)
-                ||  (abs(input_gamepad_value(gamepad, gp_shoulderrb)) > INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD)
-                ||  (abs(input_gamepad_value(gamepad, gp_axislh)) > INPUT_DEFAULT_AXIS_MIN_THRESHOLD)
-                ||  (abs(input_gamepad_value(gamepad, gp_axislv)) > INPUT_DEFAULT_AXIS_MIN_THRESHOLD)
-                ||  (abs(input_gamepad_value(gamepad, gp_axisrh)) > INPUT_DEFAULT_AXIS_MIN_THRESHOLD)
-                ||  (abs(input_gamepad_value(gamepad, gp_axisrv)) > INPUT_DEFAULT_AXIS_MIN_THRESHOLD))
-                {
-                    return true;
-                }
-                
-                if (INPUT_SDL2_ALLOW_EXTENDED)
-                {
-                    if (input_gamepad_check(gamepad, gp_guide)
-                    ||  input_gamepad_check(gamepad, gp_misc1)
-                    ||  input_gamepad_check(gamepad, gp_touchpad)
-                    ||  input_gamepad_check(gamepad, gp_paddle1)
-                    ||  input_gamepad_check(gamepad, gp_paddle2)
-                    ||  input_gamepad_check(gamepad, gp_paddle3)
-                    ||  input_gamepad_check(gamepad, gp_paddle4))
-                    {
-                        return true;
-                    }
-                }
-                
-                return false;
-                    
-            break;
-        }
-        
-        return false;
-    }
 }

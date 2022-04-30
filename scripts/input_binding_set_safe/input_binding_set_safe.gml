@@ -24,18 +24,18 @@ function input_binding_set_safe(_verb_name, _binding, _player_index = 0, _altern
                 __input_trace("Warning! More than one binding collision found, resolution may not be desirable");
             }
             
-            var _config_name = global.__input_players[_player_index].__get_config_name_from_binding(_binding);
+            var _profile_name = global.__input_players[_player_index].__profile_name;
             var _verb_b      = _collisions[0].verb;
             var _alternate_b = _collisions[0].alternate;
             
             if ((_verb_name != _verb_b) || (_alternate != _alternate_b))
             {
-                __input_trace("Collision found with config=", _config_name, ", verb=", _verb_b, ", alternate=", _alternate_b);
-                input_binding_swap(_verb_name, _alternate, _verb_b, _alternate_b, _config_name, _player_index);
+                __input_trace("Collision found in profile=", _profile_name, ", verb=", _verb_b, ", alternate=", _alternate_b);
+                input_binding_swap(_verb_name, _alternate, _verb_b, _alternate_b, _profile_name, _player_index);
             }
             else
             {
-                __input_trace("New binding (", input_binding_get_name(_binding), ") is the same as existing binding for config=", _config_name, ", verb=", _verb_name, ", alternate=", _alternate);
+                __input_trace("New binding (", input_binding_get_name(_binding), ") is the same as existing binding for profile=", _profile_name, ", verb=", _verb_name, ", alternate=", _alternate);
             }
         }
         

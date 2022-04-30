@@ -1,9 +1,13 @@
-function input_tick()
+function __input_tick()
 {
     global.__input_frame++;
     global.__input_cleared = false;
     
 	
+    
+    __input_player_hotswap_tick();
+    
+    
 	
     #region Touch
     

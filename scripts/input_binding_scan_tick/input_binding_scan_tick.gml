@@ -40,11 +40,11 @@ function input_binding_scan_tick(_source, _player_index = 0)
             rebind_target_source = _source;
             rebind_start_time    = current_time;
             
-            __input_trace("Binding scan started for player ", _player_index, " (target source=", __input_source_get_name(rebind_target_source), ", gamepad=", gamepad, ")");
+            __input_trace("Binding scan started for player ", _player_index, " (target source=", rebind_target_source.__name, ", gamepad=", gamepad, ")");
             
             if (source != rebind_target_source)
             {
-                __input_trace("Warning! Player not using target source \"", __input_source_get_name(rebind_target_source), "\", force-setting their source");
+                __input_trace("Warning! Player not using target source \"", rebind_target_source.__name, "\", force-setting their source");
                 input_player_source_set(rebind_target_source, _player_index);
             }
         }
@@ -99,7 +99,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
             
             if (rebind_state == 1) //Waiting for the player to release all buttons
             {
-                if (!any_input(rebind_target_source))
+                if (!__input_source_any_input(rebind_target_source, rebind_gamepad))
                 {
                     __input_trace("Now scanning for a new binding from player ", _player_index);
                     rebind_state = 2;
@@ -117,14 +117,14 @@ function input_binding_scan_tick(_source, _player_index = 0)
                 
                 #region Listeners
                 
-                if (global.__input_keyboard_default_defined 
+                if (global.__input_any_keyboard_binding_defined 
                 && (_keyboard_key >= __INPUT_KEYCODE_MIN) && (_keyboard_key <= __INPUT_KEYCODE_MAX)
                 && !__input_key_is_ignored(_keyboard_key))
                 {
                     //Keyboard
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
                     _new_binding = new __input_class_binding();
-                    _new_binding.set_key(_keyboard_key, true);
+                    _new_binding.__set_key(_keyboard_key, true);
                     _binding_source = INPUT_SOURCE.KEYBOARD;
                     
                     //On Mac we manually set the binding label to the actual keyboard character if it's an alphabetic symbol
@@ -138,33 +138,33 @@ function input_binding_scan_tick(_source, _player_index = 0)
                         if ((ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z"))) _new_binding.set_label(_keychar);
                     }
                 }
-                else if (global.__input_mouse_default_defined && global.__input_mouse_allowed && !global.__input_mouse_blocked
+                else if (global.__input_any_mouse_binding_defined && global.__input_mouse_allowed && !global.__input_mouse_blocked
                      && (_mouse_button != mb_none)
                      && (!__INPUT_TOUCH_SUPPORT || (_mouse_button != mb_left))) //GM conflates LMB and touch. Don't rebind
                 {
                     //Mouse buttons
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
                     _new_binding = new __input_class_binding();
-                    _new_binding.set_mouse_button(_mouse_button);
+                    _new_binding.__set_mouse_button(_mouse_button);
                     _binding_source = INPUT_SOURCE.MOUSE;
                 }
-                else if (global.__input_mouse_default_defined && mouse_wheel_up())
+                else if (global.__input_any_mouse_binding_defined && mouse_wheel_up())
                 {
                     //Mouse wheel up
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
                     _new_binding = new __input_class_binding();
-                    _new_binding.set_mouse_wheel_up();
+                    _new_binding.__set_mouse_wheel_up();
                     _binding_source = INPUT_SOURCE.MOUSE;
                 }
-                else if (global.__input_mouse_default_defined && mouse_wheel_down())
+                else if (global.__input_any_mouse_binding_defined && mouse_wheel_down())
                 {
                     //Mouse wheel down
                     //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
                     _new_binding = new __input_class_binding();
-                    _new_binding.set_mouse_wheel_down();
+                    _new_binding.__set_mouse_wheel_down();
                     _binding_source = INPUT_SOURCE.MOUSE;
                 }
-                else if (global.__input_gamepad_default_defined)
+                else if (global.__input_any_gamepad_binding_defined)
                 {
                     //Gamepad buttons and axes
                     var _check_array = [gp_face1, gp_face2, gp_face3, gp_face4, 
@@ -196,7 +196,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
                             {
                                 //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
                                 _new_binding = new __input_class_binding();
-                                _new_binding.set_gamepad_axis(_check, (_value < 0));
+                                _new_binding.__set_gamepad_axis(_check, (_value < 0));
                                 _binding_source = INPUT_SOURCE.GAMEPAD;
                             }
                         }
@@ -206,7 +206,7 @@ function input_binding_scan_tick(_source, _player_index = 0)
                             {
                                 //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
                                 _new_binding = new __input_class_binding();
-                                _new_binding.set_gamepad_button(_check);
+                                _new_binding.__set_gamepad_button(_check);
                                 _binding_source = INPUT_SOURCE.GAMEPAD;
                             }
                         }
@@ -221,13 +221,13 @@ function input_binding_scan_tick(_source, _player_index = 0)
                 {
                     if (_binding_source != rebind_target_source)
                     {
-                        __input_trace("Binding scan failed: New binding source (", __input_source_get_name(_binding_source), ") for ", _player_index, " doesn't match desired rebinding source (", __input_source_get_name(rebind_target_source), ")");
+                        __input_trace("Binding scan failed: New binding source (", _binding_source.__name, ") for ", _player_index, " doesn't match desired rebinding source (", rebind_target_source.__name, ")");
                         rebind_state = -1;
                         return INPUT_BINDING_SCAN_EVENT.BINDING_DOESNT_MATCH_SOURCE;
                     }
                     else
                     {
-                        __input_trace("Binding found for player ", _player_index, ": \"", input_binding_get_name(_new_binding), "\"");
+                        __input_trace("Binding found for player ", _player_index, ": \"", _new_binding.__name, "\"");
                         rebind_state = -2;
                         return _new_binding;
                     }

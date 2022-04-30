@@ -1,10 +1,11 @@
 var _string = "Source: ";
 
-switch(input_player_source_get())
+switch(input_player_get_source())
 {
-    case INPUT_SOURCE.KEYBOARD_AND_MOUSE: _string += "Keyboard and Mouse"; break;
-    case INPUT_SOURCE.GAMEPAD:            _string += "Gamepad";            break;
-    default:                              _string += "Unknown";            break;
+    case INPUT_SOURCE.KEYBOARD: _string += "Keyboard"; break;
+    case INPUT_SOURCE.MOUSE:    _string += "Mouse";    break;
+    case INPUT_SOURCE.GAMEPAD:  _string += "Gamepad";  break;
+    default:                    _string += "Unknown";  break;
 }
 
 var _pad = string_repeat(" ", 6);
@@ -12,21 +13,21 @@ var _pad = string_repeat(" ", 6);
 _string += "\n";
 _string += "\n" + "Verb                    Valid Active";
 
-_string += "\n" + "invalid high key            " + string(input_binding_is_valid(input_binding_get("invalid high key", INPUT_SOURCE.KEYBOARD_AND_MOUSE))) + _pad + string(input_check("invalid high key"));
-_string += "\n" + "invalid low key             " + string(input_binding_is_valid(input_binding_get("invalid low key",  INPUT_SOURCE.KEYBOARD_AND_MOUSE))) + _pad + string(input_check("invalid low key"));
-_string += "\n" + "tab key                     " + string(input_binding_is_valid(input_binding_get("tab key",          INPUT_SOURCE.KEYBOARD_AND_MOUSE))) + _pad + string(input_check("tab key"));
-_string += "\n" + "A key                       " + string(input_binding_is_valid(input_binding_get("A key",            INPUT_SOURCE.KEYBOARD_AND_MOUSE))) + _pad + string(input_check("A key"));
+_string += "\n" + "invalid high key            " + string(input_binding_is_valid(input_binding_get("invalid high key", INPUT_SOURCE.KEYBOARD))) + _pad + string(input_check("invalid high key"));
+_string += "\n" + "invalid low key             " + string(input_binding_is_valid(input_binding_get("invalid low key",  INPUT_SOURCE.KEYBOARD))) + _pad + string(input_check("invalid low key"));
+_string += "\n" + "tab key                     " + string(input_binding_is_valid(input_binding_get("tab key",          INPUT_SOURCE.KEYBOARD))) + _pad + string(input_check("tab key"));
+_string += "\n" + "A key                       " + string(input_binding_is_valid(input_binding_get("A key",            INPUT_SOURCE.KEYBOARD))) + _pad + string(input_check("A key"));
 
-_string += "\n" + "invalid high mouse          " + string(input_binding_is_valid(input_binding_get("invalid high mouse",   INPUT_SOURCE.KEYBOARD_AND_MOUSE))) + _pad + string(input_check("invalid high mouse"));
-_string += "\n" + "invalid low mouse           " + string(input_binding_is_valid(input_binding_get("invalid low mouse",    INPUT_SOURCE.KEYBOARD_AND_MOUSE))) + _pad + string(input_check("invalid low mouse"));
-_string += "\n" + "mouse button left           " + string(input_binding_is_valid(input_binding_get("mouse button left",    INPUT_SOURCE.KEYBOARD_AND_MOUSE))) + _pad + string(input_check("mouse button left"));
-_string += "\n" + "mouse button right          " + string(input_binding_is_valid(input_binding_get("mouse button right",   INPUT_SOURCE.KEYBOARD_AND_MOUSE))) + _pad + string(input_check("mouse button right"));
-_string += "\n" + "mouse button middle         " + string(input_binding_is_valid(input_binding_get("mouse button middle",  INPUT_SOURCE.KEYBOARD_AND_MOUSE))) + _pad + string(input_check("mouse button middle"));
-_string += "\n" + "mouse button back           " + string(input_binding_is_valid(input_binding_get("mouse button back",    INPUT_SOURCE.KEYBOARD_AND_MOUSE))) + _pad + string(input_check("mouse button back"));
-_string += "\n" + "mouse button forward        " + string(input_binding_is_valid(input_binding_get("mouse button forward", INPUT_SOURCE.KEYBOARD_AND_MOUSE))) + _pad + string(input_check("mouse button forward"));
+_string += "\n" + "invalid high mouse          " + string(input_binding_is_valid(input_binding_get("invalid high mouse",   INPUT_SOURCE.MOUSE))) + _pad + string(input_check("invalid high mouse"));
+_string += "\n" + "invalid low mouse           " + string(input_binding_is_valid(input_binding_get("invalid low mouse",    INPUT_SOURCE.MOUSE))) + _pad + string(input_check("invalid low mouse"));
+_string += "\n" + "mouse button left           " + string(input_binding_is_valid(input_binding_get("mouse button left",    INPUT_SOURCE.MOUSE))) + _pad + string(input_check("mouse button left"));
+_string += "\n" + "mouse button right          " + string(input_binding_is_valid(input_binding_get("mouse button right",   INPUT_SOURCE.MOUSE))) + _pad + string(input_check("mouse button right"));
+_string += "\n" + "mouse button middle         " + string(input_binding_is_valid(input_binding_get("mouse button middle",  INPUT_SOURCE.MOUSE))) + _pad + string(input_check("mouse button middle"));
+_string += "\n" + "mouse button back           " + string(input_binding_is_valid(input_binding_get("mouse button back",    INPUT_SOURCE.MOUSE))) + _pad + string(input_check("mouse button back"));
+_string += "\n" + "mouse button forward        " + string(input_binding_is_valid(input_binding_get("mouse button forward", INPUT_SOURCE.MOUSE))) + _pad + string(input_check("mouse button forward"));
 
-_string += "\n" + "mouse wheel down            " + string(input_binding_is_valid(input_binding_get("mouse wheel down", INPUT_SOURCE.KEYBOARD_AND_MOUSE))) + _pad + string(input_check("mouse wheel down"));
-_string += "\n" + "mouse wheel up              " + string(input_binding_is_valid(input_binding_get("mouse wheel up",   INPUT_SOURCE.KEYBOARD_AND_MOUSE))) + _pad + string(input_check("mouse wheel up"));
+_string += "\n" + "mouse wheel down            " + string(input_binding_is_valid(input_binding_get("mouse wheel down", INPUT_SOURCE.KEYBOARD))) + _pad + string(input_check("mouse wheel down"));
+_string += "\n" + "mouse wheel up              " + string(input_binding_is_valid(input_binding_get("mouse wheel up",   INPUT_SOURCE.KEYBOARD))) + _pad + string(input_check("mouse wheel up"));
 
 _string += "\n" + "invalid high gamepad button " + string(input_binding_is_valid(input_binding_get("invalid high gamepad button", INPUT_SOURCE.GAMEPAD))) + _pad + string(input_check("invalid high gamepad button"));
 _string += "\n" + "invalid low gamepad button  " + string(input_binding_is_valid(input_binding_get("invalid low gamepad button",  INPUT_SOURCE.GAMEPAD))) + _pad + string(input_check("invalid low gamepad button"));

@@ -60,7 +60,7 @@ function __input_class_verb() constructor
         
         if (value > 0)
         {
-            other.last_input_time = current_time;
+            other.__last_input_time = current_time;
             
             held      = true;
             held_time = _time;

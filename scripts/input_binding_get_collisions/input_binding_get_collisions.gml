@@ -1,10 +1,12 @@
 /// @param binding
 /// @param [playerIndex]
+/// @param [profileName]
 
-function input_binding_get_collisions(_src_binding, _player_index = 0)
+function input_binding_get_collisions(_src_binding, _player_index = 0, _profile_name = undefined)
 {
 	__input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX
+    __INPUT_VERIFY_PROFILE_NAME
     
     if (!input_value_is_binding(_src_binding))
     {
@@ -16,8 +18,8 @@ function input_binding_get_collisions(_src_binding, _player_index = 0)
     
     with(global.__input_players[_player_index])
     {
-        //Get the config for this particular binding
-        var _config_name = __get_config_name_from_binding(_src_binding);
+        //Get the profile for this particular binding
+        var _profile_name = __get_profile_struct(_profile_name);
         
         //Iterate over every verb
         var _v = 0;
@@ -31,7 +33,7 @@ function input_binding_get_collisions(_src_binding, _player_index = 0)
             {
                 //Pick up a binding
                 //If this hasn't been defined for the player then it falls through and uses the default binding
-                var _extant_binding = __get_binding(_config_name, _verb, _alternate_index);
+                var _extant_binding = __binding_get(_profile_name, _verb, _alternate_index);
                 
                 //A lot of alternate binding slots don't get used so they return <undefined>
                 if (is_struct(_extant_binding))

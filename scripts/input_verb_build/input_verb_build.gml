@@ -1,8 +1,9 @@
-/// @param name
+/// @param verbName
 /// @param defaultBinding
-/// @param [alternate]
+/// @param [alternate=0]
+/// @param [profileName]
 
-function input_verb_build(_name, _binding, _alternate = 0)
+function input_verb_build(_verb_name, _binding, _alternate = 0, _profile_name = undefined)
 {
 	__input_initialize();
     __INPUT_VERIFY_ALTERNATE_INDEX
@@ -13,40 +14,37 @@ function input_verb_build(_name, _binding, _alternate = 0)
         return undefined;
     }
     
-    //Get the name of the config we want to write to
-    var _config_name = global.__input_default_player.__get_config_name_from_binding(_binding);
-    
     //If we haven't seen this verb before...
-    if (!variable_struct_exists(global.__input_basic_verb_dict, _name))
+    if (!variable_struct_exists(global.__input_basic_verb_dict, _verb_name))
     {
         //Validate the verb name
-        __input_ensure_unique_verb_name(_name);
+        __input_ensure_unique_verb_name(_verb_name);
         
-        switch(_config_name)
+        var _auto_profile_name = _binding.__get_automatic_profile_name();
+        switch(_auto_profile_name)
         {
-            case __INPUT_CONFIG_KEYBOARD: if (global.__input_keyboard_allowed) global.__input_keyboard_default_defined = true; break;
-            case __INPUT_CONFIG_MOUSE:    if (global.__input_mouse_allowed)    global.__input_mouse_default_defined    = true; break;
-            case __INPUT_CONFIG_GAMEPAD:                                       global.__input_gamepad_default_defined  = true; break;
-            case __INPUT_CONFIG_JOYCON:                                        global.__input_joycon_default_defined   = true; break;
+            case INPUT_AUTO_PROFILE_KEYBOARD: if (global.__input_keyboard_allowed) global.__input_any_keyboard_binding_defined = true; break;
+            case INPUT_AUTO_PROFILE_MOUSE:    if (global.__input_mouse_allowed)    global.__input_any_mouse_binding_defined    = true; break;
+            case INPUT_AUTO_PROFILE_GAMEPAD:                                       global.__input_any_gamepad_binding_defined  = true; break;
         }
         
         //And then register it
-        global.__input_all_verb_dict[$ _name] = true;
-        array_push(global.__input_all_verb_array, _name);
+        global.__input_all_verb_dict[$ _verb_name] = true;
+        array_push(global.__input_all_verb_array, _verb_name);
         
-        global.__input_basic_verb_dict[$ _name] = true;
-        array_push(global.__input_basic_verb_array, _name);
+        global.__input_basic_verb_dict[$ _verb_name] = true;
+        array_push(global.__input_basic_verb_array, _verb_name);
         
         //Ensure binding slots for all players
         with(global.__input_default_player)
         {
-            global.__input_default_player.__ensure_verb(_config_name, _name);
+            global.__input_default_player.__ensure_verb(_auto_profile_name, _verb_name);
         }
         
         var _p = 0;
         repeat(INPUT_MAX_PLAYERS)
         {
-            global.__input_players[_p].__ensure_verb(_config_name, _name);
+            global.__input_players[_p].__ensure_verb(_auto_profile_name, _verb_name);
             ++_p;
         }
     }
@@ -54,20 +52,20 @@ function input_verb_build(_name, _binding, _alternate = 0)
     //Set the binding on the default player
     with(global.__input_default_player)
     {
-        if (__get_binding(_config_name, _name, _alternate) != undefined)
+        if (__binding_get(_profile_name, _verb_name, _alternate).type != undefined)
         {
-            __input_error("Default binding already set for config=",_config_name, ", name=", _name, ", alternate=", _alternate, "\n", _binding);
+            __input_error("Default binding already set for profile=", _profile_name, ", name=", _verb_name, ", alternate=", _alternate, "\n", _binding);
         }
         else
         {
-            __set_binding(_name, _alternate, _binding);
+            __binding_set(_profile_name, _verb_name, _alternate, _binding);
         }
     }
     
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
     {
-        global.__input_players[_p].__set_binding(_name, _alternate, _binding);
+        global.__input_players[_p].__binding_set(_profile_name, _verb_name, _alternate, _binding);
         ++_p;
     }
 }

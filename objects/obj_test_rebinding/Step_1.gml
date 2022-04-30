@@ -17,13 +17,13 @@ else
     if (input_keyboard_check_pressed(ord("1")) || input_gamepad_check_pressed(input_player_gamepad_get(), gp_face1))
     {
         rebinding = true;
-        rebinding_source = input_player_source_get();
+        rebinding_source = input_player_get_source();
     }
     
     if (input_keyboard_check_pressed(ord("2")) || input_gamepad_check_pressed(input_player_gamepad_get(), gp_face2))
     {
         rebinding = true;
-        rebinding_source = INPUT_SOURCE.KEYBOARD_AND_MOUSE;
+        rebinding_source = INPUT_SOURCE.KEYBOARD;
     }
     
     if (input_keyboard_check_pressed(ord("3")) || input_gamepad_check_pressed(input_player_gamepad_get(), gp_face3))

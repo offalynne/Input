@@ -1,7 +1,6 @@
 /// @param source
-/// @param [gamepad]
 
-function __input_source_relinquish(_source, _gamepad = undefined)
+function __input_source_relinquish(_source)
 {
     var _i = 0;
     repeat(INPUT_MAX_PLAYERS)
@@ -11,7 +10,7 @@ function __input_source_relinquish(_source, _gamepad = undefined)
             var _j = 0;
             repeat(array_length(__source_array))
             {
-                if (__source_array[_j].__collides_with(_source, _gamepad))
+                if (__source_array[_j].__collides_with(_source))
                 {
                     array_delete(__source_array, _j, 1);
                 }

@@ -9,7 +9,7 @@
                                         return undefined;\
                                     }
 
-#macro __INPUT_GET_VERB_STRUCT  var _verb_struct = global.__input_players[_player_index].verbs[$ _verb];\
+#macro __INPUT_GET_VERB_STRUCT  var _verb_struct = global.__input_players[_player_index].__verb_state_dict[$ _verb];\
                                 if (!is_struct(_verb_struct))\
                                 {\
                                     __input_error("Verb not recognised (", _verb, ")");\
@@ -30,3 +30,7 @@
 #macro __INPUT_VERIFY_BASIC_VERB_NAME  if (variable_struct_exists(global.__input_chord_verb_dict, _verb_name)) __input_error("\"", _verb_name, "\" is a chord verb. Verbs passed to this function must be basic verb");\
                                        if (variable_struct_exists(global.__input_combo_verb_dict, _verb_name)) __input_error("\"", _verb_name, "\" is a combo verb. Verbs passed to this function must be basic verb");\
                                        if (!variable_struct_exists(global.__input_basic_verb_dict, _verb_name)) __input_error("Verb \"", _verb_name, "\" not recognised");
+                                       
+                                       
+                                       
+#macro __INPUT_VERIFY_PROFILE_NAME  if (!__input_profile_name_exists(_profile_name)) __input_error("Profile name \"", _profile_name, "\" doesn't exist");

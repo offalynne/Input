@@ -2,12 +2,6 @@
 #macro __INPUT_DATE    "2022-04-23"
 #macro __INPUT_DEBUG   false
 
-#macro __INPUT_CONFIG_KEYBOARD  "keyboard"
-#macro __INPUT_CONFIG_MOUSE     "mouse"
-#macro __INPUT_CONFIG_GAMEPAD   "gamepad"
-#macro __INPUT_CONFIG_JOYCON    "joycon"
-#macro __INPUT_CONFIG_MIXED     "mixed"
-
 #macro __INPUT_BINDING_KEY               "key"
 #macro __INPUT_BINDING_MOUSE_BUTTON      "mouse button"
 #macro __INPUT_BINDING_MOUSE_WHEEL_UP    "mouse wheel up"
@@ -15,7 +9,13 @@
 #macro __INPUT_BINDING_GAMEPAD_BUTTON    "gamepad button"
 #macro __INPUT_BINDING_GAMEPAD_AXIS      "gamepad axis"
 
-
+#macro INPUT_NONE                    global.__input_source_none
+#macro INPUT_GHOST                   global.__input_source_ghost
+#macro INPUT_KEYBOARD                global.__input_source_keyboard
+#macro INPUT_MOUSE                   global.__input_source_mouse
+#macro INPUT_GAMEPAD                 global.__input_source_gamepad
+#macro INPUT_ALL_GAMEPADS            global.__input_source_all_gamepads
+#macro __INPUT_MAX_TRACKED_GAMEPADS  20
 
 #macro __INPUT_ON_PS       ((os_type == os_ps4)     || (os_type == os_ps5))
 #macro __INPUT_ON_XDK      ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
@@ -105,8 +105,8 @@ enum INPUT_SOURCE
     GHOST,
     KEYBOARD,
     MOUSE,
-    ALL_GAMEPADS,
     GAMEPAD,
+    ALL_GAMEPADS,
     __SIZE
 }
 
@@ -295,17 +295,20 @@ function __input_get_time()
     return (INPUT_TIMER_MILLISECONDS? current_time : global.__input_frame);
 }
 
-function __input_source_get_name(_source)
+function __input_array_get_index(_array, _value)
 {
-    switch(_source)
+    var _i = 0;
+    repeat(array_length(_array))
     {
-        case INPUT_SOURCE.NONE:         return "none";         break;
-        case INPUT_SOURCE.GHOST:        return "ghost";        break;
-        case INPUT_SOURCE.KEYBOARD:     return "keyboard";     break;
-        case INPUT_SOURCE.MOUSE:        return "mouse";        break;
-        case INPUT_SOURCE.ALL_GAMEPADS: return "all gamepads"; break;
-        case INPUT_SOURCE.GAMEPAD:      return "gamepad";      break;
+        if (_array[_i] == _value) return _i;
+        ++_i;
     }
     
-    return "unknown";
+    return undefined;
+}
+
+function __input_profile_name_exists(_value)
+{
+    if (_value == undefined) return true;
+    return (__input_array_get_index(global.__input_profile_name_array, _value) != undefined);
 }

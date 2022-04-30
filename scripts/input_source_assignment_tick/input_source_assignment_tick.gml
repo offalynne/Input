@@ -71,12 +71,12 @@ function input_source_assignment_tick(_min_players, _max_players, _leave_verb, _
     {
         if (!input_player_connected(_p))
         {
-            var _new_device = input_source_detect_any();
-            if (_new_device.source != INPUT_SOURCE.NONE)
+            var _new_source = input_source_detect_any();
+            if (_new_source != INPUT_NONE)
             {
                 with(global.__input_players[_p])
                 {
-                    __add_source(_new_device.source, _new_device.gamepad);
+                    __source_add(_new_source);
                     tick();
                 }
                 

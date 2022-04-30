@@ -11,13 +11,13 @@ function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0)
         __INPUT_VERIFY_PLAYER_INDEX
         
         //Grab the player's verbs
-        var _player_verbs_struct = global.__input_players[_player_index].verbs;
+        var _player_verbs_struct = global.__input_players[_player_index].__verb_state_dict;
     }
     else
     {
         //Secret feature that's used internally!
         //If you provide a player struct instead of an integer index then we pull the verbs struct from that instead
-        var _player_verbs_struct = _player_index.verbs;
+        var _player_verbs_struct = _player_index.__verb_state_dict;
     }
     
     //And pull out verb structs for each verb name passed into the function

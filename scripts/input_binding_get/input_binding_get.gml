@@ -1,23 +1,24 @@
 /// @param verb
-/// @param [source]
-/// @param [playerIndex]
-/// @param [alternate]
+/// @param [playerIndex=0]
+/// @param [alternate=0]
+/// @param [profileName]
 
-function input_binding_get(_verb_name, _source = undefined, _player_index = 0, _alternate = 0)
+function input_binding_get(_verb_name, _player_index = 0, _alternate = 0, _profile_name = undefined)
 {
 	__input_initialize();
     __INPUT_VERIFY_ALTERNATE_INDEX
     __INPUT_VERIFY_BASIC_VERB_NAME
+    __INPUT_VERIFY_PROFILE_NAME
     
     if (is_string(_player_index))
     {
         if (_player_index == "default")
         {
-            if (_source == undefined) __input_error("Source must be specified when getting a binding from the default player");
+            if (_profile_name == undefined) __input_error("Source must be specified when getting a binding from the default player");
             
             with(global.__input_default_player)
             {
-                return __get_binding(__get_config_name_from_source(_source), _verb_name, _alternate).__duplicate();
+                return __binding_get(_profile_name, _verb_name, _alternate).__duplicate();
             }
         }
         else
@@ -30,7 +31,7 @@ function input_binding_get(_verb_name, _source = undefined, _player_index = 0, _
     
     with(global.__input_players[_player_index])
     {
-        return __get_binding(__get_config_name_from_source(_source), _verb_name, _alternate);
+        return __binding_get(_profile_name, _verb_name, _alternate);
     }
     
     return undefined;

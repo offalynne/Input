@@ -12,9 +12,7 @@ input_default_gamepad_button(gp_padr, "right", 1);
 input_default_gamepad_button(gp_padu, "up",    1);
 input_default_gamepad_button(gp_padd, "down",  1);
 
-input_player_source_set(INPUT_SOURCE.KEYBOARD_AND_MOUSE, 0);
-input_player_source_set(INPUT_SOURCE.GAMEPAD, 1);
-input_player_source_set(INPUT_SOURCE.GAMEPAD, 2);
-
-input_player_gamepad_set(0, 1);
-input_player_gamepad_set(1, 2);
+input_player_claim_keyboard(0);
+input_player_claim_mouse(0);
+input_player_claim_gamepad(0, 1);
+input_player_claim_gamepad(1, 2);

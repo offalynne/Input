@@ -1,10 +1,12 @@
 function __input_player_tick_sources()
 {
+    var _current_profile_dict = __profiles_dict[$ __profile_name];
+    
     var _v = 0;
     repeat(array_length(global.__input_basic_verb_array))
     {
         var _verb_name   = global.__input_basic_verb_array[_v];
-        var _verb_struct = verbs[$ _verb_name];
+        var _verb_struct = __verb_state_dict[$ _verb_name];
         
         var _raw           = 0.0;
         var _value         = 0.0;
@@ -45,16 +47,7 @@ function __input_player_tick_sources()
                 continue;
             }
             
-            var _config_name = _source_struct.__get_config_name();
-            var _config_verb_struct = config[$ _config_name];
-                
-            if (!is_struct(_config_verb_struct))
-            {
-                ++_s;
-                continue;
-            }
-            
-            var _alternate_array = _config_verb_struct[$ _verb_name];
+            var _alternate_array = _current_profile_dict[$ _verb_name];
             
             switch(_source_type)
             {
