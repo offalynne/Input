@@ -1,7 +1,7 @@
 /// @param name
 /// @param [phaseTimeout]
 
-function input_combo_build(_name, _phase_timeout = INPUT_TIMER_MILLISECONDS? 333 : 20)
+function input_combo_create(_name, _phase_timeout = INPUT_TIMER_MILLISECONDS? 333 : 20)
 {
     __input_ensure_unique_verb_name(_name);
     

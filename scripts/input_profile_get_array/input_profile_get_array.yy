@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Extended Verbs",
-    "path": "folders/Input/Extended Verbs.yy",
+    "name": "Profiles",
+    "path": "folders/Input/Profiles.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_combo_get_phase",
+  "name": "input_profile_get_array",
   "tags": [],
   "resourceType": "GMScript",
 }

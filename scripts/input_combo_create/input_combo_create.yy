@@ -6,7 +6,7 @@
     "path": "folders/Input/Extended Verbs.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_combo_get_phase",
+  "name": "input_combo_create",
   "tags": [],
   "resourceType": "GMScript",
 }

@@ -2,7 +2,7 @@ __input_initialize();
 
 function __input_initialize()
 {
-    if (variable_global_exists("__input_frame")) exit;
+    if (variable_global_exists("__input_frame")) return false;;
     
     global.__input_time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
     {
@@ -89,11 +89,6 @@ function __input_initialize()
     global.__input_combo_verb_dict  = {};
     global.__input_combo_verb_array = [];
     
-    //
-    global.__input_profile_array = [];
-    global.__input_profile_dict  = {};
-    
-    global.__input_auto_profile_first    = undefined;
     global.__input_auto_profile_keyboard = undefined;
     global.__input_auto_profile_mouse    = undefined;
     global.__input_auto_profile_gamepad  = undefined;
@@ -533,16 +528,23 @@ function __input_initialize()
     //We want to be able to identify the actual mouse buttons correctly, and have our own double-input handling
     device_mouse_dbclick_enable(false);
     
+    global.__input_profile_array        = undefined;
+    global.__input_profile_dict         = undefined;
+    global.__input_default_profile_dict = undefined;
+    
     INPUT_NONE         = new __input_class_source(INPUT_SOURCE.NONE);
     INPUT_GHOST        = new __input_class_source(INPUT_SOURCE.GHOST);
     INPUT_KEYBOARD     = new __input_class_source(INPUT_SOURCE.KEYBOARD);
     INPUT_MOUSE        = new __input_class_source(INPUT_SOURCE.MOUSE);
     INPUT_ALL_GAMEPADS = new __input_class_source(INPUT_SOURCE.ALL_GAMEPADS);
     
+    INPUT_GAMEPAD = array_create(__INPUT_MAX_TRACKED_GAMEPADS, undefined);
     var _g = 0;
     repeat(__INPUT_MAX_TRACKED_GAMEPADS)
     {
         INPUT_GAMEPAD[@ _g] = new __input_class_source(INPUT_SOURCE.GAMEPAD, _g);
         ++_g;
     }
+    
+    return true;
 }

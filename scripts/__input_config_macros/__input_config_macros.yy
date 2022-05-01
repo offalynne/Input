@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Profiles",
-    "path": "folders/Input/Profiles.yy",
+    "name": "Input",
+    "path": "folders/Input.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_profile_create",
+  "name": "__input_config_macros",
   "tags": [],
   "resourceType": "GMScript",
 }

@@ -33,4 +33,4 @@
                                        
                                        
                                        
-#macro __INPUT_VERIFY_PROFILE_NAME  if (!__input_profile_name_exists(_profile_name)) __input_error("Profile name \"", _profile_name, "\" doesn't exist");
+#macro __INPUT_VERIFY_PROFILE_NAME  if (!input_profile_exists(_profile_name)) __input_error("Profile name \"", _profile_name, "\" doesn't exist");

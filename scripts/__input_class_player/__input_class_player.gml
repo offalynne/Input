@@ -14,16 +14,7 @@ function __input_class_player() constructor
     
     //This struct is the one that gets serialized/deserialized
     __profiles_dict = { axis_thresholds : {} };
-    
-    //Set up the default profiles
-    var _i = 0;
-    repeat(array_length(global.__input_profile_array))
-    {
-        __profiles_dict[$ global.__input_profile_array[_i]] = {};
-        ++_i;
-    }
-    
-    __profile_name = global.__input_auto_profile_first; //Default to gamepad input
+    __profile_name = undefined;
     
     
     
@@ -83,6 +74,23 @@ function __input_class_player() constructor
         
         //If we have any more sources than that then return the "mixed" automatic profile
         return global.__input_auto_profile_mixed;
+    }
+    
+    /// @param profileName
+    static __ensure_profile = function(_profile_name)
+    {
+        if (_profile_name == "")
+        {
+            __input_error("Profile name cannot be an empty string");
+            return undefined;
+        }
+        
+        var _profile_struct = __profiles_dict[$ _profile_name];
+        if (!is_struct(_profile_struct))
+        {
+            _profile_struct = {};
+            __profiles_dict[$ _profile_name] = _profile_struct;
+        }
     }
     
     #endregion
@@ -202,7 +210,7 @@ function __input_class_player() constructor
     #region Verbs
     
     /// @param verbName
-    static __ensure_verb = function(_verb_name)
+    static __ensure_verb = function(_profile_name, _verb_name)
     {
         if (_verb_name == "")
         {
@@ -210,70 +218,24 @@ function __input_class_player() constructor
             return undefined;
         }
         
+        var _profile_struct = __profiles_dict[$ _profile_name];
+        if (!is_struct(_profile_struct)) __input_error("Profile \"", _profile_name, "\" does not exist");
+        
         if (!is_struct(__verb_state_dict[$ _verb_name])) __verb_state_dict[$ _verb_name] = new __input_class_verb();
         
-        var _f = 0;
-        repeat(array_length(global.__input_profile_array))
+        var _verb_alternate_array = _profile_struct[$ _verb_name];
+        if (!is_array(_verb_alternate_array))
         {
-            var _profile_name = global.__input_profile_array[_f];
+            _verb_alternate_array = array_create(INPUT_MAX_ALTERNATE_BINDINGS);
             
-            var _profile_struct = __profiles_dict[$ _profile_name];
-            if (!is_struct(_profile_struct))
+            var _i = 0;
+            repeat(INPUT_MAX_ALTERNATE_BINDINGS)
             {
-                _profile_struct = {};
-                __profiles_dict[$ _profile_name] = _profile_struct;
+                _verb_alternate_array[@ _i] = __INPUT_BINDING_NULL;
+                ++_i;
             }
             
-            var _verb_alternate_array = _profile_struct[$ _verb_name];
-            if (!is_array(_verb_alternate_array))
-            {
-                _verb_alternate_array = array_create(INPUT_MAX_ALTERNATE_BINDINGS);
-                
-                var _i = 0;
-                repeat(INPUT_MAX_ALTERNATE_BINDINGS)
-                {
-                    _verb_alternate_array[@ _i] = __INPUT_BINDING_NULL;
-                    ++_i;
-                }
-                
-                _profile_struct[$ _verb_name] = _verb_alternate_array;
-            }
-            
-            ++_f;
-        }
-    }
-    
-    /// @param profileName
-    static __ensure_profile = function(_profile_name)
-    {
-        var _profile_struct = __profiles_dict[$ _profile_name];
-        if (!is_struct(_profile_struct))
-        {
-            _profile_struct = {};
-            __profiles_dict[$ _profile_name] = _profile_struct;
-        }
-        
-        var _v = 0;
-        repeat(array_length(global.__input_basic_verb_array))
-        {
-            var _verb_name = global.__input_basic_verb_array[_v];
-            
-            var _verb_alternate_array = _profile_struct[$ _verb_name];
-            if (!is_array(_verb_alternate_array))
-            {
-                _verb_alternate_array = array_create(INPUT_MAX_ALTERNATE_BINDINGS);
-                
-                var _i = 0;
-                repeat(INPUT_MAX_ALTERNATE_BINDINGS)
-                {
-                    _verb_alternate_array[@ _i] = __INPUT_BINDING_NULL;
-                    ++_i;
-                }
-                
-                _profile_struct[$ _verb_name] = _verb_alternate_array;
-            }
-            
-            ++_v;
+            _profile_struct[$ _verb_name] = _verb_alternate_array;
         }
     }
     

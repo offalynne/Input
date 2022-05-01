@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Verbs",
-    "path": "folders/Input/Verbs.yy",
+    "name": "Input",
+    "path": "folders/Input.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_verb_build",
+  "name": "__input_config_default_profiles",
   "tags": [],
   "resourceType": "GMScript",
 }

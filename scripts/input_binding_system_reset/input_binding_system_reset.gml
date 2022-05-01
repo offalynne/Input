@@ -1,27 +1,14 @@
-/// @param source
-/// @param [playerIndex]
-/// @param [resetThresholds]
+/// @param [playerIndex=all]
+/// @param [resetThresholds=true]
 
-function input_binding_system_reset(_source, _player_index = all, _reset_thresholds = true)
+function input_binding_system_reset(_player_index = all, _reset_thresholds = true)
 {
-    if (_source == INPUT_SOURCE.NONE)
-    {
-        __input_trace("Warning! Cannot reset bindings for INPUT_SOURCE.NONE");
-        return undefined;
-    }
-    
-    if (_source == INPUT_SOURCE.GHOST)
-    {
-        __input_trace("Warning! Cannot reset bindings for INPUT_SOURCE.GHOST");
-        return undefined;
-    }
-    
     if (_player_index == all)
     {
         var _i = 0;
         repeat(INPUT_MAX_PLAYERS)
         {
-            input_binding_system_reset(_source, _i);
+            input_binding_system_reset(_i);
             ++_i;
         }
         
@@ -29,18 +16,6 @@ function input_binding_system_reset(_source, _player_index = all, _reset_thresho
     }
     
     __INPUT_VERIFY_PLAYER_INDEX
-    
-    if (_source == all)
-    {
-        var _i = 0;
-        repeat(array_length(global.__input_profile_name_array))
-        {
-            input_binding_system_reset(global.__input_profile_name_array[_i], _player_index);
-            ++_i;
-        }
-        
-        return undefined;
-    }
     
     with(global.__input_players[_player_index])
     {

@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Input",
-    "path": "folders/Input.yy",
+    "name": "Profiles",
+    "path": "folders/Input/Profiles.yy",
   },
   "resourceVersion": "1.0",
-  "name": "__input_config",
+  "name": "input_profile_remove",
   "tags": [],
   "resourceType": "GMScript",
 }

@@ -294,9 +294,3 @@ function __input_get_time()
 {
     return (INPUT_TIMER_MILLISECONDS? current_time : global.__input_frame);
 }
-
-function __input_profile_name_exists(_profile_name)
-{
-    if (_profile_name == undefined) return true;
-    return variable_struct_exists(global.__input_profile_dict, _profile_name);
-}

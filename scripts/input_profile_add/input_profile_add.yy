@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Verbs",
-    "path": "folders/Input/Verbs.yy",
+    "name": "Profiles",
+    "path": "folders/Input/Profiles.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_chord_build",
+  "name": "input_profile_add",
   "tags": [],
   "resourceType": "GMScript",
 }
