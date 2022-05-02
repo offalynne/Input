@@ -14,7 +14,7 @@ Hey there! Maybe you heard on the grapevine that the pug has some new tools for 
 
 To get this show on the road, first thing you're gonna want to do is to drag the [.yymps file](https://github.com/JujuAdams/Input/releases) you got into your project. A dialogue will pop up and you just gotta hit "add all" and then "OK". This will leave you with a new folder in your Asset Browser labeled "Input". That's good. You want that.
 
-Now since we're on a roll, why don't you make an input manager object. I'm gonna call mine `obj_input_manager`, but you might have a better or funnier name or whatever. Add yourself a Create event, a Begin Step event, and a Begin Step Event.
+Now since we're on a roll, why don't you make an input manager object. I'm gonna call mine `obj_input_manager`, but you might have a better or funnier name or whatever. Add yourself a Create event, a Begin Step event, and a Step Event.
 
 Straight away you're going to want to put [`input_tick()`](Functions-(System)#input_tick) into your Begin Step event.
 This function handles all things Input behind the scenes, it is important to have [`input_tick()`](Functions-(System)#input_tick) once (and only once) each step of your game. A good way to do this is by making `obj_input_manager` [persistent](https://manual.yoyogames.com/#t=The_Asset_Editors%2FObjects.htm), and placing one instance in your first room.
