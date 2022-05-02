@@ -48,7 +48,7 @@ Here's a Step event for you to put in a character object or whatever!
 if (input_check("left"))  x -= 4;
 if (input_check("right")) x += 4;
 
-//If the player pressed the "Shoot" button, shoot a bullet
+//If the player pressed the "Shoot" button, fire a bullet
 if (input_check_pressed("shoot")) show_debug_message("bang");
 ```
 
