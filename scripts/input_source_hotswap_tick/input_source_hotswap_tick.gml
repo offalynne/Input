@@ -1,18 +1,40 @@
-/// @param playerIndex
+/// @param [playerIndex=0]
+/// @param [setAutoProfile=true]
 
-function input_source_hotswap_tick(_player_index)
+function input_source_hotswap_tick(_player_index = 0, _auto_profile = true)
 {
     with(global.__input_players[_player_index])
     {
-        //TODO - Prevent hotswapping when the player is set to ghost or mixed sources
+        if (__source_equal_to(INPUT_GHOST))
+        {
+            __input_trace("Warning! Cannot hotswap player ", _player_index, " as this player's source is set to \"ghost\"");
+            return false;
+        }
+        
+        if (__source_equal_to(INPUT_ALL_GAMEPADS))
+        {
+            __input_trace("Warning! Cannot hotswap player ", _player_index, " as this player's source is set to \"mixed\"");
+            return false;
+        }
         
         if ((__last_input_time < 0) || (current_time - __last_input_time > INPUT_HOTSWAP_DELAY))
         {
-            var _new_device = __input_hotswap_tick_input(_player_index);
-            if (_new_device.source != INPUT_SOURCE.NONE)
+            var _new_source = __input_hotswap_tick_input(_player_index);
+            if (_new_source != INPUT_NONE)
             {
+                if (_auto_profile)
+                {
+                    switch(_new_source.__source)
+                    {
+                        case INPUT_SOURCE.KEYBOARD: __set_profile_name(INPUT_AUTO_PROFILE_FOR_KEYBOARD); break;
+                        case INPUT_SOURCE.MOUSE:    __set_profile_name(INPUT_AUTO_PROFILE_FOR_MOUSE   ); break;
+                        case INPUT_SOURCE.GAMEPAD:  __set_profile_name(INPUT_AUTO_PROFILE_FOR_GAMEPAD ); break;
+                    }
+                }
+                
                 __sources_clear();
-                __source_add(_new_device.source, _new_device.gamepad);
+                __source_add(_new_source);
+                
                 return true;
             }
         }
@@ -107,7 +129,7 @@ function __input_hotswap_tick_input(_player_index)
     }
     
     if (global.__input_any_keyboard_binding_defined
-    &&  input_source_is_available(INPUT_SOURCE.KEYBOARD)
+    &&  input_source_is_available(INPUT_KEYBOARD)
     &&  keyboard_check(vk_anykey)
     &&  !__input_key_is_ignored(__input_keyboard_key())) //Ensure that this key isn't one we're trying to ignore
     {
@@ -116,7 +138,7 @@ function __input_hotswap_tick_input(_player_index)
     }
     
     if (global.__input_any_mouse_binding_defined
-    &&  input_source_is_available(INPUT_SOURCE.MOUSE)
+    &&  input_source_is_available(INPUT_MOUSE)
     && ((INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && global.__input_mouse_moved) || input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
     {
         if (__INPUT_DEBUG) __input_trace("Hotswapping player ", _player_index, " to mouse");

@@ -1,7 +1,7 @@
 /// @param profileName
 /// @param [playerIndex=0]
 
-function input_player_set_profile(_profile_name, _player_index = 0)
+function input_profile_set(_profile_name, _player_index = 0)
 {
 	__input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX

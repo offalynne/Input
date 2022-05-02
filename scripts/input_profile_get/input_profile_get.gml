@@ -1,6 +1,6 @@
 /// @param [playerIndex=0]
 
-function input_player_get_profile(_player_index = 0)
+function input_profile_get(_player_index = 0)
 {
 	__input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX

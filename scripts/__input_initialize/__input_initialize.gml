@@ -6,7 +6,7 @@ function __input_initialize()
     
     global.__input_time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
     {
-        __input_tick();
+        input_tick();
     }, -1);
     
     time_source_start(global.__input_time_source);
@@ -89,11 +89,6 @@ function __input_initialize()
     global.__input_combo_verb_dict  = {};
     global.__input_combo_verb_array = [];
     
-    global.__input_auto_profile_keyboard = undefined;
-    global.__input_auto_profile_mouse    = undefined;
-    global.__input_auto_profile_gamepad  = undefined;
-    global.__input_auto_profile_mixed    = undefined;
-    
     //Struct to store all the keyboard keys we want to ignore
     global.__input_ignore_key_dict = {};
     
@@ -116,17 +111,22 @@ function __input_initialize()
         gamepads: array_create(gamepad_get_device_count(), INPUT_STATUS.DISCONNECTED),
     }
     
+    //The default player. This player struct holds default binding data
+    global.__input_default_player = new __input_class_player();
+    
     //Array of players. Each player is a struct (instanceof __input_class_player) that contains lotsa juicy information
     global.__input_players = array_create(INPUT_MAX_PLAYERS, undefined);
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
     {
-        global.__input_players[@ _p] = new __input_class_player();
+        with(new __input_class_player())
+        {
+            global.__input_players[@ _p] = self;
+            __index = _p;
+        }
+        
         ++_p;
     }
-    
-    //The default player. This player struct holds default binding data
-    global.__input_default_player = new __input_class_player();
     
     //The last player (struct) that was rebinding a key. Used for input_rebind_undo()
     global.__input_rebind_last_player = undefined;

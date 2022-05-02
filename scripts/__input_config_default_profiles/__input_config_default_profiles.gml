@@ -12,8 +12,6 @@ INPUT_DEFAULT_PROFILES = {
         special: input_binding_key(vk_shift),
     },
     
-    mouse: {},
-    
     gamepad: {
         up:    [input_binding_gamepad_axis(gp_axislv, true),  input_binding_gamepad_button(gp_padu)],
         down:  [input_binding_gamepad_axis(gp_axislv, false), input_binding_gamepad_button(gp_padd)],

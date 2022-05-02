@@ -6,7 +6,7 @@
     "path": "folders/Input/Profiles.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_profile_remove",
+  "name": "input_profile_destroy",
   "tags": [],
   "resourceType": "GMScript",
 }

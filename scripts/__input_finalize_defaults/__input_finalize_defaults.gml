@@ -41,6 +41,9 @@ function __input_finalize_defaults()
             {
                 array_push(global.__input_basic_verb_array, _verb_name);
                 global.__input_basic_verb_dict[$ _verb_name] = true;
+                
+                array_push(global.__input_all_verb_array, _verb_name);
+                global.__input_all_verb_dict[$ _verb_name] = true;
             }
             
             var _verb_data = _profile_struct[$ _verb_name];
@@ -66,6 +69,25 @@ function __input_finalize_defaults()
                 {
                     __input_error("Binding for profile \"", _profile_name, "\", verb \"", _verb_name, "\", alternate ", _a, " is not a binding\nPlease use one of the input_binding_*() functions to create bindings");
                 }
+                else
+                {
+                    switch(_binding.__get_source())
+                    {
+                        case INPUT_SOURCE.KEYBOARD:
+                            global.__input_any_keyboard_binding_defined = true;
+                            if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED) global.__input_any_mouse_binding_defined = true;
+                        break;
+                        
+                        case INPUT_SOURCE.MOUSE:
+                            global.__input_any_mouse_binding_defined = true;
+                            if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED) global.__input_any_keyboard_binding_defined = true;
+                        break;
+                        
+                        case INPUT_SOURCE.GAMEPAD:
+                            global.__input_any_gamepad_binding_defined = true;
+                        break;
+                    }
+                }
                 
                 global.__input_default_player.__binding_set(_profile_name, _verb_name, _a, _binding);
                 
@@ -77,6 +99,11 @@ function __input_finalize_defaults()
         
         ++_f;
     }
+    
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_KEYBOARD)) __input_trace("Warning! Default profile for keyboard \"", INPUT_AUTO_PROFILE_FOR_KEYBOARD, "\" has not been defined");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MOUSE   )) __input_trace("Warning! Default profile for mouse \"",    INPUT_AUTO_PROFILE_FOR_MOUSE,    "\" has not been defined");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_GAMEPAD )) __input_trace("Warning! Default profile for gamepad \"",  INPUT_AUTO_PROFILE_FOR_GAMEPAD,  "\" has not been defined");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MIXED   )) __input_trace("Warning! Default profile for mixed \"",    INPUT_AUTO_PROFILE_FOR_MIXED,    "\" has not been defined");
     
     //Fix any missing verb definitions for default profiles
     var _f = 0;

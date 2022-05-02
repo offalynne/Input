@@ -1,5 +1,6 @@
 function __input_player_tick_sources()
 {
+    if (__profile_name == undefined) return;
     var _current_profile_dict = __profiles_dict[$ __profile_name];
     
     var _v = 0;
@@ -38,8 +39,8 @@ function __input_player_tick_sources()
         repeat(array_length(__source_array))
         {
             var _source_struct  = __source_array[_s];
-            var _source_type    = _source_struct.source;
-            var _source_gamepad = _source_struct.gamepad;
+            var _source_type    = _source_struct.__source;
+            var _source_gamepad = _source_struct.__gamepad;
             
             if ((_source_type == INPUT_SOURCE.NONE) || (_source_type == INPUT_SOURCE.GHOST))
             {

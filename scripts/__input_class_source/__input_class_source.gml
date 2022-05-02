@@ -8,7 +8,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
     
     switch(__source)
     {
-        case INPUT_SOURCE.NONE:         __name = "No source";                   break;
+        case INPUT_SOURCE.NONE:         __name = "no source";                   break;
         case INPUT_SOURCE.GHOST:        __name = "ghost";                       break;
         case INPUT_SOURCE.KEYBOARD:     __name = "keyboard";                    break;
         case INPUT_SOURCE.MOUSE:        __name = "mouse";                       break;
@@ -47,11 +47,51 @@ function __input_class_source(_source, _gamepad = undefined) constructor
         }
     }
     
-    static __collides_with = function(_source, _gamepad)
+    static __equal_to = function(_other_source)
     {
-        if ((_source.__source == INPUT_SOURCE.NONE) || (_source.__source == INPUT_SOURCE.GHOST)) return false;
+        switch(_other_source.__source)
+        {
+            case INPUT_SOURCE.NONE:
+                return (__source == INPUT_SOURCE.NONE);
+            break;
+            
+            case INPUT_SOURCE.GHOST:
+                return (__source == INPUT_SOURCE.GHOST);
+            break;
+            
+            case INPUT_SOURCE.KEYBOARD:
+                if (__source == INPUT_SOURCE.KEYBOARD) return true;
+                if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED && (__source == INPUT_SOURCE.MOUSE)) return true;
+                return false;
+            break;
+            
+            case INPUT_SOURCE.MOUSE:
+                if (__source == INPUT_SOURCE.MOUSE) return true;
+                if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED && (__source == INPUT_SOURCE.KEYBOARD)) return true;
+                return false;
+            break;
+            
+            case INPUT_SOURCE.GAMEPAD:
+                if (__source == INPUT_SOURCE.ALL_GAMEPADS) return true;
+                if ((__source == INPUT_SOURCE.GAMEPAD) && (__gamepad != undefined) && (__gamepad == _other_source.__gamepad)) return true;
+                return false;
+            break;
+            
+            case INPUT_SOURCE.ALL_GAMEPADS:
+                if (__source == INPUT_SOURCE.ALL_GAMEPADS) return true;
+                if ((__source == INPUT_SOURCE.GAMEPAD) && (__gamepad != undefined)) return true;
+                return false;
+            break;
+        }
         
-        switch(_source.__source)
+        return false;
+    }
+    
+    static __collides_with = function(_other_source)
+    {
+        if ((_other_source.__source == INPUT_SOURCE.NONE) || (_other_source.__source == INPUT_SOURCE.GHOST)) return false;
+        
+        switch(_other_source.__source)
         {
             case INPUT_SOURCE.NONE:
             case INPUT_SOURCE.GHOST:
@@ -72,7 +112,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
             
             case INPUT_SOURCE.GAMEPAD:
                 if (__source == INPUT_SOURCE.ALL_GAMEPADS) return true;
-                if ((__source == INPUT_SOURCE.GAMEPAD) && (__gamepad != undefined) && (__gamepad == _source.__gamepad)) return true;
+                if ((__source == INPUT_SOURCE.GAMEPAD) && (__gamepad != undefined) && (__gamepad == _other_source.__gamepad)) return true;
                 return false;
             break;
             
@@ -84,6 +124,11 @@ function __input_class_source(_source, _gamepad = undefined) constructor
         }
         
         return false;
+    }
+    
+    static toString = function()
+    {
+        return __name;
     }
 }
     

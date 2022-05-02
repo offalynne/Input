@@ -37,7 +37,7 @@ function __input_class_verb() constructor
     long_held_time    = -1;
     long_release_time = -1;
     
-    static clear = function()
+    static __clear = function()
     {
         previous_value = value;
         value = 0.0;

@@ -2,7 +2,7 @@
 
 function input_source_detect(_source)
 {
-    switch(_source.source)
+    switch(_source.__source)
     {
         case INPUT_SOURCE.NONE:
         case INPUT_SOURCE.GHOST:

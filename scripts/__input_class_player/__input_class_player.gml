@@ -1,5 +1,7 @@
 function __input_class_player() constructor
 {
+    __index = undefined;
+    
     __source_array     = [];
     __verb_state_dict  = {};
     __chord_state_dict = {};
@@ -19,6 +21,20 @@ function __input_class_player() constructor
     
     
     #region Profiles
+    
+    static __set_profile_name = function(_profile_name)
+    {
+        if (_profile_name == undefined)
+        {
+            __input_trace("Failed to set profile for player ", __index, " (was ", _profile_name, ")");
+            return;
+        }
+        
+        __INPUT_VERIFY_PROFILE_NAME
+        
+        if (__profile_name != _profile_name) __input_trace("Setting player ", __index, " profile to \"", _profile_name, "\"");
+        __profile_name = _profile_name;
+    }
     
     /// @param [profileName=undefined]
     static __get_profile_name = function(_profile_name = undefined)
@@ -51,10 +67,10 @@ function __input_class_player() constructor
                     return undefined;
                 break;
                 
-                case INPUT_SOURCE.KEYBOARD:     return global.__input_auto_profile_keyboard; break;
-                case INPUT_SOURCE.MOUSE:        return global.__input_auto_profile_mouse;    break;
-                case INPUT_SOURCE.GAMEPAD:      return global.__input_auto_profile_gamepad;  break;
-                case INPUT_SOURCE.ALL_GAMEPADS: return global.__input_auto_profile_mixed;    break;
+                case INPUT_SOURCE.KEYBOARD:     return INPUT_AUTO_PROFILE_FOR_KEYBOARD; break;
+                case INPUT_SOURCE.MOUSE:        return INPUT_AUTO_PROFILE_FOR_MOUSE;    break;
+                case INPUT_SOURCE.GAMEPAD:      return INPUT_AUTO_PROFILE_FOR_GAMEPAD;  break;
+                case INPUT_SOURCE.ALL_GAMEPADS: return INPUT_AUTO_PROFILE_FOR_MIXED;    break;
                 
                 default:
                     __input_error("Invalid source (", __source_array[0].source, ")");
@@ -68,12 +84,12 @@ function __input_class_player() constructor
             if ((__source_array[0].source == INPUT_SOURCE.KEYBOARD) && (__source_array[1].source == INPUT_SOURCE.MOUSE)
             ||  (__source_array[1].source == INPUT_SOURCE.KEYBOARD) && (__source_array[0].source == INPUT_SOURCE.MOUSE))
             {
-                if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED) return global.__input_auto_profile_keyboard;
+                if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED) return INPUT_AUTO_PROFILE_FOR_KEYBOARD;
             }
         }
         
         //If we have any more sources than that then return the "mixed" automatic profile
-        return global.__input_auto_profile_mixed;
+        return INPUT_AUTO_PROFILE_FOR_MIXED;
     }
     
     /// @param profileName
@@ -114,13 +130,26 @@ function __input_class_player() constructor
     /// @param source
     static __source_add = function(_source)
     {
-        if (__source_using(_source)) return;
+        if (__source_collides_with(_source)) return;
         array_push(__source_array, _source);
         __last_input_time = current_time;
     }
     
     /// @param source
-    static __source_using = function(_source)
+    static __source_equal_to = function(_source)
+    {
+        var _i = 0;
+        repeat(array_length(__source_array))
+        {
+            if (__source_array[_i].__equal_to(_source)) return true;
+            ++_i;
+        }
+        
+        return false;
+    }
+    
+    /// @param source
+    static __source_collides_with = function(_source)
     {
         var _i = 0;
         repeat(array_length(__source_array))
@@ -194,7 +223,7 @@ function __input_class_player() constructor
     static __binding_reset = function(_profile_name, _verb, _alternate)
     {
         //Grab the equivalent binding from the default player
-        var _binding = global.__input_default_player.__profiles_dict[$ _profile_name][$ _verb][@ _alternate];
+        var _binding = global.__input_default_player.__profiles_dict[$ _profile_name][$ _verb][_alternate];
         
         //If the binding is a struct then duplicate so we don't get nasty
         if (is_struct(_binding)) _binding.__duplicate();
@@ -408,7 +437,7 @@ function __input_class_player() constructor
         var _v = 0;
         repeat(array_length(global.__input_all_verb_array))
         {
-            with(__verb_state_dict[$ global.__input_all_verb_array[_v]]) clear();
+            __verb_state_dict[$ global.__input_all_verb_array[_v]].__clear();
             ++_v;
         }
         
@@ -425,11 +454,11 @@ function __input_class_player() constructor
         //We directly access verb values to detect state here
         tick_combo_verbs();
         
-        with(cursor)
-        {
-            tick(other.rebind_state);
-            limit();
-        }
+        //with(cursor)
+        //{
+        //    tick(other.rebind_state);
+        //    limit();
+        //}
     }
     
     static tick_basic_verbs = function()
