@@ -45,7 +45,7 @@ Here's a Step event for you to put in a character object or whatever!
 
  ```
 //Move the player if the Left or Right verb is activated
-if (input_check("left")) x -= 4;
+if (input_check("left"))  x -= 4;
 if (input_check("right")) x += 4;
 
 //If the player pressed the "Shoot" button, shoot a bullet
