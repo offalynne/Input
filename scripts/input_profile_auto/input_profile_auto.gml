@@ -5,6 +5,5 @@ function input_profile_auto(_player_index = 0)
 	__input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX
     
-    var _profile_name = global.__input_players[_player_index].__get_automatic_profile_name();
-    if (_profile_name != undefined) global.__input_players[_player_index].__profile_name = _profile_name;
+    return global.__input_players[_player_index].__profile_set_auto();
 }

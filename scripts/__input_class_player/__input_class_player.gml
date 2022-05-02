@@ -22,7 +22,39 @@ function __input_class_player() constructor
     
     #region Profiles
     
-    static __set_profile_name = function(_profile_name)
+    static __profile_create = function(_profile_name)
+    {
+        if (variable_struct_exists(__profiles_dict, _profile_name)) __input_error("Profile \"", _profile_name, "\" already exists");
+        
+        __input_trace("Profile \"", _profile_name, "\" created for player ", __index);
+        __profiles_dict[$ _profile_name] = {};
+    }
+    
+    static __profile_destroy = function(_profile_name)
+    {
+        if (variable_struct_exists(global.__input_default_profile_dict, _profile_name))
+        {
+            __input_error("Cannot remove profile \"", _profile_name, "\" as it is a default profile");
+        }
+        
+        __input_trace("Profile \"", _profile_name, "\" destroyed for player ", __index);
+        
+        if (__profile_name == _profile_name) __profile_name = undefined;
+        variable_struct_remove(__profiles_dict, _profile_name);
+        if (__profile_name == undefined) __profile_set(__profile_get_auto());
+    }
+    
+    static __profile_exists = function(_profile_name)
+    {
+        return variable_struct_exists(__profiles_dict, _profile_name);
+    }
+    
+    static __profile_get_array = function()
+    {
+        return variable_struct_get_names(__profiles_dict);
+    }
+    
+    static __profile_set = function(_profile_name)
     {
         if (_profile_name == undefined)
         {
@@ -37,20 +69,14 @@ function __input_class_player() constructor
     }
     
     /// @param [profileName=undefined]
-    static __get_profile_name = function(_profile_name = undefined)
+    static __profile_get = function(_profile_name = undefined)
     {
         if (_profile_name == undefined) return __profile_name;
         __INPUT_VERIFY_PROFILE_NAME
         return _profile_name;
     }
     
-    /// @param [profileName=undefined]
-    static __get_profile_struct = function(_profile_name = undefined)
-    {
-        return __profiles_dict[$ __get_profile_name(_profile_name)];
-    }
-    
-    static __get_automatic_profile_name = function()
+    static __profile_get_auto = function()
     {
         var _count = array_length(__source_array);
         
@@ -92,8 +118,14 @@ function __input_class_player() constructor
         return INPUT_AUTO_PROFILE_FOR_MIXED;
     }
     
+    static __profile_set_auto = function()
+    {
+        var _profile_name = __profile_get_auto();
+        if (_profile_name != undefined) __profile_set();
+    }
+    
     /// @param profileName
-    static __ensure_profile = function(_profile_name)
+    static __profile_ensure = function(_profile_name)
     {
         if (_profile_name == "")
         {
@@ -197,7 +229,7 @@ function __input_class_player() constructor
     /// @param alternate
     static __binding_get = function(_profile_name, _verb, _alternate)
     {
-        return __get_profile_struct(_profile_name)[$ _verb][_alternate];
+        return __profiles_dict[$ __profile_get(_profile_name)][$ _verb][_alternate];
     }
     
     /// @param profileName
@@ -206,7 +238,7 @@ function __input_class_player() constructor
     /// @param bindingStruct
     static __binding_set = function(_profile_name, _verb, _alternate, _binding_struct)
     {
-        __get_profile_struct(_profile_name)[$ _verb][@ _alternate] = _binding_struct;
+        __profiles_dict[$ __profile_get(_profile_name)][$ _verb][@ _alternate] = _binding_struct;
     }
     
     /// @param profileName
@@ -214,7 +246,7 @@ function __input_class_player() constructor
     /// @param alternate
     static __binding_remove = function(_profile_name, _verb, _alternate)
     {
-        __get_profile_struct(_profile_name)[$ _verb][@ _alternate] = __INPUT_BINDING_NULL;
+        __profiles_dict[$ __profile_get(_profile_name)][$ _verb][@ _alternate] = __INPUT_BINDING_NULL;
     }
     
     /// @param profileName
@@ -229,7 +261,7 @@ function __input_class_player() constructor
         if (is_struct(_binding)) _binding.__duplicate();
         
         //And set the value!
-        __get_profile_struct(_profile_name)[$ _verb][@ _alternate] = _binding;
+        __profiles_dict[$ __profile_get(_profile_name)][$ _verb][@ _alternate] = _binding;
     }
     
     #endregion
@@ -372,7 +404,7 @@ function __input_class_player() constructor
         {
             var _source_struct = __source_array[_s];
             
-            var _profile_verb_struct = __get_profile_struct(_profile_name);
+            var _profile_verb_struct = __profiles_dict[$ __profile_get(_profile_name)];
             if (is_struct(_profile_verb_struct))
             {
                 var _gamepad_mapping_array = input_gamepad_get_map(gamepad);

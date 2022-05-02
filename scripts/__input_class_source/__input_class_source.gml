@@ -126,6 +126,11 @@ function __input_class_source(_source, _gamepad = undefined) constructor
         return false;
     }
     
+    static __any_input = function()
+    {
+        return __input_source_any_input(__source, __gamepad);
+    }
+    
     static toString = function()
     {
         return __name;

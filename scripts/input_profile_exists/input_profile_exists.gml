@@ -3,5 +3,8 @@
 
 function input_profile_exists(_profile_name, _player_index = 0)
 {
-    return variable_struct_exists(global.__input_profile_dict, _profile_name);
+	__input_initialize();
+    __INPUT_VERIFY_PLAYER_INDEX
+    
+    return global.__input_players[_player_index].__profile_exists(_profile_name);
 }

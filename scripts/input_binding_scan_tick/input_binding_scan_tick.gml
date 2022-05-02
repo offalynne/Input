@@ -1,6 +1,8 @@
 /// @param source
 /// @param [playerIndex]
 
+
+
 enum INPUT_BINDING_SCAN_EVENT
 {
     SUCCESS_THIS_FRAME          = -1,  //input_binding_scan_tick() has been called twice this frame for this player, and the first execution succeeded
@@ -13,6 +15,8 @@ enum INPUT_BINDING_SCAN_EVENT
     SCAN_TIMEOUT                = -20, //Scanning for a binding timed out - either the player didn't enter a new binding or a stuck key prevented the system from working
     LOST_FOCUS                  = -21, //The game lost focus
 }
+
+
 
 function input_binding_scan_tick(_source, _player_index = 0)
 {
@@ -40,11 +44,11 @@ function input_binding_scan_tick(_source, _player_index = 0)
             rebind_target_source = _source;
             rebind_start_time    = current_time;
             
-            __input_trace("Binding scan started for player ", _player_index, " (target source=", rebind_target_source.__name, ", gamepad=", gamepad, ")");
+            __input_trace("Binding scan started for player ", _player_index, " (target source=", rebind_target_source, ", gamepad=", gamepad, ")");
             
             if (source != rebind_target_source)
             {
-                __input_trace("Warning! Player not using target source \"", rebind_target_source.__name, "\", force-setting their source");
+                __input_trace("Warning! Player not using target source \"", rebind_target_source, "\", force-setting their source");
                 input_player_source_set(rebind_target_source, _player_index);
             }
         }

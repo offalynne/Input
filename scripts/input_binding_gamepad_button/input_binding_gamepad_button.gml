@@ -28,5 +28,5 @@ function input_binding_gamepad_button(_button)
         }
     }
     
-    return (new __input_class_binding()).__set_gamepad_button(_button, false);
+    return (new __input_class_binding()).__set_gamepad_button(_button);
 }

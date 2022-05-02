@@ -1,5 +1,5 @@
 /// @param binding
-/// @param [playerIndex]
+/// @param [playerIndex=0]
 /// @param [profileName]
 
 function input_binding_get_collisions(_src_binding, _player_index = 0, _profile_name = undefined)
@@ -19,7 +19,7 @@ function input_binding_get_collisions(_src_binding, _player_index = 0, _profile_
     with(global.__input_players[_player_index])
     {
         //Get the profile for this particular binding
-        _profile_name = __get_profile_struct(_profile_name);
+        _profile_name = __profile_get(_profile_name);
         
         //Iterate over every verb
         var _v = 0;

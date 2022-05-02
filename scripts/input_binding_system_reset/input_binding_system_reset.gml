@@ -25,7 +25,7 @@ function input_binding_system_reset(_player_index = all, _reset_thresholds = tru
         repeat(array_length(global.__input_profile_array))
         {
             var _profile_name = global.__input_profile_array[_f];
-            __ensure_profile(_profile_name);
+            __profile_ensure(_profile_name);
             
             var _v = 0;
             repeat(array_length(global.__input_basic_verb_array))

@@ -29,7 +29,7 @@ function __input_finalize_defaults()
         //Copy the default profile reference across to the volatile dictionary
         global.__input_profile_dict[$ _profile_name] = _profile_struct;
         
-        global.__input_default_player.__ensure_profile(_profile_name);
+        global.__input_default_player.__profile_ensure(_profile_name);
         
         var _profile_verb_names = variable_struct_get_names(_profile_struct);
         var _v = 0;
