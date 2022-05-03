@@ -8,10 +8,10 @@ function __input_class_player() constructor
     __combo_state_dict = {};
     __last_input_time  = -infinity;
     
-    rebind_state         = 0;
-    rebind_gamepad       = undefined;
-    rebind_target_source = undefined;
-    rebind_this_frame    = false;
+    __rebind_state      = 0;
+    __rebind_error      = undefined;
+    __rebind_start_time = current_time;
+    __rebind_this_frame = false;
     
     //This struct is the one that gets serialized/deserialized
     __profiles_dict = { axis_thresholds : {} };
@@ -148,6 +148,8 @@ function __input_class_player() constructor
     
     static __sources_clear = function()
     {
+        if ((__rebind_state > 0) && (array_length(__source_array) > 0)) __rebind_error = INPUT_BINDING_SCAN_EVENT.SOURCE_CHANGED;
+        
         array_resize(__source_array, 0);
         __last_input_time = current_time;
     }
@@ -162,6 +164,9 @@ function __input_class_player() constructor
     static __source_add = function(_source)
     {
         if (__source_collides_with(_source)) return;
+        
+        if (__rebind_state > 0) __rebind_error = INPUT_BINDING_SCAN_EVENT.SOURCE_CHANGED;
+        
         array_push(__source_array, _source);
         __last_input_time = current_time;
     }
@@ -215,6 +220,18 @@ function __input_class_player() constructor
         }
         
         return undefined;
+    }
+    
+    static __sources_any_input = function()
+    {
+        var _i = 0;
+        repeat(array_length(__source_array))
+        {
+            if (__source_array[_i].__any_input()) return true;
+            ++_i;
+        }
+        
+        return false;
     }
     
     #endregion
@@ -456,13 +473,13 @@ function __input_class_player() constructor
     
     static tick = function()
     {
-        if (!rebind_this_frame)
+        if (!__rebind_this_frame)
         {
-            if (rebind_state > 0) __input_trace("Binding scan failed: input_binding_scan_tick() not called last frame");
-            rebind_state = 0;
+            if (__rebind_state > 0) __input_trace("Binding scan failed: input_binding_scan_tick() not called last frame");
+            __rebind_state = 0;
         }
         
-        rebind_this_frame = false;
+        __rebind_this_frame = false;
         
         //Clear the momentary state for all verbs
         var _v = 0;

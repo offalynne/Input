@@ -64,7 +64,7 @@ function __input_class_binding() constructor
         type  = __INPUT_BINDING_KEY;
         value = _key;
         
-        set_label();
+        __set_label();
         
         return self;
     }
@@ -75,7 +75,7 @@ function __input_class_binding() constructor
         value         = _axis;
         axis_negative = _negative;
         
-        set_label();
+        __set_label();
         
         return self;
     }
@@ -85,7 +85,7 @@ function __input_class_binding() constructor
         type   = __INPUT_BINDING_GAMEPAD_BUTTON;
         value  = _button;
         
-        set_label();
+        __set_label();
         
         return self;
     }
@@ -95,7 +95,7 @@ function __input_class_binding() constructor
         type  = __INPUT_BINDING_MOUSE_BUTTON;
         value = _button;
         
-        set_label();
+        __set_label();
         
         return self;
     }
@@ -104,7 +104,7 @@ function __input_class_binding() constructor
     {
         type = __INPUT_BINDING_MOUSE_WHEEL_DOWN;
         
-        set_label();
+        __set_label();
         
         return self;
     }
@@ -113,12 +113,12 @@ function __input_class_binding() constructor
     {
         type = __INPUT_BINDING_MOUSE_WHEEL_UP;
         
-        set_label();
+        __set_label();
         
         return self;
     }
     
-    static set_label = function(_label)
+    static __set_label = function(_label)
     {
         if (_label == undefined)
         {

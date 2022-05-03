@@ -120,9 +120,6 @@ function __input_initialize()
         ++_p;
     }
     
-    //The last player (struct) that was rebinding a key. Used for input_rebind_undo()
-    global.__input_rebind_last_player = undefined;
-    
     //Array of currently connected gamepads. If an element is <undefined> then the gamepad is disconnected
     //Each gamepad in this array is an instance of __input_class_gamepad
     //Gamepad structs contain remapping information and current button state
