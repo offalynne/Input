@@ -7,7 +7,6 @@ function __input_class_player() constructor
     __chord_state_dict = {};
     __combo_state_dict = {};
     __last_input_time  = -infinity;
-    cursor             = new __input_class_cursor();
     
     rebind_state         = 0;
     rebind_gamepad       = undefined;
@@ -485,12 +484,6 @@ function __input_class_player() constructor
         //Update our combos
         //We directly access verb values to detect state here
         tick_combo_verbs();
-        
-        //with(cursor)
-        //{
-        //    tick(other.rebind_state);
-        //    limit();
-        //}
     }
     
     static tick_basic_verbs = function()

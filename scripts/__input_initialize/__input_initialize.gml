@@ -50,14 +50,6 @@ function __input_initialize()
     global.__input_pointer_pressed_index = undefined;
     global.__input_pointer_durations     = array_create(INPUT_MAX_TOUCHPOINTS, 0);
     
-    //Cursor tracking variables. This is Input's abstraction layer for the mouse, allowing mouse-like functionality cross-platform
-    global.__input_cursor_verb_u      = undefined;
-    global.__input_cursor_verb_d      = undefined;
-    global.__input_cursor_verb_l      = undefined;
-    global.__input_cursor_verb_r      = undefined;
-    global.__input_cursor_speed       = 0;
-    global.__input_cursor_using_mouse = true;
-    
     //Whether these particular input sources are valid
     //This is determined by what default keybindings are set up
     global.__input_any_keyboard_binding_defined = false;
