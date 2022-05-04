@@ -98,6 +98,7 @@
 
 enum INPUT_BEHAVIOUR
 {
+    INACTIVE,
     STANDARD,
     GHOST,
     MULTI,

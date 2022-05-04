@@ -5,15 +5,22 @@ function input_source_hotswap_tick(_player_index = 0, _auto_profile = true)
 {
     with(global.__input_players[_player_index])
     {
-        if (__source_behaviour == INPUT_BEHAVIOUR.GHOST)
+        switch(__behaviour)
         {
-            __input_trace("Warning! Cannot hotswap player ", _player_index, " as this player's behaviour is set to \"ghost\"");
+            case INPUT_BEHAVIOUR.INACTIVE:
+                __input_trace("Warning! Cannot hotswap player ", _player_index, " as this player's behaviour is set to INPUT_BEHAVIOUR.INACTIVE");
+                return false;
+            break;
+        
+        if (__behaviour == INPUT_BEHAVIOUR.GHOST)
+        {
+            __input_trace("Warning! Cannot hotswap player ", _player_index, " as this player's behaviour is set to INPUT_BEHAVIOUR.GHOST");
             return false;
         }
         
-        if (__source_behaviour == INPUT_BEHAVIOUR.MULTI)
+        if (__behaviour == INPUT_BEHAVIOUR.MULTI)
         {
-            __input_trace("Warning! Cannot hotswap player ", _player_index, " as this player's behaviour is set to \"multi\"");
+            __input_trace("Warning! Cannot hotswap player ", _player_index, " as this player's behaviour is set to INPUT_BEHAVIOUR.MULTI");
             return false;
         }
         
