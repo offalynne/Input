@@ -61,7 +61,10 @@ function __input_class_player() constructor
             return;
         }
         
-        __INPUT_VERIFY_PROFILE_NAME
+        if (!variable_struct_exists(__profiles_dict, _profile_name))
+        {
+            __input_error("Profile \"", _profile_name, "\" doesn't exist");
+        }
         
         if (__profile_name != _profile_name) __input_trace("Setting player ", __index, " profile to \"", _profile_name, "\"");
         __profile_name = _profile_name;
@@ -71,7 +74,12 @@ function __input_class_player() constructor
     static __profile_get = function(_profile_name = undefined)
     {
         if (_profile_name == undefined) return __profile_name;
-        __INPUT_VERIFY_PROFILE_NAME
+        
+        if (!variable_struct_exists(__profiles_dict, _profile_name))
+        {
+            __input_error("Profile \"", _profile_name, "\" doesn't exist");
+        }
+        
         return _profile_name;
     }
     
