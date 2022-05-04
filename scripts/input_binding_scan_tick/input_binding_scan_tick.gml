@@ -7,11 +7,12 @@ enum INPUT_BINDING_SCAN_EVENT
 {
     SUCCESS_THIS_FRAME          = -1,  //input_binding_scan_tick() has been called twice this frame for this player, and the first execution succeeded
     ERROR_THIS_FRAME            = -2,  //input_binding_scan_tick() has been called twice this frame for this player, and the first execution failed due to an error
-    SOURCE_INVALID              = -10, //Player source is not rebindable (is INPUT_SOURCE.NONE or INPUT_SOURCE.GHOST)
+    SOURCE_INVALID              = -10, //Player source is not rebindable
     SOURCE_CHANGED              = -11, //Player source changed
     //GAMEPAD_CHANGED             = -12, //Gamepad index changed - No longer used 2022-05-03
     //GAMEPAD_INVALID             = -13, //Player gamepad is invalid - No longer used 2022-05-03
     //BINDING_DOESNT_MATCH_SOURCE = -14, //The new binding doesn't match the source that was targetted for rebinding - No longer used 2022-05-03
+    BEHAVIOUR_INVALID           = -15, //Player behaviour is not compatible with binding checks (i.e. is .GHOST)
     SCAN_TIMEOUT                = -20, //Scanning for a binding timed out - either the player didn't enter a new binding or a stuck key prevented the system from working
     LOST_FOCUS                  = -21, //The game lost focus
 }
@@ -79,18 +80,11 @@ function input_binding_scan_tick(_source_filter = undefined, _player_index = 0)
                 return INPUT_BINDING_SCAN_EVENT.SOURCE_INVALID;
             }
             
-            if (__rebind_source == INPUT_NONE)
+            if (__source_behaviour == INPUT_BEHAVIOUR.GHOST)
             {
-                __input_trace("Binding scan failed: Source for player ", _player_index, " is INPUT_NONE");
+                __input_trace("Binding scan failed: Behaviour for player ", _player_index, " is INPUT_BEHAVIOUR.GHOST");
                 __rebind_state = -1;
-                return INPUT_BINDING_SCAN_EVENT.SOURCE_INVALID;
-            }
-            
-            if (__rebind_source == INPUT_GHOST)
-            {
-                __input_trace("Binding scan failed: Source for player ", _player_index, " is INPUT_GHOST");
-                __rebind_state = -1;
-                return INPUT_BINDING_SCAN_EVENT.SOURCE_INVALID;
+                return INPUT_BINDING_SCAN_EVENT.BEHAVIOUR_INVALID;
             }
             
             if (current_time - __rebind_start_time > INPUT_BINDING_SCAN_TIMEOUT)

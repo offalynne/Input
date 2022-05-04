@@ -2,6 +2,7 @@ function __input_class_player() constructor
 {
     __index = undefined;
     
+    __source_behaviour = INPUT_BEHAVIOUR.STANDARD;
     __source_array     = [];
     __verb_state_dict  = {};
     __chord_state_dict = {};
@@ -95,11 +96,6 @@ function __input_class_player() constructor
         {
             switch(__source_array[0].source)
             {
-                case INPUT_SOURCE.NONE:
-                case INPUT_SOURCE.GHOST:
-                    return undefined;
-                break;
-                
                 case INPUT_SOURCE.KEYBOARD:     return INPUT_AUTO_PROFILE_FOR_KEYBOARD; break;
                 case INPUT_SOURCE.MOUSE:        return INPUT_AUTO_PROFILE_FOR_MOUSE;    break;
                 case INPUT_SOURCE.GAMEPAD:      return INPUT_AUTO_PROFILE_FOR_GAMEPAD;  break;
@@ -171,7 +167,7 @@ function __input_class_player() constructor
     /// @param source
     static __source_add = function(_source)
     {
-        if (__source_collides_with(_source)) return;
+        if (__source_contains(_source)) return;
         
         if (__rebind_state > 0) __rebind_error = INPUT_BINDING_SCAN_EVENT.SOURCE_CHANGED;
         
@@ -180,25 +176,29 @@ function __input_class_player() constructor
     }
     
     /// @param source
-    static __source_equal_to = function(_source)
+    static __source_remove = function(_source)
+    {
+        var _i = 0;
+        repeat(array_length(__source_array))
+        {
+            if (__source_array[_i] == _source)
+            {
+                array_delete(__source_array, _i, 1);
+            }
+            else
+            {
+                ++_i;
+            }
+        }
+    }
+    
+    /// @param source
+    static __source_contains = function(_source)
     {
         var _i = 0;
         repeat(array_length(__source_array))
         {
             if (__source_array[_i].__equal_to(_source)) return true;
-            ++_i;
-        }
-        
-        return false;
-    }
-    
-    /// @param source
-    static __source_collides_with = function(_source)
-    {
-        var _i = 0;
-        repeat(array_length(__source_array))
-        {
-            if (__source_array[_i].__collides_with(_source)) return true;
             ++_i;
         }
         

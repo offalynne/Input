@@ -521,8 +521,6 @@ function __input_initialize()
     global.__input_profile_dict         = undefined;
     global.__input_default_profile_dict = undefined;
     
-    INPUT_NONE         = new __input_class_source(INPUT_SOURCE.NONE);
-    INPUT_GHOST        = new __input_class_source(INPUT_SOURCE.GHOST);
     INPUT_KEYBOARD     = new __input_class_source(INPUT_SOURCE.KEYBOARD);
     INPUT_MOUSE        = new __input_class_source(INPUT_SOURCE.MOUSE);
     INPUT_ALL_GAMEPADS = new __input_class_source(INPUT_SOURCE.ALL_GAMEPADS);

@@ -4,11 +4,6 @@ function input_source_detect(_source)
 {
     switch(_source.__source)
     {
-        case INPUT_SOURCE.NONE:
-        case INPUT_SOURCE.GHOST:
-            return false;
-        break;
-        
         case INPUT_SOURCE.KEYBOARD:
             if (global.__input_any_keyboard_binding_defined
             &&  input_source_is_available(_source)

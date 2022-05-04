@@ -5,13 +5,13 @@ function input_source_hotswap_tick(_player_index = 0, _auto_profile = true)
 {
     with(global.__input_players[_player_index])
     {
-        if (__source_equal_to(INPUT_GHOST))
+        if (__source_behaviour == INPUT_BEHAVIOUR.GHOST)
         {
-            __input_trace("Warning! Cannot hotswap player ", _player_index, " as this player's source is set to \"ghost\"");
+            __input_trace("Warning! Cannot hotswap player ", _player_index, " as this player's behaviour is set to \"ghost\"");
             return false;
         }
         
-        if (__source_equal_to(INPUT_ALL_GAMEPADS))
+        if (__source_contains(INPUT_ALL_GAMEPADS))
         {
             __input_trace("Warning! Cannot hotswap player ", _player_index, " as this player's source is set to \"mixed\"");
             return false;

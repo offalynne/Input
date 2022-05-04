@@ -306,11 +306,11 @@ function input_tick()
 	                {
 	                    with(global.__input_players[_p])
 	                    {
-	                        if ((gamepad == _gamepad) && (source == INPUT_SOURCE.GAMEPAD))
-	                        {
+                            if (__source_contains(INPUT_GAMEPAD[_gamepad]))
+                            {
 	                            __input_trace("Player ", _p, " gamepad disconnected");
-	                            source = INPUT_SOURCE.NONE;
-	                        }
+                                __source_remove(INPUT_GAMEPAD[_gamepad]);
+                            }
 	                    }
                     
 	                    ++_p;

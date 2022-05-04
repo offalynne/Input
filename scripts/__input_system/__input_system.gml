@@ -9,8 +9,6 @@
 #macro __INPUT_BINDING_GAMEPAD_BUTTON    "gamepad button"
 #macro __INPUT_BINDING_GAMEPAD_AXIS      "gamepad axis"
 
-#macro INPUT_NONE                    global.__input_source_none
-#macro INPUT_GHOST                   global.__input_source_ghost
 #macro INPUT_KEYBOARD                global.__input_source_keyboard
 #macro INPUT_MOUSE                   global.__input_source_mouse
 #macro INPUT_GAMEPAD                 global.__input_source_gamepad
@@ -98,6 +96,13 @@
 // gp_paddle2    = 32793             32793 = gp_paddle2
 // gp_paddle3    = 32794             32794 = gp_paddle3
 // gp_paddle4    = 32795             32795 = gp_paddle4
+
+enum INPUT_BEHAVIOUR
+{
+    STANDARD,
+    GHOST,
+    MULTI,
+}
 
 enum INPUT_SOURCE
 {
