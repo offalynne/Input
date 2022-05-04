@@ -22,10 +22,11 @@
 #macro INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED    false
 #macro INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES  false
 
-#macro INPUT_AUTO_PROFILE_FOR_KEYBOARD  "keyboard"
-#macro INPUT_AUTO_PROFILE_FOR_MOUSE     "mouse"
-#macro INPUT_AUTO_PROFILE_FOR_GAMEPAD   "gamepad"
-#macro INPUT_AUTO_PROFILE_FOR_MIXED     "mixed"
+#macro INPUT_AUTO_PROFILE_FOR_KEYBOARD     "keyboard"
+#macro INPUT_AUTO_PROFILE_FOR_MOUSE        "mouse"
+#macro INPUT_AUTO_PROFILE_FOR_GAMEPAD      "gamepad"
+#macro INPUT_AUTO_PROFILE_FOR_MIXED        "mixed"
+#macro INPUT_AUTO_PROFILE_FOR_MULTIDEVICE  "multidevice"
 
 #macro INPUT_SDL2_REMAPPING       true   //Whether to use our own SDL2 database to remap controllers
 #macro INPUT_SDL2_ALLOW_EXTERNAL  true   //Whether to allow external SDL2 database loading from environment variable %SDL_GAMECONTROLLERCONFIG%

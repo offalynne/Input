@@ -73,17 +73,17 @@ function __input_finalize_defaults()
                 {
                     switch(_binding.__get_source())
                     {
-                        case INPUT_SOURCE.KEYBOARD:
+                        case __INPUT_SOURCE.KEYBOARD:
                             global.__input_any_keyboard_binding_defined = true;
                             if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED) global.__input_any_mouse_binding_defined = true;
                         break;
                         
-                        case INPUT_SOURCE.MOUSE:
+                        case __INPUT_SOURCE.MOUSE:
                             global.__input_any_mouse_binding_defined = true;
                             if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED) global.__input_any_keyboard_binding_defined = true;
                         break;
                         
-                        case INPUT_SOURCE.GAMEPAD:
+                        case __INPUT_SOURCE.GAMEPAD:
                             global.__input_any_gamepad_binding_defined = true;
                         break;
                     }

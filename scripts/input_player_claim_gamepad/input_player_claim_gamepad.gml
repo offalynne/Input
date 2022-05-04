@@ -11,6 +11,6 @@ function input_player_claim_gamepad(_gamepad = undefined, _player_index = 0)
         __input_error("Player ", _player_index, " cannot claim gamepad ", _gamepad, ", no gamepad bindings have been created");
     }
     
-    __input_source_relinquish(INPUT_SOURCE.GAMEPAD, _gamepad);
-    global.__input_players[_player_index].__source_add(INPUT_SOURCE.GAMEPAD, _gamepad);
+    __input_source_relinquish(INPUT_GAMEPAD[_gamepad]);
+    global.__input_players[_player_index].__source_add(INPUT_GAMEPAD[_gamepad]);
 }

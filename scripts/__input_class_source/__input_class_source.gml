@@ -8,9 +8,9 @@ function __input_class_source(_source, _gamepad = undefined) constructor
     
     switch(__source)
     {
-        case INPUT_SOURCE.KEYBOARD:     __name = "keyboard";                    break;
-        case INPUT_SOURCE.MOUSE:        __name = "mouse";                       break;
-        case INPUT_SOURCE.GAMEPAD:      __name = "gamepad " + string(_gamepad); break;
+        case INPUT_SOURCE.KEYBOARD: __name = "keyboard";                    break;
+        case INPUT_SOURCE.MOUSE:    __name = "mouse";                       break;
+        case INPUT_SOURCE.GAMEPAD:  __name = "gamepad " + string(_gamepad); break;
         
         default:
             __input_error("Source \"", __source, "\" not recognised");

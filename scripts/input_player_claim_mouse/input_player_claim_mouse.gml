@@ -10,12 +10,12 @@ function input_player_claim_mouse(_player_index = 0)
         __input_error("Player ", _player_index, " cannot claim the mouse, no mouse bindings have been created");
     }
     
-    __input_source_relinquish(INPUT_SOURCE.MOUSE);
-    global.__input_players[_player_index].__source_add(INPUT_SOURCE.MOUSE);
+    __input_source_relinquish(INPUT_MOUSE);
+    global.__input_players[_player_index].__source_add(INPUT_MOUSE);
     
     if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED)
     {
-        __input_source_relinquish(INPUT_SOURCE.KEYBOARD);
-        global.__input_players[_player_index].__source_add(INPUT_SOURCE.KEYBOARD);
+        __input_source_relinquish(INPUT_KEYBOARD);
+        global.__input_players[_player_index].__source_add(INPUT_KEYBOARD);
     }
 }

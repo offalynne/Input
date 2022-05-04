@@ -86,6 +86,9 @@ function __input_class_player() constructor
     
     static __profile_get_auto = function()
     {
+        if (__source_behaviour == INPUT_BEHAVIOUR.GHOST) return undefined;
+        if (__source_behaviour == INPUT_BEHAVIOUR.MULTI) return INPUT_AUTO_PROFILE_FOR_MULTIDEVICE;
+        
         var _count = array_length(__source_array);
         
         //If there're no sources then return a null value

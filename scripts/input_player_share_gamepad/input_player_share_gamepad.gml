@@ -11,15 +11,15 @@ function input_player_share_gamepad(_gamepad, _array)
         __input_error("Players ", _array, " cannot share gamepad ", _gamepad, ", no keyboard bindings have been created");
     }
     
-    __input_source_relinquish(INPUT_SOURCE.GAMEPAD, _gamepad);
+    __input_source_relinquish(INPUT_GAMEPAD[_gamepad]);
     
     var _i = 0;
     repeat(array_length(_array))
     {
-        with(global.__input_players[_player_index])
+        with(global.__input_players[_i])
         {
             __sources_clear();
-            __source_add(INPUT_SOURCE.GAMEPAD, _gamepad);
+            __source_add(INPUT_GAMEPAD[_gamepad]);
         }
         
         ++_i;

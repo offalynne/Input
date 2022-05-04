@@ -26,9 +26,9 @@ function input_source_hotswap_tick(_player_index = 0, _auto_profile = true)
                 {
                     switch(_new_source.__source)
                     {
-                        case INPUT_SOURCE.KEYBOARD: __profile_set(INPUT_AUTO_PROFILE_FOR_KEYBOARD); break;
-                        case INPUT_SOURCE.MOUSE:    __profile_set(INPUT_AUTO_PROFILE_FOR_MOUSE   ); break;
-                        case INPUT_SOURCE.GAMEPAD:  __profile_set(INPUT_AUTO_PROFILE_FOR_GAMEPAD ); break;
+                        case __INPUT_SOURCE.KEYBOARD: __profile_set(INPUT_AUTO_PROFILE_FOR_KEYBOARD); break;
+                        case __INPUT_SOURCE.MOUSE:    __profile_set(INPUT_AUTO_PROFILE_FOR_MOUSE   ); break;
+                        case __INPUT_SOURCE.GAMEPAD:  __profile_set(INPUT_AUTO_PROFILE_FOR_GAMEPAD ); break;
                     }
                 }
                 
