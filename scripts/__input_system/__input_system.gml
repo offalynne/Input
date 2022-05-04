@@ -9,10 +9,9 @@
 #macro __INPUT_BINDING_GAMEPAD_BUTTON    "gamepad button"
 #macro __INPUT_BINDING_GAMEPAD_AXIS      "gamepad axis"
 
-#macro INPUT_KEYBOARD                global.__input_source_keyboard
-#macro INPUT_MOUSE                   global.__input_source_mouse
-#macro INPUT_GAMEPAD                 global.__input_source_gamepad
-#macro INPUT_ALL_GAMEPADS            global.__input_source_all_gamepads
+#macro INPUT_KEYBOARD  global.__input_source_keyboard
+#macro INPUT_MOUSE     global.__input_source_mouse
+#macro INPUT_GAMEPAD   global.__input_source_gamepad
 #macro __INPUT_MAX_TRACKED_GAMEPADS  20
 
 #macro __INPUT_ON_PS       ((os_type == os_ps4)     || (os_type == os_ps5))
@@ -104,7 +103,7 @@ enum INPUT_BEHAVIOUR
     MULTI,
 }
 
-enum INPUT_SOURCE
+enum __INPUT_SOURCE
 {
     KEYBOARD,
     MOUSE,

@@ -521,14 +521,14 @@ function __input_initialize()
     global.__input_profile_dict         = undefined;
     global.__input_default_profile_dict = undefined;
     
-    INPUT_KEYBOARD = new __input_class_source(INPUT_SOURCE.KEYBOARD);
-    INPUT_MOUSE    = new __input_class_source(INPUT_SOURCE.MOUSE);
+    INPUT_KEYBOARD = new __input_class_source(__INPUT_SOURCE.KEYBOARD);
+    INPUT_MOUSE    = new __input_class_source(__INPUT_SOURCE.MOUSE);
     
     INPUT_GAMEPAD = array_create(__INPUT_MAX_TRACKED_GAMEPADS, undefined);
     var _g = 0;
     repeat(__INPUT_MAX_TRACKED_GAMEPADS)
     {
-        INPUT_GAMEPAD[@ _g] = new __input_class_source(INPUT_SOURCE.GAMEPAD, _g);
+        INPUT_GAMEPAD[@ _g] = new __input_class_source(__INPUT_SOURCE.GAMEPAD, _g);
         ++_g;
     }
     

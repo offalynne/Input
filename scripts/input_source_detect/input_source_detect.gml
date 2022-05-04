@@ -4,7 +4,7 @@ function input_source_detect(_source)
 {
     switch(_source.__source)
     {
-        case INPUT_SOURCE.KEYBOARD:
+        case __INPUT_SOURCE.KEYBOARD:
             if (global.__input_any_keyboard_binding_defined
             &&  input_source_is_available(_source)
             &&  keyboard_check_pressed(vk_anykey)
@@ -14,7 +14,7 @@ function input_source_detect(_source)
             }
         break;
         
-        case INPUT_SOURCE.MOUSE:
+        case __INPUT_SOURCE.MOUSE:
             if (global.__input_any_mouse_binding_defined
             &&  input_source_is_available(_source)
             &&  (input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
@@ -23,7 +23,7 @@ function input_source_detect(_source)
             }
         break;
         
-        case INPUT_SOURCE.GAMEPAD:
+        case __INPUT_SOURCE.GAMEPAD:
             if (global.__input_any_gamepad_binding_defined)
             {
                 var _gamepad = _source.gamepad;

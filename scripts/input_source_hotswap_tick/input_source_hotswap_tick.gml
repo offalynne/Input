@@ -11,9 +11,9 @@ function input_source_hotswap_tick(_player_index = 0, _auto_profile = true)
             return false;
         }
         
-        if (__source_contains(INPUT_ALL_GAMEPADS))
+        if (__source_behaviour == INPUT_BEHAVIOUR.MULTI)
         {
-            __input_trace("Warning! Cannot hotswap player ", _player_index, " as this player's source is set to \"mixed\"");
+            __input_trace("Warning! Cannot hotswap player ", _player_index, " as this player's behaviour is set to \"multi\"");
             return false;
         }
         

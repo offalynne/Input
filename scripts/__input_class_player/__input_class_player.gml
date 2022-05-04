@@ -99,9 +99,9 @@ function __input_class_player() constructor
         {
             switch(__source_array[0].source)
             {
-                case INPUT_SOURCE.KEYBOARD: return INPUT_AUTO_PROFILE_FOR_KEYBOARD; break;
-                case INPUT_SOURCE.MOUSE:    return INPUT_AUTO_PROFILE_FOR_MOUSE;    break;
-                case INPUT_SOURCE.GAMEPAD:  return INPUT_AUTO_PROFILE_FOR_GAMEPAD;  break;
+                case __INPUT_SOURCE.KEYBOARD: return INPUT_AUTO_PROFILE_FOR_KEYBOARD; break;
+                case __INPUT_SOURCE.MOUSE:    return INPUT_AUTO_PROFILE_FOR_MOUSE;    break;
+                case __INPUT_SOURCE.GAMEPAD:  return INPUT_AUTO_PROFILE_FOR_GAMEPAD;  break;
                 
                 default:
                     __input_error("Invalid source (", __source_array[0].source, ")");
@@ -112,8 +112,8 @@ function __input_class_player() constructor
         //Special case to handle keyboard+mouse
         if (_count == 2)
         {
-            if ((__source_array[0].source == INPUT_SOURCE.KEYBOARD) && (__source_array[1].source == INPUT_SOURCE.MOUSE)
-            ||  (__source_array[1].source == INPUT_SOURCE.KEYBOARD) && (__source_array[0].source == INPUT_SOURCE.MOUSE))
+            if ((__source_array[0].source == __INPUT_SOURCE.KEYBOARD) && (__source_array[1].source == __INPUT_SOURCE.MOUSE)
+            ||  (__source_array[1].source == __INPUT_SOURCE.KEYBOARD) && (__source_array[0].source == __INPUT_SOURCE.MOUSE))
             {
                 if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED) return INPUT_AUTO_PROFILE_FOR_KEYBOARD;
             }

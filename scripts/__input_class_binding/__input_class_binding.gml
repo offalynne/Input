@@ -150,12 +150,12 @@ function __input_class_binding() constructor
     {
         switch(type)
         {
-            case __INPUT_BINDING_KEY:              return INPUT_SOURCE.KEYBOARD; break;
-            case __INPUT_BINDING_MOUSE_BUTTON:     return INPUT_SOURCE.MOUSE;    break;
-            case __INPUT_BINDING_MOUSE_WHEEL_UP:   return INPUT_SOURCE.MOUSE;    break;
-            case __INPUT_BINDING_MOUSE_WHEEL_DOWN: return INPUT_SOURCE.MOUSE;    break;
-            case __INPUT_BINDING_GAMEPAD_BUTTON:   return INPUT_SOURCE.GAMEPAD;  break;
-            case __INPUT_BINDING_GAMEPAD_AXIS:     return INPUT_SOURCE.GAMEPAD;  break;
+            case __INPUT_BINDING_KEY:              return __INPUT_SOURCE.KEYBOARD; break;
+            case __INPUT_BINDING_MOUSE_BUTTON:     return __INPUT_SOURCE.MOUSE;    break;
+            case __INPUT_BINDING_MOUSE_WHEEL_UP:   return __INPUT_SOURCE.MOUSE;    break;
+            case __INPUT_BINDING_MOUSE_WHEEL_DOWN: return __INPUT_SOURCE.MOUSE;    break;
+            case __INPUT_BINDING_GAMEPAD_BUTTON:   return __INPUT_SOURCE.GAMEPAD;  break;
+            case __INPUT_BINDING_GAMEPAD_AXIS:     return __INPUT_SOURCE.GAMEPAD;  break;
             case undefined:                        return undefined;             break;
         }
         

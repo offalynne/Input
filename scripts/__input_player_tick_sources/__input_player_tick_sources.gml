@@ -46,7 +46,7 @@ function __input_player_tick_sources()
             
             switch(_source_type)
             {
-                case INPUT_SOURCE.KEYBOARD:
+                case __INPUT_SOURCE.KEYBOARD:
                     var _alternate = 0;
                     repeat(INPUT_MAX_ALTERNATE_BINDINGS)
                     {
@@ -88,7 +88,7 @@ function __input_player_tick_sources()
                     }
                 break;
                 
-                case INPUT_SOURCE.MOUSE:
+                case __INPUT_SOURCE.MOUSE:
                     var _alternate = 0;
                     repeat(INPUT_MAX_ALTERNATE_BINDINGS)
                     {
@@ -138,7 +138,7 @@ function __input_player_tick_sources()
                     }
                 break;
                 
-                case INPUT_SOURCE.GAMEPAD:
+                case __INPUT_SOURCE.GAMEPAD:
                     if (!input_gamepad_is_connected(_source_gamepad))
                     {
                         ++_s;
