@@ -205,9 +205,6 @@ function __input_player_tick_sources()
                         ++_alternate;
                     }
                 break;
-                
-                case INPUT_SOURCE.ALL_GAMEPADS:
-                break;
             }
             
             ++_s;

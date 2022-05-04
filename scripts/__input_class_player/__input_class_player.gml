@@ -96,10 +96,9 @@ function __input_class_player() constructor
         {
             switch(__source_array[0].source)
             {
-                case INPUT_SOURCE.KEYBOARD:     return INPUT_AUTO_PROFILE_FOR_KEYBOARD; break;
-                case INPUT_SOURCE.MOUSE:        return INPUT_AUTO_PROFILE_FOR_MOUSE;    break;
-                case INPUT_SOURCE.GAMEPAD:      return INPUT_AUTO_PROFILE_FOR_GAMEPAD;  break;
-                case INPUT_SOURCE.ALL_GAMEPADS: return INPUT_AUTO_PROFILE_FOR_MIXED;    break;
+                case INPUT_SOURCE.KEYBOARD: return INPUT_AUTO_PROFILE_FOR_KEYBOARD; break;
+                case INPUT_SOURCE.MOUSE:    return INPUT_AUTO_PROFILE_FOR_MOUSE;    break;
+                case INPUT_SOURCE.GAMEPAD:  return INPUT_AUTO_PROFILE_FOR_GAMEPAD;  break;
                 
                 default:
                     __input_error("Invalid source (", __source_array[0].source, ")");

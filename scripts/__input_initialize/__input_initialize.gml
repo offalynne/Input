@@ -523,7 +523,6 @@ function __input_initialize()
     
     INPUT_KEYBOARD     = new __input_class_source(INPUT_SOURCE.KEYBOARD);
     INPUT_MOUSE        = new __input_class_source(INPUT_SOURCE.MOUSE);
-    INPUT_ALL_GAMEPADS = new __input_class_source(INPUT_SOURCE.ALL_GAMEPADS);
     
     INPUT_GAMEPAD = array_create(__INPUT_MAX_TRACKED_GAMEPADS, undefined);
     var _g = 0;

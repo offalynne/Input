@@ -106,12 +106,9 @@ enum INPUT_BEHAVIOUR
 
 enum INPUT_SOURCE
 {
-    NONE,
-    GHOST,
     KEYBOARD,
     MOUSE,
     GAMEPAD,
-    ALL_GAMEPADS,
     __SIZE
 }
 

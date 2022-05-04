@@ -11,7 +11,6 @@ function __input_class_source(_source, _gamepad = undefined) constructor
         case INPUT_SOURCE.KEYBOARD:     __name = "keyboard";                    break;
         case INPUT_SOURCE.MOUSE:        __name = "mouse";                       break;
         case INPUT_SOURCE.GAMEPAD:      __name = "gamepad " + string(_gamepad); break;
-        case INPUT_SOURCE.ALL_GAMEPADS: __name = "all gamepads";                break;
         
         default:
             __input_error("Source \"", __source, "\" not recognised");
@@ -25,17 +24,6 @@ function __input_class_source(_source, _gamepad = undefined) constructor
             case INPUT_SOURCE.KEYBOARD: return true;                                  break;
             case INPUT_SOURCE.MOUSE:    return true;                                  break;
             case INPUT_SOURCE.GAMEPAD:  return input_gamepad_is_connected(__gamepad); break;
-            
-            case INPUT_SOURCE.ALL_GAMEPADS:
-                var _i = 0;
-                repeat(gamepad_get_device_count())
-                {
-                    if (input_gamepad_is_connected(_i)) return true;
-                    ++_i;
-                }
-                
-                return false;
-            break;
             
             default:
                 __input_error("Source \"", __source, "\" not recognised");
@@ -60,14 +48,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
             break;
             
             case INPUT_SOURCE.GAMEPAD:
-                if (__source == INPUT_SOURCE.ALL_GAMEPADS) return true;
                 if ((__source == INPUT_SOURCE.GAMEPAD) && (__gamepad != undefined) && (__gamepad == _other_source.__gamepad)) return true;
-                return false;
-            break;
-            
-            case INPUT_SOURCE.ALL_GAMEPADS:
-                if (__source == INPUT_SOURCE.ALL_GAMEPADS) return true;
-                if ((__source == INPUT_SOURCE.GAMEPAD) && (__gamepad != undefined)) return true;
                 return false;
             break;
         }
@@ -180,21 +161,6 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
                 }
             }
         break;
-        
-        case INPUT_SOURCE.ALL_GAMEPADS:
-            var _i = 0;
-            repeat(gamepad_get_device_count())
-            {
-                var _binding = __input_source_scan_for_binding(_source, _i, _player_index);
-                if (input_value_is_binding(_binding))
-                {
-                    _binding.__set_gamepad(_i);
-                    return _binding;
-                }
-                
-                ++_i;
-            }
-        break;
     }
     
     return undefined;
@@ -257,17 +223,6 @@ function __input_source_any_input(_source, _gamepad)
                 {
                     return true;
                 }
-            }
-            
-            return false;
-        break;
-        
-        case INPUT_SOURCE.ALL_GAMEPADS:
-            var _g = 0;
-            repeat(gamepad_get_device_count())
-            {
-                if (__input_source_any_input(INPUT_SOURCE.GAMEPAD, _g)) return true;
-                ++_g;
             }
             
             return false;
