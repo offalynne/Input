@@ -6,7 +6,7 @@
     "path": "folders/Input/Players.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_player_set_standard",
+  "name": "input_player_claim",
   "tags": [],
   "resourceType": "GMScript",
 }

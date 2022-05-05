@@ -12,7 +12,7 @@
 #macro INPUT_KEYBOARD  global.__input_source_keyboard
 #macro INPUT_MOUSE     global.__input_source_mouse
 #macro INPUT_GAMEPAD   global.__input_source_gamepad
-#macro __INPUT_MAX_TRACKED_GAMEPADS  20
+#macro __INPUT_MAX_TRACKED_GAMEPADS  12
 
 #macro __INPUT_ON_PS       ((os_type == os_ps4)     || (os_type == os_ps5))
 #macro __INPUT_ON_XDK      ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
@@ -95,14 +95,6 @@
 // gp_paddle2    = 32793             32793 = gp_paddle2
 // gp_paddle3    = 32794             32794 = gp_paddle3
 // gp_paddle4    = 32795             32795 = gp_paddle4
-
-enum INPUT_BEHAVIOUR
-{
-    INACTIVE,
-    STANDARD,
-    GHOST,
-    MULTI,
-}
 
 enum __INPUT_SOURCE
 {

@@ -2,7 +2,6 @@ function __input_class_player() constructor
 {
     __index = undefined;
     
-    __behaviour = INPUT_BEHAVIOUR.STANDARD;
     __source_array     = [];
     __verb_state_dict  = {};
     __chord_state_dict = {};
@@ -18,23 +17,7 @@ function __input_class_player() constructor
     __profiles_dict = { axis_thresholds : {} };
     __profile_name = undefined;
     
-    
-    
-    #region Behaviour
-    
-    static __behaviour_set = function(_behaviour)
-    {
-        if (_behaviour == __behaviour) return;
-        if (__rebind_state > 0) __rebind_error = INPUT_BINDING_SCAN_EVENT.BEHAVIOUR_CHANGED;
-        __behaviour = _behaviour;
-    }
-    
-    static __behaviour_get = function()
-    {
-        return __behaviour;
-    }
-    
-    #endregion
+    __ghost = false;
     
     
     
@@ -104,8 +87,8 @@ function __input_class_player() constructor
     
     static __profile_get_auto = function()
     {
-        if (__behaviour == INPUT_BEHAVIOUR.GHOST) return undefined;
-        if (__behaviour == INPUT_BEHAVIOUR.MULTI) return INPUT_AUTO_PROFILE_FOR_MULTIDEVICE;
+        if (__ghost) return undefined;
+        if ((global.__input_multidevice_player != undefined) && (global.__input_multidevice_player == __index)) return INPUT_AUTO_PROFILE_FOR_MULTIDEVICE;
         
         var _count = array_length(__source_array);
         

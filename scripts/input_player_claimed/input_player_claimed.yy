@@ -6,7 +6,7 @@
     "path": "folders/Input/Players.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_player_set_ghost",
+  "name": "input_player_claimed",
   "tags": [],
   "resourceType": "GMScript",
 }

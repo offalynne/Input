@@ -6,7 +6,7 @@
     "path": "folders/Input/Players.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_player_get_source",
+  "name": "input_player_multidevice_set",
   "tags": [],
   "resourceType": "GMScript",
 }

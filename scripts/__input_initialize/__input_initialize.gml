@@ -106,6 +106,11 @@ function __input_initialize()
     //The default player. This player struct holds default binding data
     global.__input_default_player = new __input_class_player();
     
+    //Holds the index of the multidevice player
+    //If this is <undefined> then no multidevice player has been defined
+    //Having a multidevice player defined means that all other non-ghost players are considered disconnected
+    global.__input_multidevice_player = undefined;
+    
     //Array of players. Each player is a struct (instanceof __input_class_player) that contains lotsa juicy information
     global.__input_players = array_create(INPUT_MAX_PLAYERS, undefined);
     var _p = 0;

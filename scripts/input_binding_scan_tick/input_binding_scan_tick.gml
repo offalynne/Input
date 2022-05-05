@@ -12,8 +12,7 @@ enum INPUT_BINDING_SCAN_EVENT
     //GAMEPAD_CHANGED             = -12, //Gamepad index changed - No longer used 2022-05-03
     //GAMEPAD_INVALID             = -13, //Player gamepad is invalid - No longer used 2022-05-03
     //BINDING_DOESNT_MATCH_SOURCE = -14, //The new binding doesn't match the source that was targetted for rebinding - No longer used 2022-05-03
-    BEHAVIOUR_INVALID           = -15, //Player behaviour is not compatible with binding checks (i.e. is .GHOST)
-    BEHAVIOUR_CHANGED           = -16, //Player behaviour changed
+    PLAYER_IS_GHOST             = -15, //Player has been set as a ghost
     SCAN_TIMEOUT                = -20, //Scanning for a binding timed out - either the player didn't enter a new binding or a stuck key prevented the system from working
     LOST_FOCUS                  = -21, //The game lost focus
 }
@@ -81,11 +80,11 @@ function input_binding_scan_tick(_source_filter = undefined, _player_index = 0)
                 return INPUT_BINDING_SCAN_EVENT.SOURCE_INVALID;
             }
             
-            if (__behaviour == INPUT_BEHAVIOUR.GHOST)
+            if (__ghost)
             {
-                __input_trace("Binding scan failed: Behaviour for player ", _player_index, " is INPUT_BEHAVIOUR.GHOST");
+                __input_trace("Binding scan failed: Player ", _player_index, " is a ghost");
                 __rebind_state = -1;
-                return INPUT_BINDING_SCAN_EVENT.BEHAVIOUR_INVALID;
+                return INPUT_BINDING_SCAN_EVENT.PLAYER_IS_GHOST;
             }
             
             if (current_time - __rebind_start_time > INPUT_BINDING_SCAN_TIMEOUT)

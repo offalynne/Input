@@ -1,4 +1,4 @@
-/// @param [playerIndex]
+/// @param [playerIndex=0]
 
 function input_player_clear_sources(_player_index = 0)
 {

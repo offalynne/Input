@@ -6,7 +6,7 @@
     "path": "folders/Input/Players.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_player_claim_mouse",
+  "name": "input_player_ghost_get",
   "tags": [],
   "resourceType": "GMScript",
 }
