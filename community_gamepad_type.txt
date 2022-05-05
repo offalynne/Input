@@ -27,12 +27,18 @@
 05ac,055b,CommunityLikeXBox // GameSir G3w
 05ac,044d,CommunityLikeXBox // GameSir G4
 8555,061b,CommunityLikeXBox // GameSir G4 Pro
-05ac,056b,CommunityXBox360 // GameSir T-2a
-20bc,5656,CommunityXBox360 // GameSir T4w
 18d1,2c40,CommunityLikeXBox // ADT1
 0b05,4500,CommunityLikeXBox // ASUS Gamepad
 0a5c,8502,CommunityLikeXBox // idroid:con
 6469,6469,CommunityLikeXBox // idroid:con
+1080,0009,CommunityLikeXBox // 8BitDo F30 Joystick
+2dc8,ab11,CommunityLikeXBox // 8BitDo F30 Joystick
+8000,1002,CommunityLikeXBox // 8BitDo F30 Joystick
+2dc8,1003,CommunityLikeXBox // 8BitDo N30 Joystick
+2dc8,1080,CommunityLikeXBox // 8BitDo N30 Joystick
+1235,ab11,CommunityLikeXBox // 8BitDo FC30 Joystick
+2dc8,ab12,CommunityLikeXBox // 8BitDo NES30 Joystick
+146b,0c01,CommunityLikeXBox // Nacon GC-400ES	
 0e6f,0187,CommunityLikeSwitch // PDP Rock Candy
 20d6,a713,CommunityLikeSwitch // PowerA Wired
 056e,2007,CommunityLikeSwitch // Elecom Wii Adapter
@@ -152,6 +158,8 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 0079,1847,CommunityGameCube // Mayflash GameCube Adapter
 0b43,0005,CommunityGameCube // Gamecube Adapter
 1a34,f705,CommunityGameCube // Mayflash GameCube Adapter
+05ac,056b,CommunityXBox360 // GameSir T-2a
+20bc,5656,CommunityXBox360 // GameSir T4w
 0079,1830,CommunityXBox360 // Mayflash F300
 06a3,f518,CommunityXBox360 // Saitek P3200
 0738,4520,CommunityXBox360 // Unknown 
@@ -197,13 +205,6 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 24c6,892a,CommunityXBox360 // PowerA Moga XP5-X Plus
 24c6,892b,CommunityXBox360 // PowerA Moga XP5-X Plus
 2717,3144,CommunityXBox360 // XiaoMi
-1080,0009,CommunityXBox360 // 8BitDo F30 Joystick
-2dc8,ab11,CommunityXBox360 // 8BitDo F30 Joystick
-8000,1002,CommunityXBox360 // 8BitDo F30 Joystick
-2dc8,1003,CommunityXBox360 // 8BitDo N30 Joystick
-2dc8,1080,CommunityXBox360 // 8BitDo N30 Joystick
-1235,ab11,CommunityXBox360 // 8BitDo FC30 Joystick
-2dc8,ab12,CommunityXBox360 // 8BitDo NES30 Joystick
 11c0,5500,CommunityXBox360 // Betop
 11c0,9105,CommunityXBox360 // Torid
 11c1,9101,CommunityXBox360 // EasySMX
@@ -213,7 +214,6 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 20bc,1264,CommunityXBox360 // Betop
 beef,feed,CommunityXBox360 // Monect
 1949,0402,CommunityXBox360 // Xbox
-146b,0c01,CommunityXBox360 // Nacon GC-400ES	
 0079,0002,CommunityXBox360 // Arcade Board
 1bad,f503,CommunityXBox360 // Hori Fighting Stick VX
 0f0d,006d,CommunityXBox360 // Hori EDGE 301
