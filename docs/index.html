@@ -60,7 +60,6 @@
 				copyCode: {
 					buttonText: '📋',
 				},
-				externalLinkRel: '',
 				search: {
 					paths: 'auto',
 					namespace: 'input',
@@ -88,8 +87,8 @@
 						hook.init(() => {
 							// REPLACE `LATEST` IN URL WITH LATEST VERSION
 							window.addEventListener('hashchange', () => {
-								const regexp = /\/latest\/*(.*)/;
-								location.href = location.href.replace(regexp, '/' + config.latestVersion + '/$1');
+								const regexp = /#\/latest\/*(.*)/;
+								location.href = location.href.replace(regexp, '#/' + config.latestVersion + '/$1');
 							});
 
 							// SET FAVICON
