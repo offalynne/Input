@@ -106,8 +106,8 @@ function input_binding_scan_tick(_source_filter = undefined, _player_index = 0)
             }
             else if (__rebind_state == 2) //Now grab the first button pressed
             {
-                var _new_binding = undefined;
-                var _binding_source = INPUT_NONE;
+                var _new_binding    = undefined;
+                var _binding_source = undefined;
                 
                 var _i = 0;
                 repeat(array_length(_source_filter))
@@ -120,7 +120,7 @@ function input_binding_scan_tick(_source_filter = undefined, _player_index = 0)
                     var _source_binding = _source_filter[_i].__scan_for_binding();
                     if (_source_binding != undefined)
                     {
-                        var _new_binding = _source_binding;
+                        var _new_binding    = _source_binding;
                         var _binding_source = _source_filter[_i];
                     }
                     
