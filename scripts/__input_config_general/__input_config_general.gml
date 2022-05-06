@@ -83,10 +83,10 @@
 
 #region Forbidden Fruit
 
-#macro INPUT_DEBUG_PROFILES  true
-#macro INPUT_DEBUG_SOURCES   true
-#macro INPUT_DEBUG_BINDING   true
-#macro INPUT_DEBUG_VERBS     true
+#macro INPUT_DEBUG_PROFILES  false
+#macro INPUT_DEBUG_SOURCES   false
+#macro INPUT_DEBUG_BINDING   false
+#macro INPUT_DEBUG_VERBS     false
 
 #macro INPUT_EXTERNAL_DEBUG_LOG  false  //Do NOT set to <true> unless directed (!)
 #macro INPUT_WARNING_DEPRECATED  false  //Whether to show errors when using deprecated functions
