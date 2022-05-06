@@ -11,5 +11,5 @@ function input_source_detect_any()
     if (input_source_detect(INPUT_KEYBOARD)) return INPUT_KEYBOARD;
     if (input_source_detect(INPUT_MOUSE)) return INPUT_MOUSE;
     
-    return INPUT_NONE;
+    return undefined;
 }
