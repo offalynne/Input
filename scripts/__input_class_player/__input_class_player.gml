@@ -147,6 +147,24 @@ function __input_class_player() constructor
         }
     }
     
+    static __profile_reset_bindings = function(_profile_name)
+    {
+        var _v = 0;
+        repeat(array_length(global.__input_basic_verb_array))
+        {
+            var _verb_name = global.__input_basic_verb_array[_v];
+            
+            var _alternate = 0;
+            repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+            {
+                __binding_reset(_profile_name, _verb_name, _alternate);
+                ++_alternate;
+            }
+            
+            ++_v;
+        }
+    }
+    
     #endregion
     
     

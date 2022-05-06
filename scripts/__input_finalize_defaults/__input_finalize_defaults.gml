@@ -106,6 +106,11 @@ function __input_finalize_defaults()
     if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MIXED      )) __input_trace("Warning! Default profile for mixed \"",       INPUT_AUTO_PROFILE_FOR_MIXED,       "\" has not been defined");
     if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MULTIDEVICE)) __input_trace("Warning! Default profile for multidevice \"", INPUT_AUTO_PROFILE_FOR_MULTIDEVICE, "\" has not been defined");
     
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_CURSOR_VERB_UP   )) __input_trace("Warning! Default cursor up verb \"",    INPUT_CURSOR_VERB_UP,    "\" has not been defined");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_CURSOR_VERB_DOWN )) __input_trace("Warning! Default cursor down verb \"",  INPUT_CURSOR_VERB_DOWN,  "\" has not been defined");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_CURSOR_VERB_LEFT )) __input_trace("Warning! Default cursor left verb \"",  INPUT_CURSOR_VERB_LEFT,  "\" has not been defined");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_CURSOR_VERB_RIGHT)) __input_trace("Warning! Default cursor right verb \"", INPUT_CURSOR_VERB_RIGHT, "\" has not been defined");
+    
     //Fix any missing verb definitions for default profiles
     var _f = 0;
     repeat(array_length(global.__input_profile_array))

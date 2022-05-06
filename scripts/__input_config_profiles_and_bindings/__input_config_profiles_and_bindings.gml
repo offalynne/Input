@@ -46,7 +46,7 @@ INPUT_DEFAULT_PROFILES = {
 //Maximum number of alternate bindings per verb per profile
 #macro INPUT_MAX_ALTERNATE_BINDINGS  2
 
-//Names of the profiles to use when automatically assigning profiles based on the source that a
+//Names of the default profiles to use when automatically assigning profiles based on the source that a
 //player is currently using. Default profiles for sources that you don't intend to use in your game do
 //not need to be defined
 #macro INPUT_AUTO_PROFILE_FOR_KEYBOARD     "keyboard_and_mouse"

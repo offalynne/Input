@@ -19,6 +19,7 @@
 //Whether to allow touch input (real, or simulated by physical mouse) to set mouse bindings on touch-enabled platforms
 #macro INPUT_TOUCH_POINTER_ALLOWED  false
 
+//Verbs that control motion of Input's device-agnostic cursor
 #macro INPUT_CURSOR_VERB_UP     "up"
 #macro INPUT_CURSOR_VERB_DOWN   "down"
 #macro INPUT_CURSOR_VERB_LEFT   "left"
