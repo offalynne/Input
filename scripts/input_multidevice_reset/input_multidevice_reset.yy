@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Players",
-    "path": "folders/Input/Players.yy",
+    "name": "Sources",
+    "path": "folders/Input/Sources.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_player_multidevice_get",
+  "name": "input_multidevice_reset",
   "tags": [],
   "resourceType": "GMScript",
 }

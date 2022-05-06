@@ -1,4 +1,4 @@
-function input_player_multidevice_get()
+function input_multidevice_get()
 {
 	__input_initialize();
     

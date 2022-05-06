@@ -1,4 +1,4 @@
-function input_player_multidevice_reset()
+function input_multidevice_reset()
 {
 	__input_initialize();
     

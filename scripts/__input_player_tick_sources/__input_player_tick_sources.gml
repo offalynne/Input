@@ -3,6 +3,8 @@ function __input_player_tick_sources()
     if (__profile_name == undefined) return;
     var _current_profile_dict = __profiles_dict[$ __profile_name];
     
+    var _is_multidevice_player = ((global.__input_multidevice_player != undefined) && (global.__input_multidevice_player == __index));
+    
     var _v = 0;
     repeat(array_length(global.__input_basic_verb_array))
     {
@@ -139,7 +141,7 @@ function __input_player_tick_sources()
                 break;
                 
                 case __INPUT_SOURCE.GAMEPAD:
-                    if (!input_gamepad_is_connected(_source_gamepad))
+                    if (!_is_multidevice_player && !input_gamepad_is_connected(_source_gamepad))
                     {
                         ++_s;
                         continue;
@@ -149,6 +151,19 @@ function __input_player_tick_sources()
                     repeat(INPUT_MAX_ALTERNATE_BINDINGS)
                     {
                         var _binding = _alternate_array[_alternate];
+                        
+                        //If we're in multidevice mode, try to check a specific gamepad
+                        if (_is_multidevice_player)
+                        {
+                            if (_binding.__gamepad_index != undefined) _source_gamepad = _binding.__gamepad_index;
+                            
+                            if (!input_gamepad_is_connected(_source_gamepad))
+                            {
+                                ++_s;
+                                continue;
+                            }
+                        }
+                        
                         switch(_binding.type)
                         {
                             case __INPUT_BINDING_GAMEPAD_BUTTON:

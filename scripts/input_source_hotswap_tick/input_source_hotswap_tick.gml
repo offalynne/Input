@@ -11,10 +11,16 @@ function input_source_hotswap_tick(_player_index = 0, _auto_profile = true)
             return false;
         }
         
+        if (global.__input_multidevice_player != undefined)
+        {
+            __input_trace("Warning! Cannot hotswap because player ", global.__input_multidevice_player, " is set to multidevice");
+            return false;
+        }
+        
         if ((__last_input_time < 0) || (current_time - __last_input_time > INPUT_HOTSWAP_DELAY))
         {
             var _new_source = __input_hotswap_tick_input(_player_index);
-            if (_new_source != INPUT_NONE)
+            if (_new_source != undefined)
             {
                 if (_auto_profile)
                 {
@@ -139,5 +145,5 @@ function __input_hotswap_tick_input(_player_index)
         return INPUT_MOUSE;
     }
     
-    return INPUT_NONE;
+    return undefined;
 }
