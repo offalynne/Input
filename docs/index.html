@@ -6,7 +6,7 @@
 		<title></title>
 		<link id="favicon" rel="shortcut icon" type="image/jpg" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<meta name="description" content="Comprehensive cross-platform input for GameMaker 2.3 " />
+		<meta name="description"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,11 +27,14 @@
 			// SET TITLE
 			document.title = config.name + ' Documentation';
 
+			// SET META DESCRIPTION
+			document.querySelector('meta[name="description"]').setAttribute('content', config.description);
+
 			/* DOCSIFY CONFIG */
 			window.$docsify = {
 				name:
-					'<a id="home-link" class="app-name-link" data-nosearch href="/"><span id="home-text">' +
-					config.name +
+					'<a id="home-link" class="app-name-link" data-nosearch href="/"><span id="home-text" title="' +
+					config.description + '">' + config.name +
 					' Docs</span><br></a>' +
 					'<select id="version-selector" name="version">' +
 					'</select>',
@@ -62,7 +65,7 @@
 				},
 				search: {
 					paths: 'auto',
-					namespace: 'input',
+					namespace: config.name.toLowerCase(),
 					hideOtherSidebarContent: true,
 					depth: 3,
 					pathNamespaces: (() => {
