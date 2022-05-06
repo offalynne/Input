@@ -32,7 +32,7 @@ function input_player_claim(_source, _player_index = 0)
     __input_source_relinquish(_source);
     global.__input_players[_player_index].__source_add(_source);
     
-    if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED)
+    if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER)
     {
         if (_source == INPUT_KEYBOARD)
         {

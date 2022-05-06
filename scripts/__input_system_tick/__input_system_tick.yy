@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Input",
-    "path": "folders/Input.yy",
+    "name": "(System)",
+    "path": "folders/Input/(System).yy",
   },
   "resourceVersion": "1.0",
-  "name": "__input_config_default_profiles",
+  "name": "__input_system_tick",
   "tags": [],
   "resourceType": "GMScript",
 }

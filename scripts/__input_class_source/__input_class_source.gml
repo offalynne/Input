@@ -37,13 +37,13 @@ function __input_class_source(_source, _gamepad = undefined) constructor
         {
             case __INPUT_SOURCE.KEYBOARD:
                 if (__source == __INPUT_SOURCE.KEYBOARD) return true;
-                if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED && (__source == __INPUT_SOURCE.MOUSE)) return true;
+                if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (__source == __INPUT_SOURCE.MOUSE)) return true;
                 return false;
             break;
             
             case __INPUT_SOURCE.MOUSE:
                 if (__source == __INPUT_SOURCE.MOUSE) return true;
-                if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED && (__source == __INPUT_SOURCE.KEYBOARD)) return true;
+                if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (__source == __INPUT_SOURCE.KEYBOARD)) return true;
                 return false;
             break;
             

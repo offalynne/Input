@@ -81,6 +81,12 @@ function __input_player_tick_sources()
                                 //Null binding
                             break;
                             
+                            case __INPUT_BINDING_MOUSE_BUTTON:
+                            case __INPUT_BINDING_MOUSE_WHEEL_DOWN:
+                            case __INPUT_BINDING_MOUSE_WHEEL_UP:
+                                if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) break; //Don't show an error if INPUT_KEYBOARD and INPUT_MOUSE are assigned together
+                            //These 3 cases fall through to default
+                            
                             default:
                                 __input_error("Binding unsupported for keyboard source\n", _binding);
                             break;
@@ -130,6 +136,10 @@ function __input_player_tick_sources()
                             case undefined:
                                 //Null binding
                             break;
+                            
+                            case __INPUT_BINDING_KEY:
+                                if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) break; //Don't show an error if INPUT_KEYBOARD and INPUT_MOUSE are assigned together
+                            //This case falls through to default
                              
                             default:
                                 __input_error("Binding unsupported for mouse source\n", _binding);

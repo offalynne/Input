@@ -22,6 +22,15 @@ function input_source_hotswap_tick(_player_index = 0, _auto_profile = true)
             var _new_source = __input_hotswap_tick_input(_player_index);
             if (_new_source != undefined)
             {
+                __sources_clear();
+                __source_add(_new_source);
+                
+                if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER)
+                {
+                    if (_new_source == INPUT_KEYBOARD) __source_add(INPUT_MOUSE);
+                    if (_new_source == INPUT_MOUSE) __source_add(INPUT_KEYBOARD);
+                }
+                
                 if (_auto_profile)
                 {
                     switch(_new_source.__source)
@@ -31,9 +40,6 @@ function input_source_hotswap_tick(_player_index = 0, _auto_profile = true)
                         case __INPUT_SOURCE.GAMEPAD:  __profile_set(INPUT_AUTO_PROFILE_FOR_GAMEPAD ); break;
                     }
                 }
-                
-                __sources_clear();
-                __source_add(_new_source);
                 
                 return true;
             }

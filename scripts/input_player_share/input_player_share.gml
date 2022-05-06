@@ -10,7 +10,7 @@ function input_player_share(_source, _array)
     
     __input_source_relinquish(_source);
     
-    if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED)
+    if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER)
     {
         if (_source == INPUT_KEYBOARD) __input_source_relinquish(INPUT_MOUSE);
         if (_source == INPUT_MOUSE) __input_source_relinquish(INPUT_KEYBOARD);
@@ -28,7 +28,7 @@ function input_player_share(_source, _array)
             
             __source_add(_source);
             
-            if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED)
+            if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER)
             {
                 if (_source == INPUT_KEYBOARD) __source_add(INPUT_MOUSE);
                 if (_source == INPUT_MOUSE) __source_add(INPUT_KEYBOARD);

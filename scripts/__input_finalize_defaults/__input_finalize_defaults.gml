@@ -75,12 +75,12 @@ function __input_finalize_defaults()
                     {
                         case __INPUT_SOURCE.KEYBOARD:
                             global.__input_any_keyboard_binding_defined = true;
-                            if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED) global.__input_any_mouse_binding_defined = true;
+                            if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) global.__input_any_mouse_binding_defined = true;
                         break;
                         
                         case __INPUT_SOURCE.MOUSE:
                             global.__input_any_mouse_binding_defined = true;
-                            if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED) global.__input_any_keyboard_binding_defined = true;
+                            if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) global.__input_any_keyboard_binding_defined = true;
                         break;
                         
                         case __INPUT_SOURCE.GAMEPAD:
@@ -100,10 +100,11 @@ function __input_finalize_defaults()
         ++_f;
     }
     
-    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_KEYBOARD)) __input_trace("Warning! Default profile for keyboard \"", INPUT_AUTO_PROFILE_FOR_KEYBOARD, "\" has not been defined");
-    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MOUSE   )) __input_trace("Warning! Default profile for mouse \"",    INPUT_AUTO_PROFILE_FOR_MOUSE,    "\" has not been defined");
-    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_GAMEPAD )) __input_trace("Warning! Default profile for gamepad \"",  INPUT_AUTO_PROFILE_FOR_GAMEPAD,  "\" has not been defined");
-    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MIXED   )) __input_trace("Warning! Default profile for mixed \"",    INPUT_AUTO_PROFILE_FOR_MIXED,    "\" has not been defined");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_KEYBOARD   )) __input_trace("Warning! Default profile for keyboard \"",    INPUT_AUTO_PROFILE_FOR_KEYBOARD,    "\" has not been defined");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MOUSE      )) __input_trace("Warning! Default profile for mouse \"",       INPUT_AUTO_PROFILE_FOR_MOUSE,       "\" has not been defined");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_GAMEPAD    )) __input_trace("Warning! Default profile for gamepad \"",     INPUT_AUTO_PROFILE_FOR_GAMEPAD,     "\" has not been defined");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MIXED      )) __input_trace("Warning! Default profile for mixed \"",       INPUT_AUTO_PROFILE_FOR_MIXED,       "\" has not been defined");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MULTIDEVICE)) __input_trace("Warning! Default profile for multidevice \"", INPUT_AUTO_PROFILE_FOR_MULTIDEVICE, "\" has not been defined");
     
     //Fix any missing verb definitions for default profiles
     var _f = 0;

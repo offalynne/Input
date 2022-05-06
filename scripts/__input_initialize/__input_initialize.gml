@@ -4,12 +4,22 @@ function __input_initialize()
 {
     if (variable_global_exists("__input_frame")) return false;;
     
-    global.__input_time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
+    try
     {
-        input_tick();
-    }, -1);
-    
-    time_source_start(global.__input_time_source);
+        //Attempt to set up a time source for slick automatic input handling
+        global.__input_time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
+        {
+            __input_system_tick();
+        }, -1);
+        
+        time_source_start(global.__input_time_source);
+    }
+    catch(_)
+    {
+        //If the above fails then fall back on needing to call input_tick()
+        global.__input_time_source = undefined;
+        __input_trace("Running on a GM runtime earlier than 2022.5");
+    }
     
     //Set up the extended debug functionality
     global.__input_debug_log = "input___" + string_replace_all(string_replace_all(date_datetime_string(date_current_datetime()), ":", "-"), " ", "___") + ".txt";
