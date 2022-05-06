@@ -104,7 +104,7 @@
     {"id":{"name":"input_gamepad_value","path":"scripts/input_gamepad_value/input_gamepad_value.yy",},"order":10,},
     {"id":{"name":"input_keyboard_check_released","path":"scripts/input_keyboard_check_released/input_keyboard_check_released.yy",},"order":2,},
     {"id":{"name":"input_profile_destroy","path":"scripts/input_profile_destroy/input_profile_destroy.yy",},"order":1,},
-    {"id":{"name":"__input_config_profiles","path":"scripts/__input_config_profiles/__input_config_profiles.yy",},"order":1,},
+    {"id":{"name":"__input_config_profiles_and_bindings","path":"scripts/__input_config_profiles_and_bindings/__input_config_profiles_and_bindings.yy",},"order":1,},
     {"id":{"name":"input_mouse_x","path":"scripts/input_mouse_x/input_mouse_x.yy",},"order":3,},
     {"id":{"name":"input_check_repeat","path":"scripts/input_check_repeat/input_check_repeat.yy",},"order":4,},
     {"id":{"name":"__input_mouse_button","path":"scripts/__input_mouse_button/__input_mouse_button.yy",},"order":21,},
