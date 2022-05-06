@@ -8,13 +8,13 @@ Verbs are the basic input actions you want to expose to a player; this includes 
 
 When using Input, you'll need to define your own verb names. A verb name can be either a **string** or a **number**. It is recommend that you use an enum or some macros to store your verb names, but you're welcome to use whatever verb names suit you.
 
-[Several functions](Functions-(Default-Bindings)) also include an optional `[alternate]` argument. You can think of alternate bindings as binding "slots" for each verb. This argument allows you to bind multiple similar inputs to the same verb for the same type of [input source](Input-Sources). This is used, for example, to allow WASD and arrow keys to simultaneously control player movement. `[alternate]` defaults to `0`, but increasing this integer will allow you to read and write alternate binding slots.
+[Several functions](<Functions-(Default-Bindings)>) also include an optional `[alternate]` argument. You can think of alternate bindings as binding "slots" for each verb. This argument allows you to bind multiple similar inputs to the same verb for the same type of [input source](Input-Sources). This is used, for example, to allow WASD and arrow keys to simultaneously control player movement. `[alternate]` defaults to `0`, but increasing this integer will allow you to read and write alternate binding slots.
 
------
+---
 
 Here is a simple example for a Space Invaders sort of game:
 
-```GML
+```gml
 //// Game Start event ////
 
 //Declare an enum that stores verb names
@@ -44,7 +44,7 @@ if (input_check_pressed(eVerb.Shoot)) shoot_bullet(x, y);
 
 Now let's add some more bindings so that the player can play with a gamepad:
 
-```GML
+```gml
 //// Game Start event ////
 
 //Declare an enum that stores verb names
@@ -81,7 +81,7 @@ Did you notice how the Step event code didn't change at all? Because we're using
 
 Let's add some alternate bindings:
 
-```GML
+```gml
 //// Game Start event ////
 
 //Declare an enum that stores verb names
