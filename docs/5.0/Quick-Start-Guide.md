@@ -26,7 +26,7 @@ Now that the boring techy stuff is out of the way, we can get to the real fun an
 
 Let's define some verbs then! To define default bindings for your verbs you'll need to edit the `INPUT_DEFAULT_PROFILES` macro found in `__input_config_profiles_and_bindings()`. When you import Input it'll come with some default controls already set up. To explain this clearer, let's delete everything that's already in `INPUT_DEFAULT_PROFILES` and start fresh. I'm going to define three controls, one for left, right, and shoot.
 
-```
+```gml
 INPUT_DEFAULT_PROFILES = {
     
 	//Bind keyboard controls to verbs
@@ -43,7 +43,7 @@ We've got the [`input_binding_key()`](Functions-(Default-Bindings)#input_default
 
 Here's a Step event for you to put in a character object or whatever!
 
- ```
+```gml
 //Move the player if the Left or Right verb is activated
 if (input_check("left"))  x -= 4;
 if (input_check("right")) x += 4;
@@ -67,7 +67,7 @@ Lets go back to our create event for a hot sec.
 
 Take a gander at this new code we'll add:
 
-```
+```gml
 INPUT_DEFAULT_PROFILES = {
     
 	//Bind keyboard controls to verbs
