@@ -61,7 +61,7 @@ Oh you sweet summer child, did you think we were done?
 
 &nbsp;
 
-## Step 3: Alternate bindings and more!
+## Step 3: Gamepad bindings
 
 Lets go back to our create event for a hot sec.
 
