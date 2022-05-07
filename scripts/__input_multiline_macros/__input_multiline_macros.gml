@@ -39,9 +39,19 @@
 
 #macro __INPUT_VERIFY_SOURCE_ASSIGNABLE  if (_source == INPUT_KEYBOARD)\
                                          {\
-                                             if (!global.__input_any_keyboard_binding_defined)\
+                                             if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER)\
                                              {\
-                                                 __input_error("Cannot claim ", _source, ", no keyboard bindings have been created");\
+                                                 if (!global.__input_any_keyboard_binding_defined && !global.__input_any_mouse_binding_defined)\
+                                                 {\
+                                                    __input_error("Cannot claim ", _source, ", no keyboard or mouse bindings have been created");\
+                                                 }\
+                                             }\
+                                             else\
+                                             {\
+                                                 if (!global.__input_any_keyboard_binding_defined)\
+                                                 {\
+                                                     __input_error("Cannot claim ", _source, ", no keyboard bindings have been created");\
+                                                 }\
                                              }\
                                          }\
                                          else if (_source == INPUT_MOUSE)\

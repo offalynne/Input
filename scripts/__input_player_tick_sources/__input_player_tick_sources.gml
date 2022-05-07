@@ -3,7 +3,7 @@ function __input_player_tick_sources()
     if (__profile_name == undefined) return;
     var _current_profile_dict = __profiles_dict[$ __profile_name];
     
-    var _is_multidevice_player = ((global.__input_multidevice_enable != undefined) && (global.__input_multidevice_enable == __index));
+    var _is_multidevice_player = (global.__input_multidevice_enable && (__index == 0));
     
     var _v = 0;
     repeat(array_length(global.__input_basic_verb_array))
@@ -82,13 +82,43 @@ function __input_player_tick_sources()
                             break;
                             
                             case __INPUT_BINDING_MOUSE_BUTTON:
-                            case __INPUT_BINDING_MOUSE_WHEEL_DOWN:
+                                if (!INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
+                                
+                                if (input_mouse_check(_binding.value))
+                                {
+                                    _value        = 1.0;
+                                    _raw          = 1.0;
+                                    _analogue     = false;
+                                    _raw_analogue = false;
+                                }
+                            break;
+                            
                             case __INPUT_BINDING_MOUSE_WHEEL_UP:
-                                if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) break; //Don't show an error if INPUT_KEYBOARD and INPUT_MOUSE are assigned together
-                            //These 3 cases fall through to default
+                                if (!INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
+                                
+                                if (mouse_wheel_up())
+                                {
+                                    _value        = 1.0;
+                                    _raw          = 1.0;
+                                    _analogue     = false;
+                                    _raw_analogue = false;
+                                }
+                            break;
+                            
+                            case __INPUT_BINDING_MOUSE_WHEEL_DOWN:
+                                if (!INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
+                                
+                                if (mouse_wheel_down())
+                                {
+                                    _value        = 1.0;
+                                    _raw          = 1.0;
+                                    _analogue     = false;
+                                    _raw_analogue = false;
+                                }
+                            break;
                             
                             default:
-                                __input_error("Binding unsupported for keyboard source\n", _binding);
+                                __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
                             break;
                         }
                         
@@ -137,12 +167,8 @@ function __input_player_tick_sources()
                                 //Null binding
                             break;
                             
-                            case __INPUT_BINDING_KEY:
-                                if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) break; //Don't show an error if INPUT_KEYBOARD and INPUT_MOUSE are assigned together
-                            //This case falls through to default
-                             
                             default:
-                                __input_error("Binding unsupported for mouse source\n", _binding);
+                                __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
                             break;
                         }
                         
@@ -223,7 +249,7 @@ function __input_player_tick_sources()
                             break;
                             
                             default:
-                                __input_error("Binding unsupported for gamepad source\n", _binding);
+                                __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
                             break;
                         }
                         

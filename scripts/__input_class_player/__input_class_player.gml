@@ -91,7 +91,7 @@ function __input_class_player() constructor
     static __profile_get_auto = function()
     {
         if (__ghost) return undefined;
-        if ((global.__input_multidevice_enable != undefined) && (global.__input_multidevice_enable == __index)) return INPUT_AUTO_PROFILE_FOR_MULTIDEVICE;
+        if (global.__input_multidevice_enable && (__index == 0)) return INPUT_AUTO_PROFILE_FOR_MULTIDEVICE;
         
         var _count = array_length(__source_array);
         
@@ -101,25 +101,15 @@ function __input_class_player() constructor
         //If we have one source then return the profile for that source
         if (_count == 1)
         {
-            switch(__source_array[0].source)
+            switch(__source_array[0].__source)
             {
                 case __INPUT_SOURCE.KEYBOARD: return INPUT_AUTO_PROFILE_FOR_KEYBOARD; break;
                 case __INPUT_SOURCE.MOUSE:    return INPUT_AUTO_PROFILE_FOR_MOUSE;    break;
                 case __INPUT_SOURCE.GAMEPAD:  return INPUT_AUTO_PROFILE_FOR_GAMEPAD;  break;
                 
                 default:
-                    __input_error("Invalid source (", __source_array[0].source, ")");
+                    __input_error("Invalid source (", __source_array[0].__source, ")");
                 break;
-            }
-        }
-        
-        //Special case to handle keyboard+mouse
-        if (_count == 2)
-        {
-            if ((__source_array[0].source == __INPUT_SOURCE.KEYBOARD) && (__source_array[1].source == __INPUT_SOURCE.MOUSE)
-            ||  (__source_array[1].source == __INPUT_SOURCE.KEYBOARD) && (__source_array[0].source == __INPUT_SOURCE.MOUSE))
-            {
-                if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) return INPUT_AUTO_PROFILE_FOR_KEYBOARD;
             }
         }
         
@@ -130,7 +120,7 @@ function __input_class_player() constructor
     static __profile_set_auto = function()
     {
         var _profile_name = __profile_get_auto();
-        if (_profile_name != undefined) __profile_set();
+        if (_profile_name != undefined) __profile_set(_profile_name);
     }
     
     /// @param profileName
@@ -191,7 +181,12 @@ function __input_class_player() constructor
         var _i = 0;
         repeat(array_length(__source_array))
         {
-            if (__source_array[_i] == _source) return;
+            if (__source_array[_i] == _source)
+            {
+                if (INPUT_DEBUG_SOURCES) __input_trace("Cannot add ", _source, " to player ", __index, ", it has already been assigned");
+                return;
+            }
+            
             ++_i;
         }
         

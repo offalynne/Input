@@ -462,6 +462,11 @@ function __input_system_tick()
     
     
     
+    if (global.__input_hotswap_enable) __input_hotswap_tick();
+    /*if (global.__input_hotswap_enable) __input_multiplayer_assignment_tick();*/
+    
+    
+    
     //Legacy behaviour from v4.1 and before
     //TODO - Remove this and direct users to use input_players_get_status()
     return _any_players_changed;

@@ -119,7 +119,7 @@ function __input_initialize()
     global.__input_default_player = new __input_class_player();
     
     //
-    global.__input_hotswap_enable = false;
+    global.__input_hotswap_enable = INPUT_HOTSWAP_START_ENABLED;
     
     //Having a multidevice player defined means that all other non-ghost players are considered disconnected
     global.__input_multidevice_enable = false;
@@ -540,7 +540,7 @@ function __input_initialize()
     global.__input_default_profile_dict = undefined;
     
     INPUT_KEYBOARD = new __input_class_source(__INPUT_SOURCE.KEYBOARD);
-    INPUT_MOUSE    = new __input_class_source(__INPUT_SOURCE.MOUSE);
+    INPUT_MOUSE = INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER? INPUT_KEYBOARD : (new __input_class_source(__INPUT_SOURCE.MOUSE));
     
     INPUT_GAMEPAD = array_create(INPUT_MAX_TRACKED_GAMEPADS, undefined);
     var _g = 0;

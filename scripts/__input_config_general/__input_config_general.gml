@@ -33,6 +33,9 @@
 
 
 
+//Whether Input should boot with hotswapping turned on
+#macro INPUT_HOTSWAP_START_ENABLED  true
+
 //Number of milliseconds between source swaps. This should be longer than a single frame (>17 ms at 60FPS)
 #macro INPUT_HOTSWAP_DELAY  33
 
@@ -41,6 +44,13 @@
 
 //Whether to trigger a hotswap when the mouse is moved
 #macro INPUT_HOTSWAP_ON_MOUSE_MOVEMENT  true
+
+//The function to call when a player hotswaps their device
+//Set this macro to <undefined> to not call a function
+#macro INPUT_HOTSWAP_CALLBACK  undefined
+
+//Whether to automatically set the profile for player 0 when their source is hotswapped
+#macro INPUT_HOTSWAP_AUTO_PROFILE  true
 
 
 

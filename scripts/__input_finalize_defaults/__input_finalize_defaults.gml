@@ -73,19 +73,9 @@ function __input_finalize_defaults()
                 {
                     switch(_binding.__get_source())
                     {
-                        case __INPUT_SOURCE.KEYBOARD:
-                            global.__input_any_keyboard_binding_defined = true;
-                            if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) global.__input_any_mouse_binding_defined = true;
-                        break;
-                        
-                        case __INPUT_SOURCE.MOUSE:
-                            global.__input_any_mouse_binding_defined = true;
-                            if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) global.__input_any_keyboard_binding_defined = true;
-                        break;
-                        
-                        case __INPUT_SOURCE.GAMEPAD:
-                            global.__input_any_gamepad_binding_defined = true;
-                        break;
+                        case __INPUT_SOURCE.KEYBOARD: global.__input_any_keyboard_binding_defined = true; break;
+                        case __INPUT_SOURCE.MOUSE:    global.__input_any_mouse_binding_defined    = true; break;
+                        case __INPUT_SOURCE.GAMEPAD:  global.__input_any_gamepad_binding_defined  = true; break;
                     }
                 }
                 

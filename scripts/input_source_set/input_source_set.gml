@@ -1,7 +1,8 @@
 /// @param source
 /// @param [playerIndex=0]
+/// @param [autoProfile=true]
 
-function input_source_set(_source, _player_index = 0)
+function input_source_set(_source, _player_index = 0, _auto_profile = true)
 {
 	__input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX
@@ -21,6 +22,8 @@ function input_source_set(_source, _player_index = 0)
                 __source_add(INPUT_GAMEPAD[_i]);
                 ++_i;
             }
+            
+            if (_auto_profile) __profile_set_auto();
         }
         
         return;
@@ -30,19 +33,9 @@ function input_source_set(_source, _player_index = 0)
     __INPUT_VERIFY_SOURCE_ASSIGNABLE
     
     __input_source_relinquish(_source);
-    global.__input_players[_player_index].__source_add(_source);
-    
-    if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER)
+    with(global.__input_players[_player_index])
     {
-        if (_source == INPUT_KEYBOARD)
-        {
-            __input_source_relinquish(INPUT_MOUSE);
-            global.__input_players[_player_index].__source_add(INPUT_MOUSE);
-        }
-        else if (_source == INPUT_MOUSE)
-        {
-            __input_source_relinquish(INPUT_KEYBOARD);
-            global.__input_players[_player_index].__source_add(INPUT_KEYBOARD);
-        }
+        __source_add(_source);
+        if (_auto_profile) __profile_set_auto();
     }
 }

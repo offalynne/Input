@@ -12,6 +12,16 @@ function input_source_detect_input(_source)
             {
                 return true;
             }
+            
+            if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER)
+            {
+                if (global.__input_any_mouse_binding_defined
+                &&  input_source_is_available(_source)
+                &&  (input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
+                {
+                    return true;
+                }
+            }
         break;
         
         case __INPUT_SOURCE.MOUSE:

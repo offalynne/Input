@@ -8,8 +8,8 @@ function __input_class_source(_source, _gamepad = undefined) constructor
     
     switch(__source)
     {
-        case __INPUT_SOURCE.KEYBOARD: __name = "keyboard";                    break;
-        case __INPUT_SOURCE.MOUSE:    __name = "mouse";                       break;
+        case __INPUT_SOURCE.KEYBOARD: __name = INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER? "keyboard and mouse" : "keyboard"; break;
+        case __INPUT_SOURCE.MOUSE:    __name = INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER? "keyboard and mouse" : "mouse";    break;
         case __INPUT_SOURCE.GAMEPAD:  __name = "gamepad " + string(_gamepad); break;
         
         default:
@@ -21,8 +21,8 @@ function __input_class_source(_source, _gamepad = undefined) constructor
     {
         switch(__source)
         {
-            case __INPUT_SOURCE.KEYBOARD: return true;                                  break;
-            case __INPUT_SOURCE.MOUSE:    return true;                                  break;
+            case __INPUT_SOURCE.KEYBOARD: return true;                                  break; //TODO - Should this check against whether bindings exist for this source?
+            case __INPUT_SOURCE.MOUSE:    return true;                                  break; //TODO - Should this check against whether bindings exist for this source?
             case __INPUT_SOURCE.GAMEPAD:  return input_gamepad_is_connected(__gamepad); break;
             
             default:
@@ -35,22 +35,9 @@ function __input_class_source(_source, _gamepad = undefined) constructor
     {
         switch(_other_source.__source)
         {
-            case __INPUT_SOURCE.KEYBOARD:
-                if (__source == __INPUT_SOURCE.KEYBOARD) return true;
-                if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (__source == __INPUT_SOURCE.MOUSE)) return true;
-                return false;
-            break;
-            
-            case __INPUT_SOURCE.MOUSE:
-                if (__source == __INPUT_SOURCE.MOUSE) return true;
-                if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (__source == __INPUT_SOURCE.KEYBOARD)) return true;
-                return false;
-            break;
-            
-            case __INPUT_SOURCE.GAMEPAD:
-                if ((__source == __INPUT_SOURCE.GAMEPAD) && (__gamepad != undefined) && (__gamepad == _other_source.__gamepad)) return true;
-                return false;
-            break;
+            case __INPUT_SOURCE.KEYBOARD: return (__source == __INPUT_SOURCE.KEYBOARD); break;
+            case __INPUT_SOURCE.MOUSE:    return (__source == __INPUT_SOURCE.MOUSE); break;
+            case __INPUT_SOURCE.GAMEPAD:  return ((__source == __INPUT_SOURCE.GAMEPAD) && (__gamepad == _other_source.__gamepad)); break;
         }
         
         return false;
