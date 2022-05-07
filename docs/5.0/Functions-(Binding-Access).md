@@ -1,8 +1,8 @@
 # Functions (Bindings)
 
----
+&nbsp;
 
-### `input_value_is_binding(value)`
+## `input_value_is_binding(value)`
 
 _Returns:_ Boolean, if the value is a valid binding struct
 
@@ -14,9 +14,7 @@ Useful for verifying if a value returned from [`input_binding_scan_tick()`](<Fun
 
 &nbsp;
 
-&nbsp;
-
-### `input_binding_is_valid(binding, [playerIndex])`
+## `input_binding_is_valid(binding, [playerIndex])`
 
 _Returns:_ Boolean, if the value is a valid binding for the specified player on the current platform
 
@@ -29,9 +27,7 @@ Useful for verifying if a binding returned by [`input_binding_get()`](<Functions
 
 &nbsp;
 
-&nbsp;
-
-### `input_binding_scan_tick(source, [playerIndex])`
+## `input_binding_scan_tick(source, [playerIndex])`
 
 _Returns:_ Various, see below
 
@@ -86,9 +82,7 @@ Error codes that this function can return are as follows. These are all elements
 
 &nbsp;
 
-&nbsp;
-
-### `input_binding_set(verb, binding, [playerIndex], [alternate])`
+## `input_binding_set(verb, binding, [playerIndex], [alternate])`
 
 _Returns:_ N/A (`undefined`)
 
@@ -103,9 +97,7 @@ Straightforwardly sets the binding for a verb, overwriting what was already ther
 
 &nbsp;
 
-&nbsp;
-
-### `input_binding_set_safe(verb, binding, [playerIndex], [alternate])`
+## `input_binding_set_safe(verb, binding, [playerIndex], [alternate])`
 
 _Returns:_ N/A (`undefined`)
 
@@ -120,9 +112,7 @@ In contrast to [`input_binding_set()`](<Functions-(Binding-Management)#input_bin
 
 &nbsp;
 
-&nbsp;
-
-### `input_binding_get(verb, [source], [playerIndex], [alternate])`
+## `input_binding_get(verb, [source], [playerIndex], [alternate])`
 
 _Returns:_ Struct. See below.
 
@@ -143,9 +133,7 @@ This function returns a struct that describes the binding for the given verb. It
 
 &nbsp;
 
-&nbsp;
-
-### `input_binding_get_collisions(binding, [playerIndex])`
+## `input_binding_get_collisions(binding, [playerIndex])`
 
 _Returns:_ Array of structs containing conflicting verb/alternate indexes
 
@@ -165,9 +153,7 @@ The structs returned in the array contain the following:
 
 &nbsp;
 
-&nbsp;
-
-### `input_binding_remove(verb, source, [playerIndex], [alternate])`
+## `input_binding_remove(verb, source, [playerIndex], [alternate])`
 
 _Returns:_ N/A (`undefined`)
 
@@ -182,9 +168,7 @@ Removes a binding from Input. **Be very careful with this function!** It's possi
 
 &nbsp;
 
-&nbsp;
-
-### `input_binding_swap(verbA, alternateA, verbB, alternateB, [source], [playerIndex])`
+## `input_binding_swap(verbA, alternateA, verbB, alternateB, [source], [playerIndex])`
 
 _Returns:_ N/A (`undefined`)
 
@@ -201,9 +185,7 @@ Swaps over the two verb bindings specified.
 
 &nbsp;
 
-&nbsp;
-
-### `input_binding_get_name(binding)`
+## `input_binding_get_name(binding)`
 
 _Returns:_ String, the human-readable [name for the binding](Binding-Names)
 

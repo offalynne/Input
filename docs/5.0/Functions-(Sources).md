@@ -1,8 +1,52 @@
-# Functions (Source Assignment)
+# Functions (Sources)
 
----
+&nbsp;
 
-### `input_source_assignment_tick(minPlayers, maxPlayers, leaveVerb)`
+## `input_hotswap_enable([playerIndex])`
+
+*Returns:* N/A (`undefined`)
+
+|Name   |Datatype|Purpose                                                                                    |
+|-------|--------|-------------------------------------------------------------------------------------------|
+|`state`|boolean |                                                                                           |
+
+Hotswapping is mutually exclusive with multidevice mode (see below). The hotswapped player is always player 0.
+
+&nbsp;
+
+## `input_hotswap_get()`
+
+*Returns:* Boolean, whether hotswapping mode is enabled
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+&nbsp;
+
+## `input_multidevice_set(state)`
+
+*Returns:* N/A (`undefined`)
+
+|Name   |Datatype|Purpose                                                                                    |
+|-------|--------|-------------------------------------------------------------------------------------------|
+|`state`|boolean |                                                                                           |
+
+Multidevice mode is mutually exclusive with hotswapping mode (see above). Multidevice mode only applies to player 0 and, when enabled, will disconnect all other players.
+
+&nbsp;
+
+## `input_multidevice_get()`
+
+*Returns:* Boolean, whether multidevice mode is enabled
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+&nbsp;
+
+## `input_source_assignment_tick(minPlayers, maxPlayers, leaveVerb)`
 
 *Returns:* Boolean, set to `true` when a player attempts to abort controller assignment
 
@@ -20,9 +64,7 @@ Players can join the game by pressing any button on their controller. Players ca
 
 &nbsp;
 
-&nbsp;
-
-### `input_source_hotswap_tick([playerIndex])`
+## `input_source_hotswap_tick([playerIndex])`
 
 *Returns:* Boolean, indicating whether the player's [input source](Input-Sources) and/or [gamepad](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html) was changed this frame
 
@@ -36,9 +78,7 @@ This function handles [input source](Input-Sources) and [gamepad](https://docs2.
 
 &nbsp;
 
-&nbsp;
-
-### `input_source_get_name(source)`
+## `input_source_get_name(source)`
 
 *Returns:* String, the name of the source
 
@@ -50,9 +90,7 @@ This function will return `"none"`, `"keyboard and mouse"`, or `"gamepad"`. If t
 
 &nbsp;
 
-&nbsp;
-
-### `input_source_detect(source, [gamepad])`
+## `input_source_detect(source, [gamepad])`
 
 *Returns:* Boolean, whether new input is detected from this [source](Input-Sources) (and the source is unassigned)
 
@@ -65,9 +103,7 @@ This function will return `false` if the source has been assigned to a player.
 
 &nbsp;
 
-&nbsp;
-
-### `input_source_detect_any()`
+## `input_source_detect_any()`
 
 *Returns:* Struct containing data on a [source](Input-Sources) that has presented **new** input and is unassigned, see below
 
@@ -79,10 +115,7 @@ This function returns a struct with two member variables: `.source` contains a m
 
 &nbsp;
 
-&nbsp;
-
-
-### `input_source_is_available(source, [gamepad])`
+## `input_source_is_available(source, [gamepad])`
 
 *Returns:* Boolean, whether the given [source](Input-Sources) is unassigned
 

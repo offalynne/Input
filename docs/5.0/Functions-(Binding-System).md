@@ -1,8 +1,8 @@
 # Functions (Binding System)
 
----
+&nbsp;
 
-### `input_bindings_reset([source], [playerIndex], [resetThresholds])`
+## `input_bindings_reset([source], [playerIndex], [resetThresholds])`
 
 *Returns:* N/A (`undefined`)
 
@@ -16,10 +16,7 @@ Clears the currently bindings for the given player, resetting them to the [defau
 
 &nbsp;
 
-&nbsp;
-
-
-### `input_bindings_write([playerIndex])`
+## `input_bindings_write([playerIndex])`
 
 *Returns:* JSON encoded as a string
 
@@ -37,10 +34,7 @@ It is reccomended to only use bindings written on the same device, as keyboard s
 
 &nbsp;
 
-&nbsp;
-
-
-### `input_bindings_read(string, [playerIndex])`
+## `input_bindings_read(string, [playerIndex])`
 
 *Returns:* N/A (`undefined`)
 
@@ -59,9 +53,7 @@ While useful for retaining player preferences across sessions, [default bindings
 
 &nbsp;
 
-&nbsp;
-
-### `input_bindings_copy(source, destination)`
+## `input_bindings_copy(source, destination)`
 
 *Returns:* N/A (`undefined`)
 

@@ -96,11 +96,9 @@
 
 ### [Sources](Functions-(Sources))
 
-- [`input_hotswap_enable([playerIndex])`]()
-- [`input_hotswap_disable()`]()
+- [`input_hotswap_set(state)`]()
 - [`input_hotswap_get()`]()
-- [`input_multidevice_enable([playerIndex])`]()
-- [`input_multidevice_disable()`]()
+- [`input_multidevice_set(state)`]()
 - [`input_multidevice_get()`]()
 - [`input_source_assignment_tick(minPlayers, maxPlayers, leaveVerb)`](Functions-(Sources)#input_source_assignment_tickminplayers-maxplayers-leaveverb)
 - [`input_source_detect(source, [gamepad])`](Functions-(Sources)#input_source_detectsource-gamepad)
