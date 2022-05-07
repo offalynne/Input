@@ -18,14 +18,10 @@
 |`INPUT_DOUBLE_DELAY`                      |`12`                     |Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS` |
 |`INPUT_CHORD_DEFAULT_TIME`                |`4`                      |Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS` |
 |`INPUT_2D_CLAMP`                          |`true`                   |Number of milliseconds between source swaps when using [`input_hotswap_tick()`](Functions-(Source-Assignment)#input_hotswap_tickplayerindex). This should be longer than a single frame (>17 ms at 60FPS)|
-|`INPUT_HOTSWAP_DELAY`                     |`33`                     |Number of milliseconds between source swaps when using [`input_hotswap_tick()`](Functions-(Source-Assignment)#input_hotswap_tickplayerindex). This should be longer than a single frame (>17 ms at 60FPS)|
-|`INPUT_HOTSWAP_ON_GAMEPAD_AXIS`           |`true`                   |Whether to trigger a hotswap when a gamepad axis is moved                                                                                             |
-|`INPUT_HOTSWAP_ON_MOUSE_MOVEMENT`         |`true`                   |Whether to trigger a hotswap when the mouse is moved                                                                                                  |
 |`INPUT_ANDROID_KEYBOARD_ALLOWED`          |`false`                  |Whether to allow keyboard input on Android platform                                                                                                   |
 |`INPUT_SWITCH_KEYBOARD_ALLOWED`           |`false`                  |Whether to allow keyboard input on Switch platform                                                                                                    |
 |`INPUT_BINDING_SCAN_TIMEOUT`              |`10000`                  |Time (in milliseconds) to wait for a new binding before automatically cancelling the binding scan                                                     |
 |`INPUT_IGNORE_RESERVED_KEYS_LEVEL`        |`2`                      |Controls default key filtering behaviour. See below                                                                                                   |
-
 
 `INPUT_IGNORE_RESERVED_KEYS_LEVEL` can take the following values:
 
@@ -58,11 +54,31 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 |`INPUT_MAX_ALTERNATE_BINDINGS`            |`2`                      |                                                                                                                                                      |
 |`INPUT_AUTO_PROFILE_FOR_KEYBOARD`         |`"keyboard"`             |                                                                                                                                                      |
 |`INPUT_AUTO_PROFILE_FOR_MOUSE`            |`"mouse"`                |                                                                                                                                                      |
+|`INPUT_AUTO_PROFILE_FOR_GAMEPAD`          |`"gamepad"`              |                                                                                                                                                      |
 |`INPUT_AUTO_PROFILE_FOR_MIXED`            |`"mixed"`                |                                                                                                                                                      |
 |`INPUT_AUTO_PROFILE_FOR_MULTIDEVICE`      |`"multidevice"`          |                                                                                                                                                      |
 |`INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER`|`true`                   |                                                                                                                                                      |
 |`INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES`|`false`                  |                                                                                                                                                      |
 |`INPUT_DEFAULT_PROFILES`                  |See below                |                                                                                                                                                      |
+
+&nbsp;
+
+## Source Modes
+
+`__input_config_source_modes()` holds macros that affect the behaviour of different source modes. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
+
+?> You should edit this script to customise Input for your own purposes.
+
+|Name                              |Typical Value              |Purpose                                                                                                                                                                                                  |
+|----------------------------------|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`INPUT_STARTING_SOURCE_MODE`      |`INPUT_SOURCE_MODE.HOTSWAP`|                                                                                                                                                                                                         |
+|`INPUT_MULTIPLAYER_LEAVE_VERB`    |Method                     |                                                                                                                                                                                                         |
+|`INPUT_MULTIPLAYER_ABORT_CALLBACK`|Method                     |                                                                                                                                                                                                         |
+|`INPUT_HOTSWAP_DELAY`             |`33`                       |Number of milliseconds between source swaps when using [`input_hotswap_tick()`](Functions-(Source-Assignment)#input_hotswap_tickplayerindex). This should be longer than a single frame (>17 ms at 60FPS)|
+|`INPUT_HOTSWAP_ON_GAMEPAD_AXIS`   |`true`                     |Whether to trigger a hotswap when a gamepad axis is moved                                                                                                                                                |
+|`INPUT_HOTSWAP_ON_MOUSE_MOVEMENT` |`true`                     |Whether to trigger a hotswap when the mouse is moved                                                                                                                                                     |
+|`INPUT_HOTSWAP_CALLBACK`          |Method                     |                                                                                                                                                                                                         |
+|`INPUT_HOTSWAP_AUTO_PROFILE`      |`true`                     |                                                                                                                                                                                                         |
 
 &nbsp;
 
@@ -88,7 +104,7 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 
 ## Mouse, Touch, and Cursor
 
-`__input_config_gamepad_data()` holds macros that affect how Input handles mouse and touch input, and how Input's native cursor feature behaves. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
+`__input_config_mouse_touch_cursor()` holds macros that affect how Input handles mouse and touch input, and how Input's native cursor feature behaves. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
 
 ?> You should edit this script to customise Input for your own purposes.
 
