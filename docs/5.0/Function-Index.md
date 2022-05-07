@@ -2,38 +2,34 @@
 
 ---
 
-### [System](Functions-(System))
-
-!> This function must be called once every frame in a Begin Step event for Input to work.
-
-- [`input_tick()`](Functions-(System)#input_tick)
+!> If you're using Input 5 on versions of GameMaker **before** 2022.5 (May 2022) then you'll need to call `input_tick()` in the Begin Step event of a persistent instance. This function handles all things Input behind the scenes, it is important to have [`input_tick()`](Functions-(System)#input_tick) once (and only once) each step of your game. A good way to do this is by making `obj_input_manager` [persistent](https://manual.yoyogames.com/#t=The_Asset_Editors%2FObjects.htm), and placing one instance in your first room.
 
 ### [Players](Functions-(Players))
 
-- [`input_player_connected([playerIndex])`](Functions-(Players)#input_player_connectedplayerindex)
-- [`input_players_connected()`](Functions-(Players)#input_players_connected)
-- [`input_player_source_set(source, [playerIndex])`](Functions-(Players)#input_player_source_setsource-playerindex)
-- [`input_player_source_get([playerIndex])`](Functions-(Players)#input_player_source_getplayerindex)
-- [`input_player_gamepad_set(gamepad, [playerIndex])`](Functions-(Players)#input_player_gamepad_setgamepad-playerindex)
-- [`input_player_gamepad_get([playerIndex])`](Functions-(Players)#input_player_gamepad_getplayerindex)
-- [`input_player_gamepad_get_type([playerIndex])`](Functions-(Players)#input_player_gamepad_get_typeplayerindex)
-- [`input_player_gamepad_get_invalid_bindings([playerIndex])`](Functions-(Players)#input_player_gamepad_get_invalid_bindingsplayerindex)
+- [`input_player_claim(source, [playerIndex])`]()
+- [`input_player_share(source, arrayOfPlayerIndexes)`]()
+- [`input_player_claimed(source, [playerIndex])`]()
+- [`input_player_clear_sources([playerIndex])`]()
+- [`input_player_get_source_array([playerIndex])`]()
+- [`input_player_connected([playerIndex])`]()
+- [`input_player_connected_count()`]()
 - [`input_players_get_status()`](Functions-(Players)#input_players_get_status)
+- [`input_player_get_gamepad([playerIndex])`](Functions-(Players)#input_player_gamepad_getplayerindex)
+- [`input_player_get_gamepad_type([playerIndex])`](Functions-(Players)#input_player_gamepad_get_typeplayerindex)
+- [`input_player_get_invalid_gamepad_bindings([playerIndex], [profileName])`]()
+- [`input_player_ghost_set(state, [playerIndex])`]()
+- [`input_player_ghost_get([playerIndex])`]()
 
-### [Default Bindings](Functions-(Default-Bindings))
+### [Profiles](Functions-(Profiles))
 
-- [`input_default_key(key, verb, [alternate])`](Functions-(Default-Bindings)#input_default_keykey-verb-alternate)
-- [`input_default_mouse_button(button, verb, [alternate])`](Functions-(Default-Bindings)#input_default_mouse_buttonbutton-verb-alternate)
-- [`input_default_mouse_wheel_up(verb, [alternate])`](Functions-(Default-Bindings)#input_default_mouse_wheel_upverb-alternate)
-- [`input_default_mouse_wheel_down(verb, [alternate])`](Functions-(Default-Bindings)#input_default_mouse_wheel_downverb-alternate)
-- [`input_default_gamepad_button(button, verb, [alternate])`](Functions-(Default-Bindings)#input_default_gamepad_buttonbutton-verb-alternate)
-- [`input_default_gamepad_axis(axis, negative, verb, [alternate])`](Functions-(Default-Bindings)#input_default_gamepad_axisaxis-negative-verb-alternate)
-- [`input_default_gamepad_swap_ab(state)`](Functions-(Default-Bindings)#input_default_gamepad_swap_abstate)
-
-?> The following two functions are optional. Please read their description for suggestions for usage
-
-- [`input_default_joycon_button(button, verb, [alternate])`](Functions-(Default-Bindings)#input_default_joycon_buttonbutton-verb-alternate)
-- [`input_default_joycon_axis(axis, negative, verb, [alternate])`](Functions-(Default-Bindings)#input_default_joycon_axisaxis-negative-verb-alternate)
+- [`input_profile_create(profileName, [playerIndex])`]()
+- [`input_profile_destroy(profileName, [playerIndex])`]()
+- [`input_profile_exists(profileName, [playerIndex])`]()
+- [`input_profile_get_array([playerIndex])`]()
+- [`input_profile_set(profileName, [playerIndex])`]()
+- [`input_profile_get([playerIndex])`]()
+- [`input_profile_auto([playerIndex])`]()
+- [`input_profile_reset_bindings(profileName, [playerIndex])`]()
 
 ### [Checkers](Functions-(Checkers))
 
@@ -60,11 +56,27 @@
 - [`input_direction(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`](Functions-(2D-Checkers)#input_directionverbleft-verbright-verbup-verbdown-playerindex)
 - [`input_distance(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`](Functions-(2D-Checkers)#input_distanceverbleft-verbright-verbup-verbdown-playerindex)
 
-### [Bindings](Functions-(Bindings))
+### [Extended Verbs](Functions-(Extended-Verbs))
 
-- [`input_value_is_binding(value)`](Functions-(Bindings)#input_value_is_bindingvalue)
-- [`input_binding_is_valid(binding, [playerIndex])`](Functions-(Bindings)#input_binding_is_validbinding-playerIndex)
-- [`input_binding_scan_tick([source], [playerIndex])`](Functions-(Bindings)#input_binding_scan_ticksource-playerindex)
+- [`input_chord_create(name, maxTimeBetweenPresses, verb1, verb2, ...)`]()
+- [`input_combo_create(name, [phaseTimeout])`]()
+- [`input_combo_get_phase(name, [playerIndex])`]()
+- [`input_combo_get_phase_count(name)`]()
+
+### [Binding Creators](Functions-(Binding-Creators))
+
+- [`input_binding_scan_tick([sourceFilter], [playerIndex])`]()
+- [`input_value_is_binding(value)`](Functions-(Binding-Creators)#input_value_is_bindingvalue)
+- [`input_binding_empty()`]()
+- [`input_binding_key(key)`]()
+- [`input_binding_mouse_button(button)`]()
+- [`input_binding_mouse_wheel_down()`]()
+- [`input_binding_mouse_wheel_up()`]()
+- [`input_binding_gamepad_button(button)`]()
+- [`input_binding_gamepad_axis(axis, negative)`]()
+
+### [Binding Access](Functions-(Binding-Access))
+
 - [`input_binding_set(verb, binding, [playerIndex], [alternate])`](Functions-(Bindings)#input_binding_setverb-binding-playerindex-alternate)
 - [`input_binding_set_safe(verb, binding, [playerIndex], [alternate])`](Functions-(Bindings)#input_binding_set_safeverb-binding-playerindex-alternate)
 - [`input_binding_get(verb, [source], [playerIndex], [alternate])`](Functions-(Bindings)#input_binding_getverb-source-playerindex-alternate)
@@ -72,6 +84,7 @@
 - [`input_binding_remove(verb, source, [playerIndex], [alternate])`](Functions-(Bindings)#input_binding_removeverb-source-playerindex-alternate)
 - [`input_binding_swap(verbA, alternateA, verbB, alternateB, [source], [playerIndex])`](Functions-(Bindings)#input_binding_swapverba-alternatea-verbb-alternateb-source-playerindex)
 - [`input_binding_get_name(binding)`](Functions-(Bindings)#input_binding_get_namebinding)
+- [`input_binding_is_valid(binding, [playerIndex])`](Functions-(Bindings)#input_binding_is_validbinding-playerIndex)
 
 ### [Binding System](Functions-(Binding-System))
 
@@ -79,26 +92,36 @@
 - [`input_bindings_write([playerIndex])`](Functions-(Binding-System)#input_bindings_writeplayerindex)
 - [`input_bindings_read(string, [playerIndex])`](Functions-(Binding-System)#input_bindings_readstring-playerindex)
 - [`input_bindings_copy(source, destination)`](Functions-(Binding-System)#input_bindings_copysource-destination)
+- [`input_binding_system_swap_gamepad_ab(state)`](Functions-(Binding-System)#input_binding_system_swap_gamepad_abstate)
 
-### [Source Assignment](Functions-(Source-Assignment))
+### [Sources](Functions-(Sources))
 
-- [`input_source_assignment_tick(minPlayers, maxPlayers, leaveVerb)`](Functions-(Source-Assignment)#input_source_assignment_tickminplayers-maxplayers-leaveverb)
-- [`input_source_hotswap_tick([playerIndex])`](Functions-(Source-Assignment)#input_source_hotswap_tickplayerindex)
-- [`input_source_get_name(source)`](Functions-(Source-Assignment)#input_source_get_namesource)
-- [`input_source_detect(source, [gamepad])`](Functions-(Source-Assignment)#input_source_detectsource-gamepad)
-- [`input_source_detect_any()`](Functions-(Source-Assignment)#input_source_detect_any)
-- [`input_source_is_available(source, [gamepad])`](Functions-(Source-Assignment)#input_source_is_availablesource-gamepad)
+- [`input_hotswap_enable([playerIndex])`]()
+- [`input_hotswap_disable()`]()
+- [`input_hotswap_get()`]()
+- [`input_multidevice_enable([playerIndex])`]()
+- [`input_multidevice_disable()`]()
+- [`input_multidevice_get()`]()
+- [`input_source_assignment_tick(minPlayers, maxPlayers, leaveVerb)`](Functions-(Sources)#input_source_assignment_tickminplayers-maxplayers-leaveverb)
+- [`input_source_detect(source, [gamepad])`](Functions-(Sources)#input_source_detectsource-gamepad)
+- [`input_source_detect_any()`](Functions-(Sources)#input_source_detect_any)
+- [`input_source_is_available(source, [gamepad])`](Functions-(Sources)#input_source_is_availablesource-gamepad)
 
 ### [Other](Functions-(Other))
 
 - [`input_axis_threshold_set(axis, min, max, [playerIndex])`](Functions-(Other)#input_axis_threshold_setaxis-min-max-playerindex)
 - [`input_axis_threshold_get(axis, [playerIndex])`](Functions-(Other)#input_axis_threshold_getaxis-playerindex)
+- [`input_ignore_key_add(key)`](Functions-(Other)#input_ignore_key_addkey)
+- [`input_ignore_key_remove(key)`](Functions-(Other)#input_ignore_key_removekey)
 - [`input_consume(verb, [playerIndex])`](Functions-(Other)#input_consumeverb-playerindex)
 - [`input_clear_momentary(state)`](Functions-(Other)#input_clear_momentarystate)
 - [`input_guess_keyboard_layout()`](Functions-(Other)#input_guess_keyboard_layout)
 - [`input_verb_set(verb, value, [playerIndex])`](Functions-(Other)#input_verb_setverb-value-playerindex)
-- [`input_ignore_key_add(key)`](Functions-(Other)#input_ignore_key_addkey)
-- [`input_ignore_key_remove(key)`](Functions-(Other)#input_ignore_key_removekey)
+- [`input_platform_text_source()`]()
+- [`input_clear_momentary()`]()
+- [`input_mouse_transform_function_set()`]()
+- [`input_mouse_transform_function_Get()`]()
+- [`input_tick()`](Functions-(Other)#input_tick)
 
 ### [Gamepad (Direct)](Functions-(Gamepad))
 
