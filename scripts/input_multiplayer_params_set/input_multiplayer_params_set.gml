@@ -2,7 +2,7 @@
 /// @param max
 /// @param [dropDown=true]
 
-function input_multiplayer_set(_min, _max, _drop_down = true)
+function input_multiplayer_params_set(_min, _max, _drop_down = true)
 {
     __input_initialize();
     

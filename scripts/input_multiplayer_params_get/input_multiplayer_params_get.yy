@@ -6,7 +6,7 @@
     "path": "folders/Input/Players.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_multiplayer_get",
+  "name": "input_multiplayer_params_get",
   "tags": [],
   "resourceType": "GMScript",
 }

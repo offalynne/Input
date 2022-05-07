@@ -1,4 +1,4 @@
-function input_multiplayer_get()
+function input_multiplayer_params_get()
 {
     __input_initialize();
     
