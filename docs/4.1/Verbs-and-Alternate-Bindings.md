@@ -8,13 +8,13 @@ Verbs are the basic input actions you want to expose to a player; this includes 
 
 When using Input, you'll need to define your own verb names. A verb name can be either a **string** or a **number**. It is recommend that you use a string to store your verb names, but you're welcome to use whatever method suits you (such as using an enum).
 
-[Several functions](Functions-(Default-Bindings)) also include an optional `[alternate]` argument. You can think of alternate bindings as binding "slots" for each verb. This argument allows you to bind multiple similar inputs to the same verb for the same type of [input source](Input-Sources). This is used, for example, to allow both WASD and arrow keys, or both dpad and thumbstick to simultaneously control player movement. `[alternate]` defaults to `0`, while greater values allow you to read and write alternate binding slots.
+[Several functions](<Functions-(Default-Bindings)>) also include an optional `[alternate]` argument. You can think of alternate bindings as binding "slots" for each verb. This argument allows you to bind multiple similar inputs to the same verb for the same type of [input source](Input-Sources). This is used, for example, to allow both WASD and arrow keys, or both dpad and thumbstick to simultaneously control player movement. `[alternate]` defaults to `0`, while greater values allow you to read and write alternate binding slots.
 
------
+---
 
 Here is a simple example for a Space Invaders sort of game:
 
-```GML
+```gml
 //// Game Start event ////
 
 //Bind keyboard controls to verbs
@@ -36,7 +36,7 @@ if (input_check_pressed("shoot")) shoot_bullet(x, y);
 
 Now let's add some more bindings so that the player can play with a gamepad:
 
-```GML
+```gml
 //// Game Start event ////
 
 //Bind keyboard controls to verbs
@@ -65,7 +65,7 @@ Did you notice how the Step event code didn't change at all? Because we're using
 
 Let's add some alternate bindings:
 
-```GML
+```gml
 //// Game Start event ////
 
 //Bind keyboard controls to verbs

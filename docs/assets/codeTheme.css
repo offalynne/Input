@@ -1,0 +1,17 @@
+:root {
+	/* Based off of https://base2t.one/demo/sea/ */
+	--code-font-family: 'Roboto Mono', monospace;
+	--code-theme-background: #1d262f;
+	--code-theme-comment: #738191;
+	--code-theme-function: var(--theme-color);
+	--code-theme-keyword: #7eb6f6;
+	--code-theme-operator: #b8bfc7;
+	--code-theme-punctuation: #b8bfc7;
+	--code-theme-selection: #004a9e;
+	--code-theme-selector: #0aa370;
+	--code-theme-tag: #afd4fe;
+	--code-theme-text: #f8f8f2;
+	--code-theme-variable: #47ebb4;
+	--code-inline-color: #cbd7d3;
+	--code-inline-background: #1f282d;
+}
