@@ -1,8 +1,8 @@
 # Functions (Players)
 
----
+&nbsp;
 
-### `input_player_source_set(source, [playerIndex])`
+## `input_player_source_set(source, [playerIndex])`
 
 *Returns:* N/A (`undefined`)
 
@@ -13,9 +13,7 @@
 
 &nbsp;
 
-&nbsp;
-
-### `input_player_source_get([playerIndex])`
+## `input_player_source_get([playerIndex])`
 
 *Returns:* [`INPUT_SOURCE`](Input-Sources)
 
@@ -25,9 +23,7 @@
 
 &nbsp;
 
-&nbsp;
-
-### `input_player_gamepad_set(gamepad, [playerIndex])`
+## `input_player_gamepad_set(gamepad, [playerIndex])`
 
 *Returns:* N/A (`undefined`)
 
@@ -42,9 +38,7 @@ Use the macro `INPUT_NO_GAMEPAD` as the `gamepad` argument to indicate the playe
 
 &nbsp;
 
-&nbsp;
-
-### `input_player_gamepad_get([playerIndex])`
+## `input_player_gamepad_get([playerIndex])`
 
 *Returns:* [Gamepad](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html) index
 
@@ -56,9 +50,7 @@ This function will return `INPUT_NO_GAMEPAD` if the player has no connected game
 
 &nbsp;
 
-&nbsp;
-
-### `input_player_connected([playerIndex])`
+## `input_player_connected([playerIndex])`
 
 *Returns:* Boolean, whether the player's device is connected
 
@@ -68,9 +60,7 @@ This function will return `INPUT_NO_GAMEPAD` if the player has no connected game
 
 &nbsp;
 
-&nbsp;
-
-### `input_players_connected()`
+## `input_players_connected()`
 
 *Returns:* Integer, the number of players with connected devices
 
@@ -80,9 +70,7 @@ This function will return `INPUT_NO_GAMEPAD` if the player has no connected game
 
 &nbsp;
 
-&nbsp;
-
-### `input_player_gamepad_get_type([playerIndex])`
+## `input_player_gamepad_get_type([playerIndex])`
 
 *Returns:* String, the player's gamepad's type (after SDL remapping)
 
@@ -103,9 +91,7 @@ The following are valid strings this function may return besides `unknown`:
 
 &nbsp;
 
-&nbsp;
-
-### `input_player_gamepad_get_invalid_bindings([playerIndex])`
+## `input_player_gamepad_get_invalid_bindings([playerIndex])`
 
 *Returns:* Array of structs, gamepad bindings that are invalid due to the gamepad lacking certain mapped inputs
 
@@ -129,9 +115,7 @@ The array returned by this function contains structs. Each struct contains two m
 
 &nbsp;
 
-&nbsp;
-
-### `input_players_get_status()`
+## `input_players_get_status()`
 
 *Returns:* Struct, detailing the state of player connection and disconnection
 
