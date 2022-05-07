@@ -1,9 +1,5 @@
-# Introduction
-
----
-
 <img src="https://raw.githubusercontent.com/JujuAdams/Input/master/LOGO.png" width="50%" style="display: block; margin: auto;" />
-<hr>
+<h1 align="center">Input 5</h1>
 <p align="center">Comprehensive cross-platform input for GameMaker 2.3 by <a href="https://twitter.com/jujuadams" target="_blank">Juju Adams</a> and <a href="https://twitter.com/offalynne" target="_blank">Alynne Keith</a></p>
 
 <p align="center"><a href="https://github.com/JujuAdams/Input/releases/" target="_blank">Download the .yymps</a></p>
