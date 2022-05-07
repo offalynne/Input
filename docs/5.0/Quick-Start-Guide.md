@@ -75,7 +75,7 @@ INPUT_DEFAULT_PROFILES = {
     {
         left:  input_binding_key(vk_left),
         right: input_binding_key(vk_right),
-        shoot: input_binding_key(ord("A")),
+        shoot: input_binding_key("A"),
     },
 	
 	//Bind gamepad controls to verbs

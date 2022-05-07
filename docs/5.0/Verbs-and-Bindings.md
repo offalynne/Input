@@ -35,7 +35,7 @@ INPUT_DEFAULT_PROFILES = {
     {
         left:  input_binding_key(vk_left),
         right: input_binding_key(vk_right),
-        shoot: input_binding_key(ord("A")),
+        shoot: input_binding_key(vk_space),
     },
 }
 ```
@@ -52,7 +52,7 @@ INPUT_DEFAULT_PROFILES = {
     {
         left:  input_binding_key(vk_left),
         right: input_binding_key(vk_right),
-        shoot: input_binding_key(ord("A")),
+        shoot: input_binding_key(vk_space),
     },
 	
 	gamepad:
@@ -74,9 +74,9 @@ INPUT_DEFAULT_PROFILES = {
     //Bind keyboard controls to verbs
     keyboard_and_mouse:
     {
-        left:  [input_binding_key(vk_left),  input_binding_key(ord("A"))],
-        right: [input_binding_key(vk_right), input_binding_key(ord("S"))],
-        shoot: [input_binding_key(ord("A")), input_binding_key(vk_enter)],
+        left:  [input_binding_key(vk_left),  input_binding_key("A")],
+        right: [input_binding_key(vk_right), input_binding_key("S")],
+        shoot: [input_binding_key(vk_space), input_binding_key(vk_enter)],
     },
 	
 	gamepad:
