@@ -118,14 +118,20 @@ function __input_initialize()
     //The default player. This player struct holds default binding data
     global.__input_default_player = new __input_class_player();
     
-    //
-    global.__input_hotswap_enable = INPUT_HOTSWAP_START_ENABLED;
+    enum INPUT_SOURCE_MODE
+    {
+        FROZEN,       //Manual control enabled
+        MULTIPLAYER,  //
+        HOTSWAP,      //Player 0's source is determined by most recent input
+        MIXED,        //
+        MULTI_DEVICE, //
+    }
     
-    //Having a multidevice player defined means that all other non-ghost players are considered disconnected
-    global.__input_multidevice_enable = false;
+    global.__input_source_mode = INPUT_STARTING_SOURCE_MODE;
     
     //Array of players. Each player is a struct (instanceof __input_class_player) that contains lotsa juicy information
     global.__input_players = array_create(INPUT_MAX_PLAYERS, undefined);
+    
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
     {
@@ -137,6 +143,12 @@ function __input_initialize()
         
         ++_p;
     }
+    
+    //Multiplayer source assignment state
+    //This is set by input_multiplayer_set()
+    global.__input_multiplayer_min       = 1;
+    global.__input_multiplayer_max       = INPUT_MAX_PLAYERS;
+    global.__input_multiplayer_drop_down = true;
     
     //Array of currently connected gamepads. If an element is <undefined> then the gamepad is disconnected
     //Each gamepad in this array is an instance of __input_class_gamepad

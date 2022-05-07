@@ -10,12 +10,6 @@ function __input_hotswap_tick()
             return false;
         }
         
-        if (global.__input_multidevice_enable)
-        {
-            __input_trace("Warning! Cannot hotswap because multidevice input is enabled");
-            return false;
-        }
-        
         if ((__last_input_time < 0) || (current_time - __last_input_time > INPUT_HOTSWAP_DELAY))
         {
             var _new_source = __input_hotswap_tick_input();

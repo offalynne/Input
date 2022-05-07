@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Deprecated",
-    "path": "folders/Input/(System)/Deprecated.yy",
+    "name": "Players",
+    "path": "folders/Input/Players.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_source_assignment_tick",
+  "name": "input_multiplayer_get",
   "tags": [],
   "resourceType": "GMScript",
 }

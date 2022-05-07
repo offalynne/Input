@@ -1,7 +1,8 @@
 /// @param source
 /// @param arrayOfPlayerIndexes
+/// @param [autoProfile=true]
 
-function input_source_share(_source, _array)
+function input_source_share(_source, _array, _auto_profile = true)
 {
 	__input_initialize();
     __INPUT_VERIFY_SOURCE
@@ -20,6 +21,7 @@ function input_source_share(_source, _array)
         {
             __sources_clear();
             __source_add(_source);
+            if (_auto_profile) __profile_set_auto();
         }
         
         ++_i;

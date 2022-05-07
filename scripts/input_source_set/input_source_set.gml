@@ -35,6 +35,7 @@ function input_source_set(_source, _player_index = 0, _auto_profile = true)
     __input_source_relinquish(_source);
     with(global.__input_players[_player_index])
     {
+        __sources_clear();
         __source_add(_source);
         if (_auto_profile) __profile_set_auto();
     }
