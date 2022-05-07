@@ -264,7 +264,7 @@ function __input_system_tick()
 	if (global.__input_frame > INPUT_GAMEPADS_TICK_PREDELAY)
 	{
 	    //Expand dynamic device count
-	    var _device_change = max(0, gamepad_get_device_count() - array_length(global.__input_gamepads))
+	    var _device_change = max(0, __INPUT_GAMEPAD_COUNT - array_length(global.__input_gamepads))
 	    repeat(_device_change) array_push(global.__input_gamepads, undefined);
 		
 	    var _g = 0;
@@ -412,13 +412,13 @@ function __input_system_tick()
     array_resize(_connection_array,    0);
     array_resize(_disconnection_array, 0);
     
-    if (array_length(_status_array) != gamepad_get_device_count())
+    if (array_length(_status_array) != __INPUT_GAMEPAD_COUNT)
     {
         //Resize the gamepad status array if the total device count has changed
         //This should be rare but we need to cover it anyway
         //array_resize() fills new array elements with zeroes but leaves old array values untouched
         //Since INPUT_STATUS.DISCONNECTED === 0 this means new gamepads initialize as disconnected
-        array_resize(_status_array, gamepad_get_device_count());
+        array_resize(_status_array, __INPUT_GAMEPAD_COUNT);
     }
     
     var _g = 0;

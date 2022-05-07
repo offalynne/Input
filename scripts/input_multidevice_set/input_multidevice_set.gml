@@ -1,10 +1,11 @@
-/// @param [playerIndex=0]
+/// @param state
 
-function input_multidevice_set(_player_index = 0)
+function input_multidevice_set(_state)
 {
 	__input_initialize();
-    __INPUT_VERIFY_PLAYER_INDEX
     
-    global.__input_multidevice_player = _player_index;
-    input_player_claim(all, _player_index);
+    if (_state != global.__input_multidevice_enable) {}
+    
+    global.__input_multidevice_enable = _state;
+    input_player_claim(all, 0);
 }

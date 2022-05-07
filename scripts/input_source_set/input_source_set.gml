@@ -1,7 +1,7 @@
 /// @param source
 /// @param [playerIndex=0]
 
-function input_player_claim(_source, _player_index = 0)
+function input_source_set(_source, _player_index = 0)
 {
 	__input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX
@@ -16,7 +16,7 @@ function input_player_claim(_source, _player_index = 0)
             __source_add(INPUT_MOUSE);
             
             var _i = 0;
-            repeat(__INPUT_MAX_TRACKED_GAMEPADS)
+            repeat(INPUT_MAX_TRACKED_GAMEPADS)
             {
                 __source_add(INPUT_GAMEPAD[_i]);
                 ++_i;

@@ -91,7 +91,7 @@ function __input_class_player() constructor
     static __profile_get_auto = function()
     {
         if (__ghost) return undefined;
-        if ((global.__input_multidevice_player != undefined) && (global.__input_multidevice_player == __index)) return INPUT_AUTO_PROFILE_FOR_MULTIDEVICE;
+        if ((global.__input_multidevice_enable != undefined) && (global.__input_multidevice_enable == __index)) return INPUT_AUTO_PROFILE_FOR_MULTIDEVICE;
         
         var _count = array_length(__source_array);
         

@@ -1,6 +1,6 @@
 /// @param source
 
-function input_source_detect(_source)
+function input_source_detect_input(_source)
 {
     switch(_source.__source)
     {

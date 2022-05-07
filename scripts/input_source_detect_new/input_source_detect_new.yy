@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "(System)",
-    "path": "folders/Input/(System).yy",
+    "name": "Sources",
+    "path": "folders/Input/Sources.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_source_assignment_tick",
+  "name": "input_source_detect_new",
   "tags": [],
   "resourceType": "GMScript",
 }

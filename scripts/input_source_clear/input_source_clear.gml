@@ -1,6 +1,6 @@
 /// @param [playerIndex=0]
 
-function input_player_clear_sources(_player_index = 0)
+function input_source_clear(_player_index = 0)
 {
 	__input_initialize();
     

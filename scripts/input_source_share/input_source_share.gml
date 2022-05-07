@@ -1,7 +1,7 @@
 /// @param source
 /// @param arrayOfPlayerIndexes
 
-function input_player_share(_source, _array)
+function input_source_share(_source, _array)
 {
 	__input_initialize();
     __INPUT_VERIFY_SOURCE
@@ -25,7 +25,6 @@ function input_player_share(_source, _array)
         with(global.__input_players[_player_index])
         {
             __sources_clear();
-            
             __source_add(_source);
             
             if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER)

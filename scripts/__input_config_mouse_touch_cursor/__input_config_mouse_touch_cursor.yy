@@ -6,7 +6,7 @@
     "path": "folders/Input/Configuration - Please edit these scripts!.yy",
   },
   "resourceVersion": "1.0",
-  "name": "__input_config_sdl2",
+  "name": "__input_config_mouse_touch_cursor",
   "tags": [],
   "resourceType": "GMScript",
 }

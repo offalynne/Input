@@ -24,3 +24,5 @@
 #macro INPUT_CURSOR_VERB_DOWN   "down"
 #macro INPUT_CURSOR_VERB_LEFT   "left"
 #macro INPUT_CURSOR_VERB_RIGHT  "right"
+
+#macro INPUT_CURSOR_EXPONENT  1

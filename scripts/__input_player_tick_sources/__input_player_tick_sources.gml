@@ -3,7 +3,7 @@ function __input_player_tick_sources()
     if (__profile_name == undefined) return;
     var _current_profile_dict = __profiles_dict[$ __profile_name];
     
-    var _is_multidevice_player = ((global.__input_multidevice_player != undefined) && (global.__input_multidevice_player == __index));
+    var _is_multidevice_player = ((global.__input_multidevice_enable != undefined) && (global.__input_multidevice_enable == __index));
     
     var _v = 0;
     repeat(array_length(global.__input_basic_verb_array))

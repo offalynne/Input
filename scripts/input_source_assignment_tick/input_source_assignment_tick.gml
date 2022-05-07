@@ -71,7 +71,7 @@ function input_source_assignment_tick(_min_players, _max_players, _leave_verb, _
     {
         if (!input_player_connected(_p))
         {
-            var _new_source = input_source_detect_any();
+            var _new_source = input_source_detect_new();
             if (_new_source != undefined)
             {
                 with(global.__input_players[_p])

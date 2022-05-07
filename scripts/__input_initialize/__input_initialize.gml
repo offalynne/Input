@@ -112,16 +112,17 @@ function __input_initialize()
         any_changed: false,
         new_connections: [],
         new_disconnections: [],
-        gamepads: array_create(gamepad_get_device_count(), INPUT_STATUS.DISCONNECTED),
+        gamepads: array_create(INPUT_MAX_TRACKED_GAMEPADS, INPUT_STATUS.DISCONNECTED),
     }
     
     //The default player. This player struct holds default binding data
     global.__input_default_player = new __input_class_player();
     
-    //Holds the index of the multidevice player
-    //If this is <undefined> then no multidevice player has been defined
+    //
+    global.__input_hotswap_enable = false;
+    
     //Having a multidevice player defined means that all other non-ghost players are considered disconnected
-    global.__input_multidevice_player = undefined;
+    global.__input_multidevice_enable = false;
     
     //Array of players. Each player is a struct (instanceof __input_class_player) that contains lotsa juicy information
     global.__input_players = array_create(INPUT_MAX_PLAYERS, undefined);
@@ -140,7 +141,7 @@ function __input_initialize()
     //Array of currently connected gamepads. If an element is <undefined> then the gamepad is disconnected
     //Each gamepad in this array is an instance of __input_class_gamepad
     //Gamepad structs contain remapping information and current button state
-    global.__input_gamepads = array_create(gamepad_get_device_count(), undefined);
+    global.__input_gamepads = array_create(INPUT_MAX_TRACKED_GAMEPADS, undefined);
     
     //Our database of SDL2 definitions, used for the aforementioned remapping information
     global.__input_sdl2_database = {
@@ -541,9 +542,9 @@ function __input_initialize()
     INPUT_KEYBOARD = new __input_class_source(__INPUT_SOURCE.KEYBOARD);
     INPUT_MOUSE    = new __input_class_source(__INPUT_SOURCE.MOUSE);
     
-    INPUT_GAMEPAD = array_create(__INPUT_MAX_TRACKED_GAMEPADS, undefined);
+    INPUT_GAMEPAD = array_create(INPUT_MAX_TRACKED_GAMEPADS, undefined);
     var _g = 0;
-    repeat(__INPUT_MAX_TRACKED_GAMEPADS)
+    repeat(INPUT_MAX_TRACKED_GAMEPADS)
     {
         INPUT_GAMEPAD[@ _g] = new __input_class_source(__INPUT_SOURCE.GAMEPAD, _g);
         ++_g;

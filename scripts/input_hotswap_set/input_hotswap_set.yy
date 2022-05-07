@@ -6,7 +6,7 @@
     "path": "folders/Input/Sources.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_source_detect_any",
+  "name": "input_hotswap_set",
   "tags": [],
   "resourceType": "GMScript",
 }

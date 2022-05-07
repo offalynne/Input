@@ -1,6 +1,6 @@
 /// @param [playerIndex=0]
 
-function input_player_get_source_array(_player_index = 0)
+function input_source_get_array()
 {
 	__input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX

@@ -11,9 +11,9 @@ function input_source_hotswap_tick(_player_index = 0, _auto_profile = true)
             return false;
         }
         
-        if (global.__input_multidevice_player != undefined)
+        if (global.__input_multidevice_enable != undefined)
         {
-            __input_trace("Warning! Cannot hotswap because player ", global.__input_multidevice_player, " is set to multidevice");
+            __input_trace("Warning! Cannot hotswap because player ", global.__input_multidevice_enable, " is set to multidevice");
             return false;
         }
         
@@ -58,7 +58,7 @@ function __input_hotswap_tick_input(_player_index)
         var _player = global.__input_players[_player_index];
         
         var _g = 0;
-        repeat(gamepad_get_device_count())
+        repeat(__INPUT_GAMEPAD_COUNT)
         {
             if (gamepad_is_connected(_g) && ((_player.gamepad == _g) || input_source_is_available(INPUT_GAMEPAD[_g])))
             {

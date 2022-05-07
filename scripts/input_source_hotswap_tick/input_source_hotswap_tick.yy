@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Sources",
-    "path": "folders/Input/Sources.yy",
+    "name": "(System)",
+    "path": "folders/Input/(System).yy",
   },
   "resourceVersion": "1.0",
   "name": "input_source_hotswap_tick",
