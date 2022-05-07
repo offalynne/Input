@@ -1,6 +1,6 @@
 # Input Sources
 
----
+&nbsp;
 
 Input can manage input from three fundamental sources - keyboards, mice, and gamepads. You can refer to these sources in code by using the `INPUT_KEYBOARD`, `INPUT_MOUSE` or `INPUT_GAMEPAD[n]` constants.
 

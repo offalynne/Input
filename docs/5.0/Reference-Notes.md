@@ -1,6 +1,6 @@
 # Supplementary Notes
 
----
+&nbsp;
 
 The following pages include general information about Input's underlying systems as well as related subjects external to the library itself.
 

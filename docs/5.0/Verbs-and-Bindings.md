@@ -1,6 +1,6 @@
 # Verbs and Default Bindings
 
----
+&nbsp;
 
 Input uses a "verb interface" to coalesce input into easily managed instructions.
 

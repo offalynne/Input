@@ -1,16 +1,11 @@
 # Function Index
 
----
+&nbsp;
 
 !> If you're using Input 5 on versions of GameMaker **before** 2022.5 (May 2022) then you'll need to call `input_tick()` in the Begin Step event of a persistent instance. This function handles all things Input behind the scenes, it is important to have [`input_tick()`](Functions-(System)#input_tick) once (and only once) each step of your game. A good way to do this is by making `obj_input_manager` [persistent](https://manual.yoyogames.com/#t=The_Asset_Editors%2FObjects.htm), and placing one instance in your first room.
 
 ### [Players](Functions-(Players))
 
-- [`input_player_claim(source, [playerIndex])`]()
-- [`input_player_share(source, arrayOfPlayerIndexes)`]()
-- [`input_player_claimed(source, [playerIndex])`]()
-- [`input_player_clear_sources([playerIndex])`]()
-- [`input_player_get_source_array([playerIndex])`]()
 - [`input_player_connected([playerIndex])`]()
 - [`input_player_connected_count()`]()
 - [`input_players_get_status()`](Functions-(Players)#input_players_get_status)
@@ -19,6 +14,9 @@
 - [`input_player_get_invalid_gamepad_bindings([playerIndex], [profileName])`]()
 - [`input_player_ghost_set(state, [playerIndex])`]()
 - [`input_player_ghost_get([playerIndex])`]()
+- [`input_multiplayer_params_set(min, max, [dropDown])`]()
+- [`input_multiplayer_params_get()`]()
+- [`input_multiplayer_pass()`]()
 
 ### [Profiles](Functions-(Profiles))
 
@@ -96,13 +94,16 @@
 
 ### [Sources](Functions-(Sources))
 
-- [`input_hotswap_set(state)`]()
-- [`input_hotswap_get()`]()
-- [`input_multidevice_set(state)`]()
-- [`input_multidevice_get()`]()
-- [`input_source_assignment_tick(minPlayers, maxPlayers, leaveVerb)`](Functions-(Sources)#input_source_assignment_tickminplayers-maxplayers-leaveverb)
-- [`input_source_detect(source, [gamepad])`](Functions-(Sources)#input_source_detectsource-gamepad)
-- [`input_source_detect_any()`](Functions-(Sources)#input_source_detect_any)
+- [`input_source_mode_set(state)`]()
+- [`input_source_mode_get()`]()
+- [`input_source_detect_input(source)`](Functions-(Sources)#input_source_detectsource-gamepad)
+- [`input_source_detect_new()`](Functions-(Sources)#input_source_detect_any)
+- [`input_source_set(source, [playerIndex], [autoProfile])`]()
+- [`input_source_add(source, [playerIndex])`]()
+- [`input_source_share(source, arrayOfPlayerIndexes, [autoProfile])`]()
+- [`input_source_clear([playerIndex])`]()
+- [`input_source_using(source, [playerIndex])`]()
+- [`input_source_get_array([playerIndex])`]()
 - [`input_source_is_available(source, [gamepad])`](Functions-(Sources)#input_source_is_availablesource-gamepad)
 
 ### [Other](Functions-(Other))
@@ -119,7 +120,6 @@
 - [`input_clear_momentary()`]()
 - [`input_mouse_transform_function_set()`]()
 - [`input_mouse_transform_function_Get()`]()
-- [`input_tick()`](Functions-(Other)#input_tick)
 
 ### [Gamepad (Direct)](Functions-(Gamepad))
 
@@ -158,3 +158,4 @@
 - [`input_mouse_check_released(button)`](Functions-(Mouse)#input_mouse_check_releasedbutton)
 - [`input_mouse_x()`](Functions-(Mouse)#input_mouse_x)
 - [`input_mouse_y()`](Functions-(Mouse)#input_mouse_y)
+- [`input_mouse_moved()`](Functions-(Mouse)#input_mouse_moved)
