@@ -1,4 +1,4 @@
-# Macros
+# Library Constants
 
 &nbsp;
 
@@ -14,6 +14,20 @@ The following constants allow you to reference specific [input sources](Input-So
 |`INPUT_MOUSE`               |The mouse, if any is attached. If `INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER` is `true` then this source will also include input from the keyboard too                                                                                                             |
 |`INPUT_GAMEPAD[n]`          |`INPUT_GAMEPAD` is an array of sources that represent different gamepads that a player can use. `INPUT_GAMEPAD[0]` is the 0th gamepad, `INPUT_GAMEPAD[1]` is the 1st gamepad and so on. The index for this array corresponds to the native GameMaker gamepad index|
 |`INPUT_MAX_TRACKED_GAMEPADS`|The total number of gamepads that Input will track. This is the length of the `INPUT_GAMEPAD` array                                                                                                                                                               |
+
+&nbsp;
+
+## Source Modes
+
+The `INPUT_SOURCE_MODE` enum contains the following members.
+
+|Name           |Purpose                                                                                 |
+|---------------|----------------------------------------------------------------------------------------|
+|`.FROZEN`      |                                                                                        |
+|`.MULTIPLAYER` |                                                                                        |
+|`.HOTSWAP`     |                                                                                        |
+|`.MIXED`       |                                                                                        |
+|`.MULTI_DEVICE`|                                                                                        |
 
 &nbsp;
 

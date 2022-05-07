@@ -4,7 +4,7 @@
 ---
 
 - [Configuration](Configuration)
-- [Macros](Macros)
+- [Library Constants](Library-Constants)
 - [Function Index](Function-Index)
 
 ---
