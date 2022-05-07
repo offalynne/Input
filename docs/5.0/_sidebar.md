@@ -10,7 +10,8 @@
 ---
 
 - [Input Sources](Input-Sources)
-- [Verbs and Alternate Bindings](Verbs-and-Alternate-Bindings)
+- [Profiles](Profiles)
+- [Verbs and Bindings](Verbs-and-Bindings)
 - [Binding Names](Binding-Names)
 - [Input Quirks](Input-Quirks)
 - [Supplementary Notes](Reference-Notes)
