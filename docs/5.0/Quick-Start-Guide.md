@@ -14,10 +14,7 @@ Hey there! Maybe you heard on the grapevine that the pug has some new tools for 
 
 To get this show on the road, first thing you're gonna want to do is to drag the [.yymps file](https://github.com/JujuAdams/Input/releases) you got into your project. A dialogue will pop up and you just gotta hit "add all" and then "OK". This will leave you with a new folder in your Asset Browser labeled "Input". That's good. You want that.
 
-Now since we're on a roll, why don't you make an input manager object. I'm gonna call mine `obj_input_manager`, but you might have a better or funnier name or whatever. Add yourself a Create event, a Begin Step event, and a Step Event.
-
-Straight away you're going to want to put [`input_tick()`](Functions-(System)#input_tick) into your Begin Step event.
-This function handles all things Input behind the scenes, it is important to have [`input_tick()`](Functions-(System)#input_tick) once (and only once) each step of your game. A good way to do this is by making `obj_input_manager` [persistent](https://manual.yoyogames.com/#t=The_Asset_Editors%2FObjects.htm), and placing one instance in your first room.
+!> If you're using Input 5 on versions of GameMaker **before** 2022.5 (May 2022) then you'll need to call `input_tick()` in the Begin Step event of a persistent instance. This function handles all things Input behind the scenes, it is important to have [`input_tick()`](Functions-(System)#input_tick) once (and only once) each step of your game. A good way to do this is by making `obj_input_manager` [persistent](https://manual.yoyogames.com/#t=The_Asset_Editors%2FObjects.htm), and placing one instance in your first room.
 
 &nbsp;
 
@@ -27,19 +24,22 @@ Now that the boring techy stuff is out of the way, we can get to the real fun an
 
 [Verbs](Verbs-and-Alternate-Bindings) are the basic input actions you want to expose to a player; this includes things like jumping, shooting, pausing the game, or moving in a particular direction. By using verbs we **abstract** user input so that we can change [input source](Input-Sources) while the game is played without needing to change anything else. Using verbs also allows for easier key rebinding.
 
-Let's define some verbs then! You can put this in the Create event of your object... I'm going to define three controls, one for left, right, and shoot, and then we'll set the [input source](Input-Sources).
+Let's define some verbs then! To define default bindings for your verbs you'll need to edit the `INPUT_DEFAULT_PROFILES` macro found in `__input_config_profiles_and_bindings()`. When you import Input it'll come with some default controls already set up. To explain this clearer, let's delete everything that's already in `INPUT_DEFAULT_PROFILES` and start fresh. I'm going to define three controls, one for left, right, and shoot.
 
 ```
-//Bind keyboard controls to verbs
-input_default_key(vk_left,  "left");
-input_default_key(vk_right, "right");
-input_default_key(ord("A"), "shoot"); 
-
-input_player_source_set(INPUT_SOURCE.KEYBOARD_AND_MOUSE);
+INPUT_DEFAULT_PROFILES = {
+    
+	//Bind keyboard controls to verbs
+    keyboard_and_mouse:
+    {
+        left:  input_binding_key(vk_left),
+        right: input_binding_key(vk_right),
+        shoot: input_binding_key(ord("A")),
+    },
+}
 ```
-We've got the [`input_default_key()`](Functions-(Default-Bindings)#input_default_keykey-verb-alternate) functions taking the [normal key values](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/Keyboard_Input.htm) for the standard GM input features and then the verb we want to assign it to. Verbs can be numbers if you want to use an enum but, for ease of use, we'll stick to strings.
 
-[`input_player_source_set()`](Functions-(Players)#input_player_source_setsource-playerindex) sets which device you're using. Now we're only one step away from using these tasty functions in game. By uh, using them. In game.
+We've got the [`input_binding_key()`](Functions-(Default-Bindings)#input_default_keykey-verb-alternate) functions taking the [normal key values](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/Keyboard_Input.htm) for the standard GM input features and then the verb we want to assign it to.
 
 Here's a Step event for you to put in a character object or whatever!
 
@@ -68,17 +68,28 @@ Lets go back to our create event for a hot sec.
 Take a gander at this new code we'll add:
 
 ```
-//Bind gamepad controls to verbs
-input_default_gamepad_button(gp_padl,  "left");
-input_default_gamepad_button(gp_padr,  "right");
-input_default_gamepad_button(gp_face1, "shoot");
-
-input_player_source_set(INPUT_SOURCE.GAMEPAD);
-input_player_gamepad_set(0);
+INPUT_DEFAULT_PROFILES = {
+    
+	//Bind keyboard controls to verbs
+    keyboard_and_mouse:
+    {
+        left:  input_binding_key(vk_left),
+        right: input_binding_key(vk_right),
+        shoot: input_binding_key(ord("A")),
+    },
+	
+	//Bind gamepad controls to verbs
+	gamepad:
+	{
+	    left:  input_binding_gamepad_button(gp_padl),
+	    right: input_binding_gamepad_button(gp_padr),
+	    shoot: input_binding_gamepad_button(gp_face1),
+	}
+}
 ```
 
-Just like the keyboard functions, gamepad functions use [normal gamepad input values](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm) from standard GM features. Congratulations, you now have gamepad input. 
+Just like the keyboard binding functions, gamepad binding functions use [normal gamepad input values](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm) from standard GM features. Congratulations, you now have gamepad input.
 
-And to finish off, in order for the player to be able to switch between keyboard and gamepad devices on the fly, add <code>[input_source_hotswap_tick()](Functions-(Source-Assignment)?id=input_source_hotswap_tickplayerindex);</code> to your Step event.
+Input by default will start scanning for gamepad input when your game boots up; if the player uses the keyboard then Input will switch over to using the `keyboard_and_mouse` profile, if the player uses a gamepad then Input will switch over to using the `gamepad` profile (the names of these profiles can be controlled by changing some macros).
 
 Et voilà! This system is also great for rebinding controls, handling multiplayer, and more. Take a deeper dive into the documentation for details on the features of Input, and feel free to [join us for discussion on Discord](https://discord.gg/8krYCqr).
