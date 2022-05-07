@@ -19,6 +19,9 @@ function __input_class_player() constructor
     
     __ghost = false;
     
+   __cursor = new __input_class_cursor();
+   __cursor.__player = self;
+    
     
     
     #region Profiles

@@ -75,6 +75,8 @@ function __input_initialize()
     //Whether mouse is blocked due to Window focus state
     global.__input_mouse_blocked = false;
     
+    global.__input_cursor_verbs_valid = false;
+    
     //Whether to swap A/B gamepad buttons for default bindings
     global.__input_swap_ab = false;
     
