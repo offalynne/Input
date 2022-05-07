@@ -19,7 +19,7 @@ _These functions are almost directly passed-through and are presently only inten
 |`key`   |integer |Key to check, using GameMaker's native [virtual key constants](https://manual.yoyogames.com/index.htm#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FKeyboard_Input%2FKeyboard_Input.htm)|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_keyboard_check_pressed(key)`
@@ -31,7 +31,7 @@ _These functions are almost directly passed-through and are presently only inten
 |`key`|integer |Key to check, using GameMaker's native [virtual key constants](https://manual.yoyogames.com/index.htm#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FKeyboard_Input%2FKeyboard_Input.htm)|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_keyboard_check_released(key)`

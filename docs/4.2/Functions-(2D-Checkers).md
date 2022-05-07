@@ -15,7 +15,7 @@
 |`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used        |
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_y(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`
@@ -31,7 +31,7 @@
 |`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used        |
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_xy(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`
@@ -49,7 +49,7 @@
 The struct returned by this function contains two member variables: `x` and `y`.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_direction(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`
@@ -67,7 +67,7 @@ The struct returned by this function contains two member variables: `x` and `y`.
 **N.B.** If the distance to the point of aim is 0 (after taking into account the minimum threshold) then this function will return `undefined`.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_distance(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`

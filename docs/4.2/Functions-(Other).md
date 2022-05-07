@@ -14,7 +14,7 @@
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_axis_threshold_get(axis, [playerIndex])`
@@ -29,7 +29,7 @@
 If the axis does not have a threshold definition (as set by `input_axis_threshold_set()`) when this function is called then a new definition is created using `INPUT_DEFAULT_MIN_THRESHOLD` and `INPUT_DEFAULT_MAX_THRESHOLD`.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_consume(verb, [playerIndex])`
@@ -44,7 +44,7 @@ If the axis does not have a threshold definition (as set by `input_axis_threshol
 When a verb has been consumed, [check functions](Functions-(Checkers)) that target the verb will return `false` until the button is released and pressed again.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_clear_momentary(state)`
@@ -58,7 +58,7 @@ When a verb has been consumed, [check functions](Functions-(Checkers)) that targ
 Clears momentary (pressed/released) input and connection checkers. This covers verbs as well as keyboard/mouse/gamepad direct checkers. Useful for [fixed timestep patterns](https://gafferongames.com/post/fix_your_timestep/) where momentary checks should only be handled for one cycle (for example [iota](https://github.com/JujuAdams/iota)).
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_guess_keyboard_layout()`
@@ -72,7 +72,7 @@ Clears momentary (pressed/released) input and connection checkers. This covers v
 Provides a hint for default Latin keyboard layout based on available information. Utility for building safe default bindings based on [keyboard layout differences](https://www.typingpal.com/en/news/what-is-the-difference-between-QWERTY-QWERTZ-and-AZERTY-keyboards). Note that while system software determines the active keyboard layout and we can not detect this at runtime, this function provides a suggestion as to the system-default using OS locale info ([ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) and [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1)).
 
 _Example usage_
-```
+```gml
 if (input_guess_keyboard_layout() == "AZERTY")
 {
     input_default_key(ord("E"), "up");
@@ -90,7 +90,7 @@ else
 ```
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_verb_set(verb, value, [playerIndex])`
@@ -106,7 +106,7 @@ else
 Sets a value directly for a verb. It is recommend that verb values are set before executing [`input_tick()`](Functions-(System)#input_tick), or the change will not take effect until the following frame.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_platform_text_source()`
@@ -120,7 +120,7 @@ Sets a value directly for a verb. It is recommend that verb values are set befor
 Provides a suggestion for text entry handling based on platform target.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_ignore_key_add(key)`
@@ -136,7 +136,7 @@ Adds a keyboard key to be ignored by Input. This will affect binding detection, 
 **Please note** that the list of ignored keys may already be populated depending on what value is set for `INPUT_IGNORE_RESERVED_KEYS_LEVEL`. Please read the [`Configuration`](Configuration) page for more information.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_ignore_key_remove(key)`

@@ -15,7 +15,7 @@
 Clears the currently bindings for the given player, resetting them to the [defaults](Functions-(Default-Bindings)).
 
 &nbsp;
-
+---
 &nbsp;
 
 
@@ -36,7 +36,7 @@ It is reccomended to only use bindings written on the same device, as keyboard s
 !> Due to [up-stream bugs](https://github.com/JujuAdams/Input/issues/152) in GameMaker's JavaScript runtime, this function is not supported in HTML5.
 
 &nbsp;
-
+---
 &nbsp;
 
 
@@ -58,7 +58,7 @@ While useful for retaining player preferences across sessions, [default bindings
 !> Due to [up-stream bugs](https://github.com/JujuAdams/Input/issues/152) in GameMaker's JavaScript runtime, this function is not supported in HTML5.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_bindings_copy(source, destination)`

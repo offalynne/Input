@@ -12,7 +12,7 @@
 |`[playerIndex]`|integer                  |Player to target. If not specified, player 0 is used|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_player_source_get([playerIndex])`
@@ -24,7 +24,7 @@
 |`[playerIndex]`|integer                  |Player to target. If not specified, player 0 is used|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_player_gamepad_set(gamepad, [playerIndex])`
@@ -41,7 +41,7 @@ Use the macro `INPUT_NO_GAMEPAD` as the `gamepad` argument to indicate the playe
 !> Consider allowing Input to handle player gamepad assignment automatically using the [source assignment functions](Functions-(Source-Assignment)), or for single player, using [source hotswapping](Functions-(Source-Assignment)?id=input_source_hotswap_tickplayerindex). Avoid handling player gamepad assignment manually, as a gamepads may be disconnected or [blocklisted](Controller-Mapping?id=controller-blacklist), and on many platforms [may not enumerate in a predictable order](Device-Quirks?id=gamepad).
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_player_gamepad_get([playerIndex])`
@@ -55,7 +55,7 @@ Use the macro `INPUT_NO_GAMEPAD` as the `gamepad` argument to indicate the playe
 This function will return `INPUT_NO_GAMEPAD` if the player has no connected gamepad.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_player_connected([playerIndex])`
@@ -67,7 +67,7 @@ This function will return `INPUT_NO_GAMEPAD` if the player has no connected game
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_players_connected()`
@@ -79,7 +79,7 @@ This function will return `INPUT_NO_GAMEPAD` if the player has no connected game
 |None|        |       |
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_player_gamepad_get_type([playerIndex])`
@@ -102,7 +102,7 @@ The following are valid strings this function may return besides `unknown`:
 |`snes`    |`n64`     |`gamecube`|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_player_gamepad_get_invalid_bindings([playerIndex])`
@@ -128,7 +128,7 @@ The array returned by this function contains structs. Each struct contains two m
 |`gm`       |[Virtual button/axis constant](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html) that is missing from the player's gamepad|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_players_get_status()`
@@ -143,17 +143,17 @@ This function returns a struct that describes the state of each player's connect
 
 !> Do not edit the struct that this function returns! You may encounter undefined behaviour if you do.
 
-```
+```gml
 {
-    any_changes: <boolean that indicates whether anything has changed at all>
+    any_changes: // <boolean that indicates whether anything has changed at all>
     new_connections: [
-        <array of player indexes that are newly connected this step>
+        // <array of player indexes that are newly connected this step>
     ],
     new_disconnections: [
-        <array of player indexes that are newly disconnected this step>
+        // <array of player indexes that are newly disconnected this step>
     ],
     players: [
-        <array of values from the INPUT_STATUS enum, one for each player up to INPUT_MAX_PLAYERS>
+        // <array of values from the INPUT_STATUS enum, one for each player up to INPUT_MAX_PLAYERS>
     ],
 }
 ```
