@@ -166,11 +166,11 @@ Ghost mode prevents any sources being assigned to this player, but the player is
 
 *Returns:* N/A (`undefined`)
 
-|Name        |Datatype|Purpose                                              |
-|------------|--------|-----------------------------------------------------|
-|`min`       |integer |Whether the player should be set to ghost mode or not|
-|`max`       |integer |Whether the player should be set to ghost mode or not|
-|`[dropDown]`|boolean |Player to target. If not specified, player 0 is used |
+|Name        |Datatype| urpose                                                                           |
+|------------|--------|----------------------------------------------------------------------------------|
+|`min`       |integer |The minimum number of players that are needed to play in this particular game mode|
+|`max`       |integer |The maximum number of players that can play this particular game mode             |
+|`[dropDown]`|boolean |Whether players should drop down into empty slots when other players disconnect   |
 
 &nbsp;
 
