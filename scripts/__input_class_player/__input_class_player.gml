@@ -231,6 +231,8 @@ function __input_class_player() constructor
     
     static __is_connected = function()
     {
+        if (__ghost) return true;
+        
         var _i = 0;
         repeat(array_length(__source_array))
         {
@@ -247,7 +249,7 @@ function __input_class_player() constructor
         repeat(array_length(__source_array))
         {
             var _gamepad = __source_array[_i].gamepad;
-            if (_gamepad != undefined) return _gamepad;
+            if (input_gamepad_is_connected(_gamepad)) return _gamepad;
             ++_i;
         }
         
