@@ -38,9 +38,9 @@ If [`INPUT_SDL2_ALLOW_EXTENDED`]() has been set to `true` then the following con
 |Name         |            |
 |-------------|------------|
 |`gp_guide`   |`gp_misc1`  |
-|`gp_touchpad`|            |
-|`gp_paddle1` |`gp_paddle2`|
-|`gp_paddle3` |`gp_paddle4`|
+|`gp_touchpad`|`gp_paddle1`|
+|`gp_paddle2` |`gp_paddle3`|
+|`gp_paddle4` |            |
 
 &nbsp;
 
