@@ -69,6 +69,7 @@ input_combo_create("konami")
 .press("right")
 .press("cancel")
 .press("accept");
+```
 
 &nbsp;
 
