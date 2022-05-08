@@ -143,7 +143,7 @@
     {"id":{"name":"input_value","path":"scripts/input_value/input_value.yy",},"order":12,},
     {"id":{"name":"__input_player_tick_sources","path":"scripts/__input_player_tick_sources/__input_player_tick_sources.yy",},"order":26,},
     {"id":{"name":"obj_test_binding_validity","path":"objects/obj_test_binding_validity/obj_test_binding_validity.yy",},"order":22,},
-    {"id":{"name":"input_multiplayer_pass","path":"scripts/input_multiplayer_pass/input_multiplayer_pass.yy",},"order":18,},
+    {"id":{"name":"input_multiplayer_is_finished","path":"scripts/input_multiplayer_is_finished/input_multiplayer_is_finished.yy",},"order":18,},
     {"id":{"name":"input_profile_reset_bindings","path":"scripts/input_profile_reset_bindings/input_profile_reset_bindings.yy",},"order":7,},
     {"id":{"name":"input_value_is_binding","path":"scripts/input_value_is_binding/input_value_is_binding.yy",},"order":1,},
     {"id":{"name":"input_verb_set","path":"scripts/input_verb_set/input_verb_set.yy",},"order":5,},

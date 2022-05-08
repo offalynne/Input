@@ -8,8 +8,8 @@ function input_source_mode_set(_mode)
     {
         switch(_mode)
         {
-            case INPUT_SOURCE_MODE.FROZEN:
-            case INPUT_SOURCE_MODE.MULTIPLAYER:
+            case INPUT_SOURCE_MODE.FIXED:
+            case INPUT_SOURCE_MODE.JOIN:
                 //Do nothing!
             break;
             
