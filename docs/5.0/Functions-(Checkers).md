@@ -2,11 +2,17 @@
 
 &nbsp;
 
+The functions on this page allow you to check the state of verbs for each player. Input allows you to check verbs in multiple different ways, ranging from simple pressed/released to more complex behaviours like double taps.
+
+If you're looking for ways to return two-dimensional information for top-down movement or aiming, please see the [2D Checkers](Functions-(2D-Checkers)) page. What verbs are available for use is defined via [default profiles](Profiles) in [`__input_config_profiles_and_bindings()`](Configuration?id=profiles-and-bindings).
+
+&nbsp;
+
 ## `input_check(verb, [playerIndex], [bufferDuration])`
 
 *Returns:* Boolean, if the verb is currently active
 
-|Name              |Datatype                        Purpose                                                                                                    |
+|Name              |Datatype                        |Purpose                                                                                                   |
 |------------------|--------------------------------|----------------------------------------------------------------------------------------------------------|
 |`verb`            |[verb](Verbs-and-Bindings)/array|[Verb](Verbs-and-Bindings) to check, or an array of [verbs](Verbs-and-Bindings) (see below)               |
 |`[playerIndex]`   |integer                         |Player to target. If not specified, player 0 is used                                                      |
