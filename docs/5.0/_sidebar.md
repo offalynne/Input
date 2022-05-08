@@ -1,12 +1,11 @@
 - [Introduction](README)
 - [Quick Start Guide](Quick-Start-Guide)
-- [Binding Names](Binding-Names)
-- [Input Quirks](Input-Quirks)
-- [Supplementary Notes](Reference-Notes)
+- [Configuration](Configuration)
+- [Library Constants](Library-Constants)
+- [Function Index](Function-Index)
 
 ---
 
-*Concepts*
 - [Verbs and Bindings](Verbs-and-Bindings)
 - [Input Sources](Input-Sources)
 - [Profiles](Profiles)
@@ -14,6 +13,6 @@
 
 ---
 
-- [Configuration](Configuration)
-- [Library Constants](Library-Constants)
-- [Function Index](Function-Index)
+- [Binding Names](Binding-Names)
+- [Input Quirks](Input-Quirks)
+- [Supplementary Notes](Reference-Notes)
