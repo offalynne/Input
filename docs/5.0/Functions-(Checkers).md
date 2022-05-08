@@ -1,8 +1,8 @@
 # Functions (Checkers)
 
----
+&nbsp;
 
-### `input_check(verb, [playerIndex], [bufferDuration])`
+## `input_check(verb, [playerIndex], [bufferDuration])`
 
 *Returns:* Boolean, if the verb is currently active
 
@@ -16,9 +16,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 
 &nbsp;
 
-&nbsp;
-
-### `input_check_pressed(verb, [playerIndex], [bufferDuration])`
+## `input_check_pressed(verb, [playerIndex], [bufferDuration])`
 
 *Returns:* Boolean, if the verb is newly activated this frame
 
@@ -32,9 +30,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 
 &nbsp;
 
-&nbsp;
-
-### `input_check_released(verb, [playerIndex], [bufferDuration])`
+## `input_check_released(verb, [playerIndex], [bufferDuration])`
 
 *Returns:* Boolean, if the verb is newly deactivated this frame
 
@@ -48,9 +44,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 
 &nbsp;
 
-&nbsp;
-
-### `input_check_repeat(verb, [playerIndex], [delay], [predelay])`
+## `input_check_repeat(verb, [playerIndex], [delay], [predelay])`
 
 *Returns:* Boolean, if the verb has been re-triggered by a repeater behaviour
 
@@ -65,9 +59,7 @@ This function will **not** return `true` on the same frame a verb is activated (
 
 &nbsp;
 
-&nbsp;
-
-### `input_check_double(verb, [playerIndex], [bufferDuration])`
+## `input_check_double(verb, [playerIndex], [bufferDuration])`
 
 *Returns:* Boolean, if the verb is currently active
 
@@ -81,9 +73,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 
 &nbsp;
 
-&nbsp;
-
-### `input_check_double_pressed(verb, [playerIndex], [bufferDuration])`
+## `input_check_double_pressed(verb, [playerIndex], [bufferDuration])`
 
 *Returns:* Boolean, if the verb is newly active
 
@@ -97,9 +87,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 
 &nbsp;
 
-&nbsp;
-
-### `input_check_double_released(verb, [playerIndex], [bufferDuration])`
+## `input_check_double_released(verb, [playerIndex], [bufferDuration])`
 
 *Returns:* Boolean, if the verb is newly deactivated this frame
 
@@ -113,9 +101,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 
 &nbsp;
 
-&nbsp;
-
-### `input_check_long(verb, [playerIndex], [bufferDuration])`
+## `input_check_long(verb, [playerIndex], [bufferDuration])`
 
 *Returns:* Boolean, if the verb is currently active
 
@@ -129,9 +115,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 
 &nbsp;
 
-&nbsp;
-
-### `input_check_long_pressed(verb, [playerIndex], [bufferDuration])`
+## `input_check_long_pressed(verb, [playerIndex], [bufferDuration])`
 
 *Returns:* Boolean, if the verb is newly activated this frame
 
@@ -145,9 +129,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 
 &nbsp;
 
-&nbsp;
-
-### `input_check_long_released(verb, [playerIndex], [bufferDuration])`
+## `input_check_long_released(verb, [playerIndex], [bufferDuration])`
 
 *Returns:* Boolean, if the verb is newly deactivated this frame
 
@@ -161,9 +143,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 
 &nbsp;
 
-&nbsp;
-
-### `input_value(verb, [playerIndex])`
+## `input_value(verb, [playerIndex])`
 
 *Returns:* Real, the analogue value of the input (after calculating the threshold)
 
@@ -178,9 +158,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 
 &nbsp;
 
-&nbsp;
-
-### `input_held_time(verb, [playerIndex])`
+## `input_held_time(verb, [playerIndex])`
 
 *Returns:* Number, the length of time that a verb has been active (held)
 
@@ -193,9 +171,7 @@ The units returned by this function is determined by `INPUT_TIMER_MILLISECONDS`.
 
 &nbsp;
 
-&nbsp;
-
-### `input_is_analogue(verb, [playerIndex])`
+## `input_is_analogue(verb, [playerIndex])`
 
 *Returns:* Boolean, if the verb was last triggered by an analogue input (a gamepad axis)
 
@@ -208,9 +184,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 
 &nbsp;
 
-&nbsp;
-
-### `input_check_press_most_recent([array], [playerIndex])`
+## `input_check_press_most_recent([array], [playerIndex])`
 
 *Returns:* Most recent [verb](Verbs-and-Alternate-Bindings) pressed in the specified array, or `undefined` if no verb is active
 
