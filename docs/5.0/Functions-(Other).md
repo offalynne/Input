@@ -1,8 +1,8 @@
 # Functions (Other)
 
----
+&nbsp;
 
-### `input_axis_threshold_set(axis, min, max, [playerIndex])`
+## `input_axis_threshold_set(axis, min, max, [playerIndex])`
 
 *Returns:* A struct with two member variables, `mini` and `maxi`, containing the minimum and maximum thresholds
 
@@ -15,9 +15,7 @@
 
 &nbsp;
 
-&nbsp;
-
-### `input_axis_threshold_get(axis, [playerIndex])`
+## `input_axis_threshold_get(axis, [playerIndex])`
 
 *Returns:* A struct with two member variables, `mini` and `maxi`, containing the minimum and maximum thresholds
 
@@ -30,9 +28,7 @@ If the axis does not have a threshold definition (as set by `input_axis_threshol
 
 &nbsp;
 
-&nbsp;
-
-### `input_consume(verb, [playerIndex])`
+## `input_consume(verb, [playerIndex])`
 
 *Returns:* N/A (`undefined`)
 
@@ -45,9 +41,7 @@ When a verb has been consumed, [check functions](Functions-(Checkers)) that targ
 
 &nbsp;
 
-&nbsp;
-
-### `input_clear_momentary(state)`
+## `input_clear_momentary(state)`
 
 *Returns:* N/A (`undefined`)
 
@@ -59,9 +53,7 @@ Clears momentary (pressed/released) input and connection checkers. This covers v
 
 &nbsp;
 
-&nbsp;
-
-### `input_guess_keyboard_layout()`
+## `input_guess_keyboard_layout()`
 
 *Returns:* String indicating keyboard layout hint, `QWERTY` `AZERTY` or `QWERTZ`
 
@@ -91,9 +83,7 @@ else
 
 &nbsp;
 
-&nbsp;
-
-### `input_verb_set(verb, value, [playerIndex])`
+## `input_verb_set(verb, value, [playerIndex])`
 
 *Returns:* N/A (`undefined`)
 
@@ -107,9 +97,7 @@ Sets a value directly for a verb. It is recommend that verb values are set befor
 
 &nbsp;
 
-&nbsp;
-
-### `input_platform_text_source()`
+## `input_platform_text_source()`
 
 *Returns:* String indicating platform text source, `async` `virtual` or `keyboard`
 
@@ -121,9 +109,7 @@ Provides a suggestion for text entry handling based on platform target.
 
 &nbsp;
 
-&nbsp;
-
-### `input_ignore_key_add(key)`
+## `input_ignore_key_add(key)`
 
 *Returns:* N/A (`undefined`)
 
@@ -137,9 +123,7 @@ Adds a keyboard key to be ignored by Input. This will affect binding detection, 
 
 &nbsp;
 
-&nbsp;
-
-### `input_ignore_key_remove(key)`
+## `input_ignore_key_remove(key)`
 
 *Returns:* N/A (`undefined`)
 
@@ -148,3 +132,27 @@ Adds a keyboard key to be ignored by Input. This will affect binding detection, 
 |`key`|integer |[Key](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/keyboard%20input/index.html) to remove|
 
 Removes a keyboard key from the ignore list.
+
+&nbsp;
+
+## `input_mouse_transform_function_set(method)`
+
+*Returns:* N/A (`undefined`)
+
+|Name    |Datatype|Purpose                                             |
+|--------|--------|----------------------------------------------------|
+|`method`|method  |                                                    |
+
+If `method` is set to `undefined` then the mouse transformation function is disabled and no transformation is applied.
+
+&nbsp;
+
+## `input_mouse_transform_method_get()`
+
+*Returns:* Method, the mouse transformation function as set by `input_mouse_transform_function_set()`
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+This function will return `undefined` if no transformation function has been defined.
