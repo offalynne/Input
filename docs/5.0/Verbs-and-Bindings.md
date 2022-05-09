@@ -12,7 +12,7 @@ Verbs can be checked in multiple ways, mostly using the [checker](Functions-(Che
 
 In addition to basic verbs, you can also create chords and combos. Chords and combos are built by calling [specific functions](Functions-(Extended-Verbs)). Basic verbs, chord verbs, and combo verbs can all be checked using the same functions (though you may find `input_check_double_pressed()` has limited uses for combo verbs).
 
-A "binding" is a piece of logic that ties a physical input on an input source (keyboard, mouse, or gamepad) to a verb in-game. For example, we might want to create a binding that ties the up arrow key on a keyboard to a verb called `"move up"`. There are [seven types of binding](Functions-(Binding-Creators)):
+A "binding" is a piece of logic that ties a physical input on an input source (keyboard, mouse, or gamepad) to a verb in-game. For example, we might want to create a binding that ties the up arrow key on a keyboard to a verb called `"move_up"`. There are [seven types of binding](Functions-(Binding-Creators)):
 
 |Type                   |Creator function                                                                                      |
 |-----------------------|------------------------------------------------------------------------------------------------------|
