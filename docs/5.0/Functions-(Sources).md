@@ -6,17 +6,11 @@
 
 *Returns:* N/A (`undefined`)
 
-|Name  |Datatype                          |Purpose                                                                                    |
-|------|----------------------------------|-------------------------------------------------------------------------------------------|
-|`mode`|member of `INPUT_SOURCE_MODE` enum|                                                                                           |
+|Name  |Datatype                          |Purpose                   |
+|------|----------------------------------|--------------------------|
+|`mode`|member of `INPUT_SOURCE_MODE` enum|The new source mode to set|
 
-|Name          |Purpose                               |
-|--------------|--------------------------------------|
-|`.FIXED`      |                                      |
-|`.JOIN`       |                                      |
-|`.HOTSWAP`    |                                      |
-|`.MIXED`      |                                      |
-|`.MULTIDEVICE`|                                      |
+You can read more about source modes [here](Input-Sources?id=source-modes).
 
 &nbsp;
 
