@@ -18,7 +18,7 @@ As previously mentioned, default profiles are defined using [`INPUT_DEFAULT_PROF
 The structure is as follows:
 ```gml
 INPUT_DEFAULT_PROFILES = {
-    <profile profile name>: {
+    <default profile name>: {
 	    <verb name>: <binding>
 		<verb name>: [<binding 0>, <binding 1>], //Verb with multiple bindings
 		...
