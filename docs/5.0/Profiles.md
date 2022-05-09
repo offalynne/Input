@@ -11,6 +11,8 @@ Regardless of what type a profile is, you can modify the bindings for that profi
 
 !> It is not possible to create a totally new verb for a custom profile. Any verb that you instead to use in your game must be added to a default profile, even if it is initially unbound by default (i.e. set to `undefined` or `input_binding_empty()`).
 
+&nbsp;
+
 ## Defining Default Profiles
 
 As previously mentioned, default profiles are defined using [`INPUT_DEFAULT_PROFILES`](Configuration?id=profiles-and-bindings). This macro should be set to a struct that lays out the default profiles you need for your game and the bindings for each verb.
