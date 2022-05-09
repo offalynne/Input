@@ -2,11 +2,13 @@
 
 &nbsp;
 
-Input supports three fundamental types of source - keyboards, mice, and gamepads. Input treats each gamepad as a different and distinct device, and it also treats a keyboard and a mouse as different and distinct devices. Sources are assigned to players, with a particular source typically only being assigned to one player at a time. In the general case, a player may be assigned as many sources as you want, though in practice a player often only has one source at a time.
+Input supports three fundamental types of source - keyboards, mice, and gamepads. Input treats each gamepad as a different and distinct device, and it can also treat a keyboard and a mouse as different and distinct devices. 
 
-?> Having said this, when you first import Input into your project, keyboard and mouse input is tied together as this is by far and away the most common use case for keyboards and mice. You can change this behaviour through a [configuration macro](Configuration?id=profiles-and-bindings).
+?> When you first import Input into your project, `INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER` is set to `true`, meaning keyboard and mouse input is tied together. This is by far and away the most common use case for keyboards and mice. You can change this behaviour by [adjusting this macro](Configuration?id=profiles-and-bindings).
 
-It is possible for more than one player to use the same source. This is useful for two players sharing a keyboard or a gamepad (examples being [Overcooked](https://store.steampowered.com/app/448510/Overcooked/), [KeyWe](https://store.steampowered.com/app/1242980/KeyWe/), and [Fling to the Finish](https://store.steampowered.com/app/1054430/Fling_to_the_Finish/)). You'll need to use [`input_source_share()`](Functions-(Sources)?id=input_source_sharesource-playerindex-autoprofile).
+Sources are assigned to players, with a particular source **typically** only being assigned to one player at a time. In the general case, a player may be assigned as many sources as you want, though in practice a player often only has one source at a time. It is possible for more than one player to use the same source. This is useful for two players sharing a keyboard or a gamepad (examples being [Overcooked](https://store.steampowered.com/app/448510/Overcooked/), [KeyWe](https://store.steampowered.com/app/1242980/KeyWe/), and [Fling to the Finish](https://store.steampowered.com/app/1054430/Fling_to_the_Finish/)). You'll need to use [`input_source_share()`](Functions-(Sources)?id=input_source_sharesource-playerindex-autoprofile) to split a source between multiple players.
+
+Some functions also allow you to automatically change a player's [profile](Profiles) depending on what source they're using (and what source mode Input is running in). This is called an "auto profile" and can be set up by changing the [auto profile configuration macros](Configuration?id=profiles-and-bindings) and ensuring that this profile has been added to [`INPUT_DEFAULT_PROFILES`](Configuration?id=profiles-and-bindings). For example, if `INPUT_AUTO_PROFILE_FOR_GAMEPAD` is set to `"default_gamepad"` then when automatically setting a profile for a player that is using a gamepad, the `default_gamepad` profile will be used.
 
 &nbsp;
 
