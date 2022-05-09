@@ -20,13 +20,19 @@ Input can run in one of five "source modes". These control how Input manages sou
 
 ?> Source modes replace the old "hotswap tick" and "source assignment tick" functions from version 4.
 
+&nbsp;
+
 ### `INPUT_SOURCE_MODE.FIXED`
 
 Input will not change sources automatically and you are responsible for managing sources yourself. This is useful as an in-game state for both single player and multiplayer gameplay where you don't want unexpected changes to occur. The auto profile when in hotswap mode is determined by which source the player is currently using.
 
+&nbsp;
+
 ### `INPUT_SOURCE_MODE.JOIN`
 
 Input will allow plays to "join" the game by pressing any button on a supported device. Player must join in ascending order, player 0 first, then player 1 etc. A player that has joined can leave by activating a specific verb. You can change the parameters for join mode by using [`input_multiplayer_params_set()`](Functions-(Players)?id=input_multiplayer_params_setmin-max-dropdown). [`input_multiplayer_is_finished()`](Functions-(Players)?id=input_multiplayer_is_finished) allows you to conveniently detect when enough players have joined the game based on the parameters you've set. The auto profile when in hotswap mode is determined by which source the player is currently using.
+
+&nbsp;
 
 ### `INPUT_SOURCE_MODE.HOTSWAP`
 
@@ -34,11 +40,15 @@ Input will automatically swap sources for player 0 based on what source the play
 
 !> This mode should only be used for single player gameplay. All players other than player 0 will have their sources removed and will not be able to play.
 
+&nbsp;
+
 ### `INPUT_SOURCE_MODE.MIXED`
 
 Input will accept input for player 0 from the keyboard, the mouse, and one gamepad. The gamepad that is active will be hotswapped and only one gamepad is active at a time. The auto profile when in mixed mode is determined by `INPUT_AUTO_PROFILE_FOR_MIXED`.
 
 !> This mode should only be used for single player gameplay. All players other than player 0 will have their sources removed and will not be able to play.
+
+&nbsp;
 
 ### `INPUT_SOURCE_MODE.MULTIDEVICE`
 
