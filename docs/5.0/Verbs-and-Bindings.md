@@ -14,13 +14,15 @@ In addition to basic verbs, you can also create chords and combos. Chords and co
 
 A "binding" is a piece of logic that ties a physical input on an input source (keyboard, mouse, or gamepad) to a verb in-game. For example, we might want to create a binding that ties the up arrow key on a keyboard to a verb called `"move up"`. There are [seven types of binding](Functions-(Binding-Creators)):
 
-- Empty, inactive binding [`input_binding_empty()`](Functions-(Binding-Creators)?id=input_binding_gamepad_axisaxis-negative)
-- Keyboard key [`input_binding_key()`](Functions-(Binding-Creators)?id=input_binding_keykey)
-- Mouse button [`input_binding_mouse_button()`](Functions-(Binding-Creators)?id=input_binding_mouse_buttonbutton)
-- Mouse wheel up [`input_binding_mouse_wheel_up()`](Functions-(Binding-Creators)?id=input_binding_mouse_wheel_up)
-- Mouse wheel down [`input_binding_mouse_wheel_down()`](Functions-(Binding-Creators)?id=input_binding_mouse_wheel_down)
-- Gamepad button [`input_binding_gamepad_button()`](Functions-(Binding-Creators)?id=input_binding_gamepad_buttonbutton)
-- Gamepad axis [`input_binding_gamepad_axis()`](Functions-(Binding-Creators)?id=input_binding_keykey)
+|Type                   |Creator function                                                                                      |
+|-----------------------|------------------------------------------------------------------------------------------------------|
+|Empty, inactive binding|[`input_binding_empty()`](Functions-(Binding-Creators)?id=input_binding_gamepad_axisaxis-negative)    |
+|Keyboard key           |[`input_binding_key()`](Functions-(Binding-Creators)?id=input_binding_keykey)                         |
+|Mouse button           |[`input_binding_mouse_button()`](Functions-(Binding-Creators)?id=input_binding_mouse_buttonbutton)    |
+|Mouse wheel up         |[`input_binding_mouse_wheel_up()`](Functions-(Binding-Creators)?id=input_binding_mouse_wheel_up)      |
+|Mouse wheel down       |[`input_binding_mouse_wheel_down()`](Functions-(Binding-Creators)?id=input_binding_mouse_wheel_down)  |
+|Gamepad button         |[`input_binding_gamepad_button()`](Functions-(Binding-Creators)?id=input_binding_gamepad_buttonbutton)|
+|Gamepad axis           |[`input_binding_gamepad_axis()`](Functions-(Binding-Creators)?id=input_binding_keykey)                |
 
 ?> Aside from [binding creator functions](Functions-(Binding-Creators)), bindings can also be created by listening for player input using [`input_binding_scan_tick()`](Functions-(Binding-Creators)?id=input_binding_scan_ticksource-playerindex).
 
