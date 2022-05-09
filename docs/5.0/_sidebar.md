@@ -9,7 +9,6 @@
 - [Verbs and Bindings](Verbs-and-Bindings)
 - [Input Sources](Input-Sources)
 - [Profiles](Profiles)
-- ["Mixed" and "Multidevice"](Mixed-and-Multidevice)
 
 ---
 
