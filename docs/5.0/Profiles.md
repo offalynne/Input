@@ -2,7 +2,7 @@
 
 &nbsp;
 
-Profiles are used to group together [bindings](Verbs-and-Bindings) into collections that can be switched in and out, either manually or automatically. You can learn more about the specifics of verbs and bindings [here](Verbs-and-Bindings). There are two kinds of bindings:
+Profiles are used to group together [bindings](Verbs-and-Bindings) into collections that can be switched in and out, either manually or automatically. You can learn more about the specifics of verbs and bindings [here](Verbs-and-Bindings). There are two kinds of profile:
 
 1. Default Profiles - Defined using [`INPUT_DEFAULT_PROFILES`](Configuration?id=profiles-and-bindings) and exists for every player. Cannot be destroyed by [`input_profile_destroy()`](Functions-(Profiles)?id=input_profile_destroyprofilename-playerindex)
 2. Custom Profiles - Created, destroyed, and otherwise managed using the [profile functions](Functions-(Profiles))
