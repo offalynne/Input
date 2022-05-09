@@ -24,7 +24,7 @@ A pointing device, either an actual mouse, touchscreen input, or a PS4 touchpad.
 
 ### `INPUT_GAMEPAD[...]`
 
-A gamepad with the given index (which matches GM's native gamepad indexes). `INPUT_GAMEPAD` is an array and you'll need to use standard array syntax to access individual gamepads (i.e. `INPUT_GAMEPAD[0]` is the 0th gamepad). The length of this array is given by `INPUT_MAX_TRACKED_GAMEPADS`.
+A gamepad with the given index (which matches GM's native gamepad indexes). `INPUT_GAMEPAD` is an array and you'll need to use standard array syntax to access individual gamepads (i.e. `INPUT_GAMEPAD[0]` is the 0th gamepad). The length of this array is given by `INPUT_MAX_TRACKED_GAMEPADS`. Not every gamepad in the `INPUT_GAMEPAD` array will be active; indeed, not every gamepad will be valid for a given platform. You should only assign gamepad sources if you have positive identified that the gamepad is connected and usable, typically by calling [`input_source_detect_input()`](Functions-(Sources)?id=input_source_detect_inputsource).
 
 &nbsp;
 
