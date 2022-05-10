@@ -20,6 +20,7 @@
 
 ## Other Changes
 
+- Verb names must now be strings
 - `input_tick()` is no longer needed (GMS2022.5 and later only)
 - `input_binding_get_collisions()` has been renamed to `input_binding_test_collisions()`
 - Default binding setter functions (`input_default_key()` etc.) have been removed in preference for a macro (`INPUT_DEFAULT_PROFILES`)
