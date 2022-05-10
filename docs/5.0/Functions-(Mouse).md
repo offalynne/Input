@@ -63,3 +63,27 @@
 |Name|Datatype|Purpose|
 |----|--------|-------|
 |None|        |       |
+
+&nbsp;
+
+## `input_mouse_transform_function_set(method)`
+
+*Returns:* N/A (`undefined`)
+
+|Name    |Datatype|Purpose                                             |
+|--------|--------|----------------------------------------------------|
+|`method`|method  |                                                    |
+
+If `method` is set to `undefined` then the mouse transformation function is disabled and no transformation is applied.
+
+&nbsp;
+
+## `input_mouse_transform_method_get()`
+
+*Returns:* Method, the mouse transformation function as set by `input_mouse_transform_function_set()`
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+This function will return `undefined` if no transformation function has been defined.

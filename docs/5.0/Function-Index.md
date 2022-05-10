@@ -121,9 +121,6 @@
 - [`input_clear_momentary(state)`](Functions-(Other)#input_clear_momentarystate)
 - [`input_guess_keyboard_layout()`](Functions-(Other)#input_guess_keyboard_layout)
 - [`input_platform_text_source()`]()
-- [`input_clear_momentary()`]()
-- [`input_mouse_transform_function_set()`]()
-- [`input_mouse_transform_function_Get()`]()
 
 ### [Gamepad (Direct)](Functions-(Gamepad))
 
@@ -163,3 +160,5 @@
 - [`input_mouse_x()`](Functions-(Mouse)#input_mouse_x)
 - [`input_mouse_y()`](Functions-(Mouse)#input_mouse_y)
 - [`input_mouse_moved()`](Functions-(Mouse)#input_mouse_moved)
+- [`input_mouse_transform_function_set()`]()
+- [`input_mouse_transform_function_get()`]()
