@@ -43,6 +43,13 @@ INPUT_DEFAULT_PROFILES = {
     
 };
 
+//Defines which verbs should collide with which other verbs when using input_binding_get_collisions()
+//and input_binding_set_safe(). A verb that is not present in a collision group will collide with all
+//other verbs
+INPUT_VERB_COLLISION_GROUPS = {
+    general: ["up", "down", "left", "right", "accept", "cancel", "action", "special", "pause",],
+};
+
 //Maximum number of alternate bindings per verb per profile
 #macro INPUT_MAX_ALTERNATE_BINDINGS  2
 
@@ -63,10 +70,3 @@ INPUT_DEFAULT_PROFILES = {
 //Whether to allow default profiles (see below) to contain different verbs. Normally every profile
 //should contain a reference to every verb, but for complex games this is inconvenient
 #macro INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES  false
-
-//Defines which verbs should collide with which other verbs when using input_binding_get_collisions()
-//and input_binding_set_safe(). A verb that is not present in a collision group will collide with all
-//other verbs
-INPUT_VERB_COLLISION_GROUPS = {
-    general: ["up", "down", "left", "right", "accept", "cancel", "action", "special", "pause",],
-};
