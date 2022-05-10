@@ -131,7 +131,7 @@ Once again, our Step event didn't change. However, we've now added lots more con
 
 The [`INPUT_VERB_COLLISION_GROUPS`](Configuration?id=profiles-and-bindings) macro allows you to differentiate groups of verbs that should not affect one another when checking for collisions (either using [`input_binding_test_collisions()`](Functions-(Binding-Access)?id=input_binding_test_collisionsverb-binding-playerindex-profilename) or [`input_binding_set_safe()`](Functions-(Binding-Access)?id=input_binding_set_safeverb-binding-playerindex-alternate-profilename)). This is useful for separating sets of verbs that are contextually separate, such as verbs that are used in a menu and verbs that are used during gameplay. By putting menu verbs and gameplay verbs in two different collision groups, two identical bindings in two different groups can co-exist.
 
-A verb can be in multiple groups at a time and may collide with any other verbs in any groups it is in. If a verb is not assigned to a collision then it may collide with all verbs, regardless of what collision group the colliding verb is in. You can return the collision groups for a verb by calling [`input_verb_get_collision_groups()`](Functions-(Other)?id=input_verb_get_collision_groupsverb).
+A verb can be in multiple groups at a time and may collide with any other verbs in any groups it is in. If a verb is not assigned to a collision then it may collide with all verbs, regardless of what collision group the colliding verb is in. You can return the collision groups for a verb by calling [`input_verb_get_collision_groups()`](Functions-(Other)?id=input_verb_get_collision_groupsverb), and a verb that has not been assigned a collision group with return `undefined`.
 
 `INPUT_VERB_COLLISION_GROUPS` must be defined using the following format:
 ```
@@ -143,3 +143,15 @@ INPUT_VERB_COLLISION_GROUPS = {
 ```
 
 By default, `INPUT_VERB_COLLISION_GROUPS` is set to an empty struct meaning that all verbs may collide with all other verbs.
+
+Here is an example of binding groups for a top-down shooter with vehicle combat:
+
+```gml
+INPUT_VERB_COLLISION_GROUPS = {
+    menu:       ["up", "down", "left", "right", "pause", "confirm", "cancel",],
+	on_foot:    ["up", "down", "left", "right", "pause", "shoot", "interact",],
+	in_vehicle: ["steer_left", "steer_right", "pause", "shoot", "accelerate", "brake",],
+}
+```
+
+In this case, the `up` `down` `left` `right` verbs may collide between the `menu` and `on_foot` groups. `shoot` may collide between `on_foot` and `in_vehicle`, but not `menu`. The `pause` verb will collide between all three groups - we could also have ommitted this verb given that verbs with an undefined collision group collide with everything.
