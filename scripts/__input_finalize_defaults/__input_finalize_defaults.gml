@@ -51,7 +51,7 @@ function __input_finalize_defaults()
             
             if (array_length(_verb_data) > INPUT_MAX_ALTERNATE_BINDINGS)
             {
-                __input_error("Profile \"", _profile_name, "\" definition must be a struct (was ", typeof(_profile_struct), ")");
+                __input_error("Verb \"", _verb_name, "\" for default profile \"", _profile_name, "\" has too many alternate bindings (", array_length(_verb_data), " versus max ", INPUT_MAX_ALTERNATE_BINDINGS, ")\nPlease increase INPUT_MAX_ALTERNATE_BINDINGS if you'd like to use more alternate bindings");
             }
             
             global.__input_default_player.__ensure_verb(_profile_name, _verb_name);

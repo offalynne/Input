@@ -17,7 +17,7 @@ function input_source_set(_source, _player_index = 0, _auto_profile = true)
             __source_add(INPUT_MOUSE);
             
             var _i = 0;
-            repeat(INPUT_MAX_TRACKED_GAMEPADS)
+            repeat(INPUT_MAX_GAMEPADS)
             {
                 __source_add(INPUT_GAMEPAD[_i]);
                 ++_i;

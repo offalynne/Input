@@ -112,7 +112,7 @@ function __input_initialize()
         any_changed: false,
         new_connections: [],
         new_disconnections: [],
-        gamepads: array_create(INPUT_MAX_TRACKED_GAMEPADS, INPUT_STATUS.DISCONNECTED),
+        gamepads: array_create(INPUT_MAX_GAMEPADS, INPUT_STATUS.DISCONNECTED),
     }
     
     //The default player. This player struct holds default binding data
@@ -153,7 +153,7 @@ function __input_initialize()
     //Array of currently connected gamepads. If an element is <undefined> then the gamepad is disconnected
     //Each gamepad in this array is an instance of __input_class_gamepad
     //Gamepad structs contain remapping information and current button state
-    global.__input_gamepads = array_create(INPUT_MAX_TRACKED_GAMEPADS, undefined);
+    global.__input_gamepads = array_create(INPUT_MAX_GAMEPADS, undefined);
     
     //Our database of SDL2 definitions, used for the aforementioned remapping information
     global.__input_sdl2_database = {
@@ -555,9 +555,9 @@ function __input_initialize()
     INPUT_KEYBOARD = new __input_class_source(__INPUT_SOURCE.KEYBOARD);
     INPUT_MOUSE = INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER? INPUT_KEYBOARD : (new __input_class_source(__INPUT_SOURCE.MOUSE));
     
-    INPUT_GAMEPAD = array_create(INPUT_MAX_TRACKED_GAMEPADS, undefined);
+    INPUT_GAMEPAD = array_create(INPUT_MAX_GAMEPADS, undefined);
     var _g = 0;
-    repeat(INPUT_MAX_TRACKED_GAMEPADS)
+    repeat(INPUT_MAX_GAMEPADS)
     {
         INPUT_GAMEPAD[@ _g] = new __input_class_source(__INPUT_SOURCE.GAMEPAD, _g);
         ++_g;

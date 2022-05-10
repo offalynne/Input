@@ -1,7 +1,7 @@
 //Input defines the default profiles as a macro called 
 //This macro is parsed when Input boots up and provides the baseline bindings for your game
 //
-//  PLEASE EDIT THIS MACRO TO MEET THE NEEDS OF YOUR GAME
+//  Please edit this macro to meet the needs of your game!
 //
 //The root struct called INPUT_DEFAULT_PROFILES contains the names of each default profile
 //Default profiles then contain the names of verbs. Each verb should be given a binding that is
@@ -42,16 +42,6 @@ INPUT_DEFAULT_PROFILES = {
     },
     
 };
-
-//Defines which verbs should collide with which other verbs when using input_binding_get_collisions()
-//and input_binding_set_safe(). A verb that is not present in a collision group will collide with all
-//other verbs
-INPUT_VERB_COLLISION_GROUPS = {
-    general: ["up", "down", "left", "right", "accept", "cancel", "action", "special", "pause",],
-};
-
-//Maximum number of alternate bindings per verb per profile
-#macro INPUT_MAX_ALTERNATE_BINDINGS  2
 
 //Names of the default profiles to use when automatically assigning profiles based on the source that a
 //player is currently using. Default profiles for sources that you don't intend to use in your game do

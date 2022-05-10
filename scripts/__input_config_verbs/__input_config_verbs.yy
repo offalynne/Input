@@ -6,7 +6,7 @@
     "path": "folders/Input/Configuration - Please edit these scripts!.yy",
   },
   "resourceVersion": "1.0",
-  "name": "__input_config_profiles_and_bindings",
+  "name": "__input_config_verbs",
   "tags": [],
   "resourceType": "GMScript",
 }

@@ -12,8 +12,8 @@
 #macro INPUT_KEYBOARD  global.__input_source_keyboard
 #macro INPUT_MOUSE     global.__input_source_mouse
 #macro INPUT_GAMEPAD   global.__input_source_gamepad
-#macro INPUT_MAX_TRACKED_GAMEPADS  12
-#macro __INPUT_GAMEPAD_COUNT  min(gamepad_get_device_count(), INPUT_MAX_TRACKED_GAMEPADS)
+#macro INPUT_MAX_GAMEPADS  12
+#macro __INPUT_GAMEPAD_COUNT  min(gamepad_get_device_count(), INPUT_MAX_GAMEPADS)
 
 #macro __INPUT_ON_PS       ((os_type == os_ps4)     || (os_type == os_ps5))
 #macro __INPUT_ON_XDK      ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
