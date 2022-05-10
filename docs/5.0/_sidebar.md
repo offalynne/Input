@@ -1,5 +1,6 @@
 - [Introduction](README)
 - [Quick Start Guide](Quick-Start-Guide)
+- [Changes from Input 4](Changes-from-Input-4)
 - [Verbs and Bindings](Verbs-and-Bindings)
 - [Input Sources](Input-Sources)
 - [Profiles](Profiles)
