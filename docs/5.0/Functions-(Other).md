@@ -2,6 +2,18 @@
 
 &nbsp;
 
+## `input_tick()`
+
+*Returns:* N/A (`undefined`)
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+!> If you're using Input 5 on versions of GameMaker **before** 2022.5 (May 2022) then you'll need to call `input_tick()` in the Begin Step event of a persistent instance. This function handles all things Input behind the scenes, it is important to call `input_tick()` once (and only once) each step of your game. A good way to do this is by making `obj_input_manager` [persistent](https://manual.yoyogames.com/#t=The_Asset_Editors%2FObjects.htm), and placing one instance in your first room.
+
+&nbsp;
+
 ## `input_axis_threshold_set(axis, min, max, [playerIndex])`
 
 *Returns:* A struct with two member variables, `mini` and `maxi`, containing the minimum and maximum thresholds
