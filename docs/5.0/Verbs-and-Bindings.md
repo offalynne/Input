@@ -144,7 +144,7 @@ INPUT_VERB_COLLISION_GROUPS = {
 
 By default, `INPUT_VERB_COLLISION_GROUPS` is set to an empty struct meaning that all verbs may collide with all other verbs.
 
-Here is an example of binding groups for a top-down shooter with vehicle combat:
+Here is an example of collision groups for a top-down shooter with vehicle combat:
 
 ```gml
 INPUT_VERB_COLLISION_GROUPS = {
