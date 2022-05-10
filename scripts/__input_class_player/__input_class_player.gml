@@ -91,7 +91,7 @@ function __input_class_player() constructor
     static __profile_get_auto = function()
     {
         if (__ghost) return undefined;
-        if ((global.__input_source_mode == INPUT_SOURCE_MODE.MULTI_DEVICE) && (__index == 0)) return INPUT_AUTO_PROFILE_FOR_MULTIDEVICE;
+        if ((global.__input_source_mode == INPUT_SOURCE_MODE.MULTIDEVICE) && (__index == 0)) return INPUT_AUTO_PROFILE_FOR_MULTIDEVICE;
         
         var _count = array_length(__source_array);
         
@@ -306,8 +306,12 @@ function __input_class_player() constructor
     /// @param alternate
     static __binding_reset = function(_profile_name, _verb, _alternate)
     {
+        //Verify
+        var _default_profile_struct = global.__input_default_player.__profiles_dict[$ _profile_name];
+        if (!is_struct(_default_profile_struct)) __input_error("Profile \"", _profile_name, "\" doesn't exist as a default profile");
+        
         //Grab the equivalent binding from the default player
-        var _binding_struct = global.__input_default_player.__profiles_dict[$ _profile_name][$ _verb][_alternate];
+        var _binding_struct = _default_profile_struct[$ _verb][_alternate];
         
         //If the binding is a struct then duplicate so we don't get nasty
         if (is_struct(_binding_struct)) _binding_struct.__duplicate();

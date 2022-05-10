@@ -1,18 +1,19 @@
 /// @param verb
 /// @param binding
 /// @param [playerIndex]
-/// @param [alternate]
+/// @param [alternate=0]
+/// @param [profileName]
 
-function input_binding_set_safe(_verb_name, _binding, _player_index = 0, _alternate = 0)
+function input_binding_set_safe(_verb_name, _binding, _player_index = 0, _alternate = 0, _profile_name = undefined)
 {
 	__input_initialize();
+    __INPUT_VERIFY_BASIC_VERB_NAME
     __INPUT_VERIFY_PLAYER_INDEX
     __INPUT_VERIFY_ALTERNATE_INDEX
-    __INPUT_VERIFY_BASIC_VERB_NAME
     
     if (input_value_is_binding(_binding))
     {
-        var _collisions = input_binding_get_collisions(_binding, _player_index);
+        var _collisions = input_binding_test_collisions(_verb_name, _binding, _player_index, _profile_name);
         if (array_length(_collisions) == 0)
         {
             input_binding_set(_verb_name, _binding, _player_index, _alternate);
@@ -24,7 +25,7 @@ function input_binding_set_safe(_verb_name, _binding, _player_index = 0, _altern
                 __input_trace("Warning! More than one binding collision found, resolution may not be desirable");
             }
             
-            var _profile_name = global.__input_players[_player_index].__profile_name;
+            var _profile_name = global.__input_players[_player_index].__profile_get(_profile_name);
             var _verb_b      = _collisions[0].verb;
             var _alternate_b = _collisions[0].alternate;
             

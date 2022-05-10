@@ -14,7 +14,7 @@ function input_source_mode_set(_mode)
             break;
             
             case INPUT_SOURCE_MODE.HOTSWAP:
-            case INPUT_SOURCE_MODE.MULTI_DEVICE:
+            case INPUT_SOURCE_MODE.MULTIDEVICE:
                 //Clear the sources for every player apart from player 0
                 var _i = 1;
                 repeat(INPUT_MAX_PLAYERS)

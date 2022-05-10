@@ -124,7 +124,7 @@ function __input_initialize()
         JOIN,         //Starts source assignment, typically used for multiplayer
         HOTSWAP,      //Player 0's source is determined by most recent input
         MIXED,        //Player 0 can use a mixture of keyboard, mouse, and any gamepad
-        MULTI_DEVICE, //Player 0 can use a mixture of keyboard, mouse, and any gamepad, but gamepad bindings are specific to each device
+        MULTIDEVICE, //Player 0 can use a mixture of keyboard, mouse, and any gamepad, but gamepad bindings are specific to each device
     }
     
     global.__input_source_mode = INPUT_STARTING_SOURCE_MODE;
@@ -547,9 +547,10 @@ function __input_initialize()
     //We want to be able to identify the actual mouse buttons correctly, and have our own double-input handling
     device_mouse_dbclick_enable(false);
     
-    global.__input_profile_array        = undefined;
-    global.__input_profile_dict         = undefined;
-    global.__input_default_profile_dict = undefined;
+    global.__input_profile_array             = undefined;
+    global.__input_profile_dict              = undefined;
+    global.__input_default_profile_dict      = undefined;
+    global.__input_verb_collision_group_dict = {};
     
     INPUT_KEYBOARD = new __input_class_source(__INPUT_SOURCE.KEYBOARD);
     INPUT_MOUSE = INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER? INPUT_KEYBOARD : (new __input_class_source(__INPUT_SOURCE.MOUSE));

@@ -466,6 +466,6 @@ function __input_system_tick()
         case INPUT_SOURCE_MODE.JOIN:         __input_multiplayer_assignment_tick(); break;
         case INPUT_SOURCE_MODE.HOTSWAP:      __input_hotswap_tick();                break;
         case INPUT_SOURCE_MODE.MIXED:                                               break;
-        case INPUT_SOURCE_MODE.MULTI_DEVICE:                                        break;
+        case INPUT_SOURCE_MODE.MULTIDEVICE:                                        break;
     }
 }
