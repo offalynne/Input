@@ -8,12 +8,12 @@ Input has a number of macros available for your use. Unlike macros used for conf
 
 The following constants allow you to reference specific [input sources](Input-Sources). These constants are used by and returned from the various [source functions]().
 
-|Name                        |Purpose                                                                                                                                                                                                                                                           |
-|----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`INPUT_KEYBOARD`            |The keyboard, if any is attached. If `INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER` is `true` then this source will also include input from the mouse too                                                                                                             |
-|`INPUT_MOUSE`               |The mouse, if any is attached. If `INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER` is `true` then this source will also include input from the keyboard too                                                                                                             |
-|`INPUT_GAMEPAD[n]`          |`INPUT_GAMEPAD` is an array of sources that represent different gamepads that a player can use. `INPUT_GAMEPAD[0]` is the 0th gamepad, `INPUT_GAMEPAD[1]` is the 1st gamepad and so on. The index for this array corresponds to the native GameMaker gamepad index|
-|`INPUT_MAX_TRACKED_GAMEPADS`|The total number of gamepads that Input will track. This is the length of the `INPUT_GAMEPAD` array                                                                                                                                                               |
+|Name                |Purpose                                                                                                                                                                                                                                                           |
+|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`INPUT_KEYBOARD`    |The keyboard, if any is attached. If `INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER` is `true` then this source will also include input from the mouse too                                                                                                             |
+|`INPUT_MOUSE`       |The mouse, if any is attached. If `INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER` is `true` then this source will also include input from the keyboard too                                                                                                             |
+|`INPUT_GAMEPAD[n]`  |`INPUT_GAMEPAD` is an array of sources that represent different gamepads that a player can use. `INPUT_GAMEPAD[0]` is the 0th gamepad, `INPUT_GAMEPAD[1]` is the 1st gamepad and so on. The index for this array corresponds to the native GameMaker gamepad index|
+|`INPUT_MAX_GAMEPADS`|The total number of gamepads that Input will track. This is the length of the `INPUT_GAMEPAD` array                                                                                                                                                               |
 
 &nbsp;
 
@@ -21,13 +21,13 @@ The following constants allow you to reference specific [input sources](Input-So
 
 The `INPUT_SOURCE_MODE` enum contains the following members. You can read more about source modes [here](Input-Sources?id=source-modes).
 
-|Name           |Single Player Only|Purpose                                                                                                                                                             |
-|---------------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`.FIXED`       |no                |Input will not change sources automatically and you are responsible for managing sources yourself                                                                   |
-|`.JOIN`        |no                |Allows players to “join” the game by pressing any button on a supported device, and they can leave by activating a certain verb                                     |
-|`.HOTSWAP`     |yes               |Automatically swaps sources for player 0 based on what source the player is currently interacting with.                                                             |
-|`.MIXED`       |yes               |Accepts input for player 0 from the keyboard, the mouse, and **one** gamepad. The gamepad that is active will be hotswapped and only one gamepad is active at a time|
-|`.MULTI_DEVICE`|yes               |Accepts input for player 0 from the keyboard, the mouse, and **all** gamepads. Gamepad bindings are tied to specific gamepad slots.                                 |
+|Name          |Single Player Only|Purpose                                                                                                                                                             |
+|--------------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`.FIXED`      |no                |Input will not change sources automatically and you are responsible for managing sources yourself                                                                   |
+|`.JOIN`       |no                |Allows players to “join” the game by pressing any button on a supported device, and they can leave by activating a certain verb                                     |
+|`.HOTSWAP`    |yes               |Automatically swaps sources for player 0 based on what source the player is currently interacting with.                                                             |
+|`.MIXED`      |yes               |Accepts input for player 0 from the keyboard, the mouse, and **one** gamepad. The gamepad that is active will be hotswapped and only one gamepad is active at a time|
+|`.MULTIDEVICE`|yes               |Accepts input for player 0 from the keyboard, the mouse, and **all** gamepads. Gamepad bindings are tied to specific gamepad slots.                                 |
 
 &nbsp;
 
