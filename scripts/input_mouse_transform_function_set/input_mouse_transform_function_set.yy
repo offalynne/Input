@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Other",
-    "path": "folders/Input/Other.yy",
+    "name": "Mouse (Direct)",
+    "path": "folders/Input/Mouse (Direct).yy",
   },
   "resourceVersion": "1.0",
   "name": "input_mouse_transform_function_set",
