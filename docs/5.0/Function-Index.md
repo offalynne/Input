@@ -114,6 +114,7 @@
 
 ### [Other](Functions-(Other))
 
+- [`input_tick()`]()
 - [`input_axis_threshold_set(axis, min, max, [playerIndex])`](Functions-(Other)#input_axis_threshold_setaxis-min-max-playerindex)
 - [`input_axis_threshold_get(axis, [playerIndex])`](Functions-(Other)#input_axis_threshold_getaxis-playerindex)
 - [`input_ignore_key_add(key)`](Functions-(Other)#input_ignore_key_addkey)
