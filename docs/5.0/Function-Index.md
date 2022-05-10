@@ -92,6 +92,12 @@
 - [`input_bindings_copy(source, destination)`](Functions-(Binding-System)#input_bindings_copysource-destination)
 - [`input_binding_system_swap_gamepad_ab(state)`](Functions-(Binding-System)#input_binding_system_swap_gamepad_abstate)
 
+### [Verbs](Functions-(Verbs))
+
+- [`input_consume(verb, [playerIndex])`](Functions-(Other)#input_consumeverb-playerindex)
+- [`input_verb_set(verb, value, [playerIndex])`](Functions-(Other)#input_verb_setverb-value-playerindex)
+- [`input_verb_get_collision_groups(verb)`]()
+
 ### [Sources](Functions-(Sources))
 
 - [`input_source_mode_set(state)`]()
@@ -112,11 +118,8 @@
 - [`input_axis_threshold_get(axis, [playerIndex])`](Functions-(Other)#input_axis_threshold_getaxis-playerindex)
 - [`input_ignore_key_add(key)`](Functions-(Other)#input_ignore_key_addkey)
 - [`input_ignore_key_remove(key)`](Functions-(Other)#input_ignore_key_removekey)
-- [`input_consume(verb, [playerIndex])`](Functions-(Other)#input_consumeverb-playerindex)
 - [`input_clear_momentary(state)`](Functions-(Other)#input_clear_momentarystate)
 - [`input_guess_keyboard_layout()`](Functions-(Other)#input_guess_keyboard_layout)
-- [`input_verb_set(verb, value, [playerIndex])`](Functions-(Other)#input_verb_setverb-value-playerindex)
-- [`input_verb_get_collision_groups(verb)`]()
 - [`input_platform_text_source()`]()
 - [`input_clear_momentary()`]()
 - [`input_mouse_transform_function_set()`]()
