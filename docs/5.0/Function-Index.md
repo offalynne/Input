@@ -75,14 +75,14 @@
 
 ### [Binding Access](Functions-(Binding-Access))
 
-- [`input_binding_set(verb, binding, [playerIndex], [alternate])`](Functions-(Bindings)#input_binding_setverb-binding-playerindex-alternate)
-- [`input_binding_set_safe(verb, binding, [playerIndex], [alternate])`](Functions-(Bindings)#input_binding_set_safeverb-binding-playerindex-alternate)
-- [`input_binding_get(verb, [source], [playerIndex], [alternate])`](Functions-(Bindings)#input_binding_getverb-source-playerindex-alternate)
-- [`input_binding_get_collisions(binding, [playerIndex])`](Functions-(Bindings)#input_binding_get_collisionsbinding-playerindex)
-- [`input_binding_remove(verb, source, [playerIndex], [alternate])`](Functions-(Bindings)#input_binding_removeverb-source-playerindex-alternate)
-- [`input_binding_swap(verbA, alternateA, verbB, alternateB, [source], [playerIndex])`](Functions-(Bindings)#input_binding_swapverba-alternatea-verbb-alternateb-source-playerindex)
-- [`input_binding_get_name(binding)`](Functions-(Bindings)#input_binding_get_namebinding)
-- [`input_binding_is_valid(binding, [playerIndex])`](Functions-(Bindings)#input_binding_is_validbinding-playerIndex)
+- [`input_binding_set(verb, binding, [playerIndex], [alternate], [profileName])`]()
+- [`input_binding_set_safe(verb, binding, [playerIndex], [alternate], [profileName])`]()
+- [`input_binding_get(verb, [playerIndex], [alternate], [profileName])`]()
+- [`input_binding_test_collisions(verb, binding, [playerIndex], [profileName])`]()
+- [`input_binding_remove(verb, [playerIndex], [alternate], [profileName])`]()
+- [`input_binding_swap(verbA, alternateA, verbB, alternateB, [playerIndex], [profileName])`]()
+- [`input_binding_get_name(binding)`]()
+- [`input_binding_is_valid(binding, [playerIndex])`]()
 
 ### [Binding System](Functions-(Binding-System))
 
