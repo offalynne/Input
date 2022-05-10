@@ -8,20 +8,15 @@
 
 ?> You should edit this script to customise Input for your own purposes.
 
-|Name                                      |Typical Value            |Purpose                                                                                                                                               |
-|------------------------------------------|-------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`INPUT_MAX_PLAYERS`                       |`4`                      |Maximum number of players that the game supports                                                                                                      |
-|`INPUT_TIMER_MILLISECONDS`                |`false`                  |Set to `true` to use milliseconds instead of frames for [`input_check_*()`](Functions-(Checkers)) functions                                           |
-|`INPUT_REPEAT_DEFAULT_DELAY`              |`10`                     |Default time between re-triggers for [`input_check_repeat()`](Functions-(Checkers)#input_check_repeatverb-playerindex-delay-predelay)                 |
-|`INPUT_REPEAT_DEFAULT_PREDELAY`           |`30`                     |Default time before the first re-trigger for [`input_check_repeat()`](Functions-(Checkers)#input_check_repeatverb-playerindex-delay-predelay)         |
-|`INPUT_LONG_DELAY`                        |`10`                     |Time before long-press functions are activated. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`                 |
-|`INPUT_DOUBLE_DELAY`                      |`12`                     |Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS` |
-|`INPUT_CHORD_DEFAULT_TIME`                |`4`                      |Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS` |
-|`INPUT_2D_CLAMP`                          |`true`                   |Number of milliseconds between source swaps when using [`input_hotswap_tick()`](Functions-(Source-Assignment)#input_hotswap_tickplayerindex). This should be longer than a single frame (>17 ms at 60FPS)|
-|`INPUT_ANDROID_KEYBOARD_ALLOWED`          |`false`                  |Whether to allow keyboard input on Android platform                                                                                                   |
-|`INPUT_SWITCH_KEYBOARD_ALLOWED`           |`false`                  |Whether to allow keyboard input on Switch platform                                                                                                    |
-|`INPUT_BINDING_SCAN_TIMEOUT`              |`10000`                  |Time (in milliseconds) to wait for a new binding before automatically cancelling the binding scan                                                     |
-|`INPUT_IGNORE_RESERVED_KEYS_LEVEL`        |`2`                      |Controls default key filtering behaviour. See below                                                                                                   |
+|Name                              |Typical Value|Purpose                                                                                           |
+|----------------------------------|-------------|--------------------------------------------------------------------------------------------------|
+|`INPUT_MAX_PLAYERS`               |`4`          |Maximum number of players that the game supports                                                  |
+|`INPUT_MAX_ALTERNATE_BINDINGS`    |`2`          |Maximum number of binding to allow per verb per profile                                           |
+|`INPUT_TIMER_MILLISECONDS`        |`false`      |Set to `true` to use milliseconds instead of frames for many functions and behaviours inside Input|
+|`INPUT_ANDROID_KEYBOARD_ALLOWED`  |`false`      |Whether to allow keyboard input on Android platform                                               |
+|`INPUT_SWITCH_KEYBOARD_ALLOWED`   |`false`      |Whether to allow keyboard input on Switch platform                                                |
+|`INPUT_BINDING_SCAN_TIMEOUT`      |`10000`      |Time (in milliseconds) to wait for a new binding before automatically cancelling the binding scan |
+|`INPUT_IGNORE_RESERVED_KEYS_LEVEL`|`2`          |Controls default key filtering behaviour. See below                                               |
 
 `INPUT_IGNORE_RESERVED_KEYS_LEVEL` can take the following values:
 
@@ -43,6 +38,24 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 
 &nbsp;
 
+## Verbs
+
+`__input_config_verbs()` holds macros that affect verbs, and the way verbs are checked, in Input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
+
+?> You should edit this script to customise Input for your own purposes.
+
+|Name                           |Typical Value|Purpose                                                                                                                                              |
+|-------------------------------|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+|`INPUT_REPEAT_DEFAULT_DELAY`   |`10`         |Default time between re-triggers for [`input_check_repeat()`](Functions-(Checkers)#input_check_repeatverb-playerindex-delay-predelay)                |
+|`INPUT_REPEAT_DEFAULT_PREDELAY`|`30`         |Default time before the first re-trigger for [`input_check_repeat()`](Functions-(Checkers)#input_check_repeatverb-playerindex-delay-predelay)        |
+|`INPUT_LONG_DELAY`             |`10`         |Time before long-press functions are activated. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`                |
+|`INPUT_DOUBLE_DELAY`           |`12`         |Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`|
+|`INPUT_CHORD_DEFAULT_TIME`     |`4`          |Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`|
+|`INPUT_2D_CLAMP`               |`true`       |Whether to clamp 2D input to a maximum distance of 1 unit                                                                                            |
+|`INPUT_VERB_COLLISION_GROUPS`  |             |This macro contains the struct that defines verb collision groups. Please see the [Verbs and Bindings](Verbs-and-Bindings) page for more information |
+
+&nbsp;
+
 ## Profiles and Bindings
 
 `__input_config_profiles_and_bindings()` holds macros that affect profiles and bindings in Input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
@@ -51,7 +64,6 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 
 |Name                                      |Typical Value            |Purpose                                                                                                                                                      |
 |------------------------------------------|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`INPUT_MAX_ALTERNATE_BINDINGS`            |`2`                      |Maximum number of binding to allow per verb per profile                                                                                                      |
 |`INPUT_AUTO_PROFILE_FOR_KEYBOARD`         |`"keyboard"`             |Profile to use to automatically set up bindings when the player is using the `INPUT_KEYBOARD` source                                                         |
 |`INPUT_AUTO_PROFILE_FOR_MOUSE`            |`"mouse"`                |Profile to use to automatically set up bindings when the player is using the `INPUT_MOUSE` source                                                            |
 |`INPUT_AUTO_PROFILE_FOR_GAMEPAD`          |`"gamepad"`              |Profile to use to automatically set up bindings when the player is using the `INPUT_GAMEPAD[n]` source                                                       |
@@ -60,7 +72,6 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 |`INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER`|`true`                   |Whether to treat `INPUT_KEYBOARD` and `INPUT_MOUSE` sources are interchangeable. This "pairs" the two sources together and is the default behaviour for Input|
 |`INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES`|`false`                  |Whether to allow [default profiles](Profiles) to include different verbs. This is convenient for larger games but is potentially unsafe                      |
 |`INPUT_DEFAULT_PROFILES`                  |                         |This macro contains the struct that defines default profiles. Please see the [Profiles](Profiles) page for more information                                  |
-|`INPUT_VERB_COLLISION_GROUPS`             |                         |This macro contains the struct that defines verb collision groups. Please see the [Verbs and Bindings](Verbs-and-Bindings) page for more information         |
 
 &nbsp;
 
