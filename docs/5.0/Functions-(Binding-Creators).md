@@ -2,6 +2,18 @@
 
 &nbsp;
 
+## `input_value_is_binding(value)`
+
+_Returns:_ Boolean, if the value is a valid binding struct
+
+|Name   |Datatype|Purpose       |
+|-------|--------|--------------|
+|`value`|any     |Value to check|
+
+Useful for verifying if a value returned from [`input_binding_scan_tick()`]() or [`input_binding_get()`]() is a binding.
+
+&nbsp;
+
 The functions on this page allow you to create bindings, either to define [default profiles](Profiles), [change bindings](Functions-(Binding-Access)), or to build out [custom profiles](Functions-(Profiles)).
 
 &nbsp;
@@ -128,15 +140,3 @@ Error codes that this function can return are as follows. These are all elements
 |`.LOST_FOCUS`        |The application lost focus                                                                                                                                                                    |
 |`.SUCCESS_THIS_FRAME`|Input scanning has already succeeded this frame - this is a rare error code and should only be returned if `input_binding_scan_tick()` is being called twice in a single frame for some reason|
 |`.ERROR_THIS_FRAME`  |Input scanning has already failed this frame - this is a rare error code and should only be returned if `input_binding_scan_tick()` is being called twice in a single frame for some reason   |
-
-&nbsp;
-
-## `input_value_is_binding(value)`
-
-_Returns:_ Boolean, if the value is a valid binding struct
-
-|Name   |Datatype|Purpose       |
-|-------|--------|--------------|
-|`value`|any     |Value to check|
-
-Useful for verifying if a value returned from [`input_binding_scan_tick()`]() or [`input_binding_get()`]() is a binding.

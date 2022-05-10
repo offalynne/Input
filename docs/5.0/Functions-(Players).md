@@ -82,7 +82,7 @@ The `INPUT_STATUS` enum contains the following members:
 
 This function will return `undefined` if the player has no connected gamepad.
 
-?> If the player has multiple gamepad [sources](Input-Sources) assigned to them then this function will return the index of the first connected gamepad.
+?> If the player has multiple gamepad [sources](Input-Sources) assigned to them (typically in the [multidevice source mode](Input-Sources?id=source-modes)) then this function will return the index of the first connected gamepad.
 
 &nbsp;
 
@@ -166,7 +166,7 @@ Ghost mode prevents any sources being assigned to this player, but the player is
 
 *Returns:* N/A (`undefined`)
 
-|Name        |Datatype| urpose                                                                           |
+|Name        |Datatype|Purpose                                                                           |
 |------------|--------|----------------------------------------------------------------------------------|
 |`min`       |integer |The minimum number of players that are needed to play in this particular game mode|
 |`max`       |integer |The maximum number of players that can play this particular game mode             |

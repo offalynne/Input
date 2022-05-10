@@ -20,14 +20,14 @@
 
 ### [Profiles](Functions-(Profiles))
 
+- [`input_profile_reset_bindings(profileName, [playerIndex])`]()
+- [`input_profile_auto([playerIndex])`]()
+- [`input_profile_set(profileName, [playerIndex])`]()
+- [`input_profile_get([playerIndex])`]()
 - [`input_profile_create(profileName, [playerIndex])`]()
 - [`input_profile_destroy(profileName, [playerIndex])`]()
 - [`input_profile_exists(profileName, [playerIndex])`]()
 - [`input_profile_get_array([playerIndex])`]()
-- [`input_profile_set(profileName, [playerIndex])`]()
-- [`input_profile_get([playerIndex])`]()
-- [`input_profile_auto([playerIndex])`]()
-- [`input_profile_reset_bindings(profileName, [playerIndex])`]()
 
 ### [Checkers](Functions-(Checkers))
 
@@ -63,7 +63,6 @@
 
 ### [Binding Creators](Functions-(Binding-Creators))
 
-- [`input_binding_scan_tick([sourceFilter], [playerIndex])`]()
 - [`input_value_is_binding(value)`](Functions-(Binding-Creators)#input_value_is_bindingvalue)
 - [`input_binding_empty()`]()
 - [`input_binding_key(key)`]()
@@ -72,9 +71,11 @@
 - [`input_binding_mouse_wheel_up()`]()
 - [`input_binding_gamepad_button(button)`]()
 - [`input_binding_gamepad_axis(axis, negative)`]()
+- [`input_binding_scan_tick([sourceFilter], [playerIndex])`]()
 
 ### [Binding Access](Functions-(Binding-Access))
 
+- [`input_binding_is_valid(binding, [playerIndex])`]()
 - [`input_binding_set(verb, binding, [playerIndex], [alternate], [profileName])`]()
 - [`input_binding_set_safe(verb, binding, [playerIndex], [alternate], [profileName])`]()
 - [`input_binding_get(verb, [playerIndex], [alternate], [profileName])`]()
@@ -82,7 +83,6 @@
 - [`input_binding_remove(verb, [playerIndex], [alternate], [profileName])`]()
 - [`input_binding_swap(verbA, alternateA, verbB, alternateB, [playerIndex], [profileName])`]()
 - [`input_binding_get_name(binding)`]()
-- [`input_binding_is_valid(binding, [playerIndex])`]()
 
 ### [Binding System](Functions-(Binding-System))
 
@@ -116,6 +116,7 @@
 - [`input_clear_momentary(state)`](Functions-(Other)#input_clear_momentarystate)
 - [`input_guess_keyboard_layout()`](Functions-(Other)#input_guess_keyboard_layout)
 - [`input_verb_set(verb, value, [playerIndex])`](Functions-(Other)#input_verb_setverb-value-playerindex)
+- [`input_verb_get_collision_groups(verb)`]()
 - [`input_platform_text_source()`]()
 - [`input_clear_momentary()`]()
 - [`input_mouse_transform_function_set()`]()
