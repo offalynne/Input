@@ -1,9 +1,8 @@
-input_source_hotswap_tick();
+if (input_check_pressed("pause")) rebinding = true;
 
-if (input_check_p("pause")) rebinding = true;
 if (rebinding)
 {
-    var _binding = input_binding_scan_tick(input_player_source_get());
+    var _binding = input_binding_scan_tick();
     if (_binding != undefined)
     {
         input_binding_set_safe("up", _binding);

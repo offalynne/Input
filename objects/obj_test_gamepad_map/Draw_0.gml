@@ -1,7 +1,7 @@
 var _string = "";
-_string += "gamepad = " + input_player_gamepad_get_type() + "\n\n";
+_string += "gamepad = " + input_player_get_gamepad_type() + "\n\n";
 
-var _array = input_gamepad_get_map(input_player_gamepad_get());
+var _array = input_gamepad_get_map(input_player_get_gamepad());
 var _i = 0;
 repeat(array_length(_array))
 {

@@ -1,7 +1,4 @@
-input_tick();
-input_source_hotswap_tick();
-
-if (input_keyboard_check_pressed(vk_enter) || input_gamepad_check_pressed(0, gp_start)) rebinding = true;
+if (input_keyboard_check_pressed(vk_enter) || input_gamepad_check_pressed(input_player_get_gamepad(), gp_start)) rebinding = true;
 
 if (input_keyboard_check_pressed(ord("S")))
 {
@@ -39,7 +36,7 @@ if (input_keyboard_check_pressed(ord("R")))
 
 if (rebinding)
 {
-    var _binding = input_binding_scan_tick(input_player_source_get());
+    var _binding = input_binding_scan_tick();
     if (_binding != undefined)
     {
         input_binding_set_safe("left", _binding);
