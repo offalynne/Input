@@ -9,7 +9,7 @@ Profiles are used to group together [bindings](Verbs-and-Bindings) into collecti
 
 Regardless of what type a profile is, you can modify the bindings for that profile using [`input_binding_set()`](Functions-(Binding-Access)?id=input_binding_setverb-binding-playerindex-alternate) and the other [binding functions](Functions-(Binding-Access))). If a profile is a default profile then you can use [`input_profile_reset_bindings()`](Functions-(Profiles)?id=input_profile_reset_bindingsprofilename-playerindex) to reset the bindings for every verb in a profile.
 
-!> It is not possible to create a totally new verb for a custom profile. Any verb that you instead to use in your game must be added to a default profile, even if it is initially unbound by default (i.e. set to `undefined` or `input_binding_empty()`).
+!> It is not possible to create a totally new verb for a custom profile. Any verb that you intend to use in your game must be added to a default profile, even if it is initially unbound by default (i.e. set to `undefined` or `input_binding_empty()`).
 
 &nbsp;
 
