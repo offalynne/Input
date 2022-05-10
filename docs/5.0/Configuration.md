@@ -60,6 +60,7 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 |`INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER`|`true`                   |Whether to treat `INPUT_KEYBOARD` and `INPUT_MOUSE` sources are interchangeable. This "pairs" the two sources together and is the default behaviour for Input|
 |`INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES`|`false`                  |Whether to allow [default profiles](Profiles) to include different verbs. This is convenient for larger games but is potentially unsafe                      |
 |`INPUT_DEFAULT_PROFILES`                  |                         |This macro contains the struct that defines default profiles. Please see the [Profiles](Profiles) page for more information                                  |
+|`INPUT_VERB_COLLISION_GROUPS`             |                         |This macro contains the struct that defines verb collision groups. Please see the [Verbs and Bindings](Verbs-and-Bindings) page for more information         |
 
 &nbsp;
 

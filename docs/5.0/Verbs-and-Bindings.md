@@ -14,15 +14,15 @@ In addition to basic verbs, you can also create chords and combos. Chords and co
 
 A "binding" is a piece of logic that ties a physical input on an input source (keyboard, mouse, or gamepad) to a verb in-game. For example, we might want to create a binding that ties the up arrow key on a keyboard to a verb called `"move_up"`. There are [seven types of binding](Functions-(Binding-Creators)):
 
-|Type                   |Creator function                                                                                      |
-|-----------------------|------------------------------------------------------------------------------------------------------|
-|Empty, inactive binding|[`input_binding_empty()`](Functions-(Binding-Creators)?id=input_binding_gamepad_axisaxis-negative)    |
-|Keyboard key           |[`input_binding_key()`](Functions-(Binding-Creators)?id=input_binding_keykey)                         |
-|Mouse button           |[`input_binding_mouse_button()`](Functions-(Binding-Creators)?id=input_binding_mouse_buttonbutton)    |
-|Mouse wheel up         |[`input_binding_mouse_wheel_up()`](Functions-(Binding-Creators)?id=input_binding_mouse_wheel_up)      |
-|Mouse wheel down       |[`input_binding_mouse_wheel_down()`](Functions-(Binding-Creators)?id=input_binding_mouse_wheel_down)  |
-|Gamepad button         |[`input_binding_gamepad_button()`](Functions-(Binding-Creators)?id=input_binding_gamepad_buttonbutton)|
-|Gamepad axis           |[`input_binding_gamepad_axis()`](Functions-(Binding-Creators)?id=input_binding_keykey)                |
+|Type                   |Creator function                                                                                                       |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------|
+|Empty, inactive binding|[`input_binding_empty()`](Functions-(Binding-Creators)?id=input_binding_gamepad_axisaxis-negative)                     |
+|Keyboard key           |[`input_binding_key(key)`](Functions-(Binding-Creators)?id=input_binding_keykey)                                       |
+|Mouse button           |[`input_binding_mouse_button()`](Functions-(Binding-Creators)?id=input_binding_mouse_buttonbutton)                     |
+|Mouse wheel up         |[`input_binding_mouse_wheel_up()`](Functions-(Binding-Creators)?id=input_binding_mouse_wheel_up)                       |
+|Mouse wheel down       |[`input_binding_mouse_wheel_down()`](Functions-(Binding-Creators)?id=input_binding_mouse_wheel_down)                   |
+|Gamepad button         |[`input_binding_gamepad_button(button)`](Functions-(Binding-Creators)?id=input_binding_gamepad_buttonbutton)           |
+|Gamepad axis           |[`input_binding_gamepad_axis(axis, negative)`](Functions-(Binding-Creators)?id=input_binding_gamepad_axisaxis-negative)|
 
 ?> Aside from [binding creator functions](Functions-(Binding-Creators)), bindings can also be created by listening for player input using [`input_binding_scan_tick()`](Functions-(Binding-Creators)?id=input_binding_scan_ticksource-playerindex).
 
@@ -30,7 +30,7 @@ Bindings are arranged into groups called ["profiles"](Profiles). Profiles allow 
 
 Profiles allow you to define multiple bindings per verb. You can think of alternate bindings as binding "slots" for each verb. These are called "alternates". Alternates are used, for example, to allow both WASD and arrow keys, or both dpad and thumbstick to simultaneously control player movement. Any verb can have alternates created for it, though there is a maximum number of alternates you can have per verb per profile (this is defined by the [`INPUT_MAX_ALTERNATE_BINDINGS`](Configuration?id=profiles-and-bindings) macro).
 
----
+## Example of Use
 
 Let's demonstrate these concepts with a practical example. Let's make a basic platformer control scheme.
 
@@ -124,3 +124,22 @@ INPUT_DEFAULT_PROFILES = {
 ```
 
 Once again, our Step event didn't change. However, we've now added lots more controls that the player can use to control their character.
+
+&nbsp;
+
+## Collision Groups
+
+The [`INPUT_VERB_COLLISION_GROUPS`](Configuration?id=profiles-and-bindings) macro allows you to differentiate groups of verbs that should not affect one another when checking for collisions (either using [`input_binding_test_collisions()`](Functions-(Binding-Access)?id=input_binding_test_collisionsverb-binding-playerindex-profilename) or [`input_binding_set_safe()`](Functions-(Binding-Access)?id=input_binding_set_safeverb-binding-playerindex-alternate-profilename)). This is useful for separating sets of verbs that are contextually separate, such as verbs that are used in a menu and verbs that are used during gameplay. By putting menu verbs and gameplay verbs in two different collision groups, two identical bindings in two different groups can co-exist.
+
+A verb can be in multiple groups at a time and may collide with any other verbs in any groups it is in. If a verb is not assigned to a collision then it may collide with all verbs, regardless of what collision group the colliding verb is in. You can return the collision groups for a verb by calling [`input_verb_get_collision_groups()`](Functions-(Other)?id=input_verb_get_collision_groupsverb).
+
+`INPUT_VERB_COLLISION_GROUPS` must be defined using the following format:
+```
+INPUT_VERB_COLLISION_GROUPS = {
+    <group name>: [<verb1>, <verb2>, ...],
+	<group name>: [<verb1>, <verb3>, ...], //Verb 1 is in two different groups
+	...
+}
+```
+
+By default, `INPUT_VERB_COLLISION_GROUPS` is set to an empty struct meaning that all verbs may collide with all other verbs.
