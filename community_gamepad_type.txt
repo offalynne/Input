@@ -38,7 +38,9 @@
 2dc8,1080,CommunityLikeXBox // 8BitDo N30 Joystick
 1235,ab11,CommunityLikeXBox // 8BitDo FC30 Joystick
 2dc8,ab12,CommunityLikeXBox // 8BitDo NES30 Joystick
+2dc8,ab12,CommunityLikeXBox // 8BitDo NES30 Joystick
 146b,0c01,CommunityLikeXBox // Nacon GC-400ES	
+3285,0607,CommunityLikeXBox // Nacon GC-100
 0e6f,0187,CommunityLikeSwitch // PDP Rock Candy
 20d6,a713,CommunityLikeSwitch // PowerA Wired
 056e,2007,CommunityLikeSwitch // Elecom Wii Adapter
