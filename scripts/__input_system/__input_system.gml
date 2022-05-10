@@ -9,13 +9,11 @@
 #macro __INPUT_BINDING_GAMEPAD_BUTTON    "gamepad button"
 #macro __INPUT_BINDING_GAMEPAD_AXIS      "gamepad axis"
 
-#macro INPUT_NONE                    global.__input_source_none
-#macro INPUT_GHOST                   global.__input_source_ghost
-#macro INPUT_KEYBOARD                global.__input_source_keyboard
-#macro INPUT_MOUSE                   global.__input_source_mouse
-#macro INPUT_GAMEPAD                 global.__input_source_gamepad
-#macro INPUT_ALL_GAMEPADS            global.__input_source_all_gamepads
-#macro __INPUT_MAX_TRACKED_GAMEPADS  20
+#macro INPUT_KEYBOARD  global.__input_source_keyboard
+#macro INPUT_MOUSE     global.__input_source_mouse
+#macro INPUT_GAMEPAD   global.__input_source_gamepad
+#macro INPUT_MAX_GAMEPADS  12
+#macro __INPUT_GAMEPAD_COUNT  min(gamepad_get_device_count(), INPUT_MAX_GAMEPADS)
 
 #macro __INPUT_ON_PS       ((os_type == os_ps4)     || (os_type == os_ps5))
 #macro __INPUT_ON_XDK      ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
@@ -50,19 +48,19 @@
 #macro gp_paddle4   32795
 
 //Extended keycode constants
-#macro vk_meta1  91
-#macro vk_meta2  92
-
-#macro vk_capslock   20
-#macro vk_scrollock  145
-#macro vk_numlock    ((__INPUT_ON_APPLE && __INPUT_ON_WEB) ? 12 : 144)
-
-#macro vk_semicolon  186
-#macro vk_comma      188
-#macro vk_fslash     191
-#macro vk_bslash     220
-#macro vk_lbracket   219
-#macro vk_rbracket   221
+#macro vk_meta1       91
+#macro vk_meta2       92
+                      
+#macro vk_capslock    20
+#macro vk_scrollock   145
+#macro vk_numlock     ((__INPUT_ON_APPLE && __INPUT_ON_WEB) ? 12 : 144)
+                      
+#macro vk_semicolon   186
+#macro vk_comma       188
+#macro vk_fslash      191
+#macro vk_bslash      220
+#macro vk_lbracket    219
+#macro vk_rbracket    221
 
 #macro vk_apostrophe  (((os_type == os_macosx) && !__INPUT_ON_WEB) ? 192 : 222)
 #macro vk_equals      (((os_type == os_macosx) && !__INPUT_ON_WEB) ?  24 : 187)
@@ -99,14 +97,11 @@
 // gp_paddle3    = 32794             32794 = gp_paddle3
 // gp_paddle4    = 32795             32795 = gp_paddle4
 
-enum INPUT_SOURCE
+enum __INPUT_SOURCE
 {
-    NONE,
-    GHOST,
     KEYBOARD,
     MOUSE,
     GAMEPAD,
-    ALL_GAMEPADS,
     __SIZE
 }
 

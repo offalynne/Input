@@ -7,6 +7,9 @@ function __input_class_binding() constructor
     axis_negative = undefined;
     label         = undefined;
     
+    __gamepad_index       = undefined;
+    __gamepad_description = undefined;
+    
     //We have an additional field on Android
     //This is used to check for uppercase *and* lowercase letters as Android checks for both individually
     android_lowercase = undefined;
@@ -132,17 +135,28 @@ function __input_class_binding() constructor
         return self;
     }
     
+    static __set_gamepad = function(_gamepad)
+    {
+        if (input_gamepad_is_connected(_gamepad))
+        {
+            __gamepad_index = _gamepad;
+            __gamepad_description = gamepad_get_description(_gamepad);
+        }
+        
+        return self;
+    }
+    
     static __get_source = function()
     {
         switch(type)
         {
-            case __INPUT_BINDING_KEY:              return INPUT_SOURCE.KEYBOARD; break;
-            case __INPUT_BINDING_MOUSE_BUTTON:     return INPUT_SOURCE.MOUSE;    break;
-            case __INPUT_BINDING_MOUSE_WHEEL_UP:   return INPUT_SOURCE.MOUSE;    break;
-            case __INPUT_BINDING_MOUSE_WHEEL_DOWN: return INPUT_SOURCE.MOUSE;    break;
-            case __INPUT_BINDING_GAMEPAD_BUTTON:   return INPUT_SOURCE.GAMEPAD;  break;
-            case __INPUT_BINDING_GAMEPAD_AXIS:     return INPUT_SOURCE.GAMEPAD;  break;
-            case undefined:                        return INPUT_SOURCE.NONE;     break;
+            case __INPUT_BINDING_KEY:              return __INPUT_SOURCE.KEYBOARD; break;
+            case __INPUT_BINDING_MOUSE_BUTTON:     return __INPUT_SOURCE.MOUSE;    break;
+            case __INPUT_BINDING_MOUSE_WHEEL_UP:   return __INPUT_SOURCE.MOUSE;    break;
+            case __INPUT_BINDING_MOUSE_WHEEL_DOWN: return __INPUT_SOURCE.MOUSE;    break;
+            case __INPUT_BINDING_GAMEPAD_BUTTON:   return __INPUT_SOURCE.GAMEPAD;  break;
+            case __INPUT_BINDING_GAMEPAD_AXIS:     return __INPUT_SOURCE.GAMEPAD;  break;
+            case undefined:                        return undefined;             break;
         }
         
         __input_error("Binding type \"", type, "\" not recognised");

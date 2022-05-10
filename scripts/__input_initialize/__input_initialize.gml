@@ -4,12 +4,22 @@ function __input_initialize()
 {
     if (variable_global_exists("__input_frame")) return false;;
     
-    global.__input_time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
+    try
     {
-        input_tick();
-    }, -1);
-    
-    time_source_start(global.__input_time_source);
+        //Attempt to set up a time source for slick automatic input handling
+        global.__input_time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
+        {
+            __input_system_tick();
+        }, -1);
+        
+        time_source_start(global.__input_time_source);
+    }
+    catch(_)
+    {
+        //If the above fails then fall back on needing to call input_tick()
+        global.__input_time_source = undefined;
+        __input_trace("Running on a GM runtime earlier than 2022.5");
+    }
     
     //Set up the extended debug functionality
     global.__input_debug_log = "input___" + string_replace_all(string_replace_all(date_datetime_string(date_current_datetime()), ":", "-"), " ", "___") + ".txt";
@@ -65,6 +75,8 @@ function __input_initialize()
     //Whether mouse is blocked due to Window focus state
     global.__input_mouse_blocked = false;
     
+    global.__input_cursor_verbs_valid = false;
+    
     //Whether to swap A/B gamepad buttons for default bindings
     global.__input_swap_ab = false;
     
@@ -100,14 +112,26 @@ function __input_initialize()
         any_changed: false,
         new_connections: [],
         new_disconnections: [],
-        gamepads: array_create(gamepad_get_device_count(), INPUT_STATUS.DISCONNECTED),
+        gamepads: array_create(INPUT_MAX_GAMEPADS, INPUT_STATUS.DISCONNECTED),
     }
     
     //The default player. This player struct holds default binding data
     global.__input_default_player = new __input_class_player();
     
+    enum INPUT_SOURCE_MODE
+    {
+        FIXED,        //Player sources won't change unless manually editted
+        JOIN,         //Starts source assignment, typically used for multiplayer
+        HOTSWAP,      //Player 0's source is determined by most recent input
+        MIXED,        //Player 0 can use a mixture of keyboard, mouse, and any gamepad
+        MULTIDEVICE, //Player 0 can use a mixture of keyboard, mouse, and any gamepad, but gamepad bindings are specific to each device
+    }
+    
+    global.__input_source_mode = INPUT_STARTING_SOURCE_MODE;
+    
     //Array of players. Each player is a struct (instanceof __input_class_player) that contains lotsa juicy information
     global.__input_players = array_create(INPUT_MAX_PLAYERS, undefined);
+    
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
     {
@@ -120,10 +144,16 @@ function __input_initialize()
         ++_p;
     }
     
+    //Multiplayer source assignment state
+    //This is set by input_multiplayer_set()
+    global.__input_multiplayer_min       = 1;
+    global.__input_multiplayer_max       = INPUT_MAX_PLAYERS;
+    global.__input_multiplayer_drop_down = true;
+    
     //Array of currently connected gamepads. If an element is <undefined> then the gamepad is disconnected
     //Each gamepad in this array is an instance of __input_class_gamepad
     //Gamepad structs contain remapping information and current button state
-    global.__input_gamepads = array_create(gamepad_get_device_count(), undefined);
+    global.__input_gamepads = array_create(INPUT_MAX_GAMEPADS, undefined);
     
     //Our database of SDL2 definitions, used for the aforementioned remapping information
     global.__input_sdl2_database = {
@@ -518,21 +548,19 @@ function __input_initialize()
     //We want to be able to identify the actual mouse buttons correctly, and have our own double-input handling
     device_mouse_dbclick_enable(false);
     
-    global.__input_profile_array        = undefined;
-    global.__input_profile_dict         = undefined;
-    global.__input_default_profile_dict = undefined;
+    global.__input_profile_array             = undefined;
+    global.__input_profile_dict              = undefined;
+    global.__input_default_profile_dict      = undefined;
+    global.__input_verb_collision_group_dict = {};
     
-    INPUT_NONE         = new __input_class_source(INPUT_SOURCE.NONE);
-    INPUT_GHOST        = new __input_class_source(INPUT_SOURCE.GHOST);
-    INPUT_KEYBOARD     = new __input_class_source(INPUT_SOURCE.KEYBOARD);
-    INPUT_MOUSE        = new __input_class_source(INPUT_SOURCE.MOUSE);
-    INPUT_ALL_GAMEPADS = new __input_class_source(INPUT_SOURCE.ALL_GAMEPADS);
+    INPUT_KEYBOARD = new __input_class_source(__INPUT_SOURCE.KEYBOARD);
+    INPUT_MOUSE = INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER? INPUT_KEYBOARD : (new __input_class_source(__INPUT_SOURCE.MOUSE));
     
-    INPUT_GAMEPAD = array_create(__INPUT_MAX_TRACKED_GAMEPADS, undefined);
+    INPUT_GAMEPAD = array_create(INPUT_MAX_GAMEPADS, undefined);
     var _g = 0;
-    repeat(__INPUT_MAX_TRACKED_GAMEPADS)
+    repeat(INPUT_MAX_GAMEPADS)
     {
-        INPUT_GAMEPAD[@ _g] = new __input_class_source(INPUT_SOURCE.GAMEPAD, _g);
+        INPUT_GAMEPAD[@ _g] = new __input_class_source(__INPUT_SOURCE.GAMEPAD, _g);
         ++_g;
     }
     

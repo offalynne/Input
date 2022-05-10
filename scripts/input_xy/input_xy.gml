@@ -6,6 +6,11 @@
 
 function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0)
 {
+    static _result = {
+        x: 0,
+        y: 0,
+    };
+    
     if (!is_struct(_player_index))
     {
         __INPUT_VERIFY_PLAYER_INDEX
@@ -62,7 +67,12 @@ function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0)
     var _d = sqrt(_dx*_dx + _dy*_dy);
     
     //If the displacement is exactly zero then skip then early-out
-    if (_d <= 0.0) return { x : 0, y : 0 };
+    if (_d <= 0.0)
+    {
+        _result.x = 0;
+        _result.y = 0;
+        return _result;
+    }
     
     //Scale down the x/y values if we want to clamp output values between 0.0 and 1.0
     if (INPUT_2D_CLAMP || !_any_non_analogue)
@@ -75,7 +85,9 @@ function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0)
     if (_any_non_analogue)
     {
         //No need to do a lot of maths if we have non-analogue input, just output the answer
-        return { x : _dx, y : _dy };
+        _result.x = _dx;
+        _result.y = _dy;
+        return _result;
     }
     
     //Approximate average of axis thresholds across all active verbs
@@ -91,7 +103,9 @@ function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0)
     //Catch an edge case
     if (_active_count <= 0.0)
     {
-        return { x : 0, y : 0 };
+        _result.x = 0;
+        _result.y = 0;
+        return _result;
     }
     
     _min_threshold /= _active_count;
@@ -103,5 +117,7 @@ function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0)
     _dy *= _coeff;
     
     //Spit out the answer!
-    return { x : _dx, y : _dy };
+    _result.x = _dx;
+    _result.y = _dy;
+    return _result;
 }

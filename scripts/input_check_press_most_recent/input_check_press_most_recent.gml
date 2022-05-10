@@ -1,4 +1,4 @@
-/// @param [array]
+/// @param [verbArray]
 /// @param [playerIndex]
 
 function input_check_press_most_recent(_verb_array = all, _player_index = 0)

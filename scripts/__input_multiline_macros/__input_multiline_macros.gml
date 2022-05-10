@@ -33,4 +33,38 @@
                                        
                                        
                                        
-#macro __INPUT_VERIFY_PROFILE_NAME  if (!input_profile_exists(_profile_name)) __input_error("Profile name \"", _profile_name, "\" doesn't exist");
+#macro __INPUT_VERIFY_PROFILE_NAME  if (!input_profile_exists(_profile_name, _player_index)) __input_error("Profile name \"", _profile_name, "\" doesn't exist");
+
+#macro __INPUT_VERIFY_SOURCE  if (instanceof(_source) != "__input_class_source") __input_error("Invalid source provided (", _source, ")");
+
+#macro __INPUT_VERIFY_SOURCE_ASSIGNABLE  if (_source == INPUT_KEYBOARD)\
+                                         {\
+                                             if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER)\
+                                             {\
+                                                 if (!global.__input_any_keyboard_binding_defined && !global.__input_any_mouse_binding_defined)\
+                                                 {\
+                                                    __input_error("Cannot claim ", _source, ", no keyboard or mouse bindings have been created");\
+                                                 }\
+                                             }\
+                                             else\
+                                             {\
+                                                 if (!global.__input_any_keyboard_binding_defined)\
+                                                 {\
+                                                     __input_error("Cannot claim ", _source, ", no keyboard bindings have been created");\
+                                                 }\
+                                             }\
+                                         }\
+                                         else if (_source == INPUT_MOUSE)\
+                                         {\
+                                             if (!global.__input_any_mouse_binding_defined)\
+                                             {\
+                                                 __input_error("Cannot claim ", _source, ", no mouse bindings have been created");\
+                                             }\
+                                         }\
+                                         else if (_source.__source == __INPUT_SOURCE.GAMEPAD)\
+                                         {\
+                                             if (!global.__input_any_gamepad_binding_defined)\
+                                             {\
+                                                 __input_error("Cannot claim ", _source, ", no gamepad bindings have been created");\
+                                             }\
+                                         }

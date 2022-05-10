@@ -8,12 +8,9 @@ function __input_class_source(_source, _gamepad = undefined) constructor
     
     switch(__source)
     {
-        case INPUT_SOURCE.NONE:         __name = "no source";                   break;
-        case INPUT_SOURCE.GHOST:        __name = "ghost";                       break;
-        case INPUT_SOURCE.KEYBOARD:     __name = "keyboard";                    break;
-        case INPUT_SOURCE.MOUSE:        __name = "mouse";                       break;
-        case INPUT_SOURCE.GAMEPAD:      __name = "gamepad " + string(_gamepad); break;
-        case INPUT_SOURCE.ALL_GAMEPADS: __name = "all gamepads";                break;
+        case __INPUT_SOURCE.KEYBOARD: __name = INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER? "keyboard and mouse" : "keyboard"; break;
+        case __INPUT_SOURCE.MOUSE:    __name = INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER? "keyboard and mouse" : "mouse";    break;
+        case __INPUT_SOURCE.GAMEPAD:  __name = "gamepad " + string(_gamepad); break;
         
         default:
             __input_error("Source \"", __source, "\" not recognised");
@@ -24,22 +21,9 @@ function __input_class_source(_source, _gamepad = undefined) constructor
     {
         switch(__source)
         {
-            case INPUT_SOURCE.NONE:         return false;                                 break;
-            case INPUT_SOURCE.KEYBOARD:     return true;                                  break;
-            case INPUT_SOURCE.MOUSE:        return true;                                  break;
-            case INPUT_SOURCE.GHOST:        return true;                                  break;
-            case INPUT_SOURCE.GAMEPAD:      return input_gamepad_is_connected(__gamepad); break;
-            
-            case INPUT_SOURCE.ALL_GAMEPADS:
-                var _i = 0;
-                repeat(gamepad_get_device_count())
-                {
-                    if (input_gamepad_is_connected(_i)) return true;
-                    ++_i;
-                }
-                
-                return false;
-            break;
+            case __INPUT_SOURCE.KEYBOARD: return true;                                  break; //TODO - Should this check against whether bindings exist for this source?
+            case __INPUT_SOURCE.MOUSE:    return true;                                  break; //TODO - Should this check against whether bindings exist for this source?
+            case __INPUT_SOURCE.GAMEPAD:  return input_gamepad_is_connected(__gamepad); break;
             
             default:
                 __input_error("Source \"", __source, "\" not recognised");
@@ -51,76 +35,9 @@ function __input_class_source(_source, _gamepad = undefined) constructor
     {
         switch(_other_source.__source)
         {
-            case INPUT_SOURCE.NONE:
-                return (__source == INPUT_SOURCE.NONE);
-            break;
-            
-            case INPUT_SOURCE.GHOST:
-                return (__source == INPUT_SOURCE.GHOST);
-            break;
-            
-            case INPUT_SOURCE.KEYBOARD:
-                if (__source == INPUT_SOURCE.KEYBOARD) return true;
-                if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED && (__source == INPUT_SOURCE.MOUSE)) return true;
-                return false;
-            break;
-            
-            case INPUT_SOURCE.MOUSE:
-                if (__source == INPUT_SOURCE.MOUSE) return true;
-                if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED && (__source == INPUT_SOURCE.KEYBOARD)) return true;
-                return false;
-            break;
-            
-            case INPUT_SOURCE.GAMEPAD:
-                if (__source == INPUT_SOURCE.ALL_GAMEPADS) return true;
-                if ((__source == INPUT_SOURCE.GAMEPAD) && (__gamepad != undefined) && (__gamepad == _other_source.__gamepad)) return true;
-                return false;
-            break;
-            
-            case INPUT_SOURCE.ALL_GAMEPADS:
-                if (__source == INPUT_SOURCE.ALL_GAMEPADS) return true;
-                if ((__source == INPUT_SOURCE.GAMEPAD) && (__gamepad != undefined)) return true;
-                return false;
-            break;
-        }
-        
-        return false;
-    }
-    
-    static __collides_with = function(_other_source)
-    {
-        if ((_other_source.__source == INPUT_SOURCE.NONE) || (_other_source.__source == INPUT_SOURCE.GHOST)) return false;
-        
-        switch(_other_source.__source)
-        {
-            case INPUT_SOURCE.NONE:
-            case INPUT_SOURCE.GHOST:
-                return false;
-            break;
-            
-            case INPUT_SOURCE.KEYBOARD:
-                if (__source == INPUT_SOURCE.KEYBOARD) return true;
-                if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED && (__source == INPUT_SOURCE.MOUSE)) return true;
-                return false;
-            break;
-            
-            case INPUT_SOURCE.MOUSE:
-                if (__source == INPUT_SOURCE.MOUSE) return true;
-                if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED && (__source == INPUT_SOURCE.KEYBOARD)) return true;
-                return false;
-            break;
-            
-            case INPUT_SOURCE.GAMEPAD:
-                if (__source == INPUT_SOURCE.ALL_GAMEPADS) return true;
-                if ((__source == INPUT_SOURCE.GAMEPAD) && (__gamepad != undefined) && (__gamepad == _other_source.__gamepad)) return true;
-                return false;
-            break;
-            
-            case INPUT_SOURCE.ALL_GAMEPADS:
-                if (__source == INPUT_SOURCE.ALL_GAMEPADS) return true;
-                if ((__source == INPUT_SOURCE.GAMEPAD) && (__gamepad != undefined)) return true;
-                return false;
-            break;
+            case __INPUT_SOURCE.KEYBOARD: return (__source == __INPUT_SOURCE.KEYBOARD); break;
+            case __INPUT_SOURCE.MOUSE:    return (__source == __INPUT_SOURCE.MOUSE); break;
+            case __INPUT_SOURCE.GAMEPAD:  return ((__source == __INPUT_SOURCE.GAMEPAD) && (__gamepad == _other_source.__gamepad)); break;
         }
         
         return false;
@@ -146,12 +63,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
 {
     switch(_source)
     {
-        case INPUT_SOURCE.NONE:
-        case INPUT_SOURCE.GHOST:
-            return undefined;
-        break;
-        
-        case INPUT_SOURCE.KEYBOARD:
+        case __INPUT_SOURCE.KEYBOARD:
             var _keyboard_key = __input_keyboard_key();
                 
             if (global.__input_any_keyboard_binding_defined 
@@ -177,7 +89,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
             }
         break;
         
-        case INPUT_SOURCE.MOUSE:
+        case __INPUT_SOURCE.MOUSE:
             var _mouse_button = __input_mouse_button();
                 
             if (global.__input_any_mouse_binding_defined && global.__input_mouse_allowed && !global.__input_mouse_blocked
@@ -196,7 +108,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
             }
         break;
         
-        case INPUT_SOURCE.GAMEPAD:
+        case __INPUT_SOURCE.GAMEPAD:
             if (global.__input_any_gamepad_binding_defined)
             {
                 //Gamepad buttons and axes
@@ -236,16 +148,6 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
                 }
             }
         break;
-        
-        case INPUT_SOURCE.ALL_GAMEPADS:
-            var _i = 0;
-            repeat(gamepad_get_device_count())
-            {
-                var _binding = __input_source_scan_for_binding(_source, _i, _player_index);
-                if (input_value_is_binding(_binding)) return _binding;
-                ++_i;
-            }
-        break;
     }
     
     return undefined;
@@ -255,22 +157,17 @@ function __input_source_any_input(_source, _gamepad)
 {
     switch(_source)
     {
-        case INPUT_SOURCE.NONE:
-        case INPUT_SOURCE.GHOST:
-            return false;
-        break;
-        
-        case INPUT_SOURCE.KEYBOARD:
+        case __INPUT_SOURCE.KEYBOARD:
             return (global.__input_any_keyboard_binding_defined
                  && keyboard_check(vk_anykey)
                  && !__input_key_is_ignored(__input_keyboard_key()));
         break;
         
-        case INPUT_SOURCE.MOUSE:
+        case __INPUT_SOURCE.MOUSE:
             return (global.__input_mouse_moved || (global.__input_any_mouse_binding_defined && (input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down())));
         break;
         
-        case INPUT_SOURCE.GAMEPAD:
+        case __INPUT_SOURCE.GAMEPAD:
             if (!gamepad_is_connected(_gamepad)) return false;
             
             if (input_gamepad_check(_gamepad, gp_face1)
@@ -313,17 +210,6 @@ function __input_source_any_input(_source, _gamepad)
                 {
                     return true;
                 }
-            }
-            
-            return false;
-        break;
-        
-        case INPUT_SOURCE.ALL_GAMEPADS:
-            var _g = 0;
-            repeat(gamepad_get_device_count())
-            {
-                if (__input_source_any_input(INPUT_SOURCE.GAMEPAD, _g)) return true;
-                ++_g;
             }
             
             return false;

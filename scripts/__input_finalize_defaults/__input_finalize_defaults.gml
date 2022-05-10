@@ -51,7 +51,7 @@ function __input_finalize_defaults()
             
             if (array_length(_verb_data) > INPUT_MAX_ALTERNATE_BINDINGS)
             {
-                __input_error("Profile \"", _profile_name, "\" definition must be a struct (was ", typeof(_profile_struct), ")");
+                __input_error("Verb \"", _verb_name, "\" for default profile \"", _profile_name, "\" has too many alternate bindings (", array_length(_verb_data), " versus max ", INPUT_MAX_ALTERNATE_BINDINGS, ")\nPlease increase INPUT_MAX_ALTERNATE_BINDINGS if you'd like to use more alternate bindings");
             }
             
             global.__input_default_player.__ensure_verb(_profile_name, _verb_name);
@@ -73,19 +73,9 @@ function __input_finalize_defaults()
                 {
                     switch(_binding.__get_source())
                     {
-                        case INPUT_SOURCE.KEYBOARD:
-                            global.__input_any_keyboard_binding_defined = true;
-                            if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED) global.__input_any_mouse_binding_defined = true;
-                        break;
-                        
-                        case INPUT_SOURCE.MOUSE:
-                            global.__input_any_mouse_binding_defined = true;
-                            if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED) global.__input_any_keyboard_binding_defined = true;
-                        break;
-                        
-                        case INPUT_SOURCE.GAMEPAD:
-                            global.__input_any_gamepad_binding_defined = true;
-                        break;
+                        case __INPUT_SOURCE.KEYBOARD: global.__input_any_keyboard_binding_defined = true; break;
+                        case __INPUT_SOURCE.MOUSE:    global.__input_any_mouse_binding_defined    = true; break;
+                        case __INPUT_SOURCE.GAMEPAD:  global.__input_any_gamepad_binding_defined  = true; break;
                     }
                 }
                 
@@ -100,10 +90,16 @@ function __input_finalize_defaults()
         ++_f;
     }
     
-    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_KEYBOARD)) __input_trace("Warning! Default profile for keyboard \"", INPUT_AUTO_PROFILE_FOR_KEYBOARD, "\" has not been defined");
-    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MOUSE   )) __input_trace("Warning! Default profile for mouse \"",    INPUT_AUTO_PROFILE_FOR_MOUSE,    "\" has not been defined");
-    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_GAMEPAD )) __input_trace("Warning! Default profile for gamepad \"",  INPUT_AUTO_PROFILE_FOR_GAMEPAD,  "\" has not been defined");
-    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MIXED   )) __input_trace("Warning! Default profile for mixed \"",    INPUT_AUTO_PROFILE_FOR_MIXED,    "\" has not been defined");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_KEYBOARD   )) __input_trace("Warning! Default profile for keyboard \"",    INPUT_AUTO_PROFILE_FOR_KEYBOARD,    "\" has not been defined");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MOUSE      )) __input_trace("Warning! Default profile for mouse \"",       INPUT_AUTO_PROFILE_FOR_MOUSE,       "\" has not been defined");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_GAMEPAD    )) __input_trace("Warning! Default profile for gamepad \"",     INPUT_AUTO_PROFILE_FOR_GAMEPAD,     "\" has not been defined");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MIXED      )) __input_trace("Warning! Default profile for mixed \"",       INPUT_AUTO_PROFILE_FOR_MIXED,       "\" has not been defined");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MULTIDEVICE)) __input_trace("Warning! Default profile for multidevice \"", INPUT_AUTO_PROFILE_FOR_MULTIDEVICE, "\" has not been defined");
+    
+    if (!variable_struct_exists(global.__input_basic_verb_dict, INPUT_CURSOR_VERB_UP   )) { __input_trace("Warning! Default cursor up verb \"",    INPUT_CURSOR_VERB_UP,    "\" has not been defined for any profile"); global.__input_cursor_verbs_valid = false; }
+    if (!variable_struct_exists(global.__input_basic_verb_dict, INPUT_CURSOR_VERB_DOWN )) { __input_trace("Warning! Default cursor down verb \"",  INPUT_CURSOR_VERB_DOWN,  "\" has not been defined for any profile"); global.__input_cursor_verbs_valid = false; }
+    if (!variable_struct_exists(global.__input_basic_verb_dict, INPUT_CURSOR_VERB_LEFT )) { __input_trace("Warning! Default cursor left verb \"",  INPUT_CURSOR_VERB_LEFT,  "\" has not been defined for any profile"); global.__input_cursor_verbs_valid = false; }
+    if (!variable_struct_exists(global.__input_basic_verb_dict, INPUT_CURSOR_VERB_RIGHT)) { __input_trace("Warning! Default cursor right verb \"", INPUT_CURSOR_VERB_RIGHT, "\" has not been defined for any profile"); global.__input_cursor_verbs_valid = false; }
     
     //Fix any missing verb definitions for default profiles
     var _f = 0;

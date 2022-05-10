@@ -1,6 +1,6 @@
 /// @param verb/array
-/// @param [playerIndex]
-/// @param [bufferDuration]
+/// @param [playerIndex=0]
+/// @param [bufferDuration=0]
 
 function input_check(_verb, _player_index = 0, _buffer_duration = 0)
 {

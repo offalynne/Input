@@ -17,15 +17,20 @@ function __input_class_player() constructor
     __profiles_dict = { axis_thresholds : {} };
     __profile_name = undefined;
     
+    __ghost = false;
+    
+   __cursor = new __input_class_cursor();
+   __cursor.__player = self;
+    
     
     
     #region Profiles
     
     static __profile_create = function(_profile_name)
     {
-        if (variable_struct_exists(__profiles_dict, _profile_name)) __input_error("Profile \"", _profile_name, "\" already exists");
+        if (variable_struct_exists(__profiles_dict, _profile_name)) __input_error("Profile \"", _profile_name, "\" already exists for player ", __index);
         
-        __input_trace("Profile \"", _profile_name, "\" created for player ", __index);
+        if (INPUT_DEBUG_PROFILES) __input_trace("Profile \"", _profile_name, "\" created for player ", __index);
         __profiles_dict[$ _profile_name] = {};
     }
     
@@ -36,7 +41,7 @@ function __input_class_player() constructor
             __input_error("Cannot remove profile \"", _profile_name, "\" as it is a default profile");
         }
         
-        __input_trace("Profile \"", _profile_name, "\" destroyed for player ", __index);
+        if (INPUT_DEBUG_PROFILES) __input_trace("Profile \"", _profile_name, "\" destroyed for player ", __index);
         
         if (__profile_name == _profile_name) __profile_name = undefined;
         variable_struct_remove(__profiles_dict, _profile_name);
@@ -57,11 +62,14 @@ function __input_class_player() constructor
     {
         if (_profile_name == undefined)
         {
-            __input_trace("Failed to set profile for player ", __index, " (was ", _profile_name, ")");
+            __input_trace("Warning! Failed to set profile for player ", __index, " (was ", _profile_name, ")");
             return;
         }
         
-        __INPUT_VERIFY_PROFILE_NAME
+        if (!variable_struct_exists(__profiles_dict, _profile_name))
+        {
+            __input_error("Profile \"", _profile_name, "\" doesn't exist for player ", __index);
+        }
         
         if (__profile_name != _profile_name) __input_trace("Setting player ", __index, " profile to \"", _profile_name, "\"");
         __profile_name = _profile_name;
@@ -71,12 +79,20 @@ function __input_class_player() constructor
     static __profile_get = function(_profile_name = undefined)
     {
         if (_profile_name == undefined) return __profile_name;
-        __INPUT_VERIFY_PROFILE_NAME
+        
+        if (!variable_struct_exists(__profiles_dict, _profile_name))
+        {
+            __input_error("Profile \"", _profile_name, "\" doesn't exist for player ", __index);
+        }
+        
         return _profile_name;
     }
     
     static __profile_get_auto = function()
     {
+        if (__ghost) return undefined;
+        if ((global.__input_source_mode == INPUT_SOURCE_MODE.MULTIDEVICE) && (__index == 0)) return INPUT_AUTO_PROFILE_FOR_MULTIDEVICE;
+        
         var _count = array_length(__source_array);
         
         //If there're no sources then return a null value
@@ -85,31 +101,15 @@ function __input_class_player() constructor
         //If we have one source then return the profile for that source
         if (_count == 1)
         {
-            switch(__source_array[0].source)
+            switch(__source_array[0].__source)
             {
-                case INPUT_SOURCE.NONE:
-                case INPUT_SOURCE.GHOST:
-                    return undefined;
-                break;
-                
-                case INPUT_SOURCE.KEYBOARD:     return INPUT_AUTO_PROFILE_FOR_KEYBOARD; break;
-                case INPUT_SOURCE.MOUSE:        return INPUT_AUTO_PROFILE_FOR_MOUSE;    break;
-                case INPUT_SOURCE.GAMEPAD:      return INPUT_AUTO_PROFILE_FOR_GAMEPAD;  break;
-                case INPUT_SOURCE.ALL_GAMEPADS: return INPUT_AUTO_PROFILE_FOR_MIXED;    break;
+                case __INPUT_SOURCE.KEYBOARD: return INPUT_AUTO_PROFILE_FOR_KEYBOARD; break;
+                case __INPUT_SOURCE.MOUSE:    return INPUT_AUTO_PROFILE_FOR_MOUSE;    break;
+                case __INPUT_SOURCE.GAMEPAD:  return INPUT_AUTO_PROFILE_FOR_GAMEPAD;  break;
                 
                 default:
-                    __input_error("Invalid source (", __source_array[0].source, ")");
+                    __input_error("Invalid source (", __source_array[0].__source, ")");
                 break;
-            }
-        }
-        
-        //Special case to handle keyboard+mouse
-        if (_count == 2)
-        {
-            if ((__source_array[0].source == INPUT_SOURCE.KEYBOARD) && (__source_array[1].source == INPUT_SOURCE.MOUSE)
-            ||  (__source_array[1].source == INPUT_SOURCE.KEYBOARD) && (__source_array[0].source == INPUT_SOURCE.MOUSE))
-            {
-                if (INPUT_KEYBOARD_AND_MOUSE_ALWAYS_PAIRED) return INPUT_AUTO_PROFILE_FOR_KEYBOARD;
             }
         }
         
@@ -120,7 +120,7 @@ function __input_class_player() constructor
     static __profile_set_auto = function()
     {
         var _profile_name = __profile_get_auto();
-        if (_profile_name != undefined) __profile_set();
+        if (_profile_name != undefined) __profile_set(_profile_name);
     }
     
     /// @param profileName
@@ -140,6 +140,24 @@ function __input_class_player() constructor
         }
     }
     
+    static __profile_reset_bindings = function(_profile_name)
+    {
+        var _v = 0;
+        repeat(array_length(global.__input_basic_verb_array))
+        {
+            var _verb_name = global.__input_basic_verb_array[_v];
+            
+            var _alternate = 0;
+            repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+            {
+                __binding_reset(_profile_name, _verb_name, _alternate);
+                ++_alternate;
+            }
+            
+            ++_v;
+        }
+    }
+    
     #endregion
     
     
@@ -152,27 +170,54 @@ function __input_class_player() constructor
         
         array_resize(__source_array, 0);
         __last_input_time = current_time;
-    }
-    
-    static __source_set_ghost = function()
-    {
-        __sources_clear();
-        __source_add("ghost");
+        
+        if (INPUT_DEBUG_SOURCES) __input_trace("Sources cleared for player ", __index);
     }
     
     /// @param source
     static __source_add = function(_source)
     {
-        if (__source_collides_with(_source)) return;
+        //We don't use __source_contains() here because it'll report a false positive when assigning keyboard+mouse together
+        var _i = 0;
+        repeat(array_length(__source_array))
+        {
+            if (__source_array[_i] == _source)
+            {
+                if (INPUT_DEBUG_SOURCES) __input_trace("Cannot add ", _source, " to player ", __index, ", it has already been assigned");
+                return;
+            }
+            
+            ++_i;
+        }
         
         if (__rebind_state > 0) __rebind_error = INPUT_BINDING_SCAN_EVENT.SOURCE_CHANGED;
         
         array_push(__source_array, _source);
         __last_input_time = current_time;
+        
+        if (INPUT_DEBUG_SOURCES) __input_trace("Assigned source ", _source, " to player ", __index);
     }
     
     /// @param source
-    static __source_equal_to = function(_source)
+    static __source_remove = function(_source)
+    {
+        var _i = 0;
+        repeat(array_length(__source_array))
+        {
+            if (__source_array[_i] == _source)
+            {
+                array_delete(__source_array, _i, 1);
+                if (INPUT_DEBUG_SOURCES) __input_trace("Removed source ", _source, " from player ", __index);
+            }
+            else
+            {
+                ++_i;
+            }
+        }
+    }
+    
+    /// @param source
+    static __source_contains = function(_source)
     {
         var _i = 0;
         repeat(array_length(__source_array))
@@ -184,21 +229,10 @@ function __input_class_player() constructor
         return false;
     }
     
-    /// @param source
-    static __source_collides_with = function(_source)
-    {
-        var _i = 0;
-        repeat(array_length(__source_array))
-        {
-            if (__source_array[_i].__collides_with(_source)) return true;
-            ++_i;
-        }
-        
-        return false;
-    }
-    
     static __is_connected = function()
     {
+        if (__ghost) return true;
+        
         var _i = 0;
         repeat(array_length(__source_array))
         {
@@ -215,7 +249,7 @@ function __input_class_player() constructor
         repeat(array_length(__source_array))
         {
             var _gamepad = __source_array[_i].gamepad;
-            if (_gamepad != undefined) return _gamepad;
+            if (input_gamepad_is_connected(_gamepad)) return _gamepad;
             ++_i;
         }
         
@@ -255,6 +289,7 @@ function __input_class_player() constructor
     static __binding_set = function(_profile_name, _verb, _alternate, _binding_struct)
     {
         __profiles_dict[$ __profile_get(_profile_name)][$ _verb][@ _alternate] = _binding_struct;
+        if (INPUT_DEBUG_BINDING) __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " set to ", _binding_struct);
     }
     
     /// @param profileName
@@ -263,6 +298,7 @@ function __input_class_player() constructor
     static __binding_remove = function(_profile_name, _verb, _alternate)
     {
         __profiles_dict[$ __profile_get(_profile_name)][$ _verb][@ _alternate] = __INPUT_BINDING_NULL;
+        if (INPUT_DEBUG_BINDING) __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " removed (set to null)");
     }
     
     /// @param profileName
@@ -270,14 +306,20 @@ function __input_class_player() constructor
     /// @param alternate
     static __binding_reset = function(_profile_name, _verb, _alternate)
     {
+        //Verify
+        var _default_profile_struct = global.__input_default_player.__profiles_dict[$ _profile_name];
+        if (!is_struct(_default_profile_struct)) __input_error("Profile \"", _profile_name, "\" doesn't exist as a default profile");
+        
         //Grab the equivalent binding from the default player
-        var _binding = global.__input_default_player.__profiles_dict[$ _profile_name][$ _verb][_alternate];
+        var _binding_struct = _default_profile_struct[$ _verb][_alternate];
         
         //If the binding is a struct then duplicate so we don't get nasty
-        if (is_struct(_binding)) _binding.__duplicate();
+        if (is_struct(_binding_struct)) _binding_struct.__duplicate();
         
         //And set the value!
-        __profiles_dict[$ __profile_get(_profile_name)][$ _verb][@ _alternate] = _binding;
+        __profiles_dict[$ __profile_get(_profile_name)][$ _verb][@ _alternate] = _binding_struct;
+        
+        if (INPUT_DEBUG_BINDING) __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " reset to ", _binding_struct);
     }
     
     #endregion
@@ -296,9 +338,13 @@ function __input_class_player() constructor
         }
         
         var _profile_struct = __profiles_dict[$ _profile_name];
-        if (!is_struct(_profile_struct)) __input_error("Profile \"", _profile_name, "\" does not exist");
+        if (!is_struct(_profile_struct)) __input_error("Profile \"", _profile_name, "\" does not exist for player ", __index);
         
-        if (!is_struct(__verb_state_dict[$ _verb_name])) __verb_state_dict[$ _verb_name] = new __input_class_verb();
+        if (!is_struct(__verb_state_dict[$ _verb_name]))
+        {
+            if (INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one");
+            __verb_state_dict[$ _verb_name] = new __input_class_verb();
+        }
         
         var _verb_alternate_array = _profile_struct[$ _verb_name];
         if (!is_array(_verb_alternate_array))
@@ -322,11 +368,11 @@ function __input_class_player() constructor
         //Set up a verb container on the player separate from the bindings
         if (is_struct(__verb_state_dict[$ _verb_name]))
         {
-            __input_error("Chord \"", _verb_name, "\" has already been added to this player");
+            __input_error("Chord \"", _verb_name, "\" has already been added to player ", __index);
         }
         else
         {
-            if (__INPUT_DEBUG) __input_trace("Verb \"", _verb_name, "\" not found on player, creating a new one as a chord");
+            if (INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one as a chord");
             
             var _verb_struct = new __input_class_verb();
             _verb_struct.name     = _verb_name;
@@ -349,7 +395,7 @@ function __input_class_player() constructor
         }
         else
         {
-            if (__INPUT_DEBUG) __input_trace("Verb \"", _verb_name, "\" not found on player, creating a new one as a combo");
+            if (INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one as a combo");
             
             var _verb_struct = new __input_class_verb();
             _verb_struct.name     = _verb_name;
@@ -380,6 +426,9 @@ function __input_class_player() constructor
         
         _axis_struct.mini = _min
         _axis_struct.maxi = _max;
+        
+        if (INPUT_DEBUG_BINDING) __input_trace("Axis threshold for axis \"", _axis, "\" set to ", _min, " -> ", _max);
+        
         return _axis_struct;
     }
     
@@ -388,6 +437,8 @@ function __input_class_player() constructor
     {
         var _struct = __profiles_dict.axis_thresholds[$ _axis];
         if (is_struct(_struct)) return _struct;
+        
+        if (INPUT_DEBUG_BINDING) __input_trace("No axis threshold found for axis ", _axis);
         
         if (__input_axis_is_directional(_axis))
         {
