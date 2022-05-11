@@ -49,6 +49,8 @@ Values that this function returns are defined via [`INPUT_VERB_COLLISION_GROUPS`
 |`state`        |boolean                         |State to set for the verb group                     |
 |`[playerIndex]`|integer                         |Player to target. If not specified, player 0 is used|
 
+A verb is considerd inactive when all the verb groups that that verb is a part of have been deactivated.
+
 &nbsp;
 
 ## `input_verb_group_is_active(verbGroup, [playerIndex])`
