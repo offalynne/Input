@@ -11,6 +11,7 @@
 - Single player mixed input and multidevice modes
 - Chords and combos
 - Player ghosts
+- VErb groups
 - Bindings can now be manually generated
 - Device agnostic cursor reintroduced
 - Configuration has been expanded and split up for greater legibility
