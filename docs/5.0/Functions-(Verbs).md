@@ -45,7 +45,7 @@ Values that this function returns are defined via [`INPUT_VERB_COLLISION_GROUPS`
 
 |Name           |Datatype                        |Purpose                                             |
 |---------------|--------------------------------|----------------------------------------------------|
-|`verbGroup`    |[verb group](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to target                |
+|`verbGroup`    |[verb group](Verbs-and-Bindings)|[Verb group](Verbs-and-Bindings) to target          |
 |`state`        |boolean                         |State to set for the verb group                     |
 |`[playerIndex]`|integer                         |Player to target. If not specified, player 0 is used|
 
