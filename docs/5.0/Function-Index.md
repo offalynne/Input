@@ -20,14 +20,14 @@
 
 ### [Profiles](Functions-(Profiles))
 
-- [`input_profile_reset_bindings(profileName, [playerIndex])`]()
-- [`input_profile_auto([playerIndex])`]()
-- [`input_profile_set(profileName, [playerIndex])`]()
-- [`input_profile_get([playerIndex])`]()
-- [`input_profile_create(profileName, [playerIndex])`]()
-- [`input_profile_destroy(profileName, [playerIndex])`]()
-- [`input_profile_exists(profileName, [playerIndex])`]()
-- [`input_profile_get_array([playerIndex])`]()
+- [`input_profile_reset_bindings(profileName, [playerIndex])`](Functions-(Profiles)?id=input_profile_reset_bindingsprofilename-playerindex)
+- [`input_profile_auto([playerIndex])`](Functions-(Profiles)?id=input_profile_autoplayerindex)
+- [`input_profile_set(profileName, [playerIndex])`](Functions-(Profiles)?id=input_profile_setprofilename-playerindex)
+- [`input_profile_get([playerIndex])`](Functions-(Profiles)?id=input_profile_getplayerindex)
+- [`input_profile_create(profileName, [playerIndex])`](Functions-(Profiles)?id=input_profile_createprofilename-playerindex)
+- [`input_profile_destroy(profileName, [playerIndex])`](Functions-(Profiles)?id=input_profile_destroyprofilename-playerindex)
+- [`input_profile_exists(profileName, [playerIndex])`](Functions-(Profiles)?id=input_profile_existsprofilename-playerindex)
+- [`input_profile_get_array([playerIndex])`](Functions-(Profiles)?id=input_profile_get_arrayplayerindex)
 
 ### [Checkers](Functions-(Checkers))
 
