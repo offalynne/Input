@@ -6,17 +6,17 @@
 
 ### [Players](Functions-(Players))
 
-- [`input_player_connected([playerIndex])`]()
-- [`input_player_connected_count()`]()
+- [`input_player_connected([playerIndex])`](Functions-(Players)?id=input_player_connectedplayerindex)
+- [`input_player_connected_count()`](Functions-(Players)?id=input_players_connected)
 - [`input_players_get_status()`](Functions-(Players)#input_players_get_status)
 - [`input_player_get_gamepad([playerIndex])`](Functions-(Players)#input_player_gamepad_getplayerindex)
 - [`input_player_get_gamepad_type([playerIndex])`](Functions-(Players)#input_player_gamepad_get_typeplayerindex)
-- [`input_player_get_invalid_gamepad_bindings([playerIndex], [profileName])`]()
-- [`input_player_ghost_set(state, [playerIndex])`]()
-- [`input_player_ghost_get([playerIndex])`]()
-- [`input_multiplayer_params_set(min, max, [dropDown])`]()
-- [`input_multiplayer_params_get()`]()
-- [`input_multiplayer_pass()`]()
+- [`input_player_get_invalid_gamepad_bindings([playerIndex], [profileName])`](Functions-(Players)?id=input_player_get_invalid_gamepad_bindingsplayerindex)
+- [`input_player_ghost_set(state, [playerIndex])`](Functions-(Players)?id=input_player_ghost_setstate-playerindex)
+- [`input_player_ghost_get([playerIndex])`](Functions-(Players)?id=input_player_ghost_getplayerindex)
+- [`input_multiplayer_params_set(min, max, [dropDown])`](Functions-(Players)?id=input_multiplayer_params_setmin-max-dropdown)
+- [`input_multiplayer_params_get()`](Functions-(Players)?id=input_multiplayer_params_get)
+- [`input_multiplayer_pass()`](Functions-(Players)?id=input_multiplayer_is_finished)
 
 ### [Profiles](Functions-(Profiles))
 
