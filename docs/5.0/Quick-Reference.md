@@ -2,6 +2,8 @@
 
 &nbsp;
 
+?> This is a partial overview of the functions that Input offers you. There is plenty more that Input can do; for a complete rundown please see the [Full Function Index](Function-Index).
+
 ## Setting Up
 
 - [`INPUT_DEFAULT_PROFILES`](Profiles?id=defining-default-profiles)
