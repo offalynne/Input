@@ -96,7 +96,9 @@
 
 - [`input_consume(verb, [playerIndex])`](Functions-(Other)#input_consumeverb-playerindex)
 - [`input_verb_set(verb, value, [playerIndex])`](Functions-(Other)#input_verb_setverb-value-playerindex)
-- [`input_verb_get_collision_groups(verb)`]()
+- [`input_verb_get_groups(verb)`](Functions-(Verbs)?id=input_verb_get_groupsverb)
+- [`input_verb_group_active(verbGroup, state, [playerIndex])`](Functions-(Verbs)?id=input_verb_group_activeverbgroup-state-playerindex)
+- [`input_verb_group_is_active(verbGroup, [playerIndex])`](Functions-(Verbs)?id=input_verb_group_is_activeverbgroup-playerindex)
 
 ### [Sources](Functions-(Sources))
 
