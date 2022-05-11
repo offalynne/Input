@@ -6,7 +6,7 @@
     "path": "folders/Input/Verbs.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_verb_get_collision_groups",
+  "name": "input_verb_group_is_active",
   "tags": [],
   "resourceType": "GMScript",
 }

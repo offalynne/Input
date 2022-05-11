@@ -1,1 +1,0 @@
-input_default_gamepad_button(gp_face1, "face1");

@@ -1,6 +1,3 @@
-input_tick();
-input_source_hotswap_tick();
-
 if (keyboard_check_pressed(ord("L")))
 {
     var _buffer = buffer_load("test_load_mapping.json");

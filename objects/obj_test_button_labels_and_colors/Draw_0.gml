@@ -1,4 +1,4 @@
-var _index = input_player_gamepad_get();
+var _index = input_player_get_gamepad();
 
 var _string = "";
 _string += "player gamepad = " + string(_index) + "\n\n";

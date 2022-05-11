@@ -23,8 +23,7 @@
 #macro INPUT_2D_CLAMP  true
 
 //Defines which verbs should collide with which other verbs when using input_binding_get_collisions()
-//and input_binding_set_safe(). A verb that is not present in a collision group will collide with all
-//other verbs
-INPUT_VERB_COLLISION_GROUPS = {
+//and input_binding_set_safe(). A verb that is not present in a group will collide with all other verbs
+INPUT_VERB_GROUPS = {
     general: ["up", "down", "left", "right", "accept", "cancel", "action", "special", "pause",],
 };

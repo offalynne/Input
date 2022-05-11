@@ -31,12 +31,12 @@ function input_binding_test_collisions(_verb_name, _src_binding, _player_index =
         {
             var _verb = global.__input_basic_verb_array[_v];
             
-            var _group_collision = false;
+            var _group_matches = false;
             
             //If the incoming groups array is undefined then the incoming binding is in every group
             if (_src_groups_array == undefined)
             {
-                _group_collision = true;
+                _group_matches = true;
             }
             else
             {
@@ -45,7 +45,7 @@ function input_binding_test_collisions(_verb_name, _src_binding, _player_index =
                 //If the incoming groups array is undefined then the incoming binding is in every group
                 if (_dst_groups_array == undefined)
                 {
-                    _group_collision = true;
+                    _group_matches = true;
                 }
                 else
                 {
@@ -60,21 +60,21 @@ function input_binding_test_collisions(_verb_name, _src_binding, _player_index =
                         {
                             if (_dst_groups_array[_k] == _src_group)
                             {
-                                _group_collision = true;
+                                _group_matches = true;
                                 break;
                             }
                             
                             ++_k;
                         }
                         
-                        if (_group_collision) break;
+                        if (_group_matches) break;
                         ++_j;
                     }
                 }
             }
             
             //Only check for specific binding collisions if the verb groups collide
-            if (_group_collision)
+            if (_group_matches)
             {
                 //Iterate over every alternate binding
                 var _alternate_index = 0;

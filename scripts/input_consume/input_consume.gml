@@ -36,8 +36,9 @@ function input_consume(_verb, _player_index = 0)
         
         with(_verb_struct)
         {
-            consumed      = true;
-            previous_held = true; //Force the held state on to avoid unwanted early reset of a consumed verb
+            __consumed    = true;
+            previous_held = true; //Force the held state on to avoid unwanted early reset of a __consumed verb
+            __inactive    = true;
         }
         
         //If this verb is a combo then also reset the combo's state

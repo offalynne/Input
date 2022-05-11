@@ -10,5 +10,3 @@ if (input_keyboard_check(ord("J"))) input_verb_set("left",  0.0);
 if (input_keyboard_check(ord("I"))) input_verb_set("up",    0.0);
 if (input_keyboard_check(ord("K"))) input_verb_set("down",  0.0);
 if (input_keyboard_check(ord("L"))) input_verb_set("right", 0.0);
-
-input_tick();

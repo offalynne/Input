@@ -548,10 +548,11 @@ function __input_initialize()
     //We want to be able to identify the actual mouse buttons correctly, and have our own double-input handling
     device_mouse_dbclick_enable(false);
     
-    global.__input_profile_array             = undefined;
-    global.__input_profile_dict              = undefined;
-    global.__input_default_profile_dict      = undefined;
-    global.__input_verb_collision_group_dict = {};
+    global.__input_profile_array         = undefined;
+    global.__input_profile_dict          = undefined;
+    global.__input_default_profile_dict  = undefined;
+    global.__input_verb_to_groups_dict   = {};
+    global.__input_group_to_verbs_dict   = {};
     
     INPUT_KEYBOARD = new __input_class_source(__INPUT_SOURCE.KEYBOARD);
     INPUT_MOUSE = INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER? INPUT_KEYBOARD : (new __input_class_source(__INPUT_SOURCE.MOUSE));

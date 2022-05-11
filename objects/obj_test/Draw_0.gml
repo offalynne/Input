@@ -96,9 +96,9 @@ draw_rectangle(488, 0, 490, room_height, false);
 
 var _string = "";
 
-_string += "GUID = \"" + gamepad_get_guid(input_player_gamepad_get()) + "\"\n";
-_string += "Input gamepad desc = \"" + input_gamepad_get_description(input_player_gamepad_get()) + "\"\n";
-_string += "Input gamepad type = \"" + input_gamepad_get_type(input_player_gamepad_get()) + "\"\n";
+_string += "GUID = \"" + gamepad_get_guid(input_player_get_gamepad()) + "\"\n";
+_string += "Input gamepad desc = \"" + input_gamepad_get_description(input_player_get_gamepad()) + "\"\n";
+_string += "Input gamepad type = \"" + input_gamepad_get_type(input_player_get_gamepad()) + "\"\n";
 _string += "\n";
 
 _string += "Left          = " + string(input_value("left"   )) + "    " + string(input_binding_get("left"   )) + "\n";
