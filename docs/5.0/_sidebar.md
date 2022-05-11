@@ -1,6 +1,7 @@
 - [Home](README)
 - [Quick Start Guide](Quick-Start-Guide)
 - [Changes from Input 4](Changes-from-Input-4)
+- [Quick Reference](Quick-Reference)
 
 ---
 
