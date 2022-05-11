@@ -26,3 +26,4 @@
 - `input_binding_get_collisions()` has been renamed to `input_binding_test_collisions()`
 - Default binding setter functions (`input_default_key()` etc.) have been removed in preference for a macro (`INPUT_DEFAULT_PROFILES`)
 - `input_source_hotswap_tick()` and `input_source_assignment_tick()` have been replaced by source modes
+- `input_guess_keyboard_layout()` and `input_platform_text_source()` have been replaced by `INPUT_KEYBOARD_LAYOUT` and `INPUT_KEYBOARD_TYPE` respectively
