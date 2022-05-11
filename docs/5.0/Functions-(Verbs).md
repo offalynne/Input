@@ -27,7 +27,7 @@ When a verb has been consumed, [check functions](Functions-(Checkers)) that targ
 
 &nbsp;
 
-## `input_verb_get_collision_groups(verb)`
+## `input_verb_get_groups(verb)`
 
 *Returns:* Array or `undefined`, the collision groups defined for the target verb
 
@@ -36,3 +36,26 @@ When a verb has been consumed, [check functions](Functions-(Checkers)) that targ
 |`verb`|[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to target|
 
 Values that this function returns are defined via [`INPUT_VERB_COLLISION_GROUPS`](Configuration?id=profiles-and-bindings). If no collision groups have been defined for the target verb then this function will return `undefined` (and the verb is considered as being in every collision group).
+
+&nbsp;
+
+## `input_verb_group_active(verbGroup, state, [playerIndex])`
+
+*Returns:* N/A (`undefined`)
+
+|Name           |Datatype                        |Purpose                                             |
+|---------------|--------------------------------|----------------------------------------------------|
+|`verbGroup`    |[verb group](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to target                |
+|`state`        |boolean                         |State to set for the verb group                     |
+|`[playerIndex]`|integer                         |Player to target. If not specified, player 0 is used|
+
+&nbsp;
+
+## `input_verb_group_is_active(verbGroup, [playerIndex])`
+
+*Returns:* Boolean, whether the verb group is active for the given player
+
+|Name           |Datatype                        |Purpose                                             |
+|---------------|--------------------------------|----------------------------------------------------|
+|`verbGroup`    |[verb group](Verbs-and-Bindings)|[Verb group](Verbs-and-Bindings) to target          |
+|`[playerIndex]`|integer                         |Player to target. If not specified, player 0 is used|
