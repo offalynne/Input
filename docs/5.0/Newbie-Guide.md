@@ -1,4 +1,4 @@
-# Newbiw Guide
+# Newbie Guide
 
 ---
 
