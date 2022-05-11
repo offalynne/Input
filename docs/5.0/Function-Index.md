@@ -122,8 +122,6 @@
 - [`input_ignore_key_add(key)`](Functions-(Other)#input_ignore_key_addkey)
 - [`input_ignore_key_remove(key)`](Functions-(Other)#input_ignore_key_removekey)
 - [`input_clear_momentary(state)`](Functions-(Other)#input_clear_momentarystate)
-- [`input_guess_keyboard_layout()`](Functions-(Other)#input_guess_keyboard_layout)
-- [`input_platform_text_source()`]()
 
 ### [Gamepad (Direct)](Functions-(Gamepad))
 
