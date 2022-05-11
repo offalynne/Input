@@ -13,7 +13,7 @@ Input is built on top of the engine agnostic [SDL2 remapping system](https://git
 
 This library is a significant improvement on GameMaker's native gamepad implementation, which is fraught with cross-platform inconsistencies and the occasional show-stopping bug. It's a massive step up from GameMaker's barebones gamepad and keyboard implementations.
 
-?> Input is a really big library! To get up and running fast, check out our [Quick Start](Quick-Start-Guide) page.
+?> Input is a really big library! To get up and running fast, check out our [Newbie Guide](Newbie-Guide).
 
 ---
 
