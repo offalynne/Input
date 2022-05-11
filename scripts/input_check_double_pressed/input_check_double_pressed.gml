@@ -20,7 +20,7 @@ function input_check_double_pressed(_verb, _player_index = 0, _buffer_duration =
     
     __INPUT_GET_VERB_STRUCT
     
-    if (_verb_struct.consumed || global.__input_cleared) return false;
+    if (_verb_struct.__inactive || global.__input_cleared) return false;
     
     if (_buffer_duration <= 0)
     {

@@ -3,7 +3,9 @@ function __input_class_verb() constructor
     name = undefined;
     type = undefined;
     
-    consumed = false;
+    __inactive       = false;
+    __group_inactive = false;
+    __consumed       = false;
     
     previous_value = 0.0;
     value          = 0.0;
@@ -54,7 +56,38 @@ function __input_class_verb() constructor
         long_release = false;
     }
     
-    static tick = function()
+    static __update_verb_groups = function(_verb_group_state_dict)
+    {
+        //Get the groups for this verb
+        var _verb_group_array = global.__input_verb_to_groups_dict[$ name];
+        
+        //If none exist then this verb cannot be made inactive via groups
+        if (_verb_group_array == undefined)
+        {
+            __group_inactive = false;
+            return;
+        }
+        
+        //Otherwise iterate over all the groups and check their state
+        //If any group is active then the verb is active
+        var _i = 0;
+        repeat(array_length(_verb_group_array))
+        {
+            if (_verb_group_state_dict[$ _verb_group_array[_i]])
+            {
+                __group_inactive = false;
+                return;
+            }
+            
+            ++_i;
+        }
+        
+        __group_inactive = true;
+        previous_held    = true; //Force the held state on to avoid unwanted early reset of an inactive verb
+        __inactive       = true;
+    }
+    
+    static tick = function(_verb_group_state_dict)
     {
         var _time = __input_get_time();
         
@@ -70,8 +103,8 @@ function __input_class_verb() constructor
         {
             if (held)
             {
-                if (__INPUT_DEBUG && consumed) __input_trace("Un-consuming verb \"", name, "\"");
-                consumed = false;
+                if (__INPUT_DEBUG && __consumed) __input_trace("Un-consuming verb \"", name, "\"");
+                __consumed = false;
                 
                 if (_time - press_time < INPUT_DOUBLE_DELAY)
                 {
@@ -129,5 +162,8 @@ function __input_class_verb() constructor
         
         if (double_held) double_held_time = _time;
         if (long_held) long_held_time = _time;
+        
+        __update_verb_groups(_verb_group_state_dict);
+        __inactive = (__group_inactive || __consumed);
     }
 }

@@ -20,7 +20,7 @@ function input_check_long_released(_verb, _player_index = 0, _buffer_duration = 
     
     __INPUT_GET_VERB_STRUCT
     
-    if (_verb_struct.consumed) return false;
+    if (_verb_struct.__inactive) return false;
     
     if (_buffer_duration <= 0)
     {

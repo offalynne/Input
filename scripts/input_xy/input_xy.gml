@@ -37,11 +37,11 @@ function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0)
     if (!is_struct(_verb_struct_u)) __input_error("Up verb not recognised (", _verb_u, ")");
     if (!is_struct(_verb_struct_d)) __input_error("Down verb not recognised (", _verb_d, ")");
     
-    //If any of the verbs have been consumed then set their value to 0, otherwise use the raw value from the binding
-    var _value_l = _verb_struct_l.consumed? 0.0 : _verb_struct_l.raw;
-    var _value_r = _verb_struct_r.consumed? 0.0 : _verb_struct_r.raw;
-    var _value_u = _verb_struct_u.consumed? 0.0 : _verb_struct_u.raw;
-    var _value_d = _verb_struct_d.consumed? 0.0 : _verb_struct_d.raw;
+    //If any of the verbs have been __consumed then set their value to 0, otherwise use the raw value from the binding
+    var _value_l = _verb_struct_l.__inactive? 0.0 : _verb_struct_l.raw;
+    var _value_r = _verb_struct_r.__inactive? 0.0 : _verb_struct_r.raw;
+    var _value_u = _verb_struct_u.__inactive? 0.0 : _verb_struct_u.raw;
+    var _value_d = _verb_struct_d.__inactive? 0.0 : _verb_struct_d.raw;
     
     //Check to see if any the verbs are non-analogue (and are being pressed)
     var _any_non_analogue = false;

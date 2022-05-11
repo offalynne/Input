@@ -2,11 +2,12 @@ function __input_class_player() constructor
 {
     __index = undefined;
     
-    __source_array     = [];
-    __verb_state_dict  = {};
-    __chord_state_dict = {};
-    __combo_state_dict = {};
-    __last_input_time  = -infinity;
+    __source_array          = [];
+    __verb_state_dict       = {};
+    __chord_state_dict      = {};
+    __combo_state_dict      = {};
+    __last_input_time       = -infinity;
+    __verb_group_state_dict = {};
     
     __rebind_state      = 0;
     __rebind_error      = undefined;
@@ -328,6 +329,34 @@ function __input_class_player() constructor
     
     #region Verbs
     
+    static __verb_group_ensure = function(_verb_group)
+    {
+        if (!variable_struct_exists(__verb_group_state_dict, _verb_group)) __verb_group_state_dict[$ _verb_group] = true;
+    }
+    
+    static __verb_group_active = function(_verb_group, _state)
+    {
+        var _old_state = __verb_group_state_dict[$ _verb_group];
+        if (_old_state == _state) return;
+        
+        //Set the state of the verb group
+        __verb_group_state_dict[$ _verb_group] = _state;
+        
+        //Iterate over every verb for this group and get them to update their state
+        var _array = global.__input_verb_to_groups_dict[$ _verb_group];
+        var _i = 0;
+        repeat(array_length(_array))
+        {
+            __verb_state_dict[$ _array[_i]].__update_verb_groups(__verb_group_state_dict);
+            ++_i;
+        }
+    }
+    
+    static __verb_group_is_active = function(_verb_group)
+    {
+        return __verb_group_state_dict[$ _verb_group];
+    }
+    
     /// @param verbName
     static __ensure_verb = function(_profile_name, _verb_name)
     {
@@ -469,8 +498,6 @@ function __input_class_player() constructor
         var _s = 0;
         repeat(array_length(__source_array))
         {
-            var _source_struct = __source_array[_s];
-            
             var _profile_verb_struct = __profiles_dict[$ __profile_get(_profile_name)];
             if (is_struct(_profile_verb_struct))
             {
@@ -559,7 +586,7 @@ function __input_class_player() constructor
         var _v = 0;
         repeat(array_length(global.__input_basic_verb_array))
         {
-            with(__verb_state_dict[$ global.__input_basic_verb_array[_v]]) tick();
+            with(__verb_state_dict[$ global.__input_basic_verb_array[_v]]) tick(__verb_group_state_dict);
             ++_v;
         }
     }
