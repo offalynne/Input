@@ -56,22 +56,22 @@
 
 ### [Extended Verbs](Functions-(Extended-Verbs))
 
-- [`input_chord_create(name, maxTimeBetweenPresses, verb1, verb2, ...)`]()
-- [`input_combo_create(name, [phaseTimeout])`]()
-- [`input_combo_get_phase(name, [playerIndex])`]()
-- [`input_combo_get_phase_count(name)`]()
+- [`input_chord_create(name, maxTimeBetweenPresses, verb1, verb2, ...)`](Functions-(Extended-Verbs)?id=input_chord_createname-maxtimebetweenpresses-verb1-verb2-)
+- [`input_combo_create(name, [phaseTimeout])`](Functions-(Extended-Verbs)?id=input_combo_createname-phasetimeout)
+- [`input_combo_get_phase(name, [playerIndex])`](Functions-(Extended-Verbs)?id=input_combo_get_phaseverb-playerindex)
+- [`input_combo_get_phase_count(name)`](Functions-(Extended-Verbs)?id=input_combo_get_phase_countverb)
 
 ### [Binding Creators](Functions-(Binding-Creators))
 
 - [`input_value_is_binding(value)`](Functions-(Binding-Creators)#input_value_is_bindingvalue)
-- [`input_binding_empty()`]()
-- [`input_binding_key(key)`]()
-- [`input_binding_mouse_button(button)`]()
-- [`input_binding_mouse_wheel_down()`]()
-- [`input_binding_mouse_wheel_up()`]()
-- [`input_binding_gamepad_button(button)`]()
-- [`input_binding_gamepad_axis(axis, negative)`]()
-- [`input_binding_scan_tick([sourceFilter], [playerIndex])`]()
+- [`input_binding_empty()`](Functions-(Binding-Creators)?id=input_binding_empty)
+- [`input_binding_key(key)`](Functions-(Binding-Creators)?id=input_binding_keykey)
+- [`input_binding_mouse_button(button)`](Functions-(Binding-Creators)?id=input_binding_mouse_buttonbutton)
+- [`input_binding_mouse_wheel_down()`](Functions-(Binding-Creators)?id=input_binding_mouse_wheel_down)
+- [`input_binding_mouse_wheel_up()`](Functions-(Binding-Creators)?id=input_binding_mouse_wheel_up)
+- [`input_binding_gamepad_button(button)`](Functions-(Binding-Creators)?id=input_binding_gamepad_buttonbutton)
+- [`input_binding_gamepad_axis(axis, negative)`](Functions-(Binding-Creators)?id=input_binding_gamepad_axisaxis-negative)
+- [`input_binding_scan_tick([sourceFilter], [playerIndex])`](Functions-(Binding-Creators)?id=input_binding_scan_ticksource-playerindex)
 
 ### [Binding Access](Functions-(Binding-Access))
 
