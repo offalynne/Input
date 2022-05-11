@@ -52,47 +52,6 @@ Clears momentary (pressed/released) input and connection checkers. This covers v
 
 &nbsp;
 
-## `input_guess_keyboard_layout()`
-
-*Returns:* String indicating keyboard layout hint, `QWERTY` `AZERTY` or `QWERTZ`
-
-|Name           |Datatype                                                             |Purpose                                                                         |
-|---------------|---------------------------------------------------------------------|--------------------------------------------------------------------------------|
-|None         | |
-
-Provides a hint for default Latin keyboard layout based on available information. Utility for building safe default bindings based on [keyboard layout differences](https://www.typingpal.com/en/news/what-is-the-difference-between-QWERTY-QWERTZ-and-AZERTY-keyboards). Note that while system software determines the active keyboard layout and we can not detect this at runtime, this function provides a suggestion as to the system-default using OS locale info ([ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) and [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1)).
-
-_Example usage_
-```
-if (input_guess_keyboard_layout() == "AZERTY")
-{
-    input_default_key(ord("E"), "up");
-    input_default_key(ord("S"), "left");
-    input_default_key(ord("D"), "down");
-    input_default_key(ord("F"), "right");
-}
-else
-{
-    input_default_key(ord("W"), "up");
-    input_default_key(ord("A"), "left");
-    input_default_key(ord("S"), "down");
-    input_default_key(ord("D"), "right");
-}
-```
-
-&nbsp;
-
-## `input_platform_text_source()`
-
-*Returns:* String indicating platform text source, `async` `virtual` or `keyboard`
-
-|Name|Datatype|Purpose|
-|----|--------|-------|
-|None|        |       |
-
-Provides a suggestion for text entry handling based on platform target.
-
-&nbsp;
 
 ## `input_ignore_key_add(key)`
 
