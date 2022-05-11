@@ -58,3 +58,41 @@ GameMaker is curiously missing a few keyboard characters from its set of native 
 |`vk_apostrophe`|`vk_bslash`   |
 |`vk_equals`    |`vk_hyphen`   |
 |`vk_backtick`  |`vk_period`   |
+
+&nbsp;
+
+## `INPUT_KEYBOARD_LOCALE`
+
+This macro provides a hint for default Latin keyboard layout based on available information. It can return `QWERTY` `AZERTY` or `QWERTZ` as a string, indicating which keyboard layout Input predicts the player is using. This is useful for building safe default bindings based on [keyboard layout differences](https://www.typingpal.com/en/news/what-is-the-difference-between-QWERTY-QWERTZ-and-AZERTY-keyboards). Note that while system software can determine the active keyboard layout, we cannot detect this at runtime, and this function merely provides a suggestion as to the system-default using OS locale info ([ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) and [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1)).
+
+_Example usage_
+```gml
+if (INPUT_KEYBOARD_LOCALE == "AZERTY")
+{
+    INPUT_DEFAULT_PROFILES = {
+        keyboard: {
+            up:    input_binding_key("E"),
+            down:  input_binding_key("D"),
+            left:  input_binding_key("S"),
+            right: input_binding_key("F"),
+        }
+    }
+}
+else
+{
+    INPUT_DEFAULT_PROFILES = {
+        keyboard: {
+            up:    input_binding_key("W"),
+            down:  input_binding_key("S"),
+            left:  input_binding_key("A"),
+            right: input_binding_key("D"),
+        }
+    }
+}
+```
+
+&nbsp;
+
+## `INPUT_KEYBOARD_TYPE`
+
+This macro is set to a string indicating the current platform's preferred text source as a string. Possible values are `async` `virtual` or `keyboard`. This is useful for games where the player is expected to enter some text (for example, a name for a highscore) and you need to pick the most suitable option.
