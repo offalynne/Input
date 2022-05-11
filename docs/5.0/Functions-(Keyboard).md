@@ -1,6 +1,6 @@
 # Functions (Keyboard)
 
----
+&nbsp;
 
 ?> These functions are provided for convenience if you want to implement your own features using Input's keyboard implementation. In general, [Player functions](Functions-(Players)) are the intended way to use Input and are preferred. 
 
@@ -8,9 +8,7 @@ _These functions are almost directly passed-through and are presently only inten
 
 &nbsp;
 
-&nbsp;
-
-### `input_keyboard_check(key)`
+## `input_keyboard_check(key)`
 
 *Returns:* Boolean, if the key is currently activated
 
@@ -20,9 +18,7 @@ _These functions are almost directly passed-through and are presently only inten
 
 &nbsp;
 
-&nbsp;
-
-### `input_keyboard_check_pressed(key)`
+## `input_keyboard_check_pressed(key)`
 
 *Returns:* Boolean, if the key is newly activated this frame
 
@@ -32,9 +28,7 @@ _These functions are almost directly passed-through and are presently only inten
 
 &nbsp;
 
-&nbsp;
-
-### `input_keyboard_check_released(key)`
+## `input_keyboard_check_released(key)`
 
 *Returns:* Boolean, if the key is newly deactivated this frame
 
