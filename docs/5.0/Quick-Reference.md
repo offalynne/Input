@@ -14,6 +14,8 @@
 
 !> If you're using Input 5 on versions of GameMaker **before** 2022.5 (May 2022) then you'll need to call `input_tick()` in the Begin Step event of a persistent instance. This function handles all things Input behind the scenes, it is important to call `input_tick()` once (and only once) each step of your game. A good way to do this is by making `obj_input_manager` [persistent](https://manual.yoyogames.com/#t=The_Asset_Editors%2FObjects.htm), and placing one instance in your first room.
 
+&nbsp;
+
 ## Checking Verbs
 
 - [`input_check(verb, [playerIndex], [bufferDuration])`](Functions-(Checkers)#input_checkverb-playerindex-bufferduration)
@@ -25,16 +27,22 @@
 - [`input_direction(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`](Functions-(2D-Checkers)#input_directionverbleft-verbright-verbup-verbdown-playerindex)
 - [`input_distance(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`](Functions-(2D-Checkers)#input_distanceverbleft-verbright-verbup-verbdown-playerindex)
 
+&nbsp;
+
 ## Showing Control Prompts
 
 - [`input_player_get_gamepad_type([playerIndex])`](Functions-(Players)#input_player_gamepad_get_typeplayerindex)
 - [`input_binding_get(verb, [playerIndex], [alternate], [profileName])`](Functions-(Binding-Access)?id=input_binding_getverb-playerindex-alternate-profilename)
 - [`input_binding_get_name(binding)`](Functions-(Binding-Access)?id=input_binding_get_namebinding)
-- 
+
+&nbsp;
+
 ## Console Compliance
 
 - [`input_players_get_status()`](Functions-(Players)#input_players_get_status)
 - [`input_binding_gamepad_swap_ab(state)`](Functions-(Binding-System)?id=input_binding_system_swap_gamepad_abstate)
+
+&nbsp;
 
 ## Fancy Ways Of Checking Verbs
 
@@ -47,6 +55,8 @@
 - [`input_check_long_pressed(verb, [playerIndex], [bufferDuration])`](Functions-(Checkers)#input_check_long_pressedverb-playerindex-bufferduration)
 - [`input_check_long_released(verb, [playerIndex], [bufferDuration])`](Functions-(Checkers)#input_check_long_releasedverb-playerindex-bufferduration)
 
+&nbsp;
+
 ## Rebinding
 
 - [`input_player_get_invalid_gamepad_bindings([playerIndex], [profileName])`](Functions-(Players)?id=input_player_get_invalid_gamepad_bindingsplayerindex)
@@ -58,6 +68,8 @@
 - [`input_bindings_write([playerIndex])`](Functions-(Binding-System)#input_bindings_writeplayerindex)
 - [`input_bindings_read(string, [playerIndex])`](Functions-(Binding-System)#input_bindings_readstring-playerindex)
 
+&nbsp;
+
 ## Local Multiplayer
 
 - [`input_multiplayer_params_set(min, max, [dropDown])`](Functions-(Players)?id=input_multiplayer_params_setmin-max-dropdown)
@@ -65,6 +77,8 @@
 - [`input_multiplayer_pass()`](Functions-(Players)?id=input_multiplayer_is_finished)
 - [`input_source_mode_set(state)`](Functions-(Sources)?id=input_source_mode_setmode)
 - [`input_source_mode_get()`](Functions-(Sources)?id=input_source_mode_get)
+
+&nbsp;
 
 ## Chords and Combos
 
