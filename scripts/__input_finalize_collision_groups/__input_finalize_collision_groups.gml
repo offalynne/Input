@@ -14,6 +14,12 @@ function __input_finalize_collision_groups(_collision_source_dict)
     {
         var _group_name = _group_names_array[_i];
         var _group_array = _collision_source_dict[$ _group_name];
+            
+        if (!variable_struct_exists(global.__input_verb_group_state_dict, _group_name))
+        {
+            if (INPUT_DEBUG_VERBS) __input_trace("Creating verb group \"", _group_name, "\"");
+            global.__input_verb_group_state_dict[$ _group_name] = true;
+        }
         
         var _j = 0;
         repeat(array_length(_group_array))

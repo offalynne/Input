@@ -551,6 +551,7 @@ function __input_initialize()
     global.__input_profile_dict              = undefined;
     global.__input_default_profile_dict      = undefined;
     global.__input_verb_collision_group_dict = {};
+    global.__input_verb_group_state_dict     = {};
     
     INPUT_KEYBOARD = new __input_class_source(__INPUT_SOURCE.KEYBOARD);
     INPUT_MOUSE = INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER? INPUT_KEYBOARD : (new __input_class_source(__INPUT_SOURCE.MOUSE));
