@@ -35,7 +35,7 @@ When a verb has been consumed, [check functions](Functions-(Checkers)) that targ
 |------|--------------------------|------------------------------------|
 |`verb`|[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to target|
 
-Values that this function returns are defined via [`INPUT_VERB_COLLISION_GROUPS`](Configuration?id=profiles-and-bindings). If no collision groups have been defined for the target verb then this function will return `undefined` (and the verb is considered as being in every collision group).
+Values that this function returns are defined via [`INPUT_VERB_GROUPS`](Configuration?id=profiles-and-bindings). If no verb groups have been defined for the target verb then this function will return `undefined` (and the verb is considered as being in every group).
 
 &nbsp;
 
@@ -49,7 +49,7 @@ Values that this function returns are defined via [`INPUT_VERB_COLLISION_GROUPS`
 |`state`        |boolean                         |State to set for the verb group                     |
 |`[playerIndex]`|integer                         |Player to target. If not specified, player 0 is used|
 
-A verb is considerd inactive when all the verb groups that that verb is a part of have been deactivated.
+A verb is considerd inactive when all the verb groups that that verb is a part of have been deactivated. A verb that has been assigned to no groups cannot be deactivated using this function.
 
 &nbsp;
 
