@@ -52,7 +52,7 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 |`INPUT_DOUBLE_DELAY`           |`12`         |Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`|
 |`INPUT_CHORD_DEFAULT_TIME`     |`4`          |Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`|
 |`INPUT_2D_CLAMP`               |`true`       |Whether to clamp 2D input to a maximum distance of 1 unit                                                                                            |
-|`INPUT_VERB_COLLISION_GROUPS`  |             |This macro contains the struct that defines verb collision groups. Please see the [Verbs and Bindings](Verbs-and-Bindings) page for more information |
+|`INPUT_VERB_GROUPS`            |             |This macro contains the struct that defines verb collision groups. Please see the [Verbs and Bindings](Verbs-and-Bindings) page for more information |
 
 &nbsp;
 
