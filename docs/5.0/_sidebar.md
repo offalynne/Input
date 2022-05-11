@@ -22,6 +22,7 @@
 
 **Further Reading**
 
+- [Accessibility](Accessibility)
 - [Binding Names](Binding-Names)
 - [Input Quirks](Input-Quirks)
 - [Supplementary Notes](Reference-Notes)
