@@ -4,6 +4,8 @@
 
 ?> This is a partial overview of the functions that Input offers you. There is plenty more that Input can do; for a complete rundown please see the [Full Function Index](Function-Index).
 
+&nbsp;
+
 ## Setting Up
 
 - [`INPUT_DEFAULT_PROFILES`](Profiles?id=defining-default-profiles)
@@ -80,6 +82,7 @@
 - [`input_bindings_reset([source], [playerIndex], [resetThresholds])`](Functions-(Binding-System)#input_bindings_resetsource-playerindex-resetthresholds)
 - [`input_bindings_write([playerIndex])`](Functions-(Binding-System)#input_bindings_writeplayerindex)
 - [`input_bindings_read(string, [playerIndex])`](Functions-(Binding-System)#input_bindings_readstring-playerindex)
+
 &nbsp;
 
 ## Chords and Combos
