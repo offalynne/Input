@@ -1,4 +1,4 @@
-# Function Index
+# Full Function Index
 
 &nbsp;
 
