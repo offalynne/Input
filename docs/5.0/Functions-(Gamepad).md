@@ -1,14 +1,12 @@
 # Functions (Gamepad)
 
----
+&nbsp;
 
 ?> These functions are provided for convenience if you want to implement your own features using Input's implementation of the SDL gamepad mapping system. In general, [Player functions](Functions-(Players)) are the intended way to use Input and are preferred.
 
 &nbsp;
 
-&nbsp;
-
-### `input_gamepad_check(gamepadIndex, GMconstant)`
+## `input_gamepad_check(gamepadIndex, GMconstant)`
 
 *Returns:* Boolean, if the button/axis is currently activated
 
@@ -19,9 +17,7 @@
 
 &nbsp;
 
-&nbsp;
-
-### `input_gamepad_check_pressed(gamepadIndex, GMconstant)`
+## `input_gamepad_check_pressed(gamepadIndex, GMconstant)`
 
 *Returns:* Boolean, if the button/axis is newly activated this frame
 
@@ -32,9 +28,7 @@
 
 &nbsp;
 
-&nbsp;
-
-### `input_gamepad_check_released(gamepadIndex, GMconstant)`
+## `input_gamepad_check_released(gamepadIndex, GMconstant)`
 
 *Returns:* Boolean, if the button/axis is newly deactivated this frame
 
@@ -45,9 +39,7 @@
 
 &nbsp;
 
-&nbsp;
-
-### `input_gamepad_value(gamepadIndex, GMconstant)`
+## `input_gamepad_value(gamepadIndex, GMconstant)`
 
 *Returns:* Real, the analogue value of the input (after applying SDL axis remapping)
 
@@ -58,9 +50,7 @@
 
 &nbsp;
 
-&nbsp;
-
-### `input_gamepad_is_connected(gamepadIndex)`
+## `input_gamepad_is_connected(gamepadIndex)`
 
 *Returns:* Boolean, whether the given gamepad is connected (omitting [blocked devices](Controller-Mapping?id=controller-blacklist))
 
@@ -70,9 +60,7 @@
 
 &nbsp;
 
-&nbsp;
-
-### `input_gamepad_disconnected()`
+## `input_gamepad_disconnected()`
 
 *Returns:* Boolean, whether any gamepad has been momentarily disconnected
 
@@ -82,10 +70,7 @@
 
 &nbsp;
 
-&nbsp;
-
-
-### `input_gamepad_get_button_color(gamepadIndex, GMconstant)`
+## `input_gamepad_get_button_color(gamepadIndex, GMconstant)`
 
 *Returns:* String, the gamepad input color
 
@@ -106,9 +91,7 @@ The following are valid strings this function may return besides `unknown`:
 
 &nbsp;
 
-&nbsp;
-
-### `input_gamepad_get_button_label(gamepadIndex, GMconstant)`
+## `input_gamepad_get_button_label(gamepadIndex, GMconstant)`
 
 *Returns:* String, the gamepad input label
 
@@ -133,9 +116,7 @@ The following are valid strings this function may return besides `unknown`:
 
 &nbsp;
 
-&nbsp;
-
-### `input_gamepad_get_description(gamepadIndex)`
+## `input_gamepad_get_description(gamepadIndex)`
 
 *Returns:* String, the name of the gamepad (after SDL remapping)
 
@@ -145,9 +126,7 @@ The following are valid strings this function may return besides `unknown`:
 
 &nbsp;
 
-&nbsp;
-
-### `input_gamepad_get_type(gamepadIndex)`
+## `input_gamepad_get_type(gamepadIndex)`
 
 *Returns:* String, the gamepad type (after SDL remapping)
 
@@ -159,9 +138,7 @@ Returns the same values as [`input_player_gamepad_get_type()`](Functions-(Player
 
 &nbsp;
 
-&nbsp;
-
-### `input_gamepad_get_dpad_style(gamepadIndex)`
+## `input_gamepad_get_dpad_style(gamepadIndex)`
 
 *Returns:* String, the style of the gamepad's dpad (after SDL remapping)
 
@@ -183,9 +160,7 @@ The following are valid strings this function may return besides `unknown`:
 
 &nbsp;
 
-&nbsp;
-
-### `input_gamepad_get_map(gamepadIndex)`
+## `input_gamepad_get_map(gamepadIndex)`
 
 *Returns:* Array of integers, the buttons and axes that are mapped for the given gamepad
 
@@ -199,9 +174,7 @@ If there is no gamepad connected for the given index, an empty array will be ret
 
 &nbsp;
 
-&nbsp;
-
-### `input_gamepad_constant_get_name(GMconstant)`
+## `input_gamepad_constant_get_name(GMconstant)`
 
 *Returns:* String, the human-readable name of the [virtual button/axis constant](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)
 
@@ -211,9 +184,7 @@ If there is no gamepad connected for the given index, an empty array will be ret
 
 &nbsp;
 
-&nbsp;
-
-### `input_gamepads_get_status()`
+## `input_gamepads_get_status()`
 
 *Returns:* Struct, detailing the state of gamepad connection and disconnection
 
