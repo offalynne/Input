@@ -39,6 +39,17 @@
 
 &nbsp;
 
+## Local Multiplayer
+
+- [`input_multiplayer_params_set(min, max, [dropDown])`](Functions-(Players)?id=input_multiplayer_params_setmin-max-dropdown)
+- [`input_multiplayer_params_get()`](Functions-(Players)?id=input_multiplayer_params_get)
+- [`input_multiplayer_pass()`](Functions-(Players)?id=input_multiplayer_is_finished)
+- [`input_source_mode_set(state)`](Functions-(Sources)?id=input_source_mode_setmode)
+- [`input_source_mode_get()`](Functions-(Sources)?id=input_source_mode_get)
+
+
+&nbsp;
+
 ## Console Compliance
 
 - [`input_players_get_status()`](Functions-(Players)#input_players_get_status)
@@ -46,7 +57,7 @@
 
 &nbsp;
 
-## Fancy Ways Of Checking Verbs
+## Fancy Ways To Use Verbs
 
 - [`input_consume(verb, [playerIndex])`](Functions-(Other)#input_consumeverb-playerindex)
 - [`input_check_repeat(verb, [playerIndex], [delay], [predelay])`](Functions-(Checkers)#input_check_repeatverb-playerindex-delay-predelay)
@@ -69,17 +80,6 @@
 - [`input_bindings_reset([source], [playerIndex], [resetThresholds])`](Functions-(Binding-System)#input_bindings_resetsource-playerindex-resetthresholds)
 - [`input_bindings_write([playerIndex])`](Functions-(Binding-System)#input_bindings_writeplayerindex)
 - [`input_bindings_read(string, [playerIndex])`](Functions-(Binding-System)#input_bindings_readstring-playerindex)
-
-&nbsp;
-
-## Local Multiplayer
-
-- [`input_multiplayer_params_set(min, max, [dropDown])`](Functions-(Players)?id=input_multiplayer_params_setmin-max-dropdown)
-- [`input_multiplayer_params_get()`](Functions-(Players)?id=input_multiplayer_params_get)
-- [`input_multiplayer_pass()`](Functions-(Players)?id=input_multiplayer_is_finished)
-- [`input_source_mode_set(state)`](Functions-(Sources)?id=input_source_mode_setmode)
-- [`input_source_mode_get()`](Functions-(Sources)?id=input_source_mode_get)
-
 &nbsp;
 
 ## Chords and Combos
