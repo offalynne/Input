@@ -1,14 +1,12 @@
 # Functions (Mouse)
 
----
+&nbsp;
 
 ?> These functions are provided for convenience if you want to implement your own features using Input's mouse implementation. In general, [Player functions](Functions-(Players)) are the intended way to use Input and are preferred.
 
 &nbsp;
 
-&nbsp;
-
-### `input_mouse_check(button)`
+## `input_mouse_check(button)`
 
 *Returns:* Boolean, if the button is currently activated
 
@@ -18,9 +16,7 @@
 
 &nbsp;
 
-&nbsp;
-
-### `input_mouse_check_pressed(button)`
+## `input_mouse_check_pressed(button)`
 
 *Returns:* Boolean, if the button is newly activated this frame
 
@@ -30,9 +26,7 @@
 
 &nbsp;
 
-&nbsp;
-
-### `input_mouse_check_released(button)`
+## `input_mouse_check_released(button)`
 
 *Returns:* Boolean, if the button/axis is newly deactivated this frame
 
@@ -42,9 +36,7 @@
 
 &nbsp;
 
-&nbsp;
-
-### `input_mouse_x()`
+## `input_mouse_x()`
 
 *Returns:* Integer, the x-coordinate of the active pointer device
 
@@ -54,9 +46,7 @@
 
 &nbsp;
 
-&nbsp;
-
-### `input_mouse_y()`
+## `input_mouse_y()`
 
 *Returns:* Integer, the y-coordinate of the active pointer device
 
