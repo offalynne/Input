@@ -16,7 +16,7 @@
 
 - [Configuration](Configuration)
 - [Library Constants](Library-Constants)
-- [Function Index](Function-Index)
+- [Full Function Index](Function-Index)
 
 ---
 
