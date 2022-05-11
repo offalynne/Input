@@ -1,5 +1,5 @@
 - [Home](README)
-- [Newbiw Guide](Newbiw-Guide)
+- [Newbie Guide](Newbiw-Guide)
 - [Changes from Input 4](Changes-from-Input-4)
 - [Quick Reference](Quick-Reference)
 
