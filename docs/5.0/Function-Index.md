@@ -4,7 +4,9 @@
 
 !> If you're using Input 5 on versions of GameMaker **before** 2022.5 (May 2022) then you'll need to call `input_tick()` in the Begin Step event of a persistent instance. This function handles all things Input behind the scenes, it is important to call `input_tick()` once (and only once) each step of your game. A good way to do this is by making `obj_input_manager` [persistent](https://manual.yoyogames.com/#t=The_Asset_Editors%2FObjects.htm), and placing one instance in your first room.
 
-### [Players](Functions-(Players))
+&nbsp;
+
+## [Players](Functions-(Players))
 
 - [`input_player_connected([playerIndex])`](Functions-(Players)?id=input_player_connectedplayerindex)
 - [`input_player_connected_count()`](Functions-(Players)?id=input_players_connected)
@@ -18,7 +20,9 @@
 - [`input_multiplayer_params_get()`](Functions-(Players)?id=input_multiplayer_params_get)
 - [`input_multiplayer_pass()`](Functions-(Players)?id=input_multiplayer_is_finished)
 
-### [Profiles](Functions-(Profiles))
+&nbsp;
+
+## [Profiles](Functions-(Profiles))
 
 - [`input_profile_reset_bindings(profileName, [playerIndex])`](Functions-(Profiles)?id=input_profile_reset_bindingsprofilename-playerindex)
 - [`input_profile_auto([playerIndex])`](Functions-(Profiles)?id=input_profile_autoplayerindex)
@@ -29,7 +33,9 @@
 - [`input_profile_exists(profileName, [playerIndex])`](Functions-(Profiles)?id=input_profile_existsprofilename-playerindex)
 - [`input_profile_get_array([playerIndex])`](Functions-(Profiles)?id=input_profile_get_arrayplayerindex)
 
-### [Checkers](Functions-(Checkers))
+&nbsp;
+
+## [Checkers](Functions-(Checkers))
 
 - [`input_check(verb, [playerIndex], [bufferDuration])`](Functions-(Checkers)#input_checkverb-playerindex-bufferduration)
 - [`input_check_pressed(verb, [playerIndex], [bufferDuration])`](Functions-(Checkers)#input_check_pressedverb-playerindex-bufferduration)
@@ -46,7 +52,9 @@
 - [`input_is_analogue(verb, [playerIndex])`](Functions-(Checkers)#input_is_analogueverb-playerindex)
 - [`input_check_press_most_recent([array], [playerIndex])`](Functions-(Checkers)#input_check_press_most_recentarray-playerindex)
 
-### [2D Checkers](Functions-(2D-Checkers))
+&nbsp;
+
+## [2D Checkers](Functions-(2D-Checkers))
 
 - [`input_x(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`](Functions-(2D-Checkers)#input_xverbleft-verbright-verbup-verbdown-playerindex)
 - [`input_y(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`](Functions-(2D-Checkers)#input_xverbleft-verbright-verbup-verbdown-playerindex)
@@ -54,14 +62,18 @@
 - [`input_direction(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`](Functions-(2D-Checkers)#input_directionverbleft-verbright-verbup-verbdown-playerindex)
 - [`input_distance(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`](Functions-(2D-Checkers)#input_distanceverbleft-verbright-verbup-verbdown-playerindex)
 
-### [Extended Verbs](Functions-(Extended-Verbs))
+&nbsp;
+
+## [Extended Verbs](Functions-(Extended-Verbs))
 
 - [`input_chord_create(name, maxTimeBetweenPresses, verb1, verb2, ...)`](Functions-(Extended-Verbs)?id=input_chord_createname-maxtimebetweenpresses-verb1-verb2-)
 - [`input_combo_create(name, [phaseTimeout])`](Functions-(Extended-Verbs)?id=input_combo_createname-phasetimeout)
 - [`input_combo_get_phase(name, [playerIndex])`](Functions-(Extended-Verbs)?id=input_combo_get_phaseverb-playerindex)
 - [`input_combo_get_phase_count(name)`](Functions-(Extended-Verbs)?id=input_combo_get_phase_countverb)
 
-### [Binding Creators](Functions-(Binding-Creators))
+&nbsp;
+
+## [Binding Creators](Functions-(Binding-Creators))
 
 - [`input_value_is_binding(value)`](Functions-(Binding-Creators)#input_value_is_bindingvalue)
 - [`input_binding_empty()`](Functions-(Binding-Creators)?id=input_binding_empty)
@@ -73,7 +85,9 @@
 - [`input_binding_gamepad_axis(axis, negative)`](Functions-(Binding-Creators)?id=input_binding_gamepad_axisaxis-negative)
 - [`input_binding_scan_tick([sourceFilter], [playerIndex])`](Functions-(Binding-Creators)?id=input_binding_scan_ticksource-playerindex)
 
-### [Binding Access](Functions-(Binding-Access))
+&nbsp;
+
+## [Binding Access](Functions-(Binding-Access))
 
 - [`input_binding_is_valid(binding, [playerIndex])`](Functions-(Binding-Access)?id=input_binding_is_validbinding-playerindex)
 - [`input_binding_set(verb, binding, [playerIndex], [alternate], [profileName])`](Functions-(Binding-Access)?id=input_binding_setverb-binding-playerindex-alternate-profilename)
@@ -84,7 +98,9 @@
 - [`input_binding_swap(verbA, alternateA, verbB, alternateB, [playerIndex], [profileName])`](Functions-(Binding-Access)?id=input_binding_swapverba-alternatea-verbb-alternateb-source-playerindex-profilename)
 - [`input_binding_get_name(binding)`](Functions-(Binding-Access)?id=input_binding_get_namebinding)
 
-### [Binding System](Functions-(Binding-System))
+&nbsp;
+
+## [Binding System](Functions-(Binding-System))
 
 - [`input_bindings_reset([source], [playerIndex], [resetThresholds])`](Functions-(Binding-System)#input_bindings_resetsource-playerindex-resetthresholds)
 - [`input_bindings_write([playerIndex])`](Functions-(Binding-System)#input_bindings_writeplayerindex)
@@ -92,7 +108,9 @@
 - [`input_bindings_copy(source, destination)`](Functions-(Binding-System)#input_bindings_copysource-destination)
 - [`input_binding_system_swap_gamepad_ab(state)`](Functions-(Binding-System)#input_binding_system_swap_gamepad_abstate)
 
-### [Verbs](Functions-(Verbs))
+&nbsp;
+
+## [Verbs](Functions-(Verbs))
 
 - [`input_consume(verb, [playerIndex])`](Functions-(Other)#input_consumeverb-playerindex)
 - [`input_verb_set(verb, value, [playerIndex])`](Functions-(Other)#input_verb_setverb-value-playerindex)
@@ -100,7 +118,9 @@
 - [`input_verb_group_active(verbGroup, state, [playerIndex])`](Functions-(Verbs)?id=input_verb_group_activeverbgroup-state-playerindex)
 - [`input_verb_group_is_active(verbGroup, [playerIndex])`](Functions-(Verbs)?id=input_verb_group_is_activeverbgroup-playerindex)
 
-### [Sources](Functions-(Sources))
+&nbsp;
+
+## [Sources](Functions-(Sources))
 
 - [`input_source_mode_set(state)`](Functions-(Sources)?id=input_source_mode_setmode)
 - [`input_source_mode_get()`](Functions-(Sources)?id=input_source_mode_get)
@@ -114,7 +134,9 @@
 - [`input_source_get_array([playerIndex])`](Functions-(Sources)?id=input_source_get_arrayplayerindex)
 - [`input_source_is_available(source, [gamepad])`](Functions-(Sources)#input_source_is_availablesource-gamepad)
 
-### [Other](Functions-(Other))
+&nbsp;
+
+## [Other](Functions-(Other))
 
 - [`input_tick()`](Functions-(Other)?id=input_tick)
 - [`input_axis_threshold_set(axis, min, max, [playerIndex])`](Functions-(Other)#input_axis_threshold_setaxis-min-max-playerindex)
@@ -123,7 +145,9 @@
 - [`input_ignore_key_remove(key)`](Functions-(Other)#input_ignore_key_removekey)
 - [`input_clear_momentary(state)`](Functions-(Other)#input_clear_momentarystate)
 
-### [Gamepad (Direct)](Functions-(Gamepad))
+&nbsp;
+
+## [Gamepad (Direct)](Functions-(Gamepad))
 
 ?> Gamepad functions are provided for convenience if you want to implement your own features using Input's SDL implementation. In general, [Player functions](Function-Index#players) are the intended way to use Input and are preferred.
 
@@ -143,7 +167,9 @@
 - [`input_gamepad_constant_get_name(constant)`](Functions-(Gamepad)#input_gamepad_constant_get_nameconstant)
 - [`input_gamepads_get_status()`](Functions-(Gamepad)#input_gamepads_get_status)
 
-### [Keyboard (Direct)](Functions-(Keyboard))
+&nbsp;
+
+## [Keyboard (Direct)](Functions-(Keyboard))
 
 ?> Keyboard functions are provided for convenience if you want to implement your own features using Input's keyboard implementation. In general, [Player functions](Function-Index#players) are the intended way to use Input and are preferred.
 
@@ -151,7 +177,9 @@
 - [`input_keyboard_check_pressed(button)`](Functions-(Keyboard)#input_keyboard_check_pressedkey)
 - [`input_keyboard_check_released(button)`](Functions-(Keyboard)#input_keyboard_check_releasedkey)
 
-### [Mouse (Direct)](Functions-(Mouse))
+&nbsp;
+
+## [Mouse (Direct)](Functions-(Mouse))
 
 ?> Mouse functions are provided for convenience if you want to implement your own features using Input's mouse implementation. In general, [Player functions](Function-Index#players) are the intended way to use Input and are preferred.
 
