@@ -102,10 +102,10 @@
 
 ## [Binding System](Functions-(Binding-System))
 
-- [`input_bindings_system_reset([source], [playerIndex], [resetThresholds])`](Functions-(Binding-System)#input_binding_system_resetsource-playerindex-resetthresholds)
+- [`input_binding_system_reset([source], [playerIndex], [resetThresholds])`](Functions-(Binding-System)#input_binding_system_resetsource-playerindex-resetthresholds)
 - [`input_binding_system_write([playerIndex])`](Functions-(Binding-System)#input_binding_system_writeplayerindex)
 - [`input_binding_system_read(string, [playerIndex])`](Functions-(Binding-System)#input_binding_system_readstring-playerindex)
-- [`input_bindings_system_copy(source, destination)`](Functions-(Binding-System)#input_binding_system_copysource-destination)
+- [`input_binding_system_copy(source, destination)`](Functions-(Binding-System)#input_binding_system_copysource-destination)
 - [`input_binding_system_swap_gamepad_ab(state)`](Functions-(Binding-System)#input_binding_system_swap_gamepad_abstate)
 
 &nbsp;
