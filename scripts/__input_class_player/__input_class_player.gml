@@ -523,41 +523,41 @@ function __input_class_player() constructor
     
     
     
-    /// @param axis
+    /// @param axisName
     /// @param min
     /// @param max
-    static axis_threshold_set = function(_axis, _min, _max)
+    static __axis_threshold_set = function(_axis_name, _min, _max)
     {
-        var _axis_struct = __profiles_dict.axis_thresholds[$ _axis];
+        var _axis_struct = __profiles_dict.axis_thresholds[$ _axis_name];
         if (!is_struct(_axis_struct))
         {
             _axis_struct = {};
-            __profiles_dict.axis_thresholds[$ _axis] = _axis_struct;
+            __profiles_dict.axis_thresholds[$ _axis_name] = _axis_struct;
         }
         
         _axis_struct.mini = _min
         _axis_struct.maxi = _max;
         
-        if (INPUT_DEBUG_BINDING) __input_trace("Axis threshold for axis \"", _axis, "\" set to ", _min, " -> ", _max);
+        if (INPUT_DEBUG_BINDING) __input_trace("Axis threshold for axis \"", _axis_name, "\" set to ", _min, " -> ", _max);
         
         return _axis_struct;
     }
     
-    /// @param axis
-    static axis_threshold_get = function(_axis)
+    /// @param axisName
+    static __axis_threshold_get = function(_axis_name)
     {
-        var _struct = __profiles_dict.axis_thresholds[$ _axis];
+        var _struct = __profiles_dict.axis_thresholds[$ _axis_name];
         if (is_struct(_struct)) return _struct;
         
-        if (INPUT_DEBUG_BINDING) __input_trace("No axis threshold found for axis ", _axis);
+        if (INPUT_DEBUG_BINDING) __input_trace("Warning! No axis threshold found for axis ", _axis_name);
         
-        if (__input_axis_is_directional(_axis))
+        if (__input_axis_is_directional(_axis_name))
         {
-            return axis_threshold_set(_axis, INPUT_DEFAULT_AXIS_MIN_THRESHOLD, INPUT_DEFAULT_AXIS_MAX_THRESHOLD);
+            return __axis_threshold_set(_axis_name, INPUT_DEFAULT_AXIS_MIN_THRESHOLD, INPUT_DEFAULT_AXIS_MAX_THRESHOLD);
         }
         else
         {
-            return axis_threshold_set(_axis, INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD, INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD);
+            return __axis_threshold_set(_axis_name, INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD, INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD);
         }
     }
     

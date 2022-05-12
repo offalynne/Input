@@ -217,7 +217,7 @@ function __input_player_tick_sources()
                                 //We keep a hold of this value for use in 2D checkers
                                 var _found_raw = input_gamepad_value(_source_gamepad, _binding.value);
                                 
-                                var _axis_threshold = axis_threshold_get(_binding.value);
+                                var _axis_threshold = __axis_threshold_get(_binding.value);
                                 
                                 //Correct the raw value's sign if needed
                                 if (_binding.axis_negative) _found_raw = -_found_raw;

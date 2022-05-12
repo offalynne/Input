@@ -17,8 +17,5 @@ function input_axis_threshold_set(_axis, _min, _max, _player_index = 0)
         return undefined;
     }
     
-    with(global.__input_players[_player_index])
-    {
-        return axis_threshold_set(_axis, _min, _max);
-    }
+    return global.__input_players[_player_index].__axis_threshold_set(_axis, _min, _max);
 }

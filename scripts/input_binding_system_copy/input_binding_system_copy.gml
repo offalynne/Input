@@ -1,84 +1,89 @@
-/// @param source
-/// @param destination
+/// @param sourcePlayerIndex
+/// @param destinationPlayerIndex
 
-function input_binding_system_copy(_player_index_s, _player_index_d)
+function input_binding_system_copy(_src_player_index, _dst_player_index)
 {
-    if (is_struct(_player_index_s))
+    //Verify source player
+    var _src_player = global.__input_players[_src_player_index];
+    
+    if (_src_player_index < 0)
     {
-        var _player_s = _player_index_s;
-    }
-    else
-    {
-        var _player_s = global.__input_players[_player_index_s];
-        
-        if (_player_index_s < 0)
-        {
-            __input_error("Invalid source player index provided (", _player_index_s, ")");
-            return undefined;
-        }
-        
-        if (_player_index_s >= INPUT_MAX_PLAYERS)
-        {
-            __input_error("Source player index too large (", _player_index_s, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
-            return undefined;
-        }
+        __input_error("Invalid source player index provided (", _src_player_index, ")");
+        return undefined;
     }
     
-    if (is_struct(_player_index_d))
+    if (_src_player_index >= INPUT_MAX_PLAYERS)
     {
-        var _player_d = _player_index_d;
-    }
-    else
-    {
-        var _player_d = global.__input_players[_player_index_d];
-        
-        if (_player_index_d < 0)
-        {
-            __input_error("Invalid destination player index provided (", _player_index_d, ")");
-            return undefined;
-        }
-        
-        if (_player_index_d >= INPUT_MAX_PLAYERS)
-        {
-            __input_error("Destination player index too large (", _player_index_d, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
-            return undefined;
-        }
+        __input_error("Source player index too large (", _src_player_index, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
+        return undefined;
     }
     
-    with(_player_d)
+    //Verify destination player
+    var _dst_player = global.__input_players[_dst_player_index];
+    
+    if (_dst_player_index < 0)
     {
-        sources = array_create(array_length(global.__input_profile_array), undefined);
+        __input_error("Invalid destination player index provided (", _dst_player_index, ")");
+        return undefined;
+    }
+    
+    if (_dst_player_index >= INPUT_MAX_PLAYERS)
+    {
+        __input_error("Destination player index too large (", _dst_player_index, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
+        return undefined;
+    }
+    
+    //Clear out destination player
+    input_binding_system_reset(_dst_player_index);
+    
+    with(_dst_player)
+    {
+        var _src_profiles_dict = _src_player.__profiles_dict;
         
-        var _source = 0;
-        repeat(array_length(global.__input_profile_array))
+        //Iterate over every profile in the source
+        var _profile_name_array = variable_struct_get_names(_src_profiles_dict);
+        var _f = 0;
+        repeat(array_length(_profile_name_array))
         {
-            var _profile_name = global.__input_profile_array[_source];
+            var _profile_name = _profile_name_array[_f];
             
-            var _source_verb_struct = _player_s.__profiles_dict[$ _profile_name];
-            if (is_struct(_source_verb_struct))
+            if (_profile_name == "axis_threshold")
             {
-                var _verb_names = variable_struct_get_names(_source_verb_struct);
-                var _v = 0;
-                repeat(array_length(_verb_names))
+                //Copy axis threshold data
+                var _threshold_struct = _src_profiles_dict.axis_threshold;
+                var _axis_array = variable_struct_get_names(_threshold_struct);
+                var _i = 0;
+                repeat(array_length(_axis_array))
                 {
-                    var _verb = _verb_names[_v];
-                    var _alternate_array = _source_verb_struct[$ _verb];
-                    if (is_array(_alternate_array))
-                    {
-                        var _alternate = 0;
-                        repeat(array_length(_alternate_array))
-                        {
-                            var _binding = _alternate_array[_alternate];
-                            if (is_struct(_binding)) __binding_set(_verb, _alternate, _binding.__duplicate());
-                            ++_alternate;
-                        }
-                    }
-                    
-                    ++_v;
+                    var _axis_name = _axis_array[_i];
+                    var _axis_data = __axis_threshold_get(_axis_name);
+                    __axis_threshold_set(_axis_name, _axis_data.mini, _axis_data.maxi);
+                    ++_i;
                 }
+                
+                ++_f;
+                continue;
             }
             
-            ++_source;
+            //Iterate over every verb
+            var _v = 0;
+            repeat(global.__input_basic_verb_array[_v])
+            {
+                var _verb_name = global.__input_basic_verb_array[_v];
+                
+                //aaand every alternate
+                var _alternate = 0;
+                repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+                {
+                    var _binding = _src_player.__binding_get(_profile_name, _verb_name, _alternate);
+                    __binding_set(_profile_name, _verb_name, _alternate, _binding.__duplicate());
+                    ++_alternate;
+                }
+                
+                ++_v;
+            }
+            
+            ++_f;
         }
     }
 }
