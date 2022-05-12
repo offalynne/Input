@@ -386,3 +386,4 @@ dead,beef,CommunityPSX // Hidromancer
 2dc8,3105,CommunityUnknown // 8BitDo Adapter 2
 0925,1700,CommunityUnknown // WiseGroup USB Joy Box
 10c4,82c0,CommunityUnknown // KADE Adapter
+0c12,0c31,CommunityUnknown // Brook Super Converter
