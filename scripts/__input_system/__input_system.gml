@@ -15,6 +15,9 @@
 #macro INPUT_MAX_GAMEPADS  12
 #macro __INPUT_GAMEPAD_COUNT  min(gamepad_get_device_count(), INPUT_MAX_GAMEPADS)
 
+#macro INPUT_KEYBOARD_LOCALE  global.__input_keyboard_locale
+#macro INPUT_KEYBOARD_TYPE    global.__input_keyboard_type
+
 #macro __INPUT_ON_PS       ((os_type == os_ps4)     || (os_type == os_ps5))
 #macro __INPUT_ON_XDK      ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
 #macro __INPUT_ON_CONSOLE  (__INPUT_ON_XDK || __INPUT_ON_PS || (os_type == os_switch))

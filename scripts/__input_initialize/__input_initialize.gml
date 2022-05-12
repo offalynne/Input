@@ -543,6 +543,78 @@ function __input_initialize()
 
     #endregion
     
+    #region Keyboard locale
+    
+    var _locale = os_get_language() + "-" + os_get_region();
+    switch(_locale)
+    {
+        case "en-US": case "en-":
+        case "en-GB": case "-":
+            INPUT_KEYBOARD_LOCALE = "QWERTY";
+        break;
+
+        case "ar-DZ": case "ar-MA": case "ar-TN":
+        case "fr-BE": case "fr-FR": case "fr-MC":
+        case "co-FR": case "oc-FR": case "ff-SN": 
+        case "wo-SN": case "gsw-FR": 
+        case "nl-BE": case "tzm-DZ":
+            INPUT_KEYBOARD_LOCALE = "AZERTY";
+        break;  
+
+        case "cs-CZ": case "de-AT": case "de-CH": 
+        case "de-DE": case "de-LI": case "de-LU": 
+        case "fr-CH": case "fr-LU": case "sq-AL":
+        case "hr-BA": case "hr-HR": case "hu-HU":
+        case "lb-LU": case "rm-CH": case "sk-SK": 
+        case "sl-SI": case "dsb-DE":
+        case "sr-BA": case "hsb-DE":
+            INPUT_KEYBOARD_LOCALE = "QWERTZ";
+        break;
+
+        default:
+            INPUT_KEYBOARD_LOCALE = "QWERTY";
+        break;
+    }
+    
+    #endregion 
+    
+    #region Keyboard type
+    
+    function input_platform_text_source()
+    {
+        if (__INPUT_ON_CONSOLE || (__INPUT_ON_WEB && !__INPUT_ON_DESKTOP))
+        {
+            INPUT_KEYBOARD_TYPE = "async";
+        }
+        else if (__INPUT_ON_MOBILE)
+        {
+            var _ret = "virtual";
+            if (os_type == os_android)
+            {
+                var _map = os_get_info();
+                if (ds_exists(_map, ds_type_map))
+                {
+                    if (_map[? "PHYSICAL_KEYBOARD"])
+                    {
+                        _ret = "keyboard";
+                    }
+                
+                    ds_map_destroy(_map);
+                }
+            }
+
+            INPUT_KEYBOARD_TYPE = _ret;
+        }
+        else
+        {
+            INPUT_KEYBOARD_TYPE = "keyboard";
+        }
+    
+        __input_error("Failed to identify keyboard type");
+    }
+    
+    #endregion
+    
     //By default GameMaker registers double click (or tap) as right mouse button
     //We want to be able to identify the actual mouse buttons correctly, and have our own double-input handling
     device_mouse_dbclick_enable(false);
