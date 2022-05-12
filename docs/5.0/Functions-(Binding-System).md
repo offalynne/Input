@@ -2,17 +2,16 @@
 
 &nbsp;
 
-## `input_binding_system_reset([source], [playerIndex], [resetThresholds])`
+## `input_binding_system_reset([playerIndex], [resetThresholds])`
 
 *Returns:* N/A (`undefined`)
 
-|Name               |Datatype       |Purpose                                                                                                                                                      |
-|-------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`[source]`         |[`INPUT_SOURCE`](Input-Sources)|[Input source](Input-Sources) to target. If not specified, binding for all sources are reset                                                 |
-|`[playerIndex]`    |integer        |Player to target. If not specified, bindings for all players are reset                                                                                       |
-|`[resetThresholds]`|boolean        |Whether to reset axis thresholds as well. Defaults to `true`, resetting [axis thresholds](Functions-(Other)#input_axis_threshold_setaxis-min-max-playerindex)|
+|Name               |Datatype|Purpose                                                                                                                                                      |
+|-------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`[playerIndex]`    |integer |Player to target. If not specified, bindings for all players are reset                                                                                       |
+|`[resetThresholds]`|boolean |Whether to reset axis thresholds as well. Defaults to `true`, resetting [axis thresholds](Functions-(Other)#input_axis_threshold_setaxis-min-max-playerindex)|
 
-Clears the currently bindings for the given player, resetting them to the [defaults](Functions-(Default-Bindings)).
+Clears the currently profiles and bindings for the given player, resetting them to the defaults set up in [`INPUT_DEFAULT_PROFILES`](Configuration?id=profiles-and-bindings). This function will remove all non-default profiles from the player.
 
 &nbsp;
 
@@ -53,14 +52,14 @@ While useful for retaining player preferences across sessions, [default bindings
 
 &nbsp;
 
-## `input_binding_system_copy(source, destination)`
+## `input_binding_system_copy(sourcePlayerIndex, destinationPlayerIndex)`
 
 *Returns:* N/A (`undefined`)
 
-|Name         |Datatype|Purpose                     |
-|-------------|--------|----------------------------|
-|`source`     |integer |Player to copy bindings from|
-|`destination`|integer |Player to copy bindings to  |
+|Name                    |Datatype|Purpose                     |
+|------------------------|--------|----------------------------|
+|`sourcePlayerIndex`     |integer |Player to copy bindings from|
+|`destinationPlayerIndex`|integer |Player to copy bindings to  |
 
 Duplicates one player's bindings and copies them over to another player (including [axis thresholds](Functions-(Other)#input_axis_threshold_setaxis-min-max-playerindex)).
 
