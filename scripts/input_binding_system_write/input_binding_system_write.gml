@@ -18,59 +18,51 @@ function input_binding_system_write(_player_index = all, _return_string = true)
         
         return _return_string? json_stringify(_root_json) : _root_json;
     }
-    else
+    
+    __INPUT_VERIFY_PLAYER_INDEX
+    
+    var _new_profiles_dict = {};
+    var _new_axis_thresholds_dict = {};
+    
+    var _root_json = {
+        profiles:        _new_profiles_dict,
+        axis_thresholds: _new_axis_thresholds_dict,
+    };
+    
+    with(global.__input_players[_player_index])
     {
-        __INPUT_VERIFY_PLAYER_INDEX
-        
-        var _new_profiles_dict = {};
-        var _new_axis_thresholds_dict = {};
-        
-        var _root_json = {
-            profiles:        _new_profiles_dict,
-            axis_thresholds: _new_axis_thresholds_dict,
-        };
-        
-        with(global.__input_players[_player_index])
+        var _profile_name_array = variable_struct_get_names(__profiles_dict);
+        var _f = 0;
+        repeat(array_length(_profile_name_array))
         {
-            var _profile_name_array = variable_struct_get_names(__profiles_dict);
-            var _f = 0;
-            repeat(array_length(_profile_name_array))
+            var _profile_name = _profile_name_array[_f];
+            
+            var _new_verb_dict = {};
+            _new_profiles_dict[$ _profile_name] = _new_verb_dict;
+            
+            var _profile_struct = __profiles_dict[$ _profile_name];
+            var _v = 0;
+            repeat(array_length(global.__input_basic_verb_array))
             {
-                var _profile_name = _profile_name_array[_f];
+                var _verb_name = global.__input_basic_verb_array[_v];
                 
-                if (_profile_name == "axis_thresholds")
+                var _new_alternate_array = [];
+                _new_verb_dict[$ _verb_name] = _new_alternate_array;
+                
+                var _alternate_array = _profile_struct[$ _verb_name];
+                var _a = 0;
+                repeat(INPUT_MAX_ALTERNATE_BINDINGS)
                 {
-                    ++_f;
-                    continue;
+                    array_push(_new_alternate_array, _alternate_array[_a].__export());
+                    ++_a;
                 }
                 
-                var _new_verb_dict = {};
-                _new_profiles_dict[$ _profile_name] = _new_verb_dict;
-                
-                var _profile_struct = __profiles_dict[$ _profile_name];
-                var _v = 0;
-                repeat(array_length(global.__input_basic_verb_array))
-                {
-                    var _verb_name = global.__input_basic_verb_array[_v];
-                    
-                    var _new_alternate_array = [];
-                    _new_verb_dict[$ _verb_name] = _new_alternate_array;
-                    
-                    var _alternate_array = _profile_struct[$ _verb_name];
-                    var _a = 0;
-                    repeat(INPUT_MAX_ALTERNATE_BINDINGS)
-                    {
-                        array_push(_new_alternate_array, _alternate_array[_a].__export());
-                        ++_a;
-                    }
-                    
-                    ++_v;
-                }
-                
-                ++_f;
+                ++_v;
             }
+            
+            ++_f;
         }
-        
-        return _return_string? json_stringify(_root_json) : _root_json;
     }
+    
+    return _return_string? json_stringify(_root_json) : _root_json;
 }

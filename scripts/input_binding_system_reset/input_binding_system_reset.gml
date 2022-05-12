@@ -25,11 +25,7 @@ function input_binding_system_reset(_player_index = all, _reset_thresholds = tru
         {
             var _profile_name = _profile_name_array[_i];
             
-            if (_profile_name == "axis_thresholds")
-            {
-                //Do nothing!
-            }
-            else if (!variable_struct_exists(global.__input_default_profile_dict, _profile_name))
+            if (!variable_struct_exists(global.__input_default_profile_dict, _profile_name))
             {
                 //If this profile isn't a default, remove it
                 input_profile_destroy(_profile_name, _player_index);
@@ -45,7 +41,7 @@ function input_binding_system_reset(_player_index = all, _reset_thresholds = tru
         
         if (_reset_thresholds)
         {
-            __profiles_dict.axis_thresholds = {};
+            __axis_thresholds_dict = {};
         }
     }
 }

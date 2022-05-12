@@ -14,8 +14,9 @@ function __input_class_player() constructor
     __rebind_start_time = current_time;
     __rebind_this_frame = false;
     
-    //This struct is the one that gets serialized/deserialized
-    __profiles_dict = { axis_thresholds : {} };
+    __axis_thresholds_dict = {};
+    
+    __profiles_dict = {};
     __profile_name = undefined;
     
     __ghost = false;
@@ -139,6 +140,15 @@ function __input_class_player() constructor
         {
             _profile_struct = {};
             __profiles_dict[$ _profile_name] = _profile_struct;
+            
+            //Also create bindings for every basic verb for this profile
+            var _v = 0;
+            repeat(array_length(global.__input_basic_verb_array))
+            {
+                var _verb_name = global.__input_basic_verb_array[_v];
+                __verb_ensure(_profile_name, _verb_name);
+                ++_v;
+            }
         }
     }
     
@@ -554,11 +564,11 @@ function __input_class_player() constructor
     /// @param max
     static __axis_threshold_set = function(_axis_name, _min, _max)
     {
-        var _axis_struct = __profiles_dict.axis_thresholds[$ _axis_name];
+        var _axis_struct = __axis_thresholds_dict[$ _axis_name];
         if (!is_struct(_axis_struct))
         {
             _axis_struct = {};
-            __profiles_dict.axis_thresholds[$ _axis_name] = _axis_struct;
+            __axis_thresholds_dict[$ _axis_name] = _axis_struct;
         }
         
         _axis_struct.mini = _min
@@ -572,7 +582,7 @@ function __input_class_player() constructor
     /// @param axisName
     static __axis_threshold_get = function(_axis_name)
     {
-        var _struct = __profiles_dict.axis_thresholds[$ _axis_name];
+        var _struct = __axis_thresholds_dict[$ _axis_name];
         if (is_struct(_struct)) return _struct;
         
         if (INPUT_DEBUG_BINDING) __input_trace("Warning! No axis threshold found for axis ", _axis_name);

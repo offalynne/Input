@@ -1,13 +1,3 @@
-function __input_binding_export(_binding)
-{
-    return _binding.__export();
-}
-
-function __input_binding_import(_binding_shell)
-{
-    return (new __input_class_binding()).__import(_binding_shell);
-}
-
 function __input_class_binding() constructor
 {
     type          = undefined;
@@ -26,24 +16,30 @@ function __input_class_binding() constructor
     {
         var _binding_shell = {};
         
-        if (type                  != undefined) _binding_shell.type                  = type;
-        if (value                 != undefined) _binding_shell.value                 = value;
-        if (axis_negative         != undefined) _binding_shell.axis_negative         = axis_negative;
-        if (__gamepad_index       != undefined) _binding_shell.__gamepad_index       = __gamepad_index;
-        if (__gamepad_description != undefined) _binding_shell.__gamepad_description = __gamepad_description;
-        if (android_lowercase     != undefined) _binding_shell.android_lowercase     = android_lowercase;
+        if (type                  != undefined) _binding_shell.type                = type;
+        if (value                 != undefined) _binding_shell.value               = value;
+        if (axis_negative         != undefined) _binding_shell.axis_negative       = axis_negative;
+        if (__gamepad_index       != undefined) _binding_shell.gamepad_index       = __gamepad_index;
+        if (__gamepad_description != undefined) _binding_shell.gamepad_description = __gamepad_description;
+        if (android_lowercase     != undefined) _binding_shell.android_lowercase   = android_lowercase;
         
         return _binding_shell;
     }
     
     static __import = function(_binding_shell)
     {
-        if (_binding_shell.type                  != undefined) type                  = _binding_shell.type;
-        if (_binding_shell.value                 != undefined) value                 = _binding_shell.value;
-        if (_binding_shell.axis_negative         != undefined) axis_negative         = _binding_shell.axis_negative;
-        if (_binding_shell.__gamepad_index       != undefined) __gamepad_index       = _binding_shell.__gamepad_index;
-        if (_binding_shell.__gamepad_description != undefined) __gamepad_description = _binding_shell.__gamepad_description;
-        if (_binding_shell.android_lowercase     != undefined) android_lowercase     = _binding_shell.android_lowercase;
+        if (!is_struct(_binding_shell))
+        {
+            __input_trace("Warning! Could not import binding, clearing this binding (typeof=", typeof(_binding_shell), ")");
+            _binding_shell = {};
+        }
+        
+        if (_binding_shell[$ "type"                 ] != undefined) type                  = _binding_shell.type;
+        if (_binding_shell[$ "value"                ] != undefined) value                 = _binding_shell.value;
+        if (_binding_shell[$ "axis_negative"        ] != undefined) axis_negative         = _binding_shell.axis_negative;
+        if (_binding_shell[$ "__gamepad_index"      ] != undefined) __gamepad_index       = _binding_shell.gamepad_index;
+        if (_binding_shell[$ "__gamepad_description"] != undefined) __gamepad_description = _binding_shell.gamepad_description;
+        if (_binding_shell[$ "android_lowercase"    ] != undefined) android_lowercase     = _binding_shell.android_lowercase;
         
         __set_label();
     }
