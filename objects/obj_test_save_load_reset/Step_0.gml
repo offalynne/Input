@@ -1,12 +1,16 @@
-if (input_keyboard_check_pressed(vk_enter) || input_gamepad_check_pressed(input_player_get_gamepad(), gp_start)) rebinding = true;
+if (input_keyboard_check_pressed(vk_enter)
+||  input_gamepad_check_pressed(input_player_get_gamepad(), gp_start))
+{
+    rebinding = true;
+}
 
 if (input_keyboard_check_pressed(ord("S")))
 {
     rebinding = false;
     
     var _string = input_binding_system_write();
-    var _buffer = buffer_create(string_byte_length(_string)+1, buffer_grow, 1);
-    buffer_write(_buffer, buffer_string, _string);
+    var _buffer = buffer_create(string_byte_length(_string), buffer_grow, 1);
+    buffer_write(_buffer, buffer_text, _string);
     buffer_save(_buffer, "test_saveload.json");
     buffer_delete(_buffer);
     
@@ -18,7 +22,7 @@ if (input_keyboard_check_pressed(ord("L")))
     rebinding = false;
     
     var _buffer = buffer_load("test_saveload.json");
-    var _string = buffer_read(_buffer, buffer_string);
+    var _string = buffer_read(_buffer, buffer_text);
     buffer_delete(_buffer);
     input_binding_system_read(_string);
     

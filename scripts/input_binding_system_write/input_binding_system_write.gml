@@ -1,37 +1,76 @@
-/// @param [playerIndex]
+/// @param [playerIndex=all]
+/// @param [returnString=true]
 
-function input_binding_system_write(_player_index = all)
+function input_binding_system_write(_player_index = all, _return_string = true)
 {
-    if ((_player_index < 0) && (_player_index != all))
-    {
-        __input_error("Invalid player index provided (", _player_index, ")");
-        return undefined;
-    }
-    
-    if (_player_index >= INPUT_MAX_PLAYERS)
-    {
-        __input_error("Player index too large (", _player_index, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
-        return undefined;
-    }
-    
     if (__INPUT_ON_WEB) __input_error("Due to up-stream bug in GameMaker's JavaScript runtime, input_binding_system_read() and input_binding_system_write() are unsupported in HTML5");
-    
-    var _profile_from_json = undefined;
     
     if (_player_index == all)
     {
-        var _profile_from_json = array_create(INPUT_MAX_PLAYERS, undefined);
-        var _i = 0;
+        var _root_json = array_create(INPUT_MAX_PLAYERS, undefined);
+        
+        var _p = 0;
         repeat(INPUT_MAX_PLAYERS)
         {
-            _profile_from_json[@ _i] = global.__input_players[_i].__profiles_dict;
-            ++_i;
+            _root_json[@ _p] = input_binding_system_write(_p, false);
+            ++_p;
         }
+        
+        return _return_string? json_stringify(_root_json) : _root_json;
     }
     else
     {
-        _profile_from_json = global.__input_players[_player_index].__profiles_dict;
+        __INPUT_VERIFY_PLAYER_INDEX
+        
+        var _new_profiles_dict = {};
+        var _new_axis_thresholds_dict = {};
+        
+        var _root_json = {
+            profiles:        _new_profiles_dict,
+            axis_thresholds: _new_axis_thresholds_dict,
+        };
+        
+        with(global.__input_players[_player_index])
+        {
+            var _profile_name_array = variable_struct_get_names(__profiles_dict);
+            var _f = 0;
+            repeat(array_length(_profile_name_array))
+            {
+                var _profile_name = _profile_name_array[_f];
+                
+                if (_profile_name == "axis_thresholds")
+                {
+                    ++_f;
+                    continue;
+                }
+                
+                var _new_verb_dict = {};
+                _new_profiles_dict[$ _profile_name] = _new_verb_dict;
+                
+                var _profile_struct = __profiles_dict[$ _profile_name];
+                var _v = 0;
+                repeat(array_length(global.__input_basic_verb_array))
+                {
+                    var _verb_name = global.__input_basic_verb_array[_v];
+                    
+                    var _new_alternate_array = [];
+                    _new_verb_dict[$ _verb_name] = _new_alternate_array;
+                    
+                    var _alternate_array = _profile_struct[$ _verb_name];
+                    var _a = 0;
+                    repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+                    {
+                        array_push(_new_alternate_array, _alternate_array[_a].__export());
+                        ++_a;
+                    }
+                    
+                    ++_v;
+                }
+                
+                ++_f;
+            }
+        }
+        
+        return _return_string? json_stringify(_root_json) : _root_json;
     }
-    
-    return json_stringify(_profile_from_json);
 }

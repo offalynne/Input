@@ -1,4 +1,12 @@
-#macro __INPUT_BINDING_NULL  (new __input_class_binding())
+function __input_binding_export(_binding)
+{
+    return _binding.__export();
+}
+
+function __input_binding_import(_binding_shell)
+{
+    return (new __input_class_binding()).__import(_binding_shell);
+}
 
 function __input_class_binding() constructor
 {
@@ -14,16 +22,45 @@ function __input_class_binding() constructor
     //This is used to check for uppercase *and* lowercase letters as Android checks for both individually
     android_lowercase = undefined;
     
+    static __export = function()
+    {
+        var _binding_shell = {};
+        
+        if (type                  != undefined) _binding_shell.type                  = type;
+        if (value                 != undefined) _binding_shell.value                 = value;
+        if (axis_negative         != undefined) _binding_shell.axis_negative         = axis_negative;
+        if (__gamepad_index       != undefined) _binding_shell.__gamepad_index       = __gamepad_index;
+        if (__gamepad_description != undefined) _binding_shell.__gamepad_description = __gamepad_description;
+        if (android_lowercase     != undefined) _binding_shell.android_lowercase     = android_lowercase;
+        
+        return _binding_shell;
+    }
+    
+    static __import = function(_binding_shell)
+    {
+        if (_binding_shell.type                  != undefined) type                  = _binding_shell.type;
+        if (_binding_shell.value                 != undefined) value                 = _binding_shell.value;
+        if (_binding_shell.axis_negative         != undefined) axis_negative         = _binding_shell.axis_negative;
+        if (_binding_shell.__gamepad_index       != undefined) __gamepad_index       = _binding_shell.__gamepad_index;
+        if (_binding_shell.__gamepad_description != undefined) __gamepad_description = _binding_shell.__gamepad_description;
+        if (_binding_shell.android_lowercase     != undefined) android_lowercase     = _binding_shell.android_lowercase;
+        
+        __set_label();
+    }
+    
     static __duplicate = function()
     {
-        var _new = new __input_class_binding();
-        _new.type              = type;
-        _new.value             = value;
-        _new.axis_negative     = axis_negative;
-        _new.label             = label;
-        _new.android_lowercase = android_lowercase;
-        
-        return _new;
+        with(new __input_class_binding())
+        {
+            type                  = other.type;
+            value                 = other.value;
+            axis_negative         = other.axis_negative;
+            label                 = other.label;
+            __gamepad_index       = other.__gamepad_index;
+            __gamepad_description = other.__gamepad_description;
+            android_lowercase     = other.android_lowercase;
+            return self;
+        }
     }
     
     static __set_key = function(_key, _player_set)
