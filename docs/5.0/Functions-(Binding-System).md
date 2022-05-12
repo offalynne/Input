@@ -2,7 +2,7 @@
 
 &nbsp;
 
-## `input_bindings_reset([source], [playerIndex], [resetThresholds])`
+## `input_binding_system_reset([source], [playerIndex], [resetThresholds])`
 
 *Returns:* N/A (`undefined`)
 
@@ -16,7 +16,7 @@ Clears the currently bindings for the given player, resetting them to the [defau
 
 &nbsp;
 
-## `input_bindings_write([playerIndex])`
+## `input_binding_system_write([playerIndex])`
 
 *Returns:* JSON encoded as a string
 
@@ -34,7 +34,7 @@ It is reccomended to only use bindings written on the same device, as keyboard s
 
 &nbsp;
 
-## `input_bindings_read(string, [playerIndex])`
+## `input_binding_system_read(string, [playerIndex])`
 
 *Returns:* N/A (`undefined`)
 
@@ -53,7 +53,7 @@ While useful for retaining player preferences across sessions, [default bindings
 
 &nbsp;
 
-## `input_bindings_copy(source, destination)`
+## `input_binding_system_copy(source, destination)`
 
 *Returns:* N/A (`undefined`)
 
@@ -66,7 +66,7 @@ Duplicates one player's bindings and copies them over to another player (includi
 
 &nbsp;
 
-## `input_binding_gamepad_swap_ab(state)`
+## `input_binding_system_swap_gamepad_ab(state)`
 
 *Returns:* N/A (`undefined`)
 
