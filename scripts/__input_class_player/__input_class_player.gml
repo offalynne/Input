@@ -343,12 +343,32 @@ function __input_class_player() constructor
         __verb_group_state_dict[$ _verb_group] = _state;
         
         //Iterate over every verb for this group and get them to update their state
-        var _array = global.__input_verb_to_groups_dict[$ _verb_group];
-        var _i = 0;
-        repeat(array_length(_array))
+        var _array = global.__input_group_to_verbs_dict[$ _verb_group];
+        if (_state)
         {
-            __verb_state_dict[$ _array[_i]].__update_verb_groups(__verb_group_state_dict);
-            ++_i;
+            //If the verb group is active then the verbs should be active too
+            var _i = 0;
+            repeat(array_length(_array))
+            {
+                __verb_state_dict[$ _array[_i]].__group_inactive = false;
+                ++_i;
+            }
+        }
+        else
+        {
+            //If the verb group is inactive then the verbs should be inactive too
+            var _i = 0;
+            repeat(array_length(_array))
+            {
+                with(__verb_state_dict[$ _array[_i]])
+                {
+                    __group_inactive = true;
+                    previous_held    = true; //Force the held state on to avoid unwanted early reset of an inactive verb
+                    __inactive       = true;
+                }
+                
+                ++_i;
+            }
         }
     }
     
@@ -586,7 +606,7 @@ function __input_class_player() constructor
         var _v = 0;
         repeat(array_length(global.__input_basic_verb_array))
         {
-            with(__verb_state_dict[$ global.__input_basic_verb_array[_v]]) tick(__verb_group_state_dict);
+            __verb_state_dict[$ global.__input_basic_verb_array[_v]].tick(__verb_group_state_dict);
             ++_v;
         }
     }

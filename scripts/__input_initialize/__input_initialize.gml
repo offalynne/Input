@@ -14,7 +14,7 @@ function __input_initialize()
         
         time_source_start(global.__input_time_source);
     }
-    catch(_)
+    catch(_error)
     {
         //If the above fails then fall back on needing to call input_tick()
         global.__input_time_source = undefined;
@@ -312,6 +312,8 @@ function __input_initialize()
     
     #endregion
     
+    
+    
     #region Gamepad device blocklist
     
     global.__input_blacklist_dictionary = {};
@@ -333,6 +335,8 @@ function __input_initialize()
     }
     
     #endregion
+    
+    
     
     #region Gamepad button labels and colors
     
@@ -361,6 +365,8 @@ function __input_initialize()
     }
     
     #endregion
+
+
 
     #region Ignored keys
     
@@ -469,6 +475,8 @@ function __input_initialize()
     
     #endregion
     
+    
+    
     #region Steam Input
     
     if (((os_type == os_linux) || (os_type == os_macosx)) && !__INPUT_ON_WEB)
@@ -543,6 +551,8 @@ function __input_initialize()
 
     #endregion
     
+    
+    
     #region Keyboard locale
     
     var _locale = os_get_language() + "-" + os_get_region();
@@ -578,6 +588,8 @@ function __input_initialize()
     
     #endregion 
     
+    
+    
     #region Keyboard type
     
     if (__INPUT_ON_CONSOLE || (__INPUT_ON_WEB && !__INPUT_ON_DESKTOP))
@@ -610,6 +622,8 @@ function __input_initialize()
     
     #endregion
     
+    
+    
     //By default GameMaker registers double click (or tap) as right mouse button
     //We want to be able to identify the actual mouse buttons correctly, and have our own double-input handling
     device_mouse_dbclick_enable(false);
@@ -617,7 +631,7 @@ function __input_initialize()
     global.__input_profile_array         = undefined;
     global.__input_profile_dict          = undefined;
     global.__input_default_profile_dict  = undefined;
-    global.__input_verb_to_groups_dict   = {};
+    global.__input_verb_to_group_dict    = {};
     global.__input_group_to_verbs_dict   = {};
     
     INPUT_KEYBOARD = new __input_class_source(__INPUT_SOURCE.KEYBOARD);

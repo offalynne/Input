@@ -1,4 +1,4 @@
-function input_multiplayer_pass()
+function input_multiplayer_is_finished()
 {
     __input_initialize();
     

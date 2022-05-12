@@ -15,7 +15,7 @@ function __input_finalize_verb_groups()
         var _group_name = _group_names_array[_i];
         var _group_array = global.__input_group_to_verbs_dict[$ _group_name];
         
-        //Ensure all players have the verb groups created
+        //Ensure all players have the verb group created
         global.__input_default_player.__verb_group_ensure(_group_name);
         
         var _p = 0;
@@ -25,19 +25,15 @@ function __input_finalize_verb_groups()
             ++_p;
         }
         
+        //Build the verb->group dictionary
         var _j = 0;
         repeat(array_length(_group_array))
         {
             var _verb = _group_array[_j];
-            var _verb_group_array = global.__input_verb_to_groups_dict[$ _verb];
             
-            if (!is_array(_verb_group_array))
-            {
-                _verb_group_array = [];
-                global.__input_verb_to_groups_dict[$ _verb] = _verb_group_array;
-            }
-            
-            array_push(_verb_group_array, _group_name);
+            if (!variable_struct_exists(global.__input_basic_verb_dict, _verb)) __input_error("Verb \"", _verb, "\" doesn't exist");
+            if (variable_struct_exists(global.__input_verb_to_group_dict, _verb)) __input_error("Verb \"", _verb, "\" already has a group (", _group_name, ")");
+            global.__input_verb_to_group_dict[$ _verb] = _group_name;
             
             ++_j;
         }
@@ -45,5 +41,5 @@ function __input_finalize_verb_groups()
         ++_i;
     }
     
-    if (INPUT_DEBUG_VERBS) __input_trace("Verb groups are ", global.__input_verb_to_groups_dict);
+    if (INPUT_DEBUG_VERBS) __input_trace("Verb groups are ", global.__input_verb_to_group_dict);
 }

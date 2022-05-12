@@ -1,5 +1,5 @@
 show_error("obj_test_invalid_bindings test case hasn't been set up for Input 5 yet...", true);
-
+/*
 var _high = 60000;
 var _low  = -32;
 
@@ -28,3 +28,4 @@ input_default_gamepad_button(gp_padu       , "gamepad dpad up"            );
 input_default_gamepad_axis(_high    , true,  "invalid high gamepad axis");
 input_default_gamepad_axis(_low     , false, "invalid low gamepad axis" );
 input_default_gamepad_axis(gp_axislh, true,  "gamepad thumbstick left"  );
+*/

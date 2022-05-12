@@ -4,7 +4,7 @@ _string += "player gamepad = " + string(input_player_get_gamepad()) + "\n";
 
 if (rebinding)
 {
-    _string += "Rebinding (source=" + rebinding_source.__name + ")\n\n";
+    _string += "Rebinding (profile=" + string(rebinding_profile) + ")\n\n";
 }
 else
 {

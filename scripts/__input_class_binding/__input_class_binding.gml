@@ -156,23 +156,7 @@ function __input_class_binding() constructor
             case __INPUT_BINDING_MOUSE_WHEEL_DOWN: return __INPUT_SOURCE.MOUSE;    break;
             case __INPUT_BINDING_GAMEPAD_BUTTON:   return __INPUT_SOURCE.GAMEPAD;  break;
             case __INPUT_BINDING_GAMEPAD_AXIS:     return __INPUT_SOURCE.GAMEPAD;  break;
-            case undefined:                        return undefined;             break;
-        }
-        
-        __input_error("Binding type \"", type, "\" not recognised");
-    }
-    
-    static __get_automatic_profile_name = function()
-    {
-        switch(type)
-        {
-            case __INPUT_BINDING_KEY:              return INPUT_AUTO_PROFILE_FOR_KEYBOARD; break;
-            case __INPUT_BINDING_MOUSE_BUTTON:     return INPUT_AUTO_PROFILE_FOR_MOUSE;    break;
-            case __INPUT_BINDING_MOUSE_WHEEL_UP:   return INPUT_AUTO_PROFILE_FOR_MOUSE;    break;
-            case __INPUT_BINDING_MOUSE_WHEEL_DOWN: return INPUT_AUTO_PROFILE_FOR_MOUSE;    break;
-            case __INPUT_BINDING_GAMEPAD_BUTTON:   return INPUT_AUTO_PROFILE_FOR_GAMEPAD;  break;
-            case __INPUT_BINDING_GAMEPAD_AXIS:     return INPUT_AUTO_PROFILE_FOR_GAMEPAD;  break;
-            case undefined:                        return undefined;                       break;
+            case undefined:                        return undefined;               break;
         }
         
         __input_error("Binding type \"", type, "\" not recognised");
