@@ -16,7 +16,7 @@ function input_binding_test_collisions(_verb_name, _src_binding, _player_index =
         return undefined;
     }
     
-    var _src_groups_array = input_verb_get_collision_groups(_verb_name);
+    var _src_group = input_verb_get_group(_verb_name);
     
     var _output_array = [];
     
@@ -40,42 +40,23 @@ function input_binding_test_collisions(_verb_name, _src_binding, _player_index =
             var _group_matches = false;
             
             //If the incoming groups array is undefined then the incoming binding is in every group
-            if (_src_groups_array == undefined)
+            if (_src_group == undefined)
             {
                 _group_matches = true;
             }
             else
             {
-                var _dst_groups_array = input_verb_get_collision_groups(_verb);
+                var _dst_group = input_verb_get_group(_verb);
                 
                 //If the incoming groups array is undefined then the incoming binding is in every group
-                if (_dst_groups_array == undefined)
+                if (_dst_group == undefined)
                 {
                     _group_matches = true;
                 }
                 else
                 {
                     //Check if there's any overlap between the incoming group array and the verb
-                    var _j = 0;
-                    repeat(array_length(_src_groups_array))
-                    {
-                        var _src_group = _src_groups_array[_j];
-                    
-                        var _k = 0;
-                        repeat(array_length(_dst_groups_array))
-                        {
-                            if (_dst_groups_array[_k] == _src_group)
-                            {
-                                _group_matches = true;
-                                break;
-                            }
-                            
-                            ++_k;
-                        }
-                        
-                        if (_group_matches) break;
-                        ++_j;
-                    }
+                    _group_matches = (_src_group == _dst_group);
                 }
             }
             

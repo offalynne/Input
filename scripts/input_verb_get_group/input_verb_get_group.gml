@@ -1,6 +1,6 @@
 /// @param verb
 
-function input_verb_get_groups(_verb_name)
+function input_verb_get_group(_verb_name)
 {
     __input_initialize();
     __INPUT_VERIFY_BASIC_VERB_NAME

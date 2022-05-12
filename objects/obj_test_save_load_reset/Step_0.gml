@@ -41,7 +41,7 @@ if (input_keyboard_check_pressed(ord("R")))
 if (rebinding)
 {
     var _binding = input_binding_scan_tick();
-    if (_binding != undefined)
+    if (input_value_is_binding(_binding))
     {
         input_binding_set_safe("left", _binding);
         rebinding = false;

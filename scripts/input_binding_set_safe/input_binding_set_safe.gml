@@ -39,7 +39,7 @@ function input_binding_set_safe(_verb_name, _binding, _player_index = 0, _altern
             if ((_verb_name != _verb_b) || (_alternate != _alternate_b))
             {
                 __input_trace("Collision found in profile=", _profile_name, ", verb=", _verb_b, ", alternate=", _alternate_b);
-                input_binding_swap(_verb_name, _alternate, _verb_b, _alternate_b, _profile_name, _player_index);
+                input_binding_swap(_verb_name, _alternate, _verb_b, _alternate_b, _player_index, _profile_name);
             }
             else
             {

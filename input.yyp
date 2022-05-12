@@ -97,7 +97,7 @@
     {"id":{"name":"input_gamepad_get_description","path":"scripts/input_gamepad_get_description/input_gamepad_get_description.yy",},"order":3,},
     {"id":{"name":"input_gamepad_get_dpad_style","path":"scripts/input_gamepad_get_dpad_style/input_gamepad_get_dpad_style.yy",},"order":4,},
     {"id":{"name":"input_gamepad_get_type","path":"scripts/input_gamepad_get_type/input_gamepad_get_type.yy",},"order":5,},
-    {"id":{"name":"input_verb_get_groups","path":"scripts/input_verb_get_groups/input_verb_get_groups.yy",},"order":2,},
+    {"id":{"name":"input_verb_get_group","path":"scripts/input_verb_get_group/input_verb_get_group.yy",},"order":2,},
     {"id":{"name":"input_gamepad_is_axis","path":"scripts/input_gamepad_is_axis/input_gamepad_is_axis.yy",},"order":6,},
     {"id":{"name":"obj_test_double","path":"objects/obj_test_double/obj_test_double.yy",},"order":18,},
     {"id":{"name":"obj_test_get_default_binding","path":"objects/obj_test_get_default_binding/obj_test_get_default_binding.yy",},"order":20,},
