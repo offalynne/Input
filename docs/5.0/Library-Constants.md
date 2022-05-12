@@ -21,13 +21,13 @@ The following constants allow you to reference specific [input sources](Input-So
 
 The `INPUT_SOURCE_MODE` enum contains the following members. You can read more about source modes [here](Input-Sources?id=source-modes).
 
-|Name          |Single Player Only|Purpose                                                                                                                                                             |
-|--------------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`.FIXED`      |no                |Input will not change sources automatically and you are responsible for managing sources yourself                                                                   |
-|`.JOIN`       |no                |Allows players to “join” the game by pressing any button on a supported device, and they can leave by activating a certain verb                                     |
-|`.HOTSWAP`    |yes               |Automatically swaps sources for player 0 based on what source the player is currently interacting with.                                                             |
-|`.MIXED`      |yes               |Accepts input for player 0 from the keyboard, the mouse, and **one** gamepad. The gamepad that is active will be hotswapped and only one gamepad is active at a time|
-|`.MULTIDEVICE`|yes               |Accepts input for player 0 from the keyboard, the mouse, and **all** gamepads. Gamepad bindings are tied to specific gamepad slots.                                 |
+|Name          |Single Player Only|Purpose                                                                                                                                        |
+|--------------|------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+|`.FIXED`      |no                |Input will not change sources automatically and you are responsible for managing sources yourself                                              |
+|`.JOIN`       |no                |Allows players to “join” the game by pressing any button on a supported device, and they can leave by activating a certain verb                |
+|`.HOTSWAP`    |yes               |Automatically swaps sources for player 0 based on what source the player is currently interacting with                                         |
+|`.MIXED`      |yes               |Accepts input for player 0 from the keyboard, the mouse, and **all** gamepads. Gamepad bindings will listen to all connected gamepads for input|
+|`.MULTIDEVICE`|yes               |Accepts input for player 0 from the keyboard, the mouse, and **all** gamepads. Gamepad bindings are tied to specific gamepad slots             |
 
 &nbsp;
 
