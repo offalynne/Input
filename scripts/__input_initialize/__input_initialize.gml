@@ -580,37 +580,32 @@ function __input_initialize()
     
     #region Keyboard type
     
-    function input_platform_text_source()
+    if (__INPUT_ON_CONSOLE || (__INPUT_ON_WEB && !__INPUT_ON_DESKTOP))
     {
-        if (__INPUT_ON_CONSOLE || (__INPUT_ON_WEB && !__INPUT_ON_DESKTOP))
+        INPUT_KEYBOARD_TYPE = "async";
+    }
+    else if (__INPUT_ON_MOBILE)
+    {
+        var _ret = "virtual";
+        if (os_type == os_android)
         {
-            INPUT_KEYBOARD_TYPE = "async";
-        }
-        else if (__INPUT_ON_MOBILE)
-        {
-            var _ret = "virtual";
-            if (os_type == os_android)
+            var _map = os_get_info();
+            if (ds_exists(_map, ds_type_map))
             {
-                var _map = os_get_info();
-                if (ds_exists(_map, ds_type_map))
+                if (_map[? "PHYSICAL_KEYBOARD"])
                 {
-                    if (_map[? "PHYSICAL_KEYBOARD"])
-                    {
-                        _ret = "keyboard";
-                    }
-                
-                    ds_map_destroy(_map);
+                    _ret = "keyboard";
                 }
-            }
 
-            INPUT_KEYBOARD_TYPE = _ret;
+                ds_map_destroy(_map);
+            }
         }
-        else
-        {
-            INPUT_KEYBOARD_TYPE = "keyboard";
-        }
-    
-        __input_error("Failed to identify keyboard type");
+
+        INPUT_KEYBOARD_TYPE = _ret;
+    }
+    else
+    {
+        INPUT_KEYBOARD_TYPE = "keyboard";
     }
     
     #endregion
