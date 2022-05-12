@@ -10,5 +10,5 @@ function input_verb_group_is_active(_verb_group, _player_index = 0)
         __input_error("Verb group \"", _verb_group, "\" doesn't exist\nPlease make sure it has been defined in __input_config_verbs()");
     }
     
-    global.__input_players[_player_index].__verb_group_is_active(_verb_group);
+    return global.__input_players[_player_index].__verb_group_is_active(_verb_group);
 }

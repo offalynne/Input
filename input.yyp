@@ -8,6 +8,7 @@
     {"id":{"name":"input_players_get_status","path":"scripts/input_players_get_status/input_players_get_status.yy",},"order":7,},
     {"id":{"name":"obj_test_gamepad_extended","path":"objects/obj_test_gamepad_extended/obj_test_gamepad_extended.yy",},"order":4,},
     {"id":{"name":"input_gamepad_get_map","path":"scripts/input_gamepad_get_map/input_gamepad_get_map.yy",},"order":11,},
+    {"id":{"name":"obj_test_verb_group_deactivation","path":"objects/obj_test_verb_group_deactivation/obj_test_verb_group_deactivation.yy",},"order":25,},
     {"id":{"name":"input_multiplayer_params_set","path":"scripts/input_multiplayer_params_set/input_multiplayer_params_set.yy",},"order":16,},
     {"id":{"name":"obj_test_mp","path":"objects/obj_test_mp/obj_test_mp.yy",},"order":6,},
     {"id":{"name":"obj_test_invalid_bindings","path":"objects/obj_test_invalid_bindings/obj_test_invalid_bindings.yy",},"order":16,},
