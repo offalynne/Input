@@ -2,7 +2,12 @@
 
 function input_gamepad_get_map(_index)
 {
-    if ((_index < 0) || (_index >= array_length(global.__input_gamepads))) return [];
+    if ((_index == undefined)
+    ||  (_index < 0)
+    ||  (_index >= array_length(global.__input_gamepads)))
+    {
+        return [];
+    }
     
     var _gamepad = global.__input_gamepads[_index];
     if (!is_struct(_gamepad)) return [];

@@ -249,7 +249,7 @@ function __input_class_player() constructor
         var _i = 0;
         repeat(array_length(__source_array))
         {
-            var _gamepad = __source_array[_i].gamepad;
+            var _gamepad = __source_array[_i].__gamepad;
             if (input_gamepad_is_connected(_gamepad)) return _gamepad;
             ++_i;
         }
