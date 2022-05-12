@@ -413,7 +413,7 @@ function __input_class_player() constructor
         var _binding_struct = _default_profile_struct[$ _verb][_alternate];
         
         //If the binding is a struct then duplicate so we don't get nasty
-        if (is_struct(_binding_struct)) _binding_struct.__duplicate();
+        if (is_struct(_binding_struct)) _binding_struct = _binding_struct.__duplicate();
         
         //And set the value!
         __profiles_dict[$ _profile_name][$ _verb][@ _alternate] = _binding_struct;
