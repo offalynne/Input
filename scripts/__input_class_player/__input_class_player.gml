@@ -289,7 +289,69 @@ function __input_class_player() constructor
     /// @param bindingStruct
     static __binding_set = function(_profile_name, _verb, _alternate, _binding_struct)
     {
-        __profiles_dict[$ __profile_get(_profile_name)][$ _verb][@ _alternate] = _binding_struct;
+        _profile_name = __profile_get(_profile_name);
+        
+        if (((_profile_name == INPUT_AUTO_PROFILE_FOR_KEYBOARD)
+          || (_profile_name == INPUT_AUTO_PROFILE_FOR_MOUSE)
+          || (_profile_name == INPUT_AUTO_PROFILE_FOR_GAMEPAD))
+        && (_profile_name != INPUT_AUTO_PROFILE_FOR_MIXED)
+        && (_profile_name != INPUT_AUTO_PROFILE_FOR_MULTIDEVICE))
+        {
+            switch(_binding_struct.__get_source_type())
+            {
+                case __INPUT_SOURCE.KEYBOARD:
+                    if not ((_profile_name == INPUT_AUTO_PROFILE_FOR_KEYBOARD)
+                         || (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (_profile_name == INPUT_AUTO_PROFILE_FOR_MOUSE)))
+                    {
+                        if (global.__input_strict_binding_check)
+                        {
+                            __input_error("Keyboard binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
+                        }
+                        else
+                        {
+                            __input_trace("Warning! Keyboard binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
+                        }
+                        
+                        return;
+                    }
+                break;
+            
+                case __INPUT_SOURCE.MOUSE:
+                    if not ((_profile_name == INPUT_AUTO_PROFILE_FOR_MOUSE)
+                         || (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (_profile_name == INPUT_AUTO_PROFILE_FOR_KEYBOARD)))
+                    {
+                        if (global.__input_strict_binding_check)
+                        {
+                            __input_error("Mouse binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
+                        }
+                        else
+                        {
+                            __input_trace("Warning! Mouse binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
+                        }
+                        
+                        return;
+                    }
+                break;
+            
+                case __INPUT_SOURCE.GAMEPAD:
+                    if not (_profile_name == INPUT_AUTO_PROFILE_FOR_GAMEPAD)
+                    {
+                        if (global.__input_strict_binding_check)
+                        {
+                            __input_error("Gamepad binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
+                        }
+                        else
+                        {
+                            __input_trace("Warning! Gamepad binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
+                        }
+                        
+                        return;
+                    }
+                break;
+            }
+        }
+        
+        __profiles_dict[$ _profile_name][$ _verb][@ _alternate] = _binding_struct;
         if (INPUT_DEBUG_BINDING) __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " set to ", _binding_struct);
     }
     

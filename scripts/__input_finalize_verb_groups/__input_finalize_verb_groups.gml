@@ -31,7 +31,7 @@ function __input_finalize_verb_groups()
         {
             var _verb = _group_array[_j];
             
-            if (!variable_struct_exists(global.__input_basic_verb_dict, _verb)) __input_error("Verb \"", _verb, "\" doesn't exist");
+            if (!variable_struct_exists(global.__input_basic_verb_dict, _verb)) __input_error("Verb \"", _verb, "\" doesn't exist\nPlease check INPUT_VERB_GROUPS matches INPUT_DEFAULT_PROFILES");
             if (variable_struct_exists(global.__input_verb_to_group_dict, _verb)) __input_error("Verb \"", _verb, "\" already has a group (", _group_name, ")");
             global.__input_verb_to_group_dict[$ _verb] = _group_name;
             

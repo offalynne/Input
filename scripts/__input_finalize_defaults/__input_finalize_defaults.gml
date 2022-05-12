@@ -12,6 +12,9 @@ function __input_finalize_defaults()
        __input_error("INPUT_DEFAULT_PROFILES must contain at least one profile");
     }
     
+    //Put strict mode on, this'll cause Input to throw errors if the player does anything dumb
+    global.__input_strict_binding_check = true;
+    
     global.__input_profile_array = variable_struct_get_names(global.__input_default_profile_dict);
     global.__input_profile_dict  = {}; //We fill this in later..
     
@@ -71,7 +74,7 @@ function __input_finalize_defaults()
                 }
                 else
                 {
-                    switch(_binding.__get_source())
+                    switch(_binding.__get_source_type())
                     {
                         case __INPUT_SOURCE.KEYBOARD: global.__input_any_keyboard_binding_defined = true; break;
                         case __INPUT_SOURCE.MOUSE:    global.__input_any_mouse_binding_defined    = true; break;
@@ -90,11 +93,11 @@ function __input_finalize_defaults()
         ++_f;
     }
     
-    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_KEYBOARD   )) __input_trace("Warning! Default profile for keyboard \"",    INPUT_AUTO_PROFILE_FOR_KEYBOARD,    "\" has not been defined");
-    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MOUSE      )) __input_trace("Warning! Default profile for mouse \"",       INPUT_AUTO_PROFILE_FOR_MOUSE,       "\" has not been defined");
-    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_GAMEPAD    )) __input_trace("Warning! Default profile for gamepad \"",     INPUT_AUTO_PROFILE_FOR_GAMEPAD,     "\" has not been defined");
-    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MIXED      )) __input_trace("Warning! Default profile for mixed \"",       INPUT_AUTO_PROFILE_FOR_MIXED,       "\" has not been defined");
-    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MULTIDEVICE)) __input_trace("Warning! Default profile for multidevice \"", INPUT_AUTO_PROFILE_FOR_MULTIDEVICE, "\" has not been defined");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_KEYBOARD   )) __input_trace("Warning! Default profile for keyboard \"",    INPUT_AUTO_PROFILE_FOR_KEYBOARD,    "\" has not been defined in INPUT_DEFAULT_PROFILES");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MOUSE      )) __input_trace("Warning! Default profile for mouse \"",       INPUT_AUTO_PROFILE_FOR_MOUSE,       "\" has not been defined in INPUT_DEFAULT_PROFILES");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_GAMEPAD    )) __input_trace("Warning! Default profile for gamepad \"",     INPUT_AUTO_PROFILE_FOR_GAMEPAD,     "\" has not been defined in INPUT_DEFAULT_PROFILES");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MIXED      )) __input_trace("Warning! Default profile for mixed \"",       INPUT_AUTO_PROFILE_FOR_MIXED,       "\" has not been defined in INPUT_DEFAULT_PROFILES");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MULTIDEVICE)) __input_trace("Warning! Default profile for multidevice \"", INPUT_AUTO_PROFILE_FOR_MULTIDEVICE, "\" has not been defined in INPUT_DEFAULT_PROFILES");
     
     if (!variable_struct_exists(global.__input_basic_verb_dict, INPUT_CURSOR_VERB_UP   )) { __input_trace("Warning! Default cursor up verb \"",    INPUT_CURSOR_VERB_UP,    "\" has not been defined for any profile"); global.__input_cursor_verbs_valid = false; }
     if (!variable_struct_exists(global.__input_basic_verb_dict, INPUT_CURSOR_VERB_DOWN )) { __input_trace("Warning! Default cursor down verb \"",  INPUT_CURSOR_VERB_DOWN,  "\" has not been defined for any profile"); global.__input_cursor_verbs_valid = false; }
@@ -135,4 +138,7 @@ function __input_finalize_defaults()
     
     //Make sure every player has a copy of the default profiles
     input_binding_system_reset();
+    
+    //And turn strict checks off!
+    global.__input_strict_binding_check = false;
 }

@@ -146,7 +146,7 @@ function __input_class_binding() constructor
         return self;
     }
     
-    static __get_source = function()
+    static __get_source_type = function()
     {
         switch(type)
         {

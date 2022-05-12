@@ -60,6 +60,11 @@ function __input_initialize()
     global.__input_pointer_pressed_index = undefined;
     global.__input_pointer_durations     = array_create(INPUT_MAX_TOUCHPOINTS, 0);
     
+    //Whether to strictly verify bindings match auto profiles
+    //This is set to <true> on boot, causing Input to throw an error, otherwise this is <false>
+    //If an invalid binding is set during normal gameplay then a warning message is emitted to the console
+    global.__input_strict_binding_check = false;
+    
     //Whether these particular input sources are valid
     //This is determined by what default keybindings are set up
     global.__input_any_keyboard_binding_defined = false;
@@ -634,6 +639,9 @@ function __input_initialize()
     global.__input_verb_to_group_dict    = {};
     global.__input_group_to_verbs_dict   = {};
     
+    
+    
+    //Build out the sources
     INPUT_KEYBOARD = new __input_class_source(__INPUT_SOURCE.KEYBOARD);
     INPUT_MOUSE = INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER? INPUT_KEYBOARD : (new __input_class_source(__INPUT_SOURCE.MOUSE));
     
