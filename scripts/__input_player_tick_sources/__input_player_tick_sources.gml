@@ -177,7 +177,7 @@ function __input_player_tick_sources()
                 break;
                 
                 case __INPUT_SOURCE.GAMEPAD:
-                    if (!_is_multidevice_player && !input_gamepad_is_connected(_source_gamepad))
+                    if (!input_gamepad_is_connected(_source_gamepad))
                     {
                         ++_s;
                         continue;
@@ -188,16 +188,11 @@ function __input_player_tick_sources()
                     {
                         var _binding = _alternate_array[_alternate];
                         
-                        //If we're in multidevice mode, try to check a specific gamepad
-                        if (_is_multidevice_player)
+                        //If we're in multidevice mode, break out of this binding if it doesn't match this gamepad
+                        if (_is_multidevice_player && (_source_gamepad != _binding.__gamepad_index))
                         {
-                            if (_binding.__gamepad_index != undefined) _source_gamepad = _binding.__gamepad_index;
-                            
-                            if (!input_gamepad_is_connected(_source_gamepad))
-                            {
-                                ++_s;
-                                continue;
-                            }
+                            ++_s;
+                            continue;
                         }
                         
                         switch(_binding.type)
