@@ -1,4 +1,4 @@
-function __input_class_verb() constructor
+function __input_class_verb_state() constructor
 {
     name = undefined;
     type = undefined;

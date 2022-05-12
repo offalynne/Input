@@ -57,7 +57,7 @@ function __input_finalize_defaults()
                 __input_error("Verb \"", _verb_name, "\" for default profile \"", _profile_name, "\" has too many alternate bindings (", array_length(_verb_data), " versus max ", INPUT_MAX_ALTERNATE_BINDINGS, ")\nPlease increase INPUT_MAX_ALTERNATE_BINDINGS if you'd like to use more alternate bindings");
             }
             
-            global.__input_default_player.__ensure_verb(_profile_name, _verb_name);
+            global.__input_default_player.__verb_ensure(_profile_name, _verb_name);
             
             var _a = 0;
             repeat(array_length(_verb_data))
@@ -111,6 +111,13 @@ function __input_finalize_defaults()
         var _profile_name   = global.__input_profile_array[_f];
         var _profile_struct = global.__input_default_profile_dict[$ _profile_name];
         
+        var _p = 0;
+        repeat(INPUT_MAX_PLAYERS)
+        {
+            global.__input_players[_p].__profile_ensure(_profile_name);
+            ++_p;
+        }
+        
         var _v = 0;
         repeat(array_length(global.__input_basic_verb_array))
         {
@@ -127,7 +134,14 @@ function __input_finalize_defaults()
                     __input_error("Default profile \"", _profile_name, "\" does not include a definition for basic verb \"", _verb_name, "\"\n(To ignore this error set INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES to <false>)");
                 }
                 
-                global.__input_default_player.__ensure_verb(_profile_name, _verb_name);
+                global.__input_default_player.__verb_ensure(_profile_name, _verb_name);
+            }
+            
+            var _p = 0;
+            repeat(INPUT_MAX_PLAYERS)
+            {
+                global.__input_players[_p].__verb_ensure(_profile_name, _verb_name);
+                ++_p;
             }
             
             ++_v;

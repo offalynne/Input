@@ -25,6 +25,12 @@ function input_binding_test_collisions(_verb_name, _src_binding, _player_index =
         //Get the profile for this particular binding
         _profile_name = __profile_get(_profile_name);
         
+        if (_profile_name == undefined)
+        {
+            __input_trace("Warning! Cannot test binding collisions, profile was <undefined>");
+            return _output_array;
+        }
+        
         //Iterate over every verb
         var _v = 0;
         repeat(array_length(global.__input_basic_verb_array))

@@ -26,6 +26,13 @@ function input_binding_set_safe(_verb_name, _binding, _player_index = 0, _altern
             }
             
             _profile_name = global.__input_players[_player_index].__profile_get(_profile_name);
+            
+            if (_profile_name == undefined)
+            {
+                __input_trace("Warning! Cannot set binding, profile was <undefined>");
+                return false;
+            }
+            
             var _verb_b      = _collisions[0].verb;
             var _alternate_b = _collisions[0].alternate;
             
@@ -45,7 +52,7 @@ function input_binding_set_safe(_verb_name, _binding, _player_index = 0, _altern
     }
     else
     {
-        __input_trace("Value isn't a binding, ignoring");
+        __input_trace("Warning! Value isn't a binding, ignoring");
         return false;
     }
 }

@@ -51,6 +51,7 @@ function __input_class_player() constructor
     
     static __profile_exists = function(_profile_name)
     {
+        if (_profile_name == undefined) return true;
         return variable_struct_exists(__profiles_dict, _profile_name);
     }
     
@@ -280,7 +281,10 @@ function __input_class_player() constructor
     /// @param alternate
     static __binding_get = function(_profile_name, _verb, _alternate)
     {
-        return __profiles_dict[$ __profile_get(_profile_name)][$ _verb][_alternate];
+        _profile_name = __profile_get(_profile_name);
+        if (_profile_name == undefined) return global.__input_null_binding; //Return a "static" empty binding
+        
+        return __profiles_dict[$ _profile_name][$ _verb][_alternate];
     }
     
     /// @param profileName
@@ -290,6 +294,12 @@ function __input_class_player() constructor
     static __binding_set = function(_profile_name, _verb, _alternate, _binding_struct)
     {
         _profile_name = __profile_get(_profile_name);
+        
+        if (_profile_name == undefined)
+        {
+            __input_trace("Warning! Cannot set binding, profile was <undefined>");
+            return;
+        }
         
         if (((_profile_name == INPUT_AUTO_PROFILE_FOR_KEYBOARD)
           || (_profile_name == INPUT_AUTO_PROFILE_FOR_MOUSE)
@@ -360,7 +370,15 @@ function __input_class_player() constructor
     /// @param alternate
     static __binding_remove = function(_profile_name, _verb, _alternate)
     {
-        __profiles_dict[$ __profile_get(_profile_name)][$ _verb][@ _alternate] = __INPUT_BINDING_NULL;
+        _profile_name = __profile_get(_profile_name);
+        
+        if (_profile_name == undefined)
+        {
+            __input_trace("Warning! Cannot remove binding, profile was <undefined>");
+            return;
+        }
+        
+        __profiles_dict[$ _profile_name][$ _verb][@ _alternate] = input_binding_empty();
         if (INPUT_DEBUG_BINDING) __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " removed (set to null)");
     }
     
@@ -369,7 +387,15 @@ function __input_class_player() constructor
     /// @param alternate
     static __binding_reset = function(_profile_name, _verb, _alternate)
     {
-        //Verify
+        _profile_name = __profile_get(_profile_name);
+        
+        if (_profile_name == undefined)
+        {
+            __input_trace("Warning! Cannot reset binding, profile was <undefined>");
+            return;
+        }
+        
+        //Verify the profile
         var _default_profile_struct = global.__input_default_player.__profiles_dict[$ _profile_name];
         if (!is_struct(_default_profile_struct)) __input_error("Profile \"", _profile_name, "\" doesn't exist as a default profile");
         
@@ -380,7 +406,7 @@ function __input_class_player() constructor
         if (is_struct(_binding_struct)) _binding_struct.__duplicate();
         
         //And set the value!
-        __profiles_dict[$ __profile_get(_profile_name)][$ _verb][@ _alternate] = _binding_struct;
+        __profiles_dict[$ _profile_name][$ _verb][@ _alternate] = _binding_struct;
         
         if (INPUT_DEBUG_BINDING) __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " reset to ", _binding_struct);
     }
@@ -440,7 +466,7 @@ function __input_class_player() constructor
     }
     
     /// @param verbName
-    static __ensure_verb = function(_profile_name, _verb_name)
+    static __verb_ensure = function(_profile_name, _verb_name)
     {
         if (_verb_name == "")
         {
@@ -454,7 +480,7 @@ function __input_class_player() constructor
         if (!is_struct(__verb_state_dict[$ _verb_name]))
         {
             if (INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one");
-            __verb_state_dict[$ _verb_name] = new __input_class_verb();
+            __verb_state_dict[$ _verb_name] = new __input_class_verb_state();
         }
         
         var _verb_alternate_array = _profile_struct[$ _verb_name];
@@ -465,7 +491,7 @@ function __input_class_player() constructor
             var _i = 0;
             repeat(INPUT_MAX_ALTERNATE_BINDINGS)
             {
-                _verb_alternate_array[@ _i] = __INPUT_BINDING_NULL;
+                _verb_alternate_array[@ _i] = input_binding_empty();
                 ++_i;
             }
             
@@ -485,11 +511,11 @@ function __input_class_player() constructor
         {
             if (INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one as a chord");
             
-            var _verb_struct = new __input_class_verb();
-            _verb_struct.name     = _verb_name;
-            _verb_struct.type     = "chord";
-            _verb_struct.analogue = false; //Chord verbs are never analogue
-            __verb_state_dict[$ _verb_name] = _verb_struct;
+            var _verb_state_struct = new __input_class_verb_state();
+            _verb_state_struct.name     = _verb_name;
+            _verb_state_struct.type     = "chord";
+            _verb_state_struct.analogue = false; //Chord verbs are never analogue
+            __verb_state_dict[$ _verb_name] = _verb_state_struct;
             
             //We also need to store additional tracking information for combos
             __chord_state_dict[$ _verb_name] = new __input_class_chord_state(_verb_name, global.__input_chord_verb_dict[$ _verb_name]);
@@ -508,11 +534,11 @@ function __input_class_player() constructor
         {
             if (INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one as a combo");
             
-            var _verb_struct = new __input_class_verb();
-            _verb_struct.name     = _verb_name;
-            _verb_struct.type     = "combo";
-            _verb_struct.analogue = false; //Combo verbs are never analogue
-            __verb_state_dict[$ _verb_name] = _verb_struct;
+            var _verb_state_struct = new __input_class_verb_state();
+            _verb_state_struct.name     = _verb_name;
+            _verb_state_struct.type     = "combo";
+            _verb_state_struct.analogue = false; //Combo verbs are never analogue
+            __verb_state_dict[$ _verb_name] = _verb_state_struct;
             
             //We also need to store additional tracking information for combos
             __combo_state_dict[$ _verb_name] = new __input_class_combo_state(_verb_name, global.__input_combo_verb_dict[$ _verb_name]);
@@ -577,10 +603,18 @@ function __input_class_player() constructor
     {
         var _output = [];
         
+        _profile_name = __profile_get(_profile_name);
+        
+        if (_profile_name == undefined)
+        {
+            __input_trace("Warning! Cannot get invaliid bindings, profile was <undefined>");
+            return _output;
+        }
+        
         var _s = 0;
         repeat(array_length(__source_array))
         {
-            var _profile_verb_struct = __profiles_dict[$ __profile_get(_profile_name)];
+            var _profile_verb_struct = __profiles_dict[$ _profile_name];
             if (is_struct(_profile_verb_struct))
             {
                 var _gamepad_mapping_array = input_gamepad_get_map(gamepad);
