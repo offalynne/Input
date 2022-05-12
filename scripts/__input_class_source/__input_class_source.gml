@@ -91,20 +91,23 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
         
         case __INPUT_SOURCE.MOUSE:
             var _mouse_button = __input_mouse_button();
-                
-            if (global.__input_any_mouse_binding_defined && global.__input_mouse_allowed && !global.__input_mouse_blocked
-                    && (_mouse_button != mb_none)
-                    && (!__INPUT_TOUCH_SUPPORT || (_mouse_button != mb_left))) //GM conflates LMB and touch. Don't rebind
+            
+            if (global.__input_any_mouse_binding_defined)
             {
-                return input_binding_mouse_button(_mouse_button);
-            }
-            else if (global.__input_any_mouse_binding_defined && mouse_wheel_up())
-            {
-                return input_binding_mouse_wheel_up();
-            }
-            else if (global.__input_any_mouse_binding_defined && mouse_wheel_down())
-            {
-                return input_binding_mouse_wheel_down();
+                if (global.__input_mouse_allowed && !global.__input_mouse_blocked
+                        && (_mouse_button != mb_none)
+                        && (!__INPUT_TOUCH_SUPPORT || (_mouse_button != mb_left))) //GM conflates LMB and touch. Don't rebind
+                {
+                    return input_binding_mouse_button(_mouse_button);
+                }
+                else if (mouse_wheel_up())
+                {
+                    return input_binding_mouse_wheel_up();
+                }
+                else if (mouse_wheel_down())
+                {
+                    return input_binding_mouse_wheel_down();
+                }
             }
         break;
         
@@ -164,7 +167,7 @@ function __input_source_any_input(_source, _gamepad)
         break;
         
         case __INPUT_SOURCE.MOUSE:
-            return (global.__input_mouse_moved || (global.__input_any_mouse_binding_defined && (input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down())));
+            return (global.__input_any_mouse_binding_defined && (global.__input_mouse_moved || input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()));
         break;
         
         case __INPUT_SOURCE.GAMEPAD:
