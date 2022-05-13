@@ -6,29 +6,29 @@ Input has had many people contribute to it over the years. Juju and Alynne would
 
 &nbsp;
 
-### Juju Adams - [website](https://www.jujuadams.com/)
-*API design and programming*
+### Juju Adams
+*API design and programming* ([website](https://www.jujuadams.com/))
 
-### Alynne Keith - [website](https://offalynne.neocities.org/)
-*SDL2 and device support programming*
+### Alynne Keith
+*SDL2 and device support programming* ([website](https://offalynne.neocities.org/))
 
-### Faulty - [Twitter](https://twitter.com/faultyfunctions)
-*Documentation design and maintenance*
+### Faulty
+*Documentation design and maintenance* ([Twitter](https://twitter.com/faultyfunctions))
 
 ### nik
 *PS4 fixes and testing*
 
-### TabularElf - [website](https://tabelf.link/)
-*HTML5 fixes and testing*
+### TabularElf
+*HTML5 fixes and testing* ([website](https://tabelf.link/))
 
 ### Grace
 *Newbie guide and testing*
 
-### DragoniteSpam - [Twitter](https://twitter.com/DragoniteSpam)
-*Feature suggestions and testing*
+### DragoniteSpam
+*Feature suggestions and testing* ([Twitter](https://twitter.com/DragoniteSpam))
 
-### Sahaun - [Twitter](https://twitter.com/sohomsahaun)
-*Feature suggestions and testing*
+### Sahaun
+*Feature suggestions and testing* ([Twitter](https://twitter.com/sohomsahaun))
 
 ### Prateek
 *Documentation corrections*
