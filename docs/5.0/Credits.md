@@ -20,13 +20,13 @@ Input is brought to you by:
 *Documentation design and maintenance* ([Twitter](https://twitter.com/faultyfunctions))
 
 ### nik
-*Platform support tester*
+*Platform support tester* ([GitHub](https://github.com/nkrapivin))
 
 ### TabularElf
 *Platform support tester* ([website](https://tabelf.link/))
 
 ### Grace
-*Newbie guide and testing*
+*Newbie guide and testing* ([Twitter](https://twitter.com/gart_gh))
 
 ### DragoniteSpam
 *Feature suggestions and testing* ([Twitter](https://twitter.com/DragoniteSpam))
@@ -35,7 +35,7 @@ Input is brought to you by:
 *Project cleanup* ([Twitter](https://twitter.com/sohomsahaun))
 
 ### Prateek
-*Documentation corrections*
+*Documentation corrections* ([Twitter](https://twitter.com/prtksxna))
 
 ### gnysek
-*Documentation corrections*
+*Documentation corrections* ([Twitter](https://twitter.com/gnysek))
