@@ -69,10 +69,8 @@ Duplicates one player's bindings and copies them over to another player (includi
 
 *Returns:* N/A (`undefined`)
 
-|Name   |Datatype|Purpose                                   |
-|-------|--------|------------------------------------------|
-|`state`|boolean |Whether to automatically swap A/B bindings|
+|Name   |Datatype|Purpose                     |
+|-------|--------|----------------------------|
+|`state`|boolean |Whether to swap A/B bindings|
 
-Swapping A/O with B/X is a global setting and, once set, cannot be changed during game operation. As a result, this function should be called once at the start of the game before [`input_default_gamepad_button()`](Functions-(Default-Bindings)#input_default_gamepad_buttonbutton-verb-alternate) and [`input_default_joycon_button()`](Functions-(Default-Bindings)#input_default_joycon_buttonbutton-verb-alternate).
-
-If you *would* like to swap A/O with B/X during gameplay, please use the [binding functions](Functions-(Bindings)).
+!> This function fully resets all player profiles and bindings to what's found in [`INPUT_DEFAULT_PROFILES`](Configuration?id=profiles-and-bindings). This function is intended to be called when the game is started before loading any player-defined bindings.
