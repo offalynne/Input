@@ -20,10 +20,10 @@ Input is brought to you by:
 *Documentation design and maintenance* ([Twitter](https://twitter.com/faultyfunctions))
 
 ### nik
-*Platform support tester* ([GitHub](https://github.com/nkrapivin))
+*Platform support testing* ([GitHub](https://github.com/nkrapivin))
 
 ### TabularElf
-*Platform support tester* ([website](https://tabelf.link/))
+*Platform support testing* ([website](https://tabelf.link/))
 
 ### Grace
 *Newbie guide and testing* ([Twitter](https://twitter.com/gart_gh))
