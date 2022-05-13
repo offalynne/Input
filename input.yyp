@@ -261,7 +261,7 @@
     {"CopyToMask":3035461389054378222,"filePath":"datafiles","resourceVersion":"1.0","name":"buttoncolors.csv","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2022.500.0.71",
+    "IDEVersion": "2022.500.0.88",
   },
   "resourceVersion": "1.5",
   "name": "input",

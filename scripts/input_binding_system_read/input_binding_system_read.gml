@@ -89,5 +89,22 @@ function input_binding_system_read(_input_json, _player_index = all)
             
             ++_f;
         }
+        
+        //Copy axis threshold data
+        var _axis_thresholds_dict = _input_json.axis_thresholds;
+        var _axis_name_array = variable_struct_get_names(_axis_thresholds_dict);
+        var _a = 0;
+        repeat(array_length(_axis_name_array))
+        {
+            var _axis_name = _axis_name_array[_a];
+            var _new_thresholds_struct = _axis_thresholds_dict[$ _axis_name];
+            
+            __axis_thresholds_dict[$ _axis_name] = {
+                mini: _new_thresholds_struct.mini,
+                maxi: _new_thresholds_struct.maxi,
+            };
+            
+            ++_a;
+        }
     }
 }

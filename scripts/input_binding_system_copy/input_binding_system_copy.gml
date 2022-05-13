@@ -34,7 +34,7 @@ function input_binding_system_copy(_src_player_index, _dst_player_index)
     }
     
     //Clear out destination player
-    input_binding_system_reset(_dst_player_index);
+    input_binding_system_reset(_dst_player_index, true);
     
     with(_dst_player)
     {
@@ -46,24 +46,6 @@ function input_binding_system_copy(_src_player_index, _dst_player_index)
         repeat(array_length(_profile_name_array))
         {
             var _profile_name = _profile_name_array[_f];
-            
-            if (_profile_name == "axis_threshold")
-            {
-                //Copy axis threshold data
-                var _threshold_struct = _src_profiles_dict.axis_threshold;
-                var _axis_array = variable_struct_get_names(_threshold_struct);
-                var _i = 0;
-                repeat(array_length(_axis_array))
-                {
-                    var _axis_name = _axis_array[_i];
-                    var _axis_data = __axis_threshold_get(_axis_name);
-                    __axis_threshold_set(_axis_name, _axis_data.mini, _axis_data.maxi);
-                    ++_i;
-                }
-                
-                ++_f;
-                continue;
-            }
             
             //Iterate over every verb
             var _v = 0;
@@ -84,6 +66,23 @@ function input_binding_system_copy(_src_player_index, _dst_player_index)
             }
             
             ++_f;
+        }
+        
+        //Copy axis threshold data
+        var _src_threshold_struct = _src_player.__axis_threshold_dict;
+        var _axis_array = variable_struct_get_names(_src_threshold_struct);
+        var _i = 0;
+        repeat(array_length(_axis_array))
+        {
+            var _axis_name = _axis_array[_i];
+            var _threshold_struct = _src_threshold_struct[$ _axis_name];
+            
+            __axis_threshold_dict[$ _axis_name] = {
+                mini: _threshold_struct.mini,
+                maxi: _threshold_struct.maxi,
+            };
+            
+            ++_i;
         }
     }
 }

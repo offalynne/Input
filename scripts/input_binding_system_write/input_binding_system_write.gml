@@ -62,6 +62,22 @@ function input_binding_system_write(_player_index = all, _return_string = true)
             
             ++_f;
         }
+        
+        //Copy axis threshold data
+        var _axis_name_array = variable_struct_get_names(__axis_thresholds_dict);
+        var _a = 0;
+        repeat(array_length(_axis_name_array))
+        {
+            var _axis_name = _axis_name_array[_a];
+            var _thresholds_struct = __axis_thresholds_dict[$ _axis_name];
+            
+            _new_axis_thresholds_dict[$ _axis_name] = {
+                mini: _thresholds_struct.mini,
+                maxi: _thresholds_struct.maxi,
+            };
+            
+            ++_a;
+        }
     }
     
     return _return_string? json_stringify(_root_json) : _root_json;
