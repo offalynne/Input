@@ -265,7 +265,7 @@ function __input_class_player() constructor
             ++_i;
         }
         
-        return undefined;
+        return -1;
     }
     
     static __sources_any_input = function()
