@@ -12,7 +12,7 @@
     {"id":{"name":"input_multiplayer_params_set","path":"scripts/input_multiplayer_params_set/input_multiplayer_params_set.yy",},"order":16,},
     {"id":{"name":"obj_test_mp","path":"objects/obj_test_mp/obj_test_mp.yy",},"order":6,},
     {"id":{"name":"obj_test_invalid_bindings","path":"objects/obj_test_invalid_bindings/obj_test_invalid_bindings.yy",},"order":13,},
-    {"id":{"name":"obj_test_mp_assignment","path":"objects/obj_test_mp_assignment/obj_test_mp_assignment.yy",},"order":7,},
+    {"id":{"name":"obj_test_mp_assignment","path":"objects/obj_test_mp_assignment/obj_test_mp_assignment.yy",},"order":1,},
     {"id":{"name":"__input_load_button_label_csv","path":"scripts/__input_load_button_label_csv/__input_load_button_label_csv.yy",},"order":14,},
     {"id":{"name":"obj_test_rebinding","path":"objects/obj_test_rebinding/obj_test_rebinding.yy",},"order":8,},
     {"id":{"name":"obj_test_save_load_reset","path":"objects/obj_test_save_load_reset/obj_test_save_load_reset.yy",},"order":9,},
