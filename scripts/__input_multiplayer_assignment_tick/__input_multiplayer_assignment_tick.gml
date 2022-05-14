@@ -5,7 +5,12 @@ function __input_multiplayer_assignment_tick()
         __input_error("INPUT_MULTIPLAYER_LEAVE_VERB has not been defined");
     }
     
-    if (INPUT_MULTIPLAYER_ABORT_CALLBACK == undefined)
+    if (!variable_struct_exists(global.__input_basic_verb_dict, INPUT_MULTIPLAYER_LEAVE_VERB))
+    {
+        __input_error("INPUT_MULTIPLAYER_LEAVE_VERB \"", INPUT_MULTIPLAYER_LEAVE_VERB, "\" doesn't exist");
+    }
+    
+    if (!is_method(INPUT_MULTIPLAYER_ABORT_CALLBACK))
     {
         __input_error("INPUT_MULTIPLAYER_ABORT_CALLBACK has not been defined");
     }
@@ -42,7 +47,7 @@ function __input_multiplayer_assignment_tick()
     var _p = global.__input_multiplayer_max;
     repeat(INPUT_MAX_PLAYERS - global.__input_multiplayer_max)
     {
-        input_player_clear_sources(_p);
+        input_source_clear(_p);
         ++_p;
     }
     
@@ -58,10 +63,11 @@ function __input_multiplayer_assignment_tick()
                 with(global.__input_players[_p])
                 {
                     __source_add(_new_source);
+                    __profile_set_auto();
                     tick();
                 }
                 
-                if (input_check_pressed(INPUT_MULTIPLAYER_LEAVE_VERB) && (input_players_connected() < global.__input_multiplayer_min) && (global.__input_multiplayer_min > 1))
+                if (input_check_pressed(INPUT_MULTIPLAYER_LEAVE_VERB) && (input_player_connected_count() < global.__input_multiplayer_min) && (global.__input_multiplayer_min > 1))
                 {
                     __input_trace("Assignment: Player ", _p, " aborted source assignment");
                     _abort = true;
@@ -86,7 +92,7 @@ function __input_multiplayer_assignment_tick()
         if (input_check_pressed(INPUT_MULTIPLAYER_LEAVE_VERB, _p))
         {
             __input_trace("Assignment: Player ", _p, " left");
-            input_player_clear_sources(_p);
+            input_source_clear(_p);
         }
         
         ++_p;

@@ -36,7 +36,7 @@ function input_source_detect_input(_source)
         case __INPUT_SOURCE.GAMEPAD:
             if (global.__input_any_gamepad_binding_defined)
             {
-                var _gamepad = _source.gamepad;
+                var _gamepad = _source.__gamepad;
                 if (input_gamepad_is_connected(_gamepad) && input_source_is_available(_source))
                 {
                     if (input_gamepad_check_pressed(_gamepad, gp_face1)

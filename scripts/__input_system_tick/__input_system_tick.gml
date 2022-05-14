@@ -12,7 +12,7 @@ function __input_system_tick()
         if (__INPUT_ON_PS)
         {
             //Use first touch (of 2) on active PlayStation gamepad
-            var _gamepad = input_player_gamepad_get();
+            var _gamepad = input_player_get_gamepad();
             if (_gamepad >= 0 && _gamepad < 4)
             {
                 global.__input_pointer_index = _gamepad * 2;
