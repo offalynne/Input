@@ -600,7 +600,7 @@ function __input_class_player() constructor
     /// @param verb
     /// @param forceValue
     /// @param forceAnalogue
-    static set_verb = function(_verb_name, _value, _analogue)
+    static __verb_set = function(_verb_name, _value, _analogue)
     {
         with(__verb_state_dict[$ _verb_name])
         {

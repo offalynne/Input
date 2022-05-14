@@ -2,6 +2,7 @@
   "spriteId": null,
   "solid": false,
   "visible": true,
+  "managed": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": null,
@@ -29,7 +30,7 @@
     "path": "folders/Test Cases.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_test_custom_triggers",
+  "name": "obj_test_verb_set",
   "tags": [],
   "resourceType": "GMObject",
 }
