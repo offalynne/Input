@@ -2,24 +2,7 @@ __input_initialize();
 
 function __input_initialize()
 {
-    if (variable_global_exists("__input_frame")) return false;;
-    
-    try
-    {
-        //Attempt to set up a time source for slick automatic input handling
-        global.__input_time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
-        {
-            __input_system_tick();
-        }, -1);
-        
-        time_source_start(global.__input_time_source);
-    }
-    catch(_error)
-    {
-        //If the above fails then fall back on needing to call input_tick()
-        global.__input_time_source = undefined;
-        __input_trace("Running on a GM runtime earlier than 2022.5");
-    }
+    if (variable_global_exists("__input_frame")) return false;
     
     //Set up the extended debug functionality
     global.__input_debug_log = "input___" + string_replace_all(string_replace_all(date_datetime_string(date_current_datetime()), ":", "-"), " ", "___") + ".txt";
@@ -30,6 +13,37 @@ function __input_initialize()
     }
     
     __input_trace("Welcome to Input by @jujuadams and @offalynne! This is version ", __INPUT_VERSION, ", ", __INPUT_DATE);
+    
+    //Attempt to set up a time source for slick automatic input handling
+    try
+    {
+        //GMS2022.500.58 runtime
+        global.__input_time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
+        {
+            __input_system_tick();
+        }, [], -1);
+        
+        time_source_start(global.__input_time_source);
+    }
+    catch(_error)
+    {
+        try
+        {
+            //Early GMS2022.500.xx runtimes
+            global.__input_time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
+            {
+                __input_system_tick();
+            }, -1);
+            
+            time_source_start(global.__input_time_source);
+        }
+        catch(_error)
+        {
+            //If the above fails then fall back on needing to call input_tick()
+            global.__input_time_source = undefined;
+            __input_trace("Warning! Running on a GM runtime earlier than 2022.5");
+        }
+    }
     
     //Global frame counter. This is used for input buffering
     global.__input_frame = 0;
