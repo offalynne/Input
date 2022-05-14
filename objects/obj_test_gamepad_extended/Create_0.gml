@@ -1,9 +1,8 @@
-show_error("obj_test_gamepad_extended test case hasn't been set up for Input 5 yet...", true);
-
-input_binding_set("guide",    gp_guide   );
-input_binding_set("misc1",    gp_misc1   );
-input_binding_set("touchpad", gp_touchpad);
-input_binding_set("paddle1",  gp_paddle1 );
-input_binding_set("paddle2",  gp_paddle2 );
-input_binding_set("paddle3",  gp_paddle3 );
-input_binding_set("paddle4",  gp_paddle4 );
+//Overwrite some bindings
+input_binding_set("up",      input_binding_gamepad_button(gp_paddle1 ), 0, 0, INPUT_AUTO_PROFILE_FOR_GAMEPAD);
+input_binding_set("down",    input_binding_gamepad_button(gp_paddle2 ), 0, 0, INPUT_AUTO_PROFILE_FOR_GAMEPAD);
+input_binding_set("left",    input_binding_gamepad_button(gp_paddle3 ), 0, 0, INPUT_AUTO_PROFILE_FOR_GAMEPAD);
+input_binding_set("right",   input_binding_gamepad_button(gp_paddle4 ), 0, 0, INPUT_AUTO_PROFILE_FOR_GAMEPAD);
+input_binding_set("accept",  input_binding_gamepad_button(gp_touchpad), 0, 0, INPUT_AUTO_PROFILE_FOR_GAMEPAD);
+input_binding_set("action",  input_binding_gamepad_button(gp_guide   ), 0, 0, INPUT_AUTO_PROFILE_FOR_GAMEPAD);
+input_binding_set("special", input_binding_gamepad_button(gp_misc1   ), 0, 0, INPUT_AUTO_PROFILE_FOR_GAMEPAD);

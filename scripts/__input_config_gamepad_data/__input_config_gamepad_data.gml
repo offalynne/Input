@@ -16,7 +16,7 @@
 //   gp_paddle2
 //   gp_paddle3
 //   gp_paddle4
-#macro INPUT_SDL2_ALLOW_EXTENDED  false
+#macro INPUT_SDL2_ALLOW_EXTENDED  true
 
 //The following macros hold the names of various source files that Input uses to hold gamepad data
 #macro INPUT_SDL2_DATABASE_PATH    "sdl2.txt"                //Path to the SDL2 database to read gamepad remapping definitions from
