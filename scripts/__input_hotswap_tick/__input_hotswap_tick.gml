@@ -45,7 +45,7 @@ function __input_hotswap_tick_input()
         var _g = 0;
         repeat(__INPUT_GAMEPAD_COUNT)
         {
-            if (gamepad_is_connected(_g) && ((_player.gamepad == _g) || input_source_is_available(INPUT_GAMEPAD[_g])))
+            if (gamepad_is_connected(_g) && (input_source_using(INPUT_GAMEPAD[_g]) || input_source_is_available(INPUT_GAMEPAD[_g])))
             {
                 var _active = false;
                 
@@ -102,7 +102,7 @@ function __input_hotswap_tick_input()
                 
                 if (_active)
                 {
-                    if (_player.gamepad == _g)
+                    if (input_source_using(INPUT_GAMEPAD[_g]))
                     {
                         _player.__last_input_time = current_time;
                     }
