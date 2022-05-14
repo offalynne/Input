@@ -7,6 +7,9 @@ function input_binding_system_swap_gamepad_ab(_state)
     if (_state == global.__input_swap_ab) return;
     global.__input_swap_ab = _state;
     
+    //Don't flip bindings if we haven't set up default profiles yet
+    if (global.__input_default_profile_dict == undefined) return;
+    
     var _profile_name_array = variable_struct_get_names(global.__input_default_profile_dict);
     var _f = 0;
     repeat(array_length(_profile_name_array))
