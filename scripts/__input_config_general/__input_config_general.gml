@@ -43,6 +43,8 @@
 
 #region Forbidden Fruit
 
+#macro INPUT_2D_CHECKER_STATIC_RESULT  true
+
 #macro INPUT_DEBUG_PROFILES  false
 #macro INPUT_DEBUG_SOURCES   false
 #macro INPUT_DEBUG_BINDING   false
