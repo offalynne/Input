@@ -30,7 +30,7 @@
     "path": "folders/Test Cases.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_test",
+  "name": "obj_gamepad_tester",
   "tags": [],
   "resourceType": "GMObject",
 }
