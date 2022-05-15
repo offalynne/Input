@@ -10,7 +10,6 @@
     {"id":{"name":"input_gamepad_get_map","path":"scripts/input_gamepad_get_map/input_gamepad_get_map.yy",},"order":11,},
     {"id":{"name":"obj_test_verb_group_deactivation","path":"objects/obj_test_verb_group_deactivation/obj_test_verb_group_deactivation.yy",},"order":22,},
     {"id":{"name":"input_multiplayer_params_set","path":"scripts/input_multiplayer_params_set/input_multiplayer_params_set.yy",},"order":16,},
-    {"id":{"name":"obj_test_mp","path":"objects/obj_test_mp/obj_test_mp.yy",},"order":7,},
     {"id":{"name":"obj_test_invalid_bindings","path":"objects/obj_test_invalid_bindings/obj_test_invalid_bindings.yy",},"order":13,},
     {"id":{"name":"obj_test_mp_assignment","path":"objects/obj_test_mp_assignment/obj_test_mp_assignment.yy",},"order":1,},
     {"id":{"name":"__input_load_button_label_csv","path":"scripts/__input_load_button_label_csv/__input_load_button_label_csv.yy",},"order":14,},
