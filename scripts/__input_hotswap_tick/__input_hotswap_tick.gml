@@ -13,7 +13,7 @@ function __input_hotswap_tick()
         if ((__last_input_time < 0) || (current_time - __last_input_time > INPUT_HOTSWAP_DELAY))
         {
             var _new_source = __input_hotswap_tick_input();
-            if (_new_source != undefined)
+            if ((_new_source != undefined) && !__source_contains(_new_source))
             {
                 input_source_set(_new_source, 0, INPUT_HOTSWAP_AUTO_PROFILE);
                 
