@@ -40,6 +40,9 @@ function input_binding_set_safe(_verb_name, _binding, _player_index = 0, _altern
             {
                 __input_trace("Collision found in profile=", _profile_name, ", verb=", _verb_b, ", alternate=", _alternate_b);
                 input_binding_swap(_verb_name, _alternate, _verb_b, _alternate_b, _player_index, _profile_name);
+                
+                //We have to force set the new binding in case we had a gamepad collision in multidevice mode with an existing binding without a specific gamepad index
+                input_binding_set(_verb_name, _binding, _player_index, _alternate, _profile_name);
             }
             else
             {
