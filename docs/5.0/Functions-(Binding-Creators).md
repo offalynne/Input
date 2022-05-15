@@ -112,7 +112,7 @@ if (rebinding)
     //If we have some sort of result - error or success - then proceed
     if (_binding != undefined)
     {
-        if (input_value_is_binding(_binding)
+        if (input_value_is_binding(_binding))
         {
             //If we got a valid binding then do some rebinding...
             input_binding_set_safe(verb_to_rebind, _binding);
