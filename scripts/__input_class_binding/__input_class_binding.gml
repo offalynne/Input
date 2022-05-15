@@ -19,7 +19,6 @@ function __input_class_binding() constructor
         if (type                  != undefined) _binding_shell.type                = type;
         if (value                 != undefined) _binding_shell.value               = value;
         if (axis_negative         != undefined) _binding_shell.axis_negative       = axis_negative;
-        if (__gamepad_index       != undefined) _binding_shell.gamepad_index       = __gamepad_index;
         if (__gamepad_description != undefined) _binding_shell.gamepad_description = __gamepad_description;
         if (android_lowercase     != undefined) _binding_shell.android_lowercase   = android_lowercase;
         
@@ -37,9 +36,26 @@ function __input_class_binding() constructor
         if (_binding_shell[$ "type"                 ] != undefined) type                  = _binding_shell.type;
         if (_binding_shell[$ "value"                ] != undefined) value                 = _binding_shell.value;
         if (_binding_shell[$ "axis_negative"        ] != undefined) axis_negative         = _binding_shell.axis_negative;
-        if (_binding_shell[$ "__gamepad_index"      ] != undefined) __gamepad_index       = _binding_shell.gamepad_index;
         if (_binding_shell[$ "__gamepad_description"] != undefined) __gamepad_description = _binding_shell.gamepad_description;
         if (_binding_shell[$ "android_lowercase"    ] != undefined) android_lowercase     = _binding_shell.android_lowercase;
+        
+        //If we have a gamepad description then try to match that to a connected gamepad
+        if (__gamepad_description != undefined)
+        {
+            var _g = 0;
+            repeat(array_length(global.__input_gamepads))
+            {
+                var _gamepad = global.__input_gamepads[_g];
+                
+                if (_gamepad.description == __gamepad_description)
+                {
+                    __gamepad_index = _g;
+                    break;
+                }
+                
+                ++_g;
+            }
+        }
         
         __set_label();
     }
@@ -168,7 +184,7 @@ function __input_class_binding() constructor
         return self;
     }
     
-    static __set_gamepad = function(_gamepad)
+    static gamepad = function(_gamepad)
     {
         if (input_gamepad_is_connected(_gamepad))
         {
