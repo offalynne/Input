@@ -1,12 +1,15 @@
 if (input_keyboard_check_pressed(vk_enter)
 ||  input_gamepad_check_pressed(input_player_get_gamepad(), gp_start))
 {
-    rebinding = true;
+    input_binding_scan_start(function(_binding)
+    {
+        input_binding_set_safe("left", _binding);
+    });
 }
 
 if (input_keyboard_check_pressed(ord("S")))
 {
-    rebinding = false;
+    input_binding_scan_abort();
     
     var _string = input_binding_system_write();
     var _buffer = buffer_create(string_byte_length(_string), buffer_grow, 1);
@@ -19,7 +22,7 @@ if (input_keyboard_check_pressed(ord("S")))
 
 if (input_keyboard_check_pressed(ord("L")))
 {
-    rebinding = false;
+    input_binding_scan_abort();
     
     var _buffer = buffer_load("test_saveload.json");
     var _string = buffer_read(_buffer, buffer_text);
@@ -31,19 +34,7 @@ if (input_keyboard_check_pressed(ord("L")))
 
 if (input_keyboard_check_pressed(ord("R")))
 {
-    rebinding = false;
-    
+    input_binding_scan_abort();
     input_binding_system_reset(all);
-    
     show_debug_message("Reset!");
-}
-
-if (rebinding)
-{
-    var _binding = input_binding_scan_tick();
-    if (input_value_is_binding(_binding))
-    {
-        input_binding_set_safe("left", _binding);
-        rebinding = false;
-    }
 }

@@ -9,10 +9,11 @@ function __input_class_player() constructor
     __last_input_time       = -infinity;
     __verb_group_state_dict = {};
     
-    __rebind_state      = 0;
-    __rebind_error      = undefined;
-    __rebind_start_time = current_time;
-    __rebind_this_frame = false;
+    __rebind_state            = 0;
+    __rebind_start_time       = current_time;
+    __rebind_success_callback = undefined;
+    __rebind_failure_callback = undefined;
+    __rebind_source_filter    = [];
     
     __axis_thresholds_dict = {};
     
@@ -178,7 +179,7 @@ function __input_class_player() constructor
     
     static __sources_clear = function()
     {
-        if ((__rebind_state > 0) && (array_length(__source_array) > 0)) __rebind_error = INPUT_BINDING_SCAN_EVENT.SOURCE_CHANGED;
+        if ((__rebind_state > 0) && (array_length(__source_array) > 0)) __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_CHANGED);
         
         array_resize(__source_array, 0);
         __last_input_time = current_time;
@@ -202,7 +203,7 @@ function __input_class_player() constructor
             ++_i;
         }
         
-        if (__rebind_state > 0) __rebind_error = INPUT_BINDING_SCAN_EVENT.SOURCE_CHANGED;
+        if (__rebind_state > 0) __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_CHANGED);
         
         array_push(__source_array, _source);
         __last_input_time = current_time;
@@ -677,13 +678,7 @@ function __input_class_player() constructor
     
     static tick = function()
     {
-        if (!__rebind_this_frame)
-        {
-            if (__rebind_state > 0) __input_trace("Binding scan failed: input_binding_scan_tick() not called last frame");
-            __rebind_state = 0;
-        }
-        
-        __rebind_this_frame = false;
+        if (__rebind_state > 0) __tick_binding_scan();
         
         //Clear the momentary state for all verbs
         var _v = 0;
@@ -762,6 +757,113 @@ function __input_class_player() constructor
             }
             
             ++_i;
+        }
+    }
+    
+    static __tick_binding_scan = function()
+    {
+        #region Error checking
+        
+        if (!window_has_focus() || os_is_paused())
+        {
+            __input_trace("Binding scan failed: Game lost focus");
+            __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.LOST_FOCUS);
+            return ;
+        }
+        
+        if (array_length(__rebind_source_filter) <= 0)
+        {
+            __input_trace("Binding scan failed: Source array for player ", __index, " is empty (the player has no source assigned)");
+            __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_INVALID);
+            return ;
+        }
+        
+        if (__ghost)
+        {
+            __input_trace("Binding scan failed: Player ", __index, " is a ghost");
+            __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.PLAYER_IS_GHOST);
+            return;
+        }
+        
+        if (current_time - __rebind_start_time > INPUT_BINDING_SCAN_TIMEOUT)
+        {
+            __input_trace("Binding scan failed: Timed out");
+            __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SCAN_TIMEOUT);
+            return;
+        }
+        
+        #endregion
+        
+        if (__rebind_state == 1) //Waiting for the player to release all buttons
+        {
+            if (!__sources_any_input())
+            {
+                __input_trace("Now scanning for a new binding from player ", __index);
+                __rebind_state = 2;
+            }
+        }
+        else if (__rebind_state == 2) //Now grab the first button pressed
+        {
+            var _new_binding    = undefined;
+            var _binding_source = undefined;
+                
+            var _i = 0;
+            repeat(array_length(__rebind_source_filter))
+            {
+                if (instanceof(__rebind_source_filter[_i]) != "__input_class_source")
+                {
+                    __input_error("Value in filter array is not a source (index ", _i, ", ", __rebind_source_filter[_i], ")");
+                }
+                
+                var _source_binding = __rebind_source_filter[_i].__scan_for_binding();
+                if (_source_binding != undefined)
+                {
+                    var _new_binding    = _source_binding;
+                    var _binding_source = __rebind_source_filter[_i];
+                }
+                    
+                ++_i;
+            }
+            
+            if (input_value_is_binding(_new_binding)) __binding_scan_success(_new_binding);
+        }
+    }
+    
+    static __binding_scan_success = function(_binding)
+    {
+        __input_trace("Binding found for player ", __index, ": \"", _binding, "\"");
+        __rebind_state = 0;
+        
+        if (is_method(__rebind_success_callback))
+        {
+            __rebind_success_callback(_binding);
+        }
+        else if (is_numeric(__rebind_success_callback) && script_exists(__rebind_success_callback))
+        {
+            script_execute(__rebind_success_callback, _binding);
+        }
+        else if (__rebind_success_callback != undefined)
+        {
+            __input_error("Binding scan success callback set to an illegal value (typeof=", typeof(__rebind_success_callback), ")");
+        }
+    }
+    
+    static __binding_scan_failure = function(_error_code)
+    {
+        __input_trace("Binding scan for player ", __index, " failed (error=", _error_code, ")");
+        __rebind_state = 0;
+        
+        if (is_method(__rebind_failure_callback))
+        {
+            __rebind_failure_callback(_error_code);
+        }
+        else if (is_numeric(__rebind_failure_callback) && script_exists(__rebind_failure_callback))
+        {
+            script_execute(__rebind_failure_callback, _error_code);
+        }
+        else if (__rebind_failure_callback != undefined)
+        {
+            __input_error("Binding scan failure callback set to an illegal value (typeof=", typeof(__rebind_failure_callback), ")");
         }
     }
     

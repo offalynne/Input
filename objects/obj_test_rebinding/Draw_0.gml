@@ -2,7 +2,7 @@ var _string = "";
 
 _string += "player gamepad = " + string(input_player_get_gamepad()) + "\n";
 
-if (rebinding)
+if (input_binding_scan_in_progress())
 {
     _string += "Rebinding (profile=" + string(rebinding_source) + ")\n\n";
 }

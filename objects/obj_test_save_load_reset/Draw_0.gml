@@ -7,6 +7,6 @@ _string += "S = Save\n";
 _string += "L = Load\n";
 _string += "R = Reset\n";
 
-if (rebinding) _string += "\nREBINDING!";
+if (input_binding_scan_in_progress()) _string += "\nREBINDING!";
 
 draw_text(10, 10, _string);
