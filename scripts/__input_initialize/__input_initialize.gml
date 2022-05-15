@@ -137,17 +137,6 @@ function __input_initialize()
     //The default player. This player struct holds default binding data
     global.__input_default_player = new __input_class_player();
     
-    enum INPUT_SOURCE_MODE
-    {
-        FIXED,        //Player sources won't change unless manually editted
-        JOIN,         //Starts source assignment, typically used for multiplayer
-        HOTSWAP,      //Player 0's source is determined by most recent input
-        MIXED,        //Player 0 can use a mixture of keyboard, mouse, and any gamepad
-        MULTIDEVICE, //Player 0 can use a mixture of keyboard, mouse, and any gamepad, but gamepad bindings are specific to each device
-    }
-    
-    global.__input_source_mode = INPUT_STARTING_SOURCE_MODE;
-    
     //Array of players. Each player is a struct (instanceof __input_class_player) that contains lotsa juicy information
     global.__input_players = array_create(INPUT_MAX_PLAYERS, undefined);
     
@@ -162,6 +151,17 @@ function __input_initialize()
         
         ++_p;
     }
+    
+    enum INPUT_SOURCE_MODE
+    {
+        FIXED,        //Player sources won't change unless manually editted
+        JOIN,         //Starts source assignment, typically used for multiplayer
+        HOTSWAP,      //Player 0's source is determined by most recent input
+        MIXED,        //Player 0 can use a mixture of keyboard, mouse, and any gamepad
+        MULTIDEVICE, //Player 0 can use a mixture of keyboard, mouse, and any gamepad, but gamepad bindings are specific to each device
+    }
+    
+    global.__input_source_mode = undefined;
     
     //Multiplayer source assignment state
     //This is set by input_multiplayer_set()

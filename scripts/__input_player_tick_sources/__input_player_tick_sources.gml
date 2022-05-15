@@ -118,7 +118,10 @@ function __input_player_tick_sources()
                             break;
                             
                             default:
-                                __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
+                                if ((global.__input_source_mode != INPUT_SOURCE_MODE.MIXED) && (global.__input_source_mode != INPUT_SOURCE_MODE.MULTIDEVICE))
+                                {
+                                    __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
+                                }
                             break;
                         }
                         
@@ -168,7 +171,10 @@ function __input_player_tick_sources()
                             break;
                             
                             default:
-                                __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
+                                if ((global.__input_source_mode != INPUT_SOURCE_MODE.MIXED) && (global.__input_source_mode != INPUT_SOURCE_MODE.MULTIDEVICE))
+                                {
+                                    __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
+                                }
                             break;
                         }
                         
@@ -189,7 +195,7 @@ function __input_player_tick_sources()
                         var _binding = _alternate_array[_alternate];
                         
                         //If we're in multidevice mode, break out of this binding if it doesn't match this gamepad
-                        if (_is_multidevice_player && (_source_gamepad != _binding.__gamepad_index))
+                        if (_is_multidevice_player && (_binding.__gamepad_index != undefined) && (_source_gamepad != _binding.__gamepad_index))
                         {
                             ++_s;
                             continue;
@@ -244,7 +250,10 @@ function __input_player_tick_sources()
                             break;
                             
                             default:
-                                __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
+                                if ((global.__input_source_mode != INPUT_SOURCE_MODE.MIXED) && (global.__input_source_mode != INPUT_SOURCE_MODE.MULTIDEVICE))
+                                {
+                                    __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
+                                }
                             break;
                         }
                         

@@ -9,7 +9,7 @@ function input_source_set(_source, _player_index = 0, _auto_profile = true)
     
     if (_source == all)
     {
-        input_player_clear_sources(all);
+        input_source_clear(all);
     
         with(global.__input_players[_player_index])
         {
