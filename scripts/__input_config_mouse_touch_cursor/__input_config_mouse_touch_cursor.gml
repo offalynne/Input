@@ -1,9 +1,3 @@
-//Controls what coordinate space to report mouse position in
-//  0 = view-space
-//  1 = GUI-space
-//  2 = device-space
-#macro INPUT_MOUSE_MODE  0
-
 //Size of the deadzone for detecting mouse movement, measured in pixels
 //Higher values increase how far the mouse must travel before reporting the mouse as being used
 #macro INPUT_MOUSE_MOVE_DEADZONE  2

@@ -18,7 +18,10 @@ function __input_class_cursor() constructor
     __limit_y      = undefined;
     __limit_radius = undefined;
     
-    __moved_time = -1;
+    __moved_time  = -infinity;
+    __using_mouse = false;
+    __speed       = 1;
+    __coord_space = INPUT_COORD_SPACE.ROOM;
     
     static __set = function(_x, _y)
     {
@@ -33,22 +36,42 @@ function __input_class_cursor() constructor
         __prev_x = __x;
         __prev_y = __y;
         
-        if (global.__input_mouse_default_defined && (global.__input_mouse_moved || global.__input_cursor_using_mouse))
+        if (global.__input_any_mouse_binding_defined && (global.__input_pointer_moved || __using_mouse) && __player.__source_contains(INPUT_MOUSE))
         {
-            global.__input_cursor_using_mouse = true;
-            __x = global.__input_mouse_x;
-            __y = global.__input_mouse_y;
+            __using_mouse = true;
+            
+            switch(__coord_space)
+            {
+                case INPUT_COORD_SPACE.ROOM:
+                    __x = device_mouse_x(global.__input_pointer_index);
+                    __y = device_mouse_y(global.__input_pointer_index);
+                break;
+                
+                case INPUT_COORD_SPACE.GUI:
+                    __x = device_mouse_x_to_gui(global.__input_pointer_index);
+                    __y = device_mouse_y_to_gui(global.__input_pointer_index);
+                break;
+                
+                case INPUT_COORD_SPACE.DISPLAY:
+                    __x = device_mouse_raw_x(global.__input_pointer_index);
+                    __y = device_mouse_raw_y(global.__input_pointer_index);
+                break;
+                
+                default:
+                    __input_error("Invalid mouse coordinate space (", __coord_space, ")\nPlease use values from the INPUT_COORD_SPACE enum");
+                break;
+            }
         }
         
         //Don't update the cursor if the mouse recently moved or we're rebinding controls
-        if (global.__input_cursor_verbs_valid && !global.__input_mouse_moved && (__player.__rebind_state <= 0))
+        if (global.__input_cursor_verbs_valid && !global.__input_pointer_moved && (__player.__rebind_state <= 0))
         {
-            var _xy = input_xy(INPUT_CURSOR_VERB_LEFT, INPUT_CURSOR_VERB_RIGHT, INPUT_CURSOR_VERB_UP, INPUT_CURSOR_VERB_DOWN, other);
+            var _xy = input_xy(INPUT_CURSOR_VERB_LEFT, INPUT_CURSOR_VERB_RIGHT, INPUT_CURSOR_VERB_UP, INPUT_CURSOR_VERB_DOWN, __player.__index);
             if ((_xy.x != 0.0) || (_xy.y != 0.0))
             {
-                global.__input_cursor_using_mouse = false;
-                __x += global.__input_cursor_speed*_xy.x;
-                __y += global.__input_cursor_speed*_xy.y;
+                __using_mouse = false;
+                __x += __speed*_xy.x;
+                __y += __speed*_xy.y;
             }
         }
         

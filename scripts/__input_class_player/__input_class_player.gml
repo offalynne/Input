@@ -700,6 +700,8 @@ function __input_class_player() constructor
         //Update our combos
         //We directly access verb values to detect state here
         tick_combo_verbs();
+        
+        __cursor.__tick();
     }
     
     static tick_basic_verbs = function()

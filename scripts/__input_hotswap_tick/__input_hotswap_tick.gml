@@ -130,7 +130,7 @@ function __input_hotswap_tick_input()
     
     if (global.__input_any_mouse_binding_defined
     &&  input_source_is_available(INPUT_MOUSE)
-    && ((INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && global.__input_mouse_moved) || input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
+    && ((INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && global.__input_pointer_moved) || input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
     {
         if (INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_MOUSE);
         return INPUT_MOUSE;

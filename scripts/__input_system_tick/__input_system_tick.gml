@@ -96,28 +96,28 @@ function __input_system_tick()
     
     #region Mouse
     
-    var _mouse_x = 0;
-    var _mouse_y = 0;
+    var _pointer_x = 0;
+    var _pointer_y = 0;
     
-    switch (INPUT_MOUSE_MODE)
+    switch(global.__input_pointer_coord_space)
     {
         case 0:
-            _mouse_x = device_mouse_x(global.__input_pointer_index);
-            _mouse_y = device_mouse_y(global.__input_pointer_index);
+            _pointer_x = device_mouse_x(global.__input_pointer_index);
+            _pointer_y = device_mouse_y(global.__input_pointer_index);
         break;
         
         case 1:
-            _mouse_x = device_mouse_x_to_gui(global.__input_pointer_index);
-            _mouse_y = device_mouse_y_to_gui(global.__input_pointer_index);
+            _pointer_x = device_mouse_x_to_gui(global.__input_pointer_index);
+            _pointer_y = device_mouse_y_to_gui(global.__input_pointer_index);
         break;
         
         case 2:
-            _mouse_x = device_mouse_raw_x(global.__input_pointer_index);
-            _mouse_y = device_mouse_raw_y(global.__input_pointer_index);
+            _pointer_x = device_mouse_raw_x(global.__input_pointer_index);
+            _pointer_y = device_mouse_raw_y(global.__input_pointer_index);
         break;
         
         default:
-            __input_error("Invalid mouse mode (", INPUT_MOUSE_MODE, ")");
+            __input_error("Invalid mouse coordinate space (", global.__input_pointer_coord_space, ")\nPlease use a value from the INPUT_COORD_SPACE enum");
         break;
     }
     
@@ -125,16 +125,16 @@ function __input_system_tick()
     if (is_method(global.__input_mouse_transform_method))
     {
         static _transform_struct = {};
-        _transform_struct.x = _mouse_x;
-        _transform_struct.y = _mouse_y;
+        _transform_struct.x = _pointer_x;
+        _transform_struct.y = _pointer_y;
         global.__input_mouse_transform_method(_transform_struct);
-        _mouse_x = _transform_struct.x;
-        _mouse_y = _transform_struct.y;
+        _pointer_x = _transform_struct.x;
+        _pointer_y = _transform_struct.y;
     }
     
-    global.__input_mouse_moved = (point_distance(_mouse_x, _mouse_y, global.__input_mouse_x, global.__input_mouse_y) > INPUT_MOUSE_MOVE_DEADZONE);
-    global.__input_mouse_x = _mouse_x;
-    global.__input_mouse_y = _mouse_y;
+    global.__input_pointer_moved = (point_distance(_pointer_x, _pointer_y, global.__input_pointer_x, global.__input_pointer_y) > INPUT_MOUSE_MOVE_DEADZONE);
+    global.__input_pointer_x = _pointer_x;
+    global.__input_pointer_y = _pointer_y;
     
     //Track Window focus
     global.__input_window_focus_previous = global.__input_window_focus;

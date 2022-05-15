@@ -52,11 +52,6 @@ function __input_initialize()
     //Whether momentary input has been cleared
     global.__input_cleared = false;
     
-    //Mouse tracking variables. These are used to detect when the mouse has moved
-    global.__input_mouse_x     = 0;
-    global.__input_mouse_y     = 0;
-    global.__input_mouse_moved = false;
-    
     //The developer can also opt to use a method to transform mouse coordinates
     global.__input_mouse_transform_method = undefined;
     
@@ -74,6 +69,10 @@ function __input_initialize()
     global.__input_pointer_released      = false;
     global.__input_pointer_pressed_index = undefined;
     global.__input_pointer_durations     = array_create(INPUT_MAX_TOUCHPOINTS, 0);
+    global.__input_pointer_coord_space   = INPUT_COORD_SPACE.ROOM;
+    global.__input_pointer_x             = 0;
+    global.__input_pointer_y             = 0;
+    global.__input_pointer_moved         = false;
     
     //Whether to strictly verify bindings match auto profiles
     //This is set to <true> on boot, causing Input to throw an error, otherwise this is <false>

@@ -167,7 +167,7 @@ function __input_source_any_input(_source, _gamepad)
         break;
         
         case __INPUT_SOURCE.MOUSE:
-            return (global.__input_any_mouse_binding_defined && (global.__input_mouse_moved || input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()));
+            return (global.__input_any_mouse_binding_defined && (global.__input_pointer_moved || input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()));
         break;
         
         case __INPUT_SOURCE.GAMEPAD:
