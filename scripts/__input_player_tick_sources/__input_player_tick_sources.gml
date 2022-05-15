@@ -195,11 +195,7 @@ function __input_player_tick_sources()
                         var _binding = _alternate_array[_alternate];
                         
                         //If we're in multidevice mode, break out of this binding if it doesn't match this gamepad
-                        if (_is_multidevice_player && (_binding.__gamepad_index != undefined) && (_source_gamepad != _binding.__gamepad_index))
-                        {
-                            ++_s;
-                            continue;
-                        }
+                        if (_is_multidevice_player && (_binding.__gamepad_index != undefined) && (_source_gamepad != _binding.__gamepad_index)) continue;
                         
                         switch(_binding.type)
                         {
