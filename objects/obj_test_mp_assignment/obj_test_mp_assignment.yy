@@ -26,8 +26,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Players",
-    "path": "folders/Test Cases/Players.yy",
+    "name": "Test Cases",
+    "path": "folders/Test Cases.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_test_mp_assignment",

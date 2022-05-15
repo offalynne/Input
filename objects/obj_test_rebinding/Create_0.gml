@@ -1,2 +1,2 @@
 rebinding = false;
-rebinding_profile = undefined;
+rebinding_source = undefined;

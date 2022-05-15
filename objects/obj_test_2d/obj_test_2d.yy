@@ -24,8 +24,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Checkers",
-    "path": "folders/Test Cases/Checkers.yy",
+    "name": "Test Cases",
+    "path": "folders/Test Cases.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_test_2d",

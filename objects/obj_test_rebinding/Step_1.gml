@@ -2,7 +2,7 @@ if (input_keyboard_check_pressed(vk_escape) || input_gamepad_check_pressed(input
 
 if (rebinding)
 {
-    var _binding = input_binding_scan_tick(rebinding_profile);
+    var _binding = input_binding_scan_tick();
     if (_binding != undefined)
     {
         input_binding_set_safe("up", _binding);
@@ -14,24 +14,24 @@ else
     if (input_keyboard_check_pressed(ord("1")) || input_gamepad_check_pressed(input_player_get_gamepad(), gp_face1))
     {
         rebinding = true;
-        rebinding_profile = input_profile_get();
+        rebinding_source = input_source_get_array();
     }
     
     if (input_keyboard_check_pressed(ord("2")) || input_gamepad_check_pressed(input_player_get_gamepad(), gp_face2))
     {
         rebinding = true;
-        rebinding_profile = INPUT_AUTO_PROFILE_FOR_KEYBOARD;
+        rebinding_source = INPUT_KEYBOARD;
     }
     
     if (input_keyboard_check_pressed(ord("3")) || input_gamepad_check_pressed(input_player_get_gamepad(), gp_face3))
     {
         rebinding = true;
-        rebinding_profile = INPUT_AUTO_PROFILE_FOR_GAMEPAD;
+        rebinding_source = INPUT_GAMEPAD;
     }
     
     if (input_keyboard_check_pressed(ord("R")))
     {
         rebinding = false;
-        input_binding_remove("up", rebinding_profile);
+        input_binding_remove("up", rebinding_source);
     }
 }
