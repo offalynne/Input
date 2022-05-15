@@ -19,4 +19,9 @@
 #macro INPUT_CURSOR_VERB_LEFT   "left"
 #macro INPUT_CURSOR_VERB_RIGHT  "right"
 
+//The default speed for cursors when the game boots up
+//This can be changed with input_cursor_speed_set()
+#macro INPUT_CURSOR_START_SPEED  5
+
+//Cursor movement exponent. This is applied when using keyboard and gamepad controls
 #macro INPUT_CURSOR_EXPONENT  1

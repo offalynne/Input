@@ -70,9 +70,15 @@ function __input_initialize()
     global.__input_pointer_pressed_index = undefined;
     global.__input_pointer_durations     = array_create(INPUT_MAX_TOUCHPOINTS, 0);
     global.__input_pointer_coord_space   = INPUT_COORD_SPACE.ROOM;
-    global.__input_pointer_x             = 0;
-    global.__input_pointer_y             = 0;
+    global.__input_pointer_x             = array_create(INPUT_COORD_SPACE.__SIZE, 0);
+    global.__input_pointer_y             = array_create(INPUT_COORD_SPACE.__SIZE, 0);
+    global.__input_pointer_dx            = array_create(INPUT_COORD_SPACE.__SIZE, 0);
+    global.__input_pointer_dy            = array_create(INPUT_COORD_SPACE.__SIZE, 0);
     global.__input_pointer_moved         = false;
+    
+    global.__input_mouse_capture             = false;
+    global.__input_mouse_capture_sensitivity = false;
+    global.__input_mouse_capture_frame       = false;
     
     //Whether to strictly verify bindings match auto profiles
     //This is set to <true> on boot, causing Input to throw an error, otherwise this is <false>

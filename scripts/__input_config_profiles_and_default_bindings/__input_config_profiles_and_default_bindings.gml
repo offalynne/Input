@@ -18,7 +18,7 @@ INPUT_DEFAULT_PROFILES = {
         left:  input_binding_key(vk_left),
         right: input_binding_key(vk_right),
         
-        accept:  input_binding_key(vk_space),
+        accept:  [input_binding_key(vk_space), input_binding_mouse_button(mb_left)],
         cancel:  input_binding_key(vk_backspace),
         action:  input_binding_key(vk_enter),
         special: input_binding_key(vk_shift),

@@ -5,11 +5,11 @@
 
 //Verb to use to allow a player to cancel multiplayer source assignment
 //This macro must be set for multiplayer assignment to work
-#macro INPUT_MULTIPLAYER_LEAVE_VERB  undefined
+#macro INPUT_MULTIPLAYER_LEAVE_VERB  "cancel"
 
 //The function to call when a player tries to abort multiplayer source assignment
 //This macro must be set for multiplayer assignment to work
-#macro INPUT_MULTIPLAYER_ABORT_CALLBACK  undefined
+#macro INPUT_MULTIPLAYER_ABORT_CALLBACK  (function(){})
 
 
 
