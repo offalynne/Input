@@ -76,7 +76,8 @@ function input_binding_test_collisions(_verb_name, _src_binding, _player_index =
                     {
                         if ((_extant_binding.type          == _src_binding.type)
                         &&  (_extant_binding.value         == _src_binding.value)
-                        &&  (_extant_binding.axis_negative == _src_binding.axis_negative))
+                        &&  (_extant_binding.axis_negative == _src_binding.axis_negative)
+                        &&  ((global.__input_source_mode != INPUT_SOURCE_MODE.MULTIDEVICE) || (_extant_binding.__gamepad_index == _src_binding.__gamepad_index)))
                         {
                             array_push(_output_array, { verb: _verb, alternate: _alternate_index });
                         }
