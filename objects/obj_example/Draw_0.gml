@@ -1,12 +1,12 @@
-var _string  = "Left          = " + string(input_value("left"   )) + "    " + string(input_binding_get_name(input_binding_get("left"   ))) + "\n";
-    _string += "Right         = " + string(input_value("right"  )) + "    " + string(input_binding_get_name(input_binding_get("right"  ))) + "\n";
-    _string += "Up            = " + string(input_value("up"     )) + "    " + string(input_binding_get_name(input_binding_get("up"     ))) + "\n";
-    _string += "Down          = " + string(input_value("down"   )) + "    " + string(input_binding_get_name(input_binding_get("down"   ))) + "\n";
-    _string += "Accept        = " + string(input_value("accept" )) + "    " + string(input_binding_get_name(input_binding_get("accept" ))) + "\n";
-    _string += "Cancel        = " + string(input_value("cancel" )) + "    " + string(input_binding_get_name(input_binding_get("cancel" ))) + "\n";
-    _string += "Pause         = " + string(input_value("pause"  )) + "    " + string(input_binding_get_name(input_binding_get("pause"  ))) + "\n";
-    _string += "Recent (all)  = " + string(input_check_press_most_recent()) + "\n";
-    _string += "Recent (4dir) = " + string(input_check_press_most_recent(["left", "right", "up", "down"])) + "\n";
-    _string += "Repeat        = " + string(input_check_repeat("up"));
-
+var _string = "";
+_string += concat("Left          = ", input_value("left"  ), "    ", input_binding_get_name(input_binding_get("left"  )), "\n");
+_string += concat("Right         = ", input_value("right" ), "    ", input_binding_get_name(input_binding_get("right" )), "\n");
+_string += concat("Up            = ", input_value("up"    ), "    ", input_binding_get_name(input_binding_get("up"    )), "\n");
+_string += concat("Down          = ", input_value("down"  ), "    ", input_binding_get_name(input_binding_get("down"  )), "\n");
+_string += concat("Accept        = ", input_value("accept"), "    ", input_binding_get_name(input_binding_get("accept")), "\n");
+_string += concat("Cancel        = ", input_value("cancel"), "    ", input_binding_get_name(input_binding_get("cancel")), "\n");
+_string += concat("Pause         = ", input_value("pause" ), "    ", input_binding_get_name(input_binding_get("pause" )), "\n");
+_string += concat("Recent (all)  = ", input_check_press_most_recent(), "\n");
+_string += concat("Recent (4dir) = ", input_check_press_most_recent(["left", "right", "up", "down"]), "\n");
+_string += concat("Repeat        = ", input_check_repeat("up"), "\n");
 draw_text(10, 10, _string);
