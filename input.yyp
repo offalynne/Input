@@ -119,7 +119,7 @@
     {"id":{"name":"input_keyboard_check","path":"scripts/input_keyboard_check/input_keyboard_check.yy",},"order":0,},
     {"id":{"name":"input_verb_group_active","path":"scripts/input_verb_group_active/input_verb_group_active.yy",},"order":3,},
     {"id":{"name":"input_is_analogue","path":"scripts/input_is_analogue/input_is_analogue.yy",},"order":11,},
-    {"id":{"name":"__input_finalize_defaults","path":"scripts/__input_finalize_defaults/__input_finalize_defaults.yy",},"order":29,},
+    {"id":{"name":"__input_finalize_default_profiles","path":"scripts/__input_finalize_default_profiles/__input_finalize_default_profiles.yy",},"order":29,},
     {"id":{"name":"input_mouse_check","path":"scripts/input_mouse_check/input_mouse_check.yy",},"order":0,},
     {"id":{"name":"__input_class_combo_state","path":"scripts/__input_class_combo_state/__input_class_combo_state.yy",},"order":9,},
     {"id":{"name":"input_source_mode_set","path":"scripts/input_source_mode_set/input_source_mode_set.yy",},"order":0,},

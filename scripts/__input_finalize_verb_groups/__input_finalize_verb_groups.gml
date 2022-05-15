@@ -2,6 +2,8 @@
 
 function __input_finalize_verb_groups()
 {
+    if (global.__input_initialization_phase != "__input_finalize_verb_groups") return;
+    
     if (!is_struct(global.__input_group_to_verbs_dict))
     {
         __input_error("INPUT_VERB_GROUPS must contain a struct (was ", typeof(global.__input_group_to_verbs_dict), ")\nDocumentation on INPUT_VERB_GROUPS can be found offline in __input_config_verbs()\nOnline documentation can be found at https://jujuadams.github.io/Input");

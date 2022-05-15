@@ -1,7 +1,9 @@
-#macro INPUT_DEFAULT_PROFILES __input_initialize(); for(var _i = 0; _i < 2; _i++) if (_i == 1) __input_finalize_defaults() else if (is_struct(global.__input_default_profile_dict)) break else global.__input_default_profile_dict
+#macro INPUT_DEFAULT_PROFILES __input_initialize(); for(var _i = 0; _i < 2; _i++) if (_i == 1) __input_finalize_default_profiles() else if (is_struct(global.__input_default_profile_dict)) break else global.__input_default_profile_dict
 
-function __input_finalize_defaults()
+function __input_finalize_default_profiles()
 {
+    if (global.__input_initialization_phase != "__input_finalize_default_profiles") return;
+    
     if (!is_struct(global.__input_default_profile_dict))
     {
         __input_error("INPUT_DEFAULT_PROFILES must contain a struct (was ", typeof(global.__input_default_profile_dict), ")\nDocumentation on INPUT_DEFAULT_PROFILES can be found offline in __input_config_default_profiles()\nOnline documentation can be found at https://jujuadams.github.io/Input");
@@ -172,18 +174,4 @@ function __input_finalize_defaults()
     
     //And turn strict checks off!
     global.__input_strict_binding_check = false;
-    
-    //Resolve the starting source mode
-    input_source_mode_set(INPUT_STARTING_SOURCE_MODE);
-    
-    if (INPUT_STARTING_SOURCE_MODE == INPUT_SOURCE_MODE.MIXED)
-    {
-        if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MIXED)) __input_error("Default profile for mixed \"", INPUT_AUTO_PROFILE_FOR_MIXED, "\" has not been defined in INPUT_DEFAULT_PROFILES");
-        input_profile_set(INPUT_AUTO_PROFILE_FOR_MIXED);
-    }
-    else if (INPUT_STARTING_SOURCE_MODE == INPUT_SOURCE_MODE.MULTIDEVICE)
-    {
-        if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MULTIDEVICE)) __input_error("Default profile for multidevice \"", INPUT_AUTO_PROFILE_FOR_MULTIDEVICE, "\" has not been defined in INPUT_DEFAULT_PROFILES");
-        input_profile_set(INPUT_AUTO_PROFILE_FOR_MULTIDEVICE);
-    }
 }

@@ -2,7 +2,8 @@ __input_initialize();
 
 function __input_initialize()
 {
-    if (variable_global_exists("__input_frame")) return false;
+    if (variable_global_exists("__input_initialization_phase")) return false;
+    global.__input_initialization_phase = "Pending";
     
     //Set up the extended debug functionality
     global.__input_debug_log = "input___" + string_replace_all(string_replace_all(date_datetime_string(date_current_datetime()), ":", "-"), " ", "___") + ".txt";
@@ -667,6 +668,34 @@ function __input_initialize()
         INPUT_GAMEPAD[@ _g] = new __input_class_source(__INPUT_SOURCE.GAMEPAD, _g);
         ++_g;
     }
+    
+    
+    
+    global.__input_initialization_phase = "__input_finalize_default_profiles";
+    __input_config_profiles_and_default_bindings();
+    
+    global.__input_initialization_phase = "__input_finalize_verb_groups";
+    __input_config_verbs();
+    
+    
+    
+    //Resolve the starting source mode
+    input_source_mode_set(INPUT_STARTING_SOURCE_MODE);
+    
+    if (INPUT_STARTING_SOURCE_MODE == INPUT_SOURCE_MODE.MIXED)
+    {
+        if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MIXED)) __input_error("Default profile for mixed \"", INPUT_AUTO_PROFILE_FOR_MIXED, "\" has not been defined in INPUT_DEFAULT_PROFILES");
+        input_profile_set(INPUT_AUTO_PROFILE_FOR_MIXED);
+    }
+    else if (INPUT_STARTING_SOURCE_MODE == INPUT_SOURCE_MODE.MULTIDEVICE)
+    {
+        if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MULTIDEVICE)) __input_error("Default profile for multidevice \"", INPUT_AUTO_PROFILE_FOR_MULTIDEVICE, "\" has not been defined in INPUT_DEFAULT_PROFILES");
+        input_profile_set(INPUT_AUTO_PROFILE_FOR_MULTIDEVICE);
+    }
+    
+    
+    
+    global.__input_initialization_phase = "Complete";
     
     return true;
 }
