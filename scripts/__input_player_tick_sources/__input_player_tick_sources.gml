@@ -67,7 +67,7 @@ function __input_player_tick_sources()
                                 //If we're on Android then check the alternate keyboard key as well
                                 if (os_type == os_android)
                                 {
-                                    if ((_binding.android_lowercase != undefined) && keyboard_check(_binding.android_lowercase))
+                                    if ((_binding.__android_lowercase != undefined) && keyboard_check(_binding.__android_lowercase))
                                     {
                                         _value        = 1.0;
                                         _raw          = 1.0;

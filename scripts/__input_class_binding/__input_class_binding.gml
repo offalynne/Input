@@ -10,8 +10,9 @@ function __input_class_binding() constructor
     
     //We have an additional field on Android
     //This is used to check for uppercase *and* lowercase letters as Android checks for both individually
-    android_lowercase = undefined;
+    __android_lowercase = undefined;
     
+    //Accessibility features
     __threshold_min = undefined;
     __threshold_max = undefined;
     
@@ -61,7 +62,7 @@ function __input_class_binding() constructor
         if (value                 != undefined) _binding_shell.value               = value;
         if (axis_negative         != undefined) _binding_shell.axis_negative       = axis_negative;
         if (__gamepad_description != undefined) _binding_shell.gamepad_description = __gamepad_description;
-        if (android_lowercase     != undefined) _binding_shell.android_lowercase   = android_lowercase;
+        if (__android_lowercase   != undefined) _binding_shell.android_lowercase   = __android_lowercase;
         if (__threshold_min       != undefined) _binding_shell.threshold_min       = __threshold_min;
         if (__threshold_max       != undefined) _binding_shell.threshold_max       = __threshold_max;
         
@@ -80,7 +81,7 @@ function __input_class_binding() constructor
         if (_binding_shell[$ "value"              ] != undefined) value                 = _binding_shell.value;
         if (_binding_shell[$ "axis_negative"      ] != undefined) axis_negative         = _binding_shell.axis_negative;
         if (_binding_shell[$ "gamepad_description"] != undefined) __gamepad_description = _binding_shell.gamepad_description;
-        if (_binding_shell[$ "android_lowercase"  ] != undefined) android_lowercase     = _binding_shell.android_lowercase;
+        if (_binding_shell[$ "android_lowercase"  ] != undefined) __android_lowercase   = _binding_shell.android_lowercase;
         if (_binding_shell[$ "threshold_min"      ] != undefined) __threshold_min       = _binding_shell.threshold_min;
         if (_binding_shell[$ "threshold_max"      ] != undefined) __threshold_max       = _binding_shell.threshold_max;
         
@@ -115,7 +116,9 @@ function __input_class_binding() constructor
             label                 = other.label;
             __gamepad_index       = other.__gamepad_index;
             __gamepad_description = other.__gamepad_description;
-            android_lowercase     = other.android_lowercase;
+            __android_lowercase   = other.__android_lowercase;
+            __threshold_min       = other.__threshold_min;
+            __threshold_max       = other.__threshold_max;
             return self;
         }
     }
@@ -148,13 +151,13 @@ function __input_class_binding() constructor
             //Grab the keyboard character for this key and force it into lowercase
             //If the lowercase and uppercase keys are different then we'll want to check the lowercase key as well
             var _android_lowercase = ord(string_lower(chr(_key)));
-            if (_android_lowercase != _key) android_lowercase = _android_lowercase;
+            if (_android_lowercase != _key) __android_lowercase = _android_lowercase;
             
             //Some Android devices and soft keyboards use carriage return for Enter, some use newline
             if ((_key == 10) || (_key == 13))
             {
                 _key = 10;
-                android_lowercase = 13;
+                __android_lowercase = 13;
             }
         }
         

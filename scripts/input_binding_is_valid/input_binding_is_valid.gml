@@ -93,7 +93,7 @@ function input_binding_is_valid(_binding, _player_index = 0)
                     return false;
                 }
                 
-                var _lowercase = _binding.android_lowercase;
+                var _lowercase = _binding.__android_lowercase;
                 if ((_lowercase != undefined) && !__input_key_is_ignored(_lowercase)
                 &&  (_lowercase >= __INPUT_KEYCODE_MIN) && (_lowercase <= __INPUT_KEYCODE_MAX))
                 {
