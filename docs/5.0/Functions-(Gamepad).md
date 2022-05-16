@@ -2,7 +2,7 @@
 
 &nbsp;
 
-?> These functions are provided for convenience if you want to implement your own features using Input's implementation of the SDL gamepad mapping system. In general, [Player functions](Functions-(Players)) are the intended way to use Input and are preferred.
+?> These functions are provided for convenience if you want to implement your own features using Input's implementation of the SDL gamepad mapping system. In general, [verbs](Verbs-and-Bindings) are the intended way to use Input and are preferred.
 
 &nbsp;
 

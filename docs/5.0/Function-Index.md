@@ -155,6 +155,28 @@
 
 &nbsp;
 
+## [Mouse (Direct)](Functions-(Mouse))
+
+- [`input_mouse_capture_set(coordSpace)`](Functions-(Mouse)#input_mouse_y)
+- [`input_mouse_capture_get(coordSpace)`](Functions-(Mouse)#input_mouse_y)
+- [`input_mouse_x()`](Functions-(Mouse)#input_mouse_x)
+- [`input_mouse_y()`](Functions-(Mouse)#input_mouse_y)
+- [`input_mouse_dx()`](Functions-(Mouse)#input_mouse_x)
+- [`input_mouse_dy()`](Functions-(Mouse)#input_mouse_y)
+- [`input_mouse_moved()`](Functions-(Mouse)#input_mouse_moved)
+- [`input_mouse_transform_function_set()`](Functions-(Mouse)?id=input_mouse_transform_function_setmethod)
+- [`input_mouse_transform_function_get()`](Functions-(Mouse)?id=input_mouse_transform_method_get)
+- [`input_mouse_coord_space_set(coordSpace)`](Functions-(Mouse)#input_mouse_y)
+- [`input_mouse_coord_space_get(coordSpace)`](Functions-(Mouse)#input_mouse_y)
+
+?> The following mouse functions are provided for convenience if you want to implement your own features using Input's mouse implementation. In general, [verbs](Verbs-and-Bindings) are the intended way to use Input and are preferred.
+
+- [`input_mouse_check(button)`](Functions-(Mouse)#input_mouse_checkbutton)
+- [`input_mouse_check_pressed(button)`](Functions-(Mouse)#input_mouse_check_pressedbutton)
+- [`input_mouse_check_released(button)`](Functions-(Mouse)#input_mouse_check_releasedbutton)
+
+&nbsp;
+
 ## [Other](Functions-(Other))
 
 - [`input_tick()`](Functions-(Other)?id=input_tick)
@@ -168,7 +190,7 @@
 
 ## [Gamepad (Direct)](Functions-(Gamepad))
 
-?> Gamepad functions are provided for convenience if you want to implement your own features using Input's SDL implementation. In general, [Player functions](Function-Index#players) are the intended way to use Input and are preferred.
+?> Gamepad functions are provided for convenience if you want to implement your own features using Input's SDL implementation. In general, [verbs](Verbs-and-Bindings) are the intended way to use Input and are preferred.
 
 - [`input_gamepad_check(gamepadIndex, GMconstant)`](Functions-(Gamepad)#input_gamepad_checkgamepadindex-gmconstant)
 - [`input_gamepad_check_pressed(gamepadIndex, GMconstant)`](Functions-(Gamepad)#input_gamepad_check_pressedgamepadindex-gmconstant)
@@ -190,29 +212,8 @@
 
 ## [Keyboard (Direct)](Functions-(Keyboard))
 
-?> Keyboard functions are provided for convenience if you want to implement your own features using Input's keyboard implementation. In general, [Player functions](Function-Index#players) are the intended way to use Input and are preferred.
+?> Keyboard functions are provided for convenience if you want to implement your own features using Input's keyboard implementation. In general, [verbs](Verbs-and-Bindings) are the intended way to use Input and are preferred.
 
 - [`input_keyboard_check(button)`](Functions-(Keyboard)#input_keyboard_checkkey)
 - [`input_keyboard_check_pressed(button)`](Functions-(Keyboard)#input_keyboard_check_pressedkey)
 - [`input_keyboard_check_released(button)`](Functions-(Keyboard)#input_keyboard_check_releasedkey)
-
-&nbsp;
-
-## [Mouse (Direct)](Functions-(Mouse))
-
-?> Mouse functions are provided for convenience if you want to implement your own features using Input's mouse implementation. In general, [Player functions](Function-Index#players) are the intended way to use Input and are preferred.
-
-- [`input_mouse_check(button)`](Functions-(Mouse)#input_mouse_checkbutton)
-- [`input_mouse_check_pressed(button)`](Functions-(Mouse)#input_mouse_check_pressedbutton)
-- [`input_mouse_check_released(button)`](Functions-(Mouse)#input_mouse_check_releasedbutton)
-- [`input_mouse_x()`](Functions-(Mouse)#input_mouse_x)
-- [`input_mouse_y()`](Functions-(Mouse)#input_mouse_y)
-- [`input_mouse_dx()`](Functions-(Mouse)#input_mouse_x)
-- [`input_mouse_dy()`](Functions-(Mouse)#input_mouse_y)
-- [`input_mouse_moved()`](Functions-(Mouse)#input_mouse_moved)
-- [`input_mouse_transform_function_set()`](Functions-(Mouse)?id=input_mouse_transform_function_setmethod)
-- [`input_mouse_transform_function_get()`](Functions-(Mouse)?id=input_mouse_transform_method_get)
-- [`input_mouse_coord_space_set(coordSpace)`](Functions-(Mouse)#input_mouse_y)
-- [`input_mouse_coord_space_get(coordSpace)`](Functions-(Mouse)#input_mouse_y)
-- [`input_mouse_capture_set(coordSpace)`](Functions-(Mouse)#input_mouse_y)
-- [`input_mouse_capture_get(coordSpace)`](Functions-(Mouse)#input_mouse_y)

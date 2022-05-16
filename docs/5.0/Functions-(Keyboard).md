@@ -2,7 +2,7 @@
 
 &nbsp;
 
-?> These functions are provided for convenience if you want to implement your own features using Input's keyboard implementation. In general, [Player functions](Functions-(Players)) are the intended way to use Input and are preferred. 
+?> These functions are provided for convenience if you want to implement your own features using Input's keyboard implementation. In general, [verbs](Verbs-and-Bindings) are the intended way to use Input and are preferred.
 
 _These functions are almost directly passed-through and are presently only intended to prevent errors on platforms that do not properly support keyboard input._
 

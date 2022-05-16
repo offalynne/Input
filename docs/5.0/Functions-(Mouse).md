@@ -2,37 +2,33 @@
 
 &nbsp;
 
-?> These functions are provided for convenience if you want to implement your own features using Input's mouse implementation. In general, [Player functions](Functions-(Players)) are the intended way to use Input and are preferred.
+## `input_mouse_capture_set(state, [sensitivity])`
+
+*Returns:* N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                                                                                                                                                    |
+|---------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`state`        |boolean |Whether to capture the mouse in the game window                                                                                                                            |
+|`[sensitivity]`|number  |The relative movement speed for Input's built-in mouse tracking. Higher values increase speed, lower values decrease speed. If not specified, the sensitivity is set to `1`|
+
+?> This function will not hide (or unhide) the OS mouse cursor. Please use GameMaker's native [`window_set_cursor()`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Cameras_And_Display/The_Game_Window/window_set_cursor.htm).
 
 &nbsp;
 
-## `input_mouse_check(button)`
+## `input_mouse_capture_get()`
 
-*Returns:* Boolean, if the button is currently activated
+*Returns:* Struct, the mouse capture state. See below
 
-|Name    |Datatype|Purpose                                               |
-|--------|--------|------------------------------------------------------|
-|`button`|integer |Button to check, using GameMaker's native [virtual button constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/mouse%20input/index.html)|
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
 
-&nbsp;
+The struct returned by the function contains the following member variables:
 
-## `input_mouse_check_pressed(button)`
-
-*Returns:* Boolean, if the button is newly activated this frame
-
-|Name    |Datatype|Purpose                                               |
-|--------|--------|------------------------------------------------------|
-|`button`|integer |Button to check, using GameMaker's native [virtual button constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/mouse%20input/index.html)|
-
-&nbsp;
-
-## `input_mouse_check_released(button)`
-
-*Returns:* Boolean, if the button/axis is newly deactivated this frame
-
-|Name    |Datatype|Purpose                                               |
-|--------|--------|------------------------------------------------------|
-|`button`|integer |Button to check, using GameMaker's native [virtual button constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/mouse%20input/index.html)|
+|Name          |Datatype|Purpose                                   |
+|--------------|--------|------------------------------------------|
+|`.capture`    |boolean |Whether the mouse is being captured or not|
+|`.sensitivity`|number  |The sensitivity for mouse movement        |
 
 &nbsp;
 
@@ -128,30 +124,34 @@ This function will return `undefined` if no transformation function has been def
 
 &nbsp;
 
-## `input_mouse_capture_set(state, [sensitivity])`
-
-*Returns:* N/A (`undefined`)
-
-|Name           |Datatype|Purpose                                                                                                                                                                    |
-|---------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`state`        |boolean |Whether to capture the mouse in the game window                                                                                                                            |
-|`[sensitivity]`|number  |The relative movement speed for Input's built-in mouse tracking. Higher values increase speed, lower values decrease speed. If not specified, the sensitivity is set to `1`|
-
-?> This function will not hide (or unhide) the OS mouse cursor. Please use GameMaker's native [`window_set_cursor()`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Cameras_And_Display/The_Game_Window/window_set_cursor.htm).
+?> The following functions are provided for convenience if you want to implement your own features using Input's mouse implementation. In general, [verbs](Verbs-and-Bindings) are the intended way to use Input and are preferred.
 
 &nbsp;
 
-## `input_mouse_capture_get()`
+## `input_mouse_check(button)`
 
-*Returns:* Struct, the mouse capture state. See below
+*Returns:* Boolean, if the button is currently activated
 
-|Name|Datatype|Purpose|
-|----|--------|-------|
-|None|        |       |
+|Name    |Datatype|Purpose                                               |
+|--------|--------|------------------------------------------------------|
+|`button`|integer |Button to check, using GameMaker's native [virtual button constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/mouse%20input/index.html)|
 
-The struct returned by the function contains the following member variables:
+&nbsp;
 
-|Name          |Datatype|Purpose                                   |
-|--------------|--------|------------------------------------------|
-|`.capture`    |boolean |Whether the mouse is being captured or not|
-|`.sensitivity`|number  |The sensitivity for mouse movement        |
+## `input_mouse_check_pressed(button)`
+
+*Returns:* Boolean, if the button is newly activated this frame
+
+|Name    |Datatype|Purpose                                               |
+|--------|--------|------------------------------------------------------|
+|`button`|integer |Button to check, using GameMaker's native [virtual button constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/mouse%20input/index.html)|
+
+&nbsp;
+
+## `input_mouse_check_released(button)`
+
+*Returns:* Boolean, if the button/axis is newly deactivated this frame
+
+|Name    |Datatype|Purpose                                               |
+|--------|--------|------------------------------------------------------|
+|`button`|integer |Button to check, using GameMaker's native [virtual button constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/mouse%20input/index.html)|
