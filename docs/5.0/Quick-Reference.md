@@ -49,7 +49,6 @@
 - [`input_source_mode_set(state)`](Functions-(Sources)?id=input_source_mode_setmode)
 - [`input_source_mode_get()`](Functions-(Sources)?id=input_source_mode_get)
 
-
 &nbsp;
 
 ## Console Compliance
@@ -75,8 +74,9 @@
 ## Rebinding
 
 - [`input_player_get_invalid_gamepad_bindings([playerIndex], [profileName])`](Functions-(Players)?id=input_player_get_invalid_gamepad_bindingsplayerindex)
-- [`input_value_is_binding(value)`](Functions-(Binding-Creators)#input_value_is_bindingvalue)
-- [`input_binding_scan_tick([sourceFilter], [playerIndex])`](Functions-(Binding-Creators)?id=input_binding_scan_ticksource-playerindex)
+- [`input_binding_scan_start(successCallback, [failureCallback], [sourceFilter], [playerIndex])`](Functions-(Binding-Creators)?id=input_binding_scan_startsuccesscallback-failurecallback-sourcefilter-playerindex)
+- [`input_binding_scan_abort([playerIndex])`](Functions-(Binding-Creators)?id=input_binding_scan_abortplayerindex)
+- [`input_binding_scan_in_progress([playerIndex])`](Functions-(Binding-Creators)?id=input_binding_scan_in_progressplayerindex)
 - [`input_binding_set_safe(verb, binding, [playerIndex], [alternate], [profileName])`](Functions-(Binding-Access)?id=input_binding_set_safeverb-binding-playerindex-alternate-profilename)
 - [`input_profile_reset_bindings(profileName, [playerIndex])`](Functions-(Profiles)?id=input_profile_reset_bindingsprofilename-playerindex)
 - [`input_bindings_reset([source], [playerIndex], [resetThresholds])`](Functions-(Binding-System)#input_bindings_resetsource-playerindex-resetthresholds)
