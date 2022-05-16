@@ -13,10 +13,10 @@ function __input_player_tick_sources()
         
         var _raw           = 0.0;
         var _value         = 0.0;
-        var _analogue      = undefined;
-        var _raw_analogue  = undefined;
-        var _min_threshold = undefined;
-        var _max_threshold = undefined;
+        var _analogue      = false;
+        var _raw_analogue  = false;
+        var _min_threshold = 0;
+        var _max_threshold = 1;
         
         with(_verb_struct)
         {

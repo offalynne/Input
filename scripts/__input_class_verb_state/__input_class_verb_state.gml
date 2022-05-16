@@ -12,8 +12,8 @@ function __input_class_verb_state() constructor
     raw            = 0.0;
     analogue       = false;
     raw_analogue   = false;
-    min_threshold  = undefined;
-    max_threshold  = undefined;
+    min_threshold  = 0;
+    max_threshold  = 1;
     force_value    = undefined;
     force_analogue = undefined;
     
@@ -71,7 +71,7 @@ function __input_class_verb_state() constructor
         
         __toggle_value = value;
         
-        if (global.__input_toggle_momentary && (type == __INPUT_VERB_TYPE.__BASIC))
+        if (global.__input_toggle_momentary_state && (type == __INPUT_VERB_TYPE.__BASIC) && variable_struct_exists(global.__input_toggle_momentary_dict, name))
         {
             //Catch the leading edge to toggle the verb
             if ((__toggle_prev_value < 0.1) && (__toggle_value > 0.1)) __toggle_state = !__toggle_state;

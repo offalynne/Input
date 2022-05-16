@@ -6,7 +6,7 @@
     "path": "folders/Input/Accessibility.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_accessibility_toggle_momentary_set",
+  "name": "input_accessibility_global_toggle_set",
   "tags": [],
   "resourceType": "GMScript",
 }
