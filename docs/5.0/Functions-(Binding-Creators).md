@@ -89,54 +89,50 @@ The functions on this page allow you to create bindings, either to define [defau
 
 &nbsp;
 
-## `input_binding_scan_tick(source, [playerIndex])`
+## `input_binding_scan_start(successCallback, [failureCallback], [sourceFilter], [playerIndex])`
 
-_Returns:_ Various, see below
+_Returns:_ N/A (`undefined`)
 
-|Name            |Datatype                         |Purpose                                                                                                           |
-|----------------|---------------------------------|------------------------------------------------------------------------------------------------------------------|
-|`[sourceFilter]`|array of [sources](Input-Sources)|[Input sources](Input-Sources) to listen to. If not specified, all of the chosen player's current sources are used|
-|`[playerIndex]` |integer                          |Player to target. If not specified, player 0 is targeted                                                          |
+|Name               |Datatype                         |Purpose                                                                                                                 |
+|-------------------|---------------------------------|------------------------------------------------------------------------------------------------------------------------|
+|`successCallback`  |method                           |Callback function to execute when the binding scan process completes successfully                                       |
+|`[failureCallback]`|method                           |Callback function to execute when the binding scan process fails. If not specified, no function is executed upon failure|
+|`[sourceFilter]`   |array of [sources](Input-Sources)|[Input sources](Input-Sources) to listen to. If not specified, all of the chosen player's current sources are used      |
+|`[playerIndex]`    |integer                          |Player to target. If not specified, player 0 is targeted                                                                |
 
-This function will scan for input from a player and then return a binding struct that reflects what input was detected. If something unexpected happens (for example, the player's controller is disconnected) then this function will return a negative integer as an error code. If no input is currently detected from the player then this function will return `undefined`.
+This function will scan for input from a player and then execute a callback when a new, valid input was detected. The success callback is passed a single argument which is the new binding that corresponds to the detected input. After you receive the new binding in the success callback, you should then set that binding for the desired verb using `input_binding_set_safe()` (or `input_binding_set()` if you want to live dangerously).
 
-Because this function can return multiple different datatypes, it's important to carefully test values being returned from this function before passing them into other functions. Here's an example of how to do basic remapping for your game:
+Bindings that have not been emitted by [sources](Input-Sources) defined by the `sourceFilter` argument will be ignored.
 
-```gml
-//If we're currently trying to rebind a control
-if (rebinding)
-{
-    //Scan for input from our player
-    var _binding = input_binding_scan_tick(INPUT_SOURCE.GAMEPAD);
+If something unexpected happens (for example, the player's gamepad is disconnected) then this function will attempt to execute the failure callback. The failure callback is given a single argument too, though this time the value is an error code from the `INPUT_BINDING_SCAN_EVENT` enum. Error codes that this function can return are as follows:
 
-    //If we have some sort of result - error or success - then proceed
-    if (_binding != undefined)
-    {
-        if (input_value_is_binding(_binding))
-        {
-            //If we got a valid binding then do some rebinding...
-            input_binding_set_safe(verb_to_rebind, _binding);
-        }
-        else
-        {
-            //...otherwise spit out an error into the debug log
-            show_debug_message("Error during rebinding! (" + string(_binding) + ")");
-        }
+|Name                 |Meaning                                                                                                                                                                      |
+|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`.SOURCE_INVALID`    |Player's source is invalid, usually because they have no sources assigned or their gamepad has been disconnected                                                             |
+|`.SOURCE_CHANGED`    |The player's source (or sources) have been modified                                                                                                                          |
+|`.PLAYER_IS_GHOST`   |Player is a ghost and cannot receive hardware input                                                                                                                          |
+|`.SCAN_TIMEOUT`      |Either the player didn't enter a new binding or a stuck key prevented the system from working. The timeout period is defined by [`INPUT_BINDING_SCAN_TIMEOUT`](Configuration)|
+|`.LOST_FOCUS`        |The application lost focus                                                                                                                                                   |
+|`.ABORTED`           |Binding scan was aborted early due to `input_binding_scan_abort()` being called                                                                                              |
 
-        //Whatever the weather, stop rebinding
-        rebinding = false;
-    }
-}
-```
+&nbsp;
 
-Error codes that this function can return are as follows. These are all elements of the `INPUT_BINDING_SCAN_EVENT` enum:
+## `input_binding_scan_abort([playerIndex])`
 
-|Name                 |Meaning                                                                                                                                                                                       |
-|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`.SOURCE_INVALID`    |Player's source is invalid, usually because they have no sources assigned or their gamepad has been disconnected                                                                              |
-|`.SOURCE_CHANGED`    |The player's source (or sources) have been modified                                                                                                                                           |
-|`.PLAYER_IS_GHOST`   |Player is a ghost and cannot receive hardware input                                                                                                                                           |
-|`.SCAN_TIMEOUT`      |Either the player didn't enter a new binding or a stuck key prevented the system from working. The timeout period is defined by [`INPUT_BINDING_SCAN_TIMEOUT`](Configuration)                 |
-|`.LOST_FOCUS`        |The application lost focus                                                                                                                                                                    |
-|`.SUCCESS_THIS_FRAME`|Input scanning has already succeeded this frame - this is a rare error code and should only be returned if `input_binding_scan_tick()` is being called twice in a single frame for some reason|
-|`.ERROR_THIS_FRAME`  |Input scanning has already failed this frame - this is a rare error code and should only be returned if `input_binding_scan_tick()` is being called twice in a single frame for some reason   |
+_Returns:_ N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                                 |
+|---------------|--------|--------------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is targeted|
+
+Aborts binding scanning for the given player.
+
+&nbsp;
+
+## `input_binding_scan_in_progress([playerIndex])`
+
+_Returns:_ Boolean, whether the given player is currently scanning for bindings
+
+|Name           |Datatype|Purpose                                                 |
+|---------------|--------|--------------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is targeted|
