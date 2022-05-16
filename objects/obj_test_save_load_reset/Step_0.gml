@@ -11,7 +11,7 @@ if (input_keyboard_check_pressed(ord("S")))
 {
     input_binding_scan_abort();
     
-    var _string = input_binding_system_write();
+    var _string = input_binding_system_write(all, true, true);
     var _buffer = buffer_create(string_byte_length(_string), buffer_grow, 1);
     buffer_write(_buffer, buffer_text, _string);
     buffer_save(_buffer, "test_saveload.json");

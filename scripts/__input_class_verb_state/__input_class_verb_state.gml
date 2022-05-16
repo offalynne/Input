@@ -44,6 +44,7 @@ function __input_class_verb_state() constructor
     __toggle_value      = 0.0;
     __toggle_state      = false;
     
+    
     static __clear = function()
     {
         previous_value = value;

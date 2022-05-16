@@ -1,7 +1,8 @@
 /// @param [playerIndex=all]
 /// @param [returnString=true]
+/// @param [prettify=false]
 
-function input_binding_system_write(_player_index = all, _return_string = true)
+function input_binding_system_write(_player_index = all, _return_string = true, _prettify = false)
 {
     if (__INPUT_ON_WEB) __input_error("Due to up-stream bug in GameMaker's JavaScript runtime, input_binding_system_read() and input_binding_system_write() are unsupported in HTML5");
     
@@ -16,7 +17,21 @@ function input_binding_system_write(_player_index = all, _return_string = true)
             ++_p;
         }
         
-        return _return_string? json_stringify(_root_json) : _root_json;
+        if (_return_string)
+        {
+            if (_prettify)
+            {
+                return __input_snap_to_json(_root_json, true, true);
+            }
+            else
+            {
+                return json_stringify(_root_json);
+            }
+        }
+        else
+        {
+            return _root_json;
+        }
     }
     
     __INPUT_VERIFY_PLAYER_INDEX
@@ -80,5 +95,19 @@ function input_binding_system_write(_player_index = all, _return_string = true)
         }
     }
     
-    return _return_string? json_stringify(_root_json) : _root_json;
+    if (_return_string)
+    {
+        if (_prettify)
+        {
+            return __input_snap_to_json(_root_json, true, true);
+        }
+        else
+        {
+            return json_stringify(_root_json);
+        }
+    }
+    else
+    {
+        return _root_json;
+    }
 }
