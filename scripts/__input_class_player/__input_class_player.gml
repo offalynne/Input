@@ -464,6 +464,7 @@ function __input_class_player() constructor
                     __group_inactive = true;
                     previous_held    = true; //Force the held state on to avoid unwanted early reset of an inactive verb
                     __inactive       = true;
+                    __toggle_state   = false; //Used for "toggle momentary" accessibility feature
                 }
                 
                 ++_i;
@@ -491,7 +492,12 @@ function __input_class_player() constructor
         if (!is_struct(__verb_state_dict[$ _verb_name]))
         {
             if (INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one");
-            __verb_state_dict[$ _verb_name] = new __input_class_verb_state();
+            
+            var _verb = new __input_class_verb_state();
+            _verb.name = _verb_name;
+            _verb.type = __INPUT_VERB_TYPE.__BASIC;
+            
+            __verb_state_dict[$ _verb_name] = _verb;
         }
         
         var _verb_alternate_array = _profile_struct[$ _verb_name];
@@ -524,7 +530,7 @@ function __input_class_player() constructor
             
             var _verb_state_struct = new __input_class_verb_state();
             _verb_state_struct.name     = _verb_name;
-            _verb_state_struct.type     = "chord";
+            _verb_state_struct.type     = __INPUT_VERB_TYPE.__CHORD;
             _verb_state_struct.analogue = false; //Chord verbs are never analogue
             __verb_state_dict[$ _verb_name] = _verb_state_struct;
             
@@ -547,7 +553,7 @@ function __input_class_player() constructor
             
             var _verb_state_struct = new __input_class_verb_state();
             _verb_state_struct.name     = _verb_name;
-            _verb_state_struct.type     = "combo";
+            _verb_state_struct.type     = __INPUT_VERB_TYPE.__COMBO;
             _verb_state_struct.analogue = false; //Combo verbs are never analogue
             __verb_state_dict[$ _verb_name] = _verb_state_struct;
             

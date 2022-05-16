@@ -58,6 +58,10 @@ function __input_initialize()
     //Windows focus tracking
     global.__input_window_focus = true;
     
+    //Accessibility state
+    global.__input_toggle_momentary = false;
+    global.__input_rate_limit       = false;
+    
     //Windows tap-to-click tracking
     global.__input_tap_presses  = 0;
     global.__input_tap_releases = 0;

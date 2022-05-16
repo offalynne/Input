@@ -39,6 +39,11 @@ function __input_class_verb_state() constructor
     long_held_time    = -1;
     long_release_time = -1;
     
+    //Used for "toggle momentary" accessibility feature 
+    __toggle_prev_value = 0.0;
+    __toggle_value      = 0.0;
+    __toggle_state      = false;
+    
     static __clear = function()
     {
         previous_value = value;
@@ -54,11 +59,27 @@ function __input_class_verb_state() constructor
         
         long_press   = false;
         long_release = false;
+        
+        //Used for "toggle momentary" accessibility feature 
+        __toggle_prev_value = __toggle_value;
+        __toggle_value = 0.0;
     }
     
     static tick = function(_verb_group_state_dict)
     {
         var _time = __input_get_time();
+        
+        __toggle_value = value;
+        
+        if (global.__input_toggle_momentary && (type == __INPUT_VERB_TYPE.__BASIC))
+        {
+            //Catch the leading edge to toggle the verb
+            if ((__toggle_prev_value < 0.1) && (__toggle_value > 0.1)) __toggle_state = !__toggle_state;
+            
+            //Overwrite the values we expose to the player with the toggle state
+            value = __toggle_state;
+            raw   = __toggle_state;
+        }
         
         if (value > 0)
         {

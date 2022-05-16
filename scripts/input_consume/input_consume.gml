@@ -36,9 +36,10 @@ function input_consume(_verb, _player_index = 0)
         
         with(_verb_struct)
         {
-            __consumed    = true;
-            previous_held = true; //Force the held state on to avoid unwanted early reset of a __consumed verb
-            __inactive    = true;
+            __consumed     = true;
+            previous_held  = true; //Force the held state on to avoid unwanted early reset of a __consumed verb
+            __inactive     = true;
+            __toggle_state = false; //Used for "toggle momentary" accessibility feature
         }
         
         //If this verb is a combo then also reset the combo's state

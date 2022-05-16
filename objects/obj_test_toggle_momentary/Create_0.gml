@@ -1,0 +1,1 @@
+input_accessibility_toggle_momentary_set(true);

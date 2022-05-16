@@ -144,6 +144,13 @@ enum __INPUT_COMBO_PHASE_TYPE
     __HOLD_START,
 }
 
+enum __INPUT_VERB_TYPE
+{
+    __BASIC,
+    __CHORD,
+    __COMBO,
+}
+
 
 
 
