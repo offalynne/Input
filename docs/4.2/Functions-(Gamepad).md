@@ -18,7 +18,7 @@
 |`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html). What physical input this actually checks is determined by Input's own SDL remapping system|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_gamepad_check_pressed(gamepadIndex, GMconstant)`
@@ -31,7 +31,7 @@
 |`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html). What physical input this actually checks is determined by Input's own SDL remapping system|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_gamepad_check_released(gamepadIndex, GMconstant)`
@@ -44,7 +44,7 @@
 |`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html). What physical input this actually checks is determined by Input's own SDL remapping system|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_gamepad_value(gamepadIndex, GMconstant)`
@@ -57,7 +57,7 @@
 |`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html). What physical input this actually checks is determined by Input's own SDL remapping system|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_gamepad_is_connected(gamepadIndex)`
@@ -69,7 +69,7 @@
 |`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_gamepad_disconnected()`
@@ -81,7 +81,7 @@
 |None  | |
 
 &nbsp;
-
+---
 &nbsp;
 
 
@@ -105,7 +105,7 @@ The following are valid strings this function may return besides `unknown`:
 !> If you wish to use this function in production for drawing, you will need to specify [color values](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Drawing/Colour_And_Alpha/Colour_And_Alpha.htm) to match the returned string that suit your game's presentation needs and to meet appropriate [contrast specifications](https://webaim.org/resources/contrastchecker/) relative to your other graphics. Do not rely on color alone for button prompts.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_gamepad_get_button_label(gamepadIndex, GMconstant)`
@@ -132,7 +132,7 @@ The following are valid strings this function may return besides `unknown`:
 !> It is reccomended to present players with graphics instead of text for gamepad labels to match non-textual symbols, as well as to extend support beyond English. In Input this is best accomplished by using [binding name values](https://www.jujuadams.com/Input/#/latest/Binding-Names?id=gamepad) to identify gamepad elements [according to device type](https://www.jujuadams.com/Input/#/latest/Gamepad-Button-Labels). Strings returned by this function are intended only as a development aid.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_gamepad_get_description(gamepadIndex)`
@@ -144,7 +144,7 @@ The following are valid strings this function may return besides `unknown`:
 |`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_gamepad_get_type(gamepadIndex)`
@@ -158,7 +158,7 @@ The following are valid strings this function may return besides `unknown`:
 Returns the same values as [`input_player_gamepad_get_type()`](Functions-(Players)#input_player_gamepad_getplayerindex).
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_gamepad_get_dpad_style(gamepadIndex)`
@@ -182,7 +182,7 @@ The following are valid strings this function may return besides `unknown`:
 *Example art courtesy https://thoseawesomeguys.com/prompts ([CC0](https://creativecommons.org/share-your-work/public-domain/cc0))*
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_gamepad_get_map(gamepadIndex)`
@@ -198,7 +198,7 @@ The returned array contains integers that correspond the GameMaker's native [vir
 If there is no gamepad connected for the given index, an empty array will be returned. If no mapping was applied to the gamepad (typically due to the gamepad not being covered by the SDL2 database) then all GameMaker constants are returned in the array.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_gamepad_constant_get_name(GMconstant)`
@@ -210,7 +210,7 @@ If there is no gamepad connected for the given index, an empty array will be ret
 |`GMconstant`  |integer |Button or axis to stringify, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_gamepads_get_status()`

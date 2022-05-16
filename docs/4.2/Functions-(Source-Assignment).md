@@ -19,7 +19,7 @@ Players can join the game by pressing any button on their controller. Players ca
 *N.B. If `maxPlayers` is set to `1` it will not be possible to abort source assignment.*
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_source_hotswap_tick([playerIndex])`
@@ -35,7 +35,7 @@ This function handles [input source](Input-Sources) and [gamepad](https://docs2.
 *N.B. Turn off hotswapping when in a multiplayer mode!*
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_source_get_name(source)`
@@ -49,7 +49,7 @@ This function handles [input source](Input-Sources) and [gamepad](https://docs2.
 This function will return `"none"`, `"keyboard and mouse"`, or `"gamepad"`. If the source type is not recognised then `"unknown"` will be returned.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_source_detect(source, [gamepad])`
@@ -64,7 +64,7 @@ This function will return `"none"`, `"keyboard and mouse"`, or `"gamepad"`. If t
 This function will return `false` if the source has been assigned to a player.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_source_detect_any()`
@@ -78,7 +78,7 @@ This function will return `false` if the source has been assigned to a player.
 This function returns a struct with two member variables: `.source` contains a member of the [`INPUT_SOURCE`](Input-Sources) enum, and `.gamepad` will contain the [gamepad index](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html). If new input is detected from the keyboard and mouse, `.gamepad` will contain `INPUT_NO_GAMEPAD`. If no new input is detected, `.source` will be `INPUT_SOURCE.NONE`.
 
 &nbsp;
-
+---
 &nbsp;
 
 

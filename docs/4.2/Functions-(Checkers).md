@@ -15,7 +15,7 @@
 If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are currently active for the player.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_check_pressed(verb, [playerIndex], [bufferDuration])`
@@ -31,7 +31,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are newly activated this frame for the player.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_check_released(verb, [playerIndex], [bufferDuration])`
@@ -47,7 +47,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are newly deactivated this frame for the player.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_check_repeat(verb, [playerIndex], [delay], [predelay])`
@@ -64,7 +64,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 This function will **not** return `true` on the same frame a verb is activated (unless `predelay` is set to 0). You'll probably want to combine this function with [`input_check_pressed()`](Functions-(Checkers)#input_check_pressedverb-playerindex-bufferduration).
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_check_double(verb, [playerIndex], [bufferDuration])`
@@ -80,7 +80,7 @@ This function will **not** return `true` on the same frame a verb is activated (
 If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are currently active for the player. The maximum delay between button presses to activate this function is given by [`INPUT_DOUBLE_DELAY`](Configuration).
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_check_double_pressed(verb, [playerIndex], [bufferDuration])`
@@ -96,7 +96,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are newly activated this frame for the player. The maximum delay between button presses to activate this function is given by [`INPUT_DOUBLE_DELAY`](Configuration).
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_check_double_released(verb, [playerIndex], [bufferDuration])`
@@ -112,7 +112,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are newly deactivated this frame for the player. The maximum delay between button presses to activate this function is given by [`INPUT_DOUBLE_DELAY`](Configuration).
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_check_long(verb, [playerIndex], [bufferDuration])`
@@ -128,7 +128,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are currently active for the player. The hold time required to activate this function is given by [`INPUT_LONG_DELAY`](Configuration).
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_check_long_pressed(verb, [playerIndex], [bufferDuration])`
@@ -144,7 +144,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are newly activated this frame for the player. The hold time required to activate this function is given by [`INPUT_LONG_DELAY`](Configuration).
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_check_long_released(verb, [playerIndex], [bufferDuration])`
@@ -160,7 +160,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are newly deactivated this frame for the player. The hold time required to activate this function is given by [`INPUT_LONG_DELAY`](Configuration).
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_value(verb, [playerIndex])`
@@ -177,7 +177,7 @@ For on/off inputs, this function will return `0.0` or `1.0`.
 If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return the **sum** of the verb values for the player.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_held_time(verb, [playerIndex])`
@@ -192,7 +192,7 @@ If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` 
 The units returned by this function is determined by `INPUT_TIMER_MILLISECONDS`.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_is_analogue(verb, [playerIndex])`
@@ -207,7 +207,7 @@ The units returned by this function is determined by `INPUT_TIMER_MILLISECONDS`.
 If an array of [verbs](Verbs-and-Alternate-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs was last triggered by an analogue input.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_check_press_most_recent([array], [playerIndex])`

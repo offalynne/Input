@@ -13,7 +13,7 @@ _Returns:_ Boolean, if the value is a valid binding struct
 Useful for verifying if a value returned from [`input_binding_scan_tick()`](<Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex>) or [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>) is a binding.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_binding_is_valid(binding, [playerIndex])`
@@ -28,7 +28,7 @@ _Returns:_ Boolean, if the value is a valid binding for the specified player on 
 Useful for verifying if a binding returned by [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>) is valid for the specified player on the current platform, especially when set with [default binding functions](<Functions-(Default-Bindings)>).
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_binding_scan_tick(source, [playerIndex])`
@@ -85,7 +85,7 @@ Error codes that this function can return are as follows. These are all elements
 | `.ERROR_THIS_FRAME`            | Input scanning has already failed this frame - this is a rare error code and should only be returned if `input_binding_scan_tick()` is being called twice in a single frame for some reason    |
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_binding_set(verb, binding, [playerIndex], [alternate])`
@@ -102,7 +102,7 @@ _Returns:_ N/A (`undefined`)
 Straightforwardly sets the binding for a verb, overwriting what was already there.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_binding_set_safe(verb, binding, [playerIndex], [alternate])`
@@ -119,7 +119,7 @@ _Returns:_ N/A (`undefined`)
 In contrast to [`input_binding_set()`](<Functions-(Binding-Management)#input_binding_setverb-binding-playerindex-alternate>), this function will set the binding for a verb but also try to automatically handle any input conflicts by swapping over bindings. This is effective for simple control schemes but may fail in more complex situations - in these cases, you'll need to handle conflict resolution yourself.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_binding_get(verb, [source], [playerIndex], [alternate])`
@@ -142,7 +142,7 @@ This function returns a struct that describes the binding for the given verb. It
 | `axis_negative` | boolean  | Whether this binding expects negative values (`"gamepad axis"` type only)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_binding_get_collisions(binding, [playerIndex])`
@@ -164,7 +164,7 @@ The structs returned in the array contain the following:
 | `alternate` | integer                              | Alternate index for the verb |
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_binding_remove(verb, source, [playerIndex], [alternate])`
@@ -181,7 +181,7 @@ _Returns:_ N/A (`undefined`)
 Removes a binding from Input. **Be very careful with this function!** It's possible to remove any binding and this could potentially make your game unplayable.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_binding_swap(verbA, alternateA, verbB, alternateB, [source], [playerIndex])`
@@ -200,7 +200,7 @@ _Returns:_ N/A (`undefined`)
 Swaps over the two verb bindings specified.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_binding_get_name(binding)`

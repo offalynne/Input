@@ -13,7 +13,7 @@
 |`[alternate]`|integer |[Alternate binding](Verbs-and-Alternate-Bindings) to set|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_default_mouse_button(button, verb, [alternate])`
@@ -27,7 +27,7 @@
 |`[alternate]`|integer |[Alternate binding](Verbs-and-Alternate-Bindings) to set|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_default_mouse_wheel_up(verb, [alternate])`
@@ -40,7 +40,7 @@
 |`[alternate]`|integer |[Alternate binding](Verbs-and-Alternate-Bindings) to set|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_default_mouse_wheel_down(verb, [alternate])`
@@ -53,7 +53,7 @@
 |`[alternate]`|integer |[Alternate binding](Verbs-and-Alternate-Bindings) to set|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_default_gamepad_button(button, verb, [alternate])`
@@ -67,7 +67,7 @@
 |`[alternate]`|integer |[Alternate binding](Verbs-and-Alternate-Bindings) to set|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_default_gamepad_axis(axis, negative, verb, [alternate])`
@@ -82,7 +82,7 @@
 |`[alternate]`|integer |[Alternate binding](Verbs-and-Alternate-Bindings) to set|
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_default_gamepad_swap_ab(state)`
@@ -98,7 +98,7 @@ Swapping A/O with B/X is a global setting and, once set, cannot be changed durin
 If you *would* like to swap A/O with B/X during gameplay, please use the [binding functions](Functions-(Bindings)).
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_default_joycon_button(button, verb, [alternate])`
@@ -122,7 +122,7 @@ However, if `input_default_joycon_button()` or `input_default_joycon_axis()` hav
 !> The state set by `input_default_gamepad_swap_ab()` still applies to single Joy-Cons.
 
 &nbsp;
-
+---
 &nbsp;
 
 ### `input_default_joycon_axis(axis, negative, verb, [alternate])`
