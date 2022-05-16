@@ -11,7 +11,7 @@ function input_cursor_limit_get(_player_index = 0)
             top:    __limit_t,
             right:  __limit_r,
             bottom: __limit_b,
-        
+            
             circle_x:      __limit_x,
             circle_y:      __limit_y,
             circle_radius: __limit_radius,
