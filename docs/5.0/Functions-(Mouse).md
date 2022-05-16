@@ -38,7 +38,7 @@
 
 ## `input_mouse_x()`
 
-*Returns:* Integer, the x-coordinate of the active pointer device
+*Returns:* Number, the x-coordinate of the active pointer device
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -48,7 +48,27 @@
 
 ## `input_mouse_y()`
 
-*Returns:* Integer, the y-coordinate of the active pointer device
+*Returns:* Number, the y-coordinate of the active pointer device
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+&nbsp;
+
+## `input_mouse_dx()`
+
+*Returns:* Number, how far the mouse has moved in the x-axis between frames
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+&nbsp;
+
+## `input_mouse_dy()`
+
+*Returns:* Number, how far the mouse has moved in the y-axis between frames
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -77,3 +97,61 @@ If `method` is set to `undefined` then the mouse transformation function is disa
 |None|        |       |
 
 This function will return `undefined` if no transformation function has been defined.
+
+&nbsp;
+
+## `input_mouse_coord_space_set(coordSpace)`
+
+*Returns:* N/A (`undefined`)
+
+|Name        |Datatype                |Purpose                                                  |
+|------------|------------------------|---------------------------------------------------------|
+|`coordSpace`|`INPUT_COORD_SPACE` enum|The coordinate space the mouse will operate in. See below|
+
+`INPUT_COORD_SPACE` contains the following members:
+
+|Name         |Purpose                                                                                   |
+|-------------|------------------------------------------------------------------------------------------|
+|`.ROOM`      |Room coordinates; should be the same as `mouse_x` and `mouse_y`. This is the default value|
+|`.GUI`       |GUI coordinates                                                                           |
+|`.DISPLAY`   |Raw device-space coordinates                                                              |
+
+&nbsp;
+
+## `input_mouse_coord_space_get()`
+
+*Returns:* A member of `INPUT_COORD_SPACE`, the mouse coordinate space that has been set
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+&nbsp;
+
+## `input_mouse_capture_set(state, [sensitivity])`
+
+*Returns:* N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                                                                                                                                                    |
+|---------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`state`        |boolean |Whether to capture the mouse in the game window                                                                                                                            |
+|`[sensitivity]`|number  |The relative movement speed for Input's built-in mouse tracking. Higher values increase speed, lower values decrease speed. If not specified, the sensitivity is set to `1`|
+
+?> This function will not hide (or unhide) the OS mouse cursor. Please use GameMaker's native [`window_set_cursor()`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Cameras_And_Display/The_Game_Window/window_set_cursor.htm).
+
+&nbsp;
+
+## `input_mouse_capture_get()`
+
+*Returns:* Struct, the mouse capture state. See below
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+The struct returned by the function contains the following member variables:
+
+|Name          |Datatype|Purpose                                   |
+|--------------|--------|------------------------------------------|
+|`.capture`    |boolean |Whether the mouse is being captured or not|
+|`.sensitivity`|number  |The sensitivity for mouse movement        |
