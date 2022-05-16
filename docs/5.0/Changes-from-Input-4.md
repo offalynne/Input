@@ -30,3 +30,4 @@
 - `input_players_connected()` has been renamed to `input_player_connected_count()`
 - `input_player_source_set()` has been renamed to `input_source_set()`, and 
 - To support mixed/multidevice source modes, `input_player_source_get()`
+- `INPUT_MOUSE_MODE` has been removed and replaced with `input_mouse_coord_space_set()` and `input_mouse_coord_space_get()`
