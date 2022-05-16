@@ -157,6 +157,17 @@
 
 &nbsp;
 
+## [Other](Functions-(Other))
+
+- [`input_tick()`](Functions-(Other)?id=input_tick)
+- [`input_axis_threshold_set(axis, min, max, [playerIndex])`](Functions-(Other)#input_axis_threshold_setaxis-min-max-playerindex)
+- [`input_axis_threshold_get(axis, [playerIndex])`](Functions-(Other)#input_axis_threshold_getaxis-playerindex)
+- [`input_ignore_key_add(key)`](Functions-(Other)#input_ignore_key_addkey)
+- [`input_ignore_key_remove(key)`](Functions-(Other)#input_ignore_key_removekey)
+- [`input_clear_momentary(state)`](Functions-(Other)#input_clear_momentarystate)
+
+&nbsp;
+
 ## [Mouse (Direct)](Functions-(Mouse))
 
 - [`input_mouse_capture_set(state, [sensitivity])`](Functions-(Mouse)?id=input_mouse_capture_setstate-sensitivity)
@@ -176,17 +187,6 @@
 - [`input_mouse_check(button)`](Functions-(Mouse)#input_mouse_checkbutton)
 - [`input_mouse_check_pressed(button)`](Functions-(Mouse)#input_mouse_check_pressedbutton)
 - [`input_mouse_check_released(button)`](Functions-(Mouse)#input_mouse_check_releasedbutton)
-
-&nbsp;
-
-## [Other](Functions-(Other))
-
-- [`input_tick()`](Functions-(Other)?id=input_tick)
-- [`input_axis_threshold_set(axis, min, max, [playerIndex])`](Functions-(Other)#input_axis_threshold_setaxis-min-max-playerindex)
-- [`input_axis_threshold_get(axis, [playerIndex])`](Functions-(Other)#input_axis_threshold_getaxis-playerindex)
-- [`input_ignore_key_add(key)`](Functions-(Other)#input_ignore_key_addkey)
-- [`input_ignore_key_remove(key)`](Functions-(Other)#input_ignore_key_removekey)
-- [`input_clear_momentary(state)`](Functions-(Other)#input_clear_momentarystate)
 
 &nbsp;
 
