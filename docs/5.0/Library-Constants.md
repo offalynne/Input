@@ -31,6 +31,46 @@ The `INPUT_SOURCE_MODE` enum contains the following members. You can read more a
 
 &nbsp;
 
+## Coordinate Spaces
+
+The `INPUT_COORD_SPACE` enum is used to control the coordinate space for mouse and cursor functions, specifically using [`input_mouse_coord_space_set()`](Functions-(Mouse)?id=input_mouse_coord_space_setcoordspace) and [`input_cursor_coord_space_set()`](Functions-(Cursor)?id=input_cursor_coord_space_setcoordspace-playerindex)
+
+|Name         |Purpose                                                                                   |
+|-------------|------------------------------------------------------------------------------------------|
+|`.ROOM`      |Room coordinates; should be the same as `mouse_x` and `mouse_y`. This is the default value|
+|`.GUI`       |GUI coordinates                                                                           |
+|`.DISPLAY`   |Raw device-space coordinates                                                              |
+
+&nbsp;
+
+## Player and Gamepad Status
+
+Members of the `INPUT_STATUS` enum are returned by [`input_players_get_status()`](Functions-(Players)?id=input_players_get_status) and [`input_gamepad_get_status()`](Functions-(Gamepad)?id=input_gamepads_get_status).
+
+|Name                 |Purpose                                                 |
+|---------------------|--------------------------------------------------------|
+|`.NEWLY_DISCONNECTED`|Player/gamepad has been disconnected this frame         |
+|`.DISCONNECTED`      |Player/gamepad is disconnected (for at least two frames)|
+|`.NEWLY_CONNECTED`   |Player/gamepad has been connected this frame            |
+|`.CONNECTED`         |Player/gamepad is connected (for at least two frames)   |
+
+&nbsp;
+
+## Binding Scan Events
+
+The `INPUT_BINDING_SCAN_EVENT` enum is used by the failure callback for [`input_binding_scan_start()`](Functions-(Binding-Creators)?id=input_binding_scan_startsuccesscallback-failurecallback-sourcefilter-playerindex).
+
+|Name                 |Meaning                                                                                                                                                                      |
+|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`.SOURCE_INVALID`    |Player's source is invalid, usually because they have no sources assigned or their gamepad has been disconnected                                                             |
+|`.SOURCE_CHANGED`    |The player's source (or sources) have been modified                                                                                                                          |
+|`.PLAYER_IS_GHOST`   |Player is a ghost and cannot receive hardware input                                                                                                                          |
+|`.SCAN_TIMEOUT`      |Either the player didn't enter a new binding or a stuck key prevented the system from working. The timeout period is defined by [`INPUT_BINDING_SCAN_TIMEOUT`](Configuration)|
+|`.LOST_FOCUS`        |The application lost focus                                                                                                                                                   |
+|`.ABORTED`           |Binding scan was aborted early due to `input_binding_scan_abort()` being called                                                                                              |
+
+&nbsp;
+
 ## Extended Gamepad Constants
 
 If [`INPUT_SDL2_ALLOW_EXTENDED`]() has been set to `true` then the following constants will be available for use. Not many gamepads actually have these buttons so it's not recommend to use these constants for default bindings.
