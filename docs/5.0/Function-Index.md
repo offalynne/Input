@@ -159,10 +159,10 @@
 
 ## [Accessibility](Functions-(Accessibility))
 
-- [`input_accessibility_global_toggle_set(state)`](Functions-(Accessibility)?id=input_cursor_xplayerindex)
-- [`input_accessibility_global_toggle_get()`](Functions-(Accessibility)?id=input_cursor_yplayerindex)
-- [`input_accessibility_verb_toggle_set(verb, state)`](Functions-(Accessibility)?id=input_cursor_setx-y-playerindex-relative)
-- [`input_accessibility_verb_toggle_get(verb)`](Functions-(Accessibility)?id=input_cursor_speed_setspeed-playerindex)
+- [`input_accessibility_global_toggle_set(state)`](Functions-(Accessibility)?id=input_accessibility_global_toggle_setstate)
+- [`input_accessibility_global_toggle_get()`](Functions-(Accessibility)?id=input_accessibility_global_toggle_get)
+- [`input_accessibility_verb_toggle_set(verb, state)`](Functions-(Accessibility)?id=input_accessibility_verb_toggle_setverb-state)
+- [`input_accessibility_verb_toggle_get(verb)`](Functions-(Accessibility)?id=input_accessibility_verb_toggle_getverb)
 
 &nbsp;
 
