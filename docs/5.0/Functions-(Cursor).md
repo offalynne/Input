@@ -79,7 +79,7 @@ This function changes what coordinate space is used as a reference for setting t
 
 &nbsp;
 
-## `input_cursor_coord_space_get()`
+## `input_cursor_coord_space_get([playerIndex])`
 
 *Returns:* A member of `INPUT_COORD_SPACE`, the cursor coordinate space that has been set
 

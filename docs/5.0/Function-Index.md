@@ -83,7 +83,9 @@
 - [`input_binding_mouse_wheel_up()`](Functions-(Binding-Creators)?id=input_binding_mouse_wheel_up)
 - [`input_binding_gamepad_button(button)`](Functions-(Binding-Creators)?id=input_binding_gamepad_buttonbutton)
 - [`input_binding_gamepad_axis(axis, negative)`](Functions-(Binding-Creators)?id=input_binding_gamepad_axisaxis-negative)
-- [`input_binding_scan_tick([sourceFilter], [playerIndex])`](Functions-(Binding-Creators)?id=input_binding_scan_ticksource-playerindex)
+- [`input_binding_scan_start(successCallback, [failureCallback], [sourceFilter], [playerIndex])`](Functions-(Binding-Creators)?id=input_binding_scan_startsuccesscallback-failurecallback-sourcefilter-playerindex)
+- [`input_binding_scan_abort([playerIndex])`](Functions-(Binding-Creators)?id=input_binding_scan_abortplayerindex)
+- [`input_binding_scan_in_progress([playerIndex])`](Functions-(Binding-Creators)?id=input_binding_scan_in_progressplayerindex)
 
 &nbsp;
 
@@ -138,36 +140,36 @@
 
 ## [Cursor](Functions-(Cursor))
 
-- [`input_cursor_x([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
-- [`input_cursor_y([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
-- [`input_cursor_set([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
-- [`input_cursor_speed_set([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
-- [`input_cursor_speed_get([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
-- [`input_cursor_coord_space_set[playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
-- [`input_cursor_coord_space_get([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
-- [`input_cursor_limit_aabb([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
-- [`input_cursor_limit_circle([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
-- [`input_cursor_limit_remove([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
-- [`input_cursor_limit_get([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
-- [`input_cursor_elastic_set([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
-- [`input_cursor_elastic_remove([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
-- [`input_cursor_elastic_get([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
+- [`input_cursor_x([playerIndex])`](Functions-(Cursor)?id=input_cursor_xplayerindex)
+- [`input_cursor_y([playerIndex])`](Functions-(Cursor)?id=input_cursor_yplayerindex)
+- [`input_cursor_set([playerIndex])`](Functions-(Cursor)?id=input_cursor_setx-y-playerindex-relative)
+- [`input_cursor_speed_set([playerIndex])`](Functions-(Cursor)?id=input_cursor_speed_setspeed-playerindex)
+- [`input_cursor_speed_get([playerIndex])`](Functions-(Cursor)?id=input_cursor_speed_getplayerindex)
+- [`input_cursor_coord_space_set[playerIndex])`](Functions-(Cursor)?id=input_cursor_coord_space_setcoordspace-playerindex)
+- [`input_cursor_coord_space_get([playerIndex])`](Functions-(Cursor)?id=input_cursor_coord_space_getplayerindex)
+- [`input_cursor_limit_aabb([playerIndex])`](Functions-(Cursor)?id=input_cursor_limit_aabbleft-top-right-bottom-playerindex)
+- [`input_cursor_limit_circle([playerIndex])`](Functions-(Cursor)?id=input_cursor_limit_circlex-y-radius-playerindex)
+- [`input_cursor_limit_remove([playerIndex])`](Functions-(Cursor)?id=input_cursor_limit_removeplayerindex)
+- [`input_cursor_limit_get([playerIndex])`](Functions-(Cursor)?id=input_cursor_limit_getplayerindex)
+- [`input_cursor_elastic_set([playerIndex])`](Functions-(Cursor)?id=input_cursor_elastic_setx-y-strength-playerindex)
+- [`input_cursor_elastic_remove([playerIndex])`](Functions-(Cursor)?id=input_cursor_elastic_removeplayerindex)
+- [`input_cursor_elastic_get([playerIndex])`](Functions-(Cursor)?id=input_cursor_elastic_getplayerindex)
 
 &nbsp;
 
 ## [Mouse (Direct)](Functions-(Mouse))
 
-- [`input_mouse_capture_set(coordSpace)`](Functions-(Mouse)#input_mouse_y)
-- [`input_mouse_capture_get(coordSpace)`](Functions-(Mouse)#input_mouse_y)
+- [`input_mouse_capture_set(coordSpace)`](Functions-(Mouse)?id=input_mouse_capture_setstate-sensitivity)
+- [`input_mouse_capture_get(coordSpace)`](Functions-(Mouse)?id=input_mouse_capture_get)
 - [`input_mouse_x()`](Functions-(Mouse)#input_mouse_x)
 - [`input_mouse_y()`](Functions-(Mouse)#input_mouse_y)
-- [`input_mouse_dx()`](Functions-(Mouse)#input_mouse_x)
-- [`input_mouse_dy()`](Functions-(Mouse)#input_mouse_y)
+- [`input_mouse_dx()`](Functions-(Mouse)#input_mouse_dx)
+- [`input_mouse_dy()`](Functions-(Mouse)#input_mouse_dy)
 - [`input_mouse_moved()`](Functions-(Mouse)#input_mouse_moved)
 - [`input_mouse_transform_function_set()`](Functions-(Mouse)?id=input_mouse_transform_function_setmethod)
 - [`input_mouse_transform_function_get()`](Functions-(Mouse)?id=input_mouse_transform_method_get)
-- [`input_mouse_coord_space_set(coordSpace)`](Functions-(Mouse)#input_mouse_y)
-- [`input_mouse_coord_space_get(coordSpace)`](Functions-(Mouse)#input_mouse_y)
+- [`input_mouse_coord_space_set(coordSpace)`](Functions-(Mouse)?id=input_mouse_coord_space_setcoordspace)
+- [`input_mouse_coord_space_get(coordSpace)`](Functions-(Mouse)?id=input_mouse_coord_space_get)
 
 ?> The following mouse functions are provided for convenience if you want to implement your own features using Input's mouse implementation. In general, [verbs](Verbs-and-Bindings) are the intended way to use Input and are preferred.
 
