@@ -136,6 +136,25 @@
 
 &nbsp;
 
+## [Cursor](Functions-(Cursor))
+
+- [`input_cursor_x([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
+- [`input_cursor_y([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
+- [`input_cursor_set([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
+- [`input_cursor_speed_set([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
+- [`input_cursor_speed_get([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
+- [`input_cursor_coord_space_set[playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
+- [`input_cursor_coord_space_get([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
+- [`input_cursor_limit_aabb([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
+- [`input_cursor_limit_circle([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
+- [`input_cursor_limit_remove([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
+- [`input_cursor_limit_get([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
+- [`input_cursor_elastic_set([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
+- [`input_cursor_elastic_remove([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
+- [`input_cursor_elastic_get([playerIndex])`](Functions-(Cursor)#input_cursor_xplayerindex)
+
+&nbsp;
+
 ## [Other](Functions-(Other))
 
 - [`input_tick()`](Functions-(Other)?id=input_tick)
@@ -188,6 +207,12 @@
 - [`input_mouse_check_released(button)`](Functions-(Mouse)#input_mouse_check_releasedbutton)
 - [`input_mouse_x()`](Functions-(Mouse)#input_mouse_x)
 - [`input_mouse_y()`](Functions-(Mouse)#input_mouse_y)
+- [`input_mouse_dx()`](Functions-(Mouse)#input_mouse_x)
+- [`input_mouse_dy()`](Functions-(Mouse)#input_mouse_y)
 - [`input_mouse_moved()`](Functions-(Mouse)#input_mouse_moved)
 - [`input_mouse_transform_function_set()`](Functions-(Mouse)?id=input_mouse_transform_function_setmethod)
 - [`input_mouse_transform_function_get()`](Functions-(Mouse)?id=input_mouse_transform_method_get)
+- [`input_mouse_coord_space_set(coordSpace)`](Functions-(Mouse)#input_mouse_y)
+- [`input_mouse_coord_space_get(coordSpace)`](Functions-(Mouse)#input_mouse_y)
+- [`input_mouse_capture_set(coordSpace)`](Functions-(Mouse)#input_mouse_y)
+- [`input_mouse_capture_get(coordSpace)`](Functions-(Mouse)#input_mouse_y)
