@@ -157,6 +157,15 @@
 
 &nbsp;
 
+## [Accessibility](Functions-(Accessibility))
+
+- [`input_accessibility_global_toggle_set(state)`](Functions-(Accessibility)?id=input_cursor_xplayerindex)
+- [`input_accessibility_global_toggle_get()`](Functions-(Accessibility)?id=input_cursor_yplayerindex)
+- [`input_accessibility_verb_toggle_set(verb, state)`](Functions-(Accessibility)?id=input_cursor_setx-y-playerindex-relative)
+- [`input_accessibility_verb_toggle_get(verb)`](Functions-(Accessibility)?id=input_cursor_speed_setspeed-playerindex)
+
+&nbsp;
+
 ## [Other](Functions-(Other))
 
 - [`input_tick()`](Functions-(Other)?id=input_tick)
