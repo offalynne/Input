@@ -12,6 +12,47 @@ function __input_class_binding() constructor
     //This is used to check for uppercase *and* lowercase letters as Android checks for both individually
     android_lowercase = undefined;
     
+    __threshold_min = undefined;
+    __threshold_max = undefined;
+    
+    
+    
+    #region Public
+    
+    static gamepad = function(_gamepad)
+    {
+        if (input_gamepad_is_connected(_gamepad))
+        {
+            __gamepad_index = _gamepad;
+            __gamepad_description = gamepad_get_description(_gamepad);
+        }
+        
+        return self;
+    }
+    
+    /// @param min
+    /// @param max
+    static threshold_set = function(_min, _max)
+    {
+        __threshold_min = _min
+        __threshold_max = _max;
+        return self;
+    }
+    
+    static threshold_get = function()
+    {
+        return {
+            mini: __threshold_min,
+            maxi: __threshold_max,
+        };
+    }
+    
+    #endregion
+    
+    
+    
+    #region Private
+    
     static __export = function()
     {
         var _binding_shell = {};
@@ -21,6 +62,8 @@ function __input_class_binding() constructor
         if (axis_negative         != undefined) _binding_shell.axis_negative       = axis_negative;
         if (__gamepad_description != undefined) _binding_shell.gamepad_description = __gamepad_description;
         if (android_lowercase     != undefined) _binding_shell.android_lowercase   = android_lowercase;
+        if (__threshold_min       != undefined) _binding_shell.threshold_min       = __threshold_min;
+        if (__threshold_max       != undefined) _binding_shell.threshold_max       = __threshold_max;
         
         return _binding_shell;
     }
@@ -33,11 +76,13 @@ function __input_class_binding() constructor
             _binding_shell = {};
         }
         
-        if (_binding_shell[$ "type"                 ] != undefined) type                  = _binding_shell.type;
-        if (_binding_shell[$ "value"                ] != undefined) value                 = _binding_shell.value;
-        if (_binding_shell[$ "axis_negative"        ] != undefined) axis_negative         = _binding_shell.axis_negative;
-        if (_binding_shell[$ "__gamepad_description"] != undefined) __gamepad_description = _binding_shell.gamepad_description;
-        if (_binding_shell[$ "android_lowercase"    ] != undefined) android_lowercase     = _binding_shell.android_lowercase;
+        if (_binding_shell[$ "type"               ] != undefined) type                  = _binding_shell.type;
+        if (_binding_shell[$ "value"              ] != undefined) value                 = _binding_shell.value;
+        if (_binding_shell[$ "axis_negative"      ] != undefined) axis_negative         = _binding_shell.axis_negative;
+        if (_binding_shell[$ "gamepad_description"] != undefined) __gamepad_description = _binding_shell.gamepad_description;
+        if (_binding_shell[$ "android_lowercase"  ] != undefined) android_lowercase     = _binding_shell.android_lowercase;
+        if (_binding_shell[$ "threshold_min"      ] != undefined) __threshold_min       = _binding_shell.threshold_min;
+        if (_binding_shell[$ "threshold_max"      ] != undefined) __threshold_max       = _binding_shell.threshold_max;
         
         //If we have a gamepad description then try to match that to a connected gamepad
         if (__gamepad_description != undefined)
@@ -184,17 +229,6 @@ function __input_class_binding() constructor
         return self;
     }
     
-    static gamepad = function(_gamepad)
-    {
-        if (input_gamepad_is_connected(_gamepad))
-        {
-            __gamepad_index = _gamepad;
-            __gamepad_description = gamepad_get_description(_gamepad);
-        }
-        
-        return self;
-    }
-    
     static __get_source_type = function()
     {
         switch(type)
@@ -210,4 +244,6 @@ function __input_class_binding() constructor
         
         __input_error("Binding type \"", type, "\" not recognised");
     }
+    
+    #endregion
 }

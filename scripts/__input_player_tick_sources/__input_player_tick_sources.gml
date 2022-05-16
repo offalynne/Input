@@ -214,14 +214,22 @@ function __input_player_tick_sources()
                                 //We keep a hold of this value for use in 2D checkers
                                 var _found_raw = input_gamepad_value(_source_gamepad, _binding.value);
                                 
-                                var _axis_threshold = __axis_threshold_get(_binding.value);
+                                var _binding_threshold_min = _binding.__threshold_min;
+                                var _binding_threshold_max = _binding.__threshold_max;
+                                
+                                if ((_binding_threshold_min == undefined) || (_binding_threshold_max == undefined))
+                                {
+                                    var _threshold_struct = __axis_threshold_get(_binding.value);
+                                    _binding_threshold_min = _threshold_struct.mini;
+                                    _binding_threshold_max = _threshold_struct.maxi;
+                                }
                                 
                                 //Correct the raw value's sign if needed
                                 if (_binding.axis_negative) _found_raw = -_found_raw;
                                 
                                 //The return value from this binding needs to be corrected using the thresholds previously defined
                                 var _found_value = _found_raw;
-                                _found_value = (_found_value - _axis_threshold.mini) / (_axis_threshold.maxi - _axis_threshold.mini);
+                                _found_value = (_found_value - _binding_threshold_min) / (_binding_threshold_max - _binding_threshold_min);
                                 _found_value = clamp(_found_value, 0.0, 1.0);
                                 
                                 //If this binding is returning a value bigger than whatever we found before, let it override the old value
@@ -230,8 +238,8 @@ function __input_player_tick_sources()
                                 {
                                     _raw           = _found_raw;
                                     _raw_analogue  = true;
-                                    _min_threshold = _axis_threshold.mini;
-                                    _max_threshold = _axis_threshold.maxi;
+                                    _min_threshold = _binding_threshold_min;
+                                    _max_threshold = _binding_threshold_max;
                                 }
                                 
                                 if (_found_value > _value)
