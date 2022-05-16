@@ -15,17 +15,19 @@ Clears the currently profiles and bindings for the given player, resetting them 
 
 &nbsp;
 
-## `input_binding_system_write([playerIndex])`
+## `input_binding_system_write([playerIndex], [returnString], [prettify])`
 
 *Returns:* JSON encoded as a string
 
-|Name           |Datatype|Purpose                                                            |
-|---------------|--------|-------------------------------------------------------------------|
-|`[playerIndex]`|integer |Player to target. If not specified, all player bindings are encoded|
+|Name            |Datatype|Purpose                                                                                                                                                                            |
+|----------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`[playerIndex]` |integer |Player to target. If not specified, all player bindings are encoded                                                                                                                |
+|`[returnString]`|boolean |Whether to return a string from this function. If set to `false`, JSON is returned instead as nested structs/arrays. If not specified, a string is returned                        |
+|`[prettify]`    |boolean |Whether to format the output string so that it's easier for a human to read. If not specified, the string is not prettified. This argument is only relevant when returning a string|
 
 Outputs a string that contains a JSON definition for the given bindings. This can then be saved to a file etc. so that custom bindings can be restored in the future.
 
-This function also serialises axis thresholds (as set by [`axis_threshold_set()`](Functions-(Other)#input_axis_threshold_setaxis-min-max-playerindex)).
+This function also serialises axis thresholds (as set by [`input_axis_threshold_set()`](Functions-(Other)#input_axis_threshold_setaxis-min-max-playerindex)).
 
 It is reccomended to only use bindings written on the same device, as keyboard scancodes differ across device layouts and platforms.
 
