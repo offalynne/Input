@@ -14,18 +14,16 @@ When using Input, you'll need to define your own verb names. A verb name can be 
 
 Here is a simple example for a Space Invaders sort of game:
 
+<!-- tabs:start -->
+#### **Game Start**
 ```gml
-//// Game Start event ////
-
 // Bind keyboard controls to verbs
 input_default_key(vk_left,  "left");
 input_default_key(vk_right, "right");
 input_default_key(vk_space, "shoot");
-
-
-
-//// Step event ////
-
+```
+#### **Step Event**
+```gml
 // Move the player if the left or right verb is activated
 if (input_check("left"))  x -= 4;
 if (input_check("right")) x += 4;
@@ -33,12 +31,13 @@ if (input_check("right")) x += 4;
 // If the player pressed the shoot button, fire a bullet
 if (input_check_pressed("shoot")) fire_bullet(x, y);
 ```
+<!-- tabs:end -->
 
 Now let's add some more bindings so that the player can play with a gamepad:
 
+<!-- tabs:start -->
+#### **Game Start**
 ```gml
-//// Game Start event ////
-
 // Bind keyboard controls to verbs
 input_default_key(vk_left,  "left");
 input_default_key(vk_right, "right");
@@ -48,11 +47,9 @@ input_default_key(vk_space, "shoot");
 input_default_gamepad_button(gp_padl,  "left");
 input_default_gamepad_button(gp_padr,  "right");
 input_default_gamepad_button(gp_face1, "shoot");
-
-
-
-//// Step event ////
-
+```
+#### **Step Event**
+```gml
 // Move the player if the Leftor Down verb is activated
 if (input_check("left"))  x -= 4;
 if (input_check("right")) x += 4;
@@ -60,14 +57,15 @@ if (input_check("right")) x += 4;
 // If the player pressed the shoot button, fire a bullet
 if (input_check_pressed("shoot")) fire_bullet(x, y);
 ```
+<!-- tabs:end -->
 
 Did you notice how the Step event code didn't change at all? Because we're using a **verb interface**, all of our binding commands exist separately to our check functions. We can bind multiple kinds of input to the same verb and the relevant binding is used depending on what [input source](Input-Sources) the player is using.
 
 Let's add some alternate bindings:
 
+<!-- tabs:start -->
+#### **Game Start**
 ```gml
-//// Game Start event ////
-
 // Bind keyboard controls to verbs
 input_default_key(vk_left,  "left");
 input_default_key(vk_right, "right");
@@ -92,11 +90,9 @@ input_default_gamepad_axis(gp_axislh, false, "right", 1);
 input_default_gamepad_button(gp_face2, "shoot", 1);
 input_default_gamepad_button(gp_face3, "shoot", 2);
 input_default_gamepad_button(gp_face4, "shoot", 3);
-
-
-
-//// Step event ////
-
+```
+#### **Step Event**
+```gml
 // Move the player if the Left or Right verb is activated
 if (input_check("left"))  x -= 4;
 if (input_check("right")) x += 4;
@@ -104,5 +100,6 @@ if (input_check("right")) x += 4;
 // If the player pressed the shoot button, fire a bullet
 if (input_check_pressed("shoot")) fire_bullet(x, y);
 ```
+<!-- tabs:end -->
 
 Once again, our Step event didn't change. However, we've now added lots more controls that the player can use to control their character.
