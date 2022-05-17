@@ -1,6 +1,6 @@
 /// @param state
 
-function input_binding_system_swap_gamepad_ab(_state)
+function input_system_swap_gamepad_ab(_state)
 {
 	__input_initialize();
 	
@@ -51,5 +51,5 @@ function input_binding_system_swap_gamepad_ab(_state)
     }
     
     //Reset all players to seal the deal
-    input_binding_system_reset();
+    input_system_reset();
 }

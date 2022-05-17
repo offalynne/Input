@@ -17,6 +17,9 @@ function input_system_import(_string)
         return;
     }
     
+    //Blank slate!
+    input_system_reset();
+    
     //Restore accessibility settings
     global.__input_toggle_momentary_state = accessibility.momentary_state;
     global.__input_toggle_momentary_dict = {};
