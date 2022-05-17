@@ -15,13 +15,12 @@ function __input_class_binding() constructor
     //Accessibility features
     __threshold_min = undefined;
     __threshold_max = undefined;
-    __turbo         = undefined;
     
     
     
     #region Public
     
-    static gamepad = function(_gamepad)
+    static __gamepad_set = function(_gamepad)
     {
         if (input_gamepad_is_connected(_gamepad))
         {
@@ -32,33 +31,26 @@ function __input_class_binding() constructor
         return self;
     }
     
+    static __gamepad_get = function()
+    {
+        return __gamepad_index;
+    }
+    
     /// @param min
     /// @param max
-    static threshold_set = function(_min, _max)
+    static __threshold_set = function(_min, _max)
     {
         __threshold_min = _min
         __threshold_max = _max;
         return self;
     }
     
-    static threshold_get = function()
+    static __threshold_get = function()
     {
         return {
             mini: __threshold_min,
             maxi: __threshold_max,
         };
-    }
-    
-    /// @param state
-    static turbo_set = function(_state)
-    {
-        __turbo = _state
-        return self;
-    }
-    
-    static turbo_get = function()
-    {
-        return __turbo;
     }
     
     #endregion
@@ -78,7 +70,6 @@ function __input_class_binding() constructor
         if (__android_lowercase   != undefined) _binding_shell.android_lowercase   = __android_lowercase;
         if (__threshold_min       != undefined) _binding_shell.threshold_min       = __threshold_min;
         if (__threshold_max       != undefined) _binding_shell.threshold_max       = __threshold_max;
-        if (__turbo               != undefined) _binding_shell.turbo               = __turbo;
         
         return _binding_shell;
     }
@@ -98,7 +89,6 @@ function __input_class_binding() constructor
         if (_binding_shell[$ "android_lowercase"  ] != undefined) __android_lowercase   = _binding_shell.android_lowercase;
         if (_binding_shell[$ "threshold_min"      ] != undefined) __threshold_min       = _binding_shell.threshold_min;
         if (_binding_shell[$ "threshold_max"      ] != undefined) __threshold_max       = _binding_shell.threshold_max;
-        if (_binding_shell[$ "turbo"              ] != undefined) __turbo               = _binding_shell.turbo;
         
         //If we have a gamepad description then try to match that to a connected gamepad
         if (__gamepad_description != undefined)
@@ -134,7 +124,6 @@ function __input_class_binding() constructor
             __android_lowercase   = other.__android_lowercase;
             __threshold_min       = other.__threshold_min;
             __threshold_max       = other.__threshold_max;
-            __turbo               = other.__turbo;
             return self;
         }
     }

@@ -1,11 +1,14 @@
 {
   "resources": [
     {"id":{"name":"input_cursor_coord_space_get","path":"scripts/input_cursor_coord_space_get/input_cursor_coord_space_get.yy",},"order":6,},
+    {"id":{"name":"input_binding_threshold_set","path":"scripts/input_binding_threshold_set/input_binding_threshold_set.yy",},"order":10,},
+    {"id":{"name":"input_binding_threshold_get","path":"scripts/input_binding_threshold_get/input_binding_threshold_get.yy",},"order":11,},
     {"id":{"name":"obj_example","path":"objects/obj_example/obj_example.yy",},"order":2,},
     {"id":{"name":"obj_gamepad_tester","path":"objects/obj_gamepad_tester/obj_gamepad_tester.yy",},"order":0,},
     {"id":{"name":"input_check_long","path":"scripts/input_check_long/input_check_long.yy",},"order":7,},
     {"id":{"name":"obj_test_2d","path":"objects/obj_test_2d/obj_test_2d.yy",},"order":6,},
     {"id":{"name":"obj_test_verb_set","path":"objects/obj_test_verb_set/obj_test_verb_set.yy",},"order":7,},
+    {"id":{"name":"input_binding_gamepad_get","path":"scripts/input_binding_gamepad_get/input_binding_gamepad_get.yy",},"order":9,},
     {"id":{"name":"input_players_get_status","path":"scripts/input_players_get_status/input_players_get_status.yy",},"order":7,},
     {"id":{"name":"obj_test_gamepad_extended","path":"objects/obj_test_gamepad_extended/obj_test_gamepad_extended.yy",},"order":8,},
     {"id":{"name":"input_gamepad_get_map","path":"scripts/input_gamepad_get_map/input_gamepad_get_map.yy",},"order":11,},
@@ -177,6 +180,7 @@
     {"id":{"name":"input_xy","path":"scripts/input_xy/input_xy.yy",},"order":4,},
     {"id":{"name":"input_mouse_transform_function_get","path":"scripts/input_mouse_transform_function_get/input_mouse_transform_function_get.yy",},"order":9,},
     {"id":{"name":"input_y","path":"scripts/input_y/input_y.yy",},"order":3,},
+    {"id":{"name":"input_binding_gamepad_set","path":"scripts/input_binding_gamepad_set/input_binding_gamepad_set.yy",},"order":8,},
     {"id":{"name":"__input_load_button_color_csv","path":"scripts/__input_load_button_color_csv/__input_load_button_color_csv.yy",},"order":15,},
     {"id":{"name":"input_cursor_limit_aabb","path":"scripts/input_cursor_limit_aabb/input_cursor_limit_aabb.yy",},"order":7,},
     {"id":{"name":"input_binding_scan_start","path":"scripts/input_binding_scan_start/input_binding_scan_start.yy",},"order":0,},
