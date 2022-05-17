@@ -174,6 +174,103 @@ function __input_class_player() constructor
         }
     }
     
+    static __profile_export = function(_profile_name, _output_string, _prettify)
+    {
+        if (!variable_struct_exists(__profiles_dict, _profile_name))
+        {
+            __input_error("Profile \"", _profile_name, "\" doesn't exist for player ", __index);
+        }
+        
+        var _output = {};
+        
+        var _profile_struct = __profiles_dict[$ _profile_name];
+        var _v = 0;
+        repeat(array_length(global.__input_basic_verb_array))
+        {
+            var _verb_name = global.__input_basic_verb_array[_v];
+            
+            var _new_alternate_array = [];
+            _output[$ _verb_name] = _new_alternate_array;
+            
+            var _alternate_array = _profile_struct[$ _verb_name];
+            var _a = 0;
+            repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+            {
+                array_push(_new_alternate_array, _alternate_array[_a].__export());
+                ++_a;
+            }
+            
+            ++_v;
+        }
+        
+        if (_output_string)
+        {
+            if (_prettify)
+            {
+                return __input_snap_to_json(_output, true, true);
+            }
+            else
+            {
+                return json_stringify(_output_string);
+            }
+        }
+        else
+        {
+            return _output;
+        }
+    }
+    
+    static __profile_import = function(_string, _profile_name)
+    {
+        if (is_string(_string))
+        {
+            var _json = json_parse(_string);
+        }
+        else
+        {
+            var _json = _string;
+        }
+        
+        if (!is_struct(_json) && !is_array(_json))
+        {
+            __input_error("Input must be valid JSON (typeof=", _string, ")");
+            return;
+        }
+        
+        //Make sure the player has this particular profile set up
+        __profile_ensure(_profile_name);
+        var _existing_verb_dict = __profiles_dict[$ _profile_name];
+        
+        //Iterate over every verb
+        var _profile_struct = _json[$ _profile_name];
+        var _v = 0;
+        repeat(array_length(global.__input_basic_verb_array))
+        {
+            var _verb_name = global.__input_basic_verb_array[_v];
+            
+            var _existing_alternate_array = _existing_verb_dict[$ _verb_name];
+            var _alternate_array = _profile_struct[$ _verb_name];
+            
+            //Verify that the input data has this verb
+            if (!is_array(_alternate_array)) __input_error("Player ", __index, " data is missing verb \"", _verb_name, "\"");
+            
+            if (array_length(_alternate_array) != INPUT_MAX_ALTERNATE_BINDINGS)
+            {
+                __input_error("JSON malformed, player ", __index, " verb \"", _verb_name, "\" should have ", INPUT_MAX_ALTERNATE_BINDINGS, " alternate bindings, but it had ", array_length(_alternate_array));
+            }
+            
+            //Iterate over every alternate and import the value into our local data
+            var _a = 0;
+            repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+            {
+                _existing_alternate_array[@ _a].__import(_alternate_array[_a]);
+                ++_a;
+            }
+            
+            ++_v;
+        }
+    }
+    
     #endregion
     
     
