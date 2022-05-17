@@ -29,7 +29,7 @@
 
 ## `input_axis_threshold_get(axis, [playerIndex])`
 
-*Returns:* A struct with two member variables, `mini` and `maxi`, containing the minimum and maximum thresholds
+*Returns:* A struct with two member variables, `.mini` and `.maxi`, containing the minimum and maximum thresholds
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|

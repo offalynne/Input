@@ -60,11 +60,11 @@ _Returns:_ Struct. See below.
 
 This function returns a struct that describes the binding for the given verb. It has the following member variables:
 
-|Variable       |Datatype|Purpose                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-|---------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`type`         |string  |Type of binding, one of the following:<br>`"key"` `"gamepad button"` `"gamepad axis"` `"mouse button"` `"mouse wheel up"` `"mouse wheel down"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|`value`        |integer |[Keycode](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/keyboard%20input/index.html), [gamepad button](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html), [gamepad axis](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html), or [mouse button](https://docs.yoyogames.com/source/dadiospice/002_reference/mouse,%20keyboard%20and%20other%20controls/mouse%20input/index.html) that this binding uses. This variable is `undefined` for `"mouse wheel up"` and `"mouse wheel down"` types|
-|`axis_negative`|boolean |Whether this binding expects negative values (`"gamepad axis"` type only)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|Variable        |Datatype|Purpose                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|----------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`.type`         |string  |Type of binding, one of the following:<br>`"key"` `"gamepad button"` `"gamepad axis"` `"mouse button"` `"mouse wheel up"` `"mouse wheel down"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|`.value`        |integer |[Keycode](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/keyboard%20input/index.html), [gamepad button](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html), [gamepad axis](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html), or [mouse button](https://docs.yoyogames.com/source/dadiospice/002_reference/mouse,%20keyboard%20and%20other%20controls/mouse%20input/index.html) that this binding uses. This variable is `undefined` for `"mouse wheel up"` and `"mouse wheel down"` types|
+|`.axis_negative`|boolean |Whether this binding expects negative values (`"gamepad axis"` type only)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 &nbsp;
 
@@ -83,10 +83,10 @@ The array that this function returns contains structs that define which verb bin
 
 The structs returned in the array contain the following:
 
-|Variable   |Datatype                            |Purpose                     |
-|-----------|------------------------------------|----------------------------|
-|`verb`     |[verb](Verbs-and-Alternate-Bindings)|Verb binding that conflicts |
-|`alternate`|integer                             |Alternate index for the verb|
+|Variable    |Datatype                            |Purpose                     |
+|------------|------------------------------------|----------------------------|
+|`.verb`     |[verb](Verbs-and-Alternate-Bindings)|Verb binding that conflicts |
+|`.alternate`|integer                             |Alternate index for the verb|
 
 &nbsp;
 
@@ -109,14 +109,14 @@ Removes a binding from Input. **Be very careful with this function!** It's possi
 
 _Returns:_ N/A (`undefined`)
 
-|Name           |Datatype                            |Purpose                                                                        |
-|---------------|------------------------------------|-------------------------------------------------------------------------------|
-|`verbA`        |[verb](Verbs-and-Alternate-Bindings)|First [verb](Verbs-and-Alternate-Bindings) to target                           |
-|`alternateA`   |integer                             |[Alternate binding](Verbs-and-Alternate-Bindings) to target for the first verb |
-|`verbB`        |[verb](Verbs-and-Alternate-Bindings)|Second [verb](Verbs-and-Alternate-Bindings) to target                          |
-|`alternateB`   |integer                             |[Alternate binding](Verbs-and-Alternate-Bindings) to target for the second verb|
-|`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                           |
-|`[profileName]`|string                              |                                                                               |
+|Name            |Datatype                            |Purpose                                                                        |
+|----------------|------------------------------------|-------------------------------------------------------------------------------|
+|`.verbA`        |[verb](Verbs-and-Alternate-Bindings)|First [verb](Verbs-and-Alternate-Bindings) to target                           |
+|`.alternateA`   |integer                             |[Alternate binding](Verbs-and-Alternate-Bindings) to target for the first verb |
+|`.verbB`        |[verb](Verbs-and-Alternate-Bindings)|Second [verb](Verbs-and-Alternate-Bindings) to target                          |
+|`.alternateB`   |integer                             |[Alternate binding](Verbs-and-Alternate-Bindings) to target for the second verb|
+|`[.playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                           |
+|`[.profileName]`|string                              |                                                                               |
 
 Swaps over the two verb bindings specified.
 
@@ -131,3 +131,55 @@ _Returns:_ String, the human-readable [name for the binding](Binding-Names)
 |`binding`|binding |Binding to return the name for|
 
 Returns the [name of the binding](Binding-Names) in a way that is (mostly!) human-readable. This string can be the name of a keyboard key or the name of a gamepad axis, including direction of travel. The intention is for this information to be parsed by your own code and then used to display a string or icon to the player indicating which button/key etc. is associated with which verb. All return values are listed as [Binding Names](Binding-Names).
+
+&nbsp;
+
+## `input_binding_gamepad_set(binding. gamepad)`
+
+_Returns:_ N/A (`undefined`)
+
+|Name     |Datatype                     |Purpose                                          |
+|---------|-----------------------------|-------------------------------------------------|
+|`binding`|[binding](Verbs-and-Bindings)|[Binding](Verbs-and-Alternate-Bindings) to target|
+
+?> The gamepad index for a binding is only relevant when in the [multidevice source mode](Input-Sources?id=source-modes).
+
+&nbsp;
+
+## `input_binding_gamepad_get(binding)`
+
+_Returns:_ Integer, the gamepad index for the binding
+
+|Name     |Datatype                     |Purpose                                          |
+|---------|-----------------------------|-------------------------------------------------|
+|`binding`|[binding](Verbs-and-Bindings)|[Binding](Verbs-and-Alternate-Bindings) to target|
+
+If no gamepad has been set, this function returns `undefined`.
+
+?> The gamepad index for a binding is only relevant when in the [multidevice source mode](Input-Sources?id=source-modes).
+
+&nbsp;
+
+## `input_binding_threshold_set(binding, min, max)`
+
+_Returns:_ N/A (`undefined`)
+
+|Name     |Datatype                     |Purpose                                          |
+|---------|-----------------------------|-------------------------------------------------|
+|`binding`|[binding](Verbs-and-Bindings)|[Binding](Verbs-and-Alternate-Bindings) to target|
+|`min`    |number                       |Minimum threshold for this binding               |
+|`max`    |number                       |Maximum threshold for this binding               |
+
+Sets the minimum and maximum threshold values for this binding. This is only relevant when applied to a [gamepad axis binding](Functions-(Binding-Creators)?id=input_binding_gamepad_axisaxis-negative).
+
+This function is entirely optional. If a gamepad axis binding has no specific thresholds set then the player's axis thresholds are used, as set by [`input_axis_thresholds_set()`](Functions-(Other)?id=input_axis_threshold_setaxis-min-max-playerindex).
+
+&nbsp;
+
+## `input_binding_threshold_get(binding)`
+
+_Returns:_ A struct with two member variables, `.mini` and `.maxi`, containing the minimum and maximum thresholds
+
+|Name     |Datatype                     |Purpose                                          |
+|---------|-----------------------------|-------------------------------------------------|
+|`binding`|[binding](Verbs-and-Bindings)|[Binding](Verbs-and-Alternate-Bindings) to target|
