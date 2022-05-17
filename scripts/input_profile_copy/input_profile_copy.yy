@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Profiles",
-    "path": "folders/Input/Profiles.yy",
+    "name": "Exporting and Importing",
+    "path": "folders/Input/Exporting and Importing.yy",
   },
   "resourceVersion": "1.0",
   "name": "input_profile_copy",

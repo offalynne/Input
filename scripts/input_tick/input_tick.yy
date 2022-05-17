@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "Deprecated",
-    "path": "folders/Input/(Inner Workings)/Deprecated.yy",
+    "path": "folders/Input/(System)/Deprecated.yy",
   },
   "resourceVersion": "1.0",
   "name": "input_tick",

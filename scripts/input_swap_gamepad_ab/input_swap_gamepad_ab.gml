@@ -1,6 +1,6 @@
 /// @param state
 
-function input_system_swap_gamepad_ab(_state)
+function input_swap_gamepad_ab(_state)
 {
 	__input_initialize();
 	
