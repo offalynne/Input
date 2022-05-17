@@ -2,7 +2,7 @@
 /// @param profileName
 /// @param [playerIndex=0]
 
-function input_profile_export(_string, _profile_name, _player_index = 0)
+function input_profile_import(_string, _profile_name, _player_index = 0)
 {
 	__input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX

@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Binding System",
-    "path": "folders/Input/Binding System.yy",
+    "name": "Profiles",
+    "path": "folders/Input/Profiles.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_binding_system_write",
+  "name": "input_profile_copy",
   "tags": [],
   "resourceType": "GMScript",
 }

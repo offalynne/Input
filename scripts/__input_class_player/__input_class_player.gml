@@ -764,6 +764,130 @@ function __input_class_player() constructor
         return _output;
     }
     
+    static __export = function(_output_string, _prettify)
+    {
+        var _new_profiles_dict = {};
+        var _new_axis_thresholds_dict = {};
+    
+        var _root_json = {
+            profiles:        _new_profiles_dict,
+            axis_thresholds: _new_axis_thresholds_dict,
+        };
+        
+        //Copy profiles
+        var _profile_name_array = variable_struct_get_names(__profiles_dict);
+        var _f = 0;
+        repeat(array_length(_profile_name_array))
+        {
+            var _profile_name = _profile_name_array[_f];
+            _new_profiles_dict[$ _profile_name] = __profile_export(_profile_name_array[_f], false, false);
+            ++_f;
+        }
+        
+        //Copy axis threshold data
+        var _axis_name_array = variable_struct_get_names(__axis_thresholds_dict);
+        var _a = 0;
+        repeat(array_length(_axis_name_array))
+        {
+            var _axis_name = _axis_name_array[_a];
+            var _thresholds_struct = __axis_thresholds_dict[$ _axis_name];
+            
+            _new_axis_thresholds_dict[$ _axis_name] = {
+                mini: _thresholds_struct.mini,
+                maxi: _thresholds_struct.maxi,
+            };
+            
+            ++_a;
+        }
+        
+        if (_output_string)
+        {
+            if (_prettify)
+            {
+                return __input_snap_to_json(_root_json, true, true);
+            }
+            else
+            {
+                return json_stringify(_root_json);
+            }
+        }
+        else
+        {
+            return _root_json;
+        }
+    }
+    
+    static __import = function(_string)
+    {
+        if (is_string(_string))
+        {
+            var _json = json_parse(_string);
+        }
+        else
+        {
+            var _json = _string;
+        }
+        
+        if (!is_struct(_json) && !is_array(_json))
+        {
+            __input_error("Input must be valid JSON (typeof=", _string, ")");
+            return;
+        }
+        
+        //Iterate over every profile in the JSON
+        var _profiles_dict = _json.profiles;
+        var _profile_name_array = variable_struct_get_names(_profiles_dict);
+        var _f = 0;
+        repeat(array_length(_profile_name_array))
+        {
+            var _profile_name = _profile_name_array[_f];
+            __profile_import(_json.profiles[$ _profile_name], _profile_name);
+            ++_f;
+        }
+        
+        //Copy axis threshold data
+        var _axis_thresholds_dict = _json.axis_thresholds;
+        var _axis_name_array = variable_struct_get_names(_axis_thresholds_dict);
+        var _a = 0;
+        repeat(array_length(_axis_name_array))
+        {
+            var _axis_name = _axis_name_array[_a];
+            var _new_thresholds_struct = _axis_thresholds_dict[$ _axis_name];
+            
+            __axis_thresholds_dict[$ _axis_name] = {
+                mini: _new_thresholds_struct.mini,
+                maxi: _new_thresholds_struct.maxi,
+            };
+            
+            ++_a;
+        }
+    }
+    
+    static __reset = function()
+    {
+        var _profile_name_array = variable_struct_get_names(__profiles_dict);
+        var _i = 0;
+        repeat(array_length(_profile_name_array))
+        {
+            var _profile_name = _profile_name_array[_i];
+        
+            if (!variable_struct_exists(global.__input_default_profile_dict, _profile_name))
+            {
+                //If this profile isn't a default, remove it
+                __profile_destroy(_profile_name);
+            }
+            else
+            {
+                //Otherwise reset this profile
+                __profile_reset_bindings(_profile_name);
+            }
+            
+            ++_i;
+        }
+        
+        __axis_thresholds_dict = {};
+    }
+    
     
     
     #region Tick functions

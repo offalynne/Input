@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "System",
-    "path": "folders/Input/System.yy",
+    "name": "Players",
+    "path": "folders/Input/Players.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_binding_system_swap_gamepad_ab",
+  "name": "input_player_import",
   "tags": [],
   "resourceType": "GMScript",
 }
