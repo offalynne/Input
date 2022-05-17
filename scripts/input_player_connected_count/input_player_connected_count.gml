@@ -6,7 +6,7 @@ function input_player_connected_count()
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
     {
-        if (global.__input_players[_p].__is_connected()) _count++;
+        if (global.__input_players[_p].__connected) _count++;
         ++_p;
     }
     

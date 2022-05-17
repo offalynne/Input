@@ -22,8 +22,11 @@ function __input_class_player() constructor
     
     __ghost = false;
     
-   __cursor = new __input_class_cursor();
-   __cursor.__player = self;
+    __connected = false;
+    __post_disconnection_tick = false;
+    
+    __cursor = new __input_class_cursor();
+    __cursor.__player = self;
     
     
     
@@ -236,20 +239,6 @@ function __input_class_player() constructor
         repeat(array_length(__source_array))
         {
             if (__source_array[_i].__equal_to(_source)) return true;
-            ++_i;
-        }
-        
-        return false;
-    }
-    
-    static __is_connected = function()
-    {
-        if (__ghost) return true;
-        
-        var _i = 0;
-        repeat(array_length(__source_array))
-        {
-            if (__source_array[_i].__is_connected()) return true;
             ++_i;
         }
         
@@ -684,30 +673,62 @@ function __input_class_player() constructor
     
     static tick = function()
     {
-        if (__rebind_state > 0) __tick_binding_scan();
-        
-        //Clear the momentary state for all verbs
-        var _v = 0;
-        repeat(array_length(global.__input_all_verb_array))
+        //Update our "connected" variable
+        if (__ghost)
         {
-            __verb_state_dict[$ global.__input_all_verb_array[_v]].__clear();
-            ++_v;
+            __connected = true;
+            __post_disconnection_tick = false;
+        }
+        else
+        {
+            __connected = false;
+            
+            var _i = 0;
+            repeat(array_length(__source_array))
+            {
+                if (__source_array[_i].__is_connected())
+                {
+                    __connected = true;
+                    __post_disconnection_tick = false;
+                    break;
+                }
+                
+                ++_i;
+            }
         }
         
-        __input_player_tick_sources();
-        
-        //Update our basic verbs first
-        tick_basic_verbs();
-        
-        //Update our chords
-        //We directly access verb values to detect state here
-        tick_chord_verbs();
-        
-        //Update our combos
-        //We directly access verb values to detect state here
-        tick_combo_verbs();
-        
-        __cursor.__tick();
+        //Do one tick after disconnection to clear out verb state
+        if (!__post_disconnection_tick)
+        {
+            //Make sure to tick binding scan first
+            //This'll catch disconnection if and when it happens
+            if (__rebind_state > 0) __tick_binding_scan();
+            
+            //Clear the momentary state for all verbs
+            var _v = 0;
+            repeat(array_length(global.__input_all_verb_array))
+            {
+                __verb_state_dict[$ global.__input_all_verb_array[_v]].__clear();
+                ++_v;
+            }
+            
+            __input_player_tick_sources();
+            
+            //Update our basic verbs first
+            tick_basic_verbs();
+            
+            //Update our chords
+            //We directly access verb values to detect state here
+            tick_chord_verbs();
+            
+            //Update our combos
+            //We directly access verb values to detect state here
+            tick_combo_verbs();
+            
+            __cursor.__tick();
+            
+            if (!__connected) __post_disconnection_tick = true;
+        }
     }
     
     static tick_basic_verbs = function()
@@ -790,6 +811,13 @@ function __input_class_player() constructor
         {
             __input_trace("Binding scan failed: Player ", __index, " is a ghost");
             __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.PLAYER_IS_GHOST);
+            return;
+        }
+        
+        if (!__connected)
+        {
+            __input_trace("Binding scan failed: Player ", __index, " disconnected");
+            __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.PLAYER_DISCONNECTED);
             return;
         }
         

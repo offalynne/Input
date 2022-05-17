@@ -465,7 +465,7 @@ function __input_system_tick()
     {
         var _old_status = _status_array[_p];
         
-        if (input_player_connected(_p))
+        if (global.__input_players[_p].__connected)
         {
             if ((_old_status == INPUT_STATUS.NEWLY_DISCONNECTED) || (_old_status == INPUT_STATUS.DISCONNECTED))
             {

@@ -13,6 +13,7 @@ enum INPUT_BINDING_SCAN_EVENT
     //GAMEPAD_INVALID             = -13, //Player gamepad is invalid - No longer used 2022-05-03
     //BINDING_DOESNT_MATCH_SOURCE = -14, //The new binding doesn't match the source that was targetted for rebinding - No longer used 2022-05-03
     PLAYER_IS_GHOST             = -15, //Player has been set as a ghost
+    PLAYER_DISCONNECTED         = -16, //Player disconnected
     SCAN_TIMEOUT                = -20, //Scanning for a binding timed out - either the player didn't enter a new binding or a stuck key prevented the system from working
     LOST_FOCUS                  = -21, //The game lost focus
     ABORTED                     = -30, //Binding scan was aborted before completion using input_binding_scan_abort()
