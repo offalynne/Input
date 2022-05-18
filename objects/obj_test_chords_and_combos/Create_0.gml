@@ -28,3 +28,5 @@ input_combo_create("fireball")
 .press("down")
 .press("right")
 .press_or_release("accept");
+
+last_combo = "No combo";
