@@ -27,8 +27,6 @@ Outputs a string (or struct) that contains data that encompasses the Input's sys
 
 It is recommended to only use bindings written on the same device as keyboard scancodes differ across device layouts and platforms.
 
-!> Due to [up-stream bugs](https://github.com/JujuAdams/Input/issues/152) in GameMaker's JavaScript runtime, this function is not supported in HTML5.
-
 &nbsp;
 
 ## `input_system_import(stringOrString)`
@@ -42,8 +40,6 @@ It is recommended to only use bindings written on the same device as keyboard sc
 Reads JSON, either as a string or a struct, that contains Input system data. Such a JSON should be created using [`input_system_export()`](Functions-(Exporting-and-Importing)#input_system_exportoutputstring-prettify).
 
 This function deserialises all player data (see [`input_player_export()`]()) as well as accessibility data. All player data is fully reset before loading in the new data - as such, this function **replaces** Input's system state rather than adding to it.
-
-!> Due to [up-stream bugs](https://github.com/JujuAdams/Input/issues/152) in GameMaker's JavaScript runtime, this function is not supported in HTML5.
 
 &nbsp;
 
@@ -73,8 +69,6 @@ Outputs a string (or struct) that contains data that contains profile, binding, 
 
 It is recommended to only use bindings written on the same device as keyboard scancodes differ across device layouts and platforms.
 
-!> Due to [up-stream bugs](https://github.com/JujuAdams/Input/issues/152) in GameMaker's JavaScript runtime, this function is not supported in HTML5.
-
 &nbsp;
 
 ## `input_player_import(stringOrString, [playerIndex])`
@@ -90,8 +84,6 @@ Reads JSON, either as a string or a struct, that contains player data (profiles,
 
 All player data is fully reset before loading in the new data - as such, this function **replaces** player data rather than adding to it.
 
-!> Due to [up-stream bugs](https://github.com/JujuAdams/Input/issues/152) in GameMaker's JavaScript runtime, this function is not supported in HTML5.
-
 &nbsp;
 
 ## `input_player_copy(playerIndexSrc, playerIndexDst)`
@@ -104,8 +96,6 @@ All player data is fully reset before loading in the new data - as such, this fu
 |`playerIndexDst`|integer |Player to copy bindings to  |
 
 Duplicates one player's profiles, bindings, and axis thresholds and copies them over to another player.
-
-!> Due to [up-stream bugs](https://github.com/JujuAdams/Input/issues/152) in GameMaker's JavaScript runtime, this function is not supported in HTML5.
 
 &nbsp;
 
@@ -123,8 +113,6 @@ Outputs a string (or struct) that contains data that contains profile, binding, 
 
 It is recommended to only use bindings written on the same device as keyboard scancodes differ across device layouts and platforms.
 
-!> Due to [up-stream bugs](https://github.com/JujuAdams/Input/issues/152) in GameMaker's JavaScript runtime, this function is not supported in HTML5.
-
 &nbsp;
 
 ## `input_profile_import(stringOrString, profileName, [playerIndex])`
@@ -140,8 +128,6 @@ Reads JSON, either as a string or a struct, that contains player data (profiles,
 
 All player data is fully reset before loading in the new data - as such, this function **replaces** player data rather than adding to it.
 
-!> Due to [up-stream bugs](https://github.com/JujuAdams/Input/issues/152) in GameMaker's JavaScript runtime, this function is not supported in HTML5.
-
 &nbsp;
 
 ## `input_profile_copy(playerIndexSrc, profileNameSrc, playerIndexDst, profileNameDst)`
@@ -156,5 +142,3 @@ All player data is fully reset before loading in the new data - as such, this fu
 |`profileNameDst`|integer |Profile to copy bindings to  |
 
 Duplicates one player's profile and copies them over to another player.
-
-!> Due to [up-stream bugs](https://github.com/JujuAdams/Input/issues/152) in GameMaker's JavaScript runtime, this function is not supported in HTML5.
