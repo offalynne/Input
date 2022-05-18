@@ -45,7 +45,7 @@
 
 - [`input_multiplayer_params_set(min, max, [dropDown])`](Functions-(Players)?id=input_multiplayer_params_setmin-max-dropdown)
 - [`input_multiplayer_params_get()`](Functions-(Players)?id=input_multiplayer_params_get)
-- [`input_multiplayer_pass()`](Functions-(Players)?id=input_multiplayer_is_finished)
+- [`input_multiplayer_is_finished()`](Functions-(Players)?id=input_multiplayer_is_finished)
 - [`input_source_mode_set(state)`](Functions-(Sources)?id=input_source_mode_setmode)
 - [`input_source_mode_get()`](Functions-(Sources)?id=input_source_mode_get)
 
@@ -73,15 +73,13 @@
 
 ## Rebinding
 
-- [`input_player_get_invalid_gamepad_bindings([playerIndex], [profileName])`](Functions-(Players)?id=input_player_get_invalid_gamepad_bindingsplayerindex)
 - [`input_binding_scan_start(successCallback, [failureCallback], [sourceFilter], [playerIndex])`](Functions-(Binding-Creators)?id=input_binding_scan_startsuccesscallback-failurecallback-sourcefilter-playerindex)
 - [`input_binding_scan_abort([playerIndex])`](Functions-(Binding-Creators)?id=input_binding_scan_abortplayerindex)
 - [`input_binding_scan_in_progress([playerIndex])`](Functions-(Binding-Creators)?id=input_binding_scan_in_progressplayerindex)
 - [`input_binding_set_safe(verb, binding, [playerIndex], [alternate], [profileName])`](Functions-(Binding-Access)?id=input_binding_set_safeverb-binding-playerindex-alternate-profilename)
 - [`input_profile_reset_bindings(profileName, [playerIndex])`](Functions-(Profiles)?id=input_profile_reset_bindingsprofilename-playerindex)
-- [`input_bindings_reset([source], [playerIndex], [resetThresholds])`](Functions-(Binding-System)#input_bindings_resetsource-playerindex-resetthresholds)
-- [`input_bindings_write([playerIndex])`](Functions-(Binding-System)#input_bindings_writeplayerindex)
-- [`input_bindings_read(string, [playerIndex])`](Functions-(Binding-System)#input_bindings_readstring-playerindex)
+- [`input_system_export([outputString], [prettify])`](Functions-(Exporting-and-Importing)?id=input_system_exportoutputstring-prettify)
+- [`input_system_import(stringOrString)`](Functions-(Exporting-and-Importing)?id=input_system_importstringorstring)
 
 &nbsp;
 

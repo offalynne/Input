@@ -18,7 +18,7 @@
 - [`input_player_ghost_get([playerIndex])`](Functions-(Players)?id=input_player_ghost_getplayerindex)
 - [`input_multiplayer_params_set(min, max, [dropDown])`](Functions-(Players)?id=input_multiplayer_params_setmin-max-dropdown)
 - [`input_multiplayer_params_get()`](Functions-(Players)?id=input_multiplayer_params_get)
-- [`input_multiplayer_pass()`](Functions-(Players)?id=input_multiplayer_is_finished)
+- [`input_multiplayer_is_finished()`](Functions-(Players)?id=input_multiplayer_is_finished)
 
 &nbsp;
 
