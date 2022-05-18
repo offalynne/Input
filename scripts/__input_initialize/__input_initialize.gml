@@ -52,9 +52,6 @@ function __input_initialize()
     //Whether momentary input has been cleared
     global.__input_cleared = false;
     
-    //The developer can also opt to use a method to transform mouse coordinates
-    global.__input_mouse_transform_method = undefined;
-    
     //Windows focus tracking
     global.__input_window_focus = true;
     

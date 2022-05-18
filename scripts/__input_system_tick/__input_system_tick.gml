@@ -233,17 +233,6 @@ function __input_system_tick()
                 break;
             }
             
-            //Perform a mouse coordinate transform via the developer-provided method, if one has been set
-            if (is_method(global.__input_mouse_transform_method))
-            {
-                static _transform_struct = {};
-                _transform_struct.x = _pointer_x;
-                _transform_struct.y = _pointer_y;
-                global.__input_mouse_transform_method(_transform_struct);
-                _pointer_x = _transform_struct.x;
-                _pointer_y = _transform_struct.y;
-            }
-            
             if (point_distance(_old_x, _old_y, _pointer_x, _pointer_y) > INPUT_MOUSE_MOVE_DEADZONE) _any_moved = true;
             
             global.__input_pointer_dx[@ _m] = _pointer_x - _old_x;
