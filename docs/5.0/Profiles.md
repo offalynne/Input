@@ -55,10 +55,10 @@ Here's an example configuration that matches the one used for Hyper Light Drifte
 ```gml
 INPUT_DEFAULT_PROFILES = {
     keyboard_and_mouse: {
-	    move_up:     input_binding_key(vk_up),
-	    move_down:   input_binding_key(vk_down),
-	    move_left:   input_binding_key(vk_left),
-	    move_right:  input_binding_key(vk_right),
+	    move_up:     input_binding_key("W"),
+	    move_down:   input_binding_key("S"),
+	    move_left:   input_binding_key("A"),
+	    move_right:  input_binding_key("D"),
 		dash:        input_binding_key(vk_space),
 		
 		sword: input_binding_mouse_button(mb_left),
