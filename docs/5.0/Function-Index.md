@@ -102,13 +102,12 @@
 
 &nbsp;
 
-## [Binding System](Functions-(Binding-System))
+## [Binding System](Functions-(Exporting-and-Importing))
 
-- [`input_binding_system_reset([source], [playerIndex], [resetThresholds])`](Functions-(Binding-System)#input_binding_system_resetsource-playerindex-resetthresholds)
-- [`input_binding_system_write([playerIndex], [returnString], [prettify])`](Functions-(Binding-System)#input_binding_system_writeplayerindex-returnString-prettify)
-- [`input_binding_system_read(string, [playerIndex])`](Functions-(Binding-System)#input_binding_system_readstring-playerindex)
-- [`input_binding_system_copy(source, destination)`](Functions-(Binding-System)#input_binding_system_copysource-destination)
-- [`input_binding_system_swap_gamepad_ab(state)`](Functions-(Binding-System)#input_binding_system_swap_gamepad_abstate)
+- [`input_binding_system_reset([source], [playerIndex], [resetThresholds])`](Functions-(Exporting-and-Importing)#input_binding_system_resetsource-playerindex-resetthresholds)
+- [`input_binding_system_write([playerIndex], [returnString], [prettify])`](Functions-(Exporting-and-Importing)#input_binding_system_writeplayerindex-returnString-prettify)
+- [`input_binding_system_read(string, [playerIndex])`](Functions-(Exporting-and-Importing)#input_binding_system_readstring-playerindex)
+- [`input_binding_system_copy(source, destination)`](Functions-(Exporting-and-Importing)#input_binding_system_copysource-destination)
 
 &nbsp;
 
@@ -174,6 +173,7 @@
 - [`input_ignore_key_add(key)`](Functions-(Other)#input_ignore_key_addkey)
 - [`input_ignore_key_remove(key)`](Functions-(Other)#input_ignore_key_removekey)
 - [`input_clear_momentary(state)`](Functions-(Other)#input_clear_momentarystate)
+- [`input_swap_gamepad_ab(state)`](Functions-(Binding-System)#input_swap_gamepad_abstate)
 
 &nbsp;
 

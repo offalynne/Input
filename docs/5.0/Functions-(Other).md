@@ -76,3 +76,15 @@ Adds a keyboard key to be ignored by Input. This will affect binding detection, 
 |`key`|integer |[Key](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/keyboard%20input/index.html) to remove|
 
 Removes a keyboard key from the ignore list.
+
+&nbsp;
+
+## `input_swap_gamepad_ab(state)`
+
+*Returns:* N/A (`undefined`)
+
+|Name   |Datatype|Purpose                     |
+|-------|--------|----------------------------|
+|`state`|boolean |Whether to swap A/B bindings|
+
+!> This function fully resets all player profiles and bindings to what's found in [`INPUT_DEFAULT_PROFILES`](Configuration?id=profiles-and-bindings). This function is intended to be called when the game is started before loading any player-defined bindings.
