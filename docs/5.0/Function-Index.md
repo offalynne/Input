@@ -192,8 +192,6 @@
 - [`input_mouse_dx()`](Functions-(Mouse)#input_mouse_dx)
 - [`input_mouse_dy()`](Functions-(Mouse)#input_mouse_dy)
 - [`input_mouse_moved()`](Functions-(Mouse)#input_mouse_moved)
-- [`input_mouse_transform_function_set(method)`](Functions-(Mouse)?id=input_mouse_transform_function_setmethod)
-- [`input_mouse_transform_function_get()`](Functions-(Mouse)?id=input_mouse_transform_method_get)
 - [`input_mouse_coord_space_set(coordSpace)`](Functions-(Mouse)?id=input_mouse_coord_space_setcoordspace)
 - [`input_mouse_coord_space_get()`](Functions-(Mouse)?id=input_mouse_coord_space_get)
 
