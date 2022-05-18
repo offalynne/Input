@@ -580,8 +580,9 @@ function __input_class_player() constructor
             if (INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one");
             
             var _verb = new __input_class_verb_state();
-            _verb.name = _verb_name;
-            _verb.type = __INPUT_VERB_TYPE.__BASIC;
+            _verb.__player = self;
+            _verb.name     = _verb_name;
+            _verb.type     = __INPUT_VERB_TYPE.__BASIC;
             
             __verb_state_dict[$ _verb_name] = _verb;
         }
@@ -615,6 +616,7 @@ function __input_class_player() constructor
             if (INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one as a chord");
             
             var _verb_state_struct = new __input_class_verb_state();
+            _verb_state_struct.__player = self;
             _verb_state_struct.name     = _verb_name;
             _verb_state_struct.type     = __INPUT_VERB_TYPE.__CHORD;
             _verb_state_struct.analogue = false; //Chord verbs are never analogue
@@ -638,6 +640,7 @@ function __input_class_player() constructor
             if (INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one as a combo");
             
             var _verb_state_struct = new __input_class_verb_state();
+            _verb_state_struct.__player = self;
             _verb_state_struct.name     = _verb_name;
             _verb_state_struct.type     = __INPUT_VERB_TYPE.__COMBO;
             _verb_state_struct.analogue = false; //Combo verbs are never analogue

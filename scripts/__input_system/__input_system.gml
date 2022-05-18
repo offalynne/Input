@@ -266,7 +266,14 @@ function __input_error()
         ++_i;
     }
     
-    show_error("Input:\n" + _string + "\n ", false);
+    if (os_browser == browser_not_a_browser)
+    {
+        show_error("Input:\n" + _string + "\n ", false);
+    }
+    else
+    {
+        show_error("Input:\n" + _string + "\n" + string(debug_get_callstack()), false);
+    }
 }
 
 function __input_ensure_unique_verb_name(_name)

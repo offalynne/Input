@@ -2,6 +2,7 @@ function __input_class_verb_state() constructor
 {
     name = undefined;
     type = undefined;
+    __player = undefined;
     
     __inactive       = false;
     __group_inactive = false;
@@ -84,7 +85,7 @@ function __input_class_verb_state() constructor
         
         if (value > 0)
         {
-            other.__last_input_time = current_time;
+            __player.__last_input_time = current_time;
             
             held      = true;
             held_time = _time;

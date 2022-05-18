@@ -26,6 +26,15 @@ function __input_finalize_default_profiles()
         var _profile_name   = global.__input_profile_array[_f];
         var _profile_struct = global.__input_default_profile_dict[$ _profile_name];
         
+        if (os_browser != browser_not_a_browser)
+        {
+            if (is_method(_profile_struct))
+            {
+                array_delete(global.__input_profile_array, _f, 1);
+                continue;
+            }
+        }
+        
         if (!is_struct(_profile_struct))
         {
             __input_error("Profile \"", _profile_name, "\" definition must be a struct (was ", typeof(_profile_struct), ")");

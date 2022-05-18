@@ -522,7 +522,7 @@ function __input_system_tick()
     }
     
     var _g = 0;
-    repeat(INPUT_MAX_PLAYERS)
+    repeat(__INPUT_GAMEPAD_COUNT)
     {
         var _old_status = _status_array[_g];
         
@@ -559,6 +559,8 @@ function __input_system_tick()
     global.__input_gamepads_status.any_changed = _any_gamepads_changed;
     
     #endregion
+    
+    
     
     switch(global.__input_source_mode)
     {
