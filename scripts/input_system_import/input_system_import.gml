@@ -1,4 +1,4 @@
-/// @param string
+/// @param stringOrStruct
 
 function input_system_import(_string)
 {

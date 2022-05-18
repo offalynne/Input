@@ -4,6 +4,6 @@ function input_system_reset()
     repeat(INPUT_MAX_PLAYERS)
     {
         input_player_reset(_p);
-        ++_i;
+        ++_p;
     }
 }
