@@ -102,15 +102,6 @@
 
 &nbsp;
 
-## [Binding System](Functions-(Exporting-and-Importing))
-
-- [`input_binding_system_reset([source], [playerIndex], [resetThresholds])`](Functions-(Exporting-and-Importing)#input_binding_system_resetsource-playerindex-resetthresholds)
-- [`input_binding_system_write([playerIndex], [returnString], [prettify])`](Functions-(Exporting-and-Importing)#input_binding_system_writeplayerindex-returnString-prettify)
-- [`input_binding_system_read(string, [playerIndex])`](Functions-(Exporting-and-Importing)#input_binding_system_readstring-playerindex)
-- [`input_binding_system_copy(source, destination)`](Functions-(Exporting-and-Importing)#input_binding_system_copysource-destination)
-
-&nbsp;
-
 ## [Verbs](Functions-(Verbs))
 
 - [`input_consume(verb, [playerIndex])`](Functions-(Other)#input_consumeverb-playerindex)
@@ -162,6 +153,21 @@
 - [`input_accessibility_global_toggle_get()`](Functions-(Accessibility)?id=input_accessibility_global_toggle_get)
 - [`input_accessibility_verb_toggle_set(verb, state)`](Functions-(Accessibility)?id=input_accessibility_verb_toggle_setverb-state)
 - [`input_accessibility_verb_toggle_get(verb)`](Functions-(Accessibility)?id=input_accessibility_verb_toggle_getverb)
+
+&nbsp;
+
+## [Exporting and Importing](Functions-(Exporting-and-Importing))
+
+- [`input_system_reset()`](Functions-(Exporting-and-Importing)?id=input_system_reset)
+- [`input_system_export([outputString], [prettify])`](Functions-(Exporting-and-Importing)?id=input_system_exportoutputstring-prettify)
+- [`input_system_import(stringOrString)`](Functions-(Exporting-and-Importing)?id=input_system_importstringorstring)
+- [`input_player_reset([playerIndex])`](Functions-(Exporting-and-Importing)?id=input_player_resetplayerindex)
+- [`input_player_export([playerIndex], [outputString], [prettify])`](Functions-(Exporting-and-Importing)?id=input_player_exportplayerindex-outputstring-prettify)
+- [`input_player_import(stringOrString, [playerIndex])`](Functions-(Exporting-and-Importing)?id=input_player_importstringorstring-playerindex)
+- [`input_player_copy(playerIndexSrc, playerIndexDst)`](Functions-(Exporting-and-Importing)?id=input_player_copyplayerindexsrc-playerindexdst)
+- [`input_profile_export(profileName, [playerIndex], [outputString], [prettify])`](Functions-(Exporting-and-Importing)?id=input_profile_exportprofilename-playerindex-outputstring-prettify)
+- [`input_profile_import(stringOrString, profileName, [playerIndex])`](Functions-(Exporting-and-Importing)?id=input_profile_importstringorstring-profilename-playerindex)
+- [`input_profile_copy(playerIndexSrc, profileNameSrc, playerIndexDst, profileNameDst)`](Functions-(Exporting-and-Importing)?id=input_profile_copyplayerindexsrc-profilenamesrc-playerindexdst-profilenamedst)
 
 &nbsp;
 
