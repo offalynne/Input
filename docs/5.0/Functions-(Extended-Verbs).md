@@ -28,10 +28,10 @@ A "chord" is a set of verbs that must be pressed together, for example `ctrl + a
 
 *Returns:* Struct, a combo verb builder
 
-|Name            |Datatype|Purpose                                                                                                                                                                                     |
-|----------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`name`          |string  |Name of the combo verb to create                                                                                                                                                            |
-|`[phaseTimeout]`|number  |Maximum time allowed between phases, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration). If not specified, the value defaults to 20 frames or 333 milliseconds|
+|Name              |Datatype|Purpose                                                                                                                                                                                                                                    |
+|------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`name`            |string  |Name of the combo verb to create                                                                                                                                                                                                           |
+|`[defaultTimeout]`|number  |Default maximum time allowed between phases. This can be overridden on a case-by-case basis with `.timeout()`. Units are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration). If not specified, 20 frames or 333 milliseconds is used|
 
 Combos are made from multiple phases. As a player completes the button/key presses required to complete the combo, the combo phase advances. Each phase requires some sort of change in verb state from the player, either a press, a release, or a hold.
 
@@ -52,6 +52,10 @@ The verb must be either pressed or released.
 ### `.hold(verb)`
 
 The given has to be held for this phase and all subsequent phases (or until `.release()` is called for this specific verb).
+
+### `.timeout(time)`
+
+Sets the timeout for the previous phase, overriding the default timeout specified when calling `input_combo_create()`.
 
 &nbsp;
 
