@@ -21,7 +21,7 @@ function input_system_import(_string)
     input_system_reset();
     
     //Restore accessibility settings
-    global.__input_toggle_momentary_state = accessibility.momentary_state;
+    global.__input_toggle_momentary_state = _json.accessibility.momentary_state;
     global.__input_toggle_momentary_dict = {};
     
     var _momentary_verb_array = _json.accessibility.momentary_verbs;

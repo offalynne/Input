@@ -242,14 +242,13 @@ function __input_class_player() constructor
         var _existing_verb_dict = __profiles_dict[$ _profile_name];
         
         //Iterate over every verb
-        var _profile_struct = _json[$ _profile_name];
         var _v = 0;
         repeat(array_length(global.__input_basic_verb_array))
         {
             var _verb_name = global.__input_basic_verb_array[_v];
             
             var _existing_alternate_array = _existing_verb_dict[$ _verb_name];
-            var _alternate_array = _profile_struct[$ _verb_name];
+            var _alternate_array = _json[$ _verb_name];
             
             //Verify that the input data has this verb
             if (!is_array(_alternate_array)) __input_error("Player ", __index, " data is missing verb \"", _verb_name, "\"");
