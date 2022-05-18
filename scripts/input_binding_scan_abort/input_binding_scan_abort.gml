@@ -3,6 +3,19 @@
 function input_binding_scan_abort(_player_index = 0)
 {
     __input_initialize();
+    
+    if (_player_index == all)
+    {
+        var _p = 0;
+        repeat(INPUT_MAX_PLAYERS)
+        {
+            input_binding_scan_abort(_p);
+            ++_p;
+        }
+        
+        return;
+    }
+    
     __INPUT_VERIFY_PLAYER_INDEX
     
     with(global.__input_players[_player_index])

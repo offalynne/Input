@@ -29,7 +29,7 @@
     "path": "folders/Test Cases.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_test_save_load_reset",
+  "name": "obj_test_system_export_import_reset",
   "tags": [],
   "resourceType": "GMObject",
 }

@@ -11,7 +11,7 @@ if (input_keyboard_check_pressed(ord("S")))
 {
     input_binding_scan_abort();
     
-    var _string = input_binding_system_write(all, true, true);
+    var _string = input_system_export(true, true);
     var _buffer = buffer_create(string_byte_length(_string), buffer_grow, 1);
     buffer_write(_buffer, buffer_text, _string);
     buffer_save(_buffer, "test_saveload.json");
@@ -27,7 +27,7 @@ if (input_keyboard_check_pressed(ord("L")))
     var _buffer = buffer_load("test_saveload.json");
     var _string = buffer_read(_buffer, buffer_text);
     buffer_delete(_buffer);
-    input_binding_system_read(_string);
+    input_system_import(_string);
     
     show_debug_message("Loaded!");
 }
@@ -35,6 +35,6 @@ if (input_keyboard_check_pressed(ord("L")))
 if (input_keyboard_check_pressed(ord("R")))
 {
     input_binding_scan_abort();
-    input_binding_system_reset(all);
+    input_system_reset();
     show_debug_message("Reset!");
 }

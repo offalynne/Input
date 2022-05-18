@@ -171,7 +171,7 @@ function __input_finalize_default_profiles()
     }
     
     //Make sure every player has a copy of the default profiles
-    input_binding_system_reset();
+    input_system_reset();
     
     //And turn strict checks off!
     global.__input_strict_binding_check = false;
