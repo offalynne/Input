@@ -5,6 +5,7 @@
 ## New Features
 
 - New logo!!
+- Defining default bindings is now way clearer using [`INPUT_DEFAULT_PROFILES`](Verbs-and-Bindings?id=example-of-use)
 - Binding [profiles](Profiles)
 - Accessibility features, including [momentary toggle](Functions-(Accessibility)) behaviour
 - Rebuilt the native cross-platform and device-agnostic [cursor](Functions-(Cursor)) (it's back!)
