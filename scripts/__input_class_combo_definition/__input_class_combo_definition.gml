@@ -1,7 +1,7 @@
-function __input_class_combo_definition(_name, _phase_timeout) constructor
+function __input_class_combo_definition(_name, _default_timeout) constructor
 {
-    __name          = _name;
-    __phase_timeout = _phase_timeout;
+    __name            = _name;
+    __default_timeout = _default_timeout;
     
     __phase_array = [];
     
@@ -16,6 +16,17 @@ function __input_class_combo_definition(_name, _phase_timeout) constructor
         {
             __input_error("Verb \"", _name, "\" not found either as a basic verb or a chord. Please define verbs and chords before combos");
         }
+    }
+    
+    static timeout = function(_time)
+    {
+        if (array_length(__phase_array))
+        {
+            __input_error("Cannot change the timeout for previous phase, no phases have been added");
+            return;
+        }
+        
+        __phase_array[array_length(__phase_array)-1].__timeout = _time;
     }
     
     static press = function()
@@ -37,6 +48,7 @@ function __input_class_combo_definition(_name, _phase_timeout) constructor
         
         array_push(__phase_array, {
             __type:  __INPUT_COMBO_PHASE_TYPE.__PRESS,
+            __timeout: __default_timeout,
             __verb_array: _verb_array,
             __verb_struct: _verb_struct,
         });
@@ -63,6 +75,7 @@ function __input_class_combo_definition(_name, _phase_timeout) constructor
         
         array_push(__phase_array, {
             __type:  __INPUT_COMBO_PHASE_TYPE.__RELEASE,
+            __timeout: __default_timeout,
             __verb_array: _verb_array,
             __verb_struct: _verb_struct,
         });
@@ -89,6 +102,7 @@ function __input_class_combo_definition(_name, _phase_timeout) constructor
         
         array_push(__phase_array, {
             __type:  __INPUT_COMBO_PHASE_TYPE.__PRESS_OR_RELEASE,
+            __timeout: __default_timeout,
             __verb_array: _verb_array,
             __verb_struct: _verb_struct,
         });
@@ -115,6 +129,7 @@ function __input_class_combo_definition(_name, _phase_timeout) constructor
         
         array_push(__phase_array, {
             __type:  __INPUT_COMBO_PHASE_TYPE.__HOLD_START,
+            __timeout: __default_timeout,
             __verb_array: _verb_array,
             __verb_struct: _verb_struct,
         });

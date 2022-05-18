@@ -156,12 +156,13 @@ function __input_class_combo_state(_name, _combo_definition_struct) constructor
     
     static __evaluate_phase = function(_player_verbs_struct)
     {
-        if (__input_get_time() - __phase_start_time > __definition_struct.__phase_timeout) return __INPUT_COMBO_STATE.__FAIL;
-        
         var _phase              = __phase_array[__phase];
         var _phase_type         = _phase.__type;
         var _phase_verbs_array  = _phase.__verb_array;
         var _phase_verbs_struct = _phase.__verb_struct;
+        var _phase_timeout      = _phase.__timeout;
+        
+        if (__input_get_time() - __phase_start_time > _phase_timeout) return __INPUT_COMBO_STATE.__FAIL;
         
         //Check to see if any verbs have been released
         var _i = 0;
