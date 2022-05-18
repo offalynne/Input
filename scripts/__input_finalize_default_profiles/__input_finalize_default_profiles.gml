@@ -6,7 +6,7 @@ function __input_finalize_default_profiles()
     
     if (!is_struct(global.__input_default_profile_dict))
     {
-        __input_error("INPUT_DEFAULT_PROFILES must contain a struct (was ", typeof(global.__input_default_profile_dict), ")\nDocumentation on INPUT_DEFAULT_PROFILES can be found offline in __input_config_default_profiles()\nOnline documentation can be found at https://jujuadams.github.io/Input");
+        __input_error("INPUT_DEFAULT_PROFILES must contain a struct (was ", typeof(global.__input_default_profile_dict), ")\nDocumentation on INPUT_DEFAULT_PROFILES can be found offline in __input_config_profiles_and_default_bindings()\nOnline documentation can be found at https://jujuadams.github.io/Input");
     }
     
     if (variable_struct_names_count(global.__input_default_profile_dict) <= 0)
