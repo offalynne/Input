@@ -1,11 +1,11 @@
 /// @param name
-/// @param [phaseTimeout]
+/// @param [defaultTimeout]
 
-function input_combo_create(_name, _phase_timeout = INPUT_TIMER_MILLISECONDS? 333 : 20)
+function input_combo_create(_name, _default_timeout = INPUT_TIMER_MILLISECONDS? 333 : 20)
 {
     __input_ensure_unique_verb_name(_name);
     
-    var _combo_definition = new __input_class_combo_definition(_name, _phase_timeout);
+    var _combo_definition = new __input_class_combo_definition(_name, _default_timeout);
     
     //Store this globally for uniqueness checks later
     global.__input_all_verb_dict[$ _name] = true;
