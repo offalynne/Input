@@ -56,11 +56,11 @@
 
 ## [2D Checkers](Functions-(2D-Checkers))
 
-- [`input_x(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`](Functions-(2D-Checkers)#input_xverbleft-verbright-verbup-verbdown-playerindex)
-- [`input_y(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`](Functions-(2D-Checkers)#input_xverbleft-verbright-verbup-verbdown-playerindex)
-- [`input_xy(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`](Functions-(2D-Checkers)#input_yverbleft-verbright-verbup-verbdown-playerindex)
-- [`input_direction(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`](Functions-(2D-Checkers)#input_directionverbleft-verbright-verbup-verbdown-playerindex)
-- [`input_distance(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`](Functions-(2D-Checkers)#input_distanceverbleft-verbright-verbup-verbdown-playerindex)
+- [`input_x(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`](Functions-(2D-Checkers)#input_xverbleft-verbright-verbup-verbdown-playerindex)
+- [`input_y(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`](Functions-(2D-Checkers)#input_xverbleft-verbright-verbup-verbdown-playerindex)
+- [`input_xy(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`](Functions-(2D-Checkers)#input_yverbleft-verbright-verbup-verbdown-playerindex)
+- [`input_direction(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`](Functions-(2D-Checkers)#input_directionverbleft-verbright-verbup-verbdown-playerindex)
+- [`input_distance(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`](Functions-(2D-Checkers)#input_distanceverbleft-verbright-verbup-verbdown-playerindex)
 
 &nbsp;
 

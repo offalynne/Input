@@ -8,7 +8,7 @@ If you're looking for simpler ways to check verbs, please see the [1D Checkers](
 
 &nbsp;
 
-## `input_x(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`
+## `input_x(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`
 
 *Returns:* Number, the x-coordinate of the vector represented by the sum of the verb values
 
@@ -19,10 +19,11 @@ If you're looking for simpler ways to check verbs, please see the [1D Checkers](
 |`verbLeft`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
 |`verbRight`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
 |`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used        |
+|`[mostRecent ]` |boolean                   |Whether to prioritize recency per axis. False if unspecified|
 
 &nbsp;
 
-## `input_y(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`
+## `input_y(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`
 
 *Returns:* Number, the y-coordinate of the vector represented by the sum of the verb values
 
@@ -33,10 +34,11 @@ If you're looking for simpler ways to check verbs, please see the [1D Checkers](
 |`verbLeft`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
 |`verbRight`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
 |`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used        |
+|`[mostRecent]`  |boolean                   |Whether to prioritize recency per axis. False if unspecified|
 
 &nbsp;
 
-## `input_xy(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`
+## `input_xy(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`
 
 *Returns:* Struct, the vector represented by the sum of the verb values
 
@@ -47,12 +49,13 @@ If you're looking for simpler ways to check verbs, please see the [1D Checkers](
 |`verbLeft`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
 |`verbRight`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
 |`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used        |
+|`[mostRecent]`  |boolean                   |Whether to prioritize recency per axis. False if unspecified|
 
 The struct returned by this function contains two member variables: `.x` and `.y`.
 
 &nbsp;
 
-## `input_direction(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`
+## `input_direction(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`
 
 *Returns:* Number, the direction (in degrees) represented by the sum of the verb values
 
@@ -63,12 +66,13 @@ The struct returned by this function contains two member variables: `.x` and `.y
 |`verbLeft`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
 |`verbRight`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
 |`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used        |
+|`[mostRecent]` |boolean                   |Whether to prioritize recency per axis. False if unspecified|
 
 !> If the distance to the point of aim is 0 (after taking into account the minimum threshold) then this function will return `undefined`. Make sure you handle this return case in your code!
 
 &nbsp;
 
-## `input_distance(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`
+## `input_distance(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`
 
 *Returns:* Number, the length of the vector represented by the sum of the verb values
 
@@ -79,3 +83,4 @@ The struct returned by this function contains two member variables: `.x` and `.y
 |`verbLeft`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
 |`verbRight`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
 |`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used        |
+|`[mostRecent]` |boolean                   |Whether to prioritize recency per axis. False if unspecified|
