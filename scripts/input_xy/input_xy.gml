@@ -3,8 +3,9 @@
 /// @param upVerb
 /// @param downVerb
 /// @param [playerIndex]
+/// @param [mostRecent]
 
-function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0)
+function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0, _most_recent = false)
 {
     if (INPUT_2D_CHECKER_STATIC_RESULT)
     {
@@ -71,9 +72,17 @@ function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0)
         if (_verb_struct_r.raw_analogue) _value_r = 0.0;
     }
     
-    //Calculate the actual raw x/y values, and the displacement
+    //Calculate the actual raw x/y values
     var _dx = _value_r - _value_l;
     var _dy = _value_d - _value_u;
+
+    if (_most_recent)
+    {
+        if ((_value_l > 0.0) && (_value_r > 0.0)) { _dx = ((_verb_struct_l.held_time > _verb_struct_r.held_time)? -_value_l : _value_r); }
+        if ((_value_u > 0.0) && (_value_d > 0.0)) { _dy = ((_verb_struct_u.held_time > _verb_struct_d.held_time)? -_value_u : _value_d); }
+    }
+
+    //Calculate the displacement
     var _d = sqrt(_dx*_dx + _dy*_dy);
     
     //If the displacement is exactly zero then skip then early-out

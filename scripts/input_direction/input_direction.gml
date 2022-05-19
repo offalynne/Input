@@ -3,10 +3,11 @@
 /// @param upVerb
 /// @param downVerb
 /// @param [playerIndex]
+/// @param [mostRecent]
 
-function input_direction(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = undefined)
+function input_direction(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = undefined, _most_recent = false)
 {
-    var _result = input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index);
+    var _result = input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index, _most_recent);
     if ((_result.x == 0) && (_result.y == 0)) return undefined;
     return point_direction(0, 0, _result.x, _result.y);
 }
