@@ -9,5 +9,11 @@ _string += "y = " + string(input_y("left", "right", "up", "down")) + "\n";
 _string += "xy = " + string(input_xy("left", "right", "up", "down")) + "\n";
 _string += "direction = " + string(input_direction("left", "right", "up", "down")) + "\n";
 _string += "distance = " + string(input_distance("left", "right", "up", "down")) + "\n";
+_string += "\n";
+_string += "Recent x = " + string(input_x("left", "right", "up", "down", 0, true)) + "\n";
+_string += "Recent y = " + string(input_y("left", "right", "up", "down", 0, true)) + "\n";
+_string += "Recent xy = " + string(input_xy("left", "right", "up", "down", 0, true)) + "\n";
+_string += "Recent direction = " + string(input_direction("left", "right", "up", "down", 0, true)) + "\n";
+_string += "Recent distance = " + string(input_distance("left", "right", "up", "down", 0, true)) + "\n";
 
 draw_text(10, 10, _string);
