@@ -71,10 +71,10 @@ This function will **not** return `true` on the same frame a verb is activated (
 
 |Name           |Datatype                        |Purpose                                                                                                                      |
 |---------------|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
-|`verbNegative` |[verb](Verbs-and-Bindings)      |[Verb](Verbs-and-Bindings) to check as negative component                                                                       |
-|`verbPositive` |[verb](Verbs-and-Bindings)      |[Verb](Verbs-and-Bindings) to check as positive component                                                                       |
+|`verbNegative` |[verb](Verbs-and-Bindings)      |[Verb](Verbs-and-Bindings) to check as negative component                                                                    |
+|`verbPositive` |[verb](Verbs-and-Bindings)      |[Verb](Verbs-and-Bindings) to check as positive component                                                                    |
 |`[playerIndex]`|integer                         |Player to target. If not specified, player 0 is used                                                                         |
-|`[mostRecent]` |boolean                         |Whether to prioritize recency per axis. False if unspecified                                                                 |
+|`[mostRecent]` |boolean                         |Whether to prioritize recency in case of both negative and positive input. False if unspecified                              |
 |`[delay]`      |frames/milliseconds             |Time between re-triggers; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration). The units of this value are determined by [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration)|
 |`[predelay]`   |frames/milliseconds             |Time before the first re-trigger; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration). The units of this value are determined by [`INPUT_REPEAT_DEFAULT_PREDELAY`](Configuration)|
 
@@ -166,7 +166,7 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 
 &nbsp;
 
-## `input_check_opposing(verbNegative, verbPositive, [playerIndex], [mostRecent], [bufferDuration])`
+## `input_check_opposing(verbNegative, verbPositive, [playerIndex], [mostRecent])`
 
 *Returns:* Real, the sign of the result of the negative and positive active verbs
 
@@ -175,7 +175,7 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 |`verbNegative`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to check as negative component                                                 |
 |`verbPositive`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to check as positive component                                                 |
 |`[playerIndex]`   |integer                   |Player to target. If not specified, player 0 is used                                                      |
-|`[mostRecent]`    |boolean                   |Whether to prioritize recency per axis. False if unspecified                                              |
+|`[mostRecent]` |boolean                      |Whether to prioritize recency in case of both negative and positive input. False if unspecified           |
 
 If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are currently active for the player.
 
