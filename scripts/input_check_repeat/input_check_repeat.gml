@@ -1,4 +1,4 @@
-/// @param verb/array
+/// @param verb
 /// @param [playerIndex]
 /// @param [delay]
 /// @param [predelay]
