@@ -65,6 +65,23 @@ This function will **not** return `true` on the same frame a verb is activated (
 
 &nbsp;
 
+## `input_check_repeat_opposing(verbNegative, verbPositive, [playerIndex], [mostRecent], [delay], [predelay])`
+
+*Returns:* Real, the sign of the result of the negative and positive active verbs as re-triggered by a repeater behaviour
+
+|Name           |Datatype                        |Purpose                                                                                                                      |
+|---------------|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+|`verbNegative` |[verb](Verbs-and-Bindings)      |[Verb](Verbs-and-Bindings) to check as negative component                                                                       |
+|`verbPositive` |[verb](Verbs-and-Bindings)      |[Verb](Verbs-and-Bindings) to check as positive component                                                                       |
+|`[playerIndex]`|integer                         |Player to target. If not specified, player 0 is used                                                                         |
+|`[mostRecent]` |boolean                         |Whether to prioritize recency per axis. False if unspecified                                                                 |
+|`[delay]`      |frames/milliseconds             |Time between re-triggers; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration). The units of this value are determined by [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration)|
+|`[predelay]`   |frames/milliseconds             |Time before the first re-trigger; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration). The units of this value are determined by [`INPUT_REPEAT_DEFAULT_PREDELAY`](Configuration)|
+
+This function will **not** return `true` on the same frame a verb is activated (unless `predelay` is set to 0). You'll probably want to combine this function with [`input_check_pressed()`](Functions-(Checkers)#input_check_pressedverb-playerindex-bufferduration).
+
+&nbsp;
+
 ## `input_check_double(verb, [playerIndex], [bufferDuration])`
 
 *Returns:* Boolean, if the verb is currently active
@@ -146,6 +163,21 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 |`[bufferDuration]`|frames/milliseconds             |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
 
 If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are newly deactivated this frame for the player. The hold time required to activate this function is given by [`INPUT_LONG_DELAY`](Configuration).
+
+&nbsp;
+
+## `input_check_opposing(verbNegative, verbPositive, [playerIndex], [mostRecent], [bufferDuration])`
+
+*Returns:* Real, the sign of the result of the negative and positive active verbs
+
+|Name              |Datatype                  |Purpose                                                                                                   |
+|------------------|--------------------------|----------------------------------------------------------------------------------------------------------|
+|`verbNegative`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to check as negative component                                                 |
+|`verbPositive`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to check as positive component                                                 |
+|`[playerIndex]`   |integer                   |Player to target. If not specified, player 0 is used                                                      |
+|`[mostRecent]`    |boolean                   |Whether to prioritize recency per axis. False if unspecified                                              |
+
+If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are currently active for the player.
 
 &nbsp;
 
