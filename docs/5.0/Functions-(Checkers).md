@@ -56,7 +56,7 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 
 |Name           |Datatype                        |Purpose                                                                                                                      |
 |---------------|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
-|`verb`         |[verb](Verbs-and-Bindings)/array|[Verb](Verbs-and-Bindings) to check, or an array of [verbs](Verbs-and-Bindings) (see below)              |
+|`verb`         |[verb](Verbs-and-Bindings)      |[Verb](Verbs-and-Bindings) to check                                                                                          |
 |`[playerIndex]`|integer                         |Player to target. If not specified, player 0 is used                                                                         |
 |`[delay]`      |frames/milliseconds             |Time between re-triggers; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration). The units of this value are determined by [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration)|
 |`[predelay]`   |frames/milliseconds             |Time before the first re-trigger; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration). The units of this value are determined by [`INPUT_REPEAT_DEFAULT_PREDELAY`](Configuration)|
