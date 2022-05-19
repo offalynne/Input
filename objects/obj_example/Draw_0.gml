@@ -9,4 +9,5 @@ _string += concat("Pause         = ", input_value("pause" ), "    ", input_bindi
 _string += concat("Recent (all)  = ", input_check_press_most_recent(), "\n");
 _string += concat("Recent (4dir) = ", input_check_press_most_recent(["left", "right", "up", "down"]), "\n");
 _string += concat("Repeat        = ", input_check_repeat("up"), "\n");
+_string += concat("Repeat opp.   = ", input_check_repeat_opposing("up", "down", 0, true), "\n");
 draw_text(10, 10, _string);
