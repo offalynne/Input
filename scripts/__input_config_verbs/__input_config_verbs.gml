@@ -1,3 +1,9 @@
+//Defines which verbs should collide with which other verbs when using input_binding_get_collisions()
+//and input_binding_set_safe(). A verb that is not present in a group will collide with all other verbs
+INPUT_VERB_GROUPS = {
+    general: ["up", "down", "left", "right", "accept", "cancel", "action", "special", "pause",],
+};
+
 //Default time before input_check_repeat() returns <true>
 //(Whether this is in frames or milliseconds is controlled by INPUT_TIMER_MILLISECONDS above)
 #macro INPUT_REPEAT_DEFAULT_DELAY  10
@@ -22,8 +28,11 @@
 //This affects input_x(), input_y(), input_xy(), input_direction(), and input_distance()
 #macro INPUT_2D_CLAMP  true
 
-//Defines which verbs should collide with which other verbs when using input_binding_get_collisions()
-//and input_binding_set_safe(). A verb that is not present in a group will collide with all other verbs
-INPUT_VERB_GROUPS = {
-    general: ["up", "down", "left", "right", "accept", "cancel", "action", "special", "pause",],
-};
+//The amount of bias for 2D checkers to prefer straight lines along the x- and y-axes
+//This makes it easier for the player to input exactly horizontal and exactly vertical movement
+//Value should be from 0 to 1. Higher values make the biasing behaviour stronger
+#macro INPUT_2D_XY_AXIS_BIAS  0.0
+
+//Whether the axis bias (see above) should be 8-directional
+//If set to <false>, 2D checkers will only lock to north/east/south/west directions
+#macro INPUT_2D_XY_AXIS_BIAS_DIAGONALS  false

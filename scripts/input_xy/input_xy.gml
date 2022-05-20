@@ -135,6 +135,35 @@ function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0, _most_r
     _dx *= _coeff;
     _dy *= _coeff;
     
+    if (INPUT_2D_XY_AXIS_BIAS > 0)
+    {
+        var _divisor = INPUT_2D_XY_AXIS_BIAS_DIAGONALS? 45 : 90;
+        
+        var _direction = point_direction(0, 0, _dx, _dy);
+        var _dir_mod = (_direction mod _divisor) / _divisor;
+        _dir_mod = clamp((_dir_mod - 0.5*0.999*INPUT_2D_XY_AXIS_BIAS) / (1 - 0.999*INPUT_2D_XY_AXIS_BIAS), 0, 1);
+        _dir_mod = _dir_mod*_dir_mod*(3 - 2*_dir_mod); //Smooth step babyyyy
+        _direction = _divisor*((_direction div _divisor) + _dir_mod);
+        
+        var _distance  = point_distance(0, 0, _dx, _dy);
+        _dx = lengthdir_x(_distance, _direction);
+        _dy = lengthdir_y(_distance, _direction);
+        
+        /*
+        //Implement from https://github.com/Minimuino/thumbstick-deadzones/blob/master/README.md
+        //It is not consistent in magnitude making it unsuitable for our use case
+        
+        var _abs_dx = abs(_dx);
+        var _abs_dy = abs(_dy);
+        
+        var _dead_x = _min_threshold*abs(_abs_dy); //Base our deadzone on where the opposite axis is
+        var _dead_y = _min_threshold*abs(_abs_dx);
+        
+        _dx = sign(_dx) * max(0, (_abs_dx - _dead_x) / (1 -  _dead_x));
+        _dy = sign(_dy) * max(0, (_abs_dy - _dead_y) / (1 -  _dead_y));
+        */
+    }
+    
     //Spit out the answer!
     _result.x = _dx;
     _result.y = _dy;
