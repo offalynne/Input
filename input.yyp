@@ -223,7 +223,6 @@
     {"id":{"name":"__input_key_is_ignored","path":"scripts/__input_key_is_ignored/__input_key_is_ignored.yy",},"order":11,},
     {"id":{"name":"__input_load_blacklist_csv","path":"scripts/__input_load_blacklist_csv/__input_load_blacklist_csv.yy",},"order":12,},
     {"id":{"name":"__input_validate_macros","path":"scripts/__input_validate_macros/__input_validate_macros.yy",},"order":32,},
-    {"id":{"name":"obj_gamepad_tester24","path":"objects/obj_gamepad_tester24/obj_gamepad_tester24.yy",},"order":26,},
     {"id":{"name":"obj_test_status","path":"objects/obj_test_status/obj_test_status.yy",},"order":21,},
     {"id":{"name":"input_check_repeat_opposing","path":"scripts/input_check_repeat_opposing/input_check_repeat_opposing.yy",},"order":14,},
     {"id":{"name":"__input_load_type_csv","path":"scripts/__input_load_type_csv/__input_load_type_csv.yy",},"order":13,},
