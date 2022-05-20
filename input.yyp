@@ -86,6 +86,7 @@
     {"id":{"name":"input_source_set","path":"scripts/input_source_set/input_source_set.yy",},"order":4,},
     {"id":{"name":"__input_config_gamepads","path":"scripts/__input_config_gamepads/__input_config_gamepads.yy",},"order":6,},
     {"id":{"name":"input_binding_scan_abort","path":"scripts/input_binding_scan_abort/input_binding_scan_abort.yy",},"order":1,},
+    {"id":{"name":"input_check_opposing","path":"scripts/input_check_opposing/input_check_opposing.yy",},"order":15,},
     {"id":{"name":"input_default_gamepad_button","path":"scripts/input_default_gamepad_button/input_default_gamepad_button.yy",},"order":1,},
     {"id":{"name":"input_check_long_pressed","path":"scripts/input_check_long_pressed/input_check_long_pressed.yy",},"order":8,},
     {"id":{"name":"input_swap_gamepad_ab","path":"scripts/input_swap_gamepad_ab/input_swap_gamepad_ab.yy",},"order":5,},
