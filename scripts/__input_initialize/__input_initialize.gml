@@ -702,6 +702,9 @@ function __input_initialize()
     
     
     
+    //Make sure we're not misconfigured
+    __input_validate_macros();
+    
     global.__input_initialization_phase = "Complete";
     
     return true;
