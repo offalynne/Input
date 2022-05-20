@@ -10,7 +10,7 @@ function __input_class_player() constructor
     __verb_group_state_dict = {};
     
     __rebind_state            = 0;
-    __rebind_start_time       = current_time;
+    __rebind_start_time       = global.__input_current_time;
     __rebind_success_callback = undefined;
     __rebind_failure_callback = undefined;
     __rebind_source_filter    = [];
@@ -281,7 +281,7 @@ function __input_class_player() constructor
         if ((__rebind_state > 0) && (array_length(__source_array) > 0)) __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_CHANGED);
         
         array_resize(__source_array, 0);
-        __last_input_time = current_time;
+        __last_input_time = global.__input_current_time;
         
         if (INPUT_DEBUG_SOURCES) __input_trace("Sources cleared for player ", __index);
     }
@@ -305,7 +305,7 @@ function __input_class_player() constructor
         if (__rebind_state > 0) __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_CHANGED);
         
         array_push(__source_array, _source);
-        __last_input_time = current_time;
+        __last_input_time = global.__input_current_time;
         
         if (INPUT_DEBUG_SOURCES) __input_trace("Assigned source ", _source, " to player ", __index);
     }
@@ -1044,7 +1044,7 @@ function __input_class_player() constructor
             return;
         }
         
-        if (current_time - __rebind_start_time > INPUT_BINDING_SCAN_TIMEOUT)
+        if (global.__input_current_time - __rebind_start_time > INPUT_BINDING_SCAN_TIMEOUT)
         {
             __input_trace("Binding scan failed: Timed out");
             __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SCAN_TIMEOUT);

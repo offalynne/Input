@@ -46,8 +46,10 @@ function __input_initialize()
         }
     }
     
-    //Global frame counter. This is used for input buffering
+    //Global frame counter and realtime tracker. This is used for input buffering
     global.__input_frame = 0;
+    global.__input_current_time = current_time;
+    global.__input_previous_current_time = current_time;
     
     //Whether momentary input has been cleared
     global.__input_cleared = false;

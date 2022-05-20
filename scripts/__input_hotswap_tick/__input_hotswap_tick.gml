@@ -10,7 +10,7 @@ function __input_hotswap_tick()
             return false;
         }
         
-        if ((__last_input_time < 0) || (current_time - __last_input_time > INPUT_HOTSWAP_DELAY))
+        if ((__last_input_time < 0) || (global.__input_current_time - __last_input_time > INPUT_HOTSWAP_DELAY))
         {
             var _new_source = __input_hotswap_tick_input();
             if ((_new_source != undefined) && !__source_contains(_new_source))
@@ -104,7 +104,7 @@ function __input_hotswap_tick_input()
                 {
                     if (input_source_using(INPUT_GAMEPAD[_g]))
                     {
-                        _player.__last_input_time = current_time;
+                        _player.__last_input_time = global.__input_current_time;
                     }
                     else
                     {

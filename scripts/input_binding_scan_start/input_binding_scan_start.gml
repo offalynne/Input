@@ -48,7 +48,7 @@ function input_binding_scan_start(_success_method, _failure_method = undefined, 
     with(global.__input_players[_player_index])
     {
         __rebind_state            = 1;
-        __rebind_start_time       = current_time;
+        __rebind_start_time       = global.__input_current_time;
         __rebind_success_callback = _success_method;
         __rebind_failure_callback = _failure_method;
         __rebind_source_filter    = _source_filter;

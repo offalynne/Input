@@ -299,10 +299,10 @@ function __input_ensure_unique_verb_name(_name)
 
 function __input_get_previous_time()
 {
-    return INPUT_TIMER_MILLISECONDS? (current_time - delta_time/1000) : (global.__input_frame - 1);
+    return INPUT_TIMER_MILLISECONDS? global.__input_previous_current_time : (global.__input_frame - 1);
 }
 
 function __input_get_time()
 {
-    return (INPUT_TIMER_MILLISECONDS? current_time : global.__input_frame);
+    return (INPUT_TIMER_MILLISECONDS? global.__input_current_time : global.__input_frame);
 }

@@ -85,7 +85,7 @@ function __input_class_verb_state() constructor
         
         if (value > 0)
         {
-            __player.__last_input_time = current_time;
+            __player.__last_input_time = global.__input_current_time;
             
             held      = true;
             held_time = _time;

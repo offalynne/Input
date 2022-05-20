@@ -1,6 +1,8 @@
 function __input_system_tick()
 {
     global.__input_frame++;
+    global.__input_previous_current_time = global.__input_current_time;
+    global.__input_current_time = current_time;
     global.__input_cleared = false;
     
 	
