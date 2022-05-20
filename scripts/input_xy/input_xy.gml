@@ -151,7 +151,7 @@ function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0, _most_r
         
         /*
         //Implementation from https://github.com/Minimuino/thumbstick-deadzones/blob/master/README.md
-        //It is not consistent in magnitude making it unsuitable for our use case
+        //It is not consistent in magnitude around the circle making it unsuitable for our use case
         
         var _abs_dx = abs(_dx);
         var _abs_dy = abs(_dy);
