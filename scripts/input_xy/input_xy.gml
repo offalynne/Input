@@ -150,7 +150,7 @@ function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0, _most_r
         _dy = lengthdir_y(_distance, _direction);
         
         /*
-        //Implement from https://github.com/Minimuino/thumbstick-deadzones/blob/master/README.md
+        //Implementation from https://github.com/Minimuino/thumbstick-deadzones/blob/master/README.md
         //It is not consistent in magnitude making it unsuitable for our use case
         
         var _abs_dx = abs(_dx);
