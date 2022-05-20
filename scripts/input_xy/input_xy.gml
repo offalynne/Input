@@ -145,7 +145,7 @@ function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0, _most_r
         _dir_mod = _dir_mod*_dir_mod*(3 - 2*_dir_mod); //Smooth step babyyyy
         _direction = _divisor*((_direction div _divisor) + _dir_mod);
         
-        var _distance  = point_distance(0, 0, _dx, _dy);
+        var _distance = point_distance(0, 0, _dx, _dy);
         _dx = lengthdir_x(_distance, _direction);
         _dy = lengthdir_y(_distance, _direction);
         
