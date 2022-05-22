@@ -16,6 +16,7 @@ function __input_class_verb() constructor
     min_threshold  = undefined;
     max_threshold  = undefined;
     force_value    = undefined;
+    force_analogue = undefined;
     
     previous_held = false;
     press         = false;

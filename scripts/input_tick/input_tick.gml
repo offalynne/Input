@@ -411,7 +411,7 @@ function input_tick()
     }
     
     var _g = 0;
-    repeat(INPUT_MAX_PLAYERS)
+    repeat(gamepad_get_device_count())
     {
         var _old_status = _status_array[_g];
         
