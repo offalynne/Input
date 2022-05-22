@@ -11,7 +11,7 @@ function input_system_import(_string)
         var _json = _string;
     }
     
-    if (!is_struct(_json) && !is_array(_json))
+    if (!is_struct(_json))
     {
         __input_error("Input must be valid JSON (typeof=", _string, ")");
         return;
@@ -21,10 +21,22 @@ function input_system_import(_string)
     input_system_reset();
     
     //Restore accessibility settings
+    if (!is_struct(_json[$ "accessibility"]))
+    {
+        __input_error("Accessibility settings are missing from JSON");
+        return;
+    }
+    
     global.__input_toggle_momentary_state = _json.accessibility.momentary_state;
     global.__input_toggle_momentary_dict = {};
     
     var _momentary_verb_array = _json.accessibility.momentary_verbs;
+    if (!is_array(_momentary_verb_array))
+    {
+        __input_error("Momentary toggle verbs are corrupted");
+        return;
+    }
+    
     var _i = 0;
     repeat(array_length(_momentary_verb_array))
     {
@@ -33,10 +45,34 @@ function input_system_import(_string)
     }
     
     //Restore mouse settings
+    if (!is_struct(_json[$ "mouse"]))
+    {
+        __input_error("Mouse settings are missing from JSON");
+        return;
+    }
+    
     input_mouse_capture_set(_json.mouse.capture, _json.mouse.sensitivity);
     
     //Restore player data
+    if (!is_struct(_json[$ "players"]))
+    {
+        __input_error("Player settings are missing from JSON");
+        return;
+    }
+    
     var _players_array = _json.players;
+    if (!is_array(_players_array))
+    {
+        __input_error("Player settings are corrupted");
+        return;
+    }
+    
+    if (array_length(_players_array) != array_length(global.__input_players))
+    {
+        __input_error("Player settings length mismatch\nFound ", array_length(_players_array), " players in JSON but we are expecting ", array_length(global.__input_players), " players");
+        return;
+    }
+    
     var _p = 0;
     repeat(array_length(_players_array))
     {
