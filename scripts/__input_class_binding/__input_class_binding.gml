@@ -67,7 +67,6 @@ function __input_class_binding() constructor
         if (value                 != undefined) _binding_shell.value               = value;
         if (axis_negative         != undefined) _binding_shell.axis_negative       = axis_negative;
         if (__gamepad_description != undefined) _binding_shell.gamepad_description = __gamepad_description;
-        if (__android_lowercase   != undefined) _binding_shell.android_lowercase   = __android_lowercase;
         if (__threshold_min       != undefined) _binding_shell.threshold_min       = __threshold_min;
         if (__threshold_max       != undefined) _binding_shell.threshold_max       = __threshold_max;
         
@@ -82,11 +81,29 @@ function __input_class_binding() constructor
             _binding_shell = {};
         }
         
-        if (_binding_shell[$ "type"               ] != undefined) type                  = _binding_shell.type;
-        if (_binding_shell[$ "value"              ] != undefined) value                 = _binding_shell.value;
+        if (!variable_struct_exists(_binding_shell, "type"))
+        {
+            __input_error("Binding \"type\" not found; binding is corrupted");
+            return;
+        }
+        
+        if (!variable_struct_exists(_binding_shell, "value"))
+        {
+            __input_error("Binding \"value\" not found; binding is corrupted");
+            return;
+        }
+        
+        if ((type == __INPUT_BINDING_GAMEPAD_AXIS) && !variable_struct_exists(_binding_shell, "axis_negative"))
+        {
+            __input_error("Binding \"axis_negative\" not found; binding is corrupted");
+            return;
+        }
+        
+        type  = _binding_shell.type;
+        value = _binding_shell.value;
+        
         if (_binding_shell[$ "axis_negative"      ] != undefined) axis_negative         = _binding_shell.axis_negative;
         if (_binding_shell[$ "gamepad_description"] != undefined) __gamepad_description = _binding_shell.gamepad_description;
-        if (_binding_shell[$ "android_lowercase"  ] != undefined) __android_lowercase   = _binding_shell.android_lowercase;
         if (_binding_shell[$ "threshold_min"      ] != undefined) __threshold_min       = _binding_shell.threshold_min;
         if (_binding_shell[$ "threshold_max"      ] != undefined) __threshold_max       = _binding_shell.threshold_max;
         
@@ -108,7 +125,30 @@ function __input_class_binding() constructor
             }
         }
         
+        __set_android_lowercase(); //This also edits .value
         __set_label();
+    }
+    
+    static __set_android_lowercase = function()
+    {
+        //If we're on Android
+        if ((os_type == os_android) && (type == __INPUT_BINDING_KEY))
+        {
+            //Force binding to uppercase
+            value = ord(string_upper(chr(value)));
+            
+            //Grab the keyboard character for this key and force it into lowercase
+            //If the lowercase and uppercase keys are different then we'll want to check the lowercase key as well
+            var _android_lowercase = ord(string_lower(chr(value)));
+            __android_lowercase = (_android_lowercase != value)? _android_lowercase : undefined;
+            
+            //Some Android devices and soft keyboards use carriage return for Enter, some use newline
+            if ((value == 10) || (value == 13))
+            {
+                value = 10;
+                __android_lowercase = 13;
+            }
+        }
     }
     
     static __duplicate = function()
@@ -147,28 +187,11 @@ function __input_class_binding() constructor
             else if (_key == vk_rbracket )  { _key = 93; }
             else if (_key == vk_backtick )  { _key = 96; }
         }
-                
-        if (os_type == os_android)
-        {
-            //Force binding to uppercase
-            _key = ord(string_upper(chr(_key)));
-
-            //Grab the keyboard character for this key and force it into lowercase
-            //If the lowercase and uppercase keys are different then we'll want to check the lowercase key as well
-            var _android_lowercase = ord(string_lower(chr(_key)));
-            if (_android_lowercase != _key) __android_lowercase = _android_lowercase;
-            
-            //Some Android devices and soft keyboards use carriage return for Enter, some use newline
-            if ((_key == 10) || (_key == 13))
-            {
-                _key = 10;
-                __android_lowercase = 13;
-            }
-        }
         
         type  = __INPUT_BINDING_KEY;
         value = _key;
         
+        __set_android_lowercase(); //This also edits .value
         __set_label();
         
         return self;

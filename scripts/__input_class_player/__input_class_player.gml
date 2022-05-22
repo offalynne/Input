@@ -837,6 +837,12 @@ function __input_class_player() constructor
         }
         
         //Iterate over every profile in the JSON
+        if (!is_struct(_json[$ "profiles"]))
+        {
+            __input_error("Player ", __index, " profiles are corrupted");
+            return;
+        }
+        
         var _profiles_dict = _json.profiles;
         var _profile_name_array = variable_struct_get_names(_profiles_dict);
         var _f = 0;
@@ -848,6 +854,12 @@ function __input_class_player() constructor
         }
         
         //Copy axis threshold data
+        if (!is_struct(_json[$ "axis_thresholds"]))
+        {
+            __input_error("Player ", __index, " gamepad axis thresholds are corrupted");
+            return;
+        }
+        
         var _axis_thresholds_dict = _json.axis_thresholds;
         var _axis_name_array = variable_struct_get_names(_axis_thresholds_dict);
         var _a = 0;
@@ -855,6 +867,12 @@ function __input_class_player() constructor
         {
             var _axis_name = _axis_name_array[_a];
             var _new_thresholds_struct = _axis_thresholds_dict[$ _axis_name];
+            
+            if (!is_struct(_new_thresholds_struct))
+            {
+                __input_error("Player ", __index, " gamepad axis thresholds are corrupted");
+                return;
+            }
             
             __axis_thresholds_dict[$ _axis_name] = {
                 mini: _new_thresholds_struct.mini,
