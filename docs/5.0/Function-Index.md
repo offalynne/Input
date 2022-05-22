@@ -48,7 +48,7 @@
 - [`input_check_long(verb, [playerIndex], [bufferDuration])`](Functions-(Checkers)#input_check_longverb-playerindex-bufferduration)
 - [`input_check_long_pressed(verb, [playerIndex], [bufferDuration])`](Functions-(Checkers)#input_check_long_pressedverb-playerindex-bufferduration)
 - [`input_check_long_released(verb, [playerIndex], [bufferDuration])`](Functions-(Checkers)#input_check_long_releasedverb-playerindex-bufferduration)
-- [`input_check_opposing(verbNegative, verbPositive, [playerIndex], [mostRecent])`](Functions-(Checkers)#input_checkverb_opposingnegative-verb-positive-playerindex-mostrecent)
+- [`input_check_opposing(verbNegative, verbPositive, [playerIndex], [mostRecent])`](Functions-(Checkers)?id=input_check_opposingverbnegative-verbpositive-playerindex-mostrecent)
 - [`input_value(verb, [playerIndex])`](Functions-(Checkers)#input_valueverb-playerindex)
 - [`input_held_time(verb, [playerIndex])`](Functions-(Checkers)#input_held_timeverb-playerIndex)
 - [`input_is_analogue(verb, [playerIndex])`](Functions-(Checkers)#input_is_analogueverb-playerindex)
