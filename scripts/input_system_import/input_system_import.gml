@@ -32,6 +32,9 @@ function input_system_import(_string)
         ++_i;
     }
     
+    //Restore mouse settings
+    input_mouse_capture_set(_json.mouse.capture, _json.mouse.sensitivity);
+    
     //Restore player data
     var _players_array = _json.players;
     var _p = 0;

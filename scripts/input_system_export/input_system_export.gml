@@ -8,6 +8,11 @@ function input_system_export(_output_string = true, _prettify = false)
             momentary_verbs: variable_struct_get_names(global.__input_toggle_momentary_dict),
         },
         
+        mouse: {
+            capture:     global.__input_mouse_capture,
+            sensitibity: global.__input_mouse_capture_sensitivity,
+        },
+        
         players: _players_array,
     };
     
