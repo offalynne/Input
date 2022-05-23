@@ -160,7 +160,7 @@ function __input_finalize_default_profiles()
                 }
                 else
                 {
-                    __input_error("Default profile \"", _profile_name, "\" does not include a definition for basic verb \"", _verb_name, "\"\n(To ignore this error set INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES to <false>)");
+                    __input_error("Default profile \"", _profile_name, "\" does not include a definition for basic verb \"", _verb_name, "\"\n(To ignore this error set INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES to <true>)");
                 }
                 
                 global.__input_default_player.__verb_ensure(_profile_name, _verb_name);
