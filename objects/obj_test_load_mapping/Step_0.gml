@@ -4,5 +4,5 @@ if (keyboard_check_pressed(ord("L")))
     var _string = buffer_read(_buffer, buffer_text);
     buffer_delete(_buffer);
     
-    input_binding_system_read(_string);
+    input_system_export(_string);
 }
