@@ -163,13 +163,13 @@
 
 - [`input_system_reset()`](Functions-(Exporting-and-Importing)?id=input_system_reset)
 - [`input_system_export([outputString], [prettify])`](Functions-(Exporting-and-Importing)?id=input_system_exportoutputstring-prettify)
-- [`input_system_import(stringOrString)`](Functions-(Exporting-and-Importing)?id=input_system_importstringorstring)
+- [`input_system_import(stringOrStruct)`](Functions-(Exporting-and-Importing)?id=input_system_importstringorstruct)
 - [`input_player_reset([playerIndex])`](Functions-(Exporting-and-Importing)?id=input_player_resetplayerindex)
 - [`input_player_export([playerIndex], [outputString], [prettify])`](Functions-(Exporting-and-Importing)?id=input_player_exportplayerindex-outputstring-prettify)
-- [`input_player_import(stringOrString, [playerIndex])`](Functions-(Exporting-and-Importing)?id=input_player_importstringorstring-playerindex)
+- [`input_player_import(stringOrStruct, [playerIndex])`](Functions-(Exporting-and-Importing)?id=input_player_importstringorstruct-playerindex)
 - [`input_player_copy(playerIndexSrc, playerIndexDst)`](Functions-(Exporting-and-Importing)?id=input_player_copyplayerindexsrc-playerindexdst)
 - [`input_profile_export(profileName, [playerIndex], [outputString], [prettify])`](Functions-(Exporting-and-Importing)?id=input_profile_exportprofilename-playerindex-outputstring-prettify)
-- [`input_profile_import(stringOrString, profileName, [playerIndex])`](Functions-(Exporting-and-Importing)?id=input_profile_importstringorstring-profilename-playerindex)
+- [`input_profile_import(stringOrStruct, profileName, [playerIndex])`](Functions-(Exporting-and-Importing)?id=input_profile_importstringorstruct-profilename-playerindex)
 - [`input_profile_copy(playerIndexSrc, profileNameSrc, playerIndexDst, profileNameDst)`](Functions-(Exporting-and-Importing)?id=input_profile_copyplayerindexsrc-profilenamesrc-playerindexdst-profilenamedst)
 
 &nbsp;
