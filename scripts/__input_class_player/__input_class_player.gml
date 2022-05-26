@@ -331,6 +331,19 @@ function __input_class_player() constructor
     /// @param source
     static __source_contains = function(_source)
     {
+        if (_source == INPUT_GAMEPAD)
+        {
+            //If we pass in the INPUT_GAMEPAD array then return <true> if any source is a gamepad
+            var _i = 0;
+            repeat(array_length(__source_array))
+            {
+                if (__source_array[_i].__source == __INPUT_SOURCE.GAMEPAD) return true;
+                ++_i;
+            }
+            
+            return false;
+        }
+        
         var _i = 0;
         repeat(array_length(__source_array))
         {
