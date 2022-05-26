@@ -162,6 +162,20 @@ Ghost mode prevents any sources being assigned to this player, but the player is
 |Name           |Datatype|Purpose                                              |
 |---------------|--------|-----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used |
+
+&nbsp;
+
+## `input_player_swap(playerIndexA, playerIndexB)`
+
+*Returns:* N/A (`undefined`)
+
+|Name          |Datatype|Purpose                |
+|--------------|--------|-----------------------|
+|`playerIndexA`|integer |First player to target |
+|`playerIndexB`|integer |Second player to target|
+
+This function will swap over the two players with the given indices. This includes any player input state, bindings, source etc.
+
 &nbsp;
 
 ## `input_multiplayer_params_set(min, max, [dropDown])`
