@@ -366,6 +366,18 @@ function __input_class_player() constructor
         return false;
     }
     
+    static __sources_validate_binding = function(_binding)
+    {
+        var _i = 0;
+        repeat(array_length(__source_array))
+        {
+            if (__source_array[_i].__validate_binding()) return true;
+            ++_i;
+        }
+        
+        return false;
+    }
+    
     #endregion
     
     

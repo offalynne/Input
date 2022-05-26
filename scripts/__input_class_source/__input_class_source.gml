@@ -17,6 +17,11 @@ function __input_class_source(_source, _gamepad = undefined) constructor
         break;
     }
     
+    static toString = function()
+    {
+        return __name;
+    }
+    
     static __is_connected = function()
     {
         switch(__source)
@@ -53,9 +58,147 @@ function __input_class_source(_source, _gamepad = undefined) constructor
         return __input_source_scan_for_binding(__source, __gamepad, _player_index = 0);
     }
     
-    static toString = function()
+    static __validate_binding = function(_binding)
     {
-        return __name;
+        var _type  = _binding.type;
+        var _value = _binding.value;
+        
+        if ((_type == __INPUT_BINDING_GAMEPAD_BUTTON) || (_type == __INPUT_BINDING_GAMEPAD_AXIS))
+        {
+            //Gamepad-specific validations
+            if (__source == __INPUT_SOURCE.GAMEPAD)
+            {
+                var _gamepad = global.__input_gamepads[__gamepad];
+                if (!is_struct(_gamepad) || (_gamepad.mapping_gm_to_raw[$ _value] == undefined))
+                {
+                    //Value not found in the mapping for the player's gamepad
+                    return false;
+                }
+                
+                //Get raw value from mapping
+                var _mapping = _gamepad.mapping_gm_to_raw[$ _value];
+                var _raw = ((_mapping.raw == undefined)? _mapping.raw_negative : _mapping.raw);
+                if (_raw == undefined)
+                {
+                    //Raw value invalid
+                    return false;
+                }
+                
+                if (_gamepad.xinput && ((_raw == 4106) || (_raw == 4107)))
+                {
+                    //Except XInput trigger values from range checks
+                    return true;
+                }
+                
+                if (_raw == 0)
+                {
+                    var _hat_mask = ((_mapping.hat_mask == undefined)? _mapping.hat_mask_negative : _mapping.hat_mask);        
+                    if (_hat_mask != undefined)
+                    {
+                        //Validate hat mappings
+                        return ((_hat_mask == 1) || (_hat_mask == 2) || (_hat_mask == 4) || (_hat_mask == 8));
+                    }
+                }
+            }
+        }
+        
+        switch(_type)
+        {            
+            case __INPUT_BINDING_GAMEPAD_BUTTON: //Validate button range
+                if (__source != __INPUT_SOURCE.GAMEPAD) return false;
+                return (_raw < gamepad_button_count(__gamepad));
+            break;
+            
+            case __INPUT_BINDING_GAMEPAD_AXIS: //Validate axis range
+                if (__source != __INPUT_SOURCE.GAMEPAD) return false;
+                return (_raw < gamepad_axis_count(__gamepad));
+            break;
+            
+            case __INPUT_BINDING_KEY:
+                if (!global.__input_keyboard_allowed)
+                {
+                    //Invalid per platform or configuration
+                    return false;
+                }
+                
+                if not ((__source == __INPUT_SOURCE.KEYBOARD) || (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (__source == __INPUT_SOURCE.MOUSE))) return false;
+                
+                if (os_type == os_android)
+                {
+                    if (((_value >= 16) && (_value <= 19))
+                    ||  ((_value >= 96) && (_value <= 122)))
+                    {
+                        //Command keys that overlap alpha don't register on Android, are invalid binds
+                        return false;
+                    }
+                    
+                    var _lowercase = _binding.__android_lowercase;
+                    if ((_lowercase != undefined) && !__input_key_is_ignored(_lowercase)
+                    &&  (_lowercase >= __INPUT_KEYCODE_MIN) && (_lowercase <= __INPUT_KEYCODE_MAX))
+                    {
+                        //Lowercase key binding is valid
+                        return true;
+                    }
+                }
+                
+                //Uppercase key binding
+                return (!__input_key_is_ignored(_value) && (_value >= __INPUT_KEYCODE_MIN) && (_value <= __INPUT_KEYCODE_MAX));
+            break;
+            
+            case __INPUT_BINDING_MOUSE_BUTTON:
+                if (!global.__input_mouse_allowed)
+                {
+                    //Invalid per platform or configuration
+                    return false;
+                }
+                
+                if not ((__source == __INPUT_SOURCE.MOUSE) || (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (__source == __INPUT_SOURCE.KEYBOARD))) return false;
+                
+                switch(_value)
+                {
+                    case mb_left: //Invalid on Xbox
+                        return !__INPUT_ON_XDK;
+                    break;
+                    
+                    case mb_right: //Invalid on Xbox, Playstation, native Android or iOS
+                        return !(__INPUT_ON_XDK || __INPUT_ON_PS || (!__INPUT_ON_WEB && ((os_type == os_ios) || (os_type == os_android))));
+                    break;
+                    
+                    case mb_middle: //Invalid on console, Android or iOS
+                        return !(__INPUT_ON_CONSOLE || (os_type == os_ios) || (os_type == os_android));
+                    break;
+                    
+                    case mb_side1:
+                    case mb_side2: //Invalid on console, OperaGX, mobile, UWP, Firefox or Mac browsers
+                        return !(__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || __INPUT_ON_MOBILE || (os_type == os_uwp) || (os_browser == browser_firefox) || (__INPUT_ON_WEB && (os_type == os_macosx)))
+                    break;
+                    
+                    default:
+                        return false;
+                    break;
+                }
+            break;
+            
+            case __INPUT_BINDING_MOUSE_WHEEL_UP:
+            case __INPUT_BINDING_MOUSE_WHEEL_DOWN:
+                if (!global.__input_mouse_allowed)
+                {
+                    //Invalid per platform or configuration
+                    return false;
+                }
+                
+                if not ((__source == __INPUT_SOURCE.MOUSE) || (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (__source == __INPUT_SOURCE.KEYBOARD))) return false;
+                
+                //Invalid on console or native mobile
+                return !(__INPUT_ON_CONSOLE || (!__INPUT_ON_WEB && __INPUT_ON_MOBILE));        
+            break;
+            
+            default:
+                return false;
+            break;
+        }
+        
+        __input_error("Binding validity unhandled");
     }
 }
 
@@ -65,7 +208,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
     {
         case __INPUT_SOURCE.KEYBOARD:
             var _keyboard_key = __input_keyboard_key();
-                
+            
             if (global.__input_any_keyboard_binding_defined 
             && (_keyboard_key >= __INPUT_KEYCODE_MIN) && (_keyboard_key <= __INPUT_KEYCODE_MAX)
             && !__input_key_is_ignored(_keyboard_key))
@@ -80,7 +223,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
                 {
                     __input_trace("Binding label for keycode ", string(ord(_binding.label)), ", initially set to \"", _binding.label, "\"");
                     var _keychar = string_upper(keyboard_lastchar);
-                        
+                    
                     //Basic Latin only
                     if ((ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z"))) _binding.__set_label(_keychar);
                 }
