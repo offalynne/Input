@@ -20,11 +20,11 @@ function input_check_long_pressed(_verb, _player_index = 0, _buffer_duration = 0
     
     __INPUT_GET_VERB_STRUCT
     
-    if (_verb_struct.__inactive || global.__input_cleared) return false;
+    if (_verb_struct.__inactive) return false;
     
     if (_buffer_duration <= 0)
     {
-        return _verb_struct.long_press;
+        return ((global.__input_cleared)? false : _verb_struct.long_press);
     }
     else
     {
