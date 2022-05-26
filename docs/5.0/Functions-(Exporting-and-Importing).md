@@ -29,13 +29,13 @@ It is recommended to only use bindings written on the same device as keyboard sc
 
 &nbsp;
 
-## `input_system_import(stringOrString)`
+## `input_system_import(stringOrStruct)`
 
 *Returns:* N/A (`undefined`)
 
 |Name            |Datatype        |Purpose                                                                                                                 |
 |----------------|----------------|------------------------------------------------------------------------------------------------------------------------|
-|`stringOrString`|string or struct|JSON returned by [`input_system_export()`](Functions-(Exporting-and-Importing)#input_system_exportoutputstring-prettify)|
+|`stringOrStruct`|string or struct|JSON returned by [`input_system_export()`](Functions-(Exporting-and-Importing)#input_system_exportoutputstring-prettify)|
 
 Reads JSON, either as a string or a struct, that contains Input system data. Such a JSON should be created using [`input_system_export()`](Functions-(Exporting-and-Importing)#input_system_exportoutputstring-prettify).
 
@@ -71,13 +71,13 @@ It is recommended to only use bindings written on the same device as keyboard sc
 
 &nbsp;
 
-## `input_player_import(stringOrString, [playerIndex])`
+## `input_player_import(stringOrStruct, [playerIndex])`
 
 *Returns:* N/A (`undefined`)
 
 |Name            |Datatype        |Purpose                                                                                                                             |
 |----------------|----------------|------------------------------------------------------------------------------------------------------------------------------------|
-|`stringOrString`|string or struct|JSON returned by [`input_player_export()`](Functions-(Exporting-and-Importing)#input_player_exportplayerindex-outputstring-prettify)|
+|`stringOrStruct`|string or struct|JSON returned by [`input_player_export()`](Functions-(Exporting-and-Importing)#input_player_exportplayerindex-outputstring-prettify)|
 |`[playerIndex]` |integer         |Player to target. If not specified, player 0 is used                                                                                |
 
 Reads JSON, either as a string or a struct, that contains player data (profiles, bindings, and axis thresholds). Such a JSON should be created using [`input_player_export()`](Functions-(Exporting-and-Importing)#input_system_exportoutputstring-prettify).
@@ -115,13 +115,13 @@ It is recommended to only use bindings written on the same device as keyboard sc
 
 &nbsp;
 
-## `input_profile_import(stringOrString, profileName, [playerIndex])`
+## `input_profile_import(stringOrStruct, profileName, [playerIndex])`
 
 *Returns:* N/A (`undefined`)
 
 |Name            |Datatype        |Purpose                                                                                                                             |
 |----------------|----------------|------------------------------------------------------------------------------------------------------------------------------------|
-|`stringOrString`|string or struct|JSON returned by [`input_player_export()`](Functions-(Exporting-and-Importing)#input_player_exportplayerindex-outputstring-prettify)|
+|`stringOrStruct`|string or struct|JSON returned by [`input_player_export()`](Functions-(Exporting-and-Importing)#input_player_exportplayerindex-outputstring-prettify)|
 |`[playerIndex]` |integer         |Player to target. If not specified, player 0 is used                                                                                |
 
 Reads JSON, either as a string or a struct, that contains player data (profiles, bindings, and axis thresholds). Such a JSON should be created using [`input_player_export()`](Functions-(Exporting-and-Importing)#input_system_exportoutputstring-prettify).
