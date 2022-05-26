@@ -72,27 +72,29 @@ The `INPUT_STATUS` enum contains the following members:
 
 &nbsp;
 
-## `input_player_get_gamepad([playerIndex])`
+## `input_player_get_gamepad([playerIndex], [binding])`
 
 *Returns:* Integer, a [gamepad](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html) index
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+|Name           |Datatype                     |Purpose                                                                                                                                                                                                    |
+|---------------|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`[playerIndex]`|integer                      |Player to target. If not specified, player 0 is used                                                                                                                                                       |
+|`[binding]`    |[binding](Verbs-and-Bindings)|Binding to return the gamepad for. This is only valid in [multidevice mode](Input-Sources?id=input_source_modemultidevice). If no binding is provided then the player's first connected gamepad is returned|
 
-This function will return `undefined` if the player has no connected gamepad.
+This function will return `undefined` if the player has no connected gamepad. If you provide a [binding](Verbs-and-Bindings) to check, and Input is running in [multidevice mode](Input-Sources?id=input_source_modemultidevice), then this function will return the gamepad index for the specific gamepad associated with the provided binding.
 
-?> If the player has multiple gamepad [sources](Input-Sources) assigned to them (typically in the [multidevice source mode](Input-Sources?id=source-modes)) then this function will return the index of the first connected gamepad.
+?> If the player has multiple gamepad [sources](Input-Sources) assigned to them, and no binding is provided, then this function will return the index of the first connected gamepad.
 
 &nbsp;
 
-## `input_player_get_gamepad_type([playerIndex])`
+## `input_player_get_gamepad_type([playerIndex], [binding])`
 
 *Returns:* String, the player's gamepad's type (after SDL remapping)
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+|Name           |Datatype                     |Purpose                                                                                                                                                                                                    |
+|---------------|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`[playerIndex]`|integer                      |Player to target. If not specified, player 0 is used                                                                                                                                                       |
+|`[binding]`    |[binding](Verbs-and-Bindings)|Binding to return the gamepad for. This is only valid in [multidevice mode](Input-Sources?id=input_source_modemultidevice). If no binding is provided then the player's first connected gamepad is returned|
 
 [XInput](https://wikipedia.org/wiki/DirectInput#XInput) controllers will typically return `xbox one` whereas any unrecognised gamepad will return `unknown`. Xbox Series X/S controllers will return `xbox one` owing to similarities across console generations, and that Xbox One gamepads are forwards compatible.
 
@@ -105,9 +107,9 @@ The following are valid strings this function may return:
 |`xbox 360`|`xbox one`          |`saturn`             |
 |`snes`    |`n64`               |`gamecube`           |
 
-If the player has no connected gamepad then this function will return `unknown`.
+If the player has no connected gamepad then this function will return `unknown`. If you provide a [binding](Verbs-and-Bindings) to check, and Input is running in [multidevice mode](Input-Sources?id=input_source_modemultidevice), then this function will return the gamepad type for the specific gamepad associated with the provided binding.
 
-?> If the player has multiple gamepad [sources](Input-Sources) assigned to them then this function will return the type for the first connected gamepad.
+?> If the player has multiple gamepad [sources](Input-Sources) assigned to them, and no binding is provided, then this function will return the type for the first connected gamepad.
 
 &nbsp;
 
