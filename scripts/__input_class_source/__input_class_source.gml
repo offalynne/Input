@@ -279,14 +279,14 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
                         var _value = input_gamepad_value(_gamepad, _check);
                         if (abs(_value) > input_axis_threshold_get(_check, _player_index).mini)
                         {
-                            return (input_binding_gamepad_axis(_check, (_value < 0)).gamepad(_gamepad));
+                            return (input_binding_gamepad_axis(_check, (_value < 0)).__gamepad_set(_gamepad));
                         }
                     }
                     else
                     {
                         if (input_gamepad_check(_gamepad, _check))
                         {
-                            return (input_binding_gamepad_button(_check).gamepad(_gamepad));
+                            return (input_binding_gamepad_button(_check).__gamepad_set(_gamepad));
                         }
                     }
                 
