@@ -371,7 +371,7 @@ function __input_class_player() constructor
         var _i = 0;
         repeat(array_length(__source_array))
         {
-            if (__source_array[_i].__validate_binding()) return true;
+            if (__source_array[_i].__validate_binding(_binding)) return true;
             ++_i;
         }
         
