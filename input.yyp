@@ -46,6 +46,7 @@
     {"id":{"name":"input_binding_remove","path":"scripts/input_binding_remove/input_binding_remove.yy",},"order":5,},
     {"id":{"name":"input_source_clear","path":"scripts/input_source_clear/input_source_clear.yy",},"order":7,},
     {"id":{"name":"input_player_ghost_set","path":"scripts/input_player_ghost_set/input_player_ghost_set.yy",},"order":14,},
+    {"id":{"name":"input_player_swap","path":"scripts/input_player_swap/input_player_swap.yy",},"order":19,},
     {"id":{"name":"input_binding_set","path":"scripts/input_binding_set/input_binding_set.yy",},"order":0,},
     {"id":{"name":"input_cursor_elastic_remove","path":"scripts/input_cursor_elastic_remove/input_cursor_elastic_remove.yy",},"order":12,},
     {"id":{"name":"input_binding_set_safe","path":"scripts/input_binding_set_safe/input_binding_set_safe.yy",},"order":1,},

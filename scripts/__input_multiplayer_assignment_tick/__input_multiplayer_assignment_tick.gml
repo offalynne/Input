@@ -29,12 +29,8 @@ function __input_multiplayer_assignment_tick()
                 if (input_player_connected(_p) && !input_player_connected(_p-1))
                 {
                     __input_trace("Assignment: Moving player ", _p, " (connected) to ", _p-1, " (disconnected)");
-                    
+                    input_player_swap(_p, _p-1);
                     _fail = true;
-                    
-                    var _temp = global.__input_players[_p-1];
-                    global.__input_players[_p-1] = global.__input_players[_p];
-                    global.__input_players[_p] = _temp;
                 }
                 
                 --_p;
