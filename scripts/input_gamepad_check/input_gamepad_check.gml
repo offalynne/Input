@@ -3,8 +3,7 @@
 
 function input_gamepad_check(_index, _gm)
 {
-    if (global.__input_cleared
-    ||  (_index == undefined)
+    if ((_index == undefined)
     ||  (_index < 0)
     ||  (_index >= array_length(global.__input_gamepads)))
     {
