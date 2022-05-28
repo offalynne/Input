@@ -24,22 +24,10 @@ function __input_gamepad_set_blacklist()
     
     //Check the platform blacklists to see if this gamepad is banned
     var _os_filter_dict  = global.__input_blacklist_dictionary[$ _os];
-    var _os_vid_dict     = is_struct(_os_filter_dict)? _os_filter_dict[$ "vid"                 ] : undefined;
-    var _os_vid_pid_dict = is_struct(_os_filter_dict)? _os_filter_dict[$ "vid+pid"             ] : undefined;
     var _os_guid_dict    = is_struct(_os_filter_dict)? _os_filter_dict[$ "guid"                ] : undefined;
     var _os_desc_array   = is_struct(_os_filter_dict)? _os_filter_dict[$ "description contains"] : undefined;
     
-    if (is_struct(_os_vid_dict) && variable_struct_exists(_os_vid_dict, vendor))
-    {
-        __input_trace("Warning! Controller is blacklisted (found by VID \"", vendor, "\")");
-        blacklisted = true;
-    }
-    else if (is_struct(_os_vid_pid_dict) && variable_struct_exists(_os_vid_pid_dict, vendor + product))
-    {
-        __input_trace("Warning! Controller is blacklisted (found by VID+PID \"", vendor + product, "\")");
-        blacklisted = true;
-    }
-    else if (is_struct(_os_guid_dict) && variable_struct_exists(_os_guid_dict, guid))
+    if (is_struct(_os_guid_dict) && variable_struct_exists(_os_guid_dict, guid))
     {
         __input_trace("Warning! Controller is blacklisted (found by GUID \"", guid, "\")");
         blacklisted = true;
@@ -76,24 +64,31 @@ function __input_gamepad_set_blacklist()
         
         if (_os == "windows")
         {
-            //Switch Pro Controller over USB
             if ((vendor == "7e05") && (product == "0920") && (_b == 23))
             {
+                //Switch Pro Controller over USB
+                //Runs haywire if Steam is open
                 blacklisted = true;
             }
-            else
+            else if ((vendor == "4c05") && (product == "6802"))
             {
                 //PS3 Controller
-                if ((vendor == "4c05") && (product == "6802"))
+                //Bad mapping
+                if (((_a == 4) && (_b == 19)) //Bad driver
+                ||  ((_a == 8) && (_b == 0))) //DsHidMini gyro
                 {
-                    if (((_a == 4) && (_b == 19)) //Bad driver
-                    ||  ((_a == 8) && (_b == 0))) //DsHidMini gyro
-                    {
-                        blacklisted = true;
-                    }
+                    blacklisted = true;
                 }
             }
-        
+            else if ((vendor == "5e04") && (product == "e002"))
+            {
+                //Xbox One Wireless Controller over Bluetooth
+                //Duplicate DInput device on Windows 11
+                if ((os_version >= 655360) && (_b != 17))
+                {
+                    blacklisted = true;
+                }
+            }
         }
         
         if (blacklisted)
