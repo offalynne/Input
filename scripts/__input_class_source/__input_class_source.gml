@@ -229,7 +229,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
                 //This works around problems where a keyboard might be sending a character code for e.g. A but the OS is typing another letter
                 if (os_type == os_macosx)
                 {
-                    __input_trace("Binding label for keycode ", string(ord(_binding.label)), ", initially set to \"", _binding.label, "\"");
+                    __input_trace("Binding label for keycode ", string(ord(_binding.__label)), ", initially set to \"", _binding.__label, "\"");
                     var _keychar = string_upper(keyboard_lastchar);
                     
                     //Basic Latin only

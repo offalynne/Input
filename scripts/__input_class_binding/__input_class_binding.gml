@@ -3,7 +3,7 @@ function __input_class_binding() constructor
     type          = undefined;
     value         = undefined;
     axis_negative = undefined;
-    label         = undefined;
+    __label       = undefined;
     
     __gamepad_index       = undefined;
     __gamepad_description = undefined;
@@ -158,7 +158,7 @@ function __input_class_binding() constructor
             type                  = other.type;
             value                 = other.value;
             axis_negative         = other.axis_negative;
-            label                 = other.label;
+            __label               = other.__label;
             __gamepad_index       = other.__gamepad_index;
             __gamepad_description = other.__gamepad_description;
             __android_lowercase   = other.__android_lowercase;
@@ -250,11 +250,11 @@ function __input_class_binding() constructor
     {
         if (_label == undefined)
         {
-            label = __input_binding_get_label(type, value, axis_negative)
+            __label = __input_binding_get_label(type, value, axis_negative)
         }
         else
         {
-            label = _label;
+            __label = _label;
         }
         
         return self;

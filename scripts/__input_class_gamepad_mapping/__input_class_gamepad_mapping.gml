@@ -11,7 +11,7 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name, _label, _col
     raw      = _raw;
     type     = _type;
     sdl_name = _sdl_name;
-    label    = _label;
+    __label  = _label;
     color    = _color;
             
     invert           = false;

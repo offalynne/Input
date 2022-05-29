@@ -120,7 +120,7 @@ function __input_class_gamepad(_index) constructor
         
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return undefined;
-        return _mapping.label;
+        return _mapping.__label;
     }
     
     /// @param GMconstant
