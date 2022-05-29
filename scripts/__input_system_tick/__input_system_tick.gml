@@ -124,7 +124,7 @@ function __input_system_tick()
     }
     
     //Mouse motion tracking
-    var _any_moved = false;
+    var _moved = false;
     
     if (global.__input_mouse_capture)
     {
@@ -172,7 +172,8 @@ function __input_system_tick()
                     var _dx = (_pointer_x - _old_x)*global.__input_mouse_capture_sensitivity;
                     var _dy = (_pointer_y - _old_y)*global.__input_mouse_capture_sensitivity;
                     
-                    if (_dx*_dx + _dy*_dy > INPUT_MOUSE_MOVE_DEADZONE*INPUT_MOUSE_MOVE_DEADZONE) _any_moved = true;
+                    //Only detect movement in the display coordinate space so that moving a room's view, or moving the window, doesn't trigger movement
+                    if ((_m == INPUT_COORD_SPACE.DISPLAY) && (_dx*_dx + _dy*_dy > INPUT_MOUSE_MOVE_DEADZONE*INPUT_MOUSE_MOVE_DEADZONE)) _moved = true;
                     
                     global.__input_pointer_dx[@ _m] = _dx;
                     global.__input_pointer_dy[@ _m] = _dy;
@@ -235,7 +236,8 @@ function __input_system_tick()
                 break;
             }
             
-            if (point_distance(_old_x, _old_y, _pointer_x, _pointer_y) > INPUT_MOUSE_MOVE_DEADZONE) _any_moved = true;
+            //Only detect movement in the display coordinate space so that moving a room's view, or moving the window, doesn't trigger movement
+            if ((_m == INPUT_COORD_SPACE.DISPLAY) && (_dx*_dx + _dy*_dy > INPUT_MOUSE_MOVE_DEADZONE*INPUT_MOUSE_MOVE_DEADZONE)) _moved = true;
             
             global.__input_pointer_dx[@ _m] = _pointer_x - _old_x;
             global.__input_pointer_dy[@ _m] = _pointer_y - _old_y;
@@ -247,7 +249,7 @@ function __input_system_tick()
         }
     }
     
-    global.__input_pointer_moved = _any_moved;
+    global.__input_pointer_moved = _moved;
     
     //Windows mouse extensions
     global.__input_tap_click = false;
