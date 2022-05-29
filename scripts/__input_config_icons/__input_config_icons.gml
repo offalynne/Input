@@ -130,8 +130,8 @@ global.__input_icons = {
         "gamepad dpad left":          "dpad left",        
         "gamepad dpad right":         "dpad right",
         
-        "gamepad guide":              "guide",
-        "gamepad misc 1":             "misc 1",
+        "gamepad guide":              "home",
+        "gamepad misc 1":             "capture",
         
         "gamepad thumbstick l left":  "thumbstick l left",
         "gamepad thumbstick l right": "thumbstick l right",
