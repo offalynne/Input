@@ -5,6 +5,19 @@ function __input_gamepad_set_blacklist()
     //Don't blacklist on preconfigured platforms
     if (!__INPUT_SDL2_SUPPORT) exit;
     
+    //Identify gamepad components
+    var _axis_count   = gamepad_axis_count(index); 
+    var _button_count = gamepad_button_count(index);
+    var _hat_count    = gamepad_hat_count(index);
+    
+    if ((_axis_count == 0) && (_button_count == 0) && (_hat_count == 0))
+    {
+        //Smoke check invalid devices
+        __input_trace("Warning! Controller ", index, " (VID+PID \"", vendor + product, "\" blacklisted: no button, axis or POV hat.");
+        blacklisted = true;
+        exit;
+    }
+    
     //Figure out which string to use to find the correct blacklist for the current OS
     var _os = undefined;
     switch(os_type)
@@ -58,13 +71,10 @@ function __input_gamepad_set_blacklist()
     
     //Block devices presenting in bad states
     if (!blacklisted)
-    {
-        var _a = gamepad_axis_count(index); 
-        var _b = gamepad_button_count(index);
-        
+    {        
         if (_os == "windows")
         {
-            if ((vendor == "7e05") && (product == "0920") && (_b == 23))
+            if ((vendor == "7e05") && (product == "0920") && (_button_count == 23))
             {
                 //Switch Pro Controller over USB
                 //Runs haywire if Steam is open
@@ -73,19 +83,10 @@ function __input_gamepad_set_blacklist()
             else if ((vendor == "4c05") && (product == "6802"))
             {
                 //PS3 Controller
-                //Bad mapping
-                if (((_a == 4) && (_b == 19)) //Bad driver
-                ||  ((_a == 8) && (_b == 0))) //DsHidMini gyro
+                if (((_axis_count == 4) && (_button_count == 19)) //Bad driver
+                ||  ((_axis_count == 8) && (_button_count == 0))) //DsHidMini gyro
                 {
-                    blacklisted = true;
-                }
-            }
-            else if ((vendor == "5e04") && (product == "e002"))
-            {
-                //Xbox One Wireless Controller over Bluetooth
-                //Duplicate DInput device on Windows 11
-                if ((os_version >= 655360) && (_b != 17))
-                {
+                    //Bad mapping
                     blacklisted = true;
                 }
             }
@@ -93,7 +94,7 @@ function __input_gamepad_set_blacklist()
         
         if (blacklisted)
         {
-            __input_trace("Warning! Controller manually blacklisted (VID+PID \"", vendor + product, "\", ", _b, " buttons and ", _a, " axes)");
+            __input_trace("Warning! Controller manually blacklisted (VID+PID \"", vendor + product, "\", ", _button_count, " buttons and ", _axis_count, " axes)");
         }
     }
 }
