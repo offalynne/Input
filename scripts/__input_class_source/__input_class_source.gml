@@ -57,13 +57,13 @@ function __input_class_source(_source, _gamepad = undefined) constructor
     {
         if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && ((__source == __INPUT_SOURCE.KEYBOARD) || (__source == __INPUT_SOURCE.MOUSE)))
         {
-            var _binding = __input_source_scan_for_binding(__INPUT_SOURCE.KEYBOARD, __gamepad, _player_index = 0);
+            var _binding = __input_source_scan_for_binding(__INPUT_SOURCE.KEYBOARD, __gamepad, _player_index);
             if (_binding != undefined) return _binding;
             
-            return __input_source_scan_for_binding(__INPUT_SOURCE.MOUSE, __gamepad, _player_index = 0);
+            return __input_source_scan_for_binding(__INPUT_SOURCE.MOUSE, __gamepad, _player_index);
         }
         
-        return __input_source_scan_for_binding(__source, __gamepad, _player_index = 0);
+        return __input_source_scan_for_binding(__source, __gamepad, _player_index);
     }
     
     static __validate_binding = function(_binding)
