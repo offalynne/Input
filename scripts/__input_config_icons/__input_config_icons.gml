@@ -65,10 +65,10 @@ global.__input_icons = {
         "gamepad dpad right":         "dpad right",
         
         //These are used for Elite controllers
-        "gamepad paddle 1":           "paddle 1",
-        "gamepad paddle 2":           "paddle 2",
-        "gamepad paddle 3":           "paddle 3",
-        "gamepad paddle 4":           "paddle 4",
+        "gamepad paddle 1":           "P1",
+        "gamepad paddle 2":           "P3",
+        "gamepad paddle 3":           "P2",
+        "gamepad paddle 4":           "P4",
         
         "gamepad thumbstick l left":  "thumbstick l left",
         "gamepad thumbstick l right": "thumbstick l right",
@@ -109,6 +109,7 @@ global.__input_icons = {
         "gamepad thumbstick r down":  "thumbstick r down",
         
         "gamepad touchpad click": "touchpad click",
+        "gamepad misc 1":         "mic",
     },
     
     //Switch handheld/dual JoyCon/Pro Controller
@@ -266,7 +267,7 @@ global.__input_icons = {
         "gamepad thumbstick r down":  "thumbstick r down",
     },
     
-    //PlayStation 4
+    //PlayStation 1-3
     "psx": {
         "gamepad face south":         "cross",
         "gamepad face east":          "circle",
@@ -326,8 +327,9 @@ global.__input_icons = {
         "gamepad face north": "Y",
         "gamepad shoulder l": "L",
         "gamepad shoulder r": "Z",
-        "gamepad trigger l":  "L",
+        "gamepad trigger l":  "R",
         "gamepad trigger r":  "C",
+        "gamepad select":     "mode",
         "gamepad start":      "start",
         "gamepad dpad up":    "dpad up",
         "gamepad dpad down":  "dpad down",
