@@ -52,7 +52,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
     var _icon = is_struct(_icon_struct)? _icon_struct[$ _label] : undefined;
     
     //Most of the time keyboard and mouse labels don't need to be translated into icons
-    if (_category == "keyboard and mouse") return _label;
+    if (_category == "keyboard and mouse") return _icon ?? _label;
     
     if (_icon == undefined)
     {
