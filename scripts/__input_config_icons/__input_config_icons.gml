@@ -36,6 +36,14 @@ INPUT_ICONS {
         "gamepad dpad left":          "dpad left",        
         "gamepad dpad right":         "dpad right",
         
+        "gamepad guide":              "guide",
+        "gamepad misc 1":             "misc",
+        "gamepad touchpad click":     "touchpad click",
+        "gamepad paddle 1":           "P1",
+        "gamepad paddle 2":           "P3",
+        "gamepad paddle 3":           "P2",
+        "gamepad paddle 4":           "P4",
+        
         "gamepad thumbstick l left":  "thumbstick l left",
         "gamepad thumbstick l right": "thumbstick l right",
         "gamepad thumbstick l up":    "thumbstick l up",
@@ -44,14 +52,6 @@ INPUT_ICONS {
         "gamepad thumbstick r right": "thumbstick r right",
         "gamepad thumbstick r up":    "thumbstick r up",
         "gamepad thumbstick r down":  "thumbstick r down",
-        
-        "gamepad guide":              "guide",
-        "gamepad misc 1":             "misc 1",
-        "gamepad touchpad click":     "touchpad click",
-        "gamepad paddle 1":           "paddle 1",
-        "gamepad paddle 2":           "paddle 2",
-        "gamepad paddle 3":           "paddle 3",
-        "gamepad paddle 4":           "paddle 4",
     },
     
     #endregion
