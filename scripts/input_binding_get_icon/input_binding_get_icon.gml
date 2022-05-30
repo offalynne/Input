@@ -3,12 +3,23 @@
 
 function input_binding_get_icon(_binding, _player_index = 0)
 {
-    if (!input_value_is_binding(_binding)) return "not a binding";
+    if (!input_value_is_binding(_binding))
+    {
+        return global.__input_icons[$ "not a binding"] ?? "not a binding";
+    }
     
     var _fallback_icon_struct = global.__input_icons[$ "gamepad fallback"];
     if (!is_struct(_fallback_icon_struct)) __input_trace("Warning! \"gamepad fallback\" icon data not found");
     
-    switch(_binding.__type)
+    var _type  = _binding.type;
+    var _label = _binding.__label;
+    
+    if ((_type == undefined) || (_label == undefined))
+    {
+        return global.__input_icons[$ "unknown"] ?? "unknown";
+    }
+    
+    switch(_type)
     {
         case __INPUT_BINDING_KEY:
         case __INPUT_BINDING_MOUSE_BUTTON:
@@ -23,7 +34,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
         break;
         
         default:
-            __input_error("\"", _binding.__type, "\" unsupported");
+            __input_error("\"", _type, "\" unsupported");
         break;
     }
     
@@ -38,7 +49,6 @@ function input_binding_get_icon(_binding, _player_index = 0)
     }
     
     //
-    var _label = _binding.__label;
     var _icon = is_struct(_icon_struct)? _icon_struct[$ _label] : undefined;
     
     //Most of the time keyboard and mouse labels don't need to be translated into icons
