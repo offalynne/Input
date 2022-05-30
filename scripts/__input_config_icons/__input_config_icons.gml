@@ -1,13 +1,22 @@
-//Needs to match simple types in global.__input_simple_type_lookup
+/// This struct contains mappings from binding labels - a combination of keyboard key names, mouse button
+/// names, and abstract gamepad names - to more friendly terms that you can show a player. Typically you'd
+/// set up this function to return sprites such that you can draw gamepad icons as visual icons.
+/// 
+/// Default values in this struct reflect the particular, and sometimes unexpected, buttons that each gamepad
+/// binding maps to on the actual physical hardware. There are a handful of special cases at the top of the
+/// struct that are used to handle errors or misconfigurations.
 
-global.__input_icons = {
+INPUT_ICONS {
     
-    //Optional remapping for keyboard and mouse
-    "keyboard and mouse": {
-        
-    },
+    #region Special Cases
     
-    //Fallback gamepad icons
+    //Special case: When a non-binding is being evaluated
+    "not a binding": "not a binding",
+    
+    //Special case: When an invalid binding is being evaluated (usually happens when no source is assigned for a player)
+    "unknown": "unknown",
+    
+    //Special case: Fallback gamepad icons
     //These are used when a gamepad is not recognised or an icon definition doesn't exist for a specific gamepad type
     "gamepad fallback": {
         "gamepad face south":         "A",
@@ -44,6 +53,17 @@ global.__input_icons = {
         "gamepad paddle 3":           "paddle 3",
         "gamepad paddle 4":           "paddle 4",
     },
+    
+    #endregion
+    
+    //Optional remapping for keyboard and mouse
+    //This is useful for turning keyboard keys into sprite icons to match other assets, or for returning formatted strings (e.g. for use with Scribble)
+    //Any keyboard key label not in this struct will simply fall through
+    "keyboard and mouse": {
+        
+    },
+    
+    #region Gamepads
     
     //Xbox One controllers
     "xbox one": {
@@ -352,4 +372,6 @@ global.__input_icons = {
         "gamepad dpad left":  "dpad left",        
         "gamepad dpad right": "dpad right",
     },
+    
+    #endregion
 };
