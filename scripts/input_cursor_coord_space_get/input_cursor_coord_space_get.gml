@@ -1,6 +1,6 @@
 /// @param [playerIndex=0]
 
-function input_cursor_coord_space_get(_player_index)
+function input_cursor_coord_space_get(_player_index = 0)
 {
     __INPUT_VERIFY_PLAYER_INDEX
     
