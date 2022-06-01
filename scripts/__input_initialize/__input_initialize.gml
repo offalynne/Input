@@ -501,7 +501,7 @@ function __input_initialize()
     //Numeric keys 2-7 on Switch
     if (os_type == os_switch)
     {
-        for(var _i = 2; _i <= 7; _i++) global.__input_key_name_dict[$ string(_i)] = __input_key_get_name(ord(_i));
+        for(var _i = 2; _i <= 7; _i++) __input_key_name_set(string(_i), __input_key_get_name(ord(_i)));
     }
     
     #endregion
