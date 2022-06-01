@@ -53,10 +53,10 @@ INPUT_ICONS {
         //Please set INPUT_SDL2_ALLOW_EXTENDED to <true> to enable these gamepad buttons
         "gamepad guide":              "guide",
         "gamepad misc 1":             "misc",
-        "gamepad paddle 1":           "P1",
-        "gamepad paddle 2":           "P3", //Thanks SDL
-        "gamepad paddle 3":           "P2", //Many thanks
-        "gamepad paddle 4":           "P4",
+        "gamepad paddle 1":           "paddle 1",
+        "gamepad paddle 2":           "paddle 2",
+        "gamepad paddle 3":           "paddle 3",
+        "gamepad paddle 4":           "paddle 4",
     },
     
     #endregion
@@ -101,8 +101,8 @@ INPUT_ICONS {
         
         //These are used for Elite controllers only
         "gamepad paddle 1":           "P1",
-        "gamepad paddle 2":           "P3",
-        "gamepad paddle 3":           "P2",
+        "gamepad paddle 2":           "P3",  //Thanks SDL
+        "gamepad paddle 3":           "P2",  //Many thanks
         "gamepad paddle 4":           "P4",
     },
     
@@ -303,6 +303,12 @@ INPUT_ICONS {
         "gamepad thumbstick r right": "thumbstick r right",
         "gamepad thumbstick r up":    "thumbstick r up",
         "gamepad thumbstick r down":  "thumbstick r down",
+		
+        // Switch GameCube controllers and adapters only
+        "gamepad thumbstick l click": "thumbstick l click",
+        "gamepad thumbstick r click": "thumbstick r click",
+		"gamepad guide":              "home",
+        "gamepad misc 1":             "capture",
     },
     
     //PlayStation 1-3
