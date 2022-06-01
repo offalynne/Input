@@ -495,13 +495,13 @@ function __input_initialize()
     //F13 to F32 on Windows and Web
     if ((os_type == os_windows) || (__INPUT_ON_WEB))
     {
-        for(var _i = vk_f1 + 12; _i < vk_f1 + 32; _i++) __input_key_name_set(string(_i), "f" + string(_i));
+        for(var _i = vk_f1 + 12; _i < vk_f1 + 32; _i++) __input_key_name_set(_i, "f" + string(_i));
     }
     
     //Numeric keys 2-7 on Switch
     if (os_type == os_switch)
     {
-        for(var _i = 2; _i <= 7; _i++) __input_key_name_set(string(_i), __input_key_get_name(ord(_i)));
+        for(var _i = 2; _i <= 7; _i++) __input_key_name_set(_i, __input_key_get_name(ord(_i)));
     }
     
     #endregion
