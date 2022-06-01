@@ -122,6 +122,9 @@ function __input_initialize()
     global.__input_combo_verb_dict  = {};
     global.__input_combo_verb_array = [];
     
+    //Struct to store keyboard key names
+     global.__input_key_name_dict = {};
+    
     //Struct to store all the keyboard keys we want to ignore
     global.__input_ignore_key_dict = {};
     
@@ -397,6 +400,115 @@ function __input_initialize()
 
 
 
+    #region Key names
+
+    __input_key_name_set(vk_backtick,   "`");
+    __input_key_name_set(vk_hyphen,     "-");
+    __input_key_name_set(vk_equals,     "=");
+    __input_key_name_set(vk_semicolon,  ";");
+    __input_key_name_set(vk_apostrophe, "'");
+    __input_key_name_set(vk_comma,      ",");
+    __input_key_name_set(vk_period,     ".");
+    __input_key_name_set(vk_rbracket,   "]");
+    __input_key_name_set(vk_lbracket,   "[");
+    __input_key_name_set(vk_fslash,     "/");
+    __input_key_name_set(vk_bslash,     "\\");
+
+    __input_key_name_set(vk_scrollock, "scroll lock");
+    __input_key_name_set(vk_capslock,  "caps lock");
+    __input_key_name_set(vk_numlock,   "num lock");
+    __input_key_name_set(vk_lmeta,     "left meta");
+    __input_key_name_set(vk_rmeta,     "right meta");
+    __input_key_name_set(vk_menu,      "menu");
+
+    __input_key_name_set(vk_printscreen, "print screen");
+    __input_key_name_set(vk_pause,       "pause");
+    
+    __input_key_name_set(vk_escape,    "escape");
+    __input_key_name_set(vk_backspace, "backspace");
+    __input_key_name_set(vk_space,     "space");
+    __input_key_name_set(vk_enter,     "enter");
+    
+    __input_key_name_set(vk_up,    "arrow up");
+    __input_key_name_set(vk_down,  "arrow down");
+    __input_key_name_set(vk_left,  "arrow left");
+    __input_key_name_set(vk_right, "arrow right");
+    
+    __input_key_name_set(vk_tab,      "tab");
+    __input_key_name_set(vk_ralt,     "right alt");
+    __input_key_name_set(vk_lalt,     "left alt");
+    __input_key_name_set(vk_alt,      "alt");
+    __input_key_name_set(vk_rshift,   "right shift");
+    __input_key_name_set(vk_lshift,   "left shift");
+    __input_key_name_set(vk_shift,    "shift");
+    __input_key_name_set(vk_rcontrol, "right ctrl");
+    __input_key_name_set(vk_lcontrol, "left ctrl");
+    __input_key_name_set(vk_control,  "ctrl");
+
+    __input_key_name_set(vk_f1,  "f1");
+    __input_key_name_set(vk_f2,  "f2");
+    __input_key_name_set(vk_f3,  "f3");
+    __input_key_name_set(vk_f4,  "f4");
+    __input_key_name_set(vk_f5,  "f5");
+    __input_key_name_set(vk_f6,  "f6");
+    __input_key_name_set(vk_f7,  "f7");
+    __input_key_name_set(vk_f8,  "f8");
+    __input_key_name_set(vk_f9,  "f9");
+    __input_key_name_set(vk_f10, "f10");
+    __input_key_name_set(vk_f11, "f11");
+    __input_key_name_set(vk_f12, "f12");
+
+    __input_key_name_set(vk_divide,   "numpad /");
+    __input_key_name_set(vk_multiply, "numpad *");
+    __input_key_name_set(vk_subtract, "numpad -");
+    __input_key_name_set(vk_add,      "numpad +");
+    __input_key_name_set(vk_decimal,  "numpad .");
+
+    __input_key_name_set(vk_numpad0, "numpad 0");
+    __input_key_name_set(vk_numpad1, "numpad 1");
+    __input_key_name_set(vk_numpad2, "numpad 2");
+    __input_key_name_set(vk_numpad3, "numpad 3");
+    __input_key_name_set(vk_numpad4, "numpad 4");
+    __input_key_name_set(vk_numpad5, "numpad 5");
+    __input_key_name_set(vk_numpad6, "numpad 6");
+    __input_key_name_set(vk_numpad7, "numpad 7");
+    __input_key_name_set(vk_numpad8, "numpad 8");
+    __input_key_name_set(vk_numpad9, "numpad 9");
+
+    __input_key_name_set(vk_delete,   "delete");
+    __input_key_name_set(vk_insert,   "insert");
+    __input_key_name_set(vk_home,     "home");
+    __input_key_name_set(vk_pageup,   "page up");
+    __input_key_name_set(vk_pagedown, "page down");
+    __input_key_name_set(vk_end,      "end");
+   
+    //Name newline character after Enter
+    __input_key_name_set(10, global.__input_key_name_dict[$ vk_enter]);
+    
+    //Reset F11 and F12 keycodes on certain platforms
+    if ((os_type == os_switch) || (os_type == os_linux) || (os_type == os_macosx))
+    {
+        var _f11_label = global.__input_key_name_dict[$ string(vk_f11)]
+        __input_key_name_set(10, vk_f11, global.__input_key_name_dict[$ string(vk_f12)]);
+        __input_key_name_set(10, vk_f12, _f11_label);
+    }
+   
+    //F13 to F32 on Windows and Web
+    if ((os_type == os_windows) || (__INPUT_ON_WEB))
+    {
+        for(var _i = vk_f1; _i < vk_f1 + 32; _i++) __input_key_name_set(string(vk_f1 + _i), "f" + string(_i));
+    }
+    
+    //Numeric keys 2-7 on Switch
+    if (os_type == os_switch)
+    {
+        for(var _i = 2; _i <= 7; _i++) global.__input_key_name_dict[$ string(_i)] = __input_key_get_name(ord(_i));
+    }
+    
+    #endregion
+
+
+
     #region Ignored keys
     
     //Keyboard ignore level 1+
@@ -405,8 +517,8 @@ function __input_initialize()
         input_ignore_key_add(vk_alt);
         input_ignore_key_add(vk_ralt);
         input_ignore_key_add(vk_lalt);
-        input_ignore_key_add(vk_meta1);
-        input_ignore_key_add(vk_meta2);
+        input_ignore_key_add(vk_lmeta);
+        input_ignore_key_add(vk_rmeta);
         
         input_ignore_key_add(0xFF); //Vendor key
         
@@ -427,34 +539,6 @@ function __input_initialize()
                 input_ignore_key_add(vk_f11); //Fullscreen
             }
         }
-        
-        if (os_type == os_uwp)
-        {
-            input_ignore_key_add(195); //XInput A 
-            input_ignore_key_add(196); //XInput B 
-            input_ignore_key_add(197); //XInput X 
-            input_ignore_key_add(198); //XInput Y 
-            input_ignore_key_add(200); //XInput LB 
-            input_ignore_key_add(199); //XInput RB 
-            input_ignore_key_add(201); //XInput LT 
-            input_ignore_key_add(202); //XInput RT 
-            input_ignore_key_add(209); //XInput LS 
-            input_ignore_key_add(210); //XInput RS 
-            input_ignore_key_add(208); //XInput Back 
-            input_ignore_key_add(207); //XInput Start         
-            input_ignore_key_add(203); //XInput DP Up 
-            input_ignore_key_add(204); //XInput DP Down 
-            input_ignore_key_add(205); //XInput DP Left
-            input_ignore_key_add(206); //XInput DP Right        
-            input_ignore_key_add(214); //XInput -LX
-            input_ignore_key_add(213); //XInput +LX 
-            input_ignore_key_add(211); //XInput -LY 
-            input_ignore_key_add(212); //XInput +LY 
-            input_ignore_key_add(218); //XInput -RX 
-            input_ignore_key_add(217); //XInput +RX 
-            input_ignore_key_add(215); //XInput -RY 
-            input_ignore_key_add(216); //XInput +RY 
-        }
     }
     
     //Keyboard ignore level 2+
@@ -463,7 +547,7 @@ function __input_initialize()
         input_ignore_key_add(144); //Num Lock
         input_ignore_key_add(145); //Scroll Lock
         
-        if (__INPUT_ON_WEB || (os_type == os_windows) || (os_type == os_uwp))
+        if (__INPUT_ON_WEB || (os_type == os_windows))
         {
             input_ignore_key_add(0x15); //IME Kana/Hanguel
             input_ignore_key_add(0x16); //IME On

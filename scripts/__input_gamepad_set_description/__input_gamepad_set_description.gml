@@ -6,11 +6,6 @@ function __input_gamepad_set_description()
     {
         description = "XInput";
     }
-    else if (os_type == os_uwp)
-    {
-        //Non-XInput controller return an empty string for their description on UWP
-        description = "Unknown UWP Controller";
-    }
     else if (__INPUT_ON_OPERAGX)
     {
         //FIXME - As of 2021-10-01 (runtime 2.3.5.458), Opera GX descriptions return useless information (usually "Standard Gamepad")

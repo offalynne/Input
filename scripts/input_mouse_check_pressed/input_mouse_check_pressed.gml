@@ -6,7 +6,7 @@ function input_mouse_check_pressed(_binding)
         return (_binding == mb_none);
     }
     
-    //Extended mouse button handling (Windows only, *not* UWP)
+    //Extended mouse button handling
     if (os_type == os_windows)
     {
         var _left = (device_mouse_check_button_pressed(0, mb_left) || global.__input_tap_click);

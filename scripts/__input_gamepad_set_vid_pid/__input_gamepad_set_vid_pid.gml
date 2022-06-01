@@ -117,13 +117,6 @@ function __input_gamepad_set_vid_pid()
             xinput  = undefined;
         }
     }
-    else if (os_type == os_uwp)
-    {
-        description = gamepad_get_description(index);
-        vendor  = "";
-        product = "";
-        xinput  = (description == "Xbox Controller (XInput STANDARD GAMEPAD)");
-    }
     else
     {
         //Some unsupported platform

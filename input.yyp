@@ -222,6 +222,7 @@
     {"id":{"name":"__input_initialize","path":"scripts/__input_initialize/__input_initialize.yy",},"order":22,},
     {"id":{"name":"obj_test_button_labels_and_colors","path":"objects/obj_test_button_labels_and_colors/obj_test_button_labels_and_colors.yy",},"order":19,},
     {"id":{"name":"input_default_joycon_button","path":"scripts/input_default_joycon_button/input_default_joycon_button.yy",},"order":7,},
+    {"id":{"name":"__input_key_name_set","path":"scripts/__input_key_name_set/__input_key_name_set.yy",},"order":33,},
     {"id":{"name":"obj_test_touch","path":"objects/obj_test_touch/obj_test_touch.yy",},"order":15,},
     {"id":{"name":"__input_key_is_ignored","path":"scripts/__input_key_is_ignored/__input_key_is_ignored.yy",},"order":11,},
     {"id":{"name":"__input_load_blacklist_csv","path":"scripts/__input_load_blacklist_csv/__input_load_blacklist_csv.yy",},"order":12,},

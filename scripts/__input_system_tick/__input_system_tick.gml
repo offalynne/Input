@@ -256,7 +256,6 @@ function __input_system_tick()
     if (os_type == os_windows)
     {
         //Track clicks from touchpad and touchscreen taps (system-setting dependent)
-        //N.B. Fix *not* needed in UWP
         global.__input_tap_presses  += device_mouse_check_button_pressed( 0, mb_left);
         global.__input_tap_releases += device_mouse_check_button_released(0, mb_left);
     
@@ -283,14 +282,6 @@ function __input_system_tick()
 
         switch (_platform)
         {
-            case os_uwp:
-                if ((INPUT_IGNORE_RESERVED_KEYS_LEVEL > 0) 
-                && keyboard_check(vk_alt) && !keyboard_check_pressed(vk_alt))
-                {
-                    //Unstick Alt Tab
-                    keyboard_key_release(vk_alt);
-                }
-            //UWP also uses Windows case
             case os_windows:
                 if (keyboard_check(vk_alt) && keyboard_check_pressed(vk_space))
                 {
@@ -336,13 +327,13 @@ function __input_system_tick()
                 }
             
                 //Unstick Meta
-                if (keyboard_check_released(vk_meta1))
+                if (keyboard_check_released(vk_lmeta))
                 {
-                    keyboard_key_release(vk_meta2);
+                    keyboard_key_release(vk_rmeta);
                 }
-                else if (keyboard_check_released(vk_meta2) && keyboard_check(vk_meta1))
+                else if (keyboard_check_released(vk_rmeta) && keyboard_check(vk_lmeta))
                 {
-                    keyboard_key_release(vk_meta1);
+                    keyboard_key_release(vk_lmeta);
                 }
             break;
         }

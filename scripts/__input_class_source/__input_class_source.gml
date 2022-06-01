@@ -177,8 +177,8 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                     break;
                     
                     case mb_side1:
-                    case mb_side2: //Invalid on console, OperaGX, mobile, UWP, Firefox or Mac browsers
-                        return !(__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || __INPUT_ON_MOBILE || (os_type == os_uwp) || (os_browser == browser_firefox) || (__INPUT_ON_WEB && (os_type == os_macosx)))
+                    case mb_side2: //Invalid on console, OperaGX, mobile, Firefox or Mac browsers
+                        return !(__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || __INPUT_ON_MOBILE || (os_browser == browser_firefox) || (__INPUT_ON_WEB && (os_type == os_macosx)))
                     break;
                     
                     default:
@@ -225,7 +225,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
                 var _binding = new __input_class_binding();
                 _binding.__set_key(_keyboard_key, true);
                 
-                //On Mac we manually set the binding label to the actual keyboard character if it's an alphabetic symbol
+                //On Mac we update the binding label to the actual keyboard character if it is a Basic Latin alphabetic character
                 //This works around problems where a keyboard might be sending a character code for e.g. A but the OS is typing another letter
                 if (os_type == os_macosx)
                 {
@@ -233,7 +233,11 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
                     var _keychar = string_upper(keyboard_lastchar);
                     
                     //Basic Latin only
-                    if ((ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z"))) _binding.__set_label(_keychar);
+                    if ((ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z")))
+                    {
+                        _binding.__set_label(_keychar);
+                        __input_key_name_set(_keyboard_key, _keychar);    
+                    }
                 }
                 
                 return _binding;
