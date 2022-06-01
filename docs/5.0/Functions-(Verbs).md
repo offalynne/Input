@@ -27,15 +27,15 @@ When a verb has been consumed, [check functions](Functions-(Checkers)) that targ
 
 &nbsp;
 
-## `input_verb_get_groups(verb)`
+## `input_verb_get_group(verb)`
 
-*Returns:* Array or `undefined`, the collision groups defined for the target verb
+*Returns:* String or `undefined`, the collision group defined for the target verb
 
 |Name  |Datatype                  |Purpose                             |
 |------|--------------------------|------------------------------------|
 |`verb`|[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to target|
 
-Values that this function returns are defined via [`INPUT_VERB_GROUPS`](Configuration?id=profiles-and-bindings). If no verb groups have been defined for the target verb then this function will return `undefined` (and the verb is considered as being in every group).
+String values that this function may return are defined via [`INPUT_VERB_GROUPS`](Configuration?id=profiles-and-bindings). If no verb group has been defined for the target verb then this function will return `undefined` (and the verb is considered as being in every group).
 
 &nbsp;
 
@@ -49,7 +49,7 @@ Values that this function returns are defined via [`INPUT_VERB_GROUPS`](Configur
 |`state`        |boolean                         |State to set for the verb group                     |
 |`[playerIndex]`|integer                         |Player to target. If not specified, player 0 is used|
 
-A verb is considerd inactive when all the verb groups that that verb is a part of have been deactivated. A verb that has been assigned to no groups cannot be deactivated using this function.
+A verb is considerd inactive when the verb group that that verb is a part of has been deactivated. A verb that has been assigned to no groups cannot be deactivated using this function.
 
 &nbsp;
 
