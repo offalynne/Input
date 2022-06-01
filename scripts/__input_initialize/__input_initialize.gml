@@ -422,7 +422,7 @@ function __input_initialize()
     __input_key_name_set(vk_menu,      "menu");
 
     __input_key_name_set(vk_printscreen, "print screen");
-    __input_key_name_set(vk_pause,       "pause");
+    __input_key_name_set(vk_pause,       "pause break");
     
     __input_key_name_set(vk_escape,    "escape");
     __input_key_name_set(vk_backspace, "backspace");
