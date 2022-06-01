@@ -39,15 +39,16 @@ String values that this function may return are defined via [`INPUT_VERB_GROUPS`
 
 &nbsp;
 
-## `input_verb_group_active(verbGroup, state, [playerIndex])`
+## `input_verb_group_active(verbGroup, state, [playerIndex], [exclusive])`
 
 *Returns:* N/A (`undefined`)
 
-|Name           |Datatype                        |Purpose                                             |
-|---------------|--------------------------------|----------------------------------------------------|
-|`verbGroup`    |[verb group](Verbs-and-Bindings)|[Verb group](Verbs-and-Bindings) to target          |
-|`state`        |boolean                         |State to set for the verb group                     |
-|`[playerIndex]`|integer                         |Player to target. If not specified, player 0 is used|
+|Name           |Datatype                        |Purpose                                                                                                                                                                                                                                            |
+|---------------|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`verbGroup`    |[verb group](Verbs-and-Bindings)|[Verb group](Verbs-and-Bindings) to target                                                                                                                                                                                                         |
+|`state`        |boolean                         |State to set for the verb group                                                                                                                                                                                                                    |
+|`[playerIndex]`|integer                         |Player to target. If not specified, player 0 is used                                                                                                                                                                                               |
+|`[exclusive]`  |boolean                         |Whether to force all verb groups, other than the one being targeted, to be deactivated. This only applies if `state` is set to `true`. If not specified, `exclusive` defaults to `false`, allowing multiple verb groups to be active simultaneously|
 
 A verb is considerd inactive when the verb group that that verb is a part of has been deactivated. A verb that has been assigned to no groups cannot be deactivated using this function.
 
