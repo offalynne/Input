@@ -115,7 +115,7 @@
 - [`input_consume(verb, [playerIndex])`](Functions-(Other)#input_consumeverb-playerindex)
 - [`input_verb_set(verb, value, [playerIndex])`](Functions-(Other)#input_verb_setverb-value-playerindex)
 - [`input_verb_get_group(verb)`](Functions-(Verbs)?id=input_verb_get_groupverb)
-- [`input_verb_group_active(verbGroup, state, [playerIndex])`](Functions-(Verbs)?id=input_verb_group_activeverbgroup-state-playerindex)
+- [`input_verb_group_active(verbGroup, state, [playerIndex], [exclusive])`](Functions-(Verbs)?id=input_verb_group_activeverbgroup-state-playerindex-exclusive)
 - [`input_verb_group_is_active(verbGroup, [playerIndex])`](Functions-(Verbs)?id=input_verb_group_is_activeverbgroup-playerindex)
 
 &nbsp;
@@ -203,7 +203,7 @@
 - [`input_mouse_coord_space_set(coordSpace)`](Functions-(Mouse)?id=input_mouse_coord_space_setcoordspace)
 - [`input_mouse_coord_space_get()`](Functions-(Mouse)?id=input_mouse_coord_space_get)
 
-?> The following mouse functions are provided for convenience if you want to implement your own features using Input's mouse implementation. In general, [verbs](Verbs-and-Bindings) are the intended way to use Input and are preferred.
+?> The following mouse functions are provided for convenience if you want to build your own features using Input's mouse implementation. In general, [verbs](Verbs-and-Bindings) are the intended way to use Input and are preferred.
 
 - [`input_mouse_check(button)`](Functions-(Mouse)#input_mouse_checkbutton)
 - [`input_mouse_check_pressed(button)`](Functions-(Mouse)#input_mouse_check_pressedbutton)
@@ -213,7 +213,7 @@
 
 ## [Gamepad (Direct)](Functions-(Gamepad))
 
-?> Gamepad functions are provided for convenience if you want to implement your own features using Input's SDL implementation. In general, [verbs](Verbs-and-Bindings) are the intended way to use Input and are preferred.
+?> Gamepad functions are provided for convenience if you want to build your own features using Input's SDL implementation. In general, [verbs](Verbs-and-Bindings) are the intended way to use Input and are preferred.
 
 - [`input_gamepad_check(gamepadIndex, GMconstant)`](Functions-(Gamepad)#input_gamepad_checkgamepadindex-gmconstant)
 - [`input_gamepad_check_pressed(gamepadIndex, GMconstant)`](Functions-(Gamepad)#input_gamepad_check_pressedgamepadindex-gmconstant)
@@ -235,7 +235,7 @@
 
 ## [Keyboard (Direct)](Functions-(Keyboard))
 
-?> Keyboard functions are provided for convenience if you want to implement your own features using Input's keyboard implementation. In general, [verbs](Verbs-and-Bindings) are the intended way to use Input and are preferred.
+?> Keyboard functions are provided for convenience if you want to build your own features using Input's keyboard implementation. In general, [verbs](Verbs-and-Bindings) are the intended way to use Input and are preferred.
 
 - [`input_keyboard_check(button)`](Functions-(Keyboard)#input_keyboard_checkkey)
 - [`input_keyboard_check_pressed(button)`](Functions-(Keyboard)#input_keyboard_check_pressedkey)
