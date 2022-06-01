@@ -488,9 +488,8 @@ function __input_initialize()
     //Reset F11 and F12 keycodes on certain platforms
     if ((os_type == os_switch) || (os_type == os_linux) || (os_type == os_macosx))
     {
-        var _f11_label = global.__input_key_name_dict[$ string(vk_f11)]
-        __input_key_name_set(10, vk_f11, global.__input_key_name_dict[$ string(vk_f12)]);
-        __input_key_name_set(10, vk_f12, _f11_label);
+        __input_key_name_set(10, vk_f11, 128);
+        __input_key_name_set(10, vk_f12, 129);
     }
    
     //F13 to F32 on Windows and Web
