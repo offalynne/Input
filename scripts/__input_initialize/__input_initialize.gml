@@ -543,8 +543,8 @@ function __input_initialize()
     //Keyboard ignore level 2+
     if (INPUT_IGNORE_RESERVED_KEYS_LEVEL > 1)
     {
-        input_ignore_key_add(144); //Num Lock
-        input_ignore_key_add(145); //Scroll Lock
+        input_ignore_key_add(vk_numlock);   //Num Lock
+        input_ignore_key_add(vk_scrollock); //Scroll Lock
         
         if (__INPUT_ON_WEB || (os_type == os_windows))
         {
