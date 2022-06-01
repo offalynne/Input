@@ -102,6 +102,11 @@
 - [`input_binding_remove(verb, [playerIndex], [alternate], [profileName])`](Functions-(Binding-Access)?id=input_binding_removeverb-playerindex-alternate-profilename)
 - [`input_binding_swap(verbA, alternateA, verbB, alternateB, [playerIndex], [profileName])`](Functions-(Binding-Access)?id=input_binding_swapverba-alternatea-verbb-alternateb-source-playerindex-profilename)
 - [`input_binding_get_name(binding)`](Functions-(Binding-Access)?id=input_binding_get_namebinding)
+- [`input_binding_get_icon(binding, [playerIndex])`](Functions-(Binding-Access)?id=input_binding_get_iconbinding-playerindex)
+- [`input_binding_gamepad_set(binding. gamepad)`](Functions-(Binding-Access)?id=input_binding_gamepad_setbinding-gamepad)
+- [`input_binding_gamepad_get(binding)`](Functions-(Binding-Access)?id=input_binding_gamepad_getbinding)
+- [`input_binding_threshold_set(binding, min, max)`](Functions-(Binding-Access)?id=input_binding_threshold_setbinding-min-max)
+- [`input_binding_threshold_get(binding)`](Functions-(Binding-Access)?id=input_binding_threshold_getbinding)
 
 &nbsp;
 

@@ -109,16 +109,29 @@ Removes a binding from Input. **Be very careful with this function!** It's possi
 
 _Returns:_ N/A (`undefined`)
 
-|Name            |Datatype                            |Purpose                                                                        |
-|----------------|------------------------------------|-------------------------------------------------------------------------------|
-|`.verbA`        |[verb](Verbs-and-Alternate-Bindings)|First [verb](Verbs-and-Alternate-Bindings) to target                           |
-|`.alternateA`   |integer                             |[Alternate binding](Verbs-and-Alternate-Bindings) to target for the first verb |
-|`.verbB`        |[verb](Verbs-and-Alternate-Bindings)|Second [verb](Verbs-and-Alternate-Bindings) to target                          |
-|`.alternateB`   |integer                             |[Alternate binding](Verbs-and-Alternate-Bindings) to target for the second verb|
-|`[.playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                           |
-|`[.profileName]`|string                              |                                                                               |
+|Name           |Datatype                            |Purpose                                                                        |
+|---------------|------------------------------------|-------------------------------------------------------------------------------|
+|`verbA`        |[verb](Verbs-and-Alternate-Bindings)|First [verb](Verbs-and-Alternate-Bindings) to target                           |
+|`alternateA`   |integer                             |[Alternate binding](Verbs-and-Alternate-Bindings) to target for the first verb |
+|`verbB`        |[verb](Verbs-and-Alternate-Bindings)|Second [verb](Verbs-and-Alternate-Bindings) to target                          |
+|`alternateB`   |integer                             |[Alternate binding](Verbs-and-Alternate-Bindings) to target for the second verb|
+|`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                           |
+|`[profileName]`|string                              |                                                                               |
 
 Swaps over the two verb bindings specified.
+
+&nbsp;
+
+## `input_binding_get_icon(binding, [playerIndex])`
+
+_Returns:_ Various, the icon identifier defined in [`__input_config_icons()`](Configuration?id=gamepads)
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`binding`      |binding |Binding to return the icon for                      |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+Returns the icon associated with the given binding for the device that the given player is currently using. You should edit [`__input_config_icons()`](Configuration?id=gamepads) to match the requirements of your game.
 
 &nbsp;
 
@@ -131,6 +144,8 @@ _Returns:_ String, the human-readable [name for the binding](Binding-Names)
 |`binding`|binding |Binding to return the name for|
 
 Returns the [name of the binding](Binding-Names) in a way that is (mostly!) human-readable. This string can be the name of a keyboard key or the name of a gamepad axis, including direction of travel. The intention is for this information to be parsed by your own code and then used to display a string or icon to the player indicating which button/key etc. is associated with which verb. All return values are listed as [Binding Names](Binding-Names).
+
+?> In situations where you are displaying control prompt to a player, `input_binding_get_icon()` is likely to be more useful.
 
 &nbsp;
 
