@@ -6,7 +6,7 @@ function input_mouse_check(_binding)
         return (_binding == mb_none);
     }
     
-    //Extended touchpad handling (Windows only, *not* UWP)
+    //Extended touchpad handling
     if (os_type == os_windows)
     {
         var _button = device_mouse_check_button(0, _binding);      

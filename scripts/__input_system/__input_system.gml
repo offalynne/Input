@@ -31,8 +31,8 @@
 #macro __INPUT_ON_OPERAGX  (os_type == os_operagx)
 #macro __INPUT_ON_WEB      ((os_browser != browser_not_a_browser) || __INPUT_ON_OPERAGX)
 
-#macro __INPUT_TOUCH_SUPPORT      (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch) || ((os_type == os_uwp) && uwp_device_touchscreen_available()))
-#macro __INPUT_KEYBOARD_NORMATIVE (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch) ||  (os_type == os_uwp))
+#macro __INPUT_TOUCH_SUPPORT      (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch))
+#macro __INPUT_KEYBOARD_NORMATIVE (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch))
 #macro __INPUT_KEYBOARD_SUPPORT   (__INPUT_KEYBOARD_NORMATIVE || (os_type == os_android))
 
 #macro __INPUT_SDL2_SUPPORT  (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || (os_type == os_android)))
@@ -53,12 +53,10 @@
 #macro gp_paddle4   32795
 
 //Extended keycode constants
-#macro vk_meta1       91
-#macro vk_meta2       92
-                      
+#macro vk_clear       12
 #macro vk_capslock    20
+#macro vk_menu        93
 #macro vk_scrollock   145
-#macro vk_numlock     ((__INPUT_ON_APPLE && __INPUT_ON_WEB) ? 12 : 144)
                       
 #macro vk_semicolon   186
 #macro vk_comma       188
@@ -67,11 +65,14 @@
 #macro vk_lbracket    219
 #macro vk_rbracket    221
 
-#macro vk_apostrophe  (((os_type == os_macosx) && !__INPUT_ON_WEB) ? 192 : 222)
-#macro vk_equals      (((os_type == os_macosx) && !__INPUT_ON_WEB) ?  24 : 187)
-#macro vk_hyphen      (((os_type == os_switch) || ((os_type == os_macosx) && !__INPUT_ON_WEB)) ? 109 : 189)
-#macro vk_backtick    ((os_type == os_macosx) ? 50 : ((os_type == os_linux) ? 223 : 192))
-#macro vk_period      ((os_type == os_switch) ? 110 : 190)
+#macro vk_apostrophe (((os_type == os_macosx) && !__INPUT_ON_WEB)? 192 : 222)
+#macro vk_equals     (((os_type == os_macosx) && !__INPUT_ON_WEB)?  24 : 187)
+#macro vk_hyphen     (((os_type == os_switch) || ((os_type == os_macosx) && !__INPUT_ON_WEB))? 109 : 189)
+#macro vk_backtick   ((os_type == os_macosx)? 50 : ((os_type == os_linux)? 223 : 192))
+#macro vk_period     ((os_type == os_switch)? 110 : 190)
+#macro vk_numlock    ((__INPUT_ON_APPLE && __INPUT_ON_WEB)? 12 : 144)
+#macro vk_lmeta      ((os_type == os_macosx)? 92 : 91)
+#macro vk_rmeta      ((os_type == os_macosx)? ((__INPUT_ON_APPLE && __INPUT_ON_WEB)? 93 : 91) : 92)
 
 // gp_axislh     = 32785             32769 = gp_face1
 // gp_axislv     = 32786             32770 = gp_face2

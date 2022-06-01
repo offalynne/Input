@@ -23,7 +23,6 @@ function __input_gamepad_set_blacklist()
     switch(os_type)
     {
         case os_windows: _os = "windows"; break;
-        case os_uwp:     _os = "uwp";     break;
         case os_linux:   _os = "linux";   break;
         case os_macosx:  _os = "macos";   break;
         case os_ios:     _os = "ios";     break;
