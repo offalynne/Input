@@ -543,40 +543,53 @@ function __input_class_player() constructor
         if (!variable_struct_exists(__verb_group_state_dict, _verb_group)) __verb_group_state_dict[$ _verb_group] = true;
     }
     
-    static __verb_group_active = function(_verb_group, _state)
+    static __verb_group_active = function(_verb_group, _state, _exclusive)
     {
         var _old_state = __verb_group_state_dict[$ _verb_group];
-        if (_old_state == _state) return;
-        
-        //Set the state of the verb group
-        __verb_group_state_dict[$ _verb_group] = _state;
-        
-        //Iterate over every verb for this group and get them to update their state
-        var _array = global.__input_group_to_verbs_dict[$ _verb_group];
-        if (_state)
+        if (_old_state != _state)
         {
-            //If the verb group is active then the verbs should be active too
-            var _i = 0;
-            repeat(array_length(_array))
+            //Set the state of the verb group
+            __verb_group_state_dict[$ _verb_group] = _state;
+            
+            //Iterate over every verb for this group and get them to update their state
+            var _array = global.__input_group_to_verbs_dict[$ _verb_group];
+            if (_state)
             {
-                __verb_state_dict[$ _array[_i]].__group_inactive = false;
-                ++_i;
+                //If the verb group is active then the verbs should be active too
+                var _i = 0;
+                repeat(array_length(_array))
+                {
+                    __verb_state_dict[$ _array[_i]].__group_inactive = false;
+                    ++_i;
+                }
+            }
+            else
+            {
+                //If the verb group is inactive then the verbs should be inactive too
+                var _i = 0;
+                repeat(array_length(_array))
+                {
+                    with(__verb_state_dict[$ _array[_i]])
+                    {
+                        __group_inactive = true;
+                        previous_held    = true; //Force the held state on to avoid unwanted early reset of an inactive verb
+                        __inactive       = true;
+                        __toggle_state   = false; //Used for "toggle momentary" accessibility feature
+                    }
+                    
+                    ++_i;
+                }
             }
         }
-        else
+        
+        //If we're calling this function in exclusive mode, deactivate all the other verb groups
+        if (_state && _exclusive)
         {
-            //If the verb group is inactive then the verbs should be inactive too
             var _i = 0;
-            repeat(array_length(_array))
+            repeat(array_length(global.__input_verb_group_array))
             {
-                with(__verb_state_dict[$ _array[_i]])
-                {
-                    __group_inactive = true;
-                    previous_held    = true; //Force the held state on to avoid unwanted early reset of an inactive verb
-                    __inactive       = true;
-                    __toggle_state   = false; //Used for "toggle momentary" accessibility feature
-                }
-                
+                var _found_group = global.__input_verb_group_array[_i];
+                if (_found_group != _verb_group) __verb_group_active(_found_group, false, false);
                 ++_i;
             }
         }

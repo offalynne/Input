@@ -9,12 +9,12 @@ function __input_finalize_verb_groups()
         __input_error("INPUT_VERB_GROUPS must contain a struct (was ", typeof(global.__input_group_to_verbs_dict), ")\nDocumentation on INPUT_VERB_GROUPS can be found offline in __input_config_verbs()\nOnline documentation can be found at https://jujuadams.github.io/Input");
     }
     
-    var _group_names_array = variable_struct_get_names(global.__input_group_to_verbs_dict);
+    global.__input_verb_group_array = variable_struct_get_names(global.__input_group_to_verbs_dict);
     
     var _i = 0;
-    repeat(array_length(_group_names_array))
+    repeat(array_length(global.__input_verb_group_array))
     {
-        var _group_name = _group_names_array[_i];
+        var _group_name = global.__input_verb_group_array[_i];
         var _group_array = global.__input_group_to_verbs_dict[$ _group_name];
         
         //Ensure all players have the verb group created
