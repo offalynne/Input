@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "spr_red_dot",
-    "path": "sprites/spr_red_dot/spr_red_dot.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "managed": true,
@@ -22,18 +19,18 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"obj_example_solid","path":"objects/obj_example_solid/obj_example_solid.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":7,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Top Down Shooter",
-    "path": "folders/Examples/Top Down Shooter.yy",
+    "name": "Rebinding",
+    "path": "folders/Examples/Rebinding.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_example_bullet",
+  "name": "obj_example_rebinding",
   "tags": [],
   "resourceType": "GMObject",
 }

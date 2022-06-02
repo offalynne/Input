@@ -31,7 +31,7 @@ else if (input_check("shoot"))
     shoot_timer = 10; //shoot_timer controls the rate of fire
     
     //The speed of the bullet is set in the Create event for obj_example_bullet
-    with(instance_create_layer(x, y, "Bullets", obj_example_bullet))
+    with(instance_create_layer(x, y, "Bullets", obj_example_tds_bullet))
     {
         direction = other.aim_direction;
     }

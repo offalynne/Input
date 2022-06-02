@@ -9,7 +9,7 @@ x_speed += x_acceleration*_direction;
 if (_direction != 0) x_last_direction = _direction;
 
 //Do a little dash when the player press the "action" verb
-//This is bound to the enter key, or the west face button on a gamepad (X for Xbox/Switch, square for PlayStation)
+//This is bound to the enter key, or the west face button on a gamepad (X for Xbox, square for PlayStation, Y for Switch)
 if (input_check_pressed("action"))
 {
     x_speed += x_dash_impulse*x_last_direction;

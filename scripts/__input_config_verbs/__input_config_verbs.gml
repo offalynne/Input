@@ -1,7 +1,9 @@
 //Defines which verbs should collide with which other verbs when using input_binding_get_collisions()
 //and input_binding_set_safe(). A verb that is not present in a group will collide with all other verbs
 INPUT_VERB_GROUPS = {
-    general: ["up", "down", "left", "right", "accept", "cancel", "action", "special", "pause", "aim_up", "aim_down", "aim_left", "aim_right"],
+    general: ["up", "down", "left", "right",
+              "accept", "cancel", "action", "special", "pause",
+              "aim_up", "aim_down", "aim_left", "aim_right", "shoot"],
 };
 
 //Default time before input_check_repeat() returns <true>
