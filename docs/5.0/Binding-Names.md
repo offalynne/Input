@@ -63,7 +63,7 @@ A list of possible return strings for [`input_binding_get_name`](Functions-(Bind
 
 | Primary  |          |          |
 |----------|----------|----------|
-| `0`-`9`  | `A`-`Z`  |`F1`-`F32`|
+| `0`-`9`  | `A`-`Z`  |`f1`-`f32`|
 
 &nbsp;
 
