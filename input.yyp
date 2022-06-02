@@ -279,11 +279,11 @@
     "children": [],
   },
   "RoomOrderNodes": [
-    {"roomId":{"name":"rm_example_mp_join","path":"rooms/rm_example_mp_join/rm_example_mp_join.yy",},},
-    {"roomId":{"name":"rm_example_mp_gameplay","path":"rooms/rm_example_mp_gameplay/rm_example_mp_gameplay.yy",},},
+    {"roomId":{"name":"rm_example_platformer","path":"rooms/rm_example_platformer/rm_example_platformer.yy",},},
     {"roomId":{"name":"rm_example_rebinding","path":"rooms/rm_example_rebinding/rm_example_rebinding.yy",},},
     {"roomId":{"name":"rm_example_tds","path":"rooms/rm_example_tds/rm_example_tds.yy",},},
-    {"roomId":{"name":"rm_example_platformer","path":"rooms/rm_example_platformer/rm_example_platformer.yy",},},
+    {"roomId":{"name":"rm_example_mp_join","path":"rooms/rm_example_mp_join/rm_example_mp_join.yy",},},
+    {"roomId":{"name":"rm_example_mp_gameplay","path":"rooms/rm_example_mp_gameplay/rm_example_mp_gameplay.yy",},},
     {"roomId":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
   ],
   "Folders": [
