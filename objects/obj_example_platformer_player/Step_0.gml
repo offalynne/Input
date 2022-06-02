@@ -18,7 +18,7 @@ if (input_check_pressed("action"))
 //Jump when the player presses the "special" verb
 //This is bound to the space key, or the south face button on a gamepad (A for Xbox, cross for PlayStation, B for Switch)
 //We also only want to jump when we're standing on the ground, but we check a little bit further below the player for the sake of gamefeel
-if (input_check_pressed("accept") && instance_place(x, y + 3, obj_platformer_solid))
+if (input_check_pressed("accept") && instance_place(x, y + 3, obj_example_solid))
 {
     y_speed += y_jump_impulse;
 }
@@ -35,7 +35,7 @@ y_speed *= y_damping;
 var _dx = sign(x_speed);
 repeat(abs(x_speed))
 {
-    if (!place_meeting(x + _dx, y, obj_platformer_solid))
+    if (!place_meeting(x + _dx, y, obj_example_solid))
     {
         x += _dx;
     }
@@ -50,7 +50,7 @@ repeat(abs(x_speed))
 var _dy = sign(y_speed);
 repeat(abs(y_speed))
 {
-    if (!place_meeting(x, y + _dy, obj_platformer_solid))
+    if (!place_meeting(x, y + _dy, obj_example_solid))
     {
         y += _dy;
     }

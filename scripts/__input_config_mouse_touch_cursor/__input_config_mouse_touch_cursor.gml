@@ -14,10 +14,11 @@
 #macro INPUT_TOUCH_POINTER_ALLOWED  false
 
 //Verbs that control motion of Input's device-agnostic cursor
-#macro INPUT_CURSOR_VERB_UP     "up"
-#macro INPUT_CURSOR_VERB_DOWN   "down"
-#macro INPUT_CURSOR_VERB_LEFT   "left"
-#macro INPUT_CURSOR_VERB_RIGHT  "right"
+//This is primarily used for gamepad input but can also be used for keyboard input too
+#macro INPUT_CURSOR_VERB_UP     "aim_up"
+#macro INPUT_CURSOR_VERB_DOWN   "aim_down"
+#macro INPUT_CURSOR_VERB_LEFT   "aim_left"
+#macro INPUT_CURSOR_VERB_RIGHT  "aim_right"
 
 //The default speed for cursors when the game boots up
 //This can be changed with input_cursor_speed_set()

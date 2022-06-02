@@ -13,15 +13,17 @@ INPUT_DEFAULT_PROFILES = {
     
     keyboard_and_mouse:
     {
-        up:    input_binding_key(vk_up),
-        down:  input_binding_key(vk_down),
-        left:  input_binding_key(vk_left),
-        right: input_binding_key(vk_right),
+        up:    [input_binding_key(vk_up),    input_binding_key("W")],
+        down:  [input_binding_key(vk_down),  input_binding_key("S")],
+        left:  [input_binding_key(vk_left),  input_binding_key("A")],
+        right: [input_binding_key(vk_right), input_binding_key("D")],
         
-        accept:  [input_binding_key(vk_space), input_binding_mouse_button(mb_left)],
+        accept:  input_binding_key(vk_space),
         cancel:  input_binding_key(vk_backspace),
         action:  input_binding_key(vk_enter),
         special: input_binding_key(vk_shift),
+        
+        shoot: input_binding_mouse_button(mb_left),
         
         pause: input_binding_key(vk_escape),
     },
@@ -37,6 +39,12 @@ INPUT_DEFAULT_PROFILES = {
         cancel:  input_binding_gamepad_button(gp_face2),
         action:  input_binding_gamepad_button(gp_face3),
         special: input_binding_gamepad_button(gp_face4),
+        
+        aim_up:    input_binding_gamepad_axis(gp_axisrv, true),
+        aim_down:  input_binding_gamepad_axis(gp_axisrv, false),
+        aim_left:  input_binding_gamepad_axis(gp_axisrh, true),
+        aim_right: input_binding_gamepad_axis(gp_axisrh, false),
+        shoot:     [input_binding_gamepad_button(gp_shoulderlb), input_binding_gamepad_button(gp_shoulderrb)],
         
         pause: input_binding_gamepad_button(gp_start),
     },
@@ -59,4 +67,4 @@ INPUT_DEFAULT_PROFILES = {
 
 //Whether to allow default profiles (see below) to contain different verbs. Normally every profile
 //should contain a reference to every verb, but for complex games this is inconvenient
-#macro INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES  false
+#macro INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES  true

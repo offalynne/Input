@@ -25,11 +25,11 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Platformer",
-    "path": "folders/Examples/Platformer.yy",
+    "name": "Examples",
+    "path": "folders/Examples.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_platformer_solid",
+  "name": "obj_example_solid",
   "tags": [],
   "resourceType": "GMObject",
 }
