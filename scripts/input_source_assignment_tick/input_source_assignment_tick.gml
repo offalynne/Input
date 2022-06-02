@@ -79,7 +79,7 @@ function input_source_assignment_tick(_min_players, _max_players, _leave_verb, _
                 
                 global.__input_players[_p].tick();
                 
-                if (input_check_pressed(_leave_verb) && (input_players_connected() < _min_players) && (_min_players > 1))
+                if ((_leave_verb != undefined) && input_check_pressed(_leave_verb) && (input_players_connected() < _min_players) && (_min_players > 1))
                 {
                     __input_trace("Assignment: Player ", _p, " aborted source assignment");
                     _abort = true;
@@ -101,7 +101,7 @@ function input_source_assignment_tick(_min_players, _max_players, _leave_verb, _
     var _p = 0;
     repeat(_max_players)
     {
-        if (input_check_pressed(_leave_verb, _p))
+        if ((_leave_verb != undefined) && input_check_pressed(_leave_verb, _p))
         {
             __input_trace("Assignment: Player ", _p, " left");
             input_player_source_set(INPUT_SOURCE.NONE, _p);
