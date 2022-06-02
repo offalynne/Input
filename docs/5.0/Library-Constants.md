@@ -87,7 +87,7 @@ If [`INPUT_SDL2_ALLOW_EXTENDED`]() has been set to `true` then the following con
 
 ## Extended Keyboard Constants
 
-GameMaker is curiously missing a few keyboard characters from its set of native constants. Input adds support for them via the following constants.
+GameMaker is missing a few keyboard characters from its set of native constants. Input adds support via the following constants.
 
 |Name           |              |
 |---------------|--------------|
@@ -100,6 +100,8 @@ GameMaker is curiously missing a few keyboard characters from its set of native 
 |`vk_apostrophe`|`vk_bslash`   |
 |`vk_equals`    |`vk_hyphen`   |
 |`vk_backtick`  |`vk_period`   |
+
+!> As extended keyboard constant values are relative to platform and OS, they can not be used as case statements within switch statements.
 
 &nbsp;
 
