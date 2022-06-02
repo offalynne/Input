@@ -67,12 +67,12 @@
 
 #macro vk_apostrophe (((os_type == os_macosx) && !__INPUT_ON_WEB)? 192 : 222)
 #macro vk_equals     (((os_type == os_macosx) && !__INPUT_ON_WEB)?  24 : 187)
-#macro vk_hyphen     (((os_type == os_switch) || ((os_type == os_macosx) && !__INPUT_ON_WEB))? 109 : 189)
-#macro vk_backtick   ((os_type == os_macosx)? 50 : ((os_type == os_linux)? 223 : 192))
-#macro vk_period     ((os_type == os_switch)? 110 : 190)
 #macro vk_numlock    ((__INPUT_ON_APPLE && __INPUT_ON_WEB)? 12 : 144)
-#macro vk_lmeta      ((os_type == os_macosx)? 92 : 91)
+#macro vk_hyphen     (((os_type == os_switch) || ((os_type == os_macosx) && !__INPUT_ON_WEB))? 109 : 189)
 #macro vk_rmeta      ((os_type == os_macosx)? ((__INPUT_ON_APPLE && __INPUT_ON_WEB)? 93 : 91) : 92)
+#macro vk_backtick   ((os_type == os_macosx)?  50 : ((os_type == os_linux)? 223 : 192))
+#macro vk_lmeta      ((os_type == os_macosx)?  92 : 91)
+#macro vk_period     ((os_type == os_switch)? 110 : 190)
 
 // gp_axislh     = 32785             32769 = gp_face1
 // gp_axislv     = 32786             32770 = gp_face2
