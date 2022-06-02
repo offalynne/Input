@@ -4,7 +4,7 @@
 
 
 //Verb to use to allow a player to cancel multiplayer source assignment
-//This macro must be set for multiplayer assignment to work
+//If you want to prevent a player from leaving the session then set this macro to <undefined>
 #macro INPUT_MULTIPLAYER_LEAVE_VERB  "cancel"
 
 //The function to call when a player tries to abort multiplayer source assignment

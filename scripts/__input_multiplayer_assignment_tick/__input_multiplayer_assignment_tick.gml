@@ -1,10 +1,5 @@
 function __input_multiplayer_assignment_tick()
 {
-    if (INPUT_MULTIPLAYER_LEAVE_VERB == undefined)
-    {
-        __input_error("INPUT_MULTIPLAYER_LEAVE_VERB has not been defined");
-    }
-    
     if (!variable_struct_exists(global.__input_basic_verb_dict, INPUT_MULTIPLAYER_LEAVE_VERB))
     {
         __input_error("INPUT_MULTIPLAYER_LEAVE_VERB \"", INPUT_MULTIPLAYER_LEAVE_VERB, "\" doesn't exist");
@@ -63,7 +58,7 @@ function __input_multiplayer_assignment_tick()
                     tick();
                 }
                 
-                if (input_check_pressed(INPUT_MULTIPLAYER_LEAVE_VERB) && (input_player_connected_count() < global.__input_multiplayer_min) && (global.__input_multiplayer_min > 1))
+                if ((INPUT_MULTIPLAYER_LEAVE_VERB != undefined) && input_check_pressed(INPUT_MULTIPLAYER_LEAVE_VERB) && (input_player_connected_count() < global.__input_multiplayer_min) && (global.__input_multiplayer_min > 1))
                 {
                     __input_trace("Assignment: Player ", _p, " aborted source assignment");
                     _abort = true;
@@ -85,7 +80,7 @@ function __input_multiplayer_assignment_tick()
     var _p = 0;
     repeat(global.__input_multiplayer_max)
     {
-        if (input_check_pressed(INPUT_MULTIPLAYER_LEAVE_VERB, _p))
+        if ((INPUT_MULTIPLAYER_LEAVE_VERB != undefined) && input_check_pressed(INPUT_MULTIPLAYER_LEAVE_VERB, _p))
         {
             __input_trace("Assignment: Player ", _p, " left");
             input_source_clear(_p);
