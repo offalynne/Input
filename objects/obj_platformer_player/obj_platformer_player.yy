@@ -1,5 +1,8 @@
 {
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_white",
+    "path": "sprites/spr_white/spr_white.yy",
+  },
   "solid": false,
   "visible": true,
   "managed": true,
@@ -19,16 +22,17 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "input",
-    "path": "input.yyp",
+    "name": "Platformer",
+    "path": "folders/Examples/Platformer.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_example",
+  "name": "obj_platformer_player",
   "tags": [],
   "resourceType": "GMObject",
 }

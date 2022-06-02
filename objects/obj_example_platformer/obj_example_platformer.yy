@@ -24,11 +24,11 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Test Cases",
-    "path": "folders/Test Cases.yy",
+    "name": "Platformer",
+    "path": "folders/Examples/Platformer.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_test_status",
+  "name": "obj_example_platformer",
   "tags": [],
   "resourceType": "GMObject",
 }

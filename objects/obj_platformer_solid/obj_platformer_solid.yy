@@ -1,5 +1,8 @@
 {
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_blue",
+    "path": "sprites/spr_blue/spr_blue.yy",
+  },
   "solid": false,
   "visible": true,
   "managed": true,
@@ -18,17 +21,15 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-  ],
+  "eventList": [],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Test Cases",
-    "path": "folders/Test Cases.yy",
+    "name": "Platformer",
+    "path": "folders/Examples/Platformer.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_test_status",
+  "name": "obj_platformer_solid",
   "tags": [],
   "resourceType": "GMObject",
 }
