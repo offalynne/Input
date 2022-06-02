@@ -107,7 +107,7 @@ GameMaker is missing a few keyboard characters from its set of native constants.
 
 ## `INPUT_KEYBOARD_LOCALE`
 
-This macro provides a hint for default Latin keyboard layout based on available information. It can return `QWERTY` `AZERTY` or `QWERTZ` as a string, indicating which keyboard layout Input predicts the player is using. This is useful for building safe default bindings based on [keyboard layout differences](https://www.typingpal.com/en/news/what-is-the-difference-between-QWERTY-QWERTZ-and-AZERTY-keyboards). Note that while system software can determine the active keyboard layout, we cannot detect this at runtime, and this function merely provides a suggestion as to the system-default using OS locale info (specifically [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) and [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1)).
+This macro provides a hint for default Latin keyboard layout based on available information. It can return `QWERTY` `AZERTY` or `QWERTZ` as a string, indicating which keyboard layout Input predicts the player is using. This is useful for building safe default bindings based on [keyboard layout differences](https://www.typingpal.com/en/news/what-is-the-difference-between-QWERTY-QWERTZ-and-AZERTY-keyboards). Note that while system software can determine the active keyboard layout, we cannot detect this at runtime; this function provides a suggestion as to the system-default using OS locale info (specifically [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) and [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1)).
 
 _Example usage_
 ```gml
