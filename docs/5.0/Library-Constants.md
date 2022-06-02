@@ -91,7 +91,8 @@ GameMaker is curiously missing a few keyboard characters from its set of native 
 
 |Name           |              |
 |---------------|--------------|
-|`vk_meta1`     |`vk_meta2`    |
+|`vk_lmeta`     |`vk_rmeta`    |
+|`vk_menu`      |`vk_clear`    |
 |`vk_capslock`  |`vk_scrollock`|
 |`vk_numlock`   |`vk_semicolon`|
 |`vk_comma`     |`vk_fslash`   |
