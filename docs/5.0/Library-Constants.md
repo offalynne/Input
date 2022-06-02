@@ -95,11 +95,11 @@ GameMaker is missing a few keyboard characters from its set of native constants.
 |`vk_menu`      |`vk_clear`    |
 |`vk_capslock`  |`vk_scrollock`|
 |`vk_numlock`   |`vk_semicolon`|
-|`vk_comma`     |`vk_fslash`   |
+|`vk_comma`     |`vk_backtick` |
 |`vk_lbracket`  |`vk_rbracket` |
-|`vk_apostrophe`|`vk_bslash`   |
+|vk_fslash`     |`vk_bslash`   |
 |`vk_equals`    |`vk_hyphen`   |
-|`vk_backtick`  |`vk_period`   |
+|`vk_apostrophe`|`vk_period`   |
 
 !> As extended keyboard constant values are relative to platform and OS, they can not be used as case statements within switch statements.
 
