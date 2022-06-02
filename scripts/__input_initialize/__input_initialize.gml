@@ -419,6 +419,7 @@ function __input_initialize()
     __input_key_name_set(vk_numlock,   "num lock");
     __input_key_name_set(vk_lmeta,     "left meta");
     __input_key_name_set(vk_rmeta,     "right meta");
+    __input_key_name_set(vk_clear,     "clear");
     __input_key_name_set(vk_menu,      "menu");
 
     __input_key_name_set(vk_printscreen, "print screen");
