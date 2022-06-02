@@ -1,24 +1,30 @@
+//Allow this player to quit back to the join menu
+if (input_check_pressed("pause", player))
+{
+    room_goto(rm_example_mp_join);
+}
+
 //Set some rules for the aiming cursor
-if (input_source_using(INPUT_GAMEPAD))
+if (input_source_using(INPUT_GAMEPAD, player))
 {
     //If we're using a gamepad, limit the cursor to 130px away from the player
     //We also set an "elastic" rule so that the cursor automatically springs back towards the player
-    input_cursor_limit_circle(x, y, 130);
-    input_cursor_elastic_set(x, y, 0.2);
+    input_cursor_limit_circle(x, y, 130, player);
+    input_cursor_elastic_set(x, y, 0.2, player);
 }
 else
 {
     //If we're not using the gamepad then remove both the limit and the elastic
     //This allows the cursor to move totally freely as you'd expect with mouse aiming
-    input_cursor_elastic_remove();
-    input_cursor_limit_remove();
+    input_cursor_elastic_remove(player);
+    input_cursor_limit_remove(player);
 }
 
 //Move the point of aim if the cursor is far enough away from the player
 //We perform this distance check so that we don't get twitching when using a gamepad
-if (point_distance(x, y, input_cursor_x(), input_cursor_y()) > 10)
+if (point_distance(x, y, input_cursor_x(player), input_cursor_y(player)) > 10)
 {
-    aim_direction = point_direction(x, y, input_cursor_x(), input_cursor_y());
+    aim_direction = point_direction(x, y, input_cursor_x(player), input_cursor_y(player));
 }
 
 //Handle shooting
@@ -26,7 +32,7 @@ if (shoot_timer > 0)
 {
     --shoot_timer;
 }
-else if (input_check("shoot"))
+else if (input_check("shoot", player))
 {
     shoot_timer = 10; //shoot_timer controls the rate of fire
     
@@ -40,8 +46,8 @@ else if (input_check("shoot"))
 
 //Move around using the 2D checkers
 //These automatically handle analogue input (thumbsticks) as well as on/off input (keyboard/dpad)
-x_speed += xy_acceleration*input_x("left", "right", "up", "down");
-y_speed += xy_acceleration*input_y("left", "right", "up", "down");
+x_speed += xy_acceleration*input_x("left", "right", "up", "down", player);
+y_speed += xy_acceleration*input_y("left", "right", "up", "down", player);
 
 //Apply a resistive force to our speed
 //I prefer damping over basic friction because it adds a bit of extra weight to the player

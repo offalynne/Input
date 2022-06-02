@@ -14,4 +14,5 @@ else
     _string += "Mouse = Aim\n";
     _string += input_binding_get_icon(input_binding_get("shoot")) + " = Shoot\n";
 }
+
 draw_text(10, 10, _string);
