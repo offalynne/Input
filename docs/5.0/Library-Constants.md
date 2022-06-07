@@ -74,7 +74,7 @@ The `INPUT_BINDING_SCAN_EVENT` enum is used by the failure callback for [`input_
 
 ## Extended Gamepad Constants
 
-If [`INPUT_SDL2_ALLOW_EXTENDED`]() has been set to `true` then the following constants will be available for use. Not many gamepads actually have these buttons so it's not recommend to use these constants for default bindings.
+If [`INPUT_SDL2_ALLOW_EXTENDED`](Configuration?id=gamepad-data) has been set to `true` then the following constants will be available for use. Not many gamepads actually have these buttons so it's not recommend to use these constants for default bindings.
 
 |Name         |            |
 |-------------|------------|
