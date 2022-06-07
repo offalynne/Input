@@ -134,7 +134,7 @@ The following are valid strings this function may return besides `unknown`:
 |--------------|--------------------------|------------------------------------------------------|
 |`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
 
-Returns the same values as [`input_player_gamepad_get_type()`](Functions-(Players)#input_player_gamepad_getplayerindex).
+Returns the same values as [`input_player_gamepad_get_type()`](Functions-(Players)?id=input_player_get_gamepad_typeplayerindex-binding).
 
 &nbsp;
 
