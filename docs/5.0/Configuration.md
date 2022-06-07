@@ -148,3 +148,11 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 |`INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD`     |`0.02`                     |Default minimum threshold for non-directional (trigger) axes. This value is used for detecting gamepad input when hotswapping so make sure you set it above 0.0                                                             |
 |`INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD`     |`1.0`                      |Default maximum threshold for non-directional (trigger) axes                                                                                                                                                                |
 |`INPUT_SWITCH_HORIZONTAL_HOLDTYPE`        |`true`                     |Whether the game uses the horizontal holdtype for single Joy-Cons. Set this to <false> for vertical holdtype. Input treats these two modes as mutually exclusive (come talk to us if you need to be able to swap at runtime)|
+
+&nbsp;
+
+## Icons
+
+`__input_config_icons()` holds a big struct that describes how specific binding for specific [types of gamepad](Functions-(Gamepad)?id=input_gamepad_get_typegamepadindex) should be displayed when using [`input_binding_get_icon()`](Functions-(Binding-Access)?id=input_binding_get_iconbinding-playerindex). This script never needs to be directly called in your code, but the script and the struct it contains must be present in a project for Input to work.
+
+?> You should edit this script to customise Input for your own purposes.
