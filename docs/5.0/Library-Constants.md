@@ -6,7 +6,7 @@ Input has a number of macros available for your use. Unlike macros used for conf
  
 ## Sources
 
-The following constants allow you to reference specific [input sources](Input-Sources). These constants are used by and returned from the various [source functions]().
+The following constants allow you to reference specific [input sources](Input-Sources). These constants are used by and returned from the various [source functions](Functions-(Sources)).
 
 |Name                |Purpose                                                                                                                                                                                                                                                           |
 |--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
