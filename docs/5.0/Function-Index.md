@@ -227,7 +227,7 @@
 - [`input_gamepad_get_description(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_get_descriptiongamepadindex)
 - [`input_gamepad_get_type(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_get_typegamepadindex)
 - [`input_gamepad_get_dpad_style(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_get_dpad_stylegamepadindex)
-- [`input_gamepad_gamepad_get_map(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_gamepad_get_mapgamepadindex)
+- [`input_gamepad_get_map(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_get_mapgamepadindex)
 - [`input_gamepad_constant_get_name(constant)`](Functions-(Gamepad)#input_gamepad_constant_get_nameconstant)
 - [`input_gamepads_get_status()`](Functions-(Gamepad)#input_gamepads_get_status)
 
