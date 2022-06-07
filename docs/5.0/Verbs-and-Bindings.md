@@ -57,7 +57,7 @@ INPUT_DEFAULT_PROFILES = {
 
 In the above struct we've defined a profile called `keyboard_and_mouse` and we've set up three verbs, `left`, `right`, and `jump`. This example presumes Input has been imported using its default configuration: `INPUT_AUTO_PROFILE_FOR_KEYBOARD` is set to `"keyboard_and_mouse"` and `INPUT_STARTING_SOURCE_MODE` is set to `INPUT_SOURCE_MODE.HOTSWAP`. This ensure that when your game starts, Input will automatically choose the `keyboard_and_mouse` profile (which we've just defined) whenever the player starts pressing keys on the keyboard.
 
-?> Automatically switching between [input source](Input-Source) is called "hotswapping" and is a native feature for Input. You can turn this feature off if you'd like by calling [`input_source_mode_set()`](Functions-(Sources)?id=input_source_mode_setmode) with a different [source mode](Input-Sources).
+?> Automatically switching between [input source](Input-Sources) is called "hotswapping" and is a native feature for Input. You can turn this feature off if you'd like by calling [`input_source_mode_set()`](Functions-(Sources)?id=input_source_mode_setmode) with a different [source mode](Input-Sources).
 
 Now that we've created a default profile for keyboard usage, we can insert some verbs into our player object.
 
