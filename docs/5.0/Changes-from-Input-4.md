@@ -4,12 +4,12 @@
 
 ## New Features
 
-- New logo!!
+- New logo!
 - Defining default bindings is now way clearer using [`INPUT_DEFAULT_PROFILES`](Verbs-and-Bindings?id=example-of-use)
 - Binding [profiles](Profiles)
-- Accessibility features, including [momentary toggle](Functions-(Accessibility)) behaviour
-- Rebuilt the native cross-platform and device-agnostic [cursor](Functions-(Cursor)) (it's back!)
 - [Verb groups](Verbs-and-Bindings?id=verb-groups)
+- Accessibility features, including [momentary toggle](Functions-(Accessibility)) behaviour
+- The native cross-platform and device-agnostic [cursor](Functions-(Cursor)) is back from the dead!
 - [Chords and combos](Functions-(Extended-Verbs))
 - Easier hotswapping and multiplayer source assignment via [source modes](Input-Sources?id=source-modes)
 - Single player [mixed input](Input-Sources?id=input_source_modemixed) and [multidevice modes](Input-Sources?id=input_source_modemultidevice)
