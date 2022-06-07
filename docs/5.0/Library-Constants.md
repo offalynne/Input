@@ -97,7 +97,7 @@ GameMaker is missing a few keyboard characters from its set of native constants.
 |`vk_numlock`   |`vk_semicolon`|
 |`vk_comma`     |`vk_backtick` |
 |`vk_lbracket`  |`vk_rbracket` |
-|vk_fslash`     |`vk_bslash`   |
+|`vk_fslash`    |`vk_bslash`   |
 |`vk_equals`    |`vk_hyphen`   |
 |`vk_apostrophe`|`vk_period`   |
 
