@@ -44,15 +44,17 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 
 ?> You should edit this script to customise Input for your own purposes.
 
-|Name                           |Typical Value|Purpose                                                                                                                                              |
-|-------------------------------|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
-|`INPUT_REPEAT_DEFAULT_DELAY`   |`10`         |Default time between re-triggers for [`input_check_repeat()`](Functions-(Checkers)#input_check_repeatverb-playerindex-delay-predelay)                |
-|`INPUT_REPEAT_DEFAULT_PREDELAY`|`30`         |Default time before the first re-trigger for [`input_check_repeat()`](Functions-(Checkers)#input_check_repeatverb-playerindex-delay-predelay)        |
-|`INPUT_LONG_DELAY`             |`10`         |Time before long-press functions are activated. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`                |
-|`INPUT_DOUBLE_DELAY`           |`12`         |Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`|
-|`INPUT_CHORD_DEFAULT_TIME`     |`4`          |Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`|
-|`INPUT_2D_CLAMP`               |`true`       |Whether to clamp 2D input to a maximum distance of 1 unit                                                                                            |
-|`INPUT_VERB_GROUPS`            |             |This macro contains the struct that defines verb collision groups. Please see the [Verbs and Bindings](Verbs-and-Bindings) page for more information |
+|Name                             |Typical Value|Purpose                                                                                                                                              |
+|---------------------------------|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+|`INPUT_VERB_GROUPS`              |             |This macro contains the struct that defines verb collision groups. Please see the [Verbs and Bindings](Verbs-and-Bindings) page for more information |
+|`INPUT_REPEAT_DEFAULT_DELAY`     |`10`         |Default time between re-triggers for [`input_check_repeat()`](Functions-(Checkers)#input_check_repeatverb-playerindex-delay-predelay)                |
+|`INPUT_REPEAT_DEFAULT_PREDELAY`  |`30`         |Default time before the first re-trigger for [`input_check_repeat()`](Functions-(Checkers)#input_check_repeatverb-playerindex-delay-predelay)        |
+|`INPUT_LONG_DELAY`               |`10`         |Time before long-press functions are activated. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`                |
+|`INPUT_DOUBLE_DELAY`             |`12`         |Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`|
+|`INPUT_CHORD_DEFAULT_TIME`       |`4`          |Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`|
+|`INPUT_2D_CLAMP`                 |`true`       |Whether to clamp 2D input to a maximum distance of 1 unit                                                                                            |
+|`INPUT_2D_XY_AXIS_BIAS`          |`0.0`        |The amount of bias for 2D checkers to prefer straight lines along the x- and y-axes. This makes it easier for the player to input exactly horizontal and exactly vertical movement. Value should be from 0 to 1. Higher values make the biasing behaviour stronger|
+|`INPUT_2D_XY_AXIS_BIAS_DIAGONALS`|`true`       |Whether the axis bias (see above) should be 8-directional. If set to `false`, 2D checkers will only lock to north/east/south/west directions         |
 
 &nbsp;
 
