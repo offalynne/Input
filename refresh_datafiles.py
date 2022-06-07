@@ -87,6 +87,7 @@ DATA_SOURCES = {
     },
 
     "LABELS": {
+        "deprecated": True,
         "datafile": "buttonlabels.csv",
         "sources": {
             "Gamepad button labels": {
@@ -96,6 +97,7 @@ DATA_SOURCES = {
     },
 
     "COLORS": {
+        "deprecated": True,
         "datafile": "buttoncolors.csv",
         "sources": { 
             "Gamepad button colors": {
@@ -135,8 +137,16 @@ for file in DATA_SOURCES:
 
     # index sources
     for source in sources:
-        source_index = data_index.get("sources").get(source)
 
+        # ignore deprecated sources
+        if data_index.get("deprecated") and not os.path.exists("datafiles.bak/" + filename):
+            print("\tSkipping " + source + "…")
+            working_handle.close()
+            os.remove(working_path)
+            continue
+
+        # log source
+        source_index = data_index.get("sources").get(source)
         print("\tLoading " + source + "…")
 
         # load source content
