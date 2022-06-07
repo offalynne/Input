@@ -25,11 +25,11 @@ DATA_SOURCES = {
 
             "SDL2 typelist": {
 
-                "source": github_urlpath + "libsdl-org/SDL/master/src/joystick/controller_type.h",
+                "source": github_urlpath + "libsdl-org/SDL/master/src/joystick/controller_type.c",
                 "license": github_urlpath + "libsdl-org/SDL/main/LICENSE.txt",
-                "trim before": "k_eControllerType_LastController",
-                "trim after": "k_eControllerType_UnknownSteamController",
-                "match category": "(?<=k_eControllerType_)(.*)(?= = )",
+                "trim before": "GetControllerTypeOverride",
+                "trim after": "ControllerDescription_t",
+                "match category": "(?<=k_eControllerType_)(.*)(?=\,\ N)",
                 "match id": "MAKE_CONTROLLER_ID\((.*),(.*)\),k_eControllerType_" + marker_id + ","
             },
 
@@ -87,6 +87,7 @@ DATA_SOURCES = {
     },
 
     "LABELS": {
+        "deprecated": True,
         "datafile": "buttonlabels.csv",
         "sources": {
             "Gamepad button labels": {
@@ -96,6 +97,7 @@ DATA_SOURCES = {
     },
 
     "COLORS": {
+        "deprecated": True,
         "datafile": "buttoncolors.csv",
         "sources": { 
             "Gamepad button colors": {
@@ -135,8 +137,16 @@ for file in DATA_SOURCES:
 
     # index sources
     for source in sources:
-        source_index = data_index.get("sources").get(source)
 
+        # ignore deprecated sources
+        if data_index.get("deprecated") and not os.path.exists("datafiles.bak/" + filename):
+            print("\tSkipping " + source + "…")
+            working_handle.close()
+            os.remove(working_path)
+            continue
+
+        # log source
+        source_index = data_index.get("sources").get(source)
         print("\tLoading " + source + "…")
 
         # load source content
