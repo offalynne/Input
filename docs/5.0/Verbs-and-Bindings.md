@@ -24,9 +24,11 @@ A "binding" is a piece of logic that ties a physical input on an input source (k
 |Gamepad button         |[`input_binding_gamepad_button(button)`](Functions-(Binding-Creators)?id=input_binding_gamepad_buttonbutton)           |
 |Gamepad axis           |[`input_binding_gamepad_axis(axis, negative)`](Functions-(Binding-Creators)?id=input_binding_gamepad_axisaxis-negative)|
 
-?> Aside from [binding creator functions](Functions-(Binding-Creators)), bindings can also be created by listening for player input using [`input_binding_scan_tick()`](Functions-(Binding-Creators)?id=input_binding_scan_ticksource-playerindex).
+?> Aside from [binding creator functions](Functions-(Binding-Creators)), bindings can also be created by listening for player input using [the binding scan feature](Functions-(Binding-Creators)?id=input_binding_scan_startsuccesscallback-failurecallback-sourcefilter-playerindex).
 
-Bindings are arranged into groups called ["profiles"](Profiles). Profiles allow you to bundle bindings together, typically so that you can change what bindings are active depending on what [input source](Input-Sources) the player is using, but profiles are also useful for providing extra flexibility for fighting games. You may also want to create different profiles to store bindings for different gamepad types.
+Bindings are arranged into groups called ["profiles"](Profiles). Profiles allow you to bundle bindings together, typically so that you can change what bindings are active depending on what [input source](Input-Sources) the player is using, but profiles are also useful for providing extra flexibility for genres such as fighting games. You may also want to create different profiles to store bindings for different gamepad types.
+
+Players will inherit default profiles set via [`INPUT_DEFAULT_PROFILES`](Profiles?id=defining-default-profiles). Bindings in a player's profile can be changed at will, and one player's bindings do not necessarily need to be the same as another player's. You can copy profiles between players using [`input_profile_copy()`](Functions-(Exporting-and-Importing)?id=input_profile_copyplayerindexsrc-profilenamesrc-playerindexdst-profilenamedst).
 
 Profiles allow you to define multiple bindings per verb. You can think of alternate bindings as binding "slots" for each verb. These are called "alternates". Alternates are used, for example, to allow both WASD and arrow keys, or both dpad and thumbstick to simultaneously control player movement. Any verb can have alternates created for it, though there is a maximum number of alternates you can have per verb per profile (this is defined by the [`INPUT_MAX_ALTERNATE_BINDINGS`](Configuration?id=profiles-and-bindings) macro).
 
@@ -36,7 +38,7 @@ Let's demonstrate these concepts with a practical example. Let's make a basic pl
 
 We start by defining a default profile. This serves two purposes - firstly, it lets Input know what verbs we're expecting to use. Secondly, it allows us to create some bindings so that Input will know how to interpret user input straight away.
 
-?> When you import Input it’ll come with some default controls already set up. To explain this clearer, we must delete everything that’s already in `INPUT_DEFAULT_PROFILES` and start fresh.
+?> When you import Input it’ll come with some default controls already set up. To explain this clearer, we must delete everything that’s already in `INPUT_DEFAULT_PROFILES` and start fresh. You may also need to delete the contents of [`INPUT_VERB_GROUPS`](Verbs-and-Bindings?id=verb-groups).
 
 You'll find `INPUT_DEFAULT_PROFILES` in [`__input_config_profiles_and_bindings()`](Configuration?id=profiles-and-bindings). This is where we'll set up our default profile.
 
