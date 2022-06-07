@@ -60,16 +60,6 @@
 
 &nbsp;
 
-## `input_gamepad_disconnected()`
-
-*Returns:* Boolean, whether any gamepad has been momentarily disconnected
-
-|Name  |Datatype  |Purpose  |
-|------|----------|---------|
-|None  | |
-
-&nbsp;
-
 ## `input_gamepad_get_button_color(gamepadIndex, GMconstant)`
 
 *Returns:* String, the gamepad input color
