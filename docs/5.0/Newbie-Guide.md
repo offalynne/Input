@@ -92,4 +92,8 @@ Just like the keyboard binding functions, gamepad binding functions use [normal 
 
 Input by default will start scanning for gamepad input when your game boots up; if the player uses the keyboard then Input will switch over to using the `keyboard_and_mouse` profile, if the player uses a gamepad then Input will switch over to using the `gamepad` profile (the names of these profiles can be controlled by changing some macros).
 
-Et voilà! This system is also great for rebinding controls, handling multiplayer, and more. Take a deeper dive into the documentation for details on the features of Input, and feel free to [join us for discussion on Discord](https://discord.gg/8krYCqr).
+&nbsp;
+
+## Step 4: Next Steps
+
+This is only scratching the surface of what Input is capable of. Further examples can be found in the project in the [main GitHub repository](https://github.com/JujuAdams/Input), including control rebinding and multiplayer. You should also take a deeper dive into the documentation for details on the features of Input, but if you get lost or want a quick answer, then we invite you to [join us on Discord](https://discord.gg/8krYCqr).
