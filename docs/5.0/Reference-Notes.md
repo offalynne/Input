@@ -13,14 +13,6 @@ The following pages include general information about Input's underlying systems
 - [Game Controller Blacklist](Controller-Mapping#controller-blacklist)
 - [Updating Dependencies](Controller-Mapping#updating-dependencies)
 
-### [Gamepad Button Labels](Gamepad-Button-Labels)
-*Labels for gamepad binding names per device type*
-- [Xbox and Xbox-like](Gamepad-Button-Labels#xbox-and-xbox-like)
-- [PlayStation](Gamepad-Button-Labels#playstation)
-- [Switch](Gamepad-Button-Labels#switch)
-- [PS4 and PS5 Platforms](Gamepad-Button-Labels#dualshock-4-and-dualsense-on-ps4-and-ps5)
-- [Legacy](Gamepad-Button-Labels#legacy)
-
 ### [Gamepad Troubleshooting](Gamepad-Troubleshooting)
 *Notes on desktop and mobile gamepad compatibility*
 - [Testing Apps](Gamepad-Troubleshooting#testing-apps)
