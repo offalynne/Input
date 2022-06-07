@@ -212,21 +212,6 @@ function __input_validate_macros()
         __input_error("INPUT_BLACKLIST_PATH must be a string or <undefined>");
     }
     
-    if (!is_string(INPUT_BUTTON_LABEL_PATH) && !is_undefined(INPUT_BUTTON_LABEL_PATH))
-    {
-        __input_error("INPUT_BUTTON_LABEL_PATH must be a string or <undefined>");
-    }
-    
-    if (!is_string(INPUT_BUTTON_COLOR_PATH) && !is_undefined(INPUT_BUTTON_COLOR_PATH))
-    {
-        __input_error("INPUT_BUTTON_COLOR_PATH must be a string or <undefined>");
-    }
-    
-    if (!is_bool(INPUT_LOAD_BUTTON_LABELS_AND_COLORS))
-    {
-        __input_error("INPUT_LOAD_BUTTON_LABELS_AND_COLORS must be either <true> or <false>");
-    }
-    
     #endregion
     
     

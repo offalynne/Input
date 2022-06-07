@@ -22,10 +22,3 @@
 #macro INPUT_SDL2_DATABASE_PATH    "sdl2.txt"                //Path to the SDL2 database to read gamepad remapping definitions from
 #macro INPUT_CONTROLLER_TYPE_PATH  "controllertypes.csv"     //Path to the controller type database to read gamepad types from
 #macro INPUT_BLACKLIST_PATH        "controllerblacklist.csv" //Path to the controller blacklist database to read from
-#macro INPUT_BUTTON_LABEL_PATH     "buttonlabels.csv"        //Path to the button label database to read from
-#macro INPUT_BUTTON_COLOR_PATH     "buttoncolors.csv"        //Path to the button color database to read from
-
-//Whether to load external gamepad button label and color databases
-//Setting this macro to <false> will cause input_gamepad_get_button_label() and
-//input_gamepad_get_button_color() to always return "unknown"
-#macro INPUT_LOAD_BUTTON_LABELS_AND_COLORS  true

@@ -367,36 +367,6 @@ function __input_initialize()
     }
     
     #endregion
-    
-    
-    
-    #region Gamepad button labels and colors
-    
-    global.__input_button_label_dictionary = {};
-    global.__input_button_color_dictionary = {};
-    
-    if (INPUT_LOAD_BUTTON_LABELS_AND_COLORS)
-    {
-        if (file_exists(INPUT_BUTTON_LABEL_PATH))
-        {
-            __input_load_button_label_csv(INPUT_BUTTON_LABEL_PATH);
-        }
-        else
-        {
-            __input_trace("Warning! \"", INPUT_BUTTON_LABEL_PATH, "\" not found in Included Files");
-        }
-        
-        if (file_exists(INPUT_BUTTON_COLOR_PATH))
-        {
-            __input_load_button_color_csv(INPUT_BUTTON_COLOR_PATH);
-        }
-        else
-        {
-            __input_trace("Warning! \"", INPUT_BUTTON_COLOR_PATH, "\" not found in Included Files");
-        }
-    }
-    
-    #endregion
 
 
 

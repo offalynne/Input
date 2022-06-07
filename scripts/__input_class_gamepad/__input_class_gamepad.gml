@@ -114,26 +114,6 @@ function __input_class_gamepad(_index) constructor
     }
     
     /// @param GMconstant
-    static get_button_label = function(_gm)
-    {
-        if (!custom_mapping) return undefined;
-        
-        var _mapping = mapping_gm_to_raw[$ _gm];
-        if (_mapping == undefined) return undefined;
-        return _mapping.__label;
-    }
-    
-    /// @param GMconstant
-    static get_button_color = function(_gm)
-    {
-        if (!custom_mapping) return undefined;
-        
-        var _mapping = mapping_gm_to_raw[$ _gm];
-        if (_mapping == undefined) return undefined;
-        return _mapping.color;
-    }
-    
-    /// @param GMconstant
     /// @param rawIndex
     /// @param rawMappingType
     /// @param SDLname
@@ -176,17 +156,8 @@ function __input_class_gamepad(_index) constructor
             if (_mapping_type == __INPUT_MAPPING.BUTTON) _raw_index += 17;
         }
         
-        //Discover the button label/color
-        var _label = undefined;
-        var _label_struct = global.__input_button_label_dictionary[$ raw_type];
-        if (is_struct(_label_struct)) _label = _label_struct[$ _sdl_name];
-        
-        var _color = undefined;
-        var _color_struct = global.__input_button_color_dictionary[$ raw_type];
-        if (is_struct(_color_struct)) _color = _color_struct[$ _sdl_name];
-        
         //Create a new mapping. It holds button state and definition information
-        var _mapping = new __input_class_gamepad_mapping(_gm, _raw_index, _mapping_type, _sdl_name, _label, _color);
+        var _mapping = new __input_class_gamepad_mapping(_gm, _raw_index, _mapping_type, _sdl_name);
         
         mapping_gm_to_raw[$ _gm] = _mapping;
         if (_raw_index != undefined) mapping_raw_to_gm[$ _raw_index] = _mapping; //_raw_index can be undefined when setting up hat-on-axis

@@ -2,17 +2,13 @@
 /// @param rawIndex
 /// @param rawMappingType
 /// @param SDLname
-/// @param label
-/// @param color
 
-function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name, _label, _color) constructor
+function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
 {
     gm       = _gm;
     raw      = _raw;
     type     = _type;
     sdl_name = _sdl_name;
-    __label  = _label;
-    color    = _color;
             
     invert           = false;
     clamp_negative   = false;
