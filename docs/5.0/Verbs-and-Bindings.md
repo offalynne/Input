@@ -38,7 +38,7 @@ Let's demonstrate these concepts with a practical example. Let's make a basic pl
 
 We start by defining a default profile. This serves two purposes - firstly, it lets Input know what verbs we're expecting to use. Secondly, it allows us to create some bindings so that Input will know how to interpret user input straight away.
 
-?> When you import Input it’ll come with some default controls already set up. To explain this clearer, we must delete everything that’s already in `INPUT_DEFAULT_PROFILES` and start fresh. You may also need to delete the contents of [`INPUT_VERB_GROUPS`](Verbs-and-Bindings?id=verb-groups).
+?> When you import Input it’ll come with some default controls already set up. To explain this clearer, we must delete everything that’s already in `INPUT_DEFAULT_PROFILES` and start fresh. You may also need to delete the contents of [`INPUT_VERB_GROUPS`](Configuration?id=verbs).
 
 You'll find `INPUT_DEFAULT_PROFILES` in [`__input_config_profiles_and_bindings()`](Configuration?id=profiles-and-bindings). This is where we'll set up our default profile.
 
