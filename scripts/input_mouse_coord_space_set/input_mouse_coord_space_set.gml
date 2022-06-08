@@ -1,3 +1,4 @@
+/// @desc  Sets the coordinate space for the mouse to operate in
 /// @param coordSpace
 
 function input_mouse_coord_space_set(_coord_space)

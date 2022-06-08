@@ -1,3 +1,4 @@
+/// @desc  Returns the gamepad type as a string (after SDL remapping)s
 /// @param gamepadIndex
 
 function input_gamepad_get_type(_index)

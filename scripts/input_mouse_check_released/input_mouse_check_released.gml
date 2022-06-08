@@ -1,3 +1,4 @@
+/// @desc  Returns whether the given mouse button is newly deactivated this frame.
 /// @param binding
 function input_mouse_check_released(_binding)
 {    
