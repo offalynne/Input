@@ -43,10 +43,21 @@
 
 *Returns:* Real, the analogue value of the input (after applying SDL axis remapping)
 
-|Name          |Datatype                  |Purpose                                               |
-|--------------|--------------------------|------------------------------------------------------|
-|`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
+|Name          |Datatype|Purpose                                               |
+|--------------|--------|------------------------------------------------------|
+|`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
 |`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html). What physical input this actually checks is determined by Input's own SDL remapping system|
+
+&nbsp;
+
+## `input_gamepad_is_axis(gamepadIndex, GMconstant)`
+
+*Returns:* Boolean, if the given `gp_*` constant is mapped as an analogue input
+
+|Name          |Datatype|Purpose                                               |
+|--------------|--------|-------------------------------------------------------|
+|`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
+|`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
 
 &nbsp;
 
