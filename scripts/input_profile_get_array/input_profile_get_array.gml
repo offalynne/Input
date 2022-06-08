@@ -1,4 +1,5 @@
-/// @param [playerIndex=0]
+/// @desc    Returns the profiles that have been created for the player, including default profiles
+/// @param   [playerIndex=0]
 
 function input_profile_get_array(_player_index = 0)
 {

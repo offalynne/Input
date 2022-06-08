@@ -1,5 +1,6 @@
-/// @param profileName
-/// @param [playerIndex=0]
+/// @desc    Sets the currently active profile for the player
+/// @param   profileName
+/// @param   [playerIndex=0]
 
 function input_profile_set(_profile_name, _player_index = 0)
 {
