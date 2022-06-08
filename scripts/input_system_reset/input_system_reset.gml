@@ -1,3 +1,5 @@
+/// @desc Resets accessibility and profile data for all players
+
 function input_system_reset()
 {
     var _p = 0;
