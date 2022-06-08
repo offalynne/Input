@@ -1,3 +1,4 @@
+/// @desc  Returns whether the given mouse button is currently activated.
 /// @param binding
 function input_mouse_check(_binding)
 { 
