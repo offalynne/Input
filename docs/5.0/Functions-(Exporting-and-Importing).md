@@ -80,7 +80,7 @@ It is recommended to only use bindings written on the same device as keyboard sc
 |`stringOrStruct`|string or struct|JSON returned by [`input_player_export()`](Functions-(Exporting-and-Importing)#input_player_exportplayerindex-outputstring-prettify)|
 |`[playerIndex]` |integer         |Player to target. If not specified, player 0 is used                                                                                |
 
-Reads JSON, either as a string or a struct, that contains player data (profiles, bindings, and axis thresholds). Such a JSON should be created using [`input_player_export()`](Functions-(Exporting-and-Importing)#input_system_exportoutputstring-prettify).
+Reads JSON, either as a string or a struct, that contains player data (profiles, bindings, and axis thresholds). Such a JSON should be created using [`input_player_export()`](Functions-(Exporting-and-Importing)#input_player_exportplayerindex-outputstring-prettify).
 
 All player data is fully reset before loading in the new data - as such, this function **replaces** player data rather than adding to it.
 
@@ -109,7 +109,7 @@ Duplicates one player's profiles, bindings, and axis thresholds and copies them 
 |`[outputString]`|boolean |Whether to return a string from this function. If set to `false`, JSON is returned instead as a struct. If not specified, a string is returned                                     |
 |`[prettify]`    |boolean |Whether to format the output string so that it's easier for a human to read. If not specified, the string is not prettified. This argument is only relevant when returning a string|
 
-Outputs a string (or struct) that contains data that contains profile, binding, and axis threshold data for the given player. This can then be saved to a file etc. so that custom bindings can be restored in the future.
+Outputs a string (or struct) that contains data that contains binding and axis threshold data for the given profile. This can then be saved to a file etc. so that custom bindings for a specific profile can be restored in the future.
 
 It is recommended to only use bindings written on the same device as keyboard scancodes differ across device layouts and platforms.
 
@@ -124,7 +124,7 @@ It is recommended to only use bindings written on the same device as keyboard sc
 |`stringOrStruct`|string or struct|JSON returned by [`input_player_export()`](Functions-(Exporting-and-Importing)#input_player_exportplayerindex-outputstring-prettify)|
 |`[playerIndex]` |integer         |Player to target. If not specified, player 0 is used                                                                                |
 
-Reads JSON, either as a string or a struct, that contains player data (profiles, bindings, and axis thresholds). Such a JSON should be created using [`input_player_export()`](Functions-(Exporting-and-Importing)#input_system_exportoutputstring-prettify).
+Reads JSON, either as a string or a struct, that contains profile data (bindings and axis thresholds). Such a JSON should be created using [`input_profile_export()`](Functions-(Exporting-and-Importing)#input_profile_exportprofilename-playerindex-outputstring-prettify).
 
 All player data is fully reset before loading in the new data - as such, this function **replaces** player data rather than adding to it.
 
