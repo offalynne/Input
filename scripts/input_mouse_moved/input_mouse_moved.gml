@@ -1,4 +1,4 @@
-/// @desc Returns whether the mouse has moved between frames
+/// @desc    Returns whether the mouse has moved between frames
 
 function input_mouse_moved()
 {

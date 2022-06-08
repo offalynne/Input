@@ -1,5 +1,6 @@
-/// @desc  Returns whether the given mouse button is currently activated.
-/// @param binding
+/// @desc    Returns whether the given mouse button is currently activated.
+/// @param   binding
+
 function input_mouse_check(_binding)
 { 
     if (!global.__input_mouse_allowed || global.__input_mouse_blocked)

@@ -1,4 +1,4 @@
-/// @desc Resets accessibility and profile data for all players
+/// @desc    Resets accessibility and profile data for all players
 
 function input_system_reset()
 {

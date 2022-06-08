@@ -1,5 +1,5 @@
-/// @desc  Returns an array containing the buttons/axes mapped for the current gamepad (as ints)
-/// @param index
+/// @desc    Returns an array containing the buttons/axes mapped for the current gamepad (as ints)
+/// @param   index
 
 function input_gamepad_get_map(_index)
 {

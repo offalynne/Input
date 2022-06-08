@@ -1,6 +1,6 @@
-/// @desc  Duplicates one player's bindings, profiles and axis thresholds and copies them to another
-/// @param playerIndexSrc
-/// @param playerIndexDst
+/// @desc    Duplicates one player's bindings, profiles and axis thresholds and copies them to another
+/// @param   playerIndexSrc
+/// @param   playerIndexDst
 
 function input_player_copy(_player_index_src, _player_index_dst)
 {

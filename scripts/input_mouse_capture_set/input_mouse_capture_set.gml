@@ -1,6 +1,6 @@
-/// @desc  Whether to capture the mouse in the game window, and its movement speed for Input's built-in mouse tracking.
-/// @param state
-/// @param [sensitivity=1]
+/// @desc    Whether to capture the mouse in the game window, and its movement speed for Input's built-in mouse tracking
+/// @param   state
+/// @param   [sensitivity=1]
 
 function input_mouse_capture_set(_state, _sensitivity = 1)
 {

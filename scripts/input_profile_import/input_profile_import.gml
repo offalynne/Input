@@ -1,7 +1,7 @@
-/// @desc  ???
-/// @param string
-/// @param profileName
-/// @param [playerIndex=0]
+/// @desc    Reads a JSON (string or struct) that contains profile data and replaces the given profile's data with it
+/// @param   string
+/// @param   profileName
+/// @param   [playerIndex=0]
 
 function input_profile_import(_string, _profile_name, _player_index = 0)
 {

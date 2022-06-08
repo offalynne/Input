@@ -1,6 +1,6 @@
-/// @desc  Returns the analogue value of the given input (after applying SDL axis remapping)
-/// @param gamepadIndex
-/// @param GMconstant
+/// @desc    Returns the analogue value of the given input (after applying SDL axis remapping)
+/// @param   gamepadIndex
+/// @param   GMconstant
 
 function input_gamepad_value(_index, _gm)
 {

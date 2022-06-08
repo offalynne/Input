@@ -1,4 +1,4 @@
-/// @desc Returns whether the mouse is being captured in the game window.
+/// @desc    Returns whether the mouse is being captured in the game window
 
 function input_cursor_capture_mouse_get()
 {

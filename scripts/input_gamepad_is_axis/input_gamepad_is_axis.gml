@@ -1,6 +1,6 @@
-/// @desc  Returns whether the given gp_* constant is mapped as an analogue input.
-/// @param gamepadIndex
-/// @param GMconstant
+/// @desc    Returns whether the given gp_* constant is mapped as an analogue input
+/// @param   gamepadIndex
+/// @param   GMconstant
 
 function input_gamepad_is_axis(_index, _gm)
 {

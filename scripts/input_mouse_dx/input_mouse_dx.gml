@@ -1,4 +1,4 @@
-/// @desc Returns how far the mouse has moved on the x-axis between frames
+/// @desc    Returns how far the mouse has moved on the x-axis between frames
 
 function input_mouse_dx()
 {
