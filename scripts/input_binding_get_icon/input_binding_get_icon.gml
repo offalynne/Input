@@ -1,5 +1,6 @@
-/// @param binding
-/// @param [playerIndex=0]
+/// @desc    Returns the icon defined in __input_config_icons() for the given binding, taking into account the player's currently assigned source(s)
+/// @param   binding
+/// @param   [playerIndex=0]
 
 function input_binding_get_icon(_binding, _player_index = 0)
 {

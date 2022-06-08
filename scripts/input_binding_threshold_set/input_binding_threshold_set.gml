@@ -1,6 +1,7 @@
-/// @param binding
-/// @param min
-/// @param max
+/// @desc    Sets the specific analogue activation threshold for this binding
+/// @param   binding
+/// @param   min
+/// @param   max
 
 function input_binding_threshold_set(_binding, _min, _max)
 {

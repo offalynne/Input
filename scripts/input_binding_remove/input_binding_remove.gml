@@ -1,7 +1,8 @@
-/// @param verb
-/// @param [playerIndex=0]
-/// @param [alternate=0]
-/// @param [profileName]
+/// @desc    Removes a binding from the player. Be careful with this function!
+/// @param   verb
+/// @param   [playerIndex=0]
+/// @param   [alternate=0]
+/// @param   [profileName]
 
 function input_binding_remove(_verb, _player_index = 0, _alternate = 0, _profile_name = undefined)
 {

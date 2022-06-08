@@ -1,4 +1,6 @@
-/// @param binding
+/// @desc    Returns the target gamepad index for the binding. This is only relevant in the MULTIDEVICE source mode
+///          If no target gamepad has been set for the binding then this function returns <undefined>
+/// @param   binding
 
 function input_binding_gamepad_get(_binding)
 {

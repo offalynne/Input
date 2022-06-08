@@ -1,4 +1,6 @@
-/// @param binding
+/// @desc    Returns a generic, human-readable name for the binding
+///          For a list of return values, please see https://www.jujuadams.com/Input/#/latest/Binding-Names
+/// @param   binding
 
 function input_binding_get_name(_binding)
 {

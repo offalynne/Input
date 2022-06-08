@@ -1,5 +1,6 @@
-/// @param binding
-/// @param gamepadIndex
+/// @desc    Sets the target gamepad index for the binding. This is only relevant in the MULTIDEVICE source mode
+/// @param   binding
+/// @param   gamepadIndex
 
 function input_binding_gamepad_set(_binding, _gamepad_index)
 {

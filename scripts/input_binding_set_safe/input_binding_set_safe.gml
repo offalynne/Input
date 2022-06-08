@@ -1,8 +1,17 @@
-/// @param verb
-/// @param binding
-/// @param [playerIndex]
-/// @param [alternate=0]
-/// @param [profileName]
+/// @desc    Sets the binding for the given verb. The alternate index parameter can be used to
+///          set multiple parallel inputs for one verb. If no profile name is provided, the
+///          current profile is used.
+///          
+///          This function, in contrast to input_binding_set(), will try to automatically
+///          resolve conflicts based on verb groups defined in INPUT_VERB_GROUPS. This function
+///          is effective for simple control schemes but may fail in more complex situations;
+///          in these cases, you’ll need to handle conflict resolution yourself.
+///          
+/// @param   verb
+/// @param   binding
+/// @param   [playerIndex=0]
+/// @param   [alternate=0]
+/// @param   [profileName]
 
 function input_binding_set_safe(_verb_name, _binding, _player_index = 0, _alternate = 0, _profile_name = undefined)
 {
