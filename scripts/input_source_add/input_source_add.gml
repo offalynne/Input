@@ -1,5 +1,7 @@
-/// @param source
-/// @param [playerIndex=0]
+/// @desc    Assigns a source to a player. All other players using the source will have it unassigned
+///          If the player had any other sources assigned then they will NOT be unassigned
+/// @param   source
+/// @param   [playerIndex=0]
 
 function input_source_add(_source, _player_index = 0)
 {

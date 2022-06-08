@@ -1,3 +1,5 @@
+/// @desc    Returns a source that has presented new input and is unassigned, otherwise <undefined>
+
 function input_source_detect_new()
 {
     //Check gamepad input before keyboard input to correctly handle Android duplicating button presses with keyboard presses

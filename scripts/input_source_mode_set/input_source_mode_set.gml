@@ -1,4 +1,10 @@
-/// @param mode
+/// @desc    Sets the source mode. The parameter for this function should be a member of the INPUT_SOURCE_MODE enum:
+///              .FIXED
+///              .JOIN
+///              .HOTSWAP
+///              .MIXED
+///              .MULTIDEVICE
+/// @param   mode
 
 function input_source_mode_set(_mode)
 {

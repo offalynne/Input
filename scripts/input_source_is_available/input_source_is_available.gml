@@ -1,4 +1,5 @@
-/// @param source
+/// @desc    Returns if a source is available i.e. hasn't been assigned to a player yet
+/// @param   source
 
 function input_source_is_available(_source)
 {

@@ -1,6 +1,8 @@
-/// @param source
-/// @param [playerIndex=0]
-/// @param [autoProfile=true]
+/// @desc    Exclusively assigns a source to a player. All other players using the source will have it unassigned
+///          If the player had any other sources assigned then they will be unassigned
+/// @param   source
+/// @param   [playerIndex=0]
+/// @param   [autoProfile=true]
 
 function input_source_set(_source, _player_index = 0, _auto_profile = true)
 {
