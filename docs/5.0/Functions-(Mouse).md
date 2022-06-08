@@ -72,6 +72,16 @@ The struct returned by the function contains the following member variables:
 
 &nbsp;
 
+## `input_mouse_moved()`
+
+*Returns:* Boolean, whether the mouse has moved
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+&nbsp;
+
 ## `input_mouse_coord_space_set(coordSpace)`
 
 *Returns:* N/A (`undefined`)
