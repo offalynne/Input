@@ -38,6 +38,8 @@
 
 #macro __INPUT_HOLD_THRESHOLD  0.2 //Minimum value from an axis for that axis to be considered activated at the gamepad layer. This is *not* the same as min/max thresholds for players
 
+#macro __INPUT_RATE_LIMIT_DURATION  500 //In milliseconds
+
 //Valid keycode bounds
 #macro __INPUT_KEYCODE_MIN 8
 #macro __INPUT_KEYCODE_MAX 57343

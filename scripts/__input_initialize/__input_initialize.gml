@@ -60,7 +60,8 @@ function __input_initialize()
     //Accessibility state
     global.__input_toggle_momentary_dict  = {};
     global.__input_toggle_momentary_state = false;
-    global.__input_rate_limit = false;
+    global.__input_cooldown_dict          = {};
+    global.__input_cooldown_state         = false;
     
     //Windows tap-to-click tracking
     global.__input_tap_presses  = 0;

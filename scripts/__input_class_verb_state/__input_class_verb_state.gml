@@ -46,6 +46,7 @@ function __input_class_verb_state() constructor
     __toggle_state      = false;
     
     
+    
     static __clear = function()
     {
         previous_value = value;
@@ -81,6 +82,15 @@ function __input_class_verb_state() constructor
             //Overwrite the values we expose to the player with the toggle state
             value = __toggle_state;
             raw   = __toggle_state;
+        }
+        
+        if (global.__input_cooldown_state && (type == __INPUT_VERB_TYPE.__BASIC) && variable_struct_exists(global.__input_cooldown_dict, name))
+        {
+            if (_time < release_time + (INPUT_TIMER_MILLISECONDS? __INPUT_RATE_LIMIT_DURATION : ((__INPUT_RATE_LIMIT_DURATION/1000)*game_get_speed(gamespeed_fps))))
+            {
+                value = 0;
+                raw   = 0;
+            }
         }
         
         if (value > 0)

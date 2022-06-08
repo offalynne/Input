@@ -28,6 +28,7 @@ function input_system_import(_string)
         return;
     }
     
+    //Momentary toggle verbs
     global.__input_toggle_momentary_state = _json.accessibility.momentary_state;
     global.__input_toggle_momentary_dict = {};
     
@@ -42,6 +43,24 @@ function input_system_import(_string)
     repeat(array_length(_momentary_verb_array))
     {
         global.__input_toggle_momentary_dict[$ _momentary_verb_array[_i]] = true;
+        ++_i;
+    }
+    
+    //Cooldown verbs
+    global.__input_cooldown_state = _json.accessibility.cooldown_state;
+    global.__input_cooldown_dict = {};
+    
+    var _cooldown_verb_array = _json.accessibility.cooldown_verbs;
+    if (!is_array(_cooldown_verb_array))
+    {
+        __input_error("Cooldown verbs are corrupted");
+        return;
+    }
+    
+    var _i = 0;
+    repeat(array_length(_cooldown_verb_array))
+    {
+        global.__input_cooldown_dict[$ _cooldown_verb_array[_i]] = true;
         ++_i;
     }
     

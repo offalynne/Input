@@ -10,6 +10,8 @@ function input_system_export(_output_string = true, _prettify = false)
         accessibility: {
             momentary_state: global.__input_toggle_momentary_state,
             momentary_verbs: variable_struct_get_names(global.__input_toggle_momentary_dict),
+            cooldown_state:  global.__input_cooldown_state,
+            cooldown_verbs:  variable_struct_get_names(global.__input_cooldown_dict),
         },
         
         mouse: {
