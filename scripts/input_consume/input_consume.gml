@@ -1,5 +1,6 @@
-/// @param verb
-/// @param [playerIndex]
+/// @desc    Deactivates a verb until the button (or other physical input) is released and pressed again
+/// @param   verb
+/// @param   [playerIndex]
 
 function input_consume(_verb, _player_index = 0)
 {
