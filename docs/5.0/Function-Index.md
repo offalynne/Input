@@ -161,6 +161,10 @@
 - [`input_accessibility_global_toggle_get()`](Functions-(Accessibility)?id=input_accessibility_global_toggle_get)
 - [`input_accessibility_verb_toggle_set(verb, state)`](Functions-(Accessibility)?id=input_accessibility_verb_toggle_setverb-state)
 - [`input_accessibility_verb_toggle_get(verb)`](Functions-(Accessibility)?id=input_accessibility_verb_toggle_getverb)
+- [`input_accessibility_global_cooldown_set(state)`](Functions-(Accessibility)?id=input_accessibility_global_cooldown_setstate)
+- [`input_accessibility_global_cooldown_get()`](Functions-(Accessibility)?id=input_accessibility_global_cooldown_get)
+- [`input_accessibility_verb_cooldown_set(verb, state)`](Functions-(Accessibility)?id=input_accessibility_verb_cooldown_setverb-state)
+- [`input_accessibility_verb_cooldown_get(verb)`](Functions-(Accessibility)?id=input_accessibility_verb_cooldown_getverb)
 
 &nbsp;
 
