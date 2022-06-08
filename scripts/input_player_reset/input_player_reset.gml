@@ -1,3 +1,4 @@
+/// @desc  Clears all player data and resets to the defaults set up in INPUT_DEFAULT_PROFILES
 /// @param [playerIndex=0]
 
 function input_player_reset(_player_index = 0)
