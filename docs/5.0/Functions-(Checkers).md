@@ -177,8 +177,6 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 |`[playerIndex]`   |integer                   |Player to target. If not specified, player 0 is used                                                      |
 |`[mostRecent]` |boolean                      |Whether to prioritize recency in case of both negative and positive input. False if unspecified           |
 
-If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are currently active for the player.
-
 &nbsp;
 
 ## `input_value(verb, [playerIndex])`
