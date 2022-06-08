@@ -1,3 +1,5 @@
+/// @desc    Returns the multiplayer parameters set by input_multiplayer_params_set()
+
 function input_multiplayer_params_get()
 {
     __input_initialize();

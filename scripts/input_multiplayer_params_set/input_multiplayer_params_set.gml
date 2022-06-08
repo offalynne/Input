@@ -1,6 +1,7 @@
-/// @param min
-/// @param max
-/// @param [dropDown=true]
+/// @desc    Sets the multiplayer parameters, typically for use with the JOIN source mode
+/// @param   min
+/// @param   max
+/// @param   [dropDown=true]
 
 function input_multiplayer_params_set(_min, _max, _drop_down = true)
 {

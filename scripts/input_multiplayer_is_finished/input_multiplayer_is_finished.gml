@@ -1,3 +1,5 @@
+/// @desc    Returns whether enough players have connected for valid gameplay
+
 function input_multiplayer_is_finished()
 {
     __input_initialize();

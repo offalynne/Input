@@ -1,5 +1,6 @@
-/// @param [playerIndex=0]
-/// @param [binding]
+/// @desc    Returns the player’s gamepad’s type (after SDL remapping) as a string
+/// @param   [playerIndex=0]
+/// @param   [binding]
 
 function input_player_get_gamepad_type(_player_index = 0, _binding = undefined)
 {

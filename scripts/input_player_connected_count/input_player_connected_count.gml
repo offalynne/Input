@@ -1,3 +1,5 @@
+/// @desc    Returns he number of players with connected devices
+
 function input_player_connected_count()
 {
 	__input_initialize();
