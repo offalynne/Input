@@ -55,6 +55,7 @@
 057e,2008,CommunityLikeSwitch // Linux JoyConD
 11ec,a7e1,CommunityLikeSwitch // Switch Handheld
 1d79,0301,CommunityLikeSwitch // Wii Adapter
+0ae4,0702,CommunitySaturn // Taito Egret II Mini Controller
 0b49,0644,CommunitySaturn // ASCII Seamic
 0079,0011,CommunitySaturn // Retrolink Saturn/SNES
 289b,0005,CommunitySaturn // Raphnet Saturn
@@ -90,6 +91,7 @@ f000,0008,CommunitySaturn // RetroUSB Genesis
 16c0,0a99,CommunitySaturn // Retronic Adapter
 0ca3,0024,CommunitySaturn // Genesis Mini 3B
 0ca3,0025,CommunitySaturn // Genesis Mini 6B
+21f8,0019,CommunitySNES // Shogun Bros Chameleon X1
 289b,0056,CommunitySNES // Raphnet SNES
 289b,0057,CommunitySNES // Raphnet SNES
 f000,0003,CommunitySNES // RetroUSB SNES
