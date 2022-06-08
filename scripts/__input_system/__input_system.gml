@@ -11,11 +11,10 @@
 
 #macro INPUT_ICONS  global.__input_icons =
 
-#macro INPUT_KEYBOARD  global.__input_source_keyboard
-#macro INPUT_MOUSE     global.__input_source_mouse
-#macro INPUT_GAMEPAD   global.__input_source_gamepad
+#macro INPUT_KEYBOARD      global.__input_source_keyboard
+#macro INPUT_MOUSE         global.__input_source_mouse
+#macro INPUT_GAMEPAD       global.__input_source_gamepad
 #macro INPUT_MAX_GAMEPADS  12
-#macro __INPUT_GAMEPAD_COUNT  min(gamepad_get_device_count(), INPUT_MAX_GAMEPADS)
 
 #macro INPUT_KEYBOARD_LOCALE  global.__input_keyboard_locale
 #macro INPUT_KEYBOARD_TYPE    global.__input_keyboard_type

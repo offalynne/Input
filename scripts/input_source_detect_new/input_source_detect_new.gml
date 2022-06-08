@@ -2,7 +2,7 @@ function input_source_detect_new()
 {
     //Check gamepad input before keyboard input to correctly handle Android duplicating button presses with keyboard presses
     var _g = 0;
-    repeat(__INPUT_GAMEPAD_COUNT)
+    repeat(array_length(INPUT_GAMEPAD))
     {
         if (input_source_detect_input(INPUT_GAMEPAD[_g])) return INPUT_GAMEPAD[_g];
         ++_g;

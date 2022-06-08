@@ -43,7 +43,7 @@ function __input_hotswap_tick_input()
         var _player = global.__input_players[0];
         
         var _g = 0;
-        repeat(__INPUT_GAMEPAD_COUNT)
+        repeat(array_length(INPUT_GAMEPAD))
         {
             if (gamepad_is_connected(_g) && (input_source_using(INPUT_GAMEPAD[_g]) || input_source_is_available(INPUT_GAMEPAD[_g])))
             {
