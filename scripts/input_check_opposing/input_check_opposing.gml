@@ -1,7 +1,8 @@
-/// @param verbNegative
-/// @param verbPositive
-/// @param [playerIndex=0]
-/// @param [mostRecent=false]
+/// @desc    Returns the sign of the result of the negative and positive active verbs
+/// @param   verbNegative
+/// @param   verbPositive
+/// @param   [playerIndex=0]
+/// @param   [mostRecent=false]
 
 function input_check_opposing(_verb_negative, _verb_positive, _player_index = 0, _most_recent = false)
 {
