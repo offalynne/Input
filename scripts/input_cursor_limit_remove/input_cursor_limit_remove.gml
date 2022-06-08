@@ -1,8 +1,5 @@
-/// @param left
-/// @param top
-/// @param right
-/// @param bottom
-/// @param [playerIndex=0]
+/// @desc    Removes any cursor limits you have set using input_cursor_limit_aabb() or input_cursor_limit_circle() 
+/// @param   [playerIndex=0]
 
 function input_cursor_limit_remove(_player_index = 0)
 {

@@ -1,7 +1,8 @@
-/// @param x
-/// @param y
-/// @param [playerIndex=0]
-/// @param [relative=false]
+/// @desc    Sets the position of the player's cursor
+/// @param   x
+/// @param   y
+/// @param   [playerIndex=0]
+/// @param   [relative=false]
 
 function input_cursor_set(_x, _y, _player_index = 0, _relative = false)
 {

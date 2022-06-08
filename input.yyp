@@ -284,7 +284,7 @@
   "Folders": [
     {"folderPath":"folders/Test Cases.yy","order":3,"resourceVersion":"1.0","name":"Test Cases","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input.yy","order":0,"resourceVersion":"1.0","name":"Input","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Input/Sources.yy","order":8,"resourceVersion":"1.0","name":"Sources","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Input/Sources.yy","order":9,"resourceVersion":"1.0","name":"Sources","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/(System).yy","order":17,"resourceVersion":"1.0","name":"(System)","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/(System)/Deprecated.yy","order":0,"resourceVersion":"1.0","name":"Deprecated","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/Other.yy","order":13,"resourceVersion":"1.0","name":"Other","tags":[],"resourceType":"GMFolder",},
@@ -303,7 +303,7 @@
     {"folderPath":"folders/Input/(System)/Deprecated/Players.yy","order":3,"resourceVersion":"1.0","name":"Players","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/Profiles.yy","order":2,"resourceVersion":"1.0","name":"Profiles","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/Configuration - Please edit these scripts!.yy","order":0,"resourceVersion":"1.0","name":"Configuration - Please edit these scripts!","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Input/Verbs.yy","order":9,"resourceVersion":"1.0","name":"Verbs","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Input/Verbs.yy","order":8,"resourceVersion":"1.0","name":"Verbs","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/Cursor.yy","order":10,"resourceVersion":"1.0","name":"Cursor","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Input/Accessibility.yy","order":11,"resourceVersion":"1.0","name":"Accessibility","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Examples.yy","order":1,"resourceVersion":"1.0","name":"Examples","tags":[],"resourceType":"GMFolder",},

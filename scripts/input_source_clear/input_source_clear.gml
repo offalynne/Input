@@ -1,4 +1,5 @@
-/// @param [playerIndex=0]
+/// @desc    Unassigns all sources for the player
+/// @param   [playerIndex=0]
 
 function input_source_clear(_player_index = 0)
 {

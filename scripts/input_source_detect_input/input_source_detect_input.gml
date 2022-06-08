@@ -1,4 +1,5 @@
-/// @param source
+/// @desc    Returns whether input is detected from the target source
+/// @param   source
 
 function input_source_detect_input(_source)
 {

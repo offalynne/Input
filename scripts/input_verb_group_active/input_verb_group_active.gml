@@ -1,7 +1,8 @@
-/// @param verbGroup
-/// @param state
-/// @param [playerIndex=0]
-/// @param [exclusive=false]
+/// @desc    Sets the state of a verb group, as defined by INPUT_VERB_GROUPS. Verbs inside a deactivated verb group are also deactivated
+/// @param   verbGroup
+/// @param   state
+/// @param   [playerIndex=0]
+/// @param   [exclusive=false]
 
 function input_verb_group_active(_verb_group, _state, _player_index = 0, _exclusive = false)
 {

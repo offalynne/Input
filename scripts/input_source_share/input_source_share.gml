@@ -1,6 +1,8 @@
-/// @param source
-/// @param arrayOfPlayerIndexes
-/// @param [autoProfile=true]
+/// @desc    Assigns a source to two or more players. All other players using the source will have it unassigned
+///          If the players had any other sources assigned then they will be unassigned
+/// @param   source
+/// @param   arrayOfPlayerIndexes
+/// @param   [autoProfile=true]
 
 function input_source_share(_source, _array, _auto_profile = true)
 {

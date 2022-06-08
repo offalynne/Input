@@ -1,4 +1,6 @@
-/// @param [playerIndex=0]
+/// @desc    Returns the elastic properties for the player's cursor as a struct
+///          If no elastic state has been set, this function returns <undefined>
+/// @param   [playerIndex=0]
 
 function input_cursor_elastic_get(_x, _y, _strength, _player_index = 0)
 {
