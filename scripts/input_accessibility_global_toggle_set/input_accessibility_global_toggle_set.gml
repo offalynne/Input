@@ -1,4 +1,5 @@
-/// @param state
+/// @desc    Sets whether momentary toggles should be permitted across the game at all
+/// @param   state
 
 function input_accessibility_global_toggle_set(_state)
 {

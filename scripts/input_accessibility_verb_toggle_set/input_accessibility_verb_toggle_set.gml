@@ -1,5 +1,6 @@
-/// @param verb
-/// @param state
+/// @desc    Sets whether momentary toggle behaviour is enabled for a verb
+/// @param   verb
+/// @param   state
 
 function input_accessibility_verb_toggle_set(_verb_name, _state)
 {

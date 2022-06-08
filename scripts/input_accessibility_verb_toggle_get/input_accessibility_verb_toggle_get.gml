@@ -1,4 +1,5 @@
-/// @param verb
+/// @desc    Returns whether momentary toggle behaviour is enabled for a verb
+/// @param   verb
 
 function input_accessibility_verb_toggle_get(_verb_name)
 {
