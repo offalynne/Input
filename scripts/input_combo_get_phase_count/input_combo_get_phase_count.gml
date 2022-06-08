@@ -1,4 +1,5 @@
-/// @param name
+/// @desc    Returns the number of phases for a combo verb
+/// @param   name
 
 function input_combo_get_phase_count(_name)
 {

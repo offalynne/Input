@@ -1,5 +1,29 @@
-/// @param name
-/// @param [defaultTimeout]
+/// @desc    Returns a struct that describes a combo verb
+///          A combo verb is considered active when all of its input phases have been completed
+///          
+///          The returned struct has some methods available to configure the combo, all of which
+///          return the struct itself and thus form a fluent interface:
+///              .press(verb)
+///              .releae(verb)
+///              .press_or_release(verb)
+///              .hold(verb)
+///              .timeout(time)
+/// 
+///          Here is an example of the Konami Code:
+///              input_combo_create("konami")
+///              .press("up")
+///              .press("up")
+///              .press("down")
+///              .press("down")
+///              .press("left")
+///              .press("right")
+///              .press("left")
+///              .press("right")
+///              .press("cancel")
+///              .press("accept");
+///          
+/// @param   name
+/// @param   [defaultTimeout]
 
 function input_combo_create(_name, _default_timeout = INPUT_TIMER_MILLISECONDS? 333 : 20)
 {
