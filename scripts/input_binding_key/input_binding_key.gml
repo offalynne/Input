@@ -1,4 +1,5 @@
-/// @param key
+/// @desc    Creates a keyboard binding. This function accepts vk_* constants and single-letter strings e.g. "A"
+/// @param   key
 
 function input_binding_key(_key)
 {

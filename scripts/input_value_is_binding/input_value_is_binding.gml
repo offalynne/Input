@@ -1,4 +1,5 @@
-/// @param value
+/// @desc    Returns if the given value is a valid Input binding
+/// @param   value
 
 function input_value_is_binding(_value)
 {

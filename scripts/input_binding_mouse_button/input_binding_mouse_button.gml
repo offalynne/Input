@@ -1,4 +1,5 @@
-/// @param button
+/// @desc    Creates a mouse button binding. This function accepts mb_* constants
+/// @param   button
 
 function input_binding_mouse_button(_button)
 {

@@ -1,4 +1,5 @@
-/// @param [playerIndex=0]
+/// @desc    Returns whether the given player is currently scanning for bindings
+/// @param   [playerIndex=0]
 
 function input_binding_scan_in_progress(_player_index = 0)
 {

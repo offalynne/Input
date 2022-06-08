@@ -1,3 +1,5 @@
+/// @desc    Creates a mouse wheel up binding
+
 function input_binding_mouse_wheel_up()
 {
 	__input_initialize();

@@ -1,4 +1,5 @@
-/// @param button
+/// @desc    Creates a gamepad button binding. This function accepts gp_* constants
+/// @param   button
 
 function input_binding_gamepad_button(_button)
 {

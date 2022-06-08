@@ -1,7 +1,30 @@
-/// @param successCallback
-/// @param [failureCallback]
-/// @param [sourceFilter]
-/// @param [playerIndex=0]
+/// @desc    Starts a binding scan, allowing the player to create new bindings based on what
+///          keyboard/mouse/gamepad input they have provided.
+///          
+///          The success callback is executed when Input received input from the player. The
+///          function is executed with a single parameter: the binding that was created by the
+///          player. This can then be set to a particular verb.
+///          
+///          The failure callback, if one is provided, is executed when binding fails for some
+///          reason. It is executed with one parameter, the error coded. This corresponds to
+///          a member of the INPUT_BINDING_SCAN_EVENT enum:
+///              .SOURCE_INVALID         Player’s source is invalid, usually because they have no sources assigned or their gamepad has been disconnected
+///              .SOURCE_CHANGED         The player’s source (or sources) have been modified
+///              .PLAYER_IS_GHOST        Player is a ghost and cannot receive hardware input
+///              .SCAN_TIMEOUT           Either the player didn’t enter a new binding or a stuck key prevented the system from working. The timeout period is defined by INPUT_BINDING_SCAN_TIMEOUT
+///              .LOST_FOCUS             The application lost focus
+///              .PLAYER_DISCONNECTED    The player disconnected
+///              .ABORTED                Binding scan was aborted early due to input_binding_scan_abort() being called
+///          
+///          A source filter, an array of sources, can be provided to selectively listen for
+///          input. This is useful when you wish to scan for input from a specific device.
+///          Input from any device NOT listed in the source filter array will be ignored. By
+///          default, all sources assigned to the player are accepted.
+///          
+/// @param   successCallback
+/// @param   [failureCallback]
+/// @param   [sourceFilter]
+/// @param   [playerIndex=0]
 
 enum INPUT_BINDING_SCAN_EVENT
 {
