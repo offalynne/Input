@@ -1,4 +1,5 @@
-/// @param key
+/// @desc    Removes a keyboard key from the ignore list, allowing it to be used
+/// @param   key
 
 function input_ignore_key_remove(_key)
 {

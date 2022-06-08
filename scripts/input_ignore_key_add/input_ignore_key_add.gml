@@ -1,4 +1,5 @@
-/// @param key
+/// @desc    Adds a keyboard key to be ignored by Input
+/// @param   key
 
 function input_ignore_key_add(_key)
 {
