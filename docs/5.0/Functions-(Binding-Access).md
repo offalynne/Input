@@ -25,7 +25,7 @@ _Returns:_ N/A (`undefined`)
 |`binding`      |binding                             |Binding to set, as returned by [`input_binding_scan_tick()`](<Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex>) or [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>)|
 |`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                                                                                                                                                                                                    |
 |`[alternate]`  |integer                             |[Alternate binding](Verbs-and-Alternate-Bindings) to target. If not specified, `0` is used                                                                                                                                                              |
-|`[profileName]`|string                              |                                                                                                                                                                                                                                                        |
+|`[profileName]`|string                              |The [profile](Profiles) to set the verb binding for. If no profile is provided then the current profile is used                                                                                                                                         |
 
 Straightforwardly sets the binding for a verb, overwriting what was already there.
 
