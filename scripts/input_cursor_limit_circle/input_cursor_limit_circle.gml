@@ -1,7 +1,8 @@
-/// @param x
-/// @param y
-/// @param radius
-/// @param [playerIndex=0]
+/// @desc    Limits the cursor’s motion inside a circle centred at the given point
+/// @param   x
+/// @param   y
+/// @param   radius
+/// @param   [playerIndex=0]
 
 function input_cursor_limit_circle(_x, _y, _radius, _player_index = 0)
 {

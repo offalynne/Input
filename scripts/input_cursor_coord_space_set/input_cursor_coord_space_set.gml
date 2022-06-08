@@ -1,5 +1,10 @@
-/// @param [coordSpace]
-/// @param [playerIndex=0]
+/// @desc    Sets the coordinate space for the player's cursor when using mouse input.
+///          The coordinate space should be a member of the INPUT_COORD_SPACE enum:
+///              .ROOM      Room coordinates; should be the same as mouse_x and mouse_y. This is the default value
+///              .GUI       GUI coordinates
+///              .DISPLAY   Raw device-space coordinates
+/// @param   coordSpace
+/// @param   [playerIndex=0]
 
 enum INPUT_COORD_SPACE
 {

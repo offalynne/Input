@@ -1,8 +1,9 @@
-/// @param left
-/// @param top
-/// @param right
-/// @param bottom
-/// @param [playerIndex=0]
+/// @desc    Limits the cursor’s motion inside an axis-aligned bounding box with the given coordinates
+/// @param   left
+/// @param   top
+/// @param   right
+/// @param   bottom
+/// @param   [playerIndex=0]
 
 function input_cursor_limit_aabb(_l, _t, _r, _b, _player_index = 0)
 {

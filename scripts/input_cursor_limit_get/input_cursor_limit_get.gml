@@ -1,4 +1,6 @@
-/// @param [playerIndex=0]
+/// @desc    Returns the cursor limit state as a struct
+///          If no limit has been set, this function returns <undefined>
+/// @param   [playerIndex=0]
 
 function input_cursor_limit_get(_player_index = 0)
 {

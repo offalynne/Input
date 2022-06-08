@@ -1,4 +1,5 @@
-/// @param [playerIndex=0]
+/// @desc    Removes an elastic force that has been added to the given player’s cursor
+/// @param   [playerIndex=0]
 
 function input_cursor_elastic_remove(_player_index = 0)
 {
