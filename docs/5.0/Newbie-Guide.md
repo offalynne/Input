@@ -10,7 +10,7 @@ Hey there! Maybe you heard on the grapevine that the pug has some new tools for 
 
 &nbsp;
 
-## Step 1. Setup
+## Step 1: Setup
 
 To get this show on the road, first thing you're gonna want to do is to drag the [.yymps file](https://github.com/JujuAdams/Input/releases) you got into your project. A dialogue will pop up and you just gotta hit "add all" and then "OK". This will leave you with a new folder in your Asset Browser labeled "Input". That's good. You want that.
 
