@@ -568,10 +568,9 @@ function __input_initialize()
 	
 	//Keyboard buffer tracking
 	global.__input_keyboard_string_frame = 0;
-	global.__input_keyboard_string_last  = "";
-	
-	global.__input_keyboard_string = keyboard_string;
-	global.__input_keyboard_buffer = keyboard_string;
+	global.__input_keyboard_string_last  = keyboard_string;	
+	global.__input_keyboard_string       = keyboard_string;
+	global.__input_keyboard_buffer       = keyboard_string;
 	
 	#endregion
     
