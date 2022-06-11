@@ -46,6 +46,7 @@ function input_keyboard_string_frame()
             }
         }
         
+        //Match frame counter
         global.__input_keyboard_string_frame = global.__input_frame;
     }
     
