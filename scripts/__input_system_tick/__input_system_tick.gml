@@ -282,7 +282,7 @@ function __input_system_tick()
         {
             if (os_type == os_ios)
             {
-                //Fix string-setting bug on iOS
+                //Fix iOS quirk with setting the string
                 keyboard_virtual_hide();
             }
             
