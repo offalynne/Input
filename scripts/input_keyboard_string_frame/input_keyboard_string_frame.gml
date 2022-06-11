@@ -27,14 +27,15 @@ function input_keyboard_string_frame()
         {
             //Subtractive
             var _i = 1;
-            repeat(string_length(_new))
+            var _new_length = string_length(_new);
+            repeat(_new_length)
             {
                 //Step left to right until character mismatch
                 if (string_char_at(_new, _i) != string_char_at(_old, _i)) break;
                 _i++;
             }
         
-            if (_i == string_length(_new))
+            if (_i == _new_length)
             {
                 //Fully subtractive
                 global.__input_keyboard_buffer = "";
@@ -42,7 +43,7 @@ function input_keyboard_string_frame()
             else
             {
                 //Partially subtractive
-                global.__input_keyboard_buffer = string_copy(_new, _i, string_length(_new));
+                global.__input_keyboard_buffer = string_copy(_new, _i, _new_length);
             }
         }
         
