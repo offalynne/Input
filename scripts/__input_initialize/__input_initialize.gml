@@ -564,7 +564,7 @@ function __input_initialize()
     #region Keyboard Buffer
 
     //Fix Android quirk where first character can not
-    //be remvoved by forcing an initial leading space
+    //be removed by forcing an initial leading space
     if (os_type == os_android)
     {
         keyboard_string = " ";
