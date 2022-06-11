@@ -1,10 +1,10 @@
-var _buffer = input_keyboard_string_frame(); //Add keyboard buffer
+var _buffer = input_keyboard_string_frame();
+
+//Update string
+test_string = string_insert(_buffer, test_string, caret_position + 1);
 
 //Update caret
 caret_position += string_length(_buffer); 
-
-//Update string
-test_string = string_insert(_buffer, test_string, caret_position);
 
 //Move caret
 caret_position += input_keyboard_check_pressed(vk_right) - input_keyboard_check_pressed(vk_left); 
@@ -21,5 +21,7 @@ else if (input_keyboard_check_pressed(vk_backspace))
     caret_position--;
 }
 
+//Normalize caret
 caret_position = clamp(caret_position, 0, string_length(test_string));
+
 blinker_tick++;
