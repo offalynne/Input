@@ -21,7 +21,7 @@ else if (input_keyboard_check_pressed(vk_backspace))
     caret_position--;
 }
 
-//Normalize caret
+//Clamp caret
 caret_position = clamp(caret_position, 0, string_length(test_string));
 
 blinker_tick++;
