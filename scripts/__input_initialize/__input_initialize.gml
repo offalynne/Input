@@ -558,6 +558,25 @@ function __input_initialize()
     }
     
     #endregion
+
+
+
+    #region Keyboard frame
+
+    //Fix Android quirk where first character cannot
+    //be removed by leading with an initial space
+    if (os_type == os_android)
+    {
+        keyboard_string = " ";
+    }
+
+    //Keyboard change tracking
+    global.__input_keyboard_string_change = "";
+    global.__input_keyboard_string_frame  = 0;
+    global.__input_keyboard_string_last   = keyboard_string; 
+    global.__input_keyboard_string        = keyboard_string;
+    
+    #endregion
     
     
     
