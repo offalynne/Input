@@ -280,13 +280,13 @@ function __input_system_tick()
         //Unstick keyboard buffer string
         if ((keyboard_string == "") && (string_length(keyboard_string) > 0))
         {
+            //Set empty on overflow
             if (os_type == os_ios)
             {
                 //Fix iOS quirk with setting the string
                 keyboard_virtual_hide();
             }
             
-            //Set empty on overflow
             //Fix Android quirk where first character can not
             //be removed by forcing an initial leading space
             keyboard_string = ((os_type == os_android)? " " : "");
