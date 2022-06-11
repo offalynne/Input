@@ -277,7 +277,7 @@ function __input_system_tick()
     //Handle keyboard buffer
     if (__INPUT_KEYBOARD_SUPPORT)
     {
-        //Unstick keyboard_string
+        //Unstick keyboard buffer string
         if ((keyboard_string == "") && (string_length(keyboard_string) > 0))
         {
             if (os_type == os_ios)
