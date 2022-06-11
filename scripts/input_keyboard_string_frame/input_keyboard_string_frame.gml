@@ -2,12 +2,7 @@
 
 function input_keyboard_string_frame()
 {
-    if (global.__input_keyboard_string_frame == global.__input_frame)
-    {
-        //Already resolved this frame
-        return global.__input_keyboard_buffer;
-    }
-    else
+    if (global.__input_keyboard_string_frame != global.__input_frame)
     {
         //Resolve buffer difference from last frame
         var _old = global.__input_keyboard_string_last;
@@ -52,6 +47,7 @@ function input_keyboard_string_frame()
         }
         
         global.__input_keyboard_string_frame = global.__input_frame;
-        return global.__input_keyboard_buffer;
     }
+    
+    return global.__input_keyboard_buffer;
 }
