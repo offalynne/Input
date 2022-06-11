@@ -5,7 +5,7 @@ function __input_system_tick()
     global.__input_current_time = current_time;
     global.__input_cleared = false;
     
-    
+
     
     #region Touch
     
