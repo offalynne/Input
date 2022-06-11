@@ -558,24 +558,25 @@ function __input_initialize()
     }
     
     #endregion
-	
-	
-	
-	#region Keyboard Buffer
-	
-	//Fix Android quirk where first character can't be erased by forcing an initial leading space
+
+
+
+        #region Keyboard Buffer
+
+        //Fix Android quirk where first character can not
+        //be remvoved by forcing an initial leading space
         if (os_type == os_android)
         {
             keyboard_string = " ";
         }
-	
-	//Keyboard buffer tracking
-	global.__input_keyboard_string_frame = 0;
-	global.__input_keyboard_buffer       = "";
-	global.__input_keyboard_string       = keyboard_string;
-	global.__input_keyboard_string_last  = keyboard_string;	
-	
-	#endregion
+
+        //Keyboard buffer tracking
+        global.__input_keyboard_string_frame = 0;
+        global.__input_keyboard_buffer       = "";
+        global.__input_keyboard_string       = keyboard_string;
+        global.__input_keyboard_string_last  = keyboard_string;	
+    
+    #endregion
     
     
     
