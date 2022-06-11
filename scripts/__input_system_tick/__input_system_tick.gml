@@ -288,7 +288,7 @@ function __input_system_tick()
             
             //Set empty on overflow
             //Fix Android quirk where first character can not
-            //be remvoved by forcing an initial leading space
+            //be removed by forcing an initial leading space
             keyboard_string = ((os_type == os_android)? " " : "");
 
             global.__input_keyboard_string_frame = global.__input_frame;
