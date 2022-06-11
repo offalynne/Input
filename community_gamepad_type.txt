@@ -14,13 +14,15 @@
 2378,1008,CommunityLikeXBox // OnLive
 2378,100a,CommunityLikeXBox // OnLive
 0f30,1102,CommunityLikeXBox // Qanba Q2 Pro
+062a,2410,CommunityLikeXBox // Flydigi Apex
+1038,1420,CommunityLikeXBox // SteelSeries Nimbus
+1038,1430,CommunityLikeXBox // SteelSeries Stratus Duo
+1038,1431,CommunityLikeXBox // SteelSeries Stratus Duo
+1038,1418,CommunityLikeXBox // SteelSeries Stratus XL
+0111,1431,CommunityLikeXBox // SteelSeries Stratus Duo
+0111,1419,CommunityLikeXBox // SteelSeries Stratus XL
 0111,1417,CommunityLikeXBox // SteelSeries Stratus XL
 0111,1420,CommunityLikeXBox // SteelSeries Nimbus
-062a,2410,CommunityLikeXBox // Flydigi Apex
-1038,1418,CommunityLikeXBox // SteelSeries Stratus XL
-1038,1420,CommunityLikeXBox // SteelSeries Nimbus
-0111,1419,CommunityLikeXBox // SteelSeries Stratus XL
-0111,1431,CommunityLikeXBox // SteelSeries Stratus Duo
 05ac,022c,CommunityLikeXBox // iPega 910
 05ac,022d,CommunityLikeXBox // GameSir G2U
 05ac,033d,CommunityLikeXBox // GameSir G3
@@ -48,7 +50,7 @@
 289b,002b,CommunityLikeSwitch // Raphnet Wii Adapter
 289b,002c,CommunityLikeSwitch // Raphnet Wii Adapter
 0079,1800,CommunityLikeSwitch // Mayflash Wii U Adapter
-6957,746f,CommunityLikeSwitch // WiiU Pro
+6957,746f,CommunityLikeSwitch // Wii U Pro
 057e,2017,CommunityLikeSwitch // Nintendo Switch Online SFC & MD
 0925,03e8,CommunityLikeSwitch // Mayflash Wii Adapter
 057e,0330,CommunityLikeSwitch // Wii U Pro
@@ -367,6 +369,7 @@ dead,beef,CommunityPSX // Hidromancer
 06f7,0001,CommunityN64 // N64 Adaptoid
 2dc8,9002,CommunityN64 // Retro-bit x 8Bitdo RB8-64 (USB)
 2dc8,3830,CommunityN64 // Retro-bit x 8Bitdo RB8-64 (BT)
+0079,954e,CommunityN64 // Hyperkin N64 Adapter
 0079,1803,CommunityWiiRemote // Mayflash Wii DolphinBar
 289b,0008,CommunityDreamcast // Raphnet Dreamcast Adapter
 2836,0001,CommunityOuya // Ouya Controller
