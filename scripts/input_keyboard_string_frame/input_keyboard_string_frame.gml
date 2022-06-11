@@ -10,8 +10,8 @@ function input_keyboard_string_frame()
     else
     {
         //Resolve buffer difference from last frame
-        var _new = global.__input_keyboard_string;
         var _old = global.__input_keyboard_string_last;
+        var _new = global.__input_keyboard_string;
     
         if (_old == _new)
         {
