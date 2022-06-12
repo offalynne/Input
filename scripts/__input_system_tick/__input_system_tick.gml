@@ -285,8 +285,6 @@ function __input_system_tick()
             if (os_type == os_ios) keyboard_virtual_hide();
             
             //Reset keyboard string
-            //Fix Android quirk where first character can not
-            //be removed by forcing an initial leading space
             keyboard_string = ((os_type == os_android)? " " : "");
 
             global.__input_keyboard_string_frame = global.__input_frame;
