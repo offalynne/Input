@@ -277,16 +277,14 @@ function __input_system_tick()
     //Handle keyboard buffer
     if (__INPUT_KEYBOARD_SUPPORT)
     {
-        //Unstick keyboard buffer string
-        if ((keyboard_string == "") && (string_length(keyboard_string) > 0))
+        //Unstick overflowing keyboard buffer
+        if (((keyboard_string   == "") && (string_length(keyboard_string) > 0))
+        ||  ((keyboard_lastchar != "") && (string_length(global.__input_keyboard_string_last) > 1023) && (__input_keyboard_key() == ord(keyboard_lastchar))))
         {
-            //Set empty on overflow
-            if (os_type == os_ios)
-            {
-                //Fix iOS quirk with setting the string
-                keyboard_virtual_hide();
-            }
+            //Fix iOS quirk with setting keyboard string
+            if (os_type == os_ios) keyboard_virtual_hide();
             
+            //Reset keyboard string
             //Fix Android quirk where first character can not
             //be removed by forcing an initial leading space
             keyboard_string = ((os_type == os_android)? " " : "");
