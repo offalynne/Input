@@ -1,7 +1,7 @@
 <p align="center"><img src="https://raw.githubusercontent.com/JujuAdams/input/master/LOGO.png" style="display:block; margin:auto; width:300px"></p>
-<h1 align="center">Input 4.2.0 LTS</h1>
+<h1 align="center">Input 5.0.2</h1>
 
-<p align="center">Comprehensive cross-platform input for GameMaker Studio 2.3 by <a href="http://www.jujuadams.com/"><b>@jujuadams</b></a> and <a href="https://offalynne.neocities.org/"><b>@offalynne</b></a></p>
+<p align="center">Comprehensive cross-platform input for GameMaker Studio 2022.5 by <a href="http://www.jujuadams.com/"><b>@jujuadams</b></a> and <a href="https://offalynne.neocities.org/"><b>@offalynne</b></a></p>
 
 &nbsp;
 

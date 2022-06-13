@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "Players",
-    "path": "folders/Input/Players.yy",
+    "path": "folders/Input/(System)/Deprecated/Players.yy",
   },
   "resourceVersion": "1.0",
   "name": "input_players_connected",

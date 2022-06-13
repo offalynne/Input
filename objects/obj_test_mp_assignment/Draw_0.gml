@@ -2,9 +2,9 @@ var _string = "";
 
 if (success)
 {
-    _string += "Source assignemnt complete\n\n";
+    _string += "Source assignment complete\n\n";
 }
-else if (assigning)
+else if (input_source_mode_get() == INPUT_SOURCE_MODE.JOIN)
 {
     _string += "Assigning sources to players\n\n";
 }
@@ -13,20 +13,13 @@ else
     _string += "Source assignment aborted\n\n";
 }
 
-_string += "0 = " + string(input_player_gamepad_get(0)) + ", " + input_source_get_name(input_player_source_get(0)) + "\n";
-_string += "1 = " + string(input_player_gamepad_get(1)) + ", " + input_source_get_name(input_player_source_get(1)) + "\n";
-_string += "2 = " + string(input_player_gamepad_get(2)) + ", " + input_source_get_name(input_player_source_get(2)) + "\n";
-_string += "\n\n";
-_string += "x = " + string(input_x("left", "right", "up", "down", 0)) + "\n";
-_string += "y = " + string(input_y("left", "right", "up", "down", 0)) + "\n";
-_string += "A = " + string(input_check("confirm", 0)) + "\n";
-_string += "\n";
-_string += "x = " + string(input_x("left", "right", "up", "down", 1)) + "\n";
-_string += "y = " + string(input_y("left", "right", "up", "down", 1)) + "\n";
-_string += "A = " + string(input_check("confirm", 1)) + "\n";
-_string += "\n";
-_string += "x = " + string(input_x("left", "right", "up", "down", 2)) + "\n";
-_string += "y = " + string(input_y("left", "right", "up", "down", 2)) + "\n";
-_string += "A = " + string(input_check("confirm", 2)) + "\n";
+_string += concat("Player 0 connected = ", input_player_connected(),  ", keyboard = ", input_source_using(INPUT_KEYBOARD),    ", mouse = ", input_source_using(INPUT_MOUSE),    ", gamepad = ", input_player_get_gamepad(),  ", type = ", input_player_get_gamepad_type(),  "\n");
+_string += concat("Player 1 connected = ", input_player_connected(1), ", keyboard = ", input_source_using(INPUT_KEYBOARD, 1), ", mouse = ", input_source_using(INPUT_MOUSE, 1), ", gamepad = ", input_player_get_gamepad(1), ", type = ", input_player_get_gamepad_type(1), "\n");
+_string += concat("Player 2 connected = ", input_player_connected(2), ", keyboard = ", input_source_using(INPUT_KEYBOARD, 2), ", mouse = ", input_source_using(INPUT_MOUSE, 2), ", gamepad = ", input_player_get_gamepad(2), ", type = ", input_player_get_gamepad_type(2), "\n");
+_string += concat("Players connected = ", input_player_connected_count(), "\n");
+_string += concat("\n");
+_string += concat("Player 0 2D = ", input_xy("left", "right", "up", "down"),    "\n");
+_string += concat("Player 1 2D = ", input_xy("left", "right", "up", "down", 1), "\n");
+_string += concat("Player 2 2D = ", input_xy("left", "right", "up", "down", 2), "\n");
 
 draw_text(10, 10, _string);

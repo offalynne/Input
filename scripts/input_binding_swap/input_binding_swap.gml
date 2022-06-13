@@ -1,33 +1,23 @@
-/// @param verbA
-/// @param alternateA
-/// @param verbB
-/// @param alternateB
-/// @param [source]
-/// @param [playerIndex]
+/// @desc    Swaps over two bindings within the same profile. This is useful to resolve binding conflicts
+/// @param   verbA
+/// @param   alternateA
+/// @param   verbB
+/// @param   alternateB
+/// @param   [playerIndex=0]
+/// @param   [profileName]
 
-function input_binding_swap(_verb_a, _alternate_a, _verb_b, _alternate_b, _source = undefined, _player_index = 0)
+function input_binding_swap(_verb_a, _alternate_a, _verb_b, _alternate_b, _player_index = 0, _profile_name = undefined)
 {
-    if (_player_index < 0)
-    {
-        __input_error("Invalid player index provided (", _player_index, ")");
-        return undefined;
-    }
+	__input_initialize();
+    __INPUT_VERIFY_PLAYER_INDEX
+    __INPUT_VERIFY_PROFILE_NAME
     
-    if (_player_index >= INPUT_MAX_PLAYERS)
-    {
-        __input_error("Player index too large (", _player_index, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
-        return undefined;
-    }
-    
-    //Ensure that we have the correct config category for this source for this player
-    var _config_category = global.__input_players[_player_index].convert_source_enum_to_config_category(_source);
-    
-    var _binding_a = input_binding_get(_verb_a, _config_category, _player_index, _alternate_a);
-    var _binding_b = input_binding_get(_verb_b, _config_category, _player_index, _alternate_b);
+    var _binding_a = input_binding_get(_verb_a, _player_index, _alternate_a, _profile_name);
+    var _binding_b = input_binding_get(_verb_b, _player_index, _alternate_b, _profile_name);
     
     if (_binding_b == undefined)
     {
-        input_binding_remove(_verb_a, _config_category, _player_index, _alternate_a);
+        input_binding_remove(_verb_a, _player_index, _alternate_a, _profile_name);
     }
     else
     {
@@ -36,7 +26,7 @@ function input_binding_swap(_verb_a, _alternate_a, _verb_b, _alternate_b, _sourc
     
     if (_binding_a == undefined)
     {
-        input_binding_remove(_verb_b, _config_category, _player_index, _alternate_b);
+        input_binding_remove(_verb_b, _player_index, _alternate_b, _profile_name);
     }
     else
     {

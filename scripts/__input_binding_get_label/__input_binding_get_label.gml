@@ -5,13 +5,13 @@ function __input_binding_get_label(_type, _value, _axis_negative)
         //Touch bindings
         if (__INPUT_ON_PS)
         {
-            if (((_type == "gamepad button") && (_value == gp_select))
-            ||  ((_type == "mouse button"  ) && (_value == mb_left)))
+            if (((_type == __INPUT_BINDING_GAMEPAD_BUTTON) && (_value == gp_select))
+            ||  ((_type == __INPUT_BINDING_MOUSE_BUTTON  ) && (_value == mb_left  )))
             {
                 return "gamepad touchpad click";
             }
         }
-        else if ((_type == "mouse button") && (_value == mb_left))
+        else if ((_type == __INPUT_BINDING_MOUSE_BUTTON) && (_value == mb_left))
         {
             return "touchscreen press";
         }
@@ -19,11 +19,11 @@ function __input_binding_get_label(_type, _value, _axis_negative)
     
     switch(_type)
     {
-        case "key":
+        case __INPUT_BINDING_KEY:
             return __input_key_get_name(_value);
         break;
         
-        case "mouse button":
+        case __INPUT_BINDING_MOUSE_BUTTON:
             switch(_value)
             {
                 case mb_left:    return "mouse button left";    break;
@@ -36,16 +36,16 @@ function __input_binding_get_label(_type, _value, _axis_negative)
             }
         break;
         
-        case "mouse wheel up":
+        case __INPUT_BINDING_MOUSE_WHEEL_UP:
             return "mouse wheel up";
         break;
         
-        case "mouse wheel down":
+        case __INPUT_BINDING_MOUSE_WHEEL_DOWN:
             return "mouse wheel down";
         break;
         
-        case "gamepad button":
-        case "gamepad axis":
+        case __INPUT_BINDING_GAMEPAD_BUTTON:
+        case __INPUT_BINDING_GAMEPAD_AXIS:
             switch(_value)
             {
                 case gp_face1:      return "gamepad face south";         break; //Xbox A, Nintendo B, PlayStation Cross

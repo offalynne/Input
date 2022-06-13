@@ -1,5 +1,5 @@
 var _string = "";
-_string += string(input_player_source_get()) + "\n";
+_string += string(input_source_get_array()) + "\n";
 _string += input_binding_get_name(input_binding_get(0)) + " = " + string(input_value(0)) + "\n";
 _string += input_binding_get_name(input_binding_get(1)) + " = " + string(input_value(1)) + "\n";
 _string += input_binding_get_name(input_binding_get(2)) + " = " + string(input_value(2)) + "\n";

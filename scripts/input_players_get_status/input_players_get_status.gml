@@ -1,6 +1,6 @@
-/// Returns a struct that describes the status of player connectivity
+/// @desc    Returns a struct that describes the status of player connectivity
 /// 
-///   N.B. Do not edit the returned struct! You may encounter undefined behaviour if you do
+/// N.B. Do not edit the returned struct! You may encounter undefined behaviour if you do
 /// 
 /// {
 ///     any_changes: <boolean that indicates whether anything has changed at all>

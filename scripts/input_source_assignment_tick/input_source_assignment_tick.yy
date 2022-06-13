@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Source Assignment",
-    "path": "folders/Input/Source Assignment.yy",
+    "name": "Deprecated",
+    "path": "folders/Input/(System)/Deprecated.yy",
   },
   "resourceVersion": "1.0",
   "name": "input_source_assignment_tick",

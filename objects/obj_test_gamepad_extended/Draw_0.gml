@@ -1,7 +1,9 @@
-draw_text(10,  10, "guide    = " + string(input_check("guide"   )));
-draw_text(10,  30, "misc1    = " + string(input_check("misc1"   )));
-draw_text(10,  50, "touchpad = " + string(input_check("touchpad"))); 
-draw_text(10,  70, "paddle1  = " + string(input_check("paddle1" )));
-draw_text(10,  90, "paddle2  = " + string(input_check("paddle2" )));
-draw_text(10, 110, "paddle3  = " + string(input_check("paddle3" )));
-draw_text(10, 130, "paddle4  = " + string(input_check("paddle4" )));
+var _string = "";
+_string += concat("paddle1  = ", input_check("up"     ), "\n");
+_string += concat("paddle2  = ", input_check("down"   ), "\n");
+_string += concat("paddle3  = ", input_check("left"   ), "\n");
+_string += concat("paddle4  = ", input_check("right"  ), "\n");
+_string += concat("touchpad = ", input_check("accept" ), "\n");
+_string += concat("guide    = ", input_check("action" ), "\n");
+_string += concat("misc1    = ", input_check("special"), "\n");
+draw_text(10, 10, _string);

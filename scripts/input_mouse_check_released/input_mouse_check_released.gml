@@ -1,4 +1,6 @@
-/// @param binding
+/// @desc    Returns whether the given mouse button is newly deactivated this frame.
+/// @param   binding
+
 function input_mouse_check_released(_binding)
 {    
     if (!global.__input_mouse_allowed || global.__input_cleared)

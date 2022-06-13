@@ -1,9 +1,8 @@
-input_player_source_set(INPUT_SOURCE.GAMEPAD);
-
-input_default_gamepad_button(gp_guide   , "guide"   );
-input_default_gamepad_button(gp_misc1   , "misc1"   );
-input_default_gamepad_button(gp_touchpad, "touchpad");
-input_default_gamepad_button(gp_paddle1 , "paddle1" );
-input_default_gamepad_button(gp_paddle2 , "paddle2" );
-input_default_gamepad_button(gp_paddle3 , "paddle3" );
-input_default_gamepad_button(gp_paddle4 , "paddle4" );
+//Overwrite some bindings
+input_binding_set("up",      input_binding_gamepad_button(gp_paddle1 ), 0, 0, INPUT_AUTO_PROFILE_FOR_GAMEPAD);
+input_binding_set("down",    input_binding_gamepad_button(gp_paddle2 ), 0, 0, INPUT_AUTO_PROFILE_FOR_GAMEPAD);
+input_binding_set("left",    input_binding_gamepad_button(gp_paddle3 ), 0, 0, INPUT_AUTO_PROFILE_FOR_GAMEPAD);
+input_binding_set("right",   input_binding_gamepad_button(gp_paddle4 ), 0, 0, INPUT_AUTO_PROFILE_FOR_GAMEPAD);
+input_binding_set("accept",  input_binding_gamepad_button(gp_touchpad), 0, 0, INPUT_AUTO_PROFILE_FOR_GAMEPAD);
+input_binding_set("action",  input_binding_gamepad_button(gp_guide   ), 0, 0, INPUT_AUTO_PROFILE_FOR_GAMEPAD);
+input_binding_set("special", input_binding_gamepad_button(gp_misc1   ), 0, 0, INPUT_AUTO_PROFILE_FOR_GAMEPAD);

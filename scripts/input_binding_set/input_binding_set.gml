@@ -1,33 +1,19 @@
-/// @param verb
-/// @param binding
-/// @param [playerIndex]
-/// @param [alternate]
+/// @desc    Sets the binding for the given verb. The alternate index parameter can be used to
+///          set multiple parallel inputs for one verb. If no profile name is provided, the
+///          current profile is used
+/// @param   verb
+/// @param   binding
+/// @param   [playerIndex=0]
+/// @param   [alternate=0]
+/// @param   [profileName]
 
-function input_binding_set(_verb, _binding, _player_index = 0, _alternate = 0)
+function input_binding_set(_verb_name, _binding, _player_index = 0, _alternate = 0, _profile_name = undefined)
 {
-    if (_player_index < 0)
-    {
-        __input_error("Invalid player index provided (", _player_index, ")");
-        return undefined;
-    }
-    
-    if (_player_index >= INPUT_MAX_PLAYERS)
-    {
-        __input_error("Player index too large (", _player_index, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");
-        return undefined;
-    }
-    
-    if (_alternate < 0)
-    {
-        __input_error("Invalid \"alternate\" argument (", _alternate, ")");
-        return undefined;
-    }
-    
-    if (_alternate >= INPUT_MAX_ALTERNATE_BINDINGS)
-    {
-        __input_error("\"alternate\" argument too large (", _alternate, " must be less than ", INPUT_MAX_ALTERNATE_BINDINGS, ")\nIncrease INPUT_MAX_ALTERNATE_BINDINGS for more alternate binding slots");
-        return undefined;
-    }
+	__input_initialize();
+    __INPUT_VERIFY_PLAYER_INDEX
+    __INPUT_VERIFY_ALTERNATE_INDEX
+    __INPUT_VERIFY_BASIC_VERB_NAME
+    __INPUT_VERIFY_PROFILE_NAME
     
     if (!input_value_is_binding(_binding))
     {
@@ -35,12 +21,5 @@ function input_binding_set(_verb, _binding, _player_index = 0, _alternate = 0)
         return undefined;
     }
     
-    with(global.__input_players[_player_index])
-    {
-        //Ensure that we have the correct config category for this binding for this player
-        var _config_category = get_binding_config_category(_binding);
-        
-        __input_trace("Setting player ", _player_index, " binding for config=", _config_category, ", verb=", _verb, ", alt=", _alternate, " to \"", input_binding_get_name(_binding), "\"");
-        set_binding(_config_category, _verb, _alternate, _binding);
-    }
+    global.__input_players[_player_index].__binding_set(_profile_name, _verb_name, _alternate, _binding);
 }

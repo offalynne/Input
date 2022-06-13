@@ -1,77 +1,134 @@
 function __input_class_cursor() constructor
 {
-    prev_x = 0;
-    prev_y = 0;
-    x = 0;
-    y = 0;
+    __player = undefined;
     
-    camera = undefined;
+    __prev_x = 0;
+    __prev_y = 0;
+    __x = 0;
+    __y = 0;
     
-    limit_l = undefined;
-    limit_t = undefined;
-    limit_r = undefined;
-    limit_b = undefined;
+    //Limit cursor to AABB
+    __limit_l = undefined;
+    __limit_t = undefined;
+    __limit_r = undefined;
+    __limit_b = undefined;
     
-    limit_x = undefined;
-    limit_y = undefined;
-    limit_radius = undefined;
+    //Limit cursor to circle
+    __limit_x      = undefined;
+    __limit_y      = undefined;
+    __limit_radius = undefined;
     
-    moved_time = -1;
+    __elastic_x        = undefined;
+    __elastic_y        = undefined;
+    __elastic_strength = 0;
     
-    tick = function(_rebind_state)
+    __moved_time  = -infinity;
+    __using_mouse = false;
+    __speed       = INPUT_CURSOR_START_SPEED;
+    __coord_space = INPUT_COORD_SPACE.ROOM;
+    
+    static __set = function(_x, _y, _relative)
     {
-        prev_x = x;
-        prev_y = y;
-        
-        if (global.__input_mouse_default_defined && (other.source == INPUT_SOURCE.KEYBOARD_AND_MOUSE) && (global.__input_mouse_moved || global.__input_cursor_using_mouse))
+        if (_relative)
         {
-            global.__input_cursor_using_mouse = true;
-            x = global.__input_mouse_x;
-            y = global.__input_mouse_y;
+            __x += _x;
+            __y += _y;
+            __prev_x += _x;
+            __prev_y += _y;
+        }
+        else
+        {
+            __x = _x;
+            __y = _y;
+            __prev_x = __x;
+            __prev_y = __y;
+        }
+    }
+    
+    static __tick = function()
+    {
+        __prev_x = __x;
+        __prev_y = __y;
+        
+        var _can_use_mouse = __player.__source_contains(INPUT_MOUSE);
+        
+        if (global.__input_any_mouse_binding_defined && (global.__input_pointer_moved || __using_mouse) && _can_use_mouse)
+        {
+            __using_mouse = true;
+            
+            if (global.__input_mouse_capture)
+            {
+                __x += global.__input_pointer_dx[__coord_space];
+                __y += global.__input_pointer_dy[__coord_space];
+            }
+            else
+            {
+                __x = global.__input_pointer_x[__coord_space];
+                __y = global.__input_pointer_y[__coord_space];
+            }
         }
         
         //Don't update the cursor if the mouse recently moved or we're rebinding controls
-        if (!global.__input_mouse_moved && (_rebind_state <= 0))
+        if (global.__input_cursor_verbs_valid && (!global.__input_pointer_moved || !_can_use_mouse) && (__player.__rebind_state <= 0))
         {
-            if ((global.__input_cursor_verb_u != undefined)
-            &&  (global.__input_cursor_verb_d != undefined)
-            &&  (global.__input_cursor_verb_l != undefined)
-            &&  (global.__input_cursor_verb_r != undefined))
+            var _xy = input_xy(INPUT_CURSOR_VERB_LEFT, INPUT_CURSOR_VERB_RIGHT, INPUT_CURSOR_VERB_UP, INPUT_CURSOR_VERB_DOWN, __player.__index);
+            if ((_xy.x != 0.0) || (_xy.y != 0.0))
             {
-                var _xy = input_xy(global.__input_cursor_verb_l, global.__input_cursor_verb_r, global.__input_cursor_verb_u, global.__input_cursor_verb_d, other);
-                if ((_xy.x != 0.0) || (_xy.y != 0.0))
+                __using_mouse = false;
+                
+                if (INPUT_CURSOR_EXPONENT != 1)
                 {
-                    global.__input_cursor_using_mouse = false;
-                    x += global.__input_cursor_speed*_xy.x;
-                    y += global.__input_cursor_speed*_xy.y;
+                    var _coeff = power(point_distance(0, 0, _xy.x, _xy.y), INPUT_CURSOR_EXPONENT);
+                    __x += __speed*_coeff*_xy.x;
+                    __y += __speed*_coeff*_xy.y;
+                }
+                else
+                {
+                    __x += __speed*_xy.x;
+                    __y += __speed*_xy.y;
                 }
             }
         }
         
-        if ((x != prev_x) || (y != prev_y)) moved_time = __input_get_time();
+        if ((__elastic_strength > 0) && !__using_mouse)
+        {
+            //Scale up movement so that even with elastic mode on the cursor has a full range of motion
+            __x += (__x - __prev_x) / __elastic_strength;
+            __y += (__y - __prev_y) / __elastic_strength;
+            
+            //The oldies are usually the goodies
+            __x = lerp(__x, __elastic_x, __elastic_strength);
+            __y = lerp(__y, __elastic_y, __elastic_strength);
+        }
+        
+        if ((__x != __prev_x) || (__y != __prev_y)) __moved_time = __input_get_time();
+        
+        __limit();
     }
     
-    limit = function()
+    static __limit = function()
     {
-        if ((limit_l != undefined)
-        &&  (limit_t != undefined)
-        &&  (limit_r != undefined)
-        &&  (limit_b != undefined))
+        if ((__limit_l != undefined)
+        &&  (__limit_t != undefined)
+        &&  (__limit_r != undefined)
+        &&  (__limit_b != undefined))
         {
-            x = clamp(x, limit_l, limit_r);
-            y = clamp(y, limit_t, limit_b);
+            __x = clamp(__x, __limit_l, __limit_r);
+            __y = clamp(__y, __limit_t, __limit_b);
         }
-        else if ((limit_x != undefined) && (limit_y != undefined) && (limit_radius != undefined))
+        else if ((__limit_x      != undefined)
+                &&  (__limit_y      != undefined)
+                &&  (__limit_radius != undefined))
         {
-            var _dx = x - limit_x;
-            var _dy = y - limit_y;
+            var _dx = __x - __limit_x;
+            var _dy = __y - __limit_y;
             var _d  = sqrt(_dx*_dx + _dy*_dy);
             
-            if ((_d > 0) && (_d > limit_radius))
+            if ((_d > 0) && (_d > __limit_radius))
             {
-                _d = limit_radius / _d;
-                 x = limit_x + _d*_dx;
-                 y = limit_y + _d*_dy;
+                _d = __limit_radius / _d;
+                __x = __limit_x + _d*_dx;
+                __y = __limit_y + _d*_dy;
             }
         }
     }

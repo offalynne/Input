@@ -1,10 +1,13 @@
-/// @param gamepadIndex
-/// @param GMconstant
+/// @desc    Checks if the given button/axis is newly deactivated this frame
+/// @param   gamepadIndex
+/// @param   GMconstant
 
 function input_gamepad_check_released(_index, _gm)
 {
-    if (global.__input_cleared || (_index < 0)
-    || (_index >= array_length(global.__input_gamepads)))
+    if (global.__input_cleared
+    ||  (_index == undefined)
+    ||  (_index < 0)
+    ||  (_index >= array_length(global.__input_gamepads)))
     {
         return false;
     }

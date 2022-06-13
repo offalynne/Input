@@ -1,5 +1,7 @@
-/// @param axis
-/// @param [playerIndex]
+/// @desc    Returns the activation threshold for a specific gamepad axis for a player
+///          If no activation threshold has been set this function returns <undefined>
+/// @param   axis
+/// @param   [playerIndex]
 
 function input_axis_threshold_get(_axis, _player_index = 0)
 {
@@ -15,8 +17,5 @@ function input_axis_threshold_get(_axis, _player_index = 0)
         return undefined;
     }
     
-    with(global.__input_players[_player_index])
-    {
-        return axis_threshold_get(_axis);
-    }
+    return global.__input_players[_player_index].__axis_threshold_get(_axis);
 }

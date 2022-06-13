@@ -2,7 +2,8 @@ __input_initialize();
 
 function __input_initialize()
 {
-    if (variable_global_exists("__input_frame")) exit;
+    if (variable_global_exists("__input_initialization_phase")) return false;
+    global.__input_initialization_phase = "Pending";
     
     //Set up the extended debug functionality
     global.__input_debug_log = "input___" + string_replace_all(string_replace_all(date_datetime_string(date_current_datetime()), ":", "-"), " ", "___") + ".txt";
@@ -14,19 +15,53 @@ function __input_initialize()
     
     __input_trace("Welcome to Input by @jujuadams and @offalynne! This is version ", __INPUT_VERSION, ", ", __INPUT_DATE);
     
-    //Global frame counter. This is used for input buffering
+    //Attempt to set up a time source for slick automatic input handling
+    try
+    {
+        //GMS2022.500.58 runtime
+        global.__input_time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
+        {
+            __input_system_tick();
+        }, [], -1);
+        
+        time_source_start(global.__input_time_source);
+    }
+    catch(_error)
+    {
+        try
+        {
+            //Early GMS2022.500.xx runtimes
+            global.__input_time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
+            {
+                __input_system_tick();
+            }, -1);
+            
+            time_source_start(global.__input_time_source);
+        }
+        catch(_error)
+        {
+            //If the above fails then fall back on needing to call input_tick()
+            global.__input_time_source = undefined;
+            __input_trace("Warning! Running on a GM runtime earlier than 2022.5");
+        }
+    }
+    
+    //Global frame counter and realtime tracker. This is used for input buffering
     global.__input_frame = 0;
+    global.__input_current_time = current_time;
+    global.__input_previous_current_time = current_time;
     
     //Whether momentary input has been cleared
     global.__input_cleared = false;
     
-    //Mouse tracking variables. These are used to detect when the mouse has moved
-    global.__input_mouse_x     = 0;
-    global.__input_mouse_y     = 0;
-    global.__input_mouse_moved = false;
-    
     //Windows focus tracking
     global.__input_window_focus = true;
+    
+    //Accessibility state
+    global.__input_toggle_momentary_dict  = {};
+    global.__input_toggle_momentary_state = false;
+    global.__input_cooldown_dict          = {};
+    global.__input_cooldown_state         = false;
     
     //Windows tap-to-click tracking
     global.__input_tap_presses  = 0;
@@ -39,20 +74,27 @@ function __input_initialize()
     global.__input_pointer_released      = false;
     global.__input_pointer_pressed_index = undefined;
     global.__input_pointer_durations     = array_create(INPUT_MAX_TOUCHPOINTS, 0);
+    global.__input_pointer_coord_space   = INPUT_COORD_SPACE.ROOM;
+    global.__input_pointer_x             = array_create(INPUT_COORD_SPACE.__SIZE, 0);
+    global.__input_pointer_y             = array_create(INPUT_COORD_SPACE.__SIZE, 0);
+    global.__input_pointer_dx            = array_create(INPUT_COORD_SPACE.__SIZE, 0);
+    global.__input_pointer_dy            = array_create(INPUT_COORD_SPACE.__SIZE, 0);
+    global.__input_pointer_moved         = false;
     
-    //Cursor tracking variables. This is Input's abstraction layer for the mouse, allowing mouse-like functionality cross-platform
-    global.__input_cursor_verb_u      = undefined;
-    global.__input_cursor_verb_d      = undefined;
-    global.__input_cursor_verb_l      = undefined;
-    global.__input_cursor_verb_r      = undefined;
-    global.__input_cursor_speed       = 0;
-    global.__input_cursor_using_mouse = true;
+    global.__input_mouse_capture             = false;
+    global.__input_mouse_capture_sensitivity = false;
+    global.__input_mouse_capture_frame       = false;
+    
+    //Whether to strictly verify bindings match auto profiles
+    //This is set to <true> on boot, causing Input to throw an error, otherwise this is <false>
+    //If an invalid binding is set during normal gameplay then a warning message is emitted to the console
+    global.__input_strict_binding_check = false;
     
     //Whether these particular input sources are valid
     //This is determined by what default keybindings are set up
-    global.__input_keyboard_default_defined = false;
-    global.__input_mouse_default_defined    = false;
-    global.__input_gamepad_default_defined  = false;
+    global.__input_any_keyboard_binding_defined = false;
+    global.__input_any_mouse_binding_defined    = false;
+    global.__input_any_gamepad_binding_defined  = false;
     
     //Disallow keyboard bindings on specified platforms unless explicitly enabled
     global.__input_keyboard_allowed = (__INPUT_KEYBOARD_SUPPORT && ((os_type != os_android) || INPUT_ANDROID_KEYBOARD_ALLOWED) && ((os_type != os_switch) || INPUT_SWITCH_KEYBOARD_ALLOWED));
@@ -63,20 +105,32 @@ function __input_initialize()
     //Whether mouse is blocked due to Window focus state
     global.__input_mouse_blocked = false;
     
+    global.__input_cursor_verbs_valid = false;
+    
     //Whether to swap A/B gamepad buttons for default bindings
     global.__input_swap_ab = false;
+    
+    //Arrays/dictionaries to track verbs, chords, and combos
+    global.__input_all_verb_dict  = {};
+    global.__input_all_verb_array = [];
+    
+    global.__input_basic_verb_dict  = {};
+    global.__input_basic_verb_array = [];
+    
+    global.__input_chord_verb_dict  = {};
+    global.__input_chord_verb_array = [];
+    
+    global.__input_combo_verb_dict  = {};
+    global.__input_combo_verb_array = [];
+    
+    //Struct to store keyboard key names
+     global.__input_key_name_dict = {};
     
     //Struct to store all the keyboard keys we want to ignore
     global.__input_ignore_key_dict = {};
     
     //Struct to store ignored gamepad types
-    global.__input_ignore_gamepad_types = {}
-    
-    //Names for sources. I suspect this'll get sliced out at some point when I start recoding the binding system to serialise per controller type
-    global.__input_config_category_names = ["none",               //INPUT_SOURCE.NONE
-                                            "keyboard and mouse", //INPUT_SOURCE.KEYBOARD_AND_MOUSE
-                                            "gamepad",            //INPUT_SOURCE.GAMEPAD
-                                            "joycon"];
+    global.__input_ignore_gamepad_types = {};
     
     //Two structs that are returned by input_players_get_status() and input_gamepads_get_status()
     //These are "static" structs that are reset and populated by input_tick()
@@ -91,28 +145,48 @@ function __input_initialize()
         any_changed: false,
         new_connections: [],
         new_disconnections: [],
-        gamepads: array_create(gamepad_get_device_count(), INPUT_STATUS.DISCONNECTED),
-    }
-    
-    //Array of players. Each player is a struct (instanceof __input_class_player) that contains lotsa juicy information
-    global.__input_players = array_create(INPUT_MAX_PLAYERS, undefined);
-    var _p = 0;
-    repeat(INPUT_MAX_PLAYERS)
-    {
-        global.__input_players[@ _p] = new __input_class_player();
-        ++_p;
+        gamepads: array_create(INPUT_MAX_GAMEPADS, INPUT_STATUS.DISCONNECTED),
     }
     
     //The default player. This player struct holds default binding data
     global.__input_default_player = new __input_class_player();
     
-    //The last player (struct) that was rebinding a key. Used for input_rebind_undo()
-    global.__input_rebind_last_player = undefined;
+    //Array of players. Each player is a struct (instanceof __input_class_player) that contains lotsa juicy information
+    global.__input_players = array_create(INPUT_MAX_PLAYERS, undefined);
+    
+    var _p = 0;
+    repeat(INPUT_MAX_PLAYERS)
+    {
+        with(new __input_class_player())
+        {
+            global.__input_players[@ _p] = self;
+            __index = _p;
+        }
+        
+        ++_p;
+    }
+    
+    enum INPUT_SOURCE_MODE
+    {
+        FIXED,        //Player sources won't change unless manually editted
+        JOIN,         //Starts source assignment, typically used for multiplayer
+        HOTSWAP,      //Player 0's source is determined by most recent input
+        MIXED,        //Player 0 can use a mixture of keyboard, mouse, and any gamepad
+        MULTIDEVICE, //Player 0 can use a mixture of keyboard, mouse, and any gamepad, but gamepad bindings are specific to each device
+    }
+    
+    global.__input_source_mode = undefined;
+    
+    //Multiplayer source assignment state
+    //This is set by input_multiplayer_set()
+    global.__input_multiplayer_min       = 1;
+    global.__input_multiplayer_max       = INPUT_MAX_PLAYERS;
+    global.__input_multiplayer_drop_down = true;
     
     //Array of currently connected gamepads. If an element is <undefined> then the gamepad is disconnected
     //Each gamepad in this array is an instance of __input_class_gamepad
     //Gamepad structs contain remapping information and current button state
-    global.__input_gamepads = array_create(gamepad_get_device_count(), undefined);
+    global.__input_gamepads = array_create(INPUT_MAX_GAMEPADS, undefined);
     
     //Our database of SDL2 definitions, used for the aforementioned remapping information
     global.__input_sdl2_database = {
@@ -271,6 +345,8 @@ function __input_initialize()
     
     #endregion
     
+    
+    
     #region Gamepad device blocklist
     
     global.__input_blacklist_dictionary = {};
@@ -292,34 +368,117 @@ function __input_initialize()
     }
     
     #endregion
+
+
+
+    #region Key names
+
+    __input_key_name_set(vk_backtick,   "`");
+    __input_key_name_set(vk_hyphen,     "-");
+    __input_key_name_set(vk_equals,     "=");
+    __input_key_name_set(vk_semicolon,  ";");
+    __input_key_name_set(vk_apostrophe, "'");
+    __input_key_name_set(vk_comma,      ",");
+    __input_key_name_set(vk_period,     ".");
+    __input_key_name_set(vk_rbracket,   "]");
+    __input_key_name_set(vk_lbracket,   "[");
+    __input_key_name_set(vk_fslash,     "/");
+    __input_key_name_set(vk_bslash,     "\\");
+
+    __input_key_name_set(vk_scrollock, "scroll lock");
+    __input_key_name_set(vk_capslock,  "caps lock");
+    __input_key_name_set(vk_numlock,   "num lock");
+    __input_key_name_set(vk_lmeta,     "left meta");
+    __input_key_name_set(vk_rmeta,     "right meta");
+    __input_key_name_set(vk_clear,     "clear");
+    __input_key_name_set(vk_menu,      "menu");
+
+    __input_key_name_set(vk_printscreen, "print screen");
+    __input_key_name_set(vk_pause,       "pause break");
     
-    #region Gamepad button labels and colors
+    __input_key_name_set(vk_escape,    "escape");
+    __input_key_name_set(vk_backspace, "backspace");
+    __input_key_name_set(vk_space,     "space");
+    __input_key_name_set(vk_enter,     "enter");
     
-    global.__input_button_label_dictionary = {};
-    global.__input_button_color_dictionary = {};
+    __input_key_name_set(vk_up,    "arrow up");
+    __input_key_name_set(vk_down,  "arrow down");
+    __input_key_name_set(vk_left,  "arrow left");
+    __input_key_name_set(vk_right, "arrow right");
     
-    if (INPUT_LOAD_BUTTON_LABELS_AND_COLORS)
+    __input_key_name_set(vk_tab,      "tab");
+    __input_key_name_set(vk_ralt,     "right alt");
+    __input_key_name_set(vk_lalt,     "left alt");
+    __input_key_name_set(vk_alt,      "alt");
+    __input_key_name_set(vk_rshift,   "right shift");
+    __input_key_name_set(vk_lshift,   "left shift");
+    __input_key_name_set(vk_shift,    "shift");
+    __input_key_name_set(vk_rcontrol, "right ctrl");
+    __input_key_name_set(vk_lcontrol, "left ctrl");
+    __input_key_name_set(vk_control,  "ctrl");
+
+    __input_key_name_set(vk_f1,  "f1");
+    __input_key_name_set(vk_f2,  "f2");
+    __input_key_name_set(vk_f3,  "f3");
+    __input_key_name_set(vk_f4,  "f4");
+    __input_key_name_set(vk_f5,  "f5");
+    __input_key_name_set(vk_f6,  "f6");
+    __input_key_name_set(vk_f7,  "f7");
+    __input_key_name_set(vk_f8,  "f8");
+    __input_key_name_set(vk_f9,  "f9");
+    __input_key_name_set(vk_f10, "f10");
+    __input_key_name_set(vk_f11, "f11");
+    __input_key_name_set(vk_f12, "f12");
+
+    __input_key_name_set(vk_divide,   "numpad /");
+    __input_key_name_set(vk_multiply, "numpad *");
+    __input_key_name_set(vk_subtract, "numpad -");
+    __input_key_name_set(vk_add,      "numpad +");
+    __input_key_name_set(vk_decimal,  "numpad .");
+
+    __input_key_name_set(vk_numpad0, "numpad 0");
+    __input_key_name_set(vk_numpad1, "numpad 1");
+    __input_key_name_set(vk_numpad2, "numpad 2");
+    __input_key_name_set(vk_numpad3, "numpad 3");
+    __input_key_name_set(vk_numpad4, "numpad 4");
+    __input_key_name_set(vk_numpad5, "numpad 5");
+    __input_key_name_set(vk_numpad6, "numpad 6");
+    __input_key_name_set(vk_numpad7, "numpad 7");
+    __input_key_name_set(vk_numpad8, "numpad 8");
+    __input_key_name_set(vk_numpad9, "numpad 9");
+
+    __input_key_name_set(vk_delete,   "delete");
+    __input_key_name_set(vk_insert,   "insert");
+    __input_key_name_set(vk_home,     "home");
+    __input_key_name_set(vk_pageup,   "page up");
+    __input_key_name_set(vk_pagedown, "page down");
+    __input_key_name_set(vk_end,      "end");
+   
+    //Name newline character after Enter
+    __input_key_name_set(10, global.__input_key_name_dict[$ vk_enter]);
+    
+    //Reset F11 and F12 keycodes on certain platforms
+    if ((os_type == os_switch) || (os_type == os_linux) || (os_type == os_macosx))
     {
-        if (file_exists(INPUT_BUTTON_LABEL_PATH))
-        {
-            __input_load_button_label_csv(INPUT_BUTTON_LABEL_PATH);
-        }
-        else
-        {
-            __input_trace("Warning! \"", INPUT_BUTTON_LABEL_PATH, "\" not found in Included Files");
-        }
-        
-        if (file_exists(INPUT_BUTTON_COLOR_PATH))
-        {
-            __input_load_button_color_csv(INPUT_BUTTON_COLOR_PATH);
-        }
-        else
-        {
-            __input_trace("Warning! \"", INPUT_BUTTON_COLOR_PATH, "\" not found in Included Files");
-        }
+        __input_key_name_set(128, "f11");
+        __input_key_name_set(129, "f12");
+    }
+   
+    //F13 to F32 on Windows and Web
+    if ((os_type == os_windows) || (__INPUT_ON_WEB))
+    {
+        for(var _i = vk_f1 + 12; _i < vk_f1 + 32; _i++) __input_key_name_set(_i, "f" + string(_i));
+    }
+    
+    //Numeric keys 2-7 on Switch
+    if (os_type == os_switch)
+    {
+        for(var _i = 2; _i <= 7; _i++) __input_key_name_set(_i, __input_key_get_name(ord(_i)));
     }
     
     #endregion
+
+
 
     #region Ignored keys
     
@@ -329,8 +488,8 @@ function __input_initialize()
         input_ignore_key_add(vk_alt);
         input_ignore_key_add(vk_ralt);
         input_ignore_key_add(vk_lalt);
-        input_ignore_key_add(vk_meta1);
-        input_ignore_key_add(vk_meta2);
+        input_ignore_key_add(vk_lmeta);
+        input_ignore_key_add(vk_rmeta);
         
         input_ignore_key_add(0xFF); //Vendor key
         
@@ -351,43 +510,15 @@ function __input_initialize()
                 input_ignore_key_add(vk_f11); //Fullscreen
             }
         }
-        
-        if (os_type == os_uwp)
-        {
-            input_ignore_key_add(195); //XInput A 
-            input_ignore_key_add(196); //XInput B 
-            input_ignore_key_add(197); //XInput X 
-            input_ignore_key_add(198); //XInput Y 
-            input_ignore_key_add(200); //XInput LB 
-            input_ignore_key_add(199); //XInput RB 
-            input_ignore_key_add(201); //XInput LT 
-            input_ignore_key_add(202); //XInput RT 
-            input_ignore_key_add(209); //XInput LS 
-            input_ignore_key_add(210); //XInput RS 
-            input_ignore_key_add(208); //XInput Back 
-            input_ignore_key_add(207); //XInput Start         
-            input_ignore_key_add(203); //XInput DP Up 
-            input_ignore_key_add(204); //XInput DP Down 
-            input_ignore_key_add(205); //XInput DP Left
-            input_ignore_key_add(206); //XInput DP Right        
-            input_ignore_key_add(214); //XInput -LX
-            input_ignore_key_add(213); //XInput +LX 
-            input_ignore_key_add(211); //XInput -LY 
-            input_ignore_key_add(212); //XInput +LY 
-            input_ignore_key_add(218); //XInput -RX 
-            input_ignore_key_add(217); //XInput +RX 
-            input_ignore_key_add(215); //XInput -RY 
-            input_ignore_key_add(216); //XInput +RY 
-        }
     }
     
     //Keyboard ignore level 2+
     if (INPUT_IGNORE_RESERVED_KEYS_LEVEL > 1)
     {
-        input_ignore_key_add(144); //Num Lock
-        input_ignore_key_add(145); //Scroll Lock
+        input_ignore_key_add(vk_numlock);   //Num Lock
+        input_ignore_key_add(vk_scrollock); //Scroll Lock
         
-        if (__INPUT_ON_WEB || (os_type == os_windows) || (os_type == os_uwp))
+        if (__INPUT_ON_WEB || (os_type == os_windows))
         {
             input_ignore_key_add(0x15); //IME Kana/Hanguel
             input_ignore_key_add(0x16); //IME On
@@ -427,6 +558,8 @@ function __input_initialize()
     }
     
     #endregion
+    
+    
     
     #region Steam Input
     
@@ -502,7 +635,135 @@ function __input_initialize()
 
     #endregion
     
+    
+    
+    #region Keyboard locale
+    
+    var _locale = os_get_language() + "-" + os_get_region();
+    switch(_locale)
+    {
+        case "en-US": case "en-":
+        case "en-GB": case "-":
+            INPUT_KEYBOARD_LOCALE = "QWERTY";
+        break;
+
+        case "ar-DZ": case "ar-MA": case "ar-TN":
+        case "fr-BE": case "fr-FR": case "fr-MC":
+        case "co-FR": case "oc-FR": case "ff-SN": 
+        case "wo-SN": case "gsw-FR": 
+        case "nl-BE": case "tzm-DZ":
+            INPUT_KEYBOARD_LOCALE = "AZERTY";
+        break;  
+
+        case "cs-CZ": case "de-AT": case "de-CH": 
+        case "de-DE": case "de-LI": case "de-LU": 
+        case "fr-CH": case "fr-LU": case "sq-AL":
+        case "hr-BA": case "hr-HR": case "hu-HU":
+        case "lb-LU": case "rm-CH": case "sk-SK": 
+        case "sl-SI": case "dsb-DE":
+        case "sr-BA": case "hsb-DE":
+            INPUT_KEYBOARD_LOCALE = "QWERTZ";
+        break;
+
+        default:
+            INPUT_KEYBOARD_LOCALE = "QWERTY";
+        break;
+    }
+    
+    #endregion 
+    
+    
+    
+    #region Keyboard type
+    
+    if (__INPUT_ON_CONSOLE || (__INPUT_ON_WEB && !__INPUT_ON_DESKTOP))
+    {
+        INPUT_KEYBOARD_TYPE = "async";
+    }
+    else if (__INPUT_ON_MOBILE)
+    {
+        var _ret = "virtual";
+        if (os_type == os_android)
+        {
+            var _map = os_get_info();
+            if (ds_exists(_map, ds_type_map))
+            {
+                if (_map[? "PHYSICAL_KEYBOARD"])
+                {
+                    _ret = "keyboard";
+                }
+
+                ds_map_destroy(_map);
+            }
+        }
+
+        INPUT_KEYBOARD_TYPE = _ret;
+    }
+    else
+    {
+        INPUT_KEYBOARD_TYPE = "keyboard";
+    }
+    
+    #endregion
+    
+    
+    
     //By default GameMaker registers double click (or tap) as right mouse button
     //We want to be able to identify the actual mouse buttons correctly, and have our own double-input handling
     device_mouse_dbclick_enable(false);
+    
+    global.__input_profile_array         = undefined;
+    global.__input_profile_dict          = undefined;
+    global.__input_default_profile_dict  = undefined;
+    global.__input_verb_to_group_dict    = {};
+    global.__input_group_to_verbs_dict   = {};
+    global.__input_verb_group_array      = [];
+    global.__input_null_binding          = input_binding_empty();
+    
+    
+    
+    //Build out the sources
+    INPUT_KEYBOARD = new __input_class_source(__INPUT_SOURCE.KEYBOARD);
+    INPUT_MOUSE = INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER? INPUT_KEYBOARD : (new __input_class_source(__INPUT_SOURCE.MOUSE));
+    
+    INPUT_GAMEPAD = array_create(INPUT_MAX_GAMEPADS, undefined);
+    var _g = 0;
+    repeat(INPUT_MAX_GAMEPADS)
+    {
+        INPUT_GAMEPAD[@ _g] = new __input_class_source(__INPUT_SOURCE.GAMEPAD, _g);
+        ++_g;
+    }
+    
+    
+    
+    global.__input_initialization_phase = "__input_finalize_default_profiles";
+    __input_config_profiles_and_default_bindings();
+    
+    global.__input_initialization_phase = "__input_finalize_verb_groups";
+    __input_config_verbs();
+    
+    
+    
+    //Resolve the starting source mode
+    input_source_mode_set(INPUT_STARTING_SOURCE_MODE);
+    
+    if (INPUT_STARTING_SOURCE_MODE == INPUT_SOURCE_MODE.MIXED)
+    {
+        if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MIXED)) __input_error("Default profile for mixed \"", INPUT_AUTO_PROFILE_FOR_MIXED, "\" has not been defined in INPUT_DEFAULT_PROFILES");
+        input_profile_set(INPUT_AUTO_PROFILE_FOR_MIXED);
+    }
+    else if (INPUT_STARTING_SOURCE_MODE == INPUT_SOURCE_MODE.MULTIDEVICE)
+    {
+        if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MULTIDEVICE)) __input_error("Default profile for multidevice \"", INPUT_AUTO_PROFILE_FOR_MULTIDEVICE, "\" has not been defined in INPUT_DEFAULT_PROFILES");
+        input_profile_set(INPUT_AUTO_PROFILE_FOR_MULTIDEVICE);
+    }
+    
+    
+    
+    //Make sure we're not misconfigured
+    __input_validate_macros();
+    
+    global.__input_initialization_phase = "Complete";
+    
+    return true;
 }

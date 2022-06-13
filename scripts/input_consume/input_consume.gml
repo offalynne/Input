@@ -1,5 +1,6 @@
-/// @param verb
-/// @param [playerIndex]
+/// @desc    Deactivates a verb until the button (or other physical input) is released and pressed again
+/// @param   verb
+/// @param   [playerIndex]
 
 function input_consume(_verb, _player_index = 0)
 {
@@ -17,7 +18,7 @@ function input_consume(_verb, _player_index = 0)
     
     if (_verb == all)
     {
-        var _verb_names = variable_struct_get_names(global.__input_players[_player_index].verbs);
+        var _verb_names = variable_struct_get_names(global.__input_players[_player_index].__verb_state_dict);
         var _v = 0;
         repeat(array_length(_verb_names))
         {
@@ -27,7 +28,7 @@ function input_consume(_verb, _player_index = 0)
     }
     else
     {
-        var _verb_struct = global.__input_players[_player_index].verbs[$ _verb];
+        var _verb_struct = global.__input_players[_player_index].__verb_state_dict[$ _verb];
         if (!is_struct(_verb_struct))
         {
             __input_error("Verb not recognised (", _verb, ")");
@@ -36,8 +37,14 @@ function input_consume(_verb, _player_index = 0)
         
         with(_verb_struct)
         {
-            consumed      = true;
-            previous_held = true; //Force the held state on to avoid unwanted early reset of a consumed verb
+            __consumed     = true;
+            previous_held  = true; //Force the held state on to avoid unwanted early reset of a __consumed verb
+            __inactive     = true;
+            __toggle_state = false; //Used for "toggle momentary" accessibility feature
         }
+        
+        //If this verb is a combo then also reset the combo's state
+        var _combo_state = global.__input_players[_player_index].__combo_state_dict[$ _verb];
+        if (is_struct(_combo_state)) _combo_state.__reset();
     }
 }

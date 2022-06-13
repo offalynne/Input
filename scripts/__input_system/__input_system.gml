@@ -1,7 +1,23 @@
-#macro __INPUT_VERSION "4.2.0.2"
-#macro __INPUT_DATE    "2022-05-22"
+#macro __INPUT_VERSION "5.0.2"
+#macro __INPUT_DATE    "2022-06-12"
 #macro __INPUT_DEBUG   false
 
+#macro __INPUT_BINDING_KEY               "key"
+#macro __INPUT_BINDING_MOUSE_BUTTON      "mouse button"
+#macro __INPUT_BINDING_MOUSE_WHEEL_UP    "mouse wheel up"
+#macro __INPUT_BINDING_MOUSE_WHEEL_DOWN  "mouse wheel down"
+#macro __INPUT_BINDING_GAMEPAD_BUTTON    "gamepad button"
+#macro __INPUT_BINDING_GAMEPAD_AXIS      "gamepad axis"
+
+#macro INPUT_ICONS  global.__input_icons =
+
+#macro INPUT_KEYBOARD      global.__input_source_keyboard
+#macro INPUT_MOUSE         global.__input_source_mouse
+#macro INPUT_GAMEPAD       global.__input_source_gamepad
+#macro INPUT_MAX_GAMEPADS  12
+
+#macro INPUT_KEYBOARD_LOCALE  global.__input_keyboard_locale
+#macro INPUT_KEYBOARD_TYPE    global.__input_keyboard_type
 
 #macro __INPUT_ON_PS       ((os_type == os_ps4)     || (os_type == os_ps5))
 #macro __INPUT_ON_XDK      ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
@@ -14,13 +30,15 @@
 #macro __INPUT_ON_OPERAGX  (os_type == os_operagx)
 #macro __INPUT_ON_WEB      ((os_browser != browser_not_a_browser) || __INPUT_ON_OPERAGX)
 
-#macro __INPUT_TOUCH_SUPPORT      (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch) || ((os_type == os_uwp) && uwp_device_touchscreen_available()))
-#macro __INPUT_KEYBOARD_NORMATIVE (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch) ||  (os_type == os_uwp))
+#macro __INPUT_TOUCH_SUPPORT      (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch))
+#macro __INPUT_KEYBOARD_NORMATIVE (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch))
 #macro __INPUT_KEYBOARD_SUPPORT   (__INPUT_KEYBOARD_NORMATIVE || (os_type == os_android))
 
 #macro __INPUT_SDL2_SUPPORT  (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || (os_type == os_android)))
 
 #macro __INPUT_HOLD_THRESHOLD  0.2 //Minimum value from an axis for that axis to be considered activated at the gamepad layer. This is *not* the same as min/max thresholds for players
+
+#macro __INPUT_RATE_LIMIT_DURATION  500 //In milliseconds
 
 //Valid keycode bounds
 #macro __INPUT_KEYCODE_MIN 8
@@ -36,25 +54,26 @@
 #macro gp_paddle4   32795
 
 //Extended keycode constants
-#macro vk_meta1  91
-#macro vk_meta2  92
+#macro vk_clear       12
+#macro vk_capslock    20
+#macro vk_menu        93
+#macro vk_scrollock   145
+                      
+#macro vk_semicolon   186
+#macro vk_comma       188
+#macro vk_fslash      191
+#macro vk_bslash      220
+#macro vk_lbracket    219
+#macro vk_rbracket    221
 
-#macro vk_capslock   20
-#macro vk_scrollock  145
-#macro vk_numlock    ((__INPUT_ON_APPLE && __INPUT_ON_WEB) ? 12 : 144)
-
-#macro vk_semicolon  186
-#macro vk_comma      188
-#macro vk_fslash     191
-#macro vk_bslash     220
-#macro vk_lbracket   219
-#macro vk_rbracket   221
-
-#macro vk_apostrophe  (((os_type == os_macosx) && !__INPUT_ON_WEB) ? 192 : 222)
-#macro vk_equals      (((os_type == os_macosx) && !__INPUT_ON_WEB) ?  24 : 187)
-#macro vk_hyphen      (((os_type == os_switch) || ((os_type == os_macosx) && !__INPUT_ON_WEB)) ? 109 : 189)
-#macro vk_backtick    ((os_type == os_macosx) ? 50 : ((os_type == os_linux) ? 223 : 192))
-#macro vk_period      ((os_type == os_switch) ? 110 : 190)
+#macro vk_apostrophe (((os_type == os_macosx) && !__INPUT_ON_WEB)? 192 : 222)
+#macro vk_equals     (((os_type == os_macosx) && !__INPUT_ON_WEB)?  24 : 187)
+#macro vk_numlock    ((__INPUT_ON_APPLE && __INPUT_ON_WEB)? 12 : 144)
+#macro vk_hyphen     (((os_type == os_switch) || ((os_type == os_macosx) && !__INPUT_ON_WEB))? 109 : 189)
+#macro vk_rmeta      ((os_type == os_macosx)? ((__INPUT_ON_APPLE && __INPUT_ON_WEB)? 93 : 91) : 92)
+#macro vk_backtick   ((os_type == os_macosx)?  50 : ((os_type == os_linux)? 223 : 192))
+#macro vk_lmeta      ((os_type == os_macosx)?  92 : 91)
+#macro vk_period     ((os_type == os_switch)? 110 : 190)
 
 // gp_axislh     = 32785             32769 = gp_face1
 // gp_axislv     = 32786             32770 = gp_face2
@@ -85,10 +104,10 @@
 // gp_paddle3    = 32794             32794 = gp_paddle3
 // gp_paddle4    = 32795             32795 = gp_paddle4
 
-enum INPUT_SOURCE
+enum __INPUT_SOURCE
 {
-    NONE,
-    KEYBOARD_AND_MOUSE,
+    KEYBOARD,
+    MOUSE,
     GAMEPAD,
     __SIZE
 }
@@ -114,44 +133,31 @@ enum INPUT_STATUS
     CONNECTED          =  2,
 }
 
-#macro INPUT_NO_GAMEPAD  -1
-
-
-
-
-
-//These are globally scoped rather than methods because otherwise they'd get serialised by input_bindings_write()
-
-/// @param source
-function __input_binding_duplicate(_source)
+enum __INPUT_COMBO_STATE
 {
-    with(_source)
-    {
-        var _binding = new __input_class_binding();
-        _binding.type          = type;
-        _binding.value         = value;
-        _binding.axis_negative = axis_negative;
-        _binding.label         = label;
-        if (variable_struct_exists(self, "android_lowercase")) _binding.android_lowercase = android_lowercase;
-        
-        return _binding;
-    }
+    __FAIL    = -1,
+    __WAITING =  0,
+    __SUCCESS =  1,
 }
 
-/// @param from
-/// @param to
-function __input_binding_overwrite(_from, _to)
+enum __INPUT_COMBO_PHASE_TYPE
 {
-    with(_to)
-    {
-        type          = _from.type;
-        value         = _from.value;
-        axis_negative = _from.axis_negative;
-        label         = _from.label;
-    }
-    
-    return _to;
+    __PRESS,
+    __RELEASE,
+    __PRESS_OR_RELEASE,
+    __HOLD_START,
 }
+
+enum __INPUT_VERB_TYPE
+{
+    __BASIC,
+    __CHORD,
+    __COMBO,
+}
+
+
+
+
 
 function __input_axis_is_directional(_axis)
 {
@@ -264,15 +270,43 @@ function __input_error()
         ++_i;
     }
     
-    show_error("Input:\n" + _string + "\n ", false);
+    if (os_browser == browser_not_a_browser)
+    {
+        show_error("Input:\n" + _string + "\n ", false);
+    }
+    else
+    {
+        show_error("Input:\n" + _string + "\n" + string(debug_get_callstack()), false);
+    }
+}
+
+function __input_ensure_unique_verb_name(_name)
+{
+    if (variable_struct_exists(global.__input_basic_verb_dict, _name))
+    {
+        __input_error("A basic verb named \"", _name, "\" already exists");
+        return;
+    }
+    
+    if (variable_struct_exists(global.__input_chord_verb_dict, _name))
+    {
+        __input_error("A chord named \"", _name, "\" already exists");
+        return;
+    }
+    
+    if (variable_struct_exists(global.__input_combo_verb_dict, _name))
+    {
+        __input_error("A combo named \"", _name, "\" already exists");
+        return;
+    }
 }
 
 function __input_get_previous_time()
 {
-    return INPUT_TIMER_MILLISECONDS? (current_time - delta_time/1000) : (global.__input_frame - 1);
+    return INPUT_TIMER_MILLISECONDS? global.__input_previous_current_time : (global.__input_frame - 1);
 }
 
 function __input_get_time()
 {
-    return (INPUT_TIMER_MILLISECONDS? current_time : global.__input_frame);
+    return (INPUT_TIMER_MILLISECONDS? global.__input_current_time : global.__input_frame);
 }
