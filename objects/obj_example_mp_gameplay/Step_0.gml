@@ -4,6 +4,6 @@ if (is_struct(_status))
 {
     if (array_length(_status.new_disconnections) > 0)
     {
-        room_goto(rm_example_mp_join);
+        room_goto(rm_example_mp);
     }
 }

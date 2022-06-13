@@ -22,7 +22,7 @@
   "creationCodeFile": "",
   "inheritCode": false,
   "instanceCreationOrder": [
-    {"name":"inst_B5227B0","path":"rooms/rm_example_mp_join/rm_example_mp_join.yy",},
+    {"name":"inst_B5227B0","path":"rooms/rm_example_mp/rm_example_mp.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,
@@ -50,7 +50,7 @@
     "path": "folders/Examples/Multiplayer.yy",
   },
   "resourceVersion": "1.0",
-  "name": "rm_example_mp_join",
+  "name": "rm_example_mp",
   "tags": [],
   "resourceType": "GMRoom",
 }
