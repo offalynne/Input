@@ -56,7 +56,7 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
-<h3 align="center">Else White</h1>
+<h3 align="center">Els White</h1>
 <p align="center"><i>Documentation</i></p>
 <p align="center">(<a href="https://twitter.com/elskwhite" target="_blank">Twitter</a>)</p>
 
