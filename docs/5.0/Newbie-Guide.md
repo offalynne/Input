@@ -65,7 +65,7 @@ Oh you sweet summer child, did you think we were done?
 
 ## Step 3: Gamepad bindings
 
-Lets go back to our create event for a hot sec.
+Lets go back to our default profiles in `__input_config_profiles_and_bindings()` for a hot sec.
 
 Take a gander at this new code we'll add:
 
