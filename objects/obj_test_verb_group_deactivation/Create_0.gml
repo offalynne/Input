@@ -1,1 +1,0 @@
-input_verb_group_is_active("general");
