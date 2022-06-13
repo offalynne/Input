@@ -1,0 +1,1 @@
+show_error("obj_test_invalid_bindings test case hasn't been set up for Input 5 yet...", true);
