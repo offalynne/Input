@@ -1,1 +1,0 @@
-test_index = 0;
