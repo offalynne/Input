@@ -33,7 +33,7 @@ function input_keyboard_string_frame()
                     ++_i;
                 }
 
-                if (_i != _new_length)
+                if (_i < _new_length)
                 {
                     //Partially subtractive
                     global.__input_keyboard_buffer = string_copy(_new, _i, _new_length);
