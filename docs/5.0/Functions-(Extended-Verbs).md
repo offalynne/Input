@@ -88,6 +88,8 @@ input_combo_create("konami")
 
 This function returns which phase of the combo the player is on. If the player has not started entering a combo, this function returns `0`; if the player has completed the first phase, this function returns `1`; and so on. The maximum value, indicating that the player has completed the combo, that this function can return is equal to `input_combo_get_phase_count()` (see below).
 
+!> This function is not intended as the primary way to check when a combo has been completed. Combos (and chords) are "just verbs" and all [checker functions]() work with them.
+
 &nbsp;
 
 ## `input_combo_get_phase_count(verb)`
