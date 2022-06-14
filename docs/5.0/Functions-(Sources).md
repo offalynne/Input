@@ -95,12 +95,14 @@ If no source has presented new input this function will return `undefined`.
 
 ## `input_source_using(source, [playerIndex])`
 
-*Returns:* Boolean, whether the given [source](Input-Sources) is unassigned
+*Returns:* Boolean, whether the given [source](Input-Sources) is being used by the player
 
 |Name           |Datatype               |Purpose                                             |
 |---------------|-----------------------|----------------------------------------------------|
 |`source`       |[Source](Input-Sources)|[Input source](Input-Sources) to check              |
 |`[playerIndex]`|integer                |Player to target. If not specified, player 0 is used|
+
+This function allows `INPUT_KEYBOARD`, `INPUT_MOUSE` and `INPUT_GAMEPAD[n]` to passed into it to check for specific devices. You may also pass `INPUT_GAMEPAD` (no square brackets) to check if the player has been assigned any gamepad at all.
 
 &nbsp;
 
