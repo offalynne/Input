@@ -30,7 +30,7 @@ function input_keyboard_string_frame()
                 {
                     //Step left to right until character mismatch
                     if (string_char_at(_new, _i) != string_char_at(_old, _i)) break;
-                    _i++;
+                    ++_i;
                 }
 
                 if (_i != _new_length)
