@@ -11,7 +11,7 @@ function input_keyboard_string_frame()
             if (input_keyboard_check_pressed(_last_key) && (keyboard_lastchar == chr(_last_key)))
             {
                 //Use printable key press on Switch platform
-                global.__input_keyboard_buffer = chr(_last_key);
+                global.__input_keyboard_buffer = keyboard_lastchar;
             }
             else
             {
