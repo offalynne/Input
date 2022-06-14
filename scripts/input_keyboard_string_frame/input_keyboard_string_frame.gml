@@ -5,6 +5,7 @@ function input_keyboard_string_frame()
     if (global.__input_keyboard_string_frame != global.__input_frame)
     {
         //Update buffer to latest frame
+        global.__input_keyboard_buffer = "";
         if (os_type == os_switch)
         {
             var _last_key = __input_keyboard_key();
@@ -12,10 +13,6 @@ function input_keyboard_string_frame()
             {
                 //Use printable key press on Switch platform
                 global.__input_keyboard_buffer = keyboard_lastchar;
-            }
-            else
-            {
-                global.__input_keyboard_buffer = "";
             }
         }
         else
@@ -27,7 +24,6 @@ function input_keyboard_string_frame()
             if (_old == _new)
             {
                 //No change
-                global.__input_keyboard_buffer = "";
             }
             else if (string_length(_old) == 0)
             {
@@ -51,12 +47,7 @@ function input_keyboard_string_frame()
                     _i++;
                 }
         
-                if (_i == _new_length)
-                {
-                    //Fully subtractive
-                    global.__input_keyboard_buffer = "";
-                }
-                else
+                if (_i != _new_length)
                 {
                     //Partially subtractive
                     global.__input_keyboard_buffer = string_copy(_new, _i, _new_length);
