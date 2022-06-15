@@ -1,11 +1,13 @@
+function __input_binding_get_icon_compat_parse(_in) {
+    return string_replace_all(_in, " ", "_");
+}
+
 /// @desc    Returns the icon defined in __input_config_icons() for the given binding, taking into account the player's currently assigned source(s)
 /// @param   binding
 /// @param   [playerIndex=0]
-
 function input_binding_get_icon(_binding, _player_index = 0)
 {
-    
-    
+
     if (!input_value_is_binding(_binding))
     {
         return global.__input_icons[$ "not_a_binding"] ?? "not a binding";
@@ -20,6 +22,10 @@ function input_binding_get_icon(_binding, _player_index = 0)
     if ((_type == undefined) || (_label == undefined))
     {
         return global.__input_icons[$ "unknown"] ?? "unknown";
+    }
+    
+    if (INPUT_BINDING_LABEL_COMPAT) {
+        _label = __input_binding_get_icon_compat_parse(_label)
     }
     
     switch(_type)
@@ -39,6 +45,10 @@ function input_binding_get_icon(_binding, _player_index = 0)
         default:
             __input_error("\"", _type, "\" unsupported");
         break;
+    }
+    
+    if (INPUT_SIMPLE_TYPE_COMPAT) {
+        _category = __input_binding_get_icon_compat_parse(_category);
     }
     
     //Try to find the lookup table for this particular category

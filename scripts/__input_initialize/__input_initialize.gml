@@ -1,3 +1,7 @@
+/// This macro toggles simple type lookup compat mode to work around https://github.com/JujuAdams/Input/issues/371
+/// If you are depending on pre 5.0.4 gamepad types you need this to be true
+#macro INPUT_SIMPLE_TYPE_COMPAT true
+
 __input_initialize();
 
 function __input_initialize()
@@ -268,64 +272,121 @@ function __input_initialize()
     
     #endregion
   
-    var _default_xbox_type = "xbox_one"; //Default type assigned to XInput and Xbox-like gamepads
+    
     
     #region Gamepad type identification
     
     //Lookup table for simple gamepad types based on raw types
-    global.__input_simple_type_lookup = {
+    if (INPUT_SIMPLE_TYPE_COMPAT) {
+        var _default_xbox_type = "xbox one"; //Default type assigned to XInput and Xbox-like gamepads
+        
+        global.__input_simple_type_lookup = {
     
-        //Xbox
-        CommunityLikeXBox: _default_xbox_type,
+            //Xbox
+            CommunityLikeXBox: _default_xbox_type,
 
-        XBoxOneController: "xbox_one",
-        SteamControllerV2: "xbox_one",
-        CommunityXBoxOne:  "xbox_one",
-        AppleController:   "xbox_one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
-        CommunityStadia:   "xbox_one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
-        CommunityLuna:     "xbox_one", //  Luna uses Xbox One iconography excepting 'View' button
+            XBoxOneController: "xbox one",
+            SteamControllerV2: "xbox one",
+            CommunityXBoxOne:  "xbox one",
+            AppleController:   "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
+            CommunityStadia:   "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
+            CommunityLuna:     "xbox one", //  Luna uses Xbox One iconography excepting 'View' button
         
-        XBox360Controller:  "xbox_360",
-        CommunityXBox360:   "xbox_360",
-        CommunityDreamcast: "xbox_360", //        Xbox 360 uses Dreamcast iconography
-        SteamController:    "xbox_360", //Steam Controller uses X-Box 360 iconography
-        MobileTouch:        "xbox_360", //      Steam Link uses X-Box 360 iconography
+            XBox360Controller:  "xbox 360",
+            CommunityXBox360:   "xbox 360",
+            CommunityDreamcast: "xbox 360", //        Xbox 360 uses Dreamcast iconography
+            SteamController:    "xbox 360", //Steam Controller uses X-Box 360 iconography
+            MobileTouch:        "xbox 360", //      Steam Link uses X-Box 360 iconography
         
-        //PlayStation
-        PS5Controller: "ps5",
-        PS4Controller: "ps4",
-        CommunityPS4:  "ps4",
-        PS3Controller: "psx",
-        CommunityPSX:  "psx",
+            //PlayStation
+            PS5Controller: "ps5",
+            PS4Controller: "ps4",
+            CommunityPS4:  "ps4",
+            PS3Controller: "psx",
+            CommunityPSX:  "psx",
         
-        //Switch
-        SwitchHandheld:            "switch", //Attached JoyCon pair or Switch Lite
-        SwitchJoyConPair:          "switch",
-        SwitchProController:       "switch",
-        XInputSwitchController:    "switch",
-        SwitchInputOnlyController: "switch",
-        CommunityLikeSwitch:       "switch",
-        Community8BitDo:           "switch", //8BitDo are Switch gamepads (exceptions typed appropriately)
+            //Switch
+            SwitchHandheld:            "switch", //Attached JoyCon pair or Switch Lite
+            SwitchJoyConPair:          "switch",
+            SwitchProController:       "switch",
+            XInputSwitchController:    "switch",
+            SwitchInputOnlyController: "switch",
+            CommunityLikeSwitch:       "switch",
+            Community8BitDo:           "switch", //8BitDo are Switch gamepads (exceptions typed appropriately)
 
-        SwitchJoyConLeft:  "switch_joycon_left",
-        SwitchJoyConRight: "switch_joycon_right",
+            SwitchJoyConLeft:  "switch joycon left",
+            SwitchJoyConRight: "switch joycon right",
         
-        //Legacy
-        CommunityGameCube:     "gamecube",
-        CommunityN64:          "n64",
-        CommunitySaturn:       "saturn",
-        CommunitySNES:         "snes",
-        CommunitySuperFamicom: "snes",
+            //Legacy
+            CommunityGameCube:     "gamecube",
+            CommunityN64:          "n64",
+            CommunitySaturn:       "saturn",
+            CommunitySNES:         "snes",
+            CommunitySuperFamicom: "snes",
         
-        Unknown: "unknown",
-        unknown: "unknown",
+            Unknown: "unknown",
+            unknown: "unknown",
         
-        UnknownNonSteamController: "unknown",
-        CommunityUnknown:          "unknown",
-        CommunitySteam:            "unknown"
+            UnknownNonSteamController: "unknown",
+            CommunityUnknown:          "unknown",
+            CommunitySteam:            "unknown"
+        }
+    } else {
+        var _default_xbox_type = "xbox_one"; //Default type assigned to XInput and Xbox-like gamepads
         
+        global.__input_simple_type_lookup = {
+    
+            //Xbox
+            CommunityLikeXBox: _default_xbox_type,
+
+            XBoxOneController: "xbox_one",
+            SteamControllerV2: "xbox_one",
+            CommunityXBoxOne:  "xbox_one",
+            AppleController:   "xbox_one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
+            CommunityStadia:   "xbox_one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
+            CommunityLuna:     "xbox_one", //  Luna uses Xbox One iconography excepting 'View' button
+        
+            XBox360Controller:  "xbox_360",
+            CommunityXBox360:   "xbox_360",
+            CommunityDreamcast: "xbox_360", //        Xbox 360 uses Dreamcast iconography
+            SteamController:    "xbox_360", //Steam Controller uses X-Box 360 iconography
+            MobileTouch:        "xbox_360", //      Steam Link uses X-Box 360 iconography
+        
+            //PlayStation
+            PS5Controller: "ps5",
+            PS4Controller: "ps4",
+            CommunityPS4:  "ps4",
+            PS3Controller: "psx",
+            CommunityPSX:  "psx",
+        
+            //Switch
+            SwitchHandheld:            "switch", //Attached JoyCon pair or Switch Lite
+            SwitchJoyConPair:          "switch",
+            SwitchProController:       "switch",
+            XInputSwitchController:    "switch",
+            SwitchInputOnlyController: "switch",
+            CommunityLikeSwitch:       "switch",
+            Community8BitDo:           "switch", //8BitDo are Switch gamepads (exceptions typed appropriately)
+
+            SwitchJoyConLeft:  "switch_joycon_left",
+            SwitchJoyConRight: "switch_joycon_right",
+        
+            //Legacy
+            CommunityGameCube:     "gamecube",
+            CommunityN64:          "n64",
+            CommunitySaturn:       "saturn",
+            CommunitySNES:         "snes",
+            CommunitySuperFamicom: "snes",
+        
+            Unknown: "unknown",
+            unknown: "unknown",
+        
+            UnknownNonSteamController: "unknown",
+            CommunityUnknown:          "unknown",
+            CommunitySteam:            "unknown"
+        
+        }
     }
-    
     //Parse controller type database
     global.__input_raw_type_dictionary = { none : _default_xbox_type };
 
