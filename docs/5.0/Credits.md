@@ -80,6 +80,12 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
+<h3 align="center">Julien</h1>
+<p align="center"><i>Documentation corrections</i></p>
+<p align="center">(<a href="https://twitter.com/JuJulienDev" target="_blank">Twitter</a>)</p>
+
+&nbsp;
+
 <h3 align="center">Chequered Ink</h1>
 <p align="center"><i>Logo Design</i></p>
 <p align="center">(<a href="https://chequered.ink/" target="_blank">website</a>)</p>
