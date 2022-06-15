@@ -38,3 +38,4 @@
 - Binding system read/write functions have now been renamed to export/import. More information [here](Functions-(Exporting-and-Importing))
 - Input now supports multiple [binding profiles](Profiles) per player, rendering the old JoyCon-specific functions redundant
 - `input_gamepad_get_button_label()` and `input_gamepad_get_button_color()` have been removed in preference for [`input_binding_get_icon()`](Functions-(Binding-Access)?id=input_binding_get_iconbinding-playerindex), as configued by [`__input_config_icons()`](Configuration?id=icons)
+- `input_player_source_get()` has been replaced by `input_source_using()` due to the fact that players can have more than one device assigned to them

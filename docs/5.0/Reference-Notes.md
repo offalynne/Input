@@ -21,3 +21,14 @@ The following pages include general information about Input's underlying systems
 
 ### [Common Keyboard Combos](Common-Keyboard-Combos)
 *System software bindings to mind when defining a default control scheme*
+- (Steam and GoG)[Common-Keyboard-Combos?id=steam-and-gog]
+- (Discord)[Common-Keyboard-Combos?id=discord]
+- (Windows 10 Xbox Game Bar)[Common-Keyboard-Combos?id=windows-10-xbox-game-bar]
+- (UWP)[Common-Keyboard-Combos?id=uwp]
+- (Epic)[Common-Keyboard-Combos?id=epic]
+- (Origin)[Common-Keyboard-Combos?id=origin]
+- (NVDIA Shadowplay)[Common-Keyboard-Combos?id=nvidia-shadowplay]
+- (GeForce Experience)[Common-Keyboard-Combos?id=geforce-experience]
+- (Parsec)[Common-Keyboard-Combos?id=parsec]
+- (Stadia)[Common-Keyboard-Combos?id=stadia]
+- (Amazon Luna)[Common-Keyboard-Combos?id=luna]

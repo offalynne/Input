@@ -41,7 +41,7 @@ INPUT_DEFAULT_PROFILES = {
 }
 ```
 
-We've got the [`input_binding_key()`](Functions-(Default-Bindings)#input_default_keykey-verb-alternate) functions taking the [normal key values](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/Keyboard_Input.htm) for the standard GM input features and then the verb we want to assign it to.
+We've got the [`input_binding_key()`](Functions-(Binding-Creators)?id=input_binding_keykey) functions taking the [normal key values](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/Keyboard_Input.htm) for the standard GM input features and then the verb we want to assign it to.
 
 Here's a Step event for you to put in a character object or whatever!
 
@@ -83,8 +83,8 @@ INPUT_DEFAULT_PROFILES = {
 	//Bind gamepad controls to verbs
 	gamepad:
 	{
-	    left:  input_binding_gamepad_button(gp_padl),
-	    right: input_binding_gamepad_button(gp_padr),
+        left:  input_binding_gamepad_axis(gp_axislh, true),
+        right: input_binding_gamepad_axis(gp_axislh, false),
 	    shoot: input_binding_gamepad_button(gp_face1),
 	}
 }

@@ -54,13 +54,13 @@
 ## Console Compliance
 
 - [`input_players_get_status()`](Functions-(Players)#input_players_get_status)
-- [`input_binding_gamepad_swap_ab(state)`](Functions-(Binding-System)?id=input_binding_system_swap_gamepad_abstate)
+- [`input_binding_gamepad_swap_ab(state)`](Functions-(Other)?id=input_swap_gamepad_abstate)
 
 &nbsp;
 
 ## Fancy Ways To Use Verbs
 
-- [`input_consume(verb, [playerIndex])`](Functions-(Other)#input_consumeverb-playerindex)
+- [`input_consume(verb, [playerIndex])`](Functions-(Verbs)#input_consumeverb-playerindex)
 - [`input_check_repeat(verb, [playerIndex], [delay], [predelay])`](Functions-(Checkers)#input_check_repeatverb-playerindex-delay-predelay)
 - [`input_check_double(verb, [playerIndex], [bufferDuration])`](Functions-(Checkers)#input_check_doubleverb-playerindex-bufferduration)
 - [`input_check_double_pressed(verb, [playerIndex], [bufferDuration])`](Functions-(Checkers)#input_check_double_pressedverb-playerindex-bufferduration)
@@ -79,7 +79,7 @@
 - [`input_binding_set_safe(verb, binding, [playerIndex], [alternate], [profileName])`](Functions-(Binding-Access)?id=input_binding_set_safeverb-binding-playerindex-alternate-profilename)
 - [`input_profile_reset_bindings(profileName, [playerIndex])`](Functions-(Profiles)?id=input_profile_reset_bindingsprofilename-playerindex)
 - [`input_system_export([outputString], [prettify])`](Functions-(Exporting-and-Importing)?id=input_system_exportoutputstring-prettify)
-- [`input_system_import(stringOrString)`](Functions-(Exporting-and-Importing)?id=input_system_importstringorstring)
+- [`input_system_import(stringOrStruct)`](Functions-(Exporting-and-Importing)?id=input_system_importstringorstruct)
 
 &nbsp;
 
