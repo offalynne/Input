@@ -3,11 +3,11 @@
 #macro __INPUT_DEBUG   false
 
 #macro __INPUT_BINDING_KEY               "key"
-#macro __INPUT_BINDING_MOUSE_BUTTON      "mouse button"
-#macro __INPUT_BINDING_MOUSE_WHEEL_UP    "mouse wheel up"
-#macro __INPUT_BINDING_MOUSE_WHEEL_DOWN  "mouse wheel down"
-#macro __INPUT_BINDING_GAMEPAD_BUTTON    "gamepad button"
-#macro __INPUT_BINDING_GAMEPAD_AXIS      "gamepad axis"
+#macro __INPUT_BINDING_MOUSE_BUTTON      "mouse_button"
+#macro __INPUT_BINDING_MOUSE_WHEEL_UP    "mouse_wheel_up"
+#macro __INPUT_BINDING_MOUSE_WHEEL_DOWN  "mouse_wheel_down"
+#macro __INPUT_BINDING_GAMEPAD_BUTTON    "gamepad_button"
+#macro __INPUT_BINDING_GAMEPAD_AXIS      "gamepad_axis"
 
 #macro INPUT_ICONS  global.__input_icons =
 

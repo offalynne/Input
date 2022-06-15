@@ -268,7 +268,7 @@ function __input_initialize()
     
     #endregion
   
-    var _default_xbox_type = "xbox one"; //Default type assigned to XInput and Xbox-like gamepads
+    var _default_xbox_type = "xbox_one"; //Default type assigned to XInput and Xbox-like gamepads
     
     #region Gamepad type identification
     
@@ -278,18 +278,18 @@ function __input_initialize()
         //Xbox
         CommunityLikeXBox: _default_xbox_type,
 
-        XBoxOneController: "xbox one",
-        SteamControllerV2: "xbox one",
-        CommunityXBoxOne:  "xbox one",
-        AppleController:   "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
-        CommunityStadia:   "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
-        CommunityLuna:     "xbox one", //  Luna uses Xbox One iconography excepting 'View' button
+        XBoxOneController: "xbox_one",
+        SteamControllerV2: "xbox_one",
+        CommunityXBoxOne:  "xbox_one",
+        AppleController:   "xbox_one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
+        CommunityStadia:   "xbox_one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
+        CommunityLuna:     "xbox_one", //  Luna uses Xbox One iconography excepting 'View' button
         
-        XBox360Controller:  "xbox 360",
-        CommunityXBox360:   "xbox 360",
-        CommunityDreamcast: "xbox 360", //        Xbox 360 uses Dreamcast iconography
-        SteamController:    "xbox 360", //Steam Controller uses X-Box 360 iconography
-        MobileTouch:        "xbox 360", //      Steam Link uses X-Box 360 iconography
+        XBox360Controller:  "xbox_360",
+        CommunityXBox360:   "xbox_360",
+        CommunityDreamcast: "xbox_360", //        Xbox 360 uses Dreamcast iconography
+        SteamController:    "xbox_360", //Steam Controller uses X-Box 360 iconography
+        MobileTouch:        "xbox_360", //      Steam Link uses X-Box 360 iconography
         
         //PlayStation
         PS5Controller: "ps5",
@@ -307,8 +307,8 @@ function __input_initialize()
         CommunityLikeSwitch:       "switch",
         Community8BitDo:           "switch", //8BitDo are Switch gamepads (exceptions typed appropriately)
 
-        SwitchJoyConLeft:  "switch joycon left",
-        SwitchJoyConRight: "switch joycon right",
+        SwitchJoyConLeft:  "switch_joycon_left",
+        SwitchJoyConRight: "switch_joycon_right",
         
         //Legacy
         CommunityGameCube:     "gamecube",
