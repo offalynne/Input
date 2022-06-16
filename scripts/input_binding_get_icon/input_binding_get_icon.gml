@@ -6,10 +6,10 @@ function input_binding_get_icon(_binding, _player_index = 0)
 {
     if (!input_value_is_binding(_binding))
     {
-        return global.__input_icons[$ "not a binding"] ?? "not a binding";
+        return global.__input_icons[$ "not_a_binding"] ?? "not a binding";
     }
     
-    var _fallback_icon_struct = global.__input_icons[$ "gamepad fallback"];
+    var _fallback_icon_struct = global.__input_icons[$ "gamepad_fallback"];
     if (!is_struct(_fallback_icon_struct)) __input_trace("Warning! \"gamepad fallback\" icon data not found");
     
     var _type  = _binding.type;
@@ -38,9 +38,12 @@ function input_binding_get_icon(_binding, _player_index = 0)
             __input_error("\"", _type, "\" unsupported");
         break;
     }
-    
+	
+	//YYC workaround
+    var _safe_category = string_replace_all(_category, " ", "_")
+	
     //Try to find the lookup table for this particular category
-    var _icon_struct = global.__input_icons[$ _category];
+    var _icon_struct = global.__input_icons[$ _safe_category];
     if (!is_struct(_icon_struct))
     {
         __input_trace("Warning! \"", _category, "\" icon data not found");
@@ -49,8 +52,11 @@ function input_binding_get_icon(_binding, _player_index = 0)
         _icon_struct = _fallback_icon_struct;
     }
     
-    //
-    var _icon = is_struct(_icon_struct)? _icon_struct[$ _label] : undefined;
+	//YYC workaround
+	var _safe_label = string_replace_all(_label, " ", "_");
+	
+    //Get icon label
+    var _icon = is_struct(_icon_struct)? _icon_struct[$ _safe_label] : undefined;
     
     //Most of the time keyboard and mouse labels don't need to be translated into icons
     if (_category == "keyboard and mouse") return _icon ?? _label;
@@ -59,7 +65,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
     {
         __input_trace("Warning! Could not find valid icon for \"", _label, "\" using \"", _category, "\"");
         
-        _icon = is_struct(_fallback_icon_struct)? _fallback_icon_struct[$ _label] : undefined;
+        _icon = is_struct(_fallback_icon_struct)? _fallback_icon_struct[$ _safe_label] : undefined;
         if (_icon == undefined)
         {
             __input_trace("Warning! Could not find valid icon for \"", _label, "\" using \"gamepad fallback\"");
