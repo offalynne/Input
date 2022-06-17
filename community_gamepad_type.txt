@@ -64,7 +64,7 @@
 1781,057e,CommunitySaturn // Saturn Adapter
 05fd,0253,CommunitySaturn // InterAct ProPad
 05fd,3000,CommunitySaturn // InterAct GoPad
-0079,0122,CommunitySaturn // Retrobit Saturn
+0079,0122,CommunitySaturn // Retro Bit Saturn
 0583,2060,CommunitySaturn // Saturn/SNES
 0079,1824,CommunitySaturn // Mayflash MegaDrive
 0079,18ae,CommunitySaturn // Mayflash MegaDrive
@@ -93,6 +93,7 @@ f000,0008,CommunitySaturn // RetroUSB Genesis
 16c0,0a99,CommunitySaturn // Retronic Adapter
 0ca3,0024,CommunitySaturn // Genesis Mini 3B
 0ca3,0025,CommunitySaturn // Genesis Mini 6B
+1292,4745,CommunitySaturn // Retro Bit Genesis Adapter
 21f8,0019,CommunitySNES // Shogun Bros Chameleon X1
 289b,0056,CommunitySNES // Raphnet SNES
 289b,0057,CommunitySNES // Raphnet SNES
@@ -114,8 +115,9 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 2dc8,5103,CommunitySNES // 8BitDo SN30 Modkit
 1781,0a96,CommunitySNES // SNES Atari USB
 0f00,0001,CommunitySNES // Retro NES
-1292,4643,CommunitySNES // Retrobit NES
-1d57,0021,CommunitySNES // SNES
+1292,4643,CommunitySNES // Retro Bit NES
+1d57,0020,CommunitySNES // Tomee SNES Adapter
+1d57,0021,CommunitySNES // Tomee NES Adapter
 2dc8,02e0,CommunitySNES // 8BitDo N30
 289b,0002,CommunitySNES // Raphnet SNES
 4854,4d43,CommunitySNES // Ystek Micreal SNES
@@ -367,8 +369,8 @@ dead,beef,CommunityPSX // Hidromancer
 0738,3285,CommunityPS4 // Mad Catz Fightpad
 057e,2019,CommunityN64 // NSO N64
 06f7,0001,CommunityN64 // N64 Adaptoid
-2dc8,9002,CommunityN64 // Retro-bit x 8Bitdo RB8-64 (USB)
-2dc8,3830,CommunityN64 // Retro-bit x 8Bitdo RB8-64 (BT)
+2dc8,9002,CommunityN64 // Retro Bit x 8BitDo RB8 64 (USB)
+2dc8,3830,CommunityN64 // Retro Bit x 8BitDo RB8 64 (BT)
 0079,954e,CommunityN64 // Hyperkin N64 Adapter
 0079,1803,CommunityWiiRemote // Mayflash Wii DolphinBar
 289b,0008,CommunityDreamcast // Raphnet Dreamcast Adapter
