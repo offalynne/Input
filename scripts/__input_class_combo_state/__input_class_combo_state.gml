@@ -43,17 +43,24 @@ function __input_class_combo_state(_name, _combo_definition_struct) constructor
         if (__success)
         {
             //Report success until any of the verbs are released
-            
-            var _i = 0;
-            repeat(array_length(__held_verbs_array))
+            if (array_length(__held_verbs_array) <= 0)
             {
-                if (!_player_verbs_struct[$ __held_verbs_array[_i]].held)
+                __reset();
+                return __INPUT_COMBO_STATE.__FAIL;
+            }
+            else
+            {
+                var _i = 0;
+                repeat(array_length(__held_verbs_array))
                 {
-                    __reset();
-                    return __INPUT_COMBO_STATE.__FAIL;
+                    if (!_player_verbs_struct[$ __held_verbs_array[_i]].held)
+                    {
+                        __reset();
+                        return __INPUT_COMBO_STATE.__FAIL;
+                    }
+                    
+                    ++_i;
                 }
-                
-                ++_i;
             }
             
             return __INPUT_COMBO_STATE.__SUCCESS;
@@ -80,29 +87,29 @@ function __input_class_combo_state(_name, _combo_definition_struct) constructor
                     {
                         //Success!
                         __success = true;
-                        __phase = _phase_count - 1;
+                        __phase = _phase_count;
                         
-                        //Convert all pressed verbs to held verbs
-                        var _i = 0;
-                        repeat(array_length(__pressed_verbs_array))
-                        {
-                            var _verb_name = __pressed_verbs_array[_i];
-                            array_push(__held_verbs_array, _verb_name);
-                            __held_verbs_struct[$ _verb_name] = true;
-                            ++_i;
-                        }
-                        
-                        //If we have no verbs to keep tracking then reset the tracker
-                        if (array_length(__held_verbs_array) <= 0)
-                        {
-                            __reset();
-                        }
-                        else
-                        {
-                            //Clear out the pressed verbs (not technically needed but this is safer)
-                            array_resize(__pressed_verbs_array, 0);
-                            __pressed_verbs_dict = {};
-                        }
+                        ////Convert all pressed verbs to held verbs
+                        //var _i = 0;
+                        //repeat(array_length(__pressed_verbs_array))
+                        //{
+                        //    var _verb_name = __pressed_verbs_array[_i];
+                        //    array_push(__held_verbs_array, _verb_name);
+                        //    __held_verbs_struct[$ _verb_name] = true;
+                        //    ++_i;
+                        //}
+                        //
+                        ////If we have no verbs to keep tracking then reset the tracker
+                        //if (array_length(__held_verbs_array) <= 0)
+                        //{
+                        //    __reset();
+                        //}
+                        //else
+                        //{
+                        //    //Clear out the pressed verbs (not technically needed but this is safer)
+                        //    array_resize(__pressed_verbs_array, 0);
+                        //    __pressed_verbs_dict = {};
+                        //}
                         
                         return __INPUT_COMBO_STATE.__SUCCESS;
                     }
