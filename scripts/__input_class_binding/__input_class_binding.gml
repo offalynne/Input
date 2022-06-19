@@ -81,6 +81,13 @@ function __input_class_binding() constructor
             _binding_shell = {};
         }
         
+        if (variable_struct_names_count(_binding_shell) <= 0)
+        {
+            //Empty binding
+            __set_label();
+            return;
+        }
+        
         if (!variable_struct_exists(_binding_shell, "type"))
         {
             __input_error("Binding \"type\" not found; binding is corrupted");
