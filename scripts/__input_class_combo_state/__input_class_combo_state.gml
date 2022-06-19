@@ -145,12 +145,22 @@ function __input_class_combo_state(_name, _combo_definition_struct) constructor
         }
     }
     
-    static __capture_hold = function(_phase_verb)
+    static __capture_all_holds = function(_player_verbs_struct)
     {
-        if (!variable_struct_exists(__held_verbs_struct, _phase_verb))
+        var _basic_verb_array = global.__input_basic_verb_array;
+        var _i = 0;
+        repeat(array_length(_basic_verb_array))
         {
-            array_push(__held_verbs_array, _phase_verb);
-            __held_verbs_struct[$ _phase_verb] = true;
+            var _verb_name = _basic_verb_array[_i];
+            if ((_player_verbs_struct[$ _verb_name].press) 
+            &&  !variable_struct_exists(__held_verbs_struct, _verb_name)
+            &&  !variable_struct_exists(__pressed_verbs_dict, _verb_name))
+            {
+                array_push(__held_verbs_array, _verb_name);
+                __held_verbs_struct[$ _verb_name] = true;
+            }
+            
+            ++_i;
         }
     }
     
@@ -192,7 +202,7 @@ function __input_class_combo_state(_name, _combo_definition_struct) constructor
             case __INPUT_COMBO_PHASE_TYPE.__HOLD_START:
                 if (_player_verbs_struct[$ _phase_verb].press)
                 {
-                    __capture_hold(_phase_verb);
+                    __capture_all_holds(_player_verbs_struct);
                     return __INPUT_COMBO_STATE.__SUCCESS;
                 }
             break;
@@ -243,7 +253,8 @@ function __input_class_combo_state(_name, _combo_definition_struct) constructor
             var _verb_name = _basic_verb_array[_i];
             if ((_player_verbs_struct[$ _verb_name].held) 
             &&  !variable_struct_exists(__held_verbs_struct, _verb_name)  //Not required to be held
-            &&  !variable_struct_exists(__pressed_verbs_dict, _verb_name)) //Not pressed in a previous phase
+            &&  !variable_struct_exists(__pressed_verbs_dict, _verb_name) //Not pressed in a previous phase
+            &&  (_verb_name != _phase_verb))                              //Not the verb we're checking for
             {
                 return __INPUT_COMBO_STATE.__FAIL;
             }
