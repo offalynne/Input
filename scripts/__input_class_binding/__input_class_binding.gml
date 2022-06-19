@@ -230,6 +230,11 @@ function __input_class_binding() constructor
     
     static __set_mouse_button = function(_button)
     {
+        if (_button == mb_none)
+        {
+            __input_error("Cannot use mb_none as a mouse button binding\nInstead please use mb_any and then invert the result");
+        }
+        
         type  = __INPUT_BINDING_MOUSE_BUTTON;
         value = _button;
         
