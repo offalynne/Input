@@ -52,7 +52,7 @@ function __input_class_cursor() constructor
         
         var _can_use_mouse = __player.__source_contains(INPUT_MOUSE);
         
-        if (global.__input_any_mouse_binding_defined && (global.__input_pointer_moved || __using_mouse) && _can_use_mouse)
+        if ((global.__input_pointer_moved || __using_mouse) && _can_use_mouse)
         {
             __using_mouse = true;
             
