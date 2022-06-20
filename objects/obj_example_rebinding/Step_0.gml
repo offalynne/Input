@@ -13,8 +13,8 @@ if (pause)
         menu_selection += input_check_pressed("down");
         menu_selection -= input_check_pressed("up");
         
-        //...and also here's a bonus example for how to use input_check_repeat_opposing()!
-        menu_selection += input_check_repeat_opposing("up", "down");
+        //...and also here's a bonus example for how to use input_check_opposing_repeat()!
+        menu_selection += input_check_opposing_repeat("up", "down");
         
         //Make sure we wrap around the menu
         menu_selection = (menu_selection + 5) mod 5;
