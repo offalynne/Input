@@ -74,7 +74,7 @@ function input_system_import(_string)
     input_mouse_capture_set(_json.mouse.capture, _json.mouse.sensitivity);
     
     //Restore player data
-    if (!is_struct(_json[$ "players"]))
+    if (!is_array(_json[$ "players"]))
     {
         __input_error("Player settings are missing from JSON");
         return;

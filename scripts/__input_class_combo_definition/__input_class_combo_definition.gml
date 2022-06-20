@@ -29,109 +29,53 @@ function __input_class_combo_definition(_name, _default_timeout) constructor
         __phase_array[array_length(__phase_array)-1].__timeout = _time;
     }
     
-    static press = function()
+    static press = function(_verb)
     {
-        var _verb_array = array_create(argument_count);
-        var _verb_struct = {};
-        
-        var _i = 0;
-        repeat(array_length(_verb_array))
-        {
-            var _verb_name = argument[_i];
-            __ensure_verb_is_basic_or_chord(_verb_name);
-            
-            _verb_array[@ _i] = _verb_name;
-            _verb_struct[$ _verb_name] = _i;
-            
-            ++_i;
-        }
+        __ensure_verb_is_basic_or_chord(_verb);
         
         array_push(__phase_array, {
             __type:  __INPUT_COMBO_PHASE_TYPE.__PRESS,
             __timeout: __default_timeout,
-            __verb_array: _verb_array,
-            __verb_struct: _verb_struct,
+            __verb: _verb,
         });
         
         return self;
     }
     
-    static release = function()
+    static release = function(_verb)
     {
-        var _verb_array = array_create(argument_count);
-        var _verb_struct = {};
-        
-        var _i = 0;
-        repeat(array_length(_verb_array))
-        {
-            var _verb_name = argument[_i];
-            __ensure_verb_is_basic_or_chord(_verb_name);
-            
-            _verb_array[@ _i] = _verb_name;
-            _verb_struct[$ _verb_name] = _i;
-            
-            ++_i;
-        }
+        __ensure_verb_is_basic_or_chord(_verb);
         
         array_push(__phase_array, {
             __type:  __INPUT_COMBO_PHASE_TYPE.__RELEASE,
             __timeout: __default_timeout,
-            __verb_array: _verb_array,
-            __verb_struct: _verb_struct,
+            __verb: _verb,
         });
         
         return self;
     }
     
-    static press_or_release = function()
+    static press_or_release = function(_verb)
     {
-        var _verb_array = array_create(argument_count);
-        var _verb_struct = {};
-        
-        var _i = 0;
-        repeat(array_length(_verb_array))
-        {
-            var _verb_name = argument[_i];
-            __ensure_verb_is_basic_or_chord(_verb_name);
-            
-            _verb_array[@ _i] = _verb_name;
-            _verb_struct[$ _verb_name] = _i;
-            
-            ++_i;
-        }
+        __ensure_verb_is_basic_or_chord(_verb);
         
         array_push(__phase_array, {
             __type:  __INPUT_COMBO_PHASE_TYPE.__PRESS_OR_RELEASE,
             __timeout: __default_timeout,
-            __verb_array: _verb_array,
-            __verb_struct: _verb_struct,
+            __verb: _verb,
         });
         
         return self;
     }
     
-    static hold = function()
+    static hold = function(_verb)
     {
-        var _verb_array = array_create(argument_count);
-        var _verb_struct = {};
-        
-        var _i = 0;
-        repeat(array_length(_verb_array))
-        {
-            var _verb_name = argument[_i];
-            __ensure_verb_is_basic_or_chord(_verb_name);
-            
-            _verb_array[@ _i] = _verb_name;
-            _verb_struct[$ _verb_name] = _i;
-            
-            ++_i;
-        }
+        __ensure_verb_is_basic_or_chord(_verb);
         
         array_push(__phase_array, {
             __type:  __INPUT_COMBO_PHASE_TYPE.__HOLD_START,
             __timeout: __default_timeout,
-            __verb_array: _verb_array,
-            __verb_struct: _verb_struct,
+            __verb: _verb,
         });
         
         return self;
