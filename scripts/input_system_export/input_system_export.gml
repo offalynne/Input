@@ -16,7 +16,7 @@ function input_system_export(_output_string = true, _prettify = false)
         
         mouse: {
             capture:     global.__input_mouse_capture,
-            sensitivity: global.__input_mouse_capture_sensitivity,
+            sensitibity: global.__input_mouse_capture_sensitivity,
         },
         
         players: _players_array,
