@@ -244,7 +244,7 @@
     {"id":{"name":"__input_load_blacklist_csv","path":"scripts/__input_load_blacklist_csv/__input_load_blacklist_csv.yy",},"order":12,},
     {"id":{"name":"__input_validate_macros","path":"scripts/__input_validate_macros/__input_validate_macros.yy",},"order":32,},
     {"id":{"name":"obj_test_status","path":"objects/obj_test_status/obj_test_status.yy",},"order":19,},
-    {"id":{"name":"input_check_repeat_opposing","path":"scripts/input_check_repeat_opposing/input_check_repeat_opposing.yy",},"order":14,},
+    {"id":{"name":"input_check_opposing_repeat","path":"scripts/input_check_opposing_repeat/input_check_opposing_repeat.yy",},"order":14,},
     {"id":{"name":"__input_load_type_csv","path":"scripts/__input_load_type_csv/__input_load_type_csv.yy",},"order":13,},
     {"id":{"name":"__input_sdl2_database_funcs","path":"scripts/__input_sdl2_database_funcs/__input_sdl2_database_funcs.yy",},"order":16,},
     {"id":{"name":"rm_example_tds","path":"rooms/rm_example_tds/rm_example_tds.yy",},"order":0,},
