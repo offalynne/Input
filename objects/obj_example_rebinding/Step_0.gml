@@ -10,8 +10,7 @@ if (pause)
     if (!input_binding_scan_in_progress())
     {
         //Move the menu selection up and down...
-        menu_selection += input_check_pressed("down");
-        menu_selection -= input_check_pressed("up");
+        menu_selection += input_check_opposing_pressed("up", "down");
         
         //...and also here's a bonus example for how to use input_check_opposing_repeat()!
         menu_selection += input_check_opposing_repeat("up", "down");
