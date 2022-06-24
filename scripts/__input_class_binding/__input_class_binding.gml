@@ -94,7 +94,9 @@ function __input_class_binding() constructor
             return;
         }
         
-        if (!variable_struct_exists(_binding_shell, "value"))
+        if (!variable_struct_exists(_binding_shell, "value")
+        && (_binding_shell.type != "mouse wheel up")
+        && (_binding_shell.type != "mouse wheel down"))
         {
             __input_error("Binding \"value\" not found; binding is corrupted");
             return;
@@ -106,13 +108,12 @@ function __input_class_binding() constructor
             return;
         }
         
-        type  = _binding_shell.type;
-        value = _binding_shell.value;
-        
-        if (_binding_shell[$ "axis_negative"      ] != undefined) axis_negative         = _binding_shell.axis_negative;
-        if (_binding_shell[$ "gamepad_description"] != undefined) __gamepad_description = _binding_shell.gamepad_description;
-        if (_binding_shell[$ "threshold_min"      ] != undefined) __threshold_min       = _binding_shell.threshold_min;
-        if (_binding_shell[$ "threshold_max"      ] != undefined) __threshold_max       = _binding_shell.threshold_max;
+        type                  = _binding_shell.type;
+        value                 = _binding_shell[$ "value"              ];
+        axis_negative         = _binding_shell[$ "axis_negative"      ];
+        __gamepad_description = _binding_shell[$ "gamepad_description"];
+        __threshold_min       = _binding_shell[$ "threshold_min"      ];
+        __threshold_max       = _binding_shell[$ "threshold_max"      ];
         
         //If we have a gamepad description then try to match that to a connected gamepad
         if (__gamepad_description != undefined)
