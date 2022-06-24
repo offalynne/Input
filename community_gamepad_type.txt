@@ -234,6 +234,7 @@ beef,feed,CommunityXBox360 // Monect
 20d6,2002,CommunityXBoxOne // Power A Wired Xbox Series
 1532,0a00,CommunityXBoxOne // Razer Atrox
 1915,0040,CommunityXBoxOne // Flydigi X9ET Pro and Vader 2
+0662,70d5,CommunityPSX // PowerA PS3 Contoller
 044f,b323,CommunityPSX // Thrustmaster Dual Trigger 3-in-1
 044f,d003,CommunityPSX // Thrustmaster Run'N' Drive
 044f,d008,CommunityPSX // Thrustmaster Ferrari 150
@@ -396,3 +397,4 @@ dead,beef,CommunityPSX // Hidromancer
 0925,1700,CommunityUnknown // WiseGroup USB Joy Box
 10c4,82c0,CommunityUnknown // KADE Adapter
 0c12,0c31,CommunityUnknown // Brook Super Converter
+0f30,010a,CommunityUnknown // BigBen Interactive MultiConvertPad
