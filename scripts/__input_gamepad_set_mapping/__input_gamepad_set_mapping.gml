@@ -209,6 +209,43 @@ function __input_gamepad_set_mapping()
     
     #endregion
     
+    #region XInput
+    
+    if (xinput)
+    {
+        //Default XInput mapping for Windows. This mapping is super common!
+        set_mapping(gp_padu,   0, __INPUT_MAPPING.BUTTON, "dpup");
+        set_mapping(gp_padd,   1, __INPUT_MAPPING.BUTTON, "dpdown");
+        set_mapping(gp_padl,   2, __INPUT_MAPPING.BUTTON, "dpleft");
+        set_mapping(gp_padr,   3, __INPUT_MAPPING.BUTTON, "dpright");
+        set_mapping(gp_start,  4, __INPUT_MAPPING.BUTTON, "start");
+        set_mapping(gp_select, 5, __INPUT_MAPPING.BUTTON, "back");
+            
+        set_mapping(gp_stickl,    6, __INPUT_MAPPING.BUTTON, "leftstick");
+        set_mapping(gp_stickr,    7, __INPUT_MAPPING.BUTTON, "rightstick");
+        set_mapping(gp_shoulderl, 8, __INPUT_MAPPING.BUTTON, "leftshoulder");
+        set_mapping(gp_shoulderr, 9, __INPUT_MAPPING.BUTTON, "rightshoulder");
+            
+        set_mapping(gp_face1, 12, __INPUT_MAPPING.BUTTON, "a");
+        set_mapping(gp_face2, 13, __INPUT_MAPPING.BUTTON, "b");
+        set_mapping(gp_face3, 14, __INPUT_MAPPING.BUTTON, "x");
+        set_mapping(gp_face4, 15, __INPUT_MAPPING.BUTTON, "y");
+            
+        set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
+        set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty").reverse = true;
+        set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
+        set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty").reverse = true;
+            
+        //This bit is weird but it enables analogue input from triggers so...
+        set_mapping(gp_shoulderlb, 4106, __INPUT_MAPPING.AXIS, "lefttrigger");
+        set_mapping(gp_shoulderrb, 4107, __INPUT_MAPPING.AXIS, "righttrigger");
+        
+        exit;
+    }
+    
+    #endregion
+    
+
     #region Windows Xbox One Wireless BT (New firmware)
 
     if ((os_type == os_windows) && (vendor == "5e04")                  //Windows (DirectInput) Microsoft's VID
