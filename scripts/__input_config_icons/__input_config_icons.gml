@@ -145,8 +145,8 @@ INPUT_ICONS {
     "switch": {
         "gamepad face south":         "B",
         "gamepad face east":          "A",
-        "gamepad face west":          "X",
-        "gamepad face north":         "Y",
+        "gamepad face west":          "Y",
+        "gamepad face north":         "X",
         "gamepad shoulder l":         "L",
         "gamepad shoulder r":         "R",
         "gamepad trigger l":          "ZL",
