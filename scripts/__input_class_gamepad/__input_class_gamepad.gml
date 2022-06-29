@@ -100,8 +100,8 @@ function __input_class_gamepad(_index) constructor
         {
             if ((_gm == gp_shoulderlb) || (_gm == gp_shoulderrb))
             {
-                //If this is an XInput controller, the triggers are *usually* analogue
-                return xinput;
+				//XInput and platforms with analogue triggers
+                return (xinput || __INPUT_ON_XDK || __INPUT_ON_PS || (__INPUT_ON_APPLE && __INPUT_ON_MOBILE));
             }
             
             //Otherwise return true only for the thumbsticks
