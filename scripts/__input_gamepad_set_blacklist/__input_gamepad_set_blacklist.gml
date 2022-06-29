@@ -8,12 +8,11 @@ function __input_gamepad_set_blacklist()
     //Identify gamepad components
     var _axis_count   = gamepad_axis_count(index); 
     var _button_count = gamepad_button_count(index);
-    var _hat_count    = gamepad_hat_count(index);
     
-    if ((_axis_count == 0) && (_button_count == 0) && (_hat_count == 0))
+    if ((_axis_count == 0) && (_button_count == 0))
     {
         //Smoke check invalid devices
-        __input_trace("Warning! Controller ", index, " (VID+PID \"", vendor + product, "\" blacklisted: no button, axis or POV hat.");
+        __input_trace("Warning! Controller ", index, " (VID+PID \"", vendor + product, "\" blacklisted: no button or axis");
         blacklisted = true;
         exit;
     }
@@ -25,8 +24,6 @@ function __input_gamepad_set_blacklist()
         case os_windows: _os = "windows"; break;
         case os_linux:   _os = "linux";   break;
         case os_macosx:  _os = "macos";   break;
-        case os_ios:     _os = "ios";     break;
-        case os_tvos:    _os = "tvos";    break;
         case os_android: _os = "android"; break;
         
         default:

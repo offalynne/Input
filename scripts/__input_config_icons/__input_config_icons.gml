@@ -29,10 +29,10 @@ INPUT_ICONS {
         "gamepad trigger r":          "RT",
         "gamepad select":             "view",
         "gamepad start":              "menu",
+        "gamepad dpad left":          "dpad left",
+        "gamepad dpad right":         "dpad right",
         "gamepad dpad up":            "dpad up",
         "gamepad dpad down":          "dpad down",
-        "gamepad dpad left":          "dpad left",        
-        "gamepad dpad right":         "dpad right",
         
         "gamepad thumbstick l left":  "thumbstick l left",
         "gamepad thumbstick l right": "thumbstick l right",
@@ -82,10 +82,10 @@ INPUT_ICONS {
         "gamepad trigger r":          "RT",
         "gamepad select":             "view",
         "gamepad start":              "menu",
+        "gamepad dpad left":          "dpad left",
+        "gamepad dpad right":         "dpad right",
         "gamepad dpad up":            "dpad up",
         "gamepad dpad down":          "dpad down",
-        "gamepad dpad left":          "dpad left",        
-        "gamepad dpad right":         "dpad right",
         
         "gamepad thumbstick l left":  "thumbstick l left",
         "gamepad thumbstick l right": "thumbstick l right",
@@ -118,22 +118,22 @@ INPUT_ICONS {
         "gamepad trigger r":          "R2",
         "gamepad select":             "create",
         "gamepad start":              "options",
-        "gamepad thumbstick l click": "L3",
-        "gamepad thumbstick r click": "R3",
+        "gamepad dpad left":          "dpad left",
+        "gamepad dpad right":         "dpad right",
         "gamepad dpad up":            "dpad up",
         "gamepad dpad down":          "dpad down",
-        "gamepad dpad left":          "dpad left",        
-        "gamepad dpad right":         "dpad right",
         
         "gamepad thumbstick l left":  "thumbstick l left",
         "gamepad thumbstick l right": "thumbstick l right",
         "gamepad thumbstick l up":    "thumbstick l up",
         "gamepad thumbstick l down":  "thumbstick l down",
+        "gamepad thumbstick l click": "L3",
         
         "gamepad thumbstick r left":  "thumbstick r left",
         "gamepad thumbstick r right": "thumbstick r right",
         "gamepad thumbstick r up":    "thumbstick r up",
         "gamepad thumbstick r down":  "thumbstick r down",
+        "gamepad thumbstick r click": "R3",
         
         "gamepad touchpad click": "touchpad click",
         
@@ -153,22 +153,22 @@ INPUT_ICONS {
         "gamepad trigger r":          "ZR",
         "gamepad select":             "plus",
         "gamepad start":              "minus",
+        "gamepad dpad left":          "dpad left",
+        "gamepad dpad right":         "dpad right",
         "gamepad dpad up":            "dpad up",
         "gamepad dpad down":          "dpad down",
-        "gamepad dpad left":          "dpad left",        
-        "gamepad dpad right":         "dpad right",
         
         "gamepad thumbstick l left":  "thumbstick l left",
         "gamepad thumbstick l right": "thumbstick l right",
         "gamepad thumbstick l up":    "thumbstick l up",
         "gamepad thumbstick l down":  "thumbstick l down",
-        "gamepad thumbstick l click": "LS",
+        "gamepad thumbstick l click": "thumbstick l click",
         
         "gamepad thumbstick r left":  "thumbstick r left",
         "gamepad thumbstick r right": "thumbstick r right",
         "gamepad thumbstick r up":    "thumbstick r up",
         "gamepad thumbstick r down":  "thumbstick r down",
-        "gamepad thumbstick r click": "RS",
+        "gamepad thumbstick r click": "thumbstick r click",
         
         //Not available on the Switch console itself but available on other platforms
         "gamepad guide":              "home",
@@ -190,7 +190,7 @@ INPUT_ICONS {
         "gamepad thumbstick l right": "thumbstick right",
         "gamepad thumbstick l up":    "thumbstick up",
         "gamepad thumbstick l down":  "thumbstick down",
-        "gamepad thumbstick l click": "LS",
+        "gamepad thumbstick l click": "thumbstick click",
         
         //Not available on the Switch console itself but available on other platforms
         "gamepad select":             "capture",
@@ -211,7 +211,7 @@ INPUT_ICONS {
         "gamepad thumbstick l right": "thumbstick right",
         "gamepad thumbstick l up":    "thumbstick up",
         "gamepad thumbstick l down":  "thumbstick down",
-        "gamepad thumbstick l click": "LS",
+        "gamepad thumbstick l click": "thumbstick click",
         
         //Not available on the Switch console itself but available on other platforms
         "gamepad select":             "home",
@@ -229,10 +229,10 @@ INPUT_ICONS {
         "gamepad trigger r":          "RT",
         "gamepad select":             "back",
         "gamepad start":              "start",
+        "gamepad dpad left":          "dpad left",
+        "gamepad dpad right":         "dpad right",
         "gamepad dpad up":            "dpad up",
         "gamepad dpad down":          "dpad down",
-        "gamepad dpad left":          "dpad left",        
-        "gamepad dpad right":         "dpad right",
         
         "gamepad thumbstick l left":  "thumbstick l left",
         "gamepad thumbstick l right": "thumbstick l right",
@@ -259,10 +259,10 @@ INPUT_ICONS {
         "gamepad trigger r":          "R2",
         "gamepad select":             "share",
         "gamepad start":              "options",
+        "gamepad dpad left":          "dpad left",
+        "gamepad dpad right":         "dpad right",
         "gamepad dpad up":            "dpad up",
         "gamepad dpad down":          "dpad down",
-        "gamepad dpad left":          "dpad left",        
-        "gamepad dpad right":         "dpad right",
         
         "gamepad thumbstick l left":  "thumbstick l left",
         "gamepad thumbstick l right": "thumbstick l right",
@@ -279,37 +279,6 @@ INPUT_ICONS {
         "gamepad touchpad click": "touchpad click",
     },
     
-    //Nintendo Gamecube
-    "gamecube": {
-        "gamepad face south":         "A",
-        "gamepad face east":          "X",
-        "gamepad face west":          "B",
-        "gamepad face north":         "Y",
-        "gamepad shoulder r":         "Z",
-        "gamepad trigger l":          "L",
-        "gamepad trigger r":          "R",
-        "gamepad start":              "start",
-        "gamepad dpad up":            "dpad up",
-        "gamepad dpad down":          "dpad down",
-        "gamepad dpad left":          "dpad left",        
-        "gamepad dpad right":         "dpad right",
-        
-        "gamepad thumbstick l left":  "thumbstick l left",
-        "gamepad thumbstick l right": "thumbstick l right",
-        "gamepad thumbstick l up":    "thumbstick l up",
-        "gamepad thumbstick l down":  "thumbstick l down",
-        
-        "gamepad thumbstick r left":  "thumbstick r left",
-        "gamepad thumbstick r right": "thumbstick r right",
-        "gamepad thumbstick r up":    "thumbstick r up",
-        "gamepad thumbstick r down":  "thumbstick r down",
-		
-        // Switch GameCube controllers and adapters only
-        "gamepad thumbstick l click": "thumbstick l click",
-        "gamepad thumbstick r click": "thumbstick r click",
-		"gamepad guide":              "home",
-        "gamepad misc 1":             "capture",
-    },
     
     //PlayStation 1-3
     "psx": {
@@ -323,10 +292,10 @@ INPUT_ICONS {
         "gamepad trigger r":          "R2",
         "gamepad select":             "select",
         "gamepad start":              "start",
+        "gamepad dpad left":          "dpad left",
+        "gamepad dpad right":         "dpad right",
         "gamepad dpad up":            "dpad up",
         "gamepad dpad down":          "dpad down",
-        "gamepad dpad left":          "dpad left",        
-        "gamepad dpad right":         "dpad right",
         
         "gamepad thumbstick l left":  "thumbstick l left",
         "gamepad thumbstick l right": "thumbstick l right",
@@ -341,6 +310,38 @@ INPUT_ICONS {
         "gamepad thumbstick r click": "R3",
     },
     
+    //Nintendo Gamecube
+    "gamecube": {
+        "gamepad face south":         "A",
+        "gamepad face east":          "X",
+        "gamepad face west":          "B",
+        "gamepad face north":         "Y",
+        "gamepad shoulder r":         "Z",
+        "gamepad trigger l":          "L",
+        "gamepad trigger r":          "R",
+        "gamepad start":              "start",
+        "gamepad dpad left":          "dpad left",
+        "gamepad dpad right":         "dpad right",
+        "gamepad dpad up":            "dpad up",
+        "gamepad dpad down":          "dpad down",
+        
+        "gamepad thumbstick l left":  "thumbstick l left",
+        "gamepad thumbstick l right": "thumbstick l right",
+        "gamepad thumbstick l up":    "thumbstick l up",
+        "gamepad thumbstick l down":  "thumbstick l down",
+        
+        "gamepad thumbstick r left":  "thumbstick r left",
+        "gamepad thumbstick r right": "thumbstick r right",
+        "gamepad thumbstick r up":    "thumbstick r up",
+        "gamepad thumbstick r down":  "thumbstick r down",
+        
+        // Switch GameCube controllers and adapters only
+        "gamepad thumbstick l click": "thumbstick l click",
+        "gamepad thumbstick r click": "thumbstick r click",
+        "gamepad guide":              "home",
+        "gamepad misc 1":             "capture",
+    },
+    
     //Nintendo 64
     "n64": {
         "gamepad face south":         "A",
@@ -351,7 +352,7 @@ INPUT_ICONS {
         "gamepad start":              "start",
         "gamepad dpad up":            "dpad up",
         "gamepad dpad down":          "dpad down",
-        "gamepad dpad left":          "dpad left",        
+        "gamepad dpad left":          "dpad left",
         "gamepad dpad right":         "dpad right",
         
         "gamepad thumbstick l left":  "thumbstick left",
@@ -379,7 +380,7 @@ INPUT_ICONS {
         "gamepad start":      "start",
         "gamepad dpad up":    "dpad up",
         "gamepad dpad down":  "dpad down",
-        "gamepad dpad left":  "dpad left",        
+        "gamepad dpad left":  "dpad left",
         "gamepad dpad right": "dpad right",
     },
     
@@ -395,7 +396,7 @@ INPUT_ICONS {
         "gamepad start":      "start",
         "gamepad dpad up":    "dpad up",
         "gamepad dpad down":  "dpad down",
-        "gamepad dpad left":  "dpad left",        
+        "gamepad dpad left":  "dpad left",
         "gamepad dpad right": "dpad right",
     },
     
