@@ -18,8 +18,6 @@ function __input_gamepad_set_blacklist()
         exit;
     }
 	
-	__input_trace("Gamepad ", index, " Axes=", _axis_count, " Buttons=", _button_count, " Hats=", _hat_count);
-    
     //Figure out which string to use to find the correct blacklist for the current OS
     var _os = undefined;
     switch(os_type)

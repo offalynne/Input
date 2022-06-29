@@ -409,7 +409,7 @@ function __input_system_tick()
 	            if (gamepad_is_connected(_g))
 	            {
 	                __input_trace("Gamepad ", _g, " connected");
-	                __input_trace("New gamepad = \"", gamepad_get_description(_g), "\", GUID=\"", gamepad_get_guid(_g), "\"");
+	                __input_trace("New gamepad = \"", gamepad_get_description(_g), "\", GUID=\"", gamepad_get_guid(_g), "\", buttons = ", gamepad_button_count(_g), ", axes = ", gamepad_axis_count(_g), ", hats = ", gamepad_hat_count(_g));
 					
 	                global.__input_gamepads[@ _g] = new __input_class_gamepad(_g);
 	            }
