@@ -17,6 +17,8 @@ function __input_gamepad_set_blacklist()
         blacklisted = true;
         exit;
     }
+	
+	__input_trace("Gamepad ", index, " Axes=", _axis_count, " Buttons=", _button_count, " Hats=", _hat_count);
     
     //Figure out which string to use to find the correct blacklist for the current OS
     var _os = undefined;
@@ -93,7 +95,7 @@ function __input_gamepad_set_blacklist()
         
         if (blacklisted)
         {
-            __input_trace("Warning! Controller manually blacklisted (VID+PID \"", vendor + product, "\", ", _button_count, " buttons and ", _axis_count, " axes)");
+            __input_trace("Warning! Controller manually blacklisted.");
         }
     }
 }
