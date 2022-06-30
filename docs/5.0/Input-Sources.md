@@ -16,6 +16,7 @@ Some functions also allow you to automatically change a player's [profile](Profi
 
 ### `INPUT_KEYBOARD`
 
+
 A keyboard attached to the device. If no keyboard is available this source will be non-functional. If `INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER` is set to `true` then the keyboard and the mouse will be considered as a single device: `INPUT_KEYBOARD` and `INPUT_MOUSE` will be interchangeable.
 
 ### `INPUT_MOUSE`
@@ -24,7 +25,7 @@ A pointing device, either an actual mouse, touchscreen input, or a PS4 touchpad.
 
 ### `INPUT_GAMEPAD[...]`
 
-A gamepad with the given index (which matches GM's native gamepad indexes). `INPUT_GAMEPAD` is an array and you'll need to use standard array syntax to access individual gamepads (i.e. `INPUT_GAMEPAD[0]` is the 0th gamepad). The length of this array is given by `INPUT_MAX_TRACKED_GAMEPADS`. Not every gamepad in the `INPUT_GAMEPAD` array will be active; indeed, not every gamepad will be valid for a given platform. You should only assign gamepad sources if you have positive identified that the gamepad is connected and usable, typically by calling [`input_source_detect_input()`](Functions-(Sources)?id=input_source_detect_inputsource).
+A gamepad with the given index (which matches GM's native gamepad indexes). `INPUT_GAMEPAD` is an array and you'll need to use standard array syntax to access individual gamepads (i.e. `INPUT_GAMEPAD[0]` is the 0th gamepad). The length of this array is given by `INPUT_MAX_TRACKED_GAMEPADS`. Not every gamepad in the `INPUT_GAMEPAD` array will be active; indeed, not every gamepad will be valid for a given platform. For example, on the Windows platform gamepads 0-3 are reserved for XInput devices, on Switch gamepad 0 is reserved for attached controls, and on iOS gamepad 0 is never available. You should only assign gamepad sources if you have positively identified the gamepad is connected and usable, typically by calling [`input_source_detect_input()`](Functions-(Sources)?id=input_source_detect_inputsource).
 
 &nbsp;
 
