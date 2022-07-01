@@ -1,4 +1,5 @@
 28de,11ff,CommunitySteam // Steam Virtual Controller
+145f,01c5,CommunityLikeXbox // Shanwan Trust GXT 540 Yula
 3250,1002,CommunityLikeXBox // Atari VCS Modern Controller
 04b4,2411,CommunityLikeXBox // Flydigi Vader 2
 04b4,2412,CommunityLikeXBox // Flydigi Vader 2 Pro
@@ -157,7 +158,7 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 2dc8,6003,Community8BitDo // 8BitDo Pro 2
 2dc8,6103,Community8BitDo // 8BitDo Pro 2
 2dc8,6006,Community8BitDo // 8BitDo Pro 2
-057e,0337,CommunityGameCube // WiiU GameCube Adapter
+057e,0337,CommunityGameCube // Wii U GameCube Adapter
 0926,8888,CommunityGameCube // Cyber Gadget GameCube Adapter
 0079,1843,CommunityGameCube // Mayflash GameCube Adapter
 0079,1844,CommunityGameCube // Mayflash GameCube Adapter
