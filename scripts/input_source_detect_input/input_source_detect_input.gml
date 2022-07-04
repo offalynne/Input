@@ -38,41 +38,9 @@ function input_source_detect_input(_source)
             if (global.__input_any_gamepad_binding_defined)
             {
                 var _gamepad = _source.__gamepad;
-                if (input_gamepad_is_connected(_gamepad) && input_source_is_available(_source))
+                if (input_source_is_available(_source))
                 {
-                    if (input_gamepad_check_pressed(_gamepad, gp_face1)
-                    ||  input_gamepad_check_pressed(_gamepad, gp_face2)
-                    ||  input_gamepad_check_pressed(_gamepad, gp_face3)
-                    ||  input_gamepad_check_pressed(_gamepad, gp_face4)
-                    ||  input_gamepad_check_pressed(_gamepad, gp_padu)
-                    ||  input_gamepad_check_pressed(_gamepad, gp_padd)
-                    ||  input_gamepad_check_pressed(_gamepad, gp_padl)
-                    ||  input_gamepad_check_pressed(_gamepad, gp_padr)
-                    ||  input_gamepad_check_pressed(_gamepad, gp_shoulderl)
-                    ||  input_gamepad_check_pressed(_gamepad, gp_shoulderr)
-                    ||  input_gamepad_check_pressed(_gamepad, gp_shoulderlb)
-                    ||  input_gamepad_check_pressed(_gamepad, gp_shoulderrb)
-                    ||  input_gamepad_check_pressed(_gamepad, gp_start)
-                    ||  input_gamepad_check_pressed(_gamepad, gp_select)
-                    ||  input_gamepad_check_pressed(_gamepad, gp_stickl)
-                    ||  input_gamepad_check_pressed(_gamepad, gp_stickr))
-                    {
-                        return true;
-                    }
-                    
-                    if (INPUT_SDL2_ALLOW_EXTENDED)
-                    {
-                        if (input_gamepad_check_pressed(_gamepad, gp_guide)
-                        ||  input_gamepad_check_pressed(_gamepad, gp_misc1)
-                        ||  input_gamepad_check_pressed(_gamepad, gp_touchpad)
-                        ||  input_gamepad_check_pressed(_gamepad, gp_paddle1)
-                        ||  input_gamepad_check_pressed(_gamepad, gp_paddle2)
-                        ||  input_gamepad_check_pressed(_gamepad, gp_paddle3)
-                        ||  input_gamepad_check_pressed(_gamepad, gp_paddle4))
-                        {
-                            return true;                
-                        }
-                    }
+                    input_gamepad_check_pressed_any(_gamepad, false);
                 }
             }
         break;

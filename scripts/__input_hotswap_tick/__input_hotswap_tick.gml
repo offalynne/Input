@@ -47,31 +47,10 @@ function __input_hotswap_tick_input()
         {
             if (gamepad_is_connected(_g) && (input_source_using(INPUT_GAMEPAD[_g]) || input_source_is_available(INPUT_GAMEPAD[_g])))
             {
-                var _active = false;
-                
-                //Check buttons
-                if (input_gamepad_check(_g, gp_face1)
-                ||  input_gamepad_check(_g, gp_face2)
-                ||  input_gamepad_check(_g, gp_face3)
-                ||  input_gamepad_check(_g, gp_face4)
-                ||  input_gamepad_check(_g, gp_padu)
-                ||  input_gamepad_check(_g, gp_padd)
-                ||  input_gamepad_check(_g, gp_padl)
-                ||  input_gamepad_check(_g, gp_padr)
-                ||  input_gamepad_check(_g, gp_shoulderl)
-                ||  input_gamepad_check(_g, gp_shoulderr)
-                ||  input_gamepad_check(_g, gp_start)
-                ||  input_gamepad_check(_g, gp_select)
-                ||  input_gamepad_check(_g, gp_stickl)
-                ||  input_gamepad_check(_g, gp_stickr)
-                ||  (!input_gamepad_is_axis(_g, gp_shoulderlb) && input_gamepad_check(_g, gp_shoulderlb))
-                ||  (!input_gamepad_is_axis(_g, gp_shoulderrb) && input_gamepad_check(_g, gp_shoulderrb)))
-                {
-                    _active = true;
-                }
+                var _active = input_gamepad_check_any(_g, false);
                 
                 //Check axes
-                if  (INPUT_HOTSWAP_ON_GAMEPAD_AXIS)
+                if  (!_active && INPUT_HOTSWAP_ON_GAMEPAD_AXIS)
                 {
                     if ((abs(input_gamepad_value(_g, gp_shoulderlb)) > input_axis_threshold_get(gp_shoulderlb, 0).mini)
                     ||  (abs(input_gamepad_value(_g, gp_shoulderrb)) > input_axis_threshold_get(gp_shoulderrb, 0).mini)
@@ -80,21 +59,6 @@ function __input_hotswap_tick_input()
                     ||  (abs(input_gamepad_value(_g, gp_axislv)) > input_axis_threshold_get(gp_axislv, 0).mini)
                     ||  (abs(input_gamepad_value(_g, gp_axisrh)) > input_axis_threshold_get(gp_axisrh, 0).mini)
                     ||  (abs(input_gamepad_value(_g, gp_axisrv)) > input_axis_threshold_get(gp_axisrv, 0).mini))
-                    {
-                        _active = true;
-                    }
-                }
-                
-                //Check extended
-                if (INPUT_SDL2_ALLOW_EXTENDED)
-                {
-                    if (input_gamepad_check(_g, gp_guide)
-                    ||  input_gamepad_check(_g, gp_misc1)
-                    ||  input_gamepad_check(_g, gp_touchpad)
-                    ||  input_gamepad_check(_g, gp_paddle1)
-                    ||  input_gamepad_check(_g, gp_paddle2)
-                    ||  input_gamepad_check(_g, gp_paddle3)
-                    ||  input_gamepad_check(_g, gp_paddle4))
                     {
                         _active = true;
                     }
