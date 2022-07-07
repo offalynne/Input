@@ -1,13 +1,14 @@
 /// @desc    Returns whether input is detected from the target source
 /// @param   source
+/// @param   availableOnly
 
-function input_source_detect_input(_source)
+function input_source_detect_input(_source, _available_only = true)
 {
     switch(_source.__source)
     {
         case __INPUT_SOURCE.KEYBOARD:
             if (global.__input_any_keyboard_binding_defined
-            &&  input_source_is_available(_source)
+            &&  (!_available_only || input_source_is_available(_source))
             &&  keyboard_check_pressed(vk_anykey)
             &&  !__input_key_is_ignored(__input_keyboard_key())) //Ensure that this key isn't one we're trying to ignore
             {
@@ -17,7 +18,7 @@ function input_source_detect_input(_source)
             if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER)
             {
                 if (global.__input_any_mouse_binding_defined
-                &&  input_source_is_available(_source)
+                && (!_available_only || input_source_is_available(_source))
                 &&  (input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
                 {
                     return true;
@@ -27,8 +28,8 @@ function input_source_detect_input(_source)
         
         case __INPUT_SOURCE.MOUSE:
             if (global.__input_any_mouse_binding_defined
-            &&  input_source_is_available(_source)
-            &&  (input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
+            && (!_available_only || input_source_is_available(_source))
+            && (input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
             {
                 return true;
             }
@@ -38,7 +39,8 @@ function input_source_detect_input(_source)
             if (global.__input_any_gamepad_binding_defined)
             {
                 var _gamepad = _source.__gamepad;
-                if (input_gamepad_is_connected(_gamepad) && input_source_is_available(_source))
+                if (input_gamepad_is_connected(_gamepad)
+                && (!_available_only || input_source_is_available(_source)))
                 {
                     if (input_gamepad_check_pressed(_gamepad, gp_face1)
                     ||  input_gamepad_check_pressed(_gamepad, gp_face2)
