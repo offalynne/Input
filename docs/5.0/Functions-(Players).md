@@ -74,7 +74,7 @@ The `INPUT_STATUS` enum contains the following members:
 
 ## `input_player_get_gamepad([playerIndex], [binding])`
 
-*Returns:* Integer, a [gamepad](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html) index
+*Returns:* Integer, a [gamepad](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm) index
 
 |Name           |Datatype                     |Purpose                                                                                                                                                                                                    |
 |---------------|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -133,7 +133,7 @@ The array returned by this function contains structs. Each struct contains two m
 |-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |`verb`     |[Verb](https://www.jujuadams.com/Input/#/3.5/Verbs-and-Alternate-Bindings) that contains the invalid binding                                                                       |
 |`alternate`|[Alternate index](https://www.jujuadams.com/Input/#/3.5/Verbs-and-Alternate-Bindings) for the invalid binding                                                                      |
-|`gm`       |[Virtual button/axis constant](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html) that is missing from the player's gamepad|
+|`gm`       |[Virtual button/axis constant](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm) that is missing from the player's gamepad|
 
 &nbsp;
 
