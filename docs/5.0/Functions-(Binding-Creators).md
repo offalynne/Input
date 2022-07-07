@@ -34,7 +34,7 @@ The functions on this page allow you to create bindings, either to define [defau
 
 |Name |Datatype|Purpose                                                                                                                  |
 |-----|--------|-------------------------------------------------------------------------------------------------------------------------|
-|`key`|integer |[Key](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/keyboard%20input/index.html) to bind|
+|`key`|integer |[Key](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm) to bind|
 
 &nbsp;
 
@@ -44,7 +44,7 @@ The functions on this page allow you to create bindings, either to define [defau
 
 |Name    |Datatype|Purpose                                                                                                                                               |
 |--------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`button`|integer |[Mouse button](https://docs.yoyogames.com/source/dadiospice/002_reference/mouse,%20keyboard%20and%20other%20controls/mouse%20input/index.html) to bind|
+|`button`|integer |[Mouse button](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FMouse_Input%252FMouse_Input.htm) to bind|
 
 &nbsp;
 
@@ -74,7 +74,7 @@ The functions on this page allow you to create bindings, either to define [defau
 
 |Name    |Datatype|Purpose                                                                                                                            |
 |--------|--------|-----------------------------------------------------------------------------------------------------------------------------------|
-|`button`|integer |[Gamepad button](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html) to bind|
+|`button`|integer |[Gamepad button](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm) to bind|
 
 &nbsp;
 
@@ -84,7 +84,7 @@ The functions on this page allow you to create bindings, either to define [defau
 
 |Name      |Datatype|Purpose                                                                                                                          |
 |----------|--------|---------------------------------------------------------------------------------------------------------------------------------|
-|`axis`    |integer |[Gamepad axis](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html) to bind|
+|`axis`    |integer |[Gamepad axis](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm) to bind|
 |`negative`|boolean |Whether the axis expects negative values                                                                                         |
 
 &nbsp;
