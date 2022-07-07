@@ -120,7 +120,7 @@ The struct returned by the function contains the following member variables:
 
 |Name    |Datatype|Purpose                                               |
 |--------|--------|------------------------------------------------------|
-|`button`|integer |Button to check, using GameMaker's native [virtual button constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/mouse%20input/index.html)|
+|`button`|integer |Button to check, using GameMaker's native [virtual button constants](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FMouse_Input%252FMouse_Input.htm)|
 
 &nbsp;
 
@@ -130,7 +130,7 @@ The struct returned by the function contains the following member variables:
 
 |Name    |Datatype|Purpose                                               |
 |--------|--------|------------------------------------------------------|
-|`button`|integer |Button to check, using GameMaker's native [virtual button constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/mouse%20input/index.html)|
+|`button`|integer |Button to check, using GameMaker's native [virtual button constants](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FMouse_Input%252FMouse_Input.htm)|
 
 &nbsp;
 
@@ -140,4 +140,4 @@ The struct returned by the function contains the following member variables:
 
 |Name    |Datatype|Purpose                                               |
 |--------|--------|------------------------------------------------------|
-|`button`|integer |Button to check, using GameMaker's native [virtual button constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/mouse%20input/index.html)|
+|`button`|integer |Button to check, using GameMaker's native [virtual button constants](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FMouse_Input%252FMouse_Input.htm)|

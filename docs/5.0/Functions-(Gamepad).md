@@ -12,8 +12,8 @@
 
 |Name          |Datatype|Purpose                                               |
 |--------------|--------|------------------------------------------------------|
-|`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
-|`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html). What physical input this actually checks is determined by Input's own SDL remapping system|
+|`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)|
+|`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm). What physical input this actually checks is determined by Input's own SDL remapping system|
 
 &nbsp;
 
@@ -23,8 +23,8 @@
 
 |Name          |Datatype                  |Purpose                                               |
 |--------------|--------------------------|------------------------------------------------------|
-|`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
-|`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html). What physical input this actually checks is determined by Input's own SDL remapping system|
+|`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)|
+|`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm). What physical input this actually checks is determined by Input's own SDL remapping system|
 
 &nbsp;
 
@@ -34,8 +34,8 @@
 
 |Name          |Datatype                  |Purpose                                               |
 |--------------|--------------------------|------------------------------------------------------|
-|`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
-|`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html). What physical input this actually checks is determined by Input's own SDL remapping system|
+|`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)|
+|`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm). What physical input this actually checks is determined by Input's own SDL remapping system|
 
 &nbsp;
 
@@ -45,8 +45,8 @@
 
 |Name          |Datatype|Purpose                                               |
 |--------------|--------|------------------------------------------------------|
-|`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
-|`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html). What physical input this actually checks is determined by Input's own SDL remapping system|
+|`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)|
+|`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm). What physical input this actually checks is determined by Input's own SDL remapping system|
 
 &nbsp;
 
@@ -56,8 +56,8 @@
 
 |Name          |Datatype|Purpose                                               |
 |--------------|--------|-------------------------------------------------------|
-|`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
-|`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
+|`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)|
+|`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)|
 
 &nbsp;
 
@@ -67,7 +67,7 @@
 
 |Name          |Datatype|Purpose                                               |
 |--------------|--------|-------------------------------------------------------|
-|`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
+|`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)|
 
 &nbsp;
 
@@ -77,7 +77,7 @@
 
 |Name          |Datatype|Purpose                                               |
 |--------------|--------|------------------------------------------------------|
-|`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
+|`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)|
 
 &nbsp;
 
@@ -87,7 +87,7 @@
 
 |Name          |Datatype                  |Purpose                                               |
 |--------------|--------------------------|------------------------------------------------------|
-|`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
+|`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)|
 
 Returns the same values as [`input_player_gamepad_get_type()`](Functions-(Players)?id=input_player_get_gamepad_typeplayerindex-binding).
 
@@ -99,7 +99,7 @@ Returns the same values as [`input_player_gamepad_get_type()`](Functions-(Player
 
 |Name          |Datatype                  |Purpose                                               |
 |--------------|--------------------------|------------------------------------------------------|
-|`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
+|`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)|
 
 The following are valid strings this function may return besides `unknown`:
 
@@ -121,9 +121,9 @@ The following are valid strings this function may return besides `unknown`:
 
 |Name          |Datatype|Purpose                                               |
 |--------------|--------|------------------------------------------------------|
-|`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
+|`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)|
 
-The returned array contains integers that correspond the GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html). These values indicate what buttons/axes have been mapped for the target gamepad.
+The returned array contains integers that correspond the GameMaker's native [virtual button/axis constants](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm). These values indicate what buttons/axes have been mapped for the target gamepad.
 
 If there is no gamepad connected for the given index, an empty array will be returned. If no mapping was applied to the gamepad (typically due to the gamepad not being covered by the SDL2 database) then all GameMaker constants are returned in the array.
 
@@ -131,11 +131,11 @@ If there is no gamepad connected for the given index, an empty array will be ret
 
 ## `input_gamepad_constant_get_name(GMconstant)`
 
-*Returns:* String, the human-readable name of the [virtual button/axis constant](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)
+*Returns:* String, the human-readable name of the [virtual button/axis constant](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)
 
 |Name          |Datatype|Purpose                                               |
 |--------------|--------|------------------------------------------------------|
-|`GMconstant`  |integer |Button or axis to stringify, using GameMaker's native [virtual button/axis constants](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html)|
+|`GMconstant`  |integer |Button or axis to stringify, using GameMaker's native [virtual button/axis constants](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)|
 
 &nbsp;
 

@@ -20,7 +20,7 @@
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
-|`axis`         |real    |[Gamepad axis](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html) to target|
+|`axis`         |real    |[Gamepad axis](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm) to target|
 |`min`          |real    |Minimum threshold value                             |
 |`max`          |real    |Maximum threshold value                             |
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
@@ -33,7 +33,7 @@
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
-|`axis`         |real    |[Gamepad axis](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/index.html) to target|
+|`axis`         |real    |[Gamepad axis](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm) to target|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 If the axis does not have a threshold definition (as set by `input_axis_threshold_set()`) when this function is called then a new definition is created using `INPUT_DEFAULT_MIN_THRESHOLD` and `INPUT_DEFAULT_MAX_THRESHOLD`.
@@ -59,7 +59,7 @@ Clears momentary (pressed/released) input and connection checkers. This covers v
 
 |Name |Datatype|Purpose                                                                                                                 |
 |-----|--------|------------------------------------------------------------------------------------------------------------------------|
-|`key`|integer |[Key](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/keyboard%20input/index.html) to add|
+|`key`|integer |[Key](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FKeyboard_Input%252FKeyboard_Input.htm) to add|
 
 Adds a keyboard key to be ignored by Input. This will affect binding detection, but any existing bindings set up to scan for this key will still work to prevent players from getting themselves into a position where the game doesn't work (!).
 
@@ -73,7 +73,7 @@ Adds a keyboard key to be ignored by Input. This will affect binding detection, 
 
 |Name |Datatype|Purpose                                                                                                                    |
 |-----|--------|---------------------------------------------------------------------------------------------------------------------------|
-|`key`|integer |[Key](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/keyboard%20input/index.html) to remove|
+|`key`|integer |[Key](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FKeyboard_Input%252FKeyboard_Input.htm) to remove|
 
 Removes a keyboard key from the ignore list.
 
