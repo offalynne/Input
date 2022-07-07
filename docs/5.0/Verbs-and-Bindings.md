@@ -16,7 +16,7 @@ A "binding" is a piece of logic that ties a physical input on an input source (k
 
 |Type                   |Creator function                                                                                                       |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------|
-|Empty, inactive binding|[`input_binding_empty()`](Functions-(Binding-Creators)?id=input_binding_gamepad_axisaxis-negative)                     |
+|Empty, inactive binding|[`input_binding_empty()`](Functions-(Binding-Creators)?id=input_binding_empty)                     |
 |Keyboard key           |[`input_binding_key(key)`](Functions-(Binding-Creators)?id=input_binding_keykey)                                       |
 |Mouse button           |[`input_binding_mouse_button()`](Functions-(Binding-Creators)?id=input_binding_mouse_buttonbutton)                     |
 |Mouse wheel up         |[`input_binding_mouse_wheel_up()`](Functions-(Binding-Creators)?id=input_binding_mouse_wheel_up)                       |
