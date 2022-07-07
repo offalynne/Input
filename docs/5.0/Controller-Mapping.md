@@ -2,7 +2,7 @@
 
 ---
 
-GMS2 has some [roughly-documented features](https://docs2.yoyogames.com/source/_build/3_scripting/4_gml_reference/controls/gamepad%20input/gamepad_test_mapping.html) that attempt parity with [SDL2](https://github.com/libsdl-org/SDL)'s [gamepad mapping feature](https://wiki.libsdl.org/CategoryGameController). These aim to normalize all compatible gamepad devices toward the [XInput spec](https://en.wikipedia.org/wiki/DirectInput#XInput); in simple terms, configuring every device in the style of an Xbox 360 controller. GameMaker supports this feature for desktop targets (Windows, Mac, Ubuntu) and Android.
+GMS2 has some [roughly-documented features](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FGamePad_Input%252Fgamepad_test_mapping.htm) that attempt parity with [SDL2](https://github.com/libsdl-org/SDL)'s [gamepad mapping feature](https://wiki.libsdl.org/CategoryGameController). These aim to normalize all compatible gamepad devices toward the [XInput spec](https://en.wikipedia.org/wiki/DirectInput#XInput); in simple terms, configuring every device in the style of an Xbox 360 controller. GameMaker supports this feature for desktop targets (Windows, Mac, Ubuntu) and Android.
 
 ?> While this information is provided for your benefit, in the best of cases it can be ignored: it is our intent that Input permit otherwise-problematic scenarios to “just work”. If you encounter undocumented platform-particular issues with Input's controller mapping feature, please consider authoring a bug report or reaching us to discuss further on Discord.
 
