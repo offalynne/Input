@@ -178,7 +178,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                     
                     case mb_side1:
                     case mb_side2: //Invalid on console, OperaGX, mobile, Firefox or Mac browsers
-                        return !(__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || __INPUT_ON_MOBILE || (os_browser == browser_firefox) || (__INPUT_ON_WEB && (os_type == os_macosx)))
+                        return !(__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || __INPUT_ON_MOBILE || (os_browser == browser_firefox) || (__INPUT_ON_WEB && (os_type == os_macosx)));
                     break;
                     
                     default:
