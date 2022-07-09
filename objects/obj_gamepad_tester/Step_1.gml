@@ -1,6 +1,6 @@
 var _size = gamepad_get_device_count();
 var _delta = (input_keyboard_check_pressed(vk_down) - input_keyboard_check_pressed(vk_up));
-var _first_gamepad = (__INPUT_ON_IOS? 1 : 0);
+var _first_gamepad = ((__INPUT_ON_APPLE && __INPUT_ON_MOBILE && !__INPUT_ON_WEB)? 1 : 0);
 
 if (__INPUT_ON_CONSOLE || __INPUT_TOUCH_SUPPORT)
     _delta = (input_mouse_check_pressed(mb_left) 
