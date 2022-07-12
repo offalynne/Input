@@ -245,7 +245,6 @@ function __input_gamepad_set_mapping()
     
     #endregion
     
-
     #region Windows Xbox One Wireless BT (New firmware)
 
     if ((os_type == os_windows) && (vendor == "5e04")                  //Windows (DirectInput) Microsoft's VID
@@ -448,6 +447,62 @@ function __input_gamepad_set_mapping()
             
             exit;
         }       
+    }
+
+    #endregion
+    
+    #region Nintendo Switch Controllers on iOS
+
+    if (os_type == os_ios)
+    {
+        if ((raw_type == "SwitchJoyConPair") || (raw_type == "SwitchProController"))
+        {
+            set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
+            set_mapping(gp_face2, 0, __INPUT_MAPPING.BUTTON, "b");      
+            set_mapping(gp_face3, 3, __INPUT_MAPPING.BUTTON, "x");
+            set_mapping(gp_face4, 2, __INPUT_MAPPING.BUTTON, "y");
+            
+            set_mapping(gp_shoulderr,   4, __INPUT_MAPPING.BUTTON, "leftshoulder");
+            set_mapping(gp_shoulderr,   5, __INPUT_MAPPING.BUTTON, "rightshoulder");
+            set_mapping(gp_shoulderrb, 21, __INPUT_MAPPING.BUTTON, "lefttrigger");
+            set_mapping(gp_shoulderrb, 22, __INPUT_MAPPING.BUTTON, "righttrigger");
+            
+            set_mapping(gp_select, 25, __INPUT_MAPPING.BUTTON, "back");
+            set_mapping(gp_start,   6, __INPUT_MAPPING.BUTTON, "start");
+            
+            set_mapping(gp_stickl, 24, __INPUT_MAPPING.BUTTON, "leftstick");
+            set_mapping(gp_stickr, 23, __INPUT_MAPPING.BUTTON, "rightstick");
+            
+            set_mapping(gp_padu,  7, __INPUT_MAPPING.BUTTON, "dpup");
+            set_mapping(gp_padd,  8, __INPUT_MAPPING.BUTTON, "dpdown");
+            set_mapping(gp_padl,  9, __INPUT_MAPPING.BUTTON, "dpleft");
+            set_mapping(gp_padr, 10, __INPUT_MAPPING.BUTTON, "dpright");
+            
+            set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
+            set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
+            set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
+            set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
+        }
+        else if ((raw_type == "SwitchJoyConLeft") || (raw_type == "SwitchJoyConRight"))
+        {
+            set_mapping(gp_face1, 0, __INPUT_MAPPING.BUTTON, "a");
+            set_mapping(gp_face2, 2, __INPUT_MAPPING.BUTTON, "b");      
+            set_mapping(gp_face3, 1, __INPUT_MAPPING.BUTTON, "x");
+            set_mapping(gp_face4, 3, __INPUT_MAPPING.BUTTON, "y");
+            
+            set_mapping(gp_shoulderl, 4, __INPUT_MAPPING.BUTTON, "leftshoulder");
+            set_mapping(gp_shoulderr, 5, __INPUT_MAPPING.BUTTON, "righttrigger");
+            
+            set_mapping(gp_select, 6, __INPUT_MAPPING.BUTTON, "back");
+            
+            var _mapping = set_mapping(gp_axislh, 10, __INPUT_MAPPING.BUTTON, "leftx");
+            _mapping.raw_negative = 9;
+            
+            _mapping = set_mapping(gp_axislv, 8, __INPUT_MAPPING.BUTTON, "lefty");
+            _mapping.raw_negative = 7;
+        }
+            
+        exit;
     }
 
     #endregion
