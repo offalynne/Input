@@ -8,18 +8,18 @@ function input_check_opposing_pressed(_verb_negative, _verb_positive, _player_in
 {
     if (_most_recent)
     {
-		return (input_check_pressed(_verb_positive, _player_index) - input_check_pressed(_verb_negative, _player_index));
+        return (input_check_pressed(_verb_positive, _player_index) - input_check_pressed(_verb_negative, _player_index));
     }
-	else
-	{
-		var _pressed_n = input_check_pressed(_verb_negative, _player_index);
-		var _pressed_p = input_check_pressed(_verb_positive, _player_index);
-		
-		if (!_pressed_n && !_pressed_p) return 0;
-		
-	    var _held_n = input_check(_verb_negative, _player_index);
-	    var _held_p = input_check(_verb_positive, _player_index);
-		
-		return ((_pressed_p * !_held_n) - (_pressed_n * !_held_p));
-	}
+    else
+    {
+        var _pressed_n = input_check_pressed(_verb_negative, _player_index);
+        var _pressed_p = input_check_pressed(_verb_positive, _player_index);
+
+        if (!_pressed_n && !_pressed_p) return 0;
+        
+        var _held_n = input_check(_verb_negative, _player_index);
+        var _held_p = input_check(_verb_positive, _player_index);
+
+        return ((_pressed_p * !_held_n) - (_pressed_n * !_held_p));
+    }
 }
