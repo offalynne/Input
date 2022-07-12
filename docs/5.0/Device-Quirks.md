@@ -40,8 +40,6 @@ On many platforms, gamepad indices do not enumerate predicatbly. Use source assi
 
 - Depending on user configuration, Steam may hide native gamepad devices from the Game Maker Studio runtime, presenting them as normalized virtual gamepads. This is a helpful feature, but gathering more information about devices [may require extension](https://github.com/YAL-GameMaker/steamworks.gml) beyond the scope of Input.
 
-- Steam Input and especially the Steam Controller gamepad make use of Mixed Input, an affordance Input is currently not optimized for. Support for Mixed Input should be improved in the future.
-
 ### Gamepad on Console
 
 - On PS4 and PS5, `gp_select` is defined as clicking the touchpad on PlayStation 4 and PlayStation 5 which is GameMaker's default behaviour. This is in contrast to other other platforms where `gp_select` is defined as the SHARE button. [`input_binding_get_name()`](Functions-(Bindings)#input_binding_get_namebinding) will return the correct device-appropriate string.
