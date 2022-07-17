@@ -26,7 +26,6 @@
     - Meta or "Windows" key (Command on Mac)
     - Fullscreen on HTML5 (F11, or F10 on Apple platforms)
     - Caps Lock on HTML5 for Apple platforms
-    - Various keys triggered by gamepads on UWP platforms
 - `2`: Ignore all reserved and/or system keys (in addition to the above):
     - Num lock & Scroll lock
     - IME keys
