@@ -20,6 +20,27 @@ function __input_class_binding() constructor
     
     #region Public
     
+    static __source_type_get = function()
+    {
+        switch(type)
+        {
+            case __INPUT_BINDING_KEY:            return INPUT_KEYBOARD; break;
+            case __INPUT_BINDING_MOUSE_BUTTON:   return INPUT_MOUSE;    break;
+            case __INPUT_BINDING_MOUSE_WHEEL_UP: return INPUT_MOUSE;    break;
+            case __INPUT_BINDING_GAMEPAD_BUTTON: return INPUT_GAMEPAD;  break;
+            case __INPUT_BINDING_GAMEPAD_AXIS:   return INPUT_GAMEPAD;  break;
+            
+            case undefined:
+                __input_trace("Warning! Binding type has not been defined");
+                return undefined;
+            break;
+            
+            default:
+                __input_error("Unhandled binding type \"", type, "\"");
+            break;
+        }
+    }
+    
     static __gamepad_set = function(_gamepad)
     {
         if (input_gamepad_is_connected(_gamepad))
