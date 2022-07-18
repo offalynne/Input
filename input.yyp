@@ -205,6 +205,7 @@
     {"id":{"name":"input_binding_gamepad_set","path":"scripts/input_binding_gamepad_set/input_binding_gamepad_set.yy",},"order":10,},
     {"id":{"name":"input_cursor_limit_aabb","path":"scripts/input_cursor_limit_aabb/input_cursor_limit_aabb.yy",},"order":7,},
     {"id":{"name":"input_binding_scan_start","path":"scripts/input_binding_scan_start/input_binding_scan_start.yy",},"order":0,},
+    {"id":{"name":"obj_test_binding_get_source_type","path":"objects/obj_test_binding_get_source_type/obj_test_binding_get_source_type.yy",},"order":4,},
     {"id":{"name":"input_cursor_limit_remove","path":"scripts/input_cursor_limit_remove/input_cursor_limit_remove.yy",},"order":9,},
     {"id":{"name":"__input_binding_get_label","path":"scripts/__input_binding_get_label/__input_binding_get_label.yy",},"order":21,},
     {"id":{"name":"obj_test_cursor","path":"objects/obj_test_cursor/obj_test_cursor.yy",},"order":22,},
