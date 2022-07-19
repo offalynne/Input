@@ -32,4 +32,3 @@ CommunityAstroCity,a:D,b:E,x:A,y:B,rightshoulder:C,righttrigger:F,back:Credit,st
 CommunityNeoGeo,a:A,b:B,x:C,y:D,back:Select,start:Start
 CommunityNeoGeoMini,a:B,b:D,x:A,y:C,back:Select,start:Start
 CommunityPCEngine,a:II,b:I,back:Select,start:Run
-CommunityWiiRemote,a:A,b:B,x:1,y:2,leftshoulder:-,rightshoulder:+,lefttrigger:Z,righttrigger:C,guide:Home
