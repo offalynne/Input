@@ -58,6 +58,7 @@
 057e,2008,CommunityLikeSwitch // Linux JoyConD
 11ec,a7e1,CommunityLikeSwitch // Switch Handheld
 1d79,0301,CommunityLikeSwitch // Wii Adapter
+0079,1803,CommunityLikeSwitch // Mayflash Wii DolphinBar
 0ae4,0702,CommunitySaturn // Taito Egret II Mini Controller
 0b49,0644,CommunitySaturn // ASCII Seamic
 0079,0011,CommunitySaturn // Retrolink Saturn/SNES
@@ -374,7 +375,6 @@ dead,beef,CommunityPSX // Hidromancer
 2dc8,9002,CommunityN64 // Retro Bit x 8BitDo RB8 64 (USB)
 2dc8,3830,CommunityN64 // Retro Bit x 8BitDo RB8 64 (BT)
 0079,954e,CommunityN64 // Hyperkin N64 Adapter
-0079,1803,CommunityWiiRemote // Mayflash Wii DolphinBar
 289b,0008,CommunityDreamcast // Raphnet Dreamcast Adapter
 2836,0001,CommunityOuya // Ouya Controller
 18d1,9400,CommunityStadia // Google Stadia Controller
