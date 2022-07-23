@@ -66,6 +66,17 @@
 #macro vk_lbracket    219
 #macro vk_rbracket    221
 
+#macro vk_numrow0  48
+#macro vk_numrow1  49
+#macro vk_numrow2  ((os_type == os_switch)? 2 : 50)
+#macro vk_numrow3  ((os_type == os_switch)? 3 : 51)
+#macro vk_numrow4  ((os_type == os_switch)? 4 : 52)
+#macro vk_numrow5  ((os_type == os_switch)? 5 : 53)
+#macro vk_numrow6  ((os_type == os_switch)? 6 : 54)
+#macro vk_numrow7  ((os_type == os_switch)? 7 : 55)
+#macro vk_numrow8  56
+#macro vk_numrow9  57
+
 #macro vk_apostrophe (((os_type == os_macosx) && !__INPUT_ON_WEB)? 192 : 222)
 #macro vk_equals     (((os_type == os_macosx) && !__INPUT_ON_WEB)?  24 : 187)
 #macro vk_numlock    ((__INPUT_ON_APPLE && __INPUT_ON_WEB)? 12 : 144)

@@ -373,17 +373,17 @@ function __input_initialize()
 
     #region Key names
 
-    __input_key_name_set(vk_backtick,   "`");
-    __input_key_name_set(vk_hyphen,     "-");
-    __input_key_name_set(vk_equals,     "=");
-    __input_key_name_set(vk_semicolon,  ";");
-    __input_key_name_set(vk_apostrophe, "'");
-    __input_key_name_set(vk_comma,      ",");
-    __input_key_name_set(vk_period,     ".");
-    __input_key_name_set(vk_rbracket,   "]");
-    __input_key_name_set(vk_lbracket,   "[");
-    __input_key_name_set(vk_fslash,     "/");
-    __input_key_name_set(vk_bslash,     "\\");
+    __input_key_name_set(vk_backtick,   "backtick");       //`
+    __input_key_name_set(vk_hyphen,     "hyphen");         //-
+    __input_key_name_set(vk_equals,     "equals");         //=
+    __input_key_name_set(vk_semicolon,  "semicolon");      //;
+    __input_key_name_set(vk_apostrophe, "apostrophe");     //'
+    __input_key_name_set(vk_comma,      "comma");          //,
+    __input_key_name_set(vk_period,     "period");         //.
+    __input_key_name_set(vk_lbracket,   "left bracket");   //[
+    __input_key_name_set(vk_rbracket,   "right bracket");  //]
+    __input_key_name_set(vk_fslash,     "forward slash");  ///
+    __input_key_name_set(vk_bslash,     "back slash");     //\
 
     __input_key_name_set(vk_scrollock, "scroll lock");
     __input_key_name_set(vk_capslock,  "caps lock");
@@ -430,11 +430,22 @@ function __input_initialize()
     __input_key_name_set(vk_f11, "f11");
     __input_key_name_set(vk_f12, "f12");
 
-    __input_key_name_set(vk_divide,   "numpad /");
-    __input_key_name_set(vk_multiply, "numpad *");
-    __input_key_name_set(vk_subtract, "numpad -");
-    __input_key_name_set(vk_add,      "numpad +");
-    __input_key_name_set(vk_decimal,  "numpad .");
+    __input_key_name_set(vk_divide,   "numpad divide");   ///
+    __input_key_name_set(vk_multiply, "numpad multiply"); //*
+    __input_key_name_set(vk_subtract, "numpad subtract"); //-
+    __input_key_name_set(vk_add,      "numpad add");      //+
+    __input_key_name_set(vk_decimal,  "numpad decimal");  //.
+    
+    __input_key_name_set(vk_numrow0, "numrow 0");
+    __input_key_name_set(vk_numrow1, "numrow 1");
+    __input_key_name_set(vk_numrow2, "numrow 2");
+    __input_key_name_set(vk_numrow3, "numrow 3");
+    __input_key_name_set(vk_numrow4, "numrow 4");
+    __input_key_name_set(vk_numrow5, "numrow 5");
+    __input_key_name_set(vk_numrow6, "numrow 6");
+    __input_key_name_set(vk_numrow7, "numrow 7");
+    __input_key_name_set(vk_numrow8, "numrow 8");
+    __input_key_name_set(vk_numrow8, "numrow 9");
 
     __input_key_name_set(vk_numpad0, "numpad 0");
     __input_key_name_set(vk_numpad1, "numpad 1");
@@ -468,12 +479,6 @@ function __input_initialize()
     if ((os_type == os_windows) || (__INPUT_ON_WEB))
     {
         for(var _i = vk_f1 + 12; _i < vk_f1 + 32; _i++) __input_key_name_set(_i, "f" + string(_i));
-    }
-    
-    //Numeric keys 2-7 on Switch
-    if (os_type == os_switch)
-    {
-        for(var _i = 2; _i <= 7; _i++) __input_key_name_set(_i, __input_key_get_name(ord(_i)));
     }
     
     #endregion
