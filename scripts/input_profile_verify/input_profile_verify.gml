@@ -21,7 +21,7 @@ function input_profile_verify(_json, _profile_name, _player_index = 0)
         __input_trace("input_profile_verify() failed with the following error: ", _error);
     }
     
-    //Restore a clone of the current settings
+    //Restore the clone of the current settings
     input_profile_import(_backup, _profile_name, _player_index);
     
     return (_error == undefined);

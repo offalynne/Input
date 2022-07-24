@@ -17,7 +17,7 @@ function input_system_verify(_json)
         __input_trace("input_system_verify() failed with the following error: ", _error);
     }
     
-    //Restore a clone of the current settings
+    //Restore the clone of the current settings
     input_system_import(_backup);
     
     return (_error == undefined);

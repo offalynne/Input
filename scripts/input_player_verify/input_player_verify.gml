@@ -20,7 +20,7 @@ function input_player_verify(_json, _player_index = 0)
         __input_trace("input_player_verify() failed with the following error: ", _error);
     }
     
-    //Restore a clone of the current settings
+    //Restore the clone of the current settings
     input_player_import(_backup, _player_index);
     
     return (_error == undefined);
