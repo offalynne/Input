@@ -1,4 +1,4 @@
-/// @desc    Reads a JSON (string or struct) that contains Input system data and replaces the current data with it.
+/// @desc    Reads a JSON (string or struct) that contains Input system data and replaces the current data with it
 /// @param   stringOrStruct
 
 function input_system_import(_string)
