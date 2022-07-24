@@ -88,3 +88,48 @@ Removes a keyboard key from the ignore list.
 |`state`|boolean |Whether to swap A/B bindings|
 
 !> This function fully resets all player profiles and bindings to what's found in [`INPUT_DEFAULT_PROFILES`](Configuration?id=profiles-and-bindings). This function is intended to be called when the game is started before loading any player-defined bindings.
+
+&nbsp;
+
+## `input_icons(categoryName)`
+
+*Returns:* N/A (`undefined`)
+
+|Name          |Datatype|Purpose                                |
+|--------------|--------|---------------------------------------|
+|`categoryName`|string  |Icon category name to access. See below|
+
+This function is used to define icons that [`input_binding_get_icon()`](Functions-(Binding-Access)?id=input_binding_get_iconbinding-playerindex) can return. This function should only be called in the [`__input_config_icons()`](Configuration?id=icons) script.
+
+`input_icons()` must be used with what's called a [fluent interface](https://en.wikipedia.org/wiki/Fluent_interface). In practical terms, this means that `__input_config_icons()` should contain code that looks like this:
+
+```
+input_icons("xbox one")
+.add("gamepad face south", "A")
+.add("gamepad face east",  "B")
+.add("gamepad face west",  "X")
+.add("gamepad face north", "Y")
+//etc.
+```
+
+Each call to the `.add()` method add a new icon to the `"xbox one"` icon category. **Note that none of these lines terminate in a semicolon `;`**. This is very important to ensure that the fluent interface works properly.
+
+The first argument for the `.add()` method is a [binding name](Binding-Names), the second argument is the value to return as the icon for that binding. In the example above, the string `"A"` is being returned for the south-positioned gamepad button for an Xbox One controller. We might very well use sprites instead of strings:
+
+```
+input_icons("xbox one")
+.add("gamepad face south", spr_xboxone_a)
+.add("gamepad face east",  spr_xboxone_b)
+.add("gamepad face west",  spr_xboxone_x)
+.add("gamepad face north", spr_xboxone_y)
+//etc.
+```
+
+Icon category names can be the [names of gamepad types](Functions-(Players)?id=input_player_get_gamepad_typeplayerindex-binding) that Input can return, or category names can be one of the following special cases:
+
+|Category Name         |Occurrance                                                       |
+|----------------------|-----------------------------------------------------------------|
+|`"not a binding"`     |A non-binding is evaluated                                       |
+|`"unknown"`           |An unrecognised binding is evaluated                             |
+|`"gamepad fallback"`  |Binding is for a gamepad with an unrecognised or unsupported type|
+|`"keyboard and mouse"`|Binding is for a keyboard key or mouse button                    |
