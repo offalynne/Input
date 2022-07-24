@@ -101,6 +101,17 @@ Removes a keyboard key from the ignore list.
 
 This function is used to define icons that [`input_binding_get_icon()`](Functions-(Binding-Access)?id=input_binding_get_iconbinding-playerindex) can return. This function should only be called in the [`__input_config_icons()`](Configuration?id=icons) script.
 
+Icon category names can be the [names of gamepad types](Functions-(Players)?id=input_player_get_gamepad_typeplayerindex-binding) that Input can return, or category names can be one of the following special cases:
+
+|Category Name         |Occurrance                                                       |
+|----------------------|-----------------------------------------------------------------|
+|`"not a binding"`     |A non-binding is evaluated                                       |
+|`"unknown"`           |An unrecognised binding is evaluated                             |
+|`"gamepad fallback"`  |Binding is for a gamepad with an unrecognised or unsupported type|
+|`"keyboard and mouse"`|Binding is for a keyboard key or mouse button                    |
+
+&nbsp;
+
 `input_icons()` must be used with what's called a [fluent interface](https://en.wikipedia.org/wiki/Fluent_interface). In practical terms, this means that `__input_config_icons()` should contain code that looks like this:
 
 ```
@@ -112,7 +123,9 @@ input_icons("xbox one")
 //etc.
 ```
 
-Each call to the `.add()` method add a new icon to the `"xbox one"` icon category. **Note that none of these lines terminate in a semicolon `;`**. This is very important to ensure that the fluent interface works properly.
+Each call to the `.add()` method add a new icon to the `"xbox one"` icon category.
+
+!> Note that none of these lines terminate in a semicolon `;`**. This is very important to ensure that the fluent interface works properly.
 
 The first argument for the `.add()` method is a [binding name](Binding-Names), the second argument is the value to return as the icon for that binding. In the example above, the string `"A"` is being returned for the south-positioned gamepad button for an Xbox One controller. We might very well use sprites instead of strings:
 
@@ -124,12 +137,3 @@ input_icons("xbox one")
 .add("gamepad face north", spr_xboxone_y)
 //etc.
 ```
-
-Icon category names can be the [names of gamepad types](Functions-(Players)?id=input_player_get_gamepad_typeplayerindex-binding) that Input can return, or category names can be one of the following special cases:
-
-|Category Name         |Occurrance                                                       |
-|----------------------|-----------------------------------------------------------------|
-|`"not a binding"`     |A non-binding is evaluated                                       |
-|`"unknown"`           |An unrecognised binding is evaluated                             |
-|`"gamepad fallback"`  |Binding is for a gamepad with an unrecognised or unsupported type|
-|`"keyboard and mouse"`|Binding is for a keyboard key or mouse button                    |
