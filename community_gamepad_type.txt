@@ -1,5 +1,5 @@
 28de,11ff,CommunitySteam // Steam Virtual Controller
-145f,01c5,CommunityLikeXbox // Trust GXT 540 Yula
+145f,01c5,CommunityLikeXBox // Trust GXT 540 Yula
 3250,1002,CommunityLikeXBox // Atari VCS Modern Controller
 04b4,2411,CommunityLikeXBox // Flydigi Vader 2
 04b4,2412,CommunityLikeXBox // Flydigi Vader 2 Pro
