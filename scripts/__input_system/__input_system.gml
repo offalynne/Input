@@ -9,8 +9,6 @@
 #macro __INPUT_BINDING_GAMEPAD_BUTTON    "gamepad button"
 #macro __INPUT_BINDING_GAMEPAD_AXIS      "gamepad axis"
 
-#macro INPUT_ICONS  global.__input_icons =
-
 #macro INPUT_KEYBOARD      global.__input_source_keyboard
 #macro INPUT_MOUSE         global.__input_source_mouse
 #macro INPUT_GAMEPAD       global.__input_source_gamepad

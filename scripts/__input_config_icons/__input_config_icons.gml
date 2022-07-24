@@ -6,399 +6,387 @@
 /// binding maps to on the actual physical hardware. There are a handful of special cases at the top of the
 /// struct that are used to handle errors or misconfigurations.
 
-INPUT_ICONS {
-    
-    #region Special Cases
-    
-    //Special case: When a non-binding is being evaluated
-    "not a binding": "not a binding",
-    
-    //Special case: When an invalid binding is being evaluated (usually happens when no source is assigned for a player)
-    "unknown": "unknown",
-    
-    //Special case: Fallback gamepad icons
-    //These are used when a gamepad is not recognised or an icon definition doesn't exist for a specific gamepad type
-    "gamepad fallback": {
-        "gamepad face south":         "A",
-        "gamepad face east":          "B",
-        "gamepad face west":          "X",
-        "gamepad face north":         "Y",
-        "gamepad shoulder l":         "LB",
-        "gamepad shoulder r":         "RB",
-        "gamepad trigger l":          "LT",
-        "gamepad trigger r":          "RT",
-        "gamepad select":             "view",
-        "gamepad start":              "menu",
-        "gamepad dpad left":          "dpad left",
-        "gamepad dpad right":         "dpad right",
-        "gamepad dpad up":            "dpad up",
-        "gamepad dpad down":          "dpad down",
-        
-        "gamepad thumbstick l left":  "thumbstick l left",
-        "gamepad thumbstick l right": "thumbstick l right",
-        "gamepad thumbstick l up":    "thumbstick l up",
-        "gamepad thumbstick l down":  "thumbstick l down",
-        "gamepad thumbstick l click": "thumbstick l click",
-        
-        "gamepad thumbstick r left":  "thumbstick r left",
-        "gamepad thumbstick r right": "thumbstick r right",
-        "gamepad thumbstick r up":    "thumbstick r up",
-        "gamepad thumbstick r down":  "thumbstick r down",
-        "gamepad thumbstick r click": "thumbstick r click",
-        
-        //Used for PlayStation 4 + 5 touchpad clicks (and occasionally other gamepads if INPUT_SDL2_ALLOW_EXTENDED is set to <true>)
-        "gamepad touchpad click":     "touchpad click",
-        
-        //These are much less commonly used than the above
-        //Please set INPUT_SDL2_ALLOW_EXTENDED to <true> to enable these gamepad buttons
-        "gamepad guide":              "guide",
-        "gamepad misc 1":             "misc",
-        "gamepad paddle 1":           "paddle 1",
-        "gamepad paddle 2":           "paddle 2",
-        "gamepad paddle 3":           "paddle 3",
-        "gamepad paddle 4":           "paddle 4",
-    },
-    
-    #endregion
-    
-    //Optional remapping for keyboard and mouse
-    //This is useful for turning keyboard keys into sprite icons to match other assets, or for returning formatted strings (e.g. for use with Scribble)
-    //Any keyboard key label not in this struct will simply fall through and return the key name
-    "keyboard and mouse": {
-        
-    },
-    
-    #region Gamepads
-    
-    //Xbox One controllers
-    "xbox one": {
-        "gamepad face south":         "A",
-        "gamepad face east":          "B",
-        "gamepad face west":          "X",
-        "gamepad face north":         "Y",
-        "gamepad shoulder l":         "LB",
-        "gamepad shoulder r":         "RB",
-        "gamepad trigger l":          "LT",
-        "gamepad trigger r":          "RT",
-        "gamepad select":             "view",
-        "gamepad start":              "menu",
-        "gamepad dpad left":          "dpad left",
-        "gamepad dpad right":         "dpad right",
-        "gamepad dpad up":            "dpad up",
-        "gamepad dpad down":          "dpad down",
-        
-        "gamepad thumbstick l left":  "thumbstick l left",
-        "gamepad thumbstick l right": "thumbstick l right",
-        "gamepad thumbstick l up":    "thumbstick l up",
-        "gamepad thumbstick l down":  "thumbstick l down",
-        "gamepad thumbstick l click": "thumbstick l click",
-        
-        "gamepad thumbstick r left":  "thumbstick r left",
-        "gamepad thumbstick r right": "thumbstick r right",
-        "gamepad thumbstick r up":    "thumbstick r up",
-        "gamepad thumbstick r down":  "thumbstick r down",
-        "gamepad thumbstick r click": "thumbstick r click",
-        
-        //These are used for Elite controllers only
-        "gamepad paddle 1":           "P1",
-        "gamepad paddle 2":           "P3",  //Thanks SDL
-        "gamepad paddle 3":           "P2",  //Many thanks
-        "gamepad paddle 4":           "P4",
-    },
-    
-    //PlayStation 5
-    "ps5": {
-        "gamepad face south":         "cross",
-        "gamepad face east":          "circle",
-        "gamepad face west":          "square",
-        "gamepad face north":         "triangle",
-        "gamepad shoulder l":         "L1",
-        "gamepad shoulder r":         "R1",
-        "gamepad trigger l":          "L2",
-        "gamepad trigger r":          "R2",
-        "gamepad select":             "create",
-        "gamepad start":              "options",
-        "gamepad dpad left":          "dpad left",
-        "gamepad dpad right":         "dpad right",
-        "gamepad dpad up":            "dpad up",
-        "gamepad dpad down":          "dpad down",
-        
-        "gamepad thumbstick l left":  "thumbstick l left",
-        "gamepad thumbstick l right": "thumbstick l right",
-        "gamepad thumbstick l up":    "thumbstick l up",
-        "gamepad thumbstick l down":  "thumbstick l down",
-        "gamepad thumbstick l click": "L3",
-        
-        "gamepad thumbstick r left":  "thumbstick r left",
-        "gamepad thumbstick r right": "thumbstick r right",
-        "gamepad thumbstick r up":    "thumbstick r up",
-        "gamepad thumbstick r down":  "thumbstick r down",
-        "gamepad thumbstick r click": "R3",
-        
-        "gamepad touchpad click": "touchpad click",
-        
-        //Not available on the PlayStation 5 console itself but available on other platforms
-        "gamepad misc 1":         "mic",
-    },
-    
-    //Switch handheld/dual JoyCon/Pro Controller
-    "switch": {
-        "gamepad face south":         "B",
-        "gamepad face east":          "A",
-        "gamepad face west":          "Y",
-        "gamepad face north":         "X",
-        "gamepad shoulder l":         "L",
-        "gamepad shoulder r":         "R",
-        "gamepad trigger l":          "ZL",
-        "gamepad trigger r":          "ZR",
-        "gamepad select":             "plus",
-        "gamepad start":              "minus",
-        "gamepad dpad left":          "dpad left",
-        "gamepad dpad right":         "dpad right",
-        "gamepad dpad up":            "dpad up",
-        "gamepad dpad down":          "dpad down",
-        
-        "gamepad thumbstick l left":  "thumbstick l left",
-        "gamepad thumbstick l right": "thumbstick l right",
-        "gamepad thumbstick l up":    "thumbstick l up",
-        "gamepad thumbstick l down":  "thumbstick l down",
-        "gamepad thumbstick l click": "thumbstick l click",
-        
-        "gamepad thumbstick r left":  "thumbstick r left",
-        "gamepad thumbstick r right": "thumbstick r right",
-        "gamepad thumbstick r up":    "thumbstick r up",
-        "gamepad thumbstick r down":  "thumbstick r down",
-        "gamepad thumbstick r click": "thumbstick r click",
-        
-        //Not available on the Switch console itself but available on other platforms
-        "gamepad guide":              "home",
-        "gamepad misc 1":             "capture",
-    },
-    
-    //Left-hand Switch JoyCon
-    //This setup assums horizontal hold type
-    "switch joycon left": {
-        "gamepad face south":         "face south",
-        "gamepad face east":          "face east",
-        "gamepad face west":          "face west", 
-        "gamepad face north":         "face north",
-        "gamepad shoulder l":         "SL",
-        "gamepad shoulder r":         "SR",
-        "gamepad start":              "minus",
-        
-        "gamepad thumbstick l left":  "thumbstick left",
-        "gamepad thumbstick l right": "thumbstick right",
-        "gamepad thumbstick l up":    "thumbstick up",
-        "gamepad thumbstick l down":  "thumbstick down",
-        "gamepad thumbstick l click": "thumbstick click",
-        
-        //Not available on the Switch console itself but available on other platforms
-        "gamepad select":             "capture",
-    },
-    
-    //Right-hand Switch JoyCon
-    //This setup assums horizontal hold type
-    "switch joycon right": {
-        "gamepad face south":         "face south",
-        "gamepad face east":          "face east",
-        "gamepad face west":          "face west", 
-        "gamepad face north":         "face north",
-        "gamepad shoulder l":         "SL",
-        "gamepad shoulder r":         "SR",
-        "gamepad start":              "plus",
-        
-        "gamepad thumbstick l left":  "thumbstick left",
-        "gamepad thumbstick l right": "thumbstick right",
-        "gamepad thumbstick l up":    "thumbstick up",
-        "gamepad thumbstick l down":  "thumbstick down",
-        "gamepad thumbstick l click": "thumbstick click",
-        
-        //Not available on the Switch console itself but available on other platforms
-        "gamepad select":             "home",
-    },
-    
-    //Xbox 360
-    "xbox 360": {
-        "gamepad face south":         "A",
-        "gamepad face east":          "B",
-        "gamepad face west":          "X",
-        "gamepad face north":         "Y",
-        "gamepad shoulder l":         "LB",
-        "gamepad shoulder r":         "RB",
-        "gamepad trigger l":          "LT",
-        "gamepad trigger r":          "RT",
-        "gamepad select":             "back",
-        "gamepad start":              "start",
-        "gamepad dpad left":          "dpad left",
-        "gamepad dpad right":         "dpad right",
-        "gamepad dpad up":            "dpad up",
-        "gamepad dpad down":          "dpad down",
-        
-        "gamepad thumbstick l left":  "thumbstick l left",
-        "gamepad thumbstick l right": "thumbstick l right",
-        "gamepad thumbstick l up":    "thumbstick l up",
-        "gamepad thumbstick l down":  "thumbstick l down",
-        "gamepad thumbstick l click": "thumbstick l click",
-        
-        "gamepad thumbstick r left":  "thumbstick r left",
-        "gamepad thumbstick r right": "thumbstick r right",
-        "gamepad thumbstick r up":    "thumbstick r up",
-        "gamepad thumbstick r down":  "thumbstick r down",
-        "gamepad thumbstick r click": "thumbstick r click",
-    },
-    
-    //PlayStation 4
-    "ps4": {
-        "gamepad face south":         "cross",
-        "gamepad face east":          "circle",
-        "gamepad face west":          "square",
-        "gamepad face north":         "triangle",
-        "gamepad shoulder l":         "L1",
-        "gamepad shoulder r":         "R1",
-        "gamepad trigger l":          "L2",
-        "gamepad trigger r":          "R2",
-        "gamepad select":             "share",
-        "gamepad start":              "options",
-        "gamepad dpad left":          "dpad left",
-        "gamepad dpad right":         "dpad right",
-        "gamepad dpad up":            "dpad up",
-        "gamepad dpad down":          "dpad down",
-        
-        "gamepad thumbstick l left":  "thumbstick l left",
-        "gamepad thumbstick l right": "thumbstick l right",
-        "gamepad thumbstick l up":    "thumbstick l up",
-        "gamepad thumbstick l down":  "thumbstick l down",
-        "gamepad thumbstick l click": "L3",
-        
-        "gamepad thumbstick r left":  "thumbstick r left",
-        "gamepad thumbstick r right": "thumbstick r right",
-        "gamepad thumbstick r up":    "thumbstick r up",
-        "gamepad thumbstick r down":  "thumbstick r down",
-        "gamepad thumbstick r click": "R3",
-        
-        "gamepad touchpad click": "touchpad click",
-    },
-    
-    
-    //PlayStation 1-3
-    "psx": {
-        "gamepad face south":         "cross",
-        "gamepad face east":          "circle",
-        "gamepad face west":          "square",
-        "gamepad face north":         "triangle",
-        "gamepad shoulder l":         "L1",
-        "gamepad shoulder r":         "R1",
-        "gamepad trigger l":          "L2",
-        "gamepad trigger r":          "R2",
-        "gamepad select":             "select",
-        "gamepad start":              "start",
-        "gamepad dpad left":          "dpad left",
-        "gamepad dpad right":         "dpad right",
-        "gamepad dpad up":            "dpad up",
-        "gamepad dpad down":          "dpad down",
-        
-        "gamepad thumbstick l left":  "thumbstick l left",
-        "gamepad thumbstick l right": "thumbstick l right",
-        "gamepad thumbstick l up":    "thumbstick l up",
-        "gamepad thumbstick l down":  "thumbstick l down",
-        "gamepad thumbstick l click": "L3",
-        
-        "gamepad thumbstick r left":  "thumbstick r left",
-        "gamepad thumbstick r right": "thumbstick r right",
-        "gamepad thumbstick r up":    "thumbstick r up",
-        "gamepad thumbstick r down":  "thumbstick r down",
-        "gamepad thumbstick r click": "R3",
-    },
-    
-    //Nintendo Gamecube
-    "gamecube": {
-        "gamepad face south":         "A",
-        "gamepad face east":          "X",
-        "gamepad face west":          "B",
-        "gamepad face north":         "Y",
-        "gamepad shoulder r":         "Z",
-        "gamepad trigger l":          "L",
-        "gamepad trigger r":          "R",
-        "gamepad start":              "start",
-        "gamepad dpad left":          "dpad left",
-        "gamepad dpad right":         "dpad right",
-        "gamepad dpad up":            "dpad up",
-        "gamepad dpad down":          "dpad down",
-        
-        "gamepad thumbstick l left":  "thumbstick l left",
-        "gamepad thumbstick l right": "thumbstick l right",
-        "gamepad thumbstick l up":    "thumbstick l up",
-        "gamepad thumbstick l down":  "thumbstick l down",
-        
-        "gamepad thumbstick r left":  "thumbstick r left",
-        "gamepad thumbstick r right": "thumbstick r right",
-        "gamepad thumbstick r up":    "thumbstick r up",
-        "gamepad thumbstick r down":  "thumbstick r down",
-        
-        // Switch GameCube controllers and adapters only
-        "gamepad thumbstick l click": "thumbstick l click",
-        "gamepad thumbstick r click": "thumbstick r click",
-        "gamepad guide":              "home",
-        "gamepad misc 1":             "capture",
-    },
-    
-    //Nintendo 64
-    "n64": {
-        "gamepad face south":         "A",
-        "gamepad face east":          "B",
-        "gamepad shoulder l":         "L",
-        "gamepad shoulder r":         "R",
-        "gamepad trigger l":          "Z",
-        "gamepad start":              "start",
-        "gamepad dpad up":            "dpad up",
-        "gamepad dpad down":          "dpad down",
-        "gamepad dpad left":          "dpad left",
-        "gamepad dpad right":         "dpad right",
-        
-        "gamepad thumbstick l left":  "thumbstick left",
-        "gamepad thumbstick l right": "thumbstick right",
-        "gamepad thumbstick l up":    "thumbstick up",
-        "gamepad thumbstick l down":  "thumbstick down",
-        
-        "gamepad thumbstick r left":  "C left",
-        "gamepad thumbstick r right": "C right",
-        "gamepad thumbstick r up":    "C up",
-        "gamepad thumbstick r down":  "C down",
-    },
-    
-    //Sega Saturn
-    "saturn": {
-        "gamepad face south": "A",
-        "gamepad face east":  "B",
-        "gamepad face west":  "X",
-        "gamepad face north": "Y",
-        "gamepad shoulder l": "L",
-        "gamepad shoulder r": "Z",
-        "gamepad trigger l":  "R",
-        "gamepad trigger r":  "C",
-        "gamepad select":     "mode",
-        "gamepad start":      "start",
-        "gamepad dpad up":    "dpad up",
-        "gamepad dpad down":  "dpad down",
-        "gamepad dpad left":  "dpad left",
-        "gamepad dpad right": "dpad right",
-    },
-    
-    //Super Nintendo
-    "snes": {
-        "gamepad face south": "B",
-        "gamepad face east":  "A",
-        "gamepad face west":  "Y",
-        "gamepad face north": "X",
-        "gamepad shoulder l": "L",
-        "gamepad shoulder r": "R",
-        "gamepad select":     "select",
-        "gamepad start":      "start",
-        "gamepad dpad up":    "dpad up",
-        "gamepad dpad down":  "dpad down",
-        "gamepad dpad left":  "dpad left",
-        "gamepad dpad right": "dpad right",
-    },
-    
-    #endregion
-};
+#region Special Cases
+
+//Special case: When a non-binding is being evaluated
+input_icons("not a binding")
+.fallback("not a binding")
+
+//Special case: When an invalid binding is being evaluated (usually happens when no source is assigned for a player)
+input_icons("unknown")
+.fallback("unknown")
+
+//Special case: Fallback gamepad icons
+//These are used when a gamepad is not recognised or an icon definition doesn't exist for a specific gamepad type
+input_icons("gamepad fallback")
+.add("gamepad face south",         "A")
+.add("gamepad face east",          "B")
+.add("gamepad face west",          "X")
+.add("gamepad face north",         "Y")
+.add("gamepad shoulder l",         "LB")
+.add("gamepad shoulder r",         "RB")
+.add("gamepad trigger l",          "LT")
+.add("gamepad trigger r",          "RT")
+.add("gamepad select",             "view")
+.add("gamepad start",              "menu")
+.add("gamepad dpad left",          "dpad left")
+.add("gamepad dpad right",         "dpad right")
+.add("gamepad dpad up",            "dpad up")
+.add("gamepad dpad down",          "dpad down")
+
+.add("gamepad thumbstick l left",  "thumbstick l left")
+.add("gamepad thumbstick l right", "thumbstick l right")
+.add("gamepad thumbstick l up",    "thumbstick l up")
+.add("gamepad thumbstick l down",  "thumbstick l down")
+.add("gamepad thumbstick l click", "thumbstick l click")
+
+.add("gamepad thumbstick r left",  "thumbstick r left")
+.add("gamepad thumbstick r right", "thumbstick r right")
+.add("gamepad thumbstick r up",    "thumbstick r up")
+.add("gamepad thumbstick r down",  "thumbstick r down")
+.add("gamepad thumbstick r click", "thumbstick r click")
+
+//Used for PlayStation 4 + 5 touchpad clicks (and occasionally other gamepads if INPUT_SDL2_ALLOW_EXTENDED is set to <true>)
+.add("gamepad touchpad click",     "touchpad click")
+
+//These are much less commonly used than the above
+//Please set INPUT_SDL2_ALLOW_EXTENDED to <true> to enable these gamepad buttons
+.add("gamepad guide",              "guide")
+.add("gamepad misc 1",             "misc")
+.add("gamepad paddle 1",           "paddle 1")
+.add("gamepad paddle 2",           "paddle 2")
+.add("gamepad paddle 3",           "paddle 3")
+.add("gamepad paddle 4",           "paddle 4")
+
+#endregion
+
+
+
+//Optional remapping for keyboard and mouse
+//This is useful for turning keyboard keys into sprite icons to match other assets, or for returning formatted strings (e.g. for use with Scribble)
+//Any keyboard key label not in this struct will simply fall through and return the key name
+input_icons("keyboard and mouse")
+//Put extra .add() commands here to add icons to keyboard and mouse
+
+
+
+#region Gamepads
+
+//Xbox One controllers
+input_icons("xbox one")
+.add("gamepad face south",         "A")
+.add("gamepad face east",          "B")
+.add("gamepad face west",          "X")
+.add("gamepad face north",         "Y")
+.add("gamepad shoulder l",         "LB")
+.add("gamepad shoulder r",         "RB")
+.add("gamepad trigger l",          "LT")
+.add("gamepad trigger r",          "RT")
+.add("gamepad select",             "view")
+.add("gamepad start",              "menu")
+.add("gamepad dpad left",          "dpad left")
+.add("gamepad dpad right",         "dpad right")
+.add("gamepad dpad up",            "dpad up")
+.add("gamepad dpad down",          "dpad down")
+
+.add("gamepad thumbstick l left",  "thumbstick l left")
+.add("gamepad thumbstick l right", "thumbstick l right")
+.add("gamepad thumbstick l up",    "thumbstick l up")
+.add("gamepad thumbstick l down",  "thumbstick l down")
+.add("gamepad thumbstick l click", "thumbstick l click")
+
+.add("gamepad thumbstick r left",  "thumbstick r left")
+.add("gamepad thumbstick r right", "thumbstick r right")
+.add("gamepad thumbstick r up",    "thumbstick r up")
+.add("gamepad thumbstick r down",  "thumbstick r down")
+.add("gamepad thumbstick r click", "thumbstick r click")
+
+//These are used for Elite controllers only
+.add("gamepad paddle 1",           "P1")
+.add("gamepad paddle 2",           "P3")  //Thanks SDL
+.add("gamepad paddle 3",           "P2")  //Many thanks
+.add("gamepad paddle 4",           "P4")
+
+//PlayStation 5
+input_icons("ps5")
+.add("gamepad face south",         "cross")
+.add("gamepad face east",          "circle")
+.add("gamepad face west",          "square")
+.add("gamepad face north",         "triangle")
+.add("gamepad shoulder l",         "L1")
+.add("gamepad shoulder r",         "R1")
+.add("gamepad trigger l",          "L2")
+.add("gamepad trigger r",          "R2")
+.add("gamepad select",             "create")
+.add("gamepad start",              "options")
+.add("gamepad dpad left",          "dpad left")
+.add("gamepad dpad right",         "dpad right")
+.add("gamepad dpad up",            "dpad up")
+.add("gamepad dpad down",          "dpad down")
+
+.add("gamepad thumbstick l left",  "thumbstick l left")
+.add("gamepad thumbstick l right", "thumbstick l right")
+.add("gamepad thumbstick l up",    "thumbstick l up")
+.add("gamepad thumbstick l down",  "thumbstick l down")
+.add("gamepad thumbstick l click", "L3")
+
+.add("gamepad thumbstick r left",  "thumbstick r left")
+.add("gamepad thumbstick r right", "thumbstick r right")
+.add("gamepad thumbstick r up",    "thumbstick r up")
+.add("gamepad thumbstick r down",  "thumbstick r down")
+.add("gamepad thumbstick r click", "R3")
+
+.add("gamepad touchpad click", "touchpad click")
+
+//Not available on the PlayStation 5 console itself but available on other platforms
+.add("gamepad misc 1",         "mic")
+
+//Switch handheld/dual JoyCon/Pro Controller
+input_icons("switch")
+.add("gamepad face south",         "B")
+.add("gamepad face east",          "A")
+.add("gamepad face west",          "Y")
+.add("gamepad face north",         "X")
+.add("gamepad shoulder l",         "L")
+.add("gamepad shoulder r",         "R")
+.add("gamepad trigger l",          "ZL")
+.add("gamepad trigger r",          "ZR")
+.add("gamepad select",             "plus")
+.add("gamepad start",              "minus")
+.add("gamepad dpad left",          "dpad left")
+.add("gamepad dpad right",         "dpad right")
+.add("gamepad dpad up",            "dpad up")
+.add("gamepad dpad down",          "dpad down")
+
+.add("gamepad thumbstick l left",  "thumbstick l left")
+.add("gamepad thumbstick l right", "thumbstick l right")
+.add("gamepad thumbstick l up",    "thumbstick l up")
+.add("gamepad thumbstick l down",  "thumbstick l down")
+.add("gamepad thumbstick l click", "thumbstick l click")
+ 
+.add("gamepad thumbstick r left",  "thumbstick r left")
+.add("gamepad thumbstick r right", "thumbstick r right")
+.add("gamepad thumbstick r up",    "thumbstick r up")
+.add("gamepad thumbstick r down",  "thumbstick r down")
+.add("gamepad thumbstick r click", "thumbstick r click")
+  
+//Not available on the Switch console itself but available on other platforms
+.add("gamepad guide",              "home")
+.add("gamepad misc 1",             "capture")
+
+//Left-hand Switch JoyCon
+//This setup assums horizontal hold type
+input_icons("switch joycon left")
+.add("gamepad face south",         "face south")
+.add("gamepad face east",          "face east")
+.add("gamepad face west",          "face west") 
+.add("gamepad face north",         "face north")
+.add("gamepad shoulder l",         "SL")
+.add("gamepad shoulder r",         "SR")
+.add("gamepad start",              "minus")
+
+.add("gamepad thumbstick l left",  "thumbstick left")
+.add("gamepad thumbstick l right", "thumbstick right")
+.add("gamepad thumbstick l up",    "thumbstick up")
+.add("gamepad thumbstick l down",  "thumbstick down")
+.add("gamepad thumbstick l click", "thumbstick click")
+
+//Not available on the Switch console itself but available on other platforms
+.add("gamepad select",             "capture")
+
+//Right-hand Switch JoyCon
+//This setup assums horizontal hold type
+input_icons("switch joycon right")
+.add("gamepad face south",         "face south")
+.add("gamepad face east",          "face east")
+.add("gamepad face west",          "face west") 
+.add("gamepad face north",         "face north")
+.add("gamepad shoulder l",         "SL")
+.add("gamepad shoulder r",         "SR")
+.add("gamepad start",              "plus")
+
+.add("gamepad thumbstick l left",  "thumbstick left")
+.add("gamepad thumbstick l right", "thumbstick right")
+.add("gamepad thumbstick l up",    "thumbstick up")
+.add("gamepad thumbstick l down",  "thumbstick down")
+.add("gamepad thumbstick l click", "thumbstick click")
+
+//Not available on the Switch console itself but available on other platforms
+.add("gamepad select",             "home")
+
+//Xbox 360
+input_icons("xbox 360")
+.add("gamepad face south",         "A")
+.add("gamepad face east",          "B")
+.add("gamepad face west",          "X")
+.add("gamepad face north",         "Y")
+.add("gamepad shoulder l",         "LB")
+.add("gamepad shoulder r",         "RB")
+.add("gamepad trigger l",          "LT")
+.add("gamepad trigger r",          "RT")
+.add("gamepad select",             "back")
+.add("gamepad start",              "start")
+.add("gamepad dpad left",          "dpad left")
+.add("gamepad dpad right",         "dpad right")
+.add("gamepad dpad up",            "dpad up")
+.add("gamepad dpad down",          "dpad down")
+
+.add("gamepad thumbstick l left",  "thumbstick l left")
+.add("gamepad thumbstick l right", "thumbstick l right")
+.add("gamepad thumbstick l up",    "thumbstick l up")
+.add("gamepad thumbstick l down",  "thumbstick l down")
+.add("gamepad thumbstick l click", "thumbstick l click")
+
+.add("gamepad thumbstick r left",  "thumbstick r left")
+.add("gamepad thumbstick r right", "thumbstick r right")
+.add("gamepad thumbstick r up",    "thumbstick r up")
+.add("gamepad thumbstick r down",  "thumbstick r down")
+.add("gamepad thumbstick r click", "thumbstick r click")
+
+//PlayStation 4
+input_icons("ps4")
+.add("gamepad face south",         "cross")
+.add("gamepad face east",          "circle")
+.add("gamepad face west",          "square")
+.add("gamepad face north",         "triangle")
+.add("gamepad shoulder l",         "L1")
+.add("gamepad shoulder r",         "R1")
+.add("gamepad trigger l",          "L2")
+.add("gamepad trigger r",          "R2")
+.add("gamepad select",             "share")
+.add("gamepad start",              "options")
+.add("gamepad dpad left",          "dpad left")
+.add("gamepad dpad right",         "dpad right")
+.add("gamepad dpad up",            "dpad up")
+.add("gamepad dpad down",          "dpad down")
+
+.add("gamepad thumbstick l left",  "thumbstick l left")
+.add("gamepad thumbstick l right", "thumbstick l right")
+.add("gamepad thumbstick l up",    "thumbstick l up")
+.add("gamepad thumbstick l down",  "thumbstick l down")
+.add("gamepad thumbstick l click", "L3")
+
+.add("gamepad thumbstick r left",  "thumbstick r left")
+.add("gamepad thumbstick r right", "thumbstick r right")
+.add("gamepad thumbstick r up",    "thumbstick r up")
+.add("gamepad thumbstick r down",  "thumbstick r down")
+.add("gamepad thumbstick r click", "R3")
+
+.add("gamepad touchpad click", "touchpad click")
+
+//PlayStation 1-3
+input_icons("psx")
+.add("gamepad face south",         "cross")
+.add("gamepad face east",          "circle")
+.add("gamepad face west",          "square")
+.add("gamepad face north",         "triangle")
+.add("gamepad shoulder l",         "L1")
+.add("gamepad shoulder r",         "R1")
+.add("gamepad trigger l",          "L2")
+.add("gamepad trigger r",          "R2")
+.add("gamepad select",             "select")
+.add("gamepad start",              "start")
+.add("gamepad dpad left",          "dpad left")
+.add("gamepad dpad right",         "dpad right")
+.add("gamepad dpad up",            "dpad up")
+.add("gamepad dpad down",          "dpad down")
+
+.add("gamepad thumbstick l left",  "thumbstick l left")
+.add("gamepad thumbstick l right", "thumbstick l right")
+.add("gamepad thumbstick l up",    "thumbstick l up")
+.add("gamepad thumbstick l down",  "thumbstick l down")
+.add("gamepad thumbstick l click", "L3")
+
+.add("gamepad thumbstick r left",  "thumbstick r left")
+.add("gamepad thumbstick r right", "thumbstick r right")
+.add("gamepad thumbstick r up",    "thumbstick r up")
+.add("gamepad thumbstick r down",  "thumbstick r down")
+.add("gamepad thumbstick r click", "R3")
+
+//Nintendo Gamecube
+input_icons("gamecube")
+.add("gamepad face south",         "A")
+.add("gamepad face east",          "X")
+.add("gamepad face west",          "B")
+.add("gamepad face north",         "Y")
+.add("gamepad shoulder r",         "Z")
+.add("gamepad trigger l",          "L")
+.add("gamepad trigger r",          "R")
+.add("gamepad start",              "start")
+.add("gamepad dpad left",          "dpad left")
+.add("gamepad dpad right",         "dpad right")
+.add("gamepad dpad up",            "dpad up")
+.add("gamepad dpad down",          "dpad down")
+
+.add("gamepad thumbstick l left",  "thumbstick l left")
+.add("gamepad thumbstick l right", "thumbstick l right")
+.add("gamepad thumbstick l up",    "thumbstick l up")
+.add("gamepad thumbstick l down",  "thumbstick l down")
+
+.add("gamepad thumbstick r left",  "thumbstick r left")
+.add("gamepad thumbstick r right", "thumbstick r right")
+.add("gamepad thumbstick r up",    "thumbstick r up")
+.add("gamepad thumbstick r down",  "thumbstick r down")
+
+//The following icons are for Switch GameCube controllers and adapters only
+.add("gamepad thumbstick l click", "thumbstick l click")
+.add("gamepad thumbstick r click", "thumbstick r click")
+.add("gamepad guide",              "home")
+.add("gamepad misc 1",             "capture")
+
+//Nintendo 64
+input_icons("n64")
+.add("gamepad face south",         "A")
+.add("gamepad face east",          "B")
+.add("gamepad shoulder l",         "L")
+.add("gamepad shoulder r",         "R")
+.add("gamepad trigger l",          "Z")
+.add("gamepad start",              "start")
+.add("gamepad dpad up",            "dpad up")
+.add("gamepad dpad down",          "dpad down")
+.add("gamepad dpad left",          "dpad left")
+.add("gamepad dpad right",         "dpad right")
+
+.add("gamepad thumbstick l left",  "thumbstick left")
+.add("gamepad thumbstick l right", "thumbstick right")
+.add("gamepad thumbstick l up",    "thumbstick up")
+.add("gamepad thumbstick l down",  "thumbstick down")
+
+.add("gamepad thumbstick r left",  "C left")
+.add("gamepad thumbstick r right", "C right")
+.add("gamepad thumbstick r up",    "C up")
+.add("gamepad thumbstick r down",  "C down")
+
+//Sega Saturn
+input_icons("saturn")
+.add("gamepad face south", "A")
+.add("gamepad face east",  "B")
+.add("gamepad face west",  "X")
+.add("gamepad face north", "Y")
+.add("gamepad shoulder l", "L")
+.add("gamepad shoulder r", "Z")
+.add("gamepad trigger l",  "R")
+.add("gamepad trigger r",  "C")
+.add("gamepad select",     "mode")
+.add("gamepad start",      "start")
+.add("gamepad dpad up",    "dpad up")
+.add("gamepad dpad down",  "dpad down")
+.add("gamepad dpad left",  "dpad left")
+.add("gamepad dpad right", "dpad right")
+
+//Super Nintendo
+input_icons("snes")
+.add("gamepad face south", "B")
+.add("gamepad face east",  "A")
+.add("gamepad face west",  "Y")
+.add("gamepad face north", "X")
+.add("gamepad shoulder l", "L")
+.add("gamepad shoulder r", "R")
+.add("gamepad select",     "select")
+.add("gamepad start",      "start")
+.add("gamepad dpad up",    "dpad up")
+.add("gamepad dpad down",  "dpad down")
+.add("gamepad dpad left",  "dpad left")
+.add("gamepad dpad right", "dpad right")
+
+#endregion
