@@ -63,7 +63,7 @@ INPUT_ICONS {
     
     //Optional remapping for keyboard and mouse
     //This is useful for turning keyboard keys into sprite icons to match other assets, or for returning formatted strings (e.g. for use with Scribble)
-    //Any keyboard key label not in this struct will simply fall through
+    //Any keyboard key label not in this struct will simply fall through and return the key name
     "keyboard and mouse": {
         
     },
