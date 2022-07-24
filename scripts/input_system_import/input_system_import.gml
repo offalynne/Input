@@ -14,7 +14,7 @@ function input_system_import(_string)
     
     if (!is_struct(_json))
     {
-        __input_error("Input must be valid JSON (typeof=", _string, ")");
+        __input_error("Input must be valid JSON (typeof=", typeof(_string), ")");
         return;
     }
     
