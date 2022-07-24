@@ -144,7 +144,7 @@ function __input_class_binding() constructor
             {
                 var _gamepad = global.__input_gamepads[_g];
                 
-                if (_gamepad.description == __gamepad_description)
+                if (is_struct(_gamepad) && (_gamepad.description == __gamepad_description))
                 {
                     __gamepad_index = _g;
                     break;
