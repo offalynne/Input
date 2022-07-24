@@ -29,6 +29,16 @@ It is recommended to only use bindings written on the same device as keyboard sc
 
 &nbsp;
 
+## `input_system_verify(stringOrStruct)`
+
+*Returns:* Boolean, whether the provided data can be loaded by `input_system_import()` without error
+
+|Name            |Datatype        |Purpose                                                                                                                 |
+|----------------|----------------|------------------------------------------------------------------------------------------------------------------------|
+|`stringOrStruct`|string or struct|JSON returned by [`input_system_export()`](Functions-(Exporting-and-Importing)#input_system_exportoutputstring-prettify)|
+
+&nbsp;
+
 ## `input_system_import(stringOrStruct)`
 
 *Returns:* N/A (`undefined`)
@@ -68,6 +78,16 @@ Clears the current profiles and bindings for the given player, resetting them to
 Outputs a string (or struct) that contains data that contains profile, binding, and axis threshold data for the given player. This can then be saved to a file etc. so that custom bindings can be restored in the future.
 
 It is recommended to only use bindings written on the same device as keyboard scancodes differ across device layouts and platforms.
+
+&nbsp;
+
+## `input_player_verify(stringOrStruct)`
+
+*Returns:* Boolean, whether the provided data can be loaded by `input_player_import()` without error
+
+|Name            |Datatype        |Purpose                                                                                                                             |
+|----------------|----------------|------------------------------------------------------------------------------------------------------------------------------------|
+|`stringOrStruct`|string or struct|JSON returned by [`input_player_export()`](Functions-(Exporting-and-Importing)#input_player_exportplayerindex-outputstring-prettify)|
 
 &nbsp;
 
@@ -115,14 +135,24 @@ It is recommended to only use bindings written on the same device as keyboard sc
 
 &nbsp;
 
+## `input_profile_verify(stringOrStruct)`
+
+*Returns:* Boolean, whether the provided data can be loaded by `input_profile_import()` without error
+
+|Name            |Datatype        |Purpose                                                                                                                                       |
+|----------------|----------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+|`stringOrStruct`|string or struct|JSON returned by [`input_profile_export()`](Functions-(Exporting-and-Importing)?id=input_profile_importstringorstruct-profilename-playerindex)|
+
+&nbsp;
+
 ## `input_profile_import(stringOrStruct, profileName, [playerIndex])`
 
 *Returns:* N/A (`undefined`)
 
-|Name            |Datatype        |Purpose                                                                                                                             |
-|----------------|----------------|------------------------------------------------------------------------------------------------------------------------------------|
-|`stringOrStruct`|string or struct|JSON returned by [`input_player_export()`](Functions-(Exporting-and-Importing)#input_player_exportplayerindex-outputstring-prettify)|
-|`[playerIndex]` |integer         |Player to target. If not specified, player 0 is used                                                                                |
+|Name            |Datatype        |Purpose                                                                                                                                       |
+|----------------|----------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+|`stringOrStruct`|string or struct|JSON returned by [`input_profile_export()`](Functions-(Exporting-and-Importing)?id=input_profile_importstringorstruct-profilename-playerindex)|
+|`[playerIndex]` |integer         |Player to target. If not specified, player 0 is used                                                                                          |
 
 Reads JSON, either as a string or a struct, that contains profile data (bindings and axis thresholds). Such a JSON should be created using [`input_profile_export()`](Functions-(Exporting-and-Importing)#input_profile_exportprofilename-playerindex-outputstring-prettify).
 
