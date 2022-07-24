@@ -192,6 +192,7 @@
 - [`input_ignore_key_remove(key)`](Functions-(Other)#input_ignore_key_removekey)
 - [`input_clear_momentary(state)`](Functions-(Other)#input_clear_momentarystate)
 - [`input_swap_gamepad_ab(state)`](Functions-(Binding-System)#input_swap_gamepad_abstate)
+- [`input_icons(categoryName)`](Functions-(Other)?id=input_iconscategoryname)
 
 &nbsp;
 
