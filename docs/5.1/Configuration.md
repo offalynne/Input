@@ -151,6 +151,8 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 
 ## Icons
 
-`__input_config_icons()` holds a big struct that describes how specific binding for specific [types of gamepad](Functions-(Players)?id=input_player_get_gamepad_typeplayerindex-binding) should be displayed when using [`input_binding_get_icon()`](Functions-(Binding-Access)?id=input_binding_get_iconbinding-playerindex). This script never needs to be directly called in your code, but the script and the struct it contains must be present in a project for Input to work.
+`__input_config_icons()` holds code that defines what values [`input_binding_get_icon()`](Functions-(Binding-Access)?id=input_binding_get_iconbinding-playerindex) should return for specific bindings for specific [types of gamepad](Functions-(Players)?id=input_player_get_gamepad_typeplayerindex-binding). This script never needs to be directly called in your code, but the script and the struct it contains must be present in a project for Input to work.
+
+For more information on how to customise `__input_config_icons()`, please see information relating to [`input_icons()`](Functions-(Other)?id=input_iconscategoryname), the function used throughout this script.
 
 ?> You should edit this script to customise Input for your own purposes.
