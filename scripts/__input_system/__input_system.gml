@@ -155,32 +155,6 @@ enum __INPUT_VERB_TYPE
     __COMBO,
 }
 
-enum INPUT_IMPORT_ERROR
-{
-    NONE,
-    
-    SYSTEM___INVALID_JSON,
-    SYSTEM___ACCESSIBILITY_MISSING,
-    SYSTEM___MOMENTARY_TOGGLE_VERBS_MISSING,
-    SYSTEM___COOLDOWN_VERBS_MISSING,
-    SYSTEM___MOUSE_SETTINGS_MISSING,
-    SYSTEM___PLAYER_SETTINGS_MISSING,
-    SYSTEM___PLAYER_LENGTH_MISMATCH,
-    
-    PLAYER___INVALID_JSON,
-    PLAYER___PROFILES_MISSING,
-    PLAYER___AXIS_THRESHOLDS_MISSING,
-    PLAYER___AXIS_THRESHOLDS_CORRUPTED,
-    
-    PROFILE___INVALID_JSON,
-    PROFILE___INVALID_ALTERNATE_COUNT,
-    PROFILE___MISSING_VERB,
-    
-    BINDING___TYPE_MISSING,
-    BINDING___VALUE_MISSING,
-    BINDING___AXIS_NEGATIVE_MISSING,
-}
-
 
 
 
@@ -296,20 +270,13 @@ function __input_error()
         ++_i;
     }
     
-    if (variable_global_exists("__input_error_disable") && global.__input_error_disable)
+    if (os_browser == browser_not_a_browser)
     {
-        __input_trace("Error! ", _string);
+        show_error("Input:\n" + _string + "\n ", false);
     }
     else
     {
-        if (os_browser == browser_not_a_browser)
-        {
-            show_error("Input:\n" + _string + "\n ", false);
-        }
-        else
-        {
-            show_error("Input:\n" + _string + "\n" + string(debug_get_callstack()), false);
-        }
+        show_error("Input:\n" + _string + "\n" + string(debug_get_callstack()), false);
     }
 }
 

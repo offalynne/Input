@@ -234,12 +234,7 @@ function __input_class_player() constructor
         if (!is_struct(_json) && !is_array(_json))
         {
             __input_error("Input must be valid JSON (typeof=", _string, ")");
-            
-            return {
-                scope: "profile",
-                profile: _profile_name,
-                error: INPUT_IMPORT_ERROR.PROFILE___INVALID_JSON,
-            };
+            return;
         }
         
         //Make sure the player has this particular profile set up
@@ -253,7 +248,6 @@ function __input_class_player() constructor
             var _verb_name = global.__input_basic_verb_array[_v];
             
             var _existing_alternate_array = _existing_verb_dict[$ _verb_name];
-            
             //Verify we have an existing alternate array to write into
             if (!is_array(_existing_alternate_array))
             {
@@ -271,45 +265,19 @@ function __input_class_player() constructor
             }
             
             var _alternate_array = _json[$ _verb_name];
-            
             //Verify that the input data has this verb
-            if (!is_array(_alternate_array))
-            {
-                __input_error("Player ", __index, " data is missing verb \"", _verb_name, "\"");
-                
-                return {
-                    scope: "profile",
-                    profile: _profile_name,
-                    verb: _verb_name,
-                    error: INPUT_IMPORT_ERROR.PROFILE___MISSING_VERB,
-                };
-            }
+            if (!is_array(_alternate_array)) __input_error("Player ", __index, " data is missing verb \"", _verb_name, "\"");
             
             if (array_length(_alternate_array) != INPUT_MAX_ALTERNATE_BINDINGS)
             {
                 __input_error("JSON malformed, player ", __index, " verb \"", _verb_name, "\" should have ", INPUT_MAX_ALTERNATE_BINDINGS, " alternate bindings, but it had ", array_length(_alternate_array));
-                
-                return {
-                    scope: "profile",
-                    profile: _profile_name,
-                    verb: _verb_name,
-                    error: INPUT_IMPORT_ERROR.PROFILE___INVALID_ALTERNATE_COUNT,
-                };
             }
             
             //Iterate over every alternate and import the value into our local data
             var _a = 0;
             repeat(INPUT_MAX_ALTERNATE_BINDINGS)
             {
-                var _error = _existing_alternate_array[@ _a].__import(_alternate_array[_a]);
-                if (_error != undefined) //Propagate any errors
-                {
-                    _error.profile = _profile_name;
-                    _error.verb = _verb_name;
-                    _error.alternate = _a;
-                    return _error;
-                }
-                
+                _existing_alternate_array[@ _a].__import(_alternate_array[_a]);
                 ++_a;
             }
             
@@ -918,24 +886,14 @@ function __input_class_player() constructor
         if (!is_struct(_json) && !is_array(_json))
         {
             __input_error("Input must be valid JSON (typeof=", _string, ")");
-            
-            return {
-                scope: "player",
-                player: __index,
-                error: INPUT_IMPORT_ERROR.PLAYER___INVALID_JSON,
-            };
+            return;
         }
         
         //Iterate over every profile in the JSON
         if (!is_struct(_json[$ "profiles"]))
         {
             __input_error("Player ", __index, " profiles are corrupted");
-            
-            return {
-                scope: "player",
-                player: __index,
-                error: INPUT_IMPORT_ERROR.PLAYER___PROFILES_MISSING,
-            };
+            return;
         }
         
         var _profiles_dict = _json.profiles;
@@ -944,14 +902,7 @@ function __input_class_player() constructor
         repeat(array_length(_profile_name_array))
         {
             var _profile_name = _profile_name_array[_f];
-            
-            var _error = __profile_import(_json.profiles[$ _profile_name], _profile_name);
-            if (_error != undefined) //Propagate any errors
-            {
-                _error.player = __index;
-                return _error;
-            }
-            
+            __profile_import(_json.profiles[$ _profile_name], _profile_name);
             ++_f;
         }
         
@@ -959,12 +910,7 @@ function __input_class_player() constructor
         if (!is_struct(_json[$ "axis_thresholds"]))
         {
             __input_error("Player ", __index, " gamepad axis thresholds are corrupted");
-            
-            return {
-                scope: "player",
-                player: __index,
-                error: INPUT_IMPORT_ERROR.PLAYER___AXIS_THRESHOLDS_MISSING,
-            };
+            return;
         }
         
         var _axis_thresholds_dict = _json.axis_thresholds;
@@ -978,13 +924,7 @@ function __input_class_player() constructor
             if (!is_struct(_new_thresholds_struct))
             {
                 __input_error("Player ", __index, " gamepad axis thresholds are corrupted");
-                
-                return {
-                    scope: "player",
-                    player: __index,
-                    axis: _axis_name,
-                    error: INPUT_IMPORT_ERROR.PLAYER___AXIS_THRESHOLDS_CORRUPTED,
-                };
+                return;
             }
             
             __axis_thresholds_dict[$ _axis_name] = {

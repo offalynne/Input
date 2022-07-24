@@ -4,7 +4,6 @@ function __input_initialize()
 {
     if (variable_global_exists("__input_initialization_phase")) return false;
     global.__input_initialization_phase = "Pending";
-    global.__input_error_disable = false;
     
     //Set up the extended debug functionality
     global.__input_debug_log = "input___" + string_replace_all(string_replace_all(date_datetime_string(date_current_datetime()), ":", "-"), " ", "___") + ".txt";
