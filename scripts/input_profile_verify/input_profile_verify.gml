@@ -16,7 +16,10 @@ function input_profile_verify(_json, _profile_name, _player_index = 0)
     {
         global.__input_players[_player_index].__profile_import(_json, _profile_name);
     }
-    catch(_error) {}
+    catch(_error)
+    {
+        __input_trace("input_profile_verify() failed with the following error: ", _error);
+    }
     
     //Restore a clone of the current settings
     input_profile_import(_backup, _profile_name, _player_index);
