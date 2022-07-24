@@ -445,7 +445,7 @@ function __input_initialize()
     __input_key_name_set(vk_numrow6, "numrow 6");
     __input_key_name_set(vk_numrow7, "numrow 7");
     __input_key_name_set(vk_numrow8, "numrow 8");
-    __input_key_name_set(vk_numrow8, "numrow 9");
+    __input_key_name_set(vk_numrow9, "numrow 9");
 
     __input_key_name_set(vk_numpad0, "numpad 0");
     __input_key_name_set(vk_numpad1, "numpad 1");
