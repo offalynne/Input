@@ -10,11 +10,11 @@
 
 //Special case: When a non-binding is being evaluated
 input_icons("not a binding")
-.fallback("not a binding")
+.add(all, "not a binding")
 
 //Special case: When an invalid binding is being evaluated (usually happens when no source is assigned for a player)
 input_icons("unknown")
-.fallback("unknown")
+.add(all, "unknown")
 
 //Special case: Fallback gamepad icons
 //These are used when a gamepad is not recognised or an icon definition doesn't exist for a specific gamepad type

@@ -8,7 +8,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
     {
         var _category_data = global.__input_icons[$ "not a binding"];
         if (!is_struct(_category_data)) return "not a binding";
-        var _icon = _category_data.__fallback;
+        var _icon = _category_data.__dictionary[$ string(all)];
         return _icon ?? "not a binding";
     }
     
@@ -30,7 +30,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
     {
         var _category_data = global.__input_icons[$ "unknown"];
         if (!is_struct(_category_data)) return "unknown";
-        var _icon = _category_data.__fallback;
+        var _icon = _category_data.__dictionary[$ string(all)];
         return _icon ?? "unknown";
     }
     
