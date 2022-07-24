@@ -112,7 +112,11 @@ function __input_class_binding() constructor
         if (!variable_struct_exists(_binding_shell, "type"))
         {
             __input_error("Binding \"type\" not found; binding is corrupted");
-            return;
+            
+            return {
+                scope: "binding",
+                error: INPUT_IMPORT_ERROR.BINDING___TYPE_MISSING,
+            };
         }
         
         if (!variable_struct_exists(_binding_shell, "value")
@@ -120,13 +124,21 @@ function __input_class_binding() constructor
         && (_binding_shell.type != "mouse wheel down"))
         {
             __input_error("Binding \"value\" not found; binding is corrupted");
-            return;
+            
+            return {
+                scope: "binding",
+                error: INPUT_IMPORT_ERROR.BINDING___VALUE_MISSING,
+            };
         }
         
         if ((type == __INPUT_BINDING_GAMEPAD_AXIS) && !variable_struct_exists(_binding_shell, "axis_negative"))
         {
             __input_error("Binding \"axis_negative\" not found; binding is corrupted");
-            return;
+            
+            return {
+                scope: "binding",
+                error: INPUT_IMPORT_ERROR.BINDING___AXIS_NEGATIVE_MISSING,
+            };
         }
         
         type                  = _binding_shell.type;
