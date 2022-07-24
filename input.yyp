@@ -336,9 +336,9 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"test_load_mapping.json","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2022.600.0.143",
+    "IDEVersion": "2022.800.0.161",
   },
-  "resourceVersion": "1.5",
+  "resourceVersion": "1.6",
   "name": "input",
   "tags": [],
   "resourceType": "GMProject",
