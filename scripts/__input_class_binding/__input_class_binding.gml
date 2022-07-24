@@ -3,7 +3,7 @@ function __input_class_binding() constructor
     type          = undefined;
     value         = undefined;
     axis_negative = undefined;
-    __label       = undefined;
+    __label       = "empty binding";
     
     __gamepad_index       = undefined;
     __gamepad_description = undefined;
