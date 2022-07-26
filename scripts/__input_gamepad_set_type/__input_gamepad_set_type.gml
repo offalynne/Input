@@ -99,17 +99,9 @@ function __input_gamepad_set_type()
                 }
                 
                 var _desc = string_lower(description);
-                if (string_count("8bitdo", _desc))
-                {
-                    raw_type = "Community8BitDo";
-                }
-                else if (string_count("snes", _desc))
+               if (string_count("snes", _desc))
                 {
                     raw_type = "CommunitySNES";
-                }
-                else if (string_count("saturn", _desc))
-                {
-                    raw_type = "CommunitySaturn"
                 }
                 else if (string_count("stadia", _desc))
                 {
@@ -127,6 +119,10 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "SteamController";
                 }
+                else if (string_count("saturn", _desc) || string_count("8bitdo s30", _desc) || string_count("8bitdo m30", _desc))
+                {
+                    raw_type = "CommunitySaturn"
+                }
                 else if (string_count("ps5", _desc) || string_count("dualsense", _desc))
                 {
                     raw_type = "PS5Controller";
@@ -135,7 +131,7 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunityPS4";
                 }
-                else if (string_count("playstation", _desc) || string_count("ps1", _desc) || string_count("ps2", _desc) || string_count("ps3", _desc) || string_count("dualshock", _desc))
+                else if (string_count("playstation", _desc) || string_count("ps1", _desc) || string_count("ps2", _desc) || string_count("ps3", _desc) || string_count("dualshock", _desc) || string_count("8bitdo p30", _desc))
                 {
                     raw_type = "CommunityPSX"; //Catch all remaining PlayStation gamepads as PSX
                 }
@@ -158,6 +154,10 @@ function __input_gamepad_set_type()
                 else if (string_count("xbox", _desc))
                 {
                     raw_type = "CommunityLikeXBox";
+                }
+                else if (string_count("8bitdo", _desc))
+                {
+                    raw_type = "Community8BitDo";
                 }
                 else if ((__INPUT_ON_MOBILE && __INPUT_ON_APPLE) || _desc == "mfi" || string_count("nimbus", _desc) || string_count("horipad ultimate", _desc))
                 {
