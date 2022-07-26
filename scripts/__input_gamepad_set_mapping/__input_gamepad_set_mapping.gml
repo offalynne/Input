@@ -495,6 +495,7 @@ function __input_gamepad_set_mapping()
             set_mapping(gp_shoulderr, 5, __INPUT_MAPPING.BUTTON, "rightshoulder");
             
             set_mapping(gp_select, 6, __INPUT_MAPPING.BUTTON, "back");
+            set_mapping(gp_start, 0, undefined, "start");
             
             var _mapping = set_mapping(gp_axislh, undefined, __INPUT_MAPPING.BUTTON_TO_AXIS, "leftx");
             _mapping.raw_negative = 9;
