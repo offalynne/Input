@@ -53,3 +53,4 @@ multimedia remote,android,description contains // Smart TV Remote
 corsair,android,description contains // Corsair Mice, Keyboards, Adapters
 bt kb,android,description contains // GameSir Bluetooth Keyboards
 uinput-fpc,android,description contains // Google Pixel Fingerprint Sensor
+joy-con charging grip,android,description contains // Switch Charging Grip
