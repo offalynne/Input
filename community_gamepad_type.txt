@@ -115,6 +115,7 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 12bd,d015,CommunitySNES // Tomee SNES
 1235,ab20,CommunitySNES // 8BitDo SN30
 2dc8,5103,CommunitySNES // 8BitDo SN30 Modkit
+2dc8,5109,CommunitySNES // 8BitDo Dogbone Modkit
 1781,0a96,CommunitySNES // SNES Atari USB
 0f00,0001,CommunitySNES // Retro NES
 1292,4643,CommunitySNES // Retro Bit NES
@@ -318,7 +319,8 @@ dead,beef,CommunityPSX // Hidromancer
 0f0d,0137,CommunityPSX // Hori Fighting Stick Mini
 146b,0301,CommunityPSX // Unknown PSX
 2563,0623,CommunityPSX // Unknown PSX
-2dc8,5107,CommunityPSX // 8BitDo P30
+2dc8,5107,CommunityPSX // 8BitDo P30 Modkit
+2dc8,5108,CommunityPSX // 8BitDo P30 Modkit
 04d9,0002,CommunityPSX // TwinShock PS2
 04d9,0f16,CommunityPSX // Atomix
 054c,0cda,CommunityPSX // PlayStation Classic
