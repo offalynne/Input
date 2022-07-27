@@ -3,7 +3,7 @@ function __input_class_binding() constructor
     type          = undefined;
     value         = undefined;
     axis_negative = undefined;
-    __label       = undefined;
+    __label       = "empty binding";
     
     __gamepad_index       = undefined;
     __gamepad_description = undefined;
@@ -19,6 +19,27 @@ function __input_class_binding() constructor
     
     
     #region Public
+    
+    static __source_type_get = function()
+    {
+        switch(type)
+        {
+            case __INPUT_BINDING_KEY:            return INPUT_KEYBOARD; break;
+            case __INPUT_BINDING_MOUSE_BUTTON:   return INPUT_MOUSE;    break;
+            case __INPUT_BINDING_MOUSE_WHEEL_UP: return INPUT_MOUSE;    break;
+            case __INPUT_BINDING_GAMEPAD_BUTTON: return INPUT_GAMEPAD;  break;
+            case __INPUT_BINDING_GAMEPAD_AXIS:   return INPUT_GAMEPAD;  break;
+            
+            case undefined:
+                __input_trace("Warning! Binding type has not been defined");
+                return undefined;
+            break;
+            
+            default:
+                __input_error("Unhandled binding type \"", type, "\"");
+            break;
+        }
+    }
     
     static __gamepad_set = function(_gamepad)
     {
@@ -123,7 +144,7 @@ function __input_class_binding() constructor
             {
                 var _gamepad = global.__input_gamepads[_g];
                 
-                if (_gamepad.description == __gamepad_description)
+                if (is_struct(_gamepad) && (_gamepad.description == __gamepad_description))
                 {
                     __gamepad_index = _g;
                     break;

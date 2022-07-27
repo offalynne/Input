@@ -50,7 +50,15 @@ function __input_class_source(_source, _gamepad = undefined) constructor
     
     static __any_input = function()
     {
-        return __input_source_any_input(__source, __gamepad);
+        if (__input_source_any_input(__source, __gamepad)) return true;
+        
+        if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER)
+        {
+            if ((__source == __INPUT_SOURCE.KEYBOARD) && __input_source_any_input(__INPUT_SOURCE.MOUSE, __gamepad)) return true;
+            if ((__source == __INPUT_SOURCE.MOUSE) && __input_source_any_input(__INPUT_SOURCE.KEYBOARD, __gamepad)) return true;
+        }
+        
+        return false;
     }
     
     static __scan_for_binding = function(_player_index = 0)

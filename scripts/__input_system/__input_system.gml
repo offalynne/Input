@@ -1,5 +1,5 @@
-#macro __INPUT_VERSION "5.0.6"
-#macro __INPUT_DATE    "2022-07-02"
+#macro __INPUT_VERSION "5.1.0"
+#macro __INPUT_DATE    "2022-07-24"
 #macro __INPUT_DEBUG   false
 
 #macro __INPUT_BINDING_KEY               "key"
@@ -8,8 +8,6 @@
 #macro __INPUT_BINDING_MOUSE_WHEEL_DOWN  "mouse wheel down"
 #macro __INPUT_BINDING_GAMEPAD_BUTTON    "gamepad button"
 #macro __INPUT_BINDING_GAMEPAD_AXIS      "gamepad axis"
-
-#macro INPUT_ICONS  global.__input_icons =
 
 #macro INPUT_KEYBOARD      global.__input_source_keyboard
 #macro INPUT_MOUSE         global.__input_source_mouse

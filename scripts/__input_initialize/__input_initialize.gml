@@ -719,6 +719,7 @@ function __input_initialize()
     global.__input_group_to_verbs_dict   = {};
     global.__input_verb_group_array      = [];
     global.__input_null_binding          = input_binding_empty();
+    global.__input_icons                 = {};
     
     
     

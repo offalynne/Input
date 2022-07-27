@@ -248,8 +248,23 @@ function __input_class_player() constructor
             var _verb_name = global.__input_basic_verb_array[_v];
             
             var _existing_alternate_array = _existing_verb_dict[$ _verb_name];
-            var _alternate_array = _json[$ _verb_name];
+            //Verify we have an existing alternate array to write into
+            if (!is_array(_existing_alternate_array))
+            {
+                //If we don't have an existing array, create a new one
+                _existing_alternate_array = array_create(INPUT_MAX_ALTERNATE_BINDINGS, undefined);
+                
+                var _a = 0;
+                repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+                {
+                    _existing_alternate_array[@ _a] = input_binding_empty();
+                    ++_a;
+                }
+                
+                _existing_verb_dict[$ _verb_name] = _existing_alternate_array;
+            }
             
+            var _alternate_array = _json[$ _verb_name];
             //Verify that the input data has this verb
             if (!is_array(_alternate_array)) __input_error("Player ", __index, " data is missing verb \"", _verb_name, "\"");
             

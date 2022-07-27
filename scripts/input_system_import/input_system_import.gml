@@ -1,4 +1,4 @@
-/// @desc    Reads a JSON (string or struct) that contains Input system data and replaces the current data with it.
+/// @desc    Reads a JSON (string or struct) that contains Input system data and replaces the current data with it
 /// @param   stringOrStruct
 
 function input_system_import(_string)
@@ -14,7 +14,7 @@ function input_system_import(_string)
     
     if (!is_struct(_json))
     {
-        __input_error("Input must be valid JSON (typeof=", _string, ")");
+        __input_error("Input must be valid JSON (typeof=", typeof(_string), ")");
         return;
     }
     
