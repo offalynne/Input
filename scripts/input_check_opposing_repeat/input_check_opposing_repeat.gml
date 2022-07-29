@@ -1,6 +1,6 @@
 /// @desc    Returns the sign of the result of the negative and positive active verbs as re-triggered by a repeater behaviour
 ///          This function will not return <true> on the same frame a verb is activated (unless predelay is set to 0)
-///          You'll probably want to combine this function with input_check_pressed()
+///          You'll probably want to combine this function with input_check_opposing_pressed()
 /// @param   verbNegative
 /// @param   verbPositive
 /// @param   [playerIndex=0]
@@ -8,7 +8,7 @@
 /// @param   [delay]
 /// @param   [predelay]
 
-function input_check_repeat_opposing(_verb_negative, _verb_positive, _player_index = 0, _most_recent = false, _delay = INPUT_REPEAT_DEFAULT_DELAY, _predelay = INPUT_REPEAT_DEFAULT_PREDELAY)
+function input_check_opposing_repeat(_verb_negative, _verb_positive, _player_index = 0, _most_recent = false, _delay = INPUT_REPEAT_DEFAULT_DELAY, _predelay = INPUT_REPEAT_DEFAULT_PREDELAY)
 {
     var _held_n = input_check(_verb_negative, _player_index);
     var _held_p = input_check(_verb_positive, _player_index);
