@@ -40,6 +40,9 @@ function __input_class_verb_state() constructor
     long_held_time    = -1;
     long_release_time = -1;
     
+    tap_press = false;
+    tap_time  = -1; 
+    
     //Used for "toggle momentary" accessibility feature 
     __toggle_prev_value = 0.0;
     __toggle_value      = 0.0;
@@ -148,6 +151,8 @@ function __input_class_verb_state() constructor
                 long_held      = true;
                 long_held_time = _time;
             }
+            
+            tap_press = (((_time - press_time) < INPUT_TAP_DEFAULT_TIME) && (previous_value < INPUT_TAP_THRESHOLD) && (value >= INPUT_TAP_THRESHOLD));
         }
         else
         {
@@ -158,12 +163,14 @@ function __input_class_verb_state() constructor
             }
             
             long_held = false;
+            tap_press = false;
         }
         
         previous_held = held;
         
         if (double_held) double_held_time = _time;
-        if (long_held) long_held_time = _time;
+        if (long_held)   long_held_time   = _time;
+        if (tap_press)   tap_time         = _time;
         
         __inactive = (__group_inactive || __consumed);
     }
