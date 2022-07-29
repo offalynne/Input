@@ -192,6 +192,7 @@
     {"id":{"name":"obj_test_binding_validity","path":"objects/obj_test_binding_validity/obj_test_binding_validity.yy",},"order":18,},
     {"id":{"name":"input_multiplayer_is_finished","path":"scripts/input_multiplayer_is_finished/input_multiplayer_is_finished.yy",},"order":18,},
     {"id":{"name":"input_profile_reset_bindings","path":"scripts/input_profile_reset_bindings/input_profile_reset_bindings.yy",},"order":7,},
+    {"id":{"name":"input_held_time_released","path":"scripts/input_held_time_released/input_held_time_released.yy",},"order":16,},
     {"id":{"name":"input_value_is_binding","path":"scripts/input_value_is_binding/input_value_is_binding.yy",},"order":3,},
     {"id":{"name":"input_profile_import","path":"scripts/input_profile_import/input_profile_import.yy",},"order":10,},
     {"id":{"name":"obj_example_mp_player","path":"objects/obj_example_mp_player/obj_example_mp_player.yy",},"order":4,},
