@@ -81,7 +81,9 @@ DATA_SOURCES = {
         "datafile": "sdl2.txt",
         "sources": {
             "SDL2 Community map db": {
-                "source":  github_urlpath + "gabomdq/SDL_GameControllerDB/master/gamecontrollerdb.txt"
+                "source":  github_urlpath + "gabomdq/SDL_GameControllerDB/master/gamecontrollerdb.txt",
+                "trim after": "# Game Controller DB for SDL in 2.0.16 format\n",
+                "trim before": "\n# iOS"
             }
         }
     },
