@@ -139,9 +139,21 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunityPSX"; //Catch all remaining PlayStation gamepads as PSX
                 }
-                else if (string_count("for switch", _desc) || string_count("for nintendo switch", _desc) || string_count("switch controller", _desc) || string_count("lic pro controller", _desc))
+                else if (string_count("for switch", _desc) || string_count("for nintendo switch", _desc) || string_count("switch controller", _desc) || string_count("switch pro controller", _desc) || string_count("lic pro controller", _desc))
                 {
                     raw_type = "CommunityLikeSwitch";
+                }
+                else if (string_count("joy-con (l/r)", _desc))
+                {
+                    raw_type = "SwitchJoyConPair";
+                }
+                else if (string_count("joy-con (l)", _desc) || string_count("left joy-con", _desc))
+                {
+                    raw_type = "SwitchJoyConLeft";
+                }
+                else if (string_count("joy-con (r)", _desc) || string_count("right joy-con", _desc))
+                {
+                    raw_type = "SwitchJoyConRight";
                 }
                 else if (string_count("gamecube", _desc))
                 {
