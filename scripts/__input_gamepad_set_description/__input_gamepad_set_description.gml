@@ -2,7 +2,7 @@
 
 function __input_gamepad_set_description()
 {
-    if (xinput || __INPUT_ON_XDK)
+    if (xinput || __INPUT_ON_XBOX)
     {
         description = "XInput";
     }

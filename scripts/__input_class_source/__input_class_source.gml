@@ -173,11 +173,11 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                 switch(_value)
                 {
                     case mb_left: //Invalid on Xbox
-                        return !__INPUT_ON_XDK;
+                        return !__INPUT_ON_XBOX;
                     break;
                     
                     case mb_right: //Invalid on Xbox, Playstation, native Android or iOS
-                        return !(__INPUT_ON_XDK || __INPUT_ON_PS || (!__INPUT_ON_WEB && ((os_type == os_ios) || (os_type == os_android))));
+                        return !(__INPUT_ON_XBOX || __INPUT_ON_PS || (!__INPUT_ON_WEB && ((os_type == os_ios) || (os_type == os_android))));
                     break;
                     
                     case mb_middle: //Invalid on console, Android or iOS

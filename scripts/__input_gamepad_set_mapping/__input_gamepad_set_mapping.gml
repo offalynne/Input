@@ -64,7 +64,7 @@ function __input_gamepad_set_mapping()
     }
     
     //If we're on PlayStation or Xbox, don't remap anything special
-    if (__INPUT_ON_PS || __INPUT_ON_XDK)
+    if (__INPUT_ON_PS || __INPUT_ON_XBOX)
     {
         set_mapping(gp_padu,   gp_padu,   __INPUT_MAPPING.BUTTON, "dpup");
         set_mapping(gp_padd,   gp_padd,   __INPUT_MAPPING.BUTTON, "dpdown");
