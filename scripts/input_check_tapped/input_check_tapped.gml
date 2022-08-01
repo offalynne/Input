@@ -1,5 +1,5 @@
-/// @desc    Returns a boolean indicating whether the given verb passed a threshold this frame within a duration
-///          If an array of verbs is given then this function will return <true> if ANY verb passed a threshold this frame within a duration
+/// @desc    Returns a boolean indicating whether the given verb passed a threshold this frame within a given duration
+///          If an array of verbs is given then this function will return <true> if ANY verb passed a threshold this frame within a given duration
 /// @param   verb/array
 /// @param   tapDuration
 /// @param   [tapThreshold=1]
