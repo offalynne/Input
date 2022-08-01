@@ -16,6 +16,10 @@ function __input_class_gamepad(_index) constructor
     
     custom_mapping      = false;
     mac_cleared_mapping = false;
+	
+	button_count = undefined;
+	axis_count   = undefined;
+	hat_count    = undefined;
     
     mapping_gm_to_raw = {};
     mapping_raw_to_gm = {};
@@ -35,6 +39,10 @@ function __input_class_gamepad(_index) constructor
             mapping_raw_to_gm = {};
             mapping_array     = [];
         }
+		
+		button_count = gamepad_button_count(index);
+		axis_count   = gamepad_axis_count(index);
+		hat_count    = gamepad_hat_count(index);
         
         __input_gamepad_set_vid_pid();
         __input_gamepad_set_description();

@@ -14,7 +14,7 @@ function __input_gamepad_set_description()
         
         description = "";
         
-        var _work_string = gamepad_get_guid(index);
+        var _work_string = guid;
         var _i = 1;
         repeat(string_length(_work_string) div 2)
         {

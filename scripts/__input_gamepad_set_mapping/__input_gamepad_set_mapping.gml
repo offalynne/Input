@@ -249,7 +249,7 @@ function __input_gamepad_set_mapping()
 
     if ((os_type == os_windows) && (vendor == "5e04")                  //Windows (DirectInput) Microsoft's VID
     && ((product == "e002") || (product == "fd02"))                    //XbOne Wireless Rev. 1 or 2 PID for BT
-    && (gamepad_button_count(index ) == 17)                            //Probably new firmware based on button
+    && (button_count == 17)                                            //Probably new firmware based on button
     && (gamepad_axis_value(index, 1) == gamepad_axis_value(index, 2))  //On new firmware axes 1 and 2 are same
     && (gamepad_axis_value(index, 4) == gamepad_axis_value(index, 5))) //On new firmware axes 4 and 5 are same
     {
@@ -451,6 +451,53 @@ function __input_gamepad_set_mapping()
 
     #endregion
     
+    #region Nintendo Wii Controllers on Linux
+    
+    if ((raw_type == "WiiRemote") && (os_type == os_linux))
+    {
+        set_mapping(gp_padl, 5, __INPUT_MAPPING.BUTTON, "dpleft");
+        set_mapping(gp_padd, 6, __INPUT_MAPPING.BUTTON, "dpdown");
+        set_mapping(gp_padu, 7, __INPUT_MAPPING.BUTTON, "dpup");
+        set_mapping(gp_padr, 8, __INPUT_MAPPING.BUTTON, "dpright");
+        
+        set_mapping(gp_face1,  9, __INPUT_MAPPING.BUTTON, "a");
+        set_mapping(gp_face2, 10, __INPUT_MAPPING.BUTTON, "b");
+    
+        set_mapping(gp_shoulderl,  0, __INPUT_MAPPING.BUTTON, "leftshoulder");
+        set_mapping(gp_shoulderlb, 1, __INPUT_MAPPING.BUTTON, "lefttrigger");
+        
+        set_mapping(gp_select, 4, __INPUT_MAPPING.BUTTON, "back");
+        set_mapping(gp_start,  3, __INPUT_MAPPING.BUTTON, "start");
+    
+        if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 2, __INPUT_MAPPING.BUTTON, "guide");
+    }
+    
+    if ((raw_type == "WiiClassic") && (os_type == os_linux))
+    {
+        set_mapping(gp_padu, 11, __INPUT_MAPPING.BUTTON, "dpup");
+        set_mapping(gp_padl, 12, __INPUT_MAPPING.BUTTON, "dpleft");
+        set_mapping(gp_padd, 14, __INPUT_MAPPING.BUTTON, "dpdown");
+        set_mapping(gp_padr, 13, __INPUT_MAPPING.BUTTON, "dpright");
+        
+        set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
+        set_mapping(gp_face2, 0, __INPUT_MAPPING.BUTTON, "b");
+        set_mapping(gp_face3, 3, __INPUT_MAPPING.BUTTON, "x");
+        set_mapping(gp_face4, 2, __INPUT_MAPPING.BUTTON, "y");
+    
+        set_mapping(gp_shoulderl, 4, __INPUT_MAPPING.BUTTON, "leftshoulder");
+        set_mapping(gp_shoulderr, 5, __INPUT_MAPPING.BUTTON, "rightshoulder");
+    
+        set_mapping(gp_shoulderlb, 6, __INPUT_MAPPING.BUTTON, "lefttrigger");
+        set_mapping(gp_shoulderrb, 7, __INPUT_MAPPING.BUTTON, "righttrigger");
+        
+        set_mapping(gp_select, 10, __INPUT_MAPPING.BUTTON, "back");
+        set_mapping(gp_start,   9, __INPUT_MAPPING.BUTTON, "start");
+    
+        if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 8, __INPUT_MAPPING.BUTTON, "guide");
+    }
+    
+    #endregion
+    
     #region Nintendo Switch Controllers on Android (hid-nintendo)
 
     if ((guid == "4e696e74656e646f2053776974636820") && (os_type == os_android)) //"Nintendo Switch "
@@ -571,7 +618,7 @@ function __input_gamepad_set_mapping()
             
         exit;
     }
-
+    
     #endregion
 
     #region Remapping on SDL2 supported platforms
