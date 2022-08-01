@@ -18,8 +18,8 @@
 #macro INPUT_KEYBOARD_TYPE    global.__input_keyboard_type
 
 #macro __INPUT_ON_PS       ((os_type == os_ps4)     || (os_type == os_ps5))
-#macro __INPUT_ON_XDK      ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
-#macro __INPUT_ON_CONSOLE  (__INPUT_ON_XDK || __INPUT_ON_PS || (os_type == os_switch))
+#macro __INPUT_ON_XBOX     ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
+#macro __INPUT_ON_CONSOLE  (__INPUT_ON_XBOX || __INPUT_ON_PS || (os_type == os_switch))
 
 #macro __INPUT_ON_DESKTOP  ((os_type == os_macosx)  || (os_type == os_linux) || (os_type == os_windows))
 #macro __INPUT_ON_APPLE    ((os_type == os_macosx)  || (os_type == os_ios)   || (os_type == os_tvos))
