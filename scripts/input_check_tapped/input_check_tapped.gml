@@ -27,7 +27,7 @@ function input_check_tapped(_verb, _tap_duration, _tap_threshold = 1, _player_in
 
     if (!_verb_struct.analogue) return _verb_struct.press;
 
-    return ((_tap_duration >= (__input_get_time() - _verb_struct.press_time)) 
-         && (_tap_threshold > _verb_struct.previous_value)
-         && (_tap_threshold <= _verb_struct.value));
+    return ((_tap_duration  >= (__input_get_time() - _verb_struct.press_time)) 
+         && (_tap_threshold >= _verb_struct.previous_value)
+         && (_tap_threshold <  _verb_struct.value));
 }
