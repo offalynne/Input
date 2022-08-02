@@ -1,5 +1,5 @@
 /// @desc    Returns the x-coordinate of the player's cursor
-/// @param   [playerIndex=0]
+/// @param   {Real} _player_index
 
 function input_cursor_x(_player_index = 0)
 {

@@ -1,8 +1,8 @@
 /// @desc    Returns an array of structs containing conflicting verb/alternate indexes, after taking into account INPUT_VERB_GROUPS
-/// @param   verb
-/// @param   binding
-/// @param   [playerIndex=0]
-/// @param   [profileName]
+/// @param   {String} _verb_name
+/// @param   {Struct.__input_class_binding} _src_binding
+/// @param   {Real} _player_index
+/// @param   {String} _profile_name
 
 function input_binding_test_collisions(_verb_name, _src_binding, _player_index = 0, _profile_name = undefined)
 {

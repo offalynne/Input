@@ -2,8 +2,8 @@
 ///          The <negative> argument should be set to either <true> or <false> to control what direction
 ///          is anticipated from the gamepad axis e.g. thumbstick left is negative but thumbstick right
 ///          is positive. Gamepad triggers are always considered positively valued
-/// @param   axis
-/// @param   negative
+/// @param   {Constant.GamepadAxis} _axis
+/// @param   {Bool} _negative
 
 function input_binding_gamepad_axis(_axis, _negative)
 {

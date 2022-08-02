@@ -1,5 +1,5 @@
 /// @desc    Creates a gamepad button binding. This function accepts gp_* constants
-/// @param   button
+/// @param   {Constant.GamepadButton} _button
 
 function input_binding_gamepad_button(_button)
 {

@@ -1,7 +1,7 @@
 /// @desc    Returns the gamepad index for the first gamepad assigned to the player. If the player
 ///          has no assigned gamepad, this function returns <undefined>
-/// @param   [playerIndex=0]
-/// @param   [binding]
+/// @param   {Real} _player_index
+/// @param   {Struct.__input_class_binding _binding
 
 function input_player_get_gamepad(_player_index = 0, _binding = undefined)
 {

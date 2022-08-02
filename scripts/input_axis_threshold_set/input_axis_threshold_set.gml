@@ -1,9 +1,10 @@
 /// @desc    Sets the activation threshold for a specific gamepad axis for a player
 ///          This is overriden by thresholds set by input_binding_threshold_set()
-/// @param   axis
-/// @param   min
-/// @param   max
-/// @param   [playerIndex]
+/// @param   {Constant.GamepadAxis} _axis
+/// @param   {Real} _min
+/// @param   {Real} _max
+/// @param   {Real} _player_index
+/// @returns {Struct}
 
 function input_axis_threshold_set(_axis, _min, _max, _player_index = 0)
 {

@@ -1,6 +1,6 @@
 /// @desc    Returns the name of the verb group the verb is in, as defined by INPUT_VERB_GROUPS
 ///          If the verb is in no verb group, this function returns <undefined>
-/// @param   verb
+/// @param   {String} _verb_name
 
 function input_verb_get_group(_verb_name)
 {

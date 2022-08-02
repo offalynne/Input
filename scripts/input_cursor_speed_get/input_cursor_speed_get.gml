@@ -1,5 +1,5 @@
 /// @desc    Returns the speed of the cursor when using keyboard or gamepad input
-/// @param   [playerIndex=0]
+/// @param   {Real} _player_index
 
 function input_cursor_speed_get(_player_index = 0)
 {

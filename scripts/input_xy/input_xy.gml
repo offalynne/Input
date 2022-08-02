@@ -1,10 +1,10 @@
 /// @desc    Returns the vector represented by the sum of the verb values
-/// @param   leftVerb
-/// @param   rightVerb
-/// @param   upVerb
-/// @param   downVerb
-/// @param   [playerIndex=0]
-/// @param   [mostRecent=false]
+/// @param   {String} _verb_l
+/// @param   {String} _verb_r
+/// @param   {String} _verb_u
+/// @param   {String} _verb_d
+/// @param   {Real} _player_index
+/// @param   {Bool} _most_recent
 
 function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0, _most_recent = false)
 {

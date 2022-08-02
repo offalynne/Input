@@ -1,4 +1,4 @@
-/// @param [ignoreWarning=false]
+/// @param   {Bool} _ignore_warning
 
 function input_tick(_ignore_warning = false)
 {

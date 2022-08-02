@@ -3,7 +3,7 @@
 ///              .ROOM      Room coordinates; should be the same as mouse_x and mouse_y. This is the default value
 ///              .GUI       GUI coordinates
 ///              .DISPLAY   Raw device-space coordinates
-/// @param   coordSpace
+/// @param   {Enum.INPUT_COORD_SPACE} _coord_space
 
 function input_mouse_coord_space_set(_coord_space)
 {

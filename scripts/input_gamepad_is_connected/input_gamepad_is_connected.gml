@@ -1,5 +1,6 @@
 /// @desc    Returns whether the given (non-blocked) gamepad is connected
-/// @param   gamepadIndex
+/// @param   {Real} _index
+/// @returns {Bool}
 
 function input_gamepad_is_connected(_index)
 {

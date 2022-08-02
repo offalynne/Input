@@ -1,10 +1,10 @@
 /// @desc    Returns if the verb has been re-triggered by a repeater behaviour
 ///          This function will not return <true> on the same frame a verb is activated (unless predelay is set to 0)
 ///          You'll probably want to combine this function with input_check_pressed().
-/// @param   verb
-/// @param   [playerIndex=0]
-/// @param   [delay]
-/// @param   [predelay]
+/// @param   {String} _verb
+/// @param   {Real}   _player_index
+/// @param   {Real}   _delay
+/// @param   {Real}   _predelay
 
 function input_check_repeat(_verb, _player_index = 0, _delay = INPUT_REPEAT_DEFAULT_DELAY, _predelay = INPUT_REPEAT_DEFAULT_PREDELAY)
 {

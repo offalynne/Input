@@ -1,6 +1,6 @@
 /// @desc    Swaps the player indexes over, including profiles, connected devices, and verb state
-/// @param   playerIndexA
-/// @param   playerIndexB
+/// @param   {Real} _player_index_a
+/// @param   {Real} _player_index_b
 
 function input_player_swap(_player_index_a, _player_index_b)
 {

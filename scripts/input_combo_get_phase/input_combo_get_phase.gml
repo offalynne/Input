@@ -1,8 +1,8 @@
 /// @desc    Returns which phase of a combo verb the player is on, from 0 to <n>
 ///          A value of 0 indicates that the combo has not been started and is waiting for player input
 ///          A value of <n> indicates the combo has been completed and is currently active
-/// @param   name
-/// @param   [playerIndex=0]
+/// @param   {String} _name
+/// @param   {Real} _player_index
 
 function input_combo_get_phase(_name, _player_index = 0)
 {

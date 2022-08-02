@@ -1,9 +1,9 @@
 /// @desc    Limits the cursor’s motion inside an axis-aligned bounding box with the given coordinates
-/// @param   left
-/// @param   top
-/// @param   right
-/// @param   bottom
-/// @param   [playerIndex=0]
+/// @param   {Real} _l
+/// @param   {Real} _t
+/// @param   {Real} _r
+/// @param   {Real} _b
+/// @param   {Real} _player_index
 
 function input_cursor_limit_aabb(_l, _t, _r, _b, _player_index = 0)
 {

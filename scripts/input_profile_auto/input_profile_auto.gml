@@ -1,6 +1,6 @@
 /// @desc    Automatically assigns a profile to the player based on what sources they have been assigned
 ///          This is based on INPUT_AUTO_PROFILE_FOR_KEYBOARD etc. in __input_config_profiles_and_bindings()
-/// @param   [playerIndex=0]
+/// @param   {Real} _player_index
 
 function input_profile_auto(_player_index = 0)
 {

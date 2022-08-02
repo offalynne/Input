@@ -1,5 +1,5 @@
 /// @desc    Aborts the binding scan process started by input_binding_scan_start(), if one has been started
-/// @param   [playerIndex=0]
+/// @param   {Real} _player_index
 
 function input_binding_scan_abort(_player_index = 0)
 {

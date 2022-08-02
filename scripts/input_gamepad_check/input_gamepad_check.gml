@@ -1,6 +1,6 @@
 /// @desc    Checks if the given button/axis is currently activated on the given gamepad
-/// @param   gamepadIndex
-/// @param   GMconstant
+/// @param   {Real} _index
+/// @param   {Constant.GamepadButton} _gm
 
 function input_gamepad_check(_index, _gm)
 {

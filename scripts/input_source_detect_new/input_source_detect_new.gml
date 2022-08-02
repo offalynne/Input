@@ -1,4 +1,5 @@
 /// @desc    Returns a source that has presented new input and is unassigned, otherwise <undefined>
+/// @returns {String, Undefined}
 
 function input_source_detect_new()
 {

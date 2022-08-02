@@ -1,4 +1,5 @@
 /// @desc    Returns whether verb cooldowns are allowed across the game
+/// @returns {Bool}
 
 function input_accessibility_global_cooldown_get()
 {

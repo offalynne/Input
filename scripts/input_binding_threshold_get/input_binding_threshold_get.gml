@@ -1,6 +1,6 @@
 /// @desc    Returns a struct containing the specific analogue activation threshold for this binding
 ///          If no threshold has been set for the binding then this function returns <undefined>
-/// @param   binding
+/// @param   {Struct.__input_class_binding} _binding
 
 function input_binding_threshold_get(_binding)
 {

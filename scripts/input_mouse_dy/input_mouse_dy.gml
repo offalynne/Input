@@ -1,4 +1,5 @@
 /// @desc    Returns how far the mouse has moved on the y-axis between frames
+/// @returns {Real}
 
 function input_mouse_dy()
 {

@@ -1,5 +1,5 @@
 /// @desc    Returns whether the given mouse button is newly activated this frame.
-/// @param   binding
+/// @param   {Struct.__input_class_binding} _binding
 
 function input_mouse_check_pressed(_binding)
 {    

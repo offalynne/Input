@@ -1,6 +1,6 @@
 /// @desc    Returns whether the given gp_* constant is mapped as an analogue input
-/// @param   gamepadIndex
-/// @param   GMconstant
+/// @param   {Real} _index
+/// @param   {Constant.GamepadAxis} _gm
 
 function input_gamepad_is_axis(_index, _gm)
 {

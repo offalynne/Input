@@ -1,5 +1,6 @@
 /// @desc    Creates a mouse button binding. This function accepts mb_* constants
-/// @param   button
+/// @param   {Real, Constant.MouseButton} _button
+/// @returns {Struct.__input_class_binding}
 
 function input_binding_mouse_button(_button)
 {

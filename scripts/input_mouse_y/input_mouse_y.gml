@@ -1,4 +1,5 @@
 /// @desc    Returns the current y-coordinate of the active pointer device
+/// @returns {Real}
 
 function input_mouse_y()
 {

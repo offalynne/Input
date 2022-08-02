@@ -1,10 +1,10 @@
 /// @desc    Swaps over two bindings within the same profile. This is useful to resolve binding conflicts
-/// @param   verbA
-/// @param   alternateA
-/// @param   verbB
-/// @param   alternateB
-/// @param   [playerIndex=0]
-/// @param   [profileName]
+/// @param   {String} _verb_a
+/// @param   {String} _alternate_a
+/// @param   {String} _verb_b
+/// @param   {String} _alternate_b
+/// @param   {Real} _player_index
+/// @param   {String} _profile_name
 
 function input_binding_swap(_verb_a, _alternate_a, _verb_b, _alternate_b, _player_index = 0, _profile_name = undefined)
 {

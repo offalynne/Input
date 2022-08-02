@@ -1,5 +1,5 @@
 /// @desc    Returns the name of the given gamepad (after SDL remapping)
-/// @param   gamepadIndex
+/// @param   {Real} _index
 
 function input_gamepad_get_description(_index)
 {

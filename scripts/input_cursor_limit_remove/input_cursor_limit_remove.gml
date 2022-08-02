@@ -1,5 +1,5 @@
 /// @desc    Removes any cursor limits you have set using input_cursor_limit_aabb() or input_cursor_limit_circle() 
-/// @param   [playerIndex=0]
+/// @param   {Real} _player_index
 
 function input_cursor_limit_remove(_player_index = 0)
 {

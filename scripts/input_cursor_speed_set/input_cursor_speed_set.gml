@@ -1,6 +1,6 @@
 /// @desc    Sets the movement speed for the cursor when using keyboard or gamepad input
-/// @param   speed
-/// @param   [playerIndex=0]
+/// @param   {Real} _speed
+/// @param   {Real} _player_index
 
 function input_cursor_speed_set(_speed, _player_index = 0)
 {

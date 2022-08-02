@@ -7,7 +7,7 @@
 ///              .add("gamepad face north", "Y")
 ///              //etc.
 /// 
-/// @param   categoryName
+/// @param   {String} _name
 
 function input_icons(_name)
 {

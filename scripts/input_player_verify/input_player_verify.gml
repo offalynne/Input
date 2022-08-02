@@ -1,6 +1,6 @@
 /// @desc    Reads a JSON (string or struct) that contains player data and verifies if it can be imported without error
-/// @param   stringOrJSON
-/// @param   [playerIndex=0]
+/// @param   {String, Struct} _json
+/// @param   {Real} _player_index
 
 function input_player_verify(_json, _player_index = 0)
 {

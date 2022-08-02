@@ -14,6 +14,7 @@
 ///         <array of values from the INPUT_STATUS enum, one for each gamepad available on this platform>
 ///     ],
 /// }
+/// @returns {Struct.__input_gamepads_status}
 
 function input_gamepads_get_status()
 {

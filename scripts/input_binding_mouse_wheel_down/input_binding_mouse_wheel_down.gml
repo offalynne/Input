@@ -1,4 +1,5 @@
 /// @desc    Creates a mouse wheel down binding
+/// @returns {Struct.__input_class_binding}
 
 function input_binding_mouse_wheel_down()
 {

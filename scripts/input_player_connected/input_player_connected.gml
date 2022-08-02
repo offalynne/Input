@@ -1,5 +1,5 @@
 /// @desc    Returns whether any of the player’s sources are connected and available for use
-/// @param   [playerIndex=0]
+/// @param   {Real} _player_index
 
 function input_player_connected(_player_index = 0)
 {

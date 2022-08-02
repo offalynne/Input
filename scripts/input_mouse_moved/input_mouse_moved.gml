@@ -1,4 +1,5 @@
 /// @desc    Returns whether the mouse has moved between frames
+/// @returns {Bool}
 
 function input_mouse_moved()
 {

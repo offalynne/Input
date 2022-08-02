@@ -1,6 +1,6 @@
 /// @desc    Reads a JSON (string or struct) that contains player data and replaces the given player's data with it
-/// @param   stringOrStruct
-/// @param   [playerIndex=0]
+/// @param   {String, Struct} _json
+/// @param   {Real} _player_index
 
 function input_player_import(_json, _player_index = 0)
 {

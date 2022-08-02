@@ -21,10 +21,10 @@
 ///          Input from any device NOT listed in the source filter array will be ignored. By
 ///          default, all sources assigned to the player are accepted.
 ///          
-/// @param   successCallback
-/// @param   [failureCallback]
-/// @param   [sourceFilter]
-/// @param   [playerIndex=0]
+/// @param   {Function} _success_method
+/// @param   {Function, Undefined} _failure_method
+/// @param   {Array<String>} _source_filter
+/// @param   {Real} _player_index
 
 enum INPUT_BINDING_SCAN_EVENT
 {

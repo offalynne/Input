@@ -1,6 +1,6 @@
 /// @desc    Returns the icon defined in __input_config_icons() for the given binding, taking into account the player's currently assigned source(s)
-/// @param   binding
-/// @param   [playerIndex=0]
+/// @param {Struct.__input_class_binding} _binding
+/// @param {Real} _player_index
 
 function input_binding_get_icon(_binding, _player_index = 0)
 {

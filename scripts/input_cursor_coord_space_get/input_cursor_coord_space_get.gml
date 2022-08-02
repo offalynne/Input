@@ -1,5 +1,5 @@
 /// @desc    Returns the coordinate space for the player's cursor when using mouse input
-/// @param   [playerIndex=0]
+/// @param   {Real} _player_index
 
 function input_cursor_coord_space_get(_player_index = 0)
 {

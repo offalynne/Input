@@ -1,6 +1,6 @@
 /// @desc    Sets whether cooldown behaviour is enabled for a verb
-/// @param   verb
-/// @param   state
+/// @param   {String} _verb_name
+/// @param   {Bool} _state
 
 function input_accessibility_verb_cooldown_set(_verb_name, _state)
 {

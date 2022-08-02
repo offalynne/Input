@@ -1,9 +1,9 @@
 /// @desc    Returns the binding for the given verb. If no binding has been set, this function will return <undefined>
 ///          If no profile is provided, the current profile is used
-/// @param   verb
-/// @param   [playerIndex=0]
-/// @param   [alternate=0]
-/// @param   [profileName]
+/// @param {String} _verb_name
+/// @param {Real} _player_index
+/// @param {Real} _alternate
+/// @param {String, Undefined} _profile_name
 
 function input_binding_get(_verb_name, _player_index = 0, _alternate = 0, _profile_name = undefined)
 {

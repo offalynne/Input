@@ -1,5 +1,5 @@
 /// @desc    Returns whether the given mouse button is currently activated.
-/// @param   binding
+/// @param   {Struct.__input_class_binding} _binding
 
 function input_mouse_check(_binding)
 { 

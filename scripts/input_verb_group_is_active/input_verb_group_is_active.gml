@@ -1,6 +1,6 @@
 /// @desc    Returns the state of a verb group, as defined by INPUT_VERB_GROUPS
-/// @param   verbGroup
-/// @param   [playerIndex=0]
+/// @param   {String} _verb_group
+/// @param   {Real} _player_index
 
 function input_verb_group_is_active(_verb_group, _player_index = 0)
 {

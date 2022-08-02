@@ -5,7 +5,7 @@
 ///          If the binding is invalid or the source type can not be determined, <undefined> is returned.
 ///          As with other functions, if INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER is set to <true> then
 ///          INPUT_KEYBOARD and INPUT_MOUSE are interchangeable.
-/// @param   binding
+/// @param   {Struct.__input_class_binding} _binding
 
 function input_binding_get_source_type(_binding)
 {

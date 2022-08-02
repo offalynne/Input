@@ -3,8 +3,8 @@
 ///              .ROOM      Room coordinates; should be the same as mouse_x and mouse_y. This is the default value
 ///              .GUI       GUI coordinates
 ///              .DISPLAY   Raw device-space coordinates
-/// @param   coordSpace
-/// @param   [playerIndex=0]
+/// @param   {Enum.INPUT_COORD_SPACE} coordSpace
+/// @param   {Real} _player_index
 
 enum INPUT_COORD_SPACE
 {

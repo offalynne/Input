@@ -7,11 +7,11 @@
 ///          is effective for simple control schemes but may fail in more complex situations;
 ///          in these cases, you’ll need to handle conflict resolution yourself.
 ///          
-/// @param   verb
-/// @param   binding
-/// @param   [playerIndex=0]
-/// @param   [alternate=0]
-/// @param   [profileName]
+/// @param   {String} _verb_name
+/// @param   {Struct.__input_class_binding} _binding
+/// @param   {Real} _player_index
+/// @param   {Real} _alternate
+/// @param   {String} _profile_name
 
 function input_binding_set_safe(_verb_name, _binding, _player_index = 0, _alternate = 0, _profile_name = undefined)
 {

@@ -1,5 +1,6 @@
 /// @desc    Returns whether the given player is currently scanning for bindings
-/// @param   [playerIndex=0]
+/// @param   {Real} _player_index
+/// @returns {Bool}
 
 function input_binding_scan_in_progress(_player_index = 0)
 {

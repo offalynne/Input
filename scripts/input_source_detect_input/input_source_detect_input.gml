@@ -1,6 +1,6 @@
 /// @desc    Returns whether input is detected from the target source
-/// @param   source
-/// @param   availableOnly
+/// @param   {String} _source
+/// @param   {Bool} _available_only
 
 function input_source_detect_input(_source, _available_only = true)
 {

@@ -1,5 +1,6 @@
 /// @desc    Returns the human-readable name of the virtual button/axis constant
-/// @param   GMconstant
+/// @param   {Real} _index
+/// @param   {Constant.GamepadButton} _gm
 
 function input_gamepad_constant_get_name(_gm_constant)
 {

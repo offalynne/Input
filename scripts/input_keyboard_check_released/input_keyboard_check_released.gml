@@ -1,5 +1,5 @@
 /// @desc    Checks if the given key is newly deactivated this frame.
-/// @param   binding
+/// @param   {Struct.__input_class_binding} _binding
 
 function input_keyboard_check_released(_binding)
 {

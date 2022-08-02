@@ -1,5 +1,5 @@
 /// @desc    Returns the name of the currently active profile for the player
-/// @param   [playerIndex=0]
+/// @param   {Real} _player_index
 
 function input_profile_get(_player_index = 0)
 {

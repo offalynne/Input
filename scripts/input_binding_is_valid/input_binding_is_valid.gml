@@ -1,7 +1,8 @@
 /// @desc    Returns if the binding is valid for the player's currently assigned source(s)
 ///          For example, a gamepad binding would not be valid if a player is only using a keyboard
-/// @param   binding
-/// @param   [playerIndex=0]
+/// @param   {Struct.__input_class_binding} _binding
+/// @param   {Real} _player_index
+/// @returns {Bool}
 
 function input_binding_is_valid(_binding, _player_index = 0)
 {

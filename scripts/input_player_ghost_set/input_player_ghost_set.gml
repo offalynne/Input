@@ -1,6 +1,6 @@
 /// @desc    Sets whether the player is a "ghost" or not
-/// @param   state
-/// @param   [playerIndex=0]
+/// @param   {Bool} _state
+/// @param   {Real} _player_index
 
 function input_player_ghost_set(_state, _player_index = 0)
 {

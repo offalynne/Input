@@ -1,4 +1,5 @@
 /// @desc    Returns the current mouse coordinate space
+/// @returns {Enum.INPUT_COORD_SPACE}
 
 function input_mouse_coord_space_get()
 {

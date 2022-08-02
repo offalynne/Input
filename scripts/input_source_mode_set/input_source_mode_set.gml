@@ -4,7 +4,7 @@
 ///              .HOTSWAP
 ///              .MIXED
 ///              .MULTIDEVICE
-/// @param   mode
+/// @param   {Enum.INPUT_SOURCE_MODE} _mode
 
 function input_source_mode_set(_mode)
 {

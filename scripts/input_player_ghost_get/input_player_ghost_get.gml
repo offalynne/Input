@@ -1,5 +1,5 @@
 /// @desc    Returns whether the player is a ghost
-/// @param   [playerIndex=0]
+/// @param   {Real} _player_index
 
 function input_player_ghost_get(_player_index = 0)
 {

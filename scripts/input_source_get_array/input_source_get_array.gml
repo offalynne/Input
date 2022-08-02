@@ -1,5 +1,5 @@
 /// @desc    Returns an array containing all the sources assigned to the player
-/// @param   [playerIndex=0]
+/// @param   {Real} _player_index
 
 function input_source_get_array(_player_index = 0)
 {

@@ -1,4 +1,5 @@
 /// @desc    Returns whether enough players have connected for valid gameplay
+/// @returns {Bool}
 
 function input_multiplayer_is_finished()
 {

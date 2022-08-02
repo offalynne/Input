@@ -1,6 +1,6 @@
 /// @desc    Creates a custom profile for the player. This profile contains empty bindings for all verbs
-/// @param   profileName
-/// @param   [playerIndex=0]
+/// @param   {String} _profile_name
+/// @param   {Real} _player_index
 
 function input_profile_create(_profile_name, _player_index = 0)
 {

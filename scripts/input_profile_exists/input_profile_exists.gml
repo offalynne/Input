@@ -1,6 +1,6 @@
 /// @desc    Returns whether the profile with the given name exists
-/// @param   profileName
-/// @param   [playerIndex=0]
+/// @param   {String} _profile_name
+/// @param   {Real} _player_index
 
 function input_profile_exists(_profile_name, _player_index = 0)
 {

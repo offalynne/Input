@@ -1,8 +1,8 @@
 /// @desc    Sets the specific analogue activation threshold for this binding
 ///          This overrides the activation threshold set by input_axis_threshold_set()
-/// @param   binding
-/// @param   min
-/// @param   max
+/// @param   {Struct.__input_class_binding} _binding
+/// @param   {Real} min
+/// @param   {Real} max
 
 function input_binding_threshold_set(_binding, _min, _max)
 {

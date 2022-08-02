@@ -1,5 +1,5 @@
 /// @desc    Reads a JSON (string or struct) that contains Input system data and verifies if it can be imported without error
-/// @param   stringOrStruct
+/// @param   {String, Struct} _string
 
 function input_system_verify(_json)
 {

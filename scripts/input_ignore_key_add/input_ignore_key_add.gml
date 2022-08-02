@@ -1,5 +1,5 @@
 /// @desc    Adds a keyboard key to be ignored by Input
-/// @param   key
+/// @param   {Real, Constant.VirtualKey} _key
 
 function input_ignore_key_add(_key)
 {

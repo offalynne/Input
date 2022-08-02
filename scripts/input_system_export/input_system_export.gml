@@ -1,6 +1,6 @@
 /// @desc    Outputs a string or struct containing all player and accessibility data
-/// @param   [outputString=true]
-/// @param   [prettify=false]
+/// @param   {Bool} _output_string
+/// @param   {Bool} _prettify
 
 function input_system_export(_output_string = true, _prettify = false)
 {

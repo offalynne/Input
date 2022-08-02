@@ -1,6 +1,6 @@
 /// @desc    Returns the player’s gamepad’s type (after SDL remapping) as a string
-/// @param   [playerIndex=0]
-/// @param   [binding]
+/// @param   {Real} _player_index
+/// @param   {Struct.__input_class_binding} _binding
 
 function input_player_get_gamepad_type(_player_index = 0, _binding = undefined)
 {

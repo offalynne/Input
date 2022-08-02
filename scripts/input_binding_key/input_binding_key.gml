@@ -1,5 +1,6 @@
 /// @desc    Creates a keyboard binding. This function accepts vk_* constants and single-letter strings e.g. "A"
-/// @param   key
+/// @param   {Real, Constant.VirtualKey} _key
+/// @returns {Struct.__input_class_binding}
 
 function input_binding_key(_key)
 {
