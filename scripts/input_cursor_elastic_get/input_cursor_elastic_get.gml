@@ -2,7 +2,7 @@
 ///          If no elastic state has been set, this function returns <undefined>
 /// @param   [playerIndex=0]
 
-function input_cursor_elastic_get(_x, _y, _strength, _player_index = 0)
+function input_cursor_elastic_get(_player_index = 0)
 {
     __INPUT_VERIFY_PLAYER_INDEX
     
