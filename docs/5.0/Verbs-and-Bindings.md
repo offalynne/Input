@@ -61,14 +61,15 @@ In the above struct we've defined a profile called `keyboard_and_mouse` and we'v
 
 Now that we've created a default profile for keyboard usage, we can insert some verbs into our player object.
 
+<!-- tabs:start -->
+#### **Game Start**
 ```gml
-//// Create event ////
-
 //Make sure we have some resistance to movement to stop the player flying away
 friction = 0.5;
 gravity = 0.3;
-
-//// Step event ////
+```
+#### **Step Event**
+```gml
 //Move the player if the left or right verb is activated
 if (input_check("left")) hspeed = -4;
 if (input_check("right")) hspeed = 4;
@@ -76,6 +77,7 @@ if (input_check("right")) hspeed = 4;
 //If the player pressed the jump button, jump!
 if (input_check_pressed("jump")) vspeed = -8;
 ```
+<!-- tabs:end -->
 
 Now let's add some more bindings so that the player can play with a gamepad. As mentioned above, the `keyboard_and_mouse` profile is chosen when the player starts pressing keys on the keyboard. We can also set up the same behaviour for gamepads such that when the player starts using a gamepad, Input will automatically change profile and start scanning for input from that source as well.
 

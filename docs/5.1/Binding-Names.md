@@ -9,32 +9,27 @@ A list of possible return strings for [`input_binding_get_name`](Functions-(Bind
 &nbsp;
 
 ## Pointer
-
-| Mouse button          |                       |
+<!-- tabs:start -->
+#### **Mouse Button**
+|                       |                       |
 |-----------------------|-----------------------|
 | `mouse button left`   | `mouse button right`  |
 | `mouse button back`   | `mouse button forward`|
 | `mouse button middle` | `mouse button unknown`|
-
-&nbsp;
-
-| Mouse wheel           |                       |
+#### **Mouse Wheel**
+|                       |                       |
 |-----------------------|-----------------------|
 | `mouse wheel up`      | `mouse wheel down`    |
-
-&nbsp;
-
-| Touchscreen         |
+#### **Touchscreen**
+|                     |
 |---------------------|
 | `touchscreen press` |
-
-&nbsp;
-
-&nbsp;
+<!-- tabs:end -->
 
 ## Gamepad
-
-| Gamepad                      |                              |
+<!-- tabs:start -->
+#### **Gamepad**
+|                              |                              |
 |------------------------------|------------------------------|
 | `gamepad face south`         | `gamepad face east`          |
 | `gamepad face west`          | `gamepad face north`         |
@@ -52,36 +47,27 @@ A list of possible return strings for [`input_binding_get_name`](Functions-(Bind
 | `gamepad paddle 1`           | `gamepad paddle 2`           |
 | `gamepad paddle 3`           | `gamepad paddle 4`           |
 | `gamepad touchpad click`     | `gamepad unknown`            |
-
+<!-- tabs:end -->
 ?> For labels specific to gamepad type, see [Button Labels by Gamepad Type](Gamepad-Button-Labels).
 
-&nbsp;
-
-&nbsp;
-
 ## Keyboard
-
-| Primary  |          |          |
+<!-- tabs:start -->
+#### **Primary**
+|          |          |          |
 |----------|----------|----------|
 | `0`-`9`  | `A`-`Z`  |`f1`-`f32`|
-
-&nbsp;
-
-| Symbols |
+#### **Symbols**
+|         |
 |---------|
 |<code>&#124;</code> <code>&#59;</code> <code>&#61;</code> <code>&#44;</code> <code>&#45;</code> <code>&#46;</code> <code>&#47;</code> <code>&#39;</code> <code>&#91;</code> <code>&#92;</code> <code>&#93;</code> <code>&#35;</code> <code>&#96;</code>|
-
-&nbsp;
-
-| Numpad       |            |
+#### **Numpad**
+|              |            |
 |--------------|------------|
 | `numpad 0-9` | `numpad .` |
 | `numpad /`   | `numpad *` |
 | `numpad -`   | `numpad +` |
-
-&nbsp;
-
-| Command        |                |
+#### **Command**
+|                |                |
 |----------------|----------------|
 | `arrow up`     | `arrow down`   |
 | `arrow left`   | `arrow right`  |
@@ -96,10 +82,8 @@ A list of possible return strings for [`input_binding_get_name`](Functions-(Bind
 | `left shift`   | `right shift`  |
 | `left ctrl`    | `right ctrl`   |
 | `left alt`     | `right alt`    |
-
-&nbsp;
-
-| Miscellaneous            |                          |
+#### **Miscellaneous**
+|                          |                          |
 |--------------------------|--------------------------|
 | `clear`                  | `help`                   |
 | `menu`<sup>1</sup>       | `scroll lock`            |
@@ -113,3 +97,4 @@ A list of possible return strings for [`input_binding_get_name`](Functions-(Bind
 </svg> Windows, <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-command" viewBox="0 0 16 16"><path d="M3.5 2A1.5 1.5 0 0 1 5 3.5V5H3.5a1.5 1.5 0 1 1 0-3zM6 5V3.5A2.5 2.5 0 1 0 3.5 6H5v4H3.5A2.5 2.5 0 1 0 6 12.5V11h4v1.5a2.5 2.5 0 1 0 2.5-2.5H11V6h1.5A2.5 2.5 0 1 0 10 3.5V5H6zm4 1v4H6V6h4zm1-1V3.5A1.5 1.5 0 1 1 12.5 5H11zm0 6h1.5a1.5 1.5 0 1 1-1.5 1.5V11zm-6 0v1.5A1.5 1.5 0 1 1 3.5 11H5z"></path></svg> Command (MacOS), <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
 </svg> Search (ChromeOS)
+<!-- tabs:end -->
