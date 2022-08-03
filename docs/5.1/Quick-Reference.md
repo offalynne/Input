@@ -26,16 +26,16 @@
 - [`input_check_pressed(verb, [playerIndex], [bufferDuration])`](Functions-(Checkers)#input_check_pressedverb-playerindex-bufferduration)
 - [`input_check_released(verb, [playerIndex], [bufferDuration])`](Functions-(Checkers)#input_check_releasedverb-playerindex-bufferduration)
 - [`input_value(verb, [playerIndex])`](Functions-(Checkers)#input_valueverb-playerindex)
-- [`input_x(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`](Functions-(2D-Checkers)#input_xverbleft-verbright-verbup-verbdown-playerindex)
-- [`input_y(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`](Functions-(2D-Checkers)#input_xverbleft-verbright-verbup-verbdown-playerindex)
-- [`input_direction(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`](Functions-(2D-Checkers)#input_directionverbleft-verbright-verbup-verbdown-playerindex)
-- [`input_distance(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`](Functions-(2D-Checkers)#input_distanceverbleft-verbright-verbup-verbdown-playerindex)
+- [`input_x(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`](Functions-(2D-Checkers)#input_xverbleft-verbright-verbup-verbdown-playerindex-mostrecent)
+- [`input_y(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`](Functions-(2D-Checkers)#input_xverbleft-verbright-verbup-verbdown-playerindex-mostrecent)
+- [`input_direction(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`](Functions-(2D-Checkers)#input_directionverbleft-verbright-verbup-verbdown-playerindex-mostrecent)
+- [`input_distance(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`](Functions-(2D-Checkers)#input_distanceverbleft-verbright-verbup-verbdown-playerindex-mostrecent)
 
 &nbsp;
 
 ## Showing Control Prompts
 
-- [`input_player_get_gamepad_type([playerIndex])`](Functions-(Players)#input_player_gamepad_get_typeplayerindex)
+- [`input_player_get_gamepad_type([playerIndex], [binding])`](Functions-(Players)#input_player_get_gamepad_typeplayerindex-binding)
 - [`input_binding_get(verb, [playerIndex], [alternate], [profileName])`](Functions-(Binding-Access)?id=input_binding_getverb-playerindex-alternate-profilename)
 - [`input_binding_get_name(binding)`](Functions-(Binding-Access)?id=input_binding_get_namebinding)
 
@@ -54,7 +54,7 @@
 ## Console Compliance
 
 - [`input_players_get_status()`](Functions-(Players)#input_players_get_status)
-- [`input_binding_gamepad_swap_ab(state)`](Functions-(Other)?id=input_swap_gamepad_abstate)
+- [`input_binding_gamepad_swap_ab(state)`](Functions-(Gamepad)?id=input_swap_gamepad_abstate)
 
 &nbsp;
 
