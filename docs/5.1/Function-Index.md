@@ -11,8 +11,8 @@
 - [`input_player_connected([playerIndex])`](Functions-(Players)?id=input_player_connectedplayerindex)
 - [`input_player_connected_count()`](Functions-(Players)?id=input_players_connected)
 - [`input_players_get_status()`](Functions-(Players)#input_players_get_status)
-- [`input_player_get_gamepad([playerIndex], [binding])`](Functions-(Players)#input_player_gamepad_getplayerindex-binding)
-- [`input_player_get_gamepad_type([playerIndex], [binding])`](Functions-(Players)#input_player_gamepad_get_typeplayerindex-binding)
+- [`input_player_get_gamepad([playerIndex], [binding])`](Functions-(Players)#input_player_get_gamepadplayerindex-binding)
+- [`input_player_get_gamepad_type([playerIndex], [binding])`](Functions-(Players)#input_player_get_gamepad_typeplayerindex-binding)
 - [`input_player_get_invalid_gamepad_bindings([playerIndex], [profileName])`](Functions-(Players)?id=input_player_get_invalid_gamepad_bindingsplayerindex)
 - [`input_player_ghost_set(state, [playerIndex])`](Functions-(Players)?id=input_player_ghost_setstate-playerindex)
 - [`input_player_ghost_get([playerIndex])`](Functions-(Players)?id=input_player_ghost_getplayerindex)
@@ -124,7 +124,7 @@
 
 - [`input_source_mode_set(state)`](Functions-(Sources)?id=input_source_mode_setmode)
 - [`input_source_mode_get()`](Functions-(Sources)?id=input_source_mode_get)
-- [`input_source_detect_input(source)`](Functions-(Sources)#input_source_detect_inputsource-gamepad)
+- [`input_source_detect_input(source)`](Functions-(Sources)#input_source_detect_inputsource)
 - [`input_source_detect_new()`](Functions-(Sources)#input_source_detect_new)
 - [`input_source_set(source, [playerIndex], [autoProfile])`](Functions-(Sources)?id=input_source_setsource-playerindex-autoprofile)
 - [`input_source_add(source, [playerIndex])`](Functions-(Sources)?id=input_source_addsource-playerindex)
@@ -191,7 +191,6 @@
 - [`input_ignore_key_add(key)`](Functions-(Other)#input_ignore_key_addkey)
 - [`input_ignore_key_remove(key)`](Functions-(Other)#input_ignore_key_removekey)
 - [`input_clear_momentary(state)`](Functions-(Other)#input_clear_momentarystate)
-- [`input_swap_gamepad_ab(state)`](Functions-(Binding-System)#input_swap_gamepad_abstate)
 - [`input_icons(categoryName)`](Functions-(Other)?id=input_iconscategoryname)
 
 &nbsp;
@@ -230,8 +229,9 @@
 - [`input_gamepad_get_type(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_get_typegamepadindex)
 - [`input_gamepad_get_dpad_style(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_get_dpad_stylegamepadindex)
 - [`input_gamepad_get_map(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_get_mapgamepadindex)
-- [`input_gamepad_constant_get_name(constant)`](Functions-(Gamepad)#input_gamepad_constant_get_nameconstant)
+- [`input_gamepad_constant_get_name(GMconstant)`](Functions-(Gamepad)#input_gamepad_constant_get_namegmconstant)
 - [`input_gamepads_get_status()`](Functions-(Gamepad)#input_gamepads_get_status)
+- [`input_swap_gamepad_ab(state)`](Functions-(Gamepad)#input_swap_gamepad_abstate)
 
 &nbsp;
 

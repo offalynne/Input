@@ -2,7 +2,7 @@
 
 &nbsp;
 
-A list of possible return strings for [`input_binding_get_name`](Functions-(Bindings)#input_binding_get_namebinding). Keyboard bindings not covered by these specific output strings, such as letters with diacritics and non-Latin characters in general, fall back to the string a given keyboard key produces via [`keyboard_lastchar`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/keyboard_lastchar.htm).
+A list of possible return strings for [`input_binding_get_name`](Functions-(Binding-Access)#input_binding_get_namebinding). Keyboard bindings not covered by these specific output strings, such as letters with diacritics and non-Latin characters in general, fall back to the string a given keyboard key produces via [`keyboard_lastchar`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/keyboard_lastchar.htm).
 
 &nbsp;
 
