@@ -71,7 +71,7 @@ On many platforms, gamepad indices do not enumerate predicatbly. Use source assi
 - Web browsers have their own gamepad API, as such Input does not use its own [game controller mapping](Controller-Mapping) on the HTML5 platform. Input will use the browser's gamepad implementation, including button mapping.
 
 - On the HTML5 platform, in order for gamepads to present and operate, the user must first press a button with the game in focus.
-- 
+
 &nbsp;
 
 ## Keyboard
