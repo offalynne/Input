@@ -71,17 +71,7 @@ On many platforms, gamepad indices do not enumerate predicatbly. Use source assi
 - Web browsers have their own gamepad API, as such Input does not use its own [game controller mapping](Controller-Mapping) on the HTML5 platform. Input will use the browser's gamepad implementation, including button mapping.
 
 - On the HTML5 platform, in order for gamepads to present and operate, the user must first press a button with the game in focus.
-
-### Gamepad on UWP
-
-- Gamepads trigger keyboard events. As a result, certain keyboard keys are blocked by default; for more information see [`INPUT_IGNORE_RESERVED_KEYS_LEVEL`](Configuration).
-
-- On UWP for Windows, XInput gamepads work as expected. Some devices that fall outside the XInput ecosystem (e.g. Switch Pro, PS4, PS5, Luna and Stadia gamepads) will work but may have unusual or partially incorrect bindings. 
-
-- On UWP for Windows, gamepad type information is unavailable for devices except XInput controllers: descriptions are returned as `"XInput"` or `"Unknown UWP Controller"`.
-
-- On UWP on Xbox One and Xbox Series X/S, gamepad descriptions are returned as `"XInput"`.
-
+- 
 &nbsp;
 
 ## Keyboard
@@ -112,13 +102,7 @@ On many platforms, gamepad indices do not enumerate predicatbly. Use source assi
 
 - On the HTML platform, the browser fullscreen toggle key (F10 on Apple devices, F11 elsewhere) is blocked from keyboard binding.
 
-### Keyboard on UWP
-
-- Gamepads trigger keyboard events. As a result, certain keyboard keys are blocked by default on the platform; for more information see [`INPUT_IGNORE_RESERVED_KEYS_LEVEL`](Configuration).
-
-- Keyboard input is supported (with the same caveats as on the [Windows platform](#Windows)).
-
-!> Keyboard is not supported for gameplay by GameMaker (and Input) on the PS4, PS5, Xbox One/X/S native, iOS or tvOS platforms.
+&nbsp;
 
 ## Pointing Devices (Mouse and Touch)
 
