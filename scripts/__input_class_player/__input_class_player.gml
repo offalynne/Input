@@ -1196,6 +1196,27 @@ function __input_class_player() constructor
             __input_error("Binding scan failure callback set to an illegal value (typeof=", typeof(__rebind_failure_callback), ")");
         }
     }
+	
+	/// @param   {Real} _lstrength 0-1
+	/// @param   {Real} _rstrength 0-1
+	/// @param   {Real} _time in frames
+	static __haptic_vibrate = function(_lstrength, _rstrength, _frames)
+	{
+		var _g = __source_get_gamepad();
+		if (_g != -1) {
+			global.__input_gamepads[_g].__haptic_vibrate(_lstrength, _rstrength, _frames);
+		}
+	}
+	
+	/// @param {Asset.GMAnimCurve} _curve
+	/// @param {Real} _frames
+	static __haptic_vibrate_curve = function(_curve, _frames)
+	{
+		var _g = __source_get_gamepad();
+		if (_g != -1) {
+			global.__input_gamepads[_g].__haptic_vibrate_curve(_curve, _frames);
+		}
+	}
     
     #endregion
 }
