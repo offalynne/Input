@@ -1,6 +1,6 @@
 function __input_multiplayer_assignment_tick()
 {
-    if (!variable_struct_exists(global.__input_basic_verb_dict, INPUT_MULTIPLAYER_LEAVE_VERB))
+    if ((INPUT_MULTIPLAYER_LEAVE_VERB != undefined) && !variable_struct_exists(global.__input_basic_verb_dict, INPUT_MULTIPLAYER_LEAVE_VERB))
     {
         __input_error("INPUT_MULTIPLAYER_LEAVE_VERB \"", INPUT_MULTIPLAYER_LEAVE_VERB, "\" doesn't exist");
     }
