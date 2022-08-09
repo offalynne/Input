@@ -241,7 +241,7 @@ function __input_class_gamepad(_index) constructor
                 if (_channel_count == 1)
                 {
                     _channel_left  = animcurve_get_channel(_animation_curve, 0);
-                    _channel_right = animcurve_get_channel(_animation_curve, 0);
+                    _channel_right = _channel_left;
                 }
                 else
                 {
