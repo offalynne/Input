@@ -236,12 +236,12 @@ function __input_class_gamepad(_index) constructor
             if (__haptic_curve != undefined)
             {
                 var _animation_curve = animcurve_get(__haptic_curve);
-                var _channel_count   = array_length(_animation_curve.channels);
+                var _channel_count = array_length(_animation_curve.channels);
                 
                 if (_channel_count == 1)
                 {
                     _channel_left  = animcurve_get_channel(_animation_curve, 0);
-                    _channel_right = animcurve_get_channel(_animation_curve, 0);
+                    _channel_right = _channel_left;
                 }
                 else
                 {
