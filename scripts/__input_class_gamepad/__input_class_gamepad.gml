@@ -236,7 +236,7 @@ function __input_class_gamepad(_index) constructor
             if (__haptic_curve != undefined)
             {
                 var _animation_curve = animcurve_get(__haptic_curve);
-                var _channel_count   = array_length(_animation_curve.channels);
+                var _channel_count = array_length(_animation_curve.channels);
                 
                 if (_channel_count == 1)
                 {
