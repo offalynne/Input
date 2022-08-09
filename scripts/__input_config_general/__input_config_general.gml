@@ -37,9 +37,6 @@
 //This setting only affects Input and will not filter these keys from native GameMaker functions
 #macro INPUT_IGNORE_RESERVED_KEYS_LEVEL  2
 
-// Should gamepad vibrate when window looses focus (Windows, PS4, Xbox One)
-#macro INPUT_GAMEPADS_VIBRATE_WHEN_NO_FOCUS false
-
 
 
 #region Forbidden Fruit
