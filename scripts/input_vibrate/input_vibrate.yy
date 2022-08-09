@@ -2,10 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Haptics",
-    "path": "folders/Input/Haptics.yy",
+    "name": "Other",
+    "path": "folders/Input/Other.yy",
   },
   "resourceVersion": "1.0",
   "name": "input_vibrate",
+  "tags": [],
   "resourceType": "GMScript",
 }
