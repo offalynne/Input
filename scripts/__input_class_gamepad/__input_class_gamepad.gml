@@ -242,7 +242,7 @@ function __input_class_gamepad(_index) constructor
                 __haptic_strength_right = animcurve_channel_evaluate(_struct.channels[((array_length(_struct.channels) > 1)? 1 : 0)], __haptic_step/__haptic_steps_total);
             }
 
-            if ((window_has_focus() && !os_is_paused()) || INPUT_GAMEPADS_VIBRATE_WHEN_NO_FOCUS)
+            if (window_has_focus() && !os_is_paused())
             {
                 gamepad_set_vibration(index, __haptic_strength_left, __haptic_strength_right);
             }
