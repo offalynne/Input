@@ -262,14 +262,7 @@ function __input_class_gamepad(_index) constructor
                 gamepad_set_vibration(index, 0, 0);
             }
 
-            if (INPUT_TIMER_MILLISECONDS)
-            {
-                __haptic_step += __input_get_time() - __input_get_previous_time();
-            }
-            else
-            {
-                __haptic_step++;
-            }
+            __haptic_step += (INPUT_TIMER_MILLISECONDS? (__input_get_time() - __input_get_previous_time()) : 1);
         }
     }
 }
