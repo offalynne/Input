@@ -385,6 +385,7 @@ function __input_system_tick()
 	                //Remove our gamepad handler
 	                __input_trace("Gamepad ", _g, " disconnected");
 					
+					gamepad_set_vibration(global.__input_gamepads[@ _g].index, 0, 0);
 	                global.__input_gamepads[@ _g] = undefined;
 					
 	                //Also report gamepad changes for any active players

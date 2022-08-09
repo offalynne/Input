@@ -20,6 +20,12 @@ function __input_class_gamepad(_index) constructor
 	button_count = undefined;
 	axis_count   = undefined;
 	hat_count    = undefined;
+	
+	__haptic_step = 0;
+	__haptic_steps_total = 0;
+	__haptic_strength_l = 0;
+	__haptic_strength_r = 0;
+	__haptic_curve = undefined;
     
     mapping_gm_to_raw = {};
     mapping_raw_to_gm = {};
@@ -183,5 +189,54 @@ function __input_class_gamepad(_index) constructor
             with(mapping_array[_i]) tick(_gamepad);
             ++_i;
         }
+		__haptic_tick();
     }
+	
+	/// @param   {Real} _lstrength 0-1
+	/// @param   {Real} _rstrength 0-1
+	/// @param   {Real} _time in frames
+	static __haptic_vibrate = function(_strengthl, _strengthr, _frames)
+	{
+		__haptic_strength_l = clamp(_strengthl, 0, 1);
+		__haptic_strength_l = clamp(_strengthr, 0, 1);
+		__haptic_step = 0;
+		__haptic_steps_total = (__haptic_strength_l + __haptic_strength_r) > 0 ? _frames : 0;
+		__haptic_curve = undefined;
+	}
+	/// @param {Asset.AnimCurve} _curve
+	/// @param {Real} _frames
+	static __haptic_vibrate_curve = function(_curve, _frames)
+	{
+		__haptic_vibrate(0, 0, 0);
+		if (_frames > 0 and _curve != undefined and animcurve_exists(_curve))
+		{
+			__haptic_curve = _curve;
+			__haptic_steps_total = _frames;
+		}
+		
+	}
+	
+	static __haptic_tick = function() {
+		if (__haptic_steps_total == 0) {
+			return;
+		}
+		
+		if (__haptic_step < __haptic_steps_total) {
+			if (__haptic_curve != undefined) {
+				var _struct = animcurve_get(__haptic_curve);
+			
+				__haptic_strength_l = animcurve_channel_evaluate(_struct.channels[0], __haptic_step/__haptic_steps_total);
+				__haptic_strength_r = animcurve_channel_evaluate(_struct.channels[ array_length(_struct.channels) > 1 ? 1 : 0 ], __haptic_step/__haptic_steps_total);
+			}
+			gamepad_set_vibration(index, __haptic_strength_l, __haptic_strength_r);
+			if (INPUT_TIMER_MILLISECONDS) {
+				__haptic_step += __input_get_time() - __input_get_previous_time();
+			} else {
+				__haptic_step++;
+			}
+		} else {
+			gamepad_set_vibration(index, 0, 0);
+			__haptic_vibrate(0, 0, 0);
+		}
+	}
 }
