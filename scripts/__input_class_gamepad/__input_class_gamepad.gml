@@ -7,25 +7,26 @@ function __input_class_gamepad(_index) constructor
     xinput            = undefined;
     raw_type          = undefined;
     simple_type       = undefined;
+    sdl2_definition   = undefined;
     guessed_type      = false;
     blacklisted       = false;
-    sdl2_definition   = undefined;
+    haptic_support    = false;
     
     vendor  = undefined;
     product = undefined;
     
     custom_mapping      = false;
     mac_cleared_mapping = false;
-	
-	button_count = undefined;
-	axis_count   = undefined;
-	hat_count    = undefined;
-	
-	__haptic_step = 0;
-	__haptic_steps_total = 0;
-	__haptic_strength_l = 0;
-	__haptic_strength_r = 0;
-	__haptic_curve = undefined;
+    
+    button_count = undefined;
+    axis_count   = undefined;
+    hat_count    = undefined;
+    
+    __haptic_step           = 0;
+    __haptic_steps_total    = 0;
+    __haptic_strength_left  = 0;
+    __haptic_strength_right = 0;
+    __haptic_curve          = undefined;    
     
     mapping_gm_to_raw = {};
     mapping_raw_to_gm = {};
@@ -45,10 +46,12 @@ function __input_class_gamepad(_index) constructor
             mapping_raw_to_gm = {};
             mapping_array     = [];
         }
-		
-		button_count = gamepad_button_count(index);
-		axis_count   = gamepad_axis_count(index);
-		hat_count    = gamepad_hat_count(index);
+        
+        button_count = gamepad_button_count(index);
+        axis_count   = gamepad_axis_count(index);
+        hat_count    = gamepad_hat_count(index);
+        
+        haptic_support = __INPUT_GAMEPAD_VIBRATION_SUPPORT && (os_type != os_windows || index < 4);
         
         __input_gamepad_set_vid_pid();
         __input_gamepad_set_description();
@@ -114,7 +117,7 @@ function __input_class_gamepad(_index) constructor
         {
             if ((_gm == gp_shoulderlb) || (_gm == gp_shoulderrb))
             {
-				//XInput and platforms with analogue triggers
+                //XInput and platforms with analogue triggers
                 return (xinput || __INPUT_ON_XBOX || __INPUT_ON_PS || (__INPUT_ON_APPLE && __INPUT_ON_MOBILE));
             }
             
@@ -188,55 +191,67 @@ function __input_class_gamepad(_index) constructor
         {
             with(mapping_array[_i]) tick(_gamepad);
             ++_i;
+        }        
+        
+        if (haptic_support)
+        {
+            __haptic_tick();
         }
-		__haptic_tick();
     }
-	
-	/// @param   {Real} _lstrength 0-1
-	/// @param   {Real} _rstrength 0-1
-	/// @param   {Real} _time in frames
-	static __haptic_vibrate = function(_strengthl, _strengthr, _frames)
-	{
-		__haptic_strength_l = clamp(_strengthl, 0, 1);
-		__haptic_strength_l = clamp(_strengthr, 0, 1);
-		__haptic_step = 0;
-		__haptic_steps_total = (__haptic_strength_l + __haptic_strength_r) > 0 ? _frames : 0;
-		__haptic_curve = undefined;
-	}
-	/// @param {Asset.AnimCurve} _curve
-	/// @param {Real} _frames
-	static __haptic_vibrate_curve = function(_curve, _frames)
-	{
-		__haptic_vibrate(0, 0, 0);
-		if (_frames > 0 and _curve != undefined and animcurve_exists(_curve))
-		{
-			__haptic_curve = _curve;
-			__haptic_steps_total = _frames;
-		}
-		
-	}
-	
-	static __haptic_tick = function() {
-		if (__haptic_steps_total == 0) {
-			return;
-		}
-		
-		if (__haptic_step < __haptic_steps_total) {
-			if (__haptic_curve != undefined) {
-				var _struct = animcurve_get(__haptic_curve);
-			
-				__haptic_strength_l = animcurve_channel_evaluate(_struct.channels[0], __haptic_step/__haptic_steps_total);
-				__haptic_strength_r = animcurve_channel_evaluate(_struct.channels[ array_length(_struct.channels) > 1 ? 1 : 0 ], __haptic_step/__haptic_steps_total);
-			}
-			gamepad_set_vibration(index, __haptic_strength_l, __haptic_strength_r);
-			if (INPUT_TIMER_MILLISECONDS) {
-				__haptic_step += __input_get_time() - __input_get_previous_time();
-			} else {
-				__haptic_step++;
-			}
-		} else {
-			gamepad_set_vibration(index, 0, 0);
-			__haptic_vibrate(0, 0, 0);
-		}
-	}
+    
+    /// @param   {Real} _lstrength 0-1
+    /// @param   {Real} _rstrength 0-1
+    /// @param   {Real} _time in frames
+    static __haptic_vibrate = function(_strengthl, _strengthr, _frames)
+    {
+        __haptic_strength_left  = clamp(_strengthl, 0, 1);
+        __haptic_strength_right = clamp(_strengthr, 0, 1);
+        
+        __haptic_step = 0;
+        __haptic_steps_total = (__haptic_strength_left + __haptic_strength_right) > 0 ? _frames : 0;
+        
+        __haptic_curve = undefined;
+    }
+    /// @param {Asset.AnimCurve} _curve
+    /// @param {Real} _frames
+    static __haptic_vibrate_curve = function(_curve, _frames)
+    {
+        __haptic_vibrate(0, 0, 0);
+        if ((_frames) > 0 && (_curve != undefined) || animcurve_exists(_curve))
+        {
+            __haptic_curve       = _curve;
+            __haptic_steps_total = _frames;
+        }
+        
+    }
+    
+    static __haptic_tick = function()
+    {        
+        if ((__haptic_steps_total == 0) || (__haptic_step >= __haptic_steps_total))
+        {
+            gamepad_set_vibration(index, 0, 0);
+            __haptic_vibrate(0, 0, 0);
+        }
+        else
+        {
+            if (__haptic_curve != undefined)
+            {
+                var _struct = animcurve_get(__haptic_curve);
+            
+                __haptic_strength_left  = animcurve_channel_evaluate(_struct.channels[0], __haptic_step/__haptic_steps_total);
+                __haptic_strength_right = animcurve_channel_evaluate(_struct.channels[((array_length(_struct.channels) > 1)? 1 : 0)], __haptic_step/__haptic_steps_total);
+            }
+            
+            gamepad_set_vibration(index, __haptic_strength_left, __haptic_strength_right);
+
+            if (INPUT_TIMER_MILLISECONDS)
+            {
+                __haptic_step += __input_get_time() - __input_get_previous_time();
+            }
+            else
+            {
+                __haptic_step++;
+            }
+        }
+    }
 }
