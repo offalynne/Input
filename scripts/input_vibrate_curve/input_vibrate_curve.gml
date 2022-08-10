@@ -1,5 +1,5 @@
 /// @desc Vibrates a player's controller using animation curve channels for a duration, the units of which are determined by INPUT_TIMER_MILLISECONDS
-///       Curves are evaluated if they contain one channel, or individual channels named "left" and "right"
+///       Curves are evaluated if they contain one channel or individual channels per INPUT_VIBRATION_CHANNEL_LEFT and INPUT_VIBRATION_CHANNEL_RIGHT
 /// @param   animationCurve
 /// @param   time
 /// @param   [playerIndex=0]

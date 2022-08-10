@@ -245,8 +245,8 @@ function __input_class_gamepad(_index) constructor
                 }
                 else
                 {
-                    _channel_left  = animcurve_get_channel(__haptic_curve, "left");
-                    _channel_right = animcurve_get_channel(__haptic_curve, "right");
+                    _channel_left  = animcurve_get_channel(__haptic_curve, INPUT_VIBRATION_CHANNEL_LEFT);
+                    _channel_right = animcurve_get_channel(__haptic_curve, INPUT_VIBRATION_CHANNEL_RIGHT);
                 }
 
                 if (_channel_left  != -1) __haptic_strength_left  = animcurve_channel_evaluate(_channel_left,  __haptic_step/__haptic_steps_total);
@@ -262,14 +262,7 @@ function __input_class_gamepad(_index) constructor
                 gamepad_set_vibration(index, 0, 0);
             }
 
-            if (INPUT_TIMER_MILLISECONDS)
-            {
-                __haptic_step += __input_get_time() - __input_get_previous_time();
-            }
-            else
-            {
-                __haptic_step++;
-            }
+            __haptic_step += (INPUT_TIMER_MILLISECONDS? (__input_get_time() - __input_get_previous_time()) : 1);
         }
     }
 }
