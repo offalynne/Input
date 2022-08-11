@@ -19,7 +19,7 @@ If you're looking for simpler ways to check verbs, please see the [1D Checkers](
 |`verbLeft`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
 |`verbRight`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
 |`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used        |
-|`[mostRecent ]` |boolean                   |Whether to prioritize recency per axis. False if unspecified|
+|`[mostRecent ]` |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
 
 &nbsp;
 
@@ -34,7 +34,7 @@ If you're looking for simpler ways to check verbs, please see the [1D Checkers](
 |`verbLeft`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
 |`verbRight`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
 |`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used        |
-|`[mostRecent]`  |boolean                   |Whether to prioritize recency per axis. False if unspecified|
+|`[mostRecent]`  |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
 
 &nbsp;
 
@@ -49,7 +49,7 @@ If you're looking for simpler ways to check verbs, please see the [1D Checkers](
 |`verbLeft`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
 |`verbRight`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
 |`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used        |
-|`[mostRecent]`  |boolean                   |Whether to prioritize recency per axis. False if unspecified|
+|`[mostRecent]`  |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
 
 The struct returned by this function contains two member variables: `.x` and `.y`.
 
@@ -66,7 +66,7 @@ The struct returned by this function contains two member variables: `.x` and `.y
 |`verbLeft`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
 |`verbRight`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
 |`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used        |
-|`[mostRecent]` |boolean                   |Whether to prioritize recency per axis. False if unspecified|
+|`[mostRecent]` |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
 
 !> If the distance to the point of aim is 0 (after taking into account the minimum threshold) then this function will return `undefined`. Make sure you handle this return case in your code!
 
@@ -83,4 +83,4 @@ The struct returned by this function contains two member variables: `.x` and `.y
 |`verbLeft`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
 |`verbRight`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
 |`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used        |
-|`[mostRecent]` |boolean                   |Whether to prioritize recency per axis. False if unspecified|
+|`[mostRecent]` |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
