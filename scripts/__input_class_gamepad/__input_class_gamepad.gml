@@ -8,9 +8,9 @@ function __input_class_gamepad(_index) constructor
     raw_type          = undefined;
     simple_type       = undefined;
     sdl2_definition   = undefined;
+    haptic_support    = undefined;
     guessed_type      = false;
     blacklisted       = false;
-    haptic_support    = false;
     
     vendor  = undefined;
     product = undefined;
