@@ -74,7 +74,7 @@ This function will **not** return `true` on the same frame a verb is activated (
 |`verbNegative` |[verb](Verbs-and-Bindings)      |[Verb](Verbs-and-Bindings) to check as negative component                                                                    |
 |`verbPositive` |[verb](Verbs-and-Bindings)      |[Verb](Verbs-and-Bindings) to check as positive component                                                                    |
 |`[playerIndex]`|integer                         |Player to target. If not specified, player 0 is used                                                                         |
-|`[mostRecent]` |boolean                         |Whether to use the most recent input instead of returning `<false>` when two verbs conflict. False if unspecified            |
+|`[mostRecent]` |boolean                         |Whether to use the most recent input instead of returning `false` when two verbs conflict. False if unspecified            |
 |`[delay]`      |frames/milliseconds             |Time between re-triggers; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration). The units of this value are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
 |`[predelay]`   |frames/milliseconds             |Time before the first re-trigger; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration). The units of this value are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
 
@@ -175,7 +175,7 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 |`verbNegative`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to check as negative component                                                 |
 |`verbPositive`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to check as positive component                                                 |
 |`[playerIndex]`   |integer                   |Player to target. If not specified, player 0 is used                                                      |
-|`[mostRecent]` |boolean                      |Whether to use the most recent input instead of returning `<false>` when two verbs conflict. False if unspecified|
+|`[mostRecent]` |boolean                      |Whether to use the most recent input instead of returning `false` when two verbs conflict. False if unspecified|
 
 &nbsp;
 
