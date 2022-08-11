@@ -4,9 +4,7 @@
 /// @param   time
 /// @param   [playerIndex=0]
 function input_vibrate_curve(_curve, _time, _player_index = 0)
-{
-    if (!__INPUT_GAMEPAD_VIBRATION_SUPPORT) exit;
-    
+{ 
     if (!is_real(_curve) || !is_struct(animcurve_get(_curve)))
     {
         __input_error("Vibration curve set to an illegal value (typeof=", typeof(_curve), ")");
