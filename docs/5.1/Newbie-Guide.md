@@ -2,7 +2,7 @@
 
 ---
 
-*This guide was written by community member **Grace**.
+*This guide was written by community member **Grace**.*
 
 &nbsp;
 
