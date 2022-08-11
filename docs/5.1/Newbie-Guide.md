@@ -2,7 +2,7 @@
 
 ---
 
-*This guide was written by community member **Grace**. You can find her on [Twitter](https://twitter.com/gart_gh).*
+*This guide was written by community member **Grace**.
 
 &nbsp;
 
