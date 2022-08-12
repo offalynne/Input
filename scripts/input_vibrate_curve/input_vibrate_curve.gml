@@ -3,7 +3,7 @@
 /// @param   animationCurve
 /// @param   time
 /// @param   [playerIndex=0]
-function input_vibrate_curve(_curve, _time, _player_index = 0)
+function input_vibrate_curve(_curve, _duration, _player_index = 0)
 { 
     if (!is_real(_curve) || !is_struct(animcurve_get(_curve)))
     {
@@ -12,5 +12,5 @@ function input_vibrate_curve(_curve, _time, _player_index = 0)
     
     __INPUT_VERIFY_PLAYER_INDEX
 
-    global.__input_players[_player_index].__haptic_vibrate_curve(_curve, _time);
+    global.__input_players[_player_index].__haptic_vibrate_curve(_curve, _duration);
 }
