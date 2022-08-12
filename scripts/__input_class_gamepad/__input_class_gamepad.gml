@@ -211,7 +211,7 @@ function __input_class_gamepad(_index) constructor
         __haptic_strength_right = clamp(_strengthr, 0, 1);
         
         __haptic_time = 0;
-        __haptic_duration = (__haptic_strength_left + __haptic_strength_right) > 0 ? _duration : 0;
+        __haptic_duration = (((__haptic_strength_left + __haptic_strength_right) > 0)? _duration : 0);
         
         __haptic_curve = undefined;
     }
