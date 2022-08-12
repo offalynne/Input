@@ -8,9 +8,9 @@ function __input_class_gamepad(_index) constructor
     raw_type          = undefined;
     simple_type       = undefined;
     sdl2_definition   = undefined;
+    haptic_support    = undefined;
     guessed_type      = false;
     blacklisted       = false;
-    haptic_support    = false;
     
     vendor  = undefined;
     product = undefined;
@@ -58,7 +58,11 @@ function __input_class_gamepad(_index) constructor
         __input_gamepad_set_blacklist();
         __input_gamepad_set_mapping();
         
+        __haptic_vibrate(0, 0, 0);
+        __haptic_tick();
+        
         haptic_support = __INPUT_GAMEPAD_VIBRATION_SUPPORT && ((os_type != os_windows) || xinput);
+        
         __input_trace("Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
     }
     

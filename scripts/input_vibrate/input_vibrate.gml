@@ -5,8 +5,6 @@
 /// @param   [playerIndex=0]
 function input_vibrate(_left_motor_speed, _right_motor_speed, _time, _player_index = 0)
 {
-    if (!__INPUT_GAMEPAD_VIBRATION_SUPPORT) exit;
-
     __INPUT_VERIFY_PLAYER_INDEX
     
     global.__input_players[_player_index].__haptic_vibrate(_left_motor_speed, _right_motor_speed, _time);
