@@ -22,8 +22,8 @@ function __input_class_gamepad(_index) constructor
     axis_count   = undefined;
     hat_count    = undefined;
     
-    __haptic_step           = 0;
-    __haptic_steps_total    = 0;
+    __haptic_time           = 0;
+    __haptic_duration       = 0;
     __haptic_strength_left  = 0;
     __haptic_strength_right = 0;
     __haptic_curve          = undefined;    
@@ -205,32 +205,32 @@ function __input_class_gamepad(_index) constructor
     /// @param   {Real} _lstrength 0-1
     /// @param   {Real} _rstrength 0-1
     /// @param   {Real} _time in frames
-    static __haptic_vibrate = function(_strengthl, _strengthr, _frames)
+    static __haptic_vibrate = function(_strengthl, _strengthr, _duration)
     {
         __haptic_strength_left  = clamp(_strengthl, 0, 1);
         __haptic_strength_right = clamp(_strengthr, 0, 1);
         
-        __haptic_step = 0;
-        __haptic_steps_total = (__haptic_strength_left + __haptic_strength_right) > 0 ? _frames : 0;
+        __haptic_time = 0;
+        __haptic_duration = (((__haptic_strength_left + __haptic_strength_right) > 0)? _duration : 0);
         
         __haptic_curve = undefined;
     }
     
     /// @param {Asset.GMAnimCurve} _curve
-    /// @param {Real} _frames
-    static __haptic_vibrate_curve = function(_curve, _frames)
+    /// @param {Real} _duration
+    static __haptic_vibrate_curve = function(_curve, _duration)
     {
         __haptic_vibrate(0, 0, 0);
-        if ((_frames) > 0 && (_curve != undefined) || animcurve_exists(_curve))
+        if ((_duration) > 0 && (_curve != undefined) || animcurve_exists(_curve))
         {
-            __haptic_curve       = _curve;
-            __haptic_steps_total = _frames;
+            __haptic_curve    = _curve;
+            __haptic_duration = _duration;
         }        
     }
     
     static __haptic_tick = function()
     {        
-        if ((__haptic_steps_total == 0) || (__haptic_step >= __haptic_steps_total))
+        if ((__haptic_duration == 0) || (__haptic_time >= __haptic_duration))
         {
             gamepad_set_vibration(index, 0, 0);
             __haptic_vibrate(0, 0, 0);
@@ -253,8 +253,8 @@ function __input_class_gamepad(_index) constructor
                     _channel_right = animcurve_get_channel(__haptic_curve, INPUT_VIBRATION_CHANNEL_RIGHT);
                 }
 
-                if (_channel_left  != -1) __haptic_strength_left  = animcurve_channel_evaluate(_channel_left,  __haptic_step/__haptic_steps_total);
-                if (_channel_right != -1) __haptic_strength_right = animcurve_channel_evaluate(_channel_right, __haptic_step/__haptic_steps_total);
+                if (_channel_left  != -1) __haptic_strength_left  = animcurve_channel_evaluate(_channel_left,  __haptic_time/__haptic_duration);
+                if (_channel_right != -1) __haptic_strength_right = animcurve_channel_evaluate(_channel_right, __haptic_time/__haptic_duration);
             }
 
             if (window_has_focus() && !os_is_paused())
@@ -266,7 +266,7 @@ function __input_class_gamepad(_index) constructor
                 gamepad_set_vibration(index, 0, 0);
             }
 
-            __haptic_step += (INPUT_TIMER_MILLISECONDS? (__input_get_time() - __input_get_previous_time()) : 1);
+            __haptic_time += (INPUT_TIMER_MILLISECONDS? (__input_get_time() - __input_get_previous_time()) : 1);
         }
     }
 }
