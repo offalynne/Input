@@ -76,8 +76,8 @@ function __input_hotswap_tick_input()
                 //Check axes
                 if  (INPUT_HOTSWAP_ON_GAMEPAD_AXIS)
                 {
-                    if ((abs(input_gamepad_value(_g, gp_shoulderlb)) > (_playstation_on_windows? 0.51 * (input_axis_threshold_get(gp_shoulderlb, 0).mini + (input_axis_threshold_get(gp_shoulderlb, 0).maxi - input_axis_threshold_get(gp_shoulderlb, 0).mini)) : input_axis_threshold_get(gp_shoulderlb, 0).mini))
-                    ||  (abs(input_gamepad_value(_g, gp_shoulderrb)) > (_playstation_on_windows? 0.51 * (input_axis_threshold_get(gp_shoulderrb, 0).mini + (input_axis_threshold_get(gp_shoulderlb, 0).maxi - input_axis_threshold_get(gp_shoulderrb, 0).mini)) : input_axis_threshold_get(gp_shoulderrb, 0).mini))
+                    if ((abs(input_gamepad_value(_g, gp_shoulderlb)) > (_playstation_on_windows? max(0.51, input_axis_threshold_get(gp_shoulderlb, 0).mini) : input_axis_threshold_get(gp_shoulderlb, 0).mini))
+                    ||  (abs(input_gamepad_value(_g, gp_shoulderrb)) > (_playstation_on_windows? max(0.51, input_axis_threshold_get(gp_shoulderrb, 0).mini) : input_axis_threshold_get(gp_shoulderrb, 0).mini))
                     ||  (abs(input_gamepad_value(_g, gp_axislv)) > input_axis_threshold_get(gp_axislv, 0).mini)
                     ||  (abs(input_gamepad_value(_g, gp_axislh)) > input_axis_threshold_get(gp_axislh, 0).mini)
                     ||  (abs(input_gamepad_value(_g, gp_axislv)) > input_axis_threshold_get(gp_axislv, 0).mini)
