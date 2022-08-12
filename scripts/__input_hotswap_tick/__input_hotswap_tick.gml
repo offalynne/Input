@@ -48,6 +48,9 @@ function __input_hotswap_tick_input()
             if (gamepad_is_connected(_g) && (input_source_using(INPUT_GAMEPAD[_g]) || input_source_is_available(INPUT_GAMEPAD[_g])))
             {
                 var _active = false;
+
+                //Prevent hotswapping to PlayStation controllers with non-zero axis temporarily blocked with HidHide or Steam Input
+                var _playstation_on_windows = ((os_type == os_windows) && (global.__input_gamepads[@ _g] != undefined) && (string_pos("ps", global.__input_gamepads[@ _g].simple_type) > 0));
                 
                 //Check buttons
                 if (input_gamepad_check(_g, gp_face1)
@@ -64,8 +67,8 @@ function __input_hotswap_tick_input()
                 ||  input_gamepad_check(_g, gp_select)
                 ||  input_gamepad_check(_g, gp_stickl)
                 ||  input_gamepad_check(_g, gp_stickr)
-                ||  (!input_gamepad_is_axis(_g, gp_shoulderlb) && input_gamepad_check(_g, gp_shoulderlb))
-                ||  (!input_gamepad_is_axis(_g, gp_shoulderrb) && input_gamepad_check(_g, gp_shoulderrb)))
+                ||  (!_playstation_on_windows && !input_gamepad_is_axis(_g, gp_shoulderlb) && input_gamepad_check(_g, gp_shoulderlb))
+                ||  (!_playstation_on_windows && !input_gamepad_is_axis(_g, gp_shoulderrb) && input_gamepad_check(_g, gp_shoulderrb)))
                 {
                     _active = true;
                 }
@@ -73,8 +76,8 @@ function __input_hotswap_tick_input()
                 //Check axes
                 if  (INPUT_HOTSWAP_ON_GAMEPAD_AXIS)
                 {
-                    if ((abs(input_gamepad_value(_g, gp_shoulderlb)) > input_axis_threshold_get(gp_shoulderlb, 0).mini)
-                    ||  (abs(input_gamepad_value(_g, gp_shoulderrb)) > input_axis_threshold_get(gp_shoulderrb, 0).mini)
+                    if ((abs(input_gamepad_value(_g, gp_shoulderlb)) > (_playstation_on_windows? 0.51 * (input_axis_threshold_get(gp_shoulderlb, 0).mini + (input_axis_threshold_get(gp_shoulderlb, 0).maxi - input_axis_threshold_get(gp_shoulderlb, 0).mini)) : input_axis_threshold_get(gp_shoulderlb, 0).mini))
+                    ||  (abs(input_gamepad_value(_g, gp_shoulderrb)) > (_playstation_on_windows? 0.51 * (input_axis_threshold_get(gp_shoulderrb, 0).mini + (input_axis_threshold_get(gp_shoulderlb, 0).maxi - input_axis_threshold_get(gp_shoulderrb, 0).mini)) : input_axis_threshold_get(gp_shoulderrb, 0).mini))
                     ||  (abs(input_gamepad_value(_g, gp_axislv)) > input_axis_threshold_get(gp_axislv, 0).mini)
                     ||  (abs(input_gamepad_value(_g, gp_axislh)) > input_axis_threshold_get(gp_axislh, 0).mini)
                     ||  (abs(input_gamepad_value(_g, gp_axislv)) > input_axis_threshold_get(gp_axislv, 0).mini)
