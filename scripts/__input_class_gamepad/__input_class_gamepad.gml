@@ -205,26 +205,26 @@ function __input_class_gamepad(_index) constructor
     /// @param   {Real} _lstrength 0-1
     /// @param   {Real} _rstrength 0-1
     /// @param   {Real} _time in frames
-    static __haptic_vibrate = function(_strengthl, _strengthr, _frames)
+    static __haptic_vibrate = function(_strengthl, _strengthr, _duration)
     {
         __haptic_strength_left  = clamp(_strengthl, 0, 1);
         __haptic_strength_right = clamp(_strengthr, 0, 1);
         
         __haptic_time = 0;
-        __haptic_duration = (__haptic_strength_left + __haptic_strength_right) > 0 ? _frames : 0;
+        __haptic_duration = (__haptic_strength_left + __haptic_strength_right) > 0 ? _duration : 0;
         
         __haptic_curve = undefined;
     }
     
     /// @param {Asset.GMAnimCurve} _curve
-    /// @param {Real} _frames
-    static __haptic_vibrate_curve = function(_curve, _frames)
+    /// @param {Real} _duration
+    static __haptic_vibrate_curve = function(_curve, _duration)
     {
         __haptic_vibrate(0, 0, 0);
-        if ((_frames) > 0 && (_curve != undefined) || animcurve_exists(_curve))
+        if ((_duration) > 0 && (_curve != undefined) || animcurve_exists(_curve))
         {
             __haptic_curve    = _curve;
-            __haptic_duration = _frames;
+            __haptic_duration = _duration;
         }        
     }
     
