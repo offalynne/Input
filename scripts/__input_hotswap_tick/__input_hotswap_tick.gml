@@ -50,7 +50,7 @@ function __input_hotswap_tick_input()
                 var _active = false;
 
                 //Prevent hotswapping to PlayStation controllers with non-zero axis temporarily blocked with HidHide or Steam Input
-                var _playstation_on_windows = ((os_type == os_windows) && (global.__input_gamepads[@ _g] != undefined) && (string_pos("ps", global.__input_gamepads[@ _g].simple_type) > 0));
+                var _playstation_on_windows = ((os_type == os_windows) && (global.__input_gamepads[@ _g] != undefined) && (string_pos("ps", global.__input_gamepads[@ _g].simple_type) == 1));
                 
                 //Check buttons
                 if (input_gamepad_check(_g, gp_face1)
