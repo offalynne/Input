@@ -84,7 +84,7 @@
     {"id":{"name":"input_default_mouse_wheel_down","path":"scripts/input_default_mouse_wheel_down/input_default_mouse_wheel_down.yy",},"order":4,},
     {"id":{"name":"input_check_released","path":"scripts/input_check_released/input_check_released.yy",},"order":2,},
     {"id":{"name":"__input_keyboard_key","path":"scripts/__input_keyboard_key/__input_keyboard_key.yy",},"order":26,},
-    {"id":{"name":"__input_config_gamepad_data","path":"scripts/__input_config_gamepad_data/__input_config_gamepad_data.yy",},"order":4,},
+    {"id":{"name":"__input_config_external_data","path":"scripts/__input_config_external_data/__input_config_external_data.yy",},"order":4,},
     {"id":{"name":"input_chord_create","path":"scripts/input_chord_create/input_chord_create.yy",},"order":1,},
     {"id":{"name":"concat","path":"scripts/concat/concat.yy",},"order":0,},
     {"id":{"name":"__input_gamepad_set_blacklist","path":"scripts/__input_gamepad_set_blacklist/__input_gamepad_set_blacklist.yy",},"order":18,},
