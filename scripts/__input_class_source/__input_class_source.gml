@@ -253,10 +253,10 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
         break;
         
         case __INPUT_SOURCE.MOUSE:
-            var _mouse_button = __input_mouse_button();
-            
-            if (global.__input_any_mouse_binding_defined)
+            if (INPUT_MOUSE_ALLOW_SCANNING)
             {
+                var _mouse_button = __input_mouse_button();
+                
                 if (global.__input_mouse_allowed_on_platform && !global.__input_window_focus_block_mouse
                     && (_mouse_button != mb_none)
                     && (!__INPUT_TOUCH_SUPPORT || (_mouse_button != mb_left))) //GM conflates LMB and touch. Don't rebind
@@ -330,7 +330,7 @@ function __input_source_any_input(_source, _gamepad)
         break;
         
         case __INPUT_SOURCE.MOUSE:
-            return (global.__input_any_mouse_binding_defined && (global.__input_pointer_moved || input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()));
+            return (INPUT_MOUSE_ALLOW_SCANNING && (global.__input_pointer_moved || input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()));
         break;
         
         case __INPUT_SOURCE.GAMEPAD:
