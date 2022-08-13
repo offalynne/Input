@@ -180,7 +180,7 @@ function __input_validate_macros()
     
     
     
-    #region Gamepad Data
+    #region External Data
     
     if (!is_bool(INPUT_SDL2_REMAPPING))
     {
@@ -297,6 +297,21 @@ function __input_validate_macros()
     if (!is_bool(INPUT_SWITCH_HORIZONTAL_HOLDTYPE))
     {
         __input_error("INPUT_SWITCH_HORIZONTAL_HOLDTYPE must be either <true> or <false>");
+    }
+    
+    if (!is_bool(INPUT_VIBRATION_ALLOWED))
+    {
+        __input_error("INPUT_VIBRATION_ALLOWED must be either <true> or <false>");
+    }
+    
+    if (!is_numeric(INPUT_VIBRATION_DEFAULT_STRENGTH) || (INPUT_VIBRATION_DEFAULT_STRENGTH < 0) || (INPUT_VIBRATION_DEFAULT_STRENGTH > 1.0))
+    {
+        __input_error("INPUT_VIBRATION_DEFAULT_STRENGTH must be a number between 0.0 and 1.0 (inclusive)");
+    }
+    
+    if (!is_numeric(INPUT_VIBRATION_SWITCH_OS_STRENGTH) || (INPUT_VIBRATION_SWITCH_OS_STRENGTH < 0) || (INPUT_VIBRATION_SWITCH_OS_STRENGTH > 1.0))
+    {
+        __input_error("INPUT_VIBRATION_SWITCH_OS_STRENGTH must be a number between 0.0 and 1.0 (inclusive)");
     }
     
     #endregion
