@@ -211,7 +211,7 @@ function __input_class_player() constructor
             }
             else
             {
-                return json_stringify(_output_string);
+                return json_stringify(_output);
             }
         }
         else
