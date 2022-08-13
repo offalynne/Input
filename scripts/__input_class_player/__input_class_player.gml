@@ -9,6 +9,9 @@ function __input_class_player() constructor
     __last_input_time       = -infinity;
     __verb_group_state_dict = {};
     
+    __vibration_strength    = INPUT_VIBRATION_DEFAULT_STRENGTH;
+    __vibration_event_array = [];
+    
     __rebind_state            = 0;
     __rebind_start_time       = global.__input_current_time;
     __rebind_success_callback = undefined;
@@ -825,8 +828,9 @@ function __input_class_player() constructor
         var _new_axis_thresholds_dict = {};
     
         var _root_json = {
-            profiles:        _new_profiles_dict,
-            axis_thresholds: _new_axis_thresholds_dict,
+            profiles:           _new_profiles_dict,
+            axis_thresholds:    _new_axis_thresholds_dict,
+            vibration_strength: __vibration_strength,
         };
         
         //Copy profiles
@@ -934,6 +938,22 @@ function __input_class_player() constructor
             
             ++_a;
         }
+        
+        if (variable_struct_exists(_json, "vibration_strength"))
+        {
+            if (!is_numeric(__vibration_strength))
+            {
+                __input_error("Player ", __index, " vibration strength is corrupted");
+                return;
+            }
+            
+            __vibration_strength = INPUT_VIBRATION_DEFAULT_STRENGTH;
+        }
+        else
+        {
+            __input_trace("Warning! Player ", __index, " vibration strength not found, defaulting to ", INPUT_VIBRATION_DEFAULT_STRENGTH);
+            __vibration_strength = INPUT_VIBRATION_DEFAULT_STRENGTH;
+        }
     }
     
     static __reset = function()
@@ -1021,6 +1041,8 @@ function __input_class_player() constructor
             
             __cursor.__tick();
             
+            __tick_vibration();
+            
             if (!__connected) __post_disconnection_tick = true;
         }
     }
@@ -1080,6 +1102,44 @@ function __input_class_player() constructor
             }
             
             ++_i;
+        }
+    }
+    
+    static __tick_vibration = function()
+    {
+        if (__connected)
+        {
+            var _gamepadIndex = __source_get_gamepad();
+            if (_gamepadIndex < 0) return;
+            
+            var _left  = 0;
+            var _right = 0;
+            
+            var _time_step = __input_get_time() - __input_get_previous_time();
+            var _array = __vibration_event_array;
+            var _i = 0;
+            repeat(array_length(_array))
+            {
+                var _result = false;
+                
+                with(_array[_i])
+                {
+                    _result = __tick(_time_step);
+                    _left  += __output_left;
+                    _right += __output_right;
+                }
+                
+                if (_result)
+                {
+                    ++_i;
+                }
+                else
+                {
+                    array_delete(_array, _i, 1);
+                }
+            }
+            
+            global.__input_gamepads[_gamepadIndex].__vibration_set(__vibration_strength*_left, __vibration_strength*_right);
         }
     }
     
@@ -1194,29 +1254,6 @@ function __input_class_player() constructor
         else if (__rebind_failure_callback != undefined)
         {
             __input_error("Binding scan failure callback set to an illegal value (typeof=", typeof(__rebind_failure_callback), ")");
-        }
-    }
-    
-    /// @param   {Real} _lstrength 0-1
-    /// @param   {Real} _rstrength 0-1
-    /// @param   {Real} _time in frames
-    static __haptic_vibrate = function(_lstrength, _rstrength, _frames)
-    {
-        var _g = __source_get_gamepad();
-        if (_g != -1)
-        {
-            global.__input_gamepads[_g].__haptic_vibrate(_lstrength, _rstrength, _frames);
-        }
-    }
-    
-    /// @param {Asset.GMAnimCurve} _curve
-    /// @param {Real} _frames
-    static __haptic_vibrate_curve = function(_curve, _frames)
-    {
-        var _g = __source_get_gamepad();
-        if (_g != -1)
-        {
-            global.__input_gamepads[_g].__haptic_vibrate_curve(_curve, _frames);
         }
     }
     

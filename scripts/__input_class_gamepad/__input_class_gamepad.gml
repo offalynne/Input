@@ -1,16 +1,15 @@
 /// @param index
 function __input_class_gamepad(_index) constructor
 {
-    index             = _index;
-    description       = gamepad_get_description(_index);
-    guid              = gamepad_get_guid(_index);
-    xinput            = undefined;
-    raw_type          = undefined;
-    simple_type       = undefined;
-    sdl2_definition   = undefined;
-    haptic_support    = undefined;
-    guessed_type      = false;
-    blacklisted       = false;
+    index           = _index;
+    description     = gamepad_get_description(_index);
+    guid            = gamepad_get_guid(_index);
+    xinput          = undefined;
+    raw_type        = undefined;
+    simple_type     = undefined;
+    sdl2_definition = undefined;
+    guessed_type    = false;
+    blacklisted     = false;
     
     vendor  = undefined;
     product = undefined;
@@ -22,11 +21,10 @@ function __input_class_gamepad(_index) constructor
     axis_count   = undefined;
     hat_count    = undefined;
     
-    __haptic_time           = 0;
-    __haptic_duration       = 0;
-    __haptic_strength_left  = 0;
-    __haptic_strength_right = 0;
-    __haptic_curve          = undefined;    
+    __vibration_support = false;
+    __vibration_left    = 0;
+    __vibration_right   = 0;
+    __vibration_received_this_frame = false;
     
     mapping_gm_to_raw = {};
     mapping_raw_to_gm = {};
@@ -58,10 +56,8 @@ function __input_class_gamepad(_index) constructor
         __input_gamepad_set_blacklist();
         __input_gamepad_set_mapping();
         
-        __haptic_vibrate(0, 0, 0);
-        __haptic_tick();
-        
-        haptic_support = __INPUT_GAMEPAD_VIBRATION_SUPPORT && ((os_type != os_windows) || xinput);
+        __vibration_support = INPUT_VIBRATION_ALLOWED && __INPUT_GAMEPAD_VIBRATION_SUPPORT && ((os_type != os_windows) || xinput);
+        gamepad_set_vibration(index, 0, 0);
         
         __input_trace("Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
     }
@@ -194,79 +190,47 @@ function __input_class_gamepad(_index) constructor
         {
             with(mapping_array[_i]) tick(_gamepad);
             ++_i;
-        }        
-        
-        if (haptic_support)
-        {
-            __haptic_tick();
         }
-    }
-    
-    /// @param   {Real} _lstrength 0-1
-    /// @param   {Real} _rstrength 0-1
-    /// @param   {Real} _time in frames
-    static __haptic_vibrate = function(_strengthl, _strengthr, _duration)
-    {
-        __haptic_strength_left  = clamp(_strengthl, 0, 1);
-        __haptic_strength_right = clamp(_strengthr, 0, 1);
         
-        __haptic_time = 0;
-        __haptic_duration = (((__haptic_strength_left + __haptic_strength_right) > 0)? _duration : 0);
-        
-        __haptic_curve = undefined;
-    }
-    
-    /// @param {Asset.GMAnimCurve} _curve
-    /// @param {Real} _duration
-    static __haptic_vibrate_curve = function(_curve, _duration)
-    {
-        __haptic_vibrate(0, 0, 0);
-        if ((_duration) > 0 && (_curve != undefined) || animcurve_exists(_curve))
+        if (__vibration_support)
         {
-            __haptic_curve    = _curve;
-            __haptic_duration = _duration;
-        }        
-    }
-    
-    static __haptic_tick = function()
-    {        
-        if ((__haptic_duration == 0) || (__haptic_time >= __haptic_duration))
-        {
-            gamepad_set_vibration(index, 0, 0);
-            __haptic_vibrate(0, 0, 0);
-        }
-        else
-        {
-            if (__haptic_curve != undefined)
+            if (__vibration_received_this_frame && window_has_focus() && !os_is_paused())
             {
-                var _animation_curve = animcurve_get(__haptic_curve);
-                var _channel_count = array_length(_animation_curve.channels);
-                
-                if (_channel_count == 1)
+                if (os_type == os_switch)
                 {
-                    _channel_left  = animcurve_get_channel(_animation_curve, 0);
-                    _channel_right = _channel_left;
+    	            var _lowStrength  = INPUT_VIBRATION_SWITCH_OS_STRENGTH*__vibration_left;
+    	            var _highStrength = INPUT_VIBRATION_SWITCH_OS_STRENGTH*__vibration_right;
+                    
+    	            if ((raw_type == "SwitchJoyConLeft") || (raw_type == "SwitchJoyConRight"))
+    	            {
+    	                //Documentation said to use switch_controller_motor_single for these two controller types but I'll be damned if I can feel any difference!
+    	                switch_controller_vibrate_hd(index, switch_controller_motor_single, _highStrength, 250, _lowStrength, 160);
+    	            }
+    	            else
+    	            {
+    	                switch_controller_vibrate_hd(index, switch_controller_motor_left,  _highStrength, 250, _lowStrength, 160);
+    	                switch_controller_vibrate_hd(index, switch_controller_motor_right, _highStrength, 250, _lowStrength, 160);
+    	            }
                 }
                 else
                 {
-                    _channel_left  = animcurve_get_channel(__haptic_curve, INPUT_VIBRATION_CHANNEL_LEFT);
-                    _channel_right = animcurve_get_channel(__haptic_curve, INPUT_VIBRATION_CHANNEL_RIGHT);
+                    gamepad_set_vibration(index, __vibration_left, __vibration_right);
                 }
-
-                if (_channel_left  != -1) __haptic_strength_left  = animcurve_channel_evaluate(_channel_left,  __haptic_time/__haptic_duration);
-                if (_channel_right != -1) __haptic_strength_right = animcurve_channel_evaluate(_channel_right, __haptic_time/__haptic_duration);
-            }
-
-            if (window_has_focus() && !os_is_paused())
-            {
-                gamepad_set_vibration(index, __haptic_strength_left, __haptic_strength_right);
             }
             else
             {
                 gamepad_set_vibration(index, 0, 0);
             }
-
-            __haptic_time += (INPUT_TIMER_MILLISECONDS? (__input_get_time() - __input_get_previous_time()) : 1);
+            
+            __vibration_received_this_frame = false;
         }
+    }
+    
+    static __vibration_set = function(_left, _right)
+    {
+        __vibration_left  = _left;
+        __vibration_right = _right;
+        
+        __vibration_received_this_frame = true;
     }
 }

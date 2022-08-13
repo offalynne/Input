@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Vibration",
-    "path": "folders/Input/Vibration.yy",
+    "name": "Classes",
+    "path": "folders/Input/(System)/Classes.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_vibrate_curve",
+  "name": "__input_class_vibration_pulse",
   "tags": [],
   "resourceType": "GMScript",
 }

@@ -1,16 +1,23 @@
-/// @desc Vibrates a player's controller using animation curve channels for a duration, the units of which are determined by INPUT_TIMER_MILLISECONDS
-///       Curves are evaluated if they contain one channel or individual channels per INPUT_VIBRATION_CHANNEL_LEFT and INPUT_VIBRATION_CHANNEL_RIGHT
-/// @param   {Asset.GMAnimCurve} _animation_curve
-/// @param   {Real} _duration
-/// @param   {Real} _player_index
-function input_vibrate_curve(_animation_curve, _duration, _player_index = 0)
-{ 
-    if (!is_real(_animation_curve) || !is_struct(animcurve_get(_animation_curve)))
-    {
-        __input_error("Vibration curve set to an illegal value (typeof=", typeof(_animation_curve), ")");
-    }
-    
-    __INPUT_VERIFY_PLAYER_INDEX
+/// @desc    Vibrates a player's gamepad using an animation curve to control the strength
+///          Units for the vibration duration are determined by INPUT_TIMER_MILLISECONDS
+///          If the curve has one channel, that channel controls both left and right motors
+///          If the curve has two (or more) channels then the first two channels from left
+///          and right motos respectively
+/// 
+/// @param   strength
+/// @param   curve
+/// @param   pan
+/// @param   duration
+/// @param   [playedIndex=0]
 
-    global.__input_players[_player_index].__haptic_vibrate_curve(_animation_curve, _duration);
+function input_vibrate_curve(_strength, _curve, _pan, _duration, _player_index = 0)
+{
+    __INPUT_VERIFY_PLAYER_INDEX
+    
+    _strength = clamp(_strength, 0, 1);
+    if (!animcurve_exists(_curve)) __input_error("Animation curve doesn't exist (", _curve, ")");
+    _pan      = clamp(_pan, -1, 1);
+    _duration = max(_duration, 0);
+    
+    array_push(global.__input_players[_player_index].__vibration_event_array, new __input_class_vibration_curve(_strength, animcurve_get(_curve), _pan, _duration));
 }
