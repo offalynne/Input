@@ -390,7 +390,7 @@ function __input_class_player() constructor
         var _i = 0;
         repeat(array_length(__source_array))
         {
-            if (__source_array[_i].__any_input()) return true;
+            if (__source_array[_i].__scan_for_binding(__index, true)) return true;
             ++_i;
         }
         
@@ -1205,7 +1205,7 @@ function __input_class_player() constructor
                     __input_error("Value in filter array is not a source (index ", _i, ", ", __rebind_source_filter[_i], ")");
                 }
                 
-                var _source_binding = __rebind_source_filter[_i].__scan_for_binding();
+                var _source_binding = __rebind_source_filter[_i].__scan_for_binding(__index, false);
                 if (_source_binding != undefined)
                 {
                     var _new_binding    = _source_binding;
