@@ -1,7 +1,7 @@
 {
   "option_windows_display_name": "Input",
   "option_windows_executable_name": "${project_name}.exe",
-  "option_windows_version": "5.1.0.0",
+  "option_windows_version": "5.1.1.0",
   "option_windows_company_info": "@jujuadams",
   "option_windows_product_info": "Input",
   "option_windows_copyright_info": "@jujuadams (c) 2022",
@@ -28,7 +28,6 @@
   "option_windows_enable_steam": false,
   "option_windows_disable_sandbox": false,
   "option_windows_steam_use_alternative_launcher": false,
-  "option_windows_use_x64": false,
   "resourceVersion": "1.1",
   "name": "Windows",
   "tags": [],
