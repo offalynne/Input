@@ -162,7 +162,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
             break;
             
             case __INPUT_BINDING_MOUSE_BUTTON:
-                if (!global.__input_mouse_allowed)
+                if (!global.__input_mouse_allowed_on_platform)
                 {
                     //Invalid per platform or configuration
                     return false;
@@ -197,7 +197,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
             
             case __INPUT_BINDING_MOUSE_WHEEL_UP:
             case __INPUT_BINDING_MOUSE_WHEEL_DOWN:
-                if (!global.__input_mouse_allowed)
+                if (!global.__input_mouse_allowed_on_platform)
                 {
                     //Invalid per platform or configuration
                     return false;
@@ -257,7 +257,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
             
             if (global.__input_any_mouse_binding_defined)
             {
-                if (global.__input_mouse_allowed && !global.__input_window_focus_block_mouse
+                if (global.__input_mouse_allowed_on_platform && !global.__input_window_focus_block_mouse
                     && (_mouse_button != mb_none)
                     && (!__INPUT_TOUCH_SUPPORT || (_mouse_button != mb_left))) //GM conflates LMB and touch. Don't rebind
                 {
