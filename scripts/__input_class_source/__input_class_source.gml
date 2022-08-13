@@ -257,9 +257,9 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
             
             if (global.__input_any_mouse_binding_defined)
             {
-                if (global.__input_mouse_allowed && !global.__input_mouse_blocked
-                        && (_mouse_button != mb_none)
-                        && (!__INPUT_TOUCH_SUPPORT || (_mouse_button != mb_left))) //GM conflates LMB and touch. Don't rebind
+                if (global.__input_mouse_allowed && !global.__input_window_focus_block_mouse
+                    && (_mouse_button != mb_none)
+                    && (!__INPUT_TOUCH_SUPPORT || (_mouse_button != mb_left))) //GM conflates LMB and touch. Don't rebind
                 {
                     return input_binding_mouse_button(_mouse_button);
                 }

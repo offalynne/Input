@@ -99,11 +99,11 @@ function __input_initialize()
     //Disallow keyboard bindings on specified platforms unless explicitly enabled
     global.__input_keyboard_allowed = (__INPUT_KEYBOARD_SUPPORT && ((os_type != os_android) || INPUT_ANDROID_KEYBOARD_ALLOWED) && ((os_type != os_switch) || INPUT_SWITCH_KEYBOARD_ALLOWED));
 
-    //Disallow mouse bindings on specified platforms (unless explicitly enabled)
+    //Default to disallowing mouse bindings on specified platforms unless explicitly enabled
     global.__input_mouse_allowed = !(__INPUT_ON_PS || __INPUT_ON_XBOX || (__INPUT_TOUCH_SUPPORT && !INPUT_TOUCH_POINTER_ALLOWED));
 
     //Whether mouse is blocked due to Window focus state
-    global.__input_mouse_blocked = false;
+    global.__input_window_focus_block_mouse = false;
     
     global.__input_cursor_verbs_valid = false;
     

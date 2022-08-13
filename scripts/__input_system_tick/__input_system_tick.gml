@@ -107,18 +107,17 @@ function __input_system_tick()
         if (!global.__input_window_focus_previous)
         {
             //Block mouse buttons on focus regain
-            global.__input_mouse_blocked = true;
+            global.__input_window_focus_block_mouse = true;
             
             //Retrigger mouse capture timer to avoid the mouse jumping all over the place when we refocus the window
             if (global.__input_mouse_capture) global.__input_mouse_capture_frame = global.__input_frame;
         }
         else
         {
-            if (global.__input_mouse_blocked)
+            if (global.__input_window_focus_block_mouse)
             {
                 //Reevaluate mouse block if focus is sustained
-                global.__input_mouse_blocked = false;
-                global.__input_mouse_blocked = (__input_mouse_button() != mb_none);
+                global.__input_window_focus_block_mouse = (__input_mouse_button() != mb_none);
             }
         }
     }
