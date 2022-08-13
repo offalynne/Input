@@ -32,6 +32,8 @@
 #macro __INPUT_KEYBOARD_NORMATIVE (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch))
 #macro __INPUT_KEYBOARD_SUPPORT   (__INPUT_KEYBOARD_NORMATIVE || (os_type == os_android))
 
+#macro __INPUT_GAMEPAD_VIBRATION_SUPPORT  ((!__INPUT_ON_WEB && (os_type == os_windows)) || __INPUT_ON_PS || __INPUT_ON_XBOX)
+
 #macro __INPUT_SDL2_SUPPORT  (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || (os_type == os_android)))
 
 #macro __INPUT_HOLD_THRESHOLD  0.2 //Minimum value from an axis for that axis to be considered activated at the gamepad layer. This is *not* the same as min/max thresholds for players

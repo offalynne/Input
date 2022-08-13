@@ -13,3 +13,7 @@
 //Whether the game uses the horizontal holdtype for single Joy-Cons. Set this to <false> for vertical holdtype
 //Input treats these two modes as mutually exclusive (come talk to us if you need to be able to swap at runtime)
 #macro INPUT_SWITCH_HORIZONTAL_HOLDTYPE  true
+
+//Channel names used to set gamepad motor vibration when using curves
+#macro INPUT_VIBRATION_CHANNEL_LEFT   "vibrate left"
+#macro INPUT_VIBRATION_CHANNEL_RIGHT  "vibrate right"
