@@ -3,7 +3,7 @@
 
 function input_mouse_check_pressed(_binding)
 {    
-    if (!global.__input_mouse_allowed || global.__input_mouse_blocked || global.__input_cleared)
+    if (!global.__input_mouse_allowed_on_platform || global.__input_window_focus_block_mouse || global.__input_cleared)
     {
         return (_binding == mb_none);
     }

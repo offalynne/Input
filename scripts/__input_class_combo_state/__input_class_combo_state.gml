@@ -67,7 +67,7 @@ function __input_class_combo_state(_name, _combo_definition_struct) constructor
         }
         else
         {
-            var _state = __evaluate_phase(_player_verbs_struct, __phase);
+            var _state = __evaluate_phase(_player_verbs_struct);
             switch(_state)
             {
                 case __INPUT_COMBO_STATE.__FAIL:

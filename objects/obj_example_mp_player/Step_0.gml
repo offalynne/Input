@@ -1,7 +1,7 @@
 //Allow this player to quit back to the join menu
 if (input_check_pressed("pause", player))
 {
-    room_goto(rm_example_mp_join);
+    room_goto(rm_example_mp);
 }
 
 //Set some rules for the aiming cursor

@@ -13,3 +13,14 @@
 //Whether the game uses the horizontal holdtype for single Joy-Cons. Set this to <false> for vertical holdtype
 //Input treats these two modes as mutually exclusive (come talk to us if you need to be able to swap at runtime)
 #macro INPUT_SWITCH_HORIZONTAL_HOLDTYPE  true
+
+//Whether vibration should be allowed at all, often useful when debugging
+#macro INPUT_VIBRATION_ALLOWED  true
+
+//The default vibration strength. This value can be changed later by using input_vibrate_set_strength()
+#macro INPUT_VIBRATION_DEFAULT_STRENGTH  1.0
+
+//Switch's vibration motors can be a bit, uh, intense
+//This value allows you to reduce the strength of vibration relative to other platforms
+//Please note that this is only applied specifically when playing on a Switch console
+#macro INPUT_VIBRATION_SWITCH_OS_STRENGTH  0.4

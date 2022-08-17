@@ -1,6 +1,6 @@
 function __input_mouse_button()
 {
-    if (!global.__input_mouse_allowed || global.__input_mouse_blocked)
+    if (!global.__input_mouse_allowed_on_platform || global.__input_window_focus_block_mouse)
     {
         return mb_none;
     }

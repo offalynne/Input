@@ -1,25 +1,30 @@
 /// @param index
 function __input_class_gamepad(_index) constructor
 {
-    index             = _index;
-    description       = gamepad_get_description(_index);
-    guid              = gamepad_get_guid(_index);
-    xinput            = undefined;
-    raw_type          = undefined;
-    simple_type       = undefined;
-    guessed_type      = false;
-    blacklisted       = false;
-    sdl2_definition   = undefined;
+    index           = _index;
+    description     = gamepad_get_description(_index);
+    guid            = gamepad_get_guid(_index);
+    xinput          = undefined;
+    raw_type        = undefined;
+    simple_type     = undefined;
+    sdl2_definition = undefined;
+    guessed_type    = false;
+    blacklisted     = false;
     
     vendor  = undefined;
     product = undefined;
     
     custom_mapping      = false;
     mac_cleared_mapping = false;
-	
-	button_count = undefined;
-	axis_count   = undefined;
-	hat_count    = undefined;
+    
+    button_count = undefined;
+    axis_count   = undefined;
+    hat_count    = undefined;
+    
+    __vibration_support = false;
+    __vibration_left    = 0;
+    __vibration_right   = 0;
+    __vibration_received_this_frame = false;
     
     mapping_gm_to_raw = {};
     mapping_raw_to_gm = {};
@@ -39,10 +44,10 @@ function __input_class_gamepad(_index) constructor
             mapping_raw_to_gm = {};
             mapping_array     = [];
         }
-		
-		button_count = gamepad_button_count(index);
-		axis_count   = gamepad_axis_count(index);
-		hat_count    = gamepad_hat_count(index);
+        
+        button_count = gamepad_button_count(index);
+        axis_count   = gamepad_axis_count(index);
+        hat_count    = gamepad_hat_count(index);
         
         __input_gamepad_set_vid_pid();
         __input_gamepad_set_description();
@@ -50,6 +55,9 @@ function __input_class_gamepad(_index) constructor
         __input_gamepad_set_type();
         __input_gamepad_set_blacklist();
         __input_gamepad_set_mapping();
+        
+        __vibration_support = INPUT_VIBRATION_ALLOWED && __INPUT_GAMEPAD_VIBRATION_SUPPORT && ((os_type != os_windows) || xinput);
+        gamepad_set_vibration(index, 0, 0);
         
         __input_trace("Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
     }
@@ -108,7 +116,7 @@ function __input_class_gamepad(_index) constructor
         {
             if ((_gm == gp_shoulderlb) || (_gm == gp_shoulderrb))
             {
-				//XInput and platforms with analogue triggers
+                //XInput and platforms with analogue triggers
                 return (xinput || __INPUT_ON_XBOX || __INPUT_ON_PS || (__INPUT_ON_APPLE && __INPUT_ON_MOBILE));
             }
             
@@ -183,5 +191,46 @@ function __input_class_gamepad(_index) constructor
             with(mapping_array[_i]) tick(_gamepad);
             ++_i;
         }
+        
+        if (__vibration_support)
+        {
+            if (__vibration_received_this_frame && window_has_focus() && !os_is_paused())
+            {
+                if (os_type == os_switch)
+                {
+    	            var _lowStrength  = INPUT_VIBRATION_SWITCH_OS_STRENGTH*__vibration_left;
+    	            var _highStrength = INPUT_VIBRATION_SWITCH_OS_STRENGTH*__vibration_right;
+                    
+    	            if ((raw_type == "SwitchJoyConLeft") || (raw_type == "SwitchJoyConRight"))
+    	            {
+    	                //Documentation said to use switch_controller_motor_single for these two controller types but I'll be damned if I can feel any difference!
+    	                switch_controller_vibrate_hd(index, switch_controller_motor_single, _highStrength, 250, _lowStrength, 160);
+    	            }
+    	            else
+    	            {
+    	                switch_controller_vibrate_hd(index, switch_controller_motor_left,  _highStrength, 250, _lowStrength, 160);
+    	                switch_controller_vibrate_hd(index, switch_controller_motor_right, _highStrength, 250, _lowStrength, 160);
+    	            }
+                }
+                else
+                {
+                    gamepad_set_vibration(index, __vibration_left, __vibration_right);
+                }
+            }
+            else
+            {
+                gamepad_set_vibration(index, 0, 0);
+            }
+            
+            __vibration_received_this_frame = false;
+        }
+    }
+    
+    static __vibration_set = function(_left, _right)
+    {
+        __vibration_left  = _left;
+        __vibration_right = _right;
+        
+        __vibration_received_this_frame = true;
     }
 }

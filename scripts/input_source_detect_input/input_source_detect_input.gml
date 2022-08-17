@@ -17,8 +17,7 @@ function input_source_detect_input(_source, _available_only = true)
             
             if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER)
             {
-                if (global.__input_any_mouse_binding_defined
-                && (!_available_only || input_source_is_available(_source))
+                if ((!_available_only || input_source_is_available(_source))
                 &&  (input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
                 {
                     return true;
@@ -27,9 +26,8 @@ function input_source_detect_input(_source, _available_only = true)
         break;
         
         case __INPUT_SOURCE.MOUSE:
-            if (global.__input_any_mouse_binding_defined
-            && (!_available_only || input_source_is_available(_source))
-            && (input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
+            if ((!_available_only || input_source_is_available(_source))
+            &&  (input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()))
             {
                 return true;
             }
