@@ -1,8 +1,8 @@
 /// @desc    Duplicates one player's profile and copies it to another player.
 /// @param   {Real} _player_index_src
-/// @param   {Real} _profile_name_src
+/// @param   {String} _profile_name_src
 /// @param   {Real} _player_index_dst
-/// @param   {Real} _profile_name_dst
+/// @param   {String} _profile_name_dst
 
 function input_profile_copy(_player_index_src, _profile_name_src, _player_index_dst, _profile_name_dst)
 {
