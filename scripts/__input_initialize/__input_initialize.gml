@@ -369,7 +369,38 @@ function __input_initialize()
     }
     
     #endregion
+    
+    
+    
+    #region Gamepad keywords
+    
+    //Arrays to track gamepad buttons and axes                                      
+    global.__input_gamepad_dpad_buttons = [gp_padu,   gp_padd,   gp_padl,   gp_padr ];
+    global.__input_gamepad_face_buttons = [gp_face3,  gp_face1,  gp_face2,  gp_face4];
+    global.__input_gamepad_axes = [gp_axislh, gp_axislv, gp_axisrh, gp_axisrv, gp_shoulderlb, gp_shoulderrb];
+    
+    //Combine buttons
+    global.__input_gamepad_buttons = [gp_shoulderl, gp_shoulderr, gp_shoulderlb, gp_shoulderrb, gp_start, gp_select, gp_stickl, gp_stickr]
+    array_copy(global.__input_gamepad_buttons, array_length(global.__input_gamepad_buttons), global.__input_gamepad_face_buttons, 0, array_length(global.__input_gamepad_face_buttons));
+    array_copy(global.__input_gamepad_buttons, array_length(global.__input_gamepad_buttons), global.__input_gamepad_dpad_buttons, 0, array_length(global.__input_gamepad_dpad_buttons));
+    if (INPUT_SDL2_ALLOW_EXTENDED) array_push(global.__input_gamepad_buttons, gp_guide, gp_misc1, gp_touchpad, gp_paddle1, gp_paddle2, gp_paddle3, gp_paddle4);
+    
+    //Combine buttons and axes
+    global.__input_gamepad_all = [];
+    array_copy(global.__input_gamepad_all, 0, global.__input_gamepad_buttons, 0, array_length(global.__input_gamepad_buttons));
+    array_copy(global.__input_gamepad_all, array_length(global.__input_gamepad_all), global.__input_gamepad_axes, 0, array_length(global.__input_gamepad_axes));
+    
+    //Gamepad keyword config struct
+    global.__input_gamepad_keyword_config = {};
+    global.__input_gamepad_keyword_config[$ string(gp_button_none)] = { buttons: true,  axes: false, negative: true  };
+    global.__input_gamepad_keyword_config[$ string(gp_button_any)]  = { buttons: true,  axes: false, negative: false };
+    global.__input_gamepad_keyword_config[$ string(gp_axis_none)]   = { buttons: false, axes: true,  negative: true  };
+    global.__input_gamepad_keyword_config[$ string(gp_axis_any)]    = { buttons: false, axes: true,  negative: false };
+    global.__input_gamepad_keyword_config[$ string(gp_none)]        = { buttons: true,  axes: true,  negative: true  };
+    global.__input_gamepad_keyword_config[$ string(gp_any)]         = { buttons: true,  axes: true,  negative: false };
 
+    
+    #endregion
 
 
     #region Key names

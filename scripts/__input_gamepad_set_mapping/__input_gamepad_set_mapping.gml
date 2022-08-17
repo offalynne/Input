@@ -852,13 +852,12 @@ function __input_gamepad_set_mapping()
             && ((vendor == "") && (product == "")))
             {
                 var _mapping = undefined;
-                var _dpad_array = [gp_padu, gp_padd, gp_padl, gp_padr];
                 
                 var _matched = 0;
-                repeat(array_length(_dpad_array))
+                repeat(array_length(global.__input_gamepad_dpad_buttons))
                 {
                     //Check mapping match (b11 - b14)
-                    _mapping = mapping_gm_to_raw[$ _dpad_array[_matched]];
+                    _mapping = mapping_gm_to_raw[$ global.__input_gamepad_dpad_buttons[@ _matched]];
                     if (!is_struct(_mapping) || (_mapping[$ "raw"] != 11 + _matched)) break;
                     ++_matched;
                 }
@@ -888,13 +887,12 @@ function __input_gamepad_set_mapping()
             {
                 var _matched = 0;
                 var _mapping = undefined;
-                var _button_array = [gp_face3, gp_face1, gp_face2, gp_face4];
                 var _offset = ((mac_cleared_mapping && (os_type == os_macosx)) ? 17 : 0);
 
-                repeat(array_length(_button_array))
+                repeat(array_length(global.__input_gamepad_face_buttons))
                 {
                     //Check mapping match (b0 - b3)
-                    _mapping = mapping_gm_to_raw[$ _button_array[_matched]];
+                    _mapping = mapping_gm_to_raw[$ global.__input_gamepad_face_buttons[@ _matched]];
                     if (!is_struct(_mapping) || (_mapping[$ "raw"] != _matched + _offset)) break;
                     ++_matched;
                 }

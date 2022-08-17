@@ -65,6 +65,14 @@ _string += "gp_paddle1    = " + string(input_gamepad_value(_gamepad, gp_paddle1 
 _string += "gp_paddle2    = " + string(input_gamepad_value(_gamepad, gp_paddle2   )) + "\n";
 _string += "gp_paddle3    = " + string(input_gamepad_value(_gamepad, gp_paddle3   )) + "\n";
 _string += "gp_paddle4    = " + string(input_gamepad_value(_gamepad, gp_paddle4   )) + "\n";
+
+_string += "gp_none        = " + string(input_gamepad_value(_gamepad, gp_none       )) + "\n";
+_string += "gp_button_none = " + string(input_gamepad_value(_gamepad, gp_button_none)) + "\n";
+_string += "gp_button_any  = " + string(input_gamepad_value(_gamepad, gp_button_any )) + "\n";
+_string += "gp_axis_none   = " + string(input_gamepad_value(_gamepad, gp_axis_none  )) + "\n";
+_string += "gp_axis_any    = " + string(input_gamepad_value(_gamepad, gp_axis_any   )) + "\n";
+_string += "gp_any         = " + string(input_gamepad_value(_gamepad, gp_any        )) + "\n";
+
 draw_text(200, 50, _string);
 
 var _string = "";

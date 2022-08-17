@@ -51,6 +51,14 @@
 #macro gp_paddle3   32794
 #macro gp_paddle4   32795
 
+//Gamepad keywords
+#macro gp_none         32803
+#macro gp_button_none  32804
+#macro gp_button_any   32805
+#macro gp_axis_none    32806
+#macro gp_axis_any     32807
+#macro gp_any          32808
+
 //Extended keycode constants
 #macro vk_clear       12
 #macro vk_capslock    20
@@ -73,34 +81,42 @@
 #macro vk_lmeta      ((os_type == os_macosx)?  92 : 91)
 #macro vk_period     ((os_type == os_switch)? 110 : 190)
 
-// gp_axislh     = 32785             32769 = gp_face1
-// gp_axislv     = 32786             32770 = gp_face2
-// gp_axisrh     = 32787             32771 = gp_face3
-// gp_axisrv     = 32788             32772 = gp_face4
-// gp_shoulderl  = 32773             32773 = gp_shoulderl
-// gp_shoulderr  = 32774             32774 = gp_shoulderr
-// gp_shoulderlb = 32775             32775 = gp_shoulderlb
-// gp_shoulderrb = 32776             32776 = gp_shoulderrb
-// gp_padu       = 32781             32777 = gp_select
-// gp_padd       = 32782             32778 = gp_start
-// gp_padl       = 32783             32779 = gp_stickl
-// gp_padr       = 32784             32780 = gp_stickr
-// gp_face1      = 32769             32781 = gp_padu
-// gp_face2      = 32770             32782 = gp_padd
-// gp_face3      = 32771             32783 = gp_padl
-// gp_face4      = 32772             32784 = gp_padr
-// gp_stickl     = 32779             32785 = gp_axislh
-// gp_stickr     = 32780             32786 = gp_axislv
-// gp_select     = 32777             32787 = gp_axisrh
-// gp_start      = 32778             32788 = gp_axisrv
+// gp_axislh      = 32785            32769 = gp_face1
+// gp_axislv      = 32786            32770 = gp_face2
+// gp_axisrh      = 32787            32771 = gp_face3
+// gp_axisrv      = 32788            32772 = gp_face4
+// gp_face1       = 32769            32773 = gp_shoulderl
+// gp_face2       = 32770            32774 = gp_shoulderr
+// gp_face3       = 32771            32775 = gp_shoulderlb
+// gp_face4       = 32772            32776 = gp_shoulderrb
+// gp_padd        = 32782            32777 = gp_select
+// gp_padl        = 32783            32778 = gp_start
+// gp_padr        = 32784            32779 = gp_stickl
+// gp_padu        = 32781            32780 = gp_stickr
+// gp_select      = 32777            32781 = gp_padu
+// gp_shoulderl   = 32773            32782 = gp_padd
+// gp_shoulderlb  = 32775            32783 = gp_padl
+// gp_shoulderr   = 32774            32784 = gp_padr
+// gp_shoulderrb  = 32776            32785 = gp_axislh
+// gp_start       = 32778            32786 = gp_axislv
+// gp_stickl      = 32779            32787 = gp_axisrh
+// gp_stickr      = 32780            32788 = gp_axisrv
 // Plus custom buttons:
-// gp_guide      = 32789             32789 = gp_guide
-// gp_misc1      = 32790             32790 = gp_misc1
-// gp_touchpad   = 32791             32791 = gp_touchpad
-// gp_paddle1    = 32792             32792 = gp_paddle1
-// gp_paddle2    = 32793             32793 = gp_paddle2
-// gp_paddle3    = 32794             32794 = gp_paddle3
-// gp_paddle4    = 32795             32795 = gp_paddle4
+// gp_guide       = 32789            32789 = gp_guide
+// gp_misc1       = 32790            32790 = gp_misc1
+// gp_paddle1     = 32792            32791 = gp_touchpad
+// gp_paddle2     = 32793            32792 = gp_paddle1
+// gp_paddle3     = 32794            32793 = gp_paddle2
+// gp_paddle4     = 32795            32794 = gp_paddle3
+// gp_touchpad    = 32791            32795 = gp_paddle4
+// And keywords:
+// gp_any         = 32808            32803 = gp_none
+// gp_axis_any    = 32807            32804 = gp_button_none
+// gp_axis_none   = 32806            32805 = gp_button_any
+// gp_button_any  = 32805            32806 = gp_axis_none
+// gp_button_none = 32804            32807 = gp_anygp_axis_any
+// gp_none        = 32803            32808 = gp_any
+
 
 enum __INPUT_SOURCE
 {
