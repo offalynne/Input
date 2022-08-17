@@ -182,13 +182,13 @@ function __input_class_gamepad(_index) constructor
         return _mapping;
     }
     
-    static tick = function()
+    static tick = function(_clear = false)
     {
         var _gamepad = index;
         var _i = 0;
         repeat(array_length(mapping_array))
         {
-            with(mapping_array[_i]) tick(_gamepad);
+            with(mapping_array[_i]) tick(_gamepad, _clear);
             ++_i;
         }
         

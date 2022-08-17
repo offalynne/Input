@@ -1,3 +1,5 @@
+draw_set_color(global.__input_window_focus? c_white : c_gray);
+
 var _string = "";
 
 _string += "Gamepad " + string(test_index) + " of " + string(gamepad_get_device_count()) + ", \"" + string(gamepad_get_description(test_index)) + "\"\n\n";

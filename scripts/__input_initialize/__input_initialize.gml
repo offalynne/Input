@@ -55,7 +55,8 @@ function __input_initialize()
     global.__input_cleared = false;
     
     //Windows focus tracking
-    global.__input_window_focus = true;
+    global.__input_window_focus           = true;
+     global.__input_window_focus_previous = true;
     
     //Accessibility state
     global.__input_toggle_momentary_dict  = {};
