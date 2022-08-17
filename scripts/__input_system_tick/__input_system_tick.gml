@@ -5,7 +5,7 @@ function __input_system_tick()
     global.__input_current_time = current_time;
     global.__input_cleared = false;
     
-	
+    
     
     #region Touch
     
@@ -96,31 +96,55 @@ function __input_system_tick()
     
     
     
-    #region Mouse
+    #region Window focus
     
-    //Track Window focus
     global.__input_window_focus_previous = global.__input_window_focus;
-    global.__input_window_focus = (window_has_focus() != false);
     
-    if (__INPUT_ON_DESKTOP && global.__input_window_focus)
+    if (__INPUT_ON_DESKTOP && !__INPUT_ON_WEB)
     {
-        if (!global.__input_window_focus_previous)
+        if (os_is_paused())
         {
-            //Block mouse buttons on focus regain
-            global.__input_window_focus_block_mouse = true;
-            
-            //Retrigger mouse capture timer to avoid the mouse jumping all over the place when we refocus the window
-            if (global.__input_mouse_capture) global.__input_mouse_capture_frame = global.__input_frame;
+            //Window lost focus
+            global.__input_window_focus = false;
+            io_clear();
         }
         else
         {
-            if (global.__input_window_focus_block_mouse)
+            if ((keyboard_key != vk_nokey) 
+            ||  (mouse_button != mb_none)
+            ||  ((os_type == os_windows) && window_has_focus())
+            ||  ((os_type == os_macosx)  && global.__input_pointer_moved))
             {
-                //Reevaluate mouse block if focus is sustained
-                global.__input_window_focus_block_mouse = (__input_mouse_button() != mb_none);
+                global.__input_window_focus = true;
+            }
+        }
+    
+        if (global.__input_window_focus)
+        {
+            if (!global.__input_window_focus_previous)
+            {
+                //Block mouse buttons on focus regain
+                if (!INPUT_ALLOW_OUT_OF_FOCUS) global.__input_window_focus_block_mouse = true;
+            
+                //Retrigger mouse capture timer to avoid the mouse jumping all over the place when we refocus the window
+                if (global.__input_mouse_capture) global.__input_mouse_capture_frame = global.__input_frame;
+            }
+            else if (global.__input_window_focus_block_mouse)
+            {
+                //Unblock mouse so we can test for a held button
+                global.__input_window_focus_block_mouse = false;
+                
+                //Sustain the mouse block when a button remains held
+                if (__input_mouse_button() != mb_none) global.__input_window_focus_block_mouse = true;
             }
         }
     }
+    
+    #endregion
+    
+    
+    
+    #region Mouse
     
     //Mouse motion tracking
     var _moved = false;
@@ -344,80 +368,82 @@ function __input_system_tick()
     
     #region Gamepads
     
-	if (global.__input_frame > INPUT_GAMEPADS_TICK_PREDELAY)
-	{
-	    //Expand dynamic device count
-	    var _device_change = max(0, gamepad_get_device_count() - array_length(global.__input_gamepads))
-	    repeat(_device_change) array_push(global.__input_gamepads, undefined);
+    if (global.__input_frame > INPUT_GAMEPADS_TICK_PREDELAY)
+    {
+        //Expand dynamic device count
+        var _device_change = max(0, gamepad_get_device_count() - array_length(global.__input_gamepads))
+        repeat(_device_change) array_push(global.__input_gamepads, undefined);
         
-	    var _device_change = max(0, gamepad_get_device_count() - array_length(INPUT_GAMEPAD))
-	    repeat(_device_change) array_push(INPUT_GAMEPAD, new __input_class_source(__INPUT_SOURCE.GAMEPAD, array_length(INPUT_GAMEPAD)));
-		
-	    var _g = 0;
-	    repeat(array_length(global.__input_gamepads))
-	    {
-	        var _gamepad = global.__input_gamepads[_g];
-	        if (is_struct(_gamepad))
-	        {
-	            if (gamepad_is_connected(_g))
-	            {
-	                if (os_type == os_switch)
-	                {
-	                    //When L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
-	                    //Instead we have to check for changes in the description to see if state has changed
-	                    if (_gamepad.description != gamepad_get_description(_g))
-	                    {
-	                        _gamepad.discover();
-	                    }
-	                    else
-	                    {
-	                        _gamepad.tick();
-	                    }
-	                }
-	                else
-	                {
-	                    _gamepad.tick();
-	                }
-	            }
-	            else
-	            {
-	                //Remove our gamepad handler
-	                __input_trace("Gamepad ", _g, " disconnected");
-					
-					gamepad_set_vibration(global.__input_gamepads[@ _g].index, 0, 0);
-	                global.__input_gamepads[@ _g] = undefined;
-					
-	                //Also report gamepad changes for any active players
-	                var _p = 0;
-	                repeat(INPUT_MAX_PLAYERS)
-	                {
-	                    with(global.__input_players[_p])
-	                    {
+        var _device_change = max(0, gamepad_get_device_count() - array_length(INPUT_GAMEPAD))
+        repeat(_device_change) array_push(INPUT_GAMEPAD, new __input_class_source(__INPUT_SOURCE.GAMEPAD, array_length(INPUT_GAMEPAD)));
+        
+        var _clear_gamepads = (!INPUT_ALLOW_OUT_OF_FOCUS && !global.__input_window_focus);
+
+        var _g = 0;
+        repeat(array_length(global.__input_gamepads))
+        {
+            var _gamepad = global.__input_gamepads[_g];
+            if (is_struct(_gamepad))
+            {
+                if (gamepad_is_connected(_g))
+                {
+                    if (os_type == os_switch)
+                    {
+                        //When L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
+                        //Instead we have to check for changes in the description to see if state has changed
+                        if (_gamepad.description != gamepad_get_description(_g))
+                        {
+                            _gamepad.discover();
+                        }
+                        else
+                        {
+                            _gamepad.tick();
+                        }
+                    }
+                    else
+                    {
+                        _gamepad.tick(_clear_gamepads);
+                    }
+                }
+                else
+                {
+                    //Remove our gamepad handler
+                    __input_trace("Gamepad ", _g, " disconnected");
+                    
+                    gamepad_set_vibration(global.__input_gamepads[@ _g].index, 0, 0);
+                    global.__input_gamepads[@ _g] = undefined;
+                    
+                    //Also report gamepad changes for any active players
+                    var _p = 0;
+                    repeat(INPUT_MAX_PLAYERS)
+                    {
+                        with(global.__input_players[_p])
+                        {
                             if (__source_contains(INPUT_GAMEPAD[_g]))
                             {
-	                            __input_trace("Player ", _p, " gamepad disconnected");
+                                __input_trace("Player ", _p, " gamepad disconnected");
                                 __source_remove(INPUT_GAMEPAD[_g]);
                             }
-	                    }
+                        }
                     
-	                    ++_p;
-	                }
-	            }
-	        }
-	        else
-	        {
-	            if (gamepad_is_connected(_g))
-	            {
-	                __input_trace("Gamepad ", _g, " connected");
-	                __input_trace("New gamepad = \"", gamepad_get_description(_g), "\", GUID=\"", gamepad_get_guid(_g), "\", buttons = ", gamepad_button_count(_g), ", axes = ", gamepad_axis_count(_g), ", hats = ", gamepad_hat_count(_g));
-					
-	                global.__input_gamepads[@ _g] = new __input_class_gamepad(_g);
-	            }
-	        }
-			
-	        ++_g;
-	    }
-	}
+                        ++_p;
+                    }
+                }
+            }
+            else
+            {
+                if (gamepad_is_connected(_g))
+                {
+                    __input_trace("Gamepad ", _g, " connected");
+                    __input_trace("New gamepad = \"", gamepad_get_description(_g), "\", GUID=\"", gamepad_get_guid(_g), "\", buttons = ", gamepad_button_count(_g), ", axes = ", gamepad_axis_count(_g), ", hats = ", gamepad_hat_count(_g));
+                    
+                    global.__input_gamepads[@ _g] = new __input_class_gamepad(_g);
+                }
+            }
+            
+            ++_g;
+        }
+    }
     
     #endregion
     
