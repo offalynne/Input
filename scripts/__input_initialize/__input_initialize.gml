@@ -81,9 +81,10 @@ function __input_initialize()
     global.__input_pointer_dy            = array_create(INPUT_COORD_SPACE.__SIZE, 0);
     global.__input_pointer_moved         = false;
     
+    //Cursor capture state
     global.__input_mouse_capture             = false;
     global.__input_mouse_capture_sensitivity = false;
-    global.__input_mouse_capture_frame       = false;
+    global.__input_mouse_capture_frame       = 0;
     
     //Whether to strictly verify bindings match auto profiles
     //This is set to <true> on boot, causing Input to throw an error, otherwise this is <false>
