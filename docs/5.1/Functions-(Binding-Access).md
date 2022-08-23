@@ -21,10 +21,10 @@ _Returns:_ N/A (`undefined`)
 
 |Name           |Datatype                            |Purpose                                                                                                                                                                                                                                                 |
 |---------------|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`verb`         |[verb](Verbs-and-Alternate-Bindings)|[Verb](Verbs-and-Alternate-Bindings) to target                                                                                                                                                                                                          |
+|`verb`         |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to target                                                                                                                                                                                                          |
 |`binding`      |binding                             |Binding to set, as returned by [`input_binding_scan_tick()`](<Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex>) or [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>)|
 |`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                                                                                                                                                                                                    |
-|`[alternate]`  |integer                             |[Alternate binding](Verbs-and-Alternate-Bindings) to target. If not specified, `0` is used                                                                                                                                                              |
+|`[alternate]`  |integer                             |[Alternate binding](Verbs-and-Bindings) to target. If not specified, `0` is used                                                                                                                                                              |
 |`[profileName]`|string                              |The [profile](Profiles) to set the verb binding for. If no profile is provided then the current profile is used                                                                                                                                         |
 
 Straightforwardly sets the binding for a verb, overwriting what was already there.
@@ -37,10 +37,10 @@ _Returns:_ N/A (`undefined`)
 
 |Name           |Datatype                            |Purpose                                                                                                                                                                                                                                                 |
 |---------------|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`verb`         |[verb](Verbs-and-Alternate-Bindings)|[Verb](Verbs-and-Alternate-Bindings) to target                                                                                                                                                                                                          |
+|`verb`         |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to target                                                                                                                                                                                                          |
 |`binding`      |binding                             |Binding to set, as returned by [`input_binding_scan_tick()`](<Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex>) or [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>)|
 |`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                                                                                                                                                                                                    |
-|`[alternate]`  |integer                             |[Alternate binding](Verbs-and-Alternate-Bindings) to target. If not specified, `0` is used                                                                                                                                                              |
+|`[alternate]`  |integer                             |[Alternate binding](Verbs-and-Bindings) to target. If not specified, `0` is used                                                                                                                                                              |
 |`[profileName]`|string                              |                                                                                                                                                                                                                                                        |
 
 In contrast to [`input_binding_set()`](<Functions-(Binding-Management)#input_binding_setverb-binding-playerindex-alternate>), this function will set the binding for a verb but also try to automatically handle any input conflicts by swapping over bindings. This is effective for simple control schemes but may fail in more complex situations - in these cases, you'll need to handle conflict resolution yourself.
@@ -53,9 +53,9 @@ _Returns:_ Struct. See below.
 
 |Name           |Datatype                            |Purpose                                                                                                                                             |
 |---------------|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-|`verb`         |[verb](Verbs-and-Alternate-Bindings)|[Verb](Verbs-and-Alternate-Bindings) to target                                                                                                      |
+|`verb`         |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to target                                                                                                      |
 |`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used. You may also use `"default"` as the player index to retrieve the default binding for this verb|
-|`[alternate]`  |integer                             |[Alternate binding](Verbs-and-Alternate-Bindings) to target. If not specified, `0` is used                                                          |
+|`[alternate]`  |integer                             |[Alternate binding](Verbs-and-Bindings) to target. If not specified, `0` is used                                                          |
 |`[profileName]`|string                              |                                                                                                                                                    |
 
 This function returns a struct that describes the binding for the given verb. It has the following member variables:
@@ -74,7 +74,7 @@ _Returns:_ Array of structs containing conflicting verb/alternate indexes
 
 |Name           |Datatype                            |Purpose                                                                                                                                                                                                                                                           |
 |---------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`verb`         |[verb](Verbs-and-Alternate-Bindings)|[Verb](Verbs-and-Alternate-Bindings) to target                                                                                                                                                                                                                    |
+|`verb`         |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to target                                                                                                                                                                                                                    |
 |`binding`      |binding                             |Binding to check against, as returned by [`input_binding_scan_tick()`](<Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex>) or [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>)|
 |`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                                                                                                                                                                                                              |
 |`[profileName]`|string                              |                                                                                                                                                                                                                                                                  |
@@ -85,7 +85,7 @@ The structs returned in the array contain the following:
 
 |Variable    |Datatype                            |Purpose                     |
 |------------|------------------------------------|----------------------------|
-|`.verb`     |[verb](Verbs-and-Alternate-Bindings)|Verb binding that conflicts |
+|`.verb`     |[verb](Verbs-and-Bindings)|Verb binding that conflicts |
 |`.alternate`|integer                             |Alternate index for the verb|
 
 &nbsp;
@@ -96,9 +96,9 @@ _Returns:_ N/A (`undefined`)
 
 |Name           |Datatype                            |Purpose                                                                                   |
 |---------------|------------------------------------|------------------------------------------------------------------------------------------|
-|`verb`         |[verb](Verbs-and-Alternate-Bindings)|[Verb](Verbs-and-Alternate-Bindings) to target                                            |
+|`verb`         |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to target                                            |
 |`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                                      |
-|`[alternate]`  |integer                             |[Alternate binding](Verbs-and-Alternate-Bindings) to target. If not specified, `0` is used|
+|`[alternate]`  |integer                             |[Alternate binding](Verbs-and-Bindings) to target. If not specified, `0` is used|
 |`[profileName]`|string                              |                                                                                          |
 
 Removes a binding from Input. **Be very careful with this function!** It's possible to remove any binding and this could potentially make your game unplayable.
@@ -111,10 +111,10 @@ _Returns:_ N/A (`undefined`)
 
 |Name           |Datatype                            |Purpose                                                                        |
 |---------------|------------------------------------|-------------------------------------------------------------------------------|
-|`verbA`        |[verb](Verbs-and-Alternate-Bindings)|First [verb](Verbs-and-Alternate-Bindings) to target                           |
-|`alternateA`   |integer                             |[Alternate binding](Verbs-and-Alternate-Bindings) to target for the first verb |
-|`verbB`        |[verb](Verbs-and-Alternate-Bindings)|Second [verb](Verbs-and-Alternate-Bindings) to target                          |
-|`alternateB`   |integer                             |[Alternate binding](Verbs-and-Alternate-Bindings) to target for the second verb|
+|`verbA`        |[verb](Verbs-and-Bindings)|First [verb](Verbs-and-Bindings) to target                           |
+|`alternateA`   |integer                             |[Alternate binding](Verbs-and-Bindings) to target for the first verb |
+|`verbB`        |[verb](Verbs-and-Bindings)|Second [verb](Verbs-and-Bindings) to target                          |
+|`alternateB`   |integer                             |[Alternate binding](Verbs-and-Bindings) to target for the second verb|
 |`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                           |
 |`[profileName]`|string                              |                                                                               |
 
@@ -155,7 +155,7 @@ _Returns:_ N/A (`undefined`)
 
 |Name     |Datatype                     |Purpose                                          |
 |---------|-----------------------------|-------------------------------------------------|
-|`binding`|[binding](Verbs-and-Bindings)|[Binding](Verbs-and-Alternate-Bindings) to target|
+|`binding`|[binding](Verbs-and-Bindings)|[Binding](Verbs-and-Bindings) to target|
 
 ?> The gamepad index for a binding is only relevant when in the [multidevice source mode](Input-Sources?id=source-modes).
 
@@ -167,7 +167,7 @@ _Returns:_ Integer, the gamepad index for the binding
 
 |Name     |Datatype                     |Purpose                                          |
 |---------|-----------------------------|-------------------------------------------------|
-|`binding`|[binding](Verbs-and-Bindings)|[Binding](Verbs-and-Alternate-Bindings) to target|
+|`binding`|[binding](Verbs-and-Bindings)|[Binding](Verbs-and-Bindings) to target|
 
 If no gamepad has been set, this function returns `undefined`.
 
@@ -181,7 +181,7 @@ _Returns:_ N/A (`undefined`)
 
 |Name     |Datatype                     |Purpose                                          |
 |---------|-----------------------------|-------------------------------------------------|
-|`binding`|[binding](Verbs-and-Bindings)|[Binding](Verbs-and-Alternate-Bindings) to target|
+|`binding`|[binding](Verbs-and-Bindings)|[Binding](Verbs-and-Bindings) to target|
 |`min`    |number                       |Minimum threshold for this binding               |
 |`max`    |number                       |Maximum threshold for this binding               |
 
@@ -197,4 +197,4 @@ _Returns:_ A struct with two member variables, `.mini` and `.maxi`, containing t
 
 |Name     |Datatype                     |Purpose                                          |
 |---------|-----------------------------|-------------------------------------------------|
-|`binding`|[binding](Verbs-and-Bindings)|[Binding](Verbs-and-Alternate-Bindings) to target|
+|`binding`|[binding](Verbs-and-Bindings)|[Binding](Verbs-and-Bindings) to target|
