@@ -278,16 +278,17 @@ function __input_initialize()
         //Xbox
         CommunityLikeXBox: _default_xbox_type,
 
-        XBoxOneController: "xbox one",
-        SteamControllerV2: "xbox one",
-        CommunityXBoxOne:  "xbox one",
-        AppleController:   "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
-        CommunityStadia:   "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
-        CommunityLuna:     "xbox one", //  Luna uses Xbox One iconography excepting 'View' button
+        XBoxOneController:  "xbox one",
+        CommunityXBoxOne:   "xbox one",
+        SteamControllerV2:  "xbox one",
+        CommunitySteamDeck: "xbox one", //  Deck uses Xbox One iconography excepting 'View' button
+        CommunityLuna:      "xbox one", //  Luna uses Xbox One iconogX-Box 360raphy excepting 'View' button
+        CommunityStadia:    "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
+        AppleController:    "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
         
         XBox360Controller:  "xbox 360",
         CommunityXBox360:   "xbox 360",
-        CommunityDreamcast: "xbox 360", //        Xbox 360 uses Dreamcast iconography
+        CommunityDreamcast: "xbox 360", //       X-Box 360 uses Dreamcast iconography
         SteamController:    "xbox 360", //Steam Controller uses X-Box 360 iconography
         MobileTouch:        "xbox 360", //      Steam Link uses X-Box 360 iconography
         
@@ -564,21 +565,42 @@ function __input_initialize()
     
     #region Steam Input
     
-    if (((os_type == os_linux) || (os_type == os_macosx)) && !__INPUT_ON_WEB)
+    global.__input_on_steam_deck = false;
+    
+    if (os_type == os_linux)
+    {
+        //Check for Steam Deck hardware
+        var _map = os_get_info();
+        if (ds_exists(_map, ds_type_map))
+        {
+            var _renderer_info = _map[? "gl_renderer_string"];
+            
+            if ((_renderer_info != undefined)
+            &&  __input_string_contains(_renderer_info, "valve") 
+            &&  __input_string_contains(_renderer_info, "neptune"))
+            {
+                 global.__input_on_steam_deck = true;
+            }
+            
+            ds_map_destroy(_map);
+        }
+    }
+    
+    if (((os_type == os_linux) || (os_type == os_macosx)) && !__INPUT_ON_WEB && !global.__input_on_steam_deck)
     {
         //Define the virtual controller's identity
-        var _os = ((os_type == os_macosx)? "macos"    : "linux");
-        var _id = ((os_type == os_macosx)? "5e048e02" : "de28ff11");
+        var _os = ((os_type == os_macosx)? "macos"                            : "linux");
+        var _id = ((os_type == os_macosx)? "030000005e0400008e02000001000000" : "03000000de280000ff11000001000000");
     
         //Access the blacklist
         var _blacklist_os = (is_struct(global.__input_blacklist_dictionary)? global.__input_blacklist_dictionary[$ _os] : undefined);
-        var _blacklist_id = (is_struct(_blacklist_os)? _blacklist_os[$ "vid+pid"] : undefined);
+        var _blacklist_id = (is_struct(_blacklist_os)? _blacklist_os[$ "guid"] : undefined);
     
         if (is_struct(_blacklist_os) && (_blacklist_id == undefined))
         {
-            //Add 'Vendor ID + Product ID' category
-            _blacklist_os[$ "vid+pid"] = {};
-            _blacklist_id = (is_struct(_blacklist_os)? _blacklist_os[$ "vid+pid"] : undefined);
+            //Add category if inaccessible
+            _blacklist_os[$ "guid"] = {};
+            _blacklist_id = (is_struct(_blacklist_os)? _blacklist_os[$ "guid"] : undefined);
         }
     
         //Blacklist the Steam virtual controller
@@ -610,10 +632,10 @@ function __input_initialize()
             {
                 //If ignore hint isn't set, GM accesses controllers meant to be blocked
                 //We address this by adding the Steam config types to our own blocklist
-                if (_steam_switch)  array_push(_ignore_list, "switch");
                 if (_steam_ps)      array_push(_ignore_list, "ps4", "ps5");
-                if (_steam_xbox)    array_push(_ignore_list, "xbox 360", "xbox one");        
-                if (_steam_generic) array_push(_ignore_list, "snes", "saturn", "n64", "gamecube", "psx", "xbox", "switch joycon left", "switch joycon right", "unknown");
+                if (_steam_xbox)    array_push(_ignore_list, "xbox 360", "xbox one");
+                if (_steam_generic) array_push(_ignore_list, "snes", "saturn", "n64", "gamecube", "psx", "xbox", "unknown");
+                if (_steam_switch)  array_push(_ignore_list, "switch", "switch joycon left", "switch joycon right");
              
                 var _i = 0;
                 repeat(array_length(_ignore_list))
