@@ -19,7 +19,7 @@ function __input_initialize()
     try
     {
         //GMS2022.500.58 runtime
-        global.__input_time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
+        global.__input_time_source = time_source_create(time_source_global, 1, time_source_units_frames, function()
         {
             __input_system_tick();
         }, [], -1);
@@ -31,7 +31,7 @@ function __input_initialize()
         try
         {
             //Early GMS2022.500.xx runtimes
-            global.__input_time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
+            global.__input_time_source = time_source_create(time_source_global, 1, time_source_units_frames, function()
             {
                 __input_system_tick();
             }, -1);
