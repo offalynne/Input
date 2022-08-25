@@ -328,7 +328,8 @@ function __input_initialize()
     }
     
     //Parse controller type database
-    global.__input_raw_type_dictionary = { none : _default_xbox_type };
+    global.__input_raw_type_dictionary = {};
+    global.__input_raw_type_dictionary[$ "none"] = _default_xbox_type;
 
     //Load the controller type database
     if (__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || (os_type == os_ios) || (os_type == os_tvos))
