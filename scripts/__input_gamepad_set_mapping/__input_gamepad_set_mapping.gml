@@ -402,7 +402,7 @@ function __input_gamepad_set_mapping()
     if ((vendor == "7e05") && (product == "1720") && (os_type == os_linux)
     && (raw_type == "CommunitySaturn") && (guessed_type == false))
     {
-        if (string_count("Genesis 3btn", description))
+        if (__input_string_contains(description, "Genesis 3btn"))
         {
             __input_trace("Overriding mapping to Mega Drive 3b");
             
@@ -423,7 +423,7 @@ function __input_gamepad_set_mapping()
             
             exit;
         }
-        else if (string_count("Genesis 6btn", description))
+        else if (__input_string_contains(description, "Genesis 6btn"))
         {
             __input_trace("Overriding mapping to Mega Drive 6b");
             

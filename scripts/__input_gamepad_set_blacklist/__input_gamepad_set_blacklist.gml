@@ -21,14 +21,33 @@ function __input_gamepad_set_blacklist()
         exit;
     }
     
-    if ((os_type == os_linux)
-    && ((raw_type == "WiiMotionPlus") || (raw_type == "WiiRemoteNunchuk")
-    || ((raw_type == "WiiRemoteIMU")  || (raw_type == "WiiRemoteIRSensor"))))
+    if (os_type == os_linux)
     {
-        //Unsupported hid-wiimote module motion device 
-		__input_trace("Warning! Controller ", index, " is blacklisted, type (\"", raw_type, "\")");
-        blacklisted = true;
-        exit;
+        if (global.__input_on_steam_deck)
+        {
+            if ((button_count == 144) && (axis_count == 0))
+            {
+                //Unsupported virtual keyboard device 
+                __input_trace("Warning! Controller ", index, " is blacklisted, type (\"", raw_type, "\")");
+                blacklisted = true;
+                exit;
+            }
+
+            if (raw_type == "CommunitySteamDeck")
+            {
+                //Do not blacklist built-in Steam Deck gamepad
+                exit;
+            }
+        }
+        
+        if ((raw_type == "WiiMotionPlus") || (raw_type == "WiiRemoteNunchuk")
+        ||  (raw_type == "WiiRemoteIMU")  || (raw_type == "WiiRemoteIRSensor"))
+        {
+            //Unsupported hid-wiimote module motion device 
+            __input_trace("Warning! Controller ", index, " is blacklisted, type (\"", raw_type, "\")");
+            blacklisted = true;
+            exit;
+        }
     }
     
     #region Blacklist

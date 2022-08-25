@@ -86,6 +86,7 @@
     {"id":{"name":"__input_keyboard_key","path":"scripts/__input_keyboard_key/__input_keyboard_key.yy",},"order":26,},
     {"id":{"name":"__input_config_external_data","path":"scripts/__input_config_external_data/__input_config_external_data.yy",},"order":4,},
     {"id":{"name":"input_chord_create","path":"scripts/input_chord_create/input_chord_create.yy",},"order":1,},
+    {"id":{"name":"__input_string_contains","path":"scripts/__input_string_contains/__input_string_contains.yy",},"order":32,},
     {"id":{"name":"concat","path":"scripts/concat/concat.yy",},"order":0,},
     {"id":{"name":"__input_gamepad_set_blacklist","path":"scripts/__input_gamepad_set_blacklist/__input_gamepad_set_blacklist.yy",},"order":18,},
     {"id":{"name":"input_consume","path":"scripts/input_consume/input_consume.yy",},"order":0,},

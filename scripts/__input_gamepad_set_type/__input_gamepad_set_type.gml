@@ -99,79 +99,79 @@ function __input_gamepad_set_type()
                 }
                 
                 var _desc = string_lower(description);
-                if (string_count("8bitdo", _desc))
+                if (__input_string_contains(_desc, "8bitdo"))
                 {
                     raw_type = "Community8BitDo";
                 }
-                else if (string_count("snes", _desc))
+                else if (__input_string_contains(_desc, "snes"))
                 {
                     raw_type = "CommunitySNES";
                 }
-                else if (string_count("saturn", _desc))
+                else if (__input_string_contains(_desc, "saturn"))
                 {
                     raw_type = "CommunitySaturn"
                 }
-                else if (string_count("stadia", _desc))
+                else if (__input_string_contains(_desc, "stadia"))
                 {
                     raw_type = "CommunityStadia";
                 }
-                else if (string_count("luna", _desc) || string_count("amazon game", _desc))
+                else if (__input_string_contains(_desc, "luna", "amazon game"))
                 {
                     raw_type = "CommunityLuna";
                 }
-                else if (string_count("ouya", _desc))
+                else if (__input_string_contains(_desc, "ouya"))
                 {
                     raw_type = "CommunityOuya";
                 }
-                else if (string_count("steam", _desc))
+                else if (__input_string_contains(_desc, "steam"))
                 {
                     raw_type = "SteamController";
                 }
-                else if (string_count("ps5", _desc) || string_count("dualsense", _desc))
+                else if (__input_string_contains(_desc, "ps5", "dualsense"))
                 {
                     raw_type = "PS5Controller";
                 }
-                else if (string_count("ps4", _desc) || string_count("dualshock 4", _desc) || string_count("sony interactive entertainment wireless controller", _desc))
+                else if (__input_string_contains(_desc, "ps4", "dualshock 4", "sony interactive entertainment wireless controller"))
                 {
                     raw_type = "CommunityPS4";
                 }
-                else if (string_count("playstation", _desc) || string_count("ps1", _desc) || string_count("ps2", _desc) || string_count("ps3", _desc) || string_count("dualshock", _desc))
+                else if (__input_string_contains(_desc, "playstation", "ps1", "ps2", "ps3", "dualshock"))
                 {
                     raw_type = "CommunityPSX"; //Catch all remaining PlayStation gamepads as PSX
                 }
-                else if (string_count("for switch", _desc) || string_count("for nintendo switch", _desc) || string_count("switch controller", _desc) || string_count("switch pro controller", _desc) || string_count("lic pro controller", _desc))
+                else if (__input_string_contains(_desc, "for switch", "for nintendo switch", "switch controller", "switch pro controller", "lic pro controller"))
                 {
                     raw_type = "CommunityLikeSwitch";
                 }
-                else if (string_count("joy-con (l/r)", _desc))
+                else if (__input_string_contains(_desc, "joy-con (l/r)"))
                 {
                     raw_type = "SwitchJoyConPair";
                 }
-                else if (string_count("joy-con (l)", _desc) || string_count("left joy-con", _desc))
+                else if (__input_string_contains(_desc, "joy-con (l)", "left joy-con"))
                 {
                     raw_type = "SwitchJoyConLeft";
                 }
-                else if (string_count("joy-con (r)", _desc) || string_count("right joy-con", _desc))
+                else if (__input_string_contains(_desc, "joy-con (r)", "right joy-con"))
                 {
                     raw_type = "SwitchJoyConRight";
                 }
-                else if (string_count("gamecube", _desc))
+                else if (__input_string_contains(_desc, "gamecube"))
                 {
                     raw_type = "CommunityGameCube";
                 }
-                else if (string_count("xbox elite", _desc) || string_count("xbox wireless", _desc) || string_count("xbox one", _desc) || string_count("xbox bluetooth", _desc))
+                else if (__input_string_contains(_desc, "xbox elite", "xbox wireless", "xbox one", "xbox bluetooth"))
                 {
                     raw_type = "CommunityXBoxOne";
                 }
-                else if (string_count("xbox 360", _desc) || string_count("xbox360", _desc))
+                else if (__input_string_contains(_desc, "xbox 360", "xbox360"))
                 {
                     raw_type = "CommunityXBox360";
                 }
-                else if (string_count("xbox", _desc))
+                else if (__input_string_contains(_desc, "xbox"))
                 {
                     raw_type = "CommunityLikeXBox";
                 }
-                else if ((__INPUT_ON_MOBILE && __INPUT_ON_APPLE) || _desc == "mfi" || string_count("nimbus", _desc) || string_count("horipad ultimate", _desc))
+                else if ((__INPUT_ON_MOBILE && __INPUT_ON_APPLE) || __input_string_contains(_desc, "nimbus", "horipad ultimate", "mfi"))
                 {
                     raw_type = "AppleController";
                 }
@@ -207,19 +207,17 @@ function __input_gamepad_set_type()
                 }
             }
             
-            if ((os_type == os_linux) && (vendor == "7e05") && (product == "1720"))
+            if (os_type == os_linux)
             {
-                //Nintendo Switch Online controllers on Linux (Identifiable on device name only)
-                if (string_count("Mega Drive/Genesis", description))
+                if ((vendor == "7e05") && (product == "1720") 
+                && __input_string_contains(description, "Mega Drive/Genesis"))
                 {
+                    //Nintendo Switch Online controllers on Linux (Identifiable on device name only)
                     __input_trace("Overriding gamepad type to Saturn");
                     raw_type = "CommunitySaturn";
                     guessed_type = false;
                 }
-            }
-            
-            if (os_type == os_linux)
-            {
+                
                 //Linux hid-wiimote module
                 //GUID and description do not work correctly for kernel drivers
                 //so match a sequential device pattern with specific qualitites
