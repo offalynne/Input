@@ -241,22 +241,25 @@ function __input_system_tick()
             var _pointer_x = _old_x;
             var _pointer_y = _old_y;
             
-            switch(_m)
+            if (global.__input_window_focus)
             {
-                case INPUT_COORD_SPACE.ROOM:
-                    _pointer_x = device_mouse_x(global.__input_pointer_index);
-                    _pointer_y = device_mouse_y(global.__input_pointer_index);
-                break;
-                
-                case INPUT_COORD_SPACE.GUI:
-                    _pointer_x = device_mouse_x_to_gui(global.__input_pointer_index);
-                    _pointer_y = device_mouse_y_to_gui(global.__input_pointer_index);
-                break;
-                
-                case INPUT_COORD_SPACE.DISPLAY:
-                    _pointer_x = device_mouse_raw_x(global.__input_pointer_index);
-                    _pointer_y = device_mouse_raw_y(global.__input_pointer_index);
-                break;
+                switch(_m)
+                {
+                    case INPUT_COORD_SPACE.ROOM:
+                        _pointer_x = device_mouse_x(global.__input_pointer_index);
+                        _pointer_y = device_mouse_y(global.__input_pointer_index);
+                    break;
+                    
+                    case INPUT_COORD_SPACE.GUI:
+                        _pointer_x = device_mouse_x_to_gui(global.__input_pointer_index);
+                        _pointer_y = device_mouse_y_to_gui(global.__input_pointer_index);
+                    break;
+                    
+                    case INPUT_COORD_SPACE.DISPLAY:
+                        _pointer_x = device_mouse_raw_x(global.__input_pointer_index);
+                        _pointer_y = device_mouse_raw_y(global.__input_pointer_index);
+                    break;
+                }
             }
             
             //Only detect movement in the display coordinate space so that moving a room's view, or moving the window, doesn't trigger movement
@@ -274,7 +277,7 @@ function __input_system_tick()
     
     global.__input_pointer_moved = _moved;
     
-    //Windows mouse extensions
+    
     global.__input_tap_click = false;
     if (os_type == os_windows)
     {
