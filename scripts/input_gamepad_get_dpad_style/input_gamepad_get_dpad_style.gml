@@ -3,6 +3,8 @@
 
 function input_gamepad_get_dpad_style(_index)
 {
+    if (INPUT_WARNING_DEPRECATED) __input_error("This function has been deprecated\nPlease use input_binding_get_icon() instead\n(Set INPUT_WARNING_DEPRECATED to <false> to ignore this warning)");
+    
     switch(input_gamepad_get_type(_index))
     {
         case "unknown":
