@@ -303,12 +303,12 @@
     "children": [],
   },
   "RoomOrderNodes": [
-    {"roomId":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
     {"roomId":{"name":"rm_example_platformer","path":"rooms/rm_example_platformer/rm_example_platformer.yy",},},
     {"roomId":{"name":"rm_example_tds","path":"rooms/rm_example_tds/rm_example_tds.yy",},},
     {"roomId":{"name":"rm_example_mp","path":"rooms/rm_example_mp/rm_example_mp.yy",},},
     {"roomId":{"name":"rm_example_mp_gameplay","path":"rooms/rm_example_mp_gameplay/rm_example_mp_gameplay.yy",},},
     {"roomId":{"name":"rm_example_rebinding","path":"rooms/rm_example_rebinding/rm_example_rebinding.yy",},},
+    {"roomId":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Test Cases.yy","order":3,"resourceVersion":"1.0","name":"Test Cases","tags":[],"resourceType":"GMFolder",},
