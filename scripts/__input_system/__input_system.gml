@@ -270,11 +270,11 @@ function __input_error()
     
     if (os_browser == browser_not_a_browser)
     {
-        show_error("Input:\n" + _string + "\n ", false);
+        show_error("Input " + __INPUT_VERSION + ":\n" + _string + "\n ", false);
     }
     else
     {
-        show_error("Input:\n" + _string + "\n" + string(debug_get_callstack()), false);
+        show_error("Input " + __INPUT_VERSION + ":\n" + _string + "\n" + string(debug_get_callstack()), false);
     }
 }
 
