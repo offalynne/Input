@@ -739,10 +739,10 @@ function __input_initialize()
     
     
     global.__input_initialization_phase = "__input_finalize_default_profiles";
-    script_execute(__input_config_profiles_and_default_bindings);
+    __input_config_profiles_and_default_bindings();
     
     global.__input_initialization_phase = "__input_finalize_verb_groups";
-    script_execute(__input_config_verbs);
+    __input_config_verbs();
     
     
     
