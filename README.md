@@ -10,9 +10,3 @@
 - ### [Download the .yymps](https://github.com/JujuAdams/input/releases/)
 - ### Read the [documentation](http://jujuadams.github.io/Input)
 - ### Talk about Input on the [Discord server](https://discord.gg/8krYCqr)
-
-&nbsp;
-
-&nbsp;
-
-If you're looking to implement some extra haptics for your controllers, take a look at [Good Vibes](https://github.com/mrdaneeyul/good-vibes/) by @mrdaneeyul.
