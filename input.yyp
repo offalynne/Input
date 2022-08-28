@@ -226,6 +226,7 @@
     {"id":{"name":"__input_class_vibration_pulse","path":"scripts/__input_class_vibration_pulse/__input_class_vibration_pulse.yy",},"order":15,},
     {"id":{"name":"input_binding_scan_start","path":"scripts/input_binding_scan_start/input_binding_scan_start.yy",},"order":0,},
     {"id":{"name":"obj_test_binding_get_source_type","path":"objects/obj_test_binding_get_source_type/obj_test_binding_get_source_type.yy",},"order":4,},
+    {"id":{"name":"obj_test_runtime_profiles","path":"objects/obj_test_runtime_profiles/obj_test_runtime_profiles.yy",},"order":27,},
     {"id":{"name":"input_cursor_limit_remove","path":"scripts/input_cursor_limit_remove/input_cursor_limit_remove.yy",},"order":9,},
     {"id":{"name":"input_vibrate_stop","path":"scripts/input_vibrate_stop/input_vibrate_stop.yy",},"order":0,},
     {"id":{"name":"__input_binding_get_label","path":"scripts/__input_binding_get_label/__input_binding_get_label.yy",},"order":22,},
@@ -302,12 +303,12 @@
     "children": [],
   },
   "RoomOrderNodes": [
+    {"roomId":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
     {"roomId":{"name":"rm_example_platformer","path":"rooms/rm_example_platformer/rm_example_platformer.yy",},},
     {"roomId":{"name":"rm_example_tds","path":"rooms/rm_example_tds/rm_example_tds.yy",},},
     {"roomId":{"name":"rm_example_mp","path":"rooms/rm_example_mp/rm_example_mp.yy",},},
     {"roomId":{"name":"rm_example_mp_gameplay","path":"rooms/rm_example_mp_gameplay/rm_example_mp_gameplay.yy",},},
     {"roomId":{"name":"rm_example_rebinding","path":"rooms/rm_example_rebinding/rm_example_rebinding.yy",},},
-    {"roomId":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Test Cases.yy","order":3,"resourceVersion":"1.0","name":"Test Cases","tags":[],"resourceType":"GMFolder",},
