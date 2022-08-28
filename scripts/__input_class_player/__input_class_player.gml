@@ -40,7 +40,26 @@ function __input_class_player() constructor
         if (variable_struct_exists(__profiles_dict, _profile_name)) __input_error("Profile \"", _profile_name, "\" already exists for player ", __index);
         
         if (INPUT_DEBUG_PROFILES) __input_trace("Profile \"", _profile_name, "\" created for player ", __index);
-        __profiles_dict[$ _profile_name] = {};
+        
+        var _new_profile_struct = {};
+        var _v = 0;
+        repeat(array_length(global.__input_basic_verb_array))
+        {
+            var _verb_name = global.__input_basic_verb_array[_v];
+            
+            var _alternate_array = array_create(INPUT_MAX_ALTERNATE_BINDINGS, undefined);
+            var _a = 0;
+            repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+            {
+                _alternate_array[@ _a] = input_binding_empty();
+                ++_a;
+            }
+            
+            _new_profile_struct[$ _verb_name] = _alternate_array;
+            ++_v;
+        }
+        
+        __profiles_dict[$ _profile_name] = _new_profile_struct;
     }
     
     static __profile_destroy = function(_profile_name)
