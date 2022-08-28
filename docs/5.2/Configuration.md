@@ -97,7 +97,7 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 
 ## Gamepad Data
 
-`__input_config_gamepad_data()` holds macros that affect how Input loads and uses gamepad data. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
+`__input_config_external_data()` holds macros that affect how Input loads and uses external gamepad data. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
 
 ?> You should edit this script to customise Input for your own purposes.
 
@@ -139,13 +139,16 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 
 ?> You should edit this script to customise Input for your own purposes.
 
-|Name                                      |Typical Value              |Purpose                                                                                                                                                                                                                     |
-|------------------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`INPUT_DEFAULT_AXIS_MIN_THRESHOLD`        |`0.3`                      |Default minimum threshold for directional (thumbstick) axes. This value is used for detecting gamepad input when hotswapping so make sure you set it above 0.0                                                              |
-|`INPUT_DEFAULT_AXIS_MAX_THRESHOLD`        |`1.0`                      |Default maximum threshold for directional (thumbstick) axes                                                                                                                                                                 |
-|`INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD`     |`0.02`                     |Default minimum threshold for non-directional (trigger) axes. This value is used for detecting gamepad input when hotswapping so make sure you set it above 0.0                                                             |
-|`INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD`     |`1.0`                      |Default maximum threshold for non-directional (trigger) axes                                                                                                                                                                |
+|Name                                      |Typical Value              |Purpose                                                                                                                                                                                                                                                                     |
+|------------------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`INPUT_DEFAULT_AXIS_MIN_THRESHOLD`        |`0.3`                      |Default minimum threshold for directional (thumbstick) axes. This value is used for detecting gamepad input when hotswapping so make sure you set it above 0.0                                                                                                              |
+|`INPUT_DEFAULT_AXIS_MAX_THRESHOLD`        |`1.0`                      |Default maximum threshold for directional (thumbstick) axes                                                                                                                                                                                                                 |
+|`INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD`     |`0.02`                     |Default minimum threshold for non-directional (trigger) axes. This value is used for detecting gamepad input when hotswapping so make sure you set it above 0.0                                                                                                             |
+|`INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD`     |`1.0`                      |Default maximum threshold for non-directional (trigger) axes                                                                                                                                                                                                                |
 |`INPUT_SWITCH_HORIZONTAL_HOLDTYPE`        |`true`                     |Whether the game uses the horizontal holdtype for single Joy-Cons. Set this to `false` for vertical holdtype. Input treats these two modes as mutually exclusive (come talk to us if you need to be able to swap at runtime). This macro only applies to the Switch platform|
+|`INPUT_VIBRATION_ALLOWED`                 |`true`                     |Whether vibration should be allowed at all, often useful when debugging                                                                                                                                                                                                     |
+|`INPUT_VIBRATION_DEFAULT_STRENGTH`        |`1.0`                      |The default vibration strength. This value can be changed later by using [`input_vibrate_set_strength()`]()                                                                                                                                                                 |
+|`INPUT_VIBRATION_SWITCH_OS_STRENGTH`      |`0.4`                      |Switch's vibration motors can be a bit, uh, intense. This value allows you to reduce the strength of vibration relative to other platforms                                                                                                                                  |
 
 &nbsp;
 
