@@ -33,7 +33,7 @@ function __input_gamepad_set_blacklist()
                 exit;
             }
 
-            if (raw_type == "CommunitySteamDeck")
+            if (raw_type == "CommunityDeck")
             {
                 //Do not blacklist built-in Steam Deck gamepad
                 exit;
