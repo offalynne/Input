@@ -342,6 +342,7 @@ dead,beef,CommunityPSX // Hidromancer
 25f0,83c2,CommunityPSX // Gioteck
 25f0,83c4,CommunityPSX // Gioteck VX2
 6666,0667,CommunityPSX // SuperJoy Box Adapter
+6666,8802,CommunityPSX // SuperJoy Box Adapter
 6666,8804,CommunityPSX // SuperJoy Box Adapter
 145f,0231,CommunityPSX // MY-POWER CO. LTD. Gamepad
 146b,0609,CommunityPS4 // Nacon Asymmetric Controller
