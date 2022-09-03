@@ -14,10 +14,10 @@ If you're looking for simpler ways to check verbs, please see the [1D Checkers](
 
 |Name            |Datatype                  |Purpose                                                     |
 |----------------|--------------------------|------------------------------------------------------------|
-|`verbUp`        |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
-|`verbDown`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
 |`verbLeft`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
 |`verbRight`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
+|`verbUp`        |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
+|`verbDown`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
 |`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used        |
 |`[mostRecent ]` |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
 
@@ -29,10 +29,10 @@ If you're looking for simpler ways to check verbs, please see the [1D Checkers](
 
 |Name            |Datatype                  |Purpose                                                     |
 |----------------|--------------------------|------------------------------------------------------------|
-|`verbUp`        |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
-|`verbDown`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
 |`verbLeft`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
 |`verbRight`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
+|`verbUp`        |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
+|`verbDown`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
 |`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used        |
 |`[mostRecent]`  |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
 
@@ -44,10 +44,10 @@ If you're looking for simpler ways to check verbs, please see the [1D Checkers](
 
 |Name            |Datatype                  |Purpose                                                     |
 |----------------|--------------------------|------------------------------------------------------------|
-|`verbUp`        |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
-|`verbDown`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
 |`verbLeft`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
 |`verbRight`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
+|`verbUp`        |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
+|`verbDown`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
 |`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used        |
 |`[mostRecent]`  |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
 
@@ -61,10 +61,10 @@ The struct returned by this function contains two member variables: `.x` and `.y
 
 |Name           |Datatype                  |Purpose                                                     |
 |---------------|--------------------------|------------------------------------------------------------|
-|`verbUp`       |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
-|`verbDown`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
 |`verbLeft`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
 |`verbRight`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
+|`verbUp`       |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
+|`verbDown`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
 |`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used        |
 |`[mostRecent]` |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
 
