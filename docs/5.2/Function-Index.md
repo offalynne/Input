@@ -124,7 +124,7 @@
 
 - [`input_source_mode_set(state)`](Functions-(Sources)?id=input_source_mode_setmode)
 - [`input_source_mode_get()`](Functions-(Sources)?id=input_source_mode_get)
-- [`input_source_detect_input(source)`](Functions-(Sources)#input_source_detect_inputsource)
+- [`input_source_detect_input(source, [availableOnly])`](Functions-(Sources)#input_source_detect_inputsource-availableonly)
 - [`input_source_detect_new()`](Functions-(Sources)#input_source_detect_new)
 - [`input_source_set(source, [playerIndex], [autoProfile])`](Functions-(Sources)?id=input_source_setsource-playerindex-autoprofile)
 - [`input_source_add(source, [playerIndex])`](Functions-(Sources)?id=input_source_addsource-playerindex)
