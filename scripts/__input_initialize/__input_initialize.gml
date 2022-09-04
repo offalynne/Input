@@ -281,8 +281,8 @@ function __input_initialize()
         XBoxOneController:  "xbox one",
         CommunityXBoxOne:   "xbox one",
         SteamControllerV2:  "xbox one",
-        CommunitySteamDeck: "xbox one", //  Deck uses Xbox One iconography excepting 'View' button
-        CommunityLuna:      "xbox one", //  Luna uses Xbox One iconogX-Box 360raphy excepting 'View' button
+        CommunityDeck:      "xbox one", //  Deck uses Xbox One iconography excepting 'View' button
+        CommunityLuna:      "xbox one", //  Luna uses Xbox One iconography excepting 'View' button
         CommunityStadia:    "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
         AppleController:    "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
         
@@ -293,11 +293,12 @@ function __input_initialize()
         MobileTouch:        "xbox 360", //      Steam Link uses X-Box 360 iconography
         
         //PlayStation
-        PS5Controller: "ps5",
-        PS4Controller: "ps4",
-        CommunityPS4:  "ps4",
-        PS3Controller: "psx",
-        CommunityPSX:  "psx",
+        PS5Controller:       "ps5",
+        PS4Controller:       "ps4",
+        XInputPS4Controller: "ps4",
+        CommunityPS4:        "ps4",
+        PS3Controller:       "psx",
+        CommunityPSX:        "psx",
         
         //Switch
         SwitchHandheld:            "switch", //Attached JoyCon pair or Switch Lite
