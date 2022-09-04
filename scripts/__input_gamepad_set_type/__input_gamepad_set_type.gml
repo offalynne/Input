@@ -216,101 +216,118 @@ function __input_gamepad_set_type()
                     __input_trace("Overriding gamepad type to Saturn");
                     raw_type = "CommunitySaturn";
                     guessed_type = false;
-                }
-                
-                //Linux hid-wiimote module
-                //GUID and description do not work correctly for kernel drivers
-                //so match a sequential device pattern with specific qualitites
-                var _wii_type_match = "Unknown";
-                if      ((button_count == 11) && (axis_count == 0) && (hat_count == 0) && (index > 1)) { _wii_type_match = "WiiRemote";     }
-                else if ((button_count ==  0) && (axis_count == 3) && (hat_count == 0) && (index > 2)) { _wii_type_match = "WiiMotionPlus"; }
-                else if ((button_count ==  2) && (axis_count == 3) && (hat_count == 1) && (index > 2)) { _wii_type_match = "WiiNunchuk";    }
-                else if ((button_count == 15) && (axis_count == 0) && (hat_count == 3) && (index > 2)) { _wii_type_match = "WiiClassic";    }
-                
-                switch (_wii_type_match)
+                }                
+                else if ((button_count == 11) && (axis_count == 2) && (hat_count == 0))
                 {
-                    case "WiiMotionPlus":
-                    case "WiiNunchuk":                    
-                    case "WiiClassic":
-                        var _g = index;
-                        repeat(index)
-                        {
-                            //Confirm accessory identity by finding Wii Remote device
-                            --_g;
-                            if (input_gamepad_is_connected(_g))
+                    //More kernel module weirdness: these devices behave differently
+                    //in GameMaker than they do in SDL so we require our own mapping
+                    if (guid == "050000007e0500000620000001800000")
+                    {
+                        raw_type = "HIDJoyConLeft";
+                        guessed_type = false;
+                    }
+                    else if ((vendor == "") && (product == ""))
+                    {
+                        raw_type = "HIDJoyConRight";
+                        guessed_type = true;
+                    }
+                }
+                else
+                {                
+                    //Linux hid-wiimote module
+                    //GUID and description do not work correctly for kernel drivers
+                    //so match a sequential device pattern with specific qualitites
+                    var _wii_type_match = "Unknown";
+                    if      ((button_count == 11) && (axis_count == 0) && (hat_count == 0) && (index > 1)) { _wii_type_match = "WiiRemote";     }
+                    else if ((button_count ==  0) && (axis_count == 3) && (hat_count == 0) && (index > 2)) { _wii_type_match = "WiiMotionPlus"; }
+                    else if ((button_count ==  2) && (axis_count == 3) && (hat_count == 1) && (index > 2)) { _wii_type_match = "WiiNunchuk";    }
+                    else if ((button_count == 15) && (axis_count == 0) && (hat_count == 3) && (index > 2)) { _wii_type_match = "WiiClassic";    }
+                
+                    switch (_wii_type_match)
+                    {
+                        case "WiiMotionPlus":
+                        case "WiiNunchuk":                    
+                        case "WiiClassic":
+                            var _g = index;
+                            repeat(index)
                             {
-                                //MotionPlus, Nunchuk, and Classic Controller
-                                //can all chain to a Wii Remote or MotionPlus
-                                if ((global.__input_gamepads[@ _g].raw_type == "WiiRemote")
-                                ||  (global.__input_gamepads[@ _g].raw_type == "WiiMotionPlus"))
+                                //Confirm accessory identity by finding Wii Remote device
+                                --_g;
+                                if (input_gamepad_is_connected(_g))
                                 {
-                                    __input_trace("Overriding gamepad type to \"", _wii_type_match, "\"");
-                                    if (_wii_type_match == "WiiClassic")
+                                    //MotionPlus, Nunchuk, and Classic Controller
+                                    //can all chain to a Wii Remote or MotionPlus
+                                    if ((global.__input_gamepads[@ _g].raw_type == "WiiRemote")
+                                    ||  (global.__input_gamepads[@ _g].raw_type == "WiiMotionPlus"))
                                     {
-                                        description = "Nintendo Wii Classic Controller";
+                                        __input_trace("Overriding gamepad type to \"", _wii_type_match, "\"");
+                                        if (_wii_type_match == "WiiClassic")
+                                        {
+                                            description = "Nintendo Wii Classic Controller";
+                                        }
+                                        raw_type = _wii_type_match;
+                                        guessed_type = true;                                    
                                     }
-                                    raw_type = _wii_type_match;
-                                    guessed_type = true;                                    
+                                    break;
                                 }
-                                break;
                             }
-                        }
-                    break;
+                        break;
                         
-                    case "WiiRemote":                    
-                        var _g = index;
-                        repeat(index)
-                        {
-                            --_g;
-                            if (input_gamepad_is_connected(_g)) break;
-                        }
-
-                        //Confirm Wii Remote identity by finding component devices
-                        if ((_g >= 1)
-                        &&  (global.__input_gamepads[@ _g].hat_count    == 4)
-                        &&  (global.__input_gamepads[@ _g].button_count == 0)
-                        &&  (global.__input_gamepads[@ _g].axis_count   == 0))
-                        {
-                            //Found IR sensor
-                            var _ir_index = _g;
-                            repeat(_ir_index + 1)
+                        case "WiiRemote":                    
+                            var _g = index;
+                            repeat(index)
                             {
                                 --_g;
                                 if (input_gamepad_is_connected(_g)) break;
                             }
-                            
-                            if ((_g >= 0)
-                            &&  (global.__input_gamepads[@ _g].axis_count   == 3)
+
+                            //Confirm Wii Remote identity by finding component devices
+                            if ((_g >= 1)
+                            &&  (global.__input_gamepads[@ _g].hat_count    == 4)
                             &&  (global.__input_gamepads[@ _g].button_count == 0)
-                            &&  (global.__input_gamepads[@ _g].hat_count    == 0))
+                            &&  (global.__input_gamepads[@ _g].axis_count   == 0))
                             {
-                                //Found IMU                                
-                                var _imu_index = _g;
-                                __input_trace("Overriding controller ", _imu_index ," type to \"WiiRemoteIMU\"");
-                                with (global.__input_gamepads[@ _imu_index])
+                                //Found IR sensor
+                                var _ir_index = _g;
+                                repeat(_ir_index + 1)
                                 {
-                                    raw_type = "WiiRemoteIMU";
-                                    guessed_type = true;
-                                    __input_gamepad_set_blacklist();
-                                    __input_gamepad_set_mapping();
+                                    --_g;
+                                    if (input_gamepad_is_connected(_g)) break;
                                 }
-                                
-                                __input_trace("Overriding controller ", _ir_index ," type to \"WiiRemoteIRSensor\"");
-                                with (global.__input_gamepads[@ _ir_index])
+                            
+                                if ((_g >= 0)
+                                &&  (global.__input_gamepads[@ _g].axis_count   == 3)
+                                &&  (global.__input_gamepads[@ _g].button_count == 0)
+                                &&  (global.__input_gamepads[@ _g].hat_count    == 0))
                                 {
-                                    raw_type = "WiiRemoteIRSensor";
-                                    guessed_type = true;
-                                    __input_gamepad_set_blacklist();
-                                    __input_gamepad_set_mapping();                                  
-                                }
+                                    //Found IMU                                
+                                    var _imu_index = _g;
+                                    __input_trace("Overriding controller ", _imu_index ," type to \"WiiRemoteIMU\"");
+                                    with (global.__input_gamepads[@ _imu_index])
+                                    {
+                                        raw_type = "WiiRemoteIMU";
+                                        guessed_type = true;
+                                        __input_gamepad_set_blacklist();
+                                        __input_gamepad_set_mapping();
+                                    }
                                 
-                                __input_trace("Overriding controller ", index ," type to \"WiiRemote\"");
-                                description = "Nintendo Wii Remote";
-                                raw_type = "WiiRemote";
-                                guessed_type = true;
+                                    __input_trace("Overriding controller ", _ir_index ," type to \"WiiRemoteIRSensor\"");
+                                    with (global.__input_gamepads[@ _ir_index])
+                                    {
+                                        raw_type = "WiiRemoteIRSensor";
+                                        guessed_type = true;
+                                        __input_gamepad_set_blacklist();
+                                        __input_gamepad_set_mapping();                                  
+                                    }
+                                
+                                    __input_trace("Overriding controller ", index ," type to \"WiiRemote\"");
+                                    description = "Nintendo Wii Remote";
+                                    raw_type = "WiiRemote";
+                                    guessed_type = true;
+                                }
                             }
-                        }
-                    break;
+                        break;
+                    }
                 }
             }
 
