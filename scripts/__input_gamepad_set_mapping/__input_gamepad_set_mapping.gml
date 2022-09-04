@@ -332,6 +332,58 @@ function __input_gamepad_set_mapping()
     
     #endregion
     
+    #region Third party Joy-Cons on Windows and MacOS
+
+    if ((vendor = "7e05") && (product = "0920")
+    && ((os_type == os_windows) && (button_count == 16) && (axis_count ==  4) && (hat_count == 1))
+    || ((os_type == os_macosx)  && (button_count == 24) && (axis_count == 10) && (hat_count == 1)))
+    {
+        //Based on features this is a Joy-Con spoofing the Pro Controller VID+PID
+        __input_trace("Overriding mapping from Switch Pro to Joy-Con");
+        
+        //This is a bit weird as we can not differentiate left Joy-Con from right
+        //since we can not see past the names provided by the internal mapping DB
+        //Face buttons and shoulders correspond to the same value on both devices...
+        set_mapping(gp_face1, 0, __INPUT_MAPPING.BUTTON, "a");
+        set_mapping(gp_face2, 1, __INPUT_MAPPING.BUTTON, "b");
+        set_mapping(gp_face3, 2, __INPUT_MAPPING.BUTTON, "x");
+        set_mapping(gp_face4, 3, __INPUT_MAPPING.BUTTON, "y");
+
+        set_mapping(gp_shoulderl, 4, __INPUT_MAPPING.BUTTON, "leftshoulder");
+        set_mapping(gp_shoulderr, 5, __INPUT_MAPPING.BUTTON, "rightshoulder");
+
+        //...however the remaining buttons are different on left and right Joy-Cons
+        //As such we allow the type to remain "Switch" and map the leftover buttons
+        //matching by their label. Imperfect, but good enough for these constraints
+        set_mapping(gp_select,  8, __INPUT_MAPPING.BUTTON, "back");
+        set_mapping(gp_start,   9, __INPUT_MAPPING.BUTTON, "start");
+        set_mapping(gp_stickl, 10, __INPUT_MAPPING.BUTTON, "leftstick");
+        set_mapping(gp_stickr, 11, __INPUT_MAPPING.BUTTON, "rightstick");
+
+        if (INPUT_SDL2_ALLOW_EXTENDED)
+        {
+            set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
+            set_mapping(gp_misc1, 13, __INPUT_MAPPING.BUTTON, "misc1");
+        }
+        
+        //Joy-Con horizontal solo grip hat-on-axis mapping
+        var _mapping = set_mapping(gp_axislh, 0, __INPUT_MAPPING.HAT_TO_AXIS, "leftx");
+        _mapping.raw_negative = 0;
+        _mapping.raw_positive = 0;
+        _mapping.hat_mask_negative = 8;
+        _mapping.hat_mask_positive = 2;
+
+        _mapping = set_mapping(gp_axislv, 0, __INPUT_MAPPING.HAT_TO_AXIS, "lefty")
+        _mapping.raw_negative = 0;
+        _mapping.raw_positive = 0;
+        _mapping.hat_mask_negative = 1;
+        _mapping.hat_mask_positive = 4;
+
+        exit;
+    }
+
+    #endregion
+    
     #region Ouya Controller on MacOS
     
     if ((raw_type == "CommunityOuya") && (os_type == os_macosx))
@@ -395,7 +447,65 @@ function __input_gamepad_set_mapping()
         exit;
     }
 
-    #endregion    
+    #endregion 
+    
+    #region Nintendo Joy-Cons on Linux (hid-nintendo and joycond)
+    
+    if (raw_type == "HIDJoyConRight")
+    {
+        __input_trace("Overriding mapping to Joy-Con Right");
+
+        set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
+        set_mapping(gp_face2, 2, __INPUT_MAPPING.BUTTON, "b");
+        set_mapping(gp_face3, 0, __INPUT_MAPPING.BUTTON, "x");
+        set_mapping(gp_face4, 3, __INPUT_MAPPING.BUTTON, "y");
+
+        set_mapping(gp_select, 9, __INPUT_MAPPING.BUTTON, "back");
+        set_mapping(gp_start,  8, __INPUT_MAPPING.BUTTON, "start");
+
+        set_mapping(gp_shoulderl, 4, __INPUT_MAPPING.BUTTON, "leftshoulder");
+        set_mapping(gp_shoulderr, 6, __INPUT_MAPPING.BUTTON, "rightshoulder");
+
+        set_mapping(gp_stickl, 10, __INPUT_MAPPING.BUTTON, "leftstick");
+        
+        var _mapping = set_mapping(gp_axislh, 1, __INPUT_MAPPING.AXIS, "leftx");
+        _mapping.limited_range = true;
+        _mapping.reverse = true;
+        
+        _mapping = set_mapping(gp_axislv, 0, __INPUT_MAPPING.AXIS, "lefty");
+        _mapping.limited_range = true;
+        
+        exit;
+    }
+    
+    if (raw_type == "HIDJoyConLeft")
+    {
+        __input_trace("Overriding mapping to Joy-Con Left");
+
+        set_mapping(gp_face1,  9, __INPUT_MAPPING.BUTTON, "a");
+        set_mapping(gp_face2,  8, __INPUT_MAPPING.BUTTON, "b");
+        set_mapping(gp_face3,  7, __INPUT_MAPPING.BUTTON, "x");
+        set_mapping(gp_face4, 10, __INPUT_MAPPING.BUTTON, "y");
+
+        set_mapping(gp_shoulderl, 2, __INPUT_MAPPING.BUTTON, "leftshoulder");
+        set_mapping(gp_shoulderr, 4, __INPUT_MAPPING.BUTTON, "rightshoulder");
+
+        set_mapping(gp_select, 5, __INPUT_MAPPING.BUTTON, "back");
+        set_mapping(gp_start,  0, __INPUT_MAPPING.BUTTON, "start");
+
+        set_mapping(gp_stickl, 6, __INPUT_MAPPING.BUTTON, "leftstick");
+
+        var _mapping = set_mapping(gp_axislh, 1, __INPUT_MAPPING.AXIS, "leftx");
+        _mapping.limited_range = true;
+
+        _mapping = set_mapping(gp_axislv, 0, __INPUT_MAPPING.AXIS, "lefty");
+        _mapping.limited_range = true;
+        _mapping.reverse = true;
+        
+        exit;
+    }
+    
+    #endregion
     
     #region Nintendo Switch Online Controllers on Linux
 

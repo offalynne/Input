@@ -310,7 +310,9 @@ function __input_initialize()
         WiiClassic:                "switch",
 
         SwitchJoyConLeft:  "switch joycon left",
+        HIDJoyConLeft:     "switch joycon left",
         SwitchJoyConRight: "switch joycon right",
+        HIDJoyConRight:    "switch joycon right",
         
         //Legacy
         CommunityGameCube:     "gamecube",

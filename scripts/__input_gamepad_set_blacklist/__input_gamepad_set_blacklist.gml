@@ -28,7 +28,7 @@ function __input_gamepad_set_blacklist()
             if ((button_count == 144) && (axis_count == 0))
             {
                 //Unsupported virtual keyboard device 
-                __input_trace("Warning! Controller ", index, " is blacklisted, type (\"", raw_type, "\")");
+                __input_trace("Warning! Controller ", index, " is blacklisted (Steam Deck virtual keyboard)");
                 blacklisted = true;
                 exit;
             }
@@ -36,6 +36,24 @@ function __input_gamepad_set_blacklist()
             if (raw_type == "CommunitySteamDeck")
             {
                 //Do not blacklist built-in Steam Deck gamepad
+                exit;
+            }
+        }
+        
+        if ((button_count == 0) && (axis_count == 6) && (hat_count == 0))
+        {
+            var _i = 0;
+            repeat(6)
+            {
+                if (gamepad_axis_value(index, _i) <= 0) break;        
+                ++_i;
+            }
+        
+            if (_i == 6)
+            {
+                //Unsupported hid-nintendo module Joy-Con motion device
+                __input_trace("Warning! Controller ", index, " blacklisted (matches Joy-Con motion unit)");
+                blacklisted = true;
                 exit;
             }
         }
