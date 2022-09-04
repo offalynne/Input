@@ -28,12 +28,10 @@ You can read more about source modes [here](Input-Sources?id=source-modes).
 
 *Returns:* Boolean, whether new input is detected from this [source](Input-Sources)
 
-|Name              |Datatype               |Purpose                                                                |
-|------------------|-----------------------|-----------------------------------------------------------------------|
-|`source`          |[Source](Input-Sources)|[Input source](Input-Sources) to check                                 |
-|`availableOnly`   |boolean                |Whether to include input from assigned sources. False if not specified.|
-
-This function will return `false` if the source has been assigned to any player.
+|Name              |Datatype               |Purpose                                                                              |
+|------------------|-----------------------|-------------------------------------------------------------------------------------|
+|`source`          |[Source](Input-Sources)|[Input source](Input-Sources) to check                                               |
+|`availableOnly`   |boolean                |Whether to include input from sources assinged to any player. False if not specified.|
 
 &nbsp;
 
