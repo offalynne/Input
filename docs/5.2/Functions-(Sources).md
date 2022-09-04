@@ -24,13 +24,14 @@ You can read more about source modes [here](Input-Sources?id=source-modes).
 
 &nbsp;
 
-## `input_source_detect_input(source)`
+## `input_source_detect_input(source, [availableOnly])`
 
-*Returns:* Boolean, whether new input is detected from this [source](Input-Sources) (and the source is unassigned)
+*Returns:* Boolean, whether new input is detected from this [source](Input-Sources)
 
-|Name       |Datatype               |Purpose                               |
-|-----------|-----------------------|--------------------------------------|
-|`source`   |[Source](Input-Sources)|[Input source](Input-Sources) to check|
+|Name              |Datatype               |Purpose                                                                |
+|------------------|-----------------------|-----------------------------------------------------------------------|
+|`source`          |[Source](Input-Sources)|[Input source](Input-Sources) to check                                 |
+|`availableOnly`   |boolean                |Whether to include input from assigned sources. False if not specified.|
 
 This function will return `false` if the source has been assigned to any player.
 
