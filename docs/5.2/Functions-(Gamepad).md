@@ -93,28 +93,6 @@ Returns the same values as [`input_player_gamepad_get_type()`](Functions-(Player
 
 &nbsp;
 
-## `input_gamepad_get_dpad_style(gamepadIndex)`
-
-*Returns:* String, the style of the gamepad's dpad (after SDL remapping)
-
-|Name          |Datatype                  |Purpose                                               |
-|--------------|--------------------------|------------------------------------------------------|
-|`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)|
-
-The following are valid strings this function may return besides `unknown`:
-
-|Results    |Gamepad type                                    |Presentation example |
-|-----------|------------------------------------------------|:-------------------:|
-|`none`     |Switch (single Joy-Con)                         |*N/A*                |
-|`arrows`   |Switch (handheld, Pro Controller, dual Joy-Cons)|<img alt="Arrows art example" width="150" src="https://i.imgur.com/V9qOstK.png">  |
-|`segments` |PlayStation                                     |<img alt="Segments art example" width="150" src="https://i.imgur.com/Lmaya8O.png">|
-|`disc`     |Xbox 360, Saturn                                |<img alt="Disc art example" width="150" src="https://i.imgur.com/IO0DjVQ.png">    |
-|`cross`    |Default                                         |<img alt="Cross art example" width="150" src="https://i.imgur.com/b7f8Gnj.png">   |
-
-*Example art courtesy https://thoseawesomeguys.com/prompts ([CC0](https://creativecommons.org/share-your-work/public-domain/cc0))*
-
-&nbsp;
-
 ## `input_gamepad_get_map(gamepadIndex)`
 
 *Returns:* Array of integers, the buttons and axes that are mapped for the given gamepad
