@@ -335,8 +335,8 @@ function __input_gamepad_set_mapping()
     #region Third party Joy-Cons on Windows and MacOS
 
     if ((vendor = "7e05") && (product = "0920")
-    && ((os_type == os_windows) && (button_count == 16) && (axis_count ==  4) && (hat_count == 1))
-    || ((os_type == os_macosx)  && (button_count == 24) && (axis_count == 10) && (hat_count == 1)))
+    && (((os_type == os_windows) && (button_count == 16) && (axis_count ==  4) && (hat_count == 1))
+     || ((os_type == os_macosx)  && (button_count == 24) && (axis_count == 10) && (hat_count == 1))))
     {
         //Based on features this is a Joy-Con spoofing the Pro Controller VID+PID
         __input_trace("Overriding mapping from Switch Pro to Joy-Con");
@@ -427,7 +427,7 @@ function __input_gamepad_set_mapping()
     #region NeoGeo Mini on Windows and Linux
 
     if ((raw_type == "CommunityNeoGeoMini") && (guessed_type == false)
-    && ((os_type == os_windows) || (os_type == os_linux)))
+    &&  ((os_type == os_windows) || (os_type == os_linux)))
     {
         __input_trace("Overriding mapping to NeoGeo Mini");
 
@@ -509,8 +509,7 @@ function __input_gamepad_set_mapping()
     
     #region Nintendo Switch Online Controllers on Linux
 
-    if ((vendor == "7e05") && (product == "1720") && (os_type == os_linux)
-    && (raw_type == "CommunitySaturn") && (guessed_type == false))
+    if ((vendor == "7e05") && (product == "1720") && (os_type == os_linux) && (raw_type == "CommunitySaturn") && (guessed_type == false))
     {
         if (__input_string_contains(description, "Genesis 3btn"))
         {
@@ -958,8 +957,7 @@ function __input_gamepad_set_mapping()
             }
             
             //Reset Android keymapped dpad if necessary
-            if ((os_type == os_android) && (gamepad_hat_count(index) != 0)
-            && ((vendor == "") && (product == "")))
+            if ((os_type == os_android) && (gamepad_hat_count(index) != 0) && (vendor == "") && (product == ""))
             {
                 var _mapping = undefined;
                 var _dpad_array = [gp_padu, gp_padd, gp_padl, gp_padr];
@@ -994,8 +992,10 @@ function __input_gamepad_set_mapping()
             //Add mapping for touchpad button click on PS4 gamepads on platforms supporting it.
             //Since the `touchpad` field is a later addition and largely missing from SDL2 data
             //we're manually mapping it in cases where an otherwise-normal PS4 mapping is found
-            if (((os_type == os_windows) || (os_type == os_macosx)) && ((simple_type == "ps4") && raw_type != "XInputPS4Controller"))
-            {
+            if (((os_type == os_windows) || (os_type == os_macosx))
+            && (simple_type == "ps4") && (raw_type != "XInputPS4Controller")
+            && (mapping_gm_to_raw[$ string(gp_touchpad)] == undefined))
+            {                
                 var _matched = 0;
                 var _mapping = undefined;
                 var _button_array = [gp_face3, gp_face1, gp_face2, gp_face4];
@@ -1004,7 +1004,7 @@ function __input_gamepad_set_mapping()
                 repeat(array_length(_button_array))
                 {
                     //Check mapping match (b0 - b3)
-                    _mapping = mapping_gm_to_raw[$ _button_array[_matched]];
+                    _mapping = mapping_gm_to_raw[$ string(_button_array[_matched])];
                     if (!is_struct(_mapping) || (_mapping[$ "raw"] != _matched + _offset)) break;
                     ++_matched;
                 }
