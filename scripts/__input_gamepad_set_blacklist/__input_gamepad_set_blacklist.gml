@@ -72,8 +72,8 @@ function __input_gamepad_set_blacklist()
             }
         }
         
-        if ((raw_type == "WiiMotionPlus") || (raw_type == "WiiRemoteNunchuk")
-        ||  (raw_type == "WiiRemoteIMU")  || (raw_type == "WiiRemoteIRSensor"))
+        if ((raw_type == "HIDWiiMotionPlus") || (raw_type == "HIDWiiRemoteNunchuk")
+        ||  (raw_type == "HIDWiiRemoteIMU")  || (raw_type == "HIDWiiRemoteIRSensor"))
         {
             //Unsupported hid-wiimote module motion device 
             __input_trace("Warning! Controller ", index, " is blacklisted, type (\"", raw_type, "\")");

@@ -308,7 +308,7 @@ function __input_initialize()
         SwitchInputOnlyController: "switch",
         CommunityLikeSwitch:       "switch",
         Community8BitDo:           "switch", //8BitDo are Switch gamepads (exceptions typed appropriately)
-        WiiClassic:                "switch",
+        HIDWiiClassic:             "switch",
 
         SwitchJoyConLeft:  "switch joycon left",
         HIDJoyConLeft:     "switch joycon left",
