@@ -183,8 +183,7 @@ function __input_gamepad_set_type()
             
             #region Unique gamepad type overrides
 
-            if ((os_type == os_windows) && (vendor == "0d00") && (product == "0000") 
-            &&  (button_count == 15) && (axis_count == 4) && (hat_count == 0))
+            if ((vendor == "0d00") && (product == "0000") && (button_count == 15) && (axis_count == 4) && (hat_count == 0) && (os_type == os_windows))
             {
                 //MFi on Windows (bad GUID)
                  __input_trace("Overriding gamepad type to MFi");
@@ -195,22 +194,33 @@ function __input_gamepad_set_type()
 
             if ((vendor == "6325") && (product == "7505"))
             {
-                //NeoGeo Mini (VID+PID conflict with common third party PS3 controller)
-                if (((os_type == os_windows) && (gamepad_get_description(index) == "USB ") && (button_count == 13) && (axis_count == 4))
+                //VID+PID conflicts with a Shanwan ICU most often used for third party PS3 style controllers
+                if (((os_type == os_windows) && (gamepad_get_description(index) == "USB "))
                 ||  ((os_type == os_linux  ) && (gamepad_get_description(index) == "GHICCod USB Gamepad"))
                 ||  ((os_type == os_macosx ) && (guid == "03000000632500007505000000020000")))
                 {
+                    //NeoGeo Mini
                     __input_trace("Overriding gamepad type to NeoGeo Mini");
                     description = "NeoGeo Mini";
                     raw_type = "CommunityNeoGeoMini";
                     guessed_type = false;
                 }
+
+                if (((os_type == os_windows) && (gamepad_get_description(index) == "Controller (Dinput)"))
+                ||  ((os_type == os_linux  ) && (gamepad_get_description(index) == "SWITCH CO.,LTD. Controller (Dinput)")))
+                {
+                    //Several third party N64 controllers including retro-bit's Tribute 64
+                    __input_trace("Overriding gamepad type to N64");
+                    description = "N64";
+                    raw_type = "CommunityN64";
+                    guessed_type = false;
+                }
+
             }
             
             if (os_type == os_linux)
             {
-                if ((vendor == "7e05") && (product == "1720") 
-                && __input_string_contains(description, "Mega Drive/Genesis"))
+                if ((vendor == "7e05") && (product == "1720") && __input_string_contains(description, "Mega Drive/Genesis"))
                 {
                     //Nintendo Switch Online controllers on Linux (Identifiable on device name only)
                     __input_trace("Overriding gamepad type to Saturn");

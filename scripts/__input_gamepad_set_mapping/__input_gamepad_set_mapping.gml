@@ -162,7 +162,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_stickl, 10, __INPUT_MAPPING.BUTTON, "leftstick");
         set_mapping(gp_stickr, 11, __INPUT_MAPPING.BUTTON, "rightstick");
         
-        if ((os_type == os_linux) && (os_browser == browser_firefox))
+        if ((os_browser == browser_firefox) && (os_type == os_linux))
         {
             //ಠ_ಠ
             set_mapping(gp_padr, 6, __INPUT_MAPPING.AXIS, "dpright").clamp_positive = true;
@@ -283,7 +283,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_shoulderlb, 0, undefined, "lefttrigger");
         set_mapping(gp_shoulderrb, 0, undefined, "righttrigger");
     
-        if (INPUT_SDL2_ALLOW_EXTENDED){ set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide"); }
+        if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide");
         
         exit;
     }
@@ -410,7 +410,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_padd, 12, __INPUT_MAPPING.BUTTON, "dpdown" );
         set_mapping(gp_padl, 13, __INPUT_MAPPING.BUTTON, "dpleft" );
                     
-        if (INPUT_SDL2_ALLOW_EXTENDED){ set_mapping(gp_guide, 18, __INPUT_MAPPING.BUTTON, "guide"); }
+        if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 18, __INPUT_MAPPING.BUTTON, "guide");
     
         set_mapping(gp_select, 0, undefined, "back"  );
         set_mapping(gp_start,  0, undefined, "start" );    
@@ -426,8 +426,7 @@ function __input_gamepad_set_mapping()
     
     #region NeoGeo Mini on Windows and Linux
 
-    if ((raw_type == "CommunityNeoGeoMini") && (guessed_type == false)
-    &&  ((os_type == os_windows) || (os_type == os_linux)))
+    if ((raw_type == "CommunityNeoGeoMini") && (guessed_type == false) && ((os_type == os_windows) || (os_type == os_linux)))
     {
         __input_trace("Overriding mapping to NeoGeo Mini");
 
@@ -448,6 +447,43 @@ function __input_gamepad_set_mapping()
     }
 
     #endregion 
+    
+    #region retro-bit Tribute 64 on Windows and Linux
+
+    if ((vendor == "6325") && (product == "7505") && (raw_type == "CommunityN64") && (guessed_type == false) && ((os_type == os_windows) || (os_type == os_linux)))
+    {
+        __input_trace("Overriding mapping to N64");
+
+        set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
+        set_mapping(gp_face2, 2, __INPUT_MAPPING.BUTTON, "b");
+
+        set_mapping(gp_start, 12, __INPUT_MAPPING.BUTTON, "start");
+
+        set_mapping(gp_shoulderl,  4, __INPUT_MAPPING.BUTTON, "leftshoulder");
+        set_mapping(gp_shoulderr,  5, __INPUT_MAPPING.BUTTON, "rightshoulder");
+        set_mapping(gp_shoulderlb, 6, __INPUT_MAPPING.BUTTON, "lefttrigger");
+        set_mapping(gp_shoulderrb, 7, __INPUT_MAPPING.BUTTON, "righttrigger");
+
+        set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
+        set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
+        set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
+        set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+
+        set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
+        set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
+
+        var _mapping = set_mapping(gp_axisrh, undefined, __INPUT_MAPPING.BUTTON_TO_AXIS, "rightx");
+        _mapping.raw_negative = 3;
+        _mapping.raw_positive = 8;
+        
+        _mapping = set_mapping(gp_axisv, undefined, __INPUT_MAPPING.BUTTON_TO_AXIS, "righty");
+        _mapping.raw_negative = 9;
+        _mapping.raw_positive = 0;
+
+        exit;
+    }
+
+    #endregion
     
     #region Nintendo Joy-Cons on Linux (hid-nintendo and joycond)
     
@@ -509,7 +545,7 @@ function __input_gamepad_set_mapping()
     
     #region Nintendo Switch Online Controllers on Linux
 
-    if ((vendor == "7e05") && (product == "1720") && (os_type == os_linux) && (raw_type == "CommunitySaturn") && (guessed_type == false))
+    if ((vendor == "7e05") && (product == "1720") && (raw_type == "CommunitySaturn") && (guessed_type == false) && (os_type == os_linux))
     {
         if (__input_string_contains(description, "Genesis 3btn"))
         {
@@ -528,7 +564,7 @@ function __input_gamepad_set_mapping()
             set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
             set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
             
-            if (INPUT_SDL2_ALLOW_EXTENDED) { set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide"); }
+            if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
             
             exit;
         }
@@ -552,7 +588,7 @@ function __input_gamepad_set_mapping()
             set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
             set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
             
-            if (INPUT_SDL2_ALLOW_EXTENDED) { set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide"); }
+            if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
             
             exit;
         }       
@@ -639,10 +675,7 @@ function __input_gamepad_set_mapping()
             set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
             set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
 
-            if (INPUT_SDL2_ALLOW_EXTENDED)
-            {
-                set_mapping(gp_misc1, 5, __INPUT_MAPPING.BUTTON, "misc1");
-            }
+            if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_misc1, 5, __INPUT_MAPPING.BUTTON, "misc1");
 
             exit;
         }
@@ -957,7 +990,7 @@ function __input_gamepad_set_mapping()
             }
             
             //Reset Android keymapped dpad if necessary
-            if ((os_type == os_android) && (gamepad_hat_count(index) != 0) && (vendor == "") && (product == ""))
+            if ((os_type == os_android) && (hat_count > 0) && (vendor == "") && (product == ""))
             {
                 var _mapping = undefined;
                 var _dpad_array = [gp_padu, gp_padd, gp_padl, gp_padr];
@@ -1018,7 +1051,7 @@ function __input_gamepad_set_mapping()
             }
             
              //Change Ouya guide mapping
-            if (((os_type == os_windows) || (os_type == os_linux)) && (raw_type == "CommunityOuya"))
+            if ((raw_type == "CommunityOuya") && ((os_type == os_windows) || (os_type == os_linux)))
             {
                 //Guide button issues 2 reports: one a tick after release which is usually too fast for GM's
                 //interupt to catch, and another that's for long press that works after being held 1 second.
