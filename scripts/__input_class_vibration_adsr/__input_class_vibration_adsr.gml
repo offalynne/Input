@@ -3,8 +3,8 @@ function __input_class_vibration_adsr(_peak_strength, _sustain_level, _pan, _att
     __output_left  = 0;
     __output_right = 0;
     
-    __strength_left  = _strength*clamp(1 - _pan, 0, 1);
-    __strength_right = _strength*clamp(1 + _pan, 0, 1);
+    __strength_left  = _peak_strength*clamp(1 - _pan, 0, 1);
+    __strength_right = _peak_strength*clamp(1 + _pan, 0, 1);
     __sustain_level  = _sustain_level;
     __pan            = _pan;
     
@@ -52,7 +52,7 @@ function __input_class_vibration_adsr(_peak_strength, _sustain_level, _pan, _att
         
         var _output = lerp(_min, _max, clamp(__time_in_phase / _phase_time, 0, 1));
         
-        __input_trace(__phase, ": time = ", __time_in_phase, ", output = ", _output);
+        if (__INPUT_DEBUG) __input_trace(__phase, ": time = ", __time_in_phase, ", output = ", _output);
         
         __output_left  = _output*__strength_left;
         __output_right = _output*__strength_right;

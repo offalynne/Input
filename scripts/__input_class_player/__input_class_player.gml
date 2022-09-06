@@ -1134,7 +1134,12 @@ function __input_class_player() constructor
             var _left  = 0;
             var _right = 0;
             
-            var _time_step = __input_get_time() - __input_get_previous_time();
+            var _time_step = 0;
+            if not (global.__input_vibration_paused)
+            {
+                _time_step = __input_get_time() - __input_get_previous_time();
+            }
+
             var _array = __vibration_event_array;
             var _i = 0;
             repeat(array_length(_array))

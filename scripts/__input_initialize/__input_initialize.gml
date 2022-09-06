@@ -85,6 +85,8 @@ function __input_initialize()
     global.__input_mouse_capture_sensitivity = false;
     global.__input_mouse_capture_frame       = false;
     
+    global.__input_vibration_paused = false;
+    
     //Whether to strictly verify bindings match auto profiles
     //This is set to <true> on boot, causing Input to throw an error, otherwise this is <false>
     //If an invalid binding is set during normal gameplay then a warning message is emitted to the console

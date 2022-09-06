@@ -27,6 +27,18 @@ if (_gamepad >= 0)
         input_vibrate_curve(1, curve_test_vibration, _pan, 1000);
     }
     
+    if (input_gamepad_check_pressed(_gamepad, gp_shoulderl))
+    {
+        __input_trace("Resume vibration events");
+        input_vibrate_pause(false);
+    }
+    
+    if (input_gamepad_check_pressed(_gamepad, gp_shoulderr))
+    {
+        __input_trace("Pause vibration events");
+        input_vibrate_pause();
+    }    
+    
     if (input_gamepad_check_pressed(_gamepad, gp_start))
     {
         __input_trace("Stopping all vibration events");

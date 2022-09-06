@@ -194,7 +194,7 @@ function __input_class_gamepad(_index) constructor
         
         if (__vibration_support)
         {
-            if (__vibration_received_this_frame && window_has_focus() && !os_is_paused())
+            if (__vibration_received_this_frame && !global.__input_vibration_paused && window_has_focus() && !os_is_paused())
             {
                 if (os_type == os_switch)
                 {

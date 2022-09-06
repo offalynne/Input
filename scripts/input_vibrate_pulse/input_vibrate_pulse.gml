@@ -9,6 +9,12 @@
 
 function input_vibrate_pulse(_strength, _pan, _repeats, _duration, _player_index = 0)
 {
+    if (global.__input_vibration_paused)
+    {
+        __input_trace("New pulse vibration ignored: vibration is paused")
+        exit;
+    }
+    
     __INPUT_VERIFY_PLAYER_INDEX
     
     _strength = clamp(_strength, 0, 1);
