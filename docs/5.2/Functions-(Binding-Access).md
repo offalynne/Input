@@ -133,6 +133,8 @@ _Returns:_ Various, the icon identifier defined in [`__input_config_icons()`](Co
 
 Returns the icon associated with the given binding for the device that the given player is currently using. You should edit [`__input_config_icons()`](Configuration?id=gamepads) to match the requirements of your game.
 
+For example, `input_binding_get_name(input_binding_get("jump"))` will return an icon for the device matching the binding for the "jump" verb if it is defined.
+
 &nbsp;
 
 ## `input_binding_get_name(binding)`
