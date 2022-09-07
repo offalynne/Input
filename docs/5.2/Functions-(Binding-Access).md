@@ -145,7 +145,7 @@ _Returns:_ String, the human-readable [name for the binding](Binding-Names)
 
 Returns the [name of the binding](Binding-Names) in a way that is (mostly!) human-readable. This string can be the name of a keyboard key or the name of a gamepad axis, including direction of travel. The intention is for this information to be parsed by your own code and then used to display a string or icon to the player indicating which button/key etc. is associated with which verb. All return values are listed as [Binding Names](Binding-Names).
 
-For example, `input_binding_get_name(input_binding_get("jump"))` will return the name of the binding for the "jump" verb is it is defined, or "not a binding" otherwise.
+For example, `input_binding_get_name(input_binding_get("jump"))` will return the name of the binding for the "jump" verb if it is defined, or "not a binding" otherwise.
 
 ?> In situations where you are displaying control prompt to a player, `input_binding_get_icon()` is likely to be more useful.
 
