@@ -233,6 +233,7 @@ beef,feed,CommunityXBox360 // Monect
 0079,0002,CommunityXBox360 // Arcade Board
 1bad,f503,CommunityXBox360 // Hori Fighting Stick VX
 0f0d,006d,CommunityXBox360 // Hori EDGE 301
+242f,3700,CommunityXboxOne // Mayflash F101 Arcade Stick
 1532,0a29,CommunityXBoxOne // Razer Wolverine 2
 0e6f,02a7,CommunityXBoxOne // PDP Raven Black
 0e6f,02d7,CommunityXBoxOne // PDP Black Camo
@@ -242,6 +243,7 @@ beef,feed,CommunityXBox360 // Monect
 20d6,2002,CommunityXBoxOne // Power A Wired Xbox Series
 1532,0a00,CommunityXBoxOne // Razer Atrox
 1915,0040,CommunityXBoxOne // Flydigi X9ET Pro and Vader 2
+1a15,2262,CommunityPSX // PS2 Dual Plus Adapter
 0662,70d5,CommunityPSX // PowerA PS3 Contoller
 044f,b323,CommunityPSX // Thrustmaster Dual Trigger 3-in-1
 044f,d003,CommunityPSX // Thrustmaster Run'N' Drive
@@ -407,3 +409,4 @@ dead,beef,CommunityPSX // Hidromancer
 10c4,82c0,CommunityUnknown // KADE Adapter
 0c12,0c31,CommunityUnknown // Brook Super Converter
 0f30,010a,CommunityUnknown // BigBen Interactive MultiConvertPad
+0c12,0005,CommunityUnknown // Zeroplus PS Vibration Feedback Converter	
