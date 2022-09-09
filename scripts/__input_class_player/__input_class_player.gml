@@ -1185,7 +1185,7 @@ function __input_class_player() constructor
     {
         #region Error checking
         
-        if (!window_has_focus() || os_is_paused())
+        if (!input_window_has_focus())
         {
             __input_trace("Binding scan failed: Game lost focus");
             __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.LOST_FOCUS);

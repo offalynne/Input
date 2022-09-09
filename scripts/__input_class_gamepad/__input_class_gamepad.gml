@@ -182,35 +182,35 @@ function __input_class_gamepad(_index) constructor
         return _mapping;
     }
     
-    static tick = function()
+    static tick = function(_clear = false)
     {
         var _gamepad = index;
         var _i = 0;
         repeat(array_length(mapping_array))
         {
-            with(mapping_array[_i]) tick(_gamepad);
+            with(mapping_array[_i]) tick(_gamepad, _clear);
             ++_i;
         }
         
         if (__vibration_support)
         {
-            if (__vibration_received_this_frame && window_has_focus() && !os_is_paused())
+            if (__vibration_received_this_frame && input_window_has_focus())
             {
                 if (os_type == os_switch)
                 {
-    	            var _lowStrength  = INPUT_VIBRATION_SWITCH_OS_STRENGTH*__vibration_left;
-    	            var _highStrength = INPUT_VIBRATION_SWITCH_OS_STRENGTH*__vibration_right;
+                    var _lowStrength  = INPUT_VIBRATION_SWITCH_OS_STRENGTH*__vibration_left;
+                    var _highStrength = INPUT_VIBRATION_SWITCH_OS_STRENGTH*__vibration_right;
                     
-    	            if ((raw_type == "SwitchJoyConLeft") || (raw_type == "SwitchJoyConRight"))
-    	            {
-    	                //Documentation said to use switch_controller_motor_single for these two controller types but I'll be damned if I can feel any difference!
-    	                switch_controller_vibrate_hd(index, switch_controller_motor_single, _highStrength, 250, _lowStrength, 160);
-    	            }
-    	            else
-    	            {
-    	                switch_controller_vibrate_hd(index, switch_controller_motor_left,  _highStrength, 250, _lowStrength, 160);
-    	                switch_controller_vibrate_hd(index, switch_controller_motor_right, _highStrength, 250, _lowStrength, 160);
-    	            }
+                    if ((raw_type == "SwitchJoyConLeft") || (raw_type == "SwitchJoyConRight"))
+                    {
+                        //Documentation said to use switch_controller_motor_single for these two controller types but I'll be damned if I can feel any difference!
+                        switch_controller_vibrate_hd(index, switch_controller_motor_single, _highStrength, 250, _lowStrength, 160);
+                    }
+                    else
+                    {
+                        switch_controller_vibrate_hd(index, switch_controller_motor_left,  _highStrength, 250, _lowStrength, 160);
+                        switch_controller_vibrate_hd(index, switch_controller_motor_right, _highStrength, 250, _lowStrength, 160);
+                    }
                 }
                 else
                 {
