@@ -11,7 +11,12 @@ function input_check_opposing_pressed(_verb_negative, _verb_positive, _player_in
 
     if (_most_recent)
     {
-        return (_pressed_p - _pressed_n);
+        var _value = 0;
+        
+        if (_pressed_p) _value++;
+        if (_pressed_n) _value--;
+        
+        return _value;
     }
     else
     {

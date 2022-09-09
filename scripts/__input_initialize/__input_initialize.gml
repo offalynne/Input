@@ -19,7 +19,7 @@ function __input_initialize()
     try
     {
         //GMS2022.500.58 runtime
-        global.__input_time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
+        global.__input_time_source = time_source_create(time_source_global, 1, time_source_units_frames, function()
         {
             __input_system_tick();
         }, [], -1);
@@ -31,7 +31,7 @@ function __input_initialize()
         try
         {
             //Early GMS2022.500.xx runtimes
-            global.__input_time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
+            global.__input_time_source = time_source_create(time_source_global, 1, time_source_units_frames, function()
             {
                 __input_system_tick();
             }, -1);
@@ -279,25 +279,27 @@ function __input_initialize()
         //Xbox
         CommunityLikeXBox: _default_xbox_type,
 
-        XBoxOneController: "xbox one",
-        SteamControllerV2: "xbox one",
-        CommunityXBoxOne:  "xbox one",
-        AppleController:   "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
-        CommunityStadia:   "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
-        CommunityLuna:     "xbox one", //  Luna uses Xbox One iconography excepting 'View' button
+        XBoxOneController:  "xbox one",
+        CommunityXBoxOne:   "xbox one",
+        SteamControllerV2:  "xbox one",
+        CommunityDeck:      "xbox one", //  Deck uses Xbox One iconography excepting 'View' button
+        CommunityLuna:      "xbox one", //  Luna uses Xbox One iconography excepting 'View' button
+        CommunityStadia:    "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
+        AppleController:    "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
         
         XBox360Controller:  "xbox 360",
         CommunityXBox360:   "xbox 360",
-        CommunityDreamcast: "xbox 360", //        Xbox 360 uses Dreamcast iconography
+        CommunityDreamcast: "xbox 360", //       X-Box 360 uses Dreamcast iconography
         SteamController:    "xbox 360", //Steam Controller uses X-Box 360 iconography
         MobileTouch:        "xbox 360", //      Steam Link uses X-Box 360 iconography
         
         //PlayStation
-        PS5Controller: "ps5",
-        PS4Controller: "ps4",
-        CommunityPS4:  "ps4",
-        PS3Controller: "psx",
-        CommunityPSX:  "psx",
+        PS5Controller:       "ps5",
+        PS4Controller:       "ps4",
+        XInputPS4Controller: "ps4",
+        CommunityPS4:        "ps4",
+        PS3Controller:       "psx",
+        CommunityPSX:        "psx",
         
         //Switch
         SwitchHandheld:            "switch", //Attached JoyCon pair or Switch Lite
@@ -307,10 +309,12 @@ function __input_initialize()
         SwitchInputOnlyController: "switch",
         CommunityLikeSwitch:       "switch",
         Community8BitDo:           "switch", //8BitDo are Switch gamepads (exceptions typed appropriately)
-        WiiClassic:                "switch",
+        HIDWiiClassic:             "switch",
 
         SwitchJoyConLeft:  "switch joycon left",
+        HIDJoyConLeft:     "switch joycon left",
         SwitchJoyConRight: "switch joycon right",
+        HIDJoyConRight:    "switch joycon right",
         
         //Legacy
         CommunityGameCube:     "gamecube",
@@ -329,7 +333,8 @@ function __input_initialize()
     }
     
     //Parse controller type database
-    global.__input_raw_type_dictionary = { none : _default_xbox_type };
+    global.__input_raw_type_dictionary = {};
+    global.__input_raw_type_dictionary[$ "none"] = _default_xbox_type;
 
     //Load the controller type database
     if (__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || (os_type == os_ios) || (os_type == os_tvos))
@@ -565,21 +570,42 @@ function __input_initialize()
     
     #region Steam Input
     
-    if (((os_type == os_linux) || (os_type == os_macosx)) && !__INPUT_ON_WEB)
+    global.__input_on_steam_deck = false;
+    
+    if (os_type == os_linux)
+    {
+        //Check for Steam Deck hardware
+        var _map = os_get_info();
+        if (ds_exists(_map, ds_type_map))
+        {
+            var _renderer_info = _map[? "gl_renderer_string"];
+            
+            if ((_renderer_info != undefined)
+            &&  __input_string_contains(_renderer_info, "valve") 
+            &&  __input_string_contains(_renderer_info, "neptune"))
+            {
+                 global.__input_on_steam_deck = true;
+            }
+            
+            ds_map_destroy(_map);
+        }
+    }
+    
+    if (((os_type == os_linux) || (os_type == os_macosx)) && !__INPUT_ON_WEB && !global.__input_on_steam_deck)
     {
         //Define the virtual controller's identity
-        var _os = ((os_type == os_macosx)? "macos"    : "linux");
-        var _id = ((os_type == os_macosx)? "5e048e02" : "de28ff11");
+        var _os = ((os_type == os_macosx)? "macos"                            : "linux");
+        var _id = ((os_type == os_macosx)? "030000005e0400008e02000001000000" : "03000000de280000ff11000001000000");
     
         //Access the blacklist
         var _blacklist_os = (is_struct(global.__input_blacklist_dictionary)? global.__input_blacklist_dictionary[$ _os] : undefined);
-        var _blacklist_id = (is_struct(_blacklist_os)? _blacklist_os[$ "vid+pid"] : undefined);
+        var _blacklist_id = (is_struct(_blacklist_os)? _blacklist_os[$ "guid"] : undefined);
     
         if (is_struct(_blacklist_os) && (_blacklist_id == undefined))
         {
-            //Add 'Vendor ID + Product ID' category
-            _blacklist_os[$ "vid+pid"] = {};
-            _blacklist_id = (is_struct(_blacklist_os)? _blacklist_os[$ "vid+pid"] : undefined);
+            //Add category if inaccessible
+            _blacklist_os[$ "guid"] = {};
+            _blacklist_id = (is_struct(_blacklist_os)? _blacklist_os[$ "guid"] : undefined);
         }
     
         //Blacklist the Steam virtual controller
@@ -611,10 +637,10 @@ function __input_initialize()
             {
                 //If ignore hint isn't set, GM accesses controllers meant to be blocked
                 //We address this by adding the Steam config types to our own blocklist
-                if (_steam_switch)  array_push(_ignore_list, "switch");
                 if (_steam_ps)      array_push(_ignore_list, "ps4", "ps5");
-                if (_steam_xbox)    array_push(_ignore_list, "xbox 360", "xbox one");        
-                if (_steam_generic) array_push(_ignore_list, "snes", "saturn", "n64", "gamecube", "psx", "xbox", "switch joycon left", "switch joycon right", "unknown");
+                if (_steam_xbox)    array_push(_ignore_list, "xbox 360", "xbox one");
+                if (_steam_generic) array_push(_ignore_list, "snes", "saturn", "n64", "gamecube", "psx", "xbox", "unknown");
+                if (_steam_switch)  array_push(_ignore_list, "switch", "switch joycon left", "switch joycon right");
              
                 var _i = 0;
                 repeat(array_length(_ignore_list))
@@ -740,10 +766,10 @@ function __input_initialize()
     
     
     global.__input_initialization_phase = "__input_finalize_default_profiles";
-    script_execute(__input_config_profiles_and_default_bindings);
+    __input_config_profiles_and_default_bindings();
     
     global.__input_initialization_phase = "__input_finalize_verb_groups";
-    script_execute(__input_config_verbs);
+    __input_config_verbs();
     
     
     

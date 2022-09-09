@@ -1,4 +1,6 @@
 /// @desc    Immediately stops all vibration events for the given player
+/// 
+/// @param   [playerIndex=0]
 
 function input_vibrate_stop(_player_index = 0)
 {

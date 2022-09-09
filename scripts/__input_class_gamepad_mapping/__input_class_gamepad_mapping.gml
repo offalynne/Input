@@ -93,7 +93,9 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
             if (clamp_positive) value = clamp(value,  0, 1);
             if (invert)         value = 1 - value;
             if (reverse)        value = -value;
-                    
+                  
+            value = clamp(value, -1, 1);
+            
             held = (abs(value) > __INPUT_HOLD_THRESHOLD);
         }
         

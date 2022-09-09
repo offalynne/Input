@@ -1,5 +1,7 @@
-function __input_class_vibration_pulse(_strength, _pan, _repeats, _duration) constructor
+function __input_class_vibration_pulse(_strength, _pan, _repeats, _duration, _force) constructor
 {
+    __force = _force;
+    
     __output_left  = 0;
     __output_right = 0;
     

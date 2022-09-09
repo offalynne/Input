@@ -1,10 +1,12 @@
-function __input_class_vibration_adsr(_peak_strength, _sustain_level, _pan, _attack, _decay, _sustain, _release) constructor
+function __input_class_vibration_adsr(_peak_strength, _sustain_level, _pan, _attack, _decay, _sustain, _release, _force) constructor
 {
+    __force = _force;
+    
     __output_left  = 0;
     __output_right = 0;
     
-    __strength_left  = _strength*clamp(1 - _pan, 0, 1);
-    __strength_right = _strength*clamp(1 + _pan, 0, 1);
+    __strength_left  = _peak_strength*clamp(1 - _pan, 0, 1);
+    __strength_right = _peak_strength*clamp(1 + _pan, 0, 1);
     __sustain_level  = _sustain_level;
     __pan            = _pan;
     
@@ -51,9 +53,6 @@ function __input_class_vibration_adsr(_peak_strength, _sustain_level, _pan, _att
         }
         
         var _output = lerp(_min, _max, clamp(__time_in_phase / _phase_time, 0, 1));
-        
-        __input_trace(__phase, ": time = ", __time_in_phase, ", output = ", _output);
-        
         __output_left  = _output*__strength_left;
         __output_right = _output*__strength_right;
         

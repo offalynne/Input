@@ -123,7 +123,7 @@ function __input_class_binding() constructor
             return;
         }
         
-        if ((type == __INPUT_BINDING_GAMEPAD_AXIS) && !variable_struct_exists(_binding_shell, "axis_negative"))
+        if ((_binding_shell.type == __INPUT_BINDING_GAMEPAD_AXIS) && !variable_struct_exists(_binding_shell, "axis_negative"))
         {
             __input_error("Binding \"axis_negative\" not found; binding is corrupted");
             return;

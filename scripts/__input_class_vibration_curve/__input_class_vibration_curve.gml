@@ -1,5 +1,7 @@
-function __input_class_vibration_curve(_strength, _curve, _pan, _duration) constructor
+function __input_class_vibration_curve(_strength, _curve, _pan, _duration, _force) constructor
 {
+    __force = _force;
+    
     __output_left  = 0;
     __output_right = 0;
     
