@@ -1,5 +1,7 @@
-function __input_class_vibration_constant(_strength, _pan, _duration) constructor
+function __input_class_vibration_constant(_strength, _pan, _duration, _force) constructor
 {
+    __force = _force;
+    
     __output_left  = _strength*clamp(1 - _pan, 0, 1);
     __output_right = _strength*clamp(1 + _pan, 0, 1);
     

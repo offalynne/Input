@@ -9,8 +9,9 @@
 /// @param   sustainTime
 /// @param   releaseTime
 /// @param   [playerIndex=0]
+/// @param   [force=false]
 
-function input_vibrate_adsr(_peak_strength, _sustain_level, _pan, _attack, _decay, _sustain, _release, _player_index = 0)
+function input_vibrate_adsr(_peak_strength, _sustain_level, _pan, _attack, _decay, _sustain, _release, _player_index = 0, _force = false)
 {
     __INPUT_VERIFY_PLAYER_INDEX
     
@@ -22,5 +23,5 @@ function input_vibrate_adsr(_peak_strength, _sustain_level, _pan, _attack, _deca
     _sustain       = max(_sustain, 0);
     _release       = max(_release, 0);
     
-    array_push(global.__input_players[_player_index].__vibration_event_array, new __input_class_vibration_adsr(_peak_strength, _sustain_level, _pan, _attack, _decay, _sustain, _release));
+    global.__input_players[_player_index].__vibration_add_event(new __input_class_vibration_adsr(_peak_strength, _sustain_level, _pan, _attack, _decay, _sustain, _release, _force));
 }

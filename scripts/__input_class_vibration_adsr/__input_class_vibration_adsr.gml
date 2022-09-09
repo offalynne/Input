@@ -1,5 +1,7 @@
-function __input_class_vibration_adsr(_peak_strength, _sustain_level, _pan, _attack, _decay, _sustain, _release) constructor
+function __input_class_vibration_adsr(_peak_strength, _sustain_level, _pan, _attack, _decay, _sustain, _release, _force) constructor
 {
+    __force = _force;
+    
     __output_left  = 0;
     __output_right = 0;
     
