@@ -170,13 +170,15 @@
 
 ## [Vibration](Functions-(Vibration))
 
-- [`input_vibrate_constant([playerIndex])`](Functions-(Vibration)?id=input_vibrate_constantstrength-pan-duration-playerindex)
-- [`input_vibrate_adsr(peakStrength, sustainLevel, pan, attack, decay, sustain, release, [playerIndex])`](Functions-(Vibration)?id=input_vibrate_adsrpeakstrength-sustainlevel-pan-attack-decay-sustain-release-playerindex)
-- [`input_vibrate_pulse(strength, pan, repeats, duration, [playerIndex])`](Functions-(Vibration)?id=input_vibrate_pulsestrength-pan-repeats-duration-playerindex)
-- [`input_vibrate_curve(strength, curve, pan, duration, [playerIndex])`](Functions-(Vibration)?id=input_vibrate_curvestrength-curve-pan-duration-playerindex)
+- [`input_vibrate_constant([playerIndex])`](Functions-(Vibration)?id=input_vibrate_constantstrength-pan-duration-playerindex-force)
+- [`input_vibrate_adsr(peakStrength, sustainLevel, pan, attack, decay, sustain, release, [playerIndex])`](Functions-(Vibration)?id=input_vibrate_adsrpeakstrength-sustainlevel-pan-attack-decay-sustain-release-playerindex-force)
+- [`input_vibrate_pulse(strength, pan, repeats, duration, [playerIndex])`](Functions-(Vibration)?id=input_vibrate_pulsestrength-pan-repeats-duration-playerindex-force)
+- [`input_vibrate_curve(strength, curve, pan, duration, [playerIndex])`](Functions-(Vibration)?id=input_vibrate_curvestrength-curve-pan-duration-playerindex-force)
 - [`input_vibrate_stop([playerIndex])`](Functions-(Vibration)?id=input_vibrate_stopplayerindex)
+- [`input_vibrate_set_pause(state, [playerIndex])`](Functions-(Vibration)?id=input_vibrate_set_pausestate-playerindex)
+- [`input_vibrate_get_pause([playerIndex])`](Functions-(Vibration)?id=input_vibrate_get_pauseplayerindex)
 - [`input_vibrate_set_strength(strength, [playerIndex])`](Functions-(Vibration)?id=input_vibrate_set_strengthstrength-playerindex)
-- [`input_vibrate_get_strength(strength, [playerIndex])`](Functions-(Vibration)?id=input_vibrate_get_strengthstrength-playerindex)
+- [`input_vibrate_get_strength([playerIndex])`](Functions-(Vibration)?id=input_vibrate_get_strengthplayerindex)
 - [`input_vibrate_stop([playerIndex])`](Functions-(Vibration)?id=input_vibrate_stopplayerindex)
 
 &nbsp;
