@@ -51,9 +51,6 @@ function __input_class_vibration_adsr(_peak_strength, _sustain_level, _pan, _att
         }
         
         var _output = lerp(_min, _max, clamp(__time_in_phase / _phase_time, 0, 1));
-        
-        __input_trace(__phase, ": time = ", __time_in_phase, ", output = ", _output);
-        
         __output_left  = _output*__strength_left;
         __output_right = _output*__strength_right;
         
