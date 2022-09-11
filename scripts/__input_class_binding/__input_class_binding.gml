@@ -1,20 +1,6 @@
 function __input_class_binding() constructor
 {
-    type          = undefined;
-    value         = undefined;
-    axis_negative = undefined;
-    __label       = "empty binding";
-    
-    __gamepad_index       = undefined;
-    __gamepad_description = undefined;
-    
-    //We have an additional field on Android
-    //This is used to check for uppercase *and* lowercase letters as Android checks for both individually
-    __android_lowercase = undefined;
-    
-    //Accessibility features
-    __threshold_min = undefined;
-    __threshold_max = undefined;
+    __set_empty();
     
     
     
@@ -104,8 +90,7 @@ function __input_class_binding() constructor
         
         if (variable_struct_names_count(_binding_shell) <= 0)
         {
-            //Empty binding
-            __set_label();
+            __set_empty();
             return;
         }
         
@@ -195,6 +180,27 @@ function __input_class_binding() constructor
             __threshold_max       = other.__threshold_max;
             return self;
         }
+    }
+    
+    static __set_empty = function()
+    {
+        type          = undefined;
+        value         = undefined;
+        axis_negative = undefined;
+        __label       = "empty binding";
+        
+        __gamepad_index       = undefined;
+        __gamepad_description = undefined;
+        
+        //We have an additional field on Android
+        //This is used to check for uppercase *and* lowercase letters as Android checks for both individually
+        __android_lowercase = undefined;
+        
+        //Accessibility features
+        __threshold_min = undefined;
+        __threshold_max = undefined;
+        
+        return self;
     }
     
     static __set_key = function(_key, _player_set)
