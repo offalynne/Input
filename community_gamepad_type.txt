@@ -233,7 +233,7 @@ beef,feed,CommunityXBox360 // Monect
 0079,0002,CommunityXBox360 // Arcade Board
 1bad,f503,CommunityXBox360 // Hori Fighting Stick VX
 0f0d,006d,CommunityXBox360 // Hori EDGE 301
-242f,3700,CommunityXboxOne // Mayflash F101 Arcade Stick
+242f,3700,CommunityXBoxOne // Mayflash F101 Arcade Stick
 1532,0a29,CommunityXBoxOne // Razer Wolverine 2
 0e6f,02a7,CommunityXBoxOne // PDP Raven Black
 0e6f,02d7,CommunityXBoxOne // PDP Black Camo
