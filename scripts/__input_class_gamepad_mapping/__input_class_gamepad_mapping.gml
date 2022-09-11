@@ -45,7 +45,7 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
     static tick = function(_gamepad, _clear, _scan)
     {
         held_previous = held;
-        if (__value_previous != undefined) __value_previous = value;
+        if (__value_previous != undefined) __value_previous = value; //Don't update the previous value until we get our first scanned value
         
         value   = 0.0;
         held    = false;
@@ -107,17 +107,9 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
             {
                 //Capture the initial value
                 __value_previous = value;
-                
-                __input_trace("Captured initial value for \"", sdl_name, "\" = ", __value_previous);
             }
             
             __value_delta = value - __value_previous;
-            
-            if (abs(__value_delta) > 0.1)
-            {
-                __input_trace("\"", sdl_name, "\" = ", __value_previous, " -> ", value);
-            }
-            
             held = (abs(value) > __INPUT_HOLD_THRESHOLD);
         }
         
