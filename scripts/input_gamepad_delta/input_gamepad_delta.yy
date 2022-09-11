@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "input_source_detect_input",
+  "name": "input_gamepad_delta",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Sources",
-    "path": "folders/Input/Sources.yy",
+    "name": "Gamepads (Direct)",
+    "path": "folders/Input/Gamepads (Direct).yy",
   },
 }

@@ -39,13 +39,20 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
     press         = false;
     release       = false;
     
-    static tick = function(_gamepad, _clear)
+    __value_previous = undefined;
+    __value_delta    = 0.0;
+    
+    static tick = function(_gamepad, _clear, _scan)
     {
         held_previous = held;
-        value         = 0.0;
-        held          = false;
-        press         = false;
-        release       = false;
+        if (__value_previous != undefined) __value_previous = value;
+        
+        value   = 0.0;
+        held    = false;
+        press   = false;
+        release = false;
+        
+        if (!_scan) return;
         
         if (!_clear)
         {        
@@ -95,6 +102,21 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
             if (reverse)        value = -value;
                   
             value = clamp(value, -1, 1);
+            
+            if (__value_previous == undefined)
+            {
+                //Capture the initial value
+                __value_previous = value;
+                
+                __input_trace("Captured initial value for \"", sdl_name, "\" = ", __value_previous);
+            }
+            
+            __value_delta = value - __value_previous;
+            
+            if (abs(__value_delta) > 0.1)
+            {
+                __input_trace("\"", sdl_name, "\" = ", __value_previous, " -> ", value);
+            }
             
             held = (abs(value) > __INPUT_HOLD_THRESHOLD);
         }

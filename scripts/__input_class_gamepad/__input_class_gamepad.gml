@@ -30,7 +30,12 @@ function __input_class_gamepad(_index) constructor
     mapping_raw_to_gm = {};
     mapping_array     = [];
     
+    __connection_time = current_time;
+    __scan_start_time = __connection_time + 250; //Give GM some space before allowing gamepad mappings to return values
+    
     discover();
+    
+    
     
     static discover = function()
     {
@@ -110,6 +115,15 @@ function __input_class_gamepad(_index) constructor
     }
     
     /// @param GMconstant
+    static get_delta = function(_gm)
+    {
+        if (!custom_mapping) return get_value(_gm);
+        var _mapping = mapping_gm_to_raw[$ _gm];
+        if (_mapping == undefined) return 0.0;
+        return _mapping.__value_delta;
+    }
+    
+    /// @param GMconstant
     static is_axis = function(_gm)
     {
         if (!custom_mapping)
@@ -184,11 +198,12 @@ function __input_class_gamepad(_index) constructor
     
     static tick = function(_clear = false)
     {
+        var _scan = (current_time > __scan_start_time);
         var _gamepad = index;
         var _i = 0;
         repeat(array_length(mapping_array))
         {
-            with(mapping_array[_i]) tick(_gamepad, _clear);
+            with(mapping_array[_i]) tick(_gamepad, _clear, _scan);
             ++_i;
         }
         
