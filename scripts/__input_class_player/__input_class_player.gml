@@ -1139,7 +1139,7 @@ function __input_class_player() constructor
     
     static __tick_vibration = function()
     {
-        if (__connected)
+        if (__connected && (global.__input_source_mode != INPUT_SOURCE_MODE.MULTIDEVICE)) //Don't vibrate if we're likely to have multiple gamepads assigned
         {
             var _gamepad_index = __source_get_gamepad();
             if (_gamepad_index < 0) return;
