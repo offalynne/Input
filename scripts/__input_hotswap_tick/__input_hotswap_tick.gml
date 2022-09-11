@@ -45,62 +45,131 @@ function __input_hotswap_tick_input()
         var _g = 0;
         repeat(array_length(INPUT_GAMEPAD))
         {
-            if (gamepad_is_connected(_g) && (input_source_using(INPUT_GAMEPAD[_g]) || input_source_is_available(INPUT_GAMEPAD[_g])))
+            if (gamepad_is_connected(_g))
             {
                 var _active = false;
                 
-                //Check buttons
-                if (input_gamepad_check(_g, gp_face1)
-                ||  input_gamepad_check(_g, gp_face2)
-                ||  input_gamepad_check(_g, gp_face3)
-                ||  input_gamepad_check(_g, gp_face4)
-                ||  input_gamepad_check(_g, gp_padu)
-                ||  input_gamepad_check(_g, gp_padd)
-                ||  input_gamepad_check(_g, gp_padl)
-                ||  input_gamepad_check(_g, gp_padr)
-                ||  input_gamepad_check(_g, gp_shoulderl)
-                ||  input_gamepad_check(_g, gp_shoulderr)
-                ||  input_gamepad_check(_g, gp_start)
-                ||  input_gamepad_check(_g, gp_select)
-                ||  input_gamepad_check(_g, gp_stickl)
-                ||  input_gamepad_check(_g, gp_stickr)
-                ||  (!input_gamepad_is_axis(_g, gp_shoulderlb) && input_gamepad_check(_g, gp_shoulderlb))
-                ||  (!input_gamepad_is_axis(_g, gp_shoulderrb) && input_gamepad_check(_g, gp_shoulderrb)))
-                {
-                    _active = true;
-                }
+                //Ignore non-zero trigger axis on PlayStation controllers temporarily blocked with DS4Win, DualSenseX (HidHide) or Steam Input
+                //TODO - Do we still need this?
+                var _playstation_on_windows = ((os_type == os_windows)
+                                            && !__INPUT_ON_WEB
+                                            && (global.__input_gamepads[@ _g] != undefined)
+                                            && (string_pos("ps", global.__input_gamepads[@ _g].simple_type) == 1));
                 
-                //Check axes
-                if  (INPUT_HOTSWAP_ON_GAMEPAD_AXIS)
+                if (input_source_using(INPUT_GAMEPAD[_g]))
                 {
-                    //Ignore non-zero trigger axis on PlayStation controllers temporarily blocked with DS4Win, DualSenseX (HidHide) or Steam Input
-                    var _playstation_on_windows = ((os_type == os_windows) && !__INPUT_ON_WEB && (global.__input_gamepads[@ _g] != undefined) && (string_pos("ps", global.__input_gamepads[@ _g].simple_type) == 1));
-
-                    if ((abs(input_gamepad_value(_g, gp_shoulderlb)) > max(input_axis_threshold_get(gp_shoulderlb, 0).mini, (_playstation_on_windows? 0.51 : 0)))
-                    ||  (abs(input_gamepad_value(_g, gp_shoulderrb)) > max(input_axis_threshold_get(gp_shoulderrb, 0).mini, (_playstation_on_windows? 0.51 : 0)))
-                    ||  (abs(input_gamepad_value(_g, gp_axislv)) > input_axis_threshold_get(gp_axislv, 0).mini)
-                    ||  (abs(input_gamepad_value(_g, gp_axislh)) > input_axis_threshold_get(gp_axislh, 0).mini)
-                    ||  (abs(input_gamepad_value(_g, gp_axislv)) > input_axis_threshold_get(gp_axislv, 0).mini)
-                    ||  (abs(input_gamepad_value(_g, gp_axisrh)) > input_axis_threshold_get(gp_axisrh, 0).mini)
-                    ||  (abs(input_gamepad_value(_g, gp_axisrv)) > input_axis_threshold_get(gp_axisrv, 0).mini))
+                    #region In-use gamepad
+                    
+                    //Check buttons
+                    if (input_gamepad_check(_g, gp_face1)
+                    ||  input_gamepad_check(_g, gp_face2)
+                    ||  input_gamepad_check(_g, gp_face3)
+                    ||  input_gamepad_check(_g, gp_face4)
+                    ||  input_gamepad_check(_g, gp_padu)
+                    ||  input_gamepad_check(_g, gp_padd)
+                    ||  input_gamepad_check(_g, gp_padl)
+                    ||  input_gamepad_check(_g, gp_padr)
+                    ||  input_gamepad_check(_g, gp_shoulderl)
+                    ||  input_gamepad_check(_g, gp_shoulderr)
+                    ||  input_gamepad_check(_g, gp_start)
+                    ||  input_gamepad_check(_g, gp_select)
+                    ||  input_gamepad_check(_g, gp_stickl)
+                    ||  input_gamepad_check(_g, gp_stickr)
+                    ||  (!input_gamepad_is_axis(_g, gp_shoulderlb) && input_gamepad_check(_g, gp_shoulderlb))
+                    ||  (!input_gamepad_is_axis(_g, gp_shoulderrb) && input_gamepad_check(_g, gp_shoulderrb)))
                     {
                         _active = true;
                     }
+                    
+                    //Check axes
+                    if (INPUT_HOTSWAP_ON_GAMEPAD_AXIS)
+                    {
+                        if ((abs(input_gamepad_value(_g, gp_shoulderlb)) > max(input_axis_threshold_get(gp_shoulderlb, 0).mini, (_playstation_on_windows? 0.51 : 0)))
+                        ||  (abs(input_gamepad_value(_g, gp_shoulderrb)) > max(input_axis_threshold_get(gp_shoulderrb, 0).mini, (_playstation_on_windows? 0.51 : 0)))
+                        ||  (abs(input_gamepad_value(_g, gp_axislv    )) > input_axis_threshold_get(gp_axislv, 0).mini)
+                        ||  (abs(input_gamepad_value(_g, gp_axislh    )) > input_axis_threshold_get(gp_axislh, 0).mini)
+                        ||  (abs(input_gamepad_value(_g, gp_axislv    )) > input_axis_threshold_get(gp_axislv, 0).mini)
+                        ||  (abs(input_gamepad_value(_g, gp_axisrh    )) > input_axis_threshold_get(gp_axisrh, 0).mini)
+                        ||  (abs(input_gamepad_value(_g, gp_axisrv    )) > input_axis_threshold_get(gp_axisrv, 0).mini))
+                        {
+                            _active = true;
+                        }
+                    }
+                    
+                    //Check extended
+                    if (INPUT_SDL2_ALLOW_EXTENDED)
+                    {
+                        if (input_gamepad_check(_g, gp_guide)
+                        ||  input_gamepad_check(_g, gp_misc1)
+                        ||  input_gamepad_check(_g, gp_touchpad)
+                        ||  input_gamepad_check(_g, gp_paddle1)
+                        ||  input_gamepad_check(_g, gp_paddle2)
+                        ||  input_gamepad_check(_g, gp_paddle3)
+                        ||  input_gamepad_check(_g, gp_paddle4))
+                        {
+                            _active = true;
+                        }
+                    }
+                    
+                    #endregion
                 }
-                
-                //Check extended
-                if (INPUT_SDL2_ALLOW_EXTENDED)
+                else if (input_source_is_available(INPUT_GAMEPAD[_g]))
                 {
-                    if (input_gamepad_check(_g, gp_guide)
-                    ||  input_gamepad_check(_g, gp_misc1)
-                    ||  input_gamepad_check(_g, gp_touchpad)
-                    ||  input_gamepad_check(_g, gp_paddle1)
-                    ||  input_gamepad_check(_g, gp_paddle2)
-                    ||  input_gamepad_check(_g, gp_paddle3)
-                    ||  input_gamepad_check(_g, gp_paddle4))
+                    #region Gamepad not in use but potentially available
+                    
+                    //Check buttons
+                    if (input_gamepad_check_pressed(_g, gp_face1)
+                    ||  input_gamepad_check_pressed(_g, gp_face2)
+                    ||  input_gamepad_check_pressed(_g, gp_face3)
+                    ||  input_gamepad_check_pressed(_g, gp_face4)
+                    ||  input_gamepad_check_pressed(_g, gp_padu)
+                    ||  input_gamepad_check_pressed(_g, gp_padd)
+                    ||  input_gamepad_check_pressed(_g, gp_padl)
+                    ||  input_gamepad_check_pressed(_g, gp_padr)
+                    ||  input_gamepad_check_pressed(_g, gp_shoulderl)
+                    ||  input_gamepad_check_pressed(_g, gp_shoulderr)
+                    ||  input_gamepad_check_pressed(_g, gp_start)
+                    ||  input_gamepad_check_pressed(_g, gp_select)
+                    ||  input_gamepad_check_pressed(_g, gp_stickl)
+                    ||  input_gamepad_check_pressed(_g, gp_stickr)
+                    ||  (!input_gamepad_is_axis(_g, gp_shoulderlb) && input_gamepad_check_pressed(_g, gp_shoulderlb))
+                    ||  (!input_gamepad_is_axis(_g, gp_shoulderrb) && input_gamepad_check_pressed(_g, gp_shoulderrb)))
                     {
                         _active = true;
                     }
+                    
+                    //Check axes
+                    if  (INPUT_HOTSWAP_ON_GAMEPAD_AXIS)
+                    {
+                        if (((abs(input_gamepad_value(_g, gp_shoulderlb)) > max(input_axis_threshold_get(gp_shoulderlb, 0).mini, (_playstation_on_windows? 0.51 : 0))) && (abs(input_gamepad_delta(_g, gp_shoulderlb)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+                        ||  ((abs(input_gamepad_value(_g, gp_shoulderrb)) > max(input_axis_threshold_get(gp_shoulderrb, 0).mini, (_playstation_on_windows? 0.51 : 0))) && (abs(input_gamepad_delta(_g, gp_shoulderrb)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+                        ||  ((abs(input_gamepad_value(_g, gp_axislv)) > input_axis_threshold_get(gp_axislv, 0).mini) && (abs(input_gamepad_delta(_g, gp_axislv)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+                        ||  ((abs(input_gamepad_value(_g, gp_axislh)) > input_axis_threshold_get(gp_axislh, 0).mini) && (abs(input_gamepad_delta(_g, gp_axislh)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+                        ||  ((abs(input_gamepad_value(_g, gp_axislv)) > input_axis_threshold_get(gp_axislv, 0).mini) && (abs(input_gamepad_delta(_g, gp_axislv)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+                        ||  ((abs(input_gamepad_value(_g, gp_axisrh)) > input_axis_threshold_get(gp_axisrh, 0).mini) && (abs(input_gamepad_delta(_g, gp_axisrh)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+                        ||  ((abs(input_gamepad_value(_g, gp_axisrv)) > input_axis_threshold_get(gp_axisrv, 0).mini) && (abs(input_gamepad_delta(_g, gp_axisrv)) > __INPUT_DELTA_HOTSWAP_THRESHOLD)))
+                        {
+                            __input_trace("!");
+                            _active = true;
+                        }
+                    }
+                    
+                    //Check extended
+                    if (INPUT_SDL2_ALLOW_EXTENDED)
+                    {
+                        if (input_gamepad_check_pressed(_g, gp_guide)
+                        ||  input_gamepad_check_pressed(_g, gp_misc1)
+                        ||  input_gamepad_check_pressed(_g, gp_touchpad)
+                        ||  input_gamepad_check_pressed(_g, gp_paddle1)
+                        ||  input_gamepad_check_pressed(_g, gp_paddle2)
+                        ||  input_gamepad_check_pressed(_g, gp_paddle3)
+                        ||  input_gamepad_check_pressed(_g, gp_paddle4))
+                        {
+                            _active = true;
+                        }
+                    }
+                    
+                    #endregion
                 }
                 
                 if (_active)
