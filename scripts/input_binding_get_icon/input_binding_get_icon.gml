@@ -75,7 +75,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
     
     if (_icon == undefined)
     {
-        __input_trace("Warning! Could not find valid icon for \"", _label, "\" using \"", _category, "\"");
+        __input_trace("Warning! Could not find valid icon for \"", _label, "\" using gamepad type \"", _category, "\"" + ((_category == "unknown")? " (player may not have a recognised gamepad assigned)" : ""));
         
         _icon = is_struct(_fallback_icon_struct)? _fallback_icon_struct[$ _label] : undefined;
         if (_icon == undefined)
