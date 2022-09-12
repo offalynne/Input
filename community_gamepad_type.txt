@@ -1,6 +1,6 @@
 28de,11ff,CommunitySteam // Steam Virtual Controller
 28de,1205,CommunityDeck // Steam Deck Controller
-0079,181c,CommuntiyLikeXBox // STK 7024X
+0079,181c,CommuntityLikeXBox // STK 7024X
 0c12,880a,CommunityLikeXBox // Xbox Controller
 0c12,8810,CommunityLikeXBox // Xbox Controller
 062a,0020,CommunityLikeXBox // Xbox Controller
@@ -271,7 +271,7 @@ beef,feed,CommunityXBox360 // Monect
 20d6,2002,CommunityXBoxOne // Power A Wired Xbox Series
 1532,0a00,CommunityXBoxOne // Razer Atrox
 1915,0040,CommunityXBoxOne // Flydigi X9ET Pro and Vader 2
-0e6f,0111,CommuntiyPSX // Afterglow PS3
+0e6f,0111,CommunityPSX // Afterglow PS3
 7331,0001,CommunityPSX // DualShock 3
 1209,8844,CommunityPSX // MUSIA PS2 Adapter
 1a15,2262,CommunityPSX // PS2 Controller
