@@ -91,6 +91,10 @@ function __input_multiplayer_assignment_tick()
     
     if (_abort)
     {
+        __input_trace("Assignment: Restoring source mode ", global.__input_previous_source_mode);
+        input_source_mode_set(global.__input_previous_source_mode);
+        global.__input_previous_source_mode = global.__input_source_mode;
+        
         if (is_method(INPUT_MULTIPLAYER_ABORT_CALLBACK))
         {
             INPUT_MULTIPLAYER_ABORT_CALLBACK();

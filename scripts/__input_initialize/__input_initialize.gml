@@ -176,7 +176,8 @@ function __input_initialize()
         MULTIDEVICE, //Player 0 can use a mixture of keyboard, mouse, and any gamepad, but gamepad bindings are specific to each device
     }
     
-    global.__input_source_mode = undefined;
+    global.__input_source_mode          = undefined;
+    global.__input_previous_source_mode = INPUT_STARTING_SOURCE_MODE;
     
     //Multiplayer source assignment state
     //This is set by input_multiplayer_set()
