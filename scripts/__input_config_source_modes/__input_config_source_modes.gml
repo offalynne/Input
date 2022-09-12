@@ -8,7 +8,7 @@
 #macro INPUT_MULTIPLAYER_LEAVE_VERB  "cancel"
 
 //The function to call when a player tries to abort the INPUT_SOURCE_MODE.JOIN source mode (multiplayer source assignment)
-//This macro must be set to a function for INPUT_SOURCE_MODE.JOIN to work
+//This macro must be set to a function or script for INPUT_SOURCE_MODE.JOIN to work
 #macro INPUT_MULTIPLAYER_ABORT_CALLBACK  undefined
 
 
