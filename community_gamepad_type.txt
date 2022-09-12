@@ -349,6 +349,7 @@ dead,beef,CommunityPSX // Hidromancer
 6666,8802,CommunityPSX // SuperJoy Box Adapter
 6666,8804,CommunityPSX // SuperJoy Box Adapter
 145f,0231,CommunityPSX // MY-POWER CO. LTD. Gamepad
+0f0d,00c0,CommunityPS4 // Hori Fighting Edge PS4
 146b,0609,CommunityPS4 // Nacon Asymmetric Controller
 2c22,2300,CommunityPS4 // Qanba Obsidian Arcade Stick
 2e95,7725,CommunityPS4 // Scuf PS4 Controller
