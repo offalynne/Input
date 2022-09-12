@@ -1,5 +1,23 @@
 28de,11ff,CommunitySteam // Steam Virtual Controller
 28de,1205,CommunityDeck // Steam Deck Controller
+0079,181c,CommuntiyLikeXBox // STK 7024X
+0c12,880a,CommunityLikeXBox // Xbox Controller
+0c12,8810,CommunityLikeXBox // Xbox Controller
+062a,0020,CommunityLikeXBox // Xbox Controller
+0f30,8888,CommunityLikeXBox // Xbox Controller
+0738,4516,CommunityLikeXBox // Xbox Controller
+0738,4526,CommunityLikeXBox // Xbox Controller
+0738,4536,CommunityLikeXBox // Xbox Controller
+0738,4586,CommunityLikeXBox // Xbox Controller
+045e,0202,CommunityLikeXBox // Xbox Controller
+045e,0285,CommunityLikeXBox // Xbox Controller
+045e,0287,CommunityLikeXBox // Xbox Controller
+045e,0289,CommunityLikeXBox // Xbox Controller
+19fa,fff0,CommunityLikeXBox // Acteck AGJ 3200
+0b05,7905,CommunityLikeXBox // ASUS ROG Kunai 3
+0b05,7906,CommunityLikeXBox // ASUS ROG Kunai 3
+0c12,8802,CommunityLikeXBox // Nyko Air Flo Xbox
+124b,4d01,CommunityLikeXBox // Nyko Air Flo Xbox
 0b05,7906,CommunityLikeXBox // ASUS ROG Kunai 3
 0b05,7905,CommunityLikeXBox // ASUS ROG Kunai 3
 145f,01c5,CommunityLikeXBox // Trust GXT 540 Yula
@@ -62,6 +80,7 @@
 11ec,a7e1,CommunityLikeSwitch // Switch Handheld
 1d79,0301,CommunityLikeSwitch // Wii Adapter
 0079,1803,CommunityLikeSwitch // Mayflash Wii DolphinBar
+0500,9b28,CommunitySaturn // Sega Saturn Adapter
 0ae4,0702,CommunitySaturn // Taito Egret II Mini Controller
 0b49,0644,CommunitySaturn // ASCII Seamic
 0079,0011,CommunitySaturn // Retrolink Saturn/SNES
@@ -99,6 +118,7 @@ f000,0008,CommunitySaturn // RetroUSB Genesis
 0ca3,0024,CommunitySaturn // Genesis Mini 3B
 0ca3,0025,CommunitySaturn // Genesis Mini 6B
 1292,4745,CommunitySaturn // Retro Bit Genesis Adapter
+1292,464b,CommunitySNES // NES Controller Adapter
 21f8,0019,CommunitySNES // Shogun Bros Chameleon X1
 289b,0056,CommunitySNES // Raphnet SNES
 289b,0057,CommunitySNES // Raphnet SNES
@@ -133,6 +153,11 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 2dc8,2830,CommunitySuperFamicom // 8BitDo SFC30
 2dc8,ab21,CommunitySuperFamicom // 8BitDo SFC30
 2dc8,2810,CommunitySuperFamicom // 8BitDo SFC30
+2dc8,9000,Community8BitDo // 8BitDo FC30 Pro
+2dc8,6100,Community8BitDo // 8BitDo SF30 Pro
+2dc8,2100,Community8BitDo // 8BitDo SN30 Pro
+2dc8,2101,Community8BitDo // 8BitDo SN30 Pro
+2dc8,9018,Community8BitDo // 8BitDo Zero 2
 1002,9000,Community8BitDo // 8BitDo FC30 Pro
 1235,ab12,Community8BitDo // 8BitDo NES30
 1235,2840,Community8BitDo // 8BitDo NES30
@@ -165,6 +190,7 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 2dc8,6006,Community8BitDo // 8BitDo Pro 2
 2dc8,5111,Community8BitDo //8BitDo Lite SE
 2dc8,5112,Community8BitDo //8BitDo Lite 2
+0926,2526,CommunityGameCube // GameCube Controller
 057e,0337,CommunityGameCube // Wii U GameCube Adapter
 0926,8888,CommunityGameCube // Cyber Gadget GameCube Adapter
 0079,1843,CommunityGameCube // Mayflash GameCube Adapter
@@ -174,6 +200,8 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 0079,1847,CommunityGameCube // Mayflash GameCube Adapter
 0b43,0005,CommunityGameCube // Gamecube Adapter
 1a34,f705,CommunityGameCube // Mayflash GameCube Adapter
+24c6,891a,CommunityXBox360 // Moga XP5X
+24c6,891b,CommunityXBox360 // Moga XP5X
 05ac,056b,CommunityXBox360 // GameSir T-2a
 20bc,5656,CommunityXBox360 // GameSir T4w
 0079,1830,CommunityXBox360 // Mayflash F300
@@ -243,6 +271,15 @@ beef,feed,CommunityXBox360 // Monect
 20d6,2002,CommunityXBoxOne // Power A Wired Xbox Series
 1532,0a00,CommunityXBoxOne // Razer Atrox
 1915,0040,CommunityXBoxOne // Flydigi X9ET Pro and Vader 2
+0e6f,0111,CommuntiyPSX // Afterglow PS3
+7331,0001,CommunityPSX // DualShock 3
+1209,8844,CommunityPSX // MUSIA PS2 Adapter
+1a15,2262,CommunityPSX // PS2 Controller
+0a12,0001,CommunityPSX // PS2 Controller
+0925,1802,CommunityPSX // PS3 Controller
+22ba,1020,CommunityPSX // PS3 Controller
+289b,0044,CommunityPSX // Raphnet PSX Adapter
+6666,8802,CommunityPSX // TigerGame PlayStation Adapter
 1a15,2262,CommunityPSX // PS2 Dual Plus Adapter
 0662,70d5,CommunityPSX // PowerA PS3 Contoller
 044f,b323,CommunityPSX // Thrustmaster Dual Trigger 3-in-1
@@ -349,6 +386,13 @@ dead,beef,CommunityPSX // Hidromancer
 6666,8802,CommunityPSX // SuperJoy Box Adapter
 6666,8804,CommunityPSX // SuperJoy Box Adapter
 145f,0231,CommunityPSX // MY-POWER CO. LTD. Gamepad
+0e8f,1114,CommuntiyPS4 // Gamo2 Divaller
+0f0d,0101,CommunityPS4 // Hori Miku FT PS4 Controller
+0f0d,00a5,CommunityPS4 // Hori Miku PS4 Controller
+0f0d,00a6,CommunityPS4 // Hori Miku PS4 Controller
+0e12,0c12,CommunityPS4 // PS4 Controller
+0e16,0c12,CommunityPS4 // PS4 Controller
+1e1a,0c12,CommunityPS4 // PS4 Controller
 0f0d,00c0,CommunityPS4 // Hori Fighting Edge PS4
 146b,0609,CommunityPS4 // Nacon Asymmetric Controller
 2c22,2300,CommunityPS4 // Qanba Obsidian Arcade Stick
@@ -390,6 +434,7 @@ dead,beef,CommunityPSX // Hidromancer
 2836,0001,CommunityOuya // Ouya Controller
 18d1,9400,CommunityStadia // Google Stadia Controller
 0171,0419,CommunityLuna // Amazon Luna Controller
+1949,0419,CommunityLuna // Amazon Luna
 0f0d,0138,CommuntyPCEngine // NEC CoreGrafx, TG16, PC Engine Mini Controller
 0ca3,0027,CommunityAstroCity // Sega Astro City Mini Controller
 0ca3,0028,CommunityAstroCity // Sega Astro City Mini Arcade Stick
