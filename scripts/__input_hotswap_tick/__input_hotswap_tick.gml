@@ -49,13 +49,6 @@ function __input_hotswap_tick_input()
             {
                 var _active = false;
                 
-                //Ignore non-zero trigger axis on PlayStation controllers temporarily blocked with DS4Win, DualSenseX (HidHide) or Steam Input
-                //TODO - Do we still need this?
-                var _playstation_on_windows = ((os_type == os_windows)
-                                            && !__INPUT_ON_WEB
-                                            && (global.__input_gamepads[@ _g] != undefined)
-                                            && (string_pos("ps", global.__input_gamepads[@ _g].simple_type) == 1));
-                
                 if (input_source_using(INPUT_GAMEPAD[_g]))
                 {
                     #region In-use gamepad
@@ -84,8 +77,8 @@ function __input_hotswap_tick_input()
                     //Check axes
                     if (INPUT_HOTSWAP_ON_GAMEPAD_AXIS)
                     {
-                        if ((abs(input_gamepad_value(_g, gp_shoulderlb)) > max(input_axis_threshold_get(gp_shoulderlb, 0).mini, (_playstation_on_windows? 0.51 : 0)))
-                        ||  (abs(input_gamepad_value(_g, gp_shoulderrb)) > max(input_axis_threshold_get(gp_shoulderrb, 0).mini, (_playstation_on_windows? 0.51 : 0)))
+                        if ((abs(input_gamepad_value(_g, gp_shoulderlb)) > input_axis_threshold_get(gp_shoulderlb, 0).mini)
+                        ||  (abs(input_gamepad_value(_g, gp_shoulderrb)) > input_axis_threshold_get(gp_shoulderrb, 0).mini)
                         ||  (abs(input_gamepad_value(_g, gp_axislv    )) > input_axis_threshold_get(gp_axislv, 0).mini)
                         ||  (abs(input_gamepad_value(_g, gp_axislh    )) > input_axis_threshold_get(gp_axislh, 0).mini)
                         ||  (abs(input_gamepad_value(_g, gp_axislv    )) > input_axis_threshold_get(gp_axislv, 0).mini)
@@ -141,13 +134,13 @@ function __input_hotswap_tick_input()
                     //Check axes
                     if  (INPUT_HOTSWAP_ON_GAMEPAD_AXIS)
                     {
-                        if (((abs(input_gamepad_value(_g, gp_shoulderlb)) > max(input_axis_threshold_get(gp_shoulderlb, 0).mini, (_playstation_on_windows? 0.51 : 0))) && (abs(input_gamepad_delta(_g, gp_shoulderlb)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
-                        ||  ((abs(input_gamepad_value(_g, gp_shoulderrb)) > max(input_axis_threshold_get(gp_shoulderrb, 0).mini, (_playstation_on_windows? 0.51 : 0))) && (abs(input_gamepad_delta(_g, gp_shoulderrb)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
-                        ||  ((abs(input_gamepad_value(_g, gp_axislv)) > input_axis_threshold_get(gp_axislv, 0).mini) && (abs(input_gamepad_delta(_g, gp_axislv)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
-                        ||  ((abs(input_gamepad_value(_g, gp_axislh)) > input_axis_threshold_get(gp_axislh, 0).mini) && (abs(input_gamepad_delta(_g, gp_axislh)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
-                        ||  ((abs(input_gamepad_value(_g, gp_axislv)) > input_axis_threshold_get(gp_axislv, 0).mini) && (abs(input_gamepad_delta(_g, gp_axislv)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
-                        ||  ((abs(input_gamepad_value(_g, gp_axisrh)) > input_axis_threshold_get(gp_axisrh, 0).mini) && (abs(input_gamepad_delta(_g, gp_axisrh)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
-                        ||  ((abs(input_gamepad_value(_g, gp_axisrv)) > input_axis_threshold_get(gp_axisrv, 0).mini) && (abs(input_gamepad_delta(_g, gp_axisrv)) > __INPUT_DELTA_HOTSWAP_THRESHOLD)))
+                        if (((abs(input_gamepad_value(_g, gp_shoulderlb)) > input_axis_threshold_get(gp_shoulderlb).mini) && (abs(input_gamepad_delta(_g, gp_shoulderlb)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+                        ||  ((abs(input_gamepad_value(_g, gp_shoulderrb)) > input_axis_threshold_get(gp_shoulderrb).mini) && (abs(input_gamepad_delta(_g, gp_shoulderrb)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+                        ||  ((abs(input_gamepad_value(_g, gp_axislv    )) > input_axis_threshold_get(gp_axislv    ).mini) && (abs(input_gamepad_delta(_g, gp_axislv    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+                        ||  ((abs(input_gamepad_value(_g, gp_axislh    )) > input_axis_threshold_get(gp_axislh    ).mini) && (abs(input_gamepad_delta(_g, gp_axislh    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+                        ||  ((abs(input_gamepad_value(_g, gp_axislv    )) > input_axis_threshold_get(gp_axislv    ).mini) && (abs(input_gamepad_delta(_g, gp_axislv    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+                        ||  ((abs(input_gamepad_value(_g, gp_axisrh    )) > input_axis_threshold_get(gp_axisrh    ).mini) && (abs(input_gamepad_delta(_g, gp_axisrh    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+                        ||  ((abs(input_gamepad_value(_g, gp_axisrv    )) > input_axis_threshold_get(gp_axisrv    ).mini) && (abs(input_gamepad_delta(_g, gp_axisrv    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD)))
                         {
                             __input_trace("!");
                             _active = true;
