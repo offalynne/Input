@@ -17,6 +17,9 @@
 //Whether to allow keyboard input on Switch platform
 #macro INPUT_SWITCH_KEYBOARD_ALLOWED  false
 
+//Whether to merge control keys, for example Left Shift and Right Shift upon user rebind
+#macro INPUT_MERGE_CONTROL_KEYS  false
+
 //Time (in milliseconds) to wait for a new binding before automatically cancelling the binding scan
 #macro INPUT_BINDING_SCAN_TIMEOUT  10000
 

@@ -208,30 +208,43 @@ function __input_class_binding() constructor
         //Fix uses of straight strings instead of ord("A")
         if (is_string(_key)) _key = ord(string_upper(_key));
         
-		if (!_player_set)
-		{
-			if ((os_type == os_switch) || (os_type == os_linux) || (os_type == os_macosx))
-			{
-				//Fix F11 and F12 constants
-				if      (_key == vk_f11)  { _key = 128; }
-				else if (_key == vk_f12)  { _key = 129; }
-			}
-			
-	        if (!__INPUT_KEYBOARD_NORMATIVE)
-	        {
-				//Fix UTF-8 where used
-	            if      (_key == vk_comma    )  { _key = 44; }
-	            else if (_key == vk_hyphen   )  { _key = 45; }
-	            else if (_key == vk_period   )  { _key = 46; }
-	            else if (_key == vk_fslash   )  { _key = 47; }
-	            else if (_key == vk_semicolon)  { _key = 59; }
-	            else if (_key == vk_equals   )  { _key = 61; }
-	            else if (_key == vk_lbracket )  { _key = 91; }
-	            else if (_key == vk_bslash   )  { _key = 92; }
-	            else if (_key == vk_rbracket )  { _key = 93; }
-	            else if (_key == vk_backtick )  { _key = 96; }
-	        }
-		}
+        if (_player_set)
+        {
+            if (INPUT_MERGE_CONTROL_KEYS)
+            {
+                switch (_key)
+                {
+                    //Combine player-bound control keys
+                    case vk_lcontrol:  case vk_rcontrol: _key = vk_control; break;
+                    case vk_lalt:      case vk_ralt:     _key = vk_alt;     break;
+                    case vk_lshift:    case vk_rshift:   _key = vk_shift;   break;
+                }
+            }
+        }
+        else
+        {
+            if ((os_type == os_switch) || (os_type == os_linux) || (os_type == os_macosx))
+            {
+                //Fix F11 and F12 constants
+                if      (_key == vk_f11)  { _key = 128; }
+                else if (_key == vk_f12)  { _key = 129; }
+            }
+            
+            if (!__INPUT_KEYBOARD_NORMATIVE)
+            {
+                //Fix UTF-8 where used
+                if      (_key == vk_comma    )  { _key = 44; }
+                else if (_key == vk_hyphen   )  { _key = 45; }
+                else if (_key == vk_period   )  { _key = 46; }
+                else if (_key == vk_fslash   )  { _key = 47; }
+                else if (_key == vk_semicolon)  { _key = 59; }
+                else if (_key == vk_equals   )  { _key = 61; }
+                else if (_key == vk_lbracket )  { _key = 91; }
+                else if (_key == vk_bslash   )  { _key = 92; }
+                else if (_key == vk_rbracket )  { _key = 93; }
+                else if (_key == vk_backtick )  { _key = 96; }
+            }
+        }
         
         type  = __INPUT_BINDING_KEY;
         value = _key;
