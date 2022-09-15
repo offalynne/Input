@@ -5,11 +5,6 @@ function __input_multiplayer_assignment_tick()
         __input_error("INPUT_MULTIPLAYER_LEAVE_VERB \"", INPUT_MULTIPLAYER_LEAVE_VERB, "\" doesn't exist");
     }
     
-    if (!is_method(INPUT_MULTIPLAYER_ABORT_CALLBACK))
-    {
-        __input_error("INPUT_MULTIPLAYER_ABORT_CALLBACK has not been defined");
-    }
-    
     var _abort = false;
     
     if (global.__input_multiplayer_drop_down)
@@ -103,7 +98,7 @@ function __input_multiplayer_assignment_tick()
         {
             script_execute(INPUT_MULTIPLAYER_ABORT_CALLBACK);
         }
-        else
+        else if (INPUT_MULTIPLAYER_ABORT_CALLBACK != undefined)
         {
             __input_error("INPUT_MULTIPLAYER_ABORT_CALLBACK set to an illegal value (typeof=", typeof(INPUT_MULTIPLAYER_ABORT_CALLBACK), ")");
         }
