@@ -4,7 +4,8 @@
 
 function input_gamepad_delta(_index, _gm)
 {
-    if ((_index == undefined)
+    if ((global.__input_cleared)
+    ||  (_index == undefined)
     ||  (_index < 0)
     ||  (_index >= array_length(global.__input_gamepads)))
     {
