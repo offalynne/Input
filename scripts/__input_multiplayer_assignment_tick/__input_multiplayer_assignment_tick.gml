@@ -5,9 +5,9 @@ function __input_multiplayer_assignment_tick()
         __input_error("INPUT_MULTIPLAYER_LEAVE_VERB \"", INPUT_MULTIPLAYER_LEAVE_VERB, "\" doesn't exist");
     }
     
-    if (!is_method(INPUT_MULTIPLAYER_ABORT_CALLBACK))
+    if (!is_method(INPUT_MULTIPLAYER_ABORT_CALLBACK) && !(is_numeric(INPUT_MULTIPLAYER_ABORT_CALLBACK) && script_exists(INPUT_MULTIPLAYER_ABORT_CALLBACK)))
     {
-        __input_error("INPUT_MULTIPLAYER_ABORT_CALLBACK has not been defined");
+        __input_error("INPUT_MULTIPLAYER_ABORT_CALLBACK has not been defined to a function or script");
     }
     
     var _abort = false;
