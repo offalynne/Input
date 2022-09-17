@@ -260,7 +260,6 @@
     {"id":{"name":"__input_gamepad_set_type","path":"scripts/__input_gamepad_set_type/__input_gamepad_set_type.yy",},"order":16,},
     {"id":{"name":"rm_example_platformer","path":"rooms/rm_example_platformer/rm_example_platformer.yy",},"order":0,},
     {"id":{"name":"input_player_ghost_get","path":"scripts/input_player_ghost_get/input_player_ghost_get.yy",},"order":15,},
-    {"id":{"name":"input_check_quick","path":"scripts/input_check_quick/input_check_quick.yy",},"order":10,},
     {"id":{"name":"__input_gamepad_set_vid_pid","path":"scripts/__input_gamepad_set_vid_pid/__input_gamepad_set_vid_pid.yy",},"order":17,},
     {"id":{"name":"input_accessibility_verb_toggle_set","path":"scripts/input_accessibility_verb_toggle_set/input_accessibility_verb_toggle_set.yy",},"order":2,},
     {"id":{"name":"__input_key_get_name","path":"scripts/__input_key_get_name/__input_key_get_name.yy",},"order":24,},
