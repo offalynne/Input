@@ -1,5 +1,6 @@
 28de,11ff,CommunitySteam // Steam Virtual Controller
 28de,1205,CommunityDeck // Steam Deck Controller
+2dc8,3013,CommunityLikeXBox // 8BitDo Wireless Ultimate DInput
 20bc,6050,CommunityLikeXBox // Xiaomi XMGP01YM
 2717,5033,CommunityLikeXBox // Xiaomi XMGP01YM
 0079,181c,CommunityLikeXBox // STK 7024X
