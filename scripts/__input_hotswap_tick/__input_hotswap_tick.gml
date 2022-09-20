@@ -123,7 +123,7 @@ function __input_hotswap_tick_input()
                 //Search last-to-first on platforms with low-index virtual controllers (Steam Input, ViGEm)
                 //We want real devices to take priority over virtual ones where possible to avoid thrashing
                 _sort_order = -1;
-                _g = _gamepad_count;
+                _g = _gamepad_count - 1;
             }
 
             #region Gamepad not in-use but potentially available

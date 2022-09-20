@@ -12,12 +12,12 @@ function input_source_detect_new()
         //Search last-to-first on platforms with low-index virtual controllers (Steam Input, ViGEm)
         //We want real devices to take priority over virtual ones where possible to avoid thrashing
         _sort_order = -1;
-        _g = _gamepad_count;
+        _g = _gamepad_count - 1;
     }
     
     repeat(_gamepad_count)
     {
-        if (input_source_detect_input(INPUT_GAMEPAD[_g])) return INPUT_GAMEPAD[_g];        
+        if (input_source_detect_input(INPUT_GAMEPAD[_g])) return INPUT_GAMEPAD[_g];
         _g += _sort_order;
     }
     
