@@ -558,7 +558,7 @@ function __input_initialize()
             
             input_ignore_key_add(0xB4); //Launch Mail
             input_ignore_key_add(0xB5); //Launch Media
-            input_ignore_key_add(0xB6); //Laumch App 1
+            input_ignore_key_add(0xB6); //Launch App 1
             input_ignore_key_add(0xB7); //Launch App 2
             
             input_ignore_key_add(0xFB); //Zoom
