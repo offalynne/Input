@@ -61,8 +61,16 @@ function __input_class_gamepad(_index) constructor
         __input_gamepad_set_blacklist();
         __input_gamepad_set_mapping();
         
-        __vibration_support = INPUT_VIBRATION_ALLOWED && __INPUT_GAMEPAD_VIBRATION_SUPPORT && ((os_type != os_windows) || xinput);
-        gamepad_set_vibration(index, 0, 0);
+        __vibration_support = global.__input_vibration_allowed_on_platform && ((os_type != os_windows) || xinput);        
+        if (__vibration_support)
+        {
+            if (os_type == os_ps5)
+            {
+                ps5_gamepad_set_vibration_mode(index, ps5_gamepad_vibration_mode_compatible);
+            }
+        
+            gamepad_set_vibration(index, 0, 0);
+        }
         
         __input_trace("Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
     }
