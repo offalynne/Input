@@ -304,6 +304,16 @@ function __input_validate_macros()
         __input_error("INPUT_VIBRATION_ALLOWED must be either <true> or <false>");
     }
     
+    if (!is_bool(INPUT_PS5_USE_LEGACY_VIBRATION))
+    {
+        __input_error("INPUT_PS5_USE_LEGACY_VIBRATION must be either <true> or <false>");
+    }
+    
+    if (!is_bool(INPUT_SWITCH_USE_LEGACY_VIBRATION))
+    {
+        __input_error("INPUT_SWITCH_USE_LEGACY_VIBRATION must be either <true> or <false>");
+    }
+    
     if (!is_numeric(INPUT_VIBRATION_DEFAULT_STRENGTH) || (INPUT_VIBRATION_DEFAULT_STRENGTH < 0) || (INPUT_VIBRATION_DEFAULT_STRENGTH > 1.0))
     {
         __input_error("INPUT_VIBRATION_DEFAULT_STRENGTH must be a number between 0.0 and 1.0 (inclusive)");

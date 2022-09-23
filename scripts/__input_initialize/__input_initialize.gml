@@ -102,6 +102,9 @@ function __input_initialize()
 
     //Default to disallowing mouse bindings on specified platforms unless explicitly enabled
     global.__input_mouse_allowed_on_platform = !(__INPUT_ON_PS || __INPUT_ON_XBOX || (__INPUT_TOUCH_SUPPORT && !INPUT_TOUCH_POINTER_ALLOWED));
+    
+    //Default to disallowing vibration on specified platforms unless explicitly enabled
+    global.__input_vibration_allowed_on_platform = (__INPUT_GAMEPAD_VIBRATION_SUPPORT && INPUT_VIBRATION_ALLOWED && ((os_type != os_switch) || INPUT_SWITCH_USE_LEGACY_VIBRATION) && ((os_type != os_ps5) || INPUT_PS5_USE_LEGACY_VIBRATION));
 
     //Whether mouse is blocked due to Window focus state
     global.__input_window_focus_block_mouse = false;
