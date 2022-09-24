@@ -476,7 +476,7 @@ function __input_gamepad_set_mapping()
         _mapping.raw_negative = 3;
         _mapping.raw_positive = 8;
         
-        _mapping = set_mapping(gp_axisv, undefined, __INPUT_MAPPING.BUTTON_TO_AXIS, "righty");
+        _mapping = set_mapping(gp_axisrv, undefined, __INPUT_MAPPING.BUTTON_TO_AXIS, "righty");
         _mapping.raw_negative = 9;
         _mapping.raw_positive = 0;
 
