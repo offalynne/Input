@@ -147,6 +147,22 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 
 If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are newly deactivated this frame for the player. The hold time required to activate this function is given by [`INPUT_LONG_DELAY`](Configuration).
 
+## `input_check_quick_pressed(verb, [playerIndex], [bufferDuration])`
+
+*Returns:* Boolean, whether the given verb has been actived by a quick tap on an analogue (thumbstick/trigger) axis this frame
+
+|Name              |Datatype                        |Purpose                                                                                                   |
+|------------------|--------------------------------|----------------------------------------------------------------------------------------------------------|
+|`verb`            |[verb](Verbs-and-Bindings)/array|[Verb](Verbs-and-Bindings) to check, or an array of [verbs](Verbs-and-Bindings) (see below)               |
+|`[playerIndex]`   |integer                         |Player to target. If not specified, player 0 is used                                                      |
+|`[bufferDuration]`|frames/milliseconds             |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
+
+If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are quick tapped this frame for the player.
+
+!> This function will only work with anaologue input. Digital input (buttons, keys etc.) cannot trigger a quick tap.
+
+&nbsp;
+
 &nbsp;
 
 ## `input_check_opposing(verbNegative, verbPositive, [playerIndex], [mostRecent])`

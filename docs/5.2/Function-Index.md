@@ -49,6 +49,7 @@
 - [`input_check_long(verb, [playerIndex], [bufferDuration])`](Functions-(Checkers)#input_check_longverb-playerindex-bufferduration)
 - [`input_check_long_pressed(verb, [playerIndex], [bufferDuration])`](Functions-(Checkers)#input_check_long_pressedverb-playerindex-bufferduration)
 - [`input_check_long_released(verb, [playerIndex], [bufferDuration])`](Functions-(Checkers)#input_check_long_releasedverb-playerindex-bufferduration)
+- [`input_check_quick_pressed(verb, [playerIndex], [bufferDuration])`](Functions-(Checkers)#input_check_quick_pressedverb-playerindex-bufferduration)
 - [`input_check_opposing(verbNegative, verbPositive, [playerIndex], [mostRecent])`](Functions-(Checkers)?id=input_check_opposingverbnegative-verbpositive-playerindex-mostrecent)
 - [`input_check_opposing_repeat(verbNegative, verbPositive, [playerIndex], [mostRecent], [delay], [predelay])`](Functions-(Checkers)?id=input_check_opposing_repeatverbnegative-verbpositive-playerindex-mostrecent-delay-predelay)
 - [`input_check_opposing_pressed(verbNegative, verbPositive, [playerIndex], [mostRecent])`](Functions-(Checkers)?id=input_check_opposing_pressedverbnegative-verbpositive-playerindex-mostrecent)
