@@ -55,6 +55,7 @@
 - [`input_check_opposing_pressed(verbNegative, verbPositive, [playerIndex], [mostRecent])`](Functions-(Checkers)?id=input_check_opposing_pressedverbnegative-verbpositive-playerindex-mostrecent)
 - [`input_value(verb, [playerIndex])`](Functions-(Checkers)#input_valueverb-playerindex)
 - [`input_held_time(verb, [playerIndex])`](Functions-(Checkers)#input_held_timeverb-playerIndex)
+- [`input_held_time_released(verb, [playerIndex])`](Functions-(Checkers)#input_held_time_releasedverb-playerIndex)
 - [`input_is_analogue(verb, [playerIndex])`](Functions-(Checkers)#input_is_analogueverb-playerindex)
 - [`input_check_press_most_recent([array], [playerIndex])`](Functions-(Checkers)#input_check_press_most_recentarray-playerindex)
 

@@ -232,7 +232,20 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 |`verb`         |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to check                 |
 |`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used|
 
-The units returned by this function is determined by `INPUT_TIMER_MILLISECONDS`.
+The units returned by this function is determined by `INPUT_TIMER_MILLISECONDS`. This function returns a value less than 0 if the verb is not active or is not being held.
+
+&nbsp;
+
+## `input_held_time_released(verb, [playerIndex])`
+
+*Returns:* Number, how long the current verb was held when released
+
+|Name           |Datatype                  |Purpose                                             |
+|---------------|--------------------------|----------------------------------------------------|
+|`verb`         |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to check                 |
+|`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used|
+
+The units returned by this function is determined by `INPUT_TIMER_MILLISECONDS`. This function returns a value less than 0 if the verb is not active or was not released.
 
 &nbsp;
 
