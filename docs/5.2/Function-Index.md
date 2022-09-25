@@ -212,6 +212,7 @@
 - [`input_ignore_key_remove(key)`](Functions-(Other)#input_ignore_key_removekey)
 - [`input_clear_momentary(state)`](Functions-(Other)#input_clear_momentarystate)
 - [`input_icons(categoryName)`](Functions-(Other)?id=input_iconscategoryname)
+- [`input_window_has_focus()`](Functions-(Other)?id=input_window_has_focus)
 
 &nbsp;
 

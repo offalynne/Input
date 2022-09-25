@@ -137,3 +137,15 @@ input_icons("xbox one")
 .add("gamepad face north", spr_xboxone_y)
 //etc.
 ```
+
+&nbsp;
+
+## `input_window_has_focus()`
+
+*Returns:* Boolean, whether the game window is in focus
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+!> This function only works on desktop (Windows, MacOS, Linux) platforms.
