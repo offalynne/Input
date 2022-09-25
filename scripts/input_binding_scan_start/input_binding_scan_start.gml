@@ -25,8 +25,6 @@
 /// @param   [failureCallback]
 /// @param   [sourceFilter]
 /// @param   [playerIndex=0]
-/// @param   [ignoreArray]
-/// @param   [allowArray]
 
 enum INPUT_BINDING_SCAN_EVENT
 {
@@ -44,7 +42,7 @@ enum INPUT_BINDING_SCAN_EVENT
     ABORTED                     = -30, //Binding scan was aborted before completion using input_binding_scan_abort()
 }
 
-function input_binding_scan_start(_success_method, _failure_method = undefined, _source_filter = undefined, _player_index = 0, _ignore_array = undefined, _allow_array = undefined)
+function input_binding_scan_start(_success_method, _failure_method = undefined, _source_filter = undefined, _player_index = 0)
 {
     __input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX
@@ -70,41 +68,6 @@ function input_binding_scan_start(_success_method, _failure_method = undefined, 
         __input_error("Binding scan failure callback set to an illegal value (typeof=", typeof(_failure_method), ")");
     }
     
-    //Fic minor misuse of allow/ignore arrays
-    if (!is_array(_allow_array ) && (_allow_array  != undefined)) _allow_array  = [_allow_array ];
-    if (!is_array(_ignore_array) && (_ignore_array != undefined)) _ignore_array = [_ignore_array];
-    
-    var _ignore_struct = undefined;
-    var _allow_struct  = undefined;
-    
-    if (is_array(_ignore_array)) //Ignore used if there's no allow array
-    {
-        _ignore_struct = {};
-        
-        var _i = 0;
-        repeat(array_length(_ignore_array))
-        {
-            var _value = _ignore_array[_i];
-            if (is_string(_value) && (_value != "mouse wheel up") && (_value != "mouse wheel down")) _value = ord(_value);
-            _ignore_struct[$ string(_value)] = true;
-            ++_i;
-        }
-    }
-    
-    if (is_array(_allow_array)) //Allow takes precedence
-    {
-        _allow_struct = {};
-        
-        var _i = 0;
-        repeat(array_length(_allow_array))
-        {
-            var _value = _allow_array[_i];
-            if (is_string(_value) && (_value != "mouse wheel up") && (_value != "mouse wheel down")) _value = ord(_value);
-            _allow_struct[$ string(_value)] = true;
-            ++_i;
-        }
-    }
-    
     with(global.__input_players[_player_index])
     {
         __rebind_state            = 1;
@@ -112,8 +75,6 @@ function input_binding_scan_start(_success_method, _failure_method = undefined, 
         __rebind_success_callback = _success_method;
         __rebind_failure_callback = _failure_method;
         __rebind_source_filter    = _source_filter;
-        __rebind_ignore_struct    = _ignore_struct;
-        __rebind_allow_struct     = _allow_struct;
         
         __input_trace("Binding scan started for player ", _player_index);
     }
