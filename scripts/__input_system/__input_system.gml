@@ -108,13 +108,13 @@
 // gp_select     = 32777             32787 = gp_axisrh
 // gp_start      = 32778             32788 = gp_axisrv
 // Plus custom buttons:
-// gp_guide      = 32789             32789 = gp_guide
-// gp_misc1      = 32790             32790 = gp_misc1
-// gp_touchpad   = 32791             32791 = gp_touchpad
-// gp_paddle1    = 32792             32792 = gp_paddle1
-// gp_paddle2    = 32793             32793 = gp_paddle2
-// gp_paddle3    = 32794             32794 = gp_paddle3
-// gp_paddle4    = 32795             32795 = gp_paddle4
+// gp_guide      = 32889             32889 = gp_guide
+// gp_misc1      = 32890             32890 = gp_misc1
+// gp_touchpad   = 32891             32891 = gp_touchpad
+// gp_paddle1    = 32892             32892 = gp_paddle1
+// gp_paddle2    = 32893             32893 = gp_paddle2
+// gp_paddle3    = 32894             32894 = gp_paddle3
+// gp_paddle4    = 32895             32895 = gp_paddle4
 
 enum __INPUT_SOURCE
 {
