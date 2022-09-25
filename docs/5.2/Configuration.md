@@ -12,6 +12,7 @@
 |----------------------------------|-------------|--------------------------------------------------------------------------------------------------|
 |`INPUT_MAX_PLAYERS`               |`4`          |Maximum number of players that the game supports                                                  |
 |`INPUT_MAX_ALTERNATE_BINDINGS`    |`2`          |Maximum number of binding to allow per verb per profile                                           |
+|`INPUT_ALLOW_OUT_OF_FOCUS`        |`false`      |Whether to allow input while game window is out of focus on desktop platforms                     |
 |`INPUT_TIMER_MILLISECONDS`        |`false`      |Set to `true` to use milliseconds instead of frames for many functions and behaviours inside Input|
 |`INPUT_ANDROID_KEYBOARD_ALLOWED`  |`false`      |Whether to allow keyboard input on Android platform                                               |
 |`INPUT_SWITCH_KEYBOARD_ALLOWED`   |`false`      |Whether to allow keyboard input on Switch platform                                                |
@@ -50,6 +51,7 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 |`INPUT_REPEAT_DEFAULT_PREDELAY`  |`30`         |Default time before the first re-trigger for [`input_check_repeat()`](Functions-(Checkers)#input_check_repeatverb-playerindex-delay-predelay)        |
 |`INPUT_LONG_DELAY`               |`10`         |Time before long-press functions are activated. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`                |
 |`INPUT_DOUBLE_DELAY`             |`12`         |Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`|
+|`INPUT_QUICK_BUFFER`             |`4`          |Maximum number of frames to trigger a quick tap. Lower values require the thumbstick to move faster. This value is always measured in frames         |
 |`INPUT_CHORD_DEFAULT_TIME`       |`4`          |Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`|
 |`INPUT_2D_CLAMP`                 |`true`       |Whether to clamp 2D input to a maximum distance of 1 unit                                                                                            |
 |`INPUT_2D_XY_AXIS_BIAS`          |`0.0`        |The amount of bias for 2D checkers to prefer straight lines along the x- and y-axes. This makes it easier for the player to input exactly horizontal and exactly vertical movement. Value should be from 0 to 1. Higher values make the biasing behaviour stronger|
