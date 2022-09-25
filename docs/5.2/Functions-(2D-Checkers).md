@@ -84,3 +84,19 @@ The struct returned by this function contains two member variables: `.x` and `.y
 |`verbDown`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
 |`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used        |
 |`[mostRecent]` |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
+
+&nbsp;
+
+## `input_quick_2d(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`
+
+*Returns:* Boolean, whether the analogue inputs registered a quick tap this frame
+
+|Name            |Datatype                  |Purpose                                                     |
+|----------------|--------------------------|------------------------------------------------------------|
+|`verbLeft`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
+|`verbRight`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
+|`verbUp`        |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
+|`verbDown`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
+|`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used        |
+
+!> Only analogue inputs can trigger quick taps. This function will return <false> if any digital input is used.
