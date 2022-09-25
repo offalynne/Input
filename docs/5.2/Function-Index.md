@@ -238,6 +238,7 @@
 - [`input_gamepad_check_pressed(gamepadIndex, GMconstant)`](Functions-(Gamepad)#input_gamepad_check_pressedgamepadindex-gmconstant)
 - [`input_gamepad_check_released(gamepadIndex, GMconstant)`](Functions-(Gamepad)#input_gamepad_check_releasedgamepadindex-gmconstant)
 - [`input_gamepad_value(gamepadIndex, GMconstant)`](Functions-(Gamepad)#input_gamepad_valuegamepadindex-gmconstant)
+- [`input_gamepad_delta(gamepadIndex, GMconstant)`](Functions-(Gamepad)#input_gamepad_deltagamepadindex-gmconstant)
 - [`input_gamepad_is_axis(gamepadIndex, GMconstant)`](Functions-(Gamepad)#input_gamepad_is_axisgamepadindex-gmconstant)
 - [`input_gamepad_is_connected(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_is_connectedgamepadindex)
 - [`input_gamepad_get_description(gamepadIndex)`](Functions-(Gamepad)#input_gamepad_get_descriptiongamepadindex)

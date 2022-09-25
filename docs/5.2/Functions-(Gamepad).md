@@ -50,6 +50,17 @@
 
 &nbsp;
 
+## `input_gamepad_delta(gamepadIndex, GMconstant)`
+
+*Returns:* Real, difference in value between this frame and the previous frame for the given button/axis
+
+|Name          |Datatype|Purpose                                               |
+|--------------|--------|------------------------------------------------------|
+|`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)|
+|`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm). What physical input this actually checks is determined by Input's own SDL remapping system|
+
+&nbsp;
+
 ## `input_gamepad_is_axis(gamepadIndex, GMconstant)`
 
 *Returns:* Boolean, if the given `gp_*` constant is mapped as an analogue input
