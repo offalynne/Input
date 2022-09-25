@@ -65,6 +65,11 @@ function __input_validate_macros()
         __input_error("INPUT_DOUBLE_DELAY must be a number that is greater than or equal to 1");
     }
     
+    if (!is_numeric(INPUT_QUICK_BUFFER) || (INPUT_QUICK_BUFFER < 1))
+    {
+        __input_error("INPUT_QUICK_BUFFER must be a number that is greater than or equal to 1");
+    }
+    
     if (!is_numeric(INPUT_CHORD_DEFAULT_TIME) || (INPUT_CHORD_DEFAULT_TIME < 1))
     {
         __input_error("INPUT_CHORD_DEFAULT_TIME must be a number that is greater than or equal to 1");
