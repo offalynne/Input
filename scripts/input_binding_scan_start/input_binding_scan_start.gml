@@ -85,7 +85,7 @@ function input_binding_scan_start(_success_method, _failure_method = undefined, 
         repeat(array_length(_ignore_array))
         {
             var _value = _ignore_array[_i];
-            if (is_string(_value)) _value = ord(_value);
+            if (is_string(_value) && (_value != "mouse wheel up") && (_value != "mouse wheel down")) _value = ord(_value);
             _ignore_struct[$ string(_value)] = true;
             ++_i;
         }
@@ -99,7 +99,7 @@ function input_binding_scan_start(_success_method, _failure_method = undefined, 
         repeat(array_length(_allow_array))
         {
             var _value = _allow_array[_i];
-            if (is_string(_value)) _value = ord(_value);
+            if (is_string(_value) && (_value != "mouse wheel up") && (_value != "mouse wheel down")) _value = ord(_value);
             _allow_struct[$ string(_value)] = true;
             ++_i;
         }

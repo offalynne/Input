@@ -262,12 +262,12 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
                     if (_return_boolean) return true;
                     return input_binding_mouse_button(_mouse_button);
                 }
-                else if (mouse_wheel_up())
+                else if (mouse_wheel_up() && _filter_func(__INPUT_BINDING_MOUSE_WHEEL_UP, _ignore_struct, _allow_struct))
                 {
                     if (_return_boolean) return true;
                     return input_binding_mouse_wheel_up();
                 }
-                else if (mouse_wheel_down())
+                else if (mouse_wheel_down() && _filter_func(__INPUT_BINDING_MOUSE_WHEEL_DOWN, _ignore_struct, _allow_struct))
                 {
                     if (_return_boolean) return true;
                     return input_binding_mouse_wheel_down();
