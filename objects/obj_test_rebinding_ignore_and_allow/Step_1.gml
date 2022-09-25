@@ -7,8 +7,8 @@ if (input_keyboard_check_pressed(vk_escape) || input_gamepad_check_pressed(input
 
 if (!input_binding_scan_in_progress())
 {
-    //Ignore A + B + C
-    if (input_keyboard_check_pressed(ord("I")))
+    //Ignore A + B + C + (A) + (B)
+    if (input_keyboard_check_pressed(ord("I")) || input_gamepad_check_released(input_player_get_gamepad(), gp_padl))
     {
         rebinding_source = input_source_get_array();
         
@@ -19,11 +19,11 @@ if (!input_binding_scan_in_progress())
         undefined,
         rebinding_source,
         0,
-        ["A", "B", "C"]);
+        ["A", "B", "C", gp_face1, gp_face2]);
     }
     
-    //Allow A + B + C
-    if (input_keyboard_check_pressed(ord("A")))
+    //Allow A + B + C + (X) + (Y)
+    if (input_keyboard_check_pressed(ord("A")) || input_gamepad_check_released(input_player_get_gamepad(), gp_padu))
     {
         rebinding_source = input_source_get_array();
         
@@ -35,12 +35,12 @@ if (!input_binding_scan_in_progress())
         rebinding_source,
         0,
         undefined,
-        ["A", "B", "C"]);
+        ["A", "B", "C", gp_face3, gp_face4]);
     }
     
-    //Ignore A + B, but allow A + B + C
-    //Since ignore > allow, this means only C is valid
-    if (input_keyboard_check_pressed(ord("M")))
+    //Test both ignore and allow arrays being set at the same time
+    //Since ignore > allow, this means only C + gp_face4 is valid
+    if (input_keyboard_check_pressed(ord("M")) || input_gamepad_check_released(input_player_get_gamepad(), gp_padr))
     {
         rebinding_source = input_source_get_array();
         
@@ -51,7 +51,7 @@ if (!input_binding_scan_in_progress())
         undefined,
         rebinding_source,
         0,
-        ["A", "B"],
-        ["A", "B", "C"]);
+        ["A", "B", gp_face3],
+        ["A", "B", "C", gp_face3, gp_face4]);
     }
 }
