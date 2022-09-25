@@ -65,23 +65,6 @@ This function will **not** return `true` on the same frame a verb is activated (
 
 &nbsp;
 
-## `input_check_repeat_opposing(verbNegative, verbPositive, [playerIndex], [mostRecent], [delay], [predelay])`
-
-*Returns:* Real, the sign of the result of the negative and positive active verbs as re-triggered by a repeater behaviour
-
-|Name           |Datatype                        |Purpose                                                                                                                      |
-|---------------|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
-|`verbNegative` |[verb](Verbs-and-Bindings)      |[Verb](Verbs-and-Bindings) to check as negative component                                                                    |
-|`verbPositive` |[verb](Verbs-and-Bindings)      |[Verb](Verbs-and-Bindings) to check as positive component                                                                    |
-|`[playerIndex]`|integer                         |Player to target. If not specified, player 0 is used                                                                         |
-|`[mostRecent]` |boolean                         |Whether to use the most recent input instead of returning `false` when two verbs conflict. False if unspecified            |
-|`[delay]`      |frames/milliseconds             |Time between re-triggers; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration). The units of this value are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
-|`[predelay]`   |frames/milliseconds             |Time before the first re-trigger; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration). The units of this value are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
-
-This function will **not** return `true` on the same frame a verb is activated (unless `predelay` is set to 0). You'll probably want to combine this function with [`input_check_pressed()`](Functions-(Checkers)#input_check_pressedverb-playerindex-bufferduration).
-
-&nbsp;
-
 ## `input_check_double(verb, [playerIndex], [bufferDuration])`
 
 *Returns:* Boolean, if the verb is currently active
@@ -175,7 +158,37 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 |`verbNegative`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to check as negative component                                                 |
 |`verbPositive`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to check as positive component                                                 |
 |`[playerIndex]`   |integer                   |Player to target. If not specified, player 0 is used                                                      |
-|`[mostRecent]` |boolean                      |Whether to use the most recent input instead of returning `false` when two verbs conflict. False if unspecified|
+|`[mostRecent]`    |boolean                   |Whether to use the most recent input instead of returning `false` when two verbs conflict. False if unspecified|
+
+&nbsp;
+
+## `input_check_opposing_repeat(verbNegative, verbPositive, [playerIndex], [mostRecent], [delay], [predelay])`
+
+*Returns:* Real, the sign of the result of the negative and positive active verbs as re-triggered by a repeater behaviour
+
+|Name           |Datatype                        |Purpose                                                                                                                      |
+|---------------|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+|`verbNegative` |[verb](Verbs-and-Bindings)      |[Verb](Verbs-and-Bindings) to check as negative component                                                                    |
+|`verbPositive` |[verb](Verbs-and-Bindings)      |[Verb](Verbs-and-Bindings) to check as positive component                                                                    |
+|`[playerIndex]`|integer                         |Player to target. If not specified, player 0 is used                                                                         |
+|`[mostRecent]` |boolean                         |Whether to use the most recent input instead of returning `false` when two verbs conflict. False if unspecified            |
+|`[delay]`      |frames/milliseconds             |Time between re-triggers; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration). The units of this value are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
+|`[predelay]`   |frames/milliseconds             |Time before the first re-trigger; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration). The units of this value are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
+
+This function will **not** return `true` on the same frame a verb is activated (unless `predelay` is set to 0). You'll probably want to combine this function with [`input_check_pressed()`](Functions-(Checkers)#input_check_pressedverb-playerindex-bufferduration).
+
+&nbsp;
+
+## `input_check_opposing_pressed(verbNegative, verbPositive, [playerIndex], [mostRecent])`
+
+*Returns:* Real, the sign of the result of the negative and positive newly active verbs
+
+|Name              |Datatype                  |Purpose                                                                                                   |
+|------------------|--------------------------|----------------------------------------------------------------------------------------------------------|
+|`verbNegative`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to check as negative component                                                 |
+|`verbPositive`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to check as positive component                                                 |
+|`[playerIndex]`   |integer                   |Player to target. If not specified, player 0 is used                                                      |
+|`[mostRecent]`    |boolean                   |Whether to use the most recent input instead of returning `false` when two verbs conflict. False if unspecified|
 
 &nbsp;
 
