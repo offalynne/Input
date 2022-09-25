@@ -25,6 +25,8 @@
 /// @param   [failureCallback]
 /// @param   [sourceFilter]
 /// @param   [playerIndex=0]
+/// @param   [ignoreArray]
+/// @param   [allowArray]
 
 enum INPUT_BINDING_SCAN_EVENT
 {
@@ -42,7 +44,7 @@ enum INPUT_BINDING_SCAN_EVENT
     ABORTED                     = -30, //Binding scan was aborted before completion using input_binding_scan_abort()
 }
 
-function input_binding_scan_start(_success_method, _failure_method = undefined, _source_filter = undefined, _player_index = 0)
+function input_binding_scan_start(_success_method, _failure_method = undefined, _source_filter = undefined, _player_index = 0, _ignore_array = undefined, _allow_array = undefined)
 {
     __input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX
@@ -68,6 +70,41 @@ function input_binding_scan_start(_success_method, _failure_method = undefined, 
         __input_error("Binding scan failure callback set to an illegal value (typeof=", typeof(_failure_method), ")");
     }
     
+    //Default to no binding filter
+    var _filter_type   = 0;
+    var _filter_struct = {};
+    
+    //Fic minor misuse of allow/ignore arrays
+    if (!is_array(_allow_array ) && (_allow_array  != undefined)) _allow_array  = [_allow_array ];
+    if (!is_array(_ignore_array) && (_ignore_array != undefined)) _ignore_array = [_ignore_array];
+    
+    if (is_array(_allow_array)) //Allow takes precedence
+    {
+        _filter_type = 1;
+        
+        var _i = 0;
+        repeat(array_length(_allow_array))
+        {
+            var _value = _allow_array[_i];
+            if (is_string(_value)) _value = ord(_value);
+            _filter_struct[$ string(_value)] = true;
+            ++_i;
+        }
+    }
+    else if (is_array(_ignore_array)) //Ignore used if there's no allow array
+    {
+        _filter_type = 2;
+        
+        var _i = 0;
+        repeat(array_length(_ignore_array))
+        {
+            var _value = _ignore_array[_i];
+            if (is_string(_value)) _value = ord(_value);
+            _filter_struct[$ string(_value)] = true;
+            ++_i;
+        }
+    }
+    
     with(global.__input_players[_player_index])
     {
         __rebind_state            = 1;
@@ -75,6 +112,8 @@ function input_binding_scan_start(_success_method, _failure_method = undefined, 
         __rebind_success_callback = _success_method;
         __rebind_failure_callback = _failure_method;
         __rebind_source_filter    = _source_filter;
+        __rebind_filter_type      = _filter_type; //0 = no filter, 1 = allow, 2 = ignore
+        __rebind_filter_struct    = _filter_struct;
         
         __input_trace("Binding scan started for player ", _player_index);
     }

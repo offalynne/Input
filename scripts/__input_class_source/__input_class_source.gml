@@ -48,17 +48,17 @@ function __input_class_source(_source, _gamepad = undefined) constructor
         return false;
     }
     
-    static __scan_for_binding = function(_player_index, _return_boolean)
+    static __scan_for_binding = function(_player_index, _return_boolean, _filter_type, _filter_struct)
     {
         if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && ((__source == __INPUT_SOURCE.KEYBOARD) || (__source == __INPUT_SOURCE.MOUSE)))
         {
-            var _binding = __input_source_scan_for_binding(__INPUT_SOURCE.KEYBOARD, __gamepad, _player_index, _return_boolean);
+            var _binding = __input_source_scan_for_binding(__INPUT_SOURCE.KEYBOARD, __gamepad, _player_index, _return_boolean, _filter_type, _filter_struct);
             if (_binding != undefined) return _binding;
             
-            return __input_source_scan_for_binding(__INPUT_SOURCE.MOUSE, __gamepad, _player_index, _return_boolean);
+            return __input_source_scan_for_binding(__INPUT_SOURCE.MOUSE, __gamepad, _player_index, _return_boolean, _filter_type, _filter_struct);
         }
         
-        return __input_source_scan_for_binding(__source, __gamepad, _player_index, _return_boolean);
+        return __input_source_scan_for_binding(__source, __gamepad, _player_index, _return_boolean, _filter_type, _filter_struct);
     }
     
     static __validate_binding = function(_binding)
@@ -205,8 +205,25 @@ function __input_class_source(_source, _gamepad = undefined) constructor
     }
 }
 
-function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0, _return_boolean)
+function __input_source_scan_for_binding(_source, _gamepad, _player_index, _return_boolean, _filter_type, _filter_struct)
 {
+    var _filter_func = function(_input, _filter_type, _filter_struct) //Returns <false> if the binding failed to pass the filter
+    {
+        if ((_filter_type == 0) || !is_struct(_filter_struct)) return true;
+        
+        if (_filter_type == 1) //Use the struct to allow bindings
+        {
+            return variable_struct_exists(_filter_struct, string(_input));
+        }
+        else if (_filter_type == 2) //Use the struct to ignore bindings
+        {
+            return not variable_struct_exists(_filter_struct, string(_input));
+        }
+        
+        //Fallthrough gracefully :)
+        return true;
+    }
+    
     switch(_source)
     {
         case __INPUT_SOURCE.KEYBOARD:
@@ -214,7 +231,8 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0, _
             
             if (global.__input_any_keyboard_binding_defined 
             && (_keyboard_key >= __INPUT_KEYCODE_MIN) && (_keyboard_key <= __INPUT_KEYCODE_MAX)
-            && !__input_key_is_ignored(_keyboard_key))
+            && !__input_key_is_ignored(_keyboard_key)
+            && _filter_func(_keyboard_key, _filter_type, _filter_struct))
             {
                 if (_return_boolean) return true;
                 
@@ -248,7 +266,8 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0, _
                 
                 if (global.__input_mouse_allowed_on_platform && !global.__input_window_focus_block_mouse
                     && (_mouse_button != mb_none)
-                    && (!__INPUT_TOUCH_SUPPORT || (_mouse_button != mb_left))) //GM conflates LMB and touch. Don't rebind
+                    && (!__INPUT_TOUCH_SUPPORT || (_mouse_button != mb_left)) //GM conflates LMB and touch. Don't rebind
+                    && _filter_func(_mouse_button, _filter_type, _filter_struct))
                 {
                     if (_return_boolean) return true;
                     return input_binding_mouse_button(_mouse_button);
@@ -289,7 +308,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0, _
                     if (input_gamepad_is_axis(_gamepad, _check))
                     {
                         var _value = input_gamepad_value(_gamepad, _check);
-                        if (abs(_value) > input_axis_threshold_get(_check, _player_index).mini)
+                        if ((abs(_value) > input_axis_threshold_get(_check, _player_index).mini) && _filter_func(_check, _filter_type, _filter_struct))
                         {
                             if (_return_boolean) return true;
                             return (input_binding_gamepad_axis(_check, (_value < 0)).__gamepad_set(_gamepad));
@@ -297,7 +316,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0, _
                     }
                     else
                     {
-                        if (input_gamepad_check(_gamepad, _check))
+                        if (input_gamepad_check(_gamepad, _check) && _filter_func(_check, _filter_type, _filter_struct))
                         {
                             if (_return_boolean) return true;
                             return (input_binding_gamepad_button(_check).__gamepad_set(_gamepad));

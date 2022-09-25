@@ -18,6 +18,8 @@ function __input_class_player() constructor
     __rebind_success_callback = undefined;
     __rebind_failure_callback = undefined;
     __rebind_source_filter    = [];
+    __rebind_filter_type      = 0; //0 = no filter, 1 = allow, 2 = ignore
+    __rebind_filter_struct    = {};
     
     __axis_thresholds_dict = {};
     
@@ -410,7 +412,7 @@ function __input_class_player() constructor
         var _i = 0;
         repeat(array_length(__source_array))
         {
-            if (__source_array[_i].__scan_for_binding(__index, true)) return true;
+            if (__source_array[_i].__scan_for_binding(__index, true, 0, undefined)) return true;
             ++_i;
         }
         
@@ -1243,7 +1245,7 @@ function __input_class_player() constructor
                     __input_error("Value in filter array is not a source (index ", _i, ", ", __rebind_source_filter[_i], ")");
                 }
                 
-                var _source_binding = __rebind_source_filter[_i].__scan_for_binding(__index, false);
+                var _source_binding = __rebind_source_filter[_i].__scan_for_binding(__index, false, __rebind_filter_type, __rebind_filter_struct);
                 if (_source_binding != undefined)
                 {
                     var _new_binding    = _source_binding;
