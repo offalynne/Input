@@ -141,3 +141,13 @@ The struct returned by the function contains the following member variables:
 |Name    |Datatype|Purpose                                               |
 |--------|--------|------------------------------------------------------|
 |`button`|integer |Button to check, using GameMaker's native [virtual button constants](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FMouse_Input%252FMouse_Input.htm)|
+
+&nbsp;
+
+## `input_mouse_in_bounds()`
+
+*Returns:* Boolean, returns whether the mouse is inside the window bounds
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |

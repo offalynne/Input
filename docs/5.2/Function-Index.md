@@ -226,6 +226,7 @@
 - [`input_mouse_moved()`](Functions-(Mouse)#input_mouse_moved)
 - [`input_mouse_coord_space_set(coordSpace)`](Functions-(Mouse)?id=input_mouse_coord_space_setcoordspace)
 - [`input_mouse_coord_space_get()`](Functions-(Mouse)?id=input_mouse_coord_space_get)
+- [`input_mouse_in_bounds()`](Functions-(Mouse)?id=input_mouse_in_bounds)
 
 ?> The following mouse functions are provided for convenience if you want to build your own features using Input's mouse implementation. In general, [verbs](Verbs-and-Bindings) are the intended way to use Input and are preferred.
 
