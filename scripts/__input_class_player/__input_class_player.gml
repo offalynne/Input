@@ -18,8 +18,8 @@ function __input_class_player() constructor
     __rebind_success_callback = undefined;
     __rebind_failure_callback = undefined;
     __rebind_source_filter    = [];
-    __rebind_filter_type      = 0; //0 = no filter, 1 = allow, 2 = ignore
-    __rebind_filter_struct    = {};
+    __rebind_ignore_struct    = undefined;
+    __rebind_allow_struct     = undefined;
     
     __axis_thresholds_dict = {};
     
@@ -1187,12 +1187,12 @@ function __input_class_player() constructor
     {
         #region Error checking
         
-        if (!input_window_has_focus())
-        {
-            __input_trace("Binding scan failed: Game lost focus");
-            __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.LOST_FOCUS);
-            return ;
-        }
+        //if (!input_window_has_focus())
+        //{
+        //    __input_trace("Binding scan failed: Game lost focus");
+        //    __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.LOST_FOCUS);
+        //    return ;
+        //}
         
         if (array_length(__rebind_source_filter) <= 0)
         {
@@ -1245,7 +1245,7 @@ function __input_class_player() constructor
                     __input_error("Value in filter array is not a source (index ", _i, ", ", __rebind_source_filter[_i], ")");
                 }
                 
-                var _source_binding = __rebind_source_filter[_i].__scan_for_binding(__index, false, __rebind_filter_type, __rebind_filter_struct);
+                var _source_binding = __rebind_source_filter[_i].__scan_for_binding(__index, false, __rebind_ignore_struct, __rebind_allow_struct);
                 if (_source_binding != undefined)
                 {
                     var _new_binding    = _source_binding;

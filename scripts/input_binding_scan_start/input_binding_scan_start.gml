@@ -70,37 +70,37 @@ function input_binding_scan_start(_success_method, _failure_method = undefined, 
         __input_error("Binding scan failure callback set to an illegal value (typeof=", typeof(_failure_method), ")");
     }
     
-    //Default to no binding filter
-    var _filter_type   = 0;
-    var _filter_struct = {};
-    
     //Fic minor misuse of allow/ignore arrays
     if (!is_array(_allow_array ) && (_allow_array  != undefined)) _allow_array  = [_allow_array ];
     if (!is_array(_ignore_array) && (_ignore_array != undefined)) _ignore_array = [_ignore_array];
     
-    if (is_array(_allow_array)) //Allow takes precedence
+    var _ignore_struct = undefined;
+    var _allow_struct  = undefined;
+    
+    if (is_array(_ignore_array)) //Ignore used if there's no allow array
     {
-        _filter_type = 1;
-        
-        var _i = 0;
-        repeat(array_length(_allow_array))
-        {
-            var _value = _allow_array[_i];
-            if (is_string(_value)) _value = ord(_value);
-            _filter_struct[$ string(_value)] = true;
-            ++_i;
-        }
-    }
-    else if (is_array(_ignore_array)) //Ignore used if there's no allow array
-    {
-        _filter_type = 2;
+        _ignore_struct = {};
         
         var _i = 0;
         repeat(array_length(_ignore_array))
         {
             var _value = _ignore_array[_i];
             if (is_string(_value)) _value = ord(_value);
-            _filter_struct[$ string(_value)] = true;
+            _ignore_struct[$ string(_value)] = true;
+            ++_i;
+        }
+    }
+    
+    if (is_array(_allow_array)) //Allow takes precedence
+    {
+        _allow_struct = {};
+        
+        var _i = 0;
+        repeat(array_length(_allow_array))
+        {
+            var _value = _allow_array[_i];
+            if (is_string(_value)) _value = ord(_value);
+            _allow_struct[$ string(_value)] = true;
             ++_i;
         }
     }
@@ -112,8 +112,8 @@ function input_binding_scan_start(_success_method, _failure_method = undefined, 
         __rebind_success_callback = _success_method;
         __rebind_failure_callback = _failure_method;
         __rebind_source_filter    = _source_filter;
-        __rebind_filter_type      = _filter_type; //0 = no filter, 1 = allow, 2 = ignore
-        __rebind_filter_struct    = _filter_struct;
+        __rebind_ignore_struct    = _ignore_struct;
+        __rebind_allow_struct     = _allow_struct;
         
         __input_trace("Binding scan started for player ", _player_index);
     }
