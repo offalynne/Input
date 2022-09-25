@@ -101,8 +101,8 @@ function __input_class_binding() constructor
         }
         
         if (!variable_struct_exists(_binding_shell, "value")
-        && (_binding_shell.type != "mouse wheel up")
-        && (_binding_shell.type != "mouse wheel down"))
+        && (_binding_shell.type != __INPUT_BINDING_MOUSE_WHEEL_UP)
+        && (_binding_shell.type != __INPUT_BINDING_MOUSE_WHEEL_DOWN))
         {
             __input_error("Binding \"value\" not found; binding is corrupted");
             return;
@@ -114,8 +114,23 @@ function __input_class_binding() constructor
             return;
         }
         
+        var _value = _binding_shell[$ "value"];
+        if ((_binding_shell.type == __INPUT_BINDING_GAMEPAD_AXIS) || (_binding_shell.type == __INPUT_BINDING_GAMEPAD_BUTTON))
+        {
+            switch(_value)
+            {
+                case __INPUT_LEGACY_GP_GUIDE:    _value = gp_guide;    __input_trace("Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
+                case __INPUT_LEGACY_GP_MISC1:    _value = gp_misc1;    __input_trace("Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
+                case __INPUT_LEGACY_GP_TOUCHPAD: _value = gp_touchpad; __input_trace("Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
+                case __INPUT_LEGACY_GP_PADDLE1:  _value = gp_paddle1;  __input_trace("Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
+                case __INPUT_LEGACY_GP_PADDLE2:  _value = gp_paddle2;  __input_trace("Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
+                case __INPUT_LEGACY_GP_PADDLE3:  _value = gp_paddle3;  __input_trace("Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
+                case __INPUT_LEGACY_GP_PADDLE4:  _value = gp_paddle4;  __input_trace("Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
+            }
+        }
+        
         type                  = _binding_shell.type;
-        value                 = _binding_shell[$ "value"              ];
+        value                 = _value;
         axis_negative         = _binding_shell[$ "axis_negative"      ];
         __gamepad_description = _binding_shell[$ "gamepad_description"];
         __threshold_min       = _binding_shell[$ "threshold_min"      ];
