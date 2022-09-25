@@ -94,6 +94,9 @@
 - [`input_binding_scan_start(successCallback, [failureCallback], [sourceFilter], [playerIndex])`](Functions-(Binding-Creators)?id=input_binding_scan_startsuccesscallback-failurecallback-sourcefilter-playerindex)
 - [`input_binding_scan_abort([playerIndex])`](Functions-(Binding-Creators)?id=input_binding_scan_abortplayerindex)
 - [`input_binding_scan_in_progress([playerIndex])`](Functions-(Binding-Creators)?id=input_binding_scan_in_progressplayerindex)
+- [`input_binding_scan_set_params([ignoreArray], [allowArray], [playerIndex])`](Functions-(Binding-Creators)?id=input_binding_scan_set_paramsignorearray-allowarray-playerindex)
+- [`input_binding_scan_get_params([playerIndex])`](Functions-(Binding-Creators)?id=input_binding_scan_get_paramsplayerindex)
+- [`input_binding_scan_clear_params([playerIndex])`](Functions-(Binding-Creators)?id=input_binding_scan_clear_paramsplayerindex)
 
 &nbsp;
 

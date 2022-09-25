@@ -132,8 +132,50 @@ Aborts binding scanning for the given player.
 
 ## `input_binding_scan_in_progress([playerIndex])`
 
-_Returns:_ Boolean, whether the given player is currently scanning for bindings
+_Returns: Boolean, whether the given player is currently scanning for bindings
 
 |Name           |Datatype|Purpose                                                 |
 |---------------|--------|--------------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is targeted|
+
+&nbsp;
+
+## `input_binding_scan_set_params([ignoreArray], [allowArray], [playerIndex])`
+
+_Returns: N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                                                                                                                                    |
+|---------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`[ignoreArray]`|array   |Array of keyboard keys (`vk_*`, `"A"`), mouse buttons (`mb_*`), or gamepad constants (`gp_*`) to explicitly disallow being scanned                         |
+|`[allowArray]` |array   |Array of keyboard keys (`vk_*`, `"A"`), mouse buttons (`mb_*`), or gamepad constants (`gp_*`) to explicitly scan for, excluding all other possible bindings|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is targeted                                                                                                   |
+
+This function sets up arrays of potential bindings to ignore or allow. This allows the developer to filter out potentially problematic rebindings that could interfere with stable operation.
+
+?> If a constant appear in both lists, the "ignore" array takes precedence and the binding will be ignored.
+
+!> Unfortunately, earlier versions of GameMaker don't have a constant for mouse wheel up/down. Instead, to specify that mouse wheel bindings should be ignore/allowed, please use the strings `"mouse wheel up"` and `"mouse wheel down"` in lieu of constants.
+
+&nbsp;
+
+## `input_binding_scan_get_params([playerIndex])`
+
+_Returns:_ Struct, the binding scanning parameters set by `input_binding_scan_set_params()`
+
+|Name           |Datatype|Purpose                                                 |
+|---------------|--------|--------------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is targeted|
+
+The struct returned by this function has two elements `.ignore_array` and `.allow_array` corresponding to the arrays passed to `input_binding_scan_set_params()`. Editing these arrays will not implictly change behaviour for binding scanning, and the order of elements in the arrays returned by this function may not exactly match what was set via `input_binding_scan_set_params()`.
+
+&nbsp;
+
+## `input_binding_scan_clear_params([playerIndex])`
+
+_Returns: N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                                 |
+|---------------|--------|--------------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is targeted|
+
+Clears the parameters set for binding scanning for the given player. No bindings are ignored, no bindings are explicitly allowed.
