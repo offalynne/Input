@@ -1,12 +1,13 @@
-/// @desc    Returns the vector represented by the sum of the verb values
+/// @desc    Returns whther the analogue inputs registered a quick tap this frame
+///          Only analogue inputs can trigger quick taps. This function will return <false> if any digital input is used
+/// 
 /// @param   leftVerb
 /// @param   rightVerb
 /// @param   upVerb
 /// @param   downVerb
 /// @param   [playerIndex=0]
-/// @param   [mostRecent=false]
 
-function input_quick_2d(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0, _most_recent = false)
+function input_quick_2d(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0)
 {
     if (!is_struct(_player_index))
     {
