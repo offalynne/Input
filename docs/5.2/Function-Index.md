@@ -17,7 +17,7 @@
 - [`input_player_ghost_set(state, [playerIndex])`](Functions-(Players)?id=input_player_ghost_setstate-playerindex)
 - [`input_player_ghost_get([playerIndex])`](Functions-(Players)?id=input_player_ghost_getplayerindex)
 - [`input_player_swap(playerIndexA, playerIndexB)`](Functions-(Players)?id=input_player_swapplayerindexa-playerindexb)
-- [`input_multiplayer_params_set(min, max, [dropDown])`](Functions-(Players)?id=input_multiplayer_params_setmin-max-dropdown)
+- [`input_multiplayer_params_set(min, max, [dropDown], [allowAbort])`](Functions-(Players)?id=input_multiplayer_params_setmin-max-dropdown-allowabort)
 - [`input_multiplayer_params_get()`](Functions-(Players)?id=input_multiplayer_params_get)
 - [`input_multiplayer_is_finished()`](Functions-(Players)?id=input_multiplayer_is_finished)
 

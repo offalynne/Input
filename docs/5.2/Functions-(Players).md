@@ -180,15 +180,16 @@ This function will swap over the two players with the given indices. This includ
 
 &nbsp;
 
-## `input_multiplayer_params_set(min, max, [dropDown])`
+## `input_multiplayer_params_set(min, max, [dropDown], [allowAbort])`
 
 *Returns:* N/A (`undefined`)
 
-|Name        |Datatype|Purpose                                                                           |
-|------------|--------|----------------------------------------------------------------------------------|
-|`min`       |integer |The minimum number of players that are needed to play in this particular game mode|
-|`max`       |integer |The maximum number of players that can play this particular game mode             |
-|`[dropDown]`|boolean |Whether players should drop down into empty slots when other players disconnect   |
+|Name          |Datatype|Purpose                                                                                            |
+|--------------|--------|---------------------------------------------------------------------------------------------------|
+|`min`         |integer |The minimum number of players that are needed to play in this particular game mode                 |
+|`max`         |integer |The maximum number of players that can play this particular game mode                              |
+|`[dropDown]`  |boolean |Whether players should drop down into empty slots when other players disconnect. Defaults to `true`|
+|`[allowAbort]`|boolean |Whether players can abort the `JOIN` source mode by activating the "leave" verb. Defaults to `true`|
 
 &nbsp;
 
