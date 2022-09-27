@@ -43,7 +43,7 @@ Input will not change sources automatically and you are responsible for managing
 
 ### `INPUT_SOURCE_MODE.JOIN`
 
-Input will allow plays to "join" the game by pressing any button on a supported device. Player must join in ascending order, player 0 first, then player 1 etc. A player that has joined can leave by activating a specific verb. You can change the parameters for join mode by using [`input_multiplayer_params_set()`](Functions-(Players)?id=input_multiplayer_params_setmin-max-dropdown). [`input_multiplayer_is_finished()`](Functions-(Players)?id=input_multiplayer_is_finished) allows you to conveniently detect when enough players have joined the game based on the parameters you've set. The auto profile when in hotswap mode is determined by which source the player is currently using.
+Input will allow plays to "join" the game by pressing any button on a supported device. Players join in ascending order, and a player that has joined can leave by activating a specific verb. You can read more about the behaviour of this source mode in the [Multiplayer Guide](Multiplayer-Guide).
 
 ### `INPUT_SOURCE_MODE.HOTSWAP`
 
@@ -53,12 +53,12 @@ Input will automatically swap sources for player 0 based on what source the play
 
 ### `INPUT_SOURCE_MODE.MIXED`
 
-Input will accept input for player 0 from the keyboard, the mouse, and all gamepad. All gamepad bindings in the active [profile](Profiles) will listen for any connected gamepads; effectively all gamepad input in funnelled through the gamepad bindings that have been defined. The auto profile when in mixed mode is determined by `INPUT_AUTO_PROFILE_FOR_MIXED`.
+Input will accept input for player 0 from the keyboard, the mouse, and all gamepads. Input from all gamepads will be treated equally, and gamepads will not be differentiated. All gamepad bindings in the active [profile](Profiles) will listen for any connected gamepads; effectively all gamepad input in funnelled through the gamepad bindings that have been defined. The auto profile when in mixed mode is determined by `INPUT_AUTO_PROFILE_FOR_MIXED`.
 
 !> This mode should only be used for single player gameplay. All players other than player 0 will have their sources removed and will not be able to play.
 
 ### `INPUT_SOURCE_MODE.MULTIDEVICE`
 
-Input will accept input for player 0 from the keyboard, the mouse, and all gamepads. Unlike `INPUT_SOURCE_MODE.MIXED`, gamepad bindings are tied to specific gamepad indexes rather than arbitrarily scanning all connected gamepads. This allows multiple unique gamepads to have unique bindings that then trigger specific verbs. The auto profile when in multidevice mode is determined by `INPUT_AUTO_PROFILE_FOR_MULTIDEVICE`, though is it almost certain that a player will want to manually rebind their controls in this source mode.
+Input will accept input for player 0 from the keyboard, the mouse, and all gamepads. Unlike `INPUT_SOURCE_MODE.MIXED`, gamepad bindings are tied to specific gamepad indexes rather than scanning all connected gamepads. This allows multiple unique gamepads to have unique bindings that then trigger specific verbs. The auto profile when in multidevice mode is determined by `INPUT_AUTO_PROFILE_FOR_MULTIDEVICE`, though is it almost certain that a player will want to manually rebind their controls in this source mode.
 
 !> This mode should only be used for single player gameplay. All players other than player 0 will have their sources removed and will not be able to play.

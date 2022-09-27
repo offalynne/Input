@@ -1,5 +1,6 @@
 - [Home](README)
 - [Newbie Guide](Newbie-Guide)
+- [Multiplayer Guide](Multiplayer-Guide)
 - [Changes from Input 4](Changes-from-Input-4)
 - [Quick Reference](Quick-Reference)
 - [Credits](Credits)
