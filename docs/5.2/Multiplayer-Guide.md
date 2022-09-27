@@ -17,7 +17,7 @@ The `JOIN` source mode is set using [`input_source_mode_set()`](Functions-(Sourc
 
 You can set parameters for the `JOIN` source mode by using the [`input_multiplayer_params_set()`](Functions-(Players)?id=input_multiplayer_params_setmin-max-dropdown) function. This allows you to set the minimum and maximum players for multiplayer gameplay, and you can optionally set the `dropDown` parameter mentioned above (defaults to `true`). The maximum number of players will actively prevent new players from joining, and the minimum number of players controls the lower threshold for when [`input_multiplayer_is_finished()`](Functions-(Players)?id=input_multiplayer_is_finished) returns `true`.
 
-```
+```gml
 //Set the number of players required to exactly 2
 input_multiplayer_params_set(2, 2);
 
@@ -27,7 +27,7 @@ input_source_mode_set(INPUT_SOURCE_MODE.JOIN);
 
 Once you have players joining your game, you'll want to display who's connected. You can use the [`input_player_connected()`](Functions-(Players)?id=input_player_connectedplayerindex) function to determine which players are and aren't connected. As mentioned above, you can determine when you have enough players set up to begin the game by checking against [`input_multiplayer_is_finished()`](Functions-(Players)?id=input_multiplayer_is_finished). In the example below, we wait for enough players to join then we wait for a confirmation button press from either player. Once players have confirmed they want to start the game, we change to the [`FIXED` source mode](Input-Sources?id=input_source_modefixed) to prevent further device assignment and proceed to multiplayer gameplay.
 
-```
+```gml
 //Check every frame to see if we've got enough players to start gameplay
 if (input_multiplayer_is_finished())
 {
@@ -41,7 +41,7 @@ if (input_multiplayer_is_finished())
 
 You should also detect when a player's device has been disconnected, espcially if you're planning on shipping on console as it is a compliance requirement for all major platforms. If a player's device is unexpectedly disconnected, you should show a device connection screen and return to the `JOIN` source mode to allow players to reconnect. In these situations you will likely want to set the `dropDown` parameter in `input_multiplayer_params_set()` to `false`. You can detect when a player's device has been disconnected by checking against the struct returned by [`input_players_get_status()`](Functions-(Players)?id=input_players_get_status).
 
-```
+```gml
 if (array_length(input_players_get_status().new_disconnections) > 0)
 {
     input_source_mode_set(INPUT_SOURCE_MODE.JOIN);
