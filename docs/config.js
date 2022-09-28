@@ -22,8 +22,8 @@
 const config = {
 	name: 'Input',
 	description: 'Comprehensive cross-platform input for GameMaker 2.3',
-	latestVersion: '5.1',
-	otherVersions: ['5.2', '5.0', '4.2', '4.1', '4.0', '3.5', '3.4'],
+	latestVersion: '5.2',
+	otherVersions: ['5.1', '5.0', '4.2', '4.1', '4.0', '3.5', '3.4'],
 	favicon: 'assets/favicon.ico',
 	themeColor: '#30dc93',
 };
