@@ -117,8 +117,8 @@ function __input_class_cursor() constructor
             __y = clamp(__y, __limit_t, __limit_b);
         }
         else if ((__limit_x      != undefined)
-                &&  (__limit_y      != undefined)
-                &&  (__limit_radius != undefined))
+             &&  (__limit_y      != undefined)
+             &&  (__limit_radius != undefined))
         {
             var _dx = __x - __limit_x;
             var _dy = __y - __limit_y;

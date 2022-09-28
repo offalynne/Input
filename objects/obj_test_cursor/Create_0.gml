@@ -4,9 +4,6 @@ if (INPUT_MULTIPLAYER_ABORT_CALLBACK == undefined) __input_error("INPUT_MULTIPLA
 input_source_mode_set(INPUT_SOURCE_MODE.JOIN);
 input_multiplayer_params_set(2, INPUT_MAX_PLAYERS);
 
-input_mouse_capture_set(true);
-window_set_cursor(cr_none);
-
 input_cursor_elastic_set(room_width/2, room_height/2, 0.5, all);
 input_cursor_set(room_width/2, room_height/2, all);
 input_cursor_limit_circle(room_width/2, room_height/2, 200, all);

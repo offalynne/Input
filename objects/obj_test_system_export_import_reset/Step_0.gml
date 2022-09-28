@@ -7,6 +7,12 @@ if (input_keyboard_check_pressed(vk_enter)
     });
 }
 
+if (input_keyboard_check_pressed(ord("C")))
+{
+    input_binding_set("left", input_binding_empty());
+    show_debug_message("Clear!");
+}
+
 if (input_keyboard_check_pressed(ord("S")))
 {
     input_binding_scan_abort();

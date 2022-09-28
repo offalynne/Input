@@ -3,6 +3,7 @@ var _string  = "Left  = " + string(input_value("left" )) + "    " + string(input
 
 _string += "\n";
 _string += "Enter = Start rebinding\n";
+_string += "C = Clear Binding\n";
 _string += "S = Save\n";
 _string += "L = Load\n";
 _string += "R = Reset\n";

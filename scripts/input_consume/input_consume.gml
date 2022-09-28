@@ -1,5 +1,7 @@
 /// @desc    Deactivates a verb until the button (or other physical input) is released and pressed again
-/// @param   verb
+///          If an array of verbs is given then this function will consume all verbs in the array
+///          If the keyword <all> is used then all exant verbs are consumed
+/// @param   verb/array
 /// @param   [playerIndex]
 
 function input_consume(_verb, _player_index = 0)
@@ -23,6 +25,15 @@ function input_consume(_verb, _player_index = 0)
         repeat(array_length(_verb_names))
         {
             input_consume(_verb_names[_v], _player_index);
+            ++_v;
+        }
+    }
+    else if (is_array(_verb))
+    {
+        var _v = 0;
+        repeat(array_length(_verb))
+        {
+            input_consume(_verb[_v], _player_index);
             ++_v;
         }
     }

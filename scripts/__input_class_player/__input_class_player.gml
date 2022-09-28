@@ -9,11 +9,17 @@ function __input_class_player() constructor
     __last_input_time       = -infinity;
     __verb_group_state_dict = {};
     
+    __vibration_paused      = false;
+    __vibration_strength    = INPUT_VIBRATION_DEFAULT_STRENGTH;
+    __vibration_event_array = [];
+    
     __rebind_state            = 0;
     __rebind_start_time       = global.__input_current_time;
     __rebind_success_callback = undefined;
     __rebind_failure_callback = undefined;
     __rebind_source_filter    = [];
+    __rebind_ignore_struct    = undefined;
+    __rebind_allow_struct     = undefined;
     
     __axis_thresholds_dict = {};
     
@@ -37,7 +43,26 @@ function __input_class_player() constructor
         if (variable_struct_exists(__profiles_dict, _profile_name)) __input_error("Profile \"", _profile_name, "\" already exists for player ", __index);
         
         if (INPUT_DEBUG_PROFILES) __input_trace("Profile \"", _profile_name, "\" created for player ", __index);
-        __profiles_dict[$ _profile_name] = {};
+        
+        var _new_profile_struct = {};
+        var _v = 0;
+        repeat(array_length(global.__input_basic_verb_array))
+        {
+            var _verb_name = global.__input_basic_verb_array[_v];
+            
+            var _alternate_array = array_create(INPUT_MAX_ALTERNATE_BINDINGS, undefined);
+            var _a = 0;
+            repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+            {
+                _alternate_array[@ _a] = input_binding_empty();
+                ++_a;
+            }
+            
+            _new_profile_struct[$ _verb_name] = _alternate_array;
+            ++_v;
+        }
+        
+        __profiles_dict[$ _profile_name] = _new_profile_struct;
     }
     
     static __profile_destroy = function(_profile_name)
@@ -387,7 +412,7 @@ function __input_class_player() constructor
         var _i = 0;
         repeat(array_length(__source_array))
         {
-            if (__source_array[_i].__any_input()) return true;
+            if (__source_array[_i].__scan_for_binding(__index, true, 0, undefined)) return true;
             ++_i;
         }
         
@@ -825,8 +850,9 @@ function __input_class_player() constructor
         var _new_axis_thresholds_dict = {};
     
         var _root_json = {
-            profiles:        _new_profiles_dict,
-            axis_thresholds: _new_axis_thresholds_dict,
+            profiles:           _new_profiles_dict,
+            axis_thresholds:    _new_axis_thresholds_dict,
+            vibration_strength: __vibration_strength,
         };
         
         //Copy profiles
@@ -934,6 +960,22 @@ function __input_class_player() constructor
             
             ++_a;
         }
+        
+        if (variable_struct_exists(_json, "vibration_strength"))
+        {
+            if (!is_numeric(__vibration_strength))
+            {
+                __input_error("Player ", __index, " vibration strength is corrupted");
+                return;
+            }
+            
+            __vibration_strength = INPUT_VIBRATION_DEFAULT_STRENGTH;
+        }
+        else
+        {
+            __input_trace("Warning! Player ", __index, " vibration strength not found, defaulting to ", INPUT_VIBRATION_DEFAULT_STRENGTH);
+            __vibration_strength = INPUT_VIBRATION_DEFAULT_STRENGTH;
+        }
     }
     
     static __reset = function()
@@ -959,6 +1001,18 @@ function __input_class_player() constructor
         }
         
         __axis_thresholds_dict = {};
+    }
+    
+    static __vibration_add_event = function(_event)
+    {
+        if (__vibration_paused && !_event.__force)
+        {
+            __input_trace("Warning! New vibration event ignored, player ", __index, " vibration is paused")
+        }
+        else
+        {
+            array_push(__vibration_event_array, _event);
+        }
     }
     
     
@@ -1020,6 +1074,8 @@ function __input_class_player() constructor
             tick_combo_verbs();
             
             __cursor.__tick();
+            
+            __tick_vibration();
             
             if (!__connected) __post_disconnection_tick = true;
         }
@@ -1083,16 +1139,60 @@ function __input_class_player() constructor
         }
     }
     
+    static __tick_vibration = function()
+    {
+        if (__connected && (global.__input_source_mode != INPUT_SOURCE_MODE.MULTIDEVICE)) //Don't vibrate if we're likely to have multiple gamepads assigned
+        {
+            var _gamepad_index = __source_get_gamepad();
+            if (_gamepad_index < 0) return;
+            
+            var _not_paused = !__vibration_paused;
+            var _left  = 0;
+            var _right = 0;
+            
+            var _time_step = __input_get_time() - __input_get_previous_time();
+            var _array = __vibration_event_array;
+            var _i = 0;
+            repeat(array_length(_array))
+            {
+                with(_array[_i])
+                {
+                    if (_not_paused || __force)
+                    {
+                        var _result = __tick(_time_step);
+                        _left  += __output_left;
+                        _right += __output_right;
+                    }
+                    else
+                    {
+                        var _result = true;
+                    }
+                }
+                
+                if (_result)
+                {
+                    ++_i;
+                }
+                else
+                {
+                    array_delete(_array, _i, 1);
+                }
+            }
+            
+            global.__input_gamepads[_gamepad_index].__vibration_set(__vibration_strength*_left, __vibration_strength*_right);
+        }
+    }
+    
     static __tick_binding_scan = function()
     {
         #region Error checking
         
-        if (!window_has_focus() || os_is_paused())
-        {
-            __input_trace("Binding scan failed: Game lost focus");
-            __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.LOST_FOCUS);
-            return ;
-        }
+        //if (!input_window_has_focus())
+        //{
+        //    __input_trace("Binding scan failed: Game lost focus");
+        //    __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.LOST_FOCUS);
+        //    return ;
+        //}
         
         if (array_length(__rebind_source_filter) <= 0)
         {
@@ -1145,7 +1245,7 @@ function __input_class_player() constructor
                     __input_error("Value in filter array is not a source (index ", _i, ", ", __rebind_source_filter[_i], ")");
                 }
                 
-                var _source_binding = __rebind_source_filter[_i].__scan_for_binding();
+                var _source_binding = __rebind_source_filter[_i].__scan_for_binding(__index, false, __rebind_ignore_struct, __rebind_allow_struct);
                 if (_source_binding != undefined)
                 {
                     var _new_binding    = _source_binding;

@@ -1,5 +1,5 @@
-#macro __INPUT_VERSION "5.1.2"
-#macro __INPUT_DATE    "2022-08-28"
+#macro __INPUT_VERSION "5.2.0 beta 3"
+#macro __INPUT_DATE    "2022-09-28"
 #macro __INPUT_DEBUG   false
 
 #macro __INPUT_BINDING_KEY               "key"
@@ -28,13 +28,14 @@
 #macro __INPUT_ON_OPERAGX  (os_type == os_operagx)
 #macro __INPUT_ON_WEB      ((os_browser != browser_not_a_browser) || __INPUT_ON_OPERAGX)
 
-#macro __INPUT_TOUCH_SUPPORT      (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch))
-#macro __INPUT_KEYBOARD_NORMATIVE (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch))
-#macro __INPUT_KEYBOARD_SUPPORT   (__INPUT_KEYBOARD_NORMATIVE || (os_type == os_android))
+#macro __INPUT_TOUCH_SUPPORT              (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch))
+#macro __INPUT_KEYBOARD_NORMATIVE         (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch))
+#macro __INPUT_KEYBOARD_SUPPORT           (__INPUT_KEYBOARD_NORMATIVE || (os_type == os_android))
+#macro __INPUT_GAMEPAD_VIBRATION_SUPPORT  (__INPUT_ON_CONSOLE || (!__INPUT_ON_WEB && (os_type == os_windows)))
+#macro __INPUT_SDL2_SUPPORT               (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || (os_type == os_android)))
 
-#macro __INPUT_SDL2_SUPPORT  (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || (os_type == os_android)))
-
-#macro __INPUT_HOLD_THRESHOLD  0.2 //Minimum value from an axis for that axis to be considered activated at the gamepad layer. This is *not* the same as min/max thresholds for players
+#macro __INPUT_HOLD_THRESHOLD           0.2  //Minimum value from an axis for that axis to be considered activated at the gamepad layer. This is *not* the same as min/max thresholds for players
+#macro __INPUT_DELTA_HOTSWAP_THRESHOLD  0.1  //Minimum (absolute) change in gamepad mapping value between frames to register as new input. This triggers hotswapping
 
 #macro __INPUT_RATE_LIMIT_DURATION  500 //In milliseconds
 
@@ -43,13 +44,26 @@
 #macro __INPUT_KEYCODE_MAX 57343
 
 //Extended gamepad constants
-#macro gp_guide     32789
-#macro gp_misc1     32790
-#macro gp_touchpad  32791
-#macro gp_paddle1   32792
-#macro gp_paddle2   32793
-#macro gp_paddle3   32794
-#macro gp_paddle4   32795
+#macro gp_guide     32889
+#macro gp_misc1     32890
+#macro gp_touchpad  32891
+#macro gp_paddle1   32892
+#macro gp_paddle2   32893
+#macro gp_paddle3   32894
+#macro gp_paddle4   32895
+
+//Unfortunately, versions prior to v5.2 used these values for extended gamepad constants
+//They collide with GameMaker's native constants for gamepad axis values for PS4/PS5 controllers
+#macro __INPUT_LEGACY_GP_GUIDE     32789 //gp_axis_acceleration_x
+#macro __INPUT_LEGACY_GP_MISC1     32790 //gp_axis_acceleration_y
+#macro __INPUT_LEGACY_GP_TOUCHPAD  32791 //gp_axis_acceleration_z
+#macro __INPUT_LEGACY_GP_PADDLE1   32792 //gp_axis_angular_velocity_x
+#macro __INPUT_LEGACY_GP_PADDLE2   32793 //gp_axis_angular_velocity_y
+#macro __INPUT_LEGACY_GP_PADDLE3   32794 //gp_axis_angular_velocity_z
+#macro __INPUT_LEGACY_GP_PADDLE4   32795 //gp_axis_orientation_x
+                                         //gp_axis_orientation_y = 32796
+                                         //gp_axis_orientation_z = 32797
+                                         //gp_axis_orientation_w = 32798
 
 //Extended keycode constants
 #macro vk_clear       12
@@ -94,13 +108,13 @@
 // gp_select     = 32777             32787 = gp_axisrh
 // gp_start      = 32778             32788 = gp_axisrv
 // Plus custom buttons:
-// gp_guide      = 32789             32789 = gp_guide
-// gp_misc1      = 32790             32790 = gp_misc1
-// gp_touchpad   = 32791             32791 = gp_touchpad
-// gp_paddle1    = 32792             32792 = gp_paddle1
-// gp_paddle2    = 32793             32793 = gp_paddle2
-// gp_paddle3    = 32794             32794 = gp_paddle3
-// gp_paddle4    = 32795             32795 = gp_paddle4
+// gp_guide      = 32889             32889 = gp_guide
+// gp_misc1      = 32890             32890 = gp_misc1
+// gp_touchpad   = 32891             32891 = gp_touchpad
+// gp_paddle1    = 32892             32892 = gp_paddle1
+// gp_paddle2    = 32893             32893 = gp_paddle2
+// gp_paddle3    = 32894             32894 = gp_paddle3
+// gp_paddle4    = 32895             32895 = gp_paddle4
 
 enum __INPUT_SOURCE
 {
@@ -270,11 +284,11 @@ function __input_error()
     
     if (os_browser == browser_not_a_browser)
     {
-        show_error("Input:\n" + _string + "\n ", false);
+        show_error("Input " + __INPUT_VERSION + ":\n" + _string + "\n ", false);
     }
     else
     {
-        show_error("Input:\n" + _string + "\n" + string(debug_get_callstack()), false);
+        show_error("Input " + __INPUT_VERSION + ":\n" + _string + "\n" + string(debug_get_callstack()), false);
     }
 }
 

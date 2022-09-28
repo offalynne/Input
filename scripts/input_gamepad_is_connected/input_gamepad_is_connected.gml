@@ -10,5 +10,7 @@ function input_gamepad_is_connected(_index)
         return false;
     }
     
+    if (!is_struct(global.__input_gamepads[_index])) return false;
+    
     return gamepad_is_connected(_index);
 }

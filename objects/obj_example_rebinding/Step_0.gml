@@ -9,12 +9,8 @@ if (pause)
     //Only allow the player to navigate the menu if we're not rebinding anything
     if (!input_binding_scan_in_progress())
     {
-        //Move the menu selection up and down...
-        menu_selection += input_check_pressed("down");
-        menu_selection -= input_check_pressed("up");
-        
-        //...and also here's a bonus example for how to use input_check_repeat_opposing()!
-        menu_selection += input_check_repeat_opposing("up", "down");
+        //Move the menu selection up and down, example for how to use 'opposing' checkers
+        menu_selection += input_check_opposing_pressed("up", "down") + input_check_opposing_repeat("up", "down");
         
         //Make sure we wrap around the menu
         menu_selection = (menu_selection + 5) mod 5;

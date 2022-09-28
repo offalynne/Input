@@ -12,11 +12,16 @@ function input_source_mode_set(_mode)
     
     if (_mode != global.__input_source_mode)
     {
+        global.__input_previous_source_mode = global.__input_source_mode;
+        
         switch(_mode)
         {
             case INPUT_SOURCE_MODE.FIXED:
-            case INPUT_SOURCE_MODE.JOIN:
                 //Do nothing!
+            break;
+            
+            case INPUT_SOURCE_MODE.JOIN:
+                __input_trace("Storing previous source mode (", global.__input_previous_source_mode, ")");
             break;
             
             case INPUT_SOURCE_MODE.HOTSWAP:

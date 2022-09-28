@@ -2,8 +2,9 @@
 /// @param   min
 /// @param   max
 /// @param   [dropDown=true]
+/// @param   [allowAbort=true]
 
-function input_multiplayer_params_set(_min, _max, _drop_down = true)
+function input_multiplayer_params_set(_min, _max, _drop_down = true, _allow_abort = true)
 {
     __input_initialize();
     
@@ -31,7 +32,8 @@ function input_multiplayer_params_set(_min, _max, _drop_down = true)
         return undefined;
     }
     
-    global.__input_multiplayer_min       = _min;
-    global.__input_multiplayer_max       = _max;
-    global.__input_multiplayer_drop_down = _drop_down;
+    global.__input_multiplayer_min         = _min;
+    global.__input_multiplayer_max         = _max;
+    global.__input_multiplayer_drop_down   = _drop_down;
+    global.__input_multiplayer_allow_abort = _allow_abort;
 }
