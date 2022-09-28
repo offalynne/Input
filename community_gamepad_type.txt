@@ -17,11 +17,9 @@
 045e,0287,CommunityLikeXBox // Xbox Controller
 045e,0289,CommunityLikeXBox // Xbox Controller
 19fa,fff0,CommunityLikeXBox // Acteck AGJ 3200
-0b05,7905,CommunityLikeXBox // ASUS ROG Kunai 3
 0b05,7906,CommunityLikeXBox // ASUS ROG Kunai 3
 0c12,8802,CommunityLikeXBox // Nyko Air Flo Xbox
 124b,4d01,CommunityLikeXBox // Nyko Air Flo Xbox
-0b05,7906,CommunityLikeXBox // ASUS ROG Kunai 3
 0b05,7905,CommunityLikeXBox // ASUS ROG Kunai 3
 145f,01c5,CommunityLikeXBox // Trust GXT 540 Yula
 3250,1002,CommunityLikeXBox // Atari VCS Modern Controller
@@ -30,7 +28,6 @@
 1d79,0009,CommunityLikeXBox // Nyko Playpad
 11c6,0010,CommunityLikeXBox // Tencent Xianyou GP1
 20bc,5052,CommunityLikeXBox // Beitong G3
-20bc,5500,CommunityLikeXBox // Betop AX1 BFM
 044f,b328,CommunityLikeXBox // Score A
 046d,c216,CommunityLikeXBox // Logitech Dual Action, F310
 046d,c218,CommunityLikeXBox // Logitech RumblePad 2, F510
@@ -41,8 +38,6 @@
 0f30,1102,CommunityLikeXBox // Qanba Q2 Pro
 062a,2410,CommunityLikeXBox // Flydigi Apex
 1038,1420,CommunityLikeXBox // SteelSeries Nimbus
-1038,1430,CommunityLikeXBox // SteelSeries Stratus Duo
-1038,1431,CommunityLikeXBox // SteelSeries Stratus Duo
 1038,1418,CommunityLikeXBox // SteelSeries Stratus XL
 0111,1431,CommunityLikeXBox // SteelSeries Stratus Duo
 0111,1419,CommunityLikeXBox // SteelSeries Stratus XL
@@ -64,12 +59,8 @@
 2dc8,1003,CommunityLikeXBox // 8BitDo N30 Joystick
 2dc8,1080,CommunityLikeXBox // 8BitDo N30 Joystick
 1235,ab11,CommunityLikeXBox // 8BitDo FC30 Joystick
-2dc8,ab12,CommunityLikeXBox // 8BitDo NES30 Joystick
-2dc8,ab12,CommunityLikeXBox // 8BitDo NES30 Joystick
 146b,0c01,CommunityLikeXBox // Nacon GC-400ES	
 3285,0607,CommunityLikeXBox // Nacon GC-100
-0e6f,0187,CommunityLikeSwitch // PDP Rock Candy
-20d6,a713,CommunityLikeSwitch // PowerA Wired
 056e,2007,CommunityLikeSwitch // Elecom Wii Adapter
 056e,2008,CommunityLikeSwitch // Elecom Wii Adapter
 289b,002b,CommunityLikeSwitch // Raphnet Wii Adapter
@@ -79,7 +70,6 @@
 057e,2017,CommunityLikeSwitch // Nintendo Switch Online SFC & MD
 0925,03e8,CommunityLikeSwitch // Mayflash Wii Adapter
 057e,0330,CommunityLikeSwitch // Wii U Pro
-057e,2008,CommunityLikeSwitch // Linux JoyConD
 11ec,a7e1,CommunityLikeSwitch // Switch Handheld
 1d79,0301,CommunityLikeSwitch // Wii Adapter
 0079,1803,CommunityLikeSwitch // Mayflash Wii DolphinBar
@@ -174,7 +164,6 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 2dc8,9012,Community8BitDo // 8BitDo SN30
 2dc8,ab20,Community8BitDo // 8BitDo SNES30
 2dc8,6001,Community8BitDo // 8BitDo SN30 Pro
-2dc8,2865,Community8BitDo // 8BitDo N30 Pro 2
 2dc8,3810,Community8BitDo // 8BitDo FC30 Pro
 2dc8,3820,Community8BitDo // 8BitDo NES30 Pro
 2dc8,6000,Community8BitDo // 8BitDo SF30 Pro
@@ -213,7 +202,6 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 0738,5262,CommunityXBox360 // Mad Catz Micro CTRLR
 0738,5263,CommunityXBox360 // Mad Catz Micro CTRLR
 0738,5266,CommunityXBox360 // Mad Catz Micro CTRLR
-10c4,82c0,CommunityXBox360 // KADE, PS360
 14d8,a001,CommunityXBox360 // Arcade Board
 14d8,cfce,CommunityXBox360 // Cthulhu
 14d8,face,CommunityXBox360 // Cthulhu
@@ -237,7 +225,6 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 20d6,89e5,CommunityXBox360 // Moga 2
 27f8,0bbf,CommunityXBox360 // Razer Kishi
 2f24,b700,CommunityXBox360 // ESM 9110
-2f24,0091,CommunityXBox360 // ESM 9101
 3631,0c86,CommunityXBox360 // Unknown XBox360
 6258,3320,CommunityXBox360 // Unknown XBox360
 6258,4720,CommunityXBox360 // Unknown XBox360
@@ -262,25 +249,18 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 beef,feed,CommunityXBox360 // Monect
 1949,0402,CommunityXBox360 // Xbox
 0079,0002,CommunityXBox360 // Arcade Board
-1bad,f503,CommunityXBox360 // Hori Fighting Stick VX
-0f0d,006d,CommunityXBox360 // Hori EDGE 301
 242f,3700,CommunityXBoxOne // Mayflash F101 Arcade Stick
 1532,0a29,CommunityXBoxOne // Razer Wolverine 2
-0e6f,02a7,CommunityXBoxOne // PDP Raven Black
 0e6f,02d7,CommunityXBoxOne // PDP Black Camo
-0f0d,0150,CommunityXBoxOne // Hori Fighting Commander Octa
 045e,0b03,CommunityXBoxOne // Xbox One
 20d6,2802,CommunityXBoxOne // Power A Wired
-20d6,2002,CommunityXBoxOne // Power A Wired Xbox Series
-1532,0a00,CommunityXBoxOne // Razer Atrox
 1915,0040,CommunityXBoxOne // Flydigi X9ET Pro and Vader 2
 0e6f,0111,CommunityPSX // Afterglow PS3
 7331,0001,CommunityPSX // DualShock 3
 1209,8844,CommunityPSX // MUSIA PS2 Adapter
-1a15,2262,CommunityPSX // PS2 Controller
 0a12,0001,CommunityPSX // PS2 Controller
 0925,1802,CommunityPSX // PS3 Controller
-22ba,1020,CommunityPSX // PS3 Controller
+22ba,1020,CommunityPSX // PS3 Conroller
 289b,0044,CommunityPSX // Raphnet PSX Adapter
 6666,8802,CommunityPSX // TigerGame PlayStation Adapter
 1a15,2262,CommunityPSX // PS2 Dual Plus Adapter
@@ -293,14 +273,12 @@ beef,feed,CommunityXBox360 // Monect
 054c,1337,CommunityPSX // Playstation Vita
 06a3,0621,CommunityPSX // Saitek PS1000
 06a3,f620,CommunityPSX // Saitek PS2700
-06a3,f622,CommunityPSX // Saitek Cyborg V3
 06a3,f623,CommunityPSX // Saitek Cyborg V1
 0738,3187,CommunityPSX // Mad Catz FightStick
 0738,3282,CommunityPSX // Mad Catz PS3 RF
 0738,3285,CommunityPSX // Mad Catz Arcade Fightstick TE S
 0738,3384,CommunityPSX // Mad Catz FightStick TE S+
 0738,3480,CommunityPSX // Mad Catz FightStick
-0738,3481,CommunityPSX // Mad Catz FightStick TE2+
 0738,8263,CommunityPSX // Mad Catz MLG GamePad
 0738,8818,CommunityPSX // Mad Catz Wired 8818
 0738,a856,CommunityPSX // Mad Catz PS3 RF
