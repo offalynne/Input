@@ -6,7 +6,7 @@
     "path": "folders/Input/2D Checkers.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_quick_2d",
+  "name": "input_xy_quick_pressed",
   "tags": [],
   "resourceType": "GMScript",
 }

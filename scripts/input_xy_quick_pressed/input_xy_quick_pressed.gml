@@ -7,7 +7,7 @@
 /// @param   downVerb
 /// @param   [playerIndex=0]
 
-function input_quick_2d(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0)
+function input_xy_quick_pressed(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0)
 {
     if (!is_struct(_player_index))
     {

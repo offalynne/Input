@@ -256,7 +256,7 @@
     {"id":{"name":"obj_test_long","path":"objects/obj_test_long/obj_test_long.yy",},"order":17,},
     {"id":{"name":"__input_gamepad_find_in_sdl2_database","path":"scripts/__input_gamepad_find_in_sdl2_database/__input_gamepad_find_in_sdl2_database.yy",},"order":14,},
     {"id":{"name":"input_binding_is_valid","path":"scripts/input_binding_is_valid/input_binding_is_valid.yy",},"order":9,},
-    {"id":{"name":"input_quick_2d","path":"scripts/input_quick_2d/input_quick_2d.yy",},"order":5,},
+    {"id":{"name":"input_xy_quick_pressed","path":"scripts/input_xy_quick_pressed/input_xy_quick_pressed.yy",},"order":5,},
     {"id":{"name":"input_cursor_y","path":"scripts/input_cursor_y/input_cursor_y.yy",},"order":1,},
     {"id":{"name":"__input_multiline_macros","path":"scripts/__input_multiline_macros/__input_multiline_macros.yy",},"order":2,},
     {"id":{"name":"__input_gamepad_set_mapping","path":"scripts/__input_gamepad_set_mapping/__input_gamepad_set_mapping.yy",},"order":15,},
