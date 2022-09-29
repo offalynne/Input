@@ -68,6 +68,7 @@
     {"id":{"name":"__input_class_combo_definition","path":"scripts/__input_class_combo_definition/__input_class_combo_definition.yy",},"order":8,},
     {"id":{"name":"input_binding_swap","path":"scripts/input_binding_swap/input_binding_swap.yy",},"order":8,},
     {"id":{"name":"input_player_reset","path":"scripts/input_player_reset/input_player_reset.yy",},"order":4,},
+    {"id":{"name":"obj_test_cursor_translation","path":"objects/obj_test_cursor_translation/obj_test_cursor_translation.yy",},"order":30,},
     {"id":{"name":"input_check","path":"scripts/input_check/input_check.yy",},"order":0,},
     {"id":{"name":"input_vibrate_get_strength","path":"scripts/input_vibrate_get_strength/input_vibrate_get_strength.yy",},"order":8,},
     {"id":{"name":"input_players_connected","path":"scripts/input_players_connected/input_players_connected.yy",},"order":0,},
