@@ -87,7 +87,7 @@ The struct returned by this function contains two member variables: `.x` and `.y
 
 &nbsp;
 
-## `input_quick_2d(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`
+## `input_xy_quick_pressed(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`
 
 *Returns:* Boolean, whether the analogue inputs registered a quick tap this frame
 
