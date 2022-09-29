@@ -35,7 +35,7 @@
 
 &nbsp;
 
-## `input_cursor_translate([x], [y], duration, [playerIndex], [releative])`
+## `input_cursor_translate([x], [y], duration, [playerIndex], [relative])`
 
 *Returns:* N/A (`undefined`)
 
