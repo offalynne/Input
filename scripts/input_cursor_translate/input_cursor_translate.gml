@@ -5,10 +5,10 @@
 /// @param   [x]
 /// @param   [y]
 /// @param   duration
-/// @param   [relative=false]
 /// @param   [playerIndex=0]
+/// @param   [relative=false]
 
-function input_cursor_translate(_x = undefined, _y = undefined, _duration, _relative = false, _player_index = 0)
+function input_cursor_translate(_x = undefined, _y = undefined, _duration, _player_index = 0, _relative = false)
 {
     __INPUT_VERIFY_PLAYER_INDEX
     
