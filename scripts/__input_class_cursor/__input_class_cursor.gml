@@ -22,6 +22,15 @@ function __input_class_cursor() constructor
     __elastic_y        = undefined;
     __elastic_strength = 0;
     
+    //Translation
+    __translation_active     = false;
+    __translation_start_x    = undefined;
+    __translation_start_y    = undefined;
+    __translation_start_time = undefined;
+    __translation_end_x      = undefined;
+    __translation_end_y      = undefined;
+    __translation_end_time   = undefined;
+    
     __moved_time  = -infinity;
     __using_mouse = false;
     __speed       = INPUT_CURSOR_START_SPEED;
@@ -45,6 +54,27 @@ function __input_class_cursor() constructor
         }
     }
     
+    static __translate = function(_x, _y, _duration, _relative)
+    {
+        __translation_start_x = __x;
+        __translation_start_y = __y;
+        
+        if (_relative)
+        {
+            __translation_end_x = (__translation_start_x == undefined)? undefined : __translation_start_x + _x;
+            __translation_end_y = (__translation_start_y == undefined)? undefined : __translation_start_y + _y;
+        }
+        else
+        {
+            __translation_end_x = _x;
+            __translation_end_y = _y;
+        }
+        
+        __translation_active     = true;
+        __translation_start_time = __input_get_time();
+        __translation_end_time   = __translation_start_time + _duration;
+    }
+    
     static __tick = function()
     {
         __prev_x = __x;
@@ -55,7 +85,7 @@ function __input_class_cursor() constructor
         if ((global.__input_pointer_moved || __using_mouse) && _can_use_mouse)
         {
             __using_mouse = true;
-            
+                
             if (global.__input_mouse_capture)
             {
                 __x += global.__input_pointer_dx[__coord_space];
@@ -99,6 +129,21 @@ function __input_class_cursor() constructor
             //The oldies are usually the goodies
             __x = lerp(__x, __elastic_x, __elastic_strength);
             __y = lerp(__y, __elastic_y, __elastic_strength);
+        }
+        
+        if (__translation_active)
+        {
+            var _t = clamp((__input_get_time() - __translation_start_time) / (__translation_end_time - __translation_start_time), 0, 1);
+            
+            if (__translation_end_x != undefined) __x = lerp(__translation_start_x, __translation_end_x, _t);
+            if (__translation_end_y != undefined) __y = lerp(__translation_start_y, __translation_end_y, _t);
+            
+            if (_t >= 1)
+            {
+                __translation_active = false;
+                __translation_end_x  = undefined;
+                __translation_end_y  = undefined;
+            }
         }
         
         if ((__x != __prev_x) || (__y != __prev_y)) __moved_time = __input_get_time();
