@@ -149,6 +149,7 @@
 - [`input_cursor_x([playerIndex])`](Functions-(Cursor)?id=input_cursor_xplayerindex)
 - [`input_cursor_y([playerIndex])`](Functions-(Cursor)?id=input_cursor_yplayerindex)
 - [`input_cursor_set(x, y, [playerIndex], [relative])`](Functions-(Cursor)?id=input_cursor_setx-y-playerindex-relative)
+- [`input_cursor_translate([x], [y], duration, [playerIndex], [relative])`](Functions-(Cursor)?id=input_cursor_translatex-y-duration-playerindex-relative)
 - [`input_cursor_speed_set(speed, [playerIndex])`](Functions-(Cursor)?id=input_cursor_speed_setspeed-playerindex)
 - [`input_cursor_speed_get([playerIndex])`](Functions-(Cursor)?id=input_cursor_speed_getplayerindex)
 - [`input_cursor_coord_space_set(coordSpace, [playerIndex])`](Functions-(Cursor)?id=input_cursor_coord_space_setcoordspace-playerindex)

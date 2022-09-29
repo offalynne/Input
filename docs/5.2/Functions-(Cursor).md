@@ -35,6 +35,24 @@
 
 &nbsp;
 
+## `input_cursor_translate([x], [y], duration, [playerIndex], [releative])`
+
+*Returns:* N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                                                                                                         |
+|---------------|--------|--------------------------------------------------------------------------------------------------------------------------------|
+|`[x]`          |number  |Target x-coordinate for the cursor. If not specified, this axis is unbound during translation                                   |
+|`[y]`          |number  |Target y-coordinate for the cursor. If not specified, this axis is unbound during translation                                   |
+|`duration`     |number  |Duration of the translation, the units of which are determined by `INPUT_TIMER_MILLISECONDS`                                    |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                                                                            |
+|`[relative]`   |boolean |Whether the target cursor position is relative to the current cursor position. If not specified, the target position is absolute|
+
+Whilst the cursor is being moved, cursor limits will be applied but cursor elastic will **not** be applied.
+
+!> This function is unlikely to work in a satisfactory manner if the cursor is being moved with a non-captured mouse. Please see [`input_mouse_capture_set()`](https://www.jujuadams.com/Input/#/5.2/Functions-(Mouse)?id=input_mouse_capture_setstate-sensitivity) for details on how to capture the mouse.
+
+&nbsp;
+
 ## `input_cursor_speed_set(speed, [playerIndex])`
 
 *Returns:* N/A (`undefined`)
