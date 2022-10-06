@@ -2,7 +2,7 @@
 ///              INPUT_KEYBOARD
 ///              INPUT_MOUSE
 ///              INPUT_GAMEPAD
-///          If the binding is invalid or the source type can not be determined, <undefined> is returned.
+///          If the binding is invalid or the source type cannot be determined, <undefined> is returned.
 ///          As with other functions, if INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER is set to <true> then
 ///          INPUT_KEYBOARD and INPUT_MOUSE are interchangeable.
 /// @param   binding

@@ -188,13 +188,12 @@ function __input_gamepad_set_type()
             if ((vendor == "0d00") && (product == "0000") && (button_count == 15) && (axis_count == 4) && (hat_count == 0) && (os_type == os_windows))
             {
                 //MFi on Windows (bad GUID)
-                 __input_trace("Overriding gamepad type to MFi");
+                 __input_trace("Overriding controller ", index ," type to MFi");
                 description = "MFi Extended";
                 raw_type = "AppleController";
                 guessed_type = false;
             }
-
-            if ((vendor == "6325") && (product == "7505"))
+            else if ((vendor == "6325") && (product == "7505"))
             {
                 //VID+PID conflicts with a Shanwan ICU most often used for third party PS3 style controllers
                 if (((os_type == os_windows) && (gamepad_get_description(index) == "USB "))
@@ -202,7 +201,7 @@ function __input_gamepad_set_type()
                 ||  ((os_type == os_macosx ) && (guid == "03000000632500007505000000020000")))
                 {
                     //NeoGeo Mini
-                    __input_trace("Overriding gamepad type to NeoGeo Mini");
+                    __input_trace("Overriding controller ", index ," type to NeoGeo Mini");
                     description = "NeoGeo Mini";
                     raw_type = "CommunityNeoGeoMini";
                     guessed_type = false;
@@ -212,20 +211,31 @@ function __input_gamepad_set_type()
                 ||  ((os_type == os_linux  ) && (gamepad_get_description(index) == "SWITCH CO.,LTD. Controller (Dinput)")))
                 {
                     //Several third party N64 controllers including retro-bit's Tribute 64
-                    __input_trace("Overriding gamepad type to N64");
+                    __input_trace("Overriding controller ", index ," type to N64");
                     description = "N64";
                     raw_type = "CommunityN64";
                     guessed_type = false;
                 }
 
             }
-            
-            if (os_type == os_linux)
+            else if ((vendor == "8f0e") && (product == "1330")                                                                                          //HuiJia gamepad or Mayflash N64
+                 && ((os_type == os_macosx) && (hat_count == 2))                                                                                        //Both slots on one device on Mac
+                 || (((os_type == os_windows) || (os_type == os_linux)) && (button_count == 16) && (axis_count == 4) && (hat_count == 1)                //Windows and Linux identity
+                 && ((__input_string_contains(gamepad_get_guid(index + 1), "8f0e") && __input_string_contains(gamepad_get_guid(index + 1), "1330"))     //Port comes in pairs, look ahead
+                 || ((__input_string_contains(gamepad_get_guid(index - 1), "8f0e") && __input_string_contains(gamepad_get_guid(index - 1), "1330")))))) //Port comes in pairs, look behind
+            {
+                //MayFlash N64 controller
+                __input_trace("Overriding controller ", index ," type to N64");
+                description = "N64 Adapter";
+                raw_type = "CommunityN64";
+                guessed_type = false;
+            }
+            else if (os_type == os_linux)
             {
                 if ((vendor == "7e05") && (product == "1720") && __input_string_contains(description, "Mega Drive/Genesis"))
                 {
                     //Nintendo Switch Online controllers on Linux (Identifiable on device name only)
-                    __input_trace("Overriding gamepad type to Saturn");
+                    __input_trace("Overriding controller ", index ," type to Saturn");
                     raw_type = "CommunitySaturn";
                     guessed_type = false;
                 }
@@ -278,7 +288,7 @@ function __input_gamepad_set_type()
                                     if ((global.__input_gamepads[@ _g].raw_type == "HIDWiiRemote")
                                     ||  (global.__input_gamepads[@ _g].raw_type == "HIDWiiMotionPlus"))
                                     {
-                                        __input_trace("Overriding gamepad type to \"", _wii_type_match, "\"");
+                                        __input_trace("Overriding controller ", _g ," type to \"", _wii_type_match, "\"");
                                         if (_wii_type_match == "HIDWiiClassic")
                                         {
                                             description = "Nintendo Wii Classic Controller";
