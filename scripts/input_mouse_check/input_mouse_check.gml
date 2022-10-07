@@ -11,12 +11,12 @@ function input_mouse_check(_binding)
     //Extended touchpad handling
     if (os_type == os_windows)
     {
-        var _button = device_mouse_check_button(0, _binding);      
+        var _button = device_mouse_check_button(0, _binding);
         switch (_binding)
         {            
             case mb_any:
-            case mb_left: return (_button || global.__input_tap_click);    break;
-            case mb_none: return (_button && !(global.__input_tap_click)); break;
+            case mb_left: return (_button ||   global.__input_tap_click || global.__input_pointer_pressed);  break;
+            case mb_none: return (_button && !(global.__input_tap_click || global.__input_pointer_pressed)); break;
             default:      return  _button; break;            
         }
     }
