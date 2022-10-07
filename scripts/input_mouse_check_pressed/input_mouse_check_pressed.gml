@@ -9,7 +9,7 @@ function input_mouse_check_pressed(_binding)
     }
     
     //Extended mouse button handling
-    if (os_type == os_windows)
+    if ((os_type == os_windows) && !INPUT_TOUCH_POINTER_ALLOWED)
     {
         var _left = (device_mouse_check_button_pressed(0, mb_left) || global.__input_tap_click);
         var _any  = (_left || (device_mouse_check_button_pressed(0, mb_any) && !device_mouse_check_button_pressed(0, mb_left)));
@@ -19,10 +19,10 @@ function input_mouse_check_pressed(_binding)
             case mb_right:
             case mb_middle:
             case mb_side1:
-            case mb_side2: return device_mouse_check_button_pressed(0, _binding); break;
-            case mb_any:   return _any;  break;
-            case mb_none:  return !_any; break;
-            case mb_left:  return _left; break;
+            case mb_side2: return  device_mouse_check_button_pressed(0, _binding); break;
+            case mb_none:  return !_any;  break;
+            case mb_any:   return  _any;  break;
+            case mb_left:  return  _left; break;
         }
     }
     else

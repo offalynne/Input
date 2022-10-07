@@ -9,7 +9,7 @@ function input_mouse_check(_binding)
     }
     
     //Extended touchpad handling
-    if (os_type == os_windows)
+    if ((os_type == os_windows) && !INPUT_TOUCH_POINTER_ALLOWED)
     {
         var _button = device_mouse_check_button(0, _binding);      
         switch (_binding)
