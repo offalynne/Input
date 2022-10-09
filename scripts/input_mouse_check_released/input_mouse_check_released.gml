@@ -11,7 +11,7 @@ function input_mouse_check_released(_binding)
     var _released_button = device_mouse_check_button_released(0, _binding);    
     if ((os_type == os_windows) && _released_button)
     {
-        //Windows uses the touch as well, test physical mouse first 
+        //Windows uses touch as well, test physical mouse first 
         return true;
     }
     
