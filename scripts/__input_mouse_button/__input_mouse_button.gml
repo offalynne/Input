@@ -4,24 +4,40 @@ function __input_mouse_button()
     
     if (!global.__input_mouse_allowed_on_platform || global.__input_window_focus_block_mouse)
     {
+        //Mouse not alllowed
         return mb_none;
     }
     
-    //Built-in variable where it reports correctly
     if (__INPUT_ON_DESKTOP && !__INPUT_ON_WEB)
     {
-        if (mouse_button != mb_none) return mouse_button;
-        if (__INPUT_TOUCH_SUPPORT && INPUT_TOUCH_POINTER_ALLOWED) return _touch_button;
-        return global.__input_tap_click;
+        if ((global.__input_pointer_index > 0))
+        {
+            //Touch
+            return _touch_button;
+        }
+        else
+        {
+            if (mouse_button != mb_none)
+            {
+                //Mouse
+                return mouse_button;
+            }
+            
+            if (global.__input_tap_click)
+            {
+                //Trackpad
+                return (? mb_left : mb_none);
+            }
+        }
     }
     else
     {
-        //Extended mouse buttons (first device index only)
         var _i = mb_side2;
         repeat(mb_side2 - mb_left)
         {
             if (device_mouse_check_button(0, _i))
             {
+                //Extended mouse buttons (first index only)
                 return _i;
             }
             
