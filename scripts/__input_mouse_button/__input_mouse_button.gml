@@ -1,5 +1,7 @@
 function __input_mouse_button()
 {
+    var _touch_button = (device_mouse_check_button(global.__input_pointer_index, mb_left) ? mb_left : mb_none);
+    
     if (!global.__input_mouse_allowed_on_platform || global.__input_window_focus_block_mouse)
     {
         return mb_none;
@@ -8,7 +10,9 @@ function __input_mouse_button()
     //Built-in variable where it reports correctly
     if (__INPUT_ON_DESKTOP && !__INPUT_ON_WEB)
     {
-        return (mouse_button ? mouse_button : global.__input_tap_click);
+        if (mouse_button != mb_none) return mouse_button;
+        if (__INPUT_TOUCH_SUPPORT && INPUT_TOUCH_POINTER_ALLOWED) return _touch_button;
+        return global.__input_tap_click;
     }
     else
     {
@@ -25,6 +29,6 @@ function __input_mouse_button()
         }
         
         //Active pointer index
-        return (device_mouse_check_button(global.__input_pointer_index, mb_left) ? mb_left : mb_none);
+        return _touch_button;
     }
 }

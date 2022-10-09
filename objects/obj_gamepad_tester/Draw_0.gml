@@ -126,8 +126,8 @@ repeat(255)
    ++_i;
 }
 
-_string += "mouse = " + string(mouse_x) + "," + string(mouse_y) + "\n";
-_string += "device = " + string(device_mouse_x(0)) + "," + string(device_mouse_y(0)) + "\n";
+_string += "mouse  = " + string(input_mouse_x()) + "," + string(input_mouse_y()) + "\n";
+_string += "button = " + string(__input_mouse_button()) + "\n";
 
 draw_text(500, 10, _string);
 

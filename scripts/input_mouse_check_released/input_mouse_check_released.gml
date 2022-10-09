@@ -8,6 +8,13 @@ function input_mouse_check_released(_binding)
         return false;
     }
     
+    var _released_button = device_mouse_check_button_released(0, _binding);    
+    if ((os_type == os_windows) && _released_button)
+    {
+        //Windows uses touch as well, test physical mouse first 
+        return true;
+    }
+    
     if (__INPUT_TOUCH_SUPPORT)
     {
         //Extended buttons only report on first index
@@ -21,5 +28,5 @@ function input_mouse_check_released(_binding)
         }
     }
 
-    return device_mouse_check_button_released(0, _binding);
+    return _released_button;
 }
