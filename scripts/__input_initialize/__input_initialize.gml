@@ -315,10 +315,11 @@ function __input_initialize()
         Community8BitDo:           "switch", //8BitDo are Switch gamepads (exceptions typed appropriately)
         HIDWiiClassic:             "switch",
 
-        SwitchJoyConLeft:  "switch joycon left",
-        HIDJoyConLeft:     "switch joycon left",
-        SwitchJoyConRight: "switch joycon right",
-        HIDJoyConRight:    "switch joycon right",
+        SwitchJoyConLeft:   "switch joycon left",
+        SwitchJoyConSingle: "switch joycon left",
+        HIDJoyConLeft:      "switch joycon left",
+        SwitchJoyConRight:  "switch joycon right",
+        HIDJoyConRight:     "switch joycon right",
         
         //Legacy
         CommunityGameCube:     "gamecube",
@@ -574,28 +575,85 @@ function __input_initialize()
     
     #region Steam Input
     
-    global.__input_on_steam_deck = false;
+    global.__input_steam_switch_labels = false;
+    global.__input_using_steamworks    = false;
+    global.__input_on_steam_deck       = false;
+
+    global.__input_steam_handles       = [];    
+    global.__input_steam_type_to_raw   = {};
+    global.__input_steam_type_to_name  = {};    
     
-    if (os_type == os_linux)
+    if (__INPUT_STEAMWORKS_SUPPORT && INPUT_ALLOW_STEAMWORKS)
     {
-        //Check for Steam Deck hardware
+        try
+        {
+            //Using Steamworks extension
+            global.__input_using_steamworks = steam_input_init(true);
+            global.__input_on_steam_deck    = steam_utils_is_steam_running_on_steam_deck();
+        }
+        catch(_error)
+        {
+            __input_trace("Steamworks extension unavailable");
+        }
+    }
+        
+    if (!global.__input_on_steam_deck && (os_type == os_linux))
+    {
         var _map = os_get_info();
         if (ds_exists(_map, ds_type_map))
         {
-            var _renderer_info = _map[? "gl_renderer_string"];
-            
-            if ((_renderer_info != undefined)
-            &&  __input_string_contains(_renderer_info, "valve") 
-            &&  __input_string_contains(_renderer_info, "neptune"))
+            var _renderer_info = _map[? "gl_renderer_string"];            
+            if ((_renderer_info != undefined) && __input_string_contains(_renderer_info, "valve") && __input_string_contains(_renderer_info, "neptune"))
             {
-                 global.__input_on_steam_deck = true;
+                //Deck identification in absence of Steamworks
+                global.__input_on_steam_deck = true;
             }
             
             ds_map_destroy(_map);
         }
     }
     
-    if (((os_type == os_linux) || (os_type == os_macosx)) && !__INPUT_ON_WEB && !global.__input_on_steam_deck)
+    var _switch_labels = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");
+    if (_switch_labels != "")
+    {
+        //Use environment variable
+        global.__input_steam_switch_labels = (_switch_labels == "1");
+    }
+    else
+    {
+        //Default enabled on Deck and disabled on desktop
+        global.__input_steam_switch_labels = global.__input_on_steam_deck;
+    }
+    
+    if (global.__input_using_steamworks)
+    {   
+        __input_steam_type_set(steam_input_type_xbox_360_controller,   "XBox360Controller", "Xbox 360 Controller");
+        __input_steam_type_set(steam_input_type_xbox_one_controller,   "XBoxOneController", "Xbox One Controller");
+        __input_steam_type_set(steam_input_type_ps3_controller,        "PS3Controller",     "PS3 Controller");
+        __input_steam_type_set(steam_input_type_ps4_controller,        "PS4Controller",     "PS4 Controller");
+        __input_steam_type_set(steam_input_type_ps5_controller,        "PS5Controller",     "PS5 Controller");
+        __input_steam_type_set(steam_input_type_steam_controller,      "SteamController",   "Steam Controller");
+        __input_steam_type_set(steam_input_type_steam_deck_controller, "CommunityDeck",     "Steam Deck Controller");
+        __input_steam_type_set(steam_input_type_mobile_touch,          "MobileTouch",       "Steam Link");
+        
+        if (global.__input_steam_switch_labels)
+        {
+            //This is weird, but dictated by Steam Input
+            __input_steam_type_set(steam_input_type_switch_pro_controller, "XBox360Controller", "Switch Pro Controller");
+            __input_steam_type_set(steam_input_type_switch_joycon_single,  "XBox360Controller", "Joy-Con");
+            __input_steam_type_set(steam_input_type_switch_joycon_pair,    "XBox360Controller", "Joy-Con Pair");
+        }
+        else
+        {   
+            __input_steam_type_set(steam_input_type_switch_pro_controller, "SwitchProController", "Switch Pro Controller");
+            __input_steam_type_set(steam_input_type_switch_joycon_single,  "SwitchJoyConSingle",  "Joy-Con");
+            __input_steam_type_set(steam_input_type_switch_joycon_pair,    "SwitchJoyConPair",    "Joy-Con Pair");
+        }
+                
+        __input_steam_type_set("unknown", "UnknownNonSteamController", "Controller");
+    }
+    
+    if ((os_type == os_linux) || (os_type == os_macosx))
     {
         //Define the virtual controller's identity
         var _os = ((os_type == os_macosx)? "macos"                            : "linux");
@@ -613,15 +671,13 @@ function __input_initialize()
         }
     
         //Blacklist the Steam virtual controller
-        if (is_struct(_blacklist_id)) _blacklist_id[$ _id] = true;   
-    }
+        if (is_struct(_blacklist_id)) _blacklist_id[$ _id] = true;
     
-    if ((os_type == os_linux) && !__INPUT_ON_WEB)
-    {
         var _steam_environ = environment_get_variable("SteamEnv");
         var _steam_configs = environment_get_variable("EnableConfiguratorSupport");
-    
-        if ((_steam_environ != "") && (_steam_environ == "1")
+        
+        if ((os_type == os_linux)
+        && ((_steam_environ != "") && (_steam_environ == "1") || global.__input_using_steamworks)
         &&  (_steam_configs != "") && (_steam_configs == string_digits(_steam_configs)))
         {
             //If run through Steam remove Steam virtual controller from the blocklist
@@ -637,7 +693,7 @@ function __input_initialize()
             
             var _ignore_list = [];
         
-            if (environment_get_variable("SDL_GAMECONTROLLER_IGNORE_DEVICES") == "")
+            if (global.__input_using_steamworks || (environment_get_variable("SDL_GAMECONTROLLER_IGNORE_DEVICES") == ""))
             {
                 //If ignore hint isn't set, GM accesses controllers meant to be blocked
                 //We address this by adding the Steam config types to our own blocklist
@@ -650,17 +706,17 @@ function __input_initialize()
                 repeat(array_length(_ignore_list))
                 {
                     global.__input_ignore_gamepad_types[$ _ignore_list[_i]] = true;
+                    ++_i;
                 }
             }
             
             //Check for a reducible type configuration
-            var _steam_switch_labels = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");
-            if (!_steam_generic && !_steam_ps
-            && (!_steam_switch || ((_steam_switch_labels != "") && (_steam_switch_labels == "1"))))
+            if (!_steam_generic && !_steam_ps && (!_steam_switch || global.__input_steam_switch_labels))
             {
                 //The remaining configurations are in the Xbox Controller style including:
                 //Steam Controller, Steam Link, Steam Deck, Xbox or Switch with AB/XY swap
                 global.__input_simple_type_lookup[$ "CommunitySteam"] = _default_xbox_type;
+                __input_trace("Steam Input configuration indicates Xbox-like identity for virtual controllers");
             }
         }
     }
