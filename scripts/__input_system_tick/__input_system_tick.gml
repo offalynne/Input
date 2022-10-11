@@ -39,7 +39,7 @@ function __input_system_tick()
                 {
                     //Get recent active touch
                     global.__input_pointer_durations[_i] += delta_time;
-                    if (_touch_index == undefined || (global.__input_pointer_durations[_i] < global.__input_pointer_durations[_touch_index]))
+                    if ((_touch_index == undefined) || (global.__input_pointer_durations[_i] < global.__input_pointer_durations[_touch_index]))
                     {
                         _touch_index = _i;
                     }
