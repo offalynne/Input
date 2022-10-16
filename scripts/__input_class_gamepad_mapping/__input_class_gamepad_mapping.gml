@@ -17,6 +17,7 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
     limited_range    = false;
     extended_range   = false;
     hat_mask         = undefined;
+    scale            = 256;
     
     //Hat-on-axis and split axis
     raw_negative = undefined;
@@ -101,7 +102,7 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
             if (invert)         value = 1 - value;
             if (reverse)        value = -value;
                   
-            value = clamp(value, -1, 1);
+            value = clamp((256/scale)*value, -1, 1);
             
             if (__value_previous == undefined)
             {

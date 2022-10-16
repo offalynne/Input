@@ -235,10 +235,11 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty").reverse = true;
         set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
         set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty").reverse = true;
-            
-        //This bit is weird but it enables analogue input from triggers so...
-        set_mapping(gp_shoulderlb, 4106, __INPUT_MAPPING.AXIS, "lefttrigger");
-        set_mapping(gp_shoulderrb, 4107, __INPUT_MAPPING.AXIS, "righttrigger");
+        
+        //Set initial trigger scale per Xbox One and Series controllers over USB (0 to 63/256)
+        set_mapping(gp_shoulderlb, __XINPUT_AXIS_LT, __INPUT_MAPPING.AXIS, "lefttrigger").scale  = 63;
+        set_mapping(gp_shoulderrb, __XINPUT_AXIS_RT, __INPUT_MAPPING.AXIS, "righttrigger").scale = 63;
+        scale_trigger = true;
         
         exit;
     }
