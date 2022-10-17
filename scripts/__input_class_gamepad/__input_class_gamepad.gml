@@ -40,6 +40,9 @@ function __input_class_gamepad(_index) constructor
     
     static discover = function()
     {
+        //Discard deadzone, we use axis thresholds
+        gamepad_set_axis_deadzone(index, 0);
+        
         if (custom_mapping)
         {
             custom_mapping = false;
