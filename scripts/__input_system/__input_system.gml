@@ -52,6 +52,10 @@
 #macro gp_paddle3   32894
 #macro gp_paddle4   32895
 
+//Enables analogue axis checks from triggers on XInput
+#macro __XINPUT_AXIS_LT  4106
+#macro __XINPUT_AXIS_RT  4107
+
 //Unfortunately, versions prior to v5.2 used these values for extended gamepad constants
 //They collide with GameMaker's native constants for gamepad axis values for PS4/PS5 controllers
 #macro __INPUT_LEGACY_GP_GUIDE     32789 //gp_axis_acceleration_x
