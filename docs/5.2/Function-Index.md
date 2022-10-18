@@ -161,6 +161,7 @@
 - [`input_cursor_elastic_set(x, y, strength, [playerIndex])`](Functions-(Cursor)?id=input_cursor_elastic_setx-y-strength-playerindex)
 - [`input_cursor_elastic_remove([playerIndex])`](Functions-(Cursor)?id=input_cursor_elastic_removeplayerindex)
 - [`input_cursor_elastic_get([playerIndex])`](Functions-(Cursor)?id=input_cursor_elastic_getplayerindex)
+- [`input_cursor_translate([x], [y], duration, [playerIndex=0], [relative=false])`](Functions-(Cursor)?id=input_cursor_translatex-y-duration-playerindex-relative)
 
 &nbsp;
 
