@@ -4,8 +4,6 @@ function __input_system_tick()
     global.__input_previous_current_time = global.__input_current_time;
     global.__input_current_time = current_time;
     global.__input_cleared = false;
-    
-
 
     #region Touch
     
@@ -372,6 +370,14 @@ function __input_system_tick()
     
     #region Gamepads
     
+    var _steam_handles_changed = false;
+    if (global.__input_using_steamworks)
+    {
+        steam_input_run_frame();
+        _steam_handles_changed = __input_steam_handles_changed();        
+        global.__input_steam_handles = steam_input_get_connected_controllers();
+    }
+    
     if (global.__input_frame > INPUT_GAMEPADS_TICK_PREDELAY)
     {
         //Expand dynamic device count
@@ -391,18 +397,12 @@ function __input_system_tick()
             {
                 if (gamepad_is_connected(_g))
                 {
-                    if (os_type == os_switch)
+                    if (((os_type == os_switch) && (_gamepad.description != gamepad_get_description(_g))) || _steam_handles_changed)
                     {
-                        //When L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
+                        //When Switch L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
                         //Instead we have to check for changes in the description to see if state has changed
-                        if (_gamepad.description != gamepad_get_description(_g))
-                        {
-                            _gamepad.discover();
-                        }
-                        else
-                        {
-                            _gamepad.tick();
-                        }
+                        //Also, force rediscovery when Steam Input handles have changed
+                        _gamepad.discover();
                     }
                     else
                     {

@@ -22,6 +22,9 @@ function __input_class_gamepad(_index) constructor
     axis_count   = undefined;
     hat_count    = undefined;
     
+    __steam_handle_index = undefined;
+    __steam_handle       = undefined;
+    
     __vibration_support = false;
     __vibration_left    = 0;
     __vibration_right   = 0;
@@ -63,6 +66,7 @@ function __input_class_gamepad(_index) constructor
         __input_gamepad_find_in_sdl2_database();
         __input_gamepad_set_type();
         __input_gamepad_set_blacklist();
+        __input_gamepad_set_virtual();
         __input_gamepad_set_mapping();
         
         __vibration_support = global.__input_vibration_allowed_on_platform && ((os_type != os_windows) || xinput);        
