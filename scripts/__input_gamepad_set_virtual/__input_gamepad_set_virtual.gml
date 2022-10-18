@@ -44,7 +44,7 @@ function __input_gamepad_set_virtual()
         var _raw_type = global.__input_steam_type_to_raw[$ _handle_type];
         if (_raw_type == undefined) exit;
         
-        var _simple_type = simple_type = global.__input_simple_type_lookup[$ _raw_type];
+        var _simple_type = global.__input_simple_type_lookup[$ _raw_type];
         if (_simple_type == undefined) exit;
 
         description = _description;

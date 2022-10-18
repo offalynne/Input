@@ -253,6 +253,36 @@ function __input_class_gamepad(_index) constructor
         }
     }
     
+    static __color_set = function(_color)
+    {   
+        if (global.__input_using_steamworks)
+        {
+            var _led_flag = steam_input_led_flag_set_color;
+            if (_color == undefined)
+            {
+                _color = 0;
+                _led_flag = steam_input_led_flag_restore_user_default;
+            }           
+            
+            if (__steam_handle != undefined)
+            {
+                steam_input_set_led_color(__steam_handle, _color, _led_flag);
+            }
+        }
+        else if (__INPUT_ON_PS)
+        {
+            if (_color == undefined)
+            {
+                if (os_type == os_ps4) ps4_gamepad_reset_color(index);
+                if (os_type == os_ps5) ps5_gamepad_reset_color(index);
+            }
+            else
+            {
+                gamepad_set_color(index, _color);
+            }
+        }
+    }
+    
     static __vibration_set = function(_left, _right)
     {
         __vibration_left  = _left;
