@@ -13,6 +13,8 @@ function __input_class_player() constructor
     __vibration_strength    = INPUT_VIBRATION_DEFAULT_STRENGTH;
     __vibration_event_array = [];
     
+    __color = undefined;
+    
     __rebind_state            = 0;
     __rebind_start_time       = global.__input_current_time;
     __rebind_success_callback = undefined;
@@ -320,6 +322,7 @@ function __input_class_player() constructor
     {
         if ((__rebind_state > 0) && (array_length(__source_array) > 0)) __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_CHANGED);
         
+        __color_set();
         array_resize(__source_array, 0);
         __last_input_time = global.__input_current_time;
         
@@ -346,6 +349,7 @@ function __input_class_player() constructor
         
         array_push(__source_array, _source);
         __last_input_time = global.__input_current_time;
+        __color_set(__color);
         
         if (INPUT_DEBUG_SOURCES) __input_trace("Assigned source ", _source, " to player ", __index);
     }
@@ -1144,7 +1148,7 @@ function __input_class_player() constructor
         if (__connected && (global.__input_source_mode != INPUT_SOURCE_MODE.MULTIDEVICE)) //Don't vibrate if we're likely to have multiple gamepads assigned
         {
             var _gamepad_index = __source_get_gamepad();
-            if (_gamepad_index < 0) return;
+            if not (_gamepad_index >= 0) return;
             
             var _not_paused = !__vibration_paused;
             var _left  = 0;
@@ -1180,6 +1184,19 @@ function __input_class_player() constructor
             }
             
             global.__input_gamepads[_gamepad_index].__vibration_set(__vibration_strength*_left, __vibration_strength*_right);
+        }
+    }
+    
+    static __color_set = function(_color)
+    {
+        __color = _color;
+        
+        if (__connected)
+        {
+            var _gamepad_index = __source_get_gamepad();
+            if not (_gamepad_index >= 0) return;
+            
+            global.__input_gamepads[_gamepad_index].__color_set(_color);
         }
     }
     
