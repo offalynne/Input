@@ -236,10 +236,23 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
         set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty").reverse = true;
         
-        //Set initial trigger scale per Xbox One and Series controllers over USB (0 to 63/256)
-        set_mapping(gp_shoulderlb, __XINPUT_AXIS_LT, __INPUT_MAPPING.AXIS, "lefttrigger").scale  = 63;
-        set_mapping(gp_shoulderrb, __XINPUT_AXIS_RT, __INPUT_MAPPING.AXIS, "righttrigger").scale = 63;
-        scale_trigger = true;
+        var _mapping_lt = set_mapping(gp_shoulderlb, __XINPUT_AXIS_LT, __INPUT_MAPPING.AXIS, "lefttrigger");
+        var _mapping_rt = set_mapping(gp_shoulderrb, __XINPUT_AXIS_RT, __INPUT_MAPPING.AXIS, "righttrigger");
+        
+        if (__steam_handle != undefined)
+        {
+            //Typical XInput scale (0 to 255/256)
+            _mapping_lt.scale = 255;
+            _mapping_rt.scale = 255;
+        }
+        else
+        {
+            //Scale per Xbox One and Series controllers over USB (0 to 63/256)
+            //Scale is recalibrated later if values fall outside of this range
+            _mapping_lt.scale = 63;
+            _mapping_rt.scale = 63;
+            scale_trigger = true;
+        }
         
         exit;
     }
