@@ -10,7 +10,6 @@ if sys.version_info[0] != 3:
 
 import re
 import os
-import sys
 import urllib.request
 import shutil
 

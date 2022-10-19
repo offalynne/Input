@@ -33,7 +33,8 @@ else
 
 if (input_multiplayer_is_finished())
 {
-    _string += "Please press and hold \"" + input_binding_get_icon(input_binding_get("action")) + "\" to play\n";
+    _string += "\n";
+    _string += "Player 1: Please press and hold \"" + input_binding_get_icon(input_binding_get("action")) + "\" to play\n";
 }
 
 draw_text(10, 10, _string);
