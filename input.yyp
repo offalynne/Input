@@ -211,6 +211,8 @@
     {"id":{"name":"input_binding_key","path":"scripts/input_binding_key/input_binding_key.yy",},"order":8,},
     {"id":{"name":"__input_config_verbs","path":"scripts/__input_config_verbs/__input_config_verbs.yy",},"order":1,},
     {"id":{"name":"input_tick","path":"scripts/input_tick/input_tick.yy",},"order":12,},
+    {"id":{"name":"input_color_get","path":"scripts/input_color_get/input_color_get.yy",},"order":9,},
+    {"id":{"name":"input_color_set","path":"scripts/input_color_set/input_color_set.yy",},"order":10,},
     {"id":{"name":"input_source_hotswap_tick","path":"scripts/input_source_hotswap_tick/input_source_hotswap_tick.yy",},"order":0,},
     {"id":{"name":"input_value","path":"scripts/input_value/input_value.yy",},"order":15,},
     {"id":{"name":"__input_player_tick_sources","path":"scripts/__input_player_tick_sources/__input_player_tick_sources.yy",},"order":10,},
