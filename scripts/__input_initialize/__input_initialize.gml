@@ -184,10 +184,9 @@ function __input_initialize()
     
     //Multiplayer source assignment state
     //This is set by input_multiplayer_set()
-    global.__input_multiplayer_min         = 1;
-    global.__input_multiplayer_max         = INPUT_MAX_PLAYERS;
-    global.__input_multiplayer_drop_down   = true;
-    global.__input_multiplayer_allow_abort = true;
+    global.__input_multiplayer_min       = 1;
+    global.__input_multiplayer_max       = INPUT_MAX_PLAYERS;
+    global.__input_multiplayer_drop_down = true;
     
     //Array of currently connected gamepads. If an element is <undefined> then the gamepad is disconnected
     //Each gamepad in this array is an instance of __input_class_gamepad

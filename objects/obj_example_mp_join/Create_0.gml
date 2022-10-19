@@ -1,6 +1,6 @@
 if (INPUT_MULTIPLAYER_ABORT_CALLBACK == undefined)
 {
-    __input_error("INPUT_MULTIPLAYER_ABORT_CALLBACK must be defined for this example\n(Set it to a blank function i.e. (function(){})  )");
+    __input_error("INPUT_MULTIPLAYER_ABORT_CALLBACK must be defined for this test case");
 }
 
 //Start the JOIN source mode

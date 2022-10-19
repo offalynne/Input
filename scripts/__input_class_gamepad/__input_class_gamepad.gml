@@ -10,7 +10,6 @@ function __input_class_gamepad(_index) constructor
     sdl2_definition = undefined;
     guessed_type    = false;
     blacklisted     = false;
-    scale_trigger   = false;
     
     vendor  = undefined;
     product = undefined;
@@ -43,9 +42,6 @@ function __input_class_gamepad(_index) constructor
     
     static discover = function()
     {
-        //Discard deadzone, we use axis thresholds
-        gamepad_set_axis_deadzone(index, 0);
-        
         if (custom_mapping)
         {
             custom_mapping = false;
@@ -214,16 +210,6 @@ function __input_class_gamepad(_index) constructor
     
     static tick = function(_clear = false)
     {
-        //Recalibrate XInput triggers
-        if (scale_trigger && ((gamepad_axis_value(index, __XINPUT_AXIS_LT) > 0.25) || (gamepad_axis_value(index, __XINPUT_AXIS_RT) > 0.25)))
-        {
-            //Trigger value exceeds limited range, set range to "normal" scale (0 to 255/256)
-            with mapping_gm_to_raw[$ gp_shoulderlb] scale = 255;
-            with mapping_gm_to_raw[$ gp_shoulderrb] scale = 255;
-            scale_trigger = false;
-            __input_trace("Recalibrated XInput trigger scale for gamepad ", index);
-        }
-        
         var _scan = (current_time > __scan_start_time);
         var _gamepad = index;
         var _i = 0;
