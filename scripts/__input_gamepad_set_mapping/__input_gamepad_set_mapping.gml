@@ -63,7 +63,6 @@ function __input_gamepad_set_mapping()
         exit;
     }
     
-    //If we're on PlayStation or Xbox, don't remap anything special
     if (__INPUT_ON_PS || __INPUT_ON_XBOX)
     {
         set_mapping(gp_padu,   gp_padu,   __INPUT_MAPPING.BUTTON, "dpup");
@@ -75,8 +74,9 @@ function __input_gamepad_set_mapping()
         
         set_mapping(gp_shoulderl,  gp_shoulderl,  __INPUT_MAPPING.BUTTON, "leftshoulder");
         set_mapping(gp_shoulderr,  gp_shoulderr,  __INPUT_MAPPING.BUTTON, "rightshoulder");
-        set_mapping(gp_shoulderlb, gp_shoulderlb, __INPUT_MAPPING.AXIS,   "lefttrigger");
-        set_mapping(gp_shoulderrb, gp_shoulderrb, __INPUT_MAPPING.AXIS,   "righttrigger");
+        
+        set_mapping(gp_shoulderlb, (__INPUT_ON_PS? 4 : gp_shoulderlb), __INPUT_MAPPING.AXIS, "lefttrigger");
+        set_mapping(gp_shoulderrb, (__INPUT_ON_PS? 5 : gp_shoulderrb), __INPUT_MAPPING.AXIS, "righttrigger");
         
         set_mapping(gp_face1, gp_face1, __INPUT_MAPPING.BUTTON, "a");
         set_mapping(gp_face2, gp_face2, __INPUT_MAPPING.BUTTON, "b");
@@ -235,10 +235,24 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty").reverse = true;
         set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
         set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty").reverse = true;
-            
-        //This bit is weird but it enables analogue input from triggers so...
-        set_mapping(gp_shoulderlb, 4106, __INPUT_MAPPING.AXIS, "lefttrigger");
-        set_mapping(gp_shoulderrb, 4107, __INPUT_MAPPING.AXIS, "righttrigger");
+        
+        var _mapping_lt = set_mapping(gp_shoulderlb, __XINPUT_AXIS_LT, __INPUT_MAPPING.AXIS, "lefttrigger");
+        var _mapping_rt = set_mapping(gp_shoulderrb, __XINPUT_AXIS_RT, __INPUT_MAPPING.AXIS, "righttrigger");
+        
+        if (__steam_handle != undefined)
+        {
+            //Typical XInput scale (0 to 255/256)
+            _mapping_lt.scale = 255;
+            _mapping_rt.scale = 255;
+        }
+        else
+        {
+            //Scale per Xbox One and Series controllers over USB (0 to 63/256)
+            //Scale is recalibrated later if values fall outside of this range
+            _mapping_lt.scale = 63;
+            _mapping_rt.scale = 63;
+            scale_trigger = true;
+        }
         
         exit;
     }
