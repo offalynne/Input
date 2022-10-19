@@ -10,7 +10,6 @@ function __input_class_gamepad(_index) constructor
     sdl2_definition = undefined;
     guessed_type    = false;
     blacklisted     = false;
-    scale_trigger   = false;
     
     vendor  = undefined;
     product = undefined;
@@ -43,9 +42,6 @@ function __input_class_gamepad(_index) constructor
     
     static discover = function()
     {
-        //Discard deadzone, we use axis thresholds
-        gamepad_set_axis_deadzone(index, 0);
-        
         if (custom_mapping)
         {
             custom_mapping = false;
@@ -214,16 +210,6 @@ function __input_class_gamepad(_index) constructor
     
     static tick = function(_clear = false)
     {
-        //Recalibrate XInput triggers
-        if (scale_trigger && ((gamepad_axis_value(index, __XINPUT_AXIS_LT) > 0.25) || (gamepad_axis_value(index, __XINPUT_AXIS_RT) > 0.25)))
-        {
-            //Trigger value exceeds limited range, set range to "normal" scale (0 to 255/256)
-            with mapping_gm_to_raw[$ gp_shoulderlb] scale = 255;
-            with mapping_gm_to_raw[$ gp_shoulderrb] scale = 255;
-            scale_trigger = false;
-            __input_trace("Recalibrated XInput trigger scale for gamepad ", index);
-        }
-        
         var _scan = (current_time > __scan_start_time);
         var _gamepad = index;
         var _i = 0;
@@ -264,6 +250,36 @@ function __input_class_gamepad(_index) constructor
             }
             
             __vibration_received_this_frame = false;
+        }
+    }
+    
+    static __color_set = function(_color)
+    {   
+        if (global.__input_using_steamworks)
+        {
+            var _led_flag = steam_input_led_flag_set_color;
+            if (_color == undefined)
+            {
+                _color = 0;
+                _led_flag = steam_input_led_flag_restore_user_default;
+            }           
+            
+            if (__steam_handle != undefined)
+            {
+                steam_input_set_led_color(__steam_handle, _color, _led_flag);
+            }
+        }
+        else if (__INPUT_ON_PS)
+        {
+            if (_color == undefined)
+            {
+                if (os_type == os_ps4) ps4_gamepad_reset_color(index);
+                if (os_type == os_ps5) ps5_gamepad_reset_color(index);
+            }
+            else
+            {
+                gamepad_set_color(index, _color);
+            }
         }
     }
     

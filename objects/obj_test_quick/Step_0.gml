@@ -7,7 +7,7 @@ if (_direction == undefined)
 }
 else
 {
-    if (input_xy_quick_pressed("left", "right", "up", "down")) quick = true;
+    if (input_quick_2d("left", "right", "up", "down")) quick = true;
     
     var _speed = quick? 5 : 3;
     x += lengthdir_x(_speed, _direction);

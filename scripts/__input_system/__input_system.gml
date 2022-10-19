@@ -1,5 +1,5 @@
-#macro __INPUT_VERSION "5.2.1"
-#macro __INPUT_DATE    "2022-10-18"
+#macro __INPUT_VERSION "5.2.0 beta 2"
+#macro __INPUT_DATE    "2022-09-25"
 #macro __INPUT_DEBUG   false
 
 #macro __INPUT_BINDING_KEY               "key"
@@ -52,10 +52,6 @@
 #macro gp_paddle2   32893
 #macro gp_paddle3   32894
 #macro gp_paddle4   32895
-
-//Enables analogue axis checks from triggers on XInput
-#macro __XINPUT_AXIS_LT  4106
-#macro __XINPUT_AXIS_RT  4107
 
 //Unfortunately, versions prior to v5.2 used these values for extended gamepad constants
 //They collide with GameMaker's native constants for gamepad axis values for PS4/PS5 controllers

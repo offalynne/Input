@@ -87,7 +87,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                     return false;
                 }
                 
-                if (_gamepad.xinput && ((_raw == __XINPUT_AXIS_LT) || (_raw == __XINPUT_AXIS_RT)))
+                if (_gamepad.xinput && ((_raw == 4106) || (_raw == 4107)))
                 {
                     //Except XInput trigger values from range checks
                     return true;
