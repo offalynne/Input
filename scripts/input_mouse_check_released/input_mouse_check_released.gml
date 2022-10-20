@@ -23,7 +23,7 @@ function input_mouse_check_released(_binding)
     else
     {
         //Mouse and touchpad
-        _left = device_mouse_check_button_released(0, mb_left) || global.__input_tap_click;
+        _left = device_mouse_check_button_released(0, mb_left) && !global.__input_tap_click;
     }
     
     switch(_binding)
