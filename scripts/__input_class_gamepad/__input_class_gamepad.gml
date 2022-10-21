@@ -13,26 +13,26 @@ function __input_class_gamepad(_index) constructor
     scale_trigger   = false;
     
     vendor  = undefined;
-    product = undefined;
-    
-    custom_mapping      = false;
-    mac_cleared_mapping = false;
+    product = undefined;    
     
     button_count = undefined;
     axis_count   = undefined;
     hat_count    = undefined;
-    
-    __steam_handle_index = undefined;
-    __steam_handle       = undefined;
-    
-    __vibration_support = false;
-    __vibration_left    = 0;
-    __vibration_right   = 0;
-    __vibration_received_this_frame = false;
-    
+
+    custom_mapping      = false;
+    mac_cleared_mapping = false;
+
     mapping_gm_to_raw = {};
     mapping_raw_to_gm = {};
     mapping_array     = [];
+
+    __vibration_support = false;    
+    __vibration_left    = 0;
+    __vibration_right   = 0;
+    __vibration_received_this_frame = false;
+
+    __steam_handle_index = undefined;
+    __steam_handle       = undefined;
     
     __connection_time = current_time;
     __scan_start_time = __connection_time + 250; //Give GM some space before allowing gamepad mappings to return values
@@ -305,5 +305,35 @@ function __input_class_gamepad(_index) constructor
         __vibration_right = _right;
         
         __vibration_received_this_frame = true;
+    }
+    
+    static __trigger_effect_apply = function(_trigger, _effect)
+    {
+        if not ((_trigger == gp_shoulderlb) || (_trigger == gp_shoulderrb))
+        {
+            __input_error("Value ", _trigger ," not a gamepad trigger");
+        }
+        
+        if (os_type == os_ps5)
+        {
+            return _effect.__apply_ps5(index, _trigger);
+        }
+
+        if (global.__input_using_steamworks)
+        {
+            var _right = (_trigger == gp_shoulderrb? 1 : 0);
+            var _command_array = [];
+            _command_array[_right] = { mode: global.__input_steam_trigger_mode[$ _effect.__mode], command_data: {} };
+            _command_array[_right].command_data[$ string(_effect.__mode_name) + "_param"] = _effect.__params;
+            _command_array[1-_right] = { mode: steam_input_sce_pad_trigger_effect_mode_off, command_data: {} };
+
+            var _steam_trigger_params = {};
+            _steam_trigger_params.command = _command_array;
+            _steam_trigger_params.trigger_mask = ((_right == 1)? steam_input_sce_pad_trigger_effect_trigger_mask_r2 : steam_input_sce_pad_trigger_effect_trigger_mask_l2);
+            
+            return steam_input_set_dualsense_trigger_effect(__steam_handle, _steam_trigger_params);
+        }
+
+        return false;
     }
 }
