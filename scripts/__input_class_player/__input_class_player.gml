@@ -13,6 +13,12 @@ function __input_class_player() constructor
     __vibration_strength    = INPUT_VIBRATION_DEFAULT_STRENGTH;
     __vibration_event_array = [];
     
+    __trigger_effect_paused     = false;
+    __trigger_intercepted_left  = false;
+    __trigger_intercepted_right = false;
+    __trigger_effect_left       = undefined;
+    __trigger_effect_right      = undefined;
+    
     __rebind_state            = 0;
     __rebind_start_time       = global.__input_current_time;
     __rebind_success_callback = undefined;
@@ -320,6 +326,9 @@ function __input_class_player() constructor
     {
         if ((__rebind_state > 0) && (array_length(__source_array) > 0)) __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_CHANGED);
         
+        __trigger_effect_set(gp_shoulderlb, new __input_class_trigger_effect_off(), false);
+        __trigger_effect_set(gp_shoulderrb, new __input_class_trigger_effect_off(), false);
+        
         array_resize(__source_array, 0);
         __last_input_time = global.__input_current_time;
         
@@ -346,6 +355,9 @@ function __input_class_player() constructor
         
         array_push(__source_array, _source);
         __last_input_time = global.__input_current_time;
+        
+        __trigger_effect_set(gp_shoulderlb, __trigger_effect_left,  false);
+        __trigger_effect_set(gp_shoulderrb, __trigger_effect_right, false);
         
         if (INPUT_DEBUG_SOURCES) __input_trace("Assigned source ", _source, " to player ", __index);
     }
@@ -1012,6 +1024,49 @@ function __input_class_player() constructor
         else
         {
             array_push(__vibration_event_array, _event);
+        }
+    }
+    
+    static __trigger_effect_set = function(_trigger, _effect, _set)
+    {
+        var _gamepad = __source_get_gamepad();
+        if ((_gamepad < 0) || !is_struct(_effect)) return;
+        
+        if (__trigger_effect_paused)
+        {
+            __input_trace("Warning! New trigger effect ignored, player ", __index, " trigger effect is paused");
+            return;
+        }
+
+        var _intercepted = !global.__input_gamepads[_gamepad].__trigger_effect_apply(_trigger, _effect);
+        
+        if (!_set) return;
+        if (_trigger == gp_shoulderlb)
+        {
+            __trigger_intercepted_left = _intercepted;
+            __trigger_effect_left      = _effect;
+        }
+        else
+        {
+            __trigger_intercepted_right = _intercepted;
+            __trigger_effect_right      = _effect;                 
+        }
+    }
+    
+    static __trigger_effect_pause = function(_state)
+    {   
+        __trigger_effect_paused = _state;
+    
+        if (!_state)
+        {
+            __input_trigger_effect_recover_player(__index);
+        }
+        else
+        {
+            var _gamepad = __source_get_gamepad();
+            if (_gamepad < 0) return;
+        
+            __input_trigger_effect_stop_gamepad(_gamepad);
         }
     }
     

@@ -170,13 +170,36 @@ function __input_initialize()
         ++_p;
     }
     
+    //DualSense haptic trigger effect types
+    enum INPUT_TRIGGER_EFFECT
+    {
+        TYPE_OFF,
+        TYPE_FEEDBACK,
+        TYPE_WEAPON,
+        TYPE_VIBRATION,
+    }
+    
+    //DualSense haptic trigger effect states
+    enum INPUT_TRIGGER_STATE
+    {
+        EFFECT_OFF               = ps5_gamepad_trigger_effect_state_off,
+        EFFECT_FEEDBACK_STANDBY  = ps5_gamepad_trigger_effect_state_feedback_standby,
+        EFFECT_FEEDBACK_ACTIVE   = ps5_gamepad_trigger_effect_state_feedback_active,
+        EFFECT_WEAPON_STANDBY    = ps5_gamepad_trigger_effect_state_weapon_standby,
+        EFFECT_WEAPON_PULLING    = ps5_gamepad_trigger_effect_state_weapon_pulling,
+        EFFECT_WEAPON_FIRED      = ps5_gamepad_trigger_effect_state_weapon_fired,
+        EFFECT_VIBRATION_STANDBY = ps5_gamepad_trigger_effect_state_vibration_standby,
+        EFFECT_VIBRATION_ACTIVE  = ps5_gamepad_trigger_effect_state_vibration_active,
+        EFFECT_INTERCEPTED       = ps5_gamepad_trigger_effect_state_intercepted,
+    }
+    
     enum INPUT_SOURCE_MODE
     {
         FIXED,        //Player sources won't change unless manually editted
         JOIN,         //Starts source assignment, typically used for multiplayer
         HOTSWAP,      //Player 0's source is determined by most recent input
         MIXED,        //Player 0 can use a mixture of keyboard, mouse, and any gamepad
-        MULTIDEVICE, //Player 0 can use a mixture of keyboard, mouse, and any gamepad, but gamepad bindings are specific to each device
+        MULTIDEVICE,  //Player 0 can use a mixture of keyboard, mouse, and any gamepad, but gamepad bindings are specific to each device
     }
     
     global.__input_source_mode          = undefined;
@@ -579,10 +602,11 @@ function __input_initialize()
     global.__input_steam_switch_labels = false;
     global.__input_using_steamworks    = false;
     global.__input_on_steam_deck       = false;
-
-    global.__input_steam_handles       = [];    
+    
+    global.__input_steam_handles       = [];
     global.__input_steam_type_to_raw   = {};
-    global.__input_steam_type_to_name  = {};    
+    global.__input_steam_type_to_name  = {};
+    global.__input_steam_trigger_mode  = {};
     
     if (__INPUT_STEAMWORKS_SUPPORT && INPUT_ALLOW_STEAMWORKS)
     {
@@ -652,6 +676,11 @@ function __input_initialize()
         }
                 
         __input_steam_type_set("unknown", "UnknownNonSteamController", "Controller");
+        
+        __input_trigger_effect_mode_set(INPUT_TRIGGER_EFFECT.TYPE_OFF,       steam_input_sce_pad_trigger_effect_mode_off);
+        __input_trigger_effect_mode_set(INPUT_TRIGGER_EFFECT.TYPE_FEEDBACK,  steam_input_sce_pad_trigger_effect_mode_feedback);
+        __input_trigger_effect_mode_set(INPUT_TRIGGER_EFFECT.TYPE_WEAPON,    steam_input_sce_pad_trigger_effect_mode_weapon);
+        __input_trigger_effect_mode_set(INPUT_TRIGGER_EFFECT.TYPE_VIBRATION, steam_input_sce_pad_trigger_effect_mode_vibration);
     }
     
     if ((os_type == os_linux) || (os_type == os_macosx))
