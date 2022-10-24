@@ -127,7 +127,6 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 0003,0003,CommunitySNES // Miroof
 0411,00c6,CommunitySNES // Buffalo FC801
 0810,e501,CommunitySNES // NEXT SNES
-0e8f,3013,CommunitySNES // HuiJia SNES
 12bd,d015,CommunitySNES // Tomee SNES
 1235,ab20,CommunitySNES // 8BitDo SN30
 2dc8,5103,CommunitySNES // 8BitDo SN30 Modkit
@@ -255,6 +254,7 @@ beef,feed,CommunityXBox360 // Monect
 045e,0b03,CommunityXBoxOne // Xbox One
 20d6,2802,CommunityXBoxOne // Power A Wired
 1915,0040,CommunityXBoxOne // Flydigi X9ET Pro and Vader 2
+2563,0526,CommunityPSX // Uberwith PS
 0e6f,0111,CommunityPSX // Afterglow PS3
 7331,0001,CommunityPSX // DualShock 3
 1209,8844,CommunityPSX // MUSIA PS2 Adapter
