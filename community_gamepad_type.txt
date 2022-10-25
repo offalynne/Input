@@ -410,7 +410,9 @@ dead,beef,CommunityPSX // Hidromancer
 06f7,0001,CommunityN64 // N64 Adaptoid
 2dc8,9002,CommunityN64 // Retro Bit x 8BitDo RB8 64 (USB)
 2dc8,3830,CommunityN64 // Retro Bit x 8BitDo RB8 64 (BT)
-0079,954e,CommunityN64 // Hyperkin N64 Adapter
+0079,954e,CommunityN64 // Hyperkin Adapter
+2e24,0bff,CommunityN64 // Hyperkin Adapter
+2e24,200b,CommunityN64 // Hyperkin Admiral
 289b,0008,CommunityDreamcast // Raphnet Dreamcast Adapter
 2836,0001,CommunityOuya // Ouya Controller
 18d1,9400,CommunityStadia // Google Stadia Controller
