@@ -479,56 +479,27 @@ function __input_gamepad_set_mapping()
     
     #region Mayflash N64 Adapter
     
-    if ((vendor == "8f0e") && (product == "1330") && (raw_type == "CommunityN64") && (guessed_type = false) && __INPUT_ON_DESKTOP)
+    if ((vendor == "8f0e") && (product == "1330") && (raw_type == "CommunityN64") && (guessed_type = false) && (os_type == os_macosx))
     {
-        __input_trace("Overriding mapping to N64");
-        
-        switch (os_type) 
-        {            
-            case os_windows:
-            case os_linux:
-                set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
-                set_mapping(gp_face2, 2, __INPUT_MAPPING.BUTTON, "b");
+        __input_trace("Overriding mapping to N64");        
+       
+        set_mapping(gp_face1, 3, __INPUT_MAPPING.BUTTON, "a");
+        set_mapping(gp_face2, 5, __INPUT_MAPPING.BUTTON, "b");
 
-                set_mapping(gp_shoulderl,  6, __INPUT_MAPPING.BUTTON, "leftshoulder")
-                set_mapping(gp_shoulderr,  7, __INPUT_MAPPING.BUTTON, "rightshoulder");;
-                set_mapping(gp_shoulderlb, 8, __INPUT_MAPPING.BUTTON, "lefttrigger");
-                set_mapping(gp_start,      9, __INPUT_MAPPING.BUTTON, "start");
+        set_mapping(gp_shoulderl,  13, __INPUT_MAPPING.BUTTON, "leftshoulder")
+        set_mapping(gp_shoulderr,  15, __INPUT_MAPPING.BUTTON, "rightshoulder");;
+        set_mapping(gp_shoulderlb, 17, __INPUT_MAPPING.BUTTON, "lefttrigger");
+        set_mapping(gp_start,      19, __INPUT_MAPPING.BUTTON, "start");
 
-                set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
-                set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
-                set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
-                set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+        set_mapping(gp_padu, 25, __INPUT_MAPPING.BUTTON, "dpup"   );
+        set_mapping(gp_padr, 27, __INPUT_MAPPING.BUTTON, "dpright");
+        set_mapping(gp_padd, 29, __INPUT_MAPPING.BUTTON, "dpdown" );
+        set_mapping(gp_padl, 31, __INPUT_MAPPING.BUTTON, "dpleft" );
 
-                set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS,  "leftx").limited_range = (os_type == os_linux);
-                set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS,  "lefty").limited_range = (os_type == os_linux);
-                set_mapping(gp_axisrv, 2, __INPUT_MAPPING.AXIS, "righty").limited_range = (os_type == os_linux);
-
-                var _rx = set_mapping(gp_axisrh, 3, __INPUT_MAPPING.AXIS, "rightx");
-                _rx.limited_range = (os_type == os_linux);
-                _rx.reverse       = true;
-            break;
-            
-            case os_macosx:
-                set_mapping(gp_face1, 3, __INPUT_MAPPING.BUTTON, "a");
-                set_mapping(gp_face2, 5, __INPUT_MAPPING.BUTTON, "b");
-
-                set_mapping(gp_shoulderl,  13, __INPUT_MAPPING.BUTTON, "leftshoulder")
-                set_mapping(gp_shoulderr,  15, __INPUT_MAPPING.BUTTON, "rightshoulder");;
-                set_mapping(gp_shoulderlb, 17, __INPUT_MAPPING.BUTTON, "lefttrigger");
-                set_mapping(gp_start,      19, __INPUT_MAPPING.BUTTON, "start");
-
-                set_mapping(gp_padu, 25, __INPUT_MAPPING.BUTTON, "dpup"   );
-                set_mapping(gp_padr, 27, __INPUT_MAPPING.BUTTON, "dpright");
-                set_mapping(gp_padd, 29, __INPUT_MAPPING.BUTTON, "dpdown" );
-                set_mapping(gp_padl, 31, __INPUT_MAPPING.BUTTON, "dpleft" );
-
-                set_mapping(gp_axislh, 1, __INPUT_MAPPING.AXIS,  "leftx");
-                set_mapping(gp_axislv, 3, __INPUT_MAPPING.AXIS,  "lefty");
-                set_mapping(gp_axisrv, 5, __INPUT_MAPPING.AXIS, "righty");
-                set_mapping(gp_axisrh, 7, __INPUT_MAPPING.AXIS, "rightx").reverse = true;          
-            break;
-        }
+        set_mapping(gp_axislh, 1, __INPUT_MAPPING.AXIS,  "leftx");
+        set_mapping(gp_axislv, 3, __INPUT_MAPPING.AXIS,  "lefty");
+        set_mapping(gp_axisrv, 5, __INPUT_MAPPING.AXIS, "righty");
+        set_mapping(gp_axisrh, 7, __INPUT_MAPPING.AXIS, "rightx").reverse = true;
         
         set_mapping(gp_shoulderrb, 0, undefined, "righttrigger");
         set_mapping(gp_select,     0, undefined, "back");
