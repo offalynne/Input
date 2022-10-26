@@ -1,5 +1,5 @@
-#macro __INPUT_VERSION "5.2.0 beta 3"
-#macro __INPUT_DATE    "2022-09-28"
+#macro __INPUT_VERSION "5.2.1"
+#macro __INPUT_DATE    "2022-10-18"
 #macro __INPUT_DEBUG   false
 
 #macro __INPUT_BINDING_KEY               "key"
@@ -29,6 +29,7 @@
 #macro __INPUT_ON_WEB      ((os_browser != browser_not_a_browser) || __INPUT_ON_OPERAGX)
 
 #macro __INPUT_TOUCH_SUPPORT              (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch) || (os_type == os_windows))
+#macro __INPUT_STEAMWORKS_SUPPORT         (((os_type == os_windows) || (os_type == os_linux)) && !__INPUT_ON_WEB)
 #macro __INPUT_KEYBOARD_NORMATIVE         (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch))
 #macro __INPUT_KEYBOARD_SUPPORT           (__INPUT_KEYBOARD_NORMATIVE || (os_type == os_android))
 #macro __INPUT_GAMEPAD_VIBRATION_SUPPORT  (__INPUT_ON_CONSOLE || (!__INPUT_ON_WEB && (os_type == os_windows)))
@@ -51,6 +52,10 @@
 #macro gp_paddle2   32893
 #macro gp_paddle3   32894
 #macro gp_paddle4   32895
+
+//Enables analogue axis checks from triggers on XInput
+#macro __XINPUT_AXIS_LT  4106
+#macro __XINPUT_AXIS_RT  4107
 
 //Unfortunately, versions prior to v5.2 used these values for extended gamepad constants
 //They collide with GameMaker's native constants for gamepad axis values for PS4/PS5 controllers

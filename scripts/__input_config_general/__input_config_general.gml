@@ -17,6 +17,10 @@
 //Whether to allow keyboard input on Switch platform
 #macro INPUT_SWITCH_KEYBOARD_ALLOWED  false
 
+//Whether to allow using Steamworks extension when available
+//This feature requires the Steamworks extension: https://github.com/YoYoGames/GMEXT-Steamworks
+#macro INPUT_ALLOW_STEAMWORKS  true
+
 //Whether to merge control keys, for example Left Shift and Right Shift upon user rebind
 #macro INPUT_MERGE_CONTROL_KEYS  false
 

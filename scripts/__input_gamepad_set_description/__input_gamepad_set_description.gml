@@ -41,6 +41,6 @@ function __input_gamepad_set_description()
     }
     else
     {
-        //We'll try to set our description based on the SDL2 database
+        //We'll try to set our description based on the SDL2 database (Desktop, Android) or type (Steamworks)
     }
 }
