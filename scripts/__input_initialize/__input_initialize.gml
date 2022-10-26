@@ -797,6 +797,9 @@ function __input_initialize()
     
     
     
+    //Whether gamepad motion is supported
+    global.__input_gamepad_motion_support = (__INPUT_ON_PS || (os_type == os_switch) || global.__input_using_steamworks);
+
     //By default GameMaker registers double click (or tap) as right mouse button
     //We want to be able to identify the actual mouse buttons correctly, and have our own double-input handling
     device_mouse_dbclick_enable(false);

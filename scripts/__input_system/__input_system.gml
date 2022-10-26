@@ -140,6 +140,13 @@ enum __INPUT_MAPPING
     __SIZE
 }
 
+enum INPUT_GYRO
+{
+    AXIS_PITCH,
+    AXIS_YAW,
+    AXIS_ROLL
+}
+
 //INPUT_STATUS.DISCONNECTED *must* be zero so that array_size() initializes gamepad status to disconnected
 //See input_tick() for more details
 enum INPUT_STATUS
@@ -171,7 +178,6 @@ enum __INPUT_VERB_TYPE
     __CHORD,
     __COMBO,
 }
-
 
 
 

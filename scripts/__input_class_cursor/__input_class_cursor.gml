@@ -82,7 +82,8 @@ function __input_class_cursor() constructor
         
         var _can_use_mouse = __player.__source_contains(INPUT_MOUSE);
         
-        if ((global.__input_pointer_moved || __using_mouse) && _can_use_mouse)
+        //Mouse and touch
+        if ((global.__input_pointer_moved || __using_mouse) && _can_use_mouse && global.__input_mouse_allowed_on_platform)
         {
             __using_mouse = true;
                 
@@ -101,6 +102,72 @@ function __input_class_cursor() constructor
         //Don't update the cursor if the mouse recently moved or we're rebinding controls
         if (global.__input_cursor_verbs_valid && (!global.__input_pointer_moved || !_can_use_mouse) && (__player.__rebind_state <= 0))
         {
+            //Gyro
+            var _motion = undefined;            
+            var _gamepad_index = __player.__source_get_gamepad();
+            if (_gamepad_index >= 0)
+            {
+                _motion = global.__input_gamepads[_gamepad_index].__motion;
+            }
+            
+            if ((_motion != undefined) && __player.__gyro_enabled)
+            {
+                var _motion_data = _motion.__tick();
+
+                var _gyro_value_x = undefined;
+                switch (__player.__gyro_axis_x)
+                {
+                    case INPUT_GYRO.AXIS_PITCH: _gyro_value_x = _motion_data.angular_velocity_x; break;
+                    case INPUT_GYRO.AXIS_YAW:   _gyro_value_x = _motion_data.angular_velocity_y; break;
+                    case INPUT_GYRO.AXIS_ROLL:  _gyro_value_x = _motion_data.angular_velocity_z; break;
+                }
+
+                var _gyro_value_y = undefined;
+                switch (__player.__gyro_axis_y)
+                {
+                    case INPUT_GYRO.AXIS_PITCH: _gyro_value_y = _motion_data.angular_velocity_x; break;
+                    case INPUT_GYRO.AXIS_YAW:   _gyro_value_y = _motion_data.angular_velocity_y; break;
+                    case INPUT_GYRO.AXIS_ROLL:  _gyro_value_y = _motion_data.angular_velocity_z; break;
+                }
+
+                var _screen_width  = display_get_width();
+                var _screen_height = display_get_height();
+                switch(global.__input_pointer_coord_space)
+                {
+                    case INPUT_COORD_SPACE.ROOM:
+                        if (view_enabled && view_visible[0])
+                        {
+                            var _camera = view_camera[0];
+                            _screen_width  = camera_get_view_width(_camera);
+                            _screen_height = camera_get_view_height(_camera);
+                        }
+                        else
+                        {
+                            _screen_width  = room_width;
+                            _screen_height = room_height;
+                        }
+                    break;
+                
+                    case INPUT_COORD_SPACE.GUI:                        
+                        _screen_width  = display_get_gui_width();
+                        _screen_height = display_get_gui_height();
+                    break;
+                
+                    case INPUT_COORD_SPACE.DISPLAY:
+                        if (!__INPUT_ON_CONSOLE && (window_get_width != undefined))
+                        {
+                            _screen_width  = window_get_width();
+                            _screen_height = window_get_height();
+                        }
+                    break;
+                }
+
+                var _dts = delta_time/1000000;
+                if (_gyro_value_x != undefined) __x += round((_gyro_value_x * _dts * _screen_width  * __player.__gyro_sensitivity_x * 10)) / 10;
+                if (_gyro_value_y != undefined) __y += round((_gyro_value_y * _dts * _screen_height * __player.__gyro_sensitivity_y * 10)) / 10;
+            }
+
+            //Cursor bindings
             var _xy = input_xy(INPUT_CURSOR_VERB_LEFT, INPUT_CURSOR_VERB_RIGHT, INPUT_CURSOR_VERB_UP, INPUT_CURSOR_VERB_DOWN, __player.__index);
             if ((_xy.x != 0.0) || (_xy.y != 0.0))
             {
