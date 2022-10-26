@@ -29,11 +29,11 @@
 #macro __INPUT_ON_WEB      ((os_browser != browser_not_a_browser) || __INPUT_ON_OPERAGX)
 
 #macro __INPUT_TOUCH_SUPPORT              (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch) || (os_type == os_windows))
-#macro __INPUT_STEAMWORKS_SUPPORT         (((os_type == os_windows) || (os_type == os_linux)) && !__INPUT_ON_WEB)
-#macro __INPUT_KEYBOARD_NORMATIVE         (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch))
 #macro __INPUT_KEYBOARD_SUPPORT           (__INPUT_KEYBOARD_NORMATIVE || (os_type == os_android))
+#macro __INPUT_KEYBOARD_NORMATIVE         (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch))
 #macro __INPUT_GAMEPAD_VIBRATION_SUPPORT  (__INPUT_ON_CONSOLE || (!__INPUT_ON_WEB && (os_type == os_windows)))
-#macro __INPUT_SDL2_SUPPORT               (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || (os_type == os_android)))
+#macro __INPUT_SDL2_SUPPORT               (!__INPUT_ON_WEB &&  (__INPUT_ON_DESKTOP || (os_type == os_android)))
+#macro __INPUT_STEAMWORKS_SUPPORT         (!__INPUT_ON_WEB && ((os_type == os_windows) || (os_type == os_linux)))
 
 #macro __INPUT_HOLD_THRESHOLD           0.2  //Minimum value from an axis for that axis to be considered activated at the gamepad layer. This is *not* the same as min/max thresholds for players
 #macro __INPUT_DELTA_HOTSWAP_THRESHOLD  0.1  //Minimum (absolute) change in gamepad mapping value between frames to register as new input. This triggers hotswapping
