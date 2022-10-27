@@ -306,4 +306,39 @@ function __input_class_gamepad(_index) constructor
         
         __vibration_received_this_frame = true;
     }
+    
+    static __trigger_effect_apply = function(_trigger, _effect)
+    {
+        var _right = 1;
+        if (_trigger == gp_shoulderlb)
+        {
+            _right = 0;
+        }
+        else if (_trigger != gp_shoulderrb)
+        {
+            __input_error("Value ", _trigger ," not a gamepad trigger");
+        }
+
+        if (os_type == os_ps5)
+        {
+            return _effect.__apply_ps5(index, _trigger);
+        }
+
+        if (global.__input_using_steamworks)
+        {            
+            var _command_array = array_create(2, { mode: steam_input_sce_pad_trigger_effect_mode_off, command_data: {} });
+            _command_array[_right].mode = global.__input_steam_trigger_mode[$ _effect.__mode];
+            _command_array[_right].command_data[$ string(_effect.__mode_name) + "_param"] = _effect.__params;
+
+            var _steam_trigger_params = { command: _command_array, trigger_mask: steam_input_sce_pad_trigger_effect_trigger_mask_l2 };
+            if (_right)
+            {
+                _steam_trigger_params.trigger_mask = steam_input_sce_pad_trigger_effect_trigger_mask_r2;
+            }
+            
+            return steam_input_set_dualsense_trigger_effect(__steam_handle, _steam_trigger_params);
+        }
+
+        return false;
+    }
 }
