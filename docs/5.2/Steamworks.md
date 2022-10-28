@@ -15,7 +15,7 @@ The official Steamworks extension allows the Input library to leverage Steam Inp
 
 How Steam Input works depends on how your App is configured in Steamworks, and further relies on the player's Steam settings for opted-in controllers. Steam Input covers three main use scenarios:
 
-1. Remapping gamepad action to mouse and keyboard commands for games that ***do not** include* gamepad support
+1. Remapping gamepad action to keyboard and mouse for games that ***do not** include* gamepad support
 2. Normalizing different kinds of gamepads and offering extended device features for games that ***do** include* gamepad support
 3. Exclusive handling of all gamepad input through the Steam interface for games that are ***solely or primarily** distributed* through Steam
 
