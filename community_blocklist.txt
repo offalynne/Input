@@ -1,8 +1,8 @@
-7e050e20000000000000504944564944,windows,guid // Joy-Con Charger
-71011904000000000000504944564944,windows,guid // Luna DInput
-31730100000000000000504944564944,windows,guid // DSHIDMini DS4W Mode
-5e04050b000000000000504944564944,windows,guid // Xbox Elite DInput
-5e04130b000000000000504944564944,windows,guid // Xbox Series DInput
+7e050e20,windows,vid+pid // Joy-Con Charger
+71011904,windows,vid+pid // Luna DInput
+31730100,windows,vid+pid // DSHIDMini DS4W Mode
+5e04050b,windows,vid+pid // Xbox Elite DInput
+5e04130b,windows,vid+pid // Xbox Series DInput
 030000007e0500000e20000000020000,macos,guid // Joy-Con Charger
 030000007e0500000920000000020000,macos,guid // Switch Pro Controller
 03000000050b0000e318000000010000,macos,guid // ROG Chakram
