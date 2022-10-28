@@ -17,7 +17,7 @@ How Steam Input works depends on how your App is configured in Steamworks, and f
 
 1. Remapping gamepad action to keyboard and mouse for games that ***do not** include* gamepad support
 2. Normalizing different kinds of gamepads and offering extended device features for games that ***do** include* gamepad support
-3. Exclusive handling of all gamepad input through the Steam Overlay interface for games that are ***solely or primarily** distributed* through Steam
+3. Exclusive handling of all gamepad input through the [Steam Overlay](https://partner.steamgames.com/doc/features/overlay) interface for games that are ***solely or primarily** distributed* through Steam
 
 Since the Input library aims to provide comprehensive cross-platform gamepad support and does not solely rely on Steam, use case #2 is relevant, sometimes called [Steam Input Gamepad Emulation](https://partner.steamgames.com/doc/features/steam_controller/steam_input_gamepad_emulation_bestpractices). 
 
