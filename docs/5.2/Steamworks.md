@@ -1,6 +1,6 @@
 # Steamworks for Input
 
-The official Steamworks extension allows the Input library to leverage Steam Input, enabling correct identification of XInput and virtual controllers, as well as access to extended gamepad features normally available only on console platforms including [vibration](Functions-(Vibration).md), [motion](Functions-(Motion).md), [color](Functions-(LED Color).md), and [haptic trigger effects](Functions-(Trigger-Effects).md). Input supports Steamworks through [the offical Game Maker extension](https://github.com/YoYoGames/GMEXT-Steamworks/releases) on Windows and Linux, including SteamOS for Steam Deck.
+The official Steamworks extension allows the Input library to leverage Steam Input, enabling correct identification of XInput and virtual controllers, as well as access to extended gamepad features normally available only on console platforms including [vibration](Functions-(Vibration).md), [motion](Functions-(Motion).md), [LED color](Functions-(Color).md), and [haptic trigger effects](Functions-(Trigger-Effects).md). Input supports Steamworks through [the offical Game Maker extension](https://github.com/YoYoGames/GMEXT-Steamworks/releases) on Windows and Linux, including SteamOS for Steam Deck.
 
 Once you have configured your app in the Steamworks dashboard and set up the Steamworks extension for Game Maker in your project, Input can be left to handle Steamworks related features transparently, and no further effort should be necessary.
 
