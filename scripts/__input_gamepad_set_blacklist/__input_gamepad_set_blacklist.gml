@@ -15,7 +15,7 @@ function __input_gamepad_set_blacklist()
     
     if (os_type == os_windows)
     {
-        if ((vendor == "7e05") && (product == "0920") && (button_count == 23))
+        if ((vendor == "7e05") && (product == "0920") && (button_count != 20))
         {
             //Switch Pro Controller over USB. Normally does not operate, runs haywire with Steam open
             __input_trace("Warning! Controller is blacklisted (Switch Pro Controller over USB)");
@@ -107,9 +107,16 @@ function __input_gamepad_set_blacklist()
     //Check the platform blacklists to see if this gamepad is banned
     var _os_filter_dict  = global.__input_blacklist_dictionary[$ _os];
     var _os_guid_dict    = is_struct(_os_filter_dict)? _os_filter_dict[$ "guid"                ] : undefined;
+    var _os_vidpid_dict  = is_struct(_os_filter_dict)? _os_filter_dict[$ "vid+pid"             ] : undefined;
     var _os_desc_array   = is_struct(_os_filter_dict)? _os_filter_dict[$ "description contains"] : undefined;
     
-    if (is_struct(_os_guid_dict) && variable_struct_exists(_os_guid_dict, guid))
+    if (is_struct(_os_vidpid_dict) && variable_struct_exists(_os_vidpid_dict, vendor + product))
+    {
+        __input_trace("Warning! Controller is blacklisted (found by VID+PID \"", vendor + product, "\")");
+        blacklisted = true;
+        exit;
+    }
+    else if (is_struct(_os_guid_dict) && variable_struct_exists(_os_guid_dict, guid))
     {
         __input_trace("Warning! Controller is blacklisted (found by GUID \"", guid, "\")");
         blacklisted = true;

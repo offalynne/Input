@@ -298,28 +298,6 @@ function __input_system_tick()
     
     
     #region Keyboard
-
-    //Keyboard string
-    if (__INPUT_KEYBOARD_SUPPORT)
-    {
-        if (((string_length(keyboard_string) > 0) && (keyboard_string == "")) || (string_length(global.__input_keyboard_string_last) > 1023))
-        {
-            //Fix iOS quirk with setting keyboard string
-            if ((os_type == os_ios) || (os_type == os_tvos)) keyboard_virtual_hide();
-            
-            //Reset keyboard string
-            keyboard_string = ((os_type == os_android)? " " : "");
-
-            global.__input_keyboard_string_change = "";
-            global.__input_keyboard_string_frame  = global.__input_frame;
-            global.__input_keyboard_string_last   = string_copy(keyboard_string, 0, max(1023, string_legnth(string_copy)));
-        }
-        else
-        {
-            global.__input_keyboard_string_last = global.__input_keyboard_string;
-            global.__input_keyboard_string      = keyboard_string;
-        }
-    }
     
     //Unstick
     if (global.__input_keyboard_allowed && keyboard_check(vk_anykey))
