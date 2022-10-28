@@ -104,6 +104,18 @@ function __input_gamepad_set_type()
                 if (__input_string_contains(_desc, "8bitdo"))
                 {
                     raw_type = "Community8BitDo";
+                    if (__input_string_contains(_desc, "ultimate", "zero") && !__input_string_contains(_desc, "zero 2"))
+                    {
+                        raw_type = "CommunityLikeXBox"
+                    }
+                    else if (__input_string_contains(_desc, " s30", " m30"))
+                    {
+                        raw_type = "CommunitySaturn"
+                    }
+                    else if (__input_string_contains(_desc, " p30"))
+                    {
+                        raw_type = "CommunityPSX"
+                    }
                 }
                 else if (__input_string_contains(_desc, "snes"))
                 {
@@ -165,7 +177,7 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunityXBoxOne";
                 }
-                else if (__input_string_contains(_desc, "xbox 360", "xbox360"))
+                else if (__input_string_contains(_desc, "xbox 360", "xbox360", "logitech gamepad f"))
                 {
                     raw_type = "CommunityXBox360";
                 }
