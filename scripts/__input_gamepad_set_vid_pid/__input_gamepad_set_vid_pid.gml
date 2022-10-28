@@ -96,7 +96,8 @@ function __input_gamepad_set_vid_pid()
        //Unpack the vendor/product IDs from the gamepad's GUID
         if (os_type == os_windows)
         {
-            var _result = __input_gamepad_guid_parse(guid, true, false); //Windows uses an older version of SDL
+            var _legacy = __input_string_contains(guid, "000000000000504944564944");
+            var _result = __input_gamepad_guid_parse(guid, _legacy, false);
             vendor  = _result.vendor;
             product = _result.product;
             xinput  = (index < 4);
