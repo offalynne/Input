@@ -45,4 +45,4 @@ To test while running from the Game Maker IDE, while Steam is running, set the A
 
 ## Additional Reading
 
-For more detail, see [Steamworks SDK](https://partner.steamgames.com/doc/features/steam_controller) documentation and the [YYG GM Steamworks Extension Wiki](https://github.com/YoYoGames/GMEXT-Steamworks/wiki/Input#Input).
+For additional details, see the [Steamworks SDK](https://partner.steamgames.com/doc/features/steam_controller) documentation and the [YYG GM Steamworks Extension Wiki](https://github.com/YoYoGames/GMEXT-Steamworks/wiki/Input#Input).
