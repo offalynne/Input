@@ -7,7 +7,7 @@ The official Steamworks extension allows the Input library to leverage Steam Inp
 1. Download and extract the [Steamworks SDK](https://partner.steamgames.com/downloads/list)
 2. Download and import the latest [Steamworks Game Maker extension](https://github.com/YoYoGames/GMEXT-Steamworks/releases)
 3. Configure your application for Steamworks (see below)
-4. Set your AppID and Steamworks SDK location in the extension dialogue in GameMaker
+4. Set your AppID and Steamworks SDK location in the extension dialogue in the Game Maker IDE
 5. Ensure `INPUT_USE_STEAMWORKS` in the `__input_config_general` script is `<true>`
 
 
