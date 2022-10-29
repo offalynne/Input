@@ -22,7 +22,7 @@ How Steam Input operates depends on how your App is configured in Steamworks, an
 
 Since the Input library aims to provide comprehensive cross-platform gamepad support and does not solely rely on Steam, use case #2 is relevant, referred to as [Steam Input Gamepad Emulation](https://partner.steamgames.com/doc/features/steam_controller/steam_input_gamepad_emulation_bestpractices). 
 
-In order to appropriately configure your app for use with the Input library, using the Steam dashboard, navigate to your app: *Steamworks > App Admin > (Your App)*. From the *Application* menu select *Steam Input* and select *Gamepad with Camera Controls*, *Gamepad with High Precision Camera/Aim*, or *Generic Gamepad*.
+In order to appropriately configure your Steam app for use with the Input library, using the Steam dashboard, navigate to your app: *Steamworks > App Admin > (Your App)*. From the *Application* menu select *Steam Input* and select *Gamepad with Camera Controls*, *Gamepad with High Precision Camera/Aim*, or *Generic Gamepad*.
 
 ![](https://i.imgur.com/xve3seR.png)
 
