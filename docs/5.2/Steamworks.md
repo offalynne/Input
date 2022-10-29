@@ -44,4 +44,4 @@ To test from the Game Maker IDE, set the borrowed AppID in the Steamworks extens
 
 ## Additional Reading
 
-For additional details, see the [Steamworks SDK](https://partner.steamgames.com/doc/features/steam_controller) documentation and the [YYG GM Steamworks Extension Wiki](https://github.com/YoYoGames/GMEXT-Steamworks/wiki/Input#Input).
+For additional details, see [Steamworks SDK documentation](https://partner.steamgames.com/doc/features/steam_controller) and the [YYG GM Steamworks Extension Wiki](https://github.com/YoYoGames/GMEXT-Steamworks/wiki/Input#Input).
