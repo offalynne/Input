@@ -34,7 +34,7 @@ The Steamworks SDK includes an example project called *Spacewar*, [(Application 
 
 ## Borrowing an AppID for Local Testing
 
-In order for your game to use Steamworks upon release, you will need to [register with Steamworks](https://partner.steamgames.com/newpartner/) and acquire your own AppID. You cannot use Steamworks API features meaningfully upon release without registering your app through Steam. The easiest way to get set up with Steamworks is by configuring your own application. However, if during development you would like to test without configuring your own application within Steamworks, you can susbstite your AppID for an existing Steam app for testing purposes. 
+In order for your game to use Steamworks upon release, you will need to [register with Steamworks](https://partner.steamgames.com/newpartner/) and acquire your own AppID. You cannot use Steamworks API features meaningfully upon release without registering your app through Steam. The easiest way to get set up with Steamworks is by configuring your own application. However, if during development you would like to test without configuring your own application within Steamworks, you can substitute your AppID for an existing Steam app for testing purposes. 
 
 !> Note that before distributing your game you will need to switch to your own AppID and make sure it is properly configured, so it is usually most convenient to use your own AppID from the outset instead of going through the additional effort to borrow an AppID as outlined below.
 
