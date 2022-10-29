@@ -14,7 +14,7 @@ Once you have configured your app in the Steamworks dashboard and set up the Ste
 
 ## Configuring Steamworks
 
-How Steam Input works depends on how your App is configured in Steamworks, and further relies on the player's Steam settings for opted-in controllers. Steam Input covers three main use scenarios:
+How Steam Input operates depends on how your App is configured in Steamworks, and further relies on the player's Steam settings for opted-in controllers. Steam Input covers three main use scenarios:
 
 1. Remapping gamepad input to keyboard and mouse for games that do not include gamepad support
 2. Normalizing gamepads and offering extended device features for games that do include gamepad support
