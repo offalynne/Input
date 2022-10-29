@@ -17,19 +17,19 @@ Once you have configured your app in the Steamworks dashboard and set up the Ste
 
 How Steam Input works depends on how your App is configured in Steamworks, and further relies on the player's Steam settings for opted-in controllers. Steam Input covers three main use scenarios:
 
-1. Remapping gamepad input to keyboard and mouse for games that _**do not** include_ gamepad support
-2. Normalizing different gamepads and offering extended device features for games that _**do** include_ gamepad support
-3. Exclusive handling of gamepad input through [Overlay](https://partner.steamgames.com/doc/features/overlay) for games _**solely or primarily** distributed_ through Steam
+1. Remapping gamepad input to keyboard and mouse for games that do not include gamepad support
+2. Normalizing different gamepads and offering extended device features for games that do include gamepad support
+3. Exclusive handling of gamepads through Steamworks API for games solely or primarily distributed through Steam
 
 Since the Input library aims to provide comprehensive cross-platform gamepad support and does not solely rely on Steam, use case #2 is relevant, referred to as [Steam Input Gamepad Emulation](https://partner.steamgames.com/doc/features/steam_controller/steam_input_gamepad_emulation_bestpractices). 
 
-In order to appropriately configure your app for use with the Input library, using the Steam dashboard, navigate to your app: *Steamworks > App Admin > (Your App)*. From the *Application* menu select *Steam Input* and select *Gamepad with Camera Controls*, *Gamepad with High Precision Camera/Aim*, or *Generic Gamepad*.
+In order to appropriately configure your app for use with the Input library, using the Steam dashboard, navigate to your app: *Steamworks > App Admin > (Your App)*. From the *Application* menu select *Steam Input* and select _Gamepad with Camera Controls*, *Gamepad with High Precision Camera/Aim*, or *Generic Gamepad*.
 
 ![](https://i.imgur.com/xve3seR.png)
 
-Note that if you select *Custom Configuration*, Game Maker will no longer recieve any gamepad input from devices that are opted-in to Steam, will require you to [rely directly on the Steam Input API](https://github.com/YoYoGames/GMEXT-Steamworks/wiki/Input#Input) by configuring your game [extensively from within Steamworks](https://partner.steamgames.com/doc/features/steam_controller/iga_file), and _**will not**_ work with the functions provided by Game Maker or the Input library.
+Note that if you select *Custom Configuration*, Game Maker will no longer recieve any gamepad input from devices that are opted-in to Steam, will require you to [rely directly on the Steam Input API](https://github.com/YoYoGames/GMEXT-Steamworks/wiki/Input#Input) by configuring your game [extensively from within Steamworks](https://partner.steamgames.com/doc/features/steam_controller/iga_file), and will not work with the functions provided by Game Maker or the Input library.
 
-The Steamworks SDK includes an example project called *Spacewar*, [(Application ID 480)](https://steamdb.info/app/480) that is the default setting when you import the YYG Steamworks Extension for Game Maker. Note that the *Spacewar* example is configured in Steamworks to use a Steam Input *Custom Configuration*, meaning it _**will not**_ work with the Input library's Steamworks features, and any controller types opted-in to Steam will no longer work with Game Maker or the Input library's default features until this value is changed.
+The Steamworks SDK includes an example project called *Spacewar*, [(Application ID 480)](https://steamdb.info/app/480) that is the default setting when you import the YYG Steamworks Extension for Game Maker. Note that the *Spacewar* example is configured in Steamworks to use a Steam Input *Custom Configuration*, meaning it will not work with the Input library's Steamworks features, and any controller types opted-in to Steam will no longer work with Game Maker or the Input library's default features until this value is changed.
 
 ![](https://i.imgur.com/czFKFNj.png)
 
@@ -39,7 +39,7 @@ In order for your game to use Steamworks upon release, you will need to [registe
 
 !> Note that before distrubiting your game you will need to switch to your own AppID and make sure it is properly configured, so it is usually most convenient to use your own AppID from the outset instead of going through the additional effort to borrow an AppID as outlined below.
 
-In order to test with a borrowed AppID, the associated app must support your target desktop OS, you must have claimed it (by downloading and installing the original app), and the app _**must not**_ be configured to use a Steam Input *Custom Conifguration*. You can use the information available from the website SteamDB to check Steam Input configuration, for example the [configuration for Portal 2](https://steamdb.info/app/620/config/) uses Steam Input (indicated by *steamcontrollertemplateindex 1*) making it ineligible to borrow, where the [configuration for Samurai Gunn 2](https://steamdb.info/app/1397790/config/) does not and is suitable for this purpose. For convenience, good candidates for borrowing AppID are [ideally multi-platform, free](https://store.steampowered.com/search/?sort_by=Released_DESC&maxprice=free&category1=998&category2=28&os=linux), and small in file size, for example 50MB multi-platform game [Rebel Wings](https://store.steampowered.com/app/378090/Rebel_Wings/).
+In order to test with a borrowed AppID, the associated app must support your target desktop OS, you must have claimed it (by downloading and installing the original app), and the app must not be configured to use a Steam Input *Custom Conifguration*. You can use the information available from the website SteamDB to check Steam Input configuration, for example the [configuration for Portal 2](https://steamdb.info/app/620/config/) uses Steam Input (indicated by `steamcontrollertemplateindex 1`) making it ineligible to borrow, where the [configuration for Samurai Gunn 2](https://steamdb.info/app/1397790/config/) does not and is suitable for this purpose. For convenience, good candidates for borrowing AppID are [ideally multi-platform, free](https://store.steampowered.com/search/?sort_by=Released_DESC&maxprice=free&category1=998&category2=28&os=linux), and small in file size, for example 50MB multi-platform game [Rebel Wings](https://store.steampowered.com/app/378090/Rebel_Wings/).
 
 To test from the Game Maker IDE, set the borrowed AppID in the Steamworks extension, and run your game while Steam is open in the background. This method is for Windows only. To test within the Steam environment on Windows and/or to test on Ubuntu or SteamOS, find the application file for the installed app whose AppID you are borrowing, and replace the executable with a built executable of your game.
 
