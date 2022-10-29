@@ -14,6 +14,10 @@ Once you have configured your app in the Steamworks dashboard and set up the Ste
 
 ## Configuring Steamworks
 
+In order to appropriately configure your Steam app for use with the Input library, using the Steam dashboard, navigate to your app: *Steamworks > App Admin > (Your App)*. From the *Application* menu select *Steam Input* and select *Gamepad with Camera Controls*, *Gamepad with High Precision Camera/Aim*, or *Generic Gamepad*.
+
+![](https://i.imgur.com/xve3seR.png)
+
 How Steam Input operates depends on how your App is configured in Steamworks, and further relies on the player's Steam settings for opted-in controllers. Steam Input covers three main use scenarios:
 
 1. Remapping gamepad input to keyboard and mouse for games that do not include gamepad support
@@ -21,10 +25,6 @@ How Steam Input operates depends on how your App is configured in Steamworks, an
 3. Exclusive handling of gamepads through Steamworks API for games solely or primarily distributed through Steam
 
 Since the Input library aims to provide comprehensive cross-platform gamepad support and does not solely rely on Steam, use case #2 is relevant, referred to as [Steam Input Gamepad Emulation](https://partner.steamgames.com/doc/features/steam_controller/steam_input_gamepad_emulation_bestpractices). 
-
-In order to appropriately configure your Steam app for use with the Input library, using the Steam dashboard, navigate to your app: *Steamworks > App Admin > (Your App)*. From the *Application* menu select *Steam Input* and select *Gamepad with Camera Controls*, *Gamepad with High Precision Camera/Aim*, or *Generic Gamepad*.
-
-![](https://i.imgur.com/xve3seR.png)
 
 Note that if you select *Custom Configuration*, Game Maker will no longer recieve any gamepad input from devices that are opted-in to Steam, will require you to [rely directly on the Steam Input API](https://github.com/YoYoGames/GMEXT-Steamworks/wiki/Input#Input) by configuring your game [extensively from within Steamworks](https://partner.steamgames.com/doc/features/steam_controller/iga_file), and will not work with the functions provided by Game Maker or the Input library.
 
