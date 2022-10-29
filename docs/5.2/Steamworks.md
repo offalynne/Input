@@ -14,7 +14,7 @@ Once you have configured your app in the Steamworks dashboard and set up the Ste
 
 ## Configuring Steamworks
 
-In order to appropriately configure your Steam app for use with the Input library, using the Steam dashboard, navigate to your app: *Steamworks > App Admin > (Your App)*. From the *Application* menu select *Steam Input* and select *Gamepad with Camera Controls*, *Gamepad with High Precision Camera/Aim*, or *Generic Gamepad*.
+In order to appropriately configure your Steam app for use with the Input library, [using the Steam dashboard](https://partner.steamgames.com/dashboard), navigate to your app: *Steamworks > App Admin > (Your App)*. From the *Application* menu select *Steam Input* and select *Gamepad with Camera Controls*, *Gamepad with High Precision Camera/Aim*, or *Generic Gamepad*.
 
 ![](https://i.imgur.com/xve3seR.png)
 
