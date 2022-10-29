@@ -20,9 +20,9 @@ In order to appropriately configure your Steam app for use with the Input librar
 
 How Steam Input operates depends on how your App is configured in Steamworks, and further relies on the player's Steam settings for opted-in controllers. Steam Input covers three main use scenarios:
 
-1. Remapping gamepad input to keyboard and mouse for games that do not include gamepad support
+1. Exclusive gamepad handling through Steam Input for games solely or primarily distributed on Steam _(Custom Configuration)_
 2. Normalizing gamepads and offering extended device features for games that do include gamepad support
-3. Exclusive handling of gamepads through Steam Input API for games solely or primarily distributed on Steam (Custom Configuration)
+3. Remapping gamepad input to keyboard and mouse for games that do not include gamepad support
 
 Since the Input library aims to provide comprehensive cross-platform gamepad support and does not solely rely on Steam, use case #2 is relevant, referred to as [Steam Input Gamepad Emulation](https://partner.steamgames.com/doc/features/steam_controller/steam_input_gamepad_emulation_bestpractices). 
 
