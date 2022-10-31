@@ -1,6 +1,6 @@
 # Steamworks
 
-The official Steamworks extension allows the Input library to leverage Steam Input, enabling correct identification of XInput and virtual controllers, as well as access to extended gamepad features normally available only on console platforms including [vibration](Functions-(Vibration).md), [motion](Functions-(Motion).md), [LED color](Functions-(Color).md), and [haptic trigger effects](Functions-(Trigger-Effects).md). Input supports Steamworks through [the offical Game Maker extension](https://github.com/YoYoGames/GMEXT-Steamworks/) on Windows and Linux, including SteamOS for Steam Deck.
+The official Steamworks extension allows the Input library to leverage Steam Input and enables correct identification of XInput and virtual controllers, as well as access to extended gamepad features normally available only on console platforms: [vibration](Functions-(Vibration).md), [motion](Functions-(Motion).md), [LED color](Functions-(Color).md), and [haptic trigger effects](Functions-(Trigger-Effects).md). Input supports Steamworks through [the offical Game Maker extension](https://github.com/YoYoGames/GMEXT-Steamworks/) on Windows and Linux, including SteamOS for Steam Deck.
 
 Once you have configured your app in the Steamworks dashboard and set up the Steamworks extension for Game Maker in your project, Input handles related features transparently and requires no further effort specific to Steamworks.
 
@@ -26,9 +26,9 @@ How Steam Input operates depends on how your App is configured in Steamworks, an
 
 Since the Input library aims to provide comprehensive cross-platform gamepad support and does not solely rely on Steam, use case #2 is relevant, referred to as [Steam Input Gamepad Emulation](https://partner.steamgames.com/doc/features/steam_controller/steam_input_gamepad_emulation_bestpractices). 
 
-Note that if you select *Custom Configuration*, Game Maker will no longer recieve any gamepad input from devices that are opted-in to Steam, will require you to [rely directly on the Steam Input API](https://github.com/YoYoGames/GMEXT-Steamworks/wiki/Input#Input) by configuring your game extensively [from within Steamworks](https://partner.steamgames.com/doc/features/steam_controller/iga_file), and will not work with the normal functions provided by Game Maker or the Input library.
+Note that if you select *Custom Configuration* for *Steam Input Default Configuration*, Game Maker will no longer recieve any gamepad input from devices that are opted-in to Steam, will require you to [rely directly on the Steam Input API](https://github.com/YoYoGames/GMEXT-Steamworks/wiki/Input#Input) by configuring your game extensively [from within Steamworks](https://partner.steamgames.com/doc/features/steam_controller/iga_file), and will not work with the normal functions provided by Game Maker or the Input library.
 
-The Steamworks SDK includes an example project called *Spacewar*, [(Application ID 480)](https://steamdb.info/app/480) that is the default setting when you import the YYG Steamworks Extension for Game Maker. Note that the *Spacewar* example is configured in Steamworks to use a Steam Input *Custom Configuration*, meaning it will not work with the Input library's Steamworks features, and any controller types opted-in to Steam will no longer work with Game Maker or the Input library's default features until this option is changed.
+Steamworks SDK documentation refers to an example project called *Spacewar*, [(Application ID 480)](https://steamdb.info/app/480) that is the default AppID setting when you import the YYG Steamworks Extension for Game Maker. Note that the *Spacewar* example is configured in Steamworks to use a Steam Input *Custom Configuration*, meaning it will not work with the Input library's Steamworks features, and any controller types opted-in to Steam will not work with Game Maker or the Input library's default feature set until this option is changed.
 
 ![](https://i.imgur.com/czFKFNj.png)
 
