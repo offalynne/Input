@@ -9,7 +9,7 @@ Once you have configured your app in the Steamworks dashboard and set up the Ste
 - Download and extract the [Steamworks SDK](https://partner.steamgames.com/downloads/list)
 - Download and import the latest [Steamworks Game Maker extension](https://github.com/YoYoGames/GMEXT-Steamworks/releases)
 - Configure your application for Steamworks (see below)
-- Set AppID and Steamworks SDK location in the extension options in the Game Maker IDE (see below)
+- Set AppID and Steamworks SDK location in extension options in Game Maker IDE (see below)
 - Ensure `INPUT_USE_STEAMWORKS` in the `__input_config_general` script is `<true>`
 
 ## Configuring Steamworks
