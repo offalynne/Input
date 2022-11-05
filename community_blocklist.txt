@@ -49,6 +49,10 @@ headset,android,description contains // Headsets and Adapters
 sennheiser,android,description contains // Sennheiser Brand Headsets
 blackwire,android,description contains // Plantronics Headsets
 tv remote,android,description contains // Smart TV Remote
+smart tv,android,description contains // Smart TV Remote
+ir receiver,android,description contains // Smart TV Remote
+jvc rc10,android,description contains // Smart TV Remote
+virtual-search,android,description contains // Android TV Keyboard
 multimedia remote,android,description contains // Smart TV Remote
 corsair,android,description contains // Corsair Mice, Keyboards, Adapters
 bt kb,android,description contains // GameSir Bluetooth Keyboards
