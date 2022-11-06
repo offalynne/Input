@@ -1,6 +1,5 @@
 28de,11ff,CommunitySteam // Steam Virtual Controller
 28de,1205,CommunityDeck // Steam Deck Controller
-20bc,504d,CommunityLikeXbox // Beitong A1T2 BFM
 2dc8,3012,CommunityLikeXBox // 8BitDo Wireless Ultimate DInput
 2dc8,3013,CommunityLikeXBox // 8BitDo Wireless Ultimate DInput
 20bc,6050,CommunityLikeXBox // Xiaomi XMGP01YM
@@ -29,6 +28,7 @@
 04b4,2412,CommunityLikeXBox // Flydigi Vader 2 Pro
 1d79,0009,CommunityLikeXBox // Nyko Playpad
 11c6,0010,CommunityLikeXBox // Tencent Xianyou GP1
+20bc,504d,CommunityLikeXBox // Beitong A1T2 BFM
 20bc,5052,CommunityLikeXBox // Beitong G3
 044f,b328,CommunityLikeXBox // Score A
 046d,c216,CommunityLikeXBox // Logitech Dual Action, F310
