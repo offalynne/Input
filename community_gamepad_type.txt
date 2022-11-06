@@ -1,6 +1,6 @@
 28de,11ff,CommunitySteam // Steam Virtual Controller
 28de,1205,CommunityDeck // Steam Deck Controller
-20bc,504d,CommunityLikeXbox // BEITONG A1T2 BFM
+20bc,504d,CommunityLikeXbox // Beitong A1T2 BFM
 2dc8,3012,CommunityLikeXBox // 8BitDo Wireless Ultimate DInput
 2dc8,3013,CommunityLikeXBox // 8BitDo Wireless Ultimate DInput
 20bc,6050,CommunityLikeXBox // Xiaomi XMGP01YM
