@@ -51,6 +51,7 @@
     {"id":{"name":"obj_test_cooldown","path":"objects/obj_test_cooldown/obj_test_cooldown.yy",},"order":26,},
     {"id":{"name":"input_vibrate_constant","path":"scripts/input_vibrate_constant/input_vibrate_constant.yy",},"order":3,},
     {"id":{"name":"__input_steam_handles_changed","path":"scripts/__input_steam_handles_changed/__input_steam_handles_changed.yy",},"order":34,},
+    {"id":{"name":"input_color_reset","path":"scripts/input_color_reset/input_color_reset.yy",},"order":14,},
     {"id":{"name":"input_binding_get_name","path":"scripts/input_binding_get_name/input_binding_get_name.yy",},"order":3,},
     {"id":{"name":"input_vibrate_adsr","path":"scripts/input_vibrate_adsr/input_vibrate_adsr.yy",},"order":4,},
     {"id":{"name":"__input_gamepad_set_virtual","path":"scripts/__input_gamepad_set_virtual/__input_gamepad_set_virtual.yy",},"order":35,},
