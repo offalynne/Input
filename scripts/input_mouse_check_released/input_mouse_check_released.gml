@@ -8,7 +8,7 @@ function input_mouse_check_released(_binding)
         return (_binding == mb_none);
     }
     
-    if ((_binding >= mb_right) && (_binding <= mb_side2))
+    if not ((_binding == mb_left) || (_binding == mb_any) || (_binding == mb_none))
     {
         //Extended mouse buttons
         return device_mouse_check_button_released(0, _binding);
