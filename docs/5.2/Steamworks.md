@@ -28,6 +28,9 @@ Since the Input library aims to provide comprehensive cross-platform gamepad sup
 
 Note that if you select *Custom Configuration* for *Steam Input Default Configuration*, Game Maker will no longer recieve any gamepad input from devices that are opted-in to Steam, will require you to [rely directly on the Steam Input API](https://github.com/YoYoGames/GMEXT-Steamworks/wiki/Input#Input) by configuring your game extensively [from within Steamworks](https://partner.steamgames.com/doc/features/steam_controller/iga_file), and will not work with the normal functions provided by Game Maker or the Input library.
 
+
+## Setting AppID
+
 Steamworks SDK documentation refers to an example project called *Spacewar*, [(Application ID 480)](https://steamdb.info/app/480) that is the default AppID setting when you import the YYG Steamworks Extension for Game Maker. Note that the *Spacewar* example is configured in Steamworks to use a Steam Input *Custom Configuration*, meaning it will not work as intended until this option is changed, and no controller opted-in to Steam will work with Game Maker or the Input library's default feature set for this AppID.
 
 ![](https://i.imgur.com/czFKFNj.png)
