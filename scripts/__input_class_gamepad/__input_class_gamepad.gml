@@ -307,7 +307,7 @@ function __input_class_gamepad(_index) constructor
         __vibration_received_this_frame = true;
     }
     
-    static __trigger_effect_apply = function(_trigger, _effect)
+    static __trigger_effect_apply = function(_trigger, _effect, _strength)
     {
         var _right = 1;
         if (_trigger == gp_shoulderlb)
@@ -329,7 +329,16 @@ function __input_class_gamepad(_index) constructor
             var _command_array = array_create(2, { mode: steam_input_sce_pad_trigger_effect_mode_off, command_data: {} });
             _command_array[_right].mode = global.__input_steam_trigger_mode[$ _effect.__mode];
             _command_array[_right].command_data[$ string(_effect.__mode_name) + "_param"] = _effect.__params;
-
+            
+            if (_effect.__params[$ "strength"] != undefined)
+            {
+                _effect.__params.strength *= _strength;
+            }
+            else if (_effect.__params[$ "amplitude"] != undefined)
+            {
+                _effect.__params.amplitude *= _strength;                
+            }
+            
             var _steam_trigger_params = { command: _command_array, trigger_mask: steam_input_sce_pad_trigger_effect_trigger_mask_l2 };
             if (_right)
             {

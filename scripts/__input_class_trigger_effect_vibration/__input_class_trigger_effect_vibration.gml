@@ -8,9 +8,9 @@ function __input_class_trigger_effect_vibration(_position, _amplitude, _frequenc
         frequency: clamp(_frequency*255, 0, 255)
     };
     
-    static __apply_ps5 = function(_gamepad, _trigger)
+    static __apply_ps5 = function(_gamepad, _trigger, _strength)
     {
-        return ps5_gamepad_set_trigger_effect_vibration(_gamepad, _trigger, __params.position, __params.amplitude, __params.frequency);
+        return ps5_gamepad_set_trigger_effect_vibration(_gamepad, _trigger, __params.position, __params.amplitude * _strength, __params.frequency);
     };
 
     static __steam_get_state = function(_gamepad, _trigger)

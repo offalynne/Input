@@ -14,6 +14,7 @@ function __input_class_player() constructor
     __vibration_event_array = [];
     
     __trigger_effect_paused     = false;
+    __trigger_effect_strength   = INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH;
     __trigger_intercepted_left  = false;
     __trigger_intercepted_right = false;
     __trigger_effect_left       = undefined;
@@ -876,9 +877,10 @@ function __input_class_player() constructor
         var _new_axis_thresholds_dict = {};
     
         var _root_json = {
-            profiles:           _new_profiles_dict,
-            axis_thresholds:    _new_axis_thresholds_dict,
-            vibration_strength: __vibration_strength,
+            profiles:                _new_profiles_dict,
+            axis_thresholds:         _new_axis_thresholds_dict,
+            vibration_strength:      __vibration_strength,
+            trigger_effect_strength: __trigger_effect_strength,
         };
         
         //Copy profiles
@@ -1002,6 +1004,22 @@ function __input_class_player() constructor
             __input_trace("Warning! Player ", __index, " vibration strength not found, defaulting to ", INPUT_VIBRATION_DEFAULT_STRENGTH);
             __vibration_strength = INPUT_VIBRATION_DEFAULT_STRENGTH;
         }
+        
+        if (variable_struct_exists(_json, "trigger_effect_strength"))
+        {
+            if (!is_numeric(__trigger_effect_strength))
+            {
+                __input_error("Player ", __index, " trigger effect strength is corrupted");
+                return;
+            }
+            
+            __trigger_effect_strength = INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH;
+        }
+        else
+        {
+            __input_trace("Warning! Player ", __index, " trigger effect strength not found, defaulting to ", INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH);
+            __vibration_strength = INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH;
+        }
     }
     
     static __reset = function()
@@ -1052,7 +1070,7 @@ function __input_class_player() constructor
             return;
         }
 
-        var _intercepted = !global.__input_gamepads[_gamepad].__trigger_effect_apply(_trigger, _effect);
+        var _intercepted = !global.__input_gamepads[_gamepad].__trigger_effect_apply(_trigger, _effect, __trigger_effect_strength);
         
         if (!_set) return;
         if (_trigger == gp_shoulderlb)

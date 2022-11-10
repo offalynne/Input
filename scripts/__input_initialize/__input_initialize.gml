@@ -678,10 +678,10 @@ function __input_initialize()
                 
         __input_steam_type_set("unknown", "UnknownNonSteamController", "Controller");
         
-        global.__input_steam_trigger_mode[$ string(INPUT_TRIGGER_EFFECT.TYPE_OFF)]       = steam_input_sce_pad_trigger_effect_mode_off;
-        global.__input_steam_trigger_mode[$ string(INPUT_TRIGGER_EFFECT.TYPE_FEEDBACK)]  = steam_input_sce_pad_trigger_effect_mode_feedback;
-        global.__input_steam_trigger_mode[$ string(INPUT_TRIGGER_EFFECT.TYPE_WEAPON)]    = steam_input_sce_pad_trigger_effect_mode_weapon;
-        global.__input_steam_trigger_mode[$ string(INPUT_TRIGGER_EFFECT.TYPE_VIBRATION)] = steam_input_sce_pad_trigger_effect_mode_vibration;
+        global.__input_steam_trigger_mode[$ string(__INPUT_TRIGGER_EFFECT.__TYPE_OFF)]       = steam_input_sce_pad_trigger_effect_mode_off;
+        global.__input_steam_trigger_mode[$ string(__INPUT_TRIGGER_EFFECT.__TYPE_FEEDBACK)]  = steam_input_sce_pad_trigger_effect_mode_feedback;
+        global.__input_steam_trigger_mode[$ string(__INPUT_TRIGGER_EFFECT.__TYPE_WEAPON)]    = steam_input_sce_pad_trigger_effect_mode_weapon;
+        global.__input_steam_trigger_mode[$ string(__INPUT_TRIGGER_EFFECT.__TYPE_VIBRATION)] = steam_input_sce_pad_trigger_effect_mode_vibration;
     }
     
     if ((os_type == os_linux) || (os_type == os_macosx))

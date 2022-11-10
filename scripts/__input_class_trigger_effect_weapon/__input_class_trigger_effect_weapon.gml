@@ -8,9 +8,9 @@ function __input_class_trigger_effect_weapon(_trigger, _start, _end, _strength) 
         strength:       clamp(_strength*8, 0, 8),
     };
     
-    static __apply_ps5 = function(_gamepad, _trigger)
+    static __apply_ps5 = function(_gamepad, _trigger, _strength)
     {
-        return ps5_gamepad_set_trigger_effect_weapon(_gamepad, _trigger, __params.start_position, __params.end_position, __params.strength);
+        return ps5_gamepad_set_trigger_effect_weapon(_gamepad, _trigger, __params.start_position, __params.end_position, __params.strength * _strength);
     };
 
     static __steam_get_state = function(_gamepad, _trigger)

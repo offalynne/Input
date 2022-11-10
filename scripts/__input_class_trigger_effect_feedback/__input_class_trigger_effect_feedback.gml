@@ -17,8 +17,8 @@ function __input_class_trigger_effect_feedback(_position, _strength) constructor
         return INPUT_TRIGGER_STATE.EFFECT_FEEDBACK_STANDBY;
     };
 
-    static __apply_ps5 = function(_gamepad, _trigger)
+    static __apply_ps5 = function(_gamepad, _trigger, _strength)
     {
-        return ps5_gamepad_set_trigger_effect_feedback(_gamepad, _trigger, __params.position, __params.strength);
+        return ps5_gamepad_set_trigger_effect_feedback(_gamepad, _trigger, __params.position, __params.strength * _strength);
     };
 }
