@@ -170,13 +170,23 @@ function __input_initialize()
         ++_p;
     }
     
-    //DualSense haptic trigger effect types
-    enum INPUT_TRIGGER_EFFECT
+    //INPUT_STATUS.DISCONNECTED *must* be zero so that array_size() initializes gamepad status to disconnected
+    //See input_tick() for more details
+    enum INPUT_STATUS
     {
-        TYPE_OFF,
-        TYPE_FEEDBACK,
-        TYPE_WEAPON,
-        TYPE_VIBRATION,
+        NEWLY_DISCONNECTED = -1,
+        DISCONNECTED       =  0,
+        NEWLY_CONNECTED    =  1,
+        CONNECTED          =  2,
+    }
+    
+    enum INPUT_SOURCE_MODE
+    {
+        FIXED,        //Player sources won't change unless manually editted
+        JOIN,         //Starts source assignment, typically used for multiplayer
+        HOTSWAP,      //Player 0's source is determined by most recent input
+        MIXED,        //Player 0 can use a mixture of keyboard, mouse, and any gamepad
+        MULTIDEVICE,  //Player 0 can use a mixture of keyboard, mouse, and any gamepad, but gamepad bindings are specific to each device
     }
     
     //DualSense haptic trigger effect states
@@ -191,15 +201,6 @@ function __input_initialize()
         EFFECT_VIBRATION_STANDBY = ps5_gamepad_trigger_effect_state_vibration_standby,
         EFFECT_VIBRATION_ACTIVE  = ps5_gamepad_trigger_effect_state_vibration_active,
         EFFECT_INTERCEPTED       = ps5_gamepad_trigger_effect_state_intercepted,
-    }
-    
-    enum INPUT_SOURCE_MODE
-    {
-        FIXED,        //Player sources won't change unless manually editted
-        JOIN,         //Starts source assignment, typically used for multiplayer
-        HOTSWAP,      //Player 0's source is determined by most recent input
-        MIXED,        //Player 0 can use a mixture of keyboard, mouse, and any gamepad
-        MULTIDEVICE,  //Player 0 can use a mixture of keyboard, mouse, and any gamepad, but gamepad bindings are specific to each device
     }
     
     global.__input_source_mode          = undefined;

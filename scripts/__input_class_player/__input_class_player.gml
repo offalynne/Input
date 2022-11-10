@@ -328,10 +328,15 @@ function __input_class_player() constructor
     {
         if ((__rebind_state > 0) && (array_length(__source_array) > 0)) __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_CHANGED);
         
-        __color_set();
-        
-        var _gamepad = __source_get_gamepad();
-        if (_gamepad > -1) __input_gamepad_stop_trigger_effects(_gamepad);
+        var _i = 0;
+        repeat(array_length(__source_array))
+        {
+            if (__source_array[_i].__source == __INPUT_SOURCE.GAMEPAD)
+            {
+                __input_gamepad_reset_color(__source_array[_i].__gamepad);
+                __input_gamepad_stop_trigger_effects(__source_array[_i].__gamepad);
+            }
+        }
         
         array_resize(__source_array, 0);
         __last_input_time = global.__input_current_time;
@@ -373,6 +378,12 @@ function __input_class_player() constructor
         {
             if (__source_array[_i] == _source)
             {
+                if (__source_array[_i].__source == __INPUT_SOURCE.GAMEPAD)
+                {
+                    __input_gamepad_reset_color(__source_array[_i].__gamepad);
+                    __input_gamepad_stop_trigger_effects(__source_array[_i].__gamepad);
+                }
+                 
                 array_delete(__source_array, _i, 1);
                 if (INPUT_DEBUG_SOURCES) __input_trace("Removed source ", _source, " from player ", __index);
             }
@@ -1057,7 +1068,7 @@ function __input_class_player() constructor
     }
     
     static __trigger_effect_pause = function(_state)
-    {   
+    {
         __trigger_effect_paused = _state;
     
         if (!_state)
@@ -1242,16 +1253,17 @@ function __input_class_player() constructor
     }
     
     static __color_set = function(_color)
-    {
-        __color = _color;
-        
-        if (__connected)
+    {        
+        var _i = 0;
+        repeat(array_length(__source_array))
         {
-            var _gamepad_index = __source_get_gamepad();
-            if (_gamepad_index < 0) return;
-            
-            global.__input_gamepads[_gamepad_index].__color_set(_color);
+            if (__source_array[_i].__source == __INPUT_SOURCE.GAMEPAD)
+            {
+                with global.__input_gamepads[__source_array[_i].__gamepad] __color_set(_color);
+            }    
         }
+        
+        __color = _color;
     }
     
     static __tick_binding_scan = function()

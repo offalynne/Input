@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__input_trigger_effect_mode_set",
+  "name": "__input_gamepad_reset_color",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

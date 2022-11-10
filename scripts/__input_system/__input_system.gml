@@ -140,16 +140,6 @@ enum __INPUT_MAPPING
     __SIZE
 }
 
-//INPUT_STATUS.DISCONNECTED *must* be zero so that array_size() initializes gamepad status to disconnected
-//See input_tick() for more details
-enum INPUT_STATUS
-{
-    NEWLY_DISCONNECTED = -1,
-    DISCONNECTED       =  0,
-    NEWLY_CONNECTED    =  1,
-    CONNECTED          =  2,
-}
-
 enum __INPUT_COMBO_STATE
 {
     __FAIL    = -1,
@@ -170,6 +160,14 @@ enum __INPUT_VERB_TYPE
     __BASIC,
     __CHORD,
     __COMBO,
+}
+
+enum __INPUT_TRIGGER_EFFECT
+{
+    __TYPE_OFF,
+    __TYPE_FEEDBACK,
+    __TYPE_WEAPON,
+    __TYPE_VIBRATION,
 }
 
 

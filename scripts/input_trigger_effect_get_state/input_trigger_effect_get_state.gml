@@ -32,6 +32,6 @@ function input_trigger_effect_get_state(_trigger, _player_index = 0)
         _effect = _player.__trigger_effect_right;
     }
 
-    if not (is_struct(_effect)) return undefined;
+    if not (is_struct(_effect)) return __INPUT_TRIGGER_EFFECT.__TYPE_OFF;
     return _effect.__steam_get_state(_gamepad, _trigger);
 }

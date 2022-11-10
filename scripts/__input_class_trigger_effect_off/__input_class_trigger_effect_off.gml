@@ -1,7 +1,7 @@
 function __input_class_trigger_effect_off() constructor
 {
-    __mode_name = "off";
-    __mode      = INPUT_TRIGGER_EFFECT.TYPE_OFF;
+    static __mode_name = "off";
+    static __mode      = __INPUT_TRIGGER_EFFECT.__TYPE_OFF;
     __params    = {};
 
     static __steam_get_state = function(_gamepad, _trigger)
