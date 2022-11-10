@@ -36,6 +36,14 @@ function __input_class_player() constructor
     __cursor = new __input_class_cursor();
     __cursor.__player = self;
     
+    __gyro_axis_x        = INPUT_GYRO_DEFAULT_AXIS_X;
+    __gyro_axis_y        = INPUT_GYRO_DEFAULT_AXIS_Y;
+    __gyro_sensitivity_x = INPUT_GYRO_DEFAULT_SENSITIVITY_X;
+    __gyro_sensitivity_y = INPUT_GYRO_DEFAULT_SENSITIVITY_Y;
+    
+    __gyro_enabled_set(true);
+    __gyro_enabled = false;
+    
     
     
     #region Profiles
@@ -850,13 +858,15 @@ function __input_class_player() constructor
     
     static __export = function(_output_string, _prettify)
     {
-        var _new_profiles_dict = {};
+        var _new_profiles_dict        = {};
         var _new_axis_thresholds_dict = {};
+        var _new_gyro_params          = {};
     
         var _root_json = {
             profiles:           _new_profiles_dict,
             axis_thresholds:    _new_axis_thresholds_dict,
-            vibration_strength: __vibration_strength,
+            gyro:               _new_gyro_params,
+            vibration_strength: __vibration_strength,            
         };
         
         //Copy profiles
@@ -885,8 +895,15 @@ function __input_class_player() constructor
             ++_a;
         }
         
+        //Copy gyro parameters
+        _new_gyro_params.axis_x        = __gyro_axis_x;
+        _new_gyro_params.axis_y        = __gyro_axis_y;
+        _new_gyro_params.sensitivity_x = __gyro_sensitivity_x;
+        _new_gyro_params.sensitivity_y = __gyro_sensitivity_y;
+        
         if (_output_string)
         {
+            
             if (_prettify)
             {
                 return __input_snap_to_json(_root_json, true, true);
@@ -965,15 +982,38 @@ function __input_class_player() constructor
             ++_a;
         }
         
+        //Copy gyro data
+        if (variable_struct_exists(_json, "gyro"))
+        {
+            if (!is_struct(_json.gyro))
+            {
+                __input_error("Player ", __index, " gyro parameters are corrupted");
+                return;
+            }
+            
+            __gyro_axis_x        = _json.gyro.axis_x;
+            __gyro_axis_y        = _json.gyro.axis_y;
+            __gyro_sensitivity_x = _json.gyro.sensitivity_x;
+            __gyro_sensitivity_y = _json.gyro.sensitivity_y;
+        }
+        else
+        {
+            __input_trace("Warning! Player ", __index, " gyro parameters not found, using defaults");
+            __gyro_axis_x        = INPUT_GYRO_DEFAULT_AXIS_X;
+            __gyro_axis_y        = INPUT_GYRO_DEFAULT_AXIS_Y;
+            __gyro_sensitivity_x = INPUT_GYRO_DEFAULT_SENSITIVITY_X;
+            __gyro_sensitivity_y = INPUT_GYRO_DEFAULT_SENSITIVITY_Y;
+        }
+        
         if (variable_struct_exists(_json, "vibration_strength"))
         {
-            if (!is_numeric(__vibration_strength))
+            if (!is_numeric(_json.vibration_strength))
             {
                 __input_error("Player ", __index, " vibration strength is corrupted");
                 return;
             }
             
-            __vibration_strength = INPUT_VIBRATION_DEFAULT_STRENGTH;
+            __vibration_strength = _json.vibration_strength;
         }
         else
         {
@@ -1005,6 +1045,11 @@ function __input_class_player() constructor
         }
         
         __axis_thresholds_dict = {};
+        __vibration_strength   = INPUT_VIBRATION_DEFAULT_STRENGTH;
+        __gyro_axis_x          = INPUT_GYRO_DEFAULT_AXIS_X;
+        __gyro_axis_y          = INPUT_GYRO_DEFAULT_AXIS_Y;
+        __gyro_sensitivity_x   = INPUT_GYRO_DEFAULT_SENSITIVITY_X;
+        __gyro_sensitivity_y   = INPUT_GYRO_DEFAULT_SENSITIVITY_Y;
     }
     
     static __vibration_add_event = function(_event)
@@ -1019,6 +1064,45 @@ function __input_class_player() constructor
         }
     }
     
+    static __gyro_enabled_set = function(_state)
+    {       
+        if (_state)
+        {
+            __gyro_screen_width  = display_get_width();
+            __gyro_screen_height = display_get_height();
+            switch(global.__input_pointer_coord_space)
+            {
+                case INPUT_COORD_SPACE.ROOM:
+                    if (view_enabled && view_visible[0])
+                    {
+                        var _camera = view_camera[0];
+                        __gyro_screen_width  = camera_get_view_width(_camera);
+                        __gyro_screen_height = camera_get_view_height(_camera);
+                    }
+                    else
+                    {
+                        __gyro_screen_width  = room_width;
+                        __gyro_screen_height = room_height;
+                    }
+                break;
+
+                case INPUT_COORD_SPACE.GUI:                        
+                    __gyro_screen_width  = display_get_gui_width();
+                    __gyro_screen_height = display_get_gui_height();
+                break;
+
+                case INPUT_COORD_SPACE.DISPLAY:
+                    if (!__INPUT_ON_CONSOLE && (window_get_width != undefined))
+                    {
+                        __gyro_screen_width  = window_get_width();
+                        __gyro_screen_height = window_get_height();
+                    }
+                break;
+            }
+        }
+        
+        __gyro_enabled = _state;
+    }
     
     
     #region Tick functions
@@ -1148,7 +1232,7 @@ function __input_class_player() constructor
         if (__connected && (global.__input_source_mode != INPUT_SOURCE_MODE.MULTIDEVICE)) //Don't vibrate if we're likely to have multiple gamepads assigned
         {
             var _gamepad_index = __source_get_gamepad();
-            if not (_gamepad_index >= 0) return;
+            if (_gamepad_index < 0) return;
             
             var _not_paused = !__vibration_paused;
             var _left  = 0;
@@ -1194,7 +1278,7 @@ function __input_class_player() constructor
         if (__connected)
         {
             var _gamepad_index = __source_get_gamepad();
-            if not (_gamepad_index >= 0) return;
+            if (_gamepad_index < 0) return;
             
             global.__input_gamepads[_gamepad_index].__color_set(_color);
         }
