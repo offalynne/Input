@@ -1,7 +1,9 @@
 function __input_class_gamepad_motion(_gamepad_index) constructor
-{    
+{
+    static __motion_data = {};
     __motion_frame = -infinity;
-    __index = _gamepad_index;    
+    __index = _gamepad_index;
+    
     __clear();
 
     static __tick = function()
@@ -125,14 +127,14 @@ function __input_class_gamepad_motion(_gamepad_index) constructor
 
     static __get_data = function()
     {
-        return {
-            acceleration_x: __accel_x,
-            acceleration_y: __accel_y,
-            acceleration_z: __accel_z,
+        __motion_data.acceleration_x = __accel_x;
+        __motion_data.acceleration_y = __accel_y;
+        __motion_data.acceleration_z = __accel_z;
 
-            angular_velocity_x: __gyro_x,
-            angular_velocity_y: __gyro_y,
-            angular_velocity_z: __gyro_z,
-        }
+        __motion_data.angular_velocity_x = __gyro_x;
+        __motion_data.angular_velocity_y = __gyro_y;
+        __motion_data.angular_velocity_z = __gyro_z;
+        
+        return __motion_data;
     };
 }

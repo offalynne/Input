@@ -15,12 +15,6 @@ function __input_class_player() constructor
     
     __color = undefined;
     
-    __gyro_enabled       = false;
-    __gyro_axis_x        = INPUT_GYRO_DEFAULT_AXIS_X;
-    __gyro_axis_y        = INPUT_GYRO_DEFAULT_AXIS_Y;
-    __gyro_sensitivity_x = INPUT_GYRO_DEFAULT_SENSITIVITY_X;
-    __gyro_sensitivity_y = INPUT_GYRO_DEFAULT_SENSITIVITY_Y;
-    
     __rebind_state            = 0;
     __rebind_start_time       = global.__input_current_time;
     __rebind_success_callback = undefined;
@@ -41,6 +35,14 @@ function __input_class_player() constructor
     
     __cursor = new __input_class_cursor();
     __cursor.__player = self;
+    
+    __gyro_axis_x        = INPUT_GYRO_DEFAULT_AXIS_X;
+    __gyro_axis_y        = INPUT_GYRO_DEFAULT_AXIS_Y;
+    __gyro_sensitivity_x = INPUT_GYRO_DEFAULT_SENSITIVITY_X;
+    __gyro_sensitivity_y = INPUT_GYRO_DEFAULT_SENSITIVITY_Y;
+    
+    __gyro_enabled_set(true);
+    __gyro_enabled = false;
     
     
     
@@ -894,8 +896,8 @@ function __input_class_player() constructor
         }
         
         //Copy gyro parameters
-        _new_gyro_params.axis_x = __gyro_axis_x;
-        _new_gyro_params.axis_y = __gyro_axis_y;
+        _new_gyro_params.axis_x        = __gyro_axis_x;
+        _new_gyro_params.axis_y        = __gyro_axis_y;
         _new_gyro_params.sensitivity_x = __gyro_sensitivity_x;
         _new_gyro_params.sensitivity_y = __gyro_sensitivity_y;
         
@@ -1062,6 +1064,45 @@ function __input_class_player() constructor
         }
     }
     
+    static __gyro_enabled_set = function(_state)
+    {       
+        if (_state)
+        {
+            __gyro_screen_width  = display_get_width();
+            __gyro_screen_height = display_get_height();
+            switch(global.__input_pointer_coord_space)
+            {
+                case INPUT_COORD_SPACE.ROOM:
+                    if (view_enabled && view_visible[0])
+                    {
+                        var _camera = view_camera[0];
+                        __gyro_screen_width  = camera_get_view_width(_camera);
+                        __gyro_screen_height = camera_get_view_height(_camera);
+                    }
+                    else
+                    {
+                        __gyro_screen_width  = room_width;
+                        __gyro_screen_height = room_height;
+                    }
+                break;
+
+                case INPUT_COORD_SPACE.GUI:                        
+                    __gyro_screen_width  = display_get_gui_width();
+                    __gyro_screen_height = display_get_gui_height();
+                break;
+
+                case INPUT_COORD_SPACE.DISPLAY:
+                    if (!__INPUT_ON_CONSOLE && (window_get_width != undefined))
+                    {
+                        __gyro_screen_width  = window_get_width();
+                        __gyro_screen_height = window_get_height();
+                    }
+                break;
+            }
+        }
+        
+        __gyro_enabled = _state;
+    }
     
     
     #region Tick functions

@@ -42,7 +42,7 @@
 #macro INPUT_GYRO_DEFAULT_AXIS_Y  INPUT_GYRO.AXIS_PITCH
 
 //Default gamepad gyroscope sensitivity
-//At a value of 1.0, turning a controller 180 degrees covers screenspace
+//At a value of 1.0, turning a controller 180 degrees covers screenspace. At 2.0, 90 degrees covers screenspace
 //Negative values result in an inverted axis
 #macro INPUT_GYRO_DEFAULT_SENSITIVITY_X   2.0
 #macro INPUT_GYRO_DEFAULT_SENSITIVITY_Y  -2.0

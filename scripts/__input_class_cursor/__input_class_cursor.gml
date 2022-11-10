@@ -130,41 +130,11 @@ function __input_class_cursor() constructor
                     case INPUT_GYRO.AXIS_ROLL:  _gyro_value_y = _motion_data.angular_velocity_z; break;
                 }
 
-                var _screen_width  = display_get_width();
-                var _screen_height = display_get_height();
-                switch(global.__input_pointer_coord_space)
-                {
-                    case INPUT_COORD_SPACE.ROOM:
-                        if (view_enabled && view_visible[0])
-                        {
-                            var _camera = view_camera[0];
-                            _screen_width  = camera_get_view_width(_camera);
-                            _screen_height = camera_get_view_height(_camera);
-                        }
-                        else
-                        {
-                            _screen_width  = room_width;
-                            _screen_height = room_height;
-                        }
-                    break;
-                
-                    case INPUT_COORD_SPACE.GUI:                        
-                        _screen_width  = display_get_gui_width();
-                        _screen_height = display_get_gui_height();
-                    break;
-                
-                    case INPUT_COORD_SPACE.DISPLAY:
-                        if (!__INPUT_ON_CONSOLE && (window_get_width != undefined))
-                        {
-                            _screen_width  = window_get_width();
-                            _screen_height = window_get_height();
-                        }
-                    break;
-                }
-
                 var _dts = delta_time/1000000;
-                if (_gyro_value_x != undefined) __x += round((_gyro_value_x * _dts * _screen_width  * __player.__gyro_sensitivity_x * 10)) / 10;
-                if (_gyro_value_y != undefined) __y += round((_gyro_value_y * _dts * _screen_height * __player.__gyro_sensitivity_y * 10)) / 10;
+                
+                //Resolution of 0.1
+                if (_gyro_value_x != undefined) __x += round((_gyro_value_x * _dts * __player.__gyro_screen_width  * __player.__gyro_sensitivity_x * 10)) / 10;
+                if (_gyro_value_y != undefined) __y += round((_gyro_value_y * _dts * __player.__gyro_screen_height * __player.__gyro_sensitivity_y * 10)) / 10;
             }
 
             //Cursor bindings
