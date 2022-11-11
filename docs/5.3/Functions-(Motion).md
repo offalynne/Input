@@ -54,13 +54,11 @@ Sets whether gamepad gyro controls the cursor for the player.
 
 ## `input_gyro_enabled_get([playerIndex])`
 
-*Returns:* Struct detailing the state of player gamepad motion data
+*Returns:* Boolean, whether gamepad gyro controls are enabled for the given player
 
-|Name|Datatype|Purpose|
-|----|--------|-------|
-|None|        |       |
-
-Gets whether gamepad gyro controls the cursor for the player.
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 &nbsp;
 
