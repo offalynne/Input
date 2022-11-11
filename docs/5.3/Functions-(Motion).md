@@ -93,8 +93,8 @@ This function returns a struct of parameters currently set for gyro control of t
 
 ```
 {
-    axis_x: <[INPUT_GYRO axis member indicating world axis which controls cursor movement on the screen X axis>,
-    axis_y: <[INPUT_GYRO axis member indicating world axis which controls cursor movement on the screen Y axis>,
+    axis_x: <INPUT_GYRO axis member indicating world axis which controls cursor movement on the screen X axis>,
+    axis_y: <INPUT_GYRO axis member indicating world axis which controls cursor movement on the screen Y axis>,
 
     sensitivity_x: <number indicating sensitivity on the X axis>,
     sensitivity_y: <number indicating sensitivity on the Y axis>,
