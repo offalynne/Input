@@ -7,7 +7,7 @@ Gamepad motion features provide normalized data from sensors available on PlaySt
 &nbsp;
 
 <figcaption style="display: block; margin: auto; text-align:center; font-style:italic" >Axis Orientation</figcaption>
-<figure><img src="https://i.imgur.com/lCUmGHT.png" width="80%" style="display: block; margin: auto; max-width: 300px; height: auto;" /></figure>
+<figure><img src="https://i.imgur.com/hD8njcV.png" width="80%" style="display: block; margin: auto; max-width: 300px; height: auto;" /></figure>
 
 &nbsp;
 
