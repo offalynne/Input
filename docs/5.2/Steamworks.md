@@ -13,7 +13,7 @@ Once you have configured your app in the Steamworks dashboard and set up the Ste
 - Download and extract the [Steamworks SDK](https://partner.steamgames.com/downloads/list)
 - Download and import the latest [Steamworks Game Maker extension](https://github.com/YoYoGames/GMEXT-Steamworks/releases)
 - [Configure your application](#configuring-steamworks) through Steamworks dashboard
-- [Set Application ID](#setting-appid) and SDK location in extension options in Game Maker IDE
+- [Set Application ID](#setting-application-id) and SDK location in extension options in Game Maker IDE
 - Ensure `INPUT_USE_STEAMWORKS` in [`__input_config_general`](Configuration.md#general) is `<true>`
 
 &nbsp;
@@ -36,7 +36,7 @@ Note that if you select *Custom Configuration* for *Steam Input Default Configur
 
 &nbsp;
 
-## Setting AppID
+## Setting Application ID
 
 Steamworks SDK documentation refers to an example project called *Spacewar*, [(Application ID 480)](https://steamdb.info/app/480) that is the default AppID setting when you import the YYG Steamworks Extension for Game Maker. Note that the *Spacewar* example is configured in Steamworks to use a Steam Input *Custom Configuration*, meaning it will not work as intended until this option is changed, and no controller opted-in to Steam will work with Game Maker or the Input library's default feature set for this AppID.
 
