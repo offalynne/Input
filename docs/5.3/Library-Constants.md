@@ -155,7 +155,7 @@ The `INPUT_GYRO` enum contains the following members used by the [gamepad motion
 
 &nbsp;
 
-## Trigger Effect State Constants
+## Trigger Effect States
 
 The `INPUT_TRIGGER_STATE` enum contains the following members returned by [input_trigger_effect_get_state()](Functions-(Trigger-Effects)?id=input_trigger_effect_get_state).
 
