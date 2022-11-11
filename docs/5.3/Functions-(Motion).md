@@ -6,7 +6,7 @@ Gamepad motion features provide normalized data from sensors available on PlaySt
 
 &nbsp;
 
-<figcaption style="display: block; margin: auto; text-align:center; font-style:italic" >Axis Orientation</figcaption>
+<figcaption style="display: block; margin: auto; text-align:center; font-style:italic" >Motion Axis Orientation</figcaption>
 <figure><img src="https://i.imgur.com/hD8njcV.png" style="width:80%; display: block; margin: auto; max-width: 400px; height: auto;" /></figure>
 
 &nbsp;
@@ -36,7 +36,7 @@ This function returns a struct that describes the motion of  a player's gamepad,
 
 ```
 
-For details on using motion data for implementing your own controls, see [GyroWiki](http://gyrowiki.jibbsmart.com/).
+For details on using normalised motion data for input, see [GyroWiki](http://gyrowiki.jibbsmart.com/).
 
 &nbsp;
 
