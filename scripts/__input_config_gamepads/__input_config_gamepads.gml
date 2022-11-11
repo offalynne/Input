@@ -37,6 +37,9 @@
 //Please note that this is only applied specifically when playing on a Switch console
 #macro INPUT_VIBRATION_SWITCH_OS_STRENGTH  0.4
 
+//The default haptic trigger effect strength. This value can be changed later by using input_trigger_effect_set_strength()
+#macro INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH  1.0
+
 //Default gamepad gyroscope axis for screenspace X and Y
 #macro INPUT_GYRO_DEFAULT_AXIS_X  INPUT_GYRO.AXIS_YAW
 #macro INPUT_GYRO_DEFAULT_AXIS_Y  INPUT_GYRO.AXIS_PITCH

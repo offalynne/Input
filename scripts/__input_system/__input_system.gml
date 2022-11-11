@@ -179,6 +179,14 @@ enum __INPUT_VERB_TYPE
     __COMBO,
 }
 
+enum __INPUT_TRIGGER_EFFECT
+{
+    __TYPE_OFF,
+    __TYPE_FEEDBACK,
+    __TYPE_WEAPON,
+    __TYPE_VIBRATION,
+}
+
 
 
 

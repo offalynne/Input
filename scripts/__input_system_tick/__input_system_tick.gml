@@ -106,6 +106,8 @@ function __input_system_tick()
             //Linux app continues to recieve input some number of frames after focus loss
             //Clear IO on focus loss to prevent false positive of subsequent focus regain
             io_clear();
+            
+            __input_gamepad_stop_trigger_effects(all);
         }
         else
         {
@@ -133,6 +135,8 @@ function __input_system_tick()
                     
                 //Retrigger mouse capture timer to avoid the mouse jumping all over the place when we refocus the window
                 if (global.__input_mouse_capture) global.__input_mouse_capture_frame = global.__input_frame;
+                
+                __input_player_apply_trigger_effects(all);
             }
         }
     }

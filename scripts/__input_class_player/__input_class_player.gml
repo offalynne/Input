@@ -13,6 +13,13 @@ function __input_class_player() constructor
     __vibration_strength    = INPUT_VIBRATION_DEFAULT_STRENGTH;
     __vibration_event_array = [];
     
+    __trigger_effect_paused     = false;
+    __trigger_effect_strength   = INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH;
+    __trigger_intercepted_left  = false;
+    __trigger_intercepted_right = false;
+    __trigger_effect_left       = undefined;
+    __trigger_effect_right      = undefined;
+
     __color = undefined;
     
     __rebind_state            = 0;
@@ -330,7 +337,16 @@ function __input_class_player() constructor
     {
         if ((__rebind_state > 0) && (array_length(__source_array) > 0)) __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_CHANGED);
         
-        __color_set();
+        var _i = 0;
+        repeat(array_length(__source_array))
+        {
+            if (__source_array[_i].__source == __INPUT_SOURCE.GAMEPAD)
+            {
+                __input_gamepad_reset_color(__source_array[_i].__gamepad);
+                __input_gamepad_stop_trigger_effects(__source_array[_i].__gamepad);
+            }
+        }
+        
         array_resize(__source_array, 0);
         __last_input_time = global.__input_current_time;
         
@@ -357,7 +373,8 @@ function __input_class_player() constructor
         
         array_push(__source_array, _source);
         __last_input_time = global.__input_current_time;
-        __color_set(__color);
+        __color_set(__color);        
+        __input_player_apply_trigger_effects(__index);
         
         if (INPUT_DEBUG_SOURCES) __input_trace("Assigned source ", _source, " to player ", __index);
     }
@@ -370,6 +387,12 @@ function __input_class_player() constructor
         {
             if (__source_array[_i] == _source)
             {
+                if (__source_array[_i].__source == __INPUT_SOURCE.GAMEPAD)
+                {
+                    __input_gamepad_reset_color(__source_array[_i].__gamepad);
+                    __input_gamepad_stop_trigger_effects(__source_array[_i].__gamepad);
+                }
+                 
                 array_delete(__source_array, _i, 1);
                 if (INPUT_DEBUG_SOURCES) __input_trace("Removed source ", _source, " from player ", __index);
             }
@@ -866,7 +889,8 @@ function __input_class_player() constructor
             profiles:           _new_profiles_dict,
             axis_thresholds:    _new_axis_thresholds_dict,
             gyro:               _new_gyro_params,
-            vibration_strength: __vibration_strength,            
+            vibration_strength: __vibration_strength,     
+            trigger_effect_strength: __trigger_effect_strength,       
         };
         
         //Copy profiles
@@ -1020,6 +1044,22 @@ function __input_class_player() constructor
             __input_trace("Warning! Player ", __index, " vibration strength not found, defaulting to ", INPUT_VIBRATION_DEFAULT_STRENGTH);
             __vibration_strength = INPUT_VIBRATION_DEFAULT_STRENGTH;
         }
+        
+        if (variable_struct_exists(_json, "trigger_effect_strength"))
+        {
+            if (!is_numeric(__trigger_effect_strength))
+            {
+                __input_error("Player ", __index, " trigger effect strength is corrupted");
+                return;
+            }
+            
+            __trigger_effect_strength = INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH;
+        }
+        else
+        {
+            __input_trace("Warning! Player ", __index, " trigger effect strength not found, defaulting to ", INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH);
+            __vibration_strength = INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH;
+        }
     }
     
     static __reset = function()
@@ -1061,6 +1101,49 @@ function __input_class_player() constructor
         else
         {
             array_push(__vibration_event_array, _event);
+        }
+    }
+    
+    static __trigger_effect_set = function(_trigger, _effect, _set)
+    {
+        var _gamepad = __source_get_gamepad();
+        if ((_gamepad < 0) || !is_struct(_effect)) return;
+        
+        if (__trigger_effect_paused)
+        {
+            __input_trace("Warning! New trigger effect ignored, player ", __index, " trigger effect is paused");
+            return;
+        }
+
+        var _intercepted = !global.__input_gamepads[_gamepad].__trigger_effect_apply(_trigger, _effect, __trigger_effect_strength);
+        
+        if (!_set) return;
+        if (_trigger == gp_shoulderlb)
+        {
+            __trigger_intercepted_left = _intercepted;
+            __trigger_effect_left      = _effect;
+        }
+        else
+        {
+            __trigger_intercepted_right = _intercepted;
+            __trigger_effect_right      = _effect;                 
+        }
+    }
+    
+    static __trigger_effect_pause = function(_state)
+    {
+        __trigger_effect_paused = _state;
+    
+        if (!_state)
+        {
+            __input_player_apply_trigger_effects(__index);
+        }
+        else
+        {
+            var _gamepad = __source_get_gamepad();
+            if (_gamepad < 0) return;
+        
+            __input_gamepad_stop_trigger_effects(_gamepad);
         }
     }
     
@@ -1272,16 +1355,19 @@ function __input_class_player() constructor
     }
     
     static __color_set = function(_color)
-    {
-        __color = _color;
-        
-        if (__connected)
+    {        
+        var _i = 0;
+        repeat(array_length(__source_array))
         {
-            var _gamepad_index = __source_get_gamepad();
-            if (_gamepad_index < 0) return;
+            if (__source_array[_i].__source == __INPUT_SOURCE.GAMEPAD)
+            {
+                with global.__input_gamepads[__source_array[_i].__gamepad] __color_set(_color);
+            }   
             
-            global.__input_gamepads[_gamepad_index].__color_set(_color);
+            ++_i;
         }
+        
+        __color = _color;
     }
     
     static __tick_binding_scan = function()
