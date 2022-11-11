@@ -86,7 +86,7 @@ Pauses all trigger effects when `state` is `<false>`.  While paused, no new trig
 
 &nbsp;
 
-## `input_vibrate_trigger_effect_strength([playerIndex])`
+## `input_trigger_effect_strength([playerIndex])`
 
 *Returns:* Number, the overall strength for all trigger effects for the player
 
