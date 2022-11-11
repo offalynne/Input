@@ -2,8 +2,6 @@
 
 &nbsp;
 
-### [Game Accessibility Guidelines](https://gameaccessibilityguidelines.com/)
-
-### [Xbox Accessibility Guidelines for Input](https://docs.microsoft.com/en-us/gaming/accessibility/xbox-accessibility-guidelines/107)
-
-### [SpecialEffect DevKit Accessibility Resource](https://specialeffectdevkit.info/input/)
+- [Game Accessibility Guidelines](https://gameaccessibilityguidelines.com/) from a panel of contributors, including [OneSwich](https://www.oneswitch.org.uk/)
+- [Xbox Accessibility Guidelines for Input](https://docs.microsoft.com/en-us/gaming/accessibility/xbox-accessibility-guidelines/107) from Microsoft
+- [DevKit Accessibility Resource](https://specialeffectdevkit.info/input/) from [SpecialEffect](https://www.specialeffect.org.uk/)
