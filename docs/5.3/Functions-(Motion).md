@@ -35,7 +35,7 @@ This function returns a struct that describes the motion of  a player's gamepad,
 }
 ```
 
-For details on using normalised motion data for input, see [GyroWiki](http://gyrowiki.jibbsmart.com/).
+For details on handling motion data well for game input, see [GyroWiki](http://gyrowiki.jibbsmart.com/).
 
 &nbsp;
 
