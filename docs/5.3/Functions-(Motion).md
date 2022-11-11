@@ -2,7 +2,7 @@
 
 &nbsp;
 
-Gamepad motion features provide normalized data from sensors available on PlayStation and Switch console platforms, as well as [Windows and Linux via Steamworks extension](Steamworks.md). Also, configuration is provided for controlling the [player cursor](Functions-(Cursor).md) using gamepad gyro sensor data, for mouse-like pointing.
+Gamepad motion features provide normalized data from sensors available on PlayStation and Switch console platforms, as well as [Windows and Linux via Steamworks extension](Steamworks.md) adding Steam Controller and Steam Deck support. Also, configuration is provided for controlling the [player cursor](Functions-(Cursor).md) using gamepad gyro sensor data, for mouse-like pointing.
 
 &nbsp;
 
