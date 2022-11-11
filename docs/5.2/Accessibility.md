@@ -1,9 +1,9 @@
-# Accessibility
+# Accessibility Resources
 
 &nbsp;
 
-https://gameaccessibilityguidelines.com/
+### [Game Accessibility Guidelines](https://gameaccessibilityguidelines.com/)
 
-https://docs.microsoft.com/en-us/gaming/accessibility/xbox-accessibility-guidelines/107
+### [Xbox Accessibility Guidelines for Input](https://docs.microsoft.com/en-us/gaming/accessibility/xbox-accessibility-guidelines/107)
 
-https://specialeffectdevkit.info/input/
+### [SpecialEffect DevKit Accessibility Resource](https://specialeffectdevkit.info/input/)
