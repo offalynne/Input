@@ -219,7 +219,7 @@
 - [`input_trigger_effect_set_pause(state, [playerIndex])`](Functions-(Trigger-Effects)?id=input_trigger_effect_set_paus-state-playerindex)
 - [`input_trigger_effect_get_pause([playerIndex])`](Functions-(Trigger-Effects)?id=input_trigger_effect_get_pauseplayerindex)
 - [`input_trigger_effect_set_strength(strength, [playerIndex])`](Functions-(Trigger-Effects)?id=input_trigger_effect_set_strengthstrength-playerindex)
-- [`input_vibrate_trigger_effect_strength([playerIndex])`](Functions-(Trigger-Effects)?id=input_vibrate_trigger_effect_strengthplayerindex)
+- [`input_trigger_effect_strength([playerIndex])`](Functions-(Trigger-Effects)?id=input_trigger_effect_strengthplayerindex)
 
 &nbsp;
 
