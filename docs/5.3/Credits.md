@@ -33,7 +33,7 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 &nbsp;
 
 <h3 align="center">nik</h1>
-<p align="center"><i>Platform support testing</i></p>
+<p align="center"><i>Platform support testing, Steamworks extension</i></p>
 <p align="center">(<a href="https://github.com/nkrapivin" target="_blank">GitHub</a>)</p>
 
 &nbsp;
