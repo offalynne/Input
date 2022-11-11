@@ -21,9 +21,6 @@ Input works to normalize behavior across supported platforms. Each platform brin
    - [iOS and tvOS](Platform-Quirks?id=ios-and-tvos)
    - [Android](Platform-Quirks?id=android)
 - [HTML5](Platform-Quirks?id=html5)
-- [UWP](Platform-Quirks?id=uwp)
-   - [UWP on Windows](Platform-Quirks?id=uwp-on-xbox-one-and-xbox-series-xs)
-   - [UWP on Xbox One and Xbox Series X/S](Platform-Quirks?id=uwp-on-xbox-one-and-xbox-series-xs)
 
 ### [Quirks by Device](Device-Quirks)
 - [General](Device-Quirks?id=general)
@@ -32,8 +29,6 @@ Input works to normalize behavior across supported platforms. Each platform brin
    - [Gamepad on Console](Device-Quirks?id=gamepad-on-console)
    - [Gamepad on Mobile](Device-Quirks?id=gamepad-on-mobile)
    - [Gamepad on HTML5](Device-Quirks?id=gamepad-on-html5)
-   - [Gamepad on UWP](Device-Quirks?id=gamepad-on-uwp)
 - [Keyboard](Device-Quirks?id=keyboard)
    - [Keyboard on Desktop](Device-Quirks?id=keyboard-on-desktop)
    - [Keyboard on Console, Mobile and HTML5](Device-Quirks?id=keyboard-on-console-mobile-and-html5)
-   - [Keyboard on UWP](Device-Quirks?id=keyboard-on-uwp)
