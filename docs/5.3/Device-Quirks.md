@@ -38,7 +38,7 @@ On many platforms, gamepad indices do not enumerate predicatbly. Use source assi
 
 - Steam performs some initial changes in gamepad connection depending on available devices and the configuration of Steam Input. Input waits a configurable number of frames before scanning for connected gamepads to prevent unwanted false connection and disconnection reportage.
 
-- Depending on user configuration, Steam may hide native gamepad devices from the Game Maker Studio runtime, presenting them as normalized virtual gamepads. This is a helpful feature, but gathering more information about devices [may require extension](https://github.com/YAL-GameMaker/steamworks.gml) beyond the scope of Input.
+- Depending on user configuration, Steam may hide native gamepad devices from the Game Maker Studio runtime, presenting them as normalized virtual gamepads. For virtual gamepad identification, see [Configuring Steamworks for Input](Steamworks.md).
 
 ### Gamepad on Console
 
