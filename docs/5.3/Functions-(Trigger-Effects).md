@@ -43,7 +43,7 @@ Adaptive trigger effects are available for the DualSense gamepad on the PlayStat
 
 ## `input_trigger_effect_get_state(trigger, [playerIndex])`
 
-*Returns:* [Trigger effect state constant](Library-Constants?id=trigger-effect-state-constant)
+*Returns:* [Trigger effect state constant](Library-Constants?id=trigger-effect-states)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
