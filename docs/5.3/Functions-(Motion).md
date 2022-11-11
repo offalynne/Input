@@ -33,7 +33,6 @@ This function returns a struct that describes the motion of  a player's gamepad,
     angular_velocity_z: <number indicating angular velocity on the Z axis>,
 
 }
-
 ```
 
 For details on using normalised motion data for input, see [GyroWiki](http://gyrowiki.jibbsmart.com/).
@@ -99,7 +98,6 @@ This function returns a struct of parameters currently set for gyro control of t
     sensitivity_x: <number indicating sensitivity on the X axis>,
     sensitivity_y: <number indicating sensitivity on the Y axis>,
 }
-
 ```
 
 &nbsp;
