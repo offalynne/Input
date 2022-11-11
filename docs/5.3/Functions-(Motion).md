@@ -65,7 +65,7 @@ Gets whether gamepad gyro controls the cursor for the player.
 
 &nbsp;
 
-## `input_gyro_params_set([playerIndex])`
+## `input_gyro_params_set(gyroAxisX, [gyroAxisY], [gyroSensitivityX], [gyroSensitivityY], [playerIndex])`
 
 *Returns:* N/A (`undefined`)
 
