@@ -24,13 +24,13 @@ This function returns a struct that describes the motion of  a player's gamepad,
 
 ```
 {
-    acceleration_x: <number indicating acceleration on the X axis>,
-    acceleration_y: <number indicating acceleration on the Y axis>,
-    acceleration_z: <number indicating acceleration on the Z axis>,
+    acceleration_x: <number indicating acceleration on the X axis in Gs>,
+    acceleration_y: <number indicating acceleration on the Y axis in Gs>,
+    acceleration_z: <number indicating acceleration on the Z axis in Gs>,
 
-    angular_velocity_x: <number indicating angular velocity on the X axis>,
-    angular_velocity_y: <number indicating angular velocity on the Y axis>,
-    angular_velocity_z: <number indicating angular velocity on the Z axis>,
+    angular_velocity_x: <number indicating angular velocity on the X axis in rad/s>,
+    angular_velocity_y: <number indicating angular velocity on the Y axis in rad/s>,
+    angular_velocity_z: <number indicating angular velocity on the Z axis in rad/s>,
 
 }
 ```
