@@ -22,4 +22,9 @@ if (gamepad_is_connected(_gamepad))
         }
         ++_i;
     }
+    
+    if (input_gamepad_check_pressed(_gamepad, gp_start))
+    {
+        input_color_reset();
+    }
 }

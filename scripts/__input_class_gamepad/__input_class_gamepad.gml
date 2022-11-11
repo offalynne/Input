@@ -30,6 +30,8 @@ function __input_class_gamepad(_index) constructor
     __vibration_right   = 0;
     __vibration_received_this_frame = false;
     
+    __motion = undefined;
+    
     mapping_gm_to_raw = {};
     mapping_raw_to_gm = {};
     mapping_array     = [];
@@ -78,6 +80,11 @@ function __input_class_gamepad(_index) constructor
             }
         
             gamepad_set_vibration(index, 0, 0);
+        }
+
+        if (global.__input_gamepad_motion_support)
+        {
+            __motion = new __input_class_gamepad_motion(index);
         }
         
         __input_trace("Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
