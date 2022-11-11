@@ -205,7 +205,7 @@
 - [`input_motion_data_get([playerIndex])`](Functions-(Motion)?id=input_motion_data_getplayerIndex)
 - [`input_gyro_enabled_set(state, [playerIndex])`](Functions-(Motion)?id=input_gyro_enabled_setstate-playerindex)
 - [`input_gyro_enabled_get([playerIndex])`](Functions-(Motion)?id=input_gyro_enabled_getplayerindex)
-- [`input_gyro_params_set([playerIndex])`](Functions-(Motion)?id=input_gyro_params_setplayerindex)
+- [`input_gyro_params_set(gyroAxisX, [gyroAxisY], [gyroSensitivityX], [gyroSensitivityY], [playerIndex])`](Functions-(Motion)?id=input_gyro_params_setgyroaxisx-gyroaxisy-gyrosensitivityx-gyrosensitivityy-playerindex)
 - [`input_gyro_params_get([playerIndex])`](Functions-(Motion)?id=input_gyro_params_getplayerindex)
 
 &nbsp;
