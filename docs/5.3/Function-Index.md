@@ -193,6 +193,36 @@
 
 &nbsp;
 
+## [Color](Functions-(Color))
+
+- [`input_color_set(color, [playerIndex])`](Functions-(Color)?id=input_color_setcolor-playerindex)
+- [`input_color_reset([playerIndex]))`](Functions-(Color)?id=input_color_resetplayerindex)
+
+&nbsp;
+
+## [Motion](Functions-(Motion))
+
+- [`input_motion_data_get([playerIndex])`](Function-(Motion)?id=input_motion_data_getplayerIndex)
+- [`input_gyro_enabled_set(state, [playerIndex])`](Function-(Motion)?id=input_gyro_enabled_setstate-playerindex)
+- [`input_gyro_enabled_get([playerIndex])`](Function-(Motion)?id=input_gyro_enabled_getplayerindex)
+- [`input_gyro_params_set([playerIndex])`](Function-(Motion)?id=input_gyro_params_setplayerindex)
+- [`input_gyro_params_get([playerIndex])`](Function-(Motion)?id=input_gyro_params_getplayerindex)
+
+&nbsp;
+
+## [Trigger Effects](Functions-(Trigger-Effects))
+
+- [`input_trigger_effect_feedback(trigger, position, strength, playerIndex)`](Function-(Trigger-Effects)?id=input_trigger_effect_feedbacktrigger-position-strength-playerindex)
+- [`input_trigger_effect_vibration(trigger, position, amplitude, frequency, [playerIndex])`](Function-(Trigger-Effects)?id=input_trigger_effect_vibrationtrigger-position-amplitude-frequency-playerindex)
+- [`input_trigger_effect_weapon(trigger, start, end, strength, [playerIndex])`](Function-(Trigger-Effects)?id=input_trigger_effect_weapontrigger-start-end-strength-playerindex)
+- [`input_trigger_effect_get_state(trigger, [playerIndex])`](Function-(Trigger-Effects)?id=input_trigger_effect_get_statetrigger-playerindex)
+- [`input_trigger_effect_set_pause(state, [playerIndex])`](Function-(Trigger-Effects)?id=input_trigger_effect_set_paus-state-playerindex)
+- [`input_trigger_effect_get_pause([playerIndex])`](Function-(Trigger-Effects)?id=input_trigger_effect_get_pauseplayerindex)
+- [`input_trigger_effect_set_strength(strength, [playerIndex])`](Function-(Trigger-Effects)?id=input_trigger_effect_set_strengthstrength-playerindex)
+- [`input_vibrate_trigger_effect_strength([playerIndex])`](Function-(Trigger-Effects)?id=input_vibrate_trigger_effect_strengthplayerindex)
+
+&nbsp;
+
 ## [Exporting and Importing](Functions-(Exporting-and-Importing))
 
 - [`input_system_reset()`](Functions-(Exporting-and-Importing)?id=input_system_reset)

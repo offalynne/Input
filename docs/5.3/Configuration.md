@@ -16,6 +16,8 @@
 |`INPUT_TIMER_MILLISECONDS`        |`false`      |Set to `true` to use milliseconds instead of frames for many functions and behaviours inside Input|
 |`INPUT_ANDROID_KEYBOARD_ALLOWED`  |`false`      |Whether to allow keyboard input on Android platform                                               |
 |`INPUT_SWITCH_KEYBOARD_ALLOWED`   |`false`      |Whether to allow keyboard input on Switch platform                                                |
+|`INPUT_MERGE_CONTROL_KEYS`        |`false`      |Whether to merge control keys, for example Left Shift and Right Shift upon user rebind            |
+|`INPUT_ALLOW_STEAMWORKS `         |`true`       |Whether to allow using Steamworks extension when available. See Steamworks                        |
 |`INPUT_BINDING_SCAN_TIMEOUT`      |`10000`      |Time (in milliseconds) to wait for a new binding before automatically cancelling the binding scan |
 |`INPUT_IGNORE_RESERVED_KEYS_LEVEL`|`2`          |Controls default key filtering behaviour. See below                                               |
 
@@ -128,10 +130,10 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 |`INPUT_MAX_TOUCHPOINTS`                   |`11`                       |Maximum number of touch screen points to query. This applies to touch screen devices only (excludes PlayStation)                                                                                          |
 |`INPUT_TOUCH_EDGE_DEADZONE`               |`35`                       |Margin in pixels around the screen edge where gaining or losing a touch point will not register "pressed" or "released". Prevents false positives when dragging on to or off of the edge of a touchscreen.|
 |`INPUT_TOUCH_POINTER_ALLOWED`             |`false`                    |Whether to allow touch input (real, or simulated by physical mouse) to set mouse bindings on touch-enabled platforms                                                                                      |
-|`INPUT_CURSOR_VERB_UP`                    |`"aim_up"`                     |Verb that controls upwards motion for a player's cursor                                                                                                                                                   |
-|`INPUT_CURSOR_VERB_DOWN`                  |`"aim_down"`                   |Verb that controls downwards motion for a player's cursor                                                                                                                                                 |
-|`INPUT_CURSOR_VERB_LEFT`                  |`"aim_left"`                   |Verb that controls leftwards motion for a player's cursor                                                                                                                                                 |
-|`INPUT_CURSOR_VERB_RIGHT`                 |`"aim_right"`                  |Verb that controls rightwards motion for a player's cursor                                                                                                                                                |
+|`INPUT_CURSOR_VERB_UP`                    |`"aim_up"`                 |Verb that controls upwards motion for a player's cursor                                                                                                                                                   |
+|`INPUT_CURSOR_VERB_DOWN`                  |`"aim_down"`               |Verb that controls downwards motion for a player's cursor                                                                                                                                                 |
+|`INPUT_CURSOR_VERB_LEFT`                  |`"aim_left"`               |Verb that controls leftwards motion for a player's cursor                                                                                                                                                 |
+|`INPUT_CURSOR_VERB_RIGHT`                 |`"aim_right"`              |Verb that controls rightwards motion for a player's cursor                                                                                                                                                |
 |`INPUT_CURSOR_START_SPEED`                |`5`                        |The default speed for cursors when the game boots up. This can be changed per player with `input_cursor_speed_set()`                                                                                      |
 |`INPUT_CURSOR_EXPONENT`                   |`1`                        |Cursor movement exponent. This is applied when using keyboard and gamepad controls                                                                                                                        |
 
@@ -151,8 +153,13 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 |`INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD`     |`1.0`                      |Default maximum threshold for non-directional (trigger) axes                                                                                                                                                                                                                |
 |`INPUT_SWITCH_HORIZONTAL_HOLDTYPE`        |`true`                     |Whether the game uses the horizontal holdtype for single Joy-Cons. Set this to `false` for vertical holdtype. Input treats these two modes as mutually exclusive (come talk to us if you need to be able to swap at runtime). This macro only applies to the Switch platform|
 |`INPUT_VIBRATION_ALLOWED`                 |`true`                     |Whether vibration should be allowed at all, often useful when debugging                                                                                                                                                                                                     |
-|`INPUT_VIBRATION_DEFAULT_STRENGTH`        |`1.0`                      |The default vibration strength. This value can be changed later by using [`input_vibrate_set_strength()`]()                                                                                                                                                                 |
+|`INPUT_VIBRATION_DEFAULT_STRENGTH`        |`1.0`                      |The default vibration strength. This value can be changed later by using [`input_vibrate_set_strength()`](Functions-(Vibration)?id=input_vibrate_set_strengthstrength-playerindex)                                                                                          |
 |`INPUT_VIBRATION_SWITCH_OS_STRENGTH`      |`0.4`                      |Switch's vibration motors can be a bit, uh, intense. This value allows you to reduce the strength of vibration relative to other platforms                                                                                                                                  |
+|`INPUT_GYRO_DEFAULT_AXIS_X`               |`INPUT_GYRO.AXIS_YAW`      |Default [`INPUT_GYRO` axis member](Library-Constants.md?id=Gyro-Axis) for controlling cursor in screenspace X axis                                                                                                                                                          |
+|`INPUT_GYRO_DEFAULT_AXIS_Y`               |`INPUT_GYRO.AXIS_PITCH`    |Default [`INPUT_GYRO` axis member](Library-Constants.md?id=Gyro-Axis) for controlling cursor in screenspace Y axis                                                                                                                                                          |
+|`INPUT_GYRO_DEFAULT_SENSITIVITY_X`        |` 2.0`                     |Default gamepad gyro sensitivity for cursor in screenspace X axis. At `1.0`, 180 degrees in world space covers screen width. Negative value indicate inverted axis                                                                                                          |
+|`INPUT_GYRO_DEFAULT_SENSITIVITY_Y`        |`-2.0`                     |Default gamepad gyro sensitivity for cursor in screenspace Y axis. At `1.0`, 180 degrees in world space covers screen height. Negative value indicate inverted axis                                                                                                         |
+|`INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH`   |`1.0`                      |The default trigger effect strength. This value can be changed later by using [`input_trigger_effect__set_strength()`](Functions-(Trigger-Effects)?id=input_trigger_effect_set_strengthstrength-playerindex)                                                                |
 
 &nbsp;
 
@@ -163,3 +170,9 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 For more information on how to customise `__input_config_icons()`, please see information relating to [`input_icons()`](Functions-(Other)?id=input_iconscategoryname), the function used throughout this script.
 
 ?> You should edit this script to customise Input for your own purposes.
+
+&nbsp;
+
+## Steam
+
+Input provides rudimentary support for input through Steam, in order to take advantage of the extended features available through Steam Input, see [Setting Up Steamworks for Input](Steamworks.md).

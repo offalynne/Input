@@ -140,3 +140,33 @@ else
 ## `INPUT_KEYBOARD_TYPE`
 
 This macro is set to a string indicating the current platform's preferred text source as a string. Possible values are `async` `virtual` or `keyboard`. This is useful for games where the player is expected to enter some text (for example, a name for a highscore) and you need to pick the most suitable option.
+
+&nbsp;
+
+## Gyro Axis
+
+The `INPUT_GYRO` enum contains the following members used by the [gamepad motion functions](Functions-(Motion)) to configure the axis used to control the player cursor. Meaning descriptions assume a neutral position of device resting on a flat surface. See [gamepad motion functions](Functions-(Motion)) for illustrative figure.
+
+|Name         |Meaning                                              |
+|-------------|-----------------------------------------------------|
+|`.AXIS_PITCH`|Gamepad tilted upward from floor to ceiling          |
+|`.AXIS_YAW`  |Gamepad tilted rightward from left shoulder to right |
+|`.AXIS_ROLL` |Gamepad tilted clockwise from -90 to 90 degrees      |
+
+&nbsp;
+
+## Trigger Effect State Constants
+
+The `INPUT_TRIGGER_STATE` enum contains the following members returned by [input_trigger_effect_get_state()](Functions-(Trigger-Effects)?id=input_trigger_effect_get_state).
+
+|Name                       |Meaning                                                 |
+|---------------------------|--------------------------------------------------------|
+|`.EFFECT_OFF`              |No trigger effect                                       |
+|`.EFFECT_FEEDBACK_STANDBY` |Trigger position below range for feedback effect        |
+|`.EFFECT_FEEDBACK_ACTIVE`  |Trigger position within range of feedback effect        |
+|`.EFFECT_WEAPON_STANDBY`   |Trigger position below range for weapon effect          |
+|`.EFFECT_WEAPON_PULLING`   |Trigger position in range for weapon feedback effect    |
+|`.EFFECT_WEAPON_FIRED`     |Trigger position beyond range for weapon feedback effect|
+|`.EFFECT_VIBRATION_STANDBY`|Trigger position out of range for vibration effect      |
+|`.EFFECT_VIBRATION_ACTIVE` |Trigger position within range for vibration effect      |
+|`.EFFECT_INTERCEPTED`      |Effect paused or not applied; no trigger effect         |
