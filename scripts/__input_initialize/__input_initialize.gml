@@ -202,6 +202,13 @@ function __input_initialize()
         EFFECT_VIBRATION_ACTIVE  = ps5_gamepad_trigger_effect_state_vibration_active,
         EFFECT_INTERCEPTED       = ps5_gamepad_trigger_effect_state_intercepted,
     }
+	
+	enum INPUT_GYRO
+	{
+	    AXIS_PITCH,
+	    AXIS_YAW,
+	    AXIS_ROLL
+	}
     
     global.__input_source_mode          = undefined;
     global.__input_previous_source_mode = INPUT_STARTING_SOURCE_MODE;
