@@ -72,9 +72,9 @@ Gets whether gamepad gyro controls the cursor for the player.
 |Name                |Datatype                                              |Purpose                                                              |
 |--------------------|------------------------------------------------------|---------------------------------------------------------------------|
 |`gyroAxisX`         |[`INPUT_GYRO` axis member](Library-Constants.md?id=Gyro-Axis)|World axis which controls cursor movement on the screen X axis|
-|`[gyroAxisY]`       |[`INPUT_GYRO` axis member](Library-Constants.md?id=Gyro-Axis)|World axis which controls cursor movement on the screen Y axis|
-|`[gyroSensitivityX]`|number                                                |Gyro sensitivity on the X axis. At `1.0`, 180 degrees in world space covers screen width. Negative value indicates inverted axis|
-|`[gyroSensitivityY]`|number                                                |Gyro sensitivity on the Y axis. At `1.0`, 180 degrees in world space covers screen height Negative value indicates inverted axis|
+|`[gyroAxisY]`       |[`INPUT_GYRO` axis member](Library-Constants.md?id=Gyro-Axis)|World axis which controls cursor movement on the screen Y axis. Not set unless specified|
+|`[gyroSensitivityX]`|number                                                |Gyro sensitivity on the X axis. At `1.0`, 180 degrees in world space covers screen width. Negative value indicates inverted axis. Not set unless specified|
+|`[gyroSensitivityY]`|number                                                |Gyro sensitivity on the Y axis. At `1.0`, 180 degrees in world space covers screen height Negative value indicates inverted axis. Not set unless specified|
 |`[playerIndex]`     |integer                                               |Player to target. If not specified, player 0 is used                 |
 
 This function configures gyro control of the cursor.
