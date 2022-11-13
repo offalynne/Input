@@ -175,4 +175,4 @@ For more information on how to customise `__input_config_icons()`, please see in
 
 ## Steam
 
-Input provides rudimentary support for input through Steam, in order to take advantage of the extended features available through Steam Input, see [Setting Up Steamworks for Input](Steamworks.md).
+Input provides support for Steam Gamepad Emulation through Steamworks in order to take advantage of the extended features available through Steam Input, see [Setting Up Steamworks for Input](Steamworks.md).
