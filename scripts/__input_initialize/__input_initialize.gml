@@ -628,8 +628,13 @@ function __input_initialize()
         {
             __input_trace("Steamworks extension unavailable");
         }
-    }
         
+        if (global.__input_using_steamworks && (string(steam_get_app_id()) == "480"))
+        {
+            __input_trace_loud("Error!\nSteamworks extension incorrectly configured (Application ID 480).\nYou may see unexpected behaviour when using gamepads.\n\nTo remove this error, set Application ID.\n\nInput ", __INPUT_VERSION, "   @jujuadams and @offalynne ", __INPUT_DATE);
+        }
+    }
+    
     if (!global.__input_on_steam_deck && (os_type == os_linux))
     {
         var _map = os_get_info();
