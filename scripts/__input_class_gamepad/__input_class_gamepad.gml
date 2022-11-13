@@ -22,10 +22,15 @@ function __input_class_gamepad(_index) constructor
     axis_count   = undefined;
     hat_count    = undefined;
     
+    __steam_handle_index = undefined;
+    __steam_handle       = undefined;
+    
     __vibration_support = false;
     __vibration_left    = 0;
     __vibration_right   = 0;
     __vibration_received_this_frame = false;
+    
+    __motion = undefined;
     
     mapping_gm_to_raw = {};
     mapping_raw_to_gm = {};
@@ -63,6 +68,7 @@ function __input_class_gamepad(_index) constructor
         __input_gamepad_find_in_sdl2_database();
         __input_gamepad_set_type();
         __input_gamepad_set_blacklist();
+        __input_gamepad_set_virtual();
         __input_gamepad_set_mapping();
         
         __vibration_support = global.__input_vibration_allowed_on_platform && ((os_type != os_windows) || xinput);        
@@ -74,6 +80,11 @@ function __input_class_gamepad(_index) constructor
             }
         
             gamepad_set_vibration(index, 0, 0);
+        }
+
+        if (global.__input_gamepad_motion_support)
+        {
+            __motion = new __input_class_gamepad_motion(index);
         }
         
         __input_trace("Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
@@ -263,11 +274,87 @@ function __input_class_gamepad(_index) constructor
         }
     }
     
+    static __color_set = function(_color)
+    {   
+        if (global.__input_using_steamworks)
+        {
+            var _led_flag = steam_input_led_flag_set_color;
+            if (_color == undefined)
+            {
+                _color = 0;
+                _led_flag = steam_input_led_flag_restore_user_default;
+            }           
+            
+            if (__steam_handle != undefined)
+            {
+                steam_input_set_led_color(__steam_handle, _color, _led_flag);
+            }
+
+            return;
+        }
+        
+        if (__INPUT_ON_PS)
+        {
+            if (_color == undefined)
+            {
+                if (os_type == os_ps4) ps4_gamepad_reset_color(index);
+                if (os_type == os_ps5) ps5_gamepad_reset_color(index);
+                return;
+            }
+            
+            gamepad_set_color(index, _color);
+        }
+    }
+    
     static __vibration_set = function(_left, _right)
     {
         __vibration_left  = _left;
         __vibration_right = _right;
         
         __vibration_received_this_frame = true;
+    }
+    
+    static __trigger_effect_apply = function(_trigger, _effect, _strength)
+    {
+        var _right = 1;
+        if (_trigger == gp_shoulderlb)
+        {
+            _right = 0;
+        }
+        else if (_trigger != gp_shoulderrb)
+        {
+            __input_error("Value ", _trigger ," not a gamepad trigger");
+        }
+
+        if (os_type == os_ps5)
+        {
+            return _effect.__apply_ps5(index, _trigger);
+        }
+
+        if (global.__input_using_steamworks)
+        {            
+            var _command_array = array_create(2, { mode: steam_input_sce_pad_trigger_effect_mode_off, command_data: {} });
+            _command_array[_right].mode = global.__input_steam_trigger_mode[$ _effect.__mode];
+            _command_array[_right].command_data[$ string(_effect.__mode_name) + "_param"] = _effect.__params;
+            
+            if (_effect.__params[$ "strength"] != undefined)
+            {
+                _effect.__params.strength *= _strength;
+            }
+            else if (_effect.__params[$ "amplitude"] != undefined)
+            {
+                _effect.__params.amplitude *= _strength;                
+            }
+            
+            var _steam_trigger_params = { command: _command_array, trigger_mask: steam_input_sce_pad_trigger_effect_trigger_mask_l2 };
+            if (_right)
+            {
+                _steam_trigger_params.trigger_mask = steam_input_sce_pad_trigger_effect_trigger_mask_r2;
+            }
+            
+            return steam_input_set_dualsense_trigger_effect(__steam_handle, _steam_trigger_params);
+        }
+
+        return false;
     }
 }

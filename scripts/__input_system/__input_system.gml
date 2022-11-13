@@ -1,5 +1,5 @@
-#macro __INPUT_VERSION "5.2.1"
-#macro __INPUT_DATE    "2022-10-18"
+#macro __INPUT_VERSION "5.3.0"
+#macro __INPUT_DATE    "2022-11-13"
 #macro __INPUT_DEBUG   false
 
 #macro __INPUT_BINDING_KEY               "key"
@@ -28,7 +28,8 @@
 #macro __INPUT_ON_OPERAGX  (os_type == os_operagx)
 #macro __INPUT_ON_WEB      ((os_browser != browser_not_a_browser) || __INPUT_ON_OPERAGX)
 
-#macro __INPUT_TOUCH_SUPPORT              (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch))
+#macro __INPUT_STEAMWORKS_SUPPORT         (((os_type == os_windows) || (os_type == os_linux)) && !__INPUT_ON_WEB)
+#macro __INPUT_TOUCH_SUPPORT              (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch) || (os_type == os_windows))
 #macro __INPUT_KEYBOARD_NORMATIVE         (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch))
 #macro __INPUT_KEYBOARD_SUPPORT           (__INPUT_KEYBOARD_NORMATIVE || (os_type == os_android))
 #macro __INPUT_GAMEPAD_VIBRATION_SUPPORT  (__INPUT_ON_CONSOLE || (!__INPUT_ON_WEB && (os_type == os_windows)))
@@ -139,16 +140,6 @@ enum __INPUT_MAPPING
     __SIZE
 }
 
-//INPUT_STATUS.DISCONNECTED *must* be zero so that array_size() initializes gamepad status to disconnected
-//See input_tick() for more details
-enum INPUT_STATUS
-{
-    NEWLY_DISCONNECTED = -1,
-    DISCONNECTED       =  0,
-    NEWLY_CONNECTED    =  1,
-    CONNECTED          =  2,
-}
-
 enum __INPUT_COMBO_STATE
 {
     __FAIL    = -1,
@@ -171,6 +162,13 @@ enum __INPUT_VERB_TYPE
     __COMBO,
 }
 
+enum __INPUT_TRIGGER_EFFECT
+{
+    __TYPE_OFF,
+    __TYPE_FEEDBACK,
+    __TYPE_WEAPON,
+    __TYPE_VIBRATION,
+}
 
 
 
