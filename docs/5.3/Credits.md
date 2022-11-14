@@ -56,6 +56,12 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
+<h3 align="center">gnysek</h1>
+<p align="center"><i>Documentation corrections and styles</i></p>
+<p align="center">(<a href="https://twitter.com/gnysek" target="_blank">Twitter</a>)</p>
+
+&nbsp;
+
 <h3 align="center">Els White</h1>
 <p align="center"><i>Documentation</i></p>
 <p align="center">(<a href="https://twitter.com/elskwhite" target="_blank">Twitter</a>)</p>
@@ -71,12 +77,6 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 <h3 align="center">Prateek</h1>
 <p align="center"><i>Documentation corrections</i></p>
 <p align="center">(<a href="https://twitter.com/prtksxna" target="_blank">Twitter</a>)</p>
-
-&nbsp;
-
-<h3 align="center">gnysek</h1>
-<p align="center"><i>Documentation corrections</i></p>
-<p align="center">(<a href="https://twitter.com/gnysek" target="_blank">Twitter</a>)</p>
 
 &nbsp;
 
