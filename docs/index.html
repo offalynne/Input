@@ -350,16 +350,22 @@
 				[data-page*="/Function-Index."] .markdown-section li a { vertical-align:top; }
 				
 				[data-page*="/Function-Index."] .markdown-section code:not([class*=lang-]):not([class*=language-]) {
-				    white-space: break-spaces;
-				    display: inline-block;
-				    margin-bottom: 2px;
-				    padding: 0 6px 0 1.5ch;
-				    text-decoration: underline;
-				    text-indent: -1ch;
+					white-space: break-spaces;
+					display: inline-block;
+					margin-bottom: 2px;
+					padding: 0 6px 0 1.5ch;
+					text-decoration: underline;
+					text-indent: -1ch;
+					position: relative;
+					overflow: hidden;
 				}
 
 				[data-page*="/Function-Index."] .markdown-section li code:after {
-					content: " ";
+					content: "\A ⤷ \A ⤷ \A ⤷ \A";
+					position: absolute;
+					left: 4px;
+					top: 0;
+					opacity: 0.5;
 				}
 			}
 			
