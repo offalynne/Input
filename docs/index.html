@@ -341,12 +341,23 @@
 			.markdown-section h2 a code:not([class*="lang-"]):not([class*="language-"]) {
 				display: block;
 				white-space: normal;
-				padding-left: 2.5ch;
-				text-indent: -1em;
+				padding-left: 2ch;
+				text-indent: -1ch;
 			}
 			
 			/* wrap function index */
-			@media (max-width: 1440px) {  [data-page*="/Function-Index."] .markdown-section code:not([class*=lang-]):not([class*=language-]) { white-space: break-spaces; } }
+			@media (max-width: 1440px) {
+				[data-page*="/Function-Index."] .markdown-section li a { vertical-align:top; }
+				
+				[data-page*="/Function-Index."] .markdown-section code:not([class*=lang-]):not([class*=language-]) {
+				    white-space: break-spaces;
+				    display: inline-block;
+				    margin-bottom: 2px;
+				    padding: 0 6px 0 1.5ch;
+				    text-decoration: underline;
+				    text-indent: -1ch;
+				}
+			}
 			
 			/* !! -- au revoir alynne -- !! */
 		</style>
