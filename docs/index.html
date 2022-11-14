@@ -340,9 +340,15 @@
 			/* wrap function headers via gnysek */
 			.markdown-section h2 a code:not([class*="lang-"]):not([class*="language-"]) {
 				display: block;
+				position: relative;
 				white-space: normal;
 				padding-left: 2ch;
 				text-indent: -1ch;
+			}
+			
+			.markdown-section h2 a code:after {
+				content: " ";
+				position: absolute;
 			}
 			
 			/* wrap function index */
