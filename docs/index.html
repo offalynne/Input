@@ -344,11 +344,16 @@
 				white-space: normal;
 				padding-left: 2ch;
 				text-indent: -1ch;
+				overflow: hidden;
 			}
 			
-			.markdown-section h2 a code:after {
-				content: " ";
+			.markdown-section h2 a code:after {    
+				content: "\A ⤷ \A ⤷ \A ⤷ \A ⤷";
 				position: absolute;
+				left: 1ch;
+				top: 0;
+				opacity: 0.5;
+				white-space: break-spaces;
 			}
 			
 			/* wrap function index */
