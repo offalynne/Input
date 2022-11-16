@@ -31,7 +31,7 @@ This function returns a struct that describes the motion of  a player's gamepad,
     angular_velocity_x: <number indicating angular velocity on the X axis in radians per second>,
     angular_velocity_y: <number indicating angular velocity on the Y axis in radians per second>,
     angular_velocity_z: <number indicating angular velocity on the Z axis in radians per second>,
-
+p
 }
 ```
 
