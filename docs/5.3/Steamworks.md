@@ -6,7 +6,7 @@ The [Steamworks Game Maker extension](https://github.com/YoYoGames/GMEXT-Steamwo
 
 Once configuring an app in the Steamworks dashboard and setting up the extension for Game Maker in a project as outlined below, Input handles these features transparently, requiruing no further effort specific to Steamworks.
 
-?> If you are not using the Steamworks extension for other Steam platform features, do not want to use extended gamepad features on Windows or Linux, and do not have an issue with gamepad type reporting on Windows through Steam, Input will work adquately without any need to import or configure the Steamworks extension.
+?> If you are not using the Steamworks extension for other Steam platform features, do not want to use extended gamepad features on Windows or Linux, and do not have an issue with gamepad type reporting on Windows through Steam, Input will work adquately without any need to import or configure the Steamworks extension as outlined below.
 
 &nbsp;
 
