@@ -212,6 +212,7 @@
 
 ## [Trigger Effects](Functions-(Trigger-Effects))
 
+- [`input_trigger_effect_off(trigger, playerIndex)`](Functions-(Trigger-Effects)?id=input_trigger_effect_offtrigger-playerindex)
 - [`input_trigger_effect_feedback(trigger, position, strength, playerIndex)`](Functions-(Trigger-Effects)?id=input_trigger_effect_feedbacktrigger-position-strength-playerindex)
 - [`input_trigger_effect_vibration(trigger, position, amplitude, frequency, [playerIndex])`](Functions-(Trigger-Effects)?id=input_trigger_effect_vibrationtrigger-position-amplitude-frequency-playerindex)
 - [`input_trigger_effect_weapon(trigger, start, end, strength, [playerIndex])`](Functions-(Trigger-Effects)?id=input_trigger_effect_weapontrigger-start-end-strength-playerindex)
