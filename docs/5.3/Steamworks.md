@@ -34,15 +34,17 @@ How Steam Input operates depends on how your App is configured in Steamworks, an
 
 Since the Input library aims to provide comprehensive cross-platform gamepad support and does not solely rely on Steam, use case #2 is relevant, referred to as [Steam Input Gamepad Emulation](https://partner.steamgames.com/doc/features/steam_controller/steam_input_gamepad_emulation_bestpractices). 
 
-Note that if you select *Custom Configuration* for *Steam Input Default Configuration*, Game Maker will no longer recieve any gamepad input from devices that are opted-in to Steam, will require you to [rely directly on the Steam Input API](https://github.com/YoYoGames/GMEXT-Steamworks/wiki/Input#Input) by configuring your game extensively [from within Steamworks](https://partner.steamgames.com/doc/features/steam_controller/iga_file), and will not work with the normal functions provided by Game Maker or the Input library.
+!> If you select *Custom Configuration* for *Steam Input Default Configuration*, Game Maker will no longer recieve any gamepad input from devices that are opted-in to Steam, will require you to [rely directly on the Steam Input API](https://github.com/YoYoGames/GMEXT-Steamworks/wiki/Input#Input) by configuring your game extensively [from within Steamworks](https://partner.steamgames.com/doc/features/steam_controller/iga_file), and will not work with the normal functions provided by Game Maker or the Input library.
 
 &nbsp;
 
 ## Setting Application ID
 
-Steamworks SDK documentation refers to an example project called *Spacewar*, [(Application ID 480)](https://steamdb.info/app/480) that is the default AppID setting when you import the YYG Steamworks Extension for Game Maker. Note that the *Spacewar* example is configured in Steamworks to use a Steam Input *Custom Configuration*, meaning it will not work as intended until this option is changed, and no controller opted-in to Steam will work with Game Maker or the Input library's default feature set for this AppID.
+Steamworks SDK documentation refers to an example project called *Spacewar*, [(Application ID 480)](https://steamdb.info/app/480) that is the default AppID setting when you import the YYG Steamworks Extension for Game Maker.
 
 ![](https://i.imgur.com/czFKFNj.png)
+
+!> The *Spacewar* example is configured in Steamworks to use a Steam Input *Custom Configuration*, meaning it will not work as intended until this option is changed, and no controller opted-in to Steam will work with Game Maker or the Input library's default feature set for this AppID.
 
 &nbsp;
 
@@ -50,7 +52,7 @@ Steamworks SDK documentation refers to an example project called *Spacewar*, [(A
 
 In order for your game to use Steamworks upon release, you will need to [register with Steamworks](https://partner.steamgames.com/newpartner/) and acquire your own AppID. You cannot use Steamworks API features meaningfully upon release without registering your app through Steam. The easiest way to get set up with Steamworks is by configuring your own application. However, if during development you would like to test without configuring your own application within Steamworks, you can substitute an AppID from an existing Steam app for testing purposes. 
 
-!> Note that before distributing your game you will need to switch to your own AppID and make sure it is properly configured, so it is usually most convenient to use your own AppID from the outset instead of going through the additional effort to borrow an AppID as outlined below.
+!> Before distributing your game you will need to switch to your own AppID and make sure it is properly configured, so it is usually most convenient to use your own AppID from the outset instead of going through the additional effort to borrow an AppID as outlined below.
 
 In order to test with a borrowed AppID, the associated app must support your target desktop OS, you must have claimed it (by downloading and installing the original app), and the app must not be configured to use a Steam Input *Custom Conifguration*. You can use the information available from the website SteamDB to check an app's Steam Input configuration, for example the [configuration for Portal 2](https://steamdb.info/app/620/config/) is custom (indicated by `steamcontrollertemplateindex 1`) making it ineligible to borrow, where the [configuration for Samurai Gunn 2](https://steamdb.info/app/1397790/config/) is not, making it suitable for this purpose. For convenience, ideal candidates for borrowing AppID are [multi-platform, free](https://store.steampowered.com/search/?sort_by=Released_DESC&maxprice=free&category1=998&category2=28&os=linux), and small in file size, for example the game [Rebel Wings (AppID 378090)](https://store.steampowered.com/app/378090/Rebel_Wings/).
 
