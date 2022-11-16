@@ -62,4 +62,5 @@ To test from the Game Maker IDE from Windows, set the borrowed AppID in the Stea
 
 ## Additional Reading
 
-For additional details, see [Steamworks SDK documentation](https://partner.steamgames.com/doc/features/steam_controller) and the [Game Maker Steamworks Extension wiki](https://github.com/YoYoGames/GMEXT-Steamworks/wiki/Input#Input).
+- [Game Maker Steamworks Extension wiki](https://github.com/YoYoGames/GMEXT-Steamworks/wiki/Input#Input)
+- [Steamworks SDK documentation](https://partner.steamgames.com/doc/features/steam_controller) 
