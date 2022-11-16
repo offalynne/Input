@@ -6,6 +6,15 @@ Adaptive trigger effects are available for the DualSense gamepad on the PlayStat
 
 &nbsp;
 
+## `input_trigger_effect_off(trigger, [playerIndex])`
+
+|Name           |Datatype|Purpose                                                                               |
+|---------------|--------|--------------------------------------------------------------------------------------|
+|`trigger`      |integer |Trigger to set using GameMaker’s native constants (`gp_shoulderlb` or `gp_shoulderrb`)|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                                  |
+
+&nbsp;
+
 ## `input_trigger_effect_feedback(trigger, position, strength, [playerIndex])`
 
 |Name           |Datatype|Purpose                                                                               |
