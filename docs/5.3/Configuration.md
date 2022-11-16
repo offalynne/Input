@@ -175,4 +175,4 @@ For more information on how to customise `__input_config_icons()`, please see in
 
 ## Steam
 
-Input provides [support for Steam Gamepad Emulation through Steamworks](Steamworks.md) in order to identify Steam's virtual controllers, and to take advantage of the extended features available through Steam Input ([RGB LED color](Functions-(Color)), [Gamepad motion](Functions-(Motion)), and [Trigger effects](Functions-(Trigger-Effects)); see [Setting Up Steamworks for Input](Steamworks.md).
+Input provides [support for Steam Gamepad Emulation through Steamworks](Steamworks.md) in order to identify Steam's virtual controllers, and to take advantage of the extended features available through Steam Input ([LED color](Functions-(Color)), [Gamepad motion](Functions-(Motion)), and [Trigger effects](Functions-(Trigger-Effects))), see [Steamworks setup](Steamworks.md).
