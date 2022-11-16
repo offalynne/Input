@@ -6,7 +6,7 @@ The official Steamworks extension allows the Input library to leverage Steam Inp
 
 Once you have configured your app in the Steamworks dashboard and set up the Steamworks extension for Game Maker in your project, Input handles related features transparently, requiring no further effort specific to Steamworks.
 
-!> If you are not using the Steamworks extension for other Steam platform features, do not want to use extended gamepad features, and do not have an issue with gamepad type reporting on Windows through Steam, Input will work just fine through Steam without the need to add and configure the Steamworks extension.
+?> If you are not using the Steamworks extension for other Steam platform features, do not want to use extended gamepad features, and do not have an issue with gamepad type reporting on Windows through Steam, Input will work just fine through Steam without the need to add and configure the Steamworks extension.
 
 &nbsp;
 
