@@ -13,7 +13,7 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 <p align="center">Input is brought to you by:</a>
 
 &nbsp;
-f
+
 <h3 align="center">Juju Adams</h1>
 <p align="center"><i>Co-creator, API design and programming</i></p>
 <p align="center">(<a href="https://www.jujuadams.com/" target="_blank">website</a>)</p>
