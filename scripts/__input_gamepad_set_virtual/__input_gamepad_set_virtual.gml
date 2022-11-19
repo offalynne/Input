@@ -2,7 +2,7 @@
 
 function __input_gamepad_set_virtual()
 {
-    if not (global.__input_using_steamworks) exit;
+    if not (global.__input_using_steamworks) return;
     
     var _gamepad_is_virtual = ((os_type == os_windows) && xinput);
     var _slot = index;
@@ -33,19 +33,19 @@ function __input_gamepad_set_virtual()
     else
     {
         __steam_handle_index = steam_input_get_gamepad_index_for_controller(__steam_handle);
-        if (__steam_handle_index == -1) exit;
+        if (__steam_handle_index == -1) return;
                 
         var _handle_type = steam_input_get_input_type_for_handle(__steam_handle);
-        if not (is_numeric(_handle_type) && (_handle_type >= 0)) exit;
+        if not (is_numeric(_handle_type) && (_handle_type >= 0)) return;
 
         var _description = global.__input_steam_type_to_name[$ _handle_type];
-        if (_description == undefined) exit;
+        if (_description == undefined) return;
         
         var _raw_type = global.__input_steam_type_to_raw[$ _handle_type];
-        if (_raw_type == undefined) exit;
+        if (_raw_type == undefined) return;
         
         var _simple_type = global.__input_simple_type_lookup[$ _raw_type];
-        if (_simple_type == undefined) exit;
+        if (_simple_type == undefined) return;
 
         description = _description;
         raw_type    = _raw_type;

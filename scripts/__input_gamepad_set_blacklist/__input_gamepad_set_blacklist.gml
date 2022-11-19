@@ -3,14 +3,14 @@
 function __input_gamepad_set_blacklist()
 {
     //Don't blacklist on preconfigured platforms
-    if (!__INPUT_SDL2_SUPPORT) exit;
+    if (!__INPUT_SDL2_SUPPORT) return;
     
     if ((axis_count == 0) && (button_count == 0) && (hat_count == 0))
     {
         //Smoke check invalid devices
         __input_trace("Warning! Controller ", index, " (VID+PID \"", vendor + product, "\") blacklisted: no button or axis");
         blacklisted = true;
-        exit;
+        return;
     }
     
     if (os_type == os_windows)
@@ -20,7 +20,7 @@ function __input_gamepad_set_blacklist()
             //Switch Pro Controller over USB. Normally does not operate, runs haywire with Steam open
             __input_trace("Warning! Controller is blacklisted (Switch Pro Controller over USB)");
             blacklisted = true;
-            exit;
+            return;
         }
         
         if (((vendor == "4c05") && (product == "6802"))    //PS3 controller
@@ -30,7 +30,7 @@ function __input_gamepad_set_blacklist()
             //Unsupported configuration for PS3 controller
             __input_trace("Warning! Controller is blacklisted (Incorrectly configured PS3 controller)");
             blacklisted = true;
-            exit;
+            return;
         }
     }
     else if (os_type == os_linux)
@@ -42,13 +42,13 @@ function __input_gamepad_set_blacklist()
                 //Unsupported virtual keyboard device 
                 __input_trace("Warning! Controller ", index, " is blacklisted (Steam Deck virtual keyboard)");
                 blacklisted = true;
-                exit;
+                return;
             }
 
             if (raw_type == "CommunitySteamDeck")
             {
                 //Do not blacklist built-in gamepad
-                exit;
+                return;
             }
         }
         
@@ -68,7 +68,7 @@ function __input_gamepad_set_blacklist()
                 //Unsupported hid-nintendo module motion device
                 __input_trace("Warning! Controller ", index, " blacklisted (matches Joy-Con motion unit)");
                 blacklisted = true;
-                exit;
+                return;
             }
         }
         
@@ -78,7 +78,7 @@ function __input_gamepad_set_blacklist()
             //Unsupported hid-wiimote module motion device 
             __input_trace("Warning! Controller ", index, " is blacklisted, type (\"", raw_type, "\")");
             blacklisted = true;
-            exit;
+            return;
         }
     }
     
@@ -87,7 +87,7 @@ function __input_gamepad_set_blacklist()
         //Block device types indicated by Steam Input
         __input_trace("Warning! Controller type is blacklisted by Steam Input (\"", simple_type, "\")");
         blacklisted = true;
-        exit;
+        return;
     }
     
     //Figure out which string to use to find the correct blacklist for the current OS
@@ -114,13 +114,13 @@ function __input_gamepad_set_blacklist()
     {
         __input_trace("Warning! Controller is blacklisted (found by GUID \"", guid, "\")");
         blacklisted = true;
-        exit;
+        return;
     }
     else if (is_struct(_os_vidpid_dict) && variable_struct_exists(_os_vidpid_dict, string(vendor) + string(product)))
     {
         __input_trace("Warning! Controller is blacklisted (found by VID+PID \"", vendor, product, "\")");
         blacklisted = true;
-        exit;
+        return;
     }
     else if (is_array(_os_desc_array))
     {
@@ -132,7 +132,7 @@ function __input_gamepad_set_blacklist()
             {
                 __input_trace("Warning! Controller is blacklisted (banned substring \"", _os_desc_array[_i], "\" found in description)");
                 blacklisted = true;
-                exit;
+                return;
             }
             
             ++_i;
