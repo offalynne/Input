@@ -352,6 +352,8 @@ function __input_class_gamepad(_index) constructor
                 _steam_trigger_params.trigger_mask = steam_input_sce_pad_trigger_effect_trigger_mask_r2;
             }
             
+            if not (is_numeric(__steam_handle)) return false;
+            
             return steam_input_set_dualsense_trigger_effect(__steam_handle, _steam_trigger_params);
         }
 
