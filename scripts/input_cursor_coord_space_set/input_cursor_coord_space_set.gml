@@ -6,14 +6,6 @@
 /// @param   coordSpace
 /// @param   [playerIndex=0]
 
-enum INPUT_COORD_SPACE
-{
-    ROOM,
-    GUI,
-    DISPLAY,
-    __SIZE
-}
-
 function input_cursor_coord_space_set(_coord_space, _player_index = 0)
 {
     if (_player_index == all)

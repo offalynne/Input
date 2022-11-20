@@ -189,6 +189,14 @@ function __input_initialize()
         MULTIDEVICE,  //Player 0 can use a mixture of keyboard, mouse, and any gamepad, but gamepad bindings are specific to each device
     }
     
+    enum INPUT_COORD_SPACE
+    {
+        ROOM,
+        GUI,
+        DISPLAY,
+        __SIZE
+    }
+    
     //DualSense haptic trigger effect states
     enum INPUT_TRIGGER_STATE
     {
