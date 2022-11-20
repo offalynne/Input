@@ -60,7 +60,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS,   "righty");
         set_mapping(gp_stickr, 5, __INPUT_MAPPING.BUTTON, "rightstick");
         
-        exit;
+        return;
     }
     
     if (__INPUT_ON_PS || __INPUT_ON_XBOX)
@@ -90,7 +90,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axisrv, gp_axisrv, __INPUT_MAPPING.AXIS,   "righty");
         set_mapping(gp_stickr, gp_stickr, __INPUT_MAPPING.BUTTON, "rightstick");
         
-        exit;
+        return;
     }
     
     #endregion
@@ -108,7 +108,7 @@ function __input_gamepad_set_mapping()
             _i++;
         }
 
-        exit;
+        return;
     }
     
     #endregion
@@ -142,7 +142,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
         set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
         
-        exit;
+        return;
     }
     
     if (__INPUT_ON_WEB)
@@ -204,7 +204,7 @@ function __input_gamepad_set_mapping()
             }
         }
         
-        exit;
+        return;
     }
     
     #endregion
@@ -254,7 +254,7 @@ function __input_gamepad_set_mapping()
             scale_trigger = true;
         }
         
-        exit;
+        return;
     }
     
     #endregion
@@ -299,7 +299,7 @@ function __input_gamepad_set_mapping()
     
         if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide");
         
-        exit;
+        return;
     }
     
     #endregion
@@ -341,7 +341,50 @@ function __input_gamepad_set_mapping()
     
         if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
         
-        exit;
+        return;
+    }
+    
+    #endregion
+    
+    #region Missing mapping on MacOS
+    
+    if ((button_count == 22) && (axis_count ==  6) && (hat_count == 0) 
+    && (gamepad_get_mapping(index) == "no mapping") && (os_type == os_macosx))
+    {
+        //Based on features this is a misconfigured Apple-supported gamepad
+        __input_trace("Overriding from \"no mapping\" on Mac");
+        
+        set_mapping(gp_face1, 17, __INPUT_MAPPING.BUTTON, "a");
+        set_mapping(gp_face2, 18, __INPUT_MAPPING.BUTTON, "b");
+        set_mapping(gp_face3, 20, __INPUT_MAPPING.BUTTON, "x");
+        set_mapping(gp_face4, 21, __INPUT_MAPPING.BUTTON, "y");
+        
+        set_mapping(gp_stickl, 4, __INPUT_MAPPING.BUTTON, "leftstick");
+        set_mapping(gp_stickr, 5, __INPUT_MAPPING.BUTTON, "rightstick");
+        
+        set_mapping(gp_shoulderrb, 6, __INPUT_MAPPING.BUTTON, "righttrigger");
+        set_mapping(gp_shoulderlb, 7, __INPUT_MAPPING.BUTTON, "lefttrigger");
+        
+        set_mapping(gp_select, 8, __INPUT_MAPPING.BUTTON, "back");
+        set_mapping(gp_start, 10, __INPUT_MAPPING.BUTTON, "start");
+
+        set_mapping(gp_shoulderl, 13, __INPUT_MAPPING.BUTTON, "leftshoulder");
+        set_mapping(gp_shoulderr, 14, __INPUT_MAPPING.BUTTON, "rightshoulder");
+        
+        set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
+        set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
+        set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
+        set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");        
+        
+        //No dpad data :-(
+        
+        if (INPUT_SDL2_ALLOW_EXTENDED)
+        {
+            set_mapping(gp_guide, 11, __INPUT_MAPPING.BUTTON, "guide");
+            set_mapping(gp_misc1, 16, __INPUT_MAPPING.BUTTON, "misc1");
+        }
+
+        return;
     }
     
     #endregion
@@ -393,7 +436,7 @@ function __input_gamepad_set_mapping()
         _mapping.hat_mask_negative = 1;
         _mapping.hat_mask_positive = 4;
 
-        exit;
+        return;
     }
 
     #endregion
@@ -432,7 +475,7 @@ function __input_gamepad_set_mapping()
             
         if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide");
             
-        exit;
+        return;
     }
 
     #endregion
@@ -472,7 +515,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axisrh, 0, undefined, "rightx");
         set_mapping(gp_axisrv, 0, undefined, "righty");
             
-        exit;
+        return;
     }
     
     #endregion
@@ -504,7 +547,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_shoulderrb, 0, undefined, "righttrigger");
         set_mapping(gp_select,     0, undefined, "back");
         
-        exit;
+        return;
     }
     
     #endregion
@@ -528,7 +571,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
         set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
 
-        exit;
+        return;
     }
 
     #endregion 
@@ -565,7 +608,7 @@ function __input_gamepad_set_mapping()
         _mapping.raw_negative = 9;
         _mapping.raw_positive = 0;
 
-        exit;
+        return;
     }
 
     #endregion
@@ -593,7 +636,7 @@ function __input_gamepad_set_mapping()
             
             if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
             
-            exit;
+            return;
         }
         else if (__input_string_contains(description, "Genesis 6btn"))
         {
@@ -617,7 +660,7 @@ function __input_gamepad_set_mapping()
             
             if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
             
-            exit;
+            return;
         }       
     }
 
@@ -651,7 +694,7 @@ function __input_gamepad_set_mapping()
                 _mapping.limited_range = true;
                 _mapping.reverse       = true;
         
-                exit;
+                return;
             break;
             
             case "HIDJoyConRight":
@@ -676,7 +719,7 @@ function __input_gamepad_set_mapping()
         
                 _mapping = set_mapping(gp_axislv, 0, __INPUT_MAPPING.AXIS, "lefty").limited_range = true;
         
-                exit;
+                return;
             break;
             
             case "HIDAtariVCSClassic":
@@ -695,7 +738,7 @@ function __input_gamepad_set_mapping()
         
                 if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide,  4, __INPUT_MAPPING.BUTTON, "guide");
                 
-                exit;
+                return;
             break;
             
             case "HIDWiiRemote":
@@ -717,7 +760,7 @@ function __input_gamepad_set_mapping()
     
                 if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 2, __INPUT_MAPPING.BUTTON, "guide");
                 
-                exit;
+                return;
             break;
             
             case "HIDWiiClassic":            
@@ -744,7 +787,7 @@ function __input_gamepad_set_mapping()
     
                 if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 8, __INPUT_MAPPING.BUTTON, "guide");
                 
-                exit;
+                return;
             break;
         }
     }
@@ -785,7 +828,7 @@ function __input_gamepad_set_mapping()
 
             if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_misc1, 5, __INPUT_MAPPING.BUTTON, "misc1");
 
-            exit;
+            return;
         }
 
         if (description == "Nintendo Switch Right Joy-Con")
@@ -806,7 +849,7 @@ function __input_gamepad_set_mapping()
             set_mapping(gp_axislh, 1, __INPUT_MAPPING.AXIS, "leftx").reverse = true;
             set_mapping(gp_axislv, 0, __INPUT_MAPPING.AXIS, "lefty");
 
-            exit;
+            return;
         }
     }
 
@@ -866,7 +909,7 @@ function __input_gamepad_set_mapping()
             _mapping.raw_positive = 8;
         }
             
-        exit;
+        return;
     }
     
     #endregion
@@ -1170,7 +1213,7 @@ function __input_gamepad_set_mapping()
                 }
             }
             
-             //Change Ouya guide mapping
+            //Change Ouya guide mapping
             if ((raw_type == "CommunityOuya") && ((os_type == os_windows) || (os_type == os_linux)))
             {
                 //Guide button issues 2 reports: one a tick after release which is usually too fast for GM's

@@ -200,17 +200,15 @@ function __input_gamepad_set_type()
             if ((vendor == "0d00") && (product == "0000") && (button_count == 15) && (axis_count == 4) && (hat_count == 0) && (os_type == os_windows))
             {
                 //MFi on Windows (bad GUID)
-                 __input_trace("Overriding controller ", index ," type to MFi");
+                __input_trace("Overriding controller ", index ," type to MFi");
                 description = "MFi Extended";
                 raw_type = "AppleController";
                 guessed_type = false;
             }
-            else if ((vendor == "6325") && (product == "7505"))
+            else if ((vendor == "6325") && (product == "7505") && (os_type == os_windows))
             {
                 //VID+PID conflicts with a Shanwan ICU most often used for third party PS3 style controllers
-                if (((os_type == os_windows) && (gamepad_get_description(index) == "USB "))
-                ||  ((os_type == os_linux  ) && (gamepad_get_description(index) == "GHICCod USB Gamepad"))
-                ||  ((os_type == os_macosx ) && (guid == "03000000632500007505000000020000")))
+                if ((button_count == 17) && (hat_count == 0))
                 {
                     //NeoGeo Mini
                     __input_trace("Overriding controller ", index ," type to NeoGeo Mini");
@@ -218,9 +216,7 @@ function __input_gamepad_set_type()
                     raw_type = "CommunityNeoGeoMini";
                     guessed_type = false;
                 }
-
-                if (((os_type == os_windows) && (gamepad_get_description(index) == "Controller (Dinput)"))
-                ||  ((os_type == os_linux  ) && (gamepad_get_description(index) == "SWITCH CO.,LTD. Controller (Dinput)")))
+                else if ((button_count == 13) && (hat_count == 1))
                 {
                     //Several third party N64 controllers including retro-bit's Tribute 64
                     __input_trace("Overriding controller ", index ," type to N64");
@@ -228,13 +224,12 @@ function __input_gamepad_set_type()
                     raw_type = "CommunityN64";
                     guessed_type = false;
                 }
-
             }
-            else if ((vendor == "8f0e") && (product == "1330")                                                                                          //HuiJia gamepad or Mayflash N64
-                 && ((os_type == os_macosx) && (hat_count == 2))                                                                                        //Both slots on one device on Mac
-                 || (((os_type == os_windows) || (os_type == os_linux)) && (button_count == 16) && (axis_count == 4) && (hat_count == 1)                //Windows and Linux identity
-                 && ((__input_string_contains(gamepad_get_guid(index + 1), "8f0e") && __input_string_contains(gamepad_get_guid(index + 1), "1330"))     //Port comes in pairs, look ahead
-                 || ((__input_string_contains(gamepad_get_guid(index - 1), "8f0e") && __input_string_contains(gamepad_get_guid(index - 1), "1330")))))) //Port comes in pairs, look behind
+            else if (((vendor == "8f0e") && (product == "1330"))                                                                                         //HuiJia gamepad or Mayflash N64
+                 &&  ((os_type == os_macosx) && (hat_count == 2))                                                                                        //Both slots on one device on Mac
+                 ||  (((os_type == os_windows) || (os_type == os_linux)) && (button_count == 25) && (axis_count == 6) && (hat_count == 0)                //Windows and Linux identity
+                 &&  ((__input_string_contains(gamepad_get_guid(index + 1), "8f0e") && __input_string_contains(gamepad_get_guid(index + 1), "1330"))     //Port comes in pairs, look ahead
+                 ||  ((__input_string_contains(gamepad_get_guid(index - 1), "8f0e") && __input_string_contains(gamepad_get_guid(index - 1), "1330")))))) //Port comes in pairs, look behind
             {
                 //MayFlash N64 controller
                 __input_trace("Overriding controller ", index ," type to N64");
@@ -242,132 +237,135 @@ function __input_gamepad_set_type()
                 raw_type = "CommunityN64";
                 guessed_type = false;
             }
-            else if (os_type == os_linux)
+            else if (((vendor == "d620") || (product == "10a7")) && (hat_count == 0) && (os_type == os_windows)                                         //MagicNS or Mayflash N64 Adapter
+                 &&  ((__input_string_contains(gamepad_get_guid(index + 1), "d620") && __input_string_contains(gamepad_get_guid(index + 1), "10a7"))    //Port comes in pairs, look ahead
+                 ||  ((__input_string_contains(gamepad_get_guid(index - 1), "d620") && __input_string_contains(gamepad_get_guid(index - 1), "10a7"))))) //Port comes in pairs, look behind
             {
-                if ((vendor == "7e05") && (product == "1720") && __input_string_contains(description, "Mega Drive/Genesis"))
+                //MayFlash N64 controller
+                __input_trace("Overriding controller ", index ," type to N64");
+                description = "N64 Adapter";
+                raw_type = "CommunityN64";
+                guessed_type = false;
+            }
+            else if ((button_count == 11) && (axis_count == 2) && (hat_count == 0) && (os_type == os_linux))
+            {
+                //More kernel module weirdness: these devices behave differently
+                //in GameMaker than they do in SDL so we require our own mapping
+                if (guid == "050000007e0500000620000001800000")
                 {
-                    //Nintendo Switch Online controllers on Linux (Identifiable on device name only)
-                    __input_trace("Overriding controller ", index ," type to Saturn");
-                    raw_type = "CommunitySaturn";
+                    //hid-nintendo Left JoyCon
+                    raw_type = "HIDJoyConLeft";
                     guessed_type = false;
                 }
-                else if ((button_count == 11) && (axis_count == 2) && (hat_count == 0))
+                else if (_irregular_guid)
                 {
-                    //More kernel module weirdness: these devices behave differently
-                    //in GameMaker than they do in SDL so we require our own mapping
-                    if (guid == "050000007e0500000620000001800000")
-                    {
-                        raw_type = "HIDJoyConLeft";
-                        guessed_type = false;
-                    }
-                    else if (_irregular_guid)
-                    {
-                        raw_type = "HIDJoyConRight";
-                        guessed_type = true;
-                    }
-                }
-                else if (_irregular_guid && (axis_count == 1) && (button_count  == 5) && (hat_count == 1))
-                {
-                    //Atari VCS Classic Joystick
-                    raw_type = "HIDAtariVCSClassic";
+                    //hid-nintendo Right JoyCon
+                    raw_type = "HIDJoyConRight";
                     guessed_type = true;
                 }
-                else
-                {                
-                    //Linux hid-wiimote module
-                    //GUID and description do not work correctly for kernel drivers
-                    //so match a sequential device pattern with specific qualitites
-                    var _wii_type_match = "Unknown";
-                    if      ((button_count == 11) && (axis_count == 0) && (hat_count == 0) && (index > 1)) { _wii_type_match = "HIDWiiRemote";     }
-                    else if ((button_count ==  0) && (axis_count == 3) && (hat_count == 0) && (index > 2)) { _wii_type_match = "HIDWiiMotionPlus"; }
-                    else if ((button_count ==  2) && (axis_count == 3) && (hat_count == 1) && (index > 2)) { _wii_type_match = "HIDWiiNunchuk";    }
-                    else if ((button_count == 15) && (axis_count == 0) && (hat_count == 3) && (index > 2)) { _wii_type_match = "HIDWiiClassic";    }
-                
-                    switch (_wii_type_match)
-                    {
-                        case "HIDWiiMotionPlus":
-                        case "HIDWiiNunchuk":                    
-                        case "HIDWiiClassic":
-                            var _g = index;
-                            repeat(index)
+            }
+            else if (_irregular_guid && (axis_count == 1) && (button_count  == 5) && (hat_count == 1) && (os_type == os_linux))
+            {
+                //Atari VCS Classic Joystick
+                raw_type = "HIDAtariVCSClassic";
+                guessed_type = true;
+            }
+            else if (os_type == os_linux)
+            {                
+                //Linux hid-wiimote module
+                //GUID and description do not work correctly for kernel drivers
+                //so match a sequential device pattern with specific qualitites
+                var _wii_type_match = "Unknown";
+                if      ((button_count == 11) && (axis_count == 0) && (hat_count == 0) && (index > 1)) { _wii_type_match = "HIDWiiRemote";     }
+                else if ((button_count ==  0) && (axis_count == 3) && (hat_count == 0) && (index > 2)) { _wii_type_match = "HIDWiiMotionPlus"; }
+                else if ((button_count ==  2) && (axis_count == 3) && (hat_count == 1) && (index > 2)) { _wii_type_match = "HIDWiiNunchuk";    }
+                else if ((button_count == 15) && (axis_count == 0) && (hat_count == 3) && (index > 2)) { _wii_type_match = "HIDWiiClassic";    }
+            
+                switch (_wii_type_match)
+                {
+                    case "HIDWiiMotionPlus":
+                    case "HIDWiiNunchuk":                    
+                    case "HIDWiiClassic":
+                        var _g = index;
+                        repeat(index)
+                        {
+                            //Confirm accessory identity by finding Wii Remote device
+                            --_g;
+                            if (input_gamepad_is_connected(_g))
                             {
-                                //Confirm accessory identity by finding Wii Remote device
-                                --_g;
-                                if (input_gamepad_is_connected(_g))
+                                //MotionPlus, Nunchuk, and Classic Controller
+                                //can all chain to a Wii Remote or MotionPlus
+                                if ((global.__input_gamepads[@ _g].raw_type == "HIDWiiRemote")
+                                ||  (global.__input_gamepads[@ _g].raw_type == "HIDWiiMotionPlus"))
                                 {
-                                    //MotionPlus, Nunchuk, and Classic Controller
-                                    //can all chain to a Wii Remote or MotionPlus
-                                    if ((global.__input_gamepads[@ _g].raw_type == "HIDWiiRemote")
-                                    ||  (global.__input_gamepads[@ _g].raw_type == "HIDWiiMotionPlus"))
+                                    __input_trace("Overriding controller ", _g ," type to \"", _wii_type_match, "\"");
+                                    if (_wii_type_match == "HIDWiiClassic")
                                     {
-                                        __input_trace("Overriding controller ", _g ," type to \"", _wii_type_match, "\"");
-                                        if (_wii_type_match == "HIDWiiClassic")
-                                        {
-                                            description = "Nintendo Wii Classic Controller";
-                                        }
-                                        raw_type = _wii_type_match;
-                                        guessed_type = true;                                    
+                                        description = "Nintendo Wii Classic Controller";
                                     }
-                                    break;
+                                    raw_type = _wii_type_match;
+                                    guessed_type = true;                                    
                                 }
+                                break;
                             }
-                        break;
-                        
-                        case "HIDWiiRemote":                    
-                            var _g = index;
-                            repeat(index)
+                        }
+                    break;
+                    
+                    case "HIDWiiRemote":                    
+                        var _g = index;
+                        repeat(index)
+                        {
+                            --_g;
+                            if (input_gamepad_is_connected(_g)) break;
+                        }
+
+                        //Confirm Wii Remote identity by finding component devices
+                        if ((_g >= 1)
+                        &&  (global.__input_gamepads[@ _g].hat_count    == 4)
+                        &&  (global.__input_gamepads[@ _g].button_count == 0)
+                        &&  (global.__input_gamepads[@ _g].axis_count   == 0))
+                        {
+                            //Found IR sensor
+                            var _ir_index = _g;
+                            repeat(_ir_index + 1)
                             {
                                 --_g;
                                 if (input_gamepad_is_connected(_g)) break;
                             }
-
-                            //Confirm Wii Remote identity by finding component devices
-                            if ((_g >= 1)
-                            &&  (global.__input_gamepads[@ _g].hat_count    == 4)
+                        
+                            if ((_g >= 0)
+                            &&  (global.__input_gamepads[@ _g].axis_count   == 3)
                             &&  (global.__input_gamepads[@ _g].button_count == 0)
-                            &&  (global.__input_gamepads[@ _g].axis_count   == 0))
+                            &&  (global.__input_gamepads[@ _g].hat_count    == 0))
                             {
-                                //Found IR sensor
-                                var _ir_index = _g;
-                                repeat(_ir_index + 1)
+                                //Found IMU                                
+                                var _imu_index = _g;
+                                __input_trace("Overriding controller ", _imu_index ," type to \"HIDWiiRemoteIMU\"");
+                                with (global.__input_gamepads[@ _imu_index])
                                 {
-                                    --_g;
-                                    if (input_gamepad_is_connected(_g)) break;
+                                    raw_type = "HIDWiiRemoteIMU";
+                                    guessed_type = true;
+                                    __input_gamepad_set_blacklist();
+                                    __input_gamepad_set_mapping();
                                 }
                             
-                                if ((_g >= 0)
-                                &&  (global.__input_gamepads[@ _g].axis_count   == 3)
-                                &&  (global.__input_gamepads[@ _g].button_count == 0)
-                                &&  (global.__input_gamepads[@ _g].hat_count    == 0))
+                                __input_trace("Overriding controller ", _ir_index ," type to \"HIDWiiRemoteIRSensor\"");
+                                with (global.__input_gamepads[@ _ir_index])
                                 {
-                                    //Found IMU                                
-                                    var _imu_index = _g;
-                                    __input_trace("Overriding controller ", _imu_index ," type to \"HIDWiiRemoteIMU\"");
-                                    with (global.__input_gamepads[@ _imu_index])
-                                    {
-                                        raw_type = "HIDWiiRemoteIMU";
-                                        guessed_type = true;
-                                        __input_gamepad_set_blacklist();
-                                        __input_gamepad_set_mapping();
-                                    }
-                                
-                                    __input_trace("Overriding controller ", _ir_index ," type to \"HIDWiiRemoteIRSensor\"");
-                                    with (global.__input_gamepads[@ _ir_index])
-                                    {
-                                        raw_type = "HIDWiiRemoteIRSensor";
-                                        guessed_type = true;
-                                        __input_gamepad_set_blacklist();
-                                        __input_gamepad_set_mapping();                                  
-                                    }
-                                
-                                    __input_trace("Overriding controller ", index ," type to \"HIDWiiRemote\"");
-                                    description = "Nintendo Wii Remote";
-                                    raw_type = "HIDWiiRemote";
+                                    raw_type = "HIDWiiRemoteIRSensor";
                                     guessed_type = true;
+                                    __input_gamepad_set_blacklist();
+                                    __input_gamepad_set_mapping();                                  
                                 }
+                            
+                                __input_trace("Overriding controller ", index ," type to \"HIDWiiRemote\"");
+                                description = "Nintendo Wii Remote";
+                                raw_type = "HIDWiiRemote";
+                                guessed_type = true;
                             }
-                        break;
-                    }
+                        }
+                        
+                    break;
                 }
             }
 

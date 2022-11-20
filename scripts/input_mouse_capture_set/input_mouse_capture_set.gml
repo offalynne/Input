@@ -9,7 +9,7 @@ function input_mouse_capture_set(_state, _sensitivity = 1)
     if (!__INPUT_ON_DESKTOP || __INPUT_ON_WEB)
     {
         __input_trace("Mouse capture unsupported for this platform");
-        exit;
+        return;
     }
     
     if (_state && !global.__input_mouse_capture) global.__input_mouse_capture_frame = global.__input_frame;
