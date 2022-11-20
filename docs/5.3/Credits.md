@@ -26,21 +26,21 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
-<h3 align="center">Faulty</h1>
-<p align="center"><i>Documentation design and maintenance</i></p>
-<p align="center">(<a href="https://twitter.com/faultyfunctions" target="_blank">Twitter</a>)</p>
-
-&nbsp;
-
 <h3 align="center">nik</h1>
 <p align="center"><i>Platform support testing, Steamworks extension</i></p>
 <p align="center">(<a href="https://github.com/nkrapivin" target="_blank">GitHub</a>)</p>
 
 &nbsp;
 
-<h3 align="center">gnysek</h1>
-<p align="center"><i>Vibration implementation, documentation corrections and styles</i></p>
-<p align="center">(<a href="https://twitter.com/gnysek" target="_blank">Twitter</a>)</p>
+<h3 align="center">Faulty</h1>
+<p align="center"><i>Documentation design and maintenance</i></p>
+<p align="center">(<a href="https://twitter.com/faultyfunctions" target="_blank">Twitter</a>)</p>
+
+&nbsp;
+
+<h3 align="center">TabularElf</h1>
+<p align="center"><i>Platform support testing</i></p>
+<p align="center">(<a href="https://tabelf.link/" target="_blank">website</a>)</p>
 
 &nbsp;
 
@@ -50,9 +50,9 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
-<h3 align="center">TabularElf</h1>
-<p align="center"><i>Platform support testing</i></p>
-<p align="center">(<a href="https://tabelf.link/" target="_blank">website</a>)</p>
+<h3 align="center">gnysek</h1>
+<p align="center"><i>Vibration implementation, documentation corrections and styles</i></p>
+<p align="center">(<a href="https://twitter.com/gnysek" target="_blank">Twitter</a>)</p>
 
 &nbsp;
 
