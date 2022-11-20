@@ -72,7 +72,7 @@ input_icons("keyboard and mouse")
 
 #region Gamepads
 
-//Xbox One controllers
+//Xbox One and Series S|X controllers
 input_icons("xbox one")
 .add("gamepad face south",         "A")
 .add("gamepad face east",          "B")
@@ -100,6 +100,9 @@ input_icons("xbox one")
 .add("gamepad thumbstick r up",    "thumbstick r up")
 .add("gamepad thumbstick r down",  "thumbstick r down")
 .add("gamepad thumbstick r click", "thumbstick r click")
+
+//Series S|X only
+.add("gamepad misc 1", "share")
 
 //These are used for Elite controllers only
 .add("gamepad paddle 1",           "P1")
