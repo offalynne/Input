@@ -82,7 +82,7 @@ function __input_class_gamepad_motion(_gamepad_index) constructor
             case (os_windows):
             case (os_linux):
                 var _steam_handle = global.__input_gamepads[__index].__steam_handle;
-                if (_steam_handle != undefined)
+                if (is_numeric(_steam_handle))
                 {                    
                     var _steam_data = steam_input_get_motion_data(_steam_handle);
                     if (!is_struct(_steam_data)) 
@@ -95,11 +95,13 @@ function __input_class_gamepad_motion(_gamepad_index) constructor
                     __accel_y = -_steam_data.pos_accel_y / 16384;
                     __accel_z = -_steam_data.pos_accel_z / 16384;
                     
-                    var _gyro_scale = 5898.24;
-                    if ((global.__input_gamepads[__index].raw_type == "SteamController")
-                    ||  (global.__input_gamepads[__index].raw_type == "CommunityDeck"))
+                    var _gyro_scale = 2949.12;
+                    if ((global.__input_gamepads[__index].simple_type == "switch")
+                    ||  (global.__input_gamepads[__index].simple_type == "xbox 360") //Switch with "Use Nintendo Button Layout"
+                    ||  (global.__input_gamepads[__index].simple_type == "ps4"))
                     {
-                        _gyro_scale /= 2;
+                       //Reduce raw gyro scale for Switch and PS4 sensors
+                        _gyro_scale *= 2;
                     }
                     
                     __gyro_x =  _steam_data.rot_vel_x / _gyro_scale;
