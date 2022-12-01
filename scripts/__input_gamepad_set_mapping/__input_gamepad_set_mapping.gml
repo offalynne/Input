@@ -961,7 +961,16 @@ function __input_gamepad_set_mapping()
                     if (string_char_at(_entry_1, string_length(_entry_1)) == "~")
                     {
                         _entry_1 = string_delete(_entry_1, string_length(_entry_1), 1);
-                        _input_invert = true;
+
+                        if ((_gm_constant == gp_axislh) || (_gm_constant == gp_axislv)
+                        ||  (_gm_constant == gp_axisrh) || (_gm_constant == gp_axisrv))
+                        {
+                            _input_reverse = true;
+                        }
+                        else
+                        {
+                            _input_invert = true;
+                        }
                     }
                 
                     var _raw_type = undefined;
@@ -974,17 +983,6 @@ function __input_gamepad_set_mapping()
                         {
                             case "-": _input_negative = true; break;
                             case "+": _input_positive = true; break;
-                            
-                            case "~":
-                                if ((_gm_constant >= gp_axislh) && (_gm_constant <= gp_axisrv))
-                                {
-                                    _input_reverse = true;
-                                }
-                                else
-                                {
-                                    _input_invert = true;
-                                }
-                            break;
                         
                             case "b":
                                 //If we're in button mode but we have a sign for the output direction then this is a button-on-axis mapping
