@@ -380,14 +380,17 @@
 				}
 			}
 		</style>
-		<script>
-			var titles = document.querySelectorAll('.markdown-section h2 a code:not([class*="lang-"]):not([class*="language-"]), .markdown-section li a code:not([class*="lang-"]):not([class*="language-"])');
-
-			[].forEach.call(titles, function(title) {
-				title.innerHTML = title.innerHTML.replace("(", "(<wbr>");
-			});
-		</script>			
-		
-		/* !! -- au revoir alynne -- !! */
+		<script>			
+			postLoad = function(){
+				var titles = document.querySelectorAll('.markdown-section h2 a code:not([class*="lang-"]):not([class*="language-"]), .markdown-section li a code:not([class*="lang-"]):not([class*="language-"])');
+				[].forEach.call(titles, function(title) {
+					title.innerHTML = title.innerHTML.replace("(", "(<wbr>");
+				});
+			};
+			
+			window.addEventListener("load", function () {
+			    window.setTimeout(postLoad, 1000);
+			}, false);
+		</script>
 	</body>
 </html>
