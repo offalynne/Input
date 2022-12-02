@@ -335,7 +335,7 @@
 				font-weight: bold;
 			}
 			
-			/* !! -- et ici entre alynne -- !! */
+		/* !! -- et ici entre alynne -- !! */
 			
 			/* wrap function headers via gnysek */
 			.markdown-section h2 a code:not([class*="lang-"]):not([class*="language-"]) {
@@ -379,8 +379,15 @@
 					opacity: 0.5;
 				}
 			}
-			
-			/* !! -- au revoir alynne -- !! */
 		</style>
+		<script>
+			var titles = document.querySelectorAll('.markdown-section h2 a code:not([class*="lang-"]):not([class*="language-"]), .markdown-section li a code:not([class*="lang-"]):not([class*="language-"])');
+
+			[].forEach.call(titles, function(title) {
+				title.innerHTML = title.innerHTML.replace("(", "(<wbr>");
+			});
+		</script>			
+		
+		/* !! -- au revoir alynne -- !! */
 	</body>
 </html>
