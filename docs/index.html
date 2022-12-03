@@ -380,7 +380,8 @@
 				}
 			}
 		</style>
-		<script>			
+		<script>
+			/* Add word break opportunity after function opening parentheses */
 			postLoad = function(){
 				var titles = document.querySelectorAll('.markdown-section h2 a code:not([class*="lang-"]):not([class*="language-"]), .markdown-section li a code:not([class*="lang-"]):not([class*="language-"])');
 				[].forEach.call(titles, function(title) {
