@@ -416,6 +416,7 @@ dead,beef,CommunityPSX // Hidromancer
 0079,954e,CommunityN64 // Hyperkin Adapter
 2e24,0bff,CommunityN64 // Hyperkin Adapter
 2e24,200b,CommunityN64 // Hyperkin Admiral
+1234,0004,CommunityN64 // RetroUSB N64 RetroPort Adapter
 289b,0008,CommunityDreamcast // Raphnet Dreamcast Adapter
 2836,0001,CommunityOuya // Ouya Controller
 18d1,9400,CommunityStadia // Google Stadia Controller
