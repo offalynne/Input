@@ -285,7 +285,7 @@ function __input_class_gamepad(_index) constructor
                 _led_flag = steam_input_led_flag_restore_user_default;
             }           
             
-            if (__steam_handle != undefined)
+            if (is_numeric(__steam_handle))
             {
                 steam_input_set_led_color(__steam_handle, _color, _led_flag);
             }

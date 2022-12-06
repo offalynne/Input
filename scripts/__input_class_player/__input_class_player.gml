@@ -43,6 +43,7 @@ function __input_class_player() constructor
     __cursor = new __input_class_cursor();
     __cursor.__player = self;
     
+    __gyro_gamepad       = undefined;
     __gyro_axis_x        = INPUT_GYRO_DEFAULT_AXIS_X;
     __gyro_axis_y        = INPUT_GYRO_DEFAULT_AXIS_Y;
     __gyro_sensitivity_x = INPUT_GYRO_DEFAULT_SENSITIVITY_X;
@@ -1147,6 +1148,63 @@ function __input_class_player() constructor
         }
     }
     
+    static __motion_data_get = function()
+    {
+        if ((global.__input_source_mode == INPUT_SOURCE_MODE.MIXED) && (__gyro_gamepad == undefined))
+        {
+            static __mixed_motion = {};
+            with  (__mixed_motion)
+            {
+                acceleration_x = 0.0;
+                acceleration_y = 0.0;
+                acceleration_z = 0.0;
+
+                angular_velocity_x = 0.0;
+                angular_velocity_y = 0.0;
+                angular_velocity_z = 0.0;
+            }
+    
+            var _source_motion = undefined;
+            var _motion_names  = variable_struct_get_names(__mixed_motion);
+            var _using_motion  = false;
+        
+            var _name    = 0;
+            var _gamepad = 0;
+            repeat(array_length(global.__input_gamepads))
+            {
+                if not (is_struct(global.__input_gamepads[_gamepad])) continue;
+            
+                _using_motion  = true;
+                _source_motion = global.__input_gamepads[_gamepad].__motion.__tick();
+        
+                _name = 0;
+                repeat(array_length(_motion_names))
+                {
+                    __mixed_motion[$ _motion_names[_name]] += _source_motion[$ _motion_names[_name]];
+                    ++_name;
+                }
+        
+                ++_gamepad;
+            }
+    
+            if not (_using_motion) __mixed_motion.acceleration_y = -1.0;
+            return __mixed_motion;
+        }
+    
+        var _gamepad_index = __gyro_gamepad;
+        if ((global.__input_source_mode != INPUT_SOURCE_MODE.MULTIDEVICE) || (__gyro_gamepad == undefined))
+        {
+            _gamepad_index = __source_get_gamepad();
+        }
+    
+        if ((_gamepad_index < 0) || !is_struct(global.__input_gamepads[_gamepad_index].__motion))
+        {
+            return undefined;
+        }
+
+        return global.__input_gamepads[_gamepad_index].__motion.__tick();
+    }
+    
     static __gyro_enabled_set = function(_state)
     {       
         if (_state)
@@ -1312,7 +1370,7 @@ function __input_class_player() constructor
     
     static __tick_vibration = function()
     {
-        if (__connected && (global.__input_source_mode != INPUT_SOURCE_MODE.MULTIDEVICE)) //Don't vibrate if we're likely to have multiple gamepads assigned
+        if (__connected && (global.__input_source_mode != INPUT_SOURCE_MODE.MIXED) && (global.__input_source_mode != INPUT_SOURCE_MODE.MULTIDEVICE)) //Don't vibrate if we're likely to have multiple gamepads assigned
         {
             var _gamepad_index = __source_get_gamepad();
             if (_gamepad_index < 0) return;

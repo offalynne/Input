@@ -103,38 +103,33 @@ function __input_class_cursor() constructor
         if (global.__input_cursor_verbs_valid && (!global.__input_pointer_moved || !_can_use_mouse) && (__player.__rebind_state <= 0))
         {
             //Gyro
-            var _motion = undefined;            
-            var _gamepad_index = __player.__source_get_gamepad();
-            if (_gamepad_index >= 0)
+            if (__player.__gyro_enabled)
             {
-                _motion = global.__input_gamepads[_gamepad_index].__motion;
-            }
-            
-            if ((_motion != undefined) && __player.__gyro_enabled)
-            {
-                var _motion_data = _motion.__tick();
-
-                var _gyro_value_x = undefined;
-                switch (__player.__gyro_axis_x)
+                var _motion_data = __player.__motion_data_get();                
+                if (is_struct(_motion_data))
                 {
-                    case INPUT_GYRO.AXIS_PITCH: _gyro_value_x = _motion_data.angular_velocity_x; break;
-                    case INPUT_GYRO.AXIS_YAW:   _gyro_value_x = _motion_data.angular_velocity_y; break;
-                    case INPUT_GYRO.AXIS_ROLL:  _gyro_value_x = _motion_data.angular_velocity_z; break;
-                }
+                    var _gyro_value_x = undefined;
+                    switch (__player.__gyro_axis_x)
+                    {
+                        case INPUT_GYRO.AXIS_PITCH: _gyro_value_x = _motion_data.angular_velocity_x; break;
+                        case INPUT_GYRO.AXIS_YAW:   _gyro_value_x = _motion_data.angular_velocity_y; break;
+                        case INPUT_GYRO.AXIS_ROLL:  _gyro_value_x = _motion_data.angular_velocity_z; break;
+                    }
 
-                var _gyro_value_y = undefined;
-                switch (__player.__gyro_axis_y)
-                {
-                    case INPUT_GYRO.AXIS_PITCH: _gyro_value_y = _motion_data.angular_velocity_x; break;
-                    case INPUT_GYRO.AXIS_YAW:   _gyro_value_y = _motion_data.angular_velocity_y; break;
-                    case INPUT_GYRO.AXIS_ROLL:  _gyro_value_y = _motion_data.angular_velocity_z; break;
-                }
+                    var _gyro_value_y = undefined;
+                    switch (__player.__gyro_axis_y)
+                    {
+                        case INPUT_GYRO.AXIS_PITCH: _gyro_value_y = _motion_data.angular_velocity_x; break;
+                        case INPUT_GYRO.AXIS_YAW:   _gyro_value_y = _motion_data.angular_velocity_y; break;
+                        case INPUT_GYRO.AXIS_ROLL:  _gyro_value_y = _motion_data.angular_velocity_z; break;
+                    }
 
-                var _dts = delta_time/1000000;
+                    var _dts = delta_time/1000000;
                 
-                //Resolution of 0.1
-                if (_gyro_value_x != undefined) __x += round((_gyro_value_x * _dts * __player.__gyro_screen_width  * __player.__gyro_sensitivity_x * 10)) / 10;
-                if (_gyro_value_y != undefined) __y += round((_gyro_value_y * _dts * __player.__gyro_screen_height * __player.__gyro_sensitivity_y * 10)) / 10;
+                    //Resolution of 0.1
+                    if (_gyro_value_x != undefined) __x += round((_gyro_value_x * _dts * __player.__gyro_screen_width  * __player.__gyro_sensitivity_x * 10)) / 10;
+                    if (_gyro_value_y != undefined) __y += round((_gyro_value_y * _dts * __player.__gyro_screen_height * __player.__gyro_sensitivity_y * 10)) / 10;
+                }
             }
 
             //Cursor bindings
