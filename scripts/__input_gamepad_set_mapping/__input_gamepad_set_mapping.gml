@@ -441,45 +441,6 @@ function __input_gamepad_set_mapping()
 
     #endregion
     
-    #region SteelSeries Nimbus+ on MacOS (tail of GUID is inconsistently garbled)
-
-    if (__input_string_contains(guid, "050000004e696d6275732b") && (os_type == os_macosx))
-    {
-        __input_trace("Setting Nimbus+ controller mapping");
-            
-        set_mapping(gp_face1, 0, __INPUT_MAPPING.BUTTON, "a");
-        set_mapping(gp_face2, 1, __INPUT_MAPPING.BUTTON, "b");
-        set_mapping(gp_face3, 2, __INPUT_MAPPING.BUTTON, "x");
-        set_mapping(gp_face4, 3, __INPUT_MAPPING.BUTTON, "y");
-
-        set_mapping(gp_shoulderl,  4, __INPUT_MAPPING.BUTTON, "leftshoulder");
-        set_mapping(gp_shoulderr,  5, __INPUT_MAPPING.BUTTON, "rightshoulder");
-        set_mapping(gp_shoulderlb, 6, __INPUT_MAPPING.BUTTON, "lefttrigger");
-        set_mapping(gp_shoulderrb, 7, __INPUT_MAPPING.BUTTON, "righttrigger");
-
-        set_mapping(gp_stickl, 8, __INPUT_MAPPING.BUTTON, "leftstick");
-        set_mapping(gp_stickr, 9, __INPUT_MAPPING.BUTTON, "rightstick");
-
-        set_mapping(gp_padu, 10, __INPUT_MAPPING.BUTTON, "dpup");
-        set_mapping(gp_padd, 11, __INPUT_MAPPING.BUTTON, "dpdown");
-        set_mapping(gp_padr, 12, __INPUT_MAPPING.BUTTON, "dpright");
-        set_mapping(gp_padl, 13, __INPUT_MAPPING.BUTTON, "dpleft");
-
-        set_mapping(gp_start,  14, __INPUT_MAPPING.BUTTON, "start");
-        set_mapping(gp_select, 15, __INPUT_MAPPING.BUTTON, "back");
-
-        set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
-        set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty").reverse = true;
-        set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
-        set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty").reverse = true;
-            
-        if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide");
-            
-        return;
-    }
-
-    #endregion
-    
     #region Ouya Controller on MacOS
     
     if ((raw_type == "CommunityOuya") && (os_type == os_macosx))

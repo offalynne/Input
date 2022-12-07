@@ -164,6 +164,7 @@ function __input_load_sdl2_from_buffer(_buffer)
     var _platform_count       = 0;
     var _db_by_guid           = global.__input_sdl2_database.by_guid;
     var _db_by_vendor_product = global.__input_sdl2_database.by_vendor_product;
+    var _db_by_description    = global.__input_sdl2_database.by_description;
     
     var _y = 0;
     repeat(array_length(_root_array))
@@ -178,9 +179,10 @@ function __input_load_sdl2_from_buffer(_buffer)
                 
                 var _guid = _row_array[0];
                 
-                //Figure out this definition's vendor+product name is
+                //Identify this definition's vendor+product and description names
                 var _result = __input_gamepad_guid_parse(_guid, false, true);
                 var _vendor_product = _result.vendor + _result.product;
+                var _description    = _result.description;
                 
                 //Find what platform this definition is for by searching through the row's values
                 //We do this backwards for the sake of efficiency since platform is usually tacked on the end
@@ -209,7 +211,20 @@ function __input_load_sdl2_from_buffer(_buffer)
                 {
                     ++_platform_count;
                     
-                    if (_vendor_product != "")
+                    if (_description != "")
+                    {
+                        //Add this definition to the GUID-description struct
+                        var _description_array = _db_by_description[$ _description];
+                        if (!is_array(_description_array))
+                        {
+                            _description_array = [];
+                            _db_by_description[$ _description] = _description_array;
+                        }
+                        
+                        //Push the definition into the GUID-description array
+                        _description_array[@ array_length(_description_array)] = _row_array;
+                    }                    
+                    else if (_vendor_product != "")
                     {
                         //Add this definition to the "by vendor+product" struct
                         var _vp_array = _db_by_vendor_product[$ _vendor_product];

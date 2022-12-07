@@ -237,6 +237,7 @@ function __input_initialize()
     global.__input_sdl2_database = {
         by_guid           : {},
         by_vendor_product : {},
+        by_description    : {},
     };
     
     global.__input_sdl2_look_up_table = {
