@@ -81,7 +81,7 @@ The `INPUT_STATUS` enum contains the following members:
 |`[playerIndex]`|integer                      |Player to target. If not specified, player 0 is used                                                                                                                                                       |
 |`[binding]`    |[binding](Verbs-and-Bindings)|Binding to return the gamepad for. This is only valid in [multidevice mode](Input-Sources?id=input_source_modemultidevice). If no binding is provided then the player's first connected gamepad is returned|
 
-This function will return `undefined` if the player has no connected gamepad. If you provide a [binding](Verbs-and-Bindings) to check, and Input is running in [multidevice mode](Input-Sources?id=input_source_modemultidevice), then this function will return the gamepad index for the specific gamepad associated with the provided binding.
+This function will return `-1` if the player has no connected gamepad. If you provide a [binding](Verbs-and-Bindings) to check, and Input is running in [multidevice mode](Input-Sources?id=input_source_modemultidevice), then this function will return the gamepad index for the specific gamepad associated with the provided binding.
 
 ?> If the player has multiple gamepad [sources](Input-Sources) assigned to them, and no binding is provided, then this function will return the index of the first connected gamepad.
 
