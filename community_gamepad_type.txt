@@ -76,6 +76,7 @@
 11ec,a7e1,CommunityLikeSwitch // Switch Handheld
 1d79,0301,CommunityLikeSwitch // Wii Adapter
 0079,1803,CommunityLikeSwitch // Mayflash Wii DolphinBar
+0f0d,0137,CommunityLikeSwitch // Hori Fighting Stick Mini
 0500,9b28,CommunitySaturn // Sega Saturn Adapter
 0ae4,0702,CommunitySaturn // Taito Egret II Mini Controller
 0b49,0644,CommunitySaturn // ASCII Seamic
@@ -345,7 +346,6 @@ beef,feed,CommunityXBox360 // Monect
 146b,0302,CommunityPSX // MotionJoy
 146b,0303,CommunityPSX // Unknown PSX
 dead,beef,CommunityPSX // Hidromancer
-0f0d,0137,CommunityPSX // Hori Fighting Stick Mini
 146b,0301,CommunityPSX // Unknown PSX
 2563,0623,CommunityPSX // Unknown PSX
 2dc8,5107,CommunityPSX // 8BitDo P30 Modkit
