@@ -44,7 +44,7 @@ Steamworks SDK documentation refers to an example project called *Spacewar*, [(A
 
 ![](https://i.imgur.com/czFKFNj.png)
 
-!> The *Spacewar* example is configured in Steamworks to use a Steam Input *Custom Configuration*, meaning it will not work as intended until this option is changed, and no controller opted-in to Steam will work with Game Maker or the Input library's default feature set for this AppID.
+The *Spacewar* example is configured in Steamworks to use a Steam Input *Custom Configuration*, meaning it will not work as intended until this option is changed, and no controller opted-in to Steam will work with Game Maker or the Input library's default feature set for this AppID.
 
 &nbsp;
 
