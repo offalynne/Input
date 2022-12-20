@@ -43,7 +43,7 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
     __value_previous = undefined;
     __value_delta    = 0.0;
     
-    static tick = function(_gamepad, _clear, _scan)
+    static tick = function(_gamepad, _scan)
     {
         held_previous = held;
         if (__value_previous != undefined) __value_previous = value; //Don't update the previous value until we get our first scanned value
@@ -55,7 +55,7 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
         
         if (!_scan) return;
         
-        if (!_clear)
+        if (INPUT_ALLOW_OUT_OF_FOCUS || global.__input_window_focus)
         {        
             switch(type)
             {

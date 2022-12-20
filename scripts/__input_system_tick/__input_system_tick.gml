@@ -391,8 +391,6 @@ function __input_system_tick()
         var _device_change = max(0, gamepad_get_device_count() - array_length(INPUT_GAMEPAD))
         repeat(_device_change) array_push(INPUT_GAMEPAD, new __input_class_source(__INPUT_SOURCE.GAMEPAD, array_length(INPUT_GAMEPAD)));
         
-        var _clear_gamepads = (!INPUT_ALLOW_OUT_OF_FOCUS && !global.__input_window_focus);
-        
         var _g = 0;
         repeat(array_length(global.__input_gamepads))
         {
@@ -410,7 +408,7 @@ function __input_system_tick()
                     }
                     else
                     {
-                        _gamepad.tick(_clear_gamepads);
+                        _gamepad.tick();
                     }
                 }
                 else

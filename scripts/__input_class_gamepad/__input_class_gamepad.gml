@@ -93,6 +93,7 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_held = function(_gm)
     {
+        if (!INPUT_ALLOW_OUT_OF_FOCUS && !global.__input_window_focus) return false;
         if (!custom_mapping) return gamepad_button_check(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
@@ -102,6 +103,7 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_pressed = function(_gm)
     {
+        if (!INPUT_ALLOW_OUT_OF_FOCUS && !global.__input_window_focus) return false;
         if (!custom_mapping) return gamepad_button_check_pressed(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
@@ -111,6 +113,7 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_released = function(_gm)
     {
+        if (!INPUT_ALLOW_OUT_OF_FOCUS && !global.__input_window_focus) return false;
         if (!custom_mapping) return gamepad_button_check_released(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
@@ -120,6 +123,7 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_value = function(_gm)
     {
+        if (!INPUT_ALLOW_OUT_OF_FOCUS && !global.__input_window_focus) return 0.0;
         if (!custom_mapping)
         {
             if ((_gm == gp_axislh) || (_gm == gp_axislv) || (_gm == gp_axisrh) || (_gm == gp_axisrv))
@@ -219,7 +223,7 @@ function __input_class_gamepad(_index) constructor
         return _mapping;
     }
     
-    static tick = function(_clear = false)
+    static tick = function()
     {
         //Recalibrate XInput triggers
         if (scale_trigger && ((gamepad_axis_value(index, __XINPUT_AXIS_LT) > 0.25) || (gamepad_axis_value(index, __XINPUT_AXIS_RT) > 0.25)))
@@ -236,7 +240,7 @@ function __input_class_gamepad(_index) constructor
         var _i = 0;
         repeat(array_length(mapping_array))
         {
-            with(mapping_array[_i]) tick(_gamepad, _clear, _scan);
+            with(mapping_array[_i]) tick(_gamepad, _scan);
             ++_i;
         }
         
