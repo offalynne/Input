@@ -55,7 +55,7 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
         
         if (!_scan) return;
         
-        if (!_clear)
+        if (INPUT_ALLOW_OUT_OF_FOCUS || global.__input_window_focus)
         {        
             switch(type)
             {

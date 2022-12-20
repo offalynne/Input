@@ -7,7 +7,8 @@ function input_gamepad_delta(_index, _gm)
     if ((global.__input_cleared)
     ||  (_index == undefined)
     ||  (_index < 0)
-    ||  (_index >= array_length(global.__input_gamepads)))
+    ||  (_index >= array_length(global.__input_gamepads))
+    ||  (!INPUT_ALLOW_OUT_OF_FOCUS && !global.__input_window_focus))
     {
         return false;
     }
