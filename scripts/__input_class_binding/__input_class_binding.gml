@@ -10,11 +10,12 @@ function __input_class_binding() constructor
     {
         switch(type)
         {
-            case __INPUT_BINDING_KEY:            return INPUT_KEYBOARD; break;
-            case __INPUT_BINDING_MOUSE_BUTTON:   return INPUT_MOUSE;    break;
-            case __INPUT_BINDING_MOUSE_WHEEL_UP: return INPUT_MOUSE;    break;
-            case __INPUT_BINDING_GAMEPAD_BUTTON: return INPUT_GAMEPAD;  break;
-            case __INPUT_BINDING_GAMEPAD_AXIS:   return INPUT_GAMEPAD;  break;
+            case __INPUT_BINDING_KEY:              return INPUT_KEYBOARD; break;
+            case __INPUT_BINDING_MOUSE_BUTTON:     return INPUT_MOUSE;    break;
+            case __INPUT_BINDING_MOUSE_WHEEL_UP:   return INPUT_MOUSE;    break;
+            case __INPUT_BINDING_MOUSE_WHEEL_DOWN: return INPUT_MOUSE;    break;
+            case __INPUT_BINDING_GAMEPAD_BUTTON:   return INPUT_GAMEPAD;  break;
+            case __INPUT_BINDING_GAMEPAD_AXIS:     return INPUT_GAMEPAD;  break;
             
             case undefined:
                 __input_trace("Warning! Binding type has not been defined");
