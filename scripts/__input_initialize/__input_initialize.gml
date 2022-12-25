@@ -19,7 +19,7 @@ function __input_initialize()
     try
     {
         //GMS2022.500.58 runtime
-        global.__input_time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
+        global.__input_time_source = time_source_create(time_source_global, 1, time_source_units_frames, function()
         {
             __input_system_tick();
         }, [], -1);
@@ -31,7 +31,7 @@ function __input_initialize()
         try
         {
             //Early GMS2022.500.xx runtimes
-            global.__input_time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
+            global.__input_time_source = time_source_create(time_source_global, 1, time_source_units_frames, function()
             {
                 __input_system_tick();
             }, -1);
@@ -81,9 +81,10 @@ function __input_initialize()
     global.__input_pointer_dy            = array_create(INPUT_COORD_SPACE.__SIZE, 0);
     global.__input_pointer_moved         = false;
     
+    //Cursor capture state
     global.__input_mouse_capture             = false;
     global.__input_mouse_capture_sensitivity = false;
-    global.__input_mouse_capture_frame       = false;
+    global.__input_mouse_capture_frame       = 0;
     
     //Whether to strictly verify bindings match auto profiles
     //This is set to <true> on boot, causing Input to throw an error, otherwise this is <false>
@@ -99,11 +100,14 @@ function __input_initialize()
     //Disallow keyboard bindings on specified platforms unless explicitly enabled
     global.__input_keyboard_allowed = (__INPUT_KEYBOARD_SUPPORT && ((os_type != os_android) || INPUT_ANDROID_KEYBOARD_ALLOWED) && ((os_type != os_switch) || INPUT_SWITCH_KEYBOARD_ALLOWED));
 
-    //Disallow mouse bindings on specified platforms (unless explicitly enabled)
-    global.__input_mouse_allowed = !(__INPUT_ON_PS || __INPUT_ON_XDK || (__INPUT_TOUCH_SUPPORT && !INPUT_TOUCH_POINTER_ALLOWED));
+    //Default to disallowing mouse bindings on specified platforms unless explicitly enabled
+    global.__input_mouse_allowed_on_platform = !(__INPUT_ON_PS || __INPUT_ON_XBOX || ((os_type != os_windows) && __INPUT_TOUCH_SUPPORT && !INPUT_TOUCH_POINTER_ALLOWED));
+    
+    //Default to disallowing vibration on specified platforms unless explicitly enabled
+    global.__input_vibration_allowed_on_platform = (__INPUT_GAMEPAD_VIBRATION_SUPPORT && INPUT_VIBRATION_ALLOWED && ((os_type != os_switch) || INPUT_SWITCH_USE_LEGACY_VIBRATION) && ((os_type != os_ps5) || INPUT_PS5_USE_LEGACY_VIBRATION));
 
     //Whether mouse is blocked due to Window focus state
-    global.__input_mouse_blocked = false;
+    global.__input_window_focus_block_mouse = false;
     
     global.__input_cursor_verbs_valid = false;
     
@@ -166,22 +170,63 @@ function __input_initialize()
         ++_p;
     }
     
+    //INPUT_STATUS.DISCONNECTED *must* be zero so that array_size() initializes gamepad status to disconnected
+    //See input_tick() for more details
+    enum INPUT_STATUS
+    {
+        NEWLY_DISCONNECTED = -1,
+        DISCONNECTED       =  0,
+        NEWLY_CONNECTED    =  1,
+        CONNECTED          =  2,
+    }
+    
     enum INPUT_SOURCE_MODE
     {
         FIXED,        //Player sources won't change unless manually editted
         JOIN,         //Starts source assignment, typically used for multiplayer
         HOTSWAP,      //Player 0's source is determined by most recent input
         MIXED,        //Player 0 can use a mixture of keyboard, mouse, and any gamepad
-        MULTIDEVICE, //Player 0 can use a mixture of keyboard, mouse, and any gamepad, but gamepad bindings are specific to each device
+        MULTIDEVICE,  //Player 0 can use a mixture of keyboard, mouse, and any gamepad, but gamepad bindings are specific to each device
     }
     
-    global.__input_source_mode = undefined;
+    enum INPUT_COORD_SPACE
+    {
+        ROOM,
+        GUI,
+        DISPLAY,
+        __SIZE
+    }
+    
+    //DualSense haptic trigger effect states
+    enum INPUT_TRIGGER_STATE
+    {
+        EFFECT_OFF               = ps5_gamepad_trigger_effect_state_off,
+        EFFECT_FEEDBACK_STANDBY  = ps5_gamepad_trigger_effect_state_feedback_standby,
+        EFFECT_FEEDBACK_ACTIVE   = ps5_gamepad_trigger_effect_state_feedback_active,
+        EFFECT_WEAPON_STANDBY    = ps5_gamepad_trigger_effect_state_weapon_standby,
+        EFFECT_WEAPON_PULLING    = ps5_gamepad_trigger_effect_state_weapon_pulling,
+        EFFECT_WEAPON_FIRED      = ps5_gamepad_trigger_effect_state_weapon_fired,
+        EFFECT_VIBRATION_STANDBY = ps5_gamepad_trigger_effect_state_vibration_standby,
+        EFFECT_VIBRATION_ACTIVE  = ps5_gamepad_trigger_effect_state_vibration_active,
+        EFFECT_INTERCEPTED       = ps5_gamepad_trigger_effect_state_intercepted,
+    }
+	
+	enum INPUT_GYRO
+	{
+	    AXIS_PITCH,
+	    AXIS_YAW,
+	    AXIS_ROLL
+	}
+    
+    global.__input_source_mode          = undefined;
+    global.__input_previous_source_mode = INPUT_STARTING_SOURCE_MODE;
     
     //Multiplayer source assignment state
     //This is set by input_multiplayer_set()
-    global.__input_multiplayer_min       = 1;
-    global.__input_multiplayer_max       = INPUT_MAX_PLAYERS;
-    global.__input_multiplayer_drop_down = true;
+    global.__input_multiplayer_min         = 1;
+    global.__input_multiplayer_max         = INPUT_MAX_PLAYERS;
+    global.__input_multiplayer_drop_down   = true;
+    global.__input_multiplayer_allow_abort = true;
     
     //Array of currently connected gamepads. If an element is <undefined> then the gamepad is disconnected
     //Each gamepad in this array is an instance of __input_class_gamepad
@@ -278,25 +323,27 @@ function __input_initialize()
         //Xbox
         CommunityLikeXBox: _default_xbox_type,
 
-        XBoxOneController: "xbox one",
-        SteamControllerV2: "xbox one",
-        CommunityXBoxOne:  "xbox one",
-        AppleController:   "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
-        CommunityStadia:   "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
-        CommunityLuna:     "xbox one", //  Luna uses Xbox One iconography excepting 'View' button
+        XBoxOneController:  "xbox one",
+        CommunityXBoxOne:   "xbox one",
+        SteamControllerV2:  "xbox one",
+        CommunityDeck:      "xbox one", //  Deck uses Xbox One iconography excepting 'View' button
+        CommunityLuna:      "xbox one", //  Luna uses Xbox One iconography excepting 'View' button
+        CommunityStadia:    "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
+        AppleController:    "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
         
         XBox360Controller:  "xbox 360",
         CommunityXBox360:   "xbox 360",
-        CommunityDreamcast: "xbox 360", //        Xbox 360 uses Dreamcast iconography
+        CommunityDreamcast: "xbox 360", //       X-Box 360 uses Dreamcast iconography
         SteamController:    "xbox 360", //Steam Controller uses X-Box 360 iconography
         MobileTouch:        "xbox 360", //      Steam Link uses X-Box 360 iconography
         
         //PlayStation
-        PS5Controller: "ps5",
-        PS4Controller: "ps4",
-        CommunityPS4:  "ps4",
-        PS3Controller: "psx",
-        CommunityPSX:  "psx",
+        PS5Controller:       "ps5",
+        PS4Controller:       "ps4",
+        XInputPS4Controller: "ps4",
+        CommunityPS4:        "ps4",
+        PS3Controller:       "psx",
+        CommunityPSX:        "psx",
         
         //Switch
         SwitchHandheld:            "switch", //Attached JoyCon pair or Switch Lite
@@ -306,9 +353,13 @@ function __input_initialize()
         SwitchInputOnlyController: "switch",
         CommunityLikeSwitch:       "switch",
         Community8BitDo:           "switch", //8BitDo are Switch gamepads (exceptions typed appropriately)
+        HIDWiiClassic:             "switch",
 
-        SwitchJoyConLeft:  "switch joycon left",
-        SwitchJoyConRight: "switch joycon right",
+        SwitchJoyConLeft:   "switch joycon left",
+        SwitchJoyConSingle: "switch joycon left",
+        HIDJoyConLeft:      "switch joycon left",
+        SwitchJoyConRight:  "switch joycon right",
+        HIDJoyConRight:     "switch joycon right",
         
         //Legacy
         CommunityGameCube:     "gamecube",
@@ -327,10 +378,11 @@ function __input_initialize()
     }
     
     //Parse controller type database
-    global.__input_raw_type_dictionary = { none : _default_xbox_type };
+    global.__input_raw_type_dictionary = {};
+    global.__input_raw_type_dictionary[$ "none"] = _default_xbox_type;
 
     //Load the controller type database
-    if (__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || (os_type == os_ios))
+    if (__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || (os_type == os_ios) || (os_type == os_tvos))
     {
         __input_trace("Skipping loading controller type database");
     }
@@ -550,7 +602,7 @@ function __input_initialize()
             
             input_ignore_key_add(0xB4); //Launch Mail
             input_ignore_key_add(0xB5); //Launch Media
-            input_ignore_key_add(0xB6); //Laumch App 1
+            input_ignore_key_add(0xB6); //Launch App 1
             input_ignore_key_add(0xB7); //Launch App 2
             
             input_ignore_key_add(0xFB); //Zoom
@@ -563,33 +615,120 @@ function __input_initialize()
     
     #region Steam Input
     
-    if (((os_type == os_linux) || (os_type == os_macosx)) && !__INPUT_ON_WEB)
+    global.__input_steam_switch_labels = false;
+    global.__input_using_steamworks    = false;
+    global.__input_on_steam_deck       = false;
+    
+    global.__input_steam_handles       = [];
+    global.__input_steam_type_to_raw   = {};
+    global.__input_steam_type_to_name  = {};
+    global.__input_steam_trigger_mode  = {};
+    
+    if (__INPUT_STEAMWORKS_SUPPORT && INPUT_ALLOW_STEAMWORKS)
+    {
+        try
+        {
+            //Using Steamworks extension
+            global.__input_using_steamworks = steam_input_init(true);
+            global.__input_on_steam_deck    = steam_utils_is_steam_running_on_steam_deck();
+        }
+        catch(_error)
+        {
+            __input_trace("Steamworks extension unavailable");
+        }
+        
+        if (global.__input_using_steamworks && (string(steam_get_app_id()) == "480"))
+        {
+            __input_trace_loud("Error!\nSteamworks extension incorrectly configured (Application ID 480).\nYou may see unexpected behaviour when using gamepads.\n\nTo remove this error, set Application ID.\n\nInput ", __INPUT_VERSION, "   @jujuadams and @offalynne ", __INPUT_DATE);
+        }
+    }
+    
+    if (!global.__input_on_steam_deck && (os_type == os_linux))
+    {
+        var _map = os_get_info();
+        if (ds_exists(_map, ds_type_map))
+        {
+            var _renderer_info = _map[? "gl_renderer_string"];            
+            if ((_renderer_info != undefined) && __input_string_contains(_renderer_info, "valve") && __input_string_contains(_renderer_info, "neptune"))
+            {
+                //Deck identification in absence of Steamworks
+                global.__input_on_steam_deck = true;
+            }
+            
+            ds_map_destroy(_map);
+        }
+    }
+    
+    var _switch_labels = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");
+    if (_switch_labels != "")
+    {
+        //Use environment variable
+        global.__input_steam_switch_labels = (_switch_labels == "1");
+    }
+    else
+    {
+        //Default enabled on Deck and disabled on desktop
+        global.__input_steam_switch_labels = global.__input_on_steam_deck;
+    }
+    
+    if (global.__input_using_steamworks)
+    {   
+        __input_steam_type_set(steam_input_type_xbox_360_controller,   "XBox360Controller", "Xbox 360 Controller");
+        __input_steam_type_set(steam_input_type_xbox_one_controller,   "XBoxOneController", "Xbox One Controller");
+        __input_steam_type_set(steam_input_type_ps3_controller,        "PS3Controller",     "PS3 Controller");
+        __input_steam_type_set(steam_input_type_ps4_controller,        "PS4Controller",     "PS4 Controller");
+        __input_steam_type_set(steam_input_type_ps5_controller,        "PS5Controller",     "PS5 Controller");
+        __input_steam_type_set(steam_input_type_steam_controller,      "SteamController",   "Steam Controller");
+        __input_steam_type_set(steam_input_type_steam_deck_controller, "CommunityDeck",     "Steam Deck Controller");
+        __input_steam_type_set(steam_input_type_mobile_touch,          "MobileTouch",       "Steam Link");
+        
+        if (global.__input_steam_switch_labels)
+        {
+            //This is weird, but dictated by Steam Input
+            __input_steam_type_set(steam_input_type_switch_pro_controller, "XBox360Controller", "Switch Pro Controller");
+            __input_steam_type_set(steam_input_type_switch_joycon_single,  "XBox360Controller", "Joy-Con");
+            __input_steam_type_set(steam_input_type_switch_joycon_pair,    "XBox360Controller", "Joy-Con Pair");
+        }
+        else
+        {   
+            __input_steam_type_set(steam_input_type_switch_pro_controller, "SwitchProController", "Switch Pro Controller");
+            __input_steam_type_set(steam_input_type_switch_joycon_single,  "SwitchJoyConSingle",  "Joy-Con");
+            __input_steam_type_set(steam_input_type_switch_joycon_pair,    "SwitchJoyConPair",    "Joy-Con Pair");
+        }
+                
+        __input_steam_type_set("unknown", "UnknownNonSteamController", "Controller");
+        
+        global.__input_steam_trigger_mode[$ string(__INPUT_TRIGGER_EFFECT.__TYPE_OFF)]       = steam_input_sce_pad_trigger_effect_mode_off;
+        global.__input_steam_trigger_mode[$ string(__INPUT_TRIGGER_EFFECT.__TYPE_FEEDBACK)]  = steam_input_sce_pad_trigger_effect_mode_feedback;
+        global.__input_steam_trigger_mode[$ string(__INPUT_TRIGGER_EFFECT.__TYPE_WEAPON)]    = steam_input_sce_pad_trigger_effect_mode_weapon;
+        global.__input_steam_trigger_mode[$ string(__INPUT_TRIGGER_EFFECT.__TYPE_VIBRATION)] = steam_input_sce_pad_trigger_effect_mode_vibration;
+    }
+    
+    if ((os_type == os_linux) || (os_type == os_macosx))
     {
         //Define the virtual controller's identity
-        var _os = ((os_type == os_macosx)? "macos"    : "linux");
-        var _id = ((os_type == os_macosx)? "5e048e02" : "de28ff11");
+        var _os = ((os_type == os_macosx)? "macos"                            : "linux");
+        var _id = ((os_type == os_macosx)? "030000005e0400008e02000001000000" : "03000000de280000ff11000001000000");
     
         //Access the blacklist
         var _blacklist_os = (is_struct(global.__input_blacklist_dictionary)? global.__input_blacklist_dictionary[$ _os] : undefined);
-        var _blacklist_id = (is_struct(_blacklist_os)? _blacklist_os[$ "vid+pid"] : undefined);
+        var _blacklist_id = (is_struct(_blacklist_os)? _blacklist_os[$ "guid"] : undefined);
     
         if (is_struct(_blacklist_os) && (_blacklist_id == undefined))
         {
-            //Add 'Vendor ID + Product ID' category
-            _blacklist_os[$ "vid+pid"] = {};
-            _blacklist_id = (is_struct(_blacklist_os)? _blacklist_os[$ "vid+pid"] : undefined);
+            //Add category if inaccessible
+            _blacklist_os[$ "guid"] = {};
+            _blacklist_id = (is_struct(_blacklist_os)? _blacklist_os[$ "guid"] : undefined);
         }
     
         //Blacklist the Steam virtual controller
-        if (is_struct(_blacklist_id)) _blacklist_id[$ _id] = true;   
-    }
+        if (is_struct(_blacklist_id)) _blacklist_id[$ _id] = true;
     
-    if ((os_type == os_linux) && !__INPUT_ON_WEB)
-    {
         var _steam_environ = environment_get_variable("SteamEnv");
         var _steam_configs = environment_get_variable("EnableConfiguratorSupport");
-    
-        if ((_steam_environ != "") && (_steam_environ == "1")
+        
+        if ((os_type == os_linux)
+        && ((_steam_environ != "") && (_steam_environ == "1") || global.__input_using_steamworks)
         &&  (_steam_configs != "") && (_steam_configs == string_digits(_steam_configs)))
         {
             //If run through Steam remove Steam virtual controller from the blocklist
@@ -605,30 +744,30 @@ function __input_initialize()
             
             var _ignore_list = [];
         
-            if (environment_get_variable("SDL_GAMECONTROLLER_IGNORE_DEVICES") == "")
+            if (global.__input_using_steamworks || (environment_get_variable("SDL_GAMECONTROLLER_IGNORE_DEVICES") == ""))
             {
                 //If ignore hint isn't set, GM accesses controllers meant to be blocked
                 //We address this by adding the Steam config types to our own blocklist
-                if (_steam_switch)  array_push(_ignore_list, "switch");
                 if (_steam_ps)      array_push(_ignore_list, "ps4", "ps5");
-                if (_steam_xbox)    array_push(_ignore_list, "xbox 360", "xbox one");        
-                if (_steam_generic) array_push(_ignore_list, "snes", "saturn", "n64", "gamecube", "psx", "xbox", "switch joycon left", "switch joycon right", "unknown");
+                if (_steam_xbox)    array_push(_ignore_list, "xbox 360", "xbox one");
+                if (_steam_generic) array_push(_ignore_list, "snes", "saturn", "n64", "gamecube", "psx", "xbox", "unknown");
+                if (_steam_switch)  array_push(_ignore_list, "switch", "switch joycon left", "switch joycon right");
              
                 var _i = 0;
                 repeat(array_length(_ignore_list))
                 {
                     global.__input_ignore_gamepad_types[$ _ignore_list[_i]] = true;
+                    ++_i;
                 }
             }
             
             //Check for a reducible type configuration
-            var _steam_switch_labels = environment_get_variable("SDL_GAMECONTROLLER_USE_BUTTON_LABELS");
-            if (!_steam_generic && !_steam_ps
-            && (!_steam_switch || ((_steam_switch_labels != "") && (_steam_switch_labels == "1"))))
+            if (!_steam_generic && !_steam_ps && (!_steam_switch || global.__input_steam_switch_labels))
             {
                 //The remaining configurations are in the Xbox Controller style including:
                 //Steam Controller, Steam Link, Steam Deck, Xbox or Switch with AB/XY swap
                 global.__input_simple_type_lookup[$ "CommunitySteam"] = _default_xbox_type;
+                __input_trace("Steam Input configuration indicates Xbox-like identity for virtual controllers");
             }
         }
     }
@@ -708,6 +847,9 @@ function __input_initialize()
     
     
     
+    //Whether gamepad motion is supported
+    global.__input_gamepad_motion_support = (__INPUT_ON_PS || (os_type == os_switch) || global.__input_using_steamworks);
+
     //By default GameMaker registers double click (or tap) as right mouse button
     //We want to be able to identify the actual mouse buttons correctly, and have our own double-input handling
     device_mouse_dbclick_enable(false);
@@ -719,6 +861,7 @@ function __input_initialize()
     global.__input_group_to_verbs_dict   = {};
     global.__input_verb_group_array      = [];
     global.__input_null_binding          = input_binding_empty();
+    global.__input_icons                 = {};
     
     
     

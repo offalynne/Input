@@ -1,3 +1,5 @@
+draw_set_color(input_window_has_focus()? c_white : c_gray);
+
 var _string = "";
 
 _string += "Gamepad " + string(test_index) + " of " + string(gamepad_get_device_count()) + ", \"" + string(gamepad_get_description(test_index)) + "\"\n\n";
@@ -96,6 +98,7 @@ draw_rectangle(488, 0, 490, room_height, false);
 
 var _string = "";
 
+_string += "Player gamepad: " + string(input_player_get_gamepad()) + "\n\n";
 _string += "GUID = \"" + gamepad_get_guid(input_player_get_gamepad()) + "\"\n";
 _string += "Input gamepad desc = \"" + input_gamepad_get_description(input_player_get_gamepad()) + "\"\n";
 _string += "Input gamepad type = \"" + input_gamepad_get_type(input_player_get_gamepad()) + "\"\n";
@@ -126,6 +129,6 @@ repeat(255)
 _string += "mouse = " + string(mouse_x) + "," + string(mouse_y) + "\n";
 _string += "device = " + string(device_mouse_x(0)) + "," + string(device_mouse_y(0)) + "\n";
 
-draw_text(500, 70, _string);
+draw_text(500, 10, _string);
 
 draw_text(500, 740, current_time);

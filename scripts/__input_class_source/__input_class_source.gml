@@ -48,22 +48,17 @@ function __input_class_source(_source, _gamepad = undefined) constructor
         return false;
     }
     
-    static __any_input = function()
-    {
-        return __input_source_any_input(__source, __gamepad);
-    }
-    
-    static __scan_for_binding = function(_player_index = 0)
+    static __scan_for_binding = function(_player_index, _return_boolean, _ignore_struct, _allow_struct)
     {
         if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && ((__source == __INPUT_SOURCE.KEYBOARD) || (__source == __INPUT_SOURCE.MOUSE)))
         {
-            var _binding = __input_source_scan_for_binding(__INPUT_SOURCE.KEYBOARD, __gamepad, _player_index);
+            var _binding = __input_source_scan_for_binding(__INPUT_SOURCE.KEYBOARD, __gamepad, _player_index, _return_boolean, _ignore_struct, _allow_struct);
             if (_binding != undefined) return _binding;
             
-            return __input_source_scan_for_binding(__INPUT_SOURCE.MOUSE, __gamepad, _player_index);
+            return __input_source_scan_for_binding(__INPUT_SOURCE.MOUSE, __gamepad, _player_index, _return_boolean, _ignore_struct, _allow_struct);
         }
         
-        return __input_source_scan_for_binding(__source, __gamepad, _player_index);
+        return __input_source_scan_for_binding(__source, __gamepad, _player_index, _return_boolean, _ignore_struct, _allow_struct);
     }
     
     static __validate_binding = function(_binding)
@@ -92,7 +87,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                     return false;
                 }
                 
-                if (_gamepad.xinput && ((_raw == 4106) || (_raw == 4107)))
+                if (_gamepad.xinput && ((_raw == __XINPUT_AXIS_LT) || (_raw == __XINPUT_AXIS_RT)))
                 {
                     //Except XInput trigger values from range checks
                     return true;
@@ -154,7 +149,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
             break;
             
             case __INPUT_BINDING_MOUSE_BUTTON:
-                if (!global.__input_mouse_allowed)
+                if (!global.__input_mouse_allowed_on_platform)
                 {
                     //Invalid per platform or configuration
                     return false;
@@ -165,11 +160,11 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                 switch(_value)
                 {
                     case mb_left: //Invalid on Xbox
-                        return !__INPUT_ON_XDK;
+                        return !__INPUT_ON_XBOX;
                     break;
                     
                     case mb_right: //Invalid on Xbox, Playstation, native Android or iOS
-                        return !(__INPUT_ON_XDK || __INPUT_ON_PS || (!__INPUT_ON_WEB && ((os_type == os_ios) || (os_type == os_android))));
+                        return !(__INPUT_ON_XBOX || __INPUT_ON_PS || (!__INPUT_ON_WEB && ((os_type == os_ios) || (os_type == os_android))));
                     break;
                     
                     case mb_middle: //Invalid on console, Android or iOS
@@ -178,7 +173,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                     
                     case mb_side1:
                     case mb_side2: //Invalid on console, OperaGX, mobile, Firefox or Mac browsers
-                        return !(__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || __INPUT_ON_MOBILE || (os_browser == browser_firefox) || (__INPUT_ON_WEB && (os_type == os_macosx)))
+                        return !(__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || __INPUT_ON_MOBILE || (os_browser == browser_firefox) || (__INPUT_ON_WEB && (os_type == os_macosx)));
                     break;
                     
                     default:
@@ -189,7 +184,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
             
             case __INPUT_BINDING_MOUSE_WHEEL_UP:
             case __INPUT_BINDING_MOUSE_WHEEL_DOWN:
-                if (!global.__input_mouse_allowed)
+                if (!global.__input_mouse_allowed_on_platform)
                 {
                     //Invalid per platform or configuration
                     return false;
@@ -210,8 +205,15 @@ function __input_class_source(_source, _gamepad = undefined) constructor
     }
 }
 
-function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
+function __input_source_scan_for_binding(_source, _gamepad, _player_index, _return_boolean, _ignore_struct, _allow_struct)
 {
+    var _filter_func = function(_input, _ignore_struct, _allow_struct) //Returns <false> if the binding failed to pass the filter
+    {
+        if (is_struct(_ignore_struct) &&  variable_struct_exists(_ignore_struct, string(_input))) return false;
+        if (is_struct(_allow_struct ) && !variable_struct_exists(_allow_struct,  string(_input))) return false;
+        return true;
+    }
+    
     switch(_source)
     {
         case __INPUT_SOURCE.KEYBOARD:
@@ -219,8 +221,11 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
             
             if (global.__input_any_keyboard_binding_defined 
             && (_keyboard_key >= __INPUT_KEYCODE_MIN) && (_keyboard_key <= __INPUT_KEYCODE_MAX)
-            && !__input_key_is_ignored(_keyboard_key))
+            && !__input_key_is_ignored(_keyboard_key)
+            && _filter_func(_keyboard_key, _ignore_struct, _allow_struct))
             {
+                if (_return_boolean) return true;
+                
                 //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
                 var _binding = new __input_class_binding();
                 _binding.__set_key(_keyboard_key, true);
@@ -229,7 +234,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
                 //This works around problems where a keyboard might be sending a character code for e.g. A but the OS is typing another letter
                 if (os_type == os_macosx)
                 {
-                    __input_trace("Binding label for keycode ", string(ord(_binding.__label)), ", initially set to \"", _binding.__label, "\"");
+                    if (!_return_boolean) __input_trace("Binding label for keycode ", string(ord(_binding.__label)), ", initially set to \"", _binding.__label, "\"");
                     var _keychar = string_upper(keyboard_lastchar);
                     
                     //Basic Latin only
@@ -245,22 +250,24 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
         break;
         
         case __INPUT_SOURCE.MOUSE:
-            var _mouse_button = __input_mouse_button();
-            
-            if (global.__input_any_mouse_binding_defined)
+            if (INPUT_MOUSE_ALLOW_SCANNING)
             {
-                if (global.__input_mouse_allowed && !global.__input_mouse_blocked
-                        && (_mouse_button != mb_none)
-                        && (!__INPUT_TOUCH_SUPPORT || (_mouse_button != mb_left))) //GM conflates LMB and touch. Don't rebind
+                var _mouse_button = __input_mouse_button();
+                if (global.__input_mouse_allowed_on_platform && !global.__input_window_focus_block_mouse 
+                    && (_mouse_button != mb_none) && ((_mouse_button != mb_left) || (os_type == os_windows) || !__INPUT_TOUCH_SUPPORT)
+                    && _filter_func(_mouse_button, _ignore_struct, _allow_struct))
                 {
+                    if (_return_boolean) return true;
                     return input_binding_mouse_button(_mouse_button);
                 }
-                else if (mouse_wheel_up())
+                else if (mouse_wheel_up() && _filter_func(__INPUT_BINDING_MOUSE_WHEEL_UP, _ignore_struct, _allow_struct))
                 {
+                    if (_return_boolean) return true;
                     return input_binding_mouse_wheel_up();
                 }
-                else if (mouse_wheel_down())
+                else if (mouse_wheel_down() && _filter_func(__INPUT_BINDING_MOUSE_WHEEL_DOWN, _ignore_struct, _allow_struct))
                 {
+                    if (_return_boolean) return true;
                     return input_binding_mouse_wheel_down();
                 }
             }
@@ -289,15 +296,17 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
                     if (input_gamepad_is_axis(_gamepad, _check))
                     {
                         var _value = input_gamepad_value(_gamepad, _check);
-                        if (abs(_value) > input_axis_threshold_get(_check, _player_index).mini)
+                        if ((abs(_value) > input_axis_threshold_get(_check, _player_index).mini) && _filter_func(_check, _ignore_struct, _allow_struct))
                         {
+                            if (_return_boolean) return true;
                             return (input_binding_gamepad_axis(_check, (_value < 0)).__gamepad_set(_gamepad));
                         }
                     }
                     else
                     {
-                        if (input_gamepad_check(_gamepad, _check))
+                        if (input_gamepad_check(_gamepad, _check) && _filter_func(_check, _ignore_struct, _allow_struct))
                         {
+                            if (_return_boolean) return true;
                             return (input_binding_gamepad_button(_check).__gamepad_set(_gamepad));
                         }
                     }
@@ -309,72 +318,4 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index = 0)
     }
     
     return undefined;
-}
-
-function __input_source_any_input(_source, _gamepad)
-{
-    switch(_source)
-    {
-        case __INPUT_SOURCE.KEYBOARD:
-            return (global.__input_any_keyboard_binding_defined
-                 && keyboard_check(vk_anykey)
-                 && !__input_key_is_ignored(__input_keyboard_key()));
-        break;
-        
-        case __INPUT_SOURCE.MOUSE:
-            return (global.__input_any_mouse_binding_defined && (global.__input_pointer_moved || input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down()));
-        break;
-        
-        case __INPUT_SOURCE.GAMEPAD:
-            if (!gamepad_is_connected(_gamepad)) return false;
-            
-            if (input_gamepad_check(_gamepad, gp_face1)
-            ||  input_gamepad_check(_gamepad, gp_face2)
-            ||  input_gamepad_check(_gamepad, gp_face3)
-            ||  input_gamepad_check(_gamepad, gp_face4)
-            ||  input_gamepad_check(_gamepad, gp_padu)
-            ||  input_gamepad_check(_gamepad, gp_padd)
-            ||  input_gamepad_check(_gamepad, gp_padl)
-            ||  input_gamepad_check(_gamepad, gp_padr)
-            ||  input_gamepad_check(_gamepad, gp_shoulderl)
-            ||  input_gamepad_check(_gamepad, gp_shoulderr)
-            ||  input_gamepad_check(_gamepad, gp_start)
-            ||  input_gamepad_check(_gamepad, gp_select)
-            ||  input_gamepad_check(_gamepad, gp_stickl)
-            ||  input_gamepad_check(_gamepad, gp_stickr)
-            ||  input_gamepad_check(_gamepad, gp_stickr)
-            ||  input_gamepad_check(_gamepad, gp_stickr)
-            ||  input_gamepad_check(_gamepad, gp_stickr)
-            ||  input_gamepad_check(_gamepad, gp_stickr)
-            ||  (abs(input_gamepad_value(_gamepad, gp_shoulderlb)) > INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD)
-            ||  (abs(input_gamepad_value(_gamepad, gp_shoulderrb)) > INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD)
-            ||  (abs(input_gamepad_value(_gamepad, gp_axislh)) > INPUT_DEFAULT_AXIS_MIN_THRESHOLD)
-            ||  (abs(input_gamepad_value(_gamepad, gp_axislv)) > INPUT_DEFAULT_AXIS_MIN_THRESHOLD)
-            ||  (abs(input_gamepad_value(_gamepad, gp_axisrh)) > INPUT_DEFAULT_AXIS_MIN_THRESHOLD)
-            ||  (abs(input_gamepad_value(_gamepad, gp_axisrv)) > INPUT_DEFAULT_AXIS_MIN_THRESHOLD))
-            {
-                return true;
-            }
-            
-            if (INPUT_SDL2_ALLOW_EXTENDED)
-            {
-                if (input_gamepad_check(_gamepad, gp_guide)
-                ||  input_gamepad_check(_gamepad, gp_misc1)
-                ||  input_gamepad_check(_gamepad, gp_touchpad)
-                ||  input_gamepad_check(_gamepad, gp_paddle1)
-                ||  input_gamepad_check(_gamepad, gp_paddle2)
-                ||  input_gamepad_check(_gamepad, gp_paddle3)
-                ||  input_gamepad_check(_gamepad, gp_paddle4))
-                {
-                    return true;
-                }
-            }
-            
-            return false;
-        break;
-        
-        default:
-            __input_error("Source \"", _source, "\" not recognised");
-        break;
-    }
 }

@@ -2,7 +2,7 @@
 
 function __input_gamepad_find_in_sdl2_database()
 {
-    if (!__INPUT_SDL2_SUPPORT || !INPUT_SDL2_REMAPPING || blacklisted || xinput) exit;
+    if (!__INPUT_SDL2_SUPPORT || !INPUT_SDL2_REMAPPING || blacklisted || xinput) return;
   
     //Check to see if our device GUID matches the SDL2 database perfectly somewhere
     var _guid_dict = global.__input_sdl2_database.by_guid;
@@ -11,7 +11,7 @@ function __input_gamepad_find_in_sdl2_database()
         var _definition = _guid_dict[$ guid];
         sdl2_definition = _definition;
         description     = _definition[1];
-        exit;
+        return;
     }
     
     var _definition = undefined;

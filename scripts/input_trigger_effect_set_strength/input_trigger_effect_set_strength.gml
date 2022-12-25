@@ -1,0 +1,30 @@
+/// @param strength
+/// @param [playerIndex=0]
+
+function input_trigger_effect_set_strength(_strength, _player_index = 0)
+{
+    if (_player_index == all)
+    {
+        var _i = 0;
+        repeat(INPUT_MAX_PLAYERS)
+        {
+            input_trigger_effect_set_strength(_strength, _i);
+            ++_i;
+        }
+        
+        return;
+    }
+	
+    __INPUT_VERIFY_PLAYER_INDEX
+    
+    _strength = clamp(_strength, 0, 1);
+    
+	with(global.__input_players[_player_index])
+	{
+		if (__trigger_effect_strength != _strength)
+		{
+		    __trigger_effect_strength = _strength;
+		    __input_player_apply_trigger_effects(_player_index);
+		}
+	}
+}

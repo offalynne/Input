@@ -6,8 +6,16 @@ function input_mouse_capture_set(_state, _sensitivity = 1)
 {
     __input_initialize();
     
+    if (!__INPUT_ON_DESKTOP || __INPUT_ON_WEB)
+    {
+        __input_trace("Mouse capture unsupported for this platform");
+        return;
+    }
+    
     if (_state && !global.__input_mouse_capture) global.__input_mouse_capture_frame = global.__input_frame;
     
     global.__input_mouse_capture             = _state;
     global.__input_mouse_capture_sensitivity = _sensitivity;
+    
+    __input_release_multimonitor_cursor();
 }

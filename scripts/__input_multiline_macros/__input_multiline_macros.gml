@@ -43,14 +43,14 @@
                                              {\
                                                  if (!global.__input_any_keyboard_binding_defined && !global.__input_any_mouse_binding_defined)\
                                                  {\
-                                                    __input_error("Cannot claim ", _source, ", no keyboard or mouse bindings have been created");\
+                                                    __input_error("Cannot claim ", _source, ", no keyboard or mouse bindings have been created in a default profile");\
                                                  }\
                                              }\
                                              else\
                                              {\
                                                  if (!global.__input_any_keyboard_binding_defined)\
                                                  {\
-                                                     __input_error("Cannot claim ", _source, ", no keyboard bindings have been created");\
+                                                     __input_error("Cannot claim ", _source, ", no keyboard bindings have been created in a default profile");\
                                                  }\
                                              }\
                                          }\
@@ -58,13 +58,13 @@
                                          {\
                                              if (!global.__input_any_mouse_binding_defined)\
                                              {\
-                                                 __input_error("Cannot claim ", _source, ", no mouse bindings have been created");\
+                                                 __input_error("Cannot claim ", _source, ", no mouse bindings have been created in a default profile");\
                                              }\
                                          }\
                                          else if (_source.__source == __INPUT_SOURCE.GAMEPAD)\
                                          {\
                                              if (!global.__input_any_gamepad_binding_defined)\
                                              {\
-                                                 __input_error("Cannot claim ", _source, ", no gamepad bindings have been created");\
+                                                 __input_error("Cannot claim ", _source, ", no gamepad bindings have been created in a default profile");\
                                              }\
                                          }

@@ -4,9 +4,7 @@ function __input_system_tick()
     global.__input_previous_current_time = global.__input_current_time;
     global.__input_current_time = current_time;
     global.__input_cleared = false;
-    
-	
-    
+
     #region Touch
     
     if (__INPUT_TOUCH_SUPPORT && INPUT_TOUCH_POINTER_ALLOWED)
@@ -39,7 +37,7 @@ function __input_system_tick()
                 {
                     //Get recent active touch
                     global.__input_pointer_durations[_i] += delta_time;
-                    if (_touch_index == undefined || (global.__input_pointer_durations[_i] < global.__input_pointer_durations[_touch_index]))
+                    if ((_touch_index == undefined) || (global.__input_pointer_durations[_i] < global.__input_pointer_durations[_touch_index]))
                     {
                         _touch_index = _i;
                     }
@@ -96,35 +94,69 @@ function __input_system_tick()
     
     
     
-    #region Mouse
+    #region Window focus
     
-    //Track Window focus
-    global.__input_window_focus_previous = global.__input_window_focus;
-    global.__input_window_focus = (window_has_focus() != false);
-    
-    if (__INPUT_ON_DESKTOP && global.__input_window_focus)
+    if (__INPUT_ON_DESKTOP && !__INPUT_ON_WEB)
     {
-        if (!global.__input_window_focus_previous)
+        if (os_is_paused())
         {
-            //Block mouse buttons on focus regain
-            global.__input_mouse_blocked = true;
+            //Lost focus
+            global.__input_window_focus = false;
             
-            //Retrigger mouse capture timer to avoid the mouse jumping all over the place when we refocus the window
-            if (global.__input_mouse_capture) global.__input_mouse_capture_frame = global.__input_frame;
+            //Linux app continues to recieve input some number of frames after focus loss
+            //Clear IO on focus loss to prevent false positive of subsequent focus regain
+            io_clear();
+            
+            __input_gamepad_stop_trigger_effects(all);
         }
         else
         {
-            if (global.__input_mouse_blocked)
+            if (global.__input_window_focus)
             {
-                //Reevaluate mouse block if focus is sustained
-                global.__input_mouse_blocked = false;
-                global.__input_mouse_blocked = (__input_mouse_button() != mb_none);
+                if (global.__input_window_focus_block_mouse)
+                {
+                    //Unblock so we can test for a held mouse button
+                    global.__input_window_focus_block_mouse = false;
+                
+                    //Sustain mouse block while a button remains held
+                    if (__input_mouse_button() != mb_none) global.__input_window_focus_block_mouse = true;
+                }
+            }
+            else if ((keyboard_key != vk_nokey) 
+                 ||  (mouse_button != mb_none)
+                 ||  ((os_type == os_windows) && window_has_focus())
+                 ||  ((os_type == os_macosx) && global.__input_pointer_moved))
+            {
+                //Regained focus
+                global.__input_window_focus = true;
+                
+                //Block mouse button input
+                if (!INPUT_ALLOW_OUT_OF_FOCUS) global.__input_window_focus_block_mouse = true;
+                    
+                //Retrigger mouse capture timer to avoid the mouse jumping all over the place when we refocus the window
+                if (global.__input_mouse_capture) global.__input_mouse_capture_frame = global.__input_frame;
+                
+                __input_player_apply_trigger_effects(all);
             }
         }
     }
     
-    //Mouse motion tracking
-    var _moved = false;
+    #endregion
+    
+    
+    
+    #region Mouse
+    
+    var _moved = false;    
+    var _m = 0;
+    repeat(INPUT_COORD_SPACE.__SIZE)
+    {
+        global.__input_pointer_dx[@ _m] = 0;
+        global.__input_pointer_dy[@ _m] = 0;
+        ++_m;
+    }
+    
+    __input_release_multimonitor_cursor();
     
     if (global.__input_mouse_capture)
     {
@@ -164,8 +196,17 @@ function __input_system_tick()
                         case INPUT_COORD_SPACE.DISPLAY:
                             var _old_x     = window_get_width()/2;
                             var _old_y     = window_get_height()/2;
-                            var _pointer_x = device_mouse_raw_x(global.__input_pointer_index);
-                            var _pointer_y = device_mouse_raw_y(global.__input_pointer_index);
+                            
+                            if (os_type == os_windows)
+                            {
+                                _pointer_x = display_mouse_get_x() - window_get_x();
+                                _pointer_y = display_mouse_get_y() - window_get_y();  
+                            }
+                            else
+                            {
+                                _pointer_x = device_mouse_raw_x(global.__input_pointer_index);
+                                _pointer_y = device_mouse_raw_y(global.__input_pointer_index);
+                            }
                         break;
                     }
                     
@@ -184,31 +225,12 @@ function __input_system_tick()
                     ++_m;
                 }
             }
-            else
-            {
-                var _m = 0;
-                repeat(INPUT_COORD_SPACE.__SIZE)
-                {
-                    global.__input_pointer_dx[@ _m] = 0;
-                    global.__input_pointer_dy[@ _m] = 0;
-                    ++_m;
-                }
-            }
             
+            //Recenter mouse cursor
             window_mouse_set(window_get_width()/2, window_get_height()/2);
         }
-        else
-        {
-            var _m = 0;
-            repeat(INPUT_COORD_SPACE.__SIZE)
-            {
-                global.__input_pointer_dx[@ _m] = 0;
-                global.__input_pointer_dy[@ _m] = 0;
-                ++_m;
-            }
-        }
     }
-    else
+    else if (global.__input_window_focus || INPUT_ALLOW_OUT_OF_FOCUS || (os_type == os_macosx))
     {
         var _m = 0;
         repeat(INPUT_COORD_SPACE.__SIZE)
@@ -231,8 +253,16 @@ function __input_system_tick()
                 break;
                 
                 case INPUT_COORD_SPACE.DISPLAY:
-                    _pointer_x = device_mouse_raw_x(global.__input_pointer_index);
-                    _pointer_y = device_mouse_raw_y(global.__input_pointer_index);
+                    if (os_type == os_windows)
+                    {
+                        _pointer_x = display_mouse_get_x() - window_get_x();
+                        _pointer_y = display_mouse_get_y() - window_get_y();  
+                    }
+                    else
+                    {
+                        _pointer_x = device_mouse_raw_x(global.__input_pointer_index);
+                        _pointer_y = device_mouse_raw_y(global.__input_pointer_index);
+                    }
                 break;
             }
             
@@ -251,17 +281,16 @@ function __input_system_tick()
     
     global.__input_pointer_moved = _moved;
     
-    //Windows mouse extensions
-    global.__input_tap_click = false;
+    global.__input_tap_click = false;    
     if (os_type == os_windows)
     {
         //Track clicks from touchpad and touchscreen taps (system-setting dependent)
         global.__input_tap_presses  += device_mouse_check_button_pressed( 0, mb_left);
         global.__input_tap_releases += device_mouse_check_button_released(0, mb_left);
-    
-        //Resolve press/release desync (where press failed to register on same frame as release)
+
         if (global.__input_tap_releases >= global.__input_tap_presses)
         {
+            //Resolve press/release desync (where press failed to register on same frame as release)
             global.__input_tap_click    = (global.__input_tap_releases > global.__input_tap_presses);
             global.__input_tap_presses  = 0;
             global.__input_tap_releases = 0;
@@ -345,79 +374,84 @@ function __input_system_tick()
     
     #region Gamepads
     
-	if (global.__input_frame > INPUT_GAMEPADS_TICK_PREDELAY)
-	{
-	    //Expand dynamic device count
-	    var _device_change = max(0, gamepad_get_device_count() - array_length(global.__input_gamepads))
-	    repeat(_device_change) array_push(global.__input_gamepads, undefined);
+    var _steam_handles_changed = false;
+    if (global.__input_using_steamworks)
+    {
+        steam_input_run_frame();
+        _steam_handles_changed = __input_steam_handles_changed();        
+        global.__input_steam_handles = steam_input_get_connected_controllers();
+    }
+    
+    if (global.__input_frame > INPUT_GAMEPADS_TICK_PREDELAY)
+    {
+        //Expand dynamic device count
+        var _device_change = max(0, gamepad_get_device_count() - array_length(global.__input_gamepads))
+        repeat(_device_change) array_push(global.__input_gamepads, undefined);
         
-	    var _device_change = max(0, gamepad_get_device_count() - array_length(INPUT_GAMEPAD))
-	    repeat(_device_change) array_push(INPUT_GAMEPAD, new __input_class_source(__INPUT_SOURCE.GAMEPAD, array_length(INPUT_GAMEPAD)));
-		
-	    var _g = 0;
-	    repeat(array_length(global.__input_gamepads))
-	    {
-	        var _gamepad = global.__input_gamepads[_g];
-	        if (is_struct(_gamepad))
-	        {
-	            if (gamepad_is_connected(_g))
-	            {
-	                if (os_type == os_switch)
-	                {
-	                    //When L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
-	                    //Instead we have to check for changes in the description to see if state has changed
-	                    if (_gamepad.description != gamepad_get_description(_g))
-	                    {
-	                        _gamepad.discover();
-	                    }
-	                    else
-	                    {
-	                        _gamepad.tick();
-	                    }
-	                }
-	                else
-	                {
-	                    _gamepad.tick();
-	                }
-	            }
-	            else
-	            {
-	                //Remove our gamepad handler
-	                __input_trace("Gamepad ", _g, " disconnected");
-					
-	                global.__input_gamepads[@ _g] = undefined;
-					
-	                //Also report gamepad changes for any active players
-	                var _p = 0;
-	                repeat(INPUT_MAX_PLAYERS)
-	                {
-	                    with(global.__input_players[_p])
-	                    {
+        var _device_change = max(0, gamepad_get_device_count() - array_length(INPUT_GAMEPAD))
+        repeat(_device_change) array_push(INPUT_GAMEPAD, new __input_class_source(__INPUT_SOURCE.GAMEPAD, array_length(INPUT_GAMEPAD)));
+        
+        var _clear_gamepads = (!INPUT_ALLOW_OUT_OF_FOCUS && !global.__input_window_focus);
+        
+        var _g = 0;
+        repeat(array_length(global.__input_gamepads))
+        {
+            var _gamepad = global.__input_gamepads[_g];
+            if (is_struct(_gamepad))
+            {
+                if (gamepad_is_connected(_g))
+                {
+                    if (((os_type == os_switch) && (_gamepad.description != gamepad_get_description(_g))) || _steam_handles_changed)
+                    {
+                        //When Switch L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
+                        //Instead we have to check for changes in the description to see if state has changed
+                        //Also, force rediscovery when Steam Input handles have changed
+                        _gamepad.discover();
+                    }
+                    else
+                    {
+                        _gamepad.tick(_clear_gamepads);
+                    }
+                }
+                else
+                {
+                    //Remove our gamepad handler
+                    __input_trace("Gamepad ", _g, " disconnected");
+                    
+                    gamepad_set_vibration(global.__input_gamepads[@ _g].index, 0, 0);
+                    global.__input_gamepads[@ _g] = undefined;
+                    
+                    //Also report gamepad changes for any active players
+                    var _p = 0;
+                    repeat(INPUT_MAX_PLAYERS)
+                    {
+                        with(global.__input_players[_p])
+                        {
                             if (__source_contains(INPUT_GAMEPAD[_g]))
                             {
-	                            __input_trace("Player ", _p, " gamepad disconnected");
+                                __input_trace("Player ", _p, " gamepad disconnected");
                                 __source_remove(INPUT_GAMEPAD[_g]);
                             }
-	                    }
+                        }
+                        
+                        ++_p;
+                    }
+                }
+            }
+            else
+            {
+                if (gamepad_is_connected(_g))
+                {
+                    __input_trace("Gamepad ", _g, " connected");
+                    __input_trace("New gamepad = \"", gamepad_get_description(_g), "\", GUID=\"", gamepad_get_guid(_g), "\", buttons = ", gamepad_button_count(_g), ", axes = ", gamepad_axis_count(_g), ", hats = ", gamepad_hat_count(_g));
                     
-	                    ++_p;
-	                }
-	            }
-	        }
-	        else
-	        {
-	            if (gamepad_is_connected(_g))
-	            {
-	                __input_trace("Gamepad ", _g, " connected");
-	                __input_trace("New gamepad = \"", gamepad_get_description(_g), "\", GUID=\"", gamepad_get_guid(_g), "\"");
-					
-	                global.__input_gamepads[@ _g] = new __input_class_gamepad(_g);
-	            }
-	        }
-			
-	        ++_g;
-	    }
-	}
+                    global.__input_gamepads[@ _g] = new __input_class_gamepad(_g);
+                }
+            }
+            
+            ++_g;
+        }
+    }
     
     #endregion
     
@@ -552,10 +586,10 @@ function __input_system_tick()
     
     switch(global.__input_source_mode)
     {
-        case INPUT_SOURCE_MODE.FIXED:       /* Do nothing! */                       break;
-        case INPUT_SOURCE_MODE.JOIN:         __input_multiplayer_assignment_tick(); break;
-        case INPUT_SOURCE_MODE.HOTSWAP:      __input_hotswap_tick();                break;
-        case INPUT_SOURCE_MODE.MIXED:                                               break;
+        case INPUT_SOURCE_MODE.FIXED:       /* Do nothing! */                      break;
+        case INPUT_SOURCE_MODE.JOIN:        __input_multiplayer_assignment_tick(); break;
+        case INPUT_SOURCE_MODE.HOTSWAP:     __input_hotswap_tick();                break;
+        case INPUT_SOURCE_MODE.MIXED:                                              break;
         case INPUT_SOURCE_MODE.MULTIDEVICE:                                        break;
     }
 }

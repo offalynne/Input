@@ -1,15 +1,16 @@
 /// @param index
 function __input_class_gamepad(_index) constructor
 {
-    index             = _index;
-    description       = gamepad_get_description(_index);
-    guid              = gamepad_get_guid(_index);
-    xinput            = undefined;
-    raw_type          = undefined;
-    simple_type       = undefined;
-    guessed_type      = false;
-    blacklisted       = false;
-    sdl2_definition   = undefined;
+    index           = _index;
+    description     = gamepad_get_description(_index);
+    guid            = gamepad_get_guid(_index);
+    xinput          = undefined;
+    raw_type        = undefined;
+    simple_type     = undefined;
+    sdl2_definition = undefined;
+    guessed_type    = false;
+    blacklisted     = false;
+    scale_trigger   = false;
     
     vendor  = undefined;
     product = undefined;
@@ -17,14 +18,36 @@ function __input_class_gamepad(_index) constructor
     custom_mapping      = false;
     mac_cleared_mapping = false;
     
+    button_count = undefined;
+    axis_count   = undefined;
+    hat_count    = undefined;
+    
+    __steam_handle_index = undefined;
+    __steam_handle       = undefined;
+    
+    __vibration_support = false;
+    __vibration_left    = 0;
+    __vibration_right   = 0;
+    __vibration_received_this_frame = false;
+    
+    __motion = undefined;
+    
     mapping_gm_to_raw = {};
     mapping_raw_to_gm = {};
     mapping_array     = [];
     
+    __connection_time = current_time;
+    __scan_start_time = __connection_time + 250; //Give GM some space before allowing gamepad mappings to return values
+    
     discover();
+    
+    
     
     static discover = function()
     {
+        //Discard deadzone, we use axis thresholds
+        gamepad_set_axis_deadzone(index, 0);
+        
         if (custom_mapping)
         {
             custom_mapping = false;
@@ -36,12 +59,33 @@ function __input_class_gamepad(_index) constructor
             mapping_array     = [];
         }
         
+        button_count = gamepad_button_count(index);
+        axis_count   = gamepad_axis_count(index);
+        hat_count    = gamepad_hat_count(index);
+        
         __input_gamepad_set_vid_pid();
         __input_gamepad_set_description();
         __input_gamepad_find_in_sdl2_database();
         __input_gamepad_set_type();
         __input_gamepad_set_blacklist();
+        __input_gamepad_set_virtual();
         __input_gamepad_set_mapping();
+        
+        __vibration_support = global.__input_vibration_allowed_on_platform && ((os_type != os_windows) || xinput);        
+        if (__vibration_support)
+        {
+            if (os_type == os_ps5)
+            {
+                ps5_gamepad_set_vibration_mode(index, ps5_gamepad_vibration_mode_compatible);
+            }
+        
+            gamepad_set_vibration(index, 0, 0);
+        }
+
+        if (global.__input_gamepad_motion_support)
+        {
+            __motion = new __input_class_gamepad_motion(index);
+        }
         
         __input_trace("Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
     }
@@ -94,14 +138,23 @@ function __input_class_gamepad(_index) constructor
     }
     
     /// @param GMconstant
+    static get_delta = function(_gm)
+    {
+        if (!custom_mapping) return get_value(_gm);
+        var _mapping = mapping_gm_to_raw[$ _gm];
+        if (_mapping == undefined) return 0.0;
+        return _mapping.__value_delta;
+    }
+    
+    /// @param GMconstant
     static is_axis = function(_gm)
     {
         if (!custom_mapping)
         {
             if ((_gm == gp_shoulderlb) || (_gm == gp_shoulderrb))
             {
-                //If this is an XInput controller, the triggers are *usually* analogue
-                return xinput;
+                //XInput and platforms with analogue triggers
+                return (xinput || __INPUT_ON_XBOX || __INPUT_ON_PS || (__INPUT_ON_APPLE && __INPUT_ON_MOBILE));
             }
             
             //Otherwise return true only for the thumbsticks
@@ -166,14 +219,144 @@ function __input_class_gamepad(_index) constructor
         return _mapping;
     }
     
-    static tick = function()
+    static tick = function(_clear = false)
     {
+        //Recalibrate XInput triggers
+        if (scale_trigger && ((gamepad_axis_value(index, __XINPUT_AXIS_LT) > 0.25) || (gamepad_axis_value(index, __XINPUT_AXIS_RT) > 0.25)))
+        {
+            //Trigger value exceeds limited range, set range to "normal" scale (0 to 255/256)
+            with mapping_gm_to_raw[$ gp_shoulderlb] scale = 255;
+            with mapping_gm_to_raw[$ gp_shoulderrb] scale = 255;
+            scale_trigger = false;
+            __input_trace("Recalibrated XInput trigger scale for gamepad ", index);
+        }
+        
+        var _scan = (current_time > __scan_start_time);
         var _gamepad = index;
         var _i = 0;
         repeat(array_length(mapping_array))
         {
-            with(mapping_array[_i]) tick(_gamepad);
+            with(mapping_array[_i]) tick(_gamepad, _clear, _scan);
             ++_i;
         }
+        
+        if (__vibration_support)
+        {
+            if (__vibration_received_this_frame && input_window_has_focus())
+            {
+                if (os_type == os_switch)
+                {
+                    var _lowStrength  = INPUT_VIBRATION_SWITCH_OS_STRENGTH*__vibration_left;
+                    var _highStrength = INPUT_VIBRATION_SWITCH_OS_STRENGTH*__vibration_right;
+                    
+                    if ((raw_type == "SwitchJoyConLeft") || (raw_type == "SwitchJoyConRight"))
+                    {
+                        //Documentation said to use switch_controller_motor_single for these two controller types but I'll be damned if I can feel any difference!
+                        switch_controller_vibrate_hd(index, switch_controller_motor_single, _highStrength, 250, _lowStrength, 160);
+                    }
+                    else
+                    {
+                        switch_controller_vibrate_hd(index, switch_controller_motor_left,  _highStrength, 250, _lowStrength, 160);
+                        switch_controller_vibrate_hd(index, switch_controller_motor_right, _highStrength, 250, _lowStrength, 160);
+                    }
+                }
+                else
+                {
+                    gamepad_set_vibration(index, __vibration_left, __vibration_right);
+                }
+            }
+            else
+            {
+                gamepad_set_vibration(index, 0, 0);
+            }
+            
+            __vibration_received_this_frame = false;
+        }
+    }
+    
+    static __color_set = function(_color)
+    {   
+        if (global.__input_using_steamworks)
+        {
+            var _led_flag = steam_input_led_flag_set_color;
+            if (_color == undefined)
+            {
+                _color = 0;
+                _led_flag = steam_input_led_flag_restore_user_default;
+            }           
+            
+            if (is_numeric(__steam_handle))
+            {
+                steam_input_set_led_color(__steam_handle, _color, _led_flag);
+            }
+
+            return;
+        }
+        
+        if (__INPUT_ON_PS)
+        {
+            if (_color == undefined)
+            {
+                if (os_type == os_ps4) ps4_gamepad_reset_color(index);
+                if (os_type == os_ps5) ps5_gamepad_reset_color(index);
+                return;
+            }
+            
+            gamepad_set_color(index, _color);
+        }
+    }
+    
+    static __vibration_set = function(_left, _right)
+    {
+        __vibration_left  = _left;
+        __vibration_right = _right;
+        
+        __vibration_received_this_frame = true;
+    }
+    
+    static __trigger_effect_apply = function(_trigger, _effect, _strength)
+    {
+        var _right = 1;
+        if (_trigger == gp_shoulderlb)
+        {
+            _right = 0;
+        }
+        else if (_trigger != gp_shoulderrb)
+        {
+            __input_error("Value ", _trigger ," not a gamepad trigger");
+        }
+
+        if (os_type == os_ps5)
+        {
+            return _effect.__apply_ps5(index, _trigger);
+        }
+
+        if (global.__input_using_steamworks)
+        {            
+            var _command_array = array_create(2, { mode: steam_input_sce_pad_trigger_effect_mode_off, command_data: {} });
+            _command_array[_right].mode = global.__input_steam_trigger_mode[$ _effect.__mode];
+            _command_array[_right].command_data[$ string(_effect.__mode_name) + "_param"] = _effect.__params;
+            
+            if (_effect.__params[$ "strength"] != undefined)
+            {
+                _effect.__params.strength *= _strength;
+            }
+            else if (_effect.__params[$ "amplitude"] != undefined)
+            {
+                _effect.__params.amplitude *= _strength;                
+            }
+            
+            var _steam_trigger_params = { command: _command_array, trigger_mask: steam_input_sce_pad_trigger_effect_trigger_mask_l2 };
+            if (_right)
+            {
+                _steam_trigger_params.trigger_mask = steam_input_sce_pad_trigger_effect_trigger_mask_r2;
+            }
+            
+            if not (is_numeric(__steam_handle)) return false;
+            
+            return steam_input_set_dualsense_trigger_effect(__steam_handle, _steam_trigger_params);
+        }
+
+        return false;
     }
 }

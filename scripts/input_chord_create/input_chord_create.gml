@@ -9,6 +9,8 @@
 
 function input_chord_create()
 {
+    __input_initialize();
+    
     var _name     = argument[0];
     var _max_time = argument[1] ?? INPUT_CHORD_DEFAULT_TIME;
     

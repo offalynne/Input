@@ -1,13 +1,13 @@
 function __input_multiplayer_assignment_tick()
 {
-    if (!variable_struct_exists(global.__input_basic_verb_dict, INPUT_MULTIPLAYER_LEAVE_VERB))
+    if ((INPUT_MULTIPLAYER_LEAVE_VERB != undefined) && !variable_struct_exists(global.__input_basic_verb_dict, INPUT_MULTIPLAYER_LEAVE_VERB))
     {
         __input_error("INPUT_MULTIPLAYER_LEAVE_VERB \"", INPUT_MULTIPLAYER_LEAVE_VERB, "\" doesn't exist");
     }
     
-    if (!is_method(INPUT_MULTIPLAYER_ABORT_CALLBACK))
+    if (!is_method(INPUT_MULTIPLAYER_ABORT_CALLBACK) && !(is_numeric(INPUT_MULTIPLAYER_ABORT_CALLBACK) && script_exists(INPUT_MULTIPLAYER_ABORT_CALLBACK)))
     {
-        __input_error("INPUT_MULTIPLAYER_ABORT_CALLBACK has not been defined");
+        __input_error("INPUT_MULTIPLAYER_ABORT_CALLBACK has not been defined to a function or script");
     }
     
     var _abort = false;
@@ -58,7 +58,7 @@ function __input_multiplayer_assignment_tick()
                     tick();
                 }
                 
-                if ((INPUT_MULTIPLAYER_LEAVE_VERB != undefined) && input_check_pressed(INPUT_MULTIPLAYER_LEAVE_VERB) && (input_player_connected_count() < global.__input_multiplayer_min) && (global.__input_multiplayer_min > 1))
+                if ((INPUT_MULTIPLAYER_LEAVE_VERB != undefined) && input_check_pressed(INPUT_MULTIPLAYER_LEAVE_VERB) && (input_player_connected_count() < global.__input_multiplayer_min) && (global.__input_multiplayer_min > 1) && global.__input_multiplayer_allow_abort)
                 {
                     __input_trace("Assignment: Player ", _p, " aborted source assignment");
                     _abort = true;
@@ -89,8 +89,12 @@ function __input_multiplayer_assignment_tick()
         ++_p;
     }
     
-    if (_abort)
+    if (_abort && global.__input_multiplayer_allow_abort)
     {
+        __input_trace("Assignment: Restoring source mode ", global.__input_previous_source_mode);
+        input_source_mode_set(global.__input_previous_source_mode);
+        global.__input_previous_source_mode = global.__input_source_mode;
+        
         if (is_method(INPUT_MULTIPLAYER_ABORT_CALLBACK))
         {
             INPUT_MULTIPLAYER_ABORT_CALLBACK();

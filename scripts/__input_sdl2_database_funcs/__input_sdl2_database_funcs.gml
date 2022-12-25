@@ -196,10 +196,8 @@ function __input_load_sdl2_from_buffer(_buffer)
                     if (_lower == "platform:mac os"  ) { _platform = os_macosx;  break; }
                     if (_lower == "platform:mac os x") { _platform = os_macosx;  break; }
                     if (_lower == "platform:linux"   ) { _platform = os_linux;   break; }
-                    if (_lower == "platform:ubuntu"  ) { _platform = os_linux;   break; }
                     if (_lower == "platform:android" ) { _platform = os_android; break; }
                     if (_lower == "platform:ios"     ) { _platform = os_ios;     break; }
-                    if (_lower == "platform:tvos"    ) { _platform = os_tvos;    break; }
                     --_x;
                 }
                 

@@ -27,6 +27,8 @@
 
 function input_combo_create(_name, _default_timeout = INPUT_TIMER_MILLISECONDS? 333 : 20)
 {
+    __input_initialize();
+    
     __input_ensure_unique_verb_name(_name);
     
     var _combo_definition = new __input_class_combo_definition(_name, _default_timeout);
