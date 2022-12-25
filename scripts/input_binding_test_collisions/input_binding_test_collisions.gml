@@ -75,9 +75,7 @@ function input_binding_test_collisions(_verb_name, _src_binding, _player_index =
                     //A lot of alternate binding slots don't get used so they return <undefined>
                     if (is_struct(_extant_binding))
                     {
-                        if ((_extant_binding.type          == _src_binding.type)
-                        &&  (_extant_binding.value         == _src_binding.value)
-                        &&  (_extant_binding.axis_negative == _src_binding.axis_negative)
+                        if ((_extant_binding.__label == _src_binding.__label)
                         &&  ((global.__input_source_mode != INPUT_SOURCE_MODE.MULTIDEVICE) || (_extant_binding.__gamepad_index == _src_binding.__gamepad_index) || (_extant_binding.__gamepad_index == undefined) || (_src_binding.__gamepad_index == undefined)))
                         {
                             array_push(_output_array, { verb: _verb, alternate: _alternate_index });
