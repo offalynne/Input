@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__input_class_player",
+  "name": "__input_gamepad_guid_parse",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Classes",
-    "path": "folders/Input/(System)/Classes.yy",
+    "name": "(System)",
+    "path": "folders/Input/(System).yy",
   },
 }
