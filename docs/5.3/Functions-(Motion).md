@@ -79,7 +79,7 @@ This function configures gyro control of the cursor.
 
 ## `input_gyro_params_get([playerIndex])`
 
-*Returns:* Returns: Struct, the parameters currently set for player gyro control of the cursor
+*Returns:* Struct, the parameters currently set for player gyro control of the cursor
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
