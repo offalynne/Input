@@ -184,13 +184,14 @@ function __input_axis_is_directional(_axis)
 /// @param suppressWarnings
 function __input_gamepad_guid_parse(_guid, _legacy, _suppress)
 {
-    var _vendor  = "";
-    var _product = "";
+    var _vendor      = "";
+    var _product     = "";
+    var _description = "";
     
     if (_guid == "00000000000000000000000000000000")
     {
         if (!_suppress) __input_trace("Warning! GUID was empty");
-        return { vendor : "", product : "" };
+        return { vendor : "", product : "", description : "" };
     }
     
     if (_legacy)
@@ -201,33 +202,49 @@ function __input_gamepad_guid_parse(_guid, _legacy, _suppress)
     }
     else
     {
-        //Check to see if this GUID fits our expected pattern:
+        //Expected GUID pattern:
+        // 
+        //  ****0000****0000****0000****XXXX
+        //  N1  N2  N3  N4  N5  N6  N7  N8
         //
-        //  ****0000****0000****0000****????
-        //  ^       ^       ^       ^
-        //  Driver  Vendor  Product Revision
+        // N1: Bus (OS driver)
+        // N3: Vendor ID
+        // N5: Product ID
+        // N7: Revision
+        // N8: Driver hint (SDL)
         //
-        //If not, return an invalid VID+PID
-        if ((string_copy(_guid,  5, 4) != "0000")
-        ||  (string_copy(_guid, 13, 4) != "0000")
-        ||  (string_copy(_guid, 21, 4) != "0000"))
+        //If instead of the expected VID + PID + REV pattern, GUID is used to encode device
+        //description, N3 onwards contains encoded description instead of indicated values.
+        //On Android platform, GUID description encoding begins at N1 and will not mismatch
+            
+        //Check for non-empty N4, indicating this is a description encoded GUID
+        if ((string_copy(_guid, 13, 4) != "0000") && (os_type != os_android))
         {
-            if (!_suppress) __input_trace("Warning! GUID \"", _guid, "\" does not fit expected pattern. VID+PID cannot be extracted");
-            return { vendor : "", product : "" };
+            _description = string_copy(_guid, 1, 20); //Match to minimum description length, N1 - N5
         }
-        
-        //Check to see if the driver for this GUID is what we expect
-        //In some cases, what we expect for the driver ID is going to be different so this isn't necessarily something that invalidates VID+PID checking
-        if ((string_copy(_guid, 1, 4) != "0300") && (string_copy(_guid, 1, 4) != "0500"))
+        else
         {
-            if (!_suppress) __input_trace("Warning! GUID \"", _guid, "\" driver ID does not match expected (Found ", string_copy(_guid, 1, 4), ", expect either 0300 or 0500)");
-        }
+            //Otherwise confirm N6 is also empty
+            if (string_copy(_guid, 21, 4) != "0000")
+            {
+                if (!_suppress) __input_trace("Warning! GUID \"", _guid, "\" does not fit expected pattern. VID+PID cannot be extracted");
+                return { vendor : "", product : "", description : "" };
+            }
         
-        _vendor  = string_copy(_guid,  9, 4);
-        _product = string_copy(_guid, 17, 4);
+            //Check to see if N1 for this GUID is what we expect (OS bus for USB or Bluetooth)
+            //In some cases, what we expect for this value is going to be different, so this isn't necessarily something that invalidates VID+PID checking
+            if ((string_copy(_guid, 1, 4) != "0300") 
+            &&  (string_copy(_guid, 1, 4) != "0500"))
+            {
+                if (!_suppress) __input_trace("Warning! GUID \"", _guid, "\" driver ID does not match expected (Found ", string_copy(_guid, 1, 4), ", expect either 0300 or 0500)");
+            }
+        
+            _vendor  = string_copy(_guid,  9, 4);
+            _product = string_copy(_guid, 17, 4);
+        }
     }
     
-    return { vendor : _vendor, product : _product };
+    return { vendor : _vendor, product : _product, description : _description };
 }
 
 function __input_trace()

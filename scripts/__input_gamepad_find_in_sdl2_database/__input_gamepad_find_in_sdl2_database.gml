@@ -16,13 +16,25 @@ function __input_gamepad_find_in_sdl2_database()
     
     var _definition = undefined;
     
-    //Otherwise search through our vendor+product IDs
-    var _vp_array = global.__input_sdl2_database.by_vendor_product[$ vendor + product];
-    if (is_array(_vp_array))
+    //Otherwise search through our GUID-based description IDs
+    var _description_array = global.__input_sdl2_database.by_description[$ string_copy(guid, 1, 20)];
+    if (is_array(_description_array))
     {
-        if (array_length(_vp_array) > 0) //Get the first binding for this vendor+product and OS
+        if (array_length(_description_array) > 0) //Get the first binding for this description and OS
         {
-            var _definition = _vp_array[0];
+            var _definition = _description_array[0];
+        }
+    }
+    else
+    {    
+        //Otherwise search through our vendor+product IDs
+        var _vp_array = global.__input_sdl2_database.by_vendor_product[$ vendor + product];
+        if (is_array(_vp_array))
+        {
+            if (array_length(_vp_array) > 0) //Get the first binding for this vendor+product and OS
+            {
+                var _definition = _vp_array[0];
+            }
         }
     }
     
