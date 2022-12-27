@@ -320,14 +320,15 @@ function __input_class_gamepad(_index) constructor
     
     static __trigger_effect_apply = function(_trigger, _effect, _strength)
     {
-        var _right = 1;
+        var _trigger_index = 1;
         if (_trigger == gp_shoulderlb)
         {
-            _right = 0;
+            _trigger_index = 0;
         }
         else if (_trigger != gp_shoulderrb)
         {
             __input_error("Value ", _trigger ," not a gamepad trigger");
+            return false;
         }
 
         if (os_type == os_ps5)
@@ -337,9 +338,9 @@ function __input_class_gamepad(_index) constructor
 
         if (global.__input_using_steamworks)
         {            
-            var _command_array = array_create(2, { mode: steam_input_sce_pad_trigger_effect_mode_off, command_data: {} });
-            _command_array[_right].mode = global.__input_steam_trigger_mode[$ _effect.__mode];
-            _command_array[_right].command_data[$ string(_effect.__mode_name) + "_param"] = _effect.__params;
+            var _command_array = [{ mode: steam_input_sce_pad_trigger_effect_mode_off, command_data: {} }, { mode: steam_input_sce_pad_trigger_effect_mode_off, command_data: {} }];
+            _command_array[_trigger_index].mode = global.__input_steam_trigger_mode[$ _effect.__mode];
+            _command_array[_trigger_index].command_data[$ string(_effect.__mode_name) + "_param"] = _effect.__params;
             
             if (_effect.__params[$ "strength"] != undefined)
             {
@@ -351,7 +352,7 @@ function __input_class_gamepad(_index) constructor
             }
             
             var _steam_trigger_params = { command: _command_array, trigger_mask: steam_input_sce_pad_trigger_effect_trigger_mask_l2 };
-            if (_right)
+            if (_trigger_index)
             {
                 _steam_trigger_params.trigger_mask = steam_input_sce_pad_trigger_effect_trigger_mask_r2;
             }
