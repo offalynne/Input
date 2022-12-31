@@ -258,7 +258,8 @@ beef,feed,CommunityXBox360 // Monect
 1532,0a29,CommunityXBoxOne // Razer Wolverine 2
 0e6f,02d7,CommunityXBoxOne // PDP Black Camo
 045e,0b03,CommunityXBoxOne // Xbox One
-20d6,2802,CommunityXBoxOne // Power A Wired
+20d6,2802,CommunityXBoxOne // PowerA Wired
+20d6,200f,CommunityXBoxOne // PowerA Series
 1915,0040,CommunityXBoxOne // Flydigi X9ET Pro and Vader 2
 2563,0526,CommunityPSX // Uberwith PS
 0e6f,0111,CommunityPSX // Afterglow PS3
