@@ -109,6 +109,9 @@ function __input_initialize()
     //Whether mouse is blocked due to Window focus state
     global.__input_window_focus_block_mouse = false;
     
+    //Timeout for gamepad source swap on window focus change
+    global.__input_window_focus_gamepad_timeout = 0;
+    
     global.__input_cursor_verbs_valid = false;
     
     //Whether to swap A/B gamepad buttons for default bindings

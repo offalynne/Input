@@ -121,6 +121,11 @@ function __input_system_tick()
                     //Sustain mouse block while a button remains held
                     if (__input_mouse_button() != mb_none) global.__input_window_focus_block_mouse = true;
                 }
+                
+                if (global.__input_window_focus_gamepad_timeout > 0)
+                {                    
+                    --global.__input_window_focus_gamepad_timeout;
+                }
             }
             else if ((keyboard_key != vk_nokey) 
                  ||  (mouse_button != mb_none)
@@ -129,6 +134,9 @@ function __input_system_tick()
             {
                 //Regained focus
                 global.__input_window_focus = true;
+                
+                //Timeout gamepad
+                global.__input_window_focus_gamepad_timeout = 2;
                 
                 //Block mouse button input
                 if (!INPUT_ALLOW_OUT_OF_FOCUS) global.__input_window_focus_block_mouse = true;
