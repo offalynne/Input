@@ -54,6 +54,7 @@
     {"id":{"name":"input_cursor_speed_set","path":"scripts/input_cursor_speed_set/input_cursor_speed_set.yy",},"order":6,},
     {"id":{"name":"input_binding_get","path":"scripts/input_binding_get/input_binding_get.yy",},"order":2,},
     {"id":{"name":"input_binding_test_collisions","path":"scripts/input_binding_test_collisions/input_binding_test_collisions.yy",},"order":6,},
+    {"id":{"name":"input_binding_get_verbs","path":"scripts/input_binding_get_verbs/input_binding_get_verbs.yy",},"order":14,},
     {"id":{"name":"input_motion_data_get","path":"scripts/input_motion_data_get/input_motion_data_get.yy",},"order":2,},
     {"id":{"name":"obj_test_cooldown","path":"objects/obj_test_cooldown/obj_test_cooldown.yy",},"order":26,},
     {"id":{"name":"input_vibrate_constant","path":"scripts/input_vibrate_constant/input_vibrate_constant.yy",},"order":3,},
