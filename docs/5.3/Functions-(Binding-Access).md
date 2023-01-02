@@ -70,7 +70,7 @@ This function returns a struct that describes the binding for the given verb. It
 
 ## `input_binding_get_verbs(binding, [playerIndex], [profileName])`
 
-_Returns:_ Array of structs containing conflicting verb/alternate indexes
+_Returns:_ Array of structs containing verb/alternate indexes
 
 |Name           |Datatype                            |Purpose                                                                                                                                                                                                                                                           |
 |---------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
