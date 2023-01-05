@@ -196,8 +196,16 @@ function __input_gamepad_set_type()
             }
             
             #region Unique gamepad type overrides
-
-            if ((vendor == "0d00") && (product == "0000") && (button_count == 15) && (axis_count == 4) && (hat_count == 0) && (os_type == os_windows))
+            
+            if ((vendor == "3412") && (product == "adbe") && (button_count == 12) && (axis_count == 6) && (hat_count == 0) && (os_type == os_windows))
+            {
+                //vJoy for Wii U GCN USB driver on Windows
+                __input_trace("Overridding controller ", index ," type to GameCube");
+                description = "GameCube";
+                raw_type = "CommunityGameCube";
+                guessed_type = false;                
+            }
+            else if ((vendor == "0d00") && (product == "0000") && (button_count == 15) && (axis_count == 4) && (hat_count == 0) && (os_type == os_windows))
             {
                 //MFi on Windows (bad GUID)
                 __input_trace("Overriding controller ", index ," type to MFi");
