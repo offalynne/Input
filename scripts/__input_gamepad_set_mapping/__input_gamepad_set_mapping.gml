@@ -908,8 +908,6 @@ function __input_gamepad_set_mapping()
                 set_mapping(gp_select, 29, __INPUT_MAPPING.BUTTON, "back");
                 set_mapping(gp_start,  30, __INPUT_MAPPING.BUTTON, "start");
 
-                set_mapping(gp_stickl, 30, __INPUT_MAPPING.BUTTON, "leftstick");
-
                 set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
                 set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
                 set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
