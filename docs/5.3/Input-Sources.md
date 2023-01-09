@@ -39,7 +39,7 @@ Input defaults to running in "hotswap source mode" when you run your game, a beh
 
 ### `INPUT_SOURCE_MODE.FIXED`
 
-Input will not change sources automatically and you are responsible for managing sources yourself. This is useful as an in-game state for both single player and multiplayer gameplay where you don't want unexpected changes to occur. The auto profile when in hotswap mode is determined by which source the player is currently using.
+Input will not change sources automatically and you are responsible for managing sources yourself. This is useful as an in-game state for both single player and multiplayer gameplay where you don't want unexpected changes to occur. 
 
 ### `INPUT_SOURCE_MODE.JOIN`
 
