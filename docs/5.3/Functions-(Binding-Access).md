@@ -67,28 +67,7 @@ This function returns a struct that describes the binding for the given verb. It
 |`.axis_negative`|boolean |Whether this binding expects negative values (`"gamepad axis"` type only)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 &nbsp;
-<!--
-## `input_binding_get_verbs(binding, [playerIndex], [profileName])`
 
-_Returns:_ Array of structs containing verb/alternate indexes
-
-|Name           |Datatype                            |Purpose                                                                                                                                                                                                                                                           |
-|---------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`binding`      |binding                             |Binding to check against, as returned by [`input_binding_scan_tick()`](<Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex>) or [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>)|
-|`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                                                                                                                                                                                                              |
-|`[profileName]`|string                              |                                                                                                                                                                                                                                                                  |
-
-The array that this function returns contains structs that define which verbs match the given binding. If the array is empty then there are no matching verbs.
-
-The structs returned in the array contain the following:
-
-|Variable    |Datatype                            |Purpose                     |
-|------------|------------------------------------|----------------------------|
-|`.verb`     |[verb](Verbs-and-Bindings)|Verb binding that conflicts |
-|`.alternate`|integer                             |Alternate index for the verb|
-
-&nbsp;
--->
 ## `input_binding_test_collisions(verb, binding, [playerIndex], [profileName])`
 
 _Returns:_ Array of structs containing conflicting verb/alternate indexes
