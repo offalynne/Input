@@ -67,7 +67,7 @@ This function returns a struct that describes the binding for the given verb. It
 |`.axis_negative`|boolean |Whether this binding expects negative values (`"gamepad axis"` type only)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 &nbsp;
-
+<!--
 ## `input_binding_get_verbs(binding, [playerIndex], [profileName])`
 
 _Returns:_ Array of structs containing verb/alternate indexes
@@ -86,7 +86,7 @@ The structs returned in the array contain the following:
 |------------|------------------------------------|----------------------------|
 |`.verb`     |[verb](Verbs-and-Bindings)|Verb binding that conflicts |
 |`.alternate`|integer                             |Alternate index for the verb|
-
+-->
 &nbsp;
 
 ## `input_binding_test_collisions(verb, binding, [playerIndex], [profileName])`
