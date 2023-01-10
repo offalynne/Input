@@ -106,8 +106,8 @@
 - [`input_binding_set(verb, binding, [playerIndex], [alternate], [profileName])`](Functions-(Binding-Access)?id=input_binding_setverb-binding-playerindex-alternate-profilename)
 - [`input_binding_set_safe(verb, binding, [playerIndex], [alternate], [profileName])`](Functions-(Binding-Access)?id=input_binding_set_safeverb-binding-playerindex-alternate-profilename)
 - [`input_binding_get(verb, [playerIndex], [alternate], [profileName])`](Functions-(Binding-Access)?id=input_binding_getverb-playerindex-alternate-profilename)
-- [`input_binding_get_verb(binding, [playerindex], [profilename])`](Functions-(Binding-Access)?id=input_binding_get_verbsbinding-playerindex-profilename)
-- [`input_binding_test_collisions(verb, binding, [playerIndex], [profileName])`](Functions-(Binding-Access)?id=input_binding_test_collisionsverb-binding-playerindex-profilename)
+<!-- - [`input_binding_get_verbs(binding, [playerindex], [profilename])`](Functions-(Binding-Access)?id=input_binding_get_verbsbinding-playerindex-profilename)
+- [`input_binding_test_collisions(verb, binding, [playerIndex], [profileName])`](Functions-(Binding-Access)?id=input_binding_test_collisionsverb-binding-playerindex-profilename) -->
 - [`input_binding_remove(verb, [playerIndex], [alternate], [profileName])`](Functions-(Binding-Access)?id=input_binding_removeverb-playerindex-alternate-profilename)
 - [`input_binding_swap(verbA, alternateA, verbB, alternateB, [playerIndex], [profileName])`](Functions-(Binding-Access)?id=input_binding_swapverba-alternatea-verbb-alternateb-source-playerindex-profilename)
 - [`input_binding_get_name(binding)`](Functions-(Binding-Access)?id=input_binding_get_namebinding)
