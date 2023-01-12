@@ -260,6 +260,7 @@
     {"id":{"name":"input_xy","path":"scripts/input_xy/input_xy.yy",},"order":4,},
     {"id":{"name":"input_player_copy","path":"scripts/input_player_copy/input_player_copy.yy",},"order":8,},
     {"id":{"name":"input_y","path":"scripts/input_y/input_y.yy",},"order":3,},
+    {"id":{"name":"__input_transform_coordinate","path":"scripts/__input_transform_coordinate/__input_transform_coordinate.yy",},"order":41,},
     {"id":{"name":"input_binding_gamepad_set","path":"scripts/input_binding_gamepad_set/input_binding_gamepad_set.yy",},"order":10,},
     {"id":{"name":"input_gyro_params_get","path":"scripts/input_gyro_params_get/input_gyro_params_get.yy",},"order":1,},
     {"id":{"name":"input_cursor_limit_aabb","path":"scripts/input_cursor_limit_aabb/input_cursor_limit_aabb.yy",},"order":10,},
