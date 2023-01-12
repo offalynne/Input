@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "input_cursor_y",
+  "name": "__input_transform_coordinate",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Cursor",
-    "path": "folders/Input/Cursor.yy",
+    "name": "(System)",
+    "path": "folders/Input/(System).yy",
   },
 }
