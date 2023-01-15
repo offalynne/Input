@@ -89,11 +89,11 @@ This function changes what coordinate space is used as a reference for setting t
 
 `INPUT_COORD_SPACE` contains the following members:
 
-|Name         |Purpose                                                                                   |
-|-------------|------------------------------------------------------------------------------------------|
-|`.ROOM`      |Room coordinates; should be the same as `mouse_x` and `mouse_y`. This is the default value|
-|`.GUI`       |GUI coordinates                                                                           |
-|`.DISPLAY`   |Raw device-space coordinates                                                              |
+|Name     |Purpose                                                                                   |
+|---------|------------------------------------------------------------------------------------------|
+|`.ROOM`  |Room coordinates; should be the same as `mouse_x` and `mouse_y`. This is the default value|
+|`.GUI`   |GUI coordinates                                                                           |
+|`.DEVICE`|Raw device-space coordinates                                                              |
 
 &nbsp;
 

@@ -92,11 +92,11 @@ The struct returned by the function contains the following member variables:
 
 `INPUT_COORD_SPACE` contains the following members:
 
-|Name         |Purpose                                                                                   |
-|-------------|------------------------------------------------------------------------------------------|
-|`.ROOM`      |Room coordinates; should be the same as `mouse_x` and `mouse_y`. This is the default value|
-|`.GUI`       |GUI coordinates                                                                           |
-|`.DISPLAY`   |Raw device-space coordinates                                                              |
+|Name     |Purpose                                                                                   |
+|---------|------------------------------------------------------------------------------------------|
+|`.ROOM`  |Room coordinates; should be the same as `mouse_x` and `mouse_y`. This is the default value|
+|`.GUI`   |GUI coordinates                                                                           |
+|`.DEVICE`|Raw device-space coordinates                                                              |
 
 &nbsp;
 

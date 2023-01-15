@@ -35,11 +35,11 @@ The `INPUT_SOURCE_MODE` enum contains the following members. You can read more a
 
 The `INPUT_COORD_SPACE` enum is used to control the coordinate space for mouse and cursor functions, specifically using [`input_mouse_coord_space_set()`](Functions-(Mouse)?id=input_mouse_coord_space_setcoordspace) and [`input_cursor_coord_space_set()`](Functions-(Cursor)?id=input_cursor_coord_space_setcoordspace-playerindex)
 
-|Name         |Purpose                                                                                   |
-|-------------|------------------------------------------------------------------------------------------|
-|`.ROOM`      |Room coordinates; should be the same as `mouse_x` and `mouse_y`. This is the default value|
-|`.GUI`       |GUI coordinates                                                                           |
-|`.DISPLAY`   |Raw device-space coordinates                                                              |
+|Name     |Purpose                                                                                   |
+|---------|------------------------------------------------------------------------------------------|
+|`.ROOM`  |Room coordinates; should be the same as `mouse_x` and `mouse_y`. This is the default value|
+|`.GUI`   |GUI coordinates                                                                           |
+|`.DEVICE`|Raw device-space coordinates                                                              |
 
 &nbsp;
 
