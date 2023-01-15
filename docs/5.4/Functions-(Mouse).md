@@ -32,43 +32,43 @@ The struct returned by the function contains the following member variables:
 
 &nbsp;
 
-## `input_mouse_x()`
+## `input_mouse_x([coordSpace])`
 
 *Returns:* Number, the x-coordinate of the active pointer device
 
-|Name|Datatype|Purpose|
-|----|--------|-------|
-|None|        |       |
+|Name          |Datatype                |Purpose                                                                                                     |
+|--------------|------------------------|------------------------------------------------------------------------------------------------------------|
+|`[coordSpace]`|`INPUT_COORD_SPACE` enum|The coordinate space to use. If not specified, the value set by `input_mouse_coord_space_set()` will be used|
 
 &nbsp;
 
-## `input_mouse_y()`
+## `input_mouse_y([coordSpace])`
 
 *Returns:* Number, the y-coordinate of the active pointer device
 
-|Name|Datatype|Purpose|
-|----|--------|-------|
-|None|        |       |
+|Name          |Datatype                |Purpose                                                                                                     |
+|--------------|------------------------|------------------------------------------------------------------------------------------------------------|
+|`[coordSpace]`|`INPUT_COORD_SPACE` enum|The coordinate space to use. If not specified, the value set by `input_mouse_coord_space_set()` will be used|
 
 &nbsp;
 
-## `input_mouse_dx()`
+## `input_mouse_dx([coordSpace])`
 
 *Returns:* Number, how far the mouse has moved in the x-axis between frames
 
-|Name|Datatype|Purpose|
-|----|--------|-------|
-|None|        |       |
+|Name          |Datatype                |Purpose                                                                                                     |
+|--------------|------------------------|------------------------------------------------------------------------------------------------------------|
+|`[coordSpace]`|`INPUT_COORD_SPACE` enum|The coordinate space to use. If not specified, the value set by `input_mouse_coord_space_set()` will be used|
 
 &nbsp;
 
-## `input_mouse_dy()`
+## `input_mouse_dy([coordSpace])`
 
 *Returns:* Number, how far the mouse has moved in the y-axis between frames
 
-|Name|Datatype|Purpose|
-|----|--------|-------|
-|None|        |       |
+|Name          |Datatype                |Purpose                                                                                                     |
+|--------------|------------------------|------------------------------------------------------------------------------------------------------------|
+|`[coordSpace]`|`INPUT_COORD_SPACE` enum|The coordinate space to use. If not specified, the value set by `input_mouse_coord_space_set()` will be used|
 
 &nbsp;
 
