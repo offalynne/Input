@@ -201,7 +201,7 @@ function __input_system_tick()
                             var _pointer_y = device_mouse_y_to_gui(global.__input_pointer_index);
                         break;
                         
-                        case INPUT_COORD_SPACE.DISPLAY:
+                        case INPUT_COORD_SPACE.DEVICE:
                             var _old_x     = window_get_width()/2;
                             var _old_y     = window_get_height()/2;
                             
@@ -222,7 +222,7 @@ function __input_system_tick()
                     var _dy = (_pointer_y - _old_y)*global.__input_mouse_capture_sensitivity;
                     
                     //Only detect movement in the display coordinate space so that moving a room's view, or moving the window, doesn't trigger movement
-                    if ((_m == INPUT_COORD_SPACE.DISPLAY) && (_dx*_dx + _dy*_dy > INPUT_MOUSE_MOVE_DEADZONE*INPUT_MOUSE_MOVE_DEADZONE)) _moved = true;
+                    if ((_m == INPUT_COORD_SPACE.DEVICE) && (_dx*_dx + _dy*_dy > INPUT_MOUSE_MOVE_DEADZONE*INPUT_MOUSE_MOVE_DEADZONE)) _moved = true;
                     
                     global.__input_pointer_dx[@ _m] = _dx;
                     global.__input_pointer_dy[@ _m] = _dy;
@@ -260,7 +260,7 @@ function __input_system_tick()
                     _pointer_y = device_mouse_y_to_gui(global.__input_pointer_index);
                 break;
                 
-                case INPUT_COORD_SPACE.DISPLAY:
+                case INPUT_COORD_SPACE.DEVICE:
                     if (os_type == os_windows)
                     {
                         _pointer_x = display_mouse_get_x() - window_get_x();
@@ -275,7 +275,7 @@ function __input_system_tick()
             }
             
             //Only detect movement in the display coordinate space so that moving a room's view, or moving the window, doesn't trigger movement
-            if ((_m == INPUT_COORD_SPACE.DISPLAY) && (point_distance(_old_x, _old_y, _pointer_x, _pointer_y) > INPUT_MOUSE_MOVE_DEADZONE)) _moved = true;
+            if ((_m == INPUT_COORD_SPACE.DEVICE) && (point_distance(_old_x, _old_y, _pointer_x, _pointer_y) > INPUT_MOUSE_MOVE_DEADZONE)) _moved = true;
             
             global.__input_pointer_dx[@ _m] = _pointer_x - _old_x;
             global.__input_pointer_dy[@ _m] = _pointer_y - _old_y;

@@ -196,8 +196,11 @@ function __input_initialize()
     {
         ROOM,
         GUI,
-        DISPLAY,
-        __SIZE
+        DEVICE,
+        __SIZE,
+        
+        //TODO - Deprecated, remove in v6
+        DISPLAY = 2,
     }
     
     //DualSense haptic trigger effect states

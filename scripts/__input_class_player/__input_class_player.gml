@@ -1232,7 +1232,7 @@ function __input_class_player() constructor
                     __gyro_screen_height = display_get_gui_height();
                 break;
 
-                case INPUT_COORD_SPACE.DISPLAY:
+                case INPUT_COORD_SPACE.DEVICE:
                     if (!__INPUT_ON_CONSOLE && (window_get_width != undefined))
                     {
                         __gyro_screen_width  = window_get_width();
