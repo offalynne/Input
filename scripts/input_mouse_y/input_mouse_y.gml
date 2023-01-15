@@ -4,7 +4,7 @@
 ///              .GUI       GUI coordinates
 ///              .DISPLAY   Raw device-space coordinates
 /// 
-/// @param [coordSpace=default]  Coordinate space to use. If not specified, the coordinate space set by input_mouse_coord_space_set() is used
+/// @param [coordSpace]  Coordinate space to use. If not specified, the coordinate space set by input_mouse_coord_space_set() is used
 
 function input_mouse_y(_coord_space = global.__input_pointer_coord_space)
 {
