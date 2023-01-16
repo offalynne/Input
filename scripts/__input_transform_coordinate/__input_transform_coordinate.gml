@@ -2,9 +2,9 @@
 /// @param y
 /// @param inputSystem
 /// @param outputSystem
-/// @param [camera]
+/// @param [view]
 
-function __input_transform_coordinate(_x, _y, _inputSystem, _outputSystem, _camera = undefined)
+function __input_transform_coordinate(_x, _y, _inputSystem, _outputSystem, _view = undefined)
 {
     static _result = {};
     
@@ -36,25 +36,48 @@ function __input_transform_coordinate(_x, _y, _inputSystem, _outputSystem, _came
         _recacheTime = current_time + 200;
     }
     
+    if ((_inputSystem == 0) || (_outputSystem == 0))
+    {
+        if (view_enabled)
+        {
+            if (_view == undefined)
+            {
+                _view = ((event_type == ev_draw) && ((event_number == ev_draw_begin) || (event_number == 0) || (event_number == ev_draw_end)))? view_current : 0; 
+            }
+            
+            var _camera = view_get_camera(_view);
+            var _viewX  = camera_get_view_x(_camera);
+            var _viewY  = camera_get_view_y(_camera);
+            var _viewW  = camera_get_view_width(_camera);
+            var _viewH  = camera_get_view_height(_camera);
+            var _viewA  = camera_get_view_angle(_camera);
+        }
+        else
+        {
+            _view = 0;
+            var _camera = view_get_camera(_view);
+            var _viewX  = 0;
+            var _viewY  = 0;
+            var _viewW  = view_get_wport(_view);
+            var _viewH  = view_get_hport(_view);
+            var _viewA  = 0;
+        }
+    }
+    
     switch(_inputSystem)
     {
         case 0:
             if (_outputSystem != 0)
             {
-                _camera = _camera ?? camera_get_active();
-                if (_camera < 0) _camera = view_camera[0];
-                
                 if (camera_get_view_angle(_camera) == 0)
                 {
-                    _x = (_x - camera_get_view_x(_camera)) / camera_get_view_width( _camera);
-                    _y = (_y - camera_get_view_y(_camera)) / camera_get_view_height(_camera);
+                    _x -= _viewX;
+                    _y -= _viewY;
                 }
                 else
                 {
-                    var _viewW  = camera_get_view_width( _camera);
-                    var _viewH  = camera_get_view_height(_camera);
-                    var _viewCX = camera_get_view_x(_camera) + _viewW/2;
-                    var _viewCY = camera_get_view_y(_camera) + _viewH/2;
+                    var _viewCX = _viewX + _viewW/2;
+                    var _viewCY = _viewY + _viewH/2;
                     
                     var _angle = camera_get_view_angle(_camera);
                     var _sin = dsin(-_angle);
@@ -62,9 +85,12 @@ function __input_transform_coordinate(_x, _y, _inputSystem, _outputSystem, _came
                     
                     var _x0 = _x - _viewCX;
                     var _y0 = _y - _viewCY;
-                    _x = ((_x0*_cos - _y0*_sin) + _viewCX) / _viewW;
-                    _y = ((_x0*_sin + _y0*_cos) + _viewCY) / _viewH;
+                    _x = (_x0*_cos - _y0*_sin) + _viewCX;
+                    _y = (_x0*_sin + _y0*_cos) + _viewCY;
                 }
+                
+                _x /= _viewW;
+                _y /= _viewH;
                 
                 if (_outputSystem == 1)
                 {
@@ -91,24 +117,18 @@ function __input_transform_coordinate(_x, _y, _inputSystem, _outputSystem, _came
                 
                 if (_outputSystem == 0)
                 {
-                    _camera = _camera ?? camera_get_active();
-                    if (_camera < 0) _camera = view_camera[0];
-                    
-                    if (camera_get_view_angle(_camera) == 0)
+                    if (_viewA == 0)
                     {
-                        _x = camera_get_view_width( _camera)*_x + camera_get_view_x(_camera);
-                        _y = camera_get_view_height(_camera)*_y + camera_get_view_y(_camera);
+                        _x = _viewW*_x + _viewX;
+                        _y = _viewH*_y + _viewY;
                     }
                     else
                     {
-                        var _viewW  = camera_get_view_width( _camera);
-                        var _viewH  = camera_get_view_height(_camera);
-                        var _viewCX = camera_get_view_x(_camera) + _viewW/2;
-                        var _viewCY = camera_get_view_y(_camera) + _viewH/2;
+                        var _viewCX = _viewX + _viewW/2;
+                        var _viewCY = _viewY + _viewH/2;
                         
-                        var _angle = camera_get_view_angle(_camera);
-                        var _sin = dsin(_angle);
-                        var _cos = dcos(_angle);
+                        var _sin = dsin(_viewA);
+                        var _cos = dcos(_viewA);
                         
                         var _x0 = _x*_viewW - _viewCX;
                         var _y0 = _y*_viewH - _viewCY;
@@ -141,24 +161,18 @@ function __input_transform_coordinate(_x, _y, _inputSystem, _outputSystem, _came
                 }
                 else if (_outputSystem == 0)
                 {
-                    _camera = _camera ?? camera_get_active();
-                    if (_camera < 0) _camera = view_camera[0];
-                    
-                    if (camera_get_view_angle(_camera) == 0)
+                    if (_viewA == 0)
                     {
-                        _x = camera_get_view_width( _camera)*_x + camera_get_view_x(_camera);
-                        _y = camera_get_view_height(_camera)*_y + camera_get_view_y(_camera);
+                        _x = _viewW*_x + _viewX;
+                        _y = _viewH*_y + _viewY;
                     }
                     else
                     {
-                        var _viewW  = camera_get_view_width( _camera);
-                        var _viewH  = camera_get_view_height(_camera);
-                        var _viewCX = camera_get_view_x(_camera) + _viewW/2;
-                        var _viewCY = camera_get_view_y(_camera) + _viewH/2;
+                        var _viewCX = _viewX + _viewW/2;
+                        var _viewCY = _viewY + _viewH/2;
                         
-                        var _angle = camera_get_view_angle(_camera);
-                        var _sin = dsin(_angle);
-                        var _cos = dcos(_angle);
+                        var _sin = dsin(_viewA);
+                        var _cos = dcos(_viewA);
                         
                         var _x0 = _x*_viewW - _viewCX;
                         var _y0 = _y*_viewH - _viewCY;
