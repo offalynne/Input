@@ -304,6 +304,56 @@ function __input_gamepad_set_mapping()
     
     #endregion
     
+    #region Stadia Controller on Windows
+    
+    if ((raw_type == "CommunityStadia") && (os_type == os_windows))
+    {
+        //Analogue triggers and right stick mapping depends on Windows Registry setting
+        __input_trace("Setting default Stadia controller mapping");
+        
+        set_mapping(gp_face1, 0, __INPUT_MAPPING.BUTTON, "a");
+        set_mapping(gp_face2, 1, __INPUT_MAPPING.BUTTON, "b");
+        set_mapping(gp_face3, 2, __INPUT_MAPPING.BUTTON, "x");
+        set_mapping(gp_face4, 3, __INPUT_MAPPING.BUTTON, "y");
+        
+        set_mapping(gp_shoulderl, 4, __INPUT_MAPPING.BUTTON, "leftshoulder");
+        set_mapping(gp_shoulderr, 5, __INPUT_MAPPING.BUTTON, "rightshoulder");
+         
+        set_mapping(gp_stickl, 6, __INPUT_MAPPING.BUTTON, "leftstick");
+        set_mapping(gp_stickr, 7, __INPUT_MAPPING.BUTTON, "rightstick");
+         
+        set_mapping(gp_select, 8, __INPUT_MAPPING.BUTTON, "back");
+        set_mapping(gp_start,  9, __INPUT_MAPPING.BUTTON, "start");
+         
+        if (INPUT_SDL2_ALLOW_EXTENDED)
+        {
+            set_mapping(gp_guide, 10, __INPUT_MAPPING.BUTTON, "guide"); //Stadia button
+            //set_mapping(???,    13, __INPUT_MAPPING.BUTTON,  ???);    //Assistant button, no SDL key for this
+            set_mapping(gp_misc1, 14, __INPUT_MAPPING.BUTTON, "misc1"); //Capture button
+        }
+        
+        set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
+        set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
+        set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
+        set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+        
+        set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
+        set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
+          
+        //Set default mapping with digital triggers, test later
+        test_trigger = true;
+            
+        set_mapping(gp_shoulderrb, 11, __INPUT_MAPPING.BUTTON, "righttrigger");
+        set_mapping(gp_shoulderlb, 12, __INPUT_MAPPING.BUTTON, "lefttrigger");
+        
+        set_mapping(gp_axisrh, 3, __INPUT_MAPPING.AXIS, "rightx");
+        set_mapping(gp_axisrv, 4, __INPUT_MAPPING.AXIS, "righty");
+        
+        return;
+    }
+    
+    #endregion
+    
     #region Unofficial Windows driver for official Wii U GCN USB
     
     if ((raw_type == "CommunityGameCube") && (vendor == "3412") && (product == "adbe") && (os_type == os_windows))
