@@ -2,7 +2,7 @@
 
 &nbsp;
 
-Adaptive trigger effects are available for the DualSense gamepad on the PlayStation 5 console platform, as well as [Windows and Linux via Steamworks extension](Steamworks.md). In `MIXED` and `MULTIDEVICE` [source modes](Input-Sources.md#source-modes), only the first controller is used.
+Adaptive trigger effects are available for the DualSense gamepad on the PlayStation 5 console platform, as well as [Windows via Steamworks extension](Steamworks.md). In `MIXED` and `MULTIDEVICE` [source modes](Input-Sources.md#source-modes), only the first controller is used.
 
 &nbsp;
 
