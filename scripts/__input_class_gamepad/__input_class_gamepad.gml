@@ -336,8 +336,9 @@ function __input_class_gamepad(_index) constructor
             return _effect.__apply_ps5(index, _trigger);
         }
 
-        if (global.__input_using_steamworks)
-        {            
+        //Steam Input uses libScePad for DualSense trigger effects, Windows native only
+        if (global.__input_using_steamworks && !global.__input_on_wine && (os_type == os_windows))
+        {
             var _command_array = [{ mode: steam_input_sce_pad_trigger_effect_mode_off, command_data: {} }, { mode: steam_input_sce_pad_trigger_effect_mode_off, command_data: {} }];
             _command_array[_trigger_index].mode = global.__input_steam_trigger_mode[$ _effect.__mode];
             _command_array[_trigger_index].command_data[$ string(_effect.__mode_name) + "_param"] = _effect.__params;

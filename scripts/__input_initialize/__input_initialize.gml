@@ -625,6 +625,7 @@ function __input_initialize()
     global.__input_steam_switch_labels = false;
     global.__input_using_steamworks    = false;
     global.__input_on_steam_deck       = false;
+    global.__input_on_wine             = false;
     
     global.__input_steam_handles       = [];
     global.__input_steam_type_to_raw   = {};
@@ -679,7 +680,9 @@ function __input_initialize()
     }
     
     if (global.__input_using_steamworks)
-    {   
+    {
+        global.__input_on_wine = (environment_get_variable("WINEDLLPATH") != "");
+        
         __input_steam_type_set(steam_input_type_xbox_360_controller,   "XBox360Controller", "Xbox 360 Controller");
         __input_steam_type_set(steam_input_type_xbox_one_controller,   "XBoxOneController", "Xbox One Controller");
         __input_steam_type_set(steam_input_type_ps3_controller,        "PS3Controller",     "PS3 Controller");
