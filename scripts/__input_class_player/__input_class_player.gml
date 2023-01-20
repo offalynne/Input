@@ -1116,7 +1116,7 @@ function __input_class_player() constructor
             return;
         }
 
-        var _intercepted = !global.__input_gamepads[_gamepad].__trigger_effect_apply(_trigger, _effect, __trigger_effect_strength);
+        var _intercepted = (global.__input_gamepads[_gamepad].__trigger_effect_apply(_trigger, _effect, __trigger_effect_strength) == false);
         
         if (!_set) return;
         if (_trigger == gp_shoulderlb)
@@ -1124,10 +1124,15 @@ function __input_class_player() constructor
             __trigger_intercepted_left = _intercepted;
             __trigger_effect_left      = _effect;
         }
-        else
+        else if (_trigger == gp_shoulderrb)
         {
             __trigger_intercepted_right = _intercepted;
             __trigger_effect_right      = _effect;                 
+        }
+        else
+        {
+            __input_error("Value ", _trigger ," not a gamepad trigger");
+            return false;
         }
     }
     

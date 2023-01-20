@@ -26,10 +26,15 @@ function input_trigger_effect_get_state(_trigger, _player_index = 0)
         if (_player.__trigger_intercepted_left) return INPUT_TRIGGER_STATE.EFFECT_INTERCEPTED;        
         _effect = _player.__trigger_effect_left;
     }
-    else
+    else if (_trigger == gp_shoulderrb)
     {
         if (_player.__trigger_intercepted_right) return INPUT_TRIGGER_STATE.EFFECT_INTERCEPTED;        
         _effect = _player.__trigger_effect_right;
+    }
+    else
+    {
+        __input_error("Value ", _trigger ," not a gamepad trigger");
+        return false;
     }
 
     if not (is_struct(_effect)) return __INPUT_TRIGGER_EFFECT.__TYPE_OFF;
