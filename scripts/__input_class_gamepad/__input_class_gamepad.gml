@@ -11,6 +11,7 @@ function __input_class_gamepad(_index) constructor
     guessed_type    = false;
     blacklisted     = false;
     scale_trigger   = false;
+    test_trigger    = false;
     
     vendor  = undefined;
     product = undefined;
@@ -225,14 +226,34 @@ function __input_class_gamepad(_index) constructor
     
     static tick = function()
     {
-        //Recalibrate XInput triggers
-        if (scale_trigger && ((gamepad_axis_value(index, __XINPUT_AXIS_LT) > 0.25) || (gamepad_axis_value(index, __XINPUT_AXIS_RT) > 0.25)))
-        {
-            //Trigger value exceeds limited range, set range to "normal" scale (0 to 255/256)
-            with mapping_gm_to_raw[$ gp_shoulderlb] scale = 255;
-            with mapping_gm_to_raw[$ gp_shoulderrb] scale = 255;
-            scale_trigger = false;
-            __input_trace("Recalibrated XInput trigger scale for gamepad ", index);
+        //Apply mapping settings that cannot be initially evaluated
+        if (os_type == os_windows)
+        {        
+            //Recalibrate XInput triggers
+            if (scale_trigger 
+            && ((gamepad_axis_value(index, __XINPUT_AXIS_LT) > 0.25) 
+             || (gamepad_axis_value(index, __XINPUT_AXIS_RT) > 0.25)))
+            {
+                //Trigger value exceeds limited range, set range to "normal" scale (0 to 255/256)
+                with mapping_gm_to_raw[$ gp_shoulderlb] scale = 255;
+                with mapping_gm_to_raw[$ gp_shoulderrb] scale = 255;
+                scale_trigger = false;
+                __input_trace("Recalibrated XInput trigger scale for gamepad ", index);
+            }
+        
+            //Set up alternate Stadia mapping
+            if (test_trigger 
+            && ((gamepad_axis_value(index, 1) != gamepad_axis_value(index, 2)) 
+             || (gamepad_axis_value(index, 4) != gamepad_axis_value(index, 5))))
+            {
+                //Analogue trigger value found, reset right thumbstick and trigger mappings
+                set_mapping(gp_axisrh,     2, __INPUT_MAPPING.AXIS, "rightx");
+                set_mapping(gp_axisrv,     3, __INPUT_MAPPING.AXIS, "righty");            
+                set_mapping(gp_shoulderrb, 4, __INPUT_MAPPING.AXIS, "righttrigger").extended_range = true;
+                set_mapping(gp_shoulderlb, 5, __INPUT_MAPPING.AXIS, "lefttrigger" ).extended_range = true;
+                test_trigger = false;                
+                __input_trace("Setting Stadia controller to analogue trigger mapping for gamepad ", index);
+            }
         }
         
         var _scan = (current_time > __scan_start_time);
