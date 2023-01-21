@@ -1206,15 +1206,26 @@ function __input_class_player() constructor
     }
     
     static __gyro_enabled_set = function(_state)
-    {       
+    {
         if (_state)
         {
             __gyro_screen_width  = display_get_width();
             __gyro_screen_height = display_get_height();
+            
             switch(global.__input_pointer_coord_space)
             {
                 case INPUT_COORD_SPACE.ROOM:
-                    if (view_enabled && view_visible[0])
+                    var _view_active = false;
+                    try
+                    {
+                        _view_active = (view_enabled && view_visible[0]);
+                    }
+                    catch(_error)
+                    {
+                        __input_trace("Warning! Failed to determine whether a view is active (see error above)");
+                    }
+                    
+                    if (_view_active)
                     {
                         var _camera = view_camera[0];
                         __gyro_screen_width  = camera_get_view_width(_camera);
