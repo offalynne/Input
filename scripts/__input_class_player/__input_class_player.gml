@@ -1227,7 +1227,7 @@ function __input_class_player() constructor
                     }
                     catch(_error)
                     {
-                        __input_trace("Warning! Failed to determine whether a view is active (see error above)");
+                        __input_trace("Warning! Failed to determine whether a view is active");
                     }
                     
                     if (_view_active)
