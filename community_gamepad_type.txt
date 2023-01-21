@@ -52,6 +52,7 @@
 05ac,033d,CommunityLikeXBox // GameSir G3
 05ac,055b,CommunityLikeXBox // GameSir G3w
 05ac,044d,CommunityLikeXBox // GameSir G4
+05ac,061a,CommunityLikeXBox // GameSir T3
 8555,061b,CommunityLikeXBox // GameSir G4 Pro
 18d1,2c40,CommunityLikeXBox // ADT1
 0b05,4500,CommunityLikeXBox // ASUS Gamepad
