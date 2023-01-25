@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "obj_example_solid",
   "spriteId": {
     "name": "spr_blue",
     "path": "sprites/spr_blue/spr_blue.yy",
@@ -28,8 +31,4 @@
     "name": "Examples",
     "path": "folders/Examples.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "obj_example_solid",
-  "tags": [],
-  "resourceType": "GMObject",
 }
