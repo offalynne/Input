@@ -15,7 +15,7 @@ function __input_gamepad_set_blacklist()
     
     if (os_type == os_windows)
     {
-        if ((vendor == "7e05") && (product == "0920") && (button_count > 21))
+        if ((vendor == "7e05") && (product == "0920") && (button_count == 23))
         {
             //Switch Pro Controller over USB. Normally does not operate, runs haywire with Steam open
             __input_trace("Warning! Controller is blacklisted (Switch Pro Controller over USB)");
