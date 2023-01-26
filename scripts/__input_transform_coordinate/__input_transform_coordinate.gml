@@ -24,41 +24,45 @@ function __input_transform_coordinate(_x, _y, _inputSystem, _outputSystem, _came
     static _appSurfDrawH = undefined;
     static _recacheTime  = -infinity;
     
-    //Detect changes in application surface size
-    if ((_appSurfW != surface_get_width(application_surface))
-    ||  (_appSurfH != surface_get_height(application_surface)))
-    {
-        _appSurfW = surface_get_width(application_surface);
-        _appSurfH = surface_get_height(application_surface);
-        
-        //Recache application surface position immediately in this situation
-        _recacheTime = -infinity;
-    }
-    
-    if (current_time > _recacheTime)
-    {
-        _recacheTime = infinity;
-        
-        var _array = application_get_position();
-        _appSurfDrawL = _array[0];
-        _appSurfDrawT = _array[1];
-        _appSurfDrawW = _array[2] - _appSurfDrawL;
-        _appSurfDrawH = _array[3] - _appSurfDrawT;
-    }
-    
-    //Detect changes in window size
-    if ((_windowW != window_get_width())
-    ||  (_windowH != window_get_height()))
-    {
-        _windowW = window_get_width();
-        _windowH = window_get_height();
-        
-        //Recache application surface position after 200ms to give GM time to do whatever it does
-        _recacheTime = current_time + 200;
-    }
-    
     if (_inputSystem != _outputSystem) //Only do MATHS if the output system is different
     {
+        //Only update the cached app surface draw parameters if we're going to need them
+        if ((_inputSystem == 2) || (_outputSystem == 2))
+        {
+            //Detect changes in application surface size
+            if ((_appSurfW != surface_get_width(application_surface))
+            ||  (_appSurfH != surface_get_height(application_surface)))
+            {
+                _appSurfW = surface_get_width(application_surface);
+                _appSurfH = surface_get_height(application_surface);
+            
+                //Recache application surface position immediately in this situation
+                _recacheTime = -infinity;
+            }
+            
+            if (current_time > _recacheTime)
+            {
+                _recacheTime = infinity;
+                
+                var _array = application_get_position();
+                _appSurfDrawL = _array[0];
+                _appSurfDrawT = _array[1];
+                _appSurfDrawW = _array[2] - _appSurfDrawL;
+                _appSurfDrawH = _array[3] - _appSurfDrawT;
+            }
+            
+            //Detect changes in window size
+            if ((_windowW != window_get_width())
+            ||  (_windowH != window_get_height()))
+            {
+                _windowW = window_get_width();
+                _windowH = window_get_height();
+                
+                //Recache application surface position after 200ms to give GM time to do whatever it does
+                _recacheTime = current_time + 200;
+            }
+        }
+        
         if (_inputSystem == 0) //Input coordinate system is room-space
         {
             //Grab a camera. Multiple levels of fallback here to cope with different setups
