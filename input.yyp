@@ -62,7 +62,6 @@
     {"id":{"name":"input_color_reset","path":"scripts/input_color_reset/input_color_reset.yy",},"order":14,},
     {"id":{"name":"input_binding_get_name","path":"scripts/input_binding_get_name/input_binding_get_name.yy",},"order":3,},
     {"id":{"name":"input_vibrate_adsr","path":"scripts/input_vibrate_adsr/input_vibrate_adsr.yy",},"order":4,},
-    {"id":{"name":"__input_gamepad_set_virtual","path":"scripts/__input_gamepad_set_virtual/__input_gamepad_set_virtual.yy",},"order":35,},
     {"id":{"name":"obj_example_mp_join","path":"objects/obj_example_mp_join/obj_example_mp_join.yy",},"order":1,},
     {"id":{"name":"__input_finalize_verb_groups","path":"scripts/__input_finalize_verb_groups/__input_finalize_verb_groups.yy",},"order":5,},
     {"id":{"name":"input_gamepads_get_status","path":"scripts/input_gamepads_get_status/input_gamepads_get_status.yy",},"order":11,},
