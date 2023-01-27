@@ -4,6 +4,9 @@ INPUT_VERB_GROUPS = {
     //Fill me up!
 };
 
+//Maximum number of alternate bindings per verb per profile
+#macro INPUT_MAX_ALTERNATE_BINDINGS  2
+
 //Default time before input_check_repeat() returns <true>
 //(Whether this is in frames or milliseconds is controlled by INPUT_TIMER_MILLISECONDS)
 #macro INPUT_REPEAT_DEFAULT_DELAY  10

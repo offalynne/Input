@@ -1,18 +1,3 @@
-//What source mode to start the game in
-#macro INPUT_STARTING_SOURCE_MODE  INPUT_SOURCE_MODE.HOTSWAP
-
-
-
-//Verb to use to allow a player to cancel the INPUT_SOURCE_MODE.JOIN source mode (multiplayer source assignment)
-//If you want to prevent a player from leaving the session then set this macro to <undefined>
-#macro INPUT_MULTIPLAYER_LEAVE_VERB  "cancel"
-
-//The function to call when a player tries to abort the INPUT_SOURCE_MODE.JOIN source mode (multiplayer source assignment)
-//This macro must be set to a function or script for INPUT_SOURCE_MODE.JOIN to work
-#macro INPUT_MULTIPLAYER_ABORT_CALLBACK  undefined
-
-
-
 //Number of milliseconds between source swaps. This should be longer than a single frame (>17 ms at 60FPS)
 #macro INPUT_HOTSWAP_DELAY  33
 

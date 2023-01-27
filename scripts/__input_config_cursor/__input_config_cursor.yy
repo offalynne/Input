@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__input_config_mouse_cursor",
+  "name": "__input_config_cursor",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

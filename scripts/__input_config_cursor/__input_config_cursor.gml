@@ -1,10 +1,3 @@
-//Whether to allow mouse input to be returned by input_binding_scan_start()
-#macro INPUT_MOUSE_ALLOW_SCANNING  true
-
-//Size of the deadzone for detecting mouse movement, measured in pixels
-//Higher values increase how far the mouse must travel before reporting the mouse as being used
-#macro INPUT_MOUSE_MOVE_DEADZONE  2
-
 //Verbs that control motion of Input's device-agnostic cursor
 //This is primarily used for gamepad input but can also be used for keyboard input too
 #macro INPUT_CURSOR_VERB_UP     "aim_up"
