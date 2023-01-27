@@ -33,6 +33,14 @@ function input_source_detect_input(_source, _available_only = true)
             }
         break;
         
+        case __INPUT_SOURCE.TOUCH:
+            if ((!_available_only || input_source_is_available(_source))
+            &&  input_mouse_check(mb_any))
+            {
+                return true;
+            }
+        break;
+        
         case __INPUT_SOURCE.GAMEPAD:
             if (global.__input_any_gamepad_binding_defined)
             {

@@ -95,6 +95,7 @@ function __input_initialize()
     //This is determined by what default keybindings are set up
     global.__input_any_keyboard_binding_defined = false;
     global.__input_any_mouse_binding_defined    = false;
+    global.__input_any_touch_binding_defined    = false;
     global.__input_any_gamepad_binding_defined  = false;
     
     //Disallow keyboard bindings on specified platforms unless explicitly enabled

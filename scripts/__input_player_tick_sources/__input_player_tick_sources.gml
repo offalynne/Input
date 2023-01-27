@@ -182,6 +182,11 @@ function __input_player_tick_sources()
                     }
                 break;
                 
+                case __INPUT_SOURCE.TOUCH:
+                    //Don't do nuffin'
+                    //Values get poked into the player from virtual buttons instead of being pulled in
+                break;
+                
                 case __INPUT_SOURCE.GAMEPAD:
                     if (!input_gamepad_is_connected(_source_gamepad))
                     {

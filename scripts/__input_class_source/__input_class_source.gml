@@ -188,6 +188,10 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                 }
             break;
             
+            case __INPUT_BINDING_VIRTUAL_BUTTON:
+                return (__source == __INPUT_SOURCE.TOUCH);
+            break;
+            
             case __INPUT_BINDING_MOUSE_WHEEL_UP:
             case __INPUT_BINDING_MOUSE_WHEEL_DOWN:
                 if (!global.__input_mouse_allowed_on_platform)
@@ -200,10 +204,6 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                 
                 //Invalid on console or native mobile
                 return !(__INPUT_ON_CONSOLE || (!__INPUT_ON_WEB && __INPUT_ON_MOBILE));        
-            break;
-            
-            case __INPUT_BINDING_VIRTUAL_BUTTON:
-                return (__source == __INPUT_SOURCE.TOUCH);
             break;
         }
         
@@ -279,6 +279,11 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
             }
         break;
         
+        case __INPUT_SOURCE.TOUCH:
+            //Never scan for a binding, virtual buttons only
+            return undefined;
+        break;
+        
         case __INPUT_SOURCE.GAMEPAD:
             if (global.__input_any_gamepad_binding_defined)
             {
@@ -320,11 +325,6 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
                     ++_i;
                 }
             }
-        break;
-        
-        case __INPUT_SOURCE.TOUCH:
-            //Never scan for a binding, virtual buttons only
-            return undefined;
         break;
     }
     

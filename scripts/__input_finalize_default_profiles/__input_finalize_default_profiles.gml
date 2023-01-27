@@ -89,6 +89,7 @@ function __input_finalize_default_profiles()
                     {
                         case __INPUT_SOURCE.KEYBOARD: global.__input_any_keyboard_binding_defined = true; break;
                         case __INPUT_SOURCE.MOUSE:    global.__input_any_mouse_binding_defined    = true; break;
+                        case __INPUT_SOURCE.TOUCH:    global.__input_any_touch_binding_defined    = true; break;
                         case __INPUT_SOURCE.GAMEPAD:  global.__input_any_gamepad_binding_defined  = true; break;
                     }
                 }

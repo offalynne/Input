@@ -155,6 +155,7 @@ function __input_class_player() constructor
             {
                 case __INPUT_SOURCE.KEYBOARD: return INPUT_AUTO_PROFILE_FOR_KEYBOARD; break;
                 case __INPUT_SOURCE.MOUSE:    return INPUT_AUTO_PROFILE_FOR_MOUSE;    break;
+                case __INPUT_SOURCE.TOUCH:    return INPUT_AUTO_PROFILE_FOR_TOUCH;    break;
                 case __INPUT_SOURCE.GAMEPAD:  return INPUT_AUTO_PROFILE_FOR_GAMEPAD;  break;
                 
                 default:
@@ -500,6 +501,7 @@ function __input_class_player() constructor
         
         if (((_profile_name == INPUT_AUTO_PROFILE_FOR_KEYBOARD)
           || (_profile_name == INPUT_AUTO_PROFILE_FOR_MOUSE)
+          || (_profile_name == INPUT_AUTO_PROFILE_FOR_TOUCH)
           || (_profile_name == INPUT_AUTO_PROFILE_FOR_GAMEPAD))
         && (_profile_name != INPUT_AUTO_PROFILE_FOR_MIXED)
         && (_profile_name != INPUT_AUTO_PROFILE_FOR_MULTIDEVICE))
@@ -522,7 +524,7 @@ function __input_class_player() constructor
                         return;
                     }
                 break;
-            
+                
                 case __INPUT_SOURCE.MOUSE:
                     if not ((_profile_name == INPUT_AUTO_PROFILE_FOR_MOUSE)
                          || (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (_profile_name == INPUT_AUTO_PROFILE_FOR_KEYBOARD)))
@@ -534,6 +536,22 @@ function __input_class_player() constructor
                         else
                         {
                             __input_trace("Warning! Mouse binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
+                        }
+                        
+                        return;
+                    }
+                break;
+                
+                case __INPUT_SOURCE.TOUCH:
+                    if not (_profile_name == INPUT_AUTO_PROFILE_FOR_TOUCH)
+                    {
+                        if (global.__input_strict_binding_check)
+                        {
+                            __input_error("Touchscreen binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
+                        }
+                        else
+                        {
+                            __input_trace("Warning! Touchscreen binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
                         }
                         
                         return;
