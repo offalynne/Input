@@ -1,0 +1,1 @@
+if (input_check_pressed("accept")) b.active(!b.get_active());

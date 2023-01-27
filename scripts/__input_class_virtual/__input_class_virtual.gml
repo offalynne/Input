@@ -19,6 +19,8 @@ function __input_class_virtual() constructor
     __x        = undefined;
     __y        = undefined;
     __radius   = undefined;
+    __start_x  = undefined;
+    __start_y  = undefined;
     
     __type       = INPUT_VIRTUAL_TYPE.BUTTON;
     __verb_click = undefined;
@@ -38,8 +40,9 @@ function __input_class_virtual() constructor
     __priority          = 0;
     __follow            = false;
     __record_history    = false;
-    __history_array     = undefined; //Created when setting history recording
     
+    //State
+    //These variables should be cleared by .__clear_state()
     __touch_device  = undefined;
     __pressed       = false;
     __held          = false;
@@ -50,6 +53,7 @@ function __input_class_virtual() constructor
     __touch_y       = undefined;
     __touch_start_x = undefined;
     __touch_start_y = undefined;
+    __history_array = undefined; //Created when setting history recording
     
     
     
@@ -80,6 +84,9 @@ function __input_class_virtual() constructor
         __y        = 0.5*(_bottom + _top);
         __radius   = undefined;
         
+        __start_x = __x;
+        __start_y = __y;
+        
         return self;
     }
     
@@ -97,6 +104,9 @@ function __input_class_virtual() constructor
         __x        = _x;
         __y        = _y;
         __radius   = _radius;
+        
+        __start_x = __x;
+        __start_y = __y;
         
         return self;
     }
@@ -221,6 +231,9 @@ function __input_class_virtual() constructor
     {
         if (__destroyed) return self;
         
+        //Clear state when deactivating
+        if (!_state && __active) __clear_state();
+        
         __active = _state;
         
         return self;
@@ -275,6 +288,18 @@ function __input_class_virtual() constructor
     static get_follow = function()
     {
         return __follow;
+    }
+    
+    static release_behaviour = function(_option)
+    {
+        __release_behaviour = _option;
+        
+        return self;
+    }
+    
+    static get_releas_behaviour = function()
+    {
+        return __release_behaviour;
     }
     
     #endregion
@@ -448,10 +473,65 @@ function __input_class_virtual() constructor
     
     #region Private
     
+    static __clear_state = function()
+    {
+        __touch_device = undefined;
+        
+        __pressed  = false;
+        __held     = false;
+        __released = false;
+            
+        //Clear touch position variables
+        __normalized_x  = 0;
+        __normalized_y  = 0;
+        __touch_x       = undefined;
+        __touch_y       = undefined;
+        __touch_start_x = undefined;
+        __touch_start_y = undefined;
+        
+        //Clear out the history array
+        if (__record_history)
+        {
+            var _i = 0;
+            repeat(INPUT_TOUCH_HISTORY_FRAMES)
+            {
+                with(__history_array[@ _i])
+                {
+                    x = undefined;
+                    y = undefined;
+                };
+                
+                ++_i;
+            }
+        }
+        
+        if (__release_behaviour == INPUT_VIRTUAL_RELEASE.RESET_POSITION)
+        {
+            if ((__start_x != undefined) && (__start_y != undefined))
+            {
+                var _dx = __start_x - __x;
+                var _dy = __start_y - __y;
+                
+                __left   += _dx;
+                __top    += _dy;
+                __right  += _dx;
+                __bottom += _dy;
+                
+                __x = __start_x;
+                __y = __start_y;
+            }
+        }
+        else if (__release_behaviour == INPUT_VIRTUAL_RELEASE.DESTROY)
+        {
+            destroy();
+        }
+    }
+    
     static __capture_touchpoint = function(_device)
     {
         if (__touch_device != undefined) return false;
         if (__circular == undefined) return false;
+        if (!__active) return false;
         
         var _touch_x = device_mouse_x_to_gui(_device);
         var _touch_y = device_mouse_y_to_gui(_device);
@@ -489,31 +569,10 @@ function __input_class_virtual() constructor
         
         if (__released)
         {
-            __released = false;
+            __clear_state();
             
-            //Clear touch position variables
-            __normalized_x  = 0;
-            __normalized_y  = 0;
-            __touch_x       = undefined;
-            __touch_y       = undefined;
-            __touch_start_x = undefined;
-            __touch_start_y = undefined;
-            
-            //Clear out the history array
-            if (__record_history)
-            {
-                var _i = 0;
-                repeat(INPUT_TOUCH_HISTORY_FRAMES)
-                {
-                    with(__history_array[@ _i])
-                    {
-                        x = undefined;
-                        y = undefined;
-                    };
-                    
-                    ++_i;
-                }
-            }
+            //Nope out if we were destroyed on release
+            if (__destroyed) return undefined;
         }
         
         if (__captured_this_frame)
@@ -552,21 +611,35 @@ function __input_class_virtual() constructor
                     if (_length <= 0)
                     {
                         //We don't like div-by-zero
-                        var _factor = 0;
+                        var _threshold_factor = 0;
                         __normalized_x = 0;
                         __normalized_y = 0;
                     }
                     else
                     {
                         var _length = sqrt(_length);
-                        var _factor = clamp((_length - __threshold_min) / (__threshold_max - __threshold_min), 0, 1) / _length;
-                        __normalized_x = _factor*_dx;
-                        __normalized_y = _factor*_dy;
+                        var _threshold_factor = clamp((_length - __threshold_min) / (__threshold_max - __threshold_min), 0, 1) / _length;
+                        __normalized_x = _threshold_factor*_dx;
+                        __normalized_y = _threshold_factor*_dy;
+                        
+                        if (__follow)
+                        {
+                            if (__circular == true)
+                            {
+                                var _move_distance = max(0, _length - __radius);
+                                __x += _move_distance*_dx / _length;
+                                __y += _move_distance*_dy / _length;
+                            }
+                            else if (__circular == false)
+                            {
+                                //TODO
+                            }
+                        }
                     }
                     
                     if (__type == INPUT_VIRTUAL_TYPE.DPAD_4DIR)
                     {
-                        if (_factor > 0)
+                        if (_threshold_factor > 0)
                         {
                             var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 45) / 90) mod 4;
                             if (_direction == 0)
@@ -589,7 +662,7 @@ function __input_class_virtual() constructor
                     }
                     else if (__type == INPUT_VIRTUAL_TYPE.DPAD_8DIR)
                     {
-                        if (_factor > 0)
+                        if (_threshold_factor > 0)
                         {
                             var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 22.5) / 45) mod 8;
                             __input_trace(_direction);
@@ -643,8 +716,7 @@ function __input_class_virtual() constructor
                 }
                 else
                 {
-                    __touch_device = undefined;
-                    
+                    __pressed  = false;
                     __held     = false;
                     __released = true;
                 }
@@ -656,15 +728,36 @@ function __input_class_virtual() constructor
     {
         if (__destroyed) return;
         
-        if (__circular == true)
+        if (__active)
         {
-            draw_circle(__x, __y, __radius, true);
-            if (__held) draw_circle(__x, __y, __radius-8, false);
+            if (__circular == true)
+            {
+                draw_circle(__x, __y, __radius,   true);
+                draw_circle(__x, __y, __radius-4, true);
+                draw_circle(__x, __y, __radius-8, !__held);
+            }
+            else if (__circular == false)
+            {
+                draw_rectangle(__left,   __top,   __right,   __bottom,   true);
+                draw_rectangle(__left+4, __top+4, __right-4, __bottom-4, true);
+                draw_rectangle(__left+8, __top+8, __right-8, __bottom-8, !__held);
+            }
         }
-        else if (__circular == false)
+        else
         {
-            draw_rectangle(__left, __top, __right, __bottom, true);
-            if (__held) draw_rectangle(__left+4, __top+4, __right-4, __bottom-4, false);
+            var _old_alpha = draw_get_alpha();
+            draw_set_alpha(0.33*_old_alpha);
+            
+            if (__circular == true)
+            {
+                draw_circle(__x, __y, __radius, true);
+            }
+            else if (__circular == false)
+            {
+                draw_rectangle(__left, __top, __right, __bottom, true);
+            }
+            
+            draw_set_alpha(_old_alpha);
         }
     }
     

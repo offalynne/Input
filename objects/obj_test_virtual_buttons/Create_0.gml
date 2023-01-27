@@ -4,4 +4,5 @@ a = input_virtual_create()
 
 b = input_virtual_create()
     .circle(500, 300, 120)
-    .thumbstick("accept", "left", "right", "up", "down");
+    .active(false)
+    .thumbstick(undefined, "left", "right", "up", "down");
