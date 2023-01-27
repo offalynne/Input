@@ -624,16 +624,58 @@ function __input_class_virtual() constructor
                         
                         if (__follow)
                         {
+                            var _move_x = 0;
+                            var _move_y = 0;
+                            
                             if (__circular == true)
                             {
                                 var _move_distance = max(0, _length - __radius);
-                                __x += _move_distance*_dx / _length;
-                                __y += _move_distance*_dy / _length;
+                                _move_x = _move_distance*_dx / _length;
+                                _move_y = _move_distance*_dy / _length;
                             }
                             else if (__circular == false)
                             {
-                                //TODO
+                                //Quantize the direction from the centre of the rectangle to the touch point
+                                //We correct for the aspect ratio of the rectangle so we choose the correct side to use as a reference
+                                var _direction = point_direction(0, 0, _dx, _dy);
+                                var _quantized = floor((_direction + 45) / 90) mod 4;
+                                
+                                //Figure out where the nearest edge is along the vector from the shape centre to the touch point
+                                if (_quantized == 0)
+                                {
+                                    var _edge_t = (__right - __x)/_dx;
+                                }
+                                else if (_quantized == 1)
+                                {
+                                    var _edge_t =  (__top - __y)/_dy;
+                                }
+                                else if (_quantized == 2)
+                                {
+                                    var _edge_t = (__left - __x)/_dx;
+                                }
+                                else if (_quantized == 3)
+                                {
+                                    var _edge_t = (__bottom - __y)/_dy;
+                                }
+                                else
+                                {
+                                    //Don't move at all in this edge case
+                                    var _edge_t = 1;
+                                }
+                                
+                                //Invert the value, and then clamp so the shape can't move backwards
+                                _edge_t = max(0, 1 - _edge_t);
+                                
+                                _move_x = _edge_t*_dx;
+                                _move_y = _edge_t*_dy;
                             }
+                            
+                            __x      += _move_x;
+                            __y      += _move_y;
+                            __left   += _move_x;
+                            __top    += _move_y;
+                            __right  += _move_x;
+                            __bottom += _move_y;
                         }
                     }
                     
