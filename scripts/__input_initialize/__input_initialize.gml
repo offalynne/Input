@@ -897,6 +897,7 @@ function __input_initialize()
     //Build out the sources
     INPUT_KEYBOARD = new __input_class_source(__INPUT_SOURCE.KEYBOARD);
     INPUT_MOUSE = INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER? INPUT_KEYBOARD : (new __input_class_source(__INPUT_SOURCE.MOUSE));
+    INPUT_TOUCH = new __input_class_source(__INPUT_SOURCE.TOUCH);
     
     INPUT_GAMEPAD = array_create(INPUT_MAX_GAMEPADS, undefined);
     var _g = 0;

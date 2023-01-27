@@ -13,6 +13,7 @@
 #macro INPUT_KEYBOARD      global.__input_source_keyboard
 #macro INPUT_MOUSE         global.__input_source_mouse
 #macro INPUT_GAMEPAD       global.__input_source_gamepad
+#macro INPUT_TOUCH         global.__input_source_touch
 #macro INPUT_MAX_GAMEPADS  12
 
 #macro INPUT_KEYBOARD_LOCALE  global.__input_keyboard_locale
