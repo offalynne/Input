@@ -567,6 +567,13 @@ function __input_class_virtual() constructor
         if (__destroyed) return undefined;
         if (__touch_device == undefined) return undefined;
         
+        var _player = global.__input_players[__player_index];
+        if (!_player.__source_contains(INPUT_TOUCH)) //TODO - This is probably really slow
+        {
+            __clear_state(); //Do we need to continually clear state here?
+            return undefined;
+        }
+        
         if (__released)
         {
             __clear_state();
@@ -587,7 +594,6 @@ function __input_class_virtual() constructor
             {
                 if (device_mouse_check_button(__touch_device, mb_left))
                 {
-                    var _player = global.__input_players[__player_index];
                     _player.__verb_set_from_virtual(__verb_click, 1, false);
                     
                     if (__record_history)
