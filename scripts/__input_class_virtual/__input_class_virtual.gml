@@ -552,6 +552,7 @@ function __input_class_virtual() constructor
                     if (_length <= 0)
                     {
                         //We don't like div-by-zero
+                        var _factor = 0;
                         __normalized_x = 0;
                         __normalized_y = 0;
                     }
@@ -565,64 +566,71 @@ function __input_class_virtual() constructor
                     
                     if (__type == INPUT_VIRTUAL_TYPE.DPAD_4DIR)
                     {
-                        var _direction = 90*(floor(point_direction(0, 0, __normalized_x, __normalized_y) + 45) / 90);
-                        if (_direction == 0)
+                        if (_factor > 0)
                         {
-                            _player.__verb_set_from_virtual(__verb_right, true, true);
-                        }
-                        else if (_direction == 90)
-                        {
-                            _player.__verb_set_from_virtual(__verb_up, true, true);
-                        }
-                        else if (_direction == 180)
-                        {
-                            _player.__verb_set_from_virtual(__verb_left, true, true);
-                        }
-                        else if (_direction == 270)
-                        {
-                            _player.__verb_set_from_virtual(__verb_down, true, true);
+                            var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 45) / 90) mod 4;
+                            if (_direction == 0)
+                            {
+                                _player.__verb_set_from_virtual(__verb_right, 1, false);
+                            }
+                            else if (_direction == 1)
+                            {
+                                _player.__verb_set_from_virtual(__verb_up, 1, false);
+                            }
+                            else if (_direction == 2)
+                            {
+                                _player.__verb_set_from_virtual(__verb_left, 1, false);
+                            }
+                            else if (_direction == 3)
+                            {
+                                _player.__verb_set_from_virtual(__verb_down, 1, false);
+                            }
                         }
                     }
                     else if (__type == INPUT_VIRTUAL_TYPE.DPAD_8DIR)
                     {
-                        var _direction = 45*(floor(point_direction(0, 0, __normalized_x, __normalized_y) + 22.5) / 45);
-                        
-                        //Look, I *could* do this with maths but I'm choosing not to because it's 10pm
-                        if (_direction == 0)
+                        if (_factor > 0)
                         {
-                            _player.__verb_set_from_virtual(__verb_right, true, true);
-                        }
-                        else if (_direction == 45)
-                        {
-                            _player.__verb_set_from_virtual(__verb_right, true, true);
-                            _player.__verb_set_from_virtual(__verb_up,    true, true);
-                        }
-                        else if (_direction == 90)
-                        {
-                            _player.__verb_set_from_virtual(__verb_up, true, true);
-                        }
-                        else if (_direction == 135)
-                        {
-                            _player.__verb_set_from_virtual(__verb_up,   true, true);
-                            _player.__verb_set_from_virtual(__verb_left, true, true);
-                        }
-                        else if (_direction == 180)
-                        {
-                            _player.__verb_set_from_virtual(__verb_left, true, true);
-                        }
-                        else if (_direction == 225)
-                        {
-                            _player.__verb_set_from_virtual(__verb_left, true, true);
-                            _player.__verb_set_from_virtual(__verb_down, true, true);
-                        }
-                        else if (_direction == 270)
-                        {
-                            _player.__verb_set_from_virtual(__verb_down, true, true);
-                        }
-                        else if (_direction == 315)
-                        {
-                            _player.__verb_set_from_virtual(__verb_down,  true, true);
-                            _player.__verb_set_from_virtual(__verb_right, true, true);
+                            var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 22.5) / 45) mod 8;
+                            __input_trace(_direction);
+                            
+                            //Look, I *could* do this with maths but I'm choosing not to because it's 10pm
+                            if (_direction == 0)
+                            {
+                                _player.__verb_set_from_virtual(__verb_right, 1, false);
+                            }
+                            else if (_direction == 1)
+                            {
+                                _player.__verb_set_from_virtual(__verb_right, 1, false);
+                                _player.__verb_set_from_virtual(__verb_up,    1, false);
+                            }
+                            else if (_direction == 2)
+                            {
+                                _player.__verb_set_from_virtual(__verb_up, 1, false);
+                            }
+                            else if (_direction == 3)
+                            {
+                                _player.__verb_set_from_virtual(__verb_up,   1, false);
+                                _player.__verb_set_from_virtual(__verb_left, 1, false);
+                            }
+                            else if (_direction == 4)
+                            {
+                                _player.__verb_set_from_virtual(__verb_left, 1, false);
+                            }
+                            else if (_direction == 5)
+                            {
+                                _player.__verb_set_from_virtual(__verb_left, 1, false);
+                                _player.__verb_set_from_virtual(__verb_down, 1, false);
+                            }
+                            else if (_direction == 6)
+                            {
+                                _player.__verb_set_from_virtual(__verb_down, 1, false);
+                            }
+                            else if (_direction == 7)
+                            {
+                                _player.__verb_set_from_virtual(__verb_down,  1, false);
+                                _player.__verb_set_from_virtual(__verb_right, 1, false);
+                            }
                         }
                     }
                     else if (__type == INPUT_VIRTUAL_TYPE.THUMBSTICK)
