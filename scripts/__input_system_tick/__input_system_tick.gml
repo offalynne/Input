@@ -476,6 +476,62 @@ function __input_system_tick()
     
     
     
+    #region Virtual Buttons
+    
+    //Clean up any destroyed or orphaned virtual buttons
+    var _i = 0;
+    repeat(array_length(global.__input_virtual_array))
+    {
+        var _virtual_weak_ref = global.__input_virtual_array[_i];
+        if (weak_ref_alive(_virtual_weak_ref) && !_virtual_weak_ref.ref.__destroyed)
+        {
+            ++_i;
+        }
+        else
+        {
+            array_delete(global.__input_virtual_array, _i, 1);
+        }
+    }
+    
+    //Reorder virtual buttons if necessary, from highest priority to lowest
+    if (global.__input_virtual_priority_dirty)
+    {
+        global.__input_virtual_priority_dirty = false;
+        array_sort(global.__input_virtual_array, function(_a, _b)
+        {
+            return _a.ref.__priority - _b.ref.__priority;
+        });
+    }
+    
+    //Detect any new touch points and find the top-most button to handle it
+    var _i = 0;
+    repeat(INPUT_MAX_TOUCHPOINTS)
+    {
+        if (device_mouse_check_button_pressed(_i, mb_left))
+        {
+            var _j = 0;
+            repeat(array_length(global.__input_virtual_array))
+            {
+                if (global.__input_virtual_array[_j].ref.__capture_touchpoint(_i)) break;
+                ++_j;
+            }
+        }
+        
+        ++_i;
+    }
+    
+    //Update any virtual buttons that are currently being interacted with
+    var _i = 0;
+    repeat(array_length(global.__input_virtual_array))
+    {
+        global.__input_virtual_array[_i].ref.__tick();
+        ++_i;
+    }
+    
+    #endregion
+    
+    
+    
     #region Players status struct
     
     var _any_players_changed = false;

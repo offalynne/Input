@@ -139,6 +139,11 @@ function __input_initialize()
     //Struct to store ignored gamepad types
     global.__input_ignore_gamepad_types = {};
     
+    //Array of created virtual buttons
+    global.__input_virtual_array          = [];
+    global.__input_virtual_background     = input_virtual_create().priority(-infinity); global.__input_virtual_background.__background = true;
+    global.__input_virtual_priority_dirty = false;
+    
     //Two structs that are returned by input_players_get_status() and input_gamepads_get_status()
     //These are "static" structs that are reset and populated by input_tick()
     global.__input_players_status = {
@@ -223,6 +228,20 @@ function __input_initialize()
 	    AXIS_YAW,
 	    AXIS_ROLL
 	}
+    
+    enum INPUT_VIRTUAL_TYPE
+    {
+        BUTTON,
+        DPAD,
+        THUMBSTICK,
+    }
+    
+    enum INPUT_VIRTUAL_RELEASE
+    {
+        DO_NOTHING,
+        DESTROY,
+        RESET_POSITION,
+    }
     
     global.__input_source_mode          = undefined;
     global.__input_previous_source_mode = INPUT_STARTING_SOURCE_MODE;

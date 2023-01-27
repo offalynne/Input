@@ -17,6 +17,8 @@
 #macro INPUT_KEYBOARD_LOCALE  global.__input_keyboard_locale
 #macro INPUT_KEYBOARD_TYPE    global.__input_keyboard_type
 
+#macro INPUT_VIRTUAL_BACKGROUND  global.__input_virtual_background
+
 #macro __INPUT_ON_PS       ((os_type == os_ps4)     || (os_type == os_ps5))
 #macro __INPUT_ON_XBOX     ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
 #macro __INPUT_ON_CONSOLE  (__INPUT_ON_XBOX || __INPUT_ON_PS || (os_type == os_switch))

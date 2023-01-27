@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "input_binding_threshold_set",
+  "name": "input_is_virtual",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Binding Access",
-    "path": "folders/Input/Binding Access.yy",
+    "name": "Virtual Buttons",
+    "path": "folders/Input/Virtual Buttons.yy",
   },
 }

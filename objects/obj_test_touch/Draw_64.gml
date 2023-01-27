@@ -5,8 +5,15 @@ if (__INPUT_TOUCH_SUPPORT && !__INPUT_ON_PS)
     repeat(INPUT_MAX_TOUCHPOINTS)
     {
         draw_set_alpha(1/2);
-        draw_set_color((global.__input_pointer_index == _i) ? c_blue : c_gray);
-    
+        
+        switch(_i)
+        {
+            case 0: draw_set_colour(c_gray);  break;
+            case 1: draw_set_colour(c_red);   break;
+            case 2: draw_set_colour(c_green); break;
+            case 3: draw_set_colour(c_blue);  break;
+        }
+        
         if (device_mouse_check_button(_i, mb_left))
         {
             draw_circle(device_mouse_x_to_gui(_i), device_mouse_y_to_gui(_i), 80, 0);
