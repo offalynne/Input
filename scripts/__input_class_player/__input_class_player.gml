@@ -1455,11 +1455,18 @@ function __input_class_player() constructor
         //    return ;
         //}
         
+        if (__source_contains(INPUT_TOUCH))
+        {
+            __input_trace("Binding scan failed: Player ", __index, " is using INPUT_TOUCH which cannot be rebound");
+            __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_INVALID);
+            return;
+        }
+        
         if (array_length(__rebind_source_filter) <= 0)
         {
             __input_trace("Binding scan failed: Source array for player ", __index, " is empty (the player has no source assigned)");
             __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_INVALID);
-            return ;
+            return;
         }
         
         if (__ghost)
