@@ -8,6 +8,7 @@
 #macro __INPUT_BINDING_MOUSE_WHEEL_DOWN  "mouse wheel down"
 #macro __INPUT_BINDING_GAMEPAD_BUTTON    "gamepad button"
 #macro __INPUT_BINDING_GAMEPAD_AXIS      "gamepad axis"
+#macro __INPUT_BINDING_VIRTUAL_BUTTON    "virtual button"
 
 #macro INPUT_KEYBOARD      global.__input_source_keyboard
 #macro INPUT_MOUSE         global.__input_source_mouse
@@ -128,6 +129,7 @@ enum __INPUT_SOURCE
     KEYBOARD,
     MOUSE,
     GAMEPAD,
+    TOUCH,
     __SIZE
 }
 

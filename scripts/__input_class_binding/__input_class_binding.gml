@@ -353,6 +353,15 @@ function __input_class_binding() constructor
         return self;
     }
     
+    static __set_virtual_button = function()
+    {
+        type = __INPUT_BINDING_VIRTUAL_BUTTON;
+        
+        __set_label();
+        
+        return self;
+    }
+    
     static __set_label = function(_label)
     {
         if (_label == undefined)

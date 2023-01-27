@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__input_config_default_bindings",
+  "name": "__input_config_verb_behaviour",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

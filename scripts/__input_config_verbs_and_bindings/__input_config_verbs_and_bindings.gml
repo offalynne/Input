@@ -50,4 +50,25 @@ INPUT_DEFAULT_PROFILES = {
         pause: input_binding_gamepad_button(gp_start),
     },
     
+    touch:
+    {
+        up:    input_binding_virtual_button(),
+        down:  input_binding_virtual_button(),
+        left:  input_binding_virtual_button(),
+        right: input_binding_virtual_button(),
+        
+        accept:  input_binding_virtual_button(),
+        cancel:  input_binding_virtual_button(),
+        action:  input_binding_virtual_button(),
+        special: input_binding_virtual_button(),
+        
+        pause: input_binding_virtual_button(),
+    }
+    
+};
+
+//Defines which verbs should collide with which other verbs when using input_binding_get_collisions()
+//and input_binding_set_safe(). A verb that is not present in a group will collide with all other verbs
+INPUT_VERB_GROUPS = {
+    //Fill me up!
 };

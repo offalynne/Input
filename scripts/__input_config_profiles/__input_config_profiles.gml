@@ -4,6 +4,7 @@
 #macro INPUT_AUTO_PROFILE_FOR_KEYBOARD     "keyboard_and_mouse"
 #macro INPUT_AUTO_PROFILE_FOR_MOUSE        "keyboard_and_mouse"
 #macro INPUT_AUTO_PROFILE_FOR_GAMEPAD      "gamepad"
+#macro INPUT_AUTO_PROFILE_FOR_TOUCH        "touch"
 #macro INPUT_AUTO_PROFILE_FOR_MIXED        "mixed"
 #macro INPUT_AUTO_PROFILE_FOR_MULTIDEVICE  "multidevice"
 

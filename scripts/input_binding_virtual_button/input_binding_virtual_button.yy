@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__input_binding_get_label",
+  "name": "input_binding_virtual_button",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "(System)",
-    "path": "folders/Input/(System).yy",
+    "name": "Binding Creators",
+    "path": "folders/Input/Binding Creators.yy",
   },
 }
