@@ -18,5 +18,5 @@
 
 //Default threshold values for 2D virtual buttons (thumbsticks)
 //This values are measured in pixels in GUI-space
-#macro INPUT_VIRTUAL_BUTTON_MIN_THRESHOLD   10
+#macro INPUT_VIRTUAL_BUTTON_MIN_THRESHOLD   30
 #macro INPUT_VIRTUAL_BUTTON_MAX_THRESHOLD  100

@@ -233,7 +233,8 @@ function __input_initialize()
     enum INPUT_VIRTUAL_TYPE
     {
         BUTTON,
-        DPAD,
+        DPAD_4DIR,
+        DPAD_8DIR,
         THUMBSTICK,
     }
     

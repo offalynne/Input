@@ -866,6 +866,24 @@ function __input_class_player() constructor
         }
     }
     
+    /// @param verb
+    /// @param forceValue
+    /// @param forceAnalogue
+    static __verb_set_from_virtual = function(_verb_name, _value, _analogue)
+    {
+        if (is_string(_verb_name))
+        {
+            with(__verb_state_dict[$ _verb_name])
+            {
+                if (_value > (__virtual_value ?? -infinity))
+                {
+                    __virtual_value    = _value;
+                    __virtual_analogue = _analogue;
+                }
+            }
+        }
+    }
+    
     static __get_invalid_gamepad_bindings = function(_profile_name = undefined)
     {
         var _output = [];

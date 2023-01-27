@@ -27,6 +27,8 @@ function __input_class_virtual() constructor
     __verb_up    = undefined;
     __verb_down  = undefined;
     
+    __4dir = false;
+    
     __threshold_min = INPUT_VIRTUAL_BUTTON_MIN_THRESHOLD;
     __threshold_max = INPUT_VIRTUAL_BUTTON_MAX_THRESHOLD;
     
@@ -126,12 +128,12 @@ function __input_class_virtual() constructor
         return _struct;
     }
     
-    static button = function(_click_verb)
+    static button = function(_verb)
     {
         if (__destroyed || __background) return self;
         
         __type       = INPUT_VIRTUAL_TYPE.BUTTON;
-        __verb_click = _click_verb;
+        __verb_click = _verb;
         __verb_left  = undefined;
         __verb_right = undefined;
         __verb_up    = undefined;
@@ -140,30 +142,30 @@ function __input_class_virtual() constructor
         return self;
     }
     
-    static dpad = function(_click_verb, _left_verb, _right_verb, _up_verb, _down_verb)
+    static dpad = function(_click, _left, _right, _up, _down, _4dir = false)
     {
         if (__destroyed || __background) return self;
         
-        __type       = INPUT_VIRTUAL_TYPE.DPAD;
-        __verb_click = _click_verb;
-        __verb_left  = _left_verb;
-        __verb_right = _right_verb;
-        __verb_up    = _up_verb;
-        __verb_down  = _down_verb;
+        __type       = _4dir? INPUT_VIRTUAL_TYPE.DPAD_4DIR : INPUT_VIRTUAL_TYPE.DPAD_8DIR;
+        __verb_click = _click;
+        __verb_left  = _left;
+        __verb_right = _right;
+        __verb_up    = _up;
+        __verb_down  = _down;
         
         return self;
     }
     
-    static thumbstick = function(_click_verb, _left_verb, _right_verb, _up_verb, _down_verb)
+    static thumbstick = function(_click, _left, _right, _up, _down)
     {
         if (__destroyed || __background) return self;
         
         __type       = INPUT_VIRTUAL_TYPE.THUMBSTICK;
-        __verb_click = _click_verb;
-        __verb_left  = _left_verb;
-        __verb_right = _right_verb;
-        __verb_up    = _up_verb;
-        __verb_down  = _down_verb;
+        __verb_click = _click;
+        __verb_left  = _left;
+        __verb_right = _right;
+        __verb_up    = _up;
+        __verb_down  = _down;
         
         return self;
     }
@@ -526,6 +528,9 @@ function __input_class_virtual() constructor
             {
                 if (device_mouse_check_button(__touch_device, mb_left))
                 {
+                    var _player = global.__input_players[__player_index];
+                    _player.__verb_set_from_virtual(__verb_click, 1, false);
+                    
                     if (__record_history)
                     {
                         //Cycle the history array and add a new entry using the previous touch x/y coordinate
@@ -556,6 +561,76 @@ function __input_class_virtual() constructor
                         var _factor = clamp((_length - __threshold_min) / (__threshold_max - __threshold_min), 0, 1) / _length;
                         __normalized_x = _factor*_dx;
                         __normalized_y = _factor*_dy;
+                    }
+                    
+                    if (__type == INPUT_VIRTUAL_TYPE.DPAD_4DIR)
+                    {
+                        var _direction = 90*(floor(point_direction(0, 0, __normalized_x, __normalized_y) + 45) / 90);
+                        if (_direction == 0)
+                        {
+                            _player.__verb_set_from_virtual(__verb_right, true, true);
+                        }
+                        else if (_direction == 90)
+                        {
+                            _player.__verb_set_from_virtual(__verb_up, true, true);
+                        }
+                        else if (_direction == 180)
+                        {
+                            _player.__verb_set_from_virtual(__verb_left, true, true);
+                        }
+                        else if (_direction == 270)
+                        {
+                            _player.__verb_set_from_virtual(__verb_down, true, true);
+                        }
+                    }
+                    else if (__type == INPUT_VIRTUAL_TYPE.DPAD_8DIR)
+                    {
+                        var _direction = 45*(floor(point_direction(0, 0, __normalized_x, __normalized_y) + 22.5) / 45);
+                        
+                        //Look, I *could* do this with maths but I'm choosing not to because it's 10pm
+                        if (_direction == 0)
+                        {
+                            _player.__verb_set_from_virtual(__verb_right, true, true);
+                        }
+                        else if (_direction == 45)
+                        {
+                            _player.__verb_set_from_virtual(__verb_right, true, true);
+                            _player.__verb_set_from_virtual(__verb_up,    true, true);
+                        }
+                        else if (_direction == 90)
+                        {
+                            _player.__verb_set_from_virtual(__verb_up, true, true);
+                        }
+                        else if (_direction == 135)
+                        {
+                            _player.__verb_set_from_virtual(__verb_up,   true, true);
+                            _player.__verb_set_from_virtual(__verb_left, true, true);
+                        }
+                        else if (_direction == 180)
+                        {
+                            _player.__verb_set_from_virtual(__verb_left, true, true);
+                        }
+                        else if (_direction == 225)
+                        {
+                            _player.__verb_set_from_virtual(__verb_left, true, true);
+                            _player.__verb_set_from_virtual(__verb_down, true, true);
+                        }
+                        else if (_direction == 270)
+                        {
+                            _player.__verb_set_from_virtual(__verb_down, true, true);
+                        }
+                        else if (_direction == 315)
+                        {
+                            _player.__verb_set_from_virtual(__verb_down,  true, true);
+                            _player.__verb_set_from_virtual(__verb_right, true, true);
+                        }
+                    }
+                    else if (__type == INPUT_VIRTUAL_TYPE.THUMBSTICK)
+                    {
+                        _player.__verb_set_from_virtual(__verb_left,  -min(0, __normalized_x), true);
+                        _player.__verb_set_from_virtual(__verb_right,  max(0, __normalized_x), true);
+                        _player.__verb_set_from_virtual(__verb_up,    -min(0, __normalized_y), true);
+                        _player.__verb_set_from_virtual(__verb_down,   max(0, __normalized_y), true);
                     }
                 }
                 else
