@@ -1,4 +1,4 @@
-/// @desc    Resets all bindings for the profile to those found in __input_config_profiles_and_default_bindings()
+/// @desc    Resets all bindings for the profile to those found in __input_config_verbs_and_bindings()
 ///          This will only work for default profiles
 /// @param   profileName
 /// @param   [playerIndex=0]

@@ -908,11 +908,8 @@ function __input_initialize()
     
     
     
-    global.__input_initialization_phase = "__input_finalize_default_profiles";
-    __input_config_profiles_and_default_bindings();
-    
-    global.__input_initialization_phase = "__input_finalize_verb_groups";
-    __input_config_verbs();
+    global.__input_initialization_phase = "__input_config_verbs_and_bindings";
+    __input_config_verbs_and_bindings();
     
     
     

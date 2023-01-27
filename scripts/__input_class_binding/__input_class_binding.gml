@@ -386,6 +386,7 @@ function __input_class_binding() constructor
             case __INPUT_BINDING_MOUSE_WHEEL_DOWN: return __INPUT_SOURCE.MOUSE;    break;
             case __INPUT_BINDING_GAMEPAD_BUTTON:   return __INPUT_SOURCE.GAMEPAD;  break;
             case __INPUT_BINDING_GAMEPAD_AXIS:     return __INPUT_SOURCE.GAMEPAD;  break;
+            case __INPUT_BINDING_VIRTUAL_BUTTON:   return __INPUT_SOURCE.TOUCH;    break;
             case undefined:                        return undefined;               break;
         }
         

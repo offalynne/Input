@@ -2,7 +2,7 @@
 
 function __input_finalize_verb_groups()
 {
-    if (global.__input_initialization_phase != "__input_finalize_verb_groups") return;
+    if (global.__input_initialization_phase != "__input_config_verbs_and_bindings") return;
     
     if (!is_struct(global.__input_group_to_verbs_dict))
     {
