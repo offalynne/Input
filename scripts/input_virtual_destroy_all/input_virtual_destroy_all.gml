@@ -1,3 +1,5 @@
+/// @desc    Destroys all virtual buttons
+
 function input_virtual_destroy_all()
 {
     var _i = 0;
