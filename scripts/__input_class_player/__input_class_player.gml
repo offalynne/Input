@@ -358,6 +358,16 @@ function __input_class_player() constructor
     /// @param source
     static __source_add = function(_source)
     {
+        //Ensure we're targeting the right source for our platform / configuration
+        if (__INPUT_TOUCH_PRIMARY)
+        {
+            if (_source == INPUT_MOUSE) _source = INPUT_TOUCH;
+        }
+        else
+        {
+            if (_source == INPUT_TOUCH) _source = INPUT_MOUSE;
+        }
+        
         //We don't use __source_contains() here because it'll report a false positive when assigning keyboard+mouse together
         var _i = 0;
         repeat(array_length(__source_array))
@@ -384,6 +394,16 @@ function __input_class_player() constructor
     /// @param source
     static __source_remove = function(_source)
     {
+        //Ensure we're targeting the right source for our platform / configuration
+        if (__INPUT_TOUCH_PRIMARY)
+        {
+            if (_source == INPUT_MOUSE) _source = INPUT_TOUCH;
+        }
+        else
+        {
+            if (_source == INPUT_TOUCH) _source = INPUT_MOUSE;
+        }
+        
         var _i = 0;
         repeat(array_length(__source_array))
         {
@@ -408,6 +428,16 @@ function __input_class_player() constructor
     /// @param source
     static __source_contains = function(_source)
     {
+        //Ensure we're targeting the right source for our platform / configuration
+        if (__INPUT_TOUCH_PRIMARY)
+        {
+            if (_source == INPUT_MOUSE) _source = INPUT_TOUCH;
+        }
+        else
+        {
+            if (_source == INPUT_TOUCH) _source = INPUT_MOUSE;
+        }
+        
         if (_source == INPUT_GAMEPAD)
         {
             //If we pass in the INPUT_GAMEPAD array then return <true> if any source is a gamepad

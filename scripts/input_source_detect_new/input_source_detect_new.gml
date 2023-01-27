@@ -24,7 +24,7 @@ function input_source_detect_new()
     }
     
     if (input_source_detect_input(INPUT_KEYBOARD)) return INPUT_KEYBOARD;
-    if (input_source_detect_input(INPUT_MOUSE)) return INPUT_MOUSE;
+    if (input_source_detect_input(__INPUT_TOUCH_PRIMARY? INPUT_TOUCH : INPUT_MOUSE)) return __INPUT_TOUCH_PRIMARY? INPUT_TOUCH : INPUT_MOUSE;
     
     return undefined;
 }

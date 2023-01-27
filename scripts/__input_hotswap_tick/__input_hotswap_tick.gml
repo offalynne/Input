@@ -204,12 +204,23 @@ function __input_hotswap_tick_input()
         return INPUT_KEYBOARD;
     }
     
-    if (input_source_is_available(INPUT_MOUSE)
-    && ((INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && global.__input_pointer_moved)
-      || INPUT_HOTSWAP_ON_MOUSE_BUTTON && (input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down())))
+    if (__INPUT_TOUCH_PRIMARY)
     {
-        if (INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_MOUSE);
-        return INPUT_MOUSE;
+        if (input_source_is_available(INPUT_TOUCH) && input_mouse_check(mb_any))
+        {
+            if (INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_TOUCH);
+            return INPUT_TOUCH;
+        }
+    }
+    else
+    {
+        if (input_source_is_available(INPUT_MOUSE)
+        && ((INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && global.__input_pointer_moved)
+          || INPUT_HOTSWAP_ON_MOUSE_BUTTON && (input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down())))
+        {
+            if (INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_MOUSE);
+            return INPUT_MOUSE;
+        }
     }
     
     return undefined;

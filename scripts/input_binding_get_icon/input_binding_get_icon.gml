@@ -43,6 +43,10 @@ function input_binding_get_icon(_binding, _player_index = 0)
             var _category = "keyboard and mouse";
         break;
         
+        case __INPUT_BINDING_VIRTUAL_BUTTON:
+            return "virtual button";
+        break;
+        
         case __INPUT_BINDING_GAMEPAD_BUTTON:
         case __INPUT_BINDING_GAMEPAD_AXIS:
             var _category = input_player_get_gamepad_type(_player_index, _binding);

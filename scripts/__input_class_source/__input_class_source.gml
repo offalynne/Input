@@ -188,10 +188,6 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                 }
             break;
             
-            case __INPUT_BINDING_VIRTUAL_BUTTON:
-                return (__source == __INPUT_SOURCE.TOUCH);
-            break;
-            
             case __INPUT_BINDING_MOUSE_WHEEL_UP:
             case __INPUT_BINDING_MOUSE_WHEEL_DOWN:
                 if (!global.__input_mouse_allowed_on_platform)
@@ -204,6 +200,10 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                 
                 //Invalid on console or native mobile
                 return !(__INPUT_ON_CONSOLE || (!__INPUT_ON_WEB && __INPUT_ON_MOBILE));        
+            break;
+            
+            case __INPUT_BINDING_VIRTUAL_BUTTON:
+                return (__source == __INPUT_SOURCE.TOUCH);
             break;
         }
         
