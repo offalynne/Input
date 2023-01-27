@@ -576,12 +576,12 @@ function __input_class_virtual() constructor
         if (__circular == true)
         {
             draw_circle(__x, __y, __radius, true);
-            if (__held) draw_circle(__x, __y, __radius-4, false);
+            if (__held) draw_circle(__x, __y, __radius-8, false);
         }
         else if (__circular == false)
         {
             draw_rectangle(__left, __top, __right, __bottom, true);
-            if (__held) draw_rectangle(__left+2, __top+2, __right-2, __bottom-2, false);
+            if (__held) draw_rectangle(__left+4, __top+4, __right-4, __bottom-4, false);
         }
     }
     

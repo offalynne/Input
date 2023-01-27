@@ -1,5 +1,5 @@
 a = input_virtual_create()
-    .rectangle(10, 10, 160, 160);
+    .rectangle(10, 210, 160, 360);
 
 b = input_virtual_create()
-    .circle(300, 300, 120);
+    .circle(500, 300, 120);
