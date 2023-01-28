@@ -407,15 +407,19 @@ function __input_system_tick()
             {
                 if (gamepad_is_connected(_g))
                 {
-                    if (((os_type == os_switch) && (_gamepad.description != gamepad_get_description(_g))) || _steam_handles_changed)
+                    if ((os_type == os_switch) && (_gamepad.description != gamepad_get_description(_g)))
                     {
                         //When Switch L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
                         //Instead we have to check for changes in the description to see if state has changed
-                        //Also, force rediscovery when Steam Input handles have changed
                         _gamepad.discover();
                     }
                     else
                     {
+                        if (_steam_handles_changed) 
+                        {
+                            _gamepad.virtual_set();
+                        }
+                        
                         _gamepad.tick();
                     }
                 }
