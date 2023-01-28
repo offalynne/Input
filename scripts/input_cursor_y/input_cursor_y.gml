@@ -11,8 +11,9 @@ function input_cursor_y(_player_index = 0, _outputSystem = global.__input_pointe
 {
     __INPUT_VERIFY_PLAYER_INDEX
     
-    return __input_transform_coordinate(global.__input_players[_player_index].__cursor.__x,
-                                        global.__input_players[_player_index].__cursor.__y,
-                                        global.__input_pointer_coord_space,
+    var _cursor = global.__input_players[_player_index].__cursor;
+    return __input_transform_coordinate(_cursor.__x,
+                                        _cursor.__y,
+                                        _cursor.__coord_space,
                                         _outputSystem).y;
 }

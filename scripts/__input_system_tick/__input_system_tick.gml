@@ -202,8 +202,8 @@ function __input_system_tick()
                         break;
                         
                         case INPUT_COORD_SPACE.DEVICE:
-                            var _old_x     = window_get_width()/2;
-                            var _old_y     = window_get_height()/2;
+                            var _old_x = window_get_width()/2;
+                            var _old_y = window_get_height()/2;
                             
                             if (os_type == os_windows)
                             {

@@ -4,6 +4,9 @@
 /// @param outputSystem
 /// @param [camera]
 
+//Precache the app surface draw parameters
+__input_transform_coordinate(0, 0, 2, 2, undefined);
+
 function __input_transform_coordinate(_x, _y, _inputSystem, _outputSystem, _camera = undefined)
 {
     static _result = {
