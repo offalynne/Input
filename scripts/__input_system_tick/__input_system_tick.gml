@@ -478,18 +478,17 @@ function __input_system_tick()
     
     #region Virtual Buttons
     
-    //Clean up any destroyed or orphaned virtual buttons
+    //Clean up any destroyed virtual buttons
     var _i = 0;
     repeat(array_length(global.__input_virtual_array))
     {
-        var _virtual_weak_ref = global.__input_virtual_array[_i];
-        if (weak_ref_alive(_virtual_weak_ref) && !_virtual_weak_ref.ref.__destroyed)
+        if (global.__input_virtual_array[_i].__destroyed)
         {
-            ++_i;
+            array_delete(global.__input_virtual_array, _i, 1);
         }
         else
         {
-            array_delete(global.__input_virtual_array, _i, 1);
+            ++_i;
         }
     }
     
@@ -499,7 +498,7 @@ function __input_system_tick()
         global.__input_virtual_priority_dirty = false;
         array_sort(global.__input_virtual_array, function(_a, _b)
         {
-            return _a.ref.__priority - _b.ref.__priority;
+            return _a.__priority - _b.__priority;
         });
     }
     
@@ -512,7 +511,7 @@ function __input_system_tick()
             var _j = 0;
             repeat(array_length(global.__input_virtual_array))
             {
-                if (global.__input_virtual_array[_j].ref.__capture_touchpoint(_i)) break;
+                if (global.__input_virtual_array[_j].__capture_touchpoint(_i)) break;
                 ++_j;
             }
         }
@@ -524,7 +523,7 @@ function __input_system_tick()
     var _i = 0;
     repeat(array_length(global.__input_virtual_array))
     {
-        global.__input_virtual_array[_i].ref.__tick();
+        global.__input_virtual_array[_i].__tick();
         ++_i;
     }
     

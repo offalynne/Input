@@ -1,6 +1,6 @@
 function __input_class_virtual() constructor
 {
-    array_push(global.__input_virtual_array, weak_ref_create(self));
+    array_push(global.__input_virtual_array, self);
     global.__input_virtual_priority_dirty = true;
     
     
