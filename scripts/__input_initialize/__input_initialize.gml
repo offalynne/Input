@@ -675,15 +675,18 @@ function __input_initialize()
         }
     }
     
-    if (!global.__input_on_steam_deck && (os_type == os_linux))
+    if (!global.__input_on_steam_deck)
     {
+        //Identify Deck hardware in absence of Steamworks
         var _map = os_get_info();
         if (ds_exists(_map, ds_type_map))
         {
-            var _renderer_info = _map[? "gl_renderer_string"];            
-            if ((_renderer_info != undefined) && __input_string_contains(_renderer_info, "valve") && __input_string_contains(_renderer_info, "neptune"))
+            var _identifier = undefined;
+            if (os_type == os_linux)   _identifier = _map[? "gl_renderer_string"];
+            if (os_type == os_windows) _identifier = _map[? "video_adapter_description"];
+            
+            if ((_identifier != undefined) && __input_string_contains(_identifier, "AMD Custom GPU 04"))
             {
-                //Deck identification in absence of Steamworks
                 global.__input_on_steam_deck = true;
             }
             
