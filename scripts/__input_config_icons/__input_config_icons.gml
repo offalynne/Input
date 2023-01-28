@@ -6,59 +6,16 @@
 /// binding maps to on the actual physical hardware. There are a handful of special cases at the top of the
 /// struct that are used to handle errors or misconfigurations.
 
-#region Special Cases
 
-//Special case: When a non-binding is being evaluated
+
+//Special case: When a non-binding value is being evaluated
+//              This should only happen if input_binding_get_icon() is given an invalid input argument
 input_icons("not a binding")
 .add(all, "not a binding")
 
-//Special case: When an invalid binding is being evaluated (usually happens when no source is assigned for a player)
-input_icons("unknown")
-.add(all, "unknown")
-
-//Special case: Fallback gamepad icons
-//These are used when a gamepad is not recognised or an icon definition doesn't exist for a specific gamepad type
-input_icons("gamepad fallback")
-.add("gamepad face south",         "A")
-.add("gamepad face east",          "B")
-.add("gamepad face west",          "X")
-.add("gamepad face north",         "Y")
-.add("gamepad shoulder l",         "LB")
-.add("gamepad shoulder r",         "RB")
-.add("gamepad trigger l",          "LT")
-.add("gamepad trigger r",          "RT")
-.add("gamepad select",             "view")
-.add("gamepad start",              "menu")
-.add("gamepad dpad left",          "dpad left")
-.add("gamepad dpad right",         "dpad right")
-.add("gamepad dpad up",            "dpad up")
-.add("gamepad dpad down",          "dpad down")
-
-.add("gamepad thumbstick l left",  "thumbstick l left")
-.add("gamepad thumbstick l right", "thumbstick l right")
-.add("gamepad thumbstick l up",    "thumbstick l up")
-.add("gamepad thumbstick l down",  "thumbstick l down")
-.add("gamepad thumbstick l click", "thumbstick l click")
-
-.add("gamepad thumbstick r left",  "thumbstick r left")
-.add("gamepad thumbstick r right", "thumbstick r right")
-.add("gamepad thumbstick r up",    "thumbstick r up")
-.add("gamepad thumbstick r down",  "thumbstick r down")
-.add("gamepad thumbstick r click", "thumbstick r click")
-
-//Used for PlayStation 4 + 5 touchpad clicks (and occasionally other gamepads if INPUT_SDL2_ALLOW_EXTENDED is set to <true>)
-.add("gamepad touchpad click",     "touchpad click")
-
-//These are much less commonly used than the above
-//Please set INPUT_SDL2_ALLOW_EXTENDED to <true> to enable these gamepad buttons
-.add("gamepad guide",              "guide")
-.add("gamepad misc 1",             "misc")
-.add("gamepad paddle 1",           "paddle 1")
-.add("gamepad paddle 2",           "paddle 2")
-.add("gamepad paddle 3",           "paddle 3")
-.add("gamepad paddle 4",           "paddle 4")
-
-#endregion
+//Special case: When an empty binding is being evaluated
+input_icons("empty")
+.add(all, "empty")
 
 
 
