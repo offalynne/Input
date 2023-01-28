@@ -1,7 +1,8 @@
 draw_clear(c_dkgrey);
+draw_set_font(fnt_debug);
 
-var _mouse_x  = input_mouse_x();
-var _mouse_y  = input_mouse_y();
+var _mouse_x  = device_mouse_x(0);
+var _mouse_y  = device_mouse_y(0);
 var _cursor_x = input_cursor_x(0, INPUT_COORD_SPACE.ROOM);
 var _cursor_y = input_cursor_y(0, INPUT_COORD_SPACE.ROOM);
 

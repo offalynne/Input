@@ -11,3 +11,9 @@ if (keyboard_check_pressed(ord("2")))
     input_cursor_coord_space_set(coord_space);
     input_mouse_coord_space_set(coord_space);
 }
+
+if (input_check_double_pressed("shoot"))
+{
+    coord_space = (coord_space + 1) mod 3;
+    input_mouse_coord_space_set(coord_space);
+}
