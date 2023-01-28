@@ -69,6 +69,7 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 
 |Name                                      |Typical Value            |Purpose                                                                                                                                                      |
 |------------------------------------------|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`INPUT_FALLBACK_PROFILE_BEHAVIOUR`        |`1`                      |Sets the preferred behaviour for `input_binding_get()` when a player has no profile. See below for more information                                          |
 |`INPUT_AUTO_PROFILE_FOR_KEYBOARD`         |`"keyboard"`             |Profile to use to automatically set up bindings when the player is using the `INPUT_KEYBOARD` source                                                         |
 |`INPUT_AUTO_PROFILE_FOR_MOUSE`            |`"mouse"`                |Profile to use to automatically set up bindings when the player is using the `INPUT_MOUSE` source                                                            |
 |`INPUT_AUTO_PROFILE_FOR_GAMEPAD`          |`"gamepad"`              |Profile to use to automatically set up bindings when the player is using the `INPUT_GAMEPAD[n]` source                                                       |
@@ -77,6 +78,14 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 |`INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER`|`true`                   |Whether to treat `INPUT_KEYBOARD` and `INPUT_MOUSE` sources are interchangeable. This "pairs" the two sources together and is the default behaviour for Input|
 |`INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES`|`false`                  |Whether to allow [default profiles](Profiles) to include different verbs. This is convenient for larger games but is potentially unsafe                      |
 |`INPUT_DEFAULT_PROFILES`                  |                         |This macro contains the struct that defines default profiles. Please see the [Profiles](Profiles) page for more information                                  |
+
+When a player has no profile set, `input_binding_get()` has undefined behaviour. This typically happens when hotswapping and the player hasn't pressed any buttons/keys/etc. yet. The macro `INPUT_FALLBACK_PROFILE_BEHAVIOUR` controls what should happen and can take one of three values:
+
+|Value|Behaviour                                                                                                  |
+|-----|-----------------------------------------------------------------------------------------------------------|
+|`0`  |Always return an empty binding if the player has no profile set                                            |
+|`1`  |Prefer `INPUT_AUTO_PROFILE_FOR_KEYBOARD` for bindings if on desktop OSs, and use gamepad bindings otherwise|
+|`2`  |Prefer `INPUT_AUTO_PROFILE_FOR_GAMEPAD` for bindings                                                       |
 
 &nbsp;
 
