@@ -2,23 +2,55 @@
 
 &nbsp;
 
-## `input_cursor_x([playerIndex])`
+## `input_cursor_x([playerIndex], [coordSpace])`
 
 *Returns:* Number, the x-coordinate of the given player's cursor
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|number  |Player to target. If not specified, player 0 is used|
+|Name           |Datatype                |Purpose                                                                                                        |
+|---------------|------------------------|---------------------------------------------------------------------------------------------------------------|
+|`[playerIndex]`|number                  |Player to target. If not specified, player 0 is used                                                           |
+|`[coordSpace]` |`INPUT_COORD_SPACE` enum|Coordinate space to use. If not specified, the coordinate space set by `input_cursor_coord_space_set()` is used|
+
+Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_SPACE` enum.
 
 &nbsp;
 
-## `input_cursor_y([playerIndex])`
+## `input_cursor_y([playerIndex], [coordSpace])`
 
 *Returns:* Number, the y-coordinate of the given player's cursor
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|number  |Player to target. If not specified, player 0 is used|
+|Name           |Datatype                |Purpose                                                                                                        |
+|---------------|------------------------|---------------------------------------------------------------------------------------------------------------|
+|`[playerIndex]`|number                  |Player to target. If not specified, player 0 is used                                                           |
+|`[coordSpace]` |`INPUT_COORD_SPACE` enum|Coordinate space to use. If not specified, the coordinate space set by `input_cursor_coord_space_set()` is used|
+
+Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_SPACE` enum.
+
+&nbsp;
+
+## `input_cursor_previous_x([playerIndex], [coordSpace])`
+
+*Returns:* Number, the x-coordinate of the given player's cursor from the previous frame
+
+|Name           |Datatype                |Purpose                                                                                                        |
+|---------------|------------------------|---------------------------------------------------------------------------------------------------------------|
+|`[playerIndex]`|number                  |Player to target. If not specified, player 0 is used                                                           |
+|`[coordSpace]` |`INPUT_COORD_SPACE` enum|Coordinate space to use. If not specified, the coordinate space set by `input_cursor_coord_space_set()` is used|
+
+Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_SPACE` enum.
+
+&nbsp;
+
+## `input_cursor_previous_y([playerIndex], [coordSpace])`
+
+*Returns:* Number, the y-coordinate of the given player's cursor from the previous frame
+
+|Name           |Datatype                |Purpose                                                                                                        |
+|---------------|------------------------|---------------------------------------------------------------------------------------------------------------|
+|`[playerIndex]`|number                  |Player to target. If not specified, player 0 is used                                                           |
+|`[coordSpace]` |`INPUT_COORD_SPACE` enum|Coordinate space to use. If not specified, the coordinate space set by `input_cursor_coord_space_set()` is used|
+
+Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_SPACE` enum.
 
 &nbsp;
 
