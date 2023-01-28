@@ -22,6 +22,26 @@
 
 &nbsp;
 
+## `input_cursor_previous_x([playerIndex])`
+
+*Returns:* Number, the x-coordinate of the given player's cursor from the previous frame
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`[playerIndex]`|number  |Player to target. If not specified, player 0 is used|
+
+&nbsp;
+
+## `input_cursor_previous_y([playerIndex])`
+
+*Returns:* Number, the y-coordinate of the given player's cursor from the previous frame
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`[playerIndex]`|number  |Player to target. If not specified, player 0 is used|
+
+&nbsp;
+
 ## `input_cursor_set(x, y, [playerIndex], [relative])`
 
 *Returns:* N/A (`undefined`)
