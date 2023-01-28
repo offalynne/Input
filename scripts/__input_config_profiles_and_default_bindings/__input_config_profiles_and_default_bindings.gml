@@ -57,9 +57,9 @@ INPUT_DEFAULT_PROFILES = {
 //This typically happens when hotswapping and the player hasn't pressed any buttons/keys/etc. yet
 //
 //Three options are available:
-//  0  Always return an empty binding if the player has no profile set
-//  1  Prefer keyboard bindings if on desktop OSs, and use gamepad bindings otherwise
-//  2  Prefer gamepad bindings
+//  0 = Always return an empty binding if the player has no profile set
+//  1 = Prefer keyboard bindings if on desktop OSs, and use gamepad bindings otherwise
+//  2 = Prefer gamepad bindings
 #macro INPUT_FALLBACK_PROFILE_BEHAVIOUR  1
 
 //Names of the default profiles to use when automatically assigning profiles based on the source that a
