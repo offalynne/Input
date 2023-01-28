@@ -70,7 +70,7 @@ function input_binding_test_collisions(_verb_name, _src_binding, _player_index =
                 {
                     //Pick up a binding
                     //If this hasn't been defined for the player then it falls through and uses the default binding
-                    var _extant_binding = __binding_get(_profile_name, _verb, _alternate_index);
+                    var _extant_binding = __binding_get(_profile_name, _verb, _alternate_index, false);
                     
                     //A lot of alternate binding slots don't get used so they return <undefined>
                     if (is_struct(_extant_binding))

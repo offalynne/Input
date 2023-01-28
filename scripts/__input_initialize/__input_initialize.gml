@@ -867,14 +867,13 @@ function __input_initialize()
     //We want to be able to identify the actual mouse buttons correctly, and have our own double-input handling
     device_mouse_dbclick_enable(false);
     
-    global.__input_profile_array         = undefined;
-    global.__input_profile_dict          = undefined;
-    global.__input_default_profile_dict  = undefined;
-    global.__input_verb_to_group_dict    = {};
-    global.__input_group_to_verbs_dict   = {};
-    global.__input_verb_group_array      = [];
-    global.__input_null_binding          = input_binding_empty();
-    global.__input_icons                 = {};
+    global.__input_profile_array        = undefined;
+    global.__input_profile_dict         = undefined;
+    global.__input_default_profile_dict = undefined;
+    global.__input_verb_to_group_dict   = {};
+    global.__input_group_to_verbs_dict  = {};
+    global.__input_verb_group_array     = [];
+    global.__input_icons                = {};
     
     
     
