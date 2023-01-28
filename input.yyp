@@ -9,6 +9,7 @@
     {"id":{"name":"input_binding_threshold_get","path":"scripts/input_binding_threshold_get/input_binding_threshold_get.yy",},"order":13,},
     {"id":{"name":"input_player_export","path":"scripts/input_player_export/input_player_export.yy",},"order":5,},
     {"id":{"name":"obj_gamepad_tester","path":"objects/obj_gamepad_tester/obj_gamepad_tester.yy",},"order":2,},
+    {"id":{"name":"fnt_debug","path":"fonts/fnt_debug/fnt_debug.yy",},"order":35,},
     {"id":{"name":"input_check_long","path":"scripts/input_check_long/input_check_long.yy",},"order":7,},
     {"id":{"name":"obj_test_2d","path":"objects/obj_test_2d/obj_test_2d.yy",},"order":8,},
     {"id":{"name":"obj_test_verb_set","path":"objects/obj_test_verb_set/obj_test_verb_set.yy",},"order":9,},

@@ -8,7 +8,7 @@
 #macro INPUT_HOTSWAP_ON_MOUSE_BUTTON  true
 
 //Whether to trigger a hotswap when the mouse is moved
-#macro INPUT_HOTSWAP_ON_MOUSE_MOVEMENT  true
+#macro INPUT_HOTSWAP_ON_MOUSE_MOVEMENT  false
 
 //The function to call when a player hotswaps their device
 //Set this macro to <undefined> to not call a function

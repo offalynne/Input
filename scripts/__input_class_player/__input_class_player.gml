@@ -518,10 +518,47 @@ function __input_class_player() constructor
     /// @param profileName
     /// @param verb
     /// @param alternate
-    static __binding_get = function(_profile_name, _verb, _alternate)
+    /// @param allowFallback
+    static __binding_get = function(_profile_name, _verb, _alternate, _allowFallback)
     {
+        static _empty_binding = input_binding_empty();
+        
         _profile_name = __profile_get(_profile_name);
-        if (_profile_name == undefined) return global.__input_null_binding; //Return a "static" empty binding
+        
+        //Welp, we have no profile for this player
+        //This'll usually happen if the player is yet to be assigned a source/profile during hotswapping
+        if (_profile_name == undefined)
+        {
+            if (!_allowFallback) return _empty_binding;
+            
+            if (INPUT_FALLBACK_PROFILE_BEHAVIOUR == 1)
+            {
+                if (__INPUT_ON_DESKTOP && global.__input_keyboard_allowed && global.__input_any_keyboard_binding_defined)
+                {
+                    //Try to use a keyboard profile if possible
+                    _profile_name = INPUT_AUTO_PROFILE_FOR_KEYBOARD;
+                }
+                else if (global.__input_any_gamepad_binding_defined)
+                {
+                    //Try to use a gamepad profile if possible
+                    _profile_name = INPUT_AUTO_PROFILE_FOR_GAMEPAD;
+                }
+                else
+                {
+                    //Return a "static" empty binding since everything else failed
+                    return _empty_binding;
+                }
+            }
+            else if ((INPUT_FALLBACK_PROFILE_BEHAVIOUR == 2) && global.__input_any_gamepad_binding_defined)
+            {
+                //Try to use a gamepad profile if possible
+                _profile_name = INPUT_AUTO_PROFILE_FOR_GAMEPAD;
+            }
+            else
+            {
+                return _empty_binding;
+            }
+        }
         
         return __profiles_dict[$ _profile_name][$ _verb][_alternate];
     }
