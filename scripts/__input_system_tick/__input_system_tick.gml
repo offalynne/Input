@@ -478,53 +478,56 @@ function __input_system_tick()
     
     #region Virtual Buttons
     
-    //Clean up any destroyed virtual buttons
-    var _i = 0;
-    repeat(array_length(global.__input_virtual_array))
-    {
-        if (global.__input_virtual_array[_i].__destroyed)
-        {
-            array_delete(global.__input_virtual_array, _i, 1);
-        }
-        else
-        {
-            ++_i;
-        }
-    }
-    
     //Reorder virtual buttons if necessary, from highest priority to lowest
-    if (global.__input_virtual_priority_dirty)
+    if (global.__input_virtual_order_dirty)
     {
-        global.__input_virtual_priority_dirty = false;
+        //Clean up any destroyed virtual buttons
+        var _i = 0;
+        repeat(array_length(global.__input_virtual_array))
+        {
+            if (global.__input_virtual_array[_i].__destroyed)
+            {
+                array_delete(global.__input_virtual_array, _i, 1);
+            }
+            else
+            {
+                ++_i;
+            }
+        }
+        
+        global.__input_virtual_order_dirty = false;
         array_sort(global.__input_virtual_array, function(_a, _b)
         {
             return _a.__priority - _b.__priority;
         });
     }
     
-    //Detect any new touch points and find the top-most button to handle it
-    var _i = 0;
-    repeat(INPUT_MAX_TOUCHPOINTS)
+    if (is_struct(global.__input_touch_player))
     {
-        if (device_mouse_check_button_pressed(_i, mb_left))
+        //Detect any new touch points and find the top-most button to handle it
+        var _i = 0;
+        repeat(INPUT_MAX_TOUCHPOINTS)
         {
-            var _j = 0;
-            repeat(array_length(global.__input_virtual_array))
+            if (device_mouse_check_button_pressed(_i, mb_left))
             {
-                if (global.__input_virtual_array[_j].__capture_touchpoint(_i)) break;
-                ++_j;
+                var _j = 0;
+                repeat(array_length(global.__input_virtual_array))
+                {
+                    if (global.__input_virtual_array[_j].__capture_touchpoint(_i)) break;
+                    ++_j;
+                }
             }
+            
+            ++_i;
         }
         
-        ++_i;
-    }
-    
-    //Update any virtual buttons that are currently being interacted with
-    var _i = 0;
-    repeat(array_length(global.__input_virtual_array))
-    {
-        global.__input_virtual_array[_i].__tick();
-        ++_i;
+        //Update any virtual buttons that are currently being interacted with
+        var _i = 0;
+        repeat(array_length(global.__input_virtual_array))
+        {
+            global.__input_virtual_array[_i].__tick();
+            ++_i;
+        }
     }
     
     #endregion

@@ -1,13 +1,12 @@
 function __input_class_virtual() constructor
 {
     array_push(global.__input_virtual_array, self);
-    global.__input_virtual_priority_dirty = true;
+    global.__input_virtual_order_dirty = true;
     
     
     
     __destroyed  = false;
     __background = false;
-    __captured_this_frame = false;
     
     __circular = undefined;
     __left     = undefined;
@@ -36,24 +35,24 @@ function __input_class_virtual() constructor
     
     __release_behaviour = INPUT_VIRTUAL_RELEASE.DO_NOTHING;
     __active            = true;
-    __player_index      = 0;
     __priority          = 0;
     __follow            = false;
     __record_history    = false;
     
     //State
     //These variables should be cleared by .__clear_state()
-    __touch_device  = undefined;
-    __pressed       = false;
-    __held          = false;
-    __released      = false;
-    __normalized_x  = 0;
-    __normalized_y  = 0;
-    __touch_x       = undefined;
-    __touch_y       = undefined;
-    __touch_start_x = undefined;
-    __touch_start_y = undefined;
-    __history_array = undefined; //Created when setting history recording
+    __touch_device        = undefined;
+    __pressed             = false;
+    __held                = false;
+    __released            = false;
+    __normalized_x        = 0;
+    __normalized_y        = 0;
+    __touch_x             = undefined;
+    __touch_y             = undefined;
+    __touch_start_x       = undefined;
+    __touch_start_y       = undefined;
+    __history_array       = undefined; //Created when setting history recording
+    __captured_this_frame = false;
     
     
     
@@ -61,8 +60,46 @@ function __input_class_virtual() constructor
     static destroy = function()
     {
         __destroyed = true;
+        global.__input_virtual_order_dirty = true;
         
         return undefined;
+    }
+    
+    static debug_draw = function()
+    {
+        if (__destroyed) return;
+        
+        if (__active && is_struct(global.__input_touch_player))
+        {
+            if (__circular == true)
+            {
+                draw_circle(__x, __y, __radius,   true);
+                draw_circle(__x, __y, __radius-4, true);
+                draw_circle(__x, __y, __radius-8, !__held);
+            }
+            else if (__circular == false)
+            {
+                draw_rectangle(__left,   __top,   __right,   __bottom,   true);
+                draw_rectangle(__left+4, __top+4, __right-4, __bottom-4, true);
+                draw_rectangle(__left+8, __top+8, __right-8, __bottom-8, !__held);
+            }
+        }
+        else
+        {
+            var _old_alpha = draw_get_alpha();
+            draw_set_alpha(0.33*_old_alpha);
+            
+            if (__circular == true)
+            {
+                draw_circle(__x, __y, __radius, true);
+            }
+            else if (__circular == false)
+            {
+                draw_rectangle(__left, __top, __right, __bottom, true);
+            }
+            
+            draw_set_alpha(_old_alpha);
+        }
     }
     
     
@@ -244,20 +281,6 @@ function __input_class_virtual() constructor
         return __active;
     }
     
-    static player = function(_player_index)
-    {
-        if (__destroyed) return self;
-        
-        __player_index = _player_index;
-        
-        return self;
-    }
-    
-    static get_player = function()
-    {
-        return __player_index;
-    }
-    
     static priority = function(_priority)
     {
         if (__destroyed) return self;
@@ -265,7 +288,7 @@ function __input_class_virtual() constructor
         if (__priority != _priority)
         {
             __priority = _priority;
-            global.__input_virtual_priority_dirty = true;
+            global.__input_virtual_order_dirty = true;
         }
         
         return self;
@@ -567,13 +590,6 @@ function __input_class_virtual() constructor
         if (__destroyed) return undefined;
         if (__touch_device == undefined) return undefined;
         
-        var _player = global.__input_players[__player_index];
-        if (!_player.__source_contains(INPUT_TOUCH)) //TODO - This is probably really slow
-        {
-            __clear_state(); //Do we need to continually clear state here?
-            return undefined;
-        }
-        
         if (__released)
         {
             __clear_state();
@@ -594,6 +610,7 @@ function __input_class_virtual() constructor
             {
                 if (device_mouse_check_button(__touch_device, mb_left))
                 {
+                    var _player = global.__input_touch_player;
                     _player.__verb_set_from_virtual(__verb_click, 1, false);
                     
                     if (__record_history)
@@ -769,43 +786,6 @@ function __input_class_virtual() constructor
                     __released = true;
                 }
             }
-        }
-    }
-    
-    static __debug_draw = function()
-    {
-        if (__destroyed) return;
-        
-        if (__active)
-        {
-            if (__circular == true)
-            {
-                draw_circle(__x, __y, __radius,   true);
-                draw_circle(__x, __y, __radius-4, true);
-                draw_circle(__x, __y, __radius-8, !__held);
-            }
-            else if (__circular == false)
-            {
-                draw_rectangle(__left,   __top,   __right,   __bottom,   true);
-                draw_rectangle(__left+4, __top+4, __right-4, __bottom-4, true);
-                draw_rectangle(__left+8, __top+8, __right-8, __bottom-8, !__held);
-            }
-        }
-        else
-        {
-            var _old_alpha = draw_get_alpha();
-            draw_set_alpha(0.33*_old_alpha);
-            
-            if (__circular == true)
-            {
-                draw_circle(__x, __y, __radius, true);
-            }
-            else if (__circular == false)
-            {
-                draw_rectangle(__left, __top, __right, __bottom, true);
-            }
-            
-            draw_set_alpha(_old_alpha);
         }
     }
     

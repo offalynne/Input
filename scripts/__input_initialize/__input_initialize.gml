@@ -141,9 +141,12 @@ function __input_initialize()
     global.__input_ignore_gamepad_types = {};
     
     //Array of created virtual buttons
-    global.__input_virtual_array          = [];
-    global.__input_virtual_background     = input_virtual_create().priority(-infinity); global.__input_virtual_background.__background = true;
-    global.__input_virtual_priority_dirty = false;
+    global.__input_virtual_array       = [];
+    global.__input_virtual_background  = input_virtual_create().priority(-infinity); global.__input_virtual_background.__background = true;
+    global.__input_virtual_order_dirty = false;
+    
+    //Which player has the INPUT_TOUCH source, if any
+    global.__input_touch_player = undefined;
     
     //Two structs that are returned by input_players_get_status() and input_gamepads_get_status()
     //These are "static" structs that are reset and populated by input_tick()

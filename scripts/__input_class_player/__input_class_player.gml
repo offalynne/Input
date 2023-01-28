@@ -339,6 +339,7 @@ function __input_class_player() constructor
     {
         if ((__rebind_state > 0) && (array_length(__source_array) > 0)) __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_CHANGED);
         
+        //Reset all gamepad colours and trigger effects
         var _i = 0;
         repeat(array_length(__source_array))
         {
@@ -349,8 +350,11 @@ function __input_class_player() constructor
             }
         }
         
+        //Clear the touch input tracking variable if it's us!
+        if (global.__input_touch_player == self) __input_virtual_player_set(undefined);
+        
         array_resize(__source_array, 0);
-        __last_input_time = global.__input_current_time;
+        __last_input_time = global.__input_current_time; //Set the last input time to delay hotswapping for a little while
         
         if (INPUT_DEBUG_SOURCES) __input_trace("Sources cleared for player ", __index);
     }
@@ -384,9 +388,12 @@ function __input_class_player() constructor
         if (__rebind_state > 0) __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_CHANGED);
         
         array_push(__source_array, _source);
-        __last_input_time = global.__input_current_time;
+        __last_input_time = global.__input_current_time; //Set the last input time to delay hotswapping for a little while
         __color_set(__color);        
         __input_player_apply_trigger_effects(__index);
+        
+        //Set the touch player index
+        if (_source == INPUT_TOUCH) __input_virtual_player_set(self);
         
         if (INPUT_DEBUG_SOURCES) __input_trace("Assigned source ", _source, " to player ", __index);
     }
@@ -409,12 +416,16 @@ function __input_class_player() constructor
         {
             if (__source_array[_i] == _source)
             {
+                //Reset gamepad colours and trigger effects when removing a gamepad source
                 if (__source_array[_i].__source == __INPUT_SOURCE.GAMEPAD)
                 {
                     __input_gamepad_reset_color(__source_array[_i].__gamepad);
                     __input_gamepad_stop_trigger_effects(__source_array[_i].__gamepad);
                 }
                  
+                //Clear the touch input tracking variable if it's us!
+                if ((_source == INPUT_TOUCH) && (global.__input_touch_player == self)) __input_virtual_player_set(undefined);
+                
                 array_delete(__source_array, _i, 1);
                 if (INPUT_DEBUG_SOURCES) __input_trace("Removed source ", _source, " from player ", __index);
             }

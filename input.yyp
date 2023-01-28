@@ -76,7 +76,7 @@
     {"id":{"name":"input_icons","path":"scripts/input_icons/input_icons.yy",},"order":6,},
     {"id":{"name":"obj_example_bullet","path":"objects/obj_example_bullet/obj_example_bullet.yy",},"order":4,},
     {"id":{"name":"input_source_clear","path":"scripts/input_source_clear/input_source_clear.yy",},"order":7,},
-    {"id":{"name":"__input_virtual_clear_all","path":"scripts/__input_virtual_clear_all/__input_virtual_clear_all.yy",},"order":42,},
+    {"id":{"name":"__input_virtual_player_set","path":"scripts/__input_virtual_player_set/__input_virtual_player_set.yy",},"order":42,},
     {"id":{"name":"input_player_ghost_set","path":"scripts/input_player_ghost_set/input_player_ghost_set.yy",},"order":14,},
     {"id":{"name":"input_check_quick_pressed","path":"scripts/input_check_quick_pressed/input_check_quick_pressed.yy",},"order":11,},
     {"id":{"name":"input_player_swap","path":"scripts/input_player_swap/input_player_swap.yy",},"order":19,},
