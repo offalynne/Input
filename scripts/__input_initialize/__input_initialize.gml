@@ -216,13 +216,13 @@ function __input_initialize()
         EFFECT_VIBRATION_ACTIVE  = ps5_gamepad_trigger_effect_state_vibration_active,
         EFFECT_INTERCEPTED       = ps5_gamepad_trigger_effect_state_intercepted,
     }
-	
-	enum INPUT_GYRO
-	{
-	    AXIS_PITCH,
-	    AXIS_YAW,
-	    AXIS_ROLL
-	}
+    
+    enum INPUT_GYRO
+    {
+        AXIS_PITCH,
+        AXIS_YAW,
+        AXIS_ROLL
+    }
     
     global.__input_source_mode          = undefined;
     global.__input_previous_source_mode = INPUT_STARTING_SOURCE_MODE;
@@ -332,11 +332,10 @@ function __input_initialize()
 
         XBoxOneController:  "xbox one",
         CommunityXBoxOne:   "xbox one",
-        SteamControllerV2:  "xbox one",
-        CommunityDeck:      "xbox one", //  Deck uses Xbox One iconography excepting 'View' button
-        CommunityLuna:      "xbox one", //  Luna uses Xbox One iconography excepting 'View' button
-        CommunityStadia:    "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers
-        AppleController:    "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers
+        CommunityDeck:      "xbox one", //  Deck uses Xbox One iconography
+        CommunityLuna:      "xbox one", //  Luna uses Xbox One iconography excepting 'View' button: Circle
+        CommunityStadia:    "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers: Options, L1 R1, L2 R2
+        AppleController:    "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers: Various, L1 R1, L2 R2
         
         XBox360Controller:  "xbox 360",
         CommunityXBox360:   "xbox 360",
@@ -353,7 +352,7 @@ function __input_initialize()
         CommunityPSX:        "psx",
         
         //Switch
-        SwitchHandheld:            "switch", //Attached JoyCon pair or Switch Lite
+        SwitchHandheld:            "switch", //Attached JoyCon pair or Switch Lite handheld
         SwitchJoyConPair:          "switch",
         SwitchProController:       "switch",
         XInputSwitchController:    "switch",
@@ -378,6 +377,7 @@ function __input_initialize()
         Unknown: "unknown",
         unknown: "unknown",
         
+        SteamControllerV2:         "unknown",
         UnknownNonSteamController: "unknown",
         CommunityUnknown:          "unknown",
         CommunitySteam:            "unknown"
@@ -661,6 +661,7 @@ function __input_initialize()
             if (os_type == os_linux)   _identifier = _map[? "gl_renderer_string"];
             if (os_type == os_windows) _identifier = _map[? "video_adapter_description"];
             
+            //Steam Deck GPU identifier
             if ((_identifier != undefined) && __input_string_contains(_identifier, "AMD Custom GPU 04"))
             {
                 global.__input_on_steam_deck = true;
