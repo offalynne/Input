@@ -38,6 +38,7 @@ function __input_class_virtual() constructor
     __priority          = 0;
     __follow            = false;
     __record_history    = false;
+    __first_touch_only  = false;
     
     //State
     //These variables should be cleared by .__clear_state()
@@ -325,6 +326,21 @@ function __input_class_virtual() constructor
         return __release_behaviour;
     }
     
+    static first_touch_only = function(_state)
+    {
+        //If this button has captured 
+        if (_state && (__touch_device > 0)) __clear_state();
+        
+        __first_touch_only = _state;
+        
+        return self;
+    }
+    
+    static get_first_touch_only = function()
+    {
+        return __first_touch_only;
+    }
+    
     #endregion
     
     
@@ -555,6 +571,7 @@ function __input_class_virtual() constructor
         if (__touch_device != undefined) return false;
         if (__circular == undefined) return false;
         if (!__active) return false;
+        if (__first_touch_only && (_device > 0)) return false;
         
         var _touch_x = device_mouse_x_to_gui(_device);
         var _touch_y = device_mouse_y_to_gui(_device);
