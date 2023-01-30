@@ -320,7 +320,7 @@ function __input_class_virtual() constructor
         return self;
     }
     
-    static get_releas_behaviour = function()
+    static get_release_behaviour = function()
     {
         return __release_behaviour;
     }
