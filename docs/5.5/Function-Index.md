@@ -170,6 +170,12 @@
 
 ## [Virtual Buttons](Functions-(Virtual-Buttons))
 
+- [`input_virtual_destroy_all()`](Functions-(Virtual-Buttons)?id=input_virtual_destroy_all)
+- [`input_is_virtual()`](Functions-(Virtual-Buttons)?id=input_is_virtual)
+- [`input_virtual_debug_draw()`](Functions-(Virtual-Buttons)?id=input_virtual_debug_draw)
+- [`input_virtual_create()`](Functions-(Virtual-Buttons)?id=input_virtual_create)
+- [Virtual button methods](Functions-(Virtual-Buttons)?id=virtual-button-methods)
+
 &nbsp;
 
 ## [Accessibility](Functions-(Accessibility))
