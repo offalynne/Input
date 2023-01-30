@@ -393,7 +393,7 @@ function __input_class_player() constructor
         __input_player_apply_trigger_effects(__index);
         
         //Set the touch player index
-        if (_source == INPUT_TOUCH) __input_virtual_player_set(self);
+        if ((_source == INPUT_TOUCH) || (INPUT_MOUSE_ALLOW_VIRTUAL_BUTTONS && (_source == INPUT_MOUSE))) __input_virtual_player_set(self);
         
         if (INPUT_DEBUG_SOURCES) __input_trace("Assigned source ", _source, " to player ", __index);
     }
@@ -424,7 +424,7 @@ function __input_class_player() constructor
                 }
                  
                 //Clear the touch input tracking variable if it's us!
-                if ((_source == INPUT_TOUCH) && (global.__input_touch_player == self)) __input_virtual_player_set(undefined);
+                if (((_source == INPUT_TOUCH) || (INPUT_MOUSE_ALLOW_VIRTUAL_BUTTONS && (_source == INPUT_MOUSE))) && (global.__input_touch_player == self)) __input_virtual_player_set(undefined);
                 
                 array_delete(__source_array, _i, 1);
                 if (INPUT_DEBUG_SOURCES) __input_trace("Removed source ", _source, " from player ", __index);

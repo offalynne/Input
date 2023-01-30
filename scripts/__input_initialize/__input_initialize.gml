@@ -146,6 +146,7 @@ function __input_initialize()
     global.__input_virtual_order_dirty = false;
     
     //Which player has the INPUT_TOUCH source, if any
+    //This can also work with INPUT_MOUSE if INPUT_MOUSE_ALLOW_VIRTUAL_BUTTONS is set to <true>
     global.__input_touch_player = undefined;
     
     //Two structs that are returned by input_players_get_status() and input_gamepads_get_status()
