@@ -5,7 +5,7 @@
 
 function input_player_get_gamepad(_player_index = 0, _binding = undefined)
 {
-	__input_initialize();
+    __input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX
     
     //If we're not in multidevice mode then ignore the binding argument

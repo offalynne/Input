@@ -4,7 +4,7 @@
 
 function input_profile_exists(_profile_name, _player_index = 0)
 {
-	__input_initialize();
+    __input_initialize();
     
     if (is_string(_player_index) && (_player_index == "default"))
     {

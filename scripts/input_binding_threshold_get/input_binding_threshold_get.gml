@@ -4,7 +4,7 @@
 
 function input_binding_threshold_get(_binding)
 {
-	__input_initialize();
+    __input_initialize();
     
     if (!input_value_is_binding(_binding))
     {

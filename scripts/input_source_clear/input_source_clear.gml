@@ -3,7 +3,7 @@
 
 function input_source_clear(_player_index = 0)
 {
-	__input_initialize();
+    __input_initialize();
     
     if (_player_index == all)
     {

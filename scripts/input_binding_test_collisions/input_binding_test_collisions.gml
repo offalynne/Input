@@ -6,7 +6,7 @@
 
 function input_binding_test_collisions(_verb_name, _src_binding, _player_index = 0, _profile_name = undefined)
 {
-	__input_initialize();
+    __input_initialize();
     __INPUT_VERIFY_BASIC_VERB_NAME
     __INPUT_VERIFY_PLAYER_INDEX
     __INPUT_VERIFY_PROFILE_NAME

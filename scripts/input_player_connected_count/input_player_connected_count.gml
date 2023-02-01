@@ -2,7 +2,7 @@
 
 function input_player_connected_count()
 {
-	__input_initialize();
+    __input_initialize();
     
     var _count = 0;
     var _p = 0;

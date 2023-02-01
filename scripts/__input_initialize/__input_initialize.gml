@@ -15,9 +15,9 @@ function __input_initialize()
     
     __input_trace("Welcome to Input by @jujuadams and @offalynne! This is version ", __INPUT_VERSION, ", ", __INPUT_DATE);
     
-	global.__input_use_is_instanceof = (string_copy(GM_runtime_version, 1, 4) == "2023");
-	if (global.__input_use_is_instanceof) __input_trace("On runtime ", GM_runtime_version, ", using is_instanceof()");
-	
+    global.__input_use_is_instanceof = (string_copy(GM_runtime_version, 1, 4) == "2023");
+    if (global.__input_use_is_instanceof) __input_trace("On runtime ", GM_runtime_version, ", using is_instanceof()");
+    
     //Attempt to set up a time source for slick automatic input handling
     try
     {
