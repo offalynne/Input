@@ -70,6 +70,7 @@
 056e,2008,CommunityLikeSwitch // Elecom Wii Adapter
 289b,002b,CommunityLikeSwitch // Raphnet Wii Adapter
 289b,002c,CommunityLikeSwitch // Raphnet Wii Adapter
+289b,0008,CommunityLikeSwitch // Raphnet Wii Adapter
 0079,1800,CommunityLikeSwitch // Mayflash Wii U Adapter
 6957,746f,CommunityLikeSwitch // Wii U Pro
 057e,2017,CommunityLikeSwitch // Nintendo Switch Online SFC & MD
