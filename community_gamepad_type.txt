@@ -147,7 +147,7 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 289b,0002,CommunitySNES // Raphnet SNES
 4854,4d43,CommunitySNES // Ystek Micreal SNES
 289b,0080,CommunitySNES // Raphnet Nintendo Classic Adapter
-081f,e401,CommunitySuperFamicom // RetroUSB Famicom
+081f,e401,CommunitySNES // RetroUSB Famicom
 1235,ab21,CommunitySuperFamicom // 8BitDo SFC30
 2810,0009,CommunitySuperFamicom // 8BitDo SFC30
 2dc8,2830,CommunitySuperFamicom // 8BitDo SFC30
