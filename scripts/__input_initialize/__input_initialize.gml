@@ -15,10 +15,13 @@ function __input_initialize()
     
     __input_trace("Welcome to Input by @jujuadams and @offalynne! This is version ", __INPUT_VERSION, ", ", __INPUT_DATE);
     
+	global.__input_use_is_instanceof = (string_copy(GM_runtime_version, 1, 4) == "2023");
+	if (global.__input_use_is_instanceof) __input_trace("On runtime ", GM_runtime_version, ", using is_instanceof()");
+	
     //Attempt to set up a time source for slick automatic input handling
     try
     {
-        //GMS2022.500.58 runtime
+        //GMS2022.500.58 runtime and later
         global.__input_time_source = time_source_create(time_source_global, 1, time_source_units_frames, function()
         {
             __input_system_tick();
@@ -28,22 +31,9 @@ function __input_initialize()
     }
     catch(_error)
     {
-        try
-        {
-            //Early GMS2022.500.xx runtimes
-            global.__input_time_source = time_source_create(time_source_global, 1, time_source_units_frames, function()
-            {
-                __input_system_tick();
-            }, -1);
-            
-            time_source_start(global.__input_time_source);
-        }
-        catch(_error)
-        {
-            //If the above fails then fall back on needing to call input_tick()
-            global.__input_time_source = undefined;
-            __input_trace("Warning! Running on a GM runtime earlier than 2022.5");
-        }
+        //If the above fails then fall back on needing to call input_tick()
+        global.__input_time_source = undefined;
+        __input_trace("Warning! Running on a GM runtime earlier than 2022 LTS");
     }
     
     //Global frame counter and realtime tracker. This is used for input buffering

@@ -1622,10 +1622,20 @@ function __input_class_player() constructor
             var _i = 0;
             repeat(array_length(__rebind_source_filter))
             {
-                if (instanceof(__rebind_source_filter[_i]) != "__input_class_source")
-                {
-                    __input_error("Value in filter array is not a source (index ", _i, ", ", __rebind_source_filter[_i], ")");
-                }
+				if (global.__input_use_is_instanceof)
+				{
+	                if (!is_instanceof(__rebind_source_filter[_i], __input_class_source))
+	                {
+	                    __input_error("Value in filter array is not a source (index ", _i, ", ", __rebind_source_filter[_i], ")");
+	                }
+				}
+				else
+				{
+	                if (instanceof(__rebind_source_filter[_i]) != "__input_class_source")
+	                {
+	                    __input_error("Value in filter array is not a source (index ", _i, ", ", __rebind_source_filter[_i], ")");
+	                }
+				}
                 
                 var _source_binding = __rebind_source_filter[_i].__scan_for_binding(__index, false, __rebind_ignore_struct, __rebind_allow_struct);
                 if (_source_binding != undefined)
