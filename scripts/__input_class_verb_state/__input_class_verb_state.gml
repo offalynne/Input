@@ -54,8 +54,9 @@ function __input_class_verb_state() constructor
     __raw_history_array = array_create(INPUT_QUICK_BUFFER+1, 0);
     
     //Used for virtual buttons
-    __virtual_value    = undefined;
-    __virtual_analogue = undefined;
+    __virtual_value     = undefined;
+    __virtual_raw_value = undefined;
+    __virtual_analogue  = undefined;
     
     
     

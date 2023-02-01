@@ -915,9 +915,10 @@ function __input_class_player() constructor
     }
     
     /// @param verb
+    /// @param forceRawValue
     /// @param forceValue
     /// @param forceAnalogue
-    static __verb_set_from_virtual = function(_verb_name, _value, _analogue)
+    static __verb_set_from_virtual = function(_verb_name, _raw_value, _value, _analogue)
     {
         if (is_string(_verb_name))
         {
@@ -925,8 +926,9 @@ function __input_class_player() constructor
             {
                 if (_value > (__virtual_value ?? -infinity))
                 {
-                    __virtual_value    = _value;
-                    __virtual_analogue = _analogue;
+                    __virtual_value     = _value;
+                    __virtual_raw_value = _raw_value;
+                    __virtual_analogue  = _analogue;
                 }
             }
         }

@@ -36,19 +36,19 @@
 #macro __INPUT_VERIFY_PROFILE_NAME  if (!input_profile_exists(_profile_name, _player_index)) __input_error("Profile name \"", _profile_name, "\" doesn't exist");
 
 #macro __INPUT_VERIFY_SOURCE  if (global.__input_use_is_instanceof)\
-							  {\
-	                              if (!is_instanceof(_source, __input_class_source))\
-								  {\
-								  	  __input_error("Invalid source provided (", _source, ")");\
-								  }\
-							  }\
-							  else\
-							  {\
-	                              if (instanceof(_source) != "__input_class_source")\
-								  {\
-								  	  __input_error("Invalid source provided (", _source, ")");\
-								  }\
-							  }
+                              {\
+                                  if (!is_instanceof(_source, __input_class_source))\
+                                  {\
+                                      __input_error("Invalid source provided (", _source, ")");\
+                                  }\
+                              }\
+                              else\
+                              {\
+                                  if (instanceof(_source) != "__input_class_source")\
+                                  {\
+                                      __input_error("Invalid source provided (", _source, ")");\
+                                  }\
+                              }
 
 #macro __INPUT_VERIFY_SOURCE_ASSIGNABLE  if (_source == INPUT_KEYBOARD)\
                                          {\

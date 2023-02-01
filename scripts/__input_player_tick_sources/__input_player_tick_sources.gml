@@ -21,9 +21,9 @@ function __input_player_tick_sources()
         with(_verb_struct)
         {
             //We've had our value set this frame via a virtual button
-            if ((__virtual_value != undefined) && (__virtual_analogue != undefined))
+            if ((__virtual_value != undefined) && (__virtual_raw_value != undefined) && (__virtual_analogue != undefined))
             {
-                _raw   = __virtual_value;
+                _raw   = __virtual_raw_value;
                 _value = __virtual_value;
                 
                 _analogue     = __virtual_analogue;
@@ -32,8 +32,9 @@ function __input_player_tick_sources()
                 _min_threshold = 0;
                 _max_threshold = 1;
                 
-                __virtual_value    = undefined;
-                __virtual_analogue = undefined;
+                __virtual_value     = undefined;
+                __virtual_raw_value = undefined;
+                __virtual_analogue  = undefined;
             }
             
             //We've had our value set this frame via input_verb_set()

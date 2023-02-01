@@ -628,7 +628,7 @@ function __input_class_virtual() constructor
                 if (device_mouse_check_button(__touch_device, mb_left))
                 {
                     var _player = global.__input_touch_player;
-                    _player.__verb_set_from_virtual(__verb_click, 1, false);
+                    _player.__verb_set_from_virtual(__verb_click, 1, 1, false);
                     
                     if (__record_history)
                     {
@@ -700,19 +700,19 @@ function __input_class_virtual() constructor
                             var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 45) / 90) mod 4;
                             if (_direction == 0)
                             {
-                                _player.__verb_set_from_virtual(__verb_right, 1, false);
+                                _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
                             }
                             else if (_direction == 1)
                             {
-                                _player.__verb_set_from_virtual(__verb_up, 1, false);
+                                _player.__verb_set_from_virtual(__verb_up, 1, 1, false);
                             }
                             else if (_direction == 2)
                             {
-                                _player.__verb_set_from_virtual(__verb_left, 1, false);
+                                _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
                             }
                             else if (_direction == 3)
                             {
-                                _player.__verb_set_from_virtual(__verb_down, 1, false);
+                                _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
                             }
                         }
                     }
@@ -726,48 +726,48 @@ function __input_class_virtual() constructor
                             //Look, I *could* do this with maths but I'm choosing not to because it's 10pm
                             if (_direction == 0)
                             {
-                                _player.__verb_set_from_virtual(__verb_right, 1, false);
+                                _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
                             }
                             else if (_direction == 1)
                             {
-                                _player.__verb_set_from_virtual(__verb_right, 1, false);
-                                _player.__verb_set_from_virtual(__verb_up,    1, false);
+                                _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
+                                _player.__verb_set_from_virtual(__verb_up,    1, 1, false);
                             }
                             else if (_direction == 2)
                             {
-                                _player.__verb_set_from_virtual(__verb_up, 1, false);
+                                _player.__verb_set_from_virtual(__verb_up, 1, 1, false);
                             }
                             else if (_direction == 3)
                             {
-                                _player.__verb_set_from_virtual(__verb_up,   1, false);
-                                _player.__verb_set_from_virtual(__verb_left, 1, false);
+                                _player.__verb_set_from_virtual(__verb_up,   1, 1, false);
+                                _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
                             }
                             else if (_direction == 4)
                             {
-                                _player.__verb_set_from_virtual(__verb_left, 1, false);
+                                _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
                             }
                             else if (_direction == 5)
                             {
-                                _player.__verb_set_from_virtual(__verb_left, 1, false);
-                                _player.__verb_set_from_virtual(__verb_down, 1, false);
+                                _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
+                                _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
                             }
                             else if (_direction == 6)
                             {
-                                _player.__verb_set_from_virtual(__verb_down, 1, false);
+                                _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
                             }
                             else if (_direction == 7)
                             {
-                                _player.__verb_set_from_virtual(__verb_down,  1, false);
-                                _player.__verb_set_from_virtual(__verb_right, 1, false);
+                                _player.__verb_set_from_virtual(__verb_down,  1, 1, false);
+                                _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
                             }
                         }
                     }
                     else if (__type == INPUT_VIRTUAL_TYPE.THUMBSTICK)
                     {
-                        _player.__verb_set_from_virtual(__verb_left,  -min(0, __normalized_x), true);
-                        _player.__verb_set_from_virtual(__verb_right,  max(0, __normalized_x), true);
-                        _player.__verb_set_from_virtual(__verb_up,    -min(0, __normalized_y), true);
-                        _player.__verb_set_from_virtual(__verb_down,   max(0, __normalized_y), true);
+                        _player.__verb_set_from_virtual(__verb_left,  max(0, -_dx), max(0, -__normalized_x), true);
+                        _player.__verb_set_from_virtual(__verb_right, max(0,  _dx), max(0,  __normalized_x), true);
+                        _player.__verb_set_from_virtual(__verb_up,    max(0, -_dy), max(0, -__normalized_y), true);
+                        _player.__verb_set_from_virtual(__verb_down,  max(0,  _dy), max(0,  __normalized_y), true);
                     }
                 }
                 else
