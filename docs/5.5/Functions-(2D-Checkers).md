@@ -99,4 +99,4 @@ The struct returned by this function contains two member variables: `.x` and `.y
 |`verbDown`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
 |`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used        |
 
-!> Only analogue inputs can trigger quick taps. This function will return <false> if any digital input is used.
+!> Only analogue inputs can trigger quick taps. This function will return `<false>` if any digital input is used.
