@@ -11,7 +11,3 @@ shoot_timer = 0;
 
 //Remove the mouse cursor since it'll get in the way whilst aiming
 window_set_cursor(cr_none);
-
-//Checky hack to assign a player index
-//We use this value to check inputs from the correct device
-player = (instance_find(object_index, 0) == id)? 0 : 1;
