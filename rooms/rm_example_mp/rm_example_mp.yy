@@ -49,7 +49,7 @@
     "PhysicsWorldPixToMetres": 0.1,
   },
   "parent": {
-    "name": "Multiplayer",
-    "path": "folders/Examples/Multiplayer.yy",
+    "name": "Assignment Multiplayer",
+    "path": "folders/Examples/Assignment Multiplayer.yy",
   },
 }
