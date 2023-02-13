@@ -17,7 +17,7 @@
 |`INPUT_ANDROID_KEYBOARD_ALLOWED`  |`false`      |Whether to allow keyboard input on Android platform                                               |
 |`INPUT_SWITCH_KEYBOARD_ALLOWED`   |`false`      |Whether to allow keyboard input on Switch platform                                                |
 |`INPUT_MERGE_CONTROL_KEYS`        |`false`      |Whether to merge control keys, for example Left Shift and Right Shift upon user rebind            |
-|`INPUT_ALLOW_STEAMWORKS `         |`true`       |Whether to allow using Steamworks extension when available. See Steamworks                        |
+|`INPUT_ALLOW_STEAMWORKS `         |`true`       |Whether to allow using Steamworks extension when available. See [Steamworks](Steamworks)          |
 |`INPUT_BINDING_SCAN_TIMEOUT`      |`10000`      |Time (in milliseconds) to wait for a new binding before automatically cancelling the binding scan |
 |`INPUT_IGNORE_RESERVED_KEYS_LEVEL`|`2`          |Controls default key filtering behaviour. See below                                               |
 
