@@ -36,7 +36,7 @@ INPUT_DEFAULT_PROFILES = {
     {
         left:  input_binding_key(vk_left),
         right: input_binding_key(vk_right),
-        shoot: input_binding_key(ord("A")),
+        shoot: input_binding_key("A"),
     },
 }
 ```
@@ -77,7 +77,7 @@ INPUT_DEFAULT_PROFILES = {
     {
         left:  input_binding_key(vk_left),
         right: input_binding_key(vk_right),
-        shoot: input_binding_key(ord("A")),
+        shoot: input_binding_key("A"),
     },
 	
 	//Bind gamepad controls to verbs
@@ -92,7 +92,7 @@ INPUT_DEFAULT_PROFILES = {
 
 Just like the keyboard binding functions, gamepad binding functions use [normal gamepad input values](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm) from standard GM features. Congratulations, you now have gamepad input.
 
-Input by default will start scanning for gamepad input when your game boots up; if the player uses the keyboard then Input will switch over to using the `keyboard_and_mouse` profile, if the player uses a gamepad then Input will switch over to using the `gamepad` profile (the names of these profiles can be controlled by changing some macros).
+Input by default will start scanning for gamepad input when your game boots up. If the player uses the keyboard then Input will switch over to using the `keyboard_and_mouse` profile, if the player uses a gamepad then Input will switch over to using the `gamepad` profile (the names of these profiles can be controlled by changing some macros).
 
 &nbsp;
 
