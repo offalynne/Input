@@ -2,7 +2,7 @@
 
 ---
 
-Input offers a few distinct ways of handling multiplayer device assignment. The simplest way is to simply forcibly set devices for players using `input_source_set()` in the [`FIXED` source mode](Input-Sources?id=input_source_modefixed) but this is complicated, and you'll end up doing a lot of work. Instead, we can use the [`JOIN` source mode](Input-Sources?id=input_source_modejoin) to automatically scan for new input from keyboards, mice, and gamepads and then assign new devices to players waiting for a device.
+Input offers a few distinct ways of handling multiplayer device assignment. The simplest way is to simply forcibly set devices for players using `input_source_set()` in the [`FIXED` source mode](Input-Sources?id=input_source_modefixed) but this approach may introduce small issues that add up to become quite complicated, and you'll end up doing a lot of work to get everything set up just right. Instead, we can use the [`JOIN` source mode](Input-Sources?id=input_source_modejoin) to automatically scan for new input from keyboards, mice, and gamepads and then assign new devices to players waiting for a device.
 
 ?> Whilst the `JOIN` source mode is intended for use for multiplayer gameplay, you may find it useful for handling device disconnection scenarios for single player gameplay modes too.
 
