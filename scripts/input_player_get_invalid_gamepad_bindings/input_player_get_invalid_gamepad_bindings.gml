@@ -1,6 +1,6 @@
-/// @desc  Returns an array of structs, gamepad bindings that are invalid due to the gamepad lacking certain mapped inputs
-/// @param [playerIndex=0]
-/// @param [profileName]
+/// @desc    Returns an array of structs, gamepad bindings that are invalid due to the gamepad lacking certain mapped inputs
+/// @param   [playerIndex=0]
+/// @param   [profileName]
 
 function input_player_get_invalid_gamepad_bindings(_player_index = 0, _profile_name = undefined)
 {
