@@ -531,7 +531,7 @@ function __input_class_player() constructor
         {
             if (!_allowFallback) return _empty_binding;
             
-            if (INPUT_FALLBACK_PROFILE_BEHAVIOUR == 1)
+            if (INPUT_FALLBACK_PROFILE_BEHAVIOR == 1)
             {
                 if (__INPUT_ON_DESKTOP && global.__input_keyboard_allowed && global.__input_any_keyboard_binding_defined)
                 {
@@ -549,7 +549,7 @@ function __input_class_player() constructor
                     return _empty_binding;
                 }
             }
-            else if ((INPUT_FALLBACK_PROFILE_BEHAVIOUR == 2) && global.__input_any_gamepad_binding_defined)
+            else if ((INPUT_FALLBACK_PROFILE_BEHAVIOR == 2) && global.__input_any_gamepad_binding_defined)
             {
                 //Try to use a gamepad profile if possible
                 _profile_name = INPUT_AUTO_PROFILE_FOR_GAMEPAD;
