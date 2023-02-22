@@ -53,6 +53,8 @@ If you're looking for simpler ways to check verbs, please see the [1D Checkers](
 
 The struct returned by this function contains two member variables: `.x` and `.y`.
 
+!> This function returns a `static` struct. Do not keep a permanent reference to this struct! It is liable to change value unexpectedly.
+
 &nbsp;
 
 ## `input_direction(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`
