@@ -365,13 +365,15 @@ The `INPUT_VIRTUAL_RELEASE` enum contains the following elements:
 |-------|--------|---------------------------------------------------------------------------|
 |`state`|boolean |Whether the virtual button should only try to capture the first touch point|
 
-Setting this behaviour to `true` will filter out any presses after the first press. This is useful for preventing multiple touches on a menu.
+On devices that support multiple touch points (typically mobile phones), setting this behaviour to `true` will filter out any touch points after the first one. This is useful for preventing multiple touches on a menu.
+
+On devices that do not support multiple touch points, this function will not change any behaviour.
 
 &nbsp;
 
 ## `.get_first_touch_only()`
 
-*Returns:* Boolean, whether the virtual button will only respond to the first touch
+*Returns:* Boolean, whether the virtual button will only respond to the first touch point
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
