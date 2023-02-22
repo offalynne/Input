@@ -292,34 +292,35 @@ function __input_class_player() constructor
             var _verb_name = global.__input_basic_verb_array[_v];
             
             var _existing_alternate_array = _existing_verb_dict[$ _verb_name];
+            
             //Verify we have an existing alternate array to write into
             if (!is_array(_existing_alternate_array))
             {
                 //If we don't have an existing array, create a new one
                 _existing_alternate_array = array_create(INPUT_MAX_ALTERNATE_BINDINGS, undefined);
-                
-                var _a = 0;
-                repeat(INPUT_MAX_ALTERNATE_BINDINGS)
-                {
-                    _existing_alternate_array[@ _a] = input_binding_empty();
-                    ++_a;
-                }
-                
                 _existing_verb_dict[$ _verb_name] = _existing_alternate_array;
             }
             
-            var _alternate_array = _json[$ _verb_name];
+            //Wipe existing bindings so if we have a length mismatch we don't get junk left behind
+            var _a = 0;
+            repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+            {
+                _existing_alternate_array[@ _a] = input_binding_empty();
+                ++_a;
+            }
+            
             //Verify that the input data has this verb
+            var _alternate_array = _json[$ _verb_name];
             if (!is_array(_alternate_array)) __input_error("Player ", __index, " data is missing verb \"", _verb_name, "\"");
             
-            if (array_length(_alternate_array) != INPUT_MAX_ALTERNATE_BINDINGS)
+            if (!INPUT_FLEXIBLE_ALTERNATE_BINDING_IMPORT && (array_length(_alternate_array) != INPUT_MAX_ALTERNATE_BINDINGS))
             {
                 __input_error("JSON malformed, player ", __index, " verb \"", _verb_name, "\" should have ", INPUT_MAX_ALTERNATE_BINDINGS, " alternate bindings, but it had ", array_length(_alternate_array));
             }
             
             //Iterate over every alternate and import the value into our local data
             var _a = 0;
-            repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+            repeat(min(array_length(_alternate_array), INPUT_MAX_ALTERNATE_BINDINGS))
             {
                 _existing_alternate_array[@ _a].__import(_alternate_array[_a]);
                 ++_a;
