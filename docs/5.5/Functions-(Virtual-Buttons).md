@@ -329,7 +329,7 @@ When a virtual button's active state is set to `false`, it will immediately stop
 
 &nbsp;
 
-## `.release_behaviour(option)`
+## `.release_behavior(option)`
 
 *Returns:* `self`
 
@@ -347,7 +347,7 @@ The `INPUT_VIRTUAL_RELEASE` enum contains the following elements:
 
 &nbsp;
 
-## `.get_release_behaviour()`
+## `.get_release_behavior()`
 
 *Returns:* Member of the `INPUT_VIRTUAL_RELEASE` enum
 
