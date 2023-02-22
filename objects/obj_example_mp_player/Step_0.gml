@@ -1,8 +1,49 @@
-//Allow this player to quit back to the join menu
-if (input_check_pressed("pause", player))
+//Move around using the 2D checkers
+//These automatically handle analogue input (thumbsticks) as well as on/off input (keyboard/dpad)
+x_speed += xy_acceleration*input_x("left", "right", "up", "down", player);
+y_speed += xy_acceleration*input_y("left", "right", "up", "down", player);
+
+//Apply a resistive force to our speed
+//I prefer damping over basic friction because it adds a bit of extra weight to the player
+x_speed *= xy_damping;
+y_speed *= xy_damping;
+
+var _old_x = x;
+var _old_y = y;
+
+//Move in the x-axis using the old school granny step method
+var _dx = sign(x_speed);
+repeat(abs(x_speed))
 {
-    room_goto(rm_example_mp);
+    if (!place_meeting(x + _dx, y, obj_example_solid))
+    {
+        x += _dx;
+    }
+    else
+    {
+        x_speed = 0;
+        break;
+    }
 }
+
+//Move in the y-axis using the old school granny step method
+var _dy = sign(y_speed);
+repeat(abs(y_speed))
+{
+    if (!place_meeting(x, y + _dy, obj_example_solid))
+    {
+        y += _dy;
+    }
+    else
+    {
+        y_speed = 0;
+        break;
+    }
+}
+
+//Clamp the player to the room boundaries
+x = clamp(x, sprite_width/2 , room_width  - sprite_width/2 );
+y = clamp(y, sprite_height/2, room_height - sprite_height/2);
 
 //Set some rules for the aiming cursor
 if (input_source_using(INPUT_GAMEPAD, player))
@@ -44,46 +85,8 @@ else if (input_check("shoot", player))
     }
 }
 
-//Move around using the 2D checkers
-//These automatically handle analogue input (thumbsticks) as well as on/off input (keyboard/dpad)
-x_speed += xy_acceleration*input_x("left", "right", "up", "down", player);
-y_speed += xy_acceleration*input_y("left", "right", "up", "down", player);
-
-//Apply a resistive force to our speed
-//I prefer damping over basic friction because it adds a bit of extra weight to the player
-x_speed *= xy_damping;
-y_speed *= xy_damping;
-
-//Move in the x-axis using the old school granny step method
-var _dx = sign(x_speed);
-repeat(abs(x_speed))
+//Keep the cursor moving along with the player
+if (input_source_using(INPUT_GAMEPAD, player))
 {
-    if (!place_meeting(x + _dx, y, obj_example_solid))
-    {
-        x += _dx;
-    }
-    else
-    {
-        x_speed = 0;
-        break;
-    }
+    input_cursor_set(x - _old_x, y - _old_y, player, true);
 }
-
-//Move in the y-axis using the old school granny step method
-var _dy = sign(y_speed);
-repeat(abs(y_speed))
-{
-    if (!place_meeting(x, y + _dy, obj_example_solid))
-    {
-        y += _dy;
-    }
-    else
-    {
-        y_speed = 0;
-        break;
-    }
-}
-
-//Clamp the player to the room boundaries
-x = clamp(x, sprite_width/2 , room_width  - sprite_width/2 );
-y = clamp(y, sprite_height/2, room_height - sprite_height/2);

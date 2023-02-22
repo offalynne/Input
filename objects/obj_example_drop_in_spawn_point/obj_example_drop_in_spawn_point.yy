@@ -1,8 +1,11 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_example_mp_gameplay",
-  "spriteId": null,
+  "name": "obj_example_drop_in_spawn_point",
+  "spriteId": {
+    "name": "spr_white",
+    "path": "sprites/spr_white/spr_white.yy",
+  },
   "solid": false,
   "visible": true,
   "managed": true,
@@ -22,14 +25,15 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":1,"eventType":3,"collisionObjectId":null,},
   ],
-  "properties": [],
+  "properties": [
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"player","varType":1,"value":"0","rangeEnabled":true,"rangeMin":0.0,"rangeMax":3.0,"listItems":[],"multiselect":false,"filters":[],},
+  ],
   "overriddenProperties": [],
   "parent": {
-    "name": "Assignment Multiplayer",
-    "path": "folders/Examples/Assignment Multiplayer.yy",
+    "name": "Drop-In Multiplayer",
+    "path": "folders/Examples/Drop-In Multiplayer.yy",
   },
 }

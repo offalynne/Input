@@ -1,0 +1,1 @@
+input_source_mode_set(INPUT_SOURCE_MODE.FIXED);
