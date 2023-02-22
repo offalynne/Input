@@ -33,12 +33,12 @@ function __input_class_virtual() constructor
     __threshold_min = INPUT_VIRTUAL_BUTTON_MIN_THRESHOLD;
     __threshold_max = INPUT_VIRTUAL_BUTTON_MAX_THRESHOLD;
     
-    __release_behaviour = INPUT_VIRTUAL_RELEASE.DO_NOTHING;
-    __active            = true;
-    __priority          = 0;
-    __follow            = false;
-    __record_history    = false;
-    __first_touch_only  = false;
+    __release_behavior = INPUT_VIRTUAL_RELEASE.DO_NOTHING;
+    __active           = true;
+    __priority         = 0;
+    __follow           = false;
+    __record_history   = false;
+    __first_touch_only = false;
     
     //State
     //These variables should be cleared by .__clear_state()
@@ -314,16 +314,16 @@ function __input_class_virtual() constructor
         return __follow;
     }
     
-    static release_behaviour = function(_option)
+    static release_behavior = function(_option)
     {
-        __release_behaviour = _option;
+        __release_behavior = _option;
         
         return self;
     }
     
-    static get_release_behaviour = function()
+    static get_release_behavior = function()
     {
-        return __release_behaviour;
+        return __release_behavior;
     }
     
     static first_touch_only = function(_state)
@@ -544,7 +544,7 @@ function __input_class_virtual() constructor
             }
         }
         
-        if (__release_behaviour == INPUT_VIRTUAL_RELEASE.RESET_POSITION)
+        if (__release_behavior == INPUT_VIRTUAL_RELEASE.RESET_POSITION)
         {
             if ((__start_x != undefined) && (__start_y != undefined))
             {
@@ -560,7 +560,7 @@ function __input_class_virtual() constructor
                 __y = __start_y;
             }
         }
-        else if (__release_behaviour == INPUT_VIRTUAL_RELEASE.DESTROY)
+        else if (__release_behavior == INPUT_VIRTUAL_RELEASE.DESTROY)
         {
             destroy();
         }

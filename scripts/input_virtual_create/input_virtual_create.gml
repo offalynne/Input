@@ -25,8 +25,8 @@
 /// .get_priority()
 /// .follow(state)
 /// .get_follow()
-/// .release_behaviour(option)
-/// .get_release_behaviour()
+/// .release_behavior(option)
+/// .get_release_behavior()
 /// .first_touch_only(state)
 /// .get_first_touch_only()
 /// 
