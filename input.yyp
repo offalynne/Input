@@ -371,6 +371,7 @@
   "Folders": [
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Examples","folderPath":"folders/Examples.yy","order":1,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Assignment Multiplayer","folderPath":"folders/Examples/Assignment Multiplayer.yy","order":8,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Drop-In Multiplayer","folderPath":"folders/Examples/Drop-In Multiplayer.yy","order":9,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Platformer","folderPath":"folders/Examples/Platformer.yy","order":5,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Rebinding","folderPath":"folders/Examples/Rebinding.yy","order":7,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Top Down Shooter","folderPath":"folders/Examples/Top Down Shooter.yy","order":6,},
@@ -401,7 +402,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Verbs","folderPath":"folders/Input/Verbs.yy","order":8,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Vibration","folderPath":"folders/Input/Vibration.yy","order":12,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Test Cases","folderPath":"folders/Test Cases.yy","order":3,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Drop-In Multiplayer","folderPath":"folders/Examples/Drop-In Multiplayer.yy","order":9,},
   ],
   "AudioGroups": [
     {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},
