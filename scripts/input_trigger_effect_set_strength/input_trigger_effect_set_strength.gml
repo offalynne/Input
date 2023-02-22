@@ -1,5 +1,6 @@
-/// @param strength
-/// @param [playerIndex=0]
+/// @desc    Sets the strength of trigger effects for the player
+/// @param   strength
+/// @param   [playerIndex=0]
 
 function input_trigger_effect_set_strength(_strength, _player_index = 0)
 {
