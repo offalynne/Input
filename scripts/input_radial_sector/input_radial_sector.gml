@@ -3,10 +3,10 @@
 /// @param   rightVerb
 /// @param   upVerb
 /// @param   downVerb
-/// @param   minAngle
-/// @param   maxAngle
-/// @param   minMagnitude
-/// @param   maxMagnitude
+/// @param   [minAngle=0]
+/// @param   [maxAngle=360]
+/// @param   [minMagnitude=0]
+/// @param   [maxMagnitude=1]
 /// @param   [playerIndex=0]
 
 function input_radial_sector(_verb_l, _verb_r, _verb_u, _verb_d, _angle_min = 0, _angle_max = 360, _magnitude_min = 0, _magnitude_max = 1, _player_index = undefined)
