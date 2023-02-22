@@ -102,3 +102,21 @@ The struct returned by this function contains two member variables: `.x` and `.y
 |`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used        |
 
 !> Only analogue inputs can trigger quick taps. This function will return `false` if any digital input is used.
+
+&nbsp;
+
+## `input_radial_sector(verbLeft, verbRight, verbUp, verbDown, [minAngle], [maxAngle], [minMagnitude], [maxMagnitude], [playerIndex])`
+
+*Returns:* Boolean, whether the vector represented by the sum of the verb values points to the radial sector indicated by angle and magnitude bounds
+
+|Name            |Datatype                  |Purpose                                                                                                                                 |
+|----------------|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|`verbLeft`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left                                                                             |
+|`verbRight`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right                                                                            |
+|`verbUp`        |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up                                                                               |
+|`verbDown`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down                                                                             |
+|`[minAngle]`    |number                    |Minimum angle for the sector. If not specified, `0` is used                                                                             |
+|`[maxAngle]`    |number                    |Maximum angle for the sector. If not specified, `360` is used                                                                           |
+|`[minMagnitude]`|number                    |Minimum magnitude for the sector. Must be between `0` (centre of the circle) and `1` (edge of the circle). If not specified, `0` is used|
+|`[maxMagnitude]`|number                    |Maximum magnitude for the sector. Must be between `0` (centre of the circle) and `1` (edge of the circle). If not specified, `1` is used|
+|`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used                                                                                    |
