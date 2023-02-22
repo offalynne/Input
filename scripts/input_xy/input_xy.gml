@@ -8,7 +8,7 @@
 
 function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0, _most_recent = false)
 {
-    if (INPUT_2D_CHECKER_STATIC_RESULT)
+    if (__INPUT_2D_CHECKER_STATIC_RESULT)
     {
         static _result = {
             x: 0,

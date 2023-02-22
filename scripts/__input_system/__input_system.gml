@@ -2,6 +2,27 @@
 #macro __INPUT_DATE    "2023-01-30"
 #macro __INPUT_DEBUG   false
 
+
+
+#region Forbidden Fruit
+
+#macro __INPUT_2D_CHECKER_STATIC_RESULT  true
+
+#macro __INPUT_DEBUG_PROFILES  false
+#macro __INPUT_DEBUG_SOURCES   false
+#macro __INPUT_DEBUG_BINDING   false
+#macro __INPUT_DEBUG_VERBS     false
+
+#macro __INPUT_EXTERNAL_DEBUG_LOG  false  //Do NOT set to <true> unless directed (!)
+
+//How many frames to wait before scanning for connected gamepads
+//This works around Steam sometimes reporting confusing connection/disconnection events on boot
+#macro __INPUT_GAMEPADS_TICK_PREDELAY  10     
+
+#endregion
+
+
+
 #macro __INPUT_BINDING_KEY               "key"
 #macro __INPUT_BINDING_MOUSE_BUTTON      "mouse button"
 #macro __INPUT_BINDING_MOUSE_WHEEL_UP    "mouse wheel up"
@@ -197,7 +218,7 @@ function __input_trace()
     
     show_debug_message("Input: " + _string);
     
-    if (INPUT_EXTERNAL_DEBUG_LOG)
+    if (__INPUT_EXTERNAL_DEBUG_LOG)
     {
         var _file = file_text_open_append(global.__input_debug_log);
         file_text_write_string(_file, _string);
@@ -218,7 +239,7 @@ function __input_trace_loud()
     
     show_debug_message("Input: LOUD " + _string);
     
-    if (INPUT_EXTERNAL_DEBUG_LOG)
+    if (__INPUT_EXTERNAL_DEBUG_LOG)
     {
         var _file = file_text_open_append(global.__input_debug_log);
         file_text_write_string(_file, _string);

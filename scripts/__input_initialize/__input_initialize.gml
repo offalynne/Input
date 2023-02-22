@@ -7,7 +7,7 @@ function __input_initialize()
     
     //Set up the extended debug functionality
     global.__input_debug_log = "input___" + string_replace_all(string_replace_all(date_datetime_string(date_current_datetime()), ":", "-"), " ", "___") + ".txt";
-    if (INPUT_EXTERNAL_DEBUG_LOG && __INPUT_DEBUG)
+    if (__INPUT_EXTERNAL_DEBUG_LOG && __INPUT_DEBUG)
     {
         show_debug_message("Input: Set external debug log to \"" + string(global.__input_debug_log) + "\"");
         exception_unhandled_handler(__input_exception_handler);

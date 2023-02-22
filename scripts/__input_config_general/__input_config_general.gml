@@ -13,24 +13,3 @@
 
 //What source mode to start the game in
 #macro INPUT_STARTING_SOURCE_MODE  INPUT_SOURCE_MODE.HOTSWAP
-
-
-
-
-
-#region Forbidden Fruit
-
-#macro INPUT_2D_CHECKER_STATIC_RESULT  true
-
-#macro INPUT_DEBUG_PROFILES  false
-#macro INPUT_DEBUG_SOURCES   false
-#macro INPUT_DEBUG_BINDING   false
-#macro INPUT_DEBUG_VERBS     false
-
-#macro INPUT_EXTERNAL_DEBUG_LOG  false  //Do NOT set to <true> unless directed (!)
-
-//How many frames to wait before scanning for connected gamepads
-//This works around Steam sometimes reporting confusing connection/disconnection events on boot
-#macro INPUT_GAMEPADS_TICK_PREDELAY  10     
-
-#endregion

@@ -390,7 +390,7 @@ function __input_system_tick()
         global.__input_steam_handles = steam_input_get_connected_controllers();
     }
     
-    if (global.__input_frame > INPUT_GAMEPADS_TICK_PREDELAY)
+    if (global.__input_frame > __INPUT_GAMEPADS_TICK_PREDELAY)
     {
         //Expand dynamic device count
         var _device_change = max(0, gamepad_get_device_count() - array_length(global.__input_gamepads))

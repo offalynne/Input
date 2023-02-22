@@ -60,7 +60,7 @@ function __input_class_player() constructor
     {
         if (variable_struct_exists(__profiles_dict, _profile_name)) __input_error("Profile \"", _profile_name, "\" already exists for player ", __index);
         
-        if (INPUT_DEBUG_PROFILES) __input_trace("Profile \"", _profile_name, "\" created for player ", __index);
+        if (__INPUT_DEBUG_PROFILES) __input_trace("Profile \"", _profile_name, "\" created for player ", __index);
         
         var _new_profile_struct = {};
         var _v = 0;
@@ -90,7 +90,7 @@ function __input_class_player() constructor
             __input_error("Cannot remove profile \"", _profile_name, "\" as it is a default profile");
         }
         
-        if (INPUT_DEBUG_PROFILES) __input_trace("Profile \"", _profile_name, "\" destroyed for player ", __index);
+        if (__INPUT_DEBUG_PROFILES) __input_trace("Profile \"", _profile_name, "\" destroyed for player ", __index);
         
         if (__profile_name == _profile_name) __profile_name = undefined;
         variable_struct_remove(__profiles_dict, _profile_name);
@@ -357,7 +357,7 @@ function __input_class_player() constructor
         array_resize(__source_array, 0);
         __last_input_time = global.__input_current_time; //Set the last input time to delay hotswapping for a little while
         
-        if (INPUT_DEBUG_SOURCES) __input_trace("Sources cleared for player ", __index);
+        if (__INPUT_DEBUG_SOURCES) __input_trace("Sources cleared for player ", __index);
     }
     
     /// @param source
@@ -379,7 +379,7 @@ function __input_class_player() constructor
         {
             if (__source_array[_i] == _source)
             {
-                if (INPUT_DEBUG_SOURCES) __input_trace("Cannot add ", _source, " to player ", __index, ", it has already been assigned");
+                if (__INPUT_DEBUG_SOURCES) __input_trace("Cannot add ", _source, " to player ", __index, ", it has already been assigned");
                 return;
             }
             
@@ -396,7 +396,7 @@ function __input_class_player() constructor
         //Set the touch player index
         if ((_source == INPUT_TOUCH) || (INPUT_MOUSE_ALLOW_VIRTUAL_BUTTONS && (_source == INPUT_MOUSE))) __input_virtual_player_set(self);
         
-        if (INPUT_DEBUG_SOURCES) __input_trace("Assigned source ", _source, " to player ", __index);
+        if (__INPUT_DEBUG_SOURCES) __input_trace("Assigned source ", _source, " to player ", __index);
     }
     
     /// @param source
@@ -428,7 +428,7 @@ function __input_class_player() constructor
                 if (((_source == INPUT_TOUCH) || (INPUT_MOUSE_ALLOW_VIRTUAL_BUTTONS && (_source == INPUT_MOUSE))) && (global.__input_touch_player == self)) __input_virtual_player_set(undefined);
                 
                 array_delete(__source_array, _i, 1);
-                if (INPUT_DEBUG_SOURCES) __input_trace("Removed source ", _source, " from player ", __index);
+                if (__INPUT_DEBUG_SOURCES) __input_trace("Removed source ", _source, " from player ", __index);
             }
             else
             {
@@ -673,7 +673,7 @@ function __input_class_player() constructor
         }
         
         __profiles_dict[$ _profile_name][$ _verb][@ _alternate] = input_binding_empty();
-        if (INPUT_DEBUG_BINDING) __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " removed (set to null)");
+        if (__INPUT_DEBUG_BINDING) __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " removed (set to null)");
     }
     
     /// @param profileName
@@ -702,7 +702,7 @@ function __input_class_player() constructor
         //And set the value!
         __profiles_dict[$ _profile_name][$ _verb][@ _alternate] = _binding_struct;
         
-        if (INPUT_DEBUG_BINDING) __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " reset to \"", input_binding_get_name(_binding_struct), "\"");
+        if (__INPUT_DEBUG_BINDING) __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " reset to \"", input_binding_get_name(_binding_struct), "\"");
     }
     
     #endregion
@@ -787,7 +787,7 @@ function __input_class_player() constructor
         
         if (!is_struct(__verb_state_dict[$ _verb_name]))
         {
-            if (INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one");
+            if (__INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one");
             
             var _verb = new __input_class_verb_state();
             _verb.__player = self;
@@ -823,7 +823,7 @@ function __input_class_player() constructor
         }
         else
         {
-            if (INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one as a chord");
+            if (__INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one as a chord");
             
             var _verb_state_struct = new __input_class_verb_state();
             _verb_state_struct.__player = self;
@@ -847,7 +847,7 @@ function __input_class_player() constructor
         }
         else
         {
-            if (INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one as a combo");
+            if (__INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one as a combo");
             
             var _verb_state_struct = new __input_class_verb_state();
             _verb_state_struct.__player = self;
@@ -880,7 +880,7 @@ function __input_class_player() constructor
         _axis_struct.mini = _min
         _axis_struct.maxi = _max;
         
-        if (INPUT_DEBUG_BINDING) __input_trace("Axis threshold for axis \"", _axis_name, "\" set to ", _min, " -> ", _max);
+        if (__INPUT_DEBUG_BINDING) __input_trace("Axis threshold for axis \"", _axis_name, "\" set to ", _min, " -> ", _max);
         
         return _axis_struct;
     }
@@ -891,7 +891,7 @@ function __input_class_player() constructor
         var _struct = __axis_thresholds_dict[$ _axis_name];
         if (is_struct(_struct)) return _struct;
         
-        if (INPUT_DEBUG_BINDING) __input_trace("Warning! No axis threshold found for axis ", _axis_name);
+        if (__INPUT_DEBUG_BINDING) __input_trace("Warning! No axis threshold found for axis ", _axis_name);
         
         if (__input_axis_is_directional(_axis_name))
         {
