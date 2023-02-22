@@ -18,6 +18,14 @@
 
 &nbsp;
 
+## Verbs and Bindings
+
+`__input_config_verbs_and_bindings()` contains two special structs. The first defines the default profiles and bindings for your game, the second defines verb groups which are used to control how verb collisions should be resolved. Please see the [Verbs and Bindings](Verbs-and-Bindings) page for more information.
+
+?> You should edit this script to customise Input for your own purposes.
+
+&nbsp;
+
 ## Verb Behaviour
 
 `__input_config_verb_behaviour()` holds macros that affect verbs, and the way verbs are checked, in Input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
