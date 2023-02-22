@@ -28,7 +28,6 @@
 #macro INPUT_DEBUG_VERBS     false
 
 #macro INPUT_EXTERNAL_DEBUG_LOG  false  //Do NOT set to <true> unless directed (!)
-#macro INPUT_WARNING_DEPRECATED  true   //Whether to show errors when using deprecated functions
 
 //How many frames to wait before scanning for connected gamepads
 //This works around Steam sometimes reporting confusing connection/disconnection events on boot
