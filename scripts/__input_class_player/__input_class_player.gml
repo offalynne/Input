@@ -60,7 +60,7 @@ function __input_class_player() constructor
     {
         if (variable_struct_exists(__profiles_dict, _profile_name)) __input_error("Profile \"", _profile_name, "\" already exists for player ", __index);
         
-        if (INPUT_DEBUG_PROFILES) __input_trace("Profile \"", _profile_name, "\" created for player ", __index);
+        if (__INPUT_DEBUG_PROFILES) __input_trace("Profile \"", _profile_name, "\" created for player ", __index);
         
         var _new_profile_struct = {};
         var _v = 0;
@@ -90,7 +90,7 @@ function __input_class_player() constructor
             __input_error("Cannot remove profile \"", _profile_name, "\" as it is a default profile");
         }
         
-        if (INPUT_DEBUG_PROFILES) __input_trace("Profile \"", _profile_name, "\" destroyed for player ", __index);
+        if (__INPUT_DEBUG_PROFILES) __input_trace("Profile \"", _profile_name, "\" destroyed for player ", __index);
         
         if (__profile_name == _profile_name) __profile_name = undefined;
         variable_struct_remove(__profiles_dict, _profile_name);
@@ -155,6 +155,7 @@ function __input_class_player() constructor
             {
                 case __INPUT_SOURCE.KEYBOARD: return INPUT_AUTO_PROFILE_FOR_KEYBOARD; break;
                 case __INPUT_SOURCE.MOUSE:    return INPUT_AUTO_PROFILE_FOR_MOUSE;    break;
+                case __INPUT_SOURCE.TOUCH:    return INPUT_AUTO_PROFILE_FOR_TOUCH;    break;
                 case __INPUT_SOURCE.GAMEPAD:  return INPUT_AUTO_PROFILE_FOR_GAMEPAD;  break;
                 
                 default:
@@ -291,34 +292,35 @@ function __input_class_player() constructor
             var _verb_name = global.__input_basic_verb_array[_v];
             
             var _existing_alternate_array = _existing_verb_dict[$ _verb_name];
+            
             //Verify we have an existing alternate array to write into
             if (!is_array(_existing_alternate_array))
             {
                 //If we don't have an existing array, create a new one
                 _existing_alternate_array = array_create(INPUT_MAX_ALTERNATE_BINDINGS, undefined);
-                
-                var _a = 0;
-                repeat(INPUT_MAX_ALTERNATE_BINDINGS)
-                {
-                    _existing_alternate_array[@ _a] = input_binding_empty();
-                    ++_a;
-                }
-                
                 _existing_verb_dict[$ _verb_name] = _existing_alternate_array;
             }
             
-            var _alternate_array = _json[$ _verb_name];
+            //Wipe existing bindings so if we have a length mismatch we don't get junk left behind
+            var _a = 0;
+            repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+            {
+                _existing_alternate_array[@ _a] = input_binding_empty();
+                ++_a;
+            }
+            
             //Verify that the input data has this verb
+            var _alternate_array = _json[$ _verb_name];
             if (!is_array(_alternate_array)) __input_error("Player ", __index, " data is missing verb \"", _verb_name, "\"");
             
-            if (array_length(_alternate_array) != INPUT_MAX_ALTERNATE_BINDINGS)
+            if (!INPUT_FLEXIBLE_ALTERNATE_BINDING_IMPORT && (array_length(_alternate_array) != INPUT_MAX_ALTERNATE_BINDINGS))
             {
                 __input_error("JSON malformed, player ", __index, " verb \"", _verb_name, "\" should have ", INPUT_MAX_ALTERNATE_BINDINGS, " alternate bindings, but it had ", array_length(_alternate_array));
             }
             
             //Iterate over every alternate and import the value into our local data
             var _a = 0;
-            repeat(INPUT_MAX_ALTERNATE_BINDINGS)
+            repeat(min(array_length(_alternate_array), INPUT_MAX_ALTERNATE_BINDINGS))
             {
                 _existing_alternate_array[@ _a].__import(_alternate_array[_a]);
                 ++_a;
@@ -338,6 +340,7 @@ function __input_class_player() constructor
     {
         if ((__rebind_state > 0) && (array_length(__source_array) > 0)) __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_CHANGED);
         
+        //Reset all gamepad colours and trigger effects
         var _i = 0;
         repeat(array_length(__source_array))
         {
@@ -348,22 +351,35 @@ function __input_class_player() constructor
             }
         }
         
-        array_resize(__source_array, 0);
-        __last_input_time = global.__input_current_time;
+        //Clear the touch input tracking variable if it's us!
+        if (global.__input_touch_player == self) __input_virtual_player_set(undefined);
         
-        if (INPUT_DEBUG_SOURCES) __input_trace("Sources cleared for player ", __index);
+        array_resize(__source_array, 0);
+        __last_input_time = global.__input_current_time; //Set the last input time to delay hotswapping for a little while
+        
+        if (__INPUT_DEBUG_SOURCES) __input_trace("Sources cleared for player ", __index);
     }
     
     /// @param source
     static __source_add = function(_source)
     {
+        //Ensure we're targeting the right source for our platform / configuration
+        if (__INPUT_TOUCH_PRIMARY)
+        {
+            if (_source == INPUT_MOUSE) _source = INPUT_TOUCH;
+        }
+        else
+        {
+            if (_source == INPUT_TOUCH) _source = INPUT_MOUSE;
+        }
+        
         //We don't use __source_contains() here because it'll report a false positive when assigning keyboard+mouse together
         var _i = 0;
         repeat(array_length(__source_array))
         {
             if (__source_array[_i] == _source)
             {
-                if (INPUT_DEBUG_SOURCES) __input_trace("Cannot add ", _source, " to player ", __index, ", it has already been assigned");
+                if (__INPUT_DEBUG_SOURCES) __input_trace("Cannot add ", _source, " to player ", __index, ", it has already been assigned");
                 return;
             }
             
@@ -373,29 +389,46 @@ function __input_class_player() constructor
         if (__rebind_state > 0) __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_CHANGED);
         
         array_push(__source_array, _source);
-        __last_input_time = global.__input_current_time;
+        __last_input_time = global.__input_current_time; //Set the last input time to delay hotswapping for a little while
         __color_set(__color);        
         __input_player_apply_trigger_effects(__index);
         
-        if (INPUT_DEBUG_SOURCES) __input_trace("Assigned source ", _source, " to player ", __index);
+        //Set the touch player index
+        if ((_source == INPUT_TOUCH) || (INPUT_MOUSE_ALLOW_VIRTUAL_BUTTONS && (_source == INPUT_MOUSE))) __input_virtual_player_set(self);
+        
+        if (__INPUT_DEBUG_SOURCES) __input_trace("Assigned source ", _source, " to player ", __index);
     }
     
     /// @param source
     static __source_remove = function(_source)
     {
+        //Ensure we're targeting the right source for our platform / configuration
+        if (__INPUT_TOUCH_PRIMARY)
+        {
+            if (_source == INPUT_MOUSE) _source = INPUT_TOUCH;
+        }
+        else
+        {
+            if (_source == INPUT_TOUCH) _source = INPUT_MOUSE;
+        }
+        
         var _i = 0;
         repeat(array_length(__source_array))
         {
             if (__source_array[_i] == _source)
             {
+                //Reset gamepad colours and trigger effects when removing a gamepad source
                 if (__source_array[_i].__source == __INPUT_SOURCE.GAMEPAD)
                 {
                     __input_gamepad_reset_color(__source_array[_i].__gamepad);
                     __input_gamepad_stop_trigger_effects(__source_array[_i].__gamepad);
                 }
                  
+                //Clear the touch input tracking variable if it's us!
+                if (((_source == INPUT_TOUCH) || (INPUT_MOUSE_ALLOW_VIRTUAL_BUTTONS && (_source == INPUT_MOUSE))) && (global.__input_touch_player == self)) __input_virtual_player_set(undefined);
+                
                 array_delete(__source_array, _i, 1);
-                if (INPUT_DEBUG_SOURCES) __input_trace("Removed source ", _source, " from player ", __index);
+                if (__INPUT_DEBUG_SOURCES) __input_trace("Removed source ", _source, " from player ", __index);
             }
             else
             {
@@ -407,6 +440,16 @@ function __input_class_player() constructor
     /// @param source
     static __source_contains = function(_source)
     {
+        //Ensure we're targeting the right source for our platform / configuration
+        if (__INPUT_TOUCH_PRIMARY)
+        {
+            if (_source == INPUT_MOUSE) _source = INPUT_TOUCH;
+        }
+        else
+        {
+            if (_source == INPUT_TOUCH) _source = INPUT_MOUSE;
+        }
+        
         if (_source == INPUT_GAMEPAD)
         {
             //If we pass in the INPUT_GAMEPAD array then return <true> if any source is a gamepad
@@ -489,7 +532,7 @@ function __input_class_player() constructor
         {
             if (!_allowFallback) return _empty_binding;
             
-            if (INPUT_FALLBACK_PROFILE_BEHAVIOUR == 1)
+            if (INPUT_FALLBACK_PROFILE_BEHAVIOR == 1)
             {
                 if (__INPUT_ON_DESKTOP && global.__input_keyboard_allowed && global.__input_any_keyboard_binding_defined)
                 {
@@ -507,7 +550,7 @@ function __input_class_player() constructor
                     return _empty_binding;
                 }
             }
-            else if ((INPUT_FALLBACK_PROFILE_BEHAVIOUR == 2) && global.__input_any_gamepad_binding_defined)
+            else if ((INPUT_FALLBACK_PROFILE_BEHAVIOR == 2) && global.__input_any_gamepad_binding_defined)
             {
                 //Try to use a gamepad profile if possible
                 _profile_name = INPUT_AUTO_PROFILE_FOR_GAMEPAD;
@@ -537,6 +580,7 @@ function __input_class_player() constructor
         
         if (((_profile_name == INPUT_AUTO_PROFILE_FOR_KEYBOARD)
           || (_profile_name == INPUT_AUTO_PROFILE_FOR_MOUSE)
+          || (_profile_name == INPUT_AUTO_PROFILE_FOR_TOUCH)
           || (_profile_name == INPUT_AUTO_PROFILE_FOR_GAMEPAD))
         && (_profile_name != INPUT_AUTO_PROFILE_FOR_MIXED)
         && (_profile_name != INPUT_AUTO_PROFILE_FOR_MULTIDEVICE))
@@ -559,7 +603,7 @@ function __input_class_player() constructor
                         return;
                     }
                 break;
-            
+                
                 case __INPUT_SOURCE.MOUSE:
                     if not ((_profile_name == INPUT_AUTO_PROFILE_FOR_MOUSE)
                          || (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (_profile_name == INPUT_AUTO_PROFILE_FOR_KEYBOARD)))
@@ -571,6 +615,22 @@ function __input_class_player() constructor
                         else
                         {
                             __input_trace("Warning! Mouse binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
+                        }
+                        
+                        return;
+                    }
+                break;
+                
+                case __INPUT_SOURCE.TOUCH:
+                    if not (_profile_name == INPUT_AUTO_PROFILE_FOR_TOUCH)
+                    {
+                        if (global.__input_strict_binding_check)
+                        {
+                            __input_error("Touchscreen binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
+                        }
+                        else
+                        {
+                            __input_trace("Warning! Touchscreen binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
                         }
                         
                         return;
@@ -613,7 +673,7 @@ function __input_class_player() constructor
         }
         
         __profiles_dict[$ _profile_name][$ _verb][@ _alternate] = input_binding_empty();
-        if (INPUT_DEBUG_BINDING) __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " removed (set to null)");
+        if (__INPUT_DEBUG_BINDING) __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " removed (set to null)");
     }
     
     /// @param profileName
@@ -642,7 +702,7 @@ function __input_class_player() constructor
         //And set the value!
         __profiles_dict[$ _profile_name][$ _verb][@ _alternate] = _binding_struct;
         
-        if (INPUT_DEBUG_BINDING) __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " reset to \"", input_binding_get_name(_binding_struct), "\"");
+        if (__INPUT_DEBUG_BINDING) __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " reset to \"", input_binding_get_name(_binding_struct), "\"");
     }
     
     #endregion
@@ -727,7 +787,7 @@ function __input_class_player() constructor
         
         if (!is_struct(__verb_state_dict[$ _verb_name]))
         {
-            if (INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one");
+            if (__INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one");
             
             var _verb = new __input_class_verb_state();
             _verb.__player = self;
@@ -763,7 +823,7 @@ function __input_class_player() constructor
         }
         else
         {
-            if (INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one as a chord");
+            if (__INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one as a chord");
             
             var _verb_state_struct = new __input_class_verb_state();
             _verb_state_struct.__player = self;
@@ -787,7 +847,7 @@ function __input_class_player() constructor
         }
         else
         {
-            if (INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one as a combo");
+            if (__INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one as a combo");
             
             var _verb_state_struct = new __input_class_verb_state();
             _verb_state_struct.__player = self;
@@ -820,7 +880,7 @@ function __input_class_player() constructor
         _axis_struct.mini = _min
         _axis_struct.maxi = _max;
         
-        if (INPUT_DEBUG_BINDING) __input_trace("Axis threshold for axis \"", _axis_name, "\" set to ", _min, " -> ", _max);
+        if (__INPUT_DEBUG_BINDING) __input_trace("Axis threshold for axis \"", _axis_name, "\" set to ", _min, " -> ", _max);
         
         return _axis_struct;
     }
@@ -831,7 +891,7 @@ function __input_class_player() constructor
         var _struct = __axis_thresholds_dict[$ _axis_name];
         if (is_struct(_struct)) return _struct;
         
-        if (INPUT_DEBUG_BINDING) __input_trace("Warning! No axis threshold found for axis ", _axis_name);
+        if (__INPUT_DEBUG_BINDING) __input_trace("Warning! No axis threshold found for axis ", _axis_name);
         
         if (__input_axis_is_directional(_axis_name))
         {
@@ -852,6 +912,26 @@ function __input_class_player() constructor
         {
             force_value    = _value;
             force_analogue = _analogue;
+        }
+    }
+    
+    /// @param verb
+    /// @param forceRawValue
+    /// @param forceValue
+    /// @param forceAnalogue
+    static __verb_set_from_virtual = function(_verb_name, _raw_value, _value, _analogue)
+    {
+        if (is_string(_verb_name))
+        {
+            with(__verb_state_dict[$ _verb_name])
+            {
+                if (_value > (__virtual_value ?? -infinity))
+                {
+                    __virtual_value     = _value;
+                    __virtual_raw_value = _raw_value;
+                    __virtual_analogue  = _analogue;
+                }
+            }
         }
     }
     
@@ -1492,11 +1572,18 @@ function __input_class_player() constructor
         //    return ;
         //}
         
+        if (__source_contains(INPUT_TOUCH))
+        {
+            __input_trace("Binding scan failed: Player ", __index, " is using INPUT_TOUCH which cannot be rebound");
+            __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_INVALID);
+            return;
+        }
+        
         if (array_length(__rebind_source_filter) <= 0)
         {
             __input_trace("Binding scan failed: Source array for player ", __index, " is empty (the player has no source assigned)");
             __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_INVALID);
-            return ;
+            return;
         }
         
         if (__ghost)
@@ -1538,9 +1625,19 @@ function __input_class_player() constructor
             var _i = 0;
             repeat(array_length(__rebind_source_filter))
             {
-                if (instanceof(__rebind_source_filter[_i]) != "__input_class_source")
+                if (global.__input_use_is_instanceof)
                 {
-                    __input_error("Value in filter array is not a source (index ", _i, ", ", __rebind_source_filter[_i], ")");
+                    if (!is_instanceof(__rebind_source_filter[_i], __input_class_source))
+                    {
+                        __input_error("Value in filter array is not a source (index ", _i, ", ", __rebind_source_filter[_i], ")");
+                    }
+                }
+                else
+                {
+                    if (instanceof(__rebind_source_filter[_i]) != "__input_class_source")
+                    {
+                        __input_error("Value in filter array is not a source (index ", _i, ", ", __rebind_source_filter[_i], ")");
+                    }
                 }
                 
                 var _source_binding = __rebind_source_filter[_i].__scan_for_binding(__index, false, __rebind_ignore_struct, __rebind_allow_struct);

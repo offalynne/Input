@@ -82,6 +82,10 @@ function __input_binding_get_label(_type, _value, _axis_negative)
             }
         break;
         
+        case __INPUT_BINDING_VIRTUAL_BUTTON:
+            return "virtual button";
+        break;
+        
         default:
             return "binding unknown";
         break;

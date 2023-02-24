@@ -6,7 +6,7 @@
 
 function input_source_set(_source, _player_index = 0, _auto_profile = true)
 {
-	__input_initialize();
+    __input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX
     
     if (_source == all)
@@ -16,7 +16,7 @@ function input_source_set(_source, _player_index = 0, _auto_profile = true)
         with(global.__input_players[_player_index])
         {
             __source_add(INPUT_KEYBOARD);
-            __source_add(INPUT_MOUSE);
+            __source_add(__INPUT_TOUCH_PRIMARY? INPUT_TOUCH : INPUT_MOUSE);
             
             var _i = 0;
             repeat(INPUT_MAX_GAMEPADS)

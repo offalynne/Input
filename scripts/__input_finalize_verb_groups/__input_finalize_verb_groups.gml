@@ -2,7 +2,7 @@
 
 function __input_finalize_verb_groups()
 {
-    if (global.__input_initialization_phase != "__input_finalize_verb_groups") return;
+    if (global.__input_initialization_phase != "__input_config_verbs_and_bindings") return;
     
     if (!is_struct(global.__input_group_to_verbs_dict))
     {
@@ -43,5 +43,5 @@ function __input_finalize_verb_groups()
         ++_i;
     }
     
-    if (INPUT_DEBUG_VERBS) __input_trace("Verb groups are ", global.__input_verb_to_group_dict);
+    if (__INPUT_DEBUG_VERBS) __input_trace("Verb groups are ", global.__input_verb_to_group_dict);
 }

@@ -6,7 +6,7 @@
 
 function input_binding_threshold_set(_binding, _min, _max)
 {
-	__input_initialize();
+    __input_initialize();
     
     if (!input_value_is_binding(_binding))
     {

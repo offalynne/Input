@@ -390,7 +390,7 @@ function __input_system_tick()
         global.__input_steam_handles = steam_input_get_connected_controllers();
     }
     
-    if (global.__input_frame > INPUT_GAMEPADS_TICK_PREDELAY)
+    if (global.__input_frame > __INPUT_GAMEPADS_TICK_PREDELAY)
     {
         //Expand dynamic device count
         var _device_change = max(0, gamepad_get_device_count() - array_length(global.__input_gamepads))
@@ -474,6 +474,64 @@ function __input_system_tick()
     {
         global.__input_players[_p].tick();
         ++_p;
+    }
+    
+    #endregion
+    
+    
+    
+    #region Virtual Buttons
+    
+    //Reorder virtual buttons if necessary, from highest priority to lowest
+    if (global.__input_virtual_order_dirty)
+    {
+        //Clean up any destroyed virtual buttons
+        var _i = 0;
+        repeat(array_length(global.__input_virtual_array))
+        {
+            if (global.__input_virtual_array[_i].__destroyed)
+            {
+                array_delete(global.__input_virtual_array, _i, 1);
+            }
+            else
+            {
+                ++_i;
+            }
+        }
+        
+        global.__input_virtual_order_dirty = false;
+        array_sort(global.__input_virtual_array, function(_a, _b)
+        {
+            return _a.__priority - _b.__priority;
+        });
+    }
+    
+    if (is_struct(global.__input_touch_player))
+    {
+        //Detect any new touch points and find the top-most button to handle it
+        var _i = 0;
+        repeat(INPUT_MAX_TOUCHPOINTS)
+        {
+            if (device_mouse_check_button_pressed(_i, mb_left))
+            {
+                var _j = 0;
+                repeat(array_length(global.__input_virtual_array))
+                {
+                    if (global.__input_virtual_array[_j].__capture_touchpoint(_i)) break;
+                    ++_j;
+                }
+            }
+            
+            ++_i;
+        }
+        
+        //Update any virtual buttons that are currently being interacted with
+        var _i = 0;
+        repeat(array_length(global.__input_virtual_array))
+        {
+            global.__input_virtual_array[_i].__tick();
+            ++_i;
+        }
     }
     
     #endregion

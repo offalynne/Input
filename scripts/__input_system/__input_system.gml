@@ -1,21 +1,46 @@
-#macro __INPUT_VERSION "5.4.0"
-#macro __INPUT_DATE    "2023-01-28"
+#macro __INPUT_VERSION "5.5.0"
+#macro __INPUT_DATE    "2023-02-22"
 #macro __INPUT_DEBUG   false
+
+
+
+#region Forbidden Fruit
+
+#macro __INPUT_2D_CHECKER_STATIC_RESULT  true
+
+#macro __INPUT_DEBUG_PROFILES  false
+#macro __INPUT_DEBUG_SOURCES   false
+#macro __INPUT_DEBUG_BINDING   false
+#macro __INPUT_DEBUG_VERBS     false
+
+#macro __INPUT_EXTERNAL_DEBUG_LOG  false  //Do NOT set to <true> unless directed (!)
+
+//How many frames to wait before scanning for connected gamepads
+//This works around Steam sometimes reporting confusing connection/disconnection events on boot
+#macro __INPUT_GAMEPADS_TICK_PREDELAY  10     
+
+#endregion
+
+
 
 #macro __INPUT_BINDING_KEY               "key"
 #macro __INPUT_BINDING_MOUSE_BUTTON      "mouse button"
 #macro __INPUT_BINDING_MOUSE_WHEEL_UP    "mouse wheel up"
 #macro __INPUT_BINDING_MOUSE_WHEEL_DOWN  "mouse wheel down"
+#macro __INPUT_BINDING_VIRTUAL_BUTTON    "virtual button"
 #macro __INPUT_BINDING_GAMEPAD_BUTTON    "gamepad button"
 #macro __INPUT_BINDING_GAMEPAD_AXIS      "gamepad axis"
 
 #macro INPUT_KEYBOARD      global.__input_source_keyboard
 #macro INPUT_MOUSE         global.__input_source_mouse
 #macro INPUT_GAMEPAD       global.__input_source_gamepad
+#macro INPUT_TOUCH         global.__input_source_touch
 #macro INPUT_MAX_GAMEPADS  12
 
 #macro INPUT_KEYBOARD_LOCALE  global.__input_keyboard_locale
 #macro INPUT_KEYBOARD_TYPE    global.__input_keyboard_type
+
+#macro INPUT_VIRTUAL_BACKGROUND  global.__input_virtual_background
 
 #macro __INPUT_ON_PS       ((os_type == os_ps4)     || (os_type == os_ps5))
 #macro __INPUT_ON_XBOX     ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
@@ -29,9 +54,9 @@
 #macro __INPUT_ON_WEB      ((os_browser != browser_not_a_browser) || __INPUT_ON_OPERAGX)
 
 #macro __INPUT_STEAMWORKS_SUPPORT         (((os_type == os_windows) || (os_type == os_linux)) && !__INPUT_ON_WEB)
-#macro __INPUT_TOUCHSCREEN_SUPPORT        (__INPUT_ON_MOBILE  || (os_type == os_switch) || (global.__input_on_steam_deck && (os_type == os_windows)))
-#macro __INPUT_TOUCH_SUPPORT              (__INPUT_ON_MOBILE  || (os_type == os_switch) || __INPUT_ON_PS || (os_type == os_windows))
-#macro __INPUT_KEYBOARD_NORMATIVE         (__INPUT_ON_DESKTOP || (os_type == os_switch) || __INPUT_ON_WEB)
+#macro __INPUT_TOUCH_SUPPORT              (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch) || (os_type == os_windows))
+#macro __INPUT_TOUCH_PRIMARY              (!INPUT_TOUCH_IS_MOUSE && (__INPUT_ON_MOBILE  || (os_type == os_switch) || (global.__input_on_steam_deck && (os_type == os_windows))))
+#macro __INPUT_KEYBOARD_NORMATIVE         (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch))
 #macro __INPUT_KEYBOARD_SUPPORT           (__INPUT_KEYBOARD_NORMATIVE || (os_type == os_android))
 #macro __INPUT_GAMEPAD_VIBRATION_SUPPORT  (__INPUT_ON_CONSOLE || (!__INPUT_ON_WEB && (os_type == os_windows)))
 #macro __INPUT_SDL2_SUPPORT               (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || (os_type == os_android)))
@@ -127,6 +152,7 @@ enum __INPUT_SOURCE
     KEYBOARD,
     MOUSE,
     GAMEPAD,
+    TOUCH,
     __SIZE
 }
 
@@ -192,7 +218,7 @@ function __input_trace()
     
     show_debug_message("Input: " + _string);
     
-    if (INPUT_EXTERNAL_DEBUG_LOG)
+    if (__INPUT_EXTERNAL_DEBUG_LOG)
     {
         var _file = file_text_open_append(global.__input_debug_log);
         file_text_write_string(_file, _string);
@@ -213,7 +239,7 @@ function __input_trace_loud()
     
     show_debug_message("Input: LOUD " + _string);
     
-    if (INPUT_EXTERNAL_DEBUG_LOG)
+    if (__INPUT_EXTERNAL_DEBUG_LOG)
     {
         var _file = file_text_open_append(global.__input_debug_log);
         file_text_write_string(_file, _string);

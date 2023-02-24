@@ -1,7 +1,7 @@
-cell_split = 4;
+cell_split = 3;
 
 //grid coords
-cell_count = power(cell_split, 2);
+cell_count = cell_split*cell_split;
 cell_w = (room_width  / cell_split);
 cell_h = (room_height / cell_split);
 

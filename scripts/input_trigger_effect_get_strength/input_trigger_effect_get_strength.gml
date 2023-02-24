@@ -1,4 +1,5 @@
-/// @param [playerIndex=0]
+/// @desc    Returns the strength of trigger effects for the player
+/// @param   [playerIndex=0]
 
 function input_trigger_effect_get_strength(_player_index = 0)
 {

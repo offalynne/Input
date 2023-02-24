@@ -10,6 +10,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
     {
         case __INPUT_SOURCE.KEYBOARD: __name = INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER? "keyboard and mouse" : "keyboard"; break;
         case __INPUT_SOURCE.MOUSE:    __name = INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER? "keyboard and mouse" : "mouse";    break;
+        case __INPUT_SOURCE.TOUCH:    __name = "touch"; break;
         case __INPUT_SOURCE.GAMEPAD:  __name = "gamepad " + string(_gamepad); break;
         
         default:
@@ -28,6 +29,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
         {
             case __INPUT_SOURCE.KEYBOARD: return true;                                  break; //TODO - Should this check against whether bindings exist for this source?
             case __INPUT_SOURCE.MOUSE:    return true;                                  break; //TODO - Should this check against whether bindings exist for this source?
+            case __INPUT_SOURCE.TOUCH:    return true;                                  break; //TODO - Should this check against whether bindings exist for this source?
             case __INPUT_SOURCE.GAMEPAD:  return input_gamepad_is_connected(__gamepad); break;
             
             default:
@@ -42,6 +44,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
         {
             case __INPUT_SOURCE.KEYBOARD: return (__source == __INPUT_SOURCE.KEYBOARD); break;
             case __INPUT_SOURCE.MOUSE:    return (__source == __INPUT_SOURCE.MOUSE); break;
+            case __INPUT_SOURCE.TOUCH:    return (__source == __INPUT_SOURCE.TOUCH); break;
             case __INPUT_SOURCE.GAMEPAD:  return ((__source == __INPUT_SOURCE.GAMEPAD) && (__gamepad == _other_source.__gamepad)); break;
         }
         
@@ -50,6 +53,9 @@ function __input_class_source(_source, _gamepad = undefined) constructor
     
     static __scan_for_binding = function(_player_index, _return_boolean, _ignore_struct, _allow_struct)
     {
+        //Touchscreen can never return a new binding
+        if (__source == __INPUT_SOURCE.TOUCH) return undefined;
+        
         if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && ((__source == __INPUT_SOURCE.KEYBOARD) || (__source == __INPUT_SOURCE.MOUSE)))
         {
             var _binding = __input_source_scan_for_binding(__INPUT_SOURCE.KEYBOARD, __gamepad, _player_index, _return_boolean, _ignore_struct, _allow_struct);
@@ -196,8 +202,8 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                 return !(__INPUT_ON_CONSOLE || (!__INPUT_ON_WEB && __INPUT_ON_MOBILE));        
             break;
             
-            default:
-                return false;
+            case __INPUT_BINDING_VIRTUAL_BUTTON:
+                return (__source == __INPUT_SOURCE.TOUCH);
             break;
         }
         
@@ -271,6 +277,11 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
                     return input_binding_mouse_wheel_down();
                 }
             }
+        break;
+        
+        case __INPUT_SOURCE.TOUCH:
+            //Never scan for a binding, virtual buttons only
+            return undefined;
         break;
         
         case __INPUT_SOURCE.GAMEPAD:

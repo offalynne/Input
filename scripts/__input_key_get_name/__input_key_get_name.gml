@@ -6,12 +6,12 @@ function __input_key_get_name(_key)
     var _lookup_name = global.__input_key_name_dict[$ _key];
     if (_lookup_name == undefined)
     {
-		//Return UTF8 character
+        //Return UTF8 character
         return chr(_key);    
     }
     else
     {
-		//Return from lookup
+        //Return from lookup
         return _lookup_name;
     }
 }

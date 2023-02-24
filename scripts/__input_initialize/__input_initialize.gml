@@ -7,7 +7,7 @@ function __input_initialize()
     
     //Set up the extended debug functionality
     global.__input_debug_log = "input___" + string_replace_all(string_replace_all(date_datetime_string(date_current_datetime()), ":", "-"), " ", "___") + ".txt";
-    if (INPUT_EXTERNAL_DEBUG_LOG && __INPUT_DEBUG)
+    if (__INPUT_EXTERNAL_DEBUG_LOG && __INPUT_DEBUG)
     {
         show_debug_message("Input: Set external debug log to \"" + string(global.__input_debug_log) + "\"");
         exception_unhandled_handler(__input_exception_handler);
@@ -15,10 +15,13 @@ function __input_initialize()
     
     __input_trace("Welcome to Input by @jujuadams and @offalynne! This is version ", __INPUT_VERSION, ", ", __INPUT_DATE);
     
+    global.__input_use_is_instanceof = (string_copy(GM_runtime_version, 1, 4) == "2023");
+    if (global.__input_use_is_instanceof) __input_trace("On runtime ", GM_runtime_version, ", using is_instanceof()");
+    
     //Attempt to set up a time source for slick automatic input handling
     try
     {
-        //GMS2022.500.58 runtime
+        //GMS2022.500.58 runtime and later
         global.__input_time_source = time_source_create(time_source_global, 1, time_source_units_frames, function()
         {
             __input_system_tick();
@@ -28,22 +31,9 @@ function __input_initialize()
     }
     catch(_error)
     {
-        try
-        {
-            //Early GMS2022.500.xx runtimes
-            global.__input_time_source = time_source_create(time_source_global, 1, time_source_units_frames, function()
-            {
-                __input_system_tick();
-            }, -1);
-            
-            time_source_start(global.__input_time_source);
-        }
-        catch(_error)
-        {
-            //If the above fails then fall back on needing to call input_tick()
-            global.__input_time_source = undefined;
-            __input_trace("Warning! Running on a GM runtime earlier than 2022.5");
-        }
+        //If the above fails then fall back on needing to call input_tick()
+        global.__input_time_source = undefined;
+        __input_trace("Warning! Running on a GM runtime earlier than 2022 LTS");
     }
     
     //Global frame counter and realtime tracker. This is used for input buffering
@@ -95,6 +85,7 @@ function __input_initialize()
     //This is determined by what default keybindings are set up
     global.__input_any_keyboard_binding_defined = false;
     global.__input_any_mouse_binding_defined    = false;
+    global.__input_any_touch_binding_defined    = false;
     global.__input_any_gamepad_binding_defined  = false;
     
     //Disallow keyboard bindings on specified platforms unless explicitly enabled
@@ -138,6 +129,15 @@ function __input_initialize()
     
     //Struct to store ignored gamepad types
     global.__input_ignore_gamepad_types = {};
+    
+    //Array of created virtual buttons
+    global.__input_virtual_array       = [];
+    global.__input_virtual_background  = input_virtual_create().priority(-infinity); global.__input_virtual_background.__background = true;
+    global.__input_virtual_order_dirty = false;
+    
+    //Which player has the INPUT_TOUCH source, if any
+    //This can also work with INPUT_MOUSE if INPUT_MOUSE_ALLOW_VIRTUAL_BUTTONS is set to <true>
+    global.__input_touch_player = undefined;
     
     //Two structs that are returned by input_players_get_status() and input_gamepads_get_status()
     //These are "static" structs that are reset and populated by input_tick()
@@ -222,6 +222,21 @@ function __input_initialize()
         AXIS_PITCH,
         AXIS_YAW,
         AXIS_ROLL
+    }
+    
+    enum INPUT_VIRTUAL_TYPE
+    {
+        BUTTON,
+        DPAD_4DIR,
+        DPAD_8DIR,
+        THUMBSTICK,
+    }
+    
+    enum INPUT_VIRTUAL_RELEASE
+    {
+        DO_NOTHING,
+        DESTROY,
+        RESET_POSITION,
     }
     
     global.__input_source_mode          = undefined;
@@ -881,6 +896,7 @@ function __input_initialize()
     //Build out the sources
     INPUT_KEYBOARD = new __input_class_source(__INPUT_SOURCE.KEYBOARD);
     INPUT_MOUSE = INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER? INPUT_KEYBOARD : (new __input_class_source(__INPUT_SOURCE.MOUSE));
+    INPUT_TOUCH = new __input_class_source(__INPUT_SOURCE.TOUCH);
     
     INPUT_GAMEPAD = array_create(INPUT_MAX_GAMEPADS, undefined);
     var _g = 0;
@@ -892,11 +908,8 @@ function __input_initialize()
     
     
     
-    global.__input_initialization_phase = "__input_finalize_default_profiles";
-    __input_config_profiles_and_default_bindings();
-    
-    global.__input_initialization_phase = "__input_finalize_verb_groups";
-    __input_config_verbs();
+    global.__input_initialization_phase = "__input_config_verbs_and_bindings";
+    __input_config_verbs_and_bindings();
     
     
     

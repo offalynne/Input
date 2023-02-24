@@ -3,6 +3,10 @@
 function __input_steam_handles_changed()
 {
     var _steam_handles = steam_input_get_connected_controllers();
+    
+    //Catch any edge cases where steam_input_get_connected_controllers() returns invalid data
+    if (!is_array(_steam_handles)) return false;
+    
     if (array_length(_steam_handles) != array_length(global.__input_steam_handles))
     {
         //Handle count changed

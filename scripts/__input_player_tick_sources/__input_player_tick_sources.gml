@@ -20,6 +20,23 @@ function __input_player_tick_sources()
         
         with(_verb_struct)
         {
+            //We've had our value set this frame via a virtual button
+            if ((__virtual_value != undefined) && (__virtual_raw_value != undefined) && (__virtual_analogue != undefined))
+            {
+                _raw   = __virtual_raw_value;
+                _value = __virtual_value;
+                
+                _analogue     = __virtual_analogue;
+                _raw_analogue = __virtual_analogue;
+                
+                _min_threshold = 0;
+                _max_threshold = 1;
+                
+                __virtual_value     = undefined;
+                __virtual_raw_value = undefined;
+                __virtual_analogue  = undefined;
+            }
+            
             //We've had our value set this frame via input_verb_set()
             if ((force_value != undefined) && (force_analogue != undefined))
             {
@@ -180,6 +197,9 @@ function __input_player_tick_sources()
                         
                         ++_alternate;
                     }
+                break;
+                
+                case __INPUT_SOURCE.TOUCH:
                 break;
                 
                 case __INPUT_SOURCE.GAMEPAD:
