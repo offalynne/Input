@@ -12,13 +12,11 @@ if (!input_binding_scan_in_progress())
     {
         rebinding_source = input_source_get_array();
         
-        input_binding_scan_params_set(["A", "B", "C", gp_face1, gp_face2], undefined);
+        input_binding_scan_params_set(["A", "B", "C", gp_face1, gp_face2], undefined, undefined, rebinding_source);
         input_binding_scan_start(function(_new_binding)
         {
             input_binding_set_safe("up", _new_binding);
-        },
-        undefined,
-        rebinding_source);
+        });
     }
     
     //Allow A + B + C + (X) + (Y)
@@ -26,13 +24,11 @@ if (!input_binding_scan_in_progress())
     {
         rebinding_source = input_source_get_array();
         
-        input_binding_scan_params_set(undefined, ["A", "B", "C", gp_face3, gp_face4]);
+        input_binding_scan_params_set(undefined, ["A", "B", "C", gp_face3, gp_face4], undefined, rebinding_source);
         input_binding_scan_start(function(_new_binding)
         {
             input_binding_set_safe("up", _new_binding);
-        },
-        undefined,
-        rebinding_source);
+        });
     }
     
     //Test both ignore and allow arrays being set at the same time
@@ -41,12 +37,10 @@ if (!input_binding_scan_in_progress())
     {
         rebinding_source = input_source_get_array();
         
-        input_binding_scan_params_set(["A", "B", gp_face3], ["A", "B", "C", gp_face3, gp_face4]);
+        input_binding_scan_params_set(["A", "B", gp_face3], ["A", "B", "C", gp_face3, gp_face4], undefined, rebinding_source);
         input_binding_scan_start(function(_new_binding)
         {
             input_binding_set_safe("up", _new_binding);
-        },
-        undefined,
-        rebinding_source);
+        });
     }
 }

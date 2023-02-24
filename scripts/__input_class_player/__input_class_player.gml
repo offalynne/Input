@@ -25,7 +25,7 @@ function __input_class_player() constructor
     __rebind_start_time       = global.__input_current_time;
     __rebind_success_callback = undefined;
     __rebind_failure_callback = undefined;
-    __rebind_source_filter    = [];
+    __rebind_source_filter    = undefined;
     __rebind_ignore_struct    = undefined;
     __rebind_allow_struct     = undefined;
     
@@ -1516,6 +1516,8 @@ function __input_class_player() constructor
         //    return ;
         //}
         
+        var _source_filter = __rebind_source_filter ?? __source_array;
+        
         if (__source_contains(INPUT_TOUCH))
         {
             __input_trace("Binding scan failed: Player ", __index, " is using INPUT_TOUCH which cannot be rebound");
@@ -1523,10 +1525,17 @@ function __input_class_player() constructor
             return;
         }
         
-        if (array_length(__rebind_source_filter) <= 0)
+        if (array_length(__source_array) <= 0)
         {
             __input_trace("Binding scan failed: Source array for player ", __index, " is empty (the player has no source assigned)");
             __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_INVALID);
+            return;
+        }
+        
+        if (array_length(_source_filter) <= 0)
+        {
+            __input_trace("Binding scan failed: Source filter array for player ", __index, " is empty (no sources are permitted)");
+            __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_FILTER_EMPTY);
             return;
         }
         
@@ -1567,28 +1576,28 @@ function __input_class_player() constructor
             var _binding_source = undefined;
                 
             var _i = 0;
-            repeat(array_length(__rebind_source_filter))
+            repeat(array_length(_source_filter))
             {
                 if (global.__input_use_is_instanceof)
                 {
-                    if (!is_instanceof(__rebind_source_filter[_i], __input_class_source))
+                    if (!is_instanceof(_source_filter[_i], __input_class_source))
                     {
-                        __input_error("Value in filter array is not a source (index ", _i, ", ", __rebind_source_filter[_i], ")");
+                        __input_error("Value in filter array is not a source (index ", _i, ", ", _source_filter[_i], ")");
                     }
                 }
                 else
                 {
-                    if (instanceof(__rebind_source_filter[_i]) != "__input_class_source")
+                    if (instanceof(_source_filter[_i]) != "__input_class_source")
                     {
-                        __input_error("Value in filter array is not a source (index ", _i, ", ", __rebind_source_filter[_i], ")");
+                        __input_error("Value in filter array is not a source (index ", _i, ", ", _source_filter[_i], ")");
                     }
                 }
                 
-                var _source_binding = __rebind_source_filter[_i].__scan_for_binding(__index, false, __rebind_ignore_struct, __rebind_allow_struct);
+                var _source_binding = _source_filter[_i].__scan_for_binding(__index, false, __rebind_ignore_struct, __rebind_allow_struct);
                 if (_source_binding != undefined)
                 {
                     var _new_binding    = _source_binding;
-                    var _binding_source = __rebind_source_filter[_i];
+                    var _binding_source = _source_filter[_i];
                 }
                     
                 ++_i;

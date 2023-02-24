@@ -1,11 +1,12 @@
 /// @desc    Sets parameters when scanning for bindings for a particular player
 ///          These parameters persist between scans
 /// 
-/// @param   ignoreArray
-/// @param   allowArray
+/// @param   [ignoreArray]
+/// @param   [allowArray]
 /// @param   [playerIndex=0]
+/// @param   [sourceFilter]
 
-function input_binding_scan_params_set(_ignore_array, _allow_array, _player_index = 0)
+function input_binding_scan_params_set(_ignore_array = undefined, _allow_array = undefined, _player_index = 0, _source_filter = undefined)
 {
     __input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX
@@ -17,7 +18,7 @@ function input_binding_scan_params_set(_ignore_array, _allow_array, _player_inde
     var _ignore_struct = undefined;
     var _allow_struct  = undefined;
     
-    if (is_array(_ignore_array)) //Ignore used if there's no allow array
+    if (is_array(_ignore_array)) //"Ignore" array used if there's no allow array
     {
         _ignore_struct = {};
         
@@ -31,7 +32,7 @@ function input_binding_scan_params_set(_ignore_array, _allow_array, _player_inde
         }
     }
     
-    if (is_array(_allow_array)) //Allow takes precedence
+    if (is_array(_allow_array)) //"Allow" array takes precedence
     {
         _allow_struct = {};
         
@@ -47,7 +48,14 @@ function input_binding_scan_params_set(_ignore_array, _allow_array, _player_inde
     
     with(global.__input_players[_player_index])
     {
+        if (!is_undefined(_source_filter) && !is_array(_source_filter))
+        {
+            //If we've been given a basic piece of data, wrap it in an array
+            _source_filter = [_source_filter];
+        }
+        
         __rebind_ignore_struct = _ignore_struct;
         __rebind_allow_struct  = _allow_struct;
+        __rebind_source_filter = _source_filter;
     }
 }

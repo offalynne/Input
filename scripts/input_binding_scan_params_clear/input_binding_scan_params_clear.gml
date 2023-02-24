@@ -11,5 +11,6 @@ function input_binding_scan_params_clear(_player_index = 0)
     {
         __rebind_ignore_struct = undefined;
         __rebind_allow_struct  = undefined;
+        __rebind_source_filter = undefined;
     }
 }
