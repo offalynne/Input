@@ -1,17 +1,15 @@
-#macro INPUT_DEFAULT_PROFILES __input_initialize(); for(var _i = 0; _i < 2; _i++) if (_i == 1) __input_finalize_default_profiles() else if (is_struct(global.__input_default_profile_dict)) break else global.__input_default_profile_dict
-
 function __input_finalize_default_profiles()
 {
-    if (global.__input_initialization_phase != "__input_config_verbs_and_bindings") return;
+    global.__input_default_profile_dict = __input_config_verbs();
     
     if (!is_struct(global.__input_default_profile_dict))
     {
-        __input_error("INPUT_DEFAULT_PROFILES must contain a struct (was ", typeof(global.__input_default_profile_dict), ")\nDocumentation on INPUT_DEFAULT_PROFILES can be found offline in __input_config_verbs_and_bindings()\nOnline documentation can be found at https://jujuadams.github.io/Input");
+        __input_error("__input_config_verbs() must contain a struct (was ", typeof(global.__input_default_profile_dict), ")\nDocumentation on __input_config_verbs() can be found offline in __input_config_verbs_and_bindings()\nOnline documentation can be found at https://jujuadams.github.io/Input");
     }
     
     if (variable_struct_names_count(global.__input_default_profile_dict) <= 0)
     {
-       __input_error("INPUT_DEFAULT_PROFILES must contain at least one profile");
+       __input_error("__input_config_verbs() must contain at least one profile");
     }
     
     //Put strict mode on, this'll cause Input to throw errors if the player does anything dumb
@@ -122,11 +120,11 @@ function __input_finalize_default_profiles()
         ++_f;
     }
     
-    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_KEYBOARD   )) __input_trace("Warning! Default profile for keyboard \"",    INPUT_AUTO_PROFILE_FOR_KEYBOARD,    "\" has not been defined in INPUT_DEFAULT_PROFILES");
-    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MOUSE      )) __input_trace("Warning! Default profile for mouse \"",       INPUT_AUTO_PROFILE_FOR_MOUSE,       "\" has not been defined in INPUT_DEFAULT_PROFILES");
-    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_GAMEPAD    )) __input_trace("Warning! Default profile for gamepad \"",     INPUT_AUTO_PROFILE_FOR_GAMEPAD,     "\" has not been defined in INPUT_DEFAULT_PROFILES");
-    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MIXED      )) __input_trace("Warning! Default profile for mixed \"",       INPUT_AUTO_PROFILE_FOR_MIXED,       "\" has not been defined in INPUT_DEFAULT_PROFILES");
-    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MULTIDEVICE)) __input_trace("Warning! Default profile for multidevice \"", INPUT_AUTO_PROFILE_FOR_MULTIDEVICE, "\" has not been defined in INPUT_DEFAULT_PROFILES");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_KEYBOARD   )) __input_trace("Warning! Default profile for keyboard \"",    INPUT_AUTO_PROFILE_FOR_KEYBOARD,    "\" has not been defined in __input_config_verbs()");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MOUSE      )) __input_trace("Warning! Default profile for mouse \"",       INPUT_AUTO_PROFILE_FOR_MOUSE,       "\" has not been defined in __input_config_verbs()");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_GAMEPAD    )) __input_trace("Warning! Default profile for gamepad \"",     INPUT_AUTO_PROFILE_FOR_GAMEPAD,     "\" has not been defined in __input_config_verbs()");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MIXED      )) __input_trace("Warning! Default profile for mixed \"",       INPUT_AUTO_PROFILE_FOR_MIXED,       "\" has not been defined in __input_config_verbs()");
+    if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MULTIDEVICE)) __input_trace("Warning! Default profile for multidevice \"", INPUT_AUTO_PROFILE_FOR_MULTIDEVICE, "\" has not been defined in __input_config_verbs()");
     
     global.__input_cursor_verbs_valid = true;
     if (!variable_struct_exists(global.__input_basic_verb_dict, INPUT_CURSOR_VERB_UP   )) { __input_trace("Warning! Default cursor up verb \"",    INPUT_CURSOR_VERB_UP,    "\" has not been defined for any profile"); global.__input_cursor_verbs_valid = false; }

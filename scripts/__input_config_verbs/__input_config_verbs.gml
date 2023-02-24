@@ -3,13 +3,13 @@
 //
 //  Please edit this macro to meet the needs of your game!
 //
-//The root struct called INPUT_DEFAULT_PROFILES contains the names of each default profile
+//The root struct called __input_config_verbs() contains the names of each default profile
 //Default profiles then contain the names of verbs. Each verb should be given a binding that is
 //appropriate for the profile. You can create bindings by calling one of the input_binding_*()
 //functions, such as input_binding_key() for keyboard keys and input_binding_mouse() for
 //mouse buttons
 
-INPUT_DEFAULT_PROFILES = {
+return {
     
     keyboard_and_mouse:
     {
@@ -65,10 +65,4 @@ INPUT_DEFAULT_PROFILES = {
         pause: input_binding_virtual_button(),
     }
     
-};
-
-//Defines which verbs should collide with which other verbs when using input_binding_get_collisions()
-//and input_binding_set_safe(). A verb that is not present in a group will collide with all other verbs
-INPUT_VERB_GROUPS = {
-    //Fill me up!
 };

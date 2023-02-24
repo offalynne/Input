@@ -1,4 +1,4 @@
-/// @desc    Returns an array of structs containing conflicting verb/alternate indexes, after taking into account INPUT_VERB_GROUPS
+/// @desc    Returns an array of structs containing conflicting verb/alternate indexes, after taking into account __input_config_verb_groups()
 /// @param   verb
 /// @param   binding
 /// @param   [playerIndex=0]

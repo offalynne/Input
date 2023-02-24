@@ -1,4 +1,4 @@
-/// @desc    Destroys a custom profile created by input_profile_create(). Default profiles defined in INPUT_DEFAULT_PROFILES cannot be destroyed
+/// @desc    Destroys a custom profile created by input_profile_create(). Default profiles defined in __input_config_verbs() cannot be destroyed
 /// @param   profileName
 /// @param   [playerIndex=0]
 

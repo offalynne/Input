@@ -1,12 +1,10 @@
-#macro INPUT_VERB_GROUPS __input_initialize(); for(var _i = 0; _i < 2; _i++) if (_i == 1) __input_finalize_verb_groups() else global.__input_group_to_verbs_dict
-
 function __input_finalize_verb_groups()
 {
-    if (global.__input_initialization_phase != "__input_config_verbs_and_bindings") return;
+    global.__input_group_to_verbs_dict = __input_config_verb_groups();
     
     if (!is_struct(global.__input_group_to_verbs_dict))
     {
-        __input_error("INPUT_VERB_GROUPS must contain a struct (was ", typeof(global.__input_group_to_verbs_dict), ")\nDocumentation on INPUT_VERB_GROUPS can be found offline in __input_config_verbs()\nOnline documentation can be found at https://jujuadams.github.io/Input");
+        __input_error("__input_config_verb_groups() must contain a struct (was ", typeof(global.__input_group_to_verbs_dict), ")\nDocumentation on __input_config_verb_groups() can be found offline in __input_config_verbs()\nOnline documentation can be found at https://jujuadams.github.io/Input");
     }
     
     global.__input_verb_group_array = variable_struct_get_names(global.__input_group_to_verbs_dict);
@@ -33,7 +31,7 @@ function __input_finalize_verb_groups()
         {
             var _verb = _group_array[_j];
             
-            if (!variable_struct_exists(global.__input_basic_verb_dict, _verb)) __input_error("Verb \"", _verb, "\" doesn't exist\nPlease check INPUT_VERB_GROUPS matches INPUT_DEFAULT_PROFILES");
+            if (!variable_struct_exists(global.__input_basic_verb_dict, _verb)) __input_error("Verb \"", _verb, "\" doesn't exist\nPlease check __input_config_verb_groups() matches __input_config_verbs()");
             if (variable_struct_exists(global.__input_verb_to_group_dict, _verb)) __input_error("Verb \"", _verb, "\" already has a group (", _group_name, ")");
             global.__input_verb_to_group_dict[$ _verb] = _group_name;
             

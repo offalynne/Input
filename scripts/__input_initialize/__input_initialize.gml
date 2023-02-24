@@ -2,8 +2,9 @@ __input_initialize();
 
 function __input_initialize()
 {
-    if (variable_global_exists("__input_initialization_phase")) return false;
-    global.__input_initialization_phase = "Pending";
+    static _initialized = false;
+    if (_initialized) return;
+    _initialized = true;
     
     //Set up the extended debug functionality
     global.__input_debug_log = "input___" + string_replace_all(string_replace_all(date_datetime_string(date_current_datetime()), ":", "-"), " ", "___") + ".txt";
@@ -905,8 +906,8 @@ function __input_initialize()
     
     
     
-    global.__input_initialization_phase = "__input_config_verbs_and_bindings";
-    __input_config_verbs_and_bindings();
+    __input_finalize_default_profiles();
+    __input_finalize_verb_groups();
     
     
     
@@ -915,12 +916,12 @@ function __input_initialize()
     
     if (INPUT_STARTING_SOURCE_MODE == INPUT_SOURCE_MODE.MIXED)
     {
-        if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MIXED)) __input_error("Default profile for mixed \"", INPUT_AUTO_PROFILE_FOR_MIXED, "\" has not been defined in INPUT_DEFAULT_PROFILES");
+        if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MIXED)) __input_error("Default profile for mixed \"", INPUT_AUTO_PROFILE_FOR_MIXED, "\" has not been defined in __input_config_verbs()");
         input_profile_set(INPUT_AUTO_PROFILE_FOR_MIXED);
     }
     else if (INPUT_STARTING_SOURCE_MODE == INPUT_SOURCE_MODE.MULTIDEVICE)
     {
-        if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MULTIDEVICE)) __input_error("Default profile for multidevice \"", INPUT_AUTO_PROFILE_FOR_MULTIDEVICE, "\" has not been defined in INPUT_DEFAULT_PROFILES");
+        if (!variable_struct_exists(global.__input_profile_dict, INPUT_AUTO_PROFILE_FOR_MULTIDEVICE)) __input_error("Default profile for multidevice \"", INPUT_AUTO_PROFILE_FOR_MULTIDEVICE, "\" has not been defined in __input_config_verbs()");
         input_profile_set(INPUT_AUTO_PROFILE_FOR_MULTIDEVICE);
     }
     
@@ -928,8 +929,6 @@ function __input_initialize()
     
     //Make sure we're not misconfigured
     __input_validate_macros();
-    
-    global.__input_initialization_phase = "Complete";
     
     return true;
 }
