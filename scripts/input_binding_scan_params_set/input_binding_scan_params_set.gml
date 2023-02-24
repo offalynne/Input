@@ -3,13 +3,18 @@
 /// 
 /// @param   [ignoreArray]
 /// @param   [allowArray]
-/// @param   [playerIndex=0]
 /// @param   [sourceFilter]
+/// @param   [playerIndex=0]
 
-function input_binding_scan_params_set(_ignore_array = undefined, _allow_array = undefined, _player_index = 0, _source_filter = undefined)
+function input_binding_scan_params_set(_ignore_array = undefined, _allow_array = undefined, _source_filter = undefined, _player_index = 0)
 {
     __input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX
+    
+    if (is_numeric(_source_filter))
+    {
+        __input_error("Usage of input_binding_scan_params_set() has changed. Please refer to documentation for details");
+    }
     
     //Fic minor misuse of allow/ignore arrays
     if (!is_array(_allow_array ) && (_allow_array  != undefined)) _allow_array  = [_allow_array ];

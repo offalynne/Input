@@ -9,7 +9,7 @@ if (!input_binding_scan_in_progress())
     {
         rebinding_source = input_source_get_array();
         
-        input_binding_scan_params_set(undefined, undefined, undefined, rebinding_source);
+        input_binding_scan_params_set(undefined, undefined, rebinding_source);
         input_binding_scan_start(function(_new_binding)
         {
             input_binding_set_safe("up", _new_binding);
@@ -20,7 +20,7 @@ if (!input_binding_scan_in_progress())
     {
         rebinding_source = INPUT_KEYBOARD;
         
-        input_binding_scan_params_set(undefined, undefined, undefined, rebinding_source);
+        input_binding_scan_params_set(undefined, undefined, rebinding_source);
         input_binding_scan_start(function(_new_binding)
         {
             input_binding_set_safe("up", _new_binding);
@@ -31,7 +31,7 @@ if (!input_binding_scan_in_progress())
     {
         rebinding_source = INPUT_GAMEPAD;
         
-        input_binding_scan_params_set(undefined, undefined, undefined, rebinding_source);
+        input_binding_scan_params_set(undefined, undefined, rebinding_source);
         input_binding_scan_start(function(_new_binding)
         {
             input_binding_set_safe("up", _new_binding);
