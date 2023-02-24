@@ -57,20 +57,19 @@ The struct returned by this function contains two member variables: `.x` and `.y
 
 &nbsp;
 
-## `input_direction(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`
+## `input_direction(default, verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`
 
 *Returns:* Number, the direction (in degrees) represented by the sum of the verb values
 
 |Name           |Datatype                  |Purpose                                                     |
 |---------------|--------------------------|------------------------------------------------------------|
+|`default`      |number                    |Value to return if none of the verbs are active             |
 |`verbLeft`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
 |`verbRight`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
 |`verbUp`       |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
 |`verbDown`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
 |`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used        |
 |`[mostRecent]` |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
-
-!> If the distance to the point of aim is 0 (after taking into account the minimum threshold) then this function will return `undefined`. Make sure you handle this return case in your code!
 
 &nbsp;
 
