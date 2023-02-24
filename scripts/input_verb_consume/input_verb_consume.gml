@@ -4,7 +4,7 @@
 /// @param   verb/array
 /// @param   [playerIndex]
 
-function input_consume(_verb, _player_index = 0)
+function input_verb_consume(_verb, _player_index = 0)
 {
     if (_player_index < 0)
     {
@@ -24,7 +24,7 @@ function input_consume(_verb, _player_index = 0)
         var _v = 0;
         repeat(array_length(_verb_names))
         {
-            input_consume(_verb_names[_v], _player_index);
+            input_verb_consume(_verb_names[_v], _player_index);
             ++_v;
         }
     }
@@ -33,7 +33,7 @@ function input_consume(_verb, _player_index = 0)
         var _v = 0;
         repeat(array_length(_verb))
         {
-            input_consume(_verb[_v], _player_index);
+            input_verb_consume(_verb[_v], _player_index);
             ++_v;
         }
     }

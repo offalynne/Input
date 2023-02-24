@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "input_consume",
+  "name": "input_verb_consume",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

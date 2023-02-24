@@ -68,7 +68,7 @@ function __input_multiplayer_assignment_tick()
                 }
                 
                 //Make sure we don't leak input
-                input_consume(all, _p);
+                input_verb_consume(all, _p);
             }
         }
         

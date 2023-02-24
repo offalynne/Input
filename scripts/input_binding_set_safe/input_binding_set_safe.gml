@@ -59,7 +59,7 @@ function input_binding_set_safe(_verb_name, _binding, _player_index = 0, _altern
             }
         }
         
-        input_consume(_verb_name, _player_index);
+        input_verb_consume(_verb_name, _player_index);
         return true;
     }
     else

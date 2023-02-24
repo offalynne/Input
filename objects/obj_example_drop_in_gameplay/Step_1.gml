@@ -12,7 +12,7 @@ if (_new_source != undefined)
         if (!input_player_connected(_i))
         {
             input_source_set(_new_source, _i, true);
-            input_consume(all, _i);
+            input_verb_consume(all, _i);
             break;
         }
         

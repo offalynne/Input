@@ -114,7 +114,7 @@
     {"id":{"name":"input_hotswap_params_get","path":"scripts/input_hotswap_params_get/input_hotswap_params_get.yy",},"order":3,},
     {"id":{"name":"concat","path":"scripts/concat/concat.yy",},"order":0,},
     {"id":{"name":"__input_gamepad_set_blacklist","path":"scripts/__input_gamepad_set_blacklist/__input_gamepad_set_blacklist.yy",},"order":18,},
-    {"id":{"name":"input_consume","path":"scripts/input_consume/input_consume.yy",},"order":0,},
+    {"id":{"name":"input_verb_consume","path":"scripts/input_verb_consume/input_verb_consume.yy",},"order":0,},
     {"id":{"name":"curve_test_vibration","path":"animcurves/curve_test_vibration/curve_test_vibration.yy",},"order":28,},
     {"id":{"name":"input_accessibility_verb_cooldown_get","path":"scripts/input_accessibility_verb_cooldown_get/input_accessibility_verb_cooldown_get.yy",},"order":7,},
     {"id":{"name":"__input_source_relinquish","path":"scripts/__input_source_relinquish/__input_source_relinquish.yy",},"order":29,},
