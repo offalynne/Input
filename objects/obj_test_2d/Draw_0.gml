@@ -7,7 +7,7 @@ _string += "\n";
 _string += concat("x = ", input_x("left", "right", "up", "down"), "\n");
 _string += concat("y = ", input_y("left", "right", "up", "down"), "\n");
 _string += concat("xy = ", input_xy("left", "right", "up", "down"), "\n");
-_string += concat("direction = ", input_direction("left", "right", "up", "down"), "\n");
+_string += concat("direction = ", input_direction(0, "left", "right", "up", "down"), "\n");
 _string += concat("distance = ", input_distance("left", "right", "up", "down"), "\n");
 draw_text(10, 10, _string);
 
