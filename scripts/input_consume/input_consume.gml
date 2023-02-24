@@ -53,9 +53,5 @@ function input_consume(_verb, _player_index = 0)
             __inactive     = true;
             __toggle_state = false; //Used for "toggle momentary" accessibility feature
         }
-        
-        //If this verb is a combo then also reset the combo's state
-        var _combo_state = global.__input_players[_player_index].__combo_state_dict[$ _verb];
-        if (is_struct(_combo_state)) _combo_state.__reset();
     }
 }

@@ -167,26 +167,10 @@ enum __INPUT_MAPPING
     __SIZE
 }
 
-enum __INPUT_COMBO_STATE
-{
-    __FAIL    = -1,
-    __WAITING =  0,
-    __SUCCESS =  1,
-}
-
-enum __INPUT_COMBO_PHASE_TYPE
-{
-    __PRESS,
-    __RELEASE,
-    __PRESS_OR_RELEASE,
-    __HOLD_START,
-}
-
 enum __INPUT_VERB_TYPE
 {
     __BASIC,
     __CHORD,
-    __COMBO,
 }
 
 enum __INPUT_TRIGGER_EFFECT
@@ -281,12 +265,6 @@ function __input_ensure_unique_verb_name(_name)
     if (variable_struct_exists(global.__input_chord_verb_dict, _name))
     {
         __input_error("A chord named \"", _name, "\" already exists");
-        return;
-    }
-    
-    if (variable_struct_exists(global.__input_combo_verb_dict, _name))
-    {
-        __input_error("A combo named \"", _name, "\" already exists");
         return;
     }
 }

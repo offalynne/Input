@@ -108,7 +108,7 @@ function __input_initialize()
     //Whether to swap A/B gamepad buttons for default bindings
     global.__input_swap_ab = false;
     
-    //Arrays/dictionaries to track verbs, chords, and combos
+    //Arrays/dictionaries to track basic verbs and chords
     global.__input_all_verb_dict  = {};
     global.__input_all_verb_array = [];
     
@@ -117,9 +117,6 @@ function __input_initialize()
     
     global.__input_chord_verb_dict  = {};
     global.__input_chord_verb_array = [];
-    
-    global.__input_combo_verb_dict  = {};
-    global.__input_combo_verb_array = [];
     
     //Struct to store keyboard key names
      global.__input_key_name_dict = {};
