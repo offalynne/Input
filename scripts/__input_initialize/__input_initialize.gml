@@ -240,12 +240,17 @@ function __input_initialize()
     global.__input_source_mode          = undefined;
     global.__input_previous_source_mode = INPUT_STARTING_SOURCE_MODE;
     
-    //Multiplayer source assignment state
-    //This is set by input_multiplayer_set()
-    global.__input_multiplayer_min         = 1;
-    global.__input_multiplayer_max         = INPUT_MAX_PLAYERS;
-    global.__input_multiplayer_drop_down   = true;
-    global.__input_multiplayer_allow_abort = true;
+    //Hotswap source assignment parameters
+    //This is set by input_hotswap_params_set()
+    global.__input_hotswap_callback = undefined;
+    
+    //Multiplayer source assignment parameters
+    //This is set by input_multiplayer_params_set()
+    global.__input_multiplayer_min            = 1;
+    global.__input_multiplayer_max            = INPUT_MAX_PLAYERS;
+    global.__input_multiplayer_leave_verb     = "cancel";
+    global.__input_multiplayer_abort_callback = undefined;
+    global.__input_multiplayer_drop_down      = true;
     
     //Array of currently connected gamepads. If an element is <undefined> then the gamepad is disconnected
     //Each gamepad in this array is an instance of __input_class_gamepad

@@ -10,9 +10,5 @@
 //Whether to trigger a hotswap when the mouse is moved
 #macro INPUT_HOTSWAP_ON_MOUSE_MOVEMENT  false
 
-//The function to call when a player hotswaps their device
-//Set this macro to <undefined> to not call a function
-#macro INPUT_HOTSWAP_CALLBACK  undefined
-
 //Whether to automatically change player 0's profile when they hotswap their source
 #macro INPUT_HOTSWAP_AUTO_PROFILE  true

@@ -17,17 +17,17 @@ function __input_hotswap_tick()
             {
                 input_source_set(_new_source, 0, INPUT_HOTSWAP_AUTO_PROFILE);
                 
-                if (is_method(INPUT_HOTSWAP_CALLBACK))
+                if (is_method(global.__input_hotswap_callback))
                 {
-                    INPUT_HOTSWAP_CALLBACK();
+                    global.__input_hotswap_callback();
                 }
-                else if (is_numeric(INPUT_HOTSWAP_CALLBACK) && script_exists(INPUT_HOTSWAP_CALLBACK))
+                else if (is_numeric(global.__input_hotswap_callback) && script_exists(global.__input_hotswap_callback))
                 {
-                    script_execute(INPUT_HOTSWAP_CALLBACK);
+                    script_execute(global.__input_hotswap_callback);
                 }
-                else if (INPUT_HOTSWAP_CALLBACK != undefined)
+                else if (global.__input_hotswap_callback != undefined)
                 {
-                    __input_error("INPUT_HOTSWAP_CALLBACK set to an illegal value (typeof=", typeof(INPUT_HOTSWAP_CALLBACK), ")");
+                    __input_error("Hotswap callback set to an illegal value (typeof=", typeof(global.__input_hotswap_callback), ")");
                 }
             }
         }

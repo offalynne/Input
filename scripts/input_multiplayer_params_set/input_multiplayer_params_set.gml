@@ -1,12 +1,32 @@
 /// @desc    Sets the multiplayer parameters, typically for use with the JOIN source mode
+///          
+///          The leave verb allows a player to cancel the INPUT_SOURCE_MODE.JOIN source mode
+///          (a.k.a. multiplayer source assignment). If you want to prevent a player from leaving
+///          the session then set the leave verb to <undefined>
+///          
+///          The abort callback is executed when a player tries to abort the INPUT_SOURCE_MODE.JOIN
+///          source mode. The callback should be set to a function or script to allow players to
+///          abort the .JOIN source mode. If you wish to prevent players from aborting source
+///          assignment for whatever reason then set the abort callback to <undefined>
+/// 
+///          You can set whether players should drop down into empty slots by setting the <dropDown>
+///          argument to <true> or <false>. You may want to prevent dropping down when reassigning
+///          sources during gameplay where you want player state to persist
+///          
 /// @param   min
 /// @param   max
+/// @param   leaveVerb
+/// @param   abortCallback
 /// @param   [dropDown=true]
-/// @param   [allowAbort=true]
 
-function input_multiplayer_params_set(_min, _max, _drop_down = true, _allow_abort = true)
+function input_multiplayer_params_set(_min, _max, _leave_verb, _abort_callback, _drop_down = true)
 {
     __input_initialize();
+    
+    if (argument_count < 4)
+    {
+        __input_error("input_multiplayer_params_set() must be given at least 4 arguments");
+    }
     
     if (_max < 1)
     {
@@ -32,8 +52,19 @@ function input_multiplayer_params_set(_min, _max, _drop_down = true, _allow_abor
         return undefined;
     }
     
-    global.__input_multiplayer_min         = _min;
-    global.__input_multiplayer_max         = _max;
-    global.__input_multiplayer_drop_down   = _drop_down;
-    global.__input_multiplayer_allow_abort = _allow_abort;
+    if (!is_string(_leave_verb) && !is_undefined(_leave_verb))
+    {
+        __input_error("Multiplayer leave verb must be a string or <undefined>");
+    }
+    
+    if (!is_method(_abort_callback) && !(is_numeric(_abort_callback) && script_exists(_abort_callback)) && !is_undefined(_abort_callback))
+    {
+        __input_error("Multiplayer abort callback must be a function, a script, or <undefined>");
+    }
+    
+    global.__input_multiplayer_min            = _min;
+    global.__input_multiplayer_max            = _max;
+    global.__input_multiplayer_leave_verb     = _leave_verb;
+    global.__input_multiplayer_abort_callback = _abort_callback;
+    global.__input_multiplayer_drop_down      = _drop_down;
 }

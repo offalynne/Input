@@ -171,11 +171,6 @@ function __input_validate_macros()
         __input_error("INPUT_HOTSWAP_ON_MOUSE_MOVEMENT must be either <true> or <false>");
     }
     
-    if (!is_method(INPUT_HOTSWAP_CALLBACK) && !(is_numeric(INPUT_HOTSWAP_CALLBACK) && script_exists(INPUT_HOTSWAP_CALLBACK)) && !is_undefined(INPUT_HOTSWAP_CALLBACK))
-    {
-        __input_error("INPUT_HOTSWAP_CALLBACK must be a function, a script, or <undefined>");
-    }
-    
     if (!is_bool(INPUT_HOTSWAP_AUTO_PROFILE))
     {
         __input_error("INPUT_HOTSWAP_AUTO_PROFILE must be either <true> or <false>");
@@ -190,16 +185,6 @@ function __input_validate_macros()
     if (!is_numeric(INPUT_MAX_PLAYERS) || (floor(INPUT_MAX_PLAYERS) != INPUT_MAX_PLAYERS) || (INPUT_MAX_PLAYERS < 1))
     {
         __input_error("INPUT_MAX_PLAYERS must be an integer that is greater than or equal to 1");
-    }
-    
-    if (!is_string(INPUT_MULTIPLAYER_LEAVE_VERB) && !is_undefined(INPUT_MULTIPLAYER_LEAVE_VERB))
-    {
-        __input_error("INPUT_MULTIPLAYER_LEAVE_VERB must be a string or <undefined>");
-    }
-    
-    if (!is_method(INPUT_MULTIPLAYER_ABORT_CALLBACK) && !(is_numeric(INPUT_MULTIPLAYER_ABORT_CALLBACK) && script_exists(INPUT_MULTIPLAYER_ABORT_CALLBACK)) && !is_undefined(INPUT_MULTIPLAYER_ABORT_CALLBACK))
-    {
-        __input_error("INPUT_MULTIPLAYER_ABORT_CALLBACK must be a function, a script, or <undefined>");
     }
     
     #endregion

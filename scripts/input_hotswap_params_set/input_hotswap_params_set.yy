@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "input_multiplayer_is_finished",
+  "name": "input_hotswap_params_set",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

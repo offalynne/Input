@@ -1,12 +1,11 @@
 {
+  "resourceType": "GMScript",
+  "resourceVersion": "1.0",
+  "name": "input_multiplayer_params_set",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Players",
-    "path": "folders/Input/Players.yy",
+    "name": "Hotswap and Multiplayer",
+    "path": "folders/Input/Hotswap and Multiplayer.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "input_multiplayer_params_set",
-  "tags": [],
-  "resourceType": "GMScript",
 }
