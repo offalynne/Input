@@ -201,6 +201,7 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 0079,1847,CommunityGameCube // Mayflash GameCube Adapter
 0b43,0005,CommunityGameCube // Gamecube Adapter
 1a34,f705,CommunityGameCube // Mayflash GameCube Adapter
+1bad,04f9,CommunityXBox360 // PDP Versus Fighting
 24c6,891a,CommunityXBox360 // Moga XP5X
 24c6,891b,CommunityXBox360 // Moga XP5X
 05ac,056b,CommunityXBox360 // GameSir T-2a
@@ -258,6 +259,7 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 beef,feed,CommunityXBox360 // Monect
 1949,0402,CommunityXBox360 // Xbox
 0079,0002,CommunityXBox360 // Arcade Board
+0e6f,d802,CommunityXBoxOne // PDP Xbox Series
 242f,3700,CommunityXBoxOne // Mayflash F101 Arcade Stick
 1532,0a29,CommunityXBoxOne // Razer Wolverine 2
 0e6f,02d7,CommunityXBoxOne // PDP Black Camo
@@ -265,6 +267,7 @@ beef,feed,CommunityXBox360 // Monect
 20d6,2802,CommunityXBoxOne // PowerA Wired
 20d6,200f,CommunityXBoxOne // PowerA Series
 1915,0040,CommunityXBoxOne // Flydigi X9ET Pro and Vader 2
+0e6f,0901,CommunityPS3 // PDP Versus Fighting
 2563,0526,CommunityPSX // Uberwith PS
 0e6f,0111,CommunityPSX // Afterglow PS3
 7331,0001,CommunityPSX // DualShock 3
