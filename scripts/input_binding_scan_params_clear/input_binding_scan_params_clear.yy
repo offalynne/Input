@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "input_binding_scan_start",
+  "name": "input_binding_scan_params_clear",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

@@ -5,7 +5,7 @@
 /// @param   allowArray
 /// @param   [playerIndex=0]
 
-function input_binding_scan_set_params(_ignore_array, _allow_array, _player_index = 0)
+function input_binding_scan_params_set(_ignore_array, _allow_array, _player_index = 0)
 {
     __input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX

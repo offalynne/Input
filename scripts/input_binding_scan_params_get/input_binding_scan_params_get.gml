@@ -2,7 +2,7 @@
 /// 
 /// @param   [playerIndex=0]
 
-function input_binding_scan_get_params(_player_index = 0)
+function input_binding_scan_params_get(_player_index = 0)
 {
     __input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX
