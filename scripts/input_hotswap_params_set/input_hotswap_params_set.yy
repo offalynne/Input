@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Hotswap and Multiplayer",
-    "path": "folders/Input/Hotswap and Multiplayer.yy",
+    "name": "Source Modes",
+    "path": "folders/Input/Source Modes.yy",
   },
 }
