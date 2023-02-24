@@ -267,7 +267,7 @@ beef,feed,CommunityXBox360 // Monect
 20d6,2802,CommunityXBoxOne // PowerA Wired
 20d6,200f,CommunityXBoxOne // PowerA Series
 1915,0040,CommunityXBoxOne // Flydigi X9ET Pro and Vader 2
-0e6f,0901,CommunityPS3 // PDP Versus Fighting
+0e6f,0901,CommunityPSX // PDP Versus Fighting
 2563,0526,CommunityPSX // Uberwith PS
 0e6f,0111,CommunityPSX // Afterglow PS3
 7331,0001,CommunityPSX // DualShock 3
