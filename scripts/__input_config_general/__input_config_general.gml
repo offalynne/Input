@@ -1,5 +1,5 @@
 //Whether to allow input while game window is out of focus on desktop platforms
-#macro INPUT_ALLOW_OUT_OF_FOCUS false
+#macro INPUT_ALLOW_OUT_OF_FOCUS  false
 
 //Set to true to use milliseconds instead of frames throughout the library
 #macro INPUT_TIMER_MILLISECONDS  false
