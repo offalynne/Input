@@ -4,7 +4,7 @@
 
 function input_profile_exists(_profile_name, _player_index = 0)
 {
-    static _global = __input_state();
+    __INPUT_GLOBAL_STATIC
     
     if (is_string(_player_index) && (_player_index == "default"))
     {

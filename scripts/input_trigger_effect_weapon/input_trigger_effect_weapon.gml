@@ -7,7 +7,7 @@
 
 function input_trigger_effect_weapon(_trigger, _start, _end, _strength, _player_index = 0)
 {
-    static _global = __input_state();
+    __INPUT_GLOBAL_STATIC
     __INPUT_VERIFY_PLAYER_INDEX
 
     global.__input_players[_player_index].__trigger_effect_set(_trigger, new __input_class_trigger_effect_weapon(_trigger, _start, _end, _strength), true);

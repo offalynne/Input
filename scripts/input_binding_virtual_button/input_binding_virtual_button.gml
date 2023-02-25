@@ -2,7 +2,7 @@
 
 function input_binding_virtual_button()
 {
-    static _global = __input_state();
+    __INPUT_GLOBAL_STATIC
     
     return (new __input_class_binding()).__set_virtual_button();
 }

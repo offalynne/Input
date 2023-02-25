@@ -8,7 +8,7 @@
 
 function input_source_mode_set(_mode)
 {
-    static _global = __input_state();
+    __INPUT_GLOBAL_STATIC
     
     if (_mode != global.__input_source_mode)
     {

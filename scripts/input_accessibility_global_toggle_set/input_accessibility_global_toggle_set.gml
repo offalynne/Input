@@ -3,7 +3,7 @@
 
 function input_accessibility_global_toggle_set(_state)
 {
-    static _global = __input_state();
+    __INPUT_GLOBAL_STATIC
     
     global.__input_toggle_momentary_state = _state;
 }

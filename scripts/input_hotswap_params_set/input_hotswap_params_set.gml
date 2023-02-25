@@ -4,7 +4,7 @@
 
 function input_hotswap_params_set(_callback)
 {
-    static _global = __input_state();
+    __INPUT_GLOBAL_STATIC
     
     if (!is_method(_callback) && !(is_numeric(_callback) && script_exists(_callback)) && !is_undefined(_callback))
     {

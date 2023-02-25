@@ -19,6 +19,8 @@
 //This works around Steam sometimes reporting confusing connection/disconnection events on boot
 #macro __INPUT_GAMEPADS_TICK_PREDELAY  10     
 
+#macro __INPUT_GLOBAL_STATIC  static _global = __input_state();
+
 #endregion
 
 

@@ -4,7 +4,7 @@
 
 function input_color_set(_color, _player_index = 0)
 {
-    static _global = __input_state();
+    __INPUT_GLOBAL_STATIC
     __INPUT_VERIFY_PLAYER_INDEX
     
     if (!is_numeric(_color) || (_color < c_black) || (_color > c_white))

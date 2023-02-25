@@ -6,7 +6,7 @@
 
 function input_binding_threshold_set(_binding, _min, _max)
 {
-    static _global = __input_state();
+    __INPUT_GLOBAL_STATIC
     
     if (!input_value_is_binding(_binding))
     {

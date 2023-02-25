@@ -3,7 +3,7 @@
 
 function input_source_clear(_player_index = 0)
 {
-    static _global = __input_state();
+    __INPUT_GLOBAL_STATIC
     
     if (_player_index == all)
     {

@@ -5,7 +5,7 @@
 
 function input_binding_is_valid(_binding, _player_index = 0)
 {
-    static _global = __input_state();
+    __INPUT_GLOBAL_STATIC
     __INPUT_VERIFY_PLAYER_INDEX
     
     if (_binding == undefined)

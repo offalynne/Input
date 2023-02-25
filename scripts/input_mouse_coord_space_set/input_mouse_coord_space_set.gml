@@ -7,7 +7,7 @@
 
 function input_mouse_coord_space_set(_coord_space)
 {
-    static _global = __input_state();
+    __INPUT_GLOBAL_STATIC
     
     global.__input_pointer_coord_space = _coord_space;
 }
