@@ -7,7 +7,7 @@
 /// @param   [playerIndex=0]
 /// @param   [coordSpace]     Coordinate space to use. If not specified, the coordinate space set by input_cursor_coord_space_set() is used
 
-function input_cursor_y(_player_index = 0, _outputSystem = undefined)
+function input_cursor_y(_player_index = 0, _output_system = undefined)
 {
     __INPUT_GLOBAL_STATIC
     __INPUT_VERIFY_PLAYER_INDEX

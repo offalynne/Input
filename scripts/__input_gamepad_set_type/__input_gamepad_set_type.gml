@@ -1,6 +1,8 @@
 /// This function should be called in the scope of a gamepad class
 function __input_gamepad_set_type()
 {
+    __INPUT_GLOBAL_STATIC
+    
     //If we're on a specific OS, set the gamepad type accordingly
     switch(os_type)
     {
@@ -81,9 +83,9 @@ function __input_gamepad_set_type()
                 raw_type = "CommunityLikeXBox";
                 guessed_type = true;
             }
-            else if (variable_struct_exists(global.__input_raw_type_dictionary, vendor + product))
+            else if (variable_struct_exists(_global.__raw_type_dictionary, vendor + product))
             {
-                raw_type = global.__input_raw_type_dictionary[$ vendor + product];
+                raw_type = _global.__raw_type_dictionary[$ vendor + product];
                 guessed_type = false;
             }
             else
@@ -303,8 +305,8 @@ function __input_gamepad_set_type()
                             {
                                 //MotionPlus, Nunchuk, and Classic Controller
                                 //can all chain to a Wii Remote or MotionPlus
-                                if ((global.__input_gamepads[@ _g].raw_type == "HIDWiiRemote")
-                                ||  (global.__input_gamepads[@ _g].raw_type == "HIDWiiMotionPlus"))
+                                if ((_global.__gamepads[@ _g].raw_type == "HIDWiiRemote")
+                                ||  (_global.__gamepads[@ _g].raw_type == "HIDWiiMotionPlus"))
                                 {
                                     __input_trace("Overriding controller ", _g ," type to \"", _wii_type_match, "\"");
                                     if (_wii_type_match == "HIDWiiClassic")
@@ -329,9 +331,9 @@ function __input_gamepad_set_type()
 
                         //Confirm Wii Remote identity by finding component devices
                         if ((_g >= 1)
-                        &&  (global.__input_gamepads[@ _g].hat_count    == 4)
-                        &&  (global.__input_gamepads[@ _g].button_count == 0)
-                        &&  (global.__input_gamepads[@ _g].axis_count   == 0))
+                        &&  (_global.__gamepads[@ _g].hat_count    == 4)
+                        &&  (_global.__gamepads[@ _g].button_count == 0)
+                        &&  (_global.__gamepads[@ _g].axis_count   == 0))
                         {
                             //Found IR sensor
                             var _ir_index = _g;
@@ -342,14 +344,14 @@ function __input_gamepad_set_type()
                             }
                         
                             if ((_g >= 0)
-                            &&  (global.__input_gamepads[@ _g].axis_count   == 3)
-                            &&  (global.__input_gamepads[@ _g].button_count == 0)
-                            &&  (global.__input_gamepads[@ _g].hat_count    == 0))
+                            &&  (_global.__gamepads[@ _g].axis_count   == 3)
+                            &&  (_global.__gamepads[@ _g].button_count == 0)
+                            &&  (_global.__gamepads[@ _g].hat_count    == 0))
                             {
                                 //Found IMU                                
                                 var _imu_index = _g;
                                 __input_trace("Overriding controller ", _imu_index ," type to \"HIDWiiRemoteIMU\"");
-                                with (global.__input_gamepads[@ _imu_index])
+                                with (_global.__gamepads[@ _imu_index])
                                 {
                                     raw_type = "HIDWiiRemoteIMU";
                                     guessed_type = true;
@@ -358,7 +360,7 @@ function __input_gamepad_set_type()
                                 }
                             
                                 __input_trace("Overriding controller ", _ir_index ," type to \"HIDWiiRemoteIRSensor\"");
-                                with (global.__input_gamepads[@ _ir_index])
+                                with (_global.__gamepads[@ _ir_index])
                                 {
                                     raw_type = "HIDWiiRemoteIRSensor";
                                     guessed_type = true;
@@ -383,9 +385,9 @@ function __input_gamepad_set_type()
     }
     
     //Discover the simple type from the raw type
-    if (variable_struct_exists(global.__input_simple_type_lookup, raw_type))
+    if (variable_struct_exists(_global.__simple_type_lookup, raw_type))
     {
-        simple_type = global.__input_simple_type_lookup[$ raw_type];
+        simple_type = _global.__simple_type_lookup[$ raw_type];
     }
     else
     {
