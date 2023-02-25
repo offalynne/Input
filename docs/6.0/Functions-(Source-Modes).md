@@ -44,9 +44,9 @@ You can read more about source modes [here](Input-Sources?id=source-modes).
 
 The struct returned by this function has the following member functions:
 
-|Name       |Datatype        |Purpose|
-|-----------|----------------|-------|
-|`.callback`|method or script|       |
+|Name       |Datatype        |Purpose                                                                                                       |
+|-----------|----------------|--------------------------------------------------------------------------------------------------------------|
+|`.callback`|method or script|Method or script to execute when player 0 is given a new source in the `INPUT_SOURCE_MODE.HOTSWAP` source mode|
 
 &nbsp;
 
@@ -54,13 +54,13 @@ The struct returned by this function has the following member functions:
 
 *Returns:* N/A (`undefined`)
 
-|Name           |Datatype        |Purpose                                                                                            |
-|---------------|----------------|---------------------------------------------------------------------------------------------------|
-|`min`          |integer         |The minimum number of players that are needed to play in this particular game mode                 |
-|`max`          |integer         |The maximum number of players that can play this particular game mode                              |
-|`leaveVerb`    |string          |                                                                                                   |
-|`abortCallback`|method or script|                                                                                                   |
-|`[allowAbort]` |boolean         |Whether players can abort the `JOIN` source mode by activating the "leave" verb. Defaults to `true`|
+|Name           |Datatype        |Purpose                                                                                                                                                           |
+|---------------|----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`min`          |integer         |The minimum number of players that are needed to play in this particular game mode                                                                                |
+|`max`          |integer         |The maximum number of players that can play this particular game mode                                                                                             |
+|`leaveVerb`    |string          |The name of the verb that, when activated by a player, causes the player to have their sources cleared, "disconnecting" them from the game                        |
+|`abortCallback`|method or script|Method or script to execute when the `INPUT_SOURCE_MODE.JOIN` source mode is aborted. Set to `undefined` to prevent players from aborting `INPUT_SOURCE_MODE.JOIN`|
+|`[allowAbort]` |boolean         |Whether players can abort the `JOIN` source mode by activating the "leave" verb. Defaults to `true`                                                               |
 
 &nbsp;
 

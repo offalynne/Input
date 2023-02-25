@@ -18,9 +18,9 @@
 
 &nbsp;
 
-## Verbs and Bindings
+## Default Verbs
 
-`__input_config_verbs_and_bindings()` contains two special structs. The first defines the default profiles and bindings for your game, the second defines verb groups which are used to control how verb collisions should be resolved. Please see the [Verbs and Bindings](Verbs-and-Bindings) page for more information.
+`__input_config_verbs()` contains a special struct that defines the default profiles and bindings for your game. `__input_config_verb_groups()` contains a second struct that defines verb groups which are used to control how verb collisions should be resolved. Please see the [Verbs and Bindings](Verbs-and-Bindings) page for more information on these two configuration scripts
 
 ?> You should edit this script to customise Input for your own purposes.
 
@@ -40,7 +40,7 @@
 |`INPUT_REPEAT_DEFAULT_PREDELAY`          |`30`         |Default time before the first re-trigger for [`input_check_repeat()`](Functions-(Checkers)#input_check_repeatverb-playerindex-delay-predelay)        |
 |`INPUT_LONG_DELAY`                       |`10`         |Time before long-press functions are activated. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`                |
 |`INPUT_DOUBLE_DELAY`                     |`12`         |Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`|
-|`INPUT_QUICK_BUFFER`                     |`4`          |Maximum number of frames to trigger a quick tap. Lower values require the thumbstick to move faster. This value is always measured in frames         |
+|`INPUT_QUICK_BUFFER`                     |`3`          |Maximum number of frames to trigger a quick tap. Lower values require the thumbstick to move faster. This value is always measured in frames         |
 |`INPUT_CHORD_DEFAULT_TIME`               |`4`          |Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`|
 |`INPUT_2D_CLAMP`                         |`true`       |Whether to clamp 2D input to a maximum distance of 1 unit                                                                                            |
 |`INPUT_2D_XY_AXIS_BIAS`                  |`0.0`        |The amount of bias for 2D checkers to prefer straight lines along the x- and y-axes. This makes it easier for the player to input exactly horizontal and exactly vertical movement. Value should be from 0 to 1. Higher values make the biasing behaviour stronger|
@@ -88,7 +88,6 @@ When a player has no profile set, `input_binding_get()` has undefined behaviour.
 |`INPUT_HOTSWAP_ON_GAMEPAD_AXIS`  |`true`          |Whether to trigger a hotswap when a gamepad axis is moved                                                                                                                                                |
 |`INPUT_HOTSWAP_ON_MOUSE_BUTTON`  |`true`          |Whether to trigger a hotswap when a mouse button is pressed                                                                                                                                              |
 |`INPUT_HOTSWAP_ON_MOUSE_MOVEMENT`|`true`          |Whether to trigger a hotswap when the mouse is moved                                                                                                                                                     |
-|`INPUT_HOTSWAP_CALLBACK`         |Method or script|Method or script to execute when player 0 is given a new source in the `INPUT_SOURCE_MODE.HOTSWAP` source mode                                                                                           |
 |`INPUT_HOTSWAP_AUTO_PROFILE`     |`true`          |Whether to automatically set the profile for player 0 when they hotswap to a new source                                                                                                                  |
 
 &nbsp;
@@ -99,11 +98,9 @@ When a player has no profile set, `input_binding_get()` has undefined behaviour.
 
 ?> You should edit this script to customise Input for your own purposes.
 
-|Name                              |Typical Value   |Purpose                                                                                                                                                                                           |
-|----------------------------------|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`INPUT_MAX_PLAYERS`               |`4`             |Maximum number of players that the game supports                                                                                                                                                  |
-|`INPUT_MULTIPLAYER_LEAVE_VERB`    |`"leave"`       |Only valid in the `INPUT_SOURCE_MODE.JOIN` source mode. The name of the verb that, when activated by a player, causes the player to have their sources cleared, "disconnecting" them from the game|
-|`INPUT_MULTIPLAYER_ABORT_CALLBACK`|Method or script|Method or script to execute when the `INPUT_SOURCE_MODE.JOIN` source mode is aborted                                                                                                              |
+|Name               |Typical Value|Purpose                                         |
+|-------------------|-------------|------------------------------------------------|
+|`INPUT_MAX_PLAYERS`|`4`          |Maximum number of players that the game supports|
 
 &nbsp;
 
@@ -193,18 +190,18 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 
 ?> You should edit this script to customise Input for your own purposes.
 
-|Name                                      |Typical Value          |Purpose                                                                                                                                                                                                                                                                     |
-|------------------------------------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`INPUT_DEFAULT_AXIS_MIN_THRESHOLD`        |`0.3`                  |Default minimum threshold for directional (thumbstick) axes. This value is used for detecting gamepad input when hotswapping so make sure you set it above 0.0                                                                                                              |
-|`INPUT_DEFAULT_AXIS_MAX_THRESHOLD`        |`1.0`                  |Default maximum threshold for directional (thumbstick) axes                                                                                                                                                                                                                 |
-|`INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD`     |`0.02`                 |Default minimum threshold for non-directional (trigger) axes. This value is used for detecting gamepad input when hotswapping so make sure you set it above 0.0                                                                                                             |
-|`INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD`     |`1.0`                  |Default maximum threshold for non-directional (trigger) axes                                                                                                                                                                                                                |
-|`INPUT_SWITCH_HORIZONTAL_HOLDTYPE`        |`true`                 |Whether the game uses the horizontal holdtype for single Joy-Cons. Set this to `false` for vertical holdtype. Input treats these two modes as mutually exclusive (come talk to us if you need to be able to swap at runtime). This macro only applies to the Switch platform|
-|`INPUT_SWITCH_JOYCON_MOTION_RIGHT_HAND`   |`true`                 |Whether to use the right hand sensor for motion data when using detached dual Joy-Cons as a pair. When `false`, the left hand Joy-Con sensor will be used for motion data instead                                                                                           |
-|`INPUT_GYRO_DEFAULT_AXIS_X`               |`INPUT_GYRO.AXIS_YAW`  |Default [`INPUT_GYRO` axis member](Library-Constants.md?id=Gyro-Axis) for controlling cursor in screenspace X axis                                                                                                                                                          |
-|`INPUT_GYRO_DEFAULT_AXIS_Y`               |`INPUT_GYRO.AXIS_PITCH`|Default [`INPUT_GYRO` axis member](Library-Constants.md?id=Gyro-Axis) for controlling cursor in screenspace Y axis                                                                                                                                                          |
-|`INPUT_GYRO_DEFAULT_SENSITIVITY_X`        |`2.0`                  |Default gamepad gyro sensitivity for cursor in screenspace X axis. At `1.0`, 180 degrees in world space covers screen width. Negative value indicate inverted axis                                                                                                          |
-|`INPUT_GYRO_DEFAULT_SENSITIVITY_Y`        |`-2.0`                 |Default gamepad gyro sensitivity for cursor in screenspace Y axis. At `1.0`, 180 degrees in world space covers screen height. Negative value indicate inverted axis                                                                                                         |
+|Name                                   |Typical Value          |Purpose                                                                                                                                                                                                                                                                     |
+|---------------------------------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`INPUT_DEFAULT_AXIS_MIN_THRESHOLD`     |`0.3`                  |Default minimum threshold for directional (thumbstick) axes. This value is used for detecting gamepad input when hotswapping so make sure you set it above 0.0                                                                                                              |
+|`INPUT_DEFAULT_AXIS_MAX_THRESHOLD`     |`1.0`                  |Default maximum threshold for directional (thumbstick) axes                                                                                                                                                                                                                 |
+|`INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD`  |`0.02`                 |Default minimum threshold for non-directional (trigger) axes. This value is used for detecting gamepad input when hotswapping so make sure you set it above 0.0                                                                                                             |
+|`INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD`  |`1.0`                  |Default maximum threshold for non-directional (trigger) axes                                                                                                                                                                                                                |
+|`INPUT_SWITCH_HORIZONTAL_HOLDTYPE`     |`true`                 |Whether the game uses the horizontal holdtype for single Joy-Cons. Set this to `false` for vertical holdtype. Input treats these two modes as mutually exclusive (come talk to us if you need to be able to swap at runtime). This macro only applies to the Switch platform|
+|`INPUT_SWITCH_JOYCON_MOTION_RIGHT_HAND`|`true`                 |Whether to use the right hand sensor for motion data when using detached dual Joy-Cons as a pair. When `false`, the left hand Joy-Con sensor will be used for motion data instead                                                                                           |
+|`INPUT_GYRO_DEFAULT_AXIS_X`            |`INPUT_GYRO.AXIS_YAW`  |Default [`INPUT_GYRO` axis member](Library-Constants.md?id=Gyro-Axis) for controlling cursor in screenspace X axis                                                                                                                                                          |
+|`INPUT_GYRO_DEFAULT_AXIS_Y`            |`INPUT_GYRO.AXIS_PITCH`|Default [`INPUT_GYRO` axis member](Library-Constants.md?id=Gyro-Axis) for controlling cursor in screenspace Y axis                                                                                                                                                          |
+|`INPUT_GYRO_DEFAULT_SENSITIVITY_X`     |`2.0`                  |Default gamepad gyro sensitivity for cursor in screenspace X axis. At `1.0`, 180 degrees in world space covers screen width. Negative value indicate inverted axis                                                                                                          |
+|`INPUT_GYRO_DEFAULT_SENSITIVITY_Y`     |`-2.0`                 |Default gamepad gyro sensitivity for cursor in screenspace Y axis. At `1.0`, 180 degrees in world space covers screen height. Negative value indicate inverted axis                                                                                                         |
 
 &nbsp;
 
@@ -244,7 +241,7 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 
 ## Icons
 
-`__input_config_icons()` holds code that defines what values [`input_binding_get_icon()`](Functions-(Binding-Access)?id=input_binding_get_iconbinding-playerindex) should return for specific bindings for specific [types of gamepad](Functions-(Players)?id=input_player_get_gamepad_typeplayerindex-binding). This script never needs to be directly called in your code, but the script and the struct it contains must be present in a project for Input to work.
+`__input_config_icons()` holds code that defines what values [`input_verb_get_icon()`](Functions-(Verbs)?id=input_verb_get_iconverb-playerindex-alternate-profilename) and [`input_binding_get_icon()`](Functions-(Binding-Access)?id=input_binding_get_iconbinding-playerindex)should return for specific bindings for specific [types of gamepad](Functions-(Players)?id=input_player_get_gamepad_typeplayerindex-binding). This script never needs to be directly called in your code, but the script and the struct it contains must be present in a project for Input to work.
 
 For more information on how to customise `__input_config_icons()`, please see information relating to [`input_icons()`](Functions-(Other)?id=input_iconscategoryname), the function used throughout this script.
 
