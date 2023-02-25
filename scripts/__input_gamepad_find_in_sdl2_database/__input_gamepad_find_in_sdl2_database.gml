@@ -2,7 +2,7 @@
 
 function __input_gamepad_find_in_sdl2_database()
 {
-    __INPUT_GLOBAL_STATIC
+    __INPUT_GLOBAL_STATIC_LOCAL
     
     if (!__INPUT_SDL2_SUPPORT || !INPUT_SDL2_REMAPPING || blacklisted || xinput) return;
   

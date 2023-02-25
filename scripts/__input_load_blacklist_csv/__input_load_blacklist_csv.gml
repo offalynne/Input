@@ -1,6 +1,6 @@
 function __input_load_blacklist_csv(_filename)
 {
-    __INPUT_GLOBAL_STATIC
+    __INPUT_GLOBAL_STATIC_LOCAL
     
     var _t = get_timer();
     

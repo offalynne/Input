@@ -3,7 +3,7 @@
 
 function input_binding_scan_abort(_player_index = 0)
 {
-    __INPUT_GLOBAL_STATIC
+    __INPUT_GLOBAL_STATIC_LOCAL
     
     if (_player_index == all)
     {

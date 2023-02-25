@@ -2,7 +2,7 @@
 
 function input_binding_mouse_wheel_down()
 {
-    __INPUT_GLOBAL_STATIC
+    __INPUT_GLOBAL_STATIC_LOCAL
     
     return (new __input_class_binding()).__set_mouse_wheel_down();
 }

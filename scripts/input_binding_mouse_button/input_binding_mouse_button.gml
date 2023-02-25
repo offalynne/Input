@@ -3,7 +3,7 @@
 
 function input_binding_mouse_button(_button)
 {
-    __INPUT_GLOBAL_STATIC
+    __INPUT_GLOBAL_STATIC_LOCAL
     
     return (new __input_class_binding()).__set_mouse_button(_button);
 }

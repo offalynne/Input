@@ -2,7 +2,7 @@
 
 function __input_hotswap_tick()
 {
-    __INPUT_GLOBAL_STATIC
+    __INPUT_GLOBAL_STATIC_LOCAL
     
     with(_global.__players[0])
     {

@@ -2,7 +2,7 @@
 
 function input_multiplayer_params_get()
 {
-    __INPUT_GLOBAL_STATIC
+    __INPUT_GLOBAL_STATIC_LOCAL
     
     static _result = {};
     _result.min_players    = global.__input_multiplayer_min;

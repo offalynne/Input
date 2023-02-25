@@ -3,7 +3,7 @@
 
 function input_source_is_available(_source)
 {
-    __INPUT_GLOBAL_STATIC
+    __INPUT_GLOBAL_STATIC_LOCAL
     
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)

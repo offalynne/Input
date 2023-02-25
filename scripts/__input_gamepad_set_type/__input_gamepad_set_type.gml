@@ -1,7 +1,7 @@
 /// This function should be called in the scope of a gamepad class
 function __input_gamepad_set_type()
 {
-    __INPUT_GLOBAL_STATIC
+    __INPUT_GLOBAL_STATIC_LOCAL
     
     //If we're on a specific OS, set the gamepad type accordingly
     switch(os_type)

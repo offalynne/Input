@@ -1,6 +1,6 @@
 function __input_multiplayer_assignment_tick()
 {
-    __INPUT_GLOBAL_STATIC
+    __INPUT_GLOBAL_STATIC_LOCAL
     
     if ((_global.__multiplayer_leave_verb != undefined) && !variable_struct_exists(_global.__basic_verb_dict, _global.__multiplayer_leave_verb))
     {

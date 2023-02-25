@@ -1,6 +1,6 @@
 function __input_ensure_unique_verb_name(_name)
 {
-    __INPUT_GLOBAL_STATIC
+    __INPUT_GLOBAL_STATIC_LOCAL
     
     if (variable_struct_exists(_global.__basic_verb_dict, _name))
     {

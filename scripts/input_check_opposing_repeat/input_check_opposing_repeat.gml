@@ -10,7 +10,7 @@
 
 function input_check_opposing_repeat(_verb_negative, _verb_positive, _player_index = 0, _most_recent = false, _delay = INPUT_REPEAT_DEFAULT_DELAY, _predelay = INPUT_REPEAT_DEFAULT_PREDELAY)
 {
-    __INPUT_GLOBAL_STATIC
+    __INPUT_GLOBAL_STATIC_LOCAL
     
     var _held_n = input_check(_verb_negative, _player_index);
     var _held_p = input_check(_verb_positive, _player_index);

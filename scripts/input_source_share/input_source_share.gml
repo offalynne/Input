@@ -6,7 +6,7 @@
 
 function input_source_share(_source, _array, _auto_profile = true)
 {
-    __INPUT_GLOBAL_STATIC
+    __INPUT_GLOBAL_STATIC_LOCAL
     __INPUT_VERIFY_SOURCE
     __INPUT_VERIFY_SOURCE_ASSIGNABLE
     

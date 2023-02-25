@@ -5,7 +5,7 @@
 
 function input_source_add(_source, _player_index = 0)
 {
-    __INPUT_GLOBAL_STATIC
+    __INPUT_GLOBAL_STATIC_LOCAL
     __INPUT_VERIFY_PLAYER_INDEX
     __INPUT_VERIFY_SOURCE
     __INPUT_VERIFY_SOURCE_ASSIGNABLE

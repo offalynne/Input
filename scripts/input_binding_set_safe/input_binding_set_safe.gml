@@ -15,7 +15,7 @@
 
 function input_binding_set_safe(_verb_name, _binding, _player_index = 0, _alternate = 0, _profile_name = undefined)
 {
-    __INPUT_GLOBAL_STATIC
+    __INPUT_GLOBAL_STATIC_LOCAL
     __INPUT_VERIFY_BASIC_VERB_NAME
     __INPUT_VERIFY_PLAYER_INDEX
     __INPUT_VERIFY_ALTERNATE_INDEX

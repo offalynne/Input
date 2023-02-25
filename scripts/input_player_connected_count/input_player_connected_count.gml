@@ -2,7 +2,7 @@
 
 function input_player_connected_count()
 {
-    __INPUT_GLOBAL_STATIC
+    __INPUT_GLOBAL_STATIC_LOCAL
     
     var _count = 0;
     var _p = 0;

@@ -6,7 +6,7 @@
 
 function input_cursor_limit_circle(_x, _y, _radius, _player_index = 0)
 {
-    __INPUT_GLOBAL_STATIC
+    __INPUT_GLOBAL_STATIC_LOCAL
     
     if (_player_index == all)
     {
