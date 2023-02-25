@@ -39,7 +39,7 @@ function __input_system_tick()
                 {
                     //Get recent active touch
                     _global.__pointer_durations[_i] += delta_time;
-                    if ((_touch_index == undefined) || (_global._pointer_durations[_i] < _global.__pointer_durations[_touch_index]))
+                    if ((_touch_index == undefined) || (_global.__pointer_durations[_i] < _global.__pointer_durations[_touch_index]))
                     {
                         _touch_index = _i;
                     }
@@ -59,7 +59,7 @@ function __input_system_tick()
             if (INPUT_TOUCH_EDGE_DEADZONE > 0)
             {
                 //Release
-                if (_global._pointer_released)
+                if (_global.__pointer_released)
                 {
                     var _tx = device_mouse_x_to_gui(_touch_press_index);
                     var _ty = device_mouse_y_to_gui(_touch_press_index);
@@ -72,7 +72,7 @@ function __input_system_tick()
                 }
         
                 //Press
-                if (_global._pointer_pressed)
+                if (_global.__pointer_pressed)
                 {
                     var _tx = device_mouse_x_to_gui(_touch_index);
                     var _ty = device_mouse_y_to_gui(_touch_index);
@@ -87,8 +87,8 @@ function __input_system_tick()
     
             //Update state
             _global.__pointer_index = _touch_index;
-            if (_global._pointer_pressed)  _global.__pointer_pressed_index = _touch_index;
-            if (_global._pointer_released) _global.__pointer_pressed_index = undefined;
+            if (_global.__pointer_pressed)  _global.__pointer_pressed_index = _touch_index;
+            if (_global.__pointer_released) _global.__pointer_pressed_index = undefined;
         }
     }
     
@@ -113,9 +113,9 @@ function __input_system_tick()
         }
         else
         {
-            if (_global._window_focus)
+            if (_global.__window_focus)
             {
-                if (_global._window_focus_block_mouse)
+                if (_global.__window_focus_block_mouse)
                 {
                     //Unblock so we can test for a held mouse button
                     _global.__window_focus_block_mouse = false;
@@ -124,9 +124,9 @@ function __input_system_tick()
                     if (__input_mouse_button() != mb_none) _global.__window_focus_block_mouse = true;
                 }
                 
-                if (_global._window_focus_gamepad_timeout > 0)
+                if (_global.__window_focus_gamepad_timeout > 0)
                 {                    
-                    --_global._window_focus_gamepad_timeout;
+                    --_global.__window_focus_gamepad_timeout;
                 }
             }
             else if ((keyboard_key != vk_nokey) 
@@ -144,7 +144,7 @@ function __input_system_tick()
                 if (!INPUT_ALLOW_OUT_OF_FOCUS) _global.__window_focus_block_mouse = true;
                     
                 //Retrigger mouse capture timer to avoid the mouse jumping all over the place when we refocus the window
-                if (_global._mouse_capture) _global.__mouse_capture_frame = _global.__frame;
+                if (_global.__mouse_capture) _global.__mouse_capture_frame = _global.__frame;
                 
                 __input_player_apply_trigger_effects(all);
             }
@@ -168,11 +168,11 @@ function __input_system_tick()
     
     __input_release_multimonitor_cursor();
     
-    if (_global._mouse_capture)
+    if (_global.__mouse_capture)
     {
-        if (_global._window_focus)
+        if (_global.__window_focus)
         {
-            if (_global._frame - _global.__mouse_capture_frame > 10)
+            if (_global.__frame - _global.__mouse_capture_frame > 10)
             {
                 var _m = 0;
                 repeat(INPUT_COORD_SPACE.__SIZE)
@@ -192,15 +192,15 @@ function __input_system_tick()
                                 var _old_y = room_height/2;
                             }
                             
-                            var _pointer_x = device_mouse_x(_global._pointer_index);
-                            var _pointer_y = device_mouse_y(_global._pointer_index);
+                            var _pointer_x = device_mouse_x(_global.__pointer_index);
+                            var _pointer_y = device_mouse_y(_global.__pointer_index);
                         break;
                         
                         case INPUT_COORD_SPACE.GUI:
                             var _old_x     = display_get_gui_width()/2;
                             var _old_y     = display_get_gui_height()/2;
-                            var _pointer_x = device_mouse_x_to_gui(_global._pointer_index);
-                            var _pointer_y = device_mouse_y_to_gui(_global._pointer_index);
+                            var _pointer_x = device_mouse_x_to_gui(_global.__pointer_index);
+                            var _pointer_y = device_mouse_y_to_gui(_global.__pointer_index);
                         break;
                         
                         case INPUT_COORD_SPACE.DEVICE:
@@ -214,14 +214,14 @@ function __input_system_tick()
                             }
                             else
                             {
-                                _pointer_x = device_mouse_raw_x(_global._pointer_index);
-                                _pointer_y = device_mouse_raw_y(_global._pointer_index);
+                                _pointer_x = device_mouse_raw_x(_global.__pointer_index);
+                                _pointer_y = device_mouse_raw_y(_global.__pointer_index);
                             }
                         break;
                     }
                     
-                    var _dx = (_pointer_x - _old_x)*_global._mouse_capture_sensitivity;
-                    var _dy = (_pointer_y - _old_y)*_global._mouse_capture_sensitivity;
+                    var _dx = (_pointer_x - _old_x)*_global.__mouse_capture_sensitivity;
+                    var _dy = (_pointer_y - _old_y)*_global.__mouse_capture_sensitivity;
                     
                     //Only detect movement in the display coordinate space so that moving a room's view, or moving the window, doesn't trigger movement
                     if ((_m == INPUT_COORD_SPACE.DEVICE) && (_dx*_dx + _dy*_dy > INPUT_MOUSE_MOVE_DEADZONE*INPUT_MOUSE_MOVE_DEADZONE)) _moved = true;
@@ -240,7 +240,7 @@ function __input_system_tick()
             window_mouse_set(window_get_width()/2, window_get_height()/2);
         }
     }
-    else if (_global._window_focus || INPUT_ALLOW_OUT_OF_FOCUS || (os_type == os_macosx))
+    else if (_global.__window_focus || INPUT_ALLOW_OUT_OF_FOCUS || (os_type == os_macosx))
     {
         var _m = 0;
         repeat(INPUT_COORD_SPACE.__SIZE)
@@ -253,13 +253,13 @@ function __input_system_tick()
             switch(_m)
             {
                 case INPUT_COORD_SPACE.ROOM:
-                    _pointer_x = device_mouse_x(_global._pointer_index);
-                    _pointer_y = device_mouse_y(_global._pointer_index);
+                    _pointer_x = device_mouse_x(_global.__pointer_index);
+                    _pointer_y = device_mouse_y(_global.__pointer_index);
                 break;
                 
                 case INPUT_COORD_SPACE.GUI:
-                    _pointer_x = device_mouse_x_to_gui(_global._pointer_index);
-                    _pointer_y = device_mouse_y_to_gui(_global._pointer_index);
+                    _pointer_x = device_mouse_x_to_gui(_global.__pointer_index);
+                    _pointer_y = device_mouse_y_to_gui(_global.__pointer_index);
                 break;
                 
                 case INPUT_COORD_SPACE.DEVICE:
@@ -270,8 +270,8 @@ function __input_system_tick()
                     }
                     else
                     {
-                        _pointer_x = device_mouse_raw_x(_global._pointer_index);
-                        _pointer_y = device_mouse_raw_y(_global._pointer_index);
+                        _pointer_x = device_mouse_raw_x(_global.__pointer_index);
+                        _pointer_y = device_mouse_raw_y(_global.__pointer_index);
                     }
                 break;
             }
@@ -298,10 +298,10 @@ function __input_system_tick()
         _global.__tap_presses  += device_mouse_check_button_pressed( 0, mb_left);
         _global.__tap_releases += device_mouse_check_button_released(0, mb_left);
 
-        if (_global._tap_releases >= _global.__tap_presses)
+        if (_global.__tap_releases >= _global.__tap_presses)
         {
             //Resolve press/release desync (where press failed to register on same frame as release)
-            _global.__tap_click    = (_global._tap_releases > _global.__tap_presses);
+            _global.__tap_click    = (_global.__tap_releases > _global.__tap_presses);
             _global.__tap_presses  = 0;
             _global.__tap_releases = 0;
         }
@@ -314,7 +314,7 @@ function __input_system_tick()
     #region Keyboard
     
     //Unstick
-    if (_global._keyboard_allowed && keyboard_check(vk_anykey))
+    if (_global.__keyboard_allowed && keyboard_check(vk_anykey))
     {
         var _platform = os_type;
         if (__INPUT_ON_WEB && __INPUT_ON_APPLE) _platform = "apple_web";
@@ -385,24 +385,24 @@ function __input_system_tick()
     #region Gamepads
     
     var _steam_handles_changed = false;
-    if (_global._using_steamworks)
+    if (_global.__using_steamworks)
     {
         steam_input_run_frame();
         _steam_handles_changed = __input_steam_handles_changed();        
         _global.__steam_handles = steam_input_get_connected_controllers();
     }
     
-    if (_global._frame > __INPUT_GAMEPADS_TICK_PREDELAY)
+    if (_global.__frame > __INPUT_GAMEPADS_TICK_PREDELAY)
     {
         //Expand dynamic device count
-        var _device_change = max(0, gamepad_get_device_count() - array_length(_global._gamepads))
-        repeat(_device_change) array_push(_global._gamepads, undefined);
+        var _device_change = max(0, gamepad_get_device_count() - array_length(_global.__gamepads))
+        repeat(_device_change) array_push(_global.__gamepads, undefined);
         
         var _device_change = max(0, gamepad_get_device_count() - array_length(INPUT_GAMEPAD))
         repeat(_device_change) array_push(INPUT_GAMEPAD, new __input_class_source(__INPUT_SOURCE.GAMEPAD, array_length(INPUT_GAMEPAD)));
         
         var _g = 0;
-        repeat(array_length(_global._gamepads))
+        repeat(array_length(_global.__gamepads))
         {
             var _gamepad = _global.__gamepads[_g];
             if (is_struct(_gamepad))
@@ -430,14 +430,14 @@ function __input_system_tick()
                     //Remove our gamepad handler
                     __input_trace("Gamepad ", _g, " disconnected");
                     
-                    gamepad_set_vibration(_global._gamepads[@ _g].index, 0, 0);
+                    gamepad_set_vibration(_global.__gamepads[@ _g].index, 0, 0);
                     _global.__gamepads[@ _g] = undefined;
                     
                     //Also report gamepad changes for any active players
                     var _p = 0;
                     repeat(INPUT_MAX_PLAYERS)
                     {
-                        with(_global._players[_p])
+                        with(_global.__players[_p])
                         {
                             if (__source_contains(INPUT_GAMEPAD[_g]))
                             {
@@ -485,15 +485,15 @@ function __input_system_tick()
     #region Virtual Buttons
     
     //Reorder virtual buttons if necessary, from highest priority to lowest
-    if (_global._virtual_order_dirty)
+    if (_global.__virtual_order_dirty)
     {
         //Clean up any destroyed virtual buttons
         var _i = 0;
-        repeat(array_length(_global._virtual_array))
+        repeat(array_length(_global.__virtual_array))
         {
-            if (_global._virtual_array[_i].__destroyed)
+            if (_global.__virtual_array[_i].__destroyed)
             {
-                array_delete(_global._virtual_array, _i, 1);
+                array_delete(_global.__virtual_array, _i, 1);
             }
             else
             {
@@ -502,13 +502,13 @@ function __input_system_tick()
         }
         
         _global.__virtual_order_dirty = false;
-        array_sort(_global._virtual_array, function(_a, _b)
+        array_sort(_global.__virtual_array, function(_a, _b)
         {
             return _a.__priority - _b.__priority;
         });
     }
     
-    if (is_struct(_global._touch_player))
+    if (is_struct(_global.__touch_player))
     {
         //Detect any new touch points and find the top-most button to handle it
         var _i = 0;
@@ -517,9 +517,9 @@ function __input_system_tick()
             if (device_mouse_check_button_pressed(_i, mb_left))
             {
                 var _j = 0;
-                repeat(array_length(_global._virtual_array))
+                repeat(array_length(_global.__virtual_array))
                 {
-                    if (_global._virtual_array[_j].__capture_touchpoint(_i)) break;
+                    if (_global.__virtual_array[_j].__capture_touchpoint(_i)) break;
                     ++_j;
                 }
             }
@@ -529,7 +529,7 @@ function __input_system_tick()
         
         //Update any virtual buttons that are currently being interacted with
         var _i = 0;
-        repeat(array_length(_global._virtual_array))
+        repeat(array_length(_global.__virtual_array))
         {
             _global.__virtual_array[_i].__tick();
             ++_i;
@@ -556,13 +556,13 @@ function __input_system_tick()
     {
         var _old_status = _status_array[_p];
         
-        if (_global._players[_p].__connected)
+        if (_global.__players[_p].__connected)
         {
             if ((_old_status == INPUT_STATUS.NEWLY_DISCONNECTED) || (_old_status == INPUT_STATUS.DISCONNECTED))
             {
                 _any_players_changed = true;
                 _status_array[@ _p] = INPUT_STATUS.NEWLY_CONNECTED;
-                array_push(_global._players_status.new_connections, _p);
+                array_push(_global.__players_status.new_connections, _p);
             }
             else
             {
@@ -575,7 +575,7 @@ function __input_system_tick()
             {
                 _any_players_changed = true;
                 _status_array[@ _p] = INPUT_STATUS.NEWLY_DISCONNECTED;
-                array_push(_global._players_status.new_disconnections, _p);
+                array_push(_global.__players_status.new_disconnections, _p);
             }
             else
             {
@@ -654,7 +654,7 @@ function __input_system_tick()
     
     
     
-    switch(_global._source_mode)
+    switch(_global.__source_mode)
     {
         case INPUT_SOURCE_MODE.FIXED:       /* Do nothing! */                      break;
         case INPUT_SOURCE_MODE.JOIN:        __input_multiplayer_assignment_tick(); break;
