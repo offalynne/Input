@@ -13,6 +13,7 @@
 
 function input_vibrate_adsr(_peak_strength, _sustain_level, _pan, _attack, _decay, _sustain, _release, _player_index = 0, _force = false)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
     __INPUT_VERIFY_PLAYER_INDEX
     
     _peak_strength = clamp(_peak_strength, 0, 1);

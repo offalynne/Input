@@ -4,6 +4,8 @@
 
 function input_gamepad_delta(_index, _gm)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     if ((global.__input_cleared)
     ||  (_index == undefined)
     ||  (_index < 0)

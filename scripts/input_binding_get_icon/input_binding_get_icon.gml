@@ -4,6 +4,8 @@
 
 function input_binding_get_icon(_binding, _player_index = 0)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     //Find the correct fallback icon data
     //We'll use this if there's a problem resolving an icon otherwise
     static _fallback_icon_struct = undefined;

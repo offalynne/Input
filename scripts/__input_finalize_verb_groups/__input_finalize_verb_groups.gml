@@ -1,5 +1,7 @@
 function __input_finalize_verb_groups()
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     global.__input_group_to_verbs_dict = __input_config_verb_groups();
     
     if (!is_struct(global.__input_group_to_verbs_dict))

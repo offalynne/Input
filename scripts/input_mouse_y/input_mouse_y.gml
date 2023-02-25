@@ -8,5 +8,6 @@
 
 function input_mouse_y(_coord_space = global.__input_pointer_coord_space)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
     return global.__input_pointer_y[_coord_space];
 }

@@ -4,6 +4,8 @@
 
 function input_player_swap(_player_index_a, _player_index_b)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     if (_player_index_a < 0)
     {
         __input_error("Invalid player index A provided (", _player_index_a, ")");

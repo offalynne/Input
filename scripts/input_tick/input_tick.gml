@@ -2,6 +2,8 @@
 
 function input_tick(_ignore_warning = false)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     if (global.__input_time_source != undefined)
     {
         //Developer is calling input_tick() manually, let's cancel the automatic update since they know what they're doing (...presumably)

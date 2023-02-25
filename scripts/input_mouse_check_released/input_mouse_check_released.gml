@@ -2,7 +2,9 @@
 /// @param   binding
 
 function input_mouse_check_released(_binding)
-{    
+{
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     if (!global.__input_mouse_allowed_on_platform || global.__input_window_focus_block_mouse)
     {
         return (_binding == mb_none);

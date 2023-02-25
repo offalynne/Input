@@ -1,5 +1,7 @@
 function __input_mouse_button()
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     if (!global.__input_mouse_allowed_on_platform || global.__input_window_focus_block_mouse)
     {
         //Mouse not alllowed

@@ -4,6 +4,8 @@
 
 function input_system_export(_output_string = true, _prettify = false)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     var _players_array = array_create(INPUT_MAX_PLAYERS, undefined);
     
     var _root_json = {

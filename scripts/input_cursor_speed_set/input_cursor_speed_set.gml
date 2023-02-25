@@ -4,6 +4,8 @@
 
 function input_cursor_speed_set(_speed, _player_index = 0)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     if (_player_index == all)
     {
         var _p = 0;

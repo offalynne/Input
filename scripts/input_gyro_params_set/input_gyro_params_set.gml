@@ -8,6 +8,8 @@
 
 function input_gyro_params_set(_gyro_axis_x = undefined, _gyro_axis_y = undefined, _gyro_sensitivity_x = undefined, _gyro_sensitivity_y = undefined, _player_index = 0, _gamepad = undefined)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     if (_player_index == all)
     {
         var _p = 0;

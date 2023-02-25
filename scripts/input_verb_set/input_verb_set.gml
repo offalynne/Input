@@ -7,6 +7,8 @@
 
 function input_verb_set(_verb, _value, _player_index = 0, _analogue = true)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     if (_player_index < 0)
     {
         __input_error("Invalid player index provided (", _player_index, ")");

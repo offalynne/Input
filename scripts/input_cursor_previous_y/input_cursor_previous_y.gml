@@ -9,6 +9,7 @@
 
 function input_cursor_previous_y(_player_index = 0, _outputSystem = global.__input_pointer_coord_space)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
     __INPUT_VERIFY_PLAYER_INDEX
     
     var _cursor = global.__input_players[_player_index].__cursor;

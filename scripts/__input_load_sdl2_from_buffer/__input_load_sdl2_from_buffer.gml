@@ -1,5 +1,7 @@
 function __input_load_sdl2_from_buffer(_buffer)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     var _t = get_timer();
     
     __input_trace("Unpacking SDL2 buffer...");

@@ -1,3 +1,5 @@
+__INPUT_GLOBAL_STATIC_LOCAL
+
 var _gamepad = input_player_get_gamepad();
 var _state = "";
 

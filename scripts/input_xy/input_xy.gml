@@ -25,6 +25,7 @@ function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0, _most_r
     
     if (!is_struct(_player_index))
     {
+        __INPUT_GLOBAL_STATIC_LOCAL
         __INPUT_VERIFY_PLAYER_INDEX
         
         //Grab the player's verbs

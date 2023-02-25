@@ -3,6 +3,8 @@
 
 function input_gamepad_get_description(_index)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     if ((_index == undefined)
     ||  (_index < 0)
     ||  (_index >= array_length(global.__input_gamepads)))

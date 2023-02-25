@@ -6,6 +6,8 @@
 
 function input_verb_consume(_verb, _player_index = 0)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     if (_player_index < 0)
     {
         __input_error("Invalid player index provided (", _player_index, ")");

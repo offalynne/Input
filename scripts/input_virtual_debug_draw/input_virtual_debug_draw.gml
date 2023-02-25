@@ -3,6 +3,8 @@
 
 function input_virtual_debug_draw()
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     var _i = 0;
     repeat(array_length(global.__input_virtual_array))
     {

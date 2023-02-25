@@ -3,6 +3,8 @@
 
 function input_system_import(_string)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     if (is_string(_string))
     {
         var _json = json_parse(_string);

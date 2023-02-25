@@ -1,6 +1,8 @@
 /// @desc   Release mouse capture on MacOS if window exits primary monitor
 function __input_release_multimonitor_cursor()
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     if not ((os_type == os_macosx) && global.__input_mouse_capture) return;
 
     var _monitor_coords = window_get_visible_rects(window_get_x(), window_get_y(), window_get_width(), window_get_height());

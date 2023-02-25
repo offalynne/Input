@@ -8,6 +8,8 @@
 
 function input_cursor_coord_space_set(_coord_space, _player_index = 0)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     if (_player_index == all)
     {
         var _p = 0;

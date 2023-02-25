@@ -3,7 +3,9 @@
 /// @param   [playerIndex=0]
 
 function input_trigger_effect_set_pause(_state, _player_index = 0)
-{    
+{
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     if (_player_index == all)
     {
         var _i = 0;

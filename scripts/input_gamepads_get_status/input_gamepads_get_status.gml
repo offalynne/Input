@@ -17,5 +17,6 @@
 
 function input_gamepads_get_status()
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
     return global.__input_gamepads_status;
 }
