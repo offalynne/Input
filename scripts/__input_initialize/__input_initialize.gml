@@ -5,7 +5,8 @@ function __input_initialize()
     if (_initialized) return;
     _initialized = true;
     
-    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    //Don't use static here as this puts the game into a boot loop
+    var _global = __input_state();
     
     //Set up the extended debug functionality
     _global.__debug_log = "input___" + string_replace_all(string_replace_all(date_datetime_string(date_current_datetime()), ":", "-"), " ", "___") + ".txt";
