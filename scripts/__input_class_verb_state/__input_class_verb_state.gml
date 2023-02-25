@@ -1,5 +1,7 @@
 function __input_class_verb_state() constructor
 {
+    __INPUT_GLOBAL_STATIC_VARIABLE
+    
     name = undefined;
     type = undefined;
     __player = undefined;
@@ -92,7 +94,7 @@ function __input_class_verb_state() constructor
         
         __toggle_value = value;
         
-        if (global.__input_toggle_momentary_state && (type == __INPUT_VERB_TYPE.__BASIC) && variable_struct_exists(global.__input_toggle_momentary_dict, name))
+        if (__global.__toggle_momentary_state && (type == __INPUT_VERB_TYPE.__BASIC) && variable_struct_exists(__global.__toggle_momentary_dict, name))
         {
             //Catch the leading edge to toggle the verb
             if ((__toggle_prev_value < 0.1) && (__toggle_value > 0.1)) __toggle_state = !__toggle_state;
@@ -102,7 +104,7 @@ function __input_class_verb_state() constructor
             raw   = __toggle_state;
         }
         
-        if (global.__input_cooldown_state && (type == __INPUT_VERB_TYPE.__BASIC) && variable_struct_exists(global.__input_cooldown_dict, name))
+        if (__global.__cooldown_state && (type == __INPUT_VERB_TYPE.__BASIC) && variable_struct_exists(__global.__cooldown_dict, name))
         {
             if (_time < release_time + (INPUT_TIMER_MILLISECONDS? __INPUT_RATE_LIMIT_DURATION : ((__INPUT_RATE_LIMIT_DURATION/1000)*game_get_speed(gamespeed_fps))))
             {
@@ -113,7 +115,7 @@ function __input_class_verb_state() constructor
         
         if (value > 0)
         {
-            __player.__last_input_time = global.__input_current_time;
+            __player.__last_input_time = __global.__current_time;
             
             held      = true;
             held_time = _time;
