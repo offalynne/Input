@@ -1,6 +1,6 @@
 function __input_key_get_name(_key)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     //Fix uses of straight strings instead of ord("A")
     if (is_string(_key)) _key = ord(string_upper(_key));

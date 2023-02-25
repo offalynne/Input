@@ -3,7 +3,7 @@
 
 function input_value_is_binding(_value)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     if (_global.__use_is_instanceof)
     {

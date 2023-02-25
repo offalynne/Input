@@ -3,7 +3,7 @@
 
 function input_mouse_check(_binding)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     if (!_global.__mouse_allowed_on_platform || _global.__window_focus_block_mouse)
     {

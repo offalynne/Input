@@ -12,7 +12,7 @@ function __input_trace_loud()
     
     if (__INPUT_EXTERNAL_DEBUG_LOG)
     {
-        __INPUT_GLOBAL_STATIC_LOCAL
+        __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
         var _file = file_text_open_append(_global.__debug_log);
         file_text_write_string(_file, _string);
         file_text_writeln(_file);

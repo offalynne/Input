@@ -6,7 +6,7 @@
 
 function input_check_opposing(_verb_negative, _verb_positive, _player_index = 0, _most_recent = false)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     var _held_n = input_check(_verb_negative, _player_index);
     var _held_p = input_check(_verb_positive, _player_index);

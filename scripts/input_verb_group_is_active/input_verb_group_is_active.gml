@@ -4,7 +4,7 @@
 
 function input_verb_group_is_active(_verb_group, _player_index = 0)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     if (!variable_struct_exists(_global.__group_to_verbs_dict, _verb_group))
     {

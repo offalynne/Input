@@ -5,7 +5,7 @@
 
 function input_vibrate_set_pause(_state, _player_index = 0)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     if (_player_index == all)
     {

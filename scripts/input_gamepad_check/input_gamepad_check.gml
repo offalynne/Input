@@ -4,7 +4,7 @@
 
 function input_gamepad_check(_index, _gm)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     if ((_index == undefined)
     ||  (_index < 0)

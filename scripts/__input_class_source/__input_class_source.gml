@@ -3,7 +3,7 @@
 
 function __input_class_source(_source, _gamepad = undefined) constructor
 {
-    __INPUT_GLOBAL_STATIC_VARIABLE
+    __INPUT_GLOBAL_STATIC_VARIABLE  //Set static __global
     
     __source  = _source;
     __gamepad = _gamepad;

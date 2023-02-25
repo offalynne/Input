@@ -1,6 +1,6 @@
 function __input_gamepad_stop_trigger_effects(_gamepad_index)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     if (_gamepad_index == all)
     {

@@ -2,7 +2,7 @@
 
 function __input_gamepad_set_mapping()
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     #region Console
     

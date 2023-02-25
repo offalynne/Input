@@ -1,7 +1,7 @@
 /// @desc   Release mouse capture on MacOS if window exits primary monitor
 function __input_release_multimonitor_cursor()
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     if not ((os_type == os_macosx) && _global.__mouse_capture) return;
 

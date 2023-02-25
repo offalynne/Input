@@ -2,7 +2,7 @@
 
 function input_source_detect_new()
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     //Check gamepad input before keyboard input to correctly handle Android duplicating button presses with keyboard presses
     var _gamepad_count = array_length(INPUT_GAMEPAD);

@@ -2,7 +2,7 @@
 
 function __input_virtual_player_set(_playerStruct)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     if (_playerStruct != _global.__touch_player)
     {

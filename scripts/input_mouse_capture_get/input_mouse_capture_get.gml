@@ -2,7 +2,7 @@
 
 function input_mouse_capture_get()
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     return {
         capture:     _global.__mouse_capture,

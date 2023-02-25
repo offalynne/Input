@@ -1,6 +1,6 @@
 function __input_system_tick()
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     _global.__frame++;
     _global.__previous_current_time = _global.__current_time;

@@ -13,7 +13,7 @@
 
 function input_vibrate_curve(_strength, _curve, _pan, _duration, _player_index = 0, _force = false)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_PLAYER_INDEX
     
     _strength = clamp(_strength, 0, 1);

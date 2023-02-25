@@ -5,7 +5,7 @@
 
 function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
 {
-    __INPUT_GLOBAL_STATIC_VARIABLE
+    __INPUT_GLOBAL_STATIC_VARIABLE  //Set static __global
     
     gm       = _gm;
     raw      = _raw;

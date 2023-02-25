@@ -4,7 +4,7 @@
 
 function input_trigger_effect_get_state(_trigger, _player_index = 0)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_PLAYER_INDEX
 
     if not ((_trigger == gp_shoulderlb) || (_trigger == gp_shoulderrb))

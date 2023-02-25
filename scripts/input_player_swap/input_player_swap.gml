@@ -4,7 +4,7 @@
 
 function input_player_swap(_player_index_a, _player_index_b)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     if (_player_index_a < 0)
     {

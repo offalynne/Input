@@ -3,7 +3,7 @@
 
 function input_swap_gamepad_ab(_state)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     if (_state == _global.__swap_ab) return;
     _global.__swap_ab = _state;

@@ -2,7 +2,7 @@
 
 function __input_steam_handles_changed()
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     var _steam_handles = steam_input_get_connected_controllers();
     

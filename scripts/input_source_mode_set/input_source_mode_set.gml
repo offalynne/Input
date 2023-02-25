@@ -8,7 +8,7 @@
 
 function input_source_mode_set(_mode)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     if (_mode != _global.__source_mode)
     {

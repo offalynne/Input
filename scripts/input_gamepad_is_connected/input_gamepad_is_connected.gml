@@ -3,7 +3,7 @@
 
 function input_gamepad_is_connected(_index)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     if ((_index == undefined)
     ||  (_index < 0)

@@ -4,7 +4,7 @@
 
 function input_verb_get_group(_verb_name)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_BASIC_VERB_NAME
     
     return _global.__verb_to_group_dict[$ _verb_name];

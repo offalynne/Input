@@ -2,7 +2,7 @@
 
 function __input_gamepad_set_blacklist()
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     //Don't blacklist on preconfigured platforms
     if (!__INPUT_SDL2_SUPPORT) return;

@@ -11,7 +11,7 @@
 
 function input_icons(_name)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     var _icon_holder = _global.__icons[$ _name];
     if (!is_struct(_icon_holder))

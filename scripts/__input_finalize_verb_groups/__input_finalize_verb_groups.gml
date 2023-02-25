@@ -1,6 +1,6 @@
 function __input_finalize_verb_groups()
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     _global.__group_to_verbs_dict = __input_config_verb_groups();
     

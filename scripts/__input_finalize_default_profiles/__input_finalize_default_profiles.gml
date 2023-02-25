@@ -1,6 +1,6 @@
 function __input_finalize_default_profiles()
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     _global.__default_profile_dict = __input_config_verbs();
     

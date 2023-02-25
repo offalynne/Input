@@ -9,7 +9,7 @@
 
 function input_cursor_y(_player_index = 0, _output_system = undefined)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_PLAYER_INDEX
     
     if (_output_system == undefined) _output_system = _global.__pointer_coord_space;

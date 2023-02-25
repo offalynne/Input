@@ -9,7 +9,7 @@
 
 function input_chord_create()
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     var _name     = argument[0];
     var _max_time = argument[1] ?? INPUT_CHORD_DEFAULT_TIME;

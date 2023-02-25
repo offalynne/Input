@@ -1,6 +1,6 @@
 function __input_load_sdl2_from_buffer(_buffer)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     var _t = get_timer();
     

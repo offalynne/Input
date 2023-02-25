@@ -1,6 +1,6 @@
 function __input_class_virtual() constructor
 {
-    __INPUT_GLOBAL_STATIC_VARIABLE
+    __INPUT_GLOBAL_STATIC_VARIABLE  //Set static __global
     
     array_push(__global.__virtual_array, self);
     __global.__virtual_order_dirty = true;

@@ -4,7 +4,7 @@
 
 function input_accessibility_verb_cooldown_set(_verb_name, _state)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     if (is_array(_verb_name))
     {

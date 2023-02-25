@@ -8,6 +8,6 @@
 
 function input_mouse_x(_coord_space = _global.__pointer_coord_space)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     return _global.__pointer_x[_coord_space];
 }

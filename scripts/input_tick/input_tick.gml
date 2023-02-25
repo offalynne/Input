@@ -2,7 +2,7 @@
 
 function input_tick(_ignore_warning = false)
 {
-    __INPUT_GLOBAL_STATIC_LOCAL
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     if (_global.__time_source != undefined)
     {

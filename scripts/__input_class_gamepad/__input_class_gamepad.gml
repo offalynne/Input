@@ -1,7 +1,7 @@
 /// @param index
 function __input_class_gamepad(_index) constructor
 {
-    __INPUT_GLOBAL_STATIC_VARIABLE
+    __INPUT_GLOBAL_STATIC_VARIABLE  //Set static __global
     
     index           = _index;
     description     = gamepad_get_description(_index);
