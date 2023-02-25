@@ -1,5 +1,7 @@
 function __input_class_binding() constructor
 {
+    __INPUT_GLOBAL_STATIC_VARIABLE
+    
     __set_empty();
     
     static __set_empty = function()
@@ -191,9 +193,9 @@ function __input_class_binding() constructor
         if (__gamepad_description != undefined)
         {
             var _g = 0;
-            repeat(array_length(global.__input_gamepads))
+            repeat(array_length(__global.__gamepads))
             {
-                var _gamepad = global.__input_gamepads[_g];
+                var _gamepad = __global.__gamepads[_g];
                 
                 if (is_struct(_gamepad) && (_gamepad.description == __gamepad_description))
                 {
