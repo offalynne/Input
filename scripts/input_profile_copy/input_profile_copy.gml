@@ -6,7 +6,7 @@
 
 function input_profile_copy(_player_index_src, _profile_name_src, _player_index_dst, _profile_name_dst)
 {
-    __input_initialize();
+    static _global = _input_state();
     
     //Verify source player
     if (_player_index_src < 0)

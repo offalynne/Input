@@ -3,7 +3,7 @@
 
 function input_binding_key(_key)
 {
-    __input_initialize();
+    static _global = _input_state();
     
     return (new __input_class_binding()).__set_key(_key, false);
 }

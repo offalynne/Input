@@ -3,7 +3,7 @@
 
 function input_accessibility_verb_cooldown_get(_verb_name)
 {
-    __input_initialize();
+    static _global = _input_state();
     __INPUT_VERIFY_BASIC_VERB_NAME
     
     return variable_struct_exists(global.__input_cooldown_dict, _verb_name);

@@ -3,7 +3,7 @@
 
 function input_accessibility_global_cooldown_set(_state)
 {
-    __input_initialize();
+    static _global = _input_state();
     
     global.__input_cooldown_state = _state;
 }

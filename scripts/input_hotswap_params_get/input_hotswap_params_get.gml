@@ -2,7 +2,7 @@
 
 function input_hotswap_params_get()
 {
-    __input_initialize();
+    static _global = _input_state();
     
     static _result = {};
     _result.callback = global.__input_hotswap_callback;

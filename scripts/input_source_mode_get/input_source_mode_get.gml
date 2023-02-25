@@ -2,7 +2,7 @@
 
 function input_source_mode_get()
 {
-    __input_initialize();
+    static _global = _input_state();
     
     return global.__input_source_mode;
 }

@@ -3,7 +3,7 @@
 
 function input_binding_gamepad_button(_button)
 {
-    __input_initialize();
+    static _global = _input_state();
     
     if (!INPUT_SDL2_ALLOW_EXTENDED 
     && ((_button >= gp_guide) && (_button <= gp_paddle4)))

@@ -4,7 +4,7 @@
 
 function input_accessibility_verb_toggle_set(_verb_name, _state)
 {
-    __input_initialize();
+    static _global = _input_state();
     
     if (is_array(_verb_name))
     {

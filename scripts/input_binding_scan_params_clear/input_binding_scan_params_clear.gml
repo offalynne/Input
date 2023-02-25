@@ -4,7 +4,7 @@
 
 function input_binding_scan_params_clear(_player_index = 0)
 {
-    __input_initialize();
+    static _global = _input_state();
     __INPUT_VERIFY_PLAYER_INDEX
     
     with(global.__input_players[_player_index])

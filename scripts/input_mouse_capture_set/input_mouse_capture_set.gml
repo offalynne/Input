@@ -4,7 +4,7 @@
 
 function input_mouse_capture_set(_state, _sensitivity = 1)
 {
-    __input_initialize();
+    static _global = _input_state();
     
     if (!__INPUT_ON_DESKTOP || __INPUT_ON_WEB)
     {

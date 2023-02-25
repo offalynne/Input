@@ -1,5 +1,4 @@
 __input_initialize();
-
 function __input_initialize()
 {
     static _initialized = false;

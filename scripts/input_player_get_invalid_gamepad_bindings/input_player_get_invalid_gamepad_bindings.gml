@@ -4,7 +4,7 @@
 
 function input_player_get_invalid_gamepad_bindings(_player_index = 0, _profile_name = undefined)
 {
-    __input_initialize();
+    static _global = _input_state();
     __INPUT_VERIFY_PLAYER_INDEX
     __INPUT_VERIFY_PROFILE_NAME
     

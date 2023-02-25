@@ -3,7 +3,7 @@
 
 function input_binding_scan_abort(_player_index = 0)
 {
-    __input_initialize();
+    static _global = _input_state();
     
     if (_player_index == all)
     {

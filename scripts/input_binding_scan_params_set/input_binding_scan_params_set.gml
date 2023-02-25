@@ -8,7 +8,7 @@
 
 function input_binding_scan_params_set(_ignore_array = undefined, _allow_array = undefined, _source_filter = undefined, _player_index = 0)
 {
-    __input_initialize();
+    static _global = _input_state();
     __INPUT_VERIFY_PLAYER_INDEX
     
     if (is_numeric(_source_filter))

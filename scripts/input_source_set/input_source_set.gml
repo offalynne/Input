@@ -6,7 +6,7 @@
 
 function input_source_set(_source, _player_index = 0, _auto_profile = true)
 {
-    __input_initialize();
+    static _global = _input_state();
     __INPUT_VERIFY_PLAYER_INDEX
     
     if (_source == all)
