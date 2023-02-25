@@ -218,7 +218,7 @@
     {"id":{"name":"input_player_connected_count","path":"scripts/input_player_connected_count/input_player_connected_count.yy",},"order":6,},
     {"id":{"name":"input_profile_copy","path":"scripts/input_profile_copy/input_profile_copy.yy",},"order":12,},
     {"id":{"name":"input_player_connected","path":"scripts/input_player_connected/input_player_connected.yy",},"order":5,},
-    {"id":{"name":"__input_state","path":"scripts/__input_state/__input_state.yy",},"order":7,},
+    {"id":{"name":"__input_global","path":"scripts/__input_global/__input_global.yy",},"order":7,},
     {"id":{"name":"__input_config_multiplayer","path":"scripts/__input_config_multiplayer/__input_config_multiplayer.yy",},"order":6,},
     {"id":{"name":"input_player_get_gamepad","path":"scripts/input_player_get_gamepad/input_player_get_gamepad.yy",},"order":8,},
     {"id":{"name":"__input_config_icons","path":"scripts/__input_config_icons/__input_config_icons.yy",},"order":14,},

@@ -1,4 +1,4 @@
-function __input_state()
+function __input_global()
 {
     __input_initialize();
     

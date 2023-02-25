@@ -19,8 +19,8 @@
 //This works around Steam sometimes reporting confusing connection/disconnection events on boot
 #macro __INPUT_GAMEPADS_TICK_PREDELAY  10     
 
-#macro __INPUT_GLOBAL_STATIC_LOCAL     static _global = __input_state();
-#macro __INPUT_GLOBAL_STATIC_VARIABLE  static __global = __input_state();
+#macro __INPUT_GLOBAL_STATIC_LOCAL     static _global = __input_global();
+#macro __INPUT_GLOBAL_STATIC_VARIABLE  static __global = __input_global();
 
 #endregion
 
@@ -34,16 +34,16 @@
 #macro __INPUT_BINDING_GAMEPAD_BUTTON    "gamepad button"
 #macro __INPUT_BINDING_GAMEPAD_AXIS      "gamepad axis"
 
-#macro INPUT_KEYBOARD      __input_state().__source_keyboard
-#macro INPUT_MOUSE         __input_state().__source_mouse
-#macro INPUT_GAMEPAD       __input_state().__source_gamepad
-#macro INPUT_TOUCH         __input_state().__source_touch
+#macro INPUT_KEYBOARD      __input_global().__source_keyboard
+#macro INPUT_MOUSE         __input_global().__source_mouse
+#macro INPUT_GAMEPAD       __input_global().__source_gamepad
+#macro INPUT_TOUCH         __input_global().__source_touch
 #macro INPUT_MAX_GAMEPADS  12
 
-#macro INPUT_KEYBOARD_LOCALE  __input_state().__keyboard_locale
-#macro INPUT_KEYBOARD_TYPE    __input_state().__keyboard_type
+#macro INPUT_KEYBOARD_LOCALE  __input_global().__keyboard_locale
+#macro INPUT_KEYBOARD_TYPE    __input_global().__keyboard_type
 
-#macro INPUT_VIRTUAL_BACKGROUND  __input_state().__virtual_background
+#macro INPUT_VIRTUAL_BACKGROUND  __input_global().__virtual_background
 
 #macro __INPUT_ON_PS       ((os_type == os_ps4)     || (os_type == os_ps5))
 #macro __INPUT_ON_XBOX     ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
@@ -58,7 +58,7 @@
 
 #macro __INPUT_STEAMWORKS_SUPPORT         (((os_type == os_windows) || (os_type == os_linux)) && !__INPUT_ON_WEB)
 #macro __INPUT_TOUCH_SUPPORT              (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch) || (os_type == os_windows))
-#macro __INPUT_TOUCH_PRIMARY              (!INPUT_TOUCH_IS_MOUSE && (__INPUT_ON_MOBILE  || (os_type == os_switch) || (__input_state().__on_steam_deck && (os_type == os_windows))))
+#macro __INPUT_TOUCH_PRIMARY              (!INPUT_TOUCH_IS_MOUSE && (__INPUT_ON_MOBILE  || (os_type == os_switch) || (__input_global().__on_steam_deck && (os_type == os_windows))))
 #macro __INPUT_KEYBOARD_NORMATIVE         (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch))
 #macro __INPUT_KEYBOARD_SUPPORT           (__INPUT_KEYBOARD_NORMATIVE || (os_type == os_android))
 #macro __INPUT_GAMEPAD_VIBRATION_SUPPORT  (__INPUT_ON_CONSOLE || (!__INPUT_ON_WEB && (os_type == os_windows)))
