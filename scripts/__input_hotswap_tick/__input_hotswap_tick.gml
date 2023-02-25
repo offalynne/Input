@@ -2,7 +2,9 @@
 
 function __input_hotswap_tick()
 {
-    with(global.__input_players[0])
+    __INPUT_GLOBAL_STATIC
+    
+    with(_global.__players[0])
     {
         if (__ghost)
         {
@@ -10,24 +12,24 @@ function __input_hotswap_tick()
             return false;
         }
         
-        if ((__last_input_time < 0) || (global.__input_current_time - __last_input_time > INPUT_HOTSWAP_DELAY))
+        if ((__last_input_time < 0) || (_global.__current_time - __last_input_time > INPUT_HOTSWAP_DELAY))
         {
             var _new_source = __input_hotswap_tick_input();
             if ((_new_source != undefined) && !__source_contains(_new_source))
             {
                 input_source_set(_new_source, 0, INPUT_HOTSWAP_AUTO_PROFILE);
                 
-                if (is_method(global.__input_hotswap_callback))
+                if (is_method(_global.__hotswap_callback))
                 {
-                    global.__input_hotswap_callback();
+                    _global.__hotswap_callback();
                 }
-                else if (is_numeric(global.__input_hotswap_callback) && script_exists(global.__input_hotswap_callback))
+                else if (is_numeric(_global.__hotswap_callback) && script_exists(_global.__hotswap_callback))
                 {
-                    script_execute(global.__input_hotswap_callback);
+                    script_execute(_global.__hotswap_callback);
                 }
-                else if (global.__input_hotswap_callback != undefined)
+                else if (_global.__hotswap_callback != undefined)
                 {
-                    __input_error("Hotswap callback set to an illegal value (typeof=", typeof(global.__input_hotswap_callback), ")");
+                    __input_error("Hotswap callback set to an illegal value (typeof=", typeof(_global.__hotswap_callback), ")");
                 }
             }
         }
@@ -38,7 +40,7 @@ function __input_hotswap_tick()
 function __input_hotswap_tick_input()
 {
     //Check gamepad input before keyboard input to correctly handle Android duplicating button presses with keyboard presses
-    if (global.__input_any_gamepad_binding_defined)
+    if (_global.__any_gamepad_binding_defined)
     {
         var _gamepad_count = array_length(INPUT_GAMEPAD);
         var _g = 0;
@@ -109,18 +111,18 @@ function __input_hotswap_tick_input()
         if (_g < _gamepad_count)
         {
             //Maintain in-use gamepad
-            global.__input_players[0].__last_input_time = global.__input_current_time;
+            _global.__players[0].__last_input_time = _global.__current_time;
             return INPUT_GAMEPAD[_g];
         }
-        else if not (global.__input_window_focus_gamepad_timeout > 0) //Prevent resting axes from triggering source swap
+        else if not (_global.__window_focus_gamepad_timeout > 0) //Prevent resting axes from triggering source swap
         {
             //Test available gamepads
             var _sort_order = 1;
             _g = 0;
             
             if (!__INPUT_ON_WEB && ((os_type == os_macosx)
-            || (!global.__input_using_steamworks && (os_type == os_windows))
-            || ( global.__input_using_steamworks && (os_type == os_linux))))
+            || (!_global.__using_steamworks && (os_type == os_windows))
+            || ( _global.__using_steamworks && (os_type == os_linux))))
             {
                 //Search last-to-first on platforms with low-index virtual controllers (Steam Input, ViGEm)
                 _sort_order = -1;
@@ -195,7 +197,7 @@ function __input_hotswap_tick_input()
         }
     }
     
-    if (global.__input_any_keyboard_binding_defined
+    if (_global.__any_keyboard_binding_defined
     &&  input_source_is_available(INPUT_KEYBOARD)
     &&  keyboard_check(vk_anykey)
     &&  !__input_key_is_ignored(__input_keyboard_key())) //Ensure that this key isn't one we're trying to ignore
@@ -215,7 +217,7 @@ function __input_hotswap_tick_input()
     else
     {
         if (input_source_is_available(INPUT_MOUSE)
-        && ((INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && global.__input_pointer_moved)
+        && ((INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && _global.__pointer_moved)
           || INPUT_HOTSWAP_ON_MOUSE_BUTTON && (input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down())))
         {
             if (__INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_MOUSE);
