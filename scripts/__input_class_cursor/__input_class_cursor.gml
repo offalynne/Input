@@ -1,5 +1,7 @@
 function __input_class_cursor() constructor
 {
+    __INPUT_GLOBAL_STATIC_VARIABLE
+    
     __player = undefined;
     
     __prev_x = 0;
@@ -83,24 +85,24 @@ function __input_class_cursor() constructor
         var _can_use_mouse = __player.__source_contains(__INPUT_TOUCH_PRIMARY? INPUT_TOUCH : INPUT_MOUSE);
         
         //Mouse and touch
-        if ((global.__input_pointer_moved || __using_mouse) && _can_use_mouse && global.__input_mouse_allowed_on_platform)
+        if ((__global.__pointer_moved || __using_mouse) && _can_use_mouse && __global.__mouse_allowed_on_platform)
         {
             __using_mouse = true;
                 
-            if (global.__input_mouse_capture)
+            if (__global.__mouse_capture)
             {
-                __x += global.__input_pointer_dx[__coord_space];
-                __y += global.__input_pointer_dy[__coord_space];
+                __x += __global.__pointer_dx[__coord_space];
+                __y += __global.__pointer_dy[__coord_space];
             }
             else
             {
-                __x = global.__input_pointer_x[__coord_space];
-                __y = global.__input_pointer_y[__coord_space];
+                __x = __global.__pointer_x[__coord_space];
+                __y = __global.__pointer_y[__coord_space];
             }
         }
         
         //Don't update the cursor if the mouse recently moved or we're rebinding controls
-        if (global.__input_cursor_verbs_valid && (!global.__input_pointer_moved || !_can_use_mouse) && (__player.__rebind_state <= 0))
+        if (__global.__cursor_verbs_valid && (!__global.__pointer_moved || !_can_use_mouse) && (__player.__rebind_state <= 0))
         {
             //Gyro
             if (__player.__gyro_enabled)
