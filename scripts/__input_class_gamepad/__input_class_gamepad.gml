@@ -1,6 +1,8 @@
 /// @param index
 function __input_class_gamepad(_index) constructor
 {
+    __INPUT_GLOBAL_STATIC_VARIABLE
+    
     index           = _index;
     description     = gamepad_get_description(_index);
     guid            = gamepad_get_guid(_index);
@@ -73,7 +75,7 @@ function __input_class_gamepad(_index) constructor
         
         virtual_set();
         
-        __vibration_support = global.__input_vibration_allowed_on_platform && ((os_type != os_windows) || xinput);        
+        __vibration_support = __global.__vibration_allowed_on_platform && ((os_type != os_windows) || xinput);        
         if (__vibration_support)
         {
             if (os_type == os_ps5)
@@ -84,7 +86,7 @@ function __input_class_gamepad(_index) constructor
             gamepad_set_vibration(index, 0, 0);
         }
 
-        if (global.__input_gamepad_motion_support)
+        if (__global.__gamepad_motion_support)
         {
             __motion = new __input_class_gamepad_motion(index);
         }
@@ -95,7 +97,7 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_held = function(_gm)
     {
-        if (!INPUT_ALLOW_OUT_OF_FOCUS && !global.__input_window_focus) return false;
+        if (!INPUT_ALLOW_OUT_OF_FOCUS && !__global.__window_focus) return false;
         if (!custom_mapping) return gamepad_button_check(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
@@ -105,7 +107,7 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_pressed = function(_gm)
     {
-        if (!INPUT_ALLOW_OUT_OF_FOCUS && !global.__input_window_focus) return false;
+        if (!INPUT_ALLOW_OUT_OF_FOCUS && !__global.__window_focus) return false;
         if (!custom_mapping) return gamepad_button_check_pressed(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
@@ -115,7 +117,7 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_released = function(_gm)
     {
-        if (!INPUT_ALLOW_OUT_OF_FOCUS && !global.__input_window_focus) return false;
+        if (!INPUT_ALLOW_OUT_OF_FOCUS && !__global.__window_focus) return false;
         if (!custom_mapping) return gamepad_button_check_released(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
@@ -125,7 +127,7 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_value = function(_gm)
     {
-        if (!INPUT_ALLOW_OUT_OF_FOCUS && !global.__input_window_focus) return 0.0;
+        if (!INPUT_ALLOW_OUT_OF_FOCUS && !__global.__window_focus) return 0.0;
         if (!custom_mapping)
         {
             if ((_gm == gp_axislh) || (_gm == gp_axislv) || (_gm == gp_axisrh) || (_gm == gp_axisrv))
@@ -302,7 +304,7 @@ function __input_class_gamepad(_index) constructor
     
     static virtual_set = function()
     {
-        if not (global.__input_using_steamworks) return;
+        if not (__global.__using_steamworks) return;
     
         var _gamepad_is_virtual = ((os_type == os_windows) && xinput);
         var _slot = index;
@@ -338,13 +340,13 @@ function __input_class_gamepad(_index) constructor
             var _handle_type = steam_input_get_input_type_for_handle(__steam_handle);
             if not (is_numeric(_handle_type) && (_handle_type >= 0)) return;
 
-            var _description = global.__input_steam_type_to_name[$ _handle_type];
+            var _description = __global.__steam_type_to_name[$ _handle_type];
             if (_description == undefined) return;
         
-            var _raw_type = global.__input_steam_type_to_raw[$ _handle_type];
+            var _raw_type = __global.__steam_type_to_raw[$ _handle_type];
             if (_raw_type == undefined) return;
         
-            var _simple_type = global.__input_simple_type_lookup[$ _raw_type];
+            var _simple_type = __global.__simple_type_lookup[$ _raw_type];
             if (_simple_type == undefined) return;
 
             description = _description;
@@ -355,7 +357,7 @@ function __input_class_gamepad(_index) constructor
     
     static __color_set = function(_color)
     {   
-        if (global.__input_using_steamworks)
+        if (__global.__using_steamworks)
         {
             var _led_flag = steam_input_led_flag_set_color;
             if (_color == undefined)
@@ -412,10 +414,10 @@ function __input_class_gamepad(_index) constructor
         }
 
         //Steam Input uses libScePad for DualSense trigger effects, Windows native only
-        if (global.__input_using_steamworks && !global.__input_on_wine && (os_type == os_windows))
+        if (__global.__using_steamworks && !__global.__on_wine && (os_type == os_windows))
         {
             var _command_array = [{ mode: steam_input_sce_pad_trigger_effect_mode_off, command_data: {} }, { mode: steam_input_sce_pad_trigger_effect_mode_off, command_data: {} }];
-            _command_array[_trigger_index].mode = global.__input_steam_trigger_mode[$ _effect.__mode];
+            _command_array[_trigger_index].mode = __global.__steam_trigger_mode[$ _effect.__mode];
             _command_array[_trigger_index].command_data[$ string(_effect.__mode_name) + "_param"] = _effect.__params;
             
             if (_effect.__params[$ "strength"] != undefined)
