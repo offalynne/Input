@@ -30,7 +30,7 @@ function __input_gamepad_find_in_sdl2_database()
     else
     {    
         //Otherwise search through our vendor+product IDs
-        var _vp_array = global.__input_sdl2_database.by_vendor_product[$ vendor + product];
+        var _vp_array = _global.__sdl2_database.by_vendor_product[$ vendor + product];
         if (is_array(_vp_array))
         {
             if (array_length(_vp_array) > 0) //Get the first binding for this vendor+product and OS

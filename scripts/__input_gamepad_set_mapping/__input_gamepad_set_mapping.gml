@@ -2,6 +2,8 @@
 
 function __input_gamepad_set_mapping()
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     #region Console
     
     //Switch requires some extra setup
@@ -100,11 +102,11 @@ function __input_gamepad_set_mapping()
     if (blacklisted)
     {
         //Apply a blank mapping
-        var _a = variable_struct_get_names(global.__input_sdl2_look_up_table);
+        var _a = variable_struct_get_names(_global.__sdl2_look_up_table);
         var _i = 0;
         repeat(array_length(_a))
         {
-            set_mapping(global.__input_sdl2_look_up_table[$ _a[_i]], 0, undefined, _a[_i]);
+            set_mapping(_global.__sdl2_look_up_table[$ _a[_i]], 0, undefined, _a[_i]);
             _i++;
         }
 
@@ -1068,7 +1070,7 @@ function __input_gamepad_set_mapping()
                 }
             
                 //Find the GameMaker-native constant for this entry name e.g. gp_face1, gp_axislh
-                var _gm_constant = global.__input_sdl2_look_up_table[$ _entry_name];
+                var _gm_constant = _global.__sdl2_look_up_table[$ _entry_name];
                 if (_gm_constant == undefined)
                 {
                     __input_trace("Warning! Entry name \"", _entry_name, "\" not recognised (full string was \"", _entry, "\")");
