@@ -22,7 +22,7 @@ If the player's sole source is a gamepad and that gamepad is [incompatible with 
 
 &nbsp;
 
-## `input_players_connected()`
+## `input_players_connected_count()`
 
 *Returns:* Integer, the number of players with connected devices
 
@@ -177,44 +177,3 @@ Ghost mode prevents any sources being assigned to this player, but the player is
 |`playerIndexB`|integer |Second player to target|
 
 This function will swap over the two players with the given indices. This includes any player input state, bindings, source etc.
-
-&nbsp;
-
-## `input_multiplayer_params_set(min, max, [dropDown], [allowAbort])`
-
-*Returns:* N/A (`undefined`)
-
-|Name          |Datatype|Purpose                                                                                            |
-|--------------|--------|---------------------------------------------------------------------------------------------------|
-|`min`         |integer |The minimum number of players that are needed to play in this particular game mode                 |
-|`max`         |integer |The maximum number of players that can play this particular game mode                              |
-|`[dropDown]`  |boolean |Whether players should drop down into empty slots when other players disconnect. Defaults to `true`|
-|`[allowAbort]`|boolean |Whether players can abort the `JOIN` source mode by activating the "leave" verb. Defaults to `true`|
-
-&nbsp;
-
-## `input_multiplayer_params_get()`
-
-*Returns:* Struct, the parameters currently set for `INPUT_SOURCE_MODE.JOIN`
-
-|Name|Datatype|Purpose|
-|----|--------|-------|
-|None|        |       |
-
-The struct returned by this function has the following member functions:
-
-|Name          |Datatype|Purpose                                                                           |
-|--------------|--------|----------------------------------------------------------------------------------|
-|`.min_players`|integer |The minimum number of players that are needed to play in this particular game mode|
-|`.max_players`|integer |The maximum number of players that can play this particular game mode             |
-|`.drop_down`  |boolean |Whether players should drop down into empty slots when other players disconnect   |
-
-&nbsp;
-
-## `input_multiplayer_is_finished()`
-
-*Returns:* Boolean, whether enough players are connected to begin multiplayer gameplay
-
-|Name|Datatype|Purpose|
-|----|--------|-------|
-|None|        |       |

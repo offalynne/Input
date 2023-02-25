@@ -1,4 +1,4 @@
-# Functions (Mouse)
+# Mouse (Direct)
 
 &nbsp;
 

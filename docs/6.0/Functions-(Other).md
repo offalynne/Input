@@ -79,18 +79,6 @@ Removes a keyboard key from the ignore list.
 
 &nbsp;
 
-## `input_swap_gamepad_ab(state)`
-
-*Returns:* N/A (`undefined`)
-
-|Name   |Datatype|Purpose                     |
-|-------|--------|----------------------------|
-|`state`|boolean |Whether to swap A/B bindings|
-
-!> This function fully resets all player profiles and bindings to what's found in [`INPUT_DEFAULT_PROFILES`](Configuration?id=profiles-and-bindings). This function is intended to be called when the game is started before loading any player-defined bindings.
-
-&nbsp;
-
 ## `input_icons(categoryName)`
 
 *Returns:* N/A (`undefined`)
@@ -125,7 +113,7 @@ input_icons("xbox one")
 
 Each call to the `.add()` method add a new icon to the `"xbox one"` icon category.
 
-!> Note that none of these lines terminate in a semicolon `;`**. This is very important to ensure that the fluent interface works properly.
+!> Note that none of these lines terminate in a semicolon `;`. This is very important to ensure that the fluent interface works properly.
 
 The first argument for the `.add()` method is a [binding name](Binding-Names), the second argument is the value to return as the icon for that binding. In the example above, the string `"A"` is being returned for the south-positioned gamepad button for an Xbox One controller. We might very well use sprites instead of strings:
 
@@ -137,6 +125,39 @@ input_icons("xbox one")
 .add("gamepad face north", spr_xboxone_y)
 //etc.
 ```
+
+&nbsp;
+
+## `input_color_get([playerIndex])`
+
+*Returns:* Integer, the player's device's colour
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+&nbsp;
+
+## `input_color_set([playerIndex])`
+
+*Returns:* N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                                              |
+|---------------|--------|---------------------------------------------------------------------|
+|`color`        |integer |Colour to set for the player's device (standard 24-bit GameMaker BGR)|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                 |
+
+&nbsp;
+
+## `input_color_reset([playerIndex])`
+
+*Returns:* N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+Resets the player's device's colour.
 
 &nbsp;
 

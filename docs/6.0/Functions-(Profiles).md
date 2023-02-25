@@ -8,58 +8,6 @@ If you'd like to know more about manipulating specific bindings, please see the 
 
 &nbsp;
 
-## `input_profile_reset_bindings(profileName, [playerIndex])`
-
-*Returns:* N/A (`undefined`)
-
-|Name           |Datatype           |Purpose                                             |
-|---------------|-------------------|----------------------------------------------------|
-|`profileName`  |[profile](Profiles)|Name of the [profile](Profiles) to reset            |
-|`[playerIndex]`|integer            |Player to target. If not specified, player 0 is used|
-
-This function replaces all bindings for the player's profile to the bindings found in the default profile (the profile defined in [`__input_config_profiles_and_bindings()`](Configuration?id=profiles-and-bindings)).
-
-!> It is only possible to reset a default profile. Profiles added at runtime by `input_profile_create()` cannot be reset.
-
-&nbsp;
-
-## `input_profile_auto([playerIndex])`
-
-*Returns:* N/A (`undefined`)
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
-
-Sets the player's profile to the ["auto" profile"](Configuration?id=profiles-and-bindings) for the player's current [source](Input-Sources). For example, if the player is using a keyboard source then the player's profile will be set to `INPUT_AUTO_PROFILE_FOR_KEYBOARD`.
-
-If the ["auto" profile"](Configuration?id=profiles-and-bindings) is set to `undefined` then no profile will be set.
-
-&nbsp;
-
-## `input_profile_set(profileName, [playerIndex])`
-
-*Returns:* N/A (`undefined`)
-
-|Name           |Datatype           |Purpose                                              |
-|---------------|-------------------|-----------------------------------------------------|
-|`profileName`  |[profile](Profiles)|Name of the [profile](Profiles) to set for the player|
-|`[playerIndex]`|integer            |Player to target. If not specified, player 0 is used |
-
-Sets the player's profile either to a default or custom profile. If no profile with the same name is found then this function will throw an error.
-
-&nbsp;
-
-## `input_profile_get([playerIndex])`
-
-*Returns:* String, the name of the profile being used by the player
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
-
-&nbsp;
-
 ## `input_profile_create(profileName, [playerIndex])`
 
 *Returns:* N/A (`undefined`)
@@ -112,3 +60,55 @@ This function will also return `true` for [default profile names](Profiles).
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 This function will return default profiles (as defined in [`__input_config_profiles_and_bindings()`](Configuration?id=profiles-and-bindings)) as well as custom profiles.
+
+&nbsp;
+
+## `input_profile_set(profileName, [playerIndex])`
+
+*Returns:* N/A (`undefined`)
+
+|Name           |Datatype           |Purpose                                              |
+|---------------|-------------------|-----------------------------------------------------|
+|`profileName`  |[profile](Profiles)|Name of the [profile](Profiles) to set for the player|
+|`[playerIndex]`|integer            |Player to target. If not specified, player 0 is used |
+
+Sets the player's profile either to a default or custom profile. If no profile with the same name is found then this function will throw an error.
+
+&nbsp;
+
+## `input_profile_get([playerIndex])`
+
+*Returns:* String, the name of the profile being used by the player
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+&nbsp;
+
+## `input_profile_auto([playerIndex])`
+
+*Returns:* N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+Sets the player's profile to the ["auto" profile"](Configuration?id=profiles-and-bindings) for the player's current [source](Input-Sources). For example, if the player is using a keyboard source then the player's profile will be set to `INPUT_AUTO_PROFILE_FOR_KEYBOARD`.
+
+If the ["auto" profile"](Configuration?id=profiles-and-bindings) is set to `undefined` then no profile will be set.
+
+&nbsp;
+
+## `input_profile_reset_bindings(profileName, [playerIndex])`
+
+*Returns:* N/A (`undefined`)
+
+|Name           |Datatype           |Purpose                                             |
+|---------------|-------------------|----------------------------------------------------|
+|`profileName`  |[profile](Profiles)|Name of the [profile](Profiles) to reset            |
+|`[playerIndex]`|integer            |Player to target. If not specified, player 0 is used|
+
+This function replaces all bindings for the player's profile to the bindings found in the default profile (the profile defined in [`__input_config_profiles_and_bindings()`](Configuration?id=profiles-and-bindings)).
+
+!> It is only possible to reset a default profile. Profiles added at runtime by `input_profile_create()` cannot be reset.

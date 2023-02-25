@@ -2,28 +2,6 @@
 
 &nbsp;
 
-## `input_source_mode_set(mode)`
-
-*Returns:* N/A (`undefined`)
-
-|Name  |Datatype                          |Purpose                   |
-|------|----------------------------------|--------------------------|
-|`mode`|member of `INPUT_SOURCE_MODE` enum|The new source mode to set|
-
-You can read more about source modes [here](Input-Sources?id=source-modes).
-
-&nbsp;
-
-## `input_source_mode_get()`
-
-*Returns:* Member of `INPUT_SOURCE_MODE` enum
-
-|Name|Datatype|Purpose|
-|----|--------|-------|
-|None|        |       |
-
-&nbsp;
-
 ## `input_source_detect_input(source, [availableOnly])`
 
 *Returns:* Boolean, whether new input is detected from this [source](Input-Sources)

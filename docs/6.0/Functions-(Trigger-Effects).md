@@ -102,5 +102,3 @@ Pauses all trigger effects when `state` is `<false>`.  While paused, no new trig
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
-
-&nbsp;

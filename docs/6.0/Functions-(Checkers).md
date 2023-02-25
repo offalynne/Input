@@ -147,6 +147,8 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 
 If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are newly deactivated this frame for the player. The hold time required to activate this function is given by [`INPUT_LONG_DELAY`](Configuration).
 
+&nbsp;
+
 ## `input_check_quick_pressed(verb, [playerIndex], [bufferDuration])`
 
 *Returns:* Boolean, whether the given verb has been actived by a quick tap on an analogue (thumbstick/trigger) axis this frame
@@ -160,8 +162,6 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are quick tapped this frame for the player.
 
 !> This function will only work with anaologue input. Digital input (buttons, keys etc.) cannot trigger a quick tap.
-
-&nbsp;
 
 &nbsp;
 
@@ -208,6 +208,30 @@ This function will **not** return `true` on the same frame a verb is activated (
 
 &nbsp;
 
+## `input_check_press_most_recent([array], [playerIndex])`
+
+*Returns:* Most recent [verb](Verbs-and-Bindings) pressed in the specified array, or `undefined` if no verb is active
+
+|Name              |Datatype                        |Purpose                                                                                                                                              |
+|------------------|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+|`[array]`         |[verb](Verbs-and-Bindings) array|Array of [verbs](Verbs-and-Bindings) to check. If keyword `all` is used, or this argument is not specified, then all verbs for the player are checked|
+|`[playerIndex]`   |integer                         |Player to target. If not specified, player 0 is used                                                                                                 |
+
+&nbsp;
+
+## `input_is_analogue(verb, [playerIndex])`
+
+*Returns:* Boolean, if the verb was last triggered by an analogue input (a gamepad axis)
+
+|Name              |Datatype                        |Purpose                                                                                    |
+|------------------|--------------------------------|-------------------------------------------------------------------------------------------|
+|`verb`            |[verb](Verbs-and-Bindings)/array|[Verb](Verbs-and-Bindings) to check, or an array of [verbs](Verbs-and-Bindings) (see below)|
+|`[playerIndex]`   |integer                         |Player to target. If not specified, player 0 is used                                       |
+
+If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs was last triggered by an analogue input.
+
+&nbsp;
+
 ## `input_value(verb, [playerIndex])`
 
 *Returns:* Real, the analogue value of the input (after calculating the threshold)
@@ -246,27 +270,3 @@ The units returned by this function is determined by `INPUT_TIMER_MILLISECONDS`.
 |`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used|
 
 The units returned by this function is determined by `INPUT_TIMER_MILLISECONDS`. This function returns a value less than 0 if the verb is not active or was not released.
-
-&nbsp;
-
-## `input_is_analogue(verb, [playerIndex])`
-
-*Returns:* Boolean, if the verb was last triggered by an analogue input (a gamepad axis)
-
-|Name              |Datatype                        |Purpose                                                                                    |
-|------------------|--------------------------------|-------------------------------------------------------------------------------------------|
-|`verb`            |[verb](Verbs-and-Bindings)/array|[Verb](Verbs-and-Bindings) to check, or an array of [verbs](Verbs-and-Bindings) (see below)|
-|`[playerIndex]`   |integer                         |Player to target. If not specified, player 0 is used                                       |
-
-If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs was last triggered by an analogue input.
-
-&nbsp;
-
-## `input_check_press_most_recent([array], [playerIndex])`
-
-*Returns:* Most recent [verb](Verbs-and-Bindings) pressed in the specified array, or `undefined` if no verb is active
-
-|Name              |Datatype                        |Purpose                                                                                                                                              |
-|------------------|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
-|`[array]`         |[verb](Verbs-and-Bindings) array|Array of [verbs](Verbs-and-Bindings) to check. If keyword `all` is used, or this argument is not specified, then all verbs for the player are checked|
-|`[playerIndex]`   |integer                         |Player to target. If not specified, player 0 is used                                                                                                 |

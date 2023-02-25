@@ -68,24 +68,52 @@ This function returns a struct that describes the binding for the given verb. It
 
 &nbsp;
 
-## `input_binding_get_verbs(binding, [playerIndex], [profileName])`
+## `input_binding_get_name(binding)`
 
-_Returns:_ Array of structs containing verb/alternate indexes
+_Returns:_ String, the human-readable [name for the binding](Binding-Names)
 
-|Name           |Datatype                            |Purpose                                                                                                                                                                                                                                                           |
-|---------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`binding`      |binding                             |Binding to check against, as returned by [`input_binding_scan_tick()`](<Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex>) or [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>)|
-|`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                                                                                                                                                                                                              |
-|`[profileName]`|string                              |                                                                                                                                                                                                                                                                  |
+|Name     |Datatype|Purpose                       |
+|---------|--------|------------------------------|
+|`binding`|binding |Binding to return the name for|
 
-The array that this function returns contains structs that define which verbs match the given binding. If the array is empty then there are no matching verbs.
+Returns the [name of the binding](Binding-Names) in a way that is (mostly!) human-readable. This string can be the name of a keyboard key or the name of a gamepad axis, including direction of travel. The intention is for this information to be parsed by your own code and then used to display a string or icon to the player indicating which button/key etc. is associated with which verb. All return values are listed as [Binding Names](Binding-Names).
 
-The structs returned in the array contain the following:
+For example, `input_binding_get_name(input_binding_get("jump"))` will return the name of the binding for the "jump" verb if it is defined, or "not a binding" otherwise.
 
-|Variable    |Datatype                            |Purpose                     |
-|------------|------------------------------------|----------------------------|
-|`.verb`     |[verb](Verbs-and-Bindings)|Verb binding that conflicts |
-|`.alternate`|integer                             |Alternate index for the verb|
+?> In situations where you are displaying control prompt to a player, `input_binding_get_icon()` is likely to be more useful.
+
+&nbsp;
+
+## `input_binding_get_icon(binding, [playerIndex])`
+
+_Returns:_ Various, the icon identifier defined in [`__input_config_icons()`](Configuration?id=icons)
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`binding`      |binding |Binding to return the icon for                      |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+Returns the icon associated with the given binding for the device that the given player is currently using. You should edit [`__input_config_icons()`](Configuration?id=icons) to match the requirements of your game.
+
+For example, `input_binding_get_icon(input_binding_get("jump"))` will return an icon for the device matching the binding for the "jump" verb if it is defined.
+
+&nbsp;
+
+## `input_binding_get_source_type(binding)`
+
+_Returns:_ Various, the source type for the binding (see below)
+
+|Name     |Datatype|Purpose                       |
+|---------|--------|------------------------------|
+|`binding`|binding |Binding to return the type for|
+
+Returns one of the following:
+- `INPUT_KEYBOARD`
+- `INPUT_MOUSE`
+- `INPUT_TOUCH`
+- `INPUT_GAMEPAD`
+
+If the binding is invalid or the source type cannot be determined, `undefined` is returned. As with other functions, if `INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER` is set to `true` then `INPUT_KEYBOARD` and `INPUT_MOUSE` are interchangeable.
 
 &nbsp;
 
@@ -143,37 +171,6 @@ Swaps over the two verb bindings specified.
 
 &nbsp;
 
-## `input_binding_get_icon(binding, [playerIndex])`
-
-_Returns:_ Various, the icon identifier defined in [`__input_config_icons()`](Configuration?id=icons)
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-|`binding`      |binding |Binding to return the icon for                      |
-|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
-
-Returns the icon associated with the given binding for the device that the given player is currently using. You should edit [`__input_config_icons()`](Configuration?id=icons) to match the requirements of your game.
-
-For example, `input_binding_get_icon(input_binding_get("jump"))` will return an icon for the device matching the binding for the "jump" verb if it is defined.
-
-&nbsp;
-
-## `input_binding_get_name(binding)`
-
-_Returns:_ String, the human-readable [name for the binding](Binding-Names)
-
-|Name     |Datatype|Purpose                       |
-|---------|--------|------------------------------|
-|`binding`|binding |Binding to return the name for|
-
-Returns the [name of the binding](Binding-Names) in a way that is (mostly!) human-readable. This string can be the name of a keyboard key or the name of a gamepad axis, including direction of travel. The intention is for this information to be parsed by your own code and then used to display a string or icon to the player indicating which button/key etc. is associated with which verb. All return values are listed as [Binding Names](Binding-Names).
-
-For example, `input_binding_get_name(input_binding_get("jump"))` will return the name of the binding for the "jump" verb if it is defined, or "not a binding" otherwise.
-
-?> In situations where you are displaying control prompt to a player, `input_binding_get_icon()` is likely to be more useful.
-
-&nbsp;
-
 ## `input_binding_gamepad_set(binding. gamepad)`
 
 _Returns:_ N/A (`undefined`)
@@ -223,3 +220,24 @@ _Returns:_ A struct with two member variables, `.mini` and `.maxi`, containing t
 |Name     |Datatype                     |Purpose                                          |
 |---------|-----------------------------|-------------------------------------------------|
 |`binding`|[binding](Verbs-and-Bindings)|[Binding](Verbs-and-Bindings) to target|
+
+&nbsp;
+
+## `input_binding_get_verbs(binding, [playerIndex], [profileName])`
+
+_Returns:_ Array of structs containing verb/alternate indexes
+
+|Name           |Datatype                            |Purpose                                                                                                                                                                                                                                                           |
+|---------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`binding`      |binding                             |Binding to check against, as returned by [`input_binding_scan_tick()`](<Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex>) or [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>)|
+|`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                                                                                                                                                                                                              |
+|`[profileName]`|string                              |                                                                                                                                                                                                                                                                  |
+
+The array that this function returns contains structs that define which verbs match the given binding. If the array is empty then there are no matching verbs.
+
+The structs returned in the array contain the following:
+
+|Variable    |Datatype                            |Purpose                     |
+|------------|------------------------------------|----------------------------|
+|`.verb`     |[verb](Verbs-and-Bindings)|Verb binding that conflicts |
+|`.alternate`|integer                             |Alternate index for the verb|

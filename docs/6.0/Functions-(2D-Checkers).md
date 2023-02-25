@@ -8,6 +8,37 @@ If you're looking for simpler ways to check verbs, please see the [1D Checkers](
 
 &nbsp;
 
+## `input_direction(default, verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`
+
+*Returns:* Number, the direction (in degrees) represented by the sum of the verb values
+
+|Name           |Datatype                  |Purpose                                                     |
+|---------------|--------------------------|------------------------------------------------------------|
+|`default`      |number                    |Value to return if none of the verbs are active             |
+|`verbLeft`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
+|`verbRight`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
+|`verbUp`       |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
+|`verbDown`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
+|`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used        |
+|`[mostRecent]` |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
+
+&nbsp;
+
+## `input_distance(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`
+
+*Returns:* Number, the length of the vector represented by the sum of the verb values
+
+|Name           |Datatype                  |Purpose                                                     |
+|---------------|--------------------------|------------------------------------------------------------|
+|`verbLeft`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
+|`verbRight`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
+|`verbUp`       |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
+|`verbDown`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
+|`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used        |
+|`[mostRecent]` |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
+
+&nbsp;
+
 ## `input_x(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`
 
 *Returns:* Number, the x-coordinate of the vector represented by the sum of the verb values
@@ -54,37 +85,6 @@ If you're looking for simpler ways to check verbs, please see the [1D Checkers](
 The struct returned by this function contains two member variables: `.x` and `.y`.
 
 !> This function returns a `static` struct. Do not keep a permanent reference to this struct! It is liable to change value unexpectedly.
-
-&nbsp;
-
-## `input_direction(default, verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`
-
-*Returns:* Number, the direction (in degrees) represented by the sum of the verb values
-
-|Name           |Datatype                  |Purpose                                                     |
-|---------------|--------------------------|------------------------------------------------------------|
-|`default`      |number                    |Value to return if none of the verbs are active             |
-|`verbLeft`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
-|`verbRight`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
-|`verbUp`       |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
-|`verbDown`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
-|`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used        |
-|`[mostRecent]` |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
-
-&nbsp;
-
-## `input_distance(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`
-
-*Returns:* Number, the length of the vector represented by the sum of the verb values
-
-|Name           |Datatype                  |Purpose                                                     |
-|---------------|--------------------------|------------------------------------------------------------|
-|`verbLeft`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
-|`verbRight`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
-|`verbUp`       |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
-|`verbDown`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
-|`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used        |
-|`[mostRecent]` |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
 
 &nbsp;
 

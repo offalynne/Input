@@ -1,4 +1,4 @@
-# Functions (Motion)
+# Gyro and Motion
 
 &nbsp;
 
@@ -96,5 +96,3 @@ This function returns a struct of parameters currently set for gyro control of t
     sensitivity_y: <number indicating sensitivity on the Y axis>,
 }
 ```
-
-&nbsp;

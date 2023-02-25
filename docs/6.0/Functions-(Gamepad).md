@@ -163,16 +163,3 @@ The `INPUT_STATUS` enum contains the following members:
 |`.DISCONNECTED`      |Gamepad is disconnected (for at least two frames)|
 |`.NEWLY_CONNECTED`   |Gamepad has been connected this frame            |
 |`.CONNECTED`         |Gamepad is connected (for at least two frames)   |
-
-
-&nbsp;
-
-### input_swap_gamepad_ab(state)
-
-*Returns:* N/A (`undefined`)
-
-| Name  | Datatype | Purpose                   |
-|-------|----------|---------------------------|
-| `state` | boolean     | Whether to switch A and B |
-
-Sets the A/B swap state. This generally should only be used at the start of the game as it fully resets all player profiles and bindings to what’s found in [`INPUT_DEFAULT_PROFILES`](Configuration?id=profiles-and-bindings).

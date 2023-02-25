@@ -252,19 +252,3 @@ The struct returned by this function contains the following member variables:
 |`.strength`|number  |Strength of the elastic force, from `0` to `1` |
 
 !> Values for `.x` and `.y` in the returned struct will be `undefined` if an elastic force has not been set.
-
-&nbsp;
-
-## `input_cursor_translate([x], [y], duration, [playerIndex=0], [relative=false])`
-
-*Returns:* N/A (`undefined`)
-
-|Name           |Datatype|Purpose                                                                                                                                          |
-|---------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-|`[x]`          |number  |x-coordinate to move the cursor to. If not specified (the argument is `undefined`) then the current x-coordinate of the cursor is used           |
-|`[y]`          |number  |y-coordinate to move the cursor to. If not specified (the argument is `undefined`) then the current x-coordinate of the cursor is used           |
-|`duration`     |number  |Duration of the translation. Whether this is in frames or milliseconds is determined by `INPUT_TIMER_MILLISECONDS`                               |
-|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                                                                                             |
-|`[relative]`   |boolean |Whether the coordinates provided are relative to the current position of the cursor. If not specified then `false` is used (absolute coordinates)|
-
-Moves a player's virtual cursor to a position, blocking input whilst the cursor is moving.
