@@ -206,9 +206,6 @@ enum INPUT_COORD_SPACE
     GUI,
     DEVICE,
     __SIZE,
-    
-    //TODO - Deprecated, remove in v6
-    DISPLAY = 2,
 }
 
 //DualSense haptic trigger effect states
