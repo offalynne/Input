@@ -13,7 +13,7 @@ function input_source_set(_source, _player_index = 0, _auto_profile = true)
     {
         input_source_clear(all);
     
-        with(global.__input_players[_player_index])
+        with(_global.__players[_player_index])
         {
             __source_add(INPUT_KEYBOARD);
             __source_add(__INPUT_TOUCH_PRIMARY? INPUT_TOUCH : INPUT_MOUSE);
@@ -35,7 +35,7 @@ function input_source_set(_source, _player_index = 0, _auto_profile = true)
     __INPUT_VERIFY_SOURCE_ASSIGNABLE
     
     __input_source_relinquish(_source);
-    with(global.__input_players[_player_index])
+    with(_global.__players[_player_index])
     {
         __sources_clear();
         __source_add(_source);

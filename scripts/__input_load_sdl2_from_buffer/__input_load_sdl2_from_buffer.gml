@@ -119,9 +119,9 @@ function __input_load_sdl2_from_buffer(_buffer)
     
     var _total_count          = 0;
     var _platform_count       = 0;
-    var _db_by_guid           = global.__input_sdl2_database.by_guid;
-    var _db_by_vendor_product = global.__input_sdl2_database.by_vendor_product;
-    var _db_by_description    = global.__input_sdl2_database.by_description;
+    var _db_by_guid           = _global.__sdl2_database.by_guid;
+    var _db_by_vendor_product = _global.__sdl2_database.by_vendor_product;
+    var _db_by_description    = _global.__sdl2_database.by_description;
     
     var _y = 0;
     repeat(array_length(_root_array))

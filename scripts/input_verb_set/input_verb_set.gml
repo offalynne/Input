@@ -21,5 +21,5 @@ function input_verb_set(_verb, _value, _player_index = 0, _analogue = true)
         return undefined;
     }
     
-    global.__input_players[_player_index].__verb_set(_verb, _value, _analogue);
+    _global.__players[_player_index].__verb_set(_verb, _value, _analogue);
 }

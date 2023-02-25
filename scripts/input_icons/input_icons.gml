@@ -13,11 +13,11 @@ function input_icons(_name)
 {
     __INPUT_GLOBAL_STATIC_LOCAL
     
-    var _icon_holder = global.__input_icons[$ _name];
+    var _icon_holder = _global.__icons[$ _name];
     if (!is_struct(_icon_holder))
     {
         _icon_holder = new __input_class_icon_category(_name);
-        global.__input_icons[$ string(_name)] = _icon_holder;
+        _global.__icons[$ string(_name)] = _icon_holder;
     }
     
     return _icon_holder;

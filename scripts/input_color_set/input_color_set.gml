@@ -13,5 +13,5 @@ function input_color_set(_color, _player_index = 0)
         return;
     }
     
-    global.__input_players[_player_index].__color_set(_color);
+    _global.__players[_player_index].__color_set(_color);
 }

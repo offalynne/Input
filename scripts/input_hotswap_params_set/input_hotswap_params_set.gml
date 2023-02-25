@@ -11,5 +11,5 @@ function input_hotswap_params_set(_callback)
         __input_error("Hotswap callback must be a function, a script, or <undefined>");
     }
     
-    global.__input_hotswap_callback = _callback;
+    _global.__hotswap_callback = _callback;
 }

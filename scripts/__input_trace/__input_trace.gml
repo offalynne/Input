@@ -12,7 +12,7 @@ function __input_trace()
     
     if (__INPUT_EXTERNAL_DEBUG_LOG)
     {
-        var _file = file_text_open_append(global.__input_debug_log);
+        var _file = file_text_open_append(_global.__debug_log);
         file_text_write_string(_file, _string);
         file_text_writeln(_file);
         file_text_close(_file);

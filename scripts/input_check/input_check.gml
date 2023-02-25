@@ -12,7 +12,7 @@ function input_check(_verb, _player_index = 0, _buffer_duration = 0)
     
     if (_verb == all)
     {
-        return input_check(global.__input_basic_verb_array, _player_index, _buffer_duration);
+        return input_check(_global.__basic_verb_array, _player_index, _buffer_duration);
     }
     
     if (is_array(_verb))

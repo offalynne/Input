@@ -9,5 +9,5 @@ function input_mouse_coord_space_set(_coord_space)
 {
     __INPUT_GLOBAL_STATIC_LOCAL
     
-    global.__input_pointer_coord_space = _coord_space;
+    _global.__pointer_coord_space = _coord_space;
 }

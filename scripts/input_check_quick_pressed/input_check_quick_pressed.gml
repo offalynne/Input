@@ -28,7 +28,7 @@ function input_check_quick_pressed(_verb, _player_index = 0, _buffer_duration = 
     
     if (_buffer_duration <= 0)
     {
-        return ((global.__input_cleared)? false : _verb_struct.__quick_press);
+        return ((_global.__cleared)? false : _verb_struct.__quick_press);
     }
     else
     {

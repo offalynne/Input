@@ -10,10 +10,10 @@ function input_ignore_key_add(_key)
     
     if (_key == vk_anykey) __input_error("Cannot ignore vk_anykey (=", vk_anykey, ")");
     
-    if (!variable_struct_exists(global.__input_ignore_key_dict, _key))
+    if (!variable_struct_exists(_global.__ignore_key_dict, _key))
     {
         if (__INPUT_DEBUG) __input_trace("Ignoring keycode ", _key);
-        global.__input_ignore_key_dict[$ _key] = true;
+        _global.__ignore_key_dict[$ _key] = true;
     }
     else
     {

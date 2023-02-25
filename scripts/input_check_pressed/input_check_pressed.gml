@@ -12,7 +12,7 @@ function input_check_pressed(_verb, _player_index = 0, _buffer_duration = 0)
     
     if (_verb == all)
     {
-        return input_check_pressed(global.__input_basic_verb_array, _player_index, _buffer_duration);
+        return input_check_pressed(_global.__basic_verb_array, _player_index, _buffer_duration);
     }
     
     if (is_array(_verb))
@@ -33,7 +33,7 @@ function input_check_pressed(_verb, _player_index = 0, _buffer_duration = 0)
     
     if (_buffer_duration <= 0)
     {
-        return ((global.__input_cleared)? false : _verb_struct.press);
+        return ((_global.__cleared)? false : _verb_struct.press);
     }
     else
     {

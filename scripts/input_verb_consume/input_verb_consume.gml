@@ -22,7 +22,7 @@ function input_verb_consume(_verb, _player_index = 0)
     
     if (_verb == all)
     {
-        var _verb_names = variable_struct_get_names(global.__input_players[_player_index].__verb_state_dict);
+        var _verb_names = variable_struct_get_names(_global.__players[_player_index].__verb_state_dict);
         var _v = 0;
         repeat(array_length(_verb_names))
         {
@@ -41,7 +41,7 @@ function input_verb_consume(_verb, _player_index = 0)
     }
     else
     {
-        var _verb_struct = global.__input_players[_player_index].__verb_state_dict[$ _verb];
+        var _verb_struct = _global.__players[_player_index].__verb_state_dict[$ _verb];
         if (!is_struct(_verb_struct))
         {
             __input_error("Verb not recognised (", _verb, ")");

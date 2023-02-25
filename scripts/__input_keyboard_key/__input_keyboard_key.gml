@@ -1,6 +1,6 @@
 function __input_keyboard_key()
 {
-    if (global.__input_keyboard_allowed && (keyboard_check(vk_anykey)))
+    if (_global.__keyboard_allowed && (keyboard_check(vk_anykey)))
     {        
         switch (os_type)
         {

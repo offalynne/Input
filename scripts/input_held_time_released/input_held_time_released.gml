@@ -10,7 +10,7 @@ function input_held_time_released(_verb, _player_index = 0)
     __INPUT_GET_VERB_STRUCT
     
     //Return a negative number if the verb is inactive, cleared, not released
-    if (_verb_struct.__inactive || global.__input_cleared || !_verb_struct.release) return -1;
+    if (_verb_struct.__inactive || _global.__cleared || !_verb_struct.release) return -1;
     
-    return max(0, (INPUT_TIMER_MILLISECONDS? global.__input_previous_current_time : global.__input_frame - 1) - _verb_struct.press_time);
+    return max(0, (INPUT_TIMER_MILLISECONDS? _global.__previous_current_time : _global.__frame - 1) - _verb_struct.press_time);
 }

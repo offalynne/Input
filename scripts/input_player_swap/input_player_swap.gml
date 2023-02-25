@@ -31,12 +31,12 @@ function input_player_swap(_player_index_a, _player_index_b)
     }
     
     //Do the ol' swaperoo
-    var _original_a = global.__input_players[_player_index_a];
-    var _original_b = global.__input_players[_player_index_b];
+    var _original_a = _global.__players[_player_index_a];
+    var _original_b = _global.__players[_player_index_b];
     
     _original_a.__index = _player_index_b;
     _original_b.__index = _player_index_a;
     
-    global.__input_players[@ _player_index_a] = _original_b;
-    global.__input_players[@ _player_index_b] = _original_a;
+    _global.__players[@ _player_index_a] = _original_b;
+    _global.__players[@ _player_index_b] = _original_a;
 }

@@ -18,5 +18,5 @@ function input_vibrate_pulse(_strength, _pan, _repeats, _duration, _player_index
     _repeats  = max(_repeats, 0);
     _duration = max(_duration, 0);
     
-    global.__input_players[_player_index].__vibration_add_event(new __input_class_vibration_pulse(_strength, _pan, _repeats, _duration, _force));
+    _global.__players[_player_index].__vibration_add_event(new __input_class_vibration_pulse(_strength, _pan, _repeats, _duration, _force));
 }

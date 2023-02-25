@@ -5,12 +5,12 @@ function __input_player_tick_sources()
     if (__profile_name == undefined) return;
     var _current_profile_dict = __profiles_dict[$ __profile_name];
     
-    var _is_multidevice_player = ((global.__input_source_mode == INPUT_SOURCE_MODE.MULTIDEVICE) && (__index == 0));
+    var _is_multidevice_player = ((_global.__source_mode == INPUT_SOURCE_MODE.MULTIDEVICE) && (__index == 0));
     
     var _v = 0;
-    repeat(array_length(global.__input_basic_verb_array))
+    repeat(array_length(_global.__basic_verb_array))
     {
-        var _verb_name   = global.__input_basic_verb_array[_v];
+        var _verb_name   = _global.__basic_verb_array[_v];
         var _verb_struct = __verb_state_dict[$ _verb_name];
         
         var _raw           = 0.0;
@@ -137,7 +137,7 @@ function __input_player_tick_sources()
                             break;
                             
                             default:
-                                if ((global.__input_source_mode != INPUT_SOURCE_MODE.MIXED) && (global.__input_source_mode != INPUT_SOURCE_MODE.MULTIDEVICE))
+                                if ((_global.__source_mode != INPUT_SOURCE_MODE.MIXED) && (_global.__source_mode != INPUT_SOURCE_MODE.MULTIDEVICE))
                                 {
                                     __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
                                 }
@@ -190,7 +190,7 @@ function __input_player_tick_sources()
                             break;
                             
                             default:
-                                if ((global.__input_source_mode != INPUT_SOURCE_MODE.MIXED) && (global.__input_source_mode != INPUT_SOURCE_MODE.MULTIDEVICE))
+                                if ((_global.__source_mode != INPUT_SOURCE_MODE.MIXED) && (_global.__source_mode != INPUT_SOURCE_MODE.MULTIDEVICE))
                                 {
                                     __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
                                 }
@@ -276,7 +276,7 @@ function __input_player_tick_sources()
                             break;
                             
                             default:
-                                if ((global.__input_source_mode != INPUT_SOURCE_MODE.MIXED) && (global.__input_source_mode != INPUT_SOURCE_MODE.MULTIDEVICE))
+                                if ((_global.__source_mode != INPUT_SOURCE_MODE.MIXED) && (_global.__source_mode != INPUT_SOURCE_MODE.MULTIDEVICE))
                                 {
                                     __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
                                 }

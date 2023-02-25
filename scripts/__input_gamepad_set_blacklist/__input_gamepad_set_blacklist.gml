@@ -37,7 +37,7 @@ function __input_gamepad_set_blacklist()
     }
     else if (os_type == os_linux)
     {
-        if (global.__input_on_steam_deck)
+        if (_global.__on_steam_deck)
         {
             if ((button_count == 144) && (axis_count == 0))
             {
@@ -84,7 +84,7 @@ function __input_gamepad_set_blacklist()
         }
     }
     
-    if ((vendor != "de28") && variable_struct_exists(global.__input_ignore_gamepad_types, simple_type))
+    if ((vendor != "de28") && variable_struct_exists(_global.__ignore_gamepad_types, simple_type))
     {
         //Block device types indicated by Steam Input
         __input_trace("Warning! Controller type is blacklisted by Steam Input (\"", simple_type, "\")");
@@ -107,7 +107,7 @@ function __input_gamepad_set_blacklist()
     }
     
     //Check the platform blacklists to see if this gamepad is banned
-    var _os_filter_dict  = global.__input_blacklist_dictionary[$ _os];
+    var _os_filter_dict  = _global.__blacklist_dictionary[$ _os];
     var _os_guid_dict    = is_struct(_os_filter_dict)? _os_filter_dict[$ "guid"                ] : undefined;
     var _os_vidpid_dict  = is_struct(_os_filter_dict)? _os_filter_dict[$ "vid+pid"             ] : undefined;
     var _os_desc_array   = is_struct(_os_filter_dict)? _os_filter_dict[$ "description contains"] : undefined;

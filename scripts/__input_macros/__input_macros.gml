@@ -58,7 +58,7 @@
 
 #macro __INPUT_STEAMWORKS_SUPPORT         (((os_type == os_windows) || (os_type == os_linux)) && !__INPUT_ON_WEB)
 #macro __INPUT_TOUCH_SUPPORT              (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch) || (os_type == os_windows))
-#macro __INPUT_TOUCH_PRIMARY              (!INPUT_TOUCH_IS_MOUSE && (__INPUT_ON_MOBILE  || (os_type == os_switch) || (global.__input_on_steam_deck && (os_type == os_windows))))
+#macro __INPUT_TOUCH_PRIMARY              (!INPUT_TOUCH_IS_MOUSE && (__INPUT_ON_MOBILE  || (os_type == os_switch) || (_global.__on_steam_deck && (os_type == os_windows))))
 #macro __INPUT_KEYBOARD_NORMATIVE         (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch))
 #macro __INPUT_KEYBOARD_SUPPORT           (__INPUT_KEYBOARD_NORMATIVE || (os_type == os_android))
 #macro __INPUT_GAMEPAD_VIBRATION_SUPPORT  (__INPUT_ON_CONSOLE || (!__INPUT_ON_WEB && (os_type == os_windows)))
@@ -304,7 +304,7 @@ enum INPUT_VIRTUAL_RELEASE
                                          {\
                                              if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER)\
                                              {\
-                                                 if (!__input_state().__any_keyboard_binding_defined && !global.__input_any_mouse_binding_defined)\
+                                                 if (!__input_state().__any_keyboard_binding_defined && !_global.__any_mouse_binding_defined)\
                                                  {\
                                                     __input_error("Cannot claim ", _source, ", no keyboard or mouse bindings have been created in a default profile (see __input_config_verbs_and_bindings())");\
                                                  }\

@@ -9,5 +9,5 @@ function input_vibrate_set_strength(_strength, _player_index = 0)
     
     _strength = clamp(_strength, 0, 1);
     
-    global.__input_players[_player_index].__vibration_strength = _strength;
+    _global.__players[_player_index].__vibration_strength = _strength;
 }

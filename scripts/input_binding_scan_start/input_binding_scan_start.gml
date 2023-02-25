@@ -63,10 +63,10 @@ function input_binding_scan_start(_success_method, _failure_method = undefined, 
         __input_error("Binding scan failure callback set to an illegal value (typeof=", typeof(_failure_method), ")");
     }
     
-    with(global.__input_players[_player_index])
+    with(_global.__players[_player_index])
     {
         __rebind_state            = 1;
-        __rebind_start_time       = global.__input_current_time;
+        __rebind_start_time       = _global.__current_time;
         __rebind_success_callback = _success_method;
         __rebind_failure_callback = _failure_method;
         

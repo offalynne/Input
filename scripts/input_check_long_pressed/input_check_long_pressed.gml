@@ -28,7 +28,7 @@ function input_check_long_pressed(_verb, _player_index = 0, _buffer_duration = 0
     
     if (_buffer_duration <= 0)
     {
-        return ((global.__input_cleared)? false : _verb_struct.long_press);
+        return ((_global.__cleared)? false : _verb_struct.long_press);
     }
     else
     {

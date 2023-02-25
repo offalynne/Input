@@ -24,5 +24,5 @@ function input_vibrate_adsr(_peak_strength, _sustain_level, _pan, _attack, _deca
     _sustain       = max(_sustain, 0);
     _release       = max(_release, 0);
     
-    global.__input_players[_player_index].__vibration_add_event(new __input_class_vibration_adsr(_peak_strength, _sustain_level, _pan, _attack, _decay, _sustain, _release, _force));
+    _global.__players[_player_index].__vibration_add_event(new __input_class_vibration_adsr(_peak_strength, _sustain_level, _pan, _attack, _decay, _sustain, _release, _force));
 }

@@ -6,5 +6,5 @@ function input_clear_momentary(_state)
 {
     __INPUT_GLOBAL_STATIC_LOCAL
     
-    global.__input_cleared = _state;
+    _global.__cleared = _state;
 }

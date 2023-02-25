@@ -12,10 +12,10 @@ function input_mouse_capture_set(_state, _sensitivity = 1)
         return;
     }
     
-    if (_state && !global.__input_mouse_capture) global.__input_mouse_capture_frame = global.__input_frame;
+    if (_state && !_global.__mouse_capture) _global.__mouse_capture_frame = _global.__frame;
     
-    global.__input_mouse_capture             = _state;
-    global.__input_mouse_capture_sensitivity = _sensitivity;
+    _global.__mouse_capture             = _state;
+    _global.__mouse_capture_sensitivity = _sensitivity;
     
     __input_release_multimonitor_cursor();
 }

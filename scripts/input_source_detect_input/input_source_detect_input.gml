@@ -26,7 +26,7 @@ function input_source_detect_input(_source, _available_only = true)
     switch(_source.__source)
     {
         case __INPUT_SOURCE.KEYBOARD:
-            if (global.__input_any_keyboard_binding_defined
+            if (_global.__any_keyboard_binding_defined
             &&  (!_available_only || input_source_is_available(_source))
             &&  keyboard_check_pressed(vk_anykey)
             &&  !__input_key_is_ignored(__input_keyboard_key())) //Ensure that this key isn't one we're trying to ignore
@@ -61,7 +61,7 @@ function input_source_detect_input(_source, _available_only = true)
         break;
         
         case __INPUT_SOURCE.GAMEPAD:
-            if (global.__input_any_gamepad_binding_defined)
+            if (_global.__any_gamepad_binding_defined)
             {
                 var _gamepad = _source.__gamepad;
                 if (input_gamepad_is_connected(_gamepad)

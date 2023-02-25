@@ -18,7 +18,7 @@ function input_source_share(_source, _array, _auto_profile = true)
         var _player_index = _array[_i];
         __INPUT_VERIFY_PLAYER_INDEX
         
-        with(global.__input_players[_player_index])
+        with(_global.__players[_player_index])
         {
             __sources_clear();
             __source_add(_source);

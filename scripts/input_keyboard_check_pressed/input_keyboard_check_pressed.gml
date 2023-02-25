@@ -5,7 +5,7 @@ function input_keyboard_check_pressed(_binding)
 {
     __INPUT_GLOBAL_STATIC_LOCAL
     
-    if (!global.__input_keyboard_allowed || global.__input_cleared)
+    if (!_global.__keyboard_allowed || _global.__cleared)
     {
         return false;
     }

@@ -9,5 +9,5 @@ function input_profile_export(_profile_name, _player_index = 0, _output_string =
     __INPUT_GLOBAL_STATIC_LOCAL
     __INPUT_VERIFY_PLAYER_INDEX
     
-    return global.__input_players[_player_index].__profile_export(_profile_name, _output_string, _prettify);
+    return _global.__players[_player_index].__profile_export(_profile_name, _output_string, _prettify);
 }

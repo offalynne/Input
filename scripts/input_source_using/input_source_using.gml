@@ -9,5 +9,5 @@ function input_source_using(_source, _player_index = 0)
     __INPUT_GLOBAL_STATIC_LOCAL
     __INPUT_VERIFY_PLAYER_INDEX
     
-    return global.__input_players[_player_index].__source_contains(_source);
+    return _global.__players[_player_index].__source_contains(_source);
 }

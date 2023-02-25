@@ -21,5 +21,5 @@ function input_binding_set(_verb_name, _binding, _player_index = 0, _alternate =
         return undefined;
     }
     
-    global.__input_players[_player_index].__binding_set(_profile_name, _verb_name, _alternate, _binding);
+    _global.__players[_player_index].__binding_set(_profile_name, _verb_name, _alternate, _binding);
 }

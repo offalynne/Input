@@ -51,7 +51,7 @@ function input_binding_scan_params_set(_ignore_array = undefined, _allow_array =
         }
     }
     
-    with(global.__input_players[_player_index])
+    with(_global.__players[_player_index])
     {
         if (!is_undefined(_source_filter) && !is_array(_source_filter))
         {

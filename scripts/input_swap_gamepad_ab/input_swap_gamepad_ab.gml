@@ -5,23 +5,23 @@ function input_swap_gamepad_ab(_state)
 {
     __INPUT_GLOBAL_STATIC_LOCAL
     
-    if (_state == global.__input_swap_ab) return;
-    global.__input_swap_ab = _state;
+    if (_state == _global.__swap_ab) return;
+    _global.__swap_ab = _state;
     
     //Don't flip bindings if we haven't set up default profiles yet
-    if (global.__input_default_profile_dict == undefined) return;
+    if (_global.__default_profile_dict == undefined) return;
     
-    var _profile_name_array = variable_struct_get_names(global.__input_default_profile_dict);
+    var _profile_name_array = variable_struct_get_names(_global.__default_profile_dict);
     var _f = 0;
     repeat(array_length(_profile_name_array))
     {
         var _profile_name = _profile_name_array[_f];
         
-        var _profile_dict = global.__input_default_player.__profiles_dict[$ _profile_name];
+        var _profile_dict = _global.__default_player.__profiles_dict[$ _profile_name];
         var _v = 0;
-        repeat(array_length(global.__input_basic_verb_array))
+        repeat(array_length(_global.__basic_verb_array))
         {
-            var _verb_name = global.__input_basic_verb_array[_v];
+            var _verb_name = _global.__basic_verb_array[_v];
             
             var _alternate_array = _profile_dict[$ _verb_name];
             var _a = 0;

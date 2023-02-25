@@ -3,7 +3,7 @@
 
 function input_keyboard_check(_binding)
 {
-    if (!global.__input_keyboard_allowed) 
+    if (!_global.__keyboard_allowed) 
     {
         return false;
     }

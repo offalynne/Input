@@ -62,9 +62,9 @@ function input_multiplayer_params_set(_min, _max, _leave_verb, _abort_callback, 
         __input_error("Multiplayer abort callback must be a function, a script, or <undefined>");
     }
     
-    global.__input_multiplayer_min            = _min;
-    global.__input_multiplayer_max            = _max;
-    global.__input_multiplayer_leave_verb     = _leave_verb;
-    global.__input_multiplayer_abort_callback = _abort_callback;
-    global.__input_multiplayer_drop_down      = _drop_down;
+    _global.__multiplayer_min            = _min;
+    _global.__multiplayer_max            = _max;
+    _global.__multiplayer_leave_verb     = _leave_verb;
+    _global.__multiplayer_abort_callback = _abort_callback;
+    _global.__multiplayer_drop_down      = _drop_down;
 }

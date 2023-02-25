@@ -11,5 +11,5 @@ function input_source_add(_source, _player_index = 0)
     __INPUT_VERIFY_SOURCE_ASSIGNABLE
     
     __input_source_relinquish(_source);
-    global.__input_players[_player_index].__source_add(_source);
+    _global.__players[_player_index].__source_add(_source);
 }

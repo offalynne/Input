@@ -34,7 +34,7 @@ function input_binding_set_safe(_verb_name, _binding, _player_index = 0, _altern
                 __input_trace("Warning! More than one binding collision found, resolution may not be desirable");
             }
             
-            _profile_name = global.__input_players[_player_index].__profile_get(_profile_name);
+            _profile_name = _global.__players[_player_index].__profile_get(_profile_name);
             
             if (_profile_name == undefined)
             {

@@ -13,5 +13,5 @@ function input_cursor_translate(_x = undefined, _y = undefined, _duration, _play
     __INPUT_GLOBAL_STATIC_LOCAL
     __INPUT_VERIFY_PLAYER_INDEX
     
-    return global.__input_players[_player_index].__cursor.__translate(_x, _y, _duration, _relative);
+    return _global.__players[_player_index].__cursor.__translate(_x, _y, _duration, _relative);
 }

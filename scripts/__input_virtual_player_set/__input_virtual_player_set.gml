@@ -4,14 +4,14 @@ function __input_virtual_player_set(_playerStruct)
 {
     __INPUT_GLOBAL_STATIC_LOCAL
     
-    if (_playerStruct != global.__input_touch_player)
+    if (_playerStruct != _global.__touch_player)
     {
-        global.__input_touch_player = _playerStruct;
+        _global.__touch_player = _playerStruct;
         
         var _i = 0;
-        repeat(array_length(global.__input_virtual_array))
+        repeat(array_length(_global.__virtual_array))
         {
-            global.__input_virtual_array[_i].__clear_state();
+            _global.__virtual_array[_i].__clear_state();
             ++_i;
         }
     }

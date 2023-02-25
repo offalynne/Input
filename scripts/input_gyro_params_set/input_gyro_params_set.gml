@@ -24,11 +24,11 @@ function input_gyro_params_set(_gyro_axis_x = undefined, _gyro_axis_y = undefine
     
     __INPUT_VERIFY_PLAYER_INDEX
     
-    if (_gamepad != undefined) global.__input_players[_player_index].__gyro_gamepad = _gamepad;
+    if (_gamepad != undefined) _global.__players[_player_index].__gyro_gamepad = _gamepad;
 
-    if (_gyro_axis_x != undefined) global.__input_players[_player_index].__gyro_axis_x = _gyro_axis_x;
-    if (_gyro_axis_y != undefined) global.__input_players[_player_index].__gyro_axis_y = _gyro_axis_y;
+    if (_gyro_axis_x != undefined) _global.__players[_player_index].__gyro_axis_x = _gyro_axis_x;
+    if (_gyro_axis_y != undefined) _global.__players[_player_index].__gyro_axis_y = _gyro_axis_y;
 
-    if (_gyro_sensitivity_x != undefined) global.__input_players[_player_index].__gyro_sensitivity_x = _gyro_sensitivity_x;
-    if (_gyro_sensitivity_y != undefined) global.__input_players[_player_index].__gyro_sensitivity_y = _gyro_sensitivity_y;
+    if (_gyro_sensitivity_x != undefined) _global.__players[_player_index].__gyro_sensitivity_x = _gyro_sensitivity_x;
+    if (_gyro_sensitivity_y != undefined) _global.__players[_player_index].__gyro_sensitivity_y = _gyro_sensitivity_y;
 }

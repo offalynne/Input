@@ -16,5 +16,5 @@ function input_vibrate_constant(_strength, _pan, _duration, _player_index = 0, _
     _pan      = clamp(_pan, -1, 1);
     _duration = max(_duration, 0);
     
-    global.__input_players[_player_index].__vibration_add_event(new __input_class_vibration_constant(_strength, _pan, _duration, _force));
+    _global.__players[_player_index].__vibration_add_event(new __input_class_vibration_constant(_strength, _pan, _duration, _force));
 }

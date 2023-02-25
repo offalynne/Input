@@ -21,7 +21,7 @@ function input_cursor_limit_aabb(_l, _t, _r, _b, _player_index = 0)
     
     __INPUT_VERIFY_PLAYER_INDEX
     
-    with(global.__input_players[_player_index].__cursor)
+    with(_global.__players[_player_index].__cursor)
     {
         __limit_l = _l;
         __limit_t = _t;

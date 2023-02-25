@@ -27,7 +27,7 @@ function input_check_double_released(_verb, _player_index = 0, _buffer_duration 
     
     if (_buffer_duration <= 0)
     {
-        return ((global.__input_cleared)? false : _verb_struct.double_release);
+        return ((_global.__cleared)? false : _verb_struct.double_release);
     }
     else
     {

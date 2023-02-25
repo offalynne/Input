@@ -14,11 +14,11 @@ function input_gyro_params_get(_player_index = 0)
         gamepad:       undefined,
     };
 
-    _result.axis_x        = global.__input_players[_player_index].__gyro_axis_x;
-    _result.axis_y        = global.__input_players[_player_index].__gyro_axis_y;
-    _result.sensitivity_x = global.__input_players[_player_index].__gyro_sensitivity_x;
-    _result.sensitivity_y = global.__input_players[_player_index].__gyro_sensitivity_y;
-    _result.gamepad       = global.__input_players[_player_index].__gyro_gamepad;
+    _result.axis_x        = _global.__players[_player_index].__gyro_axis_x;
+    _result.axis_y        = _global.__players[_player_index].__gyro_axis_y;
+    _result.sensitivity_x = _global.__players[_player_index].__gyro_sensitivity_x;
+    _result.sensitivity_y = _global.__players[_player_index].__gyro_sensitivity_y;
+    _result.gamepad       = _global.__players[_player_index].__gyro_gamepad;
     
     return _result;
 }

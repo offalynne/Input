@@ -14,7 +14,7 @@ function __input_player_apply_trigger_effects(_player_index)
     
     __INPUT_VERIFY_PLAYER_INDEX
        
-    with(global.__input_players[_player_index])
+    with(_global.__players[_player_index])
     {
        if (__trigger_effect_paused) return;
        

@@ -4,5 +4,5 @@ function input_accessibility_global_cooldown_get()
 {
     __INPUT_GLOBAL_STATIC_LOCAL
     
-    return global.__input_cooldown_state;
+    return _global.__cooldown_state;
 }

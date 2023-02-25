@@ -13,7 +13,7 @@ function input_player_verify(_json, _player_index = 0)
     var _error = undefined;
     try
     {
-        global.__input_players[_player_index].__import(_json);
+        _global.__players[_player_index].__import(_json);
     }
     catch(_error)
     {

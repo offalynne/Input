@@ -22,7 +22,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
             default:              var _fallback_category_name = "xbox one"; break;
         }
         
-        var _fallback_category_data = global.__input_icons[$ _fallback_category_name];
+        var _fallback_category_data = _global.__icons[$ _fallback_category_name];
         if (is_struct(_fallback_category_data))
         {
             _fallback_icon_struct = _fallback_category_data.__dictionary;
@@ -37,7 +37,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
     //Check for invalid input value
     if (!input_value_is_binding(_binding))
     {
-        var _category_data = global.__input_icons[$ "not a binding"];
+        var _category_data = _global.__icons[$ "not a binding"];
         if (!is_struct(_category_data)) return "not a binding";
         var _icon = _category_data.__dictionary[$ string(all)];
         return _icon ?? "not a binding";
@@ -49,7 +49,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
     //If this is an empty binding...
     if ((_type == undefined) || (_label == undefined))
     {
-        var _category_data = global.__input_icons[$ "empty"];
+        var _category_data = _global.__icons[$ "empty"];
         if (!is_struct(_category_data)) return "empty";
         var _icon = _category_data.__dictionary[$ string(all)];
         return _icon ?? "empty";
@@ -79,7 +79,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
     }
     
     //Try to find the lookup table for this particular category
-    var _category_data = global.__input_icons[$ _category];
+    var _category_data = _global.__icons[$ _category];
     var _icon_struct = is_struct(_category_data)? _category_data.__dictionary : _fallback_icon_struct;
     
     //Try to find the icon from the source struct
