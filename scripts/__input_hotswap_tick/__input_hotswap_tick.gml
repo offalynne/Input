@@ -12,7 +12,8 @@ function __input_hotswap_tick()
             return false;
         }
         
-        if ((__last_input_time < 0) || (_global.__current_time - __last_input_time > INPUT_HOTSWAP_DELAY))
+        if ((__last_input_time < 0) || (_global.__current_time - __last_input_time > INPUT_HOTSWAP_DELAY)) //If enough time has passed since the last input
+        && ((__rebind_state <= 0) || !is_array(__rebind_source_filter) || (array_length(__rebind_source_filter) <= 0)) //And we're not rebinding, or the rebinding source filter is empty
         {
             var _new_source = __input_hotswap_tick_input();
             if ((_new_source != undefined) && !__source_contains(_new_source))
