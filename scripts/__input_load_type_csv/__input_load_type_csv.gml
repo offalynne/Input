@@ -1,5 +1,7 @@
 function __input_load_type_csv(_filename)
 {
+    __INPUT_GLOBAL_STATIC
+    
     var _t = get_timer();
     
     __input_trace("Loading controller type CSV from \"", _filename, "\"");
@@ -21,7 +23,7 @@ function __input_load_type_csv(_filename)
         repeat(array_length(_column_array) - 1)
         {
             var _tag = _column_array[_x];
-            global.__input_raw_type_dictionary[$ _tag] = _raw_type;
+            _global.__raw_type_dictionary[$ _tag] = _raw_type;
             _count++;
             
             ++_x;

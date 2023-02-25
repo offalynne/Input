@@ -11,10 +11,11 @@ function input_xy_quick_pressed(_verb_l, _verb_r, _verb_u, _verb_d, _player_inde
 {
     if (!is_struct(_player_index))
     {
+        __INPUT_GLOBAL_STATIC
         __INPUT_VERIFY_PLAYER_INDEX
         
         //Grab the player's verbs
-        var _player_verbs_struct = global.__input_players[_player_index].__verb_state_dict;
+        var _player_verbs_struct = _global.__players[_player_index].__verb_state_dict;
     }
     else
     {

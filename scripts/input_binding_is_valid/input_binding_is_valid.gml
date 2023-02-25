@@ -22,7 +22,7 @@ function input_binding_is_valid(_binding, _player_index = 0)
         }
     }
     
-    with(global.__input_players[_player_index])
+    with(_global.__players[_player_index])
     {
         return __sources_validate_binding(_binding);
     }

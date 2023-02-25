@@ -1,5 +1,7 @@
 function __input_load_blacklist_csv(_filename)
 {
+    __INPUT_GLOBAL_STATIC
+    
     var _t = get_timer();
     
     __input_trace("Loading controller blacklist CSV from \"", _filename, "\"");
@@ -19,11 +21,11 @@ function __input_load_blacklist_csv(_filename)
         var _os          = string_lower(_column_array[0]);
         var _filter_type = string_lower(_column_array[1]);
         
-        var _os_struct = global.__input_blacklist_dictionary[$ _os];
+        var _os_struct = _global.__blacklist_dictionary[$ _os];
         if (!is_struct(_os_struct))
         {
             _os_struct = {};
-            global.__input_blacklist_dictionary[$ _os] = _os_struct;
+            _global.__blacklist_dictionary[$ _os] = _os_struct;
         }
         
         if (_filter_type == "description contains")

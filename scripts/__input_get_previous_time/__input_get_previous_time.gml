@@ -1,4 +1,5 @@
 function __input_get_previous_time()
 {
-    return (INPUT_TIMER_MILLISECONDS? global.__input_previous_current_time : (global.__input_frame - 1));
+    __INPUT_GLOBAL_STATIC
+    return (INPUT_TIMER_MILLISECONDS? _global.__previous_current_time : (_global.__frame - 1));
 }

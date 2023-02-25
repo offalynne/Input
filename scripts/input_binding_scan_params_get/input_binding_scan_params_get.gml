@@ -7,7 +7,7 @@ function input_binding_scan_params_get(_player_index = 0)
     __INPUT_GLOBAL_STATIC
     __INPUT_VERIFY_PLAYER_INDEX
     
-    with(global.__input_players[_player_index])
+    with(_global.__players[_player_index])
     {
         return {
             ignore_array:  is_struct(__rebind_ignore_struct)? variable_struct_get_names(__rebind_ignore_struct) : undefined,
