@@ -1,12 +1,11 @@
 {
+  "resourceType": "GMScript",
+  "resourceVersion": "1.0",
+  "name": "__input_release_multimonitor_cursor",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "(System)",
-    "path": "folders/Input/(System).yy",
+    "name": "Keyboard and Mouse",
+    "path": "folders/Input/(System)/Keyboard and Mouse.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "__input_release_multimonitor_cursor",
-  "tags": [],
-  "resourceType": "GMScript",
 }

@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "(System)",
-    "path": "folders/Input/(System).yy",
+    "name": "Keyboard and Mouse",
+    "path": "folders/Input/(System)/Keyboard and Mouse.yy",
   },
 }

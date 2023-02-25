@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__input_system",
+  "name": "__input_error",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

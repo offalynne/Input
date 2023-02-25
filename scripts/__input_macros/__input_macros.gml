@@ -183,98 +183,92 @@ enum __INPUT_TRIGGER_EFFECT
 
 
 
+#macro __INPUT_VERIFY_PLAYER_INDEX  if (_player_index < 0)\
+                                    {\
+                                        __input_error("Invalid player index provided (", _player_index, ")");\
+                                        return undefined;\
+                                    }\
+                                    if (_player_index >= INPUT_MAX_PLAYERS)\
+                                    {\
+                                        __input_error("Player index too large (", _player_index, " must be less than ", INPUT_MAX_PLAYERS, ")\nIncrease INPUT_MAX_PLAYERS to support more players");\
+                                        return undefined;\
+                                    }
 
-function __input_axis_is_directional(_axis)
-{
-    return ((_axis == gp_padu)   || (_axis == gp_padd)   || (_axis == gp_padl)   || (_axis == gp_padr)
-         || (_axis == gp_axislh) || (_axis == gp_axislv) || (_axis == gp_axisrh) || (_axis == gp_axisrv));
-}
+#macro __INPUT_GET_VERB_STRUCT  var _verb_struct = global.__input_players[_player_index].__verb_state_dict[$ _verb];\
+                                if (!is_struct(_verb_struct))\
+                                {\
+                                    __input_error("Verb not recognised (", _verb, ")");\
+                                    return undefined;\
+                                }
+                                
+#macro __INPUT_VERIFY_ALTERNATE_INDEX  if (_alternate < 0)\
+                                       {\
+                                           __input_error("Invalid \"alternate\" argument (", _alternate, ")");\
+                                           return undefined;\
+                                       }\
+                                       if (_alternate >= INPUT_MAX_ALTERNATE_BINDINGS)\
+                                       {\
+                                           __input_error("\"alternate\" argument too large (", _alternate, " must be less than ", INPUT_MAX_ALTERNATE_BINDINGS, ")\nIncrease INPUT_MAX_ALTERNATE_BINDINGS for more alternate binding slots");\
+                                           return undefined;\
+                                       }
 
-function __input_trace()
-{
-    var _string = "";
-    var _i = 0;
-    repeat(argument_count)
-    {
-        _string += string(argument[_i]);
-        ++_i;
-    }
-    
-    show_debug_message("Input: " + _string);
-    
-    if (__INPUT_EXTERNAL_DEBUG_LOG)
-    {
-        var _file = file_text_open_append(global.__input_debug_log);
-        file_text_write_string(_file, _string);
-        file_text_writeln(_file);
-        file_text_close(_file);
-    }
-}
+#macro __INPUT_VERIFY_BASIC_VERB_NAME  if (variable_struct_exists(global.__input_chord_verb_dict, _verb_name)) __input_error("\"", _verb_name, "\" is a chord verb. Verbs passed to this function must be basic verb");\
+                                       if (!variable_struct_exists(global.__input_basic_verb_dict, _verb_name)) __input_error("Verb \"", _verb_name, "\" not recognised");
+                                       
+                                       
+                                       
+#macro __INPUT_VERIFY_PROFILE_NAME  if (!input_profile_exists(_profile_name, _player_index)) __input_error("Profile name \"", _profile_name, "\" doesn't exist");
 
-function __input_trace_loud()
-{
-    var _string = "";
-    var _i = 0;
-    repeat(argument_count)
-    {
-        _string += string(argument[_i]);
-        ++_i;
-    }
-    
-    show_debug_message("Input: LOUD " + _string);
-    
-    if (__INPUT_EXTERNAL_DEBUG_LOG)
-    {
-        var _file = file_text_open_append(global.__input_debug_log);
-        file_text_write_string(_file, _string);
-        file_text_writeln(_file);
-        file_text_close(_file);
-    }
-    
-    show_message(_string);
-}
+#macro __INPUT_VERIFY_SOURCE  if (global.__input_use_is_instanceof)\
+                              {\
+                                  if (!is_instanceof(_source, __input_class_source))\
+                                  {\
+                                      __input_error("Invalid source provided (", _source, ")");\
+                                  }\
+                              }\
+                              else\
+                              {\
+                                  if (instanceof(_source) != "__input_class_source")\
+                                  {\
+                                      __input_error("Invalid source provided (", _source, ")");\
+                                  }\
+                              }
 
-function __input_error()
-{
-    var _string = "";
-    var _i = 0;
-    repeat(argument_count)
-    {
-        _string += string(argument[_i]);
-        ++_i;
-    }
-    
-    if (os_browser == browser_not_a_browser)
-    {
-        show_error("Input " + __INPUT_VERSION + ":\n" + _string + "\n ", false);
-    }
-    else
-    {
-        show_error("Input " + __INPUT_VERSION + ":\n" + _string + "\n" + string(debug_get_callstack()), false);
-    }
-}
-
-function __input_ensure_unique_verb_name(_name)
-{
-    if (variable_struct_exists(global.__input_basic_verb_dict, _name))
-    {
-        __input_error("A basic verb named \"", _name, "\" already exists");
-        return;
-    }
-    
-    if (variable_struct_exists(global.__input_chord_verb_dict, _name))
-    {
-        __input_error("A chord named \"", _name, "\" already exists");
-        return;
-    }
-}
-
-function __input_get_previous_time()
-{
-    return INPUT_TIMER_MILLISECONDS? global.__input_previous_current_time : (global.__input_frame - 1);
-}
-
-function __input_get_time()
-{
-    return (INPUT_TIMER_MILLISECONDS? global.__input_current_time : global.__input_frame);
-}
+#macro __INPUT_VERIFY_SOURCE_ASSIGNABLE  if (_source == INPUT_KEYBOARD)\
+                                         {\
+                                             if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER)\
+                                             {\
+                                                 if (!global.__input_any_keyboard_binding_defined && !global.__input_any_mouse_binding_defined)\
+                                                 {\
+                                                    __input_error("Cannot claim ", _source, ", no keyboard or mouse bindings have been created in a default profile (see __input_config_verbs_and_bindings())");\
+                                                 }\
+                                             }\
+                                             else\
+                                             {\
+                                                 if (!global.__input_any_keyboard_binding_defined)\
+                                                 {\
+                                                     __input_error("Cannot claim ", _source, ", no keyboard bindings have been created in a default profile (see __input_config_verbs_and_bindings())");\
+                                                 }\
+                                             }\
+                                         }\
+                                         else if (_source == INPUT_MOUSE)\
+                                         {\
+                                             if (!global.__input_any_mouse_binding_defined)\
+                                             {\
+                                                 __input_error("Cannot claim ", _source, ", no mouse bindings have been created in a default profile (see __input_config_verbs_and_bindings())");\
+                                             }\
+                                         }\
+                                         else if (_source == INPUT_TOUCH)\
+                                         {\
+                                             if (!global.__input_any_touch_binding_defined)\
+                                             {\
+                                                 __input_error("Cannot claim ", _source, ", no virtual button bindings have been created in a default profile (see __input_config_verbs_and_bindings())");\
+                                             }\
+                                         }\
+                                         else if (_source.__source == __INPUT_SOURCE.GAMEPAD)\
+                                         {\
+                                             if (!global.__input_any_gamepad_binding_defined)\
+                                             {\
+                                                 __input_error("Cannot claim ", _source, ", no gamepad bindings have been created in a default profile (see __input_config_verbs_and_bindings())");\
+                                             }\
+                                         }
