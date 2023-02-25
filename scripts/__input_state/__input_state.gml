@@ -126,6 +126,7 @@ function __input_state()
         __default_player: new __input_class_player(),
         
         //Array of players. Each player is a struct (instanceof __input_class_player) that contains lotsa juicy information
+        //This is completed in __input_initialize()
         __players: array_create(INPUT_MAX_PLAYERS, undefined),
     };
     

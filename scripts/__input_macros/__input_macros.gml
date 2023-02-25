@@ -181,6 +181,72 @@ enum __INPUT_TRIGGER_EFFECT
     __TYPE_VIBRATION,
 }
 
+//INPUT_STATUS.DISCONNECTED *must* be zero so that array_size() initializes gamepad status to disconnected
+//See input_tick() for more details
+enum INPUT_STATUS
+{
+    NEWLY_DISCONNECTED = -1,
+    DISCONNECTED       =  0,
+    NEWLY_CONNECTED    =  1,
+    CONNECTED          =  2,
+}
+
+enum INPUT_SOURCE_MODE
+{
+    FIXED,        //Player sources won't change unless manually editted
+    JOIN,         //Starts source assignment, typically used for multiplayer
+    HOTSWAP,      //Player 0's source is determined by most recent input
+    MIXED,        //Player 0 can use a mixture of keyboard, mouse, and any gamepad
+    MULTIDEVICE,  //Player 0 can use a mixture of keyboard, mouse, and any gamepad, but gamepad bindings are specific to each device
+}
+
+enum INPUT_COORD_SPACE
+{
+    ROOM,
+    GUI,
+    DEVICE,
+    __SIZE,
+    
+    //TODO - Deprecated, remove in v6
+    DISPLAY = 2,
+}
+
+//DualSense haptic trigger effect states
+enum INPUT_TRIGGER_STATE
+{
+    EFFECT_OFF               = ps5_gamepad_trigger_effect_state_off,
+    EFFECT_FEEDBACK_STANDBY  = ps5_gamepad_trigger_effect_state_feedback_standby,
+    EFFECT_FEEDBACK_ACTIVE   = ps5_gamepad_trigger_effect_state_feedback_active,
+    EFFECT_WEAPON_STANDBY    = ps5_gamepad_trigger_effect_state_weapon_standby,
+    EFFECT_WEAPON_PULLING    = ps5_gamepad_trigger_effect_state_weapon_pulling,
+    EFFECT_WEAPON_FIRED      = ps5_gamepad_trigger_effect_state_weapon_fired,
+    EFFECT_VIBRATION_STANDBY = ps5_gamepad_trigger_effect_state_vibration_standby,
+    EFFECT_VIBRATION_ACTIVE  = ps5_gamepad_trigger_effect_state_vibration_active,
+    EFFECT_INTERCEPTED       = ps5_gamepad_trigger_effect_state_intercepted,
+}
+
+enum INPUT_GYRO
+{
+    AXIS_PITCH,
+    AXIS_YAW,
+    AXIS_ROLL
+}
+
+enum INPUT_VIRTUAL_TYPE
+{
+    BUTTON,
+    DPAD_4DIR,
+    DPAD_8DIR,
+    THUMBSTICK,
+}
+
+enum INPUT_VIRTUAL_RELEASE
+{
+    DO_NOTHING,
+    DESTROY,
+    RESET_POSITION,
+}
+
 
 
 #macro __INPUT_VERIFY_PLAYER_INDEX  if (_player_index < 0)\
