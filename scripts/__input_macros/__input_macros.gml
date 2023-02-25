@@ -34,16 +34,16 @@
 #macro __INPUT_BINDING_GAMEPAD_BUTTON    "gamepad button"
 #macro __INPUT_BINDING_GAMEPAD_AXIS      "gamepad axis"
 
-#macro INPUT_KEYBOARD      (__input_state().__source_keyboard)
-#macro INPUT_MOUSE         (__input_state().__source_mouse)
+#macro INPUT_KEYBOARD      __input_state().__source_keyboard
+#macro INPUT_MOUSE         __input_state().__source_mouse
 #macro INPUT_GAMEPAD       __input_state().__source_gamepad
-#macro INPUT_TOUCH         (__input_state().__source_touch)
+#macro INPUT_TOUCH         __input_state().__source_touch
 #macro INPUT_MAX_GAMEPADS  12
 
-#macro INPUT_KEYBOARD_LOCALE  (__input_state().__keyboard_locale)
-#macro INPUT_KEYBOARD_TYPE    (__input_state().__keyboard_type)
+#macro INPUT_KEYBOARD_LOCALE  __input_state().__keyboard_locale
+#macro INPUT_KEYBOARD_TYPE    __input_state().__keyboard_type
 
-#macro INPUT_VIRTUAL_BACKGROUND  (__input_state().__virtual_background)
+#macro INPUT_VIRTUAL_BACKGROUND  __input_state().__virtual_background
 
 #macro __INPUT_ON_PS       ((os_type == os_ps4)     || (os_type == os_ps5))
 #macro __INPUT_ON_XBOX     ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
