@@ -1,5 +1,7 @@
 function __input_gamepad_stop_trigger_effects(_gamepad_index)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     if (_gamepad_index == all)
     {
         var _i = 0;

@@ -1,5 +1,7 @@
 function __input_keyboard_key()
 {
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
     if (_global.__keyboard_allowed && (keyboard_check(vk_anykey)))
     {        
         switch (os_type)
