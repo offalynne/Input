@@ -34,16 +34,16 @@
 #macro __INPUT_BINDING_GAMEPAD_BUTTON    "gamepad button"
 #macro __INPUT_BINDING_GAMEPAD_AXIS      "gamepad axis"
 
-#macro INPUT_KEYBOARD      global.__input_source_keyboard
-#macro INPUT_MOUSE         global.__input_source_mouse
-#macro INPUT_GAMEPAD       global.__input_source_gamepad
-#macro INPUT_TOUCH         global.__input_source_touch
+#macro INPUT_KEYBOARD      (__input_state().__source_keyboard)
+#macro INPUT_MOUSE         (__input_state().__source_mouse)
+#macro INPUT_GAMEPAD       (__input_state().__source_gamepad)
+#macro INPUT_TOUCH         (__input_state().__source_touch)
 #macro INPUT_MAX_GAMEPADS  12
 
-#macro INPUT_KEYBOARD_LOCALE  global.__input_keyboard_locale
-#macro INPUT_KEYBOARD_TYPE    global.__input_keyboard_type
+#macro INPUT_KEYBOARD_LOCALE  (__input_state().__keyboard_locale)
+#macro INPUT_KEYBOARD_TYPE    (__input_state().__keyboard_type)
 
-#macro INPUT_VIRTUAL_BACKGROUND  global.__input_virtual_background
+#macro INPUT_VIRTUAL_BACKGROUND  (__input_state().__virtual_background)
 
 #macro __INPUT_ON_PS       ((os_type == os_ps4)     || (os_type == os_ps5))
 #macro __INPUT_ON_XBOX     ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
@@ -260,7 +260,7 @@ enum INPUT_VIRTUAL_RELEASE
                                         return undefined;\
                                     }
 
-#macro __INPUT_GET_VERB_STRUCT  var _verb_struct = global.__input_players[_player_index].__verb_state_dict[$ _verb];\
+#macro __INPUT_GET_VERB_STRUCT  var _verb_struct = __input_state().__players[_player_index].__verb_state_dict[$ _verb];\
                                 if (!is_struct(_verb_struct))\
                                 {\
                                     __input_error("Verb not recognised (", _verb, ")");\
@@ -278,14 +278,14 @@ enum INPUT_VIRTUAL_RELEASE
                                            return undefined;\
                                        }
 
-#macro __INPUT_VERIFY_BASIC_VERB_NAME  if (variable_struct_exists(global.__input_chord_verb_dict, _verb_name)) __input_error("\"", _verb_name, "\" is a chord verb. Verbs passed to this function must be basic verb");\
-                                       if (!variable_struct_exists(global.__input_basic_verb_dict, _verb_name)) __input_error("Verb \"", _verb_name, "\" not recognised");
+#macro __INPUT_VERIFY_BASIC_VERB_NAME  if (variable_struct_exists(__input_state().__chord_verb_dict, _verb_name)) __input_error("\"", _verb_name, "\" is a chord verb. Verbs passed to this function must be basic verb");\
+                                       if (!variable_struct_exists(__input_state().__basic_verb_dict, _verb_name)) __input_error("Verb \"", _verb_name, "\" not recognised");
                                        
                                        
                                        
 #macro __INPUT_VERIFY_PROFILE_NAME  if (!input_profile_exists(_profile_name, _player_index)) __input_error("Profile name \"", _profile_name, "\" doesn't exist");
 
-#macro __INPUT_VERIFY_SOURCE  if (global.__input_use_is_instanceof)\
+#macro __INPUT_VERIFY_SOURCE  if (__input_state().__use_is_instanceof)\
                               {\
                                   if (!is_instanceof(_source, __input_class_source))\
                                   {\
@@ -304,14 +304,14 @@ enum INPUT_VIRTUAL_RELEASE
                                          {\
                                              if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER)\
                                              {\
-                                                 if (!global.__input_any_keyboard_binding_defined && !global.__input_any_mouse_binding_defined)\
+                                                 if (!__input_state().__any_keyboard_binding_defined && !global.__input_any_mouse_binding_defined)\
                                                  {\
                                                     __input_error("Cannot claim ", _source, ", no keyboard or mouse bindings have been created in a default profile (see __input_config_verbs_and_bindings())");\
                                                  }\
                                              }\
                                              else\
                                              {\
-                                                 if (!global.__input_any_keyboard_binding_defined)\
+                                                 if (!__input_state().__any_keyboard_binding_defined)\
                                                  {\
                                                      __input_error("Cannot claim ", _source, ", no keyboard bindings have been created in a default profile (see __input_config_verbs_and_bindings())");\
                                                  }\
@@ -319,21 +319,21 @@ enum INPUT_VIRTUAL_RELEASE
                                          }\
                                          else if (_source == INPUT_MOUSE)\
                                          {\
-                                             if (!global.__input_any_mouse_binding_defined)\
+                                             if (!__input_state().__any_mouse_binding_defined)\
                                              {\
                                                  __input_error("Cannot claim ", _source, ", no mouse bindings have been created in a default profile (see __input_config_verbs_and_bindings())");\
                                              }\
                                          }\
                                          else if (_source == INPUT_TOUCH)\
                                          {\
-                                             if (!global.__input_any_touch_binding_defined)\
+                                             if (!__input_state().__any_touch_binding_defined)\
                                              {\
                                                  __input_error("Cannot claim ", _source, ", no virtual button bindings have been created in a default profile (see __input_config_verbs_and_bindings())");\
                                              }\
                                          }\
                                          else if (_source.__source == __INPUT_SOURCE.GAMEPAD)\
                                          {\
-                                             if (!global.__input_any_gamepad_binding_defined)\
+                                             if (!__input_state().__any_gamepad_binding_defined)\
                                              {\
                                                  __input_error("Cannot claim ", _source, ", no gamepad bindings have been created in a default profile (see __input_config_verbs_and_bindings())");\
                                              }\
