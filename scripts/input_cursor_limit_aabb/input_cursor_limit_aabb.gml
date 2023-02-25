@@ -7,6 +7,8 @@
 
 function input_cursor_limit_aabb(_l, _t, _r, _b, _player_index = 0)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    
     if (_player_index == all)
     {
         var _p = 0;
