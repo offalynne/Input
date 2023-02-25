@@ -36,7 +36,7 @@
 
 #macro INPUT_KEYBOARD      (__input_state().__source_keyboard)
 #macro INPUT_MOUSE         (__input_state().__source_mouse)
-#macro INPUT_GAMEPAD       (__input_state().__source_gamepad)
+#macro INPUT_GAMEPAD       __input_state().__source_gamepad
 #macro INPUT_TOUCH         (__input_state().__source_touch)
 #macro INPUT_MAX_GAMEPADS  12
 
