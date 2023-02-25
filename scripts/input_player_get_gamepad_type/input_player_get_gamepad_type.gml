@@ -4,6 +4,7 @@
 
 function input_player_get_gamepad_type(_player_index = 0, _binding = undefined)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_PLAYER_INDEX
     
     //If we're not in multidevice mode then ignore the binding argument

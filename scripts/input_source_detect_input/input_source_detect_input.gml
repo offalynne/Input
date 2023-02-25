@@ -6,6 +6,8 @@
 
 function input_source_detect_input(_source, _available_only = true)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    
     if (_source == all)
     {
         return input_source_detect_input([INPUT_KEYBOARD, INPUT_MOUSE, INPUT_TOUCH, INPUT_GAMEPAD], _available_only);

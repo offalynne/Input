@@ -3,6 +3,8 @@
 
 function input_keyboard_check(_binding)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    
     if (!_global.__keyboard_allowed) 
     {
         return false;
