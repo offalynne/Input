@@ -5,7 +5,7 @@ function __input_initialize()
     if (_initialized) return;
     _initialized = true;
     
-    var _global = __input_state();
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     //Set up the extended debug functionality
     _global.__debug_log = "input___" + string_replace_all(string_replace_all(date_datetime_string(date_current_datetime()), ":", "-"), " ", "___") + ".txt";

@@ -304,7 +304,7 @@ enum INPUT_VIRTUAL_RELEASE
                                          {\
                                              if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER)\
                                              {\
-                                                 if (!__input_state().__any_keyboard_binding_defined && !_global.__any_mouse_binding_defined)\
+                                                 if (!__input_state().__any_keyboard_binding_defined && !__input_state().__any_mouse_binding_defined)\
                                                  {\
                                                     __input_error("Cannot claim ", _source, ", no keyboard or mouse bindings have been created in a default profile (see __input_config_verbs_and_bindings())");\
                                                  }\
