@@ -6,6 +6,8 @@ function __input_initialize()
     if (_initialized) return;
     _initialized = true;
     
+    __input_state();
+    
     //Set up the extended debug functionality
     global.__input_debug_log = "input___" + string_replace_all(string_replace_all(date_datetime_string(date_current_datetime()), ":", "-"), " ", "___") + ".txt";
     if (__INPUT_EXTERNAL_DEBUG_LOG && __INPUT_DEBUG)

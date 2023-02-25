@@ -512,6 +512,12 @@ function __input_class_virtual() constructor
     
     #region Private
     
+    static __set_as_background = function()
+    {
+        __background = true;
+        return self;
+    }
+    
     static __clear_state = function()
     {
         __touch_device = undefined;
