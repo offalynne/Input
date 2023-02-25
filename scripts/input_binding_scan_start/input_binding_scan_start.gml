@@ -45,7 +45,7 @@ enum INPUT_BINDING_SCAN_EVENT
 
 function input_binding_scan_start(_success_method, _failure_method = undefined, _player_index = 0)
 {
-    static _global = _input_state();
+    static _global = __input_state();
     __INPUT_VERIFY_PLAYER_INDEX
     
     if (!is_numeric(_player_index) && !is_undefined(_player_index))

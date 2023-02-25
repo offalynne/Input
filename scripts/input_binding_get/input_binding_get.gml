@@ -7,7 +7,7 @@
 
 function input_binding_get(_verb_name, _player_index = 0, _alternate = 0, _profile_name = undefined)
 {
-    static _global = _input_state();
+    static _global = __input_state();
     __INPUT_VERIFY_ALTERNATE_INDEX
     __INPUT_VERIFY_BASIC_VERB_NAME
     __INPUT_VERIFY_PROFILE_NAME

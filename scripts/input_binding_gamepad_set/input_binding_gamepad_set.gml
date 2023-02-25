@@ -4,7 +4,7 @@
 
 function input_binding_gamepad_set(_binding, _gamepad_index)
 {
-    static _global = _input_state();
+    static _global = __input_state();
     
     if (!input_value_is_binding(_binding))
     {

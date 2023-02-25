@@ -4,7 +4,7 @@
 
 function input_player_verify(_json, _player_index = 0)
 {
-    static _global = _input_state();
+    static _global = __input_state();
     __INPUT_VERIFY_PLAYER_INDEX
     
     //Make a clone of the current settings

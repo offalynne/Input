@@ -2,7 +2,7 @@
 
 function input_binding_empty()
 {
-    static _global = _input_state();
+    static _global = __input_state();
     
     return (new __input_class_binding());
 }

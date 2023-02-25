@@ -2,7 +2,7 @@
 
 function input_accessibility_global_cooldown_get()
 {
-    static _global = _input_state();
+    static _global = __input_state();
     
     return global.__input_cooldown_state;
 }

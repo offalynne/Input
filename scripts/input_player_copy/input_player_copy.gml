@@ -4,7 +4,7 @@
 
 function input_player_copy(_player_index_src, _player_index_dst)
 {
-    static _global = _input_state();
+    static _global = __input_state();
     
     //Verify source player
     if (_player_index_src < 0)

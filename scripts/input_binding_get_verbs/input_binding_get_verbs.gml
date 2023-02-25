@@ -5,7 +5,7 @@
 
 function input_binding_get_verbs(_binding, _player_index = 0, _profile_name = undefined)
 {
-    static _global = _input_state();
+    static _global = __input_state();
     __INPUT_VERIFY_PLAYER_INDEX
     __INPUT_VERIFY_PROFILE_NAME
     

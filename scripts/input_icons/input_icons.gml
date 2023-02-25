@@ -11,7 +11,7 @@
 
 function input_icons(_name)
 {
-    static _global = _input_state();
+    static _global = __input_state();
     
     var _icon_holder = global.__input_icons[$ _name];
     if (!is_struct(_icon_holder))

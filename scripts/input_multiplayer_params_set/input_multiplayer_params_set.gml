@@ -21,7 +21,7 @@
 
 function input_multiplayer_params_set(_min, _max, _leave_verb, _abort_callback, _drop_down = true)
 {
-    static _global = _input_state();
+    static _global = __input_state();
     
     if (argument_count < 4)
     {
