@@ -32,11 +32,6 @@ function __input_transform_coordinate(_x, _y, _inputSystem, _outputSystem, _came
         //Unpack the camera's properties if we're working in room-space at any point
         if ((_inputSystem == 0) || (_outputSystem == 0))
         {
-            if (keyboard_check_pressed(ord("J")))
-            {
-                show_debug_message("!");
-            }
-            
             //If we have no defined camera then try to use view 0's camera
             if ((_camera == undefined) && view_enabled && view_visible[0]) _camera = view_camera[0];
             
