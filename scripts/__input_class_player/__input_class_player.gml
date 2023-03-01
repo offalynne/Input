@@ -439,16 +439,19 @@ function __input_class_player() constructor
     }
     
     /// @param source
-    static __source_contains = function(_source)
+    static __source_contains = function(_source, _touch_remap = true)
     {
         //Ensure we're targeting the right source for our platform / configuration
-        if (__INPUT_TOUCH_PRIMARY)
+        if (_touch_remap)
         {
-            if (_source == INPUT_MOUSE) _source = INPUT_TOUCH;
-        }
-        else
-        {
-            if (_source == INPUT_TOUCH) _source = INPUT_MOUSE;
+            if (__INPUT_TOUCH_PRIMARY)
+            {
+                if (_source == INPUT_MOUSE) _source = INPUT_TOUCH;
+            }
+            else
+            {
+                if (_source == INPUT_TOUCH) _source = INPUT_MOUSE;
+            }
         }
         
         if (_source == INPUT_GAMEPAD)
@@ -1520,7 +1523,7 @@ function __input_class_player() constructor
         
         var _source_filter = __rebind_source_filter ?? __source_array;
         
-        if (__source_contains(INPUT_TOUCH))
+        if (__source_contains(INPUT_TOUCH, false))
         {
             __input_trace("Binding scan failed: Player ", __index, " is using INPUT_TOUCH which cannot be rebound");
             __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_INVALID);

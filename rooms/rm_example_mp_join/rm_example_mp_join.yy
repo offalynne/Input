@@ -1,7 +1,7 @@
 {
   "resourceType": "GMRoom",
   "resourceVersion": "1.0",
-  "name": "rm_example_mp",
+  "name": "rm_example_mp_join",
   "isDnd": false,
   "volume": 1.0,
   "parentRoom": null,
@@ -25,7 +25,7 @@
   "creationCodeFile": "",
   "inheritCode": false,
   "instanceCreationOrder": [
-    {"name":"inst_B5227B0","path":"rooms/rm_example_mp/rm_example_mp.yy",},
+    {"name":"inst_B5227B0","path":"rooms/rm_example_mp_join/rm_example_mp_join.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,
