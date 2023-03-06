@@ -16,6 +16,8 @@
 - [`input_player_get_invalid_gamepad_bindings([playerIndex], [profileName])`](Functions-(Players)?id=input_player_get_invalid_gamepad_bindingsplayerindex)
 - [`input_player_ghost_set(state, [playerIndex])`](Functions-(Players)?id=input_player_ghost_setstate-playerindex)
 - [`input_player_ghost_get([playerIndex])`](Functions-(Players)?id=input_player_ghost_getplayerindex)
+- [`input_player_gamepad_type_set(state, [playerIndex])`](Functions-(Players)?id=input_player_gamepad_type_override_setgamepadtype-playerindex)
+- [`input_player_gamepad_type_get([playerIndex])`](Functions-(Players)?id=input_player_gamepad_type_override_getplayerindex)
 - [`input_player_swap(playerIndexA, playerIndexB)`](Functions-(Players)?id=input_player_swapplayerindexa-playerindexb)
 - [`input_multiplayer_params_set(min, max, [dropDown], [allowAbort])`](Functions-(Players)?id=input_multiplayer_params_setmin-max-dropdown-allowabort)
 - [`input_multiplayer_params_get()`](Functions-(Players)?id=input_multiplayer_params_get)
