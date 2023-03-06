@@ -1,8 +1,9 @@
 /// @desc    Returns the icon defined in __input_config_icons() for the given binding, taking into account the player's currently assigned source(s)
 /// @param   binding
 /// @param   [playerIndex=0]
+/// @param   [gamepadTypeOverride]
 
-function input_binding_get_icon(_binding, _player_index = 0)
+function input_binding_get_icon(_binding, _player_index = 0, _gamepad_type_override = undefined)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
@@ -70,7 +71,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
         
         case __INPUT_BINDING_GAMEPAD_BUTTON:
         case __INPUT_BINDING_GAMEPAD_AXIS:
-            var _category = input_player_get_gamepad_type(_player_index, _binding);
+            var _category = (_gamepad_type_override ?? input_player_get_gamepad_type(_player_index, _binding));
         break;
         
         default:

@@ -3,8 +3,9 @@
 /// @param   [playerIndex=0]
 /// @param   [alternate=0]
 /// @param   [profileName]
+/// @param   [gamepadTypeOverride]
 
-function input_verb_get_icon(_verb_name, _player_index = 0, _alternate = 0, _profile_name = undefined)
+function input_verb_get_icon(_verb_name, _player_index = 0, _alternate = 0, _profile_name = undefined, _gamepad_type_override = undefined)
 {
-    return input_binding_get_icon(input_binding_get(_verb_name, _player_index, _alternate, _profile_name), _player_index);
+    return input_binding_get_icon(input_binding_get(_verb_name, _player_index, _alternate, _profile_name), _player_index, _gamepad_type_override);
 }
