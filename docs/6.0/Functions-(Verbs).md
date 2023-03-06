@@ -77,3 +77,23 @@ A verb is considerd inactive when the verb group that that verb is a part of has
 |---------------|--------------------------------|----------------------------------------------------|
 |`verbGroup`    |[verb group](Verbs-and-Bindings)|[Verb group](Verbs-and-Bindings) to target          |
 |`[playerIndex]`|integer                         |Player to target. If not specified, player 0 is used|
+
+&nbsp;
+
+## `input_verb_groups_get(verbGroup, [playerIndex])`
+
+*Returns:* Array, the verb groups set in `__input_config_verb_groups`
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+&nbsp;
+
+## `input_verb_group_get_verbs(verbGroup)`
+
+*Returns:* Array, the verbs set for the verb group
+
+|Name           |Datatype                        |Purpose                                             |
+|---------------|--------------------------------|----------------------------------------------------|
+|`verbGroup`    |[verb group](Verbs-and-Bindings)|[Verb group](Verbs-and-Bindings) to target          |
