@@ -982,10 +982,11 @@ function __input_class_player() constructor
         var _new_gyro_params          = {};
     
         var _root_json = {
-            profiles:           _new_profiles_dict,
-            axis_thresholds:    _new_axis_thresholds_dict,
-            gyro:               _new_gyro_params,
-            vibration_strength: __vibration_strength,     
+            profiles:                _new_profiles_dict,
+            axis_thresholds:         _new_axis_thresholds_dict,
+            gyro:                    _new_gyro_params,
+            gamepad_type_override:   __gamepad_type_override,
+            vibration_strength:      __vibration_strength,     
             trigger_effect_strength: __trigger_effect_strength,       
         };
         
@@ -1125,6 +1126,22 @@ function __input_class_player() constructor
             __gyro_sensitivity_y = INPUT_GYRO_DEFAULT_SENSITIVITY_Y;
         }
         
+        if (variable_struct_exists(_json, "gamepad_type_override"))
+        {
+            if (!is_string(_json.gamepad_type_override) && !is_undefined(_json.gamepad_type_override))
+            {
+                __input_error("Player ", __index, " gamepad type override is corrupted");
+                return;
+            }
+            
+            __gamepad_type_override = _json.gamepad_type_override;
+        }
+        else
+        {
+            __input_trace("Warning! Player ", __index, " gamepad type override not found, defaulting to <undefined>");
+            __gamepad_type_override = undefined;
+        }
+        
         if (variable_struct_exists(_json, "vibration_strength"))
         {
             if (!is_numeric(_json.vibration_strength))
@@ -1180,12 +1197,13 @@ function __input_class_player() constructor
             ++_i;
         }
         
-        __axis_thresholds_dict = {};
-        __vibration_strength   = INPUT_VIBRATION_DEFAULT_STRENGTH;
-        __gyro_axis_x          = INPUT_GYRO_DEFAULT_AXIS_X;
-        __gyro_axis_y          = INPUT_GYRO_DEFAULT_AXIS_Y;
-        __gyro_sensitivity_x   = INPUT_GYRO_DEFAULT_SENSITIVITY_X;
-        __gyro_sensitivity_y   = INPUT_GYRO_DEFAULT_SENSITIVITY_Y;
+        __axis_thresholds_dict  = {};
+        __gamepad_type_override = undefined;
+        __vibration_strength    = INPUT_VIBRATION_DEFAULT_STRENGTH;
+        __gyro_axis_x           = INPUT_GYRO_DEFAULT_AXIS_X;
+        __gyro_axis_y           = INPUT_GYRO_DEFAULT_AXIS_Y;
+        __gyro_sensitivity_x    = INPUT_GYRO_DEFAULT_SENSITIVITY_X;
+        __gyro_sensitivity_y    = INPUT_GYRO_DEFAULT_SENSITIVITY_Y;
     }
     
     static __vibration_add_event = function(_event)
