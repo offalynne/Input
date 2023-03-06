@@ -177,3 +177,33 @@ Ghost mode prevents any sources being assigned to this player, but the player is
 |`playerIndexB`|integer |Second player to target|
 
 This function will swap over the two players with the given indices. This includes any player input state, bindings, source etc.
+
+## `input_player_gamepad_type_override_set(gamepadType, [playerIndex])`
+
+*Returns:* N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                              |
+|---------------|--------|-----------------------------------------------------|
+|`gamepadType`  |string  |Gamepad type to use for icon getters                 |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used |
+
+This function forces the icon getter functions (`input_verb_get_icon()` and `input_binding_get_icon()`) to use a specific gamepad type when the player is using a gamepad. Use a gamepad type of `undefined` to not force a gamepad type.
+
+The following types can be set:
+
+|Gamepad Type|                    |                     |
+|------------|--------------------|---------------------|
+|`switch`    |`switch joycon left`|`switch joycon right`|
+|`psx`       |`ps4`               |`ps5`                |
+|`xbox 360`  |`xbox one`          |`saturn`             |
+|`snes`      |`n64`               |`gamecube`           |
+
+&nbsp;
+
+## `input_player_gamepad_type_override_get([playerIndex])`
+
+*Returns:* String, what gamepad type override has been set (or `undefined` if none has been set)
+
+|Name           |Datatype|Purpose                                              |
+|---------------|--------|-----------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used |
