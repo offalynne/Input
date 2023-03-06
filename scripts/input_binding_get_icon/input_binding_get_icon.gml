@@ -5,6 +5,7 @@
 function input_binding_get_icon(_binding, _player_index = 0)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    __INPUT_VERIFY_PLAYER_INDEX
     
     //Find the correct fallback icon data
     //We'll use this if there's a problem resolving an icon otherwise
@@ -70,7 +71,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
         
         case __INPUT_BINDING_GAMEPAD_BUTTON:
         case __INPUT_BINDING_GAMEPAD_AXIS:
-            var _category = input_player_get_gamepad_type(_player_index, _binding);
+            var _category = _global.__players[_player_index].__gamepad_type_override ?? input_player_get_gamepad_type(_player_index, _binding);
         break;
         
         default:

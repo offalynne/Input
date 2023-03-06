@@ -37,6 +37,7 @@ function __input_class_player() constructor
     __profile_name = undefined;
     
     __ghost = false;
+    __gamepad_type_override = undefined;
     
     __connected = false;
     __post_disconnection_tick = false;
