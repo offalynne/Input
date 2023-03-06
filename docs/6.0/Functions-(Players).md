@@ -189,6 +189,8 @@ This function will swap over the two players with the given indices. This includ
 
 This function forces the icon getter functions (`input_verb_get_icon()` and `input_binding_get_icon()`) to use a specific gamepad type when the player is using a gamepad. Use a gamepad type of `undefined` to not force a gamepad type.
 
+!> `input_player_gamepad_type_override_set()` only changes what icons are displayed. It doesn't change the value returned from `input_player_get_gamepad_type()`.
+
 The following types can be set:
 
 |Gamepad Type|                    |                     |
