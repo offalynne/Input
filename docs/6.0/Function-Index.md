@@ -126,6 +126,8 @@
 - [`input_verb_get_group(verb)`](Functions-(Verbs)?id=input_verb_get_groupverb)
 - [`input_verb_group_active(verbGroup, state, [playerIndex], [exclusive])`](Functions-(Verbs)?id=input_verb_group_activeverbgroup-state-playerindex-exclusive)
 - [`input_verb_group_is_active(verbGroup, [playerIndex])`](Functions-(Verbs)?id=input_verb_group_is_activeverbgroup-playerindex)
+- [`input_verb_groups_get()`](Functions-(Verbs)?id=input_verb_groups_get)
+- [`input_verb_group_get_verbs(verbGroup)`](Functions-(Verbs)?id=input_verb_group_get_verbsverbgroup)
 
 &nbsp;
 
