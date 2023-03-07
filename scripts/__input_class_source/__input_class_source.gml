@@ -310,7 +310,9 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
                         if ((abs(_value) > input_axis_threshold_get(_check, _player_index).mini) && _filter_func(_check, _ignore_struct, _allow_struct))
                         {
                             if (_return_boolean) return true;
-                            return (input_binding_gamepad_axis(_check, (_value < 0)).__gamepad_set(_gamepad));
+                            var _binding = input_binding_gamepad_axis(_check, (_value < 0));
+                            if (global.__input_source_mode == INPUT_SOURCE_MODE.MULTIDEVICE) _binding.__gamepad_set(_gamepad);
+                            return _binding;
                         }
                     }
                     else
@@ -318,7 +320,9 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
                         if (input_gamepad_check(_gamepad, _check) && _filter_func(_check, _ignore_struct, _allow_struct))
                         {
                             if (_return_boolean) return true;
-                            return (input_binding_gamepad_button(_check).__gamepad_set(_gamepad));
+                            var _binding = input_binding_gamepad_button(_check);
+                            if (global.__input_source_mode == INPUT_SOURCE_MODE.MULTIDEVICE) _binding.__gamepad_set(_gamepad);
+                            return _binding;
                         }
                     }
                 
