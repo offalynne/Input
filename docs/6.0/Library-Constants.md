@@ -76,7 +76,7 @@ The `INPUT_BINDING_SCAN_EVENT` enum is used by the failure callback for [`input_
 
 The following constants allow you to reference specific gamepad types. These constants are used to define [`input_icon()`](Functions-(Other)?id=input_iconscategoryname) categories, and are returned by [`input_player_get_gamepad_type()`](Functions-(Players)?id=input_player_get_gamepad_typeplayerindex-binding) and [`input_gamepad_get_type()`](Functions-(Gamepad)?id=input_gamepad_get_typegamepadindex).
 
-|Category name                     | Gamepad types |
+|Category Name                     | Gamepad Types |
 |----------------------------------|--------------------|
 |`INPUT_GAMEPAD_TYPE_XBOX_ONE`     | Xbox Series, Xbox One, Steam Deck, Luna, Stadia, MFi |
 |`INPUT_GAMEPAD_TYPE_XBOX_360`     | Xbox 360, Dreamcast, Steam Controller, Steam Link Touch Controller |
