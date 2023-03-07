@@ -50,7 +50,7 @@ The struct returned by this function has the following member functions:
 
 &nbsp;
 
-## `input_multiplayer_params_set(min, max, leaveVerb, abortCallback, [dropDown])`
+## `input_join_params_set(min, max, leaveVerb, abortCallback, [dropDown])`
 
 *Returns:* N/A (`undefined`)
 
@@ -64,7 +64,7 @@ The struct returned by this function has the following member functions:
 
 &nbsp;
 
-## `input_multiplayer_params_get()`
+## `input_join_params_get()`
 
 *Returns:* Struct, the parameters currently set for `INPUT_SOURCE_MODE.JOIN`
 
@@ -84,7 +84,7 @@ The struct returned by this function has the following member functions:
 
 &nbsp;
 
-## `input_multiplayer_is_finished()`
+## `input_join_is_finished()`
 
 *Returns:* Boolean, whether enough players are connected to begin multiplayer gameplay
 

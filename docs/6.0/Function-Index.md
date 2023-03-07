@@ -19,9 +19,9 @@
 - [`input_player_gamepad_type_override_set(state, [playerIndex])`](Functions-(Players)?id=input_player_gamepad_type_override_setgamepadtype-playerindex)
 - [`input_player_gamepad_type_override_get([playerIndex])`](Functions-(Players)?id=input_player_gamepad_type_override_getplayerindex)
 - [`input_player_swap(playerIndexA, playerIndexB)`](Functions-(Players)?id=input_player_swapplayerindexa-playerindexb)
-- [`input_multiplayer_params_set(min, max, [dropDown], [allowAbort])`](Functions-(Players)?id=input_multiplayer_params_setmin-max-dropdown-allowabort)
-- [`input_multiplayer_params_get()`](Functions-(Players)?id=input_multiplayer_params_get)
-- [`input_multiplayer_is_finished()`](Functions-(Players)?id=input_multiplayer_is_finished)
+- [`input_join_params_set(min, max, leaveVerb, abortCallback, [dropDown])`](Functions-(Players)?id=input_join_params_setmin-max-leaveverb-abortcallback-dropdown)
+- [`input_join_params_get()`](Functions-(Players)?id=input_join_params_get)
+- [`input_join_is_finished()`](Functions-(Players)?id=input_join_is_finished)
 
 &nbsp;
 
