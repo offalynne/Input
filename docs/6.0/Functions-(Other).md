@@ -89,7 +89,7 @@ Removes a keyboard key from the ignore list.
 
 This function is used to define icons that [`input_binding_get_icon()`](Functions-(Binding-Access)?id=input_binding_get_iconbinding-playerindex) can return. This function should only be called in the [`__input_config_icons()`](Configuration?id=icons) script.
 
-Icon category names can be [gamepad type constants](Functions-(Other)?id=input_iconscategoryname) that Input can return, or one of the following special cases:
+Icon category names can be [gamepad type constants](Library-Constants#gamepad-types) that Input can return, or one of the following special cases:
 
 |Category Name         |Occurrance                                                       |
 |----------------------|-----------------------------------------------------------------|
