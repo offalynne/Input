@@ -89,7 +89,7 @@ This function will return `-1` if the player has no connected gamepad. If you pr
 
 ## `input_player_get_gamepad_type([playerIndex], [binding])`
 
-*Returns:* String, the player's gamepad's type (after SDL remapping)
+*Returns:* String, a constant indicating the player's [gamepad's type]([gamepad type constant](Library-Constants.md#gamepad-types))
 
 |Name           |Datatype                     |Purpose                                                                                                                                                                                                    |
 |---------------|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -98,16 +98,7 @@ This function will return `-1` if the player has no connected gamepad. If you pr
 
 [XInput](https://wikipedia.org/wiki/DirectInput#XInput) controllers will typically return `xbox one` whereas any unrecognised gamepad will return `unknown`. Xbox Series X/S controllers will return `xbox one` owing to similarities across console generations, and that Xbox One gamepads are forwards compatible.
 
-The following are valid strings this function may return:
-
-|Results   |                    |                     |
-|----------|--------------------|---------------------|
-|`switch`  |`switch joycon left`|`switch joycon right`|
-|`psx`     |`ps4`               |`ps5`                |
-|`xbox 360`|`xbox one`          |`saturn`             |
-|`snes`    |`n64`               |`gamecube`           |
-
-If the player has no connected gamepad then this function will return `unknown`. If you provide a [binding](Verbs-and-Bindings) to check, and Input is running in [multidevice mode](Input-Sources?id=input_source_modemultidevice), then this function will return the gamepad type for the specific gamepad associated with the provided binding.
+If the player has no connected gamepad then this function will return `INPUT_GAMEPAD_TYPE_UNKNOWN`. If you provide a [binding](Verbs-and-Bindings) to check, and Input is running in [multidevice mode](Input-Sources?id=input_source_modemultidevice), then this function will return the [gamepad type constant](Library-Constants.md#gamepad-types) for the specific gamepad associated with the provided binding.
 
 ?> If the player has multiple gamepad [sources](Input-Sources) assigned to them, and no binding is provided, then this function will return the type for the first connected gamepad.
 
