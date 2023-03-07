@@ -89,7 +89,7 @@ This function will return `-1` if the player has no connected gamepad. If you pr
 
 ## `input_player_get_gamepad_type([playerIndex], [binding])`
 
-*Returns:* String, a constant indicating the player's [gamepad's type]([gamepad type constant](Library-Constants.md#gamepad-types))
+*Returns:* String, a constant indicating the player's [gamepad's type]([gamepad type constant](Library-Constants#gamepad-types))
 
 |Name           |Datatype                     |Purpose                                                                                                                                                                                                    |
 |---------------|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -98,7 +98,7 @@ This function will return `-1` if the player has no connected gamepad. If you pr
 
 [XInput](https://wikipedia.org/wiki/DirectInput#XInput) controllers will typically return `INPUT_GAMEPAD_TYPE_XBOX_ONE` whereas any unrecognised gamepad will return `INPUT_GAMEPAD_TYPE_UNKNOWN`. Xbox Series X/S controllers will return `INPUT_GAMEPAD_TYPE_XBOX_ONE` owing to similarities across console generations, and that Xbox One gamepads are forwards compatible.
 
-If the player has no connected gamepad then this function will return `INPUT_GAMEPAD_TYPE_UNKNOWN`. If you provide a [binding](Verbs-and-Bindings) to check, and Input is running in [multidevice mode](Input-Sources?id=input_source_modemultidevice), then this function will return the [gamepad type constant](Library-Constants.md#gamepad-types) for the specific gamepad associated with the provided binding.
+If the player has no connected gamepad then this function will return `INPUT_GAMEPAD_TYPE_UNKNOWN`. If you provide a [binding](Verbs-and-Bindings) to check, and Input is running in [multidevice mode](Input-Sources?id=input_source_modemultidevice), then this function will return the [gamepad type constant](Library-Constants#gamepad-types) for the specific gamepad associated with the provided binding.
 
 ?> If the player has multiple gamepad [sources](Input-Sources) assigned to them, and no binding is provided, then this function will return the type for the first connected gamepad.
 
@@ -177,10 +177,10 @@ This function will swap over the two players with the given indices. This includ
 
 |Name           |Datatype|Purpose                                              |
 |---------------|--------|-----------------------------------------------------|
-|`gamepadType`  |string  |[Gamepad type](Library-Constants.md#gamepad-types)  to use for icon getters                 |
+|`gamepadType`  |string  |[Gamepad type](Library-Constants#gamepad-types)  to use for icon getters                 |
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used |
 
-This function forces the icon getter functions (`input_verb_get_icon()` and `input_binding_get_icon()`) to use a specific [gamepad type](Library-Constants.md#gamepad-types)  when the player is using a gamepad. Use a gamepad type of `undefined` to not force a gamepad type.
+This function forces the icon getter functions (`input_verb_get_icon()` and `input_binding_get_icon()`) to use a specific [gamepad type](Library-Constants#gamepad-types)  when the player is using a gamepad. Use a gamepad type of `undefined` to not force a gamepad type.
 
 !> `input_player_gamepad_type_override_set()` only changes what icons are displayed. It doesn't change the value returned from `input_player_get_gamepad_type()`.
 
@@ -188,7 +188,7 @@ This function forces the icon getter functions (`input_verb_get_icon()` and `inp
 
 ## `input_player_gamepad_type_override_get([playerIndex])`
 
-*Returns:* String, what [gamepad type constant](Library-Constants.md#gamepad-types)  override has been set (or `undefined` if none has been set)
+*Returns:* String, what [gamepad type constant](Library-Constants#gamepad-types)  override has been set (or `undefined` if none has been set)
 
 |Name           |Datatype|Purpose                                              |
 |---------------|--------|-----------------------------------------------------|
