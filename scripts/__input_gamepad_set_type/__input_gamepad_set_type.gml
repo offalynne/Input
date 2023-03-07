@@ -391,7 +391,7 @@ function __input_gamepad_set_type()
     }
     else
     {
-        simple_type = "unknown";
+        simple_type = INPUT_GAMEPAD_TYPE_UNKNOWN;
         __input_trace("Warning! Raw type \"", raw_type, "\" not found in lookup table, setting simple type to \"", simple_type, "\"");
     }
 }

@@ -14,13 +14,13 @@ function input_binding_get_icon(_binding, _player_index = 0)
     {
         switch(os_type)
         {
-            case os_ps3:          var _fallback_category_name = "psx";      break;
-            case os_ps4:          var _fallback_category_name = "ps4";      break;
-            case os_ps5:          var _fallback_category_name = "ps5";      break;
-            case os_switch:       var _fallback_category_name = "switch";   break;
-            case os_xboxone:      var _fallback_category_name = "xbox one"; break;
-            case os_xboxseriesxs: var _fallback_category_name = "xbox one"; break;
-            default:              var _fallback_category_name = "xbox one"; break;
+            case os_ps3:          var _fallback_category_name = INPUT_GAMEPAD_TYPE_PSX;      break;
+            case os_ps4:          var _fallback_category_name = INPUT_GAMEPAD_TYPE_PS4;      break;
+            case os_ps5:          var _fallback_category_name = INPUT_GAMEPAD_TYPE_PS5;      break;
+            case os_switch:       var _fallback_category_name = INPUT_GAMEPAD_TYPE_SWITCH;   break;
+            case os_xboxone:      var _fallback_category_name = INPUT_GAMEPAD_TYPE_XBOX_ONE; break;
+            case os_xboxseriesxs: var _fallback_category_name = INPUT_GAMEPAD_TYPE_XBOX_ONE; break;
+            default:              var _fallback_category_name = INPUT_GAMEPAD_TYPE_XBOX_ONE; break;
         }
         
         var _fallback_category_data = _global.__icons[$ _fallback_category_name];
