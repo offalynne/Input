@@ -4,7 +4,7 @@ function __input_multiplayer_assignment_tick()
     
     if ((_global.__multiplayer_leave_verb != undefined) && !variable_struct_exists(_global.__basic_verb_dict, _global.__multiplayer_leave_verb))
     {
-        __input_error("Multiplayer leave verb \"", _global.__multiplayer_leave_verb, "\" doesn't exist\n(You should call input_multiplayer_params_set() to set the leave verb)");
+        __input_error("Multiplayer leave verb \"", _global.__multiplayer_leave_verb, "\" doesn't exist\n(You should call input_join_params_set() to set the leave verb)");
     }
     
     var _abort = false;

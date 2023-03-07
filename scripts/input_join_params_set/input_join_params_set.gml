@@ -1,4 +1,4 @@
-/// @desc    Sets the multiplayer parameters, typically for use with the JOIN source mode
+/// @desc    Sets the .JOIN source mode parameters
 ///          
 ///          The leave verb allows a player to cancel the INPUT_SOURCE_MODE.JOIN source mode
 ///          (a.k.a. multiplayer source assignment). If you want to prevent a player from leaving
@@ -19,13 +19,13 @@
 /// @param   abortCallback
 /// @param   [dropDown=true]
 
-function input_multiplayer_params_set(_min, _max, _leave_verb, _abort_callback, _drop_down = true)
+function input_join_params_set(_min, _max, _leave_verb, _abort_callback, _drop_down = true)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     if (argument_count < 4)
     {
-        __input_error("input_multiplayer_params_set() must be given at least 4 arguments");
+        __input_error("input_join_params_set() must be given at least 4 arguments");
     }
     
     if (_max < 1)

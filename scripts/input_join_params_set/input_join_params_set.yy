@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "input_multiplayer_params_set",
+  "name": "input_join_params_set",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

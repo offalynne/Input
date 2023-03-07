@@ -31,7 +31,7 @@ else
     }
 }
 
-if (input_multiplayer_is_finished())
+if (input_join_is_finished())
 {
     _string += "\n";
     _string += "Player 1: Please press and hold \"" + input_verb_get_icon("action") + "\" to play\n";

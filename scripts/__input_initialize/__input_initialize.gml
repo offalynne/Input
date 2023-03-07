@@ -181,7 +181,7 @@ function __input_initialize()
     _global.__hotswap_callback = undefined;
     
     //Multiplayer source assignment parameters
-    //This is set by input_multiplayer_params_set()
+    //This is set by input_join_params_set()
     _global.__multiplayer_min            = 1;
     _global.__multiplayer_max            = INPUT_MAX_PLAYERS;
     _global.__multiplayer_leave_verb     = "cancel";

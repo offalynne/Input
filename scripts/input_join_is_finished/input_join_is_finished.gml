@@ -1,6 +1,6 @@
 /// @desc    Returns whether enough players have connected for valid gameplay
 
-function input_multiplayer_is_finished()
+function input_join_is_finished()
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     

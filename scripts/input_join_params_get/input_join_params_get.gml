@@ -1,6 +1,6 @@
-/// @desc    Returns the multiplayer parameters set by input_multiplayer_params_set()
+/// @desc    Returns the multiplayer parameters set by input_join_params_set()
 
-function input_multiplayer_params_get()
+function input_join_params_get()
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
