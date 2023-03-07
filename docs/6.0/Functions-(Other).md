@@ -85,11 +85,11 @@ Removes a keyboard key from the ignore list.
 
 |Name                           |Datatype|Purpose                                                |
 |-------------------------------|--------|-------------------------------------------------------|
-|`gamepadType` or `categoryName`|string  |Gamepad type or icon category name to access. See below|
+|`gamepadType` or `categoryName`|string  |[Gamepad type](Library-Constants#gamepad-types) or special case to access. See below|
 
 This function is used to define icons that [`input_binding_get_icon()`](Functions-(Binding-Access)?id=input_binding_get_iconbinding-playerindex) can return. This function should only be called in the [`__input_config_icons()`](Configuration?id=icons) script.
 
-Icon category names can be [gamepad type constants](Library-Constants#gamepad-types) that Input can return, or one of the following special cases:
+Icon category names can be a [gamepad type constant](Library-Constants#gamepad-types) that Input returns, or one of the following special cases:
 
 |Category Name         |Occurrance                                                       |
 |----------------------|-----------------------------------------------------------------|
