@@ -86,7 +86,7 @@ The following constants allow you to reference specific gamepad types. These con
 |`INPUT_GAMEPAD_TYPE_SWITCH`       | Switch Hanheld Mode, Switch Lite, Switch Joy-Con Pair, Switch Pro, 3rd party Switch Controllers, WiiU, Wii |
 |`INPUT_GAMEPAD_TYPE_JOYCON_LEFT`  | Switch Joy-Con Left |
 |`INPUT_GAMEPAD_TYPE_JOYCON_RIGHT` | Switch Joy-Con Right |
-|`INPUT_GAMEPAD_TYPE_GAMECUBE`     | Gamecube |
+|`INPUT_GAMEPAD_TYPE_GAMECUBE`     | GameCube |
 |`INPUT_GAMEPAD_TYPE_N64`          | N64 |
 |`INPUT_GAMEPAD_TYPE_SATURN`       | Sega Genesis, Mega Drive and Saturn Controllers |
 |`INPUT_GAMEPAD_TYPE_SNES`         | NES, SNES and Super Famicom Controllers |
