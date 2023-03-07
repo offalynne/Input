@@ -96,7 +96,7 @@ This function will return `-1` if the player has no connected gamepad. If you pr
 |`[playerIndex]`|integer                      |Player to target. If not specified, player 0 is used                                                                                                                                                       |
 |`[binding]`    |[binding](Verbs-and-Bindings)|Binding to return the gamepad for. This is only valid in [multidevice mode](Input-Sources?id=input_source_modemultidevice). If no binding is provided then the player's first connected gamepad is returned|
 
-[XInput](https://wikipedia.org/wiki/DirectInput#XInput) controllers will typically return `xbox one` whereas any unrecognised gamepad will return `unknown`. Xbox Series X/S controllers will return `xbox one` owing to similarities across console generations, and that Xbox One gamepads are forwards compatible.
+[XInput](https://wikipedia.org/wiki/DirectInput#XInput) controllers will typically return `INPUT_GAMEPAD_TYPE_XBOX_ONE` whereas any unrecognised gamepad will return `INPUT_GAMEPAD_TYPE_UNKNOWN`. Xbox Series X/S controllers will return `INPUT_GAMEPAD_TYPE_XBOX_ONE` owing to similarities across console generations, and that Xbox One gamepads are forwards compatible.
 
 If the player has no connected gamepad then this function will return `INPUT_GAMEPAD_TYPE_UNKNOWN`. If you provide a [binding](Verbs-and-Bindings) to check, and Input is running in [multidevice mode](Input-Sources?id=input_source_modemultidevice), then this function will return the [gamepad type constant](Library-Constants.md#gamepad-types) for the specific gamepad associated with the provided binding.
 
