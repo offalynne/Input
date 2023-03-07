@@ -72,6 +72,27 @@ The `INPUT_BINDING_SCAN_EVENT` enum is used by the failure callback for [`input_
 
 &nbsp;
 
+## Gamepad Type Constants
+
+The following constants allow you to reference specific gamepad types. These constants are used to define [`input_icon()`](Functions-(Other)?id=input_iconscategoryname) categories, and are returned by [`input_player_get_gamepad_type()`](Functions-(Players)?id=input_player_get_gamepad_typeplayerindex-binding) and [`input_gamepad_get_type()`](Functions-(Gamepad)?id=input_gamepad_get_typegamepadindex).
+
+|Name                              | Device description |
+|----------------------------------|--------------------|
+|`INPUT_GAMEPAD_TYPE_XBOX_ONE`     | Xbox Series, Xbox One, Steam Deck, Luna, Stadia, MFi |
+|`INPUT_GAMEPAD_TYPE_XBOX_360`     | Xbox 360, Dreamcast, Steam Controller, Steam Link Touch Controller |
+|`INPUT_GAMEPAD_TYPE_PS5`          | PS5 Controllers |
+|`INPUT_GAMEPAD_TYPE_PS4`          | PS4 Controllers |
+|`INPUT_GAMEPAD_TYPE_PSX`          | PS1, PS2, PS3 Controllers |
+|`INPUT_GAMEPAD_TYPE_SWITCH`       | Switch Hanheld Mode, Switch Lite, Switch Joy-Con Pair, Switch Pro, 3rd party Switch Controllers, WiiU, Wii |
+|`INPUT_GAMEPAD_TYPE_JOYCON_LEFT`  | Switch Joy-Con Left |
+|`INPUT_GAMEPAD_TYPE_JOYCON_RIGHT` | Switch Joy-Con Right |
+|`INPUT_GAMEPAD_TYPE_GAMECUBE`     | Gamecube |
+|`INPUT_GAMEPAD_TYPE_N64`          | N64 |
+|`INPUT_GAMEPAD_TYPE_SATURN`       | Sega Genesis, Mega Drive and Saturn Controllers |
+|`INPUT_GAMEPAD_TYPE_SNES`         | NES, SNES and Super Famicom Controllers |
+
+&nbsp;
+
 ## Extended Gamepad Constants
 
 If [`INPUT_SDL2_ALLOW_EXTENDED`](Configuration?id=gamepad-data) has been set to `true` then the following constants will be available for use. Not many gamepads actually have these buttons so it's not recommend to use these constants for default bindings.
