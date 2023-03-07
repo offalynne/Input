@@ -34,6 +34,20 @@
 #macro __INPUT_BINDING_GAMEPAD_BUTTON    "gamepad button"
 #macro __INPUT_BINDING_GAMEPAD_AXIS      "gamepad axis"
 
+#macro INPUT_GAMEPAD_TYPE_XBOX_ONE      "xbox one"
+#macro INPUT_GAMEPAD_TYPE_XBOX_360      "xbox 360"
+#macro INPUT_GAMEPAD_TYPE_PS5           "ps5"
+#macro INPUT_GAMEPAD_TYPE_PS4           "ps4"
+#macro INPUT_GAMEPAD_TYPE_PSX           "psx"
+#macro INPUT_GAMEPAD_TYPE_SWITCH        "switch"
+#macro INPUT_GAMEPAD_TYPE_JOYCON_LEFT   "switch joycon left"
+#macro INPUT_GAMEPAD_TYPE_JOYCON_RIGHT  "switch joycon right"
+#macro INPUT_GAMEPAD_TYPE_GAMECUBE      "gamecube"
+#macro INPUT_GAMEPAD_TYPE_N64           "n64"
+#macro INPUT_GAMEPAD_TYPE_SATURN        "saturn"
+#macro INPUT_GAMEPAD_TYPE_SNES          "snes"
+#macro INPUT_GAMEPAD_TYPE_UNKNOWN       "unknown"
+
 #macro INPUT_KEYBOARD      __input_global().__source_keyboard
 #macro INPUT_MOUSE         __input_global().__source_mouse
 #macro INPUT_GAMEPAD       __input_global().__source_gamepad

@@ -274,7 +274,7 @@ function __input_initialize()
     
     #endregion
   
-    var _default_xbox_type = "xbox one"; //Default type assigned to XInput and Xbox-like gamepads
+    var _default_xbox_type = INPUT_GAMEPAD_TYPE_XBOX_ONE; //Default type assigned to XInput and Xbox-like gamepads
     
     #region Gamepad type identification
     
@@ -284,57 +284,57 @@ function __input_initialize()
         //Xbox
         CommunityLikeXBox: _default_xbox_type,
 
-        XBoxOneController:  "xbox one",
-        CommunityXBoxOne:   "xbox one",
-        CommunityDeck:      "xbox one", //  Deck uses Xbox One iconography
-        CommunityLuna:      "xbox one", //  Luna uses Xbox One iconography excepting 'View' button: Circle
-        CommunityStadia:    "xbox one", //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers: Options, L1 R1, L2 R2
-        AppleController:    "xbox one", // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers: Various, L1 R1, L2 R2
+        XBoxOneController:  INPUT_GAMEPAD_TYPE_XBOX_ONE,
+        CommunityXBoxOne:   INPUT_GAMEPAD_TYPE_XBOX_ONE,
+        CommunityDeck:      INPUT_GAMEPAD_TYPE_XBOX_ONE, //  Deck uses Xbox One iconography
+        CommunityLuna:      INPUT_GAMEPAD_TYPE_XBOX_ONE, //  Luna uses Xbox One iconography excepting 'View' button: Circle
+        CommunityStadia:    INPUT_GAMEPAD_TYPE_XBOX_ONE, //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers: Options, L1 R1, L2 R2
+        AppleController:    INPUT_GAMEPAD_TYPE_XBOX_ONE, // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers: Various, L1 R1, L2 R2
         
-        XBox360Controller:  "xbox 360",
-        CommunityXBox360:   "xbox 360",
-        CommunityDreamcast: "xbox 360", //       X-Box 360 uses Dreamcast iconography
-        SteamController:    "xbox 360", //Steam Controller uses X-Box 360 iconography
-        MobileTouch:        "xbox 360", //      Steam Link uses X-Box 360 iconography
+        XBox360Controller:  INPUT_GAMEPAD_TYPE_XBOX_360,
+        CommunityXBox360:   INPUT_GAMEPAD_TYPE_XBOX_360,
+        CommunityDreamcast: INPUT_GAMEPAD_TYPE_XBOX_360, //       X-Box 360 uses Dreamcast iconography
+        SteamController:    INPUT_GAMEPAD_TYPE_XBOX_360, //Steam Controller uses X-Box 360 iconography
+        MobileTouch:        INPUT_GAMEPAD_TYPE_XBOX_360, //      Steam Link uses X-Box 360 iconography
         
         //PlayStation
-        PS5Controller:       "ps5",
-        PS4Controller:       "ps4",
-        XInputPS4Controller: "ps4",
-        CommunityPS4:        "ps4",
-        PS3Controller:       "psx",
-        CommunityPSX:        "psx",
+        PS5Controller:       INPUT_GAMEPAD_TYPE_PS5,
+        PS4Controller:       INPUT_GAMEPAD_TYPE_PS4,
+        XInputPS4Controller: INPUT_GAMEPAD_TYPE_PS4,
+        CommunityPS4:        INPUT_GAMEPAD_TYPE_PS4,
+        PS3Controller:       INPUT_GAMEPAD_TYPE_PSX,
+        CommunityPSX:        INPUT_GAMEPAD_TYPE_PSX,
         
         //Switch
-        SwitchHandheld:            "switch", //Attached JoyCon pair or Switch Lite handheld
-        SwitchJoyConPair:          "switch",
-        SwitchProController:       "switch",
-        XInputSwitchController:    "switch",
-        SwitchInputOnlyController: "switch",
-        CommunityLikeSwitch:       "switch",
-        Community8BitDo:           "switch", //8BitDo are Switch gamepads (exceptions typed appropriately)
-        HIDWiiClassic:             "switch",
+        SwitchHandheld:            INPUT_GAMEPAD_TYPE_SWITCH, //Attached JoyCon pair or Switch Lite handheld
+        SwitchJoyConPair:          INPUT_GAMEPAD_TYPE_SWITCH,
+        SwitchProController:       INPUT_GAMEPAD_TYPE_SWITCH,
+        XInputSwitchController:    INPUT_GAMEPAD_TYPE_SWITCH,
+        SwitchInputOnlyController: INPUT_GAMEPAD_TYPE_SWITCH,
+        CommunityLikeSwitch:       INPUT_GAMEPAD_TYPE_SWITCH,
+        Community8BitDo:           INPUT_GAMEPAD_TYPE_SWITCH, //8BitDo are Switch gamepads (exceptions typed appropriately)
+        HIDWiiClassic:             INPUT_GAMEPAD_TYPE_SWITCH,
 
-        SwitchJoyConLeft:   "switch joycon left",
-        SwitchJoyConSingle: "switch joycon left",
-        HIDJoyConLeft:      "switch joycon left",
-        SwitchJoyConRight:  "switch joycon right",
-        HIDJoyConRight:     "switch joycon right",
+        SwitchJoyConLeft:   INPUT_GAMEPAD_TYPE_JOYCON_LEFT,
+        SwitchJoyConSingle: INPUT_GAMEPAD_TYPE_JOYCON_LEFT,
+        HIDJoyConLeft:      INPUT_GAMEPAD_TYPE_JOYCON_LEFT,
+        SwitchJoyConRight:  INPUT_GAMEPAD_TYPE_JOYCON_RIGHT,
+        HIDJoyConRight:     INPUT_GAMEPAD_TYPE_JOYCON_RIGHT,
         
         //Legacy
-        CommunityGameCube:     "gamecube",
-        CommunityN64:          "n64",
-        CommunitySaturn:       "saturn",
-        CommunitySNES:         "snes",
-        CommunitySuperFamicom: "snes",
+        CommunityGameCube:     INPUT_GAMEPAD_TYPE_GAMECUBE,
+        CommunityN64:          INPUT_GAMEPAD_TYPE_N64,
+        CommunitySaturn:       INPUT_GAMEPAD_TYPE_SATURN,
+        CommunitySNES:         INPUT_GAMEPAD_TYPE_SNES,
+        CommunitySuperFamicom: INPUT_GAMEPAD_TYPE_SNES,
         
-        Unknown: "unknown",
-        unknown: "unknown",
+        Unknown: INPUT_GAMEPAD_TYPE_UNKNOWN,
+        unknown: INPUT_GAMEPAD_TYPE_UNKNOWN,
         
-        SteamControllerV2:         "unknown",
-        UnknownNonSteamController: "unknown",
-        CommunityUnknown:          "unknown",
-        CommunitySteam:            "unknown"
+        SteamControllerV2:         INPUT_GAMEPAD_TYPE_UNKNOWN,
+        UnknownNonSteamController: INPUT_GAMEPAD_TYPE_UNKNOWN,
+        CommunityUnknown:          INPUT_GAMEPAD_TYPE_UNKNOWN,
+        CommunitySteam:            INPUT_GAMEPAD_TYPE_UNKNOWN
         
     }
     
@@ -716,10 +716,10 @@ function __input_initialize()
             {
                 //If ignore hint isn't set, GM accesses controllers meant to be blocked
                 //We address this by adding the Steam config types to our own blocklist
-                if (_steam_ps)      array_push(_ignore_list, "ps4", "ps5");
-                if (_steam_xbox)    array_push(_ignore_list, "xbox 360", "xbox one");
-                if (_steam_generic) array_push(_ignore_list, "snes", "saturn", "n64", "gamecube", "psx", "xbox", "unknown");
-                if (_steam_switch)  array_push(_ignore_list, "switch", "switch joycon left", "switch joycon right");
+                if (_steam_ps)      array_push(_ignore_list, INPUT_GAMEPAD_TYPE_PS4, INPUT_GAMEPAD_TYPE_PS5);
+                if (_steam_xbox)    array_push(_ignore_list, INPUT_GAMEPAD_TYPE_XBOX_360, INPUT_GAMEPAD_TYPE_XBOX_ONE);
+                if (_steam_generic) array_push(_ignore_list, INPUT_GAMEPAD_TYPE_SNES, INPUT_GAMEPAD_TYPE_SATURN, INPUT_GAMEPAD_TYPE_N64, INPUT_GAMEPAD_TYPE_GAMECUBE, INPUT_GAMEPAD_TYPE_PSX, INPUT_GAMEPAD_TYPE_UNKNOWN);
+                if (_steam_switch)  array_push(_ignore_list, INPUT_GAMEPAD_TYPE_SWITCH, INPUT_GAMEPAD_TYPE_JOYCON_LEFT, INPUT_GAMEPAD_TYPE_JOYCON_RIGHT);
              
                 var _i = 0;
                 repeat(array_length(_ignore_list))

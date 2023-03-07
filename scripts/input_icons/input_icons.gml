@@ -1,6 +1,6 @@
 /// @desc    Adds an icon category to Input, for use internally with input_binding_get_icon()
 ///          This function is part of a fluent interface e.g.
-///              input_icons("xbox one")
+///              input_icons(INPUT_GAMEPAD_TYPE_XBOX_ONE)
 ///              .add("gamepad face south", "A")
 ///              .add("gamepad face east",  "B")
 ///              .add("gamepad face west",  "X")
