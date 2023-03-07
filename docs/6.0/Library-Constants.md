@@ -76,20 +76,20 @@ The `INPUT_BINDING_SCAN_EVENT` enum is used by the failure callback for [`input_
 
 The following constants allow you to reference specific gamepad types. These constants are used to define [`input_icon()`](Functions-(Other)?id=input_iconscategoryname) categories, and are returned by [`input_player_get_gamepad_type()`](Functions-(Players)?id=input_player_get_gamepad_typeplayerindex-binding) and [`input_gamepad_get_type()`](Functions-(Gamepad)?id=input_gamepad_get_typegamepadindex).
 
-|Name                              | Device description |
+|Category name                     | Gamepad types |
 |----------------------------------|--------------------|
 |`INPUT_GAMEPAD_TYPE_XBOX_ONE`     | Xbox Series, Xbox One, Steam Deck, Luna, Stadia, MFi |
 |`INPUT_GAMEPAD_TYPE_XBOX_360`     | Xbox 360, Dreamcast, Steam Controller, Steam Link Touch Controller |
-|`INPUT_GAMEPAD_TYPE_PS5`          | PS5 Controllers |
-|`INPUT_GAMEPAD_TYPE_PS4`          | PS4 Controllers |
-|`INPUT_GAMEPAD_TYPE_PSX`          | PS1, PS2, PS3 Controllers |
-|`INPUT_GAMEPAD_TYPE_SWITCH`       | Switch Hanheld Mode, Switch Lite, Switch Joy-Con Pair, Switch Pro, 3rd party Switch Controllers, WiiU, Wii |
+|`INPUT_GAMEPAD_TYPE_PS5`          | PS5 |
+|`INPUT_GAMEPAD_TYPE_PS4`          | PS4 |
+|`INPUT_GAMEPAD_TYPE_PSX`          | PS1, PS2, PS3 |
+|`INPUT_GAMEPAD_TYPE_SWITCH`       | Switch Hanheld Mode, Switch Lite, Switch Joy-Con Pair, Switch Pro, Switch 3rd party, WiiU, Wii |
 |`INPUT_GAMEPAD_TYPE_JOYCON_LEFT`  | Switch Joy-Con Left |
 |`INPUT_GAMEPAD_TYPE_JOYCON_RIGHT` | Switch Joy-Con Right |
 |`INPUT_GAMEPAD_TYPE_GAMECUBE`     | GameCube |
 |`INPUT_GAMEPAD_TYPE_N64`          | N64 |
-|`INPUT_GAMEPAD_TYPE_SATURN`       | Sega Genesis, Mega Drive and Saturn Controllers |
-|`INPUT_GAMEPAD_TYPE_SNES`         | NES, SNES and Super Famicom Controllers |
+|`INPUT_GAMEPAD_TYPE_SATURN`       | Genesis, Mega Drive, Saturn, 6-button PC |
+|`INPUT_GAMEPAD_TYPE_SNES`         | NES, SNES, Super Famicom |
 
 &nbsp;
 
