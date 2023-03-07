@@ -83,13 +83,13 @@ Removes a keyboard key from the ignore list.
 
 *Returns:* N/A (`undefined`)
 
-|Name          |Datatype|Purpose                                |
-|--------------|--------|---------------------------------------|
-|`categoryName`|string  |Icon category name to access. See below|
+|Name                           |Datatype|Purpose                                                |
+|-------------------------------|--------|-------------------------------------------------------|
+|`gamepadType` or `categoryName`|string  |Gamepad type or icon category name to access. See below|
 
 This function is used to define icons that [`input_binding_get_icon()`](Functions-(Binding-Access)?id=input_binding_get_iconbinding-playerindex) can return. This function should only be called in the [`__input_config_icons()`](Configuration?id=icons) script.
 
-Icon category names can be the [names of gamepad types](Functions-(Players)?id=input_player_get_gamepad_typeplayerindex-binding) that Input can return, or category names can be one of the following special cases:
+Icon category names can be [gamepad type constants](Functions-(Other)?id=input_iconscategoryname) that Input can return, or one of the following special cases:
 
 |Category Name         |Occurrance                                                       |
 |----------------------|-----------------------------------------------------------------|
@@ -103,7 +103,7 @@ Icon category names can be the [names of gamepad types](Functions-(Players)?id=i
 `input_icons()` must be used with what's called a [fluent interface](https://en.wikipedia.org/wiki/Fluent_interface). In practical terms, this means that `__input_config_icons()` should contain code that looks like this:
 
 ```
-input_icons("xbox one")
+input_icons(INPUT_GAMEPAD_TYPE_XBOX_ONE)
 .add("gamepad face south", "A")
 .add("gamepad face east",  "B")
 .add("gamepad face west",  "X")
@@ -111,14 +111,14 @@ input_icons("xbox one")
 //etc.
 ```
 
-Each call to the `.add()` method add a new icon to the `"xbox one"` icon category.
+Each call to the `.add()` method adds a new icon to the `INPUT_GAMEPAD_TYPE_XBOX_ONE` icon category.
 
 !> Note that none of these lines terminate in a semicolon `;`. This is very important to ensure that the fluent interface works properly.
 
 The first argument for the `.add()` method is a [binding name](Binding-Names), the second argument is the value to return as the icon for that binding. In the example above, the string `"A"` is being returned for the south-positioned gamepad button for an Xbox One controller. We might very well use sprites instead of strings:
 
 ```
-input_icons("xbox one")
+input_icons(INPUT_GAMEPAD_TYPE_XBOX_ONE)
 .add("gamepad face south", spr_xboxone_a)
 .add("gamepad face east",  spr_xboxone_b)
 .add("gamepad face west",  spr_xboxone_x)
@@ -130,11 +130,13 @@ input_icons("xbox one")
 
 ## `input_color_get([playerIndex])`
 
-*Returns:* Integer, the player's device's colour
+*Returns:* Integer, the player's device's LED colour
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+?> Color functions are relevant on PS4 and PS5 platforms as well as Windows or Linux using Steamworks, and apply to PS4, PS5, and Xbox Elite 2 gamepads
 
 &nbsp;
 
@@ -144,7 +146,7 @@ input_icons("xbox one")
 
 |Name           |Datatype|Purpose                                                              |
 |---------------|--------|---------------------------------------------------------------------|
-|`color`        |integer |Colour to set for the player's device (standard 24-bit GameMaker BGR)|
+|`color`        |integer |Colour to set for the player's device's LED color (standard 24-bit GameMaker BGR)|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                 |
 
 &nbsp;
@@ -157,7 +159,7 @@ input_icons("xbox one")
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
-Resets the player's device's colour.
+Resets the player's device's LED colour.
 
 &nbsp;
 
