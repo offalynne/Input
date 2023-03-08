@@ -89,7 +89,7 @@ This function will return `-1` if the player has no connected gamepad. If you pr
 
 ## `input_player_get_gamepad_type([playerIndex], [binding])`
 
-*Returns:* String, a constant indicating the player's [gamepad's type]([gamepad type constant](Library-Constants#gamepad-types))
+*Returns:* String, a constant indicating the player's [gamepad type constant](Library-Constants#gamepad-types)
 
 |Name           |Datatype                     |Purpose                                                                                                                                                                                                    |
 |---------------|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
