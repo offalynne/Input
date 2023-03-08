@@ -10,19 +10,17 @@
 
 //Special case: When a non-binding value is being evaluated
 //              This should only happen if input_binding_get_icon() is given an invalid input argument
-input_icons("not a binding")
-.add(all, "not a binding")
+input_icon_not_a_binding("not a binding");
 
 //Special case: When an empty binding is being evaluated
-input_icons("empty")
-.add(all, "empty")
+input_icon_empty("empty");
 
 
 
 //Optional remapping for keyboard and mouse
 //This is useful for turning keyboard keys into sprite icons to match other assets, or for returning formatted strings (e.g. for use with Scribble)
 //Any keyboard key label not in this struct will simply fall through and return the key name
-input_icons("keyboard and mouse")
+input_icons_keyboard_and_mouse()
 //Put extra .add() commands here to add icons to keyboard and mouse
 
 
@@ -30,7 +28,7 @@ input_icons("keyboard and mouse")
 #region Gamepads
 
 //Xbox One and Series S|X controllers
-input_icons(INPUT_GAMEPAD_TYPE_XBOX_ONE)
+input_icons_gamepad(INPUT_GAMEPAD_TYPE_XBOX_ONE)
 .add("gamepad face south",         "A")
 .add("gamepad face east",          "B")
 .add("gamepad face west",          "X")
@@ -68,7 +66,7 @@ input_icons(INPUT_GAMEPAD_TYPE_XBOX_ONE)
 .add("gamepad paddle 4",           "P4")
 
 //PlayStation 5
-input_icons(INPUT_GAMEPAD_TYPE_PS5)
+input_icons_gamepad(INPUT_GAMEPAD_TYPE_PS5)
 .add("gamepad face south",         "cross")
 .add("gamepad face east",          "circle")
 .add("gamepad face west",          "square")
@@ -102,7 +100,7 @@ input_icons(INPUT_GAMEPAD_TYPE_PS5)
 .add("gamepad misc 1",         "mic")
 
 //Switch handheld/dual JoyCon/Pro Controller
-input_icons(INPUT_GAMEPAD_TYPE_SWITCH)
+input_icons_gamepad(INPUT_GAMEPAD_TYPE_SWITCH)
 .add("gamepad face south",         "B")
 .add("gamepad face east",          "A")
 .add("gamepad face west",          "Y")
@@ -136,7 +134,7 @@ input_icons(INPUT_GAMEPAD_TYPE_SWITCH)
 
 //Left-hand Switch JoyCon
 //This setup assums horizontal hold type
-input_icons(INPUT_GAMEPAD_TYPE_JOYCON_LEFT)
+input_icons_gamepad(INPUT_GAMEPAD_TYPE_JOYCON_LEFT)
 .add("gamepad face south",         "face south")
 .add("gamepad face east",          "face east")
 .add("gamepad face west",          "face west") 
@@ -156,7 +154,7 @@ input_icons(INPUT_GAMEPAD_TYPE_JOYCON_LEFT)
 
 //Right-hand Switch JoyCon
 //This setup assums horizontal hold type
-input_icons(INPUT_GAMEPAD_TYPE_JOYCON_RIGHT)
+input_icons_gamepad(INPUT_GAMEPAD_TYPE_JOYCON_RIGHT)
 .add("gamepad face south",         "face south")
 .add("gamepad face east",          "face east")
 .add("gamepad face west",          "face west") 
@@ -175,7 +173,7 @@ input_icons(INPUT_GAMEPAD_TYPE_JOYCON_RIGHT)
 .add("gamepad select",             "home")
 
 //Xbox 360
-input_icons(INPUT_GAMEPAD_TYPE_XBOX_360)
+input_icons_gamepad(INPUT_GAMEPAD_TYPE_XBOX_360)
 .add("gamepad face south",         "A")
 .add("gamepad face east",          "B")
 .add("gamepad face west",          "X")
@@ -204,7 +202,7 @@ input_icons(INPUT_GAMEPAD_TYPE_XBOX_360)
 .add("gamepad thumbstick r click", "thumbstick r click")
 
 //PlayStation 4
-input_icons(INPUT_GAMEPAD_TYPE_PS4)
+input_icons_gamepad(INPUT_GAMEPAD_TYPE_PS4)
 .add("gamepad face south",         "cross")
 .add("gamepad face east",          "circle")
 .add("gamepad face west",          "square")
@@ -235,7 +233,7 @@ input_icons(INPUT_GAMEPAD_TYPE_PS4)
 .add("gamepad touchpad click", "touchpad click")
 
 //PlayStation 1-3
-input_icons(INPUT_GAMEPAD_TYPE_PSX)
+input_icons_gamepad(INPUT_GAMEPAD_TYPE_PSX)
 .add("gamepad face south",         "cross")
 .add("gamepad face east",          "circle")
 .add("gamepad face west",          "square")
@@ -264,7 +262,7 @@ input_icons(INPUT_GAMEPAD_TYPE_PSX)
 .add("gamepad thumbstick r click", "R3")
 
 //Nintendo Gamecube
-input_icons(INPUT_GAMEPAD_TYPE_GAMECUBE)
+input_icons_gamepad(INPUT_GAMEPAD_TYPE_GAMECUBE)
 .add("gamepad face south",         "A")
 .add("gamepad face east",          "X")
 .add("gamepad face west",          "B")
@@ -295,7 +293,7 @@ input_icons(INPUT_GAMEPAD_TYPE_GAMECUBE)
 .add("gamepad misc 1",             "capture")
 
 //Nintendo 64
-input_icons(INPUT_GAMEPAD_TYPE_N64)
+input_icons_gamepad(INPUT_GAMEPAD_TYPE_N64)
 .add("gamepad face south",         "A")
 .add("gamepad face east",          "B")
 .add("gamepad shoulder l",         "L")
@@ -318,7 +316,7 @@ input_icons(INPUT_GAMEPAD_TYPE_N64)
 .add("gamepad thumbstick r down",  "C down")
 
 //Sega Saturn
-input_icons(INPUT_GAMEPAD_TYPE_SATURN)
+input_icons_gamepad(INPUT_GAMEPAD_TYPE_SATURN)
 .add("gamepad face south", "A")
 .add("gamepad face east",  "B")
 .add("gamepad face west",  "X")
@@ -335,7 +333,7 @@ input_icons(INPUT_GAMEPAD_TYPE_SATURN)
 .add("gamepad dpad right", "dpad right")
 
 //Super Nintendo
-input_icons(INPUT_GAMEPAD_TYPE_SNES)
+input_icons_gamepad(INPUT_GAMEPAD_TYPE_SNES)
 .add("gamepad face south", "B")
 .add("gamepad face east",  "A")
 .add("gamepad face west",  "Y")
