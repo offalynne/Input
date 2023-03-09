@@ -6,18 +6,20 @@ function input_binding_get_icon(_binding, _player_index = 0)
 {
     //Find the correct fallback icon data
     //We'll use this if there's a problem resolving an icon otherwise
-    static _fallback_icon_struct = undefined;
+    static _fallback_icon_struct   = undefined;
+    static _fallback_category_name = "xbox one";
+    
     if (_fallback_icon_struct == undefined)
     {
         switch(os_type)
         {
-            case os_ps3:          var _fallback_category_name = "psx";      break;
-            case os_ps4:          var _fallback_category_name = "ps4";      break;
-            case os_ps5:          var _fallback_category_name = "ps5";      break;
-            case os_switch:       var _fallback_category_name = "switch";   break;
-            case os_xboxone:      var _fallback_category_name = "xbox one"; break;
-            case os_xboxseriesxs: var _fallback_category_name = "xbox one"; break;
-            default:              var _fallback_category_name = "xbox one"; break;
+            case os_ps3:          _fallback_category_name = "psx";      break;
+            case os_ps4:          _fallback_category_name = "ps4";      break;
+            case os_ps5:          _fallback_category_name = "ps5";      break;
+            case os_switch:       _fallback_category_name = "switch";   break;
+            case os_xboxone:      _fallback_category_name = "xbox one"; break;
+            case os_xboxseriesxs: _fallback_category_name = "xbox one"; break;
+            default:              _fallback_category_name = "xbox one"; break;
         }
         
         var _fallback_category_data = global.__input_icons[$ _fallback_category_name];
