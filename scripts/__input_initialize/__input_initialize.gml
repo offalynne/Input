@@ -39,6 +39,11 @@ function __input_initialize()
         __input_trace("Warning! Running on a GM runtime earlier than 2022 LTS");
     }
     
+    if ((string_pos("127.0.0.1", parameter_string(0)) > 0) && ((os_browser != browser_not_a_browser) || (os_type == os_operagx)))
+    {
+        show_message("Due to changes in security policy, some browsers may not permit the use of gamepads when testing locally.\n \nPlease host on a remote web service (itch.io, GX.games, etc.) if you are encountering problems.");
+    }
+    
     //Global frame counter and realtime tracker. This is used for input buffering
     _global.__frame = 0;
     _global.__current_time = current_time;

@@ -155,7 +155,8 @@ function __input_class_binding() constructor
         
         if (!variable_struct_exists(_binding_shell, "value")
         && (_binding_shell.type != __INPUT_BINDING_MOUSE_WHEEL_UP)
-        && (_binding_shell.type != __INPUT_BINDING_MOUSE_WHEEL_DOWN))
+        && (_binding_shell.type != __INPUT_BINDING_MOUSE_WHEEL_DOWN)
+        && (_binding_shell.type != __INPUT_BINDING_VIRTUAL_BUTTON))
         {
             __input_error("Binding \"value\" not found; binding is corrupted");
             return;
