@@ -602,12 +602,12 @@ function __input_class_player() constructor
                         {
                             if (__global.__strict_binding_check)
                             {
-                                __input_error("Gamepad constant value ", _binding_gamepad_name, " used as keyboard binding for verb ", _verb, " in profile ", _profile_name);
+                                __input_error("Gamepad constant value ", _binding_gamepad_name, " cannot be used as keyboard binding for verb ", _verb, " in profile ", _profile_name);
                                 return;
                             }
                             else
                             {
-                                __input_trace("Warning! Gamepad constant value ", _binding_gamepad_name, " used as keyboard binding for verb ", _verb, " in profile ", _profile_name);
+                                __input_trace("Warning! Gamepad constant value ", _binding_gamepad_name, " cannot be used as keyboard binding for verb ", _verb, " in profile ", _profile_name);
                                 return;
                             }
                         }
