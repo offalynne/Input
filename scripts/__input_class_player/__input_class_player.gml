@@ -596,6 +596,22 @@ function __input_class_player() constructor
                     if not ((_profile_name == INPUT_AUTO_PROFILE_FOR_KEYBOARD)
                          || (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (_profile_name == INPUT_AUTO_PROFILE_FOR_MOUSE)))
                     {
+                        //Identify incorrect gamepad-as-key binding
+                        var _binding_gamepad_name = input_gamepad_constant_get_name(ord(input_binding_get_name(_binding_struct)));
+                        if (_binding_gamepad_name != "unknown")
+                        {
+                            if (__global.__strict_binding_check)
+                            {
+                                __input_error("Gamepad constant value ", _binding_gamepad_name, " cannot be used as keyboard binding for verb ", _verb, " in profile ", _profile_name);
+                                return;
+                            }
+                            else
+                            {
+                                __input_trace("Warning! Gamepad constant value ", _binding_gamepad_name, " cannot be used as keyboard binding for verb ", _verb, " in profile ", _profile_name);
+                                return;
+                            }
+                        }
+                        
                         if (__global.__strict_binding_check)
                         {
                             __input_error("Keyboard binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
