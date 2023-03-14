@@ -210,6 +210,7 @@
 
 ## [Color](Functions-(Color))
 
+- [`input_color_get([playerIndex])`](Functions-(Color)?id=input_color_getplayerindex)
 - [`input_color_set(color, [playerIndex])`](Functions-(Color)?id=input_color_setcolor-playerindex)
 - [`input_color_reset([playerIndex])`](Functions-(Color)?id=input_color_resetplayerindex)
 
