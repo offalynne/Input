@@ -6,6 +6,18 @@ Gamepad color can be set for PlayStation console platforms, as well as on [Windo
 
 &nbsp;
 
+## `input_color_get([playerIndex])`
+
+*Returns:* [Color](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Drawing/Colour_And_Alpha/Colour_And_Alpha.htm)
+
+|Name           |Datatype           |Purpose                                               |
+|---------------|-------------------|------------------------------------------------------|
+|`[playerIndex]`|integer            |Player to target. If not specified, player 0 is used  |
+
+Gets the LED color of a player's gamepad
+
+&nbsp;
+
 ## `input_color_set(color, [playerIndex])`
 
 *Returns:* N/A (`undefined`)
