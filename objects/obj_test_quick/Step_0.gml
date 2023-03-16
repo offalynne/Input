@@ -1,5 +1,3 @@
-input_tick();
-
 if not (input_check(["left", "right", "up", "down"]))
 {
     quick = false;
