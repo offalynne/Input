@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Deprcated",
-    "path": "folders/Input/(System)/Deprcated.yy",
+    "name": "Deprecated",
+    "path": "folders/Input/(System)/Deprecated.yy",
   },
 }

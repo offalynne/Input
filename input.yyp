@@ -398,7 +398,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Input","folderPath":"folders/Input.yy","order":0,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"(System)","folderPath":"folders/Input/(System).yy","order":23,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Classes","folderPath":"folders/Input/(System)/Classes.yy","order":4,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Deprcated","folderPath":"folders/Input/(System)/Deprcated.yy","order":21,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Deprecated","folderPath":"folders/Input/(System)/Deprecated.yy","order":21,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Gamepads and Steam","folderPath":"folders/Input/(System)/Gamepads and Steam.yy","order":5,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Initialization","folderPath":"folders/Input/(System)/Initialization.yy","order":2,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Keyboard and Mouse","folderPath":"folders/Input/(System)/Keyboard and Mouse.yy","order":6,},
