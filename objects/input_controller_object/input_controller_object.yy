@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "__input_controller_object",
+  "name": "input_controller_object",
   "spriteId": null,
   "solid": false,
   "visible": false,

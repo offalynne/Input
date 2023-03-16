@@ -21,25 +21,25 @@ function __input_initialize()
     _global.__use_is_instanceof = (string_copy(GM_runtime_version, 1, 4) == "2023");
     if (_global.__use_is_instanceof) __input_trace("On runtime ", GM_runtime_version, ", using is_instanceof()");
     
-    //Set up a time source to manage __input_controller_object
+    //Set up a time source to manage input_controller_object
     _global.__time_source = time_source_create(time_source_global, 1, time_source_units_frames, function()
     {
         //Ensure existance of our controller object
-        if (!instance_exists(__input_controller_object))
+        if (!instance_exists(input_controller_object))
         {
             //Try to detect deactivation of the controller object
-            instance_activate_object(__input_controller_object);
-            if (instance_exists(__input_controller_object))
+            instance_activate_object(input_controller_object);
+            if (instance_exists(input_controller_object))
             {
                 if (GM_build_type == "run")
                 {
                     //Be nasty when running from the IDE >:(
-                    __input_error("__input_controller_object has been deactivated\nPlease ensure that __input_controller_object is never deactivated");
+                    __input_error("input_controller_object has been deactivated\nPlease ensure that input_controller_object is never deactivated\nYou may need to use instance_activate_object(input_controller_object)");
                 }
                 else
                 {
                     //Be nice when in production <:)
-                    __input_trace("Warning! __input_controller_object has been deactivated. Please ensure that __input_controller_object is never deactivated");
+                    __input_trace("Warning! input_controller_object has been deactivated. Please ensure that input_controller_object is never deactivated. You may need to use instance_activate_object(input_controller_object)");
                 }
             }
             else
@@ -55,32 +55,32 @@ function __input_initialize()
                     if (GM_build_type == "run")
                     {
                         //Be nasty when running from the IDE >:(
-                        __input_error("__input_controller_object has been destroyed\nPlease ensure that __input_controller_object is never destroyed");
+                        __input_error("input_controller_object has been destroyed\nPlease ensure that input_controller_object is never destroyed");
                     }
                     else
                     {
                         //Be nice when in production <:)
-                        __input_trace("Warning! __input_controller_object has been destroyed. Please ensure that __input_controller_object is never destroyed");
+                        __input_trace("Warning! input_controller_object has been destroyed. Please ensure that input_controller_object is never destroyed");
                     }
                 }
                 
-                instance_create_depth(0, 0, 0, __input_controller_object);
+                instance_create_depth(0, 0, 0, input_controller_object);
             }
         }
         
         //Detect if the controller object has been set to non-persistent
-        if (!__input_controller_object.persistent)
+        if (!input_controller_object.persistent)
         {
             if (GM_build_type == "run")
             {
                 //Be nasty when running from the IDE >:(
-                __input_error("__input_controller_object has been set as non-persistent\nPlease ensure that __input_controller_object is always persistent");
+                __input_error("input_controller_object has been set as non-persistent\nPlease ensure that input_controller_object is always persistent");
             }
             else
             {
                 //Be nice when in production <:)
-                __input_trace("Warning! __input_controller_object has been set as non-persistent. Please ensure that __input_controller_object is always persistent");
-                __input_controller_object.persistent = true;
+                __input_trace("Warning! input_controller_object has been set as non-persistent. Please ensure that input_controller_object is always persistent");
+                input_controller_object.persistent = true;
             }
         }
     }, [], -1);
