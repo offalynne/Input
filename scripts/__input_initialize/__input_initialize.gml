@@ -851,15 +851,16 @@ function __input_initialize()
         if (os_type == os_android)
         {
             var _map = os_get_info();
-            if (_map != undefined) 
+            if (ds_exists(_map, ds_type_map))
             {
                 //Android on Chromebook form factor (ARC) test via Google
                 //matches(".+_cheets|cheets_.+")
                 var _device = string(_map[? "DEVICE"]);
-                if ((string_pos("cheets_", _device) - string_length(_device) < -6) || string_pos("_cheets", _device) > 1)
+                if ((string_pos("_cheets", _device) > 1) || (string_pos("cheets_", _device) > ))
                 {
                     INPUT_KEYBOARD_TYPE = "keyboard";
                 }
+
                 ds_map_destroy(_map)
             }
         }
