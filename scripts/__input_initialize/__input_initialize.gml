@@ -21,23 +21,71 @@ function __input_initialize()
     _global.__use_is_instanceof = (string_copy(GM_runtime_version, 1, 4) == "2023");
     if (_global.__use_is_instanceof) __input_trace("On runtime ", GM_runtime_version, ", using is_instanceof()");
     
-    //Attempt to set up a time source for slick automatic input handling
-    try
+    //Set up a time source to manage __input_controller_object
+    _global.__time_source = time_source_create(time_source_global, 1, time_source_units_frames, function()
     {
-        //GMS2022.500.58 runtime and later
-        _global.__time_source = time_source_create(time_source_global, 1, time_source_units_frames, function()
+        //Ensure existance of our controller object
+        if (!instance_exists(__input_controller_object))
         {
-            __input_system_tick();
-        }, [], -1);
+            //Try to detect deactivation of the controller object
+            instance_activate_object(__input_controller_object);
+            if (instance_exists(__input_controller_object))
+            {
+                if (GM_build_type == "run")
+                {
+                    //Be nasty when running from the IDE >:(
+                    __input_error("__input_controller_object has been deactivated\nPlease ensure that __input_controller_object is never deactivated");
+                }
+                else
+                {
+                    //Be nice when in production <:)
+                    __input_trace("Warning! __input_controller_object has been deactivated. Please ensure that __input_controller_object is never deactivated");
+                }
+            }
+            else
+            {
+                static _created = false;
+                if (!_created)
+                {
+                    //Don't throw an error if we haven't made the instance yet
+                    _created = true;
+                }
+                else
+                {
+                    if (GM_build_type == "run")
+                    {
+                        //Be nasty when running from the IDE >:(
+                        __input_error("__input_controller_object has been destroyed\nPlease ensure that __input_controller_object is never destroyed");
+                    }
+                    else
+                    {
+                        //Be nice when in production <:)
+                        __input_trace("Warning! __input_controller_object has been destroyed. Please ensure that __input_controller_object is never destroyed");
+                    }
+                }
+                
+                instance_create_depth(0, 0, 0, __input_controller_object);
+            }
+        }
         
-        time_source_start(_global.__time_source);
-    }
-    catch(_error)
-    {
-        //If the above fails then fall back on needing to call input_tick()
-        _global.__time_source = undefined;
-        __input_trace("Warning! Running on a GM runtime earlier than 2022 LTS");
-    }
+        //Detect if the controller object has been set to non-persistent
+        if (!__input_controller_object.persistent)
+        {
+            if (GM_build_type == "run")
+            {
+                //Be nasty when running from the IDE >:(
+                __input_error("__input_controller_object has been set as non-persistent\nPlease ensure that __input_controller_object is always persistent");
+            }
+            else
+            {
+                //Be nice when in production <:)
+                __input_trace("Warning! __input_controller_object has been set as non-persistent. Please ensure that __input_controller_object is always persistent");
+                __input_controller_object.persistent = true;
+            }
+        }
+    }, [], -1);
+    
+    time_source_start(_global.__time_source);
     
     if (((string_pos("127.0.0.1", parameter_string(0)) > 0) || (string_pos("localhost", parameter_string(0)) > 0)) && (os_browser != browser_not_a_browser))
     {
@@ -150,7 +198,7 @@ function __input_initialize()
     _global.__touch_player = undefined;
     
     //Two structs that are returned by input_players_get_status() and input_gamepads_get_status()
-    //These are "static" structs that are reset and populated by input_tick()
+    //These are "static" structs that are reset and populated by __input_system_tick()
     _global.__players_status = {
         any_changed: false,
         new_connections: [],

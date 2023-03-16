@@ -199,7 +199,7 @@ enum __INPUT_TRIGGER_EFFECT
 }
 
 //INPUT_STATUS.DISCONNECTED *must* be zero so that array_size() initializes gamepad status to disconnected
-//See input_tick() for more details
+//See __input_system_tick() for more details
 enum INPUT_STATUS
 {
     NEWLY_DISCONNECTED = -1,
