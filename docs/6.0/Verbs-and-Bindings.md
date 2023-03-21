@@ -40,7 +40,7 @@ We start by defining a default profile. This serves two purposes - firstly, it l
 
 ?> When you import Input it’ll come with some default controls already set up. To explain this clearer, we must delete everything that’s already in `INPUT_DEFAULT_PROFILES` and start fresh. You may also need to delete the contents of [`INPUT_VERB_GROUPS`](Configuration?id=verbs).
 
-You'll find `INPUT_DEFAULT_PROFILES` in [`__input_config_profiles_and_bindings()`](Configuration?id=profiles-and-bindings). This is where we'll set up our default profile.
+You'll find `INPUT_DEFAULT_PROFILES` in [`__input_config_verbs_and_bindings()`](Configuration?id=profiles-and-bindings). This is where we'll set up our default profile.
 
 ```gml
 INPUT_DEFAULT_PROFILES = {
