@@ -24,6 +24,8 @@ On many platforms, gamepad indices do not enumerate predicatbly. Use source assi
 
 - On Windows, as per GameMaker’s default behaviour, device indexes from 0 to 3 inclusive are XInput gamepads. Devices 4 to 11 inclusive are DInput gamepads. XInput gamepads return less information about themselves than DInput and, as a result, some supplementary data (button labels etc.) may be inaccurate.
 
+- On desktop, gamepad vibration is *only* available for Windows XInput gamepads. Enabling vibration for additional gamepads requires the [Steamwork extension](Steamworks).
+
 - On Windows, [game controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping. Specifically, the runtime is using an old version of the identifying string used to differentiate controllers, resulting in the feature being marginally limited on the platform.
 
 - On Windows OS versions below Windows 10, some Bluetooth controllers fail to operate correctly. This is a system-level problem beyond our capability to address.
