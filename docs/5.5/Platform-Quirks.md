@@ -117,6 +117,8 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Gamepad indices start at 1 instead of 0. Use source assignment or source hotswap features to avoid assigning players a gamepad index manually.
 
+- GameMaker does not support gamepad vibration on this platform
+
 - Users may find the Select (aka Share or View) gamepad button to cause unintended screenshot and video recording actions. These can be toggled on the OS at _Settings > General > Game Controller_
 
 ### Android
@@ -133,6 +135,8 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Gamepad indices do not enumerate predictably. Use source assignment or source hotswap features to avoid assigning players a gamepad index manually.
 
+- GameMaker does not support gamepad vibration on this platform
+
 - Due to GameMaker's handling of the Android gamepad stack, some gamepads do not have functional dpad mappings.
 
 - Switch JoyCons are not properly handled by some versions of the Android kernel. As a result, they are not supported in some circumstances.
@@ -146,6 +150,8 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 - Web browsers have their own gamepad API, as such Input does not use its own [game controller mapping](Controller-Mapping) on the platform. Input will use the browser's gamepad implementation, including button mapping.
 
 - In order for gamepads to present and operate, the user must first press a button with the game in focus.
+
+- GameMaker does not support gamepad vibration on this platform
 
 - Touchscreen input is functional on mobile devices supporting a device-relative number of touches up to 11. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Configuration). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
 
