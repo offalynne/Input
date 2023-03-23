@@ -27,7 +27,9 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - As per GameMaker's default behaviour, device indexes from 0 to 3 inclusive are XInput gamepads. Devices 4 to 11 inclusive are DInput gamepads. XInput gamepads return less information about themselves than DInput and, as a result, some supplementary data (button labels etc.) may be inaccurate.
 
-- [Game Controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping. Specifically, the runtime is using an old version of the identifying string used to differentiate gamepads, resulting in the feature being marginally limited on the platform.
+- Gamepad vibration is only available for Windows XInput gamepads. Enabling vibration for additional gamepads requires the [Steamwork extension](Steamworks).
+
+- [Game Controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping on older versions of GameMaker. Specifically, the runtime is using an old version of the identifying string used to differentiate gamepads, resulting in the feature being marginally limited on the platform.
 
 - On OS versions below Windows 10, some Bluetooth gamepads fail to operate correctly. This is a system-level problem beyond our capability to address.
 
@@ -47,6 +49,8 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - GameMaker's [game controller mapping](Controller-Mapping) implementation has a bug regarding remapping devices in the inbuilt remapping database (marked "fixed" by YYG, though it persists). Input fixes this with a value offset for gamepad button and axis inputs.
 
+- GameMaker does not support gamepad vibration on this platform
+
 ### Ubuntu
 
 - Keyboard input that results in printable characters outside the Basic-Latin character set are not detected, and can not be bound.
@@ -56,6 +60,8 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 - Gamepad indices do not enumerate predictably. Use source assignment or source hotswap features to avoid assigning players a gamepad index manually.
 
 - Gamepad joystick axes are not signed. GameMaker attempts to automatically sign joystick axes when they connect, but this change is discarded when gamepads are remapped. Input automatically adjusts joystick axes' range on remapping in order to resolve this.
+
+- GameMaker does not support gamepad vibration on this platform
 
 ### Steam
 
