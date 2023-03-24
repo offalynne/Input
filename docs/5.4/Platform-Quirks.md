@@ -27,7 +27,9 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - As per GameMaker's default behaviour, device indexes from 0 to 3 inclusive are XInput gamepads. Devices 4 to 11 inclusive are DInput gamepads. XInput gamepads return less information about themselves than DInput and, as a result, some supplementary data (button labels etc.) may be inaccurate.
 
-- [Game Controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping. Specifically, the runtime is using an old version of the identifying string used to differentiate gamepads, resulting in the feature being marginally limited on the platform.
+- Gamepad vibration is only available for Windows XInput gamepads. Enabling vibration for additional gamepads requires the [Steamwork extension](Steamworks).
+
+- [Game Controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping on older versions of GameMaker. Specifically, the runtime is using an old version of the identifying string used to differentiate gamepads, resulting in the feature being marginally limited on the platform.
 
 - On OS versions below Windows 10, some Bluetooth gamepads fail to operate correctly. This is a system-level problem beyond our capability to address.
 
@@ -47,6 +49,8 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - GameMaker's [game controller mapping](Controller-Mapping) implementation has a bug regarding remapping devices in the inbuilt remapping database (marked "fixed" by YYG, though it persists). Input fixes this with a value offset for gamepad button and axis inputs.
 
+- GameMaker does not support gamepad vibration on this platform
+
 ### Ubuntu
 
 - Keyboard input that results in printable characters outside the Basic-Latin character set are not detected, and can not be bound.
@@ -56,6 +60,8 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 - Gamepad indices do not enumerate predictably. Use source assignment or source hotswap features to avoid assigning players a gamepad index manually.
 
 - Gamepad joystick axes are not signed. GameMaker attempts to automatically sign joystick axes when they connect, but this change is discarded when gamepads are remapped. Input automatically adjusts joystick axes' range on remapping in order to resolve this.
+
+- GameMaker does not support gamepad vibration on this platform
 
 ### Steam
 
@@ -111,6 +117,8 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Gamepad indices start at 1 instead of 0. Use source assignment or source hotswap features to avoid assigning players a gamepad index manually.
 
+- GameMaker does not support gamepad vibration on this platform
+
 - Users may find the Select (aka Share or View) gamepad button to cause unintended screenshot and video recording actions. These can be toggled on the OS at _Settings > General > Game Controller_
 
 ### Android
@@ -127,6 +135,8 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Gamepad indices do not enumerate predictably. Use source assignment or source hotswap features to avoid assigning players a gamepad index manually.
 
+- GameMaker does not support gamepad vibration on this platform
+
 - Due to GameMaker's handling of the Android gamepad stack, some gamepads do not have functional dpad mappings.
 
 - Switch JoyCons are not properly handled by some versions of the Android kernel. As a result, they are not supported in some circumstances.
@@ -140,6 +150,8 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 - Web browsers have their own gamepad API, as such Input does not use its own [game controller mapping](Controller-Mapping) on the platform. Input will use the browser's gamepad implementation, including button mapping.
 
 - In order for gamepads to present and operate, the user must first press a button with the game in focus.
+
+- GameMaker does not support gamepad vibration on this platform
 
 - Touchscreen input is functional on mobile devices supporting a device-relative number of touches up to 11. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Configuration). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
 
