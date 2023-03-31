@@ -29,6 +29,7 @@ function __input_class_gamepad(_index) constructor
     __steam_handle       = undefined;
     
     __vibration_support = false;
+    __vibration_scale   = 1;
     __vibration_left    = 0;
     __vibration_right   = 0;
     __vibration_received_this_frame = false;
@@ -81,6 +82,10 @@ function __input_class_gamepad(_index) constructor
             if (os_type == os_ps5)
             {
                 ps5_gamepad_set_vibration_mode(index, ps5_gamepad_vibration_mode_compatible);
+            }            
+            else if (((os_type == os_windows) || (os_type == os_switch)) && __input_string_contains(raw_type, "JoyCon", "SwitchHandheld"))
+            {
+                __vibration_scale = INPUT_VIBRATION_JOYCON_STRENGTH;
             }
         
             gamepad_set_vibration(index, 0, 0);
@@ -272,25 +277,25 @@ function __input_class_gamepad(_index) constructor
         {
             if (__vibration_received_this_frame && input_window_has_focus())
             {
+                var _vibration_low  = __vibration_scale * __vibration_left;
+                var _vibration_high = __vibration_scale * __vibration_right;
+                
                 if (os_type == os_switch)
                 {
-                    var _lowStrength  = INPUT_VIBRATION_SWITCH_OS_STRENGTH*__vibration_left;
-                    var _highStrength = INPUT_VIBRATION_SWITCH_OS_STRENGTH*__vibration_right;
-                    
                     if ((raw_type == "SwitchJoyConLeft") || (raw_type == "SwitchJoyConRight"))
                     {
                         //Documentation said to use switch_controller_motor_single for these two controller types but I'll be damned if I can feel any difference!
-                        switch_controller_vibrate_hd(index, switch_controller_motor_single, _highStrength, 250, _lowStrength, 160);
+                        switch_controller_vibrate_hd(index, switch_controller_motor_single, _vibration_high, 250, _vibration_low, 160);
                     }
                     else
                     {
-                        switch_controller_vibrate_hd(index, switch_controller_motor_left,  _highStrength, 250, _lowStrength, 160);
-                        switch_controller_vibrate_hd(index, switch_controller_motor_right, _highStrength, 250, _lowStrength, 160);
+                        switch_controller_vibrate_hd(index, switch_controller_motor_left,  _vibration_high, 250, _vibration_low, 160);
+                        switch_controller_vibrate_hd(index, switch_controller_motor_right, _vibration_high, 250, _vibration_low, 160);
                     }
                 }
                 else
                 {
-                    gamepad_set_vibration(index, __vibration_left, __vibration_right);
+                    gamepad_set_vibration(index, _vibration_low, _vibration_high);
                 }
             }
             else

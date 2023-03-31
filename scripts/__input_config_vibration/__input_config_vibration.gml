@@ -12,10 +12,9 @@
 //The default vibration strength. This value can be changed later by using input_vibrate_set_strength()
 #macro INPUT_VIBRATION_DEFAULT_STRENGTH  1.0
 
-//Switch's vibration motors can be a bit, uh, intense
-//This value allows you to reduce the strength of vibration relative to other platforms
-//Please note that this is only applied specifically when playing on a Switch console and won't automatically be applied on other OSes
-#macro INPUT_VIBRATION_SWITCH_OS_STRENGTH  0.4
+//Joy-Con vibration motors can be a bit, uh, intense
+//This value allows you to reduce the strength of vibration relative to other devices
+#macro INPUT_VIBRATION_JOYCON_STRENGTH  0.4
 
 //The default haptic trigger effect strength. This value can be changed later by using input_trigger_effect_set_strength()
 #macro INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH  1.0
