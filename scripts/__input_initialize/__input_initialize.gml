@@ -439,6 +439,37 @@ function __input_initialize()
     }
     
     #endregion
+    
+    
+    #region
+    
+    //Gamepad LED patterns by device type
+    _global.__gamepad_led_pattern_dict = {
+        INPUT_GAMEPAD_TYPE_PS5: [                 //PS5
+            [false, false, true,  false, false],  //P1: --X--
+            [false, true,  false, true,  false],  //P2: -X-X-
+            [true,  false, true,  false, true ],  //P3: X-X-X
+            [true,  true,  false, true,  true ],  //P4: XX-XX
+        ],        
+        INPUT_GAMEPAD_TYPE_SWITCH: [              //Switch
+            [true,  false, false, false],         //P1: X---
+            [true,  true,  false, false],         //P2: XX--
+            [true,  true,  true,  false],         //P3: XXX-
+            [true,  true,  true,  true ],         //P4: XXXX
+            [true,  false, false, true ],         //P5: X--X
+            [true,  false, true,  false],         //P6: X-X-
+            [true,  false, true,  true ],         //P7: X-XX
+            [false, true,  true,  false],         //P8: -XX-
+        ],        
+        INPUT_GAMEPAD_TYPE_XBOX_360: [            //Xbox 360
+            [true,  false, false, false],         //P1: X---
+            [false, true,  false, false],         //P2: -X--
+            [false, false, true,  false],         //P3: --X-
+            [false, false, false, true ],         //P4: ---X
+        ],
+    }
+    
+    #endregion
 
 
 

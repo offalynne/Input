@@ -430,7 +430,11 @@ function __input_system_tick()
                     {
                         if (_steam_handles_changed) 
                         {
-                            _gamepad.virtual_set();
+                            with (_gamepad)
+                            {
+                                virtual_set();
+                                led_set();
+                            }
                         }
                         
                         _gamepad.tick();
