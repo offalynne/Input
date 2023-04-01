@@ -71,9 +71,10 @@ function __input_class_gamepad(_index) constructor
         __input_gamepad_find_in_sdl2_database();
         __input_gamepad_set_type();
         __input_gamepad_set_blacklist();
-        __input_gamepad_set_mapping();       
+        __input_gamepad_set_mapping();
         
         virtual_set();
+        led_set();
         
         __vibration_support = __global.__vibration_allowed_on_platform && ((os_type != os_windows) || xinput);        
         if (__vibration_support)
@@ -352,6 +353,47 @@ function __input_class_gamepad(_index) constructor
             description = _description;
             raw_type    = _raw_type;
             simple_type = _simple_type;
+        }
+    }
+    
+    static led_set = function()
+    {
+        __led_offset = 0;
+        __led_layout = "unknown";
+        __led_type   = INPUT_GAMEPAD_TYPE_XBOX_360;
+        
+        //Platform is unsupported, or lacks Steam Input handle
+        if (!__INPUT_LED_PATTERN_SUPPORT || ((os_type == os_windows) && (!is_numeric(__steam_handle)))) return;
+        
+        //Handle whether gamepad index 0 is used or reserved
+        if (!__INPUT_ON_WEB && ((os_type == os_ios) || (os_type == os_tvos) || (os_type == os_switch)))
+        { 
+            if (index == 0) return;
+            __led_offset = -1;
+        }
+        
+        //MFi gamepad case
+        if ((raw_type == "AppleController") && ((os_type == os_tvos) || (os_type == os_ios)))
+        {
+            __led_layout = "horizontal";
+            return;
+        }
+        
+        switch(simple_type)
+        {
+            case INPUT_GAMEPAD_TYPE_PS5:
+                __led_layout = "horizontal"; 
+                __led_type   = INPUT_GAMEPAD_TYPE_PS5;
+            break;
+            case INPUT_GAMEPAD_TYPE_SWITCH:
+            case INPUT_GAMEPAD_TYPE_JOYCON_LEFT:
+            case INPUT_GAMEPAD_TYPE_JOYCON_RIGHT:
+                __led_layout = ((raw_type == "SwitchJoyConPair") || (!INPUT_SWITCH_HORIZONTAL_HOLDTYPE && (simple_type != INPUT_GAMEPAD_TYPE_SWITCH))? "vertical" : "horizontal");
+                if (is_numeric(__steam_handle)) __led_type = INPUT_GAMEPAD_TYPE_SWITCH; //Steam falls back to the Xbox 360 pattern with Switch layout
+            break;            
+            case INPUT_GAMEPAD_TYPE_XBOX_360:
+                __led_layout = "radial";
+            break;
         }
     }
     

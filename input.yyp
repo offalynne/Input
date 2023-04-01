@@ -104,6 +104,7 @@
     {"id":{"name":"input_profile_get_array","path":"scripts/input_profile_get_array/input_profile_get_array.yy",},"order":3,},
     {"id":{"name":"input_cursor_previous_x","path":"scripts/input_cursor_previous_x/input_cursor_previous_x.yy",},"order":2,},
     {"id":{"name":"input_gyro_params_set","path":"scripts/input_gyro_params_set/input_gyro_params_set.yy",},"order":3,},
+    {"id":{"name":"input_led_pattern_get","path":"scripts/input_led_pattern_get/input_led_pattern_get.yy",},"order":14,},
     {"id":{"name":"obj_example_drop_in_gameplay","path":"objects/obj_example_drop_in_gameplay/obj_example_drop_in_gameplay.yy",},"order":0,},
     {"id":{"name":"input_check_pressed","path":"scripts/input_check_pressed/input_check_pressed.yy",},"order":1,},
     {"id":{"name":"input_icon_not_a_binding","path":"scripts/input_icon_not_a_binding/input_icon_not_a_binding.yy",},"order":8,},
@@ -377,6 +378,7 @@
     "children": [],
   },
   "RoomOrderNodes": [
+    {"roomId":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
     {"roomId":{"name":"rm_example_platformer","path":"rooms/rm_example_platformer/rm_example_platformer.yy",},},
     {"roomId":{"name":"rm_example_drop_in_gameplay","path":"rooms/rm_example_drop_in_gameplay/rm_example_drop_in_gameplay.yy",},},
     {"roomId":{"name":"rm_example_tds","path":"rooms/rm_example_tds/rm_example_tds.yy",},},
@@ -384,9 +386,7 @@
     {"roomId":{"name":"rm_example_mp_join","path":"rooms/rm_example_mp_join/rm_example_mp_join.yy",},},
     {"roomId":{"name":"rm_example_mp_gameplay","path":"rooms/rm_example_mp_gameplay/rm_example_mp_gameplay.yy",},},
     {"roomId":{"name":"rm_example_rebinding","path":"rooms/rm_example_rebinding/rm_example_rebinding.yy",},},
-    {"roomId":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
     {"roomId":{"name":"rm_test_coord_spaces","path":"rooms/rm_test_coord_spaces/rm_test_coord_spaces.yy",},},
-    {"roomId":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
   ],
   "Folders": [
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Examples","folderPath":"folders/Examples.yy","order":1,},
