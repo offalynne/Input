@@ -33,7 +33,10 @@ function __input_class_gamepad(_index) constructor
     __vibration_right   = 0;
     __vibration_received_this_frame = false;
     
-    __motion = undefined;
+    __led_pattern = undefined;
+    __motion      = undefined;
+    
+    
     
     mapping_gm_to_raw = {};
     mapping_raw_to_gm = {};
@@ -71,9 +74,10 @@ function __input_class_gamepad(_index) constructor
         __input_gamepad_find_in_sdl2_database();
         __input_gamepad_set_type();
         __input_gamepad_set_blacklist();
-        __input_gamepad_set_mapping();       
+        __input_gamepad_set_mapping();
         
         virtual_set();
+        __input_gamepad_set_led_pattern();
         
         __vibration_support = __global.__vibration_allowed_on_platform && ((os_type != os_windows) || xinput);        
         if (__vibration_support)
