@@ -6,8 +6,8 @@
 /// 
 /// @param [coordSpace]  Coordinate space to use. If not specified, the coordinate space set by input_mouse_coord_space_set() is used
 
-function input_mouse_x(_coord_space = _global.__pointer_coord_space)
+function input_mouse_x(_coord_space = undefined)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
-    return _global.__pointer_x[_coord_space];
+    return _global.__pointer_x[_coord_space ?? _global.__pointer_coord_space];
 }

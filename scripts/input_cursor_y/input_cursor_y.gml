@@ -12,11 +12,9 @@ function input_cursor_y(_player_index = 0, _output_system = undefined)
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_PLAYER_INDEX
     
-    if (_output_system == undefined) _output_system = _global.__pointer_coord_space;
-    
     var _cursor = _global.__players[_player_index].__cursor;
     return __input_transform_coordinate(_cursor.__x,
                                         _cursor.__y,
                                         _cursor.__coord_space,
-                                        _output_system).y;
+                                        _output_system ?? _global.__pointer_coord_space).y;
 }
