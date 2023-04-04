@@ -5,8 +5,9 @@
 /// @param   y
 /// @param   strength
 /// @param   [playerIndex=0]
+/// @param   [moveCursor=false]
 
-function input_cursor_elastic_set(_x, _y, _strength, _player_index = 0)
+function input_cursor_elastic_set(_x, _y, _strength, _player_index = 0, _move_cursor = false)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
@@ -15,7 +16,7 @@ function input_cursor_elastic_set(_x, _y, _strength, _player_index = 0)
         var _p = 0;
         repeat(INPUT_MAX_PLAYERS)
         {
-            input_cursor_elastic_set(_x, _y, _strength, _p);
+            input_cursor_elastic_set(_x, _y, _strength, _p, _move_cursor);
             ++_p;
         }
         
@@ -26,6 +27,11 @@ function input_cursor_elastic_set(_x, _y, _strength, _player_index = 0)
     
     with(_global.__players[_player_index].__cursor)
     {
+        if (_move_cursor && (__elastic_x != undefined) && (__elastic_y != undefined))
+        {
+            __set(_x - __elastic_x, _y - __elastic_y, true);
+        }
+        
         __elastic_x        = _x;
         __elastic_y        = _y;
         __elastic_strength = _strength;
