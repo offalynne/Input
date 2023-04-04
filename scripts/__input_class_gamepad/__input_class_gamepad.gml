@@ -83,9 +83,16 @@ function __input_class_gamepad(_index) constructor
             {
                 ps5_gamepad_set_vibration_mode(index, ps5_gamepad_vibration_mode_compatible);
             }            
-            else if (((os_type == os_windows) || (os_type == os_switch)) && __input_string_contains(raw_type, "JoyCon", "SwitchHandheld"))
+            else
             {
-                __vibration_scale = INPUT_VIBRATION_JOYCON_STRENGTH;
+                if (((os_type == os_windows) || (os_type == os_switch)) && __input_string_contains(raw_type, "JoyCon", "SwitchHandheld"))
+                {
+                    __vibration_scale = INPUT_VIBRATION_JOYCON_STRENGTH;
+                }
+                else
+                {
+                    __vibration_scale = 1;
+                }
             }
         
             gamepad_set_vibration(index, 0, 0);
