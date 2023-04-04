@@ -2,9 +2,11 @@
 if (input_source_using(INPUT_GAMEPAD))
 {
     //If we're using a gamepad, limit the cursor to 130px away from the player
-    //We also set an "elastic" rule so that the cursor automatically springs back towards the player
     input_cursor_limit_circle(x, y, 130);
-    input_cursor_elastic_set(x, y, 0.2);
+    
+    //We also set an "elastic" rule so that the cursor automatically springs back towards the player
+    //Since we've moved the elastic centre we also want to move the cursor itself by the same amount to keep the cursor in sync
+    input_cursor_elastic_set(x, y, 0.2, undefined, true);
 }
 else
 {
