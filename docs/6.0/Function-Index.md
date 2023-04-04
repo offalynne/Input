@@ -163,7 +163,7 @@
 - [`input_cursor_limit_circle(x, y, radius, [playerIndex])`](Functions-(Cursor)?id=input_cursor_limit_circlex-y-radius-playerindex)
 - [`input_cursor_limit_remove([playerIndex])`](Functions-(Cursor)?id=input_cursor_limit_removeplayerindex)
 - [`input_cursor_limit_get([playerIndex])`](Functions-(Cursor)?id=input_cursor_limit_getplayerindex)
-- [`input_cursor_elastic_set(x, y, strength, [playerIndex])`](Functions-(Cursor)?id=input_cursor_elastic_setx-y-strength-playerindex)
+- [`input_cursor_elastic_set(x, y, strength, [playerIndex], [moveCursor])`](Functions-(Cursor)?id=input_cursor_elastic_setx-y-strength-playerindex-movecursor)
 - [`input_cursor_elastic_remove([playerIndex])`](Functions-(Cursor)?id=input_cursor_elastic_removeplayerindex)
 - [`input_cursor_elastic_get([playerIndex])`](Functions-(Cursor)?id=input_cursor_elastic_getplayerindex)
 - [`input_cursor_translate([x], [y], duration, [playerIndex=0], [relative=false])`](Functions-(Cursor)?id=input_cursor_translatex-y-duration-playerindex-relative)
