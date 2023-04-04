@@ -398,21 +398,19 @@ function __input_system_tick()
         var _device_change = max(0, gamepad_get_device_count() - array_length(_global.__gamepads));
         repeat(_device_change) array_push(_global.__gamepads, undefined);
         
-        var _g = 0;
         _device_change = max(0, gamepad_get_device_count() - array_length(INPUT_GAMEPAD));
         repeat(_device_change)
         {
-            array_push(INPUT_GAMEPAD, new __input_class_source(__INPUT_SOURCE.GAMEPAD, array_length(INPUT_GAMEPAD)));
-            
             if ((_global.__source_mode == INPUT_SOURCE_MODE.MIXED) || (_global.__source_mode == INPUT_SOURCE_MODE.MULTIDEVICE))
             {
-                _global.__players[0].__source_add(INPUT_GAMEPAD[_g]);
+                _global.__players[0].__source_add(INPUT_GAMEPAD[array_length(INPUT_GAMEPAD)]);
             }
             
-            ++_g;
+            array_push(INPUT_GAMEPAD, new __input_class_source(__INPUT_SOURCE.GAMEPAD, array_length(INPUT_GAMEPAD)));
+            
         }
         
-        _g = 0;
+        var _g = 0;
         repeat(array_length(_global.__gamepads))
         {
             var _gamepad = _global.__gamepads[_g];
