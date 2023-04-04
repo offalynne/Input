@@ -49,8 +49,8 @@ function __input_class_cursor() constructor
         {
             __x = _x;
             __y = _y;
-            __prev_x = __x;
-            __prev_y = __y;
+            __prev_x = _x;
+            __prev_y = _y;
         }
     }
     
