@@ -431,9 +431,9 @@ function __input_validate_macros()
         __input_error("INPUT_VIBRATION_DEFAULT_STRENGTH must be a number between 0.0 and 1.0 (inclusive)");
     }
     
-    if (!is_numeric(INPUT_VIBRATION_SWITCH_OS_STRENGTH) || (INPUT_VIBRATION_SWITCH_OS_STRENGTH < 0) || (INPUT_VIBRATION_SWITCH_OS_STRENGTH > 1.0))
+    if (!is_numeric(INPUT_VIBRATION_JOYCON_STRENGTH) || (INPUT_VIBRATION_JOYCON_STRENGTH < 0) || (INPUT_VIBRATION_JOYCON_STRENGTH > 1.0))
     {
-        __input_error("INPUT_VIBRATION_SWITCH_OS_STRENGTH must be a number between 0.0 and 1.0 (inclusive)");
+        __input_error("INPUT_VIBRATION_JOYCON_STRENGTH must be a number between 0.0 and 1.0 (inclusive)");
     }
     
     if (!is_numeric(INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH) || (INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH < 0) || (INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH > 1.0))
