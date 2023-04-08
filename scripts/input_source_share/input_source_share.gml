@@ -3,14 +3,15 @@
 /// @param   source
 /// @param   arrayOfPlayerIndexes
 /// @param   [autoProfile=true]
+/// @param   [exclusive=true]
 
-function input_source_share(_source, _array, _auto_profile = true)
+function input_source_share(_source, _array, _auto_profile = true, _exclusive = true)
 {
     __input_initialize();
     __INPUT_VERIFY_SOURCE
     __INPUT_VERIFY_SOURCE_ASSIGNABLE
     
-    __input_source_relinquish(_source);
+    if (_exclusive) __input_source_relinquish(_source);
     
     var _i = 0;
     repeat(array_length(_array))

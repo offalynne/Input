@@ -3,15 +3,16 @@
 /// @param   source
 /// @param   [playerIndex=0]
 /// @param   [autoProfile=true]
+/// @param   [exclusive=true]
 
-function input_source_set(_source, _player_index = 0, _auto_profile = true)
+function input_source_set(_source, _player_index = 0, _auto_profile = true, _exclusive = true)
 {
     __input_initialize();
     __INPUT_VERIFY_PLAYER_INDEX
     
     if (_source == all)
     {
-        input_source_clear(all);
+        if (_exclusive) input_source_clear(all);
     
         with(global.__input_players[_player_index])
         {
@@ -34,7 +35,8 @@ function input_source_set(_source, _player_index = 0, _auto_profile = true)
     __INPUT_VERIFY_SOURCE
     __INPUT_VERIFY_SOURCE_ASSIGNABLE
     
-    __input_source_relinquish(_source);
+    if (_exclusive) __input_source_relinquish(_source);
+    
     with(global.__input_players[_player_index])
     {
         __sources_clear();
