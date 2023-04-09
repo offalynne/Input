@@ -21,7 +21,10 @@ function input_led_pattern_get(_index)
     }
 
     var _gamepad = _global.__gamepads[@ _index];
-    if (!is_struct(_gamepad) || (_gamepad.__led_layout == "unknown")) return _led_pattern;
+    if (!is_struct(_gamepad) || (_gamepad.__led_layout == "unknown"))
+    {
+        return _led_pattern;
+    }
 
     with (_led_pattern)
     {
