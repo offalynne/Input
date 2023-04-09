@@ -9,7 +9,7 @@
 ## [Players](Functions-(Players))
 
 - [`input_player_connected([playerIndex])`](Functions-(Players)?id=input_player_connectedplayerindex)
-- [`input_player_connected_count()`](Functions-(Players)?id=input_players_connected)
+- [`input_player_connected_count()`](Functions-(Players)?id=input_player_connected_count)
 - [`input_players_get_status()`](Functions-(Players)#input_players_get_status)
 - [`input_player_get_gamepad([playerIndex], [binding])`](Functions-(Players)#input_player_get_gamepadplayerindex-binding)
 - [`input_player_get_gamepad_type([playerIndex], [binding])`](Functions-(Players)#input_player_get_gamepad_typeplayerindex-binding)
