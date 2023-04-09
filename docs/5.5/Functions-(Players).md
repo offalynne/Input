@@ -18,11 +18,11 @@ If you're looking for a way to control what [source](Input-Sources) a player is 
 
 If the player's sole source is a gamepad and that gamepad is [incompatible with SDL2](Controller-Mapping?id=controller-blacklist) then this function will return `false`.
 
-?> Players that are designated as ["ghosts"]() will always be considered connected.
+?> Players that are designated as ["ghosts"](Functions-(Players)?id=input_player_ghost_setstate-playerindex) will always be considered connected.
 
 &nbsp;
 
-## `input_players_connected()`
+## `input_player_connected_count()`
 
 *Returns:* Integer, the number of players with connected devices
 
