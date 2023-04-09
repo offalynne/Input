@@ -30,7 +30,7 @@ If the player's sole source is a gamepad and that gamepad is [incompatible with 
 |----|--------|-------|
 |None|        |       |
 
-?> Players that are designated as ["ghosts"]() will always be considered connected.
+?> Players that are designated as ["ghosts"](Functions-(Players)?id=input_player_ghost_setstate-playerindex) will always be considered connected.
 
 &nbsp;
 
