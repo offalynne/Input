@@ -344,47 +344,47 @@ function __input_initialize()
 
         XBoxOneController:  INPUT_GAMEPAD_TYPE_XBOX_ONE,
         CommunityXBoxOne:   INPUT_GAMEPAD_TYPE_XBOX_ONE,
-        CommunityDeck:      INPUT_GAMEPAD_TYPE_XBOX_ONE, //  Deck uses Xbox One iconography
-        CommunityLuna:      INPUT_GAMEPAD_TYPE_XBOX_ONE, //  Luna uses Xbox One iconography excepting 'View' button: Circle
-        CommunityStadia:    INPUT_GAMEPAD_TYPE_XBOX_ONE, //Stadia uses Xbox One iconography excepting 'View' button, shoulders, triggers: Options, L1 R1, L2 R2
-        AppleController:    INPUT_GAMEPAD_TYPE_XBOX_ONE, // Apple uses Xbox One iconography excepting 'View' button, shoulders, triggers: Various, L1 R1, L2 R2
+        CommunityDeck:      INPUT_GAMEPAD_TYPE_XBOX_ONE,
+        CommunityLuna:      INPUT_GAMEPAD_TYPE_XBOX_ONE,
+        CommunityStadia:    INPUT_GAMEPAD_TYPE_XBOX_ONE,
+        AppleController:    INPUT_GAMEPAD_TYPE_XBOX_ONE,
         
         XBox360Controller:  INPUT_GAMEPAD_TYPE_XBOX_360,
         CommunityXBox360:   INPUT_GAMEPAD_TYPE_XBOX_360,
-        CommunityDreamcast: INPUT_GAMEPAD_TYPE_XBOX_360, //       X-Box 360 uses Dreamcast iconography
-        SteamController:    INPUT_GAMEPAD_TYPE_XBOX_360, //Steam Controller uses X-Box 360 iconography
-        MobileTouch:        INPUT_GAMEPAD_TYPE_XBOX_360, //      Steam Link uses X-Box 360 iconography
+        CommunityDreamcast: INPUT_GAMEPAD_TYPE_XBOX_360,
+        SteamController:    INPUT_GAMEPAD_TYPE_XBOX_360,
+        MobileTouch:        INPUT_GAMEPAD_TYPE_XBOX_360,
         
         //PlayStation
-        PS5Controller:       INPUT_GAMEPAD_TYPE_PS5,
+        PS5Controller:  INPUT_GAMEPAD_TYPE_PS5,
+        
         PS4Controller:       INPUT_GAMEPAD_TYPE_PS4,
         XInputPS4Controller: INPUT_GAMEPAD_TYPE_PS4,
         CommunityPS4:        INPUT_GAMEPAD_TYPE_PS4,
-        PS3Controller:       INPUT_GAMEPAD_TYPE_PSX,
-        CommunityPSX:        INPUT_GAMEPAD_TYPE_PSX,
+        
+        PS3Controller:  INPUT_GAMEPAD_TYPE_PSX,
+        CommunityPSX:   INPUT_GAMEPAD_TYPE_PSX,
         
         //Switch
-        SwitchHandheld:            INPUT_GAMEPAD_TYPE_SWITCH, //Attached JoyCon pair or Switch Lite handheld
+        SwitchHandheld:            INPUT_GAMEPAD_TYPE_SWITCH,
         SwitchJoyConPair:          INPUT_GAMEPAD_TYPE_SWITCH,
         SwitchProController:       INPUT_GAMEPAD_TYPE_SWITCH,
         XInputSwitchController:    INPUT_GAMEPAD_TYPE_SWITCH,
         SwitchInputOnlyController: INPUT_GAMEPAD_TYPE_SWITCH,
         CommunityLikeSwitch:       INPUT_GAMEPAD_TYPE_SWITCH,
-        Community8BitDo:           INPUT_GAMEPAD_TYPE_SWITCH, //8BitDo are Switch gamepads (exceptions typed appropriately)
+        Community8BitDo:           INPUT_GAMEPAD_TYPE_SWITCH,
         HIDWiiClassic:             INPUT_GAMEPAD_TYPE_SWITCH,
+        CommunitySNES:             INPUT_GAMEPAD_TYPE_SWITCH,
+        CommunitySuperFamicom:     INPUT_GAMEPAD_TYPE_SWITCH,
 
         SwitchJoyConLeft:   INPUT_GAMEPAD_TYPE_JOYCON_LEFT,
         SwitchJoyConSingle: INPUT_GAMEPAD_TYPE_JOYCON_LEFT,
         HIDJoyConLeft:      INPUT_GAMEPAD_TYPE_JOYCON_LEFT,
+        
         SwitchJoyConRight:  INPUT_GAMEPAD_TYPE_JOYCON_RIGHT,
         HIDJoyConRight:     INPUT_GAMEPAD_TYPE_JOYCON_RIGHT,
         
-        //Legacy
         CommunityGameCube:     INPUT_GAMEPAD_TYPE_GAMECUBE,
-        CommunityN64:          INPUT_GAMEPAD_TYPE_N64,
-        CommunitySaturn:       INPUT_GAMEPAD_TYPE_SATURN,
-        CommunitySNES:         INPUT_GAMEPAD_TYPE_SNES,
-        CommunitySuperFamicom: INPUT_GAMEPAD_TYPE_SNES,
         
         Unknown: INPUT_GAMEPAD_TYPE_UNKNOWN,
         unknown: INPUT_GAMEPAD_TYPE_UNKNOWN,
@@ -392,9 +392,31 @@ function __input_initialize()
         SteamControllerV2:         INPUT_GAMEPAD_TYPE_UNKNOWN,
         UnknownNonSteamController: INPUT_GAMEPAD_TYPE_UNKNOWN,
         CommunityUnknown:          INPUT_GAMEPAD_TYPE_UNKNOWN,
-        CommunitySteam:            INPUT_GAMEPAD_TYPE_UNKNOWN
-        
+        CommunitySteam:            INPUT_GAMEPAD_TYPE_UNKNOWN,        
     }
+    
+    if (INPUT_GAMEPAD_EXTENDED_TYPES)
+    {
+        with (_global.__simple_type_lookup)
+        {
+            CommunityDeck         = "steam deck";
+            SteamController       = "steam controller";
+            Community8BitDo       = "8bitdo";
+            AppleController       = "mfi";
+            CommunityLuna         = "luna";
+            CommunityStadia       = "stadia";
+            CommunityVCSClassic   = "vcs classic";
+            HIDAtariVCSClassic    = "vcs classic";
+            CommunityOuya         = "ouya";
+            CommunityDreamcast    = "dreamcast";
+            CommunityN64          = "n64";
+            CommunitySaturn       = "saturn";
+            CommunitySNES         = "snes";
+            CommunitySuperFamicom = "super famicom";
+        }
+    }
+    
+    
     
     //Parse controller type database
     _global.__raw_type_dictionary = {};
@@ -774,10 +796,10 @@ function __input_initialize()
             {
                 //If ignore hint isn't set, GM accesses controllers meant to be blocked
                 //We address this by adding the Steam config types to our own blocklist
-                if (_steam_ps)      array_push(_ignore_list, INPUT_GAMEPAD_TYPE_PS4, INPUT_GAMEPAD_TYPE_PS5);
+                if (_steam_ps)      array_push(_ignore_list, INPUT_GAMEPAD_TYPE_PSX, INPUT_GAMEPAD_TYPE_PS4, INPUT_GAMEPAD_TYPE_PS5);
                 if (_steam_xbox)    array_push(_ignore_list, INPUT_GAMEPAD_TYPE_XBOX_360, INPUT_GAMEPAD_TYPE_XBOX_ONE);
-                if (_steam_generic) array_push(_ignore_list, INPUT_GAMEPAD_TYPE_SNES, INPUT_GAMEPAD_TYPE_SATURN, INPUT_GAMEPAD_TYPE_N64, INPUT_GAMEPAD_TYPE_GAMECUBE, INPUT_GAMEPAD_TYPE_PSX, INPUT_GAMEPAD_TYPE_UNKNOWN);
                 if (_steam_switch)  array_push(_ignore_list, INPUT_GAMEPAD_TYPE_SWITCH, INPUT_GAMEPAD_TYPE_JOYCON_LEFT, INPUT_GAMEPAD_TYPE_JOYCON_RIGHT);
+                if (_steam_generic) array_push(_ignore_list, INPUT_GAMEPAD_TYPE_GAMECUBE, INPUT_GAMEPAD_TYPE_UNKNOWN);
              
                 var _i = 0;
                 repeat(array_length(_ignore_list))
