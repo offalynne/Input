@@ -24,5 +24,5 @@ function input_led_pattern_get(_index)
         return _led_pattern_unknown;
     }
     
-    return _gamepad._led_pattern;
+    return _gamepad.__led_pattern;
 }
