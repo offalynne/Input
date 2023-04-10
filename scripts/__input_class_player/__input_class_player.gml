@@ -45,6 +45,8 @@ function __input_class_player() constructor
     __cursor = new __input_class_cursor();
     __cursor.__player = self;
     
+    __mouse_enabled = true;
+    
     __gyro_gamepad       = undefined;
     __gyro_axis_x        = INPUT_GYRO_DEFAULT_AXIS_X;
     __gyro_axis_y        = INPUT_GYRO_DEFAULT_AXIS_Y;
@@ -1388,6 +1390,11 @@ function __input_class_player() constructor
         }
         
         __gyro_enabled = _state;
+    }
+    
+    static __mouse_enabled_set = function(_state)
+    {
+        __mouse_enabled = _state;
     }
     
     
