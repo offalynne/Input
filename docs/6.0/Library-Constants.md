@@ -178,7 +178,7 @@ The `INPUT_GYRO` enum contains the following members used by the [gamepad motion
 |-------------|-----------------------------------------------------|
 |`.AXIS_PITCH`|Gamepad tilted upward from floor to ceiling          |
 |`.AXIS_YAW`  |Gamepad tilted rightward from left shoulder to right |
-|`.AXIS_ROLL` |Gamepad tilted clockwise from -90 to 90 degrees      |
+|`.AXIS_ROLL` |Gamepad tilted clockwise from 6 to 12 o'clock        |
 
 &nbsp;
 
