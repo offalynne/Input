@@ -874,6 +874,28 @@ function __input_initialize()
     
     
     
+    #region Pointer type
+    
+    if (__input_global().__on_steam_deck || (os_type == os_switch) || __INPUT_ON_MOBILE)
+    {
+        INPUT_POINTER_TYPE = "touch";
+    }
+    else if (__INPUT_ON_PS)
+    {
+        INPUT_POINTER_TYPE = "touchpad";
+    }
+    else if (__INPUT_ON_CONSOLE)
+    {
+        INPUT_POINTER_TYPE = "none";
+    }
+    else
+    {
+        INPUT_POINTER_TYPE = "mouse";
+    }
+    
+    #endregion
+    
+    
     //Whether gamepad motion is supported
     _global.__gamepad_motion_support = (__INPUT_ON_PS || (os_type == os_switch) || _global.__using_steamworks);
 
