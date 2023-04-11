@@ -164,6 +164,12 @@ This macro is set to a string indicating the current platform's preferred text s
 
 &nbsp;
 
+## `INPUT_POINTER_TYPE`
+
+This macro is set to a string indicating the current platform's pointer type as a string. Possible values are `mouse`, `touch`, `touchpad` or `none`. This is useful for selectively configuring pointer features including [virtual touch buttons](Functions-(Virtual-Buttons)), [mouse control](Functions-(Mouse)), and other [cursor behaviour](Functions-(Cursor)).
+
+&nbsp;
+
 ## Gyro Axis
 
 The `INPUT_GYRO` enum contains the following members used by the [gamepad motion functions](Functions-(Motion)) to configure the axis used to control the player cursor. Meaning descriptions assume a neutral position of device resting on a flat surface. See [gamepad motion functions](Functions-(Motion)) for illustrative figure.
