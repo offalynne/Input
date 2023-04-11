@@ -56,6 +56,7 @@
 
 #macro INPUT_KEYBOARD_LOCALE  __input_global().__keyboard_locale
 #macro INPUT_KEYBOARD_TYPE    __input_global().__keyboard_type
+#macro INPUT_POINTER_TYPE     __input_global().__pointer_type
 
 #macro INPUT_VIRTUAL_BACKGROUND  __input_global().__virtual_background
 
