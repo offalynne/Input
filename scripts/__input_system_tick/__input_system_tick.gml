@@ -172,6 +172,9 @@ function __input_system_tick()
     {
         if (_global.__window_focus)
         {
+            var _window_center_h = round(window_get_width()/2);
+            var _window_center_v = round(window_get_height()/2);
+                
             if (_global.__frame - _global.__mouse_capture_frame > 10)
             {
                 var _m = 0;
@@ -204,8 +207,8 @@ function __input_system_tick()
                         break;
                         
                         case INPUT_COORD_SPACE.DEVICE:
-                            var _old_x = window_get_width()/2;
-                            var _old_y = window_get_height()/2;
+                            var _old_x = _window_center_h;
+                            var _old_y = _window_center_v;
                             
                             if (os_type == os_windows)
                             {
@@ -237,7 +240,7 @@ function __input_system_tick()
             }
             
             //Recenter mouse cursor
-            window_mouse_set(window_get_width()/2, window_get_height()/2);
+            window_mouse_set(_window_center_h, _window_center_v);
         }
     }
     else if (_global.__window_focus || INPUT_ALLOW_OUT_OF_FOCUS || (os_type == os_macosx))
