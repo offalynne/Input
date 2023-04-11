@@ -220,8 +220,8 @@ function __input_system_tick()
                         break;
                     }
                     
-                    var _dx = (_pointer_x - _old_x)*_global.__mouse_capture_sensitivity;
-                    var _dy = (_pointer_y - _old_y)*_global.__mouse_capture_sensitivity;
+                    var _dx = (_pointer_x - round(_old_x))*_global.__mouse_capture_sensitivity;
+                    var _dy = (_pointer_y - round(_old_y))*_global.__mouse_capture_sensitivity;
                     
                     //Only detect movement in the display coordinate space so that moving a room's view, or moving the window, doesn't trigger movement
                     if ((_m == INPUT_COORD_SPACE.DEVICE) && (_dx*_dx + _dy*_dy > INPUT_MOUSE_MOVE_DEADZONE*INPUT_MOUSE_MOVE_DEADZONE)) _moved = true;
@@ -237,7 +237,7 @@ function __input_system_tick()
             }
             
             //Recenter mouse cursor
-            window_mouse_set(window_get_width()/2, window_get_height()/2);
+            window_mouse_set(round(window_get_width()/2), round(window_get_height()/2));
         }
     }
     else if (_global.__window_focus || INPUT_ALLOW_OUT_OF_FOCUS || (os_type == os_macosx))
