@@ -399,12 +399,12 @@ function __input_system_tick()
         var _device_change = max(0, gamepad_get_device_count() - array_length(INPUT_GAMEPAD));
         repeat(_device_change)
         {
+            array_push(INPUT_GAMEPAD, new __input_class_source(__INPUT_SOURCE.GAMEPAD, array_length(INPUT_GAMEPAD)));
+            
             if ((global.__input_source_mode == INPUT_SOURCE_MODE.MIXED) || (global.__input_source_mode == INPUT_SOURCE_MODE.MULTIDEVICE))
             {
-                global.__input_players[0].__source_add(INPUT_GAMEPAD[array_length(INPUT_GAMEPAD)]);
+                global.__input_players[0].__source_add(INPUT_GAMEPAD[array_length(INPUT_GAMEPAD)-1]);
             }
-
-            array_push(INPUT_GAMEPAD, new __input_class_source(__INPUT_SOURCE.GAMEPAD, array_length(INPUT_GAMEPAD)));
         }
         
         var _g = 0;
