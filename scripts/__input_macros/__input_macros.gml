@@ -43,9 +43,6 @@
 #macro INPUT_GAMEPAD_TYPE_JOYCON_LEFT   "switch joycon left"
 #macro INPUT_GAMEPAD_TYPE_JOYCON_RIGHT  "switch joycon right"
 #macro INPUT_GAMEPAD_TYPE_GAMECUBE      "gamecube"
-#macro INPUT_GAMEPAD_TYPE_N64           "n64"
-#macro INPUT_GAMEPAD_TYPE_SATURN        "saturn"
-#macro INPUT_GAMEPAD_TYPE_SNES          "snes"
 #macro INPUT_GAMEPAD_TYPE_UNKNOWN       "unknown"
 
 #macro INPUT_KEYBOARD      __input_global().__source_keyboard
