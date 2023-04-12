@@ -34,7 +34,8 @@ function __input_class_gamepad(_index) constructor
     __vibration_right   = 0;
     __vibration_received_this_frame = false;
     
-    __motion = undefined;
+    __led_pattern = undefined;
+    __motion      = undefined;
     
     mapping_gm_to_raw = {};
     mapping_raw_to_gm = {};
@@ -72,9 +73,10 @@ function __input_class_gamepad(_index) constructor
         __input_gamepad_find_in_sdl2_database();
         __input_gamepad_set_type();
         __input_gamepad_set_blacklist();
-        __input_gamepad_set_mapping();       
+        __input_gamepad_set_mapping();
         
         virtual_set();
+        led_set();
         
         __vibration_support = __global.__vibration_allowed_on_platform && ((os_type != os_windows) || xinput);        
         if (__vibration_support)
@@ -364,6 +366,69 @@ function __input_class_gamepad(_index) constructor
             description = _description;
             raw_type    = _raw_type;
             simple_type = _simple_type;
+        }
+    }
+    
+    static led_set = function()
+    {
+        __led_pattern = undefined;
+        
+        //Platform is unsupported, or lacks Steam Input handle
+        if (!__INPUT_LED_PATTERN_SUPPORT || ((os_type == os_windows) && (!is_numeric(__steam_handle)))) return;
+        
+        var _led_offset = 0;
+        var _led_layout = undefined;
+        var _led_type   = INPUT_GAMEPAD_TYPE_XBOX_360;
+
+        //Handle whether gamepad index 0 is used or reserved
+        if (!__INPUT_ON_WEB && ((os_type == os_ios) || (os_type == os_tvos) || (os_type == os_switch)))
+        { 
+            if (index == 0) return;
+            _led_offset = -1;
+        }
+        
+        //MFi gamepad case
+        if ((raw_type == "AppleController") && ((os_type == os_tvos) || (os_type == os_ios)))
+        {
+            _led_layout = "horizontal";
+        }
+        
+        switch(simple_type)
+        {
+            case INPUT_GAMEPAD_TYPE_PS5:
+                _led_layout = "horizontal"; 
+                _led_type   = INPUT_GAMEPAD_TYPE_PS5;
+            break;
+            case INPUT_GAMEPAD_TYPE_SWITCH:
+            case INPUT_GAMEPAD_TYPE_JOYCON_LEFT:
+            case INPUT_GAMEPAD_TYPE_JOYCON_RIGHT:
+                if ((raw_type == "SwitchJoyConPair") || (!INPUT_SWITCH_HORIZONTAL_HOLDTYPE && (simple_type != INPUT_GAMEPAD_TYPE_SWITCH)))
+                {
+                     _led_layout = "vertical";
+                }
+                else
+                {
+                    _led_layout = "horizontal";
+                }
+                
+                //Steam sets Xbox 360 pattern on Switch gamepad LEDs
+                if not (is_numeric(__steam_handle))
+                {
+                    _led_type = INPUT_GAMEPAD_TYPE_SWITCH;
+                }
+            break;            
+            case INPUT_GAMEPAD_TYPE_XBOX_360:
+                _led_layout = "radial";
+            break;
+        }
+        
+        if (_led_layout != undefined)
+        {
+            __led_pattern = {
+                value:   index + _led_offset + 1,
+                pattern: __global.__gamepad_led_pattern_dict[$ _led_type][@ index + _led_offset],
+                layout:  _led_layout,
+            }
         }
     }
     
