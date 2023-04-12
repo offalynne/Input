@@ -126,6 +126,8 @@ input_icons(INPUT_GAMEPAD_TYPE_XBOX_ONE)
 //etc.
 ```
 
+?> Setting `INPUT_GAMEPAD_EXTENDED_TYPES` in the `__input_config_gamepads()` configuration to `true` will add the following gamepad types which can be referenced by string: `"steam deck"`, `"steam controller"`, `"8bitdo"`, `"mfi"`, `"luna"`, `"stadia"`, `"vcs classic"`, `"ouya"`, `"dreamcast"`, `"n64"`, `"saturn"`, `"snes"`, `"super famicom"`
+
 &nbsp;
 
 ## `input_color_get([playerIndex])`
