@@ -401,13 +401,12 @@ function __input_system_tick()
         _device_change = max(0, gamepad_get_device_count() - array_length(INPUT_GAMEPAD));
         repeat(_device_change)
         {
-            if ((_global.__source_mode == INPUT_SOURCE_MODE.MIXED) || (_global.__source_mode == INPUT_SOURCE_MODE.MULTIDEVICE))
-            {
-                _global.__players[0].__source_add(INPUT_GAMEPAD[array_length(INPUT_GAMEPAD)]);
-            }
-            
             array_push(INPUT_GAMEPAD, new __input_class_source(__INPUT_SOURCE.GAMEPAD, array_length(INPUT_GAMEPAD)));
             
+            if ((_global.__source_mode == INPUT_SOURCE_MODE.MIXED) || (_global.__source_mode == INPUT_SOURCE_MODE.MULTIDEVICE))
+            {
+                _global.__players[0].__source_add(INPUT_GAMEPAD[array_length(INPUT_GAMEPAD)-1]);
+            }
         }
         
         var _g = 0;
