@@ -17,10 +17,7 @@ function input_player_gamepad_type_override_set(_type, _player_index = 0)
     &&  (_type != INPUT_GAMEPAD_TYPE_SWITCH)
     &&  (_type != INPUT_GAMEPAD_TYPE_JOYCON_LEFT)
     &&  (_type != INPUT_GAMEPAD_TYPE_JOYCON_RIGHT)
-    &&  (_type != INPUT_GAMEPAD_TYPE_GAMECUBE)
-    &&  (_type != INPUT_GAMEPAD_TYPE_N64)
-    &&  (_type != INPUT_GAMEPAD_TYPE_SATURN)
-    &&  (_type != INPUT_GAMEPAD_TYPE_SNES))
+    &&  (_type != INPUT_GAMEPAD_TYPE_GAMECUBE))
     {
         __input_error("Gamepad type \"", _type, "\" not supported");
     }
