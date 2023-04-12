@@ -399,13 +399,13 @@ function __input_system_tick()
         var _device_change = max(0, gamepad_get_device_count() - array_length(INPUT_GAMEPAD));
         repeat(_device_change)
         {
-        	if ((global.__input_source_mode == INPUT_SOURCE_MODE.MIXED) || (global.__input_source_mode == INPUT_SOURCE_MODE.MULTIDEVICE))
+            if ((global.__input_source_mode == INPUT_SOURCE_MODE.MIXED) || (global.__input_source_mode == INPUT_SOURCE_MODE.MULTIDEVICE))
             {
                 global.__input_players[0].__source_add(INPUT_GAMEPAD[array_length(INPUT_GAMEPAD)]);
             }
 
-        	array_push(INPUT_GAMEPAD, new __input_class_source(__INPUT_SOURCE.GAMEPAD, array_length(INPUT_GAMEPAD)));
-    	}
+            array_push(INPUT_GAMEPAD, new __input_class_source(__INPUT_SOURCE.GAMEPAD, array_length(INPUT_GAMEPAD)));
+        }
         
         var _g = 0;
         repeat(array_length(global.__input_gamepads))
@@ -441,21 +441,21 @@ function __input_system_tick()
                     
                     if ((global.__input_source_mode != INPUT_SOURCE_MODE.MIXED) && (global.__input_source_mode != INPUT_SOURCE_MODE.MULTIDEVICE))
                     {
-	                    //Also report gamepad changes for any active players
-	                    var _p = 0;
-	                    repeat(INPUT_MAX_PLAYERS)
-	                    {
-	                        with(global.__input_players[_p])
-	                        {
-	                            if (__source_contains(INPUT_GAMEPAD[_g]))
-	                            {
-	                                __input_trace("Player ", _p, " gamepad disconnected");
-	                                __source_remove(INPUT_GAMEPAD[_g]);
-	                            }
-	                        }
-	                        
-	                        ++_p;
-	                    }
+                        //Also report gamepad changes for any active players
+                        var _p = 0;
+                        repeat(INPUT_MAX_PLAYERS)
+                        {
+                            with(global.__input_players[_p])
+                            {
+                                if (__source_contains(INPUT_GAMEPAD[_g]))
+                                {
+                                    __input_trace("Player ", _p, " gamepad disconnected");
+                                    __source_remove(INPUT_GAMEPAD[_g]);
+                                }
+                            }
+                            
+                            ++_p;
+                        }
                     }
                 }
             }
