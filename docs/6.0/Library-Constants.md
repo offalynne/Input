@@ -87,9 +87,6 @@ The following constants allow you to reference specific gamepad types. These con
 |`INPUT_GAMEPAD_TYPE_JOYCON_LEFT`  | Switch Joy-Con Left |
 |`INPUT_GAMEPAD_TYPE_JOYCON_RIGHT` | Switch Joy-Con Right |
 |`INPUT_GAMEPAD_TYPE_GAMECUBE`     | GameCube |
-|`INPUT_GAMEPAD_TYPE_N64`          | N64 |
-|`INPUT_GAMEPAD_TYPE_SATURN`       | Genesis, Mega Drive, Saturn, 6-button PC |
-|`INPUT_GAMEPAD_TYPE_SNES`         | NES, SNES, Super Famicom |
 
 &nbsp;
 
