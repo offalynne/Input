@@ -20,11 +20,13 @@ else if (input_mouse_in_bounds())
 
 if (window_get_cursor() != _cursor) window_set_cursor(_cursor);
 
-var _string =  "in bound = " + string(input_mouse_in_bounds()) + "\n";
-_string += "locked   = " + string(input_mouse_capture_get().capture) + "\n";
-_string += "enabled  = " + string(input_mouse_enabled_get()) + "\n";
-_string += "mouse x  = " + string(_mouse_x) + "\n";
-_string += "mouse y  = " + string(_mouse_y);
+var _string =  "in bound        = " + string(input_mouse_in_bounds()) + "\n";
+_string += "capturing       = " + string(input_mouse_capture_get().capture) + "\n";
+_string += "capture blocked = " + string(input_mouse_capture_get().blocked) + "\n";
+_string += "enabled         = " + string(input_mouse_enabled_get()) + "\n";
+_string += "mouse x         = " + string(_mouse_x) + "\n";
+_string += "mouse y         = " + string(_mouse_y) + "\n";
+_string += "window          = " + string(window_get_width()) + "x" + string(window_get_height()) + "\n";
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);

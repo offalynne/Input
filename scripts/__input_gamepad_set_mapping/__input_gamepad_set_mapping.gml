@@ -1305,6 +1305,12 @@ function __input_gamepad_set_mapping()
             __input_trace("No SDL2 remapping available, falling back to GameMaker's mapping (", gamepad_get_mapping(index), ")");
         }
         
+        ////Add Atari VCS Classic twist mapping (semantically incorrect)
+        //if ((raw_type == "CommunityVCSClassic") || (raw_type == "HIDAtariVCSClassic"))
+        //{
+        //    set_mapping(gp_axisrh, 0, __INPUT_MAPPING.AXIS, "rightx").limited_range = (os_type == os_linux);
+        //}
+        
         if (INPUT_SDL2_ALLOW_EXTENDED)
         {
             //Add mapping for touchpad button click on PS4 gamepads on platforms supporting it.
