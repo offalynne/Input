@@ -210,13 +210,13 @@ The struct returned by this function contains the following member variables:
 
 *Returns:* N/A (`undefined`)
 
-|Name           |Datatype|Purpose                                                                                    |
-|---------------|--------|-------------------------------------------------------------------------------------------|
-|`x`            |number  |x-coordinate of the origin of the elastic force                                            |
-|`y`            |number  |y-coordinate of the origin of the elastic force                                            |
-|`strength`     |number  |Strength of the elastic force, from `0` to `1`                                             |
-|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                                       |
-|`[moveCursor]` |boolean |Whether to move the cursor to match the movement of the elastic origin. Defaults to `false`|
+|Name           |Datatype|Purpose                                                                                   |
+|---------------|--------|------------------------------------------------------------------------------------------|
+|`x`            |number  |x-coordinate of the origin of the elastic force                                           |
+|`y`            |number  |y-coordinate of the origin of the elastic force                                           |
+|`strength`     |number  |Strength of the elastic force, from `0` to `1`                                            |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                                      |
+|`[moveCursor]` |boolean |Whether to move the cursor to match the movement of the elastic origin. Defaults to `true`|
 
 Sets up a springy force that pulls the cursor towards the given point. This is useful for building aiming systems for shooters and works especially well with `input_cursor_limit_circle()`.
 
