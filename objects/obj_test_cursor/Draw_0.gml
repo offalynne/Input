@@ -1,5 +1,6 @@
 if input_mouse_check_pressed(mb_left)       input_mouse_capture_set(true);
 if input_keyboard_check_pressed(vk_escape)  input_mouse_capture_set(false);
+if input_keyboard_check_pressed(vk_space)   input_mouse_enabled_set(!input_mouse_enabled_get());
 
 var _mouse_x = input_mouse_x();
 var _mouse_y = input_mouse_y();
@@ -21,6 +22,7 @@ if (window_get_cursor() != _cursor) window_set_cursor(_cursor);
 
 var _string =  "in bound = " + string(input_mouse_in_bounds()) + "\n";
 _string += "locked   = " + string(input_mouse_capture_get().capture) + "\n";
+_string += "enabled  = " + string(input_mouse_enabled_get()) + "\n";
 _string += "mouse x  = " + string(_mouse_x) + "\n";
 _string += "mouse y  = " + string(_mouse_y);
 
