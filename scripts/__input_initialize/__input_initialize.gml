@@ -134,7 +134,7 @@ function __input_initialize()
     
     //Cursor capture state
     _global.__mouse_capture             = false;
-    _global.__mouse_capture_sensitivity = false;
+    _global.__mouse_capture_sensitivity = 1;
     _global.__mouse_capture_frame       = 0;
     
     //Whether to strictly verify bindings match auto profiles

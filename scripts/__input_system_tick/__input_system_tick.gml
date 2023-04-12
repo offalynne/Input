@@ -166,7 +166,11 @@ function __input_system_tick()
         ++_m;
     }
     
-    __input_release_multimonitor_cursor();
+    if (__input_window_changed() && _global.__mouse_capture)
+    {
+        __input_trace("Window changed, mouse capture has been released");
+        _global.__mouse_capture = false;
+    }
     
     if (_global.__mouse_capture)
     {
@@ -220,8 +224,8 @@ function __input_system_tick()
                         break;
                     }
                     
-                    var _dx = (_pointer_x - _old_x)*_global.__mouse_capture_sensitivity;
-                    var _dy = (_pointer_y - _old_y)*_global.__mouse_capture_sensitivity;
+                    var _dx = (_pointer_x - round(_old_x))*_global.__mouse_capture_sensitivity;
+                    var _dy = (_pointer_y - round(_old_y))*_global.__mouse_capture_sensitivity;
                     
                     //Only detect movement in the display coordinate space so that moving a room's view, or moving the window, doesn't trigger movement
                     if ((_m == INPUT_COORD_SPACE.DEVICE) && (_dx*_dx + _dy*_dy > INPUT_MOUSE_MOVE_DEADZONE*INPUT_MOUSE_MOVE_DEADZONE)) _moved = true;
