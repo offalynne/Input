@@ -5,9 +5,9 @@
 /// @param   y
 /// @param   strength
 /// @param   [playerIndex=0]
-/// @param   [moveCursor=false]
+/// @param   [moveCursor=true]
 
-function input_cursor_elastic_set(_x, _y, _strength, _player_index = 0, _move_cursor = false)
+function input_cursor_elastic_set(_x, _y, _strength, _player_index = 0, _move_cursor = true)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
