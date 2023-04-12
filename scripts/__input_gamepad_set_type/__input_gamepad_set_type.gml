@@ -274,6 +274,11 @@ function __input_gamepad_set_type()
                     guessed_type = true;
                 }
             }
+            else if (__input_string_contains(description, "Classic Controller") && (axis_count == 10) && (hat_count == 1) && (os_type == os_android))
+            {
+                raw_type = "CommunityVCSClassic";
+                guessed_type = true;
+            }
             else if (_irregular_guid && (axis_count == 1) && (button_count  == 5) && (hat_count == 1) && (os_type == os_linux))
             {
                 //Atari VCS Classic Joystick
