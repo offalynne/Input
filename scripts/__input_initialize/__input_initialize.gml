@@ -405,6 +405,7 @@ function __input_initialize()
             AppleController       = "mfi";
             CommunityLuna         = "luna";
             CommunityStadia       = "stadia";
+            CommunityVCSModern    = "vcs modern";
             CommunityVCSClassic   = "vcs classic";
             HIDAtariVCSClassic    = "vcs classic";
             CommunityOuya         = "ouya";
