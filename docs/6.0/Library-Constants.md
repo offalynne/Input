@@ -88,6 +88,8 @@ The following constants allow you to reference specific gamepad types. These con
 |`INPUT_GAMEPAD_TYPE_JOYCON_RIGHT` | Switch Joy-Con Right |
 |`INPUT_GAMEPAD_TYPE_GAMECUBE`     | GameCube |
 
+!> Setting `INPUT_GAMEPAD_EXTENDED_TYPES` in the `__input_config_gamepads()` configuration to `true` will add additional gamepad types referenced by string, see [`input_icons()`](Functions-(Other)?id=input_iconscategoryname)
+
 &nbsp;
 
 ## Extended Gamepad Constants
