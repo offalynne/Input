@@ -26,7 +26,6 @@
 124b,4d01,CommunityLikeXBox // Nyko Air Flo Xbox
 0b05,7905,CommunityLikeXBox // ASUS ROG Kunai 3
 145f,01c5,CommunityLikeXBox // Trust GXT 540 Yula
-3250,1002,CommunityLikeXBox // Atari VCS Modern Controller
 04b4,2411,CommunityLikeXBox // Flydigi Vader 2
 04b4,2412,CommunityLikeXBox // Flydigi Vader 2 Pro
 1d79,0009,CommunityLikeXBox // Nyko Playpad
@@ -438,6 +437,7 @@ dead,beef,CommunityPSX // Hidromancer
 0ca3,0028,CommunityAstroCity // Sega Astro City Mini Arcade Stick
 1292,4e47,CommunityNeoGeo // NeoGeo X Arcade Stick
 3250,1001,CommunityVCSClassic // Atari VCS Classic Joystick
+3250,1002,CommunityVCSModern // Atari VCS Modern Controller
 2f24,002d,CommunityUnknown // JYS Adapter
 2f24,008a,CommunityUnknown // JYS Adapter
 2f24,0073,CommunityUnknown // Mayflash Adapter
