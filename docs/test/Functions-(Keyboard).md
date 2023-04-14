@@ -8,7 +8,7 @@ _These functions are almost directly passed-through and are presently only inten
 
 &nbsp;
 
-## `input_keyboard_check`
+## `...keyboard_check`
 
 **Full Function:** `input_keyboard_check(key)`
 
@@ -20,7 +20,7 @@ _These functions are almost directly passed-through and are presently only inten
 
 &nbsp;
 
-## `input_keyboard_check_pressed`
+## `...keyboard_check_pressed`
 
 **Full Function:** `input_keyboard_check_pressed(key)`
 
@@ -32,7 +32,7 @@ _These functions are almost directly passed-through and are presently only inten
 
 &nbsp;
 
-## `input_keyboard_check_released`
+## `...keyboard_check_released`
 
 **Full Function:** `input_keyboard_check_released(key)`
 
