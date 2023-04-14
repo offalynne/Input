@@ -27,4 +27,7 @@
 - [Accessibility](Accessibility)
 - [Binding Names](Binding-Names)
 - [Input Quirks](Input-Quirks)
-- [Supplementary Notes](Reference-Notes)
+- [Steamworks](Steamworks)
+- [Game Controller Mapping](Controller-Mapping)
+- [Gamepad Troubleshooting](Gamepad-Troubleshooting)
+- [Common Keyboard Combos](Common-Keyboard-Combos)
