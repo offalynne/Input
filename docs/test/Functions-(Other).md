@@ -4,7 +4,7 @@
 
 ## `input_tick()`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -16,7 +16,7 @@
 
 ## `input_axis_threshold_set(axis, min, max, [playerIndex])`
 
-*Returns:* A struct with two member variables, `mini` and `maxi`, containing the minimum and maximum thresholds
+**Returns:** A struct with two member variables, `mini` and `maxi`, containing the minimum and maximum thresholds
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -29,7 +29,7 @@
 
 ## `input_axis_threshold_get(axis, [playerIndex])`
 
-*Returns:* A struct with two member variables, `.mini` and `.maxi`, containing the minimum and maximum thresholds
+**Returns:** A struct with two member variables, `.mini` and `.maxi`, containing the minimum and maximum thresholds
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -42,7 +42,7 @@ If the axis does not have a threshold definition (as set by `input_axis_threshol
 
 ## `input_clear_momentary(state)`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name   |Datatype|Purpose       |
 |-------|--------|--------------|
@@ -55,7 +55,7 @@ Clears momentary (pressed/released) input and connection checkers. This covers v
 
 ## `input_ignore_key_add(key)`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name |Datatype|Purpose                                                                                                                 |
 |-----|--------|------------------------------------------------------------------------------------------------------------------------|
@@ -69,7 +69,7 @@ Adds a keyboard key to be ignored by Input. This will affect binding detection, 
 
 ## `input_ignore_key_remove(key)`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name |Datatype|Purpose                                                                                                                    |
 |-----|--------|---------------------------------------------------------------------------------------------------------------------------|
@@ -81,7 +81,7 @@ Removes a keyboard key from the ignore list.
 
 ## `input_icons(categoryName)`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name                           |Datatype|Purpose                                                |
 |-------------------------------|--------|-------------------------------------------------------|
@@ -132,7 +132,7 @@ input_icons(INPUT_GAMEPAD_TYPE_XBOX_ONE)
 
 ## `input_color_get([playerIndex])`
 
-*Returns:* Integer, the player's device's LED colour
+**Returns:** Integer, the player's device's LED colour
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -144,7 +144,7 @@ input_icons(INPUT_GAMEPAD_TYPE_XBOX_ONE)
 
 ## `input_color_set([playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                              |
 |---------------|--------|---------------------------------------------------------------------|
@@ -155,7 +155,7 @@ input_icons(INPUT_GAMEPAD_TYPE_XBOX_ONE)
 
 ## `input_color_reset([playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -167,7 +167,7 @@ Resets the player's device's LED colour.
 
 ## `input_window_has_focus()`
 
-*Returns:* Boolean, whether the game window is in focus
+**Returns:** Boolean, whether the game window is in focus
 
 |Name|Datatype|Purpose|
 |----|--------|-------|

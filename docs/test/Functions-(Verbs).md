@@ -4,7 +4,7 @@
 
 ## `input_verb_consume(verb, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype                            |Purpose                                                                                                          |
 |---------------|------------------------------------|-----------------------------------------------------------------------------------------------------------------|
@@ -17,7 +17,7 @@ When a verb has been consumed, [check functions](Functions-(Checkers)) that targ
 
 ## `input_verb_set(verb, value, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype                             |Purpose                                                                                                 |
 |---------------|-------------------------------------|--------------------------------------------------------------------------------------------------------|
@@ -44,7 +44,7 @@ Returns the icon associated with the given verb for the device that the given pl
 
 ## `input_verb_get_group(verb)`
 
-*Returns:* String or `undefined`, the collision group defined for the target verb
+**Returns:** String or `undefined`, the collision group defined for the target verb
 
 |Name  |Datatype                  |Purpose                             |
 |------|--------------------------|------------------------------------|
@@ -56,7 +56,7 @@ String values that this function may return are defined via [`INPUT_VERB_GROUPS`
 
 ## `input_verb_group_active(verbGroup, state, [playerIndex], [exclusive])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype                        |Purpose                                                                                                                                                                                                                                            |
 |---------------|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -71,7 +71,7 @@ A verb is considerd inactive when the verb group that that verb is a part of has
 
 ## `input_verb_group_is_active(verbGroup, [playerIndex])`
 
-*Returns:* Boolean, whether the verb group is active for the given player
+**Returns:** Boolean, whether the verb group is active for the given player
 
 |Name           |Datatype                        |Purpose                                             |
 |---------------|--------------------------------|----------------------------------------------------|
@@ -82,7 +82,7 @@ A verb is considerd inactive when the verb group that that verb is a part of has
 
 ## `input_verb_groups_get(verbGroup, [playerIndex])`
 
-*Returns:* Array, the verb groups set in `__input_config_verb_groups`
+**Returns:** Array, the verb groups set in `__input_config_verb_groups`
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -92,7 +92,7 @@ A verb is considerd inactive when the verb group that that verb is a part of has
 
 ## `input_verb_group_get_verbs(verbGroup)`
 
-*Returns:* Array, the verbs set for the verb group
+**Returns:** Array, the verbs set for the verb group
 
 |Name           |Datatype                        |Purpose                                             |
 |---------------|--------------------------------|----------------------------------------------------|

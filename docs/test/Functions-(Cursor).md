@@ -4,7 +4,7 @@
 
 ## `input_cursor_x([playerIndex], [coordSpace])`
 
-*Returns:* Number, the x-coordinate of the given player's cursor
+**Returns:** Number, the x-coordinate of the given player's cursor
 
 |Name           |Datatype                |Purpose                                                                                                        |
 |---------------|------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -17,7 +17,7 @@ Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_
 
 ## `input_cursor_y([playerIndex], [coordSpace])`
 
-*Returns:* Number, the y-coordinate of the given player's cursor
+**Returns:** Number, the y-coordinate of the given player's cursor
 
 |Name           |Datatype                |Purpose                                                                                                        |
 |---------------|------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -30,7 +30,7 @@ Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_
 
 ## `input_cursor_previous_x([playerIndex], [coordSpace])`
 
-*Returns:* Number, the x-coordinate of the given player's cursor from the previous frame
+**Returns:** Number, the x-coordinate of the given player's cursor from the previous frame
 
 |Name           |Datatype                |Purpose                                                                                                        |
 |---------------|------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -43,7 +43,7 @@ Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_
 
 ## `input_cursor_previous_y([playerIndex], [coordSpace])`
 
-*Returns:* Number, the y-coordinate of the given player's cursor from the previous frame
+**Returns:** Number, the y-coordinate of the given player's cursor from the previous frame
 
 |Name           |Datatype                |Purpose                                                                                                        |
 |---------------|------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -56,7 +56,7 @@ Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_
 
 ## `input_cursor_set(x, y, [playerIndex], [relative])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                                    |
 |---------------|--------|---------------------------------------------------------------------------|
@@ -69,7 +69,7 @@ Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_
 
 ## `input_cursor_translate([x], [y], duration, [playerIndex], [relative])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                                                                                         |
 |---------------|--------|--------------------------------------------------------------------------------------------------------------------------------|
@@ -87,7 +87,7 @@ Whilst the cursor is being moved, cursor limits will be applied but cursor elast
 
 ## `input_cursor_speed_set(speed, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                           |
 |---------------|--------|------------------------------------------------------------------|
@@ -100,7 +100,7 @@ Whilst the cursor is being moved, cursor limits will be applied but cursor elast
 
 ## `input_cursor_speed_get([playerIndex])`
 
-*Returns:* Number, the cursor speed when using keyboard or gamepad input
+**Returns:** Number, the cursor speed when using keyboard or gamepad input
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -110,7 +110,7 @@ Whilst the cursor is being moved, cursor limits will be applied but cursor elast
 
 ## `input_cursor_coord_space_set(coordSpace, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype                |Purpose                                                                                                   |
 |---------------|------------------------|----------------------------------------------------------------------------------------------------------|
@@ -131,7 +131,7 @@ This function changes what coordinate space is used as a reference for setting t
 
 ## `input_cursor_coord_space_get([playerIndex])`
 
-*Returns:* A member of `INPUT_COORD_SPACE`, the cursor coordinate space that has been set
+**Returns:** A member of `INPUT_COORD_SPACE`, the cursor coordinate space that has been set
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -141,7 +141,7 @@ This function changes what coordinate space is used as a reference for setting t
 
 ## `input_cursor_limit_aabb(left, top, right, bottom, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -157,7 +157,7 @@ Limits the cursor's motion inside an axis-aligned bounding box with the given co
 
 ## `input_cursor_limit_circle(x, y, radius, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -172,7 +172,7 @@ Limits the cursor's motion inside a circle centred at the given point.
 
 ## `input_cursor_limit_remove([playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -184,7 +184,7 @@ Removes any cursor limits you have set using `input_cursor_limit_aabb()` or `inp
 
 ## `input_cursor_limit_get([playerIndex])`
 
-*Returns:* Struct, the cursor limit state. See below
+**Returns:** Struct, the cursor limit state. See below
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -208,7 +208,7 @@ The struct returned by this function contains the following member variables:
 
 ## `input_cursor_elastic_set(x, y, strength, [playerIndex], [moveCursor])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                                                   |
 |---------------|--------|------------------------------------------------------------------------------------------|
@@ -226,7 +226,7 @@ Sets up a springy force that pulls the cursor towards the given point. This is u
 
 ## `input_cursor_elastic_remove([playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -238,7 +238,7 @@ Removes an elastic force that has been added to the given player's cursor.
 
 ## `input_cursor_elastic_get([playerIndex])`
 
-*Returns:* Struct, the elastic state. See below
+**Returns:** Struct, the elastic state. See below
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|

@@ -52,7 +52,7 @@ Adaptive trigger effects are available for the DualSense gamepad on the PlayStat
 
 ## `input_trigger_effect_get_state(trigger, [playerIndex])`
 
-*Returns:* [Trigger effect state constant](Library-Constants?id=trigger-effect-states)
+**Returns:** [Trigger effect state constant](Library-Constants?id=trigger-effect-states)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -63,7 +63,7 @@ Adaptive trigger effects are available for the DualSense gamepad on the PlayStat
 
 ## `input_trigger_effect_set_pause(state, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                |
 |---------------|--------|-------------------------------------------------------|
@@ -76,7 +76,7 @@ Pauses all trigger effects when `state` is `<false>`.  While paused, no new trig
 
 ## `input_trigger_effect_get_pause([playerIndex])`
 
-*Returns:* Boolean, whether trigger effects can proceed for the player
+**Returns:** Boolean, whether trigger effects can proceed for the player
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -86,7 +86,7 @@ Pauses all trigger effects when `state` is `<false>`.  While paused, no new trig
 
 ## `input_trigger_effect_set_strength(strength, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                 |
 |---------------|--------|--------------------------------------------------------|
@@ -97,7 +97,7 @@ Pauses all trigger effects when `state` is `<false>`.  While paused, no new trig
 
 ## `input_trigger_effect_get_strength([playerIndex])`
 
-*Returns:* Number, the overall strength for all trigger effects for the player
+**Returns:** Number, the overall strength for all trigger effects for the player
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|

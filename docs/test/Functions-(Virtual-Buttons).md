@@ -10,7 +10,7 @@ The following functions are in global scope and can be called anywhere in your g
 
 ## `input_virtual_destroy_all()`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -22,7 +22,7 @@ Destroys all virtual buttons that have been created. This is useful when transit
 
 ## `input_is_virtual()`
 
-*Returns:* Boolean, whether the value provided is a virtual button
+**Returns:** Boolean, whether the value provided is a virtual button
 
 |Name   |Datatype|Purpose           |
 |-------|--------|------------------|
@@ -34,7 +34,7 @@ This function will return `false` for a virtual button that has been destroyed.
 
 ## `input_virtual_debug_draw()`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -48,7 +48,7 @@ Draws simple representations of every virtual button to the screen. This is inte
 
 ## `input_virtual_create()`
 
-*Returns:* Struct, an instance of `__input_class_virtual_button`
+**Returns:** Struct, an instance of `__input_class_virtual_button`
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -72,7 +72,7 @@ Virtual buttons can be configured using the following functions. Many functions 
 
 ## `.destroy()`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -84,7 +84,7 @@ Immediately destroys a virtual button, making it inoperative and any methods for
 
 ## `.debug_draw()`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -98,7 +98,7 @@ Draws simple representations of the virtual button to the screen. This is intend
 
 ## `.rectangle(left, top, right, bottom)`
 
-*Returns:* `self`
+**Returns:** `self`
 
 |Name    |Datatype|Purpose                         |
 |--------|--------|--------------------------------|
@@ -113,7 +113,7 @@ Sets the shape of the virtual button to a rectangle.
 
 ## `.circle(x, y, radius)`
 
-*Returns:* `self`
+**Returns:** `self`
 
 |Name    |Datatype|Purpose                                 |
 |--------|--------|----------------------------------------|
@@ -127,7 +127,7 @@ Sets the shape of the virtual button to a circle.
 
 ## `.get_position()`
 
-*Returns:* Struct, see below
+**Returns:** Struct, see below
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -151,7 +151,7 @@ The struct returned from this method has the following member variables:
 
 ## `.button(clickVerb)`
 
-*Returns:* `self`
+**Returns:** `self`
 
 |Name       |Datatype|Purpose                            |
 |-----------|--------|-----------------------------------|
@@ -163,7 +163,7 @@ Binds the virtual button to a basic Input verb. Pressing the button will also "p
 
 ## `.dpad(clickVerb, leftVerb, rightVerb, upVerb, downVerb, [4dir])`
 
-*Returns:* `self`
+**Returns:** `self`
 
 |Name       |Datatype|Purpose                                                                                                    |
 |-----------|--------|-----------------------------------------------------------------------------------------------------------|
@@ -182,7 +182,7 @@ By default, a dpad-type virtual button can trigger one or two verbs at once (lef
 
 ## `.thumbstick(clickVerb, leftVerb, rightVerb, upVerb, downVerb)`
 
-*Returns:* `self`
+**Returns:** `self`
 
 |Name       |Datatype|Purpose                                                                                                    |
 |-----------|--------|-----------------------------------------------------------------------------------------------------------|
@@ -198,7 +198,7 @@ Binds the virtual button to a set of basic Input verbs, one for each direction a
 
 ## `.get_type()`
 
-*Returns:* Member of the `INPUT_VIRTUAL_TYPE` enum, what type of virtual button this is
+**Returns:** Member of the `INPUT_VIRTUAL_TYPE` enum, what type of virtual button this is
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -217,7 +217,7 @@ The `INPUT_VIRTUAL_TYPE` enum contains the following elements:
 
 ## `.get_verbs()`
 
-*Returns:* Struct, the verb bindings for the virtual button
+**Returns:** Struct, the verb bindings for the virtual button
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -237,7 +237,7 @@ The struct returned from this method has the following member variables:
 
 ## `.threshold(min, max)`
 
-*Returns:* `self`
+**Returns:** `self`
 
 |Name |Datatype|Purpose                |
 |-----|--------|-----------------------|
@@ -250,7 +250,7 @@ The struct returned from this method has the following member variables:
 
 ## `.get_threshold()`
 
-*Returns:* Struct, containing the minimum and maximum thresholds
+**Returns:** Struct, containing the minimum and maximum thresholds
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -267,7 +267,7 @@ The struct returned from this method has the following member variables:
 
 ## `.active(state)`
 
-*Returns:* `self`
+**Returns:** `self`
 
 |Name   |Datatype|Purpose                            |
 |-------|--------|-----------------------------------|
@@ -279,7 +279,7 @@ When a virtual button's active state is set to `false`, it will immediately stop
 
 ## `.get_active()`
 
-*Returns:* Boolean, whether the virtual button is active
+**Returns:** Boolean, whether the virtual button is active
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -289,7 +289,7 @@ When a virtual button's active state is set to `false`, it will immediately stop
 
 ## `.priority(priority)`
 
-*Returns:* `self`
+**Returns:** `self`
 
 |Name      |Datatype|Purpose                                |
 |----------|--------|---------------------------------------|
@@ -299,7 +299,7 @@ When a virtual button's active state is set to `false`, it will immediately stop
 
 ## `.get_priority()`
 
-*Returns:* Number, the priority of the virtual button
+**Returns:** Number, the priority of the virtual button
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -309,7 +309,7 @@ When a virtual button's active state is set to `false`, it will immediately stop
 
 ## `.follow(state)`
 
-*Returns:* `self`
+**Returns:** `self`
 
 |Name   |Datatype|Purpose                                                         |
 |-------|--------|----------------------------------------------------------------|
@@ -321,7 +321,7 @@ When a virtual button's active state is set to `false`, it will immediately stop
 
 ## `.get_follow()`
 
-*Returns:* Boolean, whether the virtual button is following the touch point
+**Returns:** Boolean, whether the virtual button is following the touch point
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -331,7 +331,7 @@ When a virtual button's active state is set to `false`, it will immediately stop
 
 ## `.release_behavior(option)`
 
-*Returns:* `self`
+**Returns:** `self`
 
 |Name   |Datatype                    |Purpose|
 |-------|----------------------------|-------|
@@ -349,7 +349,7 @@ The `INPUT_VIRTUAL_RELEASE` enum contains the following elements:
 
 ## `.get_release_behavior()`
 
-*Returns:* Member of the `INPUT_VIRTUAL_RELEASE` enum
+**Returns:** Member of the `INPUT_VIRTUAL_RELEASE` enum
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -359,7 +359,7 @@ The `INPUT_VIRTUAL_RELEASE` enum contains the following elements:
 
 ## `.first_touch_only(state)`
 
-*Returns:* `self`
+**Returns:** `self`
 
 |Name   |Datatype|Purpose                                                                    |
 |-------|--------|---------------------------------------------------------------------------|
@@ -373,7 +373,7 @@ On devices that do not support multiple touch points, this function will not cha
 
 ## `.get_first_touch_only()`
 
-*Returns:* Boolean, whether the virtual button will only respond to the first touch point
+**Returns:** Boolean, whether the virtual button will only respond to the first touch point
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -383,7 +383,7 @@ On devices that do not support multiple touch points, this function will not cha
 
 ## `.pressed()`
 
-*Returns:* Boolean, whether the virtual button was pressed this frame
+**Returns:** Boolean, whether the virtual button was pressed this frame
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -393,7 +393,7 @@ On devices that do not support multiple touch points, this function will not cha
 
 ## `.check()`
 
-*Returns:* Boolean, whether the virtual button has been pressed and held
+**Returns:** Boolean, whether the virtual button has been pressed and held
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -403,7 +403,7 @@ On devices that do not support multiple touch points, this function will not cha
 
 ## `.released()`
 
-*Returns:* Boolean, whether the virtual button was released this frame
+**Returns:** Boolean, whether the virtual button was released this frame
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -413,7 +413,7 @@ On devices that do not support multiple touch points, this function will not cha
 
 ## `.get_x()`
 
-*Returns:* Number, the normalized x value for the virtual button
+**Returns:** Number, the normalized x value for the virtual button
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -425,7 +425,7 @@ The number returned from this function will range from `-1` (fully left) to `1` 
 
 ## `.get_y()`
 
-*Returns:* Number, the normalized y value for the virtual button
+**Returns:** Number, the normalized y value for the virtual button
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -437,7 +437,7 @@ The number returned from this function will range from `-1` (fully top) to `1` (
 
 ## `.get_touch_x()`
 
-*Returns:* Number, the current x-coordinate of the touch point captured by the virtual button
+**Returns:** Number, the current x-coordinate of the touch point captured by the virtual button
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -447,7 +447,7 @@ The number returned from this function will range from `-1` (fully top) to `1` (
 
 ## `.get_touch_y()`
 
-*Returns:* Number, the current y-coordinate of the touch point captured by the virtual button
+**Returns:** Number, the current y-coordinate of the touch point captured by the virtual button
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -457,7 +457,7 @@ The number returned from this function will range from `-1` (fully top) to `1` (
 
 ## `.get_touch_start_x()`
 
-*Returns:* Number, the initial x-coordinate of the touch point when captured by the virtual button
+**Returns:** Number, the initial x-coordinate of the touch point when captured by the virtual button
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -467,7 +467,7 @@ The number returned from this function will range from `-1` (fully top) to `1` (
 
 ## `.get_touch_start_y()`
 
-*Returns:* Number, the initial y-coordinate of the touch point when captured by the virtual button
+**Returns:** Number, the initial y-coordinate of the touch point when captured by the virtual button
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -477,7 +477,7 @@ The number returned from this function will range from `-1` (fully top) to `1` (
 
 ## `.record_history(state)`
 
-*Returns:* `self`
+**Returns:** `self`
 
 |Name   |Datatype|Purpose|
 |-------|--------|-------|
@@ -491,7 +491,7 @@ Starts recording touch point history for the virtual button. This can be used to
 
 ## `.get_history()`
 
-*Returns:* Array of structs, see below
+**Returns:** Array of structs, see below
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -503,7 +503,7 @@ Structs in the returned array contain x/y coordinate pairs. These coordinates ar
 
 ## `.get_history_direction([frames])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name      |Datatype|Purpose                                                                                        |
 |----------|--------|-----------------------------------------------------------------------------------------------|
@@ -513,7 +513,7 @@ Structs in the returned array contain x/y coordinate pairs. These coordinates ar
 
 ## `.get_history_distance([frames])`
 
-*Returns:* Number, how far the touch point moved over
+**Returns:** Number, how far the touch point moved over
 
 |Name      |Datatype|Purpose                                                                                        |
 |----------|--------|-----------------------------------------------------------------------------------------------|
@@ -523,7 +523,7 @@ Structs in the returned array contain x/y coordinate pairs. These coordinates ar
 
 ## `.get_history_speed([frames])`
 
-*Returns:* Number, the speed of the touch point's movement
+**Returns:** Number, the speed of the touch point's movement
 
 |Name      |Datatype|Purpose                                                                                        |
 |----------|--------|-----------------------------------------------------------------------------------------------|

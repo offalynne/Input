@@ -4,7 +4,7 @@
 
 ## `input_vibrate_constant(strength, pan, duration, [playerIndex], [force])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype           |Purpose                                                                                                          |
 |---------------|-------------------|-----------------------------------------------------------------------------------------------------------------|
@@ -20,7 +20,7 @@ Sets up a constant-strength vibration event for the given duration.
 
 ## `input_vibrate_adsr(peakStrength, sustainLevel, pan, attack, decay, sustain, release, [playerIndex], [force])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype           |Purpose                                                                                                                                                 |
 |---------------|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -40,7 +40,7 @@ Sets up a vibration event that follows an attack-decay-sustain-release curve. Th
 
 ## `input_vibrate_pulse(strength, pan, repeats, duration, [playerIndex], [force])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype           |Purpose                                                                                                          |
 |---------------|-------------------|-----------------------------------------------------------------------------------------------------------------|
@@ -57,7 +57,7 @@ Sets up a vibration event that emits a fixed number of pulses over the given dur
 
 ## `input_vibrate_curve(strength, curve, pan, duration, [playerIndex], [force])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype           |Purpose                                                                                                          |
 |---------------|-------------------|-----------------------------------------------------------------------------------------------------------------|
@@ -74,7 +74,7 @@ Sets up a vibration event that follows an animation curve defined in the GameMak
 
 ## `input_vibrate_stop([playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -86,7 +86,7 @@ Immediately stops all vibration for the target player.
 
 ## `input_vibrate_set_pause(state, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                 |
 |---------------|--------|--------------------------------------------------------|
@@ -99,7 +99,7 @@ Whilst player vibration is paused, typically no new vibration events can be crea
 
 ## `input_vibrate_get_pause([playerIndex])`
 
-*Returns:* Boolean, whether vibration events can proceed for the player
+**Returns:** Boolean, whether vibration events can proceed for the player
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -109,7 +109,7 @@ Whilst player vibration is paused, typically no new vibration events can be crea
 
 ## `input_vibrate_set_strength(strength, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                 |
 |---------------|--------|--------------------------------------------------------|
@@ -120,7 +120,7 @@ Whilst player vibration is paused, typically no new vibration events can be crea
 
 ## `input_vibrate_get_strength([playerIndex])`
 
-*Returns:* Number, the overall strength for all vibration events for the player
+**Returns:** Number, the overall strength for all vibration events for the player
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|

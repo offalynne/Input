@@ -8,7 +8,7 @@
 
 ## `input_gamepad_check(gamepadIndex, GMconstant)`
 
-*Returns:* Boolean, if the button/axis is currently activated
+**Returns:** Boolean, if the button/axis is currently activated
 
 |Name          |Datatype|Purpose                                               |
 |--------------|--------|------------------------------------------------------|
@@ -19,7 +19,7 @@
 
 ## `input_gamepad_check_pressed(gamepadIndex, GMconstant)`
 
-*Returns:* Boolean, if the button/axis is newly activated this frame
+**Returns:** Boolean, if the button/axis is newly activated this frame
 
 |Name          |Datatype                  |Purpose                                               |
 |--------------|--------------------------|------------------------------------------------------|
@@ -30,7 +30,7 @@
 
 ## `input_gamepad_check_released(gamepadIndex, GMconstant)`
 
-*Returns:* Boolean, if the button/axis is newly deactivated this frame
+**Returns:** Boolean, if the button/axis is newly deactivated this frame
 
 |Name          |Datatype                  |Purpose                                               |
 |--------------|--------------------------|------------------------------------------------------|
@@ -41,7 +41,7 @@
 
 ## `input_gamepad_value(gamepadIndex, GMconstant)`
 
-*Returns:* Real, the analogue value of the input (after applying SDL axis remapping)
+**Returns:** Real, the analogue value of the input (after applying SDL axis remapping)
 
 |Name          |Datatype|Purpose                                               |
 |--------------|--------|------------------------------------------------------|
@@ -52,7 +52,7 @@
 
 ## `input_gamepad_delta(gamepadIndex, GMconstant)`
 
-*Returns:* Real, difference in value between this frame and the previous frame for the given button/axis
+**Returns:** Real, difference in value between this frame and the previous frame for the given button/axis
 
 |Name          |Datatype|Purpose                                               |
 |--------------|--------|------------------------------------------------------|
@@ -63,7 +63,7 @@
 
 ## `input_gamepad_is_axis(gamepadIndex, GMconstant)`
 
-*Returns:* Boolean, if the given `gp_*` constant is mapped as an analogue input
+**Returns:** Boolean, if the given `gp_*` constant is mapped as an analogue input
 
 |Name          |Datatype|Purpose                                               |
 |--------------|--------|-------------------------------------------------------|
@@ -74,7 +74,7 @@
 
 ## `input_gamepad_is_connected(gamepadIndex)`
 
-*Returns:* Boolean, whether the given gamepad is connected (omitting [blocked devices](Controller-Mapping?id=controller-blacklist))
+**Returns:** Boolean, whether the given gamepad is connected (omitting [blocked devices](Controller-Mapping?id=controller-blacklist))
 
 |Name          |Datatype|Purpose                                               |
 |--------------|--------|-------------------------------------------------------|
@@ -84,7 +84,7 @@
 
 ## `input_gamepad_get_description(gamepadIndex)`
 
-*Returns:* String, the name of the gamepad (after SDL remapping)
+**Returns:** String, the name of the gamepad (after SDL remapping)
 
 |Name          |Datatype|Purpose                                               |
 |--------------|--------|------------------------------------------------------|
@@ -94,7 +94,7 @@
 
 ## `input_gamepad_get_type(gamepadIndex)`
 
-*Returns:* String, the gamepad type (after SDL remapping)
+**Returns:** String, the gamepad type (after SDL remapping)
 
 |Name          |Datatype                  |Purpose                                               |
 |--------------|--------------------------|------------------------------------------------------|
@@ -106,7 +106,7 @@ Returns the same values as [`input_player_gamepad_get_type()`](Functions-(Player
 
 ## `input_gamepad_get_map(gamepadIndex)`
 
-*Returns:* Array of integers, the buttons and axes that are mapped for the given gamepad
+**Returns:** Array of integers, the buttons and axes that are mapped for the given gamepad
 
 |Name          |Datatype|Purpose                                               |
 |--------------|--------|------------------------------------------------------|
@@ -120,7 +120,7 @@ If there is no gamepad connected for the given index, an empty array will be ret
 
 ## `input_gamepad_constant_get_name(GMconstant)`
 
-*Returns:* String, the human-readable name of the [virtual button/axis constant](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)
+**Returns:** String, the human-readable name of the [virtual button/axis constant](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)
 
 |Name          |Datatype|Purpose                                               |
 |--------------|--------|------------------------------------------------------|
@@ -130,7 +130,7 @@ If there is no gamepad connected for the given index, an empty array will be ret
 
 ## `input_gamepads_get_status()`
 
-*Returns:* Struct, detailing the state of gamepad connection and disconnection
+**Returns:** Struct, detailing the state of gamepad connection and disconnection
 
 |Name|Datatype|Purpose|
 |----|--------|-------|

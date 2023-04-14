@@ -4,7 +4,7 @@
 
 ## `input_system_reset()`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name|Datatype|Purpose |
 |----|--------|--------|
@@ -16,7 +16,7 @@ Resets accessibility data and player data for all players (see [`input_player_re
 
 ## `input_system_export([outputString], [prettify])`
 
-*Returns:* JSON, either as a string or struct
+**Returns:** JSON, either as a string or struct
 
 |Name            |Datatype|Purpose                                                                                                                                                                            |
 |----------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -31,7 +31,7 @@ It is recommended to only use bindings written on the same device as keyboard sc
 
 ## `input_system_verify(stringOrStruct)`
 
-*Returns:* Boolean, whether the provided data can be loaded by `input_system_import()` without error
+**Returns:** Boolean, whether the provided data can be loaded by `input_system_import()` without error
 
 |Name            |Datatype        |Purpose                                                                                                                 |
 |----------------|----------------|------------------------------------------------------------------------------------------------------------------------|
@@ -41,7 +41,7 @@ It is recommended to only use bindings written on the same device as keyboard sc
 
 ## `input_system_import(stringOrStruct)`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name            |Datatype        |Purpose                                                                                                                 |
 |----------------|----------------|------------------------------------------------------------------------------------------------------------------------|
@@ -55,7 +55,7 @@ This function deserialises all player data (see [`input_player_export()`]()) as 
 
 ## `input_player_reset([playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -67,7 +67,7 @@ Clears the current profiles and bindings for the given player, resetting them to
 
 ## `input_player_export([playerIndex], [outputString], [prettify])`
 
-*Returns:* JSON, either as a string or struct
+**Returns:** JSON, either as a string or struct
 
 |Name            |Datatype|Purpose                                                                                                                                                                            |
 |----------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -83,7 +83,7 @@ It is recommended to only use bindings written on the same device as keyboard sc
 
 ## `input_player_verify(stringOrStruct)`
 
-*Returns:* Boolean, whether the provided data can be loaded by `input_player_import()` without error
+**Returns:** Boolean, whether the provided data can be loaded by `input_player_import()` without error
 
 |Name            |Datatype        |Purpose                                                                                                                             |
 |----------------|----------------|------------------------------------------------------------------------------------------------------------------------------------|
@@ -93,7 +93,7 @@ It is recommended to only use bindings written on the same device as keyboard sc
 
 ## `input_player_import(stringOrStruct, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name            |Datatype        |Purpose                                                                                                                             |
 |----------------|----------------|------------------------------------------------------------------------------------------------------------------------------------|
@@ -108,7 +108,7 @@ All player data is fully reset before loading in the new data - as such, this fu
 
 ## `input_player_copy(playerIndexSrc, playerIndexDst)`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name            |Datatype|Purpose                     |
 |----------------|--------|----------------------------|
@@ -121,7 +121,7 @@ Duplicates one player's profiles, bindings, and axis thresholds and copies them 
 
 ## `input_profile_export(profileName, [playerIndex], [outputString], [prettify])`
 
-*Returns:* JSON, either as a string or struct
+**Returns:** JSON, either as a string or struct
 
 |Name            |Datatype|Purpose                                                                                                                                                                            |
 |----------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -137,7 +137,7 @@ It is recommended to only use bindings written on the same device as keyboard sc
 
 ## `input_profile_verify(stringOrStruct)`
 
-*Returns:* Boolean, whether the provided data can be loaded by `input_profile_import()` without error
+**Returns:** Boolean, whether the provided data can be loaded by `input_profile_import()` without error
 
 |Name            |Datatype        |Purpose                                                                                                                                       |
 |----------------|----------------|----------------------------------------------------------------------------------------------------------------------------------------------|
@@ -147,7 +147,7 @@ It is recommended to only use bindings written on the same device as keyboard sc
 
 ## `input_profile_import(stringOrStruct, profileName, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name            |Datatype        |Purpose                                                                                                                                       |
 |----------------|----------------|----------------------------------------------------------------------------------------------------------------------------------------------|
@@ -162,7 +162,7 @@ All player data is fully reset before loading in the new data - as such, this fu
 
 ## `input_profile_copy(playerIndexSrc, profileNameSrc, playerIndexDst, profileNameDst)`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name            |Datatype|Purpose                      |
 |----------------|--------|-----------------------------|

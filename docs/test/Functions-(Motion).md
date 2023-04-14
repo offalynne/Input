@@ -13,7 +13,7 @@ Gamepad motion features provide normalized data from sensors available on PlaySt
 
 ## `input_motion_data_get([playerIndex])`
 
-*Returns:* Struct detailing the state of player gamepad motion data
+**Returns:** Struct detailing the state of player gamepad motion data
 
 
 |Name           |Datatype|Purpose                                             |
@@ -40,7 +40,7 @@ For details on handling motion data well for game input, see [GyroWiki](http://g
 
 ## `input_gyro_enabled_set(state, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -53,7 +53,7 @@ Sets whether gamepad gyro controls the cursor for the player.
 
 ## `input_gyro_enabled_get([playerIndex])`
 
-*Returns:* Boolean, whether gamepad gyro controls are enabled for the given player
+**Returns:** Boolean, whether gamepad gyro controls are enabled for the given player
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -63,7 +63,7 @@ Sets whether gamepad gyro controls the cursor for the player.
 
 ## `input_gyro_params_set(gyroAxisX, [gyroAxisY], [gyroSensitivityX], [gyroSensitivityY], [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name                |Datatype                                              |Purpose                                                              |
 |--------------------|------------------------------------------------------|---------------------------------------------------------------------|
@@ -79,7 +79,7 @@ This function configures gyro control of the cursor.
 
 ## `input_gyro_params_get([playerIndex])`
 
-*Returns:* Struct, the parameters currently set for player gyro control of the cursor
+**Returns:** Struct, the parameters currently set for player gyro control of the cursor
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|

@@ -4,7 +4,7 @@
 
 ## `input_source_mode_set(mode)`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name  |Datatype                          |Purpose                   |
 |------|----------------------------------|--------------------------|
@@ -16,7 +16,7 @@ You can read more about source modes [here](Input-Sources?id=source-modes).
 
 ## `input_source_mode_get()`
 
-*Returns:* Member of `INPUT_SOURCE_MODE` enum
+**Returns:** Member of `INPUT_SOURCE_MODE` enum
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -26,7 +26,7 @@ You can read more about source modes [here](Input-Sources?id=source-modes).
 
 ## `input_hotswap_params_set(callback)`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name      |Datatype        |Purpose|
 |----------|----------------|-------|
@@ -36,7 +36,7 @@ You can read more about source modes [here](Input-Sources?id=source-modes).
 
 ## `input_hotswap_params_get()`
 
-*Returns:* Struct, the parameters currently set for `INPUT_SOURCE_MODE.HOTSWAP`
+**Returns:** Struct, the parameters currently set for `INPUT_SOURCE_MODE.HOTSWAP`
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -52,7 +52,7 @@ The struct returned by this function has the following member functions:
 
 ## `input_join_params_set(min, max, leaveVerb, abortCallback, [dropDown])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype        |Purpose                                                                                                                                                           |
 |---------------|----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -66,7 +66,7 @@ The struct returned by this function has the following member functions:
 
 ## `input_join_params_get()`
 
-*Returns:* Struct, the parameters currently set for `INPUT_SOURCE_MODE.JOIN`
+**Returns:** Struct, the parameters currently set for `INPUT_SOURCE_MODE.JOIN`
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -86,7 +86,7 @@ The struct returned by this function has the following member functions:
 
 ## `input_join_is_finished()`
 
-*Returns:* Boolean, whether enough players are connected to begin multiplayer gameplay
+**Returns:** Boolean, whether enough players are connected to begin multiplayer gameplay
 
 |Name|Datatype|Purpose|
 |----|--------|-------|

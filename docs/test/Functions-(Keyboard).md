@@ -10,7 +10,7 @@ _These functions are almost directly passed-through and are presently only inten
 
 ## `input_keyboard_check(key)`
 
-*Returns:* Boolean, if the key is currently activated
+**Returns:** Boolean, if the key is currently activated
 
 |Name    |Datatype|Purpose                                               |
 |--------|--------|------------------------------------------------------|
@@ -20,7 +20,7 @@ _These functions are almost directly passed-through and are presently only inten
 
 ## `input_keyboard_check_pressed(key)`
 
-*Returns:* Boolean, if the key is newly activated this frame
+**Returns:** Boolean, if the key is newly activated this frame
 
 |Name |Datatype|Purpose                                               |
 |-----|--------|------------------------------------------------------|
@@ -30,7 +30,7 @@ _These functions are almost directly passed-through and are presently only inten
 
 ## `input_keyboard_check_released(key)`
 
-*Returns:* Boolean, if the key is newly deactivated this frame
+**Returns:** Boolean, if the key is newly deactivated this frame
 
 |Name |Datatype|Purpose                                               |
 |-----|--------|------------------------------------------------------|

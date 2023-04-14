@@ -10,7 +10,7 @@ If you're looking for a way to control what [source](Input-Sources) a player is 
 
 ## `input_player_connected([playerIndex])`
 
-*Returns:* Boolean, whether any of the player's [sources](Input-Sources) are connected and available for use
+**Returns:** Boolean, whether any of the player's [sources](Input-Sources) are connected and available for use
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -24,7 +24,7 @@ If the player's sole source is a gamepad and that gamepad is [incompatible with 
 
 ## `input_players_connected_count()`
 
-*Returns:* Integer, the number of players with connected devices
+**Returns:** Integer, the number of players with connected devices
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -36,7 +36,7 @@ If the player's sole source is a gamepad and that gamepad is [incompatible with 
 
 ## `input_players_get_status()`
 
-*Returns:* Struct, detailing the state of player connection and disconnection
+**Returns:** Struct, detailing the state of player connection and disconnection
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -74,7 +74,7 @@ The `INPUT_STATUS` enum contains the following members:
 
 ## `input_player_get_gamepad([playerIndex], [binding])`
 
-*Returns:* Integer, a [gamepad](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm) index
+**Returns:** Integer, a [gamepad](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm) index
 
 |Name           |Datatype                     |Purpose                                                                                                                                                                                                    |
 |---------------|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -89,7 +89,7 @@ This function will return `-1` if the player has no connected gamepad. If you pr
 
 ## `input_player_get_gamepad_type([playerIndex], [binding])`
 
-*Returns:* String, a constant indicating the player's [gamepad type constant](Library-Constants#gamepad-types)
+**Returns:** String, a constant indicating the player's [gamepad type constant](Library-Constants#gamepad-types)
 
 |Name           |Datatype                     |Purpose                                                                                                                                                                                                    |
 |---------------|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -106,7 +106,7 @@ If the player has no connected gamepad then this function will return `INPUT_GAM
 
 ## `input_player_get_invalid_gamepad_bindings([playerIndex])`
 
-*Returns:* Array of structs, gamepad bindings that are invalid due to the gamepad lacking certain mapped inputs
+**Returns:** Array of structs, gamepad bindings that are invalid due to the gamepad lacking certain mapped inputs
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -130,7 +130,7 @@ The array returned by this function contains structs. Each struct contains two m
 
 ## `input_player_ghost_set(state, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                              |
 |---------------|--------|-----------------------------------------------------|
@@ -150,7 +150,7 @@ Ghost mode prevents any sources being assigned to this player, but the player is
 
 ## `input_player_ghost_get([playerIndex])`
 
-*Returns:* Boolean, whether the player is in ghost mode
+**Returns:** Boolean, whether the player is in ghost mode
 
 |Name           |Datatype|Purpose                                              |
 |---------------|--------|-----------------------------------------------------|
@@ -160,7 +160,7 @@ Ghost mode prevents any sources being assigned to this player, but the player is
 
 ## `input_player_swap(playerIndexA, playerIndexB)`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name          |Datatype|Purpose                |
 |--------------|--------|-----------------------|
@@ -173,7 +173,7 @@ This function will swap over the two players with the given indices. This includ
 
 ## `input_player_gamepad_type_override_set(gamepadType, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                              |
 |---------------|--------|-----------------------------------------------------|
@@ -188,7 +188,7 @@ This function forces the icon getter functions (`input_verb_get_icon()` and `inp
 
 ## `input_player_gamepad_type_override_get([playerIndex])`
 
-*Returns:* String, what [gamepad type constant](Library-Constants#gamepad-types)  override has been set (or `undefined` if none has been set)
+**Returns:** String, what [gamepad type constant](Library-Constants#gamepad-types)  override has been set (or `undefined` if none has been set)
 
 |Name           |Datatype|Purpose                                              |
 |---------------|--------|-----------------------------------------------------|

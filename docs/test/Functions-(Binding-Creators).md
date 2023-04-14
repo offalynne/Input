@@ -20,7 +20,7 @@ The functions on this page allow you to create bindings, either to define [defau
 
 ## `input_binding_empty()`
 
-*Returns:* Struct, an empty (inactive) binding
+**Returns:** Struct, an empty (inactive) binding
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -30,7 +30,7 @@ The functions on this page allow you to create bindings, either to define [defau
 
 ## `input_binding_key(key)`
 
-*Returns:* Struct, a keyboard binding
+**Returns:** Struct, a keyboard binding
 
 |Name |Datatype|Purpose                                                                                                                  |
 |-----|--------|-------------------------------------------------------------------------------------------------------------------------|
@@ -40,7 +40,7 @@ The functions on this page allow you to create bindings, either to define [defau
 
 ## `input_binding_mouse_button(button)`
 
-*Returns:* Struct, a mouse button binding
+**Returns:** Struct, a mouse button binding
 
 |Name    |Datatype|Purpose                                                                                                                                               |
 |--------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -50,7 +50,7 @@ The functions on this page allow you to create bindings, either to define [defau
 
 ## `input_binding_mouse_wheel_up()`
 
-*Returns:* Struct, a mouse wheel binding
+**Returns:** Struct, a mouse wheel binding
 
 |Name|Datatype      |Purpose       |
 |----|--------------|--------------|
@@ -60,7 +60,7 @@ The functions on this page allow you to create bindings, either to define [defau
 
 ## `input_binding_mouse_wheel_down()`
 
-*Returns:* Struct, a mouse wheel binding
+**Returns:** Struct, a mouse wheel binding
 
 |Name|Datatype      |Purpose       |
 |----|--------------|--------------|
@@ -70,7 +70,7 @@ The functions on this page allow you to create bindings, either to define [defau
 
 ## `input_binding_gamepad_button(button)`
 
-*Returns:* Struct, a gamepad button binding
+**Returns:** Struct, a gamepad button binding
 
 |Name    |Datatype|Purpose                                                                                                                            |
 |--------|--------|-----------------------------------------------------------------------------------------------------------------------------------|
@@ -80,7 +80,7 @@ The functions on this page allow you to create bindings, either to define [defau
 
 ## `input_binding_gamepad_axis(axis, negative)`
 
-*Returns:* Struct, a gamepad axis binding
+**Returns:** Struct, a gamepad axis binding
 
 |Name      |Datatype|Purpose                                                                                                                          |
 |----------|--------|---------------------------------------------------------------------------------------------------------------------------------|
@@ -91,7 +91,7 @@ The functions on this page allow you to create bindings, either to define [defau
 
 ## `input_binding_virtual_button()`
 
-*Returns:* Struct, a virtual button binding
+**Returns:** Struct, a virtual button binding
 
 |Name|Datatype      |Purpose       |
 |----|--------------|--------------|
@@ -101,7 +101,7 @@ The functions on this page allow you to create bindings, either to define [defau
 
 ## `input_swap_gamepad_ab(state)`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name   |Datatype|Purpose                     |
 |-------|--------|----------------------------|

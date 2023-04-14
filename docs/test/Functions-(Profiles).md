@@ -10,7 +10,7 @@ If you'd like to know more about manipulating specific bindings, please see the 
 
 ## `input_profile_create(profileName, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype           |Purpose                                             |
 |---------------|-------------------|----------------------------------------------------|
@@ -25,7 +25,7 @@ If the profile already exists then this function will throw an error.
 
 ## `input_profile_destroy(profileName, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype           |Purpose                                             |
 |---------------|-------------------|----------------------------------------------------|
@@ -40,7 +40,7 @@ Destroys the given player's profile with the same name, if one exists. If the pl
 
 ## `input_profile_exists(profileName, [playerIndex])`
 
-*Returns:* Boolean, whether a profile with the given name exists for the given player
+**Returns:** Boolean, whether a profile with the given name exists for the given player
 
 |Name           |Datatype           |Purpose                                             |
 |---------------|-------------------|----------------------------------------------------|
@@ -53,7 +53,7 @@ This function will also return `true` for [default profile names](Profiles).
 
 ## `input_profile_get_array([playerIndex])`
 
-*Returns:* Array, the profiles that have been created for the player
+**Returns:** Array, the profiles that have been created for the player
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -65,7 +65,7 @@ This function will return default profiles (as defined in [`__input_config_profi
 
 ## `input_profile_set(profileName, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype           |Purpose                                              |
 |---------------|-------------------|-----------------------------------------------------|
@@ -78,7 +78,7 @@ Sets the player's profile either to a default or custom profile. If no profile w
 
 ## `input_profile_get([playerIndex])`
 
-*Returns:* String, the name of the profile being used by the player
+**Returns:** String, the name of the profile being used by the player
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -88,7 +88,7 @@ Sets the player's profile either to a default or custom profile. If no profile w
 
 ## `input_profile_auto([playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -102,7 +102,7 @@ If the ["auto" profile"](Configuration?id=profiles-and-bindings) is set to `unde
 
 ## `input_profile_reset_bindings(profileName, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype           |Purpose                                             |
 |---------------|-------------------|----------------------------------------------------|

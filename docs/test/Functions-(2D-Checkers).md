@@ -10,7 +10,7 @@ If you're looking for simpler ways to check verbs, please see the [1D Checkers](
 
 ## `input_direction(default, verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`
 
-*Returns:* Number, the direction (in degrees) represented by the sum of the verb values
+**Returns:** Number, the direction (in degrees) represented by the sum of the verb values
 
 |Name           |Datatype                  |Purpose                                                     |
 |---------------|--------------------------|------------------------------------------------------------|
@@ -26,7 +26,7 @@ If you're looking for simpler ways to check verbs, please see the [1D Checkers](
 
 ## `input_distance(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`
 
-*Returns:* Number, the length of the vector represented by the sum of the verb values
+**Returns:** Number, the length of the vector represented by the sum of the verb values
 
 |Name           |Datatype                  |Purpose                                                     |
 |---------------|--------------------------|------------------------------------------------------------|
@@ -41,7 +41,7 @@ If you're looking for simpler ways to check verbs, please see the [1D Checkers](
 
 ## `input_x(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`
 
-*Returns:* Number, the x-coordinate of the vector represented by the sum of the verb values
+**Returns:** Number, the x-coordinate of the vector represented by the sum of the verb values
 
 |Name            |Datatype                  |Purpose                                                     |
 |----------------|--------------------------|------------------------------------------------------------|
@@ -56,7 +56,7 @@ If you're looking for simpler ways to check verbs, please see the [1D Checkers](
 
 ## `input_y(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`
 
-*Returns:* Number, the y-coordinate of the vector represented by the sum of the verb values
+**Returns:** Number, the y-coordinate of the vector represented by the sum of the verb values
 
 |Name            |Datatype                  |Purpose                                                     |
 |----------------|--------------------------|------------------------------------------------------------|
@@ -71,7 +71,7 @@ If you're looking for simpler ways to check verbs, please see the [1D Checkers](
 
 ## `input_xy(verbLeft, verbRight, verbUp, verbDown, [playerIndex], [mostRecent])`
 
-*Returns:* Struct, the vector represented by the sum of the verb values
+**Returns:** Struct, the vector represented by the sum of the verb values
 
 |Name            |Datatype                  |Purpose                                                     |
 |----------------|--------------------------|------------------------------------------------------------|
@@ -90,7 +90,7 @@ The struct returned by this function contains two member variables: `.x` and `.y
 
 ## `input_xy_quick_pressed(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`
 
-*Returns:* Boolean, whether the analogue inputs registered a quick tap this frame
+**Returns:** Boolean, whether the analogue inputs registered a quick tap this frame
 
 |Name            |Datatype                  |Purpose                                                     |
 |----------------|--------------------------|------------------------------------------------------------|
@@ -106,7 +106,7 @@ The struct returned by this function contains two member variables: `.x` and `.y
 
 ## `input_radial_sector(verbLeft, verbRight, verbUp, verbDown, [minAngle], [maxAngle], [minMagnitude], [maxMagnitude], [playerIndex])`
 
-*Returns:* Boolean, whether the vector represented by the sum of the verb values points to the radial sector indicated by angle and magnitude bounds
+**Returns:** Boolean, whether the vector represented by the sum of the verb values points to the radial sector indicated by angle and magnitude bounds
 
 |Name            |Datatype                  |Purpose                                                                                                                                 |
 |----------------|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------|

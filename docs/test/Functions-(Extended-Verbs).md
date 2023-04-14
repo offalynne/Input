@@ -10,7 +10,7 @@ Chord- and combo-type verbs exist "globally": once defined, every player will ha
 
 ## `input_chord_create(name, maxTimeBetweenPresses, verb1, verb2, ...)`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name                   |Datatype                  |Purpose                                                                                                                        |
 |-----------------------|--------------------------|-------------------------------------------------------------------------------------------------------------------------------|

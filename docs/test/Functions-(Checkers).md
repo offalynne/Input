@@ -10,7 +10,7 @@ If you're looking for ways to return two-dimensional information for top-down mo
 
 ## `input_check(verb, [playerIndex], [bufferDuration])`
 
-*Returns:* Boolean, if the verb is currently active
+**Returns:** Boolean, if the verb is currently active
 
 |Name              |Datatype                        |Purpose                                                                                                   |
 |------------------|--------------------------------|----------------------------------------------------------------------------------------------------------|
@@ -24,7 +24,7 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 
 ## `input_check_pressed(verb, [playerIndex], [bufferDuration])`
 
-*Returns:* Boolean, if the verb is newly activated this frame
+**Returns:** Boolean, if the verb is newly activated this frame
 
 |Name              |Datatype                        |Purpose                                                                                                   |
 |------------------|--------------------------------|----------------------------------------------------------------------------------------------------------|
@@ -38,7 +38,7 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 
 ## `input_check_released(verb, [playerIndex], [bufferDuration])`
 
-*Returns:* Boolean, if the verb is newly deactivated this frame
+**Returns:** Boolean, if the verb is newly deactivated this frame
 
 |Name              |Datatype                        |Purpose                                                                                                   |
 |------------------|--------------------------------|----------------------------------------------------------------------------------------------------------|
@@ -52,7 +52,7 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 
 ## `input_check_repeat(verb, [playerIndex], [delay], [predelay])`
 
-*Returns:* Boolean, if the verb has been re-triggered by a repeater behaviour
+**Returns:** Boolean, if the verb has been re-triggered by a repeater behaviour
 
 |Name           |Datatype                        |Purpose                                                                                                                      |
 |---------------|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
@@ -67,7 +67,7 @@ This function will **not** return `true` on the same frame a verb is activated (
 
 ## `input_check_double(verb, [playerIndex], [bufferDuration])`
 
-*Returns:* Boolean, if the verb is currently active
+**Returns:** Boolean, if the verb is currently active
 
 |Name              |Datatype                        |Purpose                                                                                                   |
 |------------------|--------------------------------|----------------------------------------------------------------------------------------------------------|
@@ -81,7 +81,7 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 
 ## `input_check_double_pressed(verb, [playerIndex], [bufferDuration])`
 
-*Returns:* Boolean, if the verb is newly active
+**Returns:** Boolean, if the verb is newly active
 
 |Name              |Datatype                        |Purpose                                                                                                   |
 |------------------|--------------------------------|----------------------------------------------------------------------------------------------------------|
@@ -95,7 +95,7 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 
 ## `input_check_double_released(verb, [playerIndex], [bufferDuration])`
 
-*Returns:* Boolean, if the verb is newly deactivated this frame
+**Returns:** Boolean, if the verb is newly deactivated this frame
 
 |Name              |Datatype                        |Purpose                                                                                                   |
 |------------------|--------------------------------|----------------------------------------------------------------------------------------------------------|
@@ -109,7 +109,7 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 
 ## `input_check_long(verb, [playerIndex], [bufferDuration])`
 
-*Returns:* Boolean, if the verb is currently active
+**Returns:** Boolean, if the verb is currently active
 
 |Name              |Datatype                        |Purpose                                                                                                   |
 |------------------|--------------------------------|----------------------------------------------------------------------------------------------------------|
@@ -123,7 +123,7 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 
 ## `input_check_long_pressed(verb, [playerIndex], [bufferDuration])`
 
-*Returns:* Boolean, if the verb is newly activated this frame
+**Returns:** Boolean, if the verb is newly activated this frame
 
 |Name              |Datatype                        |Purpose                                                                                                   |
 |------------------|--------------------------------|----------------------------------------------------------------------------------------------------------|
@@ -137,7 +137,7 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 
 ## `input_check_long_released(verb, [playerIndex], [bufferDuration])`
 
-*Returns:* Boolean, if the verb is newly deactivated this frame
+**Returns:** Boolean, if the verb is newly deactivated this frame
 
 |Name              |Datatype                        |Purpose                                                                                                   |
 |------------------|--------------------------------|----------------------------------------------------------------------------------------------------------|
@@ -151,7 +151,7 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 
 ## `input_check_quick_pressed(verb, [playerIndex], [bufferDuration])`
 
-*Returns:* Boolean, whether the given verb has been actived by a quick tap on an analogue (thumbstick/trigger) axis this frame
+**Returns:** Boolean, whether the given verb has been actived by a quick tap on an analogue (thumbstick/trigger) axis this frame
 
 |Name              |Datatype                        |Purpose                                                                                                   |
 |------------------|--------------------------------|----------------------------------------------------------------------------------------------------------|
@@ -167,7 +167,7 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 
 ## `input_check_opposing(verbNegative, verbPositive, [playerIndex], [mostRecent])`
 
-*Returns:* Real, the sign of the result of the negative and positive active verbs
+**Returns:** Real, the sign of the result of the negative and positive active verbs
 
 |Name              |Datatype                  |Purpose                                                                                                   |
 |------------------|--------------------------|----------------------------------------------------------------------------------------------------------|
@@ -180,7 +180,7 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 
 ## `input_check_opposing_repeat(verbNegative, verbPositive, [playerIndex], [mostRecent], [delay], [predelay])`
 
-*Returns:* Real, the sign of the result of the negative and positive active verbs as re-triggered by a repeater behaviour
+**Returns:** Real, the sign of the result of the negative and positive active verbs as re-triggered by a repeater behaviour
 
 |Name           |Datatype                        |Purpose                                                                                                                      |
 |---------------|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
@@ -197,7 +197,7 @@ This function will **not** return `true` on the same frame a verb is activated (
 
 ## `input_check_opposing_pressed(verbNegative, verbPositive, [playerIndex], [mostRecent])`
 
-*Returns:* Real, the sign of the result of the negative and positive newly active verbs
+**Returns:** Real, the sign of the result of the negative and positive newly active verbs
 
 |Name              |Datatype                  |Purpose                                                                                                   |
 |------------------|--------------------------|----------------------------------------------------------------------------------------------------------|
@@ -210,7 +210,7 @@ This function will **not** return `true` on the same frame a verb is activated (
 
 ## `input_check_press_most_recent([array], [playerIndex])`
 
-*Returns:* Most recent [verb](Verbs-and-Bindings) pressed in the specified array, or `undefined` if no verb is active
+**Returns:** Most recent [verb](Verbs-and-Bindings) pressed in the specified array, or `undefined` if no verb is active
 
 |Name              |Datatype                        |Purpose                                                                                                                                              |
 |------------------|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -221,7 +221,7 @@ This function will **not** return `true` on the same frame a verb is activated (
 
 ## `input_is_analogue(verb, [playerIndex])`
 
-*Returns:* Boolean, if the verb was last triggered by an analogue input (a gamepad axis)
+**Returns:** Boolean, if the verb was last triggered by an analogue input (a gamepad axis)
 
 |Name              |Datatype                        |Purpose                                                                                    |
 |------------------|--------------------------------|-------------------------------------------------------------------------------------------|
@@ -234,7 +234,7 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 
 ## `input_value(verb, [playerIndex])`
 
-*Returns:* Real, the analogue value of the input (after calculating the threshold)
+**Returns:** Real, the analogue value of the input (after calculating the threshold)
 
 |Name              |Datatype                        |Purpose                                                                                    |
 |------------------|--------------------------------|-------------------------------------------------------------------------------------------|
@@ -249,7 +249,7 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 
 ## `input_held_time(verb, [playerIndex])`
 
-*Returns:* Number, the length of time that a verb has been active (held)
+**Returns:** Number, the length of time that a verb has been active (held)
 
 |Name           |Datatype                  |Purpose                                             |
 |---------------|--------------------------|----------------------------------------------------|
@@ -262,7 +262,7 @@ The units returned by this function is determined by `INPUT_TIMER_MILLISECONDS`.
 
 ## `input_held_time_released(verb, [playerIndex])`
 
-*Returns:* Number, how long the current verb was held when released
+**Returns:** Number, how long the current verb was held when released
 
 |Name           |Datatype                  |Purpose                                             |
 |---------------|--------------------------|----------------------------------------------------|

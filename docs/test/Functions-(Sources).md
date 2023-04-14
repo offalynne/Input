@@ -4,7 +4,7 @@
 
 ## `input_source_detect_input(source, [availableOnly])`
 
-*Returns:* Boolean, whether new input is detected from this [source](Input-Sources)
+**Returns:** Boolean, whether new input is detected from this [source](Input-Sources)
 
 |Name              |Datatype               |Purpose                                                                              |
 |------------------|-----------------------|-------------------------------------------------------------------------------------|
@@ -15,7 +15,7 @@
 
 ## `input_source_detect_new()`
 
-*Returns:* [Source](Input-Sources) that has presented **new** input and is unassigned, see below
+**Returns:** [Source](Input-Sources) that has presented **new** input and is unassigned, see below
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -27,7 +27,7 @@ If no source has presented new input this function will return `undefined`.
 
 ## `input_source_set(source, [playerIndex], [autoProfile])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype               |Purpose                                                                                                                                       |
 |---------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
@@ -39,7 +39,7 @@ If no source has presented new input this function will return `undefined`.
 
 ## `input_source_add(source, [playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype               |Purpose                                             |
 |---------------|-----------------------|----------------------------------------------------|
@@ -50,7 +50,7 @@ If no source has presented new input this function will return `undefined`.
 
 ## `input_source_share(source, [playerIndex], [autoProfile])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype               |Purpose                                                                                                                                       |
 |---------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
@@ -62,7 +62,7 @@ If no source has presented new input this function will return `undefined`.
 
 ## `input_source_clear([playerIndex])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -72,7 +72,7 @@ If no source has presented new input this function will return `undefined`.
 
 ## `input_source_using(source, [playerIndex])`
 
-*Returns:* Boolean, whether the given [source](Input-Sources) is being used by the player
+**Returns:** Boolean, whether the given [source](Input-Sources) is being used by the player
 
 |Name           |Datatype               |Purpose                                             |
 |---------------|-----------------------|----------------------------------------------------|
@@ -85,7 +85,7 @@ This function allows `INPUT_KEYBOARD`, `INPUT_MOUSE` and `INPUT_GAMEPAD[n]` to p
 
 ## `input_source_get_array([playerIndex])`
 
-*Returns:* Array of [sources](Input-Sources) for the player
+**Returns:** Array of [sources](Input-Sources) for the player
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -95,7 +95,7 @@ This function allows `INPUT_KEYBOARD`, `INPUT_MOUSE` and `INPUT_GAMEPAD[n]` to p
 
 ## `input_source_is_available(source)`
 
-*Returns:* Boolean, whether the given [source](Input-Sources) is unassigned
+**Returns:** Boolean, whether the given [source](Input-Sources) is unassigned
 
 |Name    |Datatype               |Purpose                               |
 |--------|-----------------------|--------------------------------------|

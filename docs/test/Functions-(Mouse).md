@@ -4,7 +4,7 @@
 
 ## `input_mouse_capture_set(state, [sensitivity])`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                                                                                                                                    |
 |---------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -17,7 +17,7 @@
 
 ## `input_mouse_capture_get()`
 
-*Returns:* Struct, the mouse capture state. See below
+**Returns:** Struct, the mouse capture state. See below
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -34,7 +34,7 @@ The struct returned by the function contains the following member variables:
 
 ## `input_mouse_x([coordSpace])`
 
-*Returns:* Number, the x-coordinate of the active pointer device
+**Returns:** Number, the x-coordinate of the active pointer device
 
 |Name          |Datatype                |Purpose                                                                                                     |
 |--------------|------------------------|------------------------------------------------------------------------------------------------------------|
@@ -44,7 +44,7 @@ The struct returned by the function contains the following member variables:
 
 ## `input_mouse_y([coordSpace])`
 
-*Returns:* Number, the y-coordinate of the active pointer device
+**Returns:** Number, the y-coordinate of the active pointer device
 
 |Name          |Datatype                |Purpose                                                                                                     |
 |--------------|------------------------|------------------------------------------------------------------------------------------------------------|
@@ -54,7 +54,7 @@ The struct returned by the function contains the following member variables:
 
 ## `input_mouse_dx([coordSpace])`
 
-*Returns:* Number, how far the mouse has moved in the x-axis between frames
+**Returns:** Number, how far the mouse has moved in the x-axis between frames
 
 |Name          |Datatype                |Purpose                                                                                                     |
 |--------------|------------------------|------------------------------------------------------------------------------------------------------------|
@@ -64,7 +64,7 @@ The struct returned by the function contains the following member variables:
 
 ## `input_mouse_dy([coordSpace])`
 
-*Returns:* Number, how far the mouse has moved in the y-axis between frames
+**Returns:** Number, how far the mouse has moved in the y-axis between frames
 
 |Name          |Datatype                |Purpose                                                                                                     |
 |--------------|------------------------|------------------------------------------------------------------------------------------------------------|
@@ -74,7 +74,7 @@ The struct returned by the function contains the following member variables:
 
 ## `input_mouse_moved()`
 
-*Returns:* Boolean, whether the mouse has moved
+**Returns:** Boolean, whether the mouse has moved
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -84,7 +84,7 @@ The struct returned by the function contains the following member variables:
 
 ## `input_mouse_coord_space_set(coordSpace)`
 
-*Returns:* N/A (`undefined`)
+**Returns:** N/A (`undefined`)
 
 |Name        |Datatype                |Purpose                                                  |
 |------------|------------------------|---------------------------------------------------------|
@@ -102,7 +102,7 @@ The struct returned by the function contains the following member variables:
 
 ## `input_mouse_coord_space_get()`
 
-*Returns:* A member of `INPUT_COORD_SPACE`, the mouse coordinate space that has been set
+**Returns:** A member of `INPUT_COORD_SPACE`, the mouse coordinate space that has been set
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -116,7 +116,7 @@ The struct returned by the function contains the following member variables:
 
 ## `input_mouse_check(button)`
 
-*Returns:* Boolean, if the button is currently activated
+**Returns:** Boolean, if the button is currently activated
 
 |Name    |Datatype|Purpose                                               |
 |--------|--------|------------------------------------------------------|
@@ -126,7 +126,7 @@ The struct returned by the function contains the following member variables:
 
 ## `input_mouse_check_pressed(button)`
 
-*Returns:* Boolean, if the button is newly activated this frame
+**Returns:** Boolean, if the button is newly activated this frame
 
 |Name    |Datatype|Purpose                                               |
 |--------|--------|------------------------------------------------------|
@@ -136,7 +136,7 @@ The struct returned by the function contains the following member variables:
 
 ## `input_mouse_check_released(button)`
 
-*Returns:* Boolean, if the button/axis is newly deactivated this frame
+**Returns:** Boolean, if the button/axis is newly deactivated this frame
 
 |Name    |Datatype|Purpose                                               |
 |--------|--------|------------------------------------------------------|
@@ -146,7 +146,7 @@ The struct returned by the function contains the following member variables:
 
 ## `input_mouse_in_bounds()`
 
-*Returns:* Boolean, returns whether the mouse is inside the window bounds
+**Returns:** Boolean, returns whether the mouse is inside the window bounds
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
