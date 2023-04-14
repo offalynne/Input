@@ -18,7 +18,32 @@
 
 - [Configuration](Configuration)
 - [Library Constants](Library-Constants)
+
+---
+
+**API**
+
 - [Full Function Index](Function-Index)
+- [Players](Functions-(Players))
+- [Profiles](Functions-(Profiles))
+- [Verb Checkers](Functions-(Checkers))
+- [2D Checkers](Functions-(2D-Checkers))
+- [Extended Verbs](Functions-(Extended-Verbs))
+- [Binding Creators](Functions-(Binding-Creators))
+- [Binding Access](Functions-(Binding-Access))
+- [Sources](Functions-(Sources))
+- [Cursor](Functions-(Cursor))
+- [Virtual Buttons](Functions-(Virtual-Buttons))
+- [Accessibility](Functions-(Accessibility))
+- [Vibration](Functions-(Vibration))
+- [Color](Functions-(Color))
+- [Motion](Functions-(Motion))
+- [Trigger Effects](Functions-(Trigger-Effects))
+- [Exporting & Importing](Functions-(Exporting-and-Importing))
+- [Other](Functions-(Other))
+- [Mouse (Direct)](Functions-(Mouse))
+- [Gamepad (Direct)](Functions-(Gamepad))
+- [Keyboard (Direct)](Functions-(Keyboard))
 
 ---
 
