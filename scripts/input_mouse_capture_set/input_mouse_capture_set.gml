@@ -6,9 +6,12 @@ function input_mouse_capture_set(_state, _sensitivity = 1)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
+    static _monitor_coords       = undefined; 
+    static _monitor_update_frame = -infinity;
+    
     if (!__INPUT_ON_DESKTOP || __INPUT_ON_WEB)
     {
-        __input_trace("Mouse capture unsupported for this platform");
+        if (__INPUT_DEBUG_CAPTURE) __input_trace("Mouse capture unsupported for this platform");
         return;
     }
     
@@ -27,9 +30,14 @@ function input_mouse_capture_set(_state, _sensitivity = 1)
     
     switch(os_type)
     {
-        case os_windows: //Window area exceeding the border on any monitor invalidates mouse capture position
+        case os_windows: //Window area intersecting the border on any monitor invalidates mouse capture position
+            if (_monitor_update_frame < _global.__frame)
+            {
+                _monitor_update_frame = _global.__frame;
+                _monitor_coords = window_get_visible_rects(_window_x, _window_y, _window_x + _window_width, _window_y + _window_height);
+            }
+            
             var _i = 0;
-            var _monitor_coords = window_get_visible_rects(_window_x, _window_y, _window_x + _window_width, _window_y + _window_height);
             repeat((array_length(_monitor_coords) div 8))
             {
                 if  ((_monitor_coords[_i*8 + 2] != 0) //W=0 is identity for "not on this monitor"
@@ -37,7 +45,7 @@ function input_mouse_capture_set(_state, _sensitivity = 1)
                 && (((_monitor_coords[_i*8 + 2] - _monitor_coords[_i*8])    != _window_width)    //Intersects a horizontal edge
                   || (_monitor_coords[_i*8 + 3] - _monitor_coords[_i*8 + 1] != _window_height))) //Intersects a vertical edge
                 {
-                    __input_trace("Window exceeds display bounds on monitor ", _i + 1, ", mouse capture blocked");
+                    if (__INPUT_DEBUG_CAPTURE) __input_trace("Window exceeds display bounds on monitor ", _i + 1, ", mouse capture blocked");
                     _global.__mouse_capture_blocked = true;
                     return;
                 }
@@ -46,34 +54,29 @@ function input_mouse_capture_set(_state, _sensitivity = 1)
             }
         break;
         
-        case os_macosx: //Any change of active monitor invalidates mouse capture position
-            var _monitor_coords = window_get_visible_rects(_window_x, _window_y, _window_x + _window_width, _window_y + _window_height);
-            if ((_monitor_coords[0] != _window_x) || (_monitor_coords[1] != _window_y))
+        case os_macosx: //Window area bordering or outside the primary monitor invalidates mouse capture position
+            if (_monitor_update_frame < _global.__frame)
             {
-                __input_trace("Window origin is outside primary monitor, mouse capture blocked");
+                _monitor_update_frame = _global.__frame;
+                _monitor_coords = window_get_visible_rects(_window_x, _window_y, _window_x + _window_width, _window_y + _window_height);
+            }
+            
+            if (((_monitor_coords[2] - _monitor_coords[0]) != _window_width)   //Intersects a horizontal edge
+              || (_monitor_coords[3] - _monitor_coords[1]  != _window_height)) //Intersects a vertical edge
+            {
+                if (__INPUT_DEBUG_CAPTURE) __input_trace("Window exceeds display bounds on primary monitor, mouse capture blocked");
                 _global.__mouse_capture_blocked = true;
                 return;
-            }
-        
-            var _i = 1;
-            repeat((array_length(_monitor_coords) div 8) - 1)
-            {
-                if ((_monitor_coords[_i*8 + 2] != 0) || (_monitor_coords[_i*8 + 3] != 0))
-                {
-                    __input_trace("Window bounds occupy area outside primary monitor, mouse capture blocked");
-                    _global.__mouse_capture_blocked = true;
-                    return;
-                }            
-                ++_i;
-            }
+                
+            }           
         break;
         
-        case os_linux: //No window_get_visible_rect() values but we can still test top left and primary monitor edges
+        case os_linux: //No window_get_visible_rect() values but we can test top left and primary monitor intersection
             if (((_window_x < 0) || (_window_y < 0)) //Negative values are always out of bounds
              || ((_window_x < display_get_width())  && (_window_x + _window_width  > display_get_width()))   //Primary horizontal edge
              || ((_window_y < display_get_height()) && (_window_y + _window_height > display_get_height()))) //Primary vertical edge
             {
-                __input_trace("Window exceeds display bounds, mouse capture blocked");
+                if (__INPUT_DEBUG_CAPTURE) __input_trace("Window exceeds display bounds, mouse capture blocked");
                 _global.__mouse_capture_blocked = true;
                 return;
             }            

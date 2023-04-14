@@ -12,6 +12,7 @@
 #macro __INPUT_DEBUG_SOURCES   false
 #macro __INPUT_DEBUG_BINDING   false
 #macro __INPUT_DEBUG_VERBS     false
+#macro __INPUT_DEBUG_CAPTURE   false
 
 #macro __INPUT_EXTERNAL_DEBUG_LOG  false  //Do NOT set to <true> unless directed (!)
 

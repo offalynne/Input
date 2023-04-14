@@ -159,15 +159,20 @@ function __input_system_tick()
         ++_m;
     }
     
-    //Block mouse capture when the window state changes
-    if (_global.__mouse_capture && __input_window_changed())
+    //Block mouse capture when window state changes
+    if (_global.__mouse_capture && _global.__window_focus)
     {
-        _global.__mouse_capture_blocked = true;
-        if ((_global.__frame - _global.__mouse_capture_frame > 10)
-        ||  (_global.__window_focus_frame == _global.__frame))
+        if (__input_window_changed())
         {
-            //Attempt recapture
-            input_mouse_capture_set(true, _global.__mouse_capture_sensitivity);
+            _global.__mouse_capture_blocked = true;
+            if (os_type == os_windows)
+            {
+                input_mouse_capture_set(true, _global.__mouse_capture_sensitivity);        
+            }
+        }
+        else if (_global.__mouse_capture_blocked && device_mouse_check_button_pressed(0, mb_left))
+        {
+            input_mouse_capture_set(true, _global.__mouse_capture_sensitivity);        
         }
     }
     

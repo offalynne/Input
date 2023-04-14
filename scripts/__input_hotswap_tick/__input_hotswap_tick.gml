@@ -117,7 +117,7 @@ function __input_hotswap_tick_input()
             _global.__players[0].__last_input_time = _global.__current_time;
             return INPUT_GAMEPAD[_g];
         }
-        else if not ((_global.__frame - _global.__window_focus_frame < 2)) //Prevent resting axes from triggering source swap
+        else if not (_global.__frame - _global.__window_focus_frame < 2) //Prevent resting axes from triggering source swap
         {
             //Test available gamepads
             var _sort_order = 1;
