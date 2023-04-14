@@ -10,7 +10,11 @@ _These functions are almost directly passed-through and are presently only inten
 
 ## `...keyboard_check`
 
-**Full Function:** `input_keyboard_check(key)`
+`input_keyboard_check(key)`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** Boolean, if the key is currently activated
 
@@ -18,11 +22,23 @@ _These functions are almost directly passed-through and are presently only inten
 |--------|--------|------------------------------------------------------|
 |`key`   |integer |Key to check, using GameMaker's native [virtual key constants](https://manual.yoyogames.com/index.htm#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FKeyboard_Input%2FKeyboard_Input.htm)|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
 ## `...keyboard_check_pressed`
 
-**Full Function:** `input_keyboard_check_pressed(key)`
+`input_keyboard_check_pressed(key)`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** Boolean, if the key is newly activated this frame
 
@@ -30,14 +46,34 @@ _These functions are almost directly passed-through and are presently only inten
 |-----|--------|------------------------------------------------------|
 |`key`|integer |Key to check, using GameMaker's native [virtual key constants](https://manual.yoyogames.com/index.htm#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FKeyboard_Input%2FKeyboard_Input.htm)|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
 ## `...keyboard_check_released`
 
-**Full Function:** `input_keyboard_check_released(key)`
+`input_keyboard_check_released(key)`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** Boolean, if the key is newly deactivated this frame
 
 |Name |Datatype|Purpose                                               |
 |-----|--------|------------------------------------------------------|
 |`key`|integer |Key to check, using GameMaker's native [virtual key constants](https://manual.yoyogames.com/index.htm#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FKeyboard_Input%2FKeyboard_Input.htm)|
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
