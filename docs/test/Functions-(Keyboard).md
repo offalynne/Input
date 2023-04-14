@@ -8,7 +8,9 @@ _These functions are almost directly passed-through and are presently only inten
 
 &nbsp;
 
-## `input_keyboard_check(key)`
+## `input_keyboard_check`
+
+**Full Function:** `input_keyboard_check(key)`
 
 **Returns:** Boolean, if the key is currently activated
 
@@ -18,7 +20,9 @@ _These functions are almost directly passed-through and are presently only inten
 
 &nbsp;
 
-## `input_keyboard_check_pressed(key)`
+## `input_keyboard_check_pressed`
+
+**Full Function:** `input_keyboard_check_pressed(key)`
 
 **Returns:** Boolean, if the key is newly activated this frame
 
@@ -28,7 +32,9 @@ _These functions are almost directly passed-through and are presently only inten
 
 &nbsp;
 
-## `input_keyboard_check_released(key)`
+## `input_keyboard_check_released`
+
+**Full Function:** `input_keyboard_check_released(key)`
 
 **Returns:** Boolean, if the key is newly deactivated this frame
 
