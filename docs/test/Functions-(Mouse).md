@@ -2,7 +2,7 @@
 
 &nbsp;
 
-## …`mouse_capture_set`
+## …mouse_capture_set
 
 `input_mouse_capture_set(state, [sensitivity])`
 
@@ -29,7 +29,7 @@
 
 &nbsp;
 
-## …`mouse_capture_get`
+## …mouse_capture_get
 
 `input_mouse_capture_get()`
 
@@ -60,7 +60,7 @@ The struct returned by the function contains the following member variables:
 
 &nbsp;
 
-## …`mouse_x`
+## …mouse_x
 
 `input_mouse_x([coordSpace])`
 
@@ -84,7 +84,7 @@ The struct returned by the function contains the following member variables:
 
 &nbsp;
 
-## …`mouse_y`
+## …mouse_y
 
 `input_mouse_x([coordSpace])`
 
@@ -108,7 +108,7 @@ The struct returned by the function contains the following member variables:
 
 &nbsp;
 
-## …`mouse_dx`
+## …mouse_dx
 
 `input_mouse_x([coordSpace])`
 
@@ -132,7 +132,7 @@ The struct returned by the function contains the following member variables:
 
 &nbsp;
 
-## …`mouse_dy`
+## …mouse_dy
 
 `input_mouse_x([coordSpace])`
 
@@ -156,7 +156,7 @@ The struct returned by the function contains the following member variables:
 
 &nbsp;
 
-## …`mouse_moved`
+## …mouse_moved
 
 `input_mouse_moved()`
 
@@ -180,7 +180,7 @@ The struct returned by the function contains the following member variables:
 
 &nbsp;
 
-## …`mouse_coord_space_set`
+## …mouse_coord_space_set
 
 `input_mouse_coord_space_set(coordSpace)`
 
@@ -212,7 +212,7 @@ The struct returned by the function contains the following member variables:
 
 &nbsp;
 
-## …`mouse_coord_space_get`
+## …mouse_coord_space_get
 
 `input_mouse_coord_space_get()`
 
@@ -240,7 +240,7 @@ The struct returned by the function contains the following member variables:
 
 &nbsp;
 
-## …`mouse_check(button)`
+## …mouse_check(button)
 
 `input_mouse_check(button)`
 
@@ -264,7 +264,7 @@ The struct returned by the function contains the following member variables:
 
 &nbsp;
 
-## …`mouse_check_pressed`
+## …mouse_check_pressed
 
 `input_mouse_check_pressed(button)`
 
@@ -288,7 +288,7 @@ The struct returned by the function contains the following member variables:
 
 &nbsp;
 
-## …`mouse_check_released`
+## …mouse_check_released
 
 `input_mouse_check_released(button)`
 
@@ -312,7 +312,7 @@ The struct returned by the function contains the following member variables:
 
 &nbsp;
 
-## …`mouse_in_bounds`
+## …mouse_in_bounds
 
 `input_mouse_in_bounds()`
 
