@@ -6,7 +6,13 @@ Gamepad color can be set for PlayStation console platforms, as well as on [Windo
 
 &nbsp;
 
-## `input_color_get([playerIndex])`
+## …color_get
+
+`input_color_get([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** [Color](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Drawing/Colour_And_Alpha/Colour_And_Alpha.htm)
 
@@ -14,11 +20,25 @@ Gamepad color can be set for PlayStation console platforms, as well as on [Windo
 |---------------|-------------------|------------------------------------------------------|
 |`[playerIndex]`|integer            |Player to target. If not specified, player 0 is used  |
 
-Gets the LED color of a player's gamepad
+Gets the LED color of a player's gamepad.
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
 
 &nbsp;
 
-## `input_color_set(color, [playerIndex])`
+## …color_set
+
+`input_color_set(color, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** N/A (`undefined`)
 
@@ -27,11 +47,25 @@ Gets the LED color of a player's gamepad
 |`color`        |color              |[Color](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Drawing/Colour_And_Alpha/Colour_And_Alpha.htm) to set the player's gamepad source LED |
 |`[playerIndex]`|integer            |Player to target. If not specified, player 0 is used  |
 
-Sets the LED color of a player's gamepad
+Sets the LED color of a player's gamepad.
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
 
 &nbsp;
 
-## `input_color_reset([playerIndex])`
+## …color_reset
+
+`input_color_reset([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** N/A (`undefined`)
 
@@ -39,6 +73,12 @@ Sets the LED color of a player's gamepad
 |---------------|-------------------|----------------------------------------------------|
 |`[playerIndex]`|integer            |Player to target. If not specified, player 0 is used|
 
-Resets the LED color of a player's gamepad
+Resets the LED color of a player's gamepad.
 
-&nbsp;
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
