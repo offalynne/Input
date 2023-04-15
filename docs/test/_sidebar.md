@@ -18,6 +18,8 @@
 
 - [Config Macros](Config-Macros)
 - [Library Constants](Library-Constants)
+- [Steamworks](Steamworks)
+- [Icon Config](Icon-Config)
 
 ---
 
@@ -50,7 +52,6 @@
 
 - [Binding Names](Binding-Names)
 - [Input Quirks](Input-Quirks)
-- [Steamworks](Steamworks)
 - [Game Controller Mapping](Controller-Mapping)
 - [Gamepad Troubleshooting](Gamepad-Troubleshooting)
 - [Common Keyboard Combos](Common-Keyboard-Combos)
