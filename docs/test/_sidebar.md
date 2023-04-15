@@ -16,7 +16,7 @@
 
 **Technical Details**
 
-- [Configuration](Configuration)
+- [Config Macros](Config-Macros)
 - [Library Constants](Library-Constants)
 
 ---

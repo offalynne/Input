@@ -1,4 +1,4 @@
-# Configuration
+# Config Macros
 
 &nbsp;
 
@@ -15,14 +15,6 @@
 |`INPUT_ALLOW_STEAMWORKS `   |`true`                     |Whether to allow using Steamworks extension when available. See [Steamworks](Steamworks)          |
 |`INPUT_BINDING_SCAN_TIMEOUT`|`10000`                    |Time (in milliseconds) to wait for a new binding before automatically cancelling the binding scan |
 |`INPUT_STARTING_SOURCE_MODE`|`INPUT_SOURCE_MODE.HOTSWAP`|Initial starting [source mode](Input-Sources?id=source-modes) for Input when the game boots       |
-
-&nbsp;
-
-## Default Verbs
-
-`__input_config_verbs()` contains a special struct that defines the default profiles and bindings for your game. `__input_config_verb_groups()` contains a second struct that defines verb groups which are used to control how verb collisions should be resolved. Please see the [Verbs and Bindings](Verbs-and-Bindings) page for more information on these two configuration scripts
-
-?> You should edit this script to customise Input for your own purposes.
 
 &nbsp;
 
@@ -237,16 +229,6 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 |`INPUT_VIBRATION_DEFAULT_STRENGTH`     |`1.0`        |The default vibration strength. This value can be changed later by using [`input_vibrate_set_strength()`](Functions-(Vibration)?id=input_vibrate_set_strengthstrength-playerindex)                          |
 |`INPUT_VIBRATION_JOYCON_STRENGTH`      |`0.4`        |Joy-Con vibration motors can be a bit, uh, intense. This value allows you to reduce the strength of vibration relative to other platforms                                                                   |
 |`INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH`|`1.0`        |The default PS5 trigger effect strength. This value can be changed later by using [`input_trigger_effect__set_strength()`](Functions-(Trigger-Effects)?id=input_trigger_effect_set_strengthstrength-playerindex)|
-
-&nbsp;
-
-## Icons
-
-`__input_config_icons()` holds code that defines what values [`input_verb_get_icon()`](Functions-(Verbs)?id=input_verb_get_iconverb-playerindex-alternate-profilename) and [`input_binding_get_icon()`](Functions-(Binding-Access)?id=input_binding_get_iconbinding-playerindex)should return for specific bindings for specific [types of gamepad](Functions-(Players)?id=input_player_get_gamepad_typeplayerindex-binding). This script never needs to be directly called in your code, but the script and the struct it contains must be present in a project for Input to work.
-
-For more information on how to customise `__input_config_icons()`, please see information relating to [`input_icons()`](Functions-(Other)?id=input_iconscategoryname), the function used throughout this script.
-
-?> You should edit this script to customise Input for your own purposes.
 
 &nbsp;
 
