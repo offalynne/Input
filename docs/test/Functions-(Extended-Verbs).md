@@ -8,7 +8,13 @@ Chord- and combo-type verbs exist "globally": once defined, every player will ha
 
 &nbsp;
 
-## `input_chord_create(name, maxTimeBetweenPresses, verb1, verb2, ...)`
+## …chord_create
+
+`input_chord_create(name, maxTimeBetweenPresses, verb1, verb2, ...)`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** N/A (`undefined`)
 
@@ -21,3 +27,11 @@ Chord- and combo-type verbs exist "globally": once defined, every player will ha
 |...                    |                          |etc.                                                                                                                           |
 
 A "chord" is a set of verbs that must be pressed together, for example `ctrl + alt + delete` or `ctrl + S`. When all of the specified verbs are pressed together, the chord verb itself is activated. If there is too much time between individual key presses, determined by the `maxTimeBetweenPresses` argument, then the chord verb will fail to activate.
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
