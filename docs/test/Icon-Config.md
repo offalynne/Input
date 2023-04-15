@@ -10,7 +10,9 @@ For more information on how to customise `__input_config_icons()`, please see in
 
 &nbsp;
 
-## `input_icons(categoryName)`
+## input_icons()
+
+`input_icons(categoryName)`
 
 **Returns:** N/A (`undefined`)
 
