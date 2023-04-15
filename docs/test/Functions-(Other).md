@@ -2,7 +2,13 @@
 
 &nbsp;
 
-## `input_tick()`
+## …tick
+
+`input_tick()`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** N/A (`undefined`)
 
@@ -12,9 +18,23 @@
 
 !> If you're using Input 5 on versions of GameMaker **before** 2022.5 (May 2022) then you'll need to call `input_tick()` in the Begin Step event of a persistent instance. This function handles all things Input behind the scenes, it is important to call `input_tick()` once (and only once) each step of your game. A good way to do this is by making `obj_input_manager` [persistent](https://manual.yoyogames.com/#t=The_Asset_Editors%2FObjects.htm), and placing one instance in your first room.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_axis_threshold_set(axis, min, max, [playerIndex])`
+## …axis_threshold_set
+
+`input_axis_threshold_set(axis, min, max, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** A struct with two member variables, `mini` and `maxi`, containing the minimum and maximum thresholds
 
@@ -25,9 +45,23 @@
 |`max`          |real    |Maximum threshold value                             |
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_axis_threshold_get(axis, [playerIndex])`
+## …axis_threshold_get
+
+`input_axis_threshold_get(axis, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** A struct with two member variables, `.mini` and `.maxi`, containing the minimum and maximum thresholds
 
@@ -38,9 +72,23 @@
 
 If the axis does not have a threshold definition (as set by `input_axis_threshold_set()`) when this function is called then a new definition is created using `INPUT_DEFAULT_MIN_THRESHOLD` and `INPUT_DEFAULT_MAX_THRESHOLD`.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_clear_momentary(state)`
+## …clear_momentary
+
+`input_clear_momentary(state)`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** N/A (`undefined`)
 
@@ -50,10 +98,24 @@ If the axis does not have a threshold definition (as set by `input_axis_threshol
 
 Clears momentary (pressed/released) input and connection checkers. This covers verbs as well as keyboard/mouse/gamepad direct checkers. Useful for [fixed timestep patterns](https://gafferongames.com/post/fix_your_timestep/) where momentary checks should only be handled for one cycle (for example [iota](https://github.com/JujuAdams/iota)).
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
 
-## `input_ignore_key_add(key)`
+## …ignore_key_add
+
+`input_ignore_key_add(key)`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** N/A (`undefined`)
 
@@ -65,9 +127,23 @@ Adds a keyboard key to be ignored by Input. This will affect binding detection, 
 
 **Please note** that the list of ignored keys may already be populated depending on what value is set for `INPUT_IGNORE_RESERVED_KEYS_LEVEL`. Please read the [`Configuration`](Configuration) page for more information.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_ignore_key_remove(key)`
+## …ignore_key_remove
+
+`input_ignore_key_remove(key)`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** N/A (`undefined`)
 
@@ -77,9 +153,23 @@ Adds a keyboard key to be ignored by Input. This will affect binding detection, 
 
 Removes a keyboard key from the ignore list.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_icons(categoryName)`
+## …icons
+
+`input_icons(categoryName)`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** N/A (`undefined`)
 
@@ -97,6 +187,14 @@ Icon category names can be a [gamepad type constant](Library-Constants#gamepad-t
 |`"unknown"`           |An unrecognised binding is evaluated                             |
 |`"gamepad fallback"`  |Binding is for a gamepad with an unrecognised or unsupported type|
 |`"keyboard and mouse"`|Binding is for a keyboard key or mouse button                    |
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
 
 &nbsp;
 
@@ -128,9 +226,23 @@ input_icons(INPUT_GAMEPAD_TYPE_XBOX_ONE)
 
 ?> Setting `INPUT_GAMEPAD_EXTENDED_TYPES` in the `__input_config_gamepads()` configuration to `true` will add the following gamepad types which can be referenced by string: `"steam deck"`, `"steam controller"`, `"8bitdo"`, `"mfi"`, `"luna"`, `"stadia"`, `"vcs modern"`, `"vcs classic"`, `"ouya"`, `"dreamcast"`, `"n64"`, `"saturn"`, `"snes"`, `"super famicom"`
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_color_get([playerIndex])`
+## …color_get
+
+`input_color_get([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** Integer, the player's device's LED colour
 
@@ -140,9 +252,23 @@ input_icons(INPUT_GAMEPAD_TYPE_XBOX_ONE)
 
 ?> Color functions are relevant on PS4 and PS5 platforms as well as Windows or Linux using Steamworks, and apply to PS4, PS5, and Xbox Elite 2 gamepads
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_color_set([playerIndex])`
+## …color_set
+
+`input_color_set([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** N/A (`undefined`)
 
@@ -151,9 +277,23 @@ input_icons(INPUT_GAMEPAD_TYPE_XBOX_ONE)
 |`color`        |integer |Colour to set for the player's device's LED color (standard 24-bit GameMaker BGR)|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                 |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_color_reset([playerIndex])`
+## …color_reset
+
+`input_color_reset([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** N/A (`undefined`)
 
@@ -163,9 +303,23 @@ input_icons(INPUT_GAMEPAD_TYPE_XBOX_ONE)
 
 Resets the player's device's LED colour.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_window_has_focus()`
+## …window_has_focus
+
+`input_window_has_focus()`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** Boolean, whether the game window is in focus
 
@@ -174,3 +328,11 @@ Resets the player's device's LED colour.
 |None|        |       |
 
 !> This function only works on desktop (Windows, MacOS, Linux) platforms.
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
