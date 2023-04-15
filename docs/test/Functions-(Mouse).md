@@ -86,7 +86,7 @@ The struct returned by the function contains the following member variables:
 
 ## …mouse_y
 
-`input_mouse_x([coordSpace])`
+`input_mouse_y([coordSpace])`
 
 <!-- tabs:start -->
 
@@ -110,7 +110,7 @@ The struct returned by the function contains the following member variables:
 
 ## …mouse_dx
 
-`input_mouse_x([coordSpace])`
+`input_mouse_dx([coordSpace])`
 
 <!-- tabs:start -->
 
@@ -134,7 +134,7 @@ The struct returned by the function contains the following member variables:
 
 ## …mouse_dy
 
-`input_mouse_x([coordSpace])`
+`input_mouse_dy([coordSpace])`
 
 <!-- tabs:start -->
 
