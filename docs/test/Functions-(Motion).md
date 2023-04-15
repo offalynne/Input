@@ -11,7 +11,13 @@ Gamepad motion features provide normalized data from sensors available on PlaySt
 
 &nbsp;
 
-## `input_motion_data_get([playerIndex])`
+## …motion_data_get
+
+`input_motion_data_get([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** Struct detailing the state of player gamepad motion data
 
@@ -36,9 +42,23 @@ This function returns a struct that describes the motion of  a player's gamepad,
 
 For details on handling motion data well for game input, see [GyroWiki](http://gyrowiki.jibbsmart.com/).
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_gyro_enabled_set(state, [playerIndex])`
+## …gyro_enabled_set
+
+`input_gyro_enabled_set(state, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** N/A (`undefined`)
 
@@ -49,9 +69,23 @@ For details on handling motion data well for game input, see [GyroWiki](http://g
 
 Sets whether gamepad gyro controls the cursor for the player.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_gyro_enabled_get([playerIndex])`
+## …gyro_enabled_get
+
+`input_gyro_enabled_get([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** Boolean, whether gamepad gyro controls are enabled for the given player
 
@@ -59,9 +93,23 @@ Sets whether gamepad gyro controls the cursor for the player.
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_gyro_params_set(gyroAxisX, [gyroAxisY], [gyroSensitivityX], [gyroSensitivityY], [playerIndex])`
+## …gyro_params_set
+
+`input_gyro_params_set(gyroAxisX, [gyroAxisY], [gyroSensitivityX], [gyroSensitivityY], [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** N/A (`undefined`)
 
@@ -75,9 +123,23 @@ Sets whether gamepad gyro controls the cursor for the player.
 
 This function configures gyro control of the cursor.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_gyro_params_get([playerIndex])`
+## …gyro_params_get
+
+`input_gyro_params_get([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** Struct, the parameters currently set for player gyro control of the cursor
 
@@ -96,3 +158,11 @@ This function returns a struct of parameters currently set for gyro control of t
     sensitivity_y: <number indicating sensitivity on the Y axis>,
 }
 ```
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
