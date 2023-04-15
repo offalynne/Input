@@ -6,16 +6,36 @@ Adaptive trigger effects are available for the DualSense gamepad on the PlayStat
 
 &nbsp;
 
-## `input_trigger_effect_off(trigger, [playerIndex])`
+## …trigger_effect_off
+
+`input_trigger_effect_off(trigger, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 |Name           |Datatype|Purpose                                                                               |
 |---------------|--------|--------------------------------------------------------------------------------------|
 |`trigger`      |integer |Trigger to set using GameMaker’s native constants (`gp_shoulderlb` or `gp_shoulderrb`)|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                                  |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_trigger_effect_feedback(trigger, position, strength, [playerIndex])`
+## …trigger_effect_feedback
+
+`input_trigger_effect_feedback(trigger, position, strength, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 |Name           |Datatype|Purpose                                                                               |
 |---------------|--------|--------------------------------------------------------------------------------------|
@@ -24,9 +44,23 @@ Adaptive trigger effects are available for the DualSense gamepad on the PlayStat
 |`strength`     |number  |Strength of trigger effect, between 0 and 1                                           |
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                                  |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_trigger_effect_vibration(trigger, position, amplitude, frequency, [playerIndex])`
+## …trigger_effect_vibration
+
+`input_trigger_effect_vibration(trigger, position, amplitude, frequency, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 |Name           |Datatype|Purpose                                                                               |
 |---------------|--------|--------------------------------------------------------------------------------------|
@@ -36,9 +70,23 @@ Adaptive trigger effects are available for the DualSense gamepad on the PlayStat
 |`frequency`    |number  |Frequency of trigger effect, between 0 and 1                                          |
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                                  |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_trigger_effect_weapon(trigger, start, end, strength, [playerIndex])`
+## …trigger_effect_weapon
+
+`input_trigger_effect_weapon(trigger, start, end, strength, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 |Name           |Datatype|Purpose                                                                               |
 |---------------|--------|--------------------------------------------------------------------------------------|
@@ -48,9 +96,23 @@ Adaptive trigger effects are available for the DualSense gamepad on the PlayStat
 |`strength`     |number  |Strength of trigger effect, between 0 and 1                                           |
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                                  |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_trigger_effect_get_state(trigger, [playerIndex])`
+## …trigger_effect_get_state
+
+`input_trigger_effect_get_state(trigger, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** [Trigger effect state constant](Library-Constants?id=trigger-effect-states)
 
@@ -59,9 +121,23 @@ Adaptive trigger effects are available for the DualSense gamepad on the PlayStat
 |`trigger`      |integer |Trigger to set using GameMaker’s native constants (`gp_shoulderlb` or `gp_shoulderrb`)|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_trigger_effect_set_pause(state, [playerIndex])`
+## …trigger_effect_set_pause
+
+`input_trigger_effect_set_pause(state, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** N/A (`undefined`)
 
@@ -72,9 +148,23 @@ Adaptive trigger effects are available for the DualSense gamepad on the PlayStat
 
 Pauses all trigger effects when `state` is `<false>`.  While paused, no new trigger effects are set.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_trigger_effect_get_pause([playerIndex])`
+## …trigger_effect_get_pause
+
+`input_trigger_effect_get_pause([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** Boolean, whether trigger effects can proceed for the player
 
@@ -82,9 +172,23 @@ Pauses all trigger effects when `state` is `<false>`.  While paused, no new trig
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_trigger_effect_set_strength(strength, [playerIndex])`
+## …trigger_effect_set_strength
+
+`input_trigger_effect_set_strength(strength, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** N/A (`undefined`)
 
@@ -93,12 +197,34 @@ Pauses all trigger effects when `state` is `<false>`.  While paused, no new trig
 |`strength`     |number  |Overall strength for all trigger effects for the player |
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used    |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_trigger_effect_get_strength([playerIndex])`
+## …trigger_effect_get_strength
+
+`input_trigger_effect_get_strength([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 **Returns:** Number, the overall strength for all trigger effects for the player
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
