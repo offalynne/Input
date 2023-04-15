@@ -229,9 +229,3 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 |`INPUT_VIBRATION_DEFAULT_STRENGTH`     |`1.0`        |The default vibration strength. This value can be changed later by using [`input_vibrate_set_strength()`](Functions-(Vibration)?id=input_vibrate_set_strengthstrength-playerindex)                          |
 |`INPUT_VIBRATION_JOYCON_STRENGTH`      |`0.4`        |Joy-Con vibration motors can be a bit, uh, intense. This value allows you to reduce the strength of vibration relative to other platforms                                                                   |
 |`INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH`|`1.0`        |The default PS5 trigger effect strength. This value can be changed later by using [`input_trigger_effect__set_strength()`](Functions-(Trigger-Effects)?id=input_trigger_effect_set_strengthstrength-playerindex)|
-
-&nbsp;
-
-## Steam
-
-Input provides [support for Steam Gamepad Emulation through Steamworks](Steamworks.md) in order to identify Steam's virtual controllers, and to take advantage of the extended features available through Steam Input ([LED color](Functions-(Color)), [Gamepad motion](Functions-(Motion)), and [Trigger effects](Functions-(Trigger-Effects))), see [Steamworks setup](Steamworks.md).
