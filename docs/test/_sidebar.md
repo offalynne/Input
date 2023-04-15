@@ -23,7 +23,6 @@
 
 **API**
 
-- [Full Function Index](Function-Index)
 - [Players](Functions-(Players))
 - [Profiles](Functions-(Profiles))
 - [Verb Checkers](Functions-(Checkers))
