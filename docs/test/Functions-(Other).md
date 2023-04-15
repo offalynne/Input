@@ -242,7 +242,7 @@ input_icons(INPUT_GAMEPAD_TYPE_XBOX_ONE)
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
-?> Color functions are relevant on PS4 and PS5 platforms as well as Windows or Linux using Steamworks, and apply to PS4, PS5, and Xbox Elite 2 gamepads
+?> Color functions are relevant on PS4 and PS5 platforms as well as Windows or Linux using Steamworks, and apply to PS4, PS5, and Xbox Elite 2 gamepads.
 
 #### **Example**
 
