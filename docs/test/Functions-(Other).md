@@ -188,14 +188,6 @@ Icon category names can be a [gamepad type constant](Library-Constants#gamepad-t
 |`"gamepad fallback"`  |Binding is for a gamepad with an unrecognised or unsupported type|
 |`"keyboard and mouse"`|Binding is for a keyboard key or mouse button                    |
 
-#### **Example**
-
-```gml
-//TODO lol
-```
-
-<!-- tabs:end -->
-
 &nbsp;
 
 `input_icons()` must be used with what's called a [fluent interface](https://en.wikipedia.org/wiki/Fluent_interface). In practical terms, this means that `__input_config_icons()` should contain code that looks like this:
