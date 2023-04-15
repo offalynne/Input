@@ -21,7 +21,7 @@
 
 ---
 
-**API**
+**Features**
 
 - [Players](Functions-(Players))
 - [Profiles](Functions-(Profiles))
@@ -48,7 +48,6 @@
 
 **Further Reading**
 
-- [Accessibility](Accessibility)
 - [Binding Names](Binding-Names)
 - [Input Quirks](Input-Quirks)
 - [Steamworks](Steamworks)
