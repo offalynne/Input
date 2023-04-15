@@ -11,15 +11,15 @@
 - [Verbs and Bindings](Verbs-and-Bindings)
 - [Input Sources](Input-Sources)
 - [Profiles](Profiles)
+- [Library Constants](Library-Constants)
 
 ---
 
-**Technical Details**
+**Configuration**
 
-- [Config Macros](Config-Macros)
-- [Library Constants](Library-Constants)
+- [Macros](Config-Macros)
 - [Steamworks](Steamworks)
-- [Icon Config](Icon-Config)
+- [Icons](Icon-Config)
 
 ---
 
