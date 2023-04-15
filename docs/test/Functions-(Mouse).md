@@ -240,7 +240,7 @@ The struct returned by the function contains the following member variables:
 
 &nbsp;
 
-## …mouse_check(button)
+## …mouse_check
 
 `input_mouse_check(button)`
 
