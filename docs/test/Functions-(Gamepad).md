@@ -6,9 +6,9 @@
 
 &nbsp;
 
-## `input_gamepad_check(gamepadIndex, GMconstant)`
+## …gamepad_check
 
-`...`
+`input_gamepad_check(gamepadIndex, GMconstant)`
 
 <!-- tabs:start -->
 
@@ -31,9 +31,9 @@
 
 &nbsp;
 
-## `input_gamepad_check_pressed(gamepadIndex, GMconstant)`
+## …gamepad_check_pressed
 
-`...`
+`input_gamepad_check_pressed(gamepadIndex, GMconstant)`
 
 <!-- tabs:start -->
 
@@ -56,9 +56,9 @@
 
 &nbsp;
 
-## `input_gamepad_check_released(gamepadIndex, GMconstant)`
+## …gamepad_check_released
 
-`...`
+`input_gamepad_check_released(gamepadIndex, GMconstant)`
 
 <!-- tabs:start -->
 
@@ -81,9 +81,9 @@
 
 &nbsp;
 
-## `input_gamepad_value(gamepadIndex, GMconstant)`
+## …gamepad_value
 
-`...`
+`input_gamepad_value(gamepadIndex, GMconstant)`
 
 <!-- tabs:start -->
 
@@ -106,9 +106,9 @@
 
 &nbsp;
 
-## `input_gamepad_delta(gamepadIndex, GMconstant)`
+## …gamepad_delta
 
-`...`
+`input_gamepad_delta(gamepadIndex, GMconstant)`
 
 <!-- tabs:start -->
 
@@ -131,9 +131,9 @@
 
 &nbsp;
 
-## `input_gamepad_is_axis(gamepadIndex, GMconstant)`
+## …gamepad_is_axis
 
-`...`
+`input_gamepad_is_axis(gamepadIndex, GMconstant)`
 
 <!-- tabs:start -->
 
@@ -156,9 +156,9 @@
 
 &nbsp;
 
-## `input_gamepad_is_connected(gamepadIndex)`
+## …gamepad_is_connected
 
-`...`
+`input_gamepad_is_connected(gamepadIndex)`
 
 <!-- tabs:start -->
 
@@ -180,9 +180,9 @@
 
 &nbsp;
 
-## `input_gamepad_get_description(gamepadIndex)`
+## …gamepad_get_description
 
-`...`
+`input_gamepad_get_description(gamepadIndex)`
 
 <!-- tabs:start -->
 
@@ -204,9 +204,9 @@
 
 &nbsp;
 
-## `input_gamepad_get_type(gamepadIndex)`
+## …gamepad_get_type
 
-`...`
+`input_gamepad_get_type(gamepadIndex)`
 
 <!-- tabs:start -->
 
@@ -230,9 +230,9 @@ Returns the same values as [`input_player_gamepad_get_type()`](Functions-(Player
 
 &nbsp;
 
-## `input_gamepad_get_map(gamepadIndex)`
+## …gamepad_get_map
 
-`...`
+`input_gamepad_get_map(gamepadIndex)`
 
 <!-- tabs:start -->
 
@@ -258,9 +258,9 @@ If there is no gamepad connected for the given index, an empty array will be ret
 
 &nbsp;
 
-## `input_gamepad_constant_get_name(GMconstant)`
+## …gamepad_constant_get_name
 
-`...`
+`input_gamepad_constant_get_name(GMconstant)`
 
 <!-- tabs:start -->
 
@@ -282,9 +282,9 @@ If there is no gamepad connected for the given index, an empty array will be ret
 
 &nbsp;
 
-## `input_gamepads_get_status()`
+## …gamepads_get_status
 
-`...`
+`input_gamepads_get_status()`
 
 <!-- tabs:start -->
 
