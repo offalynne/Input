@@ -9,6 +9,7 @@
 
 - [Verbs and Bindings](Verbs-and-Bindings)
 - [Input Sources](Input-Sources)
+- [Source Modes](Source-Modes)
 - [Profiles](Profiles)
 - [Library Constants](Library-Constants)
 - [Binding Names](Binding-Names)
@@ -33,7 +34,7 @@
 
 ---
 
-**Features**
+**API**
 
 - [Players](Functions-(Players))
 - [Profiles](Functions-(Profiles))
