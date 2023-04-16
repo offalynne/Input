@@ -38,7 +38,7 @@
 
 - [Players](Functions-(Players))
 - [Profiles](Functions-(Profiles))
-- [Verb Checkers](Functions-(Checkers))
+- [Checking Verbs](Functions-(Checkers))
 - [2D Checkers](Functions-(2D-Checkers))
 - [Extended Verbs](Functions-(Extended-Verbs))
 - [Binding Creators](Functions-(Binding-Creators))
