@@ -2,6 +2,10 @@
 
 &nbsp;
 
+These functions expand upon the [basic verb checkers](Functions-(Checkers)) and give you access to more complex verb behaviours built in to Input.
+
+&nbsp;
+
 ## …check_repeat
 
 `input_check_repeat(verb, [playerIndex], [delay], [predelay])`
