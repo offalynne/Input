@@ -2,9 +2,7 @@
 
 &nbsp;
 
-The functions on this page allow you to check the state of verbs for each player. Input allows you to check verbs in multiple different ways, ranging from simple pressed/released to more complex behaviours like double taps.
-
-If you're looking for ways to return two-dimensional information for top-down movement or aiming, please see the [2D Checkers](Functions-(2D-Checkers)) page. What verbs are available for use is defined via [default profiles](Profiles) in [`__input_config_profiles_and_bindings()`](Configuration?id=profiles-and-bindings).
+The functions on this page allow you to check the state of verbs for each player. These are the most common, bare minimum functions. You may also want to check verbs in the context of 2D movement or aiming, and those functions can be found on the [2D Checkers](https://www.jujuadams.com/Input/#/6.0/Functions-(2D-Checkers)) page. Input has a lot of ways of checking verbs that should cover many other use cases. You can find those functions on the [Advanced Checkers](Functions-(Advanced-Checkers)) and [Further Verb Functions](Functions-(Further-Verbs)) pages.
 
 &nbsp;
 
