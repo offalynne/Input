@@ -43,6 +43,7 @@
 - [Binding Creators](Functions-(Binding-Creators))
 - [Binding Access](Functions-(Binding-Access))
 - [Sources](Functions-(Sources))
+- [Source Modes](Functions-(Source-Modes))
 - [Cursor](Functions-(Cursor))
 - [Virtual Buttons](Functions-(Virtual-Buttons))
 - [Accessibility](Functions-(Accessibility))
