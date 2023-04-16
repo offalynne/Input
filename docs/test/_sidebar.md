@@ -38,6 +38,7 @@
 
 - [Checking Verbs](Functions-(Checkers))
 - [2D Checkers](Functions-(2D-Checkers))
+- [Advanced Checkers](Functions-(Advanced-Checkers))
 - [Further Verb Functions](Functions-(Further-Verbs))
 - [Binding Creators](Functions-(Binding-Creators))
 - [Binding Access](Functions-(Binding-Access))
