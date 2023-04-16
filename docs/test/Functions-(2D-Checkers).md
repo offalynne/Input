@@ -4,8 +4,6 @@
 
 The functions on this page allow you to check verbs by treating them as 2D constructions. This is helpful for situations where you need to think in two dimensions, such as top-down movement or aiming.
 
-If you're looking for simpler ways to check verbs, please see the [1D Checkers](Functions-(Checkers)) page. What verbs are available for use is defined via [default profiles](Profiles) in [`__input_config_profiles_and_bindings()`](Configuration?id=profiles-and-bindings).
-
 &nbsp;
 
 ## …direction
