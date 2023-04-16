@@ -8,6 +8,60 @@
 
 &nbsp;
 
+## …axis_threshold_set
+
+`input_axis_threshold_set(axis, min, max, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** A struct with two member variables, `mini` and `maxi`, containing the minimum and maximum thresholds
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`axis`         |real    |[Gamepad axis](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm) to target|
+|`min`          |real    |Minimum threshold value                             |
+|`max`          |real    |Maximum threshold value                             |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …axis_threshold_get
+
+`input_axis_threshold_get(axis, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** A struct with two member variables, `.mini` and `.maxi`, containing the minimum and maximum thresholds
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`axis`         |real    |[Gamepad axis](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm) to target|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+If the axis does not have a threshold definition (as set by `input_axis_threshold_set()`) when this function is called then a new definition is created using `INPUT_DEFAULT_MIN_THRESHOLD` and `INPUT_DEFAULT_MAX_THRESHOLD`.
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
 ## …accessibility_global_toggle_set
 
 `input_accessibility_global_toggle_set(state)`
