@@ -11,6 +11,16 @@
 - [Input Sources](Input-Sources)
 - [Profiles](Profiles)
 - [Library Constants](Library-Constants)
+- [Binding Names](Binding-Names)
+
+---
+
+**Further Reading**
+
+- [Input Quirks](Input-Quirks)
+- [Game Controller Mapping](Controller-Mapping)
+- [Gamepad Troubleshooting](Gamepad-Troubleshooting)
+- [Common Keyboard Combos](Common-Keyboard-Combos)
 
 ---
 
@@ -44,13 +54,3 @@
 - [Mouse (Direct)](Functions-(Mouse))
 - [Gamepad (Direct)](Functions-(Gamepad))
 - [Keyboard (Direct)](Functions-(Keyboard))
-
----
-
-**Further Reading**
-
-- [Binding Names](Binding-Names)
-- [Input Quirks](Input-Quirks)
-- [Game Controller Mapping](Controller-Mapping)
-- [Gamepad Troubleshooting](Gamepad-Troubleshooting)
-- [Common Keyboard Combos](Common-Keyboard-Combos)
