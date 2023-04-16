@@ -134,7 +134,8 @@ function __input_initialize()
     
     //Cursor capture state
     _global.__mouse_capture             = false;
-    _global.__mouse_capture_sensitivity = false;
+    _global.__mouse_capture_blocked     = false;
+    _global.__mouse_capture_sensitivity = 1;
     _global.__mouse_capture_frame       = 0;
     
     //Whether to strictly verify bindings match auto profiles
@@ -161,8 +162,8 @@ function __input_initialize()
     //Whether mouse is blocked due to Window focus state
     _global.__window_focus_block_mouse = false;
     
-    //Timeout for gamepad source swap on window focus change
-    _global.__window_focus_gamepad_timeout = 0;
+    //Focus frame to prevent gamepad source swap on change
+    _global.__window_focus_frame = -infinity;
     
     _global.__cursor_verbs_valid = false;
     

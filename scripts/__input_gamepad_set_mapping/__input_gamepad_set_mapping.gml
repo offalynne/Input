@@ -1308,7 +1308,7 @@ function __input_gamepad_set_mapping()
         ////Add Atari VCS Classic twist mapping (semantically incorrect)
         //if ((raw_type == "CommunityVCSClassic") || (raw_type == "HIDAtariVCSClassic"))
         //{
-        //    set_mapping(gp_axisrh, 0, __INPUT_MAPPING.AXIS, "rightx");
+        //    set_mapping(gp_axisrh, 0, __INPUT_MAPPING.AXIS, "rightx").limited_range = (os_type == os_linux);
         //}
         
         if (INPUT_SDL2_ALLOW_EXTENDED)

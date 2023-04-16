@@ -123,11 +123,6 @@ function __input_system_tick()
                     //Sustain mouse block while a button remains held
                     if (__input_mouse_button() != mb_none) _global.__window_focus_block_mouse = true;
                 }
-                
-                if (_global.__window_focus_gamepad_timeout > 0)
-                {                    
-                    --_global.__window_focus_gamepad_timeout;
-                }
             }
             else if ((keyboard_key != vk_nokey) 
                  ||  (mouse_button != mb_none)
@@ -136,9 +131,7 @@ function __input_system_tick()
             {
                 //Regained focus
                 _global.__window_focus = true;
-                
-                //Timeout gamepad
-                _global.__window_focus_gamepad_timeout = 2;
+                _global.__window_focus_frame = _global.__frame;
                 
                 //Block mouse button input
                 if (!INPUT_ALLOW_OUT_OF_FOCUS) _global.__window_focus_block_mouse = true;
@@ -166,9 +159,24 @@ function __input_system_tick()
         ++_m;
     }
     
-    __input_release_multimonitor_cursor();
+    //Block mouse capture when window state changes
+    if (_global.__mouse_capture && _global.__window_focus)
+    {
+        if (__input_window_changed())
+        {
+            _global.__mouse_capture_blocked = true;
+            if (os_type == os_windows)
+            {
+                input_mouse_capture_set(true, _global.__mouse_capture_sensitivity);        
+            }
+        }
+        else if (_global.__mouse_capture_blocked && device_mouse_check_button_pressed(0, mb_left))
+        {
+            input_mouse_capture_set(true, _global.__mouse_capture_sensitivity);        
+        }
+    }
     
-    if (_global.__mouse_capture)
+    if (_global.__mouse_capture && !_global.__mouse_capture_blocked)
     {
         if (_global.__window_focus)
         {
