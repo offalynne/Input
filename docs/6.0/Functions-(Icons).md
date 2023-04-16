@@ -2,6 +2,10 @@
 
 &nbsp;
 
+These functions allow you to return icons as defined in [`__input_config_icons()`]().
+
+&nbsp;
+
 ## …verb_get_icon
 
 `input_verb_get_icon(verb, [playerIndex], [alternate], [profileName])`
