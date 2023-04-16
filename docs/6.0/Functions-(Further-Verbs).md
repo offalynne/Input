@@ -2,6 +2,10 @@
 
 &nbsp;
 
+This page contains verb-related functions that don't fit elsewhere. They give you more control over the exact behaviour of verbs in your game, potentially giving you options to work around difficult interaction problems.
+
+&nbsp;
+
 ## …verb_consume
 
 `input_verb_consume(verb, [playerIndex])`
