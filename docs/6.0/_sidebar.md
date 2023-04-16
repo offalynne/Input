@@ -45,7 +45,7 @@
 - [Binding Access](Functions-(Binding-Access))
 - [Icons](Functions-(Icons))
 - [Cursor](Functions-(Cursor))
-- [Mouse Capture](Mouse-Capture)
+- [Mouse Capture](Functions-(Mouse-Capture))
 - [Accessibility](Functions-(Accessibility))
 - [Exporting & Importing](Functions-(Exporting-and-Importing))
 - [Virtual Buttons](Functions-(Virtual-Buttons))
