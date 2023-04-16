@@ -2,6 +2,35 @@
 
 &nbsp;
 
+## …check_repeat
+
+`input_check_repeat(verb, [playerIndex], [delay], [predelay])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, if the verb has been re-triggered by a repeater behaviour
+
+|Name           |Datatype                        |Purpose                                                                                                                      |
+|---------------|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+|`verb`         |[verb](Verbs-and-Bindings)      |[Verb](Verbs-and-Bindings) to check                                                                                          |
+|`[playerIndex]`|integer                         |Player to target. If not specified, player 0 is used                                                                         |
+|`[delay]`      |frames/milliseconds             |Time between re-triggers; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration). The units of this value are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
+|`[predelay]`   |frames/milliseconds             |Time before the first re-trigger; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration). The units of this value are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
+
+This function will **not** return `true` on the same frame a verb is activated (unless `predelay` is set to 0). You'll probably want to combine this function with [`input_check_pressed()`](Functions-(Checkers)#input_check_pressedverb-playerindex-bufferduration).
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
 ## …check_double
 
 `input_check_double(verb, [playerIndex], [bufferDuration])`
