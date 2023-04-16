@@ -36,7 +36,7 @@ Input 6 introduces a number of new features alongside a small number of breaking
 - `INPUT_DEFAULT_PROFILES` has been replaced by `__input_config_verbs()`
 - `INPUT_VERB_GROUPS` has been replaced by `__input_config_verb_groups()`
 - `INPUT_HOTSWAP_CALLBACK` has been replaced by `input_hotswap_params_set()`
-- `INPUT_MULTIPLAYER_LEAVE_VERB` and `INPUT_MULTIPLAYER_ABORT_CALLBACK` have been replaced by extra arguments in `input_multiplayer_params_set()`
+- `INPUT_MULTIPLAYER_LEAVE_VERB` and `INPUT_MULTIPLAYER_ABORT_CALLBACK` have been replaced by extra arguments in `input_join_params_set()`
 - `input_icons()` has been removed and replaced with `input_icon_empty()` `input_icon_not_a_binding()` `input_icons_gamepad()` and `input_icons_keyboard_and_mouse()`
 - `INPUT_VIBRATION_SWITCH_OS_STRENGTH` has been renamed to `INPUT_VIBRATION_JOYCON_STRENGTH` and will now only affect Joy-Cons (and will work cross-platform too)
 
