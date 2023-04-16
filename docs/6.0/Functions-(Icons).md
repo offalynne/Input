@@ -2,7 +2,7 @@
 
 &nbsp;
 
-These functions allow you to return icons as defined in [`__input_config_icons()`]().
+These functions allow you to return icons as defined in [`__input_config_icons()`](https://www.jujuadams.com/Input/#/6.0/Icon-Config). These functions will return whatever is defined in that configuration script, be it a string, a sprite, or something else entirely.
 
 &nbsp;
 
