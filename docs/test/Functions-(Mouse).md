@@ -2,6 +2,10 @@
 
 &nbsp;
 
+?> The functions on this page are provided for convenience if you want to implement your own features using Input's mouse implementation. In general, [verbs](Verbs-and-Bindings) are the intended way to use Input and are preferred.
+
+&nbsp;
+
 ## …mouse_x
 
 `input_mouse_x([coordSpace])`
@@ -175,10 +179,6 @@
 ```
 
 <!-- tabs:end -->
-
-&nbsp;
-
-?> The following functions are provided for convenience if you want to implement your own features using Input's mouse implementation. In general, [verbs](Verbs-and-Bindings) are the intended way to use Input and are preferred.
 
 &nbsp;
 
