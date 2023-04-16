@@ -154,35 +154,6 @@ For example, `input_binding_get_name(input_binding_get("jump"))` will return the
 
 &nbsp;
 
-## …binding_get_icon
-
-`input_binding_get_icon(binding, [playerIndex])`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-_Returns:_ Various, the icon identifier defined in [`__input_config_icons()`](Configuration?id=icons)
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-|`binding`      |binding |Binding to return the icon for                      |
-|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
-
-Returns the icon associated with the given binding for the device that the given player is currently using. You should edit [`__input_config_icons()`](Configuration?id=icons) to match the requirements of your game.
-
-For example, `input_binding_get_icon(input_binding_get("jump"))` will return an icon for the device matching the binding for the "jump" verb if it is defined.
-
-#### **Example**
-
-```gml
-//TODO lol
-```
-
-<!-- tabs:end -->
-
-&nbsp;
-
 ## …binding_get_source_type
 
 `input_binding_get_source_type(binding)`
