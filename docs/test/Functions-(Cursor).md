@@ -81,14 +81,6 @@ Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_
 
 <!-- tabs:end -->
 
-#### **Example**
-
-```gml
-//TODO lol
-```
-
-<!-- tabs:end -->
-
 &nbsp;
 
 ## …cursor_previous_y
