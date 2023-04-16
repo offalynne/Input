@@ -43,6 +43,7 @@
 - [Binding Creators](Functions-(Binding-Creators))
 - [Binding Access](Functions-(Binding-Access))
 - [Cursor](Functions-(Cursor))
+- [Mouse Capture](Mouse-Capture)
 - [Accessibility](Functions-(Accessibility))
 - [Exporting & Importing](Functions-(Exporting-and-Importing))
 - [Virtual Buttons](Functions-(Virtual-Buttons))
