@@ -6,8 +6,6 @@
 
 `__input_config_general()` holds macros that affect the general behaviour of Input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
 
-?> You should edit this script to customise Input for your own purposes.
-
 |Name                        |Typical Value              |Purpose                                                                                           |
 |----------------------------|---------------------------|--------------------------------------------------------------------------------------------------|
 |`INPUT_ALLOW_OUT_OF_FOCUS`  |`false`                    |Whether to allow input while game window is out of focus on desktop platforms                     |
@@ -21,8 +19,6 @@
 ## Verb Behaviour
 
 `__input_config_verb_behaviour()` holds macros that affect verbs, and the way verbs are checked, in Input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
-
-?> You should edit this script to customise Input for your own purposes.
 
 |Name                                     |Typical Value|Purpose                                                                                                                                              |
 |-----------------------------------------|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -43,8 +39,6 @@
 ## Profiles
 
 `__input_config_profiles()` holds macros that affect profiles. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
-
-?> You should edit this script to customise Input for your own purposes.
 
 |Name                                      |Typical Value  |Purpose                                                                                                                                                      |
 |------------------------------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -72,8 +66,6 @@ When a player has no profile set, `input_binding_get()` has undefined behaviour.
 
 `__input_config_hotswap()` holds macros that affect hotswapping Input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
 
-?> You should edit this script to customise Input for your own purposes.
-
 |Name                             |Typical Value   |Purpose                                                                                                                                                                                                  |
 |---------------------------------|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |`INPUT_HOTSWAP_DELAY`            |`33`            |Number of milliseconds between source swaps when using [`input_hotswap_tick()`](Functions-(Source-Assignment)#input_hotswap_tickplayerindex). This should be longer than a single frame (>17 ms at 60FPS)|
@@ -88,8 +80,6 @@ When a player has no profile set, `input_binding_get()` has undefined behaviour.
 
 `__input_config_multiplayer()` holds macros that affect multiplayer in Input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
 
-?> You should edit this script to customise Input for your own purposes.
-
 |Name               |Typical Value|Purpose                                         |
 |-------------------|-------------|------------------------------------------------|
 |`INPUT_MAX_PLAYERS`|`4`          |Maximum number of players that the game supports|
@@ -99,8 +89,6 @@ When a player has no profile set, `input_binding_get()` has undefined behaviour.
 ## External Data
 
 `__input_config_external_data()` holds macros that affect how Input loads and uses external gamepad data. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
-
-?> You should edit this script to customise Input for your own purposes.
 
 |Name                        |Typical Value              |Purpose                                                                                                                                                                                                                                                                    |
 |----------------------------|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -116,8 +104,6 @@ When a player has no profile set, `input_binding_get()` has undefined behaviour.
 ## Keyboard
 
 `__input_config_external_data()` holds macros that affect how Input treats keyboard input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
-
-?> You should edit this script to customise Input for your own purposes.
 
 |Name                              |Typical Value|Purpose                                                                               |
 |----------------------------------|-------------|--------------------------------------------------------------------------------------|
@@ -148,8 +134,6 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 
 `__input_config_external_data()` holds macros that affect how Input treats mouse input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
 
-?> You should edit this script to customise Input for your own purposes.
-
 |Name                               |Typical Value|Purpose                                                                                                                                                             |
 |-----------------------------------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |`INPUT_MOUSE_ALLOW_SCANNING`       |`true`       |Whether to allow mouse input to be returned by [`input_binding_scan_start()`]()                                                                                     |
@@ -161,8 +145,6 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 ## Touch
 
 `__input_config_cursor()` holds macros that affect how Input handles mouse and touch input, and how Input's native cursor feature behaves. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
-
-?> You should edit this script to customise Input for your own purposes.
 
 |Name                                |Typical Value|Purpose                                                                                                                                                                                                  |
 |------------------------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -179,8 +161,6 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 ## Gamepads
 
 `__input_config_gamepads()` holds macros that affect how Input's gamepads behave. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
-
-?> You should edit this script to customise Input for your own purposes.
 
 |Name                                   |Typical Value          |Purpose                                                                                                                                                                                                                                                                     |
 |---------------------------------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -202,8 +182,6 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 
 `__input_config_cursor()` holds macros that affect how Input's native cursor feature behaves. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
 
-?> You should edit this script to customise Input for your own purposes.
-
 |Name                      |Typical Value|Purpose                                                                                                             |
 |--------------------------|-------------|--------------------------------------------------------------------------------------------------------------------|
 |`INPUT_CURSOR_VERB_UP`    |`"aim_up"`   |Verb that controls upwards motion for a player's cursor                                                             |
@@ -218,8 +196,6 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 ## Vibration
 
 `__input_config_cursor()` holds macros that affect vibration when triggered using Input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
-
-?> You should edit this script to customise Input for your own purposes.
 
 |Name                                   |Typical Value|Purpose                                                                                                                                                                                                     |
 |---------------------------------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
