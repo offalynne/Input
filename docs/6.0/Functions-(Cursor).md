@@ -2,6 +2,10 @@
 
 &nbsp;
 
+The "cursor" is Input's own native solution for cross-platform and cross-device mouse emulation. The cursor allows quick and easy replication of mouse-like behaviour whilst using a gamepad or keyboard. The cursor can also be directly driven by the mouse or a touchscreen as well in situations where that is available.
+
+&nbsp;
+
 ## …cursor_x
 
 `input_cursor_x([playerIndex], [coordSpace])`
