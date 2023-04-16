@@ -8,9 +8,15 @@ If you'd like to know more about manipulating specific bindings, please see the 
 
 &nbsp;
 
-## `input_profile_create(profileName, [playerIndex])`
+## …profile_create
 
-*Returns:* N/A (`undefined`)
+`input_profile_create(profileName, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype           |Purpose                                             |
 |---------------|-------------------|----------------------------------------------------|
@@ -21,11 +27,25 @@ This function creates a custom profile for this specific player only. This might
 
 If the profile already exists then this function will throw an error.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_profile_destroy(profileName, [playerIndex])`
+## …profile_destroy
 
-*Returns:* N/A (`undefined`)
+`input_profile_destroy(profileName, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype           |Purpose                                             |
 |---------------|-------------------|----------------------------------------------------|
@@ -36,11 +56,25 @@ Destroys the given player's profile with the same name, if one exists. If the pl
 
 !> You cannot destroy [default profiles](Profiles) and trying to do so will throw an error.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_profile_exists(profileName, [playerIndex])`
+## …profile_exists
 
-*Returns:* Boolean, whether a profile with the given name exists for the given player
+`input_profile_exists(profileName, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether a profile with the given name exists for the given player
 
 |Name           |Datatype           |Purpose                                             |
 |---------------|-------------------|----------------------------------------------------|
@@ -49,11 +83,25 @@ Destroys the given player's profile with the same name, if one exists. If the pl
 
 This function will also return `true` for [default profile names](Profiles).
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_profile_get_array([playerIndex])`
+## …profile_get_array
 
-*Returns:* Array, the profiles that have been created for the player
+`input_profile_get_array([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Array, the profiles that have been created for the player
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -61,11 +109,25 @@ This function will also return `true` for [default profile names](Profiles).
 
 This function will return default profiles (as defined in [`__input_config_profiles_and_bindings()`](Configuration?id=profiles-and-bindings)) as well as custom profiles.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_profile_set(profileName, [playerIndex])`
+## …profile_set
 
-*Returns:* N/A (`undefined`)
+`input_profile_set(profileName, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype           |Purpose                                              |
 |---------------|-------------------|-----------------------------------------------------|
@@ -74,21 +136,49 @@ This function will return default profiles (as defined in [`__input_config_profi
 
 Sets the player's profile either to a default or custom profile. If no profile with the same name is found then this function will throw an error.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_profile_get([playerIndex])`
+## …profile_get
 
-*Returns:* String, the name of the profile being used by the player
+`input_profile_get([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** String, the name of the profile being used by the player
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_profile_auto([playerIndex])`
+## …profile_auto
 
-*Returns:* N/A (`undefined`)
+`input_profile_auto([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -98,11 +188,25 @@ Sets the player's profile to the ["auto" profile"](Configuration?id=profiles-and
 
 If the ["auto" profile"](Configuration?id=profiles-and-bindings) is set to `undefined` then no profile will be set.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_profile_reset_bindings(profileName, [playerIndex])`
+## …profile_reset_bindings
 
-*Returns:* N/A (`undefined`)
+`input_profile_reset_bindings(profileName, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype           |Purpose                                             |
 |---------------|-------------------|----------------------------------------------------|
@@ -112,3 +216,11 @@ If the ["auto" profile"](Configuration?id=profiles-and-bindings) is set to `unde
 This function replaces all bindings for the player's profile to the bindings found in the default profile (the profile defined in [`__input_config_profiles_and_bindings()`](Configuration?id=profiles-and-bindings)).
 
 !> It is only possible to reset a default profile. Profiles added at runtime by `input_profile_create()` cannot be reset.
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->

@@ -1,5 +1,5 @@
 <img src="https://raw.githubusercontent.com/JujuAdams/Input/master/LOGO.png" width="50%" style="display: block; margin: auto;" />
-<h1 align="center">Input 5.5</h1>
+<h1 align="center">Input 6.0</h1>
 <p align="center">Comprehensive cross-platform input for GameMaker 2022 LTS by <a href="https://www.jujuadams.com/" target="_blank">Juju Adams</a> and <a href="https://twitter.com/offalynne" target="_blank">Alynne Keith</a></p>
 
 <p align="center"><a href="https://github.com/JujuAdams/Input/releases/" target="_blank">Download the .yymps</a></p>

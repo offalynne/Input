@@ -2,7 +2,13 @@
 
 &nbsp;
 
-## `input_binding_is_valid(binding, [playerIndex])`
+## …binding_is_valid
+
+`input_binding_is_valid(binding, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 _Returns:_ Boolean, if the value is a valid binding for the specified player on the current platform
 
@@ -13,9 +19,23 @@ _Returns:_ Boolean, if the value is a valid binding for the specified player on 
 
 Useful for verifying if a binding returned by [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>) is valid for the specified player on the current platform, especially when set with [default binding functions](<Functions-(Default-Bindings)>).
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_binding_set(verb, binding, [playerIndex], [alternate], [profileName])`
+## …binding_set
+
+`input_binding_set(verb, binding, [playerIndex], [alternate], [profileName])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 _Returns:_ N/A (`undefined`)
 
@@ -29,9 +49,23 @@ _Returns:_ N/A (`undefined`)
 
 Straightforwardly sets the binding for a verb, overwriting what was already there.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_binding_set_safe(verb, binding, [playerIndex], [alternate], [profileName])`
+## …binding_set_safe
+
+`input_binding_set_safe(verb, binding, [playerIndex], [alternate], [profileName])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 _Returns:_ N/A (`undefined`)
 
@@ -45,9 +79,23 @@ _Returns:_ N/A (`undefined`)
 
 In contrast to [`input_binding_set()`](<Functions-(Binding-Management)#input_binding_setverb-binding-playerindex-alternate>), this function will set the binding for a verb but also try to automatically handle any input conflicts by swapping over bindings. This is effective for simple control schemes but may fail in more complex situations - in these cases, you'll need to handle conflict resolution yourself.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_binding_get(verb, [playerIndex], [alternate], [profileName])`
+## …binding_get
+
+`input_binding_get(verb, [playerIndex], [alternate], [profileName])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 _Returns:_ Struct. See below.
 
@@ -66,9 +114,23 @@ This function returns a struct that describes the binding for the given verb. It
 |`.value`        |integer |[Keycode](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FKeyboard_Input%252FKeyboard_Input.htm), [gamepad button](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm), [gamepad axis](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm), or [mouse button](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FMouse_Input%252FMouse_Input.htm) that this binding uses. This variable is `undefined` for `"mouse wheel up"` and `"mouse wheel down"` types|
 |`.axis_negative`|boolean |Whether this binding expects negative values (`"gamepad axis"` type only)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_binding_get_name(binding)`
+## …binding_get_name
+
+`input_binding_get_name(binding)`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 _Returns:_ String, the human-readable [name for the binding](Binding-Names)
 
@@ -82,24 +144,23 @@ For example, `input_binding_get_name(input_binding_get("jump"))` will return the
 
 ?> In situations where you are displaying control prompt to a player, `input_binding_get_icon()` is likely to be more useful.
 
-&nbsp;
+#### **Example**
 
-## `input_binding_get_icon(binding, [playerIndex])`
+```gml
+//TODO lol
+```
 
-_Returns:_ Various, the icon identifier defined in [`__input_config_icons()`](Configuration?id=icons)
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-|`binding`      |binding |Binding to return the icon for                      |
-|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
-
-Returns the icon associated with the given binding for the device that the given player is currently using. You should edit [`__input_config_icons()`](Configuration?id=icons) to match the requirements of your game.
-
-For example, `input_binding_get_icon(input_binding_get("jump"))` will return an icon for the device matching the binding for the "jump" verb if it is defined.
+<!-- tabs:end -->
 
 &nbsp;
 
-## `input_binding_get_source_type(binding)`
+## …binding_get_source_type
+
+`input_binding_get_source_type(binding)`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 _Returns:_ Various, the source type for the binding (see below)
 
@@ -115,9 +176,23 @@ Returns one of the following:
 
 If the binding is invalid or the source type cannot be determined, `undefined` is returned. As with other functions, if `INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER` is set to `true` then `INPUT_KEYBOARD` and `INPUT_MOUSE` are interchangeable.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_binding_test_collisions(verb, binding, [playerIndex], [profileName])`
+## …binding_test_collisions
+
+`input_binding_test_collisions(verb, binding, [playerIndex], [profileName])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 _Returns:_ Array of structs containing conflicting verb/alternate indexes
 
@@ -137,9 +212,23 @@ The structs returned in the array contain the following:
 |`.verb`     |[verb](Verbs-and-Bindings)|Verb binding that conflicts |
 |`.alternate`|integer                             |Alternate index for the verb|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_binding_remove(verb, [playerIndex], [alternate], [profileName])`
+## …binding_remove
+
+`input_binding_remove(verb, [playerIndex], [alternate], [profileName])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 _Returns:_ N/A (`undefined`)
 
@@ -152,9 +241,23 @@ _Returns:_ N/A (`undefined`)
 
 Removes a binding from Input. **Be very careful with this function!** It's possible to remove any binding and this could potentially make your game unplayable.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_binding_swap(verbA, alternateA, verbB, alternateB, [source], [playerIndex], [profileName])`
+## …binding_swap
+
+`input_binding_swap(verbA, alternateA, verbB, alternateB, [source], [playerIndex], [profileName])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 _Returns:_ N/A (`undefined`)
 
@@ -169,9 +272,23 @@ _Returns:_ N/A (`undefined`)
 
 Swaps over the two verb bindings specified.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_binding_gamepad_set(binding. gamepad)`
+## …binding_gamepad_set
+
+`input_binding_gamepad_set(binding. gamepad)`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 _Returns:_ N/A (`undefined`)
 
@@ -181,9 +298,23 @@ _Returns:_ N/A (`undefined`)
 
 ?> The gamepad index for a binding is only relevant when in the [multidevice source mode](Input-Sources?id=source-modes).
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_binding_gamepad_get(binding)`
+## …binding_gamepad_get
+
+`input_binding_gamepad_get(binding)`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 _Returns:_ Integer, the gamepad index for the binding
 
@@ -195,9 +326,23 @@ If no gamepad has been set, this function returns `undefined`.
 
 ?> The gamepad index for a binding is only relevant when in the [multidevice source mode](Input-Sources?id=source-modes).
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_binding_threshold_set(binding, min, max)`
+## …binding_threshold_set
+
+`input_binding_threshold_set(binding, min, max)`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 _Returns:_ N/A (`undefined`)
 
@@ -211,9 +356,23 @@ Sets the minimum and maximum threshold values for this binding. This is only rel
 
 This function is entirely optional. If a gamepad axis binding has no specific thresholds set then the player's axis thresholds are used, as set by [`input_axis_thresholds_set()`](Functions-(Other)?id=input_axis_threshold_setaxis-min-max-playerindex).
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_binding_threshold_get(binding)`
+## …binding_threshold_get
+
+`input_binding_threshold_get(binding)`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 _Returns:_ A struct with two member variables, `.mini` and `.maxi`, containing the minimum and maximum thresholds
 
@@ -221,9 +380,23 @@ _Returns:_ A struct with two member variables, `.mini` and `.maxi`, containing t
 |---------|-----------------------------|-------------------------------------------------|
 |`binding`|[binding](Verbs-and-Bindings)|[Binding](Verbs-and-Bindings) to target|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_binding_get_verbs(binding, [playerIndex], [profileName])`
+## …binding_get_verbs
+
+`input_binding_get_verbs(binding, [playerIndex], [profileName])`
+
+<!-- tabs:start -->
+
+#### **Description**
 
 _Returns:_ Array of structs containing verb/alternate indexes
 
@@ -241,3 +414,11 @@ The structs returned in the array contain the following:
 |------------|------------------------------------|----------------------------|
 |`.verb`     |[verb](Verbs-and-Bindings)|Verb binding that conflicts |
 |`.alternate`|integer                             |Alternate index for the verb|
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->

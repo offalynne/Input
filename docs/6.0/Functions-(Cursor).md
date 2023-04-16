@@ -2,22 +2,15 @@
 
 &nbsp;
 
-## `input_cursor_x([playerIndex], [coordSpace])`
+## …cursor_x
 
-*Returns:* Number, the x-coordinate of the given player's cursor
+`input_cursor_x([playerIndex], [coordSpace])`
 
-|Name           |Datatype                |Purpose                                                                                                        |
-|---------------|------------------------|---------------------------------------------------------------------------------------------------------------|
-|`[playerIndex]`|number                  |Player to target. If not specified, player 0 is used                                                           |
-|`[coordSpace]` |`INPUT_COORD_SPACE` enum|Coordinate space to use. If not specified, the coordinate space set by `input_cursor_coord_space_set()` is used|
+<!-- tabs:start -->
 
-Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_SPACE` enum.
+#### **Description**
 
-&nbsp;
-
-## `input_cursor_y([playerIndex], [coordSpace])`
-
-*Returns:* Number, the y-coordinate of the given player's cursor
+**Returns:** Number, the x-coordinate of the given player's cursor
 
 |Name           |Datatype                |Purpose                                                                                                        |
 |---------------|------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -26,11 +19,25 @@ Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_
 
 Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_SPACE` enum.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_cursor_previous_x([playerIndex], [coordSpace])`
+## …cursor_y
 
-*Returns:* Number, the x-coordinate of the given player's cursor from the previous frame
+`input_cursor_y([playerIndex], [coordSpace])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, the y-coordinate of the given player's cursor
 
 |Name           |Datatype                |Purpose                                                                                                        |
 |---------------|------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -39,11 +46,25 @@ Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_
 
 Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_SPACE` enum.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_cursor_previous_y([playerIndex], [coordSpace])`
+## …cursor_previous_x
 
-*Returns:* Number, the y-coordinate of the given player's cursor from the previous frame
+`input_cursor_previous_x([playerIndex], [coordSpace])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, the x-coordinate of the given player's cursor from the previous frame
 
 |Name           |Datatype                |Purpose                                                                                                        |
 |---------------|------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -52,11 +73,52 @@ Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_
 
 Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_SPACE` enum.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_cursor_set(x, y, [playerIndex], [relative])`
+## …cursor_previous_y
 
-*Returns:* N/A (`undefined`)
+`input_cursor_previous_y([playerIndex], [coordSpace])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, the y-coordinate of the given player's cursor from the previous frame
+
+|Name           |Datatype                |Purpose                                                                                                        |
+|---------------|------------------------|---------------------------------------------------------------------------------------------------------------|
+|`[playerIndex]`|number                  |Player to target. If not specified, player 0 is used                                                           |
+|`[coordSpace]` |`INPUT_COORD_SPACE` enum|Coordinate space to use. If not specified, the coordinate space set by `input_cursor_coord_space_set()` is used|
+
+Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_SPACE` enum.
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …cursor_set
+
+`input_cursor_set(x, y, [playerIndex], [relative])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                                    |
 |---------------|--------|---------------------------------------------------------------------------|
@@ -65,11 +127,25 @@ Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                       |
 |`[relative]`   |boolean |Whether the new coordinate should be relative (added) to the old coordinate|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_cursor_translate([x], [y], duration, [playerIndex], [relative])`
+## …cursor_translate
 
-*Returns:* N/A (`undefined`)
+`input_cursor_translate([x], [y], duration, [playerIndex], [relative])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                                                                                         |
 |---------------|--------|--------------------------------------------------------------------------------------------------------------------------------|
@@ -83,11 +159,25 @@ Whilst the cursor is being moved, cursor limits will be applied but cursor elast
 
 !> This function is unlikely to work in a satisfactory manner if the cursor is being moved with a non-captured mouse. Please see [`input_mouse_capture_set()`](https://www.jujuadams.com/Input/#/5.2/Functions-(Mouse)?id=input_mouse_capture_setstate-sensitivity) for details on how to capture the mouse.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_cursor_speed_set(speed, [playerIndex])`
+## …cursor_speed_set
 
-*Returns:* N/A (`undefined`)
+`input_cursor_speed_set(speed, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                           |
 |---------------|--------|------------------------------------------------------------------|
@@ -96,21 +186,49 @@ Whilst the cursor is being moved, cursor limits will be applied but cursor elast
 
 ?> Cursor speed is only valid for keyboard and gamepad input.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_cursor_speed_get([playerIndex])`
+## …cursor_speed_get
 
-*Returns:* Number, the cursor speed when using keyboard or gamepad input
+`input_cursor_speed_get([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, the cursor speed when using keyboard or gamepad input
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_cursor_coord_space_set(coordSpace, [playerIndex])`
+## …cursor_coord_space_set
 
-*Returns:* N/A (`undefined`)
+`input_cursor_coord_space_set(coordSpace, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype                |Purpose                                                                                                   |
 |---------------|------------------------|----------------------------------------------------------------------------------------------------------|
@@ -127,21 +245,49 @@ This function changes what coordinate space is used as a reference for setting t
 |`.GUI`   |GUI coordinates                                                                           |
 |`.DEVICE`|Raw device-space coordinates                                                              |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_cursor_coord_space_get([playerIndex])`
+## …cursor_coord_space_get
 
-*Returns:* A member of `INPUT_COORD_SPACE`, the cursor coordinate space that has been set
+`input_cursor_coord_space_get([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** A member of `INPUT_COORD_SPACE`, the cursor coordinate space that has been set
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_cursor_limit_aabb(left, top, right, bottom, [playerIndex])`
+## …cursor_limit_aabb
 
-*Returns:* N/A (`undefined`)
+`input_cursor_limit_aabb(left, top, right, bottom, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -153,11 +299,25 @@ This function changes what coordinate space is used as a reference for setting t
 
 Limits the cursor's motion inside an axis-aligned bounding box with the given coordinates.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_cursor_limit_circle(x, y, radius, [playerIndex])`
+## …cursor_limit_circle
 
-*Returns:* N/A (`undefined`)
+`input_cursor_limit_circle(x, y, radius, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -168,11 +328,25 @@ Limits the cursor's motion inside an axis-aligned bounding box with the given co
 
 Limits the cursor's motion inside a circle centred at the given point.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_cursor_limit_remove([playerIndex])`
+## …cursor_limit_remove
 
-*Returns:* N/A (`undefined`)
+`input_cursor_limit_remove([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -180,11 +354,25 @@ Limits the cursor's motion inside a circle centred at the given point.
 
 Removes any cursor limits you have set using `input_cursor_limit_aabb()` or `input_cursor_limit_circle()`.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_cursor_limit_get([playerIndex])`
+## …cursor_limit_get
 
-*Returns:* Struct, the cursor limit state. See below
+`input_cursor_limit_get([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Struct, the cursor limit state. See below
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -204,11 +392,25 @@ The struct returned by this function contains the following member variables:
 
 !> Values in the returned struct will be `undefined` if the associated limit has not been set.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_cursor_elastic_set(x, y, strength, [playerIndex], [moveCursor])`
+## …cursor_elastic_set
 
-*Returns:* N/A (`undefined`)
+`input_cursor_elastic_set(x, y, strength, [playerIndex], [moveCursor])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                                                   |
 |---------------|--------|------------------------------------------------------------------------------------------|
@@ -222,11 +424,25 @@ Sets up a springy force that pulls the cursor towards the given point. This is u
 
 ?> This feature is only applied when using a keyboard or gamepad to control the cursor.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_cursor_elastic_remove([playerIndex])`
+## …cursor_elastic_remove
 
-*Returns:* N/A (`undefined`)
+`input_cursor_elastic_remove([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -234,11 +450,25 @@ Sets up a springy force that pulls the cursor towards the given point. This is u
 
 Removes an elastic force that has been added to the given player's cursor.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_cursor_elastic_get([playerIndex])`
+## …cursor_elastic_get
 
-*Returns:* Struct, the elastic state. See below
+`input_cursor_elastic_get([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Struct, the elastic state. See below
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -253,3 +483,11 @@ The struct returned by this function contains the following member variables:
 |`.strength`|number  |Strength of the elastic force, from `0` to `1` |
 
 !> Values for `.x` and `.y` in the returned struct will be `undefined` if an elastic force has not been set.
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->

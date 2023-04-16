@@ -2,9 +2,15 @@
 
 &nbsp;
 
-## `input_vibrate_constant(strength, pan, duration, [playerIndex], [force])`
+## …vibrate_constant
 
-*Returns:* N/A (`undefined`)
+`input_vibrate_constant(strength, pan, duration, [playerIndex], [force])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype           |Purpose                                                                                                          |
 |---------------|-------------------|-----------------------------------------------------------------------------------------------------------------|
@@ -16,11 +22,25 @@
 
 Sets up a constant-strength vibration event for the given duration.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_vibrate_adsr(peakStrength, sustainLevel, pan, attack, decay, sustain, release, [playerIndex], [force])`
+## …vibrate_adsr
 
-*Returns:* N/A (`undefined`)
+`input_vibrate_adsr(peakStrength, sustainLevel, pan, attack, decay, sustain, release, [playerIndex], [force])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype           |Purpose                                                                                                                                                 |
 |---------------|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -36,11 +56,25 @@ Sets up a constant-strength vibration event for the given duration.
 
 Sets up a vibration event that follows an attack-decay-sustain-release curve. This is likely familiar to you if you've fiddled with audio synthesis before, and the same principles apply to vibration events too.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_vibrate_pulse(strength, pan, repeats, duration, [playerIndex], [force])`
+## …vibrate_pulse
 
-*Returns:* N/A (`undefined`)
+`input_vibrate_pulse(strength, pan, repeats, duration, [playerIndex], [force])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype           |Purpose                                                                                                          |
 |---------------|-------------------|-----------------------------------------------------------------------------------------------------------------|
@@ -53,11 +87,25 @@ Sets up a vibration event that follows an attack-decay-sustain-release curve. Th
 
 Sets up a vibration event that emits a fixed number of pulses over the given duration.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_vibrate_curve(strength, curve, pan, duration, [playerIndex], [force])`
+## …vibrate_curve
 
-*Returns:* N/A (`undefined`)
+`input_vibrate_curve(strength, curve, pan, duration, [playerIndex], [force])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype           |Purpose                                                                                                          |
 |---------------|-------------------|-----------------------------------------------------------------------------------------------------------------|
@@ -70,11 +118,25 @@ Sets up a vibration event that emits a fixed number of pulses over the given dur
 
 Sets up a vibration event that follows an animation curve defined in the GameMaker IDE.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_vibrate_stop([playerIndex])`
+## …vibrate_stop
 
-*Returns:* N/A (`undefined`)
+`input_vibrate_stop([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -82,11 +144,25 @@ Sets up a vibration event that follows an animation curve defined in the GameMak
 
 Immediately stops all vibration for the target player.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_vibrate_set_pause(state, [playerIndex])`
+## …vibrate_set_pause
 
-*Returns:* N/A (`undefined`)
+`input_vibrate_set_pause(state, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                 |
 |---------------|--------|--------------------------------------------------------|
@@ -95,33 +171,83 @@ Immediately stops all vibration for the target player.
 
 Whilst player vibration is paused, typically no new vibration events can be created for the player in question. If you'd still like to create vibration events for the player even when vibration is paused (e.g. for previewing vibration strength on a settings menu), set the optional `force` argument for vibration events to `true`.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_vibrate_get_pause([playerIndex])`
+## …vibrate_get_pause
 
-*Returns:* Boolean, whether vibration events can proceed for the player
+`input_vibrate_get_pause([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether vibration events can proceed for the player
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_vibrate_set_strength(strength, [playerIndex])`
+## …vibrate_set_strength
 
-*Returns:* N/A (`undefined`)
+`input_vibrate_set_strength(strength, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                 |
 |---------------|--------|--------------------------------------------------------|
 |`strength`     |number  |Overall strength for all vibration events for the player|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used    |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_vibrate_get_strength([playerIndex])`
+## …vibrate_get_strength
 
-*Returns:* Number, the overall strength for all vibration events for the player
+`input_vibrate_get_strength([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, the overall strength for all vibration events for the player
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->

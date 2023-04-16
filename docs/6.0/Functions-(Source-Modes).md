@@ -2,41 +2,89 @@
 
 &nbsp;
 
-## `input_source_mode_set(mode)`
+## …source_mode_set
 
-*Returns:* N/A (`undefined`)
+`input_source_mode_set(mode)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name  |Datatype                          |Purpose                   |
 |------|----------------------------------|--------------------------|
 |`mode`|member of `INPUT_SOURCE_MODE` enum|The new source mode to set|
 
-You can read more about source modes [here](Input-Sources?id=source-modes).
+You can read more about source modes [here](Input-Sources?id=source-modes)..|
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
 
 &nbsp;
 
-## `input_source_mode_get()`
+## …source_mode_get
 
-*Returns:* Member of `INPUT_SOURCE_MODE` enum
+`input_source_mode_get()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Member of `INPUT_SOURCE_MODE` enum
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
-|None|        |       |
+|None|        |       |.|
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
 
 &nbsp;
 
-## `input_hotswap_params_set(callback)`
+## …hotswap_params_set
 
-*Returns:* N/A (`undefined`)
+`input_hotswap_params_set(callback)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name      |Datatype        |Purpose|
 |----------|----------------|-------|
-|`callback`|method or script|       |
+|`callback`|method or script|       |.|
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
 
 &nbsp;
 
-## `input_hotswap_params_get()`
+## …hotswap_params_get
 
-*Returns:* Struct, the parameters currently set for `INPUT_SOURCE_MODE.HOTSWAP`
+`input_hotswap_params_get()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Struct, the parameters currently set for `INPUT_SOURCE_MODE.HOTSWAP`
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -46,13 +94,27 @@ The struct returned by this function has the following member functions:
 
 |Name       |Datatype        |Purpose                                                                                                       |
 |-----------|----------------|--------------------------------------------------------------------------------------------------------------|
-|`.callback`|method or script|Method or script to execute when player 0 is given a new source in the `INPUT_SOURCE_MODE.HOTSWAP` source mode|
+|`.callback`|method or script|Method or script to execute when player 0 is given a new source in the `INPUT_SOURCE_MODE.HOTSWAP` source mode|.|
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
 
 &nbsp;
 
-## `input_join_params_set(min, max, leaveVerb, abortCallback, [dropDown])`
+## …join_params_set
 
-*Returns:* N/A (`undefined`)
+`input_join_params_set(min, max, leaveVerb, abortCallback, [dropDown])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype        |Purpose                                                                                                                                                           |
 |---------------|----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -60,13 +122,27 @@ The struct returned by this function has the following member functions:
 |`max`          |integer         |The maximum number of players that can play this particular game mode                                                                                             |
 |`leaveVerb`    |string          |The name of the verb that, when activated by a player, causes the player to have their sources cleared, "disconnecting" them from the game                        |
 |`abortCallback`|method or script|Method or script to execute when the `INPUT_SOURCE_MODE.JOIN` source mode is aborted. Set to `undefined` to prevent players from aborting `INPUT_SOURCE_MODE.JOIN`|
-|`[allowAbort]` |boolean         |Whether players can abort the `JOIN` source mode by activating the "leave" verb. Defaults to `true`                                                               |
+|`[allowAbort]` |boolean         |Whether players can abort the `JOIN` source mode by activating the "leave" verb. Defaults to `true`                                                               |.|
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
 
 &nbsp;
 
-## `input_join_params_get()`
+## …join_params_get
 
-*Returns:* Struct, the parameters currently set for `INPUT_SOURCE_MODE.JOIN`
+`input_join_params_get()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Struct, the parameters currently set for `INPUT_SOURCE_MODE.JOIN`
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -80,14 +156,36 @@ The struct returned by this function has the following member functions:
 |`.max_players`   |integer         |The maximum number of players that can play this particular game mode             |
 |`.leave_verb`    |string          |                                                                                  |
 |`.abort_callback`|method or script|                                                                                  |
-|`.drop_down`     |boolean         |Whether players should drop down into empty slots when other players disconnect   |
+|`.drop_down`     |boolean         |Whether players should drop down into empty slots when other players disconnect   |.|
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
 
 &nbsp;
 
-## `input_join_is_finished()`
+## …join_is_finished
 
-*Returns:* Boolean, whether enough players are connected to begin multiplayer gameplay
+`input_join_is_finished()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether enough players are connected to begin multiplayer gameplay
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
-|None|        |       |
+|None|        |       |.|
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->

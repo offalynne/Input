@@ -8,9 +8,15 @@ The following functions are in global scope and can be called anywhere in your g
 
 &nbsp;
 
-## `input_virtual_destroy_all()`
+## …virtual_destroy_all
 
-*Returns:* N/A (`undefined`)
+`input_virtual_destroy_all()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -18,11 +24,25 @@ The following functions are in global scope and can be called anywhere in your g
 
 Destroys all virtual buttons that have been created. This is useful when transitioning between different phases of a game, for example, between menus and gameplay.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_is_virtual()`
+## …is_virtual
 
-*Returns:* Boolean, whether the value provided is a virtual button
+`input_is_virtual()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the value provided is a virtual button
 
 |Name   |Datatype|Purpose           |
 |-------|--------|------------------|
@@ -30,11 +50,25 @@ Destroys all virtual buttons that have been created. This is useful when transit
 
 This function will return `false` for a virtual button that has been destroyed.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_virtual_debug_draw()`
+## …virtual_debug_draw
 
-*Returns:* N/A (`undefined`)
+`input_virtual_debug_draw()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -44,17 +78,39 @@ Draws simple representations of every virtual button to the screen. This is inte
 
 !> This function should be called in a [Draw GUI event](https://manual.yoyogames.com/The_Asset_Editors/Object_Properties/Draw_Events.htm) for accurate results.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_virtual_create()`
+## …virtual_create
 
-*Returns:* Struct, an instance of `__input_class_virtual_button`
+`input_virtual_create()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Struct, an instance of `__input_class_virtual_button`
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
 |None|        |       |
 
 This function creates a blank, unconfigured, virtual button. Please scroll down to see methods that are available for virtual buttons.
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
 
 &nbsp;
 
@@ -70,9 +126,15 @@ Virtual buttons can be configured using the following functions. Many functions 
 
 &nbsp;
 
-## `.destroy()`
+## .destroy
 
-*Returns:* N/A (`undefined`)
+`<virtual button>.destroy()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -80,11 +142,25 @@ Virtual buttons can be configured using the following functions. Many functions 
 
 Immediately destroys a virtual button, making it inoperative and any methods for the destroyed virtual button will do nothing.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.debug_draw()`
+## .debug_draw
 
-*Returns:* N/A (`undefined`)
+`<virtual button>.debug_draw()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -94,11 +170,25 @@ Draws simple representations of the virtual button to the screen. This is intend
 
 !> This function should be called in a [Draw GUI event](https://manual.yoyogames.com/The_Asset_Editors/Object_Properties/Draw_Events.htm) for accurate results.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.rectangle(left, top, right, bottom)`
+## .rectangle
 
-*Returns:* `self`
+`<virtual button>.rectangle(left, top, right, bottom)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** `self`
 
 |Name    |Datatype|Purpose                         |
 |--------|--------|--------------------------------|
@@ -109,11 +199,25 @@ Draws simple representations of the virtual button to the screen. This is intend
 
 Sets the shape of the virtual button to a rectangle.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.circle(x, y, radius)`
+## .circle
 
-*Returns:* `self`
+`<virtual button>.circle(x, y, radius)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** `self`
 
 |Name    |Datatype|Purpose                                 |
 |--------|--------|----------------------------------------|
@@ -123,11 +227,25 @@ Sets the shape of the virtual button to a rectangle.
 
 Sets the shape of the virtual button to a circle.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.get_position()`
+## .get_position
 
-*Returns:* Struct, see below
+`<virtual button>.get_position()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Struct, see below
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -147,11 +265,25 @@ The struct returned from this method has the following member variables:
 |`.y`     |number  |y-coordinate of the centre of the button                               |
 |`.radius`|number  |Radius of the circle. This value is `undefined` for rectangular buttons|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.button(clickVerb)`
+## .button
 
-*Returns:* `self`
+`<virtual button>.button(clickVerb)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** `self`
 
 |Name       |Datatype|Purpose                            |
 |-----------|--------|-----------------------------------|
@@ -159,11 +291,25 @@ The struct returned from this method has the following member variables:
 
 Binds the virtual button to a basic Input verb. Pressing the button will also "press" the verb.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.dpad(clickVerb, leftVerb, rightVerb, upVerb, downVerb, [4dir])`
+## .dpad
 
-*Returns:* `self`
+`<virtual button>.dpad(clickVerb, leftVerb, rightVerb, upVerb, downVerb, [4dir])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** `self`
 
 |Name       |Datatype|Purpose                                                                                                    |
 |-----------|--------|-----------------------------------------------------------------------------------------------------------|
@@ -178,11 +324,25 @@ Binds the virtual button to a set of basic Input verbs, one for each direction a
 
 By default, a dpad-type virtual button can trigger one or two verbs at once (left, right+up etc.) allowing for 8-directional output. Set `4dir` to `false` to restrict output to 4 directions only.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.thumbstick(clickVerb, leftVerb, rightVerb, upVerb, downVerb)`
+## .thumbstick
 
-*Returns:* `self`
+`<virtual button>.thumbstick(clickVerb, leftVerb, rightVerb, upVerb, downVerb)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** `self`
 
 |Name       |Datatype|Purpose                                                                                                    |
 |-----------|--------|-----------------------------------------------------------------------------------------------------------|
@@ -194,11 +354,25 @@ By default, a dpad-type virtual button can trigger one or two verbs at once (lef
 
 Binds the virtual button to a set of basic Input verbs, one for each direction and an extra one for touching the dpad at all. Verbs are triggered as **analogue**, meaning that verbs will be sent values from `0` to `1` as a hardware thumbstick would.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.get_type()`
+## .get_type
 
-*Returns:* Member of the `INPUT_VIRTUAL_TYPE` enum, what type of virtual button this is
+`<virtual button>.get_type()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Member of the `INPUT_VIRTUAL_TYPE` enum, what type of virtual button this is
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -213,11 +387,25 @@ The `INPUT_VIRTUAL_TYPE` enum contains the following elements:
 |`.DPAD_4DIR` |Virtual button bindings set by `.dpad()` with the `4dir` argument set to `true` |
 |`.THUMBSTICK`|Virtual button bindings set by `.thumbstick()`                                  |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.get_verbs()`
+## .get_verbs
 
-*Returns:* Struct, the verb bindings for the virtual button
+`<virtual button>.get_verbs()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Struct, the verb bindings for the virtual button
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -233,11 +421,25 @@ The struct returned from this method has the following member variables:
 |`.up`   |string  |Verb bound to touching the virtual button on the up side   |
 |`.down` |string  |Verb bound to touching the virtual button on the down side |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.threshold(min, max)`
+## .threshold
 
-*Returns:* `self`
+`<virtual button>.threshold(min, max)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** `self`
 
 |Name |Datatype|Purpose                |
 |-----|--------|-----------------------|
@@ -246,11 +448,25 @@ The struct returned from this method has the following member variables:
 
 ?> This method is only relevant for dpad- and thumbstick-type virtual buttons.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.get_threshold()`
+## .get_threshold
 
-*Returns:* Struct, containing the minimum and maximum thresholds
+`<virtual button>.get_threshold()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Struct, containing the minimum and maximum thresholds
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -263,11 +479,25 @@ The struct returned from this method has the following member variables:
 |`.mini`|number  |Minimum threshold value|
 |`.maxi`|number  |Maximum threshold value|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.active(state)`
+## .active
 
-*Returns:* `self`
+`<virtual button>.active(state)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** `self`
 
 |Name   |Datatype|Purpose                            |
 |-------|--------|-----------------------------------|
@@ -275,63 +505,147 @@ The struct returned from this method has the following member variables:
 
 When a virtual button's active state is set to `false`, it will immediately stop responding to player input, including any current input.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.get_active()`
+## .get_active
 
-*Returns:* Boolean, whether the virtual button is active
+`<virtual button>.get_active()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the virtual button is active
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
 |None|        |       |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.priority(priority)`
+## .priority
 
-*Returns:* `self`
+`<virtual button>.priority(priority)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** `self`
 
 |Name      |Datatype|Purpose                                |
 |----------|--------|---------------------------------------|
 |`priority`|number  |Capture priority for the virtual button|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.get_priority()`
+## .get_priority
 
-*Returns:* Number, the priority of the virtual button
+`<virtual button>.get_priority()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, the priority of the virtual button
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
 |None|        |       |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.follow(state)`
+## .follow
 
-*Returns:* `self`
+`<virtual button>.follow(state)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** `self`
 
 |Name   |Datatype|Purpose                                                         |
 |-------|--------|----------------------------------------------------------------|
 |`state`|boolean |Whether the virtual button should move to follow the touch point|
 
-?> As the follow state moves the virtual button around, you may want to call `.release_behaviour(INPUT_VIRTUAL_RELEASE.RESET_POSITION)` to reset the position of the button. 
+?> As the follow state moves the virtual button around, you may want to call `.release_behaviour(INPUT_VIRTUAL_RELEASE.RESET_POSITION)` to reset the position of the button.
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
 
 &nbsp;
 
-## `.get_follow()`
+## .get_follow
 
-*Returns:* Boolean, whether the virtual button is following the touch point
+`<virtual button>.get_follow()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the virtual button is following the touch point
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
 |None|        |       |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.release_behavior(option)`
+## .release_behavior
 
-*Returns:* `self`
+`<virtual button>.release_behavior(option)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** `self`
 
 |Name   |Datatype                    |Purpose|
 |-------|----------------------------|-------|
@@ -345,21 +659,49 @@ The `INPUT_VIRTUAL_RELEASE` enum contains the following elements:
 |`.DESTROY`       |Destroys the virtual button when released. This is useful for ad hoc thumbsticks|
 |`.RESET_POSITION`|Resets the position of the button to where it was created when released         |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.get_release_behavior()`
+## .get_release_behavior
 
-*Returns:* Member of the `INPUT_VIRTUAL_RELEASE` enum
+`<virtual button>.get_release_behavior()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Member of the `INPUT_VIRTUAL_RELEASE` enum
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
 |None|        |       |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.first_touch_only(state)`
+## .first_touch_only
 
-*Returns:* `self`
+`<virtual button>.first_touch_only(state)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** `self`
 
 |Name   |Datatype|Purpose                                                                    |
 |-------|--------|---------------------------------------------------------------------------|
@@ -369,51 +711,121 @@ On devices that support multiple touch points (typically mobile phones), setting
 
 On devices that do not support multiple touch points, this function will not change any behaviour.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.get_first_touch_only()`
+## .get_first_touch_only
 
-*Returns:* Boolean, whether the virtual button will only respond to the first touch point
+`<virtual button>.get_first_touch_only()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the virtual button will only respond to the first touch point
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
 |None|        |       |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.pressed()`
+## .pressed
 
-*Returns:* Boolean, whether the virtual button was pressed this frame
+`<virtual button>.pressed()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the virtual button was pressed this frame
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
 |None|        |       |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.check()`
+## .check
 
-*Returns:* Boolean, whether the virtual button has been pressed and held
+`<virtual button>.check()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the virtual button has been pressed and held
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
 |None|        |       |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.released()`
+## .released
 
-*Returns:* Boolean, whether the virtual button was released this frame
+`<virtual button>.released()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the virtual button was released this frame
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
 |None|        |       |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.get_x()`
+## .get_x
 
-*Returns:* Number, the normalized x value for the virtual button
+`<virtual button>.get_x()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, the normalized x value for the virtual button
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -421,11 +833,25 @@ On devices that do not support multiple touch points, this function will not cha
 
 The number returned from this function will range from `-1` (fully left) to `1` (fully right). This value respects the threshold values set by `.threshold()`.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.get_y()`
+## .get_y
 
-*Returns:* Number, the normalized y value for the virtual button
+`<virtual button>.get_y()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, the normalized y value for the virtual button
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -433,51 +859,121 @@ The number returned from this function will range from `-1` (fully left) to `1` 
 
 The number returned from this function will range from `-1` (fully top) to `1` (fully bottom). This value respects the threshold values set by `.threshold()`.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.get_touch_x()`
+## .get_touch_x
 
-*Returns:* Number, the current x-coordinate of the touch point captured by the virtual button
+`<virtual button>.get_touch_x()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, the current x-coordinate of the touch point captured by the virtual button
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
 |None|        |       |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.get_touch_y()`
+## .get_touch_y
 
-*Returns:* Number, the current y-coordinate of the touch point captured by the virtual button
+`<virtual button>.get_touch_y()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, the current y-coordinate of the touch point captured by the virtual button
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
 |None|        |       |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.get_touch_start_x()`
+## .get_touch_start_x
 
-*Returns:* Number, the initial x-coordinate of the touch point when captured by the virtual button
+`<virtual button>.get_touch_start_x()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, the initial x-coordinate of the touch point when captured by the virtual button
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
 |None|        |       |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.get_touch_start_y()`
+## .get_touch_start_y
 
-*Returns:* Number, the initial y-coordinate of the touch point when captured by the virtual button
+`<virtual button>.get_touch_start_y()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, the initial y-coordinate of the touch point when captured by the virtual button
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
 |None|        |       |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.record_history(state)`
+## .record_history
 
-*Returns:* `self`
+`<virtual button>.record_history(state)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** `self`
 
 |Name   |Datatype|Purpose|
 |-------|--------|-------|
@@ -487,11 +983,25 @@ Starts recording touch point history for the virtual button. This can be used to
 
 ?> Input only keeps track of a limited number of frames of data. This is controlled by the `INPUT_TOUCH_HISTORY_FRAMES` config macro.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.get_history()`
+## .get_history
 
-*Returns:* Array of structs, see below
+`<virtual button>.get_history()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Array of structs, see below
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -499,32 +1009,82 @@ Starts recording touch point history for the virtual button. This can be used to
 
 Structs in the returned array contain x/y coordinate pairs. These coordinates are the position of the touch point captured by the virtual button, going back into the past. New data is pushed into the array every frame, with index 0 in the array being 1 frame before present, the index 1 being 2 frames before presents, and so on.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.get_history_direction([frames])`
+## .get_history_direction
 
-*Returns:* N/A (`undefined`)
+`<virtual button>.get_history_direction([frames])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name      |Datatype|Purpose                                                                                        |
 |----------|--------|-----------------------------------------------------------------------------------------------|
 |`[frames]`|integer |Number of frames in the past to analyze. If not specified, `INPUT_TOUCH_HISTORY_FRAMES` is used|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.get_history_distance([frames])`
+## .get_history_distance
 
-*Returns:* Number, how far the touch point moved over
+`<virtual button>.get_history_distance([frames])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, how far the touch point moved over
 
 |Name      |Datatype|Purpose                                                                                        |
 |----------|--------|-----------------------------------------------------------------------------------------------|
 |`[frames]`|integer |Number of frames in the past to analyze. If not specified, `INPUT_TOUCH_HISTORY_FRAMES` is used|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `.get_history_speed([frames])`
+## .get_history_speed
 
-*Returns:* Number, the speed of the touch point's movement
+`<virtual button>.get_history_speed([frames])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, the speed of the touch point's movement
 
 |Name      |Datatype|Purpose                                                                                        |
 |----------|--------|-----------------------------------------------------------------------------------------------|
 |`[frames]`|integer |Number of frames in the past to analyze. If not specified, `INPUT_TOUCH_HISTORY_FRAMES` is used|
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->

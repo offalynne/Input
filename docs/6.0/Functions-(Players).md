@@ -8,9 +8,15 @@ If you're looking for a way to control what [source](Input-Sources) a player is 
 
 &nbsp;
 
-## `input_player_connected([playerIndex])`
+## …player_connected
 
-*Returns:* Boolean, whether any of the player's [sources](Input-Sources) are connected and available for use
+`input_player_connected([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether any of the player's [sources](Input-Sources) are connected and available for use
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -20,11 +26,25 @@ If the player's sole source is a gamepad and that gamepad is [incompatible with 
 
 ?> Players that are designated as ["ghosts"](Functions-(Players)?id=input_player_ghost_setstate-playerindex) will always be considered connected.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_players_connected_count()`
+## …players_connected_count
 
-*Returns:* Integer, the number of players with connected devices
+`input_players_connected_count()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Integer, the number of players with connected devices
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -32,11 +52,25 @@ If the player's sole source is a gamepad and that gamepad is [incompatible with 
 
 ?> Players that are designated as ["ghosts"](Functions-(Players)?id=input_player_ghost_setstate-playerindex) will always be considered connected.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_players_get_status()`
+## …players_get_status
 
-*Returns:* Struct, detailing the state of player connection and disconnection
+`input_players_get_status()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Struct, detailing the state of player connection and disconnection
 
 |Name|Datatype|Purpose|
 |----|--------|-------|
@@ -70,11 +104,25 @@ The `INPUT_STATUS` enum contains the following members:
 |`.NEWLY_CONNECTED`   |Player has been connected this frame            |
 |`.CONNECTED`         |Player is connected (for at least two frames)   |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_player_get_gamepad([playerIndex], [binding])`
+## …player_get_gamepad
 
-*Returns:* Integer, a [gamepad](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm) index
+`input_player_get_gamepad([playerIndex], [binding])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Integer, a [gamepad](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm) index
 
 |Name           |Datatype                     |Purpose                                                                                                                                                                                                    |
 |---------------|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -85,11 +133,25 @@ This function will return `-1` if the player has no connected gamepad. If you pr
 
 ?> If the player has multiple gamepad [sources](Input-Sources) assigned to them, and no binding is provided, then this function will return the index of the first connected gamepad.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_player_get_gamepad_type([playerIndex], [binding])`
+## …player_get_gamepad_type
 
-*Returns:* String, a constant indicating the player's [gamepad type constant](Library-Constants#gamepad-types)
+`input_player_get_gamepad_type([playerIndex], [binding])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** String, a constant indicating the player's [gamepad type constant](Library-Constants#gamepad-types)
 
 |Name           |Datatype                     |Purpose                                                                                                                                                                                                    |
 |---------------|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -102,11 +164,25 @@ If the player has no connected gamepad then this function will return `INPUT_GAM
 
 ?> If the player has multiple gamepad [sources](Input-Sources) assigned to them, and no binding is provided, then this function will return the type for the first connected gamepad.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_player_get_invalid_gamepad_bindings([playerIndex])`
+## …player_get_invalid_gamepad_bindings
 
-*Returns:* Array of structs, gamepad bindings that are invalid due to the gamepad lacking certain mapped inputs
+`input_player_get_invalid_gamepad_bindings([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Array of structs, gamepad bindings that are invalid due to the gamepad lacking certain mapped inputs
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -126,11 +202,25 @@ The array returned by this function contains structs. Each struct contains two m
 |`alternate`|[Alternate index](https://www.jujuadams.com/Input/#/3.5/Verbs-and-Alternate-Bindings) for the invalid binding                                                                      |
 |`gm`       |[Virtual button/axis constant](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm) that is missing from the player's gamepad|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_player_ghost_set(state, [playerIndex])`
+## …player_ghost_set
 
-*Returns:* N/A (`undefined`)
+`input_player_ghost_set(state, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                              |
 |---------------|--------|-----------------------------------------------------|
@@ -146,21 +236,49 @@ Ghost mode prevents any sources being assigned to this player, but the player is
 
 ?> To manually pipe input to a ghost player, please use [`input_verb_set()`](Functions-(Other)?id=input_verb_setverb-value-playerindex).
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_player_ghost_get([playerIndex])`
+## …player_ghost_get
 
-*Returns:* Boolean, whether the player is in ghost mode
+`input_player_ghost_get([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the player is in ghost mode
 
 |Name           |Datatype|Purpose                                              |
 |---------------|--------|-----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_player_swap(playerIndexA, playerIndexB)`
+## …player_swap
 
-*Returns:* N/A (`undefined`)
+`input_player_swap(playerIndexA, playerIndexB)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name          |Datatype|Purpose                |
 |--------------|--------|-----------------------|
@@ -169,11 +287,25 @@ Ghost mode prevents any sources being assigned to this player, but the player is
 
 This function will swap over the two players with the given indices. This includes any player input state, bindings, source etc.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_player_gamepad_type_override_set(gamepadType, [playerIndex])`
+## …player_gamepad_type_override_set
 
-*Returns:* N/A (`undefined`)
+`input_player_gamepad_type_override_set(gamepadType, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                              |
 |---------------|--------|-----------------------------------------------------|
@@ -184,12 +316,34 @@ This function forces the icon getter functions (`input_verb_get_icon()` and `inp
 
 !> `input_player_gamepad_type_override_set()` only changes what icons are displayed. It doesn't change the value returned from `input_player_get_gamepad_type()`.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_player_gamepad_type_override_get([playerIndex])`
+## …player_gamepad_type_override_get
 
-*Returns:* String, what [gamepad type constant](Library-Constants#gamepad-types)  override has been set (or `undefined` if none has been set)
+`input_player_gamepad_type_override_get([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** String, what [gamepad type constant](Library-Constants#gamepad-types)  override has been set (or `undefined` if none has been set)
 
 |Name           |Datatype|Purpose                                              |
 |---------------|--------|-----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used |
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->

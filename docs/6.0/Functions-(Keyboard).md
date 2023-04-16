@@ -8,30 +8,72 @@ _These functions are almost directly passed-through and are presently only inten
 
 &nbsp;
 
-## `input_keyboard_check(key)`
+## …keyboard_check
 
-*Returns:* Boolean, if the key is currently activated
+`input_keyboard_check(key)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, if the key is currently activated
 
 |Name    |Datatype|Purpose                                               |
 |--------|--------|------------------------------------------------------|
 |`key`   |integer |Key to check, using GameMaker's native [virtual key constants](https://manual.yoyogames.com/index.htm#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FKeyboard_Input%2FKeyboard_Input.htm)|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_keyboard_check_pressed(key)`
+## …keyboard_check_pressed
 
-*Returns:* Boolean, if the key is newly activated this frame
+`input_keyboard_check_pressed(key)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, if the key is newly activated this frame
 
 |Name |Datatype|Purpose                                               |
 |-----|--------|------------------------------------------------------|
 |`key`|integer |Key to check, using GameMaker's native [virtual key constants](https://manual.yoyogames.com/index.htm#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FKeyboard_Input%2FKeyboard_Input.htm)|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_keyboard_check_released(key)`
+## …keyboard_check_released
 
-*Returns:* Boolean, if the key is newly deactivated this frame
+`input_keyboard_check_released(key)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, if the key is newly deactivated this frame
 
 |Name |Datatype|Purpose                                               |
 |-----|--------|------------------------------------------------------|
 |`key`|integer |Key to check, using GameMaker's native [virtual key constants](https://manual.yoyogames.com/index.htm#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FKeyboard_Input%2FKeyboard_Input.htm)|
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->

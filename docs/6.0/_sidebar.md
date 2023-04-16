@@ -1,7 +1,7 @@
 - [Home](README)
 - [Newbie Guide](Newbie-Guide)
 - [Multiplayer Guide](Multiplayer-Guide)
-- [Quick Reference](Quick-Reference)
+- [Changes From v5](Changes-from-v5)
 - [Credits](Credits)
 
 ---
@@ -10,21 +10,54 @@
 
 - [Verbs and Bindings](Verbs-and-Bindings)
 - [Input Sources](Input-Sources)
+- [Source Modes](Source-Modes)
 - [Profiles](Profiles)
-
----
-
-**Technical Details**
-
-- [Configuration](Configuration)
 - [Library Constants](Library-Constants)
-- [Full Function Index](Function-Index)
+- [Binding Names](Binding-Names)
 
 ---
 
 **Further Reading**
 
-- [Accessibility](Accessibility)
-- [Binding Names](Binding-Names)
 - [Input Quirks](Input-Quirks)
-- [Supplementary Notes](Reference-Notes)
+- [Game Controller Mapping](Controller-Mapping)
+- [Gamepad Troubleshooting](Gamepad-Troubleshooting)
+- [Common Keyboard Combos](Common-Keyboard-Combos)
+
+---
+
+**Setting Up**
+
+- [Importing The Library](Importing-The-Library)
+- [Config Macros](Config-Macros)
+- [Steamworks](Steamworks)
+- [Icon Config](Icon-Config)
+
+---
+
+**API**
+
+- [Checking Verbs](Functions-(Checkers))
+- [2D Checkers](Functions-(2D-Checkers))
+- [Advanced Checkers](Functions-(Advanced-Checkers))
+- [Further Verb Functions](Functions-(Further-Verbs))
+- [Binding Creators](Functions-(Binding-Creators))
+- [Binding Access](Functions-(Binding-Access))
+- [Icons](Functions-(Icons))
+- [Cursor](Functions-(Cursor))
+- [Mouse Capture](Mouse-Capture)
+- [Accessibility](Functions-(Accessibility))
+- [Exporting & Importing](Functions-(Exporting-and-Importing))
+- [Virtual Buttons](Functions-(Virtual-Buttons))
+- [Players](Functions-(Players))
+- [Profiles](Functions-(Profiles))
+- [Source Modes](Functions-(Source-Modes))
+- [Sources](Functions-(Sources))
+- [Vibration](Functions-(Vibration))
+- [Color](Functions-(Color))
+- [Motion](Functions-(Motion))
+- [Trigger Effects](Functions-(Trigger-Effects))
+- [Other](Functions-(Other))
+- [Mouse (Direct)](Functions-(Mouse))
+- [Gamepad (Direct)](Functions-(Gamepad))
+- [Keyboard (Direct)](Functions-(Keyboard))
