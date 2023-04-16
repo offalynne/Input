@@ -1,4 +1,4 @@
-# Functions (Verbs)
+# Functions (Further Verbs)
 
 &nbsp;
 
@@ -24,6 +24,36 @@ When a verb has been consumed, [check functions](Functions-(Checkers)) that targ
 |`verb`         |[verb](Verbs-and-Alternate-Bindings) |[Verb](Verbs-and-Alternate-Bindings) to set                                                             |
 |`value`        |number                               |Value to set for the verb, from `-1` to `+1` (though most verbs will only expect values from `0` to `+1`|
 |`[playerIndex]`|integer                              |Player to target. If not specified, player 0 is used                                                    |
+
+&nbsp;
+
+## …chord_create
+
+`input_chord_create(name, maxTimeBetweenPresses, verb1, verb2, ...)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name                   |Datatype                  |Purpose                                                                                                                        |
+|-----------------------|--------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+|`name`                 |string                    |Name of the chord verb to create                                                                                               |
+|`maxTimeBetweenPresses`|number                    |Maximum time allowed between verb activations, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
+|`verb1`                |[verb](Verbs-and-Bindings)|Name of a required [verb](Verbs-and-Bindings)                                                                                  |
+|`verb2`                |[verb](Verbs-and-Bindings)|Name of a required [verb](Verbs-and-Bindings)                                                                                  |
+|...                    |                          |etc.                                                                                                                           |
+
+A "chord" is a set of verbs that must be pressed together, for example `ctrl + alt + delete` or `ctrl + S`. When all of the specified verbs are pressed together, the chord verb itself is activated. If there is too much time between individual key presses, determined by the `maxTimeBetweenPresses` argument, then the chord verb will fail to activate.
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
 
 &nbsp;
 
