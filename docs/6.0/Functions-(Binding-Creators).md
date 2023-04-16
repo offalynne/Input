@@ -2,6 +2,10 @@
 
 &nbsp;
 
+Binding are the rules that teach Input how to tie physical button input to in-game verbs. The functions on this page allow you to create bindings, either to define [default profiles](Profiles), [change bindings](Functions-(Binding-Access)), or to build out [custom profiles](Functions-(Profiles)).
+
+&nbsp;
+
 ## …value_is_binding
 
 `input_value_is_binding(value)`
@@ -27,8 +31,6 @@ Useful for verifying if a value returned from [`input_binding_scan_tick()`]() or
 <!-- tabs:end -->
 
 &nbsp;
-
-The functions on this page allow you to create bindings, either to define [default profiles](Profiles), [change bindings](Functions-(Binding-Access)), or to build out [custom profiles](Functions-(Profiles)).
 
 &nbsp;
 
