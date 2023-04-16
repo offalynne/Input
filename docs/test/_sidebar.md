@@ -24,11 +24,12 @@
 
 ---
 
-**Configuration**
+**Setting Up**
 
-- [Macros](Config-Macros)
+- [Importing The Library](Importing-The-Library)
+- [Config Macros](Config-Macros)
 - [Steamworks](Steamworks)
-- [Icons](Icon-Config)
+- [Icon Config](Icon-Config)
 
 ---
 
