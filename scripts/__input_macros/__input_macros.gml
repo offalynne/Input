@@ -35,33 +35,6 @@
 #macro __INPUT_BINDING_GAMEPAD_BUTTON    "gamepad button"
 #macro __INPUT_BINDING_GAMEPAD_AXIS      "gamepad axis"
 
-#macro INPUT_GAMEPAD_TYPE_XBOX_ONE      "xbox one"
-#macro INPUT_GAMEPAD_TYPE_XBOX_360      "xbox 360"
-#macro INPUT_GAMEPAD_TYPE_PS5           "ps5"
-#macro INPUT_GAMEPAD_TYPE_PS4           "ps4"
-#macro INPUT_GAMEPAD_TYPE_PSX           "psx"
-#macro INPUT_GAMEPAD_TYPE_SWITCH        "switch"
-#macro INPUT_GAMEPAD_TYPE_JOYCON_LEFT   "switch joycon left"
-#macro INPUT_GAMEPAD_TYPE_JOYCON_RIGHT  "switch joycon right"
-#macro INPUT_GAMEPAD_TYPE_GAMECUBE      "gamecube"
-#macro INPUT_GAMEPAD_TYPE_UNKNOWN       "unknown"
-
-////Extended types per INPUT_GAMEPAD_EXTENDED_TYPES
-//#macro INPUT_GAMEPAD_TYPE_STEAM_DECK        "steam deck"
-//#macro INPUT_GAMEPAD_TYPE_STEAM_CONTROLLER  "steam controller"
-//#macro INPUT_GAMEPAD_TYPE_8BITDO            "8bitdo"
-//#macro INPUT_GAMEPAD_TYPE_MFI               "mfi"
-//#macro INPUT_GAMEPAD_TYPE_LUNA              "luna"
-//#macro INPUT_GAMEPAD_TYPE_STADIA            "stadia"
-//#macro INPUT_GAMEPAD_TYPE_VCS_MODERN        "vcs modern"
-//#macro INPUT_GAMEPAD_TYPE_VCS_CLASSIC       "vcs classic"
-//#macro INPUT_GAMEPAD_TYPE_OUYA              "ouya"
-//#macro INPUT_GAMEPAD_TYPE_DREAMCAST         "dreamcast"
-//#macro INPUT_GAMEPAD_TYPE_N64               "n64"
-//#macro INPUT_GAMEPAD_TYPE_SATURN            "saturn"
-//#macro INPUT_GAMEPAD_TYPE_SNES              "snes"
-//#macro INPUT_GAMEPAD_TYPE_SUPER_FAMICOM     "super famicom"
-
 #macro INPUT_KEYBOARD      __input_global().__source_keyboard
 #macro INPUT_MOUSE         __input_global().__source_mouse
 #macro INPUT_GAMEPAD       __input_global().__source_gamepad

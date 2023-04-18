@@ -10,10 +10,6 @@
 //Default maximum threshold for non-directional (trigger) axes
 #macro INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD  1.0
 
-//Whether to use simplified or extended gamepad types
-//When <true>, gamepad types will be identified with greater specificity. This may impact icon results and related settings
-#macro INPUT_GAMEPAD_EXTENDED_TYPES  false
-
 //Whether the game uses the horizontal holdtype for single Joy-Cons. Set this to <false> for vertical holdtype
 //Input treats these two modes as mutually exclusive (come talk to us if you need to be able to swap at runtime)
 #macro INPUT_SWITCH_HORIZONTAL_HOLDTYPE  true

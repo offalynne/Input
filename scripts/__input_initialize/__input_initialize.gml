@@ -333,96 +333,13 @@ function __input_initialize()
     
     #endregion
   
-    var _default_xbox_type = INPUT_GAMEPAD_TYPE_XBOX_ONE; //Default type assigned to XInput and Xbox-like gamepads
-    
     #region Gamepad type identification
     
-    //Lookup table for simple gamepad types based on raw types
-    _global.__simple_type_lookup = {
-    
-        //Xbox
-        CommunityLikeXBox: _default_xbox_type,
-
-        XBoxOneController:  INPUT_GAMEPAD_TYPE_XBOX_ONE,
-        CommunityXBoxOne:   INPUT_GAMEPAD_TYPE_XBOX_ONE,
-        CommunityDeck:      INPUT_GAMEPAD_TYPE_XBOX_ONE,
-        CommunityLuna:      INPUT_GAMEPAD_TYPE_XBOX_ONE,
-        CommunityStadia:    INPUT_GAMEPAD_TYPE_XBOX_ONE,
-        AppleController:    INPUT_GAMEPAD_TYPE_XBOX_ONE,
-        
-        XBox360Controller:  INPUT_GAMEPAD_TYPE_XBOX_360,
-        CommunityXBox360:   INPUT_GAMEPAD_TYPE_XBOX_360,
-        CommunityDreamcast: INPUT_GAMEPAD_TYPE_XBOX_360,
-        SteamController:    INPUT_GAMEPAD_TYPE_XBOX_360,
-        MobileTouch:        INPUT_GAMEPAD_TYPE_XBOX_360,
-        
-        //PlayStation
-        PS5Controller:  INPUT_GAMEPAD_TYPE_PS5,
-        
-        PS4Controller:       INPUT_GAMEPAD_TYPE_PS4,
-        XInputPS4Controller: INPUT_GAMEPAD_TYPE_PS4,
-        CommunityPS4:        INPUT_GAMEPAD_TYPE_PS4,
-        
-        PS3Controller:  INPUT_GAMEPAD_TYPE_PSX,
-        CommunityPSX:   INPUT_GAMEPAD_TYPE_PSX,
-        
-        //Switch
-        SwitchHandheld:            INPUT_GAMEPAD_TYPE_SWITCH,
-        SwitchJoyConPair:          INPUT_GAMEPAD_TYPE_SWITCH,
-        SwitchProController:       INPUT_GAMEPAD_TYPE_SWITCH,
-        XInputSwitchController:    INPUT_GAMEPAD_TYPE_SWITCH,
-        SwitchInputOnlyController: INPUT_GAMEPAD_TYPE_SWITCH,
-        CommunityLikeSwitch:       INPUT_GAMEPAD_TYPE_SWITCH,
-        Community8BitDo:           INPUT_GAMEPAD_TYPE_SWITCH,
-        HIDWiiClassic:             INPUT_GAMEPAD_TYPE_SWITCH,
-        CommunitySNES:             INPUT_GAMEPAD_TYPE_SWITCH,
-        CommunitySuperFamicom:     INPUT_GAMEPAD_TYPE_SWITCH,
-
-        SwitchJoyConLeft:   INPUT_GAMEPAD_TYPE_JOYCON_LEFT,
-        SwitchJoyConSingle: INPUT_GAMEPAD_TYPE_JOYCON_LEFT,
-        HIDJoyConLeft:      INPUT_GAMEPAD_TYPE_JOYCON_LEFT,
-        
-        SwitchJoyConRight:  INPUT_GAMEPAD_TYPE_JOYCON_RIGHT,
-        HIDJoyConRight:     INPUT_GAMEPAD_TYPE_JOYCON_RIGHT,
-        
-        CommunityGameCube:     INPUT_GAMEPAD_TYPE_GAMECUBE,
-        
-        Unknown: INPUT_GAMEPAD_TYPE_UNKNOWN,
-        unknown: INPUT_GAMEPAD_TYPE_UNKNOWN,
-        
-        SteamControllerV2:         INPUT_GAMEPAD_TYPE_UNKNOWN,
-        UnknownNonSteamController: INPUT_GAMEPAD_TYPE_UNKNOWN,
-        CommunityUnknown:          INPUT_GAMEPAD_TYPE_UNKNOWN,
-        CommunitySteam:            INPUT_GAMEPAD_TYPE_UNKNOWN,        
-    }
-    
-    if (INPUT_GAMEPAD_EXTENDED_TYPES)
-    {
-        with (_global.__simple_type_lookup)
-        {
-            CommunityDeck         = "steam deck";
-            SteamController       = "steam controller";
-            Community8BitDo       = "8bitdo";
-            AppleController       = "mfi";
-            CommunityLuna         = "luna";
-            CommunityStadia       = "stadia";
-            CommunityVCSModern    = "vcs modern";
-            CommunityVCSClassic   = "vcs classic";
-            HIDAtariVCSClassic    = "vcs classic";
-            CommunityOuya         = "ouya";
-            CommunityDreamcast    = "dreamcast";
-            CommunityN64          = "n64";
-            CommunitySaturn       = "saturn";
-            CommunitySNES         = "snes";
-            CommunitySuperFamicom = "super famicom";
-        }
-    }
-    
-    
+    //Set up controller type database
+    __input_define_gamepad_types();
     
     //Parse controller type database
     _global.__raw_type_dictionary = {};
-    _global.__raw_type_dictionary[$ "none"] = _default_xbox_type;
 
     //Load the controller type database
     if (__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || (os_type == os_ios) || (os_type == os_tvos))
