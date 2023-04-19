@@ -55,7 +55,7 @@ If no source has presented new input this function will return `undefined`.
 
 ## …source_set
 
-`input_source_set(source, [playerIndex], [autoProfile])`
+`input_source_set(source, [playerIndex], [autoProfile], [exclusive])`
 
 <!-- tabs:start -->
 
@@ -81,7 +81,7 @@ If no source has presented new input this function will return `undefined`.
 
 ## …source_add
 
-`input_source_add(source, [playerIndex])`
+`input_source_add(source, [playerIndex], [exclusive])`
 
 <!-- tabs:start -->
 
@@ -106,7 +106,7 @@ If no source has presented new input this function will return `undefined`.
 
 ## …source_share
 
-`input_source_share(source, [playerIndex], [autoProfile])`
+`input_source_share(source, [playerIndex], [autoProfile], [exclusive])`
 
 <!-- tabs:start -->
 
