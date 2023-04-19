@@ -47,7 +47,7 @@ If no source has presented new input this function will return `undefined`.
 
 &nbsp;
 
-## `input_source_set(source, [playerIndex], [autoProfile])`
+## `input_source_set(source, [playerIndex], [autoProfile], [exclusive])`
 
 *Returns:* N/A (`undefined`)
 
@@ -60,7 +60,7 @@ If no source has presented new input this function will return `undefined`.
 
 &nbsp;
 
-## `input_source_add(source, [playerIndex])`
+## `input_source_add(source, [playerIndex], [exclusive])`
 
 *Returns:* N/A (`undefined`)
 
@@ -72,7 +72,7 @@ If no source has presented new input this function will return `undefined`.
 
 &nbsp;
 
-## `input_source_share(source, [playerIndex], [autoProfile])`
+## `input_source_share(source, [playerIndex], [autoProfile], [exclusive])`
 
 *Returns:* N/A (`undefined`)
 
