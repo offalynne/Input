@@ -2,7 +2,7 @@
 
 &nbsp;
 
-Input supports three fundamental types of source - keyboards, mice, and gamepads. Input treats each gamepad as a different and distinct device, and it can also treat a keyboard and a mouse as different and distinct devices. 
+Input supports four fundamental types of source - keyboards, mice, touchscreens, and gamepads. Input treats each gamepad as a different and distinct device, and it can also treat a keyboard, a mouse, and a touchscreen as different and distinct devices.
 
 ?> When you first import Input into your project, `INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER` is set to `true`, meaning keyboard and mouse input is tied together. This is by far and away the most common use case for keyboards and mice. You can change this behaviour by [adjusting this macro](Configuration?id=profiles-and-bindings).
 
@@ -18,9 +18,21 @@ Some functions also allow you to automatically change a player's [profile](Profi
 
 A keyboard attached to the device. If no keyboard is available this source will be non-functional. If `INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER` is set to `true` then the keyboard and the mouse will be considered as a single device: `INPUT_KEYBOARD` and `INPUT_MOUSE` will be interchangeable.
 
+&nbsp;
+
 ### `INPUT_MOUSE`
 
-A pointing device, either an actual mouse, touchscreen input, or a PS4 touchpad. If `INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER` is set to `true` then the keyboard and the mouse will be considered as a single device: `INPUT_KEYBOARD` and `INPUT_MOUSE` will be interchangeable.
+A pointing device, typically a physical mouse or a laptop trackpad. If `INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER` is set to `true` then the keyboard and the mouse will be considered as a single device: `INPUT_KEYBOARD` and `INPUT_MOUSE` will be interchangeable.
+
+&nbsp;
+
+### `INPUT_TOUCH`
+
+A mobile touchscreen, a Switch touchscreen, a Steam Deck touchscreen (Windows only), or a PlayStation touchpad. If `INPUT_TOUCH_IS_MOUSE` is set to `true` then all `INPUT_TOUCH` devices will be treated as `INPUT_MOUSE` instead.
+
+?> A Windows laptop with a touchscreen will report as `INPUT_MOUSE` because we can't differentiate Windows touchscreens from physical mice.
+
+&nbsp;
 
 ### `INPUT_GAMEPAD[...]`
 
