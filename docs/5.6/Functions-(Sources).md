@@ -56,6 +56,7 @@ If no source has presented new input this function will return `undefined`.
 |`source`       |[Source](Input-Sources)|[Input source](Input-Sources) to check                                                                                                        |
 |`[playerIndex]`|integer                |Player to target. If not specified, player 0 is used                                                                                          |
 |`[autoProfile]`|boolean                |Whether to automatically change the player's profile based on [`INPUT_AUTO_PROFILE_FOR_KEYBOARD`](Configuration?id=profiles-and-bindings) etc.|
+|`[exclusive]`  |boolean                |Whether all other players using this source should have that source removed. Defaults to `true`                                               |
 
 &nbsp;
 
@@ -63,10 +64,11 @@ If no source has presented new input this function will return `undefined`.
 
 *Returns:* N/A (`undefined`)
 
-|Name           |Datatype               |Purpose                                             |
-|---------------|-----------------------|----------------------------------------------------|
-|`source`       |[Source](Input-Sources)|[Input source](Input-Sources) to check              |
-|`[playerIndex]`|integer                |Player to target. If not specified, player 0 is used|
+|Name           |Datatype               |Purpose                                                                                        |
+|---------------|-----------------------|-----------------------------------------------------------------------------------------------|
+|`source`       |[Source](Input-Sources)|[Input source](Input-Sources) to check                                                         |
+|`[playerIndex]`|integer                |Player to target. If not specified, player 0 is used                                           |
+|`[exclusive]`  |boolean                |Whether all other players using this source should have that source removed. Defaults to `true`|
 
 &nbsp;
 
@@ -79,6 +81,7 @@ If no source has presented new input this function will return `undefined`.
 |`source`       |[Source](Input-Sources)|[Input source](Input-Sources) to check                                                                                                        |
 |`[playerIndex]`|integer                |Player to target. If not specified, player 0 is used                                                                                          |
 |`[autoProfile]`|boolean                |Whether to automatically change the player's profile based on [`INPUT_AUTO_PROFILE_FOR_KEYBOARD`](Configuration?id=profiles-and-bindings) etc.|
+|`[exclusive]`  |boolean                |Whether all other players using this source should have that source removed. Defaults to `true`                                               |
 
 &nbsp;
 
