@@ -274,9 +274,9 @@ If there is no gamepad connected for the given index, an empty array will be ret
 |`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)|
 |`GMconstant`  |integer/array |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm), or an array of buttons or axes (see below) |
 
-Returns whether the indicated buttons/axes are mapped for the target gamepad. `GMconstant` can also be an array of constants.
+Returns whether the indicated buttons and axis are mapped for the target gamepad. `GMconstant` can also be an array of constants.
 
-If there is no gamepad connected for the given index, the function returns `false`. If no mapping was applied to the gamepad (typically due to the gamepad not being covered by the SDL2 database) then all GameMaker constants return `true`. If an array of constants is provided for `GMconstant`, the function returns `true` if all constants are mapped.
+If there is no gamepad connected for the given index, the function returns `false`. If no mapping was applied to the gamepad (typically due to the gamepad not being covered by the SDL2 database) then all GameMaker constants return `true`. If an array of button and axis constants is provided for `GMconstant`, the function returns `true` if all buttons and axis are mapped.
 
 #### **Example**
 
