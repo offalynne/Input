@@ -16,5 +16,5 @@ function input_cursor_previous_y(_player_index = 0, _outputSystem = undefined)
     return __input_transform_coordinate(_cursor.__prev_x,
                                         _cursor.__prev_y,
                                         _cursor.__coord_space,
-                                        _output_system ?? _global.__pointer_coord_space).y;
+                                        _outputSystem ?? _global.__pointer_coord_space).y;
 }
