@@ -168,10 +168,10 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 289b,005b,CommunitySNES // Raphnet SNES Adapter
 289b,005c,CommunitySNES // Raphnet SNES Adapter
 289b,0085,CommunitySNES // Raphnet SNES Adapter
-289b,0007,CommunitySNES // Raphnet Famicom Adapter
 289b,0041,CommunitySNES // Raphnet NES Adapter
 289b,0042,CommunitySNES // Raphnet NES Adapter
-1781,0a99,CommunitySNES // Raphnet NNES Adapter
+1781,0a99,CommunitySNES // Raphnet NES Adapter
+289b,0007,CommunitySNES // Raphnet Famicom Adapter
 1235,ab21,CommunitySuperFamicom // 8BitDo SFC30
 2810,0009,CommunitySuperFamicom // 8BitDo SFC30
 2dc8,2830,CommunitySuperFamicom // 8BitDo SFC30
