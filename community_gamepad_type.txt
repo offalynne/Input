@@ -68,9 +68,17 @@
 3285,0607,CommunityLikeXBox // Nacon GC-100
 056e,2007,CommunityLikeSwitch // Elecom Wii Adapter
 056e,2008,CommunityLikeSwitch // Elecom Wii Adapter
+1740,0579,CommunityLikeSwitch // Raphnet Wii Adapter
+289b,0010,CommunityLikeSwitch // Raphnet Wii Adapter
+289b,0012,CommunityLikeSwitch // Raphnet Wii Adapter
+289b,0014,CommunityLikeSwitch // Raphnet Wii Adapter
+289b,0016,CommunityLikeSwitch // Raphnet Wii Adapter
+289b,0028,CommunityLikeSwitch // Raphnet Wii Adapter
+289b,0029,CommunityLikeSwitch // Raphnet Wii Adapter
 289b,002b,CommunityLikeSwitch // Raphnet Wii Adapter
 289b,002c,CommunityLikeSwitch // Raphnet Wii Adapter
-289b,0008,CommunityLikeSwitch // Raphnet Wii Adapter
+289b,0080,CommunityLikeSwitch // Raphnet Wii Adapter
+289b,0081,CommunityLikeSwitch // Raphnet Wii Adapter
 0079,1800,CommunityLikeSwitch // Mayflash Wii U Adapter
 6957,746f,CommunityLikeSwitch // Wii U Pro
 057e,2017,CommunityLikeSwitch // Nintendo Switch Online SFC & MD
@@ -85,8 +93,9 @@
 0ae4,0702,CommunitySaturn // Taito Egret II Mini Controller
 0b49,0644,CommunitySaturn // ASCII Seamic
 0079,0011,CommunitySaturn // Retrolink Saturn/SNES
-289b,0005,CommunitySaturn // Raphnet Saturn
-1781,057e,CommunitySaturn // Saturn Adapter
+1781,057e,CommunitySaturn // Raphnet Saturn Adapter
+289b,0005,CommunitySaturn // Raphnet Saturn Adapter
+289b,0043,CommunitySaturn // Raphnet Saturn Adapter
 05fd,0253,CommunitySaturn // InterAct ProPad
 05fd,3000,CommunitySaturn // InterAct GoPad
 0079,0122,CommunitySaturn // Retro Bit Saturn
@@ -108,7 +117,6 @@
 0e8f,0041,CommunitySaturn // PlaySega
 0e8f,3010,CommunitySaturn // Saturn Adapter
 12bd,d013,CommunitySaturn // Retrolink Saturn/SNES
-289b,0043,CommunitySaturn // Raphnet Saturn
 2dc8,0651,CommunitySaturn // 8BitDo M30
 2dc8,5006,CommunitySaturn // 8BitDo M30
 2dc8,6728,CommunitySaturn // 8BitDo S30 Modkit
@@ -121,15 +129,12 @@ f000,0008,CommunitySaturn // RetroUSB Genesis
 1292,4745,CommunitySaturn // Retro Bit Genesis Adapter
 1292,464b,CommunitySNES // NES Controller Adapter
 21f8,0019,CommunitySNES // Shogun Bros Chameleon X1
-289b,0056,CommunitySNES // Raphnet SNES
-289b,0057,CommunitySNES // Raphnet SNES
 f000,0003,CommunitySNES // RetroUSB SNES
 f000,00f1,CommunitySNES // RetroUSB SNES
 0403,97c1,CommunitySNES // Retrode 2
 1292,5346,CommunitySNES // Retrolink Dual SNES
 1781,0a9d,CommunitySNES // SNES Adapter
 288b,0003,CommunitySNES // SNES Adapter
-289b,0003,CommunitySNES // Raphnet SNES
 0079,1804,CommunitySNES // JoyPad SNES
 0d28,0202,CommunitySNES // Miller Cantroller
 0003,0003,CommunitySNES // Miroof
@@ -145,10 +150,28 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 1d57,0020,CommunitySNES // Tomee SNES Adapter
 1d57,0021,CommunitySNES // Tomee NES Adapter
 2dc8,02e0,CommunitySNES // 8BitDo N30
-289b,0002,CommunitySNES // Raphnet SNES
 4854,4d43,CommunitySNES // Ystek Micreal SNES
-289b,0080,CommunitySNES // Raphnet Nintendo Classic Adapter
 081f,e401,CommunitySNES // RetroUSB Famicom
+1781,0a96,CommunitySNES // Raphnet SNES Adapter
+1781,0a9d,CommunitySNES // Raphnet SNES Adapter
+289b,0002,CommunitySNES // Raphnet SNES Adapter
+288b,0003,CommunitySNES // Raphnet SNES Adapter
+289b,0003,CommunitySNES // Raphnet SNES Adapter
+289b,0026,CommunitySNES // Raphnet SNES Adapter
+289b,0027,CommunitySNES // Raphnet SNES Adapter
+289b,002e,CommunitySNES // Raphnet SNES Adapter
+289b,002f,CommunitySNES // Raphnet SNES Adapter
+289b,0056,CommunitySNES // Raphnet SNES Adapter
+289b,0057,CommunitySNES // Raphnet SNES Adapter
+289b,0059,CommunitySNES // Raphnet SNES Adapter
+289b,005a,CommunitySNES // Raphnet SNES Adapter
+289b,005b,CommunitySNES // Raphnet SNES Adapter
+289b,005c,CommunitySNES // Raphnet SNES Adapter
+289b,0085,CommunitySNES // Raphnet SNES Adapter
+289b,0007,CommunitySNES // Raphnet Famicom Adapter
+289b,0041,CommunitySNES // Raphnet NES Adapter
+289b,0042,CommunitySNES // Raphnet NES Adapter
+1781,0a99,CommunitySNES // Raphnet NNES Adapter
 1235,ab21,CommunitySuperFamicom // 8BitDo SFC30
 2810,0009,CommunitySuperFamicom // 8BitDo SFC30
 2dc8,2830,CommunitySuperFamicom // 8BitDo SFC30
@@ -200,6 +223,15 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 0079,1847,CommunityGameCube // Mayflash GameCube Adapter
 0b43,0005,CommunityGameCube // Gamecube Adapter
 1a34,f705,CommunityGameCube // Mayflash GameCube Adapter
+289b,0021,CommunityGameCube // Raphnet GameCube Adapter
+289b,0034,CommunityGameCube // Raphnet GameCube Adapter
+289b,0037,CommunityGameCube // Raphnet GameCube Adapter
+289b,003a,CommunityGameCube // Raphnet GameCube Adapter
+289b,003d,CommunityGameCube // Raphnet GameCube Adapter
+289b,0062,CommunityGameCube // Raphnet GameCube Adapter
+289b,0065,CommunityGameCube // Raphnet GameCube Adapter
+289b,0092,CommunityGameCube // Raphnet GameCube Adapter
+289b,0095,CommunityGameCube // Raphnet GameCube Adapter
 1bad,04f9,CommunityXBox360 // PDP Versus Fighting
 24c6,891a,CommunityXBox360 // Moga XP5X
 24c6,891b,CommunityXBox360 // Moga XP5X
@@ -275,7 +307,10 @@ beef,feed,CommunityXBox360 // Monect
 0a12,0001,CommunityPSX // PS2 Controller
 0925,1802,CommunityPSX // PS3 Controller
 22ba,1020,CommunityPSX // PS3 Conroller
-289b,0044,CommunityPSX // Raphnet PSX Adapter
+289b,0044,CommunityPSX // Raphnet PlayStation Adapter
+289b,0045,CommunityPSX // Raphnet PlayStation Adapter
+289b,0046,CommunityPSX // Raphnet PlayStation Adapter
+289b,0047,CommunityPSX // Raphnet PlayStation Adapter
 6666,8802,CommunityPSX // TigerGame PlayStation Adapter
 1a15,2262,CommunityPSX // PS2 Dual Plus Adapter
 0662,70d5,CommunityPSX // PowerA PS3 Contoller
@@ -427,7 +462,17 @@ dead,beef,CommunityPSX // Hidromancer
 2e24,0bff,CommunityN64 // Hyperkin Adapter
 2e24,200b,CommunityN64 // Hyperkin Admiral
 1234,0004,CommunityN64 // RetroUSB N64 RetroPort Adapter
+289b,000f,CommunityN64 // Raphnet N64 Adapter
+289b,0020,CommunityN64 // Raphnet N64 Adapter
+289b,0033,CommunityN64 // Raphnet N64 Adapter
+289b,0039,CommunityN64 // Raphnet N64 Adapter
+289b,003c,CommunityN64 // Raphnet N64 Adapter
+289b,0061,CommunityN64 // Raphnet N64 Adapter
+289b,0064,CommunityN64 // Raphnet N64 Adapter
+289b,0091,CommunityN64 // Raphnet N64 Adapter
+289b,0094,CommunityN64 // Raphnet N64 Adapter
 289b,0008,CommunityDreamcast // Raphnet Dreamcast Adapter
+289b,00d0,CommunityDreamcast // Raphnet Dreamcast Adapter
 2836,0001,CommunityOuya // Ouya Controller
 18d1,9400,CommunityStadia // Google Stadia Controller
 0171,0419,CommunityLuna // Amazon Luna Controller
@@ -454,4 +499,18 @@ dead,beef,CommunityPSX // Hidromancer
 10c4,82c0,CommunityUnknown // KADE Adapter
 0c12,0c31,CommunityUnknown // Brook Super Converter
 0f30,010a,CommunityUnknown // BigBen Interactive MultiConvertPad
-0c12,0005,CommunityUnknown // Zeroplus PS Vibration Feedback Converter	
+0c12,0005,CommunityUnknown // Zeroplus PS Vibration Feedback Converter
+289b,0001,CommunityUnknown // Raphnet Multiadapter
+289b,0038,CommunityUnknown // Raphnet Multiadapter
+289b,0022,CommunityUnknown // Raphnet Multiadapter
+289b,0030,CommunityUnknown // Raphnet Multiadapter
+289b,0031,CommunityUnknown // Raphnet Multiadapter
+289b,0032,CommunityUnknown // Raphnet Multiadapter
+289b,0035,CommunityUnknown // Raphnet Multiadapter
+289b,0036,CommunityUnknown // Raphnet Multiadapter
+289b,003b,CommunityUnknown // Raphnet Multiadapter
+289b,0060,CommunityUnknown // Raphnet Multiadapter
+289b,0063,CommunityUnknown // Raphnet Multiadapter
+289b,0090,CommunityUnknown // Raphnet Multiadapter
+289b,0093,CommunityUnknown // Raphnet Multiadapter
+289b,003c,CommunityUnknown // Raphnet Multiadapter
