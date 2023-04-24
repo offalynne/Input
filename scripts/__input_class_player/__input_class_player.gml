@@ -1146,13 +1146,16 @@ function __input_class_player() constructor
         
         if (variable_struct_exists(_json, "gamepad_type_override"))
         {
-            if (!is_string(_json.gamepad_type_override) && !is_undefined(_json.gamepad_type_override))
+            //Coalesce JSON null pointer as undefined
+            var _gamepad_type_override = _json.gamepad_type_override ?? undefined;
+            
+            if (!is_string(_gamepad_type_override) && !is_undefined(_gamepad_type_override))
             {
                 __input_error("Player ", __index, " gamepad type override is corrupted");
                 return;
             }
             
-            __gamepad_type_override = _json.gamepad_type_override;
+            __gamepad_type_override = _gamepad_type_override;
         }
         else
         {
