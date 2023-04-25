@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "input_cursor_previous_x",
+  "name": "input_cursor_dy",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
