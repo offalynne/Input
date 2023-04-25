@@ -24,6 +24,7 @@ Input 6 introduces a number of new features alongside a small number of breaking
 - Adds `INPUT_POINTER_TYPE` macro that contains the type of pointer available on the current hardware
 - Adds `INPUT_GAMEPAD_EXTENDED_TYPES` (defaulting to `false`) to simplify gamepad support further
 - Adds `input_led_pattern_get()`
+- Adds `input_cursor_dx()` and `input_cursor_dy()`
 
 &nbsp;
 
@@ -46,3 +47,4 @@ Input 6 introduces a number of new features alongside a small number of breaking
 
 - The combo system has been removed
 - The deprecated enum value `INPUT_COORD_SPACE.DISPLAY` has now been fully removed (use `INPUT_COORD_SPACE.DEVICE` instead)
+- `input_cursor_previous_x()` and `input_cursor_previous_y()` have been removed (conceptually replaced by `input_cursor_dx()` and `input_cursor_dy()`)

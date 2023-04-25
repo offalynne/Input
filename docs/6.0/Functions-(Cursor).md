@@ -60,15 +60,15 @@ Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_
 
 &nbsp;
 
-## …cursor_previous_x
+## …cursor_dx
 
-`input_cursor_previous_x([playerIndex], [coordSpace])`
+`input_cursor_dx([playerIndex], [coordSpace])`
 
 <!-- tabs:start -->
 
 #### **Description**
 
-**Returns:** Number, the x-coordinate of the given player's cursor from the previous frame
+**Returns:** Number, how far the cursor has moved in the x-axis between frames
 
 |Name           |Datatype                |Purpose                                                                                                        |
 |---------------|------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -87,15 +87,15 @@ Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_
 
 &nbsp;
 
-## …cursor_previous_y
+## …cursor_dy
 
-`input_cursor_previous_y([playerIndex], [coordSpace])`
+`input_cursor_dy([playerIndex], [coordSpace])`
 
 <!-- tabs:start -->
 
 #### **Description**
 
-**Returns:** Number, the y-coordinate of the given player's cursor from the previous frame
+**Returns:** Number, how far the cursor has moved in the y-axis between frames
 
 |Name           |Datatype                |Purpose                                                                                                        |
 |---------------|------------------------|---------------------------------------------------------------------------------------------------------------|
