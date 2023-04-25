@@ -7,7 +7,7 @@
 /// @param   [playerIndex=0]
 /// @param   [coordSpace]     Coordinate space to use. If not specified, the coordinate space set by input_cursor_coord_space_set() is used
 
-function input_cursor_previous_x(_player_index = 0, _outputSystem = undefined)
+function input_cursor_previous_x(_player_index = 0, _output_system = undefined)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_PLAYER_INDEX
@@ -16,5 +16,5 @@ function input_cursor_previous_x(_player_index = 0, _outputSystem = undefined)
     return __input_transform_coordinate(_cursor.__prev_x,
                                         _cursor.__prev_y,
                                         _cursor.__coord_space,
-                                        _outputSystem ?? _global.__pointer_coord_space).x;
+                                        _output_system ?? _global.__pointer_coord_space).x;
 }
