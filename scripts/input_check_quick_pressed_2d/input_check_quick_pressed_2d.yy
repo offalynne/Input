@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "input_xy_quick_pressed",
+  "name": "input_check_quick_pressed_2d",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "2D Checkers",
-    "path": "folders/Input/2D Checkers.yy",
+    "name": "Checkers",
+    "path": "folders/Input/Checkers.yy",
   },
 }
