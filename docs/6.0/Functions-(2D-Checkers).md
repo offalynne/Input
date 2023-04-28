@@ -163,7 +163,7 @@ The struct returned by this function contains two member variables: `.x` and `.y
 #### **Example**
 
 ```gml
-//Move according to horizontal and vertical input 
+//Move instance per horizontal and vertical input 
 var _movement_xy = input_x("left", "right", "up", "down");
 x += _movement_xy.x;
 y += _movement_xy.y;
@@ -196,11 +196,11 @@ y += _movement_xy.y;
 #### **Example**
 
 ```gml
-//Dash if directional input is quick pressed (analogue) or double-pressed
+//Double instance speed if input is quick (analogue) or double-pressed
 if (input_xy_quick_pressed("left", "right", "up", "down") 
 ||  input_check_double_pressed(["left", "right", "up", "down"]))
 {
-    //Dash!
+    speed *= 2;
 }
 ```
 
