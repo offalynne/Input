@@ -22,7 +22,6 @@ Input 6 introduces a number of new features alongside a small number of breaking
 - Adds `input_verb_group_get_verbs()` and `input_verbs_groups_get()`
 - Adds `input_mouse_enabled_set()` (and getter)
 - Adds `INPUT_POINTER_TYPE` macro that contains the type of pointer available on the current hardware
-- Adds `INPUT_GAMEPAD_EXTENDED_TYPES` (defaulting to `false`) to simplify gamepad support further
 - Adds `input_led_pattern_get()`
 - Adds `input_cursor_dx()` and `input_cursor_dy()`
 
