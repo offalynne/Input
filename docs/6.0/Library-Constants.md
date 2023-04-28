@@ -76,19 +76,19 @@ The `INPUT_BINDING_SCAN_EVENT` enum is used by the failure callback for [`input_
 
 The following constants allow you to reference specific gamepad types. These constants are used to define [`input_icon()`](Functions-(Other)?id=input_iconscategoryname) categories, to specify type override with [`input_player_gamepad_type_override_set()`](Functions-(Players)#input_player_gamepad_type_override_setgamepadtype-playerindex), and are returned by [`input_player_get_gamepad_type()`](Functions-(Players)?id=input_player_get_gamepad_typeplayerindex-binding), [`input_gamepad_get_type()`](Functions-(Gamepad)?id=input_gamepad_get_typegamepadindex), and [`input_player_gamepad_type_override_get()`](Functions-(Players)#input_player_gamepad_type_override_getgamepadtype-playerindex).
 
-|Name                              | Gamepads           |
-|----------------------------------|--------------------|
+|Name                              | Gamepads             |
+|----------------------------------|----------------------|
 |`INPUT_GAMEPAD_TYPE_XBOX_ONE`     | Xbox Series, Xbox One, Steam Deck, Luna, Stadia, MFi |
 |`INPUT_GAMEPAD_TYPE_XBOX_360`     | Xbox 360, Dreamcast, Steam Controller, Steam Link Touch Controller |
-|`INPUT_GAMEPAD_TYPE_PS5`          | PS5 |
-|`INPUT_GAMEPAD_TYPE_PS4`          | PS4 |
-|`INPUT_GAMEPAD_TYPE_PSX`          | PS1, PS2, PS3 |
+|`INPUT_GAMEPAD_TYPE_PS5`          | PS5                  |
+|`INPUT_GAMEPAD_TYPE_PS4`          | PS4                  |
+|`INPUT_GAMEPAD_TYPE_PSX`          | PS1, PS2, PS3        |
 |`INPUT_GAMEPAD_TYPE_SWITCH`       | Switch Handheld Mode, Switch Lite, Switch Joy-Con Pair, Switch Pro, Switch 3rd party, WiiU, Wii |
-|`INPUT_GAMEPAD_TYPE_JOYCON_LEFT`  | Switch Joy-Con Left |
+|`INPUT_GAMEPAD_TYPE_JOYCON_LEFT`  | Switch Joy-Con Left  |
 |`INPUT_GAMEPAD_TYPE_JOYCON_RIGHT` | Switch Joy-Con Right |
-|`INPUT_GAMEPAD_TYPE_GAMECUBE`     | GameCube |
+|`INPUT_GAMEPAD_TYPE_GAMECUBE`     | GameCube             |
 
-!> Setting `INPUT_GAMEPAD_EXTENDED_TYPES` in the `__input_config_gamepads()` configuration to `true` will add additional gamepad types referenced by string, see [`input_icons()`](Functions-(Other)?id=input_iconscategoryname)
+!> Additional extended gamepad types for variations and legacy devices can be found and configured in the `__input_define_gamepad_types` script resource.
 
 &nbsp;
 
