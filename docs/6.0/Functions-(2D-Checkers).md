@@ -64,7 +64,7 @@ var _move_distance = input_distance("left", "right", "up", "down");
 if (_move_distance > 0)
 {
     x += lengthdir_x(_move_distance, direction);
-    y += lengthdir_x(_move_distance, direction);
+    y += lengthdir_y(_move_distance, direction);
 }
 ```
 
