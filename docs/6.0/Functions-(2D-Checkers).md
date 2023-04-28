@@ -30,7 +30,12 @@ The functions on this page allow you to check verbs by treating them as 2D vecto
 
 ```gml
 //Set sprite rotation to the input direction, defauling to the last sprite rotation value
-image_angle = input_direction(image_angle, "left", "right", "up", "down", 0, false);
+image_angle = input_direction(image_angle, "left", "right", "up", "down");
+```
+
+```gml
+//Get difference between current direction and most recent input direction for player 0
+angle = angle_difference(direction, input_direction(direction, "left", "right", "up", "down", 0, true));
 ```
 
 <!-- tabs:end -->
