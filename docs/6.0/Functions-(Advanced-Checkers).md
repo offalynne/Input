@@ -221,12 +221,47 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 
 If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are quick tapped this frame for the player.
 
-!> This function will only work with anaologue input. Digital input (buttons, keys etc.) cannot trigger a quick tap.
+!> This function will only work with anaologue input. This function will return `false` if any digital input is used.
 
 #### **Example**
 
 ```gml
 //TODO lol
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …check_quick_pressed_2d
+
+`input_check_quick_pressed_2d(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the analogue inputs registered a quick tap this frame
+
+|Name            |Datatype                  |Purpose                                                     |
+|----------------|--------------------------|------------------------------------------------------------|
+|`verbLeft`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
+|`verbRight`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
+|`verbUp`        |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
+|`verbDown`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
+|`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used        |
+
+!> Only analogue inputs can trigger quick taps. This function will return `false` if any digital input is used.
+
+#### **Example**
+
+```gml
+//Double instance speed if input is quick (analogue only) or double-pressed (analogue or digital)
+if (input_check_quick_pressed_2d("left", "right", "up", "down") 
+||  input_check_double_pressed(["left", "right", "up", "down"]))
+{
+    speed *= 2;
+}
 ```
 
 <!-- tabs:end -->

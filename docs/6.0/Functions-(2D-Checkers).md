@@ -173,41 +173,6 @@ y += _movement_xy.y;
 
 &nbsp;
 
-## …xy_quick_pressed
-
-`input_xy_quick_pressed(verbLeft, verbRight, verbUp, verbDown, [playerIndex])`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** Boolean, whether the analogue inputs registered a quick tap this frame
-
-|Name            |Datatype                  |Purpose                                                     |
-|----------------|--------------------------|------------------------------------------------------------|
-|`verbLeft`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left |
-|`verbRight`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right|
-|`verbUp`        |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
-|`verbDown`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
-|`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used        |
-
-!> Only analogue inputs can trigger quick taps. This function will return `false` if any digital input is used.
-
-#### **Example**
-
-```gml
-//Double instance speed if input is quick (analogue) or double-pressed
-if (input_xy_quick_pressed("left", "right", "up", "down") 
-||  input_check_double_pressed(["left", "right", "up", "down"]))
-{
-    speed *= 2;
-}
-```
-
-<!-- tabs:end -->
-
-&nbsp;
-
 ## …radial_sector
 
 `input_radial_sector(verbLeft, verbRight, verbUp, verbDown, [minAngle], [maxAngle], [minMagnitude], [maxMagnitude], [playerIndex])`
