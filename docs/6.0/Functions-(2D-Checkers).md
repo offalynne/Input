@@ -29,7 +29,8 @@ The functions on this page allow you to check verbs by treating them as 2D vecot
 #### **Example**
 
 ```gml
-//TODO lol
+//Set sprite rotation to the input direction, defauling to the last sprite rotation value
+image_angle = input_direction(image_angle, "left", "right", "up", "down", 0, false);
 ```
 
 <!-- tabs:end -->
@@ -58,7 +59,13 @@ The functions on this page allow you to check verbs by treating them as 2D vecot
 #### **Example**
 
 ```gml
-//TODO lol
+//Move input distance in the current direction 
+var _move_distance = input_distance("left", "right", "up", "down");
+if (_move_distance > 0)
+{
+    x += lengthdir_x(_move_distance, direction);
+    y += lengthdir_x(_move_distance, direction);
+}
 ```
 
 <!-- tabs:end -->
@@ -87,7 +94,8 @@ The functions on this page allow you to check verbs by treating them as 2D vecot
 #### **Example**
 
 ```gml
-//TODO lol
+//Move according according to horizotnal input 
+x += input_x("left", "right", "up", "down");
 ```
 
 <!-- tabs:end -->
@@ -116,7 +124,8 @@ The functions on this page allow you to check verbs by treating them as 2D vecot
 #### **Example**
 
 ```gml
-//TODO lol
+//Move according according to vertical input 
+y += input_y("left", "right", "up", "down");
 ```
 
 <!-- tabs:end -->
@@ -149,7 +158,10 @@ The struct returned by this function contains two member variables: `.x` and `.y
 #### **Example**
 
 ```gml
-//TODO lol
+//Move according according to horizotnal and vertical input 
+var _movement_xy = input_x("left", "right", "up", "down");
+x += _movement_xy.x;
+y += _movement_xy.y;
 ```
 
 <!-- tabs:end -->
@@ -179,7 +191,11 @@ The struct returned by this function contains two member variables: `.x` and `.y
 #### **Example**
 
 ```gml
-//TODO lol
+//Dash if gamepad analogue direction is tapped or any directional input is double-pressed
+if (input_xy_quick_pressed("left", "right", "up", "down") || input_check_double_pressed(["left", "right", "up", "down"]))
+{
+    //Dash!
+}
 ```
 
 <!-- tabs:end -->
@@ -211,7 +227,11 @@ The struct returned by this function contains two member variables: `.x` and `.y
 #### **Example**
 
 ```gml
-//TODO lol
+//Run if the input directional vector points right and has a magnitude of 0.5 or greater
+if (input_radial_sector("left", "right", "up", "down", -45, 45, 0.5))
+{
+    //Run right!
+}
 ```
 
 <!-- tabs:end -->
