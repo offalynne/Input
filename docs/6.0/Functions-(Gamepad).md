@@ -218,7 +218,7 @@
 |--------------|--------------------------|------------------------------------------------------|
 |`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)|
 
-Returns the same values as [`input_player_gamepad_get_type()`](Functions-(Players)?id=input_player_get_gamepad_typeplayerindex-binding).
+Returns a [gamepad type constant](Library-Constants#gamepad-types).
 
 #### **Example**
 
