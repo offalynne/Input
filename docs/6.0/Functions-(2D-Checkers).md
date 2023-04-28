@@ -196,8 +196,9 @@ y += _movement_xy.y;
 #### **Example**
 
 ```gml
-//Dash if gamepad analogue direction is tapped or any directional input is double-pressed
-if (input_xy_quick_pressed("left", "right", "up", "down") || input_check_double_pressed(["left", "right", "up", "down"]))
+//Dash if directional input is quick pressed (analogue) or double-pressed
+if (input_xy_quick_pressed("left", "right", "up", "down") 
+||  input_check_double_pressed(["left", "right", "up", "down"]))
 {
     //Dash!
 }
