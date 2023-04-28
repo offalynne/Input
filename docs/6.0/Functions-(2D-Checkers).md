@@ -94,7 +94,7 @@ if (_move_distance > 0)
 #### **Example**
 
 ```gml
-//Move according according to horizotnal input 
+//Move according to horizotnal input 
 x += input_x("left", "right", "up", "down");
 ```
 
@@ -124,7 +124,7 @@ x += input_x("left", "right", "up", "down");
 #### **Example**
 
 ```gml
-//Move according according to vertical input 
+//Move according to vertical input 
 y += input_y("left", "right", "up", "down");
 ```
 
@@ -158,7 +158,7 @@ The struct returned by this function contains two member variables: `.x` and `.y
 #### **Example**
 
 ```gml
-//Move according according to horizotnal and vertical input 
+//Move according to horizotnal and vertical input 
 var _movement_xy = input_x("left", "right", "up", "down");
 x += _movement_xy.x;
 y += _movement_xy.y;
