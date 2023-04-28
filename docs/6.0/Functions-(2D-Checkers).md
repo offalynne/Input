@@ -26,7 +26,7 @@ The functions on this page allow you to check verbs by treating them as 2D vecto
 |`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used        |
 |`[mostRecent]` |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
 
-#### **Example**
+#### **Examples**
 
 ```gml
 //Set sprite rotation to the input direction, defaulting to the last sprite rotation value
@@ -34,8 +34,8 @@ image_angle = input_direction(image_angle, "left", "right", "up", "down");
 ```
 
 ```gml
-//Get difference between current direction and most recent input direction for player 0
-angle = angle_difference(direction, input_direction(direction, "left", "right", "up", "down", 0, true));
+//Get difference between instance direction and most recent input direction for player 0
+turn = angle_difference(direction, input_direction(direction, "left", "right", "up", "down", 0, true));
 ```
 
 <!-- tabs:end -->
@@ -99,7 +99,7 @@ if (_move_distance > 0)
 #### **Example**
 
 ```gml
-//Move according to horizotnal input 
+//Move instance according to horizotnal input 
 x += input_x("left", "right", "up", "down");
 ```
 
@@ -129,7 +129,7 @@ x += input_x("left", "right", "up", "down");
 #### **Example**
 
 ```gml
-//Move according to vertical input 
+//Move instance according to vertical input 
 y += input_y("left", "right", "up", "down");
 ```
 
