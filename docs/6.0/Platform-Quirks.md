@@ -33,6 +33,8 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - On OS versions below Windows 10, some Bluetooth gamepads fail to operate correctly. This is a system-level problem beyond our capability to address.
 
+- Xbox Game Bar is known to be problematic for Xbox gamepad use with many games including the Game Maker Studio runtime causing application freezing and slowdown. [Disabling Xbox Game Bar](https://www.epicgames.com/help/en-US/rocket-league-c5719357623323/troubleshooting-c7261971242139/how-do-i-turn-off-game-mode-xbox-game-bar-and-captures-on-my-pc-to-improve-rocket-league-s-performance-a5720078869147) may resolve the issue.
+
 - When windowed, the Alt+Space menu sticks. Input forces Space to release when Alt keys do.
 
 - Input addresses a runtime bug (marked 'wontfix' by YYG) preventing touchpad taps from registering as mouse clicks when they are configured to do so by system software.
