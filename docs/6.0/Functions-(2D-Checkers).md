@@ -64,7 +64,7 @@ turn = angle_difference(direction, input_direction(direction, "left", "right", "
 #### **Example**
 
 ```gml
-//Move input distance in the current direction 
+//Move instance input distance in it's current direction 
 var _move_distance = input_distance("left", "right", "up", "down");
 if (_move_distance > 0)
 {
