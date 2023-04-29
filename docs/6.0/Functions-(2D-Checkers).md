@@ -158,7 +158,7 @@ The struct returned by this function contains two member variables: `.x` and `.y
 #### **Example**
 
 ```gml
-//Move instance per horizontal and vertical input 
+//Move instance according to horizontal and vertical input 
 var _movement = input_x("left", "right", "up", "down");
 x += _movement.x;
 y += _movement.y;
