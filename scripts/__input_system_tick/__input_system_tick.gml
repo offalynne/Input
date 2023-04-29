@@ -165,7 +165,7 @@ function __input_system_tick()
         if (__input_window_changed())
         {
             _global.__mouse_capture_blocked = true;
-            if (os_type == os_windows)
+            if ((os_type == os_windows) && window_get_showborder())
             {
                 input_mouse_capture_set(true, _global.__mouse_capture_sensitivity);        
             }
