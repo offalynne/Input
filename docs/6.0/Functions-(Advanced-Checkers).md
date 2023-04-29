@@ -28,7 +28,11 @@ This function will **not** return `true` on the same frame a verb is activated (
 #### **Example**
 
 ```gml
-//TODO lol
+//Delete a single file on a press, and delete multiple files if the verb is held
+if (input_check_pressed("delete") or input_check_repeat("delete"))
+{
+    delete_file();
+}
 ```
 
 <!-- tabs:end -->
@@ -56,7 +60,18 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 #### **Example**
 
 ```gml
-//TODO lol
+if (input_check_double("right"))
+{
+    //If the player double-tapped "right" then sprint
+    sprite_index = spr_player_sprint;
+    hspeed = 7;
+}
+else if (input_check("right"))
+{
+    //Otherwise use the normal running speed/sprite
+    sprite_index = spr_player_run;
+    hspeed = 4;
+}
 ```
 
 <!-- tabs:end -->
@@ -84,7 +99,25 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 #### **Example**
 
 ```gml
-//TODO lol
+if (weapon == "boxing_gloves")
+{
+    //If the player has equipped the boxing gloves, only attack on a double tap
+    //This does more damage but is slow to execute and animate
+    if (input_check_double_pressed("attack"))
+    {
+        sprite_index = spr_player_attack_boxing_gloves;
+        damage = 13;
+    }
+}
+else
+{
+    //Otherwise attack on the first press of the "attack" verb
+    if (input_check_pressed("attack"))
+    {
+        sprite_index = spr_player_attack_single;
+        damage = 5;
+    }
+}
 ```
 
 <!-- tabs:end -->
@@ -112,7 +145,23 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 #### **Example**
 
 ```gml
-//TODO lol
+if (input_check_double_released("bank right"))
+{
+    //Do a barrel roll on a double tap!
+    sprite_index = spr_roll_right;
+    hspeed = 4;
+}
+else if ((sprite_index != spr_roll_right) and input_check("bank right"))
+{
+    //Otherwise bank gently (if we're not already rolling)
+    sprite_index = spr_bank_right;
+    hspeed = 2;
+}
+else
+{
+    //Finally, reset our bank speed to 0 on no input
+    hspeed = 0;
+}
 ```
 
 <!-- tabs:end -->
@@ -140,7 +189,11 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 #### **Example**
 
 ```gml
-//TODO lol
+if (input_check_long("pause"))
+{
+    //If we're showing the game off in DEMO_MODE then restart
+    if (DEMO_MODE) game_restart();
+}
 ```
 
 <!-- tabs:end -->
@@ -168,7 +221,18 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 #### **Example**
 
 ```gml
-//TODO lol
+//Crouch when we press the "duck" verb
+if (input_check_press("duck"))
+{
+    sprite_index = spr_player_crouch;
+    max_speed = 4;
+}
+else if (input_check_long_pressed("duck"))
+{
+    //But if we hold the "duck" verb for longer then crawl
+    sprite_index = spr_player_crawl;
+    max_speed = 2;
+}
 ```
 
 <!-- tabs:end -->
@@ -196,7 +260,18 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 #### **Example**
 
 ```gml
-//TODO lol
+if (input_check_long_released("attack"))
+{
+    //Perform a big flashy attack move if we charged up the attack
+    sprite_index = spr_spin_attack;
+    damage = 23;
+}
+else if (input_check_released("attack"))
+{
+    //Otherwise swing weakly
+    sprite_index = spr_standard_attack;
+    damage = 15;
+}
 ```
 
 <!-- tabs:end -->
@@ -226,7 +301,12 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 #### **Example**
 
 ```gml
-//TODO lol
+//If the player pulls too hard on the fishing rod then snap the line
+if (input_check_quick_pressed("fishing rod"))
+{
+    audio_sound_play(snd_fishing_line_snap, 0, false);
+    caught_fish.free = true;
+}
 ```
 
 <!-- tabs:end -->
@@ -258,7 +338,7 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 ```gml
 //Double instance speed if input is quick (analogue only) or double-pressed (analogue or digital)
 if (input_check_quick_pressed_2d("left", "right", "up", "down") 
-||  input_check_double_pressed(["left", "right", "up", "down"]))
+or  input_check_double_pressed(["left", "right", "up", "down"]))
 {
     speed *= 2;
 }
@@ -288,7 +368,10 @@ if (input_check_quick_pressed_2d("left", "right", "up", "down")
 #### **Example**
 
 ```gml
-//TODO lol
+//Rotate the turret based on whether the "left" or "right" verb is active
+//If the player holds both at the same time, the most recent verb takes priority
+var _speed = 6;
+direction += _speed*input_check_opposing("left", "right", 0, true);
 ```
 
 <!-- tabs:end -->
@@ -319,7 +402,9 @@ This function will **not** return `true` on the same frame a verb is activated (
 #### **Example**
 
 ```gml
-//TODO lol
+//Change option we've selected based on the "menu up" and "menu down" verbs
+//If the player holds either down, the menu option will quickly scroll
+option = (option + input_check_opposing("menu up", "menu down")) mod option_count;
 ```
 
 <!-- tabs:end -->
@@ -346,7 +431,13 @@ This function will **not** return `true` on the same frame a verb is activated (
 #### **Example**
 
 ```gml
-//TODO lol
+//Vertically flip our sprite based on whether the "up" or "down" verbs have been pressed
+var _sign = input_check_opposing_pressed("up", "down");
+if (_sign != 0)
+{
+    image_yscale = _sign;
+    instance_create_depth(x, y, depth-1, obj_sparks);
+}
 ```
 
 <!-- tabs:end -->
@@ -400,7 +491,41 @@ The units returned by this function is determined by `INPUT_TIMER_MILLISECONDS`.
 #### **Example**
 
 ```gml
-//TODO lol
+//When we release the bow attack, determine how much damage to do
+if (input_held_released("bow attack"))
+{
+    var _damage_multiplier;
+
+    if (input_held_time_released("bow attack") > 20)
+    {
+        //Held for over 20 frames = Max power shot!
+        _damage_multiplier = 2;
+    }
+    else if (input_held_time_released("bow attack") > 10)
+    {
+        //Held for anything over 10 frames = Standard shot
+        _damage_multiplier = 1;
+    }
+    else if (input_held_time_released("bow attack") == 10)
+    {
+        //Held for extra 10 frames = Special snapshot bonus
+        _damage_multiplier = 1.5;
+    }
+    else
+    {
+        //No damage at all
+        _damage_multiplier = 0;
+    }
+
+    //Only create an arrow projectile if we're going to deal damage
+    if (_damage_multiplier > 0)
+    {
+        instance_create_layer(x, y, "Projectiles", obj_player_arrow,
+        {
+            damage_multiplier: _damage_multiplier
+        });
+    }
+}
 ```
 
 <!-- tabs:end -->
@@ -415,7 +540,7 @@ The units returned by this function is determined by `INPUT_TIMER_MILLISECONDS`.
 
 #### **Description**
 
-**Returns:** Most recent [verb](Verbs-and-Bindings) pressed in the specified array, or `undefined` if no verb is active
+**Returns:** String, most recent [verb](Verbs-and-Bindings) pressed in the specified array, or `undefined` if no verb is active
 
 |Name              |Datatype                        |Purpose                                                                                                                                              |
 |------------------|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -425,7 +550,20 @@ The units returned by this function is determined by `INPUT_TIMER_MILLISECONDS`.
 #### **Example**
 
 ```gml
-//TODO lol
+//Choose the colour of the damage text based on what spell we cast last
+switch(input_check_press_most_recent(["fire", "water", "air", "earth", "heart"])
+{
+    case "fire":  draw_set_colour(c_red);     break;
+    case "water": draw_set_colour(c_blue);    break;
+    case "air":   draw_set_colour(c_yellow);  break;
+    case "earth": draw_set_colour(c_lime);    break;
+    case "heart": draw_set_colour(c_fuchsia); break;
+}
+
+draw_text(x, y, "Damage: " + string(damage));
+
+//Reset the draw colour!
+draw_set_colour(c_white);
 ```
 
 <!-- tabs:end -->
