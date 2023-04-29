@@ -147,7 +147,7 @@ if (input_check_released("pause"))
 //If we relased the "accelerate" verb recently before braking then create some tyre smoke
 if (input_check_released("accelerate", 0, 6) and input_check_pressed("brake"))
 {
-	instance_create_layer(x, y, "Particle_Effects", obj_tire_smoke);
+	instance_create_layer(x, y, "Particle_Effects", obj_tyre_smoke);
 }
 ```
 
