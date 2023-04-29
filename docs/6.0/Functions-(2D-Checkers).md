@@ -34,8 +34,8 @@ image_angle = input_direction(image_angle, "left", "right", "up", "down");
 ```
 
 ```gml
-//Get difference between instance direction and most recent input direction for player 0
-var _turn = angle_difference(direction, input_direction(direction, "left", "right", "up", "down", 0, true));
+//Add motion with most recent input direction for player 0 at current speed 
+motion_add(input_direction("left", "right", "up", "down", 0, true), speed);
 ```
 
 <!-- tabs:end -->
@@ -64,13 +64,8 @@ var _turn = angle_difference(direction, input_direction(direction, "left", "righ
 #### **Example**
 
 ```gml
-//Move instance input distance in it's current direction 
-var _move_distance = input_distance("left", "right", "up", "down");
-if (_move_distance > 0)
-{
-    x += lengthdir_x(_move_distance, direction);
-    y += lengthdir_y(_move_distance, direction);
-}
+//Add motion in an instance's current direction with input distance for speed 
+motion_add(direction, input_distance("left", "right", "up", "down"));
 ```
 
 <!-- tabs:end -->
@@ -198,7 +193,7 @@ y += _movement.y;
 #### **Example**
 
 ```gml
-//Run if the input directional vector points right and has a magnitude of 0.5 or greater
+//Run if the input directional vector points right with a magnitude of 0.5 or greater
 if (input_radial_sector("left", "right", "up", "down", -45, 45, 0.5))
 {
     //Run right!
