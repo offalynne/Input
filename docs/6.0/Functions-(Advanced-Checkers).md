@@ -464,7 +464,18 @@ The units returned by this function is determined by `INPUT_TIMER_MILLISECONDS`.
 #### **Example**
 
 ```gml
-//TODO lol
+var _target_time = 20;
+var _width       = 40;
+
+//Determine how much of the bar to fill
+var _time = max(0, input_held_time("bow attack"));
+var _fill = clamp(_time/_target_time, 0, 1);
+
+//Draw the bow charge bar's fill
+draw_rectangle(x, y, x + _width*_fill, y + 10, false);
+
+//Draw the outline of the charge bar
+draw_rectangle(x, y, x + _width, y + 10, true);
 ```
 
 <!-- tabs:end -->
