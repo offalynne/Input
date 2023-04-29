@@ -35,7 +35,7 @@ image_angle = input_direction(image_angle, "left", "right", "up", "down");
 
 ```gml
 //Get difference between instance direction and most recent input direction for player 0
-turn = angle_difference(direction, input_direction(direction, "left", "right", "up", "down", 0, true));
+var _turn = angle_difference(direction, input_direction(direction, "left", "right", "up", "down", 0, true));
 ```
 
 <!-- tabs:end -->
