@@ -29,7 +29,7 @@ The functions on this page allow you to check verbs by treating them as 2D vecto
 #### **Examples**
 
 ```gml
-//Set sprite rotation to the input direction, defaulting to the last sprite rotation value
+//Set instance rotation to input direction, defaulting to the current value
 image_angle = input_direction(image_angle, "left", "right", "up", "down");
 ```
 
