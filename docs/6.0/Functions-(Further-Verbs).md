@@ -23,6 +23,14 @@ This page contains verb-related functions that don't fit elsewhere. They give yo
 
 When a verb has been consumed, [check functions](Functions-(Checkers)) that target the verb will return `false` until the button is released and pressed again.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
 ## …verb_set
@@ -175,11 +183,21 @@ A verb is considerd inactive when the verb group that that verb is a part of has
 |----|--------|-------|
 |None|        |       |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
 ## …verb_group_get_verbs
 
 `input_verb_group_get_verbs(verbGroup)`
+
+<!-- tabs:start -->
 
 **Returns:** Array, the verbs set for the verb group
 
