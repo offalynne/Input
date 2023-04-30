@@ -43,6 +43,7 @@
 - [Further Verb Functions](Functions-(Further-Verbs))
 - [Binding Creators](Functions-(Binding-Creators))
 - [Binding Access](Functions-(Binding-Access))
+- [Binding Scanner](Functions-(Binding-Scan))
 - [Icons](Functions-(Icons))
 - [Cursor](Functions-(Cursor))
 - [Mouse Capture](Functions-(Mouse-Capture))
