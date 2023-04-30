@@ -199,6 +199,8 @@ A verb is considerd inactive when the verb group that that verb is a part of has
 
 <!-- tabs:start -->
 
+#### **Description**
+
 **Returns:** Array, the verbs set for the verb group
 
 |Name           |Datatype                        |Purpose                                             |
