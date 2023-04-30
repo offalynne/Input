@@ -26,7 +26,7 @@ Gamepad motion features provide normalized data from sensors available on PlaySt
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
-This function returns a struct that describes the motion of  a player's gamepad, following the formatting below.
+This function returns a struct that describes the motion of a player's gamepad, following the formatting below.
 
 ```
 {
@@ -72,7 +72,12 @@ Sets whether gamepad gyro controls the cursor for the player.
 #### **Example**
 
 ```gml
-//TODO lol
+//Control cursor with gamepad motion when the Aim verb is active
+var _gamepad = input_player_get_gamepad();
+if (input_gamepad_is_connected(_gamepad))
+{
+    input_gyro_enabled_set(input_check("aim"));
+}
 ```
 
 <!-- tabs:end -->
@@ -96,7 +101,16 @@ Sets whether gamepad gyro controls the cursor for the player.
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw an aim indicator for each player with gyro enabled
+var _i = 0;
+repeat(INPUT_MAX_PLAYERS)
+{
+    if (input_gyro_enabled_get(_i))
+    {
+        draw_circle(input_cursor_x(_i), input_cursor_y(_i), 16, true);
+    }
+    ++_i;
+}
 ```
 
 <!-- tabs:end -->
