@@ -20,12 +20,18 @@ _Returns:_ Boolean, if the value is a valid binding struct
 |-------|--------|--------------|
 |`value`|any     |Value to check|
 
-Useful for verifying if a value returned from [`input_binding_scan_tick()`]() or [`input_binding_get()`]() is a binding.
-
 #### **Example**
 
 ```gml
-//TODO lol
+//Show the correct text depending on whether this alternate has a binding already
+if (value_is_binding(binding_get(verb_to_change, alternate_to_change)))
+{
+	draw_text(x, y, "Replace");
+}
+else
+{
+	draw_text(x, y, "New");
+}
 ```
 
 <!-- tabs:end -->
