@@ -29,7 +29,7 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Touch",
-    "path": "folders/Test Cases/Touch.yy",
+    "name": "Test Cases",
+    "path": "folders/Test Cases.yy",
   },
 }

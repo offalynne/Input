@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_test_touch",
+  "name": "obj_test_touch_as_mouse",
   "spriteId": null,
   "solid": false,
   "visible": true,
@@ -30,7 +30,7 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Touch",
-    "path": "folders/Test Cases/Touch.yy",
+    "name": "Test Cases",
+    "path": "folders/Test Cases.yy",
   },
 }

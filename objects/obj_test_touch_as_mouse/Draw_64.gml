@@ -1,4 +1,4 @@
-if (__INPUT_TOUCH_SUPPORT && !__INPUT_ON_PS)
+if (__INPUT_TOUCH_SUPPORT)
 {
     //Draw touches
     var _i = 0;

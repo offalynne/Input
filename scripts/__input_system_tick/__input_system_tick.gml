@@ -9,87 +9,85 @@ function __input_system_tick()
 
     #region Touch
     
-    if (__INPUT_TOUCH_SUPPORT && INPUT_TOUCH_POINTER_ALLOWED)
+    if (INPUT_PS_TOUCHPAD_ALLOWED && __INPUT_ON_PS)
     {
-        if (__INPUT_ON_PS)
+        //Use first touch (of 2) on active PlayStation gamepad
+        var _gamepad = _global.__players[0].__source_get_gamepad();
+        if (_gamepad >= 0 && _gamepad < 4)
         {
-            //Use first touch (of 2) on active PlayStation gamepad
-            var _gamepad = input_player_get_gamepad();
-            if (_gamepad >= 0 && _gamepad < 4)
+            _global.__pointer_index = _gamepad * 2;
+            _global.__pointer_pressed  = gamepad_button_check_pressed(_gamepad, gp_select);
+            _global.__pointer_released = gamepad_button_check_released(_gamepad, gp_select);
+        }
+    }
+
+    if (__INPUT_TOUCH_SUPPORT)
+    {
+        var _touch_index = undefined;
+        var _touch_press_index = _global.__pointer_pressed_index;
+
+        //Track contact duration per index
+        var _i = 0;
+        repeat(INPUT_MAX_TOUCHPOINTS)
+        {
+            if (!device_mouse_check_button(_i, mb_left))
             {
-                _global.__pointer_index = _gamepad * 2;
-                _global.__pointer_pressed  = gamepad_button_check_pressed(_gamepad, gp_select);
-                _global.__pointer_released = gamepad_button_check_released(_gamepad, gp_select);
+                _global.__pointer_durations[_i] = 0;
+            }
+            else
+            {
+                //Get recent active touch
+                _global.__pointer_durations[_i] += delta_time;
+                if ((_touch_index == undefined) || (_global.__pointer_durations[_i] < _global.__pointer_durations[_touch_index]))
+                {
+                    _touch_index = _i;
+                }
+            }
+
+            _i++;
+        }
+    
+        //Set active pointer index
+        if (_touch_index == undefined) _touch_index = 0;
+        _global.__pointer_pressed = device_mouse_check_button_pressed(_touch_index, mb_left);
+        _global.__pointer_released = ((_touch_press_index != undefined) && device_mouse_check_button_released(_touch_press_index, mb_left));
+
+        //Touch edge testing
+        var _w = display_get_gui_width();
+        var _h = display_get_gui_height();
+        if (INPUT_TOUCH_EDGE_DEADZONE > 0)
+        {
+            //Release
+            if (_global.__pointer_released)
+            {
+                var _tx = device_mouse_x_to_gui(_touch_press_index);
+                var _ty = device_mouse_y_to_gui(_touch_press_index);
+
+                if ((_tx < INPUT_TOUCH_EDGE_DEADZONE) || (_tx > (_w - INPUT_TOUCH_EDGE_DEADZONE))
+                ||  (_ty < INPUT_TOUCH_EDGE_DEADZONE) || (_ty > (_h - INPUT_TOUCH_EDGE_DEADZONE)))
+                {
+                    _global.__pointer_released = false;
+                }
+            }
+    
+            //Press
+            if (_global.__pointer_pressed)
+            {
+                var _tx = device_mouse_x_to_gui(_touch_index);
+                var _ty = device_mouse_y_to_gui(_touch_index);
+
+                if ((_tx < INPUT_TOUCH_EDGE_DEADZONE) || (_tx > (_w - INPUT_TOUCH_EDGE_DEADZONE))
+                ||  (_ty < INPUT_TOUCH_EDGE_DEADZONE) || (_ty > (_h - INPUT_TOUCH_EDGE_DEADZONE)))
+                {
+                    _global.__pointer_pressed = false;
+                }
             }
         }
-        else
-        {
-            var _touch_index = undefined;
-            var _touch_press_index = _global.__pointer_pressed_index;
-    
-            //Track contact duration per index
-            var _i = 0;
-            repeat(INPUT_MAX_TOUCHPOINTS)
-            {
-                if (!device_mouse_check_button(_i, mb_left))
-                {
-                    _global.__pointer_durations[_i] = 0;
-                }
-                else
-                {
-                    //Get recent active touch
-                    _global.__pointer_durations[_i] += delta_time;
-                    if ((_touch_index == undefined) || (_global.__pointer_durations[_i] < _global.__pointer_durations[_touch_index]))
-                    {
-                        _touch_index = _i;
-                    }
-                }
-    
-                _i++;
-            }
-        
-            //Set active pointer index
-            if (_touch_index == undefined) _touch_index = 0;
-            _global.__pointer_pressed = device_mouse_check_button_pressed(_touch_index, mb_left);
-            _global.__pointer_released = ((_touch_press_index != undefined) && device_mouse_check_button_released(_touch_press_index, mb_left));
 
-            //Touch edge testing
-            var _w = display_get_gui_width();
-            var _h = display_get_gui_height();
-            if (INPUT_TOUCH_EDGE_DEADZONE > 0)
-            {
-                //Release
-                if (_global.__pointer_released)
-                {
-                    var _tx = device_mouse_x_to_gui(_touch_press_index);
-                    var _ty = device_mouse_y_to_gui(_touch_press_index);
-    
-                    if ((_tx < INPUT_TOUCH_EDGE_DEADZONE) || (_tx > (_w - INPUT_TOUCH_EDGE_DEADZONE))
-                    ||  (_ty < INPUT_TOUCH_EDGE_DEADZONE) || (_ty > (_h - INPUT_TOUCH_EDGE_DEADZONE)))
-                    {
-                        _global.__pointer_released = false;
-                    }
-                }
-        
-                //Press
-                if (_global.__pointer_pressed)
-                {
-                    var _tx = device_mouse_x_to_gui(_touch_index);
-                    var _ty = device_mouse_y_to_gui(_touch_index);
-
-                    if ((_tx < INPUT_TOUCH_EDGE_DEADZONE) || (_tx > (_w - INPUT_TOUCH_EDGE_DEADZONE))
-                    ||  (_ty < INPUT_TOUCH_EDGE_DEADZONE) || (_ty > (_h - INPUT_TOUCH_EDGE_DEADZONE)))
-                    {
-                        _global.__pointer_pressed = false;
-                    }
-                }
-            }
-    
-            //Update state
-            _global.__pointer_index = _touch_index;
-            if (_global.__pointer_pressed)  _global.__pointer_pressed_index = _touch_index;
-            if (_global.__pointer_released) _global.__pointer_pressed_index = undefined;
-        }
+        //Update state
+        _global.__pointer_index = _touch_index;
+        if (_global.__pointer_pressed)  _global.__pointer_pressed_index = _touch_index;
+        if (_global.__pointer_released) _global.__pointer_pressed_index = undefined;
     }
     
     #endregion

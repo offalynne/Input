@@ -7,7 +7,7 @@ function __input_gamepad_set_mapping()
     #region Console
     
     //Switch requires some extra setup
-    if (os_type == os_switch)
+    if (__INPUT_ON_SWITCH)
     {
         //Disallow dpad input from single Joy-Cons. This happens when moving the thumbstick around in horizontal mode
         if ((raw_type != "SwitchJoyConLeft") && (raw_type != "SwitchJoyConRight"))
@@ -72,13 +72,9 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_padl,   gp_padl,   __INPUT_MAPPING.BUTTON, "dpleft");
         set_mapping(gp_padr,   gp_padr,   __INPUT_MAPPING.BUTTON, "dpright");
         set_mapping(gp_start,  gp_start,  __INPUT_MAPPING.BUTTON, "start");
-        set_mapping(gp_select, gp_select, __INPUT_MAPPING.BUTTON, "back");
         
         set_mapping(gp_shoulderl,  gp_shoulderl,  __INPUT_MAPPING.BUTTON, "leftshoulder");
         set_mapping(gp_shoulderr,  gp_shoulderr,  __INPUT_MAPPING.BUTTON, "rightshoulder");
-        
-        set_mapping(gp_shoulderlb, (__INPUT_ON_PS? 4 : gp_shoulderlb), __INPUT_MAPPING.AXIS, "lefttrigger");
-        set_mapping(gp_shoulderrb, (__INPUT_ON_PS? 5 : gp_shoulderrb), __INPUT_MAPPING.AXIS, "righttrigger");
         
         set_mapping(gp_face1, gp_face1, __INPUT_MAPPING.BUTTON, "a");
         set_mapping(gp_face2, gp_face2, __INPUT_MAPPING.BUTTON, "b");
@@ -91,6 +87,22 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axisrh, gp_axisrh, __INPUT_MAPPING.AXIS,   "rightx");
         set_mapping(gp_axisrv, gp_axisrv, __INPUT_MAPPING.AXIS,   "righty");
         set_mapping(gp_stickr, gp_stickr, __INPUT_MAPPING.BUTTON, "rightstick");
+        
+        if (__INPUT_ON_PS)
+        {
+            //PlayStation
+            set_mapping(gp_shoulderlb, 4, __INPUT_MAPPING.AXIS, "lefttrigger");
+            set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.AXIS, "righttrigger");
+            
+            if (!INPUT_PS_TOUCHPAD_ALLOWED) set_mapping(gp_select, gp_select, __INPUT_MAPPING.BUTTON, "touchpad");
+            
+            return;
+        }
+        
+        //Xbox
+        set_mapping(gp_shoulderlb, gp_shoulderlb, __INPUT_MAPPING.AXIS,   "lefttrigger");
+        set_mapping(gp_shoulderrb, gp_shoulderrb, __INPUT_MAPPING.AXIS,   "righttrigger");
+        set_mapping(gp_select,     gp_select,     __INPUT_MAPPING.BUTTON, "back");
         
         return;
     }
@@ -849,7 +861,7 @@ function __input_gamepad_set_mapping()
     
     #region Nintendo Controllers on Android (hid-nintendo, Mayflash)
 
-    if (os_type == os_android)
+    if (__INPUT_ON_ANDROID)
     {
         if (guid == "4e696e74656e646f2053776974636820") //"Nintendo Switch "
         {
@@ -981,7 +993,7 @@ function __input_gamepad_set_mapping()
     
     #region Nintendo Switch Controllers on iOS
 
-    if ((os_type == os_ios) || (os_type == os_tvos))
+    if (__INPUT_ON_IOS)
     {
         if ((raw_type == "SwitchJoyConPair") || (raw_type == "CommunityLikeSwitch"))
         {
@@ -1275,7 +1287,7 @@ function __input_gamepad_set_mapping()
             }
             
             //Reset Android keymapped dpad if necessary
-            if ((os_type == os_android) && (hat_count > 0) && (vendor + product == ""))
+            if (__INPUT_ON_ANDROID && (hat_count > 0) && (vendor + product == ""))
             {
                 var _mapping = undefined;
                 var _dpad_array = [gp_padu, gp_padd, gp_padl, gp_padr];

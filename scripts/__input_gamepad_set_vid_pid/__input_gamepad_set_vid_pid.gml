@@ -102,7 +102,7 @@ function __input_gamepad_set_vid_pid()
             product = _result.product;
             xinput  = (index < 4);
         }
-        else if ((os_type == os_macosx) || (os_type == os_linux) || (os_type == os_android))
+        else if ((os_type == os_macosx) || (os_type == os_linux) || __INPUT_ON_ANDROID)
         {
             var _result = __input_gamepad_guid_parse(guid, false, false);
             vendor  = _result.vendor;

@@ -293,9 +293,24 @@ function __input_validate_macros()
         __input_error("INPUT_TOUCH_EDGE_DEADZONE must be a number that is greater than or equal to 0");
     }
     
-    if (!is_bool(INPUT_TOUCH_POINTER_ALLOWED))
+    if (!is_bool(INPUT_SWITCH_TOUCHSCREEN_ALLOWED))
     {
-        __input_error("INPUT_TOUCH_POINTER_ALLOWED must be either <true> or <false>");
+        __input_error("INPUT_SWITCH_TOUCHSCREEN_ALLOWED must be either <true> or <false>");
+    }
+    
+    if (!is_bool(INPUT_WINDOWS_TOUCH_ALLOWED))
+    {
+        __input_error("INPUT_WINDOWS_TOUCH_ALLOWED must be either <true> or <false>");
+    }
+    
+    if (!is_bool(INPUT_WINDOWS_TOUCH_PRIMARY))
+    {
+        __input_error("INPUT_WINDOWS_TOUCH_PRIMARY must be either <true> or <false>");
+    }
+    
+    if (!is_bool(INPUT_PS_TOUCHPAD_ALLOWED))
+    {
+        __input_error("INPUT_PS_TOUCHPAD_ALLOWED must be either <true> or <false>");
     }
     
     if (!is_numeric(INPUT_TOUCH_HISTORY_FRAMES) || (floor(INPUT_TOUCH_HISTORY_FRAMES) != INPUT_TOUCH_HISTORY_FRAMES) || (INPUT_TOUCH_HISTORY_FRAMES < 1))
