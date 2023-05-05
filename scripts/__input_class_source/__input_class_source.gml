@@ -134,7 +134,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                 
                 if not ((__source == __INPUT_SOURCE.KEYBOARD) || (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (__source == __INPUT_SOURCE.MOUSE))) return false;
                 
-                if (os_type == os_android)
+                if (__INPUT_ON_ANDROID)
                 {
                     if (((_value >= 16) && (_value <= 19))
                     ||  ((_value >= 96) && (_value <= 122)))
@@ -172,11 +172,11 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                     break;
                     
                     case mb_right: //Invalid on Xbox, Playstation, native Android or iOS
-                        return !(__INPUT_ON_XBOX || __INPUT_ON_PS || (!__INPUT_ON_WEB && ((os_type == os_ios) || (os_type == os_android))));
+                        return !(__INPUT_ON_XBOX || __INPUT_ON_PS || (!__INPUT_ON_WEB && __INPUT_ON_MOBILE));
                     break;
                     
                     case mb_middle: //Invalid on console, Android or iOS
-                        return !(__INPUT_ON_CONSOLE || (os_type == os_ios) || (os_type == os_android));
+                        return !(__INPUT_ON_CONSOLE || __INPUT_ON_MOBILE);
                     break;
                     
                     case mb_side1:

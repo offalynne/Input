@@ -87,7 +87,7 @@ function __input_class_gamepad(_index) constructor
             }            
             else
             {
-                if (((os_type == os_windows) || (os_type == os_switch)) && __input_string_contains(raw_type, "JoyCon", "SwitchHandheld"))
+                if (((os_type == os_windows) || __INPUT_ON_SWITCH) && __input_string_contains(raw_type, "JoyCon", "SwitchHandheld"))
                 {
                     __vibration_scale = INPUT_VIBRATION_JOYCON_STRENGTH;
                 }
@@ -176,7 +176,7 @@ function __input_class_gamepad(_index) constructor
             if ((_gm == gp_shoulderlb) || (_gm == gp_shoulderrb))
             {
                 //XInput and platforms with analogue triggers
-                return (xinput || __INPUT_ON_XBOX || __INPUT_ON_PS || (__INPUT_ON_APPLE && __INPUT_ON_MOBILE));
+                return (xinput || __INPUT_ON_XBOX || __INPUT_ON_PS || __INPUT_ON_IOS);
             }
             
             //Otherwise return true only for the thumbsticks
@@ -289,7 +289,7 @@ function __input_class_gamepad(_index) constructor
                 var _vibration_low  = __vibration_scale * __vibration_left;
                 var _vibration_high = __vibration_scale * __vibration_right;
                 
-                if (os_type == os_switch)
+                if (__INPUT_ON_SWITCH)
                 {
                     if ((raw_type == "SwitchJoyConLeft") || (raw_type == "SwitchJoyConRight"))
                     {
@@ -381,14 +381,14 @@ function __input_class_gamepad(_index) constructor
         var _led_type   = INPUT_GAMEPAD_TYPE_XBOX_360;
 
         //Handle whether gamepad index 0 is used or reserved
-        if (!__INPUT_ON_WEB && ((os_type == os_ios) || (os_type == os_tvos) || (os_type == os_switch)))
+        if (!__INPUT_ON_WEB && (__INPUT_ON_IOS || __INPUT_ON_SWITCH))
         { 
             if (index == 0) return;
             _led_offset = -1;
         }
         
         //MFi gamepad case
-        if ((raw_type == "AppleController") && ((os_type == os_tvos) || (os_type == os_ios)))
+        if ((raw_type == "AppleController") && __INPUT_ON_IOS)
         {
             _led_layout = "horizontal";
         }

@@ -215,7 +215,7 @@ function __input_class_binding() constructor
     static __set_android_lowercase = function()
     {
         //If we're on Android
-        if ((os_type == os_android) && (type == __INPUT_BINDING_KEY))
+        if (__INPUT_ON_ANDROID && (type == __INPUT_BINDING_KEY))
         {
             //Force binding to uppercase
             value = ord(string_upper(chr(value)));

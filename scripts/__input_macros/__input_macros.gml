@@ -49,23 +49,27 @@
 
 #macro __INPUT_ON_PS       ((os_type == os_ps4)     || (os_type == os_ps5))
 #macro __INPUT_ON_XBOX     ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
-#macro __INPUT_ON_CONSOLE  (__INPUT_ON_XBOX || __INPUT_ON_PS || (os_type == os_switch))
+#macro __INPUT_ON_SWITCH   (os_type == os_switch)
+#macro __INPUT_ON_CONSOLE  (__INPUT_ON_XBOX || __INPUT_ON_PS || __INPUT_ON_SWITCH)
 
-#macro __INPUT_ON_DESKTOP  ((os_type == os_macosx)  || (os_type == os_linux) || (os_type == os_windows))
-#macro __INPUT_ON_APPLE    ((os_type == os_macosx)  || (os_type == os_ios)   || (os_type == os_tvos))
-#macro __INPUT_ON_MOBILE   ((os_type == os_android) || (os_type == os_ios)   || (os_type == os_tvos))
+#macro __INPUT_ON_ANDROID  (os_type == os_android)
+#macro __INPUT_ON_IOS      ((os_type == os_ios) || (os_type == os_tvos))
+#macro __INPUT_ON_MOBILE   (__INPUT_ON_ANDROID  || __INPUT_ON_IOS)
+
+#macro __INPUT_ON_DESKTOP  ((os_type == os_macosx) || (os_type == os_linux) || (os_type == os_windows))
+#macro __INPUT_ON_APPLE    ((os_type == os_macosx) || __INPUT_ON_IOS)
 
 #macro __INPUT_ON_OPERAGX  (os_type == os_operagx)
 #macro __INPUT_ON_WEB      ((os_browser != browser_not_a_browser) || __INPUT_ON_OPERAGX)
 
-#macro __INPUT_STEAMWORKS_SUPPORT         (((os_type == os_windows) || (os_type == os_linux)) && !__INPUT_ON_WEB)
-#macro __INPUT_TOUCH_SUPPORT              (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch) || (os_type == os_windows))
-#macro __INPUT_TOUCH_PRIMARY              (!INPUT_TOUCH_IS_MOUSE && (__INPUT_ON_MOBILE  || (os_type == os_switch) || (__input_global().__on_steam_deck && (os_type == os_windows))))
-#macro __INPUT_KEYBOARD_NORMATIVE         (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch))
-#macro __INPUT_KEYBOARD_SUPPORT           (__INPUT_KEYBOARD_NORMATIVE || (os_type == os_android))
+#macro __INPUT_SDL2_SUPPORT               (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || __INPUT_ON_ANDROID))
 #macro __INPUT_GAMEPAD_VIBRATION_SUPPORT  (__INPUT_ON_CONSOLE || (!__INPUT_ON_WEB && (os_type == os_windows)))
-#macro __INPUT_SDL2_SUPPORT               (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || (os_type == os_android)))
-#macro __INPUT_LED_PATTERN_SUPPORT        ((os_type == os_ps5) || (os_type == os_switch) || (os_type == os_tvos) || (os_type == os_ios) || ((os_type == os_windows) && !__INPUT_ON_WEB))
+#macro __INPUT_KEYBOARD_NORMATIVE         (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || __INPUT_ON_SWITCH)
+#macro __INPUT_KEYBOARD_SUPPORT           (__INPUT_KEYBOARD_NORMATIVE || __INPUT_ON_ANDROID)
+#macro __INPUT_LED_PATTERN_SUPPORT        ((os_type == os_ps5) || __INPUT_ON_SWITCH || __INPUT_ON_IOS || ((os_type == os_windows) && !__INPUT_ON_WEB))
+#macro __INPUT_STEAMWORKS_SUPPORT         (((os_type == os_windows) || (os_type == os_linux)) && !__INPUT_ON_WEB)
+#macro __INPUT_TOUCH_SUPPORT              (__INPUT_ON_MOBILE  || (INPUT_SWITCH_TOUCHSCREEN_ALLOWED && __INPUT_ON_SWITCH) || (INPUT_WINDOWS_TOUCH_ALLOWED && (os_type == os_windows)))
+#macro __INPUT_TOUCH_PRIMARY              (!INPUT_TOUCH_IS_MOUSE && (__INPUT_ON_MOBILE || __INPUT_ON_SWITCH || (INPUT_WINDOWS_TOUCH_PRIMARY && (os_type == os_windows))))
 
 #macro __INPUT_HOLD_THRESHOLD           0.2  //Minimum value from an axis for that axis to be considered activated at the gamepad layer. This is *not* the same as min/max thresholds for players
 #macro __INPUT_DELTA_HOTSWAP_THRESHOLD  0.1  //Minimum (absolute) change in gamepad mapping value between frames to register as new input. This triggers hotswapping

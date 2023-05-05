@@ -56,7 +56,7 @@ function input_source_detect_input(_source, _available_only = true)
         
         case __INPUT_SOURCE.TOUCH:
             if ((!_available_only || input_source_is_available(_source))
-            &&  input_mouse_check(mb_any))
+            &&  device_mouse_check_button(_global.__pointer_index, mb_left))
             {
                 return true;
             }

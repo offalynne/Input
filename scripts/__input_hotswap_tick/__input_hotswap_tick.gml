@@ -209,9 +209,9 @@ function __input_hotswap_tick_input()
         return INPUT_KEYBOARD;
     }
     
-    if (__INPUT_TOUCH_PRIMARY)
+    if (!INPUT_TOUCH_IS_MOUSE && __INPUT_TOUCH_PRIMARY)
     {
-        if (input_source_is_available(INPUT_TOUCH) && input_mouse_check(mb_any))
+        if (input_source_is_available(INPUT_TOUCH) && device_mouse_check_button(_global.__pointer_index, mb_left))
         {
             if (__INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_TOUCH);
             return INPUT_TOUCH;

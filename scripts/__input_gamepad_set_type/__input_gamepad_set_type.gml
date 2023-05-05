@@ -187,7 +187,7 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunityLikeXBox";
                 }
-                else if ((__INPUT_ON_MOBILE && __INPUT_ON_APPLE) || __input_string_contains(_desc, "nimbus", "horipad ultimate", "mfi"))
+                else if (__INPUT_ON_IOS || __input_string_contains(_desc, "nimbus", "horipad ultimate", "mfi"))
                 {
                     raw_type = "AppleController";
                 }
@@ -274,7 +274,7 @@ function __input_gamepad_set_type()
                     guessed_type = true;
                 }
             }
-            else if (__input_string_contains(description, "Classic Controller") && (axis_count == 10) && (hat_count == 1) && (os_type == os_android))
+            else if (__input_string_contains(description, "Classic Controller") && (axis_count == 10) && (hat_count == 1) && __INPUT_ON_ANDROID)
             {
                 raw_type = "CommunityVCSClassic";
                 guessed_type = true;

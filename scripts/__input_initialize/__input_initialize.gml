@@ -154,7 +154,7 @@ function __input_initialize()
     _global.__keyboard_allowed = (__INPUT_KEYBOARD_SUPPORT && ((os_type != os_android) || INPUT_ANDROID_KEYBOARD_ALLOWED) && ((os_type != os_switch) || INPUT_SWITCH_KEYBOARD_ALLOWED));
 
     //Default to disallowing mouse bindings on specified platforms unless explicitly enabled
-    _global.__mouse_allowed_on_platform = !(__INPUT_ON_PS || __INPUT_ON_XBOX || ((os_type != os_windows) && __INPUT_TOUCH_SUPPORT && !INPUT_TOUCH_POINTER_ALLOWED));
+    _global.__mouse_allowed_on_platform = (!__INPUT_ON_XBOX && ((!__INPUT_TOUCH_PRIMARY) || (INPUT_TOUCH_IS_MOUSE && __INPUT_TOUCH_PRIMARY) || (INPUT_PS_TOUCHPAD_ALLOWED && __INPUT_ON_PS)));
     
     //Default to disallowing vibration on specified platforms unless explicitly enabled
     _global.__vibration_allowed_on_platform = (__INPUT_GAMEPAD_VIBRATION_SUPPORT && INPUT_VIBRATION_ALLOWED && ((os_type != os_switch) || INPUT_SWITCH_USE_LEGACY_VIBRATION) && ((os_type != os_ps5) || INPUT_PS5_USE_LEGACY_VIBRATION));
@@ -342,7 +342,7 @@ function __input_initialize()
     _global.__raw_type_dictionary = {};
 
     //Load the controller type database
-    if (__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || (os_type == os_ios) || (os_type == os_tvos))
+    if (__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || __INPUT_ON_IOS)
     {
         __input_trace("Skipping loading controller type database");
     }
@@ -514,7 +514,7 @@ function __input_initialize()
     }
     
     //Numeric keys 2-7 on Switch
-    if (os_type == os_switch)
+    if (__INPUT_ON_SWITCH)
     {
         for(var _i = 2; _i <= 7; _i++) __input_key_name_set(_i, __input_key_get_name(ord(_i)));
     }
@@ -820,7 +820,7 @@ function __input_initialize()
     else if (__INPUT_ON_MOBILE)
     {
         INPUT_KEYBOARD_TYPE = "virtual";
-        if (os_type == os_android)
+        if (__INPUT_ON_ANDROID)
         {
             var _map = os_get_info();
             if (ds_exists(_map, ds_type_map))
@@ -848,11 +848,11 @@ function __input_initialize()
     
     #region Pointer type
     
-    if (__input_global().__on_steam_deck || (os_type == os_switch) || __INPUT_ON_MOBILE)
+    if (__input_global().__on_steam_deck || __INPUT_ON_SWITCH || __INPUT_ON_MOBILE || ((os_type == os_windows) && INPUT_WINDOWS_TOUCH_PRIMARY))
     {
         INPUT_POINTER_TYPE = "touch";
     }
-    else if (__INPUT_ON_PS)
+    else if (INPUT_PS_TOUCHPAD_ALLOWED && __INPUT_ON_PS)
     {
         INPUT_POINTER_TYPE = "touchpad";
     }
@@ -869,7 +869,7 @@ function __input_initialize()
     
     
     //Whether gamepad motion is supported
-    _global.__gamepad_motion_support = (__INPUT_ON_PS || (os_type == os_switch) || _global.__using_steamworks);
+    _global.__gamepad_motion_support = (__INPUT_ON_PS || __INPUT_ON_SWITCH || _global.__using_steamworks);
 
     //By default GameMaker registers double click (or tap) as right mouse button
     //We want to be able to identify the actual mouse buttons correctly, and have our own double-input handling
