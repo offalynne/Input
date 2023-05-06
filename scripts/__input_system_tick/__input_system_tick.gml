@@ -49,8 +49,8 @@ function __input_system_tick()
     
         //Set active pointer index
         if (_touch_index == undefined) _touch_index = 0;
-        _global.__pointer_pressed = device_mouse_check_button_pressed(_touch_index, mb_left);
-        _global.__pointer_released = ((_touch_press_index != undefined) && device_mouse_check_button_released(_touch_press_index, mb_left));
+        _global.__pointer_pressed  = device_mouse_check_button_pressed(_touch_index, mb_left);
+        _global.__pointer_released = ((_global.__pointer_index_previous != undefined) && device_mouse_check_button_released(_global.__pointer_index_previous, mb_left));
 
         //Touch edge testing
         var _w = display_get_gui_width();
@@ -60,8 +60,8 @@ function __input_system_tick()
             //Release
             if (_global.__pointer_released)
             {
-                var _tx = device_mouse_x_to_gui(_touch_press_index);
-                var _ty = device_mouse_y_to_gui(_touch_press_index);
+                var _tx = device_mouse_x_to_gui(_global.__pointer_index_previous);
+                var _ty = device_mouse_y_to_gui(_global.__pointer_index_previous);
 
                 if ((_tx < INPUT_TOUCH_EDGE_DEADZONE) || (_tx > (_w - INPUT_TOUCH_EDGE_DEADZONE))
                 ||  (_ty < INPUT_TOUCH_EDGE_DEADZONE) || (_ty > (_h - INPUT_TOUCH_EDGE_DEADZONE)))
@@ -85,9 +85,9 @@ function __input_system_tick()
         }
 
         //Update state
+        _global.__pointer_index_previous = _global.__pointer_index;
         _global.__pointer_index = _touch_index;
         if (_global.__pointer_pressed)  _global.__pointer_pressed_index = _touch_index;
-        if (_global.__pointer_released) _global.__pointer_pressed_index = undefined;
     }
     
     #endregion
