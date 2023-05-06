@@ -17,7 +17,7 @@ function input_mouse_check_released(_binding)
     }
     
     var _left = false;
-    if (_global.__pointer_index > 0)
+    if (_global.__pointer_index_previous > 0)
     {
         //Touch
         _left = _global.__pointer_released;
