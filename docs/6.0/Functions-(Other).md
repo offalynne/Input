@@ -12,8 +12,8 @@
 
 **Returns:** N/A (`undefined`)
 
-|Name   |Datatype|Purpose       |
-|-------|--------|--------------|
+|Name   |Datatype|Purpose                             |
+|-------|--------|------------------------------------|
 |`state`|boolean |Whether to clear all momentary input|
 
 Clears momentary (pressed/released) input and connection checkers. This covers verbs as well as keyboard/mouse/gamepad direct checkers. Useful for [fixed timestep patterns](https://gafferongames.com/post/fix_your_timestep/) where momentary checks should only be handled for one cycle (for example [iota](https://github.com/JujuAdams/iota)).
@@ -67,11 +67,67 @@ Adds a keyboard key to be ignored by Input. This will affect binding detection, 
 
 **Returns:** N/A (`undefined`)
 
-|Name |Datatype|Purpose                                                                                                                    |
-|-----|--------|---------------------------------------------------------------------------------------------------------------------------|
+|Name |Datatype|Purpose                                                                                                                                       |
+|-----|--------|----------------------------------------------------------------------------------------------------------------------------------------------|
 |`key`|integer |[Key](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FKeyboard_Input%252FKeyboard_Input.htm) to remove|
 
 Removes a keyboard key from the ignore list.
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …debug_player_input
+
+`input_debug_player_input([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Array of bindings
+
+|Name         |Datatype|Purpose                                             |
+|-------------|--------|----------------------------------------------------|
+|`playerIndex`|integer |Player to target. If not specified, player 0 is used|
+
+Returns an array that contains bindings for each keyboard key, mouse button, and gamepad button/axis that the player is pressing. This function uses the same ignore/allow/source filter behaviour as the binding scan feature (see `input_binding_scan_params_set()`).
+
+!> This function is provided for debug use only and does very little error checking. Use `input_binding_scan_start()` for player-facing binding scan.
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …debug_all_input
+
+`input_debug_all_input()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Array of bindings
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+Returns an array that contains bindings for each keyboard key, mouse button, and gamepad button/axis that are being pressed on any input device.
+
+!> This function is provided for debug use only and does very little error checking. Use `input_binding_scan_start()` for player-facing binding scan.
 
 #### **Example**
 
