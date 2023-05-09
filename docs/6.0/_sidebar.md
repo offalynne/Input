@@ -50,6 +50,7 @@
 - [Accessibility](Functions-(Accessibility))
 - [Exporting & Importing](Functions-(Exporting-and-Importing))
 - [Virtual Buttons](Functions-(Virtual-Buttons))
+- [Virtual Button Methods](Functions-(Virtual-Button-Methods))
 - [Players](Functions-(Players))
 - [Profiles](Functions-(Profiles))
 - [Source Modes](Functions-(Source-Modes))
