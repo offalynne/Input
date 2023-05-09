@@ -4,11 +4,11 @@ var _delta = (input_keyboard_check_pressed(vk_down) - input_keyboard_check_press
 var _first_gamepad = 0;
 if (__INPUT_ON_IOS && !__INPUT_ON_WEB)
 {
-	_first_gamepad = 1;	
+    _first_gamepad = 1;
 }
 else if (!gamepad_is_connected(_first_gamepad) && (os_type == os_windows))
 {
-	_first_gamepad = 4;
+    _first_gamepad = 4;
 }
 
 _delta += device_mouse_check_button_pressed(0, mb_left);
