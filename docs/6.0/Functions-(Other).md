@@ -155,7 +155,7 @@ Returns an array that contains bindings for each keyboard key, mouse button, and
 |----|--------|-------|
 |None|        |       |
 
-!> This function only works on desktop (Windows, MacOS, Linux) platforms.
+!> This function is intended for desktop (Windows, MacOS, Linux) platforms.
 
 #### **Example**
 
@@ -190,7 +190,7 @@ The struct returned by the function contains the following member variables:
 |`.pattern`  |array   |An array of variable size with boolean values representing LED state, `<false>` for off, `<true>` for on|
 |`.layout`   |string  |The directional layout of the LED array. `"vertical"`, `"horizontal"`, `"radial"`, or `"unknown"`|
 
-!> This function only works on Switch and PS5 platforms, as well as on Windows and iOS for select gamepads 
+!> This function works on Switch and PS5 platforms, as well as on Windows and iOS for select gamepads 
 
 #### **Example**
 
