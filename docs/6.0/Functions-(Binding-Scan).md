@@ -2,9 +2,15 @@
 
 &nbsp;
 
-## `input_binding_scan_start(successCallback, [failureCallback], [sourceFilter], [playerIndex])`
+## …binding_scan_start
 
-_Returns:_ N/A (`undefined`)
+`input_binding_scan_start(successCallback, [failureCallback], [sourceFilter], [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name               |Datatype                         |Purpose                                                                                                                 |
 |-------------------|---------------------------------|------------------------------------------------------------------------------------------------------------------------|
@@ -29,11 +35,25 @@ If something unexpected happens (for example, the player's gamepad is disconnect
 |`.PLAYER_DISCONNECTED`        |The player disconnected                                                                                                                                                   |
 |`.ABORTED`           |Binding scan was aborted early due to `input_binding_scan_abort()` being called                                                                                              |
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_binding_scan_abort([playerIndex])`
+## …binding_scan_abort
 
-_Returns:_ N/A (`undefined`)
+`input_binding_scan_abort([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                 |
 |---------------|--------|--------------------------------------------------------|
@@ -41,21 +61,49 @@ _Returns:_ N/A (`undefined`)
 
 Aborts binding scanning for the given player.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_binding_scan_in_progress([playerIndex])`
+## …binding_scan_in_progress
 
-_Returns:_ Boolean, whether the given player is currently scanning for bindings
+`input_binding_scan_in_progress([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the given player is currently scanning for bindings
 
 |Name           |Datatype|Purpose                                                 |
 |---------------|--------|--------------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is targeted|
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_binding_scan_set_params([ignoreArray], [allowArray], [sourceFilter], [playerIndex])`
+## …binding_scan_set_params
 
-_Returns:_ N/A (`undefined`)
+`input_binding_scan_set_params([ignoreArray], [allowArray], [sourceFilter], [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name            |Datatype|Purpose                                                                                                                                                    |
 |----------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -70,11 +118,25 @@ This function sets up arrays of potential bindings to ignore or allow. This allo
 
 !> Unfortunately, earlier versions of GameMaker don't have a constant for mouse wheel up/down. Instead, to specify that mouse wheel bindings should be ignore/allowed, please use the strings `"mouse wheel up"` and `"mouse wheel down"` in lieu of constants.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_binding_scan_get_params([playerIndex])`
+## …binding_scan_get_params
 
-_Returns:_ Struct, the binding scanning parameters set by `input_binding_scan_set_params()`
+`input_binding_scan_get_params([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Struct, the binding scanning parameters set by `input_binding_scan_set_params()`
 
 |Name           |Datatype|Purpose                                                 |
 |---------------|--------|--------------------------------------------------------|
@@ -82,14 +144,36 @@ _Returns:_ Struct, the binding scanning parameters set by `input_binding_scan_se
 
 The struct returned by this function has three elements (`.ignore_array` `.allow_array` `.source_filter`) which corresponds to the values passed to `input_binding_scan_set_params()`. Editing the content in the returned struct will not implictly change behaviour for binding scanning, and the order of elements in arrays returned by this function may not exactly match what was set via `input_binding_scan_set_params()`.
 
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
-## `input_binding_scan_clear_params([playerIndex])`
+## …binding_scan_clear_params
 
-_Returns:_ N/A (`undefined`)
+`input_binding_scan_clear_params([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                 |
 |---------------|--------|--------------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is targeted|
 
 Clears the parameters set for binding scanning for the given player. No bindings are ignored, no bindings are explicitly allowed.
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
