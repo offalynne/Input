@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Mouse (Direct)",
-    "path": "folders/Input/Mouse (Direct).yy",
+    "name": "10 Mouse Capture",
+    "path": "folders/Input/10 Mouse Capture.yy",
   },
 }

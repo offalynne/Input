@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Vibration",
-    "path": "folders/Input/Vibration.yy",
+    "name": "18 Vibration",
+    "path": "folders/Input/18 Vibration.yy",
   },
 }

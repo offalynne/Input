@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Binding Access",
-    "path": "folders/Input/Binding Access.yy",
+    "name": "08 Icons",
+    "path": "folders/Input/08 Icons.yy",
   },
 }

@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Binding Scan",
-    "path": "folders/Input/Binding Scan.yy",
+    "name": "07 Binding Scanner",
+    "path": "folders/Input/07 Binding Scanner.yy",
   },
 }

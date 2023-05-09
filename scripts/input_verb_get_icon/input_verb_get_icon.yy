@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Verbs",
-    "path": "folders/Input/Verbs.yy",
+    "name": "08 Icons",
+    "path": "folders/Input/08 Icons.yy",
   },
 }
