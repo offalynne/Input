@@ -103,7 +103,7 @@ When a player has no profile set, `input_binding_get()` has undefined behaviour.
 
 ## Keyboard
 
-`__input_config_external_data()` holds macros that affect how Input treats keyboard input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
+`__input_config_keyboard()` holds macros that affect how Input treats keyboard input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
 
 |Name                              |Typical Value|Purpose                                                                               |
 |----------------------------------|-------------|--------------------------------------------------------------------------------------|
@@ -132,7 +132,7 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 
 ## Mouse
 
-`__input_config_external_data()` holds macros that affect how Input treats mouse input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
+`__input_config_mouse()` holds macros that affect how Input treats mouse input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
 
 |Name                               |Typical Value|Purpose                                                                                                                                                             |
 |-----------------------------------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -144,19 +144,19 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 
 ## Touch
 
-`__input_config_cursor()` holds macros that affect how Input handles mouse and touch input, and how Input's native cursor feature behaves. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
+`__input_config_touch()` holds macros that affect how Input handles mouse and touch input, and how Input's native cursor feature behaves. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
 
-|Name                                |Typical Value|Purpose                                                                                                                                                                                                  |
-|------------------------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`INPUT_WINDOWS_TOUCH_ALLOWED`       |`true`       |Whether to allow touch on Windows (including Steam Deck via Proton)                                                                                                                                      |
-|`INPUT_WINDOWS_TOUCH_PRIMARY`       |`false`      |Whether to allow ONLY touch on Windows (including Steam Deck via Proton)                                                                                                                                 |
-|`INPUT_SWITCH_TOUCHSCREEN_ALLOWED`  |`false`      |Whether to use touchscreen on Switch platform                                                                                                                                                            |
-|`INPUT_TOUCH_IS_MOUSE`              |`false`      |If touch input (mobile + Switch) should be treated as mouse input                                                                                                                                        |
-|`INPUT_MAX_TOUCHPOINTS`             |`11`         |Maximum number of touch screen points to query. This applies to touch screen devices only (excludes PlayStation)                                                                                         |
-|`INPUT_TOUCH_EDGE_DEADZONE`         |`35`         |Margin in pixels around the screen edge where gaining or losing a touch point will not register "pressed" or "released". Prevents false positives when dragging on to or off of the edge of a touchscreen|
-|`INPUT_TOUCH_HISTORY_FRAMES`        |`10`         |How many frames of history to record for button that have the feature turned on                                                                                                                          |
-|`INPUT_VIRTUAL_BUTTON_MIN_THRESHOLD`|`50`         |Default minimum threshold for dpad- and thumbstick-type virtual buttons. Measures in pixels in GUI-space                                                                                                 |
-|`INPUT_VIRTUAL_BUTTON_MAX_THRESHOLD`|`100`        |Default maximum threshold for dpad- and thumbstick-type virtual buttons. Measures in pixels in GUI-space                                                                                                 |
+|Name                                 |Typical Value|Purpose                                                                                                                                                                                                  |
+|-------------------------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`INPUT_WINDOWS_TOUCH_ALLOWED`        |`true`       |Whether to allow touch on Windows (including Steam Deck via Proton)                                                                                                                                      |
+|`INPUT_WINDOWS_TOUCH_PRIMARY`        |`false`      |Whether to allow ONLY touch on Windows (including Steam Deck via Proton)                                                                                                                                 |
+|`INPUT_SWITCH_TOUCHSCREEN_ALLOWED`   |`false`      |Whether to use touchscreen on Switch platform                                                                                                                                                            |
+|`INPUT_TOUCHSCREEN_USES_MOUSE_SOURCE`|`false`      |If touch input (mobile + Switch) should be treated as mouse input                                                                                                                                        |
+|`INPUT_MAX_TOUCHPOINTS`              |`11`         |Maximum number of touch screen points to query. This applies to touch screen devices only (excludes PlayStation)                                                                                         |
+|`INPUT_TOUCH_EDGE_DEADZONE`          |`35`         |Margin in pixels around the screen edge where gaining or losing a touch point will not register "pressed" or "released". Prevents false positives when dragging on to or off of the edge of a touchscreen|
+|`INPUT_TOUCH_HISTORY_FRAMES`         |`10`         |How many frames of history to record for button that have the feature turned on                                                                                                                          |
+|`INPUT_VIRTUAL_BUTTON_MIN_THRESHOLD` |`50`         |Default minimum threshold for dpad- and thumbstick-type virtual buttons. Measures in pixels in GUI-space                                                                                                 |
+|`INPUT_VIRTUAL_BUTTON_MAX_THRESHOLD` |`100`        |Default maximum threshold for dpad- and thumbstick-type virtual buttons. Measures in pixels in GUI-space                                                                                                 |
 
 &nbsp;
 
@@ -170,9 +170,8 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 |`INPUT_DEFAULT_AXIS_MAX_THRESHOLD`     |`1.0`                  |Default maximum threshold for directional (thumbstick) axes                                                                                                                                                                                                                 |
 |`INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD`  |`0.02`                 |Default minimum threshold for non-directional (trigger) axes. This value is used for detecting gamepad input when hotswapping so make sure you set it above 0.0                                                                                                             |
 |`INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD`  |`1.0`                  |Default maximum threshold for non-directional (trigger) axes                                                                                                                                                                                                                |
-|`INPUT_GAMEPAD_EXTENDED_TYPES`         |`false`                |Whether to add additional gamepad types as returned by `input_player_gamepad_get_type()`, `input_gamepad_get_type()`, and used by `__input_config_icons()`. See [`input_icons()`](Functions-(Other)?id=input_iconscategoryname) for further detail                          |
-|`INPUT_PS_TOUCHPAD_ALLOWED`            |`false`                |Whether to allow gamepad touchpad as mouse on PlayStation platforms                                                                                                                                                                                                         |
 |`INPUT_SWITCH_HORIZONTAL_HOLDTYPE`     |`true`                 |Whether the game uses the horizontal holdtype for single Joy-Cons. Set this to `false` for vertical holdtype. Input treats these two modes as mutually exclusive (come talk to us if you need to be able to swap at runtime). This macro only applies to the Switch platform|
+|`INPUT_PS_TOUCHPAD_ALLOWED`            |`false`                |Whether to allow gamepad touchpad as mouse on PlayStation platforms                                                                                                                                                                                                         |
 |`INPUT_SWITCH_JOYCON_MOTION_RIGHT_HAND`|`true`                 |Whether to use the right hand sensor for motion data when using detached dual Joy-Cons as a pair. When `false`, the left hand Joy-Con sensor will be used for motion data instead                                                                                           |
 |`INPUT_GYRO_DEFAULT_AXIS_X`            |`INPUT_GYRO.AXIS_YAW`  |Default [`INPUT_GYRO` axis member](Library-Constants.md?id=Gyro-Axis) for controlling cursor in screenspace X axis                                                                                                                                                          |
 |`INPUT_GYRO_DEFAULT_AXIS_Y`            |`INPUT_GYRO.AXIS_PITCH`|Default [`INPUT_GYRO` axis member](Library-Constants.md?id=Gyro-Axis) for controlling cursor in screenspace Y axis                                                                                                                                                          |
