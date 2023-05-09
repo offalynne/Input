@@ -53,15 +53,16 @@ _Returns:_ Boolean, whether the given player is currently scanning for bindings
 
 &nbsp;
 
-## `input_binding_scan_set_params([ignoreArray], [allowArray], [playerIndex])`
+## `input_binding_scan_set_params([ignoreArray], [allowArray], [sourceFilter], [playerIndex])`
 
 _Returns:_ N/A (`undefined`)
 
-|Name           |Datatype|Purpose                                                                                                                                                    |
-|---------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`[ignoreArray]`|array   |Array of keyboard keys (`vk_*`, `"A"`), mouse buttons (`mb_*`), or gamepad constants (`gp_*`) to explicitly disallow being scanned                         |
-|`[allowArray]` |array   |Array of keyboard keys (`vk_*`, `"A"`), mouse buttons (`mb_*`), or gamepad constants (`gp_*`) to explicitly scan for, excluding all other possible bindings|
-|`[playerIndex]`|integer |Player to target. If not specified, player 0 is targeted                                                                                                   |
+|Name            |Datatype|Purpose                                                                                                                                                    |
+|----------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`[ignoreArray]` |array   |Array of keyboard keys (`vk_*`, `"A"`), mouse buttons (`mb_*`), or gamepad constants (`gp_*`) to explicitly disallow being scanned                         |
+|`[allowArray]`  |array   |Array of keyboard keys (`vk_*`, `"A"`), mouse buttons (`mb_*`), or gamepad constants (`gp_*`) to explicitly scan for, excluding all other possible bindings|
+|`[sourceFilter]`|array   |Array of sources to scan. If not specified, the sources currently assigned to the target player will be scanned                                            |
+|`[playerIndex]` |integer |Player to target. If not specified, player 0 is targeted                                                                                                   |
 
 This function sets up arrays of potential bindings to ignore or allow. This allows the developer to filter out potentially problematic rebindings that could interfere with stable operation.
 
@@ -79,7 +80,7 @@ _Returns:_ Struct, the binding scanning parameters set by `input_binding_scan_se
 |---------------|--------|--------------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is targeted|
 
-The struct returned by this function has two elements `.ignore_array` and `.allow_array` corresponding to the arrays passed to `input_binding_scan_set_params()`. Editing these arrays will not implictly change behaviour for binding scanning, and the order of elements in the arrays returned by this function may not exactly match what was set via `input_binding_scan_set_params()`.
+The struct returned by this function has three elements (`.ignore_array` `.allow_array` `.source_filter`) which corresponds to the values passed to `input_binding_scan_set_params()`. Editing the content in the returned struct will not implictly change behaviour for binding scanning, and the order of elements in arrays returned by this function may not exactly match what was set via `input_binding_scan_set_params()`.
 
 &nbsp;
 
