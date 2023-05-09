@@ -49,6 +49,7 @@ The struct returned by the function contains the following member variables:
 |--------------|--------|------------------------------------------|
 |`.capture`    |boolean |Whether the mouse is being captured or not|
 |`.sensitivity`|number  |The sensitivity for mouse movement        |
+|`.blocked`    |boolean |Whether the display or application state prevent the cursor from being limited to the window area|
 
 #### **Example**
 
