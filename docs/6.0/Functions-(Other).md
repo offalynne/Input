@@ -121,11 +121,13 @@ Returns an array that contains bindings for each keyboard key, mouse button, and
 
 **Returns:** Array of bindings
 
-|Name|Datatype|Purpose|
-|----|--------|-------|
-|None|        |       |
+|Name            |Datatype|Purpose                                                                                                                                                    |
+|----------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`[ignoreArray]` |array   |Array of keyboard keys (`vk_*`, `"A"`), mouse buttons (`mb_*`), or gamepad constants (`gp_*`) to explicitly disallow being scanned                         |
+|`[allowArray]`  |array   |Array of keyboard keys (`vk_*`, `"A"`), mouse buttons (`mb_*`), or gamepad constants (`gp_*`) to explicitly scan for, excluding all other possible bindings|
+|`[sourceFilter]`|array   |Array of sources to scan. If not specified, all possible sources will be scanned                                                                           |
 
-Returns an array that contains bindings for each keyboard key, mouse button, and gamepad button/axis that are being pressed on any input device.
+Returns an array that contains bindings for each keyboard key, mouse button, and gamepad button/axis that are being pressed on any scanned input device.
 
 !> This function is provided for debug use only and does very little error checking. Use `input_binding_scan_start()` for player-facing binding scan.
 
