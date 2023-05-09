@@ -164,3 +164,38 @@ Returns an array that contains bindings for each keyboard key, mouse button, and
 ```
 
 <!-- tabs:end -->
+
+
+&nbsp;
+
+## …led_pattern_get
+
+`input_led_pattern_get(gamepadIndex)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Struct, the gamepad LED pattern state. See below
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)|
+
+The struct returned by the function contains the following member variables:
+
+|Name        |Datatype|Purpose                                |
+|------------|--------|---------------------------------------|
+|`.value`    |number  |Number represented by the LED pattern  |
+|`.pattern`  |array   |An array of variable size with boolean values representing LED state, `<false>` for off, `<true>` for on|
+|`.layout`   |string  |The directional layout of the LED array. `"vertical"`, `"horizontal"`, `"radial"`, or `"unknown"` |
+
+!> This function only works on Windows, iOS, Switch, and PS5 platforms.
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
