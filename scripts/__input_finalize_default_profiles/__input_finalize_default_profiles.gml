@@ -122,17 +122,20 @@ function __input_finalize_default_profiles()
         ++_f;
     }
     
-    if (!variable_struct_exists(_global.__profile_dict, INPUT_AUTO_PROFILE_FOR_KEYBOARD   )) __input_trace("Warning! Default profile for keyboard \"",    INPUT_AUTO_PROFILE_FOR_KEYBOARD,    "\" has not been defined in __input_config_verbs()");
-    if (!variable_struct_exists(_global.__profile_dict, INPUT_AUTO_PROFILE_FOR_MOUSE      )) __input_trace("Warning! Default profile for mouse \"",       INPUT_AUTO_PROFILE_FOR_MOUSE,       "\" has not been defined in __input_config_verbs()");
-    if (!variable_struct_exists(_global.__profile_dict, INPUT_AUTO_PROFILE_FOR_GAMEPAD    )) __input_trace("Warning! Default profile for gamepad \"",     INPUT_AUTO_PROFILE_FOR_GAMEPAD,     "\" has not been defined in __input_config_verbs()");
-    if (!variable_struct_exists(_global.__profile_dict, INPUT_AUTO_PROFILE_FOR_MIXED      )) __input_trace("Warning! Default profile for mixed \"",       INPUT_AUTO_PROFILE_FOR_MIXED,       "\" has not been defined in __input_config_verbs()");
-    if (!variable_struct_exists(_global.__profile_dict, INPUT_AUTO_PROFILE_FOR_MULTIDEVICE)) __input_trace("Warning! Default profile for multidevice \"", INPUT_AUTO_PROFILE_FOR_MULTIDEVICE, "\" has not been defined in __input_config_verbs()");
+    if (!__INPUT_SILENT)
+    {
+        if (!variable_struct_exists(_global.__profile_dict, INPUT_AUTO_PROFILE_FOR_KEYBOARD   )) __input_trace("Warning! Default profile for keyboard \"",    INPUT_AUTO_PROFILE_FOR_KEYBOARD,    "\" has not been defined in __input_config_verbs()");
+        if (!variable_struct_exists(_global.__profile_dict, INPUT_AUTO_PROFILE_FOR_MOUSE      )) __input_trace("Warning! Default profile for mouse \"",       INPUT_AUTO_PROFILE_FOR_MOUSE,       "\" has not been defined in __input_config_verbs()");
+        if (!variable_struct_exists(_global.__profile_dict, INPUT_AUTO_PROFILE_FOR_GAMEPAD    )) __input_trace("Warning! Default profile for gamepad \"",     INPUT_AUTO_PROFILE_FOR_GAMEPAD,     "\" has not been defined in __input_config_verbs()");
+        if (!variable_struct_exists(_global.__profile_dict, INPUT_AUTO_PROFILE_FOR_MIXED      )) __input_trace("Warning! Default profile for mixed \"",       INPUT_AUTO_PROFILE_FOR_MIXED,       "\" has not been defined in __input_config_verbs()");
+        if (!variable_struct_exists(_global.__profile_dict, INPUT_AUTO_PROFILE_FOR_MULTIDEVICE)) __input_trace("Warning! Default profile for multidevice \"", INPUT_AUTO_PROFILE_FOR_MULTIDEVICE, "\" has not been defined in __input_config_verbs()");
+    }
     
     _global.__cursor_verbs_valid = true;
-    if (!variable_struct_exists(_global.__basic_verb_dict, INPUT_CURSOR_VERB_UP   )) { __input_trace("Warning! Default cursor up verb \"",    INPUT_CURSOR_VERB_UP,    "\" has not been defined for any profile"); _global.__cursor_verbs_valid = false; }
-    if (!variable_struct_exists(_global.__basic_verb_dict, INPUT_CURSOR_VERB_DOWN )) { __input_trace("Warning! Default cursor down verb \"",  INPUT_CURSOR_VERB_DOWN,  "\" has not been defined for any profile"); _global.__cursor_verbs_valid = false; }
-    if (!variable_struct_exists(_global.__basic_verb_dict, INPUT_CURSOR_VERB_LEFT )) { __input_trace("Warning! Default cursor left verb \"",  INPUT_CURSOR_VERB_LEFT,  "\" has not been defined for any profile"); _global.__cursor_verbs_valid = false; }
-    if (!variable_struct_exists(_global.__basic_verb_dict, INPUT_CURSOR_VERB_RIGHT)) { __input_trace("Warning! Default cursor right verb \"", INPUT_CURSOR_VERB_RIGHT, "\" has not been defined for any profile"); _global.__cursor_verbs_valid = false; }
+    if (!variable_struct_exists(_global.__basic_verb_dict, INPUT_CURSOR_VERB_UP   )) { if (!__INPUT_SILENT) __input_trace("Warning! Default cursor up verb \"",    INPUT_CURSOR_VERB_UP,    "\" has not been defined for any profile"); _global.__cursor_verbs_valid = false; }
+    if (!variable_struct_exists(_global.__basic_verb_dict, INPUT_CURSOR_VERB_DOWN )) { if (!__INPUT_SILENT) __input_trace("Warning! Default cursor down verb \"",  INPUT_CURSOR_VERB_DOWN,  "\" has not been defined for any profile"); _global.__cursor_verbs_valid = false; }
+    if (!variable_struct_exists(_global.__basic_verb_dict, INPUT_CURSOR_VERB_LEFT )) { if (!__INPUT_SILENT) __input_trace("Warning! Default cursor left verb \"",  INPUT_CURSOR_VERB_LEFT,  "\" has not been defined for any profile"); _global.__cursor_verbs_valid = false; }
+    if (!variable_struct_exists(_global.__basic_verb_dict, INPUT_CURSOR_VERB_RIGHT)) { if (!__INPUT_SILENT) __input_trace("Warning! Default cursor right verb \"", INPUT_CURSOR_VERB_RIGHT, "\" has not been defined for any profile"); _global.__cursor_verbs_valid = false; }
     
     //Fix any missing verb definitions for default profiles
     var _f = 0;
@@ -155,13 +158,16 @@ function __input_finalize_default_profiles()
             
             if (!variable_struct_exists(_profile_struct, _verb_name))
             {
-                if (INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES)
+                if (!__INPUT_SILENT)
                 {
-                    __input_trace("Warning! Default profile \"", _profile_name, "\" does not include a definition for basic verb \"", _verb_name, "\"");
-                }
-                else
-                {
-                    __input_error("Default profile \"", _profile_name, "\" does not include a definition for basic verb \"", _verb_name, "\"\n(To ignore this error set INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES to <true>)");
+                    if (INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES)
+                    {
+                        __input_trace("Warning! Default profile \"", _profile_name, "\" does not include a definition for basic verb \"", _verb_name, "\"");
+                    }
+                    else
+                    {
+                        __input_error("Default profile \"", _profile_name, "\" does not include a definition for basic verb \"", _verb_name, "\"\n(To ignore this error set INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES to <true>)");
+                    }
                 }
                 
                 _global.__default_player.__verb_ensure(_profile_name, _verb_name);

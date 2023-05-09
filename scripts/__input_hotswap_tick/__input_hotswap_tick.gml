@@ -8,7 +8,7 @@ function __input_hotswap_tick()
     {
         if (__ghost)
         {
-            __input_trace("Warning! Cannot hotswap because player 0 is a ghost");
+            if (!__INPUT_SILENT) __input_trace("Warning! Cannot hotswap because player 0 is a ghost");
             return false;
         }
         
