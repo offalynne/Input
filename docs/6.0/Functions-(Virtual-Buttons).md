@@ -8,6 +8,32 @@ The following functions are in global scope and can be called anywhere in your g
 
 &nbsp;
 
+## …virtual_create
+
+`input_virtual_create()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Struct, an instance of `__input_class_virtual_button`
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+This function creates a blank, unconfigured, virtual button. Please scroll down to see methods that are available for virtual buttons.
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
 ## …virtual_destroy_all
 
 `input_virtual_destroy_all()`
@@ -77,32 +103,6 @@ This function will return `false` for a virtual button that has been destroyed.
 Draws simple representations of every virtual button to the screen. This is intended for debug use only.
 
 !> This function should be called in a [Draw GUI event](https://manual.yoyogames.com/The_Asset_Editors/Object_Properties/Draw_Events.htm) for accurate results.
-
-#### **Example**
-
-```gml
-//TODO lol
-```
-
-<!-- tabs:end -->
-
-&nbsp;
-
-## …virtual_create
-
-`input_virtual_create()`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** Struct, an instance of `__input_class_virtual_button`
-
-|Name|Datatype|Purpose|
-|----|--------|-------|
-|None|        |       |
-
-This function creates a blank, unconfigured, virtual button. Please scroll down to see methods that are available for virtual buttons.
 
 #### **Example**
 
