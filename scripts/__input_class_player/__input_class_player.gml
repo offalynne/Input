@@ -1197,6 +1197,22 @@ function __input_class_player() constructor
             __input_trace("Warning! Player ", __index, " trigger effect strength not found, defaulting to ", INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH);
             __vibration_strength = INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH;
         }
+        
+        if (variable_struct_exists(_json, "cursor_inverted"))
+        {
+            if (!is_bool(__cursor_inverted))
+            {
+                __input_error("Player ", __index, " cursor inversion is corrupted");
+                return;
+            }
+            
+            __cursor_inverted = false;
+        }
+        else
+        {
+            __input_trace("Warning! Player ", __index, " cursor inversion not found, defaulting to <false>");
+            __cursor_inverted = false;
+        }
     }
     
     static __reset = function()
@@ -1228,6 +1244,7 @@ function __input_class_player() constructor
         __gyro_axis_y           = INPUT_GYRO_DEFAULT_AXIS_Y;
         __gyro_sensitivity_x    = INPUT_GYRO_DEFAULT_SENSITIVITY_X;
         __gyro_sensitivity_y    = INPUT_GYRO_DEFAULT_SENSITIVITY_Y;
+        __cursor_inverted       = false;
     }
     
     static __vibration_add_event = function(_event)
