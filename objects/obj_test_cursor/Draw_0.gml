@@ -19,7 +19,7 @@ if (window_get_cursor() != _cursor) window_set_cursor(_cursor);
 var _string =  "in bound        = " + string(input_mouse_in_bounds()) + "\n";
 _string += "capturing       = " + string(input_mouse_capture_get().capture) + "\n";
 _string += "capture blocked = " + string(input_mouse_capture_get().blocked) + "\n";
-_string += "enabled         = " + string(input_mouse_enabled_get()) + "\n";
+_string += "enabled         = " + string(input_cursor_mouse_enabled_get()) + "\n";
 _string += "inverted        = " + string(input_cursor_inverted_get()) + "\n";
 _string += "mouse x         = " + string(_mouse_x) + "\n";
 _string += "mouse y         = " + string(_mouse_y) + "\n";
