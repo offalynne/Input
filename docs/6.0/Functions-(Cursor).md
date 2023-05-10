@@ -342,6 +342,33 @@ Limits the cursor's motion inside a circle centred at the given point.
 
 &nbsp;
 
+## …cursor_limit_boundary
+
+`input_cursor_limit_boundary([margin=0], [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`[margin]`     |number  |Amount to reduce the bounding box by                |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+Limits the cursor’s motion inside the visible portion of the game window. If a margin greater than zero is specified then the bounding box will be smaller.
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
 ## …cursor_limit_remove
 
 `input_cursor_limit_remove([playerIndex])`
