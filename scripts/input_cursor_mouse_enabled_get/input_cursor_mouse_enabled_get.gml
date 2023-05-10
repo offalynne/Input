@@ -1,4 +1,4 @@
-/// @desc    Gets whether a player may use mouse to drive the cursor
+/// @desc    Returns whether the player can use a mouse to move the cursor
 /// @param   [playerIndex=0]
 
 function input_cursor_mouse_enabled_get(_player_index = 0)
