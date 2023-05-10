@@ -495,3 +495,54 @@ The struct returned by this function contains the following member variables:
 ```
 
 <!-- tabs:end -->
+
+&nbsp;
+
+## …cursor_mouse_enabled_set
+
+`input_cursor_mouse_enabled_set(state, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                               |
+|---------------|--------|------------------------------------------------------|
+|`state`        |boolean |Whether the player can use a mouse can move the cursor|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used  |
+
+Input will only allow a mouse to move the cursor if the player in question has been assigned the `INPUT_MOUSE` source. `input_cursor_mouse_enabled_set()` allows you further control on top of this behaviour.
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …cursor_mouse_enabled_get
+
+`input_cursor_mouse_enabled_set(state, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the player can use a mouse can move the cursor
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
