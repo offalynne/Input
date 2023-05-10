@@ -58,6 +58,7 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 <h3 align="center">colinator27</h1>
 <p align="center"><i>Performance improvements to SDL database parser</i></p>
+<p align="center">(<a href="https://colinator27.github.io/" target="_blank">GitHub</a>)</p>
 
 &nbsp;
 
