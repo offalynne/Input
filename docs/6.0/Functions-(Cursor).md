@@ -384,15 +384,16 @@ Removes any cursor limits you have set using `input_cursor_limit_aabb()` or `inp
 
 The struct returned by this function contains the following member variables:
 
-|Name            |Datatype|Purpose                                          |
-|----------------|--------|-------------------------------------------------|
-|`.left`         |number  |Left-most limit for the bounding box             |
-|`.top`          |number  |Top-most limit for the bounding box              |
-|`.right`        |number  |Right-most limit for the bounding box            |
-|`.bottom`       |number  |Bottom-most limit for the bounding box           |
-|`.circle_x`     |number  |x-coordinate of the centre of the bounding circle|
-|`.circle_y`     |number  |y-coordinate of the centre of the bounding circle|
-|`.circle_radius`|number  |Radius of the bounding circle                    |
+|Name              |Datatype|Purpose                                          |
+|------------------|--------|-------------------------------------------------|
+|`.left`           |number  |Left-most limit for the bounding box             |
+|`.top`            |number  |Top-most limit for the bounding box              |
+|`.right`          |number  |Right-most limit for the bounding box            |
+|`.bottom`         |number  |Bottom-most limit for the bounding box           |
+|`.circle_x`       |number  |x-coordinate of the centre of the bounding circle|
+|`.circle_y`       |number  |y-coordinate of the centre of the bounding circle|
+|`.circle_radius`  |number  |Radius of the bounding circle                    |
+|`.boundary_margin`|number  |Size of the boundary margin                      |
 
 !> Values in the returned struct will be `undefined` if the associated limit has not been set.
 
