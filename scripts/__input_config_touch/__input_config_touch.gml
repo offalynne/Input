@@ -8,7 +8,7 @@
 #macro INPUT_SWITCH_TOUCHSCREEN_ALLOWED false
 
 //If touch input (mobile + Switch) should be treated as mouse input
-#macro INPUT_TOUCH_IS_MOUSE  false
+#macro INPUT_TOUCHSCREEN_USES_MOUSE_SOURCE  false
 
 //Maximum number of touch screen points to query
 //This applies to touch screen devices only (excludes PlayStation)

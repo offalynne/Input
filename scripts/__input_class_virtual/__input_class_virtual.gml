@@ -729,7 +729,6 @@ function __input_class_virtual() constructor
                         if (_threshold_factor > 0)
                         {
                             var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 22.5) / 45) mod 8;
-                            __input_trace(_direction);
                             
                             //Look, I *could* do this with maths but I'm choosing not to because it's 10pm
                             if (_direction == 0)

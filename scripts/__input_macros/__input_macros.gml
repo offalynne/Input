@@ -15,6 +15,7 @@
 #macro __INPUT_DEBUG_CAPTURE   false
 
 #macro __INPUT_EXTERNAL_DEBUG_LOG  false  //Do NOT set to <true> unless directed (!)
+#macro __INPUT_SILENT              false  //Suppress normal logging when <true> (not recommended)
 
 //How many frames to wait before scanning for connected gamepads
 //This works around Steam sometimes reporting confusing connection/disconnection events on boot
@@ -69,7 +70,7 @@
 #macro __INPUT_LED_PATTERN_SUPPORT        ((os_type == os_ps5) || __INPUT_ON_SWITCH || __INPUT_ON_IOS || ((os_type == os_windows) && !__INPUT_ON_WEB))
 #macro __INPUT_STEAMWORKS_SUPPORT         (((os_type == os_windows) || (os_type == os_linux)) && !__INPUT_ON_WEB)
 #macro __INPUT_TOUCH_SUPPORT              (__INPUT_ON_MOBILE  || (INPUT_SWITCH_TOUCHSCREEN_ALLOWED && __INPUT_ON_SWITCH) || (INPUT_WINDOWS_TOUCH_ALLOWED && (os_type == os_windows)))
-#macro __INPUT_TOUCH_PRIMARY              (!INPUT_TOUCH_IS_MOUSE && (__INPUT_ON_MOBILE || __INPUT_ON_SWITCH || (INPUT_WINDOWS_TOUCH_PRIMARY && (os_type == os_windows))))
+#macro __INPUT_TOUCH_PRIMARY              (!INPUT_TOUCHSCREEN_USES_MOUSE_SOURCE && (__INPUT_ON_MOBILE || __INPUT_ON_SWITCH || (INPUT_WINDOWS_TOUCH_PRIMARY && (os_type == os_windows))))
 
 #macro __INPUT_HOLD_THRESHOLD           0.2  //Minimum value from an axis for that axis to be considered activated at the gamepad layer. This is *not* the same as min/max thresholds for players
 #macro __INPUT_DELTA_HOTSWAP_THRESHOLD  0.1  //Minimum (absolute) change in gamepad mapping value between frames to register as new input. This triggers hotswapping

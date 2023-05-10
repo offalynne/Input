@@ -278,9 +278,9 @@ function __input_validate_macros()
     
     #region Touch
     
-    if (!is_bool(INPUT_TOUCH_IS_MOUSE))
+    if (!is_bool(INPUT_TOUCHSCREEN_USES_MOUSE_SOURCE))
     {
-        __input_error("INPUT_TOUCH_IS_MOUSE must be either <true> or <false>");
+        __input_error("INPUT_TOUCHSCREEN_USES_MOUSE_SOURCE must be either <true> or <false>");
     }
     
     if (!is_numeric(INPUT_MAX_TOUCHPOINTS) || (floor(INPUT_MAX_TOUCHPOINTS) != INPUT_MAX_TOUCHPOINTS) || (INPUT_MAX_TOUCHPOINTS < 1))

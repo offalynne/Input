@@ -20,7 +20,7 @@ function __input_gamepad_set_blacklist()
         if ((vendor == "7e05") && (product == "0920") && (button_count > 21))
         {
             //Switch Pro Controller over USB. Normally does not operate, runs haywire with Steam open
-            __input_trace("Warning! Controller is blacklisted (Switch Pro Controller over USB)");
+            if (!__INPUT_SILENT) __input_trace("Warning! Controller is blacklisted (Switch Pro Controller over USB)");
             blacklisted = true;
             return;
         }
@@ -30,7 +30,7 @@ function __input_gamepad_set_blacklist()
          || ((axis_count ==  8) && (button_count == 0))))  //DsHidMini gyro
         {
             //Unsupported configuration for PS3 controller
-            __input_trace("Warning! Controller is blacklisted (Incorrectly configured PS3 controller)");
+            if (!__INPUT_SILENT) __input_trace("Warning! Controller is blacklisted (Incorrectly configured PS3 controller)");
             blacklisted = true;
             return;
         }
@@ -42,7 +42,7 @@ function __input_gamepad_set_blacklist()
             if ((button_count == 144) && (axis_count == 0))
             {
                 //Unsupported virtual keyboard device 
-                __input_trace("Warning! Controller ", index, " is blacklisted (Steam Deck virtual keyboard)");
+                if (!__INPUT_SILENT) __input_trace("Warning! Controller ", index, " is blacklisted (Steam Deck virtual keyboard)");
                 blacklisted = true;
                 return;
             }
@@ -68,7 +68,7 @@ function __input_gamepad_set_blacklist()
             if (_i == _joycon_imu_axis_count)
             {
                 //Unsupported hid-nintendo module motion device
-                __input_trace("Warning! Controller ", index, " blacklisted (matches Joy-Con motion unit)");
+                if (!__INPUT_SILENT) __input_trace("Warning! Controller ", index, " blacklisted (matches Joy-Con motion unit)");
                 blacklisted = true;
                 return;
             }
@@ -78,7 +78,7 @@ function __input_gamepad_set_blacklist()
         ||  (raw_type == "HIDWiiRemoteIMU")  || (raw_type == "HIDWiiRemoteIRSensor"))
         {
             //Unsupported hid-wiimote module motion device 
-            __input_trace("Warning! Controller ", index, " is blacklisted, type (\"", raw_type, "\")");
+            if (!__INPUT_SILENT) __input_trace("Warning! Controller ", index, " is blacklisted, type (\"", raw_type, "\")");
             blacklisted = true;
             return;
         }
@@ -87,7 +87,7 @@ function __input_gamepad_set_blacklist()
     if ((vendor != "de28") && variable_struct_exists(_global.__ignore_gamepad_types, simple_type))
     {
         //Block device types indicated by Steam Input
-        __input_trace("Warning! Controller type is blacklisted by Steam Input (\"", simple_type, "\")");
+        if (!__INPUT_SILENT) __input_trace("Warning! Controller type is blacklisted by Steam Input (\"", simple_type, "\")");
         blacklisted = true;
         return;
     }
@@ -114,13 +114,13 @@ function __input_gamepad_set_blacklist()
     
     if (is_struct(_os_guid_dict) && variable_struct_exists(_os_guid_dict, guid))
     {
-        __input_trace("Warning! Controller is blacklisted (found by GUID \"", guid, "\")");
+        if (!__INPUT_SILENT) __input_trace("Warning! Controller is blacklisted (found by GUID \"", guid, "\")");
         blacklisted = true;
         return;
     }
     else if (is_struct(_os_vidpid_dict) && variable_struct_exists(_os_vidpid_dict, string(vendor) + string(product)))
     {
-        __input_trace("Warning! Controller is blacklisted (found by VID+PID \"", vendor, product, "\")");
+        if (!__INPUT_SILENT) __input_trace("Warning! Controller is blacklisted (found by VID+PID \"", vendor, product, "\")");
         blacklisted = true;
         return;
     }
@@ -132,7 +132,7 @@ function __input_gamepad_set_blacklist()
         {
             if (string_pos(_os_desc_array[_i], _description_lower) > 0)
             {
-                __input_trace("Warning! Controller is blacklisted (banned substring \"", _os_desc_array[_i], "\" found in description)");
+                if (!__INPUT_SILENT) __input_trace("Warning! Controller is blacklisted (banned substring \"", _os_desc_array[_i], "\" found in description)");
                 blacklisted = true;
                 return;
             }

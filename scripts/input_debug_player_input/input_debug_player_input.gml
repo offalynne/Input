@@ -5,7 +5,7 @@
 /// N.B. This function is provided for debug use only and does very little error checking.
 ///      Use input_binding_scan_start() for player-facing binding scan
 /// 
-/// @param [player=0]
+/// @param [playerIndex=0]
 
 function input_debug_player_input(_player_index = 0)
 {
