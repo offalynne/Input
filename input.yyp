@@ -342,6 +342,7 @@
     {"id":{"name":"__input_load_sdl2_from_buffer","path":"scripts/__input_load_sdl2_from_buffer/__input_load_sdl2_from_buffer.yy",},"order":6,},
     {"id":{"name":"__input_load_sdl2_from_file","path":"scripts/__input_load_sdl2_from_file/__input_load_sdl2_from_file.yy",},"order":7,},
     {"id":{"name":"__input_load_sdl2_from_string","path":"scripts/__input_load_sdl2_from_string/__input_load_sdl2_from_string.yy",},"order":8,},
+    {"id":{"name":"__input_load_sdl2_from_string_new","path":"scripts/__input_load_sdl2_from_string_new/__input_load_sdl2_from_string_new.yy",},"order":11,},
     {"id":{"name":"__input_load_type_csv","path":"scripts/__input_load_type_csv/__input_load_type_csv.yy",},"order":9,},
     {"id":{"name":"__input_macros","path":"scripts/__input_macros/__input_macros.yy",},"order":15,},
     {"id":{"name":"__input_mouse_button","path":"scripts/__input_mouse_button/__input_mouse_button.yy",},"order":4,},
