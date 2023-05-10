@@ -680,7 +680,8 @@ function __input_class_player() constructor
         }
         
         __profiles_dict[$ _profile_name][$ _verb][@ _alternate] = _binding_struct;
-        __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " set to \"", input_binding_get_name(_binding_struct), "\"");
+        
+        if (!__INPUT_SILENT) __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " set to \"", input_binding_get_name(_binding_struct), "\"");
     }
     
     /// @param profileName
@@ -1233,7 +1234,7 @@ function __input_class_player() constructor
     {
         if (__vibration_paused && !_event.__force)
         {
-            __input_trace("Warning! New vibration event ignored, player ", __index, " vibration is paused")
+            if (!__INPUT_SILENT) __input_trace("Warning! New vibration event ignored, player ", __index, " vibration is paused")
         }
         else
         {
@@ -1248,7 +1249,7 @@ function __input_class_player() constructor
         
         if (__trigger_effect_paused)
         {
-            __input_trace("Warning! New trigger effect ignored, player ", __index, " trigger effect is paused");
+            if (!__INPUT_SILENT) __input_trace("Warning! New trigger effect ignored, player ", __index, " trigger effect is paused");
             return;
         }
 

@@ -17,6 +17,10 @@ function __input_initialize()
     }
     
     __input_trace("Welcome to Input by @jujuadams and @offalynne! This is version ", __INPUT_VERSION, ", ", __INPUT_DATE);
+    if (__INPUT_SILENT)
+    {
+        __input_trace("Warning! Per __INPUT_SILENT mode, most logging is suppressed. This is NOT recommended");
+    }
     
     _global.__use_is_instanceof = (!__INPUT_ON_WEB) && (string_copy(GM_runtime_version, 1, 4) == "2023");
     if (_global.__use_is_instanceof) __input_trace("On runtime ", GM_runtime_version, ", using is_instanceof()");
@@ -298,7 +302,7 @@ function __input_initialize()
     
     if (!__INPUT_SDL2_SUPPORT || !INPUT_SDL2_REMAPPING)
     {
-        __input_trace("Skipping loading SDL database");
+        if (!__INPUT_SILENT) __input_trace("Skipping loading SDL database");
     }
     else
     {
@@ -345,7 +349,7 @@ function __input_initialize()
     //Load the controller type database
     if (__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || __INPUT_ON_IOS)
     {
-        __input_trace("Skipping loading controller type database");
+        if (!__INPUT_SILENT) __input_trace("Skipping loading controller type database");
     }
     else if (file_exists(INPUT_CONTROLLER_TYPE_PATH))
     {
@@ -365,7 +369,7 @@ function __input_initialize()
     _global.__blacklist_dictionary = {};
     if (!__INPUT_SDL2_SUPPORT)
     {
-        __input_trace("Skipping loading controller blacklist database");
+        if (!__INPUT_SILENT) __input_trace("Skipping loading controller blacklist database");
     }
     else
     {
@@ -627,7 +631,7 @@ function __input_initialize()
         }
         catch(_error)
         {
-            __input_trace("Steamworks extension unavailable");
+            if (!__INPUT_SILENT) __input_trace("Steamworks extension unavailable");
         }
         
         if (_global.__using_steamworks && (string(steam_get_app_id()) == "480"))
@@ -766,7 +770,7 @@ function __input_initialize()
                 //The remaining configurations are in the Xbox Controller style including:
                 //Steam Controller, Steam Link, Steam Deck, Xbox or Switch with AB/XY swap
                 _global.__simple_type_lookup[$ "CommunitySteam"] = _default_xbox_type;
-                __input_trace("Steam Input configuration indicates Xbox-like identity for virtual controllers");
+                if (!__INPUT_SILENT) __input_trace("Steam Input configuration indicates Xbox-like identity for virtual controllers");
             }
         }
     }

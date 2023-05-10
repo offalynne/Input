@@ -1,6 +1,6 @@
 function __input_load_sdl2_from_file(_filename)
 {
-    __input_trace("Loading SDL2 database from \"", _filename, "\"");
+    if (!__INPUT_SILENT) __input_trace("Loading SDL2 database from \"", _filename, "\"");
     
     var _buffer = buffer_load(_filename);
     if (_buffer < 0)
