@@ -12,7 +12,16 @@ function __input_load_sdl2_from_file(_filename)
     }
     
     var _result;
-    if (_global.__use_new_strings)
+    if (_global.__use_legacy_strings)
+    {
+        //Ensure the buffer has a null terminator
+        buffer_resize(_buffer, buffer_get_size(_buffer) + 1);
+    
+        _result = __input_load_sdl2_from_buffer_legacy(_buffer);
+        
+        buffer_delete(_buffer);
+    }
+    else
     {
         //In case of manual editing, skip UTF-8 BOM
         if ((buffer_get_size(_buffer) >= 4) && ((buffer_peek(_buffer, 0, buffer_u32) & 0xFFFFFF) == 0xBFBBEF))
@@ -24,16 +33,7 @@ function __input_load_sdl2_from_file(_filename)
         var _string = buffer_read(_buffer, buffer_text);
         buffer_delete(_buffer);
         
-        _result = __input_load_sdl2_from_string_new(_string);
-    }
-    else
-    {
-        //Ensure the buffer has a null terminator
-        buffer_resize(_buffer, buffer_get_size(_buffer) + 1);
-    
-        _result = __input_load_sdl2_from_buffer(_buffer);
-        
-        buffer_delete(_buffer);
+        _result = __input_load_sdl2_from_string_internal(_string);
     }
     
     return _result;

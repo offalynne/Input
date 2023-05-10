@@ -1,4 +1,4 @@
-function __input_load_sdl2_from_buffer(_buffer)
+function __input_load_sdl2_from_buffer_legacy(_buffer)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
