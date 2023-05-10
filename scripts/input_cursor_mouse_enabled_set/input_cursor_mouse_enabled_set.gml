@@ -1,5 +1,5 @@
 /// @desc    Sets whether a player may use mouse to drive the cursor
-/// @param   State
+/// @param   state
 /// @param   [playerIndex=0]
 
 function input_cursor_mouse_enabled_set(_state, _player_index = 0)
