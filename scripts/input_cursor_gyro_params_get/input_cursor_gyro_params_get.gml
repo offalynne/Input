@@ -1,7 +1,7 @@
 /// @desc    Gets parameters for the cursor when gamepad gyro is in use
 /// @param   [playerIndex=0]
 
-function input_gyro_params_get(_player_index = 0)
+function input_cursor_gyro_params_get(_player_index = 0)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_PLAYER_INDEX
