@@ -56,6 +56,11 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
+<h3 align="center">colinator27</h1>
+<p align="center"><i>Performance improvements to SDL database parser</i></p>
+
+&nbsp;
+
 <h3 align="center">Grace</h1>
 <p align="center"><i>Newbie guide and testing</i></p>
 <p align="center">(<a href="https://twitter.com/gart_gh" target="_blank">Twitter</a>)</p>
