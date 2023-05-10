@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "input_mouse_enabled_set",
+  "name": "input_cursor_mouse_enabled_set",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "22 Mouse (Direct)",
-    "path": "folders/Input/22 Mouse (Direct).yy",
+    "name": "09 Cursor",
+    "path": "folders/Input/09 Cursor.yy",
   },
 }
