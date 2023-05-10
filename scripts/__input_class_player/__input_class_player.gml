@@ -45,7 +45,8 @@ function __input_class_player() constructor
     __cursor = new __input_class_cursor();
     __cursor.__player = self;
     
-    __mouse_enabled = true;
+    __cursor_inverted = false;
+    __mouse_enabled   = true;
     
     __gyro_gamepad       = undefined;
     __gyro_axis_x        = INPUT_GYRO_DEFAULT_AXIS_X;
@@ -1005,7 +1006,8 @@ function __input_class_player() constructor
             gyro:                    _new_gyro_params,
             gamepad_type_override:   __gamepad_type_override,
             vibration_strength:      __vibration_strength,     
-            trigger_effect_strength: __trigger_effect_strength,       
+            trigger_effect_strength: __trigger_effect_strength,
+            cursor_inverted:         __cursor_inverted,
         };
         
         //Copy profiles

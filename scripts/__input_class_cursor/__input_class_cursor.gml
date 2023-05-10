@@ -82,6 +82,7 @@ function __input_class_cursor() constructor
         __prev_x = __x;
         __prev_y = __y;
         
+        var _y_inverted    = __player.__cursor_inverted? -1 : 1;
         var _can_use_mouse = (__player.__mouse_enabled && __player.__source_contains(INPUT_MOUSE)); //Automatically remapped to INPUT_TOUCH where appropriate
         
         //Mouse and touch
@@ -92,7 +93,7 @@ function __input_class_cursor() constructor
             if (__global.__mouse_capture)
             {
                 __x += __global.__pointer_dx[__coord_space];
-                __y += __global.__pointer_dy[__coord_space];
+                __y += __global.__pointer_dy[__coord_space]*_y_inverted;
             }
             else
             {
@@ -129,8 +130,8 @@ function __input_class_cursor() constructor
                     var _dts = delta_time/1000000;
                 
                     //Resolution of 0.1
-                    if (_gyro_value_x != undefined) __x += round((_gyro_value_x * _dts * __player.__gyro_screen_width  * __player.__gyro_sensitivity_x * 10)) / 10;
-                    if (_gyro_value_y != undefined) __y += round((_gyro_value_y * _dts * __player.__gyro_screen_height * __player.__gyro_sensitivity_y * 10)) / 10;
+                    if (_gyro_value_x != undefined) __x +=  round((_gyro_value_x * _dts * __player.__gyro_screen_width  * __player.__gyro_sensitivity_x * 10)) / 10;
+                    if (_gyro_value_y != undefined) __y += (round((_gyro_value_y * _dts * __player.__gyro_screen_height * __player.__gyro_sensitivity_y * 10)) / 10)*_y_inverted;
                 }
             }
 
@@ -144,12 +145,12 @@ function __input_class_cursor() constructor
                 {
                     var _coeff = power(point_distance(0, 0, _xy.x, _xy.y), INPUT_CURSOR_EXPONENT);
                     __x += __speed*_coeff*_xy.x;
-                    __y += __speed*_coeff*_xy.y;
+                    __y += __speed*_coeff*_xy.y*_y_inverted;
                 }
                 else
                 {
                     __x += __speed*_xy.x;
-                    __y += __speed*_xy.y;
+                    __y += __speed*_xy.y*_y_inverted;
                 }
             }
         }
