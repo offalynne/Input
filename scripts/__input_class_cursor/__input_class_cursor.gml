@@ -219,7 +219,6 @@ function __input_class_cursor() constructor
             switch(__coord_space)
             {
                 case INPUT_COORD_SPACE.ROOM:
-                    //If we have no defined camera then try to use view 0's camera
                     var _camera = (view_enabled && view_visible[0])? view_camera[0] : undefined;
                     if (_camera != undefined)
                     {
