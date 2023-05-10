@@ -1,7 +1,8 @@
-/// @desc    Removes any cursor limits you have set using input_cursor_limit_aabb() or input_cursor_limit_circle() 
+/// @desc    Limits the cursor’s motion inside the visible portion of the game window
+/// @param   [margin=0]
 /// @param   [playerIndex=0]
 
-function input_cursor_limit_remove(_player_index = 0)
+function input_cursor_limit_boundary(_margin = 0, _player_index = 0)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
@@ -10,7 +11,7 @@ function input_cursor_limit_remove(_player_index = 0)
         var _p = 0;
         repeat(INPUT_MAX_PLAYERS)
         {
-            input_cursor_limit_remove(_p);
+            input_cursor_limit_boundary(_p);
             ++_p;
         }
         
@@ -30,7 +31,7 @@ function input_cursor_limit_remove(_player_index = 0)
         __limit_y      = undefined;
         __limit_radius = undefined;
         
-        __limit_boundary_margin = undefined;
+        __limit_boundary_margin = _margin;
         
         __limit();
     }

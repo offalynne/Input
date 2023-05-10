@@ -20,6 +20,9 @@ function __input_class_cursor() constructor
     __limit_y      = undefined;
     __limit_radius = undefined;
     
+    //Limit to viewpoint
+    __limit_boundary_margin = undefined;
+    
     __elastic_x        = undefined;
     __elastic_y        = undefined;
     __elastic_strength = 0;
@@ -210,6 +213,48 @@ function __input_class_cursor() constructor
                 __x = __limit_x + _d*_dx;
                 __y = __limit_y + _d*_dy;
             }
+        }
+        else if (__limit_boundary_margin != undefined)
+        {
+            switch(__coord_space)
+            {
+                case INPUT_COORD_SPACE.ROOM:
+                    //If we have no defined camera then try to use view 0's camera
+                    var _camera = (view_enabled && view_visible[0])? view_camera[0] : undefined;
+                    if (_camera != undefined)
+                    {
+                        var _l = camera_get_view_x(     _camera);
+                        var _t = camera_get_view_y(     _camera);
+                        var _r = camera_get_view_width( _camera);
+                        var _b = camera_get_view_height(_camera);
+                    }
+                    else
+                    {
+                        //Fall back on the room's dimensions
+                        var _l = 0;
+                        var _t = 0;
+                        var _r = room_width;
+                        var _b = room_height;
+                    }
+                break;
+                
+                case INPUT_COORD_SPACE.GUI:
+                    var _l = 0;
+                    var _t = 0;
+                    var _r = display_get_gui_width();
+                    var _b = display_get_gui_height();
+                break;
+                
+                case INPUT_COORD_SPACE.DEVICE:
+                    var _l = 0;
+                    var _t = 0;
+                    var _r = window_get_width()
+                    var _b = window_get_height();
+                break;
+            }
+            
+            __x = clamp(__x, _l + __limit_boundary_margin, _r - __limit_boundary_margin);
+            __y = clamp(__y, _t + __limit_boundary_margin, _b - __limit_boundary_margin);
         }
     }
 }
