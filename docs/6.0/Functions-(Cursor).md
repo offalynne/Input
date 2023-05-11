@@ -165,6 +165,59 @@ Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_
 
 &nbsp;
 
+## …cursor_inverted_set
+
+`input_cursor_inverted_set(state, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                                    |
+|---------------|--------|-----------------------------------------------------------|
+|`state`        |boolean |When the cursor's movement in the y-axis should be inverted|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used       |
+
+Cursor y-axis inversion only applies when using a keyboard or gamepad to move the cursor, or when the mouse has been captured (see `input_mouse_capture_set()`).
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …cursor_inverted_get
+
+`input_cursor_inverted_get([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the cursor's y-axis movement is inverted
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+&nbsp;
+
 ## …cursor_coord_space_set
 
 `input_cursor_coord_space_set(coordSpace, [playerIndex])`
