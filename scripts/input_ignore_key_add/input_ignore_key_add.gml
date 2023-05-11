@@ -15,7 +15,7 @@ function input_ignore_key_add(_key)
         if (__INPUT_DEBUG) __input_trace("Ignoring keycode ", _key);
         _global.__ignore_key_dict[$ _key] = true;
     }
-    else
+    else if (!__INPUT_SILENT)
     {
         __input_trace("Could not ignore keycode ", _key, ", it is already ignored");
     }

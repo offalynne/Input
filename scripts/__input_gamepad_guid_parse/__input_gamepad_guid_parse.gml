@@ -10,7 +10,7 @@ function __input_gamepad_guid_parse(_guid, _legacy, _suppress)
     
     if (_guid == "00000000000000000000000000000000")
     {
-        if (!_suppress) __input_trace("Warning! GUID was empty");
+        if (!__INPUT_SILENT && !_suppress) __input_trace("Warning! GUID was empty");
         return { vendor : "", product : "", description : "" };
     }
     
@@ -47,7 +47,7 @@ function __input_gamepad_guid_parse(_guid, _legacy, _suppress)
             //Otherwise confirm N6 is also empty
             if (string_copy(_guid, 21, 4) != "0000")
             {
-                if (!_suppress) __input_trace("Warning! GUID \"", _guid, "\" does not fit expected pattern. VID+PID cannot be extracted");
+                if (!__INPUT_SILENT && !_suppress) __input_trace("Warning! GUID \"", _guid, "\" does not fit expected pattern. VID+PID cannot be extracted");
                 return { vendor : "", product : "", description : "" };
             }
         
@@ -56,7 +56,7 @@ function __input_gamepad_guid_parse(_guid, _legacy, _suppress)
             if ((string_copy(_guid, 1, 4) != "0300") 
             &&  (string_copy(_guid, 1, 4) != "0500"))
             {
-                if (!_suppress) __input_trace("Warning! GUID \"", _guid, "\" driver ID does not match expected (Found ", string_copy(_guid, 1, 4), ", expect either 0300 or 0500)");
+                if (!__INPUT_SILENT && !_suppress) __input_trace("Warning! GUID \"", _guid, "\" driver ID does not match expected (Found ", string_copy(_guid, 1, 4), ", expect either 0300 or 0500)");
             }
         
             _vendor  = string_copy(_guid,  9, 4);

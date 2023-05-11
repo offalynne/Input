@@ -15,6 +15,7 @@
 #macro __INPUT_DEBUG_CAPTURE   false
 
 #macro __INPUT_EXTERNAL_DEBUG_LOG  false  //Do NOT set to <true> unless directed (!)
+#macro __INPUT_SILENT              false  //Suppress normal logging when <true> (not recommended)
 
 //How many frames to wait before scanning for connected gamepads
 //This works around Steam sometimes reporting confusing connection/disconnection events on boot
