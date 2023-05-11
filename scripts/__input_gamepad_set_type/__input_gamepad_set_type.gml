@@ -126,6 +126,10 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunitySNES";
                 }
+                else if (__input_string_contains(_desc, "retroid", "sfc"))
+                {
+                    raw_type = "CommunitySuperFamicom";
+                }
                 else if (__input_string_contains(_desc, "saturn"))
                 {
                     raw_type = "CommunitySaturn"
