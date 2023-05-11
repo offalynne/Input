@@ -6,7 +6,7 @@
 /// @param   [playerIndex=0]
 /// @param   [gamepad=undefined]
 
-function input_gyro_params_set(_gyro_axis_x = undefined, _gyro_axis_y = undefined, _gyro_sensitivity_x = undefined, _gyro_sensitivity_y = undefined, _player_index = 0, _gamepad = undefined)
+function input_cursor_gyro_params_set(_gyro_axis_x = undefined, _gyro_axis_y = undefined, _gyro_sensitivity_x = undefined, _gyro_sensitivity_y = undefined, _player_index = 0, _gamepad = undefined)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
@@ -15,7 +15,7 @@ function input_gyro_params_set(_gyro_axis_x = undefined, _gyro_axis_y = undefine
         var _p = 0;
         repeat(INPUT_MAX_PLAYERS)
         {
-            input_gyro_params_set(_gyro_axis_x, _gyro_axis_y, _gyro_sensitivity_x, _gyro_sensitivity_y, _p, _gamepad);
+            input_cursor_gyro_params_set(_gyro_axis_x, _gyro_axis_y, _gyro_sensitivity_x, _gyro_sensitivity_y, _p, _gamepad);
             ++_p;
         }
         
