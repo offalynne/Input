@@ -10,7 +10,7 @@ Input 6 introduces a number of new features alongside a small number of breaking
 
 - Input no longer clogs up global namespace
 - `input_tick()` is dead. Long live `input_controller_object`
-- Loading the SDL gamepad database is now a lot faster when using newer versions of GameMaker
+- Loading the SDL gamepad database is now a lot faster when using newer versions of GameMaker (LTS is still using the slower legacy code)
 - Adds `input_verb_get_icon()` as an easier alternative to `input_binding_get_icon()`
 - If we cannot find a gamepad in the SDL2 database then we now use the original description rather than `"Unknown"`
 - Adds `input_player_gamepad_type_override_set()` (and getter) to force gamepad appearance
