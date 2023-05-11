@@ -30,8 +30,6 @@ function input_cursor_limit_remove(_player_index = 0)
         __limit_y      = undefined;
         __limit_radius = undefined;
         
-        __limit_boundary_margin = undefined;
-        
         __limit();
     }
 }

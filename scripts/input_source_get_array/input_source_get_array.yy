@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "17  Sources",
-    "path": "folders/Input/17  Sources.yy",
+    "name": "Sources",
+    "path": "folders/Input/Sources.yy",
   },
 }

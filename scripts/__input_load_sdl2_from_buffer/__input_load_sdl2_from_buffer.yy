@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__input_load_sdl2_from_string_internal",
+  "name": "__input_load_sdl2_from_buffer",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

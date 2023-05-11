@@ -20,9 +20,6 @@ function __input_class_cursor() constructor
     __limit_y      = undefined;
     __limit_radius = undefined;
     
-    //Limit to viewpoint
-    __limit_boundary_margin = undefined;
-    
     __elastic_x        = undefined;
     __elastic_y        = undefined;
     __elastic_strength = 0;
@@ -85,7 +82,6 @@ function __input_class_cursor() constructor
         __prev_x = __x;
         __prev_y = __y;
         
-        var _y_inverted    = __player.__cursor_inverted? -1 : 1;
         var _can_use_mouse = (__player.__mouse_enabled && __player.__source_contains(INPUT_MOUSE)); //Automatically remapped to INPUT_TOUCH where appropriate
         
         //Mouse and touch
@@ -96,7 +92,7 @@ function __input_class_cursor() constructor
             if (__global.__mouse_capture)
             {
                 __x += __global.__pointer_dx[__coord_space];
-                __y += __global.__pointer_dy[__coord_space]*_y_inverted;
+                __y += __global.__pointer_dy[__coord_space];
             }
             else
             {
@@ -133,8 +129,8 @@ function __input_class_cursor() constructor
                     var _dts = delta_time/1000000;
                 
                     //Resolution of 0.1
-                    if (_gyro_value_x != undefined) __x +=  round((_gyro_value_x * _dts * __player.__gyro_screen_width  * __player.__gyro_sensitivity_x * 10)) / 10;
-                    if (_gyro_value_y != undefined) __y += (round((_gyro_value_y * _dts * __player.__gyro_screen_height * __player.__gyro_sensitivity_y * 10)) / 10)*_y_inverted;
+                    if (_gyro_value_x != undefined) __x += round((_gyro_value_x * _dts * __player.__gyro_screen_width  * __player.__gyro_sensitivity_x * 10)) / 10;
+                    if (_gyro_value_y != undefined) __y += round((_gyro_value_y * _dts * __player.__gyro_screen_height * __player.__gyro_sensitivity_y * 10)) / 10;
                 }
             }
 
@@ -148,12 +144,12 @@ function __input_class_cursor() constructor
                 {
                     var _coeff = power(point_distance(0, 0, _xy.x, _xy.y), INPUT_CURSOR_EXPONENT);
                     __x += __speed*_coeff*_xy.x;
-                    __y += __speed*_coeff*_xy.y*_y_inverted;
+                    __y += __speed*_coeff*_xy.y;
                 }
                 else
                 {
                     __x += __speed*_xy.x;
-                    __y += __speed*_xy.y*_y_inverted;
+                    __y += __speed*_xy.y;
                 }
             }
         }
@@ -213,47 +209,6 @@ function __input_class_cursor() constructor
                 __x = __limit_x + _d*_dx;
                 __y = __limit_y + _d*_dy;
             }
-        }
-        else if (__limit_boundary_margin != undefined)
-        {
-            switch(__coord_space)
-            {
-                case INPUT_COORD_SPACE.ROOM:
-                    var _camera = (view_enabled && view_visible[0])? view_camera[0] : undefined;
-                    if (_camera != undefined)
-                    {
-                        var _l = camera_get_view_x(     _camera);
-                        var _t = camera_get_view_y(     _camera);
-                        var _r = camera_get_view_width( _camera);
-                        var _b = camera_get_view_height(_camera);
-                    }
-                    else
-                    {
-                        //Fall back on the room's dimensions
-                        var _l = 0;
-                        var _t = 0;
-                        var _r = room_width;
-                        var _b = room_height;
-                    }
-                break;
-                
-                case INPUT_COORD_SPACE.GUI:
-                    var _l = 0;
-                    var _t = 0;
-                    var _r = display_get_gui_width();
-                    var _b = display_get_gui_height();
-                break;
-                
-                case INPUT_COORD_SPACE.DEVICE:
-                    var _l = 0;
-                    var _t = 0;
-                    var _r = window_get_width()
-                    var _b = window_get_height();
-                break;
-            }
-            
-            __x = clamp(__x, _l + __limit_boundary_margin, _r - __limit_boundary_margin);
-            __y = clamp(__y, _t + __limit_boundary_margin, _b - __limit_boundary_margin);
         }
     }
 }

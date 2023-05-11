@@ -33,8 +33,6 @@ function input_cursor_limit_circle(_x, _y, _radius, _player_index = 0)
         __limit_y      = _y;
         __limit_radius = _radius;
         
-        __limit_boundary_margin = undefined;
-        
         __limit();
     }
 }

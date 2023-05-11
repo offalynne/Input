@@ -31,12 +31,12 @@ function __input_gamepad_set_description()
     }
     else if (!__INPUT_SDL2_SUPPORT)
     {
-        if (!__INPUT_SILENT) __input_trace("SDL2 remapping unsupported for this platform");
+        __input_trace("SDL2 remapping unsupported for this platform");
         description = gamepad_get_description(index);
     }
     else if (!INPUT_SDL2_REMAPPING)
     {
-        if (!__INPUT_SILENT) __input_trace("Skipping SDL2 remapping");
+        __input_trace("Skipping SDL2 remapping");
         description = gamepad_get_description(index);
     }
     else

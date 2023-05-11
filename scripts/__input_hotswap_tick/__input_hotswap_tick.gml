@@ -8,7 +8,7 @@ function __input_hotswap_tick()
     {
         if (__ghost)
         {
-            if (!__INPUT_SILENT) __input_trace("Warning! Cannot hotswap because player 0 is a ghost");
+            __input_trace("Warning! Cannot hotswap because player 0 is a ghost");
             return false;
         }
         
@@ -209,7 +209,7 @@ function __input_hotswap_tick_input()
         return INPUT_KEYBOARD;
     }
     
-    if (!INPUT_TOUCHSCREEN_USES_MOUSE_SOURCE && __INPUT_TOUCH_PRIMARY)
+    if (!INPUT_TOUCH_IS_MOUSE && __INPUT_TOUCH_PRIMARY)
     {
         if (input_source_is_available(INPUT_TOUCH) && device_mouse_check_button(_global.__pointer_index, mb_left))
         {

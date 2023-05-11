@@ -1,11 +1,12 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "input_system_reset",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "12  Exporting and Importing",
-    "path": "folders/Input/12  Exporting and Importing.yy",
+    "name": "Exporting and Importing",
+    "path": "folders/Input/Exporting and Importing.yy",
   },
+  "resourceVersion": "1.0",
+  "name": "input_system_reset",
+  "tags": [],
+  "resourceType": "GMScript",
 }

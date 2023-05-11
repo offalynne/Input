@@ -47,7 +47,7 @@ function __input_gamepad_find_in_sdl2_database()
     }
     else
     {
-        if (!__INPUT_SILENT) __input_trace("Warning! No SDL definition found for ", guid, " (vendor=", vendor, ", product=", product, ")");
+        __input_trace("Warning! No SDL definition found for ", guid, " (vendor=", vendor, ", product=", product, ")");
         sdl2_definition = undefined;
     }
 }

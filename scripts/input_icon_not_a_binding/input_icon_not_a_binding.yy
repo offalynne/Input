@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Icons",
-    "path": "folders/Input/(System)/Icons.yy",
+    "name": "Other",
+    "path": "folders/Input/Other.yy",
   },
 }

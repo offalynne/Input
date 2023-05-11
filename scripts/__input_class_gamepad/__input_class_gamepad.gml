@@ -57,7 +57,7 @@ function __input_class_gamepad(_index) constructor
         {
             custom_mapping = false;
             
-            if (!__INPUT_SILENT) __input_trace("Warning! Resetting Input's mapping for gamepad ", index);
+            __input_trace("Warning! Resetting Input's mapping for gamepad ", index);
             
             mapping_gm_to_raw = {};
             mapping_raw_to_gm = {};
@@ -105,7 +105,7 @@ function __input_class_gamepad(_index) constructor
             __motion = new __input_class_gamepad_motion(index);
         }
         
-        if (!__INPUT_SILENT)__input_trace("Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
+        __input_trace("Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
     }
     
     /// @param GMconstant
@@ -205,7 +205,7 @@ function __input_class_gamepad(_index) constructor
                 {
                     if ((gamepad_get_mapping(index) != "") && (gamepad_get_mapping(index) != "no mapping"))
                     {
-                        if (!__INPUT_SILENT) __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
+                        __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
                         mac_cleared_mapping = true;
                     }
                 
@@ -214,7 +214,7 @@ function __input_class_gamepad(_index) constructor
                 }
                 else
                 {
-                    if (!__INPUT_SILENT) __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
+                    __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
                     gamepad_remove_mapping(index);
                 }
             }
@@ -255,7 +255,7 @@ function __input_class_gamepad(_index) constructor
                 with mapping_gm_to_raw[$ gp_shoulderlb] scale = 255;
                 with mapping_gm_to_raw[$ gp_shoulderrb] scale = 255;
                 scale_trigger = false;
-                if (!__INPUT_SILENT) __input_trace("Recalibrated XInput trigger scale for gamepad ", index);
+                __input_trace("Recalibrated XInput trigger scale for gamepad ", index);
             }
         
             //Set up alternate Stadia mapping
@@ -269,7 +269,7 @@ function __input_class_gamepad(_index) constructor
                 set_mapping(gp_shoulderrb, 4, __INPUT_MAPPING.AXIS, "righttrigger").extended_range = true;
                 set_mapping(gp_shoulderlb, 5, __INPUT_MAPPING.AXIS, "lefttrigger" ).extended_range = true;
                 test_trigger = false;                
-                if (!__INPUT_SILENT) __input_trace("Setting Stadia controller to analogue trigger mapping for gamepad ", index);
+                __input_trace("Setting Stadia controller to analogue trigger mapping for gamepad ", index);
             }
         }
         

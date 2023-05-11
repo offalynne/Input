@@ -17,15 +17,15 @@ function input_mouse_check_pressed(_binding)
     }
     
     var _left = false;
-    if (!__INPUT_TOUCH_SUPPORT || ((os_type == os_windows) && (_global.__pointer_index == 0)))
-    {
-        //Mouse and touchpad
-        _left = device_mouse_check_button_pressed(0, mb_left) || _global.__tap_click;
-    }
-    else
+    if (_global.__pointer_index > 0)
     {
         //Touch
         _left = _global.__pointer_pressed;
+    }
+    else
+    {
+        //Mouse and touchpad
+        _left = device_mouse_check_button_pressed(0, mb_left) || _global.__tap_click;
     }
     
     switch(_binding)

@@ -1,10 +1,10 @@
-function __input_load_sdl2_from_buffer_legacy(_buffer)
+function __input_load_sdl2_from_buffer(_buffer)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     var _t = get_timer();
     
-    if (!__INPUT_SILENT) __input_trace("Unpacking SDL2 buffer...");
+    __input_trace("Unpacking SDL2 buffer...");
     
     var _cell_delimiter = ",";
     var _string_delimiter = "\"";
@@ -210,11 +210,8 @@ function __input_load_sdl2_from_buffer_legacy(_buffer)
         ++_y;
     }
     
-    if (!__INPUT_SILENT)
-    {
-        __input_trace(_total_count, " controller definitions found, of which ", _platform_count, " are active for this platform");
-        __input_trace("Loaded in ", (get_timer() - _t)/1000, "ms");
-    }
+    __input_trace(_total_count, " controller definitions found, of which ", _platform_count, " are active for this platform");
+    __input_trace("Loaded in ", (get_timer() - _t)/1000, "ms");
     
     return true;
 }

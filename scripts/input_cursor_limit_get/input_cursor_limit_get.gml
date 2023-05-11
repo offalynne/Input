@@ -18,8 +18,6 @@ function input_cursor_limit_get(_player_index = 0)
             circle_x:      __limit_x,
             circle_y:      __limit_y,
             circle_radius: __limit_radius,
-            
-            boundary_margin: __limit_boundary_margin,
         }
     }
 }
