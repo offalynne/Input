@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "23  Mouse (Direct)",
-    "path": "folders/Input/23  Mouse (Direct).yy",
+    "name": "24  Mouse (Direct)",
+    "path": "folders/Input/24  Mouse (Direct).yy",
   },
 }

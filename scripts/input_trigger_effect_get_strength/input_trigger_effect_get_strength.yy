@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "21  Trigger Effects",
-    "path": "folders/Input/21  Trigger Effects.yy",
+    "name": "22  Trigger Effects",
+    "path": "folders/Input/22  Trigger Effects.yy",
   },
 }

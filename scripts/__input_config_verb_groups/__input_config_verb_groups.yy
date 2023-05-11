@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "00 Configuration - Please edit these scripts!",
-    "path": "folders/Input/00 Configuration - Please edit these scripts!.yy",
+    "name": "00  Configuration - Please edit these scripts!",
+    "path": "folders/Input/00  Configuration - Please edit these scripts!.yy",
   },
 }

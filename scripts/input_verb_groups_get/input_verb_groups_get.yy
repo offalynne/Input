@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "04 Further Verb Functions",
-    "path": "folders/Input/04 Further Verb Functions.yy",
+    "name": "04  Further Verb Functions",
+    "path": "folders/Input/04  Further Verb Functions.yy",
   },
 }

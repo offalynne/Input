@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "01 Checking Verbs",
-    "path": "folders/Input/01 Checking Verbs.yy",
+    "name": "01  Checking Verbs",
+    "path": "folders/Input/01  Checking Verbs.yy",
   },
 }
