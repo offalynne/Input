@@ -46,6 +46,7 @@
 - [Binding Scanner](Functions-(Binding-Scan))
 - [Icons](Functions-(Icons))
 - [Cursor](Functions-(Cursor))
+- [Cursor Control](Functions-(Cursor-Control))
 - [Mouse Capture](Functions-(Mouse-Capture))
 - [Accessibility](Functions-(Accessibility))
 - [Exporting & Importing](Functions-(Exporting-and-Importing))
