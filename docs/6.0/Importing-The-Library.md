@@ -13,6 +13,6 @@ If you look inside the Input folder you'll see a lot of subfolders. These subfol
 From time to time we’ll need to release updates to Input, either to add new features or to address bugs.
 
 1. Create a backup of your configuration scripts, preferably via source control
-2. Delete the Dynamo folder from the asset browser
-3. Reimport the Dynamo .yymps from the GitHub releases page
+2. Delete the Input folder from the asset browser
+3. Import the Input .yymps from the GitHub releases page
 4. Restore your configuration scripts. Some macros may have changed between versions so take special care when restoring values
