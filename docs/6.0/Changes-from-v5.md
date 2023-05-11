@@ -33,7 +33,7 @@ Input 6 introduces a number of new features alongside a small number of breaking
 ## Breaking Changes
 
 - `input_direction()` now takes a default direction as the first argument, returned when a thumbstick is in a neutral position
-- `input_consume()` has been renamed to `input_verb_consume()`\
+- `input_consume()` has been renamed to `input_verb_consume()`
 - `input_cursor_elastic_set()` now defaults to moving the cursor at the same time as moving the elastic point
 - `input_multiplayer_*()` functions have been renamed to `input_join_*()` to match the name of the source mode
 - `INPUT_DEFAULT_PROFILES` has been replaced by `__input_config_verbs()`
