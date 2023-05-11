@@ -423,6 +423,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"07  Binding Scanner","folderPath":"folders/Input/07  Binding Scanner.yy","order":8,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"08  Icons","folderPath":"folders/Input/08  Icons.yy","order":9,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"09  Cursor","folderPath":"folders/Input/09  Cursor.yy","order":10,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"10  Cursor Control","folderPath":"folders/Input/10  Cursor Control.yy","order":11,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"11  Mouse Capture","folderPath":"folders/Input/11  Mouse Capture.yy","order":12,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"12  Accessibility","folderPath":"folders/Input/12  Accessibility.yy","order":13,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"13  Exporting and Importing","folderPath":"folders/Input/13  Exporting and Importing.yy","order":14,},
@@ -440,7 +441,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"25  Gamepads (Direct)","folderPath":"folders/Input/25  Gamepads (Direct).yy","order":26,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"26  Keyboard (Direct)","folderPath":"folders/Input/26  Keyboard (Direct).yy","order":27,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Test Cases","folderPath":"folders/Test Cases.yy","order":0,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"10  Cursor Control","folderPath":"folders/Input/10  Cursor Control.yy","order":11,},
   ],
   "AudioGroups": [
     {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},
