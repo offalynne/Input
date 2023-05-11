@@ -433,7 +433,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"17  Sources","folderPath":"folders/Input/17  Sources.yy","order":18,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"18  Vibration","folderPath":"folders/Input/18  Vibration.yy","order":19,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"19  Color","folderPath":"folders/Input/19  Color.yy","order":20,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"20  Motion","folderPath":"folders/Input/20  Motion.yy","order":21,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"20  Gyro & Motion","folderPath":"folders/Input/20  Gyro & Motion.yy","order":21,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"21  Trigger Effects","folderPath":"folders/Input/21  Trigger Effects.yy","order":22,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"22  Other","folderPath":"folders/Input/22  Other.yy","order":23,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"23  Mouse (Direct)","folderPath":"folders/Input/23  Mouse (Direct).yy","order":24,},
