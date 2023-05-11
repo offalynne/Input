@@ -58,7 +58,7 @@
 - [Sources](Functions-(Sources))
 - [Vibration](Functions-(Vibration))
 - [Color](Functions-(Color))
-- [Motion](Functions-(Motion))
+- [Gyro & Motion](Functions-(Gyro-And-Motion))
 - [Trigger Effects](Functions-(Trigger-Effects))
 - [Other](Functions-(Other))
 - [Mouse (Direct)](Functions-(Mouse))
