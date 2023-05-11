@@ -27,7 +27,7 @@ Input 6 introduces a number of new features alongside a small number of breaking
 - Adds `input_gamepad_map_contains()`
 - Adds `input_led_pattern_get()`
 - Adds `INPUT_POINTER_TYPE` macro that contains the type of pointer available on the current hardware
-- Adds `input_mouse_enabled_set()` (and getter) to control whether the mouse moves the internal cursor
+- Adds `input_cursor_mouse_enabled_set()` (and getter) to control whether the mouse moves the internal cursor
 - Adds `input_cursor_dx()` and `input_cursor_dy()`
 - Adds `input_cursor_inverted_set()` (and getter)
 - Adds `INPUT_WINDOWS_TOUCH_ALLOWED`, `INPUT_WINDOWS_TOUCH_PRIMARY`, `INPUT_SWITCH_TOUCHSCREEN_ALLOWED`, `INPUT_PS_TOUCHPAD_ALLOWED` config macros for finer control over touch behavior per platform
