@@ -1,4 +1,4 @@
-# Functions (Cursor)
+# Functions (Cursor Control)
 
 
 &nbsp;
