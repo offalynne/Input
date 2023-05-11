@@ -52,9 +52,9 @@ For details on handling motion data well for game input, see [GyroWiki](http://g
 
 &nbsp;
 
-## …gyro_enabled_set
+## …cursor_gyro_enabled_set
 
-`input_gyro_enabled_set(state, [playerIndex])`
+`input_cursor_gyro_enabled_set(state, [playerIndex])`
 
 <!-- tabs:start -->
 
@@ -76,7 +76,7 @@ Sets whether gamepad gyro controls the cursor for the player.
 var _gamepad = input_player_get_gamepad();
 if (input_gamepad_is_connected(_gamepad))
 {
-    input_gyro_enabled_set(input_check("aim"));
+    input_cursor_gyro_enabled_set(input_check("aim"));
 }
 ```
 
@@ -84,9 +84,9 @@ if (input_gamepad_is_connected(_gamepad))
 
 &nbsp;
 
-## …gyro_enabled_get
+## …cursor_gyro_enabled_get
 
-`input_gyro_enabled_get([playerIndex])`
+`input_cursor_gyro_enabled_get([playerIndex])`
 
 <!-- tabs:start -->
 
@@ -105,7 +105,7 @@ if (input_gamepad_is_connected(_gamepad))
 var _i = 0;
 repeat(INPUT_MAX_PLAYERS)
 {
-    if (input_gyro_enabled_get(_i))
+    if (input_cursor_gyro_enabled_get(_i))
     {
         draw_circle(input_cursor_x(_i), input_cursor_y(_i), 16, true);
     }
@@ -117,9 +117,9 @@ repeat(INPUT_MAX_PLAYERS)
 
 &nbsp;
 
-## …gyro_params_set
+## …cursor_gyro_params_set
 
-`input_gyro_params_set(gyroAxisX, [gyroAxisY], [gyroSensitivityX], [gyroSensitivityY], [playerIndex])`
+`input_cursor_gyro_params_set(gyroAxisX, [gyroAxisY], [gyroSensitivityX], [gyroSensitivityY], [playerIndex])`
 
 <!-- tabs:start -->
 
@@ -147,9 +147,9 @@ This function configures gyro control of the cursor.
 
 &nbsp;
 
-## …gyro_params_get
+## …cursor_gyro_params_get
 
-`input_gyro_params_get([playerIndex])`
+`input_cursor_gyro_params_get([playerIndex])`
 
 <!-- tabs:start -->
 
