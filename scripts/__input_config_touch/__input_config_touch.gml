@@ -7,7 +7,7 @@
 //Whether to use touchscreen on Switch platform 
 #macro INPUT_SWITCH_TOUCHSCREEN_ALLOWED false
 
-//If touch input (mobile + Switch) should be treated as mouse input
+//If touch input (mobile + Switch) should be handled as mouse input
 #macro INPUT_TOUCHSCREEN_USES_MOUSE_SOURCE  false
 
 //Maximum number of touch screen points to query
