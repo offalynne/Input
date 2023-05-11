@@ -4,7 +4,7 @@
 
 function input_binding_gamepad_set(_binding, _gamepad_index)
 {
-    __input_initialize();
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     if (!input_value_is_binding(_binding))
     {

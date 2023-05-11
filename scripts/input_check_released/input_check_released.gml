@@ -8,11 +8,12 @@
 
 function input_check_released(_verb, _player_index = 0, _buffer_duration = 0)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_PLAYER_INDEX
     
     if (_verb == all)
     {
-        return input_check_released(global.__input_basic_verb_array, _player_index, _buffer_duration);
+        return input_check_released(_global.__basic_verb_array, _player_index, _buffer_duration);
     }
     
     if (is_array(_verb))
@@ -33,7 +34,7 @@ function input_check_released(_verb, _player_index = 0, _buffer_duration = 0)
     
     if (_buffer_duration <= 0)
     {
-        return ((global.__input_cleared)? false : _verb_struct.release);
+        return ((_global.__cleared)? false : _verb_struct.release);
     }
     else
     {

@@ -2,8 +2,10 @@
 /// @param   binding
 
 function input_mouse_check(_binding)
-{ 
-    if (!global.__input_mouse_allowed_on_platform || global.__input_window_focus_block_mouse)
+{
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    
+    if (!_global.__mouse_allowed_on_platform || _global.__window_focus_block_mouse)
     {
         return (_binding == mb_none);
     }
@@ -15,15 +17,15 @@ function input_mouse_check(_binding)
     }
     
     var _left = false;
-    if (global.__input_pointer_index > 0)
+    if (_global.__pointer_index > 0)
     {
         //Touch
-        _left = device_mouse_check_button(global.__input_pointer_index, mb_left);
+        _left = device_mouse_check_button(_global.__pointer_index, mb_left);
     }
     else
     {
         //Mouse and touchpad
-        _left = device_mouse_check_button(0, mb_left) || global.__input_tap_click;
+        _left = device_mouse_check_button(0, mb_left) || _global.__tap_click;
     }
     
     switch(_binding)

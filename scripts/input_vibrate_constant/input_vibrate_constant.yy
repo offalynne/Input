@@ -1,12 +1,11 @@
 {
+  "resourceType": "GMScript",
+  "resourceVersion": "1.0",
+  "name": "input_vibrate_constant",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Vibration",
-    "path": "folders/Input/Vibration.yy",
+    "name": "18  Vibration",
+    "path": "folders/Input/18  Vibration.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "input_vibrate_constant",
-  "tags": [],
-  "resourceType": "GMScript",
 }

@@ -8,10 +8,11 @@
 
 function input_check_repeat(_verb, _player_index = 0, _delay = INPUT_REPEAT_DEFAULT_DELAY, _predelay = INPUT_REPEAT_DEFAULT_PREDELAY)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_PLAYER_INDEX
     __INPUT_GET_VERB_STRUCT
     
-    if (global.__input_cleared || _verb_struct.__inactive || !_verb_struct.held) return false;
+    if (_global.__cleared || _verb_struct.__inactive || !_verb_struct.held) return false;
     
     var _time = __input_get_time() - _verb_struct.press_time - _predelay;
     if (_time < 0) return false;

@@ -1,8 +1,10 @@
 function __input_load_type_csv(_filename)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    
     var _t = get_timer();
     
-    __input_trace("Loading controller type CSV from \"", _filename, "\"");
+    if (!__INPUT_SILENT) __input_trace("Loading controller type CSV from \"", _filename, "\"");
     
     var _buffer = buffer_load(_filename);
     var _string = buffer_read(_buffer, buffer_text);
@@ -21,7 +23,7 @@ function __input_load_type_csv(_filename)
         repeat(array_length(_column_array) - 1)
         {
             var _tag = _column_array[_x];
-            global.__input_raw_type_dictionary[$ _tag] = _raw_type;
+            _global.__raw_type_dictionary[$ _tag] = _raw_type;
             _count++;
             
             ++_x;
@@ -30,8 +32,11 @@ function __input_load_type_csv(_filename)
         ++_y;
     }
     
-    __input_trace(_count, " controller type definitions found");
-    __input_trace("Loaded in ", (get_timer() - _t)/1000, "ms");
+    if (!__INPUT_SILENT)
+    {
+        __input_trace(_count, " controller type definitions found");
+        __input_trace("Loaded in ", (get_timer() - _t)/1000, "ms");
+    }
     
     return true;
 }

@@ -3,14 +3,14 @@
 
 function input_source_clear(_player_index = 0)
 {
-    __input_initialize();
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     if (_player_index == all)
     {
         var _i = 0;
         repeat(INPUT_MAX_PLAYERS)
         {
-            global.__input_players[_i].__sources_clear();
+            _global.__players[_i].__sources_clear();
             ++_i;
         }
         
@@ -19,5 +19,5 @@ function input_source_clear(_player_index = 0)
     
     __INPUT_VERIFY_PLAYER_INDEX
     
-    global.__input_players[_player_index].__sources_clear();
+    _global.__players[_player_index].__sources_clear();
 }

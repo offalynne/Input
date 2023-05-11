@@ -10,6 +10,7 @@
 ///          a member of the INPUT_BINDING_SCAN_EVENT enum:
 ///              .SOURCE_INVALID         Player’s source is invalid, usually because they have no sources assigned or their gamepad has been disconnected
 ///              .SOURCE_CHANGED         The player’s source (or sources) have been modified
+///              .SOURCE_FILTER_EMPTY    Source filter array is empty
 ///              .PLAYER_IS_GHOST        Player is a ghost and cannot receive hardware input
 ///              .PLAYER_DISCONNECTED    The player disconnected
 ///              .SCAN_TIMEOUT           Either the player didn’t enter a new binding or a stuck key prevented the system from working. The timeout period is defined by INPUT_BINDING_SCAN_TIMEOUT
@@ -23,7 +24,6 @@
 ///          
 /// @param   successCallback
 /// @param   [failureCallback]
-/// @param   [sourceFilter]
 /// @param   [playerIndex=0]
 
 enum INPUT_BINDING_SCAN_EVENT
@@ -35,6 +35,7 @@ enum INPUT_BINDING_SCAN_EVENT
     //GAMEPAD_CHANGED             = -12, //Gamepad index changed - No longer used 2022-05-03
     //GAMEPAD_INVALID             = -13, //Player gamepad is invalid - No longer used 2022-05-03
     //BINDING_DOESNT_MATCH_SOURCE = -14, //The new binding doesn't match the source that was targetted for rebinding - No longer used 2022-05-03
+    SOURCE_FILTER_EMPTY         = -15, //Source filter array is empty
     PLAYER_IS_GHOST             = -15, //Player has been set as a ghost
     PLAYER_DISCONNECTED         = -16, //Player disconnected
     SCAN_TIMEOUT                = -20, //Scanning for a binding timed out - either the player didn't enter a new binding or a stuck key prevented the system from working
@@ -42,20 +43,14 @@ enum INPUT_BINDING_SCAN_EVENT
     ABORTED                     = -30, //Binding scan was aborted before completion using input_binding_scan_abort()
 }
 
-function input_binding_scan_start(_success_method, _failure_method = undefined, _source_filter = undefined, _player_index = 0)
+function input_binding_scan_start(_success_method, _failure_method = undefined, _player_index = 0)
 {
-    __input_initialize();
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_PLAYER_INDEX
     
-    if (_source_filter == undefined)
+    if (!is_numeric(_player_index) && !is_undefined(_player_index))
     {
-        //If no valid source data is provided, use whatever sources the player currently has assigned to them
-        _source_filter = global.__input_players[_player_index].__source_array;
-    }
-    else if (!is_array(_source_filter))
-    {
-        //If we've been given a basic piece of data, wrap it in an array
-        _source_filter = [_source_filter];
+        __input_error("Usage of input_binding_scan_start() has changed. Please refer to documentation for details");
     }
     
     if not (is_method(_success_method) || (is_numeric(_success_method) && script_exists(_success_method)))
@@ -68,13 +63,12 @@ function input_binding_scan_start(_success_method, _failure_method = undefined, 
         __input_error("Binding scan failure callback set to an illegal value (typeof=", typeof(_failure_method), ")");
     }
     
-    with(global.__input_players[_player_index])
+    with(_global.__players[_player_index])
     {
         __rebind_state            = 1;
-        __rebind_start_time       = global.__input_current_time;
+        __rebind_start_time       = _global.__current_time;
         __rebind_success_callback = _success_method;
         __rebind_failure_callback = _failure_method;
-        __rebind_source_filter    = _source_filter;
         
         __input_trace("Binding scan started for player ", _player_index);
     }

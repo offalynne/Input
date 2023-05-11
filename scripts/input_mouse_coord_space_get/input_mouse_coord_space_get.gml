@@ -2,7 +2,7 @@
 
 function input_mouse_coord_space_get()
 {
-    __input_initialize();
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
-    return global.__input_pointer_coord_space;
+    return _global.__pointer_coord_space;
 }

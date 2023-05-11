@@ -3,14 +3,16 @@
 
 function input_gamepad_is_connected(_index)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    
     if ((_index == undefined)
     ||  (_index < 0)
-    ||  (_index >= array_length(global.__input_gamepads)))
+    ||  (_index >= array_length(_global.__gamepads)))
     {
         return false;
     }
     
-    if (!is_struct(global.__input_gamepads[_index])) return false;
+    if (!is_struct(_global.__gamepads[_index])) return false;
     
     return gamepad_is_connected(_index);
 }

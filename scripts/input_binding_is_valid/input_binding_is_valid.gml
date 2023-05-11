@@ -5,7 +5,7 @@
 
 function input_binding_is_valid(_binding, _player_index = 0)
 {
-    __input_initialize();
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_PLAYER_INDEX
     
     if (_binding == undefined)
@@ -22,7 +22,7 @@ function input_binding_is_valid(_binding, _player_index = 0)
         }
     }
     
-    with(global.__input_players[_player_index])
+    with(_global.__players[_player_index])
     {
         return __sources_validate_binding(_binding);
     }

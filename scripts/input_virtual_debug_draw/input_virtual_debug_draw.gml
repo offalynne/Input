@@ -3,10 +3,12 @@
 
 function input_virtual_debug_draw()
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    
     var _i = 0;
-    repeat(array_length(global.__input_virtual_array))
+    repeat(array_length(_global.__virtual_array))
     {
-        global.__input_virtual_array[_i].debug_draw();
+        _global.__virtual_array[_i].debug_draw();
         ++_i;
     }
 }

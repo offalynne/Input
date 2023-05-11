@@ -1,5 +1,7 @@
 function __input_class_gamepad_motion(_gamepad_index) constructor
 {
+    __INPUT_GLOBAL_STATIC_VARIABLE  //Set static __global
+    
     static __motion_data = {};
     __motion_frame = -infinity;
     __index = _gamepad_index;
@@ -8,8 +10,8 @@ function __input_class_gamepad_motion(_gamepad_index) constructor
 
     static __tick = function()
     {
-        var _cleared = global.__input_cleared || !input_window_has_focus();
-        if (!_cleared && (global.__input_frame <= __motion_frame))
+        var _cleared = __global.__cleared || !input_window_has_focus();
+        if (!_cleared && (__global.__frame <= __motion_frame))
         {
             return __get_data();
         }
@@ -20,7 +22,7 @@ function __input_class_gamepad_motion(_gamepad_index) constructor
             return __get_data();
         }
         
-        __motion_frame = global.__input_frame;
+        __motion_frame = __global.__frame;
 
         switch(os_type)
         {
@@ -31,7 +33,7 @@ function __input_class_gamepad_motion(_gamepad_index) constructor
                 var _sign_z = 1;
                 var _sensor = 0;
 
-                switch(global.__input_gamepads[__index].raw_type)
+                switch(__global.__gamepads[__index].raw_type)
                 {
                     case "SwitchJoyConPair":
                         if (INPUT_SWITCH_JOYCON_MOTION_RIGHT_HAND)
@@ -81,7 +83,7 @@ function __input_class_gamepad_motion(_gamepad_index) constructor
 
             case (os_windows):
             case (os_linux):
-                var _steam_handle = global.__input_gamepads[__index].__steam_handle;
+                var _steam_handle = __global.__gamepads[__index].__steam_handle;
                 if (is_numeric(_steam_handle))
                 {                    
                     var _steam_data = steam_input_get_motion_data(_steam_handle);
@@ -96,9 +98,9 @@ function __input_class_gamepad_motion(_gamepad_index) constructor
                     __accel_z = -_steam_data.pos_accel_z / 16384;
                     
                     var _gyro_scale = 2949.12;
-                    if ((global.__input_gamepads[__index].simple_type == "switch")
-                    ||  (global.__input_gamepads[__index].simple_type == "xbox 360") //Switch with "Use Nintendo Button Layout"
-                    ||  (global.__input_gamepads[__index].simple_type == "ps4"))
+                    if ((__global.__gamepads[__index].simple_type == INPUT_GAMEPAD_TYPE_SWITCH)
+                    ||  (__global.__gamepads[__index].simple_type == INPUT_GAMEPAD_TYPE_XBOX_360) //Switch with "Use Nintendo Button Layout"
+                    ||  (__global.__gamepads[__index].simple_type == INPUT_GAMEPAD_TYPE_PS4))
                     {
                        //Reduce raw gyro scale for Switch and PS4 sensors
                         _gyro_scale *= 2;

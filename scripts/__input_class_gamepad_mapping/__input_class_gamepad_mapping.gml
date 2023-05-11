@@ -5,6 +5,8 @@
 
 function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
 {
+    __INPUT_GLOBAL_STATIC_VARIABLE  //Set static __global
+    
     gm       = _gm;
     raw      = _raw;
     type     = _type;
@@ -55,7 +57,7 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
         
         if (!_scan) return;
         
-        if (INPUT_ALLOW_OUT_OF_FOCUS || global.__input_window_focus)
+        if (INPUT_ALLOW_OUT_OF_FOCUS || __global.__window_focus)
         {        
             switch(type)
             {

@@ -1,12 +1,11 @@
 {
+  "resourceType": "GMScript",
+  "resourceVersion": "1.0",
+  "name": "input_gamepad_get_type",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Gamepads (Direct)",
-    "path": "folders/Input/Gamepads (Direct).yy",
+    "name": "24  Gamepads (Direct)",
+    "path": "folders/Input/24  Gamepads (Direct).yy",
   },
-  "resourceVersion": "1.0",
-  "name": "input_gamepad_get_type",
-  "tags": [],
-  "resourceType": "GMScript",
 }

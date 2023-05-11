@@ -1,12 +1,11 @@
 {
+  "resourceType": "GMScript",
+  "resourceVersion": "1.0",
+  "name": "input_player_ghost_get",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Players",
-    "path": "folders/Input/Players.yy",
+    "name": "14  Players",
+    "path": "folders/Input/14  Players.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "input_player_ghost_get",
-  "tags": [],
-  "resourceType": "GMScript",
 }

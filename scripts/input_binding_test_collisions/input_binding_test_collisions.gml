@@ -1,4 +1,4 @@
-/// @desc    Returns an array of structs containing conflicting verb/alternate indexes, after taking into account INPUT_VERB_GROUPS
+/// @desc    Returns an array of structs containing conflicting verb/alternate indexes, after taking into account __input_config_verb_groups()
 /// @param   verb
 /// @param   binding
 /// @param   [playerIndex=0]
@@ -6,7 +6,7 @@
 
 function input_binding_test_collisions(_verb_name, _src_binding, _player_index = 0, _profile_name = undefined)
 {
-    __input_initialize();
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_BASIC_VERB_NAME
     __INPUT_VERIFY_PLAYER_INDEX
     __INPUT_VERIFY_PROFILE_NAME
@@ -21,7 +21,7 @@ function input_binding_test_collisions(_verb_name, _src_binding, _player_index =
     
     var _output_array = [];
     
-    with(global.__input_players[_player_index])
+    with(_global.__players[_player_index])
     {
         //Get the profile for this particular binding
         _profile_name = __profile_get(_profile_name);
@@ -34,9 +34,9 @@ function input_binding_test_collisions(_verb_name, _src_binding, _player_index =
         
         //Iterate over every verb
         var _v = 0;
-        repeat(array_length(global.__input_basic_verb_array))
+        repeat(array_length(_global.__basic_verb_array))
         {
-            var _verb = global.__input_basic_verb_array[_v];
+            var _verb = _global.__basic_verb_array[_v];
             
             var _group_matches = false;
             
@@ -76,7 +76,7 @@ function input_binding_test_collisions(_verb_name, _src_binding, _player_index =
                     if (is_struct(_extant_binding))
                     {
                         if ((_extant_binding.__label == _src_binding.__label)
-                        &&  ((global.__input_source_mode != INPUT_SOURCE_MODE.MULTIDEVICE) || (_extant_binding.__gamepad_index == _src_binding.__gamepad_index) || (_extant_binding.__gamepad_index == undefined) || (_src_binding.__gamepad_index == undefined)))
+                        &&  ((_global.__source_mode != INPUT_SOURCE_MODE.MULTIDEVICE) || (_extant_binding.__gamepad_index == _src_binding.__gamepad_index) || (_extant_binding.__gamepad_index == undefined) || (_src_binding.__gamepad_index == undefined)))
                         {
                             array_push(_output_array, { verb: _verb, alternate: _alternate_index });
                         }

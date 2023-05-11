@@ -5,7 +5,7 @@
 
 function input_binding_get_verbs(_binding, _player_index = 0, _profile_name = undefined)
 {
-    __input_initialize();
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_PLAYER_INDEX
     __INPUT_VERIFY_PROFILE_NAME
     
@@ -17,7 +17,7 @@ function input_binding_get_verbs(_binding, _player_index = 0, _profile_name = un
     
     var _output_array = [];
     
-    with(global.__input_players[_player_index])
+    with(_global.__players[_player_index])
     {
         //Get the profile for this particular binding
         _profile_name = __profile_get(_profile_name);
@@ -30,9 +30,9 @@ function input_binding_get_verbs(_binding, _player_index = 0, _profile_name = un
         
         //Iterate over every verb
         var _v = 0;
-        repeat(array_length(global.__input_basic_verb_array))
+        repeat(array_length(_global.__basic_verb_array))
         {
-            var _verb = global.__input_basic_verb_array[_v];
+            var _verb = _global.__basic_verb_array[_v];
             
             //Iterate over every alternate binding
             var _alternate_index = 0;

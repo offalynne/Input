@@ -2,10 +2,12 @@
 
 function __input_gamepad_find_in_sdl2_database()
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    
     if (!__INPUT_SDL2_SUPPORT || !INPUT_SDL2_REMAPPING || blacklisted || xinput) return;
   
     //Check to see if our device GUID matches the SDL2 database perfectly somewhere
-    var _guid_dict = global.__input_sdl2_database.by_guid;
+    var _guid_dict = _global.__sdl2_database.by_guid;
     if (variable_struct_exists(_guid_dict, guid))
     {
         var _definition = _guid_dict[$ guid];
@@ -17,7 +19,7 @@ function __input_gamepad_find_in_sdl2_database()
     var _definition = undefined;
     
     //Otherwise search through our GUID-based description IDs
-    var _description_array = global.__input_sdl2_database.by_description[$ string_copy(guid, 1, 20)];
+    var _description_array = _global.__sdl2_database.by_description[$ string_copy(guid, 1, 20)];
     if (is_array(_description_array))
     {
         if (array_length(_description_array) > 0) //Get the first binding for this description and OS
@@ -28,7 +30,7 @@ function __input_gamepad_find_in_sdl2_database()
     else
     {    
         //Otherwise search through our vendor+product IDs
-        var _vp_array = global.__input_sdl2_database.by_vendor_product[$ vendor + product];
+        var _vp_array = _global.__sdl2_database.by_vendor_product[$ vendor + product];
         if (is_array(_vp_array))
         {
             if (array_length(_vp_array) > 0) //Get the first binding for this vendor+product and OS
@@ -45,8 +47,7 @@ function __input_gamepad_find_in_sdl2_database()
     }
     else
     {
-        __input_trace("Warning! No SDL definition found for ", guid, " (vendor=", vendor, ", product=", product, ")");
+        if (!__INPUT_SILENT) __input_trace("Warning! No SDL definition found for ", guid, " (vendor=", vendor, ", product=", product, ")");
         sdl2_definition = undefined;
-        description     = "Unknown";
     }
 }

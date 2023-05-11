@@ -1,6 +1,8 @@
 /// @param index
 function __input_class_gamepad(_index) constructor
 {
+    __INPUT_GLOBAL_STATIC_VARIABLE  //Set static __global
+    
     index           = _index;
     description     = gamepad_get_description(_index);
     guid            = gamepad_get_guid(_index);
@@ -27,11 +29,13 @@ function __input_class_gamepad(_index) constructor
     __steam_handle       = undefined;
     
     __vibration_support = false;
+    __vibration_scale   = 1;
     __vibration_left    = 0;
     __vibration_right   = 0;
     __vibration_received_this_frame = false;
     
-    __motion = undefined;
+    __led_pattern = undefined;
+    __motion      = undefined;
     
     mapping_gm_to_raw = {};
     mapping_raw_to_gm = {};
@@ -53,7 +57,7 @@ function __input_class_gamepad(_index) constructor
         {
             custom_mapping = false;
             
-            __input_trace("Warning! Resetting Input's mapping for gamepad ", index);
+            if (!__INPUT_SILENT) __input_trace("Warning! Resetting Input's mapping for gamepad ", index);
             
             mapping_gm_to_raw = {};
             mapping_raw_to_gm = {};
@@ -69,33 +73,45 @@ function __input_class_gamepad(_index) constructor
         __input_gamepad_find_in_sdl2_database();
         __input_gamepad_set_type();
         __input_gamepad_set_blacklist();
-        __input_gamepad_set_mapping();       
+        __input_gamepad_set_mapping();
         
         virtual_set();
+        led_set();
         
-        __vibration_support = global.__input_vibration_allowed_on_platform && ((os_type != os_windows) || xinput);        
+        __vibration_support = __global.__vibration_allowed_on_platform && ((os_type != os_windows) || xinput);        
         if (__vibration_support)
         {
             if (os_type == os_ps5)
             {
                 ps5_gamepad_set_vibration_mode(index, ps5_gamepad_vibration_mode_compatible);
+            }            
+            else
+            {
+                if (((os_type == os_windows) || __INPUT_ON_SWITCH) && __input_string_contains(raw_type, "JoyCon", "SwitchHandheld"))
+                {
+                    __vibration_scale = INPUT_VIBRATION_JOYCON_STRENGTH;
+                }
+                else
+                {
+                    __vibration_scale = 1;
+                }
             }
         
             gamepad_set_vibration(index, 0, 0);
         }
 
-        if (global.__input_gamepad_motion_support)
+        if (__global.__gamepad_motion_support)
         {
             __motion = new __input_class_gamepad_motion(index);
         }
         
-        __input_trace("Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
+        if (!__INPUT_SILENT)__input_trace("Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
     }
     
     /// @param GMconstant
     static get_held = function(_gm)
     {
-        if (!INPUT_ALLOW_OUT_OF_FOCUS && !global.__input_window_focus) return false;
+        if (!INPUT_ALLOW_OUT_OF_FOCUS && !__global.__window_focus) return false;
         if (!custom_mapping) return gamepad_button_check(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
@@ -105,7 +121,7 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_pressed = function(_gm)
     {
-        if (!INPUT_ALLOW_OUT_OF_FOCUS && !global.__input_window_focus) return false;
+        if (!INPUT_ALLOW_OUT_OF_FOCUS && !__global.__window_focus) return false;
         if (!custom_mapping) return gamepad_button_check_pressed(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
@@ -115,7 +131,7 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_released = function(_gm)
     {
-        if (!INPUT_ALLOW_OUT_OF_FOCUS && !global.__input_window_focus) return false;
+        if (!INPUT_ALLOW_OUT_OF_FOCUS && !__global.__window_focus) return false;
         if (!custom_mapping) return gamepad_button_check_released(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
@@ -125,7 +141,7 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_value = function(_gm)
     {
-        if (!INPUT_ALLOW_OUT_OF_FOCUS && !global.__input_window_focus) return 0.0;
+        if (!INPUT_ALLOW_OUT_OF_FOCUS && !__global.__window_focus) return 0.0;
         if (!custom_mapping)
         {
             if ((_gm == gp_axislh) || (_gm == gp_axislv) || (_gm == gp_axisrh) || (_gm == gp_axisrv))
@@ -160,7 +176,7 @@ function __input_class_gamepad(_index) constructor
             if ((_gm == gp_shoulderlb) || (_gm == gp_shoulderrb))
             {
                 //XInput and platforms with analogue triggers
-                return (xinput || __INPUT_ON_XBOX || __INPUT_ON_PS || (__INPUT_ON_APPLE && __INPUT_ON_MOBILE));
+                return (xinput || __INPUT_ON_XBOX || __INPUT_ON_PS || __INPUT_ON_IOS);
             }
             
             //Otherwise return true only for the thumbsticks
@@ -189,7 +205,7 @@ function __input_class_gamepad(_index) constructor
                 {
                     if ((gamepad_get_mapping(index) != "") && (gamepad_get_mapping(index) != "no mapping"))
                     {
-                        __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
+                        if (!__INPUT_SILENT) __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
                         mac_cleared_mapping = true;
                     }
                 
@@ -198,7 +214,7 @@ function __input_class_gamepad(_index) constructor
                 }
                 else
                 {
-                    __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
+                    if (!__INPUT_SILENT) __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
                     gamepad_remove_mapping(index);
                 }
             }
@@ -239,7 +255,7 @@ function __input_class_gamepad(_index) constructor
                 with mapping_gm_to_raw[$ gp_shoulderlb] scale = 255;
                 with mapping_gm_to_raw[$ gp_shoulderrb] scale = 255;
                 scale_trigger = false;
-                __input_trace("Recalibrated XInput trigger scale for gamepad ", index);
+                if (!__INPUT_SILENT) __input_trace("Recalibrated XInput trigger scale for gamepad ", index);
             }
         
             //Set up alternate Stadia mapping
@@ -253,7 +269,7 @@ function __input_class_gamepad(_index) constructor
                 set_mapping(gp_shoulderrb, 4, __INPUT_MAPPING.AXIS, "righttrigger").extended_range = true;
                 set_mapping(gp_shoulderlb, 5, __INPUT_MAPPING.AXIS, "lefttrigger" ).extended_range = true;
                 test_trigger = false;                
-                __input_trace("Setting Stadia controller to analogue trigger mapping for gamepad ", index);
+                if (!__INPUT_SILENT) __input_trace("Setting Stadia controller to analogue trigger mapping for gamepad ", index);
             }
         }
         
@@ -270,25 +286,25 @@ function __input_class_gamepad(_index) constructor
         {
             if (__vibration_received_this_frame && input_window_has_focus())
             {
-                if (os_type == os_switch)
+                var _vibration_low  = __vibration_scale * __vibration_left;
+                var _vibration_high = __vibration_scale * __vibration_right;
+                
+                if (__INPUT_ON_SWITCH)
                 {
-                    var _lowStrength  = INPUT_VIBRATION_SWITCH_OS_STRENGTH*__vibration_left;
-                    var _highStrength = INPUT_VIBRATION_SWITCH_OS_STRENGTH*__vibration_right;
-                    
                     if ((raw_type == "SwitchJoyConLeft") || (raw_type == "SwitchJoyConRight"))
                     {
                         //Documentation said to use switch_controller_motor_single for these two controller types but I'll be damned if I can feel any difference!
-                        switch_controller_vibrate_hd(index, switch_controller_motor_single, _highStrength, 250, _lowStrength, 160);
+                        switch_controller_vibrate_hd(index, switch_controller_motor_single, _vibration_high, 250, _vibration_low, 160);
                     }
                     else
                     {
-                        switch_controller_vibrate_hd(index, switch_controller_motor_left,  _highStrength, 250, _lowStrength, 160);
-                        switch_controller_vibrate_hd(index, switch_controller_motor_right, _highStrength, 250, _lowStrength, 160);
+                        switch_controller_vibrate_hd(index, switch_controller_motor_left,  _vibration_high, 250, _vibration_low, 160);
+                        switch_controller_vibrate_hd(index, switch_controller_motor_right, _vibration_high, 250, _vibration_low, 160);
                     }
                 }
                 else
                 {
-                    gamepad_set_vibration(index, __vibration_left, __vibration_right);
+                    gamepad_set_vibration(index, _vibration_low, _vibration_high);
                 }
             }
             else
@@ -302,7 +318,7 @@ function __input_class_gamepad(_index) constructor
     
     static virtual_set = function()
     {
-        if not (global.__input_using_steamworks) return;
+        if not (__global.__using_steamworks) return;
     
         var _gamepad_is_virtual = ((os_type == os_windows) && xinput);
         var _slot = index;
@@ -338,13 +354,13 @@ function __input_class_gamepad(_index) constructor
             var _handle_type = steam_input_get_input_type_for_handle(__steam_handle);
             if not (is_numeric(_handle_type) && (_handle_type >= 0)) return;
 
-            var _description = global.__input_steam_type_to_name[$ _handle_type];
+            var _description = __global.__steam_type_to_name[$ _handle_type];
             if (_description == undefined) return;
         
-            var _raw_type = global.__input_steam_type_to_raw[$ _handle_type];
+            var _raw_type = __global.__steam_type_to_raw[$ _handle_type];
             if (_raw_type == undefined) return;
         
-            var _simple_type = global.__input_simple_type_lookup[$ _raw_type];
+            var _simple_type = __global.__simple_type_lookup[$ _raw_type];
             if (_simple_type == undefined) return;
 
             description = _description;
@@ -353,9 +369,72 @@ function __input_class_gamepad(_index) constructor
         }
     }
     
+    static led_set = function()
+    {
+        __led_pattern = undefined;
+        
+        //Platform is unsupported, or lacks Steam Input handle
+        if (!__INPUT_LED_PATTERN_SUPPORT || ((os_type == os_windows) && (!is_numeric(__steam_handle)))) return;
+        
+        var _led_offset = 0;
+        var _led_layout = undefined;
+        var _led_type   = INPUT_GAMEPAD_TYPE_XBOX_360;
+
+        //Handle whether gamepad index 0 is used or reserved
+        if (!__INPUT_ON_WEB && (__INPUT_ON_IOS || __INPUT_ON_SWITCH))
+        { 
+            if (index == 0) return;
+            _led_offset = -1;
+        }
+        
+        //MFi gamepad case
+        if ((raw_type == "AppleController") && __INPUT_ON_IOS)
+        {
+            _led_layout = "horizontal";
+        }
+        
+        switch(simple_type)
+        {
+            case INPUT_GAMEPAD_TYPE_PS5:
+                _led_layout = "horizontal"; 
+                _led_type   = INPUT_GAMEPAD_TYPE_PS5;
+            break;
+            case INPUT_GAMEPAD_TYPE_SWITCH:
+            case INPUT_GAMEPAD_TYPE_JOYCON_LEFT:
+            case INPUT_GAMEPAD_TYPE_JOYCON_RIGHT:
+                if ((raw_type == "SwitchJoyConPair") || (!INPUT_SWITCH_HORIZONTAL_HOLDTYPE && (simple_type != INPUT_GAMEPAD_TYPE_SWITCH)))
+                {
+                     _led_layout = "vertical";
+                }
+                else
+                {
+                    _led_layout = "horizontal";
+                }
+                
+                //Steam sets Xbox 360 pattern on Switch gamepad LEDs
+                if not (is_numeric(__steam_handle))
+                {
+                    _led_type = INPUT_GAMEPAD_TYPE_SWITCH;
+                }
+            break;            
+            case INPUT_GAMEPAD_TYPE_XBOX_360:
+                _led_layout = "radial";
+            break;
+        }
+        
+        if (_led_layout != undefined)
+        {
+            __led_pattern = {
+                value:   index + _led_offset + 1,
+                pattern: __global.__gamepad_led_pattern_dict[$ _led_type][@ index + _led_offset],
+                layout:  _led_layout,
+            }
+        }
+    }
+    
     static __color_set = function(_color)
     {   
-        if (global.__input_using_steamworks)
+        if (__global.__using_steamworks)
         {
             var _led_flag = steam_input_led_flag_set_color;
             if (_color == undefined)
@@ -412,10 +491,10 @@ function __input_class_gamepad(_index) constructor
         }
 
         //Steam Input uses libScePad for DualSense trigger effects, Windows native only
-        if (global.__input_using_steamworks && !global.__input_on_wine && (os_type == os_windows))
+        if (__global.__using_steamworks && !__global.__on_wine && (os_type == os_windows))
         {
             var _command_array = [{ mode: steam_input_sce_pad_trigger_effect_mode_off, command_data: {} }, { mode: steam_input_sce_pad_trigger_effect_mode_off, command_data: {} }];
-            _command_array[_trigger_index].mode = global.__input_steam_trigger_mode[$ _effect.__mode];
+            _command_array[_trigger_index].mode = __global.__steam_trigger_mode[$ _effect.__mode];
             _command_array[_trigger_index].command_data[$ string(_effect.__mode_name) + "_param"] = _effect.__params;
             
             if (_effect.__params[$ "strength"] != undefined)

@@ -4,9 +4,10 @@
 
 function input_cursor_limit_get(_player_index = 0)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_PLAYER_INDEX
     
-    with(global.__input_players[_player_index].__cursor)
+    with(_global.__players[_player_index].__cursor)
     {
         return {
             left:   __limit_l,
@@ -17,6 +18,8 @@ function input_cursor_limit_get(_player_index = 0)
             circle_x:      __limit_x,
             circle_y:      __limit_y,
             circle_radius: __limit_radius,
+            
+            boundary_margin: __limit_boundary_margin,
         }
     }
 }

@@ -1,8 +1,10 @@
 function __input_load_blacklist_csv(_filename)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    
     var _t = get_timer();
     
-    __input_trace("Loading controller blacklist CSV from \"", _filename, "\"");
+    if (!__INPUT_SILENT) __input_trace("Loading controller blacklist CSV from \"", _filename, "\"");
     
     var _buffer = buffer_load(_filename);
     var _string = buffer_read(_buffer, buffer_text);
@@ -19,11 +21,11 @@ function __input_load_blacklist_csv(_filename)
         var _os          = string_lower(_column_array[0]);
         var _filter_type = string_lower(_column_array[1]);
         
-        var _os_struct = global.__input_blacklist_dictionary[$ _os];
+        var _os_struct = _global.__blacklist_dictionary[$ _os];
         if (!is_struct(_os_struct))
         {
             _os_struct = {};
-            global.__input_blacklist_dictionary[$ _os] = _os_struct;
+            _global.__blacklist_dictionary[$ _os] = _os_struct;
         }
         
         if (_filter_type == "description contains")
@@ -64,8 +66,11 @@ function __input_load_blacklist_csv(_filename)
         _y++;
     }
     
-    __input_trace(_count, " controller blacklist definitions found");
-    __input_trace("Loaded in ", (get_timer() - _t)/1000, "ms");
+    if (!__INPUT_SILENT) 
+    {
+        __input_trace(_count, " controller blacklist definitions found");
+        __input_trace("Loaded in ", (get_timer() - _t)/1000, "ms");
+    }
     
     return true;
 }

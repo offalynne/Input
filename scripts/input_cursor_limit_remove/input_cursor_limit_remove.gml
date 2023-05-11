@@ -3,6 +3,8 @@
 
 function input_cursor_limit_remove(_player_index = 0)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    
     if (_player_index == all)
     {
         var _p = 0;
@@ -17,7 +19,7 @@ function input_cursor_limit_remove(_player_index = 0)
     
     __INPUT_VERIFY_PLAYER_INDEX
     
-    with(global.__input_players[_player_index].__cursor)
+    with(_global.__players[_player_index].__cursor)
     {
         __limit_l = undefined;
         __limit_t = undefined;
@@ -27,6 +29,8 @@ function input_cursor_limit_remove(_player_index = 0)
         __limit_x      = undefined;
         __limit_y      = undefined;
         __limit_radius = undefined;
+        
+        __limit_boundary_margin = undefined;
         
         __limit();
     }

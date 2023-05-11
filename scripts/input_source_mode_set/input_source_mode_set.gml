@@ -8,11 +8,11 @@
 
 function input_source_mode_set(_mode)
 {
-    __input_initialize();
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
-    if (_mode != global.__input_source_mode)
+    if (_mode != _global.__source_mode)
     {
-        global.__input_previous_source_mode = global.__input_source_mode;
+        _global.__previous_source_mode = _global.__source_mode;
         
         switch(_mode)
         {
@@ -21,7 +21,7 @@ function input_source_mode_set(_mode)
             break;
             
             case INPUT_SOURCE_MODE.JOIN:
-                __input_trace("Storing previous source mode (", global.__input_previous_source_mode, ")");
+                __input_trace("Storing previous source mode (", _global.__previous_source_mode, ")");
             break;
             
             case INPUT_SOURCE_MODE.HOTSWAP:
@@ -43,5 +43,5 @@ function input_source_mode_set(_mode)
         }
     }
     
-    global.__input_source_mode = _mode;
+    _global.__source_mode = _mode;
 }

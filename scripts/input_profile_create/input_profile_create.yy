@@ -1,12 +1,11 @@
 {
+  "resourceType": "GMScript",
+  "resourceVersion": "1.0",
+  "name": "input_profile_create",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Profiles",
-    "path": "folders/Input/Profiles.yy",
+    "name": "15  Profiles",
+    "path": "folders/Input/15  Profiles.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "input_profile_create",
-  "tags": [],
-  "resourceType": "GMScript",
 }

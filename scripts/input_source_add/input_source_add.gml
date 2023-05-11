@@ -6,12 +6,12 @@
 
 function input_source_add(_source, _player_index = 0, _exclusive = true)
 {
-    __input_initialize();
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_PLAYER_INDEX
     __INPUT_VERIFY_SOURCE
     __INPUT_VERIFY_SOURCE_ASSIGNABLE
     
     if (_exclusive) __input_source_relinquish(_source);
-    
-    global.__input_players[_player_index].__source_add(_source);
+
+    _global.__players[_player_index].__source_add(_source);
 }

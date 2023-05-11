@@ -29,7 +29,7 @@ _str_l += "Trigger Effect Test\n";
 _str_l += "\n";
 _str_l += "Gamepad = " + input_gamepad_get_description(_gamepad) + "\n";
 _str_l += "Type    = " + input_gamepad_get_type(_gamepad) + "\n";
-_str_l += "Support = " + string((input_gamepad_get_type(_gamepad) == "ps5") && (os_type == os_ps5) || global.__input_using_steamworks) + "\n";
+_str_l += "Support = " + string((input_gamepad_get_type(_gamepad) == "ps5") && (os_type == os_ps5) || __input_global().__using_steamworks) + "\n";
 _str_l += "\n";
 _str_l += "Left Value  = " + string(input_gamepad_value(_gamepad, gp_shoulderlb))  + "\n";
 _str_l += "Left State  = " + _left_state + "\n";

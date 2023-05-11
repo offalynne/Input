@@ -5,10 +5,11 @@
 
 function input_check_press_most_recent(_verb_array = all, _player_index = 0)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_PLAYER_INDEX
     
-    var _verbs_struct = global.__input_players[_player_index].__verb_state_dict;
-    if (!is_array(_verb_array)) _verb_array = global.__input_basic_verb_array;
+    var _verbs_struct = _global.__players[_player_index].__verb_state_dict;
+    if (!is_array(_verb_array)) _verb_array = _global.__basic_verb_array;
     
     var _max_time = -1;
     var _max_verb = undefined;

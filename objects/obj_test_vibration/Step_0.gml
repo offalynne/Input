@@ -1,5 +1,3 @@
-input_tick();
-
 var _gamepad = input_player_get_gamepad();
 if (_gamepad >= 0)
 {

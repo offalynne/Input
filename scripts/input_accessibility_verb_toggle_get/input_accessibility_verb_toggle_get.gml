@@ -3,8 +3,8 @@
 
 function input_accessibility_verb_toggle_get(_verb_name)
 {
-    __input_initialize();
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_BASIC_VERB_NAME
     
-    return variable_struct_exists(global.__input_toggle_momentary_dict, _verb_name);
+    return variable_struct_exists(_global.__toggle_momentary_dict, _verb_name);
 }

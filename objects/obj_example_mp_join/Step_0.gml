@@ -1,5 +1,5 @@
 //Allow either player to advance to gameplay
-if (input_multiplayer_is_finished())
+if (input_join_is_finished())
 {
     if (input_check_long("action", 0))
     {

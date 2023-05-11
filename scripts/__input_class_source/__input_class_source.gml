@@ -3,6 +3,8 @@
 
 function __input_class_source(_source, _gamepad = undefined) constructor
 {
+    __INPUT_GLOBAL_STATIC_VARIABLE  //Set static __global
+    
     __source  = _source;
     __gamepad = _gamepad;
     
@@ -77,7 +79,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
             //Gamepad-specific validations
             if (__source == __INPUT_SOURCE.GAMEPAD)
             {
-                var _gamepad = global.__input_gamepads[__gamepad];
+                var _gamepad = __global.__gamepads[__gamepad];
                 if (!is_struct(_gamepad) || (_gamepad.mapping_gm_to_raw[$ _value] == undefined))
                 {
                     //Value not found in the mapping for the player's gamepad
@@ -124,7 +126,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
             break;
             
             case __INPUT_BINDING_KEY:
-                if (!global.__input_keyboard_allowed)
+                if (!__global.__keyboard_allowed)
                 {
                     //Invalid per platform or configuration
                     return false;
@@ -132,7 +134,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                 
                 if not ((__source == __INPUT_SOURCE.KEYBOARD) || (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (__source == __INPUT_SOURCE.MOUSE))) return false;
                 
-                if (os_type == os_android)
+                if (__INPUT_ON_ANDROID)
                 {
                     if (((_value >= 16) && (_value <= 19))
                     ||  ((_value >= 96) && (_value <= 122)))
@@ -155,7 +157,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
             break;
             
             case __INPUT_BINDING_MOUSE_BUTTON:
-                if (!global.__input_mouse_allowed_on_platform)
+                if (!__global.__mouse_allowed_on_platform)
                 {
                     //Invalid per platform or configuration
                     return false;
@@ -170,11 +172,11 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                     break;
                     
                     case mb_right: //Invalid on Xbox, Playstation, native Android or iOS
-                        return !(__INPUT_ON_XBOX || __INPUT_ON_PS || (!__INPUT_ON_WEB && ((os_type == os_ios) || (os_type == os_android))));
+                        return !(__INPUT_ON_XBOX || __INPUT_ON_PS || (!__INPUT_ON_WEB && __INPUT_ON_MOBILE));
                     break;
                     
                     case mb_middle: //Invalid on console, Android or iOS
-                        return !(__INPUT_ON_CONSOLE || (os_type == os_ios) || (os_type == os_android));
+                        return !(__INPUT_ON_CONSOLE || __INPUT_ON_MOBILE);
                     break;
                     
                     case mb_side1:
@@ -190,7 +192,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
             
             case __INPUT_BINDING_MOUSE_WHEEL_UP:
             case __INPUT_BINDING_MOUSE_WHEEL_DOWN:
-                if (!global.__input_mouse_allowed_on_platform)
+                if (!__global.__mouse_allowed_on_platform)
                 {
                     //Invalid per platform or configuration
                     return false;
@@ -225,7 +227,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
         case __INPUT_SOURCE.KEYBOARD:
             var _keyboard_key = __input_keyboard_key();
             
-            if (global.__input_any_keyboard_binding_defined 
+            if (__global.__any_keyboard_binding_defined 
             && (_keyboard_key >= __INPUT_KEYCODE_MIN) && (_keyboard_key <= __INPUT_KEYCODE_MAX)
             && !__input_key_is_ignored(_keyboard_key)
             && _filter_func(_keyboard_key, _ignore_struct, _allow_struct))
@@ -240,7 +242,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
                 //This works around problems where a keyboard might be sending a character code for e.g. A but the OS is typing another letter
                 if (os_type == os_macosx)
                 {
-                    if (!_return_boolean) __input_trace("Binding label for keycode ", string(ord(_binding.__label)), ", initially set to \"", _binding.__label, "\"");
+                    if (!__INPUT_SILENT && !_return_boolean) __input_trace("Binding label for keycode ", string(ord(_binding.__label)), ", initially set to \"", _binding.__label, "\"");
                     var _keychar = string_upper(keyboard_lastchar);
                     
                     //Basic Latin only
@@ -259,7 +261,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
             if (INPUT_MOUSE_ALLOW_SCANNING)
             {
                 var _mouse_button = __input_mouse_button();
-                if (global.__input_mouse_allowed_on_platform && !global.__input_window_focus_block_mouse 
+                if (__global.__mouse_allowed_on_platform && !__global.__window_focus_block_mouse 
                     && (_mouse_button != mb_none) && ((_mouse_button != mb_left) || (os_type == os_windows) || !__INPUT_TOUCH_SUPPORT)
                     && _filter_func(_mouse_button, _ignore_struct, _allow_struct))
                 {
@@ -285,7 +287,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
         break;
         
         case __INPUT_SOURCE.GAMEPAD:
-            if (global.__input_any_gamepad_binding_defined)
+            if (__global.__any_gamepad_binding_defined)
             {
                 //Gamepad buttons and axes
                 var _check_array = [gp_face1,     gp_face2,     gp_face3,      gp_face4, 
@@ -311,7 +313,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
                         {
                             if (_return_boolean) return true;
                             var _binding = input_binding_gamepad_axis(_check, (_value < 0));
-                            if (global.__input_source_mode == INPUT_SOURCE_MODE.MULTIDEVICE) _binding.__gamepad_set(_gamepad);
+                            if (__global.__source_mode == INPUT_SOURCE_MODE.MULTIDEVICE) _binding.__gamepad_set(_gamepad);
                             return _binding;
                         }
                     }
@@ -321,7 +323,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
                         {
                             if (_return_boolean) return true;
                             var _binding = input_binding_gamepad_button(_check);
-                            if (global.__input_source_mode == INPUT_SOURCE_MODE.MULTIDEVICE) _binding.__gamepad_set(_gamepad);
+                            if (__global.__source_mode == INPUT_SOURCE_MODE.MULTIDEVICE) _binding.__gamepad_set(_gamepad);
                             return _binding;
                         }
                     }

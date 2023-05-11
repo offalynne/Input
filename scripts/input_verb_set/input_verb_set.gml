@@ -7,6 +7,8 @@
 
 function input_verb_set(_verb, _value, _player_index = 0, _analogue = true)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    
     if (_player_index < 0)
     {
         __input_error("Invalid player index provided (", _player_index, ")");
@@ -19,5 +21,5 @@ function input_verb_set(_verb, _value, _player_index = 0, _analogue = true)
         return undefined;
     }
     
-    global.__input_players[_player_index].__verb_set(_verb, _value, _analogue);
+    _global.__players[_player_index].__verb_set(_verb, _value, _analogue);
 }

@@ -4,19 +4,21 @@
 
 function input_system_export(_output_string = true, _prettify = false)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    
     var _players_array = array_create(INPUT_MAX_PLAYERS, undefined);
     
     var _root_json = {
         accessibility: {
-            momentary_state: global.__input_toggle_momentary_state,
-            momentary_verbs: variable_struct_get_names(global.__input_toggle_momentary_dict),
-            cooldown_state:  global.__input_cooldown_state,
-            cooldown_verbs:  variable_struct_get_names(global.__input_cooldown_dict),
+            momentary_state: _global.__toggle_momentary_state,
+            momentary_verbs: variable_struct_get_names(_global.__toggle_momentary_dict),
+            cooldown_state:  _global.__cooldown_state,
+            cooldown_verbs:  variable_struct_get_names(_global.__cooldown_dict),
         },
         
         mouse: {
-            capture:     global.__input_mouse_capture,
-            sensitivity: global.__input_mouse_capture_sensitivity,
+            capture:     _global.__mouse_capture,
+            sensitivity: _global.__mouse_capture_sensitivity,
         },
         
         players: _players_array,
@@ -25,7 +27,7 @@ function input_system_export(_output_string = true, _prettify = false)
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
     {
-        with(global.__input_players[_p]) _players_array[@ _p] = __export();
+        with(_global.__players[_p]) _players_array[@ _p] = __export();
         ++_p;
     }
     

@@ -1,5 +1,7 @@
 function __input_class_binding() constructor
 {
+    __INPUT_GLOBAL_STATIC_VARIABLE  //Set static __global
+    
     __set_empty();
     
     static __set_empty = function()
@@ -192,9 +194,9 @@ function __input_class_binding() constructor
         if (__gamepad_description != undefined)
         {
             var _g = 0;
-            repeat(array_length(global.__input_gamepads))
+            repeat(array_length(__global.__gamepads))
             {
-                var _gamepad = global.__input_gamepads[_g];
+                var _gamepad = __global.__gamepads[_g];
                 
                 if (is_struct(_gamepad) && (_gamepad.description == __gamepad_description))
                 {
@@ -213,7 +215,7 @@ function __input_class_binding() constructor
     static __set_android_lowercase = function()
     {
         //If we're on Android
-        if ((os_type == os_android) && (type == __INPUT_BINDING_KEY))
+        if (__INPUT_ON_ANDROID && (type == __INPUT_BINDING_KEY))
         {
             //Force binding to uppercase
             value = ord(string_upper(chr(value)));

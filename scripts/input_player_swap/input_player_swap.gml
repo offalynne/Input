@@ -4,6 +4,8 @@
 
 function input_player_swap(_player_index_a, _player_index_b)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    
     if (_player_index_a < 0)
     {
         __input_error("Invalid player index A provided (", _player_index_a, ")");
@@ -29,12 +31,12 @@ function input_player_swap(_player_index_a, _player_index_b)
     }
     
     //Do the ol' swaperoo
-    var _original_a = global.__input_players[_player_index_a];
-    var _original_b = global.__input_players[_player_index_b];
+    var _original_a = _global.__players[_player_index_a];
+    var _original_b = _global.__players[_player_index_b];
     
     _original_a.__index = _player_index_b;
     _original_b.__index = _player_index_a;
     
-    global.__input_players[@ _player_index_a] = _original_b;
-    global.__input_players[@ _player_index_b] = _original_a;
+    _global.__players[@ _player_index_a] = _original_b;
+    _global.__players[@ _player_index_b] = _original_a;
 }

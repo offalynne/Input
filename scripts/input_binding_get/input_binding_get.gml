@@ -7,7 +7,7 @@
 
 function input_binding_get(_verb_name, _player_index = 0, _alternate = 0, _profile_name = undefined)
 {
-    __input_initialize();
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_ALTERNATE_INDEX
     __INPUT_VERIFY_BASIC_VERB_NAME
     __INPUT_VERIFY_PROFILE_NAME
@@ -18,7 +18,7 @@ function input_binding_get(_verb_name, _player_index = 0, _alternate = 0, _profi
         {
             if (_profile_name == undefined) __input_error("Source must be specified when getting a binding from the default player");
             
-            with(global.__input_default_player)
+            with(_global.__default_player)
             {
                 return __binding_get(_profile_name, _verb_name, _alternate, false).__duplicate();
             }
@@ -31,7 +31,7 @@ function input_binding_get(_verb_name, _player_index = 0, _alternate = 0, _profi
     
     __INPUT_VERIFY_PLAYER_INDEX
     
-    with(global.__input_players[_player_index])
+    with(_global.__players[_player_index])
     {
         return __binding_get(_profile_name, _verb_name, _alternate, true);
     }

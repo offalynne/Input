@@ -6,10 +6,10 @@
 
 function input_binding_remove(_verb, _player_index = 0, _alternate = 0, _profile_name = undefined)
 {
-    __input_initialize();
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_PLAYER_INDEX
     __INPUT_VERIFY_ALTERNATE_INDEX
     __INPUT_VERIFY_PROFILE_NAME
     
-    global.__input_players[_player_index].__binding_remove(_profile_name, _verb, _alternate);
+    _global.__players[_player_index].__binding_remove(_profile_name, _verb, _alternate);
 }

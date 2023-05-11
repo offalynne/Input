@@ -1,7 +1,7 @@
 var _string = "";
 _string += "Rebinding Example\n";
 _string += "\n";
-_string += input_binding_get_icon(input_binding_get("pause")) + " = Pause/Unpause\n";
+_string += input_verb_get_icon("pause") + " = Pause/Unpause\n";
 
 //Show the rebinding menu if we're paused
 if (pause)
@@ -17,19 +17,19 @@ if (pause)
         //This is a bit clumsy but sufficient for this example
         //In a real situation you'll probably want to handle this with an array
         if (menu_selection == 0) _string += "-->  ";
-        _string += input_binding_get_icon(input_binding_get("left")) + " = Left\n";
+        _string += input_verb_get_icon("left") + " = Left\n";
         
         if (menu_selection == 1) _string += "-->  ";
-        _string += input_binding_get_icon(input_binding_get("right")) + " = Right\n";
+        _string += input_verb_get_icon("right") + " = Right\n";
         
         if (menu_selection == 2) _string += "-->  ";
-        _string += input_binding_get_icon(input_binding_get("up")) + " = Up\n";
+        _string += input_verb_get_icon("up") + " = Up\n";
         
         if (menu_selection == 3) _string += "-->  ";
-        _string += input_binding_get_icon(input_binding_get("down")) + " = Down\n";
+        _string += input_verb_get_icon("down") + " = Down\n";
         
         if (menu_selection == 4) _string += "-->  ";
-        _string += input_binding_get_icon(input_binding_get("accept")) + " = Accept\n";
+        _string += input_verb_get_icon("accept") + " = Accept\n";
     }
     else
     {
@@ -40,7 +40,7 @@ if (pause)
 else
 {
     //Display a control prompt for basic player movement
-    _string += input_binding_get_icon(input_binding_get("left")) + "/" + input_binding_get_icon(input_binding_get("right")) + "/" + input_binding_get_icon(input_binding_get("up")) + "/" + input_binding_get_icon(input_binding_get("down")) + " = Move\n";
+    _string += input_verb_get_icon("left") + "/" + input_verb_get_icon("right") + "/" + input_verb_get_icon("up") + "/" + input_verb_get_icon("down") + " = Move\n";
 }
 
 draw_text(10, 10, _string);

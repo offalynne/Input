@@ -6,6 +6,8 @@
 
 function input_check_opposing(_verb_negative, _verb_positive, _player_index = 0, _most_recent = false)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    
     var _held_n = input_check(_verb_negative, _player_index);
     var _held_p = input_check(_verb_positive, _player_index);
     
@@ -20,7 +22,7 @@ function input_check_opposing(_verb_negative, _verb_positive, _player_index = 0,
     if (!_held_n) return (_held_p?  1 : 0);
     
     //Grab player verb struct
-    var _player_verbs_struct = global.__input_players[_player_index].__verb_state_dict;
+    var _player_verbs_struct = _global.__players[_player_index].__verb_state_dict;
     var _verb_struct_n = _player_verbs_struct[$ _verb_negative];
     var _verb_struct_p = _player_verbs_struct[$ _verb_positive];
 

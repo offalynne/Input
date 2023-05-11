@@ -4,25 +4,28 @@
 
 function input_binding_get_icon(_binding, _player_index = 0)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    __INPUT_VERIFY_PLAYER_INDEX
+    
     //Find the correct fallback icon data
     //We'll use this if there's a problem resolving an icon otherwise
     static _fallback_icon_struct   = undefined;
-    static _fallback_category_name = "xbox one";
+    static _fallback_category_name = INPUT_GAMEPAD_TYPE_XBOX_ONE;
     
     if (_fallback_icon_struct == undefined)
     {
         switch(os_type)
         {
-            case os_ps3:          _fallback_category_name = "psx";      break;
-            case os_ps4:          _fallback_category_name = "ps4";      break;
-            case os_ps5:          _fallback_category_name = "ps5";      break;
-            case os_switch:       _fallback_category_name = "switch";   break;
-            case os_xboxone:      _fallback_category_name = "xbox one"; break;
-            case os_xboxseriesxs: _fallback_category_name = "xbox one"; break;
-            default:              _fallback_category_name = "xbox one"; break;
+            case os_ps3:          _fallback_category_name = INPUT_GAMEPAD_TYPE_PSX;      break;
+            case os_ps4:          _fallback_category_name = INPUT_GAMEPAD_TYPE_PS4;      break;
+            case os_ps5:          _fallback_category_name = INPUT_GAMEPAD_TYPE_PS5;      break;
+            case os_switch:       _fallback_category_name = INPUT_GAMEPAD_TYPE_SWITCH;   break;
+            case os_xboxone:      _fallback_category_name = INPUT_GAMEPAD_TYPE_XBOX_ONE; break;
+            case os_xboxseriesxs: _fallback_category_name = INPUT_GAMEPAD_TYPE_XBOX_ONE; break;
+            default:              _fallback_category_name = INPUT_GAMEPAD_TYPE_XBOX_ONE; break;
         }
         
-        var _fallback_category_data = global.__input_icons[$ _fallback_category_name];
+        var _fallback_category_data = _global.__icons[$ _fallback_category_name];
         if (is_struct(_fallback_category_data))
         {
             _fallback_icon_struct = _fallback_category_data.__dictionary;
@@ -37,7 +40,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
     //Check for invalid input value
     if (!input_value_is_binding(_binding))
     {
-        var _category_data = global.__input_icons[$ "not a binding"];
+        var _category_data = _global.__icons[$ "not a binding"];
         if (!is_struct(_category_data)) return "not a binding";
         var _icon = _category_data.__dictionary[$ string(all)];
         return _icon ?? "not a binding";
@@ -49,7 +52,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
     //If this is an empty binding...
     if ((_type == undefined) || (_label == undefined))
     {
-        var _category_data = global.__input_icons[$ "empty"];
+        var _category_data = _global.__icons[$ "empty"];
         if (!is_struct(_category_data)) return "empty";
         var _icon = _category_data.__dictionary[$ string(all)];
         return _icon ?? "empty";
@@ -70,7 +73,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
         
         case __INPUT_BINDING_GAMEPAD_BUTTON:
         case __INPUT_BINDING_GAMEPAD_AXIS:
-            var _category = input_player_get_gamepad_type(_player_index, _binding);
+            var _category = _global.__players[_player_index].__gamepad_type_override ?? input_player_get_gamepad_type(_player_index, _binding);
         break;
         
         default:
@@ -79,7 +82,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
     }
     
     //Try to find the lookup table for this particular category
-    var _category_data = global.__input_icons[$ _category];
+    var _category_data = _global.__icons[$ _category];
     var _icon_struct = is_struct(_category_data)? _category_data.__dictionary : _fallback_icon_struct;
     
     //Try to find the icon from the source struct

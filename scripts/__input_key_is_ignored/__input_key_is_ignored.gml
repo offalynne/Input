@@ -2,7 +2,6 @@
 
 function __input_key_is_ignored(_key)
 {
-    if (variable_struct_exists(global.__input_ignore_key_dict, _key)) return true;
-    
-    return false;
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    return variable_struct_exists(_global.__ignore_key_dict, _key);
 }

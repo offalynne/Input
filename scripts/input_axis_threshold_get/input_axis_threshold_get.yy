@@ -1,12 +1,11 @@
 {
+  "resourceType": "GMScript",
+  "resourceVersion": "1.0",
+  "name": "input_axis_threshold_get",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Other",
-    "path": "folders/Input/Other.yy",
+    "name": "11  Accessibility",
+    "path": "folders/Input/11  Accessibility.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "input_axis_threshold_get",
-  "tags": [],
-  "resourceType": "GMScript",
 }

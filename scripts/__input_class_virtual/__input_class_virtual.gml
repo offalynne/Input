@@ -1,7 +1,9 @@
 function __input_class_virtual() constructor
 {
-    array_push(global.__input_virtual_array, self);
-    global.__input_virtual_order_dirty = true;
+    __INPUT_GLOBAL_STATIC_VARIABLE  //Set static __global
+    
+    array_push(__global.__virtual_array, self);
+    __global.__virtual_order_dirty = true;
     
     
     
@@ -61,7 +63,7 @@ function __input_class_virtual() constructor
     static destroy = function()
     {
         __destroyed = true;
-        global.__input_virtual_order_dirty = true;
+        __global.__virtual_order_dirty = true;
         
         return undefined;
     }
@@ -70,7 +72,7 @@ function __input_class_virtual() constructor
     {
         if (__destroyed) return;
         
-        if (__active && is_struct(global.__input_touch_player))
+        if (__active && is_struct(__global.__touch_player))
         {
             if (__circular == true)
             {
@@ -289,7 +291,7 @@ function __input_class_virtual() constructor
         if (__priority != _priority)
         {
             __priority = _priority;
-            global.__input_virtual_order_dirty = true;
+            __global.__virtual_order_dirty = true;
         }
         
         return self;
@@ -512,6 +514,12 @@ function __input_class_virtual() constructor
     
     #region Private
     
+    static __set_as_background = function()
+    {
+        __background = true;
+        return self;
+    }
+    
     static __clear_state = function()
     {
         __touch_device = undefined;
@@ -627,7 +635,7 @@ function __input_class_virtual() constructor
             {
                 if (device_mouse_check_button(__touch_device, mb_left))
                 {
-                    var _player = global.__input_touch_player;
+                    var _player = __global.__touch_player;
                     _player.__verb_set_from_virtual(__verb_click, 1, 1, false);
                     
                     if (__record_history)
@@ -721,7 +729,6 @@ function __input_class_virtual() constructor
                         if (_threshold_factor > 0)
                         {
                             var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 22.5) / 45) mod 8;
-                            __input_trace(_direction);
                             
                             //Look, I *could* do this with maths but I'm choosing not to because it's 10pm
                             if (_direction == 0)

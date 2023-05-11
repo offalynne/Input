@@ -80,7 +80,7 @@ function __input_gamepad_set_vid_pid()
                     product     = _product_slice;
                     description = _work_string;
                 }
-                else
+                else if (!__INPUT_SILENT) 
                 {
                     __input_trace("Gamepad description could not be parsed. Bindings for this gamepad may be incorrect (was \"", description, "\")");
                 }
@@ -102,7 +102,7 @@ function __input_gamepad_set_vid_pid()
             product = _result.product;
             xinput  = (index < 4);
         }
-        else if ((os_type == os_macosx) || (os_type == os_linux) || (os_type == os_android))
+        else if ((os_type == os_macosx) || (os_type == os_linux) || __INPUT_ON_ANDROID)
         {
             var _result = __input_gamepad_guid_parse(guid, false, false);
             vendor  = _result.vendor;
@@ -111,7 +111,7 @@ function __input_gamepad_set_vid_pid()
         }
         else
         {
-            __input_trace("Warning! OS type check fell through unexpectedly (os_type = ", os_type, ")");
+            if (!__INPUT_SILENT) __input_trace("Warning! OS type check fell through unexpectedly (os_type = ", os_type, ")");
             description = gamepad_get_description(index);
             vendor  = "";
             product = "";

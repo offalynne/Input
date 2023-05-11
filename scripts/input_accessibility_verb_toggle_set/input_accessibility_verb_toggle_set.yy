@@ -1,12 +1,11 @@
 {
+  "resourceType": "GMScript",
+  "resourceVersion": "1.0",
+  "name": "input_accessibility_verb_toggle_set",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Accessibility",
-    "path": "folders/Input/Accessibility.yy",
+    "name": "11  Accessibility",
+    "path": "folders/Input/11  Accessibility.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "input_accessibility_verb_toggle_set",
-  "tags": [],
-  "resourceType": "GMScript",
 }

@@ -3,6 +3,8 @@
 
 function input_system_import(_string)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    
     if (is_string(_string))
     {
         var _json = json_parse(_string);
@@ -29,8 +31,8 @@ function input_system_import(_string)
     }
     
     //Momentary toggle verbs
-    global.__input_toggle_momentary_state = _json.accessibility.momentary_state;
-    global.__input_toggle_momentary_dict = {};
+    _global.__toggle_momentary_state = _json.accessibility.momentary_state;
+    _global.__toggle_momentary_dict = {};
     
     var _momentary_verb_array = _json.accessibility.momentary_verbs;
     if (!is_array(_momentary_verb_array))
@@ -42,13 +44,13 @@ function input_system_import(_string)
     var _i = 0;
     repeat(array_length(_momentary_verb_array))
     {
-        global.__input_toggle_momentary_dict[$ _momentary_verb_array[_i]] = true;
+        _global.__toggle_momentary_dict[$ _momentary_verb_array[_i]] = true;
         ++_i;
     }
     
     //Cooldown verbs
-    global.__input_cooldown_state = _json.accessibility.cooldown_state;
-    global.__input_cooldown_dict = {};
+    _global.__cooldown_state = _json.accessibility.cooldown_state;
+    _global.__cooldown_dict = {};
     
     var _cooldown_verb_array = _json.accessibility.cooldown_verbs;
     if (!is_array(_cooldown_verb_array))
@@ -60,7 +62,7 @@ function input_system_import(_string)
     var _i = 0;
     repeat(array_length(_cooldown_verb_array))
     {
-        global.__input_cooldown_dict[$ _cooldown_verb_array[_i]] = true;
+        _global.__cooldown_dict[$ _cooldown_verb_array[_i]] = true;
         ++_i;
     }
     
@@ -87,16 +89,16 @@ function input_system_import(_string)
         return;
     }
     
-    if (array_length(_players_array) != array_length(global.__input_players))
+    if (array_length(_players_array) != array_length(_global.__players))
     {
-        __input_error("Player settings length mismatch\nFound ", array_length(_players_array), " players in JSON but we are expecting ", array_length(global.__input_players), " players");
+        __input_error("Player settings length mismatch\nFound ", array_length(_players_array), " players in JSON but we are expecting ", array_length(_global.__players), " players");
         return;
     }
     
     var _p = 0;
     repeat(array_length(_players_array))
     {
-        with(global.__input_players[_p]) __import(_players_array[_p]);
+        with(_global.__players[_p]) __import(_players_array[_p]);
         ++_p;
     }
 }

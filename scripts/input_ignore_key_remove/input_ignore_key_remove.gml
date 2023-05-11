@@ -3,13 +3,15 @@
 
 function input_ignore_key_remove(_key)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
+    
     //Fix uses of straight strings instead of ord("A") etc.
     if (is_string(_key)) _key = ord(string_upper(_key));
     
-    if (variable_struct_exists(global.__input_ignore_key_dict, _key))
+    if (variable_struct_exists(_global.__ignore_key_dict, _key))
     {
         if (__INPUT_DEBUG) __input_trace("Un-ignoring keycode ", _key);
-        variable_struct_remove(global.__input_ignore_key_dict, _key);
+        variable_struct_remove(_global.__ignore_key_dict, _key);
     }
     else
     {

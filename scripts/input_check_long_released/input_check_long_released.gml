@@ -8,6 +8,7 @@
 
 function input_check_long_released(_verb, _player_index = 0, _buffer_duration = 0)
 {
+    __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_PLAYER_INDEX
     
     if (is_array(_verb))
