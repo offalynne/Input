@@ -115,6 +115,7 @@
     {"id":{"name":"input_check_released","path":"scripts/input_check_released/input_check_released.yy",},"order":2,},
     {"id":{"name":"input_check_repeat","path":"scripts/input_check_repeat/input_check_repeat.yy",},"order":0,},
     {"id":{"name":"input_chord_create","path":"scripts/input_chord_create/input_chord_create.yy",},"order":2,},
+    {"id":{"name":"input_numpad_notation","path":"scripts/input_numpad_notation/input_numpad_notation.yy",},"order":6,},
     {"id":{"name":"input_clear_momentary","path":"scripts/input_clear_momentary/input_clear_momentary.yy",},"order":0,},
     {"id":{"name":"input_color_get","path":"scripts/input_color_get/input_color_get.yy",},"order":0,},
     {"id":{"name":"input_color_reset","path":"scripts/input_color_reset/input_color_reset.yy",},"order":2,},
