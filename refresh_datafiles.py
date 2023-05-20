@@ -24,10 +24,8 @@ DATA_SOURCES = {
 
             "SDL2 typelist": {
 
-                "source": github_urlpath + "libsdl-org/SDL/master/src/joystick/controller_type.c",
+                "source": github_urlpath + "libsdl-org/SDL/master/src/joystick/controller_list.h",
                 "license": github_urlpath + "libsdl-org/SDL/main/LICENSE.txt",
-                "trim before": "GetControllerTypeOverride",
-                "trim after": "ControllerDescription_t",
                 "match category": "(?<=k_eControllerType_)(.*)(?=\,\ N)",
                 "match id": "MAKE_CONTROLLER_ID\((.*),(.*)\),k_eControllerType_" + marker_id + ","
             },
