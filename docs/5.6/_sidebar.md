@@ -1,4 +1,5 @@
 - [Home](README)
+- [Alternatives](Alternatives)
 - [Newbie Guide](Newbie-Guide)
 - [Multiplayer Guide](Multiplayer-Guide)
 - [Quick Reference](Quick-Reference)
