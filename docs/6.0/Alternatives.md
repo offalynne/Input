@@ -4,4 +4,4 @@ Input might not be the perfect fit for your game. The GameMaker community has pr
 
 - [Firehammer](https://firehammergames.itch.io/firehammer-input)
 
-- [InputDog](https://github.com/messhof/Input-Dog)
+- [Input Dog](https://github.com/messhof/Input-Dog)
