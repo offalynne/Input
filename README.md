@@ -10,3 +10,4 @@
 - ### [Download the .yymps](https://github.com/JujuAdams/input/releases/)
 - ### Read the [documentation](http://jujuadams.github.io/Input)
 - ### Talk about Input on the [Discord server](https://discord.gg/8krYCqr)
+- ### You may also like [Firehammer](https://firehammergames.itch.io/firehammer-input) and [Input Dog](https://github.com/messhof/Input-Dog)
