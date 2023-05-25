@@ -363,7 +363,7 @@ or  input_check_double_pressed(["left", "right", "up", "down"]))
 |`verbNegative`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to check as negative component                                                 |
 |`verbPositive`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to check as positive component                                                 |
 |`[playerIndex]`   |integer                   |Player to target. If not specified, player 0 is used                                                      |
-|`[mostRecent]`    |boolean                   |Whether to use the most recent input instead of returning `false` when two verbs conflict. False if unspecified|
+|`[mostRecent]`    |boolean                   |Whether to use the most recent input instead of returning `false` when two verbs conflict. `INPUT_DEFAULT_OPPOSING_MOST_RECENT` is used if unspecified|
 
 #### **Example**
 
@@ -393,7 +393,7 @@ direction += _speed*input_check_opposing("left", "right", 0, true);
 |`verbNegative` |[verb](Verbs-and-Bindings)      |[Verb](Verbs-and-Bindings) to check as negative component                                                                    |
 |`verbPositive` |[verb](Verbs-and-Bindings)      |[Verb](Verbs-and-Bindings) to check as positive component                                                                    |
 |`[playerIndex]`|integer                         |Player to target. If not specified, player 0 is used                                                                         |
-|`[mostRecent]` |boolean                         |Whether to use the most recent input instead of returning `false` when two verbs conflict. False if unspecified            |
+|`[mostRecent]` |boolean                         |Whether to use the most recent input instead of returning `false` when two verbs conflict. `INPUT_DEFAULT_OPPOSING_MOST_RECENT` is used if unspecified            |
 |`[delay]`      |frames/milliseconds             |Time between re-triggers; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration). The units of this value are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
 |`[predelay]`   |frames/milliseconds             |Time before the first re-trigger; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Configuration). The units of this value are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
 
@@ -426,7 +426,7 @@ option = (option + input_check_opposing("menu up", "menu down")) mod option_coun
 |`verbNegative`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to check as negative component                                                 |
 |`verbPositive`    |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to check as positive component                                                 |
 |`[playerIndex]`   |integer                   |Player to target. If not specified, player 0 is used                                                      |
-|`[mostRecent]`    |boolean                   |Whether to use the most recent input instead of returning `false` when two verbs conflict. False if unspecified|
+|`[mostRecent]`    |boolean                   |Whether to use the most recent input instead of returning `false` when two verbs conflict. `INPUT_DEFAULT_OPPOSING_MOST_RECENT` is used if unspecified|
 
 #### **Example**
 
