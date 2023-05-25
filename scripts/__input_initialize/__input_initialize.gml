@@ -627,7 +627,7 @@ function __input_initialize()
     _global.__steam_type_to_name  = {};
     _global.__steam_trigger_mode  = {};
     
-    if (__INPUT_STEAMWORKS_SUPPORT && INPUT_ALLOW_STEAMWORKS)
+    if (__INPUT_STEAMWORKS_SUPPORT && INPUT_ALLOW_STEAMWORKS && extension_exists("Steamworks"))
     {
         try
         {
