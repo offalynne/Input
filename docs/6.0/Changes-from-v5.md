@@ -21,6 +21,7 @@ Input 6 introduces a number of new features alongside a small number of breaking
 - Adds `input_hotswap_params_set()` (and getter)
 - `input_multiplayer_params_set()` and getter have been expanded
 - `input_binding_scan_params_set()` and getter have been expanded
+- `INPUT_DEFAULT_2D_MOST_RECENT` and `INPUT_DEFAULT_OPPOSING_MOST_RECENT` have been added to control the default behaviour of 2D checker and opposing checkers respectively
 - The binding scan error code `INPUT_BINDING_SCAN_EVENT.SOURCE_FILTER_EMPTY` has been added
 - When scanning for a binding with a source filter enabled, hotswapping is disabled
 - Adds `input_verb_group_get_verbs()` and `input_verbs_groups_get()`
