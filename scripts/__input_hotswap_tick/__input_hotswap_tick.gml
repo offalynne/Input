@@ -198,7 +198,7 @@ function __input_hotswap_tick_input()
         }
     }
     
-    if (_global.__any_keyboard_binding_defined
+    if (_global.__keyboard_allowed && _global.__any_keyboard_binding_defined
     &&  input_source_is_available(INPUT_KEYBOARD)
     &&  keyboard_check(vk_anykey)
     &&  !__input_key_is_ignored(__input_keyboard_key())) //Ensure that this key isn't one we're trying to ignore
@@ -217,7 +217,7 @@ function __input_hotswap_tick_input()
     }
     else
     {
-        if (input_source_is_available(INPUT_MOUSE)
+        if (_global.__mouse_allowed && input_source_is_available(INPUT_MOUSE)
         && ((INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && _global.__pointer_moved)
           || INPUT_HOTSWAP_ON_MOUSE_BUTTON && (input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down())))
         {

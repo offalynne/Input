@@ -16,14 +16,18 @@ function input_source_set(_source, _player_index = 0, _auto_profile = true, _exc
     
         with(_global.__players[_player_index])
         {
-            __source_add(INPUT_KEYBOARD);
-            __source_add(INPUT_MOUSE);
+            if (_global.__keyboard_allowed) __source_add(INPUT_KEYBOARD);
+            if (_global.__mouse_allowed)    __source_add(INPUT_MOUSE);
+            if (_global.__touch_allowed)    __source_add(INPUT_TOUCH);
             
-            var _i = 0;
-            repeat(INPUT_MAX_GAMEPADS)
+            if (_global.__gamepad_allowed)
             {
-                __source_add(INPUT_GAMEPAD[_i]);
-                ++_i;
+                var _i = 0;
+                repeat(INPUT_MAX_GAMEPADS)
+                {
+                    __source_add(INPUT_GAMEPAD[_i]);
+                    ++_i;
+                }
             }
             
             if (_auto_profile) __profile_set_auto();
