@@ -24,7 +24,7 @@ The functions on this page allow you to check verbs by treating them as 2D vecto
 |`verbUp`       |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
 |`verbDown`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
 |`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used        |
-|`[mostRecent]` |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
+|`[mostRecent]` |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. `INPUT_DEFAULT_2D_MOST_RECENT` is used if unspecified|
 
 #### **Examples**
 
@@ -59,7 +59,7 @@ motion_add(input_direction("left", "right", "up", "down", 0, true), speed);
 |`verbUp`       |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
 |`verbDown`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
 |`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used        |
-|`[mostRecent]` |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
+|`[mostRecent]` |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. `INPUT_DEFAULT_2D_MOST_RECENT` is used if unspecified|
 
 #### **Example**
 
@@ -89,7 +89,7 @@ motion_add(direction, input_distance("left", "right", "up", "down"));
 |`verbUp`        |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
 |`verbDown`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
 |`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used        |
-|`[mostRecent ]` |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
+|`[mostRecent ]` |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. `INPUT_DEFAULT_2D_MOST_RECENT` is used if unspecified|
 
 #### **Example**
 
@@ -119,7 +119,7 @@ x += input_x("left", "right", "up", "down");
 |`verbUp`        |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
 |`verbDown`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
 |`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used        |
-|`[mostRecent]`  |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
+|`[mostRecent]`  |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. `INPUT_DEFAULT_2D_MOST_RECENT` is used if unspecified|
 
 #### **Example**
 
@@ -149,7 +149,7 @@ y += input_y("left", "right", "up", "down");
 |`verbUp`        |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up   |
 |`verbDown`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down |
 |`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used        |
-|`[mostRecent]`  |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. False if unspecified|
+|`[mostRecent]`  |boolean                   |Whether to use the most recent input instead of returning 0 when two verbs conflict. `INPUT_DEFAULT_2D_MOST_RECENT` is used if unspecified|
 
 The struct returned by this function contains two member variables: `.x` and `.y`.
 
