@@ -30,6 +30,8 @@
 |`INPUT_DOUBLE_DELAY`                     |`12`         |Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`|
 |`INPUT_QUICK_BUFFER`                     |`3`          |Maximum number of frames to trigger a quick tap. Lower values require the thumbstick to move faster. This value is always measured in frames         |
 |`INPUT_CHORD_DEFAULT_TIME`               |`4`          |Delay between key presses for it to register as a double press. Whether this is in frames or milliseconds is controlled by `INPUT_TIMER_MILLISECONDS`|
+|`INPUT_DEFAULT_OPPOSING_MOST_RECENT`     |`false`      |Default value for "mostRecent" parameters for 2D checkers                                                                                            |
+|`INPUT_DEFAULT_2D_MOST_RECENT`           |`false`      |Default value for "mostRecent" parameters for opposing checkers                                                                                      |
 |`INPUT_2D_CLAMP`                         |`true`       |Whether to clamp 2D input to a maximum distance of 1 unit                                                                                            |
 |`INPUT_2D_XY_AXIS_BIAS`                  |`0.0`        |The amount of bias for 2D checkers to prefer straight lines along the x- and y-axes. This makes it easier for the player to input exactly horizontal and exactly vertical movement. Value should be from 0 to 1. Higher values make the biasing behaviour stronger|
 |`INPUT_2D_XY_AXIS_BIAS_DIAGONALS`        |`true`       |Whether the axis bias (see above) should be 8-directional. If set to `false`, 2D checkers will only lock to north/east/south/west directions         |
