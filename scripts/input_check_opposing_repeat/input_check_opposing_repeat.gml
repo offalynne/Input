@@ -4,11 +4,11 @@
 /// @param   verbNegative
 /// @param   verbPositive
 /// @param   [playerIndex=0]
-/// @param   [mostRecent=0]
+/// @param   [mostRecent]
 /// @param   [delay]
 /// @param   [predelay]
 
-function input_check_opposing_repeat(_verb_negative, _verb_positive, _player_index = 0, _most_recent = false, _delay = INPUT_REPEAT_DEFAULT_DELAY, _predelay = INPUT_REPEAT_DEFAULT_PREDELAY)
+function input_check_opposing_repeat(_verb_negative, _verb_positive, _player_index = 0, _most_recent = INPUT_DEFAULT_OPPOSING_MOST_RECENT, _delay = INPUT_REPEAT_DEFAULT_DELAY, _predelay = INPUT_REPEAT_DEFAULT_PREDELAY)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     

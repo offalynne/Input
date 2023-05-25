@@ -2,9 +2,9 @@
 /// @param   verbNegative
 /// @param   verbPositive
 /// @param   [playerIndex=0]
-/// @param   [mostRecent=false]
+/// @param   [mostRecent]
 
-function input_check_opposing(_verb_negative, _verb_positive, _player_index = 0, _most_recent = false)
+function input_check_opposing(_verb_negative, _verb_positive, _player_index = 0, _most_recent = INPUT_DEFAULT_OPPOSING_MOST_RECENT)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
