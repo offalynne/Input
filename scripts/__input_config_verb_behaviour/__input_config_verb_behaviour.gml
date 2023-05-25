@@ -34,6 +34,10 @@
 //(Whether this is in frames or milliseconds is controlled by INPUT_TIMER_MILLISECONDS)
 #macro INPUT_CHORD_DEFAULT_TIME  4
 
+//The default value for "mostRecent" parameters for 2D Checkers
+//This value is used when the "mostRecent" parameter is not specified
+#macro INPUT_DEFAULT_2D_MOST_RECENT  false
+
 //The default value for "mostRecent" parameters for opposing checkers
 //This value is used when the "mostRecent" parameter is not specified
 #macro INPUT_DEFAULT_OPPOSING_MOST_RECENT  false

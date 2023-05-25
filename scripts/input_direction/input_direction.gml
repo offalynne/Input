@@ -5,9 +5,9 @@
 /// @param   upVerb
 /// @param   downVerb
 /// @param   [playerIndex=0]
-/// @param   [mostRecent=false]
+/// @param   [mostRecent]
 
-function input_direction(_default, _verb_l, _verb_r, _verb_u, _verb_d, _player_index = undefined, _most_recent = false)
+function input_direction(_default, _verb_l, _verb_r, _verb_u, _verb_d, _player_index = undefined, _most_recent = INPUT_DEFAULT_2D_MOST_RECENT)
 {
     if (is_string(_default)) __input_error("Usage of input_direction() has changed. Please refer to documentation for details");
     
