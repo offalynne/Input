@@ -78,7 +78,7 @@ function __input_class_gamepad(_index) constructor
         virtual_set();
         led_set();
         
-        __vibration_support = __global.__vibration_allowed_on_platform && ((os_type != os_windows) || xinput);        
+        __vibration_support = __global.__vibration_allowed && (xinput || !__INPUT_ON_WINDOWS);        
         if (__vibration_support)
         {
             if (os_type == os_ps5)
@@ -87,7 +87,7 @@ function __input_class_gamepad(_index) constructor
             }            
             else
             {
-                if (((os_type == os_windows) || __INPUT_ON_SWITCH) && __input_string_contains(raw_type, "JoyCon", "SwitchHandheld"))
+                if ((__INPUT_ON_WINDOWS || __INPUT_ON_SWITCH) && __input_string_contains(raw_type, "JoyCon", "SwitchHandheld"))
                 {
                     __vibration_scale = INPUT_VIBRATION_JOYCON_STRENGTH;
                 }
@@ -201,7 +201,7 @@ function __input_class_gamepad(_index) constructor
             if (__INPUT_SDL2_SUPPORT)
             {
                 //As of 2020-08-17, GameMaker has weird in-build remapping rules for gamepad on MacOS
-                if (os_type == os_macosx)
+                if (__INPUT_ON_MACOS)
                 {
                     if ((gamepad_get_mapping(index) != "") && (gamepad_get_mapping(index) != "no mapping"))
                     {
@@ -225,7 +225,7 @@ function __input_class_gamepad(_index) constructor
         }
         
         //Correct for weird input index offset on MacOS if the gamepad already had a native GameMaker mapping
-        if (mac_cleared_mapping && (os_type == os_macosx))
+        if (mac_cleared_mapping && __INPUT_ON_MACOS)
         {
             if (_mapping_type == __INPUT_MAPPING.AXIS  ) _raw_index +=  6;
             if (_mapping_type == __INPUT_MAPPING.BUTTON) _raw_index += 17;
@@ -244,7 +244,7 @@ function __input_class_gamepad(_index) constructor
     static tick = function()
     {
         //Apply mapping settings that cannot be initially evaluated
-        if (os_type == os_windows)
+        if (__INPUT_ON_WINDOWS)
         {        
             //Recalibrate XInput triggers
             if (scale_trigger 
@@ -320,9 +320,9 @@ function __input_class_gamepad(_index) constructor
     {
         if not (__global.__using_steamworks) return;
     
-        var _gamepad_is_virtual = ((os_type == os_windows) && xinput);
+        var _gamepad_is_virtual = (__INPUT_ON_WINDOWS && xinput);
         var _slot = index;
-        if (os_type == os_linux)
+        if (__INPUT_ON_LINUX)
         {
             _gamepad_handle_index = -1;
             _gamepad_is_virtual = false;
@@ -374,7 +374,7 @@ function __input_class_gamepad(_index) constructor
         __led_pattern = undefined;
         
         //Platform is unsupported, or lacks Steam Input handle
-        if (!__INPUT_LED_PATTERN_SUPPORT || ((os_type == os_windows) && (!is_numeric(__steam_handle)))) return;
+        if (!__INPUT_LED_PATTERN_SUPPORT || (__INPUT_ON_WINDOWS && (!is_numeric(__steam_handle)))) return;
         
         var _led_offset = 0;
         var _led_layout = undefined;
@@ -491,7 +491,7 @@ function __input_class_gamepad(_index) constructor
         }
 
         //Steam Input uses libScePad for DualSense trigger effects, Windows native only
-        if (__global.__using_steamworks && !__global.__on_wine && (os_type == os_windows))
+        if (__global.__using_steamworks && !__global.__on_wine && __INPUT_ON_WINDOWS)
         {
             var _command_array = [{ mode: steam_input_sce_pad_trigger_effect_mode_off, command_data: {} }, { mode: steam_input_sce_pad_trigger_effect_mode_off, command_data: {} }];
             _command_array[_trigger_index].mode = __global.__steam_trigger_mode[$ _effect.__mode];

@@ -123,9 +123,7 @@ function __input_hotswap_tick_input()
             var _sort_order = 1;
             _g = 0;
             
-            if (!__INPUT_ON_WEB && ((os_type == os_macosx)
-            || (!_global.__using_steamworks && (os_type == os_windows))
-            || ( _global.__using_steamworks && (os_type == os_linux))))
+            if (!__INPUT_ON_WEB && (__INPUT_ON_MACOS || (!_global.__using_steamworks && __INPUT_ON_WINDOWS) || (_global.__using_steamworks && __INPUT_ON_LINUX)))
             {
                 //Search last-to-first on platforms with low-index virtual controllers (Steam Input, ViGEm)
                 _sort_order = -1;
@@ -209,7 +207,7 @@ function __input_hotswap_tick_input()
         return INPUT_KEYBOARD;
     }
     
-    if (!INPUT_TOUCHSCREEN_USES_MOUSE_SOURCE && __INPUT_TOUCH_PRIMARY)
+    if (_global.__touch_allowed)
     {
         if (input_source_is_available(INPUT_TOUCH) && device_mouse_check_button(_global.__pointer_index, mb_left))
         {

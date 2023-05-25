@@ -6,7 +6,7 @@ if (__INPUT_ON_IOS && !__INPUT_ON_WEB)
 {
     _first_gamepad = 1;
 }
-else if (!gamepad_is_connected(_first_gamepad) && (os_type == os_windows))
+else if (!gamepad_is_connected(_first_gamepad) && __INPUT_ON_WINDOWS)
 {
     _first_gamepad = 4;
 }

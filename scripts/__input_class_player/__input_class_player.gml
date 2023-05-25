@@ -369,7 +369,7 @@ function __input_class_player() constructor
     static __source_add = function(_source)
     {
         //Ensure we're targeting the right source for our platform / configuration
-        if (__INPUT_TOUCH_PRIMARY)
+        if (__global.__touch_allowed)
         {
             if (_source == INPUT_MOUSE) _source = INPUT_TOUCH;
         }
@@ -408,7 +408,7 @@ function __input_class_player() constructor
     static __source_remove = function(_source)
     {
         //Ensure we're targeting the right source for our platform / configuration
-        if (__INPUT_TOUCH_PRIMARY)
+        if (__global.__touch_allowed)
         {
             if (_source == INPUT_MOUSE) _source = INPUT_TOUCH;
         }
@@ -448,7 +448,7 @@ function __input_class_player() constructor
         //Ensure we're targeting the right source for our platform / configuration
         if (_touch_remap)
         {
-            if (__INPUT_TOUCH_PRIMARY)
+            if (__global.__touch_allowed)
             {
                 if (_source == INPUT_MOUSE) _source = INPUT_TOUCH;
             }

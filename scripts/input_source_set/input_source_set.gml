@@ -17,7 +17,7 @@ function input_source_set(_source, _player_index = 0, _auto_profile = true, _exc
         with(_global.__players[_player_index])
         {
             __source_add(INPUT_KEYBOARD);
-            __source_add(__INPUT_TOUCH_PRIMARY? INPUT_TOUCH : INPUT_MOUSE);
+            __source_add(INPUT_MOUSE);
             
             var _i = 0;
             repeat(INPUT_MAX_GAMEPADS)

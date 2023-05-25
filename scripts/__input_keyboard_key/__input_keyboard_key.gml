@@ -2,7 +2,7 @@ function __input_keyboard_key()
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
-    if (_global.__keyboard_allowed && (keyboard_check(vk_anykey)))
+    if (_global.__keyboard_allowed && keyboard_check(vk_anykey))
     {        
         switch (os_type)
         {

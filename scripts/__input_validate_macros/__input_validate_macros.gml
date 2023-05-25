@@ -2,6 +2,91 @@ function __input_validate_macros()
 {
     #region General
     
+    if (!is_bool(INPUT_PC_KEYBOARD))
+    {
+        __input_error("INPUT_PC_KEYBOARD must be either <true> or <false>");
+    }
+
+    if (!is_bool(INPUT_PC_MOUSE))
+    {
+        __input_error("INPUT_PC_MOUSE must be either <true> or <false>");
+    }
+
+    if (!is_bool(INPUT_PC_GAMEPAD))
+    {
+        __input_error("INPUT_PC_GAMEPAD must be either <true> or <false>");
+    }
+
+    if (!is_bool(INPUT_WINDOWS_TOUCH))
+    {
+        __input_error("INPUT_WINDOWS_TOUCH must be either <true> or <false>");
+    }
+
+    if (!is_bool(INPUT_WINDOWS_VIBRATION))
+    {
+        __input_error("INPUT_WINDOWS_VIBRATION must be either <true> or <false>");
+    }
+
+    if (!is_bool(INPUT_MOBILE_GAMEPAD))
+    {
+        __input_error("INPUT_MOBILE_GAMEPAD must be either <true> or <false>");
+    }
+
+    if (!is_bool(INPUT_MOBILE_MOUSE))
+    {
+        __input_error("INPUT_MOBILE_MOUSE must be either <true> or <false>");
+    }
+
+    if (!is_bool(INPUT_MOBILE_WEB_KEYBOARD))
+    {
+        __input_error("INPUT_MOBILE_WEB_KEYBOARD must be either <true> or <false>");
+    }
+
+    if (!is_bool(INPUT_ANDROID_KEYBOARD))
+    {
+        __input_error("INPUT_ANDROID_KEYBOARD must be either <true> or <false>");
+    }
+
+    if (!is_bool(INPUT_SWITCH_KEYBOARD))
+    {
+        __input_error("INPUT_SWITCH_KEYBOARD must be either <true> or <false>");
+    }
+
+    if (!is_bool(INPUT_SWITCH_MOUSE))
+    {
+        __input_error("INPUT_SWITCH_MOUSE must be either <true> or <false>");
+    }
+
+    if (!is_bool(INPUT_SWITCH_TOUCH))
+    {
+        __input_error("INPUT_SWITCH_TOUCH must be either <true> or <false>");
+    }
+
+    if (!is_bool(INPUT_SWITCH_VIBRATION))
+    {
+        __input_error("INPUT_SWITCH_VIBRATION must be either <true> or <false>");
+    }
+
+    if (!is_bool(INPUT_PS_MOUSE))
+    {
+        __input_error("INPUT_PS_MOUSE must be either <true> or <false>");
+    }
+
+    if (!is_bool(INPUT_PS4_VIBRATION))
+    {
+        __input_error("INPUT_PS4_VIBRATION must be either <true> or <false>");
+    }
+
+    if (!is_bool(INPUT_PS5_VIBRATION))
+    {
+        __input_error("INPUT_PS5_VIBRATION must be either <true> or <false>");
+    }
+
+    if (!is_bool(INPUT_XBOX_VIBRATION))
+    {
+        __input_error("INPUT_XBOX_VIBRATION must be either <true> or <false>");
+    }
+    
     if (!is_bool(INPUT_ALLOW_OUT_OF_FOCUS))
     {
         __input_error("INPUT_ALLOW_OUT_OF_FOCUS must be either <true> or <false>");
@@ -278,11 +363,6 @@ function __input_validate_macros()
     
     #region Touch
     
-    if (!is_bool(INPUT_TOUCHSCREEN_USES_MOUSE_SOURCE))
-    {
-        __input_error("INPUT_TOUCHSCREEN_USES_MOUSE_SOURCE must be either <true> or <false>");
-    }
-    
     if (!is_numeric(INPUT_MAX_TOUCHPOINTS) || (floor(INPUT_MAX_TOUCHPOINTS) != INPUT_MAX_TOUCHPOINTS) || (INPUT_MAX_TOUCHPOINTS < 1))
     {
         __input_error("INPUT_MAX_TOUCHPOINTS must be an integer that is greater than or equal to 1");
@@ -293,19 +373,14 @@ function __input_validate_macros()
         __input_error("INPUT_TOUCH_EDGE_DEADZONE must be a number that is greater than or equal to 0");
     }
     
-    if (!is_bool(INPUT_SWITCH_TOUCHSCREEN_ALLOWED))
+    if (!is_bool(INPUT_SWITCH_TOUCH))
     {
-        __input_error("INPUT_SWITCH_TOUCHSCREEN_ALLOWED must be either <true> or <false>");
+        __input_error("INPUT_SWITCH_TOUCH must be either <true> or <false>");
     }
     
-    if (!is_bool(INPUT_WINDOWS_TOUCH_ALLOWED))
+    if (!is_bool(INPUT_WINDOWS_TOUCH))
     {
-        __input_error("INPUT_WINDOWS_TOUCH_ALLOWED must be either <true> or <false>");
-    }
-    
-    if (!is_bool(INPUT_WINDOWS_TOUCH_PRIMARY))
-    {
-        __input_error("INPUT_WINDOWS_TOUCH_PRIMARY must be either <true> or <false>");
+        __input_error("INPUT_WINDOWS_TOUCH must be either <true> or <false>");
     }
     
     if (!is_bool(INPUT_PS_TOUCHPAD_ALLOWED))
@@ -425,21 +500,6 @@ function __input_validate_macros()
     
     
     #region Vibration
-    
-    if (!is_bool(INPUT_VIBRATION_ALLOWED))
-    {
-        __input_error("INPUT_VIBRATION_ALLOWED must be either <true> or <false>");
-    }
-    
-    if (!is_bool(INPUT_PS5_USE_LEGACY_VIBRATION))
-    {
-        __input_error("INPUT_PS5_USE_LEGACY_VIBRATION must be either <true> or <false>");
-    }
-    
-    if (!is_bool(INPUT_SWITCH_USE_LEGACY_VIBRATION))
-    {
-        __input_error("INPUT_SWITCH_USE_LEGACY_VIBRATION must be either <true> or <false>");
-    }
     
     if (!is_numeric(INPUT_VIBRATION_DEFAULT_STRENGTH) || (INPUT_VIBRATION_DEFAULT_STRENGTH < 0) || (INPUT_VIBRATION_DEFAULT_STRENGTH > 1.0))
     {

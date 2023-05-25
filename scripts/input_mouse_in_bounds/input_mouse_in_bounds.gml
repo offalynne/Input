@@ -4,7 +4,7 @@ function input_mouse_in_bounds()
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
-    if (os_type == os_windows)
+    if (__INPUT_ON_WINDOWS)
     {
         var _mx = display_mouse_get_x() - window_get_x();
         var _my = display_mouse_get_y() - window_get_y();  
