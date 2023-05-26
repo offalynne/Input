@@ -122,6 +122,7 @@ GameMaker is missing a few keyboard characters from its set of native constants.
 |`vk_apostrophe`|`vk_period`   |
 
 !> As extended keyboard constant values are relative to platform and OS, they can not be used as case statements within switch statements.
+
 &nbsp;
 
 ## Platform Constants
