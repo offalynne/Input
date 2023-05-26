@@ -129,7 +129,7 @@ GameMaker is missing a few keyboard characters from its set of native constants.
 
 The following constants indicate the runtime platform category.
 
-|Name                 |Purpose                                                                                             |
+|Name                 |Meaning                                                                                             |
 |---------------------|----------------------------------------------------------------------------------------------------|
 |`INPUT_ON_MOBILE`    |Whether the current platform is Android, iOS, or tvOS including mobile web browser                  |
 |`INPUT_ON_PC`        |Whether the current platform is Windows, MacOS, or Linux including Steam Deck and PC web browser    |
