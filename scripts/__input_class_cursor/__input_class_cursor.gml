@@ -89,7 +89,7 @@ function __input_class_cursor() constructor
         var _can_use_mouse = (__player.__mouse_enabled && __player.__source_contains(INPUT_MOUSE)); //Automatically remapped to INPUT_TOUCH where appropriate
         
         //Mouse and touch
-        if ((__global.__pointer_moved || __using_mouse) && _can_use_mouse && __global.__mouse_allowed_on_platform)
+        if ((__global.__pointer_moved || __using_mouse) && _can_use_mouse && __global.__mouse_allowed)
         {
             __using_mouse = true;
                 

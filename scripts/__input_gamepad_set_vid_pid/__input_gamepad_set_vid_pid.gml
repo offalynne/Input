@@ -94,7 +94,7 @@ function __input_gamepad_set_vid_pid()
     else if (__INPUT_SDL2_SUPPORT)
     {
        //Unpack the vendor/product IDs from the gamepad's GUID
-        if (os_type == os_windows)
+        if (__INPUT_ON_WINDOWS)
         {
             var _legacy = __input_string_contains(guid, "000000000000504944564944");
             var _result = __input_gamepad_guid_parse(guid, _legacy, false);
@@ -102,7 +102,7 @@ function __input_gamepad_set_vid_pid()
             product = _result.product;
             xinput  = (index < 4);
         }
-        else if ((os_type == os_macosx) || (os_type == os_linux) || __INPUT_ON_ANDROID)
+        else if (__INPUT_ON_MACOS || __INPUT_ON_LINUX || __INPUT_ON_ANDROID)
         {
             var _result = __input_gamepad_guid_parse(guid, false, false);
             vendor  = _result.vendor;

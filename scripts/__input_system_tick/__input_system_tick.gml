@@ -16,12 +16,12 @@ function __input_system_tick()
         if (_gamepad >= 0 && _gamepad < 4)
         {
             _global.__pointer_index = _gamepad * 2;
-            _global.__pointer_pressed  = gamepad_button_check_pressed(_gamepad, gp_select);
+            _global.__pointer_pressed  = gamepad_button_check_pressed(_gamepad,  gp_select);
             _global.__pointer_released = gamepad_button_check_released(_gamepad, gp_select);
         }
     }
 
-    if (__INPUT_TOUCH_SUPPORT)
+    if (_global.__touch_allowed)
     {
         var _touch_index = undefined;
         var _touch_press_index = _global.__pointer_pressed_index;
@@ -124,8 +124,8 @@ function __input_system_tick()
             }
             else if ((keyboard_key != vk_nokey) 
                  ||  (mouse_button != mb_none)
-                 ||  ((os_type == os_windows) && window_has_focus())
-                 ||  ((os_type == os_macosx) && _global.__pointer_moved))
+                 ||  (__INPUT_ON_WINDOWS && window_has_focus())
+                 ||  (__INPUT_ON_MACOS   && _global.__pointer_moved))
             {
                 //Regained focus
                 _global.__window_focus = true;
@@ -163,7 +163,7 @@ function __input_system_tick()
         if (__input_window_changed())
         {
             _global.__mouse_capture_blocked = true;
-            if (os_type == os_windows)
+            if (__INPUT_ON_WINDOWS)
             {
                 input_mouse_capture_set(true, _global.__mouse_capture_sensitivity);        
             }
@@ -180,7 +180,7 @@ function __input_system_tick()
         {
             if (_global.__frame - _global.__mouse_capture_frame > 10)
             {
-                if (os_type == os_windows)
+                if (__INPUT_ON_WINDOWS)
                 {
                     _pointer_x = display_mouse_get_x() - window_get_x();
                     _pointer_y = display_mouse_get_y() - window_get_y();  
@@ -193,7 +193,7 @@ function __input_system_tick()
                 
                 //Only bother updating each coordinate space if we've moved far enough in device space
                 //This presumes that we don't get better than 1px resolution in device space
-                if ((abs(_pointer_x - window_get_width()/2) >= 1)
+                if ((abs(_pointer_x - window_get_width()/2)  >= 1)
                 ||  (abs(_pointer_y - window_get_height()/2) >= 1))
                 {
                     var _m = 0;
@@ -229,7 +229,7 @@ function __input_system_tick()
                                 var _old_x = window_get_width()/2;
                                 var _old_y = window_get_height()/2;
                                 
-                                if (os_type == os_windows)
+                                if (__INPUT_ON_WINDOWS)
                                 {
                                     _pointer_x = display_mouse_get_x() - window_get_x();
                                     _pointer_y = display_mouse_get_y() - window_get_y();  
@@ -263,7 +263,7 @@ function __input_system_tick()
             window_mouse_set(window_get_width()/2, window_get_height()/2);
         }
     }
-    else if (_global.__window_focus || INPUT_ALLOW_OUT_OF_FOCUS || (os_type == os_macosx))
+    else if (_global.__window_focus || INPUT_ALLOW_OUT_OF_FOCUS || __INPUT_ON_MACOS)
     {
         var _m = 0;
         repeat(INPUT_COORD_SPACE.__SIZE)
@@ -286,7 +286,7 @@ function __input_system_tick()
                 break;
                 
                 case INPUT_COORD_SPACE.DEVICE:
-                    if (os_type == os_windows)
+                    if (__INPUT_ON_WINDOWS)
                     {
                         _pointer_x = display_mouse_get_x() - window_get_x();
                         _pointer_y = display_mouse_get_y() - window_get_y();  
@@ -315,7 +315,7 @@ function __input_system_tick()
     _global.__pointer_moved = _moved;
     
     _global.__tap_click = false;    
-    if (os_type == os_windows)
+    if (__INPUT_ON_WINDOWS)
     {
         //Track clicks from touchpad and touchscreen taps (system-setting dependent)
         _global.__tap_presses  += device_mouse_check_button_pressed( 0, mb_left);
@@ -415,7 +415,7 @@ function __input_system_tick()
         _global.__steam_handles = steam_input_get_connected_controllers();
     }
     
-    if (_global.__frame > __INPUT_GAMEPADS_TICK_PREDELAY)
+    if (_global.__gamepad_allowed && (_global.__frame > __INPUT_GAMEPADS_TICK_PREDELAY))
     {
         //Expand dynamic device count
         var _device_change = max(0, gamepad_get_device_count() - array_length(_global.__gamepads));

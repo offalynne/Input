@@ -75,6 +75,8 @@ function __input_player_tick_sources()
                         switch(_binding.type)
                         {
                             case __INPUT_BINDING_KEY:
+                                if (!_global.__keyboard_allowed) break;
+                            
                                 if (keyboard_check(_binding.value))
                                 {
                                     _value        = 1.0;

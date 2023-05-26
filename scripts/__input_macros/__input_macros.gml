@@ -48,6 +48,9 @@
 
 #macro INPUT_VIRTUAL_BACKGROUND  __input_global().__virtual_background
 
+#macro __INPUT_ON_MOBILE   __input_global().__on_mobile
+#macro __INPUT_ON_DESKTOP  __input_global().__on_desktop
+
 #macro __INPUT_ON_PS       ((os_type == os_ps4)     || (os_type == os_ps5))
 #macro __INPUT_ON_XBOX     ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
 #macro __INPUT_ON_SWITCH   (os_type == os_switch)
@@ -55,22 +58,19 @@
 
 #macro __INPUT_ON_ANDROID  (os_type == os_android)
 #macro __INPUT_ON_IOS      ((os_type == os_ios) || (os_type == os_tvos))
-#macro __INPUT_ON_MOBILE   (__INPUT_ON_ANDROID  || __INPUT_ON_IOS)
 
-#macro __INPUT_ON_DESKTOP  ((os_type == os_macosx) || (os_type == os_linux) || (os_type == os_windows))
-#macro __INPUT_ON_APPLE    ((os_type == os_macosx) || __INPUT_ON_IOS)
+#macro __INPUT_ON_WINDOWS  (os_type == os_windows)
+#macro __INPUT_ON_MACOS    (os_type == os_macosx)
+#macro __INPUT_ON_LINUX    (os_type == os_linux)
+#macro __INPUT_ON_APPLE    (__INPUT_ON_MACOS || __INPUT_ON_IOS)
 
 #macro __INPUT_ON_OPERAGX  (os_type == os_operagx)
 #macro __INPUT_ON_WEB      ((os_browser != browser_not_a_browser) || __INPUT_ON_OPERAGX)
 
-#macro __INPUT_SDL2_SUPPORT               (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || __INPUT_ON_ANDROID))
-#macro __INPUT_GAMEPAD_VIBRATION_SUPPORT  (__INPUT_ON_CONSOLE || (!__INPUT_ON_WEB && (os_type == os_windows)))
-#macro __INPUT_KEYBOARD_NORMATIVE         (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || __INPUT_ON_SWITCH)
-#macro __INPUT_KEYBOARD_SUPPORT           (__INPUT_KEYBOARD_NORMATIVE || __INPUT_ON_ANDROID)
-#macro __INPUT_LED_PATTERN_SUPPORT        ((os_type == os_ps5) || __INPUT_ON_SWITCH || __INPUT_ON_IOS || ((os_type == os_windows) && !__INPUT_ON_WEB))
-#macro __INPUT_STEAMWORKS_SUPPORT         (((os_type == os_windows) || (os_type == os_linux)) && !__INPUT_ON_WEB)
-#macro __INPUT_TOUCH_SUPPORT              (__INPUT_ON_MOBILE  || (INPUT_SWITCH_TOUCHSCREEN_ALLOWED && __INPUT_ON_SWITCH) || (INPUT_WINDOWS_TOUCH_ALLOWED && (os_type == os_windows)))
-#macro __INPUT_TOUCH_PRIMARY              (!INPUT_TOUCHSCREEN_USES_MOUSE_SOURCE && (__INPUT_ON_MOBILE || __INPUT_ON_SWITCH || (INPUT_WINDOWS_TOUCH_PRIMARY && (os_type == os_windows))))
+#macro __INPUT_SDL2_SUPPORT         (!__INPUT_ON_WEB && (__INPUT_ON_DESKTOP || __INPUT_ON_ANDROID))
+#macro __INPUT_KEYBOARD_NORMATIVE   (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || __INPUT_ON_SWITCH)
+#macro __INPUT_LED_PATTERN_SUPPORT  ((os_type == os_ps5) || __INPUT_ON_SWITCH || __INPUT_ON_IOS || (__INPUT_ON_WINDOWS && !__INPUT_ON_WEB))
+#macro __INPUT_STEAMWORKS_SUPPORT   ((__INPUT_ON_LINUX || __INPUT_ON_WINDOWS) && !__INPUT_ON_WEB)
 
 #macro __INPUT_HOLD_THRESHOLD           0.2  //Minimum value from an axis for that axis to be considered activated at the gamepad layer. This is *not* the same as min/max thresholds for players
 #macro __INPUT_DELTA_HOTSWAP_THRESHOLD  0.1  //Minimum (absolute) change in gamepad mapping value between frames to register as new input. This triggers hotswapping
@@ -123,14 +123,14 @@
 #macro vk_lbracket    219
 #macro vk_rbracket    221
 
-#macro vk_apostrophe (((os_type == os_macosx) && !__INPUT_ON_WEB)? 192 : 222)
-#macro vk_equals     (((os_type == os_macosx) && !__INPUT_ON_WEB)?  24 : 187)
-#macro vk_numlock    ((__INPUT_ON_APPLE && __INPUT_ON_WEB)? 12 : 144)
-#macro vk_hyphen     (((os_type == os_switch) || ((os_type == os_macosx) && !__INPUT_ON_WEB))? 109 : 189)
-#macro vk_rmeta      ((os_type == os_macosx)? ((__INPUT_ON_APPLE && __INPUT_ON_WEB)? 93 : 91) : 92)
-#macro vk_backtick   ((os_type == os_macosx)?  50 : ((os_type == os_linux)? 223 : 192))
-#macro vk_lmeta      ((os_type == os_macosx)?  92 : 91)
-#macro vk_period     ((os_type == os_switch)? 110 : 190)
+#macro vk_apostrophe ((__INPUT_ON_MACOS && !__INPUT_ON_WEB)? 192 : 222)
+#macro vk_equals     ((__INPUT_ON_MACOS && !__INPUT_ON_WEB)?  24 : 187)
+#macro vk_numlock    ((__INPUT_ON_APPLE &&  __INPUT_ON_WEB)?  12 : 144)
+#macro vk_hyphen     ((__INPUT_ON_SWITCH || (__INPUT_ON_MACOS && !__INPUT_ON_WEB))? 109 : 189)
+#macro vk_rmeta      (__INPUT_ON_MACOS? ((__INPUT_ON_APPLE && __INPUT_ON_WEB)? 93 : 91) : 92)
+#macro vk_backtick   (__INPUT_ON_MACOS?   50 : (__INPUT_ON_LINUX? 223 : 192))
+#macro vk_lmeta      (__INPUT_ON_MACOS?   92 :  91)
+#macro vk_period     (__INPUT_ON_SWITCH? 110 : 190)
 
 // gp_axislh     = 32785             32769 = gp_face1
 // gp_axislv     = 32786             32770 = gp_face2

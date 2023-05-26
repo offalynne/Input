@@ -1,6 +1,6 @@
 function __input_binding_get_label(_type, _value, _axis_negative)
 {
-    if (__INPUT_TOUCH_SUPPORT && (os_type != os_windows))
+    if (!__INPUT_ON_DESKTOP)
     {
         //Touch bindings
         if (__INPUT_ON_PS)

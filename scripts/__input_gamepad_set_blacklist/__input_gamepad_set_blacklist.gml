@@ -15,7 +15,7 @@ function __input_gamepad_set_blacklist()
         return;
     }
     
-    if (os_type == os_windows)
+    if (__INPUT_ON_WINDOWS)
     {
         if ((vendor == "7e05") && (product == "0920") && (button_count > 21))
         {
@@ -35,7 +35,7 @@ function __input_gamepad_set_blacklist()
             return;
         }
     }
-    else if (os_type == os_linux)
+    else if (__INPUT_ON_LINUX)
     {
         if (_global.__on_steam_deck)
         {

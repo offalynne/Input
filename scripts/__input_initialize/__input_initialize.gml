@@ -169,6 +169,26 @@ function __input_initialize()
     _global.__mouse_capture_sensitivity = 1;
     _global.__mouse_capture_frame       = 0;
     
+    //Identify mobile and desktop
+    _global.__on_desktop = (__INPUT_ON_WINDOWS || __INPUT_ON_MACOS || __INPUT_ON_LINUX || __INPUT_ON_OPERAGX);
+    _global.__on_mobile  = (__INPUT_ON_ANDROID || __INPUT_ON_IOS);
+    
+    //OperaGX mobile identity per YYG
+    if (__INPUT_ON_OPERAGX)
+    {
+        var _map = os_get_info();
+        if (ds_exists(_map, ds_type_map))
+        {
+            if (_map[? "mobile"])
+            {
+                _global.__on_mobile  = true;
+                _global.__on_desktop = false;
+            }
+
+            ds_map_destroy(_map);
+        }
+    }
+    
     //Whether to strictly verify bindings match auto profiles
     //This is set to <true> on boot, causing Input to throw an error, otherwise this is <false>
     //If an invalid binding is set during normal gameplay then a warning message is emitted to the console
@@ -182,13 +202,11 @@ function __input_initialize()
     _global.__any_gamepad_binding_defined  = false;
     
     //Disallow keyboard bindings on specified platforms unless explicitly enabled
-    _global.__keyboard_allowed = (__INPUT_KEYBOARD_SUPPORT && ((os_type != os_android) || INPUT_ANDROID_KEYBOARD_ALLOWED) && ((os_type != os_switch) || INPUT_SWITCH_KEYBOARD_ALLOWED));
-
-    //Default to disallowing mouse bindings on specified platforms unless explicitly enabled
-    _global.__mouse_allowed_on_platform = (!__INPUT_ON_XBOX && ((!__INPUT_TOUCH_PRIMARY) || (INPUT_TOUCHSCREEN_USES_MOUSE_SOURCE && __INPUT_TOUCH_PRIMARY) || (INPUT_PS_TOUCHPAD_ALLOWED && __INPUT_ON_PS)));
-    
-    //Default to disallowing vibration on specified platforms unless explicitly enabled
-    _global.__vibration_allowed_on_platform = (__INPUT_GAMEPAD_VIBRATION_SUPPORT && INPUT_VIBRATION_ALLOWED && ((os_type != os_switch) || INPUT_SWITCH_USE_LEGACY_VIBRATION) && ((os_type != os_ps5) || INPUT_PS5_USE_LEGACY_VIBRATION));
+    _global.__keyboard_allowed  = ((__INPUT_ON_DESKTOP && INPUT_PC_KEYBOARD)       || (__INPUT_ON_SWITCH && INPUT_SWITCH_KEYBOARD)  || (__INPUT_ON_MOBILE  && INPUT_MOBILE_WEB_KEYBOARD && __INPUT_ON_WEB) || (__INPUT_ON_ANDROID && INPUT_ANDROID_KEYBOARD));
+    _global.__mouse_allowed     = ((__INPUT_ON_DESKTOP && INPUT_PC_MOUSE)          || (__INPUT_ON_SWITCH && INPUT_SWITCH_MOUSE)     || (__INPUT_ON_MOBILE  && INPUT_MOBILE_MOUSE) || (__INPUT_ON_PS && INPUT_PS_MOUSE));
+    _global.__touch_allowed     = ((__INPUT_ON_WINDOWS && INPUT_WINDOWS_TOUCH)     || (__INPUT_ON_SWITCH && INPUT_SWITCH_TOUCH)     ||  __INPUT_ON_MOBILE) && !_global.__mouse_allowed;
+    _global.__vibration_allowed = ((__INPUT_ON_WINDOWS && INPUT_WINDOWS_VIBRATION) || (__INPUT_ON_SWITCH && INPUT_SWITCH_VIBRATION) || (__INPUT_ON_XBOX    && INPUT_XBOX_VIBRATION) || (__INPUT_ON_PS4 && INPUT_PS4_VIBRATION) || (__INPUT_ON_PS5 && INPUT_PS5_VIBRATION));
+    _global.__gamepad_allowed   = ((__INPUT_ON_DESKTOP && INPUT_PC_GAMEPAD)        ||  __INPUT_ON_CONSOLE                           || (__INPUT_ON_MOBILE  && INPUT_MOBILE_GAMEPAD));
 
     //Whether mouse is blocked due to Window focus state
     _global.__window_focus_block_mouse = false;
@@ -532,14 +550,14 @@ function __input_initialize()
     __input_key_name_set(10, _global.__key_name_dict[$ vk_enter]);
     
     //Reset F11 and F12 keycodes on certain platforms
-    if ((os_type == os_switch) || (os_type == os_linux) || (os_type == os_macosx))
+    if (__INPUT_ON_SWITCH || __INPUT_ON_LINUX || __INPUT_ON_MACOS)
     {
         __input_key_name_set(128, "f11");
         __input_key_name_set(129, "f12");
     }
    
     //F13 to F32 on Windows and Web
-    if ((os_type == os_windows) || (__INPUT_ON_WEB))
+    if (__INPUT_ON_WINDOWS || __INPUT_ON_WEB)
     {
         for(var _i = vk_f1 + 12; _i < vk_f1 + 32; _i++) __input_key_name_set(_i, "f" + string(_i));
     }
@@ -592,7 +610,7 @@ function __input_initialize()
         input_ignore_key_add(vk_numlock);   //Num Lock
         input_ignore_key_add(vk_scrollock); //Scroll Lock
         
-        if (__INPUT_ON_WEB || (os_type == os_windows))
+        if (__INPUT_ON_WEB || __INPUT_ON_WINDOWS)
         {
             input_ignore_key_add(0x15); //IME Kana/Hanguel
             input_ignore_key_add(0x16); //IME On
@@ -674,7 +692,7 @@ function __input_initialize()
         {
             var _identifier = undefined;
             if (os_type == os_linux)   _identifier = _map[? "gl_renderer_string"];
-            if (os_type == os_windows) _identifier = _map[? "video_adapter_description"];
+            if (__INPUT_ON_WINDOWS) _identifier = _map[? "video_adapter_description"];
             
             //Steam Deck GPU identifier
             if ((_identifier != undefined) && __input_string_contains(_identifier, "AMD Custom GPU 04"))
@@ -733,11 +751,11 @@ function __input_initialize()
         _global.__steam_trigger_mode[$ string(__INPUT_TRIGGER_EFFECT.__TYPE_VIBRATION)] = steam_input_sce_pad_trigger_effect_mode_vibration;
     }
     
-    if ((os_type == os_linux) || (os_type == os_macosx))
+    if (__INPUT_ON_MACOS || __INPUT_ON_LINUX)
     {
         //Define the virtual controller's identity
-        var _os = ((os_type == os_macosx)? "macos"                            : "linux");
-        var _id = ((os_type == os_macosx)? "030000005e0400008e02000001000000" : "03000000de280000ff11000001000000");
+        var _os = (__INPUT_ON_MACOS? "macos"                            : "linux");
+        var _id = (__INPUT_ON_MACOS? "030000005e0400008e02000001000000" : "03000000de280000ff11000001000000");
     
         //Access the blacklist
         var _blacklist_os = (is_struct(_global.__blacklist_dictionary)? _global.__blacklist_dictionary[$ _os] : undefined);
@@ -756,7 +774,7 @@ function __input_initialize()
         var _steam_environ = environment_get_variable("SteamEnv");
         var _steam_configs = environment_get_variable("EnableConfiguratorSupport");
         
-        if ((os_type == os_linux)
+        if (__INPUT_ON_LINUX
         && ((_steam_environ != "") && (_steam_environ == "1") || _global.__using_steamworks)
         &&  (_steam_configs != "") && (_steam_configs == string_digits(_steam_configs)))
         {
@@ -879,7 +897,7 @@ function __input_initialize()
     
     #region Pointer type
     
-    if (__input_global().__on_steam_deck || __INPUT_ON_SWITCH || __INPUT_ON_MOBILE || ((os_type == os_windows) && INPUT_WINDOWS_TOUCH_PRIMARY))
+    if (__input_global().__on_steam_deck || __INPUT_ON_SWITCH || __INPUT_ON_MOBILE || (__INPUT_ON_WINDOWS && _global.__touch_allowed))
     {
         INPUT_POINTER_TYPE = "touch";
     }
