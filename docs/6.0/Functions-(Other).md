@@ -221,7 +221,7 @@ Shows the onscreen virtual keyboard on mobile platforms and SteamOS with the [St
 
 ?> For further configuration of the onscreen keyboard see [Touch macros](Config-Macros.md#touch)
 
-!> On consoles, [`get_string_async()`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Asynchronous_Functions/Dialog/get_string_async.htm) should be used, instead
+!> On web and console platforms, [`get_string_async()`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Asynchronous_Functions/Dialog/get_string_async.htm) should be used, instead
 
 #### **Example**
 
