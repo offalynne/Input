@@ -159,7 +159,7 @@ function __input_gamepad_set_mapping()
         return;
     }
     
-    if (__INPUT_ON_WEB)
+    if (INPUT_ON_WEB)
     {
         set_mapping(gp_face1, 0, __INPUT_MAPPING.BUTTON, "a");
         set_mapping(gp_face2, 1, __INPUT_MAPPING.BUTTON, "b");

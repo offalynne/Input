@@ -23,7 +23,7 @@ function __input_initialize()
     }
     
     //Detect GameMaker version to toggle features
-    _global.__use_is_instanceof = (!__INPUT_ON_WEB) && (string_copy(GM_runtime_version, 1, 4) == "2023");
+    _global.__use_is_instanceof = (!INPUT_ON_WEB) && (string_copy(GM_runtime_version, 1, 4) == "2023");
     _global.__use_legacy_strings = (string_copy(GM_runtime_version, 1, 8) == "2022.0.0");
     if (!__INPUT_SILENT)
     {
@@ -202,11 +202,11 @@ function __input_initialize()
     _global.__any_gamepad_binding_defined  = false;
     
     //Disallow keyboard bindings on specified platforms unless explicitly enabled
-    _global.__keyboard_allowed  = ((__INPUT_ON_DESKTOP && INPUT_PC_KEYBOARD)       || (__INPUT_ON_SWITCH && INPUT_SWITCH_KEYBOARD)  || (__INPUT_ON_MOBILE  && INPUT_MOBILE_WEB_KEYBOARD && __INPUT_ON_WEB) || (__INPUT_ON_ANDROID && INPUT_ANDROID_KEYBOARD));
-    _global.__mouse_allowed     = ((__INPUT_ON_DESKTOP && INPUT_PC_MOUSE)          || (__INPUT_ON_SWITCH && INPUT_SWITCH_MOUSE)     || (__INPUT_ON_MOBILE  && INPUT_MOBILE_MOUSE) || (__INPUT_ON_PS && INPUT_PS_MOUSE));
-    _global.__touch_allowed     = ((__INPUT_ON_WINDOWS && INPUT_WINDOWS_TOUCH)     || (__INPUT_ON_SWITCH && INPUT_SWITCH_TOUCH)     ||  __INPUT_ON_MOBILE) && !_global.__mouse_allowed;
-    _global.__vibration_allowed = ((__INPUT_ON_WINDOWS && INPUT_WINDOWS_VIBRATION) || (__INPUT_ON_SWITCH && INPUT_SWITCH_VIBRATION) || (__INPUT_ON_XBOX    && INPUT_XBOX_VIBRATION) || (__INPUT_ON_PS4 && INPUT_PS4_VIBRATION) || (__INPUT_ON_PS5 && INPUT_PS5_VIBRATION));
-    _global.__gamepad_allowed   = ((__INPUT_ON_DESKTOP && INPUT_PC_GAMEPAD)        ||  __INPUT_ON_CONSOLE                           || (__INPUT_ON_MOBILE  && INPUT_MOBILE_GAMEPAD));
+    _global.__keyboard_allowed  = ((INPUT_ON_PC && INPUT_PC_KEYBOARD)              || (__INPUT_ON_SWITCH && INPUT_SWITCH_KEYBOARD)  || (INPUT_ON_MOBILE  && INPUT_MOBILE_WEB_KEYBOARD && INPUT_ON_WEB) || (__INPUT_ON_ANDROID && INPUT_ANDROID_KEYBOARD));
+    _global.__mouse_allowed     = ((INPUT_ON_PC && INPUT_PC_MOUSE)                 || (__INPUT_ON_SWITCH && INPUT_SWITCH_MOUSE)     || (INPUT_ON_MOBILE  && INPUT_MOBILE_MOUSE) || (__INPUT_ON_PS && INPUT_PS_MOUSE));
+    _global.__touch_allowed     = ((__INPUT_ON_WINDOWS && INPUT_WINDOWS_TOUCH)     || (__INPUT_ON_SWITCH && INPUT_SWITCH_TOUCH)     ||  INPUT_ON_MOBILE) && !_global.__mouse_allowed;
+    _global.__vibration_allowed = ((__INPUT_ON_WINDOWS && INPUT_WINDOWS_VIBRATION) || (__INPUT_ON_SWITCH && INPUT_SWITCH_VIBRATION) || (__INPUT_ON_XBOX  && INPUT_XBOX_VIBRATION) || (__INPUT_ON_PS4 && INPUT_PS4_VIBRATION) || (__INPUT_ON_PS5 && INPUT_PS5_VIBRATION));
+    _global.__gamepad_allowed   = ((INPUT_ON_PC && INPUT_PC_GAMEPAD)               ||  INPUT_ON_CONSOLE                             || (INPUT_ON_MOBILE  && INPUT_MOBILE_GAMEPAD));
 
     //Whether mouse is blocked due to Window focus state
     _global.__window_focus_block_mouse = false;
@@ -391,7 +391,7 @@ function __input_initialize()
     _global.__raw_type_dictionary = {};
 
     //Load the controller type database
-    if (__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || __INPUT_ON_IOS)
+    if (INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || __INPUT_ON_IOS)
     {
         if (!__INPUT_SILENT) __input_trace("Skipping loading controller type database");
     }
@@ -557,7 +557,7 @@ function __input_initialize()
     }
    
     //F13 to F32 on Windows and Web
-    if (__INPUT_ON_WINDOWS || __INPUT_ON_WEB)
+    if (__INPUT_ON_WINDOWS || INPUT_ON_WEB)
     {
         for(var _i = vk_f1 + 12; _i < vk_f1 + 32; _i++) __input_key_name_set(_i, "f" + string(_i));
     }
@@ -585,12 +585,12 @@ function __input_initialize()
         
         input_ignore_key_add(0xFF); //Vendor key
         
-        if (__INPUT_ON_MOBILE && __INPUT_ON_APPLE)
+        if (INPUT_ON_MOBILE && __INPUT_ON_APPLE)
         {
             input_ignore_key_add(124); //Screenshot
         }
         
-        if (__INPUT_ON_WEB)
+        if (INPUT_ON_WEB)
         {
             if (__INPUT_ON_APPLE)
             {
@@ -610,7 +610,7 @@ function __input_initialize()
         input_ignore_key_add(vk_numlock);   //Num Lock
         input_ignore_key_add(vk_scrollock); //Scroll Lock
         
-        if (__INPUT_ON_WEB || __INPUT_ON_WINDOWS)
+        if (INPUT_ON_WEB || __INPUT_ON_WINDOWS)
         {
             input_ignore_key_add(0x15); //IME Kana/Hanguel
             input_ignore_key_add(0x16); //IME On
@@ -862,11 +862,11 @@ function __input_initialize()
     
     #region Keyboard type
     
-    if (__INPUT_ON_CONSOLE || (__INPUT_ON_WEB && !__INPUT_ON_DESKTOP))
+    if (INPUT_ON_CONSOLE || (INPUT_ON_WEB && !INPUT_ON_PC))
     {
         INPUT_KEYBOARD_TYPE = "async";
     }
-    else if (__INPUT_ON_MOBILE)
+    else if (INPUT_ON_MOBILE)
     {
         INPUT_KEYBOARD_TYPE = "virtual";
         if (__INPUT_ON_ANDROID)
@@ -897,7 +897,7 @@ function __input_initialize()
     
     #region Pointer type
     
-    if (__input_global().__on_steam_deck || __INPUT_ON_SWITCH || __INPUT_ON_MOBILE || (__INPUT_ON_WINDOWS && _global.__touch_allowed))
+    if (__input_global().__on_steam_deck || __INPUT_ON_SWITCH || INPUT_ON_MOBILE || (__INPUT_ON_WINDOWS && _global.__touch_allowed))
     {
         INPUT_POINTER_TYPE = "touch";
     }
@@ -905,7 +905,7 @@ function __input_initialize()
     {
         INPUT_POINTER_TYPE = "touchpad";
     }
-    else if (__INPUT_ON_CONSOLE)
+    else if (INPUT_ON_CONSOLE)
     {
         INPUT_POINTER_TYPE = "none";
     }

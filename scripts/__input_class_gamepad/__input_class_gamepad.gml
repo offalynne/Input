@@ -218,7 +218,7 @@ function __input_class_gamepad(_index) constructor
                     gamepad_remove_mapping(index);
                 }
             }
-            else if (!__INPUT_ON_CONSOLE)
+            else if (!INPUT_ON_CONSOLE)
             {
                 __input_trace("Gamepad ", index, " cannot remove GameMaker's native mapping string, this feature is not supported by Input on this platform");
             }
@@ -381,7 +381,7 @@ function __input_class_gamepad(_index) constructor
         var _led_type   = INPUT_GAMEPAD_TYPE_XBOX_360;
 
         //Handle whether gamepad index 0 is used or reserved
-        if (!__INPUT_ON_WEB && (__INPUT_ON_IOS || __INPUT_ON_SWITCH))
+        if (!INPUT_ON_WEB && (__INPUT_ON_IOS || __INPUT_ON_SWITCH))
         { 
             if (index == 0) return;
             _led_offset = -1;

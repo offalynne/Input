@@ -172,16 +172,16 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                     break;
                     
                     case mb_right: //Invalid on Xbox, Playstation, native Android or iOS
-                        return !(__INPUT_ON_XBOX || __INPUT_ON_PS || (!__INPUT_ON_WEB && __INPUT_ON_MOBILE));
+                        return !(__INPUT_ON_XBOX || __INPUT_ON_PS || (!INPUT_ON_WEB && INPUT_ON_MOBILE));
                     break;
                     
                     case mb_middle: //Invalid on console, Android or iOS
-                        return !(__INPUT_ON_CONSOLE || __INPUT_ON_MOBILE);
+                        return !(INPUT_ON_CONSOLE || INPUT_ON_MOBILE);
                     break;
                     
                     case mb_side1:
                     case mb_side2: //Invalid on console, OperaGX, mobile, Firefox or Mac browsers
-                        return !(__INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || __INPUT_ON_MOBILE || (os_browser == browser_firefox) || (__INPUT_ON_WEB && __INPUT_ON_MACOS));
+                        return !(INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || INPUT_ON_MOBILE || (os_browser == browser_firefox) || (INPUT_ON_WEB && __INPUT_ON_MACOS));
                     break;
                     
                     default:
@@ -201,7 +201,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                 if not ((__source == __INPUT_SOURCE.MOUSE) || (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (__source == __INPUT_SOURCE.KEYBOARD))) return false;
                 
                 //Invalid on console or native mobile
-                return !(__INPUT_ON_CONSOLE || (!__INPUT_ON_WEB && __INPUT_ON_MOBILE));        
+                return !(INPUT_ON_CONSOLE || (!INPUT_ON_WEB && INPUT_ON_MOBILE));        
             break;
             
             case __INPUT_BINDING_VIRTUAL_BUTTON:
