@@ -2,7 +2,7 @@
 
 function __input_gamepad_set_vid_pid()
 {    
-    if (__INPUT_ON_WEB)
+    if (INPUT_ON_WEB)
     {
         vendor  = "";
         product = "";

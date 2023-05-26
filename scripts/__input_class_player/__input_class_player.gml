@@ -532,7 +532,7 @@ function __input_class_player() constructor
             
             if (INPUT_FALLBACK_PROFILE_BEHAVIOR == 1)
             {
-                if (__INPUT_ON_DESKTOP && __global.__keyboard_allowed && __global.__any_keyboard_binding_defined)
+                if (INPUT_ON_PC && __global.__keyboard_allowed && __global.__any_keyboard_binding_defined)
                 {
                     //Try to use a keyboard profile if possible
                     _profile_name = INPUT_AUTO_PROFILE_FOR_KEYBOARD;
@@ -1393,7 +1393,7 @@ function __input_class_player() constructor
                 break;
 
                 case INPUT_COORD_SPACE.DEVICE:
-                    if (!__INPUT_ON_CONSOLE && (window_get_width != undefined))
+                    if (!INPUT_ON_CONSOLE && (window_get_width != undefined))
                     {
                         __gyro_screen_width  = window_get_width();
                         __gyro_screen_height = window_get_height();

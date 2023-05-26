@@ -9,7 +9,7 @@ function input_source_detect_new()
     var _sort_order = 1;
     var _g = 0;
     
-    if (!__INPUT_ON_WEB && (__INPUT_ON_MACOS || (!_global.__using_steamworks && __INPUT_ON_WINDOWS) || (_global.__using_steamworks && __INPUT_ON_LINUX)))
+    if (!INPUT_ON_WEB && (__INPUT_ON_MACOS || (!_global.__using_steamworks && __INPUT_ON_WINDOWS) || (_global.__using_steamworks && __INPUT_ON_LINUX)))
     {
         //Search last-to-first on platforms with low-index virtual controllers (Steam Input, ViGEm)
         //We want real devices to take priority over virtual ones where possible to avoid thrashing

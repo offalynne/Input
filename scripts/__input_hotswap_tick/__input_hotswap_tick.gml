@@ -123,7 +123,7 @@ function __input_hotswap_tick_input()
             var _sort_order = 1;
             _g = 0;
             
-            if (!__INPUT_ON_WEB && (__INPUT_ON_MACOS || (!_global.__using_steamworks && __INPUT_ON_WINDOWS) || (_global.__using_steamworks && __INPUT_ON_LINUX)))
+            if (!INPUT_ON_WEB && (__INPUT_ON_MACOS || (!_global.__using_steamworks && __INPUT_ON_WINDOWS) || (_global.__using_steamworks && __INPUT_ON_LINUX)))
             {
                 //Search last-to-first on platforms with low-index virtual controllers (Steam Input, ViGEm)
                 _sort_order = -1;

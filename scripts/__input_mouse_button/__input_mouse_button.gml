@@ -16,7 +16,7 @@ function __input_mouse_button()
             return mb_left;
         }
     }
-    else if (__INPUT_ON_DESKTOP && !__INPUT_ON_WEB)
+    else if (INPUT_ON_PC && !INPUT_ON_WEB)
     {
         //Desktop native
         if (mouse_button != mb_none)

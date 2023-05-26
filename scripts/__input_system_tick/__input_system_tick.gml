@@ -96,7 +96,7 @@ function __input_system_tick()
     
     #region Window focus
     
-    if (__INPUT_ON_DESKTOP && !__INPUT_ON_WEB)
+    if (INPUT_ON_PC && !INPUT_ON_WEB)
     {
         if (os_is_paused())
         {
@@ -340,7 +340,7 @@ function __input_system_tick()
     if (_global.__keyboard_allowed && keyboard_check(vk_anykey))
     {
         var _platform = os_type;
-        if (__INPUT_ON_WEB && __INPUT_ON_APPLE) _platform = "apple_web";
+        if (INPUT_ON_WEB && __INPUT_ON_APPLE) _platform = "apple_web";
 
         switch (_platform)
         {
