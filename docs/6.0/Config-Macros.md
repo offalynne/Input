@@ -8,7 +8,23 @@
 
 |Name                        |Typical Value              |Purpose                                                                                           |
 |----------------------------|---------------------------|--------------------------------------------------------------------------------------------------|
-|`INPUT_ALLOW_OUT_OF_FOCUS`  |`false`                    |Whether to allow input while game window is out of focus on desktop platforms                     |
+|`INPUT_PC_KEYBOARD`         |`true`                     | Whether to enable keyboard support on Windows, MacOS, Linux, Steam Deck, desktop browser         |
+|`INPUT_PC_MOUSE`            |`true`                     | Whether to enable mouse support on Windows, MacOS, Linux, Steam Deck, desktop browser            |
+|`INPUT_PC_GAMEPAD`          |`true`                     | Whether to enable gamepad support on Windows, MacOS, Linux, Steam Deck, desktop browser          |
+|`INPUT_WINDOWS_TOUCH`       |`false`                    | Whether to enable touch support on Windows (including Steam Deck via Proton)                     |
+|`INPUT_WINDOWS_VIBRATION`   |`true`                     | Whether to enable gamepad vibration support on Windows (XInput and Steam)                        |
+|`INPUT_MOBILE_GAMEPAD`      |`true`                     | Whether to enable keyboard support on Android, iOS, iPadOS, tvOS, mobile browser                 |
+|`INPUT_MOBILE_MOUSE`        |`false`                    | Whether to map touch to mouse on Android, iOS, iPadOS, tvOS, mobile browser                      |
+|`INPUT_MOBILE_WEB_KEYBOARD` |`false`                    | Whether to enable (partial) keyboard support on mobile browser                                   |
+|`INPUT_ANDROID_KEYBOARD`    |`false`                    | Whether to enable (partial) keyboard support on Android                                          |
+|`INPUT_SWITCH_KEYBOARD`     |`false`                    | Whether to enable (partial) keyboard support on Switch                                           |
+|`INPUT_SWITCH_MOUSE`        |`false`                    | Whether to map handheld touchscreen to mouse on Switch                                           |
+|`INPUT_SWITCH_TOUCH`        |`false`                    | Whether to enable touch support on Switch handheld                                               |
+|`INPUT_SWITCH_VIBRATION`    |`true`                     | Whether to enable legacy vibration support on Switch (simulated with HD Rumble)                  |
+|`INPUT_PS_MOUSE`            |`false`                    | Whether to enable (partial) mouse support on PS4 and PS5 (first player touchpad)                 |
+|`INPUT_PS4_VIBRATION`       |`true`                     | Whether to enable gamepad vibration support on PS4                                               |
+|`INPUT_PS5_VIBRATION`       |`true`                     | Whether to enable legacy vibration support on PS5 (simulated with DualSense haptics)             |
+|`INPUT_ALLOW_OUT_OF_FOCUS`  |`false`                    | Whether to allow input while game window is out of focus on desktop platforms                    |
 |`INPUT_TIMER_MILLISECONDS`  |`false`                    |Set to `true` to use milliseconds instead of frames for many functions and behaviours inside Input|
 |`INPUT_ALLOW_STEAMWORKS `   |`true`                     |Whether to allow using Steamworks extension when available. See [Steamworks](Steamworks)          |
 |`INPUT_BINDING_SCAN_TIMEOUT`|`10000`                    |Time (in milliseconds) to wait for a new binding before automatically cancelling the binding scan |
@@ -150,10 +166,6 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 
 |Name                                 |Typical Value|Purpose                                                                                                                                                                                                  |
 |-------------------------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`INPUT_WINDOWS_TOUCH_ALLOWED`        |`true`       |Whether to allow touch on Windows (including Steam Deck via Proton)                                                                                                                                      |
-|`INPUT_WINDOWS_TOUCH_PRIMARY`        |`false`      |Whether to allow ONLY touch on Windows (including Steam Deck via Proton)                                                                                                                                 |
-|`INPUT_SWITCH_TOUCHSCREEN_ALLOWED`   |`false`      |Whether to use touchscreen on Switch platform                                                                                                                                                            |
-|`INPUT_TOUCHSCREEN_USES_MOUSE_SOURCE`|`false`      |If touch input (mobile + Switch) should be treated as mouse input                                                                                                                                        |
 |`INPUT_MAX_TOUCHPOINTS`              |`11`         |Maximum number of touch screen points to query. This applies to touch screen devices only (excludes PlayStation)                                                                                         |
 |`INPUT_TOUCH_EDGE_DEADZONE`          |`35`         |Margin in pixels around the screen edge where gaining or losing a touch point will not register "pressed" or "released". Prevents false positives when dragging on to or off of the edge of a touchscreen|
 |`INPUT_TOUCH_HISTORY_FRAMES`         |`10`         |How many frames of history to record for button that have the feature turned on                                                                                                                          |
@@ -203,9 +215,6 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 
 |Name                                   |Typical Value|Purpose                                                                                                                                                                                                     |
 |---------------------------------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`INPUT_VIBRATION_ALLOWED`              |`true`       |Whether vibration should be allowed at all, often useful when debugging                                                                                                                                     |
-|`INPUT_PS5_USE_LEGACY_VIBRATION`       |`true`       |Whether to enable PS4-style rumble features on PS5 platform. Enables Input's cross-platform rumble implementation on PS5                                                                                    |
-|`INPUT_SWITCH_USE_LEGACY_VIBRATION`    |`true`       |Whether to enable legacy rumble features on Switch controllers. Enables Input's cross-platform rumble implementation on Switch                                                                              |
 |`INPUT_VIBRATION_DEFAULT_STRENGTH`     |`1.0`        |The default vibration strength. This value can be changed later by using [`input_vibrate_set_strength()`](Functions-(Vibration)?id=input_vibrate_set_strengthstrength-playerindex)                          |
 |`INPUT_VIBRATION_JOYCON_STRENGTH`      |`0.4`        |Joy-Con vibration motors can be a bit, uh, intense. This value allows you to reduce the strength of vibration relative to other platforms                                                                   |
 |`INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH`|`1.0`        |The default PS5 trigger effect strength. This value can be changed later by using [`input_trigger_effect__set_strength()`](Functions-(Trigger-Effects)?id=input_trigger_effect_set_strengthstrength-playerindex)|
