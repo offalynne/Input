@@ -217,7 +217,7 @@ The struct returned by the function contains the following member variables:
 |----|--------|-------|
 |`[virtualKeyboardType]`|[Virtual Keyboard Type Constant](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Virtual_Keys_And_Keyboards/keyboard_virtual_show.htm)|Virtual keyboard type to display|
 
-Shows the onscreen virtual keyboard on mobile platforms and SteamOS with the [Steamworks extension](Steamworks.md)
+Shows the onscreen virtual keyboard on mobile platforms and SteamOS with the [Steamworks extension](Steamworks.md). On consoles, [`get_string_async()`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Asynchronous_Functions/Dialog/get_string_async.htm) should be used, instead. 
 
 ?> For further configuration of the onscreen keyboard see [Touch macros](Config-Macros.md#touch)
 
