@@ -67,7 +67,7 @@ The `INPUT_BINDING_SCAN_EVENT` enum is used by the failure callback for [`input_
 |`.PLAYER_IS_GHOST`   |Player is a ghost and cannot receive hardware input                                                                                                                          |
 |`.SCAN_TIMEOUT`      |Either the player didn't enter a new binding or a stuck key prevented the system from working. The timeout period is defined by [`INPUT_BINDING_SCAN_TIMEOUT`](Configuration)|
 |`.LOST_FOCUS`        |The application lost focus                                                                                                                                                   |
-|`.PLAYER_DISCONNECTED`        |The player disconnected                                                                                                                                                   |
+|`.PLAYER_DISCONNECTED`|The player disconnected                                                                                                                                                     |
 |`.ABORTED`           |Binding scan was aborted early due to `input_binding_scan_abort()` being called                                                                                              |
 
 &nbsp;
@@ -122,8 +122,22 @@ GameMaker is missing a few keyboard characters from its set of native constants.
 |`vk_apostrophe`|`vk_period`   |
 
 !> As extended keyboard constant values are relative to platform and OS, they can not be used as case statements within switch statements.
+&nbsp;
+
+## Platform Constants
+
+The following constants indicate the runtime platform category.
+
+|Name                 |Purpose                                                                                             |
+|---------------------|----------------------------------------------------------------------------------------------------|
+|`INPUT_ON_MOBILE`    |Whether the current platform is Android, iOS, or tvOS including mobile web browser                  |
+|`INPUT_ON_PC`        |Whether the current platform is Windows, MacOS, or Linux including Steam Deck and PC web browser    |
+|`INPUT_ON_STEAM_DECK`|Whether the current platform is the Steam Deck                                                      |
+|`INPUT_ON_CONSOLE`   |Whether the current platform is PlayStation, Xbox, or Switch console                                |
+|`INPUT_ON_WEB`       |Whether the current platform is HTML5 or OperaGX                                                    |
 
 &nbsp;
+
 
 ## `INPUT_KEYBOARD_LOCALE`
 
@@ -173,7 +187,7 @@ This macro is set to a string indicating the current platform's pointer type as 
 
 The `INPUT_GYRO` enum contains the following members used by the [gamepad motion functions](Functions-(Motion)) to configure the axis used to control the player cursor. Meaning descriptions assume a neutral position of device resting on a flat surface. See [gamepad motion functions](Functions-(Motion)) for illustrative figure.
 
-|Name         |Meaning                                              |
+|Name         |Purpose                                              |
 |-------------|-----------------------------------------------------|
 |`.AXIS_PITCH`|Gamepad tilted upward from floor to ceiling          |
 |`.AXIS_YAW`  |Gamepad tilted rightward from left shoulder to right |
@@ -185,7 +199,7 @@ The `INPUT_GYRO` enum contains the following members used by the [gamepad motion
 
 The `INPUT_TRIGGER_STATE` enum contains the following members returned by [`input_trigger_effect_get_state()`](Functions-(Trigger-Effects)?id=input_trigger_effect_get_state).
 
-|Name                       |Meaning                                                 |
+|Name                       |Purpose                                                 |
 |---------------------------|--------------------------------------------------------|
 |`.EFFECT_OFF`              |No trigger effect                                       |
 |`.EFFECT_FEEDBACK_STANDBY` |Trigger position below range for feedback effect        |
