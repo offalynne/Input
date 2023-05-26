@@ -74,7 +74,7 @@ function __input_initialize()
                     }
                 }
                 
-                instance_create_depth(0, 0, 0, input_controller_object);
+                instance_create_depth(0, 0, __INPUT_CONTROLLER_OBJECT_DEPTH, input_controller_object);
                 __input_restart_set(false);
             }
         }
@@ -92,6 +92,22 @@ function __input_initialize()
                 //Be nice when in production <:)
                 __input_trace("Warning! input_controller_object has been set as non-persistent. Please ensure that input_controller_object is always persistent");
                 input_controller_object.persistent = true;
+            }
+        }
+        
+        //Detect if the controller object depth has been set
+        if (input_controller_object.depth != __INPUT_CONTROLLER_OBJECT_DEPTH)
+        {
+            if (GM_build_type == "run")
+            {
+                //Be nasty when running from the IDE >:(
+                __input_error("input_controller_object depth has been changed (expected ", __INPUT_CONTROLLER_OBJECT_DEPTH, ", got ", input_controller_object.depth ,")\nPlease ensure that input_controller_object depth is not set");
+            }
+            else
+            {
+                //Be nice when in production <:)
+                __input_trace("Warning! input_controller_object depth has been changed (expected ", __INPUT_CONTROLLER_OBJECT_DEPTH, ", got ", input_controller_object.depth ,")\nPlease ensure that input_controller_object depth is not set");
+                input_controller_object.depth = __INPUT_CONTROLLER_OBJECT_DEPTH;
             }
         }
     }, [], -1);
