@@ -190,7 +190,59 @@ The struct returned by the function contains the following member variables:
 |`.pattern`  |array   |An array of variable size with boolean values representing LED state, `<false>` for off, `<true>` for on|
 |`.layout`   |string  |The directional layout of the LED array. `"vertical"`, `"horizontal"`, `"radial"`, or `"unknown"`|
 
-!> This function works on Switch and PS5 platforms, as well as on Windows and iOS for select gamepads 
+!> This function works on Switch and PS5 platforms, as well as on Windows, iOS and tvOS for select gamepads 
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
+
+&nbsp;
+
+## …_keyboard_virtual_show
+
+`input_keyboard_virtual_show([virtualKeyboardType])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|`[virtualKeyboardType]`|[Virtual Keyboard Type Constant](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Virtual_Keys_And_Keyboards/keyboard_virtual_show.htm)|Virtual keyboard type to display|
+
+Shows the onscreen virtual keyboard on mobile platforms and SteamOS with the [Steamworks extension](Steamworks.md)
+
+?> For further configuration of the onscreen keyboard see [Touch macros](Config-Macros.md#touch)
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
+
+&nbsp;
+
+## …_keyboard_virtual_hide
+
+`input_keyboard_virtual_hide()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+Hides the onscreen virtual keyboard on mobile platforms and SteamOS with the [Steamworks extension](Steamworks.md)
 
 #### **Example**
 
