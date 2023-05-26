@@ -13,7 +13,7 @@
 |`INPUT_PC_GAMEPAD`          |`true`                     | Whether to enable gamepad support on Windows, MacOS, Linux, Steam Deck, desktop browser          |
 |`INPUT_WINDOWS_TOUCH`       |`false`                    | Whether to enable touch support on Windows (including Steam Deck via Proton)                     |
 |`INPUT_WINDOWS_VIBRATION`   |`true`                     | Whether to enable gamepad vibration support on Windows (XInput and Steam)                        |
-|`INPUT_MOBILE_GAMEPAD`      |`true`                     | Whether to enable keyboard support on Android, iOS, iPadOS, tvOS, mobile browser                 |
+|`INPUT_MOBILE_GAMEPAD`      |`true`                     | Whether to enable gamepad support on Android, iOS, iPadOS, tvOS, mobile browser                  |
 |`INPUT_MOBILE_MOUSE`        |`false`                    | Whether to map touch to mouse on Android, iOS, iPadOS, tvOS, mobile browser                      |
 |`INPUT_MOBILE_WEB_KEYBOARD` |`false`                    | Whether to enable (partial) keyboard support on mobile browser                                   |
 |`INPUT_ANDROID_KEYBOARD`    |`false`                    | Whether to enable (partial) keyboard support on Android                                          |
