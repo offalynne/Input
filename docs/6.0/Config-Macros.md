@@ -8,23 +8,23 @@
 
 |Name                        |Typical Value              |Purpose                                                                                           |
 |----------------------------|---------------------------|--------------------------------------------------------------------------------------------------|
-|`INPUT_PC_KEYBOARD`         |`true`                     | Whether to enable keyboard support on Windows, MacOS, Linux, Steam Deck, desktop browser         |
-|`INPUT_PC_MOUSE`            |`true`                     | Whether to enable mouse support on Windows, MacOS, Linux, Steam Deck, desktop browser            |
-|`INPUT_PC_GAMEPAD`          |`true`                     | Whether to enable gamepad support on Windows, MacOS, Linux, Steam Deck, desktop browser          |
-|`INPUT_WINDOWS_TOUCH`       |`false`                    | Whether to enable touch support on Windows (including Steam Deck via Proton)                     |
-|`INPUT_WINDOWS_VIBRATION`   |`true`                     | Whether to enable gamepad vibration support on Windows (XInput and Steam)                        |
-|`INPUT_MOBILE_GAMEPAD`      |`true`                     | Whether to enable gamepad support on Android, iOS, iPadOS, tvOS, mobile browser                  |
-|`INPUT_MOBILE_MOUSE`        |`false`                    | Whether to map touch to mouse on Android, iOS, iPadOS, tvOS, mobile browser                      |
-|`INPUT_MOBILE_WEB_KEYBOARD` |`false`                    | Whether to enable (partial) keyboard support on mobile browser                                   |
-|`INPUT_ANDROID_KEYBOARD`    |`false`                    | Whether to enable (partial) keyboard support on Android                                          |
-|`INPUT_SWITCH_KEYBOARD`     |`false`                    | Whether to enable (partial) keyboard support on Switch                                           |
-|`INPUT_SWITCH_MOUSE`        |`false`                    | Whether to map handheld touchscreen to mouse on Switch                                           |
-|`INPUT_SWITCH_TOUCH`        |`false`                    | Whether to enable touch support on Switch handheld                                               |
-|`INPUT_SWITCH_VIBRATION`    |`true`                     | Whether to enable legacy vibration support on Switch (simulated with HD Rumble)                  |
-|`INPUT_PS_MOUSE`            |`false`                    | Whether to enable (partial) mouse support on PS4 and PS5 (first player touchpad)                 |
-|`INPUT_PS4_VIBRATION`       |`true`                     | Whether to enable gamepad vibration support on PS4                                               |
-|`INPUT_PS5_VIBRATION`       |`true`                     | Whether to enable legacy vibration support on PS5 (simulated with DualSense haptics)             |
-|`INPUT_ALLOW_OUT_OF_FOCUS`  |`false`                    | Whether to allow input while game window is out of focus on desktop platforms                    |
+|`INPUT_PC_KEYBOARD`         |`true`                     |Whether to enable keyboard support on Windows, MacOS, Linux, Steam Deck, desktop browser          |
+|`INPUT_PC_MOUSE`            |`true`                     |Whether to enable mouse support on Windows, MacOS, Linux, Steam Deck, desktop browser             |
+|`INPUT_PC_GAMEPAD`          |`true`                     |Whether to enable gamepad support on Windows, MacOS, Linux, Steam Deck, desktop browser           |
+|`INPUT_WINDOWS_TOUCH`       |`false`                    |Whether to enable touch support on Windows (including Steam Deck via Proton)                      |
+|`INPUT_WINDOWS_VIBRATION`   |`true`                     |Whether to enable gamepad vibration support on Windows (XInput and Steam)                         |
+|`INPUT_MOBILE_GAMEPAD`      |`true`                     |Whether to enable gamepad support on Android, iOS, iPadOS, tvOS, mobile browser                   |
+|`INPUT_MOBILE_MOUSE`        |`false`                    |Whether to map touch to mouse on Android, iOS, iPadOS, tvOS, mobile browser                       |
+|`INPUT_MOBILE_WEB_KEYBOARD` |`false`                    |Whether to enable (partial) keyboard support on mobile browser                                    |
+|`INPUT_ANDROID_KEYBOARD`    |`false`                    |Whether to enable (partial) keyboard support on Android                                           |
+|`INPUT_SWITCH_KEYBOARD`     |`false`                    |Whether to enable (partial) keyboard support on Switch                                            |
+|`INPUT_SWITCH_MOUSE`        |`false`                    |Whether to map handheld touchscreen to mouse on Switch                                            |
+|`INPUT_SWITCH_TOUCH`        |`false`                    |Whether to enable touch support on Switch handheld                                                |
+|`INPUT_SWITCH_VIBRATION`    |`true`                     |Whether to enable legacy vibration support on Switch (simulated with HD Rumble)                   |
+|`INPUT_PS_MOUSE`            |`false`                    |Whether to enable (partial) mouse support on PS4 and PS5 (first player touchpad)                  |
+|`INPUT_PS4_VIBRATION`       |`true`                     |Whether to enable gamepad vibration support on PS4                                                |
+|`INPUT_PS5_VIBRATION`       |`true`                     |Whether to enable legacy vibration support on PS5 (simulated with DualSense haptics)              |
+|`INPUT_ALLOW_OUT_OF_FOCUS`  |`false`                    |Whether to allow input while game window is out of focus on desktop platforms                     |
 |`INPUT_TIMER_MILLISECONDS`  |`false`                    |Set to `true` to use milliseconds instead of frames for many functions and behaviours inside Input|
 |`INPUT_ALLOW_STEAMWORKS `   |`true`                     |Whether to allow using Steamworks extension when available. See [Steamworks](Steamworks)          |
 |`INPUT_BINDING_SCAN_TIMEOUT`|`10000`                    |Time (in milliseconds) to wait for a new binding before automatically cancelling the binding scan |
