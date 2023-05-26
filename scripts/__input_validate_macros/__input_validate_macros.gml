@@ -372,22 +372,7 @@ function __input_validate_macros()
     {
         __input_error("INPUT_TOUCH_EDGE_DEADZONE must be a number that is greater than or equal to 0");
     }
-    
-    if (!is_bool(INPUT_SWITCH_TOUCH))
-    {
-        __input_error("INPUT_SWITCH_TOUCH must be either <true> or <false>");
-    }
-    
-    if (!is_bool(INPUT_WINDOWS_TOUCH))
-    {
-        __input_error("INPUT_WINDOWS_TOUCH must be either <true> or <false>");
-    }
-    
-    if (!is_bool(INPUT_PS_TOUCHPAD_ALLOWED))
-    {
-        __input_error("INPUT_PS_TOUCHPAD_ALLOWED must be either <true> or <false>");
-    }
-    
+        
     if (!is_numeric(INPUT_TOUCH_HISTORY_FRAMES) || (floor(INPUT_TOUCH_HISTORY_FRAMES) != INPUT_TOUCH_HISTORY_FRAMES) || (INPUT_TOUCH_HISTORY_FRAMES < 1))
     {
         __input_error("INPUT_TOUCH_HISTORY_FRAMES must be an integer that is greater than or equal to 1");
@@ -401,6 +386,19 @@ function __input_validate_macros()
     if (!is_numeric(INPUT_VIRTUAL_BUTTON_MAX_THRESHOLD) || (INPUT_VIRTUAL_BUTTON_MAX_THRESHOLD < 0) || (INPUT_VIRTUAL_BUTTON_MAX_THRESHOLD < INPUT_VIRTUAL_BUTTON_MIN_THRESHOLD))
     {
         __input_error("INPUT_VIRTUAL_BUTTON_MAX_THRESHOLD must be a number greater than or equal to 0, and greater than INPUT_VIRTUAL_BUTTON_MIN_THRESHOLD");
+    }
+    
+    if (!is_bool(INPUT_VIRTUAL_KEYBOARD_PREDICTIVE_TEXT_ENABLED))
+    {
+        __input_error("INPUT_VIRTUAL_KEYBOARD_PREDICTIVE_TEXT_ENABLED must be either <true> or <false>");
+    }
+    
+    if ((INPUT_VIRTUAL_KEYBOARD_AUTOCAPITALIZATION_TYPE != kbv_autocapitalize_none)
+    &&  (INPUT_VIRTUAL_KEYBOARD_AUTOCAPITALIZATION_TYPE != kbv_autocapitalize_words)
+    &&  (INPUT_VIRTUAL_KEYBOARD_AUTOCAPITALIZATION_TYPE != kbv_autocapitalize_sentences)
+    &&  (INPUT_VIRTUAL_KEYBOARD_AUTOCAPITALIZATION_TYPE != kbv_autocapitalize_characters))
+    {
+    	__input_error("INPUT_VIRTUAL_KEYBOARD_AUTOCAPITALIZATION_TYPE must be a virtual keyboard autocapitalization type constant");
     }
     
     #endregion

@@ -14,3 +14,7 @@
 //These values are measured in pixels in GUI-space
 #macro INPUT_VIRTUAL_BUTTON_MIN_THRESHOLD   50
 #macro INPUT_VIRTUAL_BUTTON_MAX_THRESHOLD  100
+
+//Default virtual (onscreen) keyboard settings for mobile
+#macro INPUT_VIRTUAL_KEYBOARD_AUTOCAPITALIZATION_TYPE  kbv_autocapitalize_sentences
+#macro INPUT_VIRTUAL_KEYBOARD_PREDICTIVE_TEXT_ENABLED  false
