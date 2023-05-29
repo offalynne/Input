@@ -12,7 +12,8 @@ function __input_hotswap_tick()
             return false;
         }
         
-        if ((__last_input_time < 0) || (_global.__current_time - __last_input_time > INPUT_HOTSWAP_DELAY)) //If enough time has passed since the last input
+        if (_global.__window_focus || INPUT_ALLOW_OUT_OF_FOCUS) //Application input is allowed
+        && ((__last_input_time < 0) || (_global.__current_time - __last_input_time > INPUT_HOTSWAP_DELAY)) //And enough time has passed since the last input
         && ((__rebind_state <= 0) || !is_array(__rebind_source_filter) || (array_length(__rebind_source_filter) <= 0)) //And we're not rebinding, or the rebinding source filter is empty
         {
             var _new_source = __input_hotswap_tick_input();
@@ -45,6 +46,7 @@ function __input_hotswap_tick_input()
     //Check gamepad input before keyboard input to correctly handle Android duplicating button presses with keyboard presses
     if (_global.__any_gamepad_binding_defined)
     {
+        var _player = _global.__players[0];
         var _gamepad_count = array_length(INPUT_GAMEPAD);
         var _g = 0;
         
@@ -52,25 +54,26 @@ function __input_hotswap_tick_input()
         
         repeat(_gamepad_count)
         {
-            if (gamepad_is_connected(_g) && input_source_using(INPUT_GAMEPAD[_g]))
-            {                    
+            var _gamepad = _global.__gamepads[_g]
+            if (is_struct(_gamepad) && gamepad_is_connected(_g) && input_source_using(INPUT_GAMEPAD[_g]))
+            {
                 //Check buttons
-                if (input_gamepad_check(_g, gp_face1)
-                ||  input_gamepad_check(_g, gp_face2)
-                ||  input_gamepad_check(_g, gp_face3)
-                ||  input_gamepad_check(_g, gp_face4)
-                ||  input_gamepad_check(_g, gp_padu)
-                ||  input_gamepad_check(_g, gp_padd)
-                ||  input_gamepad_check(_g, gp_padl)
-                ||  input_gamepad_check(_g, gp_padr)
-                ||  input_gamepad_check(_g, gp_shoulderl)
-                ||  input_gamepad_check(_g, gp_shoulderr)
-                ||  input_gamepad_check(_g, gp_start)
-                ||  input_gamepad_check(_g, gp_select)
-                ||  input_gamepad_check(_g, gp_stickl)
-                ||  input_gamepad_check(_g, gp_stickr)
-                ||  (!input_gamepad_is_axis(_g, gp_shoulderlb) && input_gamepad_check(_g, gp_shoulderlb))
-                ||  (!input_gamepad_is_axis(_g, gp_shoulderrb) && input_gamepad_check(_g, gp_shoulderrb)))
+                if (_gamepad.get_held(gp_face1)
+                ||  _gamepad.get_held(gp_face2)
+                ||  _gamepad.get_held(gp_face3)
+                ||  _gamepad.get_held(gp_face4)
+                ||  _gamepad.get_held(gp_padu)
+                ||  _gamepad.get_held(gp_padd)
+                ||  _gamepad.get_held(gp_padl)
+                ||  _gamepad.get_held(gp_padr)
+                ||  _gamepad.get_held(gp_shoulderl)
+                ||  _gamepad.get_held(gp_shoulderr)
+                ||  _gamepad.get_held(gp_start)
+                ||  _gamepad.get_held(gp_select)
+                ||  _gamepad.get_held(gp_stickl)
+                ||  _gamepad.get_held(gp_stickr)
+                ||  (!_gamepad.is_axis(gp_shoulderlb) && _gamepad.get_held(gp_shoulderlb))
+                ||  (!_gamepad.is_axis(gp_shoulderrb) && _gamepad.get_held(gp_shoulderrb)))
                 {
                     break;
                 }
@@ -78,13 +81,13 @@ function __input_hotswap_tick_input()
                 //Check axes
                 if (INPUT_HOTSWAP_ON_GAMEPAD_AXIS)
                 {
-                    if ((abs(input_gamepad_value(_g, gp_shoulderlb)) > input_axis_threshold_get(gp_shoulderlb, 0).mini)
-                    ||  (abs(input_gamepad_value(_g, gp_shoulderrb)) > input_axis_threshold_get(gp_shoulderrb, 0).mini)
-                    ||  (abs(input_gamepad_value(_g, gp_axislv    )) > input_axis_threshold_get(gp_axislv, 0).mini)
-                    ||  (abs(input_gamepad_value(_g, gp_axislh    )) > input_axis_threshold_get(gp_axislh, 0).mini)
-                    ||  (abs(input_gamepad_value(_g, gp_axislv    )) > input_axis_threshold_get(gp_axislv, 0).mini)
-                    ||  (abs(input_gamepad_value(_g, gp_axisrh    )) > input_axis_threshold_get(gp_axisrh, 0).mini)
-                    ||  (abs(input_gamepad_value(_g, gp_axisrv    )) > input_axis_threshold_get(gp_axisrv, 0).mini))
+                    if ((abs(_gamepad.get_value(gp_shoulderlb)) > _player.__axis_threshold_get(gp_shoulderlb, 0).mini)
+                    ||  (abs(_gamepad.get_value(gp_shoulderrb)) > _player.__axis_threshold_get(gp_shoulderrb, 0).mini)
+                    ||  (abs(_gamepad.get_value(gp_axislv    )) > _player.__axis_threshold_get(gp_axislv, 0).mini)
+                    ||  (abs(_gamepad.get_value(gp_axislh    )) > _player.__axis_threshold_get(gp_axislh, 0).mini)
+                    ||  (abs(_gamepad.get_value(gp_axislv    )) > _player.__axis_threshold_get(gp_axislv, 0).mini)
+                    ||  (abs(_gamepad.get_value(gp_axisrh    )) > _player.__axis_threshold_get(gp_axisrh, 0).mini)
+                    ||  (abs(_gamepad.get_value(gp_axisrv    )) > _player.__axis_threshold_get(gp_axisrv, 0).mini))
                     {
                         break;
                     }
@@ -93,13 +96,13 @@ function __input_hotswap_tick_input()
                 //Check extended
                 if (INPUT_SDL2_ALLOW_EXTENDED)
                 {
-                    if (input_gamepad_check(_g, gp_guide)
-                    ||  input_gamepad_check(_g, gp_misc1)
-                    ||  input_gamepad_check(_g, gp_touchpad)
-                    ||  input_gamepad_check(_g, gp_paddle1)
-                    ||  input_gamepad_check(_g, gp_paddle2)
-                    ||  input_gamepad_check(_g, gp_paddle3)
-                    ||  input_gamepad_check(_g, gp_paddle4))
+                    if (_gamepad.get_held(gp_guide)
+                    ||  _gamepad.get_held(gp_misc1)
+                    ||  _gamepad.get_held(gp_touchpad)
+                    ||  _gamepad.get_held(gp_paddle1)
+                    ||  _gamepad.get_held(gp_paddle2)
+                    ||  _gamepad.get_held(gp_paddle3)
+                    ||  _gamepad.get_held(gp_paddle4))
                     {
                         break;
                     }
@@ -114,7 +117,7 @@ function __input_hotswap_tick_input()
         if (_g < _gamepad_count)
         {
             //Maintain in-use gamepad
-            _global.__players[0].__last_input_time = _global.__current_time;
+            _player.__last_input_time = _global.__current_time;
             return INPUT_GAMEPAD[_g];
         }
         else if not (_global.__frame - _global.__window_focus_frame < 2) //Prevent resting axes from triggering source swap
@@ -134,59 +137,63 @@ function __input_hotswap_tick_input()
                         
             repeat(_gamepad_count)
             {
-                if (gamepad_is_connected(_g) && input_source_is_available(INPUT_GAMEPAD[_g]))
-                { 
-                    //Check buttons
-                    if (input_gamepad_check_pressed(_g, gp_face1)
-                    ||  input_gamepad_check_pressed(_g, gp_face2)
-                    ||  input_gamepad_check_pressed(_g, gp_face3)
-                    ||  input_gamepad_check_pressed(_g, gp_face4)
-                    ||  input_gamepad_check_pressed(_g, gp_shoulderl)
-                    ||  input_gamepad_check_pressed(_g, gp_shoulderr)
-                    ||  input_gamepad_check_pressed(_g, gp_start)
-                    ||  input_gamepad_check_pressed(_g, gp_select)
-                    ||  input_gamepad_check_pressed(_g, gp_stickl)
-                    ||  input_gamepad_check_pressed(_g, gp_stickr)
-                    ||  (input_gamepad_check_pressed(_g, gp_padu) && (input_gamepad_delta(_g, gp_padu) != 0))
-                    ||  (input_gamepad_check_pressed(_g, gp_padd) && (input_gamepad_delta(_g, gp_padd) != 0))
-                    ||  (input_gamepad_check_pressed(_g, gp_padl) && (input_gamepad_delta(_g, gp_padl) != 0))
-                    ||  (input_gamepad_check_pressed(_g, gp_padr) && (input_gamepad_delta(_g, gp_padr) != 0))
-                    ||  (!input_gamepad_is_axis(_g, gp_shoulderlb) && input_gamepad_check_pressed(_g, gp_shoulderlb))
-                    ||  (!input_gamepad_is_axis(_g, gp_shoulderrb) && input_gamepad_check_pressed(_g, gp_shoulderrb)))
+                var _gamepad = _global.__gamepads[_g];
+                if (is_struct(_gamepad) && gamepad_is_connected(_g) && input_source_is_available(INPUT_GAMEPAD[_g]))
+                {
+                    with (_gamepad)
                     {
-                            if (__INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_GAMEPAD[_g]);
-                            return INPUT_GAMEPAD[_g];
-                    }
-                    
-                    //Check axes
-                    if  (INPUT_HOTSWAP_ON_GAMEPAD_AXIS)
-                    {
-                        if (((abs(input_gamepad_value(_g, gp_shoulderlb)) > input_axis_threshold_get(gp_shoulderlb).mini) && (abs(input_gamepad_delta(_g, gp_shoulderlb)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
-                        ||  ((abs(input_gamepad_value(_g, gp_shoulderrb)) > input_axis_threshold_get(gp_shoulderrb).mini) && (abs(input_gamepad_delta(_g, gp_shoulderrb)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
-                        ||  ((abs(input_gamepad_value(_g, gp_axislv    )) > input_axis_threshold_get(gp_axislv    ).mini) && (abs(input_gamepad_delta(_g, gp_axislv    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
-                        ||  ((abs(input_gamepad_value(_g, gp_axislh    )) > input_axis_threshold_get(gp_axislh    ).mini) && (abs(input_gamepad_delta(_g, gp_axislh    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
-                        ||  ((abs(input_gamepad_value(_g, gp_axislv    )) > input_axis_threshold_get(gp_axislv    ).mini) && (abs(input_gamepad_delta(_g, gp_axislv    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
-                        ||  ((abs(input_gamepad_value(_g, gp_axisrh    )) > input_axis_threshold_get(gp_axisrh    ).mini) && (abs(input_gamepad_delta(_g, gp_axisrh    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
-                        ||  ((abs(input_gamepad_value(_g, gp_axisrv    )) > input_axis_threshold_get(gp_axisrv    ).mini) && (abs(input_gamepad_delta(_g, gp_axisrv    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD)))
+                        //Check buttons
+                        if (get_pressed(gp_face1)
+                        ||  get_pressed(gp_face2)
+                        ||  get_pressed(gp_face3)
+                        ||  get_pressed(gp_face4)
+                        ||  get_pressed(gp_shoulderl)
+                        ||  get_pressed(gp_shoulderr)
+                        ||  get_pressed(gp_start)
+                        ||  get_pressed(gp_select)
+                        ||  get_pressed(gp_stickl)
+                        ||  get_pressed(gp_stickr)
+                        ||  (get_pressed(gp_padu) && (get_delta(gp_padu) != 0))
+                        ||  (get_pressed(gp_padd) && (get_delta(gp_padd) != 0))
+                        ||  (get_pressed(gp_padl) && (get_delta(gp_padl) != 0))
+                        ||  (get_pressed(gp_padr) && (get_delta(gp_padr) != 0))
+                        ||  (!is_axis(gp_shoulderlb) && get_pressed(gp_shoulderlb))
+                        ||  (!is_axis(gp_shoulderrb) && get_pressed(gp_shoulderrb)))
                         {
-                            if (__INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_GAMEPAD[_g]);
-                            return INPUT_GAMEPAD[_g];
+                                if (__INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_GAMEPAD[_g]);
+                                return INPUT_GAMEPAD[_g];
                         }
-                    }
                     
-                    //Check extended
-                    if (INPUT_SDL2_ALLOW_EXTENDED)
-                    {
-                        if (input_gamepad_check_pressed(_g, gp_guide)
-                        ||  input_gamepad_check_pressed(_g, gp_misc1)
-                        ||  input_gamepad_check_pressed(_g, gp_touchpad)
-                        ||  input_gamepad_check_pressed(_g, gp_paddle1)
-                        ||  input_gamepad_check_pressed(_g, gp_paddle2)
-                        ||  input_gamepad_check_pressed(_g, gp_paddle3)
-                        ||  input_gamepad_check_pressed(_g, gp_paddle4))
+                        //Check axes
+                        if  (INPUT_HOTSWAP_ON_GAMEPAD_AXIS)
                         {
-                            if (__INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_GAMEPAD[_g]);
-                            return INPUT_GAMEPAD[_g];
+                            if (((abs(get_value(gp_shoulderlb)) > _player.__axis_threshold_get(gp_shoulderlb).mini) && (abs(get_delta(gp_shoulderlb)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+                            ||  ((abs(get_value(gp_shoulderrb)) > _player.__axis_threshold_get(gp_shoulderrb).mini) && (abs(get_delta(gp_shoulderrb)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+                            ||  ((abs(get_value(gp_axislv    )) > _player.__axis_threshold_get(gp_axislv    ).mini) && (abs(get_delta(gp_axislv    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+                            ||  ((abs(get_value(gp_axislh    )) > _player.__axis_threshold_get(gp_axislh    ).mini) && (abs(get_delta(gp_axislh    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+                            ||  ((abs(get_value(gp_axislv    )) > _player.__axis_threshold_get(gp_axislv    ).mini) && (abs(get_delta(gp_axislv    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+                            ||  ((abs(get_value(gp_axisrh    )) > _player.__axis_threshold_get(gp_axisrh    ).mini) && (abs(get_delta(gp_axisrh    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+                            ||  ((abs(get_value(gp_axisrv    )) > _player.__axis_threshold_get(gp_axisrv    ).mini) && (abs(get_delta(gp_axisrv    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD)))
+                            {
+                                if (__INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_GAMEPAD[_g]);
+                                return INPUT_GAMEPAD[_g];
+                            }
+                        }
+                    
+                        //Check extended
+                        if (INPUT_SDL2_ALLOW_EXTENDED)
+                        {
+                            if (get_pressed(gp_guide)
+                            ||  get_pressed(gp_misc1)
+                            ||  get_pressed(gp_touchpad)
+                            ||  get_pressed(gp_paddle1)
+                            ||  get_pressed(gp_paddle2)
+                            ||  get_pressed(gp_paddle3)
+                            ||  get_pressed(gp_paddle4))
+                            {
+                                if (__INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_GAMEPAD[_g]);
+                                return INPUT_GAMEPAD[_g];
+                            }
                         }
                     }
                 }
