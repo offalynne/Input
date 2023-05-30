@@ -111,7 +111,6 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_held = function(_gm)
     {
-        if (!INPUT_ALLOW_OUT_OF_FOCUS && !__global.__window_focus) return false;
         if (!custom_mapping) return gamepad_button_check(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
@@ -121,7 +120,6 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_pressed = function(_gm)
     {
-        if (!INPUT_ALLOW_OUT_OF_FOCUS && !__global.__window_focus) return false;
         if (!custom_mapping) return gamepad_button_check_pressed(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
@@ -131,7 +129,6 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_released = function(_gm)
     {
-        if (!INPUT_ALLOW_OUT_OF_FOCUS && !__global.__window_focus) return false;
         if (!custom_mapping) return gamepad_button_check_released(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
@@ -141,7 +138,6 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_value = function(_gm)
     {
-        if (!INPUT_ALLOW_OUT_OF_FOCUS && !__global.__window_focus) return 0.0;
         if (!custom_mapping)
         {
             if ((_gm == gp_axislh) || (_gm == gp_axislv) || (_gm == gp_axisrh) || (_gm == gp_axisrv))
