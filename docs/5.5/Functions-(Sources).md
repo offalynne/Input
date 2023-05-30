@@ -70,15 +70,15 @@ If no source has presented new input this function will return `undefined`.
 
 &nbsp;
 
-## `input_source_share(source, [playerIndex], [autoProfile])`
+## `input_source_share(source, arrayOfPlayerIndexes, [autoProfile])`
 
 *Returns:* N/A (`undefined`)
 
-|Name           |Datatype               |Purpose                                                                                                                                       |
-|---------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-|`source`       |[Source](Input-Sources)|[Input source](Input-Sources) to check                                                                                                        |
-|`[playerIndex]`|integer                |Player to target. If not specified, player 0 is used                                                                                          |
-|`[autoProfile]`|boolean                |Whether to automatically change the player's profile based on [`INPUT_AUTO_PROFILE_FOR_KEYBOARD`](Configuration?id=profiles-and-bindings) etc.|
+|Name                  |Datatype               |Purpose                                                                                                                                       |
+|----------------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+|`source`              |[Source](Input-Sources)|[Input source](Input-Sources) to check                                                                                                        |
+|`arrayOfPlayerIndexes`|array                  |Array of player indexes to target                                                                                                             |
+|`[autoProfile]`       |boolean                |Whether to automatically change the player's profile based on [`INPUT_AUTO_PROFILE_FOR_KEYBOARD`](Configuration?id=profiles-and-bindings) etc.|
 
 &nbsp;
 
