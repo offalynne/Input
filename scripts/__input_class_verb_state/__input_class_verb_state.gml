@@ -87,7 +87,7 @@ function __input_class_verb_state() constructor
         __toggle_value = 0.0;
     }
     
-    static tick = function(_verb_group_state_dict)
+    static tick = function(_verb_group_state_dict, _player_active)
     {
         var _time = __input_get_time();
         var _reset_history_array = false;
@@ -185,7 +185,7 @@ function __input_class_verb_state() constructor
         if (double_held) double_held_time = _time;
         if (long_held) long_held_time = _time;
         
-        var _inactive = (__group_inactive || __consumed);
+        var _inactive = (__group_inactive || __consumed || !_player_active);
         if (_inactive && !__inactive)
         {
             //Newly inactive, better reset the raw history array

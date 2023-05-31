@@ -30,6 +30,7 @@ function input_debug_player_input(_player_index = 0)
         if (array_length(__source_array) <= 0) return _result;
         if (array_length(_source_filter) <= 0) return _result;
         if (__ghost) return _result;
+        if (!__active) return _result;
         if (!__connected) return _result;
         
         var _ignore_struct = __rebind_ignore_struct;

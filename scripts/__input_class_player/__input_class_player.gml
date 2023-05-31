@@ -36,6 +36,7 @@ function __input_class_player() constructor
     __profiles_dict = {};
     __profile_name = undefined;
     
+    __active = true;
     __ghost = false;
     __gamepad_type_override = undefined;
     
@@ -1476,7 +1477,7 @@ function __input_class_player() constructor
         var _v = 0;
         repeat(array_length(__global.__basic_verb_array))
         {
-            __verb_state_dict[$ __global.__basic_verb_array[_v]].tick(__verb_group_state_dict);
+            __verb_state_dict[$ __global.__basic_verb_array[_v]].tick(__verb_group_state_dict, __active);
             ++_v;
         }
     }
@@ -1603,6 +1604,13 @@ function __input_class_player() constructor
         {
             __input_trace("Binding scan failed: Player ", __index, " is a ghost");
             __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.PLAYER_IS_GHOST);
+            return;
+        }
+        
+        if (!__active)
+        {
+            __input_trace("Binding scan failed: Player ", __index, " is inactive");
+            __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.PLAYER_IS_INACTIVE);
             return;
         }
         
