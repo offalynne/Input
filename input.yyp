@@ -76,6 +76,7 @@
     {"id":{"name":"input_binding_gamepad_button","path":"scripts/input_binding_gamepad_button/input_binding_gamepad_button.yy",},"order":6,},
     {"id":{"name":"input_binding_gamepad_get","path":"scripts/input_binding_gamepad_get/input_binding_gamepad_get.yy",},"order":10,},
     {"id":{"name":"input_binding_gamepad_set","path":"scripts/input_binding_gamepad_set/input_binding_gamepad_set.yy",},"order":9,},
+    {"id":{"name":"obj_test_player_active","path":"objects/obj_test_player_active/obj_test_player_active.yy",},"order":19,},
     {"id":{"name":"input_binding_get","path":"scripts/input_binding_get/input_binding_get.yy",},"order":3,},
     {"id":{"name":"input_binding_get_icon","path":"scripts/input_binding_get_icon/input_binding_get_icon.yy",},"order":0,},
     {"id":{"name":"input_binding_get_name","path":"scripts/input_binding_get_name/input_binding_get_name.yy",},"order":4,},
