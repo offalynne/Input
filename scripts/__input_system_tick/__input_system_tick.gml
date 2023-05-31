@@ -342,7 +342,7 @@ function __input_system_tick()
         var _platform = os_type;
         if (INPUT_ON_WEB && __INPUT_ON_APPLE) _platform = "apple_web";
 
-        switch (_platform)
+        switch(_platform)
         {
             case os_windows:
                 if (keyboard_check(vk_alt) && keyboard_check_pressed(vk_space))

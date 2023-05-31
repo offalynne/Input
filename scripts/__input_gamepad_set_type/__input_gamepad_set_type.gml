@@ -303,7 +303,7 @@ function __input_gamepad_set_type()
                 else if ((button_count ==  2) && (axis_count == 3) && (hat_count == 1) && (index > 2)) { _wii_type_match = "HIDWiiNunchuk";    }
                 else if ((button_count == 15) && (axis_count == 0) && (hat_count == 3) && (index > 2)) { _wii_type_match = "HIDWiiClassic";    }
             
-                switch (_wii_type_match)
+                switch(_wii_type_match)
                 {
                     case "HIDWiiMotionPlus":
                     case "HIDWiiNunchuk":                    
