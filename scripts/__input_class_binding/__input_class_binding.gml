@@ -260,7 +260,7 @@ function __input_class_binding() constructor
         {
             if (INPUT_MERGE_CONTROL_KEYS)
             {
-                switch (_key)
+                switch(_key)
                 {
                     //Combine player-bound control keys
                     case vk_lcontrol: case vk_rcontrol:  _key = vk_control; break;
@@ -370,7 +370,7 @@ function __input_class_binding() constructor
     {
         if (_label == undefined)
         {
-            __label = __input_binding_get_label(type, value, axis_negative)
+            __label = __input_binding_get_label(type, value, axis_negative);
         }
         else
         {

@@ -115,7 +115,7 @@ function __input_class_cursor() constructor
                 if (is_struct(_motion_data))
                 {
                     var _gyro_value_x = undefined;
-                    switch (__player.__gyro_axis_x)
+                    switch(__player.__gyro_axis_x)
                     {
                         case INPUT_GYRO.AXIS_PITCH: _gyro_value_x = _motion_data.angular_velocity_x; break;
                         case INPUT_GYRO.AXIS_YAW:   _gyro_value_x = _motion_data.angular_velocity_y; break;
@@ -123,7 +123,7 @@ function __input_class_cursor() constructor
                     }
 
                     var _gyro_value_y = undefined;
-                    switch (__player.__gyro_axis_y)
+                    switch(__player.__gyro_axis_y)
                     {
                         case INPUT_GYRO.AXIS_PITCH: _gyro_value_y = _motion_data.angular_velocity_x; break;
                         case INPUT_GYRO.AXIS_YAW:   _gyro_value_y = _motion_data.angular_velocity_y; break;

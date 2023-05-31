@@ -4,7 +4,7 @@ function __input_keyboard_key()
     
     if (_global.__keyboard_allowed && keyboard_check(vk_anykey))
     {        
-        switch (os_type)
+        switch(os_type)
         {
             //Android keyboard test
             case os_android:

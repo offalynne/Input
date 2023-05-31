@@ -427,6 +427,16 @@ function __input_validate_macros()
         __input_error("INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD must be a number less than or equal to 1, and greater than INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD");
     }
     
+    if (!is_bool(INPUT_SWITCH_SWAP_AB))
+    {
+        __input_error("INPUT_SWITCH_SWAP_AB must be either <true> or <false>");
+    }
+    
+    if (!is_bool(INPUT_PS_REGION_SWAP_CONFIRM))
+    {
+        __input_error("INPUT_PS_REGION_SWAP_CONFIRM must be either <true> or <false>");
+    }    
+    
     if (!is_bool(INPUT_SWITCH_HORIZONTAL_HOLDTYPE))
     {
         __input_error("INPUT_SWITCH_HORIZONTAL_HOLDTYPE must be either <true> or <false>");

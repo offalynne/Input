@@ -4,7 +4,7 @@ var _state = "";
 var _i = 0;
 repeat(2)
 {
-    switch (input_trigger_effect_get_state((_i == 0)? gp_shoulderlb : gp_shoulderrb))
+    switch(input_trigger_effect_get_state((_i == 0)? gp_shoulderlb : gp_shoulderrb))
     {
         case INPUT_TRIGGER_STATE.EFFECT_OFF:               _state = "off";               break;
         case INPUT_TRIGGER_STATE.EFFECT_FEEDBACK_STANDBY:  _state = "feedback standby";  break;

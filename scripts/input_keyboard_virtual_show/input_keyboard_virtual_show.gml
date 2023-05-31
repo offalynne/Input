@@ -16,7 +16,7 @@ function input_keyboard_virtual_show(_virtual_keyboard_type = kbv_type_default)
     
     if (_global.__using_steamworks)
     {
-        switch (_virtual_keyboard_type)
+        switch(_virtual_keyboard_type)
         {
             case kbv_type_email:   _virtual_keyboard_type = steam_floating_gamepad_text_input_mode_email;       break;
             case kbv_type_numbers: _virtual_keyboard_type = steam_floating_gamepad_text_input_mode_numeric;     break;
