@@ -77,6 +77,7 @@ function __input_class_gamepad(_index) constructor
         
         virtual_set();
         led_set();
+        swap_ab();
         
         __vibration_support = __global.__vibration_allowed && (xinput || !__INPUT_ON_WINDOWS);        
         if (__vibration_support)
@@ -100,11 +101,7 @@ function __input_class_gamepad(_index) constructor
             gamepad_set_vibration(index, 0, 0);
         }
 
-        if (__global.__gamepad_motion_support)
-        {
-            __motion = new __input_class_gamepad_motion(index);
-        }
-        
+        if (__global.__gamepad_motion_support) __motion = new __input_class_gamepad_motion(index);
         if (!__INPUT_SILENT)__input_trace("Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
     }
     
@@ -171,12 +168,12 @@ function __input_class_gamepad(_index) constructor
         {
             if ((_gm == gp_shoulderlb) || (_gm == gp_shoulderrb))
             {
-                //XInput and platforms with analogue triggers
                 return (xinput || __INPUT_ON_XBOX || __INPUT_ON_PS || __INPUT_ON_IOS);
             }
-            
-            //Otherwise return true only for the thumbsticks
-            return ((_gm == gp_axislh) || (_gm == gp_axislv) || (_gm == gp_axisrh) || (_gm == gp_axisrv));
+            else
+            {
+                return ((_gm == gp_axislh) || (_gm == gp_axislv) || (_gm == gp_axisrh) || (_gm == gp_axisrv));
+            }
         }
         
         var _mapping = mapping_gm_to_raw[$ _gm];
@@ -312,6 +309,17 @@ function __input_class_gamepad(_index) constructor
         }
     }
     
+    static swap_ab = function()
+    {
+        if (__input_gamepad_type_swap_ab(simple_type) && is_struct(mapping_gm_to_raw[$ string(gp_face1)]) && is_struct(mapping_gm_to_raw[$ string(gp_face2)]))
+        {
+            if (__INPUT_DEBUG) __input_trace("  (Swapping A and B)");
+            var _a_mapping = mapping_gm_to_raw[$ string(gp_face1)].raw;
+            set_mapping(gp_face1, mapping_gm_to_raw[$ string(gp_face2)].raw, __INPUT_MAPPING.BUTTON, "a");
+            set_mapping(gp_face2, _a_mapping, __INPUT_MAPPING.BUTTON, "b");
+        }
+    }
+    
     static virtual_set = function()
     {
         if not (__global.__using_steamworks) return;
@@ -384,10 +392,7 @@ function __input_class_gamepad(_index) constructor
         }
         
         //MFi gamepad case
-        if ((raw_type == "AppleController") && __INPUT_ON_IOS)
-        {
-            _led_layout = "horizontal";
-        }
+        if ((raw_type == "AppleController") && __INPUT_ON_IOS) _led_layout = "horizontal";
         
         switch(simple_type)
         {
@@ -395,6 +400,7 @@ function __input_class_gamepad(_index) constructor
                 _led_layout = "horizontal"; 
                 _led_type   = INPUT_GAMEPAD_TYPE_PS5;
             break;
+            
             case INPUT_GAMEPAD_TYPE_SWITCH:
             case INPUT_GAMEPAD_TYPE_JOYCON_LEFT:
             case INPUT_GAMEPAD_TYPE_JOYCON_RIGHT:
@@ -408,11 +414,9 @@ function __input_class_gamepad(_index) constructor
                 }
                 
                 //Steam sets Xbox 360 pattern on Switch gamepad LEDs
-                if not (is_numeric(__steam_handle))
-                {
-                    _led_type = INPUT_GAMEPAD_TYPE_SWITCH;
-                }
-            break;            
+                if not (is_numeric(__steam_handle)) _led_type = INPUT_GAMEPAD_TYPE_SWITCH;
+            break;     
+            
             case INPUT_GAMEPAD_TYPE_XBOX_360:
                 _led_layout = "radial";
             break;
@@ -463,8 +467,7 @@ function __input_class_gamepad(_index) constructor
     static __vibration_set = function(_left, _right)
     {
         __vibration_left  = _left;
-        __vibration_right = _right;
-        
+        __vibration_right = _right;        
         __vibration_received_this_frame = true;
     }
     
@@ -481,10 +484,7 @@ function __input_class_gamepad(_index) constructor
             return false;
         }
 
-        if (os_type == os_ps5)
-        {
-            return _effect.__apply_ps5(index, _trigger);
-        }
+        if (os_type == os_ps5) return _effect.__apply_ps5(index, _trigger);
 
         //Steam Input uses libScePad for DualSense trigger effects, Windows native only
         if (__global.__using_steamworks && !__global.__on_wine && __INPUT_ON_WINDOWS)
@@ -503,10 +503,7 @@ function __input_class_gamepad(_index) constructor
             }
             
             var _steam_trigger_params = { command: _command_array, trigger_mask: steam_input_sce_pad_trigger_effect_trigger_mask_l2 };
-            if (_trigger_index)
-            {
-                _steam_trigger_params.trigger_mask = steam_input_sce_pad_trigger_effect_trigger_mask_r2;
-            }
+            if (_trigger_index) _steam_trigger_params.trigger_mask = steam_input_sce_pad_trigger_effect_trigger_mask_r2;
             
             if not (is_numeric(__steam_handle)) return false;
             

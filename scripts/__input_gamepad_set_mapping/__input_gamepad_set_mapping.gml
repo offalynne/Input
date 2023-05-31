@@ -275,7 +275,7 @@ function __input_gamepad_set_mapping()
     
     #region Windows Xbox One Wireless BT (New firmware)
 
-    if (__INPUT_ON_WINDOWS && (vendor == "5e04")                  //Windows (DirectInput) Microsoft's VID
+    if (__INPUT_ON_WINDOWS  && (vendor  == "5e04")                     //Windows (DirectInput) Microsoft's VID
     && ((product == "e002") || (product == "fd02"))                    //XbOne Wireless Rev. 1 or 2 PID for BT
     && (button_count == 17)                                            //Probably new firmware based on button
     && (gamepad_axis_value(index, 1) == gamepad_axis_value(index, 2))  //On new firmware axes 1 and 2 are same
@@ -735,7 +735,7 @@ function __input_gamepad_set_mapping()
     
     if (__INPUT_ON_LINUX)
     {
-        switch (raw_type)
+        switch(raw_type)
         {            
             case "HIDJoyConLeft":
                 if (!__INPUT_SILENT) __input_trace("Overriding mapping to Joy-Con Left");

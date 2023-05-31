@@ -10,7 +10,13 @@
 //Default maximum threshold for non-directional (trigger) axes
 #macro INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD  1.0
 
-//Whether the game uses the horizontal holdtype for single Joy-Cons. Set this to <false> for vertical holdtype
+//Whether to swap A and B button bindings on Switch gamepads including Joy-Cons
+#macro INPUT_SWITCH_SWAP_AB  false
+
+//Whether to swap Cross (X) and Circle (O) button bindings per PlayStation 4 system setting
+#macro INPUT_PS_REGION_SWAP_CONFIRM  false
+
+//Whether the game uses the horizontal holdtype for single Joy-Cons. Set this to <false> for vertical holdtype on Switch platform
 //Input treats these two modes as mutually exclusive (come talk to us if you need to be able to swap at runtime)
 #macro INPUT_SWITCH_HORIZONTAL_HOLDTYPE  true
 

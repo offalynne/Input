@@ -216,9 +216,6 @@ function __input_initialize()
     
     _global.__cursor_verbs_valid = false;
     
-    //Whether to swap A/B gamepad buttons for default bindings
-    _global.__swap_ab = false;
-    
     //Arrays/dictionaries to track basic verbs and chords
     _global.__all_verb_dict  = {};
     _global.__all_verb_array = [];
@@ -691,8 +688,8 @@ function __input_initialize()
         if (ds_exists(_map, ds_type_map))
         {
             var _identifier = undefined;
-            if (os_type == os_linux)   _identifier = _map[? "gl_renderer_string"];
-            if (__INPUT_ON_WINDOWS) _identifier = _map[? "video_adapter_description"];
+            if (os_type == os_linux) _identifier = _map[? "gl_renderer_string"];
+            if (__INPUT_ON_WINDOWS)  _identifier = _map[? "video_adapter_description"];
             
             //Steam Deck GPU identifier
             if ((_identifier != undefined) && __input_string_contains(_identifier, "AMD Custom GPU 04"))
@@ -823,16 +820,29 @@ function __input_initialize()
     
     
     
-    #region Keyboard locale
+    #region Device locale
+        
+    //Gamepad region
+    _global.__ps_region_swap = false;
+    if (INPUT_PS_REGION_SWAP_CONFIRM && (os_type == os_ps4))
+    {
+        var _map = os_get_info();
+        if (ds_exists(_map, ds_type_map))
+        {
+            if (_map[? "enter_button_assign"] == 0)
+            {
+                _global.__ps_region_swap = true;
+            }
+            
+            ds_map_destroy(_map);
+        }
+    }
     
-    var _locale = os_get_language() + "-" + os_get_region();
+    //Keyboard locale
+    INPUT_KEYBOARD_LOCALE = "QWERTY";
+    var _locale = os_get_language() + "-" + os_get_region();;
     switch(_locale)
     {
-        case "en-US": case "en-":
-        case "en-GB": case "-":
-            INPUT_KEYBOARD_LOCALE = "QWERTY";
-        break;
-
         case "ar-DZ": case "ar-MA": case "ar-TN":
         case "fr-BE": case "fr-FR": case "fr-MC":
         case "co-FR": case "oc-FR": case "ff-SN": 
@@ -849,10 +859,6 @@ function __input_initialize()
         case "sl-SI": case "dsb-DE":
         case "sr-BA": case "hsb-DE":
             INPUT_KEYBOARD_LOCALE = "QWERTZ";
-        break;
-
-        default:
-            INPUT_KEYBOARD_LOCALE = "QWERTY";
         break;
     }
     
