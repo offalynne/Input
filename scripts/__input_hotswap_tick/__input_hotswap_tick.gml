@@ -47,98 +47,82 @@ function __input_hotswap_tick_input()
     if (_global.__any_gamepad_binding_defined)
     {
         var _player = _global.__players[0];
-        var _gamepad_count = array_length(INPUT_GAMEPAD);
-        var _g = 0;
+        var _gamepad = _global.__players[0].__source_get_gamepad();
+        var _gamepad_index = (is_struct(_gamepad)? _gamepad.index : -1);
         
         #region In-use gamepad
         
-        repeat(_gamepad_count)
+        if (gamepad_is_connected(_gamepad_index))
         {
-            var _gamepad = _global.__gamepads[_g]
-            if (is_struct(_gamepad) && gamepad_is_connected(_g) && input_source_using(INPUT_GAMEPAD[_g]))
+            //Check buttons
+            if (_gamepad.get_held(gp_face1)
+            ||  _gamepad.get_held(gp_face2)
+            ||  _gamepad.get_held(gp_face3)
+            ||  _gamepad.get_held(gp_face4)
+            ||  _gamepad.get_held(gp_padu)
+            ||  _gamepad.get_held(gp_padd)
+            ||  _gamepad.get_held(gp_padl)
+            ||  _gamepad.get_held(gp_padr)
+            ||  _gamepad.get_held(gp_shoulderl)
+            ||  _gamepad.get_held(gp_shoulderr)
+            ||  _gamepad.get_held(gp_start)
+            ||  _gamepad.get_held(gp_select)
+            ||  _gamepad.get_held(gp_stickl)
+            ||  _gamepad.get_held(gp_stickr)
+            ||  (!_gamepad.is_axis(gp_shoulderlb) && _gamepad.get_held(gp_shoulderlb))
+            ||  (!_gamepad.is_axis(gp_shoulderrb) && _gamepad.get_held(gp_shoulderrb)))
             {
-                //Check buttons
-                if (_gamepad.get_held(gp_face1)
-                ||  _gamepad.get_held(gp_face2)
-                ||  _gamepad.get_held(gp_face3)
-                ||  _gamepad.get_held(gp_face4)
-                ||  _gamepad.get_held(gp_padu)
-                ||  _gamepad.get_held(gp_padd)
-                ||  _gamepad.get_held(gp_padl)
-                ||  _gamepad.get_held(gp_padr)
-                ||  _gamepad.get_held(gp_shoulderl)
-                ||  _gamepad.get_held(gp_shoulderr)
-                ||  _gamepad.get_held(gp_start)
-                ||  _gamepad.get_held(gp_select)
-                ||  _gamepad.get_held(gp_stickl)
-                ||  _gamepad.get_held(gp_stickr)
-                ||  (!_gamepad.is_axis(gp_shoulderlb) && _gamepad.get_held(gp_shoulderlb))
-                ||  (!_gamepad.is_axis(gp_shoulderrb) && _gamepad.get_held(gp_shoulderrb)))
+                _player.__last_input_time = _global.__current_time;
+                return INPUT_GAMEPAD[_gamepad_index];
+            }  
+            else if (INPUT_HOTSWAP_ON_GAMEPAD_AXIS) //Check axes
+            {
+                if ((abs(_gamepad.get_value(gp_shoulderlb)) > _player.__axis_threshold_get(gp_shoulderlb, 0).mini)
+                ||  (abs(_gamepad.get_value(gp_shoulderrb)) > _player.__axis_threshold_get(gp_shoulderrb, 0).mini)
+                ||  (abs(_gamepad.get_value(gp_axislv    )) > _player.__axis_threshold_get(gp_axislv, 0).mini)
+                ||  (abs(_gamepad.get_value(gp_axislh    )) > _player.__axis_threshold_get(gp_axislh, 0).mini)
+                ||  (abs(_gamepad.get_value(gp_axislv    )) > _player.__axis_threshold_get(gp_axislv, 0).mini)
+                ||  (abs(_gamepad.get_value(gp_axisrh    )) > _player.__axis_threshold_get(gp_axisrh, 0).mini)
+                ||  (abs(_gamepad.get_value(gp_axisrv    )) > _player.__axis_threshold_get(gp_axisrv, 0).mini))
                 {
-                    break;
-                }
-                    
-                //Check axes
-                if (INPUT_HOTSWAP_ON_GAMEPAD_AXIS)
-                {
-                    if ((abs(_gamepad.get_value(gp_shoulderlb)) > _player.__axis_threshold_get(gp_shoulderlb, 0).mini)
-                    ||  (abs(_gamepad.get_value(gp_shoulderrb)) > _player.__axis_threshold_get(gp_shoulderrb, 0).mini)
-                    ||  (abs(_gamepad.get_value(gp_axislv    )) > _player.__axis_threshold_get(gp_axislv, 0).mini)
-                    ||  (abs(_gamepad.get_value(gp_axislh    )) > _player.__axis_threshold_get(gp_axislh, 0).mini)
-                    ||  (abs(_gamepad.get_value(gp_axislv    )) > _player.__axis_threshold_get(gp_axislv, 0).mini)
-                    ||  (abs(_gamepad.get_value(gp_axisrh    )) > _player.__axis_threshold_get(gp_axisrh, 0).mini)
-                    ||  (abs(_gamepad.get_value(gp_axisrv    )) > _player.__axis_threshold_get(gp_axisrv, 0).mini))
-                    {
-                        break;
-                    }
-                }
-                    
-                //Check extended
-                if (INPUT_SDL2_ALLOW_EXTENDED)
-                {
-                    if (_gamepad.get_held(gp_guide)
-                    ||  _gamepad.get_held(gp_misc1)
-                    ||  _gamepad.get_held(gp_touchpad)
-                    ||  _gamepad.get_held(gp_paddle1)
-                    ||  _gamepad.get_held(gp_paddle2)
-                    ||  _gamepad.get_held(gp_paddle3)
-                    ||  _gamepad.get_held(gp_paddle4))
-                    {
-                        break;
-                    }
+                    _player.__last_input_time = _global.__current_time;
+                    return INPUT_GAMEPAD[_gamepad_index];
                 }
             }
-            
-            ++_g;
+                    
+            //Check extended
+            if (INPUT_SDL2_ALLOW_EXTENDED)
+            {
+                if (_gamepad.get_held(gp_guide)
+                ||  _gamepad.get_held(gp_misc1)
+                ||  _gamepad.get_held(gp_touchpad)
+                ||  _gamepad.get_held(gp_paddle1)
+                ||  _gamepad.get_held(gp_paddle2)
+                ||  _gamepad.get_held(gp_paddle3)
+                ||  _gamepad.get_held(gp_paddle4))
+                {
+                    _player.__last_input_time = _global.__current_time;
+                    return INPUT_GAMEPAD[_gamepad_index];
+                }
+            }
         }
         
         #endregion
         
-        if (_g < _gamepad_count)
+        var _gamepad_count = array_length(INPUT_GAMEPAD);
+        if not (_global.__frame - _global.__window_focus_frame < 2) //Prevent resting axes from triggering source swap
         {
-            //Maintain in-use gamepad
-            _player.__last_input_time = _global.__current_time;
-            return INPUT_GAMEPAD[_g];
-        }
-        else if not (_global.__frame - _global.__window_focus_frame < 2) //Prevent resting axes from triggering source swap
-        {
-            //Test available gamepads
-            var _sort_order = 1;
-            _g = 0;
-            
-            if (!INPUT_ON_WEB && (__INPUT_ON_MACOS || (!_global.__using_steamworks && __INPUT_ON_WINDOWS) || (_global.__using_steamworks && __INPUT_ON_LINUX)))
-            {
-                //Search last-to-first on platforms with low-index virtual controllers (Steam Input, ViGEm)
-                _sort_order = -1;
-                _g = _gamepad_count - 1;
-            }
+            //Search last-to-first on platforms with low-index virtual controllers (Steam Input, ViGEm)
+            var _g = 0;
+            static _sort_order = (!INPUT_ON_WEB && (__INPUT_ON_MACOS || (!_global.__using_steamworks && __INPUT_ON_WINDOWS) || (_global.__using_steamworks && __INPUT_ON_LINUX))? -1 : 1);
+            if (_sort_order == -1) _g = _gamepad_count - 1;
 
             #region Gamepad not in-use but potentially available
                         
             repeat(_gamepad_count)
             {
                 var _gamepad = _global.__gamepads[_g];
-                if (is_struct(_gamepad) && gamepad_is_connected(_g) && input_source_is_available(INPUT_GAMEPAD[_g]))
+                if ((_g != _gamepad_index) && is_struct(_gamepad) && gamepad_is_connected(_g))
                 {
                     with (_gamepad)
                     {
