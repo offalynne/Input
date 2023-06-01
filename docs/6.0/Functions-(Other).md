@@ -320,6 +320,7 @@ Shows the onscreen virtual keyboard on mobile platforms and SteamOS with the [St
 ///Prompt user to enter a numeric value
 var _default_value = 1234;
 var _caption = "Enter passcode";
+
 if (INPUT_KEYBOARD_TYPE == "virtual")
 {
 	//Set keyboard string to default value
