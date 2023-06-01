@@ -220,7 +220,7 @@ _input_count_previous = _len;
 if (!input_window_has_focus() && !game_paused)
 {
 	game_paused = true;
-	obj_reticule.visible = false;
+	obj_reticle.visible = false;
 }
 ```
 
