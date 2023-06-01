@@ -38,7 +38,18 @@ If something unexpected happens (for example, the player's gamepad is disconnect
 #### **Example**
 
 ```gml
-//TODO lol
+//Start a binding scan
+input_binding_scan_start(function(_binding)
+{
+	//On success, set a binding and show positive feedback
+	input_binding_set_safe(oSettings.verbToSet, _binding);
+	display_prompt("Binding set");
+},
+function(_result)
+{
+	//On failure, show negative feedback
+	display_prompt("Failed to set binding");
+})
 ```
 
 <!-- tabs:end -->
@@ -64,7 +75,21 @@ Aborts binding scanning for the given player.
 #### **Example**
 
 ```gml
-//TODO lol
+//Track the network state
+static _networkState = undefined;
+
+//If the network state has changed...
+if (_networkState != os_is_network_connected(false))
+{
+	//Update the tracked network state
+	_networkState = os_is_network_connected(false);
+
+	//Abort the binding scan process
+	input_binding_scan_abort();
+
+	//Show a network state prompt
+	network_state_changed();
+}
 ```
 
 <!-- tabs:end -->
@@ -88,7 +113,12 @@ Aborts binding scanning for the given player.
 #### **Example**
 
 ```gml
-//TODO lol
+//If we're scanning for a binding...
+if (input_binding_scan_in_progress())
+{
+	//Then show a rotating spinner to indicate that the game is waiting for input
+	draw_sprite_ext(spr_pending, 0, x, y, 1, 1, current_time/12, c_white, 1);
+}
 ```
 
 <!-- tabs:end -->
@@ -114,14 +144,21 @@ Aborts binding scanning for the given player.
 
 This function sets up arrays of potential bindings to ignore or allow. This allows the developer to filter out potentially problematic rebindings that could interfere with stable operation.
 
-?> If a constant appear in both lists, the "ignore" array takes precedence and the binding will be ignored.
+?> If a constant appears in both lists, the "ignore" array takes precedence and the binding will be ignored.
 
 !> Unfortunately, earlier versions of GameMaker don't have a constant for mouse wheel up/down. Instead, to specify that mouse wheel bindings should be ignore/allowed, please use the strings `"mouse wheel up"` and `"mouse wheel down"` in lieu of constants.
 
 #### **Example**
 
 ```gml
-//TODO lol
+//Only allow bindings from gamepads, and only scan for face buttons and shoulder buttons
+input_binding_scan_set_params([], //Don't block anything since we're using the allow array
+[
+	gp_face1, gp_face2, gp_face3, gp_face4,
+	gp_shoulderl,  gp_shoulderr,
+	gp_shoulderlb, gp_shoulderrb,
+],
+INPUT_GAMEPAD);
 ```
 
 <!-- tabs:end -->
@@ -144,12 +181,6 @@ This function sets up arrays of potential bindings to ignore or allow. This allo
 
 The struct returned by this function has three elements (`.ignore_array` `.allow_array` `.source_filter`) which corresponds to the values passed to `input_binding_scan_set_params()`. Editing the content in the returned struct will not implictly change behaviour for binding scanning, and the order of elements in arrays returned by this function may not exactly match what was set via `input_binding_scan_set_params()`.
 
-#### **Example**
-
-```gml
-//TODO lol
-```
-
 <!-- tabs:end -->
 
 &nbsp;
@@ -169,11 +200,5 @@ The struct returned by this function has three elements (`.ignore_array` `.allow
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is targeted|
 
 Clears the parameters set for binding scanning for the given player. No bindings are ignored, no bindings are explicitly allowed.
-
-#### **Example**
-
-```gml
-//TODO lol
-```
 
 <!-- tabs:end -->
