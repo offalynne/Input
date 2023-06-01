@@ -22,7 +22,22 @@ Useful for verifying if a binding returned by [`input_binding_get()`](<Functions
 #### **Example**
 
 ```gml
-//TODO lol
+//Get the binding for the "jump" verb
+var _binding = input_binding_get("jump");
+
+if (input_binding_is_valid(_binding))
+{
+	//If the binding is valid, use its name
+	var _string = input_binding_get_name(_binding);
+}
+else
+{
+	//Otherwise display some error text
+	var _string = "Unsupported for gamepad";
+}
+
+//Draw the result to the screen
+draw_text(x, y, "Jump: " + _string);
 ```
 
 <!-- tabs:end -->
@@ -52,7 +67,13 @@ Straightforwardly sets the binding for a verb, overwriting what was already ther
 #### **Example**
 
 ```gml
-//TODO lol
+//Set up left-handed controls by overwriting all the verbs we have
+input_binding_set("up",    input_binding_keyboard("I"));
+input_binding_set("down",  input_binding_keyboard("K"));
+input_binding_set("left",  input_binding_keyboard("J"));
+input_binding_set("right", input_binding_keyboard("L"));
+input_binding_set("jump",  input_binding_keyboard(vk_space));
+input_binding_set("pause", input_binding_keyboard(vk_escape));
 ```
 
 <!-- tabs:end -->
@@ -82,7 +103,12 @@ In contrast to [`input_binding_set()`](<Functions-(Binding-Management)#input_bin
 #### **Example**
 
 ```gml
-//TODO lol
+//Start a binding scan
+input_binding_scan_start(function(_binding)
+{
+	//When we succeed, set our new binding
+    input_binding_set_safe(oGamepadSettings.verbToRebind, _binding);
+});
 ```
 
 <!-- tabs:end -->
@@ -99,25 +125,44 @@ In contrast to [`input_binding_set()`](<Functions-(Binding-Management)#input_bin
 
 _Returns:_ Struct. See below.
 
-|Name           |Datatype                            |Purpose                                                                                                                                             |
-|---------------|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-|`verb`         |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to target                                                                                                      |
-|`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used. You may also use `"default"` as the player index to retrieve the default binding for this verb|
-|`[alternate]`  |integer                             |[Alternate binding](Verbs-and-Bindings) to target. If not specified, `0` is used                                                          |
-|`[profileName]`|string                              |                                                                                                                                                    |
+|Name           |Datatype                  |Purpose                                                                                                                                             |
+|---------------|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+|`verb`         |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to target                                                                                                                |
+|`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used. You may also use `"default"` as the player index to retrieve the default binding for this verb|
+|`[alternate]`  |integer                   |[Alternate binding](Verbs-and-Bindings) to target. If not specified, `0` is used                                                                    |
+|`[profileName]`|string                    |                                                                                                                                                    |
 
 This function returns a struct that describes the binding for the given verb. It has the following member variables:
 
-|Variable        |Datatype|Purpose                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-|----------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`.type`         |string  |Type of binding, one of the following:<br>`"key"` `"gamepad button"` `"gamepad axis"` `"mouse button"` `"mouse wheel up"` `"mouse wheel down"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|Variable        |Datatype|Purpose                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|----------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`.type`         |string  |Type of binding, one of the following:<br>`"key"` `"gamepad button"` `"gamepad axis"` `"mouse button"` `"mouse wheel up"` `"mouse wheel down"` (and `undefined`)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 |`.value`        |integer |[Keycode](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FKeyboard_Input%252FKeyboard_Input.htm), [gamepad button](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm), [gamepad axis](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm), or [mouse button](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FMouse_Input%252FMouse_Input.htm) that this binding uses. This variable is `undefined` for `"mouse wheel up"` and `"mouse wheel down"` types|
-|`.axis_negative`|boolean |Whether this binding expects negative values (`"gamepad axis"` type only)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|`.axis_negative`|boolean |Whether this binding expects negative values (`"gamepad axis"` type only)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 #### **Example**
 
 ```gml
-//TODO lol
+//Get the binding for the "special" verb
+var _binding = input_binding_get("special");
+
+//If this binding is a keyboard key, and it's a simple ASCII character...
+if ((_binding.type == "key") && (_binding.value > 32) && (_binding.value < 128))
+{
+	//...then draw some text on top of a keyboard key icon
+	draw_sprite(spr_icon_small_key, 0, x, y);
+
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_midde);
+	draw_text(x, y, chr(_binding.value));
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_top);
+}
+else
+{
+	//Otherwise draw the icon that we've set up elsewhere
+	draw_sprite(input_binding_get_icon(_binding), 0, x, y);
+}
 ```
 
 <!-- tabs:end -->
@@ -147,7 +192,11 @@ For example, `input_binding_get_name(input_binding_get("jump"))` will return the
 #### **Example**
 
 ```gml
-//TODO lol
+//Get the binding for the "confirm" verb
+var _binding = input_binding_get("confirm");
+
+//Draw the name of the binding to the screen
+draw_text(x, y, input_binding_get_name(_binding));
 ```
 
 <!-- tabs:end -->
@@ -179,7 +228,22 @@ If the binding is invalid or the source type cannot be determined, `undefined` i
 #### **Example**
 
 ```gml
-//TODO lol
+//Get the binding for the "cancel" verb, and then get its source type
+var _binding = input_binding_get("cancel");
+var _source_type = input_binding_get_source_type(_binding);
+
+//Determine what icon to use for the source type for this binding
+switch(_source_type)
+{
+	case INPUT_KEYBOARD: _sprite = spr_icon_keyboard;      break;
+	case INPUT_MOUSE:    _sprite = spr_icon_mouse;         break;
+	case INPUT_TOUCH:    _sprite = spr_icon_touch;         break;
+	case INPUT_GAMEPAD:  _sprite = spr_icon_gamepad;       break;
+	default:             _sprite = spr_icon_question_mark; break;
+}
+
+//Draw the source type icon for the binding
+draw_sprite(_sprite, 0, x, y);
 ```
 
 <!-- tabs:end -->
@@ -196,26 +260,37 @@ If the binding is invalid or the source type cannot be determined, `undefined` i
 
 _Returns:_ Array of structs containing conflicting verb/alternate indexes
 
-|Name           |Datatype                            |Purpose                                                                                                                                                                                                                                                           |
-|---------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|Name           |Datatype                  |Purpose                                                                                                                                                                                                                                                           |
+|---------------|--------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |`verb`         |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to target                                                                                                                                                                                                                    |
-|`binding`      |binding                             |Binding to check against, as returned by [`input_binding_scan_tick()`](<Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex>) or [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>)|
-|`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                                                                                                                                                                                                              |
-|`[profileName]`|string                              |                                                                                                                                                                                                                                                                  |
+|`binding`      |binding                   |Binding to check against, as returned by [`input_binding_scan_tick()`](<Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex>) or [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>)|
+|`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used                                                                                                                                                                                                              |
+|`[profileName]`|string                    |                                                                                                                                                                                                                                                                  |
 
 The array that this function returns contains structs that define which verb bindings conflict with the given binding. If the array is empty then there are no conflicting bindings.
 
 The structs returned in the array contain the following:
 
-|Variable    |Datatype                            |Purpose                     |
-|------------|------------------------------------|----------------------------|
+|Variable    |Datatype                  |Purpose                     |
+|------------|--------------------------|----------------------------|
 |`.verb`     |[verb](Verbs-and-Bindings)|Verb binding that conflicts |
-|`.alternate`|integer                             |Alternate index for the verb|
+|`.alternate`|integer                   |Alternate index for the verb|
 
 #### **Example**
 
 ```gml
-//TODO lol
+//Start a binding scan
+input_binding_scan_start(function(_binding)
+{
+	//Figure out if this new binding collides with anything
+	var _collisionsArray = input_binding_test_collisions(oGamepadSettings.verbToRebind);
+
+	//If we have no collisions, set the verb
+	if (array_length(_collisionsArray) <= 0)
+	{
+	    input_binding_set(oGamepadSettings.verbToRebind, _binding);
+	}
+});
 ```
 
 <!-- tabs:end -->
@@ -244,7 +319,21 @@ Removes a binding from Input. **Be very careful with this function!** It's possi
 #### **Example**
 
 ```gml
-//TODO lol
+//Start a binding scan
+input_binding_scan_start(function(_binding)
+{
+	//If the incoming binding is the same as the existing binding...
+	if (input_binding_get_name(_binding) == input_binding_get_name(oGamepadSettings.verbToRebind))
+	{
+		//...then remove the binding we already have
+		input_binding_remove(oGamepadSettings.verbToRebind);
+	}
+	else
+	{
+		//Otherwise set the binding as normal
+		input_binding_set_safe(oGamepadSettings.verbToRebind, _binding);
+	}
+});
 ```
 
 <!-- tabs:end -->
@@ -275,7 +364,8 @@ Swaps over the two verb bindings specified.
 #### **Example**
 
 ```gml
-//TODO lol
+//Flip the roll verbs
+input_binding_swap("roll left", 0, "roll right", 0);
 ```
 
 <!-- tabs:end -->
@@ -301,7 +391,18 @@ _Returns:_ N/A (`undefined`)
 #### **Example**
 
 ```gml
-//TODO lol
+var _binding = input_binding_get(verbToChange);
+
+//Scroll through gamepads using the "left" and "right" verbs
+var _delta = input_check_opposing_pressed("left", "right");
+if (_delta != 0)
+{
+	//Figure out which gamepad to assign
+	var _gamepad = clamp(input_binding_gamepad_get(_binding) + _delta, 0, 12);
+
+	//Set the new gamepad for the binding
+	input_binding_gamepad_set(_binding, _gamepad);
+}
 ```
 
 <!-- tabs:end -->
@@ -329,7 +430,47 @@ If no gamepad has been set, this function returns `undefined`.
 #### **Example**
 
 ```gml
-//TODO lol
+//Get the gamepad for the binding
+var _binding = input_binding_get("pause");
+var _gamepad = input_binding_gamepad_get(_binding);
+
+//Determine which gamepad icon to use for this binding
+switch(input_gamepad_get_type)
+{
+	case INPUT_GAMEPAD_TYPE_XBOX_ONE:
+	case INPUT_GAMEPAD_TYPE_XBOX_360:
+		var _sprite = spr_icon_gamepad_xbox;
+	break;
+
+	case INPUT_GAMEPAD_TYPE_PS5:
+	case INPUT_GAMEPAD_TYPE_PS4:
+	case INPUT_GAMEPAD_TYPE_PSX:
+		var _sprite = spr_icon_gamepad_playstation;
+	break;
+
+	case INPUT_GAMEPAD_TYPE_SWITCH:
+		var _sprite = spr_icon_gamepad_switch;
+	break;
+
+	case INPUT_GAMEPAD_TYPE_JOYCON_LEFT:
+		var _sprite = spr_icon_gamepad_joycon_left;
+	break;
+
+	case INPUT_GAMEPAD_TYPE_JOYCON_RIGHT:
+		var _sprite = spr_icon_gamepad_joycon_right;
+	break;
+
+	case INPUT_GAMEPAD_TYPE_GAMECUBE:
+		var _sprite = spr_icon_gamepad_gamecube;
+	break;
+
+	default:
+		var _sprite = spr_icon_gamepad_unknown;
+	break;
+}
+
+//Draw the icon for the binding
+draw_sprite(_sprite, 0, x, y);
 ```
 
 <!-- tabs:end -->
@@ -359,7 +500,11 @@ This function is entirely optional. If a gamepad axis binding has no specific th
 #### **Example**
 
 ```gml
-//TODO lol
+//Apply minimum and maximum threshold to all movement verbs
+input_binding_threshold_set(input_binding_get("left" ), minThreshold, maxThreshold);
+input_binding_threshold_set(input_binding_get("right"), minThreshold, maxThreshold);
+input_binding_threshold_set(input_binding_get("up"   ), minThreshold, maxThreshold);
+input_binding_threshold_set(input_binding_get("down" ), minThreshold, maxThreshold);
 ```
 
 <!-- tabs:end -->
@@ -383,7 +528,13 @@ _Returns:_ A struct with two member variables, `.mini` and `.maxi`, containing t
 #### **Example**
 
 ```gml
-//TODO lol
+//Obtain the threshold values for the "left" verb (which is indicative of all movement verbs)
+var _binding = input_binding_get("left");
+var _struct = input_binding_threshold_get(_binding);
+
+//Then draw them to the screen
+draw_text(x, y,    "Min: " + string(_struct.mini));
+draw_text(x, y+20, "Max: " + string(_struct.maxi));
 ```
 
 <!-- tabs:end -->
@@ -400,25 +551,32 @@ _Returns:_ A struct with two member variables, `.mini` and `.maxi`, containing t
 
 _Returns:_ Array of structs containing verb/alternate indexes
 
-|Name           |Datatype                            |Purpose                                                                                                                                                                                                                                                           |
-|---------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`binding`      |binding                             |Binding to check against, as returned by [`input_binding_scan_tick()`](<Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex>) or [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>)|
-|`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                                                                                                                                                                                                              |
-|`[profileName]`|string                              |                                                                                                                                                                                                                                                                  |
+|Name           |Datatype|Purpose                                                                                                                                                                                                                                                           |
+|---------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`binding`      |binding |Binding to check against, as returned by [`input_binding_scan_tick()`](<Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex>) or [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>)|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                                                                                                                                                                                                              |
+|`[profileName]`|string  |                                                                                                                                                                                                                                                                  |
 
 The array that this function returns contains structs that define which verbs match the given binding. If the array is empty then there are no matching verbs.
 
 The structs returned in the array contain the following:
 
-|Variable    |Datatype                            |Purpose                     |
-|------------|------------------------------------|----------------------------|
+|Variable    |Datatype                  |Purpose                     |
+|------------|--------------------------|----------------------------|
 |`.verb`     |[verb](Verbs-and-Bindings)|Verb binding that conflicts |
-|`.alternate`|integer                             |Alternate index for the verb|
+|`.alternate`|integer                   |Alternate index for the verb|
 
 #### **Example**
 
 ```gml
-//TODO lol
+//Find out if any verbs are using the left mouse button
+var _verbArray = input_binding_get_verbs(input_binding_mouse_button(mb_left));
+
+if (array_length(_verbArray) > 0)
+{
+	//If so, draw a cursor at the mouse position
+	draw_sprite(spr_mouse, 0, input_mouse_x(), input_mouse_y());
+}
 ```
 
 <!-- tabs:end -->
