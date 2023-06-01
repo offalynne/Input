@@ -263,7 +263,9 @@ if (_gamepad > -1)
 	//Draw gamepad description
 	draw_text(200, 10, input_gamepad_get_description(_gamepad));
 
+	//Get struct containing LED stat information
 	var _led_pattern = input_led_pattern_get(_gamepad);
+	
 	var _led_x = 200;
 	var _led_y = 20;
 	if (_led_pattern.pattern == "radial")
