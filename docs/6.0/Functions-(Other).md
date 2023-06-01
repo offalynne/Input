@@ -263,7 +263,7 @@ if (_gamepad > -1)
 	//Draw gamepad description
 	draw_text(200, 10, input_gamepad_get_description(_gamepad));
 
-	//Get struct containing LED state
+	//Get struct containing LED pattern state
 	var _led_pattern = input_led_pattern_get(_gamepad);
 	
 	var _led_x = 200;
@@ -275,7 +275,7 @@ if (_gamepad > -1)
 	}
 	else if (_led_pattern.pattern != "unknown"))
 	{
-		//Iterate through LED states
+		//Iterate through individual LED states
 		for(var _led = 0; _led < array_length(_led_pattern.pattern); _led++)
 		{
 			//Draw state per LED
