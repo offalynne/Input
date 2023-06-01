@@ -55,8 +55,9 @@ Please see `input_cursor_coord_space_set()` for information on the `INPUT_COORD_
 
 ```gml
 //Grab the x/y coordinates of the cursor
-var _x = input_cursor_x();
-var _y = input_cursor_y();
+//We ensure we're in room space here
+var _x = input_cursor_x(INPUT_COORD_SPACE.ROOM);
+var _y = input_cursor_y(INPUT_COORD_SPACE.ROOM);
 
 //If the cursor is far enough away from us, aim at the cursor
 if (point_distance(x, y, _x, _y) > 10)
