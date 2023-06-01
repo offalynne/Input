@@ -21,7 +21,28 @@ Clears momentary (pressed/released) input and connection checkers. This covers v
 #### **Example**
 
 ```gml
-//TODO lol
+//Slide if button is held and instance is on the ground
+if (input_check("slide") && place_meeting(x, y + 1, obj_ground))
+{
+	motion_add(direction, 12);
+
+	//Clear slide verb until released
+	input_consume("slide");
+}
+```
+
+```gml
+if (entering_highscore_name)
+{
+	//Ignore all verbs while entering highscore name
+	input_consume(all);
+
+	if (input_check_keyboard_pressed(vk_enter))
+	{
+		highscore_add(keyboard_string, score);
+		entering_highscore_name = false;
+	}
+}
 ```
 
 <!-- tabs:end -->
@@ -50,7 +71,12 @@ Adds a keyboard key to be ignored by Input. This will affect binding detection, 
 #### **Example**
 
 ```gml
-//TODO lol
+////On boot...
+
+//Ignore 'Ctrl' keys for rebinding
+input_ignore_key_add(vk_lcontrol);
+input_ignore_key_add(vk_rcontrol);
+input_ignore_key_add(vk_control);
 ```
 
 <!-- tabs:end -->
@@ -76,7 +102,14 @@ Removes a keyboard key from the ignore list.
 #### **Example**
 
 ```gml
-//TODO lol
+////On boot...
+
+//Don't ignore 'Cmd' keys for rebinding on MacOS
+if (os_type == os_macosx)
+{
+	input_ignore_key_remove(vk_lmeta);
+	input_ignore_key_remove(vk_rmeta);
+}
 ```
 
 <!-- tabs:end -->
@@ -104,7 +137,16 @@ Returns an array that contains bindings for each keyboard key, mouse button, and
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw input debug for players
+for(var _i = 0; _i < INPUT_MAX_PLAYERS; _i++)
+{
+	//When an F-key matches player index
+	if (input_keyboard_check(vk_f1 + _i))
+	{
+		//...show pressed bindings for that player
+		draw_text(10, 10 + 20*_i, string(input_debug_player_input(_i)));
+	}
+}
 ```
 
 <!-- tabs:end -->
@@ -134,7 +176,21 @@ Returns an array that contains bindings for each keyboard key, mouse button, and
 #### **Example**
 
 ```gml
-//TODO lol
+//Track change in input count
+static _input_count_previous = 0;
+    
+//Get all input
+var _debug_input = input_debug_all_input();
+
+//Print if input count is changed
+var _len = array_length(_debug_input);
+if ((_len > 0) && (_len != _input_count_previous))
+{
+	show_debug_message(_debug_input);
+}
+
+//Update count
+_input_count_previous = _len;
 ```
 
 <!-- tabs:end -->
@@ -160,7 +216,12 @@ Returns an array that contains bindings for each keyboard key, mouse button, and
 #### **Example**
 
 ```gml
-//TODO lol
+//Hide aim pointer and pause if focus is lost
+if (!input_window_has_focus() && !game_paused)
+{
+	game_paused = true;
+	obj_reticule.visible = false;
+}
 ```
 
 <!-- tabs:end -->
@@ -195,7 +256,35 @@ The struct returned by the function contains the following member variables:
 #### **Example**
 
 ```gml
-//TODO lol
+///Draw controller LED pattern for one player
+var _gamepad = input_player_get_gamepad();
+if (_gamepad > -1)
+{
+	//Draw gamepad description
+	draw_text(200, 10, input_gamepad_get_description(_gamepad));
+
+	var _led_pattern = input_led_pattern_get(_gamepad);
+	var _led_x = 200;
+	var _led_y = 20;
+	if (_led_pattern.pattern == "radial")
+	{
+		//Draw radial sprite using value for subimage
+		draw_sprite(spr_radial_led, _led_pattern.value - 1, _led_x, _led_y);
+	}
+	else if (_led_pattern.pattern != "unknown"))
+	{
+		//Iterate through LED states
+		for(var _led = 0; _led < array_length(_led_pattern.pattern); _led++)
+		{
+			//Draw state per LED
+			draw_sprite(spr_led_light, _led_pattern.pattern[_led], _led_x, _led_y);
+
+			//Offset position of next LED
+			_led_x += ((_led_pattern.pattern == "horizontal")? 12 : 0);
+			_led_y += ((_led_pattern.pattern == "vertical")? 12 : 0);
+		}
+	}
+}
 ```
 
 <!-- tabs:end -->
@@ -226,7 +315,17 @@ Shows the onscreen virtual keyboard on mobile platforms and SteamOS with the [St
 #### **Example**
 
 ```gml
-//TODO lol
+///Prompt user to enter a numeric value
+if (INPUT_KEYBOARD_TYPE == "virtual")
+{
+	input_keyboard_virtual_show(kbv_type_numbers);
+	
+	set_hud_string("Enter passcode");
+}
+else if (INPUT_KEYBOARD_TYPE == "async")
+{
+	async_id = get_integer_async("Enter passcode", 1234);
+}
 ```
 
 <!-- tabs:end -->
@@ -249,7 +348,13 @@ Hides the onscreen virtual keyboard on mobile platforms and SteamOS with the [St
 #### **Example**
 
 ```gml
-//TODO lol
+//Abort login if the network connection drops
+if (os_is_network_connected(false))
+{
+	input_keyboard_virtual_hide();
+	
+	set_hud_string("Network disconnected");
+}
 ```
 
 <!-- tabs:end -->
