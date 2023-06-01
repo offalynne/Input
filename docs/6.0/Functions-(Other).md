@@ -318,15 +318,23 @@ Shows the onscreen virtual keyboard on mobile platforms and SteamOS with the [St
 
 ```gml
 ///Prompt user to enter a numeric value
+var _default_value = 1234;
+var _caption = "Enter passcode";
 if (INPUT_KEYBOARD_TYPE == "virtual")
 {
+	//Set keyboard string to default value
+	keyboard_string = string(_default_value);
+
+	//Show an onscreen keyboard
 	input_keyboard_virtual_show(kbv_type_numbers);
 	
-	set_hud_string("Enter passcode");
+	//Prompt user for number entry
+	set_hud_string(_caption);
 }
 else if (INPUT_KEYBOARD_TYPE == "async")
 {
-	async_id = get_integer_async("Enter passcode", 1234);
+	//Show a numeric entry dialogue
+	async_id = get_integer_async(_caption, _default_value);
 }
 ```
 
