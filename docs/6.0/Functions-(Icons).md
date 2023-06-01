@@ -59,14 +59,15 @@ For example, `input_binding_get_icon(input_binding_get("jump"))` will return an 
 #### **Example**
 
 ```gml
+//If the new binding is valid...
 if (input_binding_is_valid(newBinding))
 {
+	//Draw some text to announce the new binding
 	draw_set_halign(fa_center);
-	draw_set_valign(fa_middle);
 	draw_text(x, y, "Set a new binding!");
 	draw_set_halign(fa_left);
-	draw_set_valign(fa_top);
 
+	//And then draw the icon for the new binding
 	draw_sprite(input_binding_get_icon(newBinding), 0, x, y + 30);
 }
 ```
