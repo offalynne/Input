@@ -317,7 +317,7 @@ Shows the onscreen virtual keyboard on mobile platforms and SteamOS with the [St
 #### **Example**
 
 ```gml
-///P()rompt user to enter a numeric value
+///Prompt user to enter a numeric value
 if (INPUT_KEYBOARD_TYPE == "virtual")
 {
 	input_keyboard_virtual_show(kbv_type_numbers);
