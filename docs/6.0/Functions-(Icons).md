@@ -28,7 +28,9 @@ Returns the icon associated with the given verb for the device that the given pl
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw an icon sprite for the "jump" verb
+//(See __input_config_icons() for configuration)
+draw_sprite(input_verb_get_icon("jump"), 0, x, y);
 ```
 
 <!-- tabs:end -->
@@ -57,7 +59,16 @@ For example, `input_binding_get_icon(input_binding_get("jump"))` will return an 
 #### **Example**
 
 ```gml
-//TODO lol
+if (input_binding_is_valid(newBinding))
+{
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
+	draw_text(x, y, "Set a new binding!");
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_top);
+
+	draw_sprite(input_binding_get_icon(newBinding), 0, x, y + 30);
+}
 ```
 
 <!-- tabs:end -->
