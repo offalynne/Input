@@ -258,7 +258,7 @@ The struct returned by the function contains the following member variables:
 ```gml
 ///Draw controller LED pattern for one player
 var _gamepad = input_player_get_gamepad();
-if (_gamepad > -1)
+if (input_gamepad_is_connected(_gamepad))
 {
 	//Draw gamepad description
 	draw_text(200, 10, input_gamepad_get_description(_gamepad));
