@@ -8,9 +8,6 @@ y_speed += xy_acceleration*input_y("left", "right", "up", "down", player);
 x_speed *= xy_damping;
 y_speed *= xy_damping;
 
-var _old_x = x;
-var _old_y = y;
-
 //Move in the x-axis using the old school granny step method
 var _dx = sign(x_speed);
 repeat(abs(x_speed))
@@ -85,10 +82,4 @@ else if (input_check("shoot", player))
         creator   = other.id;
         direction = other.aim_direction;
     }
-}
-
-//Keep the cursor moving along with the player
-if (input_source_using(INPUT_GAMEPAD, player))
-{
-    input_cursor_set(x - _old_x, y - _old_y, player, true);
 }
