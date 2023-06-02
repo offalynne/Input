@@ -85,7 +85,7 @@ if ((paused == false) && input_check_pressed("pause"))
 {
     //Set gamepad light to default
     input_color_reset();
-    
+
     paused = true;
 }
 ```
