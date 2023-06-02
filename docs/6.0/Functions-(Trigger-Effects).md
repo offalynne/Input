@@ -22,7 +22,12 @@ Adaptive trigger effects are available for the DualSense gamepad on the PlayStat
 #### **Example**
 
 ```gml
-//TODO lol
+if (game_over)
+{
+	//Turn off trigger effects
+	input_trigger_effect_off(gp_shoulderlb);
+	input_trigger_effect_off(gp_shoulderrb);
+}
 ```
 
 <!-- tabs:end -->
@@ -47,7 +52,17 @@ Adaptive trigger effects are available for the DualSense gamepad on the PlayStat
 #### **Example**
 
 ```gml
-//TODO lol
+//Add resistance when in sand
+if ((in_sand == false) && instance_place(x, y, obj_sand))
+{
+	image_blend = c_yellow; //Tint the instance
+	friction = 0.5;         //Set friction
+
+	//Set feedback effect on left trigger
+	input_trigger_effect_feedback(gp_shoulderlb, 0.3, 0.5);
+
+	in_sand = true;
+}
 ```
 
 <!-- tabs:end -->
@@ -73,7 +88,17 @@ Adaptive trigger effects are available for the DualSense gamepad on the PlayStat
 #### **Example**
 
 ```gml
-//TODO lol
+//Add trigger vibration when pressing the gas pedal
+if ((using_gas == false) && input_check("accelerator"))
+{
+	audio_play_sound(snd_gas, 0, true);     //Loop sound effect
+	speed = input_value("accelerator") * 5; //Set speed
+
+	//Set vibration effect on right trigger
+	input_trigger_effect_vibration(gp_shoulderrb, 0.2, 0.5, 0.2);
+
+	using_gas = true;
+}
 ```
 
 <!-- tabs:end -->
@@ -99,7 +124,17 @@ Adaptive trigger effects are available for the DualSense gamepad on the PlayStat
 #### **Example**
 
 ```gml
-//TODO lol
+//Add trigger effect when weapon is equipped
+if ((using_pistol == false) && input_check_pressed("equip pistol"))
+{
+	//Play sound effect
+	audio_play_sound(snd_unholster, 0, false);
+
+	//Set trigger effect on right trigger
+	input_trigger_effect_weapon(gp_shoulderrb, 0.7, 0.85, 1);
+
+	using_pistol = true;
+}
 ```
 
 <!-- tabs:end -->
@@ -124,7 +159,26 @@ Adaptive trigger effects are available for the DualSense gamepad on the PlayStat
 #### **Example**
 
 ```gml
-//TODO lol
+//Check for hip fire
+if (hip_firing == false)
+{
+	//Check trigger effect or "fire" verb
+	if ((input_trigger_effect_get_state(gp_shoulderrb) == INPUT_TRIGGER_STATE.EFFECT_WEAPON_FIRED)
+	||  (input_check_pressed("fire"))
+	{
+		//Play sound effect
+		audio_play_sound(snd_gunshot, 0, false);
+
+		//Create bullet instance
+		with (instance_create_depth(x, y, depth - 1, obj_bullet))
+		{
+			direction = other.direction;
+			speed = other.speed + 8;
+		}
+
+		hip_firing = true;
+	}
+}
 ```
 
 <!-- tabs:end -->
@@ -151,7 +205,17 @@ Pauses all trigger effects when `state` is `<false>`.  While paused, no new trig
 #### **Example**
 
 ```gml
-//TODO lol
+//Pause game
+if ((game_paused == false) && input_check_pressed("pause"))
+{
+	audio_pause_all();  //Pause sound
+	input_vibrate_set_pause(true); //Pause vibration events
+
+	//Pause trigger effects
+	input_trigger_effect_set_pause(true);
+
+	game_paused = true;
+}
 ```
 
 <!-- tabs:end -->
@@ -175,7 +239,16 @@ Pauses all trigger effects when `state` is `<false>`.  While paused, no new trig
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw trigger effect state enums
+if (input_trigger_effect_get_pause())
+{
+	draw_text(x, y, "Triggers effects are paused!");
+}
+else
+{
+	draw_text(x, y,    "Left trigger state  #"  + string(input_trigger_effect_get_state(gp_shoulderlb));
+	draw_text(x, y+10, "Right trigger state #" + string(input_trigger_effect_get_state(gp_shoulderrb));
+}
 ```
 
 <!-- tabs:end -->
@@ -200,7 +273,8 @@ Pauses all trigger effects when `state` is `<false>`.  While paused, no new trig
 #### **Example**
 
 ```gml
-//TODO lol
+//Set trigger effect strength to half
+input_trigger_effect_set_strength(0.5);
 ```
 
 <!-- tabs:end -->
@@ -224,7 +298,8 @@ Pauses all trigger effects when `state` is `<false>`.  While paused, no new trig
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw trigger effect strength
+draw_text(x, y, "Trigger effect strength: ", string(input_trigger_effect_get_strength()));
 ```
 
 <!-- tabs:end -->
