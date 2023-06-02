@@ -24,7 +24,7 @@ function input_binding_get_verbs(_binding, _player_index = 0, _profile_name = un
         
         if (_profile_name == undefined)
         {
-            __input_trace("Warning! Cannot get verbs from binding, profile was <undefined>");
+            __input_trace(true, "Warning! Cannot get verbs from binding, profile was <undefined>");
             return _output_array;
         }
         

@@ -1,6 +1,6 @@
 function __input_exception_handler()
 {
-    __input_trace(argument0);
+    __input_trace(true, argument0);
     
     show_message(argument0.longMessage);
     

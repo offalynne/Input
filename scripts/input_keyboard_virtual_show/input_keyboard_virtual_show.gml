@@ -7,8 +7,8 @@ function input_keyboard_virtual_show(_virtual_keyboard_type = kbv_type_default)
     static __warned = false;    
     if (!__warned)
     {
-        if (INPUT_KEYBOARD_TYPE != "virtual") __input_trace("Warning! Onscreen keyboard is not suitable for use on the current platform");
-        if (INPUT_KEYBOARD_TYPE == "async")   __input_trace("Consider using async dialog for modal text input instead");        
+        if (INPUT_KEYBOARD_TYPE != "virtual") __input_trace(true, "Warning! Onscreen keyboard is not suitable for use on the current platform");
+        if (INPUT_KEYBOARD_TYPE == "async")   __input_trace(true, "Consider using async dialog for modal text input instead");        
         __warned = true;
     }
     

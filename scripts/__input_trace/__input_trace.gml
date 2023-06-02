@@ -1,8 +1,10 @@
 function __input_trace()
 {
+    if (__INPUT_SILENT && argument0) return; //Suppressed and not forced
+    
     var _string = "";
-    var _i = 0;
-    repeat(argument_count)
+    var _i = 1;
+    repeat(argument_count - 1)
     {
         _string += string(argument[_i]);
         ++_i;

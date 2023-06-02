@@ -57,7 +57,7 @@ function __input_class_gamepad(_index) constructor
         {
             custom_mapping = false;
             
-            if (!__INPUT_SILENT) __input_trace("Warning! Resetting Input's mapping for gamepad ", index);
+           __input_trace(false, "Warning! Resetting Input's mapping for gamepad ", index);
             
             mapping_gm_to_raw = {};
             mapping_raw_to_gm = {};
@@ -76,33 +76,13 @@ function __input_class_gamepad(_index) constructor
         __input_gamepad_set_mapping();
         
         virtual_set();
-        led_set();
         swap_ab();
         
-        __vibration_support = __global.__vibration_allowed && (xinput || !__INPUT_ON_WINDOWS);        
-        if (__vibration_support)
-        {
-            if (os_type == os_ps5)
-            {
-                ps5_gamepad_set_vibration_mode(index, ps5_gamepad_vibration_mode_compatible);
-            }            
-            else
-            {
-                if ((__INPUT_ON_WINDOWS || __INPUT_ON_SWITCH) && __input_string_contains(raw_type, "JoyCon", "SwitchHandheld"))
-                {
-                    __vibration_scale = INPUT_VIBRATION_JOYCON_STRENGTH;
-                }
-                else
-                {
-                    __vibration_scale = 1;
-                }
-            }
+        led_set();
+        gamepad_motion_set();
+        __input_gamepad_set_vibration();
         
-            gamepad_set_vibration(index, 0, 0);
-        }
-
-        if (__global.__gamepad_motion_support) __motion = new __input_class_gamepad_motion(index);
-        if (!__INPUT_SILENT)__input_trace("Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
+        __input_trace(false, "Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
     }
     
     /// @param GMconstant
@@ -198,7 +178,7 @@ function __input_class_gamepad(_index) constructor
                 {
                     if ((gamepad_get_mapping(index) != "") && (gamepad_get_mapping(index) != "no mapping"))
                     {
-                        if (!__INPUT_SILENT) __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
+                       __input_trace(false, "Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
                         mac_cleared_mapping = true;
                     }
                 
@@ -207,13 +187,13 @@ function __input_class_gamepad(_index) constructor
                 }
                 else
                 {
-                    if (!__INPUT_SILENT) __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
+                   __input_trace(false, "Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
                     gamepad_remove_mapping(index);
                 }
             }
             else if (!INPUT_ON_CONSOLE)
             {
-                __input_trace("Gamepad ", index, " cannot remove GameMaker's native mapping string, this feature is not supported by Input on this platform");
+                __input_trace(true, "Gamepad ", index, " cannot remove GameMaker's native mapping string, this feature is not supported by Input on this platform");
             }
         }
         
@@ -248,7 +228,7 @@ function __input_class_gamepad(_index) constructor
                 with mapping_gm_to_raw[$ gp_shoulderlb] scale = 255;
                 with mapping_gm_to_raw[$ gp_shoulderrb] scale = 255;
                 scale_trigger = false;
-                if (!__INPUT_SILENT) __input_trace("Recalibrated XInput trigger scale for gamepad ", index);
+               __input_trace(false, "Recalibrated XInput trigger scale for gamepad ", index);
             }
         
             //Set up alternate Stadia mapping
@@ -262,7 +242,7 @@ function __input_class_gamepad(_index) constructor
                 set_mapping(gp_shoulderrb, 4, __INPUT_MAPPING.AXIS, "righttrigger").extended_range = true;
                 set_mapping(gp_shoulderlb, 5, __INPUT_MAPPING.AXIS, "lefttrigger" ).extended_range = true;
                 test_trigger = false;                
-                if (!__INPUT_SILENT) __input_trace("Setting Stadia controller to analogue trigger mapping for gamepad ", index);
+               __input_trace(false, "Setting Stadia controller to analogue trigger mapping for gamepad ", index);
             }
         }
         
@@ -313,10 +293,18 @@ function __input_class_gamepad(_index) constructor
     {
         if (__input_gamepad_type_swap_ab(simple_type) && is_struct(mapping_gm_to_raw[$ string(gp_face1)]) && is_struct(mapping_gm_to_raw[$ string(gp_face2)]))
         {
-            if (__INPUT_DEBUG) __input_trace("  (Swapping A and B)");
+            if (__INPUT_DEBUG) __input_trace(true, "  (Swapping A and B)");
             var _a_mapping = mapping_gm_to_raw[$ string(gp_face1)].raw;
             set_mapping(gp_face1, mapping_gm_to_raw[$ string(gp_face2)].raw, __INPUT_MAPPING.BUTTON, "a");
             set_mapping(gp_face2, _a_mapping, __INPUT_MAPPING.BUTTON, "b");
+        }
+    }
+    
+    static gamepad_motion_set = function()
+    {
+        if (__global.__gamepad_motion_support)
+        {
+            __motion = new __input_class_gamepad_motion(index);
         }
     }
     

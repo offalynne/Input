@@ -32,7 +32,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
         }
         else
         {
-            __input_trace("Warning! \"", _fallback_category_name, "\" icon data not found");
+            __input_trace(true, "Warning! \"", _fallback_category_name, "\" icon data not found");
             _fallback_icon_struct = {};
         }
     }
@@ -96,7 +96,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
         _icon = _fallback_icon_struct[$ _label];
         if (_icon == undefined)
         {
-            __input_trace("Warning! Could not find valid icon for \"", _label, "\" using \"", _fallback_category_name, "\"");
+            __input_trace(true, "Warning! Could not find valid icon for \"", _label, "\" using \"", _fallback_category_name, "\"");
             _icon = _label;
         }
     }

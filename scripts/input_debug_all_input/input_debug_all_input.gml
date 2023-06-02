@@ -14,7 +14,7 @@ function input_debug_all_input(_ignore_array = undefined, _allow_array = undefin
     
     var _result = [];
     
-    //Fic minor misuse of allow/ignore arrays
+    //Fix minor misuse of allow/ignore arrays
     if (!is_array(_allow_array ) && (_allow_array  != undefined)) _allow_array  = [_allow_array ];
     if (!is_array(_ignore_array) && (_ignore_array != undefined)) _ignore_array = [_ignore_array];
     

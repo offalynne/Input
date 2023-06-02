@@ -66,7 +66,7 @@ function __input_class_player() constructor
     {
         if (variable_struct_exists(__profiles_dict, _profile_name)) __input_error("Profile \"", _profile_name, "\" already exists for player ", __index);
         
-        if (__INPUT_DEBUG_PROFILES) __input_trace("Profile \"", _profile_name, "\" created for player ", __index);
+        if (__INPUT_DEBUG_PROFILES) __input_trace(true, "Profile \"", _profile_name, "\" created for player ", __index);
         
         var _new_profile_struct = {};
         var _v = 0;
@@ -96,7 +96,7 @@ function __input_class_player() constructor
             __input_error("Cannot remove profile \"", _profile_name, "\" as it is a default profile");
         }
         
-        if (__INPUT_DEBUG_PROFILES) __input_trace("Profile \"", _profile_name, "\" destroyed for player ", __index);
+        if (__INPUT_DEBUG_PROFILES) __input_trace(true, "Profile \"", _profile_name, "\" destroyed for player ", __index);
         
         if (__profile_name == _profile_name) __profile_name = undefined;
         variable_struct_remove(__profiles_dict, _profile_name);
@@ -118,7 +118,7 @@ function __input_class_player() constructor
     {
         if (_profile_name == undefined)
         {
-            __input_trace("Warning! Failed to set profile for player ", __index, " (was ", _profile_name, ")");
+            __input_trace(true, "Warning! Failed to set profile for player ", __index, " (was ", _profile_name, ")");
             return;
         }
         
@@ -127,7 +127,7 @@ function __input_class_player() constructor
             __input_error("Profile \"", _profile_name, "\" doesn't exist for player ", __index);
         }
         
-        if (__profile_name != _profile_name) __input_trace("Setting player ", __index, " profile to \"", _profile_name, "\"");
+        if (__profile_name != _profile_name) __input_trace(true, "Setting player ", __index, " profile to \"", _profile_name, "\"");
         __profile_name = _profile_name;
     }
     
@@ -363,7 +363,7 @@ function __input_class_player() constructor
         array_resize(__source_array, 0);
         __last_input_time = __global.__current_time; //Set the last input time to delay hotswapping for a little while
         
-        if (__INPUT_DEBUG_SOURCES) __input_trace("Sources cleared for player ", __index);
+        if (__INPUT_DEBUG_SOURCES) __input_trace(true, "Sources cleared for player ", __index);
     }
     
     /// @param source
@@ -375,7 +375,7 @@ function __input_class_player() constructor
         {
             if (__source_array[_i] == _source)
             {
-                if (__INPUT_DEBUG_SOURCES) __input_trace("Cannot add ", _source, " to player ", __index, ", it has already been assigned");
+                if (__INPUT_DEBUG_SOURCES) __input_trace(true, "Cannot add ", _source, " to player ", __index, ", it has already been assigned");
                 return;
             }
             
@@ -392,7 +392,7 @@ function __input_class_player() constructor
         //Set the touch player index
         if ((_source == INPUT_TOUCH) || (INPUT_MOUSE_ALLOW_VIRTUAL_BUTTONS && (_source == INPUT_MOUSE))) __input_virtual_player_set(self);
         
-        if (__INPUT_DEBUG_SOURCES) __input_trace("Assigned source ", _source, " to player ", __index);
+        if (__INPUT_DEBUG_SOURCES) __input_trace(true, "Assigned source ", _source, " to player ", __index);
     }
     
     /// @param source
@@ -424,7 +424,7 @@ function __input_class_player() constructor
                 if (((_source == INPUT_TOUCH) || (INPUT_MOUSE_ALLOW_VIRTUAL_BUTTONS && (_source == INPUT_MOUSE))) && (__global.__touch_player == self)) __input_virtual_player_set(undefined);
                 
                 array_delete(__source_array, _i, 1);
-                if (__INPUT_DEBUG_SOURCES) __input_trace("Removed source ", _source, " from player ", __index);
+                if (__INPUT_DEBUG_SOURCES) __input_trace(true, "Removed source ", _source, " from player ", __index);
             }
             else
             {
@@ -573,7 +573,7 @@ function __input_class_player() constructor
         
         if (_profile_name == undefined)
         {
-            __input_trace("Warning! Cannot set binding, profile was <undefined>");
+            __input_trace(true, "Warning! Cannot set binding, profile was <undefined>");
             return;
         }
         
@@ -601,7 +601,7 @@ function __input_class_player() constructor
                             }
                             else
                             {
-                                __input_trace("Warning! Gamepad constant value ", _binding_gamepad_name, " cannot be used as keyboard binding for verb ", _verb, " in profile ", _profile_name);
+                                __input_trace(true, "Warning! Gamepad constant value ", _binding_gamepad_name, " cannot be used as keyboard binding for verb ", _verb, " in profile ", _profile_name);
                                 return;
                             }
                         }
@@ -612,7 +612,7 @@ function __input_class_player() constructor
                         }
                         else
                         {
-                            __input_trace("Warning! Keyboard binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
+                            __input_trace(true, "Warning! Keyboard binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
                         }
                         
                         return;
@@ -629,7 +629,7 @@ function __input_class_player() constructor
                         }
                         else
                         {
-                            __input_trace("Warning! Mouse binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
+                            __input_trace(true, "Warning! Mouse binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
                         }
                         
                         return;
@@ -645,7 +645,7 @@ function __input_class_player() constructor
                         }
                         else
                         {
-                            __input_trace("Warning! Touchscreen binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
+                            __input_trace(true, "Warning! Touchscreen binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
                         }
                         
                         return;
@@ -661,7 +661,7 @@ function __input_class_player() constructor
                         }
                         else
                         {
-                            __input_trace("Warning! Gamepad binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
+                            __input_trace(true, "Warning! Gamepad binding \"", input_binding_get_name(_binding_struct), "\" not supported for profile \"", _profile_name, "\"");
                         }
                         
                         return;
@@ -672,7 +672,7 @@ function __input_class_player() constructor
         
         __profiles_dict[$ _profile_name][$ _verb][@ _alternate] = _binding_struct;
         
-        if (!__INPUT_SILENT) __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " set to \"", input_binding_get_name(_binding_struct), "\"");
+       __input_trace(false, "Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " set to \"", input_binding_get_name(_binding_struct), "\"");
     }
     
     /// @param profileName
@@ -684,12 +684,12 @@ function __input_class_player() constructor
         
         if (_profile_name == undefined)
         {
-            __input_trace("Warning! Cannot remove binding, profile was <undefined>");
+            __input_trace(true, "Warning! Cannot remove binding, profile was <undefined>");
             return;
         }
         
         __profiles_dict[$ _profile_name][$ _verb][@ _alternate] = input_binding_empty();
-        if (__INPUT_DEBUG_BINDING) __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " removed (set to null)");
+        if (__INPUT_DEBUG_BINDING) __input_trace(true, "Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " removed (set to null)");
     }
     
     /// @param profileName
@@ -701,7 +701,7 @@ function __input_class_player() constructor
         
         if (_profile_name == undefined)
         {
-            __input_trace("Warning! Cannot reset binding, profile was <undefined>");
+            __input_trace(true, "Warning! Cannot reset binding, profile was <undefined>");
             return;
         }
         
@@ -718,7 +718,7 @@ function __input_class_player() constructor
         //And set the value!
         __profiles_dict[$ _profile_name][$ _verb][@ _alternate] = _binding_struct;
         
-        if (__INPUT_DEBUG_BINDING) __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " reset to \"", input_binding_get_name(_binding_struct), "\"");
+        if (__INPUT_DEBUG_BINDING) __input_trace(true, "Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " reset to \"", input_binding_get_name(_binding_struct), "\"");
     }
     
     #endregion
@@ -803,7 +803,7 @@ function __input_class_player() constructor
         
         if (!is_struct(__verb_state_dict[$ _verb_name]))
         {
-            if (__INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one");
+            if (__INPUT_DEBUG_VERBS) __input_trace(true, "Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one");
             
             var _verb = new __input_class_verb_state();
             _verb.__player = self;
@@ -839,7 +839,7 @@ function __input_class_player() constructor
         }
         else
         {
-            if (__INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one as a chord");
+            if (__INPUT_DEBUG_VERBS) __input_trace(true, "Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one as a chord");
             
             var _verb_state_struct = new __input_class_verb_state();
             _verb_state_struct.__player = self;
@@ -869,7 +869,7 @@ function __input_class_player() constructor
         _axis_struct.mini = _min
         _axis_struct.maxi = _max;
         
-        if (__INPUT_DEBUG_BINDING) __input_trace("Axis threshold for axis \"", _axis_name, "\" set to ", _min, " -> ", _max);
+        if (__INPUT_DEBUG_BINDING) __input_trace(true, "Axis threshold for axis \"", _axis_name, "\" set to ", _min, " -> ", _max);
         
         return _axis_struct;
     }
@@ -880,7 +880,7 @@ function __input_class_player() constructor
         var _struct = __axis_thresholds_dict[$ _axis_name];
         if (is_struct(_struct)) return _struct;
         
-        if (__INPUT_DEBUG_BINDING) __input_trace("Warning! No axis threshold found for axis ", _axis_name);
+        if (__INPUT_DEBUG_BINDING) __input_trace(true, "Warning! No axis threshold found for axis ", _axis_name);
         
         if (__input_axis_is_directional(_axis_name))
         {
@@ -932,7 +932,7 @@ function __input_class_player() constructor
         
         if (_profile_name == undefined)
         {
-            __input_trace("Warning! Cannot get invaliid bindings, profile was <undefined>");
+            __input_trace(true, "Warning! Cannot get invaliid bindings, profile was <undefined>");
             return _output;
         }
         
@@ -1131,7 +1131,7 @@ function __input_class_player() constructor
         }
         else
         {
-            __input_trace("Warning! Player ", __index, " gyro parameters not found, using defaults");
+            __input_trace(true, "Warning! Player ", __index, " gyro parameters not found, using defaults");
             __gyro_axis_x        = INPUT_GYRO_DEFAULT_AXIS_X;
             __gyro_axis_y        = INPUT_GYRO_DEFAULT_AXIS_Y;
             __gyro_sensitivity_x = INPUT_GYRO_DEFAULT_SENSITIVITY_X;
@@ -1153,7 +1153,7 @@ function __input_class_player() constructor
         }
         else
         {
-            __input_trace("Warning! Player ", __index, " gamepad type override not found, defaulting to <undefined>");
+            __input_trace(true, "Warning! Player ", __index, " gamepad type override not found, defaulting to <undefined>");
             __gamepad_type_override = undefined;
         }
         
@@ -1169,7 +1169,7 @@ function __input_class_player() constructor
         }
         else
         {
-            __input_trace("Warning! Player ", __index, " vibration strength not found, defaulting to ", INPUT_VIBRATION_DEFAULT_STRENGTH);
+            __input_trace(true, "Warning! Player ", __index, " vibration strength not found, defaulting to ", INPUT_VIBRATION_DEFAULT_STRENGTH);
             __vibration_strength = INPUT_VIBRATION_DEFAULT_STRENGTH;
         }
         
@@ -1185,7 +1185,7 @@ function __input_class_player() constructor
         }
         else
         {
-            __input_trace("Warning! Player ", __index, " trigger effect strength not found, defaulting to ", INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH);
+            __input_trace(true, "Warning! Player ", __index, " trigger effect strength not found, defaulting to ", INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH);
             __vibration_strength = INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH;
         }
         
@@ -1201,7 +1201,7 @@ function __input_class_player() constructor
         }
         else
         {
-            __input_trace("Warning! Player ", __index, " cursor inversion not found, defaulting to <false>");
+            __input_trace(true, "Warning! Player ", __index, " cursor inversion not found, defaulting to <false>");
             __cursor_inverted = false;
         }
     }
@@ -1242,7 +1242,7 @@ function __input_class_player() constructor
     {
         if (__vibration_paused && !_event.__force)
         {
-            if (!__INPUT_SILENT) __input_trace("Warning! New vibration event ignored, player ", __index, " vibration is paused")
+           __input_trace(false, "Warning! New vibration event ignored, player ", __index, " vibration is paused")
         }
         else
         {
@@ -1257,7 +1257,7 @@ function __input_class_player() constructor
         
         if (__trigger_effect_paused)
         {
-            if (!__INPUT_SILENT) __input_trace("Warning! New trigger effect ignored, player ", __index, " trigger effect is paused");
+           __input_trace(false, "Warning! New trigger effect ignored, player ", __index, " trigger effect is paused");
             return;
         }
 
@@ -1346,7 +1346,7 @@ function __input_class_player() constructor
         {
             _gamepad_index = __source_get_gamepad();
         }
-    
+        
         if ((_gamepad_index < 0) || !is_struct(__global.__gamepads[_gamepad_index].__motion))
         {
             return undefined;
@@ -1372,7 +1372,7 @@ function __input_class_player() constructor
                     }
                     catch(_error)
                     {
-                        __input_trace("Warning! Failed to determine whether a view is active");
+                        __input_trace(true, "Warning! Failed to determine whether a view is active");
                     }
                     
                     if (_view_active)
@@ -1572,7 +1572,7 @@ function __input_class_player() constructor
         
         //if (!input_window_has_focus())
         //{
-        //    __input_trace("Binding scan failed: Game lost focus");
+        //    __input_trace(true, "Binding scan failed: Game lost focus");
         //    __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.LOST_FOCUS);
         //    return ;
         //}
@@ -1581,28 +1581,28 @@ function __input_class_player() constructor
         
         if (__source_contains(INPUT_TOUCH, false))
         {
-            __input_trace("Binding scan failed: Player ", __index, " is using INPUT_TOUCH which cannot be rebound");
+            __input_trace(true, "Binding scan failed: Player ", __index, " is using INPUT_TOUCH which cannot be rebound");
             __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_INVALID);
             return;
         }
         
         if (array_length(__source_array) <= 0)
         {
-            __input_trace("Binding scan failed: Source array for player ", __index, " is empty (the player has no source assigned)");
+            __input_trace(true, "Binding scan failed: Source array for player ", __index, " is empty (the player has no source assigned)");
             __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_INVALID);
             return;
         }
         
         if (array_length(_source_filter) <= 0)
         {
-            __input_trace("Binding scan failed: Source filter array for player ", __index, " is empty (no sources are permitted)");
+            __input_trace(true, "Binding scan failed: Source filter array for player ", __index, " is empty (no sources are permitted)");
             __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SOURCE_FILTER_EMPTY);
             return;
         }
         
         if (__ghost)
         {
-            __input_trace("Binding scan failed: Player ", __index, " is a ghost");
+            __input_trace(true, "Binding scan failed: Player ", __index, " is a ghost");
             __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.PLAYER_IS_GHOST);
             return;
         }
@@ -1616,14 +1616,14 @@ function __input_class_player() constructor
         
         if (!__connected)
         {
-            __input_trace("Binding scan failed: Player ", __index, " disconnected");
+            __input_trace(true, "Binding scan failed: Player ", __index, " disconnected");
             __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.PLAYER_DISCONNECTED);
             return;
         }
         
         if (__global.__current_time - __rebind_start_time > INPUT_BINDING_SCAN_TIMEOUT)
         {
-            __input_trace("Binding scan failed: Timed out");
+            __input_trace(true, "Binding scan failed: Timed out");
             __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.SCAN_TIMEOUT);
             return;
         }
@@ -1634,7 +1634,7 @@ function __input_class_player() constructor
         {
             if (!__sources_any_input())
             {
-                __input_trace("Now scanning for a new binding from player ", __index);
+                __input_trace(true, "Now scanning for a new binding from player ", __index);
                 __rebind_state = 2;
             }
         }
@@ -1677,7 +1677,7 @@ function __input_class_player() constructor
     
     static __binding_scan_success = function(_binding)
     {
-        __input_trace("Binding found for player ", __index, ": \"", _binding, "\"");
+        __input_trace(true, "Binding found for player ", __index, ": \"", _binding, "\"");
         __rebind_state = 0;
         
         if (is_method(__rebind_success_callback))
@@ -1696,7 +1696,7 @@ function __input_class_player() constructor
     
     static __binding_scan_failure = function(_error_code)
     {
-        __input_trace("Binding scan for player ", __index, " failed (error=", _error_code, ")");
+        __input_trace(true, "Binding scan for player ", __index, " failed (error=", _error_code, ")");
         __rebind_state = 0;
         
         if (is_method(__rebind_failure_callback))

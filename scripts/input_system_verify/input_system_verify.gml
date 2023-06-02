@@ -14,7 +14,7 @@ function input_system_verify(_json)
     }
     catch(_error)
     {
-        __input_trace("input_system_verify() failed with the following error: ", _error);
+        __input_trace(true, "input_system_verify() failed with the following error: ", _error);
     }
     
     //Restore the clone of the current settings

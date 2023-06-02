@@ -10,11 +10,11 @@ function input_ignore_key_remove(_key)
     
     if (variable_struct_exists(_global.__ignore_key_dict, _key))
     {
-        if (__INPUT_DEBUG) __input_trace("Un-ignoring keycode ", _key);
+        if (__INPUT_DEBUG) __input_trace(true, "Un-ignoring keycode ", _key);
         variable_struct_remove(_global.__ignore_key_dict, _key);
     }
     else
     {
-        __input_trace("Could not un-ignore keycode ", _key, ", it is already permitted");
+        __input_trace(true, "Could not un-ignore keycode ", _key, ", it is already permitted");
     }
 }

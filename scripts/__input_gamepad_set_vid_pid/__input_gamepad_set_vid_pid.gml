@@ -80,9 +80,9 @@ function __input_gamepad_set_vid_pid()
                     product     = _product_slice;
                     description = _work_string;
                 }
-                else if (!__INPUT_SILENT) 
+                else
                 {
-                    __input_trace("Gamepad description could not be parsed. Bindings for this gamepad may be incorrect (was \"", description, "\")");
+                    __input_trace(false, "Gamepad description could not be parsed. Bindings for this gamepad may be incorrect (was \"", description, "\")");
                 }
             }
             
@@ -111,7 +111,7 @@ function __input_gamepad_set_vid_pid()
         }
         else
         {
-            if (!__INPUT_SILENT) __input_trace("Warning! OS type check fell through unexpectedly (os_type = ", os_type, ")");
+           __input_trace(false, "Warning! OS type check fell through unexpectedly (os_type = ", os_type, ")");
             description = gamepad_get_description(index);
             vendor  = "";
             product = "";

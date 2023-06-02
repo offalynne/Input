@@ -71,6 +71,6 @@ function input_binding_scan_start(_success_method, _failure_method = undefined, 
         __rebind_success_callback = _success_method;
         __rebind_failure_callback = _failure_method;
         
-        __input_trace("Binding scan started for player ", _player_index);
+        __input_trace(true, "Binding scan started for player ", _player_index);
     }
 }

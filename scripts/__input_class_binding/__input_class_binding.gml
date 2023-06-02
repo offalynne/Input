@@ -70,7 +70,7 @@ function __input_class_binding() constructor
             case __INPUT_BINDING_GAMEPAD_AXIS:     return INPUT_GAMEPAD;  break;
             
             case undefined:
-                __input_trace("Warning! Binding type has not been defined");
+                __input_trace(true, "Warning! Binding type has not been defined");
                 return undefined;
             break;
             
@@ -137,7 +137,7 @@ function __input_class_binding() constructor
     {
         if (!is_struct(_binding_shell))
         {
-            __input_trace("Warning! Could not import binding, clearing this binding (typeof=", typeof(_binding_shell), ")");
+            __input_trace(true, "Warning! Could not import binding, clearing this binding (typeof=", typeof(_binding_shell), ")");
             _binding_shell = {};
         }
         
@@ -173,13 +173,13 @@ function __input_class_binding() constructor
         {
             switch(_value)
             {
-                case __INPUT_LEGACY_GP_GUIDE:    _value = gp_guide;    __input_trace("Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
-                case __INPUT_LEGACY_GP_MISC1:    _value = gp_misc1;    __input_trace("Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
-                case __INPUT_LEGACY_GP_TOUCHPAD: _value = gp_touchpad; __input_trace("Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
-                case __INPUT_LEGACY_GP_PADDLE1:  _value = gp_paddle1;  __input_trace("Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
-                case __INPUT_LEGACY_GP_PADDLE2:  _value = gp_paddle2;  __input_trace("Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
-                case __INPUT_LEGACY_GP_PADDLE3:  _value = gp_paddle3;  __input_trace("Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
-                case __INPUT_LEGACY_GP_PADDLE4:  _value = gp_paddle4;  __input_trace("Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
+                case __INPUT_LEGACY_GP_GUIDE:    _value = gp_guide;    __input_trace(true, "Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
+                case __INPUT_LEGACY_GP_MISC1:    _value = gp_misc1;    __input_trace(true, "Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
+                case __INPUT_LEGACY_GP_TOUCHPAD: _value = gp_touchpad; __input_trace(true, "Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
+                case __INPUT_LEGACY_GP_PADDLE1:  _value = gp_paddle1;  __input_trace(true, "Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
+                case __INPUT_LEGACY_GP_PADDLE2:  _value = gp_paddle2;  __input_trace(true, "Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
+                case __INPUT_LEGACY_GP_PADDLE3:  _value = gp_paddle3;  __input_trace(true, "Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
+                case __INPUT_LEGACY_GP_PADDLE4:  _value = gp_paddle4;  __input_trace(true, "Warning! Legacy gamepad constant found, updating value (= ", _value, ")"); break;
             }
         }
         

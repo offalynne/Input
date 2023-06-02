@@ -125,7 +125,7 @@ function __input_class_verb_state() constructor
         {
             if (held)
             {
-                if (__INPUT_DEBUG && __consumed) __input_trace("Un-consuming verb \"", name, "\"");
+                if (__INPUT_DEBUG && __consumed) __input_trace(true, "Un-consuming verb \"", name, "\"");
                 __consumed = false;
                 
                 if (_time - press_time < INPUT_DOUBLE_DELAY)

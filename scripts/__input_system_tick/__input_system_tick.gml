@@ -463,7 +463,7 @@ function __input_system_tick()
                 else
                 {
                     //Remove our gamepad handler
-                    if (!__INPUT_SILENT) __input_trace("Gamepad ", _g, " disconnected");
+                   __input_trace(false, "Gamepad ", _g, " disconnected");
                     
                     gamepad_set_vibration(_global.__gamepads[@ _g].index, 0, 0);
                     _global.__gamepads[@ _g] = undefined;
@@ -478,7 +478,7 @@ function __input_system_tick()
                             {
                                 if (__source_contains(INPUT_GAMEPAD[_g]))
                                 {
-                                    __input_trace("Player ", _p, " gamepad disconnected");
+                                    __input_trace(true, "Player ", _p, " gamepad disconnected");
                                     __source_remove(INPUT_GAMEPAD[_g]);
                                 }
                             }
@@ -492,8 +492,8 @@ function __input_system_tick()
             {
                 if (gamepad_is_connected(_g))
                 {
-                    __input_trace("Gamepad ", _g, " connected");
-                    if (!__INPUT_SILENT) __input_trace("New gamepad = \"", gamepad_get_description(_g), "\", GUID=\"", gamepad_get_guid(_g), "\", buttons = ", gamepad_button_count(_g), ", axes = ", gamepad_axis_count(_g), ", hats = ", gamepad_hat_count(_g));
+                    __input_trace(true, "Gamepad ", _g, " connected");
+                   __input_trace(false, "New gamepad = \"", gamepad_get_description(_g), "\", GUID=\"", gamepad_get_guid(_g), "\", buttons = ", gamepad_button_count(_g), ", axes = ", gamepad_axis_count(_g), ", hats = ", gamepad_hat_count(_g));
                     
                     _global.__gamepads[@ _g] = new __input_class_gamepad(_g);
                 }

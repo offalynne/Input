@@ -28,7 +28,7 @@ function input_binding_test_collisions(_verb_name, _src_binding, _player_index =
         
         if (_profile_name == undefined)
         {
-            __input_trace("Warning! Cannot test binding collisions, profile was <undefined>");
+            __input_trace(true, "Warning! Cannot test binding collisions, profile was <undefined>");
             return _output_array;
         }
         

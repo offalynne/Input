@@ -31,14 +31,14 @@ function input_binding_set_safe(_verb_name, _binding, _player_index = 0, _altern
         {
             if (array_length(_collisions) > 1)
             {
-                __input_trace("Warning! More than one binding collision found, resolution may not be desirable");
+                __input_trace(true, "Warning! More than one binding collision found, resolution may not be desirable");
             }
             
             _profile_name = _global.__players[_player_index].__profile_get(_profile_name);
             
             if (_profile_name == undefined)
             {
-                __input_trace("Warning! Cannot set binding, profile was <undefined>");
+                __input_trace(true, "Warning! Cannot set binding, profile was <undefined>");
                 return false;
             }
             
@@ -47,7 +47,7 @@ function input_binding_set_safe(_verb_name, _binding, _player_index = 0, _altern
             
             if ((_verb_name != _verb_b) || (_alternate != _alternate_b))
             {
-                __input_trace("Collision found in profile=", _profile_name, ", verb=", _verb_b, ", alternate=", _alternate_b);
+                __input_trace(true, "Collision found in profile=", _profile_name, ", verb=", _verb_b, ", alternate=", _alternate_b);
                 input_binding_swap(_verb_name, _alternate, _verb_b, _alternate_b, _player_index, _profile_name);
                 
                 //We have to force set the new binding in case we had a gamepad collision in multidevice mode with an existing binding without a specific gamepad index
@@ -55,7 +55,7 @@ function input_binding_set_safe(_verb_name, _binding, _player_index = 0, _altern
             }
             else
             {
-                __input_trace("New binding (", input_binding_get_name(_binding), ") is the same as existing binding for profile=", _profile_name, ", verb=", _verb_name, ", alternate=", _alternate);
+                __input_trace(true, "New binding (", input_binding_get_name(_binding), ") is the same as existing binding for profile=", _profile_name, ", verb=", _verb_name, ", alternate=", _alternate);
             }
         }
         
@@ -63,7 +63,7 @@ function input_binding_set_safe(_verb_name, _binding, _player_index = 0, _altern
     }
     else
     {
-        __input_trace("Warning! Value isn't a binding, ignoring");
+        __input_trace(true, "Warning! Value isn't a binding, ignoring");
         return false;
     }
 }

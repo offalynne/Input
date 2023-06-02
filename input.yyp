@@ -249,6 +249,7 @@
     {"id":{"name":"input_trigger_effect_off","path":"scripts/input_trigger_effect_off/input_trigger_effect_off.yy",},"order":0,},
     {"id":{"name":"input_trigger_effect_set_pause","path":"scripts/input_trigger_effect_set_pause/input_trigger_effect_set_pause.yy",},"order":5,},
     {"id":{"name":"input_trigger_effect_set_strength","path":"scripts/input_trigger_effect_set_strength/input_trigger_effect_set_strength.yy",},"order":7,},
+    {"id":{"name":"__input_gamepad_set_vibration","path":"scripts/__input_gamepad_set_vibration/__input_gamepad_set_vibration.yy",},"order":13,},
     {"id":{"name":"input_trigger_effect_vibration","path":"scripts/input_trigger_effect_vibration/input_trigger_effect_vibration.yy",},"order":2,},
     {"id":{"name":"input_trigger_effect_weapon","path":"scripts/input_trigger_effect_weapon/input_trigger_effect_weapon.yy",},"order":3,},
     {"id":{"name":"input_value","path":"scripts/input_value/input_value.yy",},"order":3,},

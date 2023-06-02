@@ -4,7 +4,7 @@ function __input_load_sdl2_from_string_internal(_string)
     
     var _t = get_timer();
     
-    if (!__INPUT_SILENT) __input_trace("Unpacking SDL2 string...");
+   __input_trace(false, "Unpacking SDL2 string...");
     
     //Split by newlines
     var _lines = string_split(_string, "\n", true);
@@ -58,7 +58,7 @@ function __input_load_sdl2_from_string_internal(_string)
         }
                 
         //If we didn't find a platform for the definition then show a warning message for it
-        if (_platform == undefined) __input_trace("Warning! Platform not found for ", _row_array);
+        if (_platform == undefined) __input_trace(true, "Warning! Platform not found for ", _row_array);
                 
         //We ignore any definition that has a platform that's different to our current platform
         if ((_platform == undefined) || (_platform == os_type))
@@ -99,7 +99,7 @@ function __input_load_sdl2_from_string_internal(_string)
             if (variable_struct_exists(_db_by_guid, _guid))
             {
                 //We have a GUID collision then it's probably the user overwriting
-                __input_trace("Warning! Overwriting GUID \"", _guid, "\" with ", _row_array, " (old=", _db_by_guid[$ _guid], ")");
+                __input_trace(true, "Warning! Overwriting GUID \"", _guid, "\" with ", _row_array, " (old=", _db_by_guid[$ _guid], ")");
             }
                     
             //Add this definition by GUID to our by-GUID database
@@ -107,11 +107,8 @@ function __input_load_sdl2_from_string_internal(_string)
         }
     }
     
-    if (!__INPUT_SILENT) 
-    {
-        __input_trace(_total_count, " controller definitions found, of which ", _platform_count, " are active for this platform");
-        __input_trace("Loaded in ", (get_timer() - _t)/1000, "ms");
-    }
+    __input_trace(false, _total_count, " controller definitions found, of which ", _platform_count, " are active for this platform");
+    __input_trace(false, "Loaded in ", (get_timer() - _t)/1000, "ms");
     
     return true;
 }

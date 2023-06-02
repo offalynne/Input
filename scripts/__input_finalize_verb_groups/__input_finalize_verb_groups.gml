@@ -43,5 +43,5 @@ function __input_finalize_verb_groups()
         ++_i;
     }
     
-    if (__INPUT_DEBUG_VERBS) __input_trace("Verb groups are ", _global.__verb_to_group_dict);
+    if (__INPUT_DEBUG_VERBS) __input_trace(true, "Verb groups are ", _global.__verb_to_group_dict);
 }

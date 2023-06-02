@@ -20,7 +20,7 @@ function __input_multiplayer_assignment_tick()
             {
                 if (input_player_connected(_p) && !input_player_connected(_p-1))
                 {
-                    __input_trace("Assignment: Moving player ", _p, " (connected) to ", _p-1, " (disconnected)");
+                    __input_trace(true, "Assignment: Moving player ", _p, " (connected) to ", _p-1, " (disconnected)");
                     input_player_swap(_p, _p-1);
                     _fail = true;
                 }
@@ -61,12 +61,12 @@ function __input_multiplayer_assignment_tick()
                 &&  (_global.__join_player_min > 1)
                 &&  (_global.__join_abort_callback != undefined))
                 {
-                    __input_trace("Assignment: Player ", _p, " aborted source assignment");
+                    __input_trace(true, "Assignment: Player ", _p, " aborted source assignment");
                     _abort = true;
                 }
                 else
                 {
-                    __input_trace("Assignment: Player ", _p, " joined");
+                    __input_trace(true, "Assignment: Player ", _p, " joined");
                 }
                 
                 //Make sure we don't leak input
@@ -83,7 +83,7 @@ function __input_multiplayer_assignment_tick()
     {
         if ((_global.__join_leave_verb != undefined) && input_check_pressed(_global.__join_leave_verb, _p))
         {
-            __input_trace("Assignment: Player ", _p, " left");
+            __input_trace(true, "Assignment: Player ", _p, " left");
             input_source_clear(_p);
         }
         
@@ -92,7 +92,7 @@ function __input_multiplayer_assignment_tick()
     
     if (_abort && (_global.__join_abort_callback != undefined))
     {
-        __input_trace("Assignment: Restoring source mode ", _global.__previous_source_mode);
+        __input_trace(true, "Assignment: Restoring source mode ", _global.__previous_source_mode);
         input_source_mode_set(_global.__previous_source_mode);
         _global.__previous_source_mode = _global.__source_mode;
         

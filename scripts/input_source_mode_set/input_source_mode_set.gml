@@ -21,7 +21,7 @@ function input_source_mode_set(_mode)
             break;
             
             case INPUT_SOURCE_MODE.JOIN:
-                __input_trace("Storing previous source mode (", _global.__previous_source_mode, ")");
+                __input_trace(true, "Storing previous source mode (", _global.__previous_source_mode, ")");
             break;
             
             case INPUT_SOURCE_MODE.HOTSWAP:

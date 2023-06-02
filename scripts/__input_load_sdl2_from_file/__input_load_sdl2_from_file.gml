@@ -2,7 +2,7 @@ function __input_load_sdl2_from_file(_filename)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
-    if (!__INPUT_SILENT)__input_trace("Loading SDL2 database from \"", _filename, "\"");
+    __input_trace(false, "Loading SDL2 database from \"", _filename, "\"");
     
     var _buffer = buffer_load(_filename);
     if (_buffer < 0)

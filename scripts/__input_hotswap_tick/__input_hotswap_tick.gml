@@ -8,7 +8,7 @@ function __input_hotswap_tick()
     {
         if (__ghost)
         {
-            if (!__INPUT_SILENT) __input_trace("Warning! Cannot hotswap because player 0 is a ghost");
+           __input_trace(false, "Warning! Cannot hotswap because player 0 is a ghost");
             return false;
         }
         
@@ -146,7 +146,7 @@ function __input_hotswap_tick_input()
                         ||  (!is_axis(gp_shoulderlb) && get_pressed(gp_shoulderlb))
                         ||  (!is_axis(gp_shoulderrb) && get_pressed(gp_shoulderrb)))
                         {
-                                if (__INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_GAMEPAD[_g]);
+                                if (__INPUT_DEBUG_SOURCES) __input_trace(true, "Hotswapping player 0 to ", INPUT_GAMEPAD[_g]);
                                 return INPUT_GAMEPAD[_g];
                         }
                     
@@ -161,7 +161,7 @@ function __input_hotswap_tick_input()
                             ||  ((abs(get_value(gp_axisrh    )) > _player.__axis_threshold_get(gp_axisrh    ).mini) && (abs(get_delta(gp_axisrh    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
                             ||  ((abs(get_value(gp_axisrv    )) > _player.__axis_threshold_get(gp_axisrv    ).mini) && (abs(get_delta(gp_axisrv    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD)))
                             {
-                                if (__INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_GAMEPAD[_g]);
+                                if (__INPUT_DEBUG_SOURCES) __input_trace(true, "Hotswapping player 0 to ", INPUT_GAMEPAD[_g]);
                                 return INPUT_GAMEPAD[_g];
                             }
                         }
@@ -177,7 +177,7 @@ function __input_hotswap_tick_input()
                             ||  get_pressed(gp_paddle3)
                             ||  get_pressed(gp_paddle4))
                             {
-                                if (__INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_GAMEPAD[_g]);
+                                if (__INPUT_DEBUG_SOURCES) __input_trace(true, "Hotswapping player 0 to ", INPUT_GAMEPAD[_g]);
                                 return INPUT_GAMEPAD[_g];
                             }
                         }
@@ -196,7 +196,7 @@ function __input_hotswap_tick_input()
     &&  keyboard_check(vk_anykey)
     &&  !__input_key_is_ignored(__input_keyboard_key())) //Ensure that this key isn't one we're trying to ignore
     {
-        if (__INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_KEYBOARD);
+        if (__INPUT_DEBUG_SOURCES) __input_trace(true, "Hotswapping player 0 to ", INPUT_KEYBOARD);
         return INPUT_KEYBOARD;
     }
     
@@ -204,7 +204,7 @@ function __input_hotswap_tick_input()
     {
         if (input_source_is_available(INPUT_TOUCH) && device_mouse_check_button(_global.__pointer_index, mb_left))
         {
-            if (__INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_TOUCH);
+            if (__INPUT_DEBUG_SOURCES) __input_trace(true, "Hotswapping player 0 to ", INPUT_TOUCH);
             return INPUT_TOUCH;
         }
     }
@@ -214,7 +214,7 @@ function __input_hotswap_tick_input()
         && ((INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && _global.__pointer_moved)
           || INPUT_HOTSWAP_ON_MOUSE_BUTTON && (input_mouse_check(mb_any) || mouse_wheel_up() || mouse_wheel_down())))
         {
-            if (__INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_MOUSE);
+            if (__INPUT_DEBUG_SOURCES) __input_trace(true, "Hotswapping player 0 to ", INPUT_MOUSE);
             return INPUT_MOUSE;
         }
     }

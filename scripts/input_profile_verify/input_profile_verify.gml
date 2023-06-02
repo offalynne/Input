@@ -18,7 +18,7 @@ function input_profile_verify(_json, _profile_name, _player_index = 0)
     }
     catch(_error)
     {
-        __input_trace("input_profile_verify() failed with the following error: ", _error);
+        __input_trace(true, "input_profile_verify() failed with the following error: ", _error);
     }
     
     //Restore the clone of the current settings
