@@ -22,9 +22,7 @@
 #### **Example**
 
 ```gml
-///Handle mouse capturing
-var _cursor = cr_default;
-
+////Handle mouse capturing
 //Capture the mouse when the game is clicked
 if (input_mouse_check_pressed(mb_left))
 {
