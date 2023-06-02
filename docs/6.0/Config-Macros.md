@@ -162,7 +162,7 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 
 ## Touch
 
-`__input_config_touch()` holds macros that affect how Input handles mouse and touch input, and how Input's native cursor feature behaves. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
+`__input_config_touch()` holds macros that affect how Input handles touch input and virtual buttons. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
 
 |Name                                 |Typical Value|Purpose                                                                                                                                                                                                  |
 |-------------------------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
