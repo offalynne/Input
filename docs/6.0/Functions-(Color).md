@@ -25,7 +25,8 @@ Gets the LED color of a player's gamepad.
 #### **Example**
 
 ```gml
-//TODO lol
+//Tint instance to match gamepad light
+image_blend = input_color_get();
 ```
 
 <!-- tabs:end -->
@@ -52,7 +53,8 @@ Sets the LED color of a player's gamepad.
 #### **Example**
 
 ```gml
-//TODO lol
+//Assign gamepad a random color value
+input_color_set(irandom(c_white));
 ```
 
 <!-- tabs:end -->
@@ -78,7 +80,14 @@ Resets the player's device's LED colour.
 #### **Example**
 
 ```gml
-//TODO lol
+//Pause game
+if ((paused == false) && input_check_pressed("pause"))
+{
+    //Set gamepad light to default
+    input_color_reset();
+    
+    paused = true;
+}
 ```
 
 <!-- tabs:end -->
