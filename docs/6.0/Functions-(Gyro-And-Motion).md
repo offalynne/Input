@@ -6,7 +6,7 @@ Gamepad motion features provide normalized data from sensors available on PlaySt
 
 &nbsp;
 
-<figcaption style="display: block; margin: auto; text-align:center;" >Motion Axis Orientation</figcaption>
+<figcaption style="display: block; margin: auto; text-align:center;">Motion Axis Orientation</figcaption>
 <figure><img src="https://i.imgur.com/hD8njcV.png" style="width:80%; display: block; margin: auto; max-width: 400px; height: auto;" /></figure>
 
 &nbsp;
@@ -30,13 +30,13 @@ This function returns a struct that describes the motion of a player's gamepad, 
 
 ```
 {
-    acceleration_x: <number indicating acceleration on the X axis in Gs>,
-    acceleration_y: <number indicating acceleration on the Y axis in Gs>,
-    acceleration_z: <number indicating acceleration on the Z axis in Gs>,
+	acceleration_x: <number indicating acceleration on the X axis in Gs>,
+	acceleration_y: <number indicating acceleration on the Y axis in Gs>,
+	acceleration_z: <number indicating acceleration on the Z axis in Gs>,
 
-    angular_velocity_x: <number indicating angular velocity on the X axis in radians per second>,
-    angular_velocity_y: <number indicating angular velocity on the Y axis in radians per second>,
-    angular_velocity_z: <number indicating angular velocity on the Z axis in radians per second>,
+	angular_velocity_x: <number indicating angular velocity on the X axis in radians per second>,
+	angular_velocity_y: <number indicating angular velocity on the Y axis in radians per second>,
+	angular_velocity_z: <number indicating angular velocity on the Z axis in radians per second>,
 }
 ```
 
@@ -45,7 +45,40 @@ For details on handling motion data well for game input, see [GyroWiki](http://g
 #### **Example**
 
 ```gml
-//TODO lol
+//Apply real world vertical acceleration felt by gamepad motion sensor in Gs to an instance's vertical position in game
+y += (input_motion_data_get().acceleration_y + 1) * (delta_time/1000000) * 10;
+```
+
+```gml
+///Apply gamepad motion to a 3d controller
+///Create Event
+z = -64;
+look_h = 0; //Horizontal look
+look_v = 0; //Vertical look
+
+///Step Event
+//Get gamepad motion data
+var _motion = input_motion_data_get(); 
+
+//Change look value
+look_h -= _motion.angular_velocity_y; //Apply Yaw
+look_v += _motion.angular_velocity_x; //Apply Pitch
+
+look_v = clamp(look_v, -80, 80); //Limit vertical look
+
+///Draw event
+//Setup camera projection
+var _look_x = x - dcos(look_h);
+var _look_y = y - dsin(look_h);
+var _look_z = z - dsin(look_v);
+
+var _camera = camera_get_active();
+camera_set_view_mat(_camera, matrix_build_lookat(x, y, z, _look_x, _look_y, _look_z, 0, 0, -1));
+camera_set_proj_mat(_camera, matrix_build_projection_perspective_fov(60, window_get_width() / window_get_height(), 1, 32000));
+
+//Submit to graphics pipeline
+camera_apply(_camera);
+vertex_submit(vbuffer, pr_trianglelist, sprite_get_texture(spr_floor, 0));
 ```
 
 <!-- tabs:end -->
@@ -73,10 +106,9 @@ Sets whether gamepad gyro controls the cursor for the player.
 
 ```gml
 //Control cursor with gamepad motion when the Aim verb is active
-var _gamepad = input_player_get_gamepad();
-if (input_gamepad_is_connected(_gamepad))
+if (input_source_using(INPUT_GAMEPAD))
 {
-    input_cursor_gyro_enabled_set(input_check("aim"));
+	input_cursor_gyro_enabled_set(input_check("aim"));
 }
 ```
 
@@ -105,11 +137,11 @@ if (input_gamepad_is_connected(_gamepad))
 var _i = 0;
 repeat(INPUT_MAX_PLAYERS)
 {
-    if (input_cursor_gyro_enabled_get(_i))
-    {
-        draw_circle(input_cursor_x(_i), input_cursor_y(_i), 16, true);
-    }
-    ++_i;
+	if (input_cursor_gyro_enabled_get(_i))
+	{
+		draw_circle(input_cursor_x(_i), input_cursor_y(_i), 16, true);
+	}
+	++_i;
 }
 ```
 
@@ -140,7 +172,8 @@ This function configures gyro control of the cursor.
 #### **Example**
 
 ```gml
-//TODO lol
+//Set gamepad gyro parameters applied to cursor
+input_cursor_gyro_params_set(INPUT_GYRO.AXIS_ROLL, INPUT_GYRO.AXIS_PITCH, 3, -3);
 ```
 
 <!-- tabs:end -->
@@ -176,7 +209,12 @@ This function returns a struct of parameters currently set for gyro control of t
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw gyro parameters
+var _gyro_params = input_cursor_gyro_params_get();
+draw_text(10, 10, "X Axis: " + string(_gyro_params.axis_x));
+draw_text(10, 30, "Y Axis: " + string(_gyro_params.axis_y));
+draw_text(10, 50, "Sens X: " + string(_gyro_params.sensitivity_x));
+draw_text(10, 70, "Sens Y: " + string(_gyro_params.sensitivity_y));
 ```
 
 <!-- tabs:end -->
