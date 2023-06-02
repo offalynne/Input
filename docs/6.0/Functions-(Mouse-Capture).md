@@ -23,24 +23,28 @@
 
 ```gml
 ////Handle mouse capturing
+///Create event
+cursor = window_get_cursor();
+
+///Step event
 //Capture the mouse when the game is clicked
 if (input_mouse_check_pressed(mb_left))
 {
 	input_mouse_capture_set(true);
-	_cursor = cr_none;
+	cursor = cr_none;
 }
 
 //Release mouse capture when the game is paused or loses focus
 if (input_check_pressed("pause") || !input_window_has_focus())
 {
 	input_mouse_capture_set(false);
-	_cursor = cr_default;
+	cursor = cr_default;
 }
 
 //Change the OS cursor appropriately
-if (window_get_cursor() != _cursor)
+if (window_get_cursor() != cursor)
 {
-	window_set_cursor(_cursor);
+	window_set_cursor(cursor);
 }
 ```
 
