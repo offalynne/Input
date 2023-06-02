@@ -1,5 +1,5 @@
-#macro __INPUT_VERSION "6.0.1 Beta"
-#macro __INPUT_DATE    "2023-05-11"
+#macro __INPUT_VERSION "6.0.2 Beta"
+#macro __INPUT_DATE    "2023-06-02"
 #macro __INPUT_DEBUG   false
 
 
