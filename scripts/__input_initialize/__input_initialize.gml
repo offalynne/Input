@@ -363,6 +363,11 @@ function __input_initialize()
 
             if (_external_string != "")
             {
+                if (!extension_exists("Steamworks") && (GM_build_type == "run") && (environment_get_variable("SteamEnv") == "1") && (environment_get_variable("EnableConfiguratorSupport") != "0") && !gamepad_is_connected(0))
+                {
+                    __input_trace("Warning! Steam Input may block gamepads when GameMaker IDE is run through Steam.");
+                }
+                
                 __input_trace("External SDL2 string found");
             
                 try
@@ -681,23 +686,33 @@ function __input_initialize()
         }
     }
     
+    //Identify Steam Deck in absence of Steamworks
     if (!_global.__on_steam_deck)
     {
-        //Identify Deck hardware in absence of Steamworks
-        var _map = os_get_info();
-        if (ds_exists(_map, ds_type_map))
+        var _deck_envar = environment_get_variable("SteamDeck");
+        if (_deck_envar != "")
         {
-            var _identifier = undefined;
-            if (os_type == os_linux) _identifier = _map[? "gl_renderer_string"];
-            if (__INPUT_ON_WINDOWS)  _identifier = _map[? "video_adapter_description"];
-            
-            //Steam Deck GPU identifier
-            if ((_identifier != undefined) && __input_string_contains(_identifier, "AMD Custom GPU 04"))
+            //Try Deck environment variable
+            _global.__on_steam_deck = (_deck_envar == "1");
+        }
+        else
+        {
+            //Try Deck hardware identity
+            var _map = os_get_info();
+            if (ds_exists(_map, ds_type_map))
             {
-                _global.__on_steam_deck = true;
-            }
+                var _identifier = undefined;
+                if (os_type == os_linux) _identifier = _map[? "gl_renderer_string"];
+                if (__INPUT_ON_WINDOWS)  _identifier = _map[? "video_adapter_description"];
             
-            ds_map_destroy(_map);
+                //Steam Deck GPU identifier
+                if ((_identifier != undefined) && __input_string_contains(_identifier, "AMD Custom GPU 04"))
+                {
+                    _global.__on_steam_deck = true;
+                }
+            
+                ds_map_destroy(_map);
+            }
         }
     }
     
