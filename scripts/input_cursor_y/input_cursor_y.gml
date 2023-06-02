@@ -16,5 +16,5 @@ function input_cursor_y(_player_index = 0, _output_system = undefined)
     return __input_transform_coordinate(_cursor.__x,
                                         _cursor.__y,
                                         _cursor.__coord_space,
-                                        _output_system ?? _global.__pointer_coord_space).y;
+                                        _output_system ?? _cursor.__coord_space).y;
 }
