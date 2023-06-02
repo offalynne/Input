@@ -159,7 +159,7 @@ function __input_gamepad_set_mapping()
         return;
     }
     
-    if (__INPUT_ON_WEB)
+    if (INPUT_ON_WEB)
     {
         set_mapping(gp_face1, 0, __INPUT_MAPPING.BUTTON, "a");
         set_mapping(gp_face2, 1, __INPUT_MAPPING.BUTTON, "b");
@@ -275,7 +275,7 @@ function __input_gamepad_set_mapping()
     
     #region Windows Xbox One Wireless BT (New firmware)
 
-    if ((os_type == os_windows) && (vendor == "5e04")                  //Windows (DirectInput) Microsoft's VID
+    if (__INPUT_ON_WINDOWS  && (vendor  == "5e04")                     //Windows (DirectInput) Microsoft's VID
     && ((product == "e002") || (product == "fd02"))                    //XbOne Wireless Rev. 1 or 2 PID for BT
     && (button_count == 17)                                            //Probably new firmware based on button
     && (gamepad_axis_value(index, 1) == gamepad_axis_value(index, 2))  //On new firmware axes 1 and 2 are same
@@ -320,7 +320,7 @@ function __input_gamepad_set_mapping()
     
     #region Stadia Controller on Windows
     
-    if ((raw_type == "CommunityStadia") && (os_type == os_windows))
+    if ((raw_type == "CommunityStadia") && __INPUT_ON_WINDOWS)
     {
         //Analogue triggers and right stick mapping depends on Windows Registry setting
         if (!__INPUT_SILENT) __input_trace("Setting default Stadia controller mapping");
@@ -370,7 +370,7 @@ function __input_gamepad_set_mapping()
     
     #region Unofficial Windows driver for official Wii U GCN USB
     
-    if ((raw_type == "CommunityGameCube") && (vendor == "3412") && (product == "adbe") && (os_type == os_windows))
+    if ((raw_type == "CommunityGameCube") && (vendor == "3412") && (product == "adbe") && __INPUT_ON_WINDOWS)
     {
         //Userland vJoy device feeder for WUP-028
         if (!__INPUT_SILENT) __input_trace("Setting GameCube adapter slot to alternate mapping");
@@ -410,7 +410,7 @@ function __input_gamepad_set_mapping()
     
     #region MFi controller on Windows
 
-    if ((raw_type == "AppleController") && (guessed_type == false) && (os_type == os_windows))
+    if ((raw_type == "AppleController") && (guessed_type == false) && __INPUT_ON_WINDOWS)
     {
         //MFi controllers have unreliable VID+PID, type is set on other indicators
         if (!__INPUT_SILENT) __input_trace("Setting MFi controller mapping");
@@ -453,7 +453,7 @@ function __input_gamepad_set_mapping()
     #region Missing mapping on MacOS
     
     if ((button_count == 22) && (axis_count ==  6) && (hat_count == 0) 
-    && (gamepad_get_mapping(index) == "no mapping") && (os_type == os_macosx))
+    && (gamepad_get_mapping(index) == "no mapping") && __INPUT_ON_MACOS)
     {
         //Based on features this is a misconfigured Apple-supported gamepad
         if (!__INPUT_SILENT) __input_trace("Overriding from \"no mapping\" on Mac");
@@ -496,8 +496,8 @@ function __input_gamepad_set_mapping()
     #region Third party Joy-Cons on Windows and MacOS
 
     if ((vendor = "7e05") && (product = "0920")
-    && (((os_type == os_windows) && (button_count == 16) && (axis_count ==  4) && (hat_count == 1))
-     || ((os_type == os_macosx)  && (button_count == 24) && (axis_count == 10) && (hat_count == 1))))
+    && ((__INPUT_ON_WINDOWS && (button_count == 16) && (axis_count ==  4) && (hat_count == 1))
+     || (__INPUT_ON_MACOS   && (button_count == 24) && (axis_count == 10) && (hat_count == 1))))
     {
         //Based on features this is a Joy-Con spoofing the Pro Controller VID+PID
         if (!__INPUT_SILENT) __input_trace("Overriding mapping from Switch Pro to Joy-Con");
@@ -547,7 +547,7 @@ function __input_gamepad_set_mapping()
     
     #region Ouya Controller on MacOS
     
-    if ((raw_type == "CommunityOuya") && (os_type == os_macosx))
+    if ((raw_type == "CommunityOuya") && __INPUT_ON_MACOS)
     {
         //Ouya controller doesn't work at all in SDL on Mac, but buttons do in GM
         if (!__INPUT_SILENT) __input_trace("Setting Ouya controller mapping");
@@ -587,7 +587,7 @@ function __input_gamepad_set_mapping()
     
     #region Mayflash N64 Adapter on MacOS
     
-    if ((vendor == "8f0e") && (product == "1330") && (raw_type == "CommunityN64") && (guessed_type = false) && (os_type == os_macosx))
+    if ((vendor == "8f0e") && (product == "1330") && (raw_type == "CommunityN64") && (guessed_type = false) && __INPUT_ON_MACOS)
     {
         if (!__INPUT_SILENT) __input_trace("Overriding mapping to N64");        
        
@@ -619,7 +619,7 @@ function __input_gamepad_set_mapping()
     
     #region NeoGeo Mini on Windows and Linux
 
-    if ((raw_type == "CommunityNeoGeoMini") && (guessed_type == false) && ((os_type == os_windows) || (os_type == os_linux)))
+    if ((raw_type == "CommunityNeoGeoMini") && (guessed_type == false) && (__INPUT_ON_LINUX || __INPUT_ON_WINDOWS))
     {
         if (!__INPUT_SILENT) __input_trace("Overriding mapping to NeoGeo Mini");
 
@@ -643,7 +643,7 @@ function __input_gamepad_set_mapping()
     
     #region retro-bit Tribute 64 on Windows and Linux
 
-    if ((vendor == "6325") && (product == "7505") && (raw_type == "CommunityN64") && (guessed_type == false) && ((os_type == os_windows) || (os_type == os_linux)))
+    if ((vendor == "6325") && (product == "7505") && (raw_type == "CommunityN64") && (guessed_type == false) && (__INPUT_ON_LINUX || __INPUT_ON_WINDOWS))
     {
         if (!__INPUT_SILENT) __input_trace("Overriding mapping to N64");
 
@@ -662,8 +662,8 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
         set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
 
-        set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx").limited_range = (os_type == os_linux);
-        set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty").limited_range = (os_type == os_linux);
+        set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx").limited_range = __INPUT_ON_LINUX;
+        set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty").limited_range = __INPUT_ON_LINUX;
 
         var _mapping = set_mapping(gp_axisrh, undefined, __INPUT_MAPPING.BUTTON_TO_AXIS, "rightx");
         _mapping.raw_negative = 3;
@@ -680,7 +680,7 @@ function __input_gamepad_set_mapping()
     
     #region Nintendo Switch Online Controllers on Linux
 
-    if ((vendor == "7e05") && (product == "1720") && (raw_type == "CommunitySaturn") && (guessed_type == false) && (os_type == os_linux))
+    if ((vendor == "7e05") && (product == "1720") && (raw_type == "CommunitySaturn") && (guessed_type == false) && __INPUT_ON_LINUX)
     {
         if (__input_string_contains(description, "Genesis 3btn"))
         {
@@ -733,9 +733,9 @@ function __input_gamepad_set_mapping()
     
     #region Non-normative HID mappings for Linux
     
-    if (os_type == os_linux)
+    if (__INPUT_ON_LINUX)
     {
-        switch (raw_type)
+        switch(raw_type)
         {            
             case "HIDJoyConLeft":
                 if (!__INPUT_SILENT) __input_trace("Overriding mapping to Joy-Con Left");
@@ -1329,12 +1329,12 @@ function __input_gamepad_set_mapping()
                         var _is_directional = __input_axis_is_directional(_gm_constant);
                 
                         //Linux axis ranges affecting directional input are normalized after remapping
-                        if ((os_type == os_linux) && _is_directional)
+                        if (__INPUT_ON_LINUX && _is_directional)
                         {    
                             if (__INPUT_DEBUG) __input_trace("  (Limited axis range)");
                             _mapping.limited_range = true;
                         }
-                        else if ((os_type != os_linux) && !_is_directional && (gamepad_axis_count(index) >= _input_slot))
+                        else if (!__INPUT_ON_LINUX && !_is_directional && (gamepad_axis_count(index) >= _input_slot))
                         {
                             //Nondirectional axes (triggers) use full axis range (excepting Linux remappings and XInput)
                             if (__INPUT_DEBUG) __input_trace("  (Extended axis range)");
@@ -1388,14 +1388,14 @@ function __input_gamepad_set_mapping()
             //Add mapping for touchpad button click on PS4 gamepads on platforms supporting it.
             //Since the `touchpad` field is a later addition and largely missing from SDL2 data
             //we're manually mapping it in cases where an otherwise-normal PS4 mapping is found
-            if (((os_type == os_windows) || (os_type == os_macosx))
+            if ((__INPUT_ON_MACOS || __INPUT_ON_WINDOWS)
             && (simple_type == "ps4") && (raw_type != "XInputPS4Controller")
             && (mapping_gm_to_raw[$ string(gp_touchpad)] == undefined))
             {                
                 var _matched = 0;
                 var _mapping = undefined;
                 var _button_array = [gp_face3, gp_face1, gp_face2, gp_face4];
-                var _offset = ((mac_cleared_mapping && (os_type == os_macosx)) ? 17 : 0);
+                var _offset = ((mac_cleared_mapping && __INPUT_ON_MACOS) ? 17 : 0);
 
                 repeat(array_length(_button_array))
                 {
@@ -1414,7 +1414,7 @@ function __input_gamepad_set_mapping()
             }
             
             //Change Ouya guide mapping
-            if ((raw_type == "CommunityOuya") && ((os_type == os_windows) || (os_type == os_linux)))
+            if ((raw_type == "CommunityOuya") && (__INPUT_ON_WINDOWS || __INPUT_ON_LINUX))
             {
                 //Guide button issues 2 reports: one a tick after release which is usually too fast for GM's
                 //interupt to catch, and another that's for long press that works after being held 1 second.

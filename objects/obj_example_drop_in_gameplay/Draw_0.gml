@@ -5,7 +5,7 @@ repeat(INPUT_MAX_PLAYERS)
     
     if (input_player_connected(_i))
     {
-        if (input_source_using(INPUT_GAMEPAD, 1))
+        if (input_source_using(INPUT_GAMEPAD, _i))
         {
             _string += input_verb_get_icon("left", _i) + "/" + input_verb_get_icon("right", _i) + "/" + input_verb_get_icon("up", _i) + "/" + input_verb_get_icon("down", _i) + " = Move\n";
             _string += input_verb_get_icon("aim_left", _i) + "/" + input_verb_get_icon("aim_right", _i) + "/" + input_verb_get_icon("aim_up", _i) + "/" + input_verb_get_icon("aim_down", _i) + " = Aim\n";

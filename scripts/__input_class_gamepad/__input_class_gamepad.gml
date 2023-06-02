@@ -77,8 +77,9 @@ function __input_class_gamepad(_index) constructor
         
         virtual_set();
         led_set();
+        swap_ab();
         
-        __vibration_support = __global.__vibration_allowed_on_platform && ((os_type != os_windows) || xinput);        
+        __vibration_support = __global.__vibration_allowed && (xinput || !__INPUT_ON_WINDOWS);        
         if (__vibration_support)
         {
             if (os_type == os_ps5)
@@ -87,7 +88,7 @@ function __input_class_gamepad(_index) constructor
             }            
             else
             {
-                if (((os_type == os_windows) || __INPUT_ON_SWITCH) && __input_string_contains(raw_type, "JoyCon", "SwitchHandheld"))
+                if ((__INPUT_ON_WINDOWS || __INPUT_ON_SWITCH) && __input_string_contains(raw_type, "JoyCon", "SwitchHandheld"))
                 {
                     __vibration_scale = INPUT_VIBRATION_JOYCON_STRENGTH;
                 }
@@ -100,18 +101,13 @@ function __input_class_gamepad(_index) constructor
             gamepad_set_vibration(index, 0, 0);
         }
 
-        if (__global.__gamepad_motion_support)
-        {
-            __motion = new __input_class_gamepad_motion(index);
-        }
-        
+        if (__global.__gamepad_motion_support) __motion = new __input_class_gamepad_motion(index);
         if (!__INPUT_SILENT)__input_trace("Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
     }
     
     /// @param GMconstant
     static get_held = function(_gm)
     {
-        if (!INPUT_ALLOW_OUT_OF_FOCUS && !__global.__window_focus) return false;
         if (!custom_mapping) return gamepad_button_check(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
@@ -121,7 +117,6 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_pressed = function(_gm)
     {
-        if (!INPUT_ALLOW_OUT_OF_FOCUS && !__global.__window_focus) return false;
         if (!custom_mapping) return gamepad_button_check_pressed(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
@@ -131,7 +126,6 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_released = function(_gm)
     {
-        if (!INPUT_ALLOW_OUT_OF_FOCUS && !__global.__window_focus) return false;
         if (!custom_mapping) return gamepad_button_check_released(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
@@ -141,7 +135,6 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_value = function(_gm)
     {
-        if (!INPUT_ALLOW_OUT_OF_FOCUS && !__global.__window_focus) return 0.0;
         if (!custom_mapping)
         {
             if ((_gm == gp_axislh) || (_gm == gp_axislv) || (_gm == gp_axisrh) || (_gm == gp_axisrv))
@@ -175,12 +168,12 @@ function __input_class_gamepad(_index) constructor
         {
             if ((_gm == gp_shoulderlb) || (_gm == gp_shoulderrb))
             {
-                //XInput and platforms with analogue triggers
                 return (xinput || __INPUT_ON_XBOX || __INPUT_ON_PS || __INPUT_ON_IOS);
             }
-            
-            //Otherwise return true only for the thumbsticks
-            return ((_gm == gp_axislh) || (_gm == gp_axislv) || (_gm == gp_axisrh) || (_gm == gp_axisrv));
+            else
+            {
+                return ((_gm == gp_axislh) || (_gm == gp_axislv) || (_gm == gp_axisrh) || (_gm == gp_axisrv));
+            }
         }
         
         var _mapping = mapping_gm_to_raw[$ _gm];
@@ -201,7 +194,7 @@ function __input_class_gamepad(_index) constructor
             if (__INPUT_SDL2_SUPPORT)
             {
                 //As of 2020-08-17, GameMaker has weird in-build remapping rules for gamepad on MacOS
-                if (os_type == os_macosx)
+                if (__INPUT_ON_MACOS)
                 {
                     if ((gamepad_get_mapping(index) != "") && (gamepad_get_mapping(index) != "no mapping"))
                     {
@@ -218,14 +211,14 @@ function __input_class_gamepad(_index) constructor
                     gamepad_remove_mapping(index);
                 }
             }
-            else if (!__INPUT_ON_CONSOLE)
+            else if (!INPUT_ON_CONSOLE)
             {
                 __input_trace("Gamepad ", index, " cannot remove GameMaker's native mapping string, this feature is not supported by Input on this platform");
             }
         }
         
         //Correct for weird input index offset on MacOS if the gamepad already had a native GameMaker mapping
-        if (mac_cleared_mapping && (os_type == os_macosx))
+        if (mac_cleared_mapping && __INPUT_ON_MACOS)
         {
             if (_mapping_type == __INPUT_MAPPING.AXIS  ) _raw_index +=  6;
             if (_mapping_type == __INPUT_MAPPING.BUTTON) _raw_index += 17;
@@ -244,7 +237,7 @@ function __input_class_gamepad(_index) constructor
     static tick = function()
     {
         //Apply mapping settings that cannot be initially evaluated
-        if (os_type == os_windows)
+        if (__INPUT_ON_WINDOWS)
         {        
             //Recalibrate XInput triggers
             if (scale_trigger 
@@ -316,13 +309,24 @@ function __input_class_gamepad(_index) constructor
         }
     }
     
+    static swap_ab = function()
+    {
+        if (__input_gamepad_type_swap_ab(simple_type) && is_struct(mapping_gm_to_raw[$ string(gp_face1)]) && is_struct(mapping_gm_to_raw[$ string(gp_face2)]))
+        {
+            if (__INPUT_DEBUG) __input_trace("  (Swapping A and B)");
+            var _a_mapping = mapping_gm_to_raw[$ string(gp_face1)].raw;
+            set_mapping(gp_face1, mapping_gm_to_raw[$ string(gp_face2)].raw, __INPUT_MAPPING.BUTTON, "a");
+            set_mapping(gp_face2, _a_mapping, __INPUT_MAPPING.BUTTON, "b");
+        }
+    }
+    
     static virtual_set = function()
     {
         if not (__global.__using_steamworks) return;
     
-        var _gamepad_is_virtual = ((os_type == os_windows) && xinput);
+        var _gamepad_is_virtual = (__INPUT_ON_WINDOWS && xinput);
         var _slot = index;
-        if (os_type == os_linux)
+        if (__INPUT_ON_LINUX)
         {
             _gamepad_handle_index = -1;
             _gamepad_is_virtual = false;
@@ -374,24 +378,21 @@ function __input_class_gamepad(_index) constructor
         __led_pattern = undefined;
         
         //Platform is unsupported, or lacks Steam Input handle
-        if (!__INPUT_LED_PATTERN_SUPPORT || ((os_type == os_windows) && (!is_numeric(__steam_handle)))) return;
+        if (!__INPUT_LED_PATTERN_SUPPORT || (__INPUT_ON_WINDOWS && (!is_numeric(__steam_handle)))) return;
         
         var _led_offset = 0;
         var _led_layout = undefined;
         var _led_type   = INPUT_GAMEPAD_TYPE_XBOX_360;
 
         //Handle whether gamepad index 0 is used or reserved
-        if (!__INPUT_ON_WEB && (__INPUT_ON_IOS || __INPUT_ON_SWITCH))
+        if (!INPUT_ON_WEB && (__INPUT_ON_IOS || __INPUT_ON_SWITCH))
         { 
             if (index == 0) return;
             _led_offset = -1;
         }
         
         //MFi gamepad case
-        if ((raw_type == "AppleController") && __INPUT_ON_IOS)
-        {
-            _led_layout = "horizontal";
-        }
+        if ((raw_type == "AppleController") && __INPUT_ON_IOS) _led_layout = "horizontal";
         
         switch(simple_type)
         {
@@ -399,6 +400,7 @@ function __input_class_gamepad(_index) constructor
                 _led_layout = "horizontal"; 
                 _led_type   = INPUT_GAMEPAD_TYPE_PS5;
             break;
+            
             case INPUT_GAMEPAD_TYPE_SWITCH:
             case INPUT_GAMEPAD_TYPE_JOYCON_LEFT:
             case INPUT_GAMEPAD_TYPE_JOYCON_RIGHT:
@@ -412,11 +414,9 @@ function __input_class_gamepad(_index) constructor
                 }
                 
                 //Steam sets Xbox 360 pattern on Switch gamepad LEDs
-                if not (is_numeric(__steam_handle))
-                {
-                    _led_type = INPUT_GAMEPAD_TYPE_SWITCH;
-                }
-            break;            
+                if not (is_numeric(__steam_handle)) _led_type = INPUT_GAMEPAD_TYPE_SWITCH;
+            break;     
+            
             case INPUT_GAMEPAD_TYPE_XBOX_360:
                 _led_layout = "radial";
             break;
@@ -467,8 +467,7 @@ function __input_class_gamepad(_index) constructor
     static __vibration_set = function(_left, _right)
     {
         __vibration_left  = _left;
-        __vibration_right = _right;
-        
+        __vibration_right = _right;        
         __vibration_received_this_frame = true;
     }
     
@@ -485,13 +484,10 @@ function __input_class_gamepad(_index) constructor
             return false;
         }
 
-        if (os_type == os_ps5)
-        {
-            return _effect.__apply_ps5(index, _trigger);
-        }
+        if (os_type == os_ps5) return _effect.__apply_ps5(index, _trigger);
 
         //Steam Input uses libScePad for DualSense trigger effects, Windows native only
-        if (__global.__using_steamworks && !__global.__on_wine && (os_type == os_windows))
+        if (__global.__using_steamworks && !__global.__on_wine && __INPUT_ON_WINDOWS)
         {
             var _command_array = [{ mode: steam_input_sce_pad_trigger_effect_mode_off, command_data: {} }, { mode: steam_input_sce_pad_trigger_effect_mode_off, command_data: {} }];
             _command_array[_trigger_index].mode = __global.__steam_trigger_mode[$ _effect.__mode];
@@ -507,10 +503,7 @@ function __input_class_gamepad(_index) constructor
             }
             
             var _steam_trigger_params = { command: _command_array, trigger_mask: steam_input_sce_pad_trigger_effect_trigger_mask_l2 };
-            if (_trigger_index)
-            {
-                _steam_trigger_params.trigger_mask = steam_input_sce_pad_trigger_effect_trigger_mask_r2;
-            }
+            if (_trigger_index) _steam_trigger_params.trigger_mask = steam_input_sce_pad_trigger_effect_trigger_mask_r2;
             
             if not (is_numeric(__steam_handle)) return false;
             

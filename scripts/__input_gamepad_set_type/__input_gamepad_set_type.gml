@@ -206,7 +206,7 @@ function __input_gamepad_set_type()
             
             #region Unique gamepad type overrides
             
-            if ((vendor == "3412") && (product == "adbe") && (button_count == 12) && (axis_count == 6) && (hat_count == 0) && (os_type == os_windows))
+            if ((vendor == "3412") && (product == "adbe") && (button_count == 12) && (axis_count == 6) && (hat_count == 0) && __INPUT_ON_WINDOWS)
             {
                 //vJoy for Wii U GCN USB driver on Windows
                 if (!__INPUT_SILENT) __input_trace("Overridding controller ", index ," type to GameCube");
@@ -214,7 +214,7 @@ function __input_gamepad_set_type()
                 raw_type = "CommunityGameCube";
                 guessed_type = false;                
             }
-            else if ((vendor == "0d00") && (product == "0000") && (button_count == 15) && (axis_count == 4) && (hat_count == 0) && (os_type == os_windows))
+            else if ((vendor == "0d00") && (product == "0000") && (button_count == 15) && (axis_count == 4) && (hat_count == 0) && __INPUT_ON_WINDOWS)
             {
                 //MFi on Windows (bad GUID)
                 if (!__INPUT_SILENT) __input_trace("Overriding controller ", index ," type to MFi");
@@ -222,7 +222,7 @@ function __input_gamepad_set_type()
                 raw_type = "AppleController";
                 guessed_type = false;
             }
-            else if ((vendor == "6325") && (product == "7505") && (os_type == os_windows))
+            else if ((vendor == "6325") && (product == "7505") && __INPUT_ON_WINDOWS)
             {
                 //VID+PID conflicts with a Shanwan ICU most often used for third party PS3 style controllers
                 if ((button_count == 17) && (hat_count == 0))
@@ -243,8 +243,8 @@ function __input_gamepad_set_type()
                 }
             }
             else if (((vendor == "8f0e") && (product == "1330"))                                                                                         //HuiJia gamepad or Mayflash N64
-                 &&  ((os_type == os_macosx) && (hat_count == 2))                                                                                        //Both slots on one device on Mac
-                 ||  (((os_type == os_windows) || (os_type == os_linux)) && (button_count == 25) && (axis_count == 6) && (hat_count == 0)                //Windows and Linux identity
+                 &&   (__INPUT_ON_MACOS && (hat_count == 2))                                                                                        //Both slots on one device on Mac
+                 ||  ((__INPUT_ON_WINDOWS || __INPUT_ON_LINUX) && (button_count == 25) && (axis_count == 6) && (hat_count == 0)                //Windows and Linux identity
                  &&  ((__input_string_contains(gamepad_get_guid(index + 1), "8f0e") && __input_string_contains(gamepad_get_guid(index + 1), "1330"))     //Port comes in pairs, look ahead
                  ||  ((__input_string_contains(gamepad_get_guid(index - 1), "8f0e") && __input_string_contains(gamepad_get_guid(index - 1), "1330")))))) //Port comes in pairs, look behind
             {
@@ -254,7 +254,7 @@ function __input_gamepad_set_type()
                 raw_type = "CommunityN64";
                 guessed_type = false;
             }
-            else if (((vendor == "d620") || (product == "10a7")) && (hat_count == 0) && (os_type == os_windows)                                         //MagicNS or Mayflash N64 Adapter
+            else if (((vendor == "d620") || (product == "10a7")) && (hat_count == 0) && __INPUT_ON_WINDOWS                                              //MagicNS or Mayflash N64 Adapter
                  &&  ((__input_string_contains(gamepad_get_guid(index + 1), "d620") && __input_string_contains(gamepad_get_guid(index + 1), "10a7"))    //Port comes in pairs, look ahead
                  ||  ((__input_string_contains(gamepad_get_guid(index - 1), "d620") && __input_string_contains(gamepad_get_guid(index - 1), "10a7"))))) //Port comes in pairs, look behind
             {
@@ -264,7 +264,7 @@ function __input_gamepad_set_type()
                 raw_type = "CommunityN64";
                 guessed_type = false;
             }
-            else if ((button_count == 11) && (axis_count == 2) && (hat_count == 0) && (os_type == os_linux))
+            else if ((button_count == 11) && (axis_count == 2) && (hat_count == 0) && __INPUT_ON_LINUX)
             {
                 //More kernel module weirdness: these devices behave differently
                 //in GameMaker than they do in SDL so we require our own mapping
@@ -286,13 +286,13 @@ function __input_gamepad_set_type()
                 raw_type = "CommunityVCSClassic";
                 guessed_type = true;
             }
-            else if (_irregular_guid && (axis_count == 1) && (button_count  == 5) && (hat_count == 1) && (os_type == os_linux))
+            else if (_irregular_guid && (axis_count == 1) && (button_count  == 5) && (hat_count == 1) && __INPUT_ON_LINUX)
             {
                 //Atari VCS Classic Joystick
                 raw_type = "HIDAtariVCSClassic";
                 guessed_type = true;
             }
-            else if (os_type == os_linux)
+            else if (__INPUT_ON_LINUX)
             {                
                 //Linux hid-wiimote module
                 //GUID and description do not work correctly for kernel drivers
@@ -303,7 +303,7 @@ function __input_gamepad_set_type()
                 else if ((button_count ==  2) && (axis_count == 3) && (hat_count == 1) && (index > 2)) { _wii_type_match = "HIDWiiNunchuk";    }
                 else if ((button_count == 15) && (axis_count == 0) && (hat_count == 3) && (index > 2)) { _wii_type_match = "HIDWiiClassic";    }
             
-                switch (_wii_type_match)
+                switch(_wii_type_match)
                 {
                     case "HIDWiiMotionPlus":
                     case "HIDWiiNunchuk":                    

@@ -94,23 +94,6 @@ function __input_finalize_default_profiles()
                     }
                 }
                 
-                if (_global.__swap_ab)
-                {
-                    if (_binding.type == __INPUT_BINDING_GAMEPAD_BUTTON)
-                    {
-                        if (_binding.value == gp_face1)
-                        {
-                            __input_trace("Swapping A/X -> B/O for profile \"", _profile_name, "\", verb \"", _verb_name, "\", alternate ", _a);
-                            _binding.value = gp_face2;
-                        }
-                        else if (_binding.value == gp_face2)
-                        {
-                            __input_trace("Swapping B/O -> A/X for profile \"", _profile_name, "\", verb \"", _verb_name, "\", alternate ", _a);
-                            _binding.value = gp_face1;
-                        }
-                    }
-                }
-                
                 _global.__default_player.__binding_set(_profile_name, _verb_name, _a, _binding);
                 
                 ++_a;

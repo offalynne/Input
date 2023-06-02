@@ -36,6 +36,7 @@ function __input_class_player() constructor
     __profiles_dict = {};
     __profile_name = undefined;
     
+    __active = true;
     __ghost = false;
     __gamepad_type_override = undefined;
     
@@ -367,17 +368,7 @@ function __input_class_player() constructor
     
     /// @param source
     static __source_add = function(_source)
-    {
-        //Ensure we're targeting the right source for our platform / configuration
-        if (__INPUT_TOUCH_PRIMARY)
-        {
-            if (_source == INPUT_MOUSE) _source = INPUT_TOUCH;
-        }
-        else
-        {
-            if (_source == INPUT_TOUCH) _source = INPUT_MOUSE;
-        }
-        
+    {        
         //We don't use __source_contains() here because it'll report a false positive when assigning keyboard+mouse together
         var _i = 0;
         repeat(array_length(__source_array))
@@ -408,7 +399,7 @@ function __input_class_player() constructor
     static __source_remove = function(_source)
     {
         //Ensure we're targeting the right source for our platform / configuration
-        if (__INPUT_TOUCH_PRIMARY)
+        if (__global.__touch_allowed)
         {
             if (_source == INPUT_MOUSE) _source = INPUT_TOUCH;
         }
@@ -448,7 +439,7 @@ function __input_class_player() constructor
         //Ensure we're targeting the right source for our platform / configuration
         if (_touch_remap)
         {
-            if (__INPUT_TOUCH_PRIMARY)
+            if (__global.__touch_allowed)
             {
                 if (_source == INPUT_MOUSE) _source = INPUT_TOUCH;
             }
@@ -542,7 +533,7 @@ function __input_class_player() constructor
             
             if (INPUT_FALLBACK_PROFILE_BEHAVIOR == 1)
             {
-                if (__INPUT_ON_DESKTOP && __global.__keyboard_allowed && __global.__any_keyboard_binding_defined)
+                if (INPUT_ON_PC && __global.__keyboard_allowed && __global.__any_keyboard_binding_defined)
                 {
                     //Try to use a keyboard profile if possible
                     _profile_name = INPUT_AUTO_PROFILE_FOR_KEYBOARD;
@@ -1403,7 +1394,7 @@ function __input_class_player() constructor
                 break;
 
                 case INPUT_COORD_SPACE.DEVICE:
-                    if (!__INPUT_ON_CONSOLE && (window_get_width != undefined))
+                    if (!INPUT_ON_CONSOLE && (window_get_width != undefined))
                     {
                         __gyro_screen_width  = window_get_width();
                         __gyro_screen_height = window_get_height();
@@ -1486,7 +1477,7 @@ function __input_class_player() constructor
         var _v = 0;
         repeat(array_length(__global.__basic_verb_array))
         {
-            __verb_state_dict[$ __global.__basic_verb_array[_v]].tick(__verb_group_state_dict);
+            __verb_state_dict[$ __global.__basic_verb_array[_v]].tick(__verb_group_state_dict, __active);
             ++_v;
         }
     }
@@ -1613,6 +1604,13 @@ function __input_class_player() constructor
         {
             __input_trace("Binding scan failed: Player ", __index, " is a ghost");
             __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.PLAYER_IS_GHOST);
+            return;
+        }
+        
+        if (!__active)
+        {
+            __input_trace("Binding scan failed: Player ", __index, " is inactive");
+            __binding_scan_failure(INPUT_BINDING_SCAN_EVENT.PLAYER_IS_INACTIVE);
             return;
         }
         

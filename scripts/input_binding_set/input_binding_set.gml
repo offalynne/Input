@@ -22,4 +22,7 @@ function input_binding_set(_verb_name, _binding, _player_index = 0, _alternate =
     }
     
     _global.__players[_player_index].__binding_set(_profile_name, _verb_name, _alternate, _binding);
+    
+    //Ensure verb state doesn't leak through anywhere
+    input_verb_consume(all, _player_index);
 }

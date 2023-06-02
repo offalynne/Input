@@ -38,6 +38,7 @@ enum INPUT_BINDING_SCAN_EVENT
     SOURCE_FILTER_EMPTY         = -15, //Source filter array is empty
     PLAYER_IS_GHOST             = -15, //Player has been set as a ghost
     PLAYER_DISCONNECTED         = -16, //Player disconnected
+    PLAYER_IS_INACTIVE          = -17, //Player has been set to inactive
     SCAN_TIMEOUT                = -20, //Scanning for a binding timed out - either the player didn't enter a new binding or a stuck key prevented the system from working
     LOST_FOCUS                  = -21, //The game lost focus
     ABORTED                     = -30, //Binding scan was aborted before completion using input_binding_scan_abort()
