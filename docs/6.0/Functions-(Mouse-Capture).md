@@ -22,7 +22,28 @@
 #### **Example**
 
 ```gml
-//TODO lol
+///Handle mouse capturing
+var _cursor = cr_default;
+
+//Capture the mouse when the game is clicked
+if (input_mouse_check_pressed(mb_left))
+{
+	input_mouse_capture_set(true);
+	_cursor = cr_none;
+}
+
+//Release mouse capture when the game is paused or loses focus
+if (input_check_pressed("pause") || !input_window_has_focus())
+{
+	input_mouse_capture_set(false);
+	_cursor = cr_default;
+}
+
+//Change the OS cursor appropriately
+if (window_get_cursor() != _cursor)
+{
+	window_set_cursor(_cursor);
+}
 ```
 
 <!-- tabs:end -->
@@ -54,7 +75,11 @@ The struct returned by the function contains the following member variables:
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw mouse capture state
+var _capture_state = input_mouse_capture_get();
+draw_text(10, 10, string(_capture_state.capture));
+draw_text(10, 10, string(_capture_state.sensitivity));
+draw_text(10, 10, string(_capture_state.blocked));
 ```
 
 <!-- tabs:end -->
