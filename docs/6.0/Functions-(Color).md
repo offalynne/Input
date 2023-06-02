@@ -2,7 +2,7 @@
 
 &nbsp;
 
-Gamepad color can be set for PlayStation console platforms, as well as on Windows or Linux with [Steamworks](Steamworks.md) additionall supporting Xbox Elite Series 2 and Steam Controller.
+Gamepad color can be set for PlayStation console platforms, as well as on Windows or Linux with [Steamworks](Steamworks.md) which additionally supports Xbox Elite Series 2 and Steam Controller.
 
 &nbsp;
 
