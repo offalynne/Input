@@ -23,7 +23,9 @@
 #### **Example**
 
 ```gml
-//TODO lol
+//Move towards mouse x
+direction = point_direction(x, y, input_mouse_x(),y)
+speed = 1
 ```
 
 <!-- tabs:end -->
@@ -47,7 +49,9 @@
 #### **Example**
 
 ```gml
-//TODO lol
+//Move towards mouse y coordinate
+direction = point_direction(x, y, x, input_mouse_y())
+speed = 1
 ```
 
 <!-- tabs:end -->
