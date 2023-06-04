@@ -58,7 +58,12 @@ vspeed = vertical * move_speed
 #### **Example**
 
 ```gml
-//TODO lol
+//Simple, frame-perfect jump
+
+//If we pressed space and we're on the floor
+if (input_keyboard_check_pressed(vk_space)) and (place_meeting(x, y+1, obj_floor)) {
+    vspeed = -6;
+}
 ```
 
 <!-- tabs:end -->
