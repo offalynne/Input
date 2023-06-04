@@ -87,7 +87,25 @@ if (input_keyboard_check_pressed(vk_space)) and (place_meeting(x, y+1, obj_floor
 #### **Example**
 
 ```gml
-//TODO lol
+//A charged-up shot
+shot_power = 0
+
+//While the key is held we charge the shot power up
+if (input_keyboard_check(vk_space)) {
+	shot_power += 1
+}
+
+/*When it is released we fire the shot, 
+ making it faster and dealing more damage with longer charge times*/
+if (input_keyboard_check_released(vk_space)) {
+	instance_create_layer(x,y,"Instances",obj_bullet, {
+		direction : direction,
+		speed : shot_power
+		damage : shot_power	
+	})
+	
+	shot_power = 0
+}
 ```
 
 <!-- tabs:end -->
