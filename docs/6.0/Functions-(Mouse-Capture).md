@@ -80,8 +80,8 @@ The struct returned by the function contains the following member variables:
 //Draw mouse capture state
 var _capture_state = input_mouse_capture_get();
 draw_text(10, 10, string(_capture_state.capture));
-draw_text(10, 10, string(_capture_state.sensitivity));
-draw_text(10, 10, string(_capture_state.blocked));
+draw_text(10, 30, string(_capture_state.sensitivity));
+draw_text(10, 50, string(_capture_state.blocked));
 ```
 
 <!-- tabs:end -->
