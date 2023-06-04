@@ -25,11 +25,11 @@ _These functions are almost directly passed-through and are presently only inten
 #### **Example**
 
 ```gml
-//Simple, 8-directional movement:
+//simple, 8-directional movement:
 
 move_speed = 8
-//Setting up two movement axes for WASD movement
-//This works very similar to how it could work without Input
+//setting up two movement axes for WASD movement
+//this works very similar to how it could work without input
 horizontal = input_keyboard_check(ord("D")) - input_keyboard_check(ord("A"))
 vertical = input_keyboard_check(ord("S")) - input_keyboard_check(ord("W"))
 
@@ -58,12 +58,7 @@ vspeed = vertical * move_speed
 #### **Example**
 
 ```gml
-//Simple, frame-perfect jump
-
-//If we pressed space and we're on the floor
-if (input_keyboard_check_pressed(vk_space)) and (place_meeting(x, y+1, obj_floor)) {
-    vspeed = -6;
-}
+//TODO lol
 ```
 
 <!-- tabs:end -->
