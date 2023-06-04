@@ -155,7 +155,21 @@ speed = 1
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw GUI event
+//Set the mouse coordinate space to GUI 
+input_mouse_coord_space_set(INPUT_COORD_SPACE.GUI)
+
+//Check if the mouse is inside the GUI button bounds
+if (input_mouse_x() >= 8 and input_mouse_x() <= 128 and
+	input_mouse_y() >= 8 and input_mouse_y() <= 64) {
+	//Change the color to indicate the mouse hovering
+	draw_set_color(c_red)	
+}
+
+draw_button(8,8,128,64, true)
+//Reset color and coordinate space
+draw_set_color(c_white)
+input_mouse_coord_space_set(INPUT_COORD_SPACE.ROOM)
 ```
 
 <!-- tabs:end -->
