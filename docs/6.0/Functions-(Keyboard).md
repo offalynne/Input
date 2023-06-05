@@ -25,16 +25,14 @@ _These functions are almost directly passed-through and are presently only inten
 #### **Example**
 
 ```gml
-//Simple, 8-directional movement:
-
-move_speed = 8
-//Setting up two movement axes for WASD movement
+//Simple, 8-directional movement using the WASD keys
 //This works very similar to how it could work without Input
-horizontal = input_keyboard_check(ord("D")) - input_keyboard_check(ord("A"))
-vertical = input_keyboard_check(ord("S")) - input_keyboard_check(ord("W"))
+var _horizontal = input_keyboard_check(ord("D")) - input_keyboard_check(ord("A"))
+var _vertical   = input_keyboard_check(ord("S")) - input_keyboard_check(ord("W"))
 
-hspeed = horizontal * move_speed
-vspeed = vertical * move_speed
+var _move_speed = 8
+hspeed = _move_speed*_horizontal;
+vspeed = _move_speed*_vertical;
 ```
 
 <!-- tabs:end -->
@@ -58,10 +56,9 @@ vspeed = vertical * move_speed
 #### **Example**
 
 ```gml
-//Simple, frame-perfect jump
-
-//If we pressed space and we're on the floor
-if (input_keyboard_check_pressed(vk_space)) and (place_meeting(x, y+1, obj_floor)) {
+//If we pressed space and we're on the floor do a jump
+if (input_keyboard_check_pressed(vk_space)) and (place_meeting(x, y+1, obj_floor))
+{
     vspeed = -6;
 }
 ```
@@ -87,24 +84,32 @@ if (input_keyboard_check_pressed(vk_space)) and (place_meeting(x, y+1, obj_floor
 #### **Example**
 
 ```gml
-//A charged-up shot
-shot_power = 0
+///Create
 
-//While the key is held we charge the shot power up
-if (input_keyboard_check(vk_space)) {
-	shot_power += 1
+//Variabel to track how long the spacebar has been held for
+shot_power = 0;
+
+
+
+///Step
+
+//While the spacebar is held we charge the shot power up
+if (input_keyboard_check(vk_space))
+{
+	shot_power += 1;
 }
 
-/*When it is released we fire the shot, 
- making it faster and dealing more damage with longer charge times*/
-if (input_keyboard_check_released(vk_space)) {
-	instance_create_layer(x,y,"Instances",obj_bullet, {
-		direction : direction,
-		speed : shot_power
-		damage : shot_power	
-	})
+//When it is released we fire the shot, making it faster and dealing more damage with longer charge times
+if (input_keyboard_check_released(vk_space))
+{
+	instance_create_layer(x, y, "Instances", obj_bullet, {
+		direction: direction,
+		speed: shot_power
+		damage: shot_power	
+	});
 	
-	shot_power = 0
+	//Reset the shot power for the the next shot
+	shot_power = 0;
 }
 ```
 
