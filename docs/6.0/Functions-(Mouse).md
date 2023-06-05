@@ -244,7 +244,27 @@ show_debug_message(
 #### **Example**
 
 ```gml
-//TODO lol
+//Simple mouse shooting example
+if (recover_timer > 0)
+{
+    //If we're still recovering after shooting, tick down the timer
+    recover_timer--;
+}
+else
+{
+    //We're not recovering after a shot, allow shooting
+
+    if (input_mouse_check(mb_left)) //If the left mouse button is active
+    {
+        //Create a bullet that matches our aiming direction
+        instance_create_depth(x, y, depth-1, obj_bullet, {
+			direction : direction	
+		})
+
+        //Set up a timer to delay the next shot
+        recover_timer = 8;
+    }
+}
 ```
 
 <!-- tabs:end -->
