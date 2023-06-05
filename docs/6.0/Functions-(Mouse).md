@@ -244,26 +244,20 @@ show_debug_message(
 #### **Example**
 
 ```gml
-//Simple mouse shooting example
-if (recover_timer > 0)
-{
-    //If we're still recovering after shooting, tick down the timer
-    recover_timer--;
-}
-else
-{
-    //We're not recovering after a shot, allow shooting
+//Simple cursor based movement
 
-    if (input_mouse_check(mb_left)) //If the left mouse button is active
-    {
-        //Create a bullet that matches our aiming direction
-        instance_create_depth(x, y, depth-1, obj_bullet, {
-			direction : direction	
-		})
-
-        //Set up a timer to delay the next shot
-        recover_timer = 8;
-    }
+//Check if the left mouse button is active
+if (input_mouse_check(mb_left)) {
+	
+	//Move towards cursor, since our players coordinates are ROOM coordinates
+	//Our cursor coordinates need to be in the ROOM coordinate space too!
+	move_towards_point(
+		input_mouse_x(INPUT_COORD_SPACE.ROOM), 
+		input_mouse_y(INPUT_COORD_SPACE.ROOM),
+		1
+	)	
+} else {
+	speed = 0	
 }
 ```
 
