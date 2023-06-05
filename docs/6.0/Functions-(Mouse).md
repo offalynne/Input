@@ -139,7 +139,8 @@ if (input_mouse_dy() > 32) {
 #### **Example**
 
 ```gml
-//TODO lol
+//If the mouse is moving, make a cursor object visible, otherwise hide it
+obj_cursor.visible = input_mouse_moved()
 ```
 
 <!-- tabs:end -->
