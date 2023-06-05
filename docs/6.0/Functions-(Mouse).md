@@ -316,7 +316,16 @@ if (input_mouse_check_pressed(mb_right)) {
 #### **Example**
 
 ```gml
-//TODO lol
+//Cursor with a grab and release animation
+
+//Check if the left mouse button got pressed
+if (input_mouse_check_pressed(mb_left)) {
+	obj_cursor.sprite_index = spr_cursor_grab	
+}
+//Check if the left mouse button got released
+if (input_mouse_check_released(mb_left)) {
+	obj_cursor.sprite_index = spr_cursor_release	
+}
 ```
 
 <!-- tabs:end -->
