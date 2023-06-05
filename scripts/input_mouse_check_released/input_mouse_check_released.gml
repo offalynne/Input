@@ -5,7 +5,7 @@ function input_mouse_check_released(_binding)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
-    if (!_global.__mouse_allowed || _global.__window_focus_block_mouse)
+    if (!_global.__mouse_allowed || _global.__window_focus_block_mouse || _global.__cleared)
     {
         return (_binding == mb_none);
     }
