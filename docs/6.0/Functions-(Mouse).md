@@ -316,7 +316,10 @@ show_debug_message(
 #### **Example**
 
 ```gml
-//TODO lol
+//If the mouse cursor leaves the window, pause the game
+if (not input_mouse_in_bounds()) {
+	game_pause()
+}
 ```
 
 <!-- tabs:end -->
