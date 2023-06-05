@@ -283,7 +283,16 @@ if (input_mouse_check(mb_left)) {
 #### **Example**
 
 ```gml
-//TODO lol
+//Interact with item on right click
+if (input_mouse_check_pressed(mb_right)) {
+	
+	nearest = instance_nearest(input_mouse_x(), input_mouse_y(), obj_item)
+	//Check if a nearest object was found and then check if its reasonably close to the cursor
+	if (nearest != noone and 
+		point_distance(input_mouse_x(), input_mouse_y(), nearest.x, nearest.y) < 16) {
+		nearest.interact_with()	
+	}
+}
 ```
 
 <!-- tabs:end -->
