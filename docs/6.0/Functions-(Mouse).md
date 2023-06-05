@@ -209,7 +209,18 @@ input_mouse_coord_space_set(INPUT_COORD_SPACE.ROOM)
 #### **Example**
 
 ```gml
-//TODO lol
+//Print the current coordinate space for debugging purposes
+//Create an array to convert the enum members to human-readable output
+coord_space_as_string = array_create(INPUT_COORD_SPACE.__SIZE, "Unknown/Error")
+coord_space_as_string[INPUT_COORD_SPACE.DEVICE] = "Device"
+coord_space_as_string[INPUT_COORD_SPACE.ROOM] = "Room"
+coord_space_as_string[INPUT_COORD_SPACE.GUI] = "GUI"
+
+show_debug_message(
+	"Current coordinate space is: {0}",
+	//Get the coordinate space and then convert it to its string representation
+	coord_space_as_string[input_mouse_coord_space_get()]
+)
 ```
 
 <!-- tabs:end -->
