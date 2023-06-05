@@ -75,6 +75,7 @@ speed = 1;
 #### **Example**
 
 ```gml
+//Spawn particles when the cursor is moved beyond a certain amount on the x-axis
 if (input_mouse_dx() > 3)
 {
 	part_particles_create(particle_system,
