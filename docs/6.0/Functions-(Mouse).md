@@ -257,7 +257,7 @@ if (input_mouse_check(mb_left)) {
 		1
 	)	
 } else {
-	speed = 0	
+	speed = 0
 }
 ```
 
