@@ -75,7 +75,15 @@ speed = 1
 #### **Example**
 
 ```gml
-//TODO lol
+//Spawn particles when the cursor is moved beyond a certain amount on the x-Axis
+if (input_mouse_dx() > 32) {
+	part_particles_create(
+		particle_system,
+		input_mouse_x(), input_mouse_y(),
+		particle_type, 
+		particle_count
+	);	
+}
 ```
 
 <!-- tabs:end -->
@@ -99,7 +107,15 @@ speed = 1
 #### **Example**
 
 ```gml
-//TODO lol
+//Spawn particles when the cursor is moved beyond a certain amount on the y-Axis
+if (input_mouse_dy() > 32) {
+	part_particles_create(
+		particle_system,
+		input_mouse_x(), input_mouse_y(),
+		particle_type, 
+		particle_count
+	);	
+}
 ```
 
 <!-- tabs:end -->
