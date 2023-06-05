@@ -143,6 +143,64 @@ obj_cursor.visible = input_mouse_moved()
 
 &nbsp;
 
+## …mouse_wheel_up
+
+`input_mouse_wheel_up()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the mouse wheel has been moved up
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+#### **Example**
+
+```gml
+//Change weapon by scrolling the mouse wheel
+var _delta = input_mouse_wheel_down() - input_mouse_wheel_up();
+weapon = (weapon + _delta) mod total_weapons;
+
+//Change our sprite to match the weapon
+sprite_index = weapon_sprite[weapon];
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …mouse_wheel_down
+
+`input_mouse_wheel_down()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the mouse wheel has been moved down
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+#### **Example**
+
+```gml
+if (debug_mode)
+{
+	//Activate the debug overlay with a flick of the mouse wheel if we're in debug mode
+	if (input_mouse_wheel_down()) obj_debug_overlay.visible = true;
+	if (input_mouse_wheel_up()) obj_debug_overlay.visible = false;
+}
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
 ## …mouse_coord_space_set
 
 `input_mouse_coord_space_set(coordSpace)`
