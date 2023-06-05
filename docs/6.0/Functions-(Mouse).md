@@ -23,9 +23,9 @@
 #### **Example**
 
 ```gml
-//Move towards mouse x
-direction = point_direction(x, y, input_mouse_x(),y)
-speed = 1
+//Move towards mouse x-coordinate whilst maintain our y-coordinate
+direction = point_direction(x, y, input_mouse_x(), y);
+speed = 1;
 ```
 
 <!-- tabs:end -->
@@ -49,9 +49,9 @@ speed = 1
 #### **Example**
 
 ```gml
-//Move towards mouse y coordinate
-direction = point_direction(x, y, x, input_mouse_y())
-speed = 1
+//Move towards mouse y-coordinate whilst maintain our x-coordinate
+direction = point_direction(x, y, x, input_mouse_y());
+speed = 1;
 ```
 
 <!-- tabs:end -->
@@ -75,14 +75,11 @@ speed = 1
 #### **Example**
 
 ```gml
-//Spawn particles when the cursor is moved beyond a certain amount on the x-Axis
-if (input_mouse_dx() > 32) {
-	part_particles_create(
-		particle_system,
-		input_mouse_x(), input_mouse_y(),
-		particle_type, 
-		particle_count
-	);	
+if (input_mouse_dx() > 3)
+{
+	part_particles_create(particle_system,
+	                      input_mouse_x(), input_mouse_y(),
+		                  particle_type, particle_count);	
 }
 ```
 
@@ -107,14 +104,12 @@ if (input_mouse_dx() > 32) {
 #### **Example**
 
 ```gml
-//Spawn particles when the cursor is moved beyond a certain amount on the y-Axis
-if (input_mouse_dy() > 32) {
-	part_particles_create(
-		particle_system,
-		input_mouse_x(), input_mouse_y(),
-		particle_type, 
-		particle_count
-	);	
+//Spawn particles when the cursor is moved beyond a certain amount on the y-axis
+if (input_mouse_dy() > 3)
+{
+	part_particles_create(particle_system,
+	                      input_mouse_x(), input_mouse_y(),
+		                  particle_type, particle_count);	
 }
 ```
 
@@ -172,21 +167,26 @@ obj_cursor.visible = input_mouse_moved()
 #### **Example**
 
 ```gml
-//Draw GUI event
+///Draw GUI
+
 //Set the mouse coordinate space to GUI 
 input_mouse_coord_space_set(INPUT_COORD_SPACE.GUI)
 
 //Check if the mouse is inside the GUI button bounds
-if (input_mouse_x() >= 8 and input_mouse_x() <= 128 and
-	input_mouse_y() >= 8 and input_mouse_y() <= 64) {
+if ((input_mouse_x() >=   8)
+&&  (input_mouse_x() <= 128)
+&&  (input_mouse_y() >=   8)
+&&  (input_mouse_y() <=  64))
+{
 	//Change the color to indicate the mouse hovering
-	draw_set_color(c_red)	
+	draw_set_color(c_red);
 }
 
-draw_button(8,8,128,64, true)
+draw_button(8, 8, 128, 64, true);
+
 //Reset color and coordinate space
-draw_set_color(c_white)
-input_mouse_coord_space_set(INPUT_COORD_SPACE.ROOM)
+draw_set_color(c_white);
+input_mouse_coord_space_set(INPUT_COORD_SPACE.ROOM);
 ```
 
 <!-- tabs:end -->
@@ -212,16 +212,13 @@ input_mouse_coord_space_set(INPUT_COORD_SPACE.ROOM)
 ```gml
 //Print the current coordinate space for debugging purposes
 //Create an array to convert the enum members to human-readable output
-coord_space_as_string = array_create(INPUT_COORD_SPACE.__SIZE, "Unknown/Error")
-coord_space_as_string[INPUT_COORD_SPACE.DEVICE] = "Device"
-coord_space_as_string[INPUT_COORD_SPACE.ROOM] = "Room"
-coord_space_as_string[INPUT_COORD_SPACE.GUI] = "GUI"
 
-show_debug_message(
-	"Current coordinate space is: {0}",
-	//Get the coordinate space and then convert it to its string representation
-	coord_space_as_string[input_mouse_coord_space_get()]
-)
+var _coord_space_as_string = array_create(INPUT_COORD_SPACE.__SIZE, "Unknown/Error");
+    _coord_space_as_string[INPUT_COORD_SPACE.DEVICE] = "Device";
+    _coord_space_as_string[INPUT_COORD_SPACE.ROOM  ] = "Room";
+    _coord_space_as_string[INPUT_COORD_SPACE.GUI   ] = "GUI";
+
+show_debug_message("Current coordinate space is: " + _coord_space_as_string[input_mouse_coord_space_get()]);
 ```
 
 <!-- tabs:end -->
@@ -248,16 +245,16 @@ show_debug_message(
 //Simple cursor based movement
 
 //Check if the left mouse button is active
-if (input_mouse_check(mb_left)) {
-	
+if (input_mouse_check(mb_left))
+{
 	//Move towards cursor, since our players coordinates are ROOM coordinates
 	//Our cursor coordinates need to be in the ROOM coordinate space too!
-	move_towards_point(
-		input_mouse_x(INPUT_COORD_SPACE.ROOM), 
-		input_mouse_y(INPUT_COORD_SPACE.ROOM),
-		1
-	)	
-} else {
+	move_towards_point(input_mouse_x(INPUT_COORD_SPACE.ROOM), 
+                       input_mouse_y(INPUT_COORD_SPACE.ROOM),
+                       1);
+}
+else
+{
 	speed = 0
 }
 ```
@@ -284,13 +281,14 @@ if (input_mouse_check(mb_left)) {
 
 ```gml
 //Interact with item on right click
-if (input_mouse_check_pressed(mb_right)) {
-	
-	nearest = instance_nearest(input_mouse_x(), input_mouse_y(), obj_item)
+if (input_mouse_check_pressed(mb_right))
+{
+	nearest = instance_nearest(input_mouse_x(), input_mouse_y(), obj_item);
+
 	//Check if a nearest object was found and then check if its reasonably close to the cursor
-	if (nearest != noone and 
-		point_distance(input_mouse_x(), input_mouse_y(), nearest.x, nearest.y) < 16) {
-		nearest.interact_with()	
+	if ((nearest != noone) and (point_distance(input_mouse_x(), input_mouse_y(), nearest.x, nearest.y) < 16))
+	{
+		nearest.interact_with();
 	}
 }
 ```
@@ -319,12 +317,15 @@ if (input_mouse_check_pressed(mb_right)) {
 //Cursor with a grab and release animation
 
 //Check if the left mouse button got pressed
-if (input_mouse_check_pressed(mb_left)) {
-	obj_cursor.sprite_index = spr_cursor_grab	
+if (input_mouse_check_pressed(mb_left))
+{
+	obj_cursor.sprite_index = spr_cursor_grab;
 }
+
 //Check if the left mouse button got released
-if (input_mouse_check_released(mb_left)) {
-	obj_cursor.sprite_index = spr_cursor_release	
+if (input_mouse_check_released(mb_left))
+{
+	obj_cursor.sprite_index = spr_cursor_release;
 }
 ```
 
@@ -350,8 +351,9 @@ if (input_mouse_check_released(mb_left)) {
 
 ```gml
 //If the mouse cursor leaves the window, pause the game
-if (not input_mouse_in_bounds()) {
-	game_pause()
+if (not input_mouse_in_bounds())
+{
+	game_pause();
 }
 ```
 
