@@ -86,7 +86,7 @@ if (input_keyboard_check_pressed(vk_space)) and (place_meeting(x, y+1, obj_floor
 ```gml
 ///Create
 
-//Variabel to track how long the spacebar has been held for
+//Variable to track how long the spacebar has been held for
 shot_power = 0;
 
 
