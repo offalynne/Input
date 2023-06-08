@@ -27,7 +27,15 @@ This function creates a blank, unconfigured, virtual button. Please scroll down 
 #### **Example**
 
 ```gml
-//TODO lol
+//Create a rectangular button and bind it to the "accept" verb
+vbutton_accept = input_virtual_create()
+                 .rectangle(10, 210, 160, 360)
+                 .button("accept");
+
+//Create a circular button and bind it to movement verbs as a virtual "thumbstick"
+vbutton_thumbstick = input_virtual_create()
+                     .circle(500, 300, 120)
+                     .thumbstick(undefined, "left", "right", "up", "down");
 ```
 
 <!-- tabs:end -->
@@ -53,7 +61,11 @@ Destroys all virtual buttons that have been created. This is useful when transit
 #### **Example**
 
 ```gml
-//TODO lol
+//Remove all virtual buttons if we're using a gamepad
+if (input_source_using(INPUT_GAMEPAD))
+{
+	input_virtual_destroy_all();
+}
 ```
 
 <!-- tabs:end -->
@@ -79,7 +91,11 @@ This function will return `false` for a virtual button that has been destroyed.
 #### **Example**
 
 ```gml
-//TODO lol
+//If the thumbstick is a valid thumbstick, draw the virtual button
+if (input_is_virtual(vbutton_thumbstick))
+{
+	draw_sprite(spr_thumbstick_vbutton, 0, x, y);
+}
 ```
 
 <!-- tabs:end -->
@@ -107,7 +123,11 @@ Draws simple representations of every virtual button to the screen. This is inte
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw virtual buttons to the screen when we're in debug mode
+if (debug_mode)
+{
+	input_virtual_debug_draw();
+}
 ```
 
 <!-- tabs:end -->
