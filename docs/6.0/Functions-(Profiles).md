@@ -30,7 +30,20 @@ If the profile already exists then this function will throw an error.
 #### **Example**
 
 ```gml
-//TODO lol
+//If we've selected this option and we're using a gamepad...
+if (input_check("accept") && input_source_using(INPUT_GAMEPAD))
+{
+	//Try to create a new profile based on the gamepad's type
+	var _gamepad_type = input_player_get_gamepad_type();
+	if (not input_profile_exists(_gamepad_type))
+	{
+		//Create a new profile
+		input_profile_create(_gamepad_type);
+        
+		//Copy the default gamepad settings to the new profile
+		input_profile_copy(0, INPUT_AUTO_PROFILE_FOR_GAMEPAD, 0, _gamepad_type);
+	}
+}
 ```
 
 <!-- tabs:end -->
@@ -59,7 +72,12 @@ Destroys the given player's profile with the same name, if one exists. If the pl
 #### **Example**
 
 ```gml
-//TODO lol
+//If the player has long-pressed the cancel button...
+if (input_check_long_pressed("cancel"))
+{
+	//Then destroy the currently selected custom profile
+	input_profile_destroy(custom_profile_array[current_profile_index]);
+}
 ```
 
 <!-- tabs:end -->
@@ -86,7 +104,17 @@ This function will also return `true` for [default profile names](Profiles).
 #### **Example**
 
 ```gml
-//TODO lol
+var _profile = custom_profile_array[current_profile_index];
+if (input_profile_exists(_profile))
+{
+	//The profile exists, prompt the player to edit
+	draw_text(x, y, "Edit profile");
+}
+else
+{
+	//No profile exists, prompt the player to set up a new one
+	draw_text_color(x, y, "Set up new profile", c_red, c_red, c_red, c_red, 0.9);
+}
 ```
 
 <!-- tabs:end -->
@@ -112,7 +140,17 @@ This function will return default profiles (as defined in [`__input_config_profi
 #### **Example**
 
 ```gml
-//TODO lol
+//Grab all the profile names for the player
+var _array = input_profile_get_array();
+
+//Iterate over every profile name...
+var _i = 0;
+repeat(array_length(_array))
+{
+    //And draw a tab in the UI for it
+	draw_ui_tab_for_profile(_array[_i]);
+	++_i;
+}
 ```
 
 <!-- tabs:end -->
@@ -139,7 +177,15 @@ Sets the player's profile either to a default or custom profile. If no profile w
 #### **Example**
 
 ```gml
-//TODO lol
+//Use the "left" and "right" verb to scroll through custom profiles
+var _delta = input_check_opposing_pressed("left", "right");
+
+//Count the number of profiles
+var _profile_count = array_length(custom_profile_array);
+
+//Scroll through the custom profiles
+//(We add _profile_count here to deal with a negative delta)
+current_index = (current_profile_index + _delta + _profile_count) mod _profile_count;
 ```
 
 <!-- tabs:end -->
@@ -163,7 +209,9 @@ Sets the player's profile either to a default or custom profile. If no profile w
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw the current profile's name on the menu
+draw_text(x, y, "Current Profile:");
+draw_text(x, y + 24, input_profile_get());
 ```
 
 <!-- tabs:end -->
@@ -191,7 +239,12 @@ If the ["auto" profile"](Configuration?id=profiles-and-bindings) is set to `unde
 #### **Example**
 
 ```gml
-//TODO lol
+//If the player is using the TOUCH source...
+if (input_source_using(INPUT_TOUCH))
+{
+	//Then we don't want a custom profile, so reset to using the auto profile
+	input_profile_auto();
+}
 ```
 
 <!-- tabs:end -->
@@ -220,7 +273,20 @@ This function replaces all bindings for the player's profile to the bindings fou
 #### **Example**
 
 ```gml
-//TODO lol
+if (input_check_pressed("back"))
+{
+	//Reset the source mode to hotswapping
+	input_source_mode_set(INPUT_SOURCE_MODE.HOTSWAP);
+
+	//Foricbly disconnect P2
+	input_source_clear(1);
+
+	//Reset all the keyboard bindings for P2
+	input_profile_reset_bindings("keyboard", 1);
+
+	//Return to the main menu
+	room_goto(rm_main_menu);
+}
 ```
 
 <!-- tabs:end -->
