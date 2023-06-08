@@ -25,7 +25,9 @@ Sets up a constant-strength vibration event for the given duration.
 #### **Example**
 
 ```gml
-//TODO lol
+//Play a vibration effect when we fire a shot
+//We pan slightly left to bias slightly for high-frequency vibration on PS/XB gamepads
+input_vibrate_constant(0.7, -0.3, 50);
 ```
 
 <!-- tabs:end -->
@@ -59,7 +61,8 @@ Sets up a vibration event that follows an attack-decay-sustain-release curve. Th
 #### **Example**
 
 ```gml
-//TODO lol
+//Vibrate, slowly swelling and decaying vibration
+input_vibrate_adsr(1, 0.2, 0, 300, 300, 600, 600);
 ```
 
 <!-- tabs:end -->
@@ -90,7 +93,8 @@ Sets up a vibration event that emits a fixed number of pulses over the given dur
 #### **Example**
 
 ```gml
-//TODO lol
+//Vibrate with a throbbing pulse
+input_vibrate_pulse(1, 0, 5, 600);
 ```
 
 <!-- tabs:end -->
@@ -121,7 +125,8 @@ Sets up a vibration event that follows an animation curve defined in the GameMak
 #### **Example**
 
 ```gml
-//TODO lol
+//Vibrate for a whole second according to the <curve_test_vibration> curve
+input_vibrate_curve(1, curve_test_vibration, 0, 1000);
 ```
 
 <!-- tabs:end -->
@@ -147,7 +152,15 @@ Immediately stops all vibration for the target player.
 #### **Example**
 
 ```gml
-//TODO lol
+//If we're in demo mode and the player long-presses the pause verb...
+if (global.demo_mode && input_long_pressed("pause"))
+{
+	//Stop all vibration
+	input_vibrate_stop();
+
+	//And return to the main menu
+	room_goto(rm_main_menu);
+}
 ```
 
 <!-- tabs:end -->
@@ -174,7 +187,16 @@ Whilst player vibration is paused, typically no new vibration events can be crea
 #### **Example**
 
 ```gml
-//TODO lol
+//If the player pauses the game...
+if (input_pressed("pause"))
+{
+	//Pause all vibration
+	input_vibrate_set_pause(true);
+
+	//And return to the main menu
+	instance_create_layer(0, 0, "UI", obj_pause_menu);
+
+	//N.B.  input_vibrate_set_pause(false) should be called when unpausing
 ```
 
 <!-- tabs:end -->
@@ -198,7 +220,11 @@ Whilst player vibration is paused, typically no new vibration events can be crea
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw the current vibration pause state to the screen if we're debugging
+if (debug_mode)
+{
+	draw_text(10, 10, "Vibr Pause = " + string(input_vibrate_get_pause()));
+}
 ```
 
 <!-- tabs:end -->
@@ -223,7 +249,19 @@ Whilst player vibration is paused, typically no new vibration events can be crea
 #### **Example**
 
 ```gml
-//TODO lol
+//Adjust the strength of the vibration based on tapping left/right
+var _delta = 0.05*input_check_opposing_repeat("left", "right");
+if (_delta != 0)
+{
+	//Clamp the new strength between 0 and 1
+	var _strength = clamp(input_vibrate_get_strength() + _delta, 0, 1);
+
+	//Actually set the new strength
+	input_vibrate_set_strength(_strength);
+
+	//Play a little buzz to indicate to the player how strong the new setting is
+	input_vibrate_constant(0.9, 0, 60, 0, true);
+}
 ```
 
 <!-- tabs:end -->
@@ -247,7 +285,8 @@ Whilst player vibration is paused, typically no new vibration events can be crea
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw the vibration strength to the screen
+draw_text(x, y, "Vibration = " + string(input_vibrate_get_strength()));
 ```
 
 <!-- tabs:end -->
