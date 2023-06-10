@@ -26,7 +26,6 @@ function __input_initialize()
     //Detect GameMaker version to toggle features
     _global.__use_is_instanceof = (!INPUT_ON_WEB) && (_version.major >= 2023); 
     _global.__use_legacy_strings = (_version.major >= 2022) && (((_version.minor < 9) && (_version.minor != 0)) || ((_version.minor == 0) && (_version.bug_fix == 0)));
-	//"2022.0.0");
     if (!__INPUT_SILENT)
     {
         if (_global.__use_is_instanceof) __input_trace("On runtime ", GM_runtime_version, ", using is_instanceof()");
