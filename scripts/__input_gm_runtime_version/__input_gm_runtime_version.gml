@@ -1,5 +1,5 @@
 /// @ignore
-function __input_gm_version() {
+function __input_gm_runtime_version() {
 	static _version = undefined;
 	if (_version == undefined) 
     {

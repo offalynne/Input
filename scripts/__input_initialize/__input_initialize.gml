@@ -4,7 +4,7 @@ function __input_initialize()
     static _initialized = false;
     if (_initialized) return;
     _initialized = true;
-	var _version = __input_gm_version();
+	var _version = __input_gm_runtime_version();
     
     //Don't use static here as this puts the game into a boot loop
     var _global = __input_global();
