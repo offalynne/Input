@@ -4,6 +4,7 @@ function __input_initialize()
     static _initialized = false;
     if (_initialized) return;
     _initialized = true;
+	var _version = __input_gm_runtime_version();
     
     //Don't use static here as this puts the game into a boot loop
     var _global = __input_global();
@@ -23,8 +24,8 @@ function __input_initialize()
     }
     
     //Detect GameMaker version to toggle features
-    _global.__use_is_instanceof = (!INPUT_ON_WEB) && (string_copy(GM_runtime_version, 1, 4) == "2023");
-    _global.__use_legacy_strings = (string_copy(GM_runtime_version, 1, 8) == "2022.0.0");
+    _global.__use_is_instanceof = (!INPUT_ON_WEB) && (_version.major >= 2023); 
+    _global.__use_legacy_strings = (_version.major >= 2022) && (((_version.minor < 9) && (_version.minor != 0)) || ((_version.minor == 0) && (_version.bug_fix == 0)));
     if (!__INPUT_SILENT)
     {
         if (_global.__use_is_instanceof) __input_trace("On runtime ", GM_runtime_version, ", using is_instanceof()");
