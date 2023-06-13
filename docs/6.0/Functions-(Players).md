@@ -394,7 +394,27 @@ This function will swap over the two players with the given indices. This includ
 #### **Example**
 
 ```gml
-//TODO lol
+//If P1 is disconnected...
+if (!input_player_connected(0))
+{
+    //Then find the first connected player and swap them into the P1 slot
+    for(var _i = 1; _i < INPUT_MAX_PLAYERS; _i++)
+    {
+        if (input_player_connected(_i))
+        {
+            input_player_swap(0, _i);
+
+            //Make sure we break out of the loop!
+            break;
+        }
+    }
+
+    //If P1 *still* isn't connected then throw up a disconnection modal
+    if (!input_player_connected(0))
+    {
+        show_disconnection_modal();
+    }
+}
 ```
 
 <!-- tabs:end -->
@@ -429,7 +449,9 @@ var _override = input_player_gamepad_type_override_get();
 //Convert it to a number for the purposes of scrolling
 switch(_override)
 {
-    case undefined: var _index = 0;
+    case undefined:
+        var _index = 0;
+    break;
 
     case INPUT_GAMEPAD_TYPE_PSX:
     case INPUT_GAMEPAD_TYPE_PS4:
@@ -441,7 +463,9 @@ switch(_override)
         _var _index = 3;
     break;
 
-    default: var _index = 1;
+    default:
+        var _index = 1;
+    break;
 }
 
 //Allow scrolling by pressing the left/right verbs
