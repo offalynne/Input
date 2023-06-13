@@ -10,7 +10,7 @@ If you're looking for a way to control what [source](Input-Sources) a player is 
 
 ## …player_connected
 
-`input_player_connected([playerIndex])`
+`input_player_connected([playerIndex], [includeGhost=true])`
 
 <!-- tabs:start -->
 
@@ -18,13 +18,12 @@ If you're looking for a way to control what [source](Input-Sources) a player is 
 
 **Returns:** Boolean, whether any of the player's [sources](Input-Sources) are connected and available for use
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+|Name            |Datatype|Purpose                                                 |
+|----------------|--------|--------------------------------------------------------|
+|`[playerIndex]` |integer |Player to target. If not specified, player 0 is used    |
+|`[includeGhost]`|boolean |Whether to treat ghosts as connected. Defaults to `true`|
 
 If the player's sole source is a gamepad and that gamepad is [incompatible with SDL2](Controller-Mapping?id=controller-blacklist) then this function will return `false`.
-
-?> Players that are designated as ["ghosts"](Functions-(Players)?id=input_player_ghost_setstate-playerindex) will always be considered connected.
 
 #### **Example**
 
@@ -50,7 +49,7 @@ for(var _player = 0; _player < INPUT_MAX_PLAYERS; _player++)
 
 ## …player_connected_count
 
-`input_player_connected_count()`
+`input_player_connected_count([includeGhosts])`
 
 <!-- tabs:start -->
 
@@ -58,11 +57,9 @@ for(var _player = 0; _player < INPUT_MAX_PLAYERS; _player++)
 
 **Returns:** Integer, the number of players with connected devices
 
-|Name|Datatype|Purpose|
-|----|--------|-------|
-|None|        |       |
-
-?> Players that are designated as ["ghosts"](Functions-(Players)?id=input_player_ghost_setstate-playerindex) will always be considered connected.
+|Name             |Datatype|Purpose                                                 |
+|-----------------|--------|--------------------------------------------------------|
+|`[includeGhosts]`|boolean |Whether to treat ghosts as connected. Defaults to `true`|
 
 #### **Example**
 
@@ -326,7 +323,7 @@ if (input_check_pressed("accept", 0))
     //If P1 wants to start the game, set any disconnected players to ghosts
     //(This code presumes all players are initially in a non-ghost state)
 
-    var _start = input_player_connected_count();
+    var _start = input_player_connected_count(false);
     for(var _i = _start; _i < INPUT_MAX_PLAYERS; _i++)
     {
         input_player_ghost_set(true, _i);
