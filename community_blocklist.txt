@@ -4,6 +4,13 @@
 5e04050b,windows,vid+pid // Xbox Elite DInput
 5e04130b,windows,vid+pid // Xbox Series DInput
 efbeedfe,windows,vid+pid // Virtual Hid Device
+d90493a2,windows,vid+pid // Obins Anne Pro 2
+050be318,windows,vid+pid // ROG Chakram
+050be518,windows,vid+pid // ROG Chakram
+050b5819,windows,vid+pid // ROG Chakram Core
+050b181a,windows,vid+pid // ROG Chakram X
+050b1a1a,windows,vid+pid // ROG Chakram X
+050b1c1a,windows,vid+pid // ROG Chakram X
 030000007e0500000e20000000020000,macos,guid // Joy-Con Charger
 030000007e0500000920000000020000,macos,guid // Switch Pro Controller
 03000000050b0000e318000000010000,macos,guid // ROG Chakram
