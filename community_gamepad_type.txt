@@ -292,6 +292,7 @@ beef,feed,CommunityXBox360 // Monect
 0079,0002,CommunityXBox360 // Arcade Board
 10f5,7008,CommunityXBoxOne // Turtle Beach Recon Controller
 2dc8,2101,CommunityXBoxOne // 8BitDo Xbox One SN30 Pro
+0e6f,02ef,CommunityXBoxOne // PDP Xbox Series
 0e6f,d802,CommunityXBoxOne // PDP Xbox Series
 242f,3700,CommunityXBoxOne // Mayflash F101 Arcade Stick
 1532,0a29,CommunityXBoxOne // Razer Wolverine 2
