@@ -1,4 +1,4 @@
-if (input_check_pressed("pause"))
+if (input_keyboard_check_pressed(vk_escape) || input_gamepad_check_pressed(input_player_get_gamepad(), gp_start))
 {
     pause = !pause;
     input_binding_scan_abort();
