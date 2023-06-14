@@ -96,7 +96,7 @@ function __input_gamepad_set_vid_pid()
        //Unpack the vendor/product IDs from the gamepad's GUID
         if (__INPUT_ON_WINDOWS)
         {
-            var _legacy = __input_string_contains(guid, "000000000000504944564944");
+            var _legacy = __input_string_contains(guid, "000000000000504944564944"); //"PIDVID"
             var _result = __input_gamepad_guid_parse(guid, _legacy, false);
             vendor  = _result.vendor;
             product = _result.product;

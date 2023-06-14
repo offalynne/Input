@@ -545,6 +545,36 @@ function __input_gamepad_set_mapping()
 
     #endregion
     
+    #region Obins Anne Pro 2 on Windows MacOS and Linux
+    
+    if ((raw_type == "CommunityAnnePro") && INPUT_ON_PC)
+    {
+        if (!__INPUT_ON_MACOS)
+        {
+            set_mapping(gp_shoulderlb, 0, __INPUT_MAPPING.AXIS,  "lefttrigger").extended_range = __INPUT_ON_WINDOWS;
+            set_mapping(gp_shoulderrb, 1, __INPUT_MAPPING.AXIS, "righttrigger").extended_range = __INPUT_ON_WINDOWS;
+        }
+        
+        set_mapping(gp_axislh, 3, __INPUT_MAPPING.AXIS,   "leftx");
+        
+        set_mapping(gp_shoulderl, 0, __INPUT_MAPPING.BUTTON, "leftshoulder");
+        set_mapping(gp_select,    1, __INPUT_MAPPING.BUTTON, "back");
+        set_mapping(gp_padl,      2, __INPUT_MAPPING.BUTTON, "dpleft");
+        set_mapping(gp_padu,      3, __INPUT_MAPPING.BUTTON, "dpup");
+        set_mapping(gp_padd,      4, __INPUT_MAPPING.BUTTON, "dpdown");
+        set_mapping(gp_padr,      5, __INPUT_MAPPING.BUTTON, "dpright");
+        set_mapping(gp_shoulderr, 6, __INPUT_MAPPING.BUTTON, "rightshoulder");
+        set_mapping(gp_start,     7, __INPUT_MAPPING.BUTTON, "start");
+        set_mapping(gp_face2,     8, __INPUT_MAPPING.BUTTON, "b");
+        set_mapping(gp_face4,     9, __INPUT_MAPPING.BUTTON, "y");
+        set_mapping(gp_face1,    10, __INPUT_MAPPING.BUTTON, "a");
+        set_mapping(gp_face3,    11, __INPUT_MAPPING.BUTTON, "x");
+        
+        return;
+    }
+    
+    #endregion
+    
     #region Ouya Controller on MacOS
     
     if ((raw_type == "CommunityOuya") && __INPUT_ON_MACOS)
