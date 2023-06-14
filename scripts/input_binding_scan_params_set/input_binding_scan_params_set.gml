@@ -1,10 +1,12 @@
 /// @desc    Sets parameters when scanning for bindings for a particular player
 ///          These parameters persist between scans
 /// 
-/// @param   [ignoreArray]
-/// @param   [allowArray]
-/// @param   [sourceFilter]
-/// @param   [playerIndex=0]
+/// If a constant appears in both lists, the “ignore” array takes precedence and the binding will be ignored
+/// 
+/// @param   [ignoreArray]     Array of keyboard keys (vk_*, "A"), mouse buttons (mb_*), or gamepad constants (gp_*) to explicitly disallow being scanned
+/// @param   [allowArray]      Array of keyboard keys (vk_*, "A"), mouse buttons (mb_*), or gamepad constants (gp_*) to explicitly scan for, excluding all other possible bindings
+/// @param   [sourceFilter]    Array of sources to scan. If not specified, the sources currently assigned to the target player will be scanned
+/// @param   [playerIndex=0]   Player to target. If not specified, player 0 is targeted
 
 function input_binding_scan_params_set(_ignore_array = undefined, _allow_array = undefined, _source_filter = undefined, _player_index = 0)
 {
