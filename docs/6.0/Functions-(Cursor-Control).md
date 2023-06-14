@@ -23,7 +23,11 @@
 #### **Example**
 
 ```gml
-//TODO lol
+//Create a player and assign its player_index variable
+instance_create_layer(x, y, "Players", obj_player, { player_index: player_index });
+
+//Move the cursor to the new player instance
+input_cursor_set(x, y, player_index);
 ```
 
 <!-- tabs:end -->
@@ -55,7 +59,17 @@ Whilst the cursor is being moved, cursor limits will be applied but cursor elast
 #### **Example**
 
 ```gml
-//TODO lol
+if (input_check_pressed("next tab"))
+{
+	//Go to the next tab in the UI
+	ui_load_next_tab();
+
+	//Find the first button on the tab
+	var _button = ui_get_first_button();
+
+	//And move the cursor to that button
+	input_cusor_translate(_button.x, _button.y, 550);
+}
 ```
 
 <!-- tabs:end -->
@@ -85,7 +99,9 @@ Limits the cursor's motion inside an axis-aligned bounding box with the given co
 #### **Example**
 
 ```gml
-//TODO lol
+//Prevent the cursor from leaving the room
+//We add a little margin round the edge for aesthetic purposes
+input_cursor_limit_aabb(15, 15, room_width-15, room_height-15);
 ```
 
 <!-- tabs:end -->
@@ -114,7 +130,8 @@ Limits the cursor's motion inside a circle centred at the given point.
 #### **Example**
 
 ```gml
-//TODO lol
+//Limit the cursor to the circle immediately around the player
+input_cursor_limit_circle(obj_player.x, obj_player.y, 150);
 ```
 
 <!-- tabs:end -->
@@ -147,7 +164,18 @@ Limits the cursor’s motion inside the visible portion of the game window. If a
 #### **Example**
 
 ```gml
-//TODO lol
+//If the player presses the pause button...
+if (input_check_pressed("pause"))
+{
+	//Create the pause menu object
+	instance_create_depth(0, 0, "UI", obj_pause);
+
+	//Swap to the GUI coordinate space
+	input_cursor_coord_space_set(INPUT_COORD_SPACE.GUI);
+
+	//And limit the cursor inside the GUI's boundaries
+	input_cursor_limit_boundary();
+}
 ```
 
 <!-- tabs:end -->
@@ -173,7 +201,22 @@ Removes any cursor limits you have set using `input_cursor_limit_aabb()` or `inp
 #### **Example**
 
 ```gml
-//TODO lol
+if (input_check_pressed("accept"))
+{
+	//Toggle mouse capture
+	input_mouse_capture_set(not input_mouse_capture_get());
+
+	if (input_mouse_capture_get())
+	{
+		//If we're capturing the mouse, limit movement
+		input_cursor_limit_boundary();
+	}
+	else
+	{
+		//If we're not capturing the mouse, allow free movement
+		input_cursor_limit_remove();
+	}
+}
 ```
 
 <!-- tabs:end -->
@@ -212,7 +255,29 @@ The struct returned by this function contains the following member variables:
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw the cursor boundary on screen if
+// 1. We're in debug_mode
+// 2. Holding mb_middle
+if (debug_mode && input_mouse_check(mb_middle))
+{
+	var _limit = input_cursor_limit_get();
+
+	if (_limit.left != undefined)
+	{
+		draw_rectangle(_limit.left, _limit.top, _limit.top, _limit.bottom, true);
+	}
+	
+	if (_limit.circle_x != undefined)
+	{
+		draw_circle(_limit.circle_x, _limit.circle_y, _limit.circle_radius, true);
+	}
+
+	if (_limit.boundary_margin != undefined)
+	{
+		var _margin = _limit.boundary_margin;
+		draw_rectangle(_margin, _margin, room_width + _margin, room_height + _margin, true);
+	}
+}
 ```
 
 <!-- tabs:end -->
@@ -244,7 +309,20 @@ Sets up a springy force that pulls the cursor towards the given point. This is u
 #### **Example**
 
 ```gml
-//TODO lol
+if (input_source_using(INPUT_GAMEPAD))
+{
+	//Limit the cursor to the circle immediately around the turret
+	input_cursor_limit_circle(obj_turret.x, obj_turret.y, 70);
+
+	//Spring the cursor back towards the turret
+	input_cursor_elastic_set(obj_turret.x, obj_turret.y, 0.2);
+}
+else
+{
+	//If we're not using a gamepad then remove the cursor control
+	input_cursor_limit_remove();
+	input_cursor_elastic_remove();
+}
 ```
 
 <!-- tabs:end -->
@@ -270,7 +348,20 @@ Removes an elastic force that has been added to the given player's cursor.
 #### **Example**
 
 ```gml
-//TODO lol
+if (input_source_using(INPUT_GAMEPAD))
+{
+	//Limit the cursor to the circle immediately around the turret
+	input_cursor_limit_circle(obj_turret.x, obj_turret.y, 70);
+
+	//Spring the cursor back towards the turret
+	input_cursor_elastic_set(obj_turret.x, obj_turret.y, 0.2);
+}
+else
+{
+	//If we're not using a gamepad then remove the cursor control
+	input_cursor_limit_remove();
+	input_cursor_elastic_remove();
+}
 ```
 
 <!-- tabs:end -->
@@ -304,7 +395,15 @@ The struct returned by this function contains the following member variables:
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw the elastic force on screen if
+// 1. We're in debug_mode
+// 2. Holding mb_middle
+if (debug_mode && input_mouse_check(mb_middle))
+{
+	var _elastic = input_cursor_elastic_get();
+	draw_arrow(input_cursor_x(), input_cursor_y(), _elastic.x, _elastic.y, 10);
+	draw_text(_elastic.x + 12, _elastic.y, _elastic.strength);
+}
 ```
 
 <!-- tabs:end -->
