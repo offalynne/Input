@@ -28,7 +28,13 @@
 #### **Example**
 
 ```gml
-//TODO lol
+//Set the threshold of the horizontal component of the left stick based on a sensitivity mode
+switch(sensitivity_mode)
+{
+	case 0: input_axis_threshold_set(gp_axislh, 0.3, 1.0); break;
+	case 1: input_axis_threshold_set(gp_axislh, 0.4, 0.9); break;
+	case 2: input_axis_threshold_set(gp_axislh, 0.5, 0.8); break;
+}
 ```
 
 <!-- tabs:end -->
@@ -55,7 +61,13 @@ If the axis does not have a threshold definition (as set by `input_axis_threshol
 #### **Example**
 
 ```gml
-//TODO lol
+//Grab the axis thresholds
+var _threshold = input_axis_threshold_get(gp_axislh);
+
+//Draw a representation of the thresholds
+//We use two different radii so the two circles never overlap
+draw_circle(x, y, 110*_threshold.mini, true);
+draw_circle(x, y, 120*_threshold.maxi, true);
 ```
 
 <!-- tabs:end -->
@@ -79,7 +91,11 @@ If the axis does not have a threshold definition (as set by `input_axis_threshol
 #### **Example**
 
 ```gml
-//TODO lol
+//Toggle momentary state across the entire game
+if (input_check_pressed("accept"))
+{
+	input_accessibility_global_toggle_set(not input_accessibility_global_toggle_get());
+}
 ```
 
 <!-- tabs:end -->
@@ -103,7 +119,19 @@ If the axis does not have a threshold definition (as set by `input_axis_threshol
 #### **Example**
 
 ```gml
-//TODO lol
+//Determine what string to show based on the momentary toggle
+var _string = "Momentary toggle is set to ";
+if (input_accessibility_global_toggle_get())
+{
+	_string += "ON";
+}
+else
+{
+	_string += "OFF";
+}
+
+//Draw that to the screen
+draw_text(x, y, _string);
 ```
 
 <!-- tabs:end -->
@@ -128,7 +156,15 @@ If the axis does not have a threshold definition (as set by `input_axis_threshol
 #### **Example**
 
 ```gml
-//TODO lol
+//Set whether the "shoot" verb is set to toggle
+if (input_check_pressed("accept"))
+{
+	input_accessibility_verb_toggle_set("shoot", true);
+}
+else if (input_check_pressed("cancel"))
+{
+	input_accessibility_verb_toggle_set("shoot", false);
+}
 ```
 
 <!-- tabs:end -->
@@ -152,7 +188,9 @@ If the axis does not have a threshold definition (as set by `input_axis_threshol
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw the state of the verb toggle for "shoot"
+draw_text(x, y, "Shoot");
+draw_sprite(spr_toggle_state, input_accessibility_verb_toggle_get("shoot"), x + 52, y);
 ```
 
 <!-- tabs:end -->
@@ -176,7 +214,11 @@ If the axis does not have a threshold definition (as set by `input_axis_threshol
 #### **Example**
 
 ```gml
-//TODO lol
+//Toggle input cooldown across the entire game
+if (input_check_pressed("accept"))
+{
+	input_accessibility_global_cooldown_set(not input_accessibility_global_cooldown_get());
+}
 ```
 
 <!-- tabs:end -->
@@ -200,7 +242,19 @@ If the axis does not have a threshold definition (as set by `input_axis_threshol
 #### **Example**
 
 ```gml
-//TODO lol
+//Determine what string to show based on the cooldown toggle
+var _string = "Input cooldown is set to ";
+if (input_accessibility_global_cooldown_get())
+{
+	_string += "ON";
+}
+else
+{
+	_string += "OFF";
+}
+
+//Draw that to the screen
+draw_text(x, y, _string);
 ```
 
 <!-- tabs:end -->
@@ -225,7 +279,11 @@ If the axis does not have a threshold definition (as set by `input_axis_threshol
 #### **Example**
 
 ```gml
-//TODO lol
+//Toggle verb cooldown for the "talk" verb
+if (input_check_pressed("accept"))
+{
+	input_accessibility_verb_cooldown_set("talk", not input_accessibility_verb_cooldown_get("talk"));
+}
 ```
 
 <!-- tabs:end -->
@@ -249,7 +307,9 @@ If the axis does not have a threshold definition (as set by `input_axis_threshol
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw the state of the verb toggle for "talk"
+draw_text(x, y, "Talk");
+draw_sprite(spr_cooldown_state, input_accessibility_verb_cooldown_get("talk"), x + 52, y);
 ```
 
 <!-- tabs:end -->
