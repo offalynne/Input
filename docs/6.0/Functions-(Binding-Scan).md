@@ -125,6 +125,39 @@ if (input_binding_scan_in_progress())
 
 &nbsp;
 
+## …binding_scan_time_remaining
+
+`input_binding_scan_time_remaining([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, the amount of time left on the rebinding operation in milliseconds
+
+|Name           |Datatype|Purpose                                                 |
+|---------------|--------|--------------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is targeted|
+
+The maximum value this function can return is `INPUT_BINDING_SCAN_TIMEOUT`. If no binding scan is active, this function returns `0`.
+
+#### **Example**
+
+```gml
+//If we're scanning for a new binding...
+if (input_binding_scan_in_progress())
+{
+	//Draw a progress bar to indicate there is a timeout active
+	var _perc = input_binding_scan_time_remaining() / INPUT_BINDING_SCAN_TIMEOUT;
+	draw_rectangle(x, y, x + 120*_perc, y + 30, false);
+	draw_rectangle(x, y, x + 120, y + 30, true);
+}
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
 ## …binding_scan_set_params
 
 `input_binding_scan_set_params([ignoreArray], [allowArray], [sourceFilter], [playerIndex])`
