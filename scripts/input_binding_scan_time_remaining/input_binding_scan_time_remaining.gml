@@ -10,7 +10,7 @@ function input_binding_scan_time_remaining(_player_index = 0)
     {
         if (__rebind_state > 0)
         {
-            return max(0, INPUT_BINDING_SCAN_TIMEOUT - (__global.__current_time - __rebind_start_time));
+            return clamp(INPUT_BINDING_SCAN_TIMEOUT - (__global.__current_time - __rebind_start_time), 0, INPUT_BINDING_SCAN_TIMEOUT);
         }
         else
         {
