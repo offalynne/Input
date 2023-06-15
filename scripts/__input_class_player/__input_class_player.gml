@@ -1455,7 +1455,7 @@ function __input_class_player() constructor
                 ++_v;
             }
             
-            __input_player_tick_sources();
+            __input_player_tick_sources(self);
             
             //Update our basic verbs first
             tick_basic_verbs();
