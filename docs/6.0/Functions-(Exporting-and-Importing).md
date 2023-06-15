@@ -21,7 +21,13 @@ Resets accessibility data and player data for all players (see [`input_player_re
 #### **Example**
 
 ```gml
-//TODO lol
+if (input_check_long("accept"))
+{
+	//The player long-held "accept" to confirm savedata wipe
+	savedata_reset();
+	input_system_reset();
+	room_goto(rm_main);
+}
 ```
 
 <!-- tabs:end -->
@@ -50,7 +56,25 @@ It is recommended to only use bindings written on the same device as keyboard sc
 #### **Example**
 
 ```gml
-//TODO lol
+//Return to the settings menu, saving the controls as we go
+if (input_check("back"))
+{
+	//Export a nice readable string
+	var _string = input_system_export(false, true);
+
+	//Save the string into a buffer
+	var _buffer = buffer_create(1024, buffer_grow, 1);
+	buffer_write(_buffer, buffer_text, _string);
+
+	//Save the buffer to disk
+	buffer_save_ext(_buffer, "controls.json", 0, buffer_tell(_buffer));
+
+	//Clean up the buffer!
+	buffer_delete(_buffer);
+
+	//Then return to the settings page
+	room_goto(rm_settings);
+}
 ```
 
 <!-- tabs:end -->
@@ -74,7 +98,18 @@ It is recommended to only use bindings written on the same device as keyboard sc
 #### **Example**
 
 ```gml
-//TODO lol
+if (not input_system_verify(_incoming_data))
+{
+	//The ice we skate is getting pretty thin
+	//(We failed to validate the controls so force a reset of the control scheme)
+	show_notification("Couldn't load control settings!");
+	input_system_reset();
+}
+else
+{
+	//The water's getting warm so you might as well swim
+	input_system_import(_incoming_data);
+}
 ```
 
 <!-- tabs:end -->
@@ -102,7 +137,28 @@ This function deserialises all player data (see [`input_player_export()`]()) as 
 #### **Example**
 
 ```gml
-//TODO lol
+//Load up the Input data if it exists
+if (file_exists("controls.json"))
+{
+	//Load up a buffer and try to read Input data from it as a string
+	var _buffer = buffer_load("controls.json");
+	var _incoming_data = buffer_read(_buffer, buffer_text);
+	buffer_delete(_buffer); //Always clean up your memory!
+
+	if (not input_system_verify(_incoming_data))
+	{
+		//We failed to validate the controls so force a reset of the control scheme
+		show_notification("Couldn't load control settings!");
+	}
+	else
+	{
+		//Otherwise load as planned
+		input_system_import(_incoming_data);
+	}
+}
+
+//Then proceed to the main menu
+room_goto(rm_main_menu);
 ```
 
 <!-- tabs:end -->
@@ -128,7 +184,11 @@ Clears the current profiles and bindings for the given player, resetting them to
 #### **Example**
 
 ```gml
-//TODO lol
+if (input_check_long("accept", player_index))
+{
+	//Player long-held "accept" to confirm, wipe their custom bindings
+	input_player_reset(player_index);
+}
 ```
 
 <!-- tabs:end -->
@@ -158,7 +218,20 @@ It is recommended to only use bindings written on the same device as keyboard sc
 #### **Example**
 
 ```gml
-//TODO lol
+//Fetch the player-specific settings from Input
+var _player_data = input_player_export(player_index, false);
+
+//Get the account name for this player
+var _account_name = global.account_name[player_index];
+
+//Get the struct associated with this account
+var _account_struct = global.account_data[$ _account_name];
+
+//Store the Input data in that account struct
+_current_account.player_controls = _player_data;
+
+//And then save out the updated account data to disk
+account_savedata_save(player_index);
 ```
 
 <!-- tabs:end -->
@@ -182,7 +255,17 @@ It is recommended to only use bindings written on the same device as keyboard sc
 #### **Example**
 
 ```gml
-//TODO lol
+if (not input_player_verify(_incoming_data))
+{
+	//We've gotten invalid data for some reason, force a reset
+	input_player_reset();
+	show_notification("Couldn't load control settings!");
+}
+else
+{
+	//Otherwise load as planned
+	input_player_import(_incoming_data);
+}
 ```
 
 <!-- tabs:end -->
@@ -211,7 +294,32 @@ All player data is fully reset before loading in the new data - as such, this fu
 #### **Example**
 
 ```gml
-//TODO lol
+if (input_check_pressed("accept"))
+{
+	//Set the account name for this player
+	global.account_name[player_index] = selected_account;
+
+	//Load the data for this account from disk
+	account_savedata_load(player_index);
+
+	//Get the struct associated with this account
+	var _account_struct = global.account_data[$ _account_name];
+
+	//Fetch the Input-related data from the account struct
+	var _incoming_data = _account_struct.player_controls;
+
+	if (not input_player_verify(_incoming_data))
+	{
+		//We've gotten invalid data for some reason, force a reset
+		input_player_reset(player_index);
+		show_notification("Couldn't load control settings!");
+	}
+	else
+	{
+		//Otherwise load as planned
+		input_player_import(_incoming_data, player_index);
+	}
+}
 ```
 
 <!-- tabs:end -->
@@ -238,7 +346,16 @@ Duplicates one player's profiles, bindings, and axis thresholds and copies them 
 #### **Example**
 
 ```gml
-//TODO lol
+if (input_check_long("special"))
+{
+	//Player long-held "special" to indicate they want to play as a guest
+
+	//Set the account name for this player
+	global.account_name[player_index] = "Doppel-" + global.account_name[0];
+
+	//Duplicate the settings for Input from player 0 to the new player
+	input_player_copy(0, player_index);
+}
 ```
 
 <!-- tabs:end -->
@@ -268,7 +385,17 @@ It is recommended to only use bindings written on the same device as keyboard sc
 #### **Example**
 
 ```gml
-//TODO lol
+//Export this profile's bindings to a string
+var _string = input_profile_export(input_profile_get(), true, false);
+
+//Convert the string into something a bit easier to copy-paste around
+_string = "#" + base64_encode(_string) + "#";
+
+//Drop the new string onto the clipboard
+clipboard_set_text(_string);
+
+//Tell the player what we did!
+show_notification("Copied control scheme to the clipboard!");
 ```
 
 <!-- tabs:end -->
@@ -292,7 +419,18 @@ It is recommended to only use bindings written on the same device as keyboard sc
 #### **Example**
 
 ```gml
-//TODO lol
+if (not input_profile_verify(_incoming_data))
+{
+	//Failed to verify the incoming profile
+	//Don't reset the player's settings though, that would be irritating
+	show_notification("Couldn't read new control scheme");
+}
+else
+{
+	//Good data! Load as planned
+	input_profile_import(_incoming_data);
+	show_notification("Loaded new control scheme");
+}
 ```
 
 <!-- tabs:end -->
@@ -321,7 +459,32 @@ All player data is fully reset before loading in the new data - as such, this fu
 #### **Example**
 
 ```gml
-//TODO lol
+var _incoming_data = clipboard_get_text();
+
+//Check to see if we have both hashes, one at each end
+if ((string_char_at(_incoming_data, 1) != "#")
+or  (string_char_at(_incoming_data, string_length(_incoming_data)) != "#"))
+{
+	show_notification("Couldn't read new control scheme");
+}
+else
+{
+	//Trim off the hashes then try to load using Input
+	_string = string_copy(_string, 2, string_length(_string) - 2);
+
+	if (not input_profile_verify(_incoming_data))
+	{
+		//Failed to verify the incoming profile
+		//Don't reset the player's settings though, that would be irritating
+		show_notification("Couldn't read new control scheme");
+	}
+	else
+	{
+		//Good data! Load as planned
+		input_profile_import(_incoming_data);
+		show_notification("Loaded new control scheme");
+	}
+}
 ```
 
 <!-- tabs:end -->
@@ -350,7 +513,12 @@ Duplicates one player's profile and copies them over to another player.
 #### **Example**
 
 ```gml
-//TODO lol
+//Create a new custom profile and copy over the default gamepad bindings
+if (input_check_pressed("accept"))
+{
+	input_profile_create(new_custom_profile);
+	input_profile_copy(0, INPUT_AUTO_PROFILE_GAMEPAD, 0, new_custom_profile);
+}
 ```
 
 <!-- tabs:end -->
