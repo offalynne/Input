@@ -27,7 +27,15 @@ Immediately destroys a virtual button, making it inoperative and any methods for
 #### **Example**
 
 ```gml
-//TODO lol
+//Player has reached the end of the level
+
+//Destroy our two virtual buttons for safety
+vbutton_jump.destroy();
+vbutton_slide.destroy();
+
+//Show the end-game stats screen
+show_stats_screen();
+
 ```
 
 <!-- tabs:end -->
@@ -55,7 +63,14 @@ Draws simple representations of the virtual button to the screen. This is intend
 #### **Example**
 
 ```gml
-//TODO lol
+//If we're debugging our virtual buttons...
+if (DEBUG_ALLOWED && global.debug_vbuttons)
+{
+	//Then draw them to the screen for easier visualisation
+	vbutton_move.debug_draw();
+	vbutton_shoot.debug_draw();
+	vbutton_reload.debug_draw();
+}
 ```
 
 <!-- tabs:end -->
@@ -84,7 +99,15 @@ Sets the shape of the virtual button to a rectangle.
 #### **Example**
 
 ```gml
-//TODO lol
+//Set up some temporary variables for readability
+var _width  = display_get_gui_width()/4;
+var _right  = display_get_gui_width();
+var _bottom = display_get_gui_height();
+
+//Create two buttons at the bottom corners of the screen for navigation
+//We *don't* define a verb for these so we'll have to directly check them with .pressed() etc.
+vbutton_next_page = input_virtual_create().rectangle(0, 400, _width, _bottom);
+vbutton_prev_page = input_virtual_create().rectangle(_right - _width, 400, _right, _bottom);
 ```
 
 <!-- tabs:end -->
@@ -112,7 +135,11 @@ Sets the shape of the virtual button to a circle.
 #### **Example**
 
 ```gml
-//TODO lol
+var _width  = display_get_gui_width();
+var _height = display_get_gui_height();
+
+//Create a virtual button that the player can tap to consent to the data privacy policy
+vbutton_consent = input_virtual_create().button("accept").circle(0.5*_width, 0.7*_height, 150);
 ```
 
 <!-- tabs:end -->
@@ -150,7 +177,14 @@ The struct returned from this method has the following member variables:
 #### **Example**
 
 ```gml
-//TODO lol
+//Get the location of the button on the screen
+var _position = vbutton_back.get_position();
+
+//Change the sprite depending on whether it's being pressed or not
+var _held = vbutton_back.check();
+
+//Draw the button
+draw_sprite(spr_button_back, _held, _position.x, _position.y);
 ```
 
 <!-- tabs:end -->
@@ -176,7 +210,29 @@ Binds the virtual button to a basic Input verb. Pressing the button will also "p
 #### **Example**
 
 ```gml
-//TODO lol
+//Set up some size parameters for our quickslot buttons
+var _button_width = 30;
+var _button_gap = 10;
+
+//Calculate the starting x-coordinate for the buttons
+//This will ensure that they're spread out across the width of the screen, and centred
+var _x = 0.5*display_get_gui_width();
+_x -= (QUICK_SLOT_COUNT - 1)*(_button_width + _button_gap);
+
+//Create an array to hold our quick slots
+vbutton_quick = array_create(QUICK_SLOT_COUNT);
+
+//Iterate over each quick slot...
+for(var _i = 0; _i < QUICK_SLOT_COUNT; _i++)
+{
+	//And create a button for it
+	vbutton_quick[_i] = input_virtual_create()
+	                    .button("quick_slot_" + string(_i));
+	                    .circle(_x, y, _button_width);
+
+	//Find the position of the next button
+    _x += _button_width + _button_gap;
+}
 ```
 
 <!-- tabs:end -->
