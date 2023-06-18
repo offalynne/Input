@@ -265,7 +265,13 @@ By default, a dpad-type virtual button can trigger one or two verbs at once (lef
 #### **Example**
 
 ```gml
-//TODO lol
+//Treat the bottom of the GUI as a reference point
+var _bottom = display_get_gui_height();
+
+//Make a 4-dir dpad
+vbutton_dpad = input_virtual_create()
+               .rectangle(100, _bottom - 200, 200, _bottom - 100)
+               .dpad(undefined, "left", "right", "up", "down", true);
 ```
 
 <!-- tabs:end -->
@@ -295,7 +301,15 @@ Binds the virtual button to a set of basic Input verbs, one for each direction a
 #### **Example**
 
 ```gml
-//TODO lol
+//Treat the bottom of the GUI as a reference point
+var _bottom = display_get_gui_height();
+
+//Make a thumbstick that follows the player finger around
+vbutton_thumbstick = input_virtual_create()
+                     .circle(150, _bottom - 150, 100)
+                     .dpad(undefined, "left", "right", "up", "down", true)
+                     .follow(true)
+                     .release_behaviour(INPUT_VIRTUAL_RELEASE.RESET_POSITION);
 ```
 
 <!-- tabs:end -->
@@ -328,7 +342,30 @@ The `INPUT_VIRTUAL_TYPE` enum contains the following elements:
 #### **Example**
 
 ```gml
-//TODO lol
+//If we're in debug mode...
+if (debug_mode)
+{
+	//Show a different debug string for this button depending on its type
+	var _position = vbutton_movement.get_position();
+	with(vbutton_movement.get_type())
+	{
+		case INPUT_VIRTUAL_TYPE.BUTTON:
+			draw_text(_position.x + 10, _position.y, "button");
+		break;
+
+		case INPUT_VIRTUAL_TYPE.DPAD_8DIR:
+			draw_text(_position.x + 10, _position.y, "dpad");
+		break;
+
+		case INPUT_VIRTUAL_TYPE.DPAD_4DIR:
+			draw_text(_position.x + 10, _position.y, "dpad (4dir)");
+		break;
+
+		case INPUT_VIRTUAL_TYPE.THUMBSTICK:
+			draw_text(_position.x + 10, _position.y, "thumbstick");
+		break;
+	}
+}
 ```
 
 <!-- tabs:end -->
@@ -362,7 +399,12 @@ The struct returned from this method has the following member variables:
 #### **Example**
 
 ```gml
-//TODO lol
+//If we're in debug mode and touch the movement virtual button...
+if (debug_mode && vbutton_movement.pressed())
+{
+	//Then spit out a list of verbs that are assigned to the button
+	show_debug_message("Pressed virtual button with verbs: " + string(vbutton_movement.get_verbs()));
+}
 ```
 
 <!-- tabs:end -->
