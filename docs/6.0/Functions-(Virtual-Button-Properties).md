@@ -4,8 +4,6 @@
 
 Virtual buttons can be configured using the following functions. Many functions return `self` meaning that methods can be chained together as a fluent interface.
 
-?> All coordinates and positions are in GUI-space.
-
 &nbsp;
 
 ## .threshold
@@ -287,6 +285,30 @@ The `INPUT_VIRTUAL_RELEASE` enum contains the following elements:
 On devices that support multiple touch points (typically mobile phones), setting this behaviour to `true` will filter out any touch points after the first one. This is useful for preventing multiple touches on a menu.
 
 On devices that do not support multiple touch points, this function will not change any behaviour.
+
+#### **Example**
+
+```gml
+//TODO lol
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## .get_first_touch_only
+
+`<virtual button>.get_first_touch_only()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the virtual button will respond to the first touch only
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
 
 #### **Example**
 
