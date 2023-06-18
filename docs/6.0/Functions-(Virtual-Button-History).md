@@ -4,8 +4,6 @@
 
 Virtual buttons can be configured using the following functions. Many functions return `self` meaning that methods can be chained together as a fluent interface.
 
-?> All coordinates and positions are in GUI-space.
-
 &nbsp;
 
 ## .record_history
@@ -51,6 +49,8 @@ Starts recording touch point history for the virtual button. This can be used to
 |None|        |       |
 
 Structs in the returned array contain x/y coordinate pairs. These coordinates are the position of the touch point captured by the virtual button, going back into the past. New data is pushed into the array every frame, with index 0 in the array being 1 frame before present, the index 1 being 2 frames before presents, and so on.
+
+?> All coordinates and positions are in GUI-space.
 
 #### **Example**
 
@@ -100,6 +100,8 @@ Structs in the returned array contain x/y coordinate pairs. These coordinates ar
 |----------|--------|-----------------------------------------------------------------------------------------------|
 |`[frames]`|integer |Number of frames in the past to analyze. If not specified, `INPUT_TOUCH_HISTORY_FRAMES` is used|
 
+?> The distance that this function returns is measured in GUI-space.
+
 #### **Example**
 
 ```gml
@@ -123,6 +125,8 @@ Structs in the returned array contain x/y coordinate pairs. These coordinates ar
 |Name      |Datatype|Purpose                                                                                        |
 |----------|--------|-----------------------------------------------------------------------------------------------|
 |`[frames]`|integer |Number of frames in the past to analyze. If not specified, `INPUT_TOUCH_HISTORY_FRAMES` is used|
+
+?> The speed that this function returns is measured in GUI-space.
 
 #### **Example**
 
