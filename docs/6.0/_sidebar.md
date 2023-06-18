@@ -52,7 +52,7 @@
 - [Accessibility](Functions-(Accessibility))
 - [Exporting & Importing](Functions-(Exporting-and-Importing))
 - [Virtual Buttons](Functions-(Virtual-Buttons))
-- [VButton Setup](Functions-(Virtual-Button-Methods))
+- [VButton Setup](Functions-(Virtual-Button-Setup))
 - [VButton Properties](Functions-(Virtual-Button-Properties))
 - [VButton Checkers](Functions-(Virtual-Button-Checkers))
 - [VButton History](Functions-(Virtual-Button-History))
