@@ -4,7 +4,7 @@
 
 Virtual buttons can be configured using the following functions. Many functions return `self` meaning that methods can be chained together as a fluent interface.
 
-?> These functions are purely optional. The intended use case is for 
+?> These functions are purely optional. The intended use case is for virtual buttons to funnel their input into verbs. This behaviour can be set up by using the `.button()`, `.dpad()`, and `.thumbstick()` methods.
 
 &nbsp;
 
