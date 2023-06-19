@@ -161,7 +161,18 @@ if (vbutton_kaleidoscope.check())
 #### **Example**
 
 ```gml
-//TODO lol
+//If the player has stopped touching the "screen" virtual button
+if (vbutton_screen.released())
+{
+    //And their touch motion has exceeded a certain speed...
+    if (vbutton_screen.get_history_speed() > 5)
+    {
+        //Then flick the player instance off in that direction!
+        hspeed += lengthdir_x(10, vbutton_screen.get_history_direction());
+        vspeed += lengthdir_y(10, vbutton_screen.get_history_direction());
+        sprite_index = spr_player_dash;
+    }
+}
 ```
 
 <!-- tabs:end -->
