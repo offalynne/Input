@@ -102,12 +102,12 @@ function __input_initialize()
             if (GM_build_type == "run")
             {
                 //Be nasty when running from the IDE >:(
-                __input_error("input_controller_object depth has been changed (expected ", __INPUT_CONTROLLER_OBJECT_DEPTH, ", got ", input_controller_object.depth ,")\nPlease ensure that input_controller_object depth is not set");
+                __input_error("input_controller_object depth has been changed (expected ", __INPUT_CONTROLLER_OBJECT_DEPTH, ", got ", input_controller_object.depth ,")\nPlease ensure that input_controller_object is never manually created and depth is not manually set");
             }
             else
             {
                 //Be nice when in production <:)
-                __input_trace("Warning! input_controller_object depth has been changed (expected ", __INPUT_CONTROLLER_OBJECT_DEPTH, ", got ", input_controller_object.depth ,")\nPlease ensure that input_controller_object depth is not set");
+                __input_trace("Warning! input_controller_object depth has been changed (expected ", __INPUT_CONTROLLER_OBJECT_DEPTH, ", got ", input_controller_object.depth ,")\nPlease ensure that input_controller_object is never manually created and depth is not manually set");
                 input_controller_object.depth = __INPUT_CONTROLLER_OBJECT_DEPTH;
             }
         }
