@@ -59,7 +59,15 @@ Structs in the returned array contain x/y coordinate pairs. These coordinates ar
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw all of the history points, but only if we're debugging
+if (debug_mode)
+{
+    var _history = vbutton_screen.get_history();
+
+    //Use a line primitive to draw out all the points
+    draw_primitive_begin(pr_linestrip);
+    for(var _i = 0; _i < array_length(_history); _i += 2) draw_vertex(_history[_i], _history[_i+1]);
+    draw_primitive_end();
 ```
 
 <!-- tabs:end -->
