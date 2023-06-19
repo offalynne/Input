@@ -66,7 +66,7 @@ if (debug_mode)
 
     //Use a line primitive to draw out all the points
     draw_primitive_begin(pr_linestrip);
-    for(var _i = 0; _i < array_length(_history); _i += 2) draw_vertex(_history[_i], _history[_i+1]);
+    for(var _i = 0; _i < array_length(_history); _i++) draw_vertex(_history[_i].x, _history[_i].y);
     draw_primitive_end();
 }
 ```
@@ -92,7 +92,19 @@ if (debug_mode)
 #### **Example**
 
 ```gml
-//TODO lol
+//IF the player is touching this button...
+if (vbutton_screen.check())
+{
+    //Draw an arrow from the newest touch point...
+    var _x1 = vbutton_screen.get_touch_x();
+    var _y1 = vbutton_screen.get_touch_y();
+    
+    //In the direction of the oldest one
+    var _x2 = _x1 - lengthdir_x(100, vbutton_screen.get_history_direction());
+    var _y2 = _y1 - lengthdir_y(100, vbutton_screen.get_history_direction());
+    
+    draw_arrow(_x1, _y1, _x2, _y2, 20);
+}
 ```
 
 <!-- tabs:end -->
