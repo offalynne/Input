@@ -27,7 +27,11 @@ Starts recording touch point history for the virtual button. This can be used to
 #### **Example**
 
 ```gml
-//TODO lol
+//Create a virtual button that covers the entire screen
+//We also want to track input history for this virtual button to detect swipes etc.
+vbutton_screen = input_virtual_create()
+                 .rectangle(0, 0, display_get_gui_width(), display_get_gui_height())
+                 .record_history(true);
 ```
 
 <!-- tabs:end -->
