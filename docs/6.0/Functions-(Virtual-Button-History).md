@@ -130,7 +130,12 @@ if (vbutton_screen.check())
 #### **Example**
 
 ```gml
-//TODO lol
+//If the player is touching the kaleidoscope...
+if (vbutton_kaleidoscope.check())
+{
+    //Then animate in as they swipe around
+    animation += vbutton_kaleidoscope.get_history_distance() / 10;
+}
 ```
 
 <!-- tabs:end -->
