@@ -68,6 +68,7 @@ if (debug_mode)
     draw_primitive_begin(pr_linestrip);
     for(var _i = 0; _i < array_length(_history); _i += 2) draw_vertex(_history[_i], _history[_i+1]);
     draw_primitive_end();
+}
 ```
 
 <!-- tabs:end -->
