@@ -57,12 +57,12 @@ input_icons_gamepad(INPUT_GAMEPAD_TYPE_XBOX_ONE)
 .add("gamepad thumbstick r click", "thumbstick r click")
 
 //Series S|X only
-.add("gamepad misc 1", "share")
+.add("gamepad misc 1",             "share")
 
-//These are used for Elite controllers only
+//Elite and third party controllers
 .add("gamepad paddle 1",           "P1")
-.add("gamepad paddle 2",           "P3")  //Thanks SDL
-.add("gamepad paddle 3",           "P2")  //Many thanks
+.add("gamepad paddle 2",           "P2")
+.add("gamepad paddle 3",           "P3")
 .add("gamepad paddle 4",           "P4")
 
 //PlayStation 5
@@ -94,10 +94,14 @@ input_icons_gamepad(INPUT_GAMEPAD_TYPE_PS5)
 .add("gamepad thumbstick r down",  "thumbstick r down")
 .add("gamepad thumbstick r click", "R3")
 
-.add("gamepad touchpad click", "touchpad click")
+.add("gamepad touchpad click",     "touchpad click")
 
 //Not available on the PlayStation 5 console itself but available on other platforms
-.add("gamepad misc 1",         "mic")
+.add("gamepad misc 1",             "mic")
+
+//DualSense Edge
+.add("gamepad paddle 1",           "RB")
+.add("gamepad paddle 2",           "LB")
 
 //Switch handheld/dual JoyCon/Pro Controller
 input_icons_gamepad(INPUT_GAMEPAD_TYPE_SWITCH)

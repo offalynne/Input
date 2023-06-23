@@ -121,6 +121,10 @@ function __input_gamepad_set_type()
                     {
                         raw_type = "CommunityPSX";
                     }
+                    else if (__input_string_contains(_desc, " n64"))
+                    {
+                        raw_type = "CommunityN64";
+                    }
                 }
                 else if (__input_string_contains(_desc, "snes"))
                 {
