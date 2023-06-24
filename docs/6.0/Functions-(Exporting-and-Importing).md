@@ -179,7 +179,7 @@ room_goto(rm_main_menu);
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
-Clears the current profiles and bindings for the given player, resetting them to the defaults set up in [`INPUT_DEFAULT_PROFILES`](Configuration?id=profiles-and-bindings). This function will remove all non-default profiles from the player.
+Clears the current profiles and bindings for the given player, resetting them to the defaults set up in `__input_config_verbs()`. This function will remove all non-default profiles from the player.
 
 #### **Example**
 
