@@ -44,6 +44,12 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
+<h3 align="center">Julien</h1>
+<p align="center"><i>Documentation</i></p>
+<p align="center">(<a href="https://twitter.com/JuJulienDev" target="_blank">Twitter</a>)</p>
+
+&nbsp;
+
 <h3 align="center">Prateek</h1>
 <p align="center"><i>Documentation corrections, gamepad testing</i></p>
 <p align="center">(<a href="https://twitter.com/prtksxna" target="_blank">Twitter</a>)</p>
@@ -83,12 +89,6 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 <h3 align="center">Sahaun</h1>
 <p align="center"><i>Project cleanup</i></p>
 <p align="center">(<a href="https://twitter.com/sohomsahaun" target="_blank">Twitter</a>)</p>
-
-&nbsp;
-
-<h3 align="center">Julien</h1>
-<p align="center"><i>Documentation corrections</i></p>
-<p align="center">(<a href="https://twitter.com/JuJulienDev" target="_blank">Twitter</a>)</p>
 
 &nbsp;
 
