@@ -143,29 +143,15 @@ The following constants indicate the runtime platform category.
 
 This macro provides a hint for default Latin keyboard layout based on available information. It can return `QWERTY` `AZERTY` or `QWERTZ` as a string, indicating which keyboard layout Input predicts the player is using. This is useful for building safe default bindings based on [keyboard layout differences](https://www.typingpal.com/en/news/what-is-the-difference-between-QWERTY-QWERTZ-and-AZERTY-keyboards). Note that while system software can determine the active keyboard layout, we cannot detect this at runtime; this function provides a suggestion as to the system-default setting using OS locale info (specifically [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) and [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1)).
 
-_Example usage_
+_Example usage in `__input_config_verbs()`
 ```gml
-if (INPUT_KEYBOARD_LOCALE == "AZERTY")
-{
-    INPUT_DEFAULT_PROFILES = {
-        keyboard: {
-            up:    input_binding_key("E"),
-            down:  input_binding_key("D"),
-            left:  input_binding_key("S"),
-            right: input_binding_key("F"),
-        }
-    }
-}
-else
-{
-    INPUT_DEFAULT_PROFILES = {
-        keyboard: {
-            up:    input_binding_key("W"),
-            down:  input_binding_key("S"),
-            left:  input_binding_key("A"),
-            right: input_binding_key("D"),
-        }
-    }
+return {
+	keyboard: {
+		up:    input_binding_key((INPUT_KEYBOARD_LOCALE == "QWERTY")? "W" : "E"),
+		down:  input_binding_key((INPUT_KEYBOARD_LOCALE == "QWERTY")? "S" : "D"),
+		left:  input_binding_key((INPUT_KEYBOARD_LOCALE == "QWERTY")? "A" : "S"),
+		right: input_binding_key((INPUT_KEYBOARD_LOCALE == "QWERTY")? "D" : "F"),
+	}
 }
 ```
 
