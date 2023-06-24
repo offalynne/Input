@@ -104,8 +104,8 @@ if (input_keyboard_check_released(vk_space))
 {
 	instance_create_layer(x, y, "Instances", obj_bullet, {
 		direction: direction,
-		speed: shot_power
-		damage: shot_power	
+		speed: shot_power,
+		damage: shot_power,	
 	});
 	
 	//Reset the shot power for the the next shot
