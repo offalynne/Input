@@ -24,21 +24,20 @@ Now that the boring techy stuff is out of the way, we can get to the real fun an
 
 [Verbs](Verbs-and-Alternate-Bindings) are the basic input actions you want to expose to a player; this includes things like jumping, shooting, pausing the game, or moving in a particular direction. By using verbs we **abstract** user input so that we can change [input source](Input-Sources) while the game is played without needing to change anything else. Using verbs also allows for easier key rebinding.
 
-Let's define some verbs then! To define default bindings for your verbs you'll need to edit the `INPUT_DEFAULT_PROFILES` macro found in `__input_config_verbs()`. When you import Input it'll come with some default controls already set up. To explain this clearer, let's delete everything that's already in [`INPUT_DEFAULT_PROFILES`](Configuration?id=profiles-and-bindings) and start fresh. You may also need to delete the contents of [`INPUT_VERB_GROUPS`](Configuration?id=verbs) too.
+Let's define some verbs then! To define default bindings for your verbs you'll need to edit the `__input_config_verbs()` script. When you import Input it'll come with some default controls already set up. To explain this clearer, let's delete everything that's already in `__input_config_verbs()` and start fresh.
 
 I'm going to define three controls, one for left, right, and shoot.
 
 ```gml
-INPUT_DEFAULT_PROFILES = {
-    
+return {
 	//Bind keyboard controls to verbs
-    keyboard_and_mouse:
-    {
-        left:  input_binding_key(vk_left),
-        right: input_binding_key(vk_right),
-        shoot: input_binding_key("A"),
-    },
-}
+	keyboard_and_mouse:
+	{
+		left:  input_binding_key(vk_left),
+		right: input_binding_key(vk_right),
+		shoot: input_binding_key("A"),
+	},
+};
 ```
 
 We've got the [`input_binding_key()`](Functions-(Binding-Creators)?id=input_binding_keykey) functions taking the [normal key values](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/Keyboard_Input.htm) for the standard GM input features and then the verb we want to assign it to.
@@ -65,29 +64,29 @@ Oh you sweet summer child, did you think we were done?
 
 ## Step 3: Gamepad bindings
 
-Lets go back to our default profiles in `__input_config_verbs_and_bindings()` for a hot sec.
+Lets go back to our default profiles in `__input_config_verbs()` for a hot sec.
 
 Take a gander at this new code we'll add:
 
 ```gml
-INPUT_DEFAULT_PROFILES = {
+return {
     
 	//Bind keyboard controls to verbs
-    keyboard_and_mouse:
-    {
-        left:  input_binding_key(vk_left),
-        right: input_binding_key(vk_right),
-        shoot: input_binding_key("A"),
-    },
+	keyboard_and_mouse:
+	{
+		left:  input_binding_key(vk_left),
+		right: input_binding_key(vk_right),
+		shoot: input_binding_key("A"),
+	},
 	
 	//Bind gamepad controls to verbs
 	gamepad:
 	{
-        left:  input_binding_gamepad_axis(gp_axislh, true),
-        right: input_binding_gamepad_axis(gp_axislh, false),
-	    shoot: input_binding_gamepad_button(gp_face1),
-	}
-}
+		left:  input_binding_gamepad_axis(gp_axislh, true),
+		right: input_binding_gamepad_axis(gp_axislh, false),
+		shoot: input_binding_gamepad_button(gp_face1),
+	},
+};
 ```
 
 Just like the keyboard binding functions, gamepad binding functions use [normal gamepad input values](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm) from standard GM features. Congratulations, you now have gamepad input.
