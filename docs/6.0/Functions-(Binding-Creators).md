@@ -378,7 +378,7 @@ return {
 
 Swaps gamepad button bindings that target `gp_face1` and `gp_face2`. This is a convenience function to make adapting default gamepad bindings designed for Xbox work on Switch (and vice versa) when porting your game. This isn't strictly needed, Input will work fine cross-platform, but button layout conventions differ slightly between platforms and it's usually a good idea to respect that.
 
-!> This function fully resets all player profiles and bindings to what's found in [`INPUT_DEFAULT_PROFILES`](Configuration?id=profiles-and-bindings). This function is intended to be called when the game is started before loading any player-defined bindings.
+!> This function fully resets all player profiles and bindings to what's found in `__input_config_verbs()`. This function is intended to be called when the game is started before loading any player-defined bindings.
 
 #### **Example**
 
