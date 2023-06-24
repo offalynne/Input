@@ -105,7 +105,7 @@ else if (_load)
 //Loose arrow when button is released
 if (input_gamepad_check_released(0, gp_face4))
 {
-    instance_create_depth(x, y, depth, objArrow)
+    instance_create_depth(x, y, depth, objArrow);
 }
 ```
 
