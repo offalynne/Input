@@ -176,7 +176,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_stickl, 10, __INPUT_MAPPING.BUTTON, "leftstick");
         set_mapping(gp_stickr, 11, __INPUT_MAPPING.BUTTON, "rightstick");
         
-        if ((os_type == os_linux) && (os_browser == browser_firefox))
+        if (__INPUT_ON_LINUX && (os_browser == browser_firefox))
         {
             //ಠ_ಠ
             set_mapping(gp_padr, 6, __INPUT_MAPPING.AXIS, "dpright").clamp_positive = true;
@@ -1410,7 +1410,7 @@ function __input_gamepad_set_mapping()
         ////Add Atari VCS Classic twist mapping (semantically incorrect)
         //if ((raw_type == "CommunityVCSClassic") || (raw_type == "HIDAtariVCSClassic"))
         //{
-        //    set_mapping(gp_axisrh, 0, __INPUT_MAPPING.AXIS, "rightx").limited_range = (os_type == os_linux);
+        //    set_mapping(gp_axisrh, 0, __INPUT_MAPPING.AXIS, "rightx").limited_range = __INPUT_ON_LINUX;
         //}
         
         if (INPUT_SDL2_ALLOW_EXTENDED)
@@ -1451,6 +1451,16 @@ function __input_gamepad_set_mapping()
                 //SDL's map assigns the first but we switch to the second which will work reliably for GM.
                 if (__INPUT_DEBUG) __input_trace("  (Remapping guide button)");
                 set_mapping(gp_guide, 15, __INPUT_MAPPING.BUTTON, "guide");
+            }
+            
+            //Swap P2 and P3 mappings on Elite controller only
+            if ((simple_type == "xbox one") && __input_string_contains(description, "Elite") 
+            &&  is_struct(mapping_gm_to_raw[$ string(gp_paddle2)]) && is_struct(mapping_gm_to_raw[$ string(gp_paddle3)]))
+            {
+                if (__INPUT_DEBUG) __input_trace("  (Swapping Elite P2 and P3)");
+                var _p2_mapping = mapping_gm_to_raw[$ string(gp_paddle2)].raw;
+                set_mapping(gp_paddle2, mapping_gm_to_raw[$ string(gp_paddle3)].raw, __INPUT_MAPPING.BUTTON, "paddle2");
+                set_mapping(gp_paddle3, _p2_mapping, __INPUT_MAPPING.BUTTON, "paddle3");
             }
         }
     }

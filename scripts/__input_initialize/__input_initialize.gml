@@ -703,8 +703,8 @@ function __input_initialize()
             if (ds_exists(_map, ds_type_map))
             {
                 var _identifier = undefined;
-                if (os_type == os_linux) _identifier = _map[? "gl_renderer_string"];
-                if (__INPUT_ON_WINDOWS)  _identifier = _map[? "video_adapter_description"];
+                if (__INPUT_ON_LINUX  ) _identifier = _map[? "gl_renderer_string"];
+                if (__INPUT_ON_WINDOWS) _identifier = _map[? "video_adapter_description"];
             
                 //Steam Deck GPU identifier
                 if ((_identifier != undefined) && __input_string_contains(_identifier, "AMD Custom GPU 04"))
