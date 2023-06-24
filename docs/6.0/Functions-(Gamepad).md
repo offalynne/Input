@@ -24,7 +24,13 @@
 #### **Example**
 
 ```gml
-//TODO lol
+//Simple actions using gamepad buttons
+//This works very similar to how it could work without Input
+var _gas   = input_gamepad_check(0, gp_face1);
+var _brake = input_gamepad_check(0, gp_face2);
+
+//Set
+speed = clamp(speed + _gas/20 - _brake/20, 0, 8);
 ```
 
 <!-- tabs:end -->
@@ -49,7 +55,29 @@
 #### **Example**
 
 ```gml
-//TODO lol
+//Simple actions using gamepad buttons
+//This works very similar to how it could work without Input
+var _shoot = input_gamepad_check_pressed(0, gp_face1);
+var _load  = input_gamepad_check_pressed(0, gp_face2);
+
+//Handle firing and reloading
+if (ammo > 0)
+{
+    if (_shoot)
+    {
+        with(instance_create_depth(x, y, depth, objBullet))
+        {
+            direction = other.direction;
+            speed     = other.speed + 10;
+        }
+
+        ammo -= 1;
+    }
+}
+else if (_load)
+{
+    ammo += 10;
+}
 ```
 
 <!-- tabs:end -->
@@ -74,7 +102,11 @@
 #### **Example**
 
 ```gml
-//TODO lol
+//Loose arrow when button is released
+if (input_gamepad_check_released(0, gp_face4))
+{
+    instance_create_depth(x, y, depth, objArrow)
+}
 ```
 
 <!-- tabs:end -->
@@ -99,7 +131,13 @@
 #### **Example**
 
 ```gml
-//TODO lol
+//Simple actions using gamepad triggers
+//This works very similar to how it could work without Input
+var _gas   = input_gamepad_value(0, gp_shoulderrb);
+var _brake = input_gamepad_value(0, gp_shoulderlb);
+
+//Set vehicle speed supporting analogue
+speed = clamp(speed + _gas/20 - _brake/20, 0, 8);
 ```
 
 <!-- tabs:end -->
@@ -124,7 +162,9 @@
 #### **Example**
 
 ```gml
-//TODO lol
+//Simple movement with left joystick
+x += input_gamepad_delta(0, gp_axislh) * 8;
+y += input_gamepad_delta(0, gp_axislv) * 8; 
 ```
 
 <!-- tabs:end -->
@@ -149,7 +189,11 @@
 #### **Example**
 
 ```gml
-//TODO lol
+//Zoom if right trigger is analogue
+if (input_gamepad_is_axis(0, gp_shoulderrb))
+{
+    zoomScale = input_gamepad_value(0, gp_shoulderrb); 
+}
 ```
 
 <!-- tabs:end -->
@@ -173,7 +217,13 @@
 #### **Example**
 
 ```gml
-//TODO lol
+//Prompt player for controller if one is missing in the expected slot
+if not (input_gamepad_is_connected(0))
+{
+    instance_create_layer(10, 10, guiLayer, obWarning, {
+        message: "No gamepad connected in first slot!",
+    });
+}
 ```
 
 <!-- tabs:end -->
@@ -197,7 +247,11 @@
 #### **Example**
 
 ```gml
-//TODO lol
+//Display the name of the gamepad used by the first player
+if (input_gamepad_is_connected(input_player_get_gamepad()))
+{
+    draw_text(10, 10, "Using gamepad: " + input_gamepad_get_description(input_player_get_gamepad()));
+}
 ```
 
 <!-- tabs:end -->
@@ -223,7 +277,11 @@ Returns a [gamepad type constant](Library-Constants#gamepad-types).
 #### **Example**
 
 ```gml
-//TODO lol
+//Display the type of the gamepad used by the first player
+if (input_gamepad_is_connected(input_player_get_gamepad()))
+{
+    draw_text(10, 10, "Using gamepad type: " + input_gamepad_get_type(input_player_get_gamepad()));
+}
 ```
 
 <!-- tabs:end -->
@@ -251,7 +309,11 @@ If there is no gamepad connected for the given index, an empty array will be ret
 #### **Example**
 
 ```gml
-//TODO lol
+//Display the player's gamepad mappings in the debug log
+if (input_gamepad_is_connected(input_player_get_gamepad()))
+{
+    show_debug_message("Player 0 gamepad mapping: " + string(input_gamepad_get_map(input_player_get_gamepad())));
+}
 ```
 
 <!-- tabs:end -->
@@ -281,7 +343,14 @@ If there is no gamepad connected for the given index, the function returns `fals
 #### **Example**
 
 ```gml
-//TODO lol
+//Bind gamepad Start button to pause verb, using Guide instead if it is mapped
+var _pause_binding = input_binding_gamepad_button(gp_start);
+if (input_gamepad_map_contains(input_player_get_gamepad(), gp_guide))
+{
+    var _pause_binding = input_binding_gamepad_button(gp_guide);
+}
+
+input_binding_set("pause", _pause_binding);
 ```
 
 <!-- tabs:end -->
@@ -305,7 +374,12 @@ If there is no gamepad connected for the given index, the function returns `fals
 #### **Example**
 
 ```gml
-//TODO lol
+//Show gamepad constant checked when the pause verb is activated
+var _pause_binding = input_binding_get("pause");
+if (input_check_pressed("pause") && (input_binding_get_source_type(_pause_binding) == INPUT_GAMEPAD))
+{
+    show_debug_message("Player paused using " + input_gamepad_constant_get_name(_pause_binding) + " gamepad binding");
+}
 ```
 
 <!-- tabs:end -->
@@ -357,7 +431,14 @@ The `INPUT_STATUS` enum contains the following members:
 #### **Example**
 
 ```gml
-//TODO lol
+//Alert player when a new gamepad is connected
+var _gamepad_connections = array_length(input_gamepads_get_status().new_connections);
+if (_gamepad_connections > 0) 
+{
+    instance_create_layer(10, 10, guiLayer, obWarning, {
+        message: string(_gamepad_connections) + " new gamepad(s) connected!",
+    });
+}
 ```
 
 <!-- tabs:end -->
