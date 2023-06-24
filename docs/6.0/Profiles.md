@@ -4,7 +4,7 @@
 
 Profiles are used to group together [bindings](Verbs-and-Bindings) into collections that can be switched in and out, either manually or automatically. You can learn more about the specifics of verbs and bindings [here](Verbs-and-Bindings). There are two kinds of profile:
 
-1. Default Profiles - Defined using [`INPUT_DEFAULT_PROFILES`](Configuration?id=profiles-and-bindings) and exists for every player. Cannot be destroyed by [`input_profile_destroy()`](Functions-(Profiles)?id=input_profile_destroyprofilename-playerindex)
+1. Default Profiles - Defined using `__input_config_verbs()` and exists for every player. Cannot be destroyed by [`input_profile_destroy()`](Functions-(Profiles)?id=input_profile_destroyprofilename-playerindex)
 2. Custom Profiles - Created, destroyed, and otherwise managed using the [profile functions](Functions-(Profiles))
 
 Regardless of what type a profile is, you can modify the bindings for that profile using [`input_binding_set()`](Functions-(Binding-Access)?id=input_binding_setverb-binding-playerindex-alternate) and the other [binding functions](Functions-(Binding-Access))). If a profile is a default profile then you can use [`input_profile_reset_bindings()`](Functions-(Profiles)?id=input_profile_reset_bindingsprofilename-playerindex) to reset the bindings for every verb in a profile.
@@ -15,11 +15,11 @@ Regardless of what type a profile is, you can modify the bindings for that profi
 
 ## Defining Default Profiles
 
-As previously mentioned, default profiles are defined using [`INPUT_DEFAULT_PROFILES`](Configuration?id=profiles-and-bindings). This macro should be set to a struct that lays out the default profiles you need for your game and the bindings for each verb.
+As previously mentioned, default profiles are defined using `__input_config_verbs()`. This macro should be set to a struct that lays out the default profiles you need for your game and the bindings for each verb.
 
 The structure is as follows:
 ```gml
-INPUT_DEFAULT_PROFILES = {
+return {
     <default profile name>: {
 	    <verb name>: <binding>
 		<verb name>: [<binding 0>, <binding 1>], //Verb with multiple bindings
@@ -53,7 +53,7 @@ If you'd like to mark a verb as being unbound for a particular default profile, 
 Here's an example configuration that matches the one used for Hyper Light Drifter:
 
 ```gml
-INPUT_DEFAULT_PROFILES = {
+return {
     keyboard_and_mouse: {
 	    move_up:     input_binding_key("W"),
 	    move_down:   input_binding_key("S"),
