@@ -21,7 +21,7 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 &nbsp;
 
 <h3 align="center">Alynne Keith</h1>
-<p align="center"><i>Co-creator, SDL2 and device support programming</i></p>
+<p align="center"><i>Co-creator, SDL and device support programming</i></p>
 <p align="center">(<a href="https://offalynne.neocities.org/" target="_blank">website</a>)</p>
 
 &nbsp;
