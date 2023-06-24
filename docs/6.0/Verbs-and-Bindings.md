@@ -28,7 +28,7 @@ A "binding" is a piece of logic that ties a physical input on an input source (k
 
 Bindings are arranged into groups called ["profiles"](Profiles). Profiles allow you to bundle bindings together, typically so that you can change what bindings are active depending on what [input source](Input-Sources) the player is using, but profiles are also useful for providing extra flexibility for genres such as fighting games. You may also want to create different profiles to store bindings for different gamepad types.
 
-Players will inherit default profiles set via [`INPUT_DEFAULT_PROFILES`](Profiles?id=defining-default-profiles). Bindings in a player's profile can be changed at will, and one player's bindings do not necessarily need to be the same as another player's. You can copy profiles between players using [`input_profile_copy()`](Functions-(Exporting-and-Importing)?id=input_profile_copyplayerindexsrc-profilenamesrc-playerindexdst-profilenamedst).
+Players will inherit default profiles set via `__input_config_verbs()`. Bindings in a player's profile can be changed at will, and one player's bindings do not necessarily need to be the same as another player's. You can copy profiles between players using [`input_profile_copy()`](Functions-(Exporting-and-Importing)?id=input_profile_copyplayerindexsrc-profilenamesrc-playerindexdst-profilenamedst).
 
 Profiles allow you to define multiple bindings per verb. You can think of alternate bindings as binding "slots" for each verb. These are called "alternates". Alternates are used, for example, to allow both WASD and arrow keys, or both dpad and thumbstick to simultaneously control player movement. Any verb can have alternates created for it, though there is a maximum number of alternates you can have per verb per profile (this is defined by the [`INPUT_MAX_ALTERNATE_BINDINGS`](Configuration?id=profiles-and-bindings) macro).
 
@@ -38,13 +38,11 @@ Let's demonstrate these concepts with a practical example. Let's make a basic pl
 
 We start by defining a default profile. This serves two purposes - firstly, it lets Input know what verbs we're expecting to use. Secondly, it allows us to create some bindings so that Input will know how to interpret user input straight away.
 
-?> When you import Input it’ll come with some default controls already set up. To explain this clearer, we must delete everything that’s already in `INPUT_DEFAULT_PROFILES` and start fresh. You may also need to delete the contents of [`INPUT_VERB_GROUPS`](Configuration?id=verbs).
-
-You'll find `INPUT_DEFAULT_PROFILES` in [`__input_config_verbs_and_bindings()`](Configuration?id=profiles-and-bindings). This is where we'll set up our default profile.
+?> When you import Input it’ll come with some default controls already set up. To explain this clearer, we must delete everything that’s already in `__input_config_verbs()` and start fresh. This is where we'll set up our default profile.
 
 ```gml
-INPUT_DEFAULT_PROFILES = {
-    
+return {
+
     //Bind keyboard controls to verbs
     keyboard_and_mouse:
     {
@@ -52,7 +50,7 @@ INPUT_DEFAULT_PROFILES = {
         right: input_binding_key(vk_right),
         jump:  input_binding_key(vk_space),
     },
-}
+};
 ```
 
 In the above struct we've defined a profile called `keyboard_and_mouse` and we've set up three verbs, `left`, `right`, and `jump`. This example presumes Input has been imported using its default configuration: `INPUT_AUTO_PROFILE_FOR_KEYBOARD` is set to `"keyboard_and_mouse"` and `INPUT_STARTING_SOURCE_MODE` is set to `INPUT_SOURCE_MODE.HOTSWAP`. This ensure that when your game starts, Input will automatically choose the `keyboard_and_mouse` profile (which we've just defined) whenever the player starts pressing keys on the keyboard.
@@ -81,24 +79,24 @@ if (input_check_pressed("jump")) vspeed = -8;
 
 Now let's add some more bindings so that the player can play with a gamepad. As mentioned above, the `keyboard_and_mouse` profile is chosen when the player starts pressing keys on the keyboard. We can also set up the same behaviour for gamepads such that when the player starts using a gamepad, Input will automatically change profile and start scanning for input from that source as well.
 
-We make sure `INPUT_AUTO_PROFILE_FOR_GAMEPAD` is set to `"gamepad"` and then we add a `gamepad` profile to `INPUT_DEFAULT_PROFILES`.
+We make sure `INPUT_AUTO_PROFILE_FOR_GAMEPAD` is set to `"gamepad"` and then we add a `gamepad` profile to `__input_config_verbs()`.
 
 ```gml
-INPUT_DEFAULT_PROFILES = {
+return {
     
-    //Bind keyboard controls to verbs
-    keyboard_and_mouse:
-    {
-        left:  input_binding_key(vk_left),
-        right: input_binding_key(vk_right),
-        jump:  input_binding_key(vk_space),
-    },
+	//Bind keyboard controls to verbs
+	keyboard_and_mouse:
+	{
+		left:  input_binding_key(vk_left),
+		right: input_binding_key(vk_right),
+		jump:  input_binding_key(vk_space),
+	},
 	
 	gamepad:
 	{
-        left:  input_binding_gamepad_button(gp_padl),
-        right: input_binding_gamepad_button(gp_padr),
-        jump:  input_binding_gamepad_button(gp_face1),
+		left:  input_binding_gamepad_button(gp_padl),
+		right: input_binding_gamepad_button(gp_padr),
+		jump:  input_binding_gamepad_button(gp_face1),
 	}
 }
 ```
@@ -108,21 +106,21 @@ Despite adding these new bindings, we don't need to change anything in our Step 
 As mentioned above, we can also add alternate bindings for every verb. Input defaults to allowing 2 different bindings per verb (which can be increased by modifying [`INPUT_MAX_ALTERNATE_BINDINGS`](Configuration?id=profiles-and-bindings)) so let's add some alternate bindings to show that off:
 
 ```gml
-INPUT_DEFAULT_PROFILES = {
+return {
     
-    //Bind keyboard controls to verbs
-    keyboard_and_mouse:
-    {
-        left:  [input_binding_key(vk_left),  input_binding_key("A")],
-        right: [input_binding_key(vk_right), input_binding_key("S")],
-        jump:  [input_binding_key(vk_space), input_binding_key(vk_enter)],
-    },
+	//Bind keyboard controls to verbs
+	keyboard_and_mouse:
+	{
+		left:  [input_binding_key(vk_left),  input_binding_key("A")],
+		right: [input_binding_key(vk_right), input_binding_key("S")],
+		jump:  [input_binding_key(vk_space), input_binding_key(vk_enter)],
+	},
 	
 	gamepad:
 	{
-        left:  [input_binding_gamepad_button(gp_padl),  input_binding_gamepad_axis(gp_axislh, true )],
-        right: [input_binding_gamepad_button(gp_padr),  input_binding_gamepad_axis(gp_axislh, false)],
-        jump:  [input_binding_gamepad_button(gp_face1), input_binding_gamepad_button(gp_face2)      ],
+		left:  [input_binding_gamepad_button(gp_padl),  input_binding_gamepad_axis(gp_axislh, true )],
+		right: [input_binding_gamepad_button(gp_padr),  input_binding_gamepad_axis(gp_axislh, false)],
+		jump:  [input_binding_gamepad_button(gp_face1), input_binding_gamepad_button(gp_face2)      ],
 	}
 }
 ```
