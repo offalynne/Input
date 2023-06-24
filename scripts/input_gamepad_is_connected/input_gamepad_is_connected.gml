@@ -14,6 +14,7 @@ function input_gamepad_is_connected(_index)
     }
     
     if (!is_struct(_global.__gamepads[_index])) return false;
+    if (_global.__gamepads[_index].blacklisted) return false;
     
     return gamepad_is_connected(_index);
 }
