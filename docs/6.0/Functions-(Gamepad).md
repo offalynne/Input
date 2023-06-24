@@ -30,7 +30,7 @@ var _gas   = input_gamepad_check(0, gp_face1);
 var _brake = input_gamepad_check(0, gp_face2);
 
 //Set
-speed = clamp(speed + _gas/20 - _brake/20, 0, 8);
+speed = clamp(speed + (_gas - _brake)/20, 0, 8);
 ```
 
 <!-- tabs:end -->
