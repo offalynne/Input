@@ -35,7 +35,7 @@ Input 6 introduces a number of new features alongside a small number of breaking
 - Adds `input_mouse_enabled_set()` (and getter) to control whether the mouse moves the internal cursor
 - Adds `input_cursor_dx()` and `input_cursor_dy()`
 - Adds `input_cursor_inverted_set()` (and getter)
-- Adds `INPUT_WINDOWS_TOUCH`, `INPUT_SWITCH_TOUCH`, `INPUT_SWITCH_TOUCHSCREEN_ALLOWED`, `INPUT_PS_TOUCHPAD_ALLOWED` config macros for finer control over touch behavior per platform
+- Adds `INPUT_WINDOWS_TOUCH`, `INPUT_SWITCH_TOUCH` config macros for finer control over touch behavior per platform
 - Adds `INPUT_ON_MOBILE` `INPUT_ON_PC` `INPUT_ON_STEAM_DECK` `INPUT_ON_CONSOLE` `INPUT_ON_WEB` as read-only constants
 - Adds `input_player_active_get()` and `input_player_active_set()` to completely disable player input should you so wish (though you should continue to use "ghost mode" for networked players and AI)
 - Better support for use of `game_restart()` (not that you should be using this highly cursed function)
