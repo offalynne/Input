@@ -28,9 +28,9 @@ A pointing device, typically a physical mouse or a laptop trackpad. If `INPUT_AS
 
 ### `INPUT_TOUCH`
 
-A mobile touchscreen, a Switch touchscreen, a Steam Deck touchscreen (Proton or Windows). If `INPUT_TOUCHSCREEN_USES_MOUSE_SOURCE` is set to `true` then all `INPUT_TOUCH` devices will be treated as `INPUT_MOUSE` instead.
+A mobile touchscreen, a Switch touchscreen, a Steam Deck touchscreen (Proton or Windows, if `INPUT_WINDOWS_TOUCH` is set to `true`). If the platform relevant mouse configuration (`INPUT_MOBILE_MOUSE`, `INPUT_SWITCH_MOUSE`, `INPUT_PS_MOUSE`) is set to `true`, `INPUT_TOUCH` devices will be treated as `INPUT_MOUSE` instead.
 
-?> A Windows laptop with a touchscreen will report `INPUT_MOUSE` by default because we can't differentiate Windows touchscreens from a physical mouse.
+?> A Windows laptop with a touchscreen will report `INPUT_MOUSE` by default because we cannot differentiate Windows touchscreens from a physical mouse. This behavior can be changed by setting `INPUT_WINDOWS_TOUCH` to `true`.
 
 &nbsp;
 
