@@ -292,7 +292,7 @@ beef,feed,CommunityXBox360 // Monect
 10f5,7008,CommunityXBoxOne // Turtle Beach Recon
 2dc8,2101,CommunityXBoxOne // 8BitDo Xbox One SN30 Pro
 0e6f,d802,CommunityXBoxOne // PDP Xbox Series
-242f,3700,CommunityXBoxOne // Mayflash F101 Arcade Stick
+2f24,0037,CommunityXBoxOne // Mayflash F101 Arcade Stick
 1532,0a29,CommunityXBoxOne // Razer Wolverine 2
 0e6f,02d7,CommunityXBoxOne // PDP Black Camo
 045e,0b03,CommunityXBoxOne // Xbox One
