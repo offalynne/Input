@@ -35,7 +35,7 @@ Input 6 introduces a number of new features alongside a small number of breaking
 - Adds `input_mouse_enabled_set()` (and getter) to control whether the mouse moves the internal cursor
 - Adds `input_cursor_dx()` and `input_cursor_dy()`
 - Adds `input_cursor_inverted_set()` (and getter)
-- Adds `INPUT_WINDOWS_TOUCH_ALLOWED`, `INPUT_WINDOWS_TOUCH_PRIMARY`, `INPUT_SWITCH_TOUCHSCREEN_ALLOWED`, `INPUT_PS_TOUCHPAD_ALLOWED` config macros for finer control over touch behavior per platform
+- Adds `INPUT_WINDOWS_TOUCH`, `INPUT_SWITCH_TOUCH`, `INPUT_SWITCH_TOUCHSCREEN_ALLOWED`, `INPUT_PS_TOUCHPAD_ALLOWED` config macros for finer control over touch behavior per platform
 - Adds `INPUT_ON_MOBILE` `INPUT_ON_PC` `INPUT_ON_STEAM_DECK` `INPUT_ON_CONSOLE` `INPUT_ON_WEB` as read-only constants
 - Adds `input_player_active_get()` and `input_player_active_set()` to completely disable player input should you so wish (though you should continue to use "ghost mode" for networked players and AI)
 - Better support for use of `game_restart()` (not that you should be using this highly cursed function)
@@ -58,7 +58,7 @@ Input 6 introduces a number of new features alongside a small number of breaking
 - `input_icons()` has been removed and replaced with `input_icon_empty()` `input_icon_not_a_binding()` `input_icons_gamepad()` and `input_icons_keyboard_and_mouse()`
 - `INPUT_VIBRATION_SWITCH_OS_STRENGTH` has been renamed to `INPUT_VIBRATION_JOYCON_STRENGTH` and will now only affect Joy-Cons (and will work cross-platform too)
 - `input_gyro_enabled_set()`, `input_gyro_enabled_get()`, and `input_gyro_params_set()` have been renamed to `input_cursor_gyro…` to better indicate their usage
-- `INPUT_TOUCH_POINTER_ALLOWED` has been renamed to `INPUT_TOUCHSCREEN_USES_MOUSE_SOURCE`
+- `INPUT_TOUCH_POINTER_ALLOWED` has been removed, you may now use the macros in `__input_config_general()` to configure touch and mouse behavior per-platform
 - `input_swap_gamepad_ab()` has been removed and replaced with `INPUT_SWITCH_SWAP_AB` (for use cross-platform for Nintendo-style gamepads) and `INPUT_PS_REGION_SWAP_CONFIRM` (which only applies to the PS4 export target specifically)
 - Many macros from `__input_config_touch()` and `__input_config_vibration()` have been moved to `__input_config_general()`
 
