@@ -2,7 +2,7 @@
 
 &nbsp;
 
-The following functions are in global scope and can be called anywhere in your game. Virtual buttons themselves are created with `input_virtual_create()` - which returns a struct - and should be configured by executing methods on that struct. You can find a list of virtual button methods [here](Functions-(Virtual-Button-Methods)).
+The following functions are in global scope and can be called anywhere in your game. Virtual buttons themselves are created with `input_virtual_create()` - which returns a struct - and should be configured by executing methods on that struct.
 
 ?> All coordinates and positions are in GUI-space.
 
@@ -22,7 +22,9 @@ The following functions are in global scope and can be called anywhere in your g
 |----|--------|-------|
 |None|        |       |
 
-This function creates a blank, unconfigured, virtual button. Please scroll down to see methods that are available for virtual buttons.
+This function creates a blank, unconfigured, virtual button. Virtual buttons are configured and controlled largely through use of methods. Please see additional documentation on what methods are available.
+
+!> Don't forget to call the `.destroy()` method on a virtual button. Virtual buttons will persist and need to be manually destroyed to permanently remove them from your game.
 
 #### **Example**
 
