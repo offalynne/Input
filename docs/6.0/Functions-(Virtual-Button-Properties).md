@@ -26,7 +26,13 @@ Virtual buttons can be configured using the following functions. Many functions 
 #### **Example**
 
 ```gml
-//TODO lol
+//Set the threshold of the thumbstick virtual button based on a sensitivity mode
+switch(sensitivity_mode)
+{
+	case 0: vb_thumbstick.threshold(0.3, 1.0); break;
+	case 1: vb_thumbstick.threshold(0.4, 0.9); break;
+	case 2: vb_thumbstick.threshold(0.5, 0.8); break;
+}
 ```
 
 <!-- tabs:end -->
@@ -57,7 +63,15 @@ The struct returned from this method has the following member variables:
 #### **Example**
 
 ```gml
-//TODO lol
+var _struct = vb_thumbstick.get_threshold();
+
+if (vb_threshold_min_decr.pressed()) _struct.min = max(0, _struct.min - 0.1);
+if (vb_threshold_min_incr.pressed()) _struct.min = min(1, _struct.min + 0.1, _struct.max - 0.1);
+
+if (vb_threshold_max_decr.pressed()) _struct.min = max(0, _struct.min + 0.1, _struct.max - 0.1);
+if (vb_threshold_max_incr.pressed()) _struct.min = min(1, _struct.max + 0.1);
+
+vb_thumbstick.threshold(_struct.min, _struct.max);
 ```
 
 <!-- tabs:end -->
@@ -83,7 +97,27 @@ When a virtual button's active state is set to `false`, it will immediately stop
 #### **Example**
 
 ```gml
-//TODO lol
+if (input_check_pressed("pause"))
+{
+	//If the player's pressed the PAUSE button, flip the pause state
+	global.paused = not global.paused;
+
+	//Set the main gameplay virtual buttons to the opposite of the pause state
+	var _vb_active = not global.paused;
+	vb_thumbstick.active(_vb_active);
+	vb_accept.active(_vb_active);
+	vb_cancel.active(_vb_active);
+
+	//Handle pause menu presence
+	if (global.paused)
+	{
+		instance_create_layer(0, 0, "GUI", obj_pause);
+	}
+	else
+	{
+		with(obj_pause_menu) instance_destroy();
+	}
+}
 ```
 
 <!-- tabs:end -->
@@ -107,7 +141,12 @@ When a virtual button's active state is set to `false`, it will immediately stop
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw the "accept" virtual button, but only if it's active
+if (vb_accept.get_active())
+{
+	var _position = vb_accept.get_position();
+	draw_sprite(spr_vb_accept, 0, _position.x, _position.y);
+}
 ```
 
 <!-- tabs:end -->
@@ -131,7 +170,12 @@ When a virtual button's active state is set to `false`, it will immediately stop
 #### **Example**
 
 ```gml
-//TODO lol
+//Create a pause button in the top-right corner of the screen
+//We give it a high priority to ensure nothing can overlap it
+vb_pause = input_virtual_create()
+           .rectangle(room_width-40, 10, room_width-10, 40)
+           .button("pause")
+           .priority(100);
 ```
 
 <!-- tabs:end -->
@@ -155,7 +199,13 @@ When a virtual button's active state is set to `false`, it will immediately stop
 #### **Example**
 
 ```gml
-//TODO lol
+//If we're in debug mode, draw the priority of the cancel button
+//This is useful to check value are what we expect them to be
+if (debug_mode)
+{
+	var _position = vb_cancel.get_position();
+	draw_text(_position.x, _position.y - 30, "depth=" + string(vb_cancel.get_priority()));
+}
 ```
 
 <!-- tabs:end -->
@@ -176,12 +226,29 @@ When a virtual button's active state is set to `false`, it will immediately stop
 |-------|--------|----------------------------------------------------------------|
 |`state`|boolean |Whether the virtual button should move to follow the touch point|
 
-?> As the follow state moves the virtual button around, you may want to call `.release_behaviour(INPUT_VIRTUAL_RELEASE.RESET_POSITION)` to reset the position of the button.
+?> As the follow state moves the virtual button around, you may want to call `.release_behaviour()` to control how a virtual button reacts when released (including resetting the position of the button).
 
 #### **Example**
 
 ```gml
-//TODO lol
+if (vb_screen.pressed())
+{
+	//Create a virtual button to track player movement when touching the screen
+	//We use the screen virtual button here so that other button can take priority
+
+	//Create a simple circular button
+	vb_follow = input_virtual_create()
+	            .circle(vb_screen.get_touch_x(), vb_screen.get_touch_y(), 20);
+
+    //Choose a priority higher than the screen button so we always take priority
+	vb_follow.priority(vb_screen.get_priority() + 1)
+
+	//Set this new button to follow the player's finger around
+	vb_follow.follow(true);
+
+	//When released, destroy this button completely
+	vb_follow.release_behaviour(INPUT_VIRTUAL_RELEASE.DESTROY);
+}
 ```
 
 <!-- tabs:end -->
@@ -205,7 +272,19 @@ When a virtual button's active state is set to `false`, it will immediately stop
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw the "switch weapon" button
+var _position = vb_switch_weapon.get_position();
+draw_sprite(spr_vb_switch_weapon, 0, _position.x, _position.y);
+
+//If we're in customisation mode and this button is following a touchpoint...
+if (global.customise_layout && vb_switch_weapon.get_follow()
+{
+	//Then flash an overlay sprite over the button
+	if ((current_time mod 400) < 200)
+	{
+		draw_sprite_ext(spr_vb_switch_weapon, 0, _position.x, _position.y, 1.2, 1.2, 0, c_yellow, 0.4);
+	}
+}
 ```
 
 <!-- tabs:end -->
@@ -237,7 +316,26 @@ The `INPUT_VIRTUAL_RELEASE` enum contains the following elements:
 #### **Example**
 
 ```gml
-//TODO lol
+//Create an array of balloons that the player can touch to pop
+//The balloons will block other inputs until they're popped
+
+vb_balloon_array = [];
+
+var _i = 0;
+repeat(20)
+{
+	//Choose a random position around the centre of the screen
+	var _x = room_width/2  + irandom_range(-300, 300);
+	var _y = room_height/2 + irandom_range(-300, 300);
+
+	//Create the balloon virtual buttons
+	//We use a high priority here to block most other virtual buttons
+	vb_balloon_array[@ _i] = input_virtual_create()
+                             .circle(_x, _y, 80)
+                             .release_behavior(INPUT_VIRTUAL_RELEASE.DESTROY)
+                             .priority(10);
+    ++_i;
+}
 ```
 
 <!-- tabs:end -->
@@ -261,7 +359,13 @@ The `INPUT_VIRTUAL_RELEASE` enum contains the following elements:
 #### **Example**
 
 ```gml
-//TODO lol
+//If we're in debug mode...
+if (debug_mode)
+{
+	//Then show some extra information about the "lootable" virtual button
+	var _position = vb_lootable.get_position();
+	draw_text(_position.x, _position.y, "rel bhv=" + string(vb_resume.get_release_behavior()));
+}
 ```
 
 <!-- tabs:end -->
@@ -289,7 +393,22 @@ On devices that do not support multiple touch points, this function will not cha
 #### **Example**
 
 ```gml
-//TODO lol
+//Create a virtual button for each button in our menu content array
+
+var _i = 0;
+repeat(array_length(menu_content_array))
+{
+	var _content = menu_content_array[_i];
+	if (_content.is_button)
+	{
+		//Use the .first_touch_only() feature to remove the potential for misclicks
+		_content.virtual_button = input_virtual_create()
+		                          .rectangle(_content.left, _content.top, _content.right, _content.bottom)
+		                          .first_touch_only(true);
+	}
+
+	++_i;
+}
 ```
 
 <!-- tabs:end -->
@@ -313,7 +432,13 @@ On devices that do not support multiple touch points, this function will not cha
 #### **Example**
 
 ```gml
-//TODO lol
+//If we're in debug mode...
+if (debug_mode)
+{
+	//Then show some extra information about the "resume" virtual button
+	var _position = vb_resume.get_position();
+	draw_text(_position.right + 10, _position.y, "FTO=" + string(vb_resume.get_first_touch_only()));
+}
 ```
 
 <!-- tabs:end -->
