@@ -228,6 +228,39 @@ if not (input_gamepad_is_connected(0))
 
 <!-- tabs:end -->
 
+## …gamepad_is_any_connected
+
+`input_gamepad_is_any_connected(gamepadIndex)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether any gamepad is connected (omitting [blocked devices](Controller-Mapping?id=controller-blacklist))
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+#### **Example**
+
+```gml
+//Draw a little gamepad notification sign if any gamepads are hooked up
+if (input_gamepad_is_any_connected())
+{
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    
+    var _wiggle = 5*dsin(current_time/20);
+    draw_text_transformed(room_width/2, 20, "Gamepads supported!", 1, 1, _wiggle);
+    
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+}
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
 ## …gamepad_get_description
