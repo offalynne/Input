@@ -462,6 +462,7 @@ dead,beef,CommunityPSX // Hidromancer
 289b,0091,CommunityN64 // Raphnet N64 Adapter
 289b,0094,CommunityN64 // Raphnet N64 Adapter
 2dc8,2869,CommunityN64 // 8Bitdo N64 Modkit
+2f24,00f4,CommunityN64 // Mayflash N64 Adapter
 289b,0008,CommunityDreamcast // Raphnet Dreamcast Adapter
 289b,00d0,CommunityDreamcast // Raphnet Dreamcast Adapter
 2836,0001,CommunityOuya // Ouya Controller
