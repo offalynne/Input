@@ -24,6 +24,8 @@ Virtual buttons can be configured using the following functions. Many functions 
 
 Immediately destroys a virtual button, making it inoperative and any methods for the destroyed virtual button will do nothing.
 
+!> Don't forget to call the .destroy() method on a virtual button. Virtual buttons will persist and need to be manually destroyed to permanently remove them from your game.
+
 #### **Example**
 
 ```gml
