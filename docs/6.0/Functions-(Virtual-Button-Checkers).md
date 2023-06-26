@@ -131,7 +131,15 @@ The number returned from this function will range from `-1` (fully left) to `1` 
 #### **Example**
 
 ```gml
-//TODO lol
+//Draw an arrow eminating from the virtual button based on how it's being touched
+
+var _position = vb_thumbstick.get_position();
+var _x1 = _position.x;
+var _y1 = _position.y;
+var _x2 = _x1 + 64*vb_thumbstick.get_x();
+var _y2 = _y1 + 64*vb_thumbstick.get_y();
+
+draw_arrow(_x1, _y1, _x2, _y2, 20);
 ```
 
 <!-- tabs:end -->
@@ -157,7 +165,13 @@ The number returned from this function will range from `-1` (fully top) to `1` (
 #### **Example**
 
 ```gml
-//TODO lol
+//Set the scroll position based on how the scroll bar is being touched
+
+//First, calculate the distance we can actually scroll
+var _scroll_size = max(0, content_height - page_height);
+
+//Then set the scroll position from the scrollbar virtual button
+scroll_position = _scroll_size * vb_scrollbar.get_y();
 ```
 
 <!-- tabs:end -->
@@ -181,7 +195,19 @@ The number returned from this function will range from `-1` (fully top) to `1` (
 #### **Example**
 
 ```gml
-//TODO lol
+if (vb_fire.held())
+{
+	//We can't read the touch point once we've released the button
+	//This means we need to cache the touch points whilst the button is held
+	fire_touch_x = vb_fire.get_touch_x();
+	fire_touch_y = vb_fire.get_touch_y();
+}
+
+if (vb_fire.released())
+{
+	//Make a little first burst when releasing the button
+	part_particles_create(global.gui_particle_sys, fire_touch_x, fire_touch_y, global.pfx_fire_gun, 12);
+}
 ```
 
 <!-- tabs:end -->
@@ -205,7 +231,11 @@ The number returned from this function will range from `-1` (fully top) to `1` (
 #### **Example**
 
 ```gml
-//TODO lol
+//Adjust the position of the power level pointer if we touch the thruster gauge
+if (vb_thruster.held())
+{
+	thrust_pointer_y = vb_thruster.get_touch_y();
+}
 ```
 
 <!-- tabs:end -->
@@ -229,7 +259,42 @@ The number returned from this function will range from `-1` (fully top) to `1` (
 #### **Example**
 
 ```gml
-//TODO lol
+var _throw = false;
+if (vb_throw.released())
+{
+	//If we've released the throw button, throw!
+	_throw = true;
+}
+else if (vb_throw.held())
+{
+	//If we're holding down the throw button then track the touch position
+	throw_x = vb_throw.get_touch_x();
+	throw_y = vb_throw.get_touch_y();
+}
+
+//Figure out how far it is from the start of the touch gesture to the current position
+var _start_x = vb_throw.get_touch_start_x();
+var _start_y = vb_throw.get_touch_start_y();
+var _distance = point_distance(_start_x, _start_y, throw_x, throw_y);
+
+//If we've exceeded the max distance then throw!
+var _min_distance =  50;
+var _max_distance = 250;
+if (_distance > _max_distance) _throw = true;
+
+if (_throw)
+{
+	//Find the direction to throw in
+	var _direction = point_direction(_start_x, _start_y, throw_x, throw_y);
+
+	//And also the power of the throw
+	var _power = clamp((_distance - _min_distance) / (_max_distance - _min_distance), 0, 1);
+
+	//Create a projectile and give it a push
+	var _inst = instance_create_layer(x, y, "Projectile", obj_projectile);
+	_inst.speed     = lerp(2, 10, _power);
+	_inst.direction = direction;
+}
 ```
 
 <!-- tabs:end -->
@@ -253,7 +318,13 @@ The number returned from this function will range from `-1` (fully top) to `1` (
 #### **Example**
 
 ```gml
-//TODO lol
+if (vb_ball.released())
+{
+	//Once we've released the ball's virtual button, apply a spin
+	//We calculate the spin based on the y-offset where we originally touched the ball
+	var _spin = (vb_ball.get_touch_start_y() - y) / ball_radius;
+	angle_speed = 7*_spin;
+}
 ```
 
 <!-- tabs:end -->
