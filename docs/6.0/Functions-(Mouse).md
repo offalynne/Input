@@ -273,9 +273,9 @@ input_mouse_coord_space_set(INPUT_COORD_SPACE.ROOM);
 //Create an array to convert the enum members to human-readable output
 
 var _coord_space_as_string = array_create(INPUT_COORD_SPACE.__SIZE, "Unknown/Error");
-    _coord_space_as_string[INPUT_COORD_SPACE.DEVICE] = "Device";
-    _coord_space_as_string[INPUT_COORD_SPACE.ROOM  ] = "Room";
-    _coord_space_as_string[INPUT_COORD_SPACE.GUI   ] = "GUI";
+    _coord_space_as_string[INPUT_COORD_SPACE.DISPLAY] = "Display";
+    _coord_space_as_string[INPUT_COORD_SPACE.ROOM   ] = "Room";
+    _coord_space_as_string[INPUT_COORD_SPACE.GUI    ] = "GUI";
 
 show_debug_message("Current coordinate space is: " + _coord_space_as_string[input_mouse_coord_space_get()]);
 ```
