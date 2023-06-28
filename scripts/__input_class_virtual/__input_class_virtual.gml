@@ -70,7 +70,7 @@ function __input_class_virtual() constructor
     
     static debug_draw = function()
     {
-        if (__destroyed) return;
+        if (__destroyed || __background) return;
         
         if (__active && is_struct(__global.__touch_player))
         {
@@ -516,6 +516,8 @@ function __input_class_virtual() constructor
     
     static __set_as_background = function()
     {
+        rectangle(-display_get_width()/2, -display_get_width()/2, display_get_width()*2, display_get_width()*2);
+        __priority = -infinity;
         __background = true;
         return self;
     }
