@@ -238,7 +238,7 @@ function __input_initialize()
     
     //Array of created virtual buttons
     _global.__virtual_array       = [];
-    _global.__virtual_background  = input_virtual_create().priority(-infinity); _global.__virtual_background.__background = true;
+    _global.__virtual_background  = input_virtual_create().__set_as_background();
     _global.__virtual_order_dirty = false;
     
     //Which player has the INPUT_TOUCH source, if any
