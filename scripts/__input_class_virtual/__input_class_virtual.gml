@@ -516,8 +516,7 @@ function __input_class_virtual() constructor
     
     static __set_as_background = function()
     {
-        var _max_length = max(display_get_width(), display_get_height());
-        rectangle(-_max_length/2, -_max_length/2, _max_length*2, _max_length*2);
+        rectangle(0, 0, max(display_get_width(), display_get_height()), max(display_get_width(), display_get_height()));
         __priority = -infinity;
         __background = true;
         return self;
