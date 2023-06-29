@@ -4,10 +4,10 @@
 
 Profiles are used to group together [bindings](Verbs-and-Bindings) into collections that can be switched in and out, either manually or automatically. You can learn more about the specifics of verbs and bindings [here](Verbs-and-Bindings). There are two kinds of profile:
 
-1. Default Profiles - Defined using `__input_config_verbs()` and exists for every player. Cannot be destroyed by [`input_profile_destroy()`](Functions-(Profiles)?id=input_profile_destroyprofilename-playerindex)
+1. Default Profiles - Defined using `__input_config_verbs()` and exists for every player. Cannot be destroyed by [`input_profile_destroy()`](Functions-(Profiles)?id=profile_destroy)
 2. Custom Profiles - Created, destroyed, and otherwise managed using the [profile functions](Functions-(Profiles))
 
-Regardless of what type a profile is, you can modify the bindings for that profile using [`input_binding_set()`](Functions-(Binding-Access)?id=input_binding_setverb-binding-playerindex-alternate) and the other [binding functions](Functions-(Binding-Access))). If a profile is a default profile then you can use [`input_profile_reset_bindings()`](Functions-(Profiles)?id=input_profile_reset_bindingsprofilename-playerindex) to reset the bindings for every verb in a profile.
+Regardless of what type a profile is, you can modify the bindings for that profile using [`input_binding_set()`](Functions-(Binding-Access)?id=binding_set) and the other [binding functions](Functions-(Binding-Access))). If a profile is a default profile then you can use [`input_profile_reset_bindings()`](Functions-(Profiles)?id=profile_reset_bindings) to reset the bindings for every verb in a profile.
 
 !> It is not possible to create a totally new verb for a custom profile. Any verb that you intend to use in your game must be added to a default profile, even if it is initially unbound by default (i.e. set to `undefined` or `input_binding_empty()`).
 
@@ -38,15 +38,16 @@ return {
 
 Bindings can be created using one of the following [binding creator functions](Functions-(Binding-Creators)):
 
-|Type                   |Creator function                                                                                                |
-|-----------------------|----------------------------------------------------------------------------------------------------------------|
-|Empty, inactive binding|`undefined`or [`input_binding_empty()`](Functions-(Binding-Creators)?id=input_binding_gamepad_axisaxis-negative)|
-|Keyboard key           |[`input_binding_key()`](Functions-(Binding-Creators)?id=input_binding_keykey)                                   |
-|Mouse button           |[`input_binding_mouse_button()`](Functions-(Binding-Creators)?id=input_binding_mouse_buttonbutton)              |
-|Mouse wheel up         |[`input_binding_mouse_wheel_up()`](Functions-(Binding-Creators)?id=input_binding_mouse_wheel_up)                |
-|Mouse wheel down       |[`input_binding_mouse_wheel_down()`](Functions-(Binding-Creators)?id=input_binding_mouse_wheel_down)            |
-|Gamepad button         |[`input_binding_gamepad_button()`](Functions-(Binding-Creators)?id=input_binding_gamepad_buttonbutton)          |
-|Gamepad axis           |[`input_binding_gamepad_axis()`](Functions-(Binding-Creators)?id=input_binding_keykey)                          |
+|Type                   |Creator function                                                                                    |
+|-----------------------|----------------------------------------------------------------------------------------------------|
+|Empty, inactive binding|[`input_binding_empty()`](Functions-(Binding-Creators)?id=binding_empty)                            |
+|Keyboard key           |[`input_binding_key(key)`](Functions-(Binding-Creators)?id=binding_key)                             |
+|Mouse button           |[`input_binding_mouse_button()`](Functions-(Binding-Creators)?id=binding_mouse_button)              |
+|Mouse wheel up         |[`input_binding_mouse_wheel_up()`](Functions-(Binding-Creators)?id=binding_mouse_wheel_up)          |
+|Mouse wheel down       |[`input_binding_mouse_wheel_down()`](Functions-(Binding-Creators)?id=binding_mouse_wheel_down)      |
+|Gamepad button         |[`input_binding_gamepad_button(button)`](Functions-(Binding-Creators)?id=binding_gamepad_button)    |
+|Gamepad axis           |[`input_binding_gamepad_axis(axis, negative)`](Functions-(Binding-Creators)?id=binding_gamepad_axis)|
+|Virtual button         |[`input_binding_virtual_button()`](Functions-(Binding-Creators)?id=binding_virtual_button)          |
 
 If you'd like to mark a verb as being unbound for a particular default profile, you may use either `undefined` or [`input_binding_empty()`](Functions-(Binding-Creators)?id=input_binding_gamepad_axisaxis-negative). If you'd like more than one binding to be applied to a given verb, you may list the bindings in an array inside the struct.
 
