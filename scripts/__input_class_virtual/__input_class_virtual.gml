@@ -642,18 +642,13 @@ function __input_class_virtual() constructor
         
         if (_over)
         {
-            //We set __touch_x/__touch_y in the __tick method()
             __touch_start_x = _touch_x;
             __touch_start_y = _touch_y;
             
+            //We set further variables in the __tick method()
+            
             __touch_device = _device;
             __captured_this_frame = true;
-            
-            __pressed  = true;
-            __held     = true;
-            __released = false;
-            
-            if (__record_history) __history_push(_touch_x, _touch_y);
         }
         
         return _over;
@@ -675,175 +670,180 @@ function __input_class_virtual() constructor
         if (__captured_this_frame)
         {
             __captured_this_frame = false;
+            
+            __pressed  = true;
+            __held     = true;
+            __released = false;
         }
         else
         {
-            __pressed = false;
-            
-            if (__held)
+            __pressed  = false;
+            __released = false;
+        }
+        
+        if (__held)
+        {
+            if (not device_mouse_check_button(__touch_device, mb_left))
             {
-                if (device_mouse_check_button(__touch_device, mb_left))
+                __pressed  = false;
+                __held     = false;
+                __released = true;
+            }
+            else
+            {
+                var _player = __global.__touch_player;
+                _player.__verb_set_from_virtual(__verb_click, 1, 1, false);
+                
+                if (__record_history) __history_push(__touch_x, __touch_y);
+                
+                __touch_x = device_mouse_x_to_gui(__touch_device);
+                __touch_y = device_mouse_y_to_gui(__touch_device);
+                
+                var _dx = __touch_x - __x;
+                var _dy = __touch_y - __y;
+                
+                var _length = _dx*_dx + _dy*_dy;
+                if (_length <= 0)
                 {
-                    var _player = __global.__touch_player;
-                    _player.__verb_set_from_virtual(__verb_click, 1, 1, false);
+                    //We don't like div-by-zero
+                    var _threshold_factor = 0;
+                    __normalized_x = 0;
+                    __normalized_y = 0;
+                }
+                else
+                {
+                    var _length = sqrt(_length);
+                    var _threshold_factor = clamp((_length - __threshold_min) / (__threshold_max - __threshold_min), 0, 1) / _length;
+                    __normalized_x = _threshold_factor*_dx;
+                    __normalized_y = _threshold_factor*_dy;
                     
-                    if (__record_history) __history_push(__touch_x, __touch_y);
-                    
-                    __touch_x = device_mouse_x_to_gui(__touch_device);
-                    __touch_y = device_mouse_y_to_gui(__touch_device);
-                    
-                    var _dx = __touch_x - __x;
-                    var _dy = __touch_y - __y;
-                    
-                    var _length = _dx*_dx + _dy*_dy;
-                    if (_length <= 0)
+                    if (__follow)
                     {
-                        //We don't like div-by-zero
-                        var _threshold_factor = 0;
-                        __normalized_x = 0;
-                        __normalized_y = 0;
+                        var _move_x = 0;
+                        var _move_y = 0;
+                        
+                        if (__circular == true)
+                        {
+                            var _move_distance = max(0, _length - __radius);
+                            _move_x = _move_distance*_dx / _length;
+                            _move_y = _move_distance*_dy / _length;
+                        }
+                        else if (__circular == false)
+                        {
+                            var _dLeft   = min(0, __touch_x - __left  );
+                            var _dTop    = min(0, __touch_y - __top   );
+                            var _dRight  = max(0, __touch_x - __right );
+                            var _dBottom = max(0, __touch_y - __bottom);
+                            
+                            _move_x += _dLeft + _dRight;
+                            _move_y += _dTop  + _dBottom;
+                        }
+                        
+                        __x      += _move_x;
+                        __y      += _move_y;
+                        __left   += _move_x;
+                        __top    += _move_y;
+                        __right  += _move_x;
+                        __bottom += _move_y;
+                    }
+                }
+                
+                if (_threshold_factor > 0)
+                {
+                    if (__type == INPUT_VIRTUAL_TYPE.DPAD_4DIR)
+                    {
+                        var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 45) / 90) mod 4;
+                        switch(_direction)
+                        {
+                            case 0:
+                                _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
+                            break;
+                            
+                            case 1:
+                                _player.__verb_set_from_virtual(__verb_up, 1, 1, false);
+                            break;
+                            
+                            case 2:
+                                _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
+                            break;
+                            
+                            case 3:
+                                _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
+                            break;
+                        }
                     }
                     else
                     {
-                        var _length = sqrt(_length);
-                        var _threshold_factor = clamp((_length - __threshold_min) / (__threshold_max - __threshold_min), 0, 1) / _length;
-                        __normalized_x = _threshold_factor*_dx;
-                        __normalized_y = _threshold_factor*_dy;
+                        var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 22.5) / 45) mod 8;
                         
-                        if (__follow)
+                        if (__type == INPUT_VIRTUAL_TYPE.DPAD_8DIR)
                         {
-                            var _move_x = 0;
-                            var _move_y = 0;
-                            
-                            if (__circular == true)
-                            {
-                                var _move_distance = max(0, _length - __radius);
-                                _move_x = _move_distance*_dx / _length;
-                                _move_y = _move_distance*_dy / _length;
-                            }
-                            else if (__circular == false)
-                            {
-                                var _dLeft   = min(0, __touch_x - __left  );
-                                var _dTop    = min(0, __touch_y - __top   );
-                                var _dRight  = max(0, __touch_x - __right );
-                                var _dBottom = max(0, __touch_y - __bottom);
-                                
-                                _move_x += _dLeft + _dRight;
-                                _move_y += _dTop  + _dBottom;
-                            }
-                            
-                            __x      += _move_x;
-                            __y      += _move_y;
-                            __left   += _move_x;
-                            __top    += _move_y;
-                            __right  += _move_x;
-                            __bottom += _move_y;
-                        }
-                    }
-                    
-                    if (_threshold_factor > 0)
-                    {
-                        if (__type == INPUT_VIRTUAL_TYPE.DPAD_4DIR)
-                        {
-                            var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 45) / 90) mod 4;
                             switch(_direction)
                             {
                                 case 0:
+                                case 1:
+                                case 7:
                                     _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
                                 break;
                                 
+                                case 3:
+                                case 4:
+                                case 5:
+                                    _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
+                                break;
+                            }
+                            
+                            switch(_direction)
+                            {
                                 case 1:
+                                case 2:
+                                case 3:
                                     _player.__verb_set_from_virtual(__verb_up, 1, 1, false);
                                 break;
                                 
-                                case 2:
-                                    _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
-                                break;
-                                
-                                case 3:
+                                case 5:
+                                case 6:
+                                case 7:
                                     _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
                                 break;
                             }
                         }
-                        else
+                        else if (__type == INPUT_VIRTUAL_TYPE.THUMBSTICK)
                         {
-                            var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 22.5) / 45) mod 8;
+                            var _clamped_x = sign(_dx)*clamp((abs(_dx) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
+                            var _clamped_y = sign(_dy)*clamp((abs(_dy) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
                             
-                            if (__type == INPUT_VIRTUAL_TYPE.DPAD_8DIR)
+                            switch(_direction)
                             {
-                                switch(_direction)
-                                {
-                                    case 0:
-                                    case 1:
-                                    case 7:
-                                        _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
-                                    break;
-                                    
-                                    case 3:
-                                    case 4:
-                                    case 5:
-                                        _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
-                                    break;
-                                }
+                                case 0:
+                                case 1:
+                                case 7:
+                                    _player.__verb_set_from_virtual(__verb_right, max(0, _dx), max(0, _clamped_x), true);
+                                break;
                                 
-                                switch(_direction)
-                                {
-                                    case 1:
-                                    case 2:
-                                    case 3:
-                                        _player.__verb_set_from_virtual(__verb_up, 1, 1, false);
-                                    break;
-                                    
-                                    case 5:
-                                    case 6:
-                                    case 7:
-                                        _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
-                                    break;
-                                }
+                                case 3:
+                                case 4:
+                                case 5:
+                                    _player.__verb_set_from_virtual(__verb_left, max(0, -_dx), max(0, -_clamped_x), true);
+                                break;
                             }
-                            else if (__type == INPUT_VIRTUAL_TYPE.THUMBSTICK)
+                            
+                            switch(_direction)
                             {
-                                var _clamped_x = sign(_dx)*clamp((abs(_dx) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
-                                var _clamped_y = sign(_dy)*clamp((abs(_dy) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
+                                case 1:
+                                case 2:
+                                case 3:
+                                    _player.__verb_set_from_virtual(__verb_up, max(0, -_dy), max(0, -_clamped_y), true);
+                                break;
                                 
-                                switch(_direction)
-                                {
-                                    case 0:
-                                    case 1:
-                                    case 7:
-                                        _player.__verb_set_from_virtual(__verb_right, max(0, _dx), max(0, _clamped_x), true);
-                                    break;
-                                    
-                                    case 3:
-                                    case 4:
-                                    case 5:
-                                        _player.__verb_set_from_virtual(__verb_left, max(0, -_dx), max(0, -_clamped_x), true);
-                                    break;
-                                }
-                                
-                                switch(_direction)
-                                {
-                                    case 1:
-                                    case 2:
-                                    case 3:
-                                        _player.__verb_set_from_virtual(__verb_up, max(0, -_dy), max(0, -_clamped_y), true);
-                                    break;
-                                    
-                                    case 5:
-                                    case 6:
-                                    case 7:
-                                        _player.__verb_set_from_virtual(__verb_down, max(0, _dy), max(0, _clamped_y), true);
-                                    break;
-                                }
+                                case 5:
+                                case 6:
+                                case 7:
+                                    _player.__verb_set_from_virtual(__verb_down, max(0, _dy), max(0, _clamped_y), true);
+                                break;
                             }
                         }
                     }
-                }
-                else
-                {
-                    __pressed  = false;
-                    __held     = false;
-                    __released = true;
                 }
             }
         }
