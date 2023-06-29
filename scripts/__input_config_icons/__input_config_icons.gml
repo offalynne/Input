@@ -1,19 +1,19 @@
-/// This struct contains mappings from binding labels - a combination of keyboard key names, mouse button
+/// This script contains mappings from binding labels - a combination of keyboard key names, mouse button
 /// names, and abstract gamepad names - to more friendly terms that you can show a player. Typically you'd
 /// set up this function to return sprites such that you can draw gamepad icons as visual icons.
 /// 
-/// Default values in this struct reflect the particular, and sometimes unexpected, buttons that each gamepad
+/// Default values in this script reflect the particular, and sometimes unexpected, buttons that each gamepad
 /// binding maps to on the actual physical hardware. There are a handful of special cases at the top of the
-/// struct that are used to handle errors or misconfigurations.
+/// script that are used to handle errors or misconfigurations.
 
 
 
 //Special case: When a non-binding value is being evaluated
-//              This should only happen if input_binding_get_icon() is given an invalid input argument
-input_icon_not_a_binding("not a binding");
+//              This should only happen if Input is given an invalid input argument
+input_icon_not_a_binding("Not a binding");
 
 //Special case: When an empty binding is being evaluated
-input_icon_empty("empty");
+input_icon_empty("Empty");
 
 
 
