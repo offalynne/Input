@@ -835,7 +835,7 @@ function __input_class_virtual() constructor
         _last_coord.y = _y;
         
         array_delete(__history_array, INPUT_TOUCH_HISTORY_FRAMES, 1);
-        array_insert(__history_array, _last_coord);
+        array_insert(__history_array, 0, _last_coord);
         
         ++__history_count;
     }
