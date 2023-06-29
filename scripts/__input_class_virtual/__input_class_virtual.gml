@@ -480,9 +480,9 @@ function __input_class_virtual() constructor
             return undefined;
         }
         
-        __input_error("This features has not yet been implement");
-        
-        return undefined;
+        var _point0 = __history_array[0];
+        var _pointN = __history_array[_frames];
+        return point_distance(_point0.x, _point0.y, _pointN.x, _pointN.y);
     }
     
     static get_history_distance = function(_frames = INPUT_TOUCH_HISTORY_FRAMES)
