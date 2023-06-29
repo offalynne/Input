@@ -429,6 +429,7 @@ function __input_class_virtual() constructor
         
         __record_history = _state;
         
+        //If we've changed the history record state
         if (__record_history != is_array(__history_array))
         {
             if (__record_history)
@@ -634,6 +635,8 @@ function __input_class_virtual() constructor
             __pressed  = true;
             __held     = true;
             __released = false;
+            
+            if (__record_history) __history_push(_touch_x, _touch_y);
         }
         
         return _over;
@@ -667,16 +670,7 @@ function __input_class_virtual() constructor
                     var _player = __global.__touch_player;
                     _player.__verb_set_from_virtual(__verb_click, 1, 1, false);
                     
-                    if (__record_history)
-                    {
-                        //Cycle the history array and add a new entry using the previous touch x/y coordinate
-                        var _last_coord = __history_array[@ INPUT_TOUCH_HISTORY_FRAMES-1];
-                        _last_coord.x = __touch_x;
-                        _last_coord.y = __touch_y;
-                        
-                        array_delete(__history_array, INPUT_TOUCH_HISTORY_FRAMES-1, 1);
-                        array_insert(__history_array, _last_coord);
-                    }
+                    if (__record_history) __history_push(__touch_x, __touch_y);
                     
                     __touch_x = device_mouse_x_to_gui(__touch_device);
                     __touch_y = device_mouse_y_to_gui(__touch_device);
@@ -814,6 +808,17 @@ function __input_class_virtual() constructor
                 }
             }
         }
+    }
+    
+    static __history_push = function(_x, _y)
+    {
+        //Cycle the history array and add a new entry using the previous touch x/y coordinate
+        var _last_coord = __history_array[@ INPUT_TOUCH_HISTORY_FRAMES-1];
+        _last_coord.x = _x;
+        _last_coord.y = _y;
+        
+        array_delete(__history_array, INPUT_TOUCH_HISTORY_FRAMES-1, 1);
+        array_insert(__history_array, _last_coord);
     }
     
     #endregion
