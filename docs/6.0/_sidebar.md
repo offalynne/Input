@@ -18,6 +18,15 @@
 
 ---
 
+**Setting Up**
+
+- [Importing The Library](Importing-The-Library)
+- [Config Macros](Config-Macros)
+- [Steamworks](Steamworks)
+- [Icon Config](Icon-Config)
+
+---
+
 **Further Reading**
 
 - [Input Quirks](Input-Quirks)
@@ -25,15 +34,6 @@
 - [Gamepad Troubleshooting](Gamepad-Troubleshooting)
 - [Common Keyboard Combos](Common-Keyboard-Combos)
 - [Button Labels by Gamepad Type](Gamepad-Button-Labels)
-
----
-
-**Setting Up**
-
-- [Importing The Library](Importing-The-Library)
-- [Config Macros](Config-Macros)
-- [Steamworks](Steamworks)
-- [Icon Config](Icon-Config)
 
 ---
 
