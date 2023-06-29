@@ -33,7 +33,7 @@ The `INPUT_SOURCE_MODE` enum contains the following members. You can read more a
 
 ## Coordinate Spaces
 
-The `INPUT_COORD_SPACE` enum is used to control the coordinate space for mouse and cursor functions, specifically using [`input_mouse_coord_space_set()`](Functions-(Mouse)?id=input_mouse_coord_space_setcoordspace) and [`input_cursor_coord_space_set()`](Functions-(Cursor)?id=input_cursor_coord_space_setcoordspace-playerindex)
+The `INPUT_COORD_SPACE` enum is used to control the coordinate space for mouse and cursor functions, specifically using [`input_mouse_coord_space_set()`](Functions-(Mouse)?id=mouse_coord_space_set) and [`input_cursor_coord_space_set()`](Functions-(Cursor)?id=cursor_coord_space_set)
 
 |Name     |Purpose                                                                                   |
 |---------|------------------------------------------------------------------------------------------|
@@ -45,7 +45,7 @@ The `INPUT_COORD_SPACE` enum is used to control the coordinate space for mouse a
 
 ## Player and Gamepad Status
 
-Members of the `INPUT_STATUS` enum are returned by [`input_players_get_status()`](Functions-(Players)?id=input_players_get_status) and [`input_gamepad_get_status()`](Functions-(Gamepad)?id=input_gamepads_get_status).
+Members of the `INPUT_STATUS` enum are returned by [`input_players_get_status()`](Functions-(Players)?id=players_get_status) and [`input_gamepad_get_status()`](Functions-(Gamepad)?id=gamepads_get_status).
 
 |Name                 |Purpose                                                 |
 |---------------------|--------------------------------------------------------|
@@ -58,14 +58,14 @@ Members of the `INPUT_STATUS` enum are returned by [`input_players_get_status()`
 
 ## Binding Scan Events
 
-The `INPUT_BINDING_SCAN_EVENT` enum is used by the failure callback for [`input_binding_scan_start()`](Functions-(Binding-Creators)?id=input_binding_scan_startsuccesscallback-failurecallback-sourcefilter-playerindex).
+The `INPUT_BINDING_SCAN_EVENT` enum is used by the failure callback for [`input_binding_scan_start()`](Functions-(Binding-Scan)?id=binding_scan_start).
 
 |Name                 |Meaning                                                                                                                                                                      |
 |---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |`.SOURCE_INVALID`    |Player's source is invalid, usually because they have no sources assigned or their gamepad has been disconnected                                                             |
 |`.SOURCE_CHANGED`    |The player's source (or sources) have been modified                                                                                                                          |
 |`.PLAYER_IS_GHOST`   |Player is a ghost and cannot receive hardware input                                                                                                                          |
-|`.SCAN_TIMEOUT`      |Either the player didn't enter a new binding or a stuck key prevented the system from working. The timeout period is defined by [`INPUT_BINDING_SCAN_TIMEOUT`](Configuration)|
+|`.SCAN_TIMEOUT`      |Either the player didn't enter a new binding or a stuck key prevented the system from working. The timeout period is defined by [`INPUT_BINDING_SCAN_TIMEOUT`](Config-Macros?id=general)|
 |`.LOST_FOCUS`        |The application lost focus                                                                                                                                                   |
 |`.PLAYER_DISCONNECTED`|The player disconnected                                                                                                                                                     |
 |`.ABORTED`           |Binding scan was aborted early due to `input_binding_scan_abort()` being called                                                                                              |
@@ -74,7 +74,7 @@ The `INPUT_BINDING_SCAN_EVENT` enum is used by the failure callback for [`input_
 
 ## Gamepad Types
 
-The following constants allow you to reference specific gamepad types. These constants are used to define [`input_icon()`](Functions-(Other)?id=input_iconscategoryname) categories, to specify type override with [`input_player_gamepad_type_override_set()`](Functions-(Players)#input_player_gamepad_type_override_setgamepadtype-playerindex), and are returned by [`input_player_get_gamepad_type()`](Functions-(Players)?id=input_player_get_gamepad_typeplayerindex-binding), [`input_gamepad_get_type()`](Functions-(Gamepad)?id=input_gamepad_get_typegamepadindex), and [`input_player_gamepad_type_override_get()`](Functions-(Players)#input_player_gamepad_type_override_getgamepadtype-playerindex).
+The following constants allow you to reference specific gamepad types. These constants are used to define [`input_icon()`](Icon-Config) categories, to specify type override with [`input_player_gamepad_type_override_set()`](Functions-(Players)?id=player_gamepad_type_override_set), and are returned by [`input_player_get_gamepad_type()`](Functions-(Players)?id=player_get_gamepad_type), [`input_gamepad_get_type()`](Functions-(Gamepad)?id=gamepad_get_type), and [`input_player_gamepad_type_override_get()`](Functions-(Players)?id=player_gamepad_type_override_get).
 
 |Name                             |Gamepads             |
 |---------------------------------|---------------------|
@@ -95,7 +95,7 @@ The following constants allow you to reference specific gamepad types. These con
 
 ## Extended Gamepad Constants
 
-If [`INPUT_SDL2_ALLOW_EXTENDED`](Configuration?id=gamepad-data) has been set to `true` then the following constants will be available for use. Not many gamepads actually have these buttons so it's not recommend to use these constants for default bindings.
+If [`INPUT_SDL2_ALLOW_EXTENDED`](Config-Macros?id=external-data) has been set to `true` then the following constants will be available for use. Not many gamepads actually have these buttons so it's not recommend to use these constants for default bindings.
 
 |Name         |            |
 |-------------|------------|
@@ -172,7 +172,7 @@ This macro is set to a string indicating the current platform's pointer type as 
 
 ## Gyro Axis
 
-The `INPUT_GYRO` enum contains the following members used by the [gamepad motion functions](Functions-(Motion)) to configure the axis used to control the player cursor. Meaning descriptions assume a neutral position of device resting on a flat surface. See [gamepad motion functions](Functions-(Motion)) for illustrative figure.
+The `INPUT_GYRO` enum contains the following members used by the [gamepad motion functions](Functions-(Gyro-And-Motion)) to configure the axis used to control the player cursor. Meaning descriptions assume a neutral position of device resting on a flat surface. See [gamepad motion functions](Functions-(Gyro-And-Motion)) for illustrative figure.
 
 |Name         |Purpose                                              |
 |-------------|-----------------------------------------------------|
@@ -184,7 +184,7 @@ The `INPUT_GYRO` enum contains the following members used by the [gamepad motion
 
 ## Trigger Effect States
 
-The `INPUT_TRIGGER_STATE` enum contains the following members returned by [`input_trigger_effect_get_state()`](Functions-(Trigger-Effects)?id=input_trigger_effect_get_state).
+The `INPUT_TRIGGER_STATE` enum contains the following members returned by [`input_trigger_effect_get_state()`](Functions-(Trigger-Effects)).
 
 |Name                       |Purpose                                                 |
 |---------------------------|--------------------------------------------------------|
