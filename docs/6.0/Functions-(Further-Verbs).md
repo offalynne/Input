@@ -85,7 +85,7 @@ input_verb_set("right", _right_value)
 |Name                   |Datatype                  |Purpose                                                                                                                        |
 |-----------------------|--------------------------|-------------------------------------------------------------------------------------------------------------------------------|
 |`name`                 |string                    |Name of the chord verb to create                                                                                               |
-|`maxTimeBetweenPresses`|number                    |Maximum time allowed between verb activations, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
+|`maxTimeBetweenPresses`|number                    |Maximum time allowed between verb activations, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Config-Macros?id=general)|
 |`verb1`                |[verb](Verbs-and-Bindings)|Name of a required [verb](Verbs-and-Bindings)                                                                                  |
 |`verb2`                |[verb](Verbs-and-Bindings)|Name of a required [verb](Verbs-and-Bindings)                                                                                  |
 |...                    |                          |etc.                                                                                                                           |

@@ -20,7 +20,7 @@ The functions on this page allow you to check the state of verbs for each player
 |------------------|--------------------------------|----------------------------------------------------------------------------------------------------------|
 |`verb`            |[verb](Verbs-and-Bindings)/array|[Verb](Verbs-and-Bindings) to check, or an array of [verbs](Verbs-and-Bindings) (see below)               |
 |`[playerIndex]`   |integer                         |Player to target. If not specified, player 0 is used                                                      |
-|`[bufferDuration]`|frames/milliseconds             |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
+|`[bufferDuration]`|frames/milliseconds             |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Config-Macros?id=general)|
 
 If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are currently active for the player.
 
@@ -84,7 +84,7 @@ if (place_meeting(x, y, obj_enemy_attack))
 |------------------|--------------------------------|----------------------------------------------------------------------------------------------------------|
 |`verb`            |[verb](Verbs-and-Bindings)/array|[Verb](Verbs-and-Bindings) to check, or an array of [verbs](Verbs-and-Bindings) (see below)               |
 |`[playerIndex]`   |integer                         |Player to target. If not specified, player 0 is used                                                      |
-|`[bufferDuration]`|frames/milliseconds             |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
+|`[bufferDuration]`|frames/milliseconds             |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Config-Macros?id=general)|
 
 If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are newly activated this frame for the player.
 
@@ -129,7 +129,7 @@ if (input_check_pressed("jump", 0, 2) and (place_meeting(x, y+1, obj_floor))
 |------------------|--------------------------------|----------------------------------------------------------------------------------------------------------|
 |`verb`            |[verb](Verbs-and-Bindings)/array|[Verb](Verbs-and-Bindings) to check, or an array of [verbs](Verbs-and-Bindings) (see below)               |
 |`[playerIndex]`   |integer                         |Player to target. If not specified, player 0 is used                                                      |
-|`[bufferDuration]`|frames/milliseconds             |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Configuration)|
+|`[bufferDuration]`|frames/milliseconds             |Input buffering duration, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Config-Macros?id=general)|
 
 If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter, this function will return `true` if **any** of the verbs are newly deactivated this frame for the player.
 
