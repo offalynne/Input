@@ -485,7 +485,7 @@ function __input_class_virtual() constructor
         }
         
         //Limit the history collection to the number of frames that we've recorded
-        _frames = min(__history_count, _frames, INPUT_TOUCH_HISTORY_FRAMES);
+        _frames = min(__history_count-1, _frames, INPUT_TOUCH_HISTORY_FRAMES);
         if (_frames <= 0) return 0;
         
         var _point0 = __history_array[0];
@@ -510,7 +510,7 @@ function __input_class_virtual() constructor
         }
         
         //Limit the history collection to the number of frames that we've recorded
-        _frames = min(__history_count, _frames, INPUT_TOUCH_HISTORY_FRAMES);
+        _frames = min(__history_count-1, _frames, INPUT_TOUCH_HISTORY_FRAMES);
         if (_frames <= 0) return 0;
         
         var _distance = 0;
@@ -545,7 +545,7 @@ function __input_class_virtual() constructor
         if (__destroyed) return undefined;
         
         //Limit the history collection to the number of frames that we've recorded
-        _frames = min(__history_count, _frames, INPUT_TOUCH_HISTORY_FRAMES);
+        _frames = min(__history_count-1, _frames, INPUT_TOUCH_HISTORY_FRAMES);
         if (_frames <= 0) return 0;
         
         return get_history_distance(_frames) / _frames;
