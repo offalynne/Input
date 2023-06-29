@@ -55,6 +55,7 @@ function __input_class_virtual() constructor
     __touch_start_x       = undefined;
     __touch_start_y       = undefined;
     __history_array       = undefined; //Created when setting history recording
+    __history_count       = 0;
     __captured_this_frame = false;
     
     
@@ -434,11 +435,12 @@ function __input_class_virtual() constructor
         {
             if (__record_history)
             {
-                __history_array = array_create(INPUT_TOUCH_HISTORY_FRAMES, undefined);
+                __history_array = array_create(INPUT_TOUCH_HISTORY_FRAMES+1, undefined);
+                __history_count = 0;
                 
                 //Assign lots of memory because we're evil >:)
                 var _i = 0;
-                repeat(INPUT_TOUCH_HISTORY_FRAMES)
+                repeat(INPUT_TOUCH_HISTORY_FRAMES+1)
                 {
                     __history_array[@ _i] = {
                         x: undefined,
@@ -452,6 +454,7 @@ function __input_class_virtual() constructor
             {
                 //Free memory because we're well-behaved programmers O:)
                 __history_array = undefined;
+                __history_count = 0;
             }
         }
         
@@ -481,6 +484,10 @@ function __input_class_virtual() constructor
             return undefined;
         }
         
+        //Limit the history collection to the number of frames that we've recorded
+        _frames = min(__history_count, _frames, INPUT_TOUCH_HISTORY_FRAMES);
+        if (_frames <= 0) return 0;
+        
         var _point0 = __history_array[0];
         var _pointN = __history_array[_frames];
         return point_distance(_point0.x, _point0.y, _pointN.x, _pointN.y);
@@ -502,6 +509,10 @@ function __input_class_virtual() constructor
             return undefined;
         }
         
+        //Limit the history collection to the number of frames that we've recorded
+        _frames = min(__history_count, _frames, INPUT_TOUCH_HISTORY_FRAMES);
+        if (_frames <= 0) return 0;
+        
         var _distance = 0;
         
         var _x1 = undefined;
@@ -511,7 +522,7 @@ function __input_class_virtual() constructor
         var _y2 = _point.y;
         
         var _i = 1;
-        repeat(_frames-1)
+        repeat(_frames)
         {
             _x1 = _x2;
             _y1 = _y2;
@@ -532,6 +543,10 @@ function __input_class_virtual() constructor
     static get_history_speed = function(_frames = INPUT_TOUCH_HISTORY_FRAMES)
     {
         if (__destroyed) return undefined;
+        
+        //Limit the history collection to the number of frames that we've recorded
+        _frames = min(__history_count, _frames, INPUT_TOUCH_HISTORY_FRAMES);
+        if (_frames <= 0) return 0;
         
         return get_history_distance(_frames) / _frames;
     }
@@ -569,8 +584,10 @@ function __input_class_virtual() constructor
         //Clear out the history array
         if (__record_history)
         {
+            __history_count = 0;
+            
             var _i = 0;
-            repeat(INPUT_TOUCH_HISTORY_FRAMES)
+            repeat(INPUT_TOUCH_HISTORY_FRAMES+1)
             {
                 with(__history_array[@ _i])
                 {
@@ -813,12 +830,14 @@ function __input_class_virtual() constructor
     static __history_push = function(_x, _y)
     {
         //Cycle the history array and add a new entry using the previous touch x/y coordinate
-        var _last_coord = __history_array[@ INPUT_TOUCH_HISTORY_FRAMES-1];
+        var _last_coord = __history_array[@ INPUT_TOUCH_HISTORY_FRAMES];
         _last_coord.x = _x;
         _last_coord.y = _y;
         
-        array_delete(__history_array, INPUT_TOUCH_HISTORY_FRAMES-1, 1);
+        array_delete(__history_array, INPUT_TOUCH_HISTORY_FRAMES, 1);
         array_insert(__history_array, _last_coord);
+        
+        ++__history_count;
     }
     
     #endregion
