@@ -741,83 +741,102 @@ function __input_class_virtual() constructor
                         }
                     }
                     
-                    if (__type == INPUT_VIRTUAL_TYPE.DPAD_4DIR)
+                    if (_threshold_factor > 0)
                     {
-                        if (_threshold_factor > 0)
+                        if (__type == INPUT_VIRTUAL_TYPE.DPAD_4DIR)
                         {
                             var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 45) / 90) mod 4;
-                            if (_direction == 0)
+                            switch(_direction)
                             {
-                                _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
-                            }
-                            else if (_direction == 1)
-                            {
-                                _player.__verb_set_from_virtual(__verb_up, 1, 1, false);
-                            }
-                            else if (_direction == 2)
-                            {
-                                _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
-                            }
-                            else if (_direction == 3)
-                            {
-                                _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
+                                case 0:
+                                    _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
+                                break;
+                                
+                                case 1:
+                                    _player.__verb_set_from_virtual(__verb_up, 1, 1, false);
+                                break;
+                                
+                                case 2:
+                                    _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
+                                break;
+                                
+                                case 3:
+                                    _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
+                                break;
                             }
                         }
-                    }
-                    else if (__type == INPUT_VIRTUAL_TYPE.DPAD_8DIR)
-                    {
-                        if (_threshold_factor > 0)
+                        else
                         {
                             var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 22.5) / 45) mod 8;
                             
-                            //Look, I *could* do this with maths but I'm choosing not to because it's 10pm
-                            if (_direction == 0)
+                            if (__type == INPUT_VIRTUAL_TYPE.DPAD_8DIR)
                             {
-                                _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
+                                switch(_direction)
+                                {
+                                    case 0:
+                                    case 1:
+                                    case 7:
+                                        _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
+                                    break;
+                                    
+                                    case 3:
+                                    case 4:
+                                    case 5:
+                                        _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
+                                    break;
+                                }
+                                
+                                switch(_direction)
+                                {
+                                    case 1:
+                                    case 2:
+                                    case 3:
+                                        _player.__verb_set_from_virtual(__verb_up, 1, 1, false);
+                                    break;
+                                    
+                                    case 5:
+                                    case 6:
+                                    case 7:
+                                        _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
+                                    break;
+                                }
                             }
-                            else if (_direction == 1)
+                            else if (__type == INPUT_VIRTUAL_TYPE.THUMBSTICK)
                             {
-                                _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
-                                _player.__verb_set_from_virtual(__verb_up,    1, 1, false);
-                            }
-                            else if (_direction == 2)
-                            {
-                                _player.__verb_set_from_virtual(__verb_up, 1, 1, false);
-                            }
-                            else if (_direction == 3)
-                            {
-                                _player.__verb_set_from_virtual(__verb_up,   1, 1, false);
-                                _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
-                            }
-                            else if (_direction == 4)
-                            {
-                                _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
-                            }
-                            else if (_direction == 5)
-                            {
-                                _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
-                                _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
-                            }
-                            else if (_direction == 6)
-                            {
-                                _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
-                            }
-                            else if (_direction == 7)
-                            {
-                                _player.__verb_set_from_virtual(__verb_down,  1, 1, false);
-                                _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
+                                var _clamped_x = sign(_dx)*clamp((abs(_dx) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
+                                var _clamped_y = sign(_dy)*clamp((abs(_dy) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
+                                
+                                switch(_direction)
+                                {
+                                    case 0:
+                                    case 1:
+                                    case 7:
+                                        _player.__verb_set_from_virtual(__verb_right, max(0, _dx), max(0, _clamped_x), true);
+                                    break;
+                                    
+                                    case 3:
+                                    case 4:
+                                    case 5:
+                                        _player.__verb_set_from_virtual(__verb_left, max(0, -_dx), max(0, -_clamped_x), true);
+                                    break;
+                                }
+                                
+                                switch(_direction)
+                                {
+                                    case 1:
+                                    case 2:
+                                    case 3:
+                                        _player.__verb_set_from_virtual(__verb_up, max(0, -_dy), max(0, -_clamped_y), true);
+                                    break;
+                                    
+                                    case 5:
+                                    case 6:
+                                    case 7:
+                                        _player.__verb_set_from_virtual(__verb_down, max(0, _dy), max(0, _clamped_y), true);
+                                    break;
+                                }
                             }
                         }
-                    }
-                    else if (__type == INPUT_VIRTUAL_TYPE.THUMBSTICK)
-                    {
-                        var _clamped_x = sign(_dx)*clamp((abs(_dx) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
-                        var _clamped_y = sign(_dy)*clamp((abs(_dy) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
-                        
-                        _player.__verb_set_from_virtual(__verb_left,  max(0, -_dx), max(0, -_clamped_x), true);
-                        _player.__verb_set_from_virtual(__verb_right, max(0,  _dx), max(0,  _clamped_x), true);
-                        _player.__verb_set_from_virtual(__verb_up,    max(0, -_dy), max(0, -_clamped_y), true);
-                        _player.__verb_set_from_virtual(__verb_down,  max(0,  _dy), max(0,  _clamped_y), true);
                     }
                 }
                 else
