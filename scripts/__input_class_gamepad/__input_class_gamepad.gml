@@ -168,7 +168,7 @@ function __input_class_gamepad(_index) constructor
         {
             if ((_gm == gp_shoulderlb) || (_gm == gp_shoulderrb))
             {
-                return (xinput || __INPUT_ON_XBOX || __INPUT_ON_PS || __INPUT_ON_IOS);
+                return (!__INPUT_ON_SWITCH);
             }
             else
             {
