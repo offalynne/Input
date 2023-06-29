@@ -311,6 +311,8 @@ Ghost mode prevents any sources being assigned to this player, but the player is
 - AI-controlled players
 - Replaying gameplay e.g. showing gameplay for the best track time in a racing game
 
+You may pass the GameMaker keyword `all` as the player index to set the ghost state for all players.
+
 !> When you set a player to ghost mode, all [sources](Input-Sources) assigned to the target player are cleared.
 
 ?> To manually pipe input to a ghost player, please use [`input_verb_set()`](Functions-(Other)?id=input_verb_setverb-value-playerindex).
