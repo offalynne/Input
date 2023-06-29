@@ -501,7 +501,29 @@ function __input_class_virtual() constructor
             return undefined;
         }
         
-        __input_error("This features has not yet been implement");
+        var _distance = 0;
+        
+        var _x1 = undefined;
+        var _y1 = undefined;
+        var _point = __history_array[0];
+        var _x2 = _point.x;
+        var _y2 = _point.y;
+        
+        var _i = 1;
+        repeat(_frames-1)
+        {
+            _x1 = _x2;
+            _y1 = _y2;
+            var _point = __history_array[_i];
+            var _x2 = _point.x;
+            var _y2 = _point.y;
+            
+            var _dX = _x2 - _x1;
+            var _dY = _y2 - _y1;
+            _distance += sqrt(_dX*_dX + _dY*_dY);
+            
+            ++_i;
+        }
         
         return undefined;
     }
