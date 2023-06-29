@@ -109,9 +109,14 @@ function __input_class_virtual() constructor
     
     #region Setup
     
-    static rectangle = function(_left, _top, _right, _bottom)
+    static rectangle = function(_in_left, _in_top, _in_right, _in_bottom)
     {
         if (__destroyed || __background) return self;
+        
+        _left   = min(_in_left, _in_right);
+        _top    = min(_in_top, _in_bottom);
+        _right  = max(_in_left, _in_right);
+        _bottom = max(_in_top, _in_bottom);
         
         __circular = false;
         __left     = _left;
