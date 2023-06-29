@@ -37,9 +37,7 @@ efbeedfe,windows,vid+pid // Virtual Hid Device
 30653530626463313864336165306236,android,guid // JVC TV Remote
 38346462303632636161363531303766,android,guid // JVC TV Remote
 66626636666361303930383433646337,android,guid // Android TV Keyboard
-mouse,android,description contains // Mice
 trackball,android,description contains // Trackball Mice
-keyboard,android,description contains // Keyboards
 button jack,android,description contains // TRRS Interfaces
 headphones,android,description contains // Headsets
 jabra,android,description contains // Videoconference Hardware
