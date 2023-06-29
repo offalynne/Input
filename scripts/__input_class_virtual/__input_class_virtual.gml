@@ -490,7 +490,7 @@ function __input_class_virtual() constructor
         
         var _point0 = __history_array[0];
         var _pointN = __history_array[_frames];
-        return point_distance(_point0.x, _point0.y, _pointN.x, _pointN.y);
+        return point_direction(_pointN.x, _pointN.y, _point0.x, _point0.y);
     }
     
     static get_history_distance = function(_frames = INPUT_TOUCH_HISTORY_FRAMES)
