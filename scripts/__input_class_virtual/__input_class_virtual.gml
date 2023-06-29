@@ -694,10 +694,10 @@ function __input_class_virtual() constructor
                 var _player = __global.__touch_player;
                 _player.__verb_set_from_virtual(__verb_click, 1, 1, false);
                 
-                if (__record_history) __history_push(__touch_x, __touch_y);
-                
                 __touch_x = device_mouse_x_to_gui(__touch_device);
                 __touch_y = device_mouse_y_to_gui(__touch_device);
+                
+                if (__record_history) __history_push(__touch_x, __touch_y);
                 
                 var _dx = __touch_x - __x;
                 var _dy = __touch_y - __y;
