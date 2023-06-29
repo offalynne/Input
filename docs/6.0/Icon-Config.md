@@ -34,6 +34,10 @@
 
 &nbsp;
 
+&nbsp;
+
+---------------
+
 The next two functions define "icon handlers" that Input uses to interpret what to return for each possible binding. These functions must be used with what's called a [fluent interface](https://en.wikipedia.org/wiki/Fluent_interface). In practical terms, this means that `__input_config_icons()` should contain code that looks like this:
 
 ```
