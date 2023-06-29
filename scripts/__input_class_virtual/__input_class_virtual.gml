@@ -811,10 +811,13 @@ function __input_class_virtual() constructor
                     }
                     else if (__type == INPUT_VIRTUAL_TYPE.THUMBSTICK)
                     {
-                        _player.__verb_set_from_virtual(__verb_left,  max(0, -_dx), max(0, -__normalized_x), true);
-                        _player.__verb_set_from_virtual(__verb_right, max(0,  _dx), max(0,  __normalized_x), true);
-                        _player.__verb_set_from_virtual(__verb_up,    max(0, -_dy), max(0, -__normalized_y), true);
-                        _player.__verb_set_from_virtual(__verb_down,  max(0,  _dy), max(0,  __normalized_y), true);
+                        var _clamped_x = sign(_dx)*clamp((abs(_dx) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
+                        var _clamped_y = sign(_dy)*clamp((abs(_dy) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
+                        
+                        _player.__verb_set_from_virtual(__verb_left,  max(0, -_dx), max(0, -_clamped_x), true);
+                        _player.__verb_set_from_virtual(__verb_right, max(0,  _dx), max(0,  _clamped_x), true);
+                        _player.__verb_set_from_virtual(__verb_up,    max(0, -_dy), max(0, -_clamped_y), true);
+                        _player.__verb_set_from_virtual(__verb_down,  max(0,  _dy), max(0,  _clamped_y), true);
                     }
                 }
                 else
