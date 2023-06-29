@@ -645,6 +645,8 @@ function __input_class_virtual() constructor
             __touch_start_x = _touch_x;
             __touch_start_y = _touch_y;
             
+            if (__record_history) __history_push(_touch_x, _touch_y);
+            
             //We set further variables in the __tick method()
             
             __touch_device = _device;
