@@ -79,11 +79,11 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 ### Switch
 
-- Keyboard input is fully functional but unlikely to be needed, and therefore off by default. You can turn keyboard input on by [setting `INPUT_SWITCH_KEYBOARD_ALLOWED` to `true`](Configuration).
+- Keyboard input is fully functional but unlikely to be needed, and therefore off by default. You can turn keyboard input on by [setting `INPUT_SWITCH_KEYBOARD_ALLOWED` to `true`](Config-Macros).
 
 - Mouse input is partially functional. GameMaker uses the first mouse "device" for both touchscreen input and mouse, so there is no certain way to determine which is in use. Mouse support includes right click and updates when the mouse is moved. By default mouse input is off (see below).
 
-- Switch touchscreen input is fully functional supporting 10 touch points. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Configuration). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
+- Switch touchscreen input is fully functional supporting 10 touch points. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Config-Macros). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
 
 - The first gamepad index is reserved for physically attached Joy-Cons, or the builtin controls on a Switch Lite.
 
@@ -93,7 +93,7 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Keyboard is not supported by GameMaker (and Input) on this platform.
 
-- The PlayStation touchpad presents as a mouse cursor. By default Input ignores touch input on the touchpad, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Configuration). Input presently supports touchpad input for one player only.
+- The PlayStation touchpad presents as a mouse cursor. By default Input ignores touch input on the touchpad, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Config-Macros). Input presently supports touchpad input for one player only.
 
 ### Xbox One and Xbox Series X/S
 
@@ -111,7 +111,7 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Keyboard input is non-functional on these platforms owing to [unavoidable up-stream bugs](https://github.com/JujuAdams/Input/issues/138)
 
-- iOS touchscreen input is fully functional supporting 5 touch points on iPhone and 11 on iPad. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Configuration). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
+- iOS touchscreen input is fully functional supporting 5 touch points on iPhone and 11 on iPad. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Config-Macros). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
 
 - Mouse input is partially functional. GameMaker uses the first mouse "device" for both touchscreen input and mouse, so there is no certain way to determine which is in use. Mouse position updates when the mouse is clicked. By default mouse input is off (see above).
 
@@ -123,9 +123,9 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 ### Android
 
-- Android keyboard input is problematic and so set to off by default. The most significant issue is keys regularly and irreparably sticking when modified using Shift keys. You can turn keyboard input on by [setting `INPUT_ANDROID_KEYBOARD_ALLOWED` to `true`](Configuration). If using this feature, it is not recommended to use bindings besides Arrow keys, Enter, Space, and Backspace.
+- Android keyboard input is problematic and so set to off by default. The most significant issue is keys regularly and irreparably sticking when modified using Shift keys. You can turn keyboard input on by [setting `INPUT_ANDROID_KEYBOARD_ALLOWED` to `true`](Config-Macros). If using this feature, it is not recommended to use bindings besides Arrow keys, Enter, Space, and Backspace.
 
-- Android touchscreen input is fully functional supporting a device-relative number of touches up to 11. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Configuration). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
+- Android touchscreen input is fully functional supporting a device-relative number of touches up to 11. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Config-Macros). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
 
 - Mouse input is partially functional. GameMaker uses the first mouse "device" for both touchscreen input and mouse, so there is no certain way to determine which is in use. Mouse position updates when the mouse is clicked. By default mouse input is off (see above).
 
@@ -149,7 +149,7 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - In order for gamepads to present and operate, the user must first press a button with the game in focus.
 
-- Touchscreen input is functional on mobile devices supporting a device-relative number of touches up to 11. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Configuration). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
+- Touchscreen input is functional on mobile devices supporting a device-relative number of touches up to 11. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Config-Macros). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
 
 - On Apple platforms, CapsLock key returns lock state rather than key state (`true` when locked), so is blocked from binding.
 

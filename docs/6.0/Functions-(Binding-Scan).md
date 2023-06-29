@@ -30,7 +30,7 @@ If something unexpected happens (for example, the player's gamepad is disconnect
 |`.SOURCE_INVALID`    |Player's source is invalid, usually because they have no sources assigned or their gamepad has been disconnected                                                             |
 |`.SOURCE_CHANGED`    |The player's source (or sources) have been modified                                                                                                                          |
 |`.PLAYER_IS_GHOST`   |Player is a ghost and cannot receive hardware input                                                                                                                          |
-|`.SCAN_TIMEOUT`      |Either the player didn't enter a new binding or a stuck key prevented the system from working. The timeout period is defined by [`INPUT_BINDING_SCAN_TIMEOUT`](Configuration)|
+|`.SCAN_TIMEOUT`      |Either the player didn't enter a new binding or a stuck key prevented the system from working. The timeout period is defined by [`INPUT_BINDING_SCAN_TIMEOUT`](Config-Macros)|
 |`.LOST_FOCUS`        |The application lost focus                                                                                                                                                   |
 |`.PLAYER_DISCONNECTED`        |The player disconnected                                                                                                                                                   |
 |`.ABORTED`           |Binding scan was aborted early due to `input_binding_scan_abort()` being called                                                                                              |

@@ -100,9 +100,9 @@ On many platforms, gamepad indices do not enumerate predicatbly. Use source assi
 
 ### Keyboard on Console, Mobile and HTML5
 
-- On Switch, Keyboard input is fully functional but unlikely to be needed, and therefore off by default. You can turn keyboard input on by [setting `INPUT_SWITCH_KEYBOARD_ALLOWED` to `true`](Configuration).
+- On Switch, Keyboard input is fully functional but unlikely to be needed, and therefore off by default. You can turn keyboard input on by [setting `INPUT_SWITCH_KEYBOARD_ALLOWED` to `true`](Config-Macros).
 
-- Android keyboard input is problematic and so set to off by default. The most significant issue is keys regularly and irreparably sticking when modified using Shift keys. You can turn keyboard input on by [setting `INPUT_ANDROID_KEYBOARD_ALLOWED` to `true`](Configuration). If using this feature, it is not recommended to use bindings besides Arrow keys, Enter, Space, and Backspace.
+- Android keyboard input is problematic and so set to off by default. The most significant issue is keys regularly and irreparably sticking when modified using Shift keys. You can turn keyboard input on by [setting `INPUT_ANDROID_KEYBOARD_ALLOWED` to `true`](Config-Macros). If using this feature, it is not recommended to use bindings besides Arrow keys, Enter, Space, and Backspace.
 
 - On the HTML platform, the browser fullscreen toggle key (F10 on Apple devices, F11 elsewhere) is blocked from keyboard binding.
 
@@ -118,12 +118,12 @@ On many platforms, gamepad indices do not enumerate predicatbly. Use source assi
 
 ### Pointing Devices on Mobile, Switch, and HTML5
 
-- Touchscreen input is functional on devices supporting a device-relative number of touches. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Configuration). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
+- Touchscreen input is functional on devices supporting a device-relative number of touches. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Config-Macros). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
 
 - Mouse input is partially functional. GameMaker uses the first mouse "device" for both touchscreen input and mouse, so there is no certain way to determine which is in use. By default mouse input is off (see above).
 
 ### DualShock 4 and DualSense touchpad input on PS4 and PS5
 
-- The PlayStation touchpad presents as a mouse cursor. By default Input ignores touch input on the touchpad, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Configuration). Input presently supports touchpad input for one player only.
+- The PlayStation touchpad presents as a mouse cursor. By default Input ignores touch input on the touchpad, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Config-Macros). Input presently supports touchpad input for one player only.
 
 !> Mouse input is not supported by GameMaker (and Input) on the PS4, PS5, Xbox One or Xbox Series X/S platforms.
