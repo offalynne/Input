@@ -10,6 +10,8 @@ Input 6 introduces a number of new features alongside a small number of breaking
 
 - Input no longer clogs up global namespace
 - Hotswapping has been optimised to improve performance in the most common use case for Input
+- Improved device filtering on Android
+- Blacklisted gamepads will no longer report as connected
 - The layout of folders in the asset browser has been reworked to make it easier to find functions
 - `input_tick()` is dead. Long live `input_controller_object`
 - Adds `input_verb_get_icon()` as an easier alternative to `input_binding_get_icon()`
@@ -17,6 +19,8 @@ Input 6 introduces a number of new features alongside a small number of breaking
 - If we cannot find a gamepad in the SDL2 database then we now use the original description rather than `"Unknown"`
 - Adds a suite of new config macros in `__input_config_general()` to handle Input's behaviour with different sources across all target platforms
 - Adds `input_player_gamepad_type_override_set()` (and getter) to force gamepad appearance
+- `input_ghost_set()` now accepts the keyword `all` to set the state of all players
+- `input_player_connected()` and `input_player_connected()` now have an optional `includeGhost` argument
 - Input now ships with multiple gamepad type macros for easier referencing, such as `INPUT_GAMEPAD_TYPE_XBOX_ONE` and `INPUT_GAMEPAD_TYPE_JOYCON_LEFT`
 - `input_source_add()`, `input_source_set()`, and `input_source_share()` now have an optional `exclusive` argument to control whether sources are unassigned when calling these functions (this defaults to `true` to maintain legacy behaviour)
 - Adds `input_cursor_limit_boundary()` and expands `input_cursor_limit_get()` to include data for this limit type
@@ -26,8 +30,11 @@ Input 6 introduces a number of new features alongside a small number of breaking
 - `INPUT_DEFAULT_2D_MOST_RECENT` and `INPUT_DEFAULT_OPPOSING_MOST_RECENT` have been added to control the default behaviour of 2D checker and opposing checkers respectively
 - The binding scan error code `INPUT_BINDING_SCAN_EVENT.SOURCE_FILTER_EMPTY` has been added
 - When scanning for a binding with a source filter enabled, hotswapping is disabled
+- Adds `input_binding_scan_time_remaining()` to return the amount of time left when scanning for a new binding
 - Adds `input_verb_group_get_verbs()` and `input_verbs_groups_get()`
+- Adds an additional supported value for `INPUT_FALLBACK_PROFILE_BEHAVIOR` that prioritises gamepad icons if a gamepad is connected (or required, in the case of consoles)
 - Adds `input_gamepad_map_contains()`
+- Adds `input_gamepad_is_any_connected()`
 - Adds `input_led_pattern_get()`
 - Adds `input_keyboard_virtual_show()` and `input_keyboard_virtual_hide()` for use on platforms that support it
 - Adds `INPUT_POINTER_TYPE` macro that contains the type of pointer available on the current hardware
@@ -61,6 +68,7 @@ Input 6 introduces a number of new features alongside a small number of breaking
 - `INPUT_TOUCH_POINTER_ALLOWED` has been removed, you may now use the macros in `__input_config_general()` to configure touch and mouse behavior per-platform
 - `input_swap_gamepad_ab()` has been removed and replaced with `INPUT_SWITCH_SWAP_AB` (for use cross-platform for Nintendo-style gamepads) and `INPUT_PS_REGION_SWAP_CONFIRM` (which only applies to the PS4 export target specifically)
 - Many macros from `__input_config_touch()` and `__input_config_vibration()` have been moved to `__input_config_general()`
+- `input_gamepad_get_type()` and `input_player_get_gamepad_type()` can now return `INPUT_GAMEPAD_TYPE_UNKNOWN `
 
 &nbsp;
 
