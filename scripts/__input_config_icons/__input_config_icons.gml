@@ -1,19 +1,19 @@
-/// This struct contains mappings from binding labels - a combination of keyboard key names, mouse button
+/// This script contains mappings from binding labels - a combination of keyboard key names, mouse button
 /// names, and abstract gamepad names - to more friendly terms that you can show a player. Typically you'd
 /// set up this function to return sprites such that you can draw gamepad icons as visual icons.
 /// 
-/// Default values in this struct reflect the particular, and sometimes unexpected, buttons that each gamepad
+/// Default values in this script reflect the particular, and sometimes unexpected, buttons that each gamepad
 /// binding maps to on the actual physical hardware. There are a handful of special cases at the top of the
-/// struct that are used to handle errors or misconfigurations.
+/// script that are used to handle errors or misconfigurations.
 
 
 
 //Special case: When a non-binding value is being evaluated
-//              This should only happen if input_binding_get_icon() is given an invalid input argument
-input_icon_not_a_binding("not a binding");
+//              This should only happen if Input is given an invalid input argument
+input_icon_not_a_binding("Not a binding");
 
 //Special case: When an empty binding is being evaluated
-input_icon_empty("empty");
+input_icon_empty("Empty");
 
 
 
@@ -57,12 +57,12 @@ input_icons_gamepad(INPUT_GAMEPAD_TYPE_XBOX_ONE)
 .add("gamepad thumbstick r click", "thumbstick r click")
 
 //Series S|X only
-.add("gamepad misc 1", "share")
+.add("gamepad misc 1",             "share")
 
-//These are used for Elite controllers only
+//Elite and third party controllers
 .add("gamepad paddle 1",           "P1")
-.add("gamepad paddle 2",           "P3")  //Thanks SDL
-.add("gamepad paddle 3",           "P2")  //Many thanks
+.add("gamepad paddle 2",           "P2")
+.add("gamepad paddle 3",           "P3")
 .add("gamepad paddle 4",           "P4")
 
 //PlayStation 5
@@ -94,10 +94,14 @@ input_icons_gamepad(INPUT_GAMEPAD_TYPE_PS5)
 .add("gamepad thumbstick r down",  "thumbstick r down")
 .add("gamepad thumbstick r click", "R3")
 
-.add("gamepad touchpad click", "touchpad click")
+.add("gamepad touchpad click",     "touchpad click")
 
 //Not available on the PlayStation 5 console itself but available on other platforms
-.add("gamepad misc 1",         "mic")
+.add("gamepad misc 1",             "mic")
+
+//DualSense Edge
+.add("gamepad paddle 1",           "RB")
+.add("gamepad paddle 2",           "LB")
 
 //Switch handheld/dual JoyCon/Pro Controller
 input_icons_gamepad(INPUT_GAMEPAD_TYPE_SWITCH)

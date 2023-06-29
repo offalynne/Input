@@ -1,4 +1,4 @@
-function __input_player_tick_sources()
+function __input_player_tick_sources(_player)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
@@ -75,8 +75,6 @@ function __input_player_tick_sources()
                         switch(_binding.type)
                         {
                             case __INPUT_BINDING_KEY:
-                                if (!_global.__keyboard_allowed) break;
-                            
                                 if (keyboard_check(_binding.value))
                                 {
                                     _value        = 1.0;
@@ -103,7 +101,7 @@ function __input_player_tick_sources()
                             break;
                             
                             case __INPUT_BINDING_MOUSE_BUTTON:
-                                if (!INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
+                                if (!INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) __input_error("Binding unsupported\nplayer index = ", _player.__index, "\nprofile = ", _player.__profile_name, "\nsource = ", _source_struct, "\nverb = ", _verb_name, "\nalt = ", _alternate, "\nbinding = ", _binding);
                                 
                                 if (input_mouse_check(_binding.value))
                                 {
@@ -115,7 +113,7 @@ function __input_player_tick_sources()
                             break;
                             
                             case __INPUT_BINDING_MOUSE_WHEEL_UP:
-                                if (!INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
+                                if (!INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) __input_error("Binding unsupported\nplayer index = ", _player.__index, "\nprofile = ", _player.__profile_name, "\nsource = ", _source_struct, "\nverb = ", _verb_name, "\nalt = ", _alternate, "\nbinding = ", _binding);
                                 
                                 if (mouse_wheel_up())
                                 {
@@ -127,7 +125,7 @@ function __input_player_tick_sources()
                             break;
                             
                             case __INPUT_BINDING_MOUSE_WHEEL_DOWN:
-                                if (!INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
+                                if (!INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) __input_error("Binding unsupported\nplayer index = ", _player.__index, "\nprofile = ", _player.__profile_name, "\nsource = ", _source_struct, "\nverb = ", _verb_name, "\nalt = ", _alternate, "\nbinding = ", _binding);
                                 
                                 if (mouse_wheel_down())
                                 {
@@ -141,7 +139,7 @@ function __input_player_tick_sources()
                             default:
                                 if ((_global.__source_mode != INPUT_SOURCE_MODE.MIXED) && (_global.__source_mode != INPUT_SOURCE_MODE.MULTIDEVICE))
                                 {
-                                    __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
+                                    __input_error("Binding unsupported\nplayer index = ", _player.__index, "\nprofile = ", _player.__profile_name, "\nsource = ", _source_struct, "\nverb = ", _verb_name, "\nalt = ", _alternate, "\nbinding = ", _binding);
                                 }
                             break;
                         }
@@ -194,7 +192,7 @@ function __input_player_tick_sources()
                             default:
                                 if ((_global.__source_mode != INPUT_SOURCE_MODE.MIXED) && (_global.__source_mode != INPUT_SOURCE_MODE.MULTIDEVICE))
                                 {
-                                    __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
+                                    __input_error("Binding unsupported\nplayer index = ", _player.__index, "\nprofile = ", _player.__profile_name, "\nsource = ", _source_struct, "\nverb = ", _verb_name, "\nalt = ", _alternate, "\nbinding = ", _binding);
                                 }
                             break;
                         }
@@ -280,7 +278,7 @@ function __input_player_tick_sources()
                             default:
                                 if ((_global.__source_mode != INPUT_SOURCE_MODE.MIXED) && (_global.__source_mode != INPUT_SOURCE_MODE.MULTIDEVICE))
                                 {
-                                    __input_error("Binding unsupported for ", _source_struct, "\n", _binding);
+                                    __input_error("Binding unsupported\nplayer index = ", _player.__index, "\nprofile = ", _player.__profile_name, "\nsource = ", _source_struct, "\nverb = ", _verb_name, "\nalt = ", _alternate, "\nbinding = ", _binding);
                                 }
                             break;
                         }

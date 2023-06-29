@@ -121,6 +121,10 @@ function __input_gamepad_set_type()
                     {
                         raw_type = "CommunityPSX";
                     }
+                    else if (__input_string_contains(_desc, " n64"))
+                    {
+                        raw_type = "CommunityN64";
+                    }
                 }
                 else if (__input_string_contains(_desc, "snes"))
                 {
@@ -212,7 +216,7 @@ function __input_gamepad_set_type()
                 if (!__INPUT_SILENT) __input_trace("Overridding controller ", index ," type to GameCube");
                 description = "GameCube";
                 raw_type = "CommunityGameCube";
-                guessed_type = false;                
+                guessed_type = false;
             }
             else if ((vendor == "0d00") && (product == "0000") && (button_count == 15) && (axis_count == 4) && (hat_count == 0) && __INPUT_ON_WINDOWS)
             {
@@ -242,9 +246,17 @@ function __input_gamepad_set_type()
                     guessed_type = false;
                 }
             }
+            else if ((vendor == "d904") && (product == "93a2") && INPUT_ON_PC)
+            {
+                //Anne Pro 2
+                if (!__INPUT_SILENT) __input_trace("Overriding controller ", index ," type to Anne Pro 2");
+                description  = "Anne Pro 2";
+                raw_type = "CommunityAnnePro";
+                guessed_type = false;
+            }
             else if (((vendor == "8f0e") && (product == "1330"))                                                                                         //HuiJia gamepad or Mayflash N64
-                 &&   (__INPUT_ON_MACOS && (hat_count == 2))                                                                                        //Both slots on one device on Mac
-                 ||  ((__INPUT_ON_WINDOWS || __INPUT_ON_LINUX) && (button_count == 25) && (axis_count == 6) && (hat_count == 0)                //Windows and Linux identity
+                 &&   (__INPUT_ON_MACOS && (hat_count == 2))                                                                                             //Both slots on one device on Mac
+                 ||  ((__INPUT_ON_WINDOWS || __INPUT_ON_LINUX) && (button_count == 25) && (axis_count == 6) && (hat_count == 0)                          //Windows and Linux identity
                  &&  ((__input_string_contains(gamepad_get_guid(index + 1), "8f0e") && __input_string_contains(gamepad_get_guid(index + 1), "1330"))     //Port comes in pairs, look ahead
                  ||  ((__input_string_contains(gamepad_get_guid(index - 1), "8f0e") && __input_string_contains(gamepad_get_guid(index - 1), "1330")))))) //Port comes in pairs, look behind
             {

@@ -55,6 +55,7 @@ function __input_class_virtual() constructor
     __touch_start_x       = undefined;
     __touch_start_y       = undefined;
     __history_array       = undefined; //Created when setting history recording
+    __history_count       = 0;
     __captured_this_frame = false;
     
     
@@ -70,7 +71,7 @@ function __input_class_virtual() constructor
     
     static debug_draw = function()
     {
-        if (__destroyed) return;
+        if (__destroyed || __background) return;
         
         if (__active && is_struct(__global.__touch_player))
         {
@@ -109,9 +110,14 @@ function __input_class_virtual() constructor
     
     #region Setup
     
-    static rectangle = function(_left, _top, _right, _bottom)
+    static rectangle = function(_in_left, _in_top, _in_right, _in_bottom)
     {
         if (__destroyed || __background) return self;
+        
+        _left   = min(_in_left, _in_right);
+        _top    = min(_in_top, _in_bottom);
+        _right  = max(_in_left, _in_right);
+        _bottom = max(_in_top, _in_bottom);
         
         __circular = false;
         __left     = _left;
@@ -424,15 +430,17 @@ function __input_class_virtual() constructor
         
         __record_history = _state;
         
+        //If we've changed the history record state
         if (__record_history != is_array(__history_array))
         {
             if (__record_history)
             {
-                __history_array = array_create(INPUT_TOUCH_HISTORY_FRAMES, undefined);
+                __history_array = array_create(INPUT_TOUCH_HISTORY_FRAMES+1, undefined);
+                __history_count = 0;
                 
                 //Assign lots of memory because we're evil >:)
                 var _i = 0;
-                repeat(INPUT_TOUCH_HISTORY_FRAMES)
+                repeat(INPUT_TOUCH_HISTORY_FRAMES+1)
                 {
                     __history_array[@ _i] = {
                         x: undefined,
@@ -446,6 +454,7 @@ function __input_class_virtual() constructor
             {
                 //Free memory because we're well-behaved programmers O:)
                 __history_array = undefined;
+                __history_count = 0;
             }
         }
         
@@ -475,9 +484,13 @@ function __input_class_virtual() constructor
             return undefined;
         }
         
-        __input_error("This features has not yet been implement");
+        //Limit the history collection to the number of frames that we've recorded
+        _frames = min(__history_count, _frames, INPUT_TOUCH_HISTORY_FRAMES);
+        if (_frames <= 0) return 0;
         
-        return undefined;
+        var _point0 = __history_array[0];
+        var _pointN = __history_array[_frames];
+        return point_distance(_point0.x, _point0.y, _pointN.x, _pointN.y);
     }
     
     static get_history_distance = function(_frames = INPUT_TOUCH_HISTORY_FRAMES)
@@ -496,7 +509,33 @@ function __input_class_virtual() constructor
             return undefined;
         }
         
-        __input_error("This features has not yet been implement");
+        //Limit the history collection to the number of frames that we've recorded
+        _frames = min(__history_count, _frames, INPUT_TOUCH_HISTORY_FRAMES);
+        if (_frames <= 0) return 0;
+        
+        var _distance = 0;
+        
+        var _x1 = undefined;
+        var _y1 = undefined;
+        var _point = __history_array[0];
+        var _x2 = _point.x;
+        var _y2 = _point.y;
+        
+        var _i = 1;
+        repeat(_frames)
+        {
+            _x1 = _x2;
+            _y1 = _y2;
+            var _point = __history_array[_i];
+            var _x2 = _point.x;
+            var _y2 = _point.y;
+            
+            var _dX = _x2 - _x1;
+            var _dY = _y2 - _y1;
+            _distance += sqrt(_dX*_dX + _dY*_dY);
+            
+            ++_i;
+        }
         
         return undefined;
     }
@@ -504,6 +543,10 @@ function __input_class_virtual() constructor
     static get_history_speed = function(_frames = INPUT_TOUCH_HISTORY_FRAMES)
     {
         if (__destroyed) return undefined;
+        
+        //Limit the history collection to the number of frames that we've recorded
+        _frames = min(__history_count, _frames, INPUT_TOUCH_HISTORY_FRAMES);
+        if (_frames <= 0) return 0;
         
         return get_history_distance(_frames) / _frames;
     }
@@ -516,6 +559,8 @@ function __input_class_virtual() constructor
     
     static __set_as_background = function()
     {
+        rectangle(0, 0, max(display_get_width(), display_get_height()), max(display_get_width(), display_get_height()));
+        __priority = -infinity;
         __background = true;
         return self;
     }
@@ -539,8 +584,10 @@ function __input_class_virtual() constructor
         //Clear out the history array
         if (__record_history)
         {
+            __history_count = 0;
+            
             var _i = 0;
-            repeat(INPUT_TOUCH_HISTORY_FRAMES)
+            repeat(INPUT_TOUCH_HISTORY_FRAMES+1)
             {
                 with(__history_array[@ _i])
                 {
@@ -605,6 +652,8 @@ function __input_class_virtual() constructor
             __pressed  = true;
             __held     = true;
             __released = false;
+            
+            if (__record_history) __history_push(_touch_x, _touch_y);
         }
         
         return _over;
@@ -638,16 +687,7 @@ function __input_class_virtual() constructor
                     var _player = __global.__touch_player;
                     _player.__verb_set_from_virtual(__verb_click, 1, 1, false);
                     
-                    if (__record_history)
-                    {
-                        //Cycle the history array and add a new entry using the previous touch x/y coordinate
-                        var _last_coord = __history_array[@ INPUT_TOUCH_HISTORY_FRAMES-1];
-                        _last_coord.x = __touch_x;
-                        _last_coord.y = __touch_y;
-                        
-                        array_delete(__history_array, INPUT_TOUCH_HISTORY_FRAMES-1, 1);
-                        array_insert(__history_array, _last_coord);
-                    }
+                    if (__record_history) __history_push(__touch_x, __touch_y);
                     
                     __touch_x = device_mouse_x_to_gui(__touch_device);
                     __touch_y = device_mouse_y_to_gui(__touch_device);
@@ -701,80 +741,102 @@ function __input_class_virtual() constructor
                         }
                     }
                     
-                    if (__type == INPUT_VIRTUAL_TYPE.DPAD_4DIR)
+                    if (_threshold_factor > 0)
                     {
-                        if (_threshold_factor > 0)
+                        if (__type == INPUT_VIRTUAL_TYPE.DPAD_4DIR)
                         {
                             var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 45) / 90) mod 4;
-                            if (_direction == 0)
+                            switch(_direction)
                             {
-                                _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
-                            }
-                            else if (_direction == 1)
-                            {
-                                _player.__verb_set_from_virtual(__verb_up, 1, 1, false);
-                            }
-                            else if (_direction == 2)
-                            {
-                                _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
-                            }
-                            else if (_direction == 3)
-                            {
-                                _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
+                                case 0:
+                                    _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
+                                break;
+                                
+                                case 1:
+                                    _player.__verb_set_from_virtual(__verb_up, 1, 1, false);
+                                break;
+                                
+                                case 2:
+                                    _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
+                                break;
+                                
+                                case 3:
+                                    _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
+                                break;
                             }
                         }
-                    }
-                    else if (__type == INPUT_VIRTUAL_TYPE.DPAD_8DIR)
-                    {
-                        if (_threshold_factor > 0)
+                        else
                         {
                             var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 22.5) / 45) mod 8;
                             
-                            //Look, I *could* do this with maths but I'm choosing not to because it's 10pm
-                            if (_direction == 0)
+                            if (__type == INPUT_VIRTUAL_TYPE.DPAD_8DIR)
                             {
-                                _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
+                                switch(_direction)
+                                {
+                                    case 0:
+                                    case 1:
+                                    case 7:
+                                        _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
+                                    break;
+                                    
+                                    case 3:
+                                    case 4:
+                                    case 5:
+                                        _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
+                                    break;
+                                }
+                                
+                                switch(_direction)
+                                {
+                                    case 1:
+                                    case 2:
+                                    case 3:
+                                        _player.__verb_set_from_virtual(__verb_up, 1, 1, false);
+                                    break;
+                                    
+                                    case 5:
+                                    case 6:
+                                    case 7:
+                                        _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
+                                    break;
+                                }
                             }
-                            else if (_direction == 1)
+                            else if (__type == INPUT_VIRTUAL_TYPE.THUMBSTICK)
                             {
-                                _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
-                                _player.__verb_set_from_virtual(__verb_up,    1, 1, false);
-                            }
-                            else if (_direction == 2)
-                            {
-                                _player.__verb_set_from_virtual(__verb_up, 1, 1, false);
-                            }
-                            else if (_direction == 3)
-                            {
-                                _player.__verb_set_from_virtual(__verb_up,   1, 1, false);
-                                _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
-                            }
-                            else if (_direction == 4)
-                            {
-                                _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
-                            }
-                            else if (_direction == 5)
-                            {
-                                _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
-                                _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
-                            }
-                            else if (_direction == 6)
-                            {
-                                _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
-                            }
-                            else if (_direction == 7)
-                            {
-                                _player.__verb_set_from_virtual(__verb_down,  1, 1, false);
-                                _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
+                                var _clamped_x = sign(_dx)*clamp((abs(_dx) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
+                                var _clamped_y = sign(_dy)*clamp((abs(_dy) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
+                                
+                                switch(_direction)
+                                {
+                                    case 0:
+                                    case 1:
+                                    case 7:
+                                        _player.__verb_set_from_virtual(__verb_right, max(0, _dx), max(0, _clamped_x), true);
+                                    break;
+                                    
+                                    case 3:
+                                    case 4:
+                                    case 5:
+                                        _player.__verb_set_from_virtual(__verb_left, max(0, -_dx), max(0, -_clamped_x), true);
+                                    break;
+                                }
+                                
+                                switch(_direction)
+                                {
+                                    case 1:
+                                    case 2:
+                                    case 3:
+                                        _player.__verb_set_from_virtual(__verb_up, max(0, -_dy), max(0, -_clamped_y), true);
+                                    break;
+                                    
+                                    case 5:
+                                    case 6:
+                                    case 7:
+                                        _player.__verb_set_from_virtual(__verb_down, max(0, _dy), max(0, _clamped_y), true);
+                                    break;
+                                }
                             }
                         }
-                    }
-                    else if (__type == INPUT_VIRTUAL_TYPE.THUMBSTICK)
-                    {
-                        _player.__verb_set_from_virtual(__verb_left,  max(0, -_dx), max(0, -__normalized_x), true);
-                        _player.__verb_set_from_virtual(__verb_right, max(0,  _dx), max(0,  __normalized_x), true);
-                        _player.__verb_set_from_virtual(__verb_up,    max(0, -_dy), max(0, -__normalized_y), true);
-                        _player.__verb_set_from_virtual(__verb_down,  max(0,  _dy), max(0,  __normalized_y), true);
                     }
                 }
                 else
@@ -785,6 +847,19 @@ function __input_class_virtual() constructor
                 }
             }
         }
+    }
+    
+    static __history_push = function(_x, _y)
+    {
+        //Cycle the history array and add a new entry using the previous touch x/y coordinate
+        var _last_coord = __history_array[@ INPUT_TOUCH_HISTORY_FRAMES];
+        _last_coord.x = _x;
+        _last_coord.y = _y;
+        
+        array_delete(__history_array, INPUT_TOUCH_HISTORY_FRAMES, 1);
+        array_insert(__history_array, 0, _last_coord);
+        
+        ++__history_count;
     }
     
     #endregion

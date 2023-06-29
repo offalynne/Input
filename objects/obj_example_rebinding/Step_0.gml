@@ -1,7 +1,13 @@
 if (input_check_pressed("pause"))
 {
-    pause = !pause;
-    input_binding_scan_abort();
+    if (input_binding_scan_in_progress())
+    {
+        input_binding_scan_abort();
+    }
+    else
+    {
+        pause = !pause;
+    }
 }
 
 if (pause)
@@ -26,6 +32,9 @@ if (pause)
                 case 3: rebinding_verb = "down";   break;
                 case 4: rebinding_verb = "accept"; break;
             }
+            
+            //Ensure we don't scan for vk_escape as that is used for the "pause" verb (which cancels rebinding)
+            input_binding_scan_params_set([vk_escape]);
             
             //Start binding. We specify some code to execute when a new binding is inputted by the player
             //We use the basic input_binding_set_safe() function here but input_binding_set() can be used too for more complex situations

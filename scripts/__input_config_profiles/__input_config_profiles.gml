@@ -5,6 +5,7 @@
 //  0 = Always return an empty binding if the player has no profile set
 //  1 = Prefer INPUT_AUTO_PROFILE_FOR_KEYBOARD for bindings if on desktop OSs, and use gamepad bindings otherwise
 //  2 = Prefer INPUT_AUTO_PROFILE_FOR_GAMEPAD for bindings
+//  3 = Prefer INPUT_AUTO_PROFILE_FOR_KEYBOARD for bindings if on a desktop OS and no gamepad is connected, otherwise use INPUT_AUTO_PROFILE_FOR_GAMEPAD
 #macro INPUT_FALLBACK_PROFILE_BEHAVIOR  1
 
 //Names of the default profiles to use when automatically assigning profiles based on the source that a

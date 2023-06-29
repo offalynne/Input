@@ -1,9 +1,8 @@
-//Input defines the default profiles as a macro called 
-//This macro is parsed when Input boots up and provides the baseline bindings for your game
+//This script contains the default profiles, and hence the default bindings and verbs, for your game
 //
 //  Please edit this macro to meet the needs of your game!
 //
-//The root struct called __input_config_verbs() contains the names of each default profile
+//The struct return by this script contains the names of each default profile.
 //Default profiles then contain the names of verbs. Each verb should be given a binding that is
 //appropriate for the profile. You can create bindings by calling one of the input_binding_*()
 //functions, such as input_binding_key() for keyboard keys and input_binding_mouse() for

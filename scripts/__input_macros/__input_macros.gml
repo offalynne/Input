@@ -1,5 +1,5 @@
-#macro __INPUT_VERSION "6.0.2.1 Beta"
-#macro __INPUT_DATE    "2023-06-02"
+#macro __INPUT_VERSION "6.0.3 Beta"
+#macro __INPUT_DATE    "2023-06-29"
 #macro __INPUT_DEBUG   false
 
 
@@ -306,14 +306,28 @@ enum INPUT_VIRTUAL_RELEASE
                               {\
                                   if (!is_instanceof(_source, __input_class_source))\
                                   {\
-                                      __input_error("Invalid source provided (", _source, ")");\
+                                      if (_source == INPUT_GAMEPAD)\
+                                      {\
+                                          __input_error("Cannot use INPUT_GAMEPAD for a source\nPlease use a specific gamepad e.g. INPUT_GAMEPAD[1]");\
+                                      }\
+                                      else\
+                                      {\
+                                        __input_error("Invalid source provided (", _source, ")");\
+                                      }\
                                   }\
                               }\
                               else\
                               {\
                                   if (instanceof(_source) != "__input_class_source")\
                                   {\
-                                      __input_error("Invalid source provided (", _source, ")");\
+                                      if (_source == INPUT_GAMEPAD)\
+                                      {\
+                                          __input_error("Cannot use INPUT_GAMEPAD for a source\nPlease use a specific gamepad e.g. INPUT_GAMEPAD[1]");\
+                                      }\
+                                      else\
+                                      {\
+                                        __input_error("Invalid source provided (", _source, ")");\
+                                      }\
                                   }\
                               }
 

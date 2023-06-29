@@ -531,32 +531,79 @@ function __input_class_player() constructor
         {
             if (!_allowFallback) return _empty_binding;
             
-            if (INPUT_FALLBACK_PROFILE_BEHAVIOR == 1)
+            var _keyboard_profile_allowed = __global.__keyboard_allowed && __global.__any_keyboard_binding_defined;
+            var _gamepad_profile_allowed  = __global.__gamepad_allowed  && __global.__any_gamepad_binding_defined;
+            
+            switch(INPUT_FALLBACK_PROFILE_BEHAVIOR)
             {
-                if (INPUT_ON_PC && __global.__keyboard_allowed && __global.__any_keyboard_binding_defined)
-                {
-                    //Try to use a keyboard profile if possible
-                    _profile_name = INPUT_AUTO_PROFILE_FOR_KEYBOARD;
-                }
-                else if (__global.__any_gamepad_binding_defined)
-                {
-                    //Try to use a gamepad profile if possible
-                    _profile_name = INPUT_AUTO_PROFILE_FOR_GAMEPAD;
-                }
-                else
-                {
-                    //Return a "static" empty binding since everything else failed
+                case 0:
                     return _empty_binding;
-                }
-            }
-            else if ((INPUT_FALLBACK_PROFILE_BEHAVIOR == 2) && __global.__any_gamepad_binding_defined)
-            {
-                //Try to use a gamepad profile if possible
-                _profile_name = INPUT_AUTO_PROFILE_FOR_GAMEPAD;
-            }
-            else
-            {
-                return _empty_binding;
+                break;
+                
+                case 1:
+                    if (INPUT_ON_PC && _keyboard_profile_allowed)
+                    {
+                        //Try to use a keyboard profile if possible
+                        _profile_name = INPUT_AUTO_PROFILE_FOR_KEYBOARD;
+                    }
+                    else if (_gamepad_profile_allowed)
+                    {
+                        //Fall back to a gamepad profile
+                        _profile_name = INPUT_AUTO_PROFILE_FOR_GAMEPAD;
+                    }
+                    else
+                    {
+                        //Return a "static" empty binding since everything else failed
+                        return _empty_binding;
+                    }
+                break;
+                
+                case 2:
+                    if (_gamepad_profile_allowed)
+                    {
+                        //Try to use a gamepad profile if possible
+                        _profile_name = INPUT_AUTO_PROFILE_FOR_GAMEPAD;
+                    }
+                    else
+                    {
+                        return _empty_binding;
+                    }
+                break;
+                
+                case 3:
+                    if (INPUT_ON_PC)
+                    {
+                        if (input_gamepad_is_any_connected() && _gamepad_profile_allowed)
+                        {
+                            //Try to use a gamepad profile if a gamepad has been connected
+                            _profile_name = INPUT_AUTO_PROFILE_FOR_GAMEPAD;
+                        }
+                        else if (_keyboard_profile_allowed)
+                        {
+                            //Fall back to a keyboard profile
+                            _profile_name = INPUT_AUTO_PROFILE_FOR_KEYBOARD;
+                        }
+                        else
+                        {
+                            //Return a "static" empty binding since everything else failed
+                            return _empty_binding;
+                        }
+                    }
+                    else if (_gamepad_profile_allowed)
+                    {
+                        //Try to use a gamepad profile if possible
+                        _profile_name = INPUT_AUTO_PROFILE_FOR_GAMEPAD;
+                    }
+                    else
+                    {
+                        //Return a "static" empty binding since everything else failed
+                        return _empty_binding;
+                    }
+                break;
+                
+                default:
+                    __input_error("Unhandled INPUT_FALLBACK_PROFILE_BEHAVIOR value (", INPUT_FALLBACK_PROFILE_BEHAVIOR, ")");
+                break;
             }
         }
         
@@ -1455,7 +1502,7 @@ function __input_class_player() constructor
                 ++_v;
             }
             
-            __input_player_tick_sources();
+            __input_player_tick_sources(self);
             
             //Update our basic verbs first
             tick_basic_verbs();

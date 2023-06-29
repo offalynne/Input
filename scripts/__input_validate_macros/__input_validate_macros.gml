@@ -185,9 +185,10 @@ function __input_validate_macros()
     
     if ((INPUT_FALLBACK_PROFILE_BEHAVIOR != 0)
     &&  (INPUT_FALLBACK_PROFILE_BEHAVIOR != 1)
-    &&  (INPUT_FALLBACK_PROFILE_BEHAVIOR != 2))
+    &&  (INPUT_FALLBACK_PROFILE_BEHAVIOR != 2)
+    &&  (INPUT_FALLBACK_PROFILE_BEHAVIOR != 3))
     {
-        __input_error("INPUT_FALLBACK_PROFILE_BEHAVIOR must be 0, 1, or 2");
+        __input_error("INPUT_FALLBACK_PROFILE_BEHAVIOR must be 0, 1, 2, or 3");
     }
     
     if (!is_string(INPUT_AUTO_PROFILE_FOR_KEYBOARD) && !is_undefined(INPUT_AUTO_PROFILE_FOR_KEYBOARD))

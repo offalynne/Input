@@ -4,6 +4,7 @@ function __input_initialize()
     static _initialized = false;
     if (_initialized) return;
     _initialized = true;
+	var _version = __input_gm_runtime_version();
     
     //Don't use static here as this puts the game into a boot loop
     var _global = __input_global();
@@ -23,8 +24,8 @@ function __input_initialize()
     }
     
     //Detect GameMaker version to toggle features
-    _global.__use_is_instanceof = (!INPUT_ON_WEB) && (string_copy(GM_runtime_version, 1, 4) == "2023");
-    _global.__use_legacy_strings = (string_copy(GM_runtime_version, 1, 8) == "2022.0.0");
+    _global.__use_is_instanceof = (!INPUT_ON_WEB) && (_version.major >= 2023); 
+    _global.__use_legacy_strings = (_version.major >= 2022) && (((_version.minor < 9) && (_version.minor != 0)) || ((_version.minor == 0) && (_version.bug_fix == 0)));
     if (!__INPUT_SILENT)
     {
         if (_global.__use_is_instanceof) __input_trace("On runtime ", GM_runtime_version, ", using is_instanceof()");
@@ -101,12 +102,12 @@ function __input_initialize()
             if (GM_build_type == "run")
             {
                 //Be nasty when running from the IDE >:(
-                __input_error("input_controller_object depth has been changed (expected ", __INPUT_CONTROLLER_OBJECT_DEPTH, ", got ", input_controller_object.depth ,")\nPlease ensure that input_controller_object depth is not set");
+                __input_error("input_controller_object depth has been changed (expected ", __INPUT_CONTROLLER_OBJECT_DEPTH, ", got ", input_controller_object.depth ,")\nPlease ensure that input_controller_object is never manually created and depth is not manually set");
             }
             else
             {
                 //Be nice when in production <:)
-                __input_trace("Warning! input_controller_object depth has been changed (expected ", __INPUT_CONTROLLER_OBJECT_DEPTH, ", got ", input_controller_object.depth ,")\nPlease ensure that input_controller_object depth is not set");
+                __input_trace("Warning! input_controller_object depth has been changed (expected ", __INPUT_CONTROLLER_OBJECT_DEPTH, ", got ", input_controller_object.depth ,")\nPlease ensure that input_controller_object is never manually created and depth is not manually set");
                 input_controller_object.depth = __INPUT_CONTROLLER_OBJECT_DEPTH;
             }
         }
@@ -237,7 +238,7 @@ function __input_initialize()
     
     //Array of created virtual buttons
     _global.__virtual_array       = [];
-    _global.__virtual_background  = input_virtual_create().priority(-infinity); _global.__virtual_background.__background = true;
+    _global.__virtual_background  = input_virtual_create().__set_as_background();
     _global.__virtual_order_dirty = false;
     
     //Which player has the INPUT_TOUCH source, if any
@@ -363,6 +364,11 @@ function __input_initialize()
 
             if (_external_string != "")
             {
+                if (!extension_exists("Steamworks") && (GM_build_type == "run") && (environment_get_variable("SteamEnv") == "1") && (environment_get_variable("EnableConfiguratorSupport") != "0") && !gamepad_is_connected(0))
+                {
+                    __input_trace("Warning! Steam Input may block gamepads when GameMaker IDE is run through Steam.");
+                }
+                
                 __input_trace("External SDL2 string found");
             
                 try
@@ -681,23 +687,33 @@ function __input_initialize()
         }
     }
     
+    //Identify Steam Deck in absence of Steamworks
     if (!_global.__on_steam_deck)
     {
-        //Identify Deck hardware in absence of Steamworks
-        var _map = os_get_info();
-        if (ds_exists(_map, ds_type_map))
+        var _deck_envar = environment_get_variable("SteamDeck");
+        if (_deck_envar != "")
         {
-            var _identifier = undefined;
-            if (os_type == os_linux) _identifier = _map[? "gl_renderer_string"];
-            if (__INPUT_ON_WINDOWS)  _identifier = _map[? "video_adapter_description"];
-            
-            //Steam Deck GPU identifier
-            if ((_identifier != undefined) && __input_string_contains(_identifier, "AMD Custom GPU 04"))
+            //Try Deck environment variable
+            _global.__on_steam_deck = (_deck_envar == "1");
+        }
+        else
+        {
+            //Try Deck hardware identity
+            var _map = os_get_info();
+            if (ds_exists(_map, ds_type_map))
             {
-                _global.__on_steam_deck = true;
-            }
+                var _identifier = undefined;
+                if (__INPUT_ON_LINUX  ) _identifier = _map[? "gl_renderer_string"];
+                if (__INPUT_ON_WINDOWS) _identifier = _map[? "video_adapter_description"];
             
-            ds_map_destroy(_map);
+                //Steam Deck GPU identifier
+                if ((_identifier != undefined) && __input_string_contains(_identifier, "AMD Custom GPU 04"))
+                {
+                    _global.__on_steam_deck = true;
+                }
+            
+                ds_map_destroy(_map);
+            }
         }
     }
     

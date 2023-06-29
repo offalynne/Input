@@ -34,7 +34,8 @@ if (pause)
     else
     {
         //Display what verb we're rebinding if we're scanning for a new verb
-        _string += "Rebinding \"" + rebinding_verb + "\"\n";
+        _string += "Rebinding \"" + rebinding_verb + "\" (time remaining = " + string(input_binding_scan_time_remaining()) + "ms)\n";
+        _string += "Press [escape] to cancel rebinding\n";
     }
 }
 else

@@ -9,10 +9,10 @@ function input_gamepad_get_type(_index)
     ||  (_index < 0)
     ||  (_index >= array_length(_global.__gamepads)))
     {
-        return "unknown";
+        return INPUT_GAMEPAD_TYPE_UNKNOWN;
     }
     
     var _gamepad = _global.__gamepads[_index];
-    if (!is_struct(_gamepad)) return "unknown";
+    if (!is_struct(_gamepad)) return INPUT_GAMEPAD_TYPE_UNKNOWN;
     return _gamepad.simple_type;
 }
