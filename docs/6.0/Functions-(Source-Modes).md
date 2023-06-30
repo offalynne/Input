@@ -206,8 +206,8 @@ The struct returned by this function has the following member functions:
 |-----------------|----------------|----------------------------------------------------------------------------------|
 |`.min_players`   |integer         |The minimum number of players that are needed to play in this particular game mode|
 |`.max_players`   |integer         |The maximum number of players that can play this particular game mode             |
-|`.leave_verb`    |string          |                                                                                  |
-|`.abort_callback`|method or script|                                                                                  |
+|`.leave_verb`    |string          |The name of the verb that, when activated by a player, causes the player to have their sources cleared, "disconnecting" them from the game|
+|`.abort_callback`|method or script|Method or script to execute when the `INPUT_SOURCE_MODE.JOIN` source mode is aborted. Set to `undefined` to prevent players from aborting `INPUT_SOURCE_MODE.JOIN`|
 |`.drop_down`     |boolean         |Whether players should drop down into empty slots when other players disconnect   |
 
 <!-- tabs:end -->
