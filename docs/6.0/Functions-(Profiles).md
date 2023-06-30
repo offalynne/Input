@@ -65,7 +65,7 @@ if (input_check("accept") && input_source_using(INPUT_GAMEPAD))
 |`profileName`  |[profile](Profiles)|Name of the [profile](Profiles) to destroy          |
 |`[playerIndex]`|integer            |Player to target. If not specified, player 0 is used|
 
-Destroys the given player's profile with the same name, if one exists. If the player is using the profile that is being destroyed, their profile will be [automatically set]() based on the player's currently used source.
+Destroys the given player's profile with the same name, if one exists. If the player is using the profile that is being destroyed, their profile will be [automatically set](Config-Macros?id=profiles) based on the player's currently used source.
 
 !> You cannot destroy [default profiles](Profiles) and trying to do so will throw an error.
 
