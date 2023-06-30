@@ -16,7 +16,7 @@
 |---------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
 |`source`       |[Source](Input-Sources)|[Input source](Input-Sources) to check                                                                                                        |
 |`[playerIndex]`|integer                |Player to target. If not specified, player 0 is used                                                                                          |
-|`[autoProfile]`|boolean                |Whether to automatically change the player's profile based on [`INPUT_AUTO_PROFILE_FOR_KEYBOARD`](Configuration?id=profiles-and-bindings) etc.|
+|`[autoProfile]`|boolean                |Whether to automatically change the player's profile based on [`INPUT_AUTO_PROFILE_FOR_KEYBOARD`](Config-Macros?id=profiles-and-bindings) etc.|
 |`[exclusive]`  |boolean                |Whether all other players using this source should have that source removed. Defaults to `true`                                               |
 
 #### **Example**
@@ -94,7 +94,7 @@ if (input_source_mode_get() == INPUT_SOURCE_MODE.MULTIDEVICE)
 |----------------------|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |`source`              |[Source](Input-Sources)|[Input source](Input-Sources) to check                                                                                                                           |
 |`arrayOfPlayerIndexes`|array                  |Array of player indexes to target                                                                                                                                |
-|`[autoProfile]`       |boolean                |Whether to automatically change the player's profile based on [`INPUT_AUTO_PROFILE_FOR_KEYBOARD`](Configuration?id=profiles-and-bindings) etc. Defaults to `true`|
+|`[autoProfile]`       |boolean                |Whether to automatically change the player's profile based on [`INPUT_AUTO_PROFILE_FOR_KEYBOARD`](Config-Macros?id=profiles-and-bindings) etc. Defaults to `true`|
 |`[exclusive]`         |boolean                |Whether all other players using this source should have that source removed. Defaults to `true`                                                                  |
 
 #### **Example**

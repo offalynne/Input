@@ -271,8 +271,8 @@ The array returned by this function contains structs. Each struct contains two m
 
 |Name       |Description                                                                                                                                                                        |
 |-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`verb`     |[Verb](https://www.jujuadams.com/Input/#/3.5/Verbs-and-Alternate-Bindings) that contains the invalid binding                                                                       |
-|`alternate`|[Alternate index](https://www.jujuadams.com/Input/#/3.5/Verbs-and-Alternate-Bindings) for the invalid binding                                                                      |
+|`verb`     |[Verb](https://www.jujuadams.com/Input/#/3.5/Verbs-and-Bindings) that contains the invalid binding                                                                       |
+|`alternate`|[Alternate index](https://www.jujuadams.com/Input/#/3.5/Verbs-and-Bindings) for the invalid binding                                                                      |
 |`gm`       |[Virtual button/axis constant](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm) that is missing from the player's gamepad|
 
 #### **Example**

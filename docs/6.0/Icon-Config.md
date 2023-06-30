@@ -6,7 +6,7 @@
 
 ?> You should edit `__input_config_icons()` to customise Input for your own purposes.
 
-!> Functions on this page should only be called in the [`__input_config_icons()`](Configuration?id=icons) script.
+!> Functions on this page should only be called in the [`__input_config_icons()`](Config-Macros?id=icons) script.
 
 &nbsp;
 

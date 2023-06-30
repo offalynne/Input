@@ -18,7 +18,7 @@ This page contains verb-related functions that don't fit elsewhere. They give yo
 
 |Name           |Datatype                            |Purpose                                                                                                          |
 |---------------|------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-|`verb`         |[verb](Verbs-and-Alternate-Bindings)|[Verb](Verbs-and-Alternate-Bindings) to consume. If keyword `all` is used, all verbs for the player are consumed.|
+|`verb`         |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to consume. If keyword `all` is used, all verbs for the player are consumed.|
 |`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                                                             |
 
 When a verb has been consumed, [check functions](Functions-(Checkers)) that target the verb will return `false` until the button is released and pressed again.
@@ -52,7 +52,7 @@ if (input_check_pressed("ui select"))
 
 |Name           |Datatype                             |Purpose                                                                                                 |
 |---------------|-------------------------------------|--------------------------------------------------------------------------------------------------------|
-|`verb`         |[verb](Verbs-and-Alternate-Bindings) |[Verb](Verbs-and-Alternate-Bindings) to set                                                             |
+|`verb`         |[verb](Verbs-and-Bindings) |[Verb](Verbs-and-Bindings) to set                                                             |
 |`value`        |number                               |Value to set for the verb, from `-1` to `+1` (though most verbs will only expect values from `0` to `+1`|
 |`[playerIndex]`|integer                              |Player to target. If not specified, player 0 is used                                                    |
 
@@ -129,7 +129,7 @@ if (input_check_pressed("debug toggle"))
 |------|--------------------------|------------------------------------|
 |`verb`|[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to target|
 
-String values that this function may return are defined via [`INPUT_VERB_GROUPS`](Configuration?id=profiles-and-bindings). If no verb group has been defined for the target verb then this function will return `undefined` (and the verb is considered as being in every group).
+String values that this function may return are defined via [`INPUT_VERB_GROUPS`](Config-Macros?id=profiles-and-bindings). If no verb group has been defined for the target verb then this function will return `undefined` (and the verb is considered as being in every group).
 
 #### **Example**
 
