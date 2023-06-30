@@ -265,14 +265,14 @@ This functions checks to see whether the current bindings for the given player a
 
 An invalid binding occurs when the player's gamepad lacks a button or axis that the current binding scheme requires. For example, single Switch Joy-Cons lack a dpad; if the player has a verb mapped to one of the dpad buttons then that verb is no longer accessible if the player uses a single Joy-Con to play.
 
-Single Switch Joy-Cons are far from the only gamepad with fewer buttons than a "standard" Xbox / PlayStation controller. How you respond to devices that lack certain buttons is up to you. In the specific case of single Joy-Cons, Input offers [functionality to handle them automatically](Functions-(Default-Bindings)#input_default_joycon_buttonbutton-verb-alternate).
+Single Switch Joy-Cons are far from the only gamepad with fewer buttons than a "standard" Xbox / PlayStation controller. How you respond to devices that lack certain buttons is up to you.
 
 The array returned by this function contains structs. Each struct contains two member variables:
 
 |Name       |Description                                                                                                                                                                        |
 |-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`verb`     |[Verb](https://www.jujuadams.com/Input/#/3.5/Verbs-and-Bindings) that contains the invalid binding                                                                       |
-|`alternate`|[Alternate index](https://www.jujuadams.com/Input/#/3.5/Verbs-and-Bindings) for the invalid binding                                                                      |
+|`verb`     |[Verb](Verbs-and-Bindings) that contains the invalid binding                                                                       |
+|`alternate`|[Alternate index](Verbs-and-Bindings) for the invalid binding                                                                      |
 |`gm`       |[Virtual button/axis constant](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm) that is missing from the player's gamepad|
 
 #### **Example**
@@ -315,7 +315,7 @@ You may pass the GameMaker keyword `all` as the player index to set the ghost st
 
 !> When you set a player to ghost mode, all [sources](Input-Sources) assigned to the target player are cleared.
 
-?> To manually pipe input to a ghost player, please use [`input_verb_set()`](Functions-(Other)?id=input_verb_setverb-value-playerindex).
+?> To manually pipe input to a ghost player, please use [`input_verb_set()`](Functions-(Further-Verbs)?id=verb_set).
 
 #### **Example**
 
