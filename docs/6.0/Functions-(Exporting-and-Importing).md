@@ -16,7 +16,7 @@
 |----|--------|--------|
 |None|        |        |
 
-Resets accessibility data and player data for all players (see [`input_player_reset()`]()). This function will remove all non-default profiles from the player.
+Resets accessibility data and player data for all players (see `input_player_reset()`). This function will remove all non-default profiles from the player.
 
 #### **Example**
 
@@ -49,7 +49,7 @@ if (input_check_long("accept"))
 |`[outputString]`|boolean |Whether to return a string from this function. If set to `false`, JSON is returned instead as a struct. If not specified, a string is returned                                     |
 |`[prettify]`    |boolean |Whether to format the output string so that it's easier for a human to read. If not specified, the string is not prettified. This argument is only relevant when returning a string|
 
-Outputs a string (or struct) that contains data that encompasses the Input's system. This can then be saved to a file etc. so that custom bindings can be restored in the future. This function serialises all player data (see [`input_player_export()`]()) as well as accessibility data.
+Outputs a string (or struct) that contains data that encompasses the Input's system. This can then be saved to a file etc. so that custom bindings can be restored in the future. This function serialises all player data (see `input_player_export()`) as well as accessibility data.
 
 It is recommended to only use bindings written on the same device as keyboard scancodes differ across device layouts and platforms.
 
@@ -91,9 +91,9 @@ if (input_check("back"))
 
 **Returns:** Boolean, whether the provided data can be loaded by `input_system_import()` without error
 
-|Name            |Datatype        |Purpose                                                                                                                 |
-|----------------|----------------|------------------------------------------------------------------------------------------------------------------------|
-|`stringOrStruct`|string or struct|JSON returned by [`input_system_export()`](Functions-(Exporting-and-Importing)#input_system_exportoutputstring-prettify)|
+|Name            |Datatype        |Purpose                                 |
+|----------------|----------------|----------------------------------------|
+|`stringOrStruct`|string or struct|JSON returned by `input_system_export()`|
 
 #### **Example**
 
@@ -126,13 +126,13 @@ else
 
 **Returns:** N/A (`undefined`)
 
-|Name            |Datatype        |Purpose                                                                                                                 |
-|----------------|----------------|------------------------------------------------------------------------------------------------------------------------|
-|`stringOrStruct`|string or struct|JSON returned by [`input_system_export()`](Functions-(Exporting-and-Importing)#input_system_exportoutputstring-prettify)|
+|Name            |Datatype        |Purpose                                 |
+|----------------|----------------|----------------------------------------|
+|`stringOrStruct`|string or struct|JSON returned by `input_system_export()`|
 
-Reads JSON, either as a string or a struct, that contains Input system data. Such a JSON should be created using [`input_system_export()`](Functions-(Exporting-and-Importing)#input_system_exportoutputstring-prettify).
+Reads JSON, either as a string or a struct, that contains Input system data. Such a JSON should be created using `input_system_export()`.
 
-This function deserialises all player data (see [`input_player_export()`]()) as well as accessibility data. All player data is fully reset before loading in the new data - as such, this function **replaces** Input's system state rather than adding to it.
+This function deserialises all player data (see `input_player_export()` as well as accessibility data. All player data is fully reset before loading in the new data - as such, this function **replaces** Input's system state rather than adding to it.
 
 #### **Example**
 
@@ -248,9 +248,9 @@ account_savedata_save(player_index);
 
 **Returns:** Boolean, whether the provided data can be loaded by `input_player_import()` without error
 
-|Name            |Datatype        |Purpose                                                                                                                             |
-|----------------|----------------|------------------------------------------------------------------------------------------------------------------------------------|
-|`stringOrStruct`|string or struct|JSON returned by [`input_player_export()`](Functions-(Exporting-and-Importing)#input_player_exportplayerindex-outputstring-prettify)|
+|Name            |Datatype        |Purpose                                 |
+|----------------|----------------|----------------------------------------|
+|`stringOrStruct`|string or struct|JSON returned by `input_player_export()`|
 
 #### **Example**
 
@@ -282,12 +282,12 @@ else
 
 **Returns:** N/A (`undefined`)
 
-|Name            |Datatype        |Purpose                                                                                                                             |
-|----------------|----------------|------------------------------------------------------------------------------------------------------------------------------------|
-|`stringOrStruct`|string or struct|JSON returned by [`input_player_export()`](Functions-(Exporting-and-Importing)#input_player_exportplayerindex-outputstring-prettify)|
-|`[playerIndex]` |integer         |Player to target. If not specified, player 0 is used                                                                                |
+|Name            |Datatype        |Purpose                                 |
+|----------------|----------------|----------------------------------------|
+|`stringOrStruct`|string or struct|JSON returned by `input_player_export()`|
+|`[playerIndex]` |integer         |Player to target. If not specified, player 0 is used|
 
-Reads JSON, either as a string or a struct, that contains player data (profiles, bindings, and axis thresholds). Such a JSON should be created using [`input_player_export()`](Functions-(Exporting-and-Importing)#input_player_exportplayerindex-outputstring-prettify).
+Reads JSON, either as a string or a struct, that contains player data (profiles, bindings, and axis thresholds). Such a JSON should be created using `input_player_export()`.
 
 All player data is fully reset before loading in the new data - as such, this function **replaces** player data rather than adding to it.
 
@@ -412,9 +412,9 @@ show_notification("Copied control scheme to the clipboard!");
 
 **Returns:** Boolean, whether the provided data can be loaded by `input_profile_import()` without error
 
-|Name            |Datatype        |Purpose                                                                                                                                       |
-|----------------|----------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-|`stringOrStruct`|string or struct|JSON returned by [`input_profile_export()`](Functions-(Exporting-and-Importing)?id=input_profile_importstringorstruct-profilename-playerindex)|
+|Name            |Datatype        |Purpose                                  |
+|----------------|----------------|-----------------------------------------|
+|`stringOrStruct`|string or struct|JSON returned by `input_profile_export()`|
 
 #### **Example**
 
@@ -447,12 +447,12 @@ else
 
 **Returns:** N/A (`undefined`)
 
-|Name            |Datatype        |Purpose                                                                                                                                       |
-|----------------|----------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-|`stringOrStruct`|string or struct|JSON returned by [`input_profile_export()`](Functions-(Exporting-and-Importing)?id=input_profile_importstringorstruct-profilename-playerindex)|
-|`[playerIndex]` |integer         |Player to target. If not specified, player 0 is used                                                                                          |
+|Name            |Datatype        |Purpose                                  |
+|----------------|----------------|-----------------------------------------|
+|`stringOrStruct`|string or struct|JSON returned by `input_profile_export()`|
+|`[playerIndex]` |integer         |Player to target. If not specified, player 0 is used|
 
-Reads JSON, either as a string or a struct, that contains profile data (bindings and axis thresholds). Such a JSON should be created using [`input_profile_export()`](Functions-(Exporting-and-Importing)#input_profile_exportprofilename-playerindex-outputstring-prettify).
+Reads JSON, either as a string or a struct, that contains profile data (bindings and axis thresholds). Such a JSON should be created using `input_profile_export()`.
 
 All player data is fully reset before loading in the new data - as such, this function **replaces** player data rather than adding to it.
 
