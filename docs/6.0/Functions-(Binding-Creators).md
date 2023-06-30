@@ -359,35 +359,3 @@ return {
 ```
 
 <!-- tabs:end -->
-
-&nbsp;
-
-## …swap_gamepad_ab
-
-`input_swap_gamepad_ab(state)`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** N/A (`undefined`)
-
-|Name   |Datatype|Purpose                     |
-|-------|--------|----------------------------|
-|`state`|boolean |Whether to swap A/B bindings|
-
-Swaps gamepad button bindings that target `gp_face1` and `gp_face2`. This is a convenience function to make adapting default gamepad bindings designed for Xbox work on Switch (and vice versa) when porting your game. This isn't strictly needed, Input will work fine cross-platform, but button layout conventions differ slightly between platforms and it's usually a good idea to respect that.
-
-!> This function fully resets all player profiles and bindings to what's found in `__input_config_verbs()`. This function is intended to be called when the game is started before loading any player-defined bindings.
-
-#### **Example**
-
-```gml
-if (os_type == os_switch)
-{
-	//Swap A/B buttons to match the standard hardware
-	input_swap_gamepad_ab(true);
-}
-```
-
-<!-- tabs:end -->
