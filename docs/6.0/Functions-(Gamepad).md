@@ -228,6 +228,8 @@ if not (input_gamepad_is_connected(0))
 
 <!-- tabs:end -->
 
+&nbsp;
+
 ## …gamepad_is_any_connected
 
 `input_gamepad_is_any_connected(gamepadIndex)`

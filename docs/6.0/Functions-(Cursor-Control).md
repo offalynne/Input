@@ -54,7 +54,7 @@ input_cursor_set(x, y, player_index);
 
 Whilst the cursor is being moved, cursor limits will be applied but cursor elastic will **not** be applied.
 
-!> This function is unlikely to work in a satisfactory manner if the cursor is being moved with a non-captured mouse. Please see [`input_mouse_capture_set()`](https://www.jujuadams.com/Input/#/5.2/Functions-(Mouse)?id=input_mouse_capture_setstate-sensitivity) for details on how to capture the mouse.
+!> This function is unlikely to work in a satisfactory manner if the cursor is being moved with a non-captured mouse. Please see `input_mouse_capture_set()` for details on how to capture the mouse.
 
 #### **Example**
 

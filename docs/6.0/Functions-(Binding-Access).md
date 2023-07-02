@@ -12,12 +12,12 @@
 
 _Returns:_ Boolean, if the value is a valid binding for the specified player on the current platform
 
-|Name           |Datatype|Purpose                                                                                                                                                                                                                                                           |
-|---------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`binding`      |binding |Binding to check against, as returned by [`input_binding_scan_tick()`](<Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex>) or [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>)|
-|`[playerIndex]`|integer |Player to validate against. If not specified, player 0 is targeted                                                                                                                                                                                                |
+|Name           |Datatype|Purpose                                                           |
+|---------------|--------|------------------------------------------------------------------|
+|`binding`      |binding |Binding to check againstding_get()                                |
+|`[playerIndex]`|integer |Player to validate against. If not specified, player 0 is targeted|
 
-Useful for verifying if a binding returned by [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>) is valid for the specified player on the current platform, especially when set with [default binding functions](<Functions-(Default-Bindings)>).
+Useful for verifying if a binding returned by [`input_binding_get()`](Functions-(Binding-Access)?id=binding_get) is valid for the specified player on the current platform.
 
 #### **Example**
 
@@ -57,7 +57,7 @@ _Returns:_ N/A (`undefined`)
 |Name           |Datatype                            |Purpose                                                                                                                                                                                                                                                 |
 |---------------|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |`verb`         |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to target                                                                                                                                                                                                          |
-|`binding`      |binding                             |Binding to set, as returned by [`input_binding_scan_tick()`](<Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex>) or [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>)|
+|`binding`      |binding                             |Binding to set|
 |`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                                                                                                                                                                                                    |
 |`[alternate]`  |integer                             |[Alternate binding](Verbs-and-Bindings) to target. If not specified, `0` is used                                                                                                                                                              |
 |`[profileName]`|string                              |The [profile](Profiles) to set the verb binding for. If no profile is provided then the current profile is used                                                                                                                                         |
@@ -93,12 +93,12 @@ _Returns:_ N/A (`undefined`)
 |Name           |Datatype                            |Purpose                                                                                                                                                                                                                                                 |
 |---------------|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |`verb`         |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to target                                                                                                                                                                                                          |
-|`binding`      |binding                             |Binding to set, as returned by [`input_binding_scan_tick()`](<Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex>) or [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>)|
+|`binding`      |binding                             |Binding to set|
 |`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                                                                                                                                                                                                    |
 |`[alternate]`  |integer                             |[Alternate binding](Verbs-and-Bindings) to target. If not specified, `0` is used                                                                                                                                                              |
-|`[profileName]`|string                              |                                                                                                                                                                                                                                                        |
+|`[profileName]`|string                              |The [profile](Profiles) to set the verb binding for. If no profile is provided then the current profile is used                                                                                                                                                                |
 
-In contrast to [`input_binding_set()`](<Functions-(Binding-Management)#input_binding_setverb-binding-playerindex-alternate>), this function will set the binding for a verb but also try to automatically handle any input conflicts by swapping over bindings. This is effective for simple control schemes but may fail in more complex situations - in these cases, you'll need to handle conflict resolution yourself.
+In contrast to [`input_binding_set()`](Functions-(Binding-Access)?id=binding_set), this function will set the binding for a verb but also try to automatically handle any input conflicts by swapping over bindings. This is effective for simple control schemes but may fail in more complex situations - in these cases, you'll need to handle conflict resolution yourself.
 
 #### **Example**
 
@@ -130,7 +130,7 @@ _Returns:_ Struct. See below.
 |`verb`         |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to target                                                                                                                |
 |`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used. You may also use `"default"` as the player index to retrieve the default binding for this verb|
 |`[alternate]`  |integer                   |[Alternate binding](Verbs-and-Bindings) to target. If not specified, `0` is used                                                                    |
-|`[profileName]`|string                    |                                                                                                                                                    |
+|`[profileName]`|string                    |The [profile](Profiles) to get the verb binding from. If no profile is provided then the current profile is used                                    |
 
 This function returns a struct that describes the binding for the given verb. It has the following member variables:
 
@@ -263,9 +263,9 @@ _Returns:_ Array of structs containing conflicting verb/alternate indexes
 |Name           |Datatype                  |Purpose                                                                                                                                                                                                                                                           |
 |---------------|--------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |`verb`         |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to target                                                                                                                                                                                                                    |
-|`binding`      |binding                   |Binding to check against, as returned by [`input_binding_scan_tick()`](<Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex>) or [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>)|
+|`binding`      |binding                   |Binding to check against|
 |`[playerIndex]`|integer                   |Player to target. If not specified, player 0 is used                                                                                                                                                                                                              |
-|`[profileName]`|string                    |                                                                                                                                                                                                                                                                  |
+|`[profileName]`|string                    |The [profile](Profiles) to get the binding from. If no profile is provided then the current profile is used                                                                                                                                                                                         |
 
 The array that this function returns contains structs that define which verb bindings conflict with the given binding. If the array is empty then there are no conflicting bindings.
 
@@ -312,7 +312,7 @@ _Returns:_ N/A (`undefined`)
 |`verb`         |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to target                                            |
 |`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                                      |
 |`[alternate]`  |integer                             |[Alternate binding](Verbs-and-Bindings) to target. If not specified, `0` is used|
-|`[profileName]`|string                              |                                                                                          |
+|`[profileName]`|string                              |The [profile](Profiles) to remove the binding from. If no profile is provided then the current profile is used|
 
 Removes a binding from Input. **Be very careful with this function!** It's possible to remove any binding and this could potentially make your game unplayable.
 
@@ -357,7 +357,7 @@ _Returns:_ N/A (`undefined`)
 |`verbB`        |[verb](Verbs-and-Bindings)|Second [verb](Verbs-and-Bindings) to target                          |
 |`alternateB`   |integer                             |[Alternate binding](Verbs-and-Bindings) to target for the second verb|
 |`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                           |
-|`[profileName]`|string                              |                                                                               |
+|`[profileName]`|string                              |The [profile](Profiles) to target. If no profile is provided then the current profile is used                                                                               |
 
 Swaps over the two verb bindings specified.
 
@@ -385,8 +385,9 @@ _Returns:_ N/A (`undefined`)
 |Name     |Datatype                     |Purpose                                          |
 |---------|-----------------------------|-------------------------------------------------|
 |`binding`|[binding](Verbs-and-Bindings)|[Binding](Verbs-and-Bindings) to target|
+|`gamepad`|integer                      |Gamepad index to set for the given binding|
 
-?> The gamepad index for a binding is only relevant when in the [multidevice source mode](Input-Sources?id=source-modes).
+?> The gamepad index for a binding is only relevant when in the [multidevice source mode](Input-Sources?id=source-modes) and will be disregarded by Input when checking for gamepad input in other source modes.
 
 #### **Example**
 
@@ -425,7 +426,7 @@ _Returns:_ Integer, the gamepad index for the binding
 
 If no gamepad has been set, this function returns `undefined`.
 
-?> The gamepad index for a binding is only relevant when in the [multidevice source mode](Input-Sources?id=source-modes).
+?> The gamepad index for a binding is only relevant when in the [multidevice source mode](Input-Sources?id=source-modes) and will be disregarded by Input when checking for gamepad input in other source modes.
 
 #### **Example**
 
@@ -493,9 +494,9 @@ _Returns:_ N/A (`undefined`)
 |`min`    |number                       |Minimum threshold for this binding               |
 |`max`    |number                       |Maximum threshold for this binding               |
 
-Sets the minimum and maximum threshold values for this binding. This is only relevant when applied to a [gamepad axis binding](Functions-(Binding-Creators)?id=input_binding_gamepad_axisaxis-negative).
+Sets the minimum and maximum threshold values for this binding. This is only relevant when applied to a [gamepad axis binding](Functions-(Binding-Creators)?id=binding_gamepad_axis).
 
-This function is entirely optional. If a gamepad axis binding has no specific thresholds set then the player's axis thresholds are used, as set by [`input_axis_thresholds_set()`](Functions-(Other)?id=input_axis_threshold_setaxis-min-max-playerindex).
+This function is entirely optional. If a gamepad axis binding has no specific thresholds set then the player's axis thresholds are used, as set by [`input_axis_thresholds_set()`](Functions-(Accessibility)?id=axis_threshold_set).
 
 #### **Example**
 
@@ -553,9 +554,9 @@ _Returns:_ Array of structs containing verb/alternate indexes
 
 |Name           |Datatype|Purpose                                                                                                                                                                                                                                                           |
 |---------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`binding`      |binding |Binding to check against, as returned by [`input_binding_scan_tick()`](<Functions-(Binding-Management)#input_binding_scan_ticksource-playerindex>) or [`input_binding_get()`](<Functions-(Binding-Management)#input_binding_getverb-source-playerindex-alternate>)|
+|`binding`      |binding |Binding to check against|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                                                                                                                                                                                                              |
-|`[profileName]`|string  |                                                                                                                                                                                                                                                                  |
+|`[profileName]`|string  |The [profile](Profiles) to target. If no profile is provided then the current profile is used                                                                                                                                                                                                                                                                  |
 
 The array that this function returns contains structs that define which verbs match the given binding. If the array is empty then there are no matching verbs.
 

@@ -52,7 +52,7 @@ vbutton_screen = input_virtual_create()
 |----|--------|-------|
 |None|        |       |
 
-Structs in the returned array contain x/y coordinate pairs. These coordinates are the position of the touch point captured by the virtual button, going back into the past. New data is pushed into the array every frame, with index 0 in the array being 1 frame before present, the index 1 being 2 frames before presents, and so on.
+Structs in the returned array contain x/y coordinate pairs. These coordinates are the position of the touch point captured by the virtual button, going back into the past. New data is pushed into the array every frame, with index 0 being the current touch point, index 1 in the array being 1 frame before present, the index 2 being 2 frames before presents, and so on.
 
 ?> All coordinates and positions are in GUI-space.
 
@@ -83,7 +83,7 @@ if (debug_mode)
 
 #### **Description**
 
-**Returns:** N/A (`undefined`)
+**Returns:** Number, the direction in degrees from the oldest historic point to the most recent point
 
 |Name      |Datatype|Purpose                                                                                        |
 |----------|--------|-----------------------------------------------------------------------------------------------|
@@ -119,7 +119,7 @@ if (vbutton_screen.check())
 
 #### **Description**
 
-**Returns:** Number, how far the touch point moved over
+**Returns:** Number, the length of the path described by the historical touch points
 
 |Name      |Datatype|Purpose                                                                                        |
 |----------|--------|-----------------------------------------------------------------------------------------------|

@@ -65,7 +65,7 @@ if (input_check("accept") && input_source_using(INPUT_GAMEPAD))
 |`profileName`  |[profile](Profiles)|Name of the [profile](Profiles) to destroy          |
 |`[playerIndex]`|integer            |Player to target. If not specified, player 0 is used|
 
-Destroys the given player's profile with the same name, if one exists. If the player is using the profile that is being destroyed, their profile will be [automatically set]() based on the player's currently used source.
+Destroys the given player's profile with the same name, if one exists. If the player is using the profile that is being destroyed, their profile will be [automatically set](Config-Macros?id=profiles) based on the player's currently used source.
 
 !> You cannot destroy [default profiles](Profiles) and trying to do so will throw an error.
 
@@ -135,7 +135,7 @@ else
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
-This function will return default profiles (as defined in [`__input_config_profiles_and_bindings()`](Configuration?id=profiles-and-bindings)) as well as custom profiles.
+This function will return default profiles (as defined in [`__input_config_profiles_and_bindings()`](Config-Macros?id=profiles-and-bindings)) as well as custom profiles.
 
 #### **Example**
 
@@ -232,9 +232,9 @@ draw_text(x, y + 24, input_profile_get());
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
-Sets the player's profile to the ["auto" profile"](Configuration?id=profiles-and-bindings) for the player's current [source](Input-Sources). For example, if the player is using a keyboard source then the player's profile will be set to `INPUT_AUTO_PROFILE_FOR_KEYBOARD`.
+Sets the player's profile to the ["auto" profile"](Config-Macros?id=profiles-and-bindings) for the player's current [source](Input-Sources). For example, if the player is using a keyboard source then the player's profile will be set to `INPUT_AUTO_PROFILE_FOR_KEYBOARD`.
 
-If the ["auto" profile"](Configuration?id=profiles-and-bindings) is set to `undefined` then no profile will be set.
+If the ["auto" profile"](Config-Macros?id=profiles-and-bindings) is set to `undefined` then no profile will be set.
 
 #### **Example**
 
@@ -266,7 +266,7 @@ if (input_source_using(INPUT_TOUCH))
 |`profileName`  |[profile](Profiles)|Name of the [profile](Profiles) to reset            |
 |`[playerIndex]`|integer            |Player to target. If not specified, player 0 is used|
 
-This function replaces all bindings for the player's profile to the bindings found in the default profile (the profile defined in [`__input_config_profiles_and_bindings()`](Configuration?id=profiles-and-bindings)).
+This function replaces all bindings for the player's profile to the bindings found in the default profile (the profile defined in [`__input_config_profiles_and_bindings()`](Config-Macros?id=profiles-and-bindings)).
 
 !> It is only possible to reset a default profile. Profiles added at runtime by `input_profile_create()` cannot be reset.
 
