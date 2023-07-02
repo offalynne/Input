@@ -537,7 +537,7 @@ function __input_class_virtual() constructor
             ++_i;
         }
         
-        return undefined;
+        return _distance;
     }
     
     static get_history_speed = function(_frames = INPUT_TOUCH_HISTORY_FRAMES)
