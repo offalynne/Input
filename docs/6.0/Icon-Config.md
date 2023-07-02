@@ -95,3 +95,5 @@ The `gamepadType` value should be an Input [gamepad type constant](Library-Const
 |None|        |       |
 
 Calling the `.add()` method on the struct returned by this function allows you to define icons for keyboard and mouse bindings.
+
+?> The binding name should be a value from Input's internal list of [binding names](Binding-Names).
