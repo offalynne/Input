@@ -253,7 +253,7 @@ return {
 
 Represents a binding that is activated by pressing a physical button on a gamepad. Gamepad button bindings return a digital value internally.
 
-?> To port between Xbox/PlayStation and Switch platforms more easily, you may want to use `input_gamepad_swap_ab()` to adjust between different button layout conventions.
+?> You may want to use `INPUT_SWITCH_SWAP_AB` and `INPUT_PS_REGION_SWAP_CONFIRM` to adjust between different button layout conventions.
 
 #### **Example**
 
