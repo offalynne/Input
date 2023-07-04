@@ -88,8 +88,8 @@ function __input_gamepad_set_blacklist()
         break;
         
         case os_android:
-            if (input_string_contains(_description_lower, "keyboard", "mouse") 
-            && !input_string_contains(_description_lower, "joystick", "pg-9167", "harmonix"))
+            if (__input_string_contains(_description_lower, "keyboard", "mouse") 
+            && !__input_string_contains(_description_lower, "joystick", "pg-9167", "harmonix"))
             {
                 //Misidentified keyboard or mouse on Android
                 if (!__INPUT_SILENT) __input_trace("Warning! Controller ", index, " is blacklisted, type (matches mouse or keyboard)");
