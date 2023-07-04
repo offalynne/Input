@@ -6,7 +6,6 @@ function __input_class_player() constructor
     
     __source_array          = [];
     __verb_state_dict       = {};
-    __chord_state_dict      = {};
     __last_input_time       = -infinity;
     __verb_group_state_dict = {};
     
@@ -1494,62 +1493,24 @@ function __input_class_player() constructor
             //This'll catch disconnection if and when it happens
             if (__rebind_state > 0) __tick_binding_scan();
             
-            //Clear the momentary state for all verbs
-            var _v = 0;
-            repeat(array_length(__global.__all_verb_array))
-            {
-                __verb_state_dict[$ __global.__all_verb_array[_v]].__clear();
-                ++_v;
-            }
-            
             __input_player_tick_sources(self);
             
-            //Update our basic verbs first
-            tick_basic_verbs();
+            var _profile = __profiles_dict[$ profile_name];
             
-            //Update our chords
-            //We directly access verb values to detect state here
-            tick_chord_verbs();
+            //Update our basic verbs first
+            var _v = 0;
+            repeat(array_length(__global.__basic_verb_array))
+            {
+                var _verbName = __global.__basic_verb_array[_v];
+                __verb_state_dict[$ _verbName].tick(self, __active, _profile[$ _verbName]);
+                ++_v;
+            }
             
             __cursor.__tick();
             
             __tick_vibration();
             
             if (!__connected) __post_disconnection_tick = true;
-        }
-    }
-    
-    static tick_basic_verbs = function()
-    {
-        var _v = 0;
-        repeat(array_length(__global.__basic_verb_array))
-        {
-            __verb_state_dict[$ __global.__basic_verb_array[_v]].tick(__verb_group_state_dict, __active);
-            ++_v;
-        }
-    }
-    
-    static tick_chord_verbs = function()
-    {
-        var _i = 0;
-        repeat(array_length(__global.__chord_verb_array))
-        {
-            var _chord_name = __global.__chord_verb_array[_i];
-            if (__chord_state_dict[$ _chord_name].__evaluate(__verb_state_dict))
-            {
-                with(__verb_state_dict[$ _chord_name])
-                {
-                    value = 1;
-                    raw   = 1;
-                    tick();
-                }
-            }
-            else
-            {
-                __verb_state_dict[$ _chord_name].tick();
-            }
-            
-            ++_i;
         }
     }
     

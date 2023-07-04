@@ -11,5 +11,5 @@
 function input_binding_get_source_type(_binding)
 {
     if (!input_value_is_binding(_binding)) return undefined;
-    return _binding.__source_type_get(_binding);
+    return _binding.__source;
 }

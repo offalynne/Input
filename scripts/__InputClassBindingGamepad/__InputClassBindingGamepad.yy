@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__input_class_chord_state",
+  "name": "__InputClassBindingGamepad",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

@@ -138,6 +138,9 @@
 #macro vk_lmeta      (__INPUT_ON_MACOS?   92 :  91)
 #macro vk_period     (__INPUT_ON_SWITCH? 110 : 190)
 
+#macro mb_wheel_up   -230567 //Not an intelligently chosen number, just random
+#macro mb_wheel_down -230568
+
 // gp_axislh     = 32785             32769 = gp_face1
 // gp_axislv     = 32786             32770 = gp_face2
 // gp_axisrh     = 32787             32771 = gp_face3
