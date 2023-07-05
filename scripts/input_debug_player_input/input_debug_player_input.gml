@@ -91,8 +91,8 @@ function input_debug_player_input(_player_index = 0)
                                     //Basic Latin only
                                     if ((ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z")))
                                     {
-                                        _binding.__set_label(_keychar);
                                         __InputLabelOverride(_keyboard_key, _keychar);    
+                                        _binding.__ForceLabel(_keychar);
                                     }
                                 }
                                 

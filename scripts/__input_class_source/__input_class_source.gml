@@ -247,8 +247,8 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
                     //Basic Latin only
                     if ((ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z")))
                     {
-                        _binding.__set_label(_keychar);
-                        __InputLabelOverride(_keyboard_key, _keychar);    
+                        __InputLabelOverride(_keyboard_key, _keychar);   
+                        _binding.__ForceLabel(_keychar); 
                     }
                 }
                 

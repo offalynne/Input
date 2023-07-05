@@ -11,39 +11,36 @@ function InputBinding(_constant)
         case mb_side2:
         case mb_wheel_up:
         case mb_wheel_down:
-            return new __InputClassBindingMouse().__Set(_constant, false, true);
+            return new __InputClassBindingMouse().__Set(_constant, true);
         break;
         
-        case gp_axislh:
-        case gp_axislv:
-        case gp_axisrh:
-        case gp_axisrv:
-        case gp_shoulderl:
-        case gp_shoulderr:
-        case gp_shoulderlb:
-        case gp_shoulderrb:
-        case gp_padu:
-        case gp_padd:
-        case gp_padl:
-        case gp_padr:
-        case gp_face1:
-        case gp_face2:
-        case gp_face3:
-        case gp_face4:
-        case gp_stickl:
-        case gp_stickr:
-        case gp_select:
-        case gp_start:
-        case gp_guide:
-        case gp_misc1:
-        case gp_touchpad:
-        case gp_paddle1:
-        case gp_paddle2:
-        case gp_paddle3:
-        case gp_paddle4:
-            return new __InputClassBindingGamepad().__Set(_constant, false, true);
-        break;
-        
+        case  gp_axislh:
+        case  gp_axislv:
+        case  gp_axisrh:
+        case  gp_axisrv:
+        case  gp_shoulderl:
+        case  gp_shoulderr:
+        case  gp_shoulderlb:
+        case  gp_shoulderrb:
+        case  gp_padu:
+        case  gp_padd:
+        case  gp_padl:
+        case  gp_padr:
+        case  gp_face1:
+        case  gp_face2:
+        case  gp_face3:
+        case  gp_face4:
+        case  gp_stickl:
+        case  gp_stickr:
+        case  gp_select:
+        case  gp_start:
+        case  gp_guide:
+        case  gp_misc1:
+        case  gp_touchpad:
+        case  gp_paddle1:
+        case  gp_paddle2:
+        case  gp_paddle3:
+        case  gp_paddle4:
         case -gp_axislh:
         case -gp_axislv:
         case -gp_axisrh:
@@ -71,7 +68,7 @@ function InputBinding(_constant)
         case -gp_paddle2:
         case -gp_paddle3:
         case -gp_paddle4:
-            return new __InputClassBindingGamepad().__Set(_constant, true, true);
+            return new __InputClassBindingGamepad().__Set(_constant, true);
         break;
         
         case mb_any:
@@ -87,7 +84,7 @@ function InputBinding(_constant)
             {
                 if (string_length(_constant) == 1)
                 {
-                    return new __InputClassBindingKey().__Set(_key_name_dict[$ _constant], false, true);
+                    return new __InputClassBindingKey().__Set(_constant, true);
                 }
                 else
                 {
@@ -96,7 +93,7 @@ function InputBinding(_constant)
             }
             else if (is_numeric(_constant))
             {
-                return new __InputClassBindingKey().__Set(_key_name_dict[$ _constant], false, true);
+                return new __InputClassBindingKey().__Set(_constant, true);
             }
             else
             {

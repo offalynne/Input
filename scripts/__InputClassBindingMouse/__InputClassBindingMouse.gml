@@ -4,7 +4,7 @@ function __InputClassBindingMouse() : __InputClassBindingCommon() constructor
     static __source     = INPUT_MOUSE;
     static __sourceType = __INPUT_SOURCE.MOUSE;
     
-    static __Set = function(_constant, _negative = false, _playerSet = false)
+    static __Set = function(_constant, _playerSet = false)
     {
         __constant = _constant;
         __RefreshLabel();

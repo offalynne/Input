@@ -6,7 +6,7 @@ function __InputClassBindingKey() : __InputClassBindingCommon() constructor
     
     __androidLowercase = undefined;
     
-    static __Set = function(_constant, _negative = false, _playerSet = false)
+    static __Set = function(_constant, _playerSet = false)
     {
         //Fix uses of straight strings instead of ord("A")
         if (is_string(_constant)) _constant = ord(string_upper(_constant));
@@ -144,8 +144,8 @@ function __InputClassBindingKey() : __InputClassBindingCommon() constructor
             __input_error("Keyboard binding not found");
         }
         
-        var _label      = _struct[$ "bind"];
-        var _constant   = __InputLabelToConstant(_label);
+        var _label    = _struct[$ "bind"];
+        var _constant = __InputLabelToConstant(_label);
         
         if (!is_numeric(_constant))
         {

@@ -16,7 +16,7 @@ function __InputClassBindingCommon() constructor
     
     static __RefreshLabel = function(_label)
     {
-        __label = __input_binding_get_label(__type, __constant, false);
+        __label = __InputConstantToLabel(__constant);
         
         return self;
     }

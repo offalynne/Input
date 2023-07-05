@@ -4,13 +4,17 @@ function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
     static __source     = INPUT_GAMEPAD;
     static __sourceType = __INPUT_SOURCE.GAMEPAD;
     
+    __absConstant   = undefined;
     __negative      = false;
     __gamepadStruct = undefined;
     
-    static __Set = function(_constant, _negative = false, _playerSet = false)
+    static __Set = function(_constant, _playerSet = false)
     {
         __constant = _constant;
-        __negative = _negative;
+        
+        __absConstant = abs(_constant);
+        __negative    = (_constant < 0);
+        
         __RefreshLabel();
     }
     
@@ -37,13 +41,13 @@ function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
     
     static __ReadInner = function(_verbState, _gamepadStruct)
     {
-        if (_gamepadStruct.is_axis(__constant))
+        if (_gamepadStruct.is_axis(__absConstant))
         {
             //Grab the raw value directly from the gamepad
             //We keep a hold of this value for use in 2D checkers
-            var _foundRaw = _gamepadStruct.get_value(__constant);
+            var _foundRaw = _gamepadStruct.get_value(__absConstant);
             
-            var _thresholdStruct = __axis_threshold_get(__constant);
+            var _thresholdStruct = __axis_threshold_get(__absConstant);
             var _bindingThresholdMin = _thresholdStruct.mini;
             var _bindingThresholdMax = _thresholdStruct.maxi;
             
@@ -120,10 +124,11 @@ function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
     {
         with(new __InputClassBindingMouse())
         {
-            __constant            = other.__constant;
-            __label               = other.__label;
-            __gamepad_index       = other.__gamepad_index;
-            __gamepad_description = other.__gamepad_description;
+            __constant      = other.__constant;
+            __label         = other.__label;
+            __absConstant   = other.__absConstant;
+            __negative      = other.__negative;
+            __gamepadStruct = other.__gamepadStruct;
             
             return self;
         }
@@ -161,7 +166,7 @@ function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
             __input_error("Binding \"", _label, "\" is not a gamepad binding");
         }
         
-        __Set(_constant, false, false);
+        __Set(_constant, false);
         
         //If we have a gamepad description then try to match that to a connected gamepad
         var _found = false;
