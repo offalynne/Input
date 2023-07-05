@@ -245,7 +245,7 @@ function __input_class_player() constructor
             var _a = 0;
             repeat(INPUT_MAX_ALTERNATE_BINDINGS)
             {
-                array_push(_new_alternate_array, _alternate_array[_a].__export());
+                array_push(_new_alternate_array, _alternate_array[_a].__Export());
                 ++_a;
             }
             
@@ -327,7 +327,7 @@ function __input_class_player() constructor
             var _a = 0;
             repeat(min(array_length(_alternate_array), INPUT_MAX_ALTERNATE_BINDINGS))
             {
-                _existing_alternate_array[@ _a].__import(_alternate_array[_a]);
+                _existing_alternate_array[@ _a] = __InputBindingImport(_alternate_array[_a]);
                 ++_a;
             }
             

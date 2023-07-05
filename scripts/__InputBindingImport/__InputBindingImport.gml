@@ -1,5 +1,10 @@
 function __InputBindingImport(_struct)
 {
+    if (_struct == undefined)
+    {
+        return new InputBinding();
+    }
+    
     switch(__InputConstantToSourceType(_struct[$ "bind"]))
     {
         case __INPUT_SOURCE.KEYBOARD:
