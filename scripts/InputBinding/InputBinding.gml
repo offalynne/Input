@@ -1,9 +1,11 @@
 function InputBinding(_constant)
 {
-    static _key_name_dict = __input_global().__key_name_dict;
-    
     switch(_constant)
     {
+        case undefined:
+            return new __InputClassBindingCommon();
+        break;
+        
         case mb_left:
         case mb_right:
         case mb_middle:

@@ -1493,7 +1493,7 @@ function __input_class_player() constructor
             //This'll catch disconnection if and when it happens
             if (__rebind_state > 0) __tick_binding_scan();
             
-            __input_player_tick_sources(self);
+            __InputPlayerTickSources(self);
             
             var _profile = __profiles_dict[$ profile_name];
             

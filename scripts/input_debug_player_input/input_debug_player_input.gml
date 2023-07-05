@@ -79,8 +79,7 @@ function input_debug_player_input(_player_index = 0)
                             && _filter_func(_keyboard_key, _ignore_struct, _allow_struct))
                             {
                                 //FIXME - Despite this class being implemented as a fluent interface, GMS2.3.3 has bugs when returning <self> on certain platforms
-                                var _binding = new __input_class_binding();
-                                _binding.__set_key(_keyboard_key, true);
+                                var _binding = InputBinding(_keyboard_key);
                                 
                                 //On Mac we update the binding label to the actual keyboard character if it is a Basic Latin alphabetic character
                                 //This works around problems where a keyboard might be sending a character code for e.g. A but the OS is typing another letter
@@ -113,42 +112,44 @@ function input_debug_player_input(_player_index = 0)
                             if (_filter_func(mb_left, _ignore_struct, _allow_struct)
                             && mouse_check_button(mb_left))
                             {
-                                array_push(_result, input_binding_mouse_button(mb_left));
+                                array_push(_result, InputBinding(mb_left));
                             }
                             
                             if (_filter_func(mb_middle, _ignore_struct, _allow_struct)
                             &&  mouse_check_button(mb_middle))
                             {
-                                array_push(_result, input_binding_mouse_button(mb_middle));
+                                array_push(_result, InputBinding(mb_middle));
                             }
                             
                             if (_filter_func(mb_right, _ignore_struct, _allow_struct)
                             &&  mouse_check_button(mb_right))
                             {
-                                array_push(_result, input_binding_mouse_button(mb_right));
+                                array_push(_result, InputBinding(mb_right));
                             }
                             
                             if (_filter_func(mb_side1, _ignore_struct, _allow_struct)
                             &&  mouse_check_button(mb_side1))
                             {
-                                array_push(_result, input_binding_mouse_button(mb_side1));
+                                array_push(_result, InputBinding(mb_side1));
                             }
                             
                             if (_filter_func(mb_side2, _ignore_struct, _allow_struct)
                             &&  mouse_check_button(mb_side2))
                             {
-                                array_push(_result, input_binding_mouse_button(mb_side2));
+                                array_push(_result, InputBinding(mb_side2));
                             }
-                        }
-                        
-                        if (mouse_wheel_up() && _filter_func(__INPUT_BINDING_TYPE_MOUSE_WHEEL_UP, _ignore_struct, _allow_struct))
-                        {
-                            array_push(_result, input_binding_mouse_wheel_up());
-                        }
-                        
-                        if (mouse_wheel_down() && _filter_func(__INPUT_BINDING_TYPE_MOUSE_WHEEL_DOWN, _ignore_struct, _allow_struct))
-                        {
-                            array_push(_result, input_binding_mouse_wheel_down());
+                            
+                            if (_filter_func(mb_wheel_up, _ignore_struct, _allow_struct)
+                            &&  mouse_check_button(mb_wheel_up))
+                            {
+                                array_push(_result, InputBinding(mb_wheel_up));
+                            }
+                            
+                            if (_filter_func(mb_wheel_down, _ignore_struct, _allow_struct)
+                            &&  mouse_check_button(mb_wheel_down))
+                            {
+                                array_push(_result, InputBinding(mb_wheel_down));
+                            }
                         }
                     }
                 }
@@ -179,8 +180,8 @@ function input_debug_player_input(_player_index = 0)
                                 var _value = input_gamepad_value(__gamepad, _check);
                                 if ((abs(_value) > input_axis_threshold_get(_check, _player_index).mini) && _filter_func(_check, _ignore_struct, _allow_struct))
                                 {
-                                    var _binding = input_binding_gamepad_axis(_check, (_value < 0));
-                                    if (_global.__source_mode == INPUT_SOURCE_MODE.MULTIDEVICE) _binding.__gamepad_set(__gamepad);
+                                    var _binding = InputBinding(_check * ((_value < 0)? -1 : +1));
+                                    if (_global.__source_mode == INPUT_SOURCE_MODE.MULTIDEVICE) _binding.__SetGamepad(__global.__gamepads[_gamepad]);
                                     array_push(_result, _binding);
                                 }
                             }
@@ -188,8 +189,8 @@ function input_debug_player_input(_player_index = 0)
                             {
                                 if (input_gamepad_check(__gamepad, _check) && _filter_func(_check, _ignore_struct, _allow_struct))
                                 {
-                                    var _binding = input_binding_gamepad_button(_check);
-                                    if (_global.__source_mode == INPUT_SOURCE_MODE.MULTIDEVICE) _binding.__gamepad_set(__gamepad);
+                                    var _binding = InputBinding(_check);
+                                    if (_global.__source_mode == INPUT_SOURCE_MODE.MULTIDEVICE) _binding.__SetGamepad(__global.__gamepads[_gamepad]);
                                     array_push(_result, _binding);
                                 }
                             }

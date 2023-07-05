@@ -7,10 +7,11 @@ function input_value_is_binding(_value)
     
     if (_global.__use_is_instanceof)
     {
-        return (is_struct(_value) && is_instanceof(_value, __input_class_binding));
+        return (is_struct(_value) && (is_instanceof(_value, __InputClassBindingKey) || is_instanceof(_value, __InputClassBindingMouse) || is_instanceof(_value, __InputClassBindingGamepad)));
     }
     else
     {
-        return (is_struct(_value) && (instanceof(_value) == "__input_class_binding"));
+        var _instanceOf = instanceof(_value);
+        return (is_struct(_value) && ((_instanceOf == "__InputClassBindingKey") || (_instanceOf == "__InputClassBindingMouse") || (_instanceOf == "__InputClassBindingGamepad")));
     }
 }

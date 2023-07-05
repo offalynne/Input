@@ -1,4 +1,4 @@
-function __input_player_tick_sources(_player)
+function __InputPlayerTickSources(_player)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     

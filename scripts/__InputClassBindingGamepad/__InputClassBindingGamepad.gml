@@ -1,6 +1,5 @@
 function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
 {
-    static __type       = __INPUT_BINDING_TYPE_GAMEPAD;
     static __source     = INPUT_GAMEPAD;
     static __sourceType = __INPUT_SOURCE.GAMEPAD;
     
@@ -10,6 +9,16 @@ function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
     
     static __Set = function(_constant, _playerSet = false)
     {
+        if (!INPUT_SDL2_ALLOW_EXTENDED 
+        && ((_constant >= gp_guide) && (_constant <= gp_paddle4)))
+        {
+            __input_error("Extended gamepad binding not permitted\nSet INPUT_SDL2_ALLOW_EXTENDED to <true> to allow binding of extended buttons.");
+        }
+        else if (__INPUT_ON_PS && (_constant == gp_touchpad))
+        {
+            _constant = gp_select;
+        }
+        
         __constant = _constant;
         
         __absConstant = abs(_constant);

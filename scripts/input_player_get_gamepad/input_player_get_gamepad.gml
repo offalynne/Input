@@ -22,15 +22,15 @@ function input_player_get_gamepad(_player_index = 0, _binding = undefined)
             return;
         }
         
-        var _gamepad_index = _binding.__gamepad_get();
-        if (_gamepad_index == undefined)
+        var _gamepadStruct = _binding.__gamepadStruct;
+        if (_gamepadStruct == undefined)
         {
             //Generic binding, return the player's gamepad
             _binding = undefined;
         }
         else
         {
-            return _gamepad_index;
+            return _gamepadStruct.index;
         }
     }
     

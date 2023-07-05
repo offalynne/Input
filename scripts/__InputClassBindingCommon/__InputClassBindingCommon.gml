@@ -2,12 +2,33 @@ function __InputClassBindingCommon() constructor
 {
     __INPUT_GLOBAL_STATIC_VARIABLE
     
-    static __type       = undefined;
     static __source     = undefined;
     static __sourceType = undefined;
     
     __constant = undefined;
     __label    = "empty binding";
+    
+    static __Set = function(_constant, _playerSet = false)
+    {
+    }
+    
+    static __Read = function(_player, _verbState)
+    {
+    }
+    
+    static __Duplicate = function()
+    {
+        return new __InputClassBindingCommon();
+    }
+    
+    static __Export = function()
+    {
+        return undefined;
+    }
+    
+    static __Import = function(_struct)
+    {
+    }
     
     static toString = function()
     {

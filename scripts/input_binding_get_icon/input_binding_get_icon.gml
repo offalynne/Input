@@ -46,7 +46,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
         return _icon ?? "not a binding";
     }
     
-    var _type  = _binding.type;
+    var _type  = _binding.__sourceType;
     var _label = _binding.__label;
     
     //If this is an empty binding...
@@ -60,12 +60,12 @@ function input_binding_get_icon(_binding, _player_index = 0)
     
     switch(_type)
     {
-        case __INPUT_BINDING_TYPE_KEY:
-        case __INPUT_BINDING_TYPE_MOUSE:
+        case __INPUT_SOURCE.KEYBOARD:
+        case __INPUT_SOURCE.MOUSE:
             var _category = "keyboard and mouse";
         break;
         
-        case __INPUT_BINDING_TYPE_GAMEPAD:
+        case __INPUT_SOURCE.GAMEPAD:
             var _category = _global.__players[_player_index].__gamepad_type_override ?? input_player_get_gamepad_type(_player_index, _binding);
         break;
         

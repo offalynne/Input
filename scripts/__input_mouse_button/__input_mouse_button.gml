@@ -30,6 +30,9 @@ function __input_mouse_button()
             //Trackpad
             return mb_left;
         }
+        
+        if (mouse_wheel_up()) return mb_wheel_up;
+        if (mouse_wheel_down()) return mb_wheel_down;
     }
     else
     {
@@ -39,6 +42,8 @@ function __input_mouse_button()
         if (device_mouse_check_button(0, mb_middle)) return mb_middle;
         if (device_mouse_check_button(0, mb_right))  return mb_right;
         if (device_mouse_check_button(0, mb_left))   return mb_left;
+        if (mouse_wheel_up()) return mb_wheel_up;
+        if (mouse_wheel_down()) return mb_wheel_down;
     }
     
     return mb_none;

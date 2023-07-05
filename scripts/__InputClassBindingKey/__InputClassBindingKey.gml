@@ -1,6 +1,5 @@
 function __InputClassBindingKey() : __InputClassBindingCommon() constructor
 {
-    static __type       = __INPUT_BINDING_TYPE_KEY;
     static __source     = INPUT_KEYBOARD;
     static __sourceType = __INPUT_SOURCE.KEYBOARD;
     

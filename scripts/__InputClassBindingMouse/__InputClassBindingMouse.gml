@@ -1,6 +1,5 @@
 function __InputClassBindingMouse() : __InputClassBindingCommon() constructor
 {
-    static __type       = __INPUT_BINDING_TYPE_MOUSE;
     static __source     = INPUT_MOUSE;
     static __sourceType = __INPUT_SOURCE.MOUSE;
     

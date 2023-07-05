@@ -28,10 +28,6 @@
 
 
 
-#macro __INPUT_BINDING_TYPE_KEY     "key"
-#macro __INPUT_BINDING_TYPE_MOUSE   "mouse"
-#macro __INPUT_BINDING_TYPE_GAMEPAD "gamepad"
-
 #macro INPUT_KEYBOARD  __input_global().__source_keyboard
 #macro INPUT_MOUSE     __input_global().__source_mouse
 #macro INPUT_GAMEPAD   __input_global().__source_gamepad
