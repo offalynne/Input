@@ -10,12 +10,12 @@ function __input_class_verb_state() constructor
     __group_inactive = false;
     __consumed       = false;
     
-    value          = 0.0;
-    raw            = 0.0;
-    analogue       = false;
-    raw_analogue   = false;
-    min_threshold  = 0;
-    max_threshold  = 1;
+    __value        = 0.0;
+    __raw          = 0.0;
+    __analogue     = false;
+    __rawAnalogue  = false;
+    __minThreshold = 0;
+    __maxThreshold = 1;
     
     force_value    = undefined;
     force_analogue = undefined;
@@ -39,12 +39,12 @@ function __input_class_verb_state() constructor
     {
         var _time = __input_get_time();
         
-        value         = 0.0;
-        raw           = 0.0;
-        analogue      = false;
-        raw_analogue  = false;
-        min_threshold = 0;
-        max_threshold = 1;
+        __value        = 0.0;
+        __raw          = 0.0;
+        __analogue     = false;
+        __raw_analogue = false;
+        __minThreshold = 0;
+        __maxThreshold = 1;
         
         //TODO - Compress virtual and forced values into one set of variables
         //We've had our value set this frame via a virtual button
@@ -52,14 +52,12 @@ function __input_class_verb_state() constructor
         {
             if (_playerActive)
             {
-                raw   = __virtual_raw_value;
-                value = __virtual_value;
-                
-                analogue     = __virtual_analogue;
-                raw_analogue = __virtual_analogue;
-                
-                min_threshold = 0;
-                max_threshold = 1;
+                __raw          = __virtual_raw_value;
+                __value        = __virtual_value;
+                __analogue     = __virtual_analogue;
+                __raw_analogue = __virtual_analogue;
+                __minThreshold = 0;
+                __maxThreshold = 1;
             }
                 
             __virtual_value     = undefined;
@@ -72,14 +70,12 @@ function __input_class_verb_state() constructor
         {
             if (_playerActive)
             {
-                raw   = force_value;
-                value = force_value;
-                
-                analogue     = force_analogue;
-                raw_analogue = force_analogue;
-                
-                min_threshold = 0;
-                max_threshold = 1;
+                __raw          = force_value;
+                __value        = force_value;
+                __analogue     = force_analogue;
+                __raw_analogue = force_analogue;
+                __minThreshold = 0;
+                __maxThreshold = 1;
             }
                 
             force_value    = undefined;
@@ -100,7 +96,7 @@ function __input_class_verb_state() constructor
         press   = false;
         release = false;
         
-        if (value > 0)
+        if (__value > 0)
         {
             __player.__last_input_time = __global.__current_time;
             

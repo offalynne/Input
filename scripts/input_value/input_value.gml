@@ -27,5 +27,5 @@ function input_value(_verb, _player_index = 0)
     
     if (_verb_struct.__inactive) return false;
     
-    return _verb_struct.value;
+    return _verb_struct.__value;
 }
