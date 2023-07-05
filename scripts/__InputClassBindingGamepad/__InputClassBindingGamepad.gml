@@ -136,7 +136,7 @@ function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
     
     static __Duplicate = function()
     {
-        with(new __InputClassBindingMouse())
+        with(new __InputClassBindingGamepad())
         {
             __constant      = other.__constant;
             __label         = other.__label;
