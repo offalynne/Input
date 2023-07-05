@@ -14,7 +14,6 @@
 #macro INPUT_ANDROID_KEYBOARD     false  //Partially supported
 
 //Switch console platform
-#macro INPUT_SWITCH_KEYBOARD      false  //Partially supported over USB
 #macro INPUT_SWITCH_MOUSE         false  //Maps touchscreen to mouse
 #macro INPUT_SWITCH_TOUCH         false  //Supported for handheld touchscreen
 #macro INPUT_SWITCH_VIBRATION     true   //Legacy support (simulated with HD Rumble)

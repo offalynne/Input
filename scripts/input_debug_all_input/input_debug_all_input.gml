@@ -126,7 +126,7 @@ function input_debug_all_input(_ignore_array = undefined, _allow_array = undefin
                             if ((ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z")))
                             {
                                 _binding.__set_label(_keychar);
-                                __input_key_name_set(_keyboard_key, _keychar);    
+                                __InputLabelOverride(_keyboard_key, _keychar);    
                             }
                         }
                         
@@ -173,12 +173,12 @@ function input_debug_all_input(_ignore_array = undefined, _allow_array = undefin
                     }
                 }
                 
-                if (mouse_wheel_up() && _filter_func(__INPUT_BINDING_MOUSE_WHEEL_UP, _ignore_struct, _allow_struct))
+                if (mouse_wheel_up() && _filter_func(__INPUT_BINDING_TYPE_MOUSE_WHEEL_UP, _ignore_struct, _allow_struct))
                 {
                     array_push(_result, input_binding_mouse_wheel_up());
                 }
                 
-                if (mouse_wheel_down() && _filter_func(__INPUT_BINDING_MOUSE_WHEEL_DOWN, _ignore_struct, _allow_struct))
+                if (mouse_wheel_down() && _filter_func(__INPUT_BINDING_TYPE_MOUSE_WHEEL_DOWN, _ignore_struct, _allow_struct))
                 {
                     array_push(_result, input_binding_mouse_wheel_down());
                 }

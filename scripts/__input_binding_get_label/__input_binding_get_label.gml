@@ -5,13 +5,13 @@ function __input_binding_get_label(_type, _value, _axis_negative)
         //Touch bindings
         if (__INPUT_ON_PS)
         {
-            if (((_type == __INPUT_BINDING_GAMEPAD_BUTTON) && (_value == gp_select))
-            ||  ((_type == __INPUT_BINDING_MOUSE_BUTTON  ) && (_value == mb_left  )))
+            if (((_type == __INPUT_BINDING_TYPE_GAMEPAD) && (_value == gp_select))
+            ||  ((_type == __INPUT_BINDING_TYPE_MOUSE  ) && (_value == mb_left  )))
             {
                 return "gamepad touchpad click";
             }
         }
-        else if ((_type == __INPUT_BINDING_MOUSE_BUTTON) && (_value == mb_left))
+        else if ((_type == __INPUT_BINDING_TYPE_MOUSE) && (_value == mb_left))
         {
             return "touchscreen press";
         }
@@ -19,33 +19,26 @@ function __input_binding_get_label(_type, _value, _axis_negative)
     
     switch(_type)
     {
-        case __INPUT_BINDING_KEY:
-            return __input_key_get_name(_value);
+        case __INPUT_BINDING_TYPE_KEY:
+            return __InputKeyGetName(_value);
         break;
         
-        case __INPUT_BINDING_MOUSE_BUTTON:
+        case __INPUT_BINDING_TYPE_MOUSE:
             switch(_value)
             {
-                case mb_left:    return "mouse button left";    break;
-                case mb_middle:  return "mouse button middle";  break;
-                case mb_right:   return "mouse button right";   break;
-                case mb_side1:   return "mouse button back";    break;
-                case mb_side2:   return "mouse button forward"; break;
+                case mb_left:       return "mouse button left";    break;
+                case mb_middle:     return "mouse button middle";  break;
+                case mb_right:      return "mouse button right";   break;
+                case mb_side1:      return "mouse button back";    break;
+                case mb_side2:      return "mouse button forward"; break;
+                case mb_wheel_up:   return "mouse wheel up";       break;
+                case mb_wheel_down: return "mouse wheel down";     break;
                 
                 default: return "mouse button unknown"; break;
             }
         break;
         
-        case __INPUT_BINDING_MOUSE_WHEEL_UP:
-            return "mouse wheel up";
-        break;
-        
-        case __INPUT_BINDING_MOUSE_WHEEL_DOWN:
-            return "mouse wheel down";
-        break;
-        
-        case __INPUT_BINDING_GAMEPAD_BUTTON:
-        case __INPUT_BINDING_GAMEPAD_AXIS:
+        case __INPUT_BINDING_TYPE_GAMEPAD:
             switch(_value)
             {
                 case gp_face1:      return "gamepad face south";         break; //Xbox A, Nintendo B, PlayStation Cross
@@ -81,10 +74,6 @@ function __input_binding_get_label(_type, _value, _axis_negative)
                 
                 default: return "gamepad input unknown"; break;
             }
-        break;
-        
-        case __INPUT_BINDING_VIRTUAL_BUTTON:
-            return "virtual button";
         break;
         
         default:

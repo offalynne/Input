@@ -630,7 +630,7 @@ function __input_class_player() constructor
         && (_profile_name != INPUT_AUTO_PROFILE_FOR_MIXED)
         && (_profile_name != INPUT_AUTO_PROFILE_FOR_MULTIDEVICE))
         {
-            switch(_binding_struct.__get_source_type())
+            switch(_binding_struct.__sourceType)
             {
                 case __INPUT_SOURCE.KEYBOARD:
                     if not ((_profile_name == INPUT_AUTO_PROFILE_FOR_KEYBOARD)

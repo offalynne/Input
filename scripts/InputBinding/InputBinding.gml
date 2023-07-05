@@ -9,20 +9,9 @@ function InputBinding(_constant)
         case mb_middle:
         case mb_side1:
         case mb_side2:
-            return new __InputClassBindingMouseButton().__Set(_constant, false, true);
-        break;
-        
         case mb_wheel_up:
-            return new __InputClassBindingMouseWheelUp();
-        break;
-        
         case mb_wheel_down:
-            return new __InputClassBindingMouseWheelDown();
-        break;
-        
-        case mb_any:
-        case mb_none:
-            __input_error("!");
+            return new __InputClassBindingMouse().__Set(_constant, false, true);
         break;
         
         case gp_axislh:
@@ -85,10 +74,18 @@ function InputBinding(_constant)
             return new __InputClassBindingGamepad().__Set(_constant, true, true);
         break;
         
+        case mb_any:
+            __input_error("mb_any is not supported as a binding");
+        break;
+        
+        case mb_none:
+            __input_error("mb_none is not supported as a binding");
+        break;
+        
         default:
             if (is_string(_constant))
             {
-                if (string_length(_constant) != 1)
+                if (string_length(_constant) == 1)
                 {
                     return new __InputClassBindingKey().__Set(_key_name_dict[$ _constant], false, true);
                 }

@@ -74,7 +74,7 @@ function __input_player_tick_sources(_player)
                         var _binding = _alternate_array[_alternate];
                         switch(_binding.type)
                         {
-                            case __INPUT_BINDING_KEY:
+                            case __INPUT_BINDING_TYPE_KEY:
                                 if (keyboard_check(_binding.value))
                                 {
                                     _value        = 1.0;
@@ -100,7 +100,7 @@ function __input_player_tick_sources(_player)
                                 //Null binding
                             break;
                             
-                            case __INPUT_BINDING_MOUSE_BUTTON:
+                            case __INPUT_BINDING_TYPE_MOUSE_BUTTON:
                                 if (!INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) __input_error("Binding unsupported\nplayer index = ", _player.__index, "\nprofile = ", _player.__profile_name, "\nsource = ", _source_struct, "\nverb = ", _verb_name, "\nalt = ", _alternate, "\nbinding = ", _binding);
                                 
                                 if (input_mouse_check(_binding.value))
@@ -112,7 +112,7 @@ function __input_player_tick_sources(_player)
                                 }
                             break;
                             
-                            case __INPUT_BINDING_MOUSE_WHEEL_UP:
+                            case __INPUT_BINDING_TYPE_MOUSE_WHEEL_UP:
                                 if (!INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) __input_error("Binding unsupported\nplayer index = ", _player.__index, "\nprofile = ", _player.__profile_name, "\nsource = ", _source_struct, "\nverb = ", _verb_name, "\nalt = ", _alternate, "\nbinding = ", _binding);
                                 
                                 if (mouse_wheel_up())
@@ -124,7 +124,7 @@ function __input_player_tick_sources(_player)
                                 }
                             break;
                             
-                            case __INPUT_BINDING_MOUSE_WHEEL_DOWN:
+                            case __INPUT_BINDING_TYPE_MOUSE_WHEEL_DOWN:
                                 if (!INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) __input_error("Binding unsupported\nplayer index = ", _player.__index, "\nprofile = ", _player.__profile_name, "\nsource = ", _source_struct, "\nverb = ", _verb_name, "\nalt = ", _alternate, "\nbinding = ", _binding);
                                 
                                 if (mouse_wheel_down())
@@ -155,7 +155,7 @@ function __input_player_tick_sources(_player)
                         var _binding = _alternate_array[_alternate];
                         switch(_binding.type)
                         {
-                            case __INPUT_BINDING_MOUSE_BUTTON:
+                            case __INPUT_BINDING_TYPE_MOUSE_BUTTON:
                                 if (input_mouse_check(_binding.value))
                                 {
                                     _value        = 1.0;
@@ -165,7 +165,7 @@ function __input_player_tick_sources(_player)
                                 }
                             break;
                             
-                            case __INPUT_BINDING_MOUSE_WHEEL_UP:
+                            case __INPUT_BINDING_TYPE_MOUSE_WHEEL_UP:
                                 if (mouse_wheel_up())
                                 {
                                     _value        = 1.0;
@@ -175,7 +175,7 @@ function __input_player_tick_sources(_player)
                                 }
                             break;
                             
-                            case __INPUT_BINDING_MOUSE_WHEEL_DOWN:
+                            case __INPUT_BINDING_TYPE_MOUSE_WHEEL_DOWN:
                                 if (mouse_wheel_down())
                                 {
                                     _value        = 1.0;
@@ -221,53 +221,56 @@ function __input_player_tick_sources(_player)
                         
                         switch(_binding.type)
                         {
-                            case __INPUT_BINDING_GAMEPAD_BUTTON:
-                                if (input_gamepad_check(_source_gamepad, _binding.value))
+                            case __INPUT_BINDING_TYPE_GAMEPAD:
+                                if (_source_struct.is_axis(_binding.value))
                                 {
-                                    _value        = 1.0;
-                                    _raw          = 1.0;
-                                    _analogue     = false;
-                                    _raw_analogue = false;
+                                    //Grab the raw value directly from the gamepad
+                                    //We keep a hold of this value for use in 2D checkers
+                                    var _found_raw = input_gamepad_value(_source_gamepad, _binding.value);
+                                    
+                                    var _binding_threshold_min = _binding.__threshold_min;
+                                    var _binding_threshold_max = _binding.__threshold_max;
+                                    
+                                    if ((_binding_threshold_min == undefined) || (_binding_threshold_max == undefined))
+                                    {
+                                        var _threshold_struct = __axis_threshold_get(_binding.value);
+                                        _binding_threshold_min = _threshold_struct.mini;
+                                        _binding_threshold_max = _threshold_struct.maxi;
+                                    }
+                                    
+                                    //Correct the raw value's sign if needed
+                                    if (_binding.axis_negative) _found_raw = -_found_raw;
+                                    
+                                    //The return value from this binding needs to be corrected using the thresholds previously defined
+                                    var _found_value = _found_raw;
+                                    _found_value = (_found_value - _binding_threshold_min) / (_binding_threshold_max - _binding_threshold_min);
+                                    _found_value = clamp(_found_value, 0.0, 1.0);
+                                    
+                                    //If this binding is returning a value bigger than whatever we found before, let it override the old value
+                                    //This is useful for situations where both the left + right analogue sticks are bound to movement
+                                    if (_found_raw > _raw)
+                                    {
+                                        _raw           = _found_raw;
+                                        _raw_analogue  = true;
+                                        _min_threshold = _binding_threshold_min;
+                                        _max_threshold = _binding_threshold_max;
+                                    }
+                                    
+                                    if (_found_value > _value)
+                                    {
+                                        _value    = _found_value;
+                                        _analogue = true;
+                                    }
                                 }
-                            break;
-                            
-                            case __INPUT_BINDING_GAMEPAD_AXIS:
-                                //Grab the raw value directly from the gamepad
-                                //We keep a hold of this value for use in 2D checkers
-                                var _found_raw = input_gamepad_value(_source_gamepad, _binding.value);
-                                
-                                var _binding_threshold_min = _binding.__threshold_min;
-                                var _binding_threshold_max = _binding.__threshold_max;
-                                
-                                if ((_binding_threshold_min == undefined) || (_binding_threshold_max == undefined))
+                                else
                                 {
-                                    var _threshold_struct = __axis_threshold_get(_binding.value);
-                                    _binding_threshold_min = _threshold_struct.mini;
-                                    _binding_threshold_max = _threshold_struct.maxi;
-                                }
-                                
-                                //Correct the raw value's sign if needed
-                                if (_binding.axis_negative) _found_raw = -_found_raw;
-                                
-                                //The return value from this binding needs to be corrected using the thresholds previously defined
-                                var _found_value = _found_raw;
-                                _found_value = (_found_value - _binding_threshold_min) / (_binding_threshold_max - _binding_threshold_min);
-                                _found_value = clamp(_found_value, 0.0, 1.0);
-                                
-                                //If this binding is returning a value bigger than whatever we found before, let it override the old value
-                                //This is useful for situations where both the left + right analogue sticks are bound to movement
-                                if (_found_raw > _raw)
-                                {
-                                    _raw           = _found_raw;
-                                    _raw_analogue  = true;
-                                    _min_threshold = _binding_threshold_min;
-                                    _max_threshold = _binding_threshold_max;
-                                }
-                                
-                                if (_found_value > _value)
-                                {
-                                    _value    = _found_value;
-                                    _analogue = true;
+                                    if (input_gamepad_check(_source_gamepad, _binding.value))
+                                    {
+                                        _value        = 1.0;
+                                        _raw          = 1.0;
+                                        _analogue     = false;
+                                        _raw_analogue = false;
+                                    }
                                 }
                             break;
                             

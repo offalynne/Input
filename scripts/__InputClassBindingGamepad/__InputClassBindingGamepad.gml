@@ -1,21 +1,22 @@
 function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
 {
-    static __type   = __INPUT_BINDING_GAMEPAD_AXIS;
-    static __source = INPUT_GAMEPAD;
+    static __type       = __INPUT_BINDING_TYPE_GAMEPAD;
+    static __source     = INPUT_GAMEPAD;
+    static __sourceType = __INPUT_SOURCE.GAMEPAD;
     
-    __negative = false;
-    __gamepad  = undefined;
+    __negative      = false;
+    __gamepadStruct = undefined;
     
     static __Set = function(_constant, _negative = false, _playerSet = false)
     {
         __constant = _constant;
         __negative = _negative;
-        __SetLabel(__constant);
+        __RefreshLabel();
     }
     
     static __Read = function(_player, _verbState)
     {
-        if (__gamepad == undefined)
+        if (__gamepadStruct == undefined)
         {
             var _sourceArray = _player.__source_array;
             var _i = 0;
@@ -28,7 +29,7 @@ function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
         }
         else
         {
-            __ReadInner(_verbState, __gamepad);
+            __ReadInner(_verbState, __gamepadStruct);
         }
         
         return false;
@@ -90,7 +91,7 @@ function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
     
     static __SetGamepad = function(_gamepad)
     {
-        if (input_gamepad_is_connected(_gamepad)) __gamepad = _gamepad;
+        if (input_gamepad_is_connected(_gamepad) || (_gamepad == undefined)) __gamepadStruct = _gamepad;
         return self;
     }
     
@@ -115,17 +116,73 @@ function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
         return __label;
     }
     
-    static __SetLabel = function(_label)
+    static __Duplicate = function()
     {
-        if (_label == undefined)
+        with(new __InputClassBindingMouse())
         {
-            __label = __input_binding_get_label(__type, __constant, __negative);
+            __constant            = other.__constant;
+            __label               = other.__label;
+            __gamepad_index       = other.__gamepad_index;
+            __gamepad_description = other.__gamepad_description;
+            
+            return self;
         }
-        else
+    }
+    
+    static __Export = function()
+    {
+        var _struct = {
+            bind: __InputConstantToLabel(__constant),
+        };
+        
+        if (__gamepadStruct != undefined) _struct.gamepad = __gamepadStruct.description;
+        
+        return _struct;
+    }
+    
+    static __Import = function(_struct)
+    {
+        if (not variable_struct_exists(_struct, "bind"))
         {
-            __label = _label;
+            __input_error("Gamepad binding not found");
         }
         
-        return self;
+        var _label    = _struct[$ "bind"];
+        var _constant = __InputLabelToConstant(_label);
+        
+        if (!is_numeric(_constant))
+        {
+            __input_error("Gamepad binding \"", _label, "\" not supported");
+        }
+        
+        var _sourceType = __InputConstantToSourceType(_constant);
+        if (_sourceType != __sourceType)
+        {
+            __input_error("Binding \"", _label, "\" is not a gamepad binding");
+        }
+        
+        __Set(_constant, false, false);
+        
+        //If we have a gamepad description then try to match that to a connected gamepad
+        var _found = false;
+        var _incomingDescription = _struct[$ "gamepad"];
+        
+        if (_incomingDescription != undefined)
+        {
+            var _g = 0;
+            repeat(array_length(__global.__gamepads))
+            {
+                var _gamepad = __global.__gamepads[_g];
+                if (is_struct(_gamepad) && (_gamepad.description == _incomingDescription))
+                {
+                    __SetGamepad(_gamepad);
+                    break;
+                }
+                    
+                ++_g;
+            }
+        }
+        
+        if (not _found) __SetGamepad(undefined);
     }
 }

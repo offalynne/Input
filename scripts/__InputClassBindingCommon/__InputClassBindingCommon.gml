@@ -1,21 +1,29 @@
 function __InputClassBindingCommon() constructor
 {
-    static __type   = undefined;
-    static __source = undefined;
+    __INPUT_GLOBAL_STATIC_VARIABLE
+    
+    static __type       = undefined;
+    static __source     = undefined;
+    static __sourceType = undefined;
     
     __constant = undefined;
     __label    = "empty binding";
     
-    static __SetLabel = function(_label)
+    static toString = function()
     {
-        if (_label == undefined)
-        {
-            __label = __input_binding_get_label(__type, __constant, false);
-        }
-        else
-        {
-            __label = _label;
-        }
+        return __label;
+    }
+    
+    static __RefreshLabel = function(_label)
+    {
+        __label = __input_binding_get_label(__type, __constant, false);
+        
+        return self;
+    }
+    
+    static __ForceLabel = function(_label)
+    {
+        __label = _label;
         
         return self;
     }

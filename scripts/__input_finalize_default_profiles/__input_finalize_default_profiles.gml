@@ -85,7 +85,7 @@ function __input_finalize_default_profiles()
                 }
                 else
                 {
-                    switch(_binding.__get_source_type())
+                    switch(_binding.__sourceType)
                     {
                         case __INPUT_SOURCE.KEYBOARD: _global.__any_keyboard_binding_defined = true; break;
                         case __INPUT_SOURCE.MOUSE:    _global.__any_mouse_binding_defined    = true; break;

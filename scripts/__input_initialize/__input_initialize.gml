@@ -203,7 +203,7 @@ function __input_initialize()
     _global.__any_gamepad_binding_defined  = false;
     
     //Disallow keyboard bindings on specified platforms unless explicitly enabled
-    _global.__keyboard_allowed  = ((INPUT_ON_PC && INPUT_PC_KEYBOARD)              || (__INPUT_ON_SWITCH && INPUT_SWITCH_KEYBOARD)  || (INPUT_ON_MOBILE  && INPUT_MOBILE_WEB_KEYBOARD && INPUT_ON_WEB) || (__INPUT_ON_ANDROID && INPUT_ANDROID_KEYBOARD));
+    _global.__keyboard_allowed  = ((INPUT_ON_PC && INPUT_PC_KEYBOARD)              || (INPUT_ON_MOBILE  && INPUT_MOBILE_WEB_KEYBOARD && INPUT_ON_WEB) || (__INPUT_ON_ANDROID && INPUT_ANDROID_KEYBOARD));
     _global.__mouse_allowed     = ((INPUT_ON_PC && INPUT_PC_MOUSE)                 || (__INPUT_ON_SWITCH && INPUT_SWITCH_MOUSE)     || (INPUT_ON_MOBILE  && INPUT_MOBILE_MOUSE) || (__INPUT_ON_PS && INPUT_PS_MOUSE));
     _global.__touch_allowed     = ((__INPUT_ON_WINDOWS && INPUT_WINDOWS_TOUCH)     || (__INPUT_ON_SWITCH && INPUT_SWITCH_TOUCH)     ||  INPUT_ON_MOBILE) && !_global.__mouse_allowed;
     _global.__vibration_allowed = ((__INPUT_ON_WINDOWS && INPUT_WINDOWS_VIBRATION) || (__INPUT_ON_SWITCH && INPUT_SWITCH_VIBRATION) || (__INPUT_ON_XBOX  && INPUT_XBOX_VIBRATION) || ((os_type == os_ps4) && INPUT_PS4_VIBRATION) || ((os_type == os_ps5) && INPUT_PS5_VIBRATION));
@@ -463,118 +463,18 @@ function __input_initialize()
     }
     
     #endregion
-
-
-
-    #region Key names
-
-    __input_key_name_set(vk_backtick,   "`");
-    __input_key_name_set(vk_hyphen,     "-");
-    __input_key_name_set(vk_equals,     "=");
-    __input_key_name_set(vk_semicolon,  ";");
-    __input_key_name_set(vk_apostrophe, "'");
-    __input_key_name_set(vk_comma,      ",");
-    __input_key_name_set(vk_period,     ".");
-    __input_key_name_set(vk_rbracket,   "]");
-    __input_key_name_set(vk_lbracket,   "[");
-    __input_key_name_set(vk_fslash,     "/");
-    __input_key_name_set(vk_bslash,     "\\");
-
-    __input_key_name_set(vk_scrollock, "scroll lock");
-    __input_key_name_set(vk_capslock,  "caps lock");
-    __input_key_name_set(vk_numlock,   "num lock");
-    __input_key_name_set(vk_lmeta,     "left meta");
-    __input_key_name_set(vk_rmeta,     "right meta");
-    __input_key_name_set(vk_clear,     "clear");
-    __input_key_name_set(vk_menu,      "menu");
-
-    __input_key_name_set(vk_printscreen, "print screen");
-    __input_key_name_set(vk_pause,       "pause break");
     
-    __input_key_name_set(vk_escape,    "escape");
-    __input_key_name_set(vk_backspace, "backspace");
-    __input_key_name_set(vk_space,     "space");
-    __input_key_name_set(vk_enter,     "enter");
     
-    __input_key_name_set(vk_up,    "arrow up");
-    __input_key_name_set(vk_down,  "arrow down");
-    __input_key_name_set(vk_left,  "arrow left");
-    __input_key_name_set(vk_right, "arrow right");
     
-    __input_key_name_set(vk_tab,      "tab");
-    __input_key_name_set(vk_ralt,     "right alt");
-    __input_key_name_set(vk_lalt,     "left alt");
-    __input_key_name_set(vk_alt,      "alt");
-    __input_key_name_set(vk_rshift,   "right shift");
-    __input_key_name_set(vk_lshift,   "left shift");
-    __input_key_name_set(vk_shift,    "shift");
-    __input_key_name_set(vk_rcontrol, "right ctrl");
-    __input_key_name_set(vk_lcontrol, "left ctrl");
-    __input_key_name_set(vk_control,  "ctrl");
-
-    __input_key_name_set(vk_f1,  "f1");
-    __input_key_name_set(vk_f2,  "f2");
-    __input_key_name_set(vk_f3,  "f3");
-    __input_key_name_set(vk_f4,  "f4");
-    __input_key_name_set(vk_f5,  "f5");
-    __input_key_name_set(vk_f6,  "f6");
-    __input_key_name_set(vk_f7,  "f7");
-    __input_key_name_set(vk_f8,  "f8");
-    __input_key_name_set(vk_f9,  "f9");
-    __input_key_name_set(vk_f10, "f10");
-    __input_key_name_set(vk_f11, "f11");
-    __input_key_name_set(vk_f12, "f12");
-
-    __input_key_name_set(vk_divide,   "numpad /");
-    __input_key_name_set(vk_multiply, "numpad *");
-    __input_key_name_set(vk_subtract, "numpad -");
-    __input_key_name_set(vk_add,      "numpad +");
-    __input_key_name_set(vk_decimal,  "numpad .");
-
-    __input_key_name_set(vk_numpad0, "numpad 0");
-    __input_key_name_set(vk_numpad1, "numpad 1");
-    __input_key_name_set(vk_numpad2, "numpad 2");
-    __input_key_name_set(vk_numpad3, "numpad 3");
-    __input_key_name_set(vk_numpad4, "numpad 4");
-    __input_key_name_set(vk_numpad5, "numpad 5");
-    __input_key_name_set(vk_numpad6, "numpad 6");
-    __input_key_name_set(vk_numpad7, "numpad 7");
-    __input_key_name_set(vk_numpad8, "numpad 8");
-    __input_key_name_set(vk_numpad9, "numpad 9");
-
-    __input_key_name_set(vk_delete,   "delete");
-    __input_key_name_set(vk_insert,   "insert");
-    __input_key_name_set(vk_home,     "home");
-    __input_key_name_set(vk_pageup,   "page up");
-    __input_key_name_set(vk_pagedown, "page down");
-    __input_key_name_set(vk_end,      "end");
-   
-    //Name newline character after Enter
-    __input_key_name_set(10, _global.__key_name_dict[$ vk_enter]);
+    _global.__constantToLabelDict         = {};
+    _global.__labelToConstantDict         = {};
+    _global.__constantToSourceTypeDict    = {};
+    _global.__constantToLabelOverrideDict = {};
     
-    //Reset F11 and F12 keycodes on certain platforms
-    if (__INPUT_ON_SWITCH || __INPUT_ON_LINUX || __INPUT_ON_MACOS)
-    {
-        __input_key_name_set(128, "f11");
-        __input_key_name_set(129, "f12");
-    }
-   
-    //F13 to F32 on Windows and Web
-    if (__INPUT_ON_WINDOWS || INPUT_ON_WEB)
-    {
-        for(var _i = vk_f1 + 12; _i < vk_f1 + 32; _i++) __input_key_name_set(_i, "f" + string(_i));
-    }
+    __InputInitializeConstants();
     
-    //Numeric keys 2-7 on Switch
-    if (__INPUT_ON_SWITCH)
-    {
-        for(var _i = 2; _i <= 7; _i++) __input_key_name_set(_i, __input_key_get_name(ord(_i)));
-    }
     
-    #endregion
-
-
-
+    
     #region Ignored keys
     
     //Keyboard ignore level 1+

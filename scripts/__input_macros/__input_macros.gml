@@ -28,13 +28,9 @@
 
 
 
-#macro __INPUT_BINDING_KEY               "key"
-#macro __INPUT_BINDING_MOUSE_BUTTON      "mouse button"
-#macro __INPUT_BINDING_MOUSE_WHEEL_UP    "mouse wheel up"
-#macro __INPUT_BINDING_MOUSE_WHEEL_DOWN  "mouse wheel down"
-#macro __INPUT_BINDING_VIRTUAL_BUTTON    "virtual button"
-#macro __INPUT_BINDING_GAMEPAD_BUTTON    "gamepad button"
-#macro __INPUT_BINDING_GAMEPAD_AXIS      "gamepad axis"
+#macro __INPUT_BINDING_TYPE_KEY     "key"
+#macro __INPUT_BINDING_TYPE_MOUSE   "mouse"
+#macro __INPUT_BINDING_TYPE_GAMEPAD "gamepad"
 
 #macro INPUT_KEYBOARD  __input_global().__source_keyboard
 #macro INPUT_MOUSE     __input_global().__source_mouse
@@ -74,7 +70,7 @@
 
 
 #macro __INPUT_SDL2_SUPPORT         (!INPUT_ON_WEB && (INPUT_ON_PC || __INPUT_ON_ANDROID))
-#macro __INPUT_KEYBOARD_NORMATIVE   (INPUT_ON_PC || INPUT_ON_WEB || __INPUT_ON_SWITCH)
+#macro __INPUT_KEYBOARD_NORMATIVE   (INPUT_ON_PC || INPUT_ON_WEB)
 #macro __INPUT_LED_PATTERN_SUPPORT  ((os_type == os_ps5) || __INPUT_ON_SWITCH || __INPUT_ON_IOS || (__INPUT_ON_WINDOWS && !INPUT_ON_WEB))
 #macro __INPUT_STEAMWORKS_SUPPORT   ((__INPUT_ON_LINUX || __INPUT_ON_WINDOWS) && !INPUT_ON_WEB)
 
@@ -132,11 +128,11 @@
 #macro vk_apostrophe ((__INPUT_ON_MACOS && !INPUT_ON_WEB)? 192 : 222)
 #macro vk_equals     ((__INPUT_ON_MACOS && !INPUT_ON_WEB)?  24 : 187)
 #macro vk_numlock    ((__INPUT_ON_APPLE &&  INPUT_ON_WEB)?  12 : 144)
-#macro vk_hyphen     ((__INPUT_ON_SWITCH || (__INPUT_ON_MACOS && !INPUT_ON_WEB))? 109 : 189)
+#macro vk_hyphen     ((__INPUT_ON_MACOS && !INPUT_ON_WEB)? 109 : 189)
 #macro vk_rmeta      (__INPUT_ON_MACOS? ((__INPUT_ON_APPLE && INPUT_ON_WEB)? 93 : 91) : 92)
 #macro vk_backtick   (__INPUT_ON_MACOS?   50 : (__INPUT_ON_LINUX? 223 : 192))
 #macro vk_lmeta      (__INPUT_ON_MACOS?   92 :  91)
-#macro vk_period     (__INPUT_ON_SWITCH? 110 : 190)
+#macro vk_period     190
 
 #macro mb_wheel_up   -230567 //Not an intelligently chosen number, just random
 #macro mb_wheel_down -230568

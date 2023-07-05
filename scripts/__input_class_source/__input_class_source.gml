@@ -74,7 +74,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
         var _type  = _binding.type;
         var _value = _binding.value;
         
-        if ((_type == __INPUT_BINDING_GAMEPAD_BUTTON) || (_type == __INPUT_BINDING_GAMEPAD_AXIS))
+        if (_type == __INPUT_BINDING_TYPE_GAMEPAD)
         {
             //Gamepad-specific validations
             if (__source == __INPUT_SOURCE.GAMEPAD)
@@ -115,17 +115,20 @@ function __input_class_source(_source, _gamepad = undefined) constructor
         
         switch(_type)
         {            
-            case __INPUT_BINDING_GAMEPAD_BUTTON: //Validate button range
+            case __INPUT_BINDING_TYPE_GAMEPAD: //Validate button range
                 if (__source != __INPUT_SOURCE.GAMEPAD) return false;
-                return (_raw < gamepad_button_count(__gamepad));
+                
+                if (_gamepad.is_axis(_raw))
+                {
+                    return (_raw < gamepad_axis_count(__gamepad));
+                }
+                else
+                {
+                    return (_raw < gamepad_button_count(__gamepad));
+                }
             break;
             
-            case __INPUT_BINDING_GAMEPAD_AXIS: //Validate axis range
-                if (__source != __INPUT_SOURCE.GAMEPAD) return false;
-                return (_raw < gamepad_axis_count(__gamepad));
-            break;
-            
-            case __INPUT_BINDING_KEY:
+            case __INPUT_BINDING_TYPE_KEY:
                 if (!__global.__keyboard_allowed)
                 {
                     //Invalid per platform or configuration
@@ -156,7 +159,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                 return (!__input_key_is_ignored(_value) && (_value >= __INPUT_KEYCODE_MIN) && (_value <= __INPUT_KEYCODE_MAX));
             break;
             
-            case __INPUT_BINDING_MOUSE_BUTTON:
+            case __INPUT_BINDING_TYPE_MOUSE_BUTTON:
                 if (!__global.__mouse_allowed)
                 {
                     //Invalid per platform or configuration
@@ -184,28 +187,24 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                         return !(INPUT_ON_CONSOLE || __INPUT_ON_OPERAGX || INPUT_ON_MOBILE || (os_browser == browser_firefox) || (INPUT_ON_WEB && __INPUT_ON_MACOS));
                     break;
                     
+                    case mb_wheel_up:
+                    case mb_wheel_down:
+                        if (!__global.__mouse_allowed)
+                        {
+                            //Invalid per platform or configuration
+                            return false;
+                        }
+                        
+                        if not ((__source == __INPUT_SOURCE.MOUSE) || (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (__source == __INPUT_SOURCE.KEYBOARD))) return false;
+                        
+                        //Invalid on console or native mobile
+                        return !(INPUT_ON_CONSOLE || (!INPUT_ON_WEB && INPUT_ON_MOBILE));      
+                    break;
+                    
                     default:
                         return false;
                     break;
                 }
-            break;
-            
-            case __INPUT_BINDING_MOUSE_WHEEL_UP:
-            case __INPUT_BINDING_MOUSE_WHEEL_DOWN:
-                if (!__global.__mouse_allowed)
-                {
-                    //Invalid per platform or configuration
-                    return false;
-                }
-                
-                if not ((__source == __INPUT_SOURCE.MOUSE) || (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (__source == __INPUT_SOURCE.KEYBOARD))) return false;
-                
-                //Invalid on console or native mobile
-                return !(INPUT_ON_CONSOLE || (!INPUT_ON_WEB && INPUT_ON_MOBILE));        
-            break;
-            
-            case __INPUT_BINDING_VIRTUAL_BUTTON:
-                return (__source == __INPUT_SOURCE.TOUCH);
             break;
         }
         
@@ -249,7 +248,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
                     if ((ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z")))
                     {
                         _binding.__set_label(_keychar);
-                        __input_key_name_set(_keyboard_key, _keychar);    
+                        __InputLabelOverride(_keyboard_key, _keychar);    
                     }
                 }
                 
@@ -267,12 +266,12 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
                     if (_return_boolean) return true;
                     return input_binding_mouse_button(_mouse_button);
                 }
-                else if (mouse_wheel_up() && _filter_func(__INPUT_BINDING_MOUSE_WHEEL_UP, _ignore_struct, _allow_struct))
+                else if (mouse_wheel_up() && _filter_func(__INPUT_BINDING_TYPE_MOUSE_WHEEL_UP, _ignore_struct, _allow_struct))
                 {
                     if (_return_boolean) return true;
                     return input_binding_mouse_wheel_up();
                 }
-                else if (mouse_wheel_down() && _filter_func(__INPUT_BINDING_MOUSE_WHEEL_DOWN, _ignore_struct, _allow_struct))
+                else if (mouse_wheel_down() && _filter_func(__INPUT_BINDING_TYPE_MOUSE_WHEEL_DOWN, _ignore_struct, _allow_struct))
                 {
                     if (_return_boolean) return true;
                     return input_binding_mouse_wheel_down();

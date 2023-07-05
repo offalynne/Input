@@ -47,11 +47,6 @@ function __input_validate_macros()
         __input_error("INPUT_ANDROID_KEYBOARD must be either <true> or <false>");
     }
 
-    if (!is_bool(INPUT_SWITCH_KEYBOARD))
-    {
-        __input_error("INPUT_SWITCH_KEYBOARD must be either <true> or <false>");
-    }
-
     if (!is_bool(INPUT_SWITCH_MOUSE))
     {
         __input_error("INPUT_SWITCH_MOUSE must be either <true> or <false>");
