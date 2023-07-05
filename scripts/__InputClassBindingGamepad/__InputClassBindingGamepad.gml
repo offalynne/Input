@@ -25,6 +25,8 @@ function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
         __negative    = (_constant < 0);
         
         __RefreshLabel();
+        
+        return self;
     }
     
     static __Read = function(_player, _verbState, hasKeyboard, _hasMouse, _hasGamepad, _mixedMode)

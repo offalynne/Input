@@ -20,7 +20,7 @@ function input_binding_get(_verb_name, _player_index = 0, _alternate = 0, _profi
             
             with(_global.__default_player)
             {
-                return __binding_get(_profile_name, _verb_name, _alternate, false).__duplicate();
+                return __binding_get(_profile_name, _verb_name, _alternate, false).__Duplicate();
             }
         }
         else

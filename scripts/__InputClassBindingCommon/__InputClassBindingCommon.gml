@@ -10,6 +10,7 @@ function __InputClassBindingCommon() constructor
     
     static __Set = function(_constant, _playerSet = false)
     {
+        return self;
     }
     
     static __Read = function(_player, _verbState, hasKeyboard, _hasMouse, _hasGamepad, _mixedMode)

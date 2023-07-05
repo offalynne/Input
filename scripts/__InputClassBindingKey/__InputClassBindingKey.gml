@@ -69,6 +69,8 @@ function __InputClassBindingKey() : __InputClassBindingCommon() constructor
         
         __constant = _constant;
         __RefreshLabel();
+        
+        return self;
     }
     
     static __Read = function(_player, _verbState, _hasKeyboard, _hasMouse, _hasGamepad, _mixedMode)

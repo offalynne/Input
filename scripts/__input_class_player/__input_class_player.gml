@@ -759,7 +759,7 @@ function __input_class_player() constructor
         var _binding_struct = _default_profile_struct[$ _verb][_alternate];
         
         //If the binding is a struct then duplicate so we don't get nasty
-        if (is_struct(_binding_struct)) _binding_struct = _binding_struct.__duplicate();
+        if (is_struct(_binding_struct)) _binding_struct = _binding_struct.__Duplicate();
         
         //And set the value!
         __profiles_dict[$ _profile_name][$ _verb][@ _alternate] = _binding_struct;
@@ -1505,8 +1505,8 @@ function __input_class_player() constructor
     {
         //Cache some values for efficiency's sake
         var _playerActive = __active;
-        var _currentProfileDict = __profiles_dict[$ __profile_name];
-        var _mixedMode = (_global.__source_mode == INPUT_SOURCE_MODE.MIXED);
+        var _currentProfileDict = (__profile_name == undefined)? undefined : __profiles_dict[$ __profile_name];
+        var _mixedMode = (__global.__source_mode == INPUT_SOURCE_MODE.MIXED);
         var _hasKeyboard = false;
         var _hasMouse    = false;
         var _hasGamepad  = false;
@@ -1526,7 +1526,7 @@ function __input_class_player() constructor
             ++_s;
         }
         
-        var _verbArray = _global.__basic_verb_array;
+        var _verbArray = __global.__basic_verb_array;
         var _v = 0;
         repeat(array_length(_verbArray))
         {

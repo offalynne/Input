@@ -74,25 +74,17 @@ function __input_finalize_default_profiles()
             var _a = 0;
             repeat(array_length(_verb_data))
             {
-                var _binding = _verb_data[_a];
+                var _constant = _verb_data[_a];
                 
-                if (_binding == undefined)
+                //Convert the constant into a binding
+                var _binding = input_value_is_binding(_constant)? _constant : InputBinding(_constant);
+                
+                switch(_binding.__sourceType)
                 {
-                    _binding = InputBinding();
-                }
-                else if (!input_value_is_binding(_binding))
-                {
-                    __input_error("Binding for profile \"", _profile_name, "\", verb \"", _verb_name, "\", alternate ", _a, " is not a binding\nPlease use one of the input_binding_*() functions to create bindings");
-                }
-                else
-                {
-                    switch(_binding.__sourceType)
-                    {
-                        case __INPUT_SOURCE.KEYBOARD: _global.__any_keyboard_binding_defined = true; break;
-                        case __INPUT_SOURCE.MOUSE:    _global.__any_mouse_binding_defined    = true; break;
-                        case __INPUT_SOURCE.TOUCH:    _global.__any_touch_binding_defined    = true; break;
-                        case __INPUT_SOURCE.GAMEPAD:  _global.__any_gamepad_binding_defined  = true; break;
-                    }
+                    case __INPUT_SOURCE.KEYBOARD: _global.__any_keyboard_binding_defined = true; break;
+                    case __INPUT_SOURCE.MOUSE:    _global.__any_mouse_binding_defined    = true; break;
+                    case __INPUT_SOURCE.TOUCH:    _global.__any_touch_binding_defined    = true; break;
+                    case __INPUT_SOURCE.GAMEPAD:  _global.__any_gamepad_binding_defined  = true; break;
                 }
                 
                 _global.__default_player.__binding_set(_profile_name, _verb_name, _a, _binding);
