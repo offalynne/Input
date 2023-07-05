@@ -23,13 +23,45 @@ function __input_initialize()
         __input_trace("Warning! Per __INPUT_SILENT mode, most logging is suppressed. This is NOT recommended");
     }
     
-    //Detect GameMaker version to toggle features
-    _global.__use_is_instanceof = (!INPUT_ON_WEB) && (_version.major >= 2023); 
-    _global.__use_legacy_strings = (_version.major >= 2022) && (((_version.minor < 9) && (_version.minor != 0)) || ((_version.minor == 0) && (_version.bug_fix == 0)));
-    if (!__INPUT_SILENT)
+    //Detect is_instanceof(), which offers some minor performance gains
+    if (INPUT_ON_WEB)
     {
-        if (_global.__use_is_instanceof) __input_trace("On runtime ", GM_runtime_version, ", using is_instanceof()");
-        if (!_global.__use_legacy_strings) __input_trace("Using new string functions");
+        //Buggy as of 2023-07-05
+        _global.__use_is_instanceof = false;
+    }
+    else
+    {
+        try
+        {
+            is_instanceof(input_binding_empty(), __input_class_binding);
+            _global.__use_is_instanceof = true;
+        }
+        catch(_error)
+        {
+            _global.__use_is_instanceof = false;
+        }
+    }
+    
+    if (not __INPUT_SILENT)
+    {
+        __input_trace(_global.__use_is_instanceof? "Using is_instanceof() for comparisons" : "is_instanceof() unavailable, using legacy comparisons");
+    }
+    
+    //Detect new string functions, which offer a significant performance gain when reading the SDL2 database
+    try
+    {
+        string_split("Juju\nwaz\nere", "\n", true);
+        string_trim("         you can't catch me          ");
+        _global.__use_legacy_strings = false;
+    }
+    catch(_error)
+    {
+        _global.__use_legacy_strings = true;
+    }
+    
+    if (not __INPUT_SILENT)
+    {
+        __input_trace(_global.__use_is_instanceof? "Using new string functions to parse SDL2 database" : "New string functions unavailable, using legacy SDL2 database parsing");
     }
     
     //Set up a time source to manage input_controller_object
