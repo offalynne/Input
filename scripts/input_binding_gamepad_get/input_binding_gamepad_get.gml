@@ -12,6 +12,5 @@ function input_binding_gamepad_get(_binding)
         return;
     }
     
-    var _gamepadStruct = _binding[$ "__gamepadStruct"];
-    return is_struct(_gamepadStruct)? _gamepadStruct[$ "index"] : undefined;
+    return _binding[$ "__gamepad"];
 }

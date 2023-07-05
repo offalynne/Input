@@ -299,7 +299,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
                         {
                             if (_return_boolean) return true;
                             var _binding = InputBinding(_check * ((_value < 0)? -1 : +1));
-                            if (__global.__source_mode == INPUT_SOURCE_MODE.MULTIDEVICE) _binding.__SetGamepad(__global.__gamepads[_gamepad]);
+                            if (__global.__source_mode == INPUT_SOURCE_MODE.MULTIDEVICE) _binding.__SetGamepad(_gamepad);
                             return _binding;
                         }
                     }
@@ -309,7 +309,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
                         {
                             if (_return_boolean) return true;
                             var _binding = InputBinding(_check);
-                            if (__global.__source_mode == INPUT_SOURCE_MODE.MULTIDEVICE) _binding.__SetGamepad(__global.__gamepads[_gamepad]);
+                            if (__global.__source_mode == INPUT_SOURCE_MODE.MULTIDEVICE) _binding.__SetGamepad(_gamepad);
                             return _binding;
                         }
                     }

@@ -3,9 +3,9 @@ function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
     static __source     = INPUT_GAMEPAD;
     static __sourceType = __INPUT_SOURCE.GAMEPAD;
     
-    __absConstant   = undefined;
-    __negative      = false;
-    __gamepadStruct = undefined;
+    __absConstant = undefined;
+    __negative    = false;
+    __gamepad     = undefined;
     
     static __Set = function(_constant, _playerSet = false)
     {
@@ -33,27 +33,35 @@ function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
     {
         if (_hasGamepad)
         {
-            if ((__gamepadStruct == undefined) || _mixedMode)
+            if ((__gamepad == undefined) || _mixedMode)
             {
                 var _sourceArray = _player.__source_array;
                 var _i = 0;
                 repeat(array_length(_sourceArray))
                 {
-                    var _gamepadStruct = _sourceArray[_i].__gamepad;
-                    if (_gamepadStruct != undefined) __ReadInner(_verbState, _gamepadStruct);
+                    var _sourceStruct = _sourceArray[_i];
+                    var _gamepad = _sourceStruct.__gamepad;
+                    
+                    if (_gamepad != undefined)
+                    {
+                        var _gamepadStruct = __global.__gamepads[_gamepad]
+                        if (is_struct(_gamepadStruct)) __ReadInner(_player, _verbState, _gamepadStruct);
+                    }
+                    
                     ++_i;
                 }
             }
             else
             {
-                __ReadInner(_verbState, __gamepadStruct);
+                var _gamepadStruct = __global.__gamepads[__gamepad];
+                if (is_struct(_gamepadStruct)) __ReadInner(_player, _verbState, _gamepadStruct);
             }
         }
         
         return false;
     }
     
-    static __ReadInner = function(_verbState, _gamepadStruct)
+    static __ReadInner = function(_player, _verbState, _gamepadStruct)
     {
         if (_gamepadStruct.is_axis(__absConstant))
         {
@@ -61,7 +69,7 @@ function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
             //We keep a hold of this value for use in 2D checkers
             var _foundRaw = _gamepadStruct.get_value(__absConstant);
             
-            var _thresholdStruct = __axis_threshold_get(__absConstant);
+            var _thresholdStruct = _player.__axis_threshold_get(__absConstant);
             var _bindingThresholdMin = _thresholdStruct.mini;
             var _bindingThresholdMax = _thresholdStruct.maxi;
             
@@ -109,26 +117,15 @@ function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
     
     static __SetGamepad = function(_gamepad)
     {
-        if (input_gamepad_is_connected(_gamepad) || (_gamepad == undefined)) __gamepadStruct = _gamepad;
+        if (input_gamepad_is_connected(_gamepad) || (_gamepad == undefined)) __gamepad = _gamepad;
         return self;
     }
     
     static toString = function()
     {
-        if (__gamepad_index != undefined)
+        if (__gamepad != undefined)
         {
-            if (__gamepad_description != undefined)
-            {
-                return __label + ", gamepad=" + string(__gamepad_index) + " \"" + __gamepad_description + "\"";
-            }
-            else
-            {
-                return __label + ", gamepad=" + string(__gamepad_index);
-            }
-        }
-        else if (__gamepad_description != undefined)
-        {
-            return __label + ", gamepad=\"" + __gamepad_description + "\"";
+            return __label + ", gamepad=" + string(__gamepad) + " \"" + input_gamepad_get_description(__gamepad) + "\"";
         }
         
         return __label;
@@ -138,11 +135,11 @@ function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
     {
         with(new __InputClassBindingGamepad())
         {
-            __constant      = other.__constant;
-            __label         = other.__label;
-            __absConstant   = other.__absConstant;
-            __negative      = other.__negative;
-            __gamepadStruct = other.__gamepadStruct;
+            __constant    = other.__constant;
+            __label       = other.__label;
+            __absConstant = other.__absConstant;
+            __negative    = other.__negative;
+            __gamepad     = other.__gamepad;
             
             return self;
         }
@@ -154,7 +151,11 @@ function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
             bind: __InputConstantToLabel(__constant),
         };
         
-        if (__gamepadStruct != undefined) _struct.gamepad = __gamepadStruct.description;
+        if (__gamepad != undefined)
+        {
+            var _gamepadStruct = __global.gamepads[__gamepad];
+            if (is_struct(_gamepadStruct)) _struct.gamepad = _gamepadStruct.description;
+        }
         
         return _struct;
     }
@@ -194,7 +195,7 @@ function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
                 var _gamepad = __global.__gamepads[_g];
                 if (is_struct(_gamepad) && (_gamepad.description == _incomingDescription))
                 {
-                    __SetGamepad(_gamepad);
+                    __SetGamepad(_g);
                     break;
                 }
                     
