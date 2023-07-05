@@ -1,13 +1,12 @@
-function __InputClassBindingMouseButton() constructor
+function __InputClassBindingMouseButton() : __InputClassBindingCommon() constructor
 {
-    static __type   = "mouse button";
+    static __type   = __INPUT_BINDING_MOUSE_BUTTON;
     static __source = INPUT_MOUSE;
-    
-    __constant = undefined;
     
     static __Set = function(_constant, _negative = false, _playerSet = false)
     {
         __constant = _constant;
+        __SetLabel(__constant);
     }
     
     static __Read = function(_player, _verbState)
@@ -26,5 +25,10 @@ function __InputClassBindingMouseButton() constructor
         }
         
         return false;
+    }
+    
+    static toString = function()
+    {
+        return __label;
     }
 }

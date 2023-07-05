@@ -1,9 +1,8 @@
-function __InputClassBindingKey() constructor
+function __InputClassBindingKey() : __InputClassBindingCommon() constructor
 {
-    static __type   = "keyboard";
+    static __type   = __INPUT_BINDING_KEY;
     static __source = INPUT_KEYBOARD;
     
-    __key = undefined;
     __androidLowercase = undefined;
     
     static __Set = function(_constant, _negative = false, _playerSet = false)
@@ -68,14 +67,15 @@ function __InputClassBindingKey() constructor
             }
         }
         
-        __key = _key;
+        __constant = _key;
+        __SetLabel(__constant);
     }
     
     static __Read = function(_player, _verbState)
     {
         if (_player.__sourceHasKeyboard)
         {
-            if (keyboard_check(__key))
+            if (keyboard_check(__constant))
             {
                 with(_verbState)
                 {
@@ -107,5 +107,10 @@ function __InputClassBindingKey() constructor
         }
         
         return false;
+    }
+    
+    static toString = function()
+    {
+        return __label;
     }
 }

@@ -1,9 +1,8 @@
-function __InputClassBindingGamepad() constructor
+function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
 {
-    static __type   = "gamepad";
+    static __type   = __INPUT_BINDING_GAMEPAD_AXIS;
     static __source = INPUT_GAMEPAD;
     
-    __constant = undefined;
     __negative = false;
     __gamepad  = undefined;
     
@@ -11,6 +10,7 @@ function __InputClassBindingGamepad() constructor
     {
         __constant = _constant;
         __negative = _negative;
+        __SetLabel(__constant);
     }
     
     static __Read = function(_player, _verbState)
@@ -86,5 +86,46 @@ function __InputClassBindingGamepad() constructor
                 return true;
             }
         }
+    }
+    
+    static __SetGamepad = function(_gamepad)
+    {
+        if (input_gamepad_is_connected(_gamepad)) __gamepad = _gamepad;
+        return self;
+    }
+    
+    static toString = function()
+    {
+        if (__gamepad_index != undefined)
+        {
+            if (__gamepad_description != undefined)
+            {
+                return __label + ", gamepad=" + string(__gamepad_index) + " \"" + __gamepad_description + "\"";
+            }
+            else
+            {
+                return __label + ", gamepad=" + string(__gamepad_index);
+            }
+        }
+        else if (__gamepad_description != undefined)
+        {
+            return __label + ", gamepad=\"" + __gamepad_description + "\"";
+        }
+        
+        return __label;
+    }
+    
+    static __SetLabel = function(_label)
+    {
+        if (_label == undefined)
+        {
+            __label = __input_binding_get_label(__type, __constant, __negative);
+        }
+        else
+        {
+            __label = _label;
+        }
+        
+        return self;
     }
 }

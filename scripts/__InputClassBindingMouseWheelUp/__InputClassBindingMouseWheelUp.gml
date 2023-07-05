@@ -1,7 +1,9 @@
-function __InputClassBindingMouseWheelUp() constructor
+function __InputClassBindingMouseWheelUp() : __InputClassBindingCommon() constructor
 {
-    static __type   = "mouse wheel up";
+    static __type   = __INPUT_BINDING_MOUSE_WHEEL_UP;
     static __source = INPUT_MOUSE;
+    
+    __SetLabel(mb_wheel_up);
     
     static __Set = function(_constant, _negative = false, _playerSet = false)
     {
@@ -23,5 +25,10 @@ function __InputClassBindingMouseWheelUp() constructor
         }
         
         return false;
+    }
+    
+    static toString = function()
+    {
+        return __label;
     }
 }
