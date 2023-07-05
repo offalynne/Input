@@ -99,19 +99,6 @@
 #macro __XINPUT_AXIS_LT  4106
 #macro __XINPUT_AXIS_RT  4107
 
-//Unfortunately, versions prior to v5.2 used these values for extended gamepad constants
-//They collide with GameMaker's native constants for gamepad axis values for PS4/PS5 controllers
-#macro __INPUT_LEGACY_GP_GUIDE     32789 //gp_axis_acceleration_x
-#macro __INPUT_LEGACY_GP_MISC1     32790 //gp_axis_acceleration_y
-#macro __INPUT_LEGACY_GP_TOUCHPAD  32791 //gp_axis_acceleration_z
-#macro __INPUT_LEGACY_GP_PADDLE1   32792 //gp_axis_angular_velocity_x
-#macro __INPUT_LEGACY_GP_PADDLE2   32793 //gp_axis_angular_velocity_y
-#macro __INPUT_LEGACY_GP_PADDLE3   32794 //gp_axis_angular_velocity_z
-#macro __INPUT_LEGACY_GP_PADDLE4   32795 //gp_axis_orientation_x
-                                         //gp_axis_orientation_y = 32796
-                                         //gp_axis_orientation_z = 32797
-                                         //gp_axis_orientation_w = 32798
-
 //Extended keycode constants
 #macro vk_clear       12
 #macro vk_capslock    20
