@@ -1526,6 +1526,12 @@ function __input_class_player() constructor
             ++_s;
         }
         
+        if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (_hasKeyboard || _hasMouse))
+        {
+            _hasKeyboard = true;
+            _hasMouse    = true;
+        }
+        
         var _verbArray = __global.__basic_verb_array;
         var _v = 0;
         repeat(array_length(_verbArray))
