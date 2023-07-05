@@ -9,9 +9,9 @@ function __InputClassBindingMouse() : __InputClassBindingCommon() constructor
         __RefreshLabel();
     }
     
-    static __Read = function(_player, _verbState)
+    static __Read = function(_player, _verbState, _hasKeyboard, _hasMouse, _hasGamepad, _mixedMode)
     {
-        if (_player.__sourceHasMouse && input_mouse_check(__constant))
+        if (_hasMouse && input_mouse_check(__constant))
         {
             with(_verbState)
             {

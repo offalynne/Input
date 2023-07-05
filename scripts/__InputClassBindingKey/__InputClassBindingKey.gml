@@ -71,9 +71,9 @@ function __InputClassBindingKey() : __InputClassBindingCommon() constructor
         __RefreshLabel();
     }
     
-    static __Read = function(_player, _verbState)
+    static __Read = function(_player, _verbState, _hasKeyboard, _hasMouse, _hasGamepad, _mixedMode)
     {
-        if (_player.__sourceHasKeyboard)
+        if (_hasKeyboard)
         {
             if (keyboard_check(__constant))
             {

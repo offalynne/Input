@@ -9,7 +9,7 @@ if (input_keyboard_check_pressed(vk_enter)
 
 if (input_keyboard_check_pressed(ord("C")))
 {
-    input_binding_set("left", input_binding_empty());
+    input_binding_set("left", InputBinding());
     show_debug_message("Clear!");
 }
 

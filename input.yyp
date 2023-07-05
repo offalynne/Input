@@ -355,7 +355,6 @@
     {"id":{"name":"__input_mouse_button","path":"scripts/__input_mouse_button/__input_mouse_button.yy",},"order":4,},
     {"id":{"name":"__input_multiplayer_assignment_tick","path":"scripts/__input_multiplayer_assignment_tick/__input_multiplayer_assignment_tick.yy",},"order":1,},
     {"id":{"name":"__input_player_apply_trigger_effects","path":"scripts/__input_player_apply_trigger_effects/__input_player_apply_trigger_effects.yy",},"order":9,},
-    {"id":{"name":"__InputPlayerTickSources","path":"scripts/__InputPlayerTickSources/__InputPlayerTickSources.yy",},"order":2,},
     {"id":{"name":"__input_snap_to_json","path":"scripts/__input_snap_to_json/__input_snap_to_json.yy",},"order":10,},
     {"id":{"name":"__input_source_relinquish","path":"scripts/__input_source_relinquish/__input_source_relinquish.yy",},"order":16,},
     {"id":{"name":"__input_steam_handles_changed","path":"scripts/__input_steam_handles_changed/__input_steam_handles_changed.yy",},"order":10,},

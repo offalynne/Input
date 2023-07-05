@@ -16,6 +16,7 @@ function __input_class_verb_state() constructor
     raw_analogue   = false;
     min_threshold  = 0;
     max_threshold  = 1;
+    
     force_value    = undefined;
     force_analogue = undefined;
     
@@ -34,31 +35,70 @@ function __input_class_verb_state() constructor
     
     
     
-    static __clear = function()
+    static __Tick = function(_player, _playerActive, _currentProfileDict, _hasKeyboard, _hasMouse, _hasGamepad, _mixedMode)
     {
-        value = 0.0;
-        raw   = 0.0;
-        
-        press   = false;
-        held    = false;
-        release = false;
-    }
-    
-    static tick = function(_player, _player_active, _alternate_array)
-    {
-        __clear();
-        
         var _time = __input_get_time();
         
-        if (not _player_active)
+        value         = 0.0;
+        raw           = 0.0;
+        analogue      = false;
+        raw_analogue  = false;
+        min_threshold = 0;
+        max_threshold = 1;
+        
+        //TODO - Compress virtual and forced values into one set of variables
+        //We've had our value set this frame via a virtual button
+        if ((__virtual_value != undefined) && (__virtual_raw_value != undefined) && (__virtual_analogue != undefined))
         {
-            var _i = 0;
-            repeat(array_length(_alternate_array))
+            if (_playerActive)
             {
-                _alternate_array[_i].__Read(_player, self);
-                ++_i;
+                raw   = __virtual_raw_value;
+                value = __virtual_value;
+                
+                analogue     = __virtual_analogue;
+                raw_analogue = __virtual_analogue;
+                
+                min_threshold = 0;
+                max_threshold = 1;
+            }
+                
+            __virtual_value     = undefined;
+            __virtual_raw_value = undefined;
+            __virtual_analogue  = undefined;
+        }
+            
+        //We've had our value set this frame via input_verb_set()
+        if ((force_value != undefined) && (force_analogue != undefined))
+        {
+            if (_playerActive)
+            {
+                raw   = force_value;
+                value = force_value;
+                
+                analogue     = force_analogue;
+                raw_analogue = force_analogue;
+                
+                min_threshold = 0;
+                max_threshold = 1;
+            }
+                
+            force_value    = undefined;
+            force_analogue = undefined;
+        }
+        
+        if (_playerActive && is_struct(_currentProfileDict))
+        {
+            var _alternateArray = _currentProfileDict[$ name];
+            var _alternate = 0;
+            repeat(array_length(_alternateArray))
+            {
+                _alternateArray[_alternate].__Read(_player, self, _hasKeyboard, _hasMouse, _hasGamepad, _mixedMode);
+                ++_alternate;
             }
         }
+        
+        press   = false;
+        release = false;
         
         if (value > 0)
         {
@@ -66,6 +106,10 @@ function __input_class_verb_state() constructor
             
             held      = true;
             held_time = _time;
+        }
+        else
+        {
+            held = false;
         }
         
         if (previous_held != held)
@@ -87,6 +131,6 @@ function __input_class_verb_state() constructor
         
         previous_held = held;
         
-        __inactive = (__group_inactive || __consumed || !_player_active);
+        __inactive = (__group_inactive || __consumed || !_playerActive);
     }
 }

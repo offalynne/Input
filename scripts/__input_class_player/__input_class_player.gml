@@ -77,7 +77,7 @@ function __input_class_player() constructor
             var _a = 0;
             repeat(INPUT_MAX_ALTERNATE_BINDINGS)
             {
-                _alternate_array[@ _a] = input_binding_empty();
+                _alternate_array[@ _a] = InputBinding();
                 ++_a;
             }
             
@@ -310,7 +310,7 @@ function __input_class_player() constructor
             var _a = 0;
             repeat(INPUT_MAX_ALTERNATE_BINDINGS)
             {
-                _existing_alternate_array[@ _a] = input_binding_empty();
+                _existing_alternate_array[@ _a] = InputBinding();
                 ++_a;
             }
             
@@ -520,7 +520,7 @@ function __input_class_player() constructor
     /// @param allowFallback
     static __binding_get = function(_profile_name, _verb, _alternate, _allowFallback)
     {
-        static _empty_binding = input_binding_empty();
+        static _empty_binding = InputBinding();
         
         _profile_name = __profile_get(_profile_name);
         
@@ -734,7 +734,7 @@ function __input_class_player() constructor
             return;
         }
         
-        __profiles_dict[$ _profile_name][$ _verb][@ _alternate] = input_binding_empty();
+        __profiles_dict[$ _profile_name][$ _verb][@ _alternate] = InputBinding();
         if (__INPUT_DEBUG_BINDING) __input_trace("Binding for profile \"", _profile_name, "\" verb \"", _verb, "\" alternate ", _alternate, " removed (set to null)");
     }
     
@@ -867,7 +867,7 @@ function __input_class_player() constructor
             var _i = 0;
             repeat(INPUT_MAX_ALTERNATE_BINDINGS)
             {
-                _verb_alternate_array[@ _i] = input_binding_empty();
+                _verb_alternate_array[@ _i] = InputBinding();
                 ++_i;
             }
             
@@ -1001,7 +1001,7 @@ function __input_class_player() constructor
                     {
                         if (is_struct(_alternate_array[_a]))
                         {
-                            var _verb_input = _alternate_array[_a].value;
+                            var _verb_input = _alternate_array[_a].__constant;
                             
                             var _found = false;
                             var _m = 0;
@@ -1493,24 +1493,45 @@ function __input_class_player() constructor
             //This'll catch disconnection if and when it happens
             if (__rebind_state > 0) __tick_binding_scan();
             
-            __InputPlayerTickSources(self);
-            
-            var _profile = __profiles_dict[$ profile_name];
-            
-            //Update our basic verbs first
-            var _v = 0;
-            repeat(array_length(__global.__basic_verb_array))
-            {
-                var _verbName = __global.__basic_verb_array[_v];
-                __verb_state_dict[$ _verbName].tick(self, __active, _profile[$ _verbName]);
-                ++_v;
-            }
-            
+            __TickVerbState();
             __cursor.__tick();
-            
             __tick_vibration();
             
             if (!__connected) __post_disconnection_tick = true;
+        }
+    }
+    
+    static __TickVerbState = function()
+    {
+        //Cache some values for efficiency's sake
+        var _playerActive = __active;
+        var _currentProfileDict = __profiles_dict[$ __profile_name];
+        var _mixedMode = (_global.__source_mode == INPUT_SOURCE_MODE.MIXED);
+        var _hasKeyboard = false;
+        var _hasMouse    = false;
+        var _hasGamepad  = false;
+        
+        //Discover whether the player has a keyboard and mouse
+        //TODO - Do this when adding/removing sources
+        var _s = 0;
+        repeat(array_length(__source_array))
+        {
+            switch(__source_array[_s].__source)
+            {
+                case __INPUT_SOURCE.KEYBOARD: _hasKeyboard = true; break;
+                case __INPUT_SOURCE.MOUSE:    _hasMouse    = true; break;
+                case __INPUT_SOURCE.GAMEPAD:  _hasGamepad  = true; break;
+            }
+            
+            ++_s;
+        }
+        
+        var _verbArray = _global.__basic_verb_array;
+        var _v = 0;
+        repeat(array_length(_verbArray))
+        {
+            __verb_state_dict[$ _verbArray[_v]].__Tick(self, _playerActive, _currentProfileDict, _hasKeyboard, _hasMouse, _hasGamepad, _mixedMode);
+            ++_v;
         }
     }
     

@@ -26,6 +26,7 @@ function __input_finalize_default_profiles()
         var _profile_name   = _global.__profile_array[_f];
         var _profile_struct = _global.__default_profile_dict[$ _profile_name];
         
+        //Clean up HTML5 jank
         if (os_browser != browser_not_a_browser)
         {
             if (is_method(_profile_struct))
@@ -77,7 +78,7 @@ function __input_finalize_default_profiles()
                 
                 if (_binding == undefined)
                 {
-                    _binding = input_binding_empty();
+                    _binding = InputBinding();
                 }
                 else if (!input_value_is_binding(_binding))
                 {

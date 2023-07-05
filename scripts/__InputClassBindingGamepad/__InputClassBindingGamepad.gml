@@ -27,22 +27,25 @@ function __InputClassBindingGamepad() : __InputClassBindingCommon() constructor
         __RefreshLabel();
     }
     
-    static __Read = function(_player, _verbState)
+    static __Read = function(_player, _verbState, hasKeyboard, _hasMouse, _hasGamepad, _mixedMode)
     {
-        if (__gamepadStruct == undefined)
+        if (_hasGamepad)
         {
-            var _sourceArray = _player.__source_array;
-            var _i = 0;
-            repeat(array_length(_sourceArray))
+            if ((__gamepadStruct == undefined) || _mixedMode)
             {
-                var _gamepadStruct = _sourceArray[_i].__gamepad;
-                if (_gamepadStruct != undefined) __ReadInner(_verbState, _gamepadStruct);
-                ++_i;
+                var _sourceArray = _player.__source_array;
+                var _i = 0;
+                repeat(array_length(_sourceArray))
+                {
+                    var _gamepadStruct = _sourceArray[_i].__gamepad;
+                    if (_gamepadStruct != undefined) __ReadInner(_verbState, _gamepadStruct);
+                    ++_i;
+                }
             }
-        }
-        else
-        {
-            __ReadInner(_verbState, __gamepadStruct);
+            else
+            {
+                __ReadInner(_verbState, __gamepadStruct);
+            }
         }
         
         return false;

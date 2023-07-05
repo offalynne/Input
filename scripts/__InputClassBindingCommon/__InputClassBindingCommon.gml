@@ -12,7 +12,7 @@ function __InputClassBindingCommon() constructor
     {
     }
     
-    static __Read = function(_player, _verbState)
+    static __Read = function(_player, _verbState, hasKeyboard, _hasMouse, _hasGamepad, _mixedMode)
     {
     }
     

@@ -4,64 +4,64 @@
 //
 //The struct return by this script contains the names of each default profile.
 //Default profiles then contain the names of verbs. Each verb should be given a binding that is
-//appropriate for the profile. You can create bindings by calling one of the input_binding_*()
-//functions, such as input_binding_key() for keyboard keys and input_binding_mouse() for
-//mouse buttons
+//appropriate for the profile. You can create bindings by calling InputBinding() and then specifying
+//a constant to target from the mb_*, gp_*, or vk_* pools. You may specify a keyboard letter by using
+//the character as a string.
 
 return {
     
     keyboard_and_mouse:
     {
-        up:    [input_binding_key(vk_up),    input_binding_key("W")],
-        down:  [input_binding_key(vk_down),  input_binding_key("S")],
-        left:  [input_binding_key(vk_left),  input_binding_key("A")],
-        right: [input_binding_key(vk_right), input_binding_key("D")],
+        up:    [InputBinding(vk_up),    InputBinding("W")],
+        down:  [InputBinding(vk_down),  InputBinding("S")],
+        left:  [InputBinding(vk_left),  InputBinding("A")],
+        right: [InputBinding(vk_right), InputBinding("D")],
         
-        accept:  input_binding_key(vk_space),
-        cancel:  input_binding_key(vk_backspace),
-        action:  input_binding_key(vk_enter),
-        special: input_binding_key(vk_shift),
+        accept:  InputBinding(vk_space),
+        cancel:  InputBinding(vk_backspace),
+        action:  InputBinding(vk_enter),
+        special: InputBinding(vk_shift),
         
         //No aiming verbs since we use the mouse for that (see below for aiming verb examples)
-        shoot: input_binding_mouse_button(mb_left),
+        shoot: InputBinding(mb_left),
         
-        pause: input_binding_key(vk_escape),
+        pause: InputBinding(vk_escape),
     },
     
     gamepad:
     {
-        up:    [input_binding_gamepad_axis(gp_axislv, true),  input_binding_gamepad_button(gp_padu)],
-        down:  [input_binding_gamepad_axis(gp_axislv, false), input_binding_gamepad_button(gp_padd)],
-        left:  [input_binding_gamepad_axis(gp_axislh, true),  input_binding_gamepad_button(gp_padl)],
-        right: [input_binding_gamepad_axis(gp_axislh, false), input_binding_gamepad_button(gp_padr)],
+        up:    [InputBinding(-gp_axislv), InputBinding(gp_padu)],
+        down:  [InputBinding( gp_axislv), InputBinding(gp_padd)],
+        left:  [InputBinding(-gp_axislh), InputBinding(gp_padl)],
+        right: [InputBinding( gp_axislh), InputBinding(gp_padr)],
         
-        accept:  input_binding_gamepad_button(gp_face1),
-        cancel:  input_binding_gamepad_button(gp_face2),
-        action:  input_binding_gamepad_button(gp_face3),
-        special: input_binding_gamepad_button(gp_face4),
+        accept:  InputBinding(gp_face1),
+        cancel:  InputBinding(gp_face2),
+        action:  InputBinding(gp_face3),
+        special: InputBinding(gp_face4),
         
-        aim_up:    input_binding_gamepad_axis(gp_axisrv, true),
-        aim_down:  input_binding_gamepad_axis(gp_axisrv, false),
-        aim_left:  input_binding_gamepad_axis(gp_axisrh, true),
-        aim_right: input_binding_gamepad_axis(gp_axisrh, false),
-        shoot:     [input_binding_gamepad_button(gp_shoulderlb), input_binding_gamepad_button(gp_shoulderrb)],
+        aim_up:    InputBinding(-gp_axisrv),
+        aim_down:  InputBinding( gp_axisrv),
+        aim_left:  InputBinding(-gp_axisrh),
+        aim_right: InputBinding( gp_axisrh),
+        shoot:     [InputBinding(gp_shoulderlb), InputBinding(gp_shoulderrb)],
         
-        pause: input_binding_gamepad_button(gp_start),
+        pause: InputBinding(gp_start),
     },
     
     touch:
     {
-        up:    input_binding_virtual_button(),
-        down:  input_binding_virtual_button(),
-        left:  input_binding_virtual_button(),
-        right: input_binding_virtual_button(),
+        up:    InputBinding(),
+        down:  InputBinding(),
+        left:  InputBinding(),
+        right: InputBinding(),
         
-        accept:  input_binding_virtual_button(),
-        cancel:  input_binding_virtual_button(),
-        action:  input_binding_virtual_button(),
-        special: input_binding_virtual_button(),
+        accept:  InputBinding(),
+        cancel:  InputBinding(),
+        action:  InputBinding(),
+        special: InputBinding(),
         
-        pause: input_binding_virtual_button(),
+        pause: InputBinding(),
     }
     
 };

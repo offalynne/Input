@@ -1,4 +1,4 @@
-function InputBinding(_constant)
+function InputBinding(_constant = undefined)
 {
     switch(_constant)
     {
