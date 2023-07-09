@@ -60,7 +60,7 @@ It is recommended to only use bindings written on the same device as keyboard sc
 if (input_check("back"))
 {
 	//Export a nice readable string
-	var _string = input_system_export(false, true);
+	var _string = input_system_export(true, true);
 
 	//Save the string into a buffer
 	var _buffer = buffer_create(1024, buffer_grow, 1);
