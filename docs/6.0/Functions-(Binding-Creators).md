@@ -183,7 +183,7 @@ return {
     keyboard_and_mouse: {
 
     	//Use either the "up" arrow or the mouse wheel to navigate UI
-    	ui_up: [input_binding_keyboard(vk_up), input_binding_mouse_wheel_up()],
+    	ui_up: [input_binding_key(vk_up), input_binding_mouse_wheel_up()],
 
     }
 
@@ -224,7 +224,7 @@ return {
     keyboard_and_mouse: {
 
     	//Use either the "down" arrow or the mouse wheel to navigate UI
-    	ui_down: [input_binding_keyboard(vk_down), input_binding_mouse_wheel_down()],
+    	ui_down: [input_binding_key(vk_down), input_binding_mouse_wheel_down()],
 
     }
 
