@@ -68,12 +68,12 @@ Straightforwardly sets the binding for a verb, overwriting what was already ther
 
 ```gml
 //Set up left-handed controls by overwriting all the verbs we have
-input_binding_set("up",    input_binding_keyboard("I"));
-input_binding_set("down",  input_binding_keyboard("K"));
-input_binding_set("left",  input_binding_keyboard("J"));
-input_binding_set("right", input_binding_keyboard("L"));
-input_binding_set("jump",  input_binding_keyboard(vk_space));
-input_binding_set("pause", input_binding_keyboard(vk_escape));
+input_binding_set("up",    input_binding_key("I"));
+input_binding_set("down",  input_binding_key("K"));
+input_binding_set("left",  input_binding_key("J"));
+input_binding_set("right", input_binding_key("L"));
+input_binding_set("jump",  input_binding_key(vk_space));
+input_binding_set("pause", input_binding_key(vk_escape));
 ```
 
 <!-- tabs:end -->
