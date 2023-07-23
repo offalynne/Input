@@ -49,12 +49,12 @@ function __input_hotswap_tick_input()
     if (_global.__any_gamepad_binding_defined)
     {
         var _player = _global.__players[0];
-        var _gamepad = _global.__players[0].__source_get_gamepad();
-        var _gamepad_index = (is_struct(_gamepad)? _gamepad.index : -1);
+        var _gamepad_index = _player.__source_get_gamepad();
+        var _gamepad = (((_gamepad_index > -1) && is_struct(_global.__gamepads[_gamepad_index]))? _global.__gamepads[_gamepad_index] : -1);
         
         #region In-use gamepad
         
-        if (gamepad_is_connected(_gamepad_index))
+        if (_gamepad_index > -1)
         {
             //Check buttons
             if (_gamepad.get_held(gp_face1)
@@ -151,7 +151,7 @@ function __input_hotswap_tick_input()
                         }
                     
                         //Check axes
-                        if  (INPUT_HOTSWAP_ON_GAMEPAD_AXIS)
+                        if  (INPUT_HOTSWAP_ON_GAMEPAD_AXIS && (_gamepad.custom_mapping || !__INPUT_SDL2_SUPPORT))
                         {
                             if (((abs(get_value(gp_shoulderlb)) > _player.__axis_threshold_get(gp_shoulderlb).mini) && (abs(get_delta(gp_shoulderlb)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
                             ||  ((abs(get_value(gp_shoulderrb)) > _player.__axis_threshold_get(gp_shoulderrb).mini) && (abs(get_delta(gp_shoulderrb)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
