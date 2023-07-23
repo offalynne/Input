@@ -506,3 +506,38 @@ dead,beef,CommunityPSX // Hidromancer
 289b,0090,CommunityUnknown // Raphnet Multiadapter
 289b,0093,CommunityUnknown // Raphnet Multiadapter
 289b,003c,CommunityUnknown // Raphnet Multiadapter
+0079,1864,SDLWheel // PXN V900 PS3, Superdrive SV750, Genesis Seaborg 400
+046d,c294,SDLWheel // Logitech generic wheel
+046d,c295,SDLWheel // Logitech Momo Force
+046d,c298,SDLWheel // Logitech Driving Force Pro
+046d,c299,SDLWheel // Logitech G25
+046d,c29a,SDLWheel // Logitech Driving Force GT
+046d,c29b,SDLWheel // Logitech G27
+046d,c24f,SDLWheel // Logitech G29 PS3
+046d,c260,SDLWheel // Logitech G29 PS4
+046d,c261,SDLWheel // Logitech G920 initial mode
+046d,c262,SDLWheel // Logitech G920 active mode
+046d,c268,SDLWheel // Logitech PRO Racing Wheel PC mode
+046d,c269,SDLWheel // Logitech PRO Racing Wheel PS4 PS5 mode
+046d,c26d,SDLWheel // Logitech G923 Xbox
+046d,c26e,SDLWheel // Logitech G923
+046d,ca03,SDLWheel // Logitech Momo Racing
+044f,b65d,SDLWheel // Thrustmaster Wheel FFB
+044f,b66d,SDLWheel // Thrustmaster Wheel FFB
+044f,b677,SDLWheel // Thrustmaster T150
+044f,b696,SDLWheel // Thrustmaster T248
+044f,b66e,SDLWheel // Thrustmaster T300RS Normal
+044f,b66f,SDLWheel // Thrustmaster T300RS Advanced
+044f,b66d,SDLWheel // Thrustmaster T300RS PS4
+044f,b65e,SDLWheel // Thrustmaster T500RS
+044f,b664,SDLWheel // Thrustmaster TX initial mode
+044f,b669,SDLWheel // Thrustmaster TX active mode
+11ff,0511,SDLWheel // PXN V900 PS3, Superdrive SV750, Genesis Seaborg 400 initial mode
+044f,0402,SDLFlightstick // HOTAS Warthog Joystick
+0738,2221,SDLFlightstick // Saitek Pro Flight X56 Rhino Stick
+044f,b10a,SDLFlightstick // ThrustMaster Inc T16000M Joystick
+046d,c215,SDLFlightstick // Logitech Extreme 3D
+231d,0126,SDLFlightstick // Gunfighter MkIII Space Combat Edition right
+231d,0127,SDLFlightstick // Gunfighter MkIII Space Combat Edition left
+044f,0404,SDLThrottle // HOTAS Warthog Throttle
+0738,a221,SDLThrottle // Saitek Pro Flight X56 Rhino Throttle
