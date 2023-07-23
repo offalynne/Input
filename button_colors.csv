@@ -13,5 +13,6 @@ CommunityPS4,a:blue,b:red,x:pink,y:green
 CommunityN64,a:blue,b:green,rightx:yellow,righty:yellow,start:red
 CommunityDreamcast,a:red,b:blue,x:yellow,y:green
 CommunityOuya,a:green,b:red,x:blue,y:yellow
+CommunityNeoGeo,a:red,b:yellow,x:green,y:blue
 CommunityNeoGeoMini,a:yellow,b:blue,x:red,y:green
 CommunitySuperFamicom,a:yellow,b:red,x:green,y:blue
