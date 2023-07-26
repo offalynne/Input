@@ -18,6 +18,9 @@
 //   gp_paddle4
 #macro INPUT_SDL2_ALLOW_EXTENDED  true
 
+//Whether to allow identified non-gamepad joystick devices including wheels, flightsticks, throttles
+#macro INPUT_SDL2_ALLOW_NONGAMEPAD_JOYSTICKS  false
+
 //The following macros hold the names of various source files that Input uses to hold gamepad data
 #macro INPUT_SDL2_DATABASE_PATH    "sdl2.txt"                //Path to the SDL2 database to read gamepad remapping definitions from
 #macro INPUT_CONTROLLER_TYPE_PATH  "controllertypes.csv"     //Path to the controller type database to read gamepad types from
