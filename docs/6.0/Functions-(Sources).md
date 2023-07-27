@@ -211,7 +211,7 @@ for(var _i = 0; _i < array_length(_array); _i++)
 
 	if (_source == INPUT_KEYBOARD)
 	{
-		draw_sprite(spr_keyboarc_icon, 0, x, _y);
+		draw_sprite(spr_keyboard_icon, 0, x, _y);
 	}
 	else if (_source == INPUT_MOUSE)
 	{
