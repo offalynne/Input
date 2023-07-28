@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns whether the profile with the given name exists
 /// @param   profileName
 /// @param   [playerIndex=0]

@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets whether the player is a "ghost" or not
 /// @param   state
 /// @param   [playerIndex=0]

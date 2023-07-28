@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Reads a JSON (string or struct) that contains profile data and verifies if it can be imported without error
 /// @param   stringOrStruct
 /// @param   profileName

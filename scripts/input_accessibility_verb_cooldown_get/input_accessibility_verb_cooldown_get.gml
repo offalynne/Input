@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns whether cooldown behaviour is enabled for a verb
 /// @param   verb
 

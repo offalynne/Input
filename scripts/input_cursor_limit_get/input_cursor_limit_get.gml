@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the cursor limit state as a struct
 ///          If no limit has been set, this function returns <undefined>
 /// @param   [playerIndex=0]

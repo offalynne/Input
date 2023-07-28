@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Removes an elastic force that has been added to the given player’s cursor
 /// @param   [playerIndex=0]
 

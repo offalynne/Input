@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Hides virtual keyboard
 ///          This covers mobile platforms as well as Steam
 

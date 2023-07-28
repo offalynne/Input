@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Automatically assigns a profile to the player based on what sources they have been assigned
 ///          This is based on INPUT_AUTO_PROFILE_FOR_KEYBOARD etc. in __input_config_profiles()
 /// @param   [playerIndex=0]

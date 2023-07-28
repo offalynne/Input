@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns whether the given mouse button is newly deactivated this frame.
 /// @param   binding
 

@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the coordinate space for the player's cursor when using mouse input
 /// @param   [playerIndex=0]
 

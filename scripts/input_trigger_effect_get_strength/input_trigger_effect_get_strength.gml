@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the strength of trigger effects for the player
 /// @param   [playerIndex=0]
 

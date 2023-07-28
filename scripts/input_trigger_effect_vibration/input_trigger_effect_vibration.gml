@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets gamepad trigger effect to vibration for a player
 /// @param   trigger
 /// @param   position

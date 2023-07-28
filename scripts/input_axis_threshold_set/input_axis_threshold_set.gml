@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets the activation threshold for a specific gamepad axis for a player
 ///          This is overriden by thresholds set by input_binding_threshold_set()
 /// @param   axis

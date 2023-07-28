@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Assigns a source to two or more players. All other players using the source will have it unassigned
 ///          If the players had any other sources assigned then they will be unassigned
 /// @param   source

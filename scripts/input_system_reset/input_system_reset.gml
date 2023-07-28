@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Resets accessibility and profile data for all players
 
 function input_system_reset()

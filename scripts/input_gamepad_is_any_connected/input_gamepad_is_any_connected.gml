@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns whether any (non-blocked) gamepad is connected
 
 function input_gamepad_is_any_connected()

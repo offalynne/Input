@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Whether to capture the mouse in the game window, and its movement speed for Input's built-in mouse tracking
 /// @param   state
 /// @param   [sensitivity=1]

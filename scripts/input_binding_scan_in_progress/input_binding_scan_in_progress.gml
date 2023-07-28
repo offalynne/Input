@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns whether the given player is currently scanning for bindings
 /// @param   [playerIndex=0]
 

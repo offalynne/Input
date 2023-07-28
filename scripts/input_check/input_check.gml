@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns a boolean indicating whether the given verb is currently active (a button is being held etc.)
 ///          If the keyword <all> is used then this function will return <true> if ANY verb whatsoever is active
 ///          If an array of verbs is given then this function will return <true> if ANY of the verbs in the array are active

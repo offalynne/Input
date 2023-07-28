@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns if the given value is a virtual button
 /// 
 /// @param   value

@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns whether vibration has been paused for the given player
 /// 
 /// @param   [playerIndex=0]

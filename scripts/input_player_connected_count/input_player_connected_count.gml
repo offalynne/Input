@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns he number of players with connected devices
 /// @param   [includeGhosts=true]
 
