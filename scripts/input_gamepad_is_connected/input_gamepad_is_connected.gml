@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns whether the given (non-blocked) gamepad is connected
 /// @param   gamepadIndex
 

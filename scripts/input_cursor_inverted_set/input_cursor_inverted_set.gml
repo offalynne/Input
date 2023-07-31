@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets whether the vertical axis is inverted for the cursor
 /// @param   speed
 /// @param   [playerIndex=0]

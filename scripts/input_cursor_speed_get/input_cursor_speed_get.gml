@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the speed of the cursor when using keyboard or gamepad input
 /// @param   [playerIndex=0]
 

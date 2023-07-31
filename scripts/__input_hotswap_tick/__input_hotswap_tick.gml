@@ -1,3 +1,4 @@
+// Feather disable all
 /// @param [setAutoProfile=true]
 
 function __input_hotswap_tick()

@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns a source that has presented new input and is unassigned, otherwise <undefined>
 
 function input_source_detect_new()

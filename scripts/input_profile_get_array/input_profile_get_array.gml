@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the profiles that have been created for the player, including default profiles
 /// @param   [playerIndex=0]
 

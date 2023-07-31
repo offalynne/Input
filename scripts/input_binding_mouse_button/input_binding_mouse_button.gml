@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Creates a mouse button binding. This function accepts mb_* constants
 /// @param   button
 

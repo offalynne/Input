@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns a struct containing the specific analogue activation threshold for this binding
 ///          If no threshold has been set for the binding then this function returns <undefined>
 /// @param   binding

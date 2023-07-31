@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Immediately stops all vibration events for the given player
 /// 
 /// @param   [playerIndex=0]

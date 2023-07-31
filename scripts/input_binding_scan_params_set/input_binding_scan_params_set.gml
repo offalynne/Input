@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets parameters when scanning for bindings for a particular player
 ///          These parameters persist between scans
 /// 

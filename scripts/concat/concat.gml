@@ -1,3 +1,4 @@
+// Feather disable all
 function concat()
 {
     var _string = "";

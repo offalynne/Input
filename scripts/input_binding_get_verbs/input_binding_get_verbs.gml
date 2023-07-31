@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns an array of structs containing verb/alternate indexes matching a binding
 /// @param   binding
 /// @param   [playerIndex=0]

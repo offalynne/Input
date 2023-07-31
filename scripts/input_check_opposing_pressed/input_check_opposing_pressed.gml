@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the sign of the result of the negative and positive newly active verbs
 /// @param   verbNegative
 /// @param   verbPositive

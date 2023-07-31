@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets the state of a verb group, as defined by __input_config_verb_groups(). Verbs inside a deactivated verb group are also deactivated
 /// @param   verbGroup
 /// @param   state

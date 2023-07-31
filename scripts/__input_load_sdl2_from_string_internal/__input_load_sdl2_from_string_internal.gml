@@ -1,3 +1,4 @@
+// Feather disable all
 function __input_load_sdl2_from_string_internal(_string)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global

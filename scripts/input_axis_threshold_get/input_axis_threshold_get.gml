@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the activation threshold for a specific gamepad axis for a player
 ///          If no activation threshold has been set this function returns <undefined>
 /// @param   axis

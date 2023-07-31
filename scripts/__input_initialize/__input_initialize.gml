@@ -1,3 +1,4 @@
+// Feather disable all
 __input_initialize();
 function __input_initialize()
 {

@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the binding for the given verb. If no binding has been set, this function will return <undefined>
 ///          If no profile is provided, the current profile is used
 /// @param   verb

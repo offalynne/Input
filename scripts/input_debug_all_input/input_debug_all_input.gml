@@ -1,3 +1,4 @@
+// Feather disable all
 /// Returns an array that contains bindings for each keyboard key, mouse button, and gamepad
 /// button/axis that are being pressed on any input device
 /// 

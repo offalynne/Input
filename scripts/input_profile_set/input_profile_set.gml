@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets the currently active profile for the player
 /// @param   profileName
 /// @param   [playerIndex=0]

@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Clears parameters for binding scanning to defaults
 /// 
 /// @param   [playerIndex=0]

@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Gets whether a player may use gamepad gyro to drive the cursor
 /// @param   [playerIndex=0]
 

@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets gamepad trigger effect off for a player
 /// @param   trigger
 /// @param   [playerIndex=0]

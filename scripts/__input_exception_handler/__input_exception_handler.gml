@@ -1,3 +1,4 @@
+// Feather disable all
 function __input_exception_handler()
 {
     __input_trace(argument0);

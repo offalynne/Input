@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns an array of structs, gamepad bindings that are invalid due to the gamepad lacking certain mapped inputs
 /// @param   [playerIndex=0]
 /// @param   [profileName]

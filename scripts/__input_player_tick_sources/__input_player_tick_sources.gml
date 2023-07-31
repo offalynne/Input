@@ -1,3 +1,4 @@
+// Feather disable all
 function __input_player_tick_sources(_player)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global

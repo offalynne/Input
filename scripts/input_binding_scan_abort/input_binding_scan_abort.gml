@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Aborts the binding scan process started by input_binding_scan_start(), if one has been started
 /// @param   [playerIndex=0]
 

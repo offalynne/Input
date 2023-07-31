@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets the function to call when a player hotswaps their device
 ///          Set the callback to <undefined> to not call a function at all
 /// @param   callback

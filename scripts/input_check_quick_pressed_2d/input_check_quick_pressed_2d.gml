@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns whther the analogue inputs registered a quick tap this frame
 ///          Only analogue inputs can trigger quick taps. This function will return <false> if any digital input is used
 /// 

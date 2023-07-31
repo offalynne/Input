@@ -1,3 +1,4 @@
+// Feather disable all
 //PC platforms: Windows, MacOS, Linux, Steam Deck, HTML5 or OperaGX
 #macro INPUT_PC_KEYBOARD          true
 #macro INPUT_PC_MOUSE             true

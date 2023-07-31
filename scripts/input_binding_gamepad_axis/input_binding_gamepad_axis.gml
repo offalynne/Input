@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Creates a gamepad axis binding. This function accepts gp_* constants
 ///          The <negative> argument should be set to either <true> or <false> to control what direction
 ///          is anticipated from the gamepad axis e.g. thumbstick left is negative but thumbstick right
