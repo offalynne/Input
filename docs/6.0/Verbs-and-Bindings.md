@@ -10,7 +10,7 @@ Verbs can be checked in multiple ways, mostly using the [checker](Functions-(Che
 
 !> The name of a verb is **always a string**. In previous versions of Input, a verb name could also be a number, but this is no longer the case.
 
-In addition to basic verbs, you can also create chords. Chords are built by calling [specific functions](Functions-(Extended-Verbs)). Basic verbs and chord verbs verbs can be checked using the same functions.
+In addition to basic verbs, you can also create chords. Chords are built by calling [specific functions](Functions-(Extended-Verbs)). Basic verbs and chord verbs can be checked using the same functions.
 
 A "binding" is a piece of logic that ties a physical input on an input source (keyboard, mouse, or gamepad) to a verb in-game. For example, we might want to create a binding that ties the up arrow key on a keyboard to a verb called `"move_up"`. There are [seven types of binding](Functions-(Binding-Creators)):
 
