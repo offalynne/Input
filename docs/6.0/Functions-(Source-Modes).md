@@ -24,7 +24,7 @@ You can read more about source modes [here](Input-Sources?id=source-modes).
 //Configures Input to share keyboard controls between two players
 
 //Set the source mode to FIXED so we can control sources ourselves
-input_source_mode_set(INPUT_GAMEPAD.FIXED);
+input_source_mode_set(INPUT_SOURCE_MODE.FIXED);
 
 //Share the keyboard across both players
 input_source_share(INPUT_KEYBOARD, [0, 1]);
