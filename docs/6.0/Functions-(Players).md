@@ -96,7 +96,7 @@ This function returns a struct that describes the state of each player's connect
 
 ```
 {
-    any_changes: <boolean that indicates whether anything has changed at all>
+    any_changed: <boolean that indicates whether anything has changed at all>
     new_connections: [
         <array of player indexes that are newly connected this step>
     ],
@@ -123,7 +123,7 @@ The `INPUT_STATUS` enum contains the following members:
 ```gml
 //Pick up incoming new players and outgoing old users
 var _status = input_players_get_status();
-if (_status.any_changes)
+if (_status.any_changed)
 {
     //Iterate over new players and create a new player instance for each
     for(var _i = 0; _i < array_length(_status.new_connections); _i++)
