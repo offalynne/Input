@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Destroys a custom profile created by input_profile_create(). Default profiles defined in __input_config_verbs() cannot be destroyed
 /// @param   profileName
 /// @param   [playerIndex=0]

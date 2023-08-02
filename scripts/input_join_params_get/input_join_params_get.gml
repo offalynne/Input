@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the multiplayer parameters set by input_join_params_set()
 
 function input_join_params_get()

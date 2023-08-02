@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets the target gamepad index for the binding. This is only relevant in the MULTIDEVICE source mode
 /// @param   binding
 /// @param   gamepadIndex

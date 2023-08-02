@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Reads a JSON (string or struct) that contains profile data and replaces the given profile's data with it
 /// @param   stringOrStruct
 /// @param   profileName

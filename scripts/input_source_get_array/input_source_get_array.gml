@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns an array containing all the sources assigned to the player
 /// @param   [playerIndex=0]
 

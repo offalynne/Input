@@ -1,3 +1,4 @@
+// Feather disable all
 /// @param [setAutoProfile=true]
 
 function __input_hotswap_tick()
@@ -193,7 +194,7 @@ function __input_hotswap_tick_input()
     
     if (_global.__keyboard_allowed && _global.__any_keyboard_binding_defined
     &&  input_source_is_available(INPUT_KEYBOARD)
-    &&  keyboard_check(vk_anykey)
+    &&  (__input_keyboard_key() > 0)
     &&  !__input_key_is_ignored(__input_keyboard_key())) //Ensure that this key isn't one we're trying to ignore
     {
         if (__INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_KEYBOARD);

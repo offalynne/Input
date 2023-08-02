@@ -1,3 +1,4 @@
+// Feather disable all
 /// @param GMconstant
 /// @param rawIndex
 /// @param rawMappingType

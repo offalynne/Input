@@ -1,3 +1,4 @@
+// Feather disable all
 function __input_keyboard_key()
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
@@ -39,7 +40,8 @@ function __input_keyboard_key()
             break;
             
             default:
-                return keyboard_key;
+                if (keyboard_key > 1) return keyboard_key;
+                return 0;
             break;
         }
     }

@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Limits the cursor’s motion inside an axis-aligned bounding box with the given coordinates
 /// @param   left
 /// @param   top

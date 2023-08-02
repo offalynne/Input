@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns if the binding is valid for the player's currently assigned source(s)
 ///          For example, a gamepad binding would not be valid if a player is only using a keyboard
 /// @param   binding

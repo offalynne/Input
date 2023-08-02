@@ -1,3 +1,4 @@
+// Feather disable all
 __input_initialize();
 function __input_initialize()
 {
@@ -617,9 +618,14 @@ function __input_initialize()
         input_ignore_key_add(vk_lalt);
         input_ignore_key_add(vk_lmeta);
         input_ignore_key_add(vk_rmeta);
-        
+
         input_ignore_key_add(0xFF); //Vendor key
-        
+
+        if (__INPUT_ON_WINDOWS)
+        {
+            input_ignore_key_add(0xE6); //OEM key (Power button on Steam Deck)
+        }
+
         if (INPUT_ON_MOBILE && __INPUT_ON_APPLE)
         {
             input_ignore_key_add(124); //Screenshot

@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns whether input is detected from the target source
 ///          If the keyword <all> is used then this function will return <true> if ANY supported source is active
 ///          If an array of sources is given then this function will return <true> if ANY of the sources in the array are active

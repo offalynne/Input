@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns an array of structs containing conflicting verb/alternate indexes, after taking into account __input_config_verb_groups()
 /// @param   verb
 /// @param   binding

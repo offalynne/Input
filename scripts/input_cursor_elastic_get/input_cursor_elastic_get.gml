@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the elastic properties for the player's cursor as a struct
 ///          If no elastic state has been set, this function returns <undefined>
 /// @param   [playerIndex=0]

@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns a boolean indicating whether the given verb was newly deactivated this frame (a button was released etc.)
 ///          If the keyword <all> is used then this function will return <true> if ANY verb whatsoever was newly deactivated
 ///          If an array of verbs is given then this function will return <true> if ANY of the verbs in the array were newly deactivated

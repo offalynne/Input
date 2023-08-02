@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the state of a verb group, as defined by __input_config_verb_groups()
 /// @param   verbGroup
 /// @param   [playerIndex=0]

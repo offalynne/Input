@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the direction of the vector represented by the sum of the verb values
 /// @param   default
 /// @param   leftVerb

@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Moves a player's virtual cursor to a position, blocking input whilst the cursor is moving
 ///          If an axis isn't specified (<undefined> is used as a the argument value) then that axis
 ///          will be unbound.

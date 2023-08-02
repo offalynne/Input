@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns whether mouse wheel up is newly activated this frame.
 
 function input_mouse_wheel_up()

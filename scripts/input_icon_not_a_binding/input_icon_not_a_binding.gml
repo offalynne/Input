@@ -1,3 +1,4 @@
+// Feather disable all
 /// @param   icon
 
 function input_icon_not_a_binding(_icon)

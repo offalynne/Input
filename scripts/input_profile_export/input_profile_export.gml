@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Outputs a string or struct containing the bindings and axis thresholds for the given profile
 /// @param   profileName
 /// @param   [playerIndex=0]

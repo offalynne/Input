@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Checks if the given button/axis is currently activated on the given gamepad
 /// @param   gamepadIndex
 /// @param   GMconstant

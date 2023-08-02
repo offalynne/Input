@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Gets gamepad motion data for a player
 //           Returned value is a struct containing normalized 
 //           acceleration (Gs) and angular velocity (rad/s) values 

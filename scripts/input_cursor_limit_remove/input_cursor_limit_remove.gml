@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Removes any cursor limits you have set using input_cursor_limit_aabb() or input_cursor_limit_circle() 
 /// @param   [playerIndex=0]
 

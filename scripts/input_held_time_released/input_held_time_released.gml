@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns how long the current verb was held when released, the units of which is determined by INPUT_TIMER_MILLISECONDS
 ///          This function returns a value less than 0 if the verb is not active or was not released
 /// @param   verb/array

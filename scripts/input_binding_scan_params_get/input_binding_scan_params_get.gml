@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns parameters for binding scanning, as set by input_biding_scan_set_params()
 /// 
 /// @param   [playerIndex=0]

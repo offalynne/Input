@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns whether momentary toggles are allowed across the game
 
 function input_accessibility_global_toggle_get()

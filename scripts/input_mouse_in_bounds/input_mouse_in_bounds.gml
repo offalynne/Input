@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns whether the mouse is inside the window bounds
 
 function input_mouse_in_bounds()

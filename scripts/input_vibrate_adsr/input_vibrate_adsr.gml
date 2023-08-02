@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Vibrates a player's gampead over an ADSR curve
 ///          Units for the vibration duration are determined by INPUT_TIMER_MILLISECONDS
 ///          

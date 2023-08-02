@@ -1,3 +1,4 @@
+// Feather disable all
 function __input_class_gamepad_motion(_gamepad_index) constructor
 {
     __INPUT_GLOBAL_STATIC_VARIABLE  //Set static __global

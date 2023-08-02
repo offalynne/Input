@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets gamepad trigger effect to feedback for a player
 /// @param   trigger
 /// @param   position

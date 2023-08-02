@@ -1,3 +1,4 @@
+// Feather disable all
 /// Returns an array that contains bindings for each keyboard key, mouse button, and gamepad
 /// button/axis that the player is pressing. This function uses the same ignore/allow/source
 /// filter behaviour as the binding scan feature (see input_binding_scan_params_set())
