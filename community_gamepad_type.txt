@@ -445,6 +445,7 @@ dead,beef,CommunityPSX // Hidromancer
 0c12,0e21,CommunityPS4 // Brook Mars
 1532,100a,CommunityPS4 // Razer Raiju TE
 0738,3285,CommunityPS4 // Mad Catz Fightpad
+1532,100b,CommunityPS5 // Razer Wolverine PS5 Controller
 057e,2019,CommunityN64 // NSO N64
 06f7,0001,CommunityN64 // N64 Adaptoid
 2dc8,9002,CommunityN64 // Retro Bit x 8BitDo RB8 64 (USB)
