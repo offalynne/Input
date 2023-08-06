@@ -401,7 +401,9 @@ dead,beef,CommunityPSX // Hidromancer
 0b43,0003,CommunityPSX // EMS Production PS2 Adapter
 0e8f,0000,CommunityPSX // Unknown PSX
 0e8f,0003,CommunityPSX // Unknown PSX
+0e8f,1006,CommunityPSX // Unknown PSX
 0e8f,1009,CommunityPSX // Unknown PSX
+0e8f,3013,CommunityPSX // Unknown PSX
 11ff,3341,CommunityPSX // Unknown PSX
 12bd,e001,CommunityPSX // Unknown PSX
 12bd,e002,CommunityPSX // Unknown PSX
