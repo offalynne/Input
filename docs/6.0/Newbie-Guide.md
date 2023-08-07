@@ -2,7 +2,7 @@
 
 ---
 
-*This guide was written by community member **Grace**.*
+*This guide was originally authored by community member **Grace**.*
 
 &nbsp;
 
@@ -96,5 +96,7 @@ Input by default will start scanning for gamepad input when your game boots up. 
 &nbsp;
 
 ## Step 4: Next Steps
+
+In Step 2, we used `input_check()` to move a character when a verb is activated. When using a gamepad, if the player is using a thumbstick or trigger, input may be analogue (a fractional value between 0 and 1) instead of digital (boolean, `true` or `false`). You can find the analogue input value using `[input_value()](Functions-(Checkers)?id=value)`. If you want to handle movement in 2D, refer to [2D checkers](Functions-(2D-Checkers)).
 
 This is only scratching the surface of what Input is capable of. Further examples can be found in the project in the [main GitHub repository](https://github.com/JujuAdams/Input), including control rebinding and multiplayer. You should also take a deeper dive into the documentation for details on the features of Input, but if you get lost or want a quick answer, then we invite you to [join us on Discord](https://discord.gg/8krYCqr).
