@@ -532,12 +532,11 @@ function __input_system_tick()
     //Reorder virtual buttons if necessary, from highest priority to lowest
     if (_global.__virtual_order_dirty)
     {
-        //Clean up any destroyed virtual buttons, and temporarily remove background
+        //Clean up any destroyed virtual buttons
         var _i = 0;
         repeat(array_length(_global.__virtual_array))
         {
-            var _button = _global.__virtual_array[_i];
-            if (_button.__destroyed || _button.__background)
+            if (_global.__virtual_array[_i].__destroyed)
             {
                 array_delete(_global.__virtual_array, _i, 1);
             }
@@ -547,16 +546,11 @@ function __input_system_tick()
             }
         }
         
-        //Perform actual sort
+        _global.__virtual_order_dirty = false;
         array_sort(_global.__virtual_array, function(_a, _b)
         {
-            return _b.__priority - _a.__priority;
+            return sign(_b.__priority - _a.__priority);
         });
-        
-        //Re-add background virtual button
-        array_push(_global.__virtual_array, _global.__virtual_background);
-        
-        _global.__virtual_order_dirty = false;
     }
     
     if (is_struct(_global.__touch_player))
