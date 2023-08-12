@@ -203,6 +203,18 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "AppleController";
                 }
+                else if (__input_string_contains(_desc, "throttle"))
+                {
+                    raw_type = "SDLThrottle";
+                }
+                else if (__input_string_contains(_desc, "flightstick") || __input_string_contains(_desc, "hotas") || (__input_string_contains(_desc, "flight", "sim", "eclipse") && __input_string_contains(_desc, "stick", "yoke", "rudder")))
+                {
+                    raw_type = "SDLFlightstick";
+                }
+                else if (__input_string_contains(_desc, "driving force") || __input_string_contains(_desc, "momo force") || (__input_string_contains(_desc, "wheel") && __input_string_contains(_desc, "racing", "steering", "base", "feedback")))
+                {
+                    raw_type = "SDLWheel";
+                }
                 else
                 {
                     raw_type = "Unknown";
