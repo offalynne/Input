@@ -1,3 +1,4 @@
+// Feather disable all
 function __input_ensure_unique_verb_name(_name)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global

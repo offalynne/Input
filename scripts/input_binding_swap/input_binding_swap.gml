@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Swaps over two bindings within the same profile. This is useful to resolve binding conflicts
 /// @param   verbA
 /// @param   alternateA

@@ -1,3 +1,4 @@
+// Feather disable all
 function __input_class_icon_category(_name) constructor
 {
     __name       = _name;

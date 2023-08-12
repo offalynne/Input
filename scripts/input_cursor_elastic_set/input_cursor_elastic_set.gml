@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets up a springy force that pulls the cursor towards the given point
 ///          This is useful for building aiming systems for shooters and works especially well
 ///          with input_cursor_limit_circle()

@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets the strength of vibration for the player
 /// @param   strength
 /// @param   [playerIndex=0]

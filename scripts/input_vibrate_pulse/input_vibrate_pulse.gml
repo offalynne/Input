@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Vibrates a player's gampead with a series of pulses over the given duration
 ///          Units for the vibration duration are determined by INPUT_TIMER_MILLISECONDS
 ///          

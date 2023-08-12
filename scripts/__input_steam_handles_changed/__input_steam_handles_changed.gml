@@ -1,3 +1,4 @@
+// Feather disable all
 /// Returns whether Steam Input handles have changed since last tick
 
 function __input_steam_handles_changed()

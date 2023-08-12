@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Clears all player data and resets to the defaults set up in __input_config_verbs()
 /// @param   [playerIndex=0]
 

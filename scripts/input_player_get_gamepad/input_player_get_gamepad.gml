@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the gamepad index for the first gamepad assigned to the player. If the player
 ///          has no assigned gamepad, this function returns <undefined>
 /// @param   [playerIndex=0]

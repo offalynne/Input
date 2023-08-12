@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns whether the vector represented by the sum of the verb values points to the radial sector indicated by angle and magnitude bounds
 /// @param   leftVerb
 /// @param   rightVerb

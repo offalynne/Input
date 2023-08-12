@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Removes a keyboard key from the ignore list, allowing it to be used
 /// @param   key
 

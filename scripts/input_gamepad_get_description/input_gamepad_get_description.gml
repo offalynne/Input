@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the name of the given gamepad (after SDL remapping)
 /// @param   gamepadIndex
 

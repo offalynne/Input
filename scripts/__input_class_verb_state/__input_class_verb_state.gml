@@ -1,3 +1,4 @@
+// Feather disable all
 function __input_class_verb_state() constructor
 {
     __INPUT_GLOBAL_STATIC_VARIABLE  //Set static __global
@@ -115,7 +116,10 @@ function __input_class_verb_state() constructor
         
         if (value > 0)
         {
-            __player.__last_input_time = __global.__current_time;
+            if (previous_value < value)
+            {
+                __player.__last_input_time = __global.__current_time;
+            }
             
             held      = true;
             held_time = _time;

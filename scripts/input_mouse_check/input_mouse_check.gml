@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns whether the given mouse button is currently activated.
 /// @param   binding
 

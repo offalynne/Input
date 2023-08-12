@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Creates a mouse wheel down binding
 
 function input_binding_mouse_wheel_down()

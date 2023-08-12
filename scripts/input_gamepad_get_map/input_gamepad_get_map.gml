@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns an array containing the buttons/axes mapped for the current gamepad (as ints)
 /// @param   index
 

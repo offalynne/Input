@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the icon defined in __input_config_icons() for the given verb, taking into account the player's currently assigned source(s)
 /// @param   verb
 /// @param   [playerIndex=0]

@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns whether momentary toggle behaviour is enabled for a verb
 /// @param   verb
 

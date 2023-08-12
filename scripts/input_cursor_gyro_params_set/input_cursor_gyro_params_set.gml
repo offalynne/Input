@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets parameters for the cursor when gamepad gyro is in use
 /// @param   [gyroAxisX=undefined]
 /// @param   [gyroAxisY=undefined]

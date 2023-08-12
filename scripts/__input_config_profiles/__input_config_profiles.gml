@@ -1,3 +1,4 @@
+// Feather disable all
 //Sets the preferred behaviour for input_binding_get() when a player has no profile set
 //This typically happens when hotswapping and the player hasn't pressed any buttons/keys/etc. yet
 //

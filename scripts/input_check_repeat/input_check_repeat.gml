@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns if the verb has been re-triggered by a repeater behaviour
 ///          This function will not return <true> on the same frame a verb is activated (unless predelay is set to 0)
 ///          You'll probably want to combine this function with input_check_pressed().

@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns a boolean indicating whether the given verb has been actived by a quick tap on an analogue (thumbstick/trigger) axis this frame
 ///          Behaviour of this function can be customised using the INPUT_QUICK_BUFFER macro
 ///          If an array of verbs is given then this function will return <true> if ANY verb has crossed the long-hold threshold this frame

@@ -1,3 +1,4 @@
+// Feather disable all
 function __input_player_apply_trigger_effects(_player_index)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global

@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Adds an icon category to Input, for use internally with input_binding_get_icon()
 ///          This function is part of a fluent interface e.g.
 ///              input_icons_gamepad(INPUT_GAMEPAD_TYPE_XBOX_ONE)

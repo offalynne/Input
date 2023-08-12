@@ -1,3 +1,4 @@
+// Feather disable all
 /// @ignore
 function __input_gm_runtime_version() {
     static _version = undefined;

@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the analogue value of the given input (after applying SDL axis remapping)
 /// @param   gamepadIndex
 /// @param   GMconstant

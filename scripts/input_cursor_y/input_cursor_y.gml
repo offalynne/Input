@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the y-coordinate of the player's cursor
 ///          The coordinate space should be a member of the INPUT_COORD_SPACE enum:
 ///              .ROOM      Room coordinates; should be the same as mouse_x and mouse_y. This is the default value
