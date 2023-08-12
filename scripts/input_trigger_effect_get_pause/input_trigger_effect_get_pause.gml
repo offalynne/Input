@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Gets pause state for gamepad trigger effects for a player
 /// @param   [playerIndex=0]
 

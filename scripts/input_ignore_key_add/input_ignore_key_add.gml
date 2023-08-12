@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Adds a keyboard key to be ignored by Input
 /// @param   key
 

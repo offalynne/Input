@@ -1,3 +1,4 @@
+// Feather disable all
 function __input_load_blacklist_csv(_filename)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global

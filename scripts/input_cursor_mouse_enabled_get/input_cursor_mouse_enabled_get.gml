@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns whether the player can use a mouse to move the cursor
 /// @param   [playerIndex=0]
 

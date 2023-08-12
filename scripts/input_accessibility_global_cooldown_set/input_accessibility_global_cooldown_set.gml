@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets whether verb cooldowns should be permitted across the game at all
 /// @param   state
 

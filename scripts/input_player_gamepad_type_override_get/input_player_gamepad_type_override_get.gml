@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the gamepad type override for the player
 ///          This function will return <undefined> if no override has been set
 /// @param   [playerIndex=0]

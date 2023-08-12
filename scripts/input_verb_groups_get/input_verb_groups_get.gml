@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns an array of verb groups names, arranged in no particular order
 
 function input_verb_groups_get()

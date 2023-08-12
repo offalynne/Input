@@ -1,3 +1,4 @@
+// Feather disable all
 function __input_binding_get_label(_type, _value, _axis_negative)
 {
     if (!INPUT_ON_PC)

@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Shows virtual keyboard
 ///          This covers mobile platforms as well as Xbox and Steam
 /// @param   [virtualKeyboardType]

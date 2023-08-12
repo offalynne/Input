@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets whether the player is active or not
 /// 
 /// An inactive player will have all their verbs "consumed" until the player is reactivated

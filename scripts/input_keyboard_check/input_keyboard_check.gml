@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Checks if the given key is currently activated. Uses GameMaker's native key constants (int)
 /// @param   binding
 

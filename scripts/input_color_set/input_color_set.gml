@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets the player device color
 /// @param   color
 /// @param   [playerIndex=0]

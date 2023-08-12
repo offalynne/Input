@@ -1,3 +1,4 @@
+// Feather disable all
 function __input_trace_loud()
 {
     var _string = "";

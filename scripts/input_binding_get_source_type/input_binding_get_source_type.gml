@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the source type for this binding, one of the following:
 ///              INPUT_KEYBOARD
 ///              INPUT_MOUSE

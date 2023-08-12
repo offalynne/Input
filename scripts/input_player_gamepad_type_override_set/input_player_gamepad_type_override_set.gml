@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets the a gamepad type for the player for icon display
 ///          Set the gamepadType to <undefined> to not set an override
 /// @param   gamepadType

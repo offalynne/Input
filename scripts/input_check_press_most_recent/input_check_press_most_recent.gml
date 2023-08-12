@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the most recently pressed verb from among the array of verbs provided
 ///          If no verb array is provided, all defined verbs will be check instead
 /// @param   [verbArray=all]

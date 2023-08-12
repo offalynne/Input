@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Checks if the given key is newly deactivated this frame.
 /// @param   binding
 

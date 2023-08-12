@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the amount of time left on the rebinding operation, in milliseconds
 /// @param   [playerIndex=0]
 

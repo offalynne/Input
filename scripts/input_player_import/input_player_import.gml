@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Reads a JSON (string or struct) that contains player data and replaces the given player's data with it
 /// @param   stringOrStruct
 /// @param   [playerIndex=0]

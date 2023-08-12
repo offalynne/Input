@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets the binding for the given verb. The alternate index parameter can be used to
 ///          set multiple parallel inputs for one verb. If no profile name is provided, the
 ///          current profile is used

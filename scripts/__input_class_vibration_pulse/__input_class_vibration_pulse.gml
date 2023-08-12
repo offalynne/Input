@@ -1,3 +1,4 @@
+// Feather disable all
 function __input_class_vibration_pulse(_strength, _pan, _repeats, _duration, _force) constructor
 {
     __force = _force;

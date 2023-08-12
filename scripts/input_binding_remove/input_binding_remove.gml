@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Removes a binding from the player. Be careful with this function!
 /// @param   verb
 /// @param   [playerIndex=0]

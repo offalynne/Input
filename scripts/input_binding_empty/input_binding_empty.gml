@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Creates a null binding that can never be activated
 
 function input_binding_empty()

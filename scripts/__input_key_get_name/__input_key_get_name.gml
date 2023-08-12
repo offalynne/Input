@@ -1,3 +1,4 @@
+// Feather disable all
 function __input_key_get_name(_key)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global

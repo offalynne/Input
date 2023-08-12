@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets the position of the player's cursor
 /// @param   x
 /// @param   y

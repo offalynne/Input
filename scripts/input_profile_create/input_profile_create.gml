@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Creates a custom profile for the player. This profile contains empty bindings for all verbs
 /// @param   profileName
 /// @param   [playerIndex=0]

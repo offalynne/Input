@@ -1,3 +1,4 @@
+// Feather disable all
 //Number of milliseconds between source swaps. This should be longer than a single frame (>17 ms at 60FPS)
 #macro INPUT_HOTSWAP_DELAY  33
 

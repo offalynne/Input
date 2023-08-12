@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Sets the .JOIN source mode parameters
 ///          
 ///          The leave verb allows a player to cancel the INPUT_SOURCE_MODE.JOIN source mode

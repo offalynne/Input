@@ -1,3 +1,4 @@
+// Feather disable all
 /// @desc    Returns the y-coordinate of the vector represented by the sum of the verb values
 /// @param   leftVerb
 /// @param   rightVerb
