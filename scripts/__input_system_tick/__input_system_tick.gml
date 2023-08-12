@@ -549,7 +549,7 @@ function __input_system_tick()
         _global.__virtual_order_dirty = false;
         array_sort(_global.__virtual_array, function(_a, _b)
         {
-            return _b.__priority - _a.__priority;
+            return sign(_b.__priority - _a.__priority);
         });
     }
     
