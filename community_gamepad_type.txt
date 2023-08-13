@@ -535,6 +535,7 @@ dead,beef,CommunityPSX // Hidromancer
 044f,b65e,SDLWheel // Thrustmaster T500RS
 044f,b664,SDLWheel // Thrustmaster TX initial mode
 044f,b669,SDLWheel // Thrustmaster TX active mode
+1209,ffb0,SDLWheel // OpenFFBoard
 11ff,0511,SDLWheel // PXN V900 PS3, Superdrive SV750, Genesis Seaborg 400 initial mode
 044f,0402,SDLFlightstick // HOTAS Warthog Joystick
 0738,2221,SDLFlightstick // Saitek Pro Flight X56 Rhino Stick
