@@ -354,9 +354,15 @@ function __input_system_tick()
                     keyboard_key_release(vk_lalt);
                     keyboard_key_release(vk_ralt);
                 }
+
+                if (keyboard_check(0xE6) && !keyboard_check_pressed(0xE6))
+                {
+                    //Unstick OEM key (Power button on Steam Deck)
+                    keyboard_key_release(0x0E6);
+                }
             break;            
             case "apple_web": //This case applies on iOS, tvOS, and MacOS
-                if (keyboard_check_released(92) || keyboard_check_released(93))
+                if (keyboard_check_released(vk_lmeta) || keyboard_check_released(vk_rmeta))
                 {
                     //Meta release sticks every key pressed during hold
                     //This is "the nuclear option", but the problem is severe
@@ -543,7 +549,7 @@ function __input_system_tick()
         _global.__virtual_order_dirty = false;
         array_sort(_global.__virtual_array, function(_a, _b)
         {
-            return _b.__priority - _a.__priority;
+            return sign(_b.__priority - _a.__priority);
         });
     }
     
