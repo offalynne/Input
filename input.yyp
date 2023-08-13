@@ -186,7 +186,6 @@
     {"id":{"name":"input_mouse_capture_set","path":"scripts/input_mouse_capture_set/input_mouse_capture_set.yy",},"order":0,},
     {"id":{"name":"input_mouse_check","path":"scripts/input_mouse_check/input_mouse_check.yy",},"order":7,},
     {"id":{"name":"input_mouse_check_pressed","path":"scripts/input_mouse_check_pressed/input_mouse_check_pressed.yy",},"order":8,},
-    {"id":{"name":"__input_gm_runtime_version","path":"scripts/__input_gm_runtime_version/__input_gm_runtime_version.yy",},"order":27,},
     {"id":{"name":"input_mouse_check_released","path":"scripts/input_mouse_check_released/input_mouse_check_released.yy",},"order":9,},
     {"id":{"name":"input_mouse_coord_space_get","path":"scripts/input_mouse_coord_space_get/input_mouse_coord_space_get.yy",},"order":6,},
     {"id":{"name":"input_mouse_coord_space_set","path":"scripts/input_mouse_coord_space_set/input_mouse_coord_space_set.yy",},"order":5,},

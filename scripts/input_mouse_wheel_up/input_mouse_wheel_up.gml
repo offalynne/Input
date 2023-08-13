@@ -5,8 +5,9 @@ function input_mouse_wheel_up()
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
-    if ((!_global.__window_focus && !INPUT_ALLOW_OUT_OF_FOCUS)
-    ||  (!_global.__mouse_allowed || _global.__cleared))
+    if (!_global.__mouse_allowed 
+    ||  !_global.__game_focus 
+    ||   _global.__cleared)
     {
         return false;
     }
