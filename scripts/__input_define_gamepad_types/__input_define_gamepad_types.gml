@@ -25,12 +25,13 @@ function __input_define_gamepad_types()
         
         //PlayStation
         #macro INPUT_GAMEPAD_TYPE_PS5 "ps5"
-        PS5Controller       = INPUT_GAMEPAD_TYPE_PS5;    
+        PS5Controller       = INPUT_GAMEPAD_TYPE_PS5;
+        CommunityPS5        = INPUT_GAMEPAD_TYPE_PS5;
         
         #macro INPUT_GAMEPAD_TYPE_PS4 "ps4"
         PS4Controller       = INPUT_GAMEPAD_TYPE_PS4;
         XInputPS4Controller = INPUT_GAMEPAD_TYPE_PS4;
-        CommunityPS4        = INPUT_GAMEPAD_TYPE_PS4;    
+        CommunityPS4        = INPUT_GAMEPAD_TYPE_PS4;
         
         #macro INPUT_GAMEPAD_TYPE_PSX "psx"
         PS3Controller       = INPUT_GAMEPAD_TYPE_PSX;
