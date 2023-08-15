@@ -50,6 +50,10 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
+<center><img src="https://i.imgur.com/sZSDaE8.png"></center>
+
+&nbsp;
+
 <h3 align="center">Prateek</h1>
 <p align="center"><i>Documentation corrections, gamepad testing</i></p>
 <p align="center">(<a href="https://twitter.com/prtksxna" target="_blank">Twitter</a>)</p>
@@ -76,7 +80,11 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 <h3 align="center">Grace</h1>
 <p align="center"><i>Newbie guide and testing</i></p>
-<p align="center">(<a href="https://twitter.com/gart_gh" target="_blank">Twitter</a>)</p>
+<!--p align="center">(<a href="https://twitter.com/gart_gh" target="_blank">Twitter</a>)</p-->
+
+&nbsp;
+
+<center><img src="https://i.imgur.com/MV4GnCY.png"></center>
 
 &nbsp;
 
@@ -101,3 +109,8 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 <h3 align="center">Chequered Ink</h1>
 <p align="center"><i>Logo Design</i></p>
 <p align="center">(<a href="https://chequered.ink/" target="_blank">website</a>)</p>
+&nbsp;
+
+<h3 align="center">neerikiffu</h1>
+<p align="center"><i>Credits Cartoons</i></p>
+<!--p align="center">(<a href="" target="_blank"></a>)</p-->
