@@ -44,13 +44,13 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
-<h3 align="center">Julien</h1>
-<p align="center"><i>Documentation</i></p>
-<p align="center">(<a href="https://twitter.com/JuJulienDev" target="_blank">Twitter</a>)</p>
+<figure><img src="https://i.imgur.com/L1RToth.png" style="width:80%; display: block; margin: auto; max-width: 400px; height: auto;" /></figure>
 
 &nbsp;
 
-<figure><img src="https://i.imgur.com/L1RToth.png" style="width:80%; display: block; margin: auto; max-width: 400px; height: auto;" /></figure>
+<h3 align="center">Julien</h1>
+<p align="center"><i>Documentation</i></p>
+<p align="center">(<a href="https://twitter.com/JuJulienDev" target="_blank">Twitter</a>)</p>
 
 &nbsp;
 
