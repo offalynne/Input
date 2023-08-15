@@ -78,13 +78,13 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
-<h3 align="center">Grace</h1>
-<p align="center"><i>Newbie guide and testing</i></p>
-<!--p align="center">(<a href="https://twitter.com/gart_gh" target="_blank">Twitter</a>)</p-->
+<figure><img src="https://i.imgur.com/phnHzpS.png" style="width:80%; display: block; margin: auto; max-width: 300px; height: auto;" /></figure>
 
 &nbsp;
 
-<figure><img src="https://i.imgur.com/phnHzpS.png" style="width:80%; display: block; margin: auto; max-width: 300px; height: auto;" /></figure>
+<h3 align="center">Grace</h1>
+<p align="center"><i>Newbie guide and testing</i></p>
+<!--p align="center">(<a href="https://twitter.com/gart_gh" target="_blank">Twitter</a>)</p-->
 
 &nbsp;
 
@@ -109,8 +109,5 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 <h3 align="center">Chequered Ink</h1>
 <p align="center"><i>Logo Design</i></p>
 <p align="center">(<a href="https://chequered.ink/" target="_blank">website</a>)</p>
-&nbsp;
 
-<!--h3 align="center">neerikiffu</h1>
-<p align="center"><i>Credits Cartoons</i></p>
-<p align="center">(<a href="" target="_blank"></a>)</p-->
+&nbsp;
