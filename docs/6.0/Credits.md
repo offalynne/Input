@@ -70,7 +70,7 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
-<figure><img src="https://i.imgur.com/Ji1Y7QA.png" style="width:80%; display: block; margin: 60px auto 30px; max-width: 480px; height: auto;" /></figure>
+<figure><img src="https://i.imgur.com/Ji1Y7QA.png" style="width:80%; display: block; margin: 60px auto 30px; max-width: 450px; height: auto;" /></figure>
 
 &nbsp;
 
