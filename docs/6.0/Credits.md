@@ -44,7 +44,7 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
-<figure><img src="https://i.imgur.com/L1RToth.png" style="width:80%; display: block; margin: auto; max-width: 400px; height: auto;" /></figure>
+<figure><img src="https://i.imgur.com/oOHGDyT.png" style="width:80%; display: block; margin: auto; max-width: 400px; height: auto;" /></figure>
 
 &nbsp;
 
@@ -78,7 +78,7 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
-<figure><img src="https://i.imgur.com/phnHzpS.png" style="width:80%; display: block; margin: auto; max-width: 300px; height: auto;" /></figure>
+<figure><img src="https://i.imgur.com/CDBgvBR.png" style="width:80%; display: block; margin: auto; max-width: 300px; height: auto;" /></figure>
 
 &nbsp;
 
