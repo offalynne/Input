@@ -50,7 +50,7 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
-<figure><img src="https://i.imgur.com/sZSDaE8.png" style="width:80%; display: block; margin: auto; max-width: 400px; height: auto;" /></figure>
+<figure><img src="https://i.imgur.com/L1RToth.png" style="width:80%; display: block; margin: auto; max-width: 400px; height: auto;" /></figure>
 
 &nbsp;
 
@@ -84,7 +84,7 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
-<figure><img src="https://i.imgur.com/MV4GnCY.png" style="width:80%; display: block; margin: auto; max-width: 400px; height: auto;" /></figure>
+<figure><img src="https://i.imgur.com/phnHzpS.png" style="width:80%; display: block; margin: auto; max-width: 300px; height: auto;" /></figure>
 
 &nbsp;
 
@@ -111,6 +111,6 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 <p align="center">(<a href="https://chequered.ink/" target="_blank">website</a>)</p>
 &nbsp;
 
-<h3 align="center">neerikiffu</h1>
+<!--h3 align="center">neerikiffu</h1>
 <p align="center"><i>Credits Cartoons</i></p>
-<!--p align="center">(<a href="" target="_blank"></a>)</p-->
+<p align="center">(<a href="" target="_blank"></a>)</p-->
