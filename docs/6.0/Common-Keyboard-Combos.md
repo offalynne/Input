@@ -28,12 +28,6 @@ Presented below are system software-level bindings to mind when defining a contr
 
 !> Meta refers to the 'Windows' key
 
-### UWP
-| Input                     | Action            |
-|:--------------------------|:------------------|
-| `Meta`+`Shift`+`Enter`    | Toggle fullscreen |
-| `Meta`+`Shift`+`Arrow`    | Switch display    |
-
 ### Epic
 | Input                     | Action            |
 |:--------------------------|:------------------|
@@ -87,14 +81,6 @@ Presented below are system software-level bindings to mind when defining a contr
 | `Ctrl`+`Shift`+`C`        | Switch display    |
 | `Ctrl`+`Shift`+`S`        | Second screen     |
 | `Ctrl`+`Shift`+`P`        | Enhanced pen      |
-
-### Stadia
-| Input                     | Action            |
-|:--------------------------|:------------------|
-| `Escape` (held)           | Exit game prompt  |
-| `Shift`+`Tab`             | Overlay           |
-| `F11`                     | Exit fullscreen   |
-| `F12`                     | Screen capture    |
 
 ### Luna
 | Input                     | Action            |
