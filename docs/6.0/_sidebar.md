@@ -30,10 +30,8 @@
 **Further Reading**
 
 - [Input Quirks](Input-Quirks)
-- [Game Controller Mapping](Controller-Mapping)
 - [Gamepad Troubleshooting](Gamepad-Troubleshooting)
 - [Common Keyboard Combos](Common-Keyboard-Combos)
-- [Button Labels by Gamepad Type](Gamepad-Button-Labels)
 
 ---
 
