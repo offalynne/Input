@@ -26,6 +26,10 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
+<figure><img src="https://i.imgur.com/oOHGDyT.png" style="width:80%; display: block; margin: 60px auto 20px; max-width: 480px; height: auto;" /></figure>
+
+&nbsp;
+
 <h3 align="center">TabularElf</h1>
 <p align="center"><i>Platform support testing</i></p>
 <p align="center">(<a href="https://tabelf.link/" target="_blank">website</a>)</p>
@@ -44,7 +48,7 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
-<figure><img src="https://i.imgur.com/oOHGDyT.png" style="width:80%; display: block; margin: 60px auto 20px; max-width: 480px; height: auto;" /></figure>
+<figure><img src="https://i.imgur.com/CDBgvBR.png" style="width:80%; display: block; margin: 25px auto 15px; max-width: 300px; height: auto;" /></figure>
 
 &nbsp;
 
@@ -66,6 +70,10 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
+<figure><img src="https://i.imgur.com/Ji1Y7QA.png" style="width:80%; display: block; margin: 60px auto 20px; max-width: 480px; height: auto;" /></figure>
+
+&nbsp;
+
 <h3 align="center">Zane</h1>
 <p align="center"><i>Virtual button testing and improvements</i></p>
 <p align="center">(<a href="https://twitter.com/arzulodev" target="_blank">Twitter</a>)</p>
@@ -78,19 +86,21 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
-<figure><img src="https://i.imgur.com/CDBgvBR.png" style="width:80%; display: block; margin: 25px auto 15px; max-width: 300px; height: auto;" /></figure>
-
-&nbsp;
-
 <h3 align="center">Grace</h1>
 <p align="center"><i>Newbie guide and testing</i></p>
 <!--p align="center">(<a href="https://twitter.com/gart_gh" target="_blank">Twitter</a>)</p-->
 
 &nbsp;
 
+<figure><img src="https://i.imgur.com/IZkTjC7.png" style="width:80%; display: block; margin: 25px auto 15px; max-width: 300px; height: auto;" /></figure>
+
+&nbsp;
+
 <h3 align="center">DragoniteSpam</h1>
 <p align="center"><i>Feature suggestions and testing</i></p>
 <p align="center">(<a href="https://twitter.com/DragoniteSpam" target="_blank">Twitter</a>)</p>
+
+&nbsp;
 
 &nbsp;
 
