@@ -86,6 +86,12 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
+<h3 align="center">DragoniteSpam</h1>
+<p align="center"><i>Feature suggestions and testing</i></p>
+<p align="center">(<a href="https://twitter.com/DragoniteSpam" target="_blank">Twitter</a>)</p>
+
+&nbsp;
+
 <h3 align="center">Grace</h1>
 <p align="center"><i>Newbie guide and testing</i></p>
 <!--p align="center">(<a href="https://twitter.com/gart_gh" target="_blank">Twitter</a>)</p-->
@@ -93,12 +99,6 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 &nbsp;
 
 <figure><img src="https://i.imgur.com/IZkTjC7.png" style="width:80%; display: block; margin: 50px auto 15px; max-width: 300px; height: auto;" /></figure>
-
-&nbsp;
-
-<h3 align="center">DragoniteSpam</h1>
-<p align="center"><i>Feature suggestions and testing</i></p>
-<p align="center">(<a href="https://twitter.com/DragoniteSpam" target="_blank">Twitter</a>)</p>
 
 &nbsp;
 
