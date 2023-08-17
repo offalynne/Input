@@ -231,6 +231,8 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 289b,0065,CommunityGameCube // Raphnet GameCube Adapter
 289b,0092,CommunityGameCube // Raphnet GameCube Adapter
 289b,0095,CommunityGameCube // Raphnet GameCube Adapter
+0e6f,0185,CommunityGamecube // PDP Fightpad Pro
+20d6,a711,CommunityGamecube // PowerA Core Plus
 1bad,04f9,CommunityXBox360 // PDP Versus Fighting
 24c6,891a,CommunityXBox360 // Moga XP5X
 24c6,891b,CommunityXBox360 // Moga XP5X
