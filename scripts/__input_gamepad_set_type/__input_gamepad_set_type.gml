@@ -167,6 +167,10 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunityPSX"; //Catch all remaining PlayStation gamepads as PSX
                 }
+                else if (__input_string_contains(_desc, "gamecube", "wired fight pad pro for nintendo", "core (plus) wired"))
+                {
+                    raw_type = "CommunityGameCube";
+                }
                 else if (__input_string_contains(_desc, "for switch", "for nintendo switch", "switch controller", "switch pro controller", "lic pro controller", "wii"))
                 {
                     raw_type = "CommunityLikeSwitch";
@@ -182,10 +186,6 @@ function __input_gamepad_set_type()
                 else if (__input_string_contains(_desc, "joy-con (r)", "right joy-con"))
                 {
                     raw_type = "SwitchJoyConRight";
-                }
-                else if (__input_string_contains(_desc, "gamecube"))
-                {
-                    raw_type = "CommunityGameCube";
                 }
                 else if (__input_string_contains(_desc, "xbox elite", "xbox wireless", "xbox one", "xbox bluetooth"))
                 {
@@ -207,11 +207,11 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "SDLThrottle";
                 }
-                else if (__input_string_contains(_desc, "flightstick") || __input_string_contains(_desc, "hotas") || (__input_string_contains(_desc, "flight", "sim", "eclipse") && __input_string_contains(_desc, "stick", "yoke", "rudder")))
+                else if (__input_string_contains(_desc, "flightstick", "hotas") || (__input_string_contains(_desc, "flight", "sim", "eclipse") && __input_string_contains(_desc, "stick", "yoke", "rudder")))
                 {
                     raw_type = "SDLFlightstick";
                 }
-                else if (__input_string_contains(_desc, "driving force") || __input_string_contains(_desc, "momo force") || (__input_string_contains(_desc, "wheel") && __input_string_contains(_desc, "racing", "steering", "base", "feedback")))
+                else if (__input_string_contains(_desc, "driving force", "momo force", "openffboard") || (__input_string_contains(_desc, "wheel") && __input_string_contains(_desc, "racing", "steering", "base", "feedback")))
                 {
                     raw_type = "SDLWheel";
                 }
