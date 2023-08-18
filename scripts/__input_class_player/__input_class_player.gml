@@ -486,12 +486,12 @@ function __input_class_player() constructor
         return -1;
     }
     
-    static __sources_any_input = function()
+    static __sources_any_rebind_allowed_input = function()
     {
         var _i = 0;
         repeat(array_length(__source_array))
         {
-            if (__source_array[_i].__scan_for_binding(__index, true, 0, undefined)) return true;
+            if (__source_array[_i].__scan_for_binding(__index, true, __rebind_ignore_struct, __rebind_allow_struct)) return true;
             ++_i;
         }
         
@@ -1680,7 +1680,7 @@ function __input_class_player() constructor
         
         if (__rebind_state == 1) //Waiting for the player to release all buttons
         {
-            if (!__sources_any_input())
+            if (!__sources_any_rebind_allowed_input())
             {
                 __input_trace("Now scanning for a new binding from player ", __index);
                 __rebind_state = 2;
