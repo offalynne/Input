@@ -31,13 +31,13 @@ Version 5 of Input primarily supports GameMaker LTS 2022, and in theory supports
 
 **How is Input licensed? Can I use it for commercial projects?**
 
-[Input is released under the MIT license](https://github.com/JujuAdams/Input/blob/master/LICENSE). This means you can use it for whatever purpose you want, including commercial projects. It'd mean a lot to me if you'd drop our names in the credits (Juju Adams and Alynne Keith) and/or say thanks, but you're under no obligation to do so.
+[Input is released under the MIT license](https://github.com/JujuAdams/Input/blob/master/LICENSE). This means you can use it for whatever purpose you want, including commercial projects. It'd mean a lot to us if you'd drop our names in the credits (Juju Adams and Alynne Keith) and/or say thanks, but you're under no obligation to do so.
 
 &nbsp;
 
 **I think you're missing a useful feature and I'd like you to implement it!**
 
-Great! Please make a [feature request](https://github.com/JujuAdams/Input/issues). Feature requests make Input a more fun tool to use and gives me something to think about when I'm bored on public transport.
+Great! Please make a [feature request](https://github.com/JujuAdams/Input/issues). Feature requests make Input a more fun tool to use and gives us new goals to reach for.
 
 &nbsp;
 
@@ -51,7 +51,7 @@ Please make a [bug report](https://github.com/JujuAdams/Input/issues). We check 
 
 Input is primarily built and maintained by [Juju](https://www.jujuadams.com/) and [Alynne](https://offalynne.neocities.org/) who have been writing and rewriting input systems for a long time. Juju's worked on a lot of [commercial GameMaker games](http://www.jujuadams.com/) and Alynne has been [active in indie dev](https://offalynne.neocities.org/) for years. Input is the product of our combined practical experience working as consultants.
 
-Many, many other people have contributed to GameMaker's open source community via bug reports and feature requests. Input wouldn't exist without them and we're eternally grateful for their creativity and patience. You can read [Input's credits here](Credits)
+Many, many other people have contributed to GameMaker's open source community via bug reports and feature requests. Input wouldn't exist without them and we're eternally grateful for their creativity and patience. You can read [Input's credits here](Credits).
 
 &nbsp;
 
