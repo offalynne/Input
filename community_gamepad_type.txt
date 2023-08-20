@@ -210,6 +210,7 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 2dc8,6003,Community8BitDo // 8BitDo Pro 2
 2dc8,6103,Community8BitDo // 8BitDo Pro 2
 2dc8,6006,Community8BitDo // 8BitDo Pro 2
+2dc8,3010,Community8BitDo // 8BitDo Pro 2
 2dc8,5111,Community8BitDo // 8BitDo Lite SE
 2dc8,5112,Community8BitDo // 8BitDo Lite 2
 0926,2526,CommunityGameCube // GameCube Controller
@@ -494,6 +495,7 @@ dead,beef,CommunityPSX // Hidromancer
 2dc8,3103,CommunityUnknown // 8BitDo Receiver
 2dc8,3104,CommunityUnknown // 8BitDo Receiver
 2dc8,3105,CommunityUnknown // 8BitDo Adapter 2
+2dc8,3106,CommunityUnknown // 8BitDo Generic XInput Mode
 0925,1700,CommunityUnknown // WiseGroup USB Joy Box
 10c4,82c0,CommunityUnknown // KADE Adapter
 0c12,0c31,CommunityUnknown // Brook Super Converter
