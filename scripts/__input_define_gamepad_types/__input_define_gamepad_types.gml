@@ -117,6 +117,9 @@ function __input_define_gamepad_types()
         //#macro INPUT_GAMEPAD_TYPE_SUPER_FAMICOM "super famicom"
         //CommunitySuperFamicom = INPUT_GAMEPAD_TYPE_SUPER_FAMICOM;
         
+        //#macro INPUT_GAMEPAD_TYPE_NEOGEO "neogeo"
+        //CommunityNeoGeo = INPUT_GAMEPAD_TYPE_NEOGEO;
+        
         #endregion
     }
 }
