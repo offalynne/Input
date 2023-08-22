@@ -167,7 +167,8 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 289b,005a,CommunitySNES // Raphnet SNES Adapter
 289b,005b,CommunitySNES // Raphnet SNES Adapter
 289b,005c,CommunitySNES // Raphnet SNES Adapter
-289b,0085,CommunitySNES // Raphnet SNES Adapter
+289b,0084,CommunitySNES // Raphnet NES Adapter
+289b,0085,CommunitySNES // Raphnet NES Adapter
 289b,0041,CommunitySNES // Raphnet NES Adapter
 289b,0042,CommunitySNES // Raphnet NES Adapter
 1781,0a99,CommunitySNES // Raphnet NES Adapter
@@ -478,11 +479,12 @@ dead,beef,CommunityPSX // Hidromancer
 0f0d,0138,CommuntyPCEngineMini // NEC CoreGrafx, TG16, PC Engine Mini Controller
 0ca3,0027,CommunityAstroCity // Sega Astro City Mini Controller
 0ca3,0028,CommunityAstroCity // Sega Astro City Mini Arcade Stick
+289b,0048,CommunityNeoGeo // Raphnet NeoGeo Adapter
 1292,4e47,CommunityNeoGeo // NeoGeo X Arcade Stick
-3250,1001,CommunityVCSClassic // Atari VCS Classic Joystick
-3250,1002,CommunityVCSModern // Atari VCS Modern Controller
 2dc8,9025,CommunityNeoGeo, // 8BitDo NEOGEO Gamepad
 2dc8,9026,CommunityNeoGeo, // 8BitDo NEOGEO Gamepad
+3250,1001,CommunityVCSClassic // Atari VCS Classic Joystick
+3250,1002,CommunityVCSModern // Atari VCS Modern Controller
 2f24,002d,CommunityUnknown // JYS Adapter
 2f24,008a,CommunityUnknown // JYS Adapter
 2f24,0073,CommunityUnknown // Mayflash Adapter
