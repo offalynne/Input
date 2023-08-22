@@ -482,8 +482,8 @@ dead,beef,CommunityPSX // Hidromancer
 04d8,f421,CommunityNeoGeo // Microchip Technology NEOGEO-daptor
 289b,0048,CommunityNeoGeo // Raphnet NeoGeo Adapter
 1292,4e47,CommunityNeoGeo // NeoGeo X Arcade Stick
-2dc8,9025,CommunityNeoGeo // 8BitDo NEOGEO Gamepad
-2dc8,9026,CommunityNeoGeo // 8BitDo NEOGEO Gamepad
+2dc8,9025,CommunityNeoGeo // 8BitDo NEOGEO Controller
+2dc8,9026,CommunityNeoGeo // 8BitDo NEOGEO Dongle
 3250,1001,CommunityVCSClassic // Atari VCS Classic Joystick
 3250,1002,CommunityVCSModern // Atari VCS Modern Controller
 2f24,002d,CommunityUnknown // JYS Adapter
