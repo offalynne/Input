@@ -5,7 +5,6 @@ function __input_initialize()
     static _initialized = false;
     if (_initialized) return;
     _initialized = true;
-	var _version = __input_gm_runtime_version();
     
     //Don't use static here as this puts the game into a boot loop
     var _global = __input_global();
@@ -23,6 +22,9 @@ function __input_initialize()
     {
         __input_trace("Warning! Per __INPUT_SILENT mode, most logging is suppressed. This is NOT recommended");
     }
+    
+    
+    #region Feature detection
     
     //Detect is_instanceof(), which offers some minor performance gains
     if (INPUT_ON_WEB)
@@ -64,6 +66,24 @@ function __input_initialize()
     {
         __input_trace(_global.__use_is_instanceof? "Using new string functions to parse SDL2 database" : "New string functions unavailable, using legacy SDL2 database parsing");
     }
+    
+    //Detect is_debug_overlay_open() to block game input to overlay, if supported
+    try
+    {
+        is_debug_overlay_open();
+        _global.__use_debug_overlay_status = true;
+    }
+    catch(_error)
+    {
+        _global.__use_debug_overlay_status = false;
+    }
+    
+    if not (__INPUT_SILENT)
+    {
+        __input_trace(_global.__use_debug_overlay_status? "Using debug overlay status to block input" : "Debug overlay status is unavailable");
+    }
+    
+    #endregion
     
     //Set up a time source to manage input_controller_object
     _global.__time_source = time_source_create(time_source_global, 1, time_source_units_frames, function()
@@ -169,8 +189,10 @@ function __input_initialize()
     //Whether momentary input has been cleared
     _global.__cleared = false;
     
-    //Windows focus tracking
-    _global.__window_focus = true;
+    //Focus tracking
+    _global.__overlay_focus = false;
+    _global.__window_focus  = true;
+    _global.__game_focus    = true;
     
     //Accessibility state
     _global.__toggle_momentary_dict  = {};

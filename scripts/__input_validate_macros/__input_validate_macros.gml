@@ -400,7 +400,7 @@ function __input_validate_macros()
     &&  (INPUT_VIRTUAL_KEYBOARD_AUTOCAPITALIZATION_TYPE != kbv_autocapitalize_sentences)
     &&  (INPUT_VIRTUAL_KEYBOARD_AUTOCAPITALIZATION_TYPE != kbv_autocapitalize_characters))
     {
-    	__input_error("INPUT_VIRTUAL_KEYBOARD_AUTOCAPITALIZATION_TYPE must be a virtual keyboard autocapitalization type constant");
+        __input_error("INPUT_VIRTUAL_KEYBOARD_AUTOCAPITALIZATION_TYPE must be a virtual keyboard autocapitalization type constant");
     }
     
     #endregion

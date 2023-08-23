@@ -95,7 +95,7 @@ function __input_system_tick()
     
     
     
-    #region Window focus
+    #region Focus
     
     if (INPUT_ON_PC && !INPUT_ON_WEB)
     {
@@ -143,6 +143,27 @@ function __input_system_tick()
         }
     }
     
+    _global.__overlay_focus = false;
+    if (_global.__using_steamworks)
+    {
+        //Steam overlay
+        if (steam_is_overlay_activated())
+        {
+            _global.__overlay_focus = true;
+        }
+    }
+    
+    if (_global.__use_debug_overlay_status)
+    {
+        //Debug overlay
+        if (is_debug_overlay_open())
+        {
+            _global.__overlay_focus = true;
+        }
+    }
+    
+    _global.__game_focus = (INPUT_ALLOW_OUT_OF_FOCUS || (_global.__window_focus && !_global.__overlay_focus));
+    
     #endregion
     
     
@@ -158,8 +179,8 @@ function __input_system_tick()
         ++_m;
     }
     
-    //Block mouse capture when window state changes
-    if (_global.__mouse_capture && _global.__window_focus)
+    //Block mouse capture when focus state changes
+    if (_global.__mouse_capture && _global.__game_focus)
     {
         if (__input_window_changed())
         {
@@ -175,118 +196,14 @@ function __input_system_tick()
         }
     }
     
-    if (_global.__mouse_capture && !_global.__mouse_capture_blocked)
+    if (INPUT_ALLOW_OUT_OF_FOCUS || !_global.__overlay_focus)
     {
-        if (_global.__window_focus)
+        if (_global.__mouse_capture && !_global.__mouse_capture_blocked)
         {
-            if (_global.__frame - _global.__mouse_capture_frame > 10)
+            if (_global.__window_focus)
             {
-                if (__INPUT_ON_WINDOWS)
+                if (_global.__frame - _global.__mouse_capture_frame > 10)
                 {
-                    _pointer_x = display_mouse_get_x() - window_get_x();
-                    _pointer_y = display_mouse_get_y() - window_get_y();  
-                }
-                else
-                {
-                    _pointer_x = device_mouse_raw_x(_global.__pointer_index);
-                    _pointer_y = device_mouse_raw_y(_global.__pointer_index);
-                }
-                
-                //Only bother updating each coordinate space if we've moved far enough in device space
-                //This presumes that we don't get better than 1px resolution in device space
-                if ((abs(_pointer_x - window_get_width()/2)  >= 1)
-                ||  (abs(_pointer_y - window_get_height()/2) >= 1))
-                {
-                    var _m = 0;
-                    repeat(INPUT_COORD_SPACE.__SIZE)
-                    {
-                        switch(_m)
-                        {
-                            case INPUT_COORD_SPACE.ROOM:
-                                if (view_enabled && view_visible[0])
-                                {
-                                    var _camera = view_camera[0];
-                                    var _old_x = camera_get_view_width(_camera)/2;
-                                    var _old_y = camera_get_view_height(_camera)/2;
-                                }
-                                else
-                                {
-                                    var _old_x = room_width/2;
-                                    var _old_y = room_height/2;
-                                }
-                                
-                                var _pointer_x = device_mouse_x(_global.__pointer_index);
-                                var _pointer_y = device_mouse_y(_global.__pointer_index);
-                            break;
-                            
-                            case INPUT_COORD_SPACE.GUI:
-                                var _old_x     = display_get_gui_width()/2;
-                                var _old_y     = display_get_gui_height()/2;
-                                var _pointer_x = device_mouse_x_to_gui(_global.__pointer_index);
-                                var _pointer_y = device_mouse_y_to_gui(_global.__pointer_index);
-                            break;
-                            
-                            case INPUT_COORD_SPACE.DEVICE:
-                                var _old_x = window_get_width()/2;
-                                var _old_y = window_get_height()/2;
-                                
-                                if (__INPUT_ON_WINDOWS)
-                                {
-                                    _pointer_x = display_mouse_get_x() - window_get_x();
-                                    _pointer_y = display_mouse_get_y() - window_get_y();  
-                                }
-                                else
-                                {
-                                    _pointer_x = device_mouse_raw_x(_global.__pointer_index);
-                                    _pointer_y = device_mouse_raw_y(_global.__pointer_index);
-                                }
-                            break;
-                        }
-                        
-                        var _dx = (_pointer_x - _old_x)*_global.__mouse_capture_sensitivity;
-                        var _dy = (_pointer_y - _old_y)*_global.__mouse_capture_sensitivity;
-                        
-                        //Only detect movement in the display coordinate space so that moving a room's view, or moving the window, doesn't trigger movement
-                        if ((_m == INPUT_COORD_SPACE.DEVICE) && (_dx*_dx + _dy*_dy > INPUT_MOUSE_MOVE_DEADZONE*INPUT_MOUSE_MOVE_DEADZONE)) _moved = true;
-                        
-                        _global.__pointer_dx[@ _m] = _dx;
-                        _global.__pointer_dy[@ _m] = _dy;
-                        
-                        _global.__pointer_x[@ _m] += _dx;
-                        _global.__pointer_y[@ _m] += _dy;
-                        
-                        ++_m;
-                    }
-                }
-            }
-            
-            //Recenter mouse cursor
-            window_mouse_set(window_get_width()/2, window_get_height()/2);
-        }
-    }
-    else if (_global.__window_focus || INPUT_ALLOW_OUT_OF_FOCUS || __INPUT_ON_MACOS)
-    {
-        var _m = 0;
-        repeat(INPUT_COORD_SPACE.__SIZE)
-        {
-            var _old_x = _global.__pointer_x[_m];
-            var _old_y = _global.__pointer_y[_m];
-            var _pointer_x = _old_x;
-            var _pointer_y = _old_y;
-            
-            switch(_m)
-            {
-                case INPUT_COORD_SPACE.ROOM:
-                    _pointer_x = device_mouse_x(_global.__pointer_index);
-                    _pointer_y = device_mouse_y(_global.__pointer_index);
-                break;
-                
-                case INPUT_COORD_SPACE.GUI:
-                    _pointer_x = device_mouse_x_to_gui(_global.__pointer_index);
-                    _pointer_y = device_mouse_y_to_gui(_global.__pointer_index);
-                break;
-                
-                case INPUT_COORD_SPACE.DEVICE:
                     if (__INPUT_ON_WINDOWS)
                     {
                         _pointer_x = display_mouse_get_x() - window_get_x();
@@ -297,19 +214,126 @@ function __input_system_tick()
                         _pointer_x = device_mouse_raw_x(_global.__pointer_index);
                         _pointer_y = device_mouse_raw_y(_global.__pointer_index);
                     }
-                break;
+                
+                    //Only bother updating each coordinate space if we've moved far enough in device space
+                    //This presumes that we don't get better than 1px resolution in device space
+                    if ((abs(_pointer_x - window_get_width()/2)  >= 1)
+                    ||  (abs(_pointer_y - window_get_height()/2) >= 1))
+                    {
+                        var _m = 0;
+                        repeat(INPUT_COORD_SPACE.__SIZE)
+                        {
+                            switch(_m)
+                            {
+                                case INPUT_COORD_SPACE.ROOM:
+                                    if (view_enabled && view_visible[0])
+                                    {
+                                        var _camera = view_camera[0];
+                                        var _old_x = camera_get_view_width(_camera)/2;
+                                        var _old_y = camera_get_view_height(_camera)/2;
+                                    }
+                                    else
+                                    {
+                                        var _old_x = room_width/2;
+                                        var _old_y = room_height/2;
+                                    }
+                                
+                                    var _pointer_x = device_mouse_x(_global.__pointer_index);
+                                    var _pointer_y = device_mouse_y(_global.__pointer_index);
+                                break;
+                            
+                                case INPUT_COORD_SPACE.GUI:
+                                    var _old_x     = display_get_gui_width()/2;
+                                    var _old_y     = display_get_gui_height()/2;
+                                    var _pointer_x = device_mouse_x_to_gui(_global.__pointer_index);
+                                    var _pointer_y = device_mouse_y_to_gui(_global.__pointer_index);
+                                break;
+                            
+                                case INPUT_COORD_SPACE.DEVICE:
+                                    var _old_x = window_get_width()/2;
+                                    var _old_y = window_get_height()/2;
+                                
+                                    if (__INPUT_ON_WINDOWS)
+                                    {
+                                        _pointer_x = display_mouse_get_x() - window_get_x();
+                                        _pointer_y = display_mouse_get_y() - window_get_y();  
+                                    }
+                                    else
+                                    {
+                                        _pointer_x = device_mouse_raw_x(_global.__pointer_index);
+                                        _pointer_y = device_mouse_raw_y(_global.__pointer_index);
+                                    }
+                                break;
+                            }
+                        
+                            var _dx = (_pointer_x - _old_x)*_global.__mouse_capture_sensitivity;
+                            var _dy = (_pointer_y - _old_y)*_global.__mouse_capture_sensitivity;
+                        
+                            //Only detect movement in the display coordinate space so that moving a room's view, or moving the window, doesn't trigger movement
+                            if ((_m == INPUT_COORD_SPACE.DEVICE) && (_dx*_dx + _dy*_dy > INPUT_MOUSE_MOVE_DEADZONE*INPUT_MOUSE_MOVE_DEADZONE)) _moved = true;
+                        
+                            _global.__pointer_dx[@ _m] = _dx;
+                            _global.__pointer_dy[@ _m] = _dy;
+                        
+                            _global.__pointer_x[@ _m] += _dx;
+                            _global.__pointer_y[@ _m] += _dy;
+                        
+                            ++_m;
+                        }
+                    }
+                }
+            
+                //Recenter mouse cursor
+                window_mouse_set(window_get_width()/2, window_get_height()/2);
             }
+        }
+        else if (_global.__window_focus || INPUT_ALLOW_OUT_OF_FOCUS || __INPUT_ON_MACOS)
+        {
+            var _m = 0;
+            repeat(INPUT_COORD_SPACE.__SIZE)
+            {
+                var _old_x = _global.__pointer_x[_m];
+                var _old_y = _global.__pointer_y[_m];
+                var _pointer_x = _old_x;
+                var _pointer_y = _old_y;
             
-            //Only detect movement in the display coordinate space so that moving a room's view, or moving the window, doesn't trigger movement
-            if ((_m == INPUT_COORD_SPACE.DEVICE) && (point_distance(_old_x, _old_y, _pointer_x, _pointer_y) > INPUT_MOUSE_MOVE_DEADZONE)) _moved = true;
+                switch(_m)
+                {
+                    case INPUT_COORD_SPACE.ROOM:
+                        _pointer_x = device_mouse_x(_global.__pointer_index);
+                        _pointer_y = device_mouse_y(_global.__pointer_index);
+                    break;
+                
+                    case INPUT_COORD_SPACE.GUI:
+                        _pointer_x = device_mouse_x_to_gui(_global.__pointer_index);
+                        _pointer_y = device_mouse_y_to_gui(_global.__pointer_index);
+                    break;
+                
+                    case INPUT_COORD_SPACE.DEVICE:
+                        if (__INPUT_ON_WINDOWS)
+                        {
+                            _pointer_x = display_mouse_get_x() - window_get_x();
+                            _pointer_y = display_mouse_get_y() - window_get_y();  
+                        }
+                        else
+                        {
+                            _pointer_x = device_mouse_raw_x(_global.__pointer_index);
+                            _pointer_y = device_mouse_raw_y(_global.__pointer_index);
+                        }
+                    break;
+                }
             
-            _global.__pointer_dx[@ _m] = _pointer_x - _old_x;
-            _global.__pointer_dy[@ _m] = _pointer_y - _old_y;
+                //Only detect movement in the display coordinate space so that moving a room's view, or moving the window, doesn't trigger movement
+                if ((_m == INPUT_COORD_SPACE.DEVICE) && (point_distance(_old_x, _old_y, _pointer_x, _pointer_y) > INPUT_MOUSE_MOVE_DEADZONE)) _moved = true;
             
-            _global.__pointer_x[@ _m] = _pointer_x;
-            _global.__pointer_y[@ _m] = _pointer_y;
+                _global.__pointer_dx[@ _m] = _pointer_x - _old_x;
+                _global.__pointer_dy[@ _m] = _pointer_y - _old_y;
             
-            ++_m;
+                _global.__pointer_x[@ _m] = _pointer_x;
+                _global.__pointer_y[@ _m] = _pointer_y;
+            
+                ++_m;
+            }
         }
     }
     
