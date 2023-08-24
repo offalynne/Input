@@ -48,7 +48,6 @@ A list of possible return strings for [`input_binding_get_name`](Functions-(Bind
 | `gamepad paddle 3`           | `gamepad paddle 4`           |
 | `gamepad touchpad click`     | `gamepad unknown`            |
 <!-- tabs:end -->
-?> For labels specific to gamepad type, see [Button Labels by Gamepad Type](Gamepad-Button-Labels).
 
 ## Keyboard
 <!-- tabs:start -->
