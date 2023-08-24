@@ -59,6 +59,15 @@ function input_binding_get_icon(_binding, _player_index = 0)
         return _icon ?? "empty";
     }
     
+    //If this is a touch binding...
+    if (_type == __INPUT_BINDING_VIRTUAL_BUTTON)
+    {
+        var _category_data = _global.__icons[$ "virtual button"];
+        if (!is_struct(_category_data)) return "virtual button";
+        var _icon = _category_data.__dictionary[$ string(all)];
+        return _icon ?? "virtual button";
+    }
+    
     switch(_type)
     {
         case __INPUT_BINDING_KEY:
@@ -66,10 +75,6 @@ function input_binding_get_icon(_binding, _player_index = 0)
         case __INPUT_BINDING_MOUSE_WHEEL_UP:
         case __INPUT_BINDING_MOUSE_WHEEL_DOWN:
             var _category = "keyboard and mouse";
-        break;
-        
-        case __INPUT_BINDING_VIRTUAL_BUTTON:
-            return "virtual button";
         break;
         
         case __INPUT_BINDING_GAMEPAD_BUTTON:

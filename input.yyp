@@ -117,6 +117,7 @@
     {"id":{"name":"input_check_pressed","path":"scripts/input_check_pressed/input_check_pressed.yy",},"order":1,},
     {"id":{"name":"input_check_press_most_recent","path":"scripts/input_check_press_most_recent/input_check_press_most_recent.yy",},"order":14,},
     {"id":{"name":"input_check_quick_pressed","path":"scripts/input_check_quick_pressed/input_check_quick_pressed.yy",},"order":7,},
+    {"id":{"name":"input_icon_touch","path":"scripts/input_icon_touch/input_icon_touch.yy",},"order":4,},
     {"id":{"name":"input_check_released","path":"scripts/input_check_released/input_check_released.yy",},"order":2,},
     {"id":{"name":"input_check_repeat","path":"scripts/input_check_repeat/input_check_repeat.yy",},"order":0,},
     {"id":{"name":"input_chord_create","path":"scripts/input_chord_create/input_chord_create.yy",},"order":2,},
