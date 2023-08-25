@@ -16,6 +16,9 @@ input_icon_not_a_binding("Not a binding");
 //Special case: When an empty binding is being evaluated
 input_icon_empty("Empty");
 
+//Special case: When a touch binding (virtual button) is being evaluated
+input_icon_touch("Virtual button");
+
 
 
 //Optional remapping for keyboard and mouse
