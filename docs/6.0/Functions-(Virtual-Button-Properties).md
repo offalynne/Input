@@ -226,7 +226,7 @@ if (debug_mode)
 |-------|--------|----------------------------------------------------------------|
 |`state`|boolean |Whether the virtual button should move to follow the touch point|
 
-?> As the follow state moves the virtual button around, you may want to call `.release_behaviour()` to control how a virtual button reacts when released (including resetting the position of the button).
+?> As the follow state moves the virtual button around, you may want to call `.release_behavior()` to control how a virtual button reacts when released (including resetting the position of the button).
 
 #### **Example**
 
@@ -247,7 +247,7 @@ if (vb_screen.pressed())
 	vb_follow.follow(true);
 
 	//When released, destroy this button completely
-	vb_follow.release_behaviour(INPUT_VIRTUAL_RELEASE.DESTROY);
+	vb_follow.release_behavior(INPUT_VIRTUAL_RELEASE.DESTROY);
 }
 ```
 
@@ -386,9 +386,9 @@ if (debug_mode)
 |-------|--------|---------------------------------------------------------------------------|
 |`state`|boolean |Whether the virtual button should only try to capture the first touch point|
 
-On devices that support multiple touch points (typically mobile phones), setting this behaviour to `true` will filter out any touch points after the first one. This is useful for preventing multiple touches on a menu.
+On devices that support multiple touch points (typically mobile phones), setting this behavior to `true` will filter out any touch points after the first one. This is useful for preventing multiple touches on a menu.
 
-On devices that do not support multiple touch points, this function will not change any behaviour.
+On devices that do not support multiple touch points, this function will not change any behavior.
 
 #### **Example**
 
