@@ -311,7 +311,7 @@ vbutton_thumbstick = input_virtual_create()
                      .circle(150, _bottom - 150, 100)
                      .thumbstick(undefined, "left", "right", "up", "down")
                      .follow(true)
-                     .release_behaviour(INPUT_VIRTUAL_RELEASE.RESET_POSITION);
+                     .release_behavior(INPUT_VIRTUAL_RELEASE.RESET_POSITION);
 ```
 
 <!-- tabs:end -->
