@@ -4,7 +4,7 @@
 
 ## General
 
-`__input_config_general()` holds macros that affect the general behaviour of Input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
+`__input_config_general()` holds macros that affect the general behavior of Input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
 
 |Name                        |Typical Value              |Purpose                                                                                           |
 |----------------------------|---------------------------|--------------------------------------------------------------------------------------------------|
@@ -25,16 +25,16 @@
 |`INPUT_PS4_VIBRATION`       |`true`                     |Whether to enable gamepad vibration support on PS4                                                |
 |`INPUT_PS5_VIBRATION`       |`true`                     |Whether to enable legacy vibration support on PS5 (simulated with DualSense haptics)              |
 |`INPUT_ALLOW_OUT_OF_FOCUS`  |`false`                    |Whether to allow input while game window is out of focus on desktop platforms                     |
-|`INPUT_TIMER_MILLISECONDS`  |`false`                    |Set to `true` to use milliseconds instead of frames for many functions and behaviours inside Input|
+|`INPUT_TIMER_MILLISECONDS`  |`false`                    |Set to `true` to use milliseconds instead of frames for many functions and behaviors inside Input |
 |`INPUT_ALLOW_STEAMWORKS `   |`true`                     |Whether to allow using Steamworks extension when available. See [Steamworks](Steamworks)          |
 |`INPUT_BINDING_SCAN_TIMEOUT`|`10000`                    |Time (in milliseconds) to wait for a new binding before automatically cancelling the binding scan |
 |`INPUT_STARTING_SOURCE_MODE`|`INPUT_SOURCE_MODE.HOTSWAP`|Initial starting [source mode](Input-Sources?id=source-modes) for Input when the game boots       |
 
 &nbsp;
 
-## Verb Behaviour
+## Verb Behavior
 
-`__input_config_verb_behaviour()` holds macros that affect verbs, and the way verbs are checked, in Input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
+`__input_config_verb_behavior()` holds macros that affect verbs, and the way verbs are checked, in Input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
 
 |Name                                     |Typical Value|Purpose                                                                                                                                              |
 |-----------------------------------------|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -49,7 +49,7 @@
 |`INPUT_DEFAULT_OPPOSING_MOST_RECENT`     |`false`      |Default value for "mostRecent" parameters for 2D checkers, sometimes referred to as "Simultaneous Opposing Cardinal Direction" priority              |
 |`INPUT_DEFAULT_2D_MOST_RECENT`           |`false`      |Default value for "mostRecent" parameters for opposing checkers, sometimes referred to as "Simultaneous Opposing Cardinal Direction" priority        |
 |`INPUT_2D_CLAMP`                         |`true`       |Whether to clamp 2D input to a maximum distance of 1 unit                                                                                            |
-|`INPUT_2D_XY_AXIS_BIAS`                  |`0.0`        |The amount of bias for 2D checkers to prefer straight lines along the x- and y-axes. This makes it easier for the player to input exactly horizontal and exactly vertical movement. Value should be from 0 to 1. Higher values make the biasing behaviour stronger|
+|`INPUT_2D_XY_AXIS_BIAS`                  |`0.0`        |The amount of bias for 2D checkers to prefer straight lines along the x- and y-axes. This makes it easier for the player to input exactly horizontal and exactly vertical movement. Value should be from 0 to 1. Higher values make the biasing behavior stronger|
 |`INPUT_2D_XY_AXIS_BIAS_DIAGONALS`        |`true`       |Whether the axis bias (see above) should be 8-directional. If set to `false`, 2D checkers will only lock to north/east/south/west directions         |
 
 &nbsp;
@@ -60,19 +60,19 @@
 
 |Name                                      |Typical Value  |Purpose                                                                                                                                                      |
 |------------------------------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`INPUT_FALLBACK_PROFILE_BEHAVIOUR`        |`1`            |Sets the preferred behaviour for `input_binding_get()` when a player has no profile. See below for more information                                          |
+|`INPUT_FALLBACK_PROFILE_BEHAVIOR `        |`1`            |Sets the preferred behavior for `input_binding_get()` when a player has no profile. See below for more information                                           |
 |`INPUT_AUTO_PROFILE_FOR_KEYBOARD`         |`"keyboard"`   |Profile to use to automatically set up bindings when the player is using the `INPUT_KEYBOARD` source                                                         |
 |`INPUT_AUTO_PROFILE_FOR_MOUSE`            |`"mouse"`      |Profile to use to automatically set up bindings when the player is using the `INPUT_MOUSE` source                                                            |
 |`INPUT_AUTO_PROFILE_FOR_TOUCH`            |`"touch"`      |Profile to use to automatically set up bindings when the player is using the `INPUT_TOUCH` source                                                            |
 |`INPUT_AUTO_PROFILE_FOR_GAMEPAD`          |`"gamepad"`    |Profile to use to automatically set up bindings when the player is using the `INPUT_GAMEPAD[n]` source                                                       |
 |`INPUT_AUTO_PROFILE_FOR_MIXED`            |`"mixed"`      |Profile to use to automatically set up bindings when the `INPUT_SOURCE_MODE.MIXED` source mode is in use                                                     |
 |`INPUT_AUTO_PROFILE_FOR_MULTIDEVICE`      |`"multidevice"`|Profile to use to automatically set up bindings when the `INPUT_SOURCE_MODE.MULTIDEVICE` source mode is in use                                               |
-|`INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER`|`true`         |Whether to treat `INPUT_KEYBOARD` and `INPUT_MOUSE` sources are interchangeable. This "pairs" the two sources together and is the default behaviour for Input|
+|`INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER`|`true`         |Whether to treat `INPUT_KEYBOARD` and `INPUT_MOUSE` sources are interchangeable. This "pairs" the two sources together and is the default behavior for Input |
 |`INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES`|`false`        |Whether to allow [default profiles](Profiles) to include different verbs. This is convenient for larger games but is potentially unsafe                      |
 
-When a player has no profile set, `input_binding_get()` has undefined behaviour. This typically happens when hotswapping and the player hasn't pressed any buttons/keys/etc. yet. The macro `INPUT_FALLBACK_PROFILE_BEHAVIOUR` controls what should happen and can take one of three values:
+When a player has no profile set, `input_binding_get()` has undefined behavior. This typically happens when hotswapping and the player hasn't pressed any buttons/keys/etc. yet. The macro `INPUT_FALLBACK_PROFILE_BEHAVIOR` controls what should happen and can take one of three values:
 
-|Value|Behaviour                                                                                                                                           |
+|Value|Behavior                                                                                                                                            |
 |-----|----------------------------------------------------------------------------------------------------------------------------------------------------|
 |`0`  |Always return an empty binding if the player has no profile set                                                                                     |
 |`1`  |Prefer `INPUT_AUTO_PROFILE_FOR_KEYBOARD` for bindings if on desktop OSs, and use gamepad bindings otherwise                                         |
@@ -129,7 +129,7 @@ When a player has no profile set, `input_binding_get()` has undefined behaviour.
 |`INPUT_ANDROID_KEYBOARD_ALLOWED`  |`false`      |Whether to allow keyboard input on Android platform                                   |
 |`INPUT_SWITCH_KEYBOARD_ALLOWED`   |`false`      |Whether to allow keyboard input on Switch platform                                    |
 |`INPUT_MERGE_CONTROL_KEYS`        |`false`      |Whether to merge control keys, for example Left Shift and Right Shift upon user rebind|
-|`INPUT_IGNORE_RESERVED_KEYS_LEVEL`|`2`          |Controls default key filtering behaviour. See below                                   |
+|`INPUT_IGNORE_RESERVED_KEYS_LEVEL`|`2`          |Controls default key filtering behavior. See below                                    |
 
 `INPUT_IGNORE_RESERVED_KEYS_LEVEL` can take the following values:
 
