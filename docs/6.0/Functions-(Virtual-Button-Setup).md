@@ -309,7 +309,7 @@ var _bottom = display_get_gui_height();
 //Make a thumbstick that follows the player finger around
 vbutton_thumbstick = input_virtual_create()
                      .circle(150, _bottom - 150, 100)
-                     .thumbstick(undefined, "left", "right", "up", "down", true)
+                     .thumbstick(undefined, "left", "right", "up", "down")
                      .follow(true)
                      .release_behaviour(INPUT_VIRTUAL_RELEASE.RESET_POSITION);
 ```
