@@ -195,7 +195,7 @@ scroll_position = _scroll_size * vb_scrollbar.get_y();
 #### **Example**
 
 ```gml
-if (vb_fire.held())
+if (vb_fire.check())
 {
 	//We can't read the touch point once we've released the button
 	//This means we need to cache the touch points whilst the button is held
@@ -232,7 +232,7 @@ if (vb_fire.released())
 
 ```gml
 //Adjust the position of the power level pointer if we touch the thruster gauge
-if (vb_thruster.held())
+if (vb_thruster.check())
 {
 	thrust_pointer_y = vb_thruster.get_touch_y();
 }
@@ -265,7 +265,7 @@ if (vb_throw.released())
 	//If we've released the throw button, throw!
 	_throw = true;
 }
-else if (vb_throw.held())
+else if (vb_throw.check())
 {
 	//If we're holding down the throw button then track the touch position
 	throw_x = vb_throw.get_touch_x();
