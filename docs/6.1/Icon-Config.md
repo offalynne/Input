@@ -16,9 +16,11 @@
 
 **Returns:** N/A (`undefined`)
 
-|Name  |Datatype|Purpose                                                                           |
-|------|--------|----------------------------------------------------------------------------------|
-|`icon`|any     |The value to return for an empty binding (typically the result of an unbound verb)|
+|Name  |Datatype|Purpose                                 |
+|------|--------|----------------------------------------|
+|`icon`|any     |The value to return for an empty binding|
+
+The value set via this function will be returned when an empty binding is evaluated, which is typically the result of an unbound verb.
 
 &nbsp;
 
@@ -28,9 +30,25 @@
 
 **Returns:** N/A (`undefined`)
 
-|Name  |Datatype|Purpose                                                                                |
-|------|--------|---------------------------------------------------------------------------------------|
-|`icon`|any     |The value to return for an invalid binding (typically the result of some sort of error)|
+|Name  |Datatype|Purpose                                   |
+|------|--------|------------------------------------------|
+|`icon`|any     |The value to return for an invalid binding|
+
+The value set via this function will be returned when an invalid binding is evaluated, where an invalid binding is usually the result of some sort of error.
+
+&nbsp;
+
+## …_icon_touch
+
+`input_icon_touch(icon)`
+
+**Returns:** N/A (`undefined`)
+
+|Name  |Datatype|Purpose                                         |
+|------|--------|------------------------------------------------|
+|`icon`|any     |The value to return for a virtual button binding|
+
+The value set via this function will be returned when a touch binding created by [`input_binding_virtual_button()`](Functions-(Binding-Creators)?id=binding_virtual_button) is evaluated.
 
 &nbsp;
 
