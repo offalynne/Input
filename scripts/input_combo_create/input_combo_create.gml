@@ -1,10 +1,23 @@
 // Feather disable all
 
-/// Returns the number of phases for the given combo
+/// Creates a new combo which can be accessed like any other verb
 /// 
-/// @param   comboName
-/// @param   [phaseTimeout]
-/// @param   [directional=true]
+/// This function returns a struct (instance of __input_class_combo_definition) that you will need
+/// to edit in order to flesh out the combo. The following methods are provided to build the combo:
+///   .press(verb)
+///   .release(verb)
+///   .press_or_release(verb)
+///   .hold(verb)
+///   .charge(verb, [minTime])
+/// 
+/// You should execute methods in the order that verbs should activated to execute the combo.
+/// Methods can be chained one after another as a fluent interface e.g.
+/// 
+///   input_combo_create("hadouken").press("down").press("right").press("punch")
+/// 
+/// @param   comboName            Name of the combo
+/// @param   [phaseTimeout]       Maximum time allowed between phases
+/// @param   [directional=true]   Whether the combo should adjust based on the first direction pressed
 
 function input_combo_create(_name, _phase_timeout = INPUT_COMBO_DEFAULT_PHASE_TIMEOUT, _directional = true)
 {
@@ -34,5 +47,5 @@ function input_combo_create(_name, _phase_timeout = INPUT_COMBO_DEFAULT_PHASE_TI
         ++_p;
     }
     
-    return _combo_data;
+    return _combo_definition;
 }
