@@ -58,7 +58,7 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
         
         if (!_scan) return;
         
-        if (__global.__game_focus)
+        if (__global.__game_focus || (__global.__allow_gamepad_tester && __global.__gamepad_tester_data.__enabled && is_debug_overlay_open()))
         {        
             switch(type)
             {

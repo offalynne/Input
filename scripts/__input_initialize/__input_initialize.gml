@@ -83,6 +83,23 @@ function __input_initialize()
         __input_trace(_global.__use_debug_overlay_status? "Using debug overlay status to block input" : "Debug overlay status is unavailable");
     }
     
+    try
+    {
+        ref_create({});
+        _global.__allow_gamepad_tester = true;
+    }
+    catch(_error)
+    {
+        _global.__allow_gamepad_tester = false;
+    }
+    
+    if not (__INPUT_SILENT)
+    {
+        __input_trace(_global.__allow_gamepad_tester? "Allowing native gamepad tester" : "Native gamepad tester is unavailable");
+    }
+    
+    if (_global.__allow_gamepad_tester) __input_gamepad_tester_init();
+    
     #endregion
     
     //Set up a time source to manage input_controller_object

@@ -731,4 +731,11 @@ function __input_system_tick()
         case INPUT_SOURCE_MODE.MIXED:                                              break;
         case INPUT_SOURCE_MODE.MULTIDEVICE:                                        break;
     }
+    
+    
+    
+    if (_global.__allow_gamepad_tester && _global.__gamepad_tester_data.__enabled)
+    {
+        __input_gamepad_tester_tick();
+    }
 }
