@@ -90,9 +90,9 @@ function __input_class_combo_state(_name, _combo_def) constructor
                                 
                                 //Set up a mapping to flip forward/backward verbs
                                 __direction_mapping[$ __forward_verb         ] = __clockwise_verb;
-                                __direction_mapping[$ __counterclockwise_verb] = __backward_verb;
+                                __direction_mapping[$ __counterclockwise_verb] = __forward_verb;
                                 __direction_mapping[$ __backward_verb        ] = __counterclockwise_verb;
-                                __direction_mapping[$ __clockwise_verb       ] = __forward_verb;
+                                __direction_mapping[$ __clockwise_verb       ] = __backward_verb;
                             }
                         }
                     }
