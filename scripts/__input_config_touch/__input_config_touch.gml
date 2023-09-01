@@ -1,4 +1,3 @@
-// Feather disable all
 //Maximum number of touch screen points to query
 //This applies to touch screen devices only (excludes PlayStation)
 //Many devices have fewer touchpoints than the default value (11)

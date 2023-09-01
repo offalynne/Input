@@ -878,23 +878,39 @@ function __input_class_player() constructor
     }
     
     /// @param verbName
-    static __add_chord = function(_verb_name)
+    /// @param type
+    static __add_complex_verb = function(_verb_name, _type)
     {
         //Set up a verb container on the player separate from the bindings
         if (is_struct(__verb_state_dict[$ _verb_name]))
         {
-            __input_error("Chord \"", _verb_name, "\" has already been added to player ", __index);
+            __input_error("Verb \"", _verb_name, "\" has already been added to player ", __index);
         }
         else
         {
-            if (__INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one as a chord");
+            if (__INPUT_DEBUG_VERBS) __input_trace("Verb \"", _verb_name, "\" not found on player ", __index, ", creating a new one as a complex verb (type=", _type, ")");
             
             var _verb_state_struct = new __input_class_verb_state();
             _verb_state_struct.__player = self;
             _verb_state_struct.name     = _verb_name;
-            _verb_state_struct.type     = __INPUT_VERB_TYPE.__CHORD;
-            _verb_state_struct.analogue = false; //Chord verbs are never analogue
+            _verb_state_struct.type     = _type;
+            _verb_state_struct.analogue = false; //Complex verbs are never analogue
             __verb_state_dict[$ _verb_name] = _verb_state_struct;
+        }
+    }
+    
+    /// @param verbName
+    /// @param comboDefinition
+    static __add_combo_state = function(_verb_name, _combo_defintion)
+    {
+        //Set up a verb container on the player separate from the bindings
+        if (is_struct(__combo_state_dict[$ _verb_name]))
+        {
+            __input_error("Combo state with name \"", _verb_name, "\" has already been added to player ", __index);
+        }
+        else
+        {
+            __combo_state_dict[$ _verb_name] = new __input_class_combo_state(_verb_name, _combo_defintion);
         }
     }
     
@@ -1508,9 +1524,10 @@ function __input_class_player() constructor
             //Update our basic verbs first
             tick_basic_verbs();
             
-            //Update our chords
+            //Update our chords and combos
             //We directly access verb values to detect state here
             tick_chord_verbs();
+            tick_combo_verbs();
             
             __cursor.__tick();
             
@@ -1548,6 +1565,30 @@ function __input_class_player() constructor
             else
             {
                 __verb_state_dict[$ _chord_name].tick();
+            }
+            
+            ++_i;
+        }
+    }
+    
+    static tick_combo_verbs = function()
+    {
+        var _i = 0;
+        repeat(array_length(__global.__combo_verb_array))
+        {
+            var _combo_name = __global.__combo_verb_array[_i];
+            if (__combo_state_dict[$ _combo_name].__evaluate(__verb_state_dict))
+            {
+                with(__verb_state_dict[$ _combo_name])
+                {
+                    value = 1;
+                    raw   = 1;
+                    tick();
+                }
+            }
+            else
+            {
+                __verb_state_dict[$ _combo_name].tick();
             }
             
             ++_i;

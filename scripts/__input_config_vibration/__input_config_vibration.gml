@@ -1,4 +1,3 @@
-// Feather disable all
 //The default vibration strength. This value can be changed later by using input_vibrate_set_strength()
 #macro INPUT_VIBRATION_DEFAULT_STRENGTH  1.0
 

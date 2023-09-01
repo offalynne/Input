@@ -1,4 +1,5 @@
 // Feather disable all
+
 /// This script contains mappings from binding labels - a combination of keyboard key names, mouse button
 /// names, and abstract gamepad names - to more friendly terms that you can show a player. Typically you'd
 /// set up this function to return sprites such that you can draw gamepad icons as visual icons.

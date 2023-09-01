@@ -192,6 +192,7 @@ enum __INPUT_VERB_TYPE
 {
     __BASIC,
     __CHORD,
+    __COMBO,
 }
 
 enum __INPUT_TRIGGER_EFFECT
@@ -200,6 +201,15 @@ enum __INPUT_TRIGGER_EFFECT
     __TYPE_FEEDBACK,
     __TYPE_WEAPON,
     __TYPE_VIBRATION,
+}
+
+enum __INPUT_COMBO_PHASE
+{
+    __PRESS,
+    __RELEASE,
+    __PRESS_OR_RELEASE,
+    __HOLD,
+    __CHARGE,
 }
 
 //INPUT_STATUS.DISCONNECTED *must* be zero so that array_size() initializes gamepad status to disconnected
@@ -297,6 +307,7 @@ enum INPUT_VIRTUAL_RELEASE
                                        }
 
 #macro __INPUT_VERIFY_BASIC_VERB_NAME  if (variable_struct_exists(_global.__chord_verb_dict, _verb_name)) __input_error("\"", _verb_name, "\" is a chord verb. Verbs passed to this function must be basic verb");\
+                                       if (variable_struct_exists(_global.__combo_verb_dict, _verb_name)) __input_error("\"", _verb_name, "\" is a combo verb. Verbs passed to this function must be basic verb");\
                                        if (!variable_struct_exists(_global.__basic_verb_dict, _verb_name)) __input_error("Verb \"", _verb_name, "\" not recognised");
                                        
                                        

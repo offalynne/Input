@@ -8,12 +8,9 @@
 /// @param   verb2
 /// @param   ...
 
-function input_chord_create()
+function input_chord_create(_name, _max_time = INPUT_CHORD_DEFAULT_TIME)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
-    
-    var _name     = argument[0];
-    var _max_time = argument[1] ?? INPUT_CHORD_DEFAULT_TIME;
     
     __input_ensure_unique_verb_name(_name);
     
@@ -39,7 +36,7 @@ function input_chord_create()
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
     {
-        _global.__players[_p].__add_chord(_name);
+        _global.__players[_p].__add_complex_verb(_name, __INPUT_VERB_TYPE.__CHORD);
         ++_p;
     }
 }

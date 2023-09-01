@@ -24,6 +24,7 @@ function __input_initialize()
     }
     
     
+    
     #region Feature detection
     
     //Detect is_instanceof(), which offers some minor performance gains
@@ -101,6 +102,10 @@ function __input_initialize()
     if (_global.__allow_gamepad_tester) __input_gamepad_tester_init();
     
     #endregion
+    
+    
+    
+    #region On-boot warnings and errors
     
     //Set up a time source to manage input_controller_object
     _global.__time_source = time_source_create(time_source_global, 1, time_source_units_frames, function()
@@ -195,6 +200,10 @@ function __input_initialize()
         show_message("Due to changes in security policy, some browsers may not permit the use of gamepads when testing locally.\n \nPlease host on a remote web service (itch.io, GX.games, etc.) if you are encountering problems.");
     }
     
+    #endregion
+    
+    
+    
     //Global frame counter and realtime tracker. This is used for input buffering
     _global.__frame = 0;
     _global.__current_time = current_time;
@@ -241,6 +250,11 @@ function __input_initialize()
     _global.__mouse_capture_blocked     = false;
     _global.__mouse_capture_sensitivity = 1;
     _global.__mouse_capture_frame       = 0;
+    
+    //Combos
+    _global.__combo_params = {};
+    input_combo_params_reset();
+    _global.__combo_verb_dict = {};
     
     //Identify mobile and desktop
     _global.__on_desktop = (__INPUT_ON_WINDOWS || __INPUT_ON_MACOS || __INPUT_ON_LINUX || __INPUT_ON_OPERAGX);
@@ -298,6 +312,9 @@ function __input_initialize()
     
     _global.__chord_verb_dict  = {};
     _global.__chord_verb_array = [];
+    
+    _global.__combo_verb_dict  = {};
+    _global.__combo_verb_array = [];
     
     //Struct to store keyboard key names
      _global.__key_name_dict = {};

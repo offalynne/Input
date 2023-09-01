@@ -1,4 +1,3 @@
-// Feather disable all
 //Maximum number of alternate bindings per verb per profile
 #macro INPUT_MAX_ALTERNATE_BINDINGS  2
 

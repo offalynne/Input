@@ -1,4 +1,3 @@
-// Feather disable all
 //Whether to use Input's own SDL2 database to remap gamepads, overriding the old and crusty
 //database that GameMaker uses internally. Setting this to <false> will cause Input to use
 //GameMaker's native database and, as a result, gamepad mapping data will be less accurate

@@ -1,4 +1,5 @@
 // Feather disable all
+
 //This script contains the default profiles, and hence the default bindings and verbs, for your game
 //
 //  Please edit this macro to meet the needs of your game!
