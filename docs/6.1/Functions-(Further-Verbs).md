@@ -16,10 +16,10 @@ This page contains verb-related functions that don't fit elsewhere. They give yo
 
 **Returns:** N/A (`undefined`)
 
-|Name           |Datatype                            |Purpose                                                                                                          |
-|---------------|------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-|`verb`         |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to consume. If keyword `all` is used, all verbs for the player are consumed.|
-|`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used                                                             |
+|Name           |Datatype                            |Purpose                                                                                                  |
+|---------------|------------------------------------|---------------------------------------------------------------------------------------------------------|
+|`verb`         |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to consume. If keyword `all` is used, all verbs for the player(s) are consumed          |
+|`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used.  If keyword `all` is used, all players are targeted|
 
 When a verb has been consumed, [check functions](Functions-(Checkers)) that target the verb will return `false` until the button is released and pressed again.
 
