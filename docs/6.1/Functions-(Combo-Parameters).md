@@ -1,10 +1,10 @@
-# Functions (Creating Combos)
+# Functions (Combo Parameters)
 
 &nbsp;
 
 In Input, a "combo" is a sequence of inputs that need to be executed in a timely fashion to trigger some sort of player action. These are ubiquitous (and perhaps synonymous) with fighting games that regularly use a long chains of button inputs to skilltest the most powerful attacks. Less stringent combos are also found in other games that have some sort of skill mastery and combat component. Finally, combos are occasionally useful for triggering cheat codes.
 
-Input offers a compact but powerful API to manage combos, including charge moves and directionality. This page will describe how to set up the combo system and individual combos. Getter functions specifically associated with combos can be found [here](Functions-(Combos)). 
+Input offers a compact but powerful API to manage combos, including charge moves and directionality. This page will describe how to set up the combo system. Getter functions specifically associated with combos can be found [here](Functions-(Combo-Getters)). 
 
 &nbsp;
 
