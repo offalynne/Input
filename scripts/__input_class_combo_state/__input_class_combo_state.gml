@@ -12,11 +12,35 @@ function __input_class_combo_state(_name, _combo_def) constructor
     
     
     
+    
+    
+    static __reset = function()
+    {
+        __success   = false;
+        __direction = undefined;
+        
+        __phase       = 0;
+        __new_phase   = false;
+        __start_time  = __input_get_time();
+        
+        __charge_trigger    = true;
+        __charge_measure    = false;
+        __charge_start_time = undefined;
+        __charge_end_time   = undefined;
+        
+        __allow_hold_dict    = {};
+        __require_hold_array = [];
+        
+        __direction         = undefined;
+        __direction_mapping = {};
+    }
+    
     static __evaluate = function(_player_verb_struct)
     {
         static _all_verb_array = __global.__all_verb_array;
         
         __new_phase = false;
+        if (__success) __reset();
         
         var _phase_array = __combo.__phase_array;
         var _combo_length = array_length(_phase_array);
@@ -41,14 +65,11 @@ function __input_class_combo_state(_name, _combo_def) constructor
         }
         else
         {
-            if (__phase > 0)
+            if ((__phase > 0) && (__input_get_time() - __start_time > __combo.__phase_timeout))
             {
-                if (__input_get_time() - __start_time > __combo.__phase_timeout)
-                {
-                    if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" timeout failed (phase=", __phase, ")");
-                    __reset();
-                    return false;
-                }
+                if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" timeout failed (phase=", __phase, ")");
+                __reset();
+                return false;
             }
         }
         
@@ -67,7 +88,7 @@ function __input_class_combo_state(_name, _combo_def) constructor
                 break;
                 
                 case __INPUT_COMBO_PHASE.__RELEASE:
-                    if (_verb_state.release)
+                    if (not _verb_state.held)
                     {
                         if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" phase ", __phase, " passed (release \"", _phase_verb, "\")");
                         __remove_from_allow_hold_dict(_phase_verb);
@@ -123,6 +144,8 @@ function __input_class_combo_state(_name, _combo_def) constructor
                             if (__input_get_time() - __charge_start_time > _phase_data.__min_time)
                             {
                                 if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" phase ", __phase, " passed (charge \"", _phase_verb, "\" for over ", _phase_data.__min_time, (INPUT_TIMER_MILLISECONDS? "ms" : " frames"), ")");
+                                
+                                __remove_from_require_hold_array(_phase_verb);
                                 __next_phase(_phase_array, false);
                             }
                         }
@@ -137,7 +160,7 @@ function __input_class_combo_state(_name, _combo_def) constructor
             {
                 if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" success");
                     
-                __reset();
+                __success = true;
                 return true;
             }
         }
@@ -162,7 +185,7 @@ function __input_class_combo_state(_name, _combo_def) constructor
         if ((__phase < array_length(_phase_array))
         &&  (_phase_array[__phase].__type == __INPUT_COMBO_PHASE.__CHARGE))
         {
-            __charge_trigger = false;
+            __charge_trigger = true;
         }
     }
     
@@ -251,28 +274,6 @@ function __input_class_combo_state(_name, _combo_def) constructor
             
             ++_i;
         }
-    }
-    
-    
-    
-    static __reset = function()
-    {
-        __direction = undefined;
-        
-        __phase       = 0;
-        __new_phase   = false;
-        __start_time  = undefined;
-        
-        __charge_trigger    = true;
-        __charge_measure    = false;
-        __charge_start_time = undefined;
-        __charge_end_time   = undefined;
-        
-        __allow_hold_dict    = {};
-        __require_hold_array = [];
-        
-        __direction         = undefined;
-        __direction_mapping = {};
     }
     
     

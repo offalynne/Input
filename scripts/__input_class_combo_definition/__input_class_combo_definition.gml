@@ -48,7 +48,7 @@ function __input_class_combo_definition(_name, _phase_timeout, _directional) con
         return self;
     }
     
-    static hold = function(_verb, _min_time = INPUT_COMBO_DEFAULT_MIN_CHARGE_TIME)
+    static charge = function(_verb, _min_time = INPUT_COMBO_DEFAULT_MIN_CHARGE_TIME)
     {
         array_push(__phase_array, {
             __type:     __INPUT_COMBO_PHASE.__CHARGE,
