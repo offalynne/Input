@@ -8,6 +8,7 @@ function __input_class_combo_state(_name, _combo_def) constructor
     __name  = _name;
     __combo = _combo_def;
     
+    __phase = 0;
     __reset();
     
     
@@ -16,11 +17,12 @@ function __input_class_combo_state(_name, _combo_def) constructor
     
     static __reset = function()
     {
+        
         __success   = false;
         __direction = undefined;
         
+        __new_phase   = (__phase != 0);
         __phase       = 0;
-        __new_phase   = false;
         __start_time  = __input_get_time();
         
         __charge_trigger    = true;
@@ -40,11 +42,7 @@ function __input_class_combo_state(_name, _combo_def) constructor
         static _all_verb_array = __global.__all_verb_array;
         
         __new_phase = false;
-        if (__success)
-        {
-            __reset();
-            __new_phase = true;
-        }
+        if (__success) __reset();
         
         var _phase_array = __combo.__phase_array;
         var _combo_length = array_length(_phase_array);
@@ -73,7 +71,6 @@ function __input_class_combo_state(_name, _combo_def) constructor
             {
                 if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" timeout failed (phase=", __phase, ")");
                 __reset();
-                __new_phase = true;
                 return false;
             }
         }
@@ -171,9 +168,7 @@ function __input_class_combo_state(_name, _combo_def) constructor
         }
         else
         {
-            var _new_phase = (__phase > 0);
             __reset();
-            __new_phase = _new_phase;
         }
         
         return false;
