@@ -8,6 +8,39 @@ The functions on this page allow you to access specific values associated with c
 
 &nbsp;
 
+## …combo_reset
+
+`input_combo_reset(comboName, [playerIndex=0])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`comboName`    |string  |Name of the combo to target                         |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+You may use GML keyword `all` to reset all combos for a player.
+
+#### **Example**
+
+```gml
+if (input_check_pressed("pause"))
+{
+	//Make sure all combos are fully reset if we pause the game
+	input_combo_reset(all);
+
+	instance_create_depth(0, 0, 0, obj_pause_menu);
+}
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
 ## …combo_get_phase_count
 
 `input_combo_get_phase_count(comboName)`
