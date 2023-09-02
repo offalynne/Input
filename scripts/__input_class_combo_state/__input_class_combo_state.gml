@@ -40,7 +40,11 @@ function __input_class_combo_state(_name, _combo_def) constructor
         static _all_verb_array = __global.__all_verb_array;
         
         __new_phase = false;
-        if (__success) __reset();
+        if (__success)
+        {
+            __reset();
+            __new_phase = true;
+        }
         
         var _phase_array = __combo.__phase_array;
         var _combo_length = array_length(_phase_array);
@@ -69,6 +73,7 @@ function __input_class_combo_state(_name, _combo_def) constructor
             {
                 if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" timeout failed (phase=", __phase, ")");
                 __reset();
+                __new_phase = true;
                 return false;
             }
         }
@@ -166,7 +171,9 @@ function __input_class_combo_state(_name, _combo_def) constructor
         }
         else
         {
+            var _new_phase = (__phase > 0);
             __reset();
+            __new_phase = _new_phase;
         }
         
         return false;
