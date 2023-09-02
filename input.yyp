@@ -475,8 +475,8 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"24  Mouse (Direct)","folderPath":"folders/Input/24  Mouse (Direct).yy","order":25,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"25  Gamepads (Direct)","folderPath":"folders/Input/25  Gamepads (Direct).yy","order":26,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"26  Keyboard (Direct)","folderPath":"folders/Input/26  Keyboard (Direct).yy","order":27,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Test Cases","folderPath":"folders/Test Cases.yy","order":0,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"27  Combos","folderPath":"folders/Input/27  Combos.yy","order":28,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Test Cases","folderPath":"folders/Test Cases.yy","order":0,},
   ],
   "AudioGroups": [
     {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},

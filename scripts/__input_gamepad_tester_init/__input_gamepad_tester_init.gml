@@ -1,3 +1,5 @@
+//Feather disable all
+
 function __input_gamepad_tester_init()
 {
     __INPUT_GLOBAL_STATIC_LOCAL
