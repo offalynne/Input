@@ -4,7 +4,7 @@
 
 The functions on this page allow you to access specific values associated with combos.
 
-?> You can and should check for the completion of a combo using the standard [verb checkers](Functions-(Checkers)).
+?> You can and should check for the completion of a combo using the standard [verb checkers](Functions-(Checkers)) e.g. `input_check_pressed("combo name")`
 
 &nbsp;
 
