@@ -1,3 +1,5 @@
+//Feather disable all
+
 //Scan for new input from a new source, and assign it to an unconnected player
 var _new_source = input_source_detect_new();
 if (_new_source != undefined)

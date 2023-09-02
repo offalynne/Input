@@ -1,3 +1,5 @@
+//Feather disable all
+
 var _gamepad = input_player_get_gamepad();
 var _state = "";
 

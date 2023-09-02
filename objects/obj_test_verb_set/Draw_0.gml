@@ -1,3 +1,5 @@
+//Feather disable all
+
 var _string = "";
 _string += "Verb   State  Binding \n"; 
 _string += concat("Left   ", input_check_pressed("left" ), " ", max(0, input_held_time("left" )) mod 10, " ", input_check_released("left" ), "  ", input_binding_get_name(input_binding_get("left" )), "\n");

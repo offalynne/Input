@@ -1,3 +1,5 @@
+//Feather disable all
+
 //Allow player 1 to quit back to the join menu
 if (input_check_pressed("pause", 0))
 {

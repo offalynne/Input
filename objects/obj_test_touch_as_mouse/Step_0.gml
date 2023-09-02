@@ -1,3 +1,5 @@
+//Feather disable all
+
 //Release
 var _released = input_mouse_check_released(mb_left);
 if (_released || input_mouse_check(mb_none))

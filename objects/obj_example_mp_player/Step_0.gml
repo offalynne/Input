@@ -1,3 +1,5 @@
+//Feather disable all
+
 //Move around using the 2D checkers
 //These automatically handle analogue input (thumbsticks) as well as on/off input (keyboard/dpad)
 x_speed += xy_acceleration*input_x("left", "right", "up", "down", player);

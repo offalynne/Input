@@ -1,3 +1,5 @@
+//Feather disable all
+
 var _string = "";
 
 _string += "Player active = " + string(input_player_active_get()) + "\n";

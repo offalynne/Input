@@ -1,3 +1,5 @@
+//Feather disable all
+
 var _mouse_x = input_mouse_x();
 var _mouse_y = input_mouse_y();
 

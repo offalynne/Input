@@ -1,4 +1,5 @@
 // Feather disable all
+
 /// @desc    Duplicates one player's profile and copies it to another player.
 /// @param   playerIndexSrc
 /// @param   profileNameSrc

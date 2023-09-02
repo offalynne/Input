@@ -1,3 +1,5 @@
+//Feather disable all
+
 var _string = "";
 _string += concat("paddle1  = ", input_check("up"     ), "\n");
 _string += concat("paddle2  = ", input_check("down"   ), "\n");

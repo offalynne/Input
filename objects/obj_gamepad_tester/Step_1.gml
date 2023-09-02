@@ -1,3 +1,5 @@
+//Feather disable all
+
 var _size = gamepad_get_device_count();
 var _delta = (input_keyboard_check_pressed(vk_down) - input_keyboard_check_pressed(vk_up));
 

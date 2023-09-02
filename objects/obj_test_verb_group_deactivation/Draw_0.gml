@@ -1,3 +1,5 @@
+//Feather disable all
+
 var _string = "";
 _string += "\"general\" active = " + string(input_verb_group_is_active("general")) + "\n";
 _string += "\n";

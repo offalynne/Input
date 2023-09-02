@@ -1,3 +1,5 @@
+//Feather disable all
+
 //Player 1 controls
 var _string = "";
 _string += "Player 1:\n";

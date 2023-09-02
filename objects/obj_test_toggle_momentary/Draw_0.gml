@@ -1,3 +1,5 @@
+//Feather disable all
+
 var _string = "";
 _string += concat("Left          = ", input_value("left"  ), "    ", input_binding_get_name(input_binding_get("left"  )), "\n");
 _string += concat("Right         = ", input_value("right" ), "    ", input_binding_get_name(input_binding_get("right" )), "\n");

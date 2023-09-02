@@ -1,3 +1,5 @@
+//Feather disable all
+
 //Figure out which direction to move, left or right
 //input_check_opposing() returns -1, 0, or +1, making it perfect for controlling horizontal movement
 //This function is *not* sensitive to analogue input, we'd need to use input_x() for that
