@@ -341,7 +341,6 @@ else if (INPUT_KEYBOARD_TYPE == "async")
 
 <!-- tabs:end -->
 
-
 &nbsp;
 
 ## …_keyboard_virtual_hide
@@ -365,6 +364,68 @@ if (os_is_network_connected(false))
 	input_keyboard_virtual_hide();
 	
 	set_hud_string("Network disconnected");
+}
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …_input_gamepad_tester_set
+
+`input_gamepad_tester_set(state)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+Creates a gamepad tester GUI using GameMaker's native debug overlay feature. You can use this tool to debug gamepads that you have connected.
+
+?> Whilst the debug overlay is open in general, Input will not pass through any inputs to your game.
+
+#### **Example**
+
+```gml
+if (keyboard_check(vk_control)
+&&  keyboard_check(vk_shift)
+&&  keyboard_check_pressed("G")) //ctrl + shift + G
+{
+	//Toggle the gamepad tester
+	input_gamepad_tester_set(not input_gamepad_tester_get());
+}
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …_input_gamepad_tester_get
+
+`input_gamepad_tester_get()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the gamepad tester debug overlay view has been created
+
+#### **Example**
+
+```gml
+/// Draw GUI End event
+
+if (input_gamepad_tester_get())
+{
+	draw_set_color(c_black)
+	draw_set_alpha(0.6)
+
+	//Draw a shader over gameplay whilst the gamepad tester is open to aid legibility
+	draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height());
+
+	draw_set_color(c_white)
+	draw_set_alpha(1)
 }
 ```
 
