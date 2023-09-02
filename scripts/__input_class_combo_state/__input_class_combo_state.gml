@@ -17,7 +17,6 @@ function __input_class_combo_state(_name, _combo_def) constructor
     
     static __reset = function()
     {
-        
         __success   = false;
         __direction = undefined;
         
@@ -146,8 +145,6 @@ function __input_class_combo_state(_name, _combo_def) constructor
                             if (__input_get_time() - __charge_start_time > _phase_data.__min_time)
                             {
                                 if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" phase ", __phase, " passed (charge \"", _phase_verb, "\" for over ", _phase_data.__min_time, (INPUT_TIMER_MILLISECONDS? "ms" : " frames"), ")");
-                                
-                                __remove_from_require_hold_array(_phase_verb);
                                 __next_phase(_phase_array, false);
                             }
                         }
@@ -176,12 +173,13 @@ function __input_class_combo_state(_name, _combo_def) constructor
     
     static __next_phase = function(_phase_array, _reset_charge)
     {
-        ++__phase;
-        __new_phase = true;
-        __start_time = __input_get_time();
-        
-        //Stop measuring the length of the charge
-        if (_reset_charge) __charge_measure = false;
+        if (__charge_measure)
+        {
+            __remove_from_require_hold_array(_phase_array[__phase-1].__verb);
+            
+            //Stop measuring the length of the charge
+            if (_reset_charge) __charge_measure = false;
+        }
         
         //Allow retriggering of a charge phase if that's the next type we're going to evaluate
         if ((__phase < array_length(_phase_array))
@@ -189,6 +187,10 @@ function __input_class_combo_state(_name, _combo_def) constructor
         {
             __charge_trigger = true;
         }
+        
+        ++__phase;
+        __new_phase = true;
+        __start_time = __input_get_time();
     }
     
     static __check_valid = function(_player_verb_struct)
