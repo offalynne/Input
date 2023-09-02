@@ -8,6 +8,7 @@ function __input_class_player() constructor
     __source_array          = [];
     __verb_state_dict       = {};
     __chord_state_dict      = {};
+    __combo_state_dict      = {};
     __last_input_time       = -infinity;
     __verb_group_state_dict = {};
     
@@ -1559,12 +1560,12 @@ function __input_class_player() constructor
                 {
                     value = 1;
                     raw   = 1;
-                    tick();
+                    tick(other.__verb_group_state_dict, other.__active);
                 }
             }
             else
             {
-                __verb_state_dict[$ _chord_name].tick();
+                __verb_state_dict[$ _chord_name].tick(__verb_group_state_dict, __active);
             }
             
             ++_i;
@@ -1583,12 +1584,12 @@ function __input_class_player() constructor
                 {
                     value = 1;
                     raw   = 1;
-                    tick();
+                    tick(other.__verb_group_state_dict, other.__active);
                 }
             }
             else
             {
-                __verb_state_dict[$ _combo_name].tick();
+                __verb_state_dict[$ _combo_name].tick(__verb_group_state_dict, __active);
             }
             
             ++_i;

@@ -13,5 +13,9 @@ function input_combo_get_charge(_name, _player_index = 0)
     var _combo_state = _global.__players[_player_index].__combo_state_dict[$ _name];
     if (not is_struct(_combo_state)) __input_error("Combo with name \"", _name, "\" doesn't exist");
     
-    return _combo_state.__charge_time;
+    with(_combo_state)
+    {
+        if ((__charge_start_time == undefined) || (__charge_start_time == undefined)) return 0;
+        return (__charge_end_time - __charge_start_time);
+    }
 }
