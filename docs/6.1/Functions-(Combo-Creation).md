@@ -6,6 +6,8 @@ In Input, a "combo" is a sequence of inputs that need to be executed in a timely
 
 Input offers a compact but powerful API to manage combos, including charge moves and directionality. This page will describe how to create combos. Getter functions specifically associated with combos can be found [here](Functions-(Combo-Getters)).
 
+?> You can and should check for the completion of a combo using the standard [verb checkers](Functions-(Checkers)).
+
 Combos are arranged in "phases". Each phase represents a condition that needs to be met before advancing to the next phase. Once all phases have been completed, the combo as a whole is complete. You can check whether a combo has been completed by using the standard verb getters e.g. `input_check_pressed("combo name")` will return `true` the same frame that a combo is evaluated as complete.
 
 There are 5 types of phase:

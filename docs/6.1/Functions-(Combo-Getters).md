@@ -2,6 +2,12 @@
 
 &nbsp;
 
+The functions on this page allow you to access specific values associated with combos.
+
+?> You can and should check for the completion of a combo using the standard [verb checkers](Functions-(Checkers)).
+
+&nbsp;
+
 ## …combo_get_phase_count
 
 `input_combo_get_phase_count(comboName)`
