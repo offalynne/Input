@@ -1,6 +1,8 @@
 // Feather disable all
 
-/// Returns what phase a given a combo is in for the specified player
+/// Returns the value of the most recently executed charge phase
+/// 
+/// If a combo contains no charge phase, this function returns 0
 /// 
 /// @param   comboName
 /// @param   [playerIndex=0]

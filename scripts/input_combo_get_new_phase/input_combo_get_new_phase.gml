@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns whether a new phase was entered this frame for the given combo.
+/// Returns whether a new phase was entered this frame for the given combo
 /// 
 /// @param   comboName
 /// @param   [playerIndex=0]

@@ -8,16 +8,16 @@
 ///   .release(verb)
 ///   .press_or_release(verb)
 ///   .hold(verb)
-///   .charge(verb, [minTime])
+///   .charge(verb, [minTime=default])
 /// 
 /// You should execute methods in the order that verbs should activated to execute the combo.
 /// Methods can be chained one after another as a fluent interface e.g.
 /// 
 ///   input_combo_create("hadouken").press("down").press("right").press("punch")
 /// 
-/// @param   comboName            Name of the combo
-/// @param   [phaseTimeout]       Maximum time allowed between phases
-/// @param   [directional=true]   Whether the combo should adjust based on the first direction pressed
+/// @param   comboName                Name of the combo
+/// @param   [phaseTimeout=default]   Maximum time allowed between phases
+/// @param   [directional=true]       Whether the combo should adjust based on the first direction pressed
 
 function input_combo_create(_name, _phase_timeout = INPUT_COMBO_DEFAULT_PHASE_TIMEOUT, _directional = true)
 {

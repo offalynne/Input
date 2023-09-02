@@ -1,7 +1,7 @@
 //Feather disable all
 
 /// Resets the parameters used for the combo system.
-/// Please note that combos will be forced to be non-directional if no parameters are set
+/// Please note that combos will be forced to be non-directional if no combo parameters are set
 
 function input_combo_params_reset()
 {

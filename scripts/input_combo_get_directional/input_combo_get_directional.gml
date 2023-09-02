@@ -1,7 +1,8 @@
 // Feather disable all
 
-/// Returns whether the given combo is directional.
-/// Please not that this function will return <false> if no combo parameters have been set.
+/// Returns whether the given combo is defined as directional
+/// 
+/// Please not that this function will return <false> if no combo parameters have been set
 /// 
 /// @param   comboName
 

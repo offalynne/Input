@@ -1,6 +1,10 @@
 // Feather disable all
 
+/// Returns the determined direction for a combo
 /// 
+/// If no direction has yet been determined, this function returns <undefined>. If a combo is
+/// defined as non-directional or no global combo parameters have been set then this function will
+/// return <undefined>
 /// 
 /// @param   comboName
 /// @param   [playerIndex=0]

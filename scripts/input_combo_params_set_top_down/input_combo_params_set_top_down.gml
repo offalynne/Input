@@ -2,7 +2,7 @@
 
 /// Sets up the combo system for use with top-down games
 /// Verbs should be specified in a counter-clockwise direction. You can define these in any
-/// direction you like but we recommedn the following usage for consistency:
+/// direction you like but we recommend the following usage for consistency:
 ///   
 ///   input_combo_params_set_top_down("right", "up", "left", "down", 0)
 /// 

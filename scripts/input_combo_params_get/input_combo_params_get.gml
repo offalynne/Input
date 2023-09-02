@@ -3,12 +3,13 @@
 /// Returns the parameters being used for the combo system.
 /// 
 /// The returned struct contains the following member variables:
-///   .reset                
-///   .side_on              
-///   .forward_verb         
+///   .reset
+///   .side_on
+///   .forward_verb
 ///   .counterclockwise_verb
-///   .backward_verb        
-///   .clockwise_verb       
+///   .backward_verb
+///   .clockwise_verb
+///   .reference_direction
 
 function input_combo_params_get()
 {

@@ -2,9 +2,9 @@
 
 /// Returns what phase a given a combo is in for the specified player
 /// 
-/// This function will return 0 if the combo is waiting for the first phase to be triggered.
+/// This function will return 0 if the combo is waiting for the first phase to be triggered
 /// This function will return 1 more than the number of defined phases if a combo has been
-/// finished in its entirety.
+/// finished in its entirety
 /// 
 /// @param   comboName
 /// @param   [playerIndex=0]
