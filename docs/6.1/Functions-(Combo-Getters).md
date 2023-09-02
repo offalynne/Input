@@ -81,6 +81,8 @@ if (_phase >= 3)
 |`comboName`    |string  |Name of the combo to target                         |
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
+This function will return `true` in situations where the phase both increases (which indicates a successful button input) as well as if a phase was failed and the combo is reset.
+
 #### **Example**
 
 ```gml
@@ -112,6 +114,8 @@ if (input_combo_get_new_phase("hi jump kick"))
 |---------------|--------|----------------------------------------------------|
 |`comboName`    |string  |Name of the combo to target                         |
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+The units for the returned value is determined by `INPUT_TIMER_MILLISECONDS`.
 
 #### **Example**
 
