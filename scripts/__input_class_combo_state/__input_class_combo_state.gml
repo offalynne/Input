@@ -28,81 +28,7 @@ function __input_class_combo_state(_name, _combo_def) constructor
         
         if ((__direction == undefined) && __combo.__directional)
         {
-            if (not __combo_params.__reset)
-            {
-                var _forward_verb          = __combo_params.__forward_verb;
-                var _counterclockwise_verb = __combo_params.__counterclockwise_verb;
-                var _backward_verb         = __combo_params.__backward_verb;
-                var _clockwise_verb        = __combo_params.__clockwise_verb;
-                var _reference_direction   = __combo_params.__reference_direction;
-                
-                if (__combo_params.__side_on)
-                {
-                    if (_phase_verb == _forward_verb)
-                    {
-                        __direction = _reference_direction;
-                        //No direction mapping needed
-                        
-                        if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from forward verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
-                    }
-                    else if (_phase_verb == _backward_verb)
-                    {
-                        __direction = (_reference_direction + 180 + 3600) mod 360; //Use a big offset here to fix any weird shit people do
-                        
-                        //Set up a mapping to flip forward/backward verbs
-                        __direction_mapping[$ _forward_verb ] = _backward_verb;
-                        __direction_mapping[$ _backward_verb] = _forward_verb;
-                        
-                        if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from backward verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
-                    }
-                }
-                else
-                {
-                    if (_phase_verb == _forward_verb)
-                    {
-                        __direction = _reference_direction;
-                        //No direction mapping needed
-                        
-                        if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from forward verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
-                    }
-                    else if (_phase_verb == _counterclockwise_verb)
-                    {
-                        __direction = (_reference_direction + 90 + 3600) mod 360; //Use a big offset here to fix any weird shit people do
-                        
-                        //Set up a mapping to flip forward/backward verbs
-                        __direction_mapping[$ _forward_verb         ] = _counterclockwise_verb;
-                        __direction_mapping[$ _counterclockwise_verb] = _backward_verb;
-                        __direction_mapping[$ _backward_verb        ] = _clockwise_verb;
-                        __direction_mapping[$ _clockwise_verb       ] = _forward_verb;
-                        
-                        if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from counter-clockwise verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
-                    }
-                    else if (_phase_verb == _backward_verb)
-                    {
-                        __direction = (_reference_direction + 180 + 3600) mod 360; //Use a big offset here to fix any weird shit people do
-                        
-                        //Set up a mapping to flip forward/backward verbs
-                        __direction_mapping[$ _forward_verb         ] = _backward_verb;
-                        __direction_mapping[$ _counterclockwise_verb] = _clockwise_verb;
-                        __direction_mapping[$ _backward_verb        ] = _forward_verb;
-                        __direction_mapping[$ _clockwise_verb       ] = _counterclockwise_verb;
-                        
-                        if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from backward verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
-                    }
-                    else if (_phase_verb == _clockwise_verb)
-                    {
-                        __direction = (_reference_direction + 270 + 3600) mod 360; //Use a big offset here to fix any weird shit people do
-                         
-                        //Set up a mapping to flip forward/backward verbs
-                        __direction_mapping[$ _forward_verb         ] = _clockwise_verb;
-                        __direction_mapping[$ _counterclockwise_verb] = _forward_verb;
-                        __direction_mapping[$ _backward_verb        ] = _counterclockwise_verb;
-                        __direction_mapping[$ _clockwise_verb       ] = _backward_verb;
-                          
-                        if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from clockwise verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
-                    }
-                }
-            }
+            __determine_direction(_player_verb_struct, _phase_verb);
         }
         
         //Remap verbs based on directionality
@@ -347,5 +273,163 @@ function __input_class_combo_state(_name, _combo_def) constructor
         
         __direction         = undefined;
         __direction_mapping = {};
+    }
+    
+    
+    
+    static __determine_direction = function(_player_verb_struct, _phase_verb)
+    {
+        if (not __combo_params.__reset)
+        {
+            var _forward_verb          = __combo_params.__forward_verb;
+            var _counterclockwise_verb = __combo_params.__counterclockwise_verb;
+            var _backward_verb         = __combo_params.__backward_verb;
+            var _clockwise_verb        = __combo_params.__clockwise_verb;
+            
+            var _forward_struct           = (_forward_verb          == undefined)? undefined : _player_verb_struct[$ _forward_verb];
+            var _counterclockwise_struct  = (_counterclockwise_verb == undefined)? undefined : _player_verb_struct[$ _counterclockwise_verb];
+            var _backward_struct          = (_backward_verb         == undefined)? undefined : _player_verb_struct[$ _backward_verb];
+            var _clockwise_struct         = (_clockwise_verb        == undefined)? undefined : _player_verb_struct[$ _clockwise_verb];
+            
+            var _forward_state          = is_struct(_forward_struct         ) && (not           _forward_struct.__inactive) && _forward_struct.held;
+            var _counterclockwise_state = is_struct(_counterclockwise_struct) && (not  _counterclockwise_struct.__inactive) && _counterclockwise_struct.held;
+            var _backward_state         = is_struct(_backward_struct        ) && (not          _backward_struct.__inactive) && _backward_struct.held;
+            var _clockwise_state        = is_struct(_clockwise_struct       ) && (not         _clockwise_struct.__inactive) && _clockwise_struct.held;
+            
+            if (_phase_verb == _forward_verb)
+            {
+                if (_forward_state)
+                {
+                    __set_direction(0);
+                    if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from verb \"", _forward_verb, "\" used as forward verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
+                }
+                else if (_counterclockwise_state)
+                {
+                    __set_direction(90);
+                    if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from verb \"", _counterclockwise_verb, "\" used as forward verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
+                }
+                else if (_backward_state)
+                {
+                    __set_direction(180);
+                    if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from verb \"", _backward_verb, "\" used as forward verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
+                }
+                else if (_clockwise_state)
+                {
+                    __set_direction(270);
+                    if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from verb \"", _clockwise_verb, "\" used as forward verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
+                }
+            }
+            else if (_phase_verb == _counterclockwise_verb)
+            {
+                if (_counterclockwise_state)
+                {
+                    __set_direction(0);
+                    if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from verb \"", _counterclockwise_verb, "\" used as counter-clockwise verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
+                }
+                else if (_backward_state)
+                {
+                    __set_direction(90);
+                    if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from verb \"", _backward_verb, "\" used as counter-clockwise verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
+                }
+                else if (_clockwise_state)
+                {
+                    __set_direction(180);
+                    if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from verb \"", _clockwise_verb, "\" used as counter-clockwise verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
+                }
+                else if (_forward_state)
+                {
+                    __set_direction(270);
+                    if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from verb \"", _forward_verb, "\" used as counter-clockwise verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
+                }
+            }
+            else if (_phase_verb == _backward_verb)
+            {
+                if (_backward_state)
+                {
+                    __set_direction(0);
+                    if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from verb \"", _backward_verb, "\" used as backward verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
+                }
+                else if (_clockwise_state)
+                {
+                    __set_direction(90);
+                    if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from verb \"", _clockwise_verb, "\" used as backward verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
+                }
+                else if (_forward_state)
+                {
+                    __set_direction(180);
+                    if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from verb \"", _forward_verb, "\" used as backward verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
+                }
+                else if (_counterclockwise_state)
+                {
+                    __set_direction(270);
+                    if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from verb \"", _counterclockwise_verb, "\" used as backward verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
+                }
+            }
+            else if (_phase_verb == _clockwise_verb)
+            {
+                if (_clockwise_state)
+                {
+                    __set_direction(0);
+                    if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from verb \"", _clockwise_verb, "\" used as clockwise verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
+                }
+                else if (_forward_state)
+                {
+                    __set_direction(90);
+                    if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from verb \"", _forward_verb, "\" used as clockwise verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
+                }
+                else if (_counterclockwise_state)
+                {
+                    __set_direction(180);
+                    if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from verb \"", _counterclockwise_verb, "\" used as clockwise verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
+                }
+                else if (_backward_state)
+                {
+                    __set_direction(270);
+                    if (INPUT_COMBO_DEBUG) __input_trace("Combo \"", __name, "\" direction determined from verb \"", _backward_verb, "\" used as clockwise verb \"", _phase_verb, "\", direction=", __direction, " (phase=", __phase, ")");
+                }
+            }
+        }
+    }
+    
+    static __set_direction = function(_direction)
+    {
+        var _forward_verb          = __combo_params.__forward_verb;
+        var _counterclockwise_verb = __combo_params.__counterclockwise_verb;
+        var _backward_verb         = __combo_params.__backward_verb;
+        var _clockwise_verb        = __combo_params.__clockwise_verb;
+        
+        switch(_direction)
+        {
+            case 0:
+                //No direction mapping needed
+            break;
+            
+            case 90:
+                if (_forward_verb          != undefined) __direction_mapping[$ _forward_verb         ] = _counterclockwise_verb;
+                if (_counterclockwise_verb != undefined) __direction_mapping[$ _counterclockwise_verb] = _backward_verb;
+                if (_backward_verb         != undefined) __direction_mapping[$ _backward_verb        ] = _clockwise_verb;
+                if (_clockwise_verb        != undefined) __direction_mapping[$ _clockwise_verb       ] = _forward_verb;
+            break;
+           
+            case 180:
+                if (_forward_verb          != undefined) __direction_mapping[$ _forward_verb         ] = _backward_verb;
+                if (_counterclockwise_verb != undefined) __direction_mapping[$ _counterclockwise_verb] = _clockwise_verb;
+                if (_backward_verb         != undefined) __direction_mapping[$ _backward_verb        ] = _forward_verb;
+                if (_clockwise_verb        != undefined) __direction_mapping[$ _clockwise_verb       ] = _counterclockwise_verb;
+            break;
+           
+            case 270:
+                if (_forward_verb          != undefined) __direction_mapping[$ _forward_verb         ] = _clockwise_verb;
+                if (_counterclockwise_verb != undefined) __direction_mapping[$ _counterclockwise_verb] = _forward_verb;
+                if (_backward_verb         != undefined) __direction_mapping[$ _backward_verb        ] = _counterclockwise_verb;
+                if (_clockwise_verb        != undefined) __direction_mapping[$ _clockwise_verb       ] = _backward_verb;
+            break;
+            
+            default:
+                __input_error("Unhandled direction ", _direction);
+            break;
+        }
+        
+        __direction = (_direction + __combo_params.__reference_direction + 3600) mod 360;
     }
 }
