@@ -52,8 +52,6 @@ input_combo_params_set_side_on("left", "right", 180);
 |`clockwiseVerb`       |verb    |Verb to use to indicate the clockwise direction         |
 |`referenceDirection`  |number  |Game world angle to use for the forward direction       |
 
-?> 
-
 #### **Example**
 
 ```gml
