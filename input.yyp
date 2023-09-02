@@ -10,7 +10,6 @@
     {"id":{"name":"obj_example_bullet","path":"objects/obj_example_bullet/obj_example_bullet.yy",},"order":0,},
     {"id":{"name":"obj_example_drop_in_gameplay","path":"objects/obj_example_drop_in_gameplay/obj_example_drop_in_gameplay.yy",},"order":0,},
     {"id":{"name":"obj_example_drop_in_spawn_point","path":"objects/obj_example_drop_in_spawn_point/obj_example_drop_in_spawn_point.yy",},"order":1,},
-    {"id":{"name":"input_combo_get_directional","path":"scripts/input_combo_get_directional/input_combo_get_directional.yy",},"order":6,},
     {"id":{"name":"obj_example_mp_gameplay","path":"objects/obj_example_mp_gameplay/obj_example_mp_gameplay.yy",},"order":0,},
     {"id":{"name":"input_gamepad_tester_set","path":"scripts/input_gamepad_tester_set/input_gamepad_tester_set.yy",},"order":9,},
     {"id":{"name":"obj_example_mp_join","path":"objects/obj_example_mp_join/obj_example_mp_join.yy",},"order":1,},
