@@ -41,6 +41,8 @@
 - [2D Checkers](Functions-(2D-Checkers))
 - [Advanced Checkers](Functions-(Advanced-Checkers))
 - [Further Verb Functions](Functions-(Further-Verbs))
+- [Creating Combos](Functions-(Creating-Combos))
+- [Combos](Functions-(Combos))
 - [Binding Creators](Functions-(Binding-Creators))
 - [Binding Access](Functions-(Binding-Access))
 - [Binding Scanner](Functions-(Binding-Scan))
