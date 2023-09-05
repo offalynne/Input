@@ -1,11 +1,11 @@
 // Feather disable all
-/// @desc    Returns the analogue value that the verb is currently receiving
+/// @desc    Returns the maximum analogue value that the verb has received since it was pressed
 ///          If the verb has not received analogue input, this function will return either 0 or 1
 ///          If an array of verbs is provided, this function will return the sum of all verb values
 /// @param   verb/array
 /// @param   [playerIndex=0]
 
-function input_value(_verb, _player_index = 0)
+function input_max_value(_verb, _player_index = 0)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_PLAYER_INDEX
@@ -17,7 +17,7 @@ function input_value(_verb, _player_index = 0)
         var _i = 0;
         repeat(array_length(_verb))
         {
-            _sum += input_value(_verb[_i], _player_index);
+            _sum += input_max_value(_verb[_i], _player_index);
             ++_i;
         }
         
@@ -28,5 +28,5 @@ function input_value(_verb, _player_index = 0)
     
     if (_verb_struct.__inactive) return false;
     
-    return _verb_struct.value;
+    return _verb_struct.__max_value;
 }

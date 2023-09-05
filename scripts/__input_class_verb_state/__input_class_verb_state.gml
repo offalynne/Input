@@ -16,6 +16,8 @@ function __input_class_verb_state() constructor
     
     value          = 0.0;
     raw            = 0.0;
+    __max_value    = 0.0;
+    
     analogue       = false;
     raw_analogue   = false;
     min_threshold  = 0;
@@ -123,6 +125,9 @@ function __input_class_verb_state() constructor
             
             held      = true;
             held_time = _time;
+            
+            //Update the max value
+            __max_value = max(__max_value, value);
         }
         
         if (previous_held != held)
@@ -148,6 +153,9 @@ function __input_class_verb_state() constructor
             {
                 release      = true;
                 release_time = _time;
+                
+                //Reset the max value
+                __max_value = 0;
                 
                 if (double_held)
                 {
