@@ -107,10 +107,14 @@ function __input_gamepad_set_type()
                 }
                 
                 var _desc = string_lower(description);
-                if (__input_string_contains(_desc, "8bitdo"))
+                if (__input_string_contains(_desc, "neogeo"))
+                {
+                    raw_type = "CommunityNeoGeo";
+                }
+                else if (__input_string_contains(_desc, "8bitdo"))
                 {
                     raw_type = "Community8BitDo";
-                    if (__input_string_contains(_desc, "ultimate", "zero") && !__input_string_contains(_desc, "zero 2"))
+                    if (__input_string_contains(_desc, "xbox", "ultimate", "zero") && !__input_string_contains(_desc, "zero 2"))
                     {
                         raw_type = "CommunityLikeXBox";
                     }
@@ -203,7 +207,7 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "AppleController";
                 }
-                else if (__input_string_contains(_desc, "throttle"))
+                else if (__input_string_contains(_desc, "throttle", "flight quadrant"))
                 {
                     raw_type = "SDLThrottle";
                 }
@@ -305,6 +309,11 @@ function __input_gamepad_set_type()
                     raw_type = "HIDJoyConRight";
                     guessed_type = true;
                 }
+            }
+            else if ((string_pos("4a4a000000000000", guid) == 1) && __INPUT_ON_ANDROID)
+            {
+                raw_type = "CommunityNeoGeo";
+                guessed_type = true;
             }
             else if (__input_string_contains(description, "Classic Controller") && (axis_count == 10) && (hat_count == 1) && __INPUT_ON_ANDROID)
             {

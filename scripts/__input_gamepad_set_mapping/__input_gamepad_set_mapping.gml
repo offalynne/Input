@@ -1070,6 +1070,30 @@ function __input_gamepad_set_mapping()
 
                 return;
             break;
+
+            //8BitDo NeoGeo Gamepad
+            case "4a4a0000000000006d61743300000000":
+            case "4a4a0000000000000000000000000000":
+                if (!__INPUT_SILENT) __input_trace("Setting NeoGeo gamepad mapping");
+
+                set_mapping(gp_face1, 0, __INPUT_MAPPING.BUTTON, "a");
+                set_mapping(gp_face2, 1, __INPUT_MAPPING.BUTTON, "b");      
+                set_mapping(gp_face3, 2, __INPUT_MAPPING.BUTTON, "x");
+                set_mapping(gp_face4, 3, __INPUT_MAPPING.BUTTON, "y");
+                
+                set_mapping(gp_shoulderl,  9, __INPUT_MAPPING.BUTTON, "leftshoulder");
+                set_mapping(gp_shoulderr, 10, __INPUT_MAPPING.BUTTON, "rightshoulder");
+                
+                set_mapping(gp_select, 15, __INPUT_MAPPING.BUTTON, "back");
+                set_mapping(gp_start,   6, __INPUT_MAPPING.BUTTON, "start");
+                
+                set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
+                set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
+                set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
+                set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+                
+                return;
+            break;
         }
     }
 
