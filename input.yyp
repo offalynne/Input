@@ -253,8 +253,10 @@
     {"id":{"name":"input_source_mode_set","path":"scripts/input_source_mode_set/input_source_mode_set.yy",},"order":0,},
     {"id":{"name":"input_source_set","path":"scripts/input_source_set/input_source_set.yy",},"order":2,},
     {"id":{"name":"input_source_share","path":"scripts/input_source_share/input_source_share.yy",},"order":4,},
+    {"id":{"name":"obj_test_max_value","path":"objects/obj_test_max_value/obj_test_max_value.yy",},"order":38,},
     {"id":{"name":"input_source_using","path":"scripts/input_source_using/input_source_using.yy",},"order":6,},
     {"id":{"name":"input_player_active_set","path":"scripts/input_player_active_set/input_player_active_set.yy",},"order":11,},
+    {"id":{"name":"input_max_value","path":"scripts/input_max_value/input_max_value.yy",},"order":15,},
     {"id":{"name":"input_system_export","path":"scripts/input_system_export/input_system_export.yy",},"order":1,},
     {"id":{"name":"__input_restart_get","path":"scripts/__input_restart_get/__input_restart_get.yy",},"order":26,},
     {"id":{"name":"input_system_import","path":"scripts/input_system_import/input_system_import.yy",},"order":3,},
@@ -492,6 +494,6 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},
   ],
   "MetaData": {
-    "IDEVersion": "2022.0.0.19",
+    "IDEVersion": "2022.0.1.31",
   },
 }
