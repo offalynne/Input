@@ -578,3 +578,26 @@ draw_set_colour(c_white);
 ```
 
 <!-- tabs:end -->
+
+&nbsp;
+
+## …max_value
+
+`input_max_value(verb, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Real, the maximum analogue value that the verb has received since it was pressed
+
+|Name              |Datatype                        |Purpose                                                                                    |
+|------------------|--------------------------------|-------------------------------------------------------------------------------------------|
+|`verb`            |[verb](Verbs-and-Bindings)/array|[Verb](Verbs-and-Bindings) to check, or an array of [verbs](Verbs-and-Bindings) (see below)|
+|`[playerIndex]`   |integer                         |Player to target. If not specified, player 0 is used                                       |
+
+For on/off inputs, this function will return `0.0` or `1.0`.
+
+If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter, this function will return the **sum** of the verb values for the player.
+
+<!-- tabs:end -->
