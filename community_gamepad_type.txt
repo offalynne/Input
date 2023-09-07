@@ -556,3 +556,58 @@ dead,beef,CommunityPSX // Hidromancer
 231d,0127,SDLFlightstick // Gunfighter MkIII Space Combat Edition left
 044f,0404,SDLThrottle // HOTAS Warthog Throttle
 0738,a221,SDLThrottle // Saitek Pro Flight X56 Rhino Throttle
+0e8f,0300,CommunityUnknownGuitar // Guitar Game Controller
+0314,0830,CommunityUnknownGuitar // Guitar Praise Guitar
+1430,474c,CommunityUnknownGuitar // PC MAC Guitar Hero WT Guitar
+5730,5731,CommunityUnknownGuitar // GITADORA Guitar Controller
+12ba,074b,CommunityUnknownGuitar // Guitar Hero Live PS3 and WiiU Guitar
+0c12,0005,CommunityPSXGuitar // PS2 GHWT Guitar
+19fa,8d01,CommunityPSXGuitar // PS2 Guitar
+12ba,0140,CommunityPSXGuitar // Guitar Hero 5 PS3
+0e8f,6020,CommunityPSXGuitar // Guitar Hero 3 PS3
+12ba,2430,CommunityPSXGuitar // RB3 Mustang Guitar PS3
+12ba,0253,CommunityPSXGuitar // RB3 MIDI PS3 Guitar Interface
+12ba,04a1,CommunityPSXGuitar // Guitar Hero PS3
+12ba,04b0,CommunityPSXGuitar // Guitar Hero PS3
+12ba,2538,CommunityPSXGuitar // RB3 MIDI PS3 Guitar Interface
+0e8f,0003,CommunityPSXGuitar // PS1 Generic Guitar
+0810,0001,CommunityPSXGuitar // PS2 Guitarmania II
+0e8f,0003,CommunityPSXGuitar // PS2 GHWT Guitar Radioshack USB Adaptor
+1bad,0004,CommunityPSXGuitar // PS3 Kingmaker Guitar
+12ba,0100,CommunityPSXGuitar // PS3 Guitar Hero 3 Guitar
+12ba,0200,CommunityPSXGuitar // PS3 Nyko Front Man
+0e6f,0173,CommunityPS4Guitar // PDP Rock Band Guitar
+0738,8261,CommunityPS4Guitar // Mad Catz Rock Band 4 Fender Stratocaster
+1bad,3010,CommunityWiiGuitar // Rock Band 2 Guitar
+057e,0306,CommunityWiiGuitar // Nintendo Remote Guitar
+1bad,3430,CommunityWiiGuitar // RB3 Mustang Guitar 
+1bad,3538,CommunityWiiGuitar // RB3 MIDI Guitar Interface 
+1bad,0004,CommunityWiiGuitar // RB1 Guitar
+1bad,0002,CommunityXbox360Guitar // RB1 Guitar
+1430,0715,CommunityXbox360Guitar // GH5 Wired Guitar
+1430,0716,CommunityXbox360Guitar // GH6 Wired Air Guitar
+1430,07bb,CommunityXbox360Guitar // Guitar Hero Live PS4 Guitar
+1430,070b,CommunityXbox360Guitar // Activision Guitar Hero
+12ba,04a0,CommunityXbox360Guitar // GuitarHero PS3
+1bad,1538,CommunityXbox360Guitar // Mad Catz Inc. RB3 MIDI Guitar Interface
+045e,0291,CommunityXbox360Guitar // Wireless Generic Guitar
+045e,0719,CommunityXbox360Guitar // Wireless Generic Guitar
+1430,4748,CommunityXbox360Guitar // Wired GH2 Xplorer Guitar
+1430,079b,CommunityXboxOneGuitar // Guitar Hero Live Guitar Dongle
+0738,4161,CommunityXboxOneGuitar // MadCatz Stratocaster Guitar
+0e6f,0170,CommunityXboxOneGuitar // PDP Jaguar Guitar
+12ba,0218,CommunityPSXDrumkit // PS3 Rockband 2 Drum Kit Via MIDI MPA
+0738,8262,CommunityPS4Drumkit // Rock Band 4 Drum Set
+1bad,0005,CommunityWiiDrumkit // RB1 Drums
+1bad,3110,CommunityWiiDrumkit // RB2 Pro Drumkit
+1bad,3138,CommunityWiiDrumkit // Drum Controller 
+12ba,0100,CommunityPSXDrumkit // PS3 GH WOR Drums
+12ba,0210,CommunityPSXDrumkit // PS3 Wireless Rockband 2 Drum Kit
+1bad,0130,CommunityXbox360Drumkit // Ion Drum Rocker
+0738,9871,CommunityXbox360Drumkit // Wired RB Mad Catz Portable Drumkit
+1bad,1138,CommunityXbox360Drumkit // Mad Catz Inc. Drum Kit
+1bad,0003,CommunityXbox360Drumkit // Wired RB1 Drumkit
+045e,0291,CommunityXbox360Drumkit // Wireless Generic Drumkit
+045e,0719,CommunityXbox360Drumkit // Wireless Generic Drumkit
+0738,4262,CommunityXboxOneDrumkit // MadCatz Drums
+0e6f,0171,CommunityXboxOneDrumkit // PDP Drums
