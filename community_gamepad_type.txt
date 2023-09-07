@@ -145,7 +145,6 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 1235,ab20,CommunitySNES // 8BitDo SN30
 2dc8,5103,CommunitySNES // 8BitDo SN30 Modkit
 2dc8,5109,CommunitySNES // 8BitDo Dogbone Modkit
-1781,0a96,CommunitySNES // SNES Atari USB
 0f00,0001,CommunitySNES // Retro NES
 1292,4643,CommunitySNES // Retro Bit NES
 1d57,0020,CommunitySNES // Tomee SNES Adapter
@@ -329,7 +328,6 @@ beef,feed,CommunityXBox360 // Monect
 06a3,f623,CommunityPSX // Saitek Cyborg V1
 0738,3187,CommunityPSX // Mad Catz FightStick
 0738,3282,CommunityPSX // Mad Catz PS3 RF
-0738,3285,CommunityPSX // Mad Catz Arcade Fightstick TE S
 0738,3384,CommunityPSX // Mad Catz FightStick TE S+
 0738,3480,CommunityPSX // Mad Catz FightStick
 0738,8263,CommunityPSX // Mad Catz MLG GamePad
@@ -560,8 +558,8 @@ dead,beef,CommunityPSX // Hidromancer
 0314,0830,CommunityUnknownGuitar // Guitar Praise Guitar
 1430,474c,CommunityUnknownGuitar // PC MAC Guitar Hero WT Guitar
 5730,5731,CommunityUnknownGuitar // GITADORA Guitar Controller
+1bad,0004,CommunityUnknownGuitar // PS3 and Wii Kingmaker Guitar
 12ba,074b,CommunityUnknownGuitar // Guitar Hero Live PS3 and WiiU Guitar
-0c12,0005,CommunityPSXGuitar // PS2 GHWT Guitar
 19fa,8d01,CommunityPSXGuitar // PS2 Guitar
 12ba,0140,CommunityPSXGuitar // Guitar Hero 5 PS3
 0e8f,6020,CommunityPSXGuitar // Guitar Hero 3 PS3
@@ -572,8 +570,7 @@ dead,beef,CommunityPSX // Hidromancer
 12ba,2538,CommunityPSXGuitar // RB3 MIDI PS3 Guitar Interface
 0e8f,0003,CommunityPSXGuitar // PS1 Generic Guitar
 0810,0001,CommunityPSXGuitar // PS2 Guitarmania II
-0e8f,0003,CommunityPSXGuitar // PS2 GHWT Guitar Radioshack USB Adaptor
-1bad,0004,CommunityPSXGuitar // PS3 Kingmaker Guitar
+0e8f,0003,CommunityPSXGuitar // PS2 GHWT Guitar Radioshack USB Adapter
 12ba,0100,CommunityPSXGuitar // PS3 Guitar Hero 3 Guitar
 12ba,0200,CommunityPSXGuitar // PS3 Nyko Front Man
 0e6f,0173,CommunityPS4Guitar // PDP Rock Band Guitar
@@ -582,7 +579,6 @@ dead,beef,CommunityPSX // Hidromancer
 057e,0306,CommunityWiiGuitar // Nintendo Remote Guitar
 1bad,3430,CommunityWiiGuitar // RB3 Mustang Guitar 
 1bad,3538,CommunityWiiGuitar // RB3 MIDI Guitar Interface 
-1bad,0004,CommunityWiiGuitar // RB1 Guitar
 1bad,0002,CommunityXbox360Guitar // RB1 Guitar
 1430,0715,CommunityXbox360Guitar // GH5 Wired Guitar
 1430,0716,CommunityXbox360Guitar // GH6 Wired Air Guitar
@@ -601,13 +597,10 @@ dead,beef,CommunityPSX // Hidromancer
 1bad,0005,CommunityWiiDrumkit // RB1 Drums
 1bad,3110,CommunityWiiDrumkit // RB2 Pro Drumkit
 1bad,3138,CommunityWiiDrumkit // Drum Controller 
-12ba,0100,CommunityPSXDrumkit // PS3 GH WOR Drums
 12ba,0210,CommunityPSXDrumkit // PS3 Wireless Rockband 2 Drum Kit
 1bad,0130,CommunityXbox360Drumkit // Ion Drum Rocker
 0738,9871,CommunityXbox360Drumkit // Wired RB Mad Catz Portable Drumkit
 1bad,1138,CommunityXbox360Drumkit // Mad Catz Inc. Drum Kit
 1bad,0003,CommunityXbox360Drumkit // Wired RB1 Drumkit
-045e,0291,CommunityXbox360Drumkit // Wireless Generic Drumkit
-045e,0719,CommunityXbox360Drumkit // Wireless Generic Drumkit
 0738,4262,CommunityXboxOneDrumkit // MadCatz Drums
 0e6f,0171,CommunityXboxOneDrumkit // PDP Drums
