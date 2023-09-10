@@ -475,20 +475,20 @@ function __input_system_tick()
                     {
                         //When Switch L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
                         //Instead we have to check for changes in the description to see if state has changed
-                        _gamepad.discover();
+                        _gamepad.__discover();
                     }
                     else
                     {
                         if (_steam_handles_changed) 
                         {
-                            with (_gamepad)
+                            with(_gamepad)
                             {
-                                virtual_set();
-                                led_set();
+                                __virtual_set();
+                                __led_set();
                             }
                         }
                         
-                        _gamepad.tick();
+                        _gamepad.__tick();
                     }
                 }
                 else

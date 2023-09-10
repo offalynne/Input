@@ -8,7 +8,7 @@ function __input_gamepad_set_blacklist()
     //Don't blacklist on preconfigured platforms
     if (!__INPUT_SDL2_SUPPORT) return;
 
-    if ((axis_count == 0) && (button_count == 0) && (hat_count == 0))
+    if ((__axis_count == 0) && (__button_count == 0) && (__hat_count == 0))
     {
         //Smoke check invalid devices
         __input_trace("Warning! Controller ", index, " (VID+PID \"", vendor + product, "\") blacklisted: no button or axis");
@@ -32,7 +32,7 @@ function __input_gamepad_set_blacklist()
     switch (os_type)
     {
         case os_windows:
-            if ((vendor == "7e05") && (product == "0920") && (button_count > 21))
+            if ((vendor == "7e05") && (product == "0920") && (__button_count > 21))
             {
                 //Switch Pro Controller over USB. Normally does not operate, runs haywire with Steam open
                 if (!__INPUT_SILENT) __input_trace("Warning! Controller ", index, " is blacklisted (Switch Pro Controller over USB)");
@@ -41,8 +41,8 @@ function __input_gamepad_set_blacklist()
             }
         
             if (((vendor == "4c05") && (product == "6802"))    //PS3 controller
-            && (((axis_count ==  4) && (button_count == 19))   //Bad driver
-             || ((axis_count ==  8) && (button_count == 0))))  //DsHidMini gyro
+            && (((__axis_count ==  4) && (__button_count == 19))   //Bad driver
+             || ((__axis_count ==  8) && (__button_count == 0))))  //DsHidMini gyro
             {
                 //Unsupported configuration for PS3 controller
                 if (!__INPUT_SILENT) __input_trace("Warning! Controller ", index, " is blacklisted (Incorrectly configured PS3 controller)");
@@ -54,7 +54,7 @@ function __input_gamepad_set_blacklist()
         case os_linux:
             if (_global.__on_steam_deck)
             {
-                if ((button_count == 144) && (axis_count == 0))
+                if ((__button_count == 144) && (__axis_count == 0))
                 {
                     //Unsupported virtual keyboard device 
                     if (!__INPUT_SILENT) __input_trace("Warning! Controller ", index, " is blacklisted (Steam Deck virtual keyboard)");
@@ -70,7 +70,7 @@ function __input_gamepad_set_blacklist()
             }
         
             var _joycon_imu_axis_count = 6;
-            if ((button_count == 0) && (axis_count == _joycon_imu_axis_count) && (hat_count == 0))
+            if ((__button_count == 0) && (__axis_count == _joycon_imu_axis_count) && (__hat_count == 0))
             {
                 var _i = 0;
                 repeat(_joycon_imu_axis_count)

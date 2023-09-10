@@ -19,5 +19,5 @@ function input_gamepad_check_released(_index, _gm)
     
     var _gamepad = _global.__gamepads[_index];
     if (!is_struct(_gamepad)) return false;
-    return _gamepad.get_released(_gm);
+    return _gamepad.__get_released(_gm);
 }

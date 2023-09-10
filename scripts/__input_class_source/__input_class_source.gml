@@ -81,14 +81,14 @@ function __input_class_source(_source, _gamepad = undefined) constructor
             if (__source == __INPUT_SOURCE.GAMEPAD)
             {
                 var _gamepad = __global.__gamepads[__gamepad];
-                if (!is_struct(_gamepad) || (_gamepad.mapping_gm_to_raw[$ _value] == undefined))
+                if (!is_struct(_gamepad) || (_gamepad.__mapping_gm_to_raw[$ _value] == undefined))
                 {
                     //Value not found in the mapping for the player's gamepad
                     return false;
                 }
                 
                 //Get raw value from mapping
-                var _mapping = _gamepad.mapping_gm_to_raw[$ _value];
+                var _mapping = _gamepad.__mapping_gm_to_raw[$ _value];
                 var _raw = ((_mapping.raw == undefined)? _mapping.raw_negative : _mapping.raw);
                 if (_raw == undefined)
                 {
