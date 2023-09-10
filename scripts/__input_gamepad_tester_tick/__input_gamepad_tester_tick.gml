@@ -14,7 +14,9 @@ function __input_gamepad_tester_tick()
         {
             var _gamepad = 0;
         }   
-    
+        
+        __gamepad_desc = "Description = \"" + string(input_gamepad_get_description(_gamepad)) + "\"";
+        
         //Input values dictionary
         var _i = 0;
         repeat(array_length(__input_binding_array))

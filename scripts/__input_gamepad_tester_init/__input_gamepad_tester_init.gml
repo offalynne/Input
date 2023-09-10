@@ -16,6 +16,9 @@ function __input_gamepad_tester_init()
         __target_gamepad = 0;
         __gamepad_ref = ref_create(self, "__target_gamepad");
         
+        __gamepad_desc = "";
+        __gamepad_desc_ref = ref_create(self, "__gamepad_desc");
+        
         __raw_input_string = ""
         __raw_input_string_ref = ref_create(self, "__raw_input_string");
         
