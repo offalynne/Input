@@ -111,8 +111,8 @@ function __input_transform_coordinate(_x, _y, _input_system, _output_system, _ca
                 
                 var _x0 = _x - _viewX;
                 var _y0 = _y - _viewY;
-                _x = ((_x0*_cos - _y0*_sin) + _viewX) / _viewW;
-                _y = ((_x0*_sin + _y0*_cos) + _viewY) / _viewH;
+                _x = ((_x0*_cos - _y0*_sin) + _viewW/2) / _viewW;
+                _y = ((_x0*_sin + _y0*_cos) + _viewH/2) / _viewH;
             }
             
             if (_output_system == 1)
@@ -155,8 +155,8 @@ function __input_transform_coordinate(_x, _y, _input_system, _output_system, _ca
                     var _sin = dsin(_viewA);
                     var _cos = dcos(_viewA);
                     
-                    var _x0 = _x*_viewW - _viewX;
-                    var _y0 = _y*_viewH - _viewY;
+                    var _x0 = _x*_viewW - _viewW/2;
+                    var _y0 = _y*_viewH - _viewH/2;
                     _x = (_x0*_cos - _y0*_sin) + _viewX;
                     _y = (_x0*_sin + _y0*_cos) + _viewY;
                 }
@@ -200,8 +200,8 @@ function __input_transform_coordinate(_x, _y, _input_system, _output_system, _ca
                     var _sin = dsin(_viewA);
                     var _cos = dcos(_viewA);
                     
-                    var _x0 = _x*_viewW - _viewX;
-                    var _y0 = _y*_viewH - _viewY;
+                    var _x0 = _x*_viewW -_viewW/2;
+                    var _y0 = _y*_viewH -_viewH/2;
                     _x = (_x0*_cos - _y0*_sin) + _viewX;
                     _y = (_x0*_sin + _y0*_cos) + _viewY;
                 }
