@@ -2,7 +2,7 @@
 
 &nbsp;
 
-Input 6 introduces a number of new features alongside a small number of breaking changes. This page will help you make the jump.
+Input 6 introduces a number of new features alongside a small number of breaking changes. This page will help you understand the differences between the two versions and help guide you towards spotting issues before updating.
 
 &nbsp;
 
