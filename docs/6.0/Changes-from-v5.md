@@ -9,10 +9,13 @@ Input 6 introduces a number of new features alongside a small number of breaking
 ## New Features
 
 - Input no longer clogs up global namespace
-- Hotswapping has been optimised to improve performance in the most common use case for Input
-- Improved device filtering on Android
-- Blacklisted gamepads will no longer report as connected
+- Feather is now disabled for every Input script
 - The layout of folders in the asset browser has been reworked to make it easier to find functions
+- Hotswapping has been optimised to improve performance in the most common use case for Input
+- Hotswapping is also more reliable, including filtering out malfunctioning devices
+- Improved device filtering (especially on Android)
+- Blacklisted gamepads will no longer report as connected
+- Fixes Steam Deck power button sticking
 - `input_tick()` is dead. Long live `input_controller_object`
 - Adds `input_verb_get_icon()` as an easier alternative to `input_binding_get_icon()`
 - Loading the SDL2 database is now a lot faster when using newer versions of GameMaker (LTS will use the slower legacy code)
