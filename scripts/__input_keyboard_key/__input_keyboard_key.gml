@@ -42,13 +42,13 @@ function __input_keyboard_key()
             
             default:
 
-            	//Don't return "any" (key is out of range)
+                //Don't return "any" (key is out of range)
                 if (keyboard_key == 1) 
                 {
-                	return 0;
-            	}
+                    return 0;
+                }
 
-            	return keyboard_key;
+                return keyboard_key;
             break;
         }
     }

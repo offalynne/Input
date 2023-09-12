@@ -107,10 +107,14 @@ function __input_gamepad_set_type()
                 }
                 
                 var _desc = string_lower(description);
-                if (__input_string_contains(_desc, "8bitdo"))
+                if (__input_string_contains(_desc, "neogeo"))
+                {
+                    raw_type = "CommunityNeoGeo";
+                }
+                else if (__input_string_contains(_desc, "8bitdo"))
                 {
                     raw_type = "Community8BitDo";
-                    if (__input_string_contains(_desc, "ultimate", "zero") && !__input_string_contains(_desc, "zero 2"))
+                    if (__input_string_contains(_desc, "xbox", "ultimate", "zero") && !__input_string_contains(_desc, "zero 2"))
                     {
                         raw_type = "CommunityLikeXBox";
                     }
@@ -167,6 +171,10 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunityPSX"; //Catch all remaining PlayStation gamepads as PSX
                 }
+                else if (__input_string_contains(_desc, "gamecube", "wired fight pad pro for nintendo", "core (plus) wired"))
+                {
+                    raw_type = "CommunityGameCube";
+                }
                 else if (__input_string_contains(_desc, "for switch", "for nintendo switch", "switch controller", "switch pro controller", "lic pro controller", "wii"))
                 {
                     raw_type = "CommunityLikeSwitch";
@@ -183,10 +191,6 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "SwitchJoyConRight";
                 }
-                else if (__input_string_contains(_desc, "gamecube"))
-                {
-                    raw_type = "CommunityGameCube";
-                }
                 else if (__input_string_contains(_desc, "xbox elite", "xbox wireless", "xbox one", "xbox bluetooth"))
                 {
                     raw_type = "CommunityXBoxOne";
@@ -202,6 +206,18 @@ function __input_gamepad_set_type()
                 else if (__INPUT_ON_IOS || __input_string_contains(_desc, "nimbus", "horipad ultimate", "mfi"))
                 {
                     raw_type = "AppleController";
+                }
+                else if (__input_string_contains(_desc, "throttle", "flight quadrant"))
+                {
+                    raw_type = "SDLThrottle";
+                }
+                else if (__input_string_contains(_desc, "flightstick", "hotas") || (__input_string_contains(_desc, "flight", "sim", "eclipse") && __input_string_contains(_desc, "stick", "yoke", "rudder")))
+                {
+                    raw_type = "SDLFlightstick";
+                }
+                else if (__input_string_contains(_desc, "driving force", "momo force", "openffboard") || (__input_string_contains(_desc, "wheel") && __input_string_contains(_desc, "racing", "steering", "base", "feedback")))
+                {
+                    raw_type = "SDLWheel";
                 }
                 else
                 {
@@ -293,6 +309,11 @@ function __input_gamepad_set_type()
                     raw_type = "HIDJoyConRight";
                     guessed_type = true;
                 }
+            }
+            else if ((string_pos("4a4a000000000000", guid) == 1) && __INPUT_ON_ANDROID)
+            {
+                raw_type = "CommunityNeoGeo";
+                guessed_type = true;
             }
             else if (__input_string_contains(description, "Classic Controller") && (axis_count == 10) && (hat_count == 1) && __INPUT_ON_ANDROID)
             {

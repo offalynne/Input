@@ -1,3 +1,5 @@
+//Feather disable all
+
 if (input_mouse_check_pressed(mb_left))
 {
     input_mouse_capture_set(true);

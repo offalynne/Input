@@ -1,3 +1,5 @@
+//Feather disable all
+
 if (input_check_pressed("pause"))
 {
     if (input_binding_scan_in_progress())

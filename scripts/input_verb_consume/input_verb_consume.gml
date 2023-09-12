@@ -9,6 +9,18 @@ function input_verb_consume(_verb, _player_index = 0)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
+    if (_player_index == all)
+    {
+        var _i = 0;
+        repeat(INPUT_MAX_PLAYERS)
+        {
+            input_verb_consume(_verb, _i);
+            ++_i;
+        }
+        
+        return;
+    }
+    
     if (_player_index < 0)
     {
         __input_error("Invalid player index provided (", _player_index, ")");

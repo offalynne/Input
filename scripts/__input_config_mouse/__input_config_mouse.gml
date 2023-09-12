@@ -1,4 +1,3 @@
-// Feather disable all
 //Whether to allow mouse input to be returned by input_binding_scan_start()
 #macro INPUT_MOUSE_ALLOW_SCANNING  true
 

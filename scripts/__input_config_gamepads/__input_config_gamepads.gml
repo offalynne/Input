@@ -1,4 +1,3 @@
-// Feather disable all
 //Default minimum threshold for directional (thumbstick) axes. This value is used for detecting gamepad input when hotswapping so make sure you set it above 0.0
 #macro INPUT_DEFAULT_AXIS_MIN_THRESHOLD  0.3
 

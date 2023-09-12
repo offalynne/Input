@@ -1,3 +1,5 @@
+//Feather disable all
+
 //Choose a nice clear colour for the aiming reticule
 draw_set_colour(c_fuchsia);
 

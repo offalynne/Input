@@ -1,4 +1,3 @@
-// Feather disable all
 //Whether to allow (problematic) keyboard input on Android platform
 #macro INPUT_ANDROID_KEYBOARD_ALLOWED  false
 

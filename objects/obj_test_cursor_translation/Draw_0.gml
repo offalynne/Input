@@ -1,3 +1,5 @@
+//Feather disable all
+
 if input_mouse_check_pressed(mb_left)       input_mouse_capture_set(true);
 if input_keyboard_check_pressed(vk_escape)  input_mouse_capture_set(false);
 

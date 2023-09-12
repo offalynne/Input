@@ -1,3 +1,5 @@
+//Feather disable all
+
 input_virtual_debug_draw();
 
 var _string = concat(

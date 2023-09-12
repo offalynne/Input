@@ -1,3 +1,5 @@
+//Feather disable all
+
 //Set some rules for the aiming cursor
 if (input_source_using(INPUT_GAMEPAD))
 {

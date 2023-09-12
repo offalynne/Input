@@ -25,12 +25,13 @@ function __input_define_gamepad_types()
         
         //PlayStation
         #macro INPUT_GAMEPAD_TYPE_PS5 "ps5"
-        PS5Controller       = INPUT_GAMEPAD_TYPE_PS5;    
+        PS5Controller       = INPUT_GAMEPAD_TYPE_PS5;
+        CommunityPS5        = INPUT_GAMEPAD_TYPE_PS5;
         
         #macro INPUT_GAMEPAD_TYPE_PS4 "ps4"
         PS4Controller       = INPUT_GAMEPAD_TYPE_PS4;
         XInputPS4Controller = INPUT_GAMEPAD_TYPE_PS4;
-        CommunityPS4        = INPUT_GAMEPAD_TYPE_PS4;    
+        CommunityPS4        = INPUT_GAMEPAD_TYPE_PS4;
         
         #macro INPUT_GAMEPAD_TYPE_PSX "psx"
         PS3Controller       = INPUT_GAMEPAD_TYPE_PSX;
@@ -52,7 +53,7 @@ function __input_define_gamepad_types()
         #macro INPUT_GAMEPAD_TYPE_JOYCON_LEFT "switch joycon left"
         SwitchJoyConLeft    = INPUT_GAMEPAD_TYPE_JOYCON_LEFT;
         SwitchJoyConSingle  = INPUT_GAMEPAD_TYPE_JOYCON_LEFT;
-        HIDJoyConLeft       = INPUT_GAMEPAD_TYPE_JOYCON_LEFT;    
+        HIDJoyConLeft       = INPUT_GAMEPAD_TYPE_JOYCON_LEFT;
         
         #macro INPUT_GAMEPAD_TYPE_JOYCON_RIGHT "switch joycon right"
         SwitchJoyConRight = INPUT_GAMEPAD_TYPE_JOYCON_RIGHT;
@@ -115,6 +116,9 @@ function __input_define_gamepad_types()
         
         //#macro INPUT_GAMEPAD_TYPE_SUPER_FAMICOM "super famicom"
         //CommunitySuperFamicom = INPUT_GAMEPAD_TYPE_SUPER_FAMICOM;
+        
+        //#macro INPUT_GAMEPAD_TYPE_NEOGEO "neogeo"
+        //CommunityNeoGeo = INPUT_GAMEPAD_TYPE_NEOGEO;
         
         #endregion
     }

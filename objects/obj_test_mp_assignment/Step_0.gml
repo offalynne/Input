@@ -1,3 +1,5 @@
+//Feather disable all
+
 switch(input_source_mode_get())
 {
     case INPUT_SOURCE_MODE.JOIN:

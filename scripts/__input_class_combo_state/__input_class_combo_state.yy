@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__input_gm_runtime_version",
+  "name": "__input_class_combo_state",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "(System)",
-    "path": "folders/Input/(System).yy",
+    "name": "Classes",
+    "path": "folders/Input/(System)/Classes.yy",
   },
 }
