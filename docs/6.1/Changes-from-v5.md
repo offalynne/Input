@@ -9,10 +9,13 @@ Input 6 introduces a number of new features alongside a small number of breaking
 ## New Features
 
 - Input no longer clogs up global namespace
-- Hotswapping has been optimised to improve performance in the most common use case for Input
-- Improved device filtering on Android
-- Blacklisted gamepads will no longer report as connected
+- Feather is now disabled for every Input script
 - The layout of folders in the asset browser has been reworked to make it easier to find functions
+- Hotswapping has been optimised to improve performance in the most common use case for Input
+- Hotswapping is also more reliable, including filtering out malfunctioning devices
+- Improved device filtering (especially on Android)
+- Blacklisted gamepads will no longer report as connected
+- Fixes Steam Deck power button sticking
 - `input_tick()` is dead. Long live `input_controller_object`
 - Adds `input_verb_get_icon()` as an easier alternative to `input_binding_get_icon()`
 - Loading the SDL2 database is now a lot faster when using newer versions of GameMaker (LTS will use the slower legacy code)
@@ -45,6 +48,11 @@ Input 6 introduces a number of new features alongside a small number of breaking
 - Adds `INPUT_WINDOWS_TOUCH`, `INPUT_SWITCH_TOUCH` config macros for finer control over touch behavior per platform
 - Adds `INPUT_ON_MOBILE` `INPUT_ON_PC` `INPUT_ON_STEAM_DECK` `INPUT_ON_CONSOLE` `INPUT_ON_WEB` as read-only constants
 - Adds `input_player_active_get()` and `input_player_active_set()` to completely disable player input should you so wish (though you should continue to use "ghost mode" for networked players and AI)
+- `input_verb_consume()` can now target all players by using the `all` keyword
+- Adds gamepad tester to GameMaker's native debug overlay
+- Input is now blocked when GameMaker's native debug overlay is open
+- Binding scanner now respect ignore/allow lists when waiting for initial "no input" stage, leading to more reliable binding scanning when using defective or semi-defective devices
+- Adds `input_icon_touch()` to handle virtual button bindings for `input_verb_get_icon()` etc.
 - Better support for use of `game_restart()` (not that you should be using this highly cursed function)
 - Adds a secret macro to reduce debug spam from Input shhhh ask if you want to know where it is
 
@@ -52,6 +60,7 @@ Input 6 introduces a number of new features alongside a small number of breaking
 
 ## Breaking Changes
 
+- Combo system has been reworked entirely
 - `input_direction()` now takes a default direction as the first argument, returned when a thumbstick is in a neutral position
 - `input_consume()` has been renamed to `input_verb_consume()`
 - Setting a binding now consumes every verb to fix edge cases
@@ -74,6 +83,5 @@ Input 6 introduces a number of new features alongside a small number of breaking
 
 ## Removed Features
 
-- The combo system has been removed
 - The deprecated enum value `INPUT_COORD_SPACE.DISPLAY` has now been fully removed (use `INPUT_COORD_SPACE.DEVICE` instead)
 - `input_cursor_previous_x()` and `input_cursor_previous_y()` have been removed (conceptually replaced by `input_cursor_dx()` and `input_cursor_dy()`)
