@@ -210,8 +210,8 @@ function __input_system_tick()
 									var _viewH = camera_get_view_height(_camera);
 									var _viewX = camera_get_view_x(_camera);
 									var _viewY = camera_get_view_y(_camera);
-									var _old_x = _viewX+_viewW/2;
-									var _old_y = _viewY+_viewH/2;
+									var _old_x = _viewX + _viewW/2;
+									var _old_y = _viewY + _viewH/2;
                                 }
                                 else
                                 {
