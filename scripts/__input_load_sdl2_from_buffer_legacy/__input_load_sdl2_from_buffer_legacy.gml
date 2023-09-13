@@ -131,11 +131,10 @@ function __input_load_sdl2_from_buffer_legacy(_buffer)
         if (is_array(_row_array))
         {
             //Ignore comments
-            if (string_pos("#", _row_array[0]) <= 0)
+            var _guid = _row_array[0];
+            if ((_guid != "") && (string_pos("#", _guid) <= 0))
             {
                 ++_total_count;
-                
-                var _guid = _row_array[0];
                 
                 //Identify this definition's vendor+product and description names
                 var _result = __input_gamepad_guid_parse(_guid, false, true);
