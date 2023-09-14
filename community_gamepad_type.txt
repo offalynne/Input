@@ -404,7 +404,6 @@ dead,beef,CommunityPSX // Hidromancer
 22ba,0107,CommunityPSX // Technology Innovation PS2 Adapter
 0b43,0003,CommunityPSX // EMS Production PS2 Adapter
 0e8f,0000,CommunityPSX // Unknown PSX
-0e8f,0003,CommunityPSX // Unknown PSX
 0e8f,1006,CommunityPSX // Unknown PSX
 0e8f,1009,CommunityPSX // Unknown PSX
 0e8f,3013,CommunityPSX // Unknown PSX
@@ -538,7 +537,6 @@ dead,beef,CommunityPSX // Hidromancer
 046d,c267,SDLWheel // Logitech G923 for Playstation 4 and PC (PS4 mode)
 046d,c272,SDLWheel // Logitech PRO Racing Wheel for Xbox (PC mode)
 044f,b65d,SDLWheel // Thrustmaster Wheel FFB
-044f,b66d,SDLWheel // Thrustmaster Wheel FFB
 044f,b677,SDLWheel // Thrustmaster T150
 044f,b696,SDLWheel // Thrustmaster T248
 044f,b66e,SDLWheel // Thrustmaster T300RS Normal
@@ -572,7 +570,6 @@ dead,beef,CommunityPSX // Hidromancer
 12ba,04a1,CommunityPSXGuitar // Guitar Hero PS3
 12ba,04b0,CommunityPSXGuitar // Guitar Hero PS3
 12ba,2538,CommunityPSXGuitar // RB3 MIDI PS3 Guitar Interface
-0e8f,0003,CommunityPSXGuitar // PS1 Generic Guitar
 0810,0001,CommunityPSXGuitar // PS2 Guitarmania II
 0e8f,0003,CommunityPSXGuitar // PS2 GHWT Guitar Radioshack USB Adapter
 12ba,0100,CommunityPSXGuitar // PS3 Guitar Hero 3 Guitar
