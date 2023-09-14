@@ -534,6 +534,9 @@ dead,beef,CommunityPSX // Hidromancer
 046d,c26d,SDLWheel // Logitech G923 Xbox
 046d,c26e,SDLWheel // Logitech G923
 046d,ca03,SDLWheel // Logitech Momo Racing
+046d,c266,SDLWheel // Logitech G923 for Playstation 4 and PC (PC mode)
+046d,c267,SDLWheel // Logitech G923 for Playstation 4 and PC (PS4 mode)
+046d,c272,SDLWheel // Logitech PRO Racing Wheel for Xbox (PC mode)
 044f,b65d,SDLWheel // Thrustmaster Wheel FFB
 044f,b66d,SDLWheel // Thrustmaster Wheel FFB
 044f,b677,SDLWheel // Thrustmaster T150
@@ -545,6 +548,7 @@ dead,beef,CommunityPSX // Hidromancer
 044f,b664,SDLWheel // Thrustmaster TX initial mode
 044f,b669,SDLWheel // Thrustmaster TX active mode
 1209,ffb0,SDLWheel // OpenFFBoard
+0483,0522,SDLWheel // Simagic Wheelbase
 11ff,0511,SDLWheel // PXN V900 PS3, Superdrive SV750, Genesis Seaborg 400 initial mode
 044f,0402,SDLFlightstick // HOTAS Warthog Joystick
 0738,2221,SDLFlightstick // Saitek Pro Flight X56 Rhino Stick
