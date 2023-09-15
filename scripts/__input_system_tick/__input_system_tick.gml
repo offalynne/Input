@@ -229,8 +229,12 @@ function __input_system_tick()
                                     if (view_enabled && view_visible[0])
                                     {
                                         var _camera = view_camera[0];
-                                        var _old_x = camera_get_view_width(_camera)/2;
-                                        var _old_y = camera_get_view_height(_camera)/2;
+                                        var _viewW = camera_get_view_width(_camera);
+                                        var _viewH = camera_get_view_height(_camera);
+                                        var _viewX = camera_get_view_x(_camera);
+                                        var _viewY = camera_get_view_y(_camera);
+                                        var _old_x = _viewX + _viewW/2;
+                                        var _old_y = _viewY + _viewH/2;
                                     }
                                     else
                                     {
