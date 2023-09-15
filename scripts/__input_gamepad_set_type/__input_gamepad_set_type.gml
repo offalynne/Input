@@ -223,6 +223,27 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "Unknown";
                 }
+
+                if not (INPUT_SDL2_ALLOW_NONGAMEPAD_JOYSTICKS)
+                {
+                    //Append joystick subtype
+                    if (__input_string_contains(_desc, "drum"))
+                    {
+                        raw_type += "Drumkit";
+                    }
+                    else if (__input_string_contains(_desc, "guitar", " fender "))
+                    {
+                        raw_type += "Guitar";
+                    }
+                    else if (__input_string_contains(_desc, "skateboard"))
+                    {
+                        raw_type += "Skateboard";
+                    }
+                    else if (__input_string_contains(_desc, "ddr", "dance") && !__input_string_contains(_desc, "hyperkin"))
+                    {
+                        raw_type += "Dancepad";
+                    }
+                }
             }
             
             #region Unique gamepad type overrides

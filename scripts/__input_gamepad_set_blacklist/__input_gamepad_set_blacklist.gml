@@ -17,10 +17,8 @@ function __input_gamepad_set_blacklist()
     }
 
     //Filter non-gamepad joystick devices
-    if (!INPUT_SDL2_ALLOW_NONGAMEPAD_JOYSTICKS
-    && ((raw_type == "SDLThrottle")
-     || (raw_type == "SDLFlightstick")
-     || (raw_type == "SDLWheel")))
+    if ((!INPUT_SDL2_ALLOW_NONGAMEPAD_JOYSTICKS)
+    &&  (__input_string_contains(raw_type, "Wheel", "Flightstick", "Throttle", "Guitar", "Drumkit", "Dancepad, "Skateboard"))
     {
         if (!__INPUT_SILENT) __input_trace("Warning! Device ", index, " is blacklisted (Not a gamepad)");
         blacklisted = true;
