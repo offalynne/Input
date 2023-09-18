@@ -91,6 +91,8 @@
 0079,1803,CommunityLikeSwitch // Mayflash Wii DolphinBar
 0f0d,0137,CommunityLikeSwitch // Hori Fighting Stick Mini
 0f0d,0002,CommunityLikeSwitch // Hori Split Pad Pro
+1949,0409,CommunitySwitch // Mobapad Chitu HD
+2345,e015,CommunitySwitch // Mobapad Chitu HD
 0500,9b28,CommunitySaturn // Sega Saturn Adapter
 0ae4,0702,CommunitySaturn // Taito Egret II Mini Controller
 0b49,0644,CommunitySaturn // ASCII Seamic
