@@ -10,7 +10,6 @@
 2dc8,3017,CommunityLikeXbox // 8BitDo Ultimate C 2.4g USB DInput
 20bc,6050,CommunityLikeXBox // Xiaomi XMGP01YM
 2717,5033,CommunityLikeXBox // Xiaomi XMGP01YM
-0079,181c,CommunityLikeXBox // STK 7024X
 0c12,880a,CommunityLikeXBox // Xbox Controller
 0c12,8810,CommunityLikeXBox // Xbox Controller
 062a,0020,CommunityLikeXBox // Xbox Controller
