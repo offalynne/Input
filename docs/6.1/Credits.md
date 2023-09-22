@@ -60,6 +60,12 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
+<h3 align="center">Joanna Ikier</h1>
+<p align="center"><i>Mouse capture and coordinate space improvements</i></p>
+<!-- p align="center">(<a href="#" target="_blank">Socials TBD</a>)</p -->
+
+&nbsp;
+
 <h3 align="center">Prateek</h1>
 <p align="center"><i>Documentation corrections, gamepad testing</i></p>
 <p align="center">(<a href="https://twitter.com/prtksxna" target="_blank">Twitter</a>)</p>
