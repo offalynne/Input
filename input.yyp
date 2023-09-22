@@ -396,7 +396,7 @@
     {"id":{"name":"__input_validate_macros","path":"scripts/__input_validate_macros/__input_validate_macros.yy",},"order":21,},
     {"id":{"name":"__input_virtual_player_set","path":"scripts/__input_virtual_player_set/__input_virtual_player_set.yy",},"order":22,},
     {"id":{"name":"__input_window_changed","path":"scripts/__input_window_changed/__input_window_changed.yy",},"order":23,},
-    {"id":{"name":"__input_restart_set","path":"scripts/__input_restart_set/__input_restart_set.yy",},"order":25,},
+    {"id":{"name":"__input_restart","path":"scripts/__input_restart/__input_restart.yy",},"order":25,},
     {"id":{"name":"spr_blue","path":"sprites/spr_blue/spr_blue.yy",},"order":7,},
     {"id":{"name":"spr_red_dot","path":"sprites/spr_red_dot/spr_red_dot.yy",},"order":8,},
     {"id":{"name":"spr_white","path":"sprites/spr_white/spr_white.yy",},"order":9,},

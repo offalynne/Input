@@ -6,7 +6,12 @@ function __input_system_tick()
     _global.__frame++;
     _global.__previous_current_time = _global.__current_time;
     _global.__current_time = current_time;
-    _global.__cleared = false;
+    
+    //Prevent restart thrashing
+    if ((_global.__current_time - _global.__restart_time) > 1000)
+    {
+        _global.__cleared = false;
+    }
 
     #region Touch
     
