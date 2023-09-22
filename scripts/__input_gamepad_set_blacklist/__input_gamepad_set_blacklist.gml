@@ -18,7 +18,7 @@ function __input_gamepad_set_blacklist()
 
     //Filter non-gamepad joystick devices
     if ((!INPUT_SDL2_ALLOW_NONGAMEPAD_JOYSTICKS)
-    &&  (__input_string_contains(raw_type, "Wheel", "Flightstick", "Throttle", "Guitar", "Drumkit", "Dancepad, "Skateboard"))
+    &&  (__input_string_contains(raw_type, "Wheel", "Flightstick", "Throttle", "Guitar", "Drumkit", "Dancepad", "Skateboard")))
     {
         if (!__INPUT_SILENT) __input_trace("Warning! Device ", index, " is blacklisted (Not a gamepad)");
         blacklisted = true;

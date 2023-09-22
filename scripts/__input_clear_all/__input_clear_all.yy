@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__input_restart_set",
+  "name": "__input_clear_all",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
