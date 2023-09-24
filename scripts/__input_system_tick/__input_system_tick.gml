@@ -95,7 +95,7 @@ function __input_system_tick()
     
     
     
-    #region Focus
+    #region Application state
     
     if (INPUT_ON_PC && !INPUT_ON_WEB)
     {
@@ -163,6 +163,12 @@ function __input_system_tick()
     }
     
     _global.__game_focus = (INPUT_ALLOW_OUT_OF_FOCUS || (_global.__window_focus && !_global.__overlay_focus));
+    
+    //Prevent restart thrashing
+    if ((_global.__current_time - _global.__restart_time) < 1000)
+    {
+        __input_clear_all();
+    }
     
     #endregion
     

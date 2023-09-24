@@ -1,1 +1,1 @@
-__input_restart_set(true);
+__input_restart();
