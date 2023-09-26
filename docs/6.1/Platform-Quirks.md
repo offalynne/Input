@@ -83,7 +83,7 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Mouse input is partially functional. GameMaker uses the first mouse "device" for both touchscreen input and mouse, so there is no certain way to determine which is in use. Mouse support includes right click and updates when the mouse is moved. By default mouse input is off (see below).
 
-- Switch touchscreen input is fully functional supporting 10 touch points. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Config-Macros). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
+- Switch touchscreen input is fully functional supporting 10 touch points. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Config-Macros).
 
 - The first gamepad index is reserved for physically attached Joy-Cons, or the builtin controls on a Switch Lite.
 
