@@ -89,7 +89,7 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 ### PS4 and PS5
 
-- `gp_select` is defined as clicking the touchpad on PlayStation 4 and PlayStation 5 which is GameMaker's default behaviour. This is in contrast to other other platforms where `gp_select` is defined as the SHARE button. [`input_binding_get_name()`](Functions-(Binding-Access)#input_binding_get_namebinding) will return the correct device-appropriate string.
+- `gp_select` is defined as clicking the touchpad on PlayStation which is GameMaker's default behaviour. This is in contrast to other other platforms where `gp_select` is defined as the SHARE or CREATE button. [`input_binding_get_name()`](Functions-(Binding-Access)#input_binding_get_namebinding) will return the correct device-appropriate string.
 
 - Keyboard is not supported by GameMaker (and Input) on this platform.
 
