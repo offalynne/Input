@@ -208,7 +208,7 @@ function __input_class_gamepad(_index) constructor
         {
             if ((_gm == gp_shoulderlb) || (_gm == gp_shoulderrb))
             {
-                return (!__INPUT_ON_SWITCH);
+                return !__INPUT_DIGITAL_TRIGGER;
             }
             else
             {
