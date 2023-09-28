@@ -83,17 +83,22 @@ if (input_check("back"))
 
 ## …system_verify
 
-`input_system_verify(stringOrStruct)`
+`input_system_verify(stringOrStruct, [returnError])`
 
 <!-- tabs:start -->
 
 #### **Description**
 
-**Returns:** Boolean, whether the provided data can be loaded by `input_system_import()` without error
+**Returns:** Varies, see below
 
-|Name            |Datatype        |Purpose                                 |
-|----------------|----------------|----------------------------------------|
-|`stringOrStruct`|string or struct|JSON returned by `input_system_export()`|
+|Name            |Datatype        |Purpose                                                                                                       |
+|----------------|----------------|--------------------------------------------------------------------------------------------------------------|
+|`stringOrStruct`|string or struct|JSON returned by `input_system_export()`                                                                      |
+|`returnError`   |boolean         |Whether to return the relevant error struct (if it exists). This argument defaults to `false` if not specified|
+
+If `returnError` is set to `false`, this function will return a boolean, whether the provided data can be loaded by `input_system_import()` without error.
+
+If `returnError` is set to `true`, this function will return `undefined` if the system passed verification. If the system _fails_ verification then this function will return a struct containing error data.
 
 #### **Example**
 
