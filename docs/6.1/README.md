@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/JujuAdams/Input/master/LOGO.png" width="50%" style="display: block; margin: auto;" />
-<h1 align="center">Input 6.0</h1>
-<p align="center">Comprehensive cross-platform input for GameMaker 2022 LTS by <a href="https://www.jujuadams.com/" target="_blank">Juju Adams</a>, <a href="https://twitter.com/offalynne" target="_blank">Alynne Keith</a>, and <a href="#/6.0/Credits">Friends</a></p>
+<h1 align="center">Input 6.1</h1>
+<p align="center">Comprehensive cross-platform input for GameMaker 2022 LTS by <a href="https://www.jujuadams.com/" target="_blank">Juju Adams</a>, <a href="https://twitter.com/offalynne" target="_blank">Alynne Keith</a>, and <a href="#/6.1/Credits">Friends</a></p>
 
 <p align="center"><a href="https://github.com/JujuAdams/Input/releases/" target="_blank">Download the .yymps</a></p>
 <p align="center">Talk about Input on the <a href="https://discord.gg/8krYCqr" target="_blank">Discord server</a></p>
@@ -31,7 +31,7 @@ Version 5 of Input primarily supports GameMaker LTS 2022, and in theory supports
 
 **How is Input licensed? Can I use it for commercial projects?**
 
-[Input is released under the MIT license](https://github.com/JujuAdams/Input/blob/master/LICENSE). This means you can use it for whatever purpose you want, including commercial projects. It'd mean a lot to us if you'd drop our names in the credits (Juju Adams and Alynne Keith) and/or say thanks, but you're under no obligation to do so.
+[Input is released under the MIT license](https://github.com/JujuAdams/Input/blob/master/LICENSE). This means you can use it for whatever purpose you want, including commercial projects. It'd mean a lot to us if you'd drop our names in the credits ("Juju Adams, Alynne Keith, and Friends") and/or say thanks, but you're under no obligation to do so.
 
 &nbsp;
 

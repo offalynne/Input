@@ -71,7 +71,7 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Steam Overlay intercepts certain key combinations that should be avoided when building a default keyboard scheme. By default these include `F12` and `Shift+Tab`. For more info see [Common Keyboard Combos](Common-Keyboard-Combos).
 
-- Depending on user configuration, Steam may hide native gamepad devices from the Game Maker Studio runtime, presenting them as normalized virtual gamepads. For virtual gamepad identification support, ser [Configuring Steamworks for Input](Steamworks.md).
+- Depending on user configuration, Steam may hide native gamepad devices from the Game Maker Studio runtime, presenting them as normalized virtual gamepads. For virtual gamepad identification support, see [Configuring Steamworks for Input](Steamworks.md).
 
 &nbsp;
 
@@ -83,17 +83,17 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Mouse input is partially functional. GameMaker uses the first mouse "device" for both touchscreen input and mouse, so there is no certain way to determine which is in use. Mouse support includes right click and updates when the mouse is moved. By default mouse input is off (see below).
 
-- Switch touchscreen input is fully functional supporting 10 touch points. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Config-Macros). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
+- Switch touchscreen input is fully functional supporting 10 touch points. By default Input ignores the touchscreen.
 
 - The first gamepad index is reserved for physically attached Joy-Cons, or the builtin controls on a Switch Lite.
 
 ### PS4 and PS5
 
-- `gp_select` is defined as clicking the touchpad on PlayStation 4 and PlayStation 5 which is GameMaker's default behaviour. This is in contrast to other other platforms where `gp_select` is defined as the SHARE button. [`input_binding_get_name()`](Functions-(Binding-Access)#input_binding_get_namebinding) will return the correct device-appropriate string.
+- `gp_select` is defined as clicking the touchpad on PlayStation which is GameMaker's default behaviour. This is in contrast to other other platforms where `gp_select` is defined as the SHARE or CREATE button. [`input_binding_get_name()`](Functions-(Binding-Access)#input_binding_get_namebinding) will return the correct device-appropriate string.
 
 - Keyboard is not supported by GameMaker (and Input) on this platform.
 
-- The PlayStation touchpad presents as a mouse cursor. By default Input ignores touch input on the touchpad, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Config-Macros). Input presently supports touchpad input for one player only.
+- The PlayStation touchpad presents as a mouse cursor. By default Input ignores touch input on the touchpad. Input presently supports touchpad input for one player only.
 
 ### Xbox One and Xbox Series X/S
 
@@ -111,7 +111,7 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Keyboard input is non-functional on these platforms owing to [unavoidable up-stream bugs](https://github.com/JujuAdams/Input/issues/138)
 
-- iOS touchscreen input is fully functional supporting 5 touch points on iPhone and 11 on iPad. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Config-Macros). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
+- iOS touchscreen input is fully functional supporting 5 touch points on iPhone and 11 on iPad. By default Input ignores the touchscreen.
 
 - Mouse input is partially functional. GameMaker uses the first mouse "device" for both touchscreen input and mouse, so there is no certain way to determine which is in use. Mouse position updates when the mouse is clicked. By default mouse input is off (see above).
 
@@ -125,7 +125,7 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Android keyboard input is problematic and so set to off by default. The most significant issue is keys regularly and irreparably sticking when modified using Shift keys. You can turn keyboard input on by [setting `INPUT_ANDROID_KEYBOARD_ALLOWED` to `true`](Config-Macros). If using this feature, it is not recommended to use bindings besides Arrow keys, Enter, Space, and Backspace.
 
-- Android touchscreen input is fully functional supporting a device-relative number of touches up to 11. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Config-Macros). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
+- Android touchscreen input is fully functional supporting a device-relative number of touches up to 11. By default Input ignores the touchscreen.
 
 - Mouse input is partially functional. GameMaker uses the first mouse "device" for both touchscreen input and mouse, so there is no certain way to determine which is in use. Mouse position updates when the mouse is clicked. By default mouse input is off (see above).
 
@@ -149,7 +149,7 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - In order for gamepads to present and operate, the user must first press a button with the game in focus.
 
-- Touchscreen input is functional on mobile devices supporting a device-relative number of touches up to 11. By default Input ignores the touchscreen, you can toggle it on by [setting `INPUT_TOUCH_POINTER_ALLOWED` to `true`](Config-Macros). When enabled, Input selects the best-available touch point to return mouse-like presses and releases.
+- Touchscreen input is functional on mobile devices supporting a device-relative number of touches up to 11.
 
 - On Apple platforms, CapsLock key returns lock state rather than key state (`true` when locked), so is blocked from binding.
 

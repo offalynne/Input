@@ -6,6 +6,8 @@ Input has had many people contribute to it over the years. Juju and Alynne would
 
 You can get your name on this page too! Contributions are welcome on [GitHub](https://github.com/JujuAdams/Input) and discussion is ongoing on [Discord](https://discord.gg/8krYCqr).
 
+?> If you'd like to credit us in your game, please use "Juju Adams, Alynne Keith, and Friends".
+
 &nbsp;
 
 &nbsp;
@@ -55,6 +57,12 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 <h3 align="center">Julien</h1>
 <p align="center"><i>Documentation</i></p>
 <p align="center">(<a href="https://twitter.com/JuJulienDev" target="_blank">Twitter</a>)</p>
+
+&nbsp;
+
+<h3 align="center">Joanna Ikier</h1>
+<p align="center"><i>Mouse capture and coordinate space improvements</i></p>
+<!-- p align="center">(<a href="#" target="_blank">Socials TBD</a>)</p -->
 
 &nbsp;
 

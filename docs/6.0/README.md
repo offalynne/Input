@@ -31,7 +31,7 @@ Version 5 of Input primarily supports GameMaker LTS 2022, and in theory supports
 
 **How is Input licensed? Can I use it for commercial projects?**
 
-[Input is released under the MIT license](https://github.com/JujuAdams/Input/blob/master/LICENSE). This means you can use it for whatever purpose you want, including commercial projects. It'd mean a lot to us if you'd drop our names in the credits (Juju Adams and Alynne Keith) and/or say thanks, but you're under no obligation to do so.
+[Input is released under the MIT license](https://github.com/JujuAdams/Input/blob/master/LICENSE). This means you can use it for whatever purpose you want, including commercial projects. It'd mean a lot to us if you'd drop our names in the credits ("Juju Adams, Alynne Keith, and Friends") and/or say thanks, but you're under no obligation to do so.
 
 &nbsp;
 
