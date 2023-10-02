@@ -28,7 +28,7 @@ for(var _i = 0; _i < timeStepIterations; _i++)
     tickGame();
 
     //Clear momentary input (pressed, released, etc.) after first tick
-    if (i == 0)
+    if (_i == 0)
     {
         input_clear_momentary(true);
     }
