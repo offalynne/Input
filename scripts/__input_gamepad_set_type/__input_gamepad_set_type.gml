@@ -175,7 +175,7 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunityGameCube";
                 }
-                else if (__input_string_contains(_desc, "for switch", "for nintendo switch", "switch controller", "switch pro controller", "lic pro controller", "wii"))
+                else if (__input_string_contains(_desc, "for switch", "for nintendo switch", "switch controller", "switch pro", "lic pro", "mobapad", "wii"))
                 {
                     raw_type = "CommunityLikeSwitch";
                 }
