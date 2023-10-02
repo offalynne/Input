@@ -21,28 +21,19 @@ Clears momentary (pressed/released) input and connection checkers. This covers v
 #### **Example**
 
 ```gml
-//Slide if button is held and instance is on the ground
-if (input_check("slide") && place_meeting(x, y + 1, obj_ground))
+//Handle game logic for 0-n frames per time step 
+for(var _i = 0; _i < timeStepIterations; i++)
 {
-	motion_add(direction, 12);
+    //Game logic including input checks
+    tickGame();
 
-	//Clear slide verb until released
-	input_consume("slide");
+    //Clear momentary inpu (pressed, released, etc.) after first tick
+    if (i == 0)
+    {
+        input_clear_momentary(true);
+    }
 }
-```
 
-```gml
-if (entering_highscore_name)
-{
-	//Ignore all verbs while entering highscore name
-	input_consume(all);
-
-	if (input_check_keyboard_pressed(vk_enter))
-	{
-		highscore_add(keyboard_string, score);
-		entering_highscore_name = false;
-	}
-}
 ```
 
 <!-- tabs:end -->
