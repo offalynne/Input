@@ -30,7 +30,7 @@ for(var _i = 0; _i < timeStepIterations; _i++)
     //Clear momentary input (pressed, released, etc.) after first tick
     if (i == 0)
     {
-    input_clear_momentary(true);
+        input_clear_momentary(true);
     }
 }
 ```
