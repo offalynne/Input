@@ -27,13 +27,12 @@ for(var _i = 0; _i < timeStepIterations; i++)
     //Game logic including input checks
     tickGame();
 
-    //Clear momentary inpu (pressed, released, etc.) after first tick
+    //Clear momentary input (pressed, released, etc.) after first tick
     if (i == 0)
     {
-        input_clear_momentary(true);
+    input_clear_momentary(true);
     }
 }
-
 ```
 
 <!-- tabs:end -->
