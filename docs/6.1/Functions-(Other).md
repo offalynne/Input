@@ -22,7 +22,7 @@ Clears momentary (pressed/released) input and connection checkers. This covers v
 
 ```gml
 //Handle game logic for 0-n frames per time step 
-for(var _i = 0; _i < timeStepIterations; i++)
+for(var _i = 0; _i < timeStepIterations; _i++)
 {
     //Game logic including input checks
     tickGame();
