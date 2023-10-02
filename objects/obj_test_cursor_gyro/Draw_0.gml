@@ -5,7 +5,7 @@ if (input_mouse_check_pressed(mb_left))
     input_mouse_capture_set(true);
 }
 
-if (input_keyboard_check_pressed(vk_escape) || !input_window_has_focus())
+if (input_keyboard_check_pressed(vk_escape) || !input_game_has_focus())
 {
     input_mouse_capture_set(false);
 }
@@ -16,7 +16,7 @@ var _mouse_y = input_mouse_y();
 draw_set_color(c_white);
 var _cursor = cr_default;
 
-if (!input_window_has_focus())
+if (!input_game_has_focus())
 {
     draw_set_color(c_gray);
 }

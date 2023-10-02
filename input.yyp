@@ -298,7 +298,7 @@
     {"id":{"name":"input_virtual_create","path":"scripts/input_virtual_create/input_virtual_create.yy",},"order":0,},
     {"id":{"name":"input_virtual_debug_draw","path":"scripts/input_virtual_debug_draw/input_virtual_debug_draw.yy",},"order":3,},
     {"id":{"name":"input_virtual_destroy_all","path":"scripts/input_virtual_destroy_all/input_virtual_destroy_all.yy",},"order":1,},
-    {"id":{"name":"input_window_has_focus","path":"scripts/input_window_has_focus/input_window_has_focus.yy",},"order":5,},
+    {"id":{"name":"input_game_has_focus","path":"scripts/input_game_has_focus/input_game_has_focus.yy",},"order":5,},
     {"id":{"name":"input_x","path":"scripts/input_x/input_x.yy",},"order":2,},
     {"id":{"name":"input_xy","path":"scripts/input_xy/input_xy.yy",},"order":4,},
     {"id":{"name":"input_check_quick_pressed_2d","path":"scripts/input_check_quick_pressed_2d/input_check_quick_pressed_2d.yy",},"order":8,},
