@@ -35,7 +35,7 @@ image_blend = input_color_get();
 
 ## …color_set
 
-`input_color_set([playerIndex])`
+`input_color_set(color, [playerIndex])`
 
 <!-- tabs:start -->
 
