@@ -52,15 +52,23 @@ function __input_initialize()
     }
     
     //Detect new string functions, which offer a significant performance gain when reading the SDL2 database
-    try
+    if (INPUT_ON_WEB)
     {
-        string_split("Juju\nwaz\nere", "\n", true);
-        string_trim("         you can't catch me          ");
+        //Buggy as of 2023-10-08
         _global.__use_legacy_strings = false;
     }
-    catch(_error)
+    else 
     {
-        _global.__use_legacy_strings = true;
+        try
+        {
+            string_split("Juju\nwaz\nere", "\n", true);
+            string_trim("         you can't catch me          ");
+            _global.__use_legacy_strings = false;
+        }
+        catch(_error)
+        {
+            _global.__use_legacy_strings = true;
+        }
     }
     
     if (not __INPUT_SILENT)
@@ -69,14 +77,22 @@ function __input_initialize()
     }
     
     //Detect is_debug_overlay_open() to block game input to overlay, if supported
-    try
+    if (INPUT_ON_WEB)
     {
-        is_debug_overlay_open();
-        _global.__use_debug_overlay_status = true;
-    }
-    catch(_error)
-    {
+        //Buggy as of 2023-10-08
         _global.__use_debug_overlay_status = false;
+    }
+    else 
+    {
+        try
+        {
+            is_debug_overlay_open();
+            _global.__use_debug_overlay_status = true;
+        }
+        catch(_error)
+        {
+            _global.__use_debug_overlay_status = false;
+        }
     }
     
     if not (__INPUT_SILENT)
@@ -84,14 +100,22 @@ function __input_initialize()
         __input_trace(_global.__use_debug_overlay_status? "Using debug overlay status to block input" : "Debug overlay status is unavailable");
     }
     
-    try
+    if (INPUT_ON_WEB)
     {
-        ref_create({});
-        _global.__allow_gamepad_tester = true;
-    }
-    catch(_error)
-    {
+        //Buggy as of 2023-10-08
         _global.__allow_gamepad_tester = false;
+    }
+    else 
+    {
+        try
+        {
+            ref_create({});
+            _global.__allow_gamepad_tester = true;
+        }
+        catch(_error)
+        {
+            _global.__allow_gamepad_tester = false;
+        }
     }
     
     if not (__INPUT_SILENT)
@@ -263,7 +287,7 @@ function __input_initialize()
     _global.__on_desktop = (__INPUT_ON_WINDOWS || __INPUT_ON_MACOS || __INPUT_ON_LINUX || __INPUT_ON_OPERAGX);
     _global.__on_mobile  = (__INPUT_ON_ANDROID || __INPUT_ON_IOS);
     
-    //OperaGX mobile identity per YYG
+    //OperaGX mobile identity
     if (__INPUT_ON_OPERAGX)
     {
         var _map = os_get_info();
@@ -273,6 +297,7 @@ function __input_initialize()
             {
                 _global.__on_mobile  = true;
                 _global.__on_desktop = false;
+                if (!__INPUT_SILENT) __input_trace("Browser indicates OperaGX mobile");
             }
 
             ds_map_destroy(_map);
@@ -526,33 +551,32 @@ function __input_initialize()
     #endregion
     
     
-    #region
+    #region Gamepad LED patterns by device type
     
-    //Gamepad LED patterns by device type
-    _global.__gamepad_led_pattern_dict = {
-        INPUT_GAMEPAD_TYPE_PS5: [                 //PS5
-            [false, false, true,  false, false],  //P1: --X--
-            [false, true,  false, true,  false],  //P2: -X-X-
-            [true,  false, true,  false, true ],  //P3: X-X-X
-            [true,  true,  false, true,  true ],  //P4: XX-XX
-        ],        
-        INPUT_GAMEPAD_TYPE_SWITCH: [              //Switch
-            [true,  false, false, false],         //P1: X---
-            [true,  true,  false, false],         //P2: XX--
-            [true,  true,  true,  false],         //P3: XXX-
-            [true,  true,  true,  true ],         //P4: XXXX
-            [true,  false, false, true ],         //P5: X--X
-            [true,  false, true,  false],         //P6: X-X-
-            [true,  false, true,  true ],         //P7: X-XX
-            [false, true,  true,  false],         //P8: -XX-
-        ],        
-        INPUT_GAMEPAD_TYPE_XBOX_360: [            //Xbox 360
-            [true,  false, false, false],         //P1: X---
-            [false, true,  false, false],         //P2: -X--
-            [false, false, true,  false],         //P3: --X-
-            [false, false, false, true ],         //P4: ---X
-        ],
-    }
+    var _dict = {};
+    _dict[$ INPUT_GAMEPAD_TYPE_PS5] = [       //PS5
+        [false, false, true,  false, false],  //P1: --X--
+        [false, true,  false, true,  false],  //P2: -X-X-
+        [true,  false, true,  false, true ],  //P3: X-X-X
+        [true,  true,  false, true,  true ],  //P4: XX-XX
+    ];    
+    _dict[$ INPUT_GAMEPAD_TYPE_SWITCH] = [    //Switch
+        [true,  false, false, false],         //P1: X---
+        [true,  true,  false, false],         //P2: XX--
+        [true,  true,  true,  false],         //P3: XXX-
+        [true,  true,  true,  true ],         //P4: XXXX
+        [true,  false, false, true ],         //P5: X--X
+        [true,  false, true,  false],         //P6: X-X-
+        [true,  false, true,  true ],         //P7: X-XX
+        [false, true,  true,  false],         //P8: -XX-
+    ];
+    _dict[$ INPUT_GAMEPAD_TYPE_XBOX_360] = [  //Xbox 360
+        [true,  false, false, false],         //P1: X---
+        [false, true,  false, false],         //P2: -X--
+        [false, false, true,  false],         //P3: --X-
+        [false, false, false, true ],         //P4: ---X
+    ];    
+    _global.__gamepad_led_pattern_dict = _dict;
     
     #endregion
 

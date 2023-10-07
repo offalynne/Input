@@ -351,14 +351,14 @@ enum INPUT_VIRTUAL_RELEASE
                                              {\
                                                  if (!_global.__any_keyboard_binding_defined && !_global.__any_mouse_binding_defined)\
                                                  {\
-                                                    __input_error("Cannot claim ", _source, ", no keyboard or mouse bindings have been created in a default profile (see __input_config_verbs_and_bindings())");\
+                                                    __input_error("Cannot claim ", _source, ", no keyboard or mouse bindings have been created in a default profile (see __input_config_verbs())");\
                                                  }\
                                              }\
                                              else\
                                              {\
                                                  if (!_global.__any_keyboard_binding_defined)\
                                                  {\
-                                                     __input_error("Cannot claim ", _source, ", no keyboard bindings have been created in a default profile (see __input_config_verbs_and_bindings())");\
+                                                     __input_error("Cannot claim ", _source, ", no keyboard bindings have been created in a default profile (see __input_config_verbs())");\
                                                  }\
                                              }\
                                          }\
@@ -366,20 +366,20 @@ enum INPUT_VIRTUAL_RELEASE
                                          {\
                                              if (!_global.__any_mouse_binding_defined)\
                                              {\
-                                                 __input_error("Cannot claim ", _source, ", no mouse bindings have been created in a default profile (see __input_config_verbs_and_bindings())");\
+                                                 __input_error("Cannot claim ", _source, ", no mouse bindings have been created in a default profile (see __input_config_verbs())");\
                                              }\
                                          }\
                                          else if (_source == INPUT_TOUCH)\
                                          {\
                                              if (!_global.__any_touch_binding_defined)\
                                              {\
-                                                 __input_error("Cannot claim ", _source, ", no virtual button bindings have been created in a default profile (see __input_config_verbs_and_bindings())");\
+                                                 __input_error("Cannot claim ", _source, ", no virtual button bindings have been created in a default profile (see __input_config_verbs())");\
                                              }\
                                          }\
                                          else if (_source.__source == __INPUT_SOURCE.GAMEPAD)\
                                          {\
                                              if (!_global.__any_gamepad_binding_defined)\
                                              {\
-                                                 __input_error("Cannot claim ", _source, ", no gamepad bindings have been created in a default profile (see __input_config_verbs_and_bindings())");\
+                                                 __input_error("Cannot claim ", _source, ", no gamepad bindings have been created in a default profile (see __input_config_verbs())");\
                                              }\
                                          }
