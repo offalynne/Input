@@ -7,7 +7,7 @@ function __input_finalize_default_profiles()
     
     if (!is_struct(_global.__default_profile_dict))
     {
-        __input_error("__input_config_verbs() must contain a struct (was ", typeof(_global.__default_profile_dict), ")\nDocumentation on __input_config_verbs() can be found offline in __input_config_verbs_and_bindings()\nOnline documentation can be found at https://jujuadams.github.io/Input");
+        __input_error("__input_config_verbs() must contain a struct (was ", typeof(_global.__default_profile_dict), ")\nDocumentation on __input_config_verbs() can be found offline in __input_config_verbs()\nOnline documentation can be found at https://jujuadams.github.io/Input");
     }
     
     if (variable_struct_names_count(_global.__default_profile_dict) <= 0)
@@ -104,6 +104,22 @@ function __input_finalize_default_profiles()
         }
         
         ++_f;
+    }
+    
+    //Identify misconfigured touch source on potential touch platforms when starting in hotswap mode
+    if ((INPUT_STARTING_SOURCE_MODE == INPUT_SOURCE_MODE.HOTSWAP) && !_global.__any_touch_binding_defined)
+    {
+        //Immediately address missing touch bindings
+        if (_global.__touch_allowed)
+        {
+            __input_error("Touch bindings are not configured. Create virtual button bindings in a default profile (see __input_config_verbs()), or change mouse/touch configuration for this platform (see __input_config_general())");
+        }
+        
+        //Present a mobile web misconfiguration warning on desktop web
+        if (INPUT_ON_WEB && !INPUT_ON_MOBILE && !INPUT_MOBILE_MOUSE)
+        {
+            __input_trace_loud("Warning!\n\nTouch bindings are not configured for mobile web. Create virtual button bindings in a default profile (see __input_config_verbs()) or set \"INPUT_MOBILE_MOUSE\" to <true> to use mouse bindings (see __input_config_general()) to ensure compatibility on mobile web\n\n\nInput ", __INPUT_VERSION, "   @jujuadams and @offalynne ", __INPUT_DATE);
+        }
     }
     
     if (!__INPUT_SILENT)
