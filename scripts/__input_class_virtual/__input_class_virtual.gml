@@ -854,35 +854,10 @@ function __input_class_virtual() constructor
                             var _clamped_x = sign(_start_dx)*clamp((abs(_start_dx) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
                             var _clamped_y = sign(_start_dy)*clamp((abs(_start_dy) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
                             
-                            switch(_direction)
-                            {
-                                case 0:
-                                case 1:
-                                case 7:
-                                    _player.__verb_set_from_virtual(__verb_right, max(0, _start_dx), max(0, _clamped_x), true);
-                                break;
-                                
-                                case 3:
-                                case 4:
-                                case 5:
-                                    _player.__verb_set_from_virtual(__verb_left, max(0, -_start_dx), max(0, -_clamped_x), true);
-                                break;
-                            }
-                            
-                            switch(_direction)
-                            {
-                                case 1:
-                                case 2:
-                                case 3:
-                                    _player.__verb_set_from_virtual(__verb_up, max(0, -_start_dy), max(0, -_clamped_y), true);
-                                break;
-                                
-                                case 5:
-                                case 6:
-                                case 7:
-                                    _player.__verb_set_from_virtual(__verb_down, max(0, _start_dy), max(0, _clamped_y), true);
-                                break;
-                            }
+                            _player.__verb_set_from_virtual(__verb_left,  max(0, -_start_dx), max(0, -_clamped_x), true);
+                            _player.__verb_set_from_virtual(__verb_up,    max(0, -_start_dy), max(0, -_clamped_y), true);
+                            _player.__verb_set_from_virtual(__verb_right, max(0,  _start_dx), max(0,  _clamped_x), true);
+                            _player.__verb_set_from_virtual(__verb_down,  max(0,  _start_dy), max(0,  _clamped_y), true);
                         }
                     }
                 }
