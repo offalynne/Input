@@ -24,12 +24,13 @@ function __input_class_virtual() constructor
     __start_x  = undefined;
     __start_y  = undefined;
     
-    __type       = INPUT_VIRTUAL_TYPE.BUTTON;
-    __verb_click = undefined;
-    __verb_left  = undefined;
-    __verb_right = undefined;
-    __verb_up    = undefined;
-    __verb_down  = undefined;
+    __type        = INPUT_VIRTUAL_TYPE.BUTTON;
+    __verb_click  = undefined;
+    __verb_left   = undefined;
+    __verb_right  = undefined;
+    __verb_up     = undefined;
+    __verb_down   = undefined;
+    __sensitivity = 0.03;
     
     __4dir = false;
     
@@ -223,6 +224,21 @@ function __input_class_virtual() constructor
         __verb_right = _right;
         __verb_up    = _up;
         __verb_down  = _down;
+        
+        return self;
+    }
+    
+    static touchpad = function(_click, _left, _right, _up, _down, _sensitivity = 0.03)
+    {
+        if (__destroyed || __background) return self;
+        
+        __type        = INPUT_VIRTUAL_TYPE.TOUCHPAD;
+        __verb_click  = _click;
+        __verb_left   = _left;
+        __verb_right  = _right;
+        __verb_up     = _up;
+        __verb_down   = _down;
+        __sensitivity = _sensitivity;
         
         return self;
     }
@@ -753,7 +769,17 @@ function __input_class_virtual() constructor
                 
                 if (_threshold_factor > 0)
                 {
-                    if (__type == INPUT_VIRTUAL_TYPE.DPAD_4DIR)
+                    if (__type == INPUT_VIRTUAL_TYPE.TOUCHPAD)
+                    {
+                        _dx *= __sensitivity;
+                        _dy *= __sensitivity;
+                        
+                        if (_dx < 0) _player.__verb_set_from_virtual(__verb_left,  -_dx, -_dx, true);
+                        if (_dy < 0) _player.__verb_set_from_virtual(__verb_up,    -_dy, -_dx, true);
+                        if (_dx > 0) _player.__verb_set_from_virtual(__verb_right,  _dx,  _dx, true);
+                        if (_dy > 0) _player.__verb_set_from_virtual(__verb_down,   _dy,  _dy, true);
+                    }
+                    else if (__type == INPUT_VIRTUAL_TYPE.DPAD_4DIR)
                     {
                         var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 45) / 90) mod 4;
                         switch(_direction)
