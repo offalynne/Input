@@ -23,6 +23,8 @@ function __input_class_virtual() constructor
     __radius   = undefined;
     __start_x  = undefined;
     __start_y  = undefined;
+    __prev_x   = undefined;
+    __prev_y   = undefined;
     
     __type        = INPUT_VIRTUAL_TYPE.BUTTON;
     __verb_click  = undefined;
@@ -620,13 +622,13 @@ function __input_class_virtual() constructor
         {
             if ((__start_x != undefined) && (__start_y != undefined))
             {
-                var _dx = __start_x - __x;
-                var _dy = __start_y - __y;
+                var _start_dx = __start_x - __x;
+                var _start_dy = __start_y - __y;
                 
-                __left   += _dx;
-                __top    += _dy;
-                __right  += _dx;
-                __bottom += _dy;
+                __left   += _start_dx;
+                __top    += _start_dy;
+                __right  += _start_dx;
+                __bottom += _start_dy;
                 
                 __x = __start_x;
                 __y = __start_y;
@@ -700,7 +702,12 @@ function __input_class_virtual() constructor
             __released = false;
         }
         
-        if (__held)
+        if (!__held)
+        {
+            __prev_x = undefined;
+            __prev_y = undefined;
+        }
+        else
         {
             if (not device_mouse_check_button(__touch_device, mb_left))
             {
@@ -718,10 +725,15 @@ function __input_class_virtual() constructor
                 
                 if (__record_history) __history_push(__touch_x, __touch_y);
                 
-                var _dx = __touch_x - __x;
-                var _dy = __touch_y - __y;
+                var _start_dx = __touch_x - __x;
+                var _start_dy = __touch_y - __y;
                 
-                var _length = _dx*_dx + _dy*_dy;
+                var _prev_dx = (__prev_x == undefined)? 0 : __prev_x - __x;
+                var _prev_dy = (__prev_y == undefined)? 0 : __prev_y - __y;
+                __prev_x = __touch_x;
+                __prev_y = __touch_y;
+                
+                var _length = _start_dx*_start_dx + _start_dy*_start_dy;
                 if (_length <= 0)
                 {
                     //We don't like div-by-zero
@@ -733,8 +745,8 @@ function __input_class_virtual() constructor
                 {
                     var _length = sqrt(_length);
                     var _threshold_factor = clamp((_length - __threshold_min) / (__threshold_max - __threshold_min), 0, 1) / _length;
-                    __normalized_x = _threshold_factor*_dx;
-                    __normalized_y = _threshold_factor*_dy;
+                    __normalized_x = _threshold_factor*_start_dx;
+                    __normalized_y = _threshold_factor*_start_dy;
                     
                     if (__follow)
                     {
@@ -744,8 +756,8 @@ function __input_class_virtual() constructor
                         if (__circular == true)
                         {
                             var _move_distance = max(0, _length - __radius);
-                            _move_x = _move_distance*_dx / _length;
-                            _move_y = _move_distance*_dy / _length;
+                            _move_x = _move_distance*_start_dx / _length;
+                            _move_y = _move_distance*_start_dy / _length;
                         }
                         else if (__circular == false)
                         {
@@ -771,13 +783,13 @@ function __input_class_virtual() constructor
                 {
                     if (__type == INPUT_VIRTUAL_TYPE.TOUCHPAD)
                     {
-                        _dx *= __sensitivity;
-                        _dy *= __sensitivity;
+                        _prev_dx *= __sensitivity;
+                        _prev_dy *= __sensitivity;
                         
-                        if (_dx < 0) _player.__verb_set_from_virtual(__verb_left,  -_dx, -_dx, true);
-                        if (_dy < 0) _player.__verb_set_from_virtual(__verb_up,    -_dy, -_dx, true);
-                        if (_dx > 0) _player.__verb_set_from_virtual(__verb_right,  _dx,  _dx, true);
-                        if (_dy > 0) _player.__verb_set_from_virtual(__verb_down,   _dy,  _dy, true);
+                        if (_prev_dx < 0) _player.__verb_set_from_virtual(__verb_left,  -_prev_dx, -_prev_dx, true);
+                        if (_prev_dy < 0) _player.__verb_set_from_virtual(__verb_up,    -_prev_dy, -_prev_dx, true);
+                        if (_prev_dx > 0) _player.__verb_set_from_virtual(__verb_right,  _prev_dx,  _prev_dx, true);
+                        if (_prev_dy > 0) _player.__verb_set_from_virtual(__verb_down,   _prev_dy,  _prev_dy, true);
                     }
                     else if (__type == INPUT_VIRTUAL_TYPE.DPAD_4DIR)
                     {
@@ -839,21 +851,21 @@ function __input_class_virtual() constructor
                         }
                         else if (__type == INPUT_VIRTUAL_TYPE.THUMBSTICK)
                         {
-                            var _clamped_x = sign(_dx)*clamp((abs(_dx) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
-                            var _clamped_y = sign(_dy)*clamp((abs(_dy) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
+                            var _clamped_x = sign(_start_dx)*clamp((abs(_start_dx) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
+                            var _clamped_y = sign(_start_dy)*clamp((abs(_start_dy) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
                             
                             switch(_direction)
                             {
                                 case 0:
                                 case 1:
                                 case 7:
-                                    _player.__verb_set_from_virtual(__verb_right, max(0, _dx), max(0, _clamped_x), true);
+                                    _player.__verb_set_from_virtual(__verb_right, max(0, _start_dx), max(0, _clamped_x), true);
                                 break;
                                 
                                 case 3:
                                 case 4:
                                 case 5:
-                                    _player.__verb_set_from_virtual(__verb_left, max(0, -_dx), max(0, -_clamped_x), true);
+                                    _player.__verb_set_from_virtual(__verb_left, max(0, -_start_dx), max(0, -_clamped_x), true);
                                 break;
                             }
                             
@@ -862,13 +874,13 @@ function __input_class_virtual() constructor
                                 case 1:
                                 case 2:
                                 case 3:
-                                    _player.__verb_set_from_virtual(__verb_up, max(0, -_dy), max(0, -_clamped_y), true);
+                                    _player.__verb_set_from_virtual(__verb_up, max(0, -_start_dy), max(0, -_clamped_y), true);
                                 break;
                                 
                                 case 5:
                                 case 6:
                                 case 7:
-                                    _player.__verb_set_from_virtual(__verb_down, max(0, _dy), max(0, _clamped_y), true);
+                                    _player.__verb_set_from_virtual(__verb_down, max(0, _start_dy), max(0, _clamped_y), true);
                                 break;
                             }
                         }
