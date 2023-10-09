@@ -317,7 +317,7 @@ function __input_class_gamepad(_index) constructor
         
         if (__vibration_support)
         {
-            if (__vibration_received_this_frame && input_window_has_focus())
+            if (__vibration_received_this_frame && input_game_has_focus())
             {
                 var _vibration_low  = __vibration_scale * __vibration_left;
                 var _vibration_high = __vibration_scale * __vibration_right;
