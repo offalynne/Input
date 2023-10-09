@@ -26,13 +26,13 @@ function __input_class_virtual() constructor
     __prev_x   = undefined;
     __prev_y   = undefined;
     
-    __type        = INPUT_VIRTUAL_TYPE.BUTTON;
-    __verb_click  = undefined;
-    __verb_left   = undefined;
-    __verb_right  = undefined;
-    __verb_up     = undefined;
-    __verb_down   = undefined;
-    __sensitivity = 0.03;
+    __type         = INPUT_VIRTUAL_TYPE.BUTTON;
+    __verb_click   = undefined;
+    __verb_left    = undefined;
+    __verb_right   = undefined;
+    __verb_up      = undefined;
+    __verb_down    = undefined;
+    __max_distance = 1;
     
     __4dir = false;
     
@@ -230,17 +230,17 @@ function __input_class_virtual() constructor
         return self;
     }
     
-    static touchpad = function(_click, _left, _right, _up, _down, _sensitivity = 0.03)
+    static touchpad = function(_click, _left, _right, _up, _down, _max_distance = 10)
     {
         if (__destroyed || __background) return self;
         
-        __type        = INPUT_VIRTUAL_TYPE.TOUCHPAD;
-        __verb_click  = _click;
-        __verb_left   = _left;
-        __verb_right  = _right;
-        __verb_up     = _up;
-        __verb_down   = _down;
-        __sensitivity = _sensitivity;
+        __type         = INPUT_VIRTUAL_TYPE.TOUCHPAD;
+        __verb_click   = _click;
+        __verb_left    = _left;
+        __verb_right   = _right;
+        __verb_up      = _up;
+        __verb_down    = _down;
+        __max_distance = _max_distance;
         
         return self;
     }
@@ -695,6 +695,9 @@ function __input_class_virtual() constructor
             __pressed  = true;
             __held     = true;
             __released = false;
+            
+            __prev_x = device_mouse_x_to_gui(__touch_device);
+            __prev_y = device_mouse_y_to_gui(__touch_device);
         }
         else
         {
@@ -728,8 +731,8 @@ function __input_class_virtual() constructor
                 var _start_dx = __touch_x - __x;
                 var _start_dy = __touch_y - __y;
                 
-                var _prev_dx = (__prev_x == undefined)? 0 : __prev_x - __x;
-                var _prev_dy = (__prev_y == undefined)? 0 : __prev_y - __y;
+                var _prev_dx = __touch_x - __prev_x;
+                var _prev_dy = __touch_y - __prev_y;
                 __prev_x = __touch_x;
                 __prev_y = __touch_y;
                 
@@ -779,19 +782,26 @@ function __input_class_virtual() constructor
                     }
                 }
                 
-                if (_threshold_factor > 0)
+                if (__type == INPUT_VIRTUAL_TYPE.TOUCHPAD)
                 {
-                    if (__type == INPUT_VIRTUAL_TYPE.TOUCHPAD)
+                    _prev_dx /= __max_distance;
+                    _prev_dy /= __max_distance;
+                    
+                    var _d = sqrt(_prev_dx*_prev_dx + _prev_dy*_prev_dy);
+                    if (_d > 1)
                     {
-                        _prev_dx *= __sensitivity;
-                        _prev_dy *= __sensitivity;
-                        
-                        if (_prev_dx < 0) _player.__verb_set_from_virtual(__verb_left,  -_prev_dx, -_prev_dx, true);
-                        if (_prev_dy < 0) _player.__verb_set_from_virtual(__verb_up,    -_prev_dy, -_prev_dx, true);
-                        if (_prev_dx > 0) _player.__verb_set_from_virtual(__verb_right,  _prev_dx,  _prev_dx, true);
-                        if (_prev_dy > 0) _player.__verb_set_from_virtual(__verb_down,   _prev_dy,  _prev_dy, true);
+                        _prev_dx /= _d;
+                        _prev_dy /= _d;
                     }
-                    else if (__type == INPUT_VIRTUAL_TYPE.DPAD_4DIR)
+                    
+                    _player.__verb_set_from_virtual(__verb_left,  max(0, -_prev_dx), max(0, -_prev_dx), true);
+                    _player.__verb_set_from_virtual(__verb_up,    max(0, -_prev_dy), max(0, -_prev_dy), true);
+                    _player.__verb_set_from_virtual(__verb_right, max(0,  _prev_dx), max(0,  _prev_dx), true);
+                    _player.__verb_set_from_virtual(__verb_down,  max(0,  _prev_dy), max(0,  _prev_dy), true);
+                }
+                else if (_threshold_factor > 0)
+                {
+                    if (__type == INPUT_VIRTUAL_TYPE.DPAD_4DIR)
                     {
                         var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 45) / 90) mod 4;
                         switch(_direction)
@@ -851,6 +861,7 @@ function __input_class_virtual() constructor
                         }
                         else if (__type == INPUT_VIRTUAL_TYPE.THUMBSTICK)
                         {
+                            
                             var _clamped_x = sign(_start_dx)*clamp((abs(_start_dx) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
                             var _clamped_y = sign(_start_dy)*clamp((abs(_start_dy) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
                             
