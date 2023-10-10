@@ -320,7 +320,7 @@ vbutton_thumbstick = input_virtual_create()
 
 ## .touchpad
 
-`<virtual button>.touchpad(clickVerb, leftVerb, rightVerb, upVerb, downVerb, maxDistance)`
+`<virtual button>.touchpad(clickVerb, leftVerb, rightVerb, upVerb, downVerb)`
 
 <!-- tabs:start -->
 
@@ -338,7 +338,7 @@ vbutton_thumbstick = input_virtual_create()
 
 Binds the virtual button to a set of basic Input verbs, one for each direction and an extra one for touching the virtual button at all. Verbs are triggered as **analogue**, meaning that verbs will be sent values from `0` to `1` as a hardware thumbstick would.
 
-!> Make sure you set an appropriate threshold using `.threshold()`. Good threshold value to start with are a minimum of `2` and a maximum of `12`.
+!> Make sure you set an appropriate threshold using `.threshold()`. Good threshold value to start with are a minimum of `1` and a maximum of `20`.
 
 ?> Touchpad behaviour overrides any option set by `.reference_point()`.
 
