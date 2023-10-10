@@ -111,7 +111,7 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Keyboard input is non-functional on these platforms owing to [unavoidable up-stream bugs](https://github.com/JujuAdams/Input/issues/138)
 
-- iOS touchscreen input is fully functional supporting 5 touch points on iPhone and 11 on iPad. By default Input ignores the touchscreen.
+- iOS touchscreen input is fully functional supporting 5 touch points on iPhone and 11 on iPad.
 
 - Mouse input is partially functional. GameMaker uses the first mouse "device" for both touchscreen input and mouse, so there is no certain way to determine which is in use. Mouse position updates when the mouse is clicked. By default mouse input is off (see above).
 
@@ -125,7 +125,7 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Android keyboard input is problematic and so set to off by default. The most significant issue is keys regularly and irreparably sticking when modified using Shift keys. You can turn keyboard input on by [setting `INPUT_ANDROID_KEYBOARD_ALLOWED` to `true`](Config-Macros). If using this feature, it is not recommended to use bindings besides Arrow keys, Enter, Space, and Backspace.
 
-- Android touchscreen input is fully functional supporting a device-relative number of touches up to 11. By default Input ignores the touchscreen.
+- Android touchscreen input is fully functional supporting a device-relative number of touches up to 11.
 
 - Mouse input is partially functional. GameMaker uses the first mouse "device" for both touchscreen input and mouse, so there is no certain way to determine which is in use. Mouse position updates when the mouse is clicked. By default mouse input is off (see above).
 
