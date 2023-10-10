@@ -336,9 +336,11 @@ vbutton_thumbstick = input_virtual_create()
 |`upVerb`     |string  |Verb to bind touching the top of the button to                                                             |
 |`downVerb`   |string  |Verb to bind touching the bottom of the to                                                                 |
 
-Binds the virtual button to a set of basic Input verbs, one for each direction and an extra one for touching the virtual button at all. Verbs are triggered as **analogue**, meaning that verbs will be sent values from `0` to `1` as a hardware thumbstick would.
+Binds the virtual button to a set of basic Input verbs, one for each direction and an extra one for touching the virtual button at all. Verbs are triggered as **analogue** and **normalized**, meaning that verbs will be sent values from `0` to `1` based on the speed of movement of the touch point (the player's finger).
 
-!> Make sure you set an appropriate threshold using `.threshold()`. Good threshold value to start with are a minimum of `1` and a maximum of `20`.
+The sensitivity of a touchpad is controlled by setting the threshold for the virtual button using `.threshold()`. A higher maximum threshold will *reduce* the sensitivity of the touchpad whereas a lower maximum threshold will *increase* the sensitivity of the touchpad. Additionally, increasing the minimum threshold will filter out more "jitter" from noisy hardware or the player's finger moving slightly.
+
+!> Make sure you set an appropriate threshold using `.threshold()` or the touchpad may appear to be non-functional. Good threshold values to start with are a minimum of `1` and a maximum of `20`.
 
 ?> Touchpad behaviour overrides any option set by `.reference_point()`.
 
