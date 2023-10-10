@@ -242,6 +242,54 @@ if (vb_thruster.check())
 
 &nbsp;
 
+## .get_touch_x
+
+`<virtual button>.get_touch_dx()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, how far the touch point has moved in the x-axis between frames
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+#### **Example**
+
+```gml
+
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## .get_touch_y
+
+`<virtual button>.get_touch_dy()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, how far the touch point has moved in the y-axis between frames
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+#### **Example**
+
+```gml
+
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
 ## .get_touch_start_x
 
 `<virtual button>.get_touch_start_x()`
