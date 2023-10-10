@@ -35,8 +35,8 @@ If you encounter trouble using your gamepad with Input, ensure the gamepad devic
 - [Google Stadia Bluetooth firmware](https://stadia.google.com/controller/)
 
 ### MacOS
-- [Xbox 360 and Xbox One Controller driver setup](https://github.com/360Controller/360Controller/releases)
-- [Wireless DualShock 4 and Xbox One Controller Bluetooth pairing](https://support.apple.com/en-us/HT210414#mac)
+- ~~[Xbox 360 and Xbox One Controller driver setup](https://github.com/360Controller/360Controller/releases)~~ ([No longer supported](https://github.com/360Controller/360Controller/issues/1139) as of Jan 9, 2021)
+- [Wireless PlayStation, Xbox One, and Switch Controller Bluetooth pairing](https://support.apple.com/en-us/HT210414#mac)
 
 ### Ubuntu
 - [PS3 X11 gamepad-mouse double input terminal fix](https://ubuntuforums.org/showthread.php?t=1489328): `sudo rm /usr/share/X11/xorg.conf.d/50-joystick.conf`
