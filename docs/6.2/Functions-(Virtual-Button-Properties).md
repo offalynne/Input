@@ -6,7 +6,7 @@ Virtual buttons can be configured using the following functions. Many functions 
 
 &nbsp;
 
-## .reference_point(option)
+## .reference_point
 
 `<virtual button>.reference_point(option)`
 
@@ -79,7 +79,7 @@ The `INPUT_VIRTUAL_REFERENCE` enum contains the following elements:
 |`min`|number  |Minimum threshold value|
 |`max`|number  |Maximum threshold value|
 
-?> This method is only relevant for dpad- and thumbstick-type virtual buttons.
+?> This method does not affect virtual buttons configured with the `.button()` method.
 
 #### **Example**
 
