@@ -6,6 +6,29 @@ The following recommendations should ease configuring USB and Bluetooth console 
 
 &nbsp;
 
+## USB and Bluetooth gamepad support by platform
+
+Note that the following applies to native support for first-party brand gamepads. 
+
+|Gamepad             |Windows                   |MacOS      |Ubuntu                                |Android                   |iOS and tvOS        |HTML5 and OperaGX   |
+|:-------------------|--------------------------|-----------|--------------------------------------|--------------------------|--------------------|--------------------|
+|PlayStation 3       |USB only<sup>1</sup>      |BT only    |USB, BT                               |USB, BT                   |None                |BT, USB<sup>4</sup> |
+|PlayStation 4       |USB, BT                   |USB, BT    |USB, BT                               |USB, BT                   |BT only             |BT, USB<sup>4</sup> |
+|PlayStation 5       |USB, BT                   |USB, BT    |USB, BT                               |USB, BT                   |BT only             |BT, USB<sup>4</sup> |
+|Xbox 360            |USB, 2.4g<sup>2</sup>     |None       |USB<sup>1</sup> and 2.4g<sup>2</sup>  |USB and 2.4g<sup>2</sup>  |None                |USB, 2.4g<sup>2</sup>|
+|Xbox One            |USB, BT, 2.4g<sup>2</sup> |BT only    |USB<sup>1</sup>, BT, 2.4g<sup>2</sup> |USB, BT, 2.4g<sup>2</sup> |BT only             |BT, USB<sup>4</sup>, 2.4g<sup>2</sup>|
+|Switch Pro          |BT only<sup>3</sup>       |BT only    |BTB, USB<sup>1,3,4</sup>              |BT, USB<sup>4</sup>       |BT only<sup>4</sup> |BT, USB<sup>4</sup> |
+|Switch JoyCons      |BT only<sup>3</sup>       |BT only    |BT, USB<sup>1,3,4</sup>               |BT, USB<sup>4</sup>       |BT only<sup>4</sup> |BT, USB<sup>4</sup> |
+
+<small>
+1. Requires driver (see below)<br>
+2. Requires adapter<br>
+3. Additional support may be available via Steam<br>
+4. Support depends on OS version
+</small>
+
+&nbsp;
+
 ## Testing Apps
 
 To ensure your gamepad is working correctly with your device before attempting to configure it with Input, we recommend confirming proper operation using a platform-appropriate tool.
@@ -35,11 +58,10 @@ If you encounter trouble using your gamepad with Input, ensure the gamepad devic
 - [Google Stadia Bluetooth firmware](https://stadia.google.com/controller/)
 
 ### MacOS
-- ~~[Xbox 360 and Xbox One Controller driver setup](https://github.com/360Controller/360Controller/releases)~~ [Unsupported as of Jan 9, 2021](https://github.com/360Controller/360Controller/issues/1139)
+- ~~[Xbox 360 and Xbox One Controller driver setup](https://github.com/360Controller/360Controller/releases)~~ [(Unsupported as of Jan 9, 2021)](https://github.com/360Controller/360Controller/issues/1139)
 - [Wireless PlayStation, Xbox One, and Switch Controller Bluetooth pairing](https://support.apple.com/en-us/HT210414#mac)
 
 ### Ubuntu
-- [PS3 X11 gamepad-mouse double input terminal fix](https://ubuntuforums.org/showthread.php?t=1489328): `sudo rm /usr/share/X11/xorg.conf.d/50-joystick.conf`
 - [Xbox One Wireless Adapter setup](https://medusalix.github.io/xow/)
 - [Nintendo Switch Controller setup](https://github.com/nicman23/dkms-hid-nintendo)
 
