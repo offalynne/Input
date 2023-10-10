@@ -6,27 +6,6 @@ The following recommendations should ease configuring USB and Bluetooth console 
 
 &nbsp;
 
-## Bluetooth and USB gamepad support by platform
-
-Note that the following applies to native support for first-party brand gamepads. 
-
-|Gamepad         |Windows                    |MacOS         |Ubuntu                                 |Android                |iOS,&nbsp;iPadOS,&nbsp;tvOS     |HTML5,&nbsp;OperaGX |
-|:---------------|---------------------------|--------------|---------------------------------------|-----------------------|--------------------------------|--------------------|
-|PlayStation 3   |USB only<sup>&nbsp;1</sup> |Bluetooth only|BT, USB                                |USB only               |None                            |BT, USB<sup>&nbsp;4</sup>|
-|PlayStation 4   |BT, USB                    |BT, USB       |BT, USB                                |BT, USB                |Bluetooth only                  |BT, USB<sup>&nbsp;4</sup>|
-|PlayStation 5   |BT, USB                    |BT, USB       |BT, USB                                |BT, USB                |Bluetooth only                  |BT, USB<sup>&nbsp;4</sup>|
-|Xbox 360        |USB, 2.4g<sup>&nbsp;2</sup>|None          |USB<sup>&nbsp;1</sup>, 2.4g<sup>&nbsp;2</sup>|USB, 2.4g<sup>&nbsp;2</sup>|None                  |USB, 2.4g<sup>&nbsp;2</sup>|
-|Xbox One        |BT, USB, 2.4g<sup>&nbsp;2</sup> |Bluetooth&nbsp;only|BT, USB<sup>&nbsp;1</sup>, 2.4g<sup>&nbsp;2</sup>|BT, USB, 2.4g<sup>&nbsp;2</sup>|Bluetooth&nbsp;only|BT, USB<sup>&nbsp;4</sup>, 2.4g<sup>&nbsp;2</sup>|
-|Switch Pro      |Bluetooth only<sup>&nbsp;3</sup>|Bluetooth&nbsp;only|BT, USB<sup>&nbsp;1,3,4</sup>|BT, USB<sup>&nbsp;4</sup>|Bluetooth&nbsp;only<sup>&nbsp;4</sup>|BT, USB<sup>&nbsp;4</sup>|
-|Switch Joy-Cons |Bluetooth only<sup>&nbsp;3</sup>|Bluetooth&nbsp;only|BT, USB<sup>&nbsp;1,3,4</sup>|BT, USB<sup>&nbsp;4</sup>|Bluetooth&nbsp;only<sup>&nbsp;4</sup>|BT, USB<sup>&nbsp;4</sup>|
-
-1. _Requires driver _(see below)__
-2. _Requires adapter_
-3. _Additional support may be available via Steam_
-4. _Support depends on OS version_
-
-&nbsp;
-
 ## Testing Apps
 
 To ensure your gamepad is working correctly with your device before attempting to configure it with Input, we recommend confirming proper operation using a platform-appropriate tool.
