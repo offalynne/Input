@@ -35,7 +35,7 @@ If you encounter trouble using your gamepad with Input, ensure the gamepad devic
 - [Google Stadia Bluetooth firmware](https://stadia.google.com/controller/)
 
 ### MacOS
-- ~~[Xbox 360 and Xbox One Controller driver setup](https://github.com/360Controller/360Controller/releases)~~ ([No longer supported](https://github.com/360Controller/360Controller/issues/1139) as of Jan 9, 2021)
+- ~~[Xbox 360 and Xbox One Controller driver setup](https://github.com/360Controller/360Controller/releases)~~ [Unsupported as of Jan 9, 2021](https://github.com/360Controller/360Controller/issues/1139)
 - [Wireless PlayStation, Xbox One, and Switch Controller Bluetooth pairing](https://support.apple.com/en-us/HT210414#mac)
 
 ### Ubuntu
