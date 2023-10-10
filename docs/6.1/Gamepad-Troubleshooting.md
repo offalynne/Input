@@ -12,7 +12,7 @@ Note that the following applies to native support for first-party brand gamepads
 
 |Gamepad         |Windows                    |MacOS         |Ubuntu                                 |Android                   |iOS, iPadOS, tvOS          |HTML5, OperaGX        |
 |:---------------|---------------------------|--------------|---------------------------------------|--------------------------|---------------------------|----------------------|
-|PlayStation 3   |USB only<sup> 1</sup>      |Bluetooth only|BT, USB                                |BT, USB                   |None                       |BT, USB<sup> 4</sup>  |
+|PlayStation 3   |USB only<sup> 1</sup>      |Bluetooth only|BT, USB                                |USB only                  |None                       |BT, USB<sup> 4</sup>  |
 |PlayStation 4   |BT, USB                    |BT, USB       |BT, USB                                |BT, USB                   |Bluetooth only             |BT, USB<sup> 4</sup>  |
 |PlayStation 5   |BT, USB                    |BT, USB       |BT, USB                                |BT, USB                   |Bluetooth only             |BT, USB<sup> 4</sup>  |
 |Xbox 360        |USB, 2.4g<sup> 2</sup>     |None          |USB<sup> 1</sup>, 2.4g<sup> 2</sup>    |USB, 2.4g<sup> 2</sup>    |None                       |USB, 2.4g<sup> 2</sup>|
