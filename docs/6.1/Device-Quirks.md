@@ -118,7 +118,7 @@ On many platforms, gamepad indices do not enumerate predicatbly. Use source assi
 
 ### Pointing Devices on Mobile, Switch, and HTML5
 
-- Touchscreen input is functional on devices supporting a device-relative number of touches. By default Input ignores the touchscreen.
+- Touchscreen input is functional on devices supporting a device-relative number of touches.
 
 - Mouse input is partially functional. GameMaker uses the first mouse "device" for both touchscreen input and mouse, so there is no certain way to determine which is in use. By default mouse input is off (see above).
 
