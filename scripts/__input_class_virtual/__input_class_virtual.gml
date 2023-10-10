@@ -829,54 +829,36 @@ function __input_class_virtual() constructor
                         __bottom += _move_y;
                     }
                 }
-                
-                if (__type == INPUT_VIRTUAL_TYPE.TOUCHPAD)
+                if (_threshold_factor > 0)
                 {
-                    _dx /= __max_distance;
-                    _dy /= __max_distance;
-                    
-                    var _d = sqrt(_dx*_dx + _dy*_dy);
-                    if (_d > 1)
+                    switch(__type)
                     {
-                        _dx /= _d;
-                        _dy /= _d;
-                    }
-                    
-                    _player.__verb_set_from_virtual(__verb_left,  max(0, -_dx), max(0, -_dx), true);
-                    _player.__verb_set_from_virtual(__verb_up,    max(0, -_dy), max(0, -_dy), true);
-                    _player.__verb_set_from_virtual(__verb_right, max(0,  _dx), max(0,  _dx), true);
-                    _player.__verb_set_from_virtual(__verb_down,  max(0,  _dy), max(0,  _dy), true);
-                }
-                else if (_threshold_factor > 0)
-                {
-                    if (__type == INPUT_VIRTUAL_TYPE.DPAD_4DIR)
-                    {
-                        var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 45) / 90) mod 4;
-                        switch(_direction)
-                        {
-                            case 0:
-                                _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
-                            break;
+                        case INPUT_VIRTUAL_TYPE.DPAD_4DIR:
+                            //Split the input direction into 4 discrete parts
+                            var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 45) / 90) mod 4;
+                            switch(_direction)
+                            {
+                                case 0:
+                                    _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
+                                break;
                             
-                            case 1:
-                                _player.__verb_set_from_virtual(__verb_up, 1, 1, false);
-                            break;
+                                case 1:
+                                    _player.__verb_set_from_virtual(__verb_up, 1, 1, false);
+                                break;
                             
-                            case 2:
-                                _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
-                            break;
+                                case 2:
+                                    _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
+                                break;
                             
-                            case 3:
-                                _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 22.5) / 45) mod 8;
+                                case 3:
+                                    _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
+                                break;
+                            }
+                        break;
                         
-                        if (__type == INPUT_VIRTUAL_TYPE.DPAD_8DIR)
-                        {
+                        case INPUT_VIRTUAL_TYPE.DPAD_8DIR:
+                            //Split the input direction into 8 discrete parts
+                            var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 22.5) / 45) mod 8;
                             switch(_direction)
                             {
                                 case 0:
@@ -906,10 +888,10 @@ function __input_class_virtual() constructor
                                     _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
                                 break;
                             }
-                        }
-                        else if (__type == INPUT_VIRTUAL_TYPE.THUMBSTICK)
-                        {
-                            
+                        break;
+                        
+                        case INPUT_VIRTUAL_TYPE.THUMBSTICK:
+                            //Emulate the way normal thumbsticks work by clamping each axis individually
                             var _clamped_x = sign(_dx)*clamp((abs(_dx) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
                             var _clamped_y = sign(_dy)*clamp((abs(_dy) - __threshold_min) / (__threshold_max - __threshold_min), 0, 1);
                             
@@ -917,7 +899,15 @@ function __input_class_virtual() constructor
                             _player.__verb_set_from_virtual(__verb_up,    max(0, -_dy), max(0, -_clamped_y), true);
                             _player.__verb_set_from_virtual(__verb_right, max(0,  _dx), max(0,  _clamped_x), true);
                             _player.__verb_set_from_virtual(__verb_down,  max(0,  _dy), max(0,  _clamped_y), true);
-                        }
+                        break;
+                        
+                        case INPUT_VIRTUAL_TYPE.TOUCHPAD:
+                            //Just pass those values straight through, YOLO
+                            _player.__verb_set_from_virtual(__verb_left,  max(0, -__normalized_x), max(0, -__normalized_x), true);
+                            _player.__verb_set_from_virtual(__verb_up,    max(0, -__normalized_y), max(0, -__normalized_y), true);
+                            _player.__verb_set_from_virtual(__verb_right, max(0,  __normalized_x), max(0,  __normalized_x), true);
+                            _player.__verb_set_from_virtual(__verb_down,  max(0,  __normalized_y), max(0,  __normalized_y), true);
+                        break;
                     }
                 }
             }

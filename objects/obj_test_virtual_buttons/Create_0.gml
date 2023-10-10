@@ -14,11 +14,11 @@ c = input_virtual_create()
 d = input_virtual_create()
     .circle(900, 300, 60)
     .active(true)
-    .reference_point(INPUT_VIRTUAL_REFERENCE.TOUCH_POINT)
     .thumbstick(undefined, "left", "right", "up", "down");
 
 d = input_virtual_create()
     .rectangle(600, 400, 800, 600)
+    .threshold(0, 20)
     .touchpad(undefined, "left", "right", "up", "down");
 
 test_x = room_width / 2;
