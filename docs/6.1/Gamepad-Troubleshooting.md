@@ -20,12 +20,10 @@ Note that the following applies to native support for first-party brand gamepads
 |Switch Pro          |BT only<sup>3</sup>       |BT only    |BTB, USB<sup>1,3,4</sup>              |BT, USB<sup>4</sup>       |BT only<sup>4</sup> |BT, USB<sup>4</sup> |
 |Switch JoyCons      |BT only<sup>3</sup>       |BT only    |BT, USB<sup>1,3,4</sup>               |BT, USB<sup>4</sup>       |BT only<sup>4</sup> |BT, USB<sup>4</sup> |
 
-<small>
-1. Requires driver (see below)<br>
-2. Requires adapter<br>
-3. Additional support may be available via Steam<br>
-4. Support depends on OS version
-</small>
+1. _Requires driver _(see below)__
+2. _Requires adapter_
+3. _Additional support may be available via Steam_
+4. _Support depends on OS version_
 
 &nbsp;
 
