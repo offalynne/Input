@@ -10,15 +10,15 @@ The following recommendations should ease configuring USB and Bluetooth console 
 
 Note that the following applies to native support for first-party brand gamepads. 
 
-|Gamepad         |Windows                    |MacOS         |Ubuntu                                 |Android                   |iOS, iPadOS, tvOS          |HTML5, OperaGX        |
-|:---------------|---------------------------|--------------|---------------------------------------|--------------------------|---------------------------|----------------------|
-|PlayStation 3   |USB only<sup> 1</sup>      |Bluetooth only|BT, USB                                |USB only                  |None                       |BT, USB<sup> 4</sup>  |
-|PlayStation 4   |BT, USB                    |BT, USB       |BT, USB                                |BT, USB                   |Bluetooth only             |BT, USB<sup> 4</sup>  |
-|PlayStation 5   |BT, USB                    |BT, USB       |BT, USB                                |BT, USB                   |Bluetooth only             |BT, USB<sup> 4</sup>  |
-|Xbox 360        |USB, 2.4g<sup> 2</sup>     |None          |USB<sup> 1</sup>, 2.4g<sup> 2</sup>    |USB, 2.4g<sup> 2</sup>    |None                       |USB, 2.4g<sup> 2</sup>|
-|Xbox One        |BT, USB, 2.4g<sup> 2</sup> |Bluetooth only|BT, USB<sup> 1</sup>, 2.4g<sup> 2</sup>|BT, USB, 2.4g<sup> 2</sup>|Bluetooth only             |BT, USB<sup> 4</sup>, 2.4g<sup> 2</sup>|
-|Switch Pro      |Bluetooth only<sup> 3</sup>|Bluetooth only|BT, USB<sup> 1,3,4</sup>               |BT, USB<sup> 4</sup>      |Bluetooth only<sup> 4</sup>|BT, USB<sup> 4</sup> |
-|Switch Joy-Cons |Bluetooth only<sup> 3</sup>|Bluetooth only|BT, USB<sup> 1,3,4</sup>               |BT, USB<sup> 4</sup>      |Bluetooth only<sup> 4</sup>|BT, USB<sup> 4</sup> |
+|Gamepad         |Windows                    |MacOS         |Ubuntu                                 |Android                |iOS,&nbsp;iPadOS, tvOS |HTML5,&nbsp;OperaGX   |
+|:---------------|---------------------------|--------------|---------------------------------------|-----------------------|-----------------------|----------------------|
+|PlayStation 3   |USB only<sup> 1</sup>      |Bluetooth only|BT, USB                                |USB only               |None                   |BT, USB<sup> 4</sup>  |
+|PlayStation 4   |BT, USB                    |BT, USB       |BT, USB                                |BT, USB                |Bluetooth only         |BT, USB<sup> 4</sup>  |
+|PlayStation 5   |BT, USB                    |BT, USB       |BT, USB                                |BT, USB                |Bluetooth only         |BT, USB<sup> 4</sup>  |
+|Xbox 360        |USB, 2.4g<sup> 2</sup>     |None          |USB<sup> 1</sup>, 2.4g<sup> 2</sup>    |USB, 2.4g<sup> 2</sup> |None                   |USB, 2.4g<sup> 2</sup>|
+|Xbox One        |BT, USB, 2.4g<sup> 2</sup> |Bluetooth&nbsp;only|BT, USB<sup> 1</sup>, 2.4g<sup> 2</sup>|BT, USB, 2.4g<sup> 2</sup>|Bluetooth&nbsp;only   |BT, USB<sup> 4</sup>, 2.4g<sup> 2</sup>|
+|Switch Pro      |Bluetooth only<sup> 3</sup>|Bluetooth&nbsp;only|BT, USB<sup> 1,3,4</sup>          |BT, USB<sup> 4</sup> |Bluetooth&nbsp;only<sup> 4</sup>|BT, USB<sup> 4</sup>|
+|Switch Joy-Cons |Bluetooth only<sup> 3</sup>|Bluetooth&nbsp;only|BT, USB<sup> 1,3,4</sup>          |BT, USB<sup> 4</sup> |Bluetooth&nbsp;only<sup> 4</sup>|BT, USB<sup> 4</sup>|
 
 1. _Requires driver _(see below)__
 2. _Requires adapter_
