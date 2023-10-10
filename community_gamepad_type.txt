@@ -135,7 +135,6 @@ f000,0008,CommunitySaturn // RetroUSB Genesis
 21f8,0019,CommunitySNES // Shogun Bros Chameleon X1
 f000,0003,CommunitySNES // RetroUSB SNES
 f000,00f1,CommunitySNES // RetroUSB SNES
-0403,97c1,CommunitySNES // Retrode 2
 1292,5346,CommunitySNES // Retrolink Dual SNES
 0079,1804,CommunitySNES // JoyPad SNES
 0d28,0202,CommunitySNES // Miller Cantroller
@@ -518,6 +517,7 @@ dead,beef,CommunityPSX // Hidromancer
 289b,0090,CommunityUnknown // Raphnet Multiadapter
 289b,0093,CommunityUnknown // Raphnet Multiadapter
 289b,003c,CommunityUnknown // Raphnet Multiadapter
+0403,97c1,CommmunityUnknown // Retrode Multicontroller Adapter
 0079,1864,SDLWheel // PXN V900 PS3, Superdrive SV750, Genesis Seaborg 400
 046d,c294,SDLWheel // Logitech generic wheel
 046d,c295,SDLWheel // Logitech Momo Force
