@@ -32,6 +32,7 @@ If you encounter trouble using your gamepad with Input, ensure the gamepad devic
 - [Xbox One Controller driver setup](https://support.xbox.com/help/hardware-network/controller/connect-xbox-wireless-controller-to-pc)
 - [DualShock 3 driver setup with PS Plus (subscription not required)](https://www.playstation.com/en-ca/support/subscriptions/ps-plus-pc/)
 - [Amazon Luna Bluetooth driver](https://www.amazon.com/gp/help/customer/display.html?nodeId=GZCT4CTFHXLHEB9T)
+- [Google Stadia Bluetooth firmware](https://stadia.google.com/controller/)
 
 ### MacOS
 - [Xbox 360 and Xbox One Controller driver setup](https://github.com/360Controller/360Controller/releases)
