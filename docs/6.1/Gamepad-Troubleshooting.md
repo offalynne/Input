@@ -10,7 +10,7 @@ The following recommendations should ease configuring USB and Bluetooth console 
 
 Note that the following applies to native support for first-party brand gamepads. 
 
-|Gamepad         |Windows                   |MacOS      |Ubuntu                                 |Android                   |iOS, tvOS           |HTML5, OperaGX        |
+|Gamepad         |Windows                   |MacOS      |Ubuntu                                 |Android                   |iOS, iPadOS, tvOS   |HTML5, OperaGX        |
 |:---------------|--------------------------|-----------|---------------------------------------|--------------------------|--------------------|----------------------|
 |PlayStation 3   |USB only<sup> 1</sup>     |BT only    |BT, USB                                |BT, USB                   |None                |BT, USB<sup> 4</sup>  |
 |PlayStation 4   |BT, USB                   |BT, USB    |BT, USB                                |BT, USB                   |BT only             |BT, USB<sup> 4</sup>  |
