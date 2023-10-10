@@ -15,8 +15,8 @@ Note that the following applies to native support for first-party brand gamepads
 |PlayStation 3   |USB only<sup>1</sup>      |BT only    |BT, USB                               |BT, USB                   |None                |BT, USB<sup>4</sup>  |
 |PlayStation 4   |BT, USB                   |BT, USB    |BT, USB                               |BT, USB                   |BT only             |BT, USB<sup>4</sup>  |
 |PlayStation 5   |BT, USB                   |BT, USB    |BT, USB                               |BT, USB                   |BT only             |BT, USB<sup>4</sup>  |
-|Xbox 360        |USB, 2.4g<sup>2</sup>     |None       |USB<sup>1</sup> and 2.4g<sup>2</sup>  |USB and 2.4g<sup>2</sup>  |None                |USB, 2.4g<sup>2</sup>|
-|Xbox One        |BT, USB, 2.4g<sup>2</sup> |BT only    |USB<sup>1</sup>, BT, 2.4g<sup>2</sup> |BT, USB, 2.4g<sup>2</sup> |BT only             |BT, USB<sup>4</sup>, 2.4g<sup>2</sup>|
+|Xbox 360        |USB, 2.4g<sup>2</sup>     |None       |USB<sup>1</sup>, 2.4g<sup>2</sup>     |USB, 2.4g<sup>2</sup>     |None                |USB, 2.4g<sup>2</sup>|
+|Xbox One        |BT, USB, 2.4g<sup>2</sup> |BT only    |BT, USB<sup>1</sup>, 2.4g<sup>2</sup> |BT, USB, 2.4g<sup>2</sup> |BT only             |BT, USB<sup>4</sup>, 2.4g<sup>2</sup>|
 |Switch Pro      |BT only<sup>3</sup>       |BT only    |BT, USB<sup>1,3,4</sup>               |BT, USB<sup>4</sup>       |BT only<sup>4</sup> |BT, USB<sup>4</sup>  |
 |Switch Joy-Cons |BT only<sup>3</sup>       |BT only    |BT, USB<sup>1,3,4</sup>               |BT, USB<sup>4</sup>       |BT only<sup>4</sup> |BT, USB<sup>4</sup>  |
 
