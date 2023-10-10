@@ -28,6 +28,8 @@ The `INPUT_VIRTUAL_REFERENCE` enum contains the following elements:
 |`.TOUCH_POINT`|Reference point is the place where the player first touched the virtual button  |
 |`.DELTA`      |Reference point is the place where the player touch the virtual button last step|
 
+?> This setting is ignored when using the touchpad mode for a virtual button.
+
 #### **Example**
 
 ```gml

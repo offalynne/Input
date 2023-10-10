@@ -298,7 +298,7 @@ vbutton_dpad = input_virtual_create()
 |`upVerb`   |string  |Verb to bind touching the top of the button to                                                             |
 |`downVerb` |string  |Verb to bind touching the bottom of the to                                                                 |
 
-Binds the virtual button to a set of basic Input verbs, one for each direction and an extra one for touching the dpad at all. Verbs are triggered as **analogue**, meaning that verbs will be sent values from `0` to `1` as a hardware thumbstick would.
+Binds the virtual button to a set of basic Input verbs, one for each direction and an extra one for touching the virtual button at all. Verbs are triggered as **analogue**, meaning that verbs will be sent values from `0` to `1` as a hardware thumbstick would.
 
 #### **Example**
 
@@ -312,6 +312,40 @@ vbutton_thumbstick = input_virtual_create()
                      .thumbstick(undefined, "left", "right", "up", "down")
                      .follow(true)
                      .release_behavior(INPUT_VIRTUAL_RELEASE.RESET_POSITION);
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## .touchpad
+
+`<virtual button>.touchpad(clickVerb, leftVerb, rightVerb, upVerb, downVerb, maxDistance)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** `self`
+
+|Name         |Datatype|Purpose                                                                                                    |
+|-------------|--------|-----------------------------------------------------------------------------------------------------------|
+|`clickVerb`  |string  |Verb to bind clicking the button to                                                                        |
+|`leftVerb`   |string  |Verb to bind touching the left of the button to                                                            |
+|`rightVerb`  |string  |Verb to bind touching the right of the button to                                                           |
+|`upVerb`     |string  |Verb to bind touching the top of the button to                                                             |
+|`downVerb`   |string  |Verb to bind touching the bottom of the to                                                                 |
+
+Binds the virtual button to a set of basic Input verbs, one for each direction and an extra one for touching the virtual button at all. Verbs are triggered as **analogue**, meaning that verbs will be sent values from `0` to `1` as a hardware thumbstick would.
+
+!> Make sure you set an appropriate threshold using `.threshold()`. Good threshold value to start with are a minimum of `2` and a maximum of `12`.
+
+?> Touchpad behaviour overrides any option set by `.reference_point()`.
+
+#### **Example**
+
+```gml
+
 ```
 
 <!-- tabs:end -->

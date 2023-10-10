@@ -242,7 +242,7 @@ if (vb_thruster.check())
 
 &nbsp;
 
-## .get_touch_x
+## .get_touch_dx
 
 `<virtual button>.get_touch_dx()`
 
@@ -266,7 +266,7 @@ if (vb_thruster.check())
 
 &nbsp;
 
-## .get_touch_y
+## .get_touch_dy
 
 `<virtual button>.get_touch_dy()`
 
