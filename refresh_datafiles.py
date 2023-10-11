@@ -21,17 +21,13 @@ DATA_SOURCES = {
     "TYPES": {
         "datafile": "controllertypes.csv",
         "sources": {
-
             "SDL2 typelist": {
-
                 "source": github_urlpath + "libsdl-org/SDL/master/src/joystick/controller_list.h",
                 "license": github_urlpath + "libsdl-org/SDL/main/LICENSE.txt",
                 "match category": "(?<=k_eControllerType_)(.*)(?=\,\ N)",
                 "match id": "MAKE_CONTROLLER_ID\((.*),(.*)\),k_eControllerType_" + marker_id + ","
             },
-
             "Community SDL2 typelist": {
-
                 "source": github_urlpath + "JujuAdams/Input/community-data/community_gamepad_type.txt",
                 "match category": "(?<=.{10})(.{1,})(?= //.*)",
                 "match id": "(.{4}),(.{4})," + marker_id
@@ -42,18 +38,14 @@ DATA_SOURCES = {
     "BLACKLIST": {
         "datafile": "controllerblacklist.csv",
         "sources": { 
-
             "udev Blacklist": {
-
                 "source": github_urlpath + "denilsonsa/udev-joystick-blacklist/master/generate_rules.py",
                 "header": "linux,vid+pid",
                 "trim before": "def write_mode",
                 "trim after": "DEVICES = [",
                 "match id": "'(.*?)','(.*?)'"
             },
-
             "Chromium blocklist (vid+pid)": {
-
                 "source": github_urlpath + "chromium/chromium/master/device/gamepad/gamepad_blocklist.cc",
                 "license": github_urlpath + "chromium/chromium/master/LICENSE",
                 "header": "linux,vid+pid",
@@ -61,15 +53,11 @@ DATA_SOURCES = {
                 "trim after": "namespace {",
                 "match replace": "constexpr uint16_t (.*) = (.*);",
                 "match id": "{0x(.*),0x(.*)}"
-
             },
-
             "Input blocklist": {
-
                 "source": github_urlpath + "JujuAdams/Input/community-data/community_blocklist.txt",
                 "match category": "(?<=\,)(.*)(?=\s//)",
                 "match id": "(.*)(?:," + marker_id + ")"
-
             }
         }
     },
