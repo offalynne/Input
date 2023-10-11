@@ -517,7 +517,7 @@ dead,beef,CommunityPSX // Hidromancer
 289b,0090,CommunityUnknown // Raphnet Multiadapter
 289b,0093,CommunityUnknown // Raphnet Multiadapter
 289b,003c,CommunityUnknown // Raphnet Multiadapter
-0403,97c1,CommmunityUnknown // Retrode Multicontroller Adapter
+0403,97c1,CommunityUnknown // Retrode Multicontroller Adapter
 0079,1864,SDLWheel // PXN V900 PS3, Superdrive SV750, Genesis Seaborg 400
 046d,c294,SDLWheel // Logitech generic wheel
 046d,c295,SDLWheel // Logitech Momo Force
