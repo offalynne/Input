@@ -63,3 +63,5 @@ uinput-fpc,android,description contains // Google Pixel Fingerprint Sensor
 joy-con charging grip,android,description contains // Switch Charging Grip
 logitech mx master,android,description contains // Logitech Wireless Adapter
 logitech unifying device,android,description contains // Logitech Wireless Adapter
+touchpad,linux,description contains // Touchpad Devices
+touchscreen,linux,description contains // Touchscreen Devices
