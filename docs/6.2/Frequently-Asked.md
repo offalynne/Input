@@ -42,7 +42,7 @@ For a sophisticated example, refer to the [GitHub example project](https://githu
 
 ### Does Input support Steamworks?
 
-[Yes, using the official extension](Steamworks)
+[Yes, using the officialy supported extension](Steamworks)
 
 &nbsp;
 
@@ -50,13 +50,13 @@ For a sophisticated example, refer to the [GitHub example project](https://githu
 
 ### How many simultaneous gamepads are supported?
 
-OS limitations [per GameMaker](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm):
+OS limitations [per GameMaker](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm)
 
-Windows XInput, Apple, PlayStation, Web: 4<br>
-Windows DInput, Switch, Xbox: 8<br>
-Linux, Android: Many<br>
+Windows XInput, Apple, PlayStation, Web: 4 devices<br>
+Windows DInput, Switch, Xbox: 8 devices<br>
+Linux, Android: Many devices<br>
 
-?> Regarding DInput and XInput: https://wikipedia.org/wiki/DirectInput#DirectInput_vs_XInput
+_[Details regarding DInput and XInput] (https://wikipedia.org/wiki/DirectInput#DirectInput_vs_XInput)_
 
 &nbsp;
 
@@ -96,7 +96,7 @@ Using [Export and Import](Functions-(Exporting-and-Importing))
 
 ### How can I ensure gamepads work correctly when running the GM IDE through Steam?
 
-[Disable Steam Input](https://i.imgur.com/cGdlVJO.png) for Game Maker Studio 2 Desktop. Alternatively, [use the Steamworks extension](Steamworks) 
+[Disable Steam Input](https://i.imgur.com/cGdlVJO.png) for GameMaker Studio 2 Desktop. Alternatively, [use the Steamworks extension](Steamworks) 
 
 &nbsp;
 
@@ -104,31 +104,31 @@ Using [Export and Import](Functions-(Exporting-and-Importing))
 
 ### What platforms are extended gamepad features availble on?
 
-1. **Vibration:** Consoles, Windows (Xbox pads, PS and Switch through Steamworks)
-2. **LED Patterns:** Consoles, iOS, and Windows through Steamworks
-3. **Motion:** PS and Switch, Windows and Linux through Steamworks
-4. **RGB:** PS Consoles, Windows and Linux through Steamworks
-5. **Trigger Effects:** PS5, Windows through Steamworks
-6. **Touchpad:** PlayStation Consoles
+1. **Vibration:** Consoles and Windows (Xbox gamepads only, with additional support for some PlayStation and Switch gamepads through Steamworks)
+2. **LED Patterns:** Consoles, iOS, Windows through Steamworks
+3. **Motion:** PlayStation and Switch, Windows and Linux through Steamworks
+4. **RGB:** PlayStation consoles, Windows and Linux through Steamworks
+5. **Trigger Effects:** PlayStation 5, Windows through Steamworks
+6. **Touchpad:** PlayStation consoles
 
 &nbsp;
 
 
 
-### Input is impacting my game's FPS!
+### Input is impacting my game's FPS! What should I do?
 
-Input is tested across platforms and we have yet to observe any scenario where it is the culprit for poor game performance. However, we recieve many false performance reports as a result of debugging confusion. 
+Input is tested across platforms and we have yet to observe any scenario where it is the culprit for poor game performance. However, we recieve occasional reports regarding performance issues as a result of library user debugging confusion. 
 
-If you believe Input is impacting performance based on profiler readings, examine Time (Ms) and ignore Step (%). Unless Input is significantly contributing to a total Time (Ms) that is greater than your frame target (eg 17ms) the problem is elsewhere. 
+If you believe Input is impacting performance based on profiler readings, **examine Time (Ms) and ignore Step (%)**. Unless Input is significantly contributing to a total Time (Ms) that is greater than your frame target (eg 17ms) the problem is elsewhere. 
 
-Some known culprits are shaders, driver issues (Xbox controller related), and debugger Watches, all of which impact FPS in ways unrelated to the library which the profiler may not make obvious. Feel free to pursue help for general performance problems, but do not rely on Step (%) for diagnosing or reporting library performance issues — Time (Ms) values only!
+Some known culprits for misdiagnosed performance issues are shaders, driver problems (Xbox controller related), and debugger Watches, all of which impact FPS in ways unrelated to the library, which the profiler may not make obvious. Feel free to pursue help for general performance problems, but **do not rely on Step (%)** for diagnosing or reporting library performance issues — **Time (Ms) values only**!
 
 &nbsp;
 
 
 ### Input does a lot of logging, how can I suppress it while debugging?
 
-Set `__INPUT_SILENT` in `__input_macros()` to true to suppress most of Input's logging. Some critical messages will still be logged. Please note that we cannot provide any support for any issues you have with Input if you use this configuration. 
+Set `__INPUT_SILENT` in `__input_macros()` to `true` to suppress most of Input's logging. Some critical messages will still be logged. Please note that we cannot provide any support for any issues you have with Input if you use this configuration. 
 
 &nbsp;
 
@@ -137,7 +137,7 @@ Set `__INPUT_SILENT` in `__input_macros()` to true to suppress most of Input's l
 
 ### How can I ensure gamepads work correctly when running the GM IDE through Steam?
 
-Disable Steam Input for GameMaker Studio 2 Desktop. Alternatively, use the Steamworks extension.
+Disable Steam Input for GameMaker Studio 2 Desktop before running GM from your Steam Library. Alternatively, use the Steamworks extension.
 
 &nbsp;
 
@@ -146,7 +146,8 @@ Disable Steam Input for GameMaker Studio 2 Desktop. Alternatively, use the Steam
 
 ### How should I include Input in my game credits?
 
-
 Input Library: Juju Adams, Alynne Keith, and friends
+
+Thanks for thinking of us, and please consider letting us know about your release through email, Discord message, etc!
 
 &nbsp;
