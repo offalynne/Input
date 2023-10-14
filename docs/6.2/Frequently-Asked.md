@@ -134,16 +134,6 @@ Set `__INPUT_SILENT` in `__input_macros()` to `true` to suppress most of Input's
 
 
 
-
-### How can I ensure gamepads work correctly when running the GM IDE through Steam?
-
-Disable Steam Input for GameMaker Studio 2 Desktop before running GM from your Steam Library. Alternatively, use the Steamworks extension.
-
-&nbsp;
-
-
-
-
 ### How should I include Input in my game credits?
 
 Input Library: Juju Adams, Alynne Keith, and friends
