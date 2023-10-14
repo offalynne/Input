@@ -104,12 +104,12 @@ Using [Export and Import](Functions-(Exporting-and-Importing))
 
 ### What platforms are extended gamepad features availble on?
 
-1. **Vibration:** Consoles and Windows (Xbox gamepads only, with additional support for some PlayStation and Switch gamepads through Steamworks)
-2. **LED Patterns:** Consoles, iOS, Windows through Steamworks
-3. **Motion:** PlayStation and Switch, Windows and Linux through Steamworks
-4. **RGB:** PlayStation consoles, Windows and Linux through Steamworks
-5. **Trigger Effects:** PlayStation 5, Windows through Steamworks
-6. **Touchpad:** PlayStation consoles
+- **Vibration:** Consoles and Windows (Xbox gamepads only, with additional support for some PlayStation and Switch gamepads through Steamworks)
+-  **LED Patterns:** Consoles, iOS, Windows through Steamworks
+- **Motion:** PlayStation and Switch, Windows and Linux through Steamworks
+- **RGB:** PlayStation consoles, Windows and Linux through Steamworks
+-  **Trigger Effects:** PlayStation 5, Windows through Steamworks
+- **Touchpad:** PlayStation consoles
 
 &nbsp;
 
