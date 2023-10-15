@@ -55,7 +55,7 @@ Windows XInput, Apple, PlayStation, Web: 4 devices<br>
 Windows DInput, Switch, Xbox: 8 devices<br>
 Linux, Android: Many devices<br>
 
-_[Details regarding DInput and XInput] (https://wikipedia.org/wiki/DirectInput#DirectInput_vs_XInput)_
+[_Details regarding DInput and XInput_](https://wikipedia.org/wiki/DirectInput#DirectInput_vs_XInput)
 
 &nbsp;
 
