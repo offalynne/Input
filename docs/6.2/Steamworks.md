@@ -24,7 +24,7 @@ With an app configured in the Steamworks dashboard and the extension for Game Ma
 
 In order to appropriately configure your Steam app for use with the Input library, [using the Steam dashboard](https://partner.steamgames.com/dashboard), navigate to your app: *Steamworks > App Admin > (Your App)*. From the *Application* menu select *Steam Input* and select *Gamepad with Camera Controls*, *Gamepad with High Precision Camera/Aim*, or *Generic Gamepad*.
 
-![](assets/steam_config.png)
+<img src="assets/steam_config.png">
 
 How Steam Input operates depends on how your App is configured in Steamworks, and further relies on the player's Steam settings for opted-in controllers. Steam Input covers three main use scenarios:
 
@@ -42,7 +42,7 @@ Since the Input library aims to provide comprehensive cross-platform gamepad sup
 
 Steamworks SDK documentation refers to an example project called *Spacewar*, [(Application ID 480)](https://steamdb.info/app/480) that is the default AppID setting when you import the YYG Steamworks Extension for Game Maker.
 
-![](assets/steam_extension.png)
+<img src="assets/steam_extension.png">
 
 The *Spacewar* example is configured in Steamworks to use a Steam Input *Custom Configuration*, meaning Input will not work as intended until this option is changed, and no controller opted-in to Steam will work with Game Maker or the Input library's default feature set for this AppID.
 
