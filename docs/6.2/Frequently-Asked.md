@@ -49,7 +49,7 @@ Check the player with [`input_player_get_gamepad()`](Functions-(Players)?id=play
 
 ### How many simultaneous gamepads are supported?
 
-OS limitations [per GameMaker](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm)
+OS limitations [per GameMaker](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm):
 
 Windows XInput, Apple, PlayStation, Web: 4 devices<br>
 Windows DInput, Switch, Xbox: 8 devices<br>
