@@ -4,7 +4,7 @@
 
 Common challenges encountered by fellow library users are presented below as questions along with known solutions. Please feel free to [join us on Discord](https://discord.gg/8krYCqr) for further discussion and [open an Issue on GitHub](https://github.com/JujuAdams/Input/issues?q=is%3Aissue+is%3Aopen) if you find a persistent problem with the library.
 
-&nbsp;
+<hr>
 
 ### I have connected a gamepad but verbs aren't activating or are behaving strangely, how do I correct this? {docsify-ignore}
 
