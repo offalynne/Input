@@ -135,8 +135,8 @@ Set `__INPUT_SILENT` in `__input_macros()` to `true` to suppress most of Input's
 
 ### How should I include Input in my game credits? {docsify-ignore}
 
-Input Library: Juju Adams, Alynne Keith, and friends
+Input Library: Juju Adams, Alynne Keith, and Friends
 
-Thanks for thinking of us, and please consider letting us know about your release through email, Discord message, etc!
+Thanks for thinking of us, and please consider letting us know about your release through email, Tweet, or Discord message!
 
 &nbsp;
