@@ -41,7 +41,7 @@ Check the player with [`input_player_get_gamepad()`](Functions-(Players)?id=play
 
 ### Does Input support Steamworks?
 
-[Yes, using the officialy supported extension](Steamworks)
+[Yes](Steamworks), using the [official extension](https://github.com/YoYoGames/GMEXT-Steamworks)
 
 &nbsp;
 
