@@ -2,6 +2,7 @@
 - [Alternatives](Alternatives)
 - [Newbie Guide](Newbie-Guide)
 - [Multiplayer Guide](Multiplayer-Guide)
+- [Frequently Asked](Frequently-Asked)
 - [Changes From v5](Changes-from-v5)
 - [Credits](Credits)
 
