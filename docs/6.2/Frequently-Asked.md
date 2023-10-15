@@ -34,8 +34,7 @@ Check the player with [`input_player_get_gamepad()`](Functions-(Players)?id=play
 
 ### How do I set up aiming for both mouse and gamepad thumbstick?
 
-[Cursor functions!](Functions-(Cursor))<br>
-For a sophisticated example, refer to the [GitHub example project](https://github.com/JujuAdams/Input/archive/refs/heads/master.zip), specifically the `obj_example_tds_player` object.
+[Cursor functions!](Functions-(Cursor)) For a sophisticated example, refer to the [GitHub example project](https://github.com/JujuAdams/Input/archive/refs/heads/master.zip), specifically the `obj_example_tds_player` object.
 
 &nbsp;
 
