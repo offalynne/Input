@@ -335,7 +335,10 @@ function __input_initialize()
         else
         {
             _global.__touch_allowed = false;
-            if (!__INPUT_SILENT) __input_trace("Warning! Mouse configuration overrides touch. Virtual buttons may not work as expected.");
+            if not (INPUT_MOUSE_ALLOW_VIRTUAL_BUTTONS)
+            {
+                if (!__INPUT_SILENT) __input_trace("Warning! Mouse configuration overrides touch. Virtual buttons may not work as expected.");
+            }
         }
     }
 
