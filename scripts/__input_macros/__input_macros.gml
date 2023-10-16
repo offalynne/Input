@@ -23,6 +23,14 @@
 //This works around Steam sometimes reporting confusing connection/disconnection events on boot
 #macro __INPUT_GAMEPADS_TICK_PREDELAY  10     
 
+//How many frames to wait before considering a gamepad disconnected
+//This works around momentary disconnections such as a jiggled cable or low battery level
+#macro __INPUT_GAMEPADS_DISCONNECTION_TIMEOUT 5
+
+//How many frames to wait after game regains focus before hotswapping on axis
+//This works around resting non-zero axes showing a false-positive delta value when focus changes
+#macro __INPUT_GAMEPADS_FOCUS_TIMEOUT 2
+
 #macro __INPUT_GLOBAL_STATIC_LOCAL     static _global = __input_global();
 #macro __INPUT_GLOBAL_STATIC_VARIABLE  static __global = __input_global();
 
