@@ -115,9 +115,10 @@ if os.path.isdir("datafiles"):
 else:
     os.mkdir("datafiles")
 working_folder = "datafiles"
-license_path = working_folder + "/licenses.txt"
+license_path = working_folder + "/input_license.txt"
 if os.path.exists(license_path):
         os.remove(license_path)
+shutil.copy("LICENSE", license_path)
 license_handle = open(license_path, "a")
 
 # consume data
@@ -254,7 +255,7 @@ for file in DATA_SOURCES:
                 exit('Failed to fetch license for ' + source)
 
             # render license
-            license_handle.write("Datafile " + filename + " includes data sourced from " + source + ".\n\n")
+            license_handle.write("\n\n\nDatafile " + filename + " includes data sourced from " + source + ".\n\n")
             license_handle.write(license_content)
 
 print("Removing backup")
