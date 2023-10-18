@@ -369,13 +369,6 @@ enum INPUT_VIRTUAL_RELEASE
                                                  __input_error("Cannot claim ", _source, ", no mouse bindings have been created in a default profile (see __input_config_verbs())");\
                                              }\
                                          }\
-                                         else if (_source == INPUT_TOUCH)\
-                                         {\
-                                             if (!_global.__any_touch_binding_defined)\
-                                             {\
-                                                 __input_error("Cannot claim ", _source, ", no virtual button bindings have been created in a default profile (see __input_config_verbs())");\
-                                             }\
-                                         }\
                                          else if (_source.__source == __INPUT_SOURCE.GAMEPAD)\
                                          {\
                                              if (!_global.__any_gamepad_binding_defined)\
