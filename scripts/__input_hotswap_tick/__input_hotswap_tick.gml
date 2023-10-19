@@ -63,7 +63,7 @@ function __input_hotswap_tick_input()
         }
         
         var _gamepad_count = array_length(INPUT_GAMEPAD);
-        if not (_global.__frame - _global.__window_focus_frame < 2) //Prevent resting axes from triggering source swap
+        if not (_global.__frame - _global.__window_focus_frame < __INPUT_GAMEPADS_FOCUS_TIMEOUT) //Prevent resting axes from triggering source swap
         {
             //Search last-to-first on platforms with low-index virtual controllers (Steam Input, ViGEm)
             var _gamepad_index = 0;
@@ -76,7 +76,9 @@ function __input_hotswap_tick_input()
                 {
                     //Gamepad not in-use but potentially available          
                     var _gamepad = _global.__gamepads[_gamepad_index];
-                    if (is_struct(_gamepad) && (_gamepad.__get_any_pressed() || __input_hotswap_axis_delta(_gamepad)))
+                    if (is_struct(_gamepad)
+                    && (_gamepad.__disconnection_frame == undefined)
+                    && (_gamepad.__get_any_pressed() || __input_hotswap_axis_delta(_gamepad)))
                     {
                         _player.__last_input_time = _global.__current_time;
                         return INPUT_GAMEPAD[_gamepad_index];
