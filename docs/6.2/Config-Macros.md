@@ -217,7 +217,7 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 
 ## Vibration
 
-`__input_config_cursor()` holds macros that affect vibration when triggered using Input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
+`__input_config_vibration()` holds macros that affect vibration when triggered using Input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
 
 |Name                                   |Typical Value|Purpose                                                                                                                                                                              |
 |---------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
