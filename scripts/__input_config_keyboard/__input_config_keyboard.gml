@@ -13,6 +13,7 @@
 //  1 = Ignore select nonfunctional keys:
 //      - Alt/Options (Mac)
 //      - Windows/Command (Mac)
+//      - Hard/soft Back on Android
 //      - PrintSc on iOS/tvOS
 //      - Caps lock in browser on Apple platforms
 //      - F10 in browser on Apple platforms
