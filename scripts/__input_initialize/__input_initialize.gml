@@ -415,6 +415,9 @@ function __input_initialize()
         ++_p;
     }
     
+    //Array of players with gamepad disconnections
+    _global.__player_gamepad_disconnections = [];
+    
     _global.__source_mode          = undefined;
     _global.__previous_source_mode = INPUT_STARTING_SOURCE_MODE;
     

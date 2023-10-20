@@ -17,7 +17,7 @@ function __input_gamepad_stop_trigger_effects(_gamepad_index)
     
     if (_gamepad_index < 0) return;
     
-    with (_global.__gamepads[_gamepad_index])
+    with(_global.__gamepads[_gamepad_index])
     {
         __trigger_effect_apply(gp_shoulderlb, new __input_class_trigger_effect_off());
         __trigger_effect_apply(gp_shoulderrb, new __input_class_trigger_effect_off());

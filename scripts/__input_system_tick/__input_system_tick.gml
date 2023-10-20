@@ -473,6 +473,8 @@ function __input_system_tick()
             }
         }
         
+        array_resize(_global.__player_gamepad_disconnections, 0);
+        
         var _g = 0;
         repeat(array_length(_global.__gamepads))
         {
@@ -496,44 +498,34 @@ function __input_system_tick()
                                 virtual_set();
                                 led_set();
                             }
-                            
-                            tick();
-                            __disconnection_frame = undefined;
                         }
+                        
+                        tick(true);
                     }
                 }
-                else
+                else if not (_gamepad.tick(false))
                 {
-                    //Timeout disconnection to prevent thrashing
-                    if (_gamepad.__disconnection_frame == undefined)
-                    {
-                        _gamepad.__disconnection_frame = _global.__frame;
-                    }
-                    
-                    if (_global.__frame - _gamepad.__disconnection_frame < __INPUT_GAMEPADS_DISCONNECTION_TIMEOUT)
-                    {
-                        _gamepad.tick();
-                    }
-                    else
-                    {                        
-                        //Remove our gamepad handler
-                        if (!__INPUT_SILENT) __input_trace("Gamepad ", _g, " disconnected");
+                    //Remove our gamepad handler
+                    if (!__INPUT_SILENT) __input_trace("Gamepad ", _g, " disconnected");
                         
-                        gamepad_set_vibration(_global.__gamepads[_g].index, 0, 0);
-                        _global.__gamepads[@ _g] = undefined;
+                    gamepad_set_vibration(_global.__gamepads[_g].index, 0, 0);
+                    _global.__gamepads[@ _g] = undefined;
                         
-                        //Also report gamepad changes for any active players
-                        var _p = 0;
-                        repeat(INPUT_MAX_PLAYERS)
+                    //Also report gamepad changes for any active players
+                    var _p = 0;
+                    repeat(INPUT_MAX_PLAYERS)
+                    {
+                        with(_global.__players[_p])
                         {
-                            with(_global.__players[_p])
-                            {
+                             if (__source_contains(INPUT_GAMEPAD[_g]))
+                             {
                                 __input_trace("Player ", _p, " gamepad disconnected");
+                                array_push(_global.__player_gamepad_disconnections, _p);
                                 __source_remove(INPUT_GAMEPAD[_g]);
-                            }
-                        
-                            ++_p;
+                             }
                         }
+                        
+                        ++_p;
                     }
                 }
             }

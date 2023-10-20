@@ -17,6 +17,7 @@
     {"id":{"name":"obj_example_platformer","path":"objects/obj_example_platformer/obj_example_platformer.yy",},"order":0,},
     {"id":{"name":"obj_example_platformer_player","path":"objects/obj_example_platformer_player/obj_example_platformer_player.yy",},"order":1,},
     {"id":{"name":"__input_gamepad_tester_destroy_gui","path":"scripts/__input_gamepad_tester_destroy_gui/__input_gamepad_tester_destroy_gui.yy",},"order":1,},
+    {"id":{"name":"input_player_get_gamepad_disconnected","path":"scripts/input_player_get_gamepad_disconnected/input_player_get_gamepad_disconnected.yy",},"order":13,},
     {"id":{"name":"obj_example_rebinding","path":"objects/obj_example_rebinding/obj_example_rebinding.yy",},"order":0,},
     {"id":{"name":"obj_example_rebinding_player","path":"objects/obj_example_rebinding_player/obj_example_rebinding_player.yy",},"order":1,},
     {"id":{"name":"obj_example_solid","path":"objects/obj_example_solid/obj_example_solid.yy",},"order":5,},
@@ -490,9 +491,9 @@
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"test_load_mapping.json","CopyToMask":-1,"filePath":"datafiles",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"sdl2.txt","CopyToMask":-1,"filePath":"datafiles",},
-    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"licenses.txt","CopyToMask":-1,"filePath":"datafiles",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllertypes.csv","CopyToMask":-1,"filePath":"datafiles",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"input_license.txt","CopyToMask":-1,"filePath":"datafiles",},
   ],
   "MetaData": {
     "IDEVersion": "2022.0.1.31",
