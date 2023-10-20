@@ -481,47 +481,55 @@ function __input_system_tick()
             {
                 if (gamepad_is_connected(_g))
                 {
-                    if ((os_type == os_switch) && (_gamepad.description != gamepad_get_description(_g)))
+                    with (_gamepad)
                     {
-                        //When Switch L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
-                        //Instead we have to check for changes in the description to see if state has changed
-                        _gamepad.discover();
-                    }
-                    else
-                    {
-                        if (_steam_handles_changed) 
+                        if ((os_type == os_switch) && (description != gamepad_get_description(_g)))
                         {
-                            with (_gamepad)
+                            //When Switch L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
+                            //Instead we have to check for changes in the description to see if state has changed
+                            discover();
+                        }
+                        else
+                        {
+                            if (_steam_handles_changed) 
                             {
                                 virtual_set();
                                 led_set();
                             }
+                            
+                            tick();
+                            __disconnection_frame = undefined;
                         }
-                        
-                        _gamepad.tick();
                     }
                 }
                 else
                 {
-                    //Remove our gamepad handler
-                    if (!__INPUT_SILENT) __input_trace("Gamepad ", _g, " disconnected");
+                    //Timeout disconnection to prevent thrashing
+                    if (_gamepad.__disconnection_frame == undefined)
+                    {
+                        _gamepad.__disconnection_frame = _global.__frame;
+                    }
                     
-                    gamepad_set_vibration(_global.__gamepads[@ _g].index, 0, 0);
-                    _global.__gamepads[@ _g] = undefined;
-                    
-                    //Also report gamepad changes for any active players
-                    if ((_global.__source_mode != INPUT_SOURCE_MODE.MIXED) && (_global.__source_mode != INPUT_SOURCE_MODE.MULTIDEVICE))
-                    {                    
+                    if (_global.__frame - _gamepad.__disconnection_frame < __INPUT_GAMEPADS_DISCONNECTION_TIMEOUT)
+                    {
+                        _gamepad.tick();
+                    }
+                    else
+                    {                        
+                        //Remove our gamepad handler
+                        if (!__INPUT_SILENT) __input_trace("Gamepad ", _g, " disconnected");
+                        
+                        gamepad_set_vibration(_global.__gamepads[_g].index, 0, 0);
+                        _global.__gamepads[@ _g] = undefined;
+                        
+                        //Also report gamepad changes for any active players
                         var _p = 0;
                         repeat(INPUT_MAX_PLAYERS)
                         {
                             with(_global.__players[_p])
                             {
-                                if (__source_contains(INPUT_GAMEPAD[_g]))
-                                {
-                                    __input_trace("Player ", _p, " gamepad disconnected");
-                                    __source_remove(INPUT_GAMEPAD[_g]);
-                                }
+                                __input_trace("Player ", _p, " gamepad disconnected");
+                                __source_remove(INPUT_GAMEPAD[_g]);
                             }
                         
                             ++_p;

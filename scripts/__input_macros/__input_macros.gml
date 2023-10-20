@@ -23,6 +23,14 @@
 //This works around Steam sometimes reporting confusing connection/disconnection events on boot
 #macro __INPUT_GAMEPADS_TICK_PREDELAY  10     
 
+//How many frames to wait before considering a gamepad disconnected
+//This works around momentary disconnections such as a jiggled cable or low battery level
+#macro __INPUT_GAMEPADS_DISCONNECTION_TIMEOUT 5
+
+//How many frames to wait after game regains focus before hotswapping on axis
+//This works around resting non-zero axes showing a false-positive delta value when focus changes
+#macro __INPUT_GAMEPADS_FOCUS_TIMEOUT 2
+
 #macro __INPUT_GLOBAL_STATIC_LOCAL     static _global = __input_global();
 #macro __INPUT_GLOBAL_STATIC_VARIABLE  static __global = __input_global();
 
@@ -375,13 +383,6 @@ enum INPUT_VIRTUAL_RELEASE
                                              if (!_global.__any_mouse_binding_defined)\
                                              {\
                                                  __input_error("Cannot claim ", _source, ", no mouse bindings have been created in a default profile (see __input_config_verbs())");\
-                                             }\
-                                         }\
-                                         else if (_source == INPUT_TOUCH)\
-                                         {\
-                                             if (!_global.__any_touch_binding_defined)\
-                                             {\
-                                                 __input_error("Cannot claim ", _source, ", no virtual button bindings have been created in a default profile (see __input_config_verbs())");\
                                              }\
                                          }\
                                          else if (_source.__source == __INPUT_SOURCE.GAMEPAD)\

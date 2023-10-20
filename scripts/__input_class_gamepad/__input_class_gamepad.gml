@@ -42,8 +42,9 @@ function __input_class_gamepad(_index) constructor
     mapping_raw_to_gm = {};
     mapping_array     = [];
     
-    __connection_time = current_time;
-    __scan_start_time = __connection_time + 250; //Give GM some space before allowing gamepad mappings to return values
+    __connection_time     = current_time;
+    __scan_start_time     = __connection_time + 250; //Give GM some space before allowing gamepad mappings to return values
+    __disconnection_frame = undefined;
     
     discover();
     
@@ -80,27 +81,8 @@ function __input_class_gamepad(_index) constructor
         led_set();
         swap_ab();
         
-        __vibration_support = __global.__vibration_allowed && (xinput || !__INPUT_ON_WINDOWS);        
-        if (__vibration_support)
-        {
-            if (os_type == os_ps5)
-            {
-                ps5_gamepad_set_vibration_mode(index, ps5_gamepad_vibration_mode_compatible);
-            }            
-            else
-            {
-                if ((__INPUT_ON_WINDOWS || __INPUT_ON_SWITCH) && __input_string_contains(raw_type, "JoyCon", "SwitchHandheld"))
-                {
-                    __vibration_scale = INPUT_VIBRATION_JOYCON_STRENGTH;
-                }
-                else
-                {
-                    __vibration_scale = 1;
-                }
-            }
-        
-            gamepad_set_vibration(index, 0, 0);
-        }
+        __vibration_initialize();
+        __disconnection_frame = undefined;
 
         if (__global.__gamepad_motion_support) __motion = new __input_class_gamepad_motion(index);
         if (!__INPUT_SILENT)__input_trace("Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
@@ -501,6 +483,31 @@ function __input_class_gamepad(_index) constructor
             }
             
             gamepad_set_color(index, _color);
+        }
+    }
+    
+    static __vibration_initialize = function()
+    {
+        __vibration_support = __global.__vibration_allowed && (xinput || !__INPUT_ON_WINDOWS);        
+        if (__vibration_support)
+        {
+            if (os_type == os_ps5)
+            {
+                ps5_gamepad_set_vibration_mode(index, ps5_gamepad_vibration_mode_compatible);
+            }            
+            else
+            {
+                if ((__INPUT_ON_WINDOWS || __INPUT_ON_SWITCH) && __input_string_contains(raw_type, "JoyCon", "SwitchHandheld"))
+                {
+                    __vibration_scale = INPUT_VIBRATION_JOYCON_STRENGTH;
+                }
+                else
+                {
+                    __vibration_scale = 1;
+                }
+            }
+        
+            gamepad_set_vibration(index, 0, 0);
         }
     }
     
