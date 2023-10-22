@@ -51,11 +51,9 @@ Check the player with [`input_player_get_gamepad()`](Functions-(Players)?id=play
 
 OS limitations [per GameMaker](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm):
 
-Windows XInput, Apple, PlayStation, Web: 4 devices<br>
-Windows DInput, Switch, Xbox: 8 devices<br>
+Windows [XInput](https://wikipedia.org/wiki/DirectInput#DirectInput_vs_XInput), Apple, PlayStation, Web: 4 devices<br>
+Windows [DInput](https://wikipedia.org/wiki/DirectInput#DirectInput_vs_XInput), Switch, Xbox: 8 devices<br>
 Linux, Android: Many devices<br>
-
-[_Details regarding DInput and XInput_](https://wikipedia.org/wiki/DirectInput#DirectInput_vs_XInput)
 
 &nbsp;
 
