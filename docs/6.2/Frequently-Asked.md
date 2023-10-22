@@ -6,7 +6,7 @@ Common challenges encountered by fellow library users are presented below in que
 
 <hr>
 
-### Using a gamepad, verbs aren't activating or are behaving strangely, how do I correct this? {docsify-ignore}
+### Using a gamepad, verbs aren't working as expected, how do I correct this? {docsify-ignore}
 
 1. Check if your gamepad is working OK on an OS level. On Windows, use the Game Controllers dialogue. See [Gamepad Troubleshooting](Gamepad-Troubleshooting) for additional details
 2. Download the [example project](https://github.com/JujuAdams/Input/archive/refs/heads/master.zip) from GitHub and try out the `obj_gamepad_tester` object. This helps visualize what's going on with your gamepad. You may need to cycle through gamepad indexes in some cases
