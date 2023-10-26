@@ -49,6 +49,7 @@ function __input_class_virtual() constructor
     __pressed             = false;
     __held                = false;
     __released            = false;
+    __held_buffer         = false;
     __normalized_x        = 0;
     __normalized_y        = 0;
     __touch_x             = undefined;
@@ -57,7 +58,7 @@ function __input_class_virtual() constructor
     __touch_start_y       = undefined;
     __history_array       = undefined; //Created when setting history recording
     __history_count       = 0;
-    __captured_this_frame = false;
+    __capture_frame       = undefined;
     
     
     
@@ -570,9 +571,10 @@ function __input_class_virtual() constructor
     {
         __touch_device = undefined;
         
-        __pressed  = false;
-        __held     = false;
-        __released = false;
+        __pressed     = false;
+        __held        = false;
+        __released    = false;
+        __held_buffer = false;
             
         //Clear touch position variables
         __normalized_x  = 0;
@@ -651,7 +653,7 @@ function __input_class_virtual() constructor
             //We set further variables in the __tick method()
             
             __touch_device = _device;
-            __captured_this_frame = true;
+            __capture_frame = __global.__frame;
         }
         
         return _over;
@@ -670,10 +672,8 @@ function __input_class_virtual() constructor
             if (__destroyed) return undefined;
         }
         
-        if (__captured_this_frame)
+        if (__capture_frame == __global.__frame)
         {
-            __captured_this_frame = false;
-            
             __pressed  = true;
             __held     = true;
             __released = false;
@@ -686,7 +686,23 @@ function __input_class_virtual() constructor
         
         if (__held)
         {
-            if (not device_mouse_check_button(__touch_device, mb_left))
+            var _sustain = device_mouse_check_button(__touch_device, mb_left);          
+            
+            //Guard iOS dropping a sustained hold on SystemGestureGate timeout
+            if (__INPUT_ON_IOS)
+            {
+                if (!_sustain && (__global.__frame - __capture_frame > 20))
+                {
+                    if (not __held_buffer)
+                    {
+                        _sustain = true;
+                    }
+                    
+                    __held_buffer = !__held_buffer;
+                }
+            }
+            
+            if (not _sustain)
             {
                 __pressed  = false;
                 __held     = false;
@@ -697,8 +713,11 @@ function __input_class_virtual() constructor
                 var _player = __global.__touch_player;
                 _player.__verb_set_from_virtual(__verb_click, 1, 1, false);
                 
-                __touch_x = device_mouse_x_to_gui(__touch_device);
-                __touch_y = device_mouse_y_to_gui(__touch_device);
+                if (not __held_buffer)
+                {
+                    __touch_x = device_mouse_x_to_gui(__touch_device);
+                    __touch_y = device_mouse_y_to_gui(__touch_device);
+                }
                 
                 if (__record_history) __history_push(__touch_x, __touch_y);
                 
