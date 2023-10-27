@@ -554,21 +554,8 @@ function __input_system_tick()
     
     #endregion
     
-    
-    
-    #region Players
-    
-    var _p = 0;
-    repeat(INPUT_MAX_PLAYERS)
-    {
-        _global.__players[_p].tick();
-        ++_p;
-    }
-    
-    #endregion
-    
-    
-    
+   
+   
     #region Virtual Buttons
     
     //Reorder virtual buttons if necessary, from highest priority to lowest
@@ -621,6 +608,19 @@ function __input_system_tick()
             _global.__virtual_array[_i].__tick();
             ++_i;
         }
+    }
+    
+    #endregion
+	
+	
+	
+    #region Players
+    
+    var _p = 0;
+    repeat(INPUT_MAX_PLAYERS)
+    {
+        _global.__players[_p].tick();
+        ++_p;
     }
     
     #endregion
