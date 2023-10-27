@@ -176,7 +176,7 @@ Binds the virtual button to a basic Input verb. Pressing the button will also "p
 
 Binds the virtual button to a set of basic Input verbs, one for each direction and an extra one for touching the dpad at all. Verbs are triggered as **digital**, meaning that verbs are either on or off without values in between.
 
-By default, a dpad-type virtual button can trigger one or two verbs at once (left, right+up etc.) allowing for 8-directional output. Set `4dir` to `false` to restrict output to 4 directions only.
+By default, a dpad-type virtual button can trigger one or two verbs at once (left, right+up etc.) allowing for 8-directional output. Set `4dir` to `true` to restrict output to 4 directions only.
 
 &nbsp;
 
