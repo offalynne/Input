@@ -256,6 +256,14 @@ function __input_class_gamepad(_index) constructor
         return _mapping;
     }
     
+    static set_dpad_hat_mapping = function()
+    {
+        set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
+        set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
+        set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
+        set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+    }
+    
     static tick = function()
     {
         //Apply mapping settings that cannot be initially evaluated
