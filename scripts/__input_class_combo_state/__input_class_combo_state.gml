@@ -177,14 +177,14 @@ function __input_class_combo_state(_name, _combo_def) constructor
         {
             //Stop measuring the length of the charge
             if (_reset_charge) 
-			{
-				__charge_measure = false;
-			}
-			else
-			{
-				//Remove hold requirement when charge isn't reset
-				__remove_from_require_hold_array(_phase_array[__phase].__verb);
-			}
+            {
+                __charge_measure = false;
+            }
+            else
+            {
+                //Remove hold requirement when charge isn't reset
+                __remove_from_require_hold_array(_phase_array[__phase].__verb);
+            }
         }
         
         //Allow retriggering of a charge phase if that's the next type we're going to evaluate
