@@ -728,6 +728,11 @@ function __input_initialize()
             input_ignore_key_add(0xE6); //OEM key (Power button on Steam Deck)
         }
         
+        if (__INPUT_ON_ANDROID)
+        {
+            input_ignore_key_add(vk_backspace); //Emmitted by hard and soft "Back" buttons, gamepad "B" button
+        }
+        
         if (INPUT_ON_MOBILE && __INPUT_ON_APPLE)
         {
             input_ignore_key_add(124); //Screenshot

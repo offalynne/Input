@@ -254,20 +254,20 @@ function __input_gamepad_set_mapping()
         var _mapping_lt = set_mapping(gp_shoulderlb, __XINPUT_AXIS_LT, __INPUT_MAPPING.AXIS, "lefttrigger");
         var _mapping_rt = set_mapping(gp_shoulderrb, __XINPUT_AXIS_RT, __INPUT_MAPPING.AXIS, "righttrigger");
         
+        //Scale trigger axes. Recalibrated later if value falls outside range
         if (is_numeric(__steam_handle))
         {
-            //Typical XInput scale (0 to 255/256)
-            _mapping_lt.scale = 255;
-            _mapping_rt.scale = 255;
+            //Scale per "Normal" XInput offset
+            __xinput_trigger_range = 255/256;
         }
         else
         {
-            //Scale per Xbox One and Series controllers over USB (0 to 63/256)
-            //Scale is recalibrated later if values fall outside of this range
-            _mapping_lt.scale = 63;
-            _mapping_rt.scale = 63;
-            scale_trigger = true;
+            //Scale per Xbox One/Series controllers over USB
+            __xinput_trigger_range = 63/256;
         }
+
+        _mapping_lt.scale = 1/__xinput_trigger_range;
+        _mapping_rt.scale = 1/__xinput_trigger_range;
         
         return;
     }
@@ -350,7 +350,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
           
         //Set default mapping with digital triggers, test later
-        test_trigger = true;
+        __stadia_trigger_test = true;
             
         set_mapping(gp_shoulderrb, 11, __INPUT_MAPPING.BUTTON, "righttrigger");
         set_mapping(gp_shoulderlb, 12, __INPUT_MAPPING.BUTTON, "lefttrigger");
