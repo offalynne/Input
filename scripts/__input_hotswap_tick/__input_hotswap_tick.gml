@@ -46,7 +46,6 @@ function __input_hotswap_tick_input()
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
-    //Check gamepad input before keyboard input to correctly handle Android duplicating button presses with keyboard presses
     if (_global.__any_gamepad_binding_defined)
     {
         //In-use gamepad
@@ -103,7 +102,7 @@ function __input_hotswap_tick_input()
     
     if (_global.__keyboard_allowed && _global.__any_keyboard_binding_defined
     &&  input_source_is_available(INPUT_KEYBOARD)
-    &&  keyboard_check(vk_anykey)
+    &&  keyboard_check_pressed(vk_anykey)
     &&  (__input_keyboard_key() > 0) //Ensure that the key is in the recognized range
     &&  !__input_key_is_ignored(__input_keyboard_key())) //Ensure that this key isn't one we're trying to ignore
     {
