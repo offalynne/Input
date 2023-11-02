@@ -3,7 +3,7 @@ function __input_mouse_button()
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
-    if (!_global.__mouse_allowed || !_global.__game_focus || _global.__window_focus_block_mouse)
+    if (!_global.__mouse_allowed || !_global.__game_input_allowed || _global.__window_focus_block_mouse)
     {
         //Mouse not alllowed
         return mb_none;

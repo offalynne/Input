@@ -243,10 +243,9 @@ function __input_initialize()
     _global.__cleared = false;
     
     //Focus tracking
-    _global.__window_focus          = true;
-    _global.__overlay_focus         = false;
-    _global.__game_focus            = true;
-    _global.__game_input_allowed    = true;
+    _global.__window_focus       = true;
+    _global.__overlay_focus      = false;
+    _global.__game_input_allowed = true;
 
     //Accessibility state
     _global.__toggle_momentary_dict  = {};

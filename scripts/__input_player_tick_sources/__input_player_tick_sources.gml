@@ -20,7 +20,7 @@ function __input_player_tick_sources(_player)
         var _min_threshold = 0;
         var _max_threshold = 1;
         
-        if (_global.__game_focus)
+        if (_global.__game_input_allowed)
         {
             with(_verb_struct)
             {
