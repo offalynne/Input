@@ -7,12 +7,18 @@ function __input_finalize_default_profiles()
     
     if (!is_struct(_global.__default_profile_dict))
     {
-        __input_error("__input_config_verbs() must contain a struct (was ", typeof(_global.__default_profile_dict), ")\nDocumentation on __input_config_verbs() can be found offline in __input_config_verbs_and_bindings()\nOnline documentation can be found at https://jujuadams.github.io/Input");
+        __input_error("__input_config_verbs() must contain a struct (was ", typeof(_global.__default_profile_dict), ")\nDocumentation on __input_config_verbs() can be found offline in __input_config_verbs()\nOnline documentation can be found at https://jujuadams.github.io/Input");
     }
     
     if (variable_struct_names_count(_global.__default_profile_dict) <= 0)
     {
        __input_error("__input_config_verbs() must contain at least one profile");
+    }
+    
+    //Ensure touch profile on touch platform configurations
+    if (_global.__touch_allowed && !_global.__any_touch_binding_defined)
+    {       
+        _global.__default_profile_dict[$ INPUT_AUTO_PROFILE_FOR_TOUCH] = {};
     }
     
     //Put strict mode on, this'll cause Input to throw errors if the player does anything dumb

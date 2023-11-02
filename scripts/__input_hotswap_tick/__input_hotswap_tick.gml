@@ -15,7 +15,7 @@ function __input_hotswap_tick()
         
         if (!__active) return false;
         
-        if (_global.__game_focus //Application input is allowed
+        if (_global.__game_input_allowed //Application input is allowed
         && ((__last_input_time < 0) || (_global.__current_time - __last_input_time > INPUT_HOTSWAP_DELAY)) //And enough time has passed since the last input
         && ((__rebind_state <= 0) || !is_array(__rebind_source_filter) || (array_length(__rebind_source_filter) <= 0))) //And we're not rebinding, or the rebinding source filter is empty
         {
@@ -46,7 +46,6 @@ function __input_hotswap_tick_input()
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
-    //Check gamepad input before keyboard input to correctly handle Android duplicating button presses with keyboard presses
     if (_global.__any_gamepad_binding_defined)
     {
         //In-use gamepad
@@ -63,7 +62,7 @@ function __input_hotswap_tick_input()
         }
         
         var _gamepad_count = array_length(INPUT_GAMEPAD);
-        if not (_global.__frame - _global.__window_focus_frame < 2) //Prevent resting axes from triggering source swap
+        if not (_global.__frame - _global.__window_focus_frame < __INPUT_GAMEPADS_FOCUS_TIMEOUT) //Prevent resting axes from triggering source swap
         {
             //Search last-to-first on platforms with low-index virtual controllers (Steam Input, ViGEm)
             var _gamepad_index = 0;
@@ -76,10 +75,23 @@ function __input_hotswap_tick_input()
                 {
                     //Gamepad not in-use but potentially available          
                     var _gamepad = _global.__gamepads[_gamepad_index];
-                    if (is_struct(_gamepad) && (_gamepad.__get_any_pressed() || __input_hotswap_axis_delta(_gamepad)))
+                    if (is_struct(_gamepad)
+                    && (_gamepad.__disconnection_frame == undefined))
                     {
-                        _player.__last_input_time = _global.__current_time;
-                        return INPUT_GAMEPAD[_gamepad_index];
+                        if (_gamepad.__get_any_pressed())
+                        {
+                            if (!__INPUT_SILENT) __input_trace("Hotswapping on gamepad ", INPUT_GAMEPAD[_gamepad_index], " \"", _global.__gamepads[_gamepad_index].description, "\" button press");
+                            _player.__last_input_time = _global.__current_time;
+                            return INPUT_GAMEPAD[_gamepad_index];
+                        }
+                        
+                        if (__input_hotswap_axis_delta(_gamepad))
+                        {
+                            if (!__INPUT_SILENT) __input_trace("Hotswapping on gamepad ", INPUT_GAMEPAD[_gamepad_index], " \"", _global.__gamepads[_gamepad_index].description, "\" axis press");
+                            _player.__last_input_time = _global.__current_time;
+                            return INPUT_GAMEPAD[_gamepad_index];
+                            
+                        }
                     }
                 }
 
@@ -90,11 +102,11 @@ function __input_hotswap_tick_input()
     
     if (_global.__keyboard_allowed && _global.__any_keyboard_binding_defined
     &&  input_source_is_available(INPUT_KEYBOARD)
-    &&  keyboard_check(vk_anykey)
+    &&  keyboard_check_pressed(vk_anykey)
     &&  (__input_keyboard_key() > 0) //Ensure that the key is in the recognized range
     &&  !__input_key_is_ignored(__input_keyboard_key())) //Ensure that this key isn't one we're trying to ignore
     {
-        if (__INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_KEYBOARD);
+        if (!__INPUT_SILENT) __input_trace("Hotswapping on keyboard press");
         return INPUT_KEYBOARD;
     }
     
@@ -102,18 +114,34 @@ function __input_hotswap_tick_input()
     {
         if (input_source_is_available(INPUT_TOUCH) && device_mouse_check_button(_global.__pointer_index, mb_left))
         {
-            if (__INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_TOUCH);
+            if (!__INPUT_SILENT) __input_trace("Hotswapping on touch");
             return INPUT_TOUCH;
         }
     }
     else
     {
-        if (_global.__mouse_allowed && input_source_is_available(INPUT_MOUSE)
-        && ((INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && _global.__pointer_moved)
-          || INPUT_HOTSWAP_ON_MOUSE_BUTTON && (input_mouse_check_pressed(mb_any) || mouse_wheel_up() || mouse_wheel_down())))
+        if (_global.__mouse_allowed && input_source_is_available(INPUT_MOUSE))
         {
-            if (__INPUT_DEBUG_SOURCES) __input_trace("Hotswapping player 0 to ", INPUT_MOUSE);
-            return INPUT_MOUSE;
+            if (INPUT_HOTSWAP_ON_MOUSE_BUTTON)
+            {
+                if (input_mouse_check_pressed(mb_any))
+                {
+                    if (!__INPUT_SILENT) __input_trace("Hotswapping on mouse button press");
+                    return INPUT_MOUSE;
+                }
+                
+                if (mouse_wheel_up() || mouse_wheel_down())
+                {
+                    if (!__INPUT_SILENT) __input_trace("Hotswapping on mouse wheel");
+                    return INPUT_MOUSE;
+                }
+            }
+            
+            if (INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && _global.__pointer_moved)
+            {
+                if (!__INPUT_SILENT) __input_trace("Hotswapping on mouse pointer movement");
+                return INPUT_MOUSE;
+            }
         }
     }
     

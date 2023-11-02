@@ -14,6 +14,7 @@ function __input_gamepad_tester_build_gui()
         dbg_section("Control");
         dbg_text_input(_global.__gamepad_tester_data.__gamepad_ref, "Gamepad");
         dbg_text(_global.__gamepad_tester_data.__gamepad_desc_ref);
+        dbg_checkbox(_global.__gamepad_tester_data.__block_input_ref, "Debug blocks input");
         dbg_button("Close", function()
         {
             input_gamepad_tester_set(false);

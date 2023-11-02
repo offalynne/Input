@@ -1,5 +1,5 @@
 // Feather disable all
-/// @desc    Resets all bindings for the profile to those found in __input_config_verbs_and_bindings()
+/// @desc    Resets all bindings for the profile to those found in __input_config_verbs()
 ///          This will only work for default profiles
 /// @param   profileName
 /// @param   [playerIndex=0]

@@ -13,8 +13,6 @@ function __input_class_gamepad(_index) constructor
     sdl2_definition = undefined;
     guessed_type    = false;
     blacklisted     = false;
-    scale_trigger   = false;
-    test_trigger    = false;
     
     vendor  = undefined;
     product = undefined;
@@ -25,6 +23,9 @@ function __input_class_gamepad(_index) constructor
     button_count = undefined;
     axis_count   = undefined;
     hat_count    = undefined;
+    
+    __xinput_trigger_range = 1;
+    __stadia_trigger_test  = false;
     
     __steam_handle_index = undefined;
     __steam_handle       = undefined;
@@ -42,8 +43,9 @@ function __input_class_gamepad(_index) constructor
     mapping_raw_to_gm = {};
     mapping_array     = [];
     
-    __connection_time = current_time;
-    __scan_start_time = __connection_time + 250; //Give GM some space before allowing gamepad mappings to return values
+    __connection_time     = current_time;
+    __scan_start_time     = __connection_time + 250; //Give GM some space before allowing gamepad mappings to return values
+    __disconnection_frame = undefined;
     
     discover();
     
@@ -80,27 +82,8 @@ function __input_class_gamepad(_index) constructor
         led_set();
         swap_ab();
         
-        __vibration_support = __global.__vibration_allowed && (xinput || !__INPUT_ON_WINDOWS);        
-        if (__vibration_support)
-        {
-            if (os_type == os_ps5)
-            {
-                ps5_gamepad_set_vibration_mode(index, ps5_gamepad_vibration_mode_compatible);
-            }            
-            else
-            {
-                if ((__INPUT_ON_WINDOWS || __INPUT_ON_SWITCH) && __input_string_contains(raw_type, "JoyCon", "SwitchHandheld"))
-                {
-                    __vibration_scale = INPUT_VIBRATION_JOYCON_STRENGTH;
-                }
-                else
-                {
-                    __vibration_scale = 1;
-                }
-            }
-        
-            gamepad_set_vibration(index, 0, 0);
-        }
+        __vibration_initialize();
+        __disconnection_frame = undefined;
 
         if (__global.__gamepad_motion_support) __motion = new __input_class_gamepad_motion(index);
         if (!__INPUT_SILENT)__input_trace("Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
@@ -274,35 +257,73 @@ function __input_class_gamepad(_index) constructor
         return _mapping;
     }
     
-    static tick = function()
+    static set_dpad_hat_mapping = function()
     {
-        //Apply mapping settings that cannot be initially evaluated
-        if (__INPUT_ON_WINDOWS)
-        {        
-            //Recalibrate XInput triggers
-            if (scale_trigger 
-            && ((gamepad_axis_value(index, __XINPUT_AXIS_LT) > 0.25) 
-             || (gamepad_axis_value(index, __XINPUT_AXIS_RT) > 0.25)))
+        set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
+        set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
+        set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
+        set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+    }
+    
+    /// @param connected
+    static tick = function(_connected)
+    {   
+        if not (_connected)
+        {
+            //Timeout disconnection
+            if (__disconnection_frame == undefined)
             {
-                //Trigger value exceeds limited range, set range to "normal" scale (0 to 255/256)
-                with mapping_gm_to_raw[$ gp_shoulderlb] scale = 255;
-                with mapping_gm_to_raw[$ gp_shoulderrb] scale = 255;
-                scale_trigger = false;
-                if (!__INPUT_SILENT) __input_trace("Recalibrated XInput trigger scale for gamepad ", index);
+                __disconnection_frame = __global.__frame;
             }
-        
-            //Set up alternate Stadia mapping
-            if (test_trigger 
-            && ((gamepad_axis_value(index, 1) != gamepad_axis_value(index, 2)) 
-             || (gamepad_axis_value(index, 4) != gamepad_axis_value(index, 5))))
+            
+            //Flag for removal
+            if (__global.__frame - __disconnection_frame >= __INPUT_GAMEPADS_DISCONNECTION_TIMEOUT)
             {
-                //Analogue trigger value found, reset right thumbstick and trigger mappings
-                set_mapping(gp_axisrh,     2, __INPUT_MAPPING.AXIS, "rightx");
-                set_mapping(gp_axisrv,     3, __INPUT_MAPPING.AXIS, "righty");            
-                set_mapping(gp_shoulderrb, 4, __INPUT_MAPPING.AXIS, "righttrigger").extended_range = true;
-                set_mapping(gp_shoulderlb, 5, __INPUT_MAPPING.AXIS, "lefttrigger" ).extended_range = true;
-                test_trigger = false;                
-                if (!__INPUT_SILENT) __input_trace("Setting Stadia controller to analogue trigger mapping for gamepad ", index);
+                return false;
+            }
+        }
+        else
+        {
+            __disconnection_frame = undefined;
+            
+            //Apply mapping settings that cannot be initially evaluated
+            if (__INPUT_ON_WINDOWS)
+            {
+                //Recalibrate XInput triggers
+                if (__xinput_trigger_range < 1)
+                {
+                    var _trigger_max = max(gamepad_axis_value(index, __XINPUT_AXIS_LT), gamepad_axis_value(index, __XINPUT_AXIS_RT));
+                    if (_trigger_max > __xinput_trigger_range)
+                    {
+                        if (_trigger_max > 255/256)
+                        {
+                            if (!__INPUT_SILENT) __input_trace("Fully extending XInput trigger scale for gamepad ", index);
+                            __xinput_trigger_range = 1;
+                        }
+                        else
+                        {
+                            if (!__INPUT_SILENT) __input_trace("Partially extending XInput trigger scale for gamepad ", index);
+                            __xinput_trigger_range = 255/256;
+                        }
+                                           
+                        mapping_gm_to_raw[$ gp_shoulderlb].scale = 1/__xinput_trigger_range;
+                        mapping_gm_to_raw[$ gp_shoulderrb].scale = 1/__xinput_trigger_range;
+                    }
+                }
+        
+                //Set up alternate Stadia mapping
+                if (__stadia_trigger_test)
+                && ((gamepad_axis_value(index, 1) != gamepad_axis_value(index, 2)) 
+                 || (gamepad_axis_value(index, 4) != gamepad_axis_value(index, 5)))
+                {
+                    if (!__INPUT_SILENT) __input_trace("Setting Stadia controller to analogue trigger mapping for gamepad ", index);
+                    __stadia_trigger_test = false;                    
+                    
+                    set_mapping(gp_axisrh,     2, __INPUT_MAPPING.AXIS, "rightx");
+                    set_mapping(gp_axisrv,     3, __INPUT_MAPPING.AXIS, "righty");            
+                    set_mapping(gp_shoulderrb, 4, __INPUT_MAPPING.AXIS, "righttrigger").extended_range = true;
+                    set_mapping(gp_shoulderlb, 5, __INPUT_MAPPING.AXIS, "lefttrigger" ).extended_range = true;
+                }
             }
         }
         
@@ -317,7 +338,7 @@ function __input_class_gamepad(_index) constructor
         
         if (__vibration_support)
         {
-            if (__vibration_received_this_frame && input_window_has_focus())
+            if (_connected && __vibration_received_this_frame && input_window_has_focus())
             {
                 var _vibration_low  = __vibration_scale * __vibration_left;
                 var _vibration_high = __vibration_scale * __vibration_right;
@@ -347,6 +368,8 @@ function __input_class_gamepad(_index) constructor
             
             __vibration_received_this_frame = false;
         }
+        
+        return true;
     }
     
     static swap_ab = function()
@@ -501,6 +524,31 @@ function __input_class_gamepad(_index) constructor
             }
             
             gamepad_set_color(index, _color);
+        }
+    }
+    
+    static __vibration_initialize = function()
+    {
+        __vibration_support = __global.__vibration_allowed && (xinput || !__INPUT_ON_WINDOWS);        
+        if (__vibration_support)
+        {
+            if (os_type == os_ps5)
+            {
+                ps5_gamepad_set_vibration_mode(index, ps5_gamepad_vibration_mode_compatible);
+            }            
+            else
+            {
+                if ((__INPUT_ON_WINDOWS || __INPUT_ON_SWITCH) && __input_string_contains(raw_type, "JoyCon", "SwitchHandheld"))
+                {
+                    __vibration_scale = INPUT_VIBRATION_JOYCON_STRENGTH;
+                }
+                else
+                {
+                    __vibration_scale = 1;
+                }
+            }
+        
+            gamepad_set_vibration(index, 0, 0);
         }
     }
     

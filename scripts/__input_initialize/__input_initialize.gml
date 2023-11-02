@@ -52,15 +52,23 @@ function __input_initialize()
     }
     
     //Detect new string functions, which offer a significant performance gain when reading the SDL2 database
-    try
+    if (INPUT_ON_WEB)
     {
-        string_split("Juju\nwaz\nere", "\n", true);
-        string_trim("         you can't catch me          ");
+        //Buggy as of 2023-10-08
         _global.__use_legacy_strings = false;
     }
-    catch(_error)
+    else 
     {
-        _global.__use_legacy_strings = true;
+        try
+        {
+            string_split("Juju\nwaz\nere", "\n", true);
+            string_trim("         you can't catch me          ");
+            _global.__use_legacy_strings = false;
+        }
+        catch(_error)
+        {
+            _global.__use_legacy_strings = true;
+        }
     }
     
     if (not __INPUT_SILENT)
@@ -69,14 +77,22 @@ function __input_initialize()
     }
     
     //Detect is_debug_overlay_open() to block game input to overlay, if supported
-    try
+    if (INPUT_ON_WEB)
     {
-        is_debug_overlay_open();
-        _global.__use_debug_overlay_status = true;
-    }
-    catch(_error)
-    {
+        //Buggy as of 2023-10-08
         _global.__use_debug_overlay_status = false;
+    }
+    else 
+    {
+        try
+        {
+            is_debug_overlay_open();
+            _global.__use_debug_overlay_status = true;
+        }
+        catch(_error)
+        {
+            _global.__use_debug_overlay_status = false;
+        }
     }
     
     if not (__INPUT_SILENT)
@@ -84,14 +100,22 @@ function __input_initialize()
         __input_trace(_global.__use_debug_overlay_status? "Using debug overlay status to block input" : "Debug overlay status is unavailable");
     }
     
-    try
+    if (INPUT_ON_WEB)
     {
-        ref_create({});
-        _global.__allow_gamepad_tester = true;
-    }
-    catch(_error)
-    {
+        //Buggy as of 2023-10-08
         _global.__allow_gamepad_tester = false;
+    }
+    else 
+    {
+        try
+        {
+            ref_create({});
+            _global.__allow_gamepad_tester = true;
+        }
+        catch(_error)
+        {
+            _global.__allow_gamepad_tester = false;
+        }
     }
     
     if not (__INPUT_SILENT)
@@ -219,10 +243,10 @@ function __input_initialize()
     _global.__cleared = false;
     
     //Focus tracking
-    _global.__overlay_focus = false;
-    _global.__window_focus  = true;
-    _global.__game_focus    = true;
-    
+    _global.__window_focus       = true;
+    _global.__overlay_focus      = false;
+    _global.__game_input_allowed = true;
+
     //Accessibility state
     _global.__toggle_momentary_dict  = {};
     _global.__toggle_momentary_state = false;
@@ -263,7 +287,7 @@ function __input_initialize()
     _global.__on_desktop = (__INPUT_ON_WINDOWS || __INPUT_ON_MACOS || __INPUT_ON_LINUX || __INPUT_ON_OPERAGX);
     _global.__on_mobile  = (__INPUT_ON_ANDROID || __INPUT_ON_IOS);
     
-    //OperaGX mobile identity per YYG
+    //OperaGX mobile identity
     if (__INPUT_ON_OPERAGX)
     {
         var _map = os_get_info();
@@ -273,6 +297,7 @@ function __input_initialize()
             {
                 _global.__on_mobile  = true;
                 _global.__on_desktop = false;
+                if (!__INPUT_SILENT) __input_trace("Browser indicates OperaGX mobile");
             }
 
             ds_map_destroy(_map);
@@ -294,9 +319,28 @@ function __input_initialize()
     //Disallow keyboard bindings on specified platforms unless explicitly enabled
     _global.__keyboard_allowed  = ((INPUT_ON_PC && INPUT_PC_KEYBOARD)              || (__INPUT_ON_SWITCH && INPUT_SWITCH_KEYBOARD)  || (INPUT_ON_MOBILE  && INPUT_MOBILE_WEB_KEYBOARD && INPUT_ON_WEB) || (__INPUT_ON_ANDROID && INPUT_ANDROID_KEYBOARD));
     _global.__mouse_allowed     = ((INPUT_ON_PC && INPUT_PC_MOUSE)                 || (__INPUT_ON_SWITCH && INPUT_SWITCH_MOUSE)     || (INPUT_ON_MOBILE  && INPUT_MOBILE_MOUSE) || (__INPUT_ON_PS && INPUT_PS_MOUSE));
-    _global.__touch_allowed     = ((__INPUT_ON_WINDOWS && INPUT_WINDOWS_TOUCH)     || (__INPUT_ON_SWITCH && INPUT_SWITCH_TOUCH)     ||  INPUT_ON_MOBILE) && !_global.__mouse_allowed;
+    _global.__touch_allowed     = ((__INPUT_ON_WINDOWS && INPUT_WINDOWS_TOUCH)     || (__INPUT_ON_SWITCH && INPUT_SWITCH_TOUCH)     ||  INPUT_ON_MOBILE);
     _global.__vibration_allowed = ((__INPUT_ON_WINDOWS && INPUT_WINDOWS_VIBRATION) || (__INPUT_ON_SWITCH && INPUT_SWITCH_VIBRATION) || (__INPUT_ON_XBOX  && INPUT_XBOX_VIBRATION) || ((os_type == os_ps4) && INPUT_PS4_VIBRATION) || ((os_type == os_ps5) && INPUT_PS5_VIBRATION));
     _global.__gamepad_allowed   = ((INPUT_ON_PC && INPUT_PC_GAMEPAD)               ||  INPUT_ON_CONSOLE                             || (INPUT_ON_MOBILE  && INPUT_MOBILE_GAMEPAD));
+
+    //Mouse overrides touch
+    if (_global.__mouse_allowed && _global.__touch_allowed)
+    {
+        //Except on Windows
+        if (__INPUT_ON_WINDOWS)
+        {
+            _global.__mouse_allowed = false;       
+            if (!__INPUT_SILENT) __input_trace("Warning! INPUT_WINDOWS_TOUCH overrides INPUT_PC_MOUSE. Mouse bindings may not work as expected.");
+        }
+        else
+        {
+            _global.__touch_allowed = false;
+            if not (INPUT_MOUSE_ALLOW_VIRTUAL_BUTTONS)
+            {
+                if (!__INPUT_SILENT) __input_trace("Warning! Mouse configuration overrides touch. Virtual buttons may not work as expected.");
+            }
+        }
+    }
 
     //Whether mouse is blocked due to Window focus state
     _global.__window_focus_block_mouse = false;
@@ -526,33 +570,32 @@ function __input_initialize()
     #endregion
     
     
-    #region
+    #region Gamepad LED patterns by device type
     
-    //Gamepad LED patterns by device type
-    _global.__gamepad_led_pattern_dict = {
-        INPUT_GAMEPAD_TYPE_PS5: [                 //PS5
-            [false, false, true,  false, false],  //P1: --X--
-            [false, true,  false, true,  false],  //P2: -X-X-
-            [true,  false, true,  false, true ],  //P3: X-X-X
-            [true,  true,  false, true,  true ],  //P4: XX-XX
-        ],        
-        INPUT_GAMEPAD_TYPE_SWITCH: [              //Switch
-            [true,  false, false, false],         //P1: X---
-            [true,  true,  false, false],         //P2: XX--
-            [true,  true,  true,  false],         //P3: XXX-
-            [true,  true,  true,  true ],         //P4: XXXX
-            [true,  false, false, true ],         //P5: X--X
-            [true,  false, true,  false],         //P6: X-X-
-            [true,  false, true,  true ],         //P7: X-XX
-            [false, true,  true,  false],         //P8: -XX-
-        ],        
-        INPUT_GAMEPAD_TYPE_XBOX_360: [            //Xbox 360
-            [true,  false, false, false],         //P1: X---
-            [false, true,  false, false],         //P2: -X--
-            [false, false, true,  false],         //P3: --X-
-            [false, false, false, true ],         //P4: ---X
-        ],
-    }
+    var _dict = {};
+    _dict[$ INPUT_GAMEPAD_TYPE_PS5] = [       //PS5
+        [false, false, true,  false, false],  //P1: --X--
+        [false, true,  false, true,  false],  //P2: -X-X-
+        [true,  false, true,  false, true ],  //P3: X-X-X
+        [true,  true,  false, true,  true ],  //P4: XX-XX
+    ];    
+    _dict[$ INPUT_GAMEPAD_TYPE_SWITCH] = [    //Switch
+        [true,  false, false, false],         //P1: X---
+        [true,  true,  false, false],         //P2: XX--
+        [true,  true,  true,  false],         //P3: XXX-
+        [true,  true,  true,  true ],         //P4: XXXX
+        [true,  false, false, true ],         //P5: X--X
+        [true,  false, true,  false],         //P6: X-X-
+        [true,  false, true,  true ],         //P7: X-XX
+        [false, true,  true,  false],         //P8: -XX-
+    ];
+    _dict[$ INPUT_GAMEPAD_TYPE_XBOX_360] = [  //Xbox 360
+        [true,  false, false, false],         //P1: X---
+        [false, true,  false, false],         //P2: -X--
+        [false, false, true,  false],         //P3: --X-
+        [false, false, false, true ],         //P4: ---X
+    ];    
+    _global.__gamepad_led_pattern_dict = _dict;
     
     #endregion
 
@@ -683,6 +726,11 @@ function __input_initialize()
         if (__INPUT_ON_WINDOWS)
         {
             input_ignore_key_add(0xE6); //OEM key (Power button on Steam Deck)
+        }
+        
+        if (__INPUT_ON_ANDROID)
+        {
+            input_ignore_key_add(vk_backspace); //Emmitted by hard and soft "Back" buttons, gamepad "B" button
         }
         
         if (INPUT_ON_MOBILE && __INPUT_ON_APPLE)

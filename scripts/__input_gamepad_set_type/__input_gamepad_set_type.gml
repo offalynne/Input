@@ -175,7 +175,7 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunityGameCube";
                 }
-                else if (__input_string_contains(_desc, "for switch", "for nintendo switch", "switch controller", "switch pro controller", "lic pro controller", "wii"))
+                else if (__input_string_contains(_desc, "for switch", "for nintendo switch", "switch controller", "switch pro", "lic pro", "mobapad", "wii"))
                 {
                     raw_type = "CommunityLikeSwitch";
                 }
@@ -418,7 +418,7 @@ function __input_gamepad_set_type()
                                 //Found IMU                                
                                 var _imu_index = _g;
                                 if (!__INPUT_SILENT) __input_trace("Overriding controller ", _imu_index ," type to \"HIDWiiRemoteIMU\"");
-                                with (_global.__gamepads[@ _imu_index])
+                                with(_global.__gamepads[@ _imu_index])
                                 {
                                     raw_type = "HIDWiiRemoteIMU";
                                     guessed_type = true;
@@ -427,7 +427,7 @@ function __input_gamepad_set_type()
                                 }
                             
                                 if (!__INPUT_SILENT) __input_trace("Overriding controller ", _ir_index ," type to \"HIDWiiRemoteIRSensor\"");
-                                with (_global.__gamepads[@ _ir_index])
+                                with(_global.__gamepads[@ _ir_index])
                                 {
                                     raw_type = "HIDWiiRemoteIRSensor";
                                     guessed_type = true;
