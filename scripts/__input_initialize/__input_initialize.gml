@@ -245,7 +245,6 @@ function __input_initialize()
     //Focus tracking
     _global.__window_focus          = true;
     _global.__overlay_focus         = false;
-    _global.__overlay_input_allowed = false;
     _global.__game_focus            = true;
     _global.__game_input_allowed    = true;
 

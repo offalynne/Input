@@ -146,6 +146,7 @@ function __input_system_tick()
     _global.__game_input_allowed = INPUT_ALLOW_OUT_OF_FOCUS || _global.__window_focus;
     
     _global.__overlay_focus = false;
+    
     if (_global.__using_steamworks)
     {
         //Steam overlay
@@ -163,7 +164,7 @@ function __input_system_tick()
         {
             _global.__overlay_focus = true;
             
-            if not (_global.__overlay_input_allowed)
+            if (_global.__gamepad_tester_data.__block_input)
             {
                 _global.__game_input_allowed = false;
             }
