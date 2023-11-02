@@ -7,7 +7,7 @@ function input_gamepad_check_released(_index, _gm)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
-    if (!_global.__game_focus
+    if (!_global.__game_input_allowed
     ||  !_global.__gamepad_allowed
     ||   _global.__cleared
     ||  (_index == undefined)

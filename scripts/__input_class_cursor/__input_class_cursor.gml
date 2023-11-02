@@ -107,7 +107,7 @@ function __input_class_cursor() constructor
         }
         
         //Don't update the cursor if the mouse recently moved or we're rebinding controls
-        if (__global.__game_focus
+        if (__global.__game_input_allowed
         &&  __global.__cursor_verbs_valid
         && (!__global.__pointer_moved || !_can_use_mouse) 
         && (__player.__rebind_state <= 0))

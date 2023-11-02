@@ -9,7 +9,7 @@ function input_source_detect_input(_source, _available_only = true)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
-    if not (_global.__game_focus)
+    if not (_global.__game_input_allowed)
     {
         return false;
     }
