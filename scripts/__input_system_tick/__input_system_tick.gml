@@ -479,7 +479,8 @@ function __input_system_tick()
             var _gamepad = _global.__gamepads[_g];
             if (is_struct(_gamepad))
             {
-                if (gamepad_is_connected(_g))
+                var _connected = gamepad_is_connected(_g);
+                if (_connected)
                 {
                     with (_gamepad)
                     {
@@ -496,44 +497,33 @@ function __input_system_tick()
                                 virtual_set();
                                 led_set();
                             }
-                            
-                            tick();
-                            __disconnection_frame = undefined;
                         }
                     }
                 }
-                else
+                
+                var _sustain_connection = _gamepad.tick(_connected);
+                if not (_sustain_connection)
                 {
-                    //Timeout disconnection to prevent thrashing
-                    if (_gamepad.__disconnection_frame == undefined)
-                    {
-                        _gamepad.__disconnection_frame = _global.__frame;
-                    }
-                    
-                    if (_global.__frame - _gamepad.__disconnection_frame < __INPUT_GAMEPADS_DISCONNECTION_TIMEOUT)
-                    {
-                        _gamepad.tick();
-                    }
-                    else
-                    {                        
-                        //Remove our gamepad handler
-                        if (!__INPUT_SILENT) __input_trace("Gamepad ", _g, " disconnected");
+                    //Remove our gamepad handler
+                    if (!__INPUT_SILENT) __input_trace("Gamepad ", _g, " disconnected");
                         
-                        gamepad_set_vibration(_global.__gamepads[_g].index, 0, 0);
-                        _global.__gamepads[@ _g] = undefined;
+                    gamepad_set_vibration(_global.__gamepads[_g].index, 0, 0);
+                    _global.__gamepads[@ _g] = undefined;
                         
-                        //Also report gamepad changes for any active players
-                        var _p = 0;
-                        repeat(INPUT_MAX_PLAYERS)
+                    //Also report gamepad changes for any active players
+                    var _p = 0;
+                    repeat(INPUT_MAX_PLAYERS)
+                    {
+                        with(_global.__players[_p])
                         {
-                            with(_global.__players[_p])
+                            if (__source_contains(INPUT_GAMEPAD[_g]))
                             {
                                 __input_trace("Player ", _p, " gamepad disconnected");
                                 __source_remove(INPUT_GAMEPAD[_g]);
                             }
-                        
-                            ++_p;
                         }
+                        
+                        ++_p;
                     }
                 }
             }
@@ -555,20 +545,7 @@ function __input_system_tick()
     #endregion
     
     
-    
-    #region Players
-    
-    var _p = 0;
-    repeat(INPUT_MAX_PLAYERS)
-    {
-        _global.__players[_p].tick();
-        ++_p;
-    }
-    
-    #endregion
-    
-    
-    
+
     #region Virtual Buttons
     
     //Reorder virtual buttons if necessary, from highest priority to lowest
@@ -621,6 +598,19 @@ function __input_system_tick()
             _global.__virtual_array[_i].__tick();
             ++_i;
         }
+    }
+    
+    #endregion
+    
+    
+    
+    #region Players
+    
+    var _p = 0;
+    repeat(INPUT_MAX_PLAYERS)
+    {
+        _global.__players[_p].tick();
+        ++_p;
     }
     
     #endregion

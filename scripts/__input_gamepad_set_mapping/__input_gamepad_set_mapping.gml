@@ -254,20 +254,20 @@ function __input_gamepad_set_mapping()
         var _mapping_lt = set_mapping(gp_shoulderlb, __XINPUT_AXIS_LT, __INPUT_MAPPING.AXIS, "lefttrigger");
         var _mapping_rt = set_mapping(gp_shoulderrb, __XINPUT_AXIS_RT, __INPUT_MAPPING.AXIS, "righttrigger");
         
+        //Scale trigger axes. Recalibrated later if value falls outside range
         if (is_numeric(__steam_handle))
         {
-            //Typical XInput scale (0 to 255/256)
-            _mapping_lt.scale = 255;
-            _mapping_rt.scale = 255;
+            //Scale per "Normal" XInput offset
+            __xinput_trigger_range = 255/256;
         }
         else
         {
-            //Scale per Xbox One and Series controllers over USB (0 to 63/256)
-            //Scale is recalibrated later if values fall outside of this range
-            _mapping_lt.scale = 63;
-            _mapping_rt.scale = 63;
-            scale_trigger = true;
+            //Scale per Xbox One/Series controllers over USB
+            __xinput_trigger_range = 63/256;
         }
+
+        _mapping_lt.scale = 1/__xinput_trigger_range;
+        _mapping_rt.scale = 1/__xinput_trigger_range;
         
         return;
     }
@@ -303,10 +303,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axisrh, 3, __INPUT_MAPPING.AXIS, "rightx");
         set_mapping(gp_axisrv, 4, __INPUT_MAPPING.AXIS, "righty");
         
-        set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
-        set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
-        set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
-        set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+        set_dpad_hat_mapping();
     
         //No trigger data :-(
         set_mapping(gp_shoulderlb, 0, undefined, "lefttrigger");
@@ -347,16 +344,13 @@ function __input_gamepad_set_mapping()
             set_mapping(gp_misc1, 14, __INPUT_MAPPING.BUTTON, "misc1"); //Capture button
         }
         
-        set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
-        set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
-        set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
-        set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+        set_dpad_hat_mapping();
         
         set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
         set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
           
         //Set default mapping with digital triggers, test later
-        test_trigger = true;
+        __stadia_trigger_test = true;
             
         set_mapping(gp_shoulderrb, 11, __INPUT_MAPPING.BUTTON, "righttrigger");
         set_mapping(gp_shoulderlb, 12, __INPUT_MAPPING.BUTTON, "lefttrigger");
@@ -662,10 +656,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_select, 8, __INPUT_MAPPING.BUTTON, "back");
         set_mapping(gp_start,  9, __INPUT_MAPPING.BUTTON, "start");
 
-        set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
-        set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
-        set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
-        set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+        set_dpad_hat_mapping();
 
         return;
     }
@@ -688,10 +679,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_shoulderlb, 6, __INPUT_MAPPING.BUTTON, "lefttrigger");
         set_mapping(gp_shoulderrb, 7, __INPUT_MAPPING.BUTTON, "righttrigger");
 
-        set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
-        set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
-        set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
-        set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+        set_dpad_hat_mapping();
 
         set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx").limited_range = __INPUT_ON_LINUX;
         set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty").limited_range = __INPUT_ON_LINUX;
@@ -725,10 +713,7 @@ function __input_gamepad_set_mapping()
             set_mapping(gp_select, 7, __INPUT_MAPPING.BUTTON, "back");
             set_mapping(gp_start,  9, __INPUT_MAPPING.BUTTON, "start");
             
-            set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
-            set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
-            set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
-            set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+            set_dpad_hat_mapping();
             
             if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
             
@@ -748,11 +733,8 @@ function __input_gamepad_set_mapping()
             
             set_mapping(gp_select, 7, __INPUT_MAPPING.BUTTON, "back");
             set_mapping(gp_start,  9, __INPUT_MAPPING.BUTTON, "start");
-            
-            set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
-            set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
-            set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
-            set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+
+            set_dpad_hat_mapping();
             
             if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
             
@@ -827,10 +809,7 @@ function __input_gamepad_set_mapping()
                 set_mapping(gp_select, 2, __INPUT_MAPPING.BUTTON, "back");
                 set_mapping(gp_start,  3, __INPUT_MAPPING.BUTTON, "start");
         
-                set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
-                set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
-                set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
-                set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+                set_dpad_hat_mapping();
         
                 if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide,  4, __INPUT_MAPPING.BUTTON, "guide");
                 
@@ -916,10 +895,7 @@ function __input_gamepad_set_mapping()
                     set_mapping(gp_select, 14, __INPUT_MAPPING.BUTTON, "back");
                     set_mapping(gp_start,   6, __INPUT_MAPPING.BUTTON, "start");
 
-                    set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
-                    set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
-                    set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
-                    set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+                    set_dpad_hat_mapping();
 
                     set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
                     set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
@@ -975,10 +951,7 @@ function __input_gamepad_set_mapping()
                     set_mapping(gp_stickl, 31, __INPUT_MAPPING.BUTTON, "leftstick");
                     set_mapping(gp_stickr,  0, __INPUT_MAPPING.BUTTON, "rightstick");
 
-                    set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
-                    set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
-                    set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
-                    set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+                    set_dpad_hat_mapping();
 
                     set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
                     set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
@@ -1005,10 +978,7 @@ function __input_gamepad_set_mapping()
                     set_mapping(gp_select, 29, __INPUT_MAPPING.BUTTON, "back");
                     set_mapping(gp_start,  30, __INPUT_MAPPING.BUTTON, "start");
 
-                    set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
-                    set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
-                    set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
-                    set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+                    set_dpad_hat_mapping();
 
                     set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
                     set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
@@ -1049,10 +1019,7 @@ function __input_gamepad_set_mapping()
                 set_mapping(gp_shoulderr, 10, __INPUT_MAPPING.BUTTON, "rightshoulder");
                 set_mapping(gp_select,    15, __INPUT_MAPPING.BUTTON, "back");
 
-                set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
-                set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
-                set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
-                set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+                set_dpad_hat_mapping();
 
                 set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
                 set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
@@ -1087,10 +1054,7 @@ function __input_gamepad_set_mapping()
                 set_mapping(gp_select, 15, __INPUT_MAPPING.BUTTON, "back");
                 set_mapping(gp_start,   6, __INPUT_MAPPING.BUTTON, "start");
                 
-                set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
-                set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
-                set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
-                set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+                set_dpad_hat_mapping();
                 
                 return;
             break;
@@ -1420,10 +1384,7 @@ function __input_gamepad_set_mapping()
                 {
                     //Dpad mapping matches Android keymap, switch to hat
                     if (__INPUT_DEBUG) __input_trace("  (Remapping dpad buttons to hat)");
-                    set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
-                    set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
-                    set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
-                    set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+                    set_dpad_hat_mapping();
                 }
             }
         }
