@@ -193,7 +193,7 @@ function __input_system_tick()
     }
     
     //Block mouse capture when focus state changes
-    if (_global.__mouse_capture && _global.__game_focus)
+    if (_global.__mouse_capture && _global.__game_input_allowed)
     {
         if (__input_window_changed())
         {
