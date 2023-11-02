@@ -109,7 +109,7 @@ function input_debug_player_input(_player_index = 0)
                 {
                     if (INPUT_MOUSE_ALLOW_SCANNING)
                     {
-                        if (_global.__mouse_allowed && _global.__game_focus && !_global.__window_focus_block_mouse)
+                        if (_global.__mouse_allowed && _global.__game_input_allowed && !_global.__window_focus_block_mouse)
                         {
                             if (_filter_func(mb_left, _ignore_struct, _allow_struct)
                             && mouse_check_button(mb_left))
