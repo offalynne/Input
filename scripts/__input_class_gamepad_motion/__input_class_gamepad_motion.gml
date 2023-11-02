@@ -11,7 +11,7 @@ function __input_class_gamepad_motion(_gamepad_index) constructor
 
     static __tick = function()
     {
-        var _cleared = __global.__cleared || !__global.__game_focus;
+        var _cleared = __global.__cleared || !__global.__game_input_allowed;
         if (!_cleared && (__global.__frame <= __motion_frame))
         {
             return __get_data();

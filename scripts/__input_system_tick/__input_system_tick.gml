@@ -142,14 +142,18 @@ function __input_system_tick()
             }
         }
     }
+
+    _global.__game_input_allowed = INPUT_ALLOW_OUT_OF_FOCUS || _global.__window_focus;
     
     _global.__overlay_focus = false;
+    
     if (_global.__using_steamworks)
     {
         //Steam overlay
         if (steam_is_overlay_activated())
         {
             _global.__overlay_focus = true;
+            _global.__game_input_allowed = false;
         }
     }
     
@@ -159,10 +163,13 @@ function __input_system_tick()
         if (is_debug_overlay_open())
         {
             _global.__overlay_focus = true;
+            
+            if (_global.__gamepad_tester_data.__block_input)
+            {
+                _global.__game_input_allowed = false;
+            }
         }
     }
-    
-    _global.__game_focus = (INPUT_ALLOW_OUT_OF_FOCUS || (_global.__window_focus && !_global.__overlay_focus));
     
     //Prevent restart thrashing
     if ((_global.__current_time - _global.__restart_time) < 1000)
