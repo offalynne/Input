@@ -914,7 +914,22 @@ function __input_class_player() constructor
             __combo_state_dict[$ _verb_name] = new __input_class_combo_state(_verb_name, _combo_defintion);
         }
     }
-    
+
+    /// @param verbName
+    /// @param chordDefinition
+    static __add_chord_state = function(_verb_name, _chord_defintion)
+    {
+        //Set up a verb container on the player separate from the bindings
+        if (is_struct(__chord_state_dict[$ _verb_name]))
+        {
+            __input_error("Chord state with name \"", _verb_name, "\" has already been added to player ", __index);
+        }
+        else
+        {
+            __chord_state_dict[$ _verb_name] = new __input_class_chord_state(_verb_name, _chord_defintion);
+        }
+    }	
+
     #endregion
     
     
