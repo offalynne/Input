@@ -7,6 +7,7 @@ input_combo_create("hadouken")
 .press_or_release("accept");
 
 input_combo_create("charged attack")
+.ignore(all)
 .charge("left")
 .press("right")
 .press("accept");
