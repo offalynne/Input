@@ -17,7 +17,7 @@ function __input_initialize()
         exception_unhandled_handler(__input_exception_handler);
     }
     
-    __input_trace("Welcome to Input by @jujuadams and @offalynne! This is version ", __INPUT_VERSION, ", ", __INPUT_DATE);
+    __input_trace("Welcome to Input by Juju Adams and Alynne Keith! This is version ", __INPUT_VERSION, ", ", __INPUT_DATE);
     if (__INPUT_SILENT)
     {
         __input_trace("Warning! Per __INPUT_SILENT mode, most logging is suppressed. This is NOT recommended");
