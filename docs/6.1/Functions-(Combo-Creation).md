@@ -214,31 +214,3 @@ input_combo_create("coup de grace")
 ```
 
 <!-- tabs:end -->
-
-&nbsp;
-
-## .ignore
-
-`<combo struct>.ignore(verbArray)`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** `self` (the combo struct)
-
-|Name       |Datatype|Purpose                                    |
-|-----------|--------|-------------------------------------------|
-|`verbArray`|array   |Array of verbs that the combo should ignore|
-
-This method, unlike the phase creation methods, will set verbs of your choice to be "ignored" by the combo. An ignored verb will not cause a failure of the combo; for example, if you ignore the `"up"` verb then accidentally activating that verb in the middle of the combo will not cause the combo to fail. Ignored verbs will respect directionality. If a verb is used in any phase of a combo then it cannot be ignored.
-
-?> You can also pass GameMaker keyboard `all` into this function to ignore all basic verbs.
-
-#### **Example**
-
-```gml
-
-```
-
-<!-- tabs:end -->
