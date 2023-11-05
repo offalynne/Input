@@ -4,7 +4,7 @@
   "name": "Windows",
   "option_windows_display_name": "Input",
   "option_windows_executable_name": "${project_name}.exe",
-  "option_windows_version": "6.1.4",
+  "option_windows_version": "6.1.5",
   "option_windows_company_info": "Juju Adams",
   "option_windows_product_info": "Input",
   "option_windows_copyright_info": "Juju Adams (c) 2023",
