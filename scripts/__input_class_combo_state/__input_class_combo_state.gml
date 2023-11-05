@@ -182,8 +182,11 @@ function __input_class_combo_state(_name, _combo_def) constructor
             }
             else
             {
+                var _verb = _phase_array[__phase].__verb;
+                _verb = __direction_mapping[$ _verb] ?? _verb;
+                
                 //Remove hold requirement when charge isn't reset
-                __remove_from_require_hold_array(_phase_array[__phase].__verb);
+                __remove_from_require_hold_array(_verb);
             }
         }
         
@@ -223,7 +226,7 @@ function __input_class_combo_state(_name, _combo_def) constructor
         repeat(array_length(_all_verb_array))
         {
             var _verb = _all_verb_array[_i];
-                
+            
             var _state = _player_verb_struct[$ _verb];
             if (not _state.__inactive)
             {
