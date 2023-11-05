@@ -109,7 +109,7 @@ function __input_initialize()
     {
         try
         {
-            ref_create({});
+            ref_create({x: 32}, "x");
             _global.__allow_gamepad_tester = true;
         }
         catch(_error)
