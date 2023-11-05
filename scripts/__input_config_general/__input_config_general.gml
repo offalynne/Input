@@ -28,8 +28,12 @@
 #macro INPUT_XBOX_VIBRATION       true
 
 
+
 //Whether to allow input while game window is out of focus on desktop platforms
 #macro INPUT_ALLOW_OUT_OF_FOCUS  false
+
+//Default setting for whether the debug overlay blocks input
+#macro INPUT_DEFAULT_DEBUG_OVERLAY_BLOCKS_INPUT  false
 
 //Set to true to use milliseconds instead of frames throughout the library
 #macro INPUT_TIMER_MILLISECONDS  false
