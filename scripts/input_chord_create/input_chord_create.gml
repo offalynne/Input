@@ -36,7 +36,12 @@ function input_chord_create(_name, _max_time = INPUT_CHORD_DEFAULT_TIME)
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
     {
-        _global.__players[_p].__add_complex_verb(_name, __INPUT_VERB_TYPE.__CHORD);
+        with(_global.__players[_p])
+        {
+            __add_chord_state(_name, _chord_definition);
+            __add_complex_verb(_name, __INPUT_VERB_TYPE.__CHORD);
+        }
+        
         ++_p;
     }
 }
