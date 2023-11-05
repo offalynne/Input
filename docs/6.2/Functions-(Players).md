@@ -530,3 +530,99 @@ if (debug_mode)
 ```
 
 <!-- tabs:end -->
+
+&nbsp;
+
+## …player_using_gamepad
+
+`input_player_using_gamepad([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the player is using any gamepad
+
+|Name           |Datatype|Purpose                                              |
+|---------------|--------|-----------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used |
+
+#### **Example**
+
+```gml
+
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …player_using_keyboard
+
+`input_player_using_keyboard([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the player is using a keyboard
+
+|Name           |Datatype|Purpose                                              |
+|---------------|--------|-----------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used |
+
+#### **Example**
+
+```gml
+
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …player_using_mouse
+
+`input_player_using_mouse([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the player is using a mouse
+
+|Name           |Datatype|Purpose                                              |
+|---------------|--------|-----------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used |
+
+#### **Example**
+
+```gml
+
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …player_using_touch
+
+`input_player_using_touch([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the player is using touch inpuit
+
+|Name           |Datatype|Purpose                                              |
+|---------------|--------|-----------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used |
+
+#### **Example**
+
+```gml
+
+```
+
+<!-- tabs:end -->
