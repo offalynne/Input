@@ -1,13 +1,19 @@
 // Feather disable all
-//// @desc    Returns an array of players using the indicated source(s)
-//// @param   source
+/// @desc    Returns an array of players using the indicated source(s)
+/// 
+/// @param   source
+/// @param   [firstPlayer=false]
 
-function input_players_using_source(_sources)
+function input_players_using_source(_sources, _first_player = false)
 {
-    static _result = [];
-    array_resize(_result, 0);
-    
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global    
+    static _result = [];
+    
+    //Don't mess with the results array if we're not going to return an array
+    if (not _first_player)
+    {
+        array_resize(_result, 0);
+    }
     
     if (not is_array(_sources))
     {
@@ -33,6 +39,9 @@ function input_players_using_source(_sources)
                 
                 if (_global.__players[_player_index].__source_contains(_source))
                 {
+                    //Early-out if we just want the first player
+                    if (_first_player) return _player_index;
+                    
                     array_push(_result, _player_index);
                     break;
                 }
@@ -44,5 +53,6 @@ function input_players_using_source(_sources)
         ++_player_index;
     }
     
-    return _result;
+    //Return <undefined> specifically if we're only looking for the first player
+    return _first_player? undefined : _result;
 }
