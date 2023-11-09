@@ -329,8 +329,15 @@ function __input_initialize()
         //Except on Windows
         if (__INPUT_ON_WINDOWS)
         {
-            _global.__mouse_allowed = false;       
-            if (!__INPUT_SILENT) __input_trace("Warning! INPUT_WINDOWS_TOUCH overrides INPUT_PC_MOUSE. Mouse bindings may not work as expected.");
+            if (INPUT_MOBILE_MOUSE)
+            {
+                _global.__touch_allowed = false;
+            }
+            else
+            {
+                _global.__mouse_allowed = false;
+                if (!__INPUT_SILENT) __input_trace("Warning! INPUT_WINDOWS_TOUCH overrides INPUT_PC_MOUSE. Mouse bindings may not work as expected.");
+            }
         }
         else
         {

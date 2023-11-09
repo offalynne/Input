@@ -22,7 +22,7 @@ function __input_system_tick()
         }
     }
 
-    if (_global.__touch_allowed)
+    if (__INPUT_TOUCH_SUPPORT && INPUT_MOBILE_MOUSE)
     {
         var _touch_index = undefined;
         var _touch_press_index = _global.__pointer_pressed_index;
