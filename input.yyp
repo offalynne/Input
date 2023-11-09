@@ -120,6 +120,7 @@
     {"id":{"name":"input_check_double","path":"scripts/input_check_double/input_check_double.yy",},"order":1,},
     {"id":{"name":"input_check_double_pressed","path":"scripts/input_check_double_pressed/input_check_double_pressed.yy",},"order":2,},
     {"id":{"name":"input_check_double_released","path":"scripts/input_check_double_released/input_check_double_released.yy",},"order":3,},
+    {"id":{"name":"input_players_using_source","path":"scripts/input_players_using_source/input_players_using_source.yy",},"order":17,},
     {"id":{"name":"input_check_long","path":"scripts/input_check_long/input_check_long.yy",},"order":4,},
     {"id":{"name":"input_check_long_pressed","path":"scripts/input_check_long_pressed/input_check_long_pressed.yy",},"order":5,},
     {"id":{"name":"input_check_long_released","path":"scripts/input_check_long_released/input_check_long_released.yy",},"order":6,},
