@@ -34,6 +34,7 @@ function input_mouse_check_released(_binding)
     
     if (_global.__tap_click)
     {
+        //Trackpad
         _left = true;
     }
     
