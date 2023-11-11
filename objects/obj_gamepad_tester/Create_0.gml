@@ -1,3 +1,4 @@
+use_debug_overlay = true;
 test_index = 0;
 
 if (INPUT_ON_PC)
@@ -9,5 +10,6 @@ if (INPUT_ON_PC)
     catch(_e)
     {
         show_debug_message("Error in Input gamepad tester \n===\n" + string(_e[$ "message"]) + "===");
+        use_debug_overlay = false;
     }
 }
