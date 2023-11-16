@@ -34,7 +34,7 @@ function input_mouse_check_pressed(_binding)
     
     if (_global.__tap_click)
     {
-        //Touchpad
+        //Trackpad
         _left = true;
     }
     
