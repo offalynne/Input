@@ -226,10 +226,10 @@ function __input_class_cursor() constructor
                     var _camera = (view_enabled && view_visible[0])? view_camera[0] : undefined;
                     if (_camera != undefined)
                     {
-                        var _l = camera_get_view_x(     _camera);
-                        var _t = camera_get_view_y(     _camera);
-                        var _r = camera_get_view_width( _camera);
-                        var _b = camera_get_view_height(_camera);
+                        var _l = camera_get_view_x(_camera);
+                        var _t = camera_get_view_y(_camera);
+                        var _r = _l + camera_get_view_width( _camera)-1;
+                        var _b = _t + camera_get_view_height(_camera)-1;
                     }
                     else
                     {
