@@ -275,12 +275,6 @@ function __input_class_gamepad(_index) constructor
             {
                 __disconnection_frame = __global.__frame;
             }
-            
-            //Flag for removal
-            if (__global.__frame - __disconnection_frame >= __INPUT_GAMEPADS_DISCONNECTION_TIMEOUT)
-            {
-                return false;
-            }
         }
         else
         {
@@ -327,7 +321,8 @@ function __input_class_gamepad(_index) constructor
             }
         }
         
-        var _scan = (current_time > __scan_start_time);
+        //Tick mapping
+        var _scan = (_connected && (current_time > __scan_start_time));
         var _gamepad = index;
         var _i = 0;
         repeat(array_length(mapping_array))
@@ -336,6 +331,17 @@ function __input_class_gamepad(_index) constructor
             ++_i;
         }
         
+        //Handle disconnection
+        if (not _connected)
+        {
+            //Flag for removal
+            if (__global.__frame - __disconnection_frame >= __INPUT_GAMEPADS_DISCONNECTION_TIMEOUT)
+            {
+                return false;
+            }
+        }
+        
+        //Handle vibration
         if (__vibration_support)
         {
             if (_connected && __vibration_received_this_frame && input_game_has_focus())
