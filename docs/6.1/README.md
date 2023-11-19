@@ -3,7 +3,7 @@
 <p align="center">Comprehensive cross-platform input for GameMaker 2022 LTS by <a href="https://www.jujuadams.com/" target="_blank">Juju Adams</a>, <a href="https://twitter.com/offalynne" target="_blank">Alynne Keith</a>, and <a href="#/6.1/Credits">Friends</a></p>
 
 <p align="center"><a href="https://github.com/JujuAdams/Input/releases/" target="_blank">Download the .yymps</a></p>
-<p align="center">Talk about Input on the <a href="https://discord.gg/8krYCqr" target="_blank">Discord server</a></p>
+<p align="center">Talk about Input on the <a href="https://discord.gg/RDYyRqBswD" target="_blank">Discord server</a></p>
 
 ---
 
