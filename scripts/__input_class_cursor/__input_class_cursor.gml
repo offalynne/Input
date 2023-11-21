@@ -231,27 +231,25 @@ function __input_class_cursor() constructor
                         var _t = camera_get_view_y(_camera);
                         var _r = _l + camera_get_view_width( _camera)-1;
                         var _b = _t + camera_get_view_height(_camera)-1;
-						
+                        
                         var _viewA = camera_get_view_angle(_camera);
-						
+                        
                         if (_viewA != 0.0)
                         {
-                            
                             var _pivotX = (_l + _r)/2
-                            var _pivotY = (_t + _b)/2
-							
+                            var _pivotY = (_t + _b)/2                            
                             var _cos = dcos(-_viewA);
                             var _sin = dsin(-_viewA);
-							
+                            
                             var _rotatedX = (__x-_pivotX)*_cos - (__y-_pivotY)*_sin
                             var _rotatedY = (__x-_pivotX)*_sin + (__y-_pivotY)*_cos
-							
+                            
                             _rotatedX = clamp(_rotatedX, _l + __limit_boundary_margin - _pivotX, _r - __limit_boundary_margin - _pivotX);
                             _rotatedY = clamp(_rotatedY, _t + __limit_boundary_margin - _pivotY, _b - __limit_boundary_margin - _pivotY);
-							
+                            
                             __x =  _rotatedX*_sin + _rotatedY*_cos + _pivotX;
                             __y = -_rotatedX*_sin + _rotatedY*_cos + _pivotY;
-							
+                            
                             _clamped = true;
                         }
                     }
