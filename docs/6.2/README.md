@@ -1,8 +1,8 @@
-<img src="https://raw.githubusercontent.com/JujuAdams/Input/master/LOGO.png" width="50%" style="display: block; margin: auto;" />
+<img src="https://raw.githubusercontent.com/offalynne/Input/master/LOGO.png" width="50%" style="display: block; margin: auto;" />
 <h1 align="center">Input 6.2</h1>
 <p align="center">Comprehensive cross-platform input for GameMaker 2022 LTS by <a href="https://www.jujuadams.com/" target="_blank">Juju Adams</a>, <a href="https://twitter.com/offalynne" target="_blank">Alynne Keith</a>, and <a href="#/6.1/Credits">Friends</a></p>
 
-<p align="center"><a href="https://github.com/JujuAdams/Input/releases/" target="_blank">Download the .yymps</a></p>
+<p align="center"><a href="https://github.com/offalynne/Input/releases/" target="_blank">Download the .yymps</a></p>
 <p align="center">Talk about Input on the <a href="https://discord.gg/RDYyRqBswD" target="_blank">Discord server</a></p>
 
 ---
@@ -19,7 +19,7 @@ This library is a significant improvement on GameMaker's native gamepad implemen
 
 **What platforms does Input support?**
 
-Everything! You might run into edge cases on platforms that we don't regularly test; please [report any bugs](https://github.com/JujuAdams/Input/issues) if and when you find them.
+Everything! You might run into edge cases on platforms that we don't regularly test; please [report any bugs](https://github.com/offalynne/Input/issues) if and when you find them.
 
 &nbsp;
 
@@ -31,19 +31,19 @@ Version 5 of Input primarily supports GameMaker LTS 2022, and in theory supports
 
 **How is Input licensed? Can I use it for commercial projects?**
 
-[Input is released under the MIT license](https://github.com/JujuAdams/Input/blob/master/LICENSE). This means you can use it for whatever purpose you want, including commercial projects. It'd mean a lot to us if you'd drop our names in the credits ("Juju Adams, Alynne Keith, and Friends") and/or say thanks, but you're under no obligation to do so.
+[Input is released under the MIT license](https://github.com/offalynne/Input/blob/master/LICENSE). This means you can use it for whatever purpose you want, including commercial projects. It'd mean a lot to us if you'd drop our names in the credits ("Juju Adams, Alynne Keith, and Friends") and/or say thanks, but you're under no obligation to do so.
 
 &nbsp;
 
 **I think you're missing a useful feature and I'd like you to implement it!**
 
-Great! Please make a [feature request](https://github.com/JujuAdams/Input/issues). Feature requests make Input a more fun tool to use and gives us new goals to reach for.
+Great! Please make a [feature request](https://github.com/offalynne/Input/issues). Feature requests make Input a more fun tool to use and gives us new goals to reach for.
 
 &nbsp;
 
 **I found a bug, and it both scares and mildly annoys me. What is the best way to get the problem solved?**
 
-Please make a [bug report](https://github.com/JujuAdams/Input/issues). We check GitHub every day and bug fixes usually go out a couple days after that. You can also grab us on the [Discord server](https://discord.gg/8krYCqr), but that's not a replacement for a nice clear bug report.
+Please make a [bug report](https://github.com/offalynne/Input/issues). We check GitHub every day and bug fixes usually go out a couple days after that. You can also grab us on the [Discord server](https://discord.gg/8krYCqr), but that's not a replacement for a nice clear bug report.
 
 &nbsp;
 
