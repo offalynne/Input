@@ -234,7 +234,7 @@ function __input_class_cursor() constructor
 						
                         var _viewA = camera_get_view_angle(_camera);
 						
-                        if(_viewA != 0.0)
+                        if (_viewA != 0.0)
                         {
                             
                             var _pivotX = (_l + _r)/2
@@ -280,7 +280,7 @@ function __input_class_cursor() constructor
                 break;
             }
             
-            if(!_clamped)
+            if (!_clamped)
             {
                 __x = clamp(__x, _l + __limit_boundary_margin, _r - __limit_boundary_margin);
                 __y = clamp(__y, _t + __limit_boundary_margin, _b - __limit_boundary_margin);
