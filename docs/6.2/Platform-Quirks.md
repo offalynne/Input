@@ -21,7 +21,7 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Input blocks mouse button presses that regain window focus in order to prevent undesired game input or binding.
 
-- Touch devices are not supported by GameMaker on desktop platforms, except in cases where they operate system-level mouse cursor events.
+- Touch devices are not supported by GameMaker on MacOS or Linux.
 
 ### Windows
 
