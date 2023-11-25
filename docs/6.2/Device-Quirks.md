@@ -114,7 +114,7 @@ On many platforms, gamepad indices do not enumerate predicatbly. Use source assi
 
 - Input blocks mouse button presses that change window focus in order to prevent undesired game input or binding.
 
-- Touch devices are not supported by GameMaker on desktop platforms, except in cases where they operate system-level mouse cursor events.
+- Touch devices are not supported by GameMaker on desktop MacOS or Linux.
 
 ### Pointing Devices on Mobile, Switch, and HTML5
 
