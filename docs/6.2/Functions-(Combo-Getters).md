@@ -183,7 +183,7 @@ if (input_check_pressed("shockwave aoe"))
 
 #### **Description**
 
-**Returns:** Number or `undefined`, the determined direction for the combo's execution
+**Returns:** Number or `undefined`, the determined direction for the combo's execution in degrees
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
