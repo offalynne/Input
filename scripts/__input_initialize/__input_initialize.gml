@@ -742,7 +742,7 @@ function __input_initialize()
         
         if (INPUT_ON_MOBILE && __INPUT_ON_APPLE)
         {
-            input_ignore_key_add(124); //Screenshot
+            input_ignore_key_add(0x7C); //Screenshot
         }
         
         if (INPUT_ON_WEB)
