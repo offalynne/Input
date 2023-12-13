@@ -159,7 +159,7 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "SteamController";
                 }
-                else if (__input_string_contains(_desc, "ps5", "dualsense"))
+                else if (__input_string_contains(_desc, "ps5", "dualsense", "backbone one playstation"))
                 {
                     raw_type = "PS5Controller";
                 }
