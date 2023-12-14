@@ -200,6 +200,30 @@ function __input_class_virtual() constructor
         return self;
     }
     
+   static dpad_1axis = function(_click, _left_or_down, _right_or_up, _vertical = false)
+    {
+        if (__destroyed || __background) return self;
+        __type       = _vertical ? INPUT_VIRTUAL_TYPE.DPAD_VERTICAL : INPUT_VIRTUAL_TYPE.DPAD_HORIZONTAL;
+        __verb_click = _click;
+        if(__type == INPUT_VIRTUAL_TYPE.DPAD_VERTICAL)
+        {
+            __verb_left  = undefined;
+            __verb_right = undefined;
+            __verb_up    = _right_or_up;
+            __verb_down  = _left_or_down;
+        }
+        else // Horizontal 1-axis DPAD
+        {
+            __verb_left  = _left_or_down;
+            __verb_right = _right_or_up;
+            __verb_up    = undefined;
+            __verb_down  = undefined;
+
+        }
+        
+        return self;
+    }
+
     static dpad = function(_click, _left, _right, _up, _down, _4dir = false)
     {
         if (__destroyed || __background) return self;
@@ -772,7 +796,35 @@ function __input_class_virtual() constructor
                 
                 if (_threshold_factor > 0)
                 {
-                    if (__type == INPUT_VIRTUAL_TYPE.DPAD_4DIR)
+                    if (__type == INPUT_VIRTUAL_TYPE.DPAD_VERTICAL)
+                    {
+                        var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y)) / 180) mod 2;
+                        switch(_direction)
+                        {
+                            case 0:
+                                _player.__verb_set_from_virtual(__verb_up, 1, 1, false);
+                            break;
+                            case 1:
+                                _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
+                            break;
+                        }
+
+                    }
+                    else if (__type == INPUT_VIRTUAL_TYPE.DPAD_HORIZONTAL)
+                    {
+                        var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 90) / 180) mod 2;
+                        switch(_direction)
+                        {
+                            case 0:
+                                _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
+                            break;
+                            case 1:
+                                _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
+                            break;
+                        }
+
+                    }
+                    else if (__type == INPUT_VIRTUAL_TYPE.DPAD_4DIR)
                     {
                         var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 45) / 90) mod 4;
                         switch(_direction)
