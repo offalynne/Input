@@ -200,27 +200,29 @@ function __input_class_virtual() constructor
         return self;
     }
     
-   static dpad_1axis = function(_click, _left_or_down, _right_or_up, _vertical = false)
+    // Horizontal 1-axis DPAD
+    static hpad = function(_click, _left, _right)
     {
         if (__destroyed || __background) return self;
-        __type       = _vertical ? INPUT_VIRTUAL_TYPE.DPAD_VERTICAL : INPUT_VIRTUAL_TYPE.DPAD_HORIZONTAL;
+        __type       = INPUT_VIRTUAL_TYPE.DPAD_HORIZONTAL;
         __verb_click = _click;
-        if(__type == INPUT_VIRTUAL_TYPE.DPAD_VERTICAL)
-        {
-            __verb_left  = undefined;
-            __verb_right = undefined;
-            __verb_up    = _right_or_up;
-            __verb_down  = _left_or_down;
-        }
-        else // Horizontal 1-axis DPAD
-        {
-            __verb_left  = _left_or_down;
-            __verb_right = _right_or_up;
-            __verb_up    = undefined;
-            __verb_down  = undefined;
+        __verb_left  = _left;
+        __verb_right = _right;
+        __verb_up    = undefined;
+        __verb_down  = undefined;
+        return self;
+    }
 
-        }
-        
+    // Vertical 1-axis DPAD
+    static vpad = function(_click, _up, _down)
+    {
+        if (__destroyed || __background) return self;
+        __type       = INPUT_VIRTUAL_TYPE.DPAD_VERTICAL;
+        __verb_click = _click;
+        __verb_left  = undefined;
+        __verb_right = undefined;
+        __verb_up    = _up;
+        __verb_down  = _down;
         return self;
     }
 

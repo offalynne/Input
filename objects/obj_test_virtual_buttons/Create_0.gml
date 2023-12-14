@@ -17,13 +17,13 @@ c = input_virtual_create()
 // Horizontal single axis DPAD
 d = input_virtual_create()
     .rectangle(800, 410, 1000, 510)
-	.dpad_1axis(undefined, "left", "right")
+	.hpad(undefined, "left", "right")
 	.active(true);
 
 // Vertical single axis DPAD
 e = input_virtual_create()
     .rectangle(1050, 310, 1150, 550)
-	.dpad_1axis(undefined, "down", "up", true)
+	.vpad(undefined, "up", "down")
 	.active(true);
 
 // Full DPAD
