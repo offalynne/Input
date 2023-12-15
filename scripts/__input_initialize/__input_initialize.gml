@@ -17,7 +17,7 @@ function __input_initialize()
         exception_unhandled_handler(__input_exception_handler);
     }
     
-    __input_trace("Welcome to Input by @jujuadams and @offalynne! This is version ", __INPUT_VERSION, ", ", __INPUT_DATE);
+    __input_trace("Welcome to Input by Juju Adams and Alynne Keith! This is version ", __INPUT_VERSION, ", ", __INPUT_DATE);
     if (__INPUT_SILENT)
     {
         __input_trace("Warning! Per __INPUT_SILENT mode, most logging is suppressed. This is NOT recommended");
@@ -329,8 +329,15 @@ function __input_initialize()
         //Except on Windows
         if (__INPUT_ON_WINDOWS)
         {
-            _global.__mouse_allowed = false;       
-            if (!__INPUT_SILENT) __input_trace("Warning! INPUT_WINDOWS_TOUCH overrides INPUT_PC_MOUSE. Mouse bindings may not work as expected.");
+            if (INPUT_MOBILE_MOUSE)
+            {
+                _global.__touch_allowed = false;
+            }
+            else
+            {
+                _global.__mouse_allowed = false;
+                if (!__INPUT_SILENT) __input_trace("Warning! INPUT_WINDOWS_TOUCH overrides INPUT_PC_MOUSE. Mouse bindings may not work as expected.");
+            }
         }
         else
         {
@@ -735,7 +742,7 @@ function __input_initialize()
         
         if (INPUT_ON_MOBILE && __INPUT_ON_APPLE)
         {
-            input_ignore_key_add(124); //Screenshot
+            input_ignore_key_add(0x7C); //Screenshot
         }
         
         if (INPUT_ON_WEB)

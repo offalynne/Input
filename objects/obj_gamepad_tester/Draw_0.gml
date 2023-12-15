@@ -1,5 +1,7 @@
 //Feather disable all
 
+if (use_debug_overlay) return;
+
 draw_set_color(input_window_has_focus()? c_white : c_gray);
 
 var _string = "";

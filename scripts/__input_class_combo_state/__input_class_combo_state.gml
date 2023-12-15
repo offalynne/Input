@@ -182,8 +182,11 @@ function __input_class_combo_state(_name, _combo_def) constructor
             }
             else
             {
+                var _verb = _phase_array[__phase].__verb;
+                _verb = __direction_mapping[$ _verb] ?? _verb;
+                
                 //Remove hold requirement when charge isn't reset
-                __remove_from_require_hold_array(_phase_array[__phase].__verb);
+                __remove_from_require_hold_array(_verb);
             }
         }
         
@@ -202,6 +205,7 @@ function __input_class_combo_state(_name, _combo_def) constructor
     static __check_valid = function(_player_verb_struct)
     {
         static _all_verb_array = __global.__all_verb_array;
+        var _ignore_dict = __combo.__ignore_dict;
         
         //Check everything that's meant to be pressed is being pressed
         var _i = 0;
@@ -217,12 +221,12 @@ function __input_class_combo_state(_name, _combo_def) constructor
             ++_i;
         }
         
-        //Check that nothing that shouldn't be pressed is being pressed
+        //Check that nothing that shouldn't be pressed isn't being pressed
         var _i = 0;
         repeat(array_length(_all_verb_array))
         {
             var _verb = _all_verb_array[_i];
-                
+            
             var _state = _player_verb_struct[$ _verb];
             if (not _state.__inactive)
             {
@@ -231,7 +235,7 @@ function __input_class_combo_state(_name, _combo_def) constructor
                     //Once a verb has been released, don't allow it to be retriggered
                     if (not _state.held) variable_struct_remove(__allow_hold_dict, _verb);
                 }
-                else
+                else if (not variable_struct_exists(_ignore_dict, __direction_mapping[$ _verb] ?? _verb)) //Don't trigger a failure if this verb has been ignored
                 {
                     if (_state.held)
                     {

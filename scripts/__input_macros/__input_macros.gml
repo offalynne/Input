@@ -1,7 +1,7 @@
 // Feather disable all
 
-#macro __INPUT_VERSION "6.1.5"
-#macro __INPUT_DATE    "2023-11-05"
+#macro __INPUT_VERSION "6.2.2 beta"
+#macro __INPUT_DATE    "2023-11-09"
 #macro __INPUT_DEBUG   false
 
 
@@ -88,6 +88,7 @@
 #macro __INPUT_KEYBOARD_NORMATIVE   (INPUT_ON_PC || INPUT_ON_WEB || __INPUT_ON_SWITCH)
 #macro __INPUT_LED_PATTERN_SUPPORT  ((os_type == os_ps5) || __INPUT_ON_SWITCH || __INPUT_ON_IOS || (__INPUT_ON_WINDOWS && !INPUT_ON_WEB))
 #macro __INPUT_STEAMWORKS_SUPPORT   ((__INPUT_ON_LINUX || __INPUT_ON_WINDOWS) && !INPUT_ON_WEB)
+#macro __INPUT_TOUCH_SUPPORT        (__INPUT_ON_WINDOWS || __INPUT_ON_SWITCH || INPUT_ON_MOBILE)
 
 #macro __INPUT_HOLD_THRESHOLD           0.2  //Minimum value from an axis for that axis to be considered activated at the gamepad layer. This is *not* the same as min/max thresholds for players
 #macro __INPUT_DELTA_HOTSWAP_THRESHOLD  0.1  //Minimum (absolute) change in gamepad mapping value between frames to register as new input. This triggers hotswapping
@@ -278,6 +279,14 @@ enum INPUT_VIRTUAL_TYPE
     DPAD_HORIZONTAL,
     DPAD_VERTICAL,
     THUMBSTICK,
+    TOUCHPAD,
+}
+
+enum INPUT_VIRTUAL_REFERENCE
+{
+    CENTER,
+    TOUCH_POINT,
+    DELTA,
 }
 
 enum INPUT_VIRTUAL_RELEASE

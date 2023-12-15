@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "input_window_has_focus",
+  "name": "input_players_using_source",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Deprecated",
-    "path": "folders/Input/(System)/Deprecated.yy",
+    "name": "15  Players",
+    "path": "folders/Input/15  Players.yy",
   },
 }
