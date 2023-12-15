@@ -879,28 +879,24 @@ function __input_class_virtual() constructor
                     switch(__type)
                     {
                         case INPUT_VIRTUAL_TYPE.DPAD_VERTICAL:
-                            var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y)) / 180) mod 2;
-                            switch(_direction)
+                            if(floor((point_direction(0, 0, __normalized_x, __normalized_y)) / 180) mod 2)
                             {
-                                case 0:
-                                    _player.__verb_set_from_virtual(__verb_up, 1, 1, false);
-                                break;
-                                case 1:
-                                    _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
-                                break;
+                                _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
+                            }
+                            else
+                            {
+                                _player.__verb_set_from_virtual(__verb_up, 1, 1, false)   
                             }
                         break;
-
+                        
                         case INPUT_VIRTUAL_TYPE.DPAD_HORIZONTAL:
-                            var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 90) / 180) mod 2;
-                            switch(_direction)
+                            if(floor((point_direction(0, 0, __normalized_x, __normalized_y) + 90) / 180) mod 2)
                             {
-                                case 0:
-                                    _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
-                                break;
-                                case 1:
-                                    _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
-                                break;
+                                _player.__verb_set_from_virtual(__verb_left, 1, 1, false);
+                            }
+                            else
+                            {
+                                _player.__verb_set_from_virtual(__verb_right, 1, 1, false)   
                             }
                         break;
 
