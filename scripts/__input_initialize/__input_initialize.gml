@@ -178,7 +178,7 @@ function __input_initialize()
                     }
                 }
                 
-                instance_create_depth(0, -__INPUT_CONTROLLER_OBJECT_DEPTH, __INPUT_CONTROLLER_OBJECT_DEPTH, input_controller_object);
+                instance_create_depth(0, 0, __INPUT_CONTROLLER_OBJECT_DEPTH, input_controller_object);
             }
         }
         
