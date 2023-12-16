@@ -204,6 +204,32 @@ function __input_class_virtual() constructor
         return self;
     }
     
+    // Horizontal 1-axis DPAD
+    static hpad = function(_click, _left, _right)
+    {
+        if (__destroyed || __background) return self;
+        __type       = INPUT_VIRTUAL_TYPE.DPAD_HORIZONTAL;
+        __verb_click = _click;
+        __verb_left  = _left;
+        __verb_right = _right;
+        __verb_up    = undefined;
+        __verb_down  = undefined;
+        return self;
+    }
+
+    // Vertical 1-axis DPAD
+    static vpad = function(_click, _up, _down)
+    {
+        if (__destroyed || __background) return self;
+        __type       = INPUT_VIRTUAL_TYPE.DPAD_VERTICAL;
+        __verb_click = _click;
+        __verb_left  = undefined;
+        __verb_right = undefined;
+        __verb_up    = _up;
+        __verb_down  = _down;
+        return self;
+    }
+
     static dpad = function(_click, _left, _right, _up, _down, _4dir = false)
     {
         if (__destroyed || __background) return self;
@@ -852,6 +878,28 @@ function __input_class_virtual() constructor
                 {
                     switch(__type)
                     {
+                        case INPUT_VIRTUAL_TYPE.DPAD_VERTICAL:
+                            if ((floor((point_direction(0, 0, __normalized_x, __normalized_y)) / 180) mod 2) == 1)
+                            {
+                                _player.__verb_set_from_virtual(__verb_down, 1, 1, false);
+                            }
+                            else
+                            {
+                                _player.__verb_set_from_virtual(__verb_up, 1, 1, false)   
+                            }
+                        break;
+                        
+                        case INPUT_VIRTUAL_TYPE.DPAD_HORIZONTAL:
+                            if ((floor((point_direction(0, 0, __normalized_x, __normalized_y) + 270) / 180) mod 2) == 1)
+                            {
+                                _player.__verb_set_from_virtual(__verb_right, 1, 1, false);
+                            }
+                            else
+                            {
+                                _player.__verb_set_from_virtual(__verb_left, 1, 1, false)   
+                            }
+                        break;
+
                         case INPUT_VIRTUAL_TYPE.DPAD_4DIR:
                             //Split the input direction into 4 discrete parts
                             var _direction = floor((point_direction(0, 0, __normalized_x, __normalized_y) + 45) / 90) mod 4;

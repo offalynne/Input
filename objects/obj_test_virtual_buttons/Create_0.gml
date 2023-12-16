@@ -3,7 +3,7 @@ a = input_virtual_create()
     .button("accept");
 
 b = input_virtual_create()
-    .circle(500, 300, 120)
+    .circle(400, 550, 100)
     .follow(true)
 
 c = input_virtual_create()
@@ -16,10 +16,50 @@ d = input_virtual_create()
     .active(true)
     .thumbstick(undefined, "left", "right", "up", "down");
 
-d = input_virtual_create()
-    .rectangle(600, 400, 800, 600)
+e = input_virtual_create()
+    .rectangle(550, 450, 750, 650)
     .threshold(0, 20)
     .touchpad(undefined, "left", "right", "up", "down");
 
+// Horizontal single axis DPAD
+f = input_virtual_create()
+    .rectangle(800, 410, 1000, 510)
+    .hpad(undefined, "left", "right")
+    .active(true);
+
+// Vertical single axis DPAD
+g = input_virtual_create()
+    .rectangle(1050, 310, 1150, 550)
+    .vpad(undefined, "up", "down")
+    .active(true);
+
+// Full DPAD
+h = input_virtual_create()
+    .rectangle(830, 540, 970, 680)
+    .dpad(undefined, "left", "right", "up", "down", false)
+    .active(true);
+
 test_x = room_width / 2;
 test_y = room_height / 2;
+
+// Helper to get string of the vbutton type currently being pressed
+type_str = {};
+type_str[$ INPUT_VIRTUAL_TYPE.BUTTON] = "Button";
+type_str[$ INPUT_VIRTUAL_TYPE.DPAD_4DIR] = "DPAD 4-Direction";
+type_str[$ INPUT_VIRTUAL_TYPE.DPAD_8DIR] = "DPAD 8-Direction";
+type_str[$ INPUT_VIRTUAL_TYPE.DPAD_HORIZONTAL] = "DPAD Horizontal";
+type_str[$ INPUT_VIRTUAL_TYPE.DPAD_VERTICAL] = "DPAD Vertical";
+type_str[$ INPUT_VIRTUAL_TYPE.THUMBSTICK] = "Thumbstick";
+type_str[$ INPUT_VIRTUAL_TYPE.TOUCHPAD] = "Touchpad";
+pressed_vbutton_type = function() {
+    static _vbutton_arr = [a, b, c, d, e, f, g, h];
+    static _len = array_length(_vbutton_arr);
+    var _type = undefined;
+    for(var i = 0; i<_len; i++) {
+        if(_vbutton_arr[i].check()) {
+            return type_str[$ _vbutton_arr[i].get_type()] ?? "";
+            break;
+        }
+    }		
+    return ""; // failsafe..
+}
