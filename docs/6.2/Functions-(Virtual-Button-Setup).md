@@ -241,6 +241,74 @@ for(var _i = 0; _i < QUICK_SLOT_COUNT; _i++)
 
 &nbsp;
 
+## .hpad
+
+`<virtual button>.hpad(clickVerb, leftVerb, rightVerb)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** `self`
+
+|Name       |Datatype|Purpose                                                                                                    |
+|-----------|--------|-----------------------------------------------------------------------------------------------------------|
+|`clickVerb`|string  |Verb to bind clicking the button to                                                                        |
+|`leftVerb` |string  |Verb to bind touching the left of the button to                                                            |
+|`rightVerb`|string  |Verb to bind touching the right of the button to                                                           |
+
+Binds the virtual button to a set of basic Input verbs, one for each direction on the horizontal axis and an extra one for touching the hpad at all. Verbs are triggered as **digital**, meaning that verbs are either on or off without values in between.
+
+#### **Example**
+
+```gml
+//Treat the bottom of the GUI as a reference point
+var _bottom = display_get_gui_height();
+
+//Make a horizontal dpad (hpad) that moves left or right
+vbutton_hpad = input_virtual_create()
+               .rectangle(100, _bottom - 200, 200, _bottom - 100)
+               .hpad(undefined, "left", "right");
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## .vpad
+
+`<virtual button>.hpad(clickVerb, upVerb, downVerb)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** `self`
+
+|Name       |Datatype|Purpose                                                                                                    |
+|-----------|--------|-----------------------------------------------------------------------------------------------------------|
+|`clickVerb`|string  |Verb to bind clicking the button to                                                                        |
+|`upVerb`   |string  |Verb to bind touching the top of the button to                                                             |
+|`downVerb` |string  |Verb to bind touching the bottom of the to                                                                 |
+
+Binds the virtual button to a set of basic Input verbs, one for each direction on the vertical axis and an extra one for touching the hpad at all. Verbs are triggered as **digital**, meaning that verbs are either on or off without values in between.
+
+#### **Example**
+
+```gml
+//Treat the bottom of the GUI as a reference point
+var _bottom = display_get_gui_height();
+
+//Make a vertical dpad (vpad) that moves up or down
+vbutton_vpad = input_virtual_create()
+               .rectangle(100, _bottom - 200, 200, _bottom - 100)
+               .vpad(undefined, "up", "down");
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
 ## .dpad
 
 `<virtual button>.dpad(clickVerb, leftVerb, rightVerb, upVerb, downVerb, [4dir])`
@@ -370,12 +438,15 @@ The sensitivity of a touchpad is controlled by setting the threshold for the vir
 
 The `INPUT_VIRTUAL_TYPE` enum contains the following elements:
 
-|Name         |Purpose                                                                         |
-|-------------|--------------------------------------------------------------------------------|
-|`.BUTTON`    |Virtual button bindings set by `.button()`                                      |
-|`.DPAD_8DIR` |Virtual button bindings set by `.dpad()` with the `4dir` argument set to `false`|
-|`.DPAD_4DIR` |Virtual button bindings set by `.dpad()` with the `4dir` argument set to `true` |
-|`.THUMBSTICK`|Virtual button bindings set by `.thumbstick()`                                  |
+|Name         |Purpose                                                                              |
+|-------------|-------------------------------------------------------------------------------------|
+|`.BUTTON`    	   |Virtual button bindings set by `.button()`                                      |
+|`.DPAD_HORIZONTAL`|Virtual button bindings set by `.hpad()`                                        |
+|`.DPAD_VERTICAL`  |Virtual button bindings set by `.vpad()`                                        |
+|`.DPAD_8DIR` 	   |Virtual button bindings set by `.dpad()` with the `4dir` argument set to `false`|
+|`.DPAD_4DIR` 	   |Virtual button bindings set by `.dpad()` with the `4dir` argument set to `true` |
+|`.THUMBSTICK`	   |Virtual button bindings set by `.thumbstick()`                                  |
+|`.TOUCHPAD`	   |Virtual button bindings set by `.touchpad()`                                    |
 
 #### **Example**
 
