@@ -463,7 +463,7 @@ function __input_class_virtual() constructor
         return __touch_y;
     }
     
-    static get_touch_start_dx = function()
+    static get_touch_dx = function()
     {
         if (__destroyed) return 0;
         if (__prev_x == undefined) return 0;
@@ -471,7 +471,7 @@ function __input_class_virtual() constructor
         return __touch_x - __prev_x;
     }
     
-    static get_touch_start_dy = function()
+    static get_touch_dy = function()
     {
         if (__destroyed) return 0;
         if (__prev_y == undefined) return 0;
@@ -479,18 +479,18 @@ function __input_class_virtual() constructor
         return __touch_y - __prev_y;
     }
     
-    static get_touch_x = function()
+    static get_touch_start_x = function()
     {
         if (__destroyed) return 0;
         
-        return __touch_x;
+        return __touch_start_x;
     }
     
-    static get_touch_y = function()
+    static get_touch_start_y = function()
     {
         if (__destroyed) return 0;
         
-        return __touch_y;
+        return __touch_start_y;
     }
     
     #endregion
@@ -718,8 +718,11 @@ function __input_class_virtual() constructor
         
         if (_over)
         {
+            // Initialize the starting point
             __touch_start_x = _touch_x;
             __touch_start_y = _touch_y;
+            __touch_x       = __touch_start_x;
+            __touch_y       = __touch_start_y;
             
             if (__record_history) __history_push(_touch_x, _touch_y);
             
@@ -794,6 +797,9 @@ function __input_class_virtual() constructor
                 var _player = __global.__touch_player;
                 _player.__verb_set_from_virtual(__verb_click, 1, 1, false);
                 
+                __prev_x = __touch_x;
+                __prev_y = __touch_y;
+                
                 if (not __held_buffer)
                 {
                     __touch_x = device_mouse_x_to_gui(__touch_device);
@@ -825,9 +831,6 @@ function __input_class_virtual() constructor
                         __input_error("Reference point type (", __reference, ") not supported");
                     break;
                 }
-                
-                __prev_x = __touch_x;
-                __prev_y = __touch_y;
                 
                 var _length = _dx*_dx + _dy*_dy;
                 if (_length <= 0)
