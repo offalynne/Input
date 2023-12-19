@@ -277,7 +277,7 @@ vbutton_hpad = input_virtual_create()
 
 ## .vpad
 
-`<virtual button>.hpad(clickVerb, upVerb, downVerb)`
+`<virtual button>.vpad(clickVerb, upVerb, downVerb)`
 
 <!-- tabs:start -->
 
