@@ -303,6 +303,8 @@ beef,feed,CommunityXBox360 // Monect
 045e,0b03,CommunityXBoxOne // Xbox One
 20d6,2802,CommunityXBoxOne // PowerA Wired
 1915,0040,CommunityXBoxOne // Flydigi X9ET Pro and Vader 2
+358a,0201,CommunityXBoxOne // Backbone One USB C Xbox
+358a,0102,CommunityXBoxOne // Backbone One iOS Xbox
 0e6f,0901,CommunityPSX // PDP Versus Fighting
 2563,0526,CommunityPSX // Uberwith PS
 0e6f,0111,CommunityPSX // Afterglow PS3
@@ -453,6 +455,7 @@ dead,beef,CommunityPSX // Hidromancer
 1532,100b,CommunityPS5 // Razer Wolverine PS5 Controller
 3285,0d17,CommunityPS5 // Nacon Revolution 5 Pro (PS4 Mode)
 3285,0d19,CommunityPS5 // Nacon Revolution 5 Pro (PS5 Mode)
+358a,0204,CommunityPS5 // Backbone One USB C PlayStation
 057e,2019,CommunityN64 // NSO N64
 06f7,0001,CommunityN64 // N64 Adaptoid
 2dc8,9002,CommunityN64 // Retro Bit x 8BitDo RB8 64 (USB)
