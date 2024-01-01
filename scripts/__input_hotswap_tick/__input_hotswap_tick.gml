@@ -153,19 +153,16 @@ function __input_hotswap_axis_delta(_gamepad)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
-    if (!__INPUT_SDL2_SUPPORT || _gamepad.custom_mapping)
+    var _player = _global.__players[0];
+    if (((abs(_gamepad.get_value(gp_shoulderlb)) > _player.__axis_threshold_get(gp_shoulderlb).mini) && (abs(_gamepad.get_delta(gp_shoulderlb)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+    ||  ((abs(_gamepad.get_value(gp_shoulderrb)) > _player.__axis_threshold_get(gp_shoulderrb).mini) && (abs(_gamepad.get_delta(gp_shoulderrb)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+    ||  ((abs(_gamepad.get_value(gp_axislv    )) > _player.__axis_threshold_get(gp_axislv    ).mini) && (abs(_gamepad.get_delta(gp_axislv    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+    ||  ((abs(_gamepad.get_value(gp_axislh    )) > _player.__axis_threshold_get(gp_axislh    ).mini) && (abs(_gamepad.get_delta(gp_axislh    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+    ||  ((abs(_gamepad.get_value(gp_axislv    )) > _player.__axis_threshold_get(gp_axislv    ).mini) && (abs(_gamepad.get_delta(gp_axislv    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+    ||  ((abs(_gamepad.get_value(gp_axisrh    )) > _player.__axis_threshold_get(gp_axisrh    ).mini) && (abs(_gamepad.get_delta(gp_axisrh    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
+    ||  ((abs(_gamepad.get_value(gp_axisrv    )) > _player.__axis_threshold_get(gp_axisrv    ).mini) && (abs(_gamepad.get_delta(gp_axisrv    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD)))
     {
-        var _player = _global.__players[0];
-        if (((abs(_gamepad.get_value(gp_shoulderlb)) > _player.__axis_threshold_get(gp_shoulderlb).mini) && (abs(_gamepad.get_delta(gp_shoulderlb)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
-        ||  ((abs(_gamepad.get_value(gp_shoulderrb)) > _player.__axis_threshold_get(gp_shoulderrb).mini) && (abs(_gamepad.get_delta(gp_shoulderrb)) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
-        ||  ((abs(_gamepad.get_value(gp_axislv    )) > _player.__axis_threshold_get(gp_axislv    ).mini) && (abs(_gamepad.get_delta(gp_axislv    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
-        ||  ((abs(_gamepad.get_value(gp_axislh    )) > _player.__axis_threshold_get(gp_axislh    ).mini) && (abs(_gamepad.get_delta(gp_axislh    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
-        ||  ((abs(_gamepad.get_value(gp_axislv    )) > _player.__axis_threshold_get(gp_axislv    ).mini) && (abs(_gamepad.get_delta(gp_axislv    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
-        ||  ((abs(_gamepad.get_value(gp_axisrh    )) > _player.__axis_threshold_get(gp_axisrh    ).mini) && (abs(_gamepad.get_delta(gp_axisrh    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD))
-        ||  ((abs(_gamepad.get_value(gp_axisrv    )) > _player.__axis_threshold_get(gp_axisrv    ).mini) && (abs(_gamepad.get_delta(gp_axisrv    )) > __INPUT_DELTA_HOTSWAP_THRESHOLD)))
-        {
-            return true;
-        }
+        return true;
     }
 
     return false;

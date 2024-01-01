@@ -5,9 +5,10 @@ function __input_gamepad_set_mapping()
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
-    #region Console
+    if (blacklisted) return;
     
-    //Switch requires some extra setup
+    #region Switch
+    
     if (__INPUT_ON_SWITCH)
     {
         //Disallow dpad input from single Joy-Cons. This happens when moving the thumbstick around in horizontal mode
@@ -63,58 +64,6 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS,   "righty");
         set_mapping(gp_stickr, 5, __INPUT_MAPPING.BUTTON, "rightstick");
         
-        return;
-    }
-    
-    if (__INPUT_ON_PS || __INPUT_ON_XBOX)
-    {
-        set_mapping(gp_padu,   gp_padu,   __INPUT_MAPPING.BUTTON, "dpup");
-        set_mapping(gp_padd,   gp_padd,   __INPUT_MAPPING.BUTTON, "dpdown");
-        set_mapping(gp_padl,   gp_padl,   __INPUT_MAPPING.BUTTON, "dpleft");
-        set_mapping(gp_padr,   gp_padr,   __INPUT_MAPPING.BUTTON, "dpright");
-        set_mapping(gp_start,  gp_start,  __INPUT_MAPPING.BUTTON, "start");
-        
-        set_mapping(gp_shoulderl,  gp_shoulderl,  __INPUT_MAPPING.BUTTON, "leftshoulder");
-        set_mapping(gp_shoulderr,  gp_shoulderr,  __INPUT_MAPPING.BUTTON, "rightshoulder");
-        
-        set_mapping(gp_face1, gp_face1, __INPUT_MAPPING.BUTTON, "a");
-        set_mapping(gp_face2, gp_face2, __INPUT_MAPPING.BUTTON, "b");
-        set_mapping(gp_face3, gp_face3, __INPUT_MAPPING.BUTTON, "x");
-        set_mapping(gp_face4, gp_face4, __INPUT_MAPPING.BUTTON, "y");
-        
-        set_mapping(gp_axislh, gp_axislh, __INPUT_MAPPING.AXIS,   "leftx");
-        set_mapping(gp_axislv, gp_axislv, __INPUT_MAPPING.AXIS,   "lefty");
-        set_mapping(gp_stickl, gp_stickl, __INPUT_MAPPING.BUTTON, "leftstick");
-        set_mapping(gp_axisrh, gp_axisrh, __INPUT_MAPPING.AXIS,   "rightx");
-        set_mapping(gp_axisrv, gp_axisrv, __INPUT_MAPPING.AXIS,   "righty");
-        set_mapping(gp_stickr, gp_stickr, __INPUT_MAPPING.BUTTON, "rightstick");
-        
-        //PlayStation only
-        if (__INPUT_ON_PS)
-        {
-            set_mapping(gp_shoulderlb, 4, __INPUT_MAPPING.AXIS, "lefttrigger");
-            set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.AXIS, "righttrigger");
-            
-            if (!INPUT_PS_TOUCHPAD_ALLOWED) set_mapping(gp_select, gp_select, __INPUT_MAPPING.BUTTON, "touchpad");
-            
-            return;
-        }
-        
-        //Xbox only
-        set_mapping(gp_shoulderlb, gp_shoulderlb, __INPUT_MAPPING.AXIS,   "lefttrigger");
-        set_mapping(gp_shoulderrb, gp_shoulderrb, __INPUT_MAPPING.AXIS,   "righttrigger");
-        set_mapping(gp_select,     gp_select,     __INPUT_MAPPING.BUTTON, "back");
-        
-        return;
-    }
-    
-    #endregion
-    
-    #region Blacklist
-    
-    if (blacklisted)
-    {
-        set_custom_mapping();
         return;
     }
     
@@ -1127,6 +1076,24 @@ function __input_gamepad_set_mapping()
     {
         if (is_array(sdl2_definition))
         {
+            //As of 2020-08-17, GameMaker has weird in-build remapping rules for gamepad on MacOS
+            if (__INPUT_ON_MACOS)
+            {
+                if ((gamepad_get_mapping(index) != "") && (gamepad_get_mapping(index) != "no mapping"))
+                {
+                    if (!__INPUT_SILENT) __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
+                    mac_cleared_mapping = true;
+                }
+                
+                //Additionally, gamepad_remove_mapping() doesn't seem to work. Setting the SDL string to something mostly blank does work though
+                gamepad_test_mapping(index, gamepad_get_guid(index) + "," + gamepad_get_description(index) + ",");
+            }
+            else
+            {
+                if (!__INPUT_SILENT) __input_trace("Gamepad ", index, (blacklisted? " is blacklisted" : " has a custom mapping"), ", clearing GameMaker's native mapping string");
+                gamepad_remove_mapping(index);
+            }
+            
             var _i = 2;
             repeat(array_length(sdl2_definition) - 3)
             {
@@ -1379,69 +1346,113 @@ function __input_gamepad_set_mapping()
                     set_dpad_hat_mapping();
                 }
             }
+        
+            ////Add Atari VCS Classic twist mapping (semantically incorrect)
+            //if ((raw_type == "CommunityVCSClassic") || (raw_type == "HIDAtariVCSClassic"))
+            //{
+            //    set_mapping(gp_axisrh, 0, __INPUT_MAPPING.AXIS, "rightx").limited_range = __INPUT_ON_LINUX;
+            //}
+        
+            if (INPUT_SDL2_ALLOW_EXTENDED)
+            {
+                //Add mapping for touchpad button click on PS4 gamepads on platforms supporting it.
+                //Since the `touchpad` field is a later addition and largely missing from SDL2 data
+                //we're manually mapping it in cases where an otherwise-normal PS4 mapping is found
+                if ((__INPUT_ON_MACOS || __INPUT_ON_WINDOWS)
+                && (simple_type == "ps4") && (raw_type != "XInputPS4Controller")
+                && (mapping_gm_to_raw[$ string(gp_touchpad)] == undefined))
+                {                
+                    var _matched = 0;
+                    var _mapping = undefined;
+                    var _button_array = [gp_face3, gp_face1, gp_face2, gp_face4];
+                    var _offset = ((mac_cleared_mapping && __INPUT_ON_MACOS) ? 17 : 0);
+
+                    repeat(array_length(_button_array))
+                    {
+                        //Check mapping match (b0 - b3)
+                        _mapping = mapping_gm_to_raw[$ string(_button_array[_matched])];
+                        if (!is_struct(_mapping) || (_mapping[$ "raw"] != _matched + _offset)) break;
+                        ++_matched;
+                    }
+
+                    if (_matched == 4)
+                    {
+                        //Face button mapping matches normative PS4 gamepads, add `touchpad` button
+                        if (__INPUT_DEBUG) __input_trace("  (Adding touchpad mapping)");
+                        set_mapping(gp_touchpad, 13, __INPUT_MAPPING.BUTTON, "touchpad");
+                    }
+                }
+            
+                //Change Ouya guide mapping
+                if ((raw_type == "CommunityOuya") && (__INPUT_ON_WINDOWS || __INPUT_ON_LINUX))
+                {
+                    //Guide button issues 2 reports: one a tick after release which is usually too fast for GM's
+                    //interupt to catch, and another that's for long press that works after being held 1 second.
+                    //SDL's map assigns the first but we switch to the second which will work reliably for GM.
+                    if (__INPUT_DEBUG) __input_trace("  (Remapping guide button)");
+                    set_mapping(gp_guide, 15, __INPUT_MAPPING.BUTTON, "guide");
+                }
+            
+                //Swap P2 and P3 mappings on Elite controller only
+                if ((simple_type == "xbox one") && __input_string_contains(description, "Elite") 
+                &&  is_struct(mapping_gm_to_raw[$ string(gp_paddle2)]) && is_struct(mapping_gm_to_raw[$ string(gp_paddle3)]))
+                {
+                    if (__INPUT_DEBUG) __input_trace("  (Swapping Elite P2 and P3)");
+                    var _p2_mapping = mapping_gm_to_raw[$ string(gp_paddle2)].raw;
+                    set_mapping(gp_paddle2, mapping_gm_to_raw[$ string(gp_paddle3)].raw, __INPUT_MAPPING.BUTTON, "paddle2");
+                    set_mapping(gp_paddle3, _p2_mapping, __INPUT_MAPPING.BUTTON, "paddle3");
+                }
+            }
+        
+            return;
         }
         else
         {
             if (!__INPUT_SILENT) __input_trace("No SDL2 remapping available, falling back to GameMaker's mapping (", gamepad_get_mapping(index), ")");
         }
+    }    
+    
+    #endregion
+    
+    #region Generic
+    
+    set_mapping(gp_padu,  gp_padu,  __INPUT_MAPPING.BUTTON, "dpup");
+    set_mapping(gp_padd,  gp_padd,  __INPUT_MAPPING.BUTTON, "dpdown");
+    set_mapping(gp_padl,  gp_padl,  __INPUT_MAPPING.BUTTON, "dpleft");
+    set_mapping(gp_padr,  gp_padr,  __INPUT_MAPPING.BUTTON, "dpright");
+    set_mapping(gp_start, gp_start, __INPUT_MAPPING.BUTTON, "start");
         
-        ////Add Atari VCS Classic twist mapping (semantically incorrect)
-        //if ((raw_type == "CommunityVCSClassic") || (raw_type == "HIDAtariVCSClassic"))
-        //{
-        //    set_mapping(gp_axisrh, 0, __INPUT_MAPPING.AXIS, "rightx").limited_range = __INPUT_ON_LINUX;
-        //}
+    set_mapping(gp_shoulderl, gp_shoulderl, __INPUT_MAPPING.BUTTON, "leftshoulder");
+    set_mapping(gp_shoulderr, gp_shoulderr, __INPUT_MAPPING.BUTTON, "rightshoulder");
         
-        if (INPUT_SDL2_ALLOW_EXTENDED)
-        {
-            //Add mapping for touchpad button click on PS4 gamepads on platforms supporting it.
-            //Since the `touchpad` field is a later addition and largely missing from SDL2 data
-            //we're manually mapping it in cases where an otherwise-normal PS4 mapping is found
-            if ((__INPUT_ON_MACOS || __INPUT_ON_WINDOWS)
-            && (simple_type == "ps4") && (raw_type != "XInputPS4Controller")
-            && (mapping_gm_to_raw[$ string(gp_touchpad)] == undefined))
-            {                
-                var _matched = 0;
-                var _mapping = undefined;
-                var _button_array = [gp_face3, gp_face1, gp_face2, gp_face4];
-                var _offset = ((mac_cleared_mapping && __INPUT_ON_MACOS) ? 17 : 0);
-
-                repeat(array_length(_button_array))
-                {
-                    //Check mapping match (b0 - b3)
-                    _mapping = mapping_gm_to_raw[$ string(_button_array[_matched])];
-                    if (!is_struct(_mapping) || (_mapping[$ "raw"] != _matched + _offset)) break;
-                    ++_matched;
-                }
-
-                if (_matched == 4)
-                {
-                    //Face button mapping matches normative PS4 gamepads, add `touchpad` button
-                    if (__INPUT_DEBUG) __input_trace("  (Adding touchpad mapping)");
-                    set_mapping(gp_touchpad, 13, __INPUT_MAPPING.BUTTON, "touchpad");
-                }
-            }
+    set_mapping(gp_face1, gp_face1, __INPUT_MAPPING.BUTTON, "a");
+    set_mapping(gp_face2, gp_face2, __INPUT_MAPPING.BUTTON, "b");
+    set_mapping(gp_face3, gp_face3, __INPUT_MAPPING.BUTTON, "x");
+    set_mapping(gp_face4, gp_face4, __INPUT_MAPPING.BUTTON, "y");
+        
+    set_mapping(gp_axislh, gp_axislh, __INPUT_MAPPING.AXIS,   "leftx");
+    set_mapping(gp_axislv, gp_axislv, __INPUT_MAPPING.AXIS,   "lefty");
+    set_mapping(gp_stickl, gp_stickl, __INPUT_MAPPING.BUTTON, "leftstick");
+    set_mapping(gp_axisrh, gp_axisrh, __INPUT_MAPPING.AXIS,   "rightx");
+    set_mapping(gp_axisrv, gp_axisrv, __INPUT_MAPPING.AXIS,   "righty");
+    set_mapping(gp_stickr, gp_stickr, __INPUT_MAPPING.BUTTON, "rightstick");
+        
+    //PlayStation only
+    if (__INPUT_ON_PS)
+    {
+        set_mapping(gp_shoulderlb, 4, __INPUT_MAPPING.AXIS, "lefttrigger");
+        set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.AXIS, "righttrigger");
             
-            //Change Ouya guide mapping
-            if ((raw_type == "CommunityOuya") && (__INPUT_ON_WINDOWS || __INPUT_ON_LINUX))
-            {
-                //Guide button issues 2 reports: one a tick after release which is usually too fast for GM's
-                //interupt to catch, and another that's for long press that works after being held 1 second.
-                //SDL's map assigns the first but we switch to the second which will work reliably for GM.
-                if (__INPUT_DEBUG) __input_trace("  (Remapping guide button)");
-                set_mapping(gp_guide, 15, __INPUT_MAPPING.BUTTON, "guide");
-            }
+        if (!INPUT_PS_TOUCHPAD_ALLOWED) set_mapping(gp_select, gp_select, __INPUT_MAPPING.BUTTON, "touchpad");
             
-            //Swap P2 and P3 mappings on Elite controller only
-            if ((simple_type == "xbox one") && __input_string_contains(description, "Elite") 
-            &&  is_struct(mapping_gm_to_raw[$ string(gp_paddle2)]) && is_struct(mapping_gm_to_raw[$ string(gp_paddle3)]))
-            {
-                if (__INPUT_DEBUG) __input_trace("  (Swapping Elite P2 and P3)");
-                var _p2_mapping = mapping_gm_to_raw[$ string(gp_paddle2)].raw;
-                set_mapping(gp_paddle2, mapping_gm_to_raw[$ string(gp_paddle3)].raw, __INPUT_MAPPING.BUTTON, "paddle2");
-                set_mapping(gp_paddle3, _p2_mapping, __INPUT_MAPPING.BUTTON, "paddle3");
-            }
-        }
+        return;
     }
+        
+    set_mapping(gp_shoulderlb, gp_shoulderlb, __INPUT_MAPPING.AXIS,   "lefttrigger");
+    set_mapping(gp_shoulderrb, gp_shoulderrb, __INPUT_MAPPING.AXIS,   "righttrigger");
+    set_mapping(gp_select,     gp_select,     __INPUT_MAPPING.BUTTON, "back");
+    
+    return;
     
     #endregion
 }

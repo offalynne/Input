@@ -17,7 +17,6 @@ function __input_class_gamepad(_index) constructor
     vendor  = undefined;
     product = undefined;
     
-    custom_mapping      = false;
     mac_cleared_mapping = false;
     
     button_count = undefined;
@@ -53,19 +52,9 @@ function __input_class_gamepad(_index) constructor
     
     static discover = function()
     {
-        //Discard deadzone, we use axis thresholds
-        gamepad_set_axis_deadzone(index, 0);
-        
-        if (custom_mapping)
-        {
-            custom_mapping = false;
-            
-            if (!__INPUT_SILENT) __input_trace("Warning! Resetting Input's mapping for gamepad ", index);
-            
-            mapping_gm_to_raw = {};
-            mapping_raw_to_gm = {};
-            mapping_array     = [];
-        }
+        mapping_gm_to_raw = {};
+        mapping_raw_to_gm = {};
+        mapping_array     = [];
         
         button_count = gamepad_button_count(index);
         axis_count   = gamepad_axis_count(index);
@@ -131,7 +120,6 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_held = function(_gm)
     {
-        if (!custom_mapping) return gamepad_button_check(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
         return _mapping.held;
@@ -140,7 +128,6 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_pressed = function(_gm)
     {
-        if (!custom_mapping) return gamepad_button_check_pressed(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
         return _mapping.press;
@@ -149,7 +136,6 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_released = function(_gm)
     {
-        if (!custom_mapping) return gamepad_button_check_released(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
         return _mapping.release;
@@ -158,18 +144,6 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_value = function(_gm)
     {
-        if (!custom_mapping)
-        {
-            if ((_gm == gp_axislh) || (_gm == gp_axislv) || (_gm == gp_axisrh) || (_gm == gp_axisrv))
-            {
-                return clamp(gamepad_axis_value(index, _gm), -1.0, 1.0);
-            }
-            else
-            {
-                return gamepad_button_check(index, _gm);
-            }
-        }
-        
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return 0.0;
         return _mapping.value;
@@ -178,7 +152,6 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_delta = function(_gm)
     {
-        if (!custom_mapping) return get_value(_gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return 0.0;
         return _mapping.__value_delta;
@@ -187,51 +160,9 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static is_axis = function(_gm)
     {
-        if (!custom_mapping)
-        {
-            if ((_gm == gp_shoulderlb) || (_gm == gp_shoulderrb))
-            {
-                return !__INPUT_DIGITAL_TRIGGER;
-            }
-            else
-            {
-                return ((_gm == gp_axislh) || (_gm == gp_axislv) || (_gm == gp_axisrh) || (_gm == gp_axisrv));
-            }
-        }
-        
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
         return (_mapping.type == __INPUT_MAPPING.AXIS);
-    }
-    
-    static set_custom_mapping = function()
-    {
-        custom_mapping = true;
-            
-        if (__INPUT_SDL2_SUPPORT)
-        {
-            //As of 2020-08-17, GameMaker has weird in-build remapping rules for gamepad on MacOS
-            if (__INPUT_ON_MACOS)
-            {
-                if ((gamepad_get_mapping(index) != "") && (gamepad_get_mapping(index) != "no mapping"))
-                {
-                    if (!__INPUT_SILENT) __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
-                    mac_cleared_mapping = true;
-                }
-                
-                //Additionally, gamepad_remove_mapping() doesn't seem to work. Setting the SDL string to something mostly blank does work though
-                gamepad_test_mapping(index, gamepad_get_guid(index) + "," + gamepad_get_description(index) + ",");
-            }
-            else
-            {
-                if (!__INPUT_SILENT) __input_trace("Gamepad ", index, (blacklisted? " is blacklisted" : " has a custom mapping"), ", clearing GameMaker's native mapping string");
-                gamepad_remove_mapping(index);
-            }
-        }
-        else if (!INPUT_ON_CONSOLE)
-        {
-            __input_trace("Gamepad ", index, " cannot remove GameMaker's native mapping string, this feature is not supported by Input on this platform");
-        }
     }
     
     /// @param GMconstant
@@ -240,8 +171,6 @@ function __input_class_gamepad(_index) constructor
     /// @param SDLname
     static set_mapping = function(_gm, _raw_index, _mapping_type, _sdl_name)
     {
-         if not (custom_mapping) set_custom_mapping();
-        
         //Correct for weird input index offset on MacOS if the gamepad already had a native GameMaker mapping
         if (mac_cleared_mapping && __INPUT_ON_MACOS)
         {
@@ -323,7 +252,11 @@ function __input_class_gamepad(_index) constructor
             }
         }
         
-        //Tick mapping
+        //Remove deadzone
+        var _deadzone = gamepad_get_axis_deadzone(index);
+        gamepad_set_axis_deadzone(index, 0.0);
+        
+        //Tick mapping        
         var _scan = (_connected && (current_time > __scan_start_time));
         var _gamepad = index;
         var _i = 0;
@@ -331,7 +264,10 @@ function __input_class_gamepad(_index) constructor
         {
             with(mapping_array[_i]) tick(_gamepad, _scan);
             ++_i;
-        }
+        }       
+        
+        //Restore deadzone
+        gamepad_set_axis_deadzone(index, _deadzone);
         
         //Handle disconnection
         if not (_connected)
