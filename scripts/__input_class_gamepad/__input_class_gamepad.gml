@@ -17,14 +17,16 @@ function __input_class_gamepad(_index) constructor
     vendor  = undefined;
     product = undefined;
     
-    mac_cleared_mapping = false;
-    
     button_count = undefined;
     axis_count   = undefined;
     hat_count    = undefined;
     
+    __custom_mapping      = false;
+    __mac_cleared_mapping = false;
+    
     __xinput_trigger_range = 1;
     __stadia_trigger_test  = false;
+    __axis_calibrated      = false;
     
     __steam_handle_index = undefined;
     __steam_handle       = undefined;
@@ -73,6 +75,7 @@ function __input_class_gamepad(_index) constructor
         
         __vibration_initialize();
         __disconnection_frame = undefined;
+        __axis_calibrated     = !__INPUT_ON_ANDROID;
 
         if (__global.__gamepad_motion_support) __motion = new __input_class_gamepad_motion(index);
         if (!__INPUT_SILENT)__input_trace("Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
@@ -165,14 +168,42 @@ function __input_class_gamepad(_index) constructor
         return (_mapping.type == __INPUT_MAPPING.AXIS);
     }
     
+    static __set_custom_mapping = function()
+    {
+        __custom_mapping = true;
+            
+        if (__INPUT_SDL2_SUPPORT)
+        {
+            //As of 2020-08-17, GameMaker has weird in-build remapping rules for gamepad on MacOS
+            if (__INPUT_ON_MACOS)
+            {
+                if ((gamepad_get_mapping(index) != "") && (gamepad_get_mapping(index) != "no mapping"))
+                {
+                    if (!__INPUT_SILENT) __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
+                    __mac_cleared_mapping = true;
+                }
+                
+                //Additionally, gamepad_remove_mapping() doesn't seem to work. Setting the SDL string to something mostly blank does work though
+                gamepad_test_mapping(index, gamepad_get_guid(index) + "," + gamepad_get_description(index) + ",");
+            }
+            else
+            {
+                if (!__INPUT_SILENT) __input_trace("Gamepad ", index, (blacklisted? " is blacklisted" : " has a custom mapping"), ", clearing GameMaker's native mapping string");
+                gamepad_remove_mapping(index);
+            }
+        }
+    }
+    
     /// @param GMconstant
     /// @param rawIndex
     /// @param rawMappingType
     /// @param SDLname
     static set_mapping = function(_gm, _raw_index, _mapping_type, _sdl_name)
     {
+        if (not __custom_mapping) __set_custom_mapping();
+        
         //Correct for weird input index offset on MacOS if the gamepad already had a native GameMaker mapping
-        if (mac_cleared_mapping && __INPUT_ON_MACOS)
+        if (__mac_cleared_mapping && __INPUT_ON_MACOS)
         {
             if (_mapping_type == __INPUT_MAPPING.AXIS  ) _raw_index +=  6;
             if (_mapping_type == __INPUT_MAPPING.BUTTON) _raw_index += 17;
@@ -264,10 +295,28 @@ function __input_class_gamepad(_index) constructor
         {
             with(mapping_array[_i]) tick(_gamepad, _scan);
             ++_i;
-        }       
+        }
         
         //Restore deadzone
         gamepad_set_axis_deadzone(index, _deadzone);
+        
+        //Handle uncalibrated axis
+        if (not __axis_calibrated)
+        {
+            var _success = false;
+            var _mapping = 0;
+            repeat(array_length(mapping_array))
+            {
+                _success = mapping_array[_mapping].__calibrate(__axis_calibrated);
+                if (_success)
+                {
+                    __input_trace("Axis calibration confirmed for gamepad ", index);
+                    __axis_calibrated = true;
+                }
+                
+                ++_mapping;
+            }
+        }
         
         //Handle disconnection
         if not (_connected)
