@@ -55,9 +55,9 @@ pressed_vbutton_type = function() {
     static _vbutton_arr = [a, b, c, d, e, f, g, h];
     static _len = array_length(_vbutton_arr);
     var _type = undefined;
-    for(var i = 0; i<_len; i++) {
-        if(_vbutton_arr[i].check()) {
-            return type_str[$ _vbutton_arr[i].get_type()] ?? "";
+    for(var _i = 0; _i<_len; _i++) {
+        if(_vbutton_arr[_i].check()) {
+            return type_str[$ _vbutton_arr[_i].get_type()] ?? "";
             break;
         }
     }		

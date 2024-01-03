@@ -5,6 +5,7 @@ function __input_gamepad_set_mapping()
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
+    __custom_mapping = false;
     if (blacklisted) return;
     
     #region Switch
@@ -1082,7 +1083,7 @@ function __input_gamepad_set_mapping()
                 if ((gamepad_get_mapping(index) != "") && (gamepad_get_mapping(index) != "no mapping"))
                 {
                     if (!__INPUT_SILENT) __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
-                    mac_cleared_mapping = true;
+                    __mac_cleared_mapping = true;
                 }
                 
                 //Additionally, gamepad_remove_mapping() doesn't seem to work. Setting the SDL string to something mostly blank does work though
@@ -1365,7 +1366,7 @@ function __input_gamepad_set_mapping()
                     var _matched = 0;
                     var _mapping = undefined;
                     var _button_array = [gp_face3, gp_face1, gp_face2, gp_face4];
-                    var _offset = ((mac_cleared_mapping && __INPUT_ON_MACOS) ? 17 : 0);
+                    var _offset = ((__mac_cleared_mapping && __INPUT_ON_MACOS) ? 17 : 0);
 
                     repeat(array_length(_button_array))
                     {
@@ -1414,7 +1415,7 @@ function __input_gamepad_set_mapping()
     
     #endregion
     
-    #region Generic
+    #region Generic mapping
     
     set_mapping(gp_padu,  gp_padu,  __INPUT_MAPPING.BUTTON, "dpup");
     set_mapping(gp_padd,  gp_padd,  __INPUT_MAPPING.BUTTON, "dpdown");
