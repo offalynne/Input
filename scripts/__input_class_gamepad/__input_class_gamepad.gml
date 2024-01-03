@@ -198,9 +198,9 @@ function __input_class_gamepad(_index) constructor
     /// @param rawIndex
     /// @param rawMappingType
     /// @param SDLname
-    static set_mapping = function(_gm, _raw_index, _mapping_type, _sdl_name)
+    static set_mapping = function(_gm, _raw_index, _mapping_type, _sdl_name, _override = true)
     {
-        if (not __custom_mapping) __set_custom_mapping();
+        if (!__custom_mapping && _override) __set_custom_mapping();
         
         //Correct for weird input index offset on MacOS if the gamepad already had a native GameMaker mapping
         if (__mac_cleared_mapping && __INPUT_ON_MACOS)
