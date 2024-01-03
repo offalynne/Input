@@ -5,6 +5,7 @@ function __input_gamepad_set_mapping()
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
+    __custom_mapping = false;
     if (blacklisted) return;
     
     #region Switch
@@ -1082,7 +1083,7 @@ function __input_gamepad_set_mapping()
                 if ((gamepad_get_mapping(index) != "") && (gamepad_get_mapping(index) != "no mapping"))
                 {
                     if (!__INPUT_SILENT) __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
-                    mac_cleared_mapping = true;
+                    __mac_cleared_mapping = true;
                 }
                 
                 //Additionally, gamepad_remove_mapping() doesn't seem to work. Setting the SDL string to something mostly blank does work though
@@ -1365,7 +1366,7 @@ function __input_gamepad_set_mapping()
                     var _matched = 0;
                     var _mapping = undefined;
                     var _button_array = [gp_face3, gp_face1, gp_face2, gp_face4];
-                    var _offset = ((mac_cleared_mapping && __INPUT_ON_MACOS) ? 17 : 0);
+                    var _offset = ((__mac_cleared_mapping && __INPUT_ON_MACOS) ? 17 : 0);
 
                     repeat(array_length(_button_array))
                     {
@@ -1414,28 +1415,28 @@ function __input_gamepad_set_mapping()
     
     #endregion
     
-    #region Generic
+    #region Generic mapping
     
-    set_mapping(gp_padu,  gp_padu,  __INPUT_MAPPING.BUTTON, "dpup");
-    set_mapping(gp_padd,  gp_padd,  __INPUT_MAPPING.BUTTON, "dpdown");
-    set_mapping(gp_padl,  gp_padl,  __INPUT_MAPPING.BUTTON, "dpleft");
-    set_mapping(gp_padr,  gp_padr,  __INPUT_MAPPING.BUTTON, "dpright");
-    set_mapping(gp_start, gp_start, __INPUT_MAPPING.BUTTON, "start");
+    set_mapping(gp_padu,  gp_padu,  __INPUT_MAPPING.BUTTON, "dpup",    false);
+    set_mapping(gp_padd,  gp_padd,  __INPUT_MAPPING.BUTTON, "dpdown",  false);
+    set_mapping(gp_padl,  gp_padl,  __INPUT_MAPPING.BUTTON, "dpleft",  false);
+    set_mapping(gp_padr,  gp_padr,  __INPUT_MAPPING.BUTTON, "dpright", false);
+    set_mapping(gp_start, gp_start, __INPUT_MAPPING.BUTTON, "start",   false);
         
-    set_mapping(gp_shoulderl, gp_shoulderl, __INPUT_MAPPING.BUTTON, "leftshoulder");
-    set_mapping(gp_shoulderr, gp_shoulderr, __INPUT_MAPPING.BUTTON, "rightshoulder");
+    set_mapping(gp_shoulderl, gp_shoulderl, __INPUT_MAPPING.BUTTON, "leftshoulder",  false);
+    set_mapping(gp_shoulderr, gp_shoulderr, __INPUT_MAPPING.BUTTON, "rightshoulder", false);
         
-    set_mapping(gp_face1, gp_face1, __INPUT_MAPPING.BUTTON, "a");
-    set_mapping(gp_face2, gp_face2, __INPUT_MAPPING.BUTTON, "b");
-    set_mapping(gp_face3, gp_face3, __INPUT_MAPPING.BUTTON, "x");
-    set_mapping(gp_face4, gp_face4, __INPUT_MAPPING.BUTTON, "y");
+    set_mapping(gp_face1, gp_face1, __INPUT_MAPPING.BUTTON, "a", false);
+    set_mapping(gp_face2, gp_face2, __INPUT_MAPPING.BUTTON, "b", false);
+    set_mapping(gp_face3, gp_face3, __INPUT_MAPPING.BUTTON, "x", false);
+    set_mapping(gp_face4, gp_face4, __INPUT_MAPPING.BUTTON, "y", false);
         
-    set_mapping(gp_axislh, gp_axislh, __INPUT_MAPPING.AXIS,   "leftx");
-    set_mapping(gp_axislv, gp_axislv, __INPUT_MAPPING.AXIS,   "lefty");
-    set_mapping(gp_stickl, gp_stickl, __INPUT_MAPPING.BUTTON, "leftstick");
-    set_mapping(gp_axisrh, gp_axisrh, __INPUT_MAPPING.AXIS,   "rightx");
-    set_mapping(gp_axisrv, gp_axisrv, __INPUT_MAPPING.AXIS,   "righty");
-    set_mapping(gp_stickr, gp_stickr, __INPUT_MAPPING.BUTTON, "rightstick");
+    set_mapping(gp_axislh, gp_axislh, __INPUT_MAPPING.AXIS,   "leftx",      false);
+    set_mapping(gp_axislv, gp_axislv, __INPUT_MAPPING.AXIS,   "lefty",      false);
+    set_mapping(gp_stickl, gp_stickl, __INPUT_MAPPING.BUTTON, "leftstick",  false);
+    set_mapping(gp_axisrh, gp_axisrh, __INPUT_MAPPING.AXIS,   "rightx",     false);
+    set_mapping(gp_axisrv, gp_axisrv, __INPUT_MAPPING.AXIS,   "righty",     false);
+    set_mapping(gp_stickr, gp_stickr, __INPUT_MAPPING.BUTTON, "rightstick", false);
         
     //PlayStation only
     if (__INPUT_ON_PS)
@@ -1448,9 +1449,9 @@ function __input_gamepad_set_mapping()
         return;
     }
         
-    set_mapping(gp_shoulderlb, gp_shoulderlb, __INPUT_MAPPING.AXIS,   "lefttrigger");
-    set_mapping(gp_shoulderrb, gp_shoulderrb, __INPUT_MAPPING.AXIS,   "righttrigger");
-    set_mapping(gp_select,     gp_select,     __INPUT_MAPPING.BUTTON, "back");
+    set_mapping(gp_shoulderlb, gp_shoulderlb, __INPUT_MAPPING.AXIS,   "lefttrigger",  false);
+    set_mapping(gp_shoulderrb, gp_shoulderrb, __INPUT_MAPPING.AXIS,   "righttrigger", false);
+    set_mapping(gp_select,     gp_select,     __INPUT_MAPPING.BUTTON, "back",         false);
     
     return;
     

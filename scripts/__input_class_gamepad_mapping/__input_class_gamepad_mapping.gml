@@ -129,4 +129,26 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
             }
         }
     }
+    
+    static __calibrate = function(_success)
+    {
+        if (type != __INPUT_MAPPING.BUTTON)
+        {
+            value   = 0.0;
+            held    = false;
+            press   = false;
+            release = false;
+
+            if ((abs(__value_delta) != 0.0) && (abs(__value_delta) != 0.5))
+            {
+                __value_previous = 0.0;
+                __value_delta    = 0.0;
+                if (not _success) return true;
+            }
+                
+            __value_delta = 0.0;
+        }
+                    
+        return false;
+    }
 }

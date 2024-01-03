@@ -239,7 +239,7 @@ input_icons_gamepad(INPUT_GAMEPAD_TYPE_PS4)
 .add("gamepad thumbstick r down",  "thumbstick r down")
 .add("gamepad thumbstick r click", "R3")
 
-.add("gamepad touchpad click", "touchpad click")
+.add("gamepad touchpad click",     "touchpad click")
 
 //PlayStation 1-3
 input_icons_gamepad(INPUT_GAMEPAD_TYPE_PSX)
