@@ -33,7 +33,16 @@ The `INPUT_VIRTUAL_REFERENCE` enum contains the following elements:
 #### **Example**
 
 ```gml
+//Get screen dimensions
+var _right  = display_get_gui_width();
+var _bottom = display_get_gui_height();
 
+//Create a joystick that can be used anywhere on the screen, with 
+//the reference point following the players touch location.
+vbutton_fullscreen_joystick = input_virtual_create()
+	.rectangle(0, 0, _right, _bottom)
+	.thumbstick(undefined, "left", "right", "up", "down")
+	.reference_point(INPUT_VIRTUAL_REFERENCE.TOUCH_POINT);
 ```
 
 <!-- tabs:end -->
@@ -57,6 +66,21 @@ The `INPUT_VIRTUAL_REFERENCE` enum contains the following elements:
 #### **Example**
 
 ```gml
+//Draw the current reference point type to the screen when in debug mode
+if (debug_mode)
+{
+	//Convert the referent point type enum to a string
+	var _string = "Unknown";
+	switch(vbutton_screen.get_reference_point())
+	{
+		case INPUT_VIRTUAL_REFERENCE.CENTER:		 _string = "Center"; break;
+		case INPUT_VIRTUAL_REFERENCE.TOUCH_POINT:	_string = "Touch Point"; break;
+		case INPUT_VIRTUAL_REFERENCE.DELTA:		  _string = "Delta"; break;
+	}
+
+	//Draw that string to the screen
+	draw_text(x, y, _string);
+}
 
 ```
 

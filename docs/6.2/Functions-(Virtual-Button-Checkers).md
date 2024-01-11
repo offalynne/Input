@@ -259,7 +259,20 @@ if (vb_thruster.check())
 #### **Example**
 
 ```gml
+//Create Event
+//Create a joystick vbutton
+vbutton_thumbstick = input_virtual_create()
+			            .circle(900, 300, 60)
+			            .thumbstick(undefined, "left", "right", "up", "down");
 
+//Step Event
+//Have the thumbstick follow the touch input if movement is fast enough.
+if(vbutton_thumbstick.check()) {
+	var _dx     = vbutton_thumbstick.get_touch_dx();
+	var _dy     = vbutton_thumbstick.get_touch_dy();
+	var _follow = point_distance(0, 0, _dx, _dy) > 20;
+	vbutton_thumbstick.follow(_follow);
+}
 ```
 
 <!-- tabs:end -->
@@ -281,9 +294,21 @@ if (vb_thruster.check())
 |None|        |       |
 
 #### **Example**
-
 ```gml
+//Create Event
+//Create a joystick vbutton
+vbutton_thumbstick = input_virtual_create()
+			.circle(900, 300, 60)
+			.thumbstick(undefined, "left", "right", "up", "down");
 
+//Step Event
+//Have the thumbstick follow the touch input if movement is fast enough.
+if(vbutton_thumbstick.check()) {
+	var _dx     = vbutton_thumbstick.get_touch_dx();
+	var _dy     = vbutton_thumbstick.get_touch_dy();
+	var _follow = point_distance(0, 0, _dx, _dy) > 20;
+	vbutton_thumbstick.follow(_follow);
+}
 ```
 
 <!-- tabs:end -->

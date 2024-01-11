@@ -415,7 +415,20 @@ The sensitivity of a touchpad is controlled by setting the threshold for the vir
 #### **Example**
 
 ```gml
+//Creat Event
+//Define a touchpad vbutton with lower threshold settings for good sensitivity
+var _right  = display_get_gui_width();
+var _bottom = display_get_gui_height();
+vbutton_touchpad = input_virtual_create()
+					.rectangle(_right-200, _bottom-200, _right-50, _bottom-50)
+					.threshold(1, 20)
+					.touchpad(undefined, "left", "right", "up", "down");
 
+//Step Event
+//Move the cursor based on touchpad readouts. Apply some factor for a better feeling.
+var _x = input_cursor_x() + vbutton_touchpad.get_x()*20;
+var _y = input_cursor_y() + vbutton_touchpad.get_y()*20;
+input_cursor_set(_x, _y); 
 ```
 
 <!-- tabs:end -->
