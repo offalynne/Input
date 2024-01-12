@@ -390,7 +390,7 @@ function __input_gamepad_set_mapping()
     #region Missing mapping on MacOS
     
     if ((button_count == 22) && (axis_count ==  6) && (hat_count == 0) 
-    && (gamepad_get_mapping(index) == "no mapping") && __INPUT_ON_MACOS)
+    && (__mapping == "no mapping") && __INPUT_ON_MACOS)
     {
         //Based on features this is a misconfigured Apple-supported gamepad
         if (!__INPUT_SILENT) __input_trace("Overriding from \"no mapping\" on Mac");
@@ -1076,25 +1076,7 @@ function __input_gamepad_set_mapping()
     if (__INPUT_SDL2_SUPPORT && INPUT_SDL2_REMAPPING)
     {
         if (is_array(sdl2_definition))
-        {
-            //As of 2020-08-17, GameMaker has weird in-build remapping rules for gamepad on MacOS
-            if (__INPUT_ON_MACOS)
-            {
-                if ((gamepad_get_mapping(index) != "") && (gamepad_get_mapping(index) != "no mapping"))
-                {
-                    if (!__INPUT_SILENT) __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
-                    __mac_cleared_mapping = true;
-                }
-                
-                //Additionally, gamepad_remove_mapping() doesn't seem to work. Setting the SDL string to something mostly blank does work though
-                gamepad_test_mapping(index, gamepad_get_guid(index) + "," + gamepad_get_description(index) + ",");
-            }
-            else
-            {
-                if (!__INPUT_SILENT) __input_trace("Gamepad ", index, (blacklisted? " is blacklisted" : " has a custom mapping"), ", clearing GameMaker's native mapping string");
-                gamepad_remove_mapping(index);
-            }
-            
+        {            
             var _i = 2;
             repeat(array_length(sdl2_definition) - 3)
             {
@@ -1409,7 +1391,7 @@ function __input_gamepad_set_mapping()
         }
         else
         {
-            if (!__INPUT_SILENT) __input_trace("No SDL2 remapping available, falling back to GameMaker's mapping (", gamepad_get_mapping(index), ")");
+            if (!__INPUT_SILENT) __input_trace("No SDL2 remapping available, falling back to GameMaker's mapping (", __mapping, ")");
         }
     }    
     

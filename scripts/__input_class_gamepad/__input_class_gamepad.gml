@@ -21,6 +21,7 @@ function __input_class_gamepad(_index) constructor
     axis_count   = undefined;
     hat_count    = undefined;
     
+    __mapping             = gamepad_get_mapping(_index);
     __custom_mapping      = false;
     __mac_cleared_mapping = false;
     
@@ -177,7 +178,7 @@ function __input_class_gamepad(_index) constructor
             //As of 2020-08-17, GameMaker has weird in-build remapping rules for gamepad on MacOS
             if (__INPUT_ON_MACOS)
             {
-                if ((gamepad_get_mapping(index) != "") && (gamepad_get_mapping(index) != "no mapping"))
+                if ((__mapping != "") && (___mapping != "no mapping"))
                 {
                     if (!__INPUT_SILENT) __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
                     __mac_cleared_mapping = true;
@@ -198,15 +199,28 @@ function __input_class_gamepad(_index) constructor
     /// @param rawIndex
     /// @param rawMappingType
     /// @param SDLname
+    /// @param [override=true]
     static set_mapping = function(_gm, _raw_index, _mapping_type, _sdl_name, _override = true)
     {
-        if (!__custom_mapping && _override) __set_custom_mapping();
-        
-        //Correct for weird input index offset on MacOS if the gamepad already had a native GameMaker mapping
-        if (__mac_cleared_mapping && __INPUT_ON_MACOS)
+        if (_override)
         {
-            if (_mapping_type == __INPUT_MAPPING.AXIS  ) _raw_index +=  6;
-            if (_mapping_type == __INPUT_MAPPING.BUTTON) _raw_index += 17;
+            //Override built-in mapping
+            if (not __custom_mapping) __set_custom_mapping();
+        
+            //Correct for weird input index offset on MacOS if the gamepad already had a native GameMaker mapping
+            if (__mac_cleared_mapping && __INPUT_ON_MACOS)
+            {
+                if (_mapping_type == __INPUT_MAPPING.AXIS  ) _raw_index +=  6;
+                if (_mapping_type == __INPUT_MAPPING.BUTTON) _raw_index += 17;
+            }
+        }
+        else if (__INPUT_SDL2_SUPPORT)
+        {
+            //Omit if missing from built-in mapping
+            if (__input_string_contains(__mapping, ",") && !__input_string_contains(__mapping, "," + _sdl_name + ":", ",-" + _sdl_name + ":", ",+" + _sdl_name + ":"))
+            {
+                return undefined;
+            }
         }
         
         //Create a new mapping. It holds button state and definition information
