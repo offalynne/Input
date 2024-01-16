@@ -178,7 +178,7 @@ function __input_class_gamepad(_index) constructor
             //As of 2020-08-17, GameMaker has weird in-build remapping rules for gamepad on MacOS
             if (__INPUT_ON_MACOS)
             {
-                if ((__mapping != "") && (___mapping != "no mapping"))
+                if ((__mapping != "") && (__mapping != "no mapping"))
                 {
                     if (!__INPUT_SILENT) __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
                     __mac_cleared_mapping = true;
