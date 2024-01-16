@@ -214,14 +214,6 @@ function __input_class_gamepad(_index) constructor
                 if (_mapping_type == __INPUT_MAPPING.BUTTON) _raw_index += 17;
             }
         }
-        else if (__INPUT_SDL2_SUPPORT)
-        {
-            //Omit if missing from built-in mapping
-            if (__input_string_contains(__mapping, ",") && !__input_string_contains(__mapping, "," + _sdl_name + ":", ",-" + _sdl_name + ":", ",+" + _sdl_name + ":"))
-            {
-                return undefined;
-            }
-        }
         
         //Create a new mapping. It holds button state and definition information
         var _mapping = new __input_class_gamepad_mapping(_gm, _raw_index, _mapping_type, _sdl_name);
