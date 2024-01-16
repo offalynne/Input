@@ -430,58 +430,6 @@ function __input_gamepad_set_mapping()
     
     #endregion
     
-    #region Third party Joy-Cons on Windows and MacOS
-
-    if ((vendor = "7e05") && (product = "0920")
-    && ((__INPUT_ON_WINDOWS && (button_count == 16) && (axis_count ==  4) && (hat_count == 1))
-     || (__INPUT_ON_MACOS   && (button_count == 24) && (axis_count == 10) && (hat_count == 1))))
-    {
-        //Based on features this is a Joy-Con spoofing the Pro Controller VID+PID
-        if (!__INPUT_SILENT) __input_trace("Overriding mapping from Switch Pro to Joy-Con");
-        
-        //This is a bit weird as we cannot differentiate left Joy-Con from right
-        //since we cannot see past the names provided by the internal mapping DB
-        //Face buttons and shoulders correspond to the same value on both devices...
-        set_mapping(gp_face1, 0, __INPUT_MAPPING.BUTTON, "a");
-        set_mapping(gp_face2, 1, __INPUT_MAPPING.BUTTON, "b");
-        set_mapping(gp_face3, 2, __INPUT_MAPPING.BUTTON, "x");
-        set_mapping(gp_face4, 3, __INPUT_MAPPING.BUTTON, "y");
-
-        set_mapping(gp_shoulderl, 4, __INPUT_MAPPING.BUTTON, "leftshoulder");
-        set_mapping(gp_shoulderr, 5, __INPUT_MAPPING.BUTTON, "rightshoulder");
-
-        //...however the remaining buttons are different on left and right Joy-Cons
-        //As such we allow the type to remain "Switch" and map the leftover buttons
-        //matching by their label. Imperfect, but good enough for these constraints
-        set_mapping(gp_select,  8, __INPUT_MAPPING.BUTTON, "back");
-        set_mapping(gp_start,   9, __INPUT_MAPPING.BUTTON, "start");
-        set_mapping(gp_stickl, 10, __INPUT_MAPPING.BUTTON, "leftstick");
-        set_mapping(gp_stickr, 11, __INPUT_MAPPING.BUTTON, "rightstick");
-
-        if (INPUT_SDL2_ALLOW_EXTENDED)
-        {
-            set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
-            set_mapping(gp_misc1, 13, __INPUT_MAPPING.BUTTON, "misc1");
-        }
-        
-        //Joy-Con horizontal solo grip hat-on-axis mapping
-        var _mapping = set_mapping(gp_axislh, 0, __INPUT_MAPPING.HAT_TO_AXIS, "leftx");
-        _mapping.raw_negative = 0;
-        _mapping.raw_positive = 0;
-        _mapping.hat_mask_negative = 8;
-        _mapping.hat_mask_positive = 2;
-
-        _mapping = set_mapping(gp_axislv, 0, __INPUT_MAPPING.HAT_TO_AXIS, "lefty")
-        _mapping.raw_negative = 0;
-        _mapping.raw_positive = 0;
-        _mapping.hat_mask_negative = 1;
-        _mapping.hat_mask_positive = 4;
-
-        return;
-    }
-
-    #endregion
-    
     #region Obins Anne Pro 2 on Windows MacOS and Linux
     
     if ((raw_type == "CommunityAnnePro") && INPUT_ON_PC)
