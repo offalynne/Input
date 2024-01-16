@@ -885,14 +885,14 @@ function __input_initialize()
     {
         _global.__on_wine = (environment_get_variable("WINEDLLPATH") != "");
         
-        __input_steam_type_set(steam_input_type_xbox_360_controller,   "XBox360Controller", "Xbox 360 Controller");
-        __input_steam_type_set(steam_input_type_xbox_one_controller,   "XBoxOneController", "Xbox One Controller");
-        __input_steam_type_set(steam_input_type_ps3_controller,        "PS3Controller",     "PS3 Controller");
-        __input_steam_type_set(steam_input_type_ps4_controller,        "PS4Controller",     "PS4 Controller");
-        __input_steam_type_set(steam_input_type_ps5_controller,        "PS5Controller",     "PS5 Controller");
-        __input_steam_type_set(steam_input_type_steam_controller,      "SteamController",   "Steam Controller");
-        __input_steam_type_set(steam_input_type_steam_deck_controller, "CommunityDeck",     "Steam Deck Controller");
-        __input_steam_type_set(steam_input_type_mobile_touch,          "MobileTouch",       "Steam Link");
+        __input_steam_type_set(steam_input_type_xbox_360_controller,   "XBox360Controller",      "Xbox 360 Controller");
+        __input_steam_type_set(steam_input_type_xbox_one_controller,   "XBoxOneController",      "Xbox One Controller");
+        __input_steam_type_set(steam_input_type_ps3_controller,        "PS3Controller",          "PS3 Controller");
+        __input_steam_type_set(steam_input_type_ps4_controller,        "PS4Controller",          "PS4 Controller");
+        __input_steam_type_set(steam_input_type_ps5_controller,        "PS5Controller",          "PS5 Controller");
+        __input_steam_type_set(steam_input_type_steam_controller,      "SteamController",        "Steam Controller");
+        __input_steam_type_set(steam_input_type_steam_deck_controller, "SteamControllerNeptune", "Steam Deck Controller");
+        __input_steam_type_set(steam_input_type_mobile_touch,          "MobileTouch",            "Steam Link");
         
         if (_global.__steam_switch_labels)
         {
@@ -978,7 +978,7 @@ function __input_initialize()
             {
                 //The remaining configurations are in the Xbox Controller style including:
                 //Steam Controller, Steam Link, Steam Deck, Xbox or Switch with AB/XY swap
-                _global.__simple_type_lookup[$ "CommunitySteam"] = INPUT_GAMEPAD_TYPE_XBOX_ONE;
+                _global.__simple_type_lookup[$ "UnknownNonSteamController"] = INPUT_GAMEPAD_TYPE_XBOX_ONE;
                 if (!__INPUT_SILENT) __input_trace("Steam Input configuration indicates Xbox-like identity for virtual controllers");
             }
         }

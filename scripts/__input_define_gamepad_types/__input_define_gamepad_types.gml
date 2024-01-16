@@ -6,27 +6,27 @@ function __input_define_gamepad_types()
     {
         //Xbox
         #macro INPUT_GAMEPAD_TYPE_XBOX_ONE "xbox one"
-        XBoxOneController   = INPUT_GAMEPAD_TYPE_XBOX_ONE;
-        CommunityXBoxOne    = INPUT_GAMEPAD_TYPE_XBOX_ONE;
-        CommunityDeck       = INPUT_GAMEPAD_TYPE_XBOX_ONE;
-        CommunityLuna       = INPUT_GAMEPAD_TYPE_XBOX_ONE;
-        CommunityStadia     = INPUT_GAMEPAD_TYPE_XBOX_ONE;
-        AppleController     = INPUT_GAMEPAD_TYPE_XBOX_ONE;
+        XBoxOneController      = INPUT_GAMEPAD_TYPE_XBOX_ONE;
+        CommunityXBoxOne       = INPUT_GAMEPAD_TYPE_XBOX_ONE;
+        SteamControllerNeptune = INPUT_GAMEPAD_TYPE_XBOX_ONE;
+        CommunityLuna          = INPUT_GAMEPAD_TYPE_XBOX_ONE;
+        CommunityStadia        = INPUT_GAMEPAD_TYPE_XBOX_ONE;
+        AppleController        = INPUT_GAMEPAD_TYPE_XBOX_ONE;
         
         #macro INPUT_GAMEPAD_TYPE_XBOX_360 "xbox 360"
-        XBox360Controller   = INPUT_GAMEPAD_TYPE_XBOX_360;
-        CommunityXBox360    = INPUT_GAMEPAD_TYPE_XBOX_360;
-        CommunityDreamcast  = INPUT_GAMEPAD_TYPE_XBOX_360;
-        SteamController     = INPUT_GAMEPAD_TYPE_XBOX_360;
-        MobileTouch         = INPUT_GAMEPAD_TYPE_XBOX_360;
+        XBox360Controller  = INPUT_GAMEPAD_TYPE_XBOX_360;
+        CommunityXBox360   = INPUT_GAMEPAD_TYPE_XBOX_360;
+        CommunityDreamcast = INPUT_GAMEPAD_TYPE_XBOX_360;
+        SteamController    = INPUT_GAMEPAD_TYPE_XBOX_360;
+        MobileTouch        = INPUT_GAMEPAD_TYPE_XBOX_360;
         
         //Default for XInput and Xbox-like gamepads
         CommunityLikeXBox   = INPUT_GAMEPAD_TYPE_XBOX_ONE;
         
         //PlayStation
         #macro INPUT_GAMEPAD_TYPE_PS5 "ps5"
-        PS5Controller       = INPUT_GAMEPAD_TYPE_PS5;
-        CommunityPS5        = INPUT_GAMEPAD_TYPE_PS5;
+        PS5Controller = INPUT_GAMEPAD_TYPE_PS5;
+        CommunityPS5 = INPUT_GAMEPAD_TYPE_PS5;
         
         #macro INPUT_GAMEPAD_TYPE_PS4 "ps4"
         PS4Controller       = INPUT_GAMEPAD_TYPE_PS4;
@@ -34,8 +34,8 @@ function __input_define_gamepad_types()
         CommunityPS4        = INPUT_GAMEPAD_TYPE_PS4;
         
         #macro INPUT_GAMEPAD_TYPE_PSX "psx"
-        PS3Controller       = INPUT_GAMEPAD_TYPE_PSX;
-        CommunityPSX        = INPUT_GAMEPAD_TYPE_PSX;
+        PS3Controller = INPUT_GAMEPAD_TYPE_PSX;
+        CommunityPSX  = INPUT_GAMEPAD_TYPE_PSX;
         
         //Switch
         #macro INPUT_GAMEPAD_TYPE_SWITCH "switch"
@@ -75,7 +75,7 @@ function __input_define_gamepad_types()
         #region Optional gamepad types (default off)
         
         //#macro INPUT_GAMEPAD_TYPE_STEAM_DECK "steam deck"
-        //CommunityDeck = INPUT_GAMEPAD_TYPE_STEAM_DECK;
+        //SteamControllerNeptune = INPUT_GAMEPAD_TYPE_STEAM_DECK;
         
         //#macro INPUT_GAMEPAD_TYPE_STEAM_CONTROLLER "steam controller"
         //SteamController = INPUT_GAMEPAD_TYPE_STEAM_CONTROLLER;
