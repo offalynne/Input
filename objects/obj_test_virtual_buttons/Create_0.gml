@@ -39,6 +39,11 @@ h = input_virtual_create()
     .dpad(undefined, "left", "right", "up", "down", false)
     .active(true);
 
+// Momentary button for button-mashing on a touchscreen
+i = input_virtual_create()
+    .rectangle(900, 50, 1250, 300)
+    .momentary(true);
+
 test_x = room_width / 2;
 test_y = room_height / 2;
 
