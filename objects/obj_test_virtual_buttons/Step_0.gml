@@ -6,6 +6,11 @@ if (input_check_pressed("accept"))
     c.active(!c.get_active());
 }
 
+if (a.pressed())
+{
+    i.momentary(!i.get_momentary());
+}
+
 //test_x += 6*input_check_opposing("left", "right");
 //test_y += 6*input_check_opposing("up", "down");
 

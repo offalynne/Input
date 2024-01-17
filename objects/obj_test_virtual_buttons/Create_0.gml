@@ -39,6 +39,12 @@ h = input_virtual_create()
     .dpad(undefined, "left", "right", "up", "down", false)
     .active(true);
 
+// Momentary button for button-mashing on a touchscreen
+i = input_virtual_create()
+    .rectangle(900, 50, 1250, 300)
+    .button("accept")
+    .momentary(true);
+
 test_x = room_width / 2;
 test_y = room_height / 2;
 
@@ -52,9 +58,8 @@ type_str[$ INPUT_VIRTUAL_TYPE.DPAD_VERTICAL] = "DPAD Vertical";
 type_str[$ INPUT_VIRTUAL_TYPE.THUMBSTICK] = "Thumbstick";
 type_str[$ INPUT_VIRTUAL_TYPE.TOUCHPAD] = "Touchpad";
 pressed_vbutton_type = function() {
-    static _vbutton_arr = [a, b, c, d, e, f, g, h];
+    static _vbutton_arr = [a, b, c, d, e, f, g, h, i];
     static _len = array_length(_vbutton_arr);
-    var _type = undefined;
     for(var _i = 0; _i<_len; _i++) {
         if(_vbutton_arr[_i].check()) {
             return type_str[$ _vbutton_arr[_i].get_type()] ?? "";
