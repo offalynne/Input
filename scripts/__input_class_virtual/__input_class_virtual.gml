@@ -35,8 +35,6 @@ function __input_class_virtual() constructor
     __verb_down    = undefined;
     __max_distance = 1;
     
-    __4dir = false;
-    
     __threshold_min = INPUT_VIRTUAL_BUTTON_MIN_THRESHOLD;
     __threshold_max = INPUT_VIRTUAL_BUTTON_MAX_THRESHOLD;
     
@@ -46,6 +44,7 @@ function __input_class_virtual() constructor
     __follow           = false;
     __record_history   = false;
     __first_touch_only = false;
+    __momentary        = false;
     
     //State
     //These variables should be cleared by .__clear_state()
@@ -406,6 +405,18 @@ function __input_class_virtual() constructor
     static get_reference_point = function()
     {
         return __reference;
+    }
+    
+    static momentary = function(_state)
+    {
+        __momentary = _state;
+        
+        return self;
+    }
+    
+    static get_momentary = function()
+    {
+        return __momentary;
     }
     
     #endregion
@@ -770,7 +781,7 @@ function __input_class_virtual() constructor
         }
         else
         {
-            var _sustain = device_mouse_check_button(__touch_device, mb_left);          
+            var _sustain = __momentary? (__capture_frame == __global.__frame) : device_mouse_check_button(__touch_device, mb_left);          
             
             //Guard iOS dropping a sustained hold on SystemGestureGate timeout
             if (__INPUT_ON_IOS)
