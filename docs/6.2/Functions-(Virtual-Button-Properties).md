@@ -20,13 +20,15 @@ Virtual buttons can be configured using the following functions. Many functions 
 |--------|------------------------------|-------|
 |`option`|`INPUT_VIRTUAL_REFERENCE` enum|       |
 
+This method controls how the virtual button calculates the output x/y values. These output x/y values also impact the calculation of left/right/up/down verb triggers. As a general description, output x/y values are calculated by subtracting the reference point's position from the position of the current touchpoint. By adjusting the reference point you can customise what sort of motions you expect to trigger output values from the virtual button.
+
 The `INPUT_VIRTUAL_REFERENCE` enum contains the following elements:
 
-|Name          |Purpose                                                                         |
-|--------------|--------------------------------------------------------------------------------|
-|`.CENTER`     |Default setting. Reference point is the centre of the virtual button            |
-|`.TOUCH_POINT`|Reference point is the place where the player first touched the virtual button  |
-|`.DELTA`      |Reference point is the place where the player touch the virtual button last step|
+|Name          |Purpose                                                                           |
+|--------------|----------------------------------------------------------------------------------|
+|`.CENTER`     |Default setting. Reference point is the centre of the virtual button              |
+|`.TOUCH_POINT`|Reference point is the place where the player first touched the virtual button    |
+|`.DELTA`      |Reference point is the place where the player touched the virtual button last step|
 
 ?> This setting is ignored when using the touchpad mode for a virtual button.
 
