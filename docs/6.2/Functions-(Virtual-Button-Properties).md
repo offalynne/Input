@@ -162,6 +162,67 @@ vb_thumbstick.threshold(_struct.min, _struct.max);
 
 &nbsp;
 
+## .momentary
+
+`<virtual button>.momentary(state)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** `self`
+
+|Name   |Datatype|Purpose                               |
+|-------|--------|--------------------------------------|
+|`state`|boolean |Momentary state for the virtual button|
+
+For buttons that are designed to be rapidly tapped, the standard button behaviour will trip over itself on touchscreens, leading to missed inputs. In the limited testing we've been able to do, it appears that the release event triggered by some touchscreen hardware (or perhaps the operating system) is slow to respond to physical fingers-on-glass input. The "momentary" feature partially addresses this issue by setting up a virtual button to not hold onto continuous input which allows faster re-triggering.
+
+When the momentary mode is turned on, a button will register a "pressed" event for one step and then immediately register a "released" event on the next step. It is therefore not possible to long hold a momentary button. This self-releasing behaviour means that the next touchpoint to tap the button will be successfully picked up, leading to no lost inputs.
+
+?> It is possible to set any virtual button to momentary but you will find this feature is only useful for `.button()`-type virtual buttons.
+
+#### **Example**
+
+```gml
+//Create a button that can be rapidly tapped to dash across the screen
+vbutton_dash = input_virtual_create()
+.rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom)
+.button("dash");
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## .get_momentary
+
+`<virtual button>.get_momentary()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the virtual button is set to momentary
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+#### **Example**
+
+```gml
+//If our context-sensitive button is set to momentary input, prompt the player
+if (vbutton_context.get_momentary())
+{
+	draw_text(x, y, "Tap Me Lots!");
+}
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
 ## .active
 
 `<virtual button>.active(state)`
