@@ -76,6 +76,32 @@ draw_text(x, y, _string);
 
 &nbsp;
 
+## …players_using_source
+
+`input_players_using_source(source, [firstPlayer])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Integer or array of integers, players using the indicated source(s)
+
+|Name           |Datatype|Purpose                                                 |
+|---------------|--------|--------------------------------------------------------|
+|`source`       |[Source](Input-Sources)|[Input source](Input-Sources) to check   |
+|`[firstPlayer]`|boolean |Whether to return only the first player using the source instead of an array of players. Defaults to `false`|
+
+#### **Example**
+
+```gml
+var _keyboard_players = input_players_using_source(INPUT_KEYBOARD);
+draw_text(10, 10, string(array_count(_keyboard_players)) + " players are using the keyboard source");
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
 ## …players_get_status
 
 `input_players_get_status()`
