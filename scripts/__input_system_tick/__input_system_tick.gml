@@ -27,22 +27,31 @@ function __input_system_tick()
         var _touch_index = undefined;
         var _touch_press_index = _global.__pointer_pressed_index;
 
-        //Track contact duration per index
+        //Track touch time per pointer
         var _i = 0;
         repeat(INPUT_MAX_TOUCHPOINTS)
-        {
-            if (!device_mouse_check_button(_i, mb_left))
+        {            
+            var _held = device_mouse_check_button(_i, mb_left);
+            
+            //Guard iOS dropping a sustained hold on SystemGestureGate timeout
+            if (__INPUT_ON_IOS)
             {
-                _global.__pointer_durations[_i] = 0;
+                if (!_held && (_global.__pointer_held_time[_i] >= 0) && (_global.__current_time - _global.__pointer_held_time[_i] > 20))
+                {
+                    if (not _global.__pointer_held_buffer[_i]) _held = true;
+                    _global.__pointer_held_buffer[_i] = !_global.__pointer_held_buffer[_i];
+                }
+            }
+            
+            //Find recent touch
+            if (not _held)
+            {
+                _global.__pointer_held_time[_i] = -1;
             }
             else
             {
-                //Get recent active touch
-                _global.__pointer_durations[_i] += delta_time;
-                if ((_touch_index == undefined) || (_global.__pointer_durations[_i] < _global.__pointer_durations[_touch_index]))
-                {
-                    _touch_index = _i;
-                }
+                if (_global.__pointer_held_time[_i] < 0) _global.__pointer_held_time[_i] = _global.__current_time;
+                if ((_touch_index == undefined) || (_global.__pointer_held_time[_i] > _global.__pointer_held_time[_touch_index])) _touch_index = _i;
             }
 
             _i++;

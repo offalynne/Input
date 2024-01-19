@@ -264,8 +264,9 @@ function __input_initialize()
     _global.__pointer_pressed        = false;
     _global.__pointer_released       = false;
     _global.__pointer_pressed_index  = undefined;
-    _global.__pointer_durations      = array_create(INPUT_MAX_TOUCHPOINTS, 0);
     _global.__pointer_coord_space    = INPUT_COORD_SPACE.ROOM;
+    _global.__pointer_held_time      = array_create(INPUT_MAX_TOUCHPOINTS, -1);
+    _global.__pointer_held_buffer    = array_create(INPUT_MAX_TOUCHPOINTS, false);
     _global.__pointer_x              = array_create(INPUT_COORD_SPACE.__SIZE, 0);
     _global.__pointer_y              = array_create(INPUT_COORD_SPACE.__SIZE, 0);
     _global.__pointer_dx             = array_create(INPUT_COORD_SPACE.__SIZE, 0);
