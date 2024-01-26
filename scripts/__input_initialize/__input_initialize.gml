@@ -27,6 +27,12 @@ function __input_initialize()
     
     #region Feature detection
     
+    //Detect infinity
+    if (is_undefined(infinity))
+    {
+        __input_error("Error!\nGM constant 'infinity' is undefined. Please file a bug with YoYoGames.\n", "@jujuadams and @offalynne\n", __INPUT_DATE);
+    }
+    
     //Detect is_instanceof(), which offers some minor performance gains
     if (INPUT_ON_WEB)
     {
@@ -37,8 +43,8 @@ function __input_initialize()
     {
         try
         {
-            is_instanceof(input_binding_empty(), __input_class_binding);
-            _global.__use_is_instanceof = true;
+            var _instance_of = is_instanceof(input_binding_empty(), __input_class_binding);
+            _global.__use_is_instanceof = _instance_of;
         }
         catch(_error)
         {
@@ -61,9 +67,9 @@ function __input_initialize()
     {
         try
         {
-            string_split("Juju\nwaz\nere", "\n", true);
-            string_trim("         you can't catch me          ");
-            _global.__use_legacy_strings = false;
+            var _split = array_equals(string_split("Juju\nwaz\nere", "\n", true), ["Juju", "waz", "ere"]);
+            var _trim  = (string_trim("         you can't catch me          ") == "you can't catch me");
+            _global.__use_legacy_strings = !(_split && _trim);
         }
         catch(_error)
         {
@@ -86,8 +92,8 @@ function __input_initialize()
     {
         try
         {
-            is_debug_overlay_open();
-            _global.__use_debug_overlay_status = true;
+            var _overlay_open = is_debug_overlay_open();
+            _global.__use_debug_overlay_status = is_bool(_overlay_open);
         }
         catch(_error)
         {
