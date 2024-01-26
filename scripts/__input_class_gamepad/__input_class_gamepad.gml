@@ -227,11 +227,17 @@ function __input_class_gamepad(_index) constructor
     
     static set_dpad_hat_mapping = function()
     {
-        var _mapping = undefined;
-        _mapping = set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ); _mapping.hat_mask = 1;
-        _mapping = set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright"); _mapping.hat_mask = 2;
-        _mapping = set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ); _mapping.hat_mask = 4;
-        _mapping = set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ); _mapping.hat_mask = 8;
+        var _mapping = set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"); 
+        _mapping.hat_mask = 1;
+        
+        _mapping = set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright"); 
+        _mapping.hat_mask = 2;
+        
+        _mapping = set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown"); 
+        _mapping.hat_mask = 4;
+        
+        _mapping = set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft"); 
+        _mapping.hat_mask = 8;
     }
     
     /// @param connected
@@ -288,9 +294,11 @@ function __input_class_gamepad(_index) constructor
                     set_mapping(gp_axisrh,     2, __INPUT_MAPPING.AXIS, "rightx");
                     set_mapping(gp_axisrv,     3, __INPUT_MAPPING.AXIS, "righty");
                     
-                    var _mapping = undefined;
-                    _mapping = set_mapping(gp_shoulderrb, 4, __INPUT_MAPPING.AXIS, "righttrigger"); _mapping.extended_range = true;
-                    _mapping = set_mapping(gp_shoulderlb, 5, __INPUT_MAPPING.AXIS, "lefttrigger" ); _mapping.extended_range = true;
+                    var _mapping = set_mapping(gp_shoulderrb, 4, __INPUT_MAPPING.AXIS, "righttrigger");
+                    _mapping.extended_range = true;
+
+                    _mapping = set_mapping(gp_shoulderlb, 5, __INPUT_MAPPING.AXIS, "lefttrigger");
+                    _mapping.extended_range = true;
                 }
             }
         }

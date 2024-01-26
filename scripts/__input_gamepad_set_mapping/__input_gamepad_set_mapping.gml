@@ -193,9 +193,11 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
         set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
         
-        var _mapping = undefined;
-        _mapping = set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty" ); _mapping.reverse = true;
-        _mapping = set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty"); _mapping.reverse = true;
+        var _mapping = set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty"); 
+        _mapping.reverse = true;
+
+        _mapping = set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
+        _mapping.reverse = true;
         
         var _mapping_lt = set_mapping(gp_shoulderlb, __XINPUT_AXIS_LT, __INPUT_MAPPING.AXIS, "lefttrigger");
         var _mapping_rt = set_mapping(gp_shoulderrb, __XINPUT_AXIS_RT, __INPUT_MAPPING.AXIS, "righttrigger");
@@ -329,21 +331,22 @@ function __input_gamepad_set_mapping()
         //    set_mapping(gp_paddle1, 6, __INPUT_MAPPING.BUTTON, "paddle1");
         //}        
         
-        set_mapping(gp_start, 7, __INPUT_MAPPING.BUTTON, "start");   
          
         set_mapping(gp_padu,  8, __INPUT_MAPPING.BUTTON, "dpup");
         set_mapping(gp_padd,  9, __INPUT_MAPPING.BUTTON, "dpdown");
         set_mapping(gp_padl, 10, __INPUT_MAPPING.BUTTON, "dpleft");
-        set_mapping(gp_padr, 11, __INPUT_MAPPING.BUTTON, "dpright");  
-        
-        var _mapping = undefined;
-        _mapping = set_mapping(gp_shoulderlb, 2, __INPUT_MAPPING.AXIS, "lefttrigger" ); _mapping.clamp_positive = true;
-        _mapping = set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.AXIS, "righttrigger"); _mapping.clamp_positive = true;           
+        set_mapping(gp_padr, 11, __INPUT_MAPPING.BUTTON, "dpright");
         
         set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
         set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
         set_mapping(gp_axisrh, 3, __INPUT_MAPPING.AXIS, "rightx");
         set_mapping(gp_axisrv, 4, __INPUT_MAPPING.AXIS, "righty");
+        
+        var _mapping = set_mapping(gp_shoulderlb, 2, __INPUT_MAPPING.AXIS, "lefttrigger");
+        _mapping.clamp_positive = true;
+
+        _mapping = set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.AXIS, "righttrigger");
+        _mapping.clamp_positive = true;  
         
         return;
     }
@@ -379,13 +382,15 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
         set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
         
-        var _mapping = undefined;
-        _mapping = set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty" ); _mapping.reverse = true;
-        _mapping = set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty"); _mapping.reverse = true;
-            
         //No trigger data :-(
         set_mapping(gp_shoulderlb, 0, undefined, "lefttrigger");
         set_mapping(gp_shoulderrb, 0, undefined, "righttrigger");
+        
+        var _mapping = set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
+        _mapping.reverse = true;
+
+        _mapping = set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
+        _mapping.reverse = true;
     
         if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
         
@@ -443,9 +448,11 @@ function __input_gamepad_set_mapping()
     {
         if (!__INPUT_ON_MACOS)
         {
-            var _mapping = undefined;
-            _mapping = set_mapping(gp_shoulderlb, 0, __INPUT_MAPPING.AXIS,  "lefttrigger"); _mapping.extended_range = __INPUT_ON_WINDOWS;
-            _mapping = set_mapping(gp_shoulderrb, 1, __INPUT_MAPPING.AXIS, "righttrigger"); _mapping.extended_range = __INPUT_ON_WINDOWS;
+            var _mapping = set_mapping(gp_shoulderlb, 0, __INPUT_MAPPING.AXIS,  "lefttrigger");
+            _mapping.extended_range = __INPUT_ON_WINDOWS;
+            
+            _mapping = set_mapping(gp_shoulderrb, 1, __INPUT_MAPPING.AXIS, "righttrigger");
+            _mapping.extended_range = __INPUT_ON_WINDOWS;
         }
         
         set_mapping(gp_axislh, 3, __INPUT_MAPPING.AXIS,   "leftx");
@@ -581,8 +588,7 @@ function __input_gamepad_set_mapping()
 
         set_dpad_hat_mapping();
 
-        var _mapping = undefined;
-        _mapping = set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
+        var _mapping = set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
         _mapping.limited_range = __INPUT_ON_LINUX;
         
         _mapping = set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
@@ -934,9 +940,11 @@ function __input_gamepad_set_mapping()
                 set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
                 set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
                 
-                var _mapping = undefined;
-                _mapping = set_mapping(gp_shoulderlb, 4, __INPUT_MAPPING.AXIS,  "lefttrigger"); _mapping.extended_range = true;
-                _mapping = set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.AXIS, "righttrigger"); _mapping.extended_range = true;
+                var _mapping = set_mapping(gp_shoulderlb, 4, __INPUT_MAPPING.AXIS,  "lefttrigger");
+                _mapping.extended_range = true;
+
+                _mapping = set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.AXIS, "righttrigger");
+                _mapping.extended_range = true;
             
                 if (INPUT_SDL2_ALLOW_EXTENDED)
                 {
