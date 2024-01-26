@@ -1008,7 +1008,7 @@ function __input_initialize()
     }
     
     //Keyboard locale
-    INPUT_KEYBOARD_LOCALE = "QWERTY";
+    _global.__keyboard_locale = "QWERTY";
     var _locale = os_get_language() + "-" + os_get_region();;
     switch(_locale)
     {
@@ -1017,7 +1017,7 @@ function __input_initialize()
         case "co-FR": case "oc-FR": case "ff-SN": 
         case "wo-SN": case "gsw-FR": 
         case "nl-BE": case "tzm-DZ":
-            INPUT_KEYBOARD_LOCALE = "AZERTY";
+            _global.__keyboard_type = "AZERTY";
         break;  
 
         case "cs-CZ": case "de-AT": case "de-CH": 
@@ -1027,7 +1027,7 @@ function __input_initialize()
         case "lb-LU": case "rm-CH": case "sk-SK": 
         case "sl-SI": case "dsb-DE":
         case "sr-BA": case "hsb-DE":
-            INPUT_KEYBOARD_LOCALE = "QWERTZ";
+            _global.__keyboard_type = "QWERTZ";
         break;
     }
     
@@ -1039,11 +1039,11 @@ function __input_initialize()
     
     if (INPUT_ON_CONSOLE || (INPUT_ON_WEB && !INPUT_ON_PC))
     {
-        INPUT_KEYBOARD_TYPE = "async";
+        _global.__keyboard_type = "async";
     }
     else if (INPUT_ON_MOBILE)
     {
-        INPUT_KEYBOARD_TYPE = "virtual";
+        _global.__keyboard_type = "virtual";
         if (__INPUT_ON_ANDROID)
         {
             var _map = os_get_info();
@@ -1054,7 +1054,7 @@ function __input_initialize()
                 var _device = string(_map[? "DEVICE"]);
                 if ((string_pos("_cheets", _device) > 1) || ((string_pos("cheets_", _device) > 0) && (string_pos("cheets_", _device) < (string_length(_device) - 6))))
                 {
-                    INPUT_KEYBOARD_TYPE = "keyboard";
+                    _global.__keyboard_type = "keyboard";
                 }
 
                 ds_map_destroy(_map)
@@ -1063,7 +1063,7 @@ function __input_initialize()
     }
     else
     {
-        INPUT_KEYBOARD_TYPE = "keyboard";
+        _global.__keyboard_type = "keyboard";
     }
     
     #endregion
@@ -1074,19 +1074,19 @@ function __input_initialize()
     
     if (__input_global().__on_steam_deck || __INPUT_ON_SWITCH || INPUT_ON_MOBILE || (__INPUT_ON_WINDOWS && _global.__touch_allowed))
     {
-        INPUT_POINTER_TYPE = "touch";
+        _global.__pointer_type = "touch";
     }
     else if (INPUT_PS_TOUCHPAD_ALLOWED && __INPUT_ON_PS)
     {
-        INPUT_POINTER_TYPE = "touchpad";
+        _global.__pointer_type = "touchpad";
     }
     else if (INPUT_ON_CONSOLE)
     {
-        INPUT_POINTER_TYPE = "none";
+        _global.__pointer_type = "none";
     }
     else
     {
-        INPUT_POINTER_TYPE = "mouse";
+        _global.__pointer_type = "mouse";
     }
     
     #endregion
@@ -1110,15 +1110,15 @@ function __input_initialize()
     
     
     //Build out the sources
-    INPUT_KEYBOARD = new __input_class_source(__INPUT_SOURCE.KEYBOARD);
-    INPUT_MOUSE = INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER? INPUT_KEYBOARD : (new __input_class_source(__INPUT_SOURCE.MOUSE));
-    INPUT_TOUCH = new __input_class_source(__INPUT_SOURCE.TOUCH);
+    _global.__source_keyboard = new __input_class_source(__INPUT_SOURCE.KEYBOARD);
+    _global.__source_mouse    = INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER? INPUT_KEYBOARD : (new __input_class_source(__INPUT_SOURCE.MOUSE));
+    _global.__source_touch    = new __input_class_source(__INPUT_SOURCE.TOUCH);
     
-    INPUT_GAMEPAD = array_create(INPUT_MAX_GAMEPADS, undefined);
+    _global.__source_gamepad = array_create(INPUT_MAX_GAMEPADS, undefined);
     var _g = 0;
     repeat(INPUT_MAX_GAMEPADS)
     {
-        INPUT_GAMEPAD[@ _g] = new __input_class_source(__INPUT_SOURCE.GAMEPAD, _g);
+        _global.__source_gamepad[@ _g] = new __input_class_source(__INPUT_SOURCE.GAMEPAD, _g);
         ++_g;
     }
     

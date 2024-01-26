@@ -1,8 +1,10 @@
 // Feather disable all
 function __input_define_gamepad_types()
 {
-    __input_global().__simple_type_lookup = {};
-    with(__input_global().__simple_type_lookup)
+    __INPUT_GLOBAL_STATIC_LOCAL
+    
+    _global.__simple_type_lookup = {};
+    with(_global.__simple_type_lookup)
     {
         //Xbox
         #macro INPUT_GAMEPAD_TYPE_XBOX_ONE "xbox one"
@@ -26,7 +28,7 @@ function __input_define_gamepad_types()
         //PlayStation
         #macro INPUT_GAMEPAD_TYPE_PS5 "ps5"
         PS5Controller = INPUT_GAMEPAD_TYPE_PS5;
-        CommunityPS5 = INPUT_GAMEPAD_TYPE_PS5;
+        CommunityPS5  = INPUT_GAMEPAD_TYPE_PS5;
         
         #macro INPUT_GAMEPAD_TYPE_PS4 "ps4"
         PS4Controller       = INPUT_GAMEPAD_TYPE_PS4;

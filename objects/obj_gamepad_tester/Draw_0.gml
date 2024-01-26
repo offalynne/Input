@@ -106,7 +106,7 @@ _string += "Player gamepad: " + string(input_player_get_gamepad()) + "\n\n";
 _string += "GUID = \"" + gamepad_get_guid(input_player_get_gamepad()) + "\"\n";
 _string += "Input gamepad desc = \"" + input_gamepad_get_description(input_player_get_gamepad()) + "\"\n";
 _string += "Input gamepad type = \"" + input_gamepad_get_type(input_player_get_gamepad()) + "\"\n";
-_string += "Input gamepad LED  = " + string(input_led_pattern_get(input_player_get_gamepad())) + "\n";
+_string += "Input gamepad LED  = " + json_stringify(input_led_pattern_get(input_player_get_gamepad())) + "\n";
 _string += "\n";
 
 _string += "Left          = " + string(input_value("left"  )) + "    " + input_verb_get_icon("left"  ) + "\n";
