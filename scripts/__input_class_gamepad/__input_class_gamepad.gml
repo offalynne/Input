@@ -227,10 +227,11 @@ function __input_class_gamepad(_index) constructor
     
     static set_dpad_hat_mapping = function()
     {
-        set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
-        set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
-        set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
-        set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+        var _mapping = undefined;
+        _mapping = set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ); _mapping.hat_mask = 1;
+        _mapping = set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright"); _mapping.hat_mask = 2;
+        _mapping = set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ); _mapping.hat_mask = 4;
+        _mapping = set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ); _mapping.hat_mask = 8;
     }
     
     /// @param connected
@@ -267,9 +268,12 @@ function __input_class_gamepad(_index) constructor
                             if (!__INPUT_SILENT) __input_trace("Partially extending XInput trigger scale for gamepad ", index);
                             __xinput_trigger_range = 255/256;
                         }
-                                           
-                        mapping_gm_to_raw[$ gp_shoulderlb].scale = 1/__xinput_trigger_range;
-                        mapping_gm_to_raw[$ gp_shoulderrb].scale = 1/__xinput_trigger_range;
+                        
+                        var _mapping = mapping_gm_to_raw[$ gp_shoulderlb];
+                        _mapping.scale = 1/__xinput_trigger_range;
+                        
+                        _mapping = mapping_gm_to_raw[$ gp_shoulderrb];
+                        _mapping.scale = 1/__xinput_trigger_range;
                     }
                 }
         
@@ -282,9 +286,11 @@ function __input_class_gamepad(_index) constructor
                     __stadia_trigger_test = false;                    
                     
                     set_mapping(gp_axisrh,     2, __INPUT_MAPPING.AXIS, "rightx");
-                    set_mapping(gp_axisrv,     3, __INPUT_MAPPING.AXIS, "righty");            
-                    set_mapping(gp_shoulderrb, 4, __INPUT_MAPPING.AXIS, "righttrigger").extended_range = true;
-                    set_mapping(gp_shoulderlb, 5, __INPUT_MAPPING.AXIS, "lefttrigger" ).extended_range = true;
+                    set_mapping(gp_axisrv,     3, __INPUT_MAPPING.AXIS, "righty");
+                    
+                    var _mapping = undefined;
+                    _mapping = set_mapping(gp_shoulderrb, 4, __INPUT_MAPPING.AXIS, "righttrigger"); _mapping.extended_range = true;
+                    _mapping = set_mapping(gp_shoulderlb, 5, __INPUT_MAPPING.AXIS, "lefttrigger" ); _mapping.extended_range = true;
                 }
             }
         }
