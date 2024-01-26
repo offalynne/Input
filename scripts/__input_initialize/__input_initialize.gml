@@ -77,7 +77,7 @@ function __input_initialize()
     }
     
     //Detect is_debug_overlay_open() to block game input to overlay, if supported
-    if (INPUT_ON_WEB || !(__INPUT_ON_WINDOWS || __INPUT_ON_MACOS || __INPUT_ON_LINUX))
+    if (INPUT_ON_WEB || INPUT_ON_CONSOLE)
     {
         //Buggy as of 2023-10-08
         _global.__use_debug_overlay_status = false;
