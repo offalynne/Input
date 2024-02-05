@@ -303,7 +303,7 @@ beef,feed,CommunityXBox360 // Monect
 20d6,2802,CommunityXBoxOne // PowerA Wired
 1915,0040,CommunityXBoxOne // Flydigi X9ET Pro and Vader 2
 358a,0201,CommunityXBoxOne // Backbone One USB C Xbox
-358a,0102,CommunityXBoxOne // Backbone One iOS Xbox
+358a,0202,CommunityXBoxOne // Backbone One USB C Xbox
 0e6f,0901,CommunityPSX // PDP Versus Fighting
 2563,0526,CommunityPSX // Uberwith PS
 0e6f,0111,CommunityPSX // Afterglow PS3
@@ -450,6 +450,7 @@ dead,beef,CommunityPSX // Hidromancer
 0c12,57ab,CommunityPS4 // Zeroplus Joypad Warrior
 0c12,0e21,CommunityPS4 // Brook Mars
 0738,3285,CommunityPS4 // Mad Catz Fightpad
+358a,0203,CommunityPS5 // Backbone One USB C PlayStation
 358a,0204,CommunityPS5 // Backbone One USB C PlayStation
 057e,2019,CommunityN64 // NSO N64
 06f7,0001,CommunityN64 // N64 Adaptoid
