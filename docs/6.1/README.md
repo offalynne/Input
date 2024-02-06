@@ -25,7 +25,7 @@ Everything! You might run into edge cases on platforms that we don't regularly t
 
 **What versions of GameMaker does Input support?**
 
-Version 5 of Input primarily supports GameMaker LTS 2022, and in theory supports every version of GameMaker later than that. Later versions of GameMaker may change functionality in a way that Input is not forwards-compatible with, but Input uses only native GameMaker functions so is in the best possible position for long-term compatibility.
+Input primarily supports GameMaker LTS 2022, and in theory supports every version of GameMaker later than that. Later versions of GameMaker may change functionality in a way that Input is not forwards-compatible with, but Input uses only native GameMaker functions so is in the best possible position for long-term compatibility.
 
 &nbsp;
 
