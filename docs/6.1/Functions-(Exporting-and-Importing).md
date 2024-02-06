@@ -475,7 +475,7 @@ or  (string_char_at(_incoming_data, string_length(_incoming_data)) != "#"))
 else
 {
 	//Trim off the hashes then try to load using Input
-	_string = string_copy(_incoming_data, 2, string_length(_incoming_data) - 2);
+	_incoming_data = string_copy(_incoming_data, 2, string_length(_incoming_data) - 2);
 
 	if (not input_profile_verify(_incoming_data))
 	{
