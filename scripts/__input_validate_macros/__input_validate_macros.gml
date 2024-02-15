@@ -68,11 +68,6 @@ function __input_validate_macros()
         __input_error("INPUT_SWITCH_VIBRATION must be either <true> or <false>");
     }
 
-    if (!is_bool(INPUT_PS_MOUSE))
-    {
-        __input_error("INPUT_PS_MOUSE must be either <true> or <false>");
-    }
-
     if (!is_bool(INPUT_PS4_VIBRATION))
     {
         __input_error("INPUT_PS4_VIBRATION must be either <true> or <false>");

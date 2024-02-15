@@ -1399,10 +1399,10 @@ function __input_gamepad_set_mapping()
     //PlayStation only
     if (__INPUT_ON_PS)
     {
-        set_mapping(gp_shoulderlb, 4, __INPUT_MAPPING.AXIS, "lefttrigger");
+        set_mapping(gp_shoulderlb, 4, __INPUT_MAPPING.AXIS, "lefttrigger" );
         set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.AXIS, "righttrigger");
-            
-        if (!INPUT_PS_TOUCHPAD_ALLOWED) set_mapping(gp_select, gp_select, __INPUT_MAPPING.BUTTON, "touchpad");
+        
+        set_mapping(gp_select, gp_select, __INPUT_MAPPING.BUTTON, "touchpad");
             
         return;
     }

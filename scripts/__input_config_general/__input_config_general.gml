@@ -20,7 +20,6 @@
 #macro INPUT_SWITCH_VIBRATION     true   //Legacy support (simulated with HD Rumble)
 
 //PlayStation 4 and PlayStation 5 console platforms
-#macro INPUT_PS_MOUSE             false  //Partially supported (first player touchpad)
 #macro INPUT_PS4_VIBRATION        true
 #macro INPUT_PS5_VIBRATION        true   //Legacy support (simulated with PS5 haptics)
 

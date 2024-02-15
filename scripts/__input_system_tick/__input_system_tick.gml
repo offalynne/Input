@@ -10,18 +10,6 @@ function __input_system_tick()
 
     #region Touch
     
-    if (INPUT_PS_TOUCHPAD_ALLOWED && __INPUT_ON_PS)
-    {
-        //Use first touch (of 2) on active PlayStation gamepad
-        var _gamepad = _global.__players[0].__source_get_gamepad();
-        if (_gamepad >= 0 && _gamepad < 4)
-        {
-            _global.__pointer_index = _gamepad * 2;
-            _global.__pointer_pressed  = gamepad_button_check_pressed(_gamepad,  gp_select);
-            _global.__pointer_released = gamepad_button_check_released(_gamepad, gp_select);
-        }
-    }
-
     if (__INPUT_TOUCH_SUPPORT && INPUT_MOBILE_MOUSE)
     {
         var _touch_index = undefined;
