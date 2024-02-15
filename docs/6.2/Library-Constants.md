@@ -166,7 +166,7 @@ This macro is set to a string indicating the current platform's preferred text s
 
 ## `INPUT_POINTER_TYPE`
 
-This macro is set to a string indicating the current platform's pointer type as a string. Possible values are `mouse`, `touch`, `touchpad` or `none`. This is useful for selectively configuring pointer features including [virtual touch buttons](Functions-(Virtual-Buttons)), [mouse control](Functions-(Mouse)), and other [cursor behaviour](Functions-(Cursor)).
+This macro is set to a string indicating the current platform's pointer type as a string. Possible values are `mouse`, `touch`, or `none`. This is useful for selectively configuring pointer features including [virtual touch buttons](Functions-(Virtual-Buttons)), [mouse control](Functions-(Mouse)), and other [cursor behaviour](Functions-(Cursor)).
 
 &nbsp;
 
