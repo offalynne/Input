@@ -3,7 +3,8 @@ function __input_class_trigger_effect_weapon(_trigger, _start, _end, _strength) 
 {
     static __mode_name = "weapon";
     static __mode      = __INPUT_TRIGGER_EFFECT.__TYPE_WEAPON;
-    __params    = {
+    
+    __params = {
         start_position: clamp(_start*10, 2, 7),
         end_position:   clamp(_end*10, max(_end*10, _start*10), 8),
         strength:       clamp(_strength*8, 0, 8),

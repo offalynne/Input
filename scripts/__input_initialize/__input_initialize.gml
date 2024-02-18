@@ -587,12 +587,13 @@ function __input_initialize()
     #region Gamepad LED patterns by device type
     
     var _dict = {};
+    
     _dict[$ INPUT_GAMEPAD_TYPE_PS5] = [       //PS5
         [false, false, true,  false, false],  //P1: --X--
         [false, true,  false, true,  false],  //P2: -X-X-
         [true,  false, true,  false, true ],  //P3: X-X-X
         [true,  true,  false, true,  true ],  //P4: XX-XX
-    ];    
+    ];
     _dict[$ INPUT_GAMEPAD_TYPE_SWITCH] = [    //Switch
         [true,  false, false, false],         //P1: X---
         [true,  true,  false, false],         //P2: XX--
@@ -608,7 +609,8 @@ function __input_initialize()
         [false, true,  false, false],         //P2: -X--
         [false, false, true,  false],         //P3: --X-
         [false, false, false, true ],         //P4: ---X
-    ];    
+    ];
+    
     _global.__gamepad_led_pattern_dict = _dict;
     
     #endregion

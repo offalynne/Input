@@ -291,8 +291,8 @@ function __input_class_gamepad(_index) constructor
                     if (!__INPUT_SILENT) __input_trace("Setting Stadia controller to analogue trigger mapping for gamepad ", index);
                     __stadia_trigger_test = false;                    
                     
-                    set_mapping(gp_axisrh,     2, __INPUT_MAPPING.AXIS, "rightx");
-                    set_mapping(gp_axisrv,     3, __INPUT_MAPPING.AXIS, "righty");
+                    set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
+                    set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
                     
                     var _mapping = set_mapping(gp_shoulderrb, 4, __INPUT_MAPPING.AXIS, "righttrigger");
                     _mapping.extended_range = true;
