@@ -397,7 +397,7 @@ direction += _speed*input_check_opposing("left", "right", 0, true);
 |`[delay]`      |frames/milliseconds             |Time between re-triggers; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Config-Macros). The units of this value are determined by [`INPUT_TIMER_MILLISECONDS`](Config-Macros?id=general)|
 |`[predelay]`   |frames/milliseconds             |Time before the first re-trigger; if not specified, this will default to [`INPUT_REPEAT_DEFAULT_DELAY`](Config-Macros). The units of this value are determined by [`INPUT_TIMER_MILLISECONDS`](Config-Macros?id=general)|
 
-This function will return 0 on the same frame a verb is activated (unless `predelay` is set to 0). You'll probably want to combine this function with [`input_check_pressed()`](Functions-(Checkers)#input_check_pressedverb-playerindex-bufferduration).
+This function will return 0 on the same frame a verb is activated (unless `predelay` is set to 0). You'll probably want to combine this function with `input_check_opposing_pressed()`](Functions-(Advanced-Checkers)?id=check_opposing_pressed).
 
 #### **Example**
 
