@@ -404,7 +404,16 @@ This function will **not** return `true` on the same frame a verb is activated (
 ```gml
 //Change option we've selected based on the "menu up" and "menu down" verbs
 //If the player holds either down, the menu option will quickly scroll
-option = (option + input_check_opposing("menu up", "menu down")) mod option_count;
+option += input_check_opposing_pressed("menu up", "menu down");
+option += input_check_opposing_repeat( "menu up", "menu down");
+if (loopMenu)
+{
+    option = option mod option_count;
+}
+else
+{
+    option = clamp(option, 0, option_count - 1);
+}
 ```
 
 <!-- tabs:end -->
