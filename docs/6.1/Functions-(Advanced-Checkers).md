@@ -414,6 +414,7 @@ else
 {
     option = clamp(option, 0, option_count - 1);
 }
+```
 
 <!-- tabs:end -->
 
