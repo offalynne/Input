@@ -356,7 +356,7 @@ or  input_check_double_pressed(["left", "right", "up", "down"]))
 
 #### **Description**
 
-**Returns:** Real, the sign of the result of the negative and positive active verbs
+**Returns:** Real, the [sign](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Maths_And_Numbers/Number_Functions/sign.htm) of the result of the negative and positive active verbs
 
 |Name              |Datatype                  |Purpose                                                                                                   |
 |------------------|--------------------------|----------------------------------------------------------------------------------------------------------|
@@ -386,7 +386,7 @@ direction += _speed*input_check_opposing("left", "right", 0, true);
 
 #### **Description**
 
-**Returns:** Real, the sign of the result of the negative and positive active verbs as re-triggered by a repeater behaviour
+**Returns:** Real, the [sign](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Maths_And_Numbers/Number_Functions/sign.htm) of the result of the negative and positive active verbs as re-triggered by a repeater behaviour
 
 |Name           |Datatype                        |Purpose                                                                                                                      |
 |---------------|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
@@ -427,7 +427,7 @@ else
 
 #### **Description**
 
-**Returns:** Real, the sign of the result of the negative and positive newly active verbs
+**Returns:** Real, the [sign](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Maths_And_Numbers/Number_Functions/sign.htm) of the result of the negative and positive newly active verbs
 
 |Name              |Datatype                  |Purpose                                                                                                   |
 |------------------|--------------------------|----------------------------------------------------------------------------------------------------------|
