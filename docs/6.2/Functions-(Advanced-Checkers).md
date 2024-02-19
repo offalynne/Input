@@ -406,7 +406,7 @@ This function will **not** return `true` on the same frame a verb is activated (
 //If the player holds either down, the menu option will quickly scroll
 option += input_check_opposing_pressed("menu up", "menu down");
 option += input_check_opposing_repeat( "menu up", "menu down");
-if (loopMenu)
+if (loop_menu)
 {
     option = option mod option_count;
 }
