@@ -162,7 +162,7 @@ if (input_check_long("pause", player_index))
 |`source`       |[Source](Input-Sources)|[Input source](Input-Sources) to check              |
 |`[playerIndex]`|integer                |Player to target. If not specified, player 0 is used|
 
-This function allows `INPUT_KEYBOARD`, `INPUT_MOUSE` and `INPUT_GAMEPAD[n]` to passed into it to check for specific devices. You may also pass `INPUT_GAMEPAD` (no square brackets) to check if the player has been assigned any gamepad at all.
+This function allows `INPUT_KEYBOARD`, `INPUT_MOUSE` and `INPUT_GAMEPAD[n]`, `INPUT_TOUCH` passed to check for specific devices. You may also pass `INPUT_GAMEPAD` (no square brackets) to check if the player has been assigned any gamepad at all.
 
 #### **Example**
 
