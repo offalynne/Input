@@ -28,7 +28,7 @@ function input_check_opposing(_verb_negative, _verb_positive, _player_index = 0,
     var _verb_struct_p = _player_verbs_struct[$ _verb_positive];
 
     //Most recent
-    if (_verb_struct_n.press_time > _verb_struct_p.press_time)
+    if (_verb_struct_n.__press_time > _verb_struct_p.__press_time)
     {
         return (_held_n? -1 : 0);
     }

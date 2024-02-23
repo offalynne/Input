@@ -49,11 +49,11 @@ draw_circle(input_cursor_x(), input_cursor_y(), 16, true);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 
-draw_text(10, 110, "Gyro enabled = " + string(input_cursor_gyro_enabled_get()));
+draw_text(10, 110, "Gyro enabled = " + json_stringify(input_cursor_gyro_enabled_get()));
 
 draw_text(10, 150, "Gyro params =");
-draw_text(10, 170, string_replace_all(string(input_cursor_gyro_params_get()), ",", "\n"))
+draw_text(10, 170, string_replace_all(json_stringify(input_cursor_gyro_params_get()), ",", "\n"));
 
 draw_text(10, 270, "Motion data =");
-draw_text(10, 290, string_replace_all(string(input_motion_data_get()), ",", "\n"))
+draw_text(10, 290, string_replace_all(json_stringify(input_motion_data_get()), ",", "\n"));
 

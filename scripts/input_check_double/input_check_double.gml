@@ -30,7 +30,7 @@ function input_check_double(_verb, _player_index = 0, _buffer_duration = 0)
     
     if (_buffer_duration <= 0)
     {
-        return _verb_struct.double_held;
+        return _verb_struct.__double_held;
     }
     else
     {

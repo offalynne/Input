@@ -42,19 +42,19 @@ function __input_player_tick_sources(_player)
                 }
             
                 //We've had our value set this frame via input_verb_set()
-                if ((force_value != undefined) && (force_analogue != undefined))
+                if ((__force_value != undefined) && (__force_analogue != undefined))
                 {
-                    _raw   = force_value;
-                    _value = force_value;
+                    _raw   = __force_value;
+                    _value = __force_value;
                 
-                    _analogue     = force_analogue;
-                    _raw_analogue = force_analogue;
+                    _analogue     = __force_analogue;
+                    _raw_analogue = __force_analogue;
                 
                     _min_threshold = 0;
                     _max_threshold = 1;
                 
-                    force_value    = undefined;
-                    force_analogue = undefined;
+                    __force_value    = undefined;
+                    __force_analogue = undefined;
                 }
             }
         
@@ -299,14 +299,14 @@ function __input_player_tick_sources(_player)
         
         with(_verb_struct)
         {
-            value = _value;
-            raw   = _raw;
+            __value = _value;
+            __raw   = _raw;
             
-            if (_raw_analogue != undefined) raw_analogue = _raw_analogue;
-            if (_analogue     != undefined) analogue     = _analogue;
+            if (_raw_analogue != undefined) __raw_analogue = _raw_analogue;
+            if (_analogue     != undefined) __analogue     = _analogue;
             
-            min_threshold = _min_threshold;
-            max_threshold = _max_threshold;
+            __min_threshold = _min_threshold;
+            __max_threshold = _max_threshold;
         }
         
         ++_v;
