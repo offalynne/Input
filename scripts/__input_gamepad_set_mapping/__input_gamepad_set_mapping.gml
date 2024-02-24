@@ -604,9 +604,9 @@ function __input_gamepad_set_mapping()
 
         return;
     }
-
-    #endregion
     
+    #endregion
+
     #region Nintendo Switch Online Controllers on Linux
 
     if ((vendor == "7e05") && (product == "1720") && (raw_type == "CommunitySaturn") && (guessed_type == false) && __INPUT_ON_LINUX)
