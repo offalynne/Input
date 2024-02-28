@@ -323,39 +323,33 @@ function __input_initialize()
     _global.__any_touch_binding_defined    = false;
     _global.__any_gamepad_binding_defined  = false;
     
-    //Disallow keyboard bindings on specified platforms unless explicitly enabled
-    _global.__keyboard_allowed  = ((INPUT_ON_PC && INPUT_PC_KEYBOARD)              || (__INPUT_ON_SWITCH && INPUT_SWITCH_KEYBOARD)  || (INPUT_ON_MOBILE  && INPUT_MOBILE_WEB_KEYBOARD && INPUT_ON_WEB) || (__INPUT_ON_ANDROID && INPUT_ANDROID_KEYBOARD));
-    _global.__mouse_allowed     = ((INPUT_ON_PC && INPUT_PC_MOUSE)                 || (__INPUT_ON_SWITCH && INPUT_SWITCH_MOUSE)     || (INPUT_ON_MOBILE  && INPUT_MOBILE_MOUSE));
-    _global.__touch_allowed     = ((__INPUT_ON_WINDOWS && INPUT_WINDOWS_TOUCH)     || (__INPUT_ON_SWITCH && INPUT_SWITCH_TOUCH)     ||  INPUT_ON_MOBILE);
-    _global.__vibration_allowed = ((__INPUT_ON_WINDOWS && INPUT_WINDOWS_VIBRATION) || (__INPUT_ON_SWITCH && INPUT_SWITCH_VIBRATION) || (__INPUT_ON_XBOX  && INPUT_XBOX_VIBRATION) || ((os_type == os_ps4) && INPUT_PS4_VIBRATION) || ((os_type == os_ps5) && INPUT_PS5_VIBRATION));
-    _global.__gamepad_allowed   = ((INPUT_ON_PC && INPUT_PC_GAMEPAD)               ||  INPUT_ON_CONSOLE                             || (INPUT_ON_MOBILE  && INPUT_MOBILE_GAMEPAD));
-
+    
+    
+    //Allow features per platform specification
+    _global.__gamepad_allowed   = ((INPUT_ON_PC && INPUT_PC_GAMEPAD)  || (INPUT_ON_MOBILE && INPUT_MOBILE_GAMEPAD)    ||  INPUT_ON_CONSOLE);
+    _global.__keyboard_allowed  = ((INPUT_ON_PC && INPUT_PC_KEYBOARD) || (__INPUT_ON_SWITCH && INPUT_SWITCH_KEYBOARD) || (INPUT_ON_MOBILE && INPUT_MOBILE_WEB_KEYBOARD && INPUT_ON_WEB) || (__INPUT_ON_ANDROID && INPUT_ANDROID_KEYBOARD));
+    _global.__mouse_allowed     = ((INPUT_ON_PC && INPUT_PC_MOUSE)    || (__INPUT_ON_SWITCH && INPUT_SWITCH_MOUSE)    || (INPUT_ON_MOBILE && INPUT_MOBILE_MOUSE));
+    _global.__touch_allowed     = (INPUT_ON_MOBILE                    || (__INPUT_ON_SWITCH && INPUT_SWITCH_TOUCH));
+    
+    //No gamepad, no vibration
+    _global.__vibration_allowed = false;
+    if (_global.__gamepad_allowed)
+    {
+        _global.__vibration_allowed = ((__INPUT_ON_WINDOWS && INPUT_WINDOWS_VIBRATION) || (__INPUT_ON_SWITCH && INPUT_SWITCH_VIBRATION) || (__INPUT_ON_XBOX  && INPUT_XBOX_VIBRATION) || ((os_type == os_ps4) && INPUT_PS4_VIBRATION) || ((os_type == os_ps5) && INPUT_PS5_VIBRATION));
+    }
+    
     //Mouse overrides touch
     if (_global.__mouse_allowed && _global.__touch_allowed)
     {
-        //Except on Windows
-        if (__INPUT_ON_WINDOWS)
+        _global.__touch_allowed = false;
+        if not (INPUT_MOUSE_ALLOW_VIRTUAL_BUTTONS)
         {
-            if (INPUT_MOBILE_MOUSE)
-            {
-                _global.__touch_allowed = false;
-            }
-            else
-            {
-                _global.__mouse_allowed = false;
-                if (!__INPUT_SILENT) __input_trace("Warning! INPUT_WINDOWS_TOUCH overrides INPUT_PC_MOUSE. Mouse bindings may not work as expected.");
-            }
-        }
-        else
-        {
-            _global.__touch_allowed = false;
-            if not (INPUT_MOUSE_ALLOW_VIRTUAL_BUTTONS)
-            {
-                if (!__INPUT_SILENT) __input_trace("Warning! Mouse configuration overrides touch. Virtual buttons may not work as expected.");
-            }
+            if (!__INPUT_SILENT) __input_trace("Warning! Mouse configuration overrides touch. Virtual buttons may not work as expected.");
         }
     }
-
+    
+    
+    
     //Whether mouse is blocked due to Window focus state
     _global.__window_focus_block_mouse = false;
     

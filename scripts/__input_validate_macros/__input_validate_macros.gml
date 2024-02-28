@@ -18,11 +18,6 @@ function __input_validate_macros()
         __input_error("INPUT_PC_GAMEPAD must be either <true> or <false>");
     }
 
-    if (!is_bool(INPUT_WINDOWS_TOUCH))
-    {
-        __input_error("INPUT_WINDOWS_TOUCH must be either <true> or <false>");
-    }
-
     if (!is_bool(INPUT_WINDOWS_VIBRATION))
     {
         __input_error("INPUT_WINDOWS_VIBRATION must be either <true> or <false>");

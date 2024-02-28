@@ -142,8 +142,7 @@ function input_debug_all_input(_ignore_array = undefined, _allow_array = undefin
             {
                 if (_global.__mouse_allowed && !_global.__window_focus_block_mouse)
                 {
-                    if ((!INPUT_WINDOWS_TOUCH || __INPUT_ON_WINDOWS)
-                    && _filter_func(mb_left, _ignore_struct, _allow_struct)
+                    if (_filter_func(mb_left, _ignore_struct, _allow_struct)
                     && mouse_check_button(mb_left))
                     {
                         array_push(_result, input_binding_mouse_button(mb_left));
