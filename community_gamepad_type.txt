@@ -149,6 +149,7 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 1d57,0021,CommunitySNES // Tomee NES Adapter
 2dc8,02e0,CommunitySNES // 8BitDo N30
 4854,4d43,CommunitySNES // Ystek Micreal SNES
+0314,1809,CommunitySNES // Ystek Micreal SNES
 081f,e401,CommunitySNES // RetroUSB Famicom
 1781,0a96,CommunitySNES // Raphnet SNES Adapter
 1781,0a9d,CommunitySNES // Raphnet SNES Adapter
