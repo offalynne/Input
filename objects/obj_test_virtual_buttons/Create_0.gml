@@ -65,6 +65,6 @@ pressed_vbutton_type = function() {
             return type_str[$ _vbutton_arr[_i].get_type()] ?? "";
             break;
         }
-    }		
+    }
     return ""; // failsafe..
 }

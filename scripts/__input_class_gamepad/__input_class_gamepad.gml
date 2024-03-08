@@ -98,24 +98,17 @@ function __input_class_gamepad(_index) constructor
         ||  get_pressed(gp_select)
         ||  get_pressed(gp_stickl)
         ||  get_pressed(gp_stickr)
+        ||  get_pressed(gp_guide)
+        ||  get_pressed(gp_misc1)
+        ||  get_pressed(gp_touchpad)
+        ||  get_pressed(gp_paddle1)
+        ||  get_pressed(gp_paddle2)
+        ||  get_pressed(gp_paddle3)
+        ||  get_pressed(gp_paddle4)
         ||  (!is_axis(gp_shoulderlb) && get_pressed(gp_shoulderlb))
         ||  (!is_axis(gp_shoulderrb) && get_pressed(gp_shoulderrb)))
         {
             return true;
-        }
-
-        if (INPUT_SDL2_ALLOW_EXTENDED)
-        {
-            if (get_pressed(gp_guide)
-            ||  get_pressed(gp_misc1)
-            ||  get_pressed(gp_touchpad)
-            ||  get_pressed(gp_paddle1)
-            ||  get_pressed(gp_paddle2)
-            ||  get_pressed(gp_paddle3)
-            ||  get_pressed(gp_paddle4))
-            {
-                return true;
-            }
         }
         
         return false;

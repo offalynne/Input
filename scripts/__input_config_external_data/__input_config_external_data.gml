@@ -7,17 +7,6 @@
 //This is useful for compatibility with external gamepad mapping software
 #macro INPUT_SDL2_ALLOW_EXTERNAL  true
 
-//Whether to allow use of SDL2's extended bindings, accessed using the extended gp_* constants
-//Setting this macro to <true> will enable the use of:
-//   gp_guide
-//   gp_misc1
-//   gp_touchpad
-//   gp_paddle1
-//   gp_paddle2
-//   gp_paddle3
-//   gp_paddle4
-#macro INPUT_SDL2_ALLOW_EXTENDED  true
-
 //Whether to allow identified non-gamepad joystick devices including wheels, flightsticks, throttles
 #macro INPUT_SDL2_ALLOW_NONGAMEPAD_JOYSTICKS  false
 

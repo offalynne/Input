@@ -928,7 +928,7 @@ function __input_class_player() constructor
         {
             __chord_state_dict[$ _verb_name] = new __input_class_chord_state(_verb_name, _chord_defintion);
         }
-    }	
+    }
 
     #endregion
     

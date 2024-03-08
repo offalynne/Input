@@ -81,6 +81,42 @@ function __input_initialize()
     {
         __input_trace(_global.__use_is_instanceof? "Using new string functions to parse SDL2 database" : "New string functions unavailable, using legacy SDL2 database parsing");
     }
+      
+    //Detect new native gamepad constants
+    var _use_gp_extended = false;
+    try
+    {
+        _use_gp_extended = is_numeric(gp_home) && is_numeric(gp_extra1) && is_numeric(gp_paddler) && is_numeric(gp_paddlel) && is_numeric(gp_paddlerb) && is_numeric(gp_paddlelb) && is_numeric(gp_touchpadbutton);
+    }
+    catch(_error)
+    {    
+        _use_gp_extended = false;
+    }
+    
+    if (_use_gp_extended)
+    {
+        _global.__gp_guide    = gp_home;
+        _global.__gp_misc1    = gp_extra1;
+        _global.__gp_touchpad = gp_touchpadbutton;
+        _global.__gp_paddle1  = gp_paddler;
+        _global.__gp_paddle2  = gp_paddlel;
+        _global.__gp_paddle3  = gp_paddlerb;
+        _global.__gp_paddle4  = gp_paddlelb;        
+        
+        if not (__INPUT_SILENT) __input_trace("Using native extended gamepad values");
+    }
+    else
+    {
+        _global.__gp_guide    = 32889;
+        _global.__gp_misc1    = 32890;
+        _global.__gp_touchpad = 32891;
+        _global.__gp_paddle1  = 32892;
+        _global.__gp_paddle2  = 32893;
+        _global.__gp_paddle3  = 32894;
+        _global.__gp_paddle4  = 32895;        
+        
+        if not (__INPUT_SILENT) __input_trace("Native extended gamepad values unavailable");
+    }
     
     //Detect is_debug_overlay_open() to block game input to overlay, if supported
     if (INPUT_ON_WEB || INPUT_ON_CONSOLE)
@@ -471,17 +507,13 @@ function __input_initialize()
         rightstick:    gp_stickr,
         start:         gp_start,
         back:          gp_select,
-    }
-    
-    if (INPUT_SDL2_ALLOW_EXTENDED)
-    {
-        _global.__sdl2_look_up_table.guide    = gp_guide;
-        _global.__sdl2_look_up_table.misc1    = gp_misc1;
-        _global.__sdl2_look_up_table.touchpad = gp_touchpad;
-        _global.__sdl2_look_up_table.paddle1  = gp_paddle1;
-        _global.__sdl2_look_up_table.paddle2  = gp_paddle2;
-        _global.__sdl2_look_up_table.paddle3  = gp_paddle3;
-        _global.__sdl2_look_up_table.paddle4  = gp_paddle4;
+        guide:         gp_guide,
+        misc1:         gp_misc1,
+        touchpad:      gp_touchpad,
+        paddle1:       gp_paddle1,
+        paddle2:       gp_paddle2,
+        paddle3:       gp_paddle3,
+        paddle4:       gp_paddle4,
     }
     
     #region Gamepad mapping database

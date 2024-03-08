@@ -280,11 +280,6 @@ function __input_validate_macros()
         __input_error("INPUT_SDL2_ALLOW_EXTERNAL must be either <true> or <false>");
     }
     
-    if (!is_bool(INPUT_SDL2_ALLOW_EXTENDED))
-    {
-        __input_error("INPUT_SDL2_ALLOW_EXTENDED must be either <true> or <false>");
-    }
-    
     if (!is_string(INPUT_SDL2_DATABASE_PATH) && !is_undefined(INPUT_SDL2_DATABASE_PATH))
     {
         __input_error("INPUT_SDL2_DATABASE_PATH must be a string or <undefined>");
