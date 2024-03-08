@@ -33,11 +33,11 @@ function __input_load_sdl2_from_string_internal(_string)
         ++_total_count;
         var _row_array = string_split(_line, ",", true);
         
-        //Identify this definition's vendor+product and description names
+        //Identify this definition's vendor+product and __description names
         var _guid = _row_array[0];
         var _result = __input_gamepad_guid_parse(_guid, false, true);
-        var _vendor_product = _result.vendor + _result.product;
-        var _description    = _result.description;
+        var _vendor_product = _result.__vendor + _result.__product;
+        var _description    = _result.__description;
                 
         //Find what platform this definition is for by searching through the row's values
         //We do this backwards for the sake of efficiency since platform is usually tacked on the end

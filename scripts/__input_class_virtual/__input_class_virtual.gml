@@ -117,28 +117,7 @@ function __input_class_virtual() constructor
     
     static rectangle = function(_in_left, _in_top, _in_right, _in_bottom)
     {
-        if (__destroyed || __background) return self;
-        
-        _left   = min(_in_left, _in_right);
-        _top    = min(_in_top, _in_bottom);
-        _right  = max(_in_left, _in_right);
-        _bottom = max(_in_top, _in_bottom);
-        
-        __circular = false;
-        __left     = _left;
-        __top      = _top;
-        __right    = _right;
-        __bottom   = _bottom;
-        __width    = 1 + _right - _left;
-        __height   = 1 + _bottom - _top;
-        __x        = 0.5*(_left + _right);
-        __y        = 0.5*(_bottom + _top);
-        __radius   = undefined;
-        
-        __start_x = __x;
-        __start_y = __y;
-        
-        return self;
+        return __rectangle(_in_left, _in_top, _in_right, _in_bottom);
     }
     
     static circle = function(_x, _y, _radius)
@@ -643,9 +622,35 @@ function __input_class_virtual() constructor
     
     #region Private
     
+    static __rectangle = function(_in_left, _in_top, _in_right, _in_bottom)
+    {
+        if (__destroyed || __background) return self;
+        
+        _left   = min(_in_left, _in_right);
+        _top    = min(_in_top, _in_bottom);
+        _right  = max(_in_left, _in_right);
+        _bottom = max(_in_top, _in_bottom);
+        
+        __circular = false;
+        __left     = _left;
+        __top      = _top;
+        __right    = _right;
+        __bottom   = _bottom;
+        __width    = 1 + _right - _left;
+        __height   = 1 + _bottom - _top;
+        __x        = 0.5*(_left + _right);
+        __y        = 0.5*(_bottom + _top);
+        __radius   = undefined;
+        
+        __start_x = __x;
+        __start_y = __y;
+        
+        return self;
+    }
+    
     static __set_as_background = function()
     {
-        rectangle(0, 0, max(display_get_width(), display_get_height()), max(display_get_width(), display_get_height()));
+        __rectangle(0, 0, max(display_get_width(), display_get_height()), max(display_get_width(), display_get_height()));
         __priority = -infinity;
         __background = true;
         return self;

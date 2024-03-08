@@ -6,14 +6,14 @@ function __input_gamepad_set_mapping()
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     __custom_mapping = false;
-    if (blacklisted) return;
+    if (__blacklisted) return;
     
     #region Switch
     
     if (__INPUT_ON_SWITCH)
     {
         //Disallow dpad input from single Joy-Cons. This happens when moving the thumbstick around in horizontal mode
-        if ((raw_type != "SwitchJoyConLeft") && (raw_type != "SwitchJoyConRight"))
+        if ((__raw_type != "SwitchJoyConLeft") && (__raw_type != "SwitchJoyConRight"))
         {
             set_mapping(gp_padu, gp_padu, __INPUT_MAPPING.BUTTON, "dpup");
             set_mapping(gp_padd, gp_padd, __INPUT_MAPPING.BUTTON, "dpdown");
@@ -21,7 +21,7 @@ function __input_gamepad_set_mapping()
             set_mapping(gp_padr, gp_padr, __INPUT_MAPPING.BUTTON, "dpright");
         }
         
-        if ((raw_type == "SwitchJoyConLeft") || (raw_type == "SwitchJoyConRight"))
+        if ((__raw_type == "SwitchJoyConLeft") || (__raw_type == "SwitchJoyConRight"))
         {
             if (INPUT_SWITCH_HORIZONTAL_HOLDTYPE)
             {
@@ -53,7 +53,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_start, 10, __INPUT_MAPPING.BUTTON, "start");
         
         //No select button exists for single Joy-Cons so ignore this entirely
-        if ((raw_type != "SwitchJoyConLeft") && (raw_type != "SwitchJoyConRight"))
+        if ((__raw_type != "SwitchJoyConLeft") && (__raw_type != "SwitchJoyConRight"))
         {
             set_mapping(gp_select, 11, __INPUT_MAPPING.BUTTON, "back");
         }
@@ -153,7 +153,7 @@ function __input_gamepad_set_mapping()
         {
             set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide");
             
-            if ((simple_type == "ps4")  || (simple_type == "ps5"))
+            if ((__simple_type == "ps4")  || (__simple_type == "ps5"))
             {
                 set_mapping(gp_touchpad, 17, __INPUT_MAPPING.BUTTON, "touchpad");   
             }
@@ -170,7 +170,7 @@ function __input_gamepad_set_mapping()
     
     #region XInput
     
-    if (xinput)
+    if (__xinput)
     {
         //Default XInput mapping for Windows. This mapping is super common!
         set_mapping(gp_padu,   0, __INPUT_MAPPING.BUTTON, "dpup");
@@ -224,11 +224,11 @@ function __input_gamepad_set_mapping()
     
     #region Windows Xbox One Wireless BT (New firmware)
 
-    if (__INPUT_ON_WINDOWS  && (vendor  == "5e04")                     //Windows (DirectInput) Microsoft's VID
-    && ((product == "e002") || (product == "fd02"))                    //XbOne Wireless Rev. 1 or 2 PID for BT
-    && (button_count == 17)                                            //Probably new firmware based on button
-    && (gamepad_axis_value(index, 1) == gamepad_axis_value(index, 2))  //On new firmware axes 1 and 2 are same
-    && (gamepad_axis_value(index, 4) == gamepad_axis_value(index, 5))) //On new firmware axes 4 and 5 are same
+    if (__INPUT_ON_WINDOWS  && (__vendor  == "5e04")                     //Windows (DirectInput) Microsoft's VID
+    && ((__product == "e002") || (__product == "fd02"))                    //XbOne Wireless Rev. 1 or 2 PID for BT
+    && (__button_count == 17)                                            //Probably new firmware based on button
+    && (gamepad_axis_value(__index, 1) == gamepad_axis_value(__index, 2))  //On new firmware axes 1 and 2 are same
+    && (gamepad_axis_value(__index, 4) == gamepad_axis_value(__index, 5))) //On new firmware axes 4 and 5 are same
     {
         if (!__INPUT_SILENT) __input_trace("Setting Xbox One Wireless controller to alternate mapping. Trigger data unavailable.");
         
@@ -266,7 +266,7 @@ function __input_gamepad_set_mapping()
     
     #region Stadia Controller on Windows
     
-    if ((raw_type == "CommunityStadia") && __INPUT_ON_WINDOWS)
+    if ((__raw_type == "CommunityStadia") && __INPUT_ON_WINDOWS)
     {
         //Analogue triggers and right stick mapping depends on Windows Registry setting
         if (!__INPUT_SILENT) __input_trace("Setting default Stadia controller mapping");
@@ -313,7 +313,7 @@ function __input_gamepad_set_mapping()
     
     #region Unofficial Windows driver for official Wii U GCN USB
     
-    if ((raw_type == "CommunityGameCube") && (vendor == "3412") && (product == "adbe") && __INPUT_ON_WINDOWS)
+    if ((__raw_type == "CommunityGameCube") && (__vendor == "3412") && (__product == "adbe") && __INPUT_ON_WINDOWS)
     {
         //Userland vJoy device feeder for WUP-028
         if (!__INPUT_SILENT) __input_trace("Setting GameCube adapter slot to alternate mapping");
@@ -355,7 +355,7 @@ function __input_gamepad_set_mapping()
     
     #region MFi controller on Windows
 
-    if ((raw_type == "AppleController") && (guessed_type == false) && __INPUT_ON_WINDOWS)
+    if ((__raw_type == "AppleController") && (__guessed_type == false) && __INPUT_ON_WINDOWS)
     {
         //MFi controllers have unreliable VID+PID, type is set on other indicators
         if (!__INPUT_SILENT) __input_trace("Setting MFi controller mapping");
@@ -401,7 +401,7 @@ function __input_gamepad_set_mapping()
     
     #region Missing mapping on MacOS
     
-    if ((button_count == 22) && (axis_count ==  6) && (hat_count == 0) 
+    if ((__button_count == 22) && (__axis_count ==  6) && (__hat_count == 0) 
     && (__mapping == "no mapping") && __INPUT_ON_MACOS)
     {
         //Based on features this is a misconfigured Apple-supported gamepad
@@ -444,7 +444,7 @@ function __input_gamepad_set_mapping()
     
     #region Obins Anne Pro 2 on Windows MacOS and Linux
     
-    if ((raw_type == "CommunityAnnePro") && INPUT_ON_PC)
+    if ((__raw_type == "CommunityAnnePro") && INPUT_ON_PC)
     {
         if (!__INPUT_ON_MACOS)
         {
@@ -477,7 +477,7 @@ function __input_gamepad_set_mapping()
     
     #region Ouya Controller on MacOS
     
-    if ((raw_type == "CommunityOuya") && __INPUT_ON_MACOS)
+    if ((__raw_type == "CommunityOuya") && __INPUT_ON_MACOS)
     {
         //Ouya controller doesn't work at all in SDL on Mac, but buttons do in GM
         if (!__INPUT_SILENT) __input_trace("Setting Ouya controller mapping");
@@ -517,7 +517,7 @@ function __input_gamepad_set_mapping()
     
     #region Mayflash N64 Adapter on MacOS
     
-    if ((vendor == "8f0e") && (product == "1330") && (raw_type == "CommunityN64") && (guessed_type = false) && __INPUT_ON_MACOS)
+    if ((__vendor == "8f0e") && (__product == "1330") && (__raw_type == "CommunityN64") && (__guessed_type = false) && __INPUT_ON_MACOS)
     {
         if (!__INPUT_SILENT) __input_trace("Overriding mapping to N64");        
        
@@ -551,7 +551,7 @@ function __input_gamepad_set_mapping()
     
     #region NeoGeo Mini on Windows and Linux
 
-    if ((raw_type == "CommunityNeoGeoMini") && (guessed_type == false) && (__INPUT_ON_LINUX || __INPUT_ON_WINDOWS))
+    if ((__raw_type == "CommunityNeoGeoMini") && (__guessed_type == false) && (__INPUT_ON_LINUX || __INPUT_ON_WINDOWS))
     {
         if (!__INPUT_SILENT) __input_trace("Overriding mapping to NeoGeo Mini");
 
@@ -572,7 +572,7 @@ function __input_gamepad_set_mapping()
     
     #region retro-bit Tribute 64 on Windows and Linux
 
-    if ((vendor == "6325") && (product == "7505") && (raw_type == "CommunityN64") && (guessed_type == false) && (__INPUT_ON_LINUX || __INPUT_ON_WINDOWS))
+    if ((__vendor == "6325") && (__product == "7505") && (__raw_type == "CommunityN64") && (__guessed_type == false) && (__INPUT_ON_LINUX || __INPUT_ON_WINDOWS))
     {
         if (!__INPUT_SILENT) __input_trace("Overriding mapping to N64");
 
@@ -609,7 +609,7 @@ function __input_gamepad_set_mapping()
 
     #region Nintendo Switch Online Controllers on Linux
 
-    if ((vendor == "7e05") && (product == "1720") && (raw_type == "CommunitySaturn") && (guessed_type == false) && __INPUT_ON_LINUX)
+    if ((__vendor == "7e05") && (__product == "1720") && (__raw_type == "CommunitySaturn") && (__guessed_type == false) && __INPUT_ON_LINUX)
     {
         if (__input_string_contains(description, "Genesis 3btn"))
         {
@@ -658,7 +658,7 @@ function __input_gamepad_set_mapping()
     
     if (__INPUT_ON_LINUX)
     {
-        switch(raw_type)
+        switch(__raw_type)
         {            
             case "HIDJoyConLeft":
                 if (!__INPUT_SILENT) __input_trace("Overriding mapping to Joy-Con Left");
@@ -785,11 +785,11 @@ function __input_gamepad_set_mapping()
 
     if (__INPUT_ON_ANDROID)
     {
-        switch(guid)
+        switch(__guid)
         {
             //hid-nintendo
             case "4e696e74656e646f2053776974636820": //"Nintendo Switch "
-                if (description == "Nintendo Switch Pro Controller")
+                if (__description == "Nintendo Switch Pro Controller")
                 {
                     set_mapping(gp_face1, 0, __INPUT_MAPPING.BUTTON, "a");
                     set_mapping(gp_face2, 1, __INPUT_MAPPING.BUTTON, "b");
@@ -819,7 +819,7 @@ function __input_gamepad_set_mapping()
                     return;
                 }
 
-                if (description == "Nintendo Switch Right Joy-Con")
+                if (__description == "Nintendo Switch Right Joy-Con")
                 {
                     set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
                     set_mapping(gp_face2, 2, __INPUT_MAPPING.BUTTON, "b");
@@ -845,7 +845,7 @@ function __input_gamepad_set_mapping()
             
             //Mayflash Wii Adapters
             case "484a5a204d6179666c61736820576969": //"HJZ Mayflash Wii"
-                if (description == "HJZ Mayflash WiiU Pro Game Controller Adapter")
+                if (__description == "HJZ Mayflash WiiU Pro Game Controller Adapter")
                 {
                     if (!__INPUT_SILENT) __input_trace("Setting WiiU Pro Adapter mapping");
 
@@ -875,7 +875,7 @@ function __input_gamepad_set_mapping()
                     return;
                 }
             
-                if (description == "HJZ Mayflash Wiimote PC Adapter")
+                if (__description == "HJZ Mayflash Wiimote PC Adapter")
                 {
                     if (!__INPUT_SILENT) __input_trace("Setting DolphinBar mapping");
 
@@ -907,7 +907,7 @@ function __input_gamepad_set_mapping()
 
             //Retroid Pocket virtual gamepads
             case "64633735616665613536653363336132":
-                if (description == "Retroid Pocket Controller")
+                if (__description == "Retroid Pocket Controller")
                 {
                     if (!__INPUT_SILENT) __input_trace("Setting Retroid Pocket \"Retro mode\" mapping");
 
@@ -984,7 +984,7 @@ function __input_gamepad_set_mapping()
 
     if (__INPUT_ON_IOS)
     {
-        switch(raw_type)
+        switch(__raw_type)
         {
             case "SwitchJoyConPair":
             case "CommunityLikeSwitch":
@@ -1050,12 +1050,12 @@ function __input_gamepad_set_mapping()
     
     if (__INPUT_SDL2_SUPPORT && INPUT_SDL2_REMAPPING)
     {
-        if (is_array(sdl2_definition))
+        if (is_array(__sdl2_definition))
         {            
             var _i = 2;
-            repeat(array_length(sdl2_definition) - 3)
+            repeat(array_length(__sdl2_definition) - 3)
             {
-                var _entry = sdl2_definition[_i];
+                var _entry = __sdl2_definition[_i];
                 var _pos = string_pos(":", _entry);
             
                 var _entry_name = string_copy(_entry, 1, _pos-1);
@@ -1164,7 +1164,7 @@ function __input_gamepad_set_mapping()
                     var _input_slot = floor(real(_entry_1));
                 
                     //Try to find out if this constant has been set already
-                    var _mapping = mapping_gm_to_raw[$ _gm_constant];
+                    var _mapping = __mapping_gm_to_raw[$ _gm_constant];
                     if (_raw_type == __INPUT_MAPPING.HAT_TO_AXIS)
                     {
                         if (_mapping == undefined)
@@ -1270,7 +1270,7 @@ function __input_gamepad_set_mapping()
                             if (__INPUT_DEBUG) __input_trace("  (Limited axis range)");
                             _mapping.limited_range = true;
                         }
-                        else if (!__INPUT_ON_LINUX && !_is_directional && (gamepad_axis_count(index) >= _input_slot))
+                        else if (!__INPUT_ON_LINUX && !_is_directional && (gamepad_axis_count(__index) >= _input_slot))
                         {
                             //Nondirectional axes (triggers) use full axis range (excepting Linux remappings and XInput)
                             if (__INPUT_DEBUG) __input_trace("  (Extended axis range)");
@@ -1283,7 +1283,7 @@ function __input_gamepad_set_mapping()
             }
             
             //Reset Android keymapped dpad if necessary
-            if (__INPUT_ON_ANDROID && (hat_count > 0) && (vendor + product == ""))
+            if (__INPUT_ON_ANDROID && (__hat_count > 0) && (__vendor + __product == ""))
             {
                 var _mapping = undefined;
                 var _dpad_array = [gp_padu, gp_padd, gp_padl, gp_padr];
@@ -1292,7 +1292,7 @@ function __input_gamepad_set_mapping()
                 repeat(array_length(_dpad_array))
                 {
                     //Check mapping match (b11 - b14)
-                    _mapping = mapping_gm_to_raw[$ _dpad_array[_matched]];
+                    _mapping = __mapping_gm_to_raw[$ _dpad_array[_matched]];
                     if (!is_struct(_mapping) || (_mapping[$ "raw"] != 11 + _matched)) break;
                     ++_matched;
                 }
@@ -1306,7 +1306,7 @@ function __input_gamepad_set_mapping()
             }
         
             ////Add Atari VCS Classic twist mapping (semantically incorrect)
-            //if ((raw_type == "CommunityVCSClassic") || (raw_type == "HIDAtariVCSClassic"))
+            //if ((__raw_type == "CommunityVCSClassic") || (__raw_type == "HIDAtariVCSClassic"))
             //{
             //    var _mapping = set_mapping(gp_axisrh, 0, __INPUT_MAPPING.AXIS, "rightx");
             //    _mapping.limited_range = __INPUT_ON_LINUX;
@@ -1318,8 +1318,8 @@ function __input_gamepad_set_mapping()
                 //Since the `touchpad` field is a later addition and largely missing from SDL2 data
                 //we're manually mapping it in cases where an otherwise-normal PS4 mapping is found
                 if ((__INPUT_ON_MACOS || __INPUT_ON_WINDOWS)
-                && (simple_type == "ps4") && (raw_type != "XInputPS4Controller")
-                && (mapping_gm_to_raw[$ string(gp_touchpad)] == undefined))
+                && (__simple_type == "ps4") && (__raw_type != "XInputPS4Controller")
+                && (__mapping_gm_to_raw[$ string(gp_touchpad)] == undefined))
                 {                
                     var _matched = 0;
                     var _mapping = undefined;
@@ -1329,7 +1329,7 @@ function __input_gamepad_set_mapping()
                     repeat(array_length(_button_array))
                     {
                         //Check mapping match (b0 - b3)
-                        _mapping = mapping_gm_to_raw[$ string(_button_array[_matched])];
+                        _mapping = __mapping_gm_to_raw[$ string(_button_array[_matched])];
                         if (!is_struct(_mapping) || (_mapping[$ "raw"] != _matched + _offset)) break;
                         ++_matched;
                     }
@@ -1343,7 +1343,7 @@ function __input_gamepad_set_mapping()
                 }
             
                 //Change Ouya guide mapping
-                if ((raw_type == "CommunityOuya") && (__INPUT_ON_WINDOWS || __INPUT_ON_LINUX))
+                if ((__raw_type == "CommunityOuya") && (__INPUT_ON_WINDOWS || __INPUT_ON_LINUX))
                 {
                     //Guide button issues 2 reports: one a tick after release which is usually too fast for GM's
                     //interupt to catch, and another that's for long press that works after being held 1 second.
@@ -1353,12 +1353,12 @@ function __input_gamepad_set_mapping()
                 }
             
                 //Swap P2 and P3 mappings on Elite controller only
-                if ((simple_type == "xbox one") && __input_string_contains(description, "Elite") 
-                &&  is_struct(mapping_gm_to_raw[$ string(gp_paddle2)]) && is_struct(mapping_gm_to_raw[$ string(gp_paddle3)]))
+                if ((__simple_type == "xbox one") && __input_string_contains(description, "Elite") 
+                &&  is_struct(__mapping_gm_to_raw[$ string(gp_paddle2)]) && is_struct(__mapping_gm_to_raw[$ string(gp_paddle3)]))
                 {
                     if (__INPUT_DEBUG) __input_trace("  (Swapping Elite P2 and P3)");
-                    var _p2_mapping = mapping_gm_to_raw[$ string(gp_paddle2)].raw;
-                    set_mapping(gp_paddle2, mapping_gm_to_raw[$ string(gp_paddle3)].raw, __INPUT_MAPPING.BUTTON, "paddle2");
+                    var _p2_mapping = __mapping_gm_to_raw[$ string(gp_paddle2)].raw;
+                    set_mapping(gp_paddle2, __mapping_gm_to_raw[$ string(gp_paddle3)].raw, __INPUT_MAPPING.BUTTON, "paddle2");
                     set_mapping(gp_paddle3, _p2_mapping, __INPUT_MAPPING.BUTTON, "paddle3");
                 }
             }

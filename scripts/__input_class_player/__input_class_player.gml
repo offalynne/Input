@@ -1035,7 +1035,7 @@ function __input_class_player() constructor
                     {
                         if (is_struct(_alternate_array[_a]))
                         {
-                            var _verb_input = _alternate_array[_a].value;
+                            var _verb_input = _alternate_array[_a].__value;
                             
                             var _found = false;
                             var _m = 0;
@@ -1073,13 +1073,13 @@ function __input_class_player() constructor
         var _new_gyro_params          = {};
     
         var _root_json = {
-            profiles:                _new_profiles_dict,
-            axis_thresholds:         _new_axis_thresholds_dict,
-            gyro:                    _new_gyro_params,
-            gamepad_type_override:   __gamepad_type_override,
-            vibration_strength:      __vibration_strength,     
-            trigger_effect_strength: __trigger_effect_strength,
-            cursor_inverted:         __cursor_inverted,
+            __profiles:                _new_profiles_dict,
+            __axis_thresholds:         _new_axis_thresholds_dict,
+            __gyro:                    _new_gyro_params,
+            __gamepad_type_override:   __gamepad_type_override,
+            __vibration_strength:      __vibration_strength,     
+            __trigger_effect_strength: __trigger_effect_strength,
+            __cursor_inverted:         __cursor_inverted,
         };
         
         //Copy profiles
@@ -1149,31 +1149,47 @@ function __input_class_player() constructor
             return;
         }
         
+        //Update legacy profile
+        if (is_struct(_json[$ "profiles"]))
+        {
+            if (!__INPUT_SILENT && __INPUT_DEBUG_PROFILES) __input_trace("Importing legacy profile");
+            _json.__profiles = __input_snap_to_json(_json[$ "profiles"]);
+            variable_struct_remove(_json, "profiles");
+        }
+        
         //Iterate over every profile in the JSON
-        if (!is_struct(_json[$ "profiles"]))
+        if (!is_struct(_json[$ "__profiles"]))
         {
             __input_error("Player ", __index, " profiles are corrupted");
             return;
         }
         
-        var _profiles_dict = _json.profiles;
+        var _profiles_dict = _json.__profiles;
         var _profile_name_array = variable_struct_get_names(_profiles_dict);
         var _f = 0;
         repeat(array_length(_profile_name_array))
         {
             var _profile_name = _profile_name_array[_f];
-            __profile_import(_json.profiles[$ _profile_name], _profile_name);
+            __profile_import(_json.__profiles[$ _profile_name], _profile_name);
             ++_f;
         }
         
+        //Update legacy threshold data
+        if (is_struct(_json[$ "profiles"]))
+        {
+            if (!__INPUT_SILENT && __INPUT_DEBUG_PROFILES) __input_trace("Importing legacy threshold data");
+            _json.__axis_thresholds = __input_snap_to_json(_json[$ "axis_thresholds"]);
+            variable_struct_remove(_json, "axis_thresholds");
+        }
+           
         //Copy axis threshold data
-        if (!is_struct(_json[$ "axis_thresholds"]))
+        if (!is_struct(_json[$ "__axis_thresholds"]))
         {
             __input_error("Player ", __index, " gamepad axis thresholds are corrupted");
             return;
         }
         
-        var _axis_thresholds_dict = _json.axis_thresholds;
+        var _axis_thresholds_dict = _json.__axis_thresholds;
         var _axis_name_array = variable_struct_get_names(_axis_thresholds_dict);
         var _a = 0;
         repeat(array_length(_axis_name_array))

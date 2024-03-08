@@ -12,7 +12,7 @@ function __input_gamepad_guid_parse(_guid, _legacy, _suppress)
     if (_guid == "00000000000000000000000000000000")
     {
         if (!__INPUT_SILENT && !_suppress) __input_trace("Warning! GUID was empty");
-        return { vendor : "", product : "", description : "" };
+        return { __vendor: "", __product : "", __description : "" };
     }
     
     if (_legacy)
@@ -49,7 +49,7 @@ function __input_gamepad_guid_parse(_guid, _legacy, _suppress)
             if (string_copy(_guid, 21, 4) != "0000")
             {
                 if (!__INPUT_SILENT && !_suppress) __input_trace("Warning! GUID \"", _guid, "\" does not fit expected pattern. VID+PID cannot be extracted");
-                return { vendor : "", product : "", description : "" };
+                return { __vendor: "", __product : "", __description : "" };
             }
         
             //Check to see if N1 for this GUID is what we expect (OS bus for USB or Bluetooth)
@@ -65,5 +65,5 @@ function __input_gamepad_guid_parse(_guid, _legacy, _suppress)
         }
     }
     
-    return { vendor : _vendor, product : _product, description : _description };
+    return { __vendor: _vendor, __product : _product, __description : _description };
 }
