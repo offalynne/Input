@@ -220,16 +220,38 @@ function __input_class_cursor() constructor
         }
         else if (__limit_boundary_margin != undefined)
         {
+            var _clamped = false;
             switch(__coord_space)
             {
                 case INPUT_COORD_SPACE.ROOM:
                     var _camera = (view_enabled && view_visible[0])? view_camera[0] : undefined;
                     if (_camera != undefined)
                     {
-                        var _l = camera_get_view_x(     _camera);
-                        var _t = camera_get_view_y(     _camera);
-                        var _r = camera_get_view_width( _camera);
-                        var _b = camera_get_view_height(_camera);
+                        var _l = camera_get_view_x(_camera);
+                        var _t = camera_get_view_y(_camera);
+                        var _r = _l + camera_get_view_width( _camera)-1;
+                        var _b = _t + camera_get_view_height(_camera)-1;
+                        
+                        var _viewA = camera_get_view_angle(_camera);
+                        
+                        if (_viewA != 0.0)
+                        {
+                            var _pivotX = (_l + _r)/2
+                            var _pivotY = (_t + _b)/2                            
+                            var _cos = dcos(-_viewA);
+                            var _sin = dsin(-_viewA);
+                            
+                            var _rotatedX = (__x-_pivotX)*_cos - (__y-_pivotY)*_sin
+                            var _rotatedY = (__x-_pivotX)*_sin + (__y-_pivotY)*_cos
+                            
+                            _rotatedX = clamp(_rotatedX, _l + __limit_boundary_margin - _pivotX, _r - __limit_boundary_margin - _pivotX);
+                            _rotatedY = clamp(_rotatedY, _t + __limit_boundary_margin - _pivotY, _b - __limit_boundary_margin - _pivotY);
+                            
+                            __x =  _rotatedX*_sin + _rotatedY*_cos + _pivotX;
+                            __y = -_rotatedX*_sin + _rotatedY*_cos + _pivotY;
+                            
+                            _clamped = true;
+                        }
                     }
                     else
                     {
@@ -256,8 +278,11 @@ function __input_class_cursor() constructor
                 break;
             }
             
-            __x = clamp(__x, _l + __limit_boundary_margin, _r - __limit_boundary_margin);
-            __y = clamp(__y, _t + __limit_boundary_margin, _b - __limit_boundary_margin);
+            if (!_clamped)
+            {
+                __x = clamp(__x, _l + __limit_boundary_margin, _r - __limit_boundary_margin);
+                __y = clamp(__y, _t + __limit_boundary_margin, _b - __limit_boundary_margin);
+            }
         }
     }
 }

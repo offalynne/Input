@@ -18,11 +18,6 @@ function __input_validate_macros()
         __input_error("INPUT_PC_GAMEPAD must be either <true> or <false>");
     }
 
-    if (!is_bool(INPUT_WINDOWS_TOUCH))
-    {
-        __input_error("INPUT_WINDOWS_TOUCH must be either <true> or <false>");
-    }
-
     if (!is_bool(INPUT_WINDOWS_VIBRATION))
     {
         __input_error("INPUT_WINDOWS_VIBRATION must be either <true> or <false>");
@@ -66,11 +61,6 @@ function __input_validate_macros()
     if (!is_bool(INPUT_SWITCH_VIBRATION))
     {
         __input_error("INPUT_SWITCH_VIBRATION must be either <true> or <false>");
-    }
-
-    if (!is_bool(INPUT_PS_MOUSE))
-    {
-        __input_error("INPUT_PS_MOUSE must be either <true> or <false>");
     }
 
     if (!is_bool(INPUT_PS4_VIBRATION))
@@ -288,11 +278,6 @@ function __input_validate_macros()
     if (!is_bool(INPUT_SDL2_ALLOW_EXTERNAL))
     {
         __input_error("INPUT_SDL2_ALLOW_EXTERNAL must be either <true> or <false>");
-    }
-    
-    if (!is_bool(INPUT_SDL2_ALLOW_EXTENDED))
-    {
-        __input_error("INPUT_SDL2_ALLOW_EXTENDED must be either <true> or <false>");
     }
     
     if (!is_string(INPUT_SDL2_DATABASE_PATH) && !is_undefined(INPUT_SDL2_DATABASE_PATH))

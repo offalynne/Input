@@ -6,7 +6,7 @@ var _mouse_y = input_mouse_y();
 draw_set_color(c_white);
 var _cursor = cr_default;
 
-if (!input_window_has_focus())
+if (!input_game_has_focus())
 {
     draw_set_color(c_gray);
 }

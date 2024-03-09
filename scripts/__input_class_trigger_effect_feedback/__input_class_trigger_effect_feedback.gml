@@ -3,7 +3,8 @@ function __input_class_trigger_effect_feedback(_position, _strength) constructor
 {
     static __mode_name = "feedback";
     static __mode      = __INPUT_TRIGGER_EFFECT.__TYPE_FEEDBACK;
-    __params    =  {
+    
+    __params = {
         position: clamp(_position*10, 0, 9),
         strength: clamp(_strength*8, 0, 8)
     };

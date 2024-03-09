@@ -5,9 +5,11 @@ function __input_gamepad_set_mapping()
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
-    #region Console
+    __custom_mapping = false;
+    if (blacklisted) return;
     
-    //Switch requires some extra setup
+    #region Switch
+    
     if (__INPUT_ON_SWITCH)
     {
         //Disallow dpad input from single Joy-Cons. This happens when moving the thumbstick around in horizontal mode
@@ -66,66 +68,6 @@ function __input_gamepad_set_mapping()
         return;
     }
     
-    if (__INPUT_ON_PS || __INPUT_ON_XBOX)
-    {
-        set_mapping(gp_padu,   gp_padu,   __INPUT_MAPPING.BUTTON, "dpup");
-        set_mapping(gp_padd,   gp_padd,   __INPUT_MAPPING.BUTTON, "dpdown");
-        set_mapping(gp_padl,   gp_padl,   __INPUT_MAPPING.BUTTON, "dpleft");
-        set_mapping(gp_padr,   gp_padr,   __INPUT_MAPPING.BUTTON, "dpright");
-        set_mapping(gp_start,  gp_start,  __INPUT_MAPPING.BUTTON, "start");
-        
-        set_mapping(gp_shoulderl,  gp_shoulderl,  __INPUT_MAPPING.BUTTON, "leftshoulder");
-        set_mapping(gp_shoulderr,  gp_shoulderr,  __INPUT_MAPPING.BUTTON, "rightshoulder");
-        
-        set_mapping(gp_face1, gp_face1, __INPUT_MAPPING.BUTTON, "a");
-        set_mapping(gp_face2, gp_face2, __INPUT_MAPPING.BUTTON, "b");
-        set_mapping(gp_face3, gp_face3, __INPUT_MAPPING.BUTTON, "x");
-        set_mapping(gp_face4, gp_face4, __INPUT_MAPPING.BUTTON, "y");
-        
-        set_mapping(gp_axislh, gp_axislh, __INPUT_MAPPING.AXIS,   "leftx");
-        set_mapping(gp_axislv, gp_axislv, __INPUT_MAPPING.AXIS,   "lefty");
-        set_mapping(gp_stickl, gp_stickl, __INPUT_MAPPING.BUTTON, "leftstick");
-        set_mapping(gp_axisrh, gp_axisrh, __INPUT_MAPPING.AXIS,   "rightx");
-        set_mapping(gp_axisrv, gp_axisrv, __INPUT_MAPPING.AXIS,   "righty");
-        set_mapping(gp_stickr, gp_stickr, __INPUT_MAPPING.BUTTON, "rightstick");
-        
-        //PlayStation only
-        if (__INPUT_ON_PS)
-        {
-            set_mapping(gp_shoulderlb, 4, __INPUT_MAPPING.AXIS, "lefttrigger");
-            set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.AXIS, "righttrigger");
-            
-            if (!INPUT_PS_TOUCHPAD_ALLOWED) set_mapping(gp_select, gp_select, __INPUT_MAPPING.BUTTON, "touchpad");
-            
-            return;
-        }
-        
-        //Xbox only
-        set_mapping(gp_shoulderlb, gp_shoulderlb, __INPUT_MAPPING.AXIS,   "lefttrigger");
-        set_mapping(gp_shoulderrb, gp_shoulderrb, __INPUT_MAPPING.AXIS,   "righttrigger");
-        set_mapping(gp_select,     gp_select,     __INPUT_MAPPING.BUTTON, "back");
-        
-        return;
-    }
-    
-    #endregion
-    
-    #region Blacklist
-    
-    if (blacklisted)
-    {
-        //Apply a blank mapping
-        var _a = variable_struct_get_names(_global.__sdl2_look_up_table);
-        var _i = 0;
-        repeat(array_length(_a))
-        {
-            set_mapping(_global.__sdl2_look_up_table[$ _a[_i]], 0, undefined, _a[_i]);
-            _i++;
-        }
-
-        return;
-    }
-    
     #endregion
     
     #region Web
@@ -180,10 +122,12 @@ function __input_gamepad_set_mapping()
         if (__INPUT_ON_LINUX && (os_browser == browser_firefox))
         {
             //ಠ_ಠ
-            set_mapping(gp_padr, 6, __INPUT_MAPPING.AXIS, "dpright").clamp_positive = true;
-            set_mapping(gp_padd, 7, __INPUT_MAPPING.AXIS, "dpdown" ).clamp_positive = true;
+            var _mapping = set_mapping(gp_padr, 6, __INPUT_MAPPING.AXIS, "dpright")
+            _mapping.clamp_positive = true;
             
-            var _mapping;
+            _mapping = set_mapping(gp_padd, 7, __INPUT_MAPPING.AXIS, "dpdown" )
+            _mapping = clamp_positive = true;
+            
             _mapping = set_mapping(gp_padl, 6, __INPUT_MAPPING.AXIS, "dpleft");
             _mapping.clamp_negative = true;
             _mapping.reverse = true;
@@ -205,18 +149,15 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
         set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
         
-        if (INPUT_SDL2_ALLOW_EXTENDED)
-        {
-            set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide");
+        set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide");
             
-            if ((simple_type == "ps4")  || (simple_type == "ps5"))
-            {
-                set_mapping(gp_touchpad, 17, __INPUT_MAPPING.BUTTON, "touchpad");   
-            }
-            else
-            {
-                set_mapping(gp_misc1, 17, __INPUT_MAPPING.BUTTON, "misc1");
-            }
+        if ((simple_type == "ps4")  || (simple_type == "ps5"))
+        {
+            set_mapping(gp_touchpad, 17, __INPUT_MAPPING.BUTTON, "touchpad");   
+        }
+        else
+        {
+            set_mapping(gp_misc1, 17, __INPUT_MAPPING.BUTTON, "misc1");
         }
         
         return;
@@ -245,11 +186,15 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_face2, 13, __INPUT_MAPPING.BUTTON, "b");
         set_mapping(gp_face3, 14, __INPUT_MAPPING.BUTTON, "x");
         set_mapping(gp_face4, 15, __INPUT_MAPPING.BUTTON, "y");
-            
+        
         set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
-        set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty").reverse = true;
         set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
-        set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty").reverse = true;
+        
+        var _mapping = set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty"); 
+        _mapping.reverse = true;
+
+        _mapping = set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
+        _mapping.reverse = true;
         
         var _mapping_lt = set_mapping(gp_shoulderlb, __XINPUT_AXIS_LT, __INPUT_MAPPING.AXIS, "lefttrigger");
         var _mapping_rt = set_mapping(gp_shoulderrb, __XINPUT_AXIS_RT, __INPUT_MAPPING.AXIS, "righttrigger");
@@ -309,7 +254,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_shoulderlb, 0, undefined, "lefttrigger");
         set_mapping(gp_shoulderrb, 0, undefined, "righttrigger");
     
-        if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide");
+        set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide");
         
         return;
     }
@@ -337,12 +282,9 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_select, 8, __INPUT_MAPPING.BUTTON, "back");
         set_mapping(gp_start,  9, __INPUT_MAPPING.BUTTON, "start");
          
-        if (INPUT_SDL2_ALLOW_EXTENDED)
-        {
-            set_mapping(gp_guide, 10, __INPUT_MAPPING.BUTTON, "guide"); //Stadia button
-            //set_mapping(???,    13, __INPUT_MAPPING.BUTTON,  ???);    //Assistant button, no SDL key for this
-            set_mapping(gp_misc1, 14, __INPUT_MAPPING.BUTTON, "misc1"); //Capture button
-        }
+        set_mapping(gp_guide, 10, __INPUT_MAPPING.BUTTON, "guide"); //Stadia button
+        //set_mapping(???,    13, __INPUT_MAPPING.BUTTON,  ???);    //Assistant button, no SDL key for this
+        set_mapping(gp_misc1, 14, __INPUT_MAPPING.BUTTON, "misc1"); //Capture button
         
         set_dpad_hat_mapping();
         
@@ -377,26 +319,26 @@ function __input_gamepad_set_mapping()
         
         set_mapping(gp_shoulderr, 4, __INPUT_MAPPING.BUTTON, "rightshoulder");
         
-        //if (INPUT_SDL2_ALLOW_EXTENDED) //Dual-stage trigger mapping (semantically incorrect)
-        //{
-        //    set_mapping(gp_paddle2, 5, __INPUT_MAPPING.BUTTON, "paddle2");
-        //    set_mapping(gp_paddle1, 6, __INPUT_MAPPING.BUTTON, "paddle1");
-        //}        
+        ////Dual-stage trigger mapping (semantically incorrect)
+        //set_mapping(gp_paddle2, 5, __INPUT_MAPPING.BUTTON, "paddle2");
+        //set_mapping(gp_paddle1, 6, __INPUT_MAPPING.BUTTON, "paddle1");
         
-        set_mapping(gp_start, 7, __INPUT_MAPPING.BUTTON, "start");   
          
         set_mapping(gp_padu,  8, __INPUT_MAPPING.BUTTON, "dpup");
         set_mapping(gp_padd,  9, __INPUT_MAPPING.BUTTON, "dpdown");
         set_mapping(gp_padl, 10, __INPUT_MAPPING.BUTTON, "dpleft");
-        set_mapping(gp_padr, 11, __INPUT_MAPPING.BUTTON, "dpright");  
-        
-        set_mapping(gp_shoulderlb, 2, __INPUT_MAPPING.AXIS, "lefttrigger" ).clamp_positive = true;
-        set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.AXIS, "righttrigger").clamp_positive = true;           
+        set_mapping(gp_padr, 11, __INPUT_MAPPING.BUTTON, "dpright");
         
         set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
         set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
         set_mapping(gp_axisrh, 3, __INPUT_MAPPING.AXIS, "rightx");
         set_mapping(gp_axisrv, 4, __INPUT_MAPPING.AXIS, "righty");
+        
+        var _mapping = set_mapping(gp_shoulderlb, 2, __INPUT_MAPPING.AXIS, "lefttrigger");
+        _mapping.clamp_positive = true;
+
+        _mapping = set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.AXIS, "righttrigger");
+        _mapping.clamp_positive = true;  
         
         return;
     }
@@ -430,15 +372,19 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_start,  14, __INPUT_MAPPING.BUTTON, "start");
     
         set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
-        set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty").reverse = true;
         set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
-        set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty").reverse = true;
-            
+        
         //No trigger data :-(
         set_mapping(gp_shoulderlb, 0, undefined, "lefttrigger");
         set_mapping(gp_shoulderrb, 0, undefined, "righttrigger");
+        
+        var _mapping = set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
+        _mapping.reverse = true;
+
+        _mapping = set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
+        _mapping.reverse = true;
     
-        if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
+        set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
         
         return;
     }
@@ -448,7 +394,7 @@ function __input_gamepad_set_mapping()
     #region Missing mapping on MacOS
     
     if ((button_count == 22) && (axis_count ==  6) && (hat_count == 0) 
-    && (gamepad_get_mapping(index) == "no mapping") && __INPUT_ON_MACOS)
+    && (__mapping == "no mapping") && __INPUT_ON_MACOS)
     {
         //Based on features this is a misconfigured Apple-supported gamepad
         if (!__INPUT_SILENT) __input_trace("Overriding from \"no mapping\" on Mac");
@@ -477,67 +423,12 @@ function __input_gamepad_set_mapping()
         
         //No dpad data :-(
         
-        if (INPUT_SDL2_ALLOW_EXTENDED)
-        {
-            set_mapping(gp_guide, 11, __INPUT_MAPPING.BUTTON, "guide");
-            set_mapping(gp_misc1, 16, __INPUT_MAPPING.BUTTON, "misc1");
-        }
+        set_mapping(gp_guide, 11, __INPUT_MAPPING.BUTTON, "guide");
+        set_mapping(gp_misc1, 16, __INPUT_MAPPING.BUTTON, "misc1");
 
         return;
     }
     
-    #endregion
-    
-    #region Third party Joy-Cons on Windows and MacOS
-
-    if ((vendor = "7e05") && (product = "0920")
-    && ((__INPUT_ON_WINDOWS && (button_count == 16) && (axis_count ==  4) && (hat_count == 1))
-     || (__INPUT_ON_MACOS   && (button_count == 24) && (axis_count == 10) && (hat_count == 1))))
-    {
-        //Based on features this is a Joy-Con spoofing the Pro Controller VID+PID
-        if (!__INPUT_SILENT) __input_trace("Overriding mapping from Switch Pro to Joy-Con");
-        
-        //This is a bit weird as we cannot differentiate left Joy-Con from right
-        //since we cannot see past the names provided by the internal mapping DB
-        //Face buttons and shoulders correspond to the same value on both devices...
-        set_mapping(gp_face1, 0, __INPUT_MAPPING.BUTTON, "a");
-        set_mapping(gp_face2, 1, __INPUT_MAPPING.BUTTON, "b");
-        set_mapping(gp_face3, 2, __INPUT_MAPPING.BUTTON, "x");
-        set_mapping(gp_face4, 3, __INPUT_MAPPING.BUTTON, "y");
-
-        set_mapping(gp_shoulderl, 4, __INPUT_MAPPING.BUTTON, "leftshoulder");
-        set_mapping(gp_shoulderr, 5, __INPUT_MAPPING.BUTTON, "rightshoulder");
-
-        //...however the remaining buttons are different on left and right Joy-Cons
-        //As such we allow the type to remain "Switch" and map the leftover buttons
-        //matching by their label. Imperfect, but good enough for these constraints
-        set_mapping(gp_select,  8, __INPUT_MAPPING.BUTTON, "back");
-        set_mapping(gp_start,   9, __INPUT_MAPPING.BUTTON, "start");
-        set_mapping(gp_stickl, 10, __INPUT_MAPPING.BUTTON, "leftstick");
-        set_mapping(gp_stickr, 11, __INPUT_MAPPING.BUTTON, "rightstick");
-
-        if (INPUT_SDL2_ALLOW_EXTENDED)
-        {
-            set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
-            set_mapping(gp_misc1, 13, __INPUT_MAPPING.BUTTON, "misc1");
-        }
-        
-        //Joy-Con horizontal solo grip hat-on-axis mapping
-        var _mapping = set_mapping(gp_axislh, 0, __INPUT_MAPPING.HAT_TO_AXIS, "leftx");
-        _mapping.raw_negative = 0;
-        _mapping.raw_positive = 0;
-        _mapping.hat_mask_negative = 8;
-        _mapping.hat_mask_positive = 2;
-
-        _mapping = set_mapping(gp_axislv, 0, __INPUT_MAPPING.HAT_TO_AXIS, "lefty")
-        _mapping.raw_negative = 0;
-        _mapping.raw_positive = 0;
-        _mapping.hat_mask_negative = 1;
-        _mapping.hat_mask_positive = 4;
-
-        return;
-    }
-
     #endregion
     
     #region Obins Anne Pro 2 on Windows MacOS and Linux
@@ -546,8 +437,11 @@ function __input_gamepad_set_mapping()
     {
         if (!__INPUT_ON_MACOS)
         {
-            set_mapping(gp_shoulderlb, 0, __INPUT_MAPPING.AXIS,  "lefttrigger").extended_range = __INPUT_ON_WINDOWS;
-            set_mapping(gp_shoulderrb, 1, __INPUT_MAPPING.AXIS, "righttrigger").extended_range = __INPUT_ON_WINDOWS;
+            var _mapping = set_mapping(gp_shoulderlb, 0, __INPUT_MAPPING.AXIS,  "lefttrigger");
+            _mapping.extended_range = __INPUT_ON_WINDOWS;
+            
+            _mapping = set_mapping(gp_shoulderrb, 1, __INPUT_MAPPING.AXIS, "righttrigger");
+            _mapping.extended_range = __INPUT_ON_WINDOWS;
         }
         
         set_mapping(gp_axislh, 3, __INPUT_MAPPING.AXIS,   "leftx");
@@ -596,7 +490,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_padd, 12, __INPUT_MAPPING.BUTTON, "dpdown" );
         set_mapping(gp_padl, 13, __INPUT_MAPPING.BUTTON, "dpleft" );
                     
-        if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 18, __INPUT_MAPPING.BUTTON, "guide");
+        set_mapping(gp_guide, 18, __INPUT_MAPPING.BUTTON, "guide");
     
         set_mapping(gp_select, 0, undefined, "back"  );
         set_mapping(gp_start,  0, undefined, "start" );    
@@ -632,7 +526,9 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axislh, 1, __INPUT_MAPPING.AXIS,  "leftx");
         set_mapping(gp_axislv, 3, __INPUT_MAPPING.AXIS,  "lefty");
         set_mapping(gp_axisrv, 5, __INPUT_MAPPING.AXIS, "righty");
-        set_mapping(gp_axisrh, 7, __INPUT_MAPPING.AXIS, "rightx").reverse = true;
+        
+        var _mapping = set_mapping(gp_axisrh, 7, __INPUT_MAPPING.AXIS, "rightx")
+        _mapping.reverse = true;
         
         set_mapping(gp_shoulderrb, 0, undefined, "righttrigger");
         set_mapping(gp_select,     0, undefined, "back");
@@ -681,10 +577,13 @@ function __input_gamepad_set_mapping()
 
         set_dpad_hat_mapping();
 
-        set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx").limited_range = __INPUT_ON_LINUX;
-        set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty").limited_range = __INPUT_ON_LINUX;
+        var _mapping = set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
+        _mapping.limited_range = __INPUT_ON_LINUX;
+        
+        _mapping = set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
+        _mapping.limited_range = __INPUT_ON_LINUX;
 
-        var _mapping = set_mapping(gp_axisrh, undefined, __INPUT_MAPPING.BUTTON_TO_AXIS, "rightx");
+        _mapping = set_mapping(gp_axisrh, undefined, __INPUT_MAPPING.BUTTON_TO_AXIS, "rightx");
         _mapping.raw_negative = 3;
         _mapping.raw_positive = 8;
         
@@ -694,9 +593,9 @@ function __input_gamepad_set_mapping()
 
         return;
     }
-
-    #endregion
     
+    #endregion
+
     #region Nintendo Switch Online Controllers on Linux
 
     if ((vendor == "7e05") && (product == "1720") && (raw_type == "CommunitySaturn") && (guessed_type == false) && __INPUT_ON_LINUX)
@@ -715,7 +614,7 @@ function __input_gamepad_set_mapping()
             
             set_dpad_hat_mapping();
             
-            if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
+            set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
             
             return;
         }
@@ -736,7 +635,7 @@ function __input_gamepad_set_mapping()
 
             set_dpad_hat_mapping();
             
-            if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
+            set_mapping(gp_guide, 12, __INPUT_MAPPING.BUTTON, "guide");
             
             return;
         }       
@@ -766,9 +665,10 @@ function __input_gamepad_set_mapping()
 
                 set_mapping(gp_stickl, 6, __INPUT_MAPPING.BUTTON, "leftstick");
 
-                set_mapping(gp_axislh, 1, __INPUT_MAPPING.AXIS, "leftx").limited_range = true;
+                var _mapping = set_mapping(gp_axislh, 1, __INPUT_MAPPING.AXIS, "leftx");
+                _mapping.limited_range = true;
 
-                var _mapping = set_mapping(gp_axislv, 0, __INPUT_MAPPING.AXIS, "lefty");
+                _mapping = set_mapping(gp_axislv, 0, __INPUT_MAPPING.AXIS, "lefty");
                 _mapping.limited_range = true;
                 _mapping.reverse       = true;
         
@@ -795,7 +695,8 @@ function __input_gamepad_set_mapping()
                 _mapping.limited_range = true;
                 _mapping.reverse = true;
         
-                _mapping = set_mapping(gp_axislv, 0, __INPUT_MAPPING.AXIS, "lefty").limited_range = true;
+                _mapping = set_mapping(gp_axislv, 0, __INPUT_MAPPING.AXIS, "lefty")
+                _mapping.limited_range = true;
         
                 return;
             break;
@@ -811,7 +712,7 @@ function __input_gamepad_set_mapping()
         
                 set_dpad_hat_mapping();
         
-                if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide,  4, __INPUT_MAPPING.BUTTON, "guide");
+                set_mapping(gp_guide,  4, __INPUT_MAPPING.BUTTON, "guide");
                 
                 return;
             break;
@@ -833,7 +734,7 @@ function __input_gamepad_set_mapping()
                 set_mapping(gp_select, 4, __INPUT_MAPPING.BUTTON, "back");
                 set_mapping(gp_start,  3, __INPUT_MAPPING.BUTTON, "start");
     
-                if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 2, __INPUT_MAPPING.BUTTON, "guide");
+                set_mapping(gp_guide, 2, __INPUT_MAPPING.BUTTON, "guide");
                 
                 return;
             break;
@@ -860,7 +761,7 @@ function __input_gamepad_set_mapping()
                 set_mapping(gp_select, 10, __INPUT_MAPPING.BUTTON, "back");
                 set_mapping(gp_start,   9, __INPUT_MAPPING.BUTTON, "start");
     
-                if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 8, __INPUT_MAPPING.BUTTON, "guide");
+                set_mapping(gp_guide, 8, __INPUT_MAPPING.BUTTON, "guide");
                 
                 return;
             break;
@@ -922,8 +823,10 @@ function __input_gamepad_set_mapping()
 
                     set_mapping(gp_stickl, 8, __INPUT_MAPPING.BUTTON, "leftstick");
 
-                    set_mapping(gp_axislh, 1, __INPUT_MAPPING.AXIS, "leftx").reverse = true;
                     set_mapping(gp_axislv, 0, __INPUT_MAPPING.AXIS, "lefty");
+                    
+                    var _mapping = set_mapping(gp_axislh, 1, __INPUT_MAPPING.AXIS, "leftx");
+                    _mapping.reverse = true;
 
                     return;
                 }
@@ -985,7 +888,7 @@ function __input_gamepad_set_mapping()
                     set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
                     set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
 
-                    if (INPUT_SDL2_ALLOW_EXTENDED) set_mapping(gp_guide, 0, __INPUT_MAPPING.BUTTON, "guide");
+                    set_mapping(gp_guide, 0, __INPUT_MAPPING.BUTTON, "guide");
                 
                     return;
                 }
@@ -1025,15 +928,15 @@ function __input_gamepad_set_mapping()
                 set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
                 set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
                 set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
+                
+                var _mapping = set_mapping(gp_shoulderlb, 4, __INPUT_MAPPING.AXIS,  "lefttrigger");
+                _mapping.extended_range = true;
 
-                set_mapping(gp_shoulderlb, 4, __INPUT_MAPPING.AXIS,  "lefttrigger").extended_range = true;
-                set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.AXIS, "righttrigger").extended_range = true;
+                _mapping = set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.AXIS, "righttrigger");
+                _mapping.extended_range = true;
             
-                if (INPUT_SDL2_ALLOW_EXTENDED)
-                {
-                    set_mapping(gp_paddle1, 19, __INPUT_MAPPING.BUTTON, "paddle1");
-                    set_mapping(gp_paddle2, 20, __INPUT_MAPPING.BUTTON, "paddle2");
-                }
+                set_mapping(gp_paddle1, 19, __INPUT_MAPPING.BUTTON, "paddle1");
+                set_mapping(gp_paddle2, 20, __INPUT_MAPPING.BUTTON, "paddle2");
 
                 return;
             break;
@@ -1134,7 +1037,7 @@ function __input_gamepad_set_mapping()
     if (__INPUT_SDL2_SUPPORT && INPUT_SDL2_REMAPPING)
     {
         if (is_array(sdl2_definition))
-        {
+        {            
             var _i = 2;
             repeat(array_length(sdl2_definition) - 3)
             {
@@ -1387,23 +1290,14 @@ function __input_gamepad_set_mapping()
                     set_dpad_hat_mapping();
                 }
             }
-        }
-        else
-        {
-            if (!__INPUT_SILENT) __input_trace("No SDL2 remapping available, falling back to GameMaker's mapping (", gamepad_get_mapping(index), ")");
-        }
         
-        ////Add Atari VCS Classic twist mapping (semantically incorrect)
-        //if ((raw_type == "CommunityVCSClassic") || (raw_type == "HIDAtariVCSClassic"))
-        //{
-        //    set_mapping(gp_axisrh, 0, __INPUT_MAPPING.AXIS, "rightx").limited_range = __INPUT_ON_LINUX;
-        //}
+            ////Add Atari VCS Classic twist mapping (semantically incorrect)
+            //if ((raw_type == "CommunityVCSClassic") || (raw_type == "HIDAtariVCSClassic"))
+            //{
+            //    var _mapping = set_mapping(gp_axisrh, 0, __INPUT_MAPPING.AXIS, "rightx");
+            //    _mapping.limited_range = __INPUT_ON_LINUX;
+            //}
         
-        if (INPUT_SDL2_ALLOW_EXTENDED)
-        {
-            //Add mapping for touchpad button click on PS4 gamepads on platforms supporting it.
-            //Since the `touchpad` field is a later addition and largely missing from SDL2 data
-            //we're manually mapping it in cases where an otherwise-normal PS4 mapping is found
             if ((__INPUT_ON_MACOS || __INPUT_ON_WINDOWS)
             && (simple_type == "ps4") && (raw_type != "XInputPS4Controller")
             && (mapping_gm_to_raw[$ string(gp_touchpad)] == undefined))
@@ -1411,7 +1305,7 @@ function __input_gamepad_set_mapping()
                 var _matched = 0;
                 var _mapping = undefined;
                 var _button_array = [gp_face3, gp_face1, gp_face2, gp_face4];
-                var _offset = ((mac_cleared_mapping && __INPUT_ON_MACOS) ? 17 : 0);
+                var _offset = ((__mac_cleared_mapping && __INPUT_ON_MACOS) ? 17 : 0);
 
                 repeat(array_length(_button_array))
                 {
@@ -1427,29 +1321,77 @@ function __input_gamepad_set_mapping()
                     if (__INPUT_DEBUG) __input_trace("  (Adding touchpad mapping)");
                     set_mapping(gp_touchpad, 13, __INPUT_MAPPING.BUTTON, "touchpad");
                 }
-            }
             
-            //Change Ouya guide mapping
-            if ((raw_type == "CommunityOuya") && (__INPUT_ON_WINDOWS || __INPUT_ON_LINUX))
-            {
-                //Guide button issues 2 reports: one a tick after release which is usually too fast for GM's
-                //interupt to catch, and another that's for long press that works after being held 1 second.
-                //SDL's map assigns the first but we switch to the second which will work reliably for GM.
-                if (__INPUT_DEBUG) __input_trace("  (Remapping guide button)");
-                set_mapping(gp_guide, 15, __INPUT_MAPPING.BUTTON, "guide");
-            }
+                //Change Ouya guide mapping
+                if ((raw_type == "CommunityOuya") && (__INPUT_ON_WINDOWS || __INPUT_ON_LINUX))
+                {
+                    //Guide button issues 2 reports: one a tick after release which is usually too fast for GM's
+                    //interupt to catch, and another that's for long press that works after being held 1 second.
+                    //SDL's map assigns the first but we switch to the second which will work reliably for GM.
+                    if (__INPUT_DEBUG) __input_trace("  (Remapping guide button)");
+                    set_mapping(gp_guide, 15, __INPUT_MAPPING.BUTTON, "guide");
+                }
             
-            //Swap P2 and P3 mappings on Elite controller only
-            if ((simple_type == "xbox one") && __input_string_contains(description, "Elite") 
-            &&  is_struct(mapping_gm_to_raw[$ string(gp_paddle2)]) && is_struct(mapping_gm_to_raw[$ string(gp_paddle3)]))
-            {
-                if (__INPUT_DEBUG) __input_trace("  (Swapping Elite P2 and P3)");
-                var _p2_mapping = mapping_gm_to_raw[$ string(gp_paddle2)].raw;
-                set_mapping(gp_paddle2, mapping_gm_to_raw[$ string(gp_paddle3)].raw, __INPUT_MAPPING.BUTTON, "paddle2");
-                set_mapping(gp_paddle3, _p2_mapping, __INPUT_MAPPING.BUTTON, "paddle3");
+                //Swap P2 and P3 mappings on Elite controller only
+                if ((simple_type == "xbox one") && __input_string_contains(description, "Elite") 
+                &&  is_struct(mapping_gm_to_raw[$ string(gp_paddle2)]) && is_struct(mapping_gm_to_raw[$ string(gp_paddle3)]))
+                {
+                    if (__INPUT_DEBUG) __input_trace("  (Swapping Elite P2 and P3)");
+                    var _p2_mapping = mapping_gm_to_raw[$ string(gp_paddle2)].raw;
+                    set_mapping(gp_paddle2, mapping_gm_to_raw[$ string(gp_paddle3)].raw, __INPUT_MAPPING.BUTTON, "paddle2");
+                    set_mapping(gp_paddle3, _p2_mapping, __INPUT_MAPPING.BUTTON, "paddle3");
+                }
             }
+        
+            return;
         }
+        else
+        {
+            if (!__INPUT_SILENT) __input_trace("No SDL2 remapping available, falling back to GameMaker's mapping (", __mapping, ")");
+        }
+    }    
+    
+    #endregion
+    
+    #region Generic mapping
+    
+    set_mapping(gp_padu,  gp_padu,  __INPUT_MAPPING.BUTTON, "dpup",    false);
+    set_mapping(gp_padd,  gp_padd,  __INPUT_MAPPING.BUTTON, "dpdown",  false);
+    set_mapping(gp_padl,  gp_padl,  __INPUT_MAPPING.BUTTON, "dpleft",  false);
+    set_mapping(gp_padr,  gp_padr,  __INPUT_MAPPING.BUTTON, "dpright", false);
+    set_mapping(gp_start, gp_start, __INPUT_MAPPING.BUTTON, "start",   false);
+        
+    set_mapping(gp_shoulderl, gp_shoulderl, __INPUT_MAPPING.BUTTON, "leftshoulder",  false);
+    set_mapping(gp_shoulderr, gp_shoulderr, __INPUT_MAPPING.BUTTON, "rightshoulder", false);
+        
+    set_mapping(gp_face1, gp_face1, __INPUT_MAPPING.BUTTON, "a", false);
+    set_mapping(gp_face2, gp_face2, __INPUT_MAPPING.BUTTON, "b", false);
+    set_mapping(gp_face3, gp_face3, __INPUT_MAPPING.BUTTON, "x", false);
+    set_mapping(gp_face4, gp_face4, __INPUT_MAPPING.BUTTON, "y", false);
+        
+    set_mapping(gp_axislh, gp_axislh, __INPUT_MAPPING.AXIS,   "leftx",      false);
+    set_mapping(gp_axislv, gp_axislv, __INPUT_MAPPING.AXIS,   "lefty",      false);
+    set_mapping(gp_stickl, gp_stickl, __INPUT_MAPPING.BUTTON, "leftstick",  false);
+    set_mapping(gp_axisrh, gp_axisrh, __INPUT_MAPPING.AXIS,   "rightx",     false);
+    set_mapping(gp_axisrv, gp_axisrv, __INPUT_MAPPING.AXIS,   "righty",     false);
+    set_mapping(gp_stickr, gp_stickr, __INPUT_MAPPING.BUTTON, "rightstick", false);
+        
+    //PlayStation only
+    if (__INPUT_ON_PS)
+    {
+        set_mapping(gp_shoulderlb, 4, __INPUT_MAPPING.AXIS, "lefttrigger" );
+        set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.AXIS, "righttrigger");
+        
+        set_mapping(gp_select, gp_select, __INPUT_MAPPING.BUTTON, "touchpad");
+            
+        return;
     }
+        
+    set_mapping(gp_shoulderlb, gp_shoulderlb, __INPUT_MAPPING.AXIS,   "lefttrigger",  false);
+    set_mapping(gp_shoulderrb, gp_shoulderrb, __INPUT_MAPPING.AXIS,   "righttrigger", false);
+    set_mapping(gp_select,     gp_select,     __INPUT_MAPPING.BUTTON, "back",         false);
+    
+    return;
     
     #endregion
 }

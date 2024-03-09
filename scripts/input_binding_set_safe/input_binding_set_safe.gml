@@ -26,7 +26,7 @@ function input_binding_set_safe(_verb_name, _binding, _player_index = 0, _altern
         var _collisions = input_binding_test_collisions(_verb_name, _binding, _player_index, _profile_name);
         if (array_length(_collisions) == 0)
         {
-            input_binding_set(_verb_name, _binding, _player_index, _alternate);
+            input_binding_set(_verb_name, _binding, _player_index, _alternate, _profile_name);
         }
         else
         {

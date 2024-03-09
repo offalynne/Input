@@ -17,15 +17,17 @@ function __input_class_gamepad(_index) constructor
     vendor  = undefined;
     product = undefined;
     
-    custom_mapping      = false;
-    mac_cleared_mapping = false;
-    
     button_count = undefined;
     axis_count   = undefined;
     hat_count    = undefined;
     
+    __mapping             = gamepad_get_mapping(_index);
+    __custom_mapping      = false;
+    __mac_cleared_mapping = false;
+    
     __xinput_trigger_range = 1;
     __stadia_trigger_test  = false;
+    __axis_calibrated      = false;
     
     __steam_handle_index = undefined;
     __steam_handle       = undefined;
@@ -53,19 +55,9 @@ function __input_class_gamepad(_index) constructor
     
     static discover = function()
     {
-        //Discard deadzone, we use axis thresholds
-        gamepad_set_axis_deadzone(index, 0);
-        
-        if (custom_mapping)
-        {
-            custom_mapping = false;
-            
-            if (!__INPUT_SILENT) __input_trace("Warning! Resetting Input's mapping for gamepad ", index);
-            
-            mapping_gm_to_raw = {};
-            mapping_raw_to_gm = {};
-            mapping_array     = [];
-        }
+        mapping_gm_to_raw = {};
+        mapping_raw_to_gm = {};
+        mapping_array     = [];
         
         button_count = gamepad_button_count(index);
         axis_count   = gamepad_axis_count(index);
@@ -84,6 +76,7 @@ function __input_class_gamepad(_index) constructor
         
         __vibration_initialize();
         __disconnection_frame = undefined;
+        __axis_calibrated     = !__INPUT_ON_ANDROID;
 
         if (__global.__gamepad_motion_support) __motion = new __input_class_gamepad_motion(index);
         if (!__INPUT_SILENT)__input_trace("Gamepad ", index, " discovered, type = \"", simple_type, "\" (", raw_type, ", guessed=", guessed_type, "), description = \"", description, "\" (vendor=", vendor, ", product=", product, ")");
@@ -105,24 +98,17 @@ function __input_class_gamepad(_index) constructor
         ||  get_pressed(gp_select)
         ||  get_pressed(gp_stickl)
         ||  get_pressed(gp_stickr)
+        ||  get_pressed(gp_guide)
+        ||  get_pressed(gp_misc1)
+        ||  get_pressed(gp_touchpad)
+        ||  get_pressed(gp_paddle1)
+        ||  get_pressed(gp_paddle2)
+        ||  get_pressed(gp_paddle3)
+        ||  get_pressed(gp_paddle4)
         ||  (!is_axis(gp_shoulderlb) && get_pressed(gp_shoulderlb))
         ||  (!is_axis(gp_shoulderrb) && get_pressed(gp_shoulderrb)))
         {
             return true;
-        }
-
-        if (INPUT_SDL2_ALLOW_EXTENDED)
-        {
-            if (get_pressed(gp_guide)
-            ||  get_pressed(gp_misc1)
-            ||  get_pressed(gp_touchpad)
-            ||  get_pressed(gp_paddle1)
-            ||  get_pressed(gp_paddle2)
-            ||  get_pressed(gp_paddle3)
-            ||  get_pressed(gp_paddle4))
-            {
-                return true;
-            }
         }
         
         return false;
@@ -131,7 +117,6 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_held = function(_gm)
     {
-        if (!custom_mapping) return gamepad_button_check(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
         return _mapping.held;
@@ -140,7 +125,6 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_pressed = function(_gm)
     {
-        if (!custom_mapping) return gamepad_button_check_pressed(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
         return _mapping.press;
@@ -149,7 +133,6 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_released = function(_gm)
     {
-        if (!custom_mapping) return gamepad_button_check_released(index, _gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
         return _mapping.release;
@@ -158,18 +141,6 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_value = function(_gm)
     {
-        if (!custom_mapping)
-        {
-            if ((_gm == gp_axislh) || (_gm == gp_axislv) || (_gm == gp_axisrh) || (_gm == gp_axisrv))
-            {
-                return clamp(gamepad_axis_value(index, _gm), -1.0, 1.0);
-            }
-            else
-            {
-                return gamepad_button_check(index, _gm);
-            }
-        }
-        
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return 0.0;
         return _mapping.value;
@@ -178,7 +149,6 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static get_delta = function(_gm)
     {
-        if (!custom_mapping) return get_value(_gm);
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return 0.0;
         return _mapping.__value_delta;
@@ -187,64 +157,55 @@ function __input_class_gamepad(_index) constructor
     /// @param GMconstant
     static is_axis = function(_gm)
     {
-        if (!custom_mapping)
-        {
-            if ((_gm == gp_shoulderlb) || (_gm == gp_shoulderrb))
-            {
-                return !__INPUT_DIGITAL_TRIGGER;
-            }
-            else
-            {
-                return ((_gm == gp_axislh) || (_gm == gp_axislv) || (_gm == gp_axisrh) || (_gm == gp_axisrv));
-            }
-        }
-        
         var _mapping = mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
         return (_mapping.type == __INPUT_MAPPING.AXIS);
+    }
+    
+    static __set_custom_mapping = function()
+    {
+        __custom_mapping = true;
+            
+        if (__INPUT_SDL2_SUPPORT)
+        {
+            //As of 2020-08-17, GameMaker has weird in-build remapping rules for gamepad on MacOS
+            if (__INPUT_ON_MACOS)
+            {
+                if ((__mapping != "") && (__mapping != "no mapping"))
+                {
+                    if (!__INPUT_SILENT) __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
+                    __mac_cleared_mapping = true;
+                }
+                
+                //Additionally, gamepad_remove_mapping() doesn't seem to work. Setting the SDL string to something mostly blank does work though
+                gamepad_test_mapping(index, gamepad_get_guid(index) + "," + gamepad_get_description(index) + ",");
+            }
+            else
+            {
+                if (!__INPUT_SILENT) __input_trace("Gamepad ", index, (blacklisted? " is blacklisted" : " has a custom mapping"), ", clearing GameMaker's native mapping string");
+                gamepad_remove_mapping(index);
+            }
+        }
     }
     
     /// @param GMconstant
     /// @param rawIndex
     /// @param rawMappingType
     /// @param SDLname
-    static set_mapping = function(_gm, _raw_index, _mapping_type, _sdl_name)
+    /// @param [override=true]
+    static set_mapping = function(_gm, _raw_index, _mapping_type, _sdl_name, _override = true)
     {
-        if (!custom_mapping)
+        if (_override)
         {
-            custom_mapping = true;
-            
-            if (__INPUT_SDL2_SUPPORT)
-            {
-                //As of 2020-08-17, GameMaker has weird in-build remapping rules for gamepad on MacOS
-                if (__INPUT_ON_MACOS)
-                {
-                    if ((gamepad_get_mapping(index) != "") && (gamepad_get_mapping(index) != "no mapping"))
-                    {
-                        if (!__INPUT_SILENT) __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
-                        mac_cleared_mapping = true;
-                    }
-                
-                    //Additionally, gamepad_remove_mapping() doesn't seem to work. Setting the SDL string to something mostly blank does work though
-                    gamepad_test_mapping(index, gamepad_get_guid(index) + "," + gamepad_get_description(index) + ",");
-                }
-                else
-                {
-                    if (!__INPUT_SILENT) __input_trace("Gamepad ", index, " has a custom mapping, clearing GameMaker's native mapping string");
-                    gamepad_remove_mapping(index);
-                }
-            }
-            else if (!INPUT_ON_CONSOLE)
-            {
-                __input_trace("Gamepad ", index, " cannot remove GameMaker's native mapping string, this feature is not supported by Input on this platform");
-            }
-        }
+            //Override built-in mapping
+            if (not __custom_mapping) __set_custom_mapping();
         
-        //Correct for weird input index offset on MacOS if the gamepad already had a native GameMaker mapping
-        if (mac_cleared_mapping && __INPUT_ON_MACOS)
-        {
-            if (_mapping_type == __INPUT_MAPPING.AXIS  ) _raw_index +=  6;
-            if (_mapping_type == __INPUT_MAPPING.BUTTON) _raw_index += 17;
+            //Correct for weird input index offset on MacOS if the gamepad already had a native GameMaker mapping
+            if (__mac_cleared_mapping && __INPUT_ON_MACOS)
+            {
+                if (_mapping_type == __INPUT_MAPPING.AXIS  ) _raw_index +=  6;
+                if (_mapping_type == __INPUT_MAPPING.BUTTON) _raw_index += 17;
+            }
         }
         
         //Create a new mapping. It holds button state and definition information
@@ -259,10 +220,17 @@ function __input_class_gamepad(_index) constructor
     
     static set_dpad_hat_mapping = function()
     {
-        set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"   ).hat_mask = 1;
-        set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright").hat_mask = 2;
-        set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown" ).hat_mask = 4;
-        set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft" ).hat_mask = 8;
+        var _mapping = set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"); 
+        _mapping.hat_mask = 1;
+        
+        _mapping = set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright"); 
+        _mapping.hat_mask = 2;
+        
+        _mapping = set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown"); 
+        _mapping.hat_mask = 4;
+        
+        _mapping = set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft"); 
+        _mapping.hat_mask = 8;
     }
     
     /// @param connected
@@ -274,12 +242,6 @@ function __input_class_gamepad(_index) constructor
             if (__disconnection_frame == undefined)
             {
                 __disconnection_frame = __global.__frame;
-            }
-            
-            //Flag for removal
-            if (__global.__frame - __disconnection_frame >= __INPUT_GAMEPADS_DISCONNECTION_TIMEOUT)
-            {
-                return false;
             }
         }
         else
@@ -305,9 +267,12 @@ function __input_class_gamepad(_index) constructor
                             if (!__INPUT_SILENT) __input_trace("Partially extending XInput trigger scale for gamepad ", index);
                             __xinput_trigger_range = 255/256;
                         }
-                                           
-                        mapping_gm_to_raw[$ gp_shoulderlb].scale = 1/__xinput_trigger_range;
-                        mapping_gm_to_raw[$ gp_shoulderrb].scale = 1/__xinput_trigger_range;
+                        
+                        var _mapping = mapping_gm_to_raw[$ gp_shoulderlb];
+                        _mapping.scale = 1/__xinput_trigger_range;
+                        
+                        _mapping = mapping_gm_to_raw[$ gp_shoulderrb];
+                        _mapping.scale = 1/__xinput_trigger_range;
                     }
                 }
         
@@ -319,15 +284,24 @@ function __input_class_gamepad(_index) constructor
                     if (!__INPUT_SILENT) __input_trace("Setting Stadia controller to analogue trigger mapping for gamepad ", index);
                     __stadia_trigger_test = false;                    
                     
-                    set_mapping(gp_axisrh,     2, __INPUT_MAPPING.AXIS, "rightx");
-                    set_mapping(gp_axisrv,     3, __INPUT_MAPPING.AXIS, "righty");            
-                    set_mapping(gp_shoulderrb, 4, __INPUT_MAPPING.AXIS, "righttrigger").extended_range = true;
-                    set_mapping(gp_shoulderlb, 5, __INPUT_MAPPING.AXIS, "lefttrigger" ).extended_range = true;
+                    set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
+                    set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
+                    
+                    var _mapping = set_mapping(gp_shoulderrb, 4, __INPUT_MAPPING.AXIS, "righttrigger");
+                    _mapping.extended_range = true;
+
+                    _mapping = set_mapping(gp_shoulderlb, 5, __INPUT_MAPPING.AXIS, "lefttrigger");
+                    _mapping.extended_range = true;
                 }
             }
         }
         
-        var _scan = (current_time > __scan_start_time);
+        //Remove deadzone
+        var _deadzone = gamepad_get_axis_deadzone(index);
+        gamepad_set_axis_deadzone(index, 0.0);
+        
+        //Tick mapping        
+        var _scan = (_connected && (current_time > __scan_start_time));
         var _gamepad = index;
         var _i = 0;
         repeat(array_length(mapping_array))
@@ -336,9 +310,41 @@ function __input_class_gamepad(_index) constructor
             ++_i;
         }
         
+        //Restore deadzone
+        gamepad_set_axis_deadzone(index, _deadzone);
+        
+        //Handle uncalibrated axis
+        if (not __axis_calibrated)
+        {
+            var _success = false;
+            var _mapping = 0;
+            repeat(array_length(mapping_array))
+            {
+                _success = mapping_array[_mapping].__calibrate(__axis_calibrated);
+                if (_success)
+                {
+                    __input_trace("Axis calibration confirmed for gamepad ", index);
+                    __axis_calibrated = true;
+                }
+                
+                ++_mapping;
+            }
+        }
+        
+        //Handle disconnection
+        if not (_connected)
+        {
+            //Flag for removal
+            if (__global.__frame - __disconnection_frame >= __INPUT_GAMEPADS_DISCONNECTION_TIMEOUT)
+            {
+                return false;
+            }
+        }
+        
+        //Handle vibration
         if (__vibration_support)
         {
-            if (_connected && __vibration_received_this_frame && input_window_has_focus())
+            if (_connected && __vibration_received_this_frame && input_game_has_focus())
             {
                 var _vibration_low  = __vibration_scale * __vibration_left;
                 var _vibration_high = __vibration_scale * __vibration_right;

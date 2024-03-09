@@ -159,7 +159,7 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "SteamController";
                 }
-                else if (__input_string_contains(_desc, "ps5", "dualsense"))
+                else if (__input_string_contains(_desc, "ps5", "dualsense", "backbone one playstation"))
                 {
                     raw_type = "PS5Controller";
                 }
@@ -264,7 +264,7 @@ function __input_gamepad_set_type()
                 raw_type = "AppleController";
                 guessed_type = false;
             }
-            else if ((vendor == "6325") && (product == "7505") && __INPUT_ON_WINDOWS)
+            else if ((vendor == "6325") && (product == "7505") && (__INPUT_ON_WINDOWS || __INPUT_ON_LINUX))
             {
                 //VID+PID conflicts with a Shanwan ICU most often used for third party PS3 style controllers
                 if ((button_count == 17) && (hat_count == 0))
@@ -277,11 +277,22 @@ function __input_gamepad_set_type()
                 }
                 else if ((button_count == 13) && (hat_count == 1))
                 {
-                    //Several third party N64 controllers including retro-bit's Tribute 64
-                    if (!__INPUT_SILENT) __input_trace("Overriding controller ", index ," type to N64");
-                    description = "N64";
-                    raw_type = "CommunityN64";
-                    guessed_type = false;
+                    if ((gamepad_get_description(index) == "USB ") || (gamepad_get_description(index) == "SWITCH CO.,LTD. Retro-bit Controller"))
+                    {
+                        //retro-bit's Saturn Wireless Pro
+                        if (!__INPUT_SILENT) __input_trace("Overriding controller ", index ," type to Switch");
+                        description = "Saturn Wireless Pro";
+                        raw_type = "CommunitySwitch";
+                        guessed_type = false;
+                    }
+                    else if (__input_string_contains(gamepad_get_description(index), "Controller (Dinput)"))
+                    {
+                        //Several third party N64 controllers including retro-bit's Tribute 64
+                        if (!__INPUT_SILENT) __input_trace("Overriding controller ", index ," type to N64");
+                        description = "N64";
+                        raw_type = "CommunityN64";
+                        guessed_type = false;
+                    }
                 }
             }
             else if ((vendor == "d904") && (product == "93a2") && INPUT_ON_PC)
@@ -361,7 +372,7 @@ function __input_gamepad_set_type()
                 switch(_wii_type_match)
                 {
                     case "HIDWiiMotionPlus":
-                    case "HIDWiiNunchuk":                    
+                    case "HIDWiiNunchuk":
                     case "HIDWiiClassic":
                         var _g = index;
                         repeat(index)

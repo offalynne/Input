@@ -3,7 +3,8 @@ function __input_class_trigger_effect_vibration(_position, _amplitude, _frequenc
 {
     static __mode_name = "vibration";
     static __mode      = __INPUT_TRIGGER_EFFECT.__TYPE_VIBRATION;
-    __params    = {
+    
+    __params = {
         position:  clamp(_position*10, 0, 9),
         amplitude: clamp(_amplitude*8, 0, 8),
         frequency: clamp(_frequency*255, 0, 255)

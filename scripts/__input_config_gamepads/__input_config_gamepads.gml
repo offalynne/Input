@@ -20,9 +20,6 @@
 //Input treats these two modes as mutually exclusive (come talk to us if you need to be able to swap at runtime)
 #macro INPUT_SWITCH_HORIZONTAL_HOLDTYPE  true
 
-//Whether to allow gamepad touchpad as mouse on PlayStation platforms 
-#macro INPUT_PS_TOUCHPAD_ALLOWED false
-
 //Whether to use the right hand sensor for motion data when using detached dual Joy-Cons as a pair
 //When <false>, the left hand Joy-Con sensor will be used for motion data instead 
 #macro INPUT_SWITCH_JOYCON_MOTION_RIGHT_HAND true

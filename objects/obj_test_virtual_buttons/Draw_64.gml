@@ -3,11 +3,13 @@
 input_virtual_debug_draw();
 
 var _string = concat(
-    "accept = ", input_value("accept"), ", check = ", input_check("accept"), "\n",
-    "right  = ", input_value("right" ), ", check = ", input_check("right" ), "\n",
-    "up     = ", input_value("up"    ), ", check = ", input_check("up"    ), "\n",
-    "left   = ", input_value("left"  ), ", check = ", input_check("left"  ), "\n",
-    "down   = ", input_value("down"  ), ", check = ", input_check("down"  ), "\n"
+    "accept    = ", input_value("accept"), ", check = ", input_check("accept"), "\n",
+    "right     = ", input_value("right" ), ", check = ", input_check("right" ), "\n",
+    "up        = ", input_value("up"    ), ", check = ", input_check("up"    ), "\n",
+    "left      = ", input_value("left"  ), ", check = ", input_check("left"  ), "\n",
+    "down      = ", input_value("down"  ), ", check = ", input_check("down"  ), "\n",
+    "type      = ", pressed_vbutton_type(), "\n",
+    "momentary = ", i.get_momentary()? "ON\n" : "off\n",
 );
 
 var _func_draw_arrow = function(_x1, _y1, _x2, _y2)
