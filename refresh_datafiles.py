@@ -12,6 +12,7 @@ import re
 import os
 import urllib.request
 import shutil
+import datetime
 
 # sources and parsing expressions per datafile
 marker_id = "$$$"
@@ -242,8 +243,14 @@ for file in DATA_SOURCES:
             except: 
                 exit('Failed to fetch license for ' + source)
 
+            # clean license
+            license_content = license_content.replace("// ", "").replace("//", "");
+
             # render license
-            license_handle.write("\n\n\nDatafile " + filename + " includes data sourced from " + source + ".\n\n")
+            license_handle.write("\n"*3)
+            license_handle.write("Datafile " + filename + " includes data sourced from " + source + "\n")
+            license_handle.write("Retrieved on " + datetime.datetime.now().strftime("%x") + " from " + source_index.get("source") + "\n")
+            license_handle.write("\n")
             license_handle.write(license_content)
 
 print("Removing backup")
