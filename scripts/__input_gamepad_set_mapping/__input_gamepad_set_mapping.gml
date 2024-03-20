@@ -595,6 +595,62 @@ function __input_gamepad_set_mapping()
     }
     
     #endregion
+    
+    #region Steam Deck controller Linux driver
+    
+    if ((guid == "03000000de2800000512000010010000") && __INPUT_ON_LINUX)
+    {
+        //HID driver kicks in when running without Steam, some axes differ from the SDL mapping
+        if (!__INPUT_SILENT) __input_trace("Overriding mapping for Steam Deck controller");
+        
+        //set_mapping(???,    0, __INPUT_MAPPING.BUTTON,  ???);    //L pad press, no SDL key for this
+        //set_mapping(???,    1, __INPUT_MAPPING.BUTTON,  ???);    //R pad press, no SDL key for this
+        set_mapping(gp_misc1, 2, __INPUT_MAPPING.BUTTON, "misc1"); //… button
+
+        set_mapping(gp_face1, 3, __INPUT_MAPPING.BUTTON, "a");
+        set_mapping(gp_face2, 4, __INPUT_MAPPING.BUTTON, "b");
+        set_mapping(gp_face3, 5, __INPUT_MAPPING.BUTTON, "x");
+        set_mapping(gp_face4, 6, __INPUT_MAPPING.BUTTON, "y");
+        
+        set_mapping(gp_shoulderl,   7, __INPUT_MAPPING.BUTTON, "leftshoulder");
+        set_mapping(gp_shoulderr,   8, __INPUT_MAPPING.BUTTON, "rightshoulder");
+        set_mapping(gp_shoulderlb,  9, __INPUT_MAPPING.BUTTON, "lefttrigger");
+        set_mapping(gp_shoulderrb, 10, __INPUT_MAPPING.BUTTON, "righttrigger");
+        
+        set_mapping(gp_select, 11, __INPUT_MAPPING.BUTTON, "back");  //View button
+        set_mapping(gp_start,  12, __INPUT_MAPPING.BUTTON, "start"); //Menu button
+        set_mapping(gp_guide,  13, __INPUT_MAPPING.BUTTON, "guide"); //STEAM button
+        
+        set_mapping(gp_stickl, 14, __INPUT_MAPPING.BUTTON, "leftstick");
+        set_mapping(gp_stickr, 15, __INPUT_MAPPING.BUTTON, "rightstick");
+        
+        set_mapping(gp_padu, 16, __INPUT_MAPPING.BUTTON, "dpup");
+        set_mapping(gp_padd, 17, __INPUT_MAPPING.BUTTON, "dpdown");
+        set_mapping(gp_padl, 18, __INPUT_MAPPING.BUTTON, "dpleft");
+        set_mapping(gp_padr, 19, __INPUT_MAPPING.BUTTON, "dpright");
+        
+        set_mapping(gp_paddle2, 20, __INPUT_MAPPING.BUTTON, "paddle2"); //L4 button
+        set_mapping(gp_paddle1, 21, __INPUT_MAPPING.BUTTON, "paddle1"); //R4 button
+        set_mapping(gp_paddle4, 22, __INPUT_MAPPING.BUTTON, "paddle4"); //L5 button
+        set_mapping(gp_paddle3, 23, __INPUT_MAPPING.BUTTON, "paddle3"); //R5 button
+
+        _mapping = set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
+        _mapping.limited_range = true;
+        
+        _mapping = set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
+        _mapping.limited_range = true;
+        
+        _mapping = set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
+        _mapping.limited_range = true;
+        
+        _mapping = set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
+        _mapping.limited_range = true;
+
+        
+        return;        
+    }
+    
+    #endregion    
 
     #region Nintendo Switch Online Controllers on Linux
 
@@ -607,7 +663,7 @@ function __input_gamepad_set_mapping()
             set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
             set_mapping(gp_face2, 0, __INPUT_MAPPING.BUTTON, "b");
             
-            set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.BUTTON, "righttrigger"); // C button
+            set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.BUTTON, "righttrigger"); //C button
             
             set_mapping(gp_select, 7, __INPUT_MAPPING.BUTTON, "back");
             set_mapping(gp_start,  9, __INPUT_MAPPING.BUTTON, "start");
@@ -627,8 +683,8 @@ function __input_gamepad_set_mapping()
             set_mapping(gp_face3, 6, __INPUT_MAPPING.BUTTON, "x");
             set_mapping(gp_face4, 2, __INPUT_MAPPING.BUTTON, "y");
             
-            set_mapping(gp_shoulderr,  4, __INPUT_MAPPING.BUTTON, "rightshoulder"); // Z button
-            set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.BUTTON, "righttrigger");  // C button
+            set_mapping(gp_shoulderr,  4, __INPUT_MAPPING.BUTTON, "rightshoulder"); //Z button
+            set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.BUTTON, "righttrigger");  //C button
             
             set_mapping(gp_select, 7, __INPUT_MAPPING.BUTTON, "back");
             set_mapping(gp_start,  9, __INPUT_MAPPING.BUTTON, "start");
