@@ -305,6 +305,7 @@ beef,feed,CommunityXBox360 // Monect
 1915,0040,CommunityXBoxOne // Flydigi X9ET Pro and Vader 2
 358a,0201,CommunityXBoxOne // Backbone One USB C Xbox
 358a,0202,CommunityXBoxOne // Backbone One USB C Xbox
+2dc8,2002,CommunityXBoxOne // 8BitDo Ultimate Wired
 0e6f,0901,CommunityPSX // PDP Versus Fighting
 2563,0526,CommunityPSX // Uberwith PS
 0e6f,0111,CommunityPSX // Afterglow PS3
@@ -567,5 +568,6 @@ dead,beef,CommunityPSX // Hidromancer
 046d,c215,SDLFlightstick // Logitech Extreme 3D
 231d,0126,SDLFlightstick // Gunfighter MkIII Space Combat Edition right
 231d,0127,SDLFlightstick // Gunfighter MkIII Space Combat Edition left
+362c,0001,SDLFlightstick // Yawman Arrow
 044f,0404,SDLThrottle // HOTAS Warthog Throttle
 0738,a221,SDLThrottle // Saitek Pro Flight X56 Rhino Throttle
