@@ -22,7 +22,7 @@ if (input_game_has_focus())
     }
 }
 
-var _size  = gamepad_get_device_count();;
+var _size  = gamepad_get_device_count();
 test_index = (test_index + _delta + _size) mod max(1, _size);
 
 var _test_colors = [c_blue, c_red, c_fuchsia, c_lime];
