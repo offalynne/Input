@@ -640,11 +640,60 @@ function __input_initialize()
     _global.__gamepad_led_pattern_dict = _dict;
     
     #endregion
+    
+    
+        
+    #region Device locale
+        
+    //Gamepad region
+    _global.__ps_region_swap = false;
+    if (INPUT_PS_REGION_SWAP_CONFIRM && (os_type == os_ps4))
+    {
+        var _map = os_get_info();
+        if (ds_exists(_map, ds_type_map))
+        {
+            if (_map[? "enter_button_assign"] == 0)
+            {
+                _global.__ps_region_swap = true;
+            }
+            
+            ds_map_destroy(_map);
+        }
+    }
+    
+    //Keyboard locale
+    _global.__keyboard_locale = "QWERTY";
+    var _locale = os_get_language() + "-" + os_get_region();
+    switch(_locale)
+    {
+        case "ar-DZ": case "ar-MA": case "ar-TN":
+        case "br-FR": case "co-FR": case "ff-SN":
+        case "fr-BE": case "fr-CD": case "fr-CI":
+        case "fr-CM": case "fr-FR": case "fr-HT":
+        case "fr-MA": case "fr-MC": case "fr-ML":
+        case "fr-RE": case "nl-BE": case "oc-FR":
+        case "wo-SN": case "tzm-DZ":
+        case "mg-":   case "gsw-FR":
+            _global.__keyboard_type = "AZERTY";
+        break;  
 
+        case "cs-CZ": case "de-AT": case "de-CH":
+        case "de-DE": case "de-LI": case "de-LU":
+        case "fr-CH": case "fr-LU": case "sq-AL":
+        case "hr-BA": case "hr-HR": case "hu-HU":
+        case "lb-LU": case "rm-CH": case "sk-SK":
+        case "sl-SI": case "dsb-DE":
+        case "sr-BA": case "hsb-DE":
+            _global.__keyboard_type = "QWERTZ";
+        break;
+    }
+    
+    #endregion 
+    
 
 
     #region Key names
-
+    
     __input_key_name_set(vk_backtick,   "`");
     __input_key_name_set(vk_hyphen,     "-");
     __input_key_name_set(vk_equals,     "=");
@@ -735,17 +784,28 @@ function __input_initialize()
         __input_key_name_set(128, "f11");
         __input_key_name_set(129, "f12");
     }
-   
-    //F13 to F32 on Windows and Web
-    if (__INPUT_ON_WINDOWS || INPUT_ON_WEB)
-    {
-        for(var _i = vk_f1 + 12; _i < vk_f1 + 32; _i++) __input_key_name_set(_i, "f" + string(_i));
-    }
     
     //Numeric keys 2-7 on Switch
     if (__INPUT_ON_SWITCH)
     {
         for(var _i = 2; _i <= 7; _i++) __input_key_name_set(_i, __input_key_get_name(ord(_i)));
+    }
+    
+    if (__INPUT_ON_WINDOWS || INPUT_ON_WEB)
+    {
+        //F13 to F32 on Windows and Web
+        for(var _i = vk_f1 + 12; _i < vk_f1 + 32; _i++) __input_key_name_set(_i, "f" + string(_i));
+        
+        //IntlBackslash, Backquote
+        __input_key_name_set(226, (INPUT_ON_WEB? "\\" : "<"));
+        
+        //Uncommon layout-contextual symbol
+        switch (INPUT_KEYBOARD_LOCALE)
+        {
+            case "QWERTY": __input_key_name_set(223, "`"); break;
+            case "AZERTY": __input_key_name_set(223, "!"); break;
+            case "QWERTZ": __input_key_name_set(223, "$"); break;
+        }
     }
     
     #endregion
@@ -1021,53 +1081,7 @@ function __input_initialize()
 
     #endregion
     
-    
-    
-    #region Device locale
         
-    //Gamepad region
-    _global.__ps_region_swap = false;
-    if (INPUT_PS_REGION_SWAP_CONFIRM && (os_type == os_ps4))
-    {
-        var _map = os_get_info();
-        if (ds_exists(_map, ds_type_map))
-        {
-            if (_map[? "enter_button_assign"] == 0)
-            {
-                _global.__ps_region_swap = true;
-            }
-            
-            ds_map_destroy(_map);
-        }
-    }
-    
-    //Keyboard locale
-    _global.__keyboard_locale = "QWERTY";
-    var _locale = os_get_language() + "-" + os_get_region();
-    switch(_locale)
-    {
-        case "ar-DZ": case "ar-MA": case "ar-TN":
-        case "fr-BE": case "fr-FR": case "fr-MC":
-        case "co-FR": case "oc-FR": case "ff-SN": 
-        case "wo-SN": case "gsw-FR": 
-        case "nl-BE": case "tzm-DZ":
-            _global.__keyboard_type = "AZERTY";
-        break;  
-
-        case "cs-CZ": case "de-AT": case "de-CH": 
-        case "de-DE": case "de-LI": case "de-LU": 
-        case "fr-CH": case "fr-LU": case "sq-AL":
-        case "hr-BA": case "hr-HR": case "hu-HU":
-        case "lb-LU": case "rm-CH": case "sk-SK": 
-        case "sl-SI": case "dsb-DE":
-        case "sr-BA": case "hsb-DE":
-            _global.__keyboard_type = "QWERTZ";
-        break;
-    }
-    
-    #endregion 
-    
-    
     
     #region Keyboard type
     
