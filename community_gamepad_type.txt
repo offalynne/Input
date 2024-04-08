@@ -88,6 +88,7 @@
 0079,1803,CommunityLikeSwitch // Mayflash Wii DolphinBar
 0f0d,0137,CommunityLikeSwitch // Hori Fighting Stick Mini
 0f0d,0002,CommunityLikeSwitch // Hori Split Pad Pro
+0f0d,0185,CommunityLikeSwitch // Hori Split Pad Fit
 1949,0409,CommunityLikeSwitch // Mobapad Chitu HD
 2345,e015,CommunityLikeSwitch // Mobapad Chitu HD
 0500,9b28,CommunitySaturn // Sega Saturn Adapter
