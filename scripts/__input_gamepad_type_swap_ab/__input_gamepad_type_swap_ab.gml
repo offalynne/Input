@@ -5,7 +5,7 @@ function __input_gamepad_type_swap_ab(_gamepad_type)
     
     if (_global.__ps_region_swap) return true;
     
-    switch (_gamepad_type)
+    switch(_gamepad_type)
     {
         case INPUT_GAMEPAD_TYPE_SWITCH:
         case INPUT_GAMEPAD_TYPE_JOYCON_LEFT:

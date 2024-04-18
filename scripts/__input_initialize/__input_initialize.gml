@@ -445,6 +445,24 @@ function __input_initialize()
     //This can also work with INPUT_MOUSE if INPUT_MOUSE_ALLOW_VIRTUAL_BUTTONS is set to <true>
     _global.__touch_player = undefined;
     
+    //Gamepad device count by platform
+    var _max_gamepads = 4;
+    if (!INPUT_ON_WEB)
+    {
+        if (__INPUT_ON_WINDOWS)
+        {
+            _max_gamepads = 12;
+        }
+        else if (__INPUT_ON_SWITCH || __INPUT_ON_XBOX)
+        {
+            _max_gamepads = 8;
+        }
+        else if (__INPUT_ON_LINUX || __INPUT_ON_ANDROID)
+        {
+            _max_gamepads = gamepad_get_device_count();
+        }
+    }
+    
     //Two structs that are returned by input_players_get_status() and input_gamepads_get_status()
     //These are "static" structs that are reset and populated by __input_system_tick()
     _global.__players_status = {
@@ -458,7 +476,7 @@ function __input_initialize()
         any_changed: false,
         new_connections: [],
         new_disconnections: [],
-        gamepads: array_create(INPUT_MAX_GAMEPADS, INPUT_STATUS.DISCONNECTED),
+        gamepads: array_create(_max_gamepads, INPUT_STATUS.DISCONNECTED),
     }
     
     //The default player. This player struct holds default binding data
@@ -497,7 +515,10 @@ function __input_initialize()
     //Array of currently connected gamepads. If an element is <undefined> then the gamepad is disconnected
     //Each gamepad in this array is an instance of __input_class_gamepad
     //Gamepad structs contain remapping information and current button state
-    _global.__gamepads = array_create(INPUT_MAX_GAMEPADS, undefined);
+    _global.__gamepads = array_create(_max_gamepads, undefined);
+    
+    //Array of cached native gamepad connection check results    
+    _global.__gamepad_connections = array_create(_max_gamepads, false);   
     
     //Our database of SDL2 definitions, used for the aforementioned remapping information
     _global.__sdl2_database = {
@@ -820,7 +841,7 @@ function __input_initialize()
         __input_key_name_set(226, (INPUT_ON_WEB? "\\" : "<"));
         
         //Uncommon layout-contextual symbol
-        switch (INPUT_KEYBOARD_LOCALE)
+        switch(INPUT_KEYBOARD_LOCALE)
         {
             case "QWERTY": __input_key_name_set(223, "`"); break;
             case "AZERTY": __input_key_name_set(223, "!"); break;
@@ -1178,9 +1199,9 @@ function __input_initialize()
     _global.__source_mouse    = INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER? INPUT_KEYBOARD : (new __input_class_source(__INPUT_SOURCE.MOUSE));
     _global.__source_touch    = new __input_class_source(__INPUT_SOURCE.TOUCH);
     
-    _global.__source_gamepad = array_create(INPUT_MAX_GAMEPADS, undefined);
+    _global.__source_gamepad = array_create(_max_gamepads, undefined);
     var _g = 0;
-    repeat(INPUT_MAX_GAMEPADS)
+    repeat(_max_gamepads)
     {
         _global.__source_gamepad[@ _g] = new __input_class_source(__INPUT_SOURCE.GAMEPAD, _g);
         ++_g;

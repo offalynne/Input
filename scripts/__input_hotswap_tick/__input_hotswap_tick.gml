@@ -51,29 +51,36 @@ function __input_hotswap_tick_input()
         //In-use gamepad
         var _player = _global.__players[0];
         var _active_gamepad_index = _player.__source_get_gamepad();
-        if (gamepad_is_connected(_active_gamepad_index))
+        if (_active_gamepad_index > -1)
         {
-            var _gamepad = _global.__gamepads[_active_gamepad_index];
-            if (is_struct(_gamepad) && (_gamepad.__get_any_pressed() || __input_hotswap_axis_delta(_gamepad)))
+            if (_global.__gamepad_connections[_active_gamepad_index])
             {
-                _player.__last_input_time = _global.__current_time;
-                return INPUT_GAMEPAD[_active_gamepad_index];
+                var _gamepad = _global.__gamepads[_active_gamepad_index];
+                if (is_struct(_gamepad) && (_gamepad.__get_any_pressed() || __input_hotswap_axis_delta(_gamepad)))
+                {
+                    _player.__last_input_time = _global.__current_time;
+                    return INPUT_GAMEPAD[_active_gamepad_index];
+                }
             }
         }
         
-        var _gamepad_count = array_length(INPUT_GAMEPAD);
+        //Next available gamepad
         if not (_global.__frame - _global.__window_focus_frame < __INPUT_GAMEPADS_FOCUS_TIMEOUT) //Prevent resting axes from triggering source swap
         {
             //Search last-to-first on platforms with low-index virtual controllers (Steam Input, ViGEm)
-            var _gamepad_index = 0;
             static _sort_order = (!INPUT_ON_WEB && (__INPUT_ON_MACOS || (!_global.__using_steamworks && __INPUT_ON_WINDOWS) || (_global.__using_steamworks && __INPUT_ON_LINUX))? -1 : 1);
-            if (_sort_order == -1) _gamepad_index = _gamepad_count - 1;
+            
+            var _gamepad_count = array_length(INPUT_GAMEPAD);
+            var _gamepad_index = 0;
+            if (_sort_order == -1)
+            {
+                _gamepad_index = _gamepad_count - 1;
+            }
 
             repeat(_gamepad_count)
             {
-                if ((_gamepad_index != _active_gamepad_index) && gamepad_is_connected(_gamepad_index))
-                {
-                    //Gamepad not in-use but potentially available          
+                if ((_gamepad_index != _active_gamepad_index) && _global.__gamepad_connections[_gamepad_index])
+                {  
                     var _gamepad = _global.__gamepads[_gamepad_index];
                     if (is_struct(_gamepad)
                     && (_gamepad.__disconnection_frame == undefined))
@@ -89,8 +96,7 @@ function __input_hotswap_tick_input()
                         {
                             if (!__INPUT_SILENT) __input_trace("Hotswapping on gamepad ", INPUT_GAMEPAD[_gamepad_index], " \"", _global.__gamepads[_gamepad_index].description, "\" axis press");
                             _player.__last_input_time = _global.__current_time;
-                            return INPUT_GAMEPAD[_gamepad_index];
-                            
+                            return INPUT_GAMEPAD[_gamepad_index];                            
                         }
                     }
                 }

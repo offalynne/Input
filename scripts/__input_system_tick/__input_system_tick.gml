@@ -473,10 +473,8 @@ function __input_system_tick()
         }
         
         //Expand dynamic device count
-        var _device_change = max(0, gamepad_get_device_count() - array_length(_global.__gamepads));
-        repeat(_device_change) array_push(_global.__gamepads, undefined);
-        
-        _device_change = max(0, gamepad_get_device_count() - array_length(INPUT_GAMEPAD));
+        var _count = gamepad_get_device_count();
+        _device_change = max(0, _count - array_length(_global.__gamepads));
         repeat(_device_change)
         {
             array_push(INPUT_GAMEPAD, new __input_class_source(__INPUT_SOURCE.GAMEPAD, array_length(INPUT_GAMEPAD)));
@@ -490,10 +488,12 @@ function __input_system_tick()
         var _g = 0;
         repeat(array_length(_global.__gamepads))
         {
+            var _connected = gamepad_is_connected(_g);
+            _global.__gamepad_connections[_g] = _connected;
+            
             var _gamepad = _global.__gamepads[_g];
             if (is_struct(_gamepad))
             {
-                var _connected = gamepad_is_connected(_g);
                 if (_connected)
                 {
                     with (_gamepad)
@@ -543,7 +543,7 @@ function __input_system_tick()
             }
             else
             {
-                if (gamepad_is_connected(_g))
+                if (_global.__gamepad_connections[_g])
                 {
                     __input_trace("Gamepad ", _g, " connected");
                     if (!__INPUT_SILENT) __input_trace("New gamepad = \"", gamepad_get_description(_g), "\", GUID=\"", gamepad_get_guid(_g), "\", buttons = ", gamepad_button_count(_g), ", axes = ", gamepad_axis_count(_g), ", hats = ", gamepad_hat_count(_g));

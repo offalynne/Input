@@ -30,9 +30,9 @@ function __input_class_source(_source, _gamepad = undefined) constructor
     {
         switch(__source)
         {
-            case __INPUT_SOURCE.KEYBOARD: return true;                                  break; //TODO - Should this check against whether bindings exist for this source?
-            case __INPUT_SOURCE.MOUSE:    return true;                                  break; //TODO - Should this check against whether bindings exist for this source?
-            case __INPUT_SOURCE.TOUCH:    return true;                                  break; //TODO - Should this check against whether bindings exist for this source?
+            case __INPUT_SOURCE.KEYBOARD: return true; break;
+            case __INPUT_SOURCE.MOUSE:    return true; break;
+            case __INPUT_SOURCE.TOUCH:    return true; break;
             case __INPUT_SOURCE.GAMEPAD:  return input_gamepad_is_connected(__gamepad); break;
             
             default:
@@ -127,12 +127,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
             break;
             
             case __INPUT_BINDING_KEY:
-                if (!__global.__keyboard_allowed)
-                {
-                    //Invalid per platform or configuration
-                    return false;
-                }
-                
+                if not (__global.__keyboard_allowed) return false;
                 if not ((__source == __INPUT_SOURCE.KEYBOARD) || (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (__source == __INPUT_SOURCE.MOUSE))) return false;
                 
                 if (__INPUT_ON_ANDROID)
@@ -158,12 +153,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
             break;
             
             case __INPUT_BINDING_MOUSE_BUTTON:
-                if (!__global.__mouse_allowed)
-                {
-                    //Invalid per platform or configuration
-                    return false;
-                }
-                
+                if not (__global.__mouse_allowed) return false;
                 if not ((__source == __INPUT_SOURCE.MOUSE) || (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (__source == __INPUT_SOURCE.KEYBOARD))) return false;
                 
                 switch(_value)
@@ -193,12 +183,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
             
             case __INPUT_BINDING_MOUSE_WHEEL_UP:
             case __INPUT_BINDING_MOUSE_WHEEL_DOWN:
-                if (!__global.__mouse_allowed)
-                {
-                    //Invalid per platform or configuration
-                    return false;
-                }
-                
+                if not (__global.__mouse_allowed) return false;
                 if not ((__source == __INPUT_SOURCE.MOUSE) || (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER && (__source == __INPUT_SOURCE.KEYBOARD))) return false;
                 
                 //Invalid on console or native mobile
@@ -295,7 +280,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
                                     gp_shoulderl, gp_shoulderr, gp_shoulderlb, gp_shoulderrb,
                                     gp_start,     gp_select,    gp_stickl,     gp_stickr,
                                     gp_axislh,    gp_axislv,    gp_axisrh,     gp_axisrv,
-                                    gp_paddle1,   gp_paddle2,   gp_paddle3,   gp_paddle4,
+                                    gp_paddle1,   gp_paddle2,   gp_paddle3,    gp_paddle4,
                                     gp_guide,     gp_touchpad,  gp_misc1]; 
                 
                 var _i = 0;

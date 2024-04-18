@@ -218,6 +218,12 @@ function __input_class_gamepad(_index) constructor
         return _mapping;
     }
     
+    static set_dpad_and_thumbstick_mapping = function()
+    {
+        set_dpad_hat_mapping();
+        set_thumbstick_axis_mapping();
+    }
+    
     static set_dpad_hat_mapping = function()
     {
         var _mapping = set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"); 
@@ -231,6 +237,30 @@ function __input_class_gamepad(_index) constructor
         
         _mapping = set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft"); 
         _mapping.hat_mask = 8;
+    }
+    
+    static set_thumbstick_axis_mapping = function(_left_only = false)
+    {
+        var _mappings = [
+            array_push(_mappings, set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx")),
+            array_push(_mappings, set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty"))
+        ];
+        
+        if not (_left_only)
+        {
+            array_push(_mappings, set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx"));
+            array_push(_mappings, set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty"));
+        }
+        
+        if (__INPUT_ON_LINUX)
+        {
+            var _i = 0;
+            repeat(array_length(_mappings))
+            {
+                _mappings[_i].limited_range = true;
+                ++_i;
+            }
+        }
     }
     
     /// @param connected
@@ -314,7 +344,7 @@ function __input_class_gamepad(_index) constructor
         gamepad_set_axis_deadzone(index, _deadzone);
         
         //Handle uncalibrated axis
-        if (not __axis_calibrated)
+        if (_connected && !__axis_calibrated)
         {
             var _success = false;
             var _mapping = 0;

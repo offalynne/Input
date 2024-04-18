@@ -27,7 +27,7 @@ function __input_gamepad_set_blacklist()
     
     var _description_lower = string_replace_all(string_lower(gamepad_get_description(index)), " ", "");
     
-    switch (os_type)
+    switch(os_type)
     {
         case os_windows:
             if ((vendor == "7e05") && (product == "0920") && (button_count > 21))
