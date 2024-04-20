@@ -204,7 +204,7 @@ function __input_class_gamepad(_index) constructor
             if (__mac_cleared_mapping && __INPUT_ON_MACOS)
             {
                 if (_mapping_type == __INPUT_MAPPING.AXIS  ) _raw_index +=  6;
-                if (_mapping_type == __INPUT_MAPPING.BUTTON) _raw_index += 17;
+                if (_mapping_type == __INPUT_MAPPING.BUTTON) _raw_index += (__global.__use_gp_extended? 28 : 17);
             }
         }
         

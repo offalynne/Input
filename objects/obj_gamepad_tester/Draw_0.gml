@@ -2,7 +2,7 @@
 
 if (use_debug_overlay) return;
 
-draw_set_color(input_window_has_focus()? c_white : c_gray);
+draw_set_color(input_game_has_focus()? c_white : c_gray);
 
 var _string = "";
 

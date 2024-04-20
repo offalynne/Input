@@ -83,17 +83,17 @@ function __input_initialize()
     }
       
     //Detect new native gamepad constants
-    var _use_gp_extended = false;
+    _global.__use_gp_extended = false;
     try
     {
-        _use_gp_extended = is_numeric(gp_home) && is_numeric(gp_extra1) && is_numeric(gp_paddler) && is_numeric(gp_paddlel) && is_numeric(gp_paddlerb) && is_numeric(gp_paddlelb) && is_numeric(gp_touchpadbutton);
+        _global.__use_gp_extended = is_numeric(gp_home) && is_numeric(gp_extra1) && is_numeric(gp_paddler) && is_numeric(gp_paddlel) && is_numeric(gp_paddlerb) && is_numeric(gp_paddlelb) && is_numeric(gp_touchpadbutton);
     }
     catch(_error)
     {    
-        _use_gp_extended = false;
+        _global.__use_gp_extended = false;
     }
     
-    if (_use_gp_extended)
+    if (_global.__use_gp_extended)
     {
         _global.__gp_guide    = gp_home;
         _global.__gp_misc1    = gp_extra1;
