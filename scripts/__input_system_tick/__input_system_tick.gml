@@ -212,6 +212,9 @@ function __input_system_tick()
         {
             if (_global.__window_focus)
             {
+                var _window_width = window_get_width();
+                var _window_height = window_get_height();
+                
                 if (_global.__frame - _global.__mouse_capture_frame > 10)
                 {
                     if (__INPUT_ON_WINDOWS)
@@ -227,8 +230,8 @@ function __input_system_tick()
                 
                     //Only bother updating each coordinate space if we've moved far enough in device space
                     //This presumes that we don't get better than 1px resolution in device space
-                    if ((abs(_pointer_x - window_get_width()/2)  >= 1)
-                    ||  (abs(_pointer_y - window_get_height()/2) >= 1))
+                    if ((abs(_pointer_x - _window_width/2)  >= 1)
+                    ||  (abs(_pointer_y - _window_height/2) >= 1))
                     {
                         var _m = 0;
                         repeat(INPUT_COORD_SPACE.__SIZE)
@@ -264,8 +267,8 @@ function __input_system_tick()
                                 break;
                             
                                 case INPUT_COORD_SPACE.DEVICE:
-                                    var _old_x = window_get_width()/2;
-                                    var _old_y = window_get_height()/2;
+                                    var _old_x = _window_width/2;
+                                    var _old_y = _window_height/2;
                                 
                                     if (__INPUT_ON_WINDOWS)
                                     {
@@ -298,7 +301,7 @@ function __input_system_tick()
                 }
             
                 //Recenter mouse cursor
-                window_mouse_set(window_get_width()/2, window_get_height()/2);
+                window_mouse_set(_window_width/2, _window_height/2);
             }
         }
         else if (_global.__window_focus || INPUT_ALLOW_OUT_OF_FOCUS || __INPUT_ON_MACOS)

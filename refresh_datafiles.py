@@ -29,7 +29,7 @@ DATA_SOURCES = {
                 "match id": "MAKE_CONTROLLER_ID\((.*),(.*)\),k_eControllerType_" + marker_id + ","
             },
             "Community SDL2 typelist": {
-                "source": github_urlpath + "JujuAdams/Input/community-data/community_gamepad_type.txt",
+                "source": github_urlpath + "offalynne/Input/community-data/community_gamepad_type.txt",
                 "match category": "(?<=.{10})(.{1,})(?= //.*)",
                 "match id": "(.{4}),(.{4})," + marker_id
             }
@@ -249,8 +249,6 @@ for file in DATA_SOURCES:
             # render license
             license_handle.write("\n"*3)
             license_handle.write("Datafile " + filename + " includes data sourced from " + source + "\n")
-            license_handle.write("Retrieved on " + datetime.datetime.now().strftime("%x") + " from " + source_index.get("source") + "\n")
-            license_handle.write("\n")
             license_handle.write(license_content)
 
 print("Removing backup")
