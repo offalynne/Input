@@ -462,6 +462,16 @@ function __input_system_tick()
     
     if (_global.__gamepad_allowed && (_global.__frame > __INPUT_GAMEPADS_TICK_PREDELAY))
     {
+        //Android gamepad enumeration (enables USB hotplugging)
+        if (_global.__allow_gamepad_enumerate)
+        {
+            if (_global.__current_time - _global.__enumeration_time > INPUT_ANDROID_GAMEPAD_ENUMERATION_INTERVAL)
+            {
+                _global.__enumeration_time = _global.__current_time;
+                gamepad_enumerate();
+            }
+        }
+        
         //Expand dynamic device count
         var _device_change = max(0, gamepad_get_device_count() - array_length(_global.__gamepads));
         repeat(_device_change) array_push(_global.__gamepads, undefined);

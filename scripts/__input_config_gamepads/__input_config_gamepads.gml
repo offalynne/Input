@@ -10,6 +10,9 @@
 //Default maximum threshold for non-directional (trigger) axes
 #macro INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD  1.0
 
+//Number of milliseconds between enumerating gamepads on Android. This should be longer than a single frame (>17 ms at 60FPS)
+#macro INPUT_ANDROID_GAMEPAD_ENUMERATION_INTERVAL  1000
+
 //Whether to swap A and B button bindings on Switch gamepads including Joy-Cons
 #macro INPUT_SWITCH_SWAP_AB  false
 

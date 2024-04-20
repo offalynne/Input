@@ -414,6 +414,11 @@ function __input_validate_macros()
         __input_error("INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD must be a number less than or equal to 1, and greater than INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD");
     }
     
+    if (!is_numeric(INPUT_ANDROID_GAMEPAD_ENUMERATION_INTERVAL) || (INPUT_ANDROID_GAMEPAD_ENUMERATION_INTERVAL < 1))
+    {
+        __input_error("INPUT_ANDROID_GAMEPAD_ENUMERATION_INTERVAL must be a number that is greater than or equal to 1");
+    }
+    
     if (!is_bool(INPUT_SWITCH_SWAP_AB))
     {
         __input_error("INPUT_SWITCH_SWAP_AB must be either <true> or <false>");

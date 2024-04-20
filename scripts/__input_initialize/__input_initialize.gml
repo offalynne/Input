@@ -167,6 +167,23 @@ function __input_initialize()
     
     if (_global.__allow_gamepad_tester) __input_gamepad_tester_init();
     
+    //Detect gamepad_enumerate() to enable hotplugging on Android, if supported
+    _global.__allow_gamepad_enumerate = false;
+    if (__INPUT_ON_ANDROID)
+    {
+        try
+        {
+            gamepad_enumerate();
+            _global.__allow_gamepad_enumerate = true;
+        }
+        catch(_error)
+        {
+            _global.__allow_gamepad_enumerate = false;
+        }
+        
+        if not (__INPUT_SILENT) __input_trace(_global.__allow_gamepad_enumerate? "Using gamepad enumeration" : "Gamepad enumeration is unavailable");
+    }
+    
     #endregion
     
     
@@ -280,6 +297,9 @@ function __input_initialize()
     
     //Time the game was restarted
     _global.__restart_time = -infinity;
+    
+    //Time of gamepad enumeration on Android
+    _global.__enumeration_time = -infinity;
     
     //Whether momentary input has been cleared
     _global.__cleared = false;
