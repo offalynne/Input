@@ -291,7 +291,7 @@ for(var _gamepad = 0; _gamepad < _max; _gamepad++)
 |Name              |Datatype               |Purpose                                                                                            |
 |------------------|-----------------------|---------------------------------------------------------------------------------------------------|
 |`source`          |[Source](Input-Sources)|[Input source](Input-Sources) to check                                                             |
-|`availableOnly`   |boolean                |Whether to only include input from sources assigned to a least one player. `false` if not specified|
+|`availableOnly`   |boolean                |Whether to only include input sources not assigned to any players. `true` if not specified.|
 
 #### **Example**
 
