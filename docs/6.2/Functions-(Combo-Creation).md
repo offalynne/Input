@@ -20,7 +20,7 @@ There are 5 types of phase:
 Phases are built by executing methods on the combo definition struct returned by `input_combo_create()`. Each method call is a single phase. Each phase returns the combo struct itself which means methods can be chained together. For example:
 
 ```gml
-input_combo_create("hadouken")
+input_combo_create("konami")
 .press("up")
 .press("up")
 .press("down")
@@ -41,7 +41,7 @@ For example, if we execute the following code...
 ```gml
 input_combo_params_set_side_on("right", "left", 0);
 
-input_combo_create("hadouken")
+input_combo_create("fireball")
 .hold("down")
 .press("right")
 .release("down")
