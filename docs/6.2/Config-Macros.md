@@ -67,7 +67,7 @@
 |`INPUT_AUTO_PROFILE_FOR_MIXED`            |`"mixed"`      |Profile to use to automatically set up bindings when the `INPUT_SOURCE_MODE.MIXED` source mode is in use                                                     |
 |`INPUT_AUTO_PROFILE_FOR_MULTIDEVICE`      |`"multidevice"`|Profile to use to automatically set up bindings when the `INPUT_SOURCE_MODE.MULTIDEVICE` source mode is in use                                               |
 |`INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER`|`true`         |Whether to treat `INPUT_KEYBOARD` and `INPUT_MOUSE` sources are interchangeable. This "pairs" the two sources together and is the default behavior for Input |
-|`INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES`|`false`        |Whether to allow [default profiles](Profiles) to include different verbs. This is convenient for larger games but is potentially unsafe                      |
+|`INPUT_ALLOW_ASYMMETRIC_DEFAULT_PROFILES` |`false`        |Whether to allow [default profiles](Profiles) to include different verbs. This is convenient for larger games but is potentially unsafe                      |
 
 When a player has no profile set, `input_binding_get()` has undefined behavior. This typically happens when hotswapping and the player hasn't pressed any buttons/keys/etc. yet. The macro `INPUT_FALLBACK_PROFILE_BEHAVIOR` controls what should happen and can take one of three values:
 
