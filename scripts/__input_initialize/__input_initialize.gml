@@ -453,9 +453,13 @@ function __input_initialize()
         {
             _max_gamepads = 12;
         }
-        else if (__INPUT_ON_SWITCH || __INPUT_ON_XBOX)
+        else if (__INPUT_ON_SWITCH)
         {
-            _max_gamepads = 8;
+            _max_gamepads = 9;
+        }
+        else if (__INPUT_ON_XBOX)
+        {
+            _max_gamepads = 8;        
         }
         else if (__INPUT_ON_LINUX || __INPUT_ON_ANDROID)
         {
