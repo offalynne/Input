@@ -16,9 +16,9 @@ function __input_finalize_default_profiles()
     }
     
     //Ensure touch profile on touch platform configurations
-    if (_global.__touch_allowed && !_global.__any_touch_binding_defined)
+    if (_global.__touch_allowed)
     {       
-        _global.__default_profile_dict[$ INPUT_AUTO_PROFILE_FOR_TOUCH] = {};
+        _global.__default_profile_dict[$ INPUT_AUTO_PROFILE_FOR_TOUCH] ??= {};
     }
     
     //Put strict mode on, this'll cause Input to throw errors if the player does anything dumb
