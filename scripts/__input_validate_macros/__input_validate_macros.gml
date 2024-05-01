@@ -217,9 +217,9 @@ function __input_validate_macros()
         __input_error("INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER must be either <true> or <false>");
     }
     
-    if (!is_bool(INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES))
+    if (!is_bool(INPUT_ALLOW_ASYMMETRIC_DEFAULT_PROFILES))
     {
-        __input_error("INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES must be either <true> or <false>");
+        __input_error("INPUT_ALLOW_ASYMMETRIC_DEFAULT_PROFILES must be either <true> or <false>");
     }
     
     #endregion
