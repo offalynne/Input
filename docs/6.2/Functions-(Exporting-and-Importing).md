@@ -409,7 +409,7 @@ show_notification("Copied control scheme to the clipboard!");
 
 ## …profile_verify
 
-`input_profile_verify(stringOrStruct)`
+`input_profile_verify(stringOrStruct, profileName, [playerIndex])`
 
 <!-- tabs:start -->
 
@@ -420,11 +420,13 @@ show_notification("Copied control scheme to the clipboard!");
 |Name            |Datatype        |Purpose                                  |
 |----------------|----------------|-----------------------------------------|
 |`stringOrStruct`|string or struct|JSON returned by `input_profile_export()`|
+|`profileNameDst`|integer         |Profile to verify loading bindings to    |
+|`[playerIndex]` |integer         |Player to target. If not specified, player 0 is used|
 
 #### **Example**
 
 ```gml
-if (not input_profile_verify(_incoming_data))
+if (not input_profile_verify(_incoming_data, "keyboard_and_mouse"))
 {
 	//Failed to verify the incoming profile
 	//Don't reset the player's settings though, that would be irritating
@@ -433,7 +435,7 @@ if (not input_profile_verify(_incoming_data))
 else
 {
 	//Good data! Load as planned
-	input_profile_import(_incoming_data);
+	input_profile_import(_incoming_data, "keyboard_and_mouse");
 	show_notification("Loaded new control scheme");
 }
 ```
@@ -455,6 +457,7 @@ else
 |Name            |Datatype        |Purpose                                  |
 |----------------|----------------|-----------------------------------------|
 |`stringOrStruct`|string or struct|JSON returned by `input_profile_export()`|
+|`profileNameDst`|integer         |Profile to load bindings to              |
 |`[playerIndex]` |integer         |Player to target. If not specified, player 0 is used|
 
 Reads JSON, either as a string or a struct, that contains profile data (bindings and axis thresholds). Such a JSON should be created using `input_profile_export()`.
@@ -477,7 +480,7 @@ else
 	//Trim off the hashes then try to load using Input
 	_incoming_data = string_copy(_incoming_data, 2, string_length(_incoming_data) - 2);
 
-	if (not input_profile_verify(_incoming_data))
+	if (not input_profile_verify(_incoming_data, "gamepad"))
 	{
 		//Failed to verify the incoming profile
 		//Don't reset the player's settings though, that would be irritating
@@ -486,7 +489,7 @@ else
 	else
 	{
 		//Good data! Load as planned
-		input_profile_import(_incoming_data);
+		input_profile_import(_incoming_data, "gamepad");
 		show_notification("Loaded new control scheme");
 	}
 }
