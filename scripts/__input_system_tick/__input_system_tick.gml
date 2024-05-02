@@ -476,19 +476,23 @@ function __input_system_tick()
         }
         
         //Expand dynamic device count
+        var _g = array_length(_global.__gamepads);
         var _count = gamepad_get_device_count();
-        _device_change = max(0, _count - array_length(_global.__gamepads));
+        _device_change = max(0, _count - _g);
         repeat(_device_change)
         {
+            _global.__gamepads[_g] = undefined;
             array_push(INPUT_GAMEPAD, new __input_class_source(__INPUT_SOURCE.GAMEPAD, array_length(INPUT_GAMEPAD)));
             
             if ((_global.__source_mode == INPUT_SOURCE_MODE.MIXED) || (_global.__source_mode == INPUT_SOURCE_MODE.MULTIDEVICE))
             {
                 _global.__players[0].__source_add(INPUT_GAMEPAD[array_length(INPUT_GAMEPAD)-1]);
             }
+            
+            ++_g;
         }
         
-        var _g = 0;
+        _g = 0;
         repeat(array_length(_global.__gamepads))
         {
             var _connected = gamepad_is_connected(_g);
