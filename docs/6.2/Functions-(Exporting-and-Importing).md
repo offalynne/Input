@@ -420,7 +420,7 @@ show_notification("Copied control scheme to the clipboard!");
 |Name            |Datatype        |Purpose                                  |
 |----------------|----------------|-----------------------------------------|
 |`stringOrStruct`|string or struct|JSON returned by `input_profile_export()`|
-|`profileNameDst`|integer         |Profile to verify loading bindings to    |
+|`profileName`   |integer         |Profile to verify loading bindings to    |
 |`[playerIndex]` |integer         |Player to target. If not specified, player 0 is used|
 
 #### **Example**
@@ -457,7 +457,7 @@ else
 |Name            |Datatype        |Purpose                                  |
 |----------------|----------------|-----------------------------------------|
 |`stringOrStruct`|string or struct|JSON returned by `input_profile_export()`|
-|`profileNameDst`|integer         |Profile to load bindings to              |
+|`profileName`   |integer         |Profile to load bindings to              |
 |`[playerIndex]` |integer         |Player to target. If not specified, player 0 is used|
 
 Reads JSON, either as a string or a struct, that contains profile data (bindings and axis thresholds). Such a JSON should be created using `input_profile_export()`.
