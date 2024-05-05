@@ -242,8 +242,8 @@ function __input_class_gamepad(_index) constructor
     static set_thumbstick_axis_mapping = function(_left_only = false)
     {
         var _mappings = [
-            array_push(_mappings, set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx")),
-            array_push(_mappings, set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty"))
+            set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx"),
+            set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty")
         ];
         
         if not (_left_only)
