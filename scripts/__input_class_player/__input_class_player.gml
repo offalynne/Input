@@ -545,7 +545,8 @@ function __input_class_player() constructor
                 break;
                 
                 case 1:
-                    if (INPUT_ON_PC && (_keyboard_profile_allowed || _mouse_profile_allowed))
+                    if (INPUT_ON_PC && (_keyboard_profile_allowed || _mouse_profile_allowed)
+                    && (!(INPUT_ON_STEAM_DECK && _gamepad_profile_allowed)))
                     {
                         if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER || _keyboard_profile_allowed)
                         {
@@ -554,7 +555,7 @@ function __input_class_player() constructor
                         }
                         else
                         {
-                            //Try to use a keyboard profile if possible
+                            //Try to use a mouse profile if possible
                             _profile_name = INPUT_AUTO_PROFILE_FOR_MOUSE;
                         }
                     }
