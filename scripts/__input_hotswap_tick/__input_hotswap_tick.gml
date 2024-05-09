@@ -53,7 +53,7 @@ function __input_hotswap_tick_input()
         var _active_gamepad_index = _player.__source_get_gamepad();
         if (_active_gamepad_index > -1)
         {
-            if (_global.__gamepad_connections[_active_gamepad_index])
+            if (_global.__gamepad_connections_native[_active_gamepad_index])
             {
                 var _gamepad = _global.__gamepads[_active_gamepad_index];
                 if (is_struct(_gamepad) && (_gamepad.__get_any_pressed() || __input_hotswap_axis_delta(_gamepad)))
@@ -79,7 +79,7 @@ function __input_hotswap_tick_input()
 
             repeat(_gamepad_count)
             {
-                if ((_gamepad_index != _active_gamepad_index) && _global.__gamepad_connections[_gamepad_index])
+                if ((_gamepad_index != _active_gamepad_index) && _global.__gamepad_connections_native[_gamepad_index])
                 {  
                     var _gamepad = _global.__gamepads[_gamepad_index];
                     if (is_struct(_gamepad)

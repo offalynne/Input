@@ -498,7 +498,8 @@ function __input_system_tick()
         repeat(array_length(_global.__gamepads))
         {
             var _connected = gamepad_is_connected(_g);
-            _global.__gamepad_connections[_g] = _connected;
+            _global.__gamepad_connections_native[_g] = _connected;
+            _global.__gamepad_connections_internal[_g] = false;
             
             var _gamepad = _global.__gamepads[_g];
             if (is_struct(_gamepad))
@@ -525,6 +526,8 @@ function __input_system_tick()
                 }
                 
                 var _sustain_connection = _gamepad.tick(_connected);
+                _global.__gamepad_connections_internal[_g] = _sustain_connection;
+                
                 if not (_sustain_connection)
                 {
                     //Remove our gamepad handler
@@ -552,7 +555,7 @@ function __input_system_tick()
             }
             else
             {
-                if (_global.__gamepad_connections[_g])
+                if (_global.__gamepad_connections_native[_g])
                 {
                     __input_trace("Gamepad ", _g, " connected");
                     if (!__INPUT_SILENT) __input_trace("New gamepad = \"", gamepad_get_description(_g), "\", GUID=\"", gamepad_get_guid(_g), "\", buttons = ", gamepad_button_count(_g), ", axes = ", gamepad_axis_count(_g), ", hats = ", gamepad_hat_count(_g));
@@ -703,7 +706,7 @@ function __input_system_tick()
     array_resize(_connection_array,    0);
     array_resize(_disconnection_array, 0);
     
-    var _device_count = gamepad_get_device_count();
+    var _device_count = array_length(_global.__gamepad_connections_native);
     if (array_length(_status_array) != _device_count)
     {
         //Resize the gamepad status array if the total device count has changed

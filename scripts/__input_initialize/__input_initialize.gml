@@ -521,8 +521,9 @@ function __input_initialize()
     //Gamepad structs contain remapping information and current button state
     _global.__gamepads = array_create(_max_gamepads, undefined);
     
-    //Array of cached native gamepad connection check results    
-    _global.__gamepad_connections = array_create(_max_gamepads, false);   
+    //Array of gamepad connection states
+    _global.__gamepad_connections_native   = array_create(_max_gamepads, false);
+    _global.__gamepad_connections_internal = array_create(_max_gamepads, false);
     
     //Our database of SDL2 definitions, used for the aforementioned remapping information
     _global.__sdl2_database = {
