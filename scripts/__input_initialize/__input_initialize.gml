@@ -461,6 +461,10 @@ function __input_initialize()
         {
             _max_gamepads = 8;        
         }
+        else if (__INPUT_ON_IOS)
+        {
+        	_max_gamepads = 5;
+        }
         else if (__INPUT_ON_LINUX || __INPUT_ON_ANDROID)
         {
             _max_gamepads = gamepad_get_device_count();
