@@ -125,7 +125,7 @@ function __input_gamepad_set_type()
                 {
                     raw_type = "CommunitySNES";
                 }
-                else if (__input_string_contains(_desc, "retroid", "sfc"))
+                else if (__input_string_contains(_desc, "retroid", "odin", "sfc"))
                 {
                     raw_type = "CommunitySuperFamicom";
                 }
