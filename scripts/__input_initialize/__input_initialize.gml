@@ -694,7 +694,7 @@ function __input_initialize()
         case "fr-RE": case "nl-BE": case "oc-FR":
         case "wo-SN": case "tzm-DZ":
         case "mg-":   case "gsw-FR":
-            _global.__keyboard_type = "AZERTY";
+            _global.__keyboard_locale = "AZERTY";
         break;  
 
         case "cs-CZ": case "de-AT": case "de-CH":
@@ -704,7 +704,7 @@ function __input_initialize()
         case "lb-LU": case "rm-CH": case "sk-SK":
         case "sl-SI": case "dsb-DE":
         case "sr-BA": case "hsb-DE":
-            _global.__keyboard_type = "QWERTZ";
+            _global.__keyboard_locale = "QWERTZ";
         break;
     }
     
