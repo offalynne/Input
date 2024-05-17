@@ -56,31 +56,6 @@ function __input_initialize()
     {
         __input_trace(_global.__use_is_instanceof? "Using is_instanceof() for comparisons" : "is_instanceof() unavailable, using legacy comparisons");
     }
-    
-    //Detect new string functions, which offer a significant performance gain when reading the SDL2 database
-    if (INPUT_ON_WEB)
-    {
-        //Buggy as of 2023-10-08
-        _global.__use_legacy_strings = false;
-    }
-    else 
-    {
-        try
-        {
-            var _split = array_equals(string_split("Juju\nwaz\nere", "\n", true), ["Juju", "waz", "ere"]);
-            var _trim  = (string_trim("         you can't catch me          ") == "you can't catch me");
-            _global.__use_legacy_strings = !(_split && _trim);
-        }
-        catch(_error)
-        {
-            _global.__use_legacy_strings = true;
-        }
-    }
-    
-    if (not __INPUT_SILENT)
-    {
-        __input_trace(_global.__use_is_instanceof? "Using new string functions to parse SDL2 database" : "New string functions unavailable, using legacy SDL2 database parsing");
-    }
       
     //Detect new native gamepad constants
     _global.__use_gp_extended = false;

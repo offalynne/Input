@@ -437,20 +437,7 @@ function __input_class_player() constructor
     
     /// @param source
     static __source_contains = function(_source, _touch_remap = true)
-    {
-        //Ensure we're targeting the right source for our platform / configuration
-        if (_touch_remap)
-        {
-            if (__global.__touch_allowed)
-            {
-                if (_source == INPUT_MOUSE) _source = INPUT_TOUCH;
-            }
-            else
-            {
-                if (_source == INPUT_TOUCH) _source = INPUT_MOUSE;
-            }
-        }
-        
+    {        
         if (_source == INPUT_GAMEPAD)
         {
             //If we pass in the INPUT_GAMEPAD array then return <true> if any source is a gamepad
@@ -462,6 +449,19 @@ function __input_class_player() constructor
             }
             
             return false;
+        }        
+
+        //Ensure we're targeting the right source for our platform / configuration
+        if (_touch_remap)
+        {
+            if (__global.__touch_allowed)
+            {
+                if (_source == INPUT_MOUSE) _source = INPUT_TOUCH;
+            }
+            else
+            {
+                if (_source == INPUT_TOUCH) _source = INPUT_MOUSE;
+            }
         }
         
         var _i = 0;

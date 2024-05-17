@@ -383,7 +383,6 @@
     {"id":{"name":"input_combo_params_set_top_down","path":"scripts/input_combo_params_set_top_down/input_combo_params_set_top_down.yy",},"order":3,},
     {"id":{"name":"__input_key_name_set","path":"scripts/__input_key_name_set/__input_key_name_set.yy",},"order":3,},
     {"id":{"name":"__input_load_blacklist_csv","path":"scripts/__input_load_blacklist_csv/__input_load_blacklist_csv.yy",},"order":5,},
-    {"id":{"name":"__input_load_sdl2_from_buffer_legacy","path":"scripts/__input_load_sdl2_from_buffer_legacy/__input_load_sdl2_from_buffer_legacy.yy",},"order":6,},
     {"id":{"name":"__input_load_sdl2_from_file","path":"scripts/__input_load_sdl2_from_file/__input_load_sdl2_from_file.yy",},"order":7,},
     {"id":{"name":"__input_load_sdl2_from_string","path":"scripts/__input_load_sdl2_from_string/__input_load_sdl2_from_string.yy",},"order":8,},
     {"id":{"name":"__input_load_sdl2_from_string_internal","path":"scripts/__input_load_sdl2_from_string_internal/__input_load_sdl2_from_string_internal.yy",},"order":11,},
