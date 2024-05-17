@@ -251,12 +251,7 @@ function __input_initialize()
     
     time_source_start(_global.__time_source);
     
-    if (((string_pos("127.0.0.1", parameter_string(0)) > 0) || (string_pos("localhost", parameter_string(0)) > 0)) && (os_browser != browser_not_a_browser))
-    {
-        show_message("Due to changes in security policy, some browsers may not permit the use of gamepads when testing locally.\n \nPlease host on a remote web service (itch.io, GX.games, etc.) if you are encountering problems.");
-    }
-    
-    if ((GM_build_type == "run") && (os_type == os_operagx))
+    if (((string_pos("127.0.0.1", parameter_string(0)) > 0) || (string_pos("localhost", parameter_string(0)) > 0)))
     {
         show_message("Due to changes in security policy, some browsers may not permit the use of gamepads when testing locally.\n \nPlease host on a remote web service (itch.io, GX.games, etc.) if you are encountering problems.");
     }

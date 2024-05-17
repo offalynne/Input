@@ -79,10 +79,20 @@ function __input_gamepad_set_mapping()
     
     if (__INPUT_ON_OPERAGX)
     {
-        set_mapping(gp_face1,  0, __INPUT_MAPPING.BUTTON, "a");
-        set_mapping(gp_face2,  1, __INPUT_MAPPING.BUTTON, "b");
-        set_mapping(gp_face3, 12, __INPUT_MAPPING.BUTTON, "x");
-        set_mapping(gp_face4, 13, __INPUT_MAPPING.BUTTON, "y");
+        if ((guessed_type == true) && (simple_type == "switch"))
+        {
+            set_mapping(gp_face2,  0, __INPUT_MAPPING.BUTTON, "b");
+            set_mapping(gp_face1,  1, __INPUT_MAPPING.BUTTON, "a");
+            set_mapping(gp_face4, 12, __INPUT_MAPPING.BUTTON, "y");
+            set_mapping(gp_face3, 13, __INPUT_MAPPING.BUTTON, "x");
+        }
+        else
+        {
+            set_mapping(gp_face1,  0, __INPUT_MAPPING.BUTTON, "a");
+            set_mapping(gp_face2,  1, __INPUT_MAPPING.BUTTON, "b");
+            set_mapping(gp_face3, 12, __INPUT_MAPPING.BUTTON, "x");
+            set_mapping(gp_face4, 13, __INPUT_MAPPING.BUTTON, "y");
+        }
         
         set_mapping(gp_shoulderl,   6, __INPUT_MAPPING.BUTTON, "leftshoulder");
         set_mapping(gp_shoulderr,   9, __INPUT_MAPPING.BUTTON, "rightshoulder");
@@ -548,7 +558,7 @@ function __input_gamepad_set_mapping()
         #region Nintendo Switch Online Controllers on Linux
 
         case "CommunitySaturn":
-            if ((_vendor_and_product == "7e051720") && (guessed_type == false) && __INPUT_ON_LINUX)
+            if ((guessed_type == false) && __INPUT_ON_LINUX && (_vendor_and_product == "7e051720"))
             {
                 if (__input_string_contains(description, "Genesis 3btn"))
                 {
