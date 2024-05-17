@@ -87,7 +87,7 @@ function __input_class_cursor() constructor
         __prev_y = __y;
         
         var _y_inverted    = __player.__cursor_inverted? -1 : 1;
-        var _can_use_mouse = (__player.__mouse_enabled && __player.__source_contains(INPUT_MOUSE)); //Automatically remapped to INPUT_TOUCH where appropriate
+        var _can_use_mouse = (__global.__game_input_allowed && __player.__mouse_enabled && __player.__source_contains(INPUT_MOUSE)); //Automatically remapped to INPUT_TOUCH where appropriate
         
         //Mouse and touch
         if ((__global.__pointer_moved || __using_mouse) && _can_use_mouse && __global.__mouse_allowed)

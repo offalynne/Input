@@ -20,7 +20,7 @@ function __input_hotswap_tick()
         && ((__rebind_state <= 0) || !is_array(__rebind_source_filter) || (array_length(__rebind_source_filter) <= 0))) //And we're not rebinding, or the rebinding source filter is empty
         {
             var _new_source = __input_hotswap_tick_input();
-            if ((_new_source != undefined) && !__source_contains(_new_source))
+            if (_new_source != undefined)
             {
                 input_source_set(_new_source, 0, INPUT_HOTSWAP_AUTO_PROFILE);
                 
@@ -106,44 +106,55 @@ function __input_hotswap_tick_input()
         }
     }
     
-    if (_global.__keyboard_allowed && _global.__any_keyboard_binding_defined
-    &&  input_source_is_available(INPUT_KEYBOARD)
-    &&  keyboard_check_pressed(vk_anykey)
-    &&  (__input_keyboard_key() > 0) //Ensure that the key is in the recognized range
-    &&  !__input_key_is_ignored(__input_keyboard_key())) //Ensure that this key isn't one we're trying to ignore
+    if (_global.__keyboard_allowed && _global.__any_keyboard_binding_defined)
     {
-        if (!__INPUT_SILENT) __input_trace("Hotswapping on keyboard press");
-        return INPUT_KEYBOARD;
+        var _key = __input_keyboard_key();
+        if ((_key > 0) && !__input_key_is_ignored(_key))
+        {
+            if (input_source_is_available(INPUT_KEYBOARD))
+            {
+                if (!__INPUT_SILENT) __input_trace("Hotswapping on keyboard press");
+                return INPUT_KEYBOARD;
+            }
+        }
     }
     
     if (_global.__touch_allowed)
     {
-        if (input_source_is_available(INPUT_TOUCH) && device_mouse_check_button(_global.__pointer_index, mb_left))
+        if (device_mouse_check_button_pressed(_global.__pointer_index, mb_left))
         {
-            if (!__INPUT_SILENT) __input_trace("Hotswapping on touch");
-            return INPUT_TOUCH;
+            if (input_source_is_available(INPUT_TOUCH))
+            {
+                if (!__INPUT_SILENT) __input_trace("Hotswapping on touch");
+                return INPUT_TOUCH;
+            }
         }
     }
-    else
+    else if (_global.__mouse_allowed)
     {
-        if (_global.__mouse_allowed && input_source_is_available(INPUT_MOUSE))
-        {
-            if (INPUT_HOTSWAP_ON_MOUSE_BUTTON)
+        var _mouse_available = undefined;        
+        if (INPUT_HOTSWAP_ON_MOUSE_BUTTON)
+        {        
+            var _mouse_button = device_mouse_check_button_pressed(_global.__pointer_index, mb_any);
+            if (_mouse_button || (mouse_wheel_up() || mouse_wheel_down()))
             {
-                if (input_mouse_check_pressed(mb_any))
+                _mouse_available = input_source_is_available(INPUT_MOUSE);                
+                if (_mouse_available)
                 {
-                    if (!__INPUT_SILENT) __input_trace("Hotswapping on mouse button press");
-                    return INPUT_MOUSE;
-                }
-                
-                if (mouse_wheel_up() || mouse_wheel_down())
-                {
-                    if (!__INPUT_SILENT) __input_trace("Hotswapping on mouse wheel");
+                    if (!__INPUT_SILENT) __input_trace(_mouse_button? "Hotswapping on mouse button press" : "Hotswapping on mouse wheel");
                     return INPUT_MOUSE;
                 }
             }
+        }
             
-            if (INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && _global.__pointer_moved)
+        if (INPUT_HOTSWAP_ON_MOUSE_MOVEMENT && _global.__pointer_moved)
+        {
+            if (_mouse_available == undefined)
+            {
+                _mouse_available = input_source_is_available(INPUT_MOUSE);
+            }
+            
+            if (_mouse_available == true)
             {
                 if (!__INPUT_SILENT) __input_trace("Hotswapping on mouse pointer movement");
                 return INPUT_MOUSE;
