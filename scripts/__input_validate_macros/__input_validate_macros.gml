@@ -118,6 +118,11 @@ function __input_validate_macros()
         __input_error("INPUT_MAX_ALTERNATE_BINDINGS must be an integer that is greater than or equal to 1");
     }
     
+    if (!is_bool(INPUT_FLEXIBLE_VERB_IMPORT))
+    {
+        __input_error("INPUT_FLEXIBLE_VERB_IMPORT must be either <true> or <false>");
+    }
+    
     if (!is_bool(INPUT_FLEXIBLE_ALTERNATE_BINDING_IMPORT))
     {
         __input_error("INPUT_FLEXIBLE_ALTERNATE_BINDING_IMPORT must be either <true> or <false>");

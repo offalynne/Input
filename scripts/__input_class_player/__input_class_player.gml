@@ -319,7 +319,17 @@ function __input_class_player() constructor
             
             //Verify that the input data has this verb
             var _alternate_array = _json[$ _verb_name];
-            if (!is_array(_alternate_array)) __input_error("Player ", __index, " data is missing verb \"", _verb_name, "\"");
+            if (!is_array(_alternate_array))
+            {
+                if (INPUT_FLEXIBLE_VERB_IMPORT)
+                {
+                    _alternate_array = _existing_alternate_array;
+                }
+                else
+                {
+                    __input_error("Player ", __index, " data is missing verb \"", _verb_name, "\"");
+                }
+            }
             
             if (!INPUT_FLEXIBLE_ALTERNATE_BINDING_IMPORT && (array_length(_alternate_array) != INPUT_MAX_ALTERNATE_BINDINGS))
             {
