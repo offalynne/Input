@@ -308,7 +308,9 @@ beef,feed,CommunityXBox360 // Monect
 358a,0201,CommunityXBoxOne // Backbone One USB C Xbox
 358a,0202,CommunityXBoxOne // Backbone One USB C Xbox
 2dc8,2002,CommunityXBoxOne // 8BitDo Ultimate Wired
-2e95,434b,CommunityXBoxOne // Scuf Envision
+2e95,434b,CommunityCommunityXBoxOne // Scuf Envision
+2e95,434d,CommunityCommunityXBoxOne // Scuf Envision
+2e95,434e,CommunityCommunityXBoxOne // Scuf Envision
 0e6f,0901,CommunityPSX // PDP Versus Fighting
 2563,0526,CommunityPSX // Uberwith PS
 0e6f,0111,CommunityPSX // Afterglow PS3
