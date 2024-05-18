@@ -328,7 +328,7 @@ function __input_class_gamepad(_index) constructor
         
         //Remove deadzone
         var _deadzone = gamepad_get_axis_deadzone(index);
-        gamepad_set_axis_deadzone(index, 0.0);
+        if (_deadzone != 0.0) gamepad_set_axis_deadzone(index, 0.0);
         
         //Tick mapping        
         var _scan = (_connected && (current_time > __scan_start_time));
@@ -341,7 +341,7 @@ function __input_class_gamepad(_index) constructor
         }
         
         //Restore deadzone
-        gamepad_set_axis_deadzone(index, _deadzone);
+        if (_deadzone != 0.0) gamepad_set_axis_deadzone(index, _deadzone);
         
         //Handle uncalibrated axis
         if (_connected && !__axis_calibrated)
