@@ -11,5 +11,5 @@ function __input_gamepad_value_internal(_index, _gm)
     
     var _gamepad = _global.__gamepads[_index];
     if (!is_struct(_gamepad)) return false;
-    return _gamepad.get_value(_gm);
+    return _gamepad.__get_value(_gm);
 }
