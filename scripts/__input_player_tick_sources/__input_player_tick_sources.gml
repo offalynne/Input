@@ -226,7 +226,7 @@ function __input_player_tick_sources(_player)
                                 switch(_binding.type)
                                 {
                                     case __INPUT_BINDING_GAMEPAD_BUTTON:
-                                        if (input_gamepad_check(_source_gamepad, _binding.value))
+                                        if (_global.__gamepads[_source_gamepad].get_held(_binding.value))
                                         {
                                             _value        = 1.0;
                                             _raw          = 1.0;
@@ -238,7 +238,7 @@ function __input_player_tick_sources(_player)
                                     case __INPUT_BINDING_GAMEPAD_AXIS:
                                         //Grab the raw value directly from the gamepad
                                         //We keep a hold of this value for use in 2D checkers
-                                        var _found_raw = input_gamepad_value(_source_gamepad, _binding.value);
+                                        var _found_raw = _global.__gamepads[_source_gamepad].get_value(_binding.value);
                                         
                                         var _binding_threshold_min = _binding.__threshold_min;
                                         var _binding_threshold_max = _binding.__threshold_max;

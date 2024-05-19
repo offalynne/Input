@@ -24,7 +24,7 @@ function input_source_set(_source, _player_index = 0, _auto_profile = true, _exc
             if (_global.__gamepad_allowed)
             {
                 var _i = 0;
-                repeat(INPUT_MAX_GAMEPADS)
+                repeat(array_length(INPUT_GAMEPAD))
                 {
                     __source_add(INPUT_GAMEPAD[_i]);
                     ++_i;

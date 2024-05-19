@@ -25,4 +25,4 @@
 
 //Whether to allow default profiles (see below) to contain different verbs. Normally every profile
 //should contain a reference to every verb, but for complex games this is inconvenient
-#macro INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES  true
+#macro INPUT_ALLOW_ASYMMETRIC_DEFAULT_PROFILES  true

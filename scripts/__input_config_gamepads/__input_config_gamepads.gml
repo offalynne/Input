@@ -10,6 +10,9 @@
 //Default maximum threshold for non-directional (trigger) axes
 #macro INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD  1.0
 
+//Number of milliseconds between enumerating gamepads on Android. This should be longer than a single frame (>17 ms at 60FPS)
+#macro INPUT_ANDROID_GAMEPAD_ENUMERATION_INTERVAL  1000
+
 //Whether to swap A and B button bindings on Switch gamepads including Joy-Cons
 #macro INPUT_SWITCH_SWAP_AB  false
 
@@ -19,9 +22,6 @@
 //Whether the game uses the horizontal holdtype for single Joy-Cons. Set this to <false> for vertical holdtype on Switch platform
 //Input treats these two modes as mutually exclusive (come talk to us if you need to be able to swap at runtime)
 #macro INPUT_SWITCH_HORIZONTAL_HOLDTYPE  true
-
-//Whether to allow gamepad touchpad as mouse on PlayStation platforms 
-#macro INPUT_PS_TOUCHPAD_ALLOWED false
 
 //Whether to use the right hand sensor for motion data when using detached dual Joy-Cons as a pair
 //When <false>, the left hand Joy-Con sensor will be used for motion data instead 

@@ -163,13 +163,9 @@ function input_debug_player_input(_player_index = 0)
                                             gp_padu,      gp_padd,      gp_padl,       gp_padr, 
                                             gp_shoulderl, gp_shoulderr, gp_shoulderlb, gp_shoulderrb,
                                             gp_start,     gp_select,    gp_stickl,     gp_stickr,
-                                            gp_axislh,    gp_axislv,    gp_axisrh,     gp_axisrv,    ];
-                        
-                        //Extended buttons
-                        if (INPUT_SDL2_ALLOW_EXTENDED)
-                        {
-                            array_push(_check_array, gp_guide, gp_misc1, gp_touchpad, gp_paddle1, gp_paddle2, gp_paddle3, gp_paddle4);
-                        }
+                                            gp_axislh,    gp_axislv,    gp_axisrh,     gp_axisrv,
+                                            gp_paddle1,   gp_paddle2,   gp_paddle3,   gp_paddle4,                                            
+                                            gp_guide,     gp_touchpad,  gp_misc1];
                         
                         var _j = 0;
                         repeat(array_length(_check_array))

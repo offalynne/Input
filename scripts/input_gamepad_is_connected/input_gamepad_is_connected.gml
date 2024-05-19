@@ -6,17 +6,12 @@ function input_gamepad_is_connected(_index)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
-    if (!_global.__gamepad_allowed
-    ||  (_index == undefined)
+    if ((_index == undefined)
     ||  (_index < 0)
-    ||  (_index >= array_length(_global.__gamepads)))
+    ||  (_index >= array_length(_global.__gamepad_connections_internal)))
     {
         return false;
     }
     
-    if (!is_struct(_global.__gamepads[_index])) return false;
-    if (_global.__gamepads[_index].blacklisted) return false;
-    if (_global.__gamepads[_index].__disconnection_frame != undefined) return true;
-    
-    return gamepad_is_connected(_index);
+    return _global.__gamepad_connections_internal[_index];
 }

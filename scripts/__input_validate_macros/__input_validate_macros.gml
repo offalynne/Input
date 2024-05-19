@@ -18,11 +18,6 @@ function __input_validate_macros()
         __input_error("INPUT_PC_GAMEPAD must be either <true> or <false>");
     }
 
-    if (!is_bool(INPUT_WINDOWS_TOUCH))
-    {
-        __input_error("INPUT_WINDOWS_TOUCH must be either <true> or <false>");
-    }
-
     if (!is_bool(INPUT_WINDOWS_VIBRATION))
     {
         __input_error("INPUT_WINDOWS_VIBRATION must be either <true> or <false>");
@@ -66,11 +61,6 @@ function __input_validate_macros()
     if (!is_bool(INPUT_SWITCH_VIBRATION))
     {
         __input_error("INPUT_SWITCH_VIBRATION must be either <true> or <false>");
-    }
-
-    if (!is_bool(INPUT_PS_MOUSE))
-    {
-        __input_error("INPUT_PS_MOUSE must be either <true> or <false>");
     }
 
     if (!is_bool(INPUT_PS4_VIBRATION))
@@ -126,6 +116,11 @@ function __input_validate_macros()
     if (!is_numeric(INPUT_MAX_ALTERNATE_BINDINGS) || (floor(INPUT_MAX_ALTERNATE_BINDINGS) != INPUT_MAX_ALTERNATE_BINDINGS) || (INPUT_MAX_ALTERNATE_BINDINGS < 1))
     {
         __input_error("INPUT_MAX_ALTERNATE_BINDINGS must be an integer that is greater than or equal to 1");
+    }
+    
+    if (!is_bool(INPUT_FLEXIBLE_VERB_IMPORT))
+    {
+        __input_error("INPUT_FLEXIBLE_VERB_IMPORT must be either <true> or <false>");
     }
     
     if (!is_bool(INPUT_FLEXIBLE_ALTERNATE_BINDING_IMPORT))
@@ -227,9 +222,9 @@ function __input_validate_macros()
         __input_error("INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER must be either <true> or <false>");
     }
     
-    if (!is_bool(INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES))
+    if (!is_bool(INPUT_ALLOW_ASYMMETRIC_DEFAULT_PROFILES))
     {
-        __input_error("INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES must be either <true> or <false>");
+        __input_error("INPUT_ALLOW_ASYMMETRIC_DEFAULT_PROFILES must be either <true> or <false>");
     }
     
     #endregion
@@ -288,11 +283,6 @@ function __input_validate_macros()
     if (!is_bool(INPUT_SDL2_ALLOW_EXTERNAL))
     {
         __input_error("INPUT_SDL2_ALLOW_EXTERNAL must be either <true> or <false>");
-    }
-    
-    if (!is_bool(INPUT_SDL2_ALLOW_EXTENDED))
-    {
-        __input_error("INPUT_SDL2_ALLOW_EXTENDED must be either <true> or <false>");
     }
     
     if (!is_string(INPUT_SDL2_DATABASE_PATH) && !is_undefined(INPUT_SDL2_DATABASE_PATH))
@@ -427,6 +417,11 @@ function __input_validate_macros()
     if (!is_numeric(INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD) || (INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD > 1) || (INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD < INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD))
     {
         __input_error("INPUT_DEFAULT_TRIGGER_MAX_THRESHOLD must be a number less than or equal to 1, and greater than INPUT_DEFAULT_TRIGGER_MIN_THRESHOLD");
+    }
+    
+    if (!is_numeric(INPUT_ANDROID_GAMEPAD_ENUMERATION_INTERVAL) || (INPUT_ANDROID_GAMEPAD_ENUMERATION_INTERVAL < 1))
+    {
+        __input_error("INPUT_ANDROID_GAMEPAD_ENUMERATION_INTERVAL must be a number that is greater than or equal to 1");
     }
     
     if (!is_bool(INPUT_SWITCH_SWAP_AB))

@@ -16,9 +16,9 @@ function __input_finalize_default_profiles()
     }
     
     //Ensure touch profile on touch platform configurations
-    if (_global.__touch_allowed && !_global.__any_touch_binding_defined)
+    if (_global.__touch_allowed)
     {       
-        _global.__default_profile_dict[$ INPUT_AUTO_PROFILE_FOR_TOUCH] = {};
+        _global.__default_profile_dict[$ INPUT_AUTO_PROFILE_FOR_TOUCH] ??= {};
     }
     
     //Put strict mode on, this'll cause Input to throw errors if the player does anything dumb
@@ -148,13 +148,13 @@ function __input_finalize_default_profiles()
             
             if (!variable_struct_exists(_profile_struct, _verb_name))
             {
-                if (INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES)
+                if (INPUT_ALLOW_ASYMMETRIC_DEFAULT_PROFILES)
                 {
                     if (!__INPUT_SILENT) __input_trace("Warning! Default profile \"", _profile_name, "\" does not include a definition for basic verb \"", _verb_name, "\"");
                 }
                 else
                 {
-                    __input_error("Default profile \"", _profile_name, "\" does not include a definition for basic verb \"", _verb_name, "\"\n(To ignore this error set INPUT_ALLOW_ASSYMMETRIC_DEFAULT_PROFILES to <true>)");
+                    __input_error("Default profile \"", _profile_name, "\" does not include a definition for basic verb \"", _verb_name, "\"\n(To ignore this error set INPUT_ALLOW_ASYMMETRIC_DEFAULT_PROFILES to <true>)");
                 }
                 
                 _global.__default_player.__verb_ensure(_profile_name, _verb_name);

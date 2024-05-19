@@ -9,20 +9,10 @@
 
 function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0, _most_recent = INPUT_DEFAULT_2D_MOST_RECENT)
 {
-    if (__INPUT_2D_CHECKER_STATIC_RESULT)
-    {
-        static _result = {
-            x: 0,
-            y: 0,
-        };
-    }
-    else
-    {
-        var _result = {
-            x: 0,
-            y: 0,
-        };
-    }
+    static _result = {
+        x: 0,
+        y: 0,
+    };
     
     if (!is_struct(_player_index))
     {

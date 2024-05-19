@@ -319,7 +319,17 @@ function __input_class_player() constructor
             
             //Verify that the input data has this verb
             var _alternate_array = _json[$ _verb_name];
-            if (!is_array(_alternate_array)) __input_error("Player ", __index, " data is missing verb \"", _verb_name, "\"");
+            if (!is_array(_alternate_array))
+            {
+                if (INPUT_FLEXIBLE_VERB_IMPORT)
+                {
+                    _alternate_array = _existing_alternate_array;
+                }
+                else
+                {
+                    __input_error("Player ", __index, " data is missing verb \"", _verb_name, "\"");
+                }
+            }
             
             if (!INPUT_FLEXIBLE_ALTERNATE_BINDING_IMPORT && (array_length(_alternate_array) != INPUT_MAX_ALTERNATE_BINDINGS))
             {
@@ -437,20 +447,7 @@ function __input_class_player() constructor
     
     /// @param source
     static __source_contains = function(_source, _touch_remap = true)
-    {
-        //Ensure we're targeting the right source for our platform / configuration
-        if (_touch_remap)
-        {
-            if (__global.__touch_allowed)
-            {
-                if (_source == INPUT_MOUSE) _source = INPUT_TOUCH;
-            }
-            else
-            {
-                if (_source == INPUT_TOUCH) _source = INPUT_MOUSE;
-            }
-        }
-        
+    {        
         if (_source == INPUT_GAMEPAD)
         {
             //If we pass in the INPUT_GAMEPAD array then return <true> if any source is a gamepad
@@ -462,6 +459,19 @@ function __input_class_player() constructor
             }
             
             return false;
+        }        
+
+        //Ensure we're targeting the right source for our platform / configuration
+        if (_touch_remap)
+        {
+            if (__global.__touch_allowed)
+            {
+                if (_source == INPUT_MOUSE) _source = INPUT_TOUCH;
+            }
+            else
+            {
+                if (_source == INPUT_TOUCH) _source = INPUT_MOUSE;
+            }
         }
         
         var _i = 0;
@@ -534,7 +544,9 @@ function __input_class_player() constructor
             if (!_allowFallback) return _empty_binding;
             
             var _keyboard_profile_allowed = __global.__keyboard_allowed && __global.__any_keyboard_binding_defined;
+            var _mouse_profile_allowed    = __global.__mouse_allowed    && __global.__any_mouse_binding_defined;
             var _gamepad_profile_allowed  = __global.__gamepad_allowed  && __global.__any_gamepad_binding_defined;
+            var _touch_profile_allowed    = __global.__touch_allowed;
             
             switch(INPUT_FALLBACK_PROFILE_BEHAVIOR)
             {
@@ -543,10 +555,24 @@ function __input_class_player() constructor
                 break;
                 
                 case 1:
-                    if (INPUT_ON_PC && _keyboard_profile_allowed)
+                    if (INPUT_ON_PC && (_keyboard_profile_allowed || _mouse_profile_allowed)
+                    && (!(INPUT_ON_STEAM_DECK && _gamepad_profile_allowed)))
                     {
-                        //Try to use a keyboard profile if possible
-                        _profile_name = INPUT_AUTO_PROFILE_FOR_KEYBOARD;
+                        if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER || _keyboard_profile_allowed)
+                        {
+                            //Try to use a keyboard profile if possible
+                            _profile_name = INPUT_AUTO_PROFILE_FOR_KEYBOARD;
+                        }
+                        else
+                        {
+                            //Try to use a mouse profile if possible
+                            _profile_name = INPUT_AUTO_PROFILE_FOR_MOUSE;
+                        }
+                    }
+                    else if (INPUT_ON_MOBILE && _touch_profile_allowed)
+                    {
+                        //Try to use a touch profile if possible
+                        _profile_name = INPUT_AUTO_PROFILE_FOR_TOUCH;                        
                     }
                     else if (_gamepad_profile_allowed)
                     {
@@ -580,10 +606,18 @@ function __input_class_player() constructor
                             //Try to use a gamepad profile if a gamepad has been connected
                             _profile_name = INPUT_AUTO_PROFILE_FOR_GAMEPAD;
                         }
-                        else if (_keyboard_profile_allowed)
+                        else if (_keyboard_profile_allowed || _mouse_profile_allowed)
                         {
-                            //Fall back to a keyboard profile
-                            _profile_name = INPUT_AUTO_PROFILE_FOR_KEYBOARD;
+                            if (INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER || _keyboard_profile_allowed)
+                            {
+                                //Fall back to a keyboard profile
+                                _profile_name = INPUT_AUTO_PROFILE_FOR_KEYBOARD;
+                            }
+                            else
+                            {
+                                //Fall back to a mouse profile
+                                _profile_name = INPUT_AUTO_PROFILE_FOR_MOUSE;
+                            }
                         }
                         else
                         {
@@ -591,6 +625,24 @@ function __input_class_player() constructor
                             return _empty_binding;
                         }
                     }
+                    else if (INPUT_ON_MOBILE)
+                    {
+                        if (input_gamepad_is_any_connected() && _gamepad_profile_allowed)
+                        {
+                            //Try to use a gamepad profile if a gamepad has been connected
+                            _profile_name = INPUT_AUTO_PROFILE_FOR_GAMEPAD;
+                        }
+                        else if (_touch_profile_allowed)
+                        {
+                            //Fall back to a touch profile
+                            _profile_name = INPUT_AUTO_PROFILE_FOR_TOUCH;
+                        }
+                        else
+                        {
+                            //Return a "static" empty binding since everything else failed
+                            return _empty_binding;
+                        }
+                    }                       
                     else if (_gamepad_profile_allowed)
                     {
                         //Try to use a gamepad profile if possible
@@ -928,7 +980,7 @@ function __input_class_player() constructor
         {
             __chord_state_dict[$ _verb_name] = new __input_class_chord_state(_verb_name, _chord_defintion);
         }
-    }	
+    }
 
     #endregion
     

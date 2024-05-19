@@ -12,30 +12,15 @@ function __input_load_sdl2_from_file(_filename)
         return false;
     }
     
-    var _result;
-    if (_global.__use_legacy_strings)
+    //In case of manual editing, skip UTF-8 BOM
+    if ((buffer_get_size(_buffer) >= 4) && ((buffer_peek(_buffer, 0, buffer_u32) & 0xFFFFFF) == 0xBFBBEF))
     {
-        //Ensure the buffer has a null terminator
-        buffer_resize(_buffer, buffer_get_size(_buffer) + 1);
-    
-        _result = __input_load_sdl2_from_buffer_legacy(_buffer);
-        
-        buffer_delete(_buffer);
+        buffer_seek(_buffer, buffer_seek_start, 3);
     }
-    else
-    {
-        //In case of manual editing, skip UTF-8 BOM
-        if ((buffer_get_size(_buffer) >= 4) && ((buffer_peek(_buffer, 0, buffer_u32) & 0xFFFFFF) == 0xBFBBEF))
-        {
-            buffer_seek(_buffer, buffer_seek_start, 3);
-        }
         
-        //Read file as text
-        var _string = buffer_read(_buffer, buffer_text);
-        buffer_delete(_buffer);
+    //Read file as text
+    var _string = buffer_read(_buffer, buffer_text);
+    buffer_delete(_buffer);
         
-        _result = __input_load_sdl2_from_string_internal(_string);
-    }
-    
-    return _result;
+    return __input_load_sdl2_from_string_internal(_string);
 }

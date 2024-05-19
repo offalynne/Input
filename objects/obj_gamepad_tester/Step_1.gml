@@ -11,7 +11,7 @@ else if (!gamepad_is_connected(_first_gamepad) && __INPUT_ON_WINDOWS)
 }
 
 var _delta = 0
-if (input_window_has_focus())
+if (input_game_has_focus())
 {
     _delta += input_keyboard_check_pressed(vk_down) - input_keyboard_check_pressed(vk_up);
     _delta += device_mouse_check_button_pressed(0, mb_left);
@@ -22,7 +22,7 @@ if (input_window_has_focus())
     }
 }
 
-var _size  = gamepad_get_device_count();;
+var _size  = gamepad_get_device_count();
 test_index = (test_index + _delta + _size) mod max(1, _size);
 
 var _test_colors = [c_blue, c_red, c_fuchsia, c_lime];

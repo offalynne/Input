@@ -21,15 +21,21 @@ function input_mouse_check_pressed(_binding)
     }
     
     var _left = false;
-    if (_global.__mouse_allowed)
-    {
-        //Mouse and touchpad
-        _left = device_mouse_check_button_pressed(0, mb_left) || _global.__tap_click;
-    }
-    else if (_global.__touch_allowed)
+    if (__INPUT_TOUCH_SUPPORT && INPUT_MOBILE_MOUSE)
     {
         //Touch
         _left = _global.__pointer_pressed;
+    }
+    else
+    {
+        //Mouse
+        _left = device_mouse_check_button_pressed(0, mb_left);
+    }
+    
+    if (_global.__tap_click)
+    {
+        //Trackpad
+        _left = true;
     }
     
     switch(_binding)
