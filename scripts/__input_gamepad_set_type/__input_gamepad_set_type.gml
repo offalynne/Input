@@ -8,7 +8,7 @@ function __input_gamepad_set_type()
     switch(os_type)
     {
         case os_switch:
-            switch(description)
+            switch(__description)
             {
                 case "Handheld": //JoyCon L+R railed or Lite (Slot 0 only)
                     __raw_type = "SwitchHandheld";
@@ -347,7 +347,7 @@ function __input_gamepad_set_type()
                 __raw_type = "CommunityNeoGeo";
                 __guessed_type = true;
             }
-            else if (__input_string_contains(description, "Classic Controller") && (__axis_count == 10) && (__hat_count == 1) && __INPUT_ON_ANDROID)
+            else if (__input_string_contains(__description, "Classic Controller") && (__axis_count == 10) && (__hat_count == 1) && __INPUT_ON_ANDROID)
             {
                 __raw_type = "CommunityVCSClassic";
                 __guessed_type = true;
@@ -364,18 +364,18 @@ function __input_gamepad_set_type()
                 //GUID and description do not work correctly for kernel drivers
                 //so match a sequential device pattern with specific qualitites
                 var _wii_type_match = "Unknown";
-                if      ((__button_count == 11) && (__axis_count == 0) && (__hat_count == 0) && (index > 1)) { _wii_type_match = "HIDWiiRemote";     }
-                else if ((__button_count ==  0) && (__axis_count == 3) && (__hat_count == 0) && (index > 2)) { _wii_type_match = "HIDWiiMotionPlus"; }
-                else if ((__button_count ==  2) && (__axis_count == 3) && (__hat_count == 1) && (index > 2)) { _wii_type_match = "HIDWiiNunchuk";    }
-                else if ((__button_count == 15) && (__axis_count == 0) && (__hat_count == 3) && (index > 2)) { _wii_type_match = "HIDWiiClassic";    }
+                if      ((__button_count == 11) && (__axis_count == 0) && (__hat_count == 0) && (__index > 1)) { _wii_type_match = "HIDWiiRemote";     }
+                else if ((__button_count ==  0) && (__axis_count == 3) && (__hat_count == 0) && (__index > 2)) { _wii_type_match = "HIDWiiMotionPlus"; }
+                else if ((__button_count ==  2) && (__axis_count == 3) && (__hat_count == 1) && (__index > 2)) { _wii_type_match = "HIDWiiNunchuk";    }
+                else if ((__button_count == 15) && (__axis_count == 0) && (__hat_count == 3) && (__index > 2)) { _wii_type_match = "HIDWiiClassic";    }
             
                 switch(_wii_type_match)
                 {
                     case "HIDWiiMotionPlus":
                     case "HIDWiiNunchuk":
                     case "HIDWiiClassic":
-                        var _g = index;
-                        repeat(index)
+                        var _g = __index;
+                        repeat(__index)
                         {
                             //Confirm accessory identity by finding Wii Remote device
                             --_g;

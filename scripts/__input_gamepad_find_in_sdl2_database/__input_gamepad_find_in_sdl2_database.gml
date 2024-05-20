@@ -5,7 +5,7 @@ function __input_gamepad_find_in_sdl2_database()
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
-    if (!__INPUT_SDL2_SUPPORT || !INPUT_SDL2_REMAPPING || blacklisted || __xinput) return;
+    if (!__INPUT_SDL2_SUPPORT || !INPUT_SDL2_REMAPPING || __blacklisted || __xinput) return;
   
     //Check to see if our device GUID matches the SDL2 database perfectly somewhere
     var _guid_dict = _global.__sdl2_database.by_guid;

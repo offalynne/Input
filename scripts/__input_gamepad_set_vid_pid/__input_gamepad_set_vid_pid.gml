@@ -101,7 +101,7 @@ function __input_gamepad_set_vid_pid()
             var _result = __input_gamepad_guid_parse(__guid, _legacy, false);
             __vendor = _result.__vendor;
             __product = _result.__product;
-            __xinput  = (index < 4);
+            __xinput  = (__index < 4);
         }
         else if (__INPUT_ON_MACOS || __INPUT_ON_LINUX || __INPUT_ON_ANDROID)
         {
