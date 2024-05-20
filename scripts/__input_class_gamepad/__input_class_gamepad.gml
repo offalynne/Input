@@ -119,7 +119,7 @@ function __input_class_gamepad(_index) constructor
     {
         var _mapping = __mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
-        return _mapping.held;
+        return _mapping.__held;
     }
     
     /// @param GMconstant
@@ -127,7 +127,7 @@ function __input_class_gamepad(_index) constructor
     {
         var _mapping = __mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
-        return _mapping.press;
+        return _mapping.__press;
     }
     
     /// @param GMconstant
@@ -135,7 +135,7 @@ function __input_class_gamepad(_index) constructor
     {
         var _mapping = __mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
-        return _mapping.release;
+        return _mapping.__release;
     }
     
     /// @param GMconstant
@@ -143,7 +143,7 @@ function __input_class_gamepad(_index) constructor
     {
         var _mapping = __mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return 0.0;
-        return _mapping.value;
+        return _mapping.__value;
     }
     
     /// @param GMconstant
@@ -159,7 +159,7 @@ function __input_class_gamepad(_index) constructor
     {
         var _mapping = __mapping_gm_to_raw[$ _gm];
         if (_mapping == undefined) return false;
-        return (_mapping.type == __INPUT_MAPPING.AXIS);
+        return (_mapping.__type == __INPUT_MAPPING.AXIS);
     }
     
     static __set_custom_mapping = function()
@@ -227,16 +227,16 @@ function __input_class_gamepad(_index) constructor
     static __set_dpad_hat_mapping = function()
     {
         var _mapping = __set_mapping(gp_padu, 0, __INPUT_MAPPING.HAT, "dpup"); 
-        _mapping.hat_mask = 1;
+        _mapping.__hat_mask = 1;
         
         _mapping = __set_mapping(gp_padr, 0, __INPUT_MAPPING.HAT, "dpright"); 
-        _mapping.hat_mask = 2;
+        _mapping.__hat_mask = 2;
         
         _mapping = __set_mapping(gp_padd, 0, __INPUT_MAPPING.HAT, "dpdown"); 
-        _mapping.hat_mask = 4;
+        _mapping.__hat_mask = 4;
         
         _mapping = __set_mapping(gp_padl, 0, __INPUT_MAPPING.HAT, "dpleft"); 
-        _mapping.hat_mask = 8;
+        _mapping.__hat_mask = 8;
     }
     
     static __set_thumbstick_axis_mapping = function(_left_only = false)
@@ -299,10 +299,10 @@ function __input_class_gamepad(_index) constructor
                         }
                         
                         var _mapping = __mapping_gm_to_raw[$ gp_shoulderlb];
-                        _mapping.scale = 1/__xinput_trigger_range;
+                        _mapping.__scale = 1/__xinput_trigger_range;
                         
                         _mapping = __mapping_gm_to_raw[$ gp_shoulderrb];
-                        _mapping.scale = 1/__xinput_trigger_range;
+                        _mapping.__scale = 1/__xinput_trigger_range;
                     }
                 }
         
@@ -318,10 +318,10 @@ function __input_class_gamepad(_index) constructor
                     __set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
                     
                     var _mapping = __set_mapping(gp_shoulderrb, 4, __INPUT_MAPPING.AXIS, "righttrigger");
-                    _mapping.extended_range = true;
+                    _mapping.__extended_range = true;
 
                     _mapping = __set_mapping(gp_shoulderlb, 5, __INPUT_MAPPING.AXIS, "lefttrigger");
-                    _mapping.extended_range = true;
+                    _mapping.__extended_range = true;
                 }
             }
         }
@@ -336,7 +336,7 @@ function __input_class_gamepad(_index) constructor
         var _i = 0;
         repeat(array_length(__mapping_array))
         {
-            with(__mapping_array[_i]) tick(_gamepad, _scan);
+            with(__mapping_array[_i]) __tick(_gamepad, _scan);
             ++_i;
         }
         
@@ -413,8 +413,8 @@ function __input_class_gamepad(_index) constructor
         if (__input_gamepad_type_swap_ab(__simple_type) && is_struct(__mapping_gm_to_raw[$ string(gp_face1)]) && is_struct(__mapping_gm_to_raw[$ string(gp_face2)]))
         {
             if (__INPUT_DEBUG) __input_trace("  (Swapping A and B)");
-            var _a_mapping = __mapping_gm_to_raw[$ string(gp_face1)].raw;
-            __set_mapping(gp_face1, __mapping_gm_to_raw[$ string(gp_face2)].raw, __INPUT_MAPPING.BUTTON, "a");
+            var _a_mapping = __mapping_gm_to_raw[$ string(gp_face1)].__raw;
+            __set_mapping(gp_face1, __mapping_gm_to_raw[$ string(gp_face2)].__raw, __INPUT_MAPPING.BUTTON, "a");
             __set_mapping(gp_face2, _a_mapping, __INPUT_MAPPING.BUTTON, "b");
         }
     }

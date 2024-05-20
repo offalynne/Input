@@ -89,7 +89,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                 
                 //Get raw value from mapping
                 var _mapping = _gamepad.__mapping_gm_to_raw[$ _value];
-                var _raw = ((_mapping.raw == undefined)? _mapping.raw_negative : _mapping.raw);
+                var _raw = ((_mapping.__raw == undefined)? _mapping.__raw_negative : _mapping.__raw);
                 if (_raw == undefined)
                 {
                     //Raw value invalid
@@ -104,7 +104,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                 
                 if (_raw == 0)
                 {
-                    var _hat_mask = ((_mapping.hat_mask == undefined)? _mapping.hat_mask_negative : _mapping.hat_mask);        
+                    var _hat_mask = ((_mapping.__hat_mask == undefined)? _mapping.__hat_mask_negative : _mapping.__hat_mask);        
                     if (_hat_mask != undefined)
                     {
                         //Validate hat mappings
