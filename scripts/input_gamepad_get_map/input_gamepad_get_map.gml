@@ -23,7 +23,7 @@ function input_gamepad_get_map(_index)
         var _i = 0;
         repeat(array_length(__mapping_array))
         {
-            _output[@ _i] = __mapping_array[_i].gm;
+            _output[@ _i] = __mapping_array[_i].__gm;
             ++_i;
         }
         

@@ -123,18 +123,18 @@ function __input_gamepad_set_mapping()
         {
             //ಠ_ಠ
             var _mapping = set_mapping(gp_padr, 6, __INPUT_MAPPING.AXIS, "dpright")
-            _mapping.clamp_positive = true;
+            _mapping.__clamp_positive = true;
             
             _mapping = set_mapping(gp_padd, 7, __INPUT_MAPPING.AXIS, "dpdown" )
-            _mapping = clamp_positive = true;
+            _mapping.__clamp_positive = true;
             
             _mapping = set_mapping(gp_padl, 6, __INPUT_MAPPING.AXIS, "dpleft");
-            _mapping.clamp_negative = true;
-            _mapping.reverse = true;
+            _mapping.__clamp_negative = true;
+            _mapping.__reverse = true;
             
             _mapping = set_mapping(gp_padu, 7, __INPUT_MAPPING.AXIS, "dpup");
-            _mapping.clamp_negative = true;
-            _mapping.reverse = true;
+            _mapping.__clamp_negative = true;
+            _mapping.__reverse = true;
         }
         else
         {
@@ -194,10 +194,10 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
         
         var _mapping = set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty"); 
-        _mapping.reverse = true;
+        _mapping.__reverse = true;
 
         _mapping = set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
-        _mapping.reverse = true;
+        _mapping.__reverse = true;
         
         var _mapping_lt = set_mapping(gp_shoulderlb, __XINPUT_AXIS_LT, __INPUT_MAPPING.AXIS, "lefttrigger");
         var _mapping_rt = set_mapping(gp_shoulderrb, __XINPUT_AXIS_RT, __INPUT_MAPPING.AXIS, "righttrigger");
@@ -214,8 +214,8 @@ function __input_gamepad_set_mapping()
             __xinput_trigger_range = 63/256;
         }
 
-        _mapping_lt.scale = 1/__xinput_trigger_range;
-        _mapping_rt.scale = 1/__xinput_trigger_range;
+        _mapping_lt.__scale = 1/__xinput_trigger_range;
+        _mapping_rt.__scale = 1/__xinput_trigger_range;
         
         return;
     }
@@ -343,10 +343,10 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axisrv, 4, __INPUT_MAPPING.AXIS, "righty");
         
         var _mapping = set_mapping(gp_shoulderlb, 2, __INPUT_MAPPING.AXIS, "lefttrigger");
-        _mapping.clamp_positive = true;
+        _mapping.__clamp_positive = true;
 
         _mapping = set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.AXIS, "righttrigger");
-        _mapping.clamp_positive = true;  
+        _mapping.__clamp_positive = true;  
         
         return;
     }
@@ -449,10 +449,10 @@ function __input_gamepad_set_mapping()
         if (!__INPUT_ON_MACOS)
         {
             var _mapping = set_mapping(gp_shoulderlb, 0, __INPUT_MAPPING.AXIS,  "lefttrigger");
-            _mapping.extended_range = __INPUT_ON_WINDOWS;
+            _mapping.__extended_range = __INPUT_ON_WINDOWS;
             
             _mapping = set_mapping(gp_shoulderrb, 1, __INPUT_MAPPING.AXIS, "righttrigger");
-            _mapping.extended_range = __INPUT_ON_WINDOWS;
+            _mapping.__extended_range = __INPUT_ON_WINDOWS;
         }
         
         set_mapping(gp_axislh, 3, __INPUT_MAPPING.AXIS,   "leftx");
@@ -539,7 +539,7 @@ function __input_gamepad_set_mapping()
         set_mapping(gp_axisrv, 5, __INPUT_MAPPING.AXIS, "righty");
         
         var _mapping = set_mapping(gp_axisrh, 7, __INPUT_MAPPING.AXIS, "rightx")
-        _mapping.reverse = true;
+        _mapping.__reverse = true;
         
         set_mapping(gp_shoulderrb, 0, undefined, "righttrigger");
         set_mapping(gp_select,     0, undefined, "back");
@@ -589,18 +589,18 @@ function __input_gamepad_set_mapping()
         set_dpad_hat_mapping();
 
         var _mapping = set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
-        _mapping.limited_range = __INPUT_ON_LINUX;
+        _mapping.__limited_range = __INPUT_ON_LINUX;
         
         _mapping = set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
-        _mapping.limited_range = __INPUT_ON_LINUX;
+        _mapping.__limited_range = __INPUT_ON_LINUX;
 
         _mapping = set_mapping(gp_axisrh, undefined, __INPUT_MAPPING.BUTTON_TO_AXIS, "rightx");
-        _mapping.raw_negative = 3;
-        _mapping.raw_positive = 8;
+        _mapping.__raw_negative = 3;
+        _mapping.__raw_positive = 8;
         
         _mapping = set_mapping(gp_axisrv, undefined, __INPUT_MAPPING.BUTTON_TO_AXIS, "righty");
-        _mapping.raw_negative = 9;
-        _mapping.raw_positive = 0;
+        _mapping.__raw_negative = 9;
+        _mapping.__raw_positive = 0;
 
         return;
     }
@@ -677,11 +677,11 @@ function __input_gamepad_set_mapping()
                 set_mapping(gp_stickl, 6, __INPUT_MAPPING.BUTTON, "leftstick");
 
                 var _mapping = set_mapping(gp_axislh, 1, __INPUT_MAPPING.AXIS, "leftx");
-                _mapping.limited_range = true;
+                _mapping.__limited_range = true;
 
                 _mapping = set_mapping(gp_axislv, 0, __INPUT_MAPPING.AXIS, "lefty");
-                _mapping.limited_range = true;
-                _mapping.reverse       = true;
+                _mapping.__limited_range = true;
+                _mapping.__reverse     = true;
         
                 return;
             break;
@@ -703,11 +703,11 @@ function __input_gamepad_set_mapping()
                 set_mapping(gp_stickl, 10, __INPUT_MAPPING.BUTTON, "leftstick");
         
                 var _mapping = set_mapping(gp_axislh, 1, __INPUT_MAPPING.AXIS, "leftx");
-                _mapping.limited_range = true;
-                _mapping.reverse = true;
+                _mapping.__limited_range = true;
+                _mapping.__reverse = true;
         
                 _mapping = set_mapping(gp_axislv, 0, __INPUT_MAPPING.AXIS, "lefty")
-                _mapping.limited_range = true;
+                _mapping.__limited_range = true;
         
                 return;
             break;
@@ -837,7 +837,7 @@ function __input_gamepad_set_mapping()
                     set_mapping(gp_axislv, 0, __INPUT_MAPPING.AXIS, "lefty");
                     
                     var _mapping = set_mapping(gp_axislh, 1, __INPUT_MAPPING.AXIS, "leftx");
-                    _mapping.reverse = true;
+                    _mapping.__reverse = true;
 
                     return;
                 }
@@ -941,10 +941,10 @@ function __input_gamepad_set_mapping()
                 set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
                 
                 var _mapping = set_mapping(gp_shoulderlb, 4, __INPUT_MAPPING.AXIS,  "lefttrigger");
-                _mapping.extended_range = true;
+                _mapping.__extended_range = true;
 
                 _mapping = set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.AXIS, "righttrigger");
-                _mapping.extended_range = true;
+                _mapping.__extended_range = true;
             
                 if (INPUT_SDL2_ALLOW_EXTENDED)
                 {
@@ -1031,12 +1031,12 @@ function __input_gamepad_set_mapping()
                 set_mapping(gp_start, 0, undefined, "start");
                 
                 var _mapping = set_mapping(gp_axislh, undefined, __INPUT_MAPPING.BUTTON_TO_AXIS, "leftx");
-                _mapping.raw_negative = 9;
-                _mapping.raw_positive = 10;
+                _mapping.__raw_negative = 9;
+                _mapping.__raw_positive = 10;
                 
                 _mapping = set_mapping(gp_axislv, undefined, __INPUT_MAPPING.BUTTON_TO_AXIS, "lefty");
-                _mapping.raw_negative = 7;
-                _mapping.raw_positive = 8;
+                _mapping.__raw_negative = 7;
+                _mapping.__raw_positive = 8;
 
                 return;
             break;
@@ -1174,11 +1174,11 @@ function __input_gamepad_set_mapping()
                     
                         if (_output_negative)
                         {
-                            _mapping.raw_negative = _input_slot;
+                            _mapping.__raw_negative = _input_slot;
                         }
                         else if (_output_positive)
                         {
-                            _mapping.raw_positive = _input_slot;
+                            _mapping.__raw_positive = _input_slot;
                         }
                     }
                     else if (_raw_type == __INPUT_MAPPING.SPLIT_AXIS)
@@ -1190,15 +1190,15 @@ function __input_gamepad_set_mapping()
                     
                         if (_output_negative)
                         {
-                            _mapping.raw_negative = _input_slot;
-                            if (_input_negative) _mapping.negative_clamp_negative = true;
-                            if (_input_positive) _mapping.negative_clamp_positive = true;
+                            _mapping.__raw_negative = _input_slot;
+                            if (_input_negative) _mapping.__negative_clamp_negative = true;
+                            if (_input_positive) _mapping.__negative_clamp_positive = true;
                         }
                         else if (_output_positive)
                         {
-                            _mapping.raw_positive = _input_slot;
-                            if (_input_negative) _mapping.positive_clamp_negative = true;
-                            if (_input_positive) _mapping.positive_clamp_positive = true;
+                            _mapping.__raw_positive = _input_slot;
+                            if (_input_negative) _mapping.__positive_clamp_negative = true;
+                            if (_input_positive) _mapping.__positive_clamp_positive = true;
                         }
                     }
                     else if (_raw_type == __INPUT_MAPPING.BUTTON_TO_AXIS)
@@ -1210,11 +1210,11 @@ function __input_gamepad_set_mapping()
                     
                         if (_output_negative)
                         {
-                            _mapping.raw_negative = _input_slot;
+                            _mapping.__raw_negative = _input_slot;
                         }
                         else if (_output_positive)
                         {
-                            _mapping.raw_positive = _input_slot;
+                            _mapping.__raw_positive = _input_slot;
                         }
                     }
                     else
@@ -1229,10 +1229,10 @@ function __input_gamepad_set_mapping()
                         }
                     
                         //If necessary, apply modifiers to the mapping input
-                        if (_input_invert  ) _mapping.invert         = true;
-                        if (_input_reverse ) _mapping.reverse        = true;
-                        if (_input_negative) _mapping.clamp_negative = true;
-                        if (_input_positive) _mapping.clamp_positive = true;
+                        if (_input_invert  ) _mapping.__invert         = true;
+                        if (_input_reverse ) _mapping.__reverse        = true;
+                        if (_input_negative) _mapping.__clamp_negative = true;
+                        if (_input_positive) _mapping.__clamp_positive = true;
                     }
                 
                     //Now manage the hat masks, including setting up hat-on-axis masks
@@ -1241,17 +1241,17 @@ function __input_gamepad_set_mapping()
                         var _hat_mask = floor(10 * abs((real(_entry_1) mod 1)));
                         if (_raw_type == __INPUT_MAPPING.HAT)
                         {
-                            _mapping.hat_mask = _hat_mask;
+                            _mapping.__hat_mask = _hat_mask;
                         }
                         else if (_raw_type == __INPUT_MAPPING.HAT_TO_AXIS)
                         {
                             if (_output_negative)
                             {
-                                _mapping.hat_mask_negative = _hat_mask;
+                                _mapping.__hat_mask_negative = _hat_mask;
                             }
                             else if (_output_positive)
                             {
-                                _mapping.hat_mask_positive = _hat_mask;
+                                _mapping.__hat_mask_positive = _hat_mask;
                             }
                         }
                     }
@@ -1268,13 +1268,13 @@ function __input_gamepad_set_mapping()
                         if (__INPUT_ON_LINUX && _is_directional)
                         {    
                             if (__INPUT_DEBUG) __input_trace("  (Limited axis range)");
-                            _mapping.limited_range = true;
+                            _mapping.__limited_range = true;
                         }
                         else if (!__INPUT_ON_LINUX && !_is_directional && (gamepad_axis_count(__index) >= _input_slot))
                         {
                             //Nondirectional axes (triggers) use full axis range (excepting Linux remappings and XInput)
                             if (__INPUT_DEBUG) __input_trace("  (Extended axis range)");
-                            _mapping.extended_range = true;
+                            _mapping.__extended_range = true;
                         }
                     }
                 }
@@ -1293,7 +1293,7 @@ function __input_gamepad_set_mapping()
                 {
                     //Check mapping match (b11 - b14)
                     _mapping = __mapping_gm_to_raw[$ _dpad_array[_matched]];
-                    if (!is_struct(_mapping) || (_mapping[$ "raw"] != 11 + _matched)) break;
+                    if (!is_struct(_mapping) || (_mapping[$ "__raw"] != 11 + _matched)) break;
                     ++_matched;
                 }
             
@@ -1309,7 +1309,7 @@ function __input_gamepad_set_mapping()
             //if ((__raw_type == "CommunityVCSClassic") || (__raw_type == "HIDAtariVCSClassic"))
             //{
             //    var _mapping = set_mapping(gp_axisrh, 0, __INPUT_MAPPING.AXIS, "rightx");
-            //    _mapping.limited_range = __INPUT_ON_LINUX;
+            //    _mapping.__limited_range = __INPUT_ON_LINUX;
             //}
         
             if (INPUT_SDL2_ALLOW_EXTENDED)
@@ -1330,7 +1330,7 @@ function __input_gamepad_set_mapping()
                     {
                         //Check mapping match (b0 - b3)
                         _mapping = __mapping_gm_to_raw[$ string(_button_array[_matched])];
-                        if (!is_struct(_mapping) || (_mapping[$ "raw"] != _matched + _offset)) break;
+                        if (!is_struct(_mapping) || (_mapping[$ "__raw"] != _matched + _offset)) break;
                         ++_matched;
                     }
 
@@ -1357,8 +1357,8 @@ function __input_gamepad_set_mapping()
                 &&  is_struct(__mapping_gm_to_raw[$ string(gp_paddle2)]) && is_struct(__mapping_gm_to_raw[$ string(gp_paddle3)]))
                 {
                     if (__INPUT_DEBUG) __input_trace("  (Swapping Elite P2 and P3)");
-                    var _p2_mapping = __mapping_gm_to_raw[$ string(gp_paddle2)].raw;
-                    set_mapping(gp_paddle2, __mapping_gm_to_raw[$ string(gp_paddle3)].raw, __INPUT_MAPPING.BUTTON, "paddle2");
+                    var _p2_mapping = __mapping_gm_to_raw[$ string(gp_paddle2)].__raw;
+                    set_mapping(gp_paddle2, __mapping_gm_to_raw[$ string(gp_paddle3)].__raw, __INPUT_MAPPING.BUTTON, "paddle2");
                     set_mapping(gp_paddle3, _p2_mapping, __INPUT_MAPPING.BUTTON, "paddle3");
                 }
             }
