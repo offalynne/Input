@@ -138,7 +138,7 @@ function __input_gamepad_set_mapping()
             _mapping.clamp_positive = true;
             
             _mapping = set_mapping(gp_padd, 7, __INPUT_MAPPING.AXIS, "dpdown" )
-            _mapping = clamp_positive = true;
+            _mapping.clamp_positive = true;
             
             _mapping = set_mapping(gp_padl, 6, __INPUT_MAPPING.AXIS, "dpleft");
             _mapping.clamp_negative = true;
