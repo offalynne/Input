@@ -45,16 +45,14 @@ function __input_load_sdl2_from_string_internal(_string)
         var _x = array_length(_row_array)-1;
         repeat(array_length(_row_array))
         {
-            var _lower = string_lower(_row_array[_x]);
-            if (_lower == "platform:windows" ) { _platform = os_windows; break; }
-            if (_lower == "platform:mac"     ) { _platform = os_macosx;  break; }
-            if (_lower == "platform:macos"   ) { _platform = os_macosx;  break; }
-            if (_lower == "platform:macosx"  ) { _platform = os_macosx;  break; }
-            if (_lower == "platform:mac os"  ) { _platform = os_macosx;  break; }
-            if (_lower == "platform:mac os x") { _platform = os_macosx;  break; }
-            if (_lower == "platform:linux"   ) { _platform = os_linux;   break; }
-            if (_lower == "platform:android" ) { _platform = os_android; break; }
-            if (_lower == "platform:ios"     ) { _platform = os_ios;     break; }
+            var _platform_string = _row_array[_x];
+            if (_platform_string == "platform:Windows" ) { _platform = os_windows; break; }
+            if (_platform_string == "platform:Linux"   ) { _platform = os_linux;   break; }
+            if (_platform_string == "platform:Android" ) { _platform = os_android; break; }
+            if (_platform_string == "platform:Mac OS X") { _platform = os_macosx;  break; }
+            if (_platform_string == "platform:iOS"     ) { _platform = os_ios;     break; }
+            if (_platform_string == "platform:MacOS"   ) { _platform = os_macosx;  break; }
+            if (_platform_string == "platform:Mac"     ) { _platform = os_macosx;  break; }
             --_x;
         }
                 
