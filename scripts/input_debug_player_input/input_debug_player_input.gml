@@ -62,12 +62,12 @@ function input_debug_player_input(_player_index = 0)
                     if (_global.__any_keyboard_binding_defined)
                     {
                         var _j = __INPUT_KEYCODE_MIN;
-                        repeat(1 + (256 - __INPUT_KEYCODE_MIN))
+                        repeat(1 + (0x100 - __INPUT_KEYCODE_MIN))
                         {
-                            if (_j == 256)
+                            if (_j == 0x100)
                             {
                                 var _keyboard_key = __input_keyboard_key();
-                                if (_keyboard_key <= 256) break;
+                                if (_keyboard_key <= 0x100) break;
                             }
                             else
                             {

@@ -228,10 +228,10 @@ function __input_class_binding() constructor
             __android_lowercase = (_android_lowercase != value)? _android_lowercase : undefined;
             
             //Some Android devices and soft keyboards use carriage return for Enter, some use newline
-            if ((value == 10) || (value == 13))
+            if ((value == 0x0A) || (value == 0x0D))
             {
-                value = 10;
-                __android_lowercase = 13;
+                value = 0x0A;
+                __android_lowercase = 0x0D;
             }
         }
     }
@@ -276,23 +276,23 @@ function __input_class_binding() constructor
             if (__INPUT_ON_SWITCH || __INPUT_ON_LINUX || __INPUT_ON_MACOS)
             {
                 //Fix F11 and F12 constants
-                if      (_key == vk_f11)  _key = 128;
-                else if (_key == vk_f12)  _key = 129;
+                if      (_key == vk_f11)  _key = 0x80;
+                else if (_key == vk_f12)  _key = 0x81;
             }
             
             if (!__INPUT_KEYBOARD_NORMATIVE)
             {
                 //Fix UTF-8 where used
-                if      (_key == vk_comma    )  _key = 44;
-                else if (_key == vk_hyphen   )  _key = 45;
-                else if (_key == vk_period   )  _key = 46;
-                else if (_key == vk_fslash   )  _key = 47;
-                else if (_key == vk_semicolon)  _key = 59;
-                else if (_key == vk_equals   )  _key = 61;
-                else if (_key == vk_lbracket )  _key = 91;
-                else if (_key == vk_bslash   )  _key = 92;
-                else if (_key == vk_rbracket )  _key = 93;
-                else if (_key == vk_backtick )  _key = 96;
+                if      (_key == vk_comma    )  _key = 0x2C;
+                else if (_key == vk_hyphen   )  _key = 0x2D;
+                else if (_key == vk_period   )  _key = 0x2E;
+                else if (_key == vk_fslash   )  _key = 0x2F;
+                else if (_key == vk_semicolon)  _key = 0x3B;
+                else if (_key == vk_equals   )  _key = 0x3D;
+                else if (_key == vk_lbracket )  _key = 0x5B;
+                else if (_key == vk_bslash   )  _key = 0x5C;
+                else if (_key == vk_rbracket )  _key = 0x5D;
+                else if (_key == vk_backtick )  _key = 0x60;
             }
         }
         

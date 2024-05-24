@@ -132,8 +132,8 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                 
                 if (__INPUT_ON_ANDROID)
                 {
-                    if (((_value >= 16) && (_value <=  19))
-                    ||  ((_value >= 96) && (_value <= 122)))
+                    if (((_value >= 0x10) && (_value <= 0x13))
+                    ||  ((_value >= 0x60) && (_value <= 0x7A)))
                     {
                         //Command keys that overlap alpha don't register on Android, are invalid binds
                         return false;
