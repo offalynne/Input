@@ -12,7 +12,7 @@ function input_held_time(_verb, _player_index = 0)
     __INPUT_GET_VERB_STRUCT
     
     //Return a negative number if the verb is inactive
-    if (_verb_struct.__inactive || !_verb_struct.held) return -1;
+    if (_verb_struct.__inactive || !_verb_struct.__held) return -1;
     
-    return (__input_get_time() - _verb_struct.press_time);
+    return (__input_get_time() - _verb_struct.__press_time);
 }

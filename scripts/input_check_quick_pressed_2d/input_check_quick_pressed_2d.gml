@@ -40,16 +40,16 @@ function input_check_quick_pressed_2d(_verb_l, _verb_r, _verb_u, _verb_d, _playe
     //If any of the verbs have been consumed then we cannot perform a quick tap
     if (_verb_struct_l.__inactive || _verb_struct_r.__inactive || _verb_struct_u.__inactive || _verb_struct_d.__inactive) return false;
     
-    var _value_l = _verb_struct_l.raw;
-    var _value_r = _verb_struct_r.raw;
-    var _value_u = _verb_struct_u.raw;
-    var _value_d = _verb_struct_d.raw;
+    var _value_l = _verb_struct_l.__raw;
+    var _value_r = _verb_struct_r.__raw;
+    var _value_u = _verb_struct_u.__raw;
+    var _value_d = _verb_struct_d.__raw;
     
     //Check to see if any the verbs are non-analogue (and are being pressed). If so, we cannot perform a quick tap
-    if (((_value_l > 0.0) && !_verb_struct_l.raw_analogue)
-    ||  ((_value_r > 0.0) && !_verb_struct_r.raw_analogue)
-    ||  ((_value_u > 0.0) && !_verb_struct_u.raw_analogue)
-    ||  ((_value_d > 0.0) && !_verb_struct_d.raw_analogue))
+    if (((_value_l > 0.0) && !_verb_struct_l.__raw_analogue)
+    ||  ((_value_r > 0.0) && !_verb_struct_r.__raw_analogue)
+    ||  ((_value_u > 0.0) && !_verb_struct_u.__raw_analogue)
+    ||  ((_value_d > 0.0) && !_verb_struct_d.__raw_analogue))
     {
         return false;
     }
@@ -59,10 +59,10 @@ function input_check_quick_pressed_2d(_verb_l, _verb_r, _verb_u, _verb_d, _playe
     var _min_threshold = 0.0;
     var _max_threshold = 0.0;
     
-    if (_value_l > 0.0) { _active_count++;   _min_threshold += _verb_struct_l.min_threshold;   _max_threshold += _verb_struct_l.max_threshold; }
-    if (_value_r > 0.0) { _active_count++;   _min_threshold += _verb_struct_r.min_threshold;   _max_threshold += _verb_struct_r.max_threshold; }
-    if (_value_u > 0.0) { _active_count++;   _min_threshold += _verb_struct_u.min_threshold;   _max_threshold += _verb_struct_u.max_threshold; }
-    if (_value_d > 0.0) { _active_count++;   _min_threshold += _verb_struct_d.min_threshold;   _max_threshold += _verb_struct_d.max_threshold; }
+    if (_value_l > 0.0) { _active_count++;   _min_threshold += _verb_struct_l.__min_threshold;   _max_threshold += _verb_struct_l.__max_threshold; }
+    if (_value_r > 0.0) { _active_count++;   _min_threshold += _verb_struct_r.__min_threshold;   _max_threshold += _verb_struct_r.__max_threshold; }
+    if (_value_u > 0.0) { _active_count++;   _min_threshold += _verb_struct_u.__min_threshold;   _max_threshold += _verb_struct_u.__max_threshold; }
+    if (_value_d > 0.0) { _active_count++;   _min_threshold += _verb_struct_d.__min_threshold;   _max_threshold += _verb_struct_d.__max_threshold; }
     
     _min_threshold /= _active_count;
     _max_threshold /= _active_count;

@@ -908,8 +908,8 @@ function __input_class_player() constructor
             
             var _verb = new __input_class_verb_state();
             _verb.__player = self;
-            _verb.name     = _verb_name;
-            _verb.type     = __INPUT_VERB_TYPE.__BASIC;
+            _verb.__name     = _verb_name;
+            _verb.__type     = __INPUT_VERB_TYPE.__BASIC;
             
             __verb_state_dict[$ _verb_name] = _verb;
         }
@@ -945,9 +945,9 @@ function __input_class_player() constructor
             
             var _verb_state_struct = new __input_class_verb_state();
             _verb_state_struct.__player = self;
-            _verb_state_struct.name     = _verb_name;
-            _verb_state_struct.type     = _type;
-            _verb_state_struct.analogue = false; //Complex verbs are never analogue
+            _verb_state_struct.__name     = _verb_name;
+            _verb_state_struct.__type     = _type;
+            _verb_state_struct.__analogue = false; //Complex verbs are never analogue
             __verb_state_dict[$ _verb_name] = _verb_state_struct;
         }
     }
@@ -1031,8 +1031,8 @@ function __input_class_player() constructor
     {
         with(__verb_state_dict[$ _verb_name])
         {
-            force_value    = _value;
-            force_analogue = _analogue;
+            __force_value    = _value;
+            __force_analogue = _analogue;
         }
     }
     
@@ -1074,7 +1074,7 @@ function __input_class_player() constructor
             var _profile_verb_struct = __profiles_dict[$ _profile_name];
             if (is_struct(_profile_verb_struct))
             {
-                var _gamepad_mapping_array = input_gamepad_get_map(gamepad);
+                var _gamepad_mapping_array = input_gamepad_get_map(__source_array[_s].__gamepad);
                 
                 var _v = 0;
                 repeat(array_length(__global.__basic_verb_array))
@@ -1610,7 +1610,7 @@ function __input_class_player() constructor
         var _v = 0;
         repeat(array_length(__global.__basic_verb_array))
         {
-            __verb_state_dict[$ __global.__basic_verb_array[_v]].tick(__verb_group_state_dict, __active);
+            __verb_state_dict[$ __global.__basic_verb_array[_v]].__tick(__verb_group_state_dict, __active);
             ++_v;
         }
     }
@@ -1625,14 +1625,14 @@ function __input_class_player() constructor
             {
                 with(__verb_state_dict[$ _chord_name])
                 {
-                    value = 1;
-                    raw   = 1;
-                    tick(other.__verb_group_state_dict, other.__active);
+                    __value = 1;
+                    __raw   = 1;
+                    __tick(other.__verb_group_state_dict, other.__active);
                 }
             }
             else
             {
-                __verb_state_dict[$ _chord_name].tick(__verb_group_state_dict, __active);
+                __verb_state_dict[$ _chord_name].__tick(__verb_group_state_dict, __active);
             }
             
             ++_i;
@@ -1649,14 +1649,14 @@ function __input_class_player() constructor
             {
                 with(__verb_state_dict[$ _combo_name])
                 {
-                    value = 1;
-                    raw   = 1;
-                    tick(other.__verb_group_state_dict, other.__active);
+                    __value = 1;
+                    __raw   = 1;
+                    __tick(other.__verb_group_state_dict, other.__active);
                 }
             }
             else
             {
-                __verb_state_dict[$ _combo_name].tick(__verb_group_state_dict, __active);
+                __verb_state_dict[$ _combo_name].__tick(__verb_group_state_dict, __active);
             }
             
             ++_i;

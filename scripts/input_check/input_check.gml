@@ -35,10 +35,10 @@ function input_check(_verb, _player_index = 0, _buffer_duration = 0)
     
     if (_buffer_duration <= 0)
     {
-        return _verb_struct.held;
+        return _verb_struct.__held;
     }
     else
     {
-        return ((_verb_struct.held_time >= 0) && ((__input_get_time() - _verb_struct.held_time) <= _buffer_duration));
+        return ((_verb_struct.__held_time >= 0) && ((__input_get_time() - _verb_struct.__held_time) <= _buffer_duration));
     }
 }

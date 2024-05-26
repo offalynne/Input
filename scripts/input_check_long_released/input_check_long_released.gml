@@ -30,10 +30,10 @@ function input_check_long_released(_verb, _player_index = 0, _buffer_duration = 
     
     if (_buffer_duration <= 0)
     {
-        return _verb_struct.long_release;
+        return _verb_struct.__long_release;
     }
     else
     {
-        return ((_verb_struct.long_release_time >= 0) && ((__input_get_time() - _verb_struct.long_release_time) <= _buffer_duration));
+        return ((_verb_struct.__long_release_time >= 0) && ((__input_get_time() - _verb_struct.__long_release_time) <= _buffer_duration));
     }
 }

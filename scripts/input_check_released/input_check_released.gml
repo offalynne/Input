@@ -35,10 +35,10 @@ function input_check_released(_verb, _player_index = 0, _buffer_duration = 0)
     
     if (_buffer_duration <= 0)
     {
-        return ((_global.__cleared)? false : _verb_struct.release);
+        return ((_global.__cleared)? false : _verb_struct.__release);
     }
     else
     {
-        return ((_verb_struct.release_time >= 0) && ((__input_get_time() - _verb_struct.release_time) <= _buffer_duration));
+        return ((_verb_struct.__release_time >= 0) && ((__input_get_time() - _verb_struct.__release_time) <= _buffer_duration));
     }
 }
