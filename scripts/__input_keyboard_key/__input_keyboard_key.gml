@@ -30,8 +30,8 @@ function __input_keyboard_key()
                 if (keyboard_check(ord(keyboard_lastchar))) return ord(keyboard_lastchar);
                 
                 //Switch control
-                var _i = 254;
-                repeat(248)
+                var _i = 0xFE;
+                repeat(0xF8)
                 {
                     if (keyboard_check(_i)) return _i;
                     --_i;

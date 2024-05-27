@@ -132,15 +132,15 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
     
     static __calibrate = function(_success)
     {
-        if (__type != __INPUT_MAPPING.BUTTON)
+        if ((type != __INPUT_MAPPING.BUTTON) || (gm == gp_padu) || (__gm == gp_padd) || (__gm == gp_padl) || (__gm == gp_padr))
         {
             __value   = 0.0;
             __held    = false;
             __press   = false;
             __release = false;
 
-            if ((abs(__value_delta) != 0.0) && (abs(__value_delta) != 0.5))
-            {
+            if (_success || ((__value_delta != 0.0) && (abs(__value_delta) != 0.5) && (abs(__value_delta) != 1.0)))
+            {                
                 __value_previous = 0.0;
                 __value_delta    = 0.0;
                 

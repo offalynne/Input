@@ -12,7 +12,7 @@ function __input_load_type_csv(_filename)
     buffer_delete(_buffer);
     
     var _count = 0;
-    var _row_array = __input_csv_to_array(_string, ",", "\"");
+    var _row_array = __input_csv_to_array(_string);
     
     var _y = 0;
     repeat(array_length(_row_array))

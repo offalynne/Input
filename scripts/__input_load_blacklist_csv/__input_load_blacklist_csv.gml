@@ -12,15 +12,15 @@ function __input_load_blacklist_csv(_filename)
     buffer_delete(_buffer);
     
     var _count = 0;
-    var _row_array = __input_csv_to_array(_string, ",", "\"");
+    var _row_array = __input_csv_to_array(_string);
     
     var _y = 0;
     repeat(array_length(_row_array))
     {
         var _column_array = _row_array[_y];
         
-        var _os          = string_lower(_column_array[0]);
-        var _filter_type = string_lower(_column_array[1]);
+        var _os          = _column_array[0];
+        var _filter_type = _column_array[1];
         
         var _os_struct = _global.__blacklist_dictionary[$ _os];
         if (!is_struct(_os_struct))
