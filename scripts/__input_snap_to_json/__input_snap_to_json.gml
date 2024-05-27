@@ -13,26 +13,26 @@ function __input_snap_to_json()
     var _pretty      = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : false;
     var _alphabetise = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : false;
     
-    return (new __input_snap_to_json_parser(_ds, _pretty, _alphabetise)).result;
+    return (new __input_snap_to_json_parser(_ds, _pretty, _alphabetise)).__result;
 }
 
 function __input_snap_to_json_parser(_ds, _pretty, _alphabetise) constructor
 {
-    root        = _ds;
-    pretty      = _pretty;
-    alphabetise = _alphabetise;
+    __root        = _ds;
+    __pretty      = _pretty;
+    __alphabetise = _alphabetise;
     
-    result = "";
-    buffer = buffer_create(1024, buffer_grow, 1);
-    indent = "";
+    __result = "";
+    __buffer = buffer_create(1024, buffer_grow, 1);
+    __indent = "";
     
-    static parse_struct = function(_struct)
+    static __parse_struct = function(_struct)
     {
         var _names = variable_struct_get_names(_struct);
         var _count = array_length(_names);
         var _i = 0;
         
-        if (alphabetise)
+        if (__alphabetise)
         {
             var _list = ds_list_create();
             
@@ -55,20 +55,20 @@ function __input_snap_to_json_parser(_ds, _pretty, _alphabetise) constructor
             var _i = 0;
         }
         
-        if (pretty)
+        if (__pretty)
         {
             if (_count > 0)
             {
-                buffer_write(buffer, buffer_text, "{\n");
-                indent += "    ";
+                buffer_write(__buffer, buffer_text, "{\n");
+                __indent += "    ";
                 
                 var _written = false;
                 repeat(_count)
                 {
                     var _name = _names[_i];
-                    value = variable_struct_get(_struct, _name);
+                    __value = variable_struct_get(_struct, _name);
                     
-                    if (!is_method(value))
+                    if (!is_method(__value))
                     {
                         if (is_struct(_name) || is_array(_name))
                         {
@@ -76,39 +76,39 @@ function __input_snap_to_json_parser(_ds, _pretty, _alphabetise) constructor
                             _name = string(ptr(_name));
                         }
                         
-                        buffer_write(buffer, buffer_text, indent + "\"");
-                        buffer_write(buffer, buffer_text, string(_name));
-                        buffer_write(buffer, buffer_text, "\" : ");
+                        buffer_write(__buffer, buffer_text, __indent + "\"");
+                        buffer_write(__buffer, buffer_text, string(_name));
+                        buffer_write(__buffer, buffer_text, "\" : ");
                         
-                        write_value();
+                        __write_value();
                         
-                        buffer_write(buffer, buffer_text, ",\n");
+                        buffer_write(__buffer, buffer_text, ",\n");
                         _written = true;
                     }
                     
                     ++_i;
                 }
                 
-                indent = string_copy(indent, 1, string_length(indent) - 4);
-                if (_written) buffer_seek(buffer, buffer_seek_relative, -2);
-                buffer_write(buffer, buffer_text, "\n" + indent + "}");
+                __indent = string_copy(__indent, 1, string_length(__indent) - 4);
+                if (_written) buffer_seek(__buffer, buffer_seek_relative, -2);
+                buffer_write(__buffer, buffer_text, "\n" + __indent + "}");
             }
             else
             {
-                buffer_write(buffer, buffer_text, "{}");
+                buffer_write(__buffer, buffer_text, "{}");
             }
         }
         else
         {
-            buffer_write(buffer, buffer_text, "{");
+            buffer_write(__buffer, buffer_text, "{");
             
             var _written = false;
             repeat(_count)
             {
                 var _name = _names[_i];
-                value = variable_struct_get(_struct, _name);
+                __value = variable_struct_get(_struct, _name);
                 
-                if (!is_method(value))
+                if (!is_method(__value))
                 {
                     if (is_struct(_name) || is_array(_name))
                     {
@@ -116,158 +116,158 @@ function __input_snap_to_json_parser(_ds, _pretty, _alphabetise) constructor
                         _name = string(ptr(_name));
                     }
                     
-                    buffer_write(buffer, buffer_text, "\"");
-                    buffer_write(buffer, buffer_text, string(_name));
-                    buffer_write(buffer, buffer_text, "\":");
+                    buffer_write(__buffer, buffer_text, "\"");
+                    buffer_write(__buffer, buffer_text, string(_name));
+                    buffer_write(__buffer, buffer_text, "\":");
                     
-                    write_value();
+                    __write_value();
                     
-                    buffer_write(buffer, buffer_text, ",");
+                    buffer_write(__buffer, buffer_text, ",");
                     _written = true;
                 }
                 
                 ++_i;
             }
             
-            if (_written) buffer_seek(buffer, buffer_seek_relative, -1);
-            buffer_write(buffer, buffer_text, "}");
+            if (_written) buffer_seek(__buffer, buffer_seek_relative, -1);
+            buffer_write(__buffer, buffer_text, "}");
         }
     }
     
     
     
-    static parse_array = function(_array)
+    static __parse_array = function(_array)
     {
     
         var _count = array_length(_array);
         var _i = 0;
         
-        if (pretty)
+        if (__pretty)
         {
             if (_count > 0)
             {
-                buffer_write(buffer, buffer_text, "[\n");
-                indent += "    ";
+                buffer_write(__buffer, buffer_text, "[\n");
+                __indent += "    ";
                 
                 repeat(_count)
                 {
-                    value = _array[_i];
+                    __value = _array[_i];
                     
-                    buffer_write(buffer, buffer_text, indent);
-                    write_value();
-                    buffer_write(buffer, buffer_text, ",\n");
+                    buffer_write(__buffer, buffer_text, __indent);
+                    __write_value();
+                    buffer_write(__buffer, buffer_text, ",\n");
                     
                     ++_i;
                 }
                 
-                indent = string_copy(indent, 1, string_length(indent) - 4);
-                buffer_seek(buffer, buffer_seek_relative, -2);
-                buffer_write(buffer, buffer_text, "\n" + indent + "]");
+                __indent = string_copy(__indent, 1, string_length(__indent) - 4);
+                buffer_seek(__buffer, buffer_seek_relative, -2);
+                buffer_write(__buffer, buffer_text, "\n" + __indent + "]");
             }
             else
             {
-                buffer_write(buffer, buffer_text, "[]");
+                buffer_write(__buffer, buffer_text, "[]");
             }
         }
         else
         {
-            buffer_write(buffer, buffer_text, "[");
+            buffer_write(__buffer, buffer_text, "[");
             
             repeat(_count)
             {
-                value = _array[_i];
+                __value = _array[_i];
                 
-                write_value();
-                buffer_write(buffer, buffer_text, ",");
+                __write_value();
+                buffer_write(__buffer, buffer_text, ",");
                 
                 ++_i;
             }
             
-            if (_count > 0) buffer_seek(buffer, buffer_seek_relative, -1);
-            buffer_write(buffer, buffer_text, "]");
+            if (_count > 0) buffer_seek(__buffer, buffer_seek_relative, -1);
+            buffer_write(__buffer, buffer_text, "]");
         }
     }
     
     
     
-    static write_value = function()
+    static __write_value = function()
     {
-        if (is_struct(value))
+        if (is_struct(__value))
         {
-            parse_struct(value);
+            __parse_struct(__value);
         }
-        else if (is_array(value))
+        else if (is_array(__value))
         {
-            parse_array(value);
+            __parse_array(__value);
         }
-        else if (is_string(value))
+        else if (is_string(__value))
         {
             //Sanitise strings
-            value = string_replace_all(value, "\\", "\\\\");
-            value = string_replace_all(value, "\n", "\\n");
-            value = string_replace_all(value, "\r", "\\r");
-            value = string_replace_all(value, "\t", "\\t");
-            value = string_replace_all(value, "\"", "\\\"");
+            __value = string_replace_all(__value, "\\", "\\\\");
+            __value = string_replace_all(__value, "\n", "\\n");
+            __value = string_replace_all(__value, "\r", "\\r");
+            __value = string_replace_all(__value, "\t", "\\t");
+            __value = string_replace_all(__value, "\"", "\\\"");
             
-            buffer_write(buffer, buffer_text, "\"");
-            buffer_write(buffer, buffer_text, value);
-            buffer_write(buffer, buffer_text, "\"");
+            buffer_write(__buffer, buffer_text, "\"");
+            buffer_write(__buffer, buffer_text, __value);
+            buffer_write(__buffer, buffer_text, "\"");
         }
-        else if (is_undefined(value))
+        else if (is_undefined(__value))
         {
-            buffer_write(buffer, buffer_text, "null");
+            buffer_write(__buffer, buffer_text, "null");
         }
-        else if (is_bool(value))
+        else if (is_bool(__value))
         {
-            buffer_write(buffer, buffer_text, value? "true" : "false");
+            buffer_write(__buffer, buffer_text, __value? "true" : "false");
         }
-        else if (is_real(value))
+        else if (is_real(__value))
         {
             //Strip off trailing zeroes, and if necessary, the decimal point too
-            value = string_format(value, 0, 10);
+            __value = string_format(__value, 0, 10);
             
-            var _length = string_length(value);
+            var _length = string_length(__value);
             var _i = _length;
             repeat(_length)
             {
-                if (string_char_at(value, _i) != "0") break;
+                if (string_char_at(__value, _i) != "0") break;
                 --_i;
             }
             
-            if (string_char_at(value, _i) == ".") _i--;
+            if (string_char_at(__value, _i) == ".") _i--;
             
-            value = string_delete(value, _i + 1, _length - _i);
+            __value = string_delete(__value, _i + 1, _length - _i);
             
-            buffer_write(buffer, buffer_text, value);
+            buffer_write(__buffer, buffer_text, __value);
         }
-        else if (is_method(value))
+        else if (is_method(__value))
         {
-            buffer_write(buffer, buffer_text, "null");
+            buffer_write(__buffer, buffer_text, "null");
         }
         else
         {
-            buffer_write(buffer, buffer_text, string(value));
+            buffer_write(__buffer, buffer_text, string(__value));
         }
     }
     
     
     
-    if (is_struct(root))
+    if (is_struct(__root))
     {
-        parse_struct(root);
+        __parse_struct(__root);
     }
-    else if (is_array(root))
+    else if (is_array(__root))
     {
-        parse_array(root);
+        __parse_array(__root);
     }
     else
     {
-        show_error("Value not struct or array. Returning empty string\n ", false);
+        show_error("__value not struct or array. Returning empty string\n ", false);
     }
     
     
     
-    buffer_seek(buffer, buffer_seek_start, 0);
-    result = buffer_read(buffer, buffer_string);
-    buffer_delete(buffer);
+    buffer_seek(__buffer, buffer_seek_start, 0);
+    __result = buffer_read(__buffer, buffer_string);
+    buffer_delete(__buffer);
 }

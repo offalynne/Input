@@ -14,8 +14,7 @@ function __input_csv_to_array(_csv_string)
     var _i = 0;
     repeat(array_length(_lines))
     {
-        array_push(_array, string_split(_lines[_i], ",", true));
-        
+        array_push(_array, string_split(_lines[_i], ",", true));      
         ++_i;
     }
     

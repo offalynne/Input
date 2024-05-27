@@ -81,22 +81,22 @@ function __input_class_source(_source, _gamepad = undefined) constructor
             if (__source == __INPUT_SOURCE.GAMEPAD)
             {
                 var _gamepad = __global.__gamepads[__gamepad];
-                if (!is_struct(_gamepad) || (_gamepad.mapping_gm_to_raw[$ _value] == undefined))
+                if (!is_struct(_gamepad) || (_gamepad.__mapping_gm_to_raw[$ _value] == undefined))
                 {
                     //Value not found in the mapping for the player's gamepad
                     return false;
                 }
                 
                 //Get raw value from mapping
-                var _mapping = _gamepad.mapping_gm_to_raw[$ _value];
-                var _raw = ((_mapping.raw == undefined)? _mapping.raw_negative : _mapping.raw);
+                var _mapping = _gamepad.__mapping_gm_to_raw[$ _value];
+                var _raw = ((_mapping.__raw == undefined)? _mapping.__raw_negative : _mapping.__raw);
                 if (_raw == undefined)
                 {
                     //Raw value invalid
                     return false;
                 }
                 
-                if (_gamepad.xinput && ((_raw == __XINPUT_AXIS_LT) || (_raw == __XINPUT_AXIS_RT)))
+                if (_gamepad.__xinput && ((_raw == __XINPUT_AXIS_LT) || (_raw == __XINPUT_AXIS_RT)))
                 {
                     //Except XInput trigger values from range checks
                     return true;
@@ -104,7 +104,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                 
                 if (_raw == 0)
                 {
-                    var _hat_mask = ((_mapping.hat_mask == undefined)? _mapping.hat_mask_negative : _mapping.hat_mask);        
+                    var _hat_mask = ((_mapping.__hat_mask == undefined)? _mapping.__hat_mask_negative : _mapping.__hat_mask);        
                     if (_hat_mask != undefined)
                     {
                         //Validate hat mappings
