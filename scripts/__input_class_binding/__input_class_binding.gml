@@ -123,18 +123,25 @@ function __input_class_binding() constructor
     {
         var _binding_shell = {};
         
-        if (__type                  != undefined) _binding_shell.type                = __type;
-        if (__value                 != undefined) _binding_shell.value               = __value;
-        if (__axis_negative         != undefined) _binding_shell.axis_negative       = __axis_negative;
-        if (__gamepad_description != undefined) _binding_shell.gamepad_description = __gamepad_description;
-        if (__threshold_min       != undefined) _binding_shell.threshold_min       = __threshold_min;
-        if (__threshold_max       != undefined) _binding_shell.threshold_max       = __threshold_max;
+        if (__type                != undefined) _binding_shell.__type                = __type;
+        if (__value               != undefined) _binding_shell.__value               = __value;
+        if (__axis_negative       != undefined) _binding_shell.__axis_negative       = __axis_negative;
+        if (__gamepad_description != undefined) _binding_shell.__gamepad_description = __gamepad_description;
+        if (__threshold_min       != undefined) _binding_shell.__threshold_min       = __threshold_min;
+        if (__threshold_max       != undefined) _binding_shell.__threshold_max       = __threshold_max;
         
         return _binding_shell;
     }
     
     static __import = function(_binding_shell)
     {
+        var _type_var                   = variable_struct_exists(_binding_shell, "type")                ? "type"                : "__type";
+        var _value_var                  = variable_struct_exists(_binding_shell, "value")               ? "value"               : "__value";
+        var _axis_negative_var          = variable_struct_exists(_binding_shell, "axis_negative")       ? "axis_negative"       : "__axis_negative";
+        var _gamepad_description_var    = variable_struct_exists(_binding_shell, "gamepad_description") ? "gamepad_description" : "__gamepad_description";
+        var _threshold_min_var          = variable_struct_exists(_binding_shell, "threshold_min")       ? "threshold_min"       : "__threshold_min";
+        var _threshold_max_var          = variable_struct_exists(_binding_shell, "threshold_max")       ? "threshold_max"       : "__threshold_max";
+
         if (!is_struct(_binding_shell))
         {
             __input_trace("Warning! Could not import binding, clearing this binding (typeof=", typeof(_binding_shell), ")");
@@ -147,29 +154,30 @@ function __input_class_binding() constructor
             return;
         }
         
-        if (!variable_struct_exists(_binding_shell, "type"))
+        if (!variable_struct_exists(_binding_shell, _type_var))
         {
             __input_error("Binding \"type\" not found; binding is corrupted");
             return;
         }
         
-        if (!variable_struct_exists(_binding_shell, "value")
-        && (_binding_shell.type != __INPUT_BINDING_MOUSE_WHEEL_UP)
-        && (_binding_shell.type != __INPUT_BINDING_MOUSE_WHEEL_DOWN)
-        && (_binding_shell.type != __INPUT_BINDING_VIRTUAL_BUTTON))
+        var _type = _binding_shell[$ _type_var];
+        if (!variable_struct_exists(_binding_shell, _value_var)
+        && (_type != __INPUT_BINDING_MOUSE_WHEEL_UP)
+        && (_type != __INPUT_BINDING_MOUSE_WHEEL_DOWN)
+        && (_type != __INPUT_BINDING_VIRTUAL_BUTTON))
         {
             __input_error("Binding \"value\" not found; binding is corrupted");
             return;
         }
         
-        if ((_binding_shell.type == __INPUT_BINDING_GAMEPAD_AXIS) && !variable_struct_exists(_binding_shell, "axis_negative"))
+        if ((_type == __INPUT_BINDING_GAMEPAD_AXIS) && !variable_struct_exists(_binding_shell, _axis_negative_var))
         {
             __input_error("Binding \"axis_negative\" not found; binding is corrupted");
             return;
         }
         
-        var _value = _binding_shell[$ "value"];
-        if ((_binding_shell.type == __INPUT_BINDING_GAMEPAD_AXIS) || (_binding_shell.type == __INPUT_BINDING_GAMEPAD_BUTTON))
+        var _value = _binding_shell[$ _value_var];
+        if ((_type == __INPUT_BINDING_GAMEPAD_AXIS) || (_type == __INPUT_BINDING_GAMEPAD_BUTTON))
         {
             switch(_value)
             {
@@ -183,12 +191,12 @@ function __input_class_binding() constructor
             }
         }
         
-        __type                = _binding_shell.type;
+        __type                = _type;
         __value               = _value;
-        __axis_negative       = _binding_shell[$ "axis_negative"      ];
-        __gamepad_description = _binding_shell[$ "gamepad_description"];
-        __threshold_min       = _binding_shell[$ "threshold_min"      ];
-        __threshold_max       = _binding_shell[$ "threshold_max"      ];
+        __axis_negative       = _binding_shell[$ _axis_negative_var         ];
+        __gamepad_description = _binding_shell[$ _gamepad_description_var   ];
+        __threshold_min       = _binding_shell[$ _threshold_min_var         ];
+        __threshold_max       = _binding_shell[$ _threshold_max_var         ];
         
         //If we have a gamepad description then try to match that to a connected gamepad
         if (__gamepad_description != undefined)
