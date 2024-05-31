@@ -8,9 +8,9 @@ function __input_class_binding() constructor
     
     static __set_empty = function()
     {
-        type          = undefined;
-        value         = undefined;
-        axis_negative = undefined;
+        __type          = undefined;
+        __value         = undefined;
+        __axis_negative = undefined;
         __label       = "empty binding";
         
         __gamepad_index       = undefined;
@@ -58,10 +58,14 @@ function __input_class_binding() constructor
         
         return _string;
     }
+
+    #endregion
     
+    #region Private
+
     static __source_type_get = function()
     {
-        switch(type)
+        switch(__type)
         {
             case __INPUT_BINDING_KEY:              return INPUT_KEYBOARD; break;
             case __INPUT_BINDING_MOUSE_BUTTON:     return INPUT_MOUSE;    break;
@@ -77,7 +81,7 @@ function __input_class_binding() constructor
             break;
             
             default:
-                __input_error("Unhandled binding type \"", type, "\"");
+                __input_error("Unhandled binding type \"", __type, "\"");
             break;
         }
     }
@@ -115,19 +119,13 @@ function __input_class_binding() constructor
         };
     }
     
-    #endregion
-    
-    
-    
-    #region Private
-    
     static __export = function()
     {
         var _binding_shell = {};
         
-        if (type                  != undefined) _binding_shell.type                = type;
-        if (value                 != undefined) _binding_shell.value               = value;
-        if (axis_negative         != undefined) _binding_shell.axis_negative       = axis_negative;
+        if (__type                  != undefined) _binding_shell.type                = __type;
+        if (__value                 != undefined) _binding_shell.value               = __value;
+        if (__axis_negative         != undefined) _binding_shell.axis_negative       = __axis_negative;
         if (__gamepad_description != undefined) _binding_shell.gamepad_description = __gamepad_description;
         if (__threshold_min       != undefined) _binding_shell.threshold_min       = __threshold_min;
         if (__threshold_max       != undefined) _binding_shell.threshold_max       = __threshold_max;
@@ -185,9 +183,9 @@ function __input_class_binding() constructor
             }
         }
         
-        type                  = _binding_shell.type;
-        value                 = _value;
-        axis_negative         = _binding_shell[$ "axis_negative"      ];
+        __type                = _binding_shell.type;
+        __value               = _value;
+        __axis_negative       = _binding_shell[$ "axis_negative"      ];
         __gamepad_description = _binding_shell[$ "gamepad_description"];
         __threshold_min       = _binding_shell[$ "threshold_min"      ];
         __threshold_max       = _binding_shell[$ "threshold_max"      ];
@@ -210,27 +208,27 @@ function __input_class_binding() constructor
             }
         }
         
-        __set_android_lowercase(); //This also edits .value
+        __set_android_lowercase(); //This also edits .__value
         __set_label();
     }
     
     static __set_android_lowercase = function()
     {
         //If we're on Android
-        if (__INPUT_ON_ANDROID && (type == __INPUT_BINDING_KEY))
+        if (__INPUT_ON_ANDROID && (__type == __INPUT_BINDING_KEY))
         {
             //Force binding to uppercase
-            value = ord(string_upper(chr(value)));
+            __value = ord(string_upper(chr(__value)));
             
             //Grab the keyboard character for this key and force it into lowercase
             //If the lowercase and uppercase keys are different then we'll want to check the lowercase key as well
-            var _android_lowercase = ord(string_lower(chr(value)));
-            __android_lowercase = (_android_lowercase != value)? _android_lowercase : undefined;
+            var _android_lowercase = ord(string_lower(chr(__value)));
+            __android_lowercase = (_android_lowercase != __value)? _android_lowercase : undefined;
             
             //Some Android devices and soft keyboards use carriage return for Enter, some use newline
-            if ((value == 10) || (value == 13))
+            if ((__value == 10) || (__value == 13))
             {
-                value = 10;
+                __value = 10;
                 __android_lowercase = 13;
             }
         }
@@ -240,9 +238,9 @@ function __input_class_binding() constructor
     {
         with(new __input_class_binding())
         {
-            type                  = other.type;
-            value                 = other.value;
-            axis_negative         = other.axis_negative;
+            __type                = other.__type;
+            __value               = other.__value;
+            __axis_negative       = other.__axis_negative;
             __label               = other.__label;
             __gamepad_index       = other.__gamepad_index;
             __gamepad_description = other.__gamepad_description;
@@ -296,10 +294,10 @@ function __input_class_binding() constructor
             }
         }
         
-        type  = __INPUT_BINDING_KEY;
-        value = _key;
+        __type  = __INPUT_BINDING_KEY;
+        __value = _key;
         
-        __set_android_lowercase(); //This also edits .value
+        __set_android_lowercase(); //This also edits .__value
         __set_label();
         
         return self;
@@ -307,9 +305,9 @@ function __input_class_binding() constructor
     
     static __set_gamepad_axis = function(_axis, _negative)
     {
-        type          = __INPUT_BINDING_GAMEPAD_AXIS;
-        value         = _axis;
-        axis_negative = _negative;
+        __type          = __INPUT_BINDING_GAMEPAD_AXIS;
+        __value         = _axis;
+        __axis_negative = _negative;
         
         __set_label();
         
@@ -318,8 +316,8 @@ function __input_class_binding() constructor
     
     static __set_gamepad_button = function(_button)
     {
-        type   = __INPUT_BINDING_GAMEPAD_BUTTON;
-        value  = _button;
+        __type   = __INPUT_BINDING_GAMEPAD_BUTTON;
+        __value  = _button;
         
         __set_label();
         
@@ -333,8 +331,8 @@ function __input_class_binding() constructor
             __input_error("Cannot use mb_none as a mouse button binding\nInstead please use mb_any and then invert the result");
         }
         
-        type  = __INPUT_BINDING_MOUSE_BUTTON;
-        value = _button;
+        __type  = __INPUT_BINDING_MOUSE_BUTTON;
+        __value = _button;
         
         __set_label();
         
@@ -343,7 +341,7 @@ function __input_class_binding() constructor
     
     static __set_mouse_wheel_down = function()
     {
-        type = __INPUT_BINDING_MOUSE_WHEEL_DOWN;
+        __type = __INPUT_BINDING_MOUSE_WHEEL_DOWN;
         
         __set_label();
         
@@ -352,7 +350,7 @@ function __input_class_binding() constructor
     
     static __set_mouse_wheel_up = function()
     {
-        type = __INPUT_BINDING_MOUSE_WHEEL_UP;
+        __type = __INPUT_BINDING_MOUSE_WHEEL_UP;
         
         __set_label();
         
@@ -361,7 +359,7 @@ function __input_class_binding() constructor
     
     static __set_virtual_button = function()
     {
-        type = __INPUT_BINDING_VIRTUAL_BUTTON;
+        __type = __INPUT_BINDING_VIRTUAL_BUTTON;
         
         __set_label();
         
@@ -372,7 +370,7 @@ function __input_class_binding() constructor
     {
         if (_label == undefined)
         {
-            __label = __input_binding_get_label(type, value, axis_negative);
+            __label = __input_binding_get_label(__type, __value, __axis_negative);
         }
         else
         {
@@ -384,7 +382,7 @@ function __input_class_binding() constructor
     
     static __get_source_type = function()
     {
-        switch(type)
+        switch(__type)
         {
             case __INPUT_BINDING_KEY:              return __INPUT_SOURCE.KEYBOARD; break;
             case __INPUT_BINDING_MOUSE_BUTTON:     return __INPUT_SOURCE.MOUSE;    break;
@@ -396,7 +394,7 @@ function __input_class_binding() constructor
             case undefined:                        return undefined;               break;
         }
         
-        __input_error("Binding type \"", type, "\" not recognised");
+        __input_error("Binding type \"", __type, "\" not recognised");
     }
     
     #endregion
