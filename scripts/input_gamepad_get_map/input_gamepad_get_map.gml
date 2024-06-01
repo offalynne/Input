@@ -18,12 +18,12 @@ function input_gamepad_get_map(_index)
     
     with(_gamepad)
     {
-        var _output = array_create(array_length(mapping_array), undefined);
+        var _output = array_create(array_length(__mapping_array), undefined);
         
         var _i = 0;
-        repeat(array_length(mapping_array))
+        repeat(array_length(__mapping_array))
         {
-            _output[@ _i] = mapping_array[_i].gm;
+            _output[@ _i] = __mapping_array[_i].__gm;
             ++_i;
         }
         

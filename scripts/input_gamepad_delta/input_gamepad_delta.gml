@@ -17,5 +17,5 @@ function input_gamepad_delta(_index, _gm)
     
     var _gamepad = _global.__gamepads[_index];
     if (!is_struct(_gamepad)) return false;
-    return _gamepad.get_delta(_gm);
+    return _gamepad.__get_delta(_gm);
 }

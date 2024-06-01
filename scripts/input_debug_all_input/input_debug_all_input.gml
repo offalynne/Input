@@ -95,13 +95,13 @@ function input_debug_all_input(_ignore_array = undefined, _allow_array = undefin
             if ((self == INPUT_KEYBOARD) && _global.__any_keyboard_binding_defined)
             {
                 var _j = __INPUT_KEYCODE_MIN;
-                repeat(1 + (256 - __INPUT_KEYCODE_MIN)) //Check commonly-used keys
+                repeat(1 + (0x100 - __INPUT_KEYCODE_MIN)) //Check commonly-used keys
                 {
-                    if (_j == 256)
+                    if (_j == 0x100)
                     {
                         //Instead of checking key 0xFF, check the currently pressed keyboard key (if any)
                         var _keyboard_key = __input_keyboard_key();
-                        if (_keyboard_key <= 256) break;
+                        if (_keyboard_key <= 0x100) break;
                     }
                     else
                     {

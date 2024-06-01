@@ -15,5 +15,5 @@ function input_gamepad_get_type(_index)
     
     var _gamepad = _global.__gamepads[_index];
     if (!is_struct(_gamepad)) return INPUT_GAMEPAD_TYPE_UNKNOWN;
-    return _gamepad.simple_type;
+    return _gamepad.__simple_type;
 }
