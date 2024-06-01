@@ -72,8 +72,8 @@ function __input_class_source(_source, _gamepad = undefined) constructor
     
     static __validate_binding = function(_binding)
     {
-        var _type  = _binding.type;
-        var _value = _binding.value;
+        var _type  = _binding.__type;
+        var _value = _binding.__value;
         
         if ((_type == __INPUT_BINDING_GAMEPAD_BUTTON) || (_type == __INPUT_BINDING_GAMEPAD_AXIS))
         {

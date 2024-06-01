@@ -47,7 +47,7 @@ function input_binding_get_icon(_binding, _player_index = 0)
         return _icon ?? "not a binding";
     }
     
-    var _type  = _binding.type;
+    var _type  = _binding.__type;
     var _label = _binding.__label;
     
     //If this is an empty binding...
