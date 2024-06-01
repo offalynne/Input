@@ -290,7 +290,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
                     if (input_gamepad_is_axis(_gamepad, _check))
                     {
                         var _value = input_gamepad_value(_gamepad, _check);
-                        if ((abs(_value) > input_axis_threshold_get(_check, _player_index).mini) && _filter_func(_check, _ignore_struct, _allow_struct))
+                        if ((abs(_value) > input_axis_threshold_get(_check, _player_index).__mini) && _filter_func(_check, _ignore_struct, _allow_struct))
                         {
                             if (_return_boolean) return true;
                             var _binding = input_binding_gamepad_axis(_check, (_value < 0));

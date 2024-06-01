@@ -174,7 +174,7 @@ function input_debug_player_input(_player_index = 0)
                             if (input_gamepad_is_axis(__gamepad, _check))
                             {
                                 var _value = input_gamepad_value(__gamepad, _check);
-                                if ((abs(_value) > input_axis_threshold_get(_check, _player_index).mini) && _filter_func(_check, _ignore_struct, _allow_struct))
+                                if ((abs(_value) > input_axis_threshold_get(_check, _player_index).__mini) && _filter_func(_check, _ignore_struct, _allow_struct))
                                 {
                                     var _binding = input_binding_gamepad_axis(_check, (_value < 0));
                                     if (_global.__source_mode == INPUT_SOURCE_MODE.MULTIDEVICE) _binding.__gamepad_set(__gamepad);

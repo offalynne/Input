@@ -246,8 +246,8 @@ function __input_player_tick_sources(_player)
                                         if ((_binding_threshold_min == undefined) || (_binding_threshold_max == undefined))
                                         {
                                             var _threshold_struct = __axis_threshold_get(_binding.__value);
-                                            _binding_threshold_min = _threshold_struct.mini;
-                                            _binding_threshold_max = _threshold_struct.maxi;
+                                            _binding_threshold_min = _threshold_struct.__mini;
+                                            _binding_threshold_max = _threshold_struct.__maxi;
                                         }
                                         
                                         //Correct the raw value's sign if needed
