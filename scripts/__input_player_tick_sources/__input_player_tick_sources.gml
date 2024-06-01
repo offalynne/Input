@@ -76,10 +76,10 @@ function __input_player_tick_sources(_player)
                             repeat(INPUT_MAX_ALTERNATE_BINDINGS)
                             {
                                 var _binding = _alternate_array[_alternate];
-                                switch(_binding.type)
+                                switch(_binding.__type)
                                 {
                                     case __INPUT_BINDING_KEY:
-                                        if (keyboard_check(_binding.value))
+                                        if (keyboard_check(_binding.__value))
                                         {
                                             _value        = 1.0;
                                             _raw          = 1.0;
@@ -107,7 +107,7 @@ function __input_player_tick_sources(_player)
                                     case __INPUT_BINDING_MOUSE_BUTTON:
                                         if (!INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER) __input_error("Binding unsupported\nplayer index = ", _player.__index, "\nprofile = ", _player.__profile_name, "\nsource = ", _source_struct, "\nverb = ", _verb_name, "\nalt = ", _alternate, "\nbinding = ", _binding);
                                         
-                                        if (input_mouse_check(_binding.value))
+                                        if (input_mouse_check(_binding.__value))
                                         {
                                             _value        = 1.0;
                                             _raw          = 1.0;
@@ -157,10 +157,10 @@ function __input_player_tick_sources(_player)
                             repeat(INPUT_MAX_ALTERNATE_BINDINGS)
                             {
                                 var _binding = _alternate_array[_alternate];
-                                switch(_binding.type)
+                                switch(_binding.__type)
                                 {
                                     case __INPUT_BINDING_MOUSE_BUTTON:
-                                        if (input_mouse_check(_binding.value))
+                                        if (input_mouse_check(_binding.__value))
                                         {
                                             _value        = 1.0;
                                             _raw          = 1.0;
@@ -223,10 +223,10 @@ function __input_player_tick_sources(_player)
                                 //If we're in multidevice mode, break out of this binding if it doesn't match this gamepad
                                 if (_is_multidevice_player && (_binding.__gamepad_index != undefined) && (_source_gamepad != _binding.__gamepad_index)) continue;
                                 
-                                switch(_binding.type)
+                                switch(_binding.__type)
                                 {
                                     case __INPUT_BINDING_GAMEPAD_BUTTON:
-                                        if (_global.__gamepads[_source_gamepad].__get_held(_binding.value))
+                                        if (_global.__gamepads[_source_gamepad].get_held(_binding.__value))
                                         {
                                             _value        = 1.0;
                                             _raw          = 1.0;
@@ -238,20 +238,20 @@ function __input_player_tick_sources(_player)
                                     case __INPUT_BINDING_GAMEPAD_AXIS:
                                         //Grab the raw value directly from the gamepad
                                         //We keep a hold of this value for use in 2D checkers
-                                        var _found_raw = _global.__gamepads[_source_gamepad].__get_value(_binding.value);
+                                        var _found_raw = _global.__gamepads[_source_gamepad].get_value(_binding.__value);
                                         
                                         var _binding_threshold_min = _binding.__threshold_min;
                                         var _binding_threshold_max = _binding.__threshold_max;
                                         
                                         if ((_binding_threshold_min == undefined) || (_binding_threshold_max == undefined))
                                         {
-                                            var _threshold_struct = __axis_threshold_get(_binding.value);
+                                            var _threshold_struct = __axis_threshold_get(_binding.__value);
                                             _binding_threshold_min = _threshold_struct.mini;
                                             _binding_threshold_max = _threshold_struct.maxi;
                                         }
                                         
                                         //Correct the raw value's sign if needed
-                                        if (_binding.axis_negative) _found_raw = -_found_raw;
+                                        if (_binding.__axis_negative) _found_raw = -_found_raw;
                                         
                                         //The return value from this binding needs to be corrected using the thresholds previously defined
                                         var _found_value = _found_raw;
