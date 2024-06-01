@@ -1064,7 +1064,7 @@ function __input_class_player() constructor
         
         if (_profile_name == undefined)
         {
-            __input_trace("Warning! Cannot get invalid bindings, profile was <undefined>");
+            __input_trace("Warning! Cannot get invaliid bindings, profile was <undefined>");
             return _output;
         }
         
@@ -1087,7 +1087,7 @@ function __input_class_player() constructor
                     {
                         if (is_struct(_alternate_array[_a]))
                         {
-                            var _verb_input = _alternate_array[_a].__value;
+                            var _verb_input = _alternate_array[_a].value;
                             
                             var _found = false;
                             var _m = 0;
