@@ -29,6 +29,10 @@ function __input_class_gamepad(_index) constructor
     __custom_mapping      = false;
     __mac_cleared_mapping = false;
     
+    __mapping             = gamepad_get_mapping(_index);
+    __custom_mapping      = false;
+    __mac_cleared_mapping = false;
+    
     __xinput_trigger_range = 1;
     __stadia_trigger_test  = false;
     __axis_calibrated      = false;

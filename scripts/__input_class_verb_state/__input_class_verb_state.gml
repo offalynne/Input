@@ -3,49 +3,49 @@ function __input_class_verb_state() constructor
 {
     __INPUT_GLOBAL_STATIC_VARIABLE  //Set static __global
     
-    name = undefined;
-    type = undefined;
+    __name = undefined;
+    __type = undefined;
     __player = undefined;
     
     __inactive       = false;
     __group_inactive = false;
     __consumed       = false;
     
-    previous_value = 0.0;
-    previous_raw_analogue = false;
+    __previous_value = 0.0;
+    __previous_raw_analogue = false;
     
-    value          = 0.0;
-    raw            = 0.0;
+    __value          = 0.0;
+    __raw            = 0.0;
     __max_value    = 0.0;
     
-    analogue       = false;
-    raw_analogue   = false;
-    min_threshold  = 0;
-    max_threshold  = 1;
-    force_value    = undefined;
-    force_analogue = undefined;
+    __analogue       = false;
+    __raw_analogue   = false;
+    __min_threshold  = 0;
+    __max_threshold  = 1;
+    __force_value    = undefined;
+    __force_analogue = undefined;
     
-    previous_held = false;
-    press         = false;
-    held          = false;
-    release       = false;
-    press_time    = -1;
-    held_time     = -1;
-    release_time  = -1;
+    __previous_held = false;
+    __press         = false;
+    __held          = false;
+    __release       = false;
+    __press_time    = -1;
+    __held_time     = -1;
+    __release_time  = -1;
     
-    double_press        = false;
-    double_held         = false;
-    double_release      = false;
-    double_press_time   = -1;
-    double_held_time    = -1;
-    double_release_time = -1;
+    __double_press        = false;
+    __double_held         = false;
+    __double_release      = false;
+    __double_press_time   = -1;
+    __double_held_time    = -1;
+    __double_release_time = -1;
     
-    long_press        = false;
-    long_held         = false;
-    long_release      = false;
-    long_press_time   = -1;
-    long_held_time    = -1;
-    long_release_time = -1;
+    __long_press        = false;
+    __long_held         = false;
+    __long_release      = false;
+    __long_press_time   = -1;
+    __long_held_time    = -1;
+    __long_release_time = -1;
     
     __quick_press      = false;
     __quick_press_time = -1;
@@ -67,21 +67,21 @@ function __input_class_verb_state() constructor
     
     static __clear = function()
     {
-        previous_value = value;
-        previous_raw_analogue = raw_analogue;
+        __previous_value = __value;
+        __previous_raw_analogue = __raw_analogue;
         
-        value = 0.0;
-        raw   = 0.0;
+        __value = 0.0;
+        __raw   = 0.0;
         
-        press   = false;
-        held    = false;
-        release = false;
+        __press   = false;
+        __held    = false;
+        __release = false;
         
-        double_press   = false;
-        double_release = false;
+        __double_press   = false;
+        __double_release = false;
         
-        long_press   = false;
-        long_release = false;
+        __long_press   = false;
+        __long_release = false;
         
         __quick_press = false;
         
@@ -90,112 +90,112 @@ function __input_class_verb_state() constructor
         __toggle_value = 0.0;
     }
     
-    static tick = function(_verb_group_state_dict, _player_active)
+    static __tick = function(_verb_group_state_dict, _player_active)
     {
         var _time = __input_get_time();
         var _reset_history_array = false;
         
-        __toggle_value = value;
+        __toggle_value = __value;
         
-        if (__global.__toggle_momentary_state && (type == __INPUT_VERB_TYPE.__BASIC) && variable_struct_exists(__global.__toggle_momentary_dict, name))
+        if (__global.__toggle_momentary_state && (__type == __INPUT_VERB_TYPE.__BASIC) && variable_struct_exists(__global.__toggle_momentary_dict, __name))
         {
             //Catch the leading edge to toggle the verb
             if ((__toggle_prev_value < 0.1) && (__toggle_value > 0.1)) __toggle_state = !__toggle_state;
             
             //Overwrite the values we expose to the player with the toggle state
-            value = __toggle_state;
-            raw   = __toggle_state;
+            __value = __toggle_state;
+            __raw   = __toggle_state;
         }
         
-        if (__global.__cooldown_state && (type == __INPUT_VERB_TYPE.__BASIC) && variable_struct_exists(__global.__cooldown_dict, name))
+        if (__global.__cooldown_state && (__type == __INPUT_VERB_TYPE.__BASIC) && variable_struct_exists(__global.__cooldown_dict, __name))
         {
-            if (_time < release_time + (INPUT_TIMER_MILLISECONDS? __INPUT_RATE_LIMIT_DURATION : ((__INPUT_RATE_LIMIT_DURATION/1000)*game_get_speed(gamespeed_fps))))
+            if (_time < __release_time + (INPUT_TIMER_MILLISECONDS? __INPUT_RATE_LIMIT_DURATION : ((__INPUT_RATE_LIMIT_DURATION/1000)*game_get_speed(gamespeed_fps))))
             {
-                value = 0;
-                raw   = 0;
+                __value = 0;
+                __raw   = 0;
             }
         }
         
-        if (value > 0)
+        if (__value > 0)
         {
-            if (previous_value < value)
+            if (__previous_value < __value)
             {
                 __player.__last_input_time = __global.__current_time;
             }
             
-            held      = true;
-            held_time = _time;
+            __held      = true;
+            __held_time = _time;
             
             //Update the max value
-            __max_value = max(__max_value, value);
+            __max_value = max(__max_value, __value);
         }
         
-        if (previous_held != held)
+        if (__previous_held != __held)
         {
-            if (held)
+            if (__held)
             {
-                if (__INPUT_DEBUG && __consumed) __input_trace("Un-consuming verb \"", name, "\"");
+                if (__INPUT_DEBUG && __consumed) __input_trace("Un-consuming verb \"", __name, "\"");
                 __consumed = false;
                 
-                if (_time - press_time < INPUT_DOUBLE_DELAY)
+                if (_time - __press_time < INPUT_DOUBLE_DELAY)
                 {
-                    double_press      = true;
-                    double_press_time = _time;
+                    __double_press      = true;
+                    __double_press_time = _time;
                     
-                    double_held      = true;
-                    double_held_time = _time;
+                    __double_held      = true;
+                    __double_held_time = _time;
                 }
                 
-                press      = true;
-                press_time = _time;
+                __press      = true;
+                __press_time = _time;
             }
             else
             {
-                release      = true;
-                release_time = _time;
+                __release      = true;
+                __release_time = _time;
                 
                 //Reset the max value
                 __max_value = 0;
                 
-                if (double_held)
+                if (__double_held)
                 {
-                    double_held = false;
+                    __double_held = false;
                     
-                    double_release      = true;
-                    double_release_time = _time;
+                    __double_release      = true;
+                    __double_release_time = _time;
                 }
             }
         }
         
-        if (held)
+        if (__held)
         {
-            if (_time - press_time > INPUT_LONG_DELAY)
+            if (_time - __press_time > INPUT_LONG_DELAY)
             {
-                if (!long_held)
+                if (!__long_held)
                 {
-                    long_press      = true;
-                    long_press_time = _time;
+                    __long_press      = true;
+                    __long_press_time = _time;
                 }
                 
-                long_held      = true;
-                long_held_time = _time;
+                __long_held      = true;
+                __long_held_time = _time;
             }
         }
         else
         {
-            if (long_held)
+            if (__long_held)
             {
-                long_release      = true;
-                long_release_time = _time;
+                __long_release      = true;
+                __long_release_time = _time;
             }
             
-            long_held = false;
+            __long_held = false;
         }
         
-        previous_held = held;
+        __previous_held = __held;
         
-        if (double_held) double_held_time = _time;
-        if (long_held) long_held_time = _time;
+        if (__double_held) __double_held_time = _time;
+        if (__long_held) __long_held_time = _time;
         
         var _inactive = (__group_inactive || __consumed || !_player_active);
         if (_inactive && !__inactive)
@@ -206,19 +206,19 @@ function __input_class_verb_state() constructor
         else
         {
             //Not inactive, update our raw history array if we're using analogue input
-            if (raw_analogue)
+            if (__raw_analogue)
             {
-                array_insert(__raw_history_array, 0, raw);
+                array_insert(__raw_history_array, 0, __raw);
                 array_pop(__raw_history_array);
                 
                 //Check for the quick tap only on the frame that we cross the max threshold
-                if ((previous_value < max_threshold) && (value >= max_threshold))
+                if ((__previous_value < __max_threshold) && (__value >= __max_threshold))
                 {
                     var _i = 1;
                     repeat(INPUT_QUICK_BUFFER)
                     {
                         //We've performed a quick tap if we've gone from the min to max threshold in INPUT_QUICK_BUFFER frames (or less)
-                        if (__raw_history_array[_i] <= min_threshold)
+                        if (__raw_history_array[_i] <= __min_threshold)
                         {
                             __quick_press      = true;
                             __quick_press_time = _time;
@@ -229,7 +229,7 @@ function __input_class_verb_state() constructor
                     }
                 }
             }
-            else if (raw_analogue != previous_raw_analogue)
+            else if (__raw_analogue != __previous_raw_analogue)
             {
                 //Newly non-analogue, better reset the raw history array
                 _reset_history_array = true;

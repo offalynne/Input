@@ -23,5 +23,5 @@ function input_is_analogue(_verb, _player_index = 0)
     
     __INPUT_GET_VERB_STRUCT
     
-    return _verb_struct.analogue;
+    return _verb_struct.__analogue;
 }

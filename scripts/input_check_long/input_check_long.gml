@@ -30,10 +30,10 @@ function input_check_long(_verb, _player_index = 0, _buffer_duration = 0)
     
     if (_buffer_duration <= 0)
     {
-        return _verb_struct.long_held;
+        return _verb_struct.__long_held;
     }
     else
     {
-        return ((_verb_struct.long_held_time >= 0) && ((__input_get_time() - _verb_struct.long_held_time) <= _buffer_duration));
+        return ((_verb_struct.__long_held_time >= 0) && ((__input_get_time() - _verb_struct.__long_held_time) <= _buffer_duration));
     }
 }
