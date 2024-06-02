@@ -998,8 +998,8 @@ function __input_class_player() constructor
             __axis_thresholds_dict[$ _axis_name] = _axis_struct;
         }
         
-        _axis_struct.mini = _min
-        _axis_struct.maxi = _max;
+        _axis_struct.__mini = _min
+        _axis_struct.__maxi = _max;
         
         if (__INPUT_DEBUG_BINDING) __input_trace("Axis threshold for axis \"", _axis_name, "\" set to ", _min, " -> ", _max);
         
@@ -1153,18 +1153,18 @@ function __input_class_player() constructor
             var _thresholds_struct = __axis_thresholds_dict[$ _axis_name];
             
             _new_axis_thresholds_dict[$ _axis_name] = {
-                mini: _thresholds_struct.mini,
-                maxi: _thresholds_struct.maxi,
+                __mini: _thresholds_struct.__mini,
+                __maxi: _thresholds_struct.__maxi,
             };
             
             ++_a;
         }
         
         //Copy gyro parameters
-        _new_gyro_params.axis_x        = __gyro_axis_x;
-        _new_gyro_params.axis_y        = __gyro_axis_y;
-        _new_gyro_params.sensitivity_x = __gyro_sensitivity_x;
-        _new_gyro_params.sensitivity_y = __gyro_sensitivity_y;
+        _new_gyro_params.__axis_x        = __gyro_axis_x;
+        _new_gyro_params.__axis_y        = __gyro_axis_y;
+        _new_gyro_params.__sensitivity_x = __gyro_sensitivity_x;
+        _new_gyro_params.__sensitivity_y = __gyro_sensitivity_y;
         
         if (_output_string)
         {
@@ -1256,10 +1256,10 @@ function __input_class_player() constructor
                 return;
             }
             
-            __gyro_axis_x        = _json.gyro.axis_x;
-            __gyro_axis_y        = _json.gyro.axis_y;
-            __gyro_sensitivity_x = _json.gyro.sensitivity_x;
-            __gyro_sensitivity_y = _json.gyro.sensitivity_y;
+            __gyro_axis_x        = _json.gyro.__axis_x;
+            __gyro_axis_y        = _json.gyro.__axis_y;
+            __gyro_sensitivity_x = _json.gyro.__sensitivity_x;
+            __gyro_sensitivity_y = _json.gyro.__sensitivity_y;
         }
         else
         {
