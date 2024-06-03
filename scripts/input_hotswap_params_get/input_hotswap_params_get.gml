@@ -6,6 +6,6 @@ function input_hotswap_params_get()
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
     static _result = {};
-    _result.callback = _global.__hotswap_callback;
+    _result.__callback = _global.__hotswap_callback;
     return _result;
 }

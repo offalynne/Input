@@ -1366,7 +1366,7 @@ function __input_gamepad_set_mapping()
                 {
                     //Check mapping match (b11 - b14)
                     _mapping = __mapping_gm_to_raw[$ _dpad_array[_matched]];
-                    if (!is_struct(_mapping) || (_mapping[$ "raw"] != 11 + _matched)) break;
+                    if (!is_struct(_mapping) || (_mapping[$ "__raw"] != 11 + _matched)) break;
                     ++_matched;
                 }
             

@@ -459,17 +459,17 @@ function __input_initialize()
     //Two structs that are returned by input_players_get_status() and input_gamepads_get_status()
     //These are "static" structs that are reset and populated by __input_system_tick()
     _global.__players_status = {
-        any_changed: false,
-        new_connections: [],
-        new_disconnections: [],
-        players: array_create(INPUT_MAX_PLAYERS, INPUT_STATUS.DISCONNECTED),
+        __any_changed: false,
+        __new_connections: [],
+        __new_disconnections: [],
+        __players: array_create(INPUT_MAX_PLAYERS, INPUT_STATUS.DISCONNECTED),
     }
     
     _global.__gamepads_status = {
-        any_changed: false,
-        new_connections: [],
-        new_disconnections: [],
-        gamepads: array_create(_max_gamepads, INPUT_STATUS.DISCONNECTED),
+        __any_changed: false,
+        __new_connections: [],
+        __new_disconnections: [],
+        __gamepads: array_create(_max_gamepads, INPUT_STATUS.DISCONNECTED),
     }
     
     //The default player. This player struct holds default binding data

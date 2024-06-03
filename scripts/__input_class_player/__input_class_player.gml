@@ -285,7 +285,7 @@ function __input_class_player() constructor
         
         if (!is_struct(_json) && !is_array(_json))
         {
-            __input_error("Input must be valid JSON (typeof=", _string, ")");
+            __input_error("Input must be valid JSON (typeof=", typeof(_string), ")");
             return;
         }
         
@@ -1125,13 +1125,13 @@ function __input_class_player() constructor
         var _new_gyro_params          = {};
     
         var _root_json = {
-            profiles:                _new_profiles_dict,
-            axis_thresholds:         _new_axis_thresholds_dict,
-            gyro:                    _new_gyro_params,
-            gamepad_type_override:   __gamepad_type_override,
-            vibration_strength:      __vibration_strength,     
-            trigger_effect_strength: __trigger_effect_strength,
-            cursor_inverted:         __cursor_inverted,
+            __profiles:                _new_profiles_dict,
+            __axis_thresholds:         _new_axis_thresholds_dict,
+            __gyro:                    _new_gyro_params,
+            __gamepad_type_override:   __gamepad_type_override,
+            __vibration_strength:      __vibration_strength,     
+            __trigger_effect_strength: __trigger_effect_strength,
+            __cursor_inverted:         __cursor_inverted,
         };
         
         //Copy profiles
@@ -1202,30 +1202,30 @@ function __input_class_player() constructor
         }
         
         //Iterate over every profile in the JSON
-        if (!is_struct(_json[$ "profiles"]))
+        if (!is_struct(_json[$ "__profiles"]))
         {
             __input_error("Player ", __index, " profiles are corrupted");
             return;
         }
         
-        var _profiles_dict = _json.profiles;
+        var _profiles_dict = _json.__profiles;
         var _profile_name_array = variable_struct_get_names(_profiles_dict);
         var _f = 0;
         repeat(array_length(_profile_name_array))
         {
             var _profile_name = _profile_name_array[_f];
-            __profile_import(_json.profiles[$ _profile_name], _profile_name);
+            __profile_import(_json.__profiles[$ _profile_name], _profile_name);
             ++_f;
         }
         
         //Copy axis threshold data
-        if (!is_struct(_json[$ "axis_thresholds"]))
+        if (!is_struct(_json[$ "__axis_thresholds"]))
         {
             __input_error("Player ", __index, " gamepad axis thresholds are corrupted");
             return;
         }
         
-        var _axis_thresholds_dict = _json.axis_thresholds;
+        var _axis_thresholds_dict = _json.__axis_thresholds;
         var _axis_name_array = variable_struct_get_names(_axis_thresholds_dict);
         var _a = 0;
         repeat(array_length(_axis_name_array))
@@ -1240,26 +1240,26 @@ function __input_class_player() constructor
             }
             
             __axis_thresholds_dict[$ _axis_name] = {
-                mini: _new_thresholds_struct.mini,
-                maxi: _new_thresholds_struct.maxi,
+                __mini: _new_thresholds_struct.__mini,
+                __maxi: _new_thresholds_struct.__maxi,
             };
             
             ++_a;
         }
         
         //Copy gyro data
-        if (variable_struct_exists(_json, "gyro"))
+        if (variable_struct_exists(_json, "__gyro"))
         {
-            if (!is_struct(_json.gyro))
+            if (!is_struct(_json.__gyro))
             {
                 __input_error("Player ", __index, " gyro parameters are corrupted");
                 return;
             }
             
-            __gyro_axis_x        = _json.gyro.__axis_x;
-            __gyro_axis_y        = _json.gyro.__axis_y;
-            __gyro_sensitivity_x = _json.gyro.__sensitivity_x;
-            __gyro_sensitivity_y = _json.gyro.__sensitivity_y;
+            __gyro_axis_x        = _json.__gyro.__axis_x;
+            __gyro_axis_y        = _json.__gyro.__axis_y;
+            __gyro_sensitivity_x = _json.__gyro.__sensitivity_x;
+            __gyro_sensitivity_y = _json.__gyro.__sensitivity_y;
         }
         else
         {
@@ -1270,10 +1270,10 @@ function __input_class_player() constructor
             __gyro_sensitivity_y = INPUT_GYRO_DEFAULT_SENSITIVITY_Y;
         }
         
-        if (variable_struct_exists(_json, "gamepad_type_override"))
+        if (variable_struct_exists(_json, "__gamepad_type_override"))
         {
             //Coalesce JSON null pointer as undefined
-            var _gamepad_type_override = _json.gamepad_type_override ?? undefined;
+            var _gamepad_type_override = _json.__gamepad_type_override ?? undefined;
             
             if (!is_string(_gamepad_type_override) && !is_undefined(_gamepad_type_override))
             {
@@ -1289,15 +1289,15 @@ function __input_class_player() constructor
             __gamepad_type_override = undefined;
         }
         
-        if (variable_struct_exists(_json, "vibration_strength"))
+        if (variable_struct_exists(_json, "__vibration_strength"))
         {
-            if (!is_numeric(_json.vibration_strength))
+            if (!is_numeric(_json.__vibration_strength))
             {
                 __input_error("Player ", __index, " vibration strength is corrupted");
                 return;
             }
             
-            __vibration_strength = _json.vibration_strength;
+            __vibration_strength = _json.__vibration_strength;
         }
         else
         {
@@ -1305,7 +1305,7 @@ function __input_class_player() constructor
             __vibration_strength = INPUT_VIBRATION_DEFAULT_STRENGTH;
         }
         
-        if (variable_struct_exists(_json, "trigger_effect_strength"))
+        if (variable_struct_exists(_json, "__trigger_effect_strength"))
         {
             if (!is_numeric(__trigger_effect_strength))
             {
@@ -1321,7 +1321,7 @@ function __input_class_player() constructor
             __vibration_strength = INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH;
         }
         
-        if (variable_struct_exists(_json, "cursor_inverted"))
+        if (variable_struct_exists(_json, "__cursor_inverted"))
         {
             if (!is_bool(__cursor_inverted))
             {
@@ -1437,13 +1437,13 @@ function __input_class_player() constructor
             static __mixed_motion = {};
             with  (__mixed_motion)
             {
-                acceleration_x = 0.0;
-                acceleration_y = 0.0;
-                acceleration_z = 0.0;
+                __acceleration_x = 0.0;
+                __acceleration_y = 0.0;
+                __acceleration_z = 0.0;
 
-                angular_velocity_x = 0.0;
-                angular_velocity_y = 0.0;
-                angular_velocity_z = 0.0;
+                __angular_velocity_x = 0.0;
+                __angular_velocity_y = 0.0;
+                __angular_velocity_z = 0.0;
             }
     
             var _source_motion = undefined;
@@ -1469,7 +1469,7 @@ function __input_class_player() constructor
                 ++_gamepad;
             }
     
-            if not (_using_motion) __mixed_motion.acceleration_y = -1.0;
+            if not (_using_motion) __mixed_motion.__acceleration_y = -1.0;
             return __mixed_motion;
         }
     
@@ -1546,7 +1546,7 @@ function __input_class_player() constructor
     
     #region Tick functions
     
-    static tick = function()
+    static __tick = function()
     {
         //Update our "connected" variable
         if (__ghost)
@@ -1590,12 +1590,12 @@ function __input_class_player() constructor
             __input_player_tick_sources(self);
             
             //Update our basic verbs first
-            tick_basic_verbs();
+            __tick_basic_verbs();
             
             //Update our chords and combos
             //We directly access verb values to detect state here
-            tick_chord_verbs();
-            tick_combo_verbs();
+            __tick_chord_verbs();
+            __tick_combo_verbs();
             
             __cursor.__tick();
             
@@ -1605,7 +1605,7 @@ function __input_class_player() constructor
         }
     }
     
-    static tick_basic_verbs = function()
+    static __tick_basic_verbs = function()
     {
         var _v = 0;
         repeat(array_length(__global.__basic_verb_array))
@@ -1615,7 +1615,7 @@ function __input_class_player() constructor
         }
     }
     
-    static tick_chord_verbs = function()
+    static __tick_chord_verbs = function()
     {
         var _i = 0;
         repeat(array_length(__global.__chord_verb_array))
@@ -1639,7 +1639,7 @@ function __input_class_player() constructor
         }
     }
     
-    static tick_combo_verbs = function()
+    static __tick_combo_verbs = function()
     {
         var _i = 0;
         repeat(array_length(__global.__combo_verb_array))

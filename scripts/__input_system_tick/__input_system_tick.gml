@@ -635,7 +635,7 @@ function __input_system_tick()
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
     {
-        _global.__players[_p].tick();
+        _global.__players[_p].__tick();
         ++_p;
     }
     
@@ -647,9 +647,9 @@ function __input_system_tick()
     
     var _any_players_changed = false;
     
-    var _connection_array    = _global.__players_status.new_connections;
-    var _disconnection_array = _global.__players_status.new_disconnections;
-    var _status_array        = _global.__players_status.players;
+    var _connection_array    = _global.__players_status.__new_connections;
+    var _disconnection_array = _global.__players_status.__new_disconnections;
+    var _status_array        = _global.__players_status.__players;
     
     array_resize(_connection_array,    0);
     array_resize(_disconnection_array, 0);
@@ -665,7 +665,7 @@ function __input_system_tick()
             {
                 _any_players_changed = true;
                 _status_array[@ _p] = INPUT_STATUS.NEWLY_CONNECTED;
-                array_push(_global.__players_status.new_connections, _p);
+                array_push(_global.__players_status.__new_connections, _p);
             }
             else
             {
@@ -678,7 +678,7 @@ function __input_system_tick()
             {
                 _any_players_changed = true;
                 _status_array[@ _p] = INPUT_STATUS.NEWLY_DISCONNECTED;
-                array_push(_global.__players_status.new_disconnections, _p);
+                array_push(_global.__players_status.__new_disconnections, _p);
             }
             else
             {
@@ -689,7 +689,7 @@ function __input_system_tick()
         ++_p;
     }
     
-    _global.__players_status.any_changed = _any_players_changed;
+    _global.__players_status.__any_changed = _any_players_changed;
     
     #endregion
     
@@ -699,9 +699,9 @@ function __input_system_tick()
     
     var _any_gamepads_changed = false;
     
-    var _connection_array    = _global.__gamepads_status.new_connections;
-    var _disconnection_array = _global.__gamepads_status.new_disconnections;
-    var _status_array        = _global.__gamepads_status.gamepads;
+    var _connection_array    = _global.__gamepads_status.__new_connections;
+    var _disconnection_array = _global.__gamepads_status.__new_disconnections;
+    var _status_array        = _global.__gamepads_status.__gamepads;
     
     array_resize(_connection_array,    0);
     array_resize(_disconnection_array, 0);
@@ -751,7 +751,7 @@ function __input_system_tick()
         ++_g;
     }
     
-    _global.__gamepads_status.any_changed = _any_gamepads_changed;
+    _global.__gamepads_status.__any_changed = _any_gamepads_changed;
     
     #endregion
     
