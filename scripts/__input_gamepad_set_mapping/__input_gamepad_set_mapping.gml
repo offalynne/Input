@@ -883,7 +883,7 @@ function __input_gamepad_set_mapping()
     
         case os_linux:
 
-            #region Steam Deck controller Linux driver
+            #region Steam Deck controller HID driver
 
             if (__guid == "03000000de2800000512000010010000")
             {
@@ -928,7 +928,7 @@ function __input_gamepad_set_mapping()
 
             #endregion
 
-            #region XInput catch-all
+            #region Xbox driver catch-all
 
             if (__description == "Generic X-Box pad")
             {
