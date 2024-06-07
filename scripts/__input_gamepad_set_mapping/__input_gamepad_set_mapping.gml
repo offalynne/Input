@@ -879,9 +879,12 @@ function __input_gamepad_set_mapping()
         #endregion
 
     
-        #region Steam Deck controller Linux driver
+        #region Linux overrides
     
         case os_linux:
+
+            #region Steam Deck controller Linux driver
+
             if (__guid == "03000000de2800000512000010010000")
             {
                 //HID driver kicks in when running without Steam, some axes differ from the SDL mapping
@@ -922,6 +925,44 @@ function __input_gamepad_set_mapping()
         
                 return;        
             }
+
+            #endregion
+
+            #region XInput catch-all
+
+            if (__description == "Generic X-Box pad")
+            {
+                __set_mapping(gp_face1, 0, __INPUT_MAPPING.BUTTON, "a");
+                __set_mapping(gp_face2, 1, __INPUT_MAPPING.BUTTON, "b");
+                __set_mapping(gp_face3, 2, __INPUT_MAPPING.BUTTON, "x");
+                __set_mapping(gp_face4, 3, __INPUT_MAPPING.BUTTON, "y");
+            
+                __set_mapping(gp_shoulderl, 4, __INPUT_MAPPING.BUTTON, "leftshoulder");
+                __set_mapping(gp_shoulderr, 5, __INPUT_MAPPING.BUTTON, "rightshoulder");
+            
+                __set_mapping(gp_back,  6, __INPUT_MAPPING.BUTTON, "back");
+                __set_mapping(gp_start, 7, __INPUT_MAPPING.BUTTON, "start");
+                __set_mapping(gp_guide, 8, __INPUT_MAPPING.BUTTON, "guide");
+            
+                __set_mapping(gp_stickl,  9, __INPUT_MAPPING.BUTTON, "leftstick");
+                __set_mapping(gp_stickr, 10, __INPUT_MAPPING.BUTTON, "rightstick");    
+            
+                __set_mapping(gp_shoulderlb, 2, __INPUT_MAPPING.AXIS, "lefttrigger");
+                __set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.AXIS, "righttrigger");
+            
+                __set_mapping(gp_axislh, 0, __INPUT_MAPPING.AXIS, "leftx");
+                __set_mapping(gp_axislv, 1, __INPUT_MAPPING.AXIS, "lefty");
+            
+                __set_mapping(gp_axisrh, 3, __INPUT_MAPPING.AXIS, "rightx");
+                __set_mapping(gp_axisrv, 4, __INPUT_MAPPING.AXIS, "righty");
+            
+                __set_dpad_hat_mapping();
+            
+                return;
+            }
+
+            #endregion
+
         break;
     
         #endregion
