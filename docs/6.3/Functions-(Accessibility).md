@@ -2,6 +2,8 @@
 
 &nbsp;
 
+## References
+
 - [Game Accessibility Guidelines](https://gameaccessibilityguidelines.com/) from a panel of contributors, including [OneSwich](https://www.oneswitch.org.uk/)
 - [Xbox Accessibility Guidelines for Input](https://docs.microsoft.com/en-us/gaming/accessibility/xbox-accessibility-guidelines/107) from Microsoft
 - [DevKit Accessibility Resource](https://specialeffectdevkit.info/input/) from [SpecialEffect](https://www.specialeffect.org.uk/)
@@ -16,7 +18,7 @@
 
 #### **Description**
 
-**Returns:** A struct with two member variables, `mini` and `maxi`, containing the minimum and maximum thresholds
+**Returns:** A struct with two member variables, `__mini` and `__maxi`, containing the minimum and maximum thresholds
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -49,7 +51,7 @@ switch(sensitivity_mode)
 
 #### **Description**
 
-**Returns:** A struct with two member variables, `.mini` and `.maxi`, containing the minimum and maximum thresholds
+**Returns:** A struct with two member variables, `.__mini` and `.__maxi`, containing the minimum and maximum thresholds
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -66,8 +68,8 @@ var _threshold = input_axis_threshold_get(gp_axislh);
 
 //Draw a representation of the thresholds
 //We use two different radii so the two circles never overlap
-draw_circle(x, y, 110*_threshold.mini, true);
-draw_circle(x, y, 120*_threshold.maxi, true);
+draw_circle(x, y, 110*_threshold.__mini, true);
+draw_circle(x, y, 120*_threshold.__maxi, true);
 ```
 
 <!-- tabs:end -->
