@@ -98,8 +98,6 @@ Calling the `.add()` method on the struct returned by this function allows you t
 
 The `gamepadType` value should be an Input [gamepad type constant](Library-Constants?id=gamepad-types).
 
-?> Setting `INPUT_GAMEPAD_EXTENDED_TYPES` in the `__input_config_gamepads()` configuration to `true` will add the following gamepad types which can be referenced by string: `"steam deck"`, `"steam controller"`, `"8bitdo"`, `"mfi"`, `"luna"`, `"stadia"`, `"vcs modern"`, `"vcs classic"`, `"ouya"`, `"dreamcast"`, `"n64"`, `"saturn"`, `"snes"`, `"super famicom"`
-
 &nbsp;
 
 ## …_icons_keyboard_and_mouse
