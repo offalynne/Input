@@ -46,7 +46,7 @@ function input_binding_get_verbs(_binding, _player_index = 0, _profile_name = un
                 //A lot of alternate binding slots don't get used so they return <undefined>
                 if (is_struct(_extant_binding) && (_extant_binding.__label == _binding.__label))
                 {
-                    array_push(_output_array, { verb: _verb, alternate: _alternate_index });
+                    array_push(_output_array, { __verb: _verb, __alternate: _alternate_index });
                 }
                     
                 ++_alternate_index;
