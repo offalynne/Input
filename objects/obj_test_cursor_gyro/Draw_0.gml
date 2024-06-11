@@ -20,7 +20,7 @@ if (!input_game_has_focus())
 {
     draw_set_color(c_gray);
 }
-else if (input_mouse_in_bounds() && input_mouse_capture_get().capture)
+else if (input_mouse_in_bounds() && input_mouse_capture_get().__capture)
 {
     draw_triangle(_mouse_x, _mouse_y, _mouse_x - 10, _mouse_y + 20, _mouse_x + 10, _mouse_y + 20, true);
     _cursor = cr_none;
@@ -32,7 +32,7 @@ if (window_get_cursor() != _cursor)
 }
 
 var _string =  "in bound = " + string(input_mouse_in_bounds()) + "\n";
-_string += "locked   = " + string(input_mouse_capture_get().capture) + "\n";
+_string += "locked   = " + string(input_mouse_capture_get().__capture) + "\n";
 _string += "mouse x  = " + string(_mouse_x) + "\n";
 _string += "mouse y  = " + string(_mouse_y);
 
