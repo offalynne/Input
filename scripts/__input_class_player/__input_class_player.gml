@@ -1204,8 +1204,15 @@ function __input_class_player() constructor
         //Iterate over every profile in the JSON
         if (!is_struct(_json[$ "__profiles"]))
         {
-            __input_error("Player ", __index, " profiles are corrupted");
-            return;
+            if (is_struct(_json[$ "profiles"]))
+            {
+                _json.__profiles = _json[$ "profiles"];
+            }
+            else
+            {
+                __input_error("Player ", __index, " profiles are corrupted");
+                return;
+            }
         }
         
         var _profiles_dict = _json.__profiles;
@@ -1219,10 +1226,19 @@ function __input_class_player() constructor
         }
         
         //Copy axis threshold data
+        var _legacy_thresholds = false;
         if (!is_struct(_json[$ "__axis_thresholds"]))
         {
-            __input_error("Player ", __index, " gamepad axis thresholds are corrupted");
-            return;
+            if (is_struct(_json[$ "axis_thresholds"]))
+            {
+                _json.__axis_thresholds = _json[$ "axis_thresholds"];
+                _legacy_thresholds = true;
+            }
+            else
+            {            
+                __input_error("Player ", __index, " gamepad axis thresholds are corrupted");
+                return;
+            }
         }
         
         var _axis_thresholds_dict = _json.__axis_thresholds;
@@ -1239,16 +1255,39 @@ function __input_class_player() constructor
                 return;
             }
             
-            __axis_thresholds_dict[$ _axis_name] = {
-                __mini: _new_thresholds_struct.__mini,
-                __maxi: _new_thresholds_struct.__maxi,
-            };
+            if (_legacy_thresholds)
+            {
+                __axis_thresholds_dict[$ _axis_name] = {
+                    __mini: _new_thresholds_struct[$ "mini"],
+                    __maxi: _new_thresholds_struct[$ "maxi"],
+                }
+            }
+            else
+            {            
+                __axis_thresholds_dict[$ _axis_name] = {
+                    __mini: _new_thresholds_struct.__mini,
+                    __maxi: _new_thresholds_struct.__maxi,
+                }
+            }
             
             ++_a;
         }
         
         //Copy gyro data
-        if (variable_struct_exists(_json, "__gyro"))
+        if (variable_struct_exists(_json, "gyro"))
+        {
+            if (!is_struct(_json.gyro))
+            {
+                __input_error("Player ", __index, " gyro parameters are corrupted");
+                return;
+            }
+            
+            __gyro_axis_x        = _json[$ "gyro"][$ "axis_x"];
+            __gyro_axis_y        = _json[$ "gyro"][$ "axis_y"];
+            __gyro_sensitivity_x = _json[$ "gyro"][$ "sensitivity_x"];
+            __gyro_sensitivity_y = _json[$ "gyro"][$ "sensitivity_y"];
+        }        
+        else if (variable_struct_exists(_json, "__gyro"))
         {
             if (!is_struct(_json.__gyro))
             {
@@ -1270,6 +1309,11 @@ function __input_class_player() constructor
             __gyro_sensitivity_y = INPUT_GYRO_DEFAULT_SENSITIVITY_Y;
         }
         
+        if (variable_struct_exists(_json, "gamepad_type_override"))
+        {
+            _json.__gamepad_type_override = _json[$ "gamepad_type_override"];
+        }
+        
         if (variable_struct_exists(_json, "__gamepad_type_override"))
         {
             //Coalesce JSON null pointer as undefined
@@ -1289,6 +1333,11 @@ function __input_class_player() constructor
             __gamepad_type_override = undefined;
         }
         
+        if (variable_struct_exists(_json, "vibration_strength"))
+        {
+            _json.__vibration_strength = _json[$ "vibration_strength"];
+        }
+        
         if (variable_struct_exists(_json, "__vibration_strength"))
         {
             if (!is_numeric(_json.__vibration_strength))
@@ -1305,6 +1354,11 @@ function __input_class_player() constructor
             __vibration_strength = INPUT_VIBRATION_DEFAULT_STRENGTH;
         }
         
+        if (variable_struct_exists(_json, "trigger_effect_strength"))
+        {
+            _json.__trigger_effect_strength = _json[$ "trigger_effect_strength"];
+        }
+        
         if (variable_struct_exists(_json, "__trigger_effect_strength"))
         {
             if (!is_numeric(__trigger_effect_strength))
@@ -1319,6 +1373,11 @@ function __input_class_player() constructor
         {
             __input_trace("Warning! Player ", __index, " trigger effect strength not found, defaulting to ", INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH);
             __vibration_strength = INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH;
+        }
+        
+        if (variable_struct_exists(_json, "cursor_inverted"))
+        {
+            _json.__cursor_inverted =  _json[$ "cursor_inverted"];
         }
         
         if (variable_struct_exists(_json, "__cursor_inverted"))
