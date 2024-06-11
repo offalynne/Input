@@ -520,7 +520,7 @@ input_binding_threshold_set(input_binding_get("down" ), minThreshold, maxThresho
 
 #### **Description**
 
-_Returns:_ A struct with two member variables, `.mini` and `.maxi`, containing the minimum and maximum thresholds
+_Returns:_ A struct with two member variables, `.__mini` and `.__maxi`, containing the minimum and maximum thresholds
 
 |Name     |Datatype                     |Purpose                                          |
 |---------|-----------------------------|-------------------------------------------------|
@@ -534,8 +534,8 @@ var _binding = input_binding_get("left");
 var _struct = input_binding_threshold_get(_binding);
 
 //Then draw them to the screen
-draw_text(x, y,    "Min: " + string(_struct.mini));
-draw_text(x, y+20, "Max: " + string(_struct.maxi));
+draw_text(x, y,    "Min: " + string(_struct.__mini));
+draw_text(x, y+20, "Max: " + string(_struct.__maxi));
 ```
 
 <!-- tabs:end -->
