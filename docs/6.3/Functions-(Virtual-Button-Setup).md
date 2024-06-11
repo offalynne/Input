@@ -164,17 +164,17 @@ vbutton_consent = input_virtual_create().button("accept").circle(0.5*_width, 0.7
 
 The struct returned from this method has the following member variables:
 
-|Name     |Datatype|Purpose                                                                |
-|---------|--------|-----------------------------------------------------------------------|
-|`.left`  |number  |Left position of the bounding box                                      |
-|`.top`   |number  |Top position of the bounding box                                       |
-|`.right` |number  |Right position of the bounding box                                     |
-|`.bottom`|number  |Bottom position of the bounding box                                    |
-|`.width` |number  |Width of the bounding box                                              |
-|`.height`|number  |Height of the bounding box                                             |
-|`.x`     |number  |x-coordinate of the centre of the button                               |
-|`.y`     |number  |y-coordinate of the centre of the button                               |
-|`.radius`|number  |Radius of the circle. This value is `undefined` for rectangular buttons|
+|Name       |Datatype|Purpose                                                                |
+|-----------|--------|-----------------------------------------------------------------------|
+|`.__left`  |number  |Left position of the bounding box                                      |
+|`.__top`   |number  |Top position of the bounding box                                       |
+|`.__right` |number  |Right position of the bounding box                                     |
+|`.__bottom`|number  |Bottom position of the bounding box                                    |
+|`.__width` |number  |Width of the bounding box                                              |
+|`.__height`|number  |Height of the bounding box                                             |
+|`.__x`     |number  |x-coordinate of the centre of the button                               |
+|`.__y`     |number  |y-coordinate of the centre of the button                               |
+|`.__radius`|number  |Radius of the circle. This value is `undefined` for rectangular buttons|
 
 #### **Example**
 
@@ -186,7 +186,7 @@ var _position = vbutton_back.get_position();
 var _held = vbutton_back.check();
 
 //Draw the button
-draw_sprite(spr_button_back, _held, _position.x, _position.y);
+draw_sprite(spr_button_back, _held, _position.__x, _position.__y);
 ```
 
 <!-- tabs:end -->
