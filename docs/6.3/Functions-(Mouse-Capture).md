@@ -35,7 +35,7 @@ if (input_mouse_check_pressed(mb_left))
 }
 
 //Release mouse capture when the game is paused or loses focus
-if (input_check_pressed("pause") || !input_window_has_focus())
+if (input_check_pressed("pause") || !input_game_has_focus())
 {
 	input_mouse_capture_set(false);
 	cursor = cr_default;
