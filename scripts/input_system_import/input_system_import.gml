@@ -27,8 +27,19 @@ function input_system_import(_string)
     //Restore accessibility settings
     if (!is_struct(_json[$ "__accessibility"]))
     {
-        __input_error("Accessibility settings are missing from JSON");
-        return;
+        if (is_struct(_json[$ "accessibility"]))
+        {
+            _json.__accessibility = _json[$ "accessibility"];
+            _json.__accessibility.__momentary_state = _json.__accessibility[$ "momentary_state"];
+            _json.__accessibility.__momentary_verbs = _json.__accessibility[$ "momentary_verbs"];
+            _json.__accessibility.__cooldown_state  = _json.__accessibility[$ "cooldown_state"];
+            _json.__accessibility.__cooldown_verbs  = _json.__accessibility[$ "cooldown_verbs"];
+        }
+        else
+        {        
+            __input_error("Accessibility settings are corrupted");
+            return;
+        }
     }
     
     //Momentary toggle verbs
@@ -70,17 +81,34 @@ function input_system_import(_string)
     //Restore mouse settings
     if (!is_struct(_json[$ "__mouse"]))
     {
-        __input_error("Mouse settings are missing from JSON");
-        return;
+        if (is_struct(_json[$ "mouse"]))
+        {
+            _json.__mouse = _json[$ "mouse"];            
+            input_mouse_capture_set(_json.__mouse[$ "capture"], _json.__mouse[$ "sensitivity"]);
+        }
+        else
+        {        
+            __input_error("Mouse settings are corrupted");
+            return;
+        }
     }
-    
-    input_mouse_capture_set(_json.__mouse.__capture, _json.__mouse.__sensitivity);
+    else
+    {    
+        input_mouse_capture_set(_json.__mouse.__capture, _json.__mouse.__sensitivity);
+    }
     
     //Restore player data
     if (!is_array(_json[$ "__players"]))
     {
-        __input_error("Player settings are missing from JSON");
-        return;
+        if (is_array(_json[$ "players"]))
+        {
+            _json.__players = _json[$ "players"];
+        }
+        else
+        {        
+            __input_error("Player settings are corrupted");
+            return;
+        }
     }
     
     var _players_array = _json.__players;

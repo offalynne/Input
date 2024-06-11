@@ -1282,10 +1282,12 @@ function __input_class_player() constructor
                 return;
             }
             
-            __gyro_axis_x        = _json[$ "gyro"][$ "axis_x"];
-            __gyro_axis_y        = _json[$ "gyro"][$ "axis_y"];
-            __gyro_sensitivity_x = _json[$ "gyro"][$ "sensitivity_x"];
-            __gyro_sensitivity_y = _json[$ "gyro"][$ "sensitivity_y"];
+            _json.__gyro = _json.gyro; 
+            
+            __gyro_axis_x        = _json.__gyro[$ "axis_x"];
+            __gyro_axis_y        = _json.__gyro[$ "axis_y"];
+            __gyro_sensitivity_x = _json.__gyro[$ "sensitivity_x"];
+            __gyro_sensitivity_y = _json.__gyro[$ "sensitivity_y"];
         }        
         else if (variable_struct_exists(_json, "__gyro"))
         {
