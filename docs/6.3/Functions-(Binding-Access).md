@@ -136,9 +136,9 @@ This function returns a struct that describes the binding for the given verb. It
 
 |Variable        |Datatype|Purpose                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |----------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`.type`         |string  |Type of binding, one of the following:<br>`"key"` `"gamepad button"` `"gamepad axis"` `"mouse button"` `"mouse wheel up"` `"mouse wheel down"` (and `undefined`)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-|`.value`        |integer |[Keycode](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FKeyboard_Input%252FKeyboard_Input.htm), [gamepad button](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm), [gamepad axis](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm), or [mouse button](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FMouse_Input%252FMouse_Input.htm) that this binding uses. This variable is `undefined` for `"mouse wheel up"` and `"mouse wheel down"` types|
-|`.axis_negative`|boolean |Whether this binding expects negative values (`"gamepad axis"` type only)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|`.__type`         |string  |Type of binding, one of the following:<br>`"key"` `"gamepad button"` `"gamepad axis"` `"mouse button"` `"mouse wheel up"` `"mouse wheel down"` (and `undefined`)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+|`.__value`        |integer |[Keycode](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FKeyboard_Input%252FKeyboard_Input.htm), [gamepad button](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm), [gamepad axis](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm), or [mouse button](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FMouse_Input%252FMouse_Input.htm) that this binding uses. This variable is `undefined` for `"mouse wheel up"` and `"mouse wheel down"` types|
+|`.__axis_negative`|boolean |Whether this binding expects negative values (`"gamepad axis"` type only)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 #### **Example**
 
@@ -147,14 +147,14 @@ This function returns a struct that describes the binding for the given verb. It
 var _binding = input_binding_get("special");
 
 //If this binding is a keyboard key, and it's a simple ASCII character...
-if ((_binding.type == "key") && (_binding.value > 32) && (_binding.value < 128))
+if ((_binding.__type == "key") && (_binding.__value > 32) && (_binding.__value < 128))
 {
 	//...then draw some text on top of a keyboard key icon
 	draw_sprite(spr_icon_small_key, 0, x, y);
 
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_midde);
-	draw_text(x, y, chr(_binding.value));
+	draw_text(x, y, chr(_binding.__value));
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_top);
 }
@@ -273,8 +273,8 @@ The structs returned in the array contain the following:
 
 |Variable    |Datatype                  |Purpose                     |
 |------------|--------------------------|----------------------------|
-|`.verb`     |[verb](Verbs-and-Bindings)|Verb binding that conflicts |
-|`.alternate`|integer                   |Alternate index for the verb|
+|`.__verb`     |[verb](Verbs-and-Bindings)|Verb binding that conflicts |
+|`.__alternate`|integer                   |Alternate index for the verb|
 
 #### **Example**
 
@@ -564,8 +564,8 @@ The structs returned in the array contain the following:
 
 |Variable    |Datatype                  |Purpose                     |
 |------------|--------------------------|----------------------------|
-|`.verb`     |[verb](Verbs-and-Bindings)|Verb binding that conflicts |
-|`.alternate`|integer                   |Alternate index for the verb|
+|`.__verb`     |[verb](Verbs-and-Bindings)|Verb binding that conflicts |
+|`.__alternate`|integer                   |Alternate index for the verb|
 
 #### **Example**
 
