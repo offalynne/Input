@@ -241,14 +241,14 @@ The struct returned by this function contains the following member variables:
 
 |Name              |Datatype|Purpose                                          |
 |------------------|--------|-------------------------------------------------|
-|`.left`           |number  |Left-most limit for the bounding box             |
-|`.top`            |number  |Top-most limit for the bounding box              |
-|`.right`          |number  |Right-most limit for the bounding box            |
-|`.bottom`         |number  |Bottom-most limit for the bounding box           |
-|`.circle_x`       |number  |x-coordinate of the centre of the bounding circle|
-|`.circle_y`       |number  |y-coordinate of the centre of the bounding circle|
-|`.circle_radius`  |number  |Radius of the bounding circle                    |
-|`.boundary_margin`|number  |Size of the boundary margin                      |
+|`.__left`           |number  |Left-most limit for the bounding box             |
+|`.__top`            |number  |Top-most limit for the bounding box              |
+|`.__right`          |number  |Right-most limit for the bounding box            |
+|`.__bottom`         |number  |Bottom-most limit for the bounding box           |
+|`.__circle_x`       |number  |x-coordinate of the centre of the bounding circle|
+|`.__circle_y`       |number  |y-coordinate of the centre of the bounding circle|
+|`.__circle_radius`  |number  |Radius of the bounding circle                    |
+|`.__boundary_margin`|number  |Size of the boundary margin                      |
 
 !> Values in the returned struct will be `undefined` if the associated limit has not been set.
 
@@ -264,15 +264,15 @@ if (debug_mode && input_mouse_check(mb_middle))
 
 	if (_limit.left != undefined)
 	{
-		draw_rectangle(_limit.left, _limit.top, _limit.top, _limit.bottom, true);
+		draw_rectangle(_limit.__left, _limit.__top, _limit.__top, _limit.__bottom, true);
 	}
 	
-	if (_limit.circle_x != undefined)
+	if (_limit.__circle_x != undefined)
 	{
-		draw_circle(_limit.circle_x, _limit.circle_y, _limit.circle_radius, true);
+		draw_circle(_limit.__circle_x, _limit.__circle_y, _limit.__circle_radius, true);
 	}
 
-	if (_limit.boundary_margin != undefined)
+	if (_limit.__boundary_margin != undefined)
 	{
 		var _margin = _limit.boundary_margin;
 		draw_rectangle(_margin, _margin, room_width + _margin, room_height + _margin, true);
