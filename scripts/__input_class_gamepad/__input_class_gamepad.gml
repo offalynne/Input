@@ -226,6 +226,14 @@ function __input_class_gamepad(_index) constructor
         return _mapping;
     }
     
+    static __set_face_button_mapping = function()
+    {
+        __set_mapping(gp_face1, 0, __INPUT_MAPPING.BUTTON, "a");
+        __set_mapping(gp_face2, 1, __INPUT_MAPPING.BUTTON, "b");      
+        __set_mapping(gp_face3, 2, __INPUT_MAPPING.BUTTON, "x");
+        __set_mapping(gp_face4, 3, __INPUT_MAPPING.BUTTON, "y");
+    }
+    
     static __set_dpad_and_thumbstick_mapping = function()
     {
         __set_dpad_hat_mapping();
@@ -488,6 +496,7 @@ function __input_class_gamepad(_index) constructor
         //Platform is unsupported, or lacks Steam Input handle
         if (!__INPUT_LED_PATTERN_SUPPORT || (__INPUT_ON_WINDOWS && (!is_numeric(__steam_handle)))) return;
         
+        //Defaults
         var _led_offset = 0;
         var _led_layout = undefined;
         var _led_type   = INPUT_GAMEPAD_TYPE_XBOX_360;
@@ -533,9 +542,9 @@ function __input_class_gamepad(_index) constructor
         if (_led_layout != undefined)
         {
             __led_pattern = {
-                value:   __index + _led_offset + 1,
-                pattern: __global.__gamepad_led_pattern_dict[$ _led_type][@ __index + _led_offset],
-                layout:  _led_layout,
+                __value:   __index + _led_offset + 1,
+                __pattern: __global.__gamepad_led_pattern_dict[$ _led_type][@ __index + _led_offset],
+                __layout:  _led_layout,
             }
         }
     }
