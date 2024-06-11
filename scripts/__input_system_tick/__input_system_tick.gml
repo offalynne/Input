@@ -139,9 +139,10 @@ function __input_system_tick()
             }
         }
     }
-
-    _global.__game_input_allowed = INPUT_ALLOW_OUT_OF_FOCUS || _global.__window_focus;
     
+    var _game_input_allowed_previous = _global.__game_input_allowed;
+    
+    _global.__game_input_allowed = INPUT_ALLOW_OUT_OF_FOCUS || _global.__window_focus;    
     _global.__overlay_focus = false;
     
     if (_global.__using_steamworks)
@@ -164,6 +165,23 @@ function __input_system_tick()
             if (_global.__gamepad_tester_data.__block_input)
             {
                 _global.__game_input_allowed = false;
+            }
+        }
+    }
+    
+    //Set Windows IME availability based on focus loss and regain
+    //see https://github.com/YoYoGames/GameMaker-Bugs/issues/5524
+    if (__INPUT_ON_WINDOWS)
+    {
+        if (_global.__game_input_allowed != _game_input_allowed_previous)
+        {
+            if (_global.__game_input_allowed)
+            {
+                keyboard_virtual_hide();
+            }
+            else
+            {
+                keyboard_virtual_show(kbv_type_default, kbv_returnkey_default, kbv_autocapitalize_none, false);
             }
         }
     }
