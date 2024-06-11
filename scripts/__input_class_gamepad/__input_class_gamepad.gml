@@ -297,7 +297,7 @@ function __input_class_gamepad(_index) constructor
                     {
                         if (_trigger_max > 255/256)
                         {
-                            if (!__INPUT_SILENT) __input_trace("Fully extending XInput trigger scale for gamepad ", index);
+                            if (!__INPUT_SILENT) __input_trace("Fully extending XInput trigger scale for gamepad ", __index);
                             __xinput_trigger_range = 1;
                         }
                         else
@@ -533,8 +533,8 @@ function __input_class_gamepad(_index) constructor
         if (_led_layout != undefined)
         {
             __led_pattern = {
-                value:   index + _led_offset + 1,
-                pattern: __global.__gamepad_led_pattern_dict[$ _led_type][@ index + _led_offset],
+                value:   __index + _led_offset + 1,
+                pattern: __global.__gamepad_led_pattern_dict[$ _led_type][@ __index + _led_offset],
                 layout:  _led_layout,
             }
         }

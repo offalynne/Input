@@ -245,7 +245,7 @@ function __input_gamepad_set_type()
                 case "3412adbe":
                     if ((__button_count == 12) && (__axis_count == 6) && (__hat_count == 0) && __INPUT_ON_WINDOWS)
                     {
-                        if (!__INPUT_SILENT) __input_trace("Overridding controller ", index ," type to GameCube");
+                        if (!__INPUT_SILENT) __input_trace("Overridding controller ", __index ," type to GameCube");
                         __description = "GameCube";
                         __raw_type = "CommunityGameCube";
                         __guessed_type = false;
@@ -260,7 +260,7 @@ function __input_gamepad_set_type()
                 case "0d000000":
                     if ((__button_count == 15) && (__axis_count == 4) && (__hat_count == 0) && __INPUT_ON_WINDOWS)
                     {
-                        if (!__INPUT_SILENT) __input_trace("Overriding controller ", index ," type to MFi");
+                        if (!__INPUT_SILENT) __input_trace("Overriding controller ", __index ," type to MFi");
                         __description = "MFi Extended";
                         __raw_type = "AppleController";
                         __guessed_type = false;
@@ -315,7 +315,7 @@ function __input_gamepad_set_type()
                 case "d90493a2":
                     if (INPUT_ON_PC)
                     {
-                        if (!__INPUT_SILENT) __input_trace("Overriding controller ", index ," type to Anne Pro 2");
+                        if (!__INPUT_SILENT) __input_trace("Overriding controller ", __index ," type to Anne Pro 2");
                         __description  = "Anne Pro 2";
                         __raw_type = "CommunityAnnePro";
                         __guessed_type = false;
@@ -518,7 +518,7 @@ function __input_gamepad_set_type()
                                                 __input_gamepad_set_mapping();                                  
                                             }
                                                 
-                                            if (!__INPUT_SILENT) __input_trace("Overriding controller ", index ," type to \"HIDWiiRemote\"");
+                                            if (!__INPUT_SILENT) __input_trace("Overriding controller ", __index ," type to \"HIDWiiRemote\"");
                                             __description = "Nintendo Wii Remote";
                                             __raw_type = "HIDWiiRemote";
                                             __guessed_type = true;
