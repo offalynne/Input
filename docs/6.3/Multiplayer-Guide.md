@@ -42,7 +42,7 @@ if (input_join_is_finished())
 You should also detect when a player's device has been disconnected, espcially if you're planning on shipping on console as it is a compliance requirement for all major platforms. If a player's device is unexpectedly disconnected, you should show a device connection screen and return to the `JOIN` source mode to allow players to reconnect. In these situations you will likely want to set the `dropDown` parameter in `input_join_params_set()` to `false`. You can detect when a player's device has been disconnected by checking against the struct returned by [`input_players_get_status()`](Functions-(Players)?id=input_players_get_status).
 
 ```gml
-if (array_length(input_players_get_status().new_disconnections) > 0)
+if (array_length(input_players_get_status().__new_disconnections) > 0)
 {
     input_source_mode_set(INPUT_SOURCE_MODE.JOIN);
 	PauseGame();
