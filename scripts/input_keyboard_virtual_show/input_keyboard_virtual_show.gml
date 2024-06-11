@@ -29,7 +29,9 @@ function input_keyboard_virtual_show(_virtual_keyboard_type = kbv_type_default)
     }
     else if (!keyboard_virtual_status() || __INPUT_ON_ANDROID) //Status detect is unreliable on Android platform
     {
-        //We are not checking explicitly for per platform support: this fails gracefully where unsupported
-        keyboard_virtual_show(_virtual_keyboard_type, kbv_returnkey_default, INPUT_VIRTUAL_KEYBOARD_AUTOCAPITALIZATION_TYPE, INPUT_VIRTUAL_KEYBOARD_PREDICTIVE_TEXT_ENABLED);
+        if not (__INPUT_ON_WINDOWS)
+        {
+            keyboard_virtual_show(_virtual_keyboard_type, kbv_returnkey_default, INPUT_VIRTUAL_KEYBOARD_AUTOCAPITALIZATION_TYPE, INPUT_VIRTUAL_KEYBOARD_PREDICTIVE_TEXT_ENABLED);
+        }
     }
 }

@@ -12,6 +12,9 @@ function input_keyboard_virtual_hide()
     }
     else if (keyboard_virtual_status() || __INPUT_ON_ANDROID) //Status detect is unreliable on Android platform
     {
-        keyboard_virtual_hide();
+        if not (__INPUT_ON_WINDOWS)
+        {
+            keyboard_virtual_hide();
+        }
     }
 }
