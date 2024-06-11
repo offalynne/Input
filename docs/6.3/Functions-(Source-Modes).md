@@ -18,7 +18,7 @@
 
 You can read more about source modes [here](Input-Sources?id=source-modes).
 
-#### **Example**
+#### **Example**`
 
 ```gml
 //Configures Input to share keyboard controls between two players
@@ -136,7 +136,7 @@ The struct returned by this function has the following member variables:
 
 |Name       |Datatype        |Purpose                                                                                                       |
 |-----------|----------------|--------------------------------------------------------------------------------------------------------------|
-|`.callback`|method or script|Method or script to execute when player 0 is given a new source in the `INPUT_SOURCE_MODE.HOTSWAP` source mode|
+|`.__callback`|method or script|Method or script to execute when player 0 is given a new source in the `INPUT_SOURCE_MODE.HOTSWAP` source mode|
 
 <!-- tabs:end -->
 
@@ -202,13 +202,13 @@ if (input_check_pressed("accept"))
 
 The struct returned by this function has the following member functions:
 
-|Name             |Datatype        |Purpose                                                                           |
-|-----------------|----------------|----------------------------------------------------------------------------------|
-|`.min_players`   |integer         |The minimum number of players that are needed to play in this particular game mode|
-|`.max_players`   |integer         |The maximum number of players that can play this particular game mode             |
-|`.leave_verb`    |string          |The name of the verb that, when activated by a player, causes the player to have their sources cleared, "disconnecting" them from the game|
-|`.abort_callback`|method or script|Method or script to execute when the `INPUT_SOURCE_MODE.JOIN` source mode is aborted. Set to `undefined` to prevent players from aborting `INPUT_SOURCE_MODE.JOIN`|
-|`.drop_down`     |boolean         |Whether players should drop down into empty slots when other players disconnect   |
+|Name               |Datatype        |Purpose                                                                           |
+|-------------------|----------------|----------------------------------------------------------------------------------|
+|`.__min_players`   |integer         |The minimum number of players that are needed to play in this particular game mode|
+|`.__max_players`   |integer         |The maximum number of players that can play this particular game mode             |
+|`.__leave_verb`    |string          |The name of the verb that, when activated by a player, causes the player to have their sources cleared, "disconnecting" them from the game|
+|`.__abort_callback`|method or script|Method or script to execute when the `INPUT_SOURCE_MODE.JOIN` source mode is aborted. Set to `undefined` to prevent players from aborting `INPUT_SOURCE_MODE.JOIN`|
+|`.__drop_down`     |boolean         |Whether players should drop down into empty slots when other players disconnect   |
 
 <!-- tabs:end -->
 
