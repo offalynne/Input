@@ -70,18 +70,18 @@ The struct returned by the function contains the following member variables:
 
 |Name          |Datatype|Purpose                                   |
 |--------------|--------|------------------------------------------|
-|`.capture`    |boolean |Whether the mouse is being captured or not|
-|`.sensitivity`|number  |The sensitivity for mouse movement        |
-|`.blocked`    |boolean |Whether the display or application state prevent the cursor from being limited to the window area|
+|`.__capture`    |boolean |Whether the mouse is being captured or not|
+|`.__sensitivity`|number  |The sensitivity for mouse movement        |
+|`.__blocked`    |boolean |Whether the display or application state prevent the cursor from being limited to the window area|
 
 #### **Example**
 
 ```gml
 //Draw mouse capture state
 var _capture_state = input_mouse_capture_get();
-draw_text(10, 10, string(_capture_state.capture));
-draw_text(10, 30, string(_capture_state.sensitivity));
-draw_text(10, 50, string(_capture_state.blocked));
+draw_text(10, 10, string(_capture_state.__capture));
+draw_text(10, 30, string(_capture_state.__sensitivity));
+draw_text(10, 50, string(_capture_state.__blocked));
 ```
 
 <!-- tabs:end -->
