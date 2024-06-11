@@ -43,8 +43,8 @@ function input_binding_set_safe(_verb_name, _binding, _player_index = 0, _altern
                 return false;
             }
             
-            var _verb_b      = _collisions[0].verb;
-            var _alternate_b = _collisions[0].alternate;
+            var _verb_b      = _collisions[0].__verb;
+            var _alternate_b = _collisions[0].__alternate;
             
             if ((_verb_name != _verb_b) || (_alternate != _alternate_b))
             {
