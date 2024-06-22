@@ -923,8 +923,9 @@ function __input_gamepad_set_mapping()
 
             #region Xbox driver catch-all
 
-            if (__description == "Generic X-Box pad")
+            if (__description == "Generic X-Box pad" || __description == "X360 Controller")
             {
+                if (!__INPUT_SILENT) __input_trace("Overriding mapping for Xbox controller");
                 
                 __set_face_button_mapping();
                 __set_dpad_hat_mapping();
