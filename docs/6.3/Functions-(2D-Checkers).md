@@ -35,7 +35,7 @@ image_angle = input_direction(image_angle, "left", "right", "up", "down");
 
 ```gml
 //Add motion with most recent input direction for player 0 at current speed 
-motion_add(input_direction("left", "right", "up", "down", 0, true), speed);
+motion_add(input_direction(0, "left", "right", "up", "down", 0, true), speed);
 ```
 
 <!-- tabs:end -->
