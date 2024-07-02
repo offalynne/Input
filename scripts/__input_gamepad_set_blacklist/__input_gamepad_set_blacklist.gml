@@ -8,9 +8,12 @@ function __input_gamepad_set_blacklist()
     //Don't blacklist on preconfigured platforms
     if (!__INPUT_SDL2_SUPPORT) return;
 
+    //Don't blacklist devices being handled by SDL's HID drivers in GMRT
+    if ((__vendor != "") && (__product != "") && (string_copy(__guid, 29, 2) == "68")) return;
+
+    //Smoke check invalid devices
     if ((__axis_count == 0) && (__button_count == 0) && (__hat_count == 0))
     {
-        //Smoke check invalid devices
         __input_trace("Warning! Controller ", __index, " (VID+PID \"", __vendor + __product, "\") __blacklisted: no button or axis");
         __blacklisted = true;
         return;
