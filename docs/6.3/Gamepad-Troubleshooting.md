@@ -23,7 +23,7 @@ To ensure your gamepad is working correctly with your device before attempting t
 
 ## Platform Troubleshooting
 
-If you encounter trouble using your gamepad with Input, ensure the gamepad device's firmware is up to date, and that it is working correctly on your Operating System. Input includes comprehensive built-in support for a wide variety of gamepads, and so disabling intermediary software and unofficial gamepad applications that may interfere with normal operation is recommended, including Xpadder, JoyToKey, AntiMicro, x360ce, ScpToolkit, MotioninJoy, and InputMapper. 
+If you encounter trouble using your gamepad with Input, ensure the gamepad device's firmware is up to date, and that it is operating correctly. Input includes comprehensive built-in support for a wide variety of gamepads, and so disabling intermediary software and unofficial gamepad applications that may interfere with normal operation is recommended, including Xpadder, JoyToKey, AntiMicro, x360ce, ScpToolkit, MotioninJoy, and InputMapper. 
 
 ?> Depending on platform and device, certain setups may require extra configuration including device drivers, software and specific connectivity steps. The following additional setup may be necessary for proper operation on your platform.
 
