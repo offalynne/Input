@@ -328,8 +328,8 @@ function __input_gamepad_set_type()
                 #region MayFlash N64 adapter A
                 
                 case "8f0e1330":
-                    if  ((__INPUT_ON_MACOS && (__hat_count == 2))                                                                                             //Both slots on one device on Mac
-                    ||  ((__INPUT_ON_WINDOWS || __INPUT_ON_LINUX) && (__button_count == 25) && (__axis_count == 6) && (__hat_count == 0)                          //Windows and Linux identity
+                    if  ((__INPUT_ON_MACOS && (__hat_count == 2))                                                                                               //Both slots on one device on Mac
+                    ||  ((__INPUT_ON_WINDOWS || __INPUT_ON_LINUX) && (__button_count == 25) && (__axis_count == 6) && (__hat_count == 0)                        //Windows and Linux identity
                     &&  ((__input_string_contains(gamepad_get_guid(__index + 1), "8f0e") && __input_string_contains(gamepad_get_guid(__index + 1), "1330"))     //Port comes in pairs, look ahead
                     ||  ((__input_string_contains(gamepad_get_guid(__index - 1), "8f0e") && __input_string_contains(gamepad_get_guid(__index - 1), "1330")))))) //Port comes in pairs, look behind
                     {
