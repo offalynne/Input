@@ -65,7 +65,7 @@ for(var _player = 0; _player < INPUT_MAX_PLAYERS; _player++)
 
 ```gml
 //Grab the max number of players from the .JOIN source mode parameters
-var _max_players = input_join_params_get().max_players;
+var _max_players = input_join_params_get().__max_players;
 
 //Build a string reporting the number of players connected, and then draw it
 var _string = string(input_players_connected_count()) + "/" + string(_max_players) + " players connected";
@@ -96,7 +96,7 @@ This function returns a struct that describes the state of each player's connect
 
 ```
 {
-    any_changed: <boolean that indicates whether anything has changed at all>
+    __any_changed: <boolean that indicates whether anything has changed at all>
     __new_connections: [
         <array of player indexes that are newly connected this step>
     ],
@@ -123,21 +123,21 @@ The `INPUT_STATUS` enum contains the following members:
 ```gml
 //Pick up incoming new players and outgoing old users
 var _status = input_players_get_status();
-if (_status.any_changed)
+if (_status.__any_changed)
 {
     //Iterate over new players and create a new player instance for each
-    for(var _i = 0; _i < array_length(_status.new_connections); _i++)
+    for(var _i = 0; _i < array_length(_status.__new_connections); _i++)
     {
-        var _new_player = _status.new_connections[_i];
+        var _new_player = _status.__new_connections[_i];
 
         //Pass the player index into the new obj_player instance
         instance_create_depth(obj_spawn.x, obj_spawn.y, obj_player, {player_index: _new_player});
     }
 
     //Find any obj_player instances for disconnected players and destroy them
-    for(var _i = 0; _i < array_length(_status.new_disconnections); _i++)
+    for(var _i = 0; _i < array_length(_status.__new_disconnections); _i++)
     {
-        var _old_player = _status.new_connections[_i];
+        var _old_player = _status.__new_connections[_i];
         with(obj_player)
         {
             if (player_index == _old_player) instance_destroy();
