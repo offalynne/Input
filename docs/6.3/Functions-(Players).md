@@ -97,13 +97,13 @@ This function returns a struct that describes the state of each player's connect
 ```
 {
     any_changed: <boolean that indicates whether anything has changed at all>
-    new_connections: [
+    __new_connections: [
         <array of player indexes that are newly connected this step>
     ],
-    new_disconnections: [
+    __new_disconnections: [
         <array of player indexes that are newly disconnected this step>
     ],
-    players: [
+    __players: [
         <array of values from the INPUT_STATUS enum, one for each player up to INPUT_MAX_PLAYERS>
     ],
 }
