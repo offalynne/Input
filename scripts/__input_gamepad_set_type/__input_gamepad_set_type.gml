@@ -358,6 +358,19 @@ function __input_gamepad_set_type()
                 break;
                 
                 #endregion
+
+
+                #region PowerA Core Wired Controller in GameCube form factor
+
+                case "d62011a7":
+                    if (__guid == "03000000d620000011a7000000020000")
+                    {
+                        __raw_type = "CommunityGameCube";
+                        __guessed_type = false;
+                    }
+                break;
+
+                #endregion
                 
                 
                 #region Malformed GUIDs
