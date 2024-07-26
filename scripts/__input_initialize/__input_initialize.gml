@@ -829,7 +829,7 @@ function __input_initialize()
     if (__INPUT_ON_WINDOWS || INPUT_ON_WEB)
     {
         //F13 to F32 on Windows and Web
-        for(var _i = vk_f1 + 12; _i < vk_f1 + 32; _i++) __input_key_name_set(_i, "f" + string(_i));
+        for(var _i = 13; _i <= 32; _i++) __input_key_name_set(_i + vk_f1 - 1, "f" + string(_i));
         
         //IntlBackslash, Backquote
         __input_key_name_set(226, (INPUT_ON_WEB? "\\" : "<"));
