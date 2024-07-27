@@ -1454,6 +1454,7 @@ function __input_class_player() constructor
             return;
         }
 
+        //Apply the effect and get the interception outcome
         var _intercepted = (__global.__gamepads[_gamepad].__trigger_effect_apply(_trigger, _effect, __trigger_effect_strength) == false);
         
         if (!_set) return;
