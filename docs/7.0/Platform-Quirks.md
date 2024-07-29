@@ -27,7 +27,7 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - As per GameMaker's default behaviour, device indexes from 0 to 3 inclusive are XInput gamepads. Devices 4 to 11 inclusive are DInput gamepads. XInput gamepads return less information about themselves than DInput and, as a result, some supplementary data (button labels etc.) may be inaccurate.
 
-- Gamepad vibration is only available for Windows XInput gamepads. Enabling vibration for additional gamepads requires the [Steamwork extension](Steamworks).
+- Gamepad vibration is only available for Windows XInput gamepads. Enabling vibration for additional gamepads requires the [Steamworks extension](Steamworks).
 
 - [Game Controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping on older versions of GameMaker. Specifically, the runtime is using an old version of the identifying string used to differentiate gamepads, resulting in the feature being marginally limited on the platform.
 
