@@ -206,10 +206,38 @@ _input_count_previous = _len;
 #### **Example**
 
 ```gml
-//Hide aim pointer and pause if focus is lost
+//Pause if focus is lost
 if (!input_window_has_focus() && !game_paused)
 {
 	game_paused = true;
+}
+```
+
+<!-- tabs:end -->
+
+
+&nbsp;
+
+## …game_has_focus
+
+`input_game_has_focus()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the game is in focus
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+#### **Example**
+
+```gml
+//Hide aim pointer if game focus is lost
+if (!input_game_has_focus())
+{
 	obj_reticle.visible = false;
 }
 ```
