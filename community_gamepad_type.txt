@@ -555,6 +555,8 @@ dead,beef,CommunityPSX // Hidromancer
 044f,b65e,SDLWheel // Thrustmaster T500RS
 044f,b664,SDLWheel // Thrustmaster TX initial mode
 044f,b669,SDLWheel // Thrustmaster TX active mode
+044f,b691,SDLWheel // Thrustmaster TS-XW initial mode
+044f,b692,SDLWheel // Thrustmaster TS-XW active mode
 1209,ffb0,SDLWheel // OpenFFBoard
 0483,0522,SDLWheel // Simagic Wheelbase
 11ff,0511,SDLWheel // PXN V900 PS3, Superdrive SV750, Genesis Seaborg 400 initial mode
