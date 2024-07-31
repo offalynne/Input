@@ -207,9 +207,9 @@ _input_count_previous = _len;
 
 ```gml
 //Pause if focus is lost
-if (!input_window_has_focus() && !game_paused)
+if (!input_window_has_focus())
 {
-	game_paused = true;
+	game_pause();
 }
 ```
 
