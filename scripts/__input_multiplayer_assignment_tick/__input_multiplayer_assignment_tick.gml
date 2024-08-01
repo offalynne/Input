@@ -53,7 +53,7 @@ function __input_multiplayer_assignment_tick()
                 {
                     __source_add(_new_source);
                     __profile_set_auto();
-                    tick();
+                    __tick();
                 }
                 
                 if ((_global.__join_leave_verb != undefined)
