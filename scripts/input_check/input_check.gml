@@ -3,7 +3,7 @@
 ///          If the keyword <all> is used then this function will return <true> if ANY verb whatsoever is active
 ///          If an array of verbs is given then this function will return <true> if ANY of the verbs in the array are active
 ///          If a buffer duration is specified then this function will return <true> if the verb has been active at any point within that timeframe
-/// @param   verb/array
+/// @param   {any} verb/array
 /// @param   [playerIndex=0]
 /// @param   [bufferDuration=0]
 

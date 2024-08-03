@@ -1,7 +1,7 @@
 // Feather disable all
 /// @desc    Returns whether the given gp_* constant is mapped as an analogue input
 /// @param   gamepadIndex
-/// @param   GMconstant
+/// @param   {Constant.GamepadAxis|Constant.GamepadButton} GMconstant
 
 function input_gamepad_is_axis(_index, _gm)
 {

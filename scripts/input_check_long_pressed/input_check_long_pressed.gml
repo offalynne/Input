@@ -3,7 +3,7 @@
 ///          The long-hold threshold is defined by INPUT_LONG_DELAY
 ///          If an array of verbs is given then this function will return <true> if ANY verb has crossed the long-hold threshold this frame
 ///          If a buffer duration is specified then this function will return <true> if the verb has crossed the long-hold threshold at any point within that timeframe
-/// @param   verb/array
+/// @param   {any} verb/array
 /// @param   [playerIndex=0]
 /// @param   [bufferDuration=0]
 

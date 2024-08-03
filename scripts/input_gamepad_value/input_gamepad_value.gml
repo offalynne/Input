@@ -1,7 +1,7 @@
 // Feather disable all
 /// @desc    Returns the analogue value of the given input (after applying SDL axis remapping)
 /// @param   gamepadIndex
-/// @param   GMconstant
+/// @param   {Constant.GamepadAxis|Constant.GamepadButton} GMconstant
 
 function input_gamepad_value(_index, _gm)
 {
