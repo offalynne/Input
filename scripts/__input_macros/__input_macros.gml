@@ -1,7 +1,7 @@
 // Feather disable all
 
-#macro __INPUT_VERSION "6.3.1 Beta"
-#macro __INPUT_DATE    "2024-06-11"
+#macro __INPUT_VERSION "7.0.0"
+#macro __INPUT_DATE    "2024-08-03"
 #macro __INPUT_DEBUG   false
 
 
