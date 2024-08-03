@@ -3,7 +3,7 @@
 ///          The long-hold threshold is defined by INPUT_LONG_DELAY
 ///          If an array of verbs is given then this function will return <true> if ANY verb has been active for a long time and then deactivated
 ///          If a buffer duration is specified then this function will return <true> if the verb has been active for a long time and then deactivated at any point within that timeframe
-/// @param   verb/array
+/// @param   {any} verb/array
 /// @param   [playerIndex=0]
 /// @param   [bufferDuration=0]
 
@@ -30,10 +30,10 @@ function input_check_long_released(_verb, _player_index = 0, _buffer_duration = 
     
     if (_buffer_duration <= 0)
     {
-        return _verb_struct.long_release;
+        return _verb_struct.__long_release;
     }
     else
     {
-        return ((_verb_struct.long_release_time >= 0) && ((__input_get_time() - _verb_struct.long_release_time) <= _buffer_duration));
+        return ((_verb_struct.__long_release_time >= 0) && ((__input_get_time() - _verb_struct.__long_release_time) <= _buffer_duration));
     }
 }

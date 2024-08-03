@@ -24,12 +24,12 @@ var _func_draw_arrow = function(_x1, _y1, _x2, _y2)
 }
 
 var _position = c.get_position();
-_func_draw_arrow(_position.x, _position.y, _position.x + 100*c.get_x(), _position.y + 100*c.get_y());
+_func_draw_arrow(_position.__x, _position.__y, _position.__x + 100*c.get_x(), _position.__y + 100*c.get_y());
 
-_func_draw_arrow(_position.x, _position.y, _position.x + 100*input_value("right"), _position.y);
-_func_draw_arrow(_position.x, _position.y, _position.x, _position.y - 100*input_value("up"));
-_func_draw_arrow(_position.x, _position.y, _position.x - 100*input_value("left"), _position.y);
-_func_draw_arrow(_position.x, _position.y, _position.x, _position.y + 100*input_value("down"));
+_func_draw_arrow(_position.__x, _position.__y, _position.__x + 100*input_value("right"), _position.__y);
+_func_draw_arrow(_position.__x, _position.__y, _position.__x, _position.__y - 100*input_value("up"));
+_func_draw_arrow(_position.__x, _position.__y, _position.__x - 100*input_value("left"), _position.__y);
+_func_draw_arrow(_position.__x, _position.__y, _position.__x, _position.__y + 100*input_value("down"));
 
 draw_text(10, 10, _string);
 

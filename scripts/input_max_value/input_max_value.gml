@@ -2,7 +2,7 @@
 /// @desc    Returns the maximum analogue value that the verb has received since it was pressed
 ///          If the verb has not received analogue input, this function will return either 0 or 1
 ///          If an array of verbs is provided, this function will return the sum of all verb values
-/// @param   verb/array
+/// @param   {any} verb/array
 /// @param   [playerIndex=0]
 
 function input_max_value(_verb, _player_index = 0)

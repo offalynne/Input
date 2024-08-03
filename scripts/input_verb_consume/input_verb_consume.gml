@@ -2,7 +2,7 @@
 /// @desc    Deactivates a verb until the button (or other physical input) is released and pressed again
 ///          If an array of verbs is given then this function will consume all verbs in the array
 ///          If the keyword <all> is used then all exant verbs are consumed
-/// @param   verb/array
+/// @param   {any} verb/array
 /// @param   [playerIndex]
 
 function input_verb_consume(_verb, _player_index = 0)
@@ -63,10 +63,10 @@ function input_verb_consume(_verb, _player_index = 0)
         
         with(_verb_struct)
         {
-            __consumed     = true;
-            previous_held  = true; //Force the held state on to avoid unwanted early reset of a __consumed verb
-            __inactive     = true;
-            __toggle_state = false; //Used for "toggle momentary" accessibility feature
+            __consumed       = true;
+            __previous_held  = true; //Force the held state on to avoid unwanted early reset of a __consumed verb
+            __inactive       = true;
+            __toggle_state   = false; //Used for "toggle momentary" accessibility feature
         }
     }
 }

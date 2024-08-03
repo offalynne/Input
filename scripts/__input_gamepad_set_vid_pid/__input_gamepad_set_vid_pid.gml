@@ -5,9 +5,9 @@ function __input_gamepad_set_vid_pid()
 {    
     if (INPUT_ON_WEB)
     {
-        vendor  = "";
-        product = "";
-        xinput  = undefined;
+        __vendor  = "";
+        __product = "";
+        __xinput  = undefined;
         
         if (__INPUT_ON_OPERAGX)
         {
@@ -18,14 +18,14 @@ function __input_gamepad_set_vid_pid()
             //Try to read from Chrome's VID/PID syntax
             // e.g. Description Vendor: xxxx Product: yyyy
             //                          ^VID          ^PID
-            var _vendor_pos  = string_pos("Vendor: ",  description);
-            var _product_pos = string_pos("Product: ", description);
+            var _vendor_pos  = string_pos("Vendor: ",  __description);
+            var _product_pos = string_pos("Product: ", __description);
             if ((_vendor_pos > 0) && (_product_pos > 0))
             {
                 //Chrome-esque form
-                vendor      = string_copy(description, _vendor_pos  + 8, 4);
-                product     = string_copy(description, _product_pos + 9, 4);
-                description = string_copy(description, 1, _vendor_pos-1);
+                __vendor      = string_copy(__description, _vendor_pos  + 8, 4);
+                __product     = string_copy(__description, _product_pos + 9, 4);
+                __description = string_copy(__description, 1, _vendor_pos-1);
             }
             else
             {
@@ -34,10 +34,10 @@ function __input_gamepad_set_vid_pid()
                 //      ^VID ^PID
                 var _firefoxy = false;
                 
-                var _hyphen_count = string_count("-", description);
+                var _hyphen_count = string_count("-", __description);
                 if (_hyphen_count >= 2)
                 {
-                    var _work_string = description;
+                    var _work_string = __description;
                     
                     //Fish out the VID/PID strings
                     var _hyphen_pos = string_pos("-", _work_string);
@@ -77,54 +77,54 @@ function __input_gamepad_set_vid_pid()
                 if (_firefoxy)
                 {
                     //Firefox-esque form
-                    vendor      = _vendor_slice;
-                    product     = _product_slice;
-                    description = _work_string;
+                    __vendor      = _vendor_slice;
+                    __product     = _product_slice;
+                    __description = _work_string;
                 }
                 else if (!__INPUT_SILENT) 
                 {
-                    __input_trace("Gamepad description could not be parsed. Bindings for this gamepad may be incorrect (was \"", description, "\")");
+                    __input_trace("Gamepad __description could not be parsed. Bindings for this gamepad may be incorrect (was \"", __description, "\")");
                 }
             }
             
             //Switch VID/PID hex string endianness
-            if (is_string(vendor )) vendor  = string_copy(vendor,  3, 2) + string_copy(vendor,  1, 2);
-            if (is_string(product)) product = string_copy(product, 3, 2) + string_copy(product, 1, 2);   
+            if (is_string(__vendor )) __vendor  = string_copy(__vendor,  3, 2) + string_copy(__vendor,  1, 2);
+            if (is_string(__product)) __product = string_copy(__product, 3, 2) + string_copy(__product, 1, 2);   
         }
     }
     else if (__INPUT_SDL2_SUPPORT)
     {
-       //Unpack the vendor/product IDs from the gamepad's GUID
+       //Unpack the __vendor/__product IDs from the gamepad's GUIDc
         if (__INPUT_ON_WINDOWS)
         {
-            var _legacy = __input_string_contains(guid, "000000000000504944564944"); //"PIDVID"
-            var _result = __input_gamepad_guid_parse(guid, _legacy, false);
-            vendor  = _result.vendor;
-            product = _result.product;
-            xinput  = (index < 4);
+            var _legacy = __input_string_contains(__guid, "000000000000504944564944"); //"PIDVID"
+            var _result = __input_gamepad_guid_parse(__guid, _legacy, false);
+            __vendor  = _result.vendor;
+            __product = _result.product;
+            __xinput  = (__index < 4);
         }
         else if (__INPUT_ON_MACOS || __INPUT_ON_LINUX || __INPUT_ON_ANDROID)
         {
-            var _result = __input_gamepad_guid_parse(guid, false, false);
-            vendor  = _result.vendor;
-            product = _result.product;
-            xinput  = undefined;
+            var _result = __input_gamepad_guid_parse(__guid, false, false);
+            __vendor  = _result.vendor;
+            __product = _result.product;
+            __xinput  = undefined;
         }
         else
         {
             if (!__INPUT_SILENT) __input_trace("Warning! OS type check fell through unexpectedly (os_type = ", os_type, ")");
-            description = gamepad_get_description(index);
-            vendor  = "";
-            product = "";
-            xinput  = undefined;
+            __description = gamepad_get_description(__index);
+            __vendor  = "";
+            __product = "";
+            __xinput  = undefined;
         }
     }
     else
     {
         //Some unsupported platform
-        description = gamepad_get_description(index);
-        vendor  = "";
-        product = "";
-        xinput  = undefined;
+        __description = gamepad_get_description(__index);
+        __vendor  = "";
+        __product = "";
+        __xinput  = undefined;
     }
 }

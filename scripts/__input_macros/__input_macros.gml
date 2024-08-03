@@ -1,7 +1,7 @@
 // Feather disable all
 
-#macro __INPUT_VERSION "6.2.5"
-#macro __INPUT_DATE    "2024-05-18"
+#macro __INPUT_VERSION "7.0.0"
+#macro __INPUT_DATE    "2024-08-03"
 #macro __INPUT_DEBUG   false
 
 
@@ -95,8 +95,8 @@
 #macro __INPUT_CONTROLLER_OBJECT_DEPTH  16001
 
 //Valid keycode bounds
-#macro __INPUT_KEYCODE_MIN 8
-#macro __INPUT_KEYCODE_MAX 57343
+#macro __INPUT_KEYCODE_MIN 0x08
+#macro __INPUT_KEYCODE_MAX 0xDFFF
 
 //Extended gamepad constants
 #macro gp_guide     __input_global().__gp_guide
@@ -134,26 +134,26 @@
 #macro __INPUT_LEGACY_GP_ALT_PADDLE4   32895
 
 //Extended keycode constants
-#macro vk_clear       12
-#macro vk_capslock    20
-#macro vk_menu        93
-#macro vk_scrollock   145
-                      
-#macro vk_semicolon   186
-#macro vk_comma       188
-#macro vk_fslash      191
-#macro vk_bslash      220
-#macro vk_lbracket    219
-#macro vk_rbracket    221
+#macro vk_clear       0x0C
+#macro vk_capslock    0x14
+#macro vk_menu        0x5D
+#macro vk_scrollock   0x91
 
-#macro vk_numlock     ((__INPUT_ON_APPLE &&  INPUT_ON_WEB)?  12 : 144)
-#macro vk_equals      ((__INPUT_ON_MACOS && !INPUT_ON_WEB)?  24 : 187)
-#macro vk_apostrophe (((__INPUT_ON_MACOS || __INPUT_ON_LINUX)  && !INPUT_ON_WEB)? 192 : 222)
-#macro vk_hyphen     (((__INPUT_ON_MACOS || __INPUT_ON_SWITCH) && !INPUT_ON_WEB)? 109 : 189)
-#macro vk_rmeta        (__INPUT_ON_MACOS? ((__INPUT_ON_APPLE && INPUT_ON_WEB)? 93 : 91) : 92)
-#macro vk_backtick     (__INPUT_ON_MACOS?   50 : (__INPUT_ON_LINUX? 223 : 192))
-#macro vk_lmeta        (__INPUT_ON_MACOS?   92 :  91)
-#macro vk_period       (__INPUT_ON_SWITCH? 110 : 190)
+#macro vk_semicolon   0xBA
+#macro vk_comma       0xBC
+#macro vk_fslash      0xBF
+#macro vk_bslash      0xDC
+#macro vk_lbracket    0xDB
+#macro vk_rbracket    0xDD
+
+#macro vk_numlock     ((__INPUT_ON_APPLE &&  INPUT_ON_WEB)                      ? 0x0C : 0x90)
+#macro vk_equals      ((__INPUT_ON_MACOS && !INPUT_ON_WEB)                      ? 0x18 : 0xBB)
+#macro vk_apostrophe (((__INPUT_ON_MACOS || __INPUT_ON_LINUX)  && !INPUT_ON_WEB)? 0xC0 : 0xDE)
+#macro vk_hyphen     (((__INPUT_ON_MACOS || __INPUT_ON_SWITCH) && !INPUT_ON_WEB)? 0x6D : 0xBD)
+#macro vk_rmeta        (__INPUT_ON_MACOS? ((__INPUT_ON_APPLE   &&  INPUT_ON_WEB)? 0x5D : 0x5B) : 0x5C)
+#macro vk_backtick    (!__INPUT_ON_MACOS?  (__INPUT_ON_LINUX                    ? 0xDF : 0xC0) : 0x32)
+#macro vk_lmeta        (__INPUT_ON_MACOS                                        ? 0x5C : 0x5B)
+#macro vk_period       (__INPUT_ON_SWITCH                                       ? 0x6E : 0xBE)
 
 // gp_axislv         = 32786             32769 = gp_face1
 // gp_axisrh         = 32787             32770 = gp_face2

@@ -42,27 +42,27 @@ function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0, _most_r
     if (!is_struct(_verb_struct_d)) __input_error("Down verb not recognised (", _verb_d, ")");
     
     //If any of the verbs have been consumed then set their value to 0, otherwise use the raw value from the binding
-    var _value_l = _verb_struct_l.__inactive? 0.0 : _verb_struct_l.raw;
-    var _value_r = _verb_struct_r.__inactive? 0.0 : _verb_struct_r.raw;
-    var _value_u = _verb_struct_u.__inactive? 0.0 : _verb_struct_u.raw;
-    var _value_d = _verb_struct_d.__inactive? 0.0 : _verb_struct_d.raw;
+    var _value_l = _verb_struct_l.__inactive? 0.0 : _verb_struct_l.__raw;
+    var _value_r = _verb_struct_r.__inactive? 0.0 : _verb_struct_r.__raw;
+    var _value_u = _verb_struct_u.__inactive? 0.0 : _verb_struct_u.__raw;
+    var _value_d = _verb_struct_d.__inactive? 0.0 : _verb_struct_d.__raw;
     
     //Check to see if any the verbs are non-analogue (and are being pressed)
     var _any_non_analogue = false;
     
-    if (((_value_l > 0.0) && !_verb_struct_l.raw_analogue)
-    ||  ((_value_r > 0.0) && !_verb_struct_r.raw_analogue)
-    ||  ((_value_u > 0.0) && !_verb_struct_u.raw_analogue)
-    ||  ((_value_d > 0.0) && !_verb_struct_d.raw_analogue))
+    if (((_value_l > 0.0) && !_verb_struct_l.__raw_analogue)
+    ||  ((_value_r > 0.0) && !_verb_struct_r.__raw_analogue)
+    ||  ((_value_u > 0.0) && !_verb_struct_u.__raw_analogue)
+    ||  ((_value_d > 0.0) && !_verb_struct_d.__raw_analogue))
     {
         _any_non_analogue = true;
         
         //If we *do* have some non-analogue buttons pressed, then find all the analogue values and set them to zero
         //This means that if the player presses on the dpad whilst also using an analogue stick we ignore the thumbstick and use the dpad input instead
-        if (_verb_struct_u.raw_analogue) _value_u = 0.0;
-        if (_verb_struct_d.raw_analogue) _value_d = 0.0;
-        if (_verb_struct_l.raw_analogue) _value_l = 0.0;
-        if (_verb_struct_r.raw_analogue) _value_r = 0.0;
+        if (_verb_struct_u.__raw_analogue) _value_u = 0.0;
+        if (_verb_struct_d.__raw_analogue) _value_d = 0.0;
+        if (_verb_struct_l.__raw_analogue) _value_l = 0.0;
+        if (_verb_struct_r.__raw_analogue) _value_r = 0.0;
     }
     
     //Calculate the actual raw x/y values
@@ -71,8 +71,8 @@ function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0, _most_r
     
     if (_most_recent)
     {
-        if ((_value_l > 0.0) && (_value_r > 0.0)) { _dx = ((_verb_struct_l.press_time > _verb_struct_r.press_time)? -_value_l : _value_r); }
-        if ((_value_u > 0.0) && (_value_d > 0.0)) { _dy = ((_verb_struct_u.press_time > _verb_struct_d.press_time)? -_value_u : _value_d); }
+        if ((_value_l > 0.0) && (_value_r > 0.0)) { _dx = ((_verb_struct_l.__press_time > _verb_struct_r.__press_time)? -_value_l : _value_r); }
+        if ((_value_u > 0.0) && (_value_d > 0.0)) { _dy = ((_verb_struct_u.__press_time > _verb_struct_d.__press_time)? -_value_u : _value_d); }
     }
     
     //Calculate the displacement
@@ -107,10 +107,10 @@ function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0, _most_r
     var _min_threshold = 0.0;
     var _max_threshold = 0.0;
     
-    if (_value_l > 0.0) { _active_count++;   _min_threshold += _verb_struct_l.min_threshold;   _max_threshold += _verb_struct_l.max_threshold; }
-    if (_value_r > 0.0) { _active_count++;   _min_threshold += _verb_struct_r.min_threshold;   _max_threshold += _verb_struct_r.max_threshold; }
-    if (_value_u > 0.0) { _active_count++;   _min_threshold += _verb_struct_u.min_threshold;   _max_threshold += _verb_struct_u.max_threshold; }
-    if (_value_d > 0.0) { _active_count++;   _min_threshold += _verb_struct_d.min_threshold;   _max_threshold += _verb_struct_d.max_threshold; }
+    if (_value_l > 0.0) { _active_count++;   _min_threshold += _verb_struct_l.__min_threshold;   _max_threshold += _verb_struct_l.__max_threshold; }
+    if (_value_r > 0.0) { _active_count++;   _min_threshold += _verb_struct_r.__min_threshold;   _max_threshold += _verb_struct_r.__max_threshold; }
+    if (_value_u > 0.0) { _active_count++;   _min_threshold += _verb_struct_u.__min_threshold;   _max_threshold += _verb_struct_u.__max_threshold; }
+    if (_value_d > 0.0) { _active_count++;   _min_threshold += _verb_struct_d.__min_threshold;   _max_threshold += _verb_struct_d.__max_threshold; }
     
     //Catch an edge case
     if (_active_count <= 0.0)

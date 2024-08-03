@@ -72,8 +72,8 @@ function __input_class_source(_source, _gamepad = undefined) constructor
     
     static __validate_binding = function(_binding)
     {
-        var _type  = _binding.type;
-        var _value = _binding.value;
+        var _type  = _binding.__type;
+        var _value = _binding.__value;
         
         if ((_type == __INPUT_BINDING_GAMEPAD_BUTTON) || (_type == __INPUT_BINDING_GAMEPAD_AXIS))
         {
@@ -81,22 +81,22 @@ function __input_class_source(_source, _gamepad = undefined) constructor
             if (__source == __INPUT_SOURCE.GAMEPAD)
             {
                 var _gamepad = __global.__gamepads[__gamepad];
-                if (!is_struct(_gamepad) || (_gamepad.mapping_gm_to_raw[$ _value] == undefined))
+                if (!is_struct(_gamepad) || (_gamepad.__mapping_gm_to_raw[$ _value] == undefined))
                 {
                     //Value not found in the mapping for the player's gamepad
                     return false;
                 }
                 
                 //Get raw value from mapping
-                var _mapping = _gamepad.mapping_gm_to_raw[$ _value];
-                var _raw = ((_mapping.raw == undefined)? _mapping.raw_negative : _mapping.raw);
+                var _mapping = _gamepad.__mapping_gm_to_raw[$ _value];
+                var _raw = ((_mapping.__raw == undefined)? _mapping.__raw_negative : _mapping.__raw);
                 if (_raw == undefined)
                 {
                     //Raw value invalid
                     return false;
                 }
                 
-                if (_gamepad.xinput && ((_raw == __XINPUT_AXIS_LT) || (_raw == __XINPUT_AXIS_RT)))
+                if (_gamepad.__xinput && ((_raw == __XINPUT_AXIS_LT) || (_raw == __XINPUT_AXIS_RT)))
                 {
                     //Except XInput trigger values from range checks
                     return true;
@@ -104,7 +104,7 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                 
                 if (_raw == 0)
                 {
-                    var _hat_mask = ((_mapping.hat_mask == undefined)? _mapping.hat_mask_negative : _mapping.hat_mask);        
+                    var _hat_mask = ((_mapping.__hat_mask == undefined)? _mapping.__hat_mask_negative : _mapping.__hat_mask);        
                     if (_hat_mask != undefined)
                     {
                         //Validate hat mappings
@@ -132,8 +132,8 @@ function __input_class_source(_source, _gamepad = undefined) constructor
                 
                 if (__INPUT_ON_ANDROID)
                 {
-                    if (((_value >= 16) && (_value <=  19))
-                    ||  ((_value >= 96) && (_value <= 122)))
+                    if (((_value >= 0x10) && (_value <= 0x13))
+                    ||  ((_value >= 0x60) && (_value <= 0x7A)))
                     {
                         //Command keys that overlap alpha don't register on Android, are invalid binds
                         return false;
@@ -290,7 +290,7 @@ function __input_source_scan_for_binding(_source, _gamepad, _player_index, _retu
                     if (input_gamepad_is_axis(_gamepad, _check))
                     {
                         var _value = input_gamepad_value(_gamepad, _check);
-                        if ((abs(_value) > input_axis_threshold_get(_check, _player_index).mini) && _filter_func(_check, _ignore_struct, _allow_struct))
+                        if ((abs(_value) > input_axis_threshold_get(_check, _player_index).__mini) && _filter_func(_check, _ignore_struct, _allow_struct))
                         {
                             if (_return_boolean) return true;
                             var _binding = input_binding_gamepad_axis(_check, (_value < 0));

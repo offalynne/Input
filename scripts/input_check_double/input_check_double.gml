@@ -3,7 +3,7 @@
 ///          The double tap threshold is defined by INPUT_DOUBLE_DELAY
 ///          If an array of verbs is given then this function will return <true> if ANY verb has been doubled-tapped and held
 ///          If a buffer duration is specified then this function will return <true> if the verb has been double-tapped and held at any point within that timeframe
-/// @param   verb/array
+/// @param   {any} verb/array
 /// @param   [playerIndex=0]
 /// @param   [bufferDuration=0]
 
@@ -30,10 +30,10 @@ function input_check_double(_verb, _player_index = 0, _buffer_duration = 0)
     
     if (_buffer_duration <= 0)
     {
-        return _verb_struct.double_held;
+        return _verb_struct.__double_held;
     }
     else
     {
-        return ((_verb_struct.double_held_time >= 0) && ((__input_get_time() - _verb_struct.double_held_time) <= _buffer_duration));
+        return ((_verb_struct.__double_held_time >= 0) && ((__input_get_time() - _verb_struct.__double_held_time) <= _buffer_duration));
     }
 }

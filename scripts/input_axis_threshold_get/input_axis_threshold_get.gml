@@ -1,7 +1,7 @@
 // Feather disable all
 /// @desc    Returns the activation threshold for a specific gamepad axis for a player
 ///          If no activation threshold has been set this function returns <undefined>
-/// @param   axis
+/// @param   {Constant.GamepadAxis|Constant.GamepadButton} axis
 /// @param   [playerIndex]
 
 function input_axis_threshold_get(_axis, _player_index = 0)

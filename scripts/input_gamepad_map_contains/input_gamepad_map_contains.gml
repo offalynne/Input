@@ -1,7 +1,7 @@
 // Feather disable all
 /// @desc    Returns if the indicated buttons/axes are mapped for the current gamepad
 /// @param   gamepadIndex
-/// @param   GMconstant/array
+/// @param   {Constant.GamepadAxis|Constant.GamepadButton} GMconstant/array
 
 function input_gamepad_map_contains(_index, _gm)
 {
@@ -23,7 +23,7 @@ function input_gamepad_map_contains(_index, _gm)
     repeat(array_length(_gm))
     {
         if ((input_gamepad_constant_get_name(_gm[_i]) == "unknown")
-        ||  (_gamepad.mapping_gm_to_raw[$ _gm[_i]] == undefined))
+        ||  (_gamepad.__mapping_gm_to_raw[$ _gm[_i]] == undefined))
         {
             return false;
         }

@@ -79,7 +79,7 @@ function input_binding_test_collisions(_verb_name, _src_binding, _player_index =
                         if ((_extant_binding.__label == _src_binding.__label)
                         &&  ((_global.__source_mode != INPUT_SOURCE_MODE.MULTIDEVICE) || (_extant_binding.__gamepad_index == _src_binding.__gamepad_index) || (_extant_binding.__gamepad_index == undefined) || (_src_binding.__gamepad_index == undefined)))
                         {
-                            array_push(_output_array, { verb: _verb, alternate: _alternate_index });
+                            array_push(_output_array, { __verb: _verb, __alternate: _alternate_index });
                         }
                     }
                     

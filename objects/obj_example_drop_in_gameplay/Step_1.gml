@@ -35,12 +35,12 @@ var _status = input_players_get_status();
 if (is_struct(_status))
 {
     //We've seen at least one disconnection - destroy an existing player object
-    if (array_length(_status.new_disconnections) > 0)
+    if (array_length(_status.__new_disconnections) > 0)
     {
         var _i = 0;
-        repeat(array_length(_status.new_disconnections))
+        repeat(array_length(_status.__new_disconnections))
         {
-            var _new_player = _status.new_disconnections[_i];
+            var _new_player = _status.__new_disconnections[_i];
             with(obj_example_mp_player)
             {
                 if (player == _new_player) instance_destroy();
@@ -51,12 +51,12 @@ if (is_struct(_status))
     }
     
     //We've seen at least one connection - create a new player object
-    if (array_length(_status.new_connections) > 0)
+    if (array_length(_status.__new_connections) > 0)
     {
         var _i = 0;
-        repeat(array_length(_status.new_connections))
+        repeat(array_length(_status.__new_connections))
         {
-            var _new_player = _status.new_connections[_i];
+            var _new_player = _status.__new_connections[_i];
             
             //Make sure we don't accidentally spawn one than one object per player
             var _existing = false;

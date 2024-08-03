@@ -6,7 +6,7 @@
 /// @param string              The CSV string to be decoded
 /// @param [cellDelimiter]     Character to use to indicate where cells start and end
 
-function __input_csv_to_array(_csv_string, _cell_delimiter = ",")
+function __input_csv_to_array(_csv_string)
 {
     var _lines = string_split(_csv_string, "\n", true);
     var _array = [];
@@ -14,8 +14,7 @@ function __input_csv_to_array(_csv_string, _cell_delimiter = ",")
     var _i = 0;
     repeat(array_length(_lines))
     {
-        array_push(_array, string_split(_lines[_i], _cell_delimiter, true));
-        
+        array_push(_array, string_split(_lines[_i], ",", true));      
         ++_i;
     }
     

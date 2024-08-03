@@ -94,7 +94,7 @@ function __input_system_tick()
     
     #region Application state
     
-    if (INPUT_ON_PC && !INPUT_ON_WEB)
+    if (INPUT_ON_PC || INPUT_ON_WEB)
     {
         if (os_is_paused())
         {
@@ -122,8 +122,8 @@ function __input_system_tick()
             }
             else if ((keyboard_key != vk_nokey) 
                  ||  (mouse_button != mb_none)
-                 ||  (__INPUT_ON_WINDOWS && window_has_focus())
-                 ||  (__INPUT_ON_MACOS   && _global.__pointer_moved))
+                 ||  ((__INPUT_ON_WINDOWS || INPUT_ON_WEB) && window_has_focus())
+                 ||  (__INPUT_ON_MACOS && !INPUT_ON_WEB && _global.__pointer_moved))
             {
                 //Regained focus
                 _global.__window_focus = true;
@@ -139,9 +139,10 @@ function __input_system_tick()
             }
         }
     }
-
-    _global.__game_input_allowed = INPUT_ALLOW_OUT_OF_FOCUS || _global.__window_focus;
     
+    var _game_input_allowed_previous = _global.__game_input_allowed;
+    
+    _global.__game_input_allowed = INPUT_ALLOW_OUT_OF_FOCUS || _global.__window_focus;    
     _global.__overlay_focus = false;
     
     if (_global.__using_steamworks)
@@ -164,6 +165,23 @@ function __input_system_tick()
             if (_global.__gamepad_tester_data.__block_input)
             {
                 _global.__game_input_allowed = false;
+            }
+        }
+    }
+    
+    //Set Windows IME availability based on focus loss and regain
+    //see https://github.com/YoYoGames/GameMaker-Bugs/issues/5524
+    if (__INPUT_ON_WINDOWS)
+    {
+        if (_global.__game_input_allowed != _game_input_allowed_previous)
+        {
+            if (_global.__game_input_allowed)
+            {
+                keyboard_virtual_hide();
+            }
+            else
+            {
+                keyboard_virtual_show(kbv_type_default, kbv_returnkey_default, kbv_autocapitalize_none, false);
             }
         }
     }
@@ -408,7 +426,7 @@ function __input_system_tick()
                     //Meta release sticks every key pressed during hold
                     //This is "the nuclear option", but the problem is severe
                     var _i = 8;
-                    var _len = 255 - _i;
+                    var _len = 0xFF - _i;
                     repeat(_len)
                     {
                         keyboard_key_release(_i);
@@ -508,24 +526,24 @@ function __input_system_tick()
                 {
                     with (_gamepad)
                     {
-                        if ((os_type == os_switch) && (description != gamepad_get_description(_g)))
+                        if ((os_type == os_switch) && (__description != gamepad_get_description(_g)))
                         {
                             //When Switch L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
                             //Instead we have to check for changes in the description to see if state has changed
-                            discover();
+                            __discover();
                         }
                         else
                         {
                             if (_steam_handles_changed) 
                             {
-                                virtual_set();
-                                led_set();
+                                __virtual_set();
+                                __led_set();
                             }
                         }
                     }
                 }
                 
-                var _sustain_connection = _gamepad.tick(_connected);
+                var _sustain_connection = _gamepad.__tick(_connected);
                 _global.__gamepad_connections_internal[_g] = _sustain_connection;
                 
                 if not (_sustain_connection)
@@ -533,7 +551,7 @@ function __input_system_tick()
                     //Remove our gamepad handler
                     if (!__INPUT_SILENT) __input_trace("Gamepad ", _g, " disconnected");
                         
-                    gamepad_set_vibration(_global.__gamepads[_g].index, 0, 0);
+                    gamepad_set_vibration(_global.__gamepads[_g].__index, 0, 0);
                     _global.__gamepads[@ _g] = undefined;
                         
                     //Also report gamepad changes for any active players
@@ -635,7 +653,7 @@ function __input_system_tick()
     var _p = 0;
     repeat(INPUT_MAX_PLAYERS)
     {
-        _global.__players[_p].tick();
+        _global.__players[_p].__tick();
         ++_p;
     }
     
@@ -647,9 +665,9 @@ function __input_system_tick()
     
     var _any_players_changed = false;
     
-    var _connection_array    = _global.__players_status.new_connections;
-    var _disconnection_array = _global.__players_status.new_disconnections;
-    var _status_array        = _global.__players_status.players;
+    var _connection_array    = _global.__players_status.__new_connections;
+    var _disconnection_array = _global.__players_status.__new_disconnections;
+    var _status_array        = _global.__players_status.__players;
     
     array_resize(_connection_array,    0);
     array_resize(_disconnection_array, 0);
@@ -665,7 +683,7 @@ function __input_system_tick()
             {
                 _any_players_changed = true;
                 _status_array[@ _p] = INPUT_STATUS.NEWLY_CONNECTED;
-                array_push(_global.__players_status.new_connections, _p);
+                array_push(_global.__players_status.__new_connections, _p);
             }
             else
             {
@@ -678,7 +696,7 @@ function __input_system_tick()
             {
                 _any_players_changed = true;
                 _status_array[@ _p] = INPUT_STATUS.NEWLY_DISCONNECTED;
-                array_push(_global.__players_status.new_disconnections, _p);
+                array_push(_global.__players_status.__new_disconnections, _p);
             }
             else
             {
@@ -689,7 +707,7 @@ function __input_system_tick()
         ++_p;
     }
     
-    _global.__players_status.any_changed = _any_players_changed;
+    _global.__players_status.__any_changed = _any_players_changed;
     
     #endregion
     
@@ -699,9 +717,9 @@ function __input_system_tick()
     
     var _any_gamepads_changed = false;
     
-    var _connection_array    = _global.__gamepads_status.new_connections;
-    var _disconnection_array = _global.__gamepads_status.new_disconnections;
-    var _status_array        = _global.__gamepads_status.gamepads;
+    var _connection_array    = _global.__gamepads_status.__new_connections;
+    var _disconnection_array = _global.__gamepads_status.__new_disconnections;
+    var _status_array        = _global.__gamepads_status.__gamepads;
     
     array_resize(_connection_array,    0);
     array_resize(_disconnection_array, 0);
@@ -751,7 +769,7 @@ function __input_system_tick()
         ++_g;
     }
     
-    _global.__gamepads_status.any_changed = _any_gamepads_changed;
+    _global.__gamepads_status.__any_changed = _any_gamepads_changed;
     
     #endregion
     

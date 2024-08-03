@@ -11,16 +11,16 @@ function input_cursor_limit_get(_player_index = 0)
     with(_global.__players[_player_index].__cursor)
     {
         return {
-            left:   __limit_l,
-            top:    __limit_t,
-            right:  __limit_r,
-            bottom: __limit_b,
+            __left:   __limit_l,
+            __top:    __limit_t,
+            __right:  __limit_r,
+            __bottom: __limit_b,
             
-            circle_x:      __limit_x,
-            circle_y:      __limit_y,
-            circle_radius: __limit_radius,
+            __circle_x:      __limit_x,
+            __circle_y:      __limit_y,
+            __circle_radius: __limit_radius,
             
-            boundary_margin: __limit_boundary_margin,
+            __boundary_margin: __limit_boundary_margin,
         }
     }
 }

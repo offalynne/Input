@@ -20,9 +20,9 @@ function input_check_press_most_recent(_verb_array = all, _player_index = 0)
         var _verb = _verb_array[_i];
         var _verb_struct = _verbs_struct[$ _verb];
         
-        if ((_verb_struct.press_time > _max_time) && input_check(_verb, _player_index))
+        if ((_verb_struct.__press_time > _max_time) && input_check(_verb, _player_index))
         {
-            _max_time = _verb_struct.press_time;
+            _max_time = _verb_struct.__press_time;
             _max_verb = _verb;
         }
         
