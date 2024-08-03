@@ -1,7 +1,7 @@
 // Feather disable all
 /// @desc    Returns the difference in value between this frame and the previous frame for the given button/axis
 /// @param   gamepadIndex
-/// @param   GMconstant
+/// @param   {Constant.GamepadAxis|Constant.GamepadButton} GMconstant
 
 function input_gamepad_delta(_index, _gm)
 {

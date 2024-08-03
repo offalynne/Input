@@ -1,7 +1,7 @@
 // Feather disable all
 /// @desc    Checks if the given button/axis is newly activated this frame
 /// @param   gamepadIndex
-/// @param   GMconstant
+/// @param   {Constant.GamepadAxis|Constant.GamepadButton} GMconstant
 
 function input_gamepad_check_pressed(_index, _gm)
 {
