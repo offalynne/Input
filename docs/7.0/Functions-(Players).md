@@ -76,6 +76,35 @@ draw_text(x, y, _string);
 
 &nbsp;
 
+## …player_disconnect
+
+`input_player_disconnect([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|#### **Example**
+
+```gml
+//Disconnect second to fourth players
+if (menu_opened)
+{
+    for(var _i = 1; _i < 4; i++)
+    {
+        input_player_disconnect(_i);
+    }
+}
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
 ## …players_get_status
 
 `input_players_get_status()`
