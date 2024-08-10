@@ -1146,7 +1146,7 @@ function __input_gamepad_set_mapping()
         if (is_array(__sdl2_definition))
         {            
             var _i = 2;
-            repeat(array_length(__sdl2_definition) - 3)
+            repeat(array_length(__sdl2_definition) - 2)
             {
                 var _entry = __sdl2_definition[_i];
                 var _pos = string_pos(":", _entry);
@@ -1174,7 +1174,10 @@ function __input_gamepad_set_mapping()
                 var _gm_constant = _global.__sdl2_look_up_table[$ _entry_name];
                 if (_gm_constant == undefined)
                 {
-                    if (!__INPUT_SILENT) __input_trace("Warning! Entry name \"", _entry_name, "\" not recognised (full string was \"", _entry, "\")");
+                    if (_entry_name != "platform")
+                    {
+                        if (!__INPUT_SILENT) __input_trace("Warning! Entry name \"", _entry_name, "\" not recognised (full string was \"", _entry, "\")");
+                    }
                 }
                 else
                 {
