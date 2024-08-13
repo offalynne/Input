@@ -989,7 +989,7 @@ function __input_initialize()
                 if (__INPUT_ON_WINDOWS) _identifier = _map[? "video_adapter_description"];
             
                 //Steam Deck GPU identifier
-                if ((_identifier != undefined) && __input_string_contains(_identifier, "AMD Custom GPU 04"))
+                if ((_identifier != undefined) && __input_string_contains(_identifier, "AMD Custom GPU 0"))
                 {
                     _global.__on_steam_deck = true;
                 }
