@@ -4,7 +4,7 @@
 2dc8,3012,CommunityLikeXBox // 8BitDo Wireless Ultimate DInput
 2dc8,3013,CommunityLikeXBox // 8BitDo Wireless Ultimate DInput
 2dc8,3015,CommunityLikeXbox // 8BitDo Ultimate C USB DInput
-2dc8,3016,CommunityLikeXbox // 8BitDo Ultimwheeate C 2.4g Adapter DInput
+2dc8,3016,CommunityLikeXbox // 8BitDo Ultimate C 2.4g Adapter DInput
 2dc8,3017,CommunityLikeXbox // 8BitDo Ultimate C 2.4g USB DInput
 20bc,6050,CommunityLikeXBox // Xiaomi XMGP01YM
 2717,5033,CommunityLikeXBox // Xiaomi XMGP01YM
