@@ -4,24 +4,21 @@
 
 ## …binding_scan_start
 
-`input_binding_scan_start(successCallback, [failureCallback], [sourceFilter], [playerIndex])`
+`input_binding_scan_start(successCallback, [failureCallback], [playerIndex])`
 
 <!-- tabs:start -->
 
 #### **Description**
-
+sc`
 **Returns:** N/A (`undefined`)
 
 |Name               |Datatype                         |Purpose                                                                                                                 |
 |-------------------|---------------------------------|------------------------------------------------------------------------------------------------------------------------|
 |`successCallback`  |method                           |Callback function to execute when the binding scan process completes successfully                                       |
 |`[failureCallback]`|method                           |Callback function to execute when the binding scan process fails. If not specified, no function is executed upon failure|
-|`[sourceFilter]`   |array of [sources](Input-Sources)|[Input sources](Input-Sources) to listen to. If not specified, all of the chosen player's current sources are used      |
 |`[playerIndex]`    |integer                          |Player to target. If not specified, player 0 is targeted                                                                |
 
 This function will scan for input from a player and then execute a callback when a new, valid input was detected. The success callback is passed a single argument which is the new binding that corresponds to the detected input. After you receive the new binding in the success callback, you should then set that binding for the desired verb using `input_binding_set_safe()` (or `input_binding_set()` if you want to live dangerously).
-
-Bindings that have not been emitted by [sources](Input-Sources) defined by the `sourceFilter` argument will be ignored.
 
 If something unexpected happens (for example, the player's gamepad is disconnected) then this function will attempt to execute the failure callback. The failure callback is given a single argument too, though this time the value is an error code from the `INPUT_BINDING_SCAN_EVENT` enum. Error codes that this function can return are as follows:
 
