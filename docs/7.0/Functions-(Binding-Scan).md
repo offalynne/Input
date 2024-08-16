@@ -9,7 +9,7 @@
 <!-- tabs:start -->
 
 #### **Description**
-sc`
+
 **Returns:** N/A (`undefined`)
 
 |Name               |Datatype                         |Purpose                                                                                                                 |
