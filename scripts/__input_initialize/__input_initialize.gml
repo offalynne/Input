@@ -293,7 +293,6 @@ function __input_initialize()
     _global.__window_focus       = true;
     _global.__overlay_focus      = false;
     _global.__game_input_allowed = true;
-    _global.__use_native_focus   = (INPUT_ON_WINDOWS || INPUT_ON_WEB);
 
     //Accessibility state
     _global.__toggle_momentary_dict  = {};

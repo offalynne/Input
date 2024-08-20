@@ -100,7 +100,7 @@ function __input_gamepad_set_type()
                 }
                 else if (__input_string_contains(_desc, "8bitdo"))
                 {
-                    if (__input_string_contains(_desc, "xbox", "ultimate", "zero", "2c") && !__input_string_contains(_desc, "zero 2"))
+                    if (__input_string_contains(_desc, "xbox", "ultimate", "zero") && !__input_string_contains(_desc, "zero 2"))
                     {
                         __raw_type = "CommunityLikeXBox";
                     }
