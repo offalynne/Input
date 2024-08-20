@@ -6,6 +6,8 @@
 2dc8,3015,CommunityLikeXbox // 8BitDo Ultimate C USB DInput
 2dc8,3016,CommunityLikeXbox // 8BitDo Ultimate C 2.4g Adapter DInput
 2dc8,3017,CommunityLikeXbox // 8BitDo Ultimate C 2.4g USB DInput
+2dc8,301b,CommunityLikeXBox // 8BitDo Ultimate 2C
+2dc8,310a,CommunityLikeXBox // 8BitDo Ultimate 2C
 20bc,6050,CommunityLikeXBox // Xiaomi XMGP01YM
 2717,5033,CommunityLikeXBox // Xiaomi XMGP01YM
 0c12,880a,CommunityLikeXBox // Xbox Controller
@@ -175,6 +177,7 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 1781,0a99,CommunitySNES // Raphnet NES Adapter
 289b,0007,CommunitySNES // Raphnet Famicom Adapter
 2e24,486a,CommunitySNES // Hyperkin RetroN Sq
+2e24,200a,CommunitySNES // Hyperkin Scout Premium Wireless BT
 1235,ab21,CommunitySuperFamicom // 8BitDo SFC30
 2810,0009,CommunitySuperFamicom // 8BitDo SFC30
 2dc8,2830,CommunitySuperFamicom // 8BitDo SFC30
@@ -424,6 +427,7 @@ dead,beef,CommunityPSX // Hidromancer
 6666,8802,CommunityPSX // SuperJoy Box Adapter
 6666,8804,CommunityPSX // SuperJoy Box Adapter
 145f,0231,CommunityPSX // MY-POWER CO. LTD. Gamepad
+14fe,232a,CommunityPSX // PlayStation USB Adapter
 0e8f,1114,CommunityPS4 // Gamo2 Divaller
 0f0d,0101,CommunityPS4 // Hori Miku FT PS4 Controller
 0f0d,00a5,CommunityPS4 // Hori Miku PS4 Controller
@@ -478,6 +482,7 @@ dead,beef,CommunityPSX // Hidromancer
 2dc8,2869,CommunityN64 // 8Bitdo N64 Modkit
 2f24,00f4,CommunityN64 // Mayflash N64 Adapter
 0e6f,1113,CommunityN64 // Whitelabel N64 Controller
+2f24,00f5,CommunityN64 // Mayflash N64 Adapter MF103
 289b,0008,CommunityDreamcast // Raphnet Dreamcast Adapter
 289b,00d0,CommunityDreamcast // Raphnet Dreamcast Adapter
 2836,0001,CommunityOuya // Ouya Controller
