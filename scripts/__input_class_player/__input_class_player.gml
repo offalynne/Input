@@ -1494,22 +1494,21 @@ function __input_class_player() constructor
     
     static __motion_data_get = function()
     {
+        static _static_output = {
+            acceleration_x: 0.0,
+            acceleration_y: 0.0,
+            acceleration_z: 0.0,
+            
+            angular_velocity_x: 0.0,
+            angular_velocity_y: 0.0,
+            angular_velocity_z: 0.0,
+        };
+        
         if ((__global.__source_mode == INPUT_SOURCE_MODE.MIXED) && (__gyro_gamepad == undefined))
         {
-            static __mixed_motion = {};
-            with  (__mixed_motion)
-            {
-                __acceleration_x = 0.0;
-                __acceleration_y = 0.0;
-                __acceleration_z = 0.0;
-
-                __angular_velocity_x = 0.0;
-                __angular_velocity_y = 0.0;
-                __angular_velocity_z = 0.0;
-            }
     
             var _source_motion = undefined;
-            var _motion_names  = variable_struct_get_names(__mixed_motion);
+            var _motion_names  = variable_struct_get_names(_static_output);
             var _using_motion  = false;
         
             var _name    = 0;
@@ -1524,15 +1523,15 @@ function __input_class_player() constructor
                 _name = 0;
                 repeat(array_length(_motion_names))
                 {
-                    __mixed_motion[$ _motion_names[_name]] += _source_motion[$ _motion_names[_name]];
+                    _static_output[$ _motion_names[_name]] += _source_motion[$ _motion_names[_name]];
                     ++_name;
                 }
         
                 ++_gamepad;
             }
     
-            if not (_using_motion) __mixed_motion.__acceleration_y = -1.0;
-            return __mixed_motion;
+            if not (_using_motion) _static_output.__acceleration_y = -1.0;
+            return _static_output;
         }
     
         var _gamepad_index = __gyro_gamepad;
@@ -1541,9 +1540,49 @@ function __input_class_player() constructor
             _gamepad_index = __source_get_gamepad();
         }
     
-        if ((_gamepad_index < 0) || !is_struct(__global.__gamepads[_gamepad_index].__motion))
+        if ((_gamepad_index < 0) || (not is_struct(__global.__gamepads[_gamepad_index].__motion)))
         {
-            return undefined;
+            if (__INPUT_ON_IOS || __INPUT_ON_ANDROID)
+            {
+                with(_static_output)
+                {
+                    acceleration_x = 0;
+                    acceleration_y = 0;
+                    acceleration_z = 0;
+                    
+                    var _orientation = display_get_orientation();
+                    if (_orientation == display_landscape)
+                    {
+                        angular_velocity_x =  device_get_tilt_y();
+                        angular_velocity_y =  device_get_tilt_x();
+                        angular_velocity_z = -device_get_tilt_z();
+                    }
+                    else if (_orientation == display_landscape_flipped)
+                    {
+                        angular_velocity_x = -device_get_tilt_y();
+                        angular_velocity_y = -device_get_tilt_x();
+                        angular_velocity_z = -device_get_tilt_z();
+                    }
+                    else if (_orientation == display_portrait)
+                    {
+                        angular_velocity_x =  device_get_tilt_x();
+                        angular_velocity_y =  device_get_tilt_y();
+                        angular_velocity_z = -device_get_tilt_z();
+                    }
+                    else if (_orientation == display_portrait_flipped)
+                    {
+                        angular_velocity_x = -device_get_tilt_x();
+                        angular_velocity_y = -device_get_tilt_y();
+                        angular_velocity_z = -device_get_tilt_z();
+                    }
+                }
+                
+                return _static_output;
+            }
+            else
+            {
+                return undefined;
+            }
         }
 
         return __global.__gamepads[_gamepad_index].__motion.__tick();
