@@ -717,6 +717,19 @@ function __input_system_tick()
     #endregion
     
     
+        
+    #region Mobile motion
+    
+    if (INPUT_ON_MOBILE && INPUT_MOBILE_MOTION)
+    {
+        _global.__tilt_x_previous = device_get_tilt_x();
+        _global.__tilt_y_previous = device_get_tilt_y();
+        _global.__tilt_z_previous = device_get_tilt_z();
+    }
+    
+    #endregion
+    
+    
     
     #region Gamepads status struct
     

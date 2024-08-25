@@ -1494,22 +1494,65 @@ function __input_class_player() constructor
     
     static __motion_data_get = function()
     {
-        if ((__global.__source_mode == INPUT_SOURCE_MODE.MIXED) && (__gyro_gamepad == undefined))
+        static _static_output = {
+            __acceleration_x: 0.0,
+            __acceleration_y: 0.0,
+            __acceleration_z: 0.0,
+            
+            __angular_velocity_x: 0.0,
+            __angular_velocity_y: 0.0,
+            __angular_velocity_z: 0.0,
+        };
+        
+        if (INPUT_ON_MOBILE)
         {
-            static __mixed_motion = {};
-            with  (__mixed_motion)
-            {
-                __acceleration_x = 0.0;
-                __acceleration_y = 0.0;
-                __acceleration_z = 0.0;
-
-                __angular_velocity_x = 0.0;
-                __angular_velocity_y = 0.0;
-                __angular_velocity_z = 0.0;
+        	if ((__global.__touch_player == self) && INPUT_MOBILE_MOTION)
+        	{
+        		with(_static_output)
+                {
+                    __acceleration_x =  0.0;
+                    __acceleration_y = -1.0;
+                    __acceleration_z =  0.0;
+            
+                    var _orientation = display_get_orientation();
+                    if (_orientation == display_landscape)
+                    {
+                        __angular_velocity_x =  (device_get_tilt_y() - __global.__tilt_y_previous)*(pi/2);
+                        __angular_velocity_y =  (device_get_tilt_x() - __global.__tilt_x_previous)*(pi/2);
+                        __angular_velocity_z = -(device_get_tilt_z() - __global.__tilt_z_previous)*(pi/2);
+                    }
+                    else if (_orientation == display_landscape_flipped)
+                    {
+                        __angular_velocity_x = -(device_get_tilt_y() - __global.__tilt_y_previous)*(pi/2);
+                        __angular_velocity_y = -(device_get_tilt_x() - __global.__tilt_x_previous)*(pi/2);
+                        __angular_velocity_z = -(device_get_tilt_z() - __global.__tilt_z_previous)*(pi/2);
+                    }
+                    else if (_orientation == display_portrait)
+                    {
+                        __angular_velocity_x =  (device_get_tilt_x() - __global.__tilt_x_previous)*(pi/2);
+                        __angular_velocity_y =  (device_get_tilt_y() - __global.__tilt_y_previous)*(pi/2);
+                        __angular_velocity_z = -(device_get_tilt_z() - __global.__tilt_z_previous)*(pi/2);
+                    }
+                    else if (_orientation == display_portrait_flipped)
+                    {
+                        __angular_velocity_x = -(device_get_tilt_x() - __global.__tilt_x_previous)*(pi/2);
+                        __angular_velocity_y = -(device_get_tilt_y() - __global.__tilt_y_previous)*(pi/2);
+                        __angular_velocity_z = -(device_get_tilt_z() - __global.__tilt_z_previous)*(pi/2);
+                    }
+                }
             }
-    
+            else
+            {
+                static_output.__acceleration_y = -1.0;
+            }
+        
+            return _static_output;
+        }
+        
+        if ((__global.__source_mode == INPUT_SOURCE_MODE.MIXED) && (__gyro_gamepad == undefined))
+        {    
             var _source_motion = undefined;
-            var _motion_names  = variable_struct_get_names(__mixed_motion);
+            var _motion_names  = variable_struct_get_names(_static_output);
             var _using_motion  = false;
         
             var _name    = 0;
@@ -1524,15 +1567,15 @@ function __input_class_player() constructor
                 _name = 0;
                 repeat(array_length(_motion_names))
                 {
-                    __mixed_motion[$ _motion_names[_name]] += _source_motion[$ _motion_names[_name]];
+                    _static_output[$ _motion_names[_name]] += _source_motion[$ _motion_names[_name]];
                     ++_name;
                 }
         
                 ++_gamepad;
             }
     
-            if not (_using_motion) __mixed_motion.__acceleration_y = -1.0;
-            return __mixed_motion;
+            if not (_using_motion) _static_output.__acceleration_y = -1.0;
+            return _static_output;
         }
     
         var _gamepad_index = __gyro_gamepad;
@@ -1541,7 +1584,7 @@ function __input_class_player() constructor
             _gamepad_index = __source_get_gamepad();
         }
     
-        if ((_gamepad_index < 0) || !is_struct(__global.__gamepads[_gamepad_index].__motion))
+        if ((_gamepad_index < 0) || (not is_struct(__global.__gamepads[_gamepad_index].__motion)))
         {
             return undefined;
         }

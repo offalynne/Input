@@ -293,7 +293,7 @@ function __input_initialize()
     _global.__window_focus       = true;
     _global.__overlay_focus      = false;
     _global.__game_input_allowed = true;
-    _global.__use_native_focus   = (INPUT_ON_WINDOWS || INPUT_ON_WEB);
+    _global.__use_native_focus   = (__INPUT_ON_WINDOWS || INPUT_ON_WEB);
 
     //Accessibility state
     _global.__toggle_momentary_dict  = {};
@@ -1172,6 +1172,20 @@ function __input_initialize()
     #endregion
     
     
+    
+    #region Mobile motion
+    
+    if (INPUT_ON_MOBILE)
+    {
+        _global.__tilt_x_previous =  0.0;
+        _global.__tilt_y_previous = -1.0;
+        _global.__tilt_z_previous =  0.0;
+    }
+    
+    #endregion
+    
+    
+        
     //Whether gamepad motion is supported
     _global.__gamepad_motion_support = (__INPUT_ON_PS || __INPUT_ON_SWITCH || _global.__using_steamworks);
 

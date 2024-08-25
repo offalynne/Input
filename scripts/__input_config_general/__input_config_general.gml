@@ -6,6 +6,7 @@
 
 //Mobile platforms: Android, iOS, iPadOS, tvOS, HTML5 or OperaGX
 #macro INPUT_MOBILE_GAMEPAD       true
+#macro INPUT_MOBILE_MOTION        true
 
 #macro INPUT_MOBILE_MOUSE         false  //Maps touchscreen to mouse
 #macro INPUT_MOBILE_WEB_KEYBOARD  false  //Partially supported
