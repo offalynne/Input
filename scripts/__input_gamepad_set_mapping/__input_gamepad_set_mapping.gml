@@ -361,6 +361,36 @@ function __input_gamepad_set_mapping()
         #endregion
 
 
+        #region PowerA Switch controller on Windows
+
+        case "CommunityLikeSwitch":
+            if ((_vendor_and_product == "00000000") && __INPUT_ON_WINDOWS)
+            {
+                if (!__INPUT_SILENT) __input_trace("Setting PowerA Switch controller mapping");
+
+                __set_face_button_mapping();
+                __set_dpad_and_thumbstick_mapping();
+                
+                __set_mapping(gp_shoulderl,  4, __INPUT_MAPPING.BUTTON, "leftshoulder");
+                __set_mapping(gp_shoulderr,  5, __INPUT_MAPPING.BUTTON, "rightshoulder");
+                __set_mapping(gp_shoulderlb, 6, __INPUT_MAPPING.BUTTON, "lefttrigger");
+                __set_mapping(gp_shoulderrb, 7, __INPUT_MAPPING.BUTTON, "righttrigger");
+
+                __set_mapping(gp_select,  8, __INPUT_MAPPING.BUTTON, "back");
+                __set_mapping(gp_start,   9, __INPUT_MAPPING.BUTTON, "start");
+                __set_mapping(gp_guide,  12, __INPUT_MAPPING.BUTTON, "guide");
+                __set_mapping(gp_misc1,  13, __INPUT_MAPPING.BUTTON, "misc1");
+
+                __set_mapping(gp_stickl, 10, __INPUT_MAPPING.BUTTON, "leftstick");
+                __set_mapping(gp_stickr, 11, __INPUT_MAPPING.BUTTON, "rightstick");
+                
+                return;
+            }
+        break;
+
+        #endregion
+
+
         #region N64 controller overrides
 
         case "CommunityN64":
@@ -720,34 +750,10 @@ function __input_gamepad_set_mapping()
         #endregion
 
 
-        #region Nintendo Switch Controllers
+        #region Nintendo Switch Controllers on iOS
 
-        case "CommunityLikeSwitch":
-            if ((_vendor_and_product == "00000000") && __INPUT_ON_WINDOWS)
-            {
-                if (!__INPUT_SILENT) __input_trace("Setting PowerA Switch controller mapping");
-
-                __set_face_button_mapping();
-                __set_dpad_and_thumbstick_mapping();
-                
-                __set_mapping(gp_shoulderl,  4, __INPUT_MAPPING.BUTTON, "leftshoulder");
-                __set_mapping(gp_shoulderr,  5, __INPUT_MAPPING.BUTTON, "rightshoulder");
-                __set_mapping(gp_shoulderlb, 6, __INPUT_MAPPING.BUTTON, "lefttrigger");
-                __set_mapping(gp_shoulderrb, 7, __INPUT_MAPPING.BUTTON, "righttrigger");
-
-                __set_mapping(gp_select,  8, __INPUT_MAPPING.BUTTON, "back");
-                __set_mapping(gp_start,   9, __INPUT_MAPPING.BUTTON, "start");
-                __set_mapping(gp_guide,  12, __INPUT_MAPPING.BUTTON, "guide");
-                __set_mapping(gp_misc1,  13, __INPUT_MAPPING.BUTTON, "misc1");
-
-                __set_mapping(gp_stickl, 10, __INPUT_MAPPING.BUTTON, "leftstick");
-                __set_mapping(gp_stickr, 11, __INPUT_MAPPING.BUTTON, "rightstick");
-                
-                return;
-            }
-            
-        //Switch also uses Joy-Con Pair case   
         case "SwitchJoyConPair":
+        case "CommunityLikeSwitch":
             if (__INPUT_ON_IOS)
             {
                 __set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
