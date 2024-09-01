@@ -18,49 +18,51 @@ function __input_load_blacklist_csv(_filename)
     repeat(array_length(_row_array))
     {
         var _column_array = _row_array[_y];
+        if (array_length(_column_array) > 2)
+        {        
+            var _os          = _column_array[0];
+            var _filter_type = _column_array[1];
         
-        var _os          = _column_array[0];
-        var _filter_type = _column_array[1];
-        
-        var _os_struct = _global.__blacklist_dictionary[$ _os];
-        if (!is_struct(_os_struct))
-        {
-            _os_struct = {};
-            _global.__blacklist_dictionary[$ _os] = _os_struct;
-        }
-        
-        if (_filter_type == "description contains")
-        {
-            var _filter_array = _os_struct[$ _filter_type];
-            if (!is_struct(_filter_array))
+            var _os_struct = _global.__blacklist_dictionary[$ _os];
+            if (!is_struct(_os_struct))
             {
-                _filter_array = [];
-                _os_struct[$ _filter_type] = _filter_array;
+                _os_struct = {};
+                _global.__blacklist_dictionary[$ _os] = _os_struct;
             }
+        
+            if (_filter_type == "description contains")
+            {
+                var _filter_array = _os_struct[$ _filter_type];
+                if (!is_struct(_filter_array))
+                {
+                    _filter_array = [];
+                    _os_struct[$ _filter_type] = _filter_array;
+                }
             
-            var _x = 2;
-            repeat(array_length(_column_array) - 2)
-            {
-                array_push(_filter_array, _column_array[_x]);
-                _count++;
-                _x++;
+                var _x = 2;
+                repeat(array_length(_column_array) - 2)
+                {
+                    array_push(_filter_array, _column_array[_x]);
+                    _count++;
+                    _x++;
+                }
             }
-        }
-        else
-        {
-            var _filter_struct = _os_struct[$ _filter_type];
-            if (!is_struct(_filter_struct))
+            else
             {
-                _filter_struct = {};
-                _os_struct[$ _filter_type] = _filter_struct;
-            }
+                var _filter_struct = _os_struct[$ _filter_type];
+                if (!is_struct(_filter_struct))
+                {
+                    _filter_struct = {};
+                    _os_struct[$ _filter_type] = _filter_struct;
+                }
             
-            var _x = 2;
-            repeat(array_length(_column_array) - 2)
-            {
-                _filter_struct[$ _column_array[_x]] = true;
-                _count++;
-                _x++;
+                var _x = 2;
+                repeat(array_length(_column_array) - 2)
+                {
+                    _filter_struct[$ _column_array[_x]] = true;
+                    _count++;
+                    _x++;
+                }
             }
         }
         
