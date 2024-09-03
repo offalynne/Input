@@ -132,7 +132,7 @@ function __input_class_gamepad_mapping(_gm, _raw, _type, _sdl_name) constructor
     
     static __calibrate = function(_success)
     {
-        if ((type != __INPUT_MAPPING.BUTTON) || (gm == gp_padu) || (__gm == gp_padd) || (__gm == gp_padl) || (__gm == gp_padr))
+        if ((__type != __INPUT_MAPPING.BUTTON) || __input_axis_is_directional(__gm))
         {
             __value   = 0.0;
             __held    = false;

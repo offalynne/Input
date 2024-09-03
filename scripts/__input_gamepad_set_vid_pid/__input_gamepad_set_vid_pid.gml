@@ -94,14 +94,14 @@ function __input_gamepad_set_vid_pid()
     }
     else if (__INPUT_SDL2_SUPPORT)
     {
-       //Unpack the __vendor/__product IDs from the gamepad's GUIDc
+        //Unpack the __vendor/__product IDs from the gamepad's GUIDc
         if (__INPUT_ON_WINDOWS)
         {
             var _legacy = __input_string_contains(__guid, "000000000000504944564944"); //"PIDVID"
             var _result = __input_gamepad_guid_parse(__guid, _legacy, false);
             __vendor  = _result.vendor;
             __product = _result.product;
-            __xinput  = (__index < 4);
+            __xinput  = (__index < 4) && (gamepad_get_description(__index) == "XInput STANDARD GAMEPAD");
         }
         else if (__INPUT_ON_MACOS || __INPUT_ON_LINUX || __INPUT_ON_ANDROID)
         {

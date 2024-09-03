@@ -366,7 +366,7 @@ function __input_gamepad_set_mapping()
         case "CommunityN64":
             if (__guessed_type == true) break;
 
-            switch(__vendor + __product)
+            switch(_vendor_and_product)
             {
                 #region Mayflash N64 Adapter on MacOS
                 
@@ -720,10 +720,34 @@ function __input_gamepad_set_mapping()
         #endregion
 
 
-        #region Nintendo Switch Controllers on iOS
+        #region Nintendo Switch Controllers
 
-        case "SwitchJoyConPair":
         case "CommunityLikeSwitch":
+            if ((_vendor_and_product == "00000000") && __INPUT_ON_WINDOWS)
+            {
+                if (!__INPUT_SILENT) __input_trace("Setting PowerA Switch controller mapping");
+
+                __set_face_button_mapping();
+                __set_dpad_and_thumbstick_mapping();
+                
+                __set_mapping(gp_shoulderl,  4, __INPUT_MAPPING.BUTTON, "leftshoulder");
+                __set_mapping(gp_shoulderr,  5, __INPUT_MAPPING.BUTTON, "rightshoulder");
+                __set_mapping(gp_shoulderlb, 6, __INPUT_MAPPING.BUTTON, "lefttrigger");
+                __set_mapping(gp_shoulderrb, 7, __INPUT_MAPPING.BUTTON, "righttrigger");
+
+                __set_mapping(gp_select,  8, __INPUT_MAPPING.BUTTON, "back");
+                __set_mapping(gp_start,   9, __INPUT_MAPPING.BUTTON, "start");
+                __set_mapping(gp_guide,  12, __INPUT_MAPPING.BUTTON, "guide");
+                __set_mapping(gp_misc1,  13, __INPUT_MAPPING.BUTTON, "misc1");
+
+                __set_mapping(gp_stickl, 10, __INPUT_MAPPING.BUTTON, "leftstick");
+                __set_mapping(gp_stickr, 11, __INPUT_MAPPING.BUTTON, "rightstick");
+                
+                return;
+            }
+            
+        //Switch also uses Joy-Con Pair case   
+        case "SwitchJoyConPair":
             if (__INPUT_ON_IOS)
             {
                 __set_mapping(gp_face1, 1, __INPUT_MAPPING.BUTTON, "a");
@@ -1146,7 +1170,7 @@ function __input_gamepad_set_mapping()
         if (is_array(__sdl2_definition))
         {            
             var _i = 2;
-            repeat(array_length(__sdl2_definition) - 3)
+            repeat(array_length(__sdl2_definition) - 2)
             {
                 var _entry = __sdl2_definition[_i];
                 var _pos = string_pos(":", _entry);
@@ -1174,7 +1198,10 @@ function __input_gamepad_set_mapping()
                 var _gm_constant = _global.__sdl2_look_up_table[$ _entry_name];
                 if (_gm_constant == undefined)
                 {
-                    if (!__INPUT_SILENT) __input_trace("Warning! Entry name \"", _entry_name, "\" not recognised (full string was \"", _entry, "\")");
+                    if (_entry_name != "platform")
+                    {
+                        if (!__INPUT_SILENT) __input_trace("Warning! Entry name \"", _entry_name, "\" not recognised (full string was \"", _entry, "\")");
+                    }
                 }
                 else
                 {
@@ -1376,7 +1403,7 @@ function __input_gamepad_set_mapping()
             }
             
             //Reset Android keymapped dpad if necessary
-            if (__INPUT_ON_ANDROID && (__hat_count > 0) && (__vendor + __product == ""))
+            if (__INPUT_ON_ANDROID && (__hat_count > 0) && (_vendor_and_product == ""))
             {
                 var _mapping = undefined;
                 var _dpad_array = [gp_padu, gp_padd, gp_padl, gp_padr];

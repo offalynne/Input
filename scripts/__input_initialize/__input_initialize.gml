@@ -293,6 +293,7 @@ function __input_initialize()
     _global.__window_focus       = true;
     _global.__overlay_focus      = false;
     _global.__game_input_allowed = true;
+    _global.__use_native_focus   = (__INPUT_ON_WINDOWS || INPUT_ON_WEB);
 
     //Accessibility state
     _global.__toggle_momentary_dict  = {};
@@ -989,7 +990,7 @@ function __input_initialize()
                 if (__INPUT_ON_WINDOWS) _identifier = _map[? "video_adapter_description"];
             
                 //Steam Deck GPU identifier
-                if ((_identifier != undefined) && __input_string_contains(_identifier, "AMD Custom GPU 04"))
+                if ((_identifier != undefined) && __input_string_contains(_identifier, "AMD Custom GPU 0"))
                 {
                     _global.__on_steam_deck = true;
                 }
