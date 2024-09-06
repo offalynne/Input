@@ -155,9 +155,9 @@ if (input_binding_scan_in_progress())
 
 &nbsp;
 
-## …binding_scan_set_params
+## …binding_scan_params_set
 
-`input_binding_scan_set_params([ignoreArray], [allowArray], [sourceFilter], [playerIndex])`
+`input_binding_scan_params_set([ignoreArray], [allowArray], [sourceFilter], [playerIndex])`
 
 <!-- tabs:start -->
 
@@ -182,7 +182,7 @@ This function sets up arrays of potential bindings to ignore or allow. This allo
 
 ```gml
 //Only allow bindings from gamepads, and only scan for face buttons and shoulder buttons
-input_binding_scan_set_params([], //Don't block anything since we're using the allow array
+input_binding_scan_params_set([], //Don't block anything since we're using the allow array
 [
 	gp_face1, gp_face2, gp_face3, gp_face4,
 	gp_shoulderl,  gp_shoulderr,
@@ -195,21 +195,21 @@ INPUT_GAMEPAD);
 
 &nbsp;
 
-## …binding_scan_get_params
+## …binding_scan_params_get
 
-`input_binding_scan_get_params([playerIndex])`
+`input_binding_scan_params([playerIndex])`
 
 <!-- tabs:start -->
 
 #### **Description**
 
-**Returns:** Struct, the binding scanning parameters set by `input_binding_scan_set_params()`
+**Returns:** Struct, the binding scanning parameters set by `input_binding_scan_params_set()`
 
 |Name           |Datatype|Purpose                                                 |
 |---------------|--------|--------------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is targeted|
 
-The struct returned by this function has three elements (`.ignore_array` `.allow_array` `.source_filter`) which corresponds to the values passed to `input_binding_scan_set_params()`. Editing the content in the returned struct will not implictly change behaviour for binding scanning, and the order of elements in arrays returned by this function may not exactly match what was set via `input_binding_scan_set_params()`.
+The struct returned by this function has three elements (`.ignore_array` `.allow_array` `.source_filter`) which corresponds to the values passed to `input_binding_scan_params_set()`. Editing the content in the returned struct will not implictly change behaviour for binding scanning, and the order of elements in arrays returned by this function may not exactly match what was set via `input_binding_scan_params_set()`.
 
 <!-- tabs:end -->
 
