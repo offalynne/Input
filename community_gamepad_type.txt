@@ -299,6 +299,7 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 beef,feed,CommunityXBox360 // Monect
 1949,0402,CommunityXBox360 // Xbox
 0079,0002,CommunityXBox360 // Arcade Board
+0e6f,0315,CommunityXBox360 // Afterglow
 10f5,7008,CommunityXBoxOne // Turtle Beach Recon
 2dc8,2101,CommunityXBoxOne // 8BitDo Xbox One SN30 Pro
 0e6f,d802,CommunityXBoxOne // PDP Xbox Series
