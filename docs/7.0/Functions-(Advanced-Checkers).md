@@ -610,3 +610,39 @@ For on/off inputs, this function will return `0.0` or `1.0`.
 If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter, this function will return the **sum** of the verb values for the player.
 
 <!-- tabs:end -->
+
+&nbsp;
+
+## …radial_sector
+
+`input_radial_sector(verbLeft, verbRight, verbUp, verbDown, [minAngle], [maxAngle], [minMagnitude], [maxMagnitude], [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the vector represented by the sum of the verb values points to the radial sector indicated by angle and magnitude bounds
+
+|Name            |Datatype                  |Purpose                                                                                                                                 |
+|----------------|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|`verbLeft`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim left                                                                             |
+|`verbRight`     |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim right                                                                            |
+|`verbUp`        |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim up                                                                               |
+|`verbDown`      |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) that moves the point of aim down                                                                             |
+|`[minAngle]`    |number                    |Minimum angle for the sector. If not specified, `0` is used                                                                             |
+|`[maxAngle]`    |number                    |Maximum angle for the sector. If not specified, `360` is used                                                                           |
+|`[minMagnitude]`|number                    |Minimum magnitude for the sector. Must be between `0` (centre of the circle) and `1` (edge of the circle). If not specified, `0` is used|
+|`[maxMagnitude]`|number                    |Maximum magnitude for the sector. Must be between `0` (centre of the circle) and `1` (edge of the circle). If not specified, `1` is used|
+|`[playerIndex]` |integer                   |Player to target. If not specified, player 0 is used                                                                                    |
+
+#### **Example**
+
+```gml
+//Run if the input directional vector points right with a magnitude of 0.5 or greater
+if (input_radial_sector("left", "right", "up", "down", -45, 45, 0.5))
+{
+    //Run right!
+}
+```
+
+<!-- tabs:end -->
