@@ -83,7 +83,7 @@ The following constants allow you to reference specific gamepad types. These con
 |`INPUT_GAMEPAD_TYPE_PS5`         |PS5                  |
 |`INPUT_GAMEPAD_TYPE_PS4`         |PS4                  |
 |`INPUT_GAMEPAD_TYPE_PSX`         |PS1, PS2, PS3        |
-|`INPUT_GAMEPAD_TYPE_SWITCH`      |Switch Handheld Mode, Switch Lite, Switch Joy-Con Pair, Switch Pro, Switch 3rd party, WiiU, Wii |
+|`INPUT_GAMEPAD_TYPE_SWITCH`      |Switch Handheld, Lite, Joy-Con Pair, Pro, 3rd party, WiiU, Wii |
 |`INPUT_GAMEPAD_TYPE_JOYCON_LEFT` |Switch Joy-Con Left  |
 |`INPUT_GAMEPAD_TYPE_JOYCON_RIGHT`|Switch Joy-Con Right |
 |`INPUT_GAMEPAD_TYPE_GAMECUBE`    |GameCube             |
