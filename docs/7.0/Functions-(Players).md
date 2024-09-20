@@ -68,7 +68,7 @@ for(var _player = 0; _player < INPUT_MAX_PLAYERS; _player++)
 var _max_players = input_join_params_get().__max_players;
 
 //Build a string reporting the number of players connected, and then draw it
-var _string = string(input_players_connected_count()) + "/" + string(_max_players) + " players connected";
+var _string = string(input_player_connected_count()) + "/" + string(_max_players) + " players connected";
 draw_text(x, y, _string);
 ```
 
