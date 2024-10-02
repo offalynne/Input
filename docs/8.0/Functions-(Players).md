@@ -166,7 +166,7 @@ if (_status.__any_changed)
     //Find any obj_player instances for disconnected players and destroy them
     for(var _i = 0; _i < array_length(_status.__new_disconnections); _i++)
     {
-        var _old_player = _status.__new_connections[_i];
+        var _old_player = _status.__new_disconnections[_i];
         with(obj_player)
         {
             if (player_index == _old_player) instance_destroy();
