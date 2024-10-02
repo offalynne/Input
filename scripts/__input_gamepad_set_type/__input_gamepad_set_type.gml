@@ -116,6 +116,10 @@ function __input_gamepad_set_type()
                     {
                         __raw_type = "CommunityN64";
                     }
+                    else if (__input_string_contains(_desc, " ngc"))
+                    {
+                        __raw_type = "CommunityGameCube";
+                    }
                     else
                     {
                         __raw_type = "Community8BitDo";
