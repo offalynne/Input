@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"InputDevisIsActive",
+  "%Name":"InputDeviceIsActive",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"InputDevisIsActive",
+  "name":"InputDeviceIsActive",
   "parent":{
     "name":"Device",
     "path":"folders/Input/Device.yy",

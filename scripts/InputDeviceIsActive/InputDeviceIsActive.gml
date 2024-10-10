@@ -6,7 +6,7 @@
 /// 
 /// @param {Real} device
 
-function InputDevisIsActive(_device)
+function InputDeviceIsActive(_device)
 {
     static _system = __InputSystem();
     if (not _system.__windowFocus) return false;
