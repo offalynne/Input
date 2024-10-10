@@ -1,1 +1,0 @@
-rebinding_source = undefined;

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__InputStringMatches",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__InputStringMatches",
+  "parent":{
+    "name":"(System)",
+    "path":"folders/Input/(System).yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
