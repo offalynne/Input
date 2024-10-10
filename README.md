@@ -2,7 +2,7 @@
 
 <h1 align="center">Input 10.0.0</h1>
 
-<p align="center">Comprehensive cross-platform input for GameMaker 2022 LTS by <a href="https://www.jujuadams.com/" target="_blank">Juju Adams</a>, <a href="https://offalynne.neocities.org/">Alynne Keith</a>, and <a href="https://offalynne.github.io/Input/#/7.0/Credits">Friends</a></p>
+<p align="center">Comprehensive cross-platform input for GameMaker 2024.8 by <a href="https://www.jujuadams.com/" target="_blank">Juju Adams</a>, <a href="https://offalynne.neocities.org/">Alynne Keith</a>, and <a href="https://offalynne.github.io/Input/#/7.0/Credits">Friends</a></p>
 
 &nbsp;
 
