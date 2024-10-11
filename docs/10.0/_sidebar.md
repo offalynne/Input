@@ -41,7 +41,7 @@
 - [Checkers](Functions-(Checkers))
 - [Rebinding](Functions-(Rebinding))
 - [Device](Functions-(Device))
-- [Mouse (& Touch)](Functions-(Mouse-Touch))
+- [Mouse & Touch](Functions-(Mouse-Touch))
 - [Virtual Buttons](Functions-(Virtual-Buttons))
 - [Verb Interaction](Functions-(Verb-Interaction))
 - [Hotswap](Functions-(Hotswap))
@@ -52,9 +52,9 @@
 
 **Plug-ins**
 
+- [Binding Icons](Plug-in-Binding-Icons)
+- [Party](Plug-in-Party)
 - [Gyro & Motion](Plug-in-Gyro-Motion)
 - [Vibration](Plug-in-Vibration)
 - [Color](Plug-in-Color)
 - [Trigger Effects](Plug-in-Trigger-Effects)
-- [Party](Plug-in-Party)
-- [Binding Icons](Plug-in-Binding-Icons)
