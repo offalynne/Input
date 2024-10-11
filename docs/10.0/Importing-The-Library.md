@@ -8,7 +8,7 @@ If you look inside the Input folder you'll see a lot of subfolders. These subfol
 
 &nbsp;
 
-### Updating Input
+## Updating Input {docsify-ignore}
 
 From time to time we’ll need to release updates to Input, either to add new features or to address bugs.
 
