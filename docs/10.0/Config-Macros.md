@@ -6,7 +6,7 @@ The following macros can be found in the `__InputConfig` script. You should adju
 
 &nbsp;
 
-## `INPUT_MAX_PLAYERS`
+### `INPUT_MAX_PLAYERS` {docsify-ignore}
 
 *Typical value: `1`*
 
@@ -14,7 +14,9 @@ The maximum number of players that the library will permit. Setting this number 
 
 &nbsp;
 
-## `INPUT_2D_XY_AXIS_BIAS`
+## Checkers
+
+### `INPUT_2D_XY_AXIS_BIAS` {docsify-ignore}
 
 *Typical value: `0.0`*
 
@@ -22,7 +24,7 @@ The amount of bias for 2D checkers to prefer straight lines along the x- and y-a
 
 &nbsp;
 
-## `INPUT_2D_XY_AXIS_BIAS_DIAGONALS`
+### `INPUT_2D_XY_AXIS_BIAS_DIAGONALS` {docsify-ignore}
 
 *Typical value: `false`*
 
@@ -30,7 +32,7 @@ Whether the axis bias (see above) should be 8-directional. If set to `false`, 2D
 
 &nbsp;
 
-## `INPUT_REPEAT_DEFAULT_DELAY`
+### `INPUT_REPEAT_DEFAULT_DELAY` {docsify-ignore}
 
 *Typical value: `9`*
 
@@ -38,7 +40,7 @@ Default values for `InputRepeat()`. Please see that function for documentation o
 
 &nbsp;
 
-## `INPUT_REPEAT_DEFAULT_PREDELAY`
+### `INPUT_REPEAT_DEFAULT_PREDELAY` {docsify-ignore}
 
 *Typical value: `25`*
 
@@ -46,7 +48,7 @@ Default values for `InputRepeat()`. Please see that function for documentation o
 
 &nbsp;
 
-## `INPUT_LONG_DEFALT_DELAY`
+### `INPUT_LONG_DEFALT_DELAY` {docsify-ignore}
 
 *Typical value: `10`*
 
@@ -54,7 +56,7 @@ Default values for the "long" checker functions. Please see that function for do
 
 &nbsp;
 
-## `INPUT_OPPOSING_DEFAULT_MOST_RECENT`
+### `INPUT_OPPOSING_DEFAULT_MOST_RECENT` {docsify-ignore}
 
 *Typical value: `true`*
 
@@ -62,7 +64,9 @@ Default values for the "opposing" checker functions. Please see that function fo
 
 &nbsp;
 
-## `INPUT_MOUSE_MOVE_DEADZONE`
+## Analogue Thresholds
+
+### `INPUT_MOUSE_MOVE_DEADZONE` {docsify-ignore}
 
 *Typical value: `2`*
 
@@ -70,7 +74,7 @@ The distance the mouse must move before it is reported as active via `InputMouse
 
 &nbsp;
 
-## `INPUT_GAMEPAD_THUMBSTICK_MIN_THRESHOLD`
+### `INPUT_GAMEPAD_THUMBSTICK_MIN_THRESHOLD` {docsify-ignore}
 
 *Typical value: `0.25`*
 
@@ -78,7 +82,7 @@ Minimum threshold for directional (thumbstick) axes. This value is used for dete
 
 &nbsp;
 
-## `INPUT_GAMEPAD_THUMBSTICK_MAX_THRESHOLD`
+### `INPUT_GAMEPAD_THUMBSTICK_MAX_THRESHOLD` {docsify-ignore}
 
 *Typical value: `0.8`*
 
@@ -86,7 +90,9 @@ Maximum threshold for directional (thumbstick) axes.
 
 &nbsp;
 
-## `INPUT_GAMEPAD_TRIGGER_MIN_THRESHOLD`
+## Touchscreen & Virtual Buttons
+
+### `INPUT_GAMEPAD_TRIGGER_MIN_THRESHOLD` {docsify-ignore}
 
 *Typical value: `0.05`*
 
@@ -94,7 +100,7 @@ Default minimum threshold for non-directional (trigger) axes. This value is used
 
 &nbsp;
 
-## `INPUT_GAMEPAD_TRIGGER_MAX_THRESHOLD`
+### `INPUT_GAMEPAD_TRIGGER_MAX_THRESHOLD` {docsify-ignore}
 
 *Typical value: `0.9`*
 
@@ -102,7 +108,7 @@ Default maximum threshold for non-directional (trigger) axes.
 
 &nbsp;
 
-## `INPUT_VIRTUAL_BUTTON_HISTORY_FRAMES`
+### `INPUT_VIRTUAL_BUTTON_HISTORY_FRAMES` {docsify-ignore}
 
 *Typical value: `10`*
 
@@ -110,7 +116,7 @@ How many frames of history to record for virtual buttons that have the feature t
 
 &nbsp;
 
-## `INPUT_MOUSE_CAN_USE_VIRTUAL_BUTTONS`
+### `INPUT_MOUSE_CAN_USE_VIRTUAL_BUTTONS` {docsify-ignore}
 
 *Typical value: `false`*
 
@@ -118,7 +124,7 @@ Whether players with the `INPUT_KBM` device can use virtual buttons. This is hel
 
 &nbsp;
 
-## `INPUT_ALLOW_TOUCH_ON_DESKTOP`
+### `INPUT_ALLOW_TOUCH_ON_DESKTOP` {docsify-ignore}
 
 *Typical value: `false`*
 
@@ -126,7 +132,7 @@ Whether `INPUT_TOUCH` will be considered connected (and therefore available) on 
 
 &nbsp;
 
-## `INPUT_MAX_TOUCHPOINTS`
+### `INPUT_MAX_TOUCHPOINTS` {docsify-ignore}
 
 *Typical value: `4`*
 
@@ -134,7 +140,7 @@ The maximum number of touchpoints to track when using the INPUT_TOUCH device.
 
 &nbsp;
 
-## `INPUT_TOUCH_EDGE_DEADZONE`
+### `INPUT_TOUCH_EDGE_DEADZONE` {docsify-ignore}
 
 *Typical value: `35`*
 
@@ -142,7 +148,7 @@ Margin in pixels around the screen edge where gaining or losing a touch point wi
 
 &nbsp;
 
-## `INPUT_VIRTUAL_BUTTON_MIN_THRESHOLD`
+### `INPUT_VIRTUAL_BUTTON_MIN_THRESHOLD` {docsify-ignore}
 
 *Typical value: `50`*
 
@@ -150,7 +156,7 @@ Default threshold values for 2D virtual buttons (thumbsticks). These values are 
 
 &nbsp;
 
-## `INPUT_VIRTUAL_BUTTON_MAX_THRESHOLD`
+### `INPUT_VIRTUAL_BUTTON_MAX_THRESHOLD` {docsify-ignore}
 
 *Typical value: `100`*
 
@@ -158,7 +164,9 @@ Default threshold values for 2D virtual buttons (thumbsticks). These values are 
 
 &nbsp;
 
-## `INPUT_REBIND_TIMEOUT`
+## Library Mechanics
+
+### `INPUT_REBIND_TIMEOUT` {docsify-ignore}
 
 *Typical value: `5000`*
 
@@ -166,7 +174,7 @@ How long to wait before automatically cancelling rebinding, measured in millisec
 
 &nbsp;
 
-## `INPUT_GAMEPAD_THUMBSTICK_REPORTS_ACTIVE`
+### `INPUT_GAMEPAD_THUMBSTICK_REPORTS_ACTIVE` {docsify-ignore}
 
 *Typical value: `false`*
 
@@ -174,7 +182,7 @@ Whether various noisy, error-prone inputs will report a device as active and tri
 
 &nbsp;
 
-## `INPUT_MOUSE_BUTTON_REPORTS_ACTIVE`
+### `INPUT_MOUSE_BUTTON_REPORTS_ACTIVE` {docsify-ignore}
 
 *Typical value: `false`*
 
@@ -182,7 +190,7 @@ Whether various noisy, error-prone inputs will report a device as active and tri
 
 &nbsp;
 
-## `INPUT_MOUSE_MOVEMENT_REPORTS_ACTIVE`
+### `INPUT_MOUSE_MOVEMENT_REPORTS_ACTIVE` {docsify-ignore}
 
 *Typical value: `false`*
 
@@ -190,7 +198,7 @@ Whether various noisy, error-prone inputs will report a device as active and tri
 
 &nbsp;
 
-## `INPUT_COLLECT_MODE`
+### `INPUT_COLLECT_MODE` {docsify-ignore}
 
 *Typical value: `0`*
 
@@ -204,7 +212,7 @@ Controls how the library collects player input. If `INPUT_UPDATE_AFTER_COLLECT` 
 
 &nbsp;
 
-## `INPUT_UPDATE_AFTER_COLLECT`
+### `INPUT_UPDATE_AFTER_COLLECT` {docsify-ignore}
 
 *Typical value: `true`*
 
