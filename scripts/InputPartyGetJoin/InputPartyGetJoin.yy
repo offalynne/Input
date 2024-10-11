@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"InputPartyGetJoin",
   "parent":{
-    "name":"Party",
-    "path":"folders/Input Plug-Ins/Party.yy",
+    "name":"Party Multiplayer",
+    "path":"folders/Input Plug-Ins/Party Multiplayer.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
