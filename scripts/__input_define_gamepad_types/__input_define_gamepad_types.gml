@@ -11,6 +11,7 @@ function __input_define_gamepad_types()
         XBoxOneController      = INPUT_GAMEPAD_TYPE_XBOX_ONE;
         CommunityXBoxOne       = INPUT_GAMEPAD_TYPE_XBOX_ONE;
         SteamControllerNeptune = INPUT_GAMEPAD_TYPE_XBOX_ONE;
+        CommunitySteamDeck     = INPUT_GAMEPAD_TYPE_XBOX_ONE;
         CommunityLuna          = INPUT_GAMEPAD_TYPE_XBOX_ONE;
         CommunityStadia        = INPUT_GAMEPAD_TYPE_XBOX_ONE;
         AppleController        = INPUT_GAMEPAD_TYPE_XBOX_ONE;
