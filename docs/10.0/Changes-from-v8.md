@@ -62,3 +62,4 @@ Input 10 achieves these two goals without compromising on its overall featureset
 - Accessibility API has been removed
 - Mouse capture API removed as it is now a native GameMaker feature
 - `.MIXED` and `.MULTI` sources have been removed
+- Players can no longer share the save device
