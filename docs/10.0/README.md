@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/offalynne/Input/main/LOGO.png" width="50%" style="display: block; margin: auto;" />
 <h1 align="center">Input 10.0</h1>
-<p align="center">Comprehensive cross-platform input for GameMaker 2022 LTS by <a href="https://www.jujuadams.com/" target="_blank">Juju Adams</a>, <a href="https://twitter.com/offalynne" target="_blank">Alynne Keith</a>, and <a href="#/8.0/Credits">Friends</a></p>
+<p align="center">Comprehensive cross-platform input for GameMaker 2024.8 by <a href="https://www.jujuadams.com/" target="_blank">Juju Adams</a>, <a href="https://twitter.com/offalynne" target="_blank">Alynne Keith</a>, and <a href="#/8.0/Credits">Friends</a></p>
 
 <p align="center"><a href="https://github.com/offalynne/Input/releases/" target="_blank">Download the .yymps</a></p>
 <p align="center">Talk about Input on the <a href="https://discord.gg/RDYyRqBswD" target="_blank">Discord server</a></p>
@@ -25,7 +25,7 @@ Everything! You might run into edge cases on platforms that we don't regularly t
 
 **What versions of GameMaker does Input support?**
 
-Input primarily supports GameMaker LTS 2022, and in theory supports every version of GameMaker later than that. Later versions of GameMaker may change functionality in a way that Input is not forwards-compatible with, but Input uses only native GameMaker functions so is in the best possible position for long-term compatibility.
+Input primarily supports GameMaker 2024.8, and in theory supports every version of GameMaker later than that. Later versions of GameMaker may change functionality in a way that Input is not forwards-compatible with, but Input uses only native GameMaker functions so is in the best possible position for long-term compatibility.
 
 &nbsp;
 
