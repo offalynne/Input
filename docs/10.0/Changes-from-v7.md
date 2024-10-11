@@ -1,43 +1,64 @@
-# Changes from Input 6
+# Changes from Input 7
 
 &nbsp;
 
-Input 7 introduces a number of new features alongside a number of breaking changes. This page will help you understand the differences between the two versions and help guide you towards spotting issues before updating.
+Input 10 is a rewrite of the entire Input library from the ground up. With the benefit of five years of experience, it's been possible to refine the core technology and the API that you use. Input 10 is faster and more extensible than its predecessors whilst retaining its ease of use and consistency across platforms.
 
-&nbsp;
+There were two major motivations for Input 10:
 
-## Breaking Changes
+1. Simplicity
 
-- All struct variables returned by Input functions are now prefixed, eg. `value` becomes `__value` impacting the following functions
-    - [`input_axis_threshold_get()`](https://offalynne.github.io/Input/#/7.0/Functions-(Accessibility)?id=axis_threshold_get)
-    - [`input_axis_threshold_set()`](https://offalynne.github.io/Input/#/7.0/Functions-(Accessibility)?id=axis_threshold_set)
-    - [`input_virtual_create().get_position()`](https://offalynne.github.io/Input/#/7.0/Functions-(Virtual-Button-Setup)?id=get_position)
-    - [`input_hotswap_params_get()`](https://offalynne.github.io/Input/#/7.0/Functions-(Source-Modes)?id=hotswap_params_get)
-    - [`input_join_params_get()`](https://offalynne.github.io/Input/#/7.0/Functions-(Source-Modes)?id=join_params_get)
-    - [`input_cursor_limit_get()`](https://offalynne.github.io/Input/#/7.0/Functions-(Cursor-Control)?id=cursor_limit_get)
-    - [`input_mouse_capture_get()`](https://offalynne.github.io/Input/#/7.0/Functions-(Mouse-Capture)?id=mouse_capture_get)
-    - [`input_binding_threshold_get()`](https://offalynne.github.io/Input/#/7.0/Functions-(Binding-Access)?id=binding_threshold_get)
-    - [`input_binding_get()`](https://offalynne.github.io/Input/#/7.0/Functions-(Binding-Access)?id=binding_get)
-    - [`input_binding_test_collisions()`](https://offalynne.github.io/Input/#/7.0/Functions-(Binding-Access)?id=binding_test_collisions)
-    - [`input_binding_get_verbs()`](https://offalynne.github.io/Input/#/7.0/Functions-(Binding-Access)?id=binding_get_verbs)
-    - [`input_players_get_status()`](https://offalynne.github.io/Input/#/7.0/Functions-(Players)?id=players_get_status)
+2. Speed
+
+Input 7/8 are immensely powerful tools but they are rather daunting to get started with. Lots of config macros, lots of unfamiliar terminology, lots of flexibility right on the surface. Input 10 makes basic use of the library obvious, clear, and comfortable.
+
+A common question we got asked about Input was about its performance, and these questions usually were asked by new users who were getting spooked by GameMaker's profiler. Whilst we were happy with performance in prior versions of Input we always knew that there was room for improvement. Input 10 means you'll have precious processor time to play with.
+
+Input 10 achieves these two goals without compromising on its overall featureset. It does this by introducing plug-ins that can hook into the library. These plug-ins are ways for external code to build further features on top of the core library code. We've built a handful of plug-ins already covering some of the useful but niche features of Input 7/8 and we're made the plug-in API publicly accessible so you can write your own.
 
 &nbsp;
 
 ## Improved Features
 
-- Improves SDL2 mapping DB load time
-- Adds generic mapping for Xbox controllers on Linux
-- Adds Windows IME state handling
-- Adds gamepad handling exception for GMRT 
-- Improves PlayStation 4 and PlayStation 5 gamepad mappings
-- Disables DualSense trigger effects on game end
-- Safer Steamworks struct name handling
-- Corrects F13-24 binding labels
-- Updates gamepad data
+- 1000% faster. Three zeroes.
+- Feather support
+- Configuration macros are **way** simpler
+- Many advanced features have been moved to plug-ins to reduce clutter
+- Simpler device management. Players have one device each
+- Binding profiles have been stripped back. Players now have two hardcoded "profiles" - one for keyboard and mouse, one for gamepads
+- Adds lots of functions to handle verb state import and export. This is helpful for replaying player input or lockstep multiplayer
+
+&nbsp;
+
+## Breaking Changes
+
+- This is a full rewrite!
+- Entire API has changed naming convention from snake_case to PascalCase
+- We're using GameMaker's improved SDL implementation more so the library is a lot easier to maintain
+- "Sources" in Input 7 have been renamed to "Devices" to better reflect their use
+- Verbs are now members of an enum and are integers rather than strings
+- 2D checkers are handled with pre-defined "clusters" for simplicity
+- Config macros have been overhauled
+- Mouse is always linked to the keyboard
+- Many extended features have been moved to plug-ins and aren't part of the core library:
+  - Binding icons
+  - Multiplayer helper
+  - Gyro & Motion
+  - Vibration
+  - Trigger effects
+  - Gamepad colour
 
 &nbsp;
 
 ## Removed Features
 
-- Support for older versions of GM LTS are deprecated
+- Keyboard support on anything other than desktop
+- Direct checkers for keyboard (though you can still scan for new bindings)
+- Combo system has been removed as per Input 8
+- Gamepad support on Android and iOS
+- Now only one direct checker for gamepad to avoid confusion `PawprintDeviceGetGamepadValue(device, button/axis)`
+- Native debug overlay gamepad tester
+- General purpose device-agnostic cursor
+- Accessibility API has been removed
+- Mouse capture API removed as it is now a native GameMaker feature
+- `.MIXED` and `.MULTI` sources have been removed
