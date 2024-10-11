@@ -1,7 +1,7 @@
 // Feather disable all
 
 /// Returns how many frames have elapsed since the verb was last pressed. This function will return
-/// 0 on the first frame that the verb was pressed. This function will continue to return values
+/// `0` on the first frame that the verb was pressed. This function will continue to return values
 /// even when the verb is not active.
 /// 
 /// @param {Enum.INPUT_VERB,Real} verbIndex

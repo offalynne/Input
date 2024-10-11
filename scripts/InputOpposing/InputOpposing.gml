@@ -1,7 +1,7 @@
 // Feather disable all
 
 /// Returns the sign of the result of the negative and positive active verbs. If `mostRecent` is
-/// set to `true` then the most recently pressed verb is preferenced, otherwise 0 is returned if
+/// set to `true` then the most recently pressed verb is preferenced, otherwise `0` is returned if
 /// both verbs are active.
 /// 
 /// @param {Enum.INPUT_VERB,Real} verbNegative

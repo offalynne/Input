@@ -1,8 +1,9 @@
 // Feather disable all
 
 /// Returns the sign of the result of the negative and positive active verbs on a repeating pulse.
-/// This function will return 0 between pulses and -1 or +1 on the pulse. If both verbs are active,
-/// this function will return 0. The `delay` and `predelay` parameters are measured in frames.
+/// This function will return `0` between pulses and `-1` or `+1` on the pulse. If both verbs are
+/// active, this function will return `0`. The `delay` and `predelay` parameters are measured in
+/// frames.
 /// 
 /// @param {Enum.INPUT_VERB,Real} verbNegative
 /// @param {Enum.INPUT_VERB,Real} verbPositive
