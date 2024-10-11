@@ -4,6 +4,10 @@
 
 Input 10 is a rewrite of the entire Input library from the ground up. With the benefit of five years of experience, it's been possible to refine the core technology and the API that you use. Input 10 is faster and more extensible than its predecessors whilst retaining its ease of use and consistency across platforms.
 
+?> We've prepared a big list of function equivalents to help jump from Input 8 to Input 10. [You can read it here.](v8-Equivalents)
+
+&nbsp;
+
 There were two major motivations for Input 10:
 
 1. Simplicity
