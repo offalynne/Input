@@ -29,24 +29,26 @@ A list of possible return strings for `InputVerbGetBindingName()`. Keyboard bind
 ## Gamepad
 <!-- tabs:start -->
 #### **Gamepad**
-|                              |                              |
-|------------------------------|------------------------------|
-| `gamepad face south`         | `gamepad face east`          |
-| `gamepad face west`          | `gamepad face north`         |
-| `gamepad shoulder l`         | `gamepad shoulder r`         |
-| `gamepad trigger l`          | `gamepad trigger r`          |
-| `gamepad select`             | `gamepad start`              |
-| `gamepad guide`              | `gamepad misc 1`             |
-| `gamepad dpad up`            | `gamepad dpad down`          |
-| `gamepad dpad left`          | `gamepad dpad right`         |
-| `gamepad thumbstick l left`  | `gamepad thumbstick l right` |
-| `gamepad thumbstick l up`    | `gamepad thumbstick l down`  |
-| `gamepad thumbstick r left`  | `gamepad thumbstick r right` |
-| `gamepad thumbstick r up`    | `gamepad thumbstick r down`  |
-| `gamepad thumbstick l click` | `gamepad thumbstick r click` |
-| `gamepad paddle 1`           | `gamepad paddle 2`           |
-| `gamepad paddle 3`           | `gamepad paddle 4`           |
-| `gamepad touchpad click`     | `gamepad unknown`            |
+|                    |                    |
+|--------------------|--------------------|
+|`face south`        |`face east`         |
+|`face west`         |`face north`        |
+|`shoulder l`        |`shoulder r`        |
+|`trigger l`         |`trigger r`         |
+|`select`            |`start`             |
+|`dpad up`           |`dpad down`         |
+|`dpad left`         |`dpad right`        |
+|`thumbstick l left` |`thumbstick l right`|
+|`thumbstick l up`   |`thumbstick l down` |
+|`thumbstick r left` |`thumbstick r right`|
+|`thumbstick r up`   |`thumbstick r down` |
+|`thumbstick l click`|`thumbstick r click`|
+|`paddle l`          |`paddle lb`         |
+|`paddle r`          |`paddle rb`         |
+|`extra 1`           |`extra 2`           |
+|`extra 3`           |`extra 4`           |
+|`extra 5`           |`extra 6`           |
+|`touchpad`          |`home`              |
 <!-- tabs:end -->
 
 ## Keyboard
