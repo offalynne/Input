@@ -2,52 +2,34 @@
 
 &nbsp;
 
-Common challenges encountered by fellow library users are presented below in question and answer format. Please feel free to [join us on Discord](https://discord.gg/8krYCqr) for further discussion and [open an Issue on GitHub](https://github.com/JujuAdams/Input/issues?q=is%3Aissue+is%3Aopen) if you find a persistent problem with the library.
+Common challenges encountered by fellow library users are presented below in question and answer format. Please feel free to [join us on Discord](https://discord.gg/8krYCqr) for further discussion and [open an Issue on GitHub](https://github.com/offalynne/Input/issues?q=is%3Aissue+is%3Aopen) if you find a persistent problem with the library.
 
-<hr>
+&nbsp;
 
-### Using a gamepad, verbs aren't working as expected, how do I correct this? {docsify-ignore}
+## Using a gamepad, verbs aren't working as expected, how do I correct this? {docsify-ignore}
 
 1. Check if your gamepad is working OK on an OS level. On Windows, use the Game Controllers dialogue. See [Gamepad Troubleshooting](Gamepad-Troubleshooting) for additional details
-2. Download the [example project](https://github.com/JujuAdams/Input/archive/refs/heads/master.zip) from GitHub and try out the `obj_gamepad_tester` object. This helps visualize what's going on with your gamepad. You may need to cycle through gamepad indexes in some cases
+2. Download the [example project](https://github.com/offalynne/Input/archive/refs/heads/master.zip) from GitHub and try out the `objTest200_ConsoleSuite` object. This helps visualize what's going on with your gamepad. You may need to cycle through gamepad indexes in some cases
 3. Have a look at the [Output log](https://i.imgur.com/gy3CUcu.png) for more information on gamepad connection. If you need to follow up for additional help, we will need you to share the information you see here.
 
-Some common issues to consider: remappers like Steam Input, DS4Windows, etc. may cause trouble, so try quitting these. Nintendo Switch controllers do not work on many platforms over USB, so try Bluetooth instead. Some devices require additional setup, see [Gamepad Troubleshooting](https://www.jujuadams.com/Input/#/6.2/Gamepad-Troubleshooting) for additional details
+Some common issues to consider: remappers like Steam Input, DS4Windows, etc. may cause trouble, so try quitting these. Nintendo Switch controllers do not work on many platforms over USB, so try Bluetooth instead. Some devices require additional setup, see [Gamepad Troubleshooting](Gamepad-Troubleshooting) for additional details
 
 &nbsp;
 
+## How can I check analogue input values (eg. trigger, thumbstick)? {docsify-ignore}
 
-### How do I check if the player is (or is not) using gamepad? {docsify-ignore}
-
-Check the player with [`input_player_get_gamepad()`](Functions-(Players)?id=player_get_gamepad), or the source device with [`input_source_using(INPUT_GAMEPAD)`](Functions-(Sources)?id=input_source_usingsource-playerindex)
-
-&nbsp;
-
-
-### How can I check analogue input values (eg. trigger, thumbstick)? {docsify-ignore}
-
-1. Set up your bindings using `input_binding_gamepad_axis()`
-2. Check verbs using `input_value()`
+1. Set up your bindings using `InputDefineVerb()` in the `__InputConfigVerbs` script
+2. Check verbs using `InputValue()`
 
 &nbsp;
 
-
-### How do I set up aiming for both mouse and gamepad thumbstick? {docsify-ignore}
-
-[Cursor functions!](Functions-(Cursor)) For a sophisticated example, refer to the [GitHub example project](https://github.com/JujuAdams/Input/archive/refs/heads/master.zip), specifically the `obj_example_tds_player` object.
-
-&nbsp;
-
-
-### Does Input support Steamworks? {docsify-ignore}
+## Does Input support Steamworks? {docsify-ignore}
 
 [Yes](Steamworks), using the [official extension](https://github.com/YoYoGames/GMEXT-Steamworks)
 
 &nbsp;
 
-
-
-### How many simultaneous gamepads are supported? {docsify-ignore}
+## How many simultaneous gamepads are supported? {docsify-ignore}
 
 OS limitations [per GameMaker](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm):
 
@@ -57,62 +39,42 @@ Linux, Android: Many devices<br>
 
 &nbsp;
 
+## How do I update my project to a newer Input version? {docsify-ignore}
 
-
-### How do I update my project to a newer Input version? {docsify-ignore}
-
-1. Backup edited config scripts
-2. Delete Input folder
-3. Import new release
-4. Copy old config changes to new
-
-_Note: This process is easiest if your project is version control managed_
+Please see [Importing The Library](Importing-The-Library) for detailed instructions.
 
 &nbsp;
 
+## How do I save and load player bindings? {docsify-ignore}
 
-
-### How do I save and load player preferences? {docsify-ignore}
-
-Using [Export and Import](Functions-(Exporting-and-Importing))
+Using binding [export and import](Functions-(Rebindings)) functions. You should save bindings to a file for loading later.
 
 &nbsp;
 
+## How can multiple players share the keyboard or one gamepad between them? {docsify-ignore}
 
-
-### How can multiple players share the keyboard or one gamepad between them? {docsify-ignore}
-
-1. Set Source mode to `FIXED`
-2. Use `input_source_share()`
-3. Set bindings per player directly, or using profiles
-
+This is not supported by Input 10.
 
 &nbsp;
 
+## How can I ensure gamepads work correctly when running the GameMaker IDE through Steam? {docsify-ignore}
 
-
-### How can I ensure gamepads work correctly when running the GM IDE through Steam? {docsify-ignore}
-
-[Disable Steam Input](https://i.imgur.com/cGdlVJO.png) for GameMaker Studio 2 Desktop. Alternatively, [use the Steamworks extension](Steamworks) 
+[Disable Steam Input](https://i.imgur.com/cGdlVJO.png) for GameMaker Desktop. Alternatively, [use the Steamworks extension](Steamworks) 
 
 &nbsp;
 
-
-
-### What platforms are extended gamepad features availble on? {docsify-ignore}
+## What platforms are extended gamepad features availble on? {docsify-ignore}
 
 - **Vibration:** Consoles and Windows (Xbox gamepads only, with support for additional types through Steamworks)
--  **LED Patterns:** Consoles, iOS, Windows through Steamworks
+- **LED Patterns:** Consoles, iOS, Windows through Steamworks
 - **Motion:** PlayStation and Switch, Windows and Linux through Steamworks
 - **RGB:** PlayStation consoles, Windows and Linux through Steamworks
--  **Trigger Effects:** PlayStation 5, Windows through Steamworks
+- **Trigger Effects:** PlayStation 5, Windows through Steamworks
 - **Touchpad:** PlayStation consoles
 
 &nbsp;
 
-
-
-### Input is impacting my game's FPS! What should I do? {docsify-ignore}
+## Input is impacting my game's FPS! What should I do? {docsify-ignore}
 
 Input is tested across platforms and we have yet to observe any scenario where it is the culprit for poor game performance. However, we recieve occasional reports regarding performance issues as a result of library user debugging confusion. 
 
@@ -122,16 +84,7 @@ Some known culprits for misdiagnosed performance issues are shaders, driver prob
 
 &nbsp;
 
-
-### Input does a lot of logging, how can I suppress it while debugging? {docsify-ignore}
-
-Set `__INPUT_SILENT` in `__input_macros()` to `true` to suppress most of Input's logging. Some critical messages will still be logged. Please note that we cannot provide any support for any issues you have with Input if you use this configuration. 
-
-&nbsp;
-
-
-
-### How should I include Input in my game credits? {docsify-ignore}
+## How should I include Input in my game credits? {docsify-ignore}
 
 Input Library: Juju Adams, Alynne Keith, and Friends
 
