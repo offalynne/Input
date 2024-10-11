@@ -495,6 +495,9 @@ dead,beef,CommunityPSX // Hidromancer
 18d1,9400,CommunityStadia // Google Stadia Controller
 0171,0419,CommunityLuna // Amazon Luna Controller
 1949,0419,CommunityLuna // Amazon Luna
+28de,1205,CommunitySteamDeck // Steam Deck
+0f0d,01ab,CommunitySteamDeck // Hori Steam Controller
+0f0d,0196,CommunitySteamDeck // Hori Steam Controller BT
 0f0d,0138,CommuntyPCEngineMini // NEC CoreGrafx, TG16, PC Engine Mini Controller
 0ca3,0027,CommunityAstroCity // Sega Astro City Mini Controller
 0ca3,0028,CommunityAstroCity // Sega Astro City Mini Arcade Stick
