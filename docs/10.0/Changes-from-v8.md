@@ -1,4 +1,4 @@
-# Changes from Input 7
+# Changes from Input 8
 
 &nbsp;
 
@@ -10,11 +10,11 @@ There were two major motivations for Input 10:
 
 2. Speed
 
-Input 7/8 are immensely powerful tools but they are rather daunting to get started with. Lots of config macros, lots of unfamiliar terminology, lots of flexibility right on the surface. Input 10 makes basic use of the library obvious, clear, and comfortable.
+Input 8 are immensely powerful tools but they are rather daunting to get started with. Lots of config macros, lots of unfamiliar terminology, lots of flexibility right on the surface. Input 10 makes basic use of the library obvious, clear, and comfortable.
 
 A common question we got asked about Input was about its performance, and these questions usually were asked by new users who were getting spooked by GameMaker's profiler. Whilst we were happy with performance in prior versions of Input we always knew that there was room for improvement. Input 10 means you'll have precious processor time to play with.
 
-Input 10 achieves these two goals without compromising on its overall featureset. It does this by introducing plug-ins that can hook into the library. These plug-ins are ways for external code to build further features on top of the core library code. We've built a handful of plug-ins already covering some of the useful but niche features of Input 7/8 and we're made the plug-in API publicly accessible so you can write your own.
+Input 10 achieves these two goals without compromising on its overall featureset. It does this by introducing plug-ins that can hook into the library. These plug-ins are ways for external code to build further features on top of the core library code. We've built a handful of plug-ins already covering some of the useful but niche features of Input 8 and we're made the plug-in API publicly accessible so you can write your own.
 
 &nbsp;
 
@@ -35,7 +35,7 @@ Input 10 achieves these two goals without compromising on its overall featureset
 - This is a full rewrite!
 - Entire API has changed naming convention from snake_case to PascalCase
 - We're using GameMaker's improved SDL implementation more so the library is a lot easier to maintain
-- "Sources" in Input 7 have been renamed to "Devices" to better reflect their use
+- "Sources" in Input 8 have been renamed to "Devices" to better reflect their use
 - Verbs are now members of an enum and are integers rather than strings
 - 2D checkers are handled with pre-defined "clusters" for simplicity
 - Config macros have been overhauled

@@ -3,7 +3,7 @@
 - [Newbie Guide](Newbie-Guide)
 - [Multiplayer Guide](Multiplayer-Guide)
 - [Frequently Asked](Frequently-Asked)
-- [Changes From v7](Changes-from-v7)
+- [Changes From v8](Changes-from-v8)
 - [Credits](Credits)
 
 ---
@@ -11,7 +11,7 @@
 **Concepts**
 
 - [Verbs and Bindings](Verbs-and-Bindings)
-- [Devices](Input-Sources)
+- [Devices](Devices)
 - [Library Constants](Library-Constants)
 - [Binding Names](Binding-Names)
 - [Plug-ins](Plug-ins)
