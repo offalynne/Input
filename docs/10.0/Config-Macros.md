@@ -122,7 +122,7 @@ Whether players with the `INPUT_KBM` device can use virtual buttons. This is hel
 
 *Typical value: `false`*
 
-Whether INPUT_TOUCH will be considered connected (and therefore available) on desktop platforms. The library will never hotswap to INPUT_TOUCH on desktop and will prefer INPUT_KBM so to use INPUT_TOUCH you will need to 
+Whether `INPUT_TOUCH` will be considered connected (and therefore available) on desktop platforms. The library will never hotswap to `INPUT_TOUCH` on desktop and will prefer `INPUT_KBM` so to use `INPUT_TOUCH` you will need to.
 
 &nbsp;
 
@@ -196,11 +196,11 @@ Whether various noisy, error-prone inputs will report a device as active and tri
 
 Controls how the library collects player input. If `INPUT_UPDATE_AFTER_COLLECT` is set to `true` (which it is by default) then this macro also controls how the library updates itself overall.
 
-0. The library will create a persistent and invisible controller instance at the start of the game and will collect player input in the Begin Step event. This means verbs, gamepads etc. are updated as soon as possible in a frame. This doesn't necessarily mean verb state is updated as the very first task but it'll be close. Unfortunately, this method requires that a persistent instance has to be created and destroying or deactivating this instance will lead to the library emitting an error message.
-
-1. Use a GameMaker time source to collect player input. This means verbs, gamepads etc. are updated somewhere between the Begin Step and Step events. This is the most reliable way of updating input but it does mean that library state in Begin Step event is a frame behind the Step event.
-
-2. The library will not automatically collect player input. Instead, you must call `InputManualCollect()` yourself. This gives you maximum flexibility in how player input is collected at the cost of having to manage that yourself.
+|Value|Behaviour|
+|-----|---------|
+`0`|The library will create a persistent and invisible controller instance at the start of the game and will collect player input in the Begin Step event. This means verbs, gamepads etc. are updated as soon as possible in a frame. This doesn't necessarily mean verb state is updated as the very first task but it'll be close. Unfortunately, this method requires that a persistent instance has to be created and destroying or deactivating this instance will lead to the library emitting an error message.
+`1`|Use a GameMaker time source to collect player input. This means verbs, gamepads etc. are updated somewhere between the Begin Step and Step events. This is the most reliable way of updating input but it does mean that library state in Begin Step event is a frame behind the Step event.
+`2`|The library will not automatically collect player input. Instead, you must call `InputManualCollect()` yourself. This gives you maximum flexibility in how player input is collected at the cost of having to manage that yourself.
 
 &nbsp;
 
