@@ -68,9 +68,9 @@
 // testing virtual buttons on your development machine.
 #macro INPUT_MOUSE_CAN_USE_VIRTUAL_BUTTONS  false
 
-// Whether INPUT_TOUCH will be considered connected (and therefore available) on desktop
-// platforms. The library will never hotswap to INPUT_TOUCH on desktop and will prefer
-// INPUT_KBM so to use INPUT_TOUCH you will need to 
+// Whether `INPUT_TOUCH` will be considered connected (and therefore available) on desktop
+// platforms. The library will never hotswap to `INPUT_TOUCH` on desktop and will prefer
+// `INPUT_KBM` so to use `INPUT_TOUCH` you will need to.
 #macro INPUT_ALLOW_TOUCH_ON_DESKTOP  false
 
 // The maximum number of touchpoints to track when using the INPUT_TOUCH device.
@@ -130,6 +130,6 @@
 // some point after InputManualCollect() to update the library state. This macro is intended for
 // use with fixed timestep or lockstep implementations. In those situations, you should collect
 // player input within the main GameMaker update loop (see `INPUT_COLLECT_MODE` above). When you
-// want to evaluate a tick of a fixed timestep or lockstep loop then call InputManualUpdate()
+// want to evaluate a tick of a fixed timestep or lockstep loop then call `InputManualUpdate()`
 // once and then you may call library functions within your custom update loop as normal.
 #macro INPUT_UPDATE_AFTER_COLLECT  true
