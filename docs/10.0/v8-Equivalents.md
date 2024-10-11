@@ -109,13 +109,13 @@ Input 10 is a big change. To help ease the transition from Input 8, this page co
 
 |Version 8                          |Version 10           |
 |-----------------------------------|---------------------|
-|`input_binding_scan_abort`         |_removed_            |
-|`input_binding_scan_in_progress`   |_removed_            |
-|`input_binding_scan_time_remaining`|_removed_            |
-|`input_binding_scan_params_clear`  |_removed_            |
-|`input_binding_scan_params_get`    |_removed_            |
-|`input_binding_scan_params_set`    |_removed_            |
-|`input_binding_scan_start`         |_removed_            |
+|`input_binding_scan_abort`         |                     |
+|`input_binding_scan_in_progress`   |                     |
+|`input_binding_scan_time_remaining`|                     |
+|`input_binding_scan_params_clear`  |                     |
+|`input_binding_scan_params_get`    |                     |
+|`input_binding_scan_params_set`    |                     |
+|`input_binding_scan_start`         |                     |
 
 &nbsp;
 
