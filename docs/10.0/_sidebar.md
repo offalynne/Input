@@ -53,7 +53,7 @@
 **Plug-ins**
 
 - [Binding Icons](Plug-in-Binding-Icons)
-- [Party](Plug-in-Party)
+- [Party Multiplayer](Plug-in-Party-Multiplayer)
 - [Gyro & Motion](Plug-in-Gyro-Motion)
 - [Vibration](Plug-in-Vibration)
 - [Color](Plug-in-Color)
