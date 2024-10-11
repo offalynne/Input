@@ -107,15 +107,17 @@ Input 10 is a big change. To help ease the transition from Input 8, this page co
 
 ## Binding Scanner
 
-|Version 8                          |Version 10           |
-|-----------------------------------|---------------------|
-|`input_binding_scan_abort`         |                     |
-|`input_binding_scan_in_progress`   |                     |
-|`input_binding_scan_time_remaining`|                     |
-|`input_binding_scan_params_clear`  |                     |
-|`input_binding_scan_params_get`    |                     |
-|`input_binding_scan_params_set`    |                     |
-|`input_binding_scan_start`         |                     |
+?> Rebinding in Input 10 operates per device rather than per player. Input 10 requires that you call `InputDeviceGetRebindingResult()` to return the result of rebinding rather than waiting for a callback as in Input 8.
+
+|Version 8                          |Version 10               |
+|-----------------------------------|-------------------------|
+|`input_binding_scan_abort`         |`InputDeviceSetRebinding` or `InputDeviceStopAllRebinding`|
+|`input_binding_scan_in_progress`   |`InputDeviceGetRebinding`|
+|`input_binding_scan_time_remaining`|_removed_                |
+|`input_binding_scan_params_clear`  |_removed_                |
+|`input_binding_scan_params_get`    |_removed_                |
+|`input_binding_scan_params_set`    |_removed_                |
+|`input_binding_scan_start`         |`InputDeviceSetRebinding`|
 
 &nbsp;
 
