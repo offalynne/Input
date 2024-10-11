@@ -1,10 +1,11 @@
 - [Home](README)
+- [Credits](Credits)
 - [Alternatives](Alternatives)
 - [Newbie Guide](Newbie-Guide)
 - [Multiplayer Guide](Multiplayer-Guide)
 - [Frequently Asked](Frequently-Asked)
 - [Changes From v8](Changes-from-v8)
-- [Credits](Credits)
+- [v8 Equivalents](v8-Equivalents)
 
 ---
 
