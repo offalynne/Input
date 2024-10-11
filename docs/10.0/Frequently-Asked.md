@@ -33,9 +33,11 @@ Some common issues to consider: remappers like Steam Input, DS4Windows, etc. may
 
 OS limitations [per GameMaker](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm):
 
-Windows [XInput](https://wikipedia.org/wiki/DirectInput#DirectInput_vs_XInput), Apple, PlayStation, Web: 4 devices<br>
-Windows [DInput](https://wikipedia.org/wiki/DirectInput#DirectInput_vs_XInput), Switch, Xbox: 8 devices<br>
-Linux, Android: Many devices<br>
+- Windows [XInput](https://wikipedia.org/wiki/DirectInput#DirectInput_vs_XInput), Apple, PlayStation, Web: 4 devices<br>
+
+- Windows [DInput](https://wikipedia.org/wiki/DirectInput#DirectInput_vs_XInput), Switch, Xbox: 8 devices<br>
+
+- Linux: Many devices<br>
 
 &nbsp;
 
