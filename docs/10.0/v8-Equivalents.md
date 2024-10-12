@@ -403,10 +403,10 @@ Input 10 is a big change. To help ease the transition from Input 8, this page co
 |`input_gamepad_value`            |`InputDeviceGetGamepadValue`|
 |`input_gamepad_delta`            |_removed_                   |
 |`input_gamepad_is_axis`          |_removed_                   |
-|`input_gamepad_is_connected`     |_removed_                   |
+|`input_gamepad_is_connected`     |`InputDeviceIsConnected`    |
 |`input_gamepad_is_any_connected` |_removed_                   |
-|`input_gamepad_get_description`  |_removed_                   |
-|`input_gamepad_get_type`         |_removed_                   |
+|`input_gamepad_get_description`  |`InputDeviceGetDescription` |
+|`input_gamepad_get_type`         |`InputDeviceGetGamepadType` |
 |`input_gamepad_get_map`          |_removed_                   |
 |`input_gamepad_map_contains`     |_removed_                   |
 |`input_gamepad_constant_get_name`|_removed_                   |
