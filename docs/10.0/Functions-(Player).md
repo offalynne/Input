@@ -72,7 +72,7 @@ Returns the total number of connected players.
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Returns whether the player has their input set as blocked.
 
@@ -92,7 +92,7 @@ Returns whether the player has their input set as blocked.
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Returns the device assigned to a player. This can be one of the following:
 - `INPUT_NO_DEVICE`
@@ -132,7 +132,7 @@ if (InputDeviceIsGamepad(_device) && (InputDeviceGetGamepadValue(_device, vk_sel
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Returns the gamepad type of the currently connected gamepad for a player. If the player is not currently using a gamepad, this function will return `undefined`.
 
@@ -195,7 +195,7 @@ function GetGamepadIcon(_player_index)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Returns whether a player is set as a ghost by `InputPlayerSetGhost()`.
 
@@ -230,7 +230,7 @@ if (InputPlayerGhostGet(playerIndex))
 |Name           |Datatype|Purpose                                                                      |
 |---------------|--------|-----------------------------------------------------------------------------|
 |`duration`     |number  |How long to wait since the last input before returning the player as inactive|
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used                         |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                         |
 
 Returns whether a player is inactive i.e. has not pressed a button on their device. The `duration` parameter is measured in milliseconds and specifies the timeout duration.
 
@@ -263,7 +263,7 @@ if (InputPlayerGetInactive(playerIndex))
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Returns the gamepad type of the currently connected gamepad for a player or, if the player is not using a gamepad, returns the type for the last connected gamepad. If the player hash never used a gamepad, this function will return `undefined`.
 
@@ -292,7 +292,7 @@ Game type will be a member of the `INPUT_GAMEPAD_TYPE_*` macros:
 
 |Name           |Datatype|Purpose                                                                      |
 |---------------|--------|-----------------------------------------------------------------------------|
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used                         |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                         |
 |`[makeCopy]`   |boolean |Whether to return a copy of the metadata (`true`) or a reference to the metadata (`false`). If not specified, a reference to the metadata is returned|
 
 Returns the metadata assigned to a player by `InputPlayerSetMetadata()`. If the `makeCopy` parameter is set to `true` then a copy of the metadata is returned; otherwise, the metadata is returned as a reference if the metadata is a struct or array.
@@ -313,7 +313,7 @@ Returns the metadata assigned to a player by `InputPlayerSetMetadata()`. If the 
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Returns the connection status of the player. This will be a member of the `INPUT_PLAYER_STATUS` enum:
 - `INPUT_PLAYER_STATUS.DISCONNECTED`
@@ -360,7 +360,7 @@ for(var _i = 0; _i < INPUT_MAX_PLAYERS; _i++)
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Returns if the player has any device set (i.e. not `INPUT_NO_DEVICE`).
 
@@ -401,7 +401,7 @@ Returns the total number of players who have a device set (i.e. not `INPUT_NO_DE
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`state`        |boolean |State to set                                        |
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Sets whether a player's input should be blocked. Blocked players will have all their verb values forcibly set to zero, beginning at the start of the next frame. If the player is holding any buttons down at the moment that their input is blocked, release events will be triggered for all of those held buttons.
 
@@ -422,7 +422,7 @@ Sets whether a player's input should be blocked. Blocked players will have all t
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`device`       |integer |Device to set                                       |
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Sets the device for a player. This can be one of the following:
 - `INPUT_NO_DEVICE`
@@ -450,7 +450,7 @@ A "generic device" is intended for use with plug-ins. Generic devices will not c
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`state`        |boolean |State to set                                        |
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Sets the "ghost" state for a player. A player that is set as a ghost will always return themselves as connected but will not collect input from their device (if one is set).
 
@@ -473,7 +473,7 @@ Sets the "ghost" state for a player. A player that is set as a ghost will always
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`data`         |any     |Metadata to store                                   |
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 |`[makeCopy]`   |boolean |Whether to store a copy of the metadata (`true`) or a reference to the metadata (`false`). If not specified, a reference to the metadata is stored|
 
 Sets metadata for a player. If the `makeCopy` parameter is set to `true` then a copy of the metadata is stored; otherwise, the metadata is stored by reference if the metadata is a struct or array.
@@ -541,7 +541,7 @@ if (not InputPlayerIsConnected(0))
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Returns whether a player has been assigned a gamepad as their device.
 
@@ -561,7 +561,7 @@ Returns whether a player has been assigned a gamepad as their device.
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Returns whether a player has been assigned `INPUT_GENERIC_DEVICE` as their device.
 
@@ -581,7 +581,7 @@ Returns whether a player has been assigned `INPUT_GENERIC_DEVICE` as their devic
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 **Returns:** Boolean, whether a player has been assigned `INPUT_KBM` as their device
 
@@ -601,7 +601,7 @@ Returns whether a player has been assigned `INPUT_GENERIC_DEVICE` as their devic
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 **Returns:** Boolean, whether a player has been assigned `INPUT_TOUCH` as their device
 
