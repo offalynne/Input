@@ -2,7 +2,7 @@
 
 &nbsp;
 
-## …PlayerIsConnected
+## …IsConnected
 
 `InputPlayerIsConnected([playerIndex])`
 
@@ -40,7 +40,7 @@ for(var _player = 0; _player < INPUT_MAX_PLAYERS; _player++)
 
 &nbsp;
 
-## …PlayerConnectedCount
+## …ConnectedCount
 
 `InputPlayerConnectedCount(verbIndex, [playerIndex])`
 
@@ -60,7 +60,7 @@ Returns the total number of connected players.
 
 &nbsp;
 
-## …PlayerGetBlocked
+## …GetBlocked
 
 `InputPlayerGetBlocked([playerIndex])`
 
@@ -80,7 +80,7 @@ Returns whether the player has their input set as blocked.
 
 &nbsp;
 
-## …PlayerGetDevice
+## …GetDevice
 
 `InputPlayerGetDevice([playerIndex])`
 
@@ -120,7 +120,7 @@ if (InputDeviceIsGamepad(_device) && (InputDeviceGetGamepadValue(_device, vk_sel
 
 &nbsp;
 
-## …PlayerGetGamepadType
+## …GetGamepadType
 
 `InputPlayerGetGamepadType([playerIndex])`
 
@@ -183,7 +183,7 @@ function GetGamepadIcon(_player_index)
 
 &nbsp;
 
-## …PlayerGetGhost
+## …GetGhost
 
 `InputPlayerGetGhost([playerIndex])`
 
@@ -217,7 +217,7 @@ if (InputPlayerGhostGet(playerIndex))
 
 &nbsp;
 
-## …PlayerGetInactive
+## …GetInactive
 
 `InputPlayerGetInactive([playerIndex])`
 
@@ -251,7 +251,7 @@ if (InputPlayerGetInactive(playerIndex))
 
 &nbsp;
 
-## …PlayerGetLastConnectedGamepadType
+## …GetLastConnectedGamepadType
 
 `InputPlayerGetLastConnectedGamepadType([playerIndex])`
 
@@ -280,7 +280,7 @@ Game type will be a member of the `INPUT_GAMEPAD_TYPE_*` macros:
 
 &nbsp;
 
-## …PlayerGetMetadata
+## …GetMetadata
 
 `InputPlayerGetMetadata([playerIndex])`
 
@@ -301,7 +301,7 @@ Returns the metadata assigned to a player by `InputPlayerSetMetadata()`. If the 
 
 &nbsp;
 
-## …PlayerGetStatus
+## …GetStatus
 
 `InputPlayerGetStatus()`
 
@@ -348,7 +348,7 @@ for(var _i = 0; _i < INPUT_MAX_PLAYERS; _i++)
 
 &nbsp;
 
-## …PlayerHasDevice
+## …HasDevice
 
 `InputPlayerHasDevice([playerIndex])`
 
@@ -368,7 +368,7 @@ Returns if the player has any device set (i.e. not `INPUT_NO_DEVICE`).
 
 &nbsp;
 
-## …PlayerHasDeviceCount
+## …HasDeviceCount
 
 `InputPlayerHasDeviceCount([playerIndex])`
 
