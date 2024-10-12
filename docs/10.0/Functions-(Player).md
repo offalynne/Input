@@ -4,7 +4,7 @@
 
 ## …IsConnected
 
-`InputPlayerIsConnected([playerIndex])`
+`InputPlayerIsConnected([playerIndex=0])`
 
 <!-- tabs:start -->
 
@@ -42,7 +42,7 @@ for(var _player = 0; _player < INPUT_MAX_PLAYERS; _player++)
 
 ## …ConnectedCount
 
-`InputPlayerConnectedCount(verbIndex, [playerIndex])`
+`InputPlayerConnectedCount(verbIndex, [playerIndex=0])`
 
 <!-- tabs:start -->
 
@@ -62,7 +62,7 @@ Returns the total number of connected players.
 
 ## …GetBlocked
 
-`InputPlayerGetBlocked([playerIndex])`
+`InputPlayerGetBlocked([playerIndex=0])`
 
 <!-- tabs:start -->
 
@@ -82,7 +82,7 @@ Returns whether the player has their input set as blocked.
 
 ## …GetDevice
 
-`InputPlayerGetDevice([playerIndex])`
+`InputPlayerGetDevice([playerIndex=0])`
 
 <!-- tabs:start -->
 
@@ -122,7 +122,7 @@ if (InputDeviceIsGamepad(_device) && (InputDeviceGetGamepadValue(_device, vk_sel
 
 ## …GetGamepadType
 
-`InputPlayerGetGamepadType([playerIndex])`
+`InputPlayerGetGamepadType([playerIndex=0])`
 
 <!-- tabs:start -->
 
@@ -185,7 +185,7 @@ function GetGamepadIcon(_player_index)
 
 ## …GetGhost
 
-`InputPlayerGetGhost([playerIndex])`
+`InputPlayerGetGhost([playerIndex=0])`
 
 <!-- tabs:start -->
 
@@ -219,7 +219,7 @@ if (InputPlayerGhostGet(playerIndex))
 
 ## …GetInactive
 
-`InputPlayerGetInactive([playerIndex])`
+`InputPlayerGetInactive([playerIndex=0])`
 
 <!-- tabs:start -->
 
@@ -253,7 +253,7 @@ if (InputPlayerGetInactive(playerIndex))
 
 ## …GetLastConnectedGamepadType
 
-`InputPlayerGetLastConnectedGamepadType([playerIndex])`
+`InputPlayerGetLastConnectedGamepadType([playerIndex=0])`
 
 <!-- tabs:start -->
 
@@ -282,7 +282,7 @@ Game type will be a member of the `INPUT_GAMEPAD_TYPE_*` macros:
 
 ## …GetMetadata
 
-`InputPlayerGetMetadata([playerIndex])`
+`InputPlayerGetMetadata([playerIndex=0])`
 
 <!-- tabs:start -->
 
@@ -350,7 +350,7 @@ for(var _i = 0; _i < INPUT_MAX_PLAYERS; _i++)
 
 ## …HasDevice
 
-`InputPlayerHasDevice([playerIndex])`
+`InputPlayerHasDevice([playerIndex=0])`
 
 <!-- tabs:start -->
 
@@ -370,7 +370,7 @@ Returns if the player has any device set (i.e. not `INPUT_NO_DEVICE`).
 
 ## …HasDeviceCount
 
-`InputPlayerHasDeviceCount([playerIndex])`
+`InputPlayerHasDeviceCount([playerIndex=0])`
 
 <!-- tabs:start -->
 
@@ -383,5 +383,226 @@ Returns if the player has any device set (i.e. not `INPUT_NO_DEVICE`).
 |None|        |       |
 
 Returns the total number of players who have a device set (i.e. not `INPUT_NO_DEVICE`). This is **not** the same as counting the number of connected players as a player might have been assigned a device but that device is no longer connected.
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …SetBlocked
+
+`InputPlayerSetBlocked(state, [playerIndex=0])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`state`        |boolean |State to set                                        |
+|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+
+Sets whether a player's input should be blocked. Blocked players will have all their verb values forcibly set to zero, beginning at the start of the next frame. If the player is holding any buttons down at the moment that their input is blocked, release events will be triggered for all of those held buttons.
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …SetDevice
+
+`InputPlayerSetDevice(device, [playerIndex=0])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`device`       |integer |Device to set                                       |
+|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+
+Sets the device for a player. This can be one of the following:
+- `INPUT_NO_DEVICE`
+- `INPUT_GENERIC_DEVICE`
+- `INPUT_KBM`
+- `INPUT_TOUCH`
+- A native GameMaker gamepad index
+
+A "generic device" is intended for use with plug-ins. Generic devices will not collect any player input themselves and `InputPlugInVerbSet()` or `InputPlugInVerbStateRead()` should be used to set verb state instead.
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …SetGhost
+
+`InputPlayerSetGhost(device, [playerIndex=0])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`state`        |boolean |State to set                                        |
+|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+
+Sets the "ghost" state for a player. A player that is set as a ghost will always return themselves as connected but will not collect input from their device (if one is set).
+
+!> A ghost player will **not** have their device reset. A ghost player can have a device assigned to them. This may cause issues elsewhere so make sure you're managed the device of a ghost player if required.
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …SetMetadata
+
+`InputPlayerSetMetadata(data, [playerIndex=0], [makeCopy=false])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`data`         |any     |Metadata to store                                   |
+|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[makeCopy]`   |boolean |Whether to store a copy of the metadata (`true`) or a reference to the metadata (`false`). If not specified, a reference to the metadata is stored|
+
+Sets metadata for a player. If the `makeCopy` parameter is set to `true` then a copy of the metadata is stored; otherwise, the metadata is stored by reference if the metadata is a struct or array.
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …Swap
+
+`InputPlayerSwap(playerIndexA, playerIndexB)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name          |Datatype|Purpose                |
+|--------------|--------|-----------------------|
+|`playerIndexA`|integer |First player to target |
+|`playerIndexB`|integer |Second player to target|
+
+Swaps player indexes over including: bindings, device, verb state, and metadata.
+
+#### **Example**
+
+```gml
+//If P1 is disconnected...
+if (not InputPlayerIsConnected(0))
+{
+    //Then find the first connected player and swap them into the P1 slot
+    for(var _i = 1; _i < INPUT_MAX_PLAYERS; _i++)
+    {
+        if (InputPlayerIsConnected(_i))
+        {
+            InputPlayerSwap(0, _i);
+
+            //Make sure we break out of the loop!
+            break;
+        }
+    }
+
+    //If P1 *still* isn't connected then throw up a disconnection modal
+    if (not InputPlayerIsConnected(0))
+    {
+        ShowDisconnectionModal();
+    }
+}
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …UsingGamepad
+
+`InputPlayerUsingGamepad([playerIndex=0])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the player has been assigned a gamepad as their device
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+
+Returns whether a player has been assigned a gamepad as their device.
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …UsingGeneric
+
+`InputPlayerUsingGeneric([playerIndex=0])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether a player has been assigned `INPUT_GENERIC_DEVICE` as their device
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+
+Returns whether a player has been assigned `INPUT_GENERIC_DEVICE` as their device.
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …UsingKbm
+
+`InputPlayerUsingKbm([playerIndex=0])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether a player has been assigned `INPUT_KBM` as their device
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+
+**Returns:** Boolean, whether a player has been assigned `INPUT_KBM` as their device
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …UsingTouch
+
+`InputPlayerUsingTouch([playerIndex=0])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether a player has been assigned `INPUT_TOUCH` as their device
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+
+**Returns:** Boolean, whether a player has been assigned `INPUT_TOUCH` as their device
 
 <!-- tabs:end -->
