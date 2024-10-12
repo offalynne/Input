@@ -261,7 +261,7 @@ Input 10 is a big change. To help ease the transition from Input 8, this page co
 
 ## Profiles
 
-?> Profiles have largely been removed from Input 10. Players now have two hardcoded profiles - one of keyboard and mouse, and another for gamepad.
+?> Profiles have largely been removed from Input 10. Players now have two hardcoded profiles - one for keyboard and mouse, and another for gamepads. You should use `InputBindingsImport()` and `InputBindingsExport()` to replicate the old profile feature.
 
 |Version 8                     |Version 10              |
 |------------------------------|------------------------|
@@ -289,3 +289,138 @@ Input 10 is a big change. To help ease the transition from Input 8, this page co
 |`input_join_params_set`           |`InputPartySetParams`   |
 |`input_join_params_get`           |`InputPartyGetParams`   |
 |`input_join_is_finished`          |`InputPartyGetReady`    |
+
+&nbsp;
+
+## Vibration
+
+?> Vibration functionality has been moved out of the core library and into the [Vibration plug-in](Plug-in-Vibration).
+
+|Version 8                   |Version 10               |
+|----------------------------|-------------------------|
+|`input_vibrate_constant`    |`InputVibrateConstant`   |
+|`input_vibrate_adsr`        |`InputVibrateADSR`       |
+|`input_vibrate_pulse`       |`InputVibratePulse`      |
+|`input_vibrate_curve`       |`InputVibrateCurve`      |
+|`input_vibrate_stop`        |`InputVibrateStop`       |
+|`input_vibrate_set_pause`   |`InputVibrateStPause`    |
+|`input_vibrate_get_pause`   |`InputVibrateGetPause`   |
+|`input_vibrate_set_strength`|`InputVibrateSetStrength`|
+|`input_vibrate_get_strength`|`InputVibrateGetStrength`|
+
+&nbsp;
+
+## Color
+
+?> Color functionality has been moved out of the core library and into the [Color plug-in](Plug-in-Color).
+
+|Version 8          |Version 10       |
+|-------------------|-----------------|
+|`input_color_get`  |`InputColorGet`  |
+|`input_color_set`  |`InputColorSet`  |
+|`input_color_reset`|`InputColorReset`|
+
+&nbsp;
+
+## Gyro & Motion
+
+?> Gyro and motion functionality has been moved out of the core library and into the [Gyro & Motion plug-in](Plug-in-Gyro-Motion).
+
+|Version 8                      |Version 10       |
+|-------------------------------|-----------------|
+|`input_motion_data_get`        |`InputMotionGet` |
+|`input_cursor_gyro_enabled_get`|_removed_        |
+|`input_cursor_gyro_enabled_set`|_removed_        |
+|`input_cursor_gyro_params_get` |_removed_        |
+|`input_cursor_gyro_params_set` |_removed_        |
+
+&nbsp;
+
+## Trigger Effects
+
+?> Trigger effect functionality has been moved out of the core library and into the [Trigger Effect plug-in](Plug-in-Trigger-Effects).
+
+|Version 8                          |Version 10                     |
+|-----------------------------------|-------------------------------|
+|`input_trigger_effect_off`         |`InputTriggerEffectOff`        |
+|`input_trigger_effect_feedback`    |`InputTriggerEffectFeedback`   |
+|`input_trigger_effect_vibration`   |`InputTriggerEffectVibration`  |
+|`input_trigger_effect_weapon`      |`InputTriggerEffectWeapon`     |
+|`input_trigger_effect_get_state`   |`InputTriggerEffectGetState`   |
+|`input_trigger_effect_set_pause`   |`InputTriggerEffectSetPause`   |
+|`input_trigger_effect_get_pause`   |`InputTriggerEffectGetPause`   |
+|`input_trigger_effect_set_strength`|`InputTriggerEffectSetStrength`|
+|`input_trigger_effect_get_strength`|`InputTriggerEffectGetStrength`|
+
+&nbsp;
+
+## Other
+
+|Version 8                    |Version 10|
+|-----------------------------|----------|
+|`input_clear_momentary`      |Manual update functionality replaced by `InputManualCollect()` and `InputManualUpdate()`|
+|`input_ignore_key_add`       |_removed_ |
+|`input_ignore_key_remove`    |_removed_ |
+|`input_debug_player_input`   |_removed_ |
+|`input_debug_all_input`      |_removed_ |
+|`input_game_has_focus`       |`InputGameHasFocus`|
+|`input_keyboard_virtual_show`|_removed_ |
+|`input_keyboard_virtual_hide`|_removed_ |
+|`input_gamepad_tester_get`   |_removed_ |
+|`input_gamepad_tester_set`   |_removed_ |
+
+&nbsp;
+
+## Mouse (Direct)
+
+|Version 8                    |Version 10                                                 |
+|-----------------------------|-----------------------------------------------------------|
+|`input_mouse_x`              |`InputMouseRoomX` `InputMouseGuiX` `InputMouseDeviceX`     |
+|`input_mouse_y`              |`InputMouseRoomY` `InputMouseGuiY` `InputMouseDeviceY`     |
+|`input_mouse_dx`             |_removed_                                                  |
+|`input_mouse_dy`             |_removed_                                                  |
+|`input_mouse_moved`          |_removed_                                                  |
+|`input_mouse_coord_space_set`|Replaced by coordinate space-specific functions (see above)|
+|`input_mouse_coord_space_get`|_removed_                                                  |
+|`input_mouse_check`          |`InputMouseCheck`                                          |
+|`input_mouse_check_pressed`  |`InputMousePressed`                                        |
+|`input_mouse_check_released` |`InputMouseReleased`                                       |
+|`input_mouse_in_bounds`      |_removed_                                                  |
+|`input_mouse_wheel_up`       |Can now use native GameMaker constant `m_scroll_up`        |
+|`input_mouse_wheel_down`     |Can now use native GameMaker constant `m_scroll_down`      |
+
+&nbsp;
+
+## Gamepads (Direct)
+
+?> The direct gamepad API has largely been removed in Input 10.
+
+|Version 8                        |Version 10                  |
+|---------------------------------|----------------------------|
+|`input_gamepad_check`            |_removed_                   |
+|`input_gamepad_check_pressed`    |_removed_                   |
+|`input_gamepad_check_released`   |_removed_                   |
+|`input_gamepad_value`            |`InputDeviceGetGamepadValue`|
+|`input_gamepad_delta`            |_removed_                   |
+|`input_gamepad_is_axis`          |_removed_                   |
+|`input_gamepad_is_connected`     |_removed_                   |
+|`input_gamepad_is_any_connected` |_removed_                   |
+|`input_gamepad_get_description`  |_removed_                   |
+|`input_gamepad_get_type`         |_removed_                   |
+|`input_gamepad_get_map`          |_removed_                   |
+|`input_gamepad_map_contains`     |_removed_                   |
+|`input_gamepad_constant_get_name`|_removed_                   |
+|`input_gamepads_get_status`      |_removed_                   |
+|`input_led_pattern_get`          |_removed_                   |
+
+&nbsp;
+
+## Keyboard (Direct)
+
+?> The direct keyboard API has been removed in Input 10.
+
+|Version 8                      |Version 10                  |
+|-------------------------------|----------------------------|
+|`input_keyboard_check`         |_removed_                   |
+|`input_keyboard_check_pressed` |_removed_                   |
+|`input_keyboard_check_released`|_removed_                   |
