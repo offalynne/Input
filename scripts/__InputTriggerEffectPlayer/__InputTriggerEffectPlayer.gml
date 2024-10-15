@@ -32,6 +32,12 @@ function __InputTriggerEffectPlayer(_playerIndex) constructor
         
         //Apply the effect and get the interception outcome
         var _struct = _deviceMap[? _device];
+        if (not is_struct(_struct))
+        {
+            __InputTrace($"Warning! Device {_device} is not registered with the trigger effect handler");
+            return;
+        }
+        
         var _intercepted = (_struct.__Apply(_trigger, _effect, __strength) == false);
         
         if (!_set) return;
