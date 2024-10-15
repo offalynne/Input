@@ -59,6 +59,7 @@ function __InputSystem()
         __pointerBlockedByUserThisFrame = false;
         
         __pointerBlocked     = false;
+        __pointerMoved       = false;
         __prevPointerDeviceX = 0;
         __prevPointerDeviceY = 0;
         __pointerDeviceX     = 0;
