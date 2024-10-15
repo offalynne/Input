@@ -12,7 +12,7 @@ function __InputClassPlayer(_playerIndex) constructor
     
     __playerIndex = _playerIndex;
     
-    __device        = undefined;
+    __device        = INPUT_NO_DEVICE;
     __metadata      = undefined;
     __status        = INPUT_PLAYER_STATUS.DISCONNECTED;
     __blocked       = false;
