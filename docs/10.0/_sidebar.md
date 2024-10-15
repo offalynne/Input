@@ -22,7 +22,7 @@
 **Setting Up**
 
 - [Importing The Library](Importing-The-Library)
-- [Config Macros](Config-Macros)
+- [Config](Config)
 - [Steamworks](Steamworks)
 
 ---
@@ -37,7 +37,6 @@
 
 **API**
 
-- [Config](Functions-(Config))
 - [Player](Functions-(Player))
 - [Checkers](Functions-(Checkers))
 - [Rebinding](Functions-(Rebinding))
