@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Sets a callback to execute when a hotswap occurs. The callbac is executed with no parameters.
+/// Sets a callback to execute when a hotswap occurs. The callback is executed with no parameters.
 /// 
 /// @param {Function, undefined} callback
 
