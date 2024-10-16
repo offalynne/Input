@@ -459,12 +459,19 @@ function __InputClassPlayer(_playerIndex) constructor
                 if (INPUT_2D_XY_AXIS_BIAS > 0)
                 {
                     var _divisor = INPUT_2D_XY_AXIS_BIAS_DIAGONALS? 45 : 90;
-                    
                     var _direction = point_direction(0, 0, _dx, _dy);
-                    var _dirMod = (_direction mod _divisor) / _divisor;
-                    _dirMod = clamp((_dirMod - 0.5*0.999*INPUT_2D_XY_AXIS_BIAS) / (1 - 0.999*INPUT_2D_XY_AXIS_BIAS), 0, 1);
-                    _dirMod = _dirMod*_dirMod*(3 - 2*_dirMod); //Smooth step babyyyy
-                    _direction = _divisor*((_direction div _divisor) + _dirMod);
+                    
+                    if (INPUT_2D_XY_AXIS_BIAS >= 1)
+                    {
+                        _direction = _divisor*round(_direction/_divisor);
+                    }
+                    else
+                    {
+                        var _dirMod = (_direction mod _divisor) / _divisor;
+                        _dirMod = clamp((_dirMod - 0.5*0.999*INPUT_2D_XY_AXIS_BIAS) / (1 - 0.999*INPUT_2D_XY_AXIS_BIAS), 0, 1);
+                        _dirMod = _dirMod*_dirMod*(3 - 2*_dirMod); //Smooth step babyyyy
+                        _direction = _divisor*((_direction div _divisor) + _dirMod);
+                    }
                     
                     var _distance = point_distance(0, 0, _dx, _dy);
                     _dx = lengthdir_x(_distance, _direction);
