@@ -21,6 +21,10 @@ function __InputClassVerbDefinition(_index, _exportName, _kbmBinding, _gamepadBi
             ++_i;
         }
     }
+    else if (is_string(_kbmBinding))
+    {
+        _kbmBinding = ord(_kbmBinding);
+    }
     
     __verbIndex      = _index;
     __exportName       = _exportName;
