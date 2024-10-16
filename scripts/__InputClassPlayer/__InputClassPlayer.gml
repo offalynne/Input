@@ -147,6 +147,8 @@ function __InputClassPlayer(_playerIndex) constructor
                 //            //
                 ////////////////
                 
+                __lastConnectedGamepadType = InputDeviceGetGamepadType(_device);
+                
                 var _readArray = __InputGamepadGetReadArray(_device);
                 
                 var _bindingArray = __gamepadBindingArray;
