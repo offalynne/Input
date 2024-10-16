@@ -101,6 +101,7 @@
 // Because these inputs are unreliable, it is recommended that they are set to `false`. However, if
 // you feel that damages your game's UX then set them to `true`.
 #macro INPUT_GAMEPAD_THUMBSTICK_REPORTS_ACTIVE  false
+#macro INPUT_GAMEPAD_TRIGGER_REPORTS_ACTIVE     false
 #macro INPUT_MOUSE_BUTTON_REPORTS_ACTIVE        false
 #macro INPUT_MOUSE_MOVEMENT_REPORTS_ACTIVE      false
 
