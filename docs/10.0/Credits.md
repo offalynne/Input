@@ -128,17 +128,6 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
-&nbsp;
-
-<h3 align="center">Chequered Ink</h1>
-<p align="center"><i>Logo Design</i></p>
-<p align="center">(<a href="https://chequered.ink/" target="_blank">website</a>)</p>
-
-e</a>)</p>
-
-
-&nbsp;
-
 <h3 align="center">Neerikiffu</h3>
 <p align="center"><i>Credit cartoons</i></p>
 <p align="center">(<a href="https://neerikiffu.carrd.co" target="_blank">website</a>)</p>
