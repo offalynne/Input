@@ -121,6 +121,7 @@
     {"name":"InputDefineCluster","order":5,"path":"scripts/InputDefineCluster/InputDefineCluster.yy",},
     {"name":"InputDefineVerb","order":4,"path":"scripts/InputDefineVerb/InputDefineVerb.yy",},
     {"name":"InputDeviceEnumerate","order":11,"path":"scripts/InputDeviceEnumerate/InputDeviceEnumerate.yy",},
+    {"name":"InputDeviceGetAnyGamepadConnected","order":13,"path":"scripts/InputDeviceGetAnyGamepadConnected/InputDeviceGetAnyGamepadConnected.yy",},
     {"name":"InputDeviceGetDescription","order":8,"path":"scripts/InputDeviceGetDescription/InputDeviceGetDescription.yy",},
     {"name":"InputDeviceGetGamepadType","order":9,"path":"scripts/InputDeviceGetGamepadType/InputDeviceGetGamepadType.yy",},
     {"name":"InputDeviceGetGamepadValue","order":10,"path":"scripts/InputDeviceGetGamepadValue/InputDeviceGetGamepadValue.yy",},

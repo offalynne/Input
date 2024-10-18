@@ -167,6 +167,7 @@
     {"id":{"name":"InputDefineVerb","path":"scripts/InputDefineVerb/InputDefineVerb.yy",},},
     {"id":{"name":"InputDeviceCheckViaPlayer","path":"scripts/InputDeviceCheckViaPlayer/InputDeviceCheckViaPlayer.yy",},},
     {"id":{"name":"InputDeviceEnumerate","path":"scripts/InputDeviceEnumerate/InputDeviceEnumerate.yy",},},
+    {"id":{"name":"InputDeviceGetAnyGamepadConnected","path":"scripts/InputDeviceGetAnyGamepadConnected/InputDeviceGetAnyGamepadConnected.yy",},},
     {"id":{"name":"InputDeviceGetDescription","path":"scripts/InputDeviceGetDescription/InputDeviceGetDescription.yy",},},
     {"id":{"name":"InputDeviceGetGamepadType","path":"scripts/InputDeviceGetGamepadType/InputDeviceGetGamepadType.yy",},},
     {"id":{"name":"InputDeviceGetGamepadValue","path":"scripts/InputDeviceGetGamepadValue/InputDeviceGetGamepadValue.yy",},},
