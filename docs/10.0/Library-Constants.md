@@ -41,6 +41,17 @@
 
 &nbsp;
 
+## Device Support
+
+|Name                    |Description|
+|------------------------|-----------|
+|`INPUT_SUPPORT_GAMEPADS`|           |
+|`INPUT_SUPPORT_KBM`     |           |
+|`INPUT_SUPPORT_TOUCH`   |           |
+|`INPUT_SUPPORT_HOTSWAP` |           |
+
+&nbsp;
+
 ## Player Status
 
 |Name                                    |Description|
