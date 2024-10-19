@@ -221,6 +221,7 @@ Returns a description for a device. If the device is a gamepad then the library 
 |`device`|integer |Device to target|
 
 Returns the type of gamepad that a device represents. If the device is not connected or isn't a gamepad to begin with then this function returns `INPUT_GAMEPAD_TYPE_NO_GAMEPAD`. Otherwise, this function will return a member of the `INPUT_GAMEPAD_TYPE_*` macros:
+
 - `INPUT_GAMEPAD_TYPE_UNKNOWN`
 - `INPUT_GAMEPAD_TYPE_XBOX`
 - `INPUT_GAMEPAD_TYPE_PS4`
