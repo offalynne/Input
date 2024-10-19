@@ -128,7 +128,7 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
-<h3 align="center">Neerikiffu</h3>
+<h3 align="center">neerikiffu</h3>
 <p align="center"><i>Credit cartoons</i></p>
 <p align="center">(<a href="https://neerikiffu.carrd.co" target="_blank">website</a>)</p>
 
