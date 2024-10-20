@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns whether any gamepad is connected and available for use.
+/// Returns whether any gamepad is connected.
 
 function InputDeviceGetAnyGamepadConnected()
 {
