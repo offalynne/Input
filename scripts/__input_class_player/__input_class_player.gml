@@ -8,7 +8,6 @@ function __input_class_player() constructor
     __source_array          = [];
     __verb_state_dict       = {};
     __chord_state_dict      = {};
-    __combo_state_dict      = {};
     __last_input_time       = -infinity;
     __verb_group_state_dict = {};
     
@@ -951,21 +950,6 @@ function __input_class_player() constructor
             __verb_state_dict[$ _verb_name] = _verb_state_struct;
         }
     }
-    
-    /// @param verbName
-    /// @param comboDefinition
-    static __add_combo_state = function(_verb_name, _combo_defintion)
-    {
-        //Set up a verb container on the player separate from the bindings
-        if (is_struct(__combo_state_dict[$ _verb_name]))
-        {
-            __input_error("Combo state with name \"", _verb_name, "\" has already been added to player ", __index);
-        }
-        else
-        {
-            __combo_state_dict[$ _verb_name] = new __input_class_combo_state(_verb_name, _combo_defintion);
-        }
-    }
 
     /// @param verbName
     /// @param chordDefinition
@@ -1499,13 +1483,13 @@ function __input_class_player() constructor
             static __mixed_motion = {};
             with  (__mixed_motion)
             {
-                __acceleration_x = 0.0;
-                __acceleration_y = 0.0;
-                __acceleration_z = 0.0;
+                acceleration_x = 0.0;
+                acceleration_y = 0.0;
+                acceleration_z = 0.0;
 
-                __angular_velocity_x = 0.0;
-                __angular_velocity_y = 0.0;
-                __angular_velocity_z = 0.0;
+                angular_velocity_x = 0.0;
+                angular_velocity_y = 0.0;
+                angular_velocity_z = 0.0;
             }
     
             var _source_motion = undefined;
@@ -1531,7 +1515,7 @@ function __input_class_player() constructor
                 ++_gamepad;
             }
     
-            if not (_using_motion) __mixed_motion.__acceleration_y = -1.0;
+            if not (_using_motion) __mixed_motion.acceleration_y = -1.0;
             return __mixed_motion;
         }
     
@@ -1654,10 +1638,9 @@ function __input_class_player() constructor
             //Update our basic verbs first
             __tick_basic_verbs();
             
-            //Update our chords and combos
+            //Update our chords
             //We directly access verb values to detect state here
             __tick_chord_verbs();
-            __tick_combo_verbs();
             
             __cursor.__tick();
             
@@ -1695,30 +1678,6 @@ function __input_class_player() constructor
             else
             {
                 __verb_state_dict[$ _chord_name].__tick(__verb_group_state_dict, __active);
-            }
-            
-            ++_i;
-        }
-    }
-    
-    static __tick_combo_verbs = function()
-    {
-        var _i = 0;
-        repeat(array_length(__global.__combo_verb_array))
-        {
-            var _combo_name = __global.__combo_verb_array[_i];
-            if (__combo_state_dict[$ _combo_name].__evaluate(__verb_state_dict))
-            {
-                with(__verb_state_dict[$ _combo_name])
-                {
-                    __value = 1;
-                    __raw   = 1;
-                    __tick(other.__verb_group_state_dict, other.__active);
-                }
-            }
-            else
-            {
-                __verb_state_dict[$ _combo_name].__tick(__verb_group_state_dict, __active);
             }
             
             ++_i;

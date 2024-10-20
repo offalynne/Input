@@ -229,7 +229,7 @@ function __input_system_tick()
         }
     }
     
-    if (INPUT_ALLOW_OUT_OF_FOCUS || !_global.__overlay_focus)
+    if (INPUT_ALLOW_OUT_OF_FOCUS || !(INPUT_DEFAULT_DEBUG_OVERLAY_BLOCKS_INPUT && _global.__overlay_focus))
     {
         if (_global.__mouse_capture && !_global.__mouse_capture_blocked)
         {
