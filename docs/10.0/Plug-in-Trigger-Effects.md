@@ -1,34 +1,8 @@
 # Plug-in: Trigger Effects
 
-## …TriggerEffectFeedbackTriggerEffectFeedback
+## …TriggerEffectFeedback
 
-`InputTriggerEffectFeedbackTriggerEffectFeedback()`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** ,
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-
-Returns 
-
-#### **Example**
-
-```gml
-{
-    
-}
-```
-<!-- tabs:end -->
-
-&nbsp;
-
-## …TriggerEffectGetPauseTriggerEffectGetPause
-
-`InputTriggerEffectGetPauseTriggerEffectGetPause()`
+`InputTriggerEffectFeedback()`
 
 <!-- tabs:start -->
 
@@ -52,35 +26,9 @@ Returns
 
 &nbsp;
 
-## …TriggerEffectGetStateTriggerEffectGetState
+## …TriggerEffectGetPause
 
-`InputTriggerEffectGetStateTriggerEffectGetState()`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** ,
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-
-Returns 
-
-#### **Example**
-
-```gml
-{
-    
-}
-```
-<!-- tabs:end -->
-
-&nbsp;
-
-## …TriggerEffectGetStrengthTriggerEffectGetStrength
-
-`InputTriggerEffectGetStrengthTriggerEffectGetStrength()`
+`InputTriggerEffectGetPause()`
 
 <!-- tabs:start -->
 
@@ -104,35 +52,9 @@ Returns
 
 &nbsp;
 
-## …TriggerEffectGetSupportedTriggerEffectGetSupported
+## …TriggerEffectGetState
 
-`InputTriggerEffectGetSupportedTriggerEffectGetSupported()`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** ,
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-
-Returns 
-
-#### **Example**
-
-```gml
-{
-    
-}
-```
-<!-- tabs:end -->
-
-&nbsp;
-
-## …TriggerEffectOffTriggerEffectOff
-
-`InputTriggerEffectOffTriggerEffectOff()`
+`InputTriggerEffectGetState()`
 
 <!-- tabs:start -->
 
@@ -156,35 +78,9 @@ Returns
 
 &nbsp;
 
-## …TriggerEffectSetPauseTriggerEffectSetPause
+## …TriggerEffectGetStrength
 
-`InputTriggerEffectSetPauseTriggerEffectSetPause()`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** ,
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-
-Returns 
-
-#### **Example**
-
-```gml
-{
-    
-}
-```
-<!-- tabs:end -->
-
-&nbsp;
-
-## …TriggerEffectSetStrengthTriggerEffectSetStrength
-
-`InputTriggerEffectSetStrengthTriggerEffectSetStrength()`
+`InputTriggerEffectGetStrength()`
 
 <!-- tabs:start -->
 
@@ -208,9 +104,9 @@ Returns
 
 &nbsp;
 
-## …TriggerEffectVibrationTriggerEffectVibration
+## …TriggerEffectGetSupported
 
-`InputTriggerEffectVibrationTriggerEffectVibration()`
+`InputTriggerEffectGetSupported()`
 
 <!-- tabs:start -->
 
@@ -234,9 +130,113 @@ Returns
 
 &nbsp;
 
-## …TriggerEffectWeaponTriggerEffectWeapon
+## …TriggerEffectOff
 
-`InputTriggerEffectWeaponTriggerEffectWeapon()`
+`InputTriggerEffectOff()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** ,
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+
+Returns 
+
+#### **Example**
+
+```gml
+{
+    
+}
+```
+<!-- tabs:end -->
+
+&nbsp;
+
+## …TriggerEffectSetPause
+
+`InputTriggerEffectSetPause()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** ,
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+
+Returns 
+
+#### **Example**
+
+```gml
+{
+    
+}
+```
+<!-- tabs:end -->
+
+&nbsp;
+
+## …TriggerEffectSetStrength
+
+`InputTriggerEffectSetStrength()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** ,
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+
+Returns 
+
+#### **Example**
+
+```gml
+{
+    
+}
+```
+<!-- tabs:end -->
+
+&nbsp;
+
+## …TriggerEffectVibration
+
+`InputTriggerEffectVibration()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** ,
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+
+Returns 
+
+#### **Example**
+
+```gml
+{
+    
+}
+```
+<!-- tabs:end -->
+
+&nbsp;
+
+## …TriggerEffectWeapon
+
+`InputTriggerEffectWeapon()`
 
 <!-- tabs:start -->
 
