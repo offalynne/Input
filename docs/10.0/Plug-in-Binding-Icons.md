@@ -2,7 +2,7 @@
 
 Configuration...
 
-## IconDefineKeyboard
+## …IconDefineKeyboard
 
 `InputIconDefineKeyboard()`
 
@@ -28,7 +28,7 @@ Returns
 
 &nbsp;
 
-## IconDefineGamepad
+## …IconDefineGamepad
 
 `InputIconDefineGamepad()`
 
@@ -54,7 +54,7 @@ Returns
 
 &nbsp;
 
-## IconDefineEmpty
+## …IconDefineEmpty
 
 `InputIconDefineEmpty()`
 
@@ -80,7 +80,7 @@ Returns
 
 &nbsp;
 
-## IconDefineUnsupported
+## …IconDefineUnsupported
 
 `InputIconDefineUnsupported()`
 
@@ -106,7 +106,7 @@ Returns
 
 &nbsp;
 
-## IconGet
+## …IconGet
 
 `InputIconGet()`
 
@@ -132,7 +132,7 @@ Returns
 
 &nbsp;
 
-## IconGetDirect
+## …IconGetDirect
 
 `InputIconGetDirect()`
 
