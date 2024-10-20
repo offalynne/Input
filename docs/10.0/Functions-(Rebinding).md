@@ -1,87 +1,4 @@
-# Rebinding
-
-## …BindingSet
-
-`InputBindingSet()`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** ,
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-
-Returns 
-
-#### **Example**
-
-```gml
-{
-	
-}
-```
-
-<!-- tabs:end -->
-
-&nbsp;
-
-## …BindingSetSafe
-
-`InputBindingSetSafe()`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** ,
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-
-Returns 
-
-#### **Example**
-
-```gml
-{
-	
-}
-```
-
-<!-- tabs:end -->
-
-&nbsp;
-
-## …BindingGet
-
-`InputBindingGet()`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** ,
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-
-Returns 
-
-#### **Example**
-
-```gml
-{
-	
-}
-```
-
-<!-- tabs:end -->
-
-&nbsp;
-
-## …BindingFind
+## BindingFind()
 
 `InputBindingFind()`
 
@@ -103,12 +20,167 @@ Returns
 	
 }
 ```
-
 <!-- tabs:end -->
 
 &nbsp;
 
-## …BindingSwap
+## BindingGet()
+
+`InputBindingGet()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** ,
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+
+Returns 
+
+#### **Example**
+
+```gml
+{
+	
+}
+```
+<!-- tabs:end -->
+
+&nbsp;
+
+## BindingSet()
+
+`InputBindingSet()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** ,
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+
+Returns 
+
+#### **Example**
+
+```gml
+{
+	
+}
+```
+<!-- tabs:end -->
+
+&nbsp;
+
+## BindingSetSafe()
+
+`InputBindingSetSafe()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** ,
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+
+Returns 
+
+#### **Example**
+
+```gml
+{
+	
+}
+```
+<!-- tabs:end -->
+
+&nbsp;
+
+## BindingsExport()
+
+`InputBindingsExport()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** ,
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+
+Returns 
+
+#### **Example**
+
+```gml
+{
+	
+}
+```
+<!-- tabs:end -->
+
+&nbsp;
+
+## BindingsImport()
+
+`InputBindingsImport()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** ,
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+
+Returns 
+
+#### **Example**
+
+```gml
+{
+	
+}
+```
+<!-- tabs:end -->
+
+&nbsp;
+
+## BindingsReset()
+
+`InputBindingsReset()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** ,
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+
+Returns 
+
+#### **Example**
+
+```gml
+{
+	
+}
+```
+<!-- tabs:end -->
+
+&nbsp;
+
+## BindingSwap()
 
 `InputBindingSwap()`
 
@@ -130,14 +202,13 @@ Returns
 	
 }
 ```
-
 <!-- tabs:end -->
 
 &nbsp;
 
-## …DeviceSetRebinding
+## DeviceGetRebinding()
 
-`InputDeviceSetRebinding ()`
+`InputDeviceGetRebinding()`
 
 <!-- tabs:start -->
 
@@ -157,14 +228,13 @@ Returns
 	
 }
 ```
-
 <!-- tabs:end -->
 
 &nbsp;
 
-## …DeviceStopAllRebinding
+## DeviceGetRebindingResult ()
 
-`InputDeviceStopAllRebinding()`
+`InputDeviceGetRebindingResult ()`
 
 <!-- tabs:start -->
 
@@ -184,12 +254,11 @@ Returns
 	
 }
 ```
-
 <!-- tabs:end -->
 
 &nbsp;
 
-## …DeviceSetRebinding
+## DeviceSetRebinding()
 
 `InputDeviceSetRebinding()`
 
@@ -211,5 +280,30 @@ Returns
 	
 }
 ```
+<!-- tabs:end -->
 
+&nbsp;
+
+## DeviceStopAllRebinding()
+
+`InputDeviceStopAllRebinding()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** ,
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+
+Returns 
+
+#### **Example**
+
+```gml
+{
+	
+}
+```
 <!-- tabs:end -->
