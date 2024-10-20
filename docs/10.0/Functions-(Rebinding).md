@@ -1,3 +1,7 @@
+# Rebinding
+
+&nbsp;
+
 ## BindingFind()
 
 `InputBindingFind()`
