@@ -2,286 +2,272 @@
 
 &nbsp;
 
-## …MouseCheck
-
-`MouseCheck()`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** ,
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-
-Returns 
-
-#### **Example**
-
-```gml
-{
-	
-}
-```
-<!-- tabs:end -->
-
-&nbsp;
-
-## …MousePressed
-
-`MousePressed()`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** ,
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-
-Returns 
-
-#### **Example**
-
-```gml
-{
-	
-}
-```
-<!-- tabs:end -->
-
-&nbsp;
-
-## …MouseReleased
-
-`MouseReleased()`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** ,
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-
-Returns 
-
-#### **Example**
-
-```gml
-{
-	
-}
-```
-<!-- tabs:end -->
-
-&nbsp;
-
-## …MouseMoved
-
-`MouseMoved()`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** ,
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-
-Returns 
-
-#### **Example**
-
-```gml
-{
-	
-}
-```
-<!-- tabs:end -->
-
-&nbsp;
-
 ## …MouseRoomX
 
-`MouseRoomX()`
+`InputMouseRoomX()`
 
 <!-- tabs:start -->
 
 #### **Description**
 
-**Returns:** ,
+**Returns:** Number, the x coordinate of the mouse point in room-space
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
 
-Returns 
+Returns the x coordinate of the mouse point in room-space.
 
-#### **Example**
-
-```gml
-{
-	
-}
-```
 <!-- tabs:end -->
 
 &nbsp;
 
 ## …MouseRoomY
 
-`MouseRoomY()`
+`InputMouseRoomY()`
 
 <!-- tabs:start -->
 
 #### **Description**
 
-**Returns:** ,
+**Returns:** Number, the y coordinate of the mouse point in room-space
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
 
-Returns 
+Returns the y coordinate of the mouse point in room-space.
 
-#### **Example**
-
-```gml
-{
-	
-}
-```
 <!-- tabs:end -->
 
 &nbsp;
 
 ## …MouseGuiX
 
-`MouseGuiX()`
+`InputMouseGuiX()`
 
 <!-- tabs:start -->
 
 #### **Description**
 
-**Returns:** ,
+**Returns:** Number, the x coordinate of the mouse point in GUI-space
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
 
-Returns 
+Returns the x coordinate of the mouse point in GUI-space.
 
-#### **Example**
-
-```gml
-{
-	
-}
-```
 <!-- tabs:end -->
 
 &nbsp;
 
 ## …MouseGuiY
 
-`MouseGuiY()`
+`InputMouseGuiY()`
 
 <!-- tabs:start -->
 
 #### **Description**
 
-**Returns:** ,
+**Returns:** Number, the y coordinate of the mouse point in GUI-space
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
 
-Returns 
+Returns the y coordinate of the mouse point in GUI-space.
 
-#### **Example**
-
-```gml
-{
-	
-}
-```
 <!-- tabs:end -->
 
 &nbsp;
 
 ## …MouseDeviceX
 
-`MouseDeviceX()`
+`InputMouseDeviceX()`
 
 <!-- tabs:start -->
 
 #### **Description**
 
-**Returns:** ,
+**Returns:** Number, the x coordinate of the mouse point in device-space
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
 
-Returns 
+Returns the x coordinate of the mouse point in device-space.
 
-#### **Example**
-
-```gml
-{
-	
-}
-```
 <!-- tabs:end -->
 
 &nbsp;
 
 ## …MouseDeviceY
 
-`MouseDeviceY()`
+`InputMouseDeviceY()`
 
 <!-- tabs:start -->
 
 #### **Description**
 
-**Returns:** ,
+**Returns:** Number, the y coordinate of the mouse point in device-space
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+Returns the y coordinate of the mouse point in device-space.
 
 Returns 
 
-#### **Example**
+<!-- tabs:end -->
 
-```gml
-{
-	
-}
-```
+&nbsp;
+
+## …MouseReleased
+
+`InputMouseReleased()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the given mouse button was newly released this frame
+
+|Name     |Datatype     |Purpose         |
+|---------|-------------|----------------|
+|`binding`|mouse binding|Binding to check|
+
+Returns whether the given mouse button was newly released this frame. The binding should be one of the following:
+
+- `mb_left`
+- `mb_middle`
+- `mb_right`
+- `mb_any`
+- `mb_none`
+- `mb_side1`
+- `mb_side2`
+- `mb_wheel_up`
+- `mb_wheel_down`
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …MouseCheck
+
+`InputMouseCheck()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the given mouse button is currently held down
+
+|Name     |Datatype     |Purpose         |
+|---------|-------------|----------------|
+|`binding`|mouse binding|Binding to check|
+
+Returns whether the given mouse button is currently held down. The binding should be one of the following:
+
+- `mb_left`
+- `mb_middle`
+- `mb_right`
+- `mb_any`
+- `mb_none`
+- `mb_side1`
+- `mb_side2`
+- `mb_wheel_up`
+- `mb_wheel_down`
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …MousePressed
+
+`InputMousePressed()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the given mouse button is newly pressed this frame
+
+|Name     |Datatype     |Purpose         |
+|---------|-------------|----------------|
+|`binding`|mouse binding|Binding to check|
+
+Returns whether the given mouse button is newly pressed this frame. The binding should be one of the following:
+
+- `mb_left`
+- `mb_middle`
+- `mb_right`
+- `mb_any`
+- `mb_none`
+- `mb_side1`
+- `mb_side2`
+- `mb_wheel_up`
+- `mb_wheel_down`
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …MouseMoved
+
+`InputMouseMoved()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the mouse has moved between frames
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+Returns whether the mouse has moved between frames.
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …MouseSetBlocked
+
+`InputMouseSetBlocked()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name   |Datatype|Purpose                              |
+|-------|--------|-------------------------------------|
+|`state`|boolean |Whether mouse input should be blocked|
+
+Sets whether mouse input should be blocked. Blocked mouse input will freeze mouse position coordinates and will cause  mouse checkers to return `false`.
+
 <!-- tabs:end -->
 
 &nbsp;
 
 ## …MouseGetBlocked
 
-`MouseGetBlocked()`
+`InputMouseGetBlocked()`
 
 <!-- tabs:start -->
 
 #### **Description**
 
-**Returns:** ,
+**Returns:** Boolean, whether mouse input is blocked
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
 
-Returns 
+Returns whether mouse input is blocked.
 
-#### **Example**
-
-```gml
-{
-	
-}
-```
 <!-- tabs:end -->
