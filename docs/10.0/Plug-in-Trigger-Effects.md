@@ -6,6 +6,16 @@ Adaptive trigger effects are available for the DualSense gamepad on the PlayStat
 
 &nbsp;
 
+## Config
+
+`__InputTriggerEffectConfig()` holds macros that affect the general behavior of trigger effects. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for the plug-in to work.
+
+|Name                                   |Typical Value|Purpose                                   |
+|---------------------------------------|-------------|------------------------------------------|
+|`INPUT_TRIGGER_EFFECT_DEFAULT_STRENGTH`|`1.0`        |The default haptic trigger effect strength|
+
+&nbsp;
+
 ## …TriggerEffectOff
 
 `InputTriggerEffectOff(trigger, [playerIndex])`
