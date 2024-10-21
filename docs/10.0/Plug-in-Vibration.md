@@ -32,7 +32,7 @@ Vibration is available for the gamepads on console platforms. On Windows, Xbox g
 |---------------|-------------------|-----------------------------------------------------------------------------------------------------------------|
 |`strength`     |number             |Strength of the vibration event, from `0.0` to `1.0`                                                             |
 |`pan`          |number             |Left-to-right bias for the vibration event. `-1.0` indicates fully left and `1.0` indicates fully right          |
-|`duration`     |frames/milliseconds|Duration of the vibration event, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Config-Macros?id=general)|
+|`duration`     |milliseconds       |Duration of the vibration event in milliseconds                                                                  |
 |`[playerIndex]`|integer            |Player to target. If not specified, player 0 is used                                                             |
 |`[force]`      |boolean            |Whether this event should ignore the "vibration paused" state for the player. If not specified, `false` is used  |
 
@@ -65,10 +65,10 @@ InputVibrateConstant(0.7, -0.3, 50);
 |`peakStrength` |number             |Peak strength of the vibration event at the top of the attack portion of the curve, from `0.0` to `1.0`                                                 |
 |`sustainLevel` |number             |Relative strength of the sustain portion of the curve. `0.0` indicates no sustain, `1.0` indicates sustain strength should be equal to the peak strength|
 |`pan`          |number             |Left-to-right bias for the vibration event. `-1.0` indicates fully left and `1.0` indicates fully right                                                 |
-|`attack`       |frames/milliseconds|Duration of the attack portion of the curve, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Config-Macros?id=general)                           |
-|`decay`        |frames/milliseconds|Duration of the decay portion of the curve, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Config-Macros?id=general)                            |
-|`sustain`      |frames/milliseconds|Duration of the sustain portion of the curve, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Config-Macros?id=general)                          |
-|`release`      |frames/milliseconds|Duration of the release portion of the curve, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Config-Macros?id=general)                          |
+|`attack`       |milliseconds       |Duration of the attack portion of the curvein milliseconds                           |
+|`decay`        |milliseconds       |Duration of the decay portion of the curvein milliseconds                            |
+|`sustain`      |milliseconds       |Duration of the sustain portion of the curvein milliseconds                          |
+|`release`      |milliseconds       |Duration of the release portion of the curvein milliseconds                          |
 |`[playerIndex]`|integer            |Player to target. If not specified, player 0 is used                                                                                                    |
 |`[force]`      |boolean            |Whether this event should ignore the "vibration paused" state for the player. If not specified, `false` is used                                         |
 
@@ -100,7 +100,7 @@ InputVibrateADSR(1, 0.2, 0, 300, 300, 600, 600);
 |`strength`     |number             |Strength of the vibration event, from `0.0` to `1.0`                                                             |
 |`pan`          |number             |Left-to-right bias for the vibration event. `-1.0` indicates fully left and `1.0` indicates fully right          |
 |`repeats`      |integer            |Numbers of pulses to execute over the course of the vibration event                                              |
-|`duration`     |frames/milliseconds|Duration of the vibration event, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Config-Macros?id=general)|
+|`duration`     |milliseconds       |Duration of the vibration eventin milliseconds|
 |`[playerIndex]`|integer            |Player to target. If not specified, player 0 is used                                                             |
 |`[force]`      |boolean            |Whether this event should ignore the "vibration paused" state for the player. If not specified, `false` is used  |
 
@@ -132,7 +132,7 @@ InputVibratePulse(1, 0, 5, 600);
 |`strength`     |number             |Strength of the vibration event, from `0.0` to `1.0`                                                             |
 |`curve`        |animation curve    |Animation curve to follow                                                                                        |
 |`pan`          |number             |Left-to-right bias for the vibration event. `-1.0` indicates fully left and `1.0` indicates fully right          |
-|`duration`     |frames/milliseconds|Duration of the vibration event, the units of which are determined by [`INPUT_TIMER_MILLISECONDS`](Config-Macros?id=general)|
+|`duration`     |milliseconds       |Duration of the vibration eventin milliseconds|
 |`[playerIndex]`|integer            |Player to target. If not specified, player 0 is used                                                             |
 |`[force]`      |boolean            |Whether this event should ignore the "vibration paused" state for the player. If not specified, `false` is used  |
 
