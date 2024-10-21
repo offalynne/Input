@@ -126,7 +126,7 @@ Returns
 
 ## …MouseReleased
 
-`InputMouseReleased()`
+`InputMouseReleased(binding)`
 
 <!-- tabs:start -->
 
@@ -156,7 +156,7 @@ Returns whether the given mouse button was newly released this frame. The bindin
 
 ## …MouseCheck
 
-`InputMouseCheck()`
+`InputMouseCheck(binding)`
 
 <!-- tabs:start -->
 
@@ -186,7 +186,7 @@ Returns whether the given mouse button is currently held down. The binding shoul
 
 ## …MousePressed
 
-`InputMousePressed()`
+`InputMousePressed(binding)`
 
 <!-- tabs:start -->
 
@@ -236,7 +236,7 @@ Returns whether the mouse has moved between frames.
 
 ## …MouseSetBlocked
 
-`InputMouseSetBlocked()`
+`InputMouseSetBlocked(state)`
 
 <!-- tabs:start -->
 
