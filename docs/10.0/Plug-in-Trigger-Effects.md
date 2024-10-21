@@ -303,3 +303,28 @@ draw_text(x, y, "Trigger effect strength: ", string(InputTriggerEffectGetStrengt
 ```
 
 <!-- tabs:end -->
+
+&nbsp;
+
+## …TriggerEffectGetSupported
+
+`InputTriggerEffectGetSupported([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether trigger effects are supported for the device assigned to a player
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+#### **Example**
+
+```gml
+//Draw gamepad trigger effect availability
+draw_text(x, y, "Trigger effect support: ", string(InputTriggerEffectGetSupported()));
+```
+
+<!-- tabs:end -->
