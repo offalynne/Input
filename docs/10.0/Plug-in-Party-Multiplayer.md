@@ -31,8 +31,8 @@ The Party Multiplayer Plug-in handles automatic assigment of devices to players 
 ```gml
 if (InputCheck(INPUT_VERB.START))
 {
-	InputPartySetJoin(INPUT_VERB.JOIN, 2, 4, true, undefined, undefined, true);
 	room_goto_next();
+	InputPartySetJoin(INPUT_VERB.JOIN, 2, 4, true, INPUT_VERB.LEAVE, function() { room_goto_previous() }, true);
 }
 ```
 <!-- tabs:end -->

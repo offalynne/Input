@@ -22,9 +22,9 @@ Adaptive trigger effects are available for the DualSense gamepad on the PlayStat
 
 <!-- tabs:start -->
 
-**Returns:** N/A (`undefined`)
-
 #### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                                               |
 |---------------|--------|--------------------------------------------------------------------------------------|
