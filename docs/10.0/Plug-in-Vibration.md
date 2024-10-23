@@ -10,7 +10,7 @@ Vibration is available for the gamepads on console platforms. On Windows, Xbox g
 
 `__InputVibrateConfig()` holds macros that affect the general behavior of gamepad vibration. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for the plug-in to work.
 
-|Name                                   |Typical Value|Purpose                                   |
+|Name                                   |Typical&nbsp;Value|Purpose                                   |
 |---------------------------------------|-------------|------------------------------------------|
 |`INPUT_VIBRATION_DEFAULT_STRENGTH`     |`1.0`        |The default vibration strength            |
 |`INPUT_VIBRATION_JOYCON_STRENGTH`      |`0.4`        |The default strength of Joy-Con vibration relative to other devices|
