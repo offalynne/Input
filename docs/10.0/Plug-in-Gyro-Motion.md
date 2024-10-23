@@ -27,8 +27,6 @@ Calbirates gamepad motion for the player.
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
-Returns 
-
 #### **Example**
 
 ```gml
@@ -55,8 +53,6 @@ if (InputPressed(INPUT_VERB.AIM))
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
-
-Returns 
 
 #### **Example**
 
@@ -191,8 +187,6 @@ for(var _i = 0; _i < 4; _i++)
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
-
-Returns 
 
 #### **Example**
 
