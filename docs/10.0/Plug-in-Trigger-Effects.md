@@ -31,6 +31,8 @@ Adaptive trigger effects are available for the DualSense gamepad on the PlayStat
 |`trigger`      |integer |Trigger to set using GameMaker’s native constants (`gp_shoulderlb` or `gp_shoulderrb`)|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                                  |
 
+Sets effects off for the specified trigger
+
 #### **Example**
 
 ```gml
@@ -62,6 +64,8 @@ if (game_over)
 |`position`     |number  |Analogue trigger axis value where feedback effect should activate, between 0 and 1    |
 |`strength`     |number  |Strength of trigger effect, between 0 and 1                                           |
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                                  |
+
+Sets a feedback for the specified trigger
 
 #### **Example**
 
@@ -101,6 +105,8 @@ if ((in_sand == false) && instance_place(x, y, obj_sand))
 |`frequency`    |number  |Frequency of trigger effect, between 0 and 1                                          |
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                                  |
 
+Sets a weapon vibration effect for the specified trigger
+
 #### **Example**
 
 ```gml
@@ -139,6 +145,8 @@ if ((using_gas == false) && InputCheck(INPUT_VERB.ACCELERATOR))
 |`strength`     |number  |Strength of trigger effect, between 0 and 1                                           |
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                                  |
 
+Sets a weapon effect for the specified trigger
+
 #### **Example**
 
 ```gml
@@ -175,6 +183,8 @@ if ((using_pistol == false) && InputPressed(INPUT_VERB.EQUIP_PISTOL))
 |---------------|--------|----------------------------------------------------|
 |`trigger`      |integer |Trigger to set using GameMaker’s native constants (`gp_shoulderlb` or `gp_shoulderrb`)|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+Gets the effect set for the specified trigger
 
 #### **Example**
 
@@ -256,6 +266,8 @@ if ((game_paused == false) && InputPressed(INPUT_VERB.PAUSE))
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
+Gets the pause state for the specified trigger
+
 #### **Example**
 
 ```gml
@@ -290,6 +302,8 @@ else
 |`strength`     |number  |Overall strength for all trigger effects for the player |
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used    |
 
+Sets effect strength for the specified trigger
+
 #### **Example**
 
 ```gml
@@ -315,6 +329,8 @@ InputTriggerEffectSetstrength(0.5);
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
+Gets effect strength for the specified trigger
+
 #### **Example**
 
 ```gml
@@ -339,6 +355,8 @@ draw_text(x, y, "Trigger effect strength: ", string(InputTriggerEffectGetStrengt
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+Returns whether the specified player's device supports trigger effects
 
 #### **Example**
 

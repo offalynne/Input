@@ -99,7 +99,7 @@ This function returns a struct that describes the motion of a player's gamepad, 
 
 	quatRoll:  <number in radians indicating gamepad roll>,
 	quatPitch: <number in radians indicating gamepad pitch>,
-	quatYaw:   <number in radians indicating gamepad yaw>,
+	quatYaw:   <number in radians indicating gamepad yaw>
 }
 ```
 
