@@ -18,13 +18,13 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 <h3 align="center">Juju Adams</h3>
 <p align="center"><i>Co-creator, API design and programming</i></p>
-<p align="center">(<a href="https://www.jujuadams.com/" target="_blank">website</a>)</p>
+<p align="center">(<a href="https://www.jujuadams.com/" target="_blank">Website</a>)</p>
 
 &nbsp;
 
 <h3 align="center">Alynne Keith</h3>
 <p align="center"><i>Co-creator, SDL and device support programming</i></p>
-<p align="center">(<a href="https://offalynne.neocities.org/" target="_blank">website</a>)</p>
+<p align="center">(<a href="https://offalynne.neocities.org/" target="_blank">Website</a>)</p>
 
 &nbsp;
 
@@ -34,7 +34,7 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 <h3 align="center">TabularElf</h3>
 <p align="center"><i>Platform support testing</i></p>
-<p align="center">(<a href="https://tabelf.link/" target="_blank">website</a>)</p>
+<p align="center">(<a href="https://tabelf.link/" target="_blank">Website</a>)</p>
 
 &nbsp;
 
@@ -68,7 +68,7 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 <h3 align="center">Prateek</h3>
 <p align="center"><i>Documentation corrections, gamepad testing</i></p>
-<p align="center">(<a href="https://twitter.com/prtksxna" target="_blank">Twitter</a>)</p>
+<p align="center">(<a href="https://prtksxna.com/" target="_blank">Website</a>)</p>
 
 &nbsp;
 
@@ -124,13 +124,13 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 <h3 align="center">Chequered Ink</h3>
 <p align="center"><i>Logo Design</i></p>
-<p align="center">(<a href="https://chequered.ink/" target="_blank">website</a>)</p>
+<p align="center">(<a href="https://chequered.ink/" target="_blank">Website</a>)</p>
 
 &nbsp;
 
 <h3 align="center">neerikiffu</h3>
 <p align="center"><i>Credit cartoons</i></p>
-<p align="center">(<a href="https://neerikiffu.carrd.co" target="_blank">website</a>)</p>
+<p align="center">(<a href="https://neerikiffu.carrd.co" target="_blank">Website</a>)</p>
 
 &nbsp;
 
