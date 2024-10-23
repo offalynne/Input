@@ -143,7 +143,7 @@ if ((using_gas == false) && InputCheck(INPUT_VERB.ACCELERATOR))
 
 ```gml
 //Add trigger effect when weapon is equipped
-if ((using_pistol == false) && InputCheckPressed(INPUT_VERB.EQUIP_PISTOL))
+if ((using_pistol == false) && InputPressed(INPUT_VERB.EQUIP_PISTOL))
 {
 	//Play sound effect
 	audio_play_sound(snd_unholster, 0, false);
@@ -184,7 +184,7 @@ if (hip_firing == false)
 {
 	//Check trigger effect or "fire" verb
 	if ((InputTriggerEffectGetState(gp_shoulderrb) == INPUT_TRIGGER_STATE.EFFECT_OFF)
-	||  (InputCheckPressed(INPUT_VERB.FIRE))
+	||  (InputPressed(INPUT_VERB.FIRE))
 	{
 		//Play sound effect
 		audio_play_sound(snd_gunshot, 0, false);
@@ -226,7 +226,7 @@ Pauses all trigger effects when `state` is `<false>`.  While paused, no new trig
 
 ```gml
 //Pause game
-if ((game_paused == false) && InputCheckPressed(INPUT_VERB.PAUSE))
+if ((game_paused == false) && InputPressed(INPUT_VERB.PAUSE))
 {
 	audio_pause_all();  //Pause sound
 	InputVibrateSetPause(true); //Pause vibration events
