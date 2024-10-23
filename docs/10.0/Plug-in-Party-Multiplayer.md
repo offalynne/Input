@@ -8,7 +8,68 @@ The Party Multiplayer Plug-in handles automatic assigment of devices to players 
 
 ## …PartySetJoin
 
-`InputPartySetJoin(joinVerb, minPlayers, maxPlayers, fillEmptyPlayers, leaveVerb, abortCallback, hotswapOnAbort)`
+`InputPartySetJoin(state, [hotswapWhenOff])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name               |Datatype |Purpose |
+|-------------------|---------|--------|
+|`state`            |boolean  |Whether party join state is enabled|
+|`[hotswapWhenOff]` |boolean  |Whether hotswap is disabled when party join is disabled. Set to `true` if not specified|
+
+Sets whether the party-joining system should be active
+
+#### **Example**
+
+ Sets whether the party-joining system should be active.
+
+```gml
+if (InputCheck(INPUT_VERB.START))
+{
+	InputPartySetJoin(true, false);
+}
+```
+<!-- tabs:end -->
+
+&nbsp;
+
+## …PartyGetJoin
+
+`InputPartyGetJoin()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether party joining is currently active
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+#### **Example**
+
+```gml
+if (InputPartyGetJoin())
+{
+	for(var _i = 0; _i < 4; _i++)
+	{
+		draw_text(10, 10, "Player " + string(_i) + " press [JOIN]");
+	}
+}
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …PartySetParams
+
+`InputPartySetParams(joinVerb, minPlayers, maxPlayers, fillEmptyPlayers, leaveVerb, abortCallback, hotswapOnAbort)`
 
 <!-- tabs:start -->
 
@@ -26,65 +87,16 @@ The Party Multiplayer Plug-in handles automatic assigment of devices to players 
 |`abortCallback`    |method   |If set to a valid function, the abort feature will be enabled: If there are zero players in a party and the leave verb is activated on a device then that device is assigned to player 0 (the user of that device becomes player 0) and the abort callback is executed|
 |`hotswapOnAbort`   |boolean  |Whether hotswapping will be turned on when aborting|
 
+Sets parameters for the party joining system.
+
 #### **Example**
 
 ```gml
 if (InputCheck(INPUT_VERB.START))
 {
-
-	InputPartySetJoin(INPUT_VERB.JOIN, 2, 4, true, INPUT_VERB.LEAVE, function() { room_goto_previous(); }, true);
-}
-```
-<!-- tabs:end -->
-
-&nbsp;
-
-## …PartyGetJoin
-
-`InputPartyGetJoin()`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** ,
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-
-Returns 
-
-#### **Example**
-
-```gml
-{
-    
-}
-```
-<!-- tabs:end -->
-
-&nbsp;
-
-## …PartySetParams
-
-`InputPartySetParams()`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** ,
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-
-Returns 
-
-#### **Example**
-
-```gml
-{
-    
+	InputPartySetParams(INPUT_VERB.JOIN, 2, 4, true, INPUT_VERB.LEAVE, function() { room_goto_previous(); }, true);
+	InputPartySetJoin(true);
+	room_goto_next();
 }
 ```
 <!-- tabs:end -->
@@ -99,18 +111,32 @@ Returns
 
 #### **Description**
 
-**Returns:** ,
+**Returns:** Struct of party parameters
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
 
-Returns 
+This function returns a struct containing parameters set by `InputPartySetParams()` in a struct. This struct is static and should therefore only be used for temporary reading of data.
+
+```
+{
+	joinVerb:       <integer indicating verb checked for a player to join the party>
+	minPlayers:     <integer indicating how many players minimum should be in the party for the party to be considered "ready" as returned by `InputPartyGetReady()>
+	maxPlayers:     <integer indicating how many players maximum should be in the party for the party to be considered "ready" as returned by InputPartyGetReady()>
+	fillEmpty:      <boolean indicating whether players drop down to lower numbered player slots if they are available>
+	leaveVerb:      <integer indicating verb checked for a player to leave the party>
+	abortCallback:  <function index for the `abortCallback` if any is set>
+	hotswapOnAbort: <boolean indicating whether hotswapping will be turned on when aborting>
+}
+```
 
 #### **Example**
 
 ```gml
+if (global.debug)
 {
-    
+	draw_text(10, 10, string_replace_all(json_stringify(InputPartyGetParams(), ",", "\n")));
 }
 ```
 <!-- tabs:end -->
@@ -125,18 +151,18 @@ Returns
 
 #### **Description**
 
-**Returns:** ,
+**Returns:** Boolean, whether enough players have joined the party to continue
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-
-Returns 
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
 
 #### **Example**
 
 ```gml
+if (InputPartyGetReady() && InputCheckPressed(INPUT_VERB.START))
 {
-    
+	room_goto_next();
 }
 ```
 <!-- tabs:end -->

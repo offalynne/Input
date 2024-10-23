@@ -82,7 +82,7 @@ if (not InputMotionIsCalibrated())
 
 This function returns a struct that describes the motion of a player's gamepad, following the formatting below. Values will inherently be noisy and some smoothing will be required to make them usable.
 
-```gml
+```
 {
 	accelerationX: <number indicating acceleration on the X axis in Gs>,
 	accelerationY: <number indicating acceleration on the Y axis in Gs>,
@@ -141,7 +141,7 @@ if (_motion != undefined)
 
 This function returns a struct that describes the motion of a gamepad, following the formatting below. Values will inherently be noisy and some smoothing will be required to make them usable.
 
-```gml
+```
 {
 	accelerationX: <number indicating acceleration on the X axis in Gs>,
 	accelerationY: <number indicating acceleration on the Y axis in Gs>,
@@ -158,7 +158,7 @@ This function returns a struct that describes the motion of a gamepad, following
 
 	quatRoll:  <number in radians indicating gamepad roll>,
 	quatPitch: <number in radians indicating gamepad pitch>,
-	quatYaw:   <number in radians indicating gamepad yaw>,
+	quatYaw:   <number in radians indicating gamepad yaw>
 }
 ```
 
