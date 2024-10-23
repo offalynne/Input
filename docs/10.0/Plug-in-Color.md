@@ -106,6 +106,8 @@ if ((paused == false) && InputPressed(INPUT_VERB.PAUSE))
 |---------------|--------|----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
+Returns whether color is supported for the device assigned to a player.
+
 #### **Example**
 
 ```gml

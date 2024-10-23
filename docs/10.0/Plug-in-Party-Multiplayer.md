@@ -51,6 +51,8 @@ if (InputCheck(INPUT_VERB.START))
 |----|--------|-------|
 |None|        |       |
 
+Returns whether party joining is currently active.
+
 #### **Example**
 
 ```gml
@@ -156,6 +158,8 @@ if (global.debug)
 |Name|Datatype|Purpose|
 |----|--------|-------|
 |None|        |       |
+
+Returns whether enough players have joined the party to continue.
 
 #### **Example**
 
