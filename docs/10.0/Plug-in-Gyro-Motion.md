@@ -92,9 +92,18 @@ This function returns a struct that describes the motion of a player's gamepad, 
 	accelerationY: <number indicating acceleration on the Y axis in Gs>,
 	accelerationZ: <number indicating acceleration on the Z axis in Gs>,
 
-	angularVelocityX: <number indicating angular velocity on the X axis in radians per second>,
-	angularVelocityY: <number indicating angular velocity on the Y axis in radians per second>,
-	angularVelocityZ: <number indicating angular velocity on the Z axis in radians per second>,
+	angularVelocityX: <number indicating angular change on the X axis in radians>,
+	angularVelocityY: <number indicating angular change on the Y axis in radians>,
+	angularVelocityZ: <number indicating angular change on the Z axis in radians>,
+
+	quatDeviceX: <number indicating quaternion position on the X axis in radians>,
+	quatDeviceY: <number indicating quaternion position on the Y axis in radians>,
+	quatDeviceZ: <number indicating quaternion position on the Z axis in radians>,
+	quatDeviceW: <number indicating quaternion position on the W axis in radians>,
+
+	quatRoll:  <number in radians indicating gamepad roll>,
+	quatPitch: <number in radians indicating gamepad pitch>,
+	quatYaw:   <number in radians indicating gamepad yaw>,
 }
 ```
 
@@ -145,6 +154,15 @@ This function returns a struct that describes the motion of a gamepad, following
 	angularVelocityX: <number indicating angular velocity on the X axis in radians per second>,
 	angularVelocityY: <number indicating angular velocity on the Y axis in radians per second>,
 	angularVelocityZ: <number indicating angular velocity on the Z axis in radians per second>,
+	
+	quatDeviceX: <number indicating quaternion position on the X axis in radians>,
+	quatDeviceY: <number indicating quaternion position on the Y axis in radians>,
+	quatDeviceZ: <number indicating quaternion position on the Z axis in radians>,
+	quatDeviceW: <number indicating quaternion position on the W axis in radians>,
+
+	quatRoll:  <number in radians indicating gamepad roll>,
+	quatPitch: <number in radians indicating gamepad pitch>,
+	quatYaw:   <number in radians indicating gamepad yaw>,
 }
 ```
 
