@@ -22,6 +22,8 @@ Adaptive trigger effects are available for the DualSense gamepad on the PlayStat
 
 <!-- tabs:start -->
 
+**Returns:** N/A (`undefined`)
+
 #### **Description**
 
 |Name           |Datatype|Purpose                                                                               |
@@ -51,6 +53,8 @@ if (game_over)
 <!-- tabs:start -->
 
 #### **Description**
+
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                                               |
 |---------------|--------|--------------------------------------------------------------------------------------|
@@ -84,6 +88,8 @@ if ((in_sand == false) && instance_place(x, y, obj_sand))
 `InputTriggerEffectVibration(trigger, position, amplitude, frequency, [playerIndex])`
 
 <!-- tabs:start -->
+
+**Returns:** N/A (`undefined`)
 
 #### **Description**
 
@@ -121,6 +127,8 @@ if ((using_gas == false) && InputCheck("accelerator"))
 
 <!-- tabs:start -->
 
+**Returns:** N/A (`undefined`)
+
 #### **Description**
 
 |Name           |Datatype|Purpose                                                                               |
@@ -156,6 +164,8 @@ if ((using_pistol == false) && InputCheckPressed("equip pistol"))
 `InputTriggerEffectGetState(trigger, [playerIndex])`
 
 <!-- tabs:start -->
+
+**Returns:** N/A (`undefined`)
 
 #### **Description**
 
