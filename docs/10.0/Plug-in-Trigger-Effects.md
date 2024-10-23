@@ -105,10 +105,10 @@ if ((in_sand == false) && instance_place(x, y, obj_sand))
 
 ```gml
 //Add trigger vibration when pressing the gas pedal
-if ((using_gas == false) && InputCheck("accelerator"))
+if ((using_gas == false) && InputCheck(INPUT_VERB.ACCELERATOR))
 {
 	audio_play_sound(snd_gas, 0, true);     //Loop sound effect
-	speed = Inputvalue("accelerator") * 5; //Set speed
+	speed = Inputvalue(INPUT_VERB.ACCELERATOR) * 5; //Set speed
 
 	//Set vibration effect on right trigger
 	InputTriggerEffectVibration(gp_shoulderrb, 0.2, 0.5, 0.2);
@@ -143,7 +143,7 @@ if ((using_gas == false) && InputCheck("accelerator"))
 
 ```gml
 //Add trigger effect when weapon is equipped
-if ((using_pistol == false) && InputCheckPressed("equip pistol"))
+if ((using_pistol == false) && InputCheckPressed(INPUT_VERB.EQUIP_PISTOL))
 {
 	//Play sound effect
 	audio_play_sound(snd_unholster, 0, false);
@@ -184,7 +184,7 @@ if (hip_firing == false)
 {
 	//Check trigger effect or "fire" verb
 	if ((InputTriggerEffectGetState(gp_shoulderrb) == INPUT_TRIGGER_STATE.EFFECT_OFF)
-	||  (InputCheckPressed("fire"))
+	||  (InputCheckPressed(INPUT_VERB.FIRE))
 	{
 		//Play sound effect
 		audio_play_sound(snd_gunshot, 0, false);
@@ -226,7 +226,7 @@ Pauses all trigger effects when `state` is `<false>`.  While paused, no new trig
 
 ```gml
 //Pause game
-if ((game_paused == false) && InputCheckPressed("pause"))
+if ((game_paused == false) && InputCheckPressed(INPUT_VERB.PAUSE))
 {
 	audio_pause_all();  //Pause sound
 	InputVibrateSetPause(true); //Pause vibration events

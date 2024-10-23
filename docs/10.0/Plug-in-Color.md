@@ -79,7 +79,7 @@ Resets the player's device's LED colour.
 
 ```gml
 //Pause game
-if ((paused == false) && InputCheckPressed("pause"))
+if ((paused == false) && InputCheckPressed(INPUT_VERB.PAUSE))
 {
     //Set gamepad light to default
     InputColorReset();

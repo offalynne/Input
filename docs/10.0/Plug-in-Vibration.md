@@ -169,7 +169,7 @@ Immediately stops all vibration for the target player.
 
 ```gml
 //If we're in demo mode and the player long-presses the pause verb...
-if (global.demo_mode && input_long_pressed("pause"))
+if (global.demo_mode && InputPressed(INPUT_VERB.PAUSE))
 {
 	//Stop all vibration
 	InputVibrateStop();
@@ -204,7 +204,7 @@ Whilst player vibration is paused, typically no new vibration events can be crea
 
 ```gml
 //If the player pauses the game...
-if (input_pressed("pause"))
+if (InputPressed(INPUT_VERB.PAUSE))
 {
 	//Pause all vibration
 	InputVibrateSetPause(true);
@@ -266,7 +266,7 @@ if (debug_mode)
 
 ```gml
 //Adjust the strength of the vibration based on tapping left/right
-var _delta = 0.05*input_check_opposing_repeat("left", "right");
+var _delta = 0.05*InputOpposingRepeat(INPUT_VERB.LEFT, INPUT_VERB.RIGHT);
 if (_delta != 0)
 {
 	//Clamp the new strength between 0 and 1
