@@ -2,13 +2,13 @@
 
 &nbsp;
 
-The Binding Icons Plug-in allows you to return icons as defined in `__InputIconConfigKeyboard`, `__InputIconConfigNintendo`, `__InputIconConfigPlayStation`, and `__InputIconConfigXbox`. These functions will return whatever is defined in the relevant configuration script, be it a string, a sprite, or something else entirely.
+The Binding Icons Plug-in allows you to return icons as defined in `__InputIconConfigKeyboard`, `__InputIconConfigNintendo`, `__InputIconConfigPlayStation`, `__InputIconConfigXbox`, and `__InputIconConfigEdgeCases` script assets. These functions will return whatever is defined in the relevant configuration script, be it a string, a sprite, or something else entirely.
 
 &nbsp;
 
 ## …IconDefineKeyboard
 
-`InputIconDefineKeyboard()`
+`InputIconDefineKeyboard(binding, iconData)`
 
 <!-- tabs:start -->
 
@@ -16,12 +16,12 @@ The Binding Icons Plug-in allows you to return icons as defined in `__InputIconC
 
 **Returns:** N/A (`undefined`)
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
+|Name           |Datatype|Purpose                                 |
+|---------------|--------|----------------------------------------|
 |`binding`      |binding |A character string, [virtual key constant](https://manual.gamemaker.io/beta/en/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/Keyboard_Input.htm), or [mouse button constant](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Game_Input/Mouse_Input/mouse_check_button.htm) to label|
-|`iconData`     |any     |The value to return for an empty binding            |
+|`iconData`     |any     |The value to return for an empty binding|
 
-Sets icon data to return for a particular binding name when the player is using the keyboard and mouse device (`INPUT_KBM`).
+Sets icon data to return for a particular binding name when the player is using the keyboard and mouse device (`INPUT_KBM`). Use exclusively in `__InputIconConfigKeyboard`.
 
 #### **Example**
 
@@ -38,7 +38,7 @@ InputIconDefineKeyboard(vk_end, "end");
 
 ## …IconDefineGamepad
 
-`InputIconDefineGamepad()`
+`InputIconDefineGamepad(binding, iconData)`
 
 <!-- tabs:start -->
 
@@ -51,7 +51,7 @@ InputIconDefineKeyboard(vk_end, "end");
 |`binding`      |binding |A (gamepad button constant)[https://manual.gamemaker.io/beta/en/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm] binding to label|
 |`iconData`     |any     |The value to return for an empty binding            |
 
-Sets icon data to return for a particular binding name when the player is using a specific gamepad type.
+Sets icon data to return for a particular binding name when the player is using a specific gamepad type. For use in `__InputIconConfigNintendo`, `__InputIconConfigPlayStation`, `__InputIconConfigXbox`, and `__InputIconConfigEdgeCases`.
 
 #### **Example**
 
@@ -66,7 +66,7 @@ InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_XBOX, gp_paddlelb, "P4"); //P4
 
 ## …IconDefineEmpty
 
-`InputIconDefineEmpty()`
+`InputIconDefineEmpty(iconData)`
 
 <!-- tabs:start -->
 
@@ -78,7 +78,7 @@ InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_XBOX, gp_paddlelb, "P4"); //P4
 |---------------|--------|----------------------------------------------------|
 |`iconData`     |any     |The value to return for an empty binding            |
 
-Returns 
+Sets icon data to return when a binding is empty. Use exclusively in `__InputIconConfigEdgeCases`.
 
 #### **Example**
 
@@ -93,7 +93,7 @@ Returns
 
 ## …IconDefineUnsupported
 
-`InputIconDefineUnsupported()`
+`InputIconDefineUnsupported(iconData)`
 
 <!-- tabs:start -->
 
@@ -105,7 +105,7 @@ Returns
 |---------------|--------|----------------------------------------------------|
 |`iconData`     |any     |The value to return for an unsupported binding      |
 
-Returns 
+Sets icon data to return when a binding is unsupported on the target device. Use exclusively in `__InputIconConfigEdgeCases`.
 
 #### **Example**
 
