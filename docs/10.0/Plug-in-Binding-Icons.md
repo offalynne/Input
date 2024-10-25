@@ -64,7 +64,6 @@ Sets icon data to return for a particular binding name when the player is using 
 
 Sets icon data to return when a binding is empty. Use in `__InputIconConfigEdgeCases` config script.
 
-```
 <!-- tabs:end -->
 
 &nbsp;
