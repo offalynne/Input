@@ -39,7 +39,7 @@ Sets icon data to return for a particular binding name when the player is using 
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
-|`binding`      |binding |A (gamepad button constant)[https://manual.gamemaker.io/beta/en/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm] binding to label|
+|`binding`      |binding |A [gamepad button constant](https://manual.gamemaker.io/beta/en/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm) binding to label|
 |`iconData`     |any     |The value to return for an empty binding            |
 
 Sets icon data to return for a particular binding name when the player is using a specific gamepad type. Use in `__InputIconConfigNintendo`, `__InputIconConfigPlayStation`, `__InputIconConfigXbox`, and `__InputIconConfigEdgeCases` config scripts.
