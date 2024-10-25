@@ -6,10 +6,6 @@ The Binding Icons Plug-in allows you to return icons as defined in device icon c
 
 &nbsp;
 
-# Config
-
-&nbsp;
-
 ## …IconDefineKeyboard
 
 `InputIconDefineKeyboard(binding, iconData)`
