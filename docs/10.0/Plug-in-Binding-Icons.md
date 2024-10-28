@@ -90,7 +90,7 @@ Sets icon data to return when a binding is unsupported on the target device. Use
 
 ## …IconGet
 
-`InputIconGet()`
+`InputIconGet(verbIndex, [alternate=0], [playerIndex=0])`
 
 <!-- tabs:start -->
 
@@ -122,7 +122,7 @@ draw_text(room_width/2 - 5, 10, "To shoot, press ")
 
 ## …IconGetDirect
 
-`InputIconGetDirect()`
+`InputIconGetDirect(binding, forGamepad, gamepadType)`
 
 <!-- tabs:start -->
 
