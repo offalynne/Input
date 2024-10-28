@@ -570,6 +570,7 @@ dead,beef,CommunityPSX // Hidromancer
 044f,b65e,SDLWheel // Thrustmaster T500RS
 044f,b664,SDLWheel // Thrustmaster TX
 044f,b669,SDLWheel // Thrustmaster TX
+044f,b67f,SDLWheel // Thrustmaster TMX
 044f,b691,SDLWheel // Thrustmaster TS-XW
 044f,b692,SDLWheel // Thrustmaster TS-XW
 0483,0522,SDLWheel // Simagic Wheelbase
@@ -600,7 +601,8 @@ dead,beef,CommunityPSX // Hidromancer
 346e,0002,SDLWheel // Moza R9 Wheelbase
 346e,0004,SDLWheel // Moza R5 Wheelbase
 346e,0005,SDLWheel // Moza R3 Wheelbase
-346e,0006,SDLWheel // Moza R12 Wheelbase044f,0402,SDLFlightstick // HOTAS Warthog Joystick
+346e,0006,SDLWheel // Moza R12 Wheelbase
+044f,0402,SDLFlightstick // HOTAS Warthog Joystick
 0738,2221,SDLFlightstick // Saitek Pro Flight X56 Rhino Stick
 044f,b10a,SDLFlightstick // ThrustMaster Inc T16000M Joystick
 046d,c215,SDLFlightstick // Logitech Extreme 3D
