@@ -13,7 +13,7 @@ Gamepad motion features provide normalized data from sensors available on PlaySt
 
 ## …MotionCalibrate
 
-`InputMotionCalibrate([playerIndex])`
+`InputMotionCalibrate([playerIndex=0])`
 
 <!-- tabs:start -->
 
@@ -41,7 +41,7 @@ if (InputPressed(INPUT_VERB.AIM))
 
 ## …MotionIsCalibrated
 
-`InputMotionIsCalibrated()`
+`InputMotionIsCalibrated([playerIndex=0])`
 
 <!-- tabs:start -->
 
@@ -68,7 +68,7 @@ if (not InputMotionIsCalibrated())
 
 ## …MotionGet
 
-`InputMotionGet([playerIndex])`
+`InputMotionGet([playerIndex=0])`
 
 <!-- tabs:start -->
 
@@ -176,7 +176,7 @@ for(var _i = 0; _i < 4; _i++)
 
 ## …MotionSupported
 
-`InputMotionSupported([playerIndex])`
+`InputMotionSupported([playerIndex=0])`
 
 <!-- tabs:start -->
 
