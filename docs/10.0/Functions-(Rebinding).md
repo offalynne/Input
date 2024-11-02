@@ -2,20 +2,28 @@
 
 &nbsp;
 
-## BindingFind()
+## …BindingFind
 
-`InputBindingFind()`
+`InputBindingFind(forGamepad, binding, [playerIndex=0])`
 
 <!-- tabs:start -->
 
 #### **Description**
 
-**Returns:** ,
+**Returns:** Array of structs,
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
+|Name           |Datatype|Purpose                                                                         |
+|---------------|--------|--------------------------------------------------------------------------------|
+|`forGamepad`   |boolean |Whether to set the binding for gamepads (`true`) or mouse and keyboard (`false`)|
+|`verbIndex`    |integer |Verb to target                                                                  |
+|`binding`      |binding |Character string or GameMaker `vk_*` `mb_*` `gp_*` constant to set              |
+|`[alternate]`  |integer |Which alternate binding to target. If not specified, index 0 is used            |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                            |
 
-Returns 
+Returns all verbs (and alternate slots) that use the specified binding. This function returns an array of structs. If the array is empty then no verbs that use the binding were found. The structs contain two values:
+
+- `.verbIndex`  The verb using the binding
+- `.alternate`  The alternate slot, for that verb, using th
 
 #### **Example**
 
@@ -28,20 +36,26 @@ Returns
 
 &nbsp;
 
-## BindingGet()
+## …BindingGet
 
-`InputBindingGet()`
+`InputBindingGet(forGamepad, verbIndex, [alternate=0], [playerIndex=0])`
 
 <!-- tabs:start -->
 
 #### **Description**
 
-**Returns:** ,
+**Returns:** Binding, the binding set for the target verb and alternate
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
+|Name           |Datatype|Purpose                                                                         |
+|---------------|--------|--------------------------------------------------------------------------------|
+|`forGamepad`   |boolean |Whether to get the binding for gamepads (`true`) or mouse and keyboard (`false`)|
+|`verbIndex`    |integer |Verb to target                                                                  |
+|`[alternate]`  |integer |Which alternate binding to target. If not specified, index 0 is used            |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                            |
 
-Returns 
+Returns a binding for a player as set by `InputBindingSet()` or `InputDefineVerb()`. If the binding hasn't been set, this function returns `undefined`.
+ 
+!> For left and up bindings on thumbsticks, the returned value will be negative.
 
 #### **Example**
 
@@ -54,20 +68,27 @@ Returns
 
 &nbsp;
 
-## BindingSet()
+## …BindingSet
 
-`InputBindingSet()`
+`InputBindingSet(forGamepad, verbIndex, binding, [alternate=0], [playerIndex=0])`
 
 <!-- tabs:start -->
 
 #### **Description**
 
-**Returns:** ,
+**Returns:** N/A (`undefined`)
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
+|Name           |Datatype|Purpose                                                                         |
+|---------------|--------|--------------------------------------------------------------------------------|
+|`forGamepad`   |boolean |Whether to set the binding for gamepads (`true`) or mouse and keyboard (`false`)|
+|`verbIndex`    |integer |Verb to target                                                                  |
+|`binding`      |binding |Character string or GameMaker `vk_*` `mb_*` `gp_*` constant to set              |
+|`[alternate]`  |integer |Which alternate binding to target. If not specified, index 0 is used            |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                            |
 
-Returns 
+Sets a binding for a player, overwriting the binding that was already there. If `forGamepad` is specified, the binding will be set for gamepad devices, otherwise the binding will be set for the keyboard and mouse device (`INPUT_KBM`). The alternate index parameter can be used to set multiple parallel bindings for one verb.
+
+?> If you would like to specify a thumbstick binding that heads left or up, use the negative value of that binding e.g. `-gp_axislv` is an upwards push on the left thumbstick.
 
 #### **Example**
 
@@ -80,20 +101,27 @@ Returns
 
 &nbsp;
 
-## BindingSetSafe()
+## …BindingSetSafe
 
-`InputBindingSetSafe()`
+`InputBindingSetSafe(forGamepad, verbIndex, binding, [alternate=0], [playerIndex=0])`
 
 <!-- tabs:start -->
 
 #### **Description**
 
-**Returns:** ,
+**Returns:** Boolean, whether the binding was successfully set
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
+|Name           |Datatype|Purpose                                                                         |
+|---------------|--------|--------------------------------------------------------------------------------|
+|`forGamepad`   |boolean |Whether to set the binding for gamepads (`true`) or mouse and keyboard (`false`)|
+|`verbIndex`    |integer |Verb to target                                                                  |
+|`binding`      |binding |Character string or GameMaker `vk_*` `mb_*` `gp_*` constant to set              |
+|`[alternate]`  |integer |Which alternate binding to target. If not specified, index 0 is used            |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                            |
 
-Returns 
+Sets a binding for a player, overwriting the binding that was already there. If `forGamepad` is specified, the binding will be set for gamepad devices, otherwise the binding will be set for the keyboard and mouse device (`INPUT_KBM`). The alternate index parameter can be used to set multiple parallel bindings for one verb.
+
+This function, unlike `InputBindingSet()`, will try to automatically resolve conflicts. This function is effective for simple control schemes but may fail in more complex situations; in these cases, you’ll need to handle conflict resolution yourself.
 
 #### **Example**
 
@@ -106,20 +134,24 @@ Returns
 
 &nbsp;
 
-## BindingsExport()
+## …BindingsExport
 
-`InputBindingsExport()`
+`InputBindingsExport(forGamepad, [playerIndex=0])`
 
 <!-- tabs:start -->
 
 #### **Description**
 
-**Returns:** ,
+**Returns:** Struct, all bindings and alternates set for a player
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
+|Name           |Datatype|Purpose                                                                         |
+|---------------|--------|--------------------------------------------------------------------------------|
+|`forGamepad`   |boolean |Whether to export bindings for gamepads (`true`) or mouse and keyboard (`false`)|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                            |
 
-Returns 
+Returns a struct that contains the bindings set for a player. This can be saved to a savefile and restored using `InputBindingsImport()`.
+
+!> Care should be taken not to change export names between savefile versions or the library will not be able to import old bindings from savefiles.
 
 #### **Example**
 
@@ -132,9 +164,9 @@ Returns
 
 &nbsp;
 
-## BindingsImport()
+## …BindingsImport
 
-`InputBindingsImport()`
+`InputBindingsImport(forGamepad, data, [playerIndex=0])`
 
 <!-- tabs:start -->
 
@@ -142,10 +174,15 @@ Returns
 
 **Returns:** ,
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
+|Name           |Datatype|Purpose                                                                         |
+|---------------|--------|--------------------------------------------------------------------------------|
+|`forGamepad`   |boolean |Whether to import bindings for gamepads (`true`) or mouse and keyboard (`false`)|
+|`data`         |struct  |Binding struct to import                                                        |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                            |
 
-Returns 
+Restores bindings from a struct created by `InputBindingsExport()`.
+
+!> Care should be taken not to change export names between savefile versions or the library will not be able to import old bindings from savefiles.
 
 #### **Example**
 
@@ -158,7 +195,7 @@ Returns
 
 &nbsp;
 
-## BindingsReset()
+## …BindingsReset
 
 `InputBindingsReset()`
 
@@ -168,10 +205,12 @@ Returns
 
 **Returns:** ,
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
+|Name           |Datatype|Purpose                                                                         |
+|---------------|--------|--------------------------------------------------------------------------------|
+|`forGamepad`   |boolean |Whether to import bindings for gamepads (`true`) or mouse and keyboard (`false`)|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                            |
 
-Returns 
+Resets all bindings to the defaults defined by `InputDefineVerb()`.
 
 #### **Example**
 
@@ -184,9 +223,41 @@ Returns
 
 &nbsp;
 
-## BindingSwap()
+## …BindingSwap
 
-`InputBindingSwap()`
+`InputBindingSwap(forGamepad, verbA, alternateA, verbB, alternateB, [playerIndex=0])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                                                           |
+|---------------|--------|----------------------------------------------------------------------------------|
+|`forGamepad`   |boolean |Whether to swap the bindings for gamepads (`true`) or mouse and keyboard (`false`)|
+|`verbA`        |integer |First verb to target                                                              |
+|`alternateA`   |integer |Which alternate binding to target                                                 |
+|`verbB`        |integer |Second verb to target                                                             |
+|`alternateB`   |integer |Which alternate binding to target                                                 |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                              |
+
+Swaps over two bindings. Useful to resolve binding conflicts.
+
+#### **Example**
+
+```gml
+{
+	
+}
+```
+<!-- tabs:end -->
+
+&nbsp;
+
+## …DeviceGetRebinding
+
+`InputDeviceGetRebinding(device)`
 
 <!-- tabs:start -->
 
@@ -194,10 +265,11 @@ Returns
 
 **Returns:** ,
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
+|Name    |Datatype|Purpose         |
+|--------|--------|----------------|
+|`device`|integer |Device to target|
 
-Returns 
+Returns whether the device is currently set to scan for new bindings.
 
 #### **Example**
 
@@ -210,9 +282,38 @@ Returns
 
 &nbsp;
 
-## DeviceGetRebinding()
+## …DeviceGetRebindingResult
 
-`InputDeviceGetRebinding()`
+`InputDeviceGetRebindingResult(device)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Binding, a discovered binding from the device due to player input
+
+|Name    |Datatype|Purpose         |
+|--------|--------|----------------|
+|`device`|integer |Device to target|
+
+Returns a discovered binding emitted from the device. This function will return `undefined` if no new binding is detected or the device is not currently being scanned for new bindings.
+
+!> This function will return a negative value if a thumbstick push is left or up e.g. `-gp_axislv` is an upwards push on the left thumbstick.
+
+#### **Example**
+
+```gml
+{
+	
+}
+```
+<!-- tabs:end -->
+
+&nbsp;
+
+## …DeviceSetRebinding
+
+`InputDeviceSetRebinding(device, state, [ignoreStruct], [allowStruct])`
 
 <!-- tabs:start -->
 
@@ -220,36 +321,16 @@ Returns
 
 **Returns:** ,
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
+|Name            |Datatype|Purpose                                             |
+|----------------|--------|----------------------------------------------------|
+|`device`        |integer |Device to target                                    |
+|`state`         |boolean |Whether the device should be put into rebinding mode|
+|`[ignoreStruct]`|struct  |Struct of bindings to prohibit                      |
+|`[allowStruct]` |struct  |Struct of bindings to allow                         |
 
-Returns 
+Sets rebinding state for a device. The device will be scanned for all input. Discovered bindings can be returned by calling `InputDeviceGetRebindingResult()`. Only gamepads and keyboard and mouse (`INPUT_KBM`) devices can be scanned. Bindings to explicitly ignore and allow can be set up by passing structs into the optional `ignoreStruct` and `allowStruct`.
 
-#### **Example**
-
-```gml
-{
-	
-}
-```
-<!-- tabs:end -->
-
-&nbsp;
-
-## DeviceGetRebindingResult ()
-
-`InputDeviceGetRebindingResult ()`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** ,
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-
-Returns 
+!> Input from a device that is being scanned will continue as normal. To prevent input leaking to e.g. interface navigation you should be careful to check against `InputDeviceGetRebinding()` where appropriate.
 
 #### **Example**
 
@@ -262,33 +343,7 @@ Returns
 
 &nbsp;
 
-## DeviceSetRebinding()
-
-`InputDeviceSetRebinding()`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** ,
-
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-
-Returns 
-
-#### **Example**
-
-```gml
-{
-	
-}
-```
-<!-- tabs:end -->
-
-&nbsp;
-
-## DeviceStopAllRebinding()
+## …DeviceStopAllRebinding
 
 `InputDeviceStopAllRebinding()`
 
@@ -296,12 +351,13 @@ Returns
 
 #### **Description**
 
-**Returns:** ,
+**Returns:** N/A (`undefined`)
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
 
-Returns 
+Stops rebinding for all devices.
 
 #### **Example**
 
