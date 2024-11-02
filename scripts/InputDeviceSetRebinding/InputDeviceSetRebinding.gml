@@ -2,7 +2,7 @@
 
 /// Sets rebinding state for a device. The device will be scanned for all input. Discovered
 /// bindings can be returned by calling `InputDeviceGetRebindingResult()`. Only gamepads and
-/// keyboard and mouse (INPUT_KBM) devices can be scanned. Bindings to explicitly ignore and
+/// keyboard and mouse (`INPUT_KBM`) devices can be scanned. Bindings to explicitly ignore and
 /// allow can be set up by passing structs into the optional `ignoreStruct` and `allowStruct`.
 /// 
 /// N.B. Input from a device that is being scanned will continue as normal. To prevent input

@@ -27,14 +27,13 @@ function __InputClassVirtualButton() constructor
     __prevX   = undefined;
     __prevY   = undefined;
     
-    __type        = INPUT_VIRTUAL_TYPE.BUTTON;
-    __reference   = INPUT_VIRTUAL_REFERENCE.CENTER;
-    __verbClick   = undefined;
-    __verbLeft    = undefined;
-    __verbRight   = undefined;
-    __verbUp      = undefined;
-    __verbDown    = undefined;
-    __maxDistance = 1;
+    __type      = INPUT_VIRTUAL_TYPE.BUTTON;
+    __reference = INPUT_VIRTUAL_REFERENCE.CENTER;
+    __verbClick = undefined;
+    __verbLeft  = undefined;
+    __verbRight = undefined;
+    __verbUp    = undefined;
+    __verbDown  = undefined;
     
     __thresholdMin = INPUT_VIRTUAL_BUTTON_MIN_THRESHOLD;
     __thresholdMax = INPUT_VIRTUAL_BUTTON_MAX_THRESHOLD;
@@ -283,17 +282,16 @@ function __InputClassVirtualButton() constructor
         return self;
     }
     
-    static Touchpad = function(_click, _left, _right, _up, _down, _max_distance = 10)
+    static Touchpad = function(_click, _left, _right, _up, _down)
     {
         if (__destroyed) return self;
         
-        __type         = INPUT_VIRTUAL_TYPE.TOUCHPAD;
-        __verbClick   = _click;
-        __verbLeft    = _left;
-        __verbRight   = _right;
-        __verbUp      = _up;
-        __verbDown    = _down;
-        __maxDistance = _max_distance;
+        __type      = INPUT_VIRTUAL_TYPE.TOUCHPAD;
+        __verbClick = _click;
+        __verbLeft  = _left;
+        __verbRight = _right;
+        __verbUp    = _up;
+        __verbDown  = _down;
         
         return self;
     }

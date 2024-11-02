@@ -4,7 +4,7 @@
 /// and restored using `InputBindingsImport()`.
 /// 
 /// N.B. Care should be taken not to change export names between savefile versions or the library
-///      will not be able to import old bindings from savefiles etc.
+///      will not be able to import old bindings from savefiles.
 /// 
 /// @param {Bool} forGamepad
 /// @param {Real} [playerIndex=0]

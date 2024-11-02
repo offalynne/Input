@@ -1,7 +1,7 @@
 // Feather disable all
 
 /// Registers a callback to be executed at a suitable time by the library. The callback type
-/// should be a member of the INPUT_PLUG_IN_CALLBACK enum. The method that you specify will be
+/// should be a member of the `INPUT_PLUG_IN_CALLBACK` enum. The method that you specify will be
 /// handed parameters, though what parameters specifically depends on the callback type:
 ///
 /// .COLLECT: No parameters
