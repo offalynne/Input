@@ -2,47 +2,63 @@
 
 &nbsp;
 
-Input uses a "verb interface" to coalesce input into easily managed instructions. Verbs are created by calling [`InputDefineVerb()`](Config?id=inputdefineverb) in [`__InputConfigVerb()`](Config?id=__inputconfigverb).
+Input uses a "verb interface" to coalesce input into easily managed instructions. Verbs are created by defining [default profiles](Profiles).
 
-Verbs are the basic input actions you want to expose to a player; this includes things like jumping, shooting, pausing the game, or moving in a particular direction. By using verbs we **abstract** user input so that we can change [device](Devices) whilst playing the game without needing to change anything else. Using verbs also allows for easier rebinding because we can update bindings behind the scenes to reroute player input, but the verb names themselves won't change. Verbs can be checked in multiple ways using the spectrum of [checker](Functions-(Checkers)) functions.
+Verbs are the basic input actions you want to expose to a player; this includes things like jumping, shooting, pausing the game, or moving in a particular direction. By using verbs we **abstract** user input so that we can change [input source](Input-Sources) whilst playing the game without needing to change anything else. Using verbs also allows for easier rebinding because we can update bindings behind the scenes to reroute player input, but the verb names themselves won't change.
 
-!> A verb reference is **always an integer** and should typically be a member of an enum. In previous versions of Input a verb name was a string but this is no longer the case.
+Verbs can be checked in multiple ways, mostly using the [checker](Functions-(Checkers)) and [2D checker](Functions-(2D-Checkers)) functions.
 
-A "binding" is a piece of logic that ties a physical input on an input device (keyboard, mouse, or gamepad) to a verb in-game. For example, we might want to create a binding that ties the up arrow key on a keyboard to a verb called `INPUT_VERB.UP`. To do this, we might execute the following code:
+!> The name of a verb is **always a string**. In previous versions of Input, a verb name could also be a number, but this is no longer the case.
 
-```gml
-InputDefineVerb(INPUT_VERB.UP, "up", vk_up, undefined);
-``` 
+In addition to basic verbs, you can also create chords. Chords are built by calling [specific functions](Functions-(Further-Verbs)?id=chord_create). Basic verbs and chord verbs can be checked using the same functions.
 
-Some checker functions require the use of "clusters" which will be explained later in this document. Bindings are arranged into two groups: one group for keyboard and mouse input, and another group for gamepad input. Aside from defining bindings in `__InputConfigVerb()`, bindings can also be discovered by starting the [rebinding system](Functions-(Rebinding)?id=devicesetrebinding) and then calling [`InputDeviceGetRebindingResult()`](Functions-(Rebinding)?id=devicegetrebindingresult). Players will inherit default binding set via `__InputConfigVerb()`. A player's bindings be changed at will, and one player's bindings do not necessarily need to be the same as another player's. You can copy profiles between players using [`InputBindingsExport()`](Functions-(Rebinding)?id=bindingsexport) and [`InputBindingsImport()`](Functions-(Rebinding)?id=bindingsimport).
+A "binding" is a piece of logic that ties a physical input on an input source (keyboard, mouse, or gamepad) to a verb in-game. For example, we might want to create a binding that ties the up arrow key on a keyboard to a verb called `"move_up"`. There are [seven types of binding](Functions-(Binding-Creators)):
 
-You may define multiple bindings per verb. You can think of alternate bindings as binding "slots" for each verb. These are called "alternates". Alternates are used, for example, to allow both WASD and arrow keys, or both dpad and thumbstick to simultaneously control player movement. Any verb can have alternates created for it and there is no limit on the number of alternates that can be set per verb.
+|Type                   |Creator function                                                                                    |
+|-----------------------|----------------------------------------------------------------------------------------------------|
+|Empty, inactive binding|[`input_binding_empty()`](Functions-(Binding-Creators)?id=binding_empty)                            |
+|Keyboard key           |[`input_binding_key(key)`](Functions-(Binding-Creators)?id=binding_key)                             |
+|Mouse button           |[`input_binding_mouse_button()`](Functions-(Binding-Creators)?id=binding_mouse_button)              |
+|Mouse wheel up         |[`input_binding_mouse_wheel_up()`](Functions-(Binding-Creators)?id=binding_mouse_wheel_up)          |
+|Mouse wheel down       |[`input_binding_mouse_wheel_down()`](Functions-(Binding-Creators)?id=binding_mouse_wheel_down)      |
+|Gamepad button         |[`input_binding_gamepad_button(button)`](Functions-(Binding-Creators)?id=binding_gamepad_button)    |
+|Gamepad axis           |[`input_binding_gamepad_axis(axis, negative)`](Functions-(Binding-Creators)?id=binding_gamepad_axis)|
+|Virtual button         |[`input_binding_virtual_button()`](Functions-(Binding-Creators)?id=binding_virtual_button)          |
+
+?> Aside from [binding creator functions](Functions-(Binding-Creators)), bindings can also be created by listening for player input using [the binding scan feature](Functions-(Binding-Scan)?id=binding_scan_start).
+
+Bindings are arranged into groups called ["profiles"](Profiles). Profiles allow you to bundle bindings together, typically so that you can change what bindings are active depending on what [input source](Input-Sources) the player is using, but profiles are also useful for providing extra flexibility for genres such as fighting games. You may also want to create different profiles to store bindings for different gamepad types.
+
+Players will inherit default profiles set via `__input_config_verbs()`. Bindings in a player's profile can be changed at will, and one player's bindings do not necessarily need to be the same as another player's. You can copy profiles between players using [`input_profile_copy()`](Functions-(Exporting-and-Importing)?id=profile_copy).
+
+Profiles allow you to define multiple bindings per verb. You can think of alternate bindings as binding "slots" for each verb. These are called "alternates". Alternates are used, for example, to allow both WASD and arrow keys, or both dpad and thumbstick to simultaneously control player movement. Any verb can have alternates created for it, though there is a maximum number of alternates you can have per verb per profile (this is defined by the [`INPUT_MAX_ALTERNATE_BINDINGS`](Config-Macros?id=verb-behaviour) macro).
 
 ## Example of Use
 
 Let's demonstrate these concepts with a practical example. Let's make a basic platformer control scheme.
 
-We start by defining an enum called `INPUT_VERB`. This serves two purposes: it ensures that we generate verb references that are integers, and that no verb references overlap
+We start by defining a default profile. This serves two purposes - firstly, it lets Input know what verbs we're expecting to use. Secondly, it allows us to create some bindings so that Input will know how to interpret user input straight away.
 
-?> When you import Input it’ll come with some default controls already set up. To explain this clearer, we must delete everything that’s already in `__InputConfigVerb()` and start fresh. This is where we'll set up our default profile.
+?> When you import Input it’ll come with some default controls already set up. To explain this clearer, we must delete everything that’s already in `__input_config_verbs()` and start fresh. This is where we'll set up our default profile.
 
 ```gml
-function __InputConfigVerbs()
-{
-    enum INPUT_VERB
+return {
+
+    //Bind keyboard controls to verbs
+    keyboard_and_mouse:
     {
-        LEFT,
-        RIGHT,
-        JUMP,
-    }
-    
-    InputDefineVerb(INPUT_VERB.LEFT,  "left",  vk_left,  undefined);
-    InputDefineVerb(INPUT_VERB.RIGHT, "right", vk_right, undefined);
-    InputDefineVerb(INPUT_VERB.JUMP,  "jump",  vk_space, undefined);
-}
+        left:  input_binding_key(vk_left),
+        right: input_binding_key(vk_right),
+        jump:  input_binding_key(vk_space),
+    },
+};
 ```
 
-In the above struct we've defined three verbs with keyboard bindings, `INPUT_VERB.LEFT`, `INPUT_VERB.RIGHT`, and `INPUT_VERB.JUMP`. Now that we've created default keyboard bindings, we can insert some verbs into our player object.
+In the above struct we've defined a profile called `keyboard_and_mouse` and we've set up three verbs, `left`, `right`, and `jump`. This example presumes Input has been imported using its default configuration: `INPUT_AUTO_PROFILE_FOR_KEYBOARD` is set to `"keyboard_and_mouse"` and `INPUT_STARTING_SOURCE_MODE` is set to `INPUT_SOURCE_MODE.HOTSWAP`. This ensure that when your game starts, Input will automatically choose the `keyboard_and_mouse` profile (which we've just defined) whenever the player starts pressing keys on the keyboard.
+
+?> Automatically switching between [input source](Input-Sources) is called "hotswapping" and is a native feature for Input. You can turn this feature off if you'd like by calling [`input_source_mode_set()`](Functions-(Sources)?id=input_source_mode_setmode) with a different [source mode](Input-Sources).
+
+Now that we've created a default profile for keyboard usage, we can insert some verbs into our player object.
 
 <!-- tabs:start -->
 #### **Game Start**
@@ -54,49 +70,59 @@ gravity = 0.3;
 #### **Step Event**
 ```gml
 //Move the player if the left or right verb is activated
-if (InputCheck(INPUT_VERB.LEFT )) hspeed = -4;
-if (InputCheck(INPUT_VERB.RIGHT)) hspeed = 4;
+if (input_check("left")) hspeed = -4;
+if (input_check("right")) hspeed = 4;
 
 //If the player pressed the jump button, jump!
-if (InputCheckPressed(INPUT_VERB.JUMP)) vspeed = -8;
+if (input_check_pressed("jump")) vspeed = -8;
 ```
 <!-- tabs:end -->
 
-Now let's add some more bindings so that the player can play with a gamepad. Mouse and keyboard bindings chosen when the player starts pressing keys on the keyboard. We can also set up the same behaviour for gamepads such that when the player starts using a gamepad, Input will automatically change bindings and start scanning for input from the gamepad device as well.
+Now let's add some more bindings so that the player can play with a gamepad. As mentioned above, the `keyboard_and_mouse` profile is chosen when the player starts pressing keys on the keyboard. We can also set up the same behaviour for gamepads such that when the player starts using a gamepad, Input will automatically change profile and start scanning for input from that source as well.
+
+We make sure `INPUT_AUTO_PROFILE_FOR_GAMEPAD` is set to `"gamepad"` and then we add a `gamepad` profile to `__input_config_verbs()`.
 
 ```gml
-function __InputConfigVerbs()
-{
-    enum INPUT_VERB
-    {
-        LEFT,
-        RIGHT,
-        JUMP,
-    }
+return {
     
-    InputDefineVerb(INPUT_VERB.LEFT,  "left",  vk_left,  gp_padl);
-    InputDefineVerb(INPUT_VERB.RIGHT, "right", vk_right, gp_padr);
-    InputDefineVerb(INPUT_VERB.JUMP,  "jump",  vk_space, gp_face1);
+	//Bind keyboard controls to verbs
+	keyboard_and_mouse:
+	{
+		left:  input_binding_key(vk_left),
+		right: input_binding_key(vk_right),
+		jump:  input_binding_key(vk_space),
+	},
+	
+	gamepad:
+	{
+		left:  input_binding_gamepad_button(gp_padl),
+		right: input_binding_gamepad_button(gp_padr),
+		jump:  input_binding_gamepad_button(gp_face1),
+	}
 }
 ```
 
-Despite adding these new bindings, we don't need to change anything in our Step event. Because we're using a **verb interface**, all of our binding commands exist separately to our check functions. We can bind multiple kinds of input to the same verb and the relevant binding is used depending on what [device](Devices) the player is using.
+Despite adding these new bindings, we don't need to change anything in our Step event. Because we're using a **verb interface**, all of our binding commands exist separately to our check functions. We can bind multiple kinds of input to the same verb and the relevant binding is used depending on what [input source](Input-Sources) the player is using.
 
-As mentioned above, we can also add alternate bindings for every verb.
+As mentioned above, we can also add alternate bindings for every verb. Input defaults to allowing 2 different bindings per verb (which can be increased by modifying [`INPUT_MAX_ALTERNATE_BINDINGS`](Config-Macros?id=verb-behaviour) so let's add some alternate bindings to show that off:
 
 ```gml
-function __InputConfigVerbs()
-{
-    enum INPUT_VERB
-    {
-        LEFT,
-        RIGHT,
-        JUMP,
-    }
+return {
     
-    InputDefineVerb(INPUT_VERB.LEFT,  "left",  [vk_left,  "A"     ], [gp_padl,  -gp_axislh]);
-    InputDefineVerb(INPUT_VERB.RIGHT, "right", [vk_right, "S"     ], [gp_padr,   gp_axislh]);
-    InputDefineVerb(INPUT_VERB.JUMP,  "jump",  [vk_space, vk_enter], [gp_face1,  gp_face2 ]);
+	//Bind keyboard controls to verbs
+	keyboard_and_mouse:
+	{
+		left:  [input_binding_key(vk_left),  input_binding_key("A")],
+		right: [input_binding_key(vk_right), input_binding_key("S")],
+		jump:  [input_binding_key(vk_space), input_binding_key(vk_enter)],
+	},
+	
+	gamepad:
+	{
+		left:  [input_binding_gamepad_button(gp_padl),  input_binding_gamepad_axis(gp_axislh, true )],
+		right: [input_binding_gamepad_button(gp_padr),  input_binding_gamepad_axis(gp_axislh, false)],
+		jump:  [input_binding_gamepad_button(gp_face1), input_binding_gamepad_button(gp_face2)      ],
+	}
 }
 ```
 
@@ -104,18 +130,19 @@ Once again, our Step event didn't change. However, we've now added lots more con
 
 &nbsp;
 
-## Clusters
+## Verb Groups
 
-Clusters are a group of four verbs that combine together to create two axes of movement. Clusters are useful to simplify two-dimensional movement and make it consistent across different input devices. Clusters are defined much in the same way as verbs. Cluster references are integers and to create a cluster you need to call a function, [`InputDefineCluster()`](Config?id=inputdefinecluster).
+`__input_config_verb_groups()` allows you to differentiate groups of verbs that should not affect one another when checking for collisions (either using [`input_binding_test_collisions()`](Functions-(Binding-Access)?id=input_binding_test_collisionsverb-binding-playerindex-profilename) or [`input_binding_set_safe()`](Functions-(Binding-Access)?id=binding_set_safe)). This is useful for separating sets of verbs that are contextually separate, such as verbs that are used in a menu and verbs that are used during gameplay. By putting menu verbs and gameplay verbs in two different groups, two identical bindings in two different groups can co-exist.
 
-```gml
+A verb can only be in one group at a time and, once assigned a group, will only collide with other verbs in that group. If a verb is not assigned to a group then it may collide with all verbs, regardless of what group the colliding verb is in. You can return the group for a verb by calling [`input_verb_get_group()`](Functions-(Further-Verbs)?id=verb_get_group), and a verb that has not been assigned a group will return `undefined`.
 
-enum INPUT_CLUSTER
-{
-    NAVIGATION,
+`__input_config_verb_groups()` must be defined using the following format:
+```
+return {
+    <group name>: [<verb1>, <verb2>, ...],
+	<group name>: [<verb3>, <verb4>, ...],
+	...
 }
-
-InputDefineCluster(INPUT_CLUSTER.NAVIGATION, INPUT_VERB.UP, INPUT_VERB.RIGHT, INPUT_VERB.DOWN, INPUT_VERB.LEFT);
 ```
 
-Clusters do not need updating if verbs are rebound. 2D checkers such as `InputDirection()` require the use of a cluster and will return an accurate answer whereas using `point_direction()` on the basic verb values will not return an accurate answer due to the influence of gamepad thumbstick thresholds.
+By default, `__input_config_verb_groups()` is set to an empty struct meaning that all verbs may collide with all other verbs.
