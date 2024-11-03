@@ -2,38 +2,40 @@
 
 &nbsp;
 
-Input supports four fundamental types of source - keyboards, mice, touchscreens, and gamepads. Input treats each gamepad as a different and distinct device, and it can also treat a keyboard, a mouse, and a touchscreen as different and distinct devices.
+Input supports four fundamental types of device - keyboards, mice, touchscreens, and gamepads. Input treats each gamepad as a different and distinct device. Keyboard and mouse input is grouped together. Touchscreen input is considered different to mouse input. A device is represented in Input by an integer. Positive integers, including zero, are specifically gamepads and these device values directluy correlate to the native GameMaker gamepad indexes. Values less than zero are special values that Input uses to identify other devices (keyboard and mouse, touch, etc.). Please read on for more information on what devices Input supports.
 
-?> When you first import Input into your project, `INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER` is set to `true`, meaning keyboard and mouse input is tied together. This is by far and away the most common use case for keyboards and mice. You can change this behaviour by [adjusting this macro](Config-Macros?id=profiles).
+Devices are assigned to players, with a particular device only being assigned to one player at a time. A player can only use one device at a time and it is not possible for players to share a device. A player may be assigned a device that is not itself connected; for example, a player may be assigned gamepad 2 even though that gamepad has been switched off. You can check if a player is using a connected device by calling `InputPlayerIsConnected()`. You can check whether a device is a gamepad by calling `InputDeviceIsGamepad()`.
 
-Sources are assigned to players, with a particular source **typically** only being assigned to one player at a time. In the general case, a player may be assigned as many sources as you want, though in practice a player often only has one source at a time. It is possible for more than one player to use the same source. This is useful for two players sharing a keyboard or a gamepad (examples being [Overcooked](https://store.steampowered.com/app/448510/Overcooked/), [KeyWe](https://store.steampowered.com/app/1242980/KeyWe/), and [Fling to the Finish](https://store.steampowered.com/app/1054430/Fling_to_the_Finish/)). You'll need to use [`input_source_share()`](Functions-(Sources)?id=source_share) to split a source between multiple players.
-
-Some functions also allow you to automatically change a player's [profile](Profiles) depending on what source they're using (and what source mode Input is running in). This is called an "auto profile" and can be set up by changing the [auto profile configuration macros](Config-Macros?id=profiles) and ensuring that this profile has been added to `__input_config_verbs()`. For example, if `INPUT_AUTO_PROFILE_FOR_GAMEPAD` is set to `"default_gamepad"` then when automatically setting a profile for a player that is using a gamepad, the `default_gamepad` profile will be used.
+By default, Input will attempt to hotswap between devices. You can turn hotswapping on and off by calling [`InputSetHotswap()`](Functions-(Hotswap)?id=sethotswap). By default, gamepad thumbstick input, mouse movement, and mouse button input will not trigger a hotswap due to these inputs being "noisy" and prone to false positives which can causing unpleasant rapid changes between device ("thrashing"). You can change [some config macros](Config?id=__inputconfig) to change this behaviour.
 
 &nbsp;
 
-## Source Types
+## Device Types
 
-### `INPUT_KEYBOARD`
+### Gamepad `0` `1` `2` etc.
 
-A keyboard attached to the device. If no keyboard is available this source will be non-functional. If `INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER` is set to `true` then the keyboard and the mouse will be considered as a single device: `INPUT_KEYBOARD` and `INPUT_MOUSE` will be interchangeable.
+Gamepads devices are referred to by their integer gamepad index as used natively in GameMaker. Gamepads cannot be assigned on mobile devices where this feature is unsupported by Input.
 
 &nbsp;
 
-### `INPUT_MOUSE`
+### `INPUT_NO_DEVICE`
 
-A pointing device, typically a physical mouse or a laptop trackpad. If `INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER` is set to `true` then the keyboard and the mouse will be considered as a single device: `INPUT_KEYBOARD` and `INPUT_MOUSE` will be interchangeable.
+The player has not been assigned a device. You can set this value manually using `InputPlayerSetDevice()` to forcibly disconnect a player.
+
+&nbsp;
+
+### `INPUT_KBM`
+
+A keyboard and/or mouse attached to the device. This device type is only available on dekstop platforms and will be unavailable on game consoles and mobile devices.
 
 &nbsp;
 
 ### `INPUT_TOUCH`
 
-A mobile touchscreen, a Switch touchscreen, a Steam Deck touchscreen (Proton or Windows). If the platform relevant mouse configuration (`INPUT_MOBILE_MOUSE`, `INPUT_SWITCH_MOUSE`) is set to `true`, `INPUT_TOUCH` devices will be treated as `INPUT_MOUSE` instead.
-
-?> Windows touchscreen devices report `INPUT_MOUSE` by default because we cannot differentiate Windows touchscreens from a physical mouse. This behavior can be changed by setting `INPUT_WINDOWS_TOUCH` to `true`.
+A mobile touchscreen. Touchscreen input is not supported on Switch or Windows. You may want to use touch input with [virtual buttons](Functions-(Virtual-Buttons)). When testing virtual buttons on a desktop device you may find it helpful to be able to click virtual buttons without first deploying your game to a mobile device. By default, Input will not allow players using the `INPUT_KBM` device to interact with virtual buttons; however, if you set the [`INPUT_MOUSE_CAN_USE_VIRTUAL_BUTTONS` config macro](Config?id=input_mouse_can_use_virtual_buttons) to `true` then this limitation will be lifted.
 
 &nbsp;
 
-### `INPUT_GAMEPAD[...]`
+### `INPUT_GENERIC_DEVICE`
 
-A gamepad with the given index (which matches GM's native gamepad indexes). `INPUT_GAMEPAD` is an array and you'll need to use standard array syntax to access individual gamepads (i.e. `INPUT_GAMEPAD[0]` is the 0th gamepad). The length of this array is dynamic and has no fixed sized. Not every gamepad in the `INPUT_GAMEPAD` array will necessarily be active; indeed, not every gamepad will be valid for a given platform. For example, on the Windows platform gamepads 0-3 are reserved for XInput devices, on Switch gamepad 0 is reserved for attached controls, and on iOS gamepad 0 is never available. You should only assign gamepad sources if you have positively identified the gamepad is connected and usable, typically by calling [`input_source_detect_input()`](Functions-(Sources)?id=source_detect_input).
+A special value that doesn't do anything by itself. A generic device is always considered connected. Generic devices will be inactive unless verb values are pushed to the player by calling `InputPlugInVerbSet()`. Generic devices are helpful for implementing input replay, a useful feature for debugging or multiplayer on occasion.
