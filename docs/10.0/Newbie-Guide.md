@@ -87,7 +87,7 @@ function __InputConfigVerbs()
 }
 ```
 
-Just like the keyboard binding functions, gamepad binding functions use [normal gamepad input values](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm) from standard GM features. Congratulations, you now have gamepad input.
+Just like the keyboard binding functions, gamepad binding functions use [normal gamepad input values](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm) from standard GM features. **Look closely** and you'll see that to declare left movement using the thumbstick you'll need to use the negative value `-gp_axislh`. Similarly, for upwards movement you'll need to use `-gp_axislv`.
 
 Input by default will start scanning for gamepad input when your game boots up. If the player uses the keyboard then Input will switch over to using mouse and keyboard bindings, if the player uses a gamepad then Input will switch over to using the gamepad bindings.
 
