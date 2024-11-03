@@ -144,7 +144,7 @@ Returns if a device is active due to a user pressing buttons, moving thumbsticks
 
 ## …DeviceGetNewActivity
 
-`InputDeviceGetNewActivity(device)`
+`InputDeviceGetNewActivity()`
 
 <!-- tabs:start -->
 
