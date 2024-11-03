@@ -100,8 +100,6 @@ function __InputConfigVerbs()
 }
 ```
 
-!> Note that to declare a left movement on the thumbstick we have used a negative value for `gp_axislh`. The same would also apply to an upwards movement on the thumbstick where you should use `-gp_axislv`.
-
 Once again, our Step event didn't change. However, we've now added lots more controls that the player can use to control their character.
 
 &nbsp;
