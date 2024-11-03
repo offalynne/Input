@@ -124,8 +124,8 @@ This function returns a struct containing parameters set by `InputPartySetParams
 ```
 {
 	joinVerb:       <integer indicating verb checked for a player to join the party>
-	minPlayers:     <integer indicating how many players minimum should be in the party for the party to be considered "ready" as returned by `InputPartyGetReady()>
-	maxPlayers:     <integer indicating how many players maximum should be in the party for the party to be considered "ready" as returned by InputPartyGetReady()>
+	minPlayers:     <integer indicating how many players minimum should be in the party for the party to be considered "ready" as returned by `InputPartyGetReady()`>
+	maxPlayers:     <integer indicating how many players maximum should be in the party for the party to be considered "ready" as returned by `InputPartyGetReady()`>
 	fillEmpty:      <boolean indicating whether players drop down to lower numbered player slots if they are available>
 	leaveVerb:      <integer indicating verb checked for a player to leave the party>
 	abortCallback:  <function index for the `abortCallback` if any is set>
