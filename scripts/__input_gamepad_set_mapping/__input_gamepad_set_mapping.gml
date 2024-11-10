@@ -814,9 +814,12 @@ function __input_gamepad_set_mapping()
     switch(os_type)
     {
         
-        #region Windows Xbox One Wireless BT (New firmware)
+        #region Windows overrides
     
         case os_windows:
+
+            #region Xbox One Wireless BT (New firmware)
+            
             if ((_vendor_and_product == "5e04e002")                                 //XbOne Wireless Revision 1
             ||  (_vendor_and_product == "5e04fd02")                                 //XbOne Wireless Revision 2
             &&  (gamepad_axis_value(__index, 1) == gamepad_axis_value(__index, 2))  //Axes 1 and 2 are the same
@@ -853,6 +856,41 @@ function __input_gamepad_set_mapping()
         
                 return;
             }
+            
+            #endregion
+            
+            #region 3rd party PlayStation 3
+            
+            if ((_vendor_and_product == "4c056802") && (__button_count == 36) && (__axis_count == 2) && (__hat_count == 0))
+            {
+                 if (!__INPUT_SILENT) __input_trace("Overriding PS3 Controller on Windows");
+                
+                __set_mapping(gp_select, 0, __INPUT_MAPPING.BUTTON, "back");
+                __set_mapping(gp_stickl, 1, __INPUT_MAPPING.BUTTON, "leftstick");
+                __set_mapping(gp_stickr, 2, __INPUT_MAPPING.BUTTON, "rightstick");
+                __set_mapping(gp_start,  3, __INPUT_MAPPING.BUTTON, "start");
+
+                __set_mapping(gp_padu, 4, __INPUT_MAPPING.BUTTON, "dpup");
+                __set_mapping(gp_padr, 5, __INPUT_MAPPING.BUTTON, "dpright");
+                __set_mapping(gp_padd, 6, __INPUT_MAPPING.BUTTON, "dpdown");
+                __set_mapping(gp_padl, 7, __INPUT_MAPPING.BUTTON, "dpleft");
+
+                __set_mapping(gp_shoulderlb,  8, __INPUT_MAPPING.BUTTON, "lefttrigger");
+                __set_mapping(gp_shoulderrb,  9, __INPUT_MAPPING.BUTTON, "righttrigger");
+                __set_mapping(gp_shoulderl,  10, __INPUT_MAPPING.BUTTON, "leftshoulder");
+                __set_mapping(gp_shoulderr,  11, __INPUT_MAPPING.BUTTON, "rightshoulder");
+
+                __set_mapping(gp_face4, 12, __INPUT_MAPPING.BUTTON, "y");
+                __set_mapping(gp_face2, 13, __INPUT_MAPPING.BUTTON, "b");
+                __set_mapping(gp_face1, 14, __INPUT_MAPPING.BUTTON, "a");
+                __set_mapping(gp_face3, 15, __INPUT_MAPPING.BUTTON, "x");
+                
+                __set_thumbstick_axis_mapping();
+
+                __set_mapping(gp_guide, 16, __INPUT_MAPPING.BUTTON, "guide");
+
+                return;
+            }
         break;
     
         #endregion
@@ -882,7 +920,7 @@ function __input_gamepad_set_mapping()
                 __set_mapping(gp_shoulderl, 13, __INPUT_MAPPING.BUTTON, "leftshoulder");
                 __set_mapping(gp_shoulderr, 14, __INPUT_MAPPING.BUTTON, "rightshoulder");
         
-                __set_thumbstick_axis_mapping();    
+                __set_thumbstick_axis_mapping();
         
                 //No dpad data :-(
         
