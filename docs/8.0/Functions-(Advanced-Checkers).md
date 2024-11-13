@@ -222,7 +222,7 @@ If an array of [verbs](Verbs-and-Bindings) is provided for the `verb` parameter,
 
 ```gml
 //Crouch when we press the "duck" verb
-if (input_check_press("duck"))
+if (input_check_pressed("duck"))
 {
     sprite_index = spr_player_crouch;
     max_speed = 4;
