@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 # controller data refresher for Input
-# @offalynne for Input: https://github.com/JujuAdams/Input, 2021
+# @offalynne for Input: https://github.com/offalynne/Input, 2021
 
 import sys
 if sys.version_info[0] != 3:
@@ -56,7 +56,7 @@ DATA_SOURCES = {
                 "match id": "{0x(.*),0x(.*)}"
             },
             "Input blocklist": {
-                "source": github_urlpath + "JujuAdams/Input/community-data/community_blocklist.txt",
+                "source": github_urlpath + "offalynne/Input/community-data/community_blocklist.txt",
                 "match category": "(?<=\,)(.*)(?=\s//)",
                 "match id": "(.*)(?:," + marker_id + ")"
             }
@@ -79,7 +79,7 @@ DATA_SOURCES = {
         "datafile": "buttonlabels.csv",
         "sources": {
             "Gamepad button labels": {
-                "source":  github_urlpath + "JujuAdams/Input/community-data/button_labels.csv"
+                "source":  github_urlpath + "offalynne/Input/community-data/button_labels.csv"
             }
         }
     },
@@ -89,7 +89,7 @@ DATA_SOURCES = {
         "datafile": "buttoncolors.csv",
         "sources": { 
             "Gamepad button colors": {
-                "source":  github_urlpath + "JujuAdams/Input/community-data/button_colors.csv"
+                "source":  github_urlpath + "offalynne/Input/community-data/button_colors.csv"
             }
         }
     }
