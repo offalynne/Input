@@ -48,6 +48,28 @@ function __input_initialize()
     
     if not (_use_split_and_trim) __input_error("Error!\nGM extended string functions are unavailable. Please update GameMaker.");
     
+    //Detect non-native string_split(), which degrades loading particularly on YYC
+    var _native_split;
+    try
+    {
+        if (is_real(string_split))
+        {
+            //Native index boundary
+            _native_split = (real(string_split) < 100000);
+        }        
+        else
+        {
+            //GMRT native functions are structs
+            _native_split = (is_struct(string_split));
+        }
+    }
+    catch(_error)
+    {
+        _native_split = false;
+    }
+    
+    if not (_native_split) __input_trace_loud("Warning!\nFound indirection for GM native \"string_split\" function. Overriding \"string_split\" degrades load performance.");
+    
     //Detect is_instanceof(), which offers some minor performance gains
     if (INPUT_ON_WEB)
     {
@@ -441,7 +463,7 @@ function __input_initialize()
         }
         else if (__INPUT_ON_IOS)
         {
-        	_max_gamepads = 5;
+            _max_gamepads = 5;
         }
         else if (__INPUT_ON_LINUX || __INPUT_ON_ANDROID)
         {
