@@ -31,7 +31,6 @@
 
 - [Input Quirks](Input-Quirks)
 - [Gamepad Troubleshooting](Gamepad-Troubleshooting)
-- [Common Keyboard Combos](Common-Keyboard-Combos)
 
 ---
 

@@ -12,7 +12,7 @@ By default, Input will attempt to hotswap between devices. You can turn hotswapp
 
 ## Device Types
 
-### Gamepad `0` `1` `2` etc.
+### `Gamepad0`, `Gamepad1`, `Gamepad2`, etc.
 
 Gamepads devices are referred to by their integer gamepad index as used natively in GameMaker. Gamepads cannot be assigned on mobile devices where this feature is unsupported by Input.
 

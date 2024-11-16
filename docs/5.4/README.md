@@ -49,6 +49,6 @@ Many, many other people have contributed to GameMaker's open source community vi
 
 &nbsp;
 
-**Can I send you donations? Are you going to start a Patreon?**
+**Can I support Input?**
 
-Thank you for wanting to show your appreciation - it really does mean a lot to us personally - but we're fortunate enough to have a stable income from gamedev. We're not looking to join Patreon as a creator at this moment in time. If you'd like to support our work then drop us a credit in your game and/or give a shout-out on the social media platform of your choice.
+Yes, you can support the development of Input by [sponsoring on Patreon](<https://www.patreon.com/AlynneKeith>) or [tipping on Kofi](<https://ko-fi.com/offalynne>). Thank you for wanting to show your appreciation.
