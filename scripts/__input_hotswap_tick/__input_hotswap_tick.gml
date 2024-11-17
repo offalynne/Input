@@ -56,10 +56,21 @@ function __input_hotswap_tick_input()
             if (_global.__gamepad_connections_native[_active_gamepad_index])
             {
                 var _gamepad = _global.__gamepads[_active_gamepad_index];
-                if (is_struct(_gamepad) && (_gamepad.__get_any_pressed() || __input_hotswap_axis_delta(_gamepad)))
+                if (is_struct(_gamepad))
                 {
-                    _player.__last_input_time = _global.__current_time;
-                    return INPUT_GAMEPAD[_active_gamepad_index];
+                    //Pressed
+                    if (_gamepad.__get_any_pressed())
+                    {
+                        _player.__last_input_time = _global.__current_time;
+                        return undefined;
+                    }
+                    
+                    //Axis change
+                    if (INPUT_HOTSWAP_ON_GAMEPAD_AXIS && __input_hotswap_axis_delta(_gamepad))
+                    {
+                        _player.__last_input_time = _global.__current_time;
+                        return undefined;                        
+                    }
                 }
             }
         }
@@ -85,6 +96,7 @@ function __input_hotswap_tick_input()
                     if (is_struct(_gamepad)
                     && (_gamepad.__disconnection_frame == undefined))
                     {
+                        //Pressed
                         if (_gamepad.__get_any_pressed())
                         {
                             if (!__INPUT_SILENT) __input_trace("Hotswapping on gamepad ", INPUT_GAMEPAD[_gamepad_index], " \"", _global.__gamepads[_gamepad_index].__description, "\" button press");
@@ -92,7 +104,8 @@ function __input_hotswap_tick_input()
                             return INPUT_GAMEPAD[_gamepad_index];
                         }
                         
-                        if (__input_hotswap_axis_delta(_gamepad))
+                        //Axis change
+                        if (INPUT_HOTSWAP_ON_GAMEPAD_AXIS && __input_hotswap_axis_delta(_gamepad))
                         {
                             if (!__INPUT_SILENT) __input_trace("Hotswapping on gamepad ", INPUT_GAMEPAD[_gamepad_index], " \"", _global.__gamepads[_gamepad_index].__description, "\" axis press");
                             _player.__last_input_time = _global.__current_time;
