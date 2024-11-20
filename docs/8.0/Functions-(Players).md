@@ -576,11 +576,7 @@ if (debug_mode)
 |---------------|--------|-----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used |
 
-#### **Example**
-
-```gml
-
-```
+?> Note that this function does not return whether a gamepad is connected, only if the player is using one. To check for gamepad disconnection, use `input_player_connected()`
 
 <!-- tabs:end -->
 
@@ -600,12 +596,6 @@ if (debug_mode)
 |---------------|--------|-----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used |
 
-#### **Example**
-
-```gml
-
-```
-
 <!-- tabs:end -->
 
 &nbsp;
@@ -624,12 +614,6 @@ if (debug_mode)
 |---------------|--------|-----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used |
 
-#### **Example**
-
-```gml
-
-```
-
 <!-- tabs:end -->
 
 &nbsp;
@@ -647,11 +631,5 @@ if (debug_mode)
 |Name           |Datatype|Purpose                                              |
 |---------------|--------|-----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used |
-
-#### **Example**
-
-```gml
-
-```
 
 <!-- tabs:end -->
