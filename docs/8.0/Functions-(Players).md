@@ -576,7 +576,7 @@ if (debug_mode)
 |---------------|--------|-----------------------------------------------------|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used |
 
-?> Note that this function does not return whether a gamepad is connected, only if the player is using one. To check for gamepad disconnection, use `input_player_connected()`
+?> Note that this function does not return whether a gamepad is connected, only if the player is using one. To check for gamepad connection, use `input_player_connected()`
 
 <!-- tabs:end -->
 
