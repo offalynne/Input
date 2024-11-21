@@ -14,7 +14,7 @@ These functions allow you to return icons as defined in [`__input_config_icons()
 
 #### **Description**
 
-_Returns:_ Various, the icon identifier defined in [`__input_config_icons()`](Config-Macros?id=icons)
+_Returns:_ Various, the icon identifier defined in [`__input_config_icons()`](Icon-Config)
 
 |Name           |Datatype                             |Purpose                                                                                                        |
 |---------------|-------------------------------------|---------------------------------------------------------------------------------------------------------------|
