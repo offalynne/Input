@@ -69,6 +69,8 @@
 1235,ab11,CommunityLikeXBox // 8BitDo FC30 Joystick
 146b,0c01,CommunityLikeXBox // Nacon GC-400ES	
 3285,0607,CommunityLikeXBox // Nacon GC-100
+20d6,4033,CommunityLikeXBox // PowerA OPS Pro Wireless Controller
+20d6,4026,CommunityLikeXBox // PowerA OPS Pro Wireless Controller
 3537,1046,CommunityLikeXBox // Anbernic RG P01 Bluetooth
 3537,1007,CommunityLikeXBox // Anbernic RG P01 2.4G USB
 0502,1309,CommunityLikeXBox // Anbernic RG P01 USB
