@@ -316,20 +316,47 @@ function __input_class_gamepad(_index) constructor
         
                 //Set up alternate Stadia mapping
                 if (__stadia_trigger_test)
-                && ((gamepad_axis_value(__index, 1) != gamepad_axis_value(__index, 2)) 
-                 || (gamepad_axis_value(__index, 4) != gamepad_axis_value(__index, 5)))
                 {
-                    if (!__INPUT_SILENT) __input_trace("Setting Stadia controller to analogue trigger mapping for gamepad ", __index);
-                    __stadia_trigger_test = false;                    
-                    
-                    __set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");
-                    __set_mapping(gp_axisrv, 3, __INPUT_MAPPING.AXIS, "righty");
-                    
-                    var _mapping = __set_mapping(gp_shoulderrb, 4, __INPUT_MAPPING.AXIS, "righttrigger");
-                    _mapping.__extended_range = true;
-
-                    _mapping = __set_mapping(gp_shoulderlb, 5, __INPUT_MAPPING.AXIS, "lefttrigger");
-                    _mapping.__extended_range = true;
+                    //Stadia left trigger
+                    var _axis_ry = 3;
+                    var _axis_lt = 5;
+                    if (gamepad_button_check(__index, 12) && (gamepad_axis_value(__index, _axis_lt) >= 0))
+                    {
+                        if ((gamepad_axis_value(__index, 1)        == gamepad_axis_value(__index, 2)) 
+                        &&  (gamepad_axis_value(__index, _axis_lt) == gamepad_axis_value(__index, _axis_lt - 1)))
+                        {
+                            //Stadia default
+                            if (!__INPUT_SILENT) __input_trace("Using default mapping for Stadia controller", __index);                            
+                            __set_mapping(gp_axisrh, 3, __INPUT_MAPPING.AXIS, "rightx");
+                            __set_mapping(gp_axisrv, 4, __INPUT_MAPPING.AXIS, "righty");
+                        }
+                        else 
+                        {
+                            //Stadia analogue
+                            if ((gamepad_axis_value(__index, _axis_ry) != 0) && (gamepad_axis_value(__index, _axis_ry) >= -0.5))
+                            {
+                                //Statdia alternate analogue
+                                if (!__INPUT_SILENT) __input_trace("Setting Stadia controller to alternate analogue mapping for gamepad ", __index);
+                                _axis_ry = 5;
+                                _axis_lt = 3;
+                            }
+                            else
+                            {
+                                if (!__INPUT_SILENT) __input_trace("Setting Stadia controller to analogue mapping for gamepad ", __index);
+                            }
+                        
+                            __set_mapping(gp_axisrh, 2, __INPUT_MAPPING.AXIS, "rightx");                        
+                            __set_mapping(gp_axisrv, _axis_ry, __INPUT_MAPPING.AXIS, "righty");
+                        
+                            var _mapping = __set_mapping(gp_shoulderlb, _axis_lt, __INPUT_MAPPING.AXIS, "lefttrigger");
+                            _mapping.__extended_range = true;
+                        
+                            _mapping = __set_mapping(gp_shoulderrb, 4, __INPUT_MAPPING.AXIS, "righttrigger");
+                            _mapping.__extended_range = true;    
+                        }
+                        
+                        __stadia_trigger_test = false;
+                    }
                 }
             }
         }
