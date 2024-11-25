@@ -119,8 +119,9 @@ if (menu_opened)
 |----|--------|-------|
 |None|        |       |
 
-This function returns a struct that describes the state of each player's connectivity, following the formatting below. This data is useful for detecting a change in player state wherein the game may need to create a new instance for that player or show a disconnection warning. Note that status indicates the input system as of the current game frame - as such, changes made with [Source functions](Functions-(Sources)) will be reflected in the subsequent frame.
+This function returns a struct that describes the state of each player's connectivity, following the formatting below. This data is useful for detecting a change in player state wherein the game may need to create a new instance for that player or show a disconnection warning. 
 
+?> Status indicates the input system as of the current game frame - as such, changes made with [Source functions](Functions-(Sources)) will be reflected in the subsequent frame.
 !> Do not edit the struct that this function returns! You may encounter undefined behaviour if you do.
 
 ```
