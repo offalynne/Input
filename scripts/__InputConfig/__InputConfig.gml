@@ -25,7 +25,7 @@
 
 // Default values for the "long" checker functions. Please see that function for documentation on
 // behaviour.
-#macro INPUT_LONG_DEFALT_DELAY  10
+#macro INPUT_LONG_DEFAULT_DELAY  10
 
 // Default values for the "opposing" checker functions. Please see that function for documentation
 // on behaviour.

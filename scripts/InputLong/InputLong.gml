@@ -7,7 +7,7 @@
 /// @param {Real} [playerIndex=0]
 /// @param {Real} [duration]
 
-function InputLong(_verbIndex, _playerIndex = 0, _duration = INPUT_LONG_DEFALT_DELAY)
+function InputLong(_verbIndex, _playerIndex = 0, _duration = INPUT_LONG_DEFAULT_DELAY)
 {
     static _system      = __InputSystem();
     static _playerArray = __InputSystemPlayerArray();
