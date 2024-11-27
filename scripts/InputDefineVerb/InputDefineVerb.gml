@@ -24,13 +24,16 @@ function InputDefineVerb(_verbIndex, _exportName, _kbmBinding, _gamepadBinding)
 {
     static _system = __InputSystem();
     
-    var _callstack = debug_get_callstack(2);
-    var _previous = _callstack[1];
-    _previous = string_copy(_previous, 1, string_length("gml_Script___InputConfigVerbs:"))
-    
-    if (_previous != "gml_Script___InputConfigVerbs:")
+    if (GM_build_type == "run")
     {
-        __InputError("InputDefineVerb() must only be called in __InputConfigVerbs()");
+        var _callstack = debug_get_callstack(2);
+        var _previous = _callstack[1];
+        _previous = string_copy(_previous, 1, string_length("gml_Script___InputConfigVerbs"))
+        
+        if (_previous != "gml_Script___InputConfigVerbs")
+        {
+            __InputError("InputDefineVerb() must only be called in __InputConfigVerbs()");
+        }
     }
     
     with(_system)
