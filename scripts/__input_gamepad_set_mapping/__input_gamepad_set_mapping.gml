@@ -234,7 +234,7 @@ function __input_gamepad_set_mapping()
         case "CommunityStadia":
             if (__INPUT_ON_WINDOWS)
             {
-                //Analogue triggers and right stick mapping depends on Windows Registry setting
+                //Analogue triggers and right stick mapping depends on driver and registry
                 if (!__INPUT_SILENT) __input_trace("Setting default Stadia controller mapping");                
                 
                 __set_face_button_mapping();
@@ -260,9 +260,6 @@ function __input_gamepad_set_mapping()
                     
                 __set_mapping(gp_shoulderrb, 11, __INPUT_MAPPING.BUTTON, "righttrigger");
                 __set_mapping(gp_shoulderlb, 12, __INPUT_MAPPING.BUTTON, "lefttrigger");
-                
-                __set_mapping(gp_axisrh, 3, __INPUT_MAPPING.AXIS, "rightx");
-                __set_mapping(gp_axisrv, 4, __INPUT_MAPPING.AXIS, "righty");
                 
                 return;
             }

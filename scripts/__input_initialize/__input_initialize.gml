@@ -60,7 +60,7 @@ function __input_initialize()
         else
         {
             //GMRT native functions are structs
-            _native_split = (is_struct(string_split));
+            _native_split = is_struct(string_split);
         }
     }
     catch(_error)
