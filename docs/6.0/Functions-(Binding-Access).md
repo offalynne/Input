@@ -14,7 +14,7 @@ _Returns:_ Boolean, if the value is a valid binding for the specified player on 
 
 |Name           |Datatype|Purpose                                                           |
 |---------------|--------|------------------------------------------------------------------|
-|`binding`      |binding |Binding to check againstding_get()                                |
+|`binding`      |binding |Binding to check against                                          |
 |`[playerIndex]`|integer |Player to validate against. If not specified, player 0 is targeted|
 
 Useful for verifying if a binding returned by [`input_binding_get()`](Functions-(Binding-Access)?id=binding_get) is valid for the specified player on the current platform.
