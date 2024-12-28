@@ -2,24 +2,24 @@
 
 &nbsp;
 
-Common challenges encountered by fellow library users are presented below in question and answer format. Please feel free to [join us on Discord](https://discord.gg/8krYCqr) for further discussion and [open an Issue on GitHub](https://github.com/JujuAdams/Input/issues?q=is%3Aissue+is%3Aopen) if you find a persistent problem with the library.
+Common challenges encountered by fellow library users are presented below in question and answer format. Please feel free to [join us on Discord](https://discord.gg/8krYCqr) for further discussion and [open an Issue on GitHub](https://github.com/offalynne/Input/issues?q=is%3Aissue+is%3Aopen) if you find a persistent problem with the library.
 
 <hr>
 
 ### Using a gamepad, verbs aren't working as expected, how do I correct this? {docsify-ignore}
 
 1. Check if your gamepad is working OK on an OS level. On Windows, use the Game Controllers dialogue. See [Gamepad Troubleshooting](Gamepad-Troubleshooting) for additional details
-2. Download the [example project](https://github.com/JujuAdams/Input/archive/refs/heads/master.zip) from GitHub and try out the `obj_gamepad_tester` object. This helps visualize what's going on with your gamepad. You may need to cycle through gamepad indexes in some cases
+2. Download the [example project](https://github.com/offalynne/Input/archive/refs/heads/master.zip) from GitHub and try out the `obj_gamepad_tester` object. This helps visualize what's going on with your gamepad. You may need to cycle through gamepad indexes in some cases
 3. Have a look at the [Output log](https://i.imgur.com/gy3CUcu.png) for more information on gamepad connection. If you need to follow up for additional help, we will need you to share the information you see here.
 
-Some common issues to consider: remappers like Steam Input, DS4Windows, etc. may cause trouble, so try quitting these. Nintendo Switch controllers do not work on many platforms over USB, so try Bluetooth instead. Some devices require additional setup, see [Gamepad Troubleshooting](https://www.jujuadams.com/Input/#/6.2/Gamepad-Troubleshooting) for additional details
+Some common issues to consider: remappers like Steam Input, DS4Windows, etc. may cause trouble, so try quitting these. Nintendo Switch controllers do not work on many platforms over USB, so try Bluetooth instead. Some devices require additional setup, see [Gamepad Troubleshooting](Gamepad-Troubleshooting) for additional details
 
 &nbsp;
 
 
 ### How do I check if the player is (or is not) using gamepad? {docsify-ignore}
 
-Check the player with [`input_player_get_gamepad()`](Functions-(Players)?id=player_get_gamepad), or the source device with [`input_source_using(INPUT_GAMEPAD)`](Functions-(Sources)?id=input_source_usingsource-playerindex)
+See [`player_using_gamepad()`](Functions-(Players)?id=player_using_gamepad)
 
 &nbsp;
 
@@ -34,7 +34,7 @@ Check the player with [`input_player_get_gamepad()`](Functions-(Players)?id=play
 
 ### How do I set up aiming for both mouse and gamepad thumbstick? {docsify-ignore}
 
-[Cursor functions!](Functions-(Cursor)) For a sophisticated example, refer to the [GitHub example project](https://github.com/JujuAdams/Input/archive/refs/heads/master.zip), specifically the `obj_example_tds_player` object.
+[Cursor functions!](Functions-(Cursor)) For a sophisticated example, refer to the [GitHub example project](https://github.com/offalynne/Input/archive/refs/heads/master.zip), specifically the `obj_example_tds_player` object.
 
 &nbsp;
 
