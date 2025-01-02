@@ -49,7 +49,6 @@ transceiver,android,description contains // Mouse/keyboard Transceiver
 usb receiver,android,description contains // Corsair and Logitech Keyboards
 surface type,android,description contains // Microsoft Surface Cover Keyboard
 touchscreen,android,description contains // Touchscreen Devices
-touchpad,android,description contains // Touchpad Devices
 digitizer,android,description contains // Touchscreen Devices
 multitouch,android,description contains // Virtual Multitouch Devices
 headset,android,description contains // Headsets and Adapters
