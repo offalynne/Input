@@ -176,6 +176,8 @@
     {"id":{"name":"InputDeviceGetNewActivity","path":"scripts/InputDeviceGetNewActivity/InputDeviceGetNewActivity.yy",},},
     {"id":{"name":"InputDeviceGetNewActivityOnVerb","path":"scripts/InputDeviceGetNewActivityOnVerb/InputDeviceGetNewActivityOnVerb.yy",},},
     {"id":{"name":"InputDeviceGetPlayer","path":"scripts/InputDeviceGetPlayer/InputDeviceGetPlayer.yy",},},
+    {"id":{"name":"InputDeviceGetPlayerUsingGamepad","path":"scripts/InputDeviceGetPlayerUsingGamepad/InputDeviceGetPlayerUsingGamepad.yy",},},
+    {"id":{"name":"InputDeviceGetPlayerUsingGeneric","path":"scripts/InputDeviceGetPlayerUsingGeneric/InputDeviceGetPlayerUsingGeneric.yy",},},
     {"id":{"name":"InputDeviceGetRebinding","path":"scripts/InputDeviceGetRebinding/InputDeviceGetRebinding.yy",},},
     {"id":{"name":"InputDeviceGetRebindingResult","path":"scripts/InputDeviceGetRebindingResult/InputDeviceGetRebindingResult.yy",},},
     {"id":{"name":"InputDeviceGetSteamHandle","path":"scripts/InputDeviceGetSteamHandle/InputDeviceGetSteamHandle.yy",},},
