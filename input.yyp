@@ -238,6 +238,7 @@
     {"id":{"name":"InputPlayerHasDevice","path":"scripts/InputPlayerHasDevice/InputPlayerHasDevice.yy",},},
     {"id":{"name":"InputPlayerHasDeviceCount","path":"scripts/InputPlayerHasDeviceCount/InputPlayerHasDeviceCount.yy",},},
     {"id":{"name":"InputPlayerIsConnected","path":"scripts/InputPlayerIsConnected/InputPlayerIsConnected.yy",},},
+    {"id":{"name":"InputPlayerLowestConnectedIndex","path":"scripts/InputPlayerLowestConnectedIndex/InputPlayerLowestConnectedIndex.yy",},},
     {"id":{"name":"InputPlayerSetBlocked","path":"scripts/InputPlayerSetBlocked/InputPlayerSetBlocked.yy",},},
     {"id":{"name":"InputPlayerSetDevice","path":"scripts/InputPlayerSetDevice/InputPlayerSetDevice.yy",},},
     {"id":{"name":"InputPlayerSetGhost","path":"scripts/InputPlayerSetGhost/InputPlayerSetGhost.yy",},},

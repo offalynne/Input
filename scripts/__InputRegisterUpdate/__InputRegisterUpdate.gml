@@ -295,11 +295,21 @@ function __InputRegisterUpdate()
             }
         }
         
-        //Update player verb states
+        //Update player state
+        __lowestConnectedPlayerIndex = undefined;
         var _i = 0;
         repeat(INPUT_MAX_PLAYERS)
         {
             _playerArray[_i].__Update();
+            
+            if (__lowestConnectedPlayerIndex == undefined)
+            {
+                if (InputPlayerIsConnected(_i))
+                {
+                    __lowestConnectedPlayerIndex = _i;
+                }
+            }
+            
             ++_i;
         }
     });

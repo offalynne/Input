@@ -32,6 +32,8 @@ function __InputSystem()
         __frame = 0;
         __time  = 0;
         
+        __lowestConnectedPlayerIndex = undefined;
+        
         __hotswap = (not INPUT_BAN_HOTSWAP);
         __hotswapCallback = undefined;
         
