@@ -325,6 +325,7 @@ beef,feed,CommunityXBox360 // Monect
 2e95,434e,CommunityXBoxOne // Scuf Envision
 2dc8,200a,CommunityXBoxOne // 8BitDo M30 Wired for Xbox
 294b,3004,CommunityXBoxOne // Snakebyte Gamepad RGB X
+20d6,4005,CommunityXBoxOne // PowerA Advantage
 0e6f,0901,CommunityPSX // PDP Versus Fighting
 2563,0526,CommunityPSX // Uberwith PS
 0e6f,0111,CommunityPSX // Afterglow PS3
