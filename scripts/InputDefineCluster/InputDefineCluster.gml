@@ -3,13 +3,25 @@
 /// Defines a verb cluster. Clusters are used for cluster checks such as `InputX()` and
 /// `InputDirection()`.
 /// 
+/// The optional `axisBiasFactor` parameter allows you to bias the cluster along straight lines
+/// along the x and y axes. This makes it easier for the player to input exactly horizontal and
+/// exactly vertical movement. The value for this parameter should be from 0 to 1. Higher values
+/// make the biasing behaviour stronger. The default value for `axisBiasFactor` is 0 which confers
+/// no axis bias whatsoever.
+///
+/// `axisBiasDiagonals` controls whether the axis bias should also allow diagonal inputs. It
+/// defaults to `false`: biasing will not select diagonal directioons. Setting this parameter to
+/// `true` will allow diagonal directions.
+/// 
 /// @param {Enum.INPUT_CLUSTER,Real} clusterIndex
 /// @param {Enum.INPUT_VERB,Real} verbUp
 /// @param {Enum.INPUT_VERB,Real} verbRight
 /// @param {Enum.INPUT_VERB,Real} verbDown
 /// @param {Enum.INPUT_VERB,Real} verbLeft
+/// @param {Real} [axisBiasFactor=0]
+/// @param {Real} [axisBiasDiagonals=false]
 
-function InputDefineCluster(_clusterIndex, _verbUp, _verbRight, _verbDown, _verbLeft)
+function InputDefineCluster(_clusterIndex, _verbUp, _verbRight, _verbDown, _verbLeft, _axisBiasFactor = 0, _axisBiasDiagonals = false)
 {
     static _system = __InputSystem();
     
@@ -27,7 +39,7 @@ function InputDefineCluster(_clusterIndex, _verbUp, _verbRight, _verbDown, _verb
     
     with(_system)
     {
-        var _definition = new __InputClassClusterDefinition(_clusterIndex, _verbUp, _verbRight, _verbDown, _verbLeft);
+        var _definition = new __InputClassClusterDefinition(_clusterIndex, _verbUp, _verbRight, _verbDown, _verbLeft, _axisBiasFactor, _axisBiasDiagonals);
         __clusterDefinitionArray[_clusterIndex] = _definition;
     }
 }

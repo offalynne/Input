@@ -10,15 +10,6 @@
 //            //
 ////////////////
 
-// The amount of bias for 2D checkers to prefer straight lines along the x- and y-axes. This makes
-// it easier for the player to input exactly horizontal and exactly vertical movement. Values
-// should be from 0 to 1. Higher values make the biasing behaviour stronger.
-#macro INPUT_2D_XY_AXIS_BIAS  0.0
-
-// Whether the axis bias (see above) should be 8-directional. If set to `false`, 2D checkers will
-// only lock to north/east/south/west directions.
-#macro INPUT_2D_XY_AXIS_BIAS_DIAGONALS  false
-
 // Default values for `InputRepeat()`. Please see that function for documentation on behaviour.
 #macro INPUT_REPEAT_DEFAULT_DELAY      9
 #macro INPUT_REPEAT_DEFAULT_PREDELAY  25

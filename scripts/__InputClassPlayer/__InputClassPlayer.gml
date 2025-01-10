@@ -458,19 +458,20 @@ function __InputClassPlayer(_playerIndex) constructor
                 _dx *= _coeff;
                 _dy *= _coeff;
                 
-                if (INPUT_2D_XY_AXIS_BIAS > 0)
+                var _bias = _clusterDefinition.__axisBiasFactor;
+                if (_bias > 0)
                 {
-                    var _divisor = INPUT_2D_XY_AXIS_BIAS_DIAGONALS? 45 : 90;
+                    var _divisor = _clusterDefinition.__axisBiasDiagonals? 45 : 90;
                     var _direction = point_direction(0, 0, _dx, _dy);
                     
-                    if (INPUT_2D_XY_AXIS_BIAS >= 1)
+                    if (_bias >= 1)
                     {
                         _direction = _divisor*round(_direction/_divisor);
                     }
                     else
                     {
                         var _dirMod = (_direction mod _divisor) / _divisor;
-                        _dirMod = clamp((_dirMod - 0.5*0.999*INPUT_2D_XY_AXIS_BIAS) / (1 - 0.999*INPUT_2D_XY_AXIS_BIAS), 0, 1);
+                        _dirMod = clamp((_dirMod - 0.5*0.999*_bias) / (1 - 0.999*_bias), 0, 1);
                         _dirMod = _dirMod*_dirMod*(3 - 2*_dirMod); //Smooth step babyyyy
                         _direction = _divisor*((_direction div _divisor) + _dirMod);
                     }
