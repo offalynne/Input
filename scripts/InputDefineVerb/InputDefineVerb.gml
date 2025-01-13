@@ -19,8 +19,9 @@
 /// @param {String} exportName
 /// @param {Any} defaultKbmBinding
 /// @param {Any} defaultGamepadBinding
+/// @param {Any} [metadata=struct]
 
-function InputDefineVerb(_verbIndex, _exportName, _kbmBinding, _gamepadBinding)
+function InputDefineVerb(_verbIndex, _exportName, _kbmBinding, _gamepadBinding, _metadata = {})
 {
     static _system = __InputSystem();
     
@@ -38,7 +39,7 @@ function InputDefineVerb(_verbIndex, _exportName, _kbmBinding, _gamepadBinding)
     
     with(_system)
     {
-        var _definition = new __InputClassVerbDefinition(_verbIndex, _exportName, _kbmBinding, _gamepadBinding);
+        var _definition = new __InputClassVerbDefinition(_verbIndex, _exportName, _kbmBinding, _gamepadBinding, _metadata);
         
         __verbDefinitionArray[_verbIndex]   = _definition;
         __verbExportNameDict[$ _exportName] = _definition;

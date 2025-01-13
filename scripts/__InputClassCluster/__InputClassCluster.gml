@@ -7,8 +7,9 @@
 /// @param verbLeft
 /// @param axisBiasFactor
 /// @param axisBiasDiagonals
+/// @param metadata
 
-function __InputClassClusterDefinition(_clusterIndex, _verbUp, _verbRight, _verbDown, _verbLeft, _axisBiasFactor, _axisBiasDiagonals) constructor
+function __InputClassClusterDefinition(_clusterIndex, _verbUp, _verbRight, _verbDown, _verbLeft, _axisBiasFactor, _axisBiasDiagonals, _metadata) constructor
 {
     __clusterIndex = _clusterIndex;
     
@@ -18,4 +19,5 @@ function __InputClassClusterDefinition(_clusterIndex, _verbUp, _verbRight, _verb
     __verbLeft          = _verbLeft;
     __axisBiasFactor    = _axisBiasFactor;
     __axisBiasDiagonals = _axisBiasDiagonals;
+    __metadata          = variable_clone(_metadata);
 }

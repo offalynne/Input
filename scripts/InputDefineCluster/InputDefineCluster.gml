@@ -20,8 +20,9 @@
 /// @param {Enum.INPUT_VERB,Real} verbLeft
 /// @param {Real} [axisBiasFactor=0]
 /// @param {Real} [axisBiasDiagonals=false]
+/// @param {Any} [metadata=struct]
 
-function InputDefineCluster(_clusterIndex, _verbUp, _verbRight, _verbDown, _verbLeft, _axisBiasFactor = 0, _axisBiasDiagonals = false)
+function InputDefineCluster(_clusterIndex, _verbUp, _verbRight, _verbDown, _verbLeft, _axisBiasFactor = 0, _axisBiasDiagonals = false, _metadata = {})
 {
     static _system = __InputSystem();
     
@@ -39,7 +40,7 @@ function InputDefineCluster(_clusterIndex, _verbUp, _verbRight, _verbDown, _verb
     
     with(_system)
     {
-        var _definition = new __InputClassClusterDefinition(_clusterIndex, _verbUp, _verbRight, _verbDown, _verbLeft, _axisBiasFactor, _axisBiasDiagonals);
+        var _definition = new __InputClassClusterDefinition(_clusterIndex, _verbUp, _verbRight, _verbDown, _verbLeft, _axisBiasFactor, _axisBiasDiagonals, _metadata);
         __clusterDefinitionArray[_clusterIndex] = _definition;
     }
 }

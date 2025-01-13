@@ -4,8 +4,9 @@
 /// @param exportName
 /// @param defaultKbmBinding
 /// @param defaultGamepadBinding
+/// @param metadata
 
-function __InputClassVerbDefinition(_index, _exportName, _kbmBinding, _gamepadBinding) constructor
+function __InputClassVerbDefinition(_index, _exportName, _kbmBinding, _gamepadBinding, _metadata) constructor
 {
     //Fix use of strings
     if (is_array(_kbmBinding))
@@ -30,4 +31,5 @@ function __InputClassVerbDefinition(_index, _exportName, _kbmBinding, _gamepadBi
     __exportName       = _exportName;
     __kbmBinding     = is_array(_kbmBinding)? _kbmBinding : [_kbmBinding];
     __gamepadBinding = is_array(_gamepadBinding)? _gamepadBinding : [_gamepadBinding];
+    __metadata       = variable_clone(_metadata);
 }

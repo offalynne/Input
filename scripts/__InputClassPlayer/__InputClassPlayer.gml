@@ -62,6 +62,18 @@ function __InputClassPlayer(_playerIndex) constructor
         return new __InputClassVerbState(_index);
     });
     
+    __verbMetadataArray = array_create_ext(_verbCount, function(_index)
+    {
+        static _verbDefinitionArray = __InputSystem().__verbDefinitionArray;
+        return variable_clone(_verbDefinitionArray[_index].__metadata);
+    });
+    
+    __clusterMetadataArray = array_create_ext(_clusterCount, function(_index)
+    {
+        static _clusterDefinitionArray = __InputSystem().__clusterDefinitionArray;
+        return variable_clone(_clusterDefinitionArray[_index].__metadata);
+    });
+    
     __valueRawArray   = array_create(_verbCount, 0);
     __valueClampArray = array_create(_verbCount, 0);
     
