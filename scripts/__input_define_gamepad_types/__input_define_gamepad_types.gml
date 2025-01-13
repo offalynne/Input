@@ -123,6 +123,9 @@ function __input_define_gamepad_types()
         //#macro INPUT_GAMEPAD_TYPE_NEOGEO "neogeo"
         //CommunityNeoGeo = INPUT_GAMEPAD_TYPE_NEOGEO;
         
+        //#macro INPUT_GAMEPAD_TYPE_NEOGEO_MINI "neogeo mini"
+        //CommunityNeoGeoMini = INPUT_GAMEPAD_TYPE_NEOGEO_MINI;
+        
         #endregion
     }
 }
