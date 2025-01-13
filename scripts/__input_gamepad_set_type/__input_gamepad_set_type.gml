@@ -317,7 +317,7 @@ function __input_gamepad_set_type()
                 #region NeoGeo Arcade Stick Pro
                 
                 case "bc200155":
-                    if (__input_string_contains(__description, "NeoGeo G1 Pro") && INPUT_ON_PC)
+                    if (__input_string_contains(__description, "JJ", "NeoGeo G1 Pro") && INPUT_ON_PC)
                     {
                         if (!__INPUT_SILENT) __input_trace("Overriding controller ", __index ," type to NeoGeo Mini");
                         __description  = "SNK NEOGEO Arcade Stick Pro";

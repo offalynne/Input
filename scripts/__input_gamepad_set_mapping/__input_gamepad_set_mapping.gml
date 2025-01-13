@@ -252,7 +252,7 @@ function __input_gamepad_set_mapping()
                 //__set_mapping(???,    13, __INPUT_MAPPING.BUTTON,  ???);    //Assistant button, no SDL key for this
                 __set_mapping(gp_misc1, 14, __INPUT_MAPPING.BUTTON, "misc1"); //Capture button
                 
-                __set_dpad_hat_mapping();        
+                __set_dpad_hat_mapping();
                 __set_thumbstick_axis_mapping(true);        
                   
                 //Set default mapping with digital triggers, test later
@@ -440,7 +440,7 @@ function __input_gamepad_set_mapping()
         #endregion
 
 
-        #region Obins Anne Pro 2 on Windows MacOS and Linux
+        #region Obins Anne Pro 2
 
         case "CommunityAnnePro":    
             if (INPUT_ON_PC)
@@ -521,10 +521,48 @@ function __input_gamepad_set_mapping()
         #endregion
 
 
-        #region NeoGeo Mini on Windows and Linux
+        #region NeoGeo Mini and Arcade Stick Pro
 
         case "CommunityNeoGeoMini":
-            if ((__guessed_type == false) && (__INPUT_ON_LINUX || __INPUT_ON_WINDOWS))
+            if (_vendor_and_product == "bc200155")
+            {
+                if (__input_string_contains(__description, "JJ"))
+                {
+                     if (!__INPUT_SILENT) __input_trace("Overriding mapping to NeoGeo Arcade Stick Pro (Mode 1)");
+                     
+                    __set_mapping(gp_face3,      0, __INPUT_MAPPING.BUTTON, "x");
+                    __set_mapping(gp_face1,      1, __INPUT_MAPPING.BUTTON, "a");
+                    __set_mapping(gp_shoulderr,  2, __INPUT_MAPPING.BUTTON, "rightshoulder");
+                    __set_mapping(gp_face4,      3, __INPUT_MAPPING.BUTTON, "y");
+                    __set_mapping(gp_face2,      4, __INPUT_MAPPING.BUTTON, "b");
+                    __set_mapping(gp_shoulderrb, 5, __INPUT_MAPPING.BUTTON, "righttrigger");
+                    
+                    __set_mapping(gp_guide, 9, __INPUT_MAPPING.BUTTON, "guide");
+                }
+                else
+                {
+                    if (!__INPUT_SILENT) __input_trace("Overriding mapping to NeoGeo Arcade Stick Pro (Mode 3)");
+                    
+                    __set_mapping(gp_face1,      0, __INPUT_MAPPING.BUTTON, "a");
+                    __set_mapping(gp_face2,      1, __INPUT_MAPPING.BUTTON, "b");
+                    __set_mapping(gp_shoulderrb, 2, __INPUT_MAPPING.BUTTON, "righttrigger");
+                    __set_mapping(gp_face3,      3, __INPUT_MAPPING.BUTTON, "x");
+                    __set_mapping(gp_face4,      4, __INPUT_MAPPING.BUTTON, "y");
+                    __set_mapping(gp_shoulderr,  5, __INPUT_MAPPING.BUTTON, "rightshoulder");
+                }
+                
+                __set_mapping(gp_shoulderl,  6, __INPUT_MAPPING.BUTTON, "leftshoulder");
+                __set_mapping(gp_shoulderlb, 7, __INPUT_MAPPING.BUTTON, "lefttrigger");
+                
+                __set_mapping(gp_select, 10, __INPUT_MAPPING.BUTTON, "back");
+                __set_mapping(gp_start,  11, __INPUT_MAPPING.BUTTON, "start");
+                
+                __set_dpad_hat_mapping();
+                
+                return;
+            }
+        
+            if ((_vendor_and_product == "63257505") && (__guessed_type == false) && (__INPUT_ON_LINUX || __INPUT_ON_WINDOWS))
             {
                 if (!__INPUT_SILENT) __input_trace("Overriding mapping to NeoGeo Mini");
 
@@ -810,7 +848,6 @@ function __input_gamepad_set_mapping()
     
     switch(os_type)
     {
-        
         #region Windows overrides
     
         case os_windows:
@@ -890,6 +927,8 @@ function __input_gamepad_set_mapping()
             }
         break;
     
+        #endregion
+            
         #endregion
 
     
