@@ -33,10 +33,12 @@
 #macro INPUT_MOUSE_MOVE_DEADZONE  2
 
 // Minimum threshold for directional (thumbstick) axes. This value is used for detecting gamepad
-// input when hotswapping so make sure you set it above 0.
+// input when hotswapping so make sure you set it above 0. This value can further be overriden per
+// player by using the `InputPlayerSetMinThreshold()` function.
 #macro INPUT_GAMEPAD_THUMBSTICK_MIN_THRESHOLD  0.25
 
-// Maximum threshold for directional (thumbstick) axes.
+// Maximum threshold for directional (thumbstick) axes. This value can be overriden per player by
+// using the `InputPlayerSetMaxThreshold()` function.
 #macro INPUT_GAMEPAD_THUMBSTICK_MAX_THRESHOLD  0.8
 
 // Default minimum threshold for non-directional (trigger) axes. This value is used for detecting

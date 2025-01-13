@@ -33,6 +33,12 @@ function InputBindingSet(_forGamepad, _verbIndex, _binding, _alternate = 0, _pla
             }
         }
         
+        var _prevBinding = _alternateArray[_alternate];
         _alternateArray[_alternate] = _binding;
+        
+        if (_forGamepad && (_prevBinding != _binding) && (__InputBindingIsThumbstick(_binding) || __InputBindingIsThumbstick(_binding)))
+        {
+            __UpdateClusterThresholds();
+        }
     }
 }

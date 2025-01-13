@@ -43,6 +43,14 @@ enum INPUT_PLAYER_STATUS
     CONNECTED,
 }
 
+enum INPUT_THRESHOLD
+{
+    LEFT,
+    RIGHT,
+    BOTH,
+    __SIZE,
+}
+
 enum INPUT_VIRTUAL_TYPE
 {
     BUTTON,

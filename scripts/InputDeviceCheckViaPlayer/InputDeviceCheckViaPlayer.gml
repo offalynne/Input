@@ -14,6 +14,9 @@ function InputDeviceCheckViaPlayer(_device, _verbIndex, _playerIndex = 0)
     {
         if (_device >= 0)
         {
+            var _minLeft  = __thresholdMinArray[INPUT_THRESHOLD.LEFT ];
+            var _minRight = __thresholdMinArray[INPUT_THRESHOLD.RIGHT];
+            
             var _readArray = __InputGamepadGetReadArray(_device);
             
             var _alternateArray = __gamepadBindingArray[_verbIndex];
@@ -24,9 +27,21 @@ function InputDeviceCheckViaPlayer(_device, _verbIndex, _playerIndex = 0)
                 if (_rawBinding != undefined)
                 {
                     var _absBinding = abs(_rawBinding);
-                    if (sign(_rawBinding)*_readArray[_absBinding - INPUT_GAMEPAD_BINDING_MIN](_device, _absBinding) > INPUT_GAMEPAD_THUMBSTICK_MIN_THRESHOLD)
+                    if ((_absBinding == gp_shoulderlb) || (_absBinding == gp_shoulderrb))
                     {
-                        return true;
+                        return (_readArray[_absBinding - INPUT_GAMEPAD_BINDING_MIN](_device, _absBinding) > INPUT_GAMEPAD_TRIGGER_MIN_THRESHOLD);
+                    }
+                    else if ((_absBinding == gp_axislh) || (_absBinding == gp_axislv))
+                    {
+                        return (_readArray[_absBinding - INPUT_GAMEPAD_BINDING_MIN](_device, _absBinding) > _minLeft);
+                    }
+                    else if ((_absBinding == gp_axisrh) || (_absBinding == gp_axisrv))
+                    {
+                        return (_readArray[_absBinding - INPUT_GAMEPAD_BINDING_MIN](_device, _absBinding) > _minRight);
+                    }
+                    else
+                    {
+                        return (_readArray[_absBinding - INPUT_GAMEPAD_BINDING_MIN] > 0);
                     }
                 }
                 

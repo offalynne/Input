@@ -79,6 +79,10 @@ function __InputClassPlayer(_playerIndex) constructor
     
     __clusterXArray = array_create(_clusterCount, 0);
     __clusterYArray = array_create(_clusterCount, 0);
+    __clusterThresholdTypeArray = array_create(_verbCount, INPUT_THRESHOLD.LEFT);
+    
+    __thresholdMinArray = array_create(INPUT_THRESHOLD.__SIZE, INPUT_GAMEPAD_THUMBSTICK_MIN_THRESHOLD);
+    __thresholdMaxArray = array_create(INPUT_THRESHOLD.__SIZE, INPUT_GAMEPAD_THUMBSTICK_MAX_THRESHOLD);
     
     __consumedArray = [];
     
@@ -113,6 +117,60 @@ function __InputClassPlayer(_playerIndex) constructor
         }
         
         return _connected;
+    }
+    
+    static __UpdateClusterThresholds = function()
+    {
+        static _funcUpdateThresholdType = function(_alternateArray)
+        {
+            var _thresholdType = 0;
+            
+            var _alternate = 0;
+            repeat(array_length(_alternateArray))
+            {
+                var _binding = _alternateArray[_alternate];
+                
+                if (_binding != undefined)
+                {
+                    _binding = abs(_binding);
+                    _thresholdType |= ((_binding == gp_axislh) || (_binding == gp_axislv))? 1 : (((_binding == gp_axisrh) || (_binding == gp_axisrv))? 2 : 0);
+                }
+                
+                ++_alternate;
+            }
+            
+            return _thresholdType;
+        }
+        
+        var _gamepadBindingArray = __gamepadBindingArray;
+        var _clusterThresholdTypeArray = __clusterThresholdTypeArray;
+        
+        var _cluster = 0;
+        repeat(_clusterCount)
+        {
+            var _clusterDefinition = _clusterDefinitionArray[_cluster];
+            
+            var _thresholdType = 0;
+            _thresholdType |= _funcUpdateThresholdType(_gamepadBindingArray[_clusterDefinition.__verbUp   ]);
+            _thresholdType |= _funcUpdateThresholdType(_gamepadBindingArray[_clusterDefinition.__verbRight]);
+            _thresholdType |= _funcUpdateThresholdType(_gamepadBindingArray[_clusterDefinition.__verbDown ]);
+            _thresholdType |= _funcUpdateThresholdType(_gamepadBindingArray[_clusterDefinition.__verbLeft ]);
+            
+            if (_thresholdType <= 1) //Default to .LEFT if none of the bindings are thumbsticks
+            {
+                _clusterThresholdTypeArray[_cluster] = INPUT_THRESHOLD.LEFT;
+            }
+            else if (_thresholdType == 2)
+            {
+                _clusterThresholdTypeArray[_cluster] = INPUT_THRESHOLD.RIGHT;
+            }
+            else
+            {
+                _clusterThresholdTypeArray[_cluster] = INPUT_THRESHOLD.BOTH;
+            }
+            
+            ++_cluster;
+        }
     }
     
     static __Collect = function()
@@ -159,6 +217,11 @@ function __InputClassPlayer(_playerIndex) constructor
                 //            //
                 ////////////////
                 
+                var _minLeft  = __thresholdMinArray[INPUT_THRESHOLD.LEFT ];
+                var _maxLeft  = __thresholdMaxArray[INPUT_THRESHOLD.LEFT ];
+                var _minRight = __thresholdMinArray[INPUT_THRESHOLD.RIGHT];
+                var _maxRight = __thresholdMaxArray[INPUT_THRESHOLD.RIGHT];
+                
                 __lastConnectedGamepadType = InputDeviceGetGamepadType(_device);
                 
                 var _readArray = __InputGamepadGetReadArray(_device);
@@ -188,9 +251,17 @@ function __InputClassPlayer(_playerIndex) constructor
                                 {
                                     _valueClamp = clamp((_raw - INPUT_GAMEPAD_TRIGGER_MIN_THRESHOLD) / (INPUT_GAMEPAD_TRIGGER_MAX_THRESHOLD - INPUT_GAMEPAD_TRIGGER_MIN_THRESHOLD), 0, 1);
                                 }
+                                else if ((_absBinding == gp_axislh) || (_absBinding == gp_axislv))
+                                {
+                                    _valueClamp = clamp((_raw - _minLeft) / (_maxLeft - _minLeft), 0, 1);
+                                }
+                                else if ((_absBinding == gp_axisrh) || (_absBinding == gp_axisrv))
+                                {
+                                    _valueClamp = clamp((_raw - _minRight) / (_maxRight - _minRight), 0, 1);
+                                }
                                 else
                                 {
-                                    _valueClamp = clamp((_raw - INPUT_GAMEPAD_THUMBSTICK_MIN_THRESHOLD) / (INPUT_GAMEPAD_THUMBSTICK_MAX_THRESHOLD - INPUT_GAMEPAD_THUMBSTICK_MIN_THRESHOLD), 0, 1);
+                                    _valueClamp = (_raw > 0);
                                 }
                             }
                         }
@@ -466,9 +537,26 @@ function __InputClassPlayer(_playerIndex) constructor
                 _dy /= max(1, _d);
                 _d = min(1, _d);
                 
-                var _coeff = clamp((_d - INPUT_GAMEPAD_THUMBSTICK_MIN_THRESHOLD) / (INPUT_GAMEPAD_THUMBSTICK_MAX_THRESHOLD - INPUT_GAMEPAD_THUMBSTICK_MIN_THRESHOLD), 0.0, 1.0);
-                _dx *= _coeff;
-                _dy *= _coeff;
+                //If we're using a gamepad, apply thumbstick thresholds to the cluster. This ignores whether the
+                //player has actually used a thumbstick for input so is potentially problematic in unanticipated
+                //use cases.
+                if (_device >= 0)
+                {
+                    var _thresholdType = __clusterThresholdTypeArray[_i];
+                    
+                    var _a = __thresholdMinArray[_thresholdType];
+                    var _b = __thresholdMinArray[_thresholdType];
+                    
+                    var _min = clamp(min(_a, _b), 0, 1);
+                    var _max = clamp(max(_a, _b), 0, 1);
+                    
+                    var _delta = _max - _min;
+                    if (_delta == 0) _delta = 0.001;
+                    
+                    var _coeff = clamp((_d - _min) / _delta, 0.0, 1.0);
+                    _dx *= _coeff;
+                    _dy *= _coeff;
+                }
                 
                 var _bias = _clusterDefinition.__axisBiasFactor;
                 if (_bias > 0)
