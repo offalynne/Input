@@ -4,7 +4,7 @@
 /// @param {Real} value
 /// @param {Real} [playerIndex=0]
 
-function InputPlayerSetMinThreshold(_thresholdType, _value, _playerIndex = 0)
+function InputPlayerSetMaxThreshold(_thresholdType, _value, _playerIndex = 0)
 {
     static _playerArray = __InputSystemPlayerArray();
     
