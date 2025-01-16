@@ -320,7 +320,7 @@ function __input_gamepad_set_type()
                     if (__input_string_contains(__description, "JJ", "NeoGeo G1 Pro") && INPUT_ON_PC)
                     {
                         if (!__INPUT_SILENT) __input_trace("Overriding controller ", __index ," type to NeoGeo Mini");
-                        __description  = "SNK NEOGEO Arcade Stick Pro";
+                        __description = "SNK NEOGEO Arcade Stick Pro";
                         __raw_type = "CommunityNeoGeoMini";
                         __guessed_type = false;
                     }
