@@ -545,7 +545,7 @@ function __InputClassPlayer(_playerIndex) constructor
                     var _thresholdType = __clusterThresholdTypeArray[_i];
                     
                     var _a = __thresholdMinArray[_thresholdType];
-                    var _b = __thresholdMinArray[_thresholdType];
+                    var _b = __thresholdMaxArray[_thresholdType];
                     
                     var _min = clamp(min(_a, _b), 0, 1);
                     var _max = clamp(max(_a, _b), 0, 1);
