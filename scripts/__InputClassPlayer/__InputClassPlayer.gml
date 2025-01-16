@@ -540,7 +540,7 @@ function __InputClassPlayer(_playerIndex) constructor
                 //If we're using a gamepad, apply thumbstick thresholds to the cluster. This ignores whether the
                 //player has actually used a thumbstick for input so is potentially problematic in unanticipated
                 //use cases.
-                if (_device >= 0)
+                if (__device >= 0)
                 {
                     var _thresholdType = __clusterThresholdTypeArray[_i];
                     
