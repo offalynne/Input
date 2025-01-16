@@ -526,7 +526,7 @@ function __input_gamepad_set_mapping()
         case "CommunityNeoGeoMini":
             if (_vendor_and_product == "bc200155")
             {
-                if (__input_string_contains(__description, "JJ"))
+                if (__input_string_contains(gamepad_get_description(__index), "JJ"))
                 {
                      if (!__INPUT_SILENT) __input_trace("Overriding mapping to NeoGeo Arcade Stick Pro (Mode 1)");
                      
@@ -562,7 +562,7 @@ function __input_gamepad_set_mapping()
                 return;
             }
         
-            if ((_vendor_and_product == "63257505") && (__guessed_type == false) && (__INPUT_ON_LINUX || __INPUT_ON_WINDOWS))
+            if (_vendor_and_product == "63257505")
             {
                 if (!__INPUT_SILENT) __input_trace("Overriding mapping to NeoGeo Mini");
 
