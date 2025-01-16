@@ -171,6 +171,35 @@ y += input_gamepad_delta(0, gp_axislv) * 8;
 
 &nbsp;
 
+## …gamepad_any_pressed
+
+`input_gamepad_any_pressed(gamepadIndex)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, if any button is newly activated this frame
+
+|Name          |Datatype                  |Purpose                                               |
+|--------------|--------------------------|------------------------------------------------------|
+|`gamepadIndex`|integer                   |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)|
+
+#### **Example**
+
+```gml
+//Proceed if any gamepad button is pressed
+var _gamepad = input_player_get_gamepad();
+if (input_gamepad_any_pressed(_gamepad))
+{
+    room_goto_next();
+}
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
 ## …gamepad_is_axis
 
 `input_gamepad_is_axis(gamepadIndex, GMconstant)`

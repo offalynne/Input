@@ -2,6 +2,30 @@
 
 &nbsp;
 
+## …any_pressed
+
+`input_any_pressed()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, if any button is newly activated this frame
+
+#### **Example**
+
+```gml
+//Proceed if any gamepad button is pressed
+if (input_any_pressed())
+{
+    room_goto_next();
+}
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
 ## …clear_momentary
 
 `input_clear_momentary(state)`
@@ -389,7 +413,7 @@ if (os_is_network_connected(false))
 
 &nbsp;
 
-## …_input_gamepad_tester_set
+## …_gamepad_tester_set
 
 `input_gamepad_tester_set(state)`
 
@@ -419,7 +443,7 @@ if (keyboard_check(vk_control)
 
 &nbsp;
 
-## …_input_gamepad_tester_get
+## …_gamepad_tester_get
 
 `input_gamepad_tester_get()`
 
