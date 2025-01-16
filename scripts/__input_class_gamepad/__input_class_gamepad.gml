@@ -516,7 +516,7 @@ function __input_class_gamepad(_index) constructor
         if (!__INPUT_LED_PATTERN_SUPPORT || (__INPUT_ON_WINDOWS && (!is_numeric(__steam_handle)))) return;
         
         //Defaults
-        var _led_offset = 0;
+        var _led_offset = 1;
         var _led_layout = undefined;
         var _led_type   = INPUT_GAMEPAD_TYPE_XBOX_360;
 
@@ -524,7 +524,7 @@ function __input_class_gamepad(_index) constructor
         if (!INPUT_ON_WEB && (__INPUT_ON_IOS || __INPUT_ON_SWITCH))
         { 
             if (__index == 0) return;
-            _led_offset = -1;
+            _led_offset = 0;
         }
         
         //MFi gamepad case
@@ -561,7 +561,7 @@ function __input_class_gamepad(_index) constructor
         if (_led_layout != undefined)
         {
             __led_pattern = {
-                __value:   __index + _led_offset + 1,
+                __value:   __index + _led_offset,
                 __pattern: __global.__gamepad_led_pattern_dict[$ _led_type][@ __index + _led_offset],
                 __layout:  _led_layout,
             }
