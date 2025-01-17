@@ -41,7 +41,7 @@ function InputDeviceCheckViaPlayer(_device, _verbIndex, _playerIndex = 0)
                     }
                     else
                     {
-                        return (_readArray[_absBinding - INPUT_GAMEPAD_BINDING_MIN] > 0);
+                        return (_readArray[_absBinding - INPUT_GAMEPAD_BINDING_MIN](_device, _absBinding) > 0);
                     }
                 }
                 
