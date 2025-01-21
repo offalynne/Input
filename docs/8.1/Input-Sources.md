@@ -2,7 +2,7 @@
 
 &nbsp;
 
-Input supports four fundamental types of source - keyboards, mice, touchscreens, and gamepads. Input treats each gamepad as a different and distinct device, and it can also treat a keyboard, a mouse, and a touchscreen as different and distinct devices.
+Input supports four fundamental types of source - keyboards, mice, touchscreens, and gamepads. Input treats each gamepad as a different and distinct device, and it can also treat a keyboard, a mouse, and a touchscreen as different and distinct devices. Input sources may be managed automatically by the [default source mode](Source-Modes).
 
 ?> When you first import Input into your project, `INPUT_ASSIGN_KEYBOARD_AND_MOUSE_TOGETHER` is set to `true`, meaning keyboard and mouse input is tied together. This is by far and away the most common use case for keyboards and mice. You can change this behaviour by [adjusting this macro](Config-Macros?id=profiles).
 
