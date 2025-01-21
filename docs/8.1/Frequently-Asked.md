@@ -19,7 +19,7 @@ Some common issues to consider: remappers like Steam Input, DS4Windows, etc. may
 
 ### How do I check if the player is (or is not) using gamepad? {docsify-ignore}
 
-See [`player_using_gamepad()`](Functions-(Players)?id=player_using_gamepad)
+See [`input_player_using_gamepad()`](Functions-(Players)?id=player_using_gamepad)
 
 &nbsp;
 
