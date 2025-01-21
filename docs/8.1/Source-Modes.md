@@ -4,8 +4,6 @@
 
 Input can run in one of five "source modes". These control how Input manages sources, if at all. You can change the source mode by using [`input_source_mode_set()`](Functions-(Source-Modes)?id=source_mode_set) and you can return the current source mode with [`input_source_mode_get()`](Functions-(Source-Modes)?id=source_mode_get).
 
-?> Source modes replace the old "hotswap tick" and "source assignment tick" functions from version 4.
-
 Input defaults to running in "hotswap source mode" when you run your game, a behaviour controlled by [`INPUT_STARTING_SOURCE_MODE`](Config-Macros?id=general). This means that player 0 will dynamically change source depending on what source the player is interacting with. You can read more about source modes below. You can also manually set any player's input source with [`input_source_set()`](Functions-(Sources)?id=source_set).
 
 ### `INPUT_SOURCE_MODE.FIXED`
