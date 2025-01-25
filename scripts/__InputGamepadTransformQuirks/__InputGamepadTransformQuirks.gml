@@ -42,21 +42,6 @@ function __InputGamepadTransformQuirks(_gamepadStruct)
                     __InputTrace("Blocking gamepad: DSHidMini Gyro");
                     __blocked = true;
                 }
-                else if ((__InputStringMatches(_vidPid, "5e04050b", "5e04130b", "5e04220b")))
-                {
-                    __InputTrace("Blocking gamepad: Xbox DInput duplicate");
-                    __blocked = true;
-                }
-                else if (_vidPid == "7e050e20") 
-                {
-                    __InputTrace("Blocking gamepad: Switch charging grip");
-                    __blocked = true;
-                }
-                else if (_vidPid == "71011904") 
-                {
-                        __InputTrace("Blocking gamepad: Luna Dinput duplicate");
-                    __blocked = true;
-                }
                 else if (_vidPid == "31730100")
                 {
                     __InputTrace("Blocking gamepad: DSHIDMini DS4W mode");
@@ -64,13 +49,8 @@ function __InputGamepadTransformQuirks(_gamepadStruct)
                 }
             break;
 
-            case os_macosx:                
-                if ((__InputStringMatches(__guid, "030000007e0500000e20000000020000", "030000007e0500000920000000020000"))) 
-                {
-                    __InputTrace("Blocking gamepad: Switch controller USB");
-                    __blocked = true;
-                }
-                else if ((__InputStringMatches(__guid, "03000000050b00000619000000010000", "03000000050b0000e318000000010000", "03000000050b0000e518000000010000", "03000000050b00005819000000010000", "03000000050b0000181a000000010000", "03000000050b00001a1a000000010000", "03000000050b00001c1a000000010000"))) 
+            case os_macosx:
+                if ((__InputStringMatches(__guid, "03000000050b00000619000000010000", "03000000050b0000e318000000010000", "03000000050b0000e518000000010000", "03000000050b00005819000000010000", "03000000050b0000181a000000010000", "03000000050b00001a1a000000010000", "03000000050b00001c1a000000010000"))) 
                 {
                     __InputTrace("Blocking gamepad: ROG Mouse");
                     __blocked = true;
@@ -103,11 +83,6 @@ function __InputGamepadTransformQuirks(_gamepadStruct)
                     __InputTrace("Blocking gamepad: ROG Mouse");
                     __blocked = true;
                 }
-                else if ((__InputStringMatches(__guid, "030000007e0500000e20000011010000", "030000007e0500000e20000011810000", "3c000000000000000000000038010000", "030000007e0500000920000011010000"))) 
-                {
-                    __InputTrace("Blocking gamepad: Switch USB Controller");
-                    __blocked = true;
-                }
                 else if (__InputStringMatches(__vendor, "4e04", "8eb5", "3328", "ef0e", "f304", "e704", "d21f", "0804", "5704", "3004", "cb06", "da09", "3105", "6a05", "ef17", "1c1b"))
                 {
                     //VID Blocklist sourced from https://github.com/chromium/chromium/blob/main/device/gamepad/gamepad_blocklist.cc
@@ -132,21 +107,6 @@ function __InputGamepadTransformQuirks(_gamepadStruct)
                 else if (__guid == "39666538356630396233636633333330") 
                 {
                     __InputTrace("Blocking gamepad: Xbox Elite Series 2");
-                    __blocked = true;
-                }   
-                else if ((__InputStringContains(_description, "transceiver", "usb receiver", "corsair", "bt kb", "logitech mx master", "logitech unifying device", "bt kbtrackball", "trackball"))) 
-                {
-                    __InputTrace("Blocking gamepad: Transceiver");
-                    __blocked = true;
-                }
-                else if ((__InputStringContains(_description, "surface type", "touchscreen", "touchpad", "digitizer", "multitouch", "uinput-fpc"))) 
-                {
-                    __InputTrace("Blocking gamepad: Touch device");
-                    __blocked = true;
-                }
-                else if ((__InputStringContains(_description, "tv remote", "smart tv", "ir receiver", "jvc rc10", "virtual-search", "multimedia remote"))) 
-                {
-                    __InputTrace("Blocking gamepad: TV Remote");
                     __blocked = true;
                 }
                 else if ((__InputStringMatches(__guid, "4e696e74656e646f20436f2e2c204c74", "61393962646434393836356631636132", "31343431323332663936386663646631", "65366131663736363061313736656431", "31613237643563656561633964393335", "39373064396565646338333134303131"))) 
