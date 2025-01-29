@@ -606,3 +606,23 @@ Returns whether a player has been assigned `INPUT_GENERIC_DEVICE` as their devic
 **Returns:** Boolean, whether a player has been assigned `INPUT_TOUCH` as their device
 
 <!-- tabs:end -->
+
+&nbsp;
+
+## …PlayerLowestConnectedIndex
+
+`InputPlayerLowestConnectedIndex([playerIndex=0])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Integer, the index of the lowest index player with a connected device
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+If no players have a connected device then this function returns `undefined`. This is useful to easily identify a "main" player in a game with multiple local players.
+
+<!-- tabs:end -->

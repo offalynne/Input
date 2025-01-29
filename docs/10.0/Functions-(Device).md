@@ -62,6 +62,46 @@ Returns if a device has not been assigned to any players and is available for us
 
 &nbsp;
 
+## …DeviceGetPlayerUsingGamepad
+
+`InputDeviceGetPlayerUsingGamepad([ignoreDisconnected=true])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Integer, the index of the lowest index player that has been assigned a gamepad as their device
+
+|Name                  |Datatype|Purpose                                                                                     |
+|----------------------|--------|--------------------------------------------------------------------------------------------|
+|`[ignoreDisconnected]`|boolean |Whether to ignore player with a disconnected device. If not specified, this is set to `true`|
+
+If no player has been assigned a gamepad then this function returns `undefined`. If the optional parameter `ignoreDisconnected` is set to `true` (the default) then players who are been assigned a gamepad will be ignored if that gamepad is disconnected. If this parameter is set to `false`  then players with an assigned but disconnected device may be returned.
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …DeviceGetPlayerUsingGeneric
+
+`InputDeviceGetPlayerUsingGeneric([ignoreDisconnected=true])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Integer, the index of the lowest index player that has been assigned a generic device
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+If no player has been assigned a generic device then this function returns `undefined`.
+
+<!-- tabs:end -->
+
+&nbsp;
+
 ## …DeviceIsConnected
 
 `InputDeviceIsConnected(device)`
