@@ -50,7 +50,7 @@ Input also ships with a small piece of logic that changes the default bindings w
 
 ### `InputDefineVerb`
 
-`InputDefineVerb(verbIndex, exportName, defaultKbmBinding, defaultGamepadBinding)`
+`InputDefineVerb(verbIndex, exportName, defaultKbmBinding, defaultGamepadBinding, [metadata={}])`
 
 <!-- tabs:start -->
 
@@ -58,18 +58,21 @@ Input also ships with a small piece of logic that changes the default bindings w
 
 **Returns:** Boolean, whether the verb is active
 
-|Name                   |Datatype|Purpose                                                             |
-|-----------------------|--------|--------------------------------------------------------------------|
-|`verbIndex`            |integer |Verb to target                                                      |
-|`exportName`           |string  |Name to use to refer to this verb when exporting bindings           |
-|`defaultKbmBinding`    |binding |Default binding to use when the player is using a keyboard and mouse|
-|`defaultGamepadBinding`|binding |Default binding to use when the player is using a gamepad           |
+|Name                   |Datatype|Purpose                                                                                     |
+|-----------------------|--------|--------------------------------------------------------------------------------------------|
+|`verbIndex`            |integer |Verb to target                                                                              |
+|`exportName`           |string  |Name to use to refer to this verb when exporting bindings                                   |
+|`defaultKbmBinding`    |binding |Default binding to use when the player is using a keyboard and mouse                        |
+|`defaultGamepadBinding`|binding |Default binding to use when the player is using a gamepad                                   |
+|`[metadata]`           |any     |Metadata to attach to the cluster. If not specified, an empty struct is used as the metadata|
 
 This function defines a verb within Input. You should provide two sets of bindings - one that is the default binding when the player is using a keyboard and mouse (`INPUT_DEVICE_KBM`) and another for when the player is using a gamepad. Bindings should be specified using the `gp_*` constants for gamepads and the `vk_*` and `mb_*` constants for keyboards. Additionally, you may specify keyboard letter bindings using single character strings e.g. `"A"`.
 
 You can specify multiple bindings for a verb by using an array. In this case, bindings will fill up the "alternate" binding slots for a verb. If you give one binding for a verb then it will fill binding slot 0. Please see the Examples tab for a demonstration.
 
 The `exportName` parameter sets the name of this verb when exporting bindings. Export names should be unique (no two verbs may share the same export name).
+
+Metadata can be attached to a cluster by using the optional `metadata` parameter. Metadata is unique per cluster per player, that is to say that each cluster for each player will contain a unique copy of the metadata that is defined for this function. Metadata could be used to indicate within your code that a verb is non-rebindable and should not be shown on a rebinding menu etc.  Metadata should not be used to replicate features that appear elsewhere in the Input library to avoid duplicating features. Metadata can be modified per verb per player using the `InputVerb*Metadata()` functions.
 
 !> Once you have decided on an export name for a verb **you must never change it**. Doing so will invalidate any bindings that have been saved by your players.
 
@@ -89,7 +92,7 @@ InputDefineVerb(INPUT_VERB.UP, "up", [vk_up, "W"], [-gp_axislv, gp_padu]);
 
 ### `InputDefineCluster`
 
-`InputDefineCluster(clusterIndex, verbUp, verbRight, verbDown, verbLeft)`
+`InputDefineCluster(clusterIndex, verbUp, verbRight, verbDown, verbLeft, [axisBiasFactor=0], [axisBiasDiagonals=false], [metadata={}])`
 
 <!-- tabs:start -->
 
@@ -97,17 +100,26 @@ InputDefineVerb(INPUT_VERB.UP, "up", [vk_up, "W"], [-gp_axislv, gp_padu]);
 
 **Returns:** Boolean, whether the verb is active
 
-|Name           |Datatype|Purpose                                             |
-|---------------|--------|----------------------------------------------------|
-|`clusterIndex` |integer |Verb to target                                      |
-|`verbUp`       |integer |Verb to indicate up (positive y) movement           |
-|`verbRight`    |integer |Verb to indicate right (positive x) movement        |
-|`verbDown`     |integer |Verb to indicate down (negative y) movement         |
-|`verbLeft`     |integer |Verb to indicate left (negative x) movement         |
+|Name                 |Datatype|Purpose                                                                                                                              |
+|---------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------|
+|`clusterIndex`       |integer |Verb to target                                                                                                                       |
+|`verbUp`             |integer |Verb to indicate up (positive y) movement                                                                                            |
+|`verbRight`          |integer |Verb to indicate right (positive x) movement                                                                                         |
+|`verbDown`           |integer |Verb to indicate down (negative y) movement                                                                                          |
+|`verbLeft`           |integer |Verb to indicate left (negative x) movement                                                                                          |
+|`[axisBiasFactor]`   |number  |Biasing factor to apply to nudge thumbstick input towards major axes. If not specified, this is set to `0.0` which applies no biasing|
+|`[axisBiasDiagonals]`|boolean |Whether to bias to diagonals (`true`) or just axes (`false`). If not specified, this is set to `false`                               |
+|`[metadata]`         |any     |Metadata to attach to the cluster. If not specified, an empty struct is used as the metadata                                         |
 
 This function defines verb clusters - there are groups of verbs that combine to give an x and y axis of motion. Clusters are a way of generalising keyboard input, thumbstick input, and dpad input into one interface. Clusters can be used with functions like `InputDirection()` and `InputX()` etc.
 
-?> No, I'm not sure why the parameters are ordered this way either.
+The optional `axisBiasFactor` parameter allows you to bias the cluster along straight lines along the x and y axes. This makes it easier for the player to input exactly horizontal and exactly vertical movement. The value for this parameter should be from `0.0` to `1.0`. Higher values make the biasing behaviour stronger. The default value for `axisBiasFactor` is `0.0` which confers no axis bias whatsoever.
+
+`axisBiasDiagonals` controls whether the axis bias should also allow diagonal inputs. It defaults to `false`: biasing will not select diagonal directioons. Setting this parameter to `true` will allow diagonal directions.
+
+Metadata can be attached to a cluster by using the optional `metadata` parameter. Metadata is unique per cluster per player, that is to say that each cluster for each player will contain a unique copy of the metadata that is defined for this function.  Metadata should not be used to replicate features that appear elsewhere in the Input library to avoid duplicating features. Metadata can be modified per cluster per player using the `InputCluster*Metadata()` functions.
+
+!> Be careful with this function's unusual argument order.
 
 #### **Example**
 
@@ -156,22 +168,6 @@ The maximum number of players that the library will permit. Setting this number 
 &nbsp;
 
 ## Checkers
-
-### `INPUT_2D_XY_AXIS_BIAS` {docsify-ignore}
-
-*Typical value: `0.0`*
-
-The amount of bias for 2D checkers to prefer straight lines along the x- and y-axes. This makes it easier for the player to input exactly horizontal and exactly vertical movement. Values should be from 0 to 1. Higher values make the biasing behaviour stronger.
-
-&nbsp;
-
-### `INPUT_2D_XY_AXIS_BIAS_DIAGONALS` {docsify-ignore}
-
-*Typical value: `false`*
-
-Whether the axis bias (see above) should be 8-directional. If set to `false`, 2D checkers will only lock to north/east/south/west directions.
-
-&nbsp;
 
 ### `INPUT_REPEAT_DEFAULT_DELAY` {docsify-ignore}
 
