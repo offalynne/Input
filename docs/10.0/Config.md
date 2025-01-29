@@ -189,7 +189,7 @@ Default values for `InputRepeat()`. Please see that function for documentation o
 
 &nbsp;
 
-### `INPUT_LONG_DEFALT_DELAY` {docsify-ignore}
+### `INPUT_LONG_DEFAULT_DELAY` {docsify-ignore}
 
 *Typical value: `10`*
 
