@@ -60,7 +60,7 @@ Input 10 achieves these two goals without compromising on its overall featureset
 - Direct checkers for keyboard (though you can still scan for new bindings)
 - Combo system has been removed as per Input 8
 - Gamepad support on Android and iOS
-- Now only one direct checker for gamepad to avoid confusion `PawprintDeviceGetGamepadValue(device, button/axis)`
+- Now only one direct checker for gamepad to avoid confusion `InputDeviceGetGamepadValue(device, button/axis)`
 - Native debug overlay gamepad tester
 - General purpose device-agnostic cursor
 - Accessibility API has been removed
