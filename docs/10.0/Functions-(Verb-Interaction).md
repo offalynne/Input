@@ -184,3 +184,135 @@ The verb state is preceded by the string "<-PWP" and ends with the string ">". V
 Returns the number of bytes that a verb state will occupy if `InputVerbStateWrite()` is called. 
 
 <!-- tabs:end -->
+
+&nbsp;
+
+## …VerbGetMetadata
+
+`InputVerbGetMetadata(verb, [playerIndex=0], [makeCopy=false])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Any, the metadata for the player's verb
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`verb`         |integer |Verb to target                                      |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+|`[makeCopy]`   |boolean |When to return a copy of the metadata               |
+
+Returns the metadata assigned to a player's verb. If the `makeCopy` parameter is set to `true` then a copy of the metadata is stored; otherwise, the metadata is returned by reference if the metadata is a struct or array. 
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …VerbSetMetadata
+
+`InputVerbSetMetadata(verb, [playerIndex=0], [makeCopy=false])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`verb`         |integer |Verb to target                                      |
+|`data`         |integer |Data to store                                       |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+|`[makeCopy]`   |boolean |When to return a copy of the metadata               |
+
+Sets the metadata for a player's verb. This will overwrite any metadata that was set by `InputDefineVerb()`. If the `makeCopy` parameter is set to `true` then a copy of the metadata is stored; otherwise, the metadata is stored by reference if the metadata is a struct or array.
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …VerbResetMetadata
+
+`InputVerbResetMetadata(verb, [playerIndex=0], [makeCopy=false])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`verb`         |integer |Verb to target                                      |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+Resets the metadata for a player's verb to the value set by `InputDefineVerb()`.
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …ClusterGetMetadata
+
+`InputClusterGetMetadata(cluster, [playerIndex=0], [makeCopy=false])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Any, the metadata for the player's cluster
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`cluster`      |integer |Cluster to target                                   |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+|`[makeCopy]`   |boolean |When to return a copy of the metadata               |
+
+Returns the metadata assigned to a player's cluster. If the `makeCopy` parameter is set to `true` then a copy of the metadata is stored; otherwise, the metadata is stored by reference if the metadata is a struct or array.
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …ClusterSetMetadata
+
+`InputClusterSetMetadata(cluster, [playerIndex=0], [makeCopy=false])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`cluster`      |integer |Cluster to target                                   |
+|`data`         |integer |Data to store                                       |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+|`[makeCopy]`   |boolean |When to return a copy of the metadata               |
+
+Sets the metadata for a player's cluster. This will overwrite any metadata that was set by `InputDefineCluster()`. If the `makeCopy` parameter is set to `true` then a copy of the metadata is stored; otherwise, the metadata is stored by reference if the metadata is a struct or array.
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …ClusterResetMetadata
+
+`InputClusterResetMetadata(cluster, [playerIndex=0], [makeCopy=false])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`cluster`      |integer |Cluster to target                                   |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+Resets the metadata for a player's cluster to the value set by `InputDefineCluster()`.
+
+<!-- tabs:end -->
