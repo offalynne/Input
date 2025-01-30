@@ -124,39 +124,9 @@ Returns
 
 &nbsp;
 
-## …MouseReleased
-
-`InputMouseReleased(binding)`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** Boolean, whether the given mouse button was newly released this frame
-
-|Name     |Datatype     |Purpose         |
-|---------|-------------|----------------|
-|`binding`|mouse binding|Binding to check|
-
-Returns whether the given mouse button was newly released this frame. The binding should be one of the following:
-
-- `mb_left`
-- `mb_middle`
-- `mb_right`
-- `mb_any`
-- `mb_none`
-- `mb_side1`
-- `mb_side2`
-- `mb_wheel_up`
-- `mb_wheel_down`
-
-<!-- tabs:end -->
-
-&nbsp;
-
 ## …MouseCheck
 
-`InputMouseCheck(binding)`
+`InputMouseCheck([binding=mb_left])`
 
 <!-- tabs:start -->
 
@@ -164,9 +134,9 @@ Returns whether the given mouse button was newly released this frame. The bindin
 
 **Returns:** Boolean, whether the given mouse button is currently held down
 
-|Name     |Datatype     |Purpose         |
-|---------|-------------|----------------|
-|`binding`|mouse binding|Binding to check|
+|Name       |Datatype     |Purpose                                                  |
+|-----------|-------------|---------------------------------------------------------|
+|`[binding]`|mouse binding|Binding to check. If not specified, defaults to `mb_left`|
 
 Returns whether the given mouse button is currently held down. The binding should be one of the following:
 
@@ -186,7 +156,7 @@ Returns whether the given mouse button is currently held down. The binding shoul
 
 ## …MousePressed
 
-`InputMousePressed(binding)`
+`InputMousePressed([binding=mb_left])`
 
 <!-- tabs:start -->
 
@@ -194,11 +164,41 @@ Returns whether the given mouse button is currently held down. The binding shoul
 
 **Returns:** Boolean, whether the given mouse button is newly pressed this frame
 
-|Name     |Datatype     |Purpose         |
-|---------|-------------|----------------|
-|`binding`|mouse binding|Binding to check|
+|Name       |Datatype     |Purpose                                                  |
+|-----------|-------------|---------------------------------------------------------|
+|`[binding]`|mouse binding|Binding to check. If not specified, defaults to `mb_left`|
 
 Returns whether the given mouse button is newly pressed this frame. The binding should be one of the following:
+
+- `mb_left`
+- `mb_middle`
+- `mb_right`
+- `mb_any`
+- `mb_none`
+- `mb_side1`
+- `mb_side2`
+- `mb_wheel_up`
+- `mb_wheel_down`
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …MouseReleased
+
+`InputMouseReleased([binding=mb_left])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the given mouse button was newly released this frame
+
+|Name       |Datatype     |Purpose                                                  |
+|-----------|-------------|---------------------------------------------------------|
+|`[binding]`|mouse binding|Binding to check. If not specified, defaults to `mb_left`|
+
+Returns whether the given mouse button was newly released this frame. The binding should be one of the following:
 
 - `mb_left`
 - `mb_middle`
