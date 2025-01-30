@@ -2,9 +2,9 @@
 
 /// Returns whether the given mouse button is newly pressed this frame.
 /// 
-/// @param {Constant.MouseButton,Real} binding
+/// @param {Constant.MouseButton,Real} [binding=mb_left]
 
-function InputMousePressed(_binding)
+function InputMousePressed(_binding = mb_left)
 {
     static _system = __InputSystem();
     if (INPUT_BLOCK_MOUSE_CHECKS || _system.__pointerBlocked) return false;

@@ -2,9 +2,9 @@
 
 /// Returns whether the given mouse button is currently held down.
 /// 
-/// @param {Constant.MouseButton,Real} binding
+/// @param {Constant.MouseButton,Real} [binding=mb_left]
 
-function InputMouseCheck(_binding)
+function InputMouseCheck(_binding = mb_left)
 {
     static _system = __InputSystem();
     if (INPUT_BLOCK_MOUSE_CHECKS || _system.__pointerBlocked) return false;

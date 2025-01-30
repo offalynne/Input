@@ -2,9 +2,9 @@
 
 /// Returns whether the given mouse button was newly released this frame.
 /// 
-/// @param {Constant.MouseButton,Real} binding
+/// @param {Constant.MouseButton,Real} [binding=mb_left]
 
-function InputMouseReleased(_binding)
+function InputMouseReleased(_binding = mb_left)
 {
     static _system = __InputSystem();
     if (INPUT_BLOCK_MOUSE_CHECKS) return false;
