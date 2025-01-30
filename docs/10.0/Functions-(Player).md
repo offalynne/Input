@@ -611,7 +611,7 @@ Returns whether a player has been assigned `INPUT_GENERIC_DEVICE` as their devic
 
 ## …PlayerLowestConnectedIndex
 
-`InputPlayerLowestConnectedIndex([playerIndex=0])`
+`InputPlayerLowestConnectedIndex()`
 
 <!-- tabs:start -->
 
@@ -624,5 +624,111 @@ Returns whether a player has been assigned `INPUT_GENERIC_DEVICE` as their devic
 |None|        |       |
 
 If no players have a connected device then this function returns `undefined`. This is useful to easily identify a "main" player in a game with multiple local players.
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …PlayerSetMinThreshold
+
+`InputPlayerSetMinThreshold(thresholdType, value, [playerIndex=0])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`thresholdType`|integer |Threshold type to target. See below                 |
+|`value`        |number  |Minimum threshold for thumbsticks for the player    |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+The `value` argument should be between `0.0` and `1.0`. The threshold type should be one of the following enum members:
+
+- `INPUT_THRESHOLD.LEFT`
+- `INPUT_THRESHOLD.RIGHT`
+- `INPUT_THRESHOLD.BOTH`
+
+Setting the minimum threshold using the `INPUT_THRESHOLD.BOTH` enum member will overwrite the minimum threshold values for the left and right thumbsticks.
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …PlayerSetMaxThreshold
+
+`InputPlayerSetMaxThreshold(thresholdType, value, [playerIndex=0])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`thresholdType`|integer |Threshold type to target. See below                 |
+|`value`        |number  |Maximum threshold for thumbsticks for the player    |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+The `value` argument should be between `0.0` and `1.0`. The threshold type should be one of the following enum members:
+
+- `INPUT_THRESHOLD.LEFT`
+- `INPUT_THRESHOLD.RIGHT`
+- `INPUT_THRESHOLD.BOTH`
+
+Setting the maximum threshold using the `INPUT_THRESHOLD.BOTH` enum member will overwrite the maximum threshold values for the left and right thumbsticks.
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …PlayerGetMinThreshold
+
+`InputPlayerGetMinThreshold(thresholdType, [playerIndex=0])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, the minimum threshold for thumbsticks for this player
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`thresholdType`|integer |Threshold type to target. See below                 |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+The threshold type should be one of the following enum members:
+
+- `INPUT_THRESHOLD.LEFT`
+- `INPUT_THRESHOLD.RIGHT`
+- `INPUT_THRESHOLD.BOTH`
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …PlayerGetMaxThreshold
+
+`InputPlayerGetMaxThreshold(thresholdType, [playerIndex=0])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, the maximum threshold for thumbsticks for this player
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`thresholdType`|integer |Threshold type to target. See below                 |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+The threshold type should be one of the following enum members:
+
+- `INPUT_THRESHOLD.LEFT`
+- `INPUT_THRESHOLD.RIGHT`
+- `INPUT_THRESHOLD.BOTH`
 
 <!-- tabs:end -->
