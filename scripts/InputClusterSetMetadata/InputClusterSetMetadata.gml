@@ -1,7 +1,7 @@
 // Feather disable all
 
 /// Sets the metadata for a player's cluster. This will overwrite any metadata that was set by
-/// `InputDefineVerb()`. If the `makeCopy` parameter is set to `true` then a copy of the
+/// `InputDefineCluster()`. If the `makeCopy` parameter is set to `true` then a copy of the
 /// metadata is stored; otherwise, the metadata is stored by reference if the metadata is a struct
 /// or array.
 /// 

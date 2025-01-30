@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Resets the metadata for a player's cluster to the value set by `InputDefineVerb()`.
+/// Resets the metadata for a player's cluster to the value set by `InputDefineCluster()`.
 /// 
 /// @param {Enum.INPUT_CLUSTER,Real} cluster
 /// @param {Real} [playerIndex=0]
