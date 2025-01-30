@@ -15,7 +15,7 @@
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`verbIndex`    |integer |Verb to target                                      |
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Returns whether the verb is "active" i.e. a button is being held down, an analogue stick has been moved etc.  This is a boolean `true` or `false` state; to return an analogue value please use `InputValue()`.
 
@@ -62,7 +62,7 @@ else
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`verbIndex`    |integer |Verb to target                                      |
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Returns whether a verb has been newly actived in the most recent update loop.
 
@@ -97,7 +97,7 @@ if (InputPressed(INPUT_VERB.ACTION) and (distance_to_object(oSign) < 20))
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`verbIndex`    |integer |Verb to target                                      |
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Returns whether a verb has been newly deactivated in the most recent update loop.
 
@@ -128,7 +128,7 @@ if (InputReleased(INPUT_VERB.PAUSE))
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`verbIndex`    |integer |Verb to target                                      |
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Returns the analogue value of a verb i.e. how far a trigger has been depressed, how far a thumbstick has been moved. A button will return either `0` or `1`.
 
@@ -157,7 +157,7 @@ speed = 7*InputValue(INPUT_VERB.ACCELERATE);
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`clusterIndex` |integer |Cluster to target                                   |
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Returns the x-coordinate of the vector represented by the sum of the verb values.
 
@@ -185,7 +185,7 @@ x += InputX(INPUTER_CLUSTER.MOVE);
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`clusterIndex` |integer |Cluster to target                                   |
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Returns the y-coordinate of the vector represented by the sum of the verb values.
 
@@ -214,7 +214,7 @@ x += InputY(INPUTER_CLUSTER.MOVE);
 |---------------|--------|----------------------------------------------------|
 |`default`      |number  |Number to return if all verbs are inactive          |
 |`clusterIndex` |integer |Cluster to target                                   |
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Returns the direction of the vector represented by the sum of the verb values.
 
@@ -242,7 +242,7 @@ image_angle = InputDirection(image_angle, INPUTER_CLUSTER.AIM);
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`clusterIndex` |integer |Cluster to target                                   |
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
 Returns the length of the vector represented by the sum of the verb values.
 
@@ -270,9 +270,9 @@ motion_add(direction, InputDistance(INPUTER_CLUSTER.MOVE));
 |Name           |Datatype|Purpose                                                                    |
 |---------------|--------|---------------------------------------------------------------------------|
 |`verbIndex`    |integer |Verb to target                                                             |
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used                       |
-|`[delay]`      |intger  |Time between re-triggers. If not specified, `INPUT_REPEAT_DEFAULT_DELAY` is used   |
-|`[predelay]`   |intger  |Time before the first re-trigger. If not specified, `INPUT_REPEAT_DEFAULT_PREDELAY` is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                       |
+|`[delay]`      |integer |Time between re-triggers. If not specified, `INPUT_REPEAT_DEFAULT_DELAY` is used   |
+|`[predelay]`   |integer |Time before the first re-trigger. If not specified, `INPUT_REPEAT_DEFAULT_PREDELAY` is used|
 
 Returns a repeating boolean pulse whilst a verb is active. This is useful for rapidly scrolling through longs menu when using digital input. The `delay` and `predelay` parameters are measured in frames.
 
@@ -304,7 +304,7 @@ if (InputPressed(INPUT_VERB.DELETE) || InputRepeat(INPUT_VERB.DELETE))
 |---------------|--------|---------------------------------------------------------------------------|
 |`verbNegative` |integer |Verb to check as the negative component                                    |
 |`verbPositive` |integer |Verb to check as the positive component                                    |
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used                       |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                       |
 |`[mostRecent]` |boolean |Whether to use the most recent input instead of returning `false` when two verbs conflict. If not specified, `INPUT_OPPOSING_DEFAULT_MOST_RECENT` is used|
 
 Returns the sign of the result of the negative and positive verbs when pressed. This means this function will only return `-1` or `+1` when a verb has been pressed during the previous update loop. If `mostRecent` is set to `true` then the most recently pressed verb is preferenced, otherwise `0` is returned if both verbs were pressed at the same time.
@@ -339,9 +339,9 @@ if (_sign != 0)
 |---------------|--------|-------------------------------------------------------------------------------------------|
 |`verbNegative` |integer |Verb to check as the negative component                                                    |
 |`verbPositive` |integer |Verb to check as the positive component                                                    |
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used                                       |
-|`[delay]`      |intger  |Time between re-triggers. If not specified, `INPUT_REPEAT_DEFAULT_DELAY` is used           |
-|`[predelay]`   |intger  |Time before the first re-trigger. If not specified, `INPUT_REPEAT_DEFAULT_PREDELAY` is used|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                                       |
+|`[delay]`      |integer |Time between re-triggers. If not specified, `INPUT_REPEAT_DEFAULT_DELAY` is used           |
+|`[predelay]`   |integer |Time before the first re-trigger. If not specified, `INPUT_REPEAT_DEFAULT_PREDELAY` is used|
 
 Returns the sign of the result of the negative and positive active verbs on a repeating pulse. This function will return `0` between pulses and `-1` or `+1` on the pulse. If both verbs are active, this function will return `0`. The `delay` and `predelay` parameters are measured in frames.
 
@@ -381,7 +381,7 @@ else
 |---------------|--------|---------------------------------------------------------------------------|
 |`verbNegative` |integer |Verb to check as the negative component                                    |
 |`verbPositive` |integer |Verb to check as the positive component                                    |
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used                       |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                       |
 |`[mostRecent]` |boolean |Whether to use the most recent input instead of returning `false` when two verbs conflict. If not specified, `INPUT_OPPOSING_DEFAULT_MOST_RECENT` is used|
 
 Returns the sign of the result of the negative and positive active verbs. If `mostRecent` is set to `true` then the most recently pressed verb is preferenced, otherwise `0` is returned if both verbs are active.
@@ -412,7 +412,7 @@ direction += _speed*InputOpposing(INPUT_VERB.LEFT, INPUT_VERB.RIGHT, 0, true);
 |Name           |Datatype|Purpose                                                                     |
 |---------------|--------|----------------------------------------------------------------------------|
 |`verbIndex`    |integer |Verb to target                                                              |
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used                        |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                        |
 |`[duration]`   |number  |Hold time required for a long press. If not specified, player `INPUT_LONG_DEFALT_DELAY` is used|
 
 Returns if a verb is newly considered a "long hold" based on the hold duration, measured in frames.
@@ -451,7 +451,7 @@ else if (InputLongPressed(INPUT_VERB.DUCK))
 |Name           |Datatype|Purpose                                                                     |
 |---------------|--------|----------------------------------------------------------------------------|
 |`verbIndex`    |integer |Verb to target                                                              |
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used                        |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                        |
 |`[duration]`   |number  |Hold time required for a long press. If not specified, player `INPUT_LONG_DEFALT_DELAY` is used|
 
 Returns if a verb has been held for longer than the specified duration, measured in frames.
@@ -522,7 +522,7 @@ else if (InputReleased("attack"))
 |Name           |Datatype|Purpose                                                                     |
 |---------------|--------|----------------------------------------------------------------------------|
 |`verbIndex`    |integer |Verb to target                                                              |
-|`[playerIndex]`|intger  |Player to target. If not specified, player 0 is used                        |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                        |
 
 Returns how many frames have elapsed since the verb was last pressed. This function will return `0` on the first frame that the verb was pressed. This function will continue to return values even when the verb is not active.
 
@@ -545,6 +545,87 @@ draw_rectangle(x, y, x + _width*_fill, y + 10, false);
 
 //Draw the outline of the charge bar
 draw_rectangle(x, y, x + _width, y + 10, true);
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …CheckMany
+
+`InputCheckMany(verbIndex, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the verb is active
+
+|Name           |Datatype                    |Purpose                                              |
+|---------------|----------------------------|-----------------------------------------------------|
+|`verbIndex`    |integer or array of integers|Verbs to target                                      |
+|`[playerIndex]`|integer or array of integers|Players to target. If not specified, player 0 is used|
+
+Works similarly to `InputCheck()`; please see that function for a description of behavior. This variant of `InputCheck()` optionally accepts arrays for both the verb and the player index and will return `true` if any of the verbs are active for any of the players. You may use the value `-1` for the `playerIndex` parameter to check for input across all players.
+
+#### **Example**
+
+```gml
+
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …PressedMany
+
+`InputPressedMany(verbIndex, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the verb is active
+
+|Name           |Datatype                    |Purpose                                              |
+|---------------|----------------------------|-----------------------------------------------------|
+|`verbIndex`    |integer or array of integers|Verbs to target                                      |
+|`[playerIndex]`|integer or array of integers|Players to target. If not specified, player 0 is used|
+
+Works similarly to `InputPressed()`; please see that function for a description of behavior. This variant of `InputPressed()` optionally accepts arrays for both the verb and the player index and will return `true` if any of the verbs have been pressed for any of the players. You may use the value `-1` for the `playerIndex` parameter to check for input across all players.
+
+#### **Example**
+
+```gml
+
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …ReleasedMany
+
+`InputReleasedMany(verbIndex, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the verb is active
+
+|Name           |Datatype                    |Purpose                                              |
+|---------------|----------------------------|-----------------------------------------------------|
+|`verbIndex`    |integer or array of integers|Verbs to target                                      |
+|`[playerIndex]`|integer or array of integers|Players to target. If not specified, player 0 is used|
+
+Works similarly to `InputReleased()`; please see that function for a description of behavior. This variant of `InputReleased()` optionally accepts arrays for both the verb and the player index and will return `true` if any of the verbs have been released for any of the players. You may use the value `-1` for the `playerIndex` parameter to check for input across all players.
+
+#### **Example**
+
+```gml
+
 ```
 
 <!-- tabs:end -->
