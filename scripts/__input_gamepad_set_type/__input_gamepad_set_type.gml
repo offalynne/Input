@@ -383,7 +383,8 @@ function __input_gamepad_set_type()
                 
                 case "6f0e1311":
                     if (__saffun_axis_test == undefined)
-                    {                        
+                    {
+                        if (!__INPUT_SILENT) __input_trace("Overriding controller ", __index ," type to Saffun N64");
                         __saffun_axis_test = true;
                         
                         __description = "Saffun N64";
@@ -392,12 +393,13 @@ function __input_gamepad_set_type()
                     }
                     else if (__saffun_axis_test == false)
                     {
+                        if (!__INPUT_SILENT) __input_trace("Overriding controller ", __index ," type to Saffun GameCube");
+
                         __description = "Saffun GameCube";
                         __raw_type = "CommunityGameCube";
                         __guessed_type = false;                     
                     }
                         
-                    if (!__INPUT_SILENT) __input_trace("Overriding controller ", __index ," type to ", __raw_type);   
                 break;
                 
                 #endregion

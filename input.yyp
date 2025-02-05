@@ -422,8 +422,8 @@
     "children": [],
   },
   "RoomOrderNodes": [
-    {"roomId":{"name":"rm_example_drop_in_gameplay","path":"rooms/rm_example_drop_in_gameplay/rm_example_drop_in_gameplay.yy",},},
     {"roomId":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
+    {"roomId":{"name":"rm_example_drop_in_gameplay","path":"rooms/rm_example_drop_in_gameplay/rm_example_drop_in_gameplay.yy",},},
     {"roomId":{"name":"rm_gamepad_tester","path":"rooms/rm_gamepad_tester/rm_gamepad_tester.yy",},},
     {"roomId":{"name":"rm_example_mp_gameplay","path":"rooms/rm_example_mp_gameplay/rm_example_mp_gameplay.yy",},},
     {"roomId":{"name":"rm_example_mp_join","path":"rooms/rm_example_mp_join/rm_example_mp_join.yy",},},
