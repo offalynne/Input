@@ -41,9 +41,9 @@ function __input_gamepad_set_blacklist()
                 return;
             }
         
-            if (((__vendor == "4c05") && (__product == "6802"))  //PS3 controller
-            && (((__axis_count ==  4) && (__button_count == 19))   //Bad driver
-             || ((__axis_count ==  8) && (__button_count == 0))))  //DsHidMini gyro
+            if (((__vendor == "4c05") && (__product == "6802"))   //PS3 controller
+            && (((__axis_count ==  4) && (__button_count == 19))  //Bad driver
+             || ((__axis_count ==  8) && (__button_count == 0)))) //DsHidMini gyro
             {
                 //Unsupported configuration for PS3 controller
                 if (!__INPUT_SILENT) __input_trace("Warning! Controller ", __index, " is blacklisted (Incorrectly configured PS3 controller)");

@@ -28,6 +28,7 @@ function __input_class_gamepad(_index) constructor
     __xinput_trigger_range = 1;
     __stadia_trigger_test  = false;
     __axis_calibrated      = false;
+    __saffun_axis_test     = undefined;
     
     __steam_handle_index = undefined;
     __steam_handle       = undefined;
@@ -356,6 +357,18 @@ function __input_class_gamepad(_index) constructor
                         }
                         
                         __stadia_trigger_test = false;
+                    }
+                }
+                
+                //Set up alternate Saffun mapping
+                if (__saffun_axis_test == true)
+                {
+                    if ((floor(abs(gamepad_axis_value(__index, 2))*10) != 0.0)
+                    ||  (floor(abs(gamepad_axis_value(__index, 3))*10) != 0.0))
+                    {   
+                        __saffun_axis_test = false;
+                        __input_gamepad_set_type();
+                        __input_gamepad_set_mapping();
                     }
                 }
             }

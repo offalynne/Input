@@ -24,7 +24,7 @@ function __input_define_gamepad_types()
         MobileTouch        = INPUT_GAMEPAD_TYPE_XBOX_360;
         
         //Default for XInput and Xbox-like gamepads
-        CommunityLikeXBox   = INPUT_GAMEPAD_TYPE_XBOX_ONE;
+        CommunityLikeXBox = INPUT_GAMEPAD_TYPE_XBOX_ONE;
         
         //PlayStation
         #macro INPUT_GAMEPAD_TYPE_PS5 "ps5"
