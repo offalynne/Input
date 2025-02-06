@@ -28,6 +28,7 @@ function __input_class_gamepad(_index) constructor
     __xinput_trigger_range = 1;
     __stadia_trigger_test  = false;
     __axis_calibrated      = false;
+    __saffun_axis_test     = undefined;
     
     __steam_handle_index = undefined;
     __steam_handle       = undefined;
@@ -265,7 +266,7 @@ function __input_class_gamepad(_index) constructor
             var _i = 0;
             repeat(array_length(_mappings))
             {
-                _mappings[_i].limited_range = true;
+                _mappings[_i].__limited_range = true;
                 ++_i;
             }
         }
@@ -287,6 +288,7 @@ function __input_class_gamepad(_index) constructor
             __disconnection_frame = undefined;
             
             //Apply mapping settings that cannot be initially evaluated
+            
             if (__INPUT_ON_WINDOWS)
             {
                 //Recalibrate XInput triggers
@@ -357,6 +359,18 @@ function __input_class_gamepad(_index) constructor
                         
                         __stadia_trigger_test = false;
                     }
+                }
+            }
+                
+            //Set up alternate Saffun mapping
+            if (__saffun_axis_test == true)
+            {
+                var _resting_value = (__INPUT_ON_LINUX ? 5 : 0);
+                if ((floor(abs(gamepad_axis_value(__index, 2))*10) != _resting_value) || (floor(abs(gamepad_axis_value(__index, 3))*10) != _resting_value))
+                {   
+                    __saffun_axis_test = false;
+                    __input_gamepad_set_type();
+                    __input_gamepad_set_mapping();
                 }
             }
         }

@@ -33,7 +33,9 @@ function __input_gamepad_set_blacklist()
     switch(os_type)
     {
         case os_windows:
-            if ((__vendor == "7e05") && (__product == "0920") && (__button_count > 21))
+            if ((__vendor == "7e05") && (__product == "0920") 
+            && !((__button_count == 30) && (__hat_count == 0))
+            &&  (__button_count > 21))
             {
                 //Switch Pro Controller over USB. Normally does not operate, runs haywire with Steam open
                 if (!__INPUT_SILENT) __input_trace("Warning! Controller ", __index, " is blacklisted (Switch Pro Controller over USB)");
@@ -41,9 +43,9 @@ function __input_gamepad_set_blacklist()
                 return;
             }
         
-            if (((__vendor == "4c05") && (__product == "6802"))  //PS3 controller
-            && (((__axis_count ==  4) && (__button_count == 19))   //Bad driver
-             || ((__axis_count ==  8) && (__button_count == 0))))  //DsHidMini gyro
+            if (((__vendor == "4c05") && (__product == "6802"))   //PS3 controller
+            && (((__axis_count ==  4) && (__button_count == 19))  //Bad driver
+             || ((__axis_count ==  8) && (__button_count == 0)))) //DsHidMini gyro
             {
                 //Unsupported configuration for PS3 controller
                 if (!__INPUT_SILENT) __input_trace("Warning! Controller ", __index, " is blacklisted (Incorrectly configured PS3 controller)");

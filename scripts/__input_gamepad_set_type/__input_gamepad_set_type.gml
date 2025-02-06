@@ -66,7 +66,7 @@ function __input_gamepad_set_type()
         default:
             var _vendor_and_product = __vendor + __product;
             var _irregular_guid = (_vendor_and_product == "");            
-            if (__xinput == true)
+            if (__xinput)
             {
                 __raw_type = "CommunityLikeXBox";
                 __guessed_type = true;
@@ -374,6 +374,32 @@ function __input_gamepad_set_type()
                         __raw_type = "CommunityN64";
                         __guessed_type = false;
                     }                
+                break;
+                
+                #endregion
+                
+                
+                #region Saffun N64
+                
+                case "6f0e1311":
+                    if (__saffun_axis_test == undefined)
+                    {
+                        if (!__INPUT_SILENT) __input_trace("Overriding controller ", __index ," type to Saffun N64");
+                        __saffun_axis_test = true;
+                        
+                        __description = "Saffun N64";
+                        __raw_type = "CommunityN64";
+                        __guessed_type = false;
+                    }
+                    else if (__saffun_axis_test == false)
+                    {
+                        if (!__INPUT_SILENT) __input_trace("Overriding controller ", __index ," type to Saffun GameCube");
+
+                        __description = "Saffun GameCube";
+                        __raw_type = "CommunityGameCube";
+                        __guessed_type = false;                     
+                    }
+                        
                 break;
                 
                 #endregion
