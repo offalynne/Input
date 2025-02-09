@@ -92,6 +92,8 @@ On many platforms, gamepad indices do not enumerate predicatbly. Use source assi
 
 - On MacOS, when the Command key (⌘) is held, any subsequent keyboard input is queued for release when the Command key is. Input ignores all keys when the Command key is released.
 
+- On MacOS, backtick (```) and numeric row two (`2`) produce the same key input.
+
 - On Ubuntu, keyboard input that results in printable characters outside the Basic-Latin character set are not detected, and can not be bound.
 
 - Steam Overlay intercepts certain key combinations that should be avoided when building a default keyboard scheme. By default these include `F12` and `Shift+Tab`. For more info see [Common Keyboard Combos](Common-Keyboard-Combos).
