@@ -96,7 +96,7 @@ On many platforms, gamepad indices do not enumerate predicatbly. Use source assi
 
 - On Ubuntu, keyboard input that results in printable characters outside the Basic-Latin character set are not detected, and can not be bound.
 
-- Steam Overlay intercepts certain key combinations that should be avoided when building a default keyboard scheme. By default these include `F12` and `Shift+Tab`. For more info see [Common Keyboard Combos](Common-Keyboard-Combos).
+- Steam Overlay intercepts certain key combinations that should be avoided when building a default keyboard scheme. By default these include `F12` and `Shift+Tab`.
 
 - Steam Input and especially the Steam Controller gamepad make use of Mixed Input, an affordance Input is currently not optimized for. Support for Mixed Input should be improved in the future.
 
