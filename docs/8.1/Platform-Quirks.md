@@ -47,7 +47,7 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - When the Command key (⌘) is held, any subsequent keyboard input is queued for release when the Command key is. Input ignores all keys when the Command key is released.
 
-- Backtick (```) and numeric row two (`2`) produce the same key input.
+- Backtick (`` ` ``) and numeric row two (`2`) produce the same key input.
 
 - The "gamepad select" button takes a screenshot on double press and records video on long press. Be aware when setting default bindings that this can be problematic for users with the feature enabled (default OS behaviour).
 
