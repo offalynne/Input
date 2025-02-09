@@ -529,7 +529,7 @@ function __input_system_tick()
             {
                 if (_connected)
                 {
-                    with (_gamepad)
+                    with(_gamepad)
                     {
                         if ((os_type == os_switch) && (__description != gamepad_get_description(_g)))
                         {

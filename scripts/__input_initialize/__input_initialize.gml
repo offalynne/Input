@@ -68,7 +68,7 @@ function __input_initialize()
         _native_split = false;
     }
     
-    if not (_native_split) __input_trace_loud("Warning!\nFound indirection for GM native \"string_split\" function. Overriding \"string_split\" degrades load performance.");
+    if (!INPUT_ON_WEB && !_native_split) __input_trace_loud("Warning!\nFound indirection for GM native \"string_split\" function. Overriding \"string_split\" degrades load performance.");
     
     //Detect is_instanceof(), which offers some minor performance gains
     if (INPUT_ON_WEB)
@@ -833,6 +833,12 @@ function __input_initialize()
     {
         __input_key_name_set(0x80, "f11");
         __input_key_name_set(0x81, "f12");
+    }
+
+    //Numeric key 2 on MacOS
+    if (__INPUT_ON_MACOS)
+    {
+        __input_key_name_set(0x32, "2");
     }
     
     //Numeric keys 2-7 on Switch
