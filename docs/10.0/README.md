@@ -9,10 +9,6 @@
 
 Input is a robust, feature-packed input library that unifies keyboard, mouse, and gamepad control under one umbrella. It handles hotswapping, rebinding, gamepad type detection, player gamepad assignment, thumbstick min/max deadzones etc. all without you lifting a finger. This library strips away the boring repetitive task of getting every gamepad for every platform set up perfectly, and accelerates the development of your game.
 
-Input is built on top of the engine agnostic [SDL2 remapping system](https://github.com/mdqinc/SDL_GameControllerDB) and uses community contributed binding for every common gamepad, and many gamepads you've probably never heard of. Because it's built on community contributions made over many years, SDL2 and Input have excellent coverage of all the weird and wonderful input devices that exist. It's rare to find a device that SDL2 doesn't support.
-
-This library is a significant improvement on GameMaker's native gamepad implementation, which is fraught with cross-platform inconsistencies and the occasional show-stopping bug. It's a massive step up from GameMaker's barebones gamepad and keyboard implementations.
-
 ?> Input is a really big library! To get up and running fast, check out our [Newbie Guide](Newbie-Guide).
 
 ---
