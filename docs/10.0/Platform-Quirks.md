@@ -141,8 +141,6 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 ## HTML5
 
-- When running through HTML5, `input_bindings_write()` and `input_bindings_read()` are blocked. This is due to [up-stream bugs](https://github.com/JujuAdams/Input/issues/152) in GameMaker.
-
 - Web browsers have their own gamepad API, as such Input does not use its own [game controller mapping](Controller-Mapping) on the platform. Input will use the browser's gamepad implementation, including button mapping.
 
 - In order for gamepads to present and operate, the user must first press a button with the game in focus.
