@@ -83,8 +83,8 @@ function __InputRegisterUpdate()
                 }
                 else
                 {
-                    __pointerDeviceX = device_mouse_x(0);
-                    __pointerDeviceY = device_mouse_y(0);
+                    __pointerDeviceX = device_mouse_raw_x(0);
+                    __pointerDeviceY = device_mouse_raw_y(0);
                 }
             }
             
