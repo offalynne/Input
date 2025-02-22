@@ -11,7 +11,7 @@ function __input_class_binding() constructor
         __type          = undefined;
         __value         = undefined;
         __axis_negative = undefined;
-        __label       = "empty binding";
+        __label         = "empty binding";
         
         __gamepad_index       = undefined;
         __gamepad_description = undefined;
@@ -292,19 +292,16 @@ function __input_class_binding() constructor
             if (!__INPUT_KEYBOARD_NORMATIVE)
             {
                 //Fix UTF-8 where used
-                switch(_keycode)
-                {
-                    case vk_comma:     _keycode = 0x2C; break;
-                    case vk_hyphen:    _keycode = 0x2D; break;
-                    case vk_period:    _keycode = 0x2E; break;
-                    case vk_fslash:    _keycode = 0x2F; break;
-                    case vk_semicolon: _keycode = 0x3B; break;
-                    case vk_equals:    _keycode = 0x3D; break;
-                    case vk_lbracket:  _keycode = 0x5B; break;
-                    case vk_bslash:    _keycode = 0x5C; break;
-                    case vk_rbracket:  _keycode = 0x5D; break;
-                    case vk_backtick:  _keycode = 0x60; break;
-                }
+                if      (_keycode == vk_comma    ) { _keycode = 0x2C; }
+                else if (_keycode == vk_hyphen   ) { _keycode = 0x2D; }
+                else if (_keycode == vk_period   ) { _keycode = 0x2E; }
+                else if (_keycode == vk_fslash   ) { _keycode = 0x2F; }
+                else if (_keycode == vk_semicolon) { _keycode = 0x3B; }
+                else if (_keycode == vk_equals   ) { _keycode = 0x3D; }
+                else if (_keycode == vk_lbracket ) { _keycode = 0x5B; }
+                else if (_keycode == vk_bslash   ) { _keycode = 0x5C; }
+                else if (_keycode == vk_rbracket ) { _keycode = 0x5D; }
+                else if (_keycode == vk_backtick ) { _keycode = 0x60; }
             }
         }
         
