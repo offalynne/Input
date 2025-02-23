@@ -26,6 +26,7 @@ efbeedfe,windows,vid+pid // Virtual Hid Device
 030000007e0500000e20000011810000,linux,guid // Joy-Con Charger Left Grip
 3c000000000000000000000038010000,linux,guid // Joy-Con Charger Right Grip 
 030000007e0500000920000011010000,linux,guid // Switch Pro Controller
+03000000321500006500000011010000,linux,guid // Razer Basilisk Essential
 65366131663736363061313736656431,android,guid // Joy-Con Charger
 31613237643563656561633964393335,android,guid // Joy-Con Left
 39373064396565646338333134303131,android,guid // Joy-Con Right
