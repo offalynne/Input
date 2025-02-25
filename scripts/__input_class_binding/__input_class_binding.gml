@@ -11,7 +11,7 @@ function __input_class_binding() constructor
         __type          = undefined;
         __value         = undefined;
         __axis_negative = undefined;
-        __label       = "empty binding";
+        __label         = "empty binding";
         
         __gamepad_index       = undefined;
         __gamepad_description = undefined;
@@ -262,18 +262,18 @@ function __input_class_binding() constructor
     static __set_key = function(_key, _player_set)
     {
         //Fix uses of straight strings instead of ord("A")
-        if (is_string(_key)) _key = ord(string_upper(_key));
+        var _keycode = (is_string(_key)? ord(string_upper(_key)) : _key);
         
         if (_player_set)
         {
             if (INPUT_MERGE_CONTROL_KEYS)
             {
-                switch(_key)
+                //Combine player-bound control keys
+                switch(_keycode)
                 {
-                    //Combine player-bound control keys
-                    case vk_lcontrol: case vk_rcontrol:  _key = vk_control; break;
-                    case vk_lalt:     case vk_ralt:      _key = vk_alt;     break;
-                    case vk_lshift:   case vk_rshift:    _key = vk_shift;   break;
+                    case vk_lcontrol: case vk_rcontrol: _keycode = vk_control; break;
+                    case vk_lalt:     case vk_ralt:     _keycode = vk_alt;     break;
+                    case vk_lshift:   case vk_rshift:   _keycode = vk_shift;   break;
                 }
             }
         }
@@ -282,31 +282,43 @@ function __input_class_binding() constructor
             if (__INPUT_ON_SWITCH || __INPUT_ON_LINUX || __INPUT_ON_MACOS)
             {
                 //Fix F11 and F12 constants
-                if      (_key == vk_f11)  _key = 128;
-                else if (_key == vk_f12)  _key = 129;
+                switch(_keycode)
+                {
+                    case vk_f11: _keycode = 0x80; break;
+                    case vk_f12: _keycode = 0x81; break;
+                }
             }
             
             if (!__INPUT_KEYBOARD_NORMATIVE)
             {
                 //Fix UTF-8 where used
-                if      (_key == vk_comma    )  _key = 44;
-                else if (_key == vk_hyphen   )  _key = 45;
-                else if (_key == vk_period   )  _key = 46;
-                else if (_key == vk_fslash   )  _key = 47;
-                else if (_key == vk_semicolon)  _key = 59;
-                else if (_key == vk_equals   )  _key = 61;
-                else if (_key == vk_lbracket )  _key = 91;
-                else if (_key == vk_bslash   )  _key = 92;
-                else if (_key == vk_rbracket )  _key = 93;
-                else if (_key == vk_backtick )  _key = 96;
+                if      (_keycode == vk_comma    ) { _keycode = 0x2C; }
+                else if (_keycode == vk_hyphen   ) { _keycode = 0x2D; }
+                else if (_keycode == vk_period   ) { _keycode = 0x2E; }
+                else if (_keycode == vk_fslash   ) { _keycode = 0x2F; }
+                else if (_keycode == vk_semicolon) { _keycode = 0x3B; }
+                else if (_keycode == vk_equals   ) { _keycode = 0x3D; }
+                else if (_keycode == vk_lbracket ) { _keycode = 0x5B; }
+                else if (_keycode == vk_bslash   ) { _keycode = 0x5C; }
+                else if (_keycode == vk_rbracket ) { _keycode = 0x5D; }
+                else if (_keycode == vk_backtick ) { _keycode = 0x60; }
             }
         }
         
         __type  = __INPUT_BINDING_KEY;
-        __value = _key;
+        __value = _keycode;
         
         __set_android_lowercase(); //This also edits .__value
         __set_label();
+        
+        //Fix MacOS backtick
+        if (__INPUT_ON_MACOS)
+        {
+            if ((_keycode == vk_backtick) && !is_string(_key))
+            {
+                __set_label("`");
+            }
+        }
         
         return self;
     }
