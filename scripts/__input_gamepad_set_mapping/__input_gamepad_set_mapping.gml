@@ -501,7 +501,6 @@ function __input_gamepad_set_mapping()
 
         #endregion
 
-
         #region Obins Anne Pro 2
 
         case "CommunityAnnePro":    
@@ -538,7 +537,6 @@ function __input_gamepad_set_mapping()
         break;
         
         #endregion
-
 
         #region Ouya Controller on MacOS
 
@@ -581,7 +579,6 @@ function __input_gamepad_set_mapping()
         break;
     
         #endregion
-
 
         #region NeoGeo Mini and Arcade Stick Pro
 
@@ -644,7 +641,6 @@ function __input_gamepad_set_mapping()
 
         #endregion
 
-
         #region Nintendo Switch Online Controllers on Linux
 
         case "CommunitySaturn":
@@ -693,7 +689,6 @@ function __input_gamepad_set_mapping()
         break;
 
         #endregion
-
 
         #region Non-normative HID mappings for Linux
         
@@ -815,7 +810,6 @@ function __input_gamepad_set_mapping()
         break;
     
         #endregion
-
 
         #region Nintendo Switch Controllers
 
@@ -992,7 +986,6 @@ function __input_gamepad_set_mapping()
         #endregion
             
         #endregion
-
     
         #region Missing mapping on MacOS
         
@@ -1031,7 +1024,6 @@ function __input_gamepad_set_mapping()
     
         #endregion
 
-    
         #region Linux overrides
     
         case os_linux:
@@ -1113,11 +1105,33 @@ function __input_gamepad_set_mapping()
             }
 
             #endregion
+            
+            #region Manba Mini
+
+            if ((__guid == "0500000049190000020400001b010000") && (gamepad_get_description(__index) = "xbox Wireless Controller"))
+            {
+
+               __set_mapping(gp_face1, 0, __INPUT_MAPPING.BUTTON, "a");
+               __set_mapping(gp_face2, 1, __INPUT_MAPPING.BUTTON, "b");
+               __set_mapping(gp_face3, 2, __INPUT_MAPPING.BUTTON, "x");
+               __set_mapping(gp_face4, 3, __INPUT_MAPPING.BUTTON, "y");
+
+               __set_mapping(gp_shoulderl, 4, __INPUT_MAPPING.BUTTON, "leftshoulder");
+               __set_mapping(gp_shoulderr, 5, __INPUT_MAPPING.BUTTON, "rightshoulder");
+
+               __set_mapping(gp_select, 6, __INPUT_MAPPING.BUTTON, "back");
+               __set_mapping(gp_start, 7, __INPUT_MAPPING.BUTTON, "start");
+
+               __set_dpad_hat_mapping();
+               
+               return;
+            }
+
+            #endregion
 
         break;
     
         #endregion
-        
         
         #region Conflicting Android GUIDS
 
@@ -1598,7 +1612,7 @@ function __input_gamepad_set_mapping()
     
     #endregion
     
-    #region Generic mapping    
+    #region Generic mapping
         
     __set_mapping(gp_face1, gp_face1, __INPUT_MAPPING.BUTTON, "a", false);
     __set_mapping(gp_face2, gp_face2, __INPUT_MAPPING.BUTTON, "b", false);
