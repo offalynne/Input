@@ -559,7 +559,7 @@ draw_rectangle(x, y, x + _width, y + 10, true);
 
 #### **Description**
 
-**Returns:** Boolean, whether the verb is active
+**Returns:** Boolean, whether any verb is active
 
 |Name           |Datatype                    |Purpose                                              |
 |---------------|----------------------------|-----------------------------------------------------|
@@ -586,7 +586,7 @@ Works similarly to `InputCheck()`; please see that function for a description of
 
 #### **Description**
 
-**Returns:** Boolean, whether the verb is active
+**Returns:** Boolean, whether any verb has been pressed
 
 |Name           |Datatype                    |Purpose                                              |
 |---------------|----------------------------|-----------------------------------------------------|
@@ -613,7 +613,7 @@ Works similarly to `InputPressed()`; please see that function for a description 
 
 #### **Description**
 
-**Returns:** Boolean, whether the verb is active
+**Returns:** Boolean, whether any verb has been released
 
 |Name           |Datatype                    |Purpose                                              |
 |---------------|----------------------------|-----------------------------------------------------|
