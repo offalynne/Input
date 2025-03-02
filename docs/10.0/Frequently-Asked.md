@@ -68,11 +68,9 @@ This is not supported by Input 10.
 ## What platforms are extended gamepad features availble on? {docsify-ignore}
 
 - **Vibration:** Consoles and Windows (Xbox gamepads only, with support for additional types through Steamworks)
-- **LED Patterns:** Consoles, iOS, Windows through Steamworks
-- **Motion:** PlayStation and Switch, Windows and Linux through Steamworks
+- **Gyro & Motion:** PlayStation and Switch, Windows and Linux through Steamworks
 - **RGB:** PlayStation consoles, Windows and Linux through Steamworks
 - **Trigger Effects:** PlayStation 5, Windows through Steamworks
-- **Touchpad:** PlayStation consoles
 
 &nbsp;
 
@@ -82,7 +80,7 @@ Input is tested across platforms and we have yet to observe any scenario where i
 
 If you believe Input is impacting performance based on profiler readings, **examine Time (Ms) and ignore Step (%)**. Unless Input is significantly contributing to a total Time (Ms) that is greater than your frame target (eg 17ms) the problem is elsewhere. 
 
-Some known culprits for misdiagnosed performance issues are shaders, driver problems (Xbox controller related), and debugger Watches, all of which impact FPS in ways unrelated to the library, which the profiler may not make obvious. Feel free to pursue help for general performance problems, but **do not rely on Step (%)** for diagnosing or reporting library performance issues — **Time (Ms) values only**!
+Some known culprits for misdiagnosed performance issues are shaders, driver problems (Xbox controller related), and debugger Watches, all of which impact FPS in ways unrelated to the library, which the profiler may not make obvious. Feel free to pursue help for general performance problems, but **do not rely on Step (%)** for diagnosing or reporting library performance issues — **monitor (ms) values only**!
 
 &nbsp;
 
