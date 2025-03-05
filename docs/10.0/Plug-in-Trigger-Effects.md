@@ -2,7 +2,7 @@
 
 &nbsp;
 
-Adaptive trigger effects are available for the DualSense gamepad on the PlayStation 5 console platform, as well as [Windows via Steamworks extension](Steamworks.md). One effect can be set per trigger at a time. 
+Adaptive trigger effects are available for the DualSense gamepad on the PlayStation 5 console platform, as well as [Windows via Steamworks extension](Steamworks.md). One effect can be set per trigger. 
 
 &nbsp;
 
