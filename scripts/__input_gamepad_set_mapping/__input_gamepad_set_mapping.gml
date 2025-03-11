@@ -1108,7 +1108,7 @@ function __input_gamepad_set_mapping()
             
             #region Manba Mini
 
-            if ((__guid == "0500000049190000020400001b010000") && (gamepad_get_description(__index) = "xbox Wireless Controller"))
+            if ((__guid == "0500000049190000020400001b010000") && (gamepad_get_description(__index) == "xbox Wireless Controller"))
             {
 
                __set_mapping(gp_face1, 0, __INPUT_MAPPING.BUTTON, "a");
