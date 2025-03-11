@@ -2,6 +2,10 @@
 
 &nbsp;
 
+Gamepad vibration can be set for console platforms, as well as on Windows with [Steamworks](Steamworks.md).
+
+&nbsp;
+
 ## …vibrate_constant
 
 `input_vibrate_constant(strength, pan, duration, [playerIndex], [force])`
