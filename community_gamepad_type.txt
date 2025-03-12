@@ -9,6 +9,7 @@
 2dc8,310a,CommunityLikeXBox // 8BitDo Ultimate 2C
 2dc8,301b,CommunityLikeXBox // 8BitDo Ultimate 2C
 2dc8,301d,CommunityLikeXBox // 8BitDo Ultimate 2C
+2dc8,6012,CommunityLikeXBox // 8BitDo Ultimate 2
 20bc,6050,CommunityLikeXBox // Xiaomi XMGP01YM
 2717,5033,CommunityLikeXBox // Xiaomi XMGP01YM
 0c12,880a,CommunityLikeXBox // Xbox Controller
