@@ -1,9 +1,3 @@
-//Whether to allow (problematic) keyboard input on Android platform
-#macro INPUT_ANDROID_KEYBOARD_ALLOWED  false
-
-//Whether to allow keyboard input on Switch platform
-#macro INPUT_SWITCH_KEYBOARD_ALLOWED  false
-
 //Whether to merge control keys, for example Left Shift and Right Shift upon user rebind
 #macro INPUT_MERGE_CONTROL_KEYS  false
 
