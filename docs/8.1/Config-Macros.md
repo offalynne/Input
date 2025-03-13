@@ -123,10 +123,10 @@ When a player has no profile set, `input_binding_get()` has undefined behavior. 
 
 `__input_config_keyboard()` holds macros that affect how Input treats keyboard input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
 
+?> See [General](#General) macros for per-platform keyboard configuration, [Profiles](#Profiles) macros for keyboard profile configuration
+
 |Name                              |Typical Value|Purpose                                                                               |
 |----------------------------------|-------------|--------------------------------------------------------------------------------------|
-|`INPUT_ANDROID_KEYBOARD_ALLOWED`  |`false`      |Whether to allow keyboard input on Android platform                                   |
-|`INPUT_SWITCH_KEYBOARD_ALLOWED`   |`false`      |Whether to allow keyboard input on Switch platform                                    |
 |`INPUT_MERGE_CONTROL_KEYS`        |`false`      |Whether to merge control keys, for example Left Shift and Right Shift upon user rebind|
 |`INPUT_IGNORE_RESERVED_KEYS_LEVEL`|`2`          |Controls default key filtering behavior. See below                                    |
 
@@ -152,6 +152,8 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 
 `__input_config_mouse()` holds macros that affect how Input treats mouse input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
 
+?> See [General](#General) macros for per-platform mouse configuration, [Profiles](#Profiles) macros for mouse profile configuration, and [Hotswap](#Hotswap) for mouse hotswap configuration
+
 |Name                               |Typical Value|Purpose                                                                                                                                                             |
 |-----------------------------------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |`INPUT_MOUSE_ALLOW_SCANNING`       |`true`       |Whether to allow mouse input to be returned by [`input_binding_scan_start()`]()                                                                                     |
@@ -163,6 +165,8 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 ## Touch
 
 `__input_config_touch()` holds macros that affect how Input handles touch input and virtual buttons. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
+
+?> See [General](#General) macros for per-platform touch configuration, [Profiles](#Profiles) macros for touch profile configuration
 
 |Name                                 |Typical Value|Purpose                                                                                                                                                                                                  |
 |-------------------------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -179,6 +183,8 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 ## Gamepads
 
 `__input_config_gamepads()` holds macros that affect how Input's gamepads behave. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
+
+?> See [General](#General) macros for per-platform gamepad configuration, [Profiles](#Profiles) macros for gamepad profile configuration, and [Hotswap](#Hotswap) for gamepad hotswap configuration
 
 |Name                                   |Typical Value          |Purpose                                                                                                                                                                                                                                                                     |
 |---------------------------------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -215,6 +221,8 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 ## Vibration
 
 `__input_config_vibration()` holds macros that affect vibration when triggered using Input. This script never needs to be directly called in your code, but the script and the macros it contains must be present in a project for Input to work.
+
+?> See [General](#General) macros for per-platform vibration configuration
 
 |Name                                   |Typical Value|Purpose                                                                                                                                                                              |
 |---------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
