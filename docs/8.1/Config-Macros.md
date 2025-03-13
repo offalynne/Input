@@ -89,7 +89,7 @@ When a player has no profile set, `input_binding_get()` has undefined behavior. 
 |`INPUT_HOTSWAP_DELAY`            |`33`            |Number of milliseconds between source swaps when in the [hotswap source mode](Source-Modes?id=input_source_modehotswap). This should be longer than a single frame (>17 ms at 60FPS)|
 |`INPUT_HOTSWAP_ON_GAMEPAD_AXIS`  |`true`          |Whether to trigger a hotswap when a gamepad axis is moved                                                                                                                           |
 |`INPUT_HOTSWAP_ON_MOUSE_BUTTON`  |`true`          |Whether to trigger a hotswap when a mouse button is pressed                                                                                                                         |
-|`INPUT_HOTSWAP_ON_MOUSE_MOVEMENT`|`true`          |Whether to trigger a hotswap when the mouse is moved                                                                                                                                |
+|`INPUT_HOTSWAP_ON_MOUSE_MOVEMENT`|`false`         |Whether to trigger a hotswap when the mouse is moved                                                                                                                                |
 |`INPUT_HOTSWAP_AUTO_PROFILE`     |`true`          |Whether to automatically set the profile for player 0 when they hotswap to a new source                                                                                             |
 
 &nbsp;
