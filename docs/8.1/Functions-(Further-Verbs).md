@@ -21,7 +21,7 @@ This page contains verb-related functions that don't fit elsewhere. They give yo
 |`verb`         |[verb](Verbs-and-Bindings)|[Verb](Verbs-and-Bindings) to consume. If keyword `all` is used, all verbs for the player(s) are consumed          |
 |`[playerIndex]`|integer                             |Player to target. If not specified, player 0 is used.  If keyword `all` is used, all players are targeted|
 
-When a verb has been consumed, [check functions](Functions-(Checkers)) that target the verb will return `false` until the button is released and pressed again.
+When a verb has been consumed, [check functions](Functions-(Checkers)) that target the verb will return `false` until the button is released and pressed again. This function will clear the verb state similarly to how you might expect to use native functions [`keyboard_clear()`](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/keyboard_clear.htm) and [`mouse_clear()`](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Game_Input/Mouse_Input/mouse_clear.htm).
 
 #### **Example**
 
