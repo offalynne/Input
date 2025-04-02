@@ -358,9 +358,8 @@ function __input_gamepad_set_mapping()
                 
                 __set_mapping(gp_shoulderr, 4, __INPUT_MAPPING.BUTTON, "rightshoulder");
                 
-                ////Dual-stage trigger mapping (semantically incorrect)
-                //__set_mapping(gp_paddle2, 5, __INPUT_MAPPING.BUTTON, "paddle2");
-                //__set_mapping(gp_paddle1, 6, __INPUT_MAPPING.BUTTON, "paddle1");        
+                __set_mapping(gp_paddle2, 5, __INPUT_MAPPING.BUTTON, "paddle2");
+                __set_mapping(gp_paddle1, 6, __INPUT_MAPPING.BUTTON, "paddle1");        
                  
                 __set_mapping(gp_padu,  8, __INPUT_MAPPING.BUTTON, "dpup");
                 __set_mapping(gp_padd,  9, __INPUT_MAPPING.BUTTON, "dpdown");
