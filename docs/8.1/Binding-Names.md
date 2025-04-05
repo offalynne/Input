@@ -27,8 +27,6 @@ A list of possible return strings for [`input_binding_get_name`](Functions-(Bind
 <!-- tabs:end -->
 
 ## Gamepad
-<!-- tabs:start -->
-#### **Gamepad**
 |                              |                              |
 |------------------------------|------------------------------|
 | `gamepad face south`         | `gamepad face east`          |
@@ -47,7 +45,6 @@ A list of possible return strings for [`input_binding_get_name`](Functions-(Bind
 | `gamepad paddle 1`           | `gamepad paddle 2`           |
 | `gamepad paddle 3`           | `gamepad paddle 4`           |
 | `gamepad touchpad click`     | `gamepad unknown`            |
-<!-- tabs:end -->
 
 ## Keyboard
 <!-- tabs:start -->
