@@ -335,8 +335,6 @@
 				font-weight: bold;
 			}
 			
-		/* !! -- alynne begin -- !! */
-			
 			.app-nav>ul>li>a:hover, .app-nav>ul>li>span:hover {
 				color: #293338;
 			}
@@ -348,24 +346,24 @@
 			} */
 			
 			/* wrap function headers via gnysek */
-			.markdown-section h2 a code:not([class*="lang-"]):not([class*="language-"]) {
+ 			/* .markdown-section h2 a code:not([class*="lang-"]):not([class*="language-"]) {
 				display: block;
 				position: relative;
 				white-space: normal;
 				padding-left: 2ch;
 				text-indent: -1ch;
 				overflow: hidden;
-			}
+			} */
 			
 			/* line break indicators */
-			.markdown-section h2 a code:after {    
+ 			/* .markdown-section h2 a code:after {    
 				content: "\A ↳ \A ↳ \A ↳ \A ↳ \A ↳ \A ↳";
 				position: absolute;
 				left: 14px;
 				top: 0;
 				opacity: 0.5;
 				white-space: break-spaces;
-			}
+			} */
 			
 			/* wrap function index */
 			@media (max-width: 1440px) {
@@ -400,6 +398,8 @@
 
 				padding: var(--docsifytabs-content-padding);
 			}
+
+			.sidebar { overflow-y: scroll; }
 		</style>
 		<script>
 			/* Add word break opportunity after function opening parentheses */
