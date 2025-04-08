@@ -564,7 +564,7 @@ if (input_held_released("bow attack"))
 
 |Name              |Datatype                        |Purpose                                                                                                                                              |
 |------------------|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
-|`[array]`         |[verb](Verbs-and-Bindings) array|Array of [verbs](Verbs-and-Bindings) to check. If keyword `all` is used, or this argument is not specified, then all verbs for the player are checked|
+|`[array]`         |[verb](Verbs-and-Bindings)/array|Array of [verbs](Verbs-and-Bindings) to check. If keyword `all` is used, or this argument is not specified, then all verbs for the player are checked|
 |`[playerIndex]`   |integer                         |Player to target. If not specified, player 0 is used                                                                                                 |
 
 #### **Example**
