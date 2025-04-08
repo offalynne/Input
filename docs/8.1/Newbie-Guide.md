@@ -12,7 +12,7 @@ Hey there! Maybe you heard on the grapevine that the pug has some new tools for 
 
 ## Step 1: Setup
 
-To get this show on the road, first thing you're gonna want to do is to drag the [.yymps file](https://github.com/JujuAdams/Input/releases) you got into your project. A dialogue will pop up and you just gotta hit "add all" and then "OK". This will leave you with a new folder in your Asset Browser labeled "Input". That's good. You want that.
+To get this show on the road, first thing you're gonna want to do is to drag the [.yymps file](https://github.com/offalynne/Input/releases) you got into your project. A dialogue will pop up and you just gotta hit "add all" and then "OK". This will leave you with a new folder in your Asset Browser labeled "Input". That's good. You want that.
 
 !> Input creates an instance using an internal object when the game boots up. Make sure that you don't accidentally destroy or deactivate this instance!
 
