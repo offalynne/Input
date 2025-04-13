@@ -20,6 +20,9 @@
 
 **Returns:** A struct with two member variables, `__mini` and `__maxi`, containing the minimum and maximum thresholds
 
+This method sets axis thresholds for a player, [often referred to as a "deadzone"](https://www.gamedeveloper.com/business/doing-thumbstick-dead-zones-right). Thresholds apply to analogue gamepad values, for example thumbstick or trigger axis. When checking individual verbs this represents a per-axis (or "axial") deadzone, where 2D checkers apply thresholds as a "radial" deadzone.
+
+
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
 |`axis`         |real    |[Gamepad axis](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm) to target|
