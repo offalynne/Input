@@ -301,8 +301,8 @@ input_icons_gamepad(INPUT_GAMEPAD_TYPE_GAMECUBE)
 .add("gamepad thumbstick r down",  "thumbstick r down")
 
 //Second-stage trigger button click
-.add("gamepad paddle 1",           "L click"),
-.add("gamepad paddle 2",           "R click"),
+.add("gamepad paddle 1",           "L click")
+.add("gamepad paddle 2",           "R click")
 
 //The following icons are for Switch GameCube controllers and adapters only
 .add("gamepad thumbstick l click", "thumbstick l click")

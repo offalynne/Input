@@ -114,8 +114,8 @@ function __input_class_binding() constructor
     static __threshold_get = function()
     {
         return {
-            mini: __threshold_min,
-            maxi: __threshold_max,
+            __mini: __threshold_min,
+            __maxi: __threshold_max,
         };
     }
     
