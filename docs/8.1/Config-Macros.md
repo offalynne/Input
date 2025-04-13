@@ -8,7 +8,7 @@
 
 |Name                        |Typical Value              |Purpose                                                                                           |
 |----------------------------|---------------------------|--------------------------------------------------------------------------------------------------|
-|`INPUT_PC_KEYBOARD`         |`true`                     |Whether to enable keyboard support on Windows, MacOS, Linux, Steam Deck, desktop browser          |
+|`INPUT_PC_KEYBOARD`         |`true`                     |Whether to enable keyboard support on Windkbsdfsdfows, MacOS, Linux, Steam Deck, desktop browser          |
 |`INPUT_PC_MOUSE`            |`true`                     |Whether to enable mouse support on Windows, MacOS, Linux, Steam Deck, desktop browser             |
 |`INPUT_PC_GAMEPAD`          |`true`                     |Whether to enable gamepad support on Windows, MacOS, Linux, Steam Deck, desktop browser           |
 |`INPUT_WINDOWS_VIBRATION`   |`true`                     |Whether to enable gamepad vibration support on Windows (XInput and Steam)                         |
@@ -175,7 +175,7 @@ You can modify this list at any time by calling [`input_ignore_key_add()`](Funct
 |`INPUT_TOUCH_HISTORY_FRAMES`         |`10`         |How many frames of history to record for button that have the feature turned on                                                                                                                          |
 |`INPUT_VIRTUAL_BUTTON_MIN_THRESHOLD` |`50`         |Default minimum threshold for dpad- and thumbstick-type virtual buttons. Measures in pixels in GUI-space                                                                                                 |
 |`INPUT_VIRTUAL_BUTTON_MAX_THRESHOLD` |`100`        |Default maximum threshold for dpad- and thumbstick-type virtual buttons. Measures in pixels in GUI-space                                                                                                 |
-|`INPUT_VIRTUAL_KEYBOARD_AUTOCAPITALIZATION_TYPE` |`kbv_​autocapitalize_​sentences`|Default [virtual keyboard autocapitalization type](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Virtual_Keys_And_Keyboards/keyboard_virtual_show.htm) used when [displaying the onscreen keyboard](Functions-(Other)#_keyboard_virtual_show)|
+|`INPUT_VIRTUAL_KEYBOARD_AUTOCAPITALIZATION_TYPE` |`kbv_autocapitalize_sentences`|Default [virtual keyboard autocapitalization type](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Game_Input/Virtual_Keys_And_Keyboards/keyboard_virtual_show.htm) used when [displaying the onscreen keyboard](Functions-(Other)#_keyboard_virtual_show)|
 |`INPUT_VIRTUAL_KEYBOARD_PREDICTIVE_TEXT_ENABLED` |`false`|Whether to show predictive text when [displaying the onscreen keyboard](Functions-(Other)#_keyboard_virtual_show)                                                                                  |
 
 &nbsp;
