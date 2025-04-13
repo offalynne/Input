@@ -18,7 +18,7 @@
 
 You can read more about source modes [here](Input-Sources?id=source-modes).
 
-#### **Example**`
+#### **Example**
 
 ```gml
 //Configures Input to share keyboard controls between two players
