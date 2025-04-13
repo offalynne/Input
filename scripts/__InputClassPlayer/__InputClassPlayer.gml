@@ -554,8 +554,8 @@ function __InputClassPlayer(_playerIndex) constructor
                     if (_delta == 0) _delta = 0.001;
                     
                     var _coeff = clamp((_d - _min) / _delta, 0.0, 1.0);
-                    _dx *= _coeff;
-                    _dy *= _coeff;
+                    _dx = (_dx/_d)*_coeff;
+                    _dy = (_dy/_d)*_coeff;
                 }
                 
                 var _bias = _clusterDefinition.__axisBiasFactor;
