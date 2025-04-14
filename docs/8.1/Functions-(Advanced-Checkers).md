@@ -586,13 +586,13 @@ switch(input_check_press_most_recent(["light", "medium", "heavy"])
 
 ## …check_press_last
 
-`input_check_press_last([array], [playerIndex])`
+`input_check_press_[array], [playerIndex])`
 
 <!-- tabs:start -->
 
 #### **Description**
 
-**Returns:** String, last [verb](Verbs-and-Bindings) pressed in the specified array, or `undefined` if none of the specified verbs has been pressed
+**Returns:** String, last [verb](Verbs-and-Bindings) pressed in the specified array, or `undefined` if none of the specified verbs have been pressed
 
 |Name              |Datatype                        |Purpose                                                                                                                                              |
 |------------------|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -605,7 +605,7 @@ switch(input_check_press_most_recent(["light", "medium", "heavy"])
 
 ```gml
 //Choose the colour of the damage text based on what spell we cast last
-switch(input_check_press_last(["fire", "water", "air", "earth", "heart"])
+switch(input_check_press_["fire", "water", "air", "earth", "heart"])
 {
     case "fire":  draw_set_colour(c_red);     break;
     case "water": draw_set_colour(c_blue);    break;
