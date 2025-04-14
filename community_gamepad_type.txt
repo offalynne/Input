@@ -142,6 +142,7 @@ f000,0008,CommunitySaturn // RetroUSB Genesis
 0ca3,0025,CommunitySaturn // Genesis Mini 6B
 1292,4745,CommunitySaturn // Retro Bit Genesis Adapter
 04d8,e686,CommunitySaturn // GEEKY Fab Sega Multi Controller
+2563,0578,CommunitySaturn // Retro Fighters D6 Dreamcast
 1292,464b,CommunitySNES // NES Controller Adapter
 21f8,0019,CommunitySNES // Shogun Bros Chameleon X1
 f000,0003,CommunitySNES // RetroUSB SNES
