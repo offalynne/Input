@@ -599,8 +599,6 @@ switch(input_check_press_most_recent(["light", "medium", "heavy"])
 |`[array]`         |[verb](Verbs-and-Bindings)/array|Array of [verbs](Verbs-and-Bindings) to check. If keyword `all` is used, or this argument is not specified, then all verbs for the player are checked|
 |`[playerIndex]`   |integer                         |Player to target. If not specified, player 0 is used                                                                                                 |
 
-!> This check uses verb history directly, ignoring changes in application and overlay status, verb group state, as well as ignoring consumed verb state and accessibility changes. As such it should not be used with these features without performing additional checks.
-
 #### **Example**
 
 ```gml
