@@ -570,8 +570,42 @@ if (input_held_released("bow attack"))
 #### **Example**
 
 ```gml
+//Set the level of the damage depending on current attack verb
+switch(input_check_press_most_recent(["light", "medium", "heavy"])
+{
+    case "light":  damage =  15; break;
+    case "medium": damage =  50; break;
+    case "heavy":  damage = 300; break;
+    default:       damage =   0; break;
+}
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …check_press_last
+
+`input_check_press_last([array], [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** String, last [verb](Verbs-and-Bindings) pressed in the specified array, or `undefined` if none of the specified verbs has been pressed
+
+|Name              |Datatype                        |Purpose                                                                                                                                              |
+|------------------|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+|`[array]`         |[verb](Verbs-and-Bindings)/array|Array of [verbs](Verbs-and-Bindings) to check. If keyword `all` is used, or this argument is not specified, then all verbs for the player are checked|
+|`[playerIndex]`   |integer                         |Player to target. If not specified, player 0 is used                                                                                                 |
+
+!> This check uses verb history directly, ignoring changes in application and overlay status, verb group state, as well as ignoring consumed verb state and accessibility changes. As such it should not be used with these features without performing additional checks.
+
+#### **Example**
+
+```gml
 //Choose the colour of the damage text based on what spell we cast last
-switch(input_check_press_most_recent(["fire", "water", "air", "earth", "heart"])
+switch(input_check_press_last(["fire", "water", "air", "earth", "heart"])
 {
     case "fire":  draw_set_colour(c_red);     break;
     case "water": draw_set_colour(c_blue);    break;
