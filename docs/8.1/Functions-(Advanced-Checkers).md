@@ -586,7 +586,7 @@ switch(input_check_press_most_recent(["light", "medium", "heavy"])
 
 ## …check_press_last
 
-`input_check_press_[array], [playerIndex])`
+`input_check_press_last([array], [playerIndex])`
 
 <!-- tabs:start -->
 
