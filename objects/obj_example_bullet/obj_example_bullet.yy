@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "obj_example_bullet",
   "spriteId": {
     "name": "spr_red_dot",
     "path": "sprites/spr_red_dot/spr_red_dot.yy",
@@ -22,10 +25,10 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"obj_example_solid","path":"objects/obj_example_solid/obj_example_solid.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":7,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"obj_example_mp_player","path":"objects/obj_example_mp_player/obj_example_mp_player.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"obj_example_solid","path":"objects/obj_example_solid/obj_example_solid.yy",},},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":7,"collisionObjectId":null,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"obj_example_mp_player","path":"objects/obj_example_mp_player/obj_example_mp_player.yy",},},
   ],
   "properties": [],
   "overriddenProperties": [],
@@ -33,8 +36,4 @@
     "name": "Examples",
     "path": "folders/Examples.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "obj_example_bullet",
-  "tags": [],
-  "resourceType": "GMObject",
 }
