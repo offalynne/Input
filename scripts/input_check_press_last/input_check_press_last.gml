@@ -3,6 +3,7 @@
 ///          If no verb array is provided, all defined verbs will be check instead
 /// @param   [verbArray=all]
 /// @param   [playerIndex=0]
+/// @param   [ignoreInactive=true]
 
 function input_check_press_last(_verb_array = all, _player_index = 0)
 {
@@ -19,11 +20,14 @@ function input_check_press_last(_verb_array = all, _player_index = 0)
     {
         var _verb = _verb_array[_i];
         var _verb_struct = _verbs_struct[$ _verb];
-        
-        if (_verb_struct.__press_time > _max_time)
+
+        if (is_struct(_verb_struct))
         {
-            _max_time = _verb_struct.__press_time;
-            _max_verb = _verb;
+            if (_verb_struct.__press_time > _max_time)
+            {
+                _max_time = _verb_struct.__press_time;
+                _max_verb = _verb;
+            }
         }
         
         ++_i;
