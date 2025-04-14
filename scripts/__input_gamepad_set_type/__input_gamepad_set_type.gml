@@ -286,10 +286,11 @@ function __input_gamepad_set_type()
                             __raw_type = "CommunityNeoGeoMini";
                             __guessed_type = false;
                         }
-                        else if ((__button_count == 13) && (__hat_count == 1))
+                        else 
                         {
+                            var _button_hat_match = (__button_count == 13) && (__hat_count == 1);                        
                             var _desc = gamepad_get_description(__index);
-                            if ((_desc == "USB ") || (_desc == "SWITCH CO.,LTD. Retro-bit Controller"))
+                            if (((_desc == "USB ") || (_desc == "SWITCH CO.,LTD. Retro-bit Controller")) && _button_hat_match)
                             {
                                 //retro-bit's Saturn Wireless Pro
                                 if (!__INPUT_SILENT) __input_trace("Overriding controller ", __index ," type to Switch");
@@ -297,12 +298,20 @@ function __input_gamepad_set_type()
                                 __raw_type = "CommunityLikeSwitch";
                                 __guessed_type = false;
                             }
-                            else if (__input_string_contains(_desc, "Controller (Dinput)"))
+                            else if (__input_string_contains(_desc, "Controller (Dinput)") && _button_hat_match)
                             {
                                 //Several third party N64 controllers including retro-bit's Tribute 64
                                 if (!__INPUT_SILENT) __input_trace("Overriding controller ", __index ," type to N64");
                                 __description = "N64";
                                 __raw_type = "CommunityN64";
+                                __guessed_type = false;
+                            }
+                            else if (__input_string_contains(_desc, "Retro Fighters GamePad"))
+                            {
+                                //Retro Fighters Battler GC Pro
+                                if (!__INPUT_SILENT) __input_trace("Overriding controller ", __index ," type to GameCube");
+                                __description = "Retro Fighters Battler";
+                                __raw_type = "CommunityGameCube";
                                 __guessed_type = false;
                             }
                         }

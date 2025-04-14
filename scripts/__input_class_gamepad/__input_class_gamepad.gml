@@ -80,7 +80,7 @@ function __input_class_gamepad(_index) constructor
         __axis_calibrated     = !__INPUT_ON_ANDROID;
 
         if (__global.__gamepad_motion_support) __motion = new __input_class_gamepad_motion(__index);
-        if (!__INPUT_SILENT)__input_trace("Gamepad ", __index, " discovered, type = \"", __simple_type, "\" (", __raw_type, ", guessed=", __guessed_type, "), description = \"", __description, "\" (vendor=", __vendor, ", product=", __product, ")");
+        if (!__INPUT_SILENT) __input_trace("Gamepad ", __index, " discovered, type = \"", __simple_type, "\" (", __raw_type, ", guessed=", __guessed_type, "), description = \"", __description, "\" (vendor=", __vendor, ", product=", __product, ")");
     }
 
     static __get_any_pressed = function()

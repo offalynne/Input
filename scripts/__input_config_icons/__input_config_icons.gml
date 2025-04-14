@@ -61,7 +61,7 @@ input_icons_gamepad(INPUT_GAMEPAD_TYPE_XBOX_ONE)
 .add("gamepad thumbstick r down",  "thumbstick r down")
 .add("gamepad thumbstick r click", "thumbstick r click")
 
-//Series S|X only
+//Not available on the Xbox Series S|X console itself but available on other platforms
 .add("gamepad misc 1",             "share")
 
 //Elite and third party controllers
@@ -140,6 +140,11 @@ input_icons_gamepad(INPUT_GAMEPAD_TYPE_SWITCH)
 //Not available on the Switch console itself but available on other platforms
 .add("gamepad guide",              "home")
 .add("gamepad misc 1",             "capture")
+
+//Switch 2 Pro
+.add("gamepad paddle 1",           "GL")
+.add("gamepad paddle 2",           "GR")
+
 
 //Left-hand Switch JoyCon
 //This setup assums horizontal hold type
@@ -294,6 +299,10 @@ input_icons_gamepad(INPUT_GAMEPAD_TYPE_GAMECUBE)
 .add("gamepad thumbstick r right", "thumbstick r right")
 .add("gamepad thumbstick r up",    "thumbstick r up")
 .add("gamepad thumbstick r down",  "thumbstick r down")
+
+//Second-stage trigger button click
+.add("gamepad paddle 1",           "L click")
+.add("gamepad paddle 2",           "R click")
 
 //The following icons are for Switch GameCube controllers and adapters only
 .add("gamepad thumbstick l click", "thumbstick l click")

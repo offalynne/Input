@@ -306,16 +306,6 @@ function __input_validate_macros()
     
     #region Keyboard
     
-    if (!is_bool(INPUT_ANDROID_KEYBOARD_ALLOWED))
-    {
-        __input_error("INPUT_ANDROID_KEYBOARD_ALLOWED must be either <true> or <false>");
-    }
-    
-    if (!is_bool(INPUT_SWITCH_KEYBOARD_ALLOWED))
-    {
-        __input_error("INPUT_SWITCH_KEYBOARD_ALLOWED must be either <true> or <false>");
-    }
-    
     if (!is_bool(INPUT_MERGE_CONTROL_KEYS))
     {
         __input_error("INPUT_MERGE_CONTROL_KEYS must be either <true> or <false>");

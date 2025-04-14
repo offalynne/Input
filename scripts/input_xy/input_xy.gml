@@ -125,8 +125,8 @@ function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0, _most_r
     
     //Apply the min/max thresholds for fully analogue input
     var _coeff = clamp((_d - _min_threshold) / (_max_threshold - _min_threshold), 0.0, 1.0);
-    _dx *= _coeff;
-    _dy *= _coeff;
+    _dx = (_dx/_d)*_coeff;
+    _dy = (_dy/_d)*_coeff;
     
     if (INPUT_2D_XY_AXIS_BIAS > 0)
     {
@@ -141,20 +141,6 @@ function input_xy(_verb_l, _verb_r, _verb_u, _verb_d, _player_index = 0, _most_r
         var _distance = point_distance(0, 0, _dx, _dy);
         _dx = lengthdir_x(_distance, _direction);
         _dy = lengthdir_y(_distance, _direction);
-        
-        /*
-        //Implementation from https://github.com/Minimuino/thumbstick-deadzones/blob/master/README.md
-        //It is not consistent in magnitude around the circle making it unsuitable for our use case
-        
-        var _abs_dx = abs(_dx);
-        var _abs_dy = abs(_dy);
-        
-        var _dead_x = _min_threshold*abs(_abs_dy); //Base our deadzone on where the opposite axis is
-        var _dead_y = _min_threshold*abs(_abs_dx);
-        
-        _dx = sign(_dx) * max(0, (_abs_dx - _dead_x) / (1 -  _dead_x));
-        _dy = sign(_dy) * max(0, (_abs_dy - _dead_y) / (1 -  _dead_y));
-        */
     }
     
     //Spit out the answer!
