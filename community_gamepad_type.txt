@@ -75,6 +75,7 @@
 3537,1046,CommunityLikeXBox // Anbernic RG P01 Bluetooth
 3537,1007,CommunityLikeXBox // Anbernic RG P01 2.4G USB
 0502,1309,CommunityLikeXBox // Anbernic RG P01 USB
+1d5a,1802,CommunityLikeXBox // Nokia GC 5000
 056e,2007,CommunityLikeSwitch // Elecom Wii Adapter
 056e,2008,CommunityLikeSwitch // Elecom Wii Adapter
 1740,0579,CommunityLikeSwitch // Raphnet Wii Adapter
