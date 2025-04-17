@@ -24,46 +24,65 @@ Input 10 achieves these two goals without compromising on its overall featureset
 
 ## Improved Features
 
-- 1000% faster. Three zeroes.
+- 1000% faster. Three zeroes
 - Feather support
 - Configuration macros are **way** simpler
+- Faster to get set up
 - Many advanced features have been moved to plug-ins to reduce clutter
 - Simpler device management. Players have one device each
 - Binding profiles have been stripped back. Players now have two hardcoded "profiles" - one for keyboard and mouse, one for gamepads
 - Adds lots of functions to handle verb state import and export. This is helpful for replaying player input or lockstep multiplayer
+- 2D checker setup is easier via "clusters"
+- Plug-in system to allow swapping extra features in and out
+
+&nbsp;
+
+## Plug-ins
+
+This plug-in system is a new concept for Input. Many of the niche features that saw lower usage have been rewritten as separate components that can be added and removed easily. The core library is thus much cleaner and leaner. Plug-ins that have been implemented are:
+
+- Binding icons
+- Multiplayer helper
+- Gyro & motion
+- Vibration
+- Trigger effects
+- Gamepad colour
 
 &nbsp;
 
 ## Breaking Changes
 
 - This is a full rewrite!
-- Entire API has changed naming convention from snake_case to PascalCase
+- Entire API has changed naming convention from snake_case to PascalCase for consistency with other popular libraries
 - We're using GameMaker's improved SDL implementation more so the library is a lot easier to maintain
 - "Sources" in Input 8 have been renamed to "Devices" to better reflect their use
 - Verbs are now members of an enum and are integers rather than strings
 - 2D checkers are handled with pre-defined "clusters" for simplicity
 - Config macros have been overhauled
 - Mouse is always linked to the keyboard
-- Many extended features have been moved to plug-ins and aren't part of the core library:
-  - Binding icons
-  - Multiplayer helper
-  - Gyro & Motion
-  - Vibration
-  - Trigger effects
-  - Gamepad colour
 
 &nbsp;
 
 ## Removed Features
 
+Not all features from Input 8 have been implemented in Input 10. These are features that saw very little usage, are easy to implement for the end user, or are very complex and need more development time. Features from Input 8 that have not been implemented yet but may return as plug-ins are:
+
+- Some less common advanced checkers
+- Chords
+- Combos
+- Replay
+- General purpose device-agnostic cursor
+- Accessibility features
+- Separate mouse-only device (mouse is always linked to keyboard)
+- `MIXED` and `MULTI` device types
+- Multiple gamepad profiles per player
+
+Features that have not made it to Input 10 for one reason or another are:
+
 - Keyboard support on anything other than desktop
 - Direct checkers for keyboard (though you can still scan for new bindings)
-- Combo system has been removed as per Input 8
 - Gamepad support on Android and iOS
 - Now only one direct checker for gamepad to avoid confusion `InputDeviceGetGamepadValue(device, button/axis)`
 - Native debug overlay gamepad tester
-- General purpose device-agnostic cursor
-- Accessibility API has been removed
 - Mouse capture API removed as it is now a native GameMaker feature
-- `.MIXED` and `.MULTI` sources have been removed
-- Players can no longer share the save device
+- Players can no longer share the same device
