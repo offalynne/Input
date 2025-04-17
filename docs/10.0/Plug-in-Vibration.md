@@ -2,7 +2,7 @@
 
 &nbsp;
 
-Vibration is available for the gamepads on console platforms. On Windows, Xbox gamepads are supported, as well as other gamepad types [via Steamworks extension](Steamworks.md).
+Vibration is available for gamepads on console platforms. Vibration is further available on Windows for Xbox gamepads. If you are using the [Steamworks extension](Steamworks.md) on Windows then other gamepad types may support vibration. Vibration is not guaranteed to be available on other platforms.
 
 &nbsp;
 

@@ -17,7 +17,7 @@
 |`verbIndex`    |integer |Verb to consume                                     |
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
 
-"Consumes" a verb, causing it to be immediately deactivated and return a value of zero until the verb is retriggered (e.g. by released a keyboard key and pressed it again). This helpful when navigating menus to prevent multiple inputs.
+"Consumes" a verb, causing it to be immediately deactivated and return a value of zero until the verb is retriggered (e.g. by released a keyboard key and pressed it again). This helpful when navigating menus to prevent multiple inputs. This function will clear the verb state similarly to how you might expect to use native functions [`keyboard_clear()`](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Game_Input/Keyboard_Input/keyboard_clear.htm) and [`mouse_clear()`](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Game_Input/Mouse_Input/mouse_clear.htm).
 
 <!-- tabs:end -->
 
