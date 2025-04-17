@@ -291,6 +291,8 @@ Returns the type of gamepad that a device represents. If the device is not conne
 
 Returns the current value being emitted from a binding for a gamepad. If the device isn't connected or isn't a gamepad then this function returns 0. This function will return 0 on platforms where the library does not support gamepads.
 
+!> Note that Input does not use GameMaker's [gamepad axis deadzones](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/gamepad_set_axis_deadzone.htm). As such this function will return a raw analogue value if `GMConstant` represents an axis for the indicated `gamepadIndex`.
+
 <!-- tabs:end -->
 
 &nbsp;

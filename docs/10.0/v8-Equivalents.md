@@ -48,6 +48,7 @@ Input 10 is a big change. To help ease the transition from Input 8, this page co
 |`input_held_time`              |Similar to `InputDuration`|
 |`input_held_time_released`     |Similar to `InputDuration`|
 |`input_check_press_most_recent`|_removed_                 |
+|`input_check_press_last`       |_removed_                 |
 |`input_max_value`              |_removed_                 |
 
 &nbsp;
