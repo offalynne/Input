@@ -128,7 +128,7 @@ if (input_gamepad_check_released(0, gp_face4))
 |`gamepadIndex`|integer |Index of the gamepad to target, using GameMaker's native [gamepad indexes](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm)|
 |`GMconstant`  |integer |Button or axis to check, using GameMaker's native [virtual button/axis constants](https://manual.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FGame_Input%2FGamePad_Input%2FGamepad_Input.htm). What physical input this actually checks is determined by Input's own SDL remapping system|
 
-!> Note that Input does not use GM's [gamepad axis deadzones](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/gamepad_set_axis_deadzone.htm), instead using [axis thresholds](Functions-(Accessibility)?id=axis_threshold_set) configurable per-player. As such this function will return a raw analogue value if `GMConstant` represents an axis for the indicated `gamepadIndex`
+!> Note that Input does not use GM's [gamepad axis deadzones](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/gamepad_set_axis_deadzone.htm), instead using [axis thresholds](Functions-(Accessibility)?id=axis_threshold_set) configurable per-player. As such this function will return a raw analogue value if `GMConstant` represents an axis for the indicated `gamepadIndex`.
 
 #### **Example**
 

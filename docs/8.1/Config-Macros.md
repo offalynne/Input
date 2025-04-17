@@ -8,7 +8,7 @@
 
 |Name                        |Typical Value              |Purpose                                                                                           |
 |----------------------------|---------------------------|--------------------------------------------------------------------------------------------------|
-|`INPUT_PC_KEYBOARD`         |`true`                     |Whether to enable keyboard support on Windkbsdfsdfows, MacOS, Linux, Steam Deck, desktop browser          |
+|`INPUT_PC_KEYBOARD`         |`true`                     |Whether to enable keyboard support on Windows, MacOS, Linux, Steam Deck, desktop browser          |
 |`INPUT_PC_MOUSE`            |`true`                     |Whether to enable mouse support on Windows, MacOS, Linux, Steam Deck, desktop browser             |
 |`INPUT_PC_GAMEPAD`          |`true`                     |Whether to enable gamepad support on Windows, MacOS, Linux, Steam Deck, desktop browser           |
 |`INPUT_WINDOWS_VIBRATION`   |`true`                     |Whether to enable gamepad vibration support on Windows (XInput and Steam)                         |

@@ -603,7 +603,7 @@ switch(input_check_press_most_recent(["light", "medium", "heavy"])
 
 ```gml
 //Choose the colour of the damage text based on what spell we cast last
-switch(input_check_press_["fire", "water", "air", "earth", "heart"])
+switch(input_check_press_last["fire", "water", "air", "earth", "heart"])
 {
     case "fire":  draw_set_colour(c_red);     break;
     case "water": draw_set_colour(c_blue);    break;

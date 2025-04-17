@@ -2,7 +2,7 @@
 
 &nbsp;
 
-The functions on this page allow you to check verbs by treating them as 2D vectors. This is helpful for situations where the player is controlling something in two dimensions, such as top-down movement or aiming. See [verb behaviour config macros](Config-Macros?id=verb-behavior) for additional details
+The functions on this page allow you to check verbs by treating them as 2D vectors. This is helpful for situations where the player is controlling something in two dimensions, such as top-down movement or aiming. See [verb behaviour config macros](Config-Macros?id=verb-behavior) for additional details.
 
 &nbsp;
 
