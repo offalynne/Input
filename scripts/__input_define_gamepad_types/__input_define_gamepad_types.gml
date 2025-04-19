@@ -50,6 +50,7 @@ function __input_define_gamepad_types()
         CommunityLikeSwitch       = INPUT_GAMEPAD_TYPE_SWITCH;
         Community8BitDo           = INPUT_GAMEPAD_TYPE_SWITCH;
         HIDWiiClassic             = INPUT_GAMEPAD_TYPE_SWITCH;
+        HIDSuperFamicomNSO        = INPUT_GAMEPAD_TYPE_SWITCH;
         CommunitySNES             = INPUT_GAMEPAD_TYPE_SWITCH;
         CommunitySuperFamicom     = INPUT_GAMEPAD_TYPE_SWITCH;
         
@@ -119,6 +120,7 @@ function __input_define_gamepad_types()
         
         //#macro INPUT_GAMEPAD_TYPE_SUPER_FAMICOM "super famicom"
         //CommunitySuperFamicom = INPUT_GAMEPAD_TYPE_SUPER_FAMICOM;
+        //HIDSuperFamicomNSO    = INPUT_GAMEPAD_TYPE_SUPER_FAMICOM;
         
         //#macro INPUT_GAMEPAD_TYPE_NEOGEO "neogeo"
         //CommunityNeoGeo = INPUT_GAMEPAD_TYPE_NEOGEO;

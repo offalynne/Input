@@ -476,7 +476,7 @@ function __input_gamepad_set_type()
                             
                         break;
                         
-                        case os_linux: 
+                        case os_linux:
                             
                             #region Atari VCS Classic Joystick
                                 
@@ -490,6 +490,15 @@ function __input_gamepad_set_type()
                             #endregion
                             
                             #region hid-nintendo
+                            
+                            if ((string_copy(__guid, 1, 4) != "0300") && (string_copy(__guid, 1, 4) != "0500") && (__axis_count == 0) && (__button_count  == 10) && (__hat_count == 1))
+                            {
+                                if (!__INPUT_SILENT) __input_trace("Overriding controller ", __index ," type to \"HIDNintendoSFCNSO\"");
+                                __description = "SNES Controller";
+                                __raw_type = "HIDSuperFamicomNSO";
+                                __guessed_type = false;
+                                break;
+                            }                            
                                 
                             if ((__button_count == 11) && (__axis_count == 2) && (__hat_count == 0))
                             {

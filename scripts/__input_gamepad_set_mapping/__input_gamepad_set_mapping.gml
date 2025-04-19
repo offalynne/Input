@@ -641,6 +641,27 @@ function __input_gamepad_set_mapping()
         #endregion
 
         #region Nintendo Switch Online Controllers on Linux
+        
+        case "HIDSuperFamicomNSO":
+            if (!__INPUT_SILENT) __input_trace("Overriding mapping to hid-nintendo SNES NSO");
+        
+            __set_mapping(gp_face1, 0, __INPUT_MAPPING.BUTTON, "a");      
+            __set_mapping(gp_face2, 1, __INPUT_MAPPING.BUTTON, "b");
+            __set_mapping(gp_face4, 2, __INPUT_MAPPING.BUTTON, "y");
+            __set_mapping(gp_face3, 3, __INPUT_MAPPING.BUTTON, "x");
+            
+            __set_mapping(gp_shoulderl,  4, __INPUT_MAPPING.BUTTON, "leftshoulder");
+            __set_mapping(gp_shoulderr,  5, __INPUT_MAPPING.BUTTON, "rightshoulder");
+            __set_mapping(gp_shoulderlb, 6, __INPUT_MAPPING.BUTTON, "lefttrigger");
+            __set_mapping(gp_shoulderrb, 7, __INPUT_MAPPING.BUTTON, "righttrigger");
+            
+            __set_mapping(gp_select, 8, __INPUT_MAPPING.BUTTON, "back");
+            __set_mapping(gp_start,  9, __INPUT_MAPPING.BUTTON, "start");
+            
+            __set_dpad_hat_mapping();
+        
+            return;            
+        break;
 
         case "CommunitySaturn":
             if (!__guessed_type && __INPUT_ON_LINUX && (_vendor_and_product == "7e051720"))
@@ -1036,7 +1057,7 @@ function __input_gamepad_set_mapping()
         
                 //__set_mapping(???,    0, __INPUT_MAPPING.BUTTON,  ???);    //L pad press, no SDL key for this
                 //__set_mapping(???,    1, __INPUT_MAPPING.BUTTON,  ???);    //R pad press, no SDL key for this
-                __set_mapping(gp_misc1, 2, __INPUT_MAPPING.BUTTON, "misc1"); //… button
+                __set_mapping(gp_misc1, 2, __INPUT_MAPPING.BUTTON, "misc1"); //... button
 
                 __set_mapping(gp_face1, 3, __INPUT_MAPPING.BUTTON, "a");
                 __set_mapping(gp_face2, 4, __INPUT_MAPPING.BUTTON, "b");
