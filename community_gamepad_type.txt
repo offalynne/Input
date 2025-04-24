@@ -616,6 +616,14 @@ dead,beef,CommunityPSX // Hidromancer
 346e,0004,SDLWheel // Moza R5 Wheelbase
 346e,0005,SDLWheel // Moza R3 Wheelbase
 346e,0006,SDLWheel // Moza R12 Wheelbase
+0583,a132,SDLWheel // Padix Wheelpad
+0583,a133,SDLWheel // Padix Wheel
+0583,a202,SDLWheel // Padix Force Feedback Wheel
+0583,b002,SDLWheel // Padix Wheel
+0583,b005,SDLWheel // Padix Wheel
+0583,b008,SDLWheel // Padix Wireless Wheel
+0583,b009,SDLWheel // Padix Wheel
+0583,b018,SDLWheel // Padix TW6 Wheel
 044f,0402,SDLFlightstick // HOTAS Warthog Joystick
 0738,2221,SDLFlightstick // Saitek Pro Flight X56 Rhino Stick
 044f,b10a,SDLFlightstick // ThrustMaster Inc T16000M Joystick
@@ -623,5 +631,15 @@ dead,beef,CommunityPSX // Hidromancer
 231d,0126,SDLFlightstick // Gunfighter MkIII Space Combat Edition right
 231d,0127,SDLFlightstick // Gunfighter MkIII Space Combat Edition left
 362c,0001,SDLFlightstick // Yawman Arrow
+0583,6258,SDLFlightstick // Padix joystick
+0583,688f,SDLFlightstick // Padix Windstorm Pro
+0583,7070,SDLFlightstick // Padix Bazooka
+0583,a019,SDLFlightstick // Padix joystick
+0583,a131,SDLFlightstick // Padix Wireless
+0583,a209,SDLFlightstick // Padix MetalStrike ForceFeedback
+0583,b010,SDLFlightstick // Padix MetalStrike Pro
+0583,b012,SDLFlightstick // Padix Wireless MetalStrike
+0583,b013,SDLFlightstick // Padix Wireless
 044f,0404,SDLThrottle // HOTAS Warthog Throttle
 0738,a221,SDLThrottle // Saitek Pro Flight X56 Rhino Throttle
+10f5,7085,SDLThrottle // Turtle Beach VelocityOne Throttle
