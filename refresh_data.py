@@ -49,7 +49,7 @@ GAMEPAD_TYPE_MAPPING = {
 }
 
 # handle folders
-working_folder = "scripts\__InputCreateTypeLookup"
+working_folder = "scripts/__InputCreateTypeLookup"
 
 # consume data
 for file in DATA_SOURCES:
