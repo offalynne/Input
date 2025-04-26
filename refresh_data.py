@@ -36,7 +36,7 @@ DATA_SOURCES = {
     }
 }
 
-# Gamepad type mapping
+# gamepad type mapping
 GAMEPAD_TYPE_MAPPING = {
     "INPUT_GAMEPAD_TYPE_PS4": ["PS4Controller", "XInputPS4Controller", "CommunityPS4", "PS3Controller", "CommunityPSX"],
     "INPUT_GAMEPAD_TYPE_PS5": ["PS5Controller", "CommunityPS5"],
@@ -44,12 +44,26 @@ GAMEPAD_TYPE_MAPPING = {
     "INPUT_GAMEPAD_TYPE_JOYCON_RIGHT": ["SwitchJoyConRight", "HIDJoyConRight"],
     "INPUT_GAMEPAD_TYPE_SWITCH": [ "SwitchHandheld", "SwitchJoyConPair", "SwitchProController", "XInputSwitchController", "SwitchInputOnlyController", "CommunityLikeSwitch", "Community8BitDo", "HIDWiiClassic", "CommunitySNES", "CommunitySuperFamicom"],
 
-    # # omit Xbox, we assume this type by default
+    # # omit xbox, we assume this type by default
     # "INPUT_GAMEPAD_TYPE_XBOX": ["XBoxOneController", "CommunityXBoxOne", "SteamControllerNeptune", "CommunitySteamDeck", "CommunityLuna", "CommunityStadia", "AppleController", "XBox360Controller", "CommunityXBox360", "CommunityDreamcast", "SteamController", "MobileTouch", "CommunityLikeXBox"]
 }
 
-# handle folders
-working_folder = "scripts/__InputCreateTypeLookup"
+# fetch gamecontrollerdb.txt
+script_dir = os.path.dirname(os.path.realpath(__file__))
+datafiles_dir = os.path.join(script_dir, "datafiles")
+os.makedirs(datafiles_dir, exist_ok=True)
+
+gamecontrollerdb_path = os.path.join(datafiles_dir, "gamecontrollerdb.txt")
+gamecontrollerdb_url = "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/refs/heads/master/gamecontrollerdb.txt"
+
+try:
+    print("Refreshing gamecontrollerdb.txt…")
+    with urllib.request.urlopen(gamecontrollerdb_url) as response, open(gamecontrollerdb_path, 'wb') as out_file:
+        shutil.copyfileobj(response, out_file)
+    print("\tSaved to " + gamecontrollerdb_path)
+except Exception as e:
+    print(e)
+    exit('Failed to fetch gamecontrollerdb.txt')
 
 # consume data
 for file in DATA_SOURCES:
@@ -58,7 +72,7 @@ for file in DATA_SOURCES:
     filename = data_index.get("destination")
     sources = list(data_index.get("sources"))
 
-    working_path = working_folder + "/" + filename
+    working_path = os.path.join(script_dir, "scripts/__InputCreateTypeLookup", filename)
     if os.path.exists(working_path):
         os.remove(working_path)
     working_handle = open(working_path, "w")
