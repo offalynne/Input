@@ -1,2 +1,3 @@
 build
-options
+extensions/Steamworks
+options/extensions/Steamworks.json

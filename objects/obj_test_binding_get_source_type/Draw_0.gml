@@ -1,1 +1,0 @@
-draw_text_ext(10, 10, last_message, -1, room_width-20);

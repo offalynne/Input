@@ -1,1 +1,0 @@
-__input_restart();
