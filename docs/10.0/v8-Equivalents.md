@@ -6,13 +6,13 @@ Input 10 is a big change. To help ease the transition from Input 8, this page co
 
 ## Checking Verbs
 
-|Version 8             |Version 10          |
-|----------------------|--------------------|
-|`input_check`         |`InputCheck`        |
-|`input_check_pressed` |`InputCheckPressed` |
-|`input_check_released`|`InputCheckReleased`|
-|`input_value`         |`InputValue`        |
-|`input_is_analogue`   |_removed_           |
+|Version 8             |Version 10     |
+|----------------------|---------------|
+|`input_check`         |`InputCheck`   |
+|`input_check_pressed` |`InputPressed` |
+|`input_check_released`|`InputReleased`|
+|`input_value`         |`InputValue`   |
+|`input_is_analogue`   |_removed_      |
 
 &nbsp;
 
