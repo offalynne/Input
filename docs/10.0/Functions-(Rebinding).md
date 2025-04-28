@@ -125,7 +125,6 @@ Returns a struct that contains the bindings set for a player. This can be saved 
 
 !> Care should be taken not to change export names between savefile versions or the library will not be able to import old bindings from savefiles.
 
-```
 <!-- tabs:end -->
 
 &nbsp;
