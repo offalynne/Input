@@ -23,15 +23,8 @@
 Returns all verbs (and alternate slots) that use the specified binding. This function returns an array of structs. If the array is empty then no verbs that use the binding were found. The structs contain two values:
 
 - `.verbIndex`  The verb using the binding
-- `.alternate`  The alternate slot, for that verb, using th
+- `.alternate`  The alternate slot for that verb
 
-#### **Example**
-
-```gml
-{
-	
-}
-```
 <!-- tabs:end -->
 
 &nbsp;
@@ -57,13 +50,6 @@ Returns a binding for a player as set by `InputBindingSet()` or `InputDefineVerb
  
 !> For left and up bindings on thumbsticks, the returned value will be negative.
 
-#### **Example**
-
-```gml
-{
-	
-}
-```
 <!-- tabs:end -->
 
 &nbsp;
@@ -90,13 +76,6 @@ Sets a binding for a player, overwriting the binding that was already there. If 
 
 ?> If you would like to specify a thumbstick binding that heads left or up, use the negative value of that binding e.g. `-gp_axislv` is an upwards push on the left thumbstick.
 
-#### **Example**
-
-```gml
-{
-	
-}
-```
 <!-- tabs:end -->
 
 &nbsp;
@@ -123,13 +102,6 @@ Sets a binding for a player, overwriting the binding that was already there. If 
 
 This function, unlike `InputBindingSet()`, will try to automatically resolve conflicts. This function is effective for simple control schemes but may fail in more complex situations; in these cases, you’ll need to handle conflict resolution yourself.
 
-#### **Example**
-
-```gml
-{
-	
-}
-```
 <!-- tabs:end -->
 
 &nbsp;
@@ -153,12 +125,6 @@ Returns a struct that contains the bindings set for a player. This can be saved 
 
 !> Care should be taken not to change export names between savefile versions or the library will not be able to import old bindings from savefiles.
 
-#### **Example**
-
-```gml
-{
-	
-}
 ```
 <!-- tabs:end -->
 
@@ -184,13 +150,6 @@ Restores bindings from a struct created by `InputBindingsExport()`.
 
 !> Care should be taken not to change export names between savefile versions or the library will not be able to import old bindings from savefiles.
 
-#### **Example**
-
-```gml
-{
-	
-}
-```
 <!-- tabs:end -->
 
 &nbsp;
@@ -212,13 +171,6 @@ Restores bindings from a struct created by `InputBindingsExport()`.
 
 Resets all bindings to the defaults defined by `InputDefineVerb()`.
 
-#### **Example**
-
-```gml
-{
-	
-}
-```
 <!-- tabs:end -->
 
 &nbsp;
@@ -244,13 +196,6 @@ Resets all bindings to the defaults defined by `InputDefineVerb()`.
 
 Swaps over two bindings. Useful to resolve binding conflicts.
 
-#### **Example**
-
-```gml
-{
-	
-}
-```
 <!-- tabs:end -->
 
 &nbsp;
@@ -271,13 +216,6 @@ Swaps over two bindings. Useful to resolve binding conflicts.
 
 Returns whether the device is currently set to scan for new bindings.
 
-#### **Example**
-
-```gml
-{
-	
-}
-```
 <!-- tabs:end -->
 
 &nbsp;
@@ -300,13 +238,6 @@ Returns a discovered binding emitted from the device. This function will return 
 
 !> This function will return a negative value if a thumbstick push is left or up e.g. `-gp_axislv` is an upwards push on the left thumbstick.
 
-#### **Example**
-
-```gml
-{
-	
-}
-```
 <!-- tabs:end -->
 
 &nbsp;
@@ -332,13 +263,6 @@ Sets rebinding state for a device. The device will be scanned for all input. Dis
 
 !> Input from a device that is being scanned will continue as normal. To prevent input leaking to e.g. interface navigation you should be careful to check against `InputDeviceGetRebinding()` where appropriate.
 
-#### **Example**
-
-```gml
-{
-	
-}
-```
 <!-- tabs:end -->
 
 &nbsp;
@@ -359,11 +283,4 @@ Sets rebinding state for a device. The device will be scanned for all input. Dis
 
 Stops rebinding for all devices.
 
-#### **Example**
-
-```gml
-{
-	
-}
-```
 <!-- tabs:end -->
