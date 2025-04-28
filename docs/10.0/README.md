@@ -11,6 +11,8 @@ Input is a robust, feature-packed input library that unifies keyboard, mouse, an
 
 ?> Input is a really big library! To get up and running fast, check out our [Newbie Guide](Newbie-Guide).
 
+!> Looking for Input 8 for GameMaker LTS 2022? <a href="https://github.com/offalynne/Input/tree/dev_8.1">Code</a>, <a href="https://offalynne.github.io/Input/#/8.1/">Documentation</a>, <a href="https://github.com/offalynne/Input/releases/tag/8.1.3">Release (.yymps)</a>
+
 ---
 
 **What platforms does Input support?**
