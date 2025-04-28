@@ -205,20 +205,22 @@ Input 10 is a big change. To help ease the transition from Input 8, this page co
 
 ## Exporting and Importing
 
+?> The information that Input 10 needs to store between gameplay sessions a lot simpler than previous versions. Importing and exporting system-level and profile-level data is now the same thing as player bindings.
+
 |Version 8             |Version 10           |
 |----------------------|---------------------|
-|`input_system_reset`  |_removed_            |
-|`input_system_export` |_removed_            |
+|`input_system_reset`  |`InputBindingsReset` |
+|`input_system_export` |`InputBindingsExport`|
 |`input_system_verify` |_removed_            |
-|`input_system_import` |_removed_            |
+|`input_system_import` |`InputBindingsImport`|
 |`input_player_reset`  |`InputBindingsReset` |
 |`input_player_export` |`InputBindingsExport`|
 |`input_player_verify` |_removed_            |
 |`input_player_import` |`InputBindingsImport`|
 |`input_player_copy`   |_removed_            |
-|`input_profile_export`|_removed_            |
+|`input_profile_export`|`InputBindingsExport`|
 |`input_profile_verify`|_removed_            |
-|`input_profile_import`|_removed_            |
+|`input_profile_import`|`InputBindingsImport`|
 |`input_profile_copy`  |_removed_            |
 
 &nbsp;
