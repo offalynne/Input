@@ -4,6 +4,14 @@ function __InputCreateKbmBindingNameMap()
 {
     var _map = ds_map_create();
     
+    ds_map_add(_map, mb_left,       "mouse button left");
+    ds_map_add(_map, mb_middle,     "mouse button middle");
+    ds_map_add(_map, mb_right,      "mouse button right");
+    ds_map_add(_map, mb_side1,      "mouse button forward");
+    ds_map_add(_map, mb_side2,      "mouse button back");
+    ds_map_add(_map, mb_wheel_up,   "mouse wheel up");
+    ds_map_add(_map, mb_wheel_down, "mouse wheel down");
+    
     ds_map_add(_map, vk_backtick,   "`");
     ds_map_add(_map, vk_hyphen,     "-");
     ds_map_add(_map, vk_equals,     "=");
