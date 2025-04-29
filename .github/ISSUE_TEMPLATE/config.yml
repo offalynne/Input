@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: View Documentation
+    url: https://offalynne.github.io/Input/
+    about: Find common answers and other information 
+  - name: Discuss on Discord
+    url: https://discord.gg/RDYyRqBswD
+    about: Ask and answer further questions
