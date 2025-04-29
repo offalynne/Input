@@ -58,7 +58,7 @@ if (InputCheck(INPUT_VERB.LEFT )) hspeed = -4;
 if (InputCheck(INPUT_VERB.RIGHT)) hspeed = 4;
 
 //If the player pressed the jump button, jump!
-if (InputCheckPressed(INPUT_VERB.JUMP)) vspeed = -8;
+if (InputPressed(INPUT_VERB.JUMP)) vspeed = -8;
 ```
 <!-- tabs:end -->
 

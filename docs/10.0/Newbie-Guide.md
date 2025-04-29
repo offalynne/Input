@@ -54,10 +54,10 @@ if (InputCheck(INPUT_VERB.LEFT )) x -= 4;
 if (InputCheck(INPUT_VERB.RIGHT)) x += 4;
 
 //If the player pressed the "Shoot" button, fire a bullet
-if (InputCheckPressed(INPUT_VERB.SHOOT)) show_debug_message("bang");
+if (InputPressed(INPUT_VERB.SHOOT)) show_debug_message("bang");
 ```
 
-If you're at all familiar with how the standard GML input functions work, this should look pretty familiar to you. [`InputCheck()`](Functions-(Checkers)?id=check) is like [`keyboard_check()`](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FKeyboard_Input%252Fkeyboard_check.htm) and [`InputCheckPressed()`](Functions-(Checkers)?id=check_pressed) is like [`keyboard_check_pressed()`](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FKeyboard_Input%252Fkeyboard_check_pressed.htm). We use the enum we created to tell Input which values to check. Now, run the game and look at your hard work! Dang, aren't those inputs tasty? Ooh, looky here, buttons!
+If you're at all familiar with how the standard GML input functions work, this should look pretty familiar to you. [`InputCheck()`](Functions-(Checkers)?id=check) is like [`keyboard_check()`](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FKeyboard_Input%252Fkeyboard_check.htm) and [`InputPressed()`](Functions-(Checkers)?id=pressed) is like [`keyboard_check_pressed()`](https://manual.yoyogames.com/#t=GameMaker_Language%252FGML_Reference%252FGame_Input%252FKeyboard_Input%252Fkeyboard_check_pressed.htm). We use the enum we created to tell Input which values to check. Now, run the game and look at your hard work! Dang, aren't those inputs tasty? Ooh, looky here, buttons!
 
 But by this point, you must be asking yourself "well grace, why didn't i just use `keyboard_check` functions and save myself all of this finagling?
 

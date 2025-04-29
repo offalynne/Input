@@ -164,7 +164,7 @@ Returns whether enough players have joined the party to continue.
 #### **Example**
 
 ```gml
-if (InputPartyGetReady() && InputCheckPressed(INPUT_VERB.START))
+if (InputPartyGetReady() && InputPressed(INPUT_VERB.START))
 {
 	room_goto_next();
 }
