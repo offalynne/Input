@@ -16,6 +16,8 @@ To get this show on the road, first thing you're gonna want to do is to drag the
 
 !> Input creates an instance using an internal object when the game boots up. Make sure that you don't accidentally destroy or deactivate this instance!
 
+Something that's caught people out is some legacy options that GameMaker offers if you import an old project file into a new version of GameMaker. These can mess with how Input works and will lead to strange bugs that can be hard to diagnose. You can find the legacy options in Game Options in your project and then under the "Deprecated Behaviours" subheading. You especially want to disable (untick) the "Enable Copy On Write Behaviour For Arrays" option though the other legacy options may have an impact too and likely should be unticked for Input to work properly.
+
 &nbsp;
 
 ## Step 2: The Verb Zone
