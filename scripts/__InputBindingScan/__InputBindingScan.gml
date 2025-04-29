@@ -4,7 +4,7 @@ function __InputBindingScan(_device, _ignoreStruct, _allowStruct)
     
     static _funcFilter = function(_input, _ignoreStruct, _allowStruct) //Returns <false> if the binding failed to pass the filter
     {
-        if (is_struct(_ignoreStruct) && variable_struct_exists(_ignoreStruct, string(_input))) return false;
+        if (variable_struct_exists(_ignoreStruct, string(_input))) return false;
         if (is_struct(_allowStruct) && (not variable_struct_exists(_allowStruct, string(_input)))) return false;
         return true;
     }
