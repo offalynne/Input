@@ -28,7 +28,7 @@ function InputCheckMany(_verbIndexArray, _playerIndexArray = 0)
             ++_v;
         }
     }
-    else //not is_array(_verbIndexArray)
+    else
     {
         if (is_array(_playerIndexArray))
         {
