@@ -10,7 +10,14 @@
 
 function InputCheckMany(_verbIndexArray, _playerIndexArray = 0)
 {
+    static _verbDefIndexArray = __InputSystem().__verbDefIndexArray;
     static _playerArray = __InputSystemPlayerArray();
+    
+    //Convert `-1` to the array of all verb definitions
+    if (is_numeric(_verbIndexArray) && (_verbIndexArray == -1))
+    {
+        _verbIndexArray = _verbDefIndexArray;
+    }
     
     if (is_array(_verbIndexArray))
     {
@@ -43,7 +50,7 @@ function InputCheckMany(_verbIndexArray, _playerIndexArray = 0)
         }
         else
         {
-            return InputCheckMany(_verbIndexArray, _playerIndexArray);
+            return InputCheck(_verbIndexArray, _playerIndexArray);
         }
     }
     
