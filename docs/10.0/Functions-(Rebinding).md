@@ -137,7 +137,7 @@ Returns a struct that contains the bindings set for a player. This can be saved 
 
 #### **Description**
 
-**Returns:** ,
+**Returns:** N/A (`undefined`)
 
 |Name           |Datatype|Purpose                                                                         |
 |---------------|--------|--------------------------------------------------------------------------------|
@@ -251,16 +251,59 @@ Returns a discovered binding emitted from the device. This function will return 
 
 **Returns:** ,
 
-|Name            |Datatype|Purpose                                             |
-|----------------|--------|----------------------------------------------------|
-|`device`        |integer |Device to target                                    |
-|`state`         |boolean |Whether the device should be put into rebinding mode|
-|`[ignoreStruct]`|struct  |Struct of bindings to prohibit                      |
-|`[allowStruct]` |struct  |Struct of bindings to allow                         |
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`device`       |integer |Device to target                                    |
+|`state`        |boolean |Whether the device should be put into rebinding mode|
+|`[ignoreArray]`|array   |Array of bindings to prohibit                       |
+|`[allowArray]` |array   |Array of bindings to allow                          |
 
-Sets rebinding state for a device. The device will be scanned for all input. Discovered bindings can be returned by calling `InputDeviceGetRebindingResult()`. Only gamepads and keyboard and mouse (`INPUT_KBM`) devices can be scanned. Bindings to explicitly ignore and allow can be set up by passing structs into the optional `ignoreStruct` and `allowStruct`.
+Sets rebinding state for a device. The device will be scanned for all input. Discovered bindings can be returned by calling `InputDeviceGetRebindingResult()`. Only gamepads and keyboard and mouse (`INPUT_KBM`) devices can be scanned.
+
+Bindings to explicitly ignore or allow can be set up by passing arrays into the optional `ignoreArray` and `allowArray`. Much like [`InputDefineVerb()`](Config?id=inputdefineverb), you can use the native `mb_*` `vk_*` `gp_*` constants to specify a binding, or you may use a single character string (e.g. `"A"`) to specify a keyboard key. If a binding is in both the ignore array and the allow array then the binding will be _ignored_.
 
 !> Input from a device that is being scanned will continue as normal. To prevent input leaking to e.g. interface navigation you should be careful to check against `InputDeviceGetRebinding()` where appropriate.
+
+#### **Example (basic)**
+
+```gml
+/// Step Event
+
+var _device = InputPlayerGetDevice();
+
+//Start rebinding when the player clicks this button
+if (buttonClicked)
+{
+	//Begin rebinding for the device that the player is currently using
+    InputDeviceSetRebinding(_device, true);
+}
+
+//Check every frame to see if we've gotten a response from the rebinding system
+if (InputDeviceGetRebinding(_device))
+{
+	var _result = InputDeviceGetRebindingResult(_device);
+	if (_result != undefined)
+	{
+		//Rebind the jump verb once we get a response
+	    InputBindingSetSafe(InputDeviceIsGamepad(_device), INPUT_VERB.JUMP, _result);
+
+	    //Make sure we turn off rebinding once a binding has been found
+	    InputDeviceSetRebinding(_device, false);
+	}
+}
+```
+
+#### **Example (ignore array)**
+
+```gml
+//Prevent rebinding system returning problematic keyboard keys
+var _ignoreArray = [
+	vk_alt, vk_capslock, vk_printscreen
+];
+
+//Begin rebinding using the above ignore array to filter out keys
+InputDeviceSetRebinding(_device, true, _ignoreArray);
+```
 
 <!-- tabs:end -->
 
