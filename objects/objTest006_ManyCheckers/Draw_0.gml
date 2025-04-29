@@ -5,6 +5,8 @@ var _string = string_join("\n",
     string_concat("InputPressedMany(-1) = ", InputPressedMany(-1)),
     string_concat("InputCheckMany(-1) = ", InputCheckMany(-1)),
     string_concat("InputReleasedMany(-1) = ", InputReleasedMany(-1)),
+    string_concat("InputMostRecent(-1) = ", InputMostRecent(-1)),
+    string_concat("InputLast(-1) = ", InputLast(-1)),
 );
 
 draw_text(10, 10, _string);
