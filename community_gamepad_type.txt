@@ -144,6 +144,8 @@ f000,0008,CommunitySaturn // RetroUSB Genesis
 1292,4745,CommunitySaturn // Retro Bit Genesis Adapter
 04d8,e686,CommunitySaturn // GEEKY Fab Sega Multi Controller
 2563,0578,CommunitySaturn // Retro Fighters D6 Dreamcast
+1241,500e,CommunitySaturn // Elecom JC-U909Z
+0995,0001,CommunitySaturn // Elecom JC-U609
 1292,464b,CommunitySNES // NES Controller Adapter
 21f8,0019,CommunitySNES // Shogun Bros Chameleon X1
 f000,0003,CommunitySNES // RetroUSB SNES
@@ -446,6 +448,8 @@ dead,beef,CommunityPSX // Hidromancer
 6666,8804,CommunityPSX // SuperJoy Box Adapter
 145f,0231,CommunityPSX // MY-POWER CO. LTD. Gamepad
 14fe,232a,CommunityPSX // PlayStation USB Adapter
+0925,8888,CommunityPSX // Elecom PS1 Adapter
+0925,8866,CommunityPSX // Elecom PS1 Adapter
 0e8f,1114,CommunityPS4 // Gamo2 Divaller
 0f0d,0101,CommunityPS4 // Hori Miku FT PS4 Controller
 0f0d,00a5,CommunityPS4 // Hori Miku PS4 Controller
