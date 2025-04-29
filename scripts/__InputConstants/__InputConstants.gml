@@ -11,8 +11,8 @@
 //                                                                        //
 ////////////////////////////////////////////////////////////////////////////
 
-#macro INPUT_VERSION  "10.0.6"
-#macro INPUT_DATE     "2025-03-02"
+#macro INPUT_VERSION  "10.0.7"
+#macro INPUT_DATE     "2025-04-29"
 
 #macro INPUT_NO_DEVICE       -666
 #macro INPUT_KBM             -1

@@ -10,7 +10,14 @@
 
 function InputCheckMany(_verbIndexArray, _playerIndexArray = 0)
 {
+    static _verbDefIndexArray = __InputSystem().__verbDefIndexArray;
     static _playerArray = __InputSystemPlayerArray();
+    
+    //Convert `-1` to the array of all verb definitions
+    if (is_numeric(_verbIndexArray) && (_verbIndexArray == -1))
+    {
+        _verbIndexArray = _verbDefIndexArray;
+    }
     
     if (is_array(_verbIndexArray))
     {
@@ -21,14 +28,14 @@ function InputCheckMany(_verbIndexArray, _playerIndexArray = 0)
             ++_v;
         }
     }
-    else //not is_array(_verbIndexArray)
+    else
     {
         if (is_array(_playerIndexArray))
         {
             var _p = 0;
             repeat(array_length(_playerIndexArray))
             {
-                if (InputCheckMany(_verbIndexArray, _playerIndexArray[_p])) return true;
+                if (InputCheck(_verbIndexArray, _playerIndexArray[_p])) return true;
                 ++_p;
             }
         }
@@ -37,13 +44,13 @@ function InputCheckMany(_verbIndexArray, _playerIndexArray = 0)
             var _playerIndex = 0;
             repeat(INPUT_MAX_PLAYERS)
             {
-                if (InputCheckMany(_verbIndexArray, _playerIndex)) return true;
+                if (InputCheck(_verbIndexArray, _playerIndex)) return true;
                 ++_playerIndex;
             }
         }
         else
         {
-            return InputCheckMany(_verbIndexArray, _playerIndexArray);
+            return InputCheck(_verbIndexArray, _playerIndexArray);
         }
     }
     
