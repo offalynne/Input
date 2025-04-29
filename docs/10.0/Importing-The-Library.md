@@ -6,6 +6,8 @@ You can find the latest version of Input [here](https://github.com/offalynne/Inp
 
 If you look inside the Input folder you'll see a lot of subfolders. These subfolders contain functions that comprise the API - the interface that you'll need to execute Input code in your game. The `(System)` folder holds code that Input requires to operate and has to be there but otherwise you can forget it exists. You'll also see a folder called `Config` - inside this folder are a series of scripts that control how Input functions. **You should edit these scripts to tailor Input to your needs.**
 
+Finally, Input is built with the presumption that legacy runtime behaviours have been switched off. These legacy behaviours will sometimes get turned on when updating an old project to a new version of GameMaker. You can see what legacy options have been turned on by going to the Game Options for your project and then unfolding the "Deprecated Behaviours" subheading. The "Enable Copy On Write Behaviour For Arrays" option will definitely need to be disabled (unticked). Other legacy behaviours may have an impact too and likely should be unticked for Input to work properly.
+
 &nbsp;
 
 ## Updating Input {docsify-ignore}
