@@ -402,6 +402,8 @@ function __InputCreateTypeLookup()
         _struct[$ "66660488"] = INPUT_GAMEPAD_TYPE_PS4;
         _struct[$ "5f143102"] = INPUT_GAMEPAD_TYPE_PS4;
         _struct[$ "fe142a23"] = INPUT_GAMEPAD_TYPE_PS4;
+        _struct[$ "25098888"] = INPUT_GAMEPAD_TYPE_PS4;
+        _struct[$ "25096688"] = INPUT_GAMEPAD_TYPE_PS4;
         _struct[$ "8f0e1411"] = INPUT_GAMEPAD_TYPE_PS4;
         _struct[$ "0d0f0101"] = INPUT_GAMEPAD_TYPE_PS4;
         _struct[$ "0d0fa500"] = INPUT_GAMEPAD_TYPE_PS4;
