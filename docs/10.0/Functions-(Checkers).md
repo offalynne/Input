@@ -142,6 +142,70 @@ speed = 7*InputValue(INPUT_VERB.ACCELERATE);
 
 <!-- tabs:end -->
 
+&nbsp;## …MostRecent
+
+`InputMostRecent([verbIndex], [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Integer, most recent verb pressed in the specified array, or `undefined` if no verb is active
+
+|Name                |Datatype|Purpose                                             |
+|--------------------|--------|----------------------------------------------------|
+|`[verbIndexArray]`  |array   |Array of verbs to target. If not specified, all verbs are checked|
+|`[playerIndex]`     |integer |Player to target. If not specified, player 0 is used|
+
+Returns the most recently pressed verb that is still active from among the array of verbs provided. If no verb array is provided (or the value `-1` is used in place of an array), all defined verbs will be checked instead. If no verb in the array is active, this function returns `undefined`.
+
+#### **Example**
+
+```gml
+//Set the level of the damage depending on current attack verb
+switch(InputMostRecent([INPUT_VERB.LIGHT, INPUT_VERB.MEDIUM, INPUT_VERB.HEAVY])
+{
+    case INPUT_VERB.LIGHT:  damage =  15; break;
+    case INPUT_VERB.MEDIUM: damage =  50; break;
+    case INPUT_VERB.HEAVY:  damage = 300; break;
+    default:                damage =   0; break;
+}
+```
+
+<!-- tabs:end -->
+
+&nbsp;## …Last
+
+`InputLast([verbIndex], [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Integer, last verb pressed in the specified array, or `undefined` if no verb has ever been active.
+
+|Name                |Datatype|Purpose                                             |
+|--------------------|--------|----------------------------------------------------|
+|`[verbIndexArray]`  |array   |Array of verbs to target. If not specified, all verbs are checked|
+|`[playerIndex]`     |integer |Player to target. If not specified, player 0 is used|
+
+Returns last pressed verb from among the array of verbs provided. The verb does not need to still be active. If no verb array is provided (or the value `-1` is used in place of an array), all defined verbs will be checked instead. If no verb in the array has ever been active, this function returns `undefined`.
+
+#### **Example**
+
+```gml
+//Set the level of the damage depending on current attack verb
+switch(InputMostRecent([INPUT_VERB.LIGHT, INPUT_VERB.MEDIUM, INPUT_VERB.HEAVY])
+{
+    case INPUT_VERB.LIGHT:  damage =  15; break;
+    case INPUT_VERB.MEDIUM: damage =  50; break;
+    case INPUT_VERB.HEAVY:  damage = 300; break;
+    default:                damage =   0; break;
+}
+```
+
+<!-- tabs:end -->
+
 &nbsp;
 
 ## …X
