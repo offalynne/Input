@@ -389,8 +389,8 @@ Input 10 is a big change. To help ease the transition from Input 8, this page co
 |`input_mouse_check_pressed`  |`InputMousePressed`                                        |
 |`input_mouse_check_released` |`InputMouseReleased`                                       |
 |`input_mouse_in_bounds`      |_removed_                                                  |
-|`input_mouse_wheel_up`       |Use Input constant `mb_wheel_up`                           |
-|`input_mouse_wheel_down`     |Use Input constant `mb_wheel_down`                         |
+|`input_mouse_wheel_up`       |Use constant `mb_wheel_up`                                 |
+|`input_mouse_wheel_down`     |Use constant `mb_wheel_down`                               |
 
 &nbsp;
 
