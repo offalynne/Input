@@ -35,7 +35,7 @@ function InputCheckMany(_verbIndexArray, _playerIndexArray = 0)
             var _p = 0;
             repeat(array_length(_playerIndexArray))
             {
-                if (InputCheckMany(_verbIndexArray, _playerIndexArray[_p])) return true;
+                if (InputCheck(_verbIndexArray, _playerIndexArray[_p])) return true;
                 ++_p;
             }
         }
@@ -44,7 +44,7 @@ function InputCheckMany(_verbIndexArray, _playerIndexArray = 0)
             var _playerIndex = 0;
             repeat(INPUT_MAX_PLAYERS)
             {
-                if (InputCheckMany(_verbIndexArray, _playerIndex)) return true;
+                if (InputCheck(_verbIndexArray, _playerIndex)) return true;
                 ++_playerIndex;
             }
         }
