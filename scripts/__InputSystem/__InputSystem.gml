@@ -43,7 +43,8 @@ function __InputSystem()
         __gamepadArray = array_create(gamepad_get_device_count(), undefined);
         
         //Master definitions for verbs
-        __verbDefinitionArray = [];
+        __verbDefinitionArray = []; //Contains structs for each verb definition
+        __verbDefIndexArray   = []; //Contains verb indexes for each verb definition. The verb index values are usually sequential and continuous but not always!
         __verbExportNameDict  = {};
         __verbCount           = 0;
         
