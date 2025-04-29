@@ -43,10 +43,5 @@ function InputDefineVerb(_verbIndex, _exportName, _kbmBinding, _gamepadBinding, 
         
         __verbDefinitionArray[_verbIndex]   = _definition;
         __verbExportNameDict[$ _exportName] = _definition;
-        
-        if (array_get_index(__verbDefIndexArray, _verbIndex) < 0)
-        {
-            array_push(__verbDefIndexArray, _verbIndex);
-        }
     }
 }
