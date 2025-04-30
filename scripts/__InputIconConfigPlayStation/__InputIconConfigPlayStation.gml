@@ -19,10 +19,10 @@ InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS5, gp_shoulderrb, "R2"); //R2
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS5, gp_select, "create" ); //Select
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS5, gp_start,  "options"); //Start
 
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS5, gp_padu, "dpad left" ); //D-pad left
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS5, gp_padd, "dpad right"); //D-pad right
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS5, gp_padl, "dpad up"   ); //D-pad up
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS5, gp_padr, "dpad down" ); //D-pad down
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS5, gp_padl, "dpad left" ); //D-pad left
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS5, gp_padr, "dpad right"); //D-pad right
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS5, gp_padu, "dpad up"   ); //D-pad up
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS5, gp_padd, "dpad down" ); //D-pad down
 
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS5, -gp_axislh, "thumbstick l left" );
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS5,  gp_axislh, "thumbstick l right");
@@ -66,10 +66,10 @@ InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS4, gp_shoulderrb, "R2"); //R2
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS4, gp_select, "share"  ); //Select
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS4, gp_start,  "options"); //Start
 
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS4, gp_padu, "dpad left" ); //D-pad left
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS4, gp_padd, "dpad right"); //D-pad right
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS4, gp_padl, "dpad up"   ); //D-pad up
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS4, gp_padr, "dpad down" ); //D-pad down
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS4, gp_padl, "dpad left" ); //D-pad left
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS4, gp_padr, "dpad right"); //D-pad right
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS4, gp_padu, "dpad up"   ); //D-pad up
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS4, gp_padd, "dpad down" ); //D-pad down
 
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS4, -gp_axislh, "thumbstick l left" );
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_PS4,  gp_axislh, "thumbstick l right");

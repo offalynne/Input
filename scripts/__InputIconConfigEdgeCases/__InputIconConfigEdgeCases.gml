@@ -32,10 +32,10 @@ InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_UNKNOWN, gp_select, "select");
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_UNKNOWN, gp_start,  "start" );
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_UNKNOWN, gp_home,   "home"  );
 
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_UNKNOWN, gp_padu, "dpad left" ); 
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_UNKNOWN, gp_padd, "dpad right"); 
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_UNKNOWN, gp_padl, "dpad up"   ); 
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_UNKNOWN, gp_padr, "dpad down" ); 
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_UNKNOWN, gp_padl, "dpad left" ); 
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_UNKNOWN, gp_padr, "dpad right"); 
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_UNKNOWN, gp_padu, "dpad up"   ); 
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_UNKNOWN, gp_padd, "dpad down" ); 
 
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_UNKNOWN, -gp_axislh, "thumbstick l left" );
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_UNKNOWN,  gp_axislh, "thumbstick l right");

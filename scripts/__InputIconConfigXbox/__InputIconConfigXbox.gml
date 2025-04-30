@@ -19,10 +19,10 @@ InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_XBOX, gp_shoulderrb, "RT"); //RT
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_XBOX, gp_select, "view"); //View
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_XBOX, gp_start,  "menu"); //Menu
 
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_XBOX, gp_padu, "dpad left" ); //D-pad left
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_XBOX, gp_padd, "dpad right"); //D-pad right
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_XBOX, gp_padl, "dpad up"   ); //D-pad up
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_XBOX, gp_padr, "dpad down" ); //D-pad down
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_XBOX, gp_padl, "dpad left" ); //D-pad left
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_XBOX, gp_padr, "dpad right"); //D-pad right
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_XBOX, gp_padu, "dpad up"   ); //D-pad up
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_XBOX, gp_padd, "dpad down" ); //D-pad down
 
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_XBOX, -gp_axislh, "thumbstick l left" );
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_XBOX,  gp_axislh, "thumbstick l right");

@@ -19,10 +19,10 @@ InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_shoulderrb, "ZR"); //ZR
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_select, "minus"); //Minus
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_start,  "plus" ); //Plus
 
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_padu, "dpad left" ); //D-pad left
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_padd, "dpad right"); //D-pad right
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_padl, "dpad up"   ); //D-pad up
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_padr, "dpad down" ); //D-pad down
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_padl, "dpad left" ); //D-pad left
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_padr, "dpad right"); //D-pad right
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_padu, "dpad up"   ); //D-pad up
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_padd, "dpad down" ); //D-pad down
 
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, -gp_axislh, "thumbstick l left" );
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH,  gp_axislh, "thumbstick l right");
