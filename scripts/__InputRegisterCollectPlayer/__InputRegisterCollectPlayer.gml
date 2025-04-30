@@ -105,8 +105,8 @@ function __InputRegisterCollectPlayer()
                             ++_j;
                         }
                         
-                        _valueRawArray[  _i] = _valueRaw;
-                        _valueClampArray[_i] = _valueClamp;
+                        _valueRawArray[@   _i] = _valueRaw;
+                        _valueClampArray[@ _i] = _valueClamp;
                         
                         ++_i;
                     }
@@ -175,8 +175,8 @@ function __InputRegisterCollectPlayer()
                             
                             if (_newHeld)
                             {
-                                _valueRawArray[  _i] = 1;
-                                _valueClampArray[_i] = 1;
+                                _valueRawArray[@   _i] = 1;
+                                _valueClampArray[@ _i] = 1;
                             }
                             
                             ++_i;
@@ -224,13 +224,13 @@ function __InputRegisterCollectPlayer()
                             
                             if (_newHeld)
                             {
-                                _valueRawArray[  _i] = 1;
-                                _valueClampArray[_i] = 1;
+                                _valueRawArray[@   _i] = 1;
+                                _valueClampArray[@ _i] = 1;
                             }
                             else
                             {
-                                _valueRawArray[  _i] = 0;
-                                _valueClampArray[_i] = 0;
+                                _valueRawArray[@   _i] = 0;
+                                _valueClampArray[@ _i] = 0;
                             }
                             
                             ++_i;
