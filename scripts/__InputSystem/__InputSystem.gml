@@ -88,7 +88,9 @@ function __InputSystem()
         __plugInCallbackArray = __InputSystemCallbackArray();
         
         __InputRegisterCollect();
+        __InputRegisterCollectPlayer();
         __InputRegisterUpdate();
+        __InputRegisterUpdatePlayer();
         __InputRegisterGamepadDisconnected();
         __InputRegisterGamepadConnected();
         __InputRegisterPlayerDeviceChanged();
