@@ -14,8 +14,6 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 ## Gamepad
 
-GameMaker has a naive implementation of [SDL2's game controller mapping](https://wiki.libsdl.org/CategoryGameController) feature. Input offers [a sophisticated reimplementation](Controller-Mapping) on platforms with reliable drivers and available [vendor and product](https://docs.microsoft.com/en-us/windows-hardware/drivers/install/standard-usb-identifiers) information (Desktop platforms and Android), including support for axis inversion and range modifiers, and greatly expands the number of supported devices.
-
 On many platforms, gamepad indices do not enumerate predicatbly. Use source assignment or source hotswap features to avoid assigning players a gamepad index manually.
 
 ### Gamepad on Desktop
@@ -26,17 +24,11 @@ On many platforms, gamepad indices do not enumerate predicatbly. Use source assi
 
 - On desktop, gamepad vibration is *only* available for Windows XInput gamepads. Enabling vibration for additional gamepads requires the [Steamwork extension](Steamworks).
 
-- On Windows, [game controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping. Specifically, the runtime is using an old version of the identifying string used to differentiate controllers, resulting in the feature being marginally limited on the platform.
-
 - On Windows OS versions below Windows 10, some Bluetooth controllers fail to operate correctly. This is a system-level problem beyond our capability to address.
 
 - On Windows, Xbox Game Bar is known to be problematic for Xbox gamepad use with many games including the Game Maker Studio runtime causing application freezing and slowdown. [Disabling Xbox Game Bar](https://www.epicgames.com/help/en-US/rocket-league-c5719357623323/troubleshooting-c7261971242139/how-do-i-turn-off-game-mode-xbox-game-bar-and-captures-on-my-pc-to-improve-rocket-league-s-performance-a5720078869147) may resolve the issue.
 
-- On MacOS, GameMaker's [game controller mapping](Controller-Mapping) implementation has a bug regarding remapping devices in the inbuilt remapping database (marked "fixed" by YYG, though it persists). Input fixes this with a value offset for gamepad button and axis inputs.
-
 - On MacOS, the "gamepad select" button takes a screenshot on double press and records video on long press. Be aware when setting default bindings that this can be problematic for users with the feature enabled (default OS behaviour).
-
-- On Ubuntu, gamepads are sometimes misreported and often over-reported so [device blocking](Controller-Mapping#controller-blacklist) is particularly useful.
 
 - On Ubuntu, gamepad joystick axes are not signed. GameMaker attempts to automatically sign joystick axes when they connect, but this change is discarded when gamepads are remapped. Input automatically adjusts joystick axes' range on remapping in order to resolve this.
 
