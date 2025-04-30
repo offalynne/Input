@@ -10,7 +10,7 @@ function InputPlugInGamepadNullifyAllMappings(_device)
     var _i = 0;
     repeat(array_length(_readArray))
     {
-        _readArray[_i] = function() { return 0 };
+        _readArray[@ _i] = function() { return 0 };
         ++_i;
     }
 }

@@ -158,15 +158,15 @@ function __InputClassPlayer(_playerIndex) constructor
             
             if (_thresholdType <= 1) //Default to .LEFT if none of the bindings are thumbsticks
             {
-                _clusterThresholdTypeArray[_cluster] = INPUT_THRESHOLD.LEFT;
+                _clusterThresholdTypeArray[@ _cluster] = INPUT_THRESHOLD.LEFT;
             }
             else if (_thresholdType == 2)
             {
-                _clusterThresholdTypeArray[_cluster] = INPUT_THRESHOLD.RIGHT;
+                _clusterThresholdTypeArray[@ _cluster] = INPUT_THRESHOLD.RIGHT;
             }
             else
             {
-                _clusterThresholdTypeArray[_cluster] = INPUT_THRESHOLD.BOTH;
+                _clusterThresholdTypeArray[@ _cluster] = INPUT_THRESHOLD.BOTH;
             }
             
             ++_cluster;
@@ -269,8 +269,8 @@ function __InputClassPlayer(_playerIndex) constructor
                         ++_j;
                     }
                     
-                    _valueRawArray[  _i] = _valueRaw;
-                    _valueClampArray[_i] = _valueClamp;
+                    _valueRawArray[@   _i] = _valueRaw;
+                    _valueClampArray[@ _i] = _valueClamp;
                 
                     ++_i;
                 }
@@ -339,8 +339,8 @@ function __InputClassPlayer(_playerIndex) constructor
                         
                         if (_newHeld)
                         {
-                            _valueRawArray[  _i] = 1;
-                            _valueClampArray[_i] = 1;
+                            _valueRawArray[@   _i] = 1;
+                            _valueClampArray[@ _i] = 1;
                         }
                         
                         ++_i;
@@ -388,13 +388,13 @@ function __InputClassPlayer(_playerIndex) constructor
                         
                         if (_newHeld)
                         {
-                            _valueRawArray[  _i] = 1;
-                            _valueClampArray[_i] = 1;
+                            _valueRawArray[@   _i] = 1;
+                            _valueClampArray[@ _i] = 1;
                         }
                         else
                         {
-                            _valueRawArray[  _i] = 0;
-                            _valueClampArray[_i] = 0;
+                            _valueRawArray[@   _i] = 0;
+                            _valueClampArray[@ _i] = 0;
                         }
                         
                         ++_i;

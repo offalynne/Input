@@ -10,5 +10,5 @@ function InputPlugInGamepadResetMapping(_device, _gpConstant)
     var _readArray = __InputGamepadGetReadArray(_device);
     if (_readArray == undefined) return;
     
-    _readArray[_gpConstant - INPUT_GAMEPAD_BINDING_MIN] = variable_clone(_genericReadArray[_gpConstant - INPUT_GAMEPAD_BINDING_MIN]);
+    _readArray[@ _gpConstant - INPUT_GAMEPAD_BINDING_MIN] = variable_clone(_genericReadArray[_gpConstant - INPUT_GAMEPAD_BINDING_MIN]);
 }

@@ -15,20 +15,7 @@ function __InputBindingScan(_device, _ignoreStruct, _allowStruct)
         {
             var _binding = __InputGetKeyboardOutput();
             if ((_binding != undefined) && _funcFilter(_binding, _ignoreStruct, _allowStruct))
-            {
-                ////On Mac we update the binding label to the actual keyboard character if it is a Basic Latin alphabetic character
-                ////This works around problems where a keyboard might be sending a character code for e.g. A but the OS is typing another letter
-                //if (INPUT_ON_MACOS)
-                //{
-                //    var _keychar = string_upper(keyboard_lastchar);
-                //                    
-                //    //Basic Latin only
-                //    if ((ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z")))
-                //    {
-                //        _result.labelOverride = _keychar; 
-                //    }
-                //}
-                
+            {                
                 return _binding;
             }
         }
