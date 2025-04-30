@@ -635,12 +635,12 @@ draw_rectangle(x, y, x + _width, y + 10, true);
 
 **Returns:** Boolean, whether any verb is active
 
-|Name           |Datatype                    |Purpose                                              |
-|---------------|----------------------------|-----------------------------------------------------|
-|`verbIndex`    |integer or array of integers|Verbs to target                                      |
-|`[playerIndex]`|integer or array of integers|Players to target. If not specified, player 0 is used|
+|Name                |Datatype                    |Purpose                                              |
+|--------------------|----------------------------|-----------------------------------------------------|
+|`verbIndexArray`    |integer or array of integers|Verbs to target                                      |
+|`[playerIndexArray]`|integer or array of integers|Players to target. If not specified, player 0 is used|
 
-Works similarly to `InputCheck()`; please see that function for a description of behavior. This variant of `InputCheck()` optionally accepts arrays for both the verb and the player index and will return `true` if any of the verbs are active for any of the players. You may use the value `-1` for the `playerIndex` parameter to check for input across all players.
+Works similarly to `InputCheck()`; please see that function for a description of behavior. This variant of `InputCheck()` optionally accepts arrays for both the verb and the player index and will return `true` if any of the verbs are active for any of the players. You may use the value `-1` for the `verbIndexArray` to check for input from every defined verb. You may also use the value `-1` for the `playerIndexArray` parameter to check for input across all players.
 
 #### **Example**
 
@@ -662,12 +662,12 @@ Works similarly to `InputCheck()`; please see that function for a description of
 
 **Returns:** Boolean, whether any verb has been pressed
 
-|Name           |Datatype                    |Purpose                                              |
-|---------------|----------------------------|-----------------------------------------------------|
-|`verbIndex`    |integer or array of integers|Verbs to target                                      |
-|`[playerIndex]`|integer or array of integers|Players to target. If not specified, player 0 is used|
+|Name                |Datatype                    |Purpose                                              |
+|--------------------|----------------------------|-----------------------------------------------------|
+|`verbIndexArray`    |integer or array of integers|Verbs to target                                      |
+|`[playerIndexArray]`|integer or array of integers|Players to target. If not specified, player 0 is used|
 
-Works similarly to `InputPressed()`; please see that function for a description of behavior. This variant of `InputPressed()` optionally accepts arrays for both the verb and the player index and will return `true` if any of the verbs have been pressed for any of the players. You may use the value `-1` for the `playerIndex` parameter to check for input across all players.
+Works similarly to `InputPressed()`; please see that function for a description of behavior. This variant of `InputPressed()` optionally accepts arrays for both the verb and the player index and will return `true` if any of the verbs have been pressed for any of the players. You may use the value `-1` for the `verbIndexArray` to check for input from every defined verb. You may also use the value `-1` for the `playerIndexArray` parameter to check for input across all players.
 
 #### **Example**
 
@@ -689,12 +689,12 @@ Works similarly to `InputPressed()`; please see that function for a description 
 
 **Returns:** Boolean, whether any verb has been released
 
-|Name           |Datatype                    |Purpose                                              |
-|---------------|----------------------------|-----------------------------------------------------|
-|`verbIndex`    |integer or array of integers|Verbs to target                                      |
-|`[playerIndex]`|integer or array of integers|Players to target. If not specified, player 0 is used|
+|Name                |Datatype                    |Purpose                                              |
+|--------------------|----------------------------|-----------------------------------------------------|
+|`verbIndexArray`    |integer or array of integers|Verbs to target                                      |
+|`[playerIndexArray]`|integer or array of integers|Players to target. If not specified, player 0 is used|
 
-Works similarly to `InputReleased()`; please see that function for a description of behavior. This variant of `InputReleased()` optionally accepts arrays for both the verb and the player index and will return `true` if any of the verbs have been released for any of the players. You may use the value `-1` for the `playerIndex` parameter to check for input across all players.
+Works similarly to `InputReleased()`; please see that function for a description of behavior. This variant of `InputReleased()` optionally accepts arrays for both the verb and the player index and will return `true` if any of the verbs have been released for any of the players. You may use the value `-1` for the `verbIndexArray` to check for input from every defined verb. You may also use the value `-1` for the `playerIndexArray` parameter to check for input across all players.
 
 #### **Example**
 
