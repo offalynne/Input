@@ -19,8 +19,13 @@ function InputBindingsImport(_forGamepad, _data, _playerIndex = 0)
     var _i = 0;
     repeat(_verbCount)
     {
-        var _alternates = _data[$ InputVerbGetExportName(_i)];
-        _bindingArray = (_alternates == undefined)? [] : variable_clone(_alternates);
+        var _exportName = InputVerbGetExportName(_i);
+        if (_exportName != undefined)
+        {
+            var _alternates = _data[$ _exportName];
+            _bindingArray = (_alternates == undefined)? [] : variable_clone(_alternates);
+        }
+        
         ++_i;
     }
 }
