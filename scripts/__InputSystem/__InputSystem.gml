@@ -89,6 +89,7 @@ function __InputSystem()
         
         __InputRegisterCollect();
         __InputRegisterUpdate();
+        __InputRegisterUpdatePlayer();
         __InputRegisterGamepadDisconnected();
         __InputRegisterGamepadConnected();
         __InputRegisterPlayerDeviceChanged();

@@ -12,12 +12,13 @@ function __InputClassPlayer(_playerIndex) constructor
     
     __playerIndex = _playerIndex;
     
-    __device        = INPUT_NO_DEVICE;
-    __metadata      = undefined;
-    __status        = INPUT_PLAYER_STATUS.DISCONNECTED;
-    __blocked       = false;
-    __ghost         = false;
-    __lastInputTime = -infinity;
+    __device           = INPUT_NO_DEVICE;
+    __metadata         = undefined;
+    __status           = INPUT_PLAYER_STATUS.DISCONNECTED;
+    __blocked          = false;
+    __ghost            = false;
+    __anyHardwareInput = false;
+    __lastInputTime    = -infinity;
     
     //Set the last connected gamepad speculatively based on the platform / gamepad ban setting
     if (INPUT_BAN_GAMEPADS)
@@ -429,48 +430,14 @@ function __InputClassPlayer(_playerIndex) constructor
     
     static __Update = function()
     {
-        var _systemFrame      = _system.__frame;
-        var _anyHardwareInput = false;
-        
-        var _verbStateArray  = __verbStateArray;
-        var _valueRawArray   = __valueRawArray;
-        var _valueClampArray = __valueClampArray;
-        
-        //Give plug-ins the opportunity to fiddle with verb state before consumption and clusters
-        __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.UPDATE_PLAYER, __playerIndex);
-        
         /////////////////////////
         //                     //
         //  Verb State Update  //
         //                     //
         /////////////////////////
-                
-        //Detect pressed/held/released state based on values that the virtual button has outputted
-        var _i = 0;
-        repeat(_verbCount)
-        {
-            with(_verbStateArray[_i])
-            {
-                __prevHeld = __held;
-                
-                __valueRaw   = _valueRawArray[_i];
-                __valueClamp = _valueClampArray[_i];
-                
-                if (__valueClamp > 0)
-                {
-                    _anyHardwareInput = true;
-                    
-                    __held = true;
-                    if (not __prevHeld) __pressFrame = _systemFrame;
-                }
-                else
-                {
-                    __held = false;
-                }
-            }
-            
-            ++_i;
-        }
+        
+        __anyHardwareInput = false;
+        __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.UPDATE_PLAYER, __playerIndex);
         
         //////////////////////
         //                  //
@@ -505,6 +472,8 @@ function __InputClassPlayer(_playerIndex) constructor
         //  Clusters  //
         //            //
         ////////////////
+        
+        var _verbStateArray  = __verbStateArray;
         
         var _i = 0;
         repeat(_clusterCount)
@@ -589,6 +558,6 @@ function __InputClassPlayer(_playerIndex) constructor
             ++_i;
         }
         
-        if (_anyHardwareInput) __lastInputTime = current_time;
+        if (__anyHardwareInput) __lastInputTime = current_time;
     }
 }
