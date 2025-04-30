@@ -158,15 +158,15 @@ function __InputClassPlayer(_playerIndex) constructor
             
             if (_thresholdType <= 1) //Default to .LEFT if none of the bindings are thumbsticks
             {
-                _clusterThresholdTypeArray[_cluster] = INPUT_THRESHOLD.LEFT;
+                _clusterThresholdTypeArray[@ _cluster] = INPUT_THRESHOLD.LEFT;
             }
             else if (_thresholdType == 2)
             {
-                _clusterThresholdTypeArray[_cluster] = INPUT_THRESHOLD.RIGHT;
+                _clusterThresholdTypeArray[@ _cluster] = INPUT_THRESHOLD.RIGHT;
             }
             else
             {
-                _clusterThresholdTypeArray[_cluster] = INPUT_THRESHOLD.BOTH;
+                _clusterThresholdTypeArray[@ _cluster] = INPUT_THRESHOLD.BOTH;
             }
             
             ++_cluster;
