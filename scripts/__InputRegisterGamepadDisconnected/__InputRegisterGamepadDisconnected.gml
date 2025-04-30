@@ -9,7 +9,7 @@ function __InputRegisterGamepadDisconnected()
         if (_actuallyDisconnected)
         {
             __InputTrace("Gamepad ", _device, " disconnected");
-            _gamepadArray[_device] = undefined;
+            _gamepadArray[@ _device] = undefined;
         }
         else
         {
