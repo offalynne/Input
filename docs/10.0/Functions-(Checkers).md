@@ -142,7 +142,9 @@ speed = 7*InputValue(INPUT_VERB.ACCELERATE);
 
 <!-- tabs:end -->
 
-&nbsp;## …MostRecent
+&nbsp;
+
+## …MostRecent
 
 `InputMostRecent([verbIndex], [playerIndex])`
 
@@ -174,7 +176,9 @@ switch(InputMostRecent([INPUT_VERB.LIGHT, INPUT_VERB.MEDIUM, INPUT_VERB.HEAVY])
 
 <!-- tabs:end -->
 
-&nbsp;## …Last
+&nbsp;
+
+## …Last
 
 `InputLast([verbIndex], [playerIndex])`
 
