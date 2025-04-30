@@ -10,7 +10,7 @@
 
 - ### [Download the .yymps](https://github.com/offalynne/input/releases/)
 - ### Read the [documentation](https://offalynne.github.io/Input/)
-- ### Talk about Input on the [Discord server](https://discord.gg/RDYyRqBswD)
+- ### Talk about Input on the [Discord server](https://discord.gg/s6NjaV8AnM)
 - ### You may also like [Firehammer](https://firehammergames.itch.io/firehammer-input) and [Input Dog](https://github.com/messhof/Input-Dog)
 
 &nbsp;
