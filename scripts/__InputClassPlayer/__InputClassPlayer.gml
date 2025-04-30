@@ -241,8 +241,8 @@ function __InputClassPlayer(_playerIndex) constructor
             //If the displacement is exactly zero then skip then early-out
             if (_d <= 0.0)
             {
-                __clusterXArray[_i] = 0;
-                __clusterYArray[_i] = 0;
+                __clusterXArray[@ _i] = 0;
+                __clusterYArray[@ _i] = 0;
             }
             else
             {
@@ -296,8 +296,8 @@ function __InputClassPlayer(_playerIndex) constructor
                 }
                 
                 //Spit out the answer!
-                __clusterXArray[_i] = _dx;
-                __clusterYArray[_i] = _dy;
+                __clusterXArray[@ _i] = _dx;
+                __clusterYArray[@ _i] = _dy;
             }
             
             ++_i;
