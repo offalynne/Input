@@ -124,6 +124,7 @@
     {"id":{"name":"__InputPlugInExecuteCallbacks","path":"scripts/__InputPlugInExecuteCallbacks/__InputPlugInExecuteCallbacks.yy",},},
     {"id":{"name":"__InputPlugInRegisterCallbackInternal","path":"scripts/__InputPlugInRegisterCallbackInternal/__InputPlugInRegisterCallbackInternal.yy",},},
     {"id":{"name":"__InputRegisterCollect","path":"scripts/__InputRegisterCollect/__InputRegisterCollect.yy",},},
+    {"id":{"name":"__InputRegisterCollectPlayer","path":"scripts/__InputRegisterCollectPlayer/__InputRegisterCollectPlayer.yy",},},
     {"id":{"name":"__InputRegisterGamepadConnected","path":"scripts/__InputRegisterGamepadConnected/__InputRegisterGamepadConnected.yy",},},
     {"id":{"name":"__InputRegisterGamepadDisconnected","path":"scripts/__InputRegisterGamepadDisconnected/__InputRegisterGamepadDisconnected.yy",},},
     {"id":{"name":"__InputRegisterPlayerDeviceChanged","path":"scripts/__InputRegisterPlayerDeviceChanged/__InputRegisterPlayerDeviceChanged.yy",},},
