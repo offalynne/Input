@@ -3,7 +3,7 @@
 <p align="center">Comprehensive cross-platform input for GameMaker 2024.8 by <a href="https://www.jujuadams.com/" target="_blank">Juju Adams</a>, <a href="https://twitter.com/offalynne" target="_blank">Alynne Keith</a>, and <a href="#/8.0/Credits">Friends</a></p>
 
 <p align="center"><a href="https://github.com/offalynne/Input/releases/" target="_blank">Download the .yymps</a></p>
-<p align="center">Talk about Input on the <a href="https://discord.gg/RDYyRqBswD" target="_blank">Discord server</a></p>
+<p align="center">Talk about Input on the <a href="https://discord.gg/s6NjaV8AnM" target="_blank">Discord server</a></p>
 
 ---
 
@@ -41,7 +41,7 @@ Great! Please make a [feature request](https://github.com/offalynne/Input/issues
 
 **I found a bug, and it both scares and mildly annoys me. What is the best way to get the problem solved?**
 
-Please make a [bug report](https://github.com/offalynne/Input/issues). We check GitHub every day and bug fixes usually go out a couple days after that. You can also grab us on the [Discord server](https://discord.gg/8krYCqr), but that's not a replacement for a nice clear bug report.
+Please make a [bug report](https://github.com/offalynne/Input/issues). We check GitHub every day and bug fixes usually go out a couple days after that. You can also grab us on the [Discord server](https://discord.gg/s6NjaV8AnM), but that's not a replacement for a nice clear bug report.
 
 &nbsp;
 
