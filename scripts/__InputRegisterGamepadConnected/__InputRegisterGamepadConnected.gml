@@ -9,7 +9,7 @@ function __InputRegisterGamepadConnected()
         __InputTrace("Gamepad ", _device, " connected");
         
         var _gamepad = new __InputClassGamepad(_device);
-        _gamepadArray[_device] = _gamepad;
+        _gamepadArray[@ _device] = _gamepad;
         
         __InputGamepadDiscover(_gamepad);
     });
