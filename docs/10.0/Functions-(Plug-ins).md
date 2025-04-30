@@ -99,6 +99,33 @@ Returns the current library up time. This is measured by incrementing an interna
 
 &nbsp;
 
+## …PlugInGetAllVerbs
+
+`InputPlugInGetAllVerbs()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Array of integers, the verb indexes for all defined verbs
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+Returns an array of all verb indexes that have been defined by `InputDefineVerb()`. The verb indexes will not necessarily be sequential or ordered.
+
+#### **Example**
+
+```gml
+{
+    
+}
+```
+<!-- tabs:end -->
+
+&nbsp;
+
 ## …PlugInVerbSet
 
 `InputPlugInVerbSet()`
@@ -115,6 +142,38 @@ Returns the current library up time. This is measured by incrementing an interna
 |`value`        |number  |Value to set for the verb. This is the primary value for the being e.g. exposed via `InputValue()`                                |
 |`[rawValue]`   |number  |**Raw** value to set for the verb. This is used to calculate cluster values. If not specified, the `value` parameter above is used|
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                                                                              |
+
+?> This function must be called from within a `INPUT_PLUG_IN_CALLBACK.UPDATE_PLAYER` callback.
+
+#### **Example**
+
+```gml
+{
+    
+}
+```
+<!-- tabs:end -->
+
+&nbsp;
+
+## …PlugInVerbStateSet
+
+`InputPlugInVerbStateSet(verbIndex, [prevHeld], [valueRaw], [valueClamp], [pressFrame], [playerIndex=0])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name           |Datatype|Purpose                                                                                                                                           |
+|---------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+|`verbIndex`    |integer |Verb to target                                                                                                                                    |
+|`[prevHeld]`   |boolean |Whether the verb was held on the press frame. If not specified (the value is `undefined`) then the existing value remains                         |
+|`[valueRaw]`   |number  |Raw value for the verb. If not specified (the value is `undefined`) then the existing value remains                                               |
+|`[valueClamp]` |number  |Clamped value for the verb, taking into account thresholds and limits. If not specified (the value is `undefined`) then the existing value remains|
+|`[pressFrame]` |integer |The frame that the verb was pressed. If not specified (the value is `undefined`) then the existing value remains                                  |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                                                                                              |
 
 ?> This function must be called from within a `INPUT_PLUG_IN_CALLBACK.UPDATE_PLAYER` callback.
 
