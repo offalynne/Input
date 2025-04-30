@@ -194,14 +194,20 @@ Returns last pressed verb from among the array of verbs provided. The verb does 
 #### **Example**
 
 ```gml
-//Set the level of the damage depending on current attack verb
-switch(InputMostRecent([INPUT_VERB.LIGHT, INPUT_VERB.MEDIUM, INPUT_VERB.HEAVY])
+//Choose the colour of the damage text based on what spell we cast last
+switch(InputLast[INPUT_VERB.FIRE, INPUT_VERB.WATER, INPUT_VERB.AIR, INPUT_VERB.EARTH, INPUT_VERB.HEART])
 {
-    case INPUT_VERB.LIGHT:  damage =  15; break;
-    case INPUT_VERB.MEDIUM: damage =  50; break;
-    case INPUT_VERB.HEAVY:  damage = 300; break;
-    default:                damage =   0; break;
+    case INPUT_VERB.FIRE:  draw_set_colour(c_red);     break;
+    case INPUT_VERB.WATER: draw_set_colour(c_blue);    break;
+    case INPUT_VERB.AIR:   draw_set_colour(c_yellow);  break;
+    case INPUT_VERB.EARTH: draw_set_colour(c_lime);    break;
+    case INPUT_VERB.HEART: draw_set_colour(c_fuchsia); break;
 }
+
+draw_text(x, y, "Damage: " + string(damage));
+
+//Reset the draw colour!
+draw_set_colour(c_white);
 ```
 
 <!-- tabs:end -->
