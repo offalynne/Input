@@ -13,16 +13,18 @@ function InputBindingsReset(_forGamepad, _playerIndex = 0)
     {
         array_map_ext(_playerArray[_playerIndex].__gamepadBindingArray, function(_element, _index)
         {
-            static _verbArray = __InputSystem().__verbDefinitionArray;
-            return variable_clone(_verbArray[_index].__gamepadBinding);
+            static _verbDefinitionArray = __InputSystem().__verbDefinitionArray;
+            var _verbDefinition = _verbDefinitionArray[_index];
+            return (_verbDefinition != undefined)? variable_clone(_verbDefinition.__gamepadBinding) : [];
         });
     }
     else
     {
         array_map_ext(_playerArray[_playerIndex].__kbmBindingArray, function(_element, _index)
         {
-            static _verbArray = __InputSystem().__verbDefinitionArray;
-            return variable_clone(_verbArray[_index].__kbmBinding);
+            static _verbDefinitionArray = __InputSystem().__verbDefinitionArray;
+            var _verbDefinition = _verbDefinitionArray[_index];
+            return (_verbDefinition != undefined)? variable_clone(_verbDefinition.__kbmBinding) : [];
         });
     }
 }
