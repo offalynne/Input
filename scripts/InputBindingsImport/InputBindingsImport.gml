@@ -11,9 +11,8 @@
 
 function InputBindingsImport(_forGamepad, _data, _playerIndex = 0)
 {
-    static _playerArray         = __InputSystemPlayerArray();
-    static _verbDefinitionArray = __InputSystem().__verbDefinitionArray;
-    static _verbCount           = __InputSystem().__verbCount;
+    static _playerArray = __InputSystemPlayerArray();
+    static _verbCount   = __InputSystem().__verbCount;
     
     var _bindingArray = _forGamepad? _playerArray[_playerIndex].__gamepadBindingArray : _playerArray[_playerIndex].__kbmBindingArray;
     var _i = 0;

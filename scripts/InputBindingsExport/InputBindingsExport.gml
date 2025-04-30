@@ -11,9 +11,8 @@
 
 function InputBindingsExport(_forGamepad, _playerIndex = 0)
 {
-    static _playerArray         = __InputSystemPlayerArray();
-    static _verbDefinitionArray = __InputSystem().__verbDefinitionArray;
-    static _verbCount           = __InputSystem().__verbCount;
+    static _playerArray = __InputSystemPlayerArray();
+    static _verbCount   = __InputSystem().__verbCount;
     
     var _output = {};
     
