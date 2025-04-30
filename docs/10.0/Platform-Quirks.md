@@ -27,8 +27,6 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Gamepad vibration is only available for Windows XInput gamepads. Enabling vibration for additional gamepads requires the [Steamworks extension](Steamworks).
 
-- [Game Controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping on older versions of GameMaker. Specifically, the runtime is using an old version of the identifying string used to differentiate gamepads, resulting in the feature being marginally limited on the platform.
-
 - On OS versions below Windows 10, some Bluetooth gamepads fail to operate correctly. This is a system-level problem beyond our capability to address.
 
 - Xbox Game Bar is known to be problematic for Xbox gamepad use with many games including the Game Maker Studio runtime causing application freezing and slowdown. [Disabling Xbox Game Bar](https://www.epicgames.com/help/en-US/rocket-league-c5719357623323/troubleshooting-c7261971242139/how-do-i-turn-off-game-mode-xbox-game-bar-and-captures-on-my-pc-to-improve-rocket-league-s-performance-a5720078869147) may resolve the issue.
@@ -47,19 +45,13 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - The "gamepad select" button takes a screenshot on double press and records video on long press. Be aware when setting default bindings that this can be problematic for users with the feature enabled (default OS behaviour).
 
-- GameMaker's [game controller mapping](Controller-Mapping) implementation has a bug regarding remapping devices in the inbuilt remapping database (marked "fixed" by YYG, though it persists). Input fixes this with a value offset for gamepad button and axis inputs.
-
 - GameMaker does not support gamepad vibration on this platform
 
 ### Ubuntu
 
 - Keyboard input that results in printable characters outside the Basic-Latin character set are not detected, and can not be bound.
 
-- Gamepads are sometimes misreported and often over-reported on the platform so [device blocking](Controller-Mapping#controller-blacklist) is particularly useful.
-
 - Gamepad indices do not enumerate predictably. Use source assignment or source hotswap features to avoid assigning players a gamepad index manually.
-
-- Gamepad joystick axes are not signed. GameMaker attempts to automatically sign joystick axes when they connect, but this change is discarded when gamepads are remapped. Input automatically adjusts joystick axes' range on remapping in order to resolve this.
 
 - GameMaker does not support gamepad vibration on this platform
 
@@ -125,21 +117,13 @@ By default, GameMaker handles double click on the left mouse button as a [right 
 
 - Mouse input is partially functional. GameMaker uses the first mouse "device" for both touchscreen input and mouse, so there is no certain way to determine which is in use. Mouse position updates when the mouse is clicked. By default mouse input is off (see above).
 
-- [Game controller mapping](Controller-Mapping) faces some limitations imposed by the implementation of SDL2's gamepad mapping. Specifically, the runtime is using an old version of the identifying string used to differentiate gamepads, resulting in the feature being marginally limited on the platform.
-
-- Gamepads are sometimes misreported and often over-reported on the platform so [device blocking](Controller-Mapping#controller-blacklist) is particularly useful.
-
 - Gamepad indices do not enumerate predictably. Use source assignment or source hotswap features to avoid assigning players a gamepad index manually.
-
-- Due to GameMaker's handling of the Android gamepad stack, some gamepads do not have functional dpad mappings.
 
 - Switch JoyCons are not properly handled by some versions of the Android kernel. As a result, they are not supported in some circumstances.
 
 &nbsp;
 
 ## HTML5
-
-- Web browsers have their own gamepad API, as such Input does not use its own [game controller mapping](Controller-Mapping) on the platform. Input will use the browser's gamepad implementation, including button mapping.
 
 - In order for gamepads to present and operate, the user must first press a button with the game in focus.
 
