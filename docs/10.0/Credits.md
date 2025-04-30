@@ -4,7 +4,7 @@
 
 Input has had many people contribute to it over the years. Juju and Alynne would like to extended their gratitude to everyone who has made a pull request, reported a bug, or just offered some encouragement. Input is truly a team effort. **Thank you.**
 
-You can get your name on this page too! Contributions are welcome on [GitHub](https://github.com/JujuAdams/Input) and discussion is ongoing on [Discord](https://discord.gg/8krYCqr).
+You can get your name on this page too! Contributions are welcome on [GitHub](https://github.com/JujuAdams/Input) and discussion is ongoing on [Discord](https://discord.gg/s6NjaV8AnM).
 
 ?> If you'd like to credit us in your game, please use "Juju Adams, Alynne Keith, and Friends".
 
@@ -28,7 +28,7 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
-<figure><img src="assets/comic_verbs.png" style="width:80%; display: block; margin: 60px auto 20px; max-width: 480px; height: auto;" /></figure>
+<!--figure><img src="assets/comic_verbs.png" style="width:80%; display: block; margin: 60px auto 20px; max-width: 480px; height: auto;" /></figure-->
 
 &nbsp;
 
@@ -50,7 +50,7 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
-<figure><img src="assets/comic_multidevice.png" style="width:80%; display: block; margin: 25px auto 15px; max-width: 300px; height: auto;" /></figure>
+<!--figure><img src="assets/comic_multidevice.png" style="width:80%; display: block; margin: 25px auto 15px; max-width: 300px; height: auto;" /></figure-->
 
 &nbsp;
 
@@ -78,7 +78,7 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
-<figure><img src="assets/comic_web.png" style="width:80%; display: block; margin: 60px auto 30px; max-width: 450px; height: auto;" /></figure>
+<!--figure><img src="assets/comic_web.png" style="width:80%; display: block; margin: 60px auto 30px; max-width: 450px; height: auto;" /></figure-->
 
 &nbsp;
 
@@ -99,14 +99,14 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 <p align="center">(<a href="https://twitter.com/DragoniteSpam" target="_blank">Twitter</a>)</p>
 
 &nbsp;
-
+<!--
 <h3 align="center">Grace</h3>
 <p align="center"><i>Newbie guide and testing</i></p>
-<!--p align="center">(<a href="https://twitter.com/gart_gh" target="_blank">Twitter</a>)</p-->
+<p align="center">(<a href="https://twitter.com/gart_gh" target="_blank">Twitter</a>)</p>
 
 &nbsp;
-
-<figure><img src="assets/comic_history.png" style="width:80%; display: block; margin: 50px auto 15px; max-width: 300px; height: auto;" /></figure>
+-->
+<!--figure><img src="assets/comic_history.png" style="width:80%; display: block; margin: 50px auto 15px; max-width: 300px; height: auto;" /></figure-->
 
 &nbsp;
 
@@ -127,10 +127,10 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 <p align="center">(<a href="https://chequered.ink/" target="_blank">Website</a>)</p>
 
 &nbsp;
-
+<!--
 <h3 align="center">neerikiffu</h3>
 <p align="center"><i>Credit cartoons</i></p>
 <p align="center">(<a href="https://neerikiffu.carrd.co" target="_blank">Website</a>)</p>
 
 &nbsp;
-
+-->
