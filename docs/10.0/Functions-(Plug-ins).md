@@ -6,9 +6,9 @@ The page covers the plug-in component of Input. The plug-in API is intended for 
 
 Input's plug-ins operate on a callback basis. Callbacks are simple methods that you provide that the library will call for you at the appropriate time during operation. Callbacks can be set up with `InputPlugInRegisterCallback()` and the documentation for this function below lists all the callback locations that you can hook into.
 
-You can execute your own code in the callback that you provided, such as setting up savedata links on Xbox when a gamepad is connected. The plug-in API also includes a handful of functions to directly alter the internal state of Input. For example, `InputPlugInVerbSet()` allows you to set a verb's raw value. You could use this function to force verbs to be certain values depending on the game state, such as blocking movement input when a pause menu is open.
+You can execute your own code in the callback that you provided, such as setting up savedata links on Xbox when a gamepad is connected. The plug-in API also includes a handful of functions to directly alter the internal state of Input. For example, `InputPlugInVerbSet()` allows you to set a verb's raw value. You could use this function to force verbs to be certain values depending on the game state, such as blocking movement verbs when a pause menu is open.
 
-The plug-in API has many uses for individual projects and games. However, the plug-in API (as the name might suggest) is also helpful for community contributors who want to make and share their own tools that utilize Input. If you're made something you're really proud of, [please contact us](https://github.com/offalynne/Input/issues). We want to see what people are making!
+The plug-in API has many uses for individual projects and games. However, the plug-in API is also helpful for community contributors who want to make and share their own tools that utilize Input. If you're made something you're really proud of, [please contact us](https://github.com/offalynne/Input/issues). We want to see what people are making!
 
 &nbsp;
 
@@ -31,6 +31,24 @@ The plug-in API has many uses for individual projects and games. However, the pl
 Registers a callback to be executed at a suitable time by the library. The callback type should be a member of the `INPUT_PLUG_IN_CALLBACK` enum.
 
 You may also specify a callback priority. Because many callbacks can be registered to any particular callback type, and because code order might matter in some situations, it is useful to be able to control what order callbacks are executed. Native library code always has a priority of 0 and plug-ins cannot use a priority of 0. Higher priorities are executed first.
+
+There are various different callback types that you can use. You will need to call `InputPlugInRegisterCallback()` for each method you wish to attach. You may attach multiple methods to the same callback (though we'd recommend using a different priority for each callback to ensure execution order is consistent).
+
+As previously mentioned, all of Input's internal code is executed with a priority of 0. Callbacks with a higher priority are executed before internal code, callbacks with a lower priority are executed after internal code. The table below describes what Input is doing itself for each callback. Attaching a method before a callback allows you to set information that Input will subsequently process. Attaching a method after a callback allows you to override state that Input has set.
+
+The table is organized, from top to bottom, in the rough order of execution per GameMaker step. Not all callbacks will necessarily be executed every frame and some callbacks may be executed multiple times a frame (for example, `.GAMEPAD_DISCONNECTED`). Some callbacks may be executed at different times depending on other factors - the table is a guide.
+
+|Enum member             |Purpose                                                                                         |
+|------------------------|------------------------------------------------------------------------------------------------|
+|`.COLLECT`              |Trigger the raw value collection for all players                                                |
+|`.COLLECT_PLAYER`       |Reset and then collect raw values for each verb for a particular player                         |
+|`.UPDATE`               |Updates the entire state of Input, including focus checks, gamepad state, and per-player updates|
+|`.LOSE_FOCUS`           |Game window has lost focus                                                                      |
+|`.GAIN_FOCUS`           |Game window has regained focus                                                                  |
+|`.GAMEPAD_DISCONNECTED` |Gamepad has been disconnected                                                                   |
+|`.GAMEPAD_CONNECTED`    |Gamepad has been connected                                                                      |
+|`.UPDATE_PLAYER`        |Reset and then update state for every verb: press, press frame, held state, release             |
+|`.PLAYER_DEVICE_CHANGED`|Player changed what device they've been assigned, either due to a hotswap or manual set         |
 
 The method that you specify will be handed parameters, though what parameters specifically depends on the callback type:
 
