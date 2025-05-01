@@ -9,6 +9,8 @@ function InputTriggerEffectSetStrength(_strength, _playerIndex = 0)
 {
     static _playerArray = __InputTriggerEffectSystem().__playerArray;
     
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     if (_playerIndex == INPUT_ALL_PLAYERS)
     {
         var _i = 0;

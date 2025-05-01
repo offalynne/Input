@@ -12,6 +12,8 @@
 
 function InputOpposingPressed(_verbNeg, _verbPos, _playerIndex = 0, _mostRecent = INPUT_OPPOSING_DEFAULT_MOST_RECENT)
 {
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     var _pressedNeg = InputPressed(_verbNeg, _playerIndex);
     var _pressedPos = InputPressed(_verbPos, _playerIndex);
 

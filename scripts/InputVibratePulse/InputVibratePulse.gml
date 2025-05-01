@@ -15,6 +15,8 @@ function InputVibratePulse(_strength, _pan, _repeats, _duration, _playerIndex = 
 {
     static _playerArray = __InputVibrateSystem().__playerArray;
     
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     _strength = clamp(_strength, 0, 1);
     _pan      = clamp(_pan, -1, 1);
     _repeats  = max(_repeats, 0);

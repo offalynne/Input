@@ -8,6 +8,8 @@ function InputPlayerSetMinThreshold(_thresholdType, _value, _playerIndex = 0)
 {
     static _playerArray = __InputSystemPlayerArray();
     
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     with(_playerArray[_playerIndex])
     {
         if (_thresholdType == INPUT_THRESHOLD.BOTH)

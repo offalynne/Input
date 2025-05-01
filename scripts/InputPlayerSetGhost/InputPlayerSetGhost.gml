@@ -15,5 +15,7 @@ function InputPlayerSetGhost(_state, _playerIndex = 0)
 {
     static _playerArray = __InputSystemPlayerArray();
     
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     _playerArray[_playerIndex].__ghost = _state;
 }

@@ -11,7 +11,10 @@
 
 function InputBindingGet(_forGamepad, _verbIndex, _alternate = 0, _playerIndex = 0)
 {
-    var _playerArray = __InputSystemPlayerArray();
+    static _playerArray = __InputSystemPlayerArray();
+    
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     with(_playerArray[_playerIndex])
     {
         var _bindingArray = _forGamepad? __gamepadBindingArray : __kbmBindingArray;

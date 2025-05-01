@@ -12,6 +12,8 @@ function InputLongPressed(_verbIndex, _playerIndex = 0, _duration = INPUT_LONG_D
     static _system      = __InputSystem();
     static _playerArray = __InputSystemPlayerArray();
     
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     with(_playerArray[_playerIndex].__verbStateArray[_verbIndex])
     {
         return (__held && ((_system.__frame - __pressFrame) == _duration));

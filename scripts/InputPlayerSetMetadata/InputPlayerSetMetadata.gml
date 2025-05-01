@@ -11,6 +11,9 @@
 function InputPlayerSetMetadata(_data, _playerIndex = 0, _makeCopy = false)
 {
     static _playerArray = __InputSystemPlayerArray();
+    
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     if (_makeCopy) _data = variable_clone(_data);
     _playerArray[_playerIndex].__metadata = _data;
 }

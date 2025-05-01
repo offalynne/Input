@@ -16,5 +16,7 @@
 
 function InputPlayerGetGamepadType(_playerIndex = 0)
 {
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     return InputDeviceGetGamepadType(InputPlayerGetDevice(_playerIndex));
 }

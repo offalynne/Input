@@ -10,6 +10,9 @@
 function InputVerbConsume(_verbIndex, _playerIndex = 0)
 {
     static _playerArray = __InputSystemPlayerArray();
+    
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     with(_playerArray[_playerIndex])
     {
         if (array_get_index(__consumedArray, __verbStateArray[_verbIndex]) < 0)

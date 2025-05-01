@@ -8,6 +8,8 @@
 
 function InputDeviceGetNewActivityOnVerb(_verbIndex, _playerIndex = 0)
 {
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     var _array = InputDeviceEnumerate(false);
     var _i = 0;
     repeat(array_length(_array))

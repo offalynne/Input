@@ -30,6 +30,8 @@ function InputVerbStateArray(_newArray = true, _playerIndex = 0)
     
     static _staticArray = array_create_ext(InputVerbCount(), _funcGenerate);
     
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     if (_newArray)
     {
         var _targetArray = array_create_ext(InputVerbCount(), _funcGenerate);

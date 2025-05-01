@@ -10,6 +10,8 @@ function InputDeviceCheckViaPlayer(_device, _verbIndex, _playerIndex = 0)
 {
     static _playerArray = __InputSystemPlayerArray();
     
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     with(_playerArray[_playerIndex])
     {
         if (_device >= 0)

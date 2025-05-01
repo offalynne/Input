@@ -9,6 +9,8 @@ function InputTriggerEffectGetState(_trigger, _playerIndex = 0)
 {
     static _playerArray = __InputTriggerEffectSystem().__playerArray;
     
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     if not ((_trigger == gp_shoulderlb) || (_trigger == gp_shoulderrb))
     {
         __InputError("Value ", _trigger ," not a gamepad trigger");
