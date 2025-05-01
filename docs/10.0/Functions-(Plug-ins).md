@@ -64,7 +64,7 @@ The method that you specify will be handed parameters, though what parameters sp
 |`.LOSE_FOCUS`           |_(No parameters)_                               |
 |`.GAIN_FOCUS`           |_(No parameters)_                               |
 
-The `Hardware disconnected` parameter for the `.GAMEPAD_DISCONNECTED` will be set to `true` if a gamepad was disconnected at a hardware level. If the gamepad has been disconnected instead by `InputPlugInGamepadBlock()` then the callback will be executed with the `Hardware disconnected` parameter set to `false`.
+?> The `Hardware disconnected` parameter for the `.GAMEPAD_DISCONNECTED` will be set to `true` if a gamepad was disconnected at a hardware level. If the gamepad has been disconnected instead by `InputPlugInGamepadBlock()` then the callback will be executed with the `Hardware disconnected` parameter set to `false`.
 
 #### **Example**
 
