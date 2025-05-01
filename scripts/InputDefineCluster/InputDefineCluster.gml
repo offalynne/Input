@@ -41,6 +41,6 @@ function InputDefineCluster(_clusterIndex, _verbUp, _verbRight, _verbDown, _verb
     with(_system)
     {
         var _definition = new __InputClassClusterDefinition(_clusterIndex, _verbUp, _verbRight, _verbDown, _verbLeft, _axisBiasFactor, _axisBiasDiagonals, _metadata);
-        __clusterDefinitionArray[_clusterIndex] = _definition;
+        __clusterDefinitionArray[@ _clusterIndex] = _definition;
     }
 }

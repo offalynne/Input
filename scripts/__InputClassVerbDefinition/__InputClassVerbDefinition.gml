@@ -16,7 +16,7 @@ function __InputClassVerbDefinition(_index, _exportName, _kbmBinding, _gamepadBi
         {
             if (is_string(_kbmBinding[_i]))
             {
-                _kbmBinding[_i] = ord(_kbmBinding[_i]);
+                _kbmBinding[@ _i] = ord(_kbmBinding[_i]);
             }
             
             ++_i;

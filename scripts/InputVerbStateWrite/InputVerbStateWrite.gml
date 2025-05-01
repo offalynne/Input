@@ -19,6 +19,8 @@ function InputVerbStateWrite(_buffer, _playerIndex = 0)
     static _system = __InputSystem();
     static _playerArray = __InputSystemPlayerArray();
     
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     var _frame = _system.__frame;
     var _verbCount = InputVerbCount();
     

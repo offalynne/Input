@@ -18,6 +18,8 @@ function InputPlayerSetDevice(_device, _playerIndex = 0)
 {
     static _playerArray = __InputSystemPlayerArray();
     
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     var _oldDevice = _playerArray[_playerIndex].__device;
     
     //Don't do any work if the device hasn't changed

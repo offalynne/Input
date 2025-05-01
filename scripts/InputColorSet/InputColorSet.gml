@@ -9,6 +9,8 @@
 function InputColorSet(_color, _playerIndex = 0)
 {
      static _playerArray = __InputColorSystem().__playerArray;
+    
+    __INPUT_VALIDATE_PLAYER_INDEX
      
      _playerArray[_playerIndex].__SetColor(_color);
 }

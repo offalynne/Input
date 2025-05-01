@@ -6,5 +6,7 @@
 
 function InputPlayerHasDevice(_playerIndex = 0)
 {
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     return (InputPlayerGetDevice(_playerIndex) != INPUT_NO_DEVICE);
 }

@@ -14,6 +14,8 @@ function InputLast(_verbIndexArray = -1, _playerIndex = 0)
     static _playerArray       = __InputSystemPlayerArray();
     static _verbDefIndexArray = _system.__verbDefIndexArray;
     
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     //Convert `-1` to the array of all verb definitions
     if (is_numeric(_verbIndexArray) && (_verbIndexArray == -1))
     {

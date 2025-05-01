@@ -14,6 +14,8 @@ function InputRepeat(_verbIndex, _playerIndex = 0, _delay = INPUT_REPEAT_DEFAULT
     static _system      = __InputSystem();
     static _playerArray = __InputSystemPlayerArray();
     
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     with(_playerArray[_playerIndex].__verbStateArray[_verbIndex])
     {
         if (not __held) return false;

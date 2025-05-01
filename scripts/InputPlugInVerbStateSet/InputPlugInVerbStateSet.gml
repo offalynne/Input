@@ -14,6 +14,8 @@ function InputPlugInVerbStateSet(_verbIndex, _prevHeld = undefined, _valueRaw = 
     static _system = __InputSystem();
     static _playerArray = __InputSystemPlayerArray();
     
+    __INPUT_VALIDATE_PLAYER_INDEX
+
     if (_system.__plugInCurrentCallback != INPUT_PLUG_IN_CALLBACK.UPDATE_PLAYER)
     {
         __InputError("Cannot call InputPlugInVerbStateSet() outside of a INPUT_PLUG_IN_CALLBACK.UPDATE_PLAYER callback");

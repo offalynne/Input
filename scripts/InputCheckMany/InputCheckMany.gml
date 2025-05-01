@@ -5,8 +5,8 @@
 /// and will return `true` if any of the verbs are active for any of the players. You may use the
 /// value `-1` for the `playerIndex` parameter to check for input across all players.
 /// 
-/// @param {Enum.INPUT_VERB,Real,Array} verbIndex
-/// @param {Real,Array} [playerIndex=0]
+/// @param {Enum.INPUT_VERB,Real,Array} verbIndexArray
+/// @param {Real,Array} [playerIndexArray=0]
 
 function InputCheckMany(_verbIndexArray, _playerIndexArray = 0)
 {

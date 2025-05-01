@@ -9,6 +9,9 @@
 function InputDirection(_default, _clusterIndex, _playerIndex = 0)
 {
     static _playerArray = __InputSystemPlayerArray();
+    
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     with(_playerArray[_playerIndex])
     {
         var _x = __clusterXArray[_clusterIndex];

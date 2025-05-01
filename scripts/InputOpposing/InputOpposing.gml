@@ -13,6 +13,8 @@ function InputOpposing(_verbNeg, _verbPos, _playerIndex = 0, _mostRecent = INPUT
 {
     static _playerArray = __InputSystemPlayerArray();
     
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     var _heldNeg = InputCheck(_verbNeg, _playerIndex);
     var _heldPos = InputCheck(_verbPos, _playerIndex);
     

@@ -11,9 +11,10 @@
 
 function InputBindingsExport(_forGamepad, _playerIndex = 0)
 {
-    static _playerArray         = __InputSystemPlayerArray();
-    static _verbDefinitionArray = __InputSystem().__verbDefinitionArray;
-    static _verbCount           = __InputSystem().__verbCount;
+    static _playerArray = __InputSystemPlayerArray();
+    static _verbCount   = __InputSystem().__verbCount;
+    
+    __INPUT_VALIDATE_PLAYER_INDEX
     
     var _output = {};
     
@@ -21,7 +22,12 @@ function InputBindingsExport(_forGamepad, _playerIndex = 0)
     var _i = 0;
     repeat(_verbCount)
     {
-        _output[$ InputVerbGetExportName(_i)] = variable_clone(_bindingArray[_i]);
+        var _exportName = InputVerbGetExportName(_i);
+        if (_exportName != undefined)
+        {
+            _output[$ _exportName] = variable_clone(_bindingArray[_i]);
+        }
+        
         ++_i;
     }
     

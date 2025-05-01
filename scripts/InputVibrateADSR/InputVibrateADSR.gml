@@ -18,6 +18,8 @@ function InputVibrateADSR(_peakStrength, _sustainLevel, _pan, _attack, _decay, _
 {
     static _playerArray = __InputVibrateSystem().__playerArray;
     
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     _peakStrength = clamp(_peakStrength, 0, 1);
     _sustainLevel = clamp(_sustainLevel, 0, 1);
     _pan          = clamp(_pan, -1, 1);

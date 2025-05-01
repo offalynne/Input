@@ -10,6 +10,8 @@ function InputPlugInVerbStateRead(_buffer, _playerIndex = 0)
     static _system = __InputSystem();
     static _playerArray = __InputSystemPlayerArray();
     
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     if (_system.__plugInCurrentCallback != INPUT_PLUG_IN_CALLBACK.UPDATE_PLAYER)
     {
         __InputError("Cannot call InputPlugInVerbStateRead() outside of a INPUT_PLUG_IN_CALLBACK.UPDATE_PLAYER callback");

@@ -137,7 +137,7 @@ function __InputRegisterUpdate()
                     //Meta release sticks every key pressed during hold
                     //This is "the nuclear option", but the problem is severe
                     var _i = 8;
-                    var _len = 255 - _i;
+                    var _len = 0x100 - _i;
                     repeat(_len)
                     {
                         keyboard_key_release(_i);

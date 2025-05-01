@@ -6,11 +6,11 @@ function __InputRegisterCollect()
     {
         static _playerArray = __InputSystemPlayerArray();
         
-        //Update player verb states
+        //Collect raw verb values from players' devices
         var _i = 0;
         repeat(INPUT_MAX_PLAYERS)
         {
-            _playerArray[_i].__Collect();
+            __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.COLLECT_PLAYER, _i);
             ++_i;
         }
     });

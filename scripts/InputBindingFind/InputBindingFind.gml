@@ -12,12 +12,14 @@
 
 function InputBindingFind(_forGamepad, _binding, _playerIndex = 0)
 {
-    static _verbCount = __InputSystem().__verbCount;
+    static _playerArray = __InputSystemPlayerArray();
+    static _verbCount   = __InputSystem().__verbCount;
     
     static _array = [];
     array_resize(_array, 0);
     
-    var _playerArray = __InputSystemPlayerArray();
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     with(_playerArray[_playerIndex])
     {
         var _bindingArray = _forGamepad? __gamepadBindingArray : __kbmBindingArray;
@@ -29,7 +31,7 @@ function InputBindingFind(_forGamepad, _binding, _playerIndex = 0)
             var _alternate = 0;
             repeat(array_length(_alternateArray))
             {
-                if (_alternateArray == _binding)
+                if (_alternateArray[_alternate] == _binding)
                 {
                     array_push(_array, {
                         verbIndex: _verbIndex,
