@@ -9,5 +9,8 @@
 function InputPlayerGetInactive(_duration = 500, _playerIndex = 0)
 {
     static _playerArray = __InputSystemPlayerArray();
+    
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     return (current_time - _playerArray[_playerIndex].__lastInputTime > _duration);
 }

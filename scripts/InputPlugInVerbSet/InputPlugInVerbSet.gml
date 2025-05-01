@@ -12,6 +12,8 @@ function InputPlugInVerbSet(_verbIndex, _value, _rawValue = _value, _playerIndex
     static _system      = __InputSystem();
     static _playerArray = __InputSystemPlayerArray();
     
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     if (_system.__plugInCurrentCallback != INPUT_PLUG_IN_CALLBACK.UPDATE_PLAYER)
     {
         __InputError("Cannot call InputPlugInVerbSet() outside of a INPUT_PLUG_IN_CALLBACK.UPDATE_PLAYER callback");

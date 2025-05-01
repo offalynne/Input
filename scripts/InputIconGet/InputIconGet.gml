@@ -10,6 +10,8 @@
 
 function InputIconGet(_verbIndex, _alternate = 0, _playerIndex = 0)
 {
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     var _forGamepad = InputPlayerUsingGamepad(_playerIndex);
     return InputIconGetDirect(InputBindingGet(_forGamepad, _verbIndex, _alternate, _playerIndex),
                                  _forGamepad,

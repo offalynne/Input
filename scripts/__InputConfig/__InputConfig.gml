@@ -4,6 +4,11 @@
 // incur a slight performance penalty.
 #macro INPUT_MAX_PLAYERS  1
 
+// Whether the library should perform extra checks to validate parameters for functions. This will
+// catch small mistakes but also incurs a performance penalty. If you want maximum speed from the
+// library, set this macro to `false`.
+#macro INPUT_SAFETY_CHECKS  true
+
 ////////////////
 //            //
 //  Checkers  //

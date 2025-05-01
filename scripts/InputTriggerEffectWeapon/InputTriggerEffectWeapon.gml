@@ -18,5 +18,7 @@ function InputTriggerEffectWeapon(_trigger, _start, _end, _strength, _playerInde
 {
     static _playerArray = __InputTriggerEffectSystem().__playerArray;
     
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     _playerArray[_playerIndex].__SetTriggerEffect(_trigger, new __InputTriggerEffectClassWeapon(_trigger, _start, _end, _strength), true);
 }

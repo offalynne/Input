@@ -9,6 +9,8 @@ function InputBindingsReset(_forGamepad, _playerIndex = 0)
 {
     static _playerArray = __InputSystemPlayerArray();
     
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     if (_forGamepad)
     {
         array_map_ext(_playerArray[_playerIndex].__gamepadBindingArray, function(_element, _index)

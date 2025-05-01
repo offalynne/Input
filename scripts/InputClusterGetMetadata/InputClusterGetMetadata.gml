@@ -11,6 +11,9 @@
 function InputClusterGetMetadata(_cluster, _playerIndex = 0, _makeCopy = false)
 {
     static _playerArray = __InputSystemPlayerArray();
+    
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     var _data = _playerArray[_playerIndex].__clusterMetadataArray[_cluster];
     return _makeCopy? variable_clone(_data) : _data;
 }
