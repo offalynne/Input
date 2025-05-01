@@ -29,7 +29,7 @@ function InputBindingFind(_forGamepad, _binding, _playerIndex = 0)
             var _alternate = 0;
             repeat(array_length(_alternateArray))
             {
-                if (_alternateArray == _binding)
+                if (_alternateArray[_alternate] == _binding)
                 {
                     array_push(_array, {
                         verbIndex: _verbIndex,
