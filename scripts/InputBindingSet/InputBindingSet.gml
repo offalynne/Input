@@ -28,13 +28,13 @@ function InputBindingSet(_forGamepad, _verbIndex, _binding, _alternate = 0, _pla
             var _i = array_length(_alternateArray);
             repeat((_alternate - 1) - array_length(_alternateArray))
             {
-                _alternateArray[_i] = undefined;
+                _alternateArray[@ _i] = undefined;
                 ++_i;
             }
         }
         
         var _prevBinding = _alternateArray[_alternate];
-        _alternateArray[_alternate] = _binding;
+        _alternateArray[@ _alternate] = _binding;
         
         if (_forGamepad && (_prevBinding != _binding) && (__InputBindingIsThumbstick(_binding) || __InputBindingIsThumbstick(_binding)))
         {

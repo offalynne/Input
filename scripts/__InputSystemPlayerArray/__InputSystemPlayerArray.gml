@@ -16,7 +16,7 @@ function __InputSystemPlayerArray()
             {
                 if (not is_struct(__verbDefinitionArray[_i]))
                 {
-                    __verbDefinitionArray[_i] = undefined;
+                    __verbDefinitionArray[@ _i] = undefined;
                 }
                 
                 ++_i;

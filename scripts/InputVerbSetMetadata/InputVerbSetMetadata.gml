@@ -13,5 +13,7 @@
 function InputVerbSetMetadata(_verb, _data, _playerIndex = 0, _makeCopy = false)
 {
     static _playerArray = __InputSystemPlayerArray();
-    _playerArray[_playerIndex].__verbMetadataArray[_verb] = _makeCopy? variable_clone(_data) : _data;
+    
+    var _verbMetadataArray = _playerArray[_playerIndex].__verbMetadataArray
+    _verbMetadataArray[@ _verb] = _makeCopy? variable_clone(_data) : _data;
 }
