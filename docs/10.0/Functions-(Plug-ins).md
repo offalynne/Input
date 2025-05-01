@@ -2,6 +2,16 @@
 
 &nbsp;
 
+The page covers the plug-in component of Input. The plug-in API is intended for users who need extra control over Input's internal systems. The majority of use cases can safely avoid these functions.
+
+Input's plug-ins operate on a callback basis. Callbacks are simple methods that you provide that the library will call for you at the appropriate time during operation. Callbacks can be set up with `InputPlugInRegisterCallback()` and the documentation for this function below lists all the callback locations that you can hook into.
+
+You can execute your own code in the callback that you provided, such as setting up savedata links on Xbox when a gamepad is connected. The plug-in API also includes a handful of functions to directly alter the internal state of Input. For example, `InputPlugInVerbSet()` allows you to set a verb's raw value. You could use this function to force verbs to be certain values depending on the game state, such as blocking movement input when a pause menu is open.
+
+The plug-in API has many uses for individual projects and games. However, the plug-in API (as the name might suggest) is also helpful for community contributors who want to make and share their own tools that utilize Input. If you're made something you're really proud of, [please contact us](https://github.com/offalynne/Input/issues). We want to see what people are making!
+
+&nbsp;
+
 ## …PlugInRegisterCallback
 
 `InputPlugInRegisterCallback(callbackType, [priority=-1], method)`
@@ -18,7 +28,11 @@
 |`[priority]`   |integer |If not specified, `-1` is used which will execute the callback after native code                             |
 |`method`       |method  |The method to execute                                                                                        |
 
-Registers a callback to be executed at a suitable time by the library. The callback type should be a member of the `INPUT_PLUG_IN_CALLBACK` enum. The method that you specify will be handed parameters, though what parameters specifically depends on the callback type:
+Registers a callback to be executed at a suitable time by the library. The callback type should be a member of the `INPUT_PLUG_IN_CALLBACK` enum.
+
+You may also specify a callback priority. Because many callbacks can be registered to any particular callback type, and because code order might matter in some situations, it is useful to be able to control what order callbacks are executed. Native library code always has a priority of 0 and plug-ins cannot use a priority of 0. Higher priorities are executed first.
+
+The method that you specify will be handed parameters, though what parameters specifically depends on the callback type:
 
 |Enum member             |Parameters                                      |
 |------------------------|------------------------------------------------|
@@ -31,8 +45,6 @@ Registers a callback to be executed at a suitable time by the library. The callb
 |`.UPDATE_PLAYER`        |Player index                                    |
 |`.LOSE_FOCUS`           |_(No parameters)_                               |
 |`.GAIN_FOCUS`           |_(No parameters)_                               |
-
- You may also specify a callback priority. Because many callbacks can be registered to any particular callback type, and because code order might matter in some situations, it is useful to be able to control what order callbacks are executed. Native library code always has a priority of 0 and plug-ins cannot use a priority of 0. Higher priorities are executed first.
 
 #### **Example**
 
