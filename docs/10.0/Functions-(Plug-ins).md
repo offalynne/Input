@@ -317,6 +317,8 @@ Forces a gamepad to be blocked. This is helpful for plug-ins that are designed t
 |`device`|integer |Device to target                                             |
 |`type`  |integer |Gamepad type to set, one of the `INPUT_GAMEPAD_TYPE_*` macros|
 
+A list of valid gamepad types can be found [here](Functions-(Player)?id=getgamepadtype).
+
 #### **Example**
 
 ```gml
