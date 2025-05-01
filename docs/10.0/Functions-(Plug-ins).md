@@ -56,13 +56,15 @@ The method that you specify will be handed parameters, though what parameters sp
 |------------------------|------------------------------------------------|
 |`.COLLECT`              |_(No parameters)_                               |
 |`.UPDATE`               |_(No parameters)_                               |
-|`.GAMEPAD_DISCONNECTED` |Device index, Actually disconnected             |
+|`.GAMEPAD_DISCONNECTED` |Device index, Hardware disconnected             |
 |`.GAMEPAD_CONNECTED`    |Device index                                    |
 |`.PLAYER_DEVICE_CHANGED`|Player index, Old device index, New device index|
 |`.COLLECT_PLAYER`       |Player index                                    |
 |`.UPDATE_PLAYER`        |Player index                                    |
 |`.LOSE_FOCUS`           |_(No parameters)_                               |
 |`.GAIN_FOCUS`           |_(No parameters)_                               |
+
+The `Hardware disconnected` parameter for the `.GAMEPAD_DISCONNECTED` will be set to `true` if a gamepad was disconnected at a hardware level. If the gamepad has been disconnected instead by `InputPlugInGamepadBlock()` then the callback will be executed with the `Hardware disconnected` parameter set to `false`.
 
 #### **Example**
 
