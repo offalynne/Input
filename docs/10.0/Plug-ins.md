@@ -2,9 +2,9 @@
 
 &nbsp;
 
-Prior versions of Input have included a lot of functionality in the library itself making it bulky. To streamline Input, many features have been split off and reimplemented as plug-ins that you can choose to use if you want. These plug-ins are additional bits of code that bolt onto the core Input library, taking advantage of a new plug-in API.
+?> This page covers the default plug-ins that ship with Input. You can also create your own plug-ins by using the [plug-in API](Functions-(Plug-ins)).
 
-?> You can also create your own plug-ins by using the [plug-in API](Functions-(Plug-ins)).
+Prior versions of Input have included a lot of functionality in the library itself making it bulky. To streamline Input, many features have been split off and reimplemented as plug-ins that you can choose to use if you want. These plug-ins are additional bits of code that bolt onto the core Input library, taking advantage of a new plug-in API.
 
 &nbsp;
 
