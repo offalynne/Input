@@ -15,6 +15,4 @@
 
 &nbsp;
 
-&nbsp;
-
 <p align="center">Looking for Input 8 for GameMaker LTS 2022? <a href="https://github.com/offalynne/Input/tree/dev_8.1">Code</a>, <a href="https://offalynne.github.io/Input/#/8.1/">Documentation</a>, <a href="https://github.com/offalynne/Input/releases/tag/8.1.3">Release (.yymps)</a></p>
