@@ -70,7 +70,7 @@ Manually collects player input from devices. Should only be called when `INPUT_C
 
 ## …GetBindingName
 
-`InputGetBindingName(binding, forGamepad, gamepadType, [missingBindingName="???"])`
+`InputGetBindingName(binding, forGamepad, [missingBindingName="???"])`
 
 <!-- tabs:start -->
 
@@ -82,7 +82,6 @@ Manually collects player input from devices. Should only be called when `INPUT_C
 |----------------------|--------|----------------------------------------------------------|
 |`binding`             |any     |Binding to return the name of                             |
 |`forGamepad`          |boolean |Whether the returned value should be for a gamepad binding|
-|`gamepadType`         |integer |What type of gamepad to returnt he binding name for       |
 |`[missingBindingName]`|any     |Value to return when a binding name cannot be found       |
 
 Returns a name for a binding when using a gamepad for a particular gamepad type, or the keyboard and mouse device (`INPUT_KBM`) if `forGamepad` is set to `false`. If a name for a binding cannot be found, this function will return `missingBindingName` (which is `"???"` by default). [You can see a full list of bindings here](Binding-Names).
