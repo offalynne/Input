@@ -1,8 +1,6 @@
 // Feather disable all
 
 /// Returns whether party joining is currently active.
-/// 
-/// @param {Boolean} state
 
 function InputPartyGetJoin()
 {
