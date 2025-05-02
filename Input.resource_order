@@ -37,7 +37,7 @@
     {"name":"Test Case","order":4,"path":"folders/Test Case.yy",},
   ],
   "ResourceOrderSettings":[
-    {"name":"acVibrationTest","order":12,"path":"animcurves/acVibrationTest/acVibrationTest.yy",},
+    {"name":"acVibrationTest","order":13,"path":"animcurves/acVibrationTest/acVibrationTest.yy",},
     {"name":"objTest001_Gamepad","order":1,"path":"objects/objTest001_Gamepad/objTest001_Gamepad.yy",},
     {"name":"objTest002_Clusters","order":2,"path":"objects/objTest002_Clusters/objTest002_Clusters.yy",},
     {"name":"objTest003_AdvancedCheckers","order":3,"path":"objects/objTest003_AdvancedCheckers/objTest003_AdvancedCheckers.yy",},
@@ -48,7 +48,8 @@
     {"name":"objTest101_Vibration","order":8,"path":"objects/objTest101_Vibration/objTest101_Vibration.yy",},
     {"name":"objTest102_Color","order":9,"path":"objects/objTest102_Color/objTest102_Color.yy",},
     {"name":"objTest103_TriggerEffects","order":10,"path":"objects/objTest103_TriggerEffects/objTest103_TriggerEffects.yy",},
-    {"name":"objTest200_ConsoleSuite","order":11,"path":"objects/objTest200_ConsoleSuite/objTest200_ConsoleSuite.yy",},
+    {"name":"objTest104_Party","order":11,"path":"objects/objTest104_Party/objTest104_Party.yy",},
+    {"name":"objTest200_ConsoleSuite","order":12,"path":"objects/objTest200_ConsoleSuite/objTest200_ConsoleSuite.yy",},
     {"name":"rmTest","order":2,"path":"rooms/rmTest/rmTest.yy",},
     {"name":"rmTestConsoleSuite","order":3,"path":"rooms/rmTestConsoleSuite/rmTestConsoleSuite.yy",},
     {"name":"__InputBindingIsThumbstick","order":9,"path":"scripts/__InputBindingIsThumbstick/__InputBindingIsThumbstick.yy",},
