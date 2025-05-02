@@ -43,6 +43,10 @@ function __InputSystem()
     {
         __InputInitializeSteam();
         
+        // Plugins List
+        __pluginsListQueue = [];
+        __pluginsList = [];
+		
         __deviceMap = ds_map_create();
         
         __frame = 0;

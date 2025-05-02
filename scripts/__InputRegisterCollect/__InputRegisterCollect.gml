@@ -31,6 +31,10 @@ function __InputRegisterCollect()
                     ++_i;
                 }
             }
+			
+            //Registers plugins added via InputPlugInRegisterName.
+            //Tab: Placed at the end to ensure that gamepads are connected and devices are set.
+            __InputPlugInRegisterInit();
         })();
         
         //Collect raw verb values from players' devices
