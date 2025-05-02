@@ -167,25 +167,6 @@ function __InputSystem()
         
         
         
-        //Set a default device for player 0
-        if (INPUT_ON_MOBILE)
-        {
-            InputPlayerSetDevice(INPUT_TOUCH);
-        }
-        else if (INPUT_ON_DESKTOP)
-        {
-            InputPlayerSetDevice(INPUT_KBM);
-        }
-        else if (INPUT_ON_CONSOLE)
-        {
-            var _i = 0;
-            repeat(gamepad_get_device_count())
-            {
-                if (InputDeviceIsConnected(_i)) InputPlayerSetDevice(_i);
-                ++_i;
-            }
-        }
-        
         //Create a time source if the library needs to self-manage
         if (INPUT_COLLECT_MODE != 2)
         {
