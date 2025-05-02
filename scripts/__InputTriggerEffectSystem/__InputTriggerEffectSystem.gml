@@ -15,7 +15,7 @@ enum __INPUT_TRIGGER_EFFECT
 #macro __INPUT_TRIGGER_EFFECT_KEY_START_POSITION  "start_position"
 #macro __INPUT_TRIGGER_EFFECT_KEY_END_POSITION    "end_position"
 
-InputPlugInRegisterName("InputTrigger",,, __InputTriggerEffectSystem);
+InputPlugInRegisterName("InputTriggerEffect",,, __InputTriggerEffectSystem);
 function __InputTriggerEffectSystem()
 {
     static _system = undefined;

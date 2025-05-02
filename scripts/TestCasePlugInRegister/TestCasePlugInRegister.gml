@@ -20,7 +20,7 @@ InputPlugInRegisterName("InputCat",,["InputPaws", "InputFeline"], function() {
 	show_debug_message($"InputCat: \"InputMotion\" {InputPlugInIsRegistered("InputMotion")}");
 	show_debug_message($"InputCat: \"InputColor\" {InputPlugInIsRegistered("InputColor")}");
 	show_debug_message($"InputCat: \"InputParty\" {InputPlugInIsRegistered("InputParty")}");
-	show_debug_message($"InputCat: \"InputTrigger\" {InputPlugInIsRegistered("InputTrigger")}");
+	show_debug_message($"InputCat: \"InputTriggerEffect\" {InputPlugInIsRegistered("InputTriggerEffect")}");
 	show_debug_message($"InputCat: \"InputVibrate\" {InputPlugInIsRegistered("InputVibrate")}");
 });
 
