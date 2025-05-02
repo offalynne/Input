@@ -9,7 +9,6 @@
 /// 
 /// @param {Any} binding
 /// @param {Boolean} forGamepad
-/// @param {Real} gamepadType
 /// @param {Real} [missingBindingName="???"]
 /// 
 /// If `forGamepad` is set to `true` then one of the following will be returned. This is an
@@ -122,14 +121,14 @@
 ///   - `"page down"`
 ///   - `"end"`
 
-function InputGetBindingName(_binding, _forGamepad, _gamepadType, _missingBindingName = "???")
+function InputGetBindingName(_binding, _forGamepad, _missingBindingName = "???")
 {
     static _gamepadButtonNameLookup = __InputSystem().__gamepadButtonNameLookup;
     static _kbmBindingNameMap       = __InputSystem().__kbmBindingNameMap;
     
     if (_forGamepad)
     {
-        return _gamepadButtonNameLookup[_gamepadType][? _binding] ?? _missingBindingName;
+        return _gamepadButtonNameLookup[? _binding] ?? _missingBindingName;
     }
     else
     {
