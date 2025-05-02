@@ -13,7 +13,27 @@ function __InputMotionClass(_device) constructor
     
     __isCalibrated = false;
     
+    if (INPUT_ON_SWITCH || INPUT_ON_PS4 || INPUT_ON_PS5)
+    {
+        //Console platforms are presumed to always have motion data available for their first-party gamepads
+        __hasData = InputDeviceIsGamepad(__device);
+    }
+    else if ((INPUT_ON_WINDOWS || INPUT_ON_LINUX) && InputGetSteamInfo(INPUT_STEAM_INFO.STEAMWORKS))
+    {
+        //Check to see if Steam thinks this device supports gyro & motion
+        var _steamHandle = InputDeviceGetSteamHandle(__device);
+        __hasData = is_numeric(_steamHandle) && is_struct(steam_input_get_motion_data(_steamHandle));
+    }
+    else
+    {
+        __hasData = false;
+    }
+    
     __Clear();
+    
+    
+    
+    
     
     static __Clear = function()
     {
@@ -111,9 +131,13 @@ function __InputMotionClass(_device) constructor
                     var _steamData = steam_input_get_motion_data(_steamHandle);
                     if (not is_struct(_steamData)) 
                     {
+                        //This device is not returning motion data, clear it out!
+                        __hasData = false;
                         __Clear();
                         return;
                     }
+                    
+                    __hasData = true;
                     
                     accelerationX =  _steamData.pos_accel_x / 16384;
                     accelerationY = -_steamData.pos_accel_y / 16384;

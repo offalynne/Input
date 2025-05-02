@@ -221,6 +221,7 @@
     {"id":{"name":"InputMotionGetDirect","path":"scripts/InputMotionGetDirect/InputMotionGetDirect.yy",},},
     {"id":{"name":"InputMotionIsCalibrated","path":"scripts/InputMotionIsCalibrated/InputMotionIsCalibrated.yy",},},
     {"id":{"name":"InputMotionSupported","path":"scripts/InputMotionSupported/InputMotionSupported.yy",},},
+    {"id":{"name":"InputMotionSupportedByPlatform","path":"scripts/InputMotionSupportedByPlatform/InputMotionSupportedByPlatform.yy",},},
     {"id":{"name":"InputMouseCheck","path":"scripts/InputMouseCheck/InputMouseCheck.yy",},},
     {"id":{"name":"InputMouseDeviceX","path":"scripts/InputMouseDeviceX/InputMouseDeviceX.yy",},},
     {"id":{"name":"InputMouseDeviceY","path":"scripts/InputMouseDeviceY/InputMouseDeviceY.yy",},},

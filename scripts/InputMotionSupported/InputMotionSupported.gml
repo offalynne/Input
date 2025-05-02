@@ -6,5 +6,6 @@ function InputMotionSupported(_playerIndex = 0)
 {
     __INPUT_VALIDATE_PLAYER_INDEX
     
-     return (InputMotionGetDirect(InputPlayerGetDevice(_playerIndex)) != undefined);
+    var _motionStruct = InputMotionGetDirect(InputPlayerGetDevice(_playerIndex));
+    return (_motionStruct != undefined)? _motionStruct.__hasData : false;
 }
