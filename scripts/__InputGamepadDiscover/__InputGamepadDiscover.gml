@@ -22,7 +22,6 @@ function __InputGamepadDiscover(_gamepadStruct)
             __type = __InputGamepadIdentifySwitchType(_device, __description);
             
             //Going full custom
-            //TODO - Requires testing
             InputPlugInGamepadNullifyAllMappings(_device);
             
             InputPlugInGamepadResetMapping(_device, gp_start);
@@ -114,27 +113,17 @@ function __InputGamepadDiscover(_gamepadStruct)
         else //Not console
         {
             //Unpack the vendor/product IDs from the gamepad's GUID
+            var _result = __InputGamepadGUIDParse(__guid, false);
+            
+            __vendor  = _result.__vendor;
+            __product = _result.__product;
+
             if (INPUT_ON_WINDOWS)
             {
-                var _legacy = __InputStringContains(__guid, "000000000000504944564944"); //"PIDVID"
-                var _result = __InputGamepadGUIDParse(__guid, _legacy);
-                
-                __vendor  = _result.__vendor;
-                __product = _result.__product;
-                if (_result.__description != undefined) __description = _result.__description;
-                
                 if ((_device < 4) && (not __InputStringContains(__guid, "000000007801"))) //"H" (HID)
                 {
                     __xinput = true;
                 }
-            }
-            else if (INPUT_ON_MACOS || INPUT_ON_LINUX)
-            {
-                var _result = __InputGamepadGUIDParse(__guid, false);
-                
-                __vendor  = _result.__vendor;
-                __product = _result.__product;
-                if (_result.__description != undefined) __description = _result.__description;
             }
             
             //Force type if it's an XInput device
