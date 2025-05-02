@@ -5,8 +5,7 @@
 
 function InputPlugInGamepadSetDescription(_device, _description)
 {
-    static _gamepadArray     = __InputSystem().__gamepadArray;
-    static _genericReadArray = __InputSystem().__genericReadArray;
+    static _gamepadArray = __InputSystem().__gamepadArray;
     
     if ((_device < 0) || (_device >= array_length(_gamepadArray))) return;
     

@@ -213,6 +213,7 @@
     {"name":"InputPlayerUsingGeneric","order":15,"path":"scripts/InputPlayerUsingGeneric/InputPlayerUsingGeneric.yy",},
     {"name":"InputPlayerUsingKbm","order":13,"path":"scripts/InputPlayerUsingKbm/InputPlayerUsingKbm.yy",},
     {"name":"InputPlayerUsingTouch","order":14,"path":"scripts/InputPlayerUsingTouch/InputPlayerUsingTouch.yy",},
+    {"name":"InputPluginGamepadGetVendorAndProduct","order":7,"path":"scripts/InputPluginGamepadGetVendorAndProduct/InputPluginGamepadGetVendorAndProduct.yy",},
     {"name":"InputPlugInGamepadNullifyAllMappings","order":5,"path":"scripts/InputPlugInGamepadNullifyAllMappings/InputPlugInGamepadNullifyAllMappings.yy",},
     {"name":"InputPlugInGamepadNullifyMapping","order":4,"path":"scripts/InputPlugInGamepadNullifyMapping/InputPlugInGamepadNullifyMapping.yy",},
     {"name":"InputPlugInGamepadResetMapping","order":6,"path":"scripts/InputPlugInGamepadResetMapping/InputPlugInGamepadResetMapping.yy",},
