@@ -12,38 +12,43 @@ function __InputMotionSystem()
         __deviceMap   = ds_map_create();
         __deviceArray = [];
         
-        InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.GAMEPAD_CONNECTED, undefined, function(_device)
+        if (InputMotionSupportedByPlatform())
         {
-            var _struct = new __InputMotionClass(_device);
-            __deviceMap[? _device] = _struct;
-            array_push(__deviceArray, _struct);
-        });
-        
-        InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.GAMEPAD_DISCONNECTED, undefined, function(_device, _actuallyDisconnected)
-        {
-            ds_map_delete(__deviceMap, _device);
+            //Only initialize callbacks if this platform actually supports gyro and motion
             
-            var _i = 0;
-            repeat(array_length(__deviceArray))
+            InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.GAMEPAD_CONNECTED, undefined, function(_device)
             {
-                if (__deviceArray[_i].__device == _device)
-                {
-                    array_delete(__deviceArray, _i, 1);
-                }
-                else
-                {
-                    ++_i;
-                }
-            }
-        });
-        
-        InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.UPDATE, undefined, function()
-        {
-            array_foreach(__deviceArray, function(_element, _index)
-            {
-                _element.__Update();
+                var _struct = new __InputMotionClass(_device);
+                __deviceMap[? _device] = _struct;
+                array_push(__deviceArray, _struct);
             });
-        });
+            
+            InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.GAMEPAD_DISCONNECTED, undefined, function(_device, _actuallyDisconnected)
+            {
+                ds_map_delete(__deviceMap, _device);
+                
+                var _i = 0;
+                repeat(array_length(__deviceArray))
+                {
+                    if (__deviceArray[_i].__device == _device)
+                    {
+                        array_delete(__deviceArray, _i, 1);
+                    }
+                    else
+                    {
+                        ++_i;
+                    }
+                }
+            });
+            
+            InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.UPDATE, undefined, function()
+            {
+                array_foreach(__deviceArray, function(_element, _index)
+                {
+                    _element.__Update();
+                });
+            });
+        }
     }
     
     return _system;
