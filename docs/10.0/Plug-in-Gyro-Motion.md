@@ -11,6 +11,32 @@ Gamepad motion features provide normalized data from sensors available on PlaySt
 
 &nbsp;
 
+## …MotionSupportedByPlatform
+
+`InputMotionSupportedByPlatform()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the current platform supports gyro and motion
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+#### **Example**
+
+```gml
+if (InputMotionSupportedByPlatform())
+{
+	draw_text(10, 10, "I'm using tilt controls!");
+}
+```
+<!-- tabs:end -->
+
+&nbsp;
+
 ## …MotionCalibrate
 
 `InputMotionCalibrate([playerIndex=0])`
