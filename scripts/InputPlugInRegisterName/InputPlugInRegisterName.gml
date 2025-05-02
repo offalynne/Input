@@ -5,7 +5,7 @@
 /// @param {Array<String>, String, Undefined} dependencies Dependencies that are mandatory for this Plug-In
 /// @param {Array<String>, String, Undefined} optionalDependencies Dependencies that are optional for this Plug-In
 /// @param {Function} callback The callback to fire. (This is where you can setup all of your Input Plug-In callbacks)
-function InputPlugInRegisterName(_plugInName, _dependencies = undefined, _optionalDependencies = undefined, _callback) 
+function InputPlugInRegisterName(_plugInName, _dependencies = undefined, _optionalDependencies = undefined, _callback = undefined) 
 {
     static _global = __InputSystem();
     static _queueList = _global.__pluginsListQueue;

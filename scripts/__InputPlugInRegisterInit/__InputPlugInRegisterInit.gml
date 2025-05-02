@@ -39,6 +39,15 @@ function __InputPlugInRegisterInit()
 
         // Register plugin!
         array_push(_registeredList, _pluginName);
-        _entry.__callback();
+		var _callback = _entry.__callback;
+        if (is_callable(_callback)) 
+        {
+		  _callback();
+        }
+		else if (!is_undefined(_callback)) 
+		{
+			__InputError($"Input Plug-In registry callback invalid.\nNot type \"undefined\", \"function\" or \"method\". Got type \"{typeof(_callback)}\".");
+			return;
+		}
     }
 }
