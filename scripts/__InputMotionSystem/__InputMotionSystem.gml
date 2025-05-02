@@ -1,6 +1,6 @@
 // Feather disable all
 
-__InputMotionSystem();
+InputPlugInRegisterName("InputMotion",,, __InputMotionSystem);
 function __InputMotionSystem()
 {
     static _system = undefined;

@@ -1,6 +1,6 @@
 // Feather disable all
 
-__InputPartySystem();
+InputPlugInRegisterName("InputParty",,, __InputPartySystem);
 function __InputPartySystem()
 {
     static _system = undefined;

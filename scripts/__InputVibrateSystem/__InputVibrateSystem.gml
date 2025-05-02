@@ -1,6 +1,6 @@
 // Feather disable all
 
-__InputVibrateSystem();
+InputPlugInRegisterName("InputVibrate",,, __InputVibrateSystem);
 function __InputVibrateSystem()
 {
     static _system = undefined;

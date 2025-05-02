@@ -1,6 +1,6 @@
 // Feather disable all
 
-__InputColorSystem();
+InputPlugInRegisterName("InputColor",,, __InputColorSystem);
 function __InputColorSystem()
 {
     static _system = undefined;

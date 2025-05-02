@@ -1,5 +1,6 @@
 // Feather disable all
 
+InputPlugInRegisterName("InputIcons");
 __InputIconSystem();
 function __InputIconSystem()
 {
