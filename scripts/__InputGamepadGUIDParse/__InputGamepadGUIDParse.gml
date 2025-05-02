@@ -16,17 +16,6 @@ function __InputGamepadGUIDParse(_guid)
         return _result;
     }
     
-    if (INPUT_ON_WINDOWS)
-    {
-        if (__InputStringContains(__guid, "000000000000504944564944")) //"PIDVID"
-        {
-            //GM on Windows uses an older version of SDL so we strip out VID + PID as a special case
-            _result.__vendor  = string_copy(_guid, 1, 4);
-            _result.__product = string_copy(_guid, 5, 4);
-            return _result;
-        }
-    }
-    
     //Expected GUID pattern:
     // 
     //  ****0000****0000****0000****XXXX
