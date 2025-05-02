@@ -73,6 +73,7 @@
     {"id":{"name":"objTest101_Vibration","path":"objects/objTest101_Vibration/objTest101_Vibration.yy",},},
     {"id":{"name":"objTest102_Color","path":"objects/objTest102_Color/objTest102_Color.yy",},},
     {"id":{"name":"objTest103_TriggerEffects","path":"objects/objTest103_TriggerEffects/objTest103_TriggerEffects.yy",},},
+    {"id":{"name":"objTest104_Party","path":"objects/objTest104_Party/objTest104_Party.yy",},},
     {"id":{"name":"objTest200_ConsoleSuite","path":"objects/objTest200_ConsoleSuite/objTest200_ConsoleSuite.yy",},},
     {"id":{"name":"rmTest","path":"rooms/rmTest/rmTest.yy",},},
     {"id":{"name":"rmTestConsoleSuite","path":"rooms/rmTestConsoleSuite/rmTestConsoleSuite.yy",},},
