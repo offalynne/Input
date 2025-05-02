@@ -167,6 +167,12 @@ The maximum number of players that the library will permit. Setting this number 
 
 &nbsp;
 
+### `INPUT_SAFETY_CHECKS` {docsify-ignore}
+
+*Typical value: `true`*
+
+Whether the library should perform extra checks to validate parameters for functions. This will catch small mistakes but also incurs a performance penalty. If you want maximum speed from the library, set this macro to `false`.
+
 ## Checkers
 
 ### `INPUT_REPEAT_DEFAULT_DELAY` {docsify-ignore}
