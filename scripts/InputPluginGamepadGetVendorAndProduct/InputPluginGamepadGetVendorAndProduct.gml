@@ -3,7 +3,7 @@
 /// @param {Real} device
 /// Returns concatenated vendor and product id for a gamepad as a string
 
-function InputPluginGamepadGetVendorAndProduct(_device)
+function InputPlugInGamepadGetVendorAndProduct(_device)
 {
     static _gamepadArray = __InputSystem().__gamepadArray;
     

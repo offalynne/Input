@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"InputPluginGamepadGetVendorAndProduct",
+  "%Name":"InputPlugInGamepadGetVendorAndProduct",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"InputPluginGamepadGetVendorAndProduct",
+  "name":"InputPlugInGamepadGetVendorAndProduct",
   "parent":{
     "name":"Gamepads",
     "path":"folders/Input/Plug-In API/Gamepads.yy",
