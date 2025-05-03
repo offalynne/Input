@@ -113,8 +113,9 @@ function __InputClassVirtualButton() constructor
                 draw_circle(_x, _y, _radius-3, true);
                 draw_circle(_x, _y, _radius,   false);
                 
-                var _centre = InputXY(__verbLeft, __verbRight, __verbUp, __verbDown);
-                draw_circle(_x + _radius*_centre.x, _y + _radius*_centre.y, 0.25*_radius, false);
+                var _centerX = InputX(__verbLeft, __verbRight, __verbUp, __verbDown);
+                var _centerY = InputY(__verbLeft, __verbRight, __verbUp, __verbDown);
+                draw_circle(_x + _radius*_centerX, _y + _radius*_centerY, 0.25*_radius, false);
             }
         }
         else
