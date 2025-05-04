@@ -24,7 +24,7 @@ function __InputGamepadTransformQuirks(_gamepadStruct)
             case os_windows:                
                 if ((_vidPid == "63257505") && (_buttonCount == 13) && (_hatCount == 1) && (__InputStringContains(_description, "switch co.,ltd. retro-bit controller"))) 
                 {
-                    __InputTrace("Overriding gamepad type: Switch (Saturn Wireless Pro");
+                    __InputTrace("Overriding gamepad type: Switch (Saturn Wireless Pro)");
                     __type = INPUT_GAMEPAD_TYPE_SWITCH;
                 }
                 else if ((_vidPid == "7e050920") && (_buttonCount > 21) && !((_buttonCount == 30) && (_hatCount == 0)))
@@ -53,6 +53,11 @@ function __InputGamepadTransformQuirks(_gamepadStruct)
                 if ((__InputStringMatches(__guid, "03000000050b00000619000000010000", "03000000050b0000e318000000010000", "03000000050b0000e518000000010000", "03000000050b00005819000000010000", "03000000050b0000181a000000010000", "03000000050b00001a1a000000010000", "03000000050b00001c1a000000010000"))) 
                 {
                     __InputTrace("Blocking gamepad: ROG Mouse");
+                    __blocked = true;
+                }
+                else if ((__type == INPUT_GAMEPAD_TYPE_JOYCON_LEFT) || (__type == INPUT_GAMEPAD_TYPE_JOYCON_RIGHT))
+                {
+                    __InputTrace("Blocking gamepad: Single Joy Con");
                     __blocked = true;
                 }
             break;
@@ -118,6 +123,23 @@ function __InputGamepadTransformQuirks(_gamepadStruct)
                 else if ((__InputStringMatches(__guid, "37306138633665393031353462623835", "30653530626463313864336165306236", "38346462303632636161363531303766", "66626636666361303930383433646337"))) 
                 {
                     __InputTrace("Blocking gamepad: TV Remote");
+                    __blocked = true;
+                }
+            break;
+            
+            case os_ios:
+            case os_tvos:
+                if (_type == INPUT_GAMEPAD_TYPE_SWITCH)
+                {
+                    __InputTrace("Remapping face button: Nintendo Switch");
+                    InputPlugInGamepadSetMapping(_device, gp_face1, function(_device) { return gamepad_button_value(_device, gp_face2); });
+                    InputPlugInGamepadSetMapping(_device, gp_face2, function(_device) { return gamepad_button_value(_device, gp_face1); });
+                    InputPlugInGamepadSetMapping(_device, gp_face3, function(_device) { return gamepad_button_value(_device, gp_face4); });
+                    InputPlugInGamepadSetMapping(_device, gp_face4, function(_device) { return gamepad_button_value(_device, gp_face3); });
+                }
+                else if ((__type == INPUT_GAMEPAD_TYPE_JOYCON_LEFT) || (__type == INPUT_GAMEPAD_TYPE_JOYCON_RIGHT))
+                {
+                    __InputTrace("Blocking gamepad: Single Joy Con");
                     __blocked = true;
                 }
             break;

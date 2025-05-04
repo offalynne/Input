@@ -201,6 +201,12 @@ function __InputRegisterUpdate()
         
         if ((not INPUT_BAN_GAMEPADS) && (_frame > INPUT_GAMEPADS_TICK_PREDELAY))
         {
+            if (INPUT_ON_ANDROID && (__time - __androidEnumerationTime > INPUT_ANDROID_GAMEPAD_ENUMERATION_INTERVAL))
+            {
+                __androidEnumerationTime = __time;
+                gamepad_enumerate();
+            }
+            
             var _deviceCountChange = max(0, gamepad_get_device_count() - array_length(_gamepadArray));
             repeat(_deviceCountChange)
             {

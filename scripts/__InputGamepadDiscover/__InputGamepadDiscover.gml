@@ -134,7 +134,9 @@ function __InputGamepadDiscover(_gamepadStruct)
             }
             else
             {
-                __type = _typeLookupStruct[$ __vendor + __product] ?? INPUT_GAMEPAD_TYPE_XBOX;
+                __type  = _typeLookupStruct[$ __vendor + __product];
+                __type ??= __InputGamepadIdentifyDescriptionType(__description);
+                __type ??= INPUT_GAMEPAD_FALLBACK_TYPE;
             }
             
             //Read Steam Input values and modify our gamepad representation to match

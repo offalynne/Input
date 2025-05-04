@@ -98,6 +98,7 @@
     {"id":{"name":"__InputGamepadDiscover","path":"scripts/__InputGamepadDiscover/__InputGamepadDiscover.yy",},},
     {"id":{"name":"__InputGamepadGetReadArray","path":"scripts/__InputGamepadGetReadArray/__InputGamepadGetReadArray.yy",},},
     {"id":{"name":"__InputGamepadGUIDParse","path":"scripts/__InputGamepadGUIDParse/__InputGamepadGUIDParse.yy",},},
+    {"id":{"name":"__InputGamepadIdentifyDescriptionType","path":"scripts/__InputGamepadIdentifyDescriptionType/__InputGamepadIdentifyDescriptionType.yy",},},
     {"id":{"name":"__InputGamepadIdentifySwitchType","path":"scripts/__InputGamepadIdentifySwitchType/__InputGamepadIdentifySwitchType.yy",},},
     {"id":{"name":"__InputGamepadTransformQuirks","path":"scripts/__InputGamepadTransformQuirks/__InputGamepadTransformQuirks.yy",},},
     {"id":{"name":"__InputGamepadTransformSteam","path":"scripts/__InputGamepadTransformSteam/__InputGamepadTransformSteam.yy",},},
@@ -332,8 +333,8 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"rmTest","path":"rooms/rmTest/rmTest.yy",},},
     {"roomId":{"name":"rmTestConsoleSuite","path":"rooms/rmTestConsoleSuite/rmTestConsoleSuite.yy",},},
+    {"roomId":{"name":"rmTest","path":"rooms/rmTest/rmTest.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
