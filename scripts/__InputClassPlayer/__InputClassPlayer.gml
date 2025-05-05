@@ -47,14 +47,16 @@ function __InputClassPlayer(_playerIndex) constructor
     
     __kbmBindingArray = array_create_ext(_verbCount, function(_index)
     {
-        static _verbArray = __InputSystem().__verbDefinitionArray;
-        return variable_clone(_verbArray[_index].__kbmBinding);
+        static _verbDefinitionArray = __InputSystem().__verbDefinitionArray;
+        var _verbDefinition = _verbDefinitionArray[_index];
+        return (_verbDefinition != undefined)? variable_clone(_verbDefinition.__kbmBinding) : [];
     });
     
     __gamepadBindingArray = array_create_ext(_verbCount, function(_index)
     {
-        static _verbArray = __InputSystem().__verbDefinitionArray;
-        return variable_clone(_verbArray[_index].__gamepadBinding);
+        static _verbDefinitionArray = __InputSystem().__verbDefinitionArray;
+        var _verbDefinition = _verbDefinitionArray[_index];
+        return (_verbDefinition != undefined)? variable_clone(_verbDefinition.__gamepadBinding) : [];
     });
     
     __verbStateArray = array_create_ext(_verbCount, function(_index)
@@ -65,13 +67,15 @@ function __InputClassPlayer(_playerIndex) constructor
     __verbMetadataArray = array_create_ext(_verbCount, function(_index)
     {
         static _verbDefinitionArray = __InputSystem().__verbDefinitionArray;
-        return variable_clone(_verbDefinitionArray[_index].__metadata);
+        var _verbDefinition = _verbDefinitionArray[_index];
+        return (_verbDefinition != undefined)? variable_clone(_verbDefinition.__metadata) : undefined;
     });
     
     __clusterMetadataArray = array_create_ext(_clusterCount, function(_index)
     {
         static _clusterDefinitionArray = __InputSystem().__clusterDefinitionArray;
-        return variable_clone(_clusterDefinitionArray[_index].__metadata);
+        var _clusterDefinition = _clusterDefinitionArray[_index];
+        return (_clusterDefinition != undefined)? variable_clone(_clusterDefinition.__metadata) : undefined;
     });
     
     __valueRawArray   = array_create(_verbCount, 0);
@@ -224,6 +228,12 @@ function __InputClassPlayer(_playerIndex) constructor
         repeat(_clusterCount)
         {
             var _clusterDefinition = _clusterDefinitionArray[_i];
+            
+            if (not is_struct(_clusterDefinition))
+            {
+                ++_i;
+                continue;
+            }
             
             //Pull raw verb values so we can apply thresholds in 2D
             var _valueU = _verbStateArray[_clusterDefinition.__verbUp   ].__valueRaw;
