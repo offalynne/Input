@@ -81,7 +81,6 @@ Features that have not made it to Input 10 for one reason or another are:
 
 - Keyboard support on anything other than desktop
 - Direct checkers for keyboard (though you can still scan for new bindings)
-- Gamepad support on Android and iOS
 - Now only one direct checker for gamepad to avoid confusion `InputDeviceGetGamepadValue(device, button/axis)`
 - Native debug overlay gamepad tester
 - Mouse capture API removed as it is now a native GameMaker feature
