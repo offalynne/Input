@@ -70,10 +70,10 @@ function __InputMotionClass(_device) constructor
         switch(os_type)
         {
             case os_switch:
-                var _axis_x = switch_controller_axis_x;
-                var _axis_z = switch_controller_axis_y;
-                var _sign_x = 1;
-                var _sign_z = 1;
+                var _axisX  = switch_controller_axis_x;
+                var _axisZ  = switch_controller_axis_y;
+                var _signX  = 1;
+                var _signZ  = 1;
                 var _sensor = 0;
                 
                 var _type = InputDeviceGetGamepadType(__device);
@@ -88,28 +88,28 @@ function __InputMotionClass(_device) constructor
                 {
                     if (__INPUT_SWITCH_JOYCON_HORIZONTAL_HOLDTYPE)
                     {
-                        _axis_x = switch_controller_axis_y;
-                        _axis_z = switch_controller_axis_x;
-                        _sign_x = -1;
+                        _axisX = switch_controller_axis_y;
+                        _axisZ = switch_controller_axis_x;
+                        _signX = -1;
                     }
                 }
                 else if (_type == INPUT_GAMEPAD_TYPE_JOYCON_RIGHT)
                 {
                     if (__INPUT_SWITCH_JOYCON_HORIZONTAL_HOLDTYPE)
                     {
-                        _axis_x = switch_controller_axis_y;
-                        _axis_z = switch_controller_axis_x;
-                        _sign_z = -1;
+                        _axisX = switch_controller_axis_y;
+                        _axisZ = switch_controller_axis_x;
+                        _signZ = -1;
                     }
                 }
                 
-                accelerationX = _sign_x * switch_controller_acceleration(__device, _axis_x, _sensor);
+                accelerationX = _signX * switch_controller_acceleration(__device, _axisX, _sensor);
                 accelerationY = -switch_controller_acceleration(__device, switch_controller_axis_z, _sensor);
-                accelerationZ = _sign_z * switch_controller_acceleration(__device, _axis_z, _sensor);
+                accelerationZ = _signZ * switch_controller_acceleration(__device, _axisZ, _sensor);
 
-                angularVelocityX = _sign_x * degtorad(switch_controller_angular_velocity(__device, _axis_x, _sensor)/5) * 570.6;
+                angularVelocityX = _signX * degtorad(switch_controller_angular_velocity(__device, _axisX, _sensor)/5) * 570.6;
                 angularVelocityY = -degtorad(switch_controller_angular_velocity(__device, switch_controller_axis_z, _sensor)/5) * 570.6;
-                angularVelocityZ = _sign_z * degtorad(switch_controller_angular_velocity(__device, _axis_z, _sensor)/5) * 570.6;
+                angularVelocityZ = _signZ * degtorad(switch_controller_angular_velocity(__device, _axisZ, _sensor)/5) * 570.6;
             break;            
 
             case os_ps4:
@@ -142,23 +142,6 @@ function __InputMotionClass(_device) constructor
                     accelerationX =  _steamData.pos_accel_x / 16384;
                     accelerationY = -_steamData.pos_accel_y / 16384;
                     accelerationZ = -_steamData.pos_accel_z / 16384;
-                    
-                    var _gyroScale = 2949.12;
-                    
-                    var _type = InputDeviceGetGamepadType(__device);
-                    if ((_type == INPUT_GAMEPAD_TYPE_SWITCH)
-                    ||  (_type == INPUT_GAMEPAD_TYPE_XBOX) //Switch with "Use Nintendo Button Layout"
-                    ||  (_type == INPUT_GAMEPAD_TYPE_PS4))
-                    {
-                       //Reduce raw gyro scale for Switch and PS4 sensors
-                        _gyroScale *= 2;
-                    }
-                    
-                    //angularVelocityX =  _steamData.rot_vel_x / _gyroScale;
-                    //angularVelocityY = -_steamData.rot_vel_z / _gyroScale;
-                    //angularVelocityZ = -_steamData.rot_vel_y / _gyroScale;
-                    
-                    
                     
                     var _toX = _steamData.rot_quat_x;
                     var _toY = _steamData.rot_quat_y;
