@@ -3,9 +3,9 @@
 ///          If no verb array is provided, all defined verbs will be check instead
 /// @param   [verbArray=all]
 /// @param   [playerIndex=0]
-/// @param   [ignoreInactive=true]
+/// @param   [ignoreInactive=false]
 
-function input_check_press_last(_verb_array = all, _player_index = 0)
+function input_check_press_last(_verb_array = all, _player_index = 0, _ignore_inactive = false)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     __INPUT_VERIFY_PLAYER_INDEX
@@ -23,7 +23,8 @@ function input_check_press_last(_verb_array = all, _player_index = 0)
 
         if (is_struct(_verb_struct))
         {
-            if (_verb_struct.__press_time > _max_time)
+            if ((_verb_struct.__press_time > _max_time)
+            &&  (!_ignore_inactive || !_verb_struct.__inactive))
             {
                 _max_time = _verb_struct.__press_time;
                 _max_verb = _verb;
