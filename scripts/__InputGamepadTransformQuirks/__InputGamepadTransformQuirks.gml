@@ -114,9 +114,9 @@ function __InputGamepadTransformQuirks(_gamepadStruct)
                     __InputTrace("Blocking gamepad: Xbox Elite Series 2");
                     __blocked = true;
                 }
-                else if ((__InputStringMatches(__guid, "4e696e74656e646f20436f2e2c204c74", "61393962646434393836356631636132", "31343431323332663936386663646631", "65366131663736363061313736656431", "31613237643563656561633964393335", "39373064396565646338333134303131"))) 
+                else if ((__InputStringMatches(__guid, "31613237643563656561633964393335", "4e696e74656e646f20436f2e2c204c74", "61393962646434393836356631636132", "31343431323332663936386663646631", "65366131663736363061313736656431", "31613237643563656561633964393335", "39373064396565646338333134303131"))) 
                 {
-                    __InputTrace("Blocking gamepad: Switch USB Controller");
+                    __InputTrace("Blocking gamepad: Incompatible Switch Gamepad");
                     __blocked = true;
 
                 }
@@ -129,13 +129,13 @@ function __InputGamepadTransformQuirks(_gamepadStruct)
             
             case os_ios:
             case os_tvos:
-                if (_type == INPUT_GAMEPAD_TYPE_SWITCH)
+                if (__type == INPUT_GAMEPAD_TYPE_SWITCH)
                 {
-                    __InputTrace("Remapping face button: Nintendo Switch");
-                    InputPlugInGamepadSetMapping(_device, gp_face1, function(_device) { return gamepad_button_value(_device, gp_face2); });
-                    InputPlugInGamepadSetMapping(_device, gp_face2, function(_device) { return gamepad_button_value(_device, gp_face1); });
-                    InputPlugInGamepadSetMapping(_device, gp_face3, function(_device) { return gamepad_button_value(_device, gp_face4); });
-                    InputPlugInGamepadSetMapping(_device, gp_face4, function(_device) { return gamepad_button_value(_device, gp_face3); });
+                    __InputTrace("Remapping face buttons: Nintendo Switch");
+                    InputPlugInGamepadSetMapping(__gamepadIndex, gp_face1, function(_device) { return gamepad_button_value(__gamepadIndex, gp_face2); });
+                    InputPlugInGamepadSetMapping(__gamepadIndex, gp_face2, function(_device) { return gamepad_button_value(__gamepadIndex, gp_face1); });
+                    InputPlugInGamepadSetMapping(__gamepadIndex, gp_face3, function(_device) { return gamepad_button_value(__gamepadIndex, gp_face4); });
+                    InputPlugInGamepadSetMapping(__gamepadIndex, gp_face4, function(_device) { return gamepad_button_value(__gamepadIndex, gp_face3); });
                 }
                 else if ((__type == INPUT_GAMEPAD_TYPE_JOYCON_LEFT) || (__type == INPUT_GAMEPAD_TYPE_JOYCON_RIGHT))
                 {
