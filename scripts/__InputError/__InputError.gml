@@ -12,10 +12,10 @@ function __InputError()
     
     if (os_browser == browser_not_a_browser)
     {
-        show_error("\n Input " + INPUT_VERSION + ":\n" + _string + "\n ", false);
+        show_error(" \nInput " + INPUT_VERSION + ":\n" + _string + "\n ", false);
     }
     else
     {
-        show_error("\n Input " + INPUT_VERSION + ":\n" + _string + "\n" + string(debug_get_callstack()), false);
+        show_error(" \nInput " + INPUT_VERSION + ":\n" + _string + "\n" + string(debug_get_callstack()), false);
     }
 }
