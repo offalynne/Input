@@ -31,30 +31,33 @@ function __InputTriggerEffectSystem()
             return new __InputTriggerEffectPlayer(_index);
         });
         
-        InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.GAMEPAD_CONNECTED, undefined, function(_device)
+        InputPlugInDefine("Trigger Effects", "The Input Team", "1.0", "10.0", function()
         {
-            __deviceMap[? _device] = new __InputTriggerEffectGamepad(_device);
-        });
-        
-        InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.GAMEPAD_DISCONNECTED, undefined, function(_device, _actuallyDisconnected)
-        {
-            ds_map_delete(__deviceMap, _device);
-        });
-        
-        InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.LOSE_FOCUS, undefined, function()
-        {
-            __InputTriggerEffectStop();
-        });
-        
-        InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.GAIN_FOCUS, undefined, function()
-        {
-            __InputTriggerEffectReapply(INPUT_ALL_PLAYERS);
-        });
-        
-        InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.PLAYER_DEVICE_CHANGED, undefined, function(_playerIndex, _oldDevice, _newDevice)
-        {
-            __InputTriggerEffectStop(_oldDevice);
-            __InputTriggerEffectReapply(_playerIndex);
+            InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.GAMEPAD_CONNECTED, undefined, function(_device)
+            {
+                __deviceMap[? _device] = new __InputTriggerEffectGamepad(_device);
+            });
+            
+            InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.GAMEPAD_DISCONNECTED, undefined, function(_device, _actuallyDisconnected)
+            {
+                ds_map_delete(__deviceMap, _device);
+            });
+            
+            InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.LOSE_FOCUS, undefined, function()
+            {
+                __InputTriggerEffectStop();
+            });
+            
+            InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.GAIN_FOCUS, undefined, function()
+            {
+                __InputTriggerEffectReapply(INPUT_ALL_PLAYERS);
+            });
+            
+            InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.PLAYER_DEVICE_CHANGED, undefined, function(_playerIndex, _oldDevice, _newDevice)
+            {
+                __InputTriggerEffectStop(_oldDevice);
+                __InputTriggerEffectReapply(_playerIndex);
+            });
         });
     }
     
