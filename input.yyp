@@ -89,6 +89,7 @@
     {"id":{"name":"__InputClassVirtualButton","path":"scripts/__InputClassVirtualButton/__InputClassVirtualButton.yy",},},
     {"id":{"name":"__InputColorClassPlayer","path":"scripts/__InputColorClassPlayer/__InputColorClassPlayer.yy",},},
     {"id":{"name":"__InputColorSystem","path":"scripts/__InputColorSystem/__InputColorSystem.yy",},},
+    {"id":{"name":"__InputCompareVersions","path":"scripts/__InputCompareVersions/__InputCompareVersions.yy",},},
     {"id":{"name":"__InputConfig","path":"scripts/__InputConfig/__InputConfig.yy",},},
     {"id":{"name":"__InputConfigVerbs","path":"scripts/__InputConfigVerbs/__InputConfigVerbs.yy",},},
     {"id":{"name":"__InputConstants","path":"scripts/__InputConstants/__InputConstants.yy",},},
