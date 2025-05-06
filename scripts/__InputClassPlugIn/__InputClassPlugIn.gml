@@ -16,7 +16,7 @@ function __InputClassPlugIn(_alias, _author, _version, _targetInputVersion, _ini
     
     static __Initialize = function()
     {
-        __InputTrace($"Welcome to {__alias} by {__author}! This is version {__version} for Input {__targetInputVersion}");
+        __InputTrace($"Welcome to the {__alias} plug-in by {__author}! This is version {__version} for Input {__targetInputVersion}");
         __initCallback();
     }
 }

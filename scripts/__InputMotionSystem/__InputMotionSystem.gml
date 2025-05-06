@@ -12,7 +12,7 @@ function __InputMotionSystem()
         __deviceMap   = ds_map_create();
         __deviceArray = [];
         
-        InputPlugInDefine("Gyro & Motion", "The Input Team", "1.0", "10.0", function()
+        InputPlugInDefine("InputTeam.GyroMotion", "The Input Team", "1.0", "10.0", function()
         {
             if (InputMotionSupportedByPlatform())
             {
