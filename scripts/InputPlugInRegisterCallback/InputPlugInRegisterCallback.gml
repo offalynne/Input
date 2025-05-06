@@ -65,7 +65,7 @@ function InputPlugInRegisterCallback(_callbackType, _priority = -1, _method)
 {
     static _system = __InputSystem();
     
-    if (not _system.__plugInsInitializing)
+    if (_system.__plugInsInitializeState != 1)
     {
         __InputError("`InputPlugInRegisterCallback()` can only be called in a plug-in's initialization callback");
     }

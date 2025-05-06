@@ -8,8 +8,14 @@
 
 function InputPlugInDefine(_alias, _author, _version, _targetInputVersion, _initCallback)
 {
-    static _plugInArray = __InputSystem().__plugInArray;
-    static _plugInDict  = __InputSystem().__plugInDict;
+    static _system      = __InputSystem();
+    static _plugInArray = _system.__plugInArray;
+    static _plugInDict  = _system.__plugInDict;
+    
+    if (_system.__plugInsInitializeState != 0)
+    {
+        __InputError($"`InputPlugInDefine()` must only be called on boot");
+    }
     
     if (variable_struct_exists(_plugInDict, _alias))
     {

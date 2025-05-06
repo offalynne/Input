@@ -11,7 +11,7 @@ function __InputCollect()
         with(_system)
         {
             __InputTrace($"Initializing {array_length(__plugInArray)} plug-in(s)");
-            __plugInsInitializing = true;
+            __plugInsInitializeState = 1;
             
             var _i = 0;
             repeat(array_length(__plugInArray))
@@ -21,7 +21,7 @@ function __InputCollect()
             }
             
             __InputTrace($"Plug-in initialization complete");
-            __plugInsInitializing = false;
+            __plugInsInitializeState = 2;
         }
     })();
     

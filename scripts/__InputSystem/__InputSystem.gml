@@ -102,11 +102,15 @@ function __InputSystem()
         __virtualOrderDirty  = false;
         __virtualButtonArray = [];
         
-        __plugInsInitializing   = false;
-        __plugInArray           = [];
-        __plugInDict            = {};
-        __plugInCurrentCallback = undefined;
-        __plugInCallbackArray   = __InputSystemCallbackArray();
+        // 0 = Nothing happened yet, `InputPlugInDefine()` is permitted
+        // 1 = Initializing, `InputPlugInRegisterCallback()` is permitted
+        // 2 = Finished initializing
+        __plugInsInitializeState = 0;
+        
+        __plugInArray            = [];
+        __plugInDict             = {};
+        __plugInCurrentCallback  = undefined;
+        __plugInCallbackArray    = __InputSystemCallbackArray();
         
         __InputRegisterCollect();
         __InputRegisterCollectPlayer();
