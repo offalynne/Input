@@ -102,8 +102,11 @@ function __InputSystem()
         __virtualOrderDirty  = false;
         __virtualButtonArray = [];
         
+        __plugInsInitializing   = false;
+        __plugInArray           = [];
+        __plugInDict            = {};
         __plugInCurrentCallback = undefined;
-        __plugInCallbackArray = __InputSystemCallbackArray();
+        __plugInCallbackArray   = __InputSystemCallbackArray();
         
         __InputRegisterCollect();
         __InputRegisterCollectPlayer();

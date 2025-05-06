@@ -63,9 +63,16 @@
 
 function InputPlugInRegisterCallback(_callbackType, _priority = -1, _method)
 {
+    static _system = __InputSystem();
+    
+    if (not _system.__plugInsInitializing)
+    {
+        __InputError("`InputPlugInRegisterCallback()` can only be called in a plug-in's initialization callback");
+    }
+    
     if (_priority == 0)
     {
-        __InputError("Cannot use priority 0 for plug-ins");
+        __InputError("Cannot use priority 0 for plug-ins (reserved for internal code)");
     }
     
     __InputPlugInRegisterCallbackInternal(_callbackType, _priority, _method);
