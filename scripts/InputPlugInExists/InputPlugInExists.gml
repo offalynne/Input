@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Returns if a plug-in with the given alias exists. Aliases are case sensitive.
+/// 
 /// @param alias
 
 function InputPlugInExists(_alias)

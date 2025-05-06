@@ -3,6 +3,10 @@
 /// Registers a callback to be executed at a suitable time by the library. The callback type
 /// should be a member of the `INPUT_PLUG_IN_CALLBACK` enum.
 /// 
+/// N.B. Plug-ins may only register callbacks in the initialization callback defined by
+///      `InputPlugInDefine()`. Calling `InputPlugInRegisterCallback()` outside of the
+///      initialization callback with throw an error.
+/// 
 /// You may also specify a callback priority. Because many callbacks can be registered to any
 /// particular callback type, and because code order might matter in some situations, it is useful
 /// to be able to control what order callbacks are executed. Native library code always has a

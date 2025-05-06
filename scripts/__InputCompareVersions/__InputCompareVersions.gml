@@ -1,5 +1,12 @@
 // Feather disable all
 
+/// Compares two version strings and returns if the actual version meets the required target
+/// version. Version numbers should be strings and should fit the format `major.minor`. This
+/// function will return `true` if the following two conditions are met:
+/// 
+/// 1. The major versions match exactly
+/// 2. The minor target version is less than or equal to the actual minor version
+/// 
 /// @param targetVersion
 /// @param actualVersion
 

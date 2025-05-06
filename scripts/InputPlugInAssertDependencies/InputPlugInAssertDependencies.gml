@@ -1,9 +1,12 @@
 // Feather disable all
 
+/// Throws an error if any of the enumerated plug-ins either don't exist or don't meet the version
+/// requirements.
+/// 
 /// @param alias
-/// @param version
+/// @param targetVersion
 /// @param [alias]
-/// @param [version]
+/// @param [targetVersion]
 /// @param ...
 
 function InputPlugInAssertDependencies()

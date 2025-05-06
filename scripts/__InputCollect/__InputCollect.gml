@@ -1,5 +1,8 @@
 // Feather disable all
 
+/// Abstracted function call for all raw verb collection. This ensures that no matter where verb
+/// collection is happening, plug-ins are always initialized immediately prior.
+
 function __InputCollect()
 {
     //Initialize all the plug-ins. It's important to do this before any callbacks get executed so that
