@@ -87,6 +87,7 @@
     {"id":{"name":"__InputClassVerbDefinition","path":"scripts/__InputClassVerbDefinition/__InputClassVerbDefinition.yy",},},
     {"id":{"name":"__InputClassVerbState","path":"scripts/__InputClassVerbState/__InputClassVerbState.yy",},},
     {"id":{"name":"__InputClassVirtualButton","path":"scripts/__InputClassVirtualButton/__InputClassVirtualButton.yy",},},
+    {"id":{"name":"__InputCollect","path":"scripts/__InputCollect/__InputCollect.yy",},},
     {"id":{"name":"__InputColorClassPlayer","path":"scripts/__InputColorClassPlayer/__InputColorClassPlayer.yy",},},
     {"id":{"name":"__InputColorSystem","path":"scripts/__InputColorSystem/__InputColorSystem.yy",},},
     {"id":{"name":"__InputCompareVersions","path":"scripts/__InputCompareVersions/__InputCompareVersions.yy",},},

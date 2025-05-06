@@ -179,8 +179,7 @@ function __InputSystem()
             {
                 if (INPUT_COLLECT_MODE == 1)
                 {
-                    __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.COLLECT);
-                    if (INPUT_UPDATE_AFTER_COLLECT) __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.UPDATE);
+                    __InputCollect();
                 }
                 else if (INPUT_COLLECT_MODE == 0)
                 {
