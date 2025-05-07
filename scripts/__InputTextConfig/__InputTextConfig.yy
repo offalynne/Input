@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__InputTextConfig",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__InputTextConfig",
+  "parent":{
+    "name":"Config",
+    "path":"folders/Text/Config.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

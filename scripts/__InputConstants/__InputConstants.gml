@@ -83,6 +83,7 @@ enum INPUT_STEAM_INFO
     STEAMWORKS,
     STEAM_DECK,
     ON_WINE,
+    BIG_PICTURE,
 }
 
 enum INPUT_PLUG_IN_CALLBACK
@@ -105,7 +106,7 @@ enum INPUT_PLUG_IN_CALLBACK
 #macro INPUT_ON_MACOS    (os_type == os_macosx)
 #macro INPUT_ON_LINUX    (os_type == os_linux)
 #macro INPUT_ON_DESKTOP  (INPUT_ON_WINDOWS || INPUT_ON_MACOS || INPUT_ON_LINUX)
-#macro INPUT_ON_IOS      (os_type == os_ios)
+#macro INPUT_ON_IOS      (os_type == os_ios || os_type == os_tvos)
 #macro INPUT_ON_ANDROID  (os_type == os_android)
 #macro INPUT_ON_MOBILE   (INPUT_ON_IOS || INPUT_ON_ANDROID)
 #macro INPUT_ON_XBOX     ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))

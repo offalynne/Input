@@ -27,7 +27,12 @@ function __InputRegisterUpdate()
                 
                 //Linux app continues to recieve input some number of frames after focus loss
                 //Clear IO on focus loss to prevent false positive of subsequent focus regain
-                io_clear();
+                if (INPUT_ON_LINUX)
+                {
+                    var _string = keyboard_string;
+                    io_clear();
+                    keyboard_string = _string;
+                }
                 
                 __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.LOSE_FOCUS);
             }
