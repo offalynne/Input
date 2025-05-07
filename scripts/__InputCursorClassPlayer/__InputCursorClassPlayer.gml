@@ -42,8 +42,21 @@ function __InputCursorClassPlayer(_playerIndex) constructor
         {
             if (InputMouseMoved())
             {
-                _nextX = InputMouseRoomX();
-                _nextY = InputMouseRoomY();
+                if (INPUT_CURSOR_PRIMARY_COORD_SPACE == INPUT_CURSOR_ROOM_SPACE)
+                {
+                    _nextX = InputMouseRoomX();
+                    _nextY = InputMouseRoomY();
+                }
+                else if (INPUT_CURSOR_PRIMARY_COORD_SPACE == INPUT_CURSOR_GUI_SPACE)
+                {
+                    _nextX = InputMouseGuiX();
+                    _nextY = InputMouseGuiY();
+                }
+                else if (INPUT_CURSOR_PRIMARY_COORD_SPACE == INPUT_CURSOR_DEVICE_SPACE)
+                {
+                    _nextX = InputMouseDeviceX();
+                    _nextY = InputMouseDeviceY();
+                }
             }
         }
         else
@@ -106,7 +119,7 @@ function __InputCursorClassPlayer(_playerIndex) constructor
         }
         else if (__limitType == INPUT_CURSOR_LIMIT_BOUNDARY)
         {
-            if (_system.__coordSpace == INPUT_CURSOR_ROOM_SPACE)
+            if (INPUT_CURSOR_PRIMARY_COORD_SPACE == INPUT_CURSOR_ROOM_SPACE)
             {
                 var _camera = (view_enabled && view_visible[0])? view_camera[0] : undefined;
                 if (_camera != undefined)
@@ -147,14 +160,14 @@ function __InputCursorClassPlayer(_playerIndex) constructor
                     var _b = room_height;
                 }
             }
-            else if (_system.__coordSpace == INPUT_CURSOR_GUI_SPACE)
+            else if (INPUT_CURSOR_PRIMARY_COORD_SPACE == INPUT_CURSOR_GUI_SPACE)
             {
                 var _l = 0;
                 var _t = 0;
                 var _r = display_get_gui_width();
                 var _b = display_get_gui_height();
             }
-            else if (_system.__coordSpace == INPUT_CURSOR_DEVICE_SPACE)
+            else if (INPUT_CURSOR_PRIMARY_COORD_SPACE == INPUT_CURSOR_DEVICE_SPACE)
             {
                 var _l = 0;
                 var _t = 0;

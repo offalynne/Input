@@ -1,6 +1,7 @@
 // Feather disable all
 
-/// Limits the player's cursor within an axis-aligned bounding box.
+/// Limits the player's cursor within an axis-aligned bounding box. The coordinates of the bounding
+/// box are in pixels in the primary coordinate space, `INPUT_CURSOR_PRIMARY_COORD_SPACE`.
 /// 
 /// @param left
 /// @param top

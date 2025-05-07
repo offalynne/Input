@@ -17,3 +17,5 @@
 //Movement exponent, applied when using a gamepad or keyboard. This value is very sensitive to
 //change it slowly whilst testing!
 #macro INPUT_CURSOR_EXPONENT  1
+
+#macro INPUT_CURSOR_PRIMARY_COORD_SPACE  INPUT_CURSOR_ROOM_SPACE

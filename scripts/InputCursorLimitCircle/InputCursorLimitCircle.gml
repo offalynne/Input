@@ -1,6 +1,7 @@
 // Feather disable all
 
-/// Limits the player's cursor within a circle.
+/// Limits the player's cursor within a circle. The coordinates of the circle are in pixels in the
+/// primary coordinate space, `INPUT_CURSOR_PRIMARY_COORD_SPACE`.
 /// 
 /// @param x
 /// @param y
