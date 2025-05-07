@@ -1,5 +1,10 @@
 // Feather disable all
 
+//The coordinate space that cursors should exist in. You can convert between coordinate spaces when
+//getting cursor values but the elastic and limit features will only be applied in the primary
+//coordinate space.
+#macro INPUT_CURSOR_PRIMARY_COORD_SPACE  INPUT_CURSOR_ROOM_SPACE
+
 //Whether a player's cursor should follow the mouse when using the `INPUT_KBM` deivce (keyboard
 //and mouse). Set this macro to `false` to make the keyboard move the cursor via the cluster
 //defined below.
@@ -17,5 +22,3 @@
 //Movement exponent, applied when using a gamepad or keyboard. This value is very sensitive to
 //change it slowly whilst testing!
 #macro INPUT_CURSOR_EXPONENT  1
-
-#macro INPUT_CURSOR_PRIMARY_COORD_SPACE  INPUT_CURSOR_ROOM_SPACE
