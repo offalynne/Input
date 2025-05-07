@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"InputCursorDX",
   "parent":{
-    "name":"Cursor",
-    "path":"folders/Input Plug-Ins/Cursor.yy",
+    "name":"Basics",
+    "path":"folders/Input Plug-Ins/Cursor/Basics.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"InputCursorY",
+  "%Name":"__InputCursorConstants",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"InputCursorY",
+  "name":"__InputCursorConstants",
   "parent":{
-    "name":"Basics",
-    "path":"folders/Input Plug-Ins/Cursor/Basics.yy",
+    "name":"Cursor",
+    "path":"folders/Input Plug-Ins/Cursor.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

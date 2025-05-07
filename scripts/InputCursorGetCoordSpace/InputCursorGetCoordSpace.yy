@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"InputCursorY",
+  "%Name":"InputCursorGetCoordSpace",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"InputCursorY",
+  "name":"InputCursorGetCoordSpace",
   "parent":{
     "name":"Basics",
     "path":"folders/Input Plug-Ins/Cursor/Basics.yy",

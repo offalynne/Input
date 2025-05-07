@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"InputCursorY",
+  "%Name":"InputCursorSetSpeed",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"InputCursorY",
+  "name":"InputCursorSetSpeed",
   "parent":{
     "name":"Basics",
     "path":"folders/Input Plug-Ins/Cursor/Basics.yy",

@@ -1,7 +1,5 @@
 // Feather disable all
 
-#macro __INPUT_CURSOR_DEFAULT_SPEED  8
-
 __InputCursorSystem();
 function __InputCursorSystem()
 {
@@ -11,6 +9,8 @@ function __InputCursorSystem()
     _system = {};
     with(_system)
     {
+        __coordSpace = INPUT_CURSOR_ROOM_SPACE;
+        
         __playerArray = array_create_ext(INPUT_MAX_PLAYERS, function(_index)
         {
             return new __InputCursorClassPlayer(_index);
