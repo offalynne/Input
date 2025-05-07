@@ -1,5 +1,16 @@
 // Feather disable all
 
+/// Returns the elastic properties for the player's cursor as a struct. The returned struct
+/// contains the following member variables:
+/// 
+/// - `.enabled`
+/// - `.x`
+/// - `.y`
+/// - `.strength`
+/// 
+/// N.B. If no elastic state has been set, `.enabled` will be `false` and the other member
+///      variables will be set to `undefined`. 
+/// 
 /// @param [playerIndex=0]
 
 function InputCursorElasticGet(_playerIndex = 0)

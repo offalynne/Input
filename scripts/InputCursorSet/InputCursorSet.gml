@@ -1,5 +1,8 @@
 // Feather disable all
 
+/// Sets the position of the player's cursor in the global coordinate space, as set by
+/// `InputCursorSetCoordSpace()`.
+/// 
 /// @param x
 /// @param y
 /// @param [playerIndex=0]

@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Removes any limits placed on a player's cursor.
+/// 
 /// @param [playerIndex=0]
 
 function InputCursorLimitRemove(_playerIndex = 0)

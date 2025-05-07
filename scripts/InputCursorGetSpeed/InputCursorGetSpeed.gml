@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Returns the speed of the player's cursor, measured in pixels per frame.
+/// 
 /// @param [playerIndex=0]
 
 function InputCursorGetSpeed(_playerIndex = 0)

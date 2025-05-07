@@ -1,5 +1,18 @@
 // Feather disable all
 
+/// Returns the parameters of the limit placed on a player's cursor as a struct. The struct
+/// contains the following member variables:
+/// 
+/// - `.type`
+/// - `.x`
+/// - `.y`
+/// - `.radius`
+/// - `.left`
+/// - `.top`
+/// - `.right`
+/// - `.bottom`
+/// - `.margin`
+/// 
 /// @param [playerIndex=0]
 
 function InputCursorLimitGet(_playerIndex = 0)

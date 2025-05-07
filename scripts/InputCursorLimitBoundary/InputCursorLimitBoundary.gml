@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Limits the player's cursor inside the visible portion of the game window.
+/// 
 /// @param [margin=0]
 /// @param [playerIndex=0]
 

@@ -1,5 +1,9 @@
 // Feather disable all
 
+/// Returns the y-position of the player's cursor in the coordinate space of your choosing. If no
+/// coordinate space is provided then this function will use the coordinate space set by
+/// `InputCursorSetCoordSpace()` (which is room-space by default in turn).
+/// 
 /// @param [playerIndex=0]
 /// @param [coordSpace]
 

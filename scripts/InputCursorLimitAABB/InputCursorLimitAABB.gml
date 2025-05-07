@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Limits the player's cursor within an axis-aligned bounding box.
+/// 
 /// @param left
 /// @param top
 /// @param right

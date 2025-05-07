@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Removes the elastic force on a cursor.
+/// 
 /// @param [playerIndex=0]
 
 function InputCursorElasticRemove(_playerIndex = 0)

@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Limits the player's cursor within a circle.
+/// 
 /// @param x
 /// @param y
 /// @param radisu
