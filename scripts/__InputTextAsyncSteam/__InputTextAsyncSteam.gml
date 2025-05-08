@@ -9,16 +9,13 @@ function __InputTextAsyncSteam()
         {
             if (!_submitted)
             {
-                __requestStatus = INPUT_TEXT_REQUEST_STATUS.CANCELLED;
+                __newStatus = INPUT_TEXT_REQUEST_STATUS.CANCELLED;
             }
             else
             {
-                __requestStatus = INPUT_TEXT_REQUEST_STATUS.CONFIRMED;
+                __newStatus = INPUT_TEXT_REQUEST_STATUS.CONFIRMED;
                 __textAsync = string_copy(steam_get_entered_gamepad_text_input(), 1, __maxLength);
             }
-
-            __Callback();
-            __awaitingSteamRequest = false;
         }
     }
 }

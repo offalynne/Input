@@ -4,7 +4,7 @@ enum INPUT_TEXT_REQUEST_STATUS
     WAITING,
     STOPPED,
     CANCELLED,
-    CONFIRMED
+    CONFIRMED,
 }
 
 #macro __INPUT_TEXT_MAX_LENGTH  256
@@ -18,101 +18,72 @@ function __InputTextSystem()
     _system = {};
     with(_system)
     {
-        __useSteamKeyboard = InputGetSteamInfo(INPUT_STEAM_INFO.BIG_PICTURE);
-
-        __verbCancel      = undefined;
-        __verbConfirm     = undefined;
-        __requestCallback = undefined;
-        __textSet         = undefined;
-        __textAsync       = undefined;
-        __asyncId         = undefined;
-
-        __awaitingSteamRequest = false;
-        __collectKeyboardText  = true;
-        __surpressVerbs        = true;
+        __callback  = undefined;
+        __asyncId   = undefined;
+        __textSet   = undefined;
+        __textAsync = undefined;
         
-        __playerIndex = 0;
+        __virtualHeightPrevious = 0;
+        __virtualStatusPrevious = false;
+        __osPausedPrevious      = false;
+        
         __removeCount = 0;
-        __textDelta   = "";
-        __textRequest = "";
         __textChanges = [];
+        __textRequest = "";
+        __textDelta   = "";        
         
+        __maxLength     = __INPUT_TEXT_MAX_LENGTH;
         __keyboardType  = kbv_type_default;
         __requestStatus = INPUT_TEXT_REQUEST_STATUS.NONE;
-        __maxLength     = __INPUT_TEXT_MAX_LENGTH;
+        __newStatus     = undefined;
         
         __ignore       = false;
         __heldPrevious = false;
         __pressedTime  = infinity;
         __repeatCount  = 0;
         
-        __timePrevious = InputPlugInGetTime();     
+        __timePrevious = InputPlugInGetTime();        
         
-        if (INPUT_ON_ANDROID) keyboard_string = " ";
+        __useSteamKeyboard = false;        
+        if (InputGetSteamInfo(INPUT_STEAM_INFO.STEAMWORKS))
+        {
+            __useSteamKeyboard = true;
+            steam_utils_enable_callbacks();
+        }
+        
+        __emptyString = "";
+        if (INPUT_ON_ANDROID)
+        {
+            __emptyString = " ";
+            keyboard_string = __emptyString;
+        }
         
         __keyboardString = keyboard_string;   
         __keyboardStringPrevious = __keyboardString;
-    
-        __RequestStop = function(_newStatus = INPUT_TEXT_REQUEST_STATUS.STOPPED)
-        {
-            if (__requestStatus == INPUT_TEXT_REQUEST_STATUS.WAITING)
-            {
-                if ((__asyncId != undefined) || __awaitingSteamRequest)
-                {
-                    __InputTrace("Text request warning: previous async requst is waiting");
-                    return false;
-                }
-
-                __requestStatus = _newStatus;
-                __Callback();
-            }
-
-            return true;
-        }
         
         __ApplyChanges = function()
         {
+            var _i = 0;
             repeat(array_length(__textChanges))
             {
-                var _value = array_pop(__textChanges);
+                var _value = __textChanges[_i];
                 if (is_string(_value))
                 {
                     __textRequest += _value;
-                    continue;
+                }
+                else if (is_real(_value))
+                {
+                    __textRequest = string_copy(__textRequest, 1, max(0, string_length(__textRequest) - _value));
                 }
                 
-                __textRequest = string_copy(__textRequest, 1, max(0, string_length(__textRequest) - _value));
+                ++_i;
             }
             
+            array_resize(__textChanges, 0);            
             __textRequest = string_copy(__textRequest, 1, __maxLength);
         }
 
-        __Callback = function()
-        {
-            if (is_method(__requestCallback))
-            {
-                __requestCallback();
-                __requestCallback = undefined;
-            }
-        }
-        
-        __ConsumeVerbs = function()
-        {
-            if not (__surpressVerbs) return;
-            
-            var _i = 0;
-            repeat (array_length(INPUT_MAX_PLAYERS))
-            {
-                if (INPUT_TEXT_CONSUME_ALL_PLAYERS || (_i == __playerIndex))
-                {
-                    InputVerbConsumeAll(_i);
-                }
-
-                ++_i;
-            }
-        }
-
-        __ShowKeyboard = function(_keyboardType, _caption, _initialText)
+        __ShowKeyboard = function(_keyboardType, _caption, _initialText, _playerIndex)
         {
             if (INPUT_ON_CONSOLE || INPUT_ON_WEB)
             {
@@ -120,76 +91,72 @@ function __InputTextSystem()
             }
             else if (INPUT_ON_MOBILE)
             {
-                if (INPUT_ON_IOS)
-                {
-                    keyboard_virtual_hide();
-                    keyboard_string = _initialText;
-                }
-                else if (INPUT_ON_ANDROID)
-                {
-                    keyboard_string = " " + _initialText;
-                }
-                
+                _initialText = __emptyString + _initialText;                
+                keyboard_string = _initialText;                
                 keyboard_virtual_show(_keyboardType, INPUT_TEXT_RETURN_KEY, INPUT_TEXT_CAPITALIZATION, INPUT_TEXT_PREDICTION);
             }
-            else if (__useSteamKeyboard)
+            else if (__useSteamKeyboard && InputPlayerUsingGamepad(_playerIndex))
             {
                 return steam_show_gamepad_text_input(
                             steam_gamepad_text_input_mode_normal, 
                             steam_gamepad_text_input_line_mode_single_line, 
-                            _caption, _maxLength, _initialText);
+                            _caption, __maxLength, _initialText);
             }
 
             return true;
         }
         
-        __HandleVerbs = function()
-        {
-            if (__requestStatus != INPUT_TEXT_REQUEST_STATUS.WAITING) return;
-
-            if (__verbCancel != undefined)
-            {
-                if (InputPressed(__verbCancel,  __playerIndex))
-                {
-                    __RequestStop(INPUT_TEXT_REQUEST_STATUS.CANCELLED);
-                }
-            }
-    
-            if (__verbConfirm != undefined)
-            {
-                if (InputPressed(__verbConfirm,  __playerIndex))
-                {
-                    __RequestStop(INPUT_TEXT_REQUEST_STATUS.CONFIRMED);
-                }
-            }
-    
-            __ConsumeVerbs();
-        }
-        
-        __HandleKeyboard = function()
+        __HandleKeyboardInput = function()
         {
             __keyboardStringPrevious = __keyboardString;
             __keyboardString = keyboard_string;
             
+            if (INPUT_ON_WEB) return;
+            
+            if (INPUT_ON_MOBILE)
+            {
+                var _osPaused = os_is_paused();
+                var _virtualStatus = keyboard_virtual_status();
+                var _virtualHeight = keyboard_virtual_height();
+                
+                if (__requestStatus == INPUT_TEXT_REQUEST_STATUS.WAITING)
+                {
+                    if (!_osPaused && __osPausedPrevious)
+                    {
+                        keyboard_virtual_show(__keyboardType, INPUT_TEXT_RETURN_KEY, INPUT_TEXT_CAPITALIZATION, INPUT_TEXT_PREDICTION);
+                    }
+                
+                    var _tail = "";
+                    if (string_length(__keyboardString) > string_length(__keyboardStringPrevious))
+                    {
+                        _tail = string_copy(__keyboardString, string_length(__keyboardString), 1);
+                    }
+                
+                    if ((keyboard_check_pressed(0x0A) || (_tail == chr(0x0A)))  // Line feed
+                    ||  (keyboard_check_pressed(0x0D) || (_tail == chr(0x0D)))) // Carriage Return
+                    {
+                        __newStatus = INPUT_TEXT_REQUEST_STATUS.CONFIRMED;
+                        keyboard_virtual_hide();
+                    }                
+                    else if (!_osPaused)
+                    {
+                        if (!_virtualStatus && __virtualStatusPrevious) || (_virtualHeight < __virtualHeightPrevious)
+                        {
+                            __newStatus = INPUT_TEXT_REQUEST_STATUS.CANCELLED;
+                        }
+                    }
+                }
+                
+                __virtualHeightPrevious = _virtualHeight;
+                __virtualStatusPrevious = _virtualStatus;
+                __osPausedPrevious      = _osPaused;
+            }
+            
+            if not (INPUT_ON_DESKTOP) return;
+
             var _keyReleased = keyboard_check_released(vk_anykey);    
             var _deleteCheck = keyboard_check(vk_backspace) && !keyboard_check(vk_control) && !keyboard_check(vk_alt);
-            var _deleteHeld  = _deleteCheck && ((keyboard_key == vk_backspace) || keyboard_check(ord(keyboard_lastchar)));
-            
-            if (INPUT_ON_ANDROID)
-            {
-                var _i = 0;
-                repeat(gamepad_get_device_count())
-                {
-                    if (gamepad_button_check(_i, gp_face2))
-                    {
-                        _deleteCheck = false;
-                        _deleteHeld  = false;
-                        break;
-                    }
-                    
-                    ++_i;
-                }
-            }
+            var _deleteHeld  = _deleteCheck && ((keyboard_key == vk_backspace) || keyboard_check(ord(keyboard_lastchar)));            
             
             var _currentTime = InputPlugInGetTime();
             if (_deleteHeld && _keyReleased)
@@ -231,17 +198,41 @@ function __InputTextSystem()
                 }
             }
             
+            if (__useSteamKeyboard) 
+            {
+                steam_update();
+            }
+            
             __heldPrevious = _deleteHeld;
             __timePrevious = _currentTime;
         }
         
         __LintKeyboardString = function()
-        {
-            var _preLintString = keyboard_string;
-            var _keyboardString = _preLintString;          
-            var _charFilter = [10, 13, 127];
+        {   
+            var _charFilter = [
+                0x0A, // Line feed
+                0x0D, // Carriage Return
+                0x7F  // Ctrl+Del
+            ];
             
-            var _i = 0;
+            var _preLintString = keyboard_string;
+            var _keyboardString = _preLintString;
+            
+            // iOS empty-string quirk
+            if ((string_length(_keyboardString) > 0) && (_keyboardString == ""))
+            {
+                if (INPUT_ON_IOS) keyboard_virtual_hide();
+                keyboard_string = "";
+            }
+            
+            if (_keyboardString == "")
+            {
+                _keyboardString = __emptyString;
+            }
+            
+            if (string_length(_keyboardString) == 0) return;
+            
+            var _i = 0;            
             repeat(array_length(_charFilter))
             {
                 var _char = chr(_charFilter[_i]);
@@ -258,7 +249,7 @@ function __InputTextSystem()
                 _keyboardString = string_copy(_keyboardString, 1, __INPUT_TEXT_MAX_LENGTH);
             }
     
-            if (_keyboardString != _keyboardString)
+            if (_preLintString != _keyboardString)
             {
                 if (INPUT_ON_IOS) keyboard_virtual_hide();
                 keyboard_string = _keyboardString;
@@ -275,9 +266,10 @@ function __InputTextSystem()
             
             if ((__textAsync != undefined) || (__textSet != undefined)) return;
             
+            var _offsetChar = INPUT_ON_ANDROID? 1 : 0;
             if (_keyboardString != __keyboardStringPrevious)
             {
-                var _i = 1;
+                var _i = 1 + _offsetChar;
                 repeat(_length)
                 {
                     if (string_char_at(_keyboardString, _i) != string_char_at(__keyboardStringPrevious, _i)) break;
@@ -287,7 +279,7 @@ function __InputTextSystem()
                 __textDelta = string_copy(_keyboardString, _i, _length);
             }
     
-            if (string_length(__keyboardStringPrevious) > (INPUT_ON_ANDROID? 1 : 0))
+            if (string_length(__keyboardStringPrevious) > _offsetChar)
             {
                 __removeCount = abs(_length - string_length(__keyboardStringPrevious) - string_length(__textDelta));
             }
@@ -299,8 +291,6 @@ function __InputTextSystem()
         
         __HandleChanges = function()
         {
-            if (__requestStatus != INPUT_TEXT_REQUEST_STATUS.WAITING) return;
-            
             if (__textAsync != undefined)
             {
                 __textRequest = __textAsync;
@@ -313,7 +303,7 @@ function __InputTextSystem()
             }
             else
             {
-                if (__collectKeyboardText && (array_length(__textChanges) == 0))
+                if ((__newStatus == undefined) && (__requestStatus == INPUT_TEXT_REQUEST_STATUS.WAITING) && (array_length(__textChanges) == 0))
                 {
                     if (__removeCount > 0) array_push(__textChanges, __removeCount);
                     if (string_length(__textDelta)) array_push(__textChanges, __textDelta);
@@ -321,22 +311,30 @@ function __InputTextSystem()
 
                 __ApplyChanges();
             }
-        }
-        
-        InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.GAIN_FOCUS, undefined, function()
-        {
-            if (!INPUT_ON_ANDROID || (__requestStatus != INPUT_TEXT_REQUEST_STATUS.WAITING)) return;
             
-            if (__collectKeyboardText)
+            if (__newStatus != undefined)
             {
-                keyboard_virtual_show(__keyboardType, INPUT_TEXT_RETURN_KEY, INPUT_TEXT_CAPITALIZATION, INPUT_TEXT_PREDICTION);
+                if (__newStatus == INPUT_TEXT_REQUEST_STATUS.STOPPED)
+                {
+                    if (INPUT_ON_MOBILE) keyboard_virtual_hide();
+                }
+                
+                var _statusChange = (__newStatus != __requestStatus) && (__newStatus != INPUT_TEXT_REQUEST_STATUS.WAITING);
+                
+                __requestStatus = __newStatus;
+                
+                if (_statusChange)
+                {
+                    if (is_method(__callback)) __callback();
+                }
+                
+                __newStatus = undefined;
             }
-        });
+        }
 
         InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.UPDATE, undefined, function()
-        {
-            __HandleVerbs();
-            __HandleKeyboard();
+        {            
+            __HandleKeyboardInput();
             __LintKeyboardString();
             __FindKeyboardDelta();
             __HandleChanges();

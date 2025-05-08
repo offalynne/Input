@@ -26,10 +26,6 @@ function InputGetSteamInfo(_infoField)
     {
         return _system.__onWINE;
     }
-    else if (_infoField == INPUT_STEAM_INFO.BIG_PICTURE)
-    {
-        return _system.__usingBigPicture;
-    }
     else 
     {
         __InputError("Field ", _infoField, " unhandled");

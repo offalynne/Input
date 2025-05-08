@@ -10,15 +10,14 @@ function __InputTextAsyncDialog()
         {
             if (!_status || (_result == undefined))
             {
-                __requestStatus = INPUT_TEXT_REQUEST_STATUS.CANCELLED;
+                __newStatus = INPUT_TEXT_REQUEST_STATUS.CANCELLED;
             }
             else
             {
-                __requestStatus = INPUT_TEXT_REQUEST_STATUS.CONFIRMED;
+                __newStatus = INPUT_TEXT_REQUEST_STATUS.CONFIRMED;
                 __textAsync = string_copy(_result, 1, __maxLength);
             }
-
-            __Callback();
+            
             __asyncId = undefined;
         }
     }

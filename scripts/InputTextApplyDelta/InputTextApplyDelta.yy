@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"InputTextRequestSetParams",
+  "%Name":"InputTextApplyDelta",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"InputTextRequestSetParams",
+  "name":"InputTextApplyDelta",
   "parent":{
     "name":"Text",
     "path":"folders/Text.yy",

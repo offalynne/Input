@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"InputTextRequestRemoveChars",
+  "%Name":"InputTextRequestStart",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"InputTextRequestRemoveChars",
+  "name":"InputTextRequestStart",
   "parent":{
     "name":"Text",
     "path":"folders/Text.yy",
