@@ -19,6 +19,8 @@ function __InputPartySystem()
         __abortCallback  = undefined;
         __hotswapOnAbort = true;
         
+        __leaveStateMap = ds_map_create();
+        
         InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.UPDATE, undefined, function()
         {
             if (not __joining) return;
@@ -26,6 +28,31 @@ function __InputPartySystem()
             if (__joinVerb == undefined)
             {
                 __InputError("Join verb not defined. Please call InputPartySetParams()");
+            }
+            
+            //Track leave verb state per device. This prevents immediately aborting joing mode when the last
+            //player aborts.
+            var _deviceArray = InputDeviceEnumerate();
+            var _i = 0;
+            repeat(array_length(_deviceArray))
+            {
+                var _device = _deviceArray[_i];
+                
+                var _oldState = __leaveStateMap[? _device] ?? 0;
+                var _newValue = InputDeviceCheckViaPlayer(_device, __leaveVerb, 0);
+                
+                if ((_oldState == 1) || (_oldState == 2))
+                {
+                    var _newState = _newValue? 2 : 3;
+                }
+                else
+                {
+                    var _newState = _newValue? 1 : 0;
+                }
+                
+                __leaveStateMap[? _device] = _newState;
+                
+                ++_i;
             }
             
             if (__fillEmpty)
@@ -67,7 +94,7 @@ function __InputPartySystem()
                     if (is_callable(__abortCallback) && (InputPlayerConnectedCount() <= 0))
                     {
                         var _device = InputDeviceGetNewActivityOnVerb(__leaveVerb, _p);
-                        if (_device != INPUT_NO_DEVICE)
+                        if ((_device != INPUT_NO_DEVICE) && (__leaveStateMap[? _device] == 1))
                         {
                             __InputTrace("Player ", _p, " aborted with device ", _device);
                             
