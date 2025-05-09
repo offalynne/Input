@@ -18,7 +18,7 @@ function __InputRegisterCollectPlayer()
             var _valueRawArray   = __valueRawArray;
             var _valueClampArray = __valueClampArray;
             
-            if ((not _connected) || __blocked || __ghost || InputDeviceGetRebinding(_device))
+            if ((not _connected) || __blocked || __ghost || InputDeviceGetRebinding(_device) || (not InputGameHasFocus()))
             {
                 array_map_ext(_valueRawArray,   function() { return 0; });
                 array_map_ext(_valueClampArray, function() { return 0; });

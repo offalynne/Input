@@ -35,6 +35,7 @@ function InputDeviceIsActive(_device)
         if (not INPUT_BAN_TOUCH)
         {
             //Perform a direct check
+            if (not InputGameHasFocus()) return false;
             if (mouse_check_button(mb_left)) return true;
         }
     }

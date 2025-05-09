@@ -4,7 +4,7 @@ function __InputGetKeyboardOutput()
 {
     static _system = __InputSystem();
     
-    if ((not INPUT_BAN_KBM) && keyboard_check(vk_anykey))
+    if ((not INPUT_BAN_KBM) && keyboard_check(vk_anykey) && InputGameHasFocus())
     {
         //Don't return "any" (key is out of range)
         if (keyboard_key <= 1) return undefined;

@@ -7,6 +7,7 @@ function __InputGetMouseActive()
     static _system = __InputSystem();
     
     if (INPUT_BAN_KBM) return false;
+    if (not InputGameHasFocus()) return false;
     
     if (INPUT_MOUSE_MOVEMENT_REPORTS_ACTIVE)
     {
@@ -18,6 +19,7 @@ function __InputGetMouseActive()
     
     if (INPUT_MOUSE_BUTTON_REPORTS_ACTIVE)
     {
+        //Use the general-purpose function here rather than the `device_*` variant to scan all touchpoints.
         if (mouse_check_button_pressed(mb_left)) return true;
     }
     

@@ -67,6 +67,9 @@ function __InputMotionClass(_device) constructor
 
     static __Update = function()
     {
+        //Take a break if the game is out of focus
+        if (not InputGameHasFocus()) return;
+        
         switch(os_type)
         {
             case os_switch:

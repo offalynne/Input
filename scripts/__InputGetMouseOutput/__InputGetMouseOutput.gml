@@ -5,6 +5,7 @@ function __InputGetMouseOutput()
     static _system = __InputSystem();
     
     if (INPUT_BLOCK_MOUSE_CHECKS) return undefined;
+    if (not InputGameHasFocus()) return undefined;
     
     with(_system)
     {
