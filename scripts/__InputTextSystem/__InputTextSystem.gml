@@ -1,4 +1,4 @@
-enum INPUT_TEXT_REQUEST_STATUS
+enum INPUT_TEXT_STATUS
 {
     NONE,
     WAITING,
@@ -34,7 +34,7 @@ function __InputTextSystem()
         
         __maxLength     = __INPUT_TEXT_MAX_LENGTH;
         __keyboardType  = kbv_type_default;
-        __requestStatus = INPUT_TEXT_REQUEST_STATUS.NONE;
+        __requestStatus = INPUT_TEXT_STATUS.NONE;
         __newStatus     = undefined;
         
         __ignore       = false;
@@ -119,7 +119,7 @@ function __InputTextSystem()
                 var _virtualStatus = keyboard_virtual_status();
                 var _virtualHeight = keyboard_virtual_height();
                 
-                if (__requestStatus == INPUT_TEXT_REQUEST_STATUS.WAITING)
+                if (__requestStatus == INPUT_TEXT_STATUS.WAITING)
                 {
                     if (!_osPaused && __osPausedPrevious)
                     {
@@ -135,14 +135,14 @@ function __InputTextSystem()
                     if ((keyboard_check_pressed(0x0A) || (_tail == chr(0x0A)))  // Line feed
                     ||  (keyboard_check_pressed(0x0D) || (_tail == chr(0x0D)))) // Carriage Return
                     {
-                        __newStatus = INPUT_TEXT_REQUEST_STATUS.CONFIRMED;
+                        __newStatus = INPUT_TEXT_STATUS.CONFIRMED;
                         keyboard_virtual_hide();
                     }                
                     else if (!_osPaused)
                     {
                         if ((!_virtualStatus && __virtualStatusPrevious) || ((_virtualHeight == 0) && (__virtualHeightPrevious > 0)))
                         {
-                            __newStatus = INPUT_TEXT_REQUEST_STATUS.CANCELLED;
+                            __newStatus = INPUT_TEXT_STATUS.CANCELLED;
                         }
                     }
                 }
@@ -303,7 +303,7 @@ function __InputTextSystem()
             }
             else
             {
-                if ((__newStatus == undefined) && (__requestStatus == INPUT_TEXT_REQUEST_STATUS.WAITING) && (array_length(__textChanges) == 0))
+                if ((__newStatus == undefined) && (__requestStatus == INPUT_TEXT_STATUS.WAITING) && (array_length(__textChanges) == 0))
                 {
                     if (__removeCount > 0) array_push(__textChanges, __removeCount);
                     if (string_length(__textDelta)) array_push(__textChanges, __textDelta);
@@ -311,33 +311,35 @@ function __InputTextSystem()
 
                 __ApplyChanges();
             }
-            
+        }
+        
+        __HandleStatus = function()
+        {   
             if (__newStatus != undefined)
             {
-                if (__newStatus == INPUT_TEXT_REQUEST_STATUS.STOPPED)
+                if (__newStatus == INPUT_TEXT_STATUS.STOPPED)
                 {
                     if (INPUT_ON_MOBILE) keyboard_virtual_hide();
                 }
                 
-                var _statusChange = (__newStatus != __requestStatus) && (__newStatus != INPUT_TEXT_REQUEST_STATUS.WAITING);
-                
-                __requestStatus = __newStatus;
-                
-                if (_statusChange)
+                if ((__newStatus != INPUT_TEXT_STATUS.WAITING) && is_method(__callback))
                 {
-                    if (is_method(__callback)) __callback();
+                    __callback();
+                    __callback = undefined;
                 }
                 
+                __requestStatus = __newStatus;                
                 __newStatus = undefined;
             }
         }
 
         InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.UPDATE, undefined, function()
         {            
-            __HandleKeyboardInput();
             __LintKeyboardString();
+            __HandleKeyboardInput();
             __FindKeyboardDelta();
             __HandleChanges();
+            __HandleStatus();
         });
     }
 }

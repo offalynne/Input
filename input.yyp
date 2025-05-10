@@ -47,10 +47,10 @@
     {"$GMFolder":"","%Name":"Rebinding","folderPath":"folders/Input/Rebinding.yy","name":"Rebinding","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Verb Interaction","folderPath":"folders/Input/Verb Interaction.yy","name":"Verb Interaction","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Virtual Buttons","folderPath":"folders/Input/Virtual Buttons.yy","name":"Virtual Buttons","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Steamworks","folderPath":"folders/Steamworks.yy","name":"Steamworks","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Test Case","folderPath":"folders/Test Case.yy","name":"Test Case","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Text","folderPath":"folders/Text.yy","name":"Text","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"(System)","folderPath":"folders/Text/(System).yy","name":"(System)","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Config","folderPath":"folders/Text/Config.yy","name":"Config","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"gamecontrollerdb.txt","CopyToMask":-1,"filePath":"datafiles","name":"gamecontrollerdb.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},

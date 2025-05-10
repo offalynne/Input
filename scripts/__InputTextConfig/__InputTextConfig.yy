@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__InputTextConfig",
   "parent":{
-    "name":"Config",
-    "path":"folders/Text/Config.yy",
+    "name":"Text",
+    "path":"folders/Text.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

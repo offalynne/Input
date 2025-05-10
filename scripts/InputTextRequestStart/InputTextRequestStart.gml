@@ -3,7 +3,14 @@ function InputTextRequestStart(_caption, _initialText, _maxLength, _callback, _k
     static _system = __InputTextSystem();
     with(_system)
     {
-        __newStatus = INPUT_TEXT_REQUEST_STATUS.WAITING;
+        if (__requestStatus == INPUT_TEXT_STATUS.WAITING)
+        {
+            __newStatus = INPUT_TEXT_STATUS.CANCELLED;
+            __HandleChanges();
+            __HandleStatus();
+        }
+        
+        __newStatus = INPUT_TEXT_STATUS.WAITING;
         
         __maxLength = clamp(_maxLength, 1, __INPUT_TEXT_MAX_LENGTH);
         if (_maxLength != __maxLength)

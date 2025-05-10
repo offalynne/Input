@@ -9,11 +9,11 @@ function __InputTextAsyncSteam()
         {
             if (!_submitted)
             {
-                __newStatus = INPUT_TEXT_REQUEST_STATUS.CANCELLED;
+                __newStatus = INPUT_TEXT_STATUS.CANCELLED;
             }
             else
             {
-                __newStatus = INPUT_TEXT_REQUEST_STATUS.CONFIRMED;
+                __newStatus = INPUT_TEXT_STATUS.CONFIRMED;
                 __textAsync = string_copy(steam_get_entered_gamepad_text_input(), 1, __maxLength);
             }
         }
