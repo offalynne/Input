@@ -140,7 +140,7 @@ function __InputTextSystem()
                     }                
                     else if (!_osPaused)
                     {
-                        if (!_virtualStatus && __virtualStatusPrevious) || (_virtualHeight < __virtualHeightPrevious)
+                        if ((!_virtualStatus && __virtualStatusPrevious) || ((_virtualHeight == 0) && (__virtualHeightPrevious > 0)))
                         {
                             __newStatus = INPUT_TEXT_REQUEST_STATUS.CANCELLED;
                         }
