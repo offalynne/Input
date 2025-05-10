@@ -14,6 +14,8 @@ function __InputIconSystem()
         
         __empty = undefined;
         __unsupported = undefined;
+        
+        InputPlugInDefine("InputTeam.Icons", "The Input Team", "1.0", "10.0", function() {});
     }
     
     return _system;

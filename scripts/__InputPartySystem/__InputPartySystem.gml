@@ -19,122 +19,98 @@ function __InputPartySystem()
         __abortCallback  = undefined;
         __hotswapOnAbort = true;
         
-        __leaveStateMap = ds_map_create();
-        
-        InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.UPDATE, undefined, function()
+        InputPlugInDefine("InputTeam.PartyMultiplayer", "The Input Team", "1.0", "10.0", function()
         {
-            if (not __joining) return;
-            
-            if (__joinVerb == undefined)
+            InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.UPDATE, undefined, function()
             {
-                __InputError("Join verb not defined. Please call InputPartySetParams()");
-            }
-            
-            //Track leave verb state per device. This prevents immediately aborting joing mode when the last
-            //player aborts.
-            var _deviceArray = InputDeviceEnumerate();
-            var _i = 0;
-            repeat(array_length(_deviceArray))
-            {
-                var _device = _deviceArray[_i];
+                if (not __joining) return;
                 
-                var _oldState = __leaveStateMap[? _device] ?? 0;
-                var _newValue = InputDeviceCheckViaPlayer(_device, __leaveVerb, 0);
-                
-                if ((_oldState == 1) || (_oldState == 2))
+                if (__joinVerb == undefined)
                 {
-                    var _newState = _newValue? 2 : 3;
-                }
-                else
-                {
-                    var _newState = _newValue? 1 : 0;
+                    __InputError("Join verb not defined. Please call InputPartySetParams()");
                 }
                 
-                __leaveStateMap[? _device] = _newState;
-                
-                ++_i;
-            }
-            
-            if (__fillEmpty)
-            {
-                //Drop players down into empty spaces
-                do
+                if (__fillEmpty)
                 {
-                    var _fail = false;
-                    var _p = INPUT_MAX_PLAYERS-1;
-                    repeat(INPUT_MAX_PLAYERS-1)
+                    //Drop players down into empty spaces
+                    do
                     {
-                        if (InputPlayerIsConnected(_p) && (not InputPlayerIsConnected(_p-1)))
+                        var _fail = false;
+                        var _p = INPUT_MAX_PLAYERS-1;
+                        repeat(INPUT_MAX_PLAYERS-1)
                         {
-                            __InputTrace("Moving player ", _p, " (connected) to ", _p-1, " (disconnected)");
-                            InputPlayerSwap(_p, _p-1);
-                            _fail = true;
-                        }
-                        
-                        --_p;
-                    }
-                }
-                until (not _fail);
-            }
-            
-            //Disconnect all extraneous players
-            var _p = __maxPlayers;
-            repeat(INPUT_MAX_PLAYERS - __maxPlayers)
-            {
-                InputPlayerSetDevice(INPUT_NO_DEVICE, _p);
-                ++_p;
-            }
-            
-            //Scan for input for the lowest index slot
-            var _p = 0;
-            repeat(__maxPlayers)
-            {
-                if (not InputPlayerIsConnected(_p))
-                {
-                    if (is_callable(__abortCallback) && (InputPlayerConnectedCount() <= 0))
-                    {
-                        var _device = InputDeviceGetNewActivityOnVerb(__leaveVerb, _p);
-                        if ((_device != INPUT_NO_DEVICE) && (__leaveStateMap[? _device] == 1))
-                        {
-                            __InputTrace("Player ", _p, " aborted with device ", _device);
+                            if (InputPlayerIsConnected(_p) && (not InputPlayerIsConnected(_p-1)))
+                            {
+                                __InputTrace("Moving player ", _p, " (connected) to ", _p-1, " (disconnected)");
+                                InputPlayerSwap(_p, _p-1);
+                                _fail = true;
+                            }
                             
-                            InputPartySetJoin(false, __hotswapOnAbort);
-                            InputPlayerSetDevice(_device, _p);
-                            InputVerbConsumeAll(_p); //Make sure we don't leak input
-                            
-                            __abortCallback();
-                            
-                            return;
+                            --_p;
                         }
                     }
-                    
-                    var _device = InputDeviceGetNewActivityOnVerb(__joinVerb, _p);
-                    if (_device != INPUT_NO_DEVICE)
-                    {
-                        __InputTrace("Player ", _p, " joined with device ", _device);
-                        InputPlayerSetDevice(_device, _p);
-                        InputVerbConsumeAll(_p); //Make sure we don't leak input
-                    }
+                    until (not _fail);
                 }
                 
-                ++_p;
-            }
-            
-            if (__leaveVerb != undefined)
-            {
-                //Allow players to leave the game
+                //Disconnect all extraneous players
+                var _p = __maxPlayers;
+                repeat(INPUT_MAX_PLAYERS - __maxPlayers)
+                {
+                    InputPlayerSetDevice(INPUT_NO_DEVICE, _p);
+                    ++_p;
+                }
+                
+                //Scan for input for the lowest index slot
                 var _p = 0;
                 repeat(__maxPlayers)
                 {
-                    if (InputPressed(__leaveVerb, _p))
+                    if (not InputPlayerIsConnected(_p))
                     {
-                        __InputTrace("Player ", _p, " left");
-                        InputPlayerSetDevice(INPUT_NO_DEVICE, _p);
+                        if (is_callable(__abortCallback) && (InputPlayerConnectedCount() <= 0))
+                        {
+                            var _device = InputDeviceGetNewActivityOnVerb(__leaveVerb, _p);
+                            if (_device != INPUT_NO_DEVICE)
+                            {
+                                __InputTrace("Player ", _p, " aborted with device ", _device);
+                                
+                                InputPartySetJoin(false, __hotswapOnAbort);
+                                InputPlayerSetDevice(_device, _p);
+                                InputVerbConsumeAll(_p); //Make sure we don't leak input
+                                
+                                __abortCallback();
+                                
+                                return;
+                            }
+                        }
+                        
+                        var _device = InputDeviceGetNewActivityOnVerb(__joinVerb, _p);
+                        if (_device != INPUT_NO_DEVICE)
+                        {
+                            __InputTrace("Player ", _p, " joined with device ", _device);
+                            InputPlayerSetDevice(_device, _p);
+                            InputVerbConsumeAll(_p); //Make sure we don't leak input
+                        }
                     }
                     
                     ++_p;
                 }
-            }
+                
+                if (__leaveVerb != undefined)
+                {
+                    //Allow players to leave the game
+                    var _p = 0;
+                    repeat(__maxPlayers)
+                    {
+                        if (InputPressed(__leaveVerb, _p))
+                        {
+                            __InputTrace("Player ", _p, " left");
+                            InputPlayerSetDevice(INPUT_NO_DEVICE, _p);
+                        }
+                        
+                        ++_p;
+                    }
+                }
+            });
         });
     }
     

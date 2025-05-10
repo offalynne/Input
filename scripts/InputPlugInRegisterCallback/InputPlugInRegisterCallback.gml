@@ -3,6 +3,10 @@
 /// Registers a callback to be executed at a suitable time by the library. The callback type
 /// should be a member of the `INPUT_PLUG_IN_CALLBACK` enum.
 /// 
+/// N.B. Plug-ins may only register callbacks in the initialization callback defined by
+///      `InputPlugInDefine()`. Calling `InputPlugInRegisterCallback()` outside of the
+///      initialization callback with throw an error.
+/// 
 /// You may also specify a callback priority. Because many callbacks can be registered to any
 /// particular callback type, and because code order might matter in some situations, it is useful
 /// to be able to control what order callbacks are executed. Native library code always has a
@@ -63,9 +67,16 @@
 
 function InputPlugInRegisterCallback(_callbackType, _priority = -1, _method)
 {
+    static _system = __InputSystem();
+    
+    if (_system.__plugInsInitializeState != 1)
+    {
+        __InputError("`InputPlugInRegisterCallback()` can only be called in a plug-in's initialization callback");
+    }
+    
     if (_priority == 0)
     {
-        __InputError("Cannot use priority 0 for plug-ins");
+        __InputError("Cannot use priority 0 for plug-ins (reserved for internal code)");
     }
     
     __InputPlugInRegisterCallbackInternal(_callbackType, _priority, _method);
