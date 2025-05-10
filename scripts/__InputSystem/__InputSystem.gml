@@ -176,6 +176,13 @@ function __InputSystem()
         
         
         
+        //Disable Windows IME
+        if (INPUT_ON_WINDOWS)
+        {
+            keyboard_virtual_hide();
+        }
+        
+        
         //Create a time source if the library needs to self-manage
         if (INPUT_COLLECT_MODE != 2)
         {

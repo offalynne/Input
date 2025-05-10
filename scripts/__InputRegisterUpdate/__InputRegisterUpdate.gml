@@ -34,6 +34,12 @@ function __InputRegisterUpdate()
                     keyboard_string = _keyboardString;
                 }
                 
+                //Enable Windows IME
+                if (INPUT_ON_WINDOWS)
+                {
+                    keyboard_virtual_show(undefined, undefined, undefined, undefined);
+                }
+                
                 __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.LOSE_FOCUS);
             }
             else
@@ -56,6 +62,12 @@ function __InputRegisterUpdate()
                     __windowFocus                   = true;
                     __pointerBlockedByWindowDefocus = true;
                     __pointerBlockedByUserThisFrame = true;
+                
+                    //Disable Windows IME
+                    if (INPUT_ON_WINDOWS)
+                    {
+                        keyboard_virtual_hide();
+                    }
                     
                     __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.GAIN_FOCUS);
                 }
@@ -186,6 +198,25 @@ function __InputRegisterUpdate()
         if (__usingSteamworks)
         {
             steam_input_run_frame();
+            
+            //Enable Windows IME for Steam Overlay
+            if (INPUT_ON_WINDOWS && __windowFocus)
+            {
+                var _overlayEnabled = steam_is_overlay_activated();
+                var _imeEnabled = keyboard_virtual_status();
+                
+                if (_imeEnabled != _overlayEnabled)
+                {
+                    if (_overlayEnabled)
+                    {
+                         keyboard_virtual_show(undefined, undefined, undefined, undefined);
+                    }
+                    else
+                    {
+                        keyboard_virtual_hide();
+                    }
+                }
+            }
             
             if (__InputSteamHandlesChanged())
             {
