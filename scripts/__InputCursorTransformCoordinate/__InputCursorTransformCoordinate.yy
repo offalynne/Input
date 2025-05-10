@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__InputCursorTransformCoordinate",
   "parent":{
-    "name":"'(System)",
-    "path":"folders/Input Plug-Ins/Cursor/'(System).yy",
+    "name":"(System)",
+    "path":"folders/Input Plug-Ins/Cursor/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
