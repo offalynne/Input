@@ -1,5 +1,3 @@
-log = "";
-
 debugStatus = [
     "None",
     "Waiting",
@@ -12,29 +10,46 @@ var _vw = room_width/10;
 
 var _button = function(_caption, _text, _maxLength, _button) constructor
 {
-        caption   = _caption;
-        text      = _text;
-        maxLength = _maxLength;
-        button    = _button;
+    caption   = _caption;
+    text      = _text;
+    maxLength = _maxLength;
+    button    = _button;
         
-        selected  = false;        
+    selected  = false;        
         
-        static GetValue = function()
+    static GetValue = function()
+    {
+        if (selected)
         {
-            var _cursor = ((current_time div 250) mod 2 == 0)? "|" : "";
-            return (selected? InputTextRequestGetString() + _cursor : text);
-        };
-        
-        static OnClick = function()
-        {
-            InputTextRequestStart(caption, text, maxLength, function()
+            var _string = InputTextRequestGetString();
+            if (!INPUT_ON_CONSOLE && InputGameHasFocus())
             {
-                selected = false;
-                text = InputTextRequestGetString();
-            });            
+                if ((keyboard_key != vk_nokey)
+                || ((current_time div 250) mod 2 == 0)
+                || (string_length(InputTextDelta()) + InputTextCharsRemoved() > 0))
+                {
+                    _string += "|";   
+                }
+            }
+                
+            return _string;
+        }
+        else
+        {
+            return text;
+        }
+    };
+        
+    static OnClick = function()
+    {
+        InputTextRequestStart(caption, text, maxLength, function()
+        {
+            selected = false;
+            text = InputTextRequestGetString();
+        });            
             
-            selected = true;
-        };
+        selected = true;
+    };
 }
 
 buttons = [

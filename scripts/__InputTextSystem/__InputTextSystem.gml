@@ -212,7 +212,6 @@ function __InputTextSystem()
             var _preLintString = keyboard_string;
             var _keyboardString = _preLintString;
             
-            // iOS empty-string quirk
             if ((string_length(_keyboardString) > 0) && (_keyboardString == ""))
             {
                 if (INPUT_ON_IOS) keyboard_virtual_hide();
@@ -224,7 +223,10 @@ function __InputTextSystem()
                 _keyboardString = __emptyString;
             }
             
-            if (string_length(_keyboardString) == 0) return;
+            if (string_length(_keyboardString) == 0)
+            {
+                return;
+            }
 
             var _charFilter = [
                 0x0A, // Line feed
