@@ -21,28 +21,33 @@ var _button = function(_caption, _text, _maxLength, _button) constructor
     {
         if (selected)
         {
-            var _string = InputTextRequestGetString();
-            if (!INPUT_ON_CONSOLE && InputGameHasFocus())
-            {
-                if ((keyboard_key != vk_nokey)
-                || ((current_time div 250) mod 2 == 0)
-                || (string_length(InputTextDelta()) + InputTextCharsRemoved() > 0))
-                {
-                    _string += "|";   
-                }
-            }
-                
-            return _string;
+            return InputTextRequestGetString();
         }
         else
         {
             return text;
         }
     };
+    
+    static DrawValue = function()
+    {
+        var _string = GetValue();
+        if (!INPUT_ON_CONSOLE && selected && InputGameHasFocus())
+        {
+            if ((keyboard_key != vk_nokey)
+            || ((current_time div 250) mod 2 == 0)
+            || (string_length(InputTextDelta()) + InputTextCharsRemoved() > 0))
+            {
+                _string += "|";   
+            }
+        }
+            
+        return _string;
+    }
         
     static OnClick = function()
-    {
-        InputTextRequestStart(caption, text, maxLength, function()
+    {   
+        InputTextRequestStart(caption, GetValue(), maxLength, function()
         {
             selected = false;
             text = InputTextRequestGetString();

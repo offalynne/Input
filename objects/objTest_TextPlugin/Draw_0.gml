@@ -12,7 +12,7 @@ repeat(array_length(buttons))
 {
     with(buttons[_i])
     {
-        draw_text(button.GetPosition().left + 15, button.GetPosition().top + 15, GetValue());
+        draw_text(button.GetPosition().left + 15, button.GetPosition().top + 15, DrawValue());
         if (button.Pressed()) OnClick();
     }
     
