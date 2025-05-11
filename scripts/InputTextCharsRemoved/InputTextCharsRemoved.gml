@@ -1,3 +1,5 @@
+// Feather disable all
+
 function InputTextCharsRemoved()
 {
     static _system = __InputTextSystem();

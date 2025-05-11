@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"__InputTextConfig",
+  "%Name":"__InputTextHandleChanges",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__InputTextConfig",
+  "name":"__InputTextHandleChanges",
   "parent":{
-    "name":"Text",
-    "path":"folders/Text.yy",
+    "name":"(System)",
+    "path":"folders/Text/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

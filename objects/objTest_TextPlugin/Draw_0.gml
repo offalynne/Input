@@ -1,3 +1,7 @@
+draw_set_color(c_gray);
+InputVirtualDebugDraw();
+draw_set_color(c_white);
+
 draw_text(10,  10, "keyboard_string  >" + keyboard_string  + "<");
 draw_text(10,  30, "Length           "  + string(string_length(keyboard_string)));
 
@@ -29,5 +33,3 @@ if (keyboard_check_pressed(vk_escape) || background.Pressed())
 {
     InputTextRequestStop();
 }
-
-InputVirtualDebugDraw();

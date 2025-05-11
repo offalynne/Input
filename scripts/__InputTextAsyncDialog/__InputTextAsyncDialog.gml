@@ -1,3 +1,5 @@
+// Feather disable all
+
 function __InputTextAsyncDialog()
 {
     static _system = __InputTextSystem();
@@ -5,10 +7,9 @@ function __InputTextAsyncDialog()
     if ((async_load != -1) && (_system.__asyncId != undefined) && (async_load[? "id"] == _system.__asyncId))
     {
         var _result = async_load[? "result"];
-        var _status = async_load[? "status"];
         with(_system)
         {
-            if (!_status || (_result == undefined))
+            if (!async_load[? "status"] || (_result == undefined))
             {
                 __newStatus = INPUT_TEXT_STATUS.CANCELLED;
             }

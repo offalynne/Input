@@ -1,3 +1,5 @@
+// Feather disable all
+
 function InputTextRequestGetStatus()
 {
     static _system = __InputTextSystem();

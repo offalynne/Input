@@ -1,3 +1,5 @@
+// Feather disable all
+
 function __InputTextAsyncSteam()
 {
     static _system = __InputTextSystem();

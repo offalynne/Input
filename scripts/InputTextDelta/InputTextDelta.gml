@@ -1,3 +1,5 @@
+// Feather disable all
+
 function InputTextDelta()
 {
     static _system = __InputTextSystem();
