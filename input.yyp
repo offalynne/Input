@@ -64,6 +64,8 @@
   "name":"Input",
   "resources":[
     {"id":{"name":"acVibrationTest","path":"animcurves/acVibrationTest/acVibrationTest.yy",},},
+    {"id":{"name":"Steamworks","path":"extensions/Steamworks/Steamworks.yy",},},
+    {"id":{"name":"__InputTextAsyncController","path":"objects/__InputTextAsyncController/__InputTextAsyncController.yy",},},
     {"id":{"name":"__InputUpdateController","path":"objects/__InputUpdateController/__InputUpdateController.yy",},},
     {"id":{"name":"objTest_TextPlugin","path":"objects/objTest_TextPlugin/objTest_TextPlugin.yy",},},
     {"id":{"name":"objTest000_Verbs","path":"objects/objTest000_Verbs/objTest000_Verbs.yy",},},

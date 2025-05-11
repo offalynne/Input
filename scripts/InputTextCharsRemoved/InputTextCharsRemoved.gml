@@ -1,5 +1,11 @@
 function InputTextCharsRemoved()
 {
     static _system = __InputTextSystem();
-    return _system.__removeCount;
+    with(_system)
+    {
+        __enabled = true;
+        return __removeCount;
+    }
+    
+    return 0;
 }

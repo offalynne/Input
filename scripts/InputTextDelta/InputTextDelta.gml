@@ -1,5 +1,11 @@
 function InputTextDelta()
 {
     static _system = __InputTextSystem();
-    return _system.__textDelta;
+    with(_system)
+    {
+        __enabled = true;
+        return __textDelta;
+    }
+    
+    return "";
 }

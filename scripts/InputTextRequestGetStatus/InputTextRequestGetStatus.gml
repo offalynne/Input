@@ -1,5 +1,11 @@
 function InputTextRequestGetStatus()
 {
     static _system = __InputTextSystem();
-    return _system.__requestStatus;
+    with(_system)
+    {
+        __enabled = true;
+        return __requestStatus;
+    }
+    
+    return undefined;
 }
