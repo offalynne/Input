@@ -209,12 +209,6 @@ function __InputTextSystem()
         
         __LintKeyboardString = function()
         {   
-            var _charFilter = [
-                0x0A, // Line feed
-                0x0D, // Carriage Return
-                0x7F  // Ctrl+Del
-            ];
-            
             var _preLintString = keyboard_string;
             var _keyboardString = _preLintString;
             
@@ -231,6 +225,12 @@ function __InputTextSystem()
             }
             
             if (string_length(_keyboardString) == 0) return;
+
+            var _charFilter = [
+                0x0A, // Line feed
+                0x0D, // Carriage Return
+                0x7F  // Ctrl+Del
+            ];
             
             var _i = 0;            
             repeat(array_length(_charFilter))

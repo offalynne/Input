@@ -27,12 +27,13 @@ var _button = function(_caption, _text, _maxLength, _button) constructor
         
         static OnClick = function()
         {
-            selected = true;
             InputTextRequestStart(caption, text, maxLength, function()
             {
                 selected = false;
                 text = InputTextRequestGetString();
-            })
+            });            
+            
+            selected = true;
         };
 }
 
