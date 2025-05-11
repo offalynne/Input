@@ -284,6 +284,11 @@ function __InputTextSystem()
             if (string_length(__keyboardStringPrevious) > _offsetChar)
             {
                 __removeCount = abs(_length - string_length(__keyboardStringPrevious) - string_length(__textDelta));
+				
+				if ((INPUT_ON_MACOS || INPUT_ON_LINUX) && (__removeCount == 0))
+				{
+					__removeCount = __repeatCount;
+				}
             }
             else
             {
