@@ -60,6 +60,6 @@ Returns whether hotswapping for player 0 is turned on.
 |----------|--------|------------------------------------|
 |`callback`|method  |Method to call when a hotswap occurs|
 
-Sets a callback to execute when a hotswap occurs. The callbac is executed with no parameters.
+Sets a callback to execute when a hotswap occurs. The callback is executed with no parameters.
 
 <!-- tabs:end -->
