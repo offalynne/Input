@@ -121,7 +121,7 @@ enum INPUT_PLUG_IN_CALLBACK
 #macro INPUT_SDL_SUPPORT          ((not INPUT_ON_WEB) && INPUT_ON_DESKTOP)
 
 #macro INPUT_BAN_KBM       (not INPUT_ON_DESKTOP)
-#macro INPUT_BAN_TOUCH     (not INPUT_ON_MOBILE)
+#macro INPUT_BAN_TOUCH     false//(not INPUT_ON_MOBILE)
 #macro INPUT_BAN_GAMEPADS  false
 #macro INPUT_BAN_HOTSWAP   false
 

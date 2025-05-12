@@ -3,9 +3,10 @@
 /// Returns information about the Steam integration in the library. `infoField` should be a
 /// member of the `INPUT_STEAM_INFO` enum:
 /// 
-/// - `INPUT_STEAM_INFO.STEAMWORKS`  Whether Steamworks has initialized successfully
-/// - `INPUT_STEAM_INFO.STEAM_DECK`  Whether we're running on Steam Deck hardware
-/// - `INPUT_STEAM_INFO.ON_WINE`     Whether we're running in the WINE emulator
+/// - `INPUT_STEAM_INFO.STEAMWORKS`   Whether Steamworks has initialized successfully
+/// - `INPUT_STEAM_INFO.STEAM_DECK`   Whether we're running on Steam Deck hardware
+/// - `INPUT_STEAM_INFO.ON_WINE`      Whether we're running in the WINE emulator
+/// - `INPUT_STEAM_INFO.BIG_PICTURE`  Whether we're running in Big Picture UI
 /// 
 /// @param {Enum.INPUT_STEAM_INFO,Real} infoField
 

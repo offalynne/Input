@@ -11,9 +11,9 @@ function __InputInitializeSteam()
         __steamHandlesArray = [];
         
         __steamSwitchLabels          = false;
-        __steamTypeToInputTypeMap = ds_map_create();
+        __steamTypeToInputTypeMap    = ds_map_create();
         __steamTypeToDescriptionMap  = ds_map_create();
-        __steamInputTypeIgnoreMap = ds_map_create();
+        __steamInputTypeIgnoreMap    = ds_map_create();
         
         try
         {
