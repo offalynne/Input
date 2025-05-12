@@ -30,9 +30,9 @@ function __InputTextLintKeyboardString()
                 
         ++_i;
     }
-    
+
     var _overflow = string_length(_keyboardString) - __INPUT_TEXT_MAX_LENGTH;
-    if (_overflow > 0)
+    if (_overflow > (INPUT_ON_IOS? 1000 - __INPUT_TEXT_MAX_LENGTH : 0))
     {
         _keyboardString = string_copy(_keyboardString, _overflow + 1, string_length(_keyboardString));
         __keyboardStringPrevious = string_copy(__keyboardStringPrevious, _overflow + 1, string_length(__keyboardStringPrevious));

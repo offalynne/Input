@@ -34,8 +34,7 @@ var _button = function(_caption, _text, _maxLength, _button) constructor
         var _string = GetValue();
         if (!INPUT_ON_CONSOLE && selected && InputGameHasFocus())
         {
-            if ((keyboard_key != vk_nokey)
-            || ((current_time div 250) mod 2 == 0)
+            if (((current_time div 250) mod 2 == 0)
             || (string_length(InputTextDelta()) + InputTextCharsRemoved() > 0))
             {
                 _string += "|";   
