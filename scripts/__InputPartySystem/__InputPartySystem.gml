@@ -19,7 +19,7 @@ function __InputPartySystem()
         __abortCallback  = undefined;
         __hotswapOnAbort = true;
         
-        InputPlugInDefine("InputTeam.PartyMultiplayer", "The Input Team", "1.0", "10.0", function()
+        InputPlugInDefine("InputTeam.PartyMultiplayer", "Input Team", "1.0", "10.0", function()
         {
             InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.UPDATE, undefined, function()
             {

@@ -14,7 +14,7 @@ function __InputColorSystem()
             return new __InputColorClassPlayer(_index);
         });
         
-        InputPlugInDefine("InputTeam.GamepadColor", "The Input Team", "1.0", "10.0", function()
+        InputPlugInDefine("InputTeam.GamepadColor", "Input Team", "1.0", "10.0", function()
         {
             InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.PLAYER_DEVICE_CHANGED, undefined, function(_playerIndex, _oldDevice, _newDevice)
             {

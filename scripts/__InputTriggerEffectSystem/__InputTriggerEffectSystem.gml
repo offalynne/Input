@@ -31,7 +31,7 @@ function __InputTriggerEffectSystem()
             return new __InputTriggerEffectPlayer(_index);
         });
         
-        InputPlugInDefine("InputTeam.TriggerEffects", "The Input Team", "1.0", "10.0", function()
+        InputPlugInDefine("InputTeam.TriggerEffects", "Input Team", "1.0", "10.0", function()
         {
             InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.GAMEPAD_CONNECTED, undefined, function(_device)
             {

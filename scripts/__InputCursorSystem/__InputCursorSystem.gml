@@ -14,7 +14,7 @@ function __InputCursorSystem()
             return new __InputCursorClassPlayer(_index);
         });
         
-        InputPlugInDefine("InputTeam.Cursor", "The Input Team", "1.0", "10.0", function()
+        InputPlugInDefine("InputTeam.Cursor", "Input Team", "1.0", "10.0", function()
         {
             InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.UPDATE, -1, function(_playerIndex)
             {
