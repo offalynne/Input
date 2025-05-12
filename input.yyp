@@ -300,6 +300,7 @@
     {"id":{"name":"InputPlayerUsingTouch","path":"scripts/InputPlayerUsingTouch/InputPlayerUsingTouch.yy",},},
     {"id":{"name":"InputPlugInAssertDependencies","path":"scripts/InputPlugInAssertDependencies/InputPlugInAssertDependencies.yy",},},
     {"id":{"name":"InputPlugInDefine","path":"scripts/InputPlugInDefine/InputPlugInDefine.yy",},},
+    {"id":{"name":"InputPlugInError","path":"scripts/InputPlugInError/InputPlugInError.yy",},},
     {"id":{"name":"InputPlugInExists","path":"scripts/InputPlugInExists/InputPlugInExists.yy",},},
     {"id":{"name":"InputPlugInGamepadBlock","path":"scripts/InputPlugInGamepadBlock/InputPlugInGamepadBlock.yy",},},
     {"id":{"name":"InputPlugInGamepadGetVendorAndProduct","path":"scripts/InputPlugInGamepadGetVendorAndProduct/InputPlugInGamepadGetVendorAndProduct.yy",},},

@@ -13,7 +13,7 @@ function InputTriggerEffectGetState(_trigger, _playerIndex = 0)
     
     if not ((_trigger == gp_shoulderlb) || (_trigger == gp_shoulderrb))
     {
-        __InputError("Value ", _trigger ," not a gamepad trigger");
+        InputPlugInError("Value ", _trigger ," not a gamepad trigger");
     }
     
     var _device = InputPlayerGetDevice(_playerIndex);
@@ -37,7 +37,7 @@ function InputTriggerEffectGetState(_trigger, _playerIndex = 0)
     }
     else
     {
-        __InputError("Value ", _trigger ," not a gamepad trigger");
+        InputPlugInError("Value ", _trigger ," not a gamepad trigger");
         return false;
     }
 

@@ -35,7 +35,7 @@ function __InputTriggerEffectGamepad(_device) constructor
         }
         else if (_trigger != gp_shoulderrb)
         {
-            __InputError("Value ", _trigger ," not a gamepad trigger");
+            InputPlugInError("Value ", _trigger ," not a gamepad trigger");
             return false;
         }
 

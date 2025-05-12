@@ -54,7 +54,7 @@ function __InputTriggerEffectPlayer(_playerIndex) constructor
         }
         else
         {
-            __InputError("Value ", _trigger ," not a gamepad trigger");
+            InputPlugInError("Value ", _trigger ," not a gamepad trigger");
             return false;
         }
     }

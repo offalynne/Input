@@ -27,7 +27,7 @@ function __InputPartySystem()
                 
                 if (__joinVerb == undefined)
                 {
-                    __InputError("Join verb not defined. Please call InputPartySetParams()");
+                    InputPlugInError("Join verb not defined. Please call InputPartySetParams()");
                 }
                 
                 if (__fillEmpty)
