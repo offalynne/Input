@@ -2,14 +2,13 @@
 
 function __InputTextHandleKeyboard()
 {
-    static _ignore       = false;
-    static _heldPrevious = false;
-    static _pressedTime  = infinity;
-    
     static _virtualHeightPrevious = 0;
     static _virtualStatusPrevious = false;
-    static _osPausedPrevious      = false;        
-    static _timePrevious          = InputPlugInGetTime();       
+    static _osPausedPrevious      = false;
+    static _heldPrevious          = false;
+    static _ignore                = false;
+    static _pressedTime           = infinity;
+    static _timePrevious          = InputPlugInGetTime();
     
     __keyboardString = keyboard_string;
             

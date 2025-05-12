@@ -54,8 +54,8 @@ function __InputTextSystem()
             
             if (__enabled)
             {
-                __InputTextLintKeyboardString();
                 __InputTextHandleKeyboard();
+                __InputTextLintKeyboardString();
                 __InputTextFindKeyboardDelta();
             }
             
