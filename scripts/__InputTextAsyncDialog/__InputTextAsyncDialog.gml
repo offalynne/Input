@@ -13,7 +13,7 @@ function __InputTextAsyncDialog()
             {
                 __newStatus = INPUT_TEXT_STATUS.CANCELLED;
             }
-            else
+            else if (__requestStatus == INPUT_TEXT_STATUS.WAITING)
             {
                 __newStatus = INPUT_TEXT_STATUS.CONFIRMED;
                 __textAsync = string_copy(_result, 1, __maxLength);

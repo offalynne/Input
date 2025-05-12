@@ -8,39 +8,45 @@ function __InputTextLintKeyboardString()
         0x7F  // Ctrl + Del
     ];
     
-    var _preLintString = keyboard_string;
-    var _keyboardString = _preLintString;
+    var _preLintString = __keyboardString;
             
-    if ((string_length(_keyboardString) > 0) && (_keyboardString == ""))
+    if ((string_length(__keyboardString) > 0) && (__keyboardString == ""))
     {
         if (INPUT_ON_IOS) keyboard_virtual_hide();
         keyboard_string = "";
     }
             
-    if (string_length(_keyboardString) == 0) return;
+    if (string_length(__keyboardString) == 0) return;
             
     var _i = 0;            
     repeat(array_length(_charFilter))
     {
         var _char = chr(_charFilter[_i]);
-        if (__InputStringContains(_keyboardString, _char))
+        if (__InputStringContains(__keyboardString, _char))
         {
-            _keyboardString = string_replace_all(_keyboardString, _char, "");
+            __keyboardString = string_replace_all(__keyboardString, _char, "");
         }
                 
         ++_i;
     }
 
-    var _overflow = string_length(_keyboardString) - __INPUT_TEXT_MAX_LENGTH;
-    if (_overflow > (INPUT_ON_IOS? 1000 - __INPUT_TEXT_MAX_LENGTH : 0))
+    var _overflow = string_length(__keyboardString) - __INPUT_TEXT_MAX_LENGTH;
+    var _minimumOverflow = 1;
+    
+    if (INPUT_ON_IOS)
     {
-        _keyboardString = string_copy(_keyboardString, _overflow + 1, string_length(_keyboardString));
+        _minimumOverflow = 1000 - __INPUT_TEXT_MAX_LENGTH;
+    }
+    
+    if (_overflow >= _minimumOverflow)
+    {
+        __keyboardString = string_copy(__keyboardString, _overflow + 1, string_length(__keyboardString));
         __keyboardStringPrevious = string_copy(__keyboardStringPrevious, _overflow + 1, string_length(__keyboardStringPrevious));
     }
     
-    if (_preLintString != _keyboardString)
+    if (_preLintString != __keyboardString)
     {
         if (INPUT_ON_IOS) keyboard_virtual_hide();
-        keyboard_string = _keyboardString;
+        keyboard_string = __keyboardString;
     }
 }

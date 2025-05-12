@@ -9,8 +9,8 @@
   "name":"__InputTextAsyncController",
   "overriddenProperties":[],
   "parent":{
-    "name":"Input",
-    "path":"Input.yyp",
+    "name":"(System)",
+    "path":"folders/Input Plug-Ins/Text/(System).yy",
   },
   "parentObjectId":null,
   "persistent":true,

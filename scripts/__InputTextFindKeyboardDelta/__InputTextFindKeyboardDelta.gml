@@ -3,26 +3,29 @@
 function __InputTextFindKeyboardDelta()
 {
     __textDelta   = "";
-    __removeCount = 0;            
+    __removeCount = 0;
             
     if (INPUT_ON_CONSOLE || __steamAsyncRequest || (__textAsync != undefined) ||  (__textSet != undefined)) return;
             
-    var _keyboardString = keyboard_string;
-    var _length = string_length(_keyboardString);
+    var _length = string_length(__keyboardString);
 
-    if (_keyboardString != __keyboardStringPrevious)
+    if (__keyboardString != __keyboardStringPrevious)
     {
         var _i = 1;
         repeat(_length)
         {
-            if (string_char_at(_keyboardString, _i) != string_char_at(__keyboardStringPrevious, _i)) break;
+            if (string_char_at(__keyboardString, _i) != string_char_at(__keyboardStringPrevious, _i)) break;
             ++_i;
         }
         
-        __textDelta = string_copy(_keyboardString, _i, _length);
+        __textDelta = string_copy(__keyboardString, _i, _length);
     }
     
-    if (string_length(__keyboardStringPrevious) > 0)
+    if (string_length(__keyboardStringPrevious) <= 0)
+    {
+        __removeCount = __repeatCount;
+    }
+    else
     {
         var _deleteCount = abs(_length - string_length(__keyboardStringPrevious) - string_length(__textDelta));
         if (_deleteCount != 0)
@@ -33,9 +36,5 @@ function __InputTextFindKeyboardDelta()
 		{
 			__removeCount = __repeatCount;
 		}
-    }
-    else
-    {
-        __removeCount = __repeatCount;
     }
 }

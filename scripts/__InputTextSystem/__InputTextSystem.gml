@@ -1,16 +1,4 @@
 // Feather disable all
-
-enum INPUT_TEXT_STATUS
-{
-    NONE,
-    WAITING,
-    STOPPED,
-    CANCELLED,
-    CONFIRMED,
-}
-
-#macro __INPUT_TEXT_MAX_LENGTH  256
-
 __InputTextSystem();
 function __InputTextSystem()
 {
@@ -38,14 +26,14 @@ function __InputTextSystem()
         __steamAsyncRequest = false;
         __useSteamKeyboard  = false;
         
-        if (InputGetSteamInfo(INPUT_STEAM_INFO.STEAM_DECK)
-        &&  InputGetSteamInfo(INPUT_STEAM_INFO.STEAMWORKS))
+        if (InputGetSteamInfo(INPUT_STEAM_INFO.STEAMWORKS)
+        &&  InputGetSteamInfo(INPUT_STEAM_INFO.STEAM_DECK))
         {
             __useSteamKeyboard = true;
             steam_utils_enable_callbacks();
         }
         
-        __keyboardString = keyboard_string;   
+        __keyboardString = "";   
         __keyboardStringPrevious = __keyboardString;
 
         InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.UPDATE, undefined, function()
@@ -61,6 +49,6 @@ function __InputTextSystem()
             
             __InputTextHandleChanges();
             __InputTextHandleStatus();
-        });
+        })
     }
 }

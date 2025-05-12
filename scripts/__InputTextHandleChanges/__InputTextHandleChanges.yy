@@ -6,7 +6,7 @@
   "name":"__InputTextHandleChanges",
   "parent":{
     "name":"(System)",
-    "path":"folders/Text/(System).yy",
+    "path":"folders/Input Plug-Ins/Text/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

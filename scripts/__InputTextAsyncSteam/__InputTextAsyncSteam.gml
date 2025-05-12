@@ -13,7 +13,7 @@ function __InputTextAsyncSteam()
             {
                 __newStatus = INPUT_TEXT_STATUS.CANCELLED;
             }
-            else
+            else if (__requestStatus == INPUT_TEXT_STATUS.WAITING)
             {
                 __newStatus = INPUT_TEXT_STATUS.CONFIRMED;
                 __textAsync = string_copy(steam_get_entered_gamepad_text_input(), 1, __maxLength);

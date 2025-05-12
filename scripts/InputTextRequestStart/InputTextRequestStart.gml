@@ -35,61 +35,60 @@ function InputTextRequestStart(_caption, _initialText, _maxLength, _callback, _k
             _initialText = string_copy(_initialText, 1, _maxLength);
         }
 
-        __callback     = _callback;
-        __keyboardType = _keyboardType;
-        __textSet      = string_copy(_initialText, 1, _maxLength);
-
-        var _keyboardVisible = _ShowKeyboard(_keyboardType, _caption, _initialText);
-        if not (_keyboardVisible)
-        {
-            __InputTrace("Text request warning: Failed to show keyboard");
-        }
+        var _result = true;
+        var _useController = false;
         
-        static _ShowKeyboard = function(_keyboardType, _caption, _initialText)
+        if (INPUT_ON_CONSOLE || INPUT_ON_WEB)
         {
-            var _result = true;
-            var _useController = false;
-            if (INPUT_ON_CONSOLE || INPUT_ON_WEB)
+            _useController = true;
+            if (__asyncId != undefined)
             {
-                _useController = true;
-                if (__asyncId != undefined)
-                {
-                    _result = false;
-                }
-                else
-                {
-                    __asyncId = get_string_async(_caption, _initialText);
-                }
-                
-            }
-            else if (__useSteamKeyboard)
-            {
-                _result = steam_show_gamepad_text_input(
-                                steam_gamepad_text_input_mode_normal, 
-                                steam_gamepad_text_input_line_mode_single_line, 
-                                _caption, __maxLength, _initialText);                
-                if (_result)
-                {                    
-                    _useController = true;
-                    __steamAsyncRequest = true;
-                }
+                _result = false;
             }
             else
             {
-                keyboard_string = _initialText;   
+                __asyncId = get_string_async(_caption, _initialText);
+            }
                 
-                if (INPUT_ON_MOBILE)
-                {
-                    keyboard_virtual_show(_keyboardType, INPUT_TEXT_RETURN_KEY, INPUT_TEXT_CAPITALIZATION, INPUT_TEXT_PREDICTION);
-                }
+        }
+        else if (__useSteamKeyboard)
+        {
+            _result = steam_show_gamepad_text_input(
+                            steam_gamepad_text_input_mode_normal, 
+                            steam_gamepad_text_input_line_mode_single_line, 
+                            _caption, __maxLength, _initialText);                
+            if (_result)
+            {                    
+                _useController = true;
+                __steamAsyncRequest = true;
             }
-            
-            if (_useController && !instance_exists(__InputTextAsyncController))
+        }
+        else
+        {
+            keyboard_string = _initialText;   
+                
+            if (INPUT_ON_MOBILE)
             {
-                instance_create_depth(0, -__INPUT_CONTROLLER_OBJECT_DEPTH, __INPUT_CONTROLLER_OBJECT_DEPTH + 1, __InputTextAsyncController);
+                keyboard_virtual_show(_keyboardType, INPUT_TEXT_RETURN_KEY, INPUT_TEXT_CAPITALIZATION, INPUT_TEXT_PREDICTION);
             }
+        }
+            
+        if (_useController && !instance_exists(__InputTextAsyncController))
+        {
+            instance_create_depth(0, -__INPUT_CONTROLLER_OBJECT_DEPTH, __INPUT_CONTROLLER_OBJECT_DEPTH + 1, __InputTextAsyncController);
+        }
 
-            return _result;
+        if not (_result)
+        {
+            __InputTrace("Text request warning: Failed to show keyboard");
+            __newStatus = INPUT_TEXT_STATUS.CANCELLED;
+            return false;
+        }
+        else
+        {
+            __callback     = _callback;
+            __keyboardType = _keyboardType;
+            __textSet      = string_copy(_initialText, 1, _maxLength);
         }
     }
 

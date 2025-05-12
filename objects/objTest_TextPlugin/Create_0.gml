@@ -46,14 +46,15 @@ var _button = function(_caption, _text, _maxLength, _button) constructor
         
     static OnClick = function()
     {   
-        InputTextRequestStart(caption, GetValue(), maxLength, function()
+        if (InputTextRequestStart(caption, GetValue(), maxLength, function()
         {
             selected = false;
             text = InputTextRequestGetString();
-        });            
-            
-        selected = true;
-    };
+        }))
+        {
+            selected = true;
+        }
+    }
 }
 
 buttons = [

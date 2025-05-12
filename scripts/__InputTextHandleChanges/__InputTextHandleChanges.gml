@@ -3,8 +3,6 @@
 function __InputTextHandleChanges()
 {
     static _textChanges = [];
-    
-    __keyboardStringPrevious = __keyboardString;
             
     if (__textAsync != undefined)
     {

@@ -10,6 +10,7 @@ function __InputTextHandleKeyboard()
     static _pressedTime           = infinity;
     static _timePrevious          = InputPlugInGetTime();
     
+    __keyboardStringPrevious = __keyboardString;
     __keyboardString = keyboard_string;
             
     if (INPUT_ON_WEB || INPUT_ON_CONSOLE)
@@ -41,12 +42,9 @@ function __InputTextHandleKeyboard()
                 __newStatus = INPUT_TEXT_STATUS.CONFIRMED;
                 keyboard_virtual_hide();
             }                
-            else if (!_osPaused)
+            else if (!_osPaused && !_virtualStatus && _virtualStatusPrevious)
             {
-                if ((!_virtualStatus && _virtualStatusPrevious) || ((_virtualHeight == 0) && (_virtualHeightPrevious > 0)))
-                {
-                    __newStatus = INPUT_TEXT_STATUS.CANCELLED;
-                }
+                __newStatus = INPUT_TEXT_STATUS.CANCELLED;
             }
         }
                 
@@ -95,7 +93,7 @@ function __InputTextHandleKeyboard()
             else
             {
                 var _repeatStart = _pressedTime + INPUT_TEXT_REPEAT_DELAY;
-                var _repeatCountPrevious = floor((_timePrevious - _repeatStart)/INPUT_TEXT_REPEAT_INTERVAL);
+                var _repeatCountPrevious = floor((_timePrevious  - _repeatStart)/INPUT_TEXT_REPEAT_INTERVAL);
                 var _repeatCountCurrent  = floor((_currentTime   - _repeatStart)/INPUT_TEXT_REPEAT_INTERVAL);
                 __repeatCount = max(0, _repeatCountCurrent - _repeatCountPrevious);
             }
