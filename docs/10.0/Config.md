@@ -1,6 +1,6 @@
 # Config
 
-Input uses two configuration scripts to contain information that control how the library operates. The first is `__InputConfigVerbs` which contains verb and cluster definitions. These describe what the player is able to "do" in your game - move, jump, power slide and so on - and what the default keyboard key, gamepad button etc. triggers that verb. The second script is `__InputConfig` which has many macros in it that set global properties that affect how the lobrary operates.
+Input uses two configuration scripts to contain information that control how the library operates. The first is `__InputConfigVerbs` which contains verb and cluster definitions. These describe what the player is able to "do" in your game - move, jump, power slide and so on - and what the default keyboard key, gamepad button etc. triggers that verb. The second script is `__InputConfig` which has many macros in it that set global properties that affect how the library operates.
 
 !> You should edit `__InputConfig` and `__InputConfigVerbs` to meet the needs of your game.
 
