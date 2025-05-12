@@ -15,9 +15,7 @@
 |Name           |Datatype|Purpose                                                                         |
 |---------------|--------|--------------------------------------------------------------------------------|
 |`forGamepad`   |boolean |Whether to set the binding for gamepads (`true`) or mouse and keyboard (`false`)|
-|`verbIndex`    |integer |Verb to target                                                                  |
 |`binding`      |binding |Character string or GameMaker `vk_*` `mb_*` `gp_*` constant to set              |
-|`[alternate]`  |integer |Which alternate binding to target. If not specified, index 0 is used            |
 |`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                            |
 
 Returns all verbs (and alternate slots) that use the specified binding. This function returns an array of structs. If the array is empty then no verbs that use the binding were found. The structs contain two values:
