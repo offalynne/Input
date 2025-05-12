@@ -48,7 +48,6 @@ function __InputTextSystem()
         __keyboardString = keyboard_string;   
         __keyboardStringPrevious = __keyboardString;
 
-
         InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.UPDATE, undefined, function()
         {            
             __InputTextHandleController();

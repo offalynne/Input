@@ -2,7 +2,7 @@
 
 function InputTextApplyDelta(_string)
 {
-    static _system = __InputTextSystem();
+   static _system = __InputTextSystem();
    with(_system)
     {
         __enabled = true;

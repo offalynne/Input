@@ -42,8 +42,6 @@ function InputTextRequestStart(_caption, _initialText, _maxLength, _callback, _k
         var _keyboardVisible = _ShowKeyboard(_keyboardType, _caption, _initialText);
         if not (_keyboardVisible)
         {
-            __asyncId = undefined;
-            __steamAsyncRequest = false;
             __InputTrace("Text request warning: Failed to show keyboard");
         }
         
@@ -66,7 +64,7 @@ function InputTextRequestStart(_caption, _initialText, _maxLength, _callback, _k
             }
             else if (__useSteamKeyboard)
             {
-               _result = steam_show_gamepad_text_input(
+                _result = steam_show_gamepad_text_input(
                                 steam_gamepad_text_input_mode_normal, 
                                 steam_gamepad_text_input_line_mode_single_line, 
                                 _caption, __maxLength, _initialText);                
