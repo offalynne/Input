@@ -132,6 +132,97 @@ The method that you specify will be handed parameters, though what parameters sp
 
 &nbsp;
 
+## …PlugInGetExists
+
+`PlugInGetExists()`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the so-named Input plug-in has been defined
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+Returns if a plug-in with the given alias exists. Aliases are case sensitive.
+
+#### **Example**
+
+```gml
+var _priority = -10;
+
+//If we have a rollback plug-in registered then set our priority lower to avoid a collision
+if (InputPlugInGetExists("SmartyPants.Rollback"))
+{
+	show_debug_message("SmartyPants Rollback detected, plug-in will adjust priority");
+	_priority -= 10;
+}
+```
+<!-- tabs:end -->
+
+&nbsp;
+
+## …PlugInAssertDependencies
+
+`InputPlugInAssertDependencies(alias, targetVersion, [alias], [targetVersion], ...)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name             |Datatype|Purpose                                         |
+|-----------------|--------|------------------------------------------------|
+|`alias`          |string  |Plug-in to search for                           |
+|`targetVersion`  |string  |Minimum compatible version for the above plug-in|
+|`[alias]`        |string  |Another plug-in to search for                   |
+|`[targetVersion]`|string  |Minimum compatible version for the above plug-in|
+|`...`            |string  |etc.                                            |
+
+Throws an error if any of the enumerated plug-ins either don't exist or don't meet the version requirements.
+
+#### **Example**
+
+```gml
+//Ensure we have the following plug-ins installed:
+// - InputTeam.Icons  v1.0
+// - InputTeam.PartyMultiplayer  v1.0
+InputPlugInAssertDependencies("InputTeam.Icons", "1.0", "InputTeam.PartyMultiplayer", "1.0");
+```
+<!-- tabs:end -->
+
+&nbsp;
+
+## …PlugInError
+
+`PlugInError(string, ...)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name    |Datatype|Purpose                                                  |
+|--------|--------|---------------------------------------------------------|
+|`string`|string  |Value to stringify and show to the player                |
+|`...`   |string  |Further value(s) to stringify and concatenate for display|
+
+Creates a formatted error message and shows it to the player. This error message uses GameMaker's error dialog box and will terminate the application when it is dismissed. The error message itself is made from the concatenated stringified values passed to this function.
+
+#### **Example**
+
+```gml
+//Show an error when the incoming value is invalid
+InputPlugInError("Value ", _trigger ," not a gamepad trigger");
+```
+<!-- tabs:end -->
+
+&nbsp;
+
 ## …PlugInGetFrame
 
 `InputPlugInGetFrame()`
