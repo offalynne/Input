@@ -42,7 +42,7 @@ Defines a plug-in for use with Input.
 
 This function creates a representation of your plug-in inside Input. You should supply an alias for the plug-in, your name, and a version for the plug-in itself. These should all be strings. The alias is case sensitive. The version number should be in the format `"major.minor.patch"` as per semantic versioning. Only the major and minor version numbers will be used for comparisons, but it's good practice to use all three numbers nonetheless.
 
-!> Please update your plug-in's version number whenever you publish a meaningful update. Keeping your own version number up to date helps with diagnosing your own bugs as well as helping create a community of interdependent plug-ins.
+?> Please update your plug-in's version number whenever you publish a meaningful update. Keeping your own version number up to date helps with diagnosing your own bugs as well as helping create a community of interdependent plug-ins.
 
 The alias must be universally unique so choose something distinctive! We recommend an alias along the lines of `"YourName.PlugInTitle"`. The native gamepad color plug-in uses `"InputTeam.GamepadColor"`, for example.
 
