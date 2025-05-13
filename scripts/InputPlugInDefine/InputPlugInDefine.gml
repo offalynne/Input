@@ -26,10 +26,11 @@
 /// 
 /// Immediately before Input performs its very first update, the initialization callback that you
 /// have defined in the `initCallback` parameter will be executed. This is where you should call
-/// `InputPlugInRegisterCallback()` to hook up your plug-in to Input's callback system. The
-/// initialization callback is guaranteed to be executed in the first room and immediately before
-/// the first time Input collects raw verb state. Plug-ins will also be initialized before player 0
-/// is given a default device.
+/// `InputPlugInRegisterCallback()` to hook up your plug-in to Input's callback system. All plug-in
+/// initialization callbacks will be executed when Input collects raw verb state for the first
+/// time. This is typically in the first room but, depending on how the end-user is making use of
+/// Input, when and what room this happens in is not guaranteed. Plug-ins will also be initialized
+/// before player 0 is given a default device.
 /// 
 /// @param alias
 /// @param author
