@@ -4,7 +4,13 @@
 
 The page covers the plug-in component of Input. The plug-in API is intended for users who need extra control over Input's internal systems. The majority of use cases can safely avoid these functions.
 
-Input's plug-ins operate on a callback basis. Callbacks are simple methods that you provide that the library will call for you at the appropriate time during operation. Callbacks can be set up with `InputPlugInRegisterCallback()` and the documentation for this function below lists all the callback locations that you can hook into.
+We'll go into detail about how to lock into Input's code to do "plug-in-y" stuff in a comment, but let's start with `InputPlugInDefine()`. All plug-ins must call this function to define themselves within Input's systems. `InputPlugInDefine()` requires that you set a plug-in alias, an author, a plug-in version and target version for input, and an initialization method for the plug-in. Once you've defined a plug-in then your plug-in:
+
+1. Will be detectable with `InputPlugInGetExists()`
+2. Can be checked against when using `InputPlugInAssertDependencies()`
+3. Will execute the initialization method when Input first collects raw verb input (typically on the first frame of the game but this can vary)
+
+Input's plug-ins operate on a callback basis. Callbacks are simple methods that you provide that the library will call for you at the appropriate time during operation. Callbacks must be set up with `InputPlugInRegisterCallback()` and these callbacks must be set up in the initialization method defined when calling `InputPlugInDefine()`. The documentation for this function below lists all the callback locations that you can hook into.
 
 You can execute your own code in the callback that you provided, such as setting up savedata links on Xbox when a gamepad is connected. The plug-in API also includes a handful of functions to directly alter the internal state of Input. For example, `InputPlugInVerbSet()` allows you to set a verb's raw value. You could use this function to force verbs to be certain values depending on the game state, such as blocking movement verbs when a pause menu is open.
 
@@ -84,6 +90,8 @@ InputPlugInDefine("InputTeam.GamepadColor", "Input Team", "1.0", "10.0", functio
 |`method`       |method  |The method to execute                                                                                        |
 
 Registers a callback to be executed at a suitable time by the library. The callback type should be a member of the `INPUT_PLUG_IN_CALLBACK` enum.
+
+!> Plug-ins may only register callbacks in the initialization callback defined by `InputPlugInDefine()`. Calling `InputPlugInRegisterCallback()` outside of the initialization callback with throw an error.
 
 You may also specify a callback priority. Because many callbacks can be registered to any particular callback type, and because code order might matter in some situations, it is useful to be able to control what order callbacks are executed. Native library code always has a priority of 0 and plug-ins cannot use a priority of 0. Higher priorities are executed first.
 
