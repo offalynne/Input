@@ -12,8 +12,8 @@
 /// 
 /// @param {Real} device
 /// @param {Bool} state
-/// @param {Bool} [ignoreArray]
-/// @param {Bool} [allowArray]
+/// @param {Array<Enum.INPUT_VERB,Real>} [ignoreArray]
+/// @param {Array<Enum.INPUT_VERB,Real>} [allowArray]
 
 function InputDeviceSetRebinding(_device, _state, _ignoreArray = undefined, _allowArray = undefined)
 {
