@@ -24,6 +24,14 @@ This plug-in adds a handful of helpful behaviours to manage multiple players joi
 
 &nbsp;
 
+## Cursor
+
+*[Cursor Plug-In API](Plug-in-Cursor)*
+
+Provides a device-agnostic pointer for navigating your game.
+
+&nbsp;
+
 ## Gyro & Motion
 
 *[Vibration Plug-In API](Plug-in-Gyro-Motion)*
