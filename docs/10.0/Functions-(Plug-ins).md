@@ -12,6 +12,61 @@ The plug-in API has many uses for individual projects and games. However, the pl
 
 &nbsp;
 
+## …PlugInDefine
+
+`InputPlugInDefine(alias, author, version, targetInputVersion, initCallback)`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name                |Datatype|Purpose                                                                             |
+|--------------------|--------|------------------------------------------------------------------------------------|
+|`alias`             |string  |Global alias to use to refer to this plug-in                                        |
+|`author`            |string  |Name of the author for the plug-in (that's you!)                                    |
+|`version`           |string  |Version of the plug-in in the format `"major.minor.patch"`                          |
+|`targetInputVersion`|string  |Target version of Input that the plug-in is built for, in the format `"major.minor"`|
+|`initCallback`      |method  |Callback to execute when Input initializes the plug-in                              |
+
+Defines a plug-in for use with Input.
+
+!> `InputPlugInDefine()` should be called on boot, that is to say it should be called in global scope in a script. Input must know about plug-ins before the first GameMaker step.
+
+This function creates a representation of your plug-in inside Input. You should supply an alias for the plug-in, your name, and a version for the plug-in itself. These should all be strings. The alias is case sensitive. The version number should be in the format `"major.minor.patch"` as per semantic versioning. Only the major and minor version numbers will be used for comparisons, but it's good practice to use all three numbers nonetheless.
+
+!> Please update your plug-in's version number whenever you publish a meaningful update. Keeping your own version number up to date helps with diagnosing your own bugs as well as helping create a community of interdependent plug-ins.
+
+The alias must be universally unique so choose something distinctive! We recommend an alias along the lines of `"YourName.PlugInTitle"`. The native gamepad color plug-in uses `"InputTeam.GamepadColor"`, for example.
+
+`targetInputVersion` should be a string too and should be in the format `"major.minor"`. This version number is checked against the version of Input that is currently running.
+
+!> Please define a static value for `targetInputVersion` and do not use `INPUT_VERSION`!
+
+Immediately before Input performs its very first update, the initialization callback that you have defined in the `initCallback` parameter will be executed. This is where you should call `InputPlugInRegisterCallback()` to hook up your plug-in to Input's callback system. All plug-in initialization callbacks will be executed when Input collects raw verb state for the first time. This is typically in the first room but, depending on how the end-user is making use of Input, when and what room this happens in is not guaranteed. Plug-ins will also be initialized before player 0 is given a default device.
+
+#### **Example**
+
+```gml
+//Create a new plug-in. This is version "1.0" of the plug-in, built for version "10.0" of Input.
+InputPlugInDefine("InputTeam.GamepadColor", "Input Team", "1.0", "10.0", function()
+{
+	//Register a callback within the initialization method
+    InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.PLAYER_DEVICE_CHANGED, undefined, function(_playerIndex, _oldDevice, _newDevice)
+    {
+    	//Set the default color for the device if the player has changed to something new
+        with(__playerArray[_playerIndex])
+        {
+            __SetColor(__color);
+        }
+    });
+});
+```
+<!-- tabs:end -->
+
+&nbsp;
+
 ## …PlugInRegisterCallback
 
 `InputPlugInRegisterCallback(callbackType, [priority=-1], method)`
