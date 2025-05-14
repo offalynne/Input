@@ -9,6 +9,8 @@
 /// function is effective for simple control schemes but may fail in more complex situations; in
 /// these cases, you’ll need to handle conflict resolution yourself.
 /// 
+/// This function returns `true` if rebinding was successful and `false` otherwise.
+/// 
 /// @param {Bool} forGamepad
 /// @param {Enum.INPUT_VERB,Real} verbIndex
 /// @param {Any} binding
