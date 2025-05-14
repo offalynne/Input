@@ -69,6 +69,34 @@ function __InputVerbGroupSystem()
                     ++_verbIndex;
                 }
             });
+            
+            InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.FIND_BINDING_COLLISIONS, undefined, function(_collisionArray, _forGamepad, _verbIndex, _alternate, _playerIndex)
+            {
+                static _verbGroupLookupArray = __InputVerbGroupSystem().__verbGroupLookupArray;
+                
+                //Get the verb group bitmask
+                var _sourceBitmask = _verbGroupLookupArray[_verbIndex];
+                
+                //If we're not in any verb group then we're in every verb group! All collisions must remain
+                if (_sourceBitmask == 0x00) return;
+                
+                var _i = array_length(_collisionArray)-1;
+                repeat(array_length(_collisionArray))
+                {
+                    var _foundBitmask = _verbGroupLookupArray[_collisionArray[_i].verbIndex];
+                    
+                    //If we're not in any verb group then we're in every verb group! The collision must remain
+                    if (_foundBitmask != 0x00)
+                    {
+                        //If the source and found bitmasks don't overlap at all then remove this found collision
+                        if not (_sourceBitmask & _foundBitmask)
+                        {
+                            array_delete(_collisionArray, _i, 1);
+                        }
+                    }
+                    
+                    --_i;
+                }
             });
         });
     }

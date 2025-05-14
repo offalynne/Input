@@ -8,11 +8,15 @@ function __InputVerbGroupsConfig()
     
     enum INPUT_VERB_GROUP
     {
-        MENU,
+        EXAMPLE,
         //Add your own verb groups here!
     }
     
     //If you add a verb group in the `INPUT_VERB_GROUP` enum then you should add a call to
     //`InputVerbGroupDefine` here.
-    InputVerbGroupDefine(INPUT_VERB_GROUP.MENU, [INPUT_VERB.LEFT]);
+    //
+    // N.B. Any verb not in at least one verb group will be considered as being in every verb group for
+    //      the purposes of finding binding collisions.
+    //
+    InputVerbGroupDefine(INPUT_VERB_GROUP.EXAMPLE, [INPUT_VERB.UP, INPUT_VERB.DOWN, INPUT_VERB.LEFT, INPUT_VERB.RIGHT, INPUT_VERB.ACCEPT]);
 }
