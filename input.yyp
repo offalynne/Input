@@ -347,6 +347,7 @@
     {"id":{"name":"InputVerbGetExportName","path":"scripts/InputVerbGetExportName/InputVerbGetExportName.yy",},},
     {"id":{"name":"InputVerbGetMetadata","path":"scripts/InputVerbGetMetadata/InputVerbGetMetadata.yy",},},
     {"id":{"name":"InputVerbGroupActivateAll","path":"scripts/InputVerbGroupActivateAll/InputVerbGroupActivateAll.yy",},},
+    {"id":{"name":"InputVerbGroupDeactivateAll","path":"scripts/InputVerbGroupDeactivateAll/InputVerbGroupDeactivateAll.yy",},},
     {"id":{"name":"InputVerbGroupDefine","path":"scripts/InputVerbGroupDefine/InputVerbGroupDefine.yy",},},
     {"id":{"name":"InputVerbGroupGetActive","path":"scripts/InputVerbGroupGetActive/InputVerbGroupGetActive.yy",},},
     {"id":{"name":"InputVerbGroupGetVerbs","path":"scripts/InputVerbGroupGetVerbs/InputVerbGroupGetVerbs.yy",},},

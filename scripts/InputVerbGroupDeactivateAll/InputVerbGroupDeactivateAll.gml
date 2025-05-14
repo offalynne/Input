@@ -1,10 +1,13 @@
 // Feather disable all
 
-/// Activates all verb groups.
+/// Deactivates all verb groups.
+/// 
+/// N.B. Be careful with the function! It's possible to accidentally lock your players out of
+///      controlling the game.
 /// 
 /// @param [playerIndex=0]
 
-function InputVerbGroupActivateAll(_playerIndex = 0)
+function InputVerbGroupDeactivateAll(_playerIndex = 0)
 {
     static _verbGroupInactiveArray = __InputVerbGroupSystem().__verbGroupInactiveArray;
     

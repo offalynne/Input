@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Returns an array containing all verbs that have been assigned to a verb group.
+/// 
 /// @param verbGroupIndex
 
 function InputVerbGroupGetVerbs(_verbGroupIndex)

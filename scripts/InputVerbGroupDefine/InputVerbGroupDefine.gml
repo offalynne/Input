@@ -1,5 +1,23 @@
 // Feather disable all
 
+/// Defines a verb group and assigns verbs to it. A verb may be assigned to multiple verb groups.
+/// This function should only be called in the `__InputVerbGroupsConfig()` script. Assigning a
+/// verb to a verb group enables a few things:
+/// 
+/// 1. Verbs in a verb group can be deactivated en masse by calling `InputVerbGroupSetActive()`.
+///    Deactivated verbs will have their raw value set to 0. If the verb is currently active (e.g.
+///    a player is holding down a keyboard key) then the verb will be considered "released" for a
+///    single frame after the verb group has been deactivated.
+/// 
+/// 2. Verbs that have the same binding would normally be considered as colliding for the purposes
+///    of `InputBindingSetSafe()`. However, if two verbs share a binding but are in different verb
+///    groups then they will instead not collide. For example, if one verb in is the "gameplay"
+///    verb group and it shares a binding with a verb in the "menu" verb group then they won't
+///    collide.
+/// 
+/// N.B. If a verb has not been assigned to any verb group then it will be treated as though it is
+///      in every verb group for finding collisions.
+/// 
 /// @param verbGroupIndex
 /// @param verbArray
 

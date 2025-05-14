@@ -1,5 +1,8 @@
 // Feather disable all
 
+/// Returns an array that contains the verb group indexes that a verb is assigned to. If a verb is
+/// assigned to no verb groups then this function returns an empty array.
+/// 
 /// @param verbIndex
 
 function InputVerbGroupsGet(_verbIndex)

@@ -1,5 +1,8 @@
 // Feather disable all
 
+/// Returns if a verb group is active, which they are by default. A verb group can be deactivated
+/// by calling `InputVerbGroupSetActive()`.
+/// 
 /// @param verbGroupIndex
 /// @param [playerIndex=0]
 
