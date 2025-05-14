@@ -59,6 +59,7 @@ function __InputSystem()
         __gamepadArray = array_create(gamepad_get_device_count(), undefined);
         
         __androidEnumerationTime = -infinity;
+        __restartTime            = -infinity;
         
         //Master definitions for verbs
         __verbDefinitionArray = []; //Contains structs for each verb definition
@@ -222,15 +223,22 @@ function __InputSystem()
                             }
                             else
                             {
-                                if (GM_build_type == "run")
+                                if (__restartTime == __time)
                                 {
-                                    //Be nasty when running from the IDE >:(
-                                    __InputError("__InputUpdateController has been destroyed\nPlease ensure that __InputUpdateController is never destroyed");
+                                    __InputTrace("Warning! Please consider an alternative method to reset game state: avoid using \"game_restart()\"");
                                 }
                                 else
-                                {
-                                    //Be nice when in production <:)
-                                    __InputTrace("Warning! __InputUpdateController has been destroyed. Please ensure that __InputUpdateController is never destroyed");
+                                {                                
+                                    if (GM_build_type == "run")
+                                    {
+                                        //Be nasty when running from the IDE >:(
+                                        __InputError("__InputUpdateController has been destroyed\nPlease ensure that __InputUpdateController is never destroyed");
+                                    }
+                                    else
+                                    {
+                                        //Be nice when in production <:)
+                                        __InputTrace("Warning! __InputUpdateController has been destroyed. Please ensure that __InputUpdateController is never destroyed");
+                                    }
                                 }
                             }
                 

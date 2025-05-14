@@ -58,6 +58,18 @@ function __InputTriggerEffectSystem()
                 __InputTriggerEffectStop(_oldDevice);
                 __InputTriggerEffectReapply(_playerIndex);
             });
+            
+            InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.GAME_RESTART, undefined, function()
+            {
+                var _i = 0;
+                repeat(array_length(INPUT_MAX_PLAYERS))
+                {
+                    InputTriggerEffectOff(gp_shoulderlb, _i);
+                    InputTriggerEffectOff(gp_shoulderrb, _i);
+                
+                    ++_i;
+                }
+            });
         });
     }
     
