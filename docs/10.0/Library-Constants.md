@@ -98,6 +98,7 @@ These constants are used when registering callback functions using the [Callback
 |`INPUT_PLUG_IN_CALLBACK.UPDATE_PLAYER`        |Called when a player's verb state is being updated based on raw input from the previous callback|
 |`INPUT_PLUG_IN_CALLBACK.LOSE_FOCUS`           |Called when the game loses focus                                                                |
 |`INPUT_PLUG_IN_CALLBACK.GAIN_FOCUS`           |Called when the game regains focus                                                              |
+|`INPUT_PLUG_IN_CALLBACK.GAME_RESTART`         |Called when the game is reset with `game_restart()` (Not reccomended)                           |
 
 &nbsp;
 
