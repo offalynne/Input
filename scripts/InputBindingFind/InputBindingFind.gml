@@ -3,6 +3,7 @@
 /// Returns all verbs (and alternate slots) that use the specified binding. This function returns
 /// an array of structs. If the array is empty then no verbs that use the binding were found. The
 /// structs contain two values:
+/// 
 /// - `.verbIndex`  The verb using the binding
 /// - `.alternate`  The alternate slot, for that verb, using the binding
 /// 

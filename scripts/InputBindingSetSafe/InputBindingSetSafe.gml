@@ -9,9 +9,6 @@
 /// function is effective for simple control schemes but may fail in more complex situations; in
 /// these cases, you’ll need to handle conflict resolution yourself.
 /// 
-/// This function returns `true` if rebinding was successful and `false` otherwise. This function
-/// will call the `.FIND_BINDING_COLLISIONS` plug-in callback.
-/// 
 /// @param {Bool} forGamepad
 /// @param {Enum.INPUT_VERB,Real} verbIndex
 /// @param {Any} binding
@@ -20,43 +17,35 @@
 
 function InputBindingSetSafe(_forGamepad, _verbIndexA, _binding, _alternateA = 0, _playerIndex = 0)
 {
-    static _playerArray = __InputSystemPlayerArray();
-    
-    static _collisionArray = [];
-    array_resize(_collisionArray, 0);
-    
     __INPUT_VALIDATE_PLAYER_INDEX
     
-    with(_playerArray[_playerIndex])
+    var _collisionArray = InputBindingFindCollisions(_forGamepad, _binding, _playerIndex);
+    
+    if (array_length(_collisionArray) == 0)
     {
-        __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.FIND_BINDING_COLLISIONS, _collisionArray, _forGamepad, _binding, _playerIndex, _verbIndexA, _alternateA)
-        
-        if (array_length(_collisionArray) == 0)
+        InputBindingSet(_forGamepad, _verbIndexA, _binding, _alternateA, _playerIndex);
+        return true;
+    }
+    else
+    {
+        if (array_length(_collisionArray) > 1)
         {
-            InputBindingSet(_forGamepad, _verbIndexA, _binding, _alternateA, _playerIndex);
+            __InputTrace("Warning! More than one binding collision found, resolution may not be desirable");
+        }
+            
+        var _verbIndexB = _collisionArray[0].verbIndex;
+        var _alternateB = _collisionArray[0].alternate;
+            
+        if ((_verbIndexA != _verbIndexB) || (_alternateA != _alternateB))
+        {
+            __InputTrace("Collision found in (forGamepad=", _forGamepad, ", verb=", InputVerbGetExportName(_verbIndexB), ", alternate=", _alternateB, ")");
+            InputBindingSwap(_forGamepad, _verbIndexA, _alternateA, _verbIndexB, _alternateB, _playerIndex);
+            return true;
         }
         else
         {
-            if (array_length(_collisionArray) > 1)
-            {
-                __InputTrace("Warning! More than one binding collision found, resolution may not be desirable");
-            }
-            
-            var _verbIndexB = _collisionArray[0].verbIndex;
-            var _alternateB = _collisionArray[0].alternate;
-            
-            if ((_verbIndexA != _verbIndexB) || (_alternateA != _alternateB))
-            {
-                __InputTrace("Collision found in (forGamepad=", _forGamepad, ", verb=", InputVerbGetExportName(_verbIndexB), ", alternate=", _alternateB, ")");
-                InputBindingSwap(_forGamepad, _verbIndexA, _alternateA, _verbIndexB, _alternateB, _playerIndex);
-            }
-            else
-            {
-                __InputTrace("New binding (", _binding, ") is the same as existing binding (forGamepad=", _forGamepad, ", verb=", InputVerbGetExportName(_verbIndexA), ", alternate=", _alternateA, ")");
-            }
+            __InputTrace("New binding (", _binding, ") is the same as existing binding (forGamepad=", _forGamepad, ", verb=", InputVerbGetExportName(_verbIndexA), ", alternate=", _alternateA, ")");
         }
-        
-        return true;
     }
     
     return false;

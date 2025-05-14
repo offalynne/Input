@@ -45,18 +45,18 @@
 /// The method that you specify will be handed parameters, though what parameters specifically
 /// depends on the callback type:
 /// 
-/// |Enum member               |Parameters                                                       |
-/// |--------------------------|-----------------------------------------------------------------|
-/// |`.COLLECT`                |(No parameters)                                                  |
-/// |`.UPDATE`                 |(No parameters)                                                  |
-/// |`.GAMEPAD_DISCONNECTED`   |Device index, hardware disconnected                              |
-/// |`.GAMEPAD_CONNECTED`      |Device index                                                     |
-/// |`.PLAYER_DEVICE_CHANGED`  |Player index, old device index, new device index                 |
-/// |`.COLLECT_PLAYER`         |Player index                                                     |
-/// |`.UPDATE_PLAYER`          |Player index                                                     |
-/// |`.LOSE_FOCUS`             |(No parameters)                                                  |
-/// |`.GAIN_FOCUS`             |(No parameters)                                                  |
-/// |`.FIND_BINDING_COLLISIONS`|Collision array, for gamepad, verb index, alternate, player index|
+/// |Enum member               |Parameters                                                                |
+/// |--------------------------|--------------------------------------------------------------------------|
+/// |`.COLLECT`                |(No parameters)                                                           |
+/// |`.UPDATE`                 |(No parameters)                                                           |
+/// |`.GAMEPAD_DISCONNECTED`   |Device index, hardware disconnected                                       |
+/// |`.GAMEPAD_CONNECTED`      |Device index                                                              |
+/// |`.PLAYER_DEVICE_CHANGED`  |Player index, old device index, new device index                          |
+/// |`.COLLECT_PLAYER`         |Player index                                                              |
+/// |`.UPDATE_PLAYER`          |Player index                                                              |
+/// |`.LOSE_FOCUS`             |(No parameters)                                                           |
+/// |`.GAIN_FOCUS`             |(No parameters)                                                           |
+/// |`.FIND_BINDING_COLLISIONS`|Collision array, for gamepad, binding, verb index, alternate, player index|
 /// 
 /// The `Hardware disconnected` parameter for the `.GAMEPAD_DISCONNECTED` will be set to `true` if
 /// a gamepad was disconnected at a hardware level. If the gamepad has been disconnected instead by

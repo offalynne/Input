@@ -70,7 +70,7 @@ function __InputVerbGroupSystem()
                 }
             });
             
-            InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.FIND_BINDING_COLLISIONS, undefined, function(_collisionArray, _forGamepad, _verbIndex, _alternate, _playerIndex)
+            InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.FIND_BINDING_COLLISIONS, undefined, function(_collisionArray, _forGamepad, _binding, _verbIndex, _alternate, _playerIndex)
             {
                 static _verbGroupLookupArray = __InputVerbGroupSystem().__verbGroupLookupArray;
                 
