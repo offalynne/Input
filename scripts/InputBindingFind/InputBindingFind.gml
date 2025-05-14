@@ -12,13 +12,22 @@
 
 function InputBindingFind(_forGamepad, _binding, _playerIndex = 0)
 {
-    static _playerArray = __InputSystemPlayerArray();
-    static _verbCount   = __InputSystem().__verbCount;
-    
     static _array = [];
     array_resize(_array, 0);
     
     __INPUT_VALIDATE_PLAYER_INDEX
+    
+    //We use an abstracted function here to allow us to reuse the core logic inside the
+    //`.FIND_BINDING_COLLISIONS` callback
+    __InputBindingFindInternal(_array, _forGamepad, _binding, _playerIndex);
+    
+    return _array;
+}
+
+function __InputBindingFindInternal(_array, _forGamepad, _binding, _playerIndex)
+{
+    static _playerArray = __InputSystemPlayerArray();
+    static _verbCount   = __InputSystem().__verbCount;
     
     with(_playerArray[_playerIndex])
     {
@@ -45,6 +54,4 @@ function InputBindingFind(_forGamepad, _binding, _playerIndex = 0)
             ++_verbIndex;
         }
     }
-    
-    return _array;
 }

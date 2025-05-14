@@ -21,24 +21,28 @@ function InputBindingSetSafe(_forGamepad, _verbIndexA, _binding, _alternateA = 0
 {
     static _playerArray = __InputSystemPlayerArray();
     
+    static _collisionArray = [];
+    array_resize(_collisionArray, 0);
+    
     __INPUT_VALIDATE_PLAYER_INDEX
     
     with(_playerArray[_playerIndex])
     {
-        var _collisions = InputBindingFind(_forGamepad, _binding, _playerIndex);
-        if (array_length(_collisions) == 0)
+        __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.FIND_BINDING_COLLISIONS, _collisionArray, _forGamepad, _binding, _playerIndex, _verbIndexA, _alternateA)
+        
+        if (array_length(_collisionArray) == 0)
         {
             InputBindingSet(_forGamepad, _verbIndexA, _binding, _alternateA, _playerIndex);
         }
         else
         {
-            if (array_length(_collisions) > 1)
+            if (array_length(_collisionArray) > 1)
             {
                 __InputTrace("Warning! More than one binding collision found, resolution may not be desirable");
             }
             
-            var _verbIndexB = _collisions[0].verbIndex;
-            var _alternateB = _collisions[0].alternate;
+            var _verbIndexB = _collisionArray[0].verbIndex;
+            var _alternateB = _collisionArray[0].alternate;
             
             if ((_verbIndexA != _verbIndexB) || (_alternateA != _alternateB))
             {
