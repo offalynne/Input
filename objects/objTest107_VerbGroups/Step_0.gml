@@ -30,6 +30,6 @@ else
     
     if (InputPressed(INPUT_VERB.SPECIAL))
     {
-        InputVerbGroupSetActive(INPUT_VERB_GROUP.EXAMPLE, not InputVerbGroupGetActive(INPUT_VERB_GROUP.EXAMPLE))
+        InputVerbGroupSetActive(INPUT_VERB_GROUP.EXAMPLE, not InputVerbGroupGetActive(INPUT_VERB_GROUP.EXAMPLE));
     }
 }
