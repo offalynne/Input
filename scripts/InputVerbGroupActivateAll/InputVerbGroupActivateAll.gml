@@ -10,5 +10,5 @@ function InputVerbGroupActivateAll(_playerIndex = 0)
     
     __INPUT_VALIDATE_PLAYER_INDEX;
     
-    _verbGroupInactiveArray[_playerIndex] = 0x00;
+    _verbGroupInactiveArray[@ _playerIndex] = 0x00;
 }

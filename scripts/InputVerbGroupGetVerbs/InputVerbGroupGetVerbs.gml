@@ -16,7 +16,7 @@ function InputVerbGroupGetVerbs(_verbGroupIndex)
 	var _i = 0;
 	repeat(array_length(_verbGroupLookupArray))
 	{
-		if (_bitmask & (1 << _i))
+		if (_bitmask & _verbGroupLookupArray[_i])
 		{
 			array_push(_verbArray, _i);
 		}

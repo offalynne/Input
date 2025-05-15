@@ -40,7 +40,7 @@ function InputVerbGroupDefine(_verbGroup, _verbArray)
     repeat(array_length(_verbArray))
     {
         //And poke a binary 1 into the bitmask for the verb
-        _verbGroupLookupArray[_verbArray[_i]] |= (1 << _verbGroup);
+        _verbGroupLookupArray[@ _verbArray[_i]] |= (1 << _verbGroup);
         ++_i;
     }
 }

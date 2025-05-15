@@ -23,7 +23,7 @@ else
     var _delta = -InputOpposingRepeat(INPUT_VERB.DOWN, INPUT_VERB.UP);
     rebindingVerb = (rebindingVerb + _delta + _count) mod _count;
     
-    if (keyboard_check_pressed(vk_space))
+    if (InputPressed(INPUT_VERB.ACCEPT))
     {
         InputDeviceSetRebinding(_device, true);
     }

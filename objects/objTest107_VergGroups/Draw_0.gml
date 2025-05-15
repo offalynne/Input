@@ -1,9 +1,8 @@
 var _device = InputPlayerGetDevice();
-var _isGamepad = InputDeviceIsGamepad(_device);
 
 var _string = "";
-_string += string_concat("Rebinding \"", InputDeviceGetDescription(_device), "\" = ", InputDeviceGetRebinding(_device)? "true" : "false", "\n");
-_string += "[space] = Start rebinding\n\n";
+_string += $"Rebinding \"{InputDeviceGetDescription(_device)}\" = {InputDeviceGetRebinding(_device)? "true" : "false"}\n";
+_string += $"[{InputVerbGetBindingName(INPUT_VERB.ACCEPT)}] = Start rebinding\n\n";
 
 var _array = InputPlugInGetAllVerbs();
 var _i = 0;
@@ -12,7 +11,7 @@ repeat(array_length(_array))
     var _verb = _array[_i];
     _string += (_verb == rebindingVerb)? "-->  " : "     ";
     _string += InputVerbGetExportName(_verb);
-    _string += "  =  " + InputGetBindingName(InputBindingGet(_isGamepad, _verb), _isGamepad);
+    _string += "  =  " + InputVerbGetBindingName(_verb);
     _string += "\n";
     ++_i;
 }

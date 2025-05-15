@@ -25,15 +25,15 @@ function InputVerbGroupSetActive(_verbGroupIndex, _state, _playerIndex = 0, _exc
         if (_exclusive)
         {
             //Deactivate all other verb groups
-		    _verbGroupInactiveArray[_playerIndex] = ~(1 << _verbGroupIndex);
+		    _verbGroupInactiveArray[@ _playerIndex] = ~(1 << _verbGroupIndex);
         }
         else
         {
-		    _verbGroupInactiveArray[_playerIndex] &= ~(1 << _verbGroupIndex);
+		    _verbGroupInactiveArray[@ _playerIndex] &= ~(1 << _verbGroupIndex);
         }
     }
     else
     {
-		_verbGroupInactiveArray[_playerIndex] |= (1 << _verbGroupIndex);
+		_verbGroupInactiveArray[@ _playerIndex] |= (1 << _verbGroupIndex);
     }
 }
