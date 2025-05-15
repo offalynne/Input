@@ -179,6 +179,7 @@
     {"id":{"name":"__InputVibrateConfig","path":"scripts/__InputVibrateConfig/__InputVibrateConfig.yy",},},
     {"id":{"name":"__InputVibrateSystem","path":"scripts/__InputVibrateSystem/__InputVibrateSystem.yy",},},
     {"id":{"name":"InputBindingFind","path":"scripts/InputBindingFind/InputBindingFind.yy",},},
+    {"id":{"name":"InputBindingFindCollisions","path":"scripts/InputBindingFindCollisions/InputBindingFindCollisions.yy",},},
     {"id":{"name":"InputBindingGet","path":"scripts/InputBindingGet/InputBindingGet.yy",},},
     {"id":{"name":"InputBindingSet","path":"scripts/InputBindingSet/InputBindingSet.yy",},},
     {"id":{"name":"InputBindingSetSafe","path":"scripts/InputBindingSetSafe/InputBindingSetSafe.yy",},},
