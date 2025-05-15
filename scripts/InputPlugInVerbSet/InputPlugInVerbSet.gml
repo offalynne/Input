@@ -19,9 +19,9 @@ function InputPlugInVerbSet(_verbIndex, _value, _rawValue = _value, _playerIndex
         __InputError("Cannot call InputPlugInVerbSet() outside of a INPUT_PLUG_IN_CALLBACK.COLLECT_PLAYER callback");
     }
     
-    with(_playerArray[_playerIndex].__verbStateArray[_verbIndex])
+    with(_playerArray[_playerIndex])
     {
-        __valueRaw   = _rawValue;
-        __valueClamp = _value;
+        __valueRawArray[@   _verbIndex] = _rawValue;
+        __valueClampArray[@ _verbIndex] = _value;
     }
 }
