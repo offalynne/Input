@@ -19,7 +19,7 @@ function InputBindingSetSafe(_forGamepad, _verbIndexA, _binding, _alternateA = 0
 {
     __INPUT_VALIDATE_PLAYER_INDEX
     
-    var _collisionArray = InputBindingFindCollisions(_forGamepad, _binding, _playerIndex);
+    var _collisionArray = InputBindingFindCollisions(_forGamepad, _binding, _verbIndexA, _playerIndex, _alternateA);
     
     if (array_length(_collisionArray) == 0)
     {
