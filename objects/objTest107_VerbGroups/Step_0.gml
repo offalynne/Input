@@ -1,3 +1,7 @@
+//Uncomment if you want to test
+
+/*
+
 var _device = InputPlayerGetDevice();
 
 if (InputDeviceGetRebinding(_device))
@@ -33,3 +37,5 @@ else
         InputVerbGroupSetActive(INPUT_VERB_GROUP.EXAMPLE_A, not InputVerbGroupGetActive(INPUT_VERB_GROUP.EXAMPLE_A));
     }
 }
+
+//*/

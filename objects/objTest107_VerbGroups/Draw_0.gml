@@ -1,3 +1,7 @@
+//Uncomment if you want to test
+
+/*
+
 var _device = InputPlayerGetDevice();
 
 var _string = "";
@@ -39,3 +43,5 @@ repeat(array_length(_array))
 }
 
 draw_text(10, 10, _string);
+
+//*/
