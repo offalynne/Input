@@ -17,9 +17,20 @@ repeat(array_length(_array))
 }
 
 _string += "\n";
-_string += $"Verb Group .EXAMPLE, active = {InputVerbGroupGetActive(INPUT_VERB_GROUP.EXAMPLE)? "true" : "false"}\n";
+_string += $"Verb Group .EXAMPLE_A, active = {InputVerbGroupGetActive(INPUT_VERB_GROUP.EXAMPLE_A)? "true" : "false"}\n";
 
-var _array = InputVerbGroupGetVerbs(INPUT_VERB_GROUP.EXAMPLE);
+var _array = InputVerbGroupGetVerbs(INPUT_VERB_GROUP.EXAMPLE_A);
+var _i = 0;
+repeat(array_length(_array))
+{
+    _string += InputVerbGetExportName(_array[_i]) + "\n";
+    ++_i;
+}
+
+_string += "\n";
+_string += $"Verb Group .EXAMPLE_B, active = {InputVerbGroupGetActive(INPUT_VERB_GROUP.EXAMPLE_B)? "true" : "false"}\n";
+
+var _array = InputVerbGroupGetVerbs(INPUT_VERB_GROUP.EXAMPLE_B);
 var _i = 0;
 repeat(array_length(_array))
 {

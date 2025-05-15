@@ -12,7 +12,7 @@ if (InputDeviceGetRebinding(_device))
         var _result = InputDeviceGetRebindingResult(_device);
         if (_result != undefined)
         {
-            InputBindingSet(InputDeviceIsGamepad(_device), rebindingVerb, _result);
+            InputBindingSetSafe(InputDeviceIsGamepad(_device), rebindingVerb, _result);
             InputDeviceSetRebinding(_device, false);
         }
     }
@@ -30,6 +30,6 @@ else
     
     if (InputPressed(INPUT_VERB.SPECIAL))
     {
-        InputVerbGroupSetActive(INPUT_VERB_GROUP.EXAMPLE, not InputVerbGroupGetActive(INPUT_VERB_GROUP.EXAMPLE));
+        InputVerbGroupSetActive(INPUT_VERB_GROUP.EXAMPLE_A, not InputVerbGroupGetActive(INPUT_VERB_GROUP.EXAMPLE_A));
     }
 }
