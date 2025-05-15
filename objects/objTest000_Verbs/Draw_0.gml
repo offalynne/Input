@@ -1,4 +1,5 @@
 var _string = "";
+_string += "General purpose verb tester:\n";
 _string += InputDeviceGetDescription(InputPlayerGetDevice()) + "\n\n";
 
 var _i = 0;

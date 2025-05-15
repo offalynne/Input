@@ -60,7 +60,7 @@ function __InputVerbGroupSystem()
                         //Compare the verb group with the inactive bitmask. A verb is inactive if *all* of its verb groups
                         //are inactive
                         var _verbBitmask = _verbGroupLookupArray[_verbIndex];
-                        if ((_verbBitmask & _inactiveBitmask) == _verbBitmask)
+                        if ((_verbBitmask != 0) && ((_verbBitmask & _inactiveBitmask) == _verbBitmask))
                         {
                             InputPlugInVerbSet(_verbIndex, 0, 0, _playerIndex);
                         }
