@@ -36,7 +36,7 @@
 /// |`.UPDATE`                 |Updates the entire state of Input, including focus checks, gamepad state, and per-player updates|
 /// |`.LOSE_FOCUS`             |Game window has lost focus                                                                      |
 /// |`.GAIN_FOCUS`             |Game window has regained focus                                                                  |
-/// |`.GAME_RESTART`         |Game has been reset with `game_restart()`                                                         |
+/// |`.GAME_RESTART`           |Game has been reset with `game_restart()`                                                       |
 /// |`.GAMEPAD_DISCONNECTED`   |Gamepad has been disconnected                                                                   |
 /// |`.GAMEPAD_CONNECTED`      |Gamepad has been connected                                                                      |
 /// |`.UPDATE_PLAYER`          |Reset and then update state for every verb: press, press frame, held state, release             |
@@ -57,6 +57,7 @@
 /// |`.UPDATE_PLAYER`          |Player index                                                              |
 /// |`.LOSE_FOCUS`             |(No parameters)                                                           |
 /// |`.GAIN_FOCUS`             |(No parameters)                                                           |
+/// |`.GAME_RESTART`           |(No parameters)                                                           |
 /// |`.FIND_BINDING_COLLISIONS`|Collision array, for gamepad, binding, verb index, alternate, player index|
 /// 
 /// The `Hardware disconnected` parameter for the `.GAMEPAD_DISCONNECTED` will be set to `true` if
