@@ -32,6 +32,14 @@ Provides a device-agnostic pointer for navigating your game.
 
 &nbsp;
 
+## Verb Groups
+
+*[Verb Group Plug-In API](Plug-in-Verb-Groups)*
+
+Verb groups help manage rebinding and can further be used to create different input modes (such as walking versus driving versus flying). Verbs that share a verb group will collide when using `InputBindingSetSafe()` whereas verbs in different verb groups will not collide. This means that verbs in different verb groups can share the same binding.
+
+&nbsp;
+
 ## Gyro & Motion
 
 *[Vibration Plug-In API](Plug-in-Gyro-Motion)*
