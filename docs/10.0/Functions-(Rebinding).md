@@ -10,7 +10,7 @@
 
 #### **Description**
 
-**Returns:** Array of structs,
+**Returns:** Array of structs, see below
 
 |Name           |Datatype|Purpose                                                                         |
 |---------------|--------|--------------------------------------------------------------------------------|
@@ -22,6 +22,33 @@ Returns all verbs (and alternate slots) that use the specified binding. This fun
 
 - `.verbIndex`  The verb using the binding
 - `.alternate`  The alternate slot for that verb
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …BindingFindCollisions
+
+`InputBindingFindCollisions(forGamepad, binding, verbIndex, [playerIndex=0], [alternate=0])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Array of structs, see below
+
+|Name           |Datatype|Purpose                                                                         |
+|---------------|--------|--------------------------------------------------------------------------------|
+|`forGamepad`   |boolean |Whether to set the binding for gamepads (`true`) or mouse and keyboard (`false`)|
+|`binding`      |binding |Character string or GameMaker `vk_*` `mb_*` `gp_*` constant to set              |
+|`verbIndex`    |integer |Verb index to target                                                            |
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used                            |
+|`[alternate]`  |integer |Alternate slot to target. If not specified, slot 0 is used                      |
+
+Returns all verbs (and alternate slots) that would collide with the provided binding if it were set for the target verb index and alternate slot. This function returns an array of structs. If the array is empty then no collisions were found. The structs contain two values:
+ 
+ - `.verbIndex`  The verb using the binding
+ - `.alternate`  The alternate slot, for that verb, using the binding
 
 <!-- tabs:end -->
 
