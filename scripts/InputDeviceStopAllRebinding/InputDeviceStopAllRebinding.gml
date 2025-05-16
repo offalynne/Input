@@ -8,7 +8,7 @@ function InputDeviceStopAllRebinding()
     var _i = 0;
     repeat(array_length(_array))
     {
-        InputDeviceSetRebinding(_i, false);
+        InputDeviceSetRebinding(_array[_i], false);
         ++_i;
     }
 }
