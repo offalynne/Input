@@ -23,6 +23,17 @@ function __InputColorSystem()
                     __SetColor(__color);
                 }
             });
+            
+            InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.GAME_RESTART, undefined, function()
+            {
+                var _i = 0;
+                repeat(array_length(INPUT_MAX_PLAYERS))
+                {
+                    InputColorReset(_i);
+                
+                    ++_i;
+                }
+            });
         });
     }
     

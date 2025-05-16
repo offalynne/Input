@@ -58,6 +58,17 @@ function __InputVibrateSystem()
                     _element.__Update();
                 });
             });
+            
+            InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.GAME_RESTART, undefined, function()
+            {
+                var _i = 0;
+                repeat(array_length(INPUT_MAX_PLAYERS))
+                {
+                    InputVibrateStop(_i);
+                
+                    ++_i;
+                }
+            });
         });
     }
     

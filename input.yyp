@@ -150,6 +150,8 @@
     {"id":{"name":"__InputRegisterPlayerDeviceChanged","path":"scripts/__InputRegisterPlayerDeviceChanged/__InputRegisterPlayerDeviceChanged.yy",},},
     {"id":{"name":"__InputRegisterUpdate","path":"scripts/__InputRegisterUpdate/__InputRegisterUpdate.yy",},},
     {"id":{"name":"__InputRegisterUpdatePlayer","path":"scripts/__InputRegisterUpdatePlayer/__InputRegisterUpdatePlayer.yy",},},
+    {"id":{"name":"__InputRestart","path":"scripts/__InputRestart/__InputRestart.yy",},},
+    {"id":{"name":"__InputRestartTimeout","path":"scripts/__InputRestartTimeout/__InputRestartTimeout.yy",},},
     {"id":{"name":"__InputSteamHandlesChanged","path":"scripts/__InputSteamHandlesChanged/__InputSteamHandlesChanged.yy",},},
     {"id":{"name":"__InputStringContains","path":"scripts/__InputStringContains/__InputStringContains.yy",},},
     {"id":{"name":"__InputStringMatches","path":"scripts/__InputStringMatches/__InputStringMatches.yy",},},
