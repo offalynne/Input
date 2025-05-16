@@ -120,6 +120,7 @@ function __InputSystem()
         __InputRegisterGamepadDisconnected();
         __InputRegisterGamepadConnected();
         __InputRegisterPlayerDeviceChanged();
+        __InputRegisterFindBindingCollisions();
         
         var _returnNull = function()
         {
