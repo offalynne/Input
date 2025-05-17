@@ -69,3 +69,9 @@ PlayStation gamepads have a series of RGB lights built into them that can be con
 *[Color Plug-In API](Plug-in-Trigger-Effects)*
 
 PlayStation 5 introduced force feedback into DualSense 5 gamepads. Much like with gamepad colour above, this plug-in allows you to control the trigger effect applied to the gamepad. Trigger effects are available when running Input on a PlayStation 5 console or on Windows with Steam Input running. You can read more about implementing [Steam Input and Steamworks here](Steamworks).
+
+&nbsp;
+
+## More
+
+Additional plug-ins can be found on the [GameMaker Kitchen](https://www.gamemakerkitchen.com/libraries/offalynne/input/plugins/) website, and on [GitHub](https://github.com/topics/input-plugin)
