@@ -54,6 +54,7 @@
 - [Binding Icons](Plug-in-Binding-Icons)
 - [Party Multiplayer](Plug-in-Party-Multiplayer)
 - [Cursor](Plug-in-Cursor)
+- [Verb Groups](Plug-in-Verb-Groups)
 - [Gyro & Motion](Plug-in-Gyro-Motion)
 - [Vibration](Plug-in-Vibration)
 - [Color](Plug-in-Color)
