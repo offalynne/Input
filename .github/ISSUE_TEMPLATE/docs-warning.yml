@@ -8,7 +8,8 @@ body:
       description: |
         If you have an edit to submit or remark to make regarding documentation, please contribute using the ["Edit" button](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files#editing-files-in-another-users-repository) to directly modify [documentation content](https://github.com/offalynne/Input/tree/docs). Thank you for contributing!
       options:
-        - label: This issue is related to documentation
+        - label: This issue ***is not*** related to documentation
+          required: true
   - type: textarea
     attributes:
       label: Issue or Feature Request
