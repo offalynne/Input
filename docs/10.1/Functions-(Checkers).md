@@ -57,7 +57,7 @@ else
 
 #### **Description**
 
-**Returns:** Number, the analogue value of the input (after applying the threshold)
+**Returns:** Boolean, whether a verb has been newly activated in the most recent update loop
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -92,7 +92,7 @@ if (InputPressed(INPUT_VERB.ACTION) and (distance_to_object(oSign) < 20))
 
 #### **Description**
 
-**Returns:** Number, the analogue value of the input (after applying the threshold)
+**Returns:** Boolean, whether a verb has been newly deactivated in the most recent update loop
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
@@ -407,7 +407,7 @@ if (_sign != 0)
 
 #### **Description**
 
-**Returns:** Real, the sign of the result of the negative and positive newly active verbs
+**Returns:** Real, the sign of the result of the negative and positive of active verbs on a repeating pulse
 
 |Name           |Datatype|Purpose                                                                                    |
 |---------------|--------|-------------------------------------------------------------------------------------------|
@@ -449,7 +449,7 @@ else
 
 #### **Description**
 
-**Returns:** Real, the sign of the result of the negative and positive newly active verbs
+**Returns:** Real, the sign of the result of the negative and positive active verbs
 
 |Name           |Datatype|Purpose                                                                    |
 |---------------|--------|---------------------------------------------------------------------------|
@@ -481,7 +481,7 @@ direction += _speed*InputOpposing(INPUT_VERB.LEFT, INPUT_VERB.RIGHT, 0, true);
 
 #### **Description**
 
-**Returns:** Real, the sign of the result of the negative and positive newly active verbs
+**Returns:** Boolean, whether the verb is newly considered a "long hold" in the most recent update loop
 
 |Name           |Datatype|Purpose                                                                     |
 |---------------|--------|----------------------------------------------------------------------------|
@@ -520,7 +520,7 @@ else if (InputLongPressed(INPUT_VERB.DUCK))
 
 #### **Description**
 
-**Returns:** Real, the sign of the result of the negative and positive newly active verbs
+**Returns:** Boolean, whether the verb has been held for longer than the specified duration
 
 |Name           |Datatype|Purpose                                                                     |
 |---------------|--------|----------------------------------------------------------------------------|
@@ -552,7 +552,7 @@ if (InputLong(VERB_INPUT.PAUSE))
 
 #### **Description**
 
-**Returns:** Real, the sign of the result of the negative and positive newly active verbs
+**Returns:** Boolean, whether the verb was released after being considered a "long hold" previously
 
 |Name           |Datatype|Purpose                                                                     |
 |---------------|--------|----------------------------------------------------------------------------|
@@ -591,7 +591,7 @@ else if (InputReleased("attack"))
 
 #### **Description**
 
-**Returns:** Real, the sign of the result of the negative and positive newly active verbs
+**Returns:** Real, the number of frames since the verb was last pressed
 
 |Name           |Datatype|Purpose                                                                     |
 |---------------|--------|----------------------------------------------------------------------------|
