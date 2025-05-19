@@ -189,6 +189,7 @@
     {"id":{"name":"InputBindingsImport","path":"scripts/InputBindingsImport/InputBindingsImport.yy",},},
     {"id":{"name":"InputBindingsReset","path":"scripts/InputBindingsReset/InputBindingsReset.yy",},},
     {"id":{"name":"InputBindingSwap","path":"scripts/InputBindingSwap/InputBindingSwap.yy",},},
+    {"id":{"name":"InputBufferPressed","path":"scripts/InputBufferPressed/InputBufferPressed.yy",},},
     {"id":{"name":"InputCheck","path":"scripts/InputCheck/InputCheck.yy",},},
     {"id":{"name":"InputCheckMany","path":"scripts/InputCheckMany/InputCheckMany.yy",},},
     {"id":{"name":"InputClusterGetMetadata","path":"scripts/InputClusterGetMetadata/InputClusterGetMetadata.yy",},},
