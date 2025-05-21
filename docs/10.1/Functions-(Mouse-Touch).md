@@ -147,8 +147,6 @@ Returns whether the given mouse button is currently held down. The binding shoul
 - `mb_none`
 - `mb_side1`
 - `mb_side2`
-- `mb_wheel_up`
-- `mb_wheel_down`
 
 <!-- tabs:end -->
 
@@ -177,8 +175,6 @@ Returns whether the given mouse button is newly pressed this frame. The binding 
 - `mb_none`
 - `mb_side1`
 - `mb_side2`
-- `mb_wheel_up`
-- `mb_wheel_down`
 
 <!-- tabs:end -->
 
@@ -207,8 +203,6 @@ Returns whether the given mouse button was newly released this frame. The bindin
 - `mb_none`
 - `mb_side1`
 - `mb_side2`
-- `mb_wheel_up`
-- `mb_wheel_down`
 
 <!-- tabs:end -->
 
