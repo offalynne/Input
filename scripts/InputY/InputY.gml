@@ -11,5 +11,10 @@ function InputY(_clusterIndex, _playerIndex = 0)
     
     __INPUT_VALIDATE_PLAYER_INDEX
     
-    return _playerArray[_playerIndex].__clusterYArray[_clusterIndex];
+    with(_playerArray[_playerIndex])
+    {
+        __INPUT_VALIDATE_CLUSTER_INDEX
+        
+        return __clusterYArray[_clusterIndex];
+    }
 }

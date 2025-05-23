@@ -16,6 +16,20 @@ function __InputCursorSystem()
         
         InputPlugInDefine("InputTeam.Cursor", "Input Team", "1.0", "10.0", function()
         {
+            try
+            {
+                InputX(INPUT_CURSOR_CLUSTER);
+            }
+            catch (_error)
+            {
+                if (string_pos("Cluster index", _error.message) > 0)
+                {
+                    _error = "Invalid Cursor Cluster\n\n" + _error.longMessage;
+                }
+                
+                InputPlugInError(_error);
+            }
+            
             InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.UPDATE, -1, function(_playerIndex)
             {
                 var _i = 0;

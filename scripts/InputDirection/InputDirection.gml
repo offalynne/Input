@@ -14,6 +14,8 @@ function InputDirection(_default, _clusterIndex, _playerIndex = 0)
     
     with(_playerArray[_playerIndex])
     {
+        __INPUT_VALIDATE_CLUSTER_INDEX
+        
         var _x = __clusterXArray[_clusterIndex];
         var _y = __clusterYArray[_clusterIndex];
         
