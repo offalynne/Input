@@ -142,6 +142,11 @@ function __InputGamepadTransformQuirks(_gamepadStruct)
                     __InputTrace("Blocking gamepad: Single Joy Con");
                     __blocked = true;
                 }
+                else if (__InputStringContains(_description, "snes"))
+                {
+                    __InputTrace("Blocking gamepad: SNES NSO controller");
+                    __blocked = true;
+                }
             break;
         }
     }
