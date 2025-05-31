@@ -627,7 +627,7 @@ draw_rectangle(x, y, x + _width, y + 10, true);
 
 ## …CheckMany
 
-`InputCheckMany(verbIndex, [playerIndex])`
+`InputCheckMany(verbIndexArray, [playerIndex])`
 
 <!-- tabs:start -->
 
@@ -654,7 +654,7 @@ Works similarly to `InputCheck()`; please see that function for a description of
 
 ## …PressedMany
 
-`InputPressedMany(verbIndex, [playerIndex])`
+`InputPressedMany(verbIndexArray, [playerIndex])`
 
 <!-- tabs:start -->
 
