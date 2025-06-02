@@ -398,9 +398,9 @@ Limits the player's cursor within an axis-aligned bounding box. The coordinates 
 
 &nbsp;
 
-## …CursorLimitAABB
+## …CursorLimitBoundary
 
-`InputCursorLimitAABB([margin=0], [playerIndex=0])`
+`InputCursorLimitBoundary([margin=0], [playerIndex=0])`
 
 <!-- tabs:start -->
 
