@@ -16,6 +16,8 @@ function __InputRegisterUpdatePlayer()
             var _valueRawArray   = __valueRawArray;
             var _valueClampArray = __valueClampArray;
             
+            var _anyVerbHeld = false;
+            
             /////////////////////////
             //                     //
             //  Verb State Update  //
@@ -35,7 +37,7 @@ function __InputRegisterUpdatePlayer()
                 
                     if (__valueClamp > 0)
                     {
-                        __anyHardwareInput = true;
+                        _anyVerbHeld = true;
                     
                         __held = true;
                         if (not __prevHeld) __pressFrame = _systemFrame;
@@ -48,6 +50,8 @@ function __InputRegisterUpdatePlayer()
             
                 ++_i;
             }
+            
+            __anyInput = _anyVerbHeld;
         }
     });
 }
