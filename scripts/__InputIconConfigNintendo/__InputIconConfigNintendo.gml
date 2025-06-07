@@ -39,6 +39,7 @@ InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH,  gp_stickr, "thumbstick r clic
 //Not available on the Switch console itself but available on other platforms
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_home,   "home");
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_extra1, "capture");
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_extra2, "C"); //Switch 2 GameChat button
 
 
 
@@ -93,3 +94,4 @@ InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_JOYCON_RIGHT,  gp_stickl, "thumbstick 
 
 //Not available on the Switch console itself but available on other platforms
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_JOYCON_RIGHT, gp_select, "home"); //Home
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_JOYCON_RIGHT, gp_extra1, "C");    //Switch 2 GameChat button
