@@ -1,5 +1,3 @@
-7e056920,windows,vid+pid // Switch Pro 2
-7e057320,windows,vid+pid // NSO GameCube
 7e050e20,windows,vid+pid // Joy-Con Charger
 71011904,windows,vid+pid // Luna DInput
 31730100,windows,vid+pid // DSHIDMini DS4W Mode
@@ -8,8 +6,6 @@
 5e04220b,windows,vid+pid // Xbox Series DInput
 5e04200b,windows,vid+pid // Xbox Series DInput
 efbeedfe,windows,vid+pid // Virtual Hid Device
-030000007e0500006920000001010000,macos,guid // Switch Pro 2
-030000007e0500007320000001010000,macos,guid // NSO GameCube
 030000007e0500000e20000000020000,macos,guid // Joy-Con Charger
 030000007e0500000920000000020000,macos,guid // Switch Pro Controller
 03000000050b00000619000000010000,macos,guid // ROG Pugio
@@ -30,11 +26,7 @@ efbeedfe,windows,vid+pid // Virtual Hid Device
 030000007e0500000e20000011810000,linux,guid // Joy-Con Charger Left Grip
 3c000000000000000000000038010000,linux,guid // Joy-Con Charger Right Grip 
 030000007e0500000920000011010000,linux,guid // Switch Pro Controller
-030000007e0500006920000011010000,linux,guid // Switch Pro 2
-030000007e0500007320000011010000,linux,guid // NSO GameCube
 03000000321500006500000011010000,linux,guid // Razer Basilisk Essential
-66616131396633313530656439663739,android,guid // Switch Pro 2
-32653635393137656662646635373938,android,guid // NSO GameCube
 65366131663736363061313736656431,android,guid // Joy-Con Charger
 31613237643563656561633964393335,android,guid // Joy-Con Left
 39373064396565646338333134303131,android,guid // Joy-Con Right
