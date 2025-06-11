@@ -239,7 +239,7 @@ Returns the x-coordinate of the vector represented by the sum of the verb values
 
 ```gml
 //Move instance according to horizontal input 
-x += InputX(INPUTER_CLUSTER.MOVE);
+x += InputX(INPUT_CLUSTER.MOVE);
 ```
 
 <!-- tabs:end -->
@@ -267,7 +267,7 @@ Returns the y-coordinate of the vector represented by the sum of the verb values
 
 ```gml
 //Move instance according to horizontal input 
-x += InputY(INPUTER_CLUSTER.MOVE);
+x += InputY(INPUT_CLUSTER.MOVE);
 ```
 
 <!-- tabs:end -->
@@ -296,7 +296,7 @@ Returns the direction of the vector represented by the sum of the verb values.
 
 ```gml
 //Set instance rotation to input direction, defaulting to the current value
-image_angle = InputDirection(image_angle, INPUTER_CLUSTER.AIM);
+image_angle = InputDirection(image_angle, INPUT_CLUSTER.AIM);
 ```
 
 <!-- tabs:end -->
@@ -324,7 +324,7 @@ Returns the length of the vector represented by the sum of the verb values.
 
 ```gml
 //Add motion in an instance's current direction with input distance for speed 
-motion_add(direction, InputDistance(INPUTER_CLUSTER.MOVE));
+motion_add(direction, InputDistance(INPUT_CLUSTER.MOVE));
 ```
 
 <!-- tabs:end -->
