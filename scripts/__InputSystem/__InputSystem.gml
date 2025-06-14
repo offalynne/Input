@@ -80,6 +80,9 @@ function __InputSystem()
         
         __androidEnumerationTime = -infinity;
         __restartTime            = -infinity;
+
+        //Flag for toggling InputDefineVerb() and InputDefineCluster() with __InputConfigVerbs()
+        __verbDefineAllowed = false;
         
         //Master definitions for verbs
         __verbDefinitionArray = []; //Contains structs for each verb definition
@@ -193,8 +196,9 @@ function __InputSystem()
         ];
         
         
-        
+        __verbDefineAllowed = true;
         __InputConfigVerbs();
+        __verbDefineAllowed = false;
         
         
         
