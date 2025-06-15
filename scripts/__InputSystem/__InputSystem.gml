@@ -14,15 +14,15 @@
                                      {\
                                          if (not is_numeric(_playerIndex))\
                                          {\
-                                             __InputError($"Player index must be a number (typeof = \"{typeof(_playerIndex)}\")");\
+                                             __InputError("Player index must be a number (typeof = \"", typeof(_playerIndex), "\")");\
                                          }\
                                          if (_playerIndex >= INPUT_MAX_PLAYERS)\
                                          {\
-                                             __InputError($"Player index {_playerIndex} too large. Must be less than config `INPUT_MAX_PLAYERS` ({INPUT_MAX_PLAYERS})");\
+                                             __InputError("Player index ", _playerIndex, " too large. Must be less than config `INPUT_MAX_PLAYERS` (", INPUT_MAX_PLAYERS, ")");\
                                          }\
                                          if (_playerIndex < 0)\
                                          {\
-                                             __InputError($"Player index {_playerIndex} less than zero");\
+                                             __InputError("Player index ", _playerIndex, " less than zero");\
                                          }\
                                      }
 
@@ -30,19 +30,19 @@
                                      {\
                                          if (not is_numeric(_clusterIndex))\
                                          {\
-                                             __InputError($"Cluster index must be a number (typeof = \"{typeof(_clusterIndex)}\")");\
+                                             __InputError("Cluster index must be a number (typeof = \"", typeof(_clusterIndex), "\")");\
                                          }\
                                          if (array_length(__clusterXArray) == 0)\
                                          {\
-                                             __InputError($"Cluster index {_clusterIndex} too large. No clusters are defined");\
+                                             __InputError("Cluster index ", _clusterIndex, " too large. No clusters are defined");\
                                          }\
                                          if (_clusterIndex >= array_length(__clusterXArray))\
                                          {\
-                                             __InputError($"Cluster index {_clusterIndex} too large. Must be within range of defined clusters ({array_length(__clusterXArray)})");\
+                                             __InputError("Cluster index ", _clusterIndex, " too large. Must be within range of defined clusters (", array_length(__clusterXArray), ")");\
                                          }\
                                          if (_clusterIndex < 0)\
                                          {\
-                                             __InputError($"Cluster index {_clusterIndex} less than zero");\
+                                             __InputError("Cluster index ", _clusterIndex, " less than zero");\
                                          }\
                                      }
 

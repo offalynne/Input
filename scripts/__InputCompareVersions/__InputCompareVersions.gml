@@ -14,34 +14,34 @@
 //Unit tests!
 
 //Nonsense and nonsense
-__InputTrace($"Test 1: Expect 1, got {__InputCompareVersions("afoweijhwefioj", "Wefiolwjhefiojwe")}");
+__InputTrace("Test 1: Expect 1, got ", __InputCompareVersions("afoweijhwefioj", "Wefiolwjhefiojwe"));
 
 //Nonsense and a proper version
-__InputTrace($"Test 2: Expect 0, got {__InputCompareVersions("afoweijhwefioj", INPUT_VERSION)}");
+__InputTrace("Test 2: Expect 0, got ", __InputCompareVersions("afoweijhwefioj", INPUT_VERSION));
 
 //Matching versions
-__InputTrace($"Test 3: Expect 1, got {__InputCompareVersions("10.0", "10.0")}");
+__InputTrace("Test 3: Expect 1, got ", __InputCompareVersions("10.0", "10.0"));
 
 //Self-test against current `INPUT_VERSION`
-__InputTrace($"Test 4: Expect 1, got {__InputCompareVersions(INPUT_VERSION, INPUT_VERSION)}");
+__InputTrace("Test 4: Expect 1, got ", __InputCompareVersions(INPUT_VERSION, INPUT_VERSION));
 
 //Minor version too high
-__InputTrace($"Test 5: Expect 0, got {__InputCompareVersions("10.1", "10.0")}");
+__InputTrace("Test 5: Expect 0, got ", __InputCompareVersions("10.1", "10.0"));
 
 //Major version mismatch
-__InputTrace($"Test 6: Expect 0, got {__InputCompareVersions( "9.0", "10.0")}");
+__InputTrace("Test 6: Expect 0, got ", __InputCompareVersions( "9.0", "10.0"));
 
 //Major version mismatch
-__InputTrace($"Test 7: Expect 0, got {__InputCompareVersions("11.0", "10.0")}");
+__InputTrace("Test 7: Expect 0, got ", __InputCompareVersions("11.0", "10.0"));
 
 //Double failure!
-__InputTrace($"Test 8: Expect 0, got {__InputCompareVersions("11.3", "10.0")}");
+__InputTrace("Test 8: Expect 0, got ", __InputCompareVersions("11.3", "10.0"));
 
 //Minor version low but that's ok
-__InputTrace($"Test 9: Expect 1, got {__InputCompareVersions("10.11", "10.13")}");
+__InputTrace("Test 9: Expect 1, got ", __InputCompareVersions("10.11", "10.13"));
 
 //Too much detail but we handle it
-__InputTrace($"Test 10: Expect 1, got {__InputCompareVersions("1.1.1", "1.2.1")}");
+__InputTrace("Test 10: Expect 1, got ", __InputCompareVersions("1.1.1", "1.2.1"));
 
 __InputTrace("Done!");
 //*/
