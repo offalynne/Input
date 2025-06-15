@@ -703,3 +703,31 @@ Works similarly to `InputReleased()`; please see that function for a description
 ```
 
 <!-- tabs:end -->
+
+&nbsp;
+
+## …BufferPressed
+
+`InputBufferPressed(verbIndex, duration, [playerIndex], [])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the specified verb has been pressed during the specified frame duration
+
+|Name                |Datatype                    |Purpose                                              |
+|--------------------|----------------------------|-----------------------------------------------------|
+|`verbIndexArray`    |integer                     |Verbs                                                |
+|`duration`          |integer                     |Frame duration to check                              |
+|`[playerIndexArray]`|integer or array of integers|Players to target. If not specified, player 0 is used|
+
+Works similarly to `InputPressed()`; please see that function for a description of pressed behavior. This variant of `InputPressed()` checks for input from the defined verb within the specified frame duration.
+
+#### **Example**
+
+```gml
+
+```
+
+<!-- tabs:end -->
