@@ -708,7 +708,7 @@ Works similarly to `InputReleased()`; please see that function for a description
 
 ## …BufferPressed
 
-`InputBufferPressed(verbIndex, duration, [playerIndex], [])`
+`InputBufferPressed(verbIndex, duration, [playerIndex])`
 
 <!-- tabs:start -->
 
