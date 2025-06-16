@@ -42,8 +42,8 @@ InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_extra1, "capture");
 
 //Switch 2
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_extra2,  "C" ); //GameChat
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCG, gp_paddlel, "GL"); //Grip Left
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCG, gp_paddler, "GR"); //Grip Right
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_paddlel, "GL"); //Grip Left
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_paddler, "GR"); //Grip Right
 
 
 
