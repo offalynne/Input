@@ -11,8 +11,8 @@
 //                                                                        //
 ////////////////////////////////////////////////////////////////////////////
 
-#macro INPUT_VERSION  "10.0.9"
-#macro INPUT_DATE     "2025-05-17"
+#macro INPUT_VERSION  "10.1.0"
+#macro INPUT_DATE     "2025-06-16"
 
 #macro INPUT_NO_DEVICE       -666
 #macro INPUT_KBM             -1
@@ -106,10 +106,8 @@ enum INPUT_PLUG_IN_CALLBACK
 #macro INPUT_ON_WINDOWS  (os_type == os_windows)
 #macro INPUT_ON_MACOS    (os_type == os_macosx)
 #macro INPUT_ON_LINUX    (os_type == os_linux)
-#macro INPUT_ON_DESKTOP  (INPUT_ON_WINDOWS || INPUT_ON_MACOS || INPUT_ON_LINUX)
 #macro INPUT_ON_IOS      (os_type == os_ios || os_type == os_tvos)
 #macro INPUT_ON_ANDROID  (os_type == os_android)
-#macro INPUT_ON_MOBILE   (INPUT_ON_IOS || INPUT_ON_ANDROID)
 #macro INPUT_ON_XBOX     ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
 #macro INPUT_ON_PS4      (os_type == os_ps4)
 #macro INPUT_ON_PS5      (os_type == os_ps5)
@@ -118,6 +116,11 @@ enum INPUT_PLUG_IN_CALLBACK
 #macro INPUT_ON_APPLE    (INPUT_ON_MACOS || INPUT_ON_IOS)
 #macro INPUT_ON_OPERAGX  (os_type == os_operagx)
 #macro INPUT_ON_WEB      ((os_browser != browser_not_a_browser) || INPUT_ON_OPERAGX)
+
+//Runtime on web, constant on native as of 2024.2
+//Tested and confirmed in VM bytecode disassembly
+#macro INPUT_ON_DESKTOP  (INPUT_ON_WINDOWS || INPUT_ON_MACOS || INPUT_ON_LINUX || (INPUT_ON_OPERAGX && !__InputOnOperaGXMobile()))
+#macro INPUT_ON_MOBILE   (INPUT_ON_ANDROID || INPUT_ON_IOS || (INPUT_ON_OPERAGX && __InputOnOperaGXMobile()))
 
 #macro INPUT_STEAMWORKS_SUPPORT   ((INPUT_ON_LINUX || INPUT_ON_WINDOWS) && (not INPUT_ON_WEB))
 #macro INPUT_SDL_SUPPORT          ((not INPUT_ON_WEB) && INPUT_ON_DESKTOP)

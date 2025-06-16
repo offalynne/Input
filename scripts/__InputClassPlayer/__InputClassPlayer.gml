@@ -11,13 +11,13 @@ function __InputClassPlayer(_playerIndex) constructor
     
     __playerIndex = _playerIndex;
     
-    __device           = INPUT_NO_DEVICE;
-    __metadata         = undefined;
-    __status           = INPUT_PLAYER_STATUS.DISCONNECTED;
-    __blocked          = false;
-    __ghost            = false;
-    __anyHardwareInput = false;
-    __lastInputTime    = -infinity;
+    __device         = INPUT_NO_DEVICE;
+    __metadata       = undefined;
+    __status         = INPUT_PLAYER_STATUS.DISCONNECTED;
+    __blocked        = false;
+    __ghost          = false;
+    __anyInput       = false;
+    __lastInputTime  = -infinity;
     
     //Set the last connected gamepad speculatively based on the platform / gamepad ban setting
     if (INPUT_BAN_GAMEPADS)
@@ -185,7 +185,7 @@ function __InputClassPlayer(_playerIndex) constructor
         //                     //
         /////////////////////////
         
-        __anyHardwareInput = false;
+        __anyInput = false;
         __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.UPDATE_PLAYER, __playerIndex);
         
         //////////////////////
@@ -313,6 +313,6 @@ function __InputClassPlayer(_playerIndex) constructor
             ++_i;
         }
         
-        if (__anyHardwareInput) __lastInputTime = current_time;
+        if (__anyInput) __lastInputTime = current_time;
     }
 }

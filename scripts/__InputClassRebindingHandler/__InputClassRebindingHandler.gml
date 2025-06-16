@@ -23,7 +23,7 @@ function __InputClassRebindingHandler(_device, _ignoreArray, _allowArray) constr
     }
     else if (not is_array(_ignoreArray))
     {
-        __InputError($"Rebinding ignore data must be an array or `undefined` (was \"{typeof(_ignoreArray)}\")");
+        __InputError("Rebinding ignore data must be an array or `undefined` (was \"", typeof(_ignoreArray), "\")");
     }
     else
     {
@@ -57,7 +57,7 @@ function __InputClassRebindingHandler(_device, _ignoreArray, _allowArray) constr
     }
     else if (not is_array(_allowArray))
     {
-        __InputError($"Rebinding allow data must be an array or `undefined` (was \"{typeof(_allowArray)}\")");
+        __InputError("Rebinding allow data must be an array or `undefined` (was \"", typeof(_allowArray), "\")");
     }
     else
     {

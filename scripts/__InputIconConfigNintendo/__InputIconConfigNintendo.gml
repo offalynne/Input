@@ -11,8 +11,8 @@ InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_face2, "A"); //A
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_face3, "Y"); //Y
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_face4, "X"); //X
 
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_shoulderl,  "L"); //L
-InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_shoulderr,  "R"); //R
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_shoulderl,  "L" ); //L
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_shoulderr,  "R" ); //R
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_shoulderlb, "ZL"); //ZL
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_shoulderrb, "ZR"); //ZR
 
@@ -39,6 +39,11 @@ InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH,  gp_stickr, "thumbstick r clic
 //Not available on the Switch console itself but available on other platforms
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_home,   "home");
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_extra1, "capture");
+
+//Switch 2
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_extra2,  "C" ); //GameChat
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_paddlel, "GL"); //Grip Left
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_SWITCH, gp_paddler, "GR"); //Grip Right
 
 
 
@@ -93,3 +98,4 @@ InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_JOYCON_RIGHT,  gp_stickl, "thumbstick 
 
 //Not available on the Switch console itself but available on other platforms
 InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_JOYCON_RIGHT, gp_select, "home"); //Home
+InputIconDefineGamepad(INPUT_GAMEPAD_TYPE_JOYCON_RIGHT, gp_extra2, "C"   ); //Switch 2 GameChat

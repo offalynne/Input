@@ -46,17 +46,17 @@ function InputPlugInDefine(_alias, _author, _version, _targetInputVersion, _init
     
     if (_system.__plugInsInitializeState != 0)
     {
-        __InputError($"`InputPlugInDefine()` must only be called on boot");
+        __InputError("`InputPlugInDefine()` must only be called on boot");
     }
     
     if (variable_struct_exists(_plugInDict, _alias))
     {
-        __InputError($"Plug-in with alias \"{_alias}\" already exists");
+        __InputError("Plug-in with alias \"", _alias, "\" already exists");
     }
     
     if (not __InputCompareVersions(_targetInputVersion, INPUT_VERSION))
     {
-        __InputError($"Plug-in \"{_alias}\" is incompatible with this version of Input ({INPUT_VERSION})\nTarget Input version is {_targetInputVersion}");
+        __InputError("Plug-in \"", _alias, "\" is incompatible with this version of Input (", INPUT_VERSION, ")\nTarget Input version is ",  _targetInputVersion);
     }
     
     var _plugInStruct = new __InputClassPlugIn(_alias, _author, _version, _targetInputVersion, _initCallback);

@@ -130,7 +130,7 @@ function __InputCursorTransformCoordinate(_x, _y, _inputSystem, _outputSystem, _
             }
             else
             {
-                InputPlugInError($"Unhandled output coordinate system ({_outputSystem})");
+                InputPlugInError("Unhandled output coordinate system ", _outputSystem);
             }
         }
         else if (_inputSystem == 1) //Input coordinate system is GUI-space
@@ -170,7 +170,7 @@ function __InputCursorTransformCoordinate(_x, _y, _inputSystem, _outputSystem, _
             }
             else
             {
-                InputPlugInError($"Unhandled output coordinate system ({_outputSystem})");
+                InputPlugInError("Unhandled output coordinate system ", _outputSystem);
             }
         }
         else if (_inputSystem == 2) //Input coordinate system is device-space
@@ -209,12 +209,12 @@ function __InputCursorTransformCoordinate(_x, _y, _inputSystem, _outputSystem, _
             }
             else
             {
-                InputPlugInError($"Unhandled output coordinate system ({_outputSystem})");
+                InputPlugInError("Unhandled output coordinate system ", _outputSystem);
             }
         }
         else
         {
-            InputPlugInError($"Unhandled input coordinate system ({_inputSystem})");
+            InputPlugInError("Unhandled input coordinate system ", _inputSystem);
         }
     }
     

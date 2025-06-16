@@ -13,7 +13,7 @@ function __InputCollect()
         static _system = __InputSystem();
         with(_system)
         {
-            __InputTrace($"Initializing {array_length(__plugInArray)} plug-in(s)");
+            __InputTrace("Initializing ", array_length(__plugInArray), " plug-in(s)");
             __plugInsInitializeState = 1;
             
             var _i = 0;
@@ -23,7 +23,7 @@ function __InputCollect()
                 ++_i;
             }
             
-            __InputTrace($"Plug-in initialization complete");
+            __InputTrace("Plug-in initialization complete");
             __plugInsInitializeState = 2;
         }
     })();

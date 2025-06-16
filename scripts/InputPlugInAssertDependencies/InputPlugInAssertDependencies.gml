@@ -20,13 +20,13 @@ function InputPlugInAssertDependencies()
         
         if (not is_struct(_plugInStruct))
         {
-            __InputError($"Plug-in \"{argument[_i]}\" required as a dependency but it cannot be found\nPlease import this missing plug-in");
+            __InputError("Plug-in \"", argument[_i], "\" required as a dependency but it cannot be found\nPlease import this missing plug-in");
             return false;
         }
         
         if (not __InputCompareVersions(argument[_i+1], _plugInStruct.__version))
         {
-            __InputError($"Required version ({argument[_i+1]}) of plug-in \"{argument[_i]}\" is newer than current version {_plugInStruct.__version}\nPlease check for updates");
+            __InputError("Required version (", argument[_i+1], ") of plug-in \"", argument[_i], "\" is newer than current version ", _plugInStruct.__version, "\nPlease check for updates");
             return false;
         }
         
