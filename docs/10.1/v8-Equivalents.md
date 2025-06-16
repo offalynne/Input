@@ -283,15 +283,16 @@ Input 10 is a big change. To help ease the transition from Input 8, this page co
 
 ?> Input 10 no longer has the concept of "source modes". The old `.HOTSWAP` source mode has been replaced by a specific [hotswap feature](Functions-(Hotswap)). `.JOIN` source mode has been replaced by the [Party plug-in](Plug-in-Party-Multiplayer).
 
-|Version 8                         |Version 10              |
-|----------------------------------|------------------------|
-|`input_source_mode_set`           |_removed_               |
-|`input_source_mode_get`           |_removed_               |
-|`input_hotswap_params_set`        |_removed_               |
-|`input_hotswap_params_get`        |_removed_               |
-|`input_join_params_set`           |`InputPartySetParams`   |
-|`input_join_params_get`           |`InputPartyGetParams`   |
-|`input_join_is_finished`          |`InputPartyGetReady`    |
+|Version 8                         |Version 10                 |
+|----------------------------------|---------------------------|
+|`input_source_mode_set`           |_removed_                  |
+|`input_source_mode_get`           |_removed_                  |
+|`input_hotswap_params_set`        |_removed_                  |
+|`input_hotswap_params_get`        |_removed_                  |
+|`input_join_params_set`           |`InputPartySetParams`      |
+|`input_join_params_get`           |`InputPartyGetParams`      |
+|`input_join_is_finished`          |`InputPartyGetReady`       |
+|`input_source_detect_new`         |`InputDeviceGetNewActivity`|
 
 &nbsp;
 
