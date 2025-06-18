@@ -50,12 +50,7 @@ function __InputGamepadTransformQuirks(_gamepadStruct)
             break;
 
             case os_macosx:
-                if ((__guid == "none") && __InputStringContains(_description, "apple"))
-                {
-                    __InputTrace("Blocking gamepad: Apple virtual controller");
-                    __blocked = true;
-                }
-                else if ((__InputStringMatches(__guid, "03000000050b00000619000000010000", "03000000050b0000e318000000010000", "03000000050b0000e518000000010000", "03000000050b00005819000000010000", "03000000050b0000181a000000010000", "03000000050b00001a1a000000010000", "03000000050b00001c1a000000010000"))) 
+                if ((__InputStringMatches(__guid, "03000000050b00000619000000010000", "03000000050b0000e318000000010000", "03000000050b0000e518000000010000", "03000000050b00005819000000010000", "03000000050b0000181a000000010000", "03000000050b00001a1a000000010000", "03000000050b00001c1a000000010000"))) 
                 {
                     __InputTrace("Blocking gamepad: ROG Mouse");
                     __blocked = true;
