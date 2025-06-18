@@ -39,6 +39,7 @@ Sets icon data to return for a particular binding name when the player is using 
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
+|`gamepad type` |type    |Gamepad type to set, one of the `INPUT_GAMEPAD_TYPE_*` macros |
 |`binding`      |binding |A [gamepad button constant](https://manual.gamemaker.io/beta/en/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm) binding to label|
 |`iconData`     |any     |The value to return for an empty binding            |
 
@@ -134,7 +135,7 @@ draw_text(room_width/2 - 5, 10, "To shoot, press ")
 |---------------|--------|----------------------------------------------------|
 |`binding`      |any     |Binding to check                                    |
 |`forGamepad`   |boolean |Whether to include gamepad bindings                 |
-|`gamepadType`  |intger  |What type of gamepad to returnt he binding name for |
+|`gamepadType`  |intger  |What type of gamepad to return the binding name for |
 
 Returns the icon data associated with a binding for a particular gamepad type, or the keyboard and mouse device (`INPUT_KBM`) if `forGamepad` is set to `false`.
 
