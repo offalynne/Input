@@ -53,6 +53,16 @@ function __input_gamepad_set_blacklist()
                 return;
             }
         break;
+
+        case os_macosx:
+            if ((__guid == "none") && __input_string_contains(_description_lower, "apple"))
+            {
+                //MacOS duplicate virtual controller 
+                if (!__INPUT_SILENT) __input_trace("Warning! Controller is blacklisted (Apple virtual controller)");
+                __blacklisted = true;
+                return;
+            }
+        break;
         
         case os_linux:
             if (_global.__on_steam_deck)
