@@ -105,6 +105,7 @@
 0e6f,0189,CommunityLikeSwitch // PDP Realmz Wired
 2888,0503,CommunityLikeSwitch // Vex Robotics V5 Controller
 057e,2069,CommunityLikeSwitch // Switch Pro Controller 2
+20d6,0200,CommunityLikeSwitch // PowerA NSW Enhanced Wireless Controller
 0500,9b28,CommunitySaturn // Sega Saturn Adapter
 0ae4,0702,CommunitySaturn // Taito Egret II Mini Controller
 0b49,0644,CommunitySaturn // ASCII Seamic
