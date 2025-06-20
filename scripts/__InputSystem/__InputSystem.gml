@@ -46,6 +46,26 @@
                                          }\
                                      }
 
+#macro __INPUT_VALIDATE_CLUSTER_INDEX if (INPUT_SAFETY_CHECKS)\
+                                     {\
+                                         if (not is_numeric(_clusterIndex))\
+                                         {\
+                                             __InputError($"Cluster index must be a number (typeof = \"{typeof(_clusterIndex)}\")");\
+                                         }\
+                                         if (array_length(__clusterXArray) == 0)\
+                                         {\
+                                             __InputError($"Cluster index {_clusterIndex} too large. No clusters are defined");\
+                                         }\
+                                         if (_clusterIndex >= array_length(__clusterXArray))\
+                                         {\
+                                             __InputError($"Cluster index {_clusterIndex} too large. Must be within range of defined clusters ({array_length(__clusterXArray)})");\
+                                         }\
+                                         if (_clusterIndex < 0)\
+                                         {\
+                                             __InputError($"Cluster index {_clusterIndex} less than zero");\
+                                         }\
+                                     }
+
 __InputSystem();
 function __InputSystem()
 {
