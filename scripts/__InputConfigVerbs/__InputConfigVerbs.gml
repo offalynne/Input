@@ -1,3 +1,5 @@
+// Feather disable all
+
 function __InputConfigVerbs()
 {
     enum INPUT_VERB

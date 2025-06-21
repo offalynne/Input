@@ -1,3 +1,9 @@
+// Feather disable all
+
+/// @param device
+/// @param ignoreStruct
+/// @param allowStruct
+
 function __InputBindingScan(_device, _ignoreStruct, _allowStruct)
 {
     static _system = __InputSystem();
