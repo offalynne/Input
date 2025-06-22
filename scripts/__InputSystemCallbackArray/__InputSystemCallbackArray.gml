@@ -1,3 +1,5 @@
+// Feather disable all
+
 // We store the callback array separately as the System initialization flow
 
 function __InputSystemCallbackArray()

@@ -1,4 +1,4 @@
-/// feather disable all
+// Feather disable all
 
 /// Defines a verb and its default bindings for keyboard+mouse and gamepad. The `exportName`
 /// parameters defines the name of the verb when exported with InputBindingsExport().

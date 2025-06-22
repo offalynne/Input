@@ -1,3 +1,7 @@
+// Feather disable all
+
+/// @param description
+
 function __InputGamepadIdentifyDescriptionType(_description)
 {
     _description = string_lower(_description);
