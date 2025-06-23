@@ -339,6 +339,7 @@ beef,feed,CommunityXBox360 // Monect
 0e6f,02f1,CommunityXBoxOne // PDP Atomic 
 3285,0305,CommunityXBoxOne // Nacon MG-X Pro
 3537,9710,CommunityXBoxOne // GameSir Kaleid Flux
+3537,1104,CommunityXBoxOne // GameSir X4A
 0e6f,0901,CommunityPSX // PDP Versus Fighting
 2563,0526,CommunityPSX // Uberwith PS
 0e6f,0111,CommunityPSX // Afterglow PS3
