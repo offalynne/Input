@@ -341,7 +341,7 @@ beef,feed,CommunityXBox360 // Monect
 3285,0305,CommunityXBoxOne // Nacon MG-X Pro
 3537,9710,CommunityXBoxOne // GameSir Kaleid Flux
 3537,1104,CommunityXBoxOne // GameSir X4A
-03f0,038d,CommunityLikeXBox // HyperX Clutch
+03f0,038d,CommunityXBoxOne // HyperX Clutch
 03f0,048d,CommunityXBoxOne // HyperX Clutch
 0e6f,0901,CommunityPSX // PDP Versus Fighting
 2563,0526,CommunityPSX // Uberwith PS
