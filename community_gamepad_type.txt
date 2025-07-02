@@ -194,6 +194,7 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 289b,0007,CommunitySNES // Raphnet Famicom Adapter
 2e24,486a,CommunitySNES // Hyperkin RetroN Sq
 2e24,200a,CommunitySNES // Hyperkin Scout Premium Wireless BT
+0e19,1001,CommunitySNES // Aquaplus Piece
 1235,ab21,CommunitySuperFamicom // 8BitDo SFC30
 2810,0009,CommunitySuperFamicom // 8BitDo SFC30
 2dc8,2830,CommunitySuperFamicom // 8BitDo SFC30
