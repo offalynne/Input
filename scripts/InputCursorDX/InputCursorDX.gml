@@ -13,6 +13,7 @@ function InputCursorDX(_playerIndex = 0, _coordSpace = undefined)
     static _playerArray = _system.__playerArray;
     
     __INPUT_VALIDATE_PLAYER_INDEX
+    __INPUT_VALIDATE_CURSOR_CLUSTER
     
     with(_playerArray[_playerIndex])
     {

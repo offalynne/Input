@@ -329,6 +329,7 @@
     {"id":{"name":"InputPlugInVerbSet","path":"scripts/InputPlugInVerbSet/InputPlugInVerbSet.yy",},},
     {"id":{"name":"InputPlugInVerbStateRead","path":"scripts/InputPlugInVerbStateRead/InputPlugInVerbStateRead.yy",},},
     {"id":{"name":"InputPlugInVerbStateSet","path":"scripts/InputPlugInVerbStateSet/InputPlugInVerbStateSet.yy",},},
+    {"id":{"name":"InputPlugInWarning","path":"scripts/InputPlugInWarning/InputPlugInWarning.yy",},},
     {"id":{"name":"InputPressed","path":"scripts/InputPressed/InputPressed.yy",},},
     {"id":{"name":"InputPressedMany","path":"scripts/InputPressedMany/InputPressedMany.yy",},},
     {"id":{"name":"InputReleased","path":"scripts/InputReleased/InputReleased.yy",},},
