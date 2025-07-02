@@ -317,6 +317,8 @@ beef,feed,CommunityXBox360 // Monect
 1949,0402,CommunityXBox360 // Xbox
 0079,0002,CommunityXBox360 // Arcade Board
 0e6f,0315,CommunityXBox360 // Afterglow
+045e,0b03,CommunityXBoxOne // Xbox One
+045e,02ff,CommunityXboxOne // Xbox Adaptive Joystick
 10f5,7008,CommunityXBoxOne // Turtle Beach Recon
 2dc8,2101,CommunityXBoxOne // 8BitDo Xbox One SN30 Pro
 0e6f,d802,CommunityXBoxOne // PDP Xbox Series
@@ -324,7 +326,6 @@ beef,feed,CommunityXBox360 // Monect
 1532,0a29,CommunityXBoxOne // Razer Wolverine 2
 1532,0a14,CommunityXBoxOne // Razer Wolverine Ultimate Xbox
 0e6f,02d7,CommunityXBoxOne // PDP Black Camo
-045e,0b03,CommunityXBoxOne // Xbox One
 20d6,2802,CommunityXBoxOne // PowerA Wired
 1915,0040,CommunityXBoxOne // Flydigi X9ET Pro and Vader 2
 358a,0201,CommunityXBoxOne // Backbone One USB C Xbox
