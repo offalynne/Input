@@ -233,8 +233,6 @@ Maximum threshold for directional (thumbstick) axes.
 
 &nbsp;
 
-## Touchscreen & Virtual Buttons
-
 ### `INPUT_GAMEPAD_TRIGGER_MIN_THRESHOLD` {docsify-ignore}
 
 *Typical value: `0.05`*
@@ -250,6 +248,8 @@ Default minimum threshold for non-directional (trigger) axes. This value is used
 Default maximum threshold for non-directional (trigger) axes.
 
 &nbsp;
+
+## Touchscreen & Virtual Buttons
 
 ### `INPUT_VIRTUAL_BUTTON_HISTORY_FRAMES` {docsify-ignore}
 
