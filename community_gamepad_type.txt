@@ -107,6 +107,7 @@
 057e,2069,CommunityLikeSwitch // Switch Pro Controller 2
 20d6,0200,CommunityLikeSwitch // PowerA NSW Enhanced Wireless Controller
 0f0d,0202,CommunityLikeSwitch // Horipad O Nintendo Switch 2 Controller
+2e8a,10df,CommunityLikeSwitch // Handheld Legend ProGCC
 0500,9b28,CommunitySaturn // Sega Saturn Adapter
 0ae4,0702,CommunitySaturn // Taito Egret II Mini Controller
 0b49,0644,CommunitySaturn // ASCII Seamic
@@ -259,6 +260,7 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 0e6f,0185,CommunityGameCube // PDP Fightpad Pro
 2dc8,286a,CommunityGameCube // 8BitDo GameCube Modkit
 057e,2073,CommunityGameCube // NSO GameCube
+2e8a,10dd,CommunityGameCube // Handheld Legend GC Ultimate
 1bad,04f9,CommunityXBox360 // PDP Versus Fighting
 24c6,891a,CommunityXBox360 // Moga XP5X
 24c6,891b,CommunityXBox360 // Moga XP5X
