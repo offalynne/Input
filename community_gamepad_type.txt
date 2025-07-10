@@ -262,6 +262,7 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 2dc8,286a,CommunityGameCube // 8BitDo GameCube Modkit
 057e,2073,CommunityGameCube // NSO GameCube
 2e8a,10dd,CommunityGameCube // Handheld Legend GC Ultimate
+1279,181c,CommunityGameCube // Nyxi Wizard 2
 1bad,04f9,CommunityXBox360 // PDP Versus Fighting
 24c6,891a,CommunityXBox360 // Moga XP5X
 24c6,891b,CommunityXBox360 // Moga XP5X
