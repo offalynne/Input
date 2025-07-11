@@ -348,7 +348,7 @@ beef,feed,CommunityXBox360 // Monect
 3537,1104,CommunityXBoxOne // GameSir X4A
 03f0,038d,CommunityXBoxOne // HyperX Clutch
 03f0,048d,CommunityXBoxOne // HyperX Clutch
-3537,1001,CommunityXBoxOne // GameSir G7
+3537,1010,CommunityXBoxOne // GameSir G7
 0e6f,0901,CommunityPSX // PDP Versus Fighting
 2563,0526,CommunityPSX // Uberwith PS
 0e6f,0111,CommunityPSX // Afterglow PS3
