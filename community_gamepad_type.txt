@@ -2,9 +2,9 @@
 1915,7856,CommunityLikeXBox // Uniplay U6
 2dc8,3012,CommunityLikeXBox // 8BitDo Wireless Ultimate DInput
 2dc8,3013,CommunityLikeXBox // 8BitDo Wireless Ultimate DInput
-2dc8,3015,CommunityLikeXbox // 8BitDo Ultimate C USB DInput
-2dc8,3016,CommunityLikeXbox // 8BitDo Ultimate C 2.4g Adapter DInput
-2dc8,3017,CommunityLikeXbox // 8BitDo Ultimate C 2.4g USB DInput
+2dc8,3015,CommunityLikeXBox // 8BitDo Ultimate C USB DInput
+2dc8,3016,CommunityLikeXBox // 8BitDo Ultimate C 2.4g Adapter DInput
+2dc8,3017,CommunityLikeXBox // 8BitDo Ultimate C 2.4g USB DInput
 2dc8,310a,CommunityLikeXBox // 8BitDo Ultimate 2C
 2dc8,301b,CommunityLikeXBox // 8BitDo Ultimate 2C
 2dc8,301d,CommunityLikeXBox // 8BitDo Ultimate 2C
