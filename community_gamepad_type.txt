@@ -76,6 +76,51 @@
 0502,1309,CommunityLikeXBox // Anbernic RG P01 USB
 3537,1094,CommunityLikeXBox // GameSir Tegenaria Lite
 1d5a,1802,CommunityLikeXBox // Nokia GC 5000
+044f,0f07,CommunityLikeXBox // Thrustmaster Inc Controller
+0e6f,0008,CommunityLikeXBox // After Glow Pro Controller
+0d2f,0002,CommunityLikeXBox // Andamiro Pump It Up pad
+05fe,3030,CommunityLikeXBox // Chic Controller
+05fe,3031,CommunityLikeXBox // Chic Controller
+062a,0033,CommunityLikeXBox // Competition Pro Steering Wheel
+0e6f,0005,CommunityLikeXBox // Eclipse wireless Controller
+0e6f,0006,CommunityLikeXBox // Edge wireless Controller
+3767,0101,CommunityLikeXBox // Fanatec Speedster 3 Forceshock Wheel
+0e8f,3008,CommunityLikeXBox // Generic xbox control
+0c12,9902,CommunityLikeXBox // HAMA VibraX 
+0c12,0005,CommunityLikeXBox // Intec wireless
+05fd,107a,CommunityLikeXBox // InterAct PowerPad Pro Xbox pad
+0f30,0202,CommunityLikeXBox // Joytech Advanced Controller
+102c,ff0c,CommunityLikeXBox // Joytech Wireless Advanced Controller
+0e6f,0003,CommunityLikeXBox // Logic3 Freebird wireless Controller
+046d,ca88,CommunityLikeXBox // Logitech Compact Controller for Xbox
+046d,ca8a,CommunityLikeXBox // Logitech Precision Vibration Feedback Wheel
+046d,ca84,CommunityLikeXBox // Logitech Xbox Cordless Controller
+0738,4506,CommunityLikeXBox // Mad Catz 4506 Wireless Controller
+0738,4540,CommunityLikeXBox // Mad Catz Beat Pad
+0738,45ff,CommunityLikeXBox // Mad Catz Beat Pad
+0738,4743,CommunityLikeXBox // Mad Catz Beat Pad Pro
+0738,6040,CommunityLikeXBox // Mad Catz Beat Pad Pro
+0738,4588,CommunityLikeXBox // Mad Catz Blaster
+05fd,1007,CommunityLikeXBox // Mad Catz Controller
+0738,4522,CommunityLikeXBox // Mad Catz LumiCON
+0738,4556,CommunityLikeXBox // Mad Catz Lynx Wireless Controller
+0738,4530,CommunityLikeXBox // Mad Catz Universal MC2 Racing Wheel and Pedals
+045e,0288,CommunityLikeXBox // Microsoft Xbox Controller S v2
+0c12,8801,CommunityLikeXBox // Nyko Xbox Controller
+0f30,010b,CommunityLikeXBox // Philips Recoil
+0e4c,2390,CommunityLikeXBox // Radica Games Jtech Controller
+0e4c,3510,CommunityLikeXBox // Radica Gamester
+0e4c,1097,CommunityLikeXBox // Radica Gamester Controller
+0e4c,1103,CommunityLikeXBox // Radica Gamester Reflex
+0c12,8809,CommunityLikeXBox // RedOctane Xbox Dance Pad
+06a3,0201,CommunityLikeXBox // Saitek Adrenalin
+06a3,0200,CommunityLikeXBox // Saitek Racing Wheel
+0e8f,0201,CommunityLikeXBox // SmartJoy Frag Xpad
+044f,0f10,CommunityLikeXBox // Thrustmaster Modena GT Wheel
+044f,0f00,CommunityLikeXBox // Thrustmaster Wheel
+044f,0f03,CommunityLikeXBox // Thrustmaster Wheel
+1430,8888,CommunityLikeXBox // TX6500 Dance Pad
+12ab,8809,CommunityLikeXBox // Xbox DDR dancepad
 056e,2007,CommunityLikeSwitch // Elecom Wii Adapter
 056e,2008,CommunityLikeSwitch // Elecom Wii Adapter
 1740,0579,CommunityLikeSwitch // Raphnet Wii Adapter
@@ -322,6 +367,153 @@ beef,feed,CommunityXBox360 // Monect
 1949,0402,CommunityXBox360 // Xbox
 0079,0002,CommunityXBox360 // Arcade Board
 0e6f,0315,CommunityXBox360 // Afterglow
+24c6,5b02,CommunityXBox360 // Thrustmaster Inc GPX Controller
+2dc8,6001,CommunityXBox360 // 8BitDo SN30 Pro
+2dc8,310b,CommunityXBox360 // 8BitDo Ultimate 2 Wireless Controller
+2dc8,3109,CommunityXBox360 // 8BitDo Ultimate Wireless Bluetooth
+0e6f,0113,CommunityXBox360 // Afterglow AX1 Gamepad for Xbox 360
+0e6f,0413,CommunityXBox360 // Afterglow AX1 Gamepad for Xbox 360
+0e6f,0213,CommunityXBox360 // Afterglow Gamepad for Xbox 360
+1949,041a,CommunityXBox360 // Amazon Game Controller
+1209,2882,CommunityXBox360 // Ardwiino Controller
+15e4,3f10,CommunityXBox360 // Batarang Xbox 360 controller
+146b,0604,CommunityXBox360 // Bigben Interactive DAIJA Arcade Stick
+146b,0601,CommunityXBox360 // BigBen Interactive XBOX 360 Controller
+413d,2104,CommunityXBox360 // Black Shark Green Ghost Gamepad
+056e,2004,CommunityXBox360 // Elecom JC U3613M
+24c6,5397,CommunityXBox360 // FUS1ON Tournament Controller
+3537,1004,CommunityXBox360 // GameSir T4 Kaleid
+1bad,f901,CommunityXBox360 // Gamestop Xbox 360 Controller
+0079,18d4,CommunityXBox360 // GPD Win 2 Xbox Controller
+1bad,0003,CommunityXBox360 // Harmonix Rock Band Drumkit
+1bad,0002,CommunityXBox360 // Harmonix Rock Band Guitar
+1bad,f900,CommunityXBox360 // Harmonix Xbox 360 Controller
+12ab,0004,CommunityXBox360 // Honey Bee CommunityXBox360 dancepad
+0f0d,000a,CommunityXBox360 // Hori Co DOA4 FightStick
+24c6,5510,CommunityXBox360 // Hori Fighting Commander ONE
+24c6,5503,CommunityXBox360 // Hori Fighting Edge
+0f0d,000d,CommunityXBox360 // Hori Fighting Stick EX2
+1bad,f505,CommunityXBox360 // Hori Fighting Stick EX2B
+1bad,f503,CommunityXBox360 // Hori Fighting Stick VX
+24c6,5502,CommunityXBox360 // Hori Fighting Stick VX Alt
+24c6,550d,CommunityXBox360 // Hori GEM Xbox controller
+0f0d,000c,CommunityXBox360 // Hori PadEX Turbo
+24c6,550e,CommunityXBox360 // Hori Real Arcade Pro V Kai 360
+0f0d,001b,CommunityXBox360 // Hori Real Arcade Pro VX
+24c6,5501,CommunityXBox360 // Hori Real Arcade Pro VX SA
+1bad,f504,CommunityXBox360 // Hori Real Arcade Pro EX
+0f0d,0016,CommunityXBox360 // Hori Real Arcade ProEX
+1bad,f506,CommunityXBox360 // Hori Real Arcade ProEX Premium VLX
+1bad,f502,CommunityXBox360 // Hori Real Arcade ProVX SA
+24c6,5506,CommunityXBox360 // Hori SOULCALIBUR V Stick
+24c6,5500,CommunityXBox360 // Hori XBOX 360 EX 2 with Turbo
+1bad,f501,CommunityXBox360 // HoriPad EX2 Turbo
+0f0d,00dc,CommunityXBox360 // HORIPAD FPS for Nintendo Switch
+0e6f,0105,CommunityXBox360 // HSM3 CommunityXBox360 dancepad
+03f0,048D,CommunityXBox360 // HyperX Clutch
+1bad,0130,CommunityXBox360 // Ion Drum Rocker
+162e,beef,CommunityXBox360 // Joytech Neo Se Take2
+1a86,e310,CommunityXBox360 // Legion Go S
+17ef,6182,CommunityXBox360 // Lenovo Legion Controller for Windows
+0e6f,0301,CommunityXBox360 // Logic3 Controller
+0e6f,0401,CommunityXBox360 // Logic3 Controller
+046d,c242,CommunityXBox360 // Logitech Chillstream Controller
+046d,caa3,CommunityXBox360 // Logitech DriveFx Racing Wheel
+046d,c21d,CommunityXBox360 // Logitech Gamepad F310
+046d,c21e,CommunityXBox360 // Logitech Gamepad F510
+046d,c21f,CommunityXBox360 // Logitech Gamepad F710
+2345,e00b,CommunityXBox360 // Machenike G5 Pro Controller
+1bad,f021,CommunityXBox360 // Mad Cats Ghost Recon FS GamePad
+0738,4758,CommunityXBox360 // Mad Catz Arcade Game Stick
+0738,4740,CommunityXBox360 // Mad Catz Beat Pad
+1bad,f019,CommunityXBox360 // Mad Catz Brawlstick for Xbox 360
+1bad,f025,CommunityXBox360 // Mad Catz Call Of Duty
+1bad,f02e,CommunityXBox360 // Mad Catz Fightpad
+1bad,f03f,CommunityXBox360 // Mad Catz FightStick SoulCaliber
+1bad,f080,CommunityXBox360 // Mad Catz FightStick TE2
+1bad,f042,CommunityXBox360 // Mad Catz FightStick TES
+1bad,f027,CommunityXBox360 // Mad Catz FPS Pro
+07ff,ffff,CommunityXBox360 // Mad Catz GamePad
+0738,beef,CommunityXBox360 // Mad Catz JOYTECH NEO SE Advanced GamePad
+0738,4736,CommunityXBox360 // Mad Catz MicroCon Gamepad
+1bad,f036,CommunityXBox360 // Mad Catz MicroCon GamePad Pro
+1bad,f03e,CommunityXBox360 // Mad Catz MLG FightStick TE
+1bad,f039,CommunityXBox360 // Mad Catz MvC2 TE
+0738,9871,CommunityXBox360 // Mad Catz Portable Drum
+1bad,f03a,CommunityXBox360 // Mad Catz SFxT Fightstick Pro
+0738,4728,CommunityXBox360 // Mad Catz Street Fighter IV FightPad
+0738,4718,CommunityXBox360 // Mad Catz Street Fighter IV FightStick SE
+1bad,f018,CommunityXBox360 // Mad Catz Street Fighter IV SE Fighting Stick
+0738,4716,CommunityXBox360 // Mad Catz Wired Xbox 360 Controller
+0738,4738,CommunityXBox360 // Mad Catz Wired Xbox 360 Controller
+0738,4726,CommunityXBox360 // Mad Catz Xbox 360 Controller
+1bad,f016,CommunityXBox360 // Mad Catz Xbox 360 Controller
+1bad,f030,CommunityXBox360 // Mad Catz Xbox 360 MC2 MicroCon Racing Wheel
+0738,b726,CommunityXBox360 // Mad Catz Xbox controller   MW2
+1bad,fa01,CommunityXBox360 // MadCatz GamePad
+0db0,1901,CommunityXBox360 // Micro Star International CommunityXBox360 Controller for Windows
+045e,028e,CommunityXBox360 // Microsoft Xbox 360 pad
+045e,028f,CommunityXBox360 // Microsoft Xbox 360 pad v2
+1bad,f023,CommunityXBox360 // MLG Pro Circuit Controller
+12ab,0303,CommunityXBox360 // Mortal Kombat Klassic FightStick
+1bad,f906,CommunityXBox360 // MortalKombat FightStick
+11c9,55f0,CommunityXBox360 // Nacon GC 100XF
+3285,0662,CommunityXBox360 // Nacon Revolution5 Pro
+2563,058d,CommunityXBox360 // OneXPlayer Gamepad
+0e6f,f900,CommunityXBox360 // PDP Afterglow AX1
+12ab,0301,CommunityXBox360 // PDP AFTERGLOW AX1
+0e6f,0131,CommunityXBox360 // PDP EA Sports Controller
+1bad,f904,CommunityXBox360 // PDP Versus Fighting Pad
+0e6f,0501,CommunityXBox360 // PDP Xbox 360 Controller
+0e6f,0201,CommunityXBox360 // Pelican PL 3601 TSZ Wired Xbox 360 Controller
+15e4,3f00,CommunityXBox360 // Power A Mini Pro Elite
+24c6,5300,CommunityXBox360 // PowerA MINI PROEX Controller
+24c6,531a,CommunityXBox360 // PowerA Pro Ex
+20d6,281f,CommunityXBox360 // PowerA Wired Controller For Xbox 360
+11ff,0511,CommunityXBox360 // PXN V900
+24c6,5000,CommunityXBox360 // Razer Atrox Arcade Stick
+1bad,fd01,CommunityXBox360 // Razer Onza
+1689,fd01,CommunityXBox360 // Razer Onza Classic Edition
+1bad,fd00,CommunityXBox360 // Razer Onza TE
+1689,fd00,CommunityXBox360 // Razer Onza Tournament Edition
+1689,fe00,CommunityXBox360 // Razer Sabertooth
+24c6,5d04,CommunityXBox360 // Razer Sabertooth
+1430,f801,CommunityXBox360 // RedOctane Controller
+1430,4748,CommunityXBox360 // RedOctane Guitar Hero X plorer
+0e6f,021f,CommunityXBox360 // Rock Candy Gamepad for Xbox 360
+24c6,fafe,CommunityXBox360 // Rock Candy Gamepad for Xbox 360
+0e6f,011f,CommunityXBox360 // Rock Candy Gamepad Wired Controller
+0738,cb02,CommunityXBox360 // Saitek Cyborg Rumble Pad   PC/Xbox 360
+0738,cb03,CommunityXBox360 // Saitek P3200 Rumble Pad   PC/Xbox 360
+06a3,f51a,CommunityXBox360 // Saitek P3600
+1038,1430,CommunityXBox360 // SteelSeries Stratus Duo
+1038,1431,CommunityXBox360 // SteelSeries Stratus Duo
+1bad,f03d,CommunityXBox360 // Street Fighter IV Arcade Stick TE Chun Li
+1bad,f028,CommunityXBox360 // Street Fighter IV FightPad
+1bad,f038,CommunityXBox360 // Street Fighter IV FightStick TE
+0738,f738,CommunityXBox360 // Super SFIV FightStick TE S
+2993,2001,CommunityXBox360 // TECNO Pocket Go
+24c6,5b00,CommunityXBox360 // ThrustMaster Ferrari 458 Racing Wheel
+24c6,5b03,CommunityXBox360 // Thrustmaster Ferrari 458 Racing Wheel
+044f,b326,CommunityXBox360 // Thrustmaster Gamepad GP XID
+1bad,f903,CommunityXBox360 // Tron Xbox 360 controller
+31e3,1300,CommunityXBox360 // Wooting 60HE
+31e3,1310,CommunityXBox360 // Wooting 60HE
+31e3,1210,CommunityXBox360 // Wooting Lekker
+03eb,ff01,CommunityXBox360 // Wooting One
+31e3,1100,CommunityXBox360 // Wooting One
+03eb,ff02,CommunityXBox360 // Wooting Two
+31e3,1200,CommunityXBox360 // Wooting Two
+31e3,1220,CommunityXBox360 // Wooting Two HE
+31e3,1230,CommunityXBox360 // Wooting Two HE
+24c6,530a,CommunityXBox360 // Xbox 360 Pro EX Controller
+0e6f,0133,CommunityXBox360 // Xbox 360 Wired Controller
+045e,0291,CommunityXBox360 // Xbox 360 Wireless Receiver
+045e,02a9,CommunityXBox360 // Xbox 360 Wireless Receiver
+045e,0719,CommunityXBox360 // Xbox 360 Wireless Receiver
+15e4,3f0a,CommunityXBox360 // Xbox Airflo wired controller
+24c6,5303,CommunityXBox360 // Xbox Airflo wired controller
+1ee9,1590,CommunityXBox360 // ZOTAC Gaming Zone
 045e,0b03,CommunityXBoxOne // Xbox One
 045e,02ff,CommunityXboxOne // Xbox Adaptive Joystick
 10f5,7008,CommunityXBoxOne // Turtle Beach Recon
@@ -348,7 +540,32 @@ beef,feed,CommunityXBox360 // Monect
 3537,1104,CommunityXBoxOne // GameSir X4A
 03f0,038d,CommunityXBoxOne // HyperX Clutch
 03f0,048d,CommunityXBoxOne // HyperX Clutch
-3537,1010,CommunityXBoxOne // GameSir G7
+2dc8,2000,CommunityXBoxOne // 8BitDo Pro 2 Wired Controller fox Xbox
+2dc8,200f,CommunityXBoxOne // 8BitDo Ultimate 3 mode Controller for Xbox
+0b05,1a38,CommunityXBoxOne // ASUS ROG RAIKIRI
+0b05,1abb,CommunityXBoxOne // ASUS ROG RAIKIRI PRO
+366c,0005,CommunityXBoxOne // ByoWave Proteus Controller
+3537,1010,CommunityXBoxOne // GameSir G7 SE
+0f0d,0151,CommunityXBoxOne // Hori Racing Wheel Overdrive for Xbox Series X
+0f0d,0152,CommunityXBoxOne // Hori Racing Wheel Overdrive for Xbox Series X
+0f0d,01b2,CommunityXBoxOne // HORI Taiko No Tatsujin Drum Controller
+2e24,0423,CommunityXBoxOne // Hyperkin DuchesS Xbox One pad
+03f0,08B6,CommunityXBoxOne // HyperX Clutch Gladiate
+03f0,07A0,CommunityXBoxOne // HyperX Clutch Gladiate RGB
+03f0,09B4,CommunityXBoxOne // HyperX Clutch Tanto
+0738,4503,CommunityXBoxOne // Mad Catz Racing Wheel
+3285,0663,CommunityXBoxOne // Nacon Evol X
+3285,0614,CommunityXBoxOne // Nacon Pro Compact
+3285,0646,CommunityXBoxOne // Nacon Pro Compact
+3285,0603,CommunityXBoxOne // Nacon Pro Compact controller for Xbox
+0e6f,0147,CommunityXBoxOne // PDP Marvel Xbox One Controller
+20d6,400b,CommunityXBoxOne // PowerA FUSION Pro 4 Wired Controller
+20d6,2064,CommunityXBoxOne // PowerA Wired Controller for Xbox
+2e95,0504,CommunityXBoxOne // SCUF Gaming Controller
+294b,3303,CommunityXBoxOne // Snakebyte GAMEPAD BASE X
+294b,3404,CommunityXBoxOne // Snakebyte GAMEPAD RGB X
+044f,d01e,CommunityXBoxOne // ThrustMaster Inc ESWAP X 2 ELDEN RING EDITION
+10f5,7005,CommunityXBoxOne // Turtle Beach Recon Controller
 0e6f,0901,CommunityPSX // PDP Versus Fighting
 2563,0526,CommunityPSX // Uberwith PS
 0e6f,0111,CommunityPSX // Afterglow PS3
