@@ -515,7 +515,7 @@ beef,feed,CommunityXBox360 // Monect
 24c6,5303,CommunityXBox360 // Xbox Airflo wired controller
 1ee9,1590,CommunityXBox360 // ZOTAC Gaming Zone
 045e,0b03,CommunityXBoxOne // Xbox One
-045e,02ff,CommunityXboxOne // Xbox Adaptive Joystick
+045e,02ff,CommunityXBoxOne // Xbox Adaptive Joystick
 10f5,7008,CommunityXBoxOne // Turtle Beach Recon
 2dc8,2101,CommunityXBoxOne // 8BitDo Xbox One SN30 Pro
 0e6f,d802,CommunityXBoxOne // PDP Xbox Series
