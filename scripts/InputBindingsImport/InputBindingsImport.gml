@@ -16,6 +16,11 @@ function InputBindingsImport(_forGamepad, _data, _playerIndex = 0)
     
     __INPUT_VALIDATE_PLAYER_INDEX
     
+    if (not is_struct(_data))
+    {
+        __InputError("`data` parameter must be a struct created by `InputBindingsExport()`.");
+    }
+    
     var _bindingArray = _forGamepad? _playerArray[_playerIndex].__gamepadBindingArray : _playerArray[_playerIndex].__kbmBindingArray;
     var _i = 0;
     repeat(_verbCount)
