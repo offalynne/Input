@@ -30,6 +30,18 @@ function __InputPartySystem()
                     InputPlugInError("Join verb not defined. Please call InputPartySetParams()");
                 }
                 
+                //Remove players with disconnected devices
+                var _p = 0;
+                repeat(INPUT_MAX_PLAYERS)
+                {
+                    if (not InputPlayerIsConnected(_p))
+                    {
+                        InputPlayerSetDevice(INPUT_NO_DEVICE, _p);
+                    }
+                    
+                    ++_p;
+                }
+                
                 if (__fillEmpty)
                 {
                     //Drop players down into empty spaces
