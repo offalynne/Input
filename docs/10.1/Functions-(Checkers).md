@@ -239,7 +239,7 @@ Returns the x-coordinate of the vector represented by the sum of the verb values
 
 ```gml
 //Move instance according to horizontal input 
-x += InputX(INPUTER_CLUSTER.MOVE);
+x += InputX(INPUT_CLUSTER.MOVE);
 ```
 
 <!-- tabs:end -->
@@ -267,7 +267,7 @@ Returns the y-coordinate of the vector represented by the sum of the verb values
 
 ```gml
 //Move instance according to horizontal input 
-x += InputY(INPUTER_CLUSTER.MOVE);
+x += InputY(INPUT_CLUSTER.MOVE);
 ```
 
 <!-- tabs:end -->
@@ -296,7 +296,7 @@ Returns the direction of the vector represented by the sum of the verb values.
 
 ```gml
 //Set instance rotation to input direction, defaulting to the current value
-image_angle = InputDirection(image_angle, INPUTER_CLUSTER.AIM);
+image_angle = InputDirection(image_angle, INPUT_CLUSTER.AIM);
 ```
 
 <!-- tabs:end -->
@@ -324,7 +324,7 @@ Returns the length of the vector represented by the sum of the verb values.
 
 ```gml
 //Add motion in an instance's current direction with input distance for speed 
-motion_add(direction, InputDistance(INPUTER_CLUSTER.MOVE));
+motion_add(direction, InputDistance(INPUT_CLUSTER.MOVE));
 ```
 
 <!-- tabs:end -->
@@ -695,6 +695,34 @@ Works similarly to `InputPressed()`; please see that function for a description 
 |`[playerIndexArray]`|integer or array of integers|Players to target. If not specified, player 0 is used|
 
 Works similarly to `InputReleased()`; please see that function for a description of behavior. This variant of `InputReleased()` optionally accepts arrays for both the verb and the player index and will return `true` if any of the verbs have been released for any of the players. You may use the value `-1` for the `verbIndexArray` to check for input from every defined verb. You may also use the value `-1` for the `playerIndexArray` parameter to check for input across all players.
+
+#### **Example**
+
+```gml
+
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …BufferPressed
+
+`InputBufferPressed(verbIndex, duration, [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Boolean, whether the specified verb has been pressed during the specified frame duration
+
+|Name                |Datatype                    |Purpose                                              |
+|--------------------|----------------------------|-----------------------------------------------------|
+|`verbIndexArray`    |integer                     |Verbs                                                |
+|`duration`          |integer                     |Frame duration to check                              |
+|`[playerIndexArray]`|integer or array of integers|Players to target. If not specified, player 0 is used|
+
+Works similarly to `InputPressed()`; please see that function for a description of pressed behavior. This variant of `InputPressed()` checks for input from the defined verb within the specified frame duration.
 
 #### **Example**
 

@@ -32,7 +32,7 @@ if (InputPartyGetReady())
 {
     if (InputCheckLong(INPUT_VERB.ACCEPT, 0) || InputCheckLong(INPUT_VERB.ACCEPT, 1))
     {
-        InputPartySetJoin(false);
+        InputPartySetJoin(false, false);
         room_goto(rMultiplayerGameplay);
     }
 }
