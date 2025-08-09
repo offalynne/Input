@@ -42,7 +42,7 @@ for(var _player = 0; _player < INPUT_MAX_PLAYERS; _player++)
 
 ## …ConnectedCount
 
-`InputPlayerConnectedCount(verbIndex, [playerIndex=0])`
+`InputPlayerConnectedCount()`
 
 <!-- tabs:start -->
 
