@@ -134,7 +134,7 @@ enum INPUT_PLUG_IN_CALLBACK
 
 //How many milliseconds to wait before scanning for connected gamepads
 //This works around Steam sometimes reporting confusing connection/disconnection events on boot
-#macro INPUT_GAMEPADS_COLLECT_PREDELAY  1000 //milliseconds
+#macro INPUT_GAMEPADS_COLLECT_PREDELAY  (INPUT_ON_CONSOLE? 0 : 1000) //milliseconds
 
 //How many milliseconds to wait before considering a gamepad disconnected
 //This works around momentary disconnections such as a jiggled cable or low battery level
