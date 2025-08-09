@@ -26,10 +26,18 @@ function __InputRegisterCollect()
             }
             else if (INPUT_ON_CONSOLE)
             {
+                //Force a gamepad update otherwise we won't be aware of any connected devices
+                __InputUpdateGamepadPresence();
+                
                 var _i = 0;
                 repeat(gamepad_get_device_count())
                 {
-                    if (InputDeviceIsConnected(_i)) InputPlayerSetDevice(_i);
+                    if (InputDeviceIsConnected(_i))
+                    {
+                        InputPlayerSetDevice(_i);
+                        break;
+                    }
+                    
                     ++_i;
                 }
             }
@@ -145,57 +153,7 @@ function __InputRegisterCollect()
         
         if ((not INPUT_BAN_GAMEPADS) && (current_time > INPUT_GAMEPADS_COLLECT_PREDELAY))
         {
-            if (INPUT_ON_ANDROID && (__time - __androidEnumerationTime > INPUT_ANDROID_GAMEPAD_ENUMERATION_INTERVAL))
-            {
-                __androidEnumerationTime = __time;
-                gamepad_enumerate();
-            }
-            
-            var _deviceCountChange = max(0, gamepad_get_device_count() - array_length(_gamepadArray));
-            repeat(_deviceCountChange)
-            {
-                array_push(_gamepadArray, undefined);
-            }
-            
-            var _device = 0;
-            repeat(array_length(_gamepadArray))
-            {
-                var _gamepad = _gamepadArray[_device];
-                var _connected = gamepad_is_connected(_device);
-                
-                if (_gamepad != undefined)
-                {
-                    if (_connected)
-                    {
-                        if (INPUT_ON_SWITCH && (_gamepad.__type != __InputGamepadIdentifySwitchType(_device)))
-                        {
-                            //When Switch L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
-                            //Instead we have to check for changes via the gamepad description or Joy-Con left/right connected state
-                            
-                            __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.GAMEPAD_DISCONNECTED, _device, true);
-                            __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.GAMEPAD_CONNECTED, _device);
-                        }
-                        
-                        _gamepad.__lastConnectedTime = current_time;
-                    }
-                    else
-                    {
-                        if (current_time - _gamepad.__lastConnectedTime >= INPUT_GAMEPADS_DISCONNECTION_TIMEOUT)
-                        {
-                            __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.GAMEPAD_DISCONNECTED, _device, true);
-                        }
-                    }
-                }
-                else
-                {
-                    if (_connected)
-                    {
-                        __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.GAMEPAD_CONNECTED, _device);
-                    }
-                }
-                
-                ++_device;
-            }
+            __InputUpdateGamepadPresence();
         }
         
         //Handle rebinding
@@ -228,4 +186,61 @@ function __InputRegisterCollect()
             ++_i;
         }
     });
+}
+
+function __InputUpdateGamepadPresence()
+{
+    static _gamepadArray = __gamepadArray;
+    
+    if (INPUT_ON_ANDROID && (__time - __androidEnumerationTime > INPUT_ANDROID_GAMEPAD_ENUMERATION_INTERVAL))
+    {
+        __androidEnumerationTime = __time;
+        gamepad_enumerate();
+    }
+    
+    var _deviceCountChange = max(0, gamepad_get_device_count() - array_length(_gamepadArray));
+    repeat(_deviceCountChange)
+    {
+        array_push(_gamepadArray, undefined);
+    }
+    
+    var _device = 0;
+    repeat(array_length(_gamepadArray))
+    {
+        var _gamepad = _gamepadArray[_device];
+        var _connected = gamepad_is_connected(_device);
+        
+        if (_gamepad != undefined)
+        {
+            if (_connected)
+            {
+                if (INPUT_ON_SWITCH && (_gamepad.__type != __InputGamepadIdentifySwitchType(_device)))
+                {
+                    //When Switch L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
+                    //Instead we have to check for changes via the gamepad description or Joy-Con left/right connected state
+                    
+                    __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.GAMEPAD_DISCONNECTED, _device, true);
+                    __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.GAMEPAD_CONNECTED, _device);
+                }
+                    
+                _gamepad.__lastConnectedTime = current_time;
+            }
+            else
+            {
+                if (current_time - _gamepad.__lastConnectedTime >= INPUT_GAMEPADS_DISCONNECTION_TIMEOUT)
+                {
+                    __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.GAMEPAD_DISCONNECTED, _device, true);
+                }
+            }
+        }
+        else
+        {
+            if (_connected)
+            {
+                __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.GAMEPAD_CONNECTED, _device);
+            }
+        }
+        
+        ++_device;
+    }
 }
