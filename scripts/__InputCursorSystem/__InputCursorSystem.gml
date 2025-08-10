@@ -16,29 +16,22 @@ function __InputCursorSystem()
         
         InputPlugInDefine("InputTeam.Cursor", "Input Team", "1.0", "10.0", function()
         {
-            try
-            {
-                InputX(INPUT_CURSOR_CLUSTER);
+            if (INPUT_CURSOR_CLUSTER < 0)
+            {            
+                InputPlugInWarning("Invalid Cursor Cluster Index: \"", INPUT_CURSOR_CLUSTER, "\"");
             }
-            catch (_error)
+            else
             {
-                if (string_pos("Cluster index", _error.message) > 0)
+                InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.UPDATE, -1, function(_playerIndex)
                 {
-                    _error = "Invalid Cursor Cluster\n\n" + _error.longMessage;
-                }
-                
-                InputPlugInError(_error);
+                    var _i = 0;
+                    repeat(INPUT_MAX_PLAYERS)
+                    {
+                        __playerArray[_i].__Update();
+                        ++_i;
+                    }
+                });
             }
-            
-            InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.UPDATE, -1, function(_playerIndex)
-            {
-                var _i = 0;
-                repeat(INPUT_MAX_PLAYERS)
-                {
-                    __playerArray[_i].__Update();
-                    ++_i;
-                }
-            });
         });
     }
     

@@ -11,8 +11,8 @@
 //                                                                        //
 ////////////////////////////////////////////////////////////////////////////
 
-#macro INPUT_VERSION  "10.1.0"
-#macro INPUT_DATE     "2025-06-16"
+#macro INPUT_VERSION  "10.2.0"
+#macro INPUT_DATE     "2025-08-09"
 
 #macro INPUT_NO_DEVICE       -666
 #macro INPUT_KBM             -1
@@ -132,17 +132,17 @@ enum INPUT_PLUG_IN_CALLBACK
 
 #macro INPUT_BLOCK_MOUSE_CHECKS  INPUT_ON_CONSOLE
 
-//How many frames to wait before scanning for connected gamepads
+//How many milliseconds to wait before scanning for connected gamepads
 //This works around Steam sometimes reporting confusing connection/disconnection events on boot
-#macro INPUT_GAMEPADS_TICK_PREDELAY  10
+#macro INPUT_GAMEPADS_COLLECT_PREDELAY  (INPUT_ON_CONSOLE? 0 : 1000) //milliseconds
 
-//How many frames to wait before considering a gamepad disconnected
+//How many milliseconds to wait before considering a gamepad disconnected
 //This works around momentary disconnections such as a jiggled cable or low battery level
-#macro INPUT_GAMEPADS_DISCONNECTION_TIMEOUT  5
+#macro INPUT_GAMEPADS_DISCONNECTION_TIMEOUT  300 //milliseconds
 
 //Number of milliseconds between enumerating gamepads on Android
 //This should be longer than a single frame (eg >17 ms at 60FPS)
- #macro INPUT_ANDROID_GAMEPAD_ENUMERATION_INTERVAL  1000
+ #macro INPUT_ANDROID_GAMEPAD_ENUMERATION_INTERVAL  1000 //milliseconds
 
 // 32769 = gp_face1
 // 32770 = gp_face2

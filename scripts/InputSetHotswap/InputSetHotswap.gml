@@ -24,14 +24,14 @@ function InputSetHotswap(_state)
         
         if (_state)
         {
-            __hotswap = true;
-            
             var _i = 1;
             repeat(INPUT_MAX_PLAYERS-1)
             {
                 InputPlayerSetDevice(INPUT_NO_DEVICE, _i);
                 ++_i;
             }
+            
+            __hotswap = true;
         }
         else
         {

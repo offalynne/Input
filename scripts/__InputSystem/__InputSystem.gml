@@ -46,6 +46,18 @@
                                          }\
                                      }
 
+#macro __INPUT_VALIDATE_CURSOR_CLUSTER if (INPUT_SAFETY_CHECKS)\
+                                     {\
+                                         if (not is_numeric(INPUT_CURSOR_CLUSTER))\
+                                         {\
+                                             __InputError("Cursor cluster index must be a number (typeof = \"", typeof(INPUT_CURSOR_CLUSTER), "\")");\
+                                         }\
+                                         if (INPUT_CURSOR_CLUSTER < 0)\
+                                         {\
+                                             __InputError("Cursor cluster index ", INPUT_CURSOR_CLUSTER, " less than zero");\
+                                         }\
+                                     }
+
 __InputSystem();
 function __InputSystem()
 {

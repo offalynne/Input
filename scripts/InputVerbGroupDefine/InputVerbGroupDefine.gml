@@ -32,7 +32,7 @@ function InputVerbGroupDefine(_verbGroup, _verbArray)
     
     if (_verbGroup >= __INPUT_MAX_VERB_GROUPS)
     {
-        InputPlugInError($"Verb group index must be less than {__INPUT_MAX_VERB_GROUPS}");
+        InputPlugInError("Verb group index must be less than ", __INPUT_MAX_VERB_GROUPS);
     }
     
     //Iterate over every input verb ...

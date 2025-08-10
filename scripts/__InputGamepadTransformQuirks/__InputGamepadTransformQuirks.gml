@@ -50,7 +50,12 @@ function __InputGamepadTransformQuirks(_gamepadStruct)
             break;
 
             case os_macosx:
-                if ((__InputStringMatches(__guid, "03000000050b00000619000000010000", "03000000050b0000e318000000010000", "03000000050b0000e518000000010000", "03000000050b00005819000000010000", "03000000050b0000181a000000010000", "03000000050b00001a1a000000010000", "03000000050b00001c1a000000010000"))) 
+                if ((__guid == "none") && __InputStringContains(_description, "apple"))
+                {
+                    __InputTrace("Blocking gamepad: Apple virtual controller");
+                    __blocked = true;
+                }
+                else if ((__InputStringMatches(__guid, "03000000050b00000619000000010000", "03000000050b0000e318000000010000", "03000000050b0000e518000000010000", "03000000050b00005819000000010000", "03000000050b0000181a000000010000", "03000000050b00001a1a000000010000", "03000000050b00001c1a000000010000"))) 
                 {
                     __InputTrace("Blocking gamepad: ROG Mouse");
                     __blocked = true;
@@ -92,14 +97,14 @@ function __InputGamepadTransformQuirks(_gamepadStruct)
                 {
                     //VID Blocklist sourced from https://github.com/chromium/chromium/blob/main/device/gamepad/gamepad_blocklist.cc
                     __InputTrace("Blocking gamepad: Blocklisted vendor ID");
-                    __blocked = true;                    
-                    
+                    __blocked = true;
+
                 }
                 else if (__InputStringMatches(_vidPid, "5e049d00", "5e04b000", "5e04b400", "5e043007", "5e044507", "5e044807", "5e045007", "5e046807", "5e047307", "5e04a507", "5e04b207", "5e040008", "6b0410ff", "6d040ac3", "d9040980", "d904dfa0", "450c0a80", "17100320", "c016d004", "571d03ad", "7d1ecb2d", "7d1e4a2e", "a0202d42", "16251f00", "16252800", "ce26a201", "ac053232", "eb0301ff", "eb0302ff", "12042171", "3c1b3c1b", "b404f3fe", "620d1a9a", "d9040880", "d90492a2", "5e04cd07", "5e042209", "5e04c009"))
                 {
                     //VID+PID Blocklist sourced from https://github.com/denilsonsa/udev-joystick-blacklist
                     __InputTrace("Blocking gamepad: Blocklisted device ID");
-                    __blocked = true;                    
+                    __blocked = true;
                 }
             break;
             
