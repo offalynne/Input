@@ -64,7 +64,7 @@ function __InputSystem()
     static _system = undefined;
     if (_system != undefined) return _system;
     
-    __InputTrace("Welcome to Input by Juju Adams, Alynne Keith, and friends! This is version " + INPUT_VERSION + ", " + INPUT_DATE);
+    __InputTrace("Welcome to Input by Juju Adams, Alynne Keith, and friends! This is version " + INPUT_VERSION + ", " + INPUT_DATE + " (GM version " + string(GM_runtime_version) + ")");
     
     device_mouse_dbclick_enable(false);
     
