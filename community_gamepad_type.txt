@@ -284,6 +284,8 @@ f000,00f1,CommunitySNES // RetroUSB SNES
 2dc8,5111,Community8BitDo // 8BitDo Lite SE
 2dc8,5112,Community8BitDo // 8BitDo Lite 2
 2dc8,9020,Community8BitDo // 8BitDo Micro
+2dc8,6009,Community8BitDo // 8BitDo Pro 3
+2dc8,310b,Community8BitDo // 8BitDo Pro 3 Receiver
 0926,2526,CommunityGameCube // GameCube Controller
 057e,0337,CommunityGameCube // Wii U GameCube Adapter
 0926,8888,CommunityGameCube // Cyber Gadget GameCube Adapter
