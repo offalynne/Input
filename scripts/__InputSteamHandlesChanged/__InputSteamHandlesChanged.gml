@@ -16,6 +16,7 @@ function __InputSteamHandlesChanged()
         if (array_length(_newSteamHandles) != array_length(_oldSteamHandles))
         {
             //Handle count changed
+            if (__INPUT_DEBUG_STEAM_INPUT) __InputTrace("Steam handle array length mismatch (old=", array_length(_oldSteamHandles), ", new=", array_length(_newSteamHandles), ")");
             return true;
         }
     
@@ -25,6 +26,7 @@ function __InputSteamHandlesChanged()
             if (_newSteamHandles[_i] != _oldSteamHandles[_i])
             {
                 //Handle value changed (type)
+                if (__INPUT_DEBUG_STEAM_INPUT) __InputTrace("Steam handle value changed (index=", _i, ", old=", _oldSteamHandles[_i], ", new=", _newSteamHandles[_i], ")");
                 return true;
             }
             ++_i;
@@ -39,8 +41,10 @@ function __InputSteamHandlesChanged()
             && (_gamepad.__steamHandleIndex != steam_input_get_gamepad_index_for_controller(_gamepad.__steamHandle)))
             {
                 //Index change (likely exchanging slot)
+                if (__INPUT_DEBUG_STEAM_INPUT) __InputTrace("Steam gamped index changed (index=", _i, ", gamepad=", _gamepad.__gamepadIndex, ", handle=", _gamepad.__steamHandle, ", old handle index=", _gamepad.__steamHandleIndex, ", new handle index=", steam_input_get_gamepad_index_for_controller(_gamepad.__steamHandle), ")");
                 return true;
             }
+            
             ++_i;
         }
     }

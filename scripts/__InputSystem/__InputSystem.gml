@@ -3,6 +3,8 @@
 #macro __INPUT_VERB_STATE_HEADER  "<PWP"
 #macro __INPUT_VERB_STATE_FOOTER  ">"
 
+#macro __INPUT_DEBUG_STEAM_INPUT  true
+
 #macro __INPUT_CONTROLLER_OBJECT_DEPTH  16001
 
 // Whether the game uses the horizontal holdtype for single Joy-Cons. Set this to `false` for
