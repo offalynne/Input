@@ -146,7 +146,7 @@ function __InputRegisterCollect()
                 var _device = 0;
                 repeat(array_length(_gamepadArray))
                 {
-                    if (InputDeviceIsConnected(_device))
+                    if (_gamepadArray[_device] != undefined)
                     {
                         __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.GAMEPAD_DISCONNECTED, _device, true);
                     }

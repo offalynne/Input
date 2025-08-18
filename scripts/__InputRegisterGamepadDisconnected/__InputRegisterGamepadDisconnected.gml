@@ -6,14 +6,14 @@ function __InputRegisterGamepadDisconnected()
     {
         static _gamepadArray = __gamepadArray;
         
-        if (_actuallyDisconnected)
+        if (_gamepadArray[_device] != undefined)
         {
-            __InputTrace("Gamepad ", _device, " disconnected");
-            _gamepadArray[@ _device] = undefined;
-        }
-        else
-        {
-            if (_gamepadArray[_device] != undefined)
+            if (_actuallyDisconnected)
+            {
+                __InputTrace("Gamepad ", _device, " disconnected");
+                _gamepadArray[@ _device] = undefined;
+            }
+            else
             {
                 __InputTrace("Gamepad ", _device, " blocked");
                 _gamepadArray[_device].__blocked = true;
