@@ -56,6 +56,10 @@ function __InputGamepadTransformSteam(_gamepadStruct)
             }
             
             __steamHandle = steam_input_get_controller_for_gamepad_index(_gamepadIndex);
+            
+            var _check = steam_input_get_gamepad_index_for_controller(__steamHandle);
+            __InputTrace("Checking gamepad index: original=", __gamepadIndex, ", remapped=", _gamepadIndex, ", derived from Steam handle=", _check);
+            
             if (__INPUT_DEBUG_STEAM_INPUT) __InputTrace("Found Steam Input handle ", __steamHandle, " for gamepad index ", _gamepadIndex);
             
             if not (_gamepadIsVirtual && is_numeric(__steamHandle) && (__steamHandle > 0))
