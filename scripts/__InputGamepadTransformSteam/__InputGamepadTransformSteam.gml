@@ -47,7 +47,7 @@ function __InputGamepadTransformSteam(_gamepadStruct)
             }
             
             if ((INPUT_ON_MACOS && (__guid == "030000005e0400008e02000001000000"))
-            ||  (INPUT_ON_LINUX && (__guid == "03000000de280000ff11000001000000")))
+            ||  (INPUT_ON_LINUX && (not _system.__onSteamDeck) && (__guid == "03000000de280000ff11000001000000")))
             {
                 //Steam virtual controller, ignore
                 __InputTrace("Ignoring gamepad ", __gamepadIndex, " as it is a Steam virtual controller");
