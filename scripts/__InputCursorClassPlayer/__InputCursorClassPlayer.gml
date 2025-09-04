@@ -40,23 +40,20 @@ function __InputCursorClassPlayer(_playerIndex) constructor
         
         if (INPUT_CURSOR_MOUSE_CONTROL && InputPlayerUsingKbm(_playerIndex))
         {
-            if (InputMouseMoved())
+            if (INPUT_CURSOR_PRIMARY_COORD_SPACE == INPUT_CURSOR_ROOM_SPACE)
             {
-                if (INPUT_CURSOR_PRIMARY_COORD_SPACE == INPUT_CURSOR_ROOM_SPACE)
-                {
-                    _nextX = InputMouseRoomX();
-                    _nextY = InputMouseRoomY();
-                }
-                else if (INPUT_CURSOR_PRIMARY_COORD_SPACE == INPUT_CURSOR_GUI_SPACE)
-                {
-                    _nextX = InputMouseGuiX();
-                    _nextY = InputMouseGuiY();
-                }
-                else if (INPUT_CURSOR_PRIMARY_COORD_SPACE == INPUT_CURSOR_DEVICE_SPACE)
-                {
-                    _nextX = InputMouseDeviceX();
-                    _nextY = InputMouseDeviceY();
-                }
+                _nextX = InputMouseRoomX();
+                _nextY = InputMouseRoomY();
+            }
+            else if (INPUT_CURSOR_PRIMARY_COORD_SPACE == INPUT_CURSOR_GUI_SPACE)
+            {
+                _nextX = InputMouseGuiX();
+                _nextY = InputMouseGuiY();
+            }
+            else if (INPUT_CURSOR_PRIMARY_COORD_SPACE == INPUT_CURSOR_DEVICE_SPACE)
+            {
+                _nextX = InputMouseDeviceX();
+                _nextY = InputMouseDeviceY();
             }
         }
         else
