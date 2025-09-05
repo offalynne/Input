@@ -27,7 +27,7 @@ function __InputGamepadTransformQuirks(_gamepadStruct)
                     __InputTrace("Overriding gamepad type: Switch (Saturn Wireless Pro)");
                     __type = INPUT_GAMEPAD_TYPE_SWITCH;
                 }
-                else if ((_vidPid == "7e050920") && (_buttonCount > 21) && !((_buttonCount == 30) && (_hatCount == 0)))
+                else if ((_vidPid == "7e050920") && (_buttonCount > 21) && (not ((_buttonCount == 30) && (_hatCount == 0))))
                 {
                     __InputTrace("Blocking gamepad: Switch USB Controller");
                     __blocked = true;
