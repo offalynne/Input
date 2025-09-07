@@ -95,7 +95,15 @@ function __InputPartySystem()
                             }
                         }
                         
-                        var _device = InputDeviceGetNewActivityOnVerb(__joinVerb, _p);
+                        if (__joinVerb == INPUT_PARTY_ANY_BUTTON)
+                        {
+                            var _device = __InputPartyDeviceGetNewActivity(__leaveVerb, _p);
+                        }
+                        else
+                        {
+                            var _device = InputDeviceGetNewActivityOnVerb(__joinVerb, _p);
+                        }
+                        
                         if (_device != INPUT_NO_DEVICE)
                         {
                             __InputTrace("Player ", _p, " joined with device ", _device);
