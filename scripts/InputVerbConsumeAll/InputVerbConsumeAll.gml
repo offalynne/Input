@@ -18,7 +18,7 @@ function InputVerbConsumeAll(_playerIndex = 0)
         var _i = 0;
         repeat(_verbCount)
         {
-            InputVerbConsume(_i);
+            InputVerbConsume(_i, _playerIndex);
             ++_i;
         }
     }
