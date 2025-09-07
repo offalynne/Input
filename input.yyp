@@ -76,6 +76,7 @@
     {"id":{"name":"objTest005_Rebinding","path":"objects/objTest005_Rebinding/objTest005_Rebinding.yy",},},
     {"id":{"name":"objTest006_ManyCheckers","path":"objects/objTest006_ManyCheckers/objTest006_ManyCheckers.yy",},},
     {"id":{"name":"objTest007_Hotswap","path":"objects/objTest007_Hotswap/objTest007_Hotswap.yy",},},
+    {"id":{"name":"objTest008_DeviceActivity","path":"objects/objTest008_DeviceActivity/objTest008_DeviceActivity.yy",},},
     {"id":{"name":"objTest100_Gyro","path":"objects/objTest100_Gyro/objTest100_Gyro.yy",},},
     {"id":{"name":"objTest101_Vibration","path":"objects/objTest101_Vibration/objTest101_Vibration.yy",},},
     {"id":{"name":"objTest102_Color","path":"objects/objTest102_Color/objTest102_Color.yy",},},
