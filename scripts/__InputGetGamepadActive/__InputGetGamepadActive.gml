@@ -19,7 +19,7 @@ function __InputGetGamepadActive(_device)
         var _valueArray     = __valueArray; //Thumbsticks only
         
         var _binding = INPUT_GAMEPAD_BINDING_MIN;
-        repeat(1 + INPUT_GAMEPAD_BINDING_MAX - INPUT_GAMEPAD_BINDING_MIN)
+        repeat(INPUT_GAMEPAD_BINDING_COUNT)
         {
             if ((_binding == gp_axislh) || (_binding == gp_axislv) || (_binding == gp_axisrh) || (_binding == gp_axisrv))
             {
