@@ -28,9 +28,9 @@ function InputLast(_verbIndexArray = -1, _playerIndex = 0)
         var _maxVerb = undefined;
         
         var _i = 0;
-        repeat(array_length(_verbDefIndexArray))
+        repeat(array_length(_verbIndexArray))
         {
-            var _verbIndex = _verbDefIndexArray[_i];
+            var _verbIndex = _verbIndexArray[_i];
             
             var _verbState = __verbStateArray[_verbIndex];
             if (_verbState.__pressFrame > _maxTime)
