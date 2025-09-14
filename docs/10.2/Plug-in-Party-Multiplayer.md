@@ -76,12 +76,12 @@ if (InputPartyGetJoin())
 <!-- tabs:start -->
 
 #### **Description**
-
+may b
 **Returns:** N/A (`undefined`)
 
 |Name               |Datatype |Purpose |
 |-------------------|---------|--------|
-|`joinVerb`         |integer  |Verb checked for a player to join the party. This will be respected no matter what device that player is using e.g. if the join verb is mapped to `gp_face1` on gamepad and `vk_space` on keyboard then pressing those buttons will cause the player to join the party|
+|`joinVerb`         |integer  |Verb checked for a player to join the party. This will be respected no matter what device that player is using e.g. if the join verb is mapped to `gp_face1` on gamepad and `vk_space` on keyboard then pressing those buttons will cause the player to join the party. Alternatively, `INPUT_PARTY_ANY_BUTTON` constant may be used to allow players to press any button on their device to join the party, excluding the `leaveVerb` binding, if specified|
 |`minPlayers`       |integer  |How many players minimum should be in the party for the party to be considered "ready" as returned by `InputPartyGetReady()1|
 |`maxPlayers`       |integer  |How many players maximum should be in the party for the party to be considered "ready" as returned by InputPartyGetReady()1|
 |`fillEmptyPlayers` |boolean  |Whether players drop down to lower numbered player slots if they are available|
