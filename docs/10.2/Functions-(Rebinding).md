@@ -268,7 +268,7 @@ Returns a discovered binding emitted from the device. This function will return 
 
 ## …DeviceSetRebinding
 
-`InputDeviceSetRebinding(device, state, [ignoreStruct], [allowStruct])`
+`InputDeviceSetRebinding(device, state, [ignoreStruct], [allowStruct], [consume])`
 
 <!-- tabs:start -->
 
@@ -282,6 +282,7 @@ Returns a discovered binding emitted from the device. This function will return 
 |`state`        |boolean |Whether the device should be put into rebinding mode|
 |`[ignoreArray]`|array   |Array of bindings to prohibit                       |
 |`[allowArray]` |array   |Array of bindings to allow                          |
+|`[consume]`    |boolean |Whether to consume verbs upon rebinding, If not specified, this is set to `true`|
 
 Sets rebinding state for a device. The device will be scanned for all input. Discovered bindings can be returned by calling `InputDeviceGetRebindingResult()`. Only gamepads and keyboard and mouse (`INPUT_KBM`) devices can be scanned.
 
