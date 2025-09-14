@@ -143,8 +143,8 @@ Returns the icon data associated with a binding for a particular gamepad type, o
 
 ```gml
 //Show an icon for Xbox and PlayStation gamepads. Assume icons are a sprite index
-draw_sprite(InputIconGetDirect(INPUT_VERB.SHOOT, true, INPUT_GAMEPAD_TYPE_XBOX), 0, room_width/2 + 10, 10);
-draw_sprite(InputIconGetDirect(INPUT_VERB.SHOOT, true, INPUT_GAMEPAD_TYPE_PS5 ), 0, room_width/2 + 25, 10);
+draw_sprite(InputIconGetDirect(gp_face1, true, INPUT_GAMEPAD_TYPE_XBOX), 0, room_width/2 + 10, 10);
+draw_sprite(InputIconGetDirect(gp_face1, true, INPUT_GAMEPAD_TYPE_PS5 ), 0, room_width/2 + 25, 10);
 
 //Text prompt label
 draw_set_halign(fa_right);
