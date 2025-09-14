@@ -9,6 +9,8 @@
 2dc8,301b,CommunityLikeXBox // 8BitDo Ultimate 2C
 2dc8,301d,CommunityLikeXBox // 8BitDo Ultimate 2C
 2dc8,6012,CommunityLikeXBox // 8BitDo Ultimate 2
+2563,057a,CommunityLikeXBox // Cosmic Byte Ares Wired Controller
+3537,100b,CommunityLikeXBox // GameSir Cyclone 2
 20bc,6050,CommunityLikeXBox // Xiaomi XMGP01YM
 2717,5033,CommunityLikeXBox // Xiaomi XMGP01YM
 0c12,880a,CommunityLikeXBox // Xbox Controller
@@ -684,6 +686,7 @@ dead,beef,CommunityPSX // Hidromancer
 14fe,232a,CommunityPSX // PlayStation USB Adapter
 0925,8888,CommunityPSX // Elecom PS1 Adapter
 0925,8866,CommunityPSX // Elecom PS1 Adapter
+0d9d,3011,CommunityPSX // Sanwa JY-PSUAD1 Adapter
 0e8f,1114,CommunityPS4 // Gamo2 Divaller
 0f0d,0101,CommunityPS4 // Hori Miku FT PS4 Controller
 0f0d,00a5,CommunityPS4 // Hori Miku PS4 Controller
