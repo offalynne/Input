@@ -12,7 +12,7 @@ function __InputGetGamepadOutput(_device)
     var _readArray = __InputGamepadGetReadArray(_device);
     
     var _binding = INPUT_GAMEPAD_BINDING_MIN;
-    repeat(1 + INPUT_GAMEPAD_BINDING_MAX - INPUT_GAMEPAD_BINDING_MIN)
+    repeat(INPUT_GAMEPAD_BINDING_COUNT)
     {
         if (abs(_readArray[_binding - INPUT_GAMEPAD_BINDING_MIN](_device, _binding)) > INPUT_GAMEPAD_THUMBSTICK_MIN_THRESHOLD)
         {

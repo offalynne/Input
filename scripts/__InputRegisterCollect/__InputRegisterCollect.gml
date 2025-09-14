@@ -159,6 +159,18 @@ function __InputRegisterCollect()
         if ((not INPUT_BAN_GAMEPADS) && (current_time > INPUT_GAMEPADS_COLLECT_PREDELAY))
         {
             __InputUpdateGamepadPresence();
+            
+            _i = 0;
+            repeat(array_length(__gamepadArray))
+            {
+                var _gamepad = __gamepadArray[_i];
+                if (is_struct(_gamepad))
+                {
+                    _gamepad.__UpdatePrevValues();
+                }
+                
+                ++_i;
+            }
         }
         
         //Handle rebinding
@@ -170,15 +182,18 @@ function __InputRegisterCollect()
         }
         
         //Handle hotswap
-        if ((not INPUT_BAN_HOTSWAP) && __hotswap)
+        if (not INPUT_BAN_HOTSWAP)
         {
-            if (InputPlayerGetInactive())
+            if (__hotswap)
             {
-                var _device = InputDeviceGetNewActivity();
-                if (_device != INPUT_NO_DEVICE)
+                if (InputPlayerGetInactive())
                 {
-                    InputPlayerSetDevice(_device);
-                    if (is_callable(__hotswapCallback)) __hotswapCallback();
+                    var _device = InputDeviceGetNewActivity();
+                    if (_device != INPUT_NO_DEVICE)
+                    {
+                        InputPlayerSetDevice(_device);
+                        if (is_callable(__hotswapCallback)) __hotswapCallback();
+                    }
                 }
             }
         }

@@ -45,7 +45,7 @@ else
         _string += "INPUT TEST:\n";
         _string += "Press buttons and axes on the gamepad to confirm behavior\n";
         var _i = INPUT_GAMEPAD_BINDING_MIN;
-        repeat(1 + INPUT_GAMEPAD_BINDING_MAX - INPUT_GAMEPAD_BINDING_MIN)
+        repeat(INPUT_GAMEPAD_BINDING_COUNT)
         {
             if (abs(InputDeviceGetGamepadValue(_device, _i)) >= 0.1)
             {
