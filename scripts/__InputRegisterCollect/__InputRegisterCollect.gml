@@ -186,13 +186,18 @@ function __InputRegisterCollect()
         {
             if (__hotswap)
             {
+                //No active verb
                 if (InputPlayerGetInactive())
                 {
-                    var _device = InputDeviceGetNewActivity();
-                    if (_device != INPUT_NO_DEVICE)
+                    //No active device input
+                    if (not InputDeviceIsActive(InputPlayerGetDevice()))
                     {
-                        InputPlayerSetDevice(_device);
-                        if (is_callable(__hotswapCallback)) __hotswapCallback();
+                        var _device = InputDeviceGetNewActivity();
+                        if (_device != INPUT_NO_DEVICE)
+                        {
+                            InputPlayerSetDevice(_device);
+                            if (is_callable(__hotswapCallback)) __hotswapCallback();
+                        }
                     }
                 }
             }
