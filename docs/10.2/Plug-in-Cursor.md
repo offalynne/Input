@@ -10,7 +10,7 @@
 |----------------------------------|--------------------------|--------------------------------------------------------------------------------------------------------|
 |`INPUT_CURSOR_PRIMARY_COORD_SPACE`|`INPUT_CURSOR_ROOM_SPACE` |Coordinate space that cursors should exist in                                                           |
 |`INPUT_CURSOR_MOUSE_CONTROL`      |`true`                    |Whether a player's cursor should follow the mouse when using the `INPUT_KBM` deivce (keyboard and mouse)|
-|`INPUT_CURSOR_CLUSTER`            |`INPUT_CLUSTER.NAVIGATION`|Cluster to read to move cursors when using a gamepad or keyboard                                        |
+|`INPUT_CURSOR_CLUSTER`            |`-1`                      |Cluster to read to move cursors when using a gamepad or keyboard. `-1` indiates no cluster              |
 |`INPUT_CURSOR_DEFAULT_SPEED`      |`8`                       |Default speed of the cursor when using a gamepad or keyboard                                            |
 |`INPUT_CURSOR_EXPONENT`           |`1`                       |Movement exponent, applied when using a gamepad or keyboard                                             |
 
