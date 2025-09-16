@@ -65,6 +65,11 @@ function __InputGamepadTransformQuirks(_gamepadStruct)
                     __InputTrace("Blocking gamepad: Single Joy Con");
                     __blocked = true;
                 }
+                else if (_vidPid == "7e050920")
+                {
+                    __InputTrace("Blocking gamepad: Switch Pro Controller");
+                    __blocked = true;
+                }
             break;
 
             case os_linux:                
