@@ -42,6 +42,11 @@ function __InputGamepadTransformQuirks(_gamepadStruct)
                     __InputTrace("Blocking gamepad: DSHidMini Gyro");
                     __blocked = true;
                 }
+                else if (__InputStringMatches(_vidPid, "71011904", "5e04050b", "5e04130b", "5e04220b", "5e04200b"))
+                {
+                    __InputTrace("Blocking gamepad: DInput duplicate");
+                    __blocked = true;
+                }
                 else if (_vidPid == "31730100")
                 {
                     __InputTrace("Blocking gamepad: DSHIDMini DS4W mode");
@@ -55,7 +60,7 @@ function __InputGamepadTransformQuirks(_gamepadStruct)
                     __InputTrace("Blocking gamepad: Apple virtual controller");
                     __blocked = true;
                 }
-                else if ((__InputStringMatches(__guid, "03000000050b00000619000000010000", "03000000050b0000e318000000010000", "03000000050b0000e518000000010000", "03000000050b00005819000000010000", "03000000050b0000181a000000010000", "03000000050b00001a1a000000010000", "03000000050b00001c1a000000010000"))) 
+                else if (__InputStringMatches(__guid, "03000000050b00000619000000010000", "03000000050b0000e318000000010000", "03000000050b0000e518000000010000", "03000000050b00005819000000010000", "03000000050b0000181a000000010000", "03000000050b00001a1a000000010000", "03000000050b00001c1a000000010000")) 
                 {
                     __InputTrace("Blocking gamepad: ROG Mouse");
                     __blocked = true;
