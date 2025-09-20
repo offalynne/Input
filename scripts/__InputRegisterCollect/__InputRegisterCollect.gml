@@ -136,12 +136,17 @@ function __InputRegisterCollect()
             
             if (__InputSteamHandlesChanged())
             {
+                if (__INPUT_DEBUG_STEAM_INPUT)
+                {
+                    show_debug_message(__steamHandlesArray);
+                }
+                
                 __InputTrace("Steam handles changed, disconnecting all gamepads for reconnection");
                 
                 var _device = 0;
                 repeat(array_length(_gamepadArray))
                 {
-                    if (InputDeviceIsConnected(_device))
+                    if (_gamepadArray[_device] != undefined)
                     {
                         __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.GAMEPAD_DISCONNECTED, _device, true);
                     }
@@ -154,6 +159,18 @@ function __InputRegisterCollect()
         if ((not INPUT_BAN_GAMEPADS) && (current_time > INPUT_GAMEPADS_COLLECT_PREDELAY))
         {
             __InputUpdateGamepadPresence();
+            
+            _i = 0;
+            repeat(array_length(__gamepadArray))
+            {
+                var _gamepad = __gamepadArray[_i];
+                if (is_struct(_gamepad))
+                {
+                    _gamepad.__UpdatePrevValues();
+                }
+                
+                ++_i;
+            }
         }
         
         //Handle rebinding
@@ -165,15 +182,23 @@ function __InputRegisterCollect()
         }
         
         //Handle hotswap
-        if ((not INPUT_BAN_HOTSWAP) && __hotswap)
+        if (not INPUT_BAN_HOTSWAP)
         {
-            if (InputPlayerGetInactive())
+            if (__hotswap)
             {
-                var _device = InputDeviceGetNewActivity();
-                if (_device != INPUT_NO_DEVICE)
+                //No active verb
+                if (InputPlayerGetInactive())
                 {
-                    InputPlayerSetDevice(_device);
-                    if (is_callable(__hotswapCallback)) __hotswapCallback();
+                    //No active device input
+                    if (not InputDeviceIsActive(InputPlayerGetDevice()))
+                    {
+                        var _device = InputDeviceGetNewActivity();
+                        if (_device != INPUT_NO_DEVICE)
+                        {
+                            InputPlayerSetDevice(_device);
+                            if (is_callable(__hotswapCallback)) __hotswapCallback();
+                        }
+                    }
                 }
             }
         }

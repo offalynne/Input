@@ -95,13 +95,15 @@
 // that is being rebound becomes unresponsive.
 #macro INPUT_REBIND_TIMEOUT  5000
 
+// Whether gamepad axis inputs will report a device as active and trigger a hotswap.
+#macro INPUT_GAMEPAD_THUMBSTICK_REPORTS_ACTIVE  true
+#macro INPUT_GAMEPAD_TRIGGER_REPORTS_ACTIVE     true
+
 // Whether various noisy, error-prone inputs will report a device as active and trigger a hotswap.
 // Because these inputs are unreliable, it is recommended that they are set to `false`. However, if
 // you feel that damages your game's UX then set them to `true`.
-#macro INPUT_GAMEPAD_THUMBSTICK_REPORTS_ACTIVE  false
-#macro INPUT_GAMEPAD_TRIGGER_REPORTS_ACTIVE     false
-#macro INPUT_MOUSE_BUTTON_REPORTS_ACTIVE        false
-#macro INPUT_MOUSE_MOVEMENT_REPORTS_ACTIVE      false
+#macro INPUT_MOUSE_BUTTON_REPORTS_ACTIVE    false
+#macro INPUT_MOUSE_MOVEMENT_REPORTS_ACTIVE  false
 
 // Controls how the library collects player input. If `INPUT_UPDATE_AFTER_COLLECT` is set to
 // `true` (which it is by default) then this macro also controls how the library updates itself

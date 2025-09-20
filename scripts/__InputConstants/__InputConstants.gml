@@ -11,8 +11,8 @@
 //                                                                        //
 ////////////////////////////////////////////////////////////////////////////
 
-#macro INPUT_VERSION  "10.2.0"
-#macro INPUT_DATE     "2025-08-09"
+#macro INPUT_VERSION  "10.2.2"
+#macro INPUT_DATE     "2025-09-20"
 
 #macro INPUT_NO_DEVICE       -666
 #macro INPUT_KBM             -1
@@ -187,5 +187,6 @@ enum INPUT_PLUG_IN_CALLBACK
 // 32809 = gp_extra5
 // 32810 = gp_extra6
 
-#macro INPUT_GAMEPAD_BINDING_MIN  gp_face1
-#macro INPUT_GAMEPAD_BINDING_MAX  gp_extra6
+#macro INPUT_GAMEPAD_BINDING_MIN    gp_face1
+#macro INPUT_GAMEPAD_BINDING_MAX    gp_extra6
+#macro INPUT_GAMEPAD_BINDING_COUNT  (1 + INPUT_GAMEPAD_BINDING_MAX - INPUT_GAMEPAD_BINDING_MIN)

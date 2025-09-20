@@ -3,6 +3,8 @@
 #macro __INPUT_VERB_STATE_HEADER  "<PWP"
 #macro __INPUT_VERB_STATE_FOOTER  ">"
 
+#macro __INPUT_DEBUG_STEAM_INPUT  false
+
 #macro __INPUT_CONTROLLER_OBJECT_DEPTH  16001
 
 // Whether the game uses the horizontal holdtype for single Joy-Cons. Set this to `false` for
@@ -64,7 +66,7 @@ function __InputSystem()
     static _system = undefined;
     if (_system != undefined) return _system;
     
-    __InputTrace("Welcome to Input by Juju Adams, Alynne Keith, and friends! This is version " + INPUT_VERSION + ", " + INPUT_DATE);
+    __InputTrace("Welcome to Input by Juju Adams, Alynne Keith, and friends! This is version " + INPUT_VERSION + ", " + INPUT_DATE + " (GM version " + string(GM_runtime_version) + ")");
     
     device_mouse_dbclick_enable(false);
     

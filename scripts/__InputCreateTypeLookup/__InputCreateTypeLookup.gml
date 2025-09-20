@@ -146,9 +146,13 @@ function __InputCreateTypeLookup()
         _struct[$ "8532190d"] = INPUT_GAMEPAD_TYPE_PS5;
         _struct[$ "8a350401"] = INPUT_GAMEPAD_TYPE_PS5;
         _struct[$ "7e050620"] = INPUT_GAMEPAD_TYPE_JOYCON_LEFT;
+        _struct[$ "7e056720"] = INPUT_GAMEPAD_TYPE_JOYCON_LEFT;
         _struct[$ "7e050720"] = INPUT_GAMEPAD_TYPE_JOYCON_RIGHT;
+        _struct[$ "7e056620"] = INPUT_GAMEPAD_TYPE_JOYCON_RIGHT;
         _struct[$ "7e050820"] = INPUT_GAMEPAD_TYPE_SWITCH;
+        _struct[$ "7e056820"] = INPUT_GAMEPAD_TYPE_SWITCH;
         _struct[$ "7e050920"] = INPUT_GAMEPAD_TYPE_SWITCH;
+        _struct[$ "7e056920"] = INPUT_GAMEPAD_TYPE_SWITCH;
         _struct[$ "7e051720"] = INPUT_GAMEPAD_TYPE_SWITCH;
         _struct[$ "7e051920"] = INPUT_GAMEPAD_TYPE_SWITCH;
         _struct[$ "7e051e20"] = INPUT_GAMEPAD_TYPE_SWITCH;
@@ -296,6 +300,8 @@ function __InputCreateTypeLookup()
         _struct[$ "c82d1151"] = INPUT_GAMEPAD_TYPE_SWITCH;
         _struct[$ "c82d1251"] = INPUT_GAMEPAD_TYPE_SWITCH;
         _struct[$ "c82d2090"] = INPUT_GAMEPAD_TYPE_SWITCH;
+        _struct[$ "c82d0960"] = INPUT_GAMEPAD_TYPE_SWITCH;
+        _struct[$ "c82d0b31"] = INPUT_GAMEPAD_TYPE_SWITCH;
         _struct[$ "6f0e0109"] = INPUT_GAMEPAD_TYPE_PS4;
         _struct[$ "63252605"] = INPUT_GAMEPAD_TYPE_PS4;
         _struct[$ "6f0e1101"] = INPUT_GAMEPAD_TYPE_PS4;
@@ -412,6 +418,7 @@ function __InputCreateTypeLookup()
         _struct[$ "fe142a23"] = INPUT_GAMEPAD_TYPE_PS4;
         _struct[$ "25098888"] = INPUT_GAMEPAD_TYPE_PS4;
         _struct[$ "25096688"] = INPUT_GAMEPAD_TYPE_PS4;
+        _struct[$ "9d0d1130"] = INPUT_GAMEPAD_TYPE_PS4;
         _struct[$ "8f0e1411"] = INPUT_GAMEPAD_TYPE_PS4;
         _struct[$ "0d0f0101"] = INPUT_GAMEPAD_TYPE_PS4;
         _struct[$ "0d0fa500"] = INPUT_GAMEPAD_TYPE_PS4;

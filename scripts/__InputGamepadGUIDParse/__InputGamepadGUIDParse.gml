@@ -1,7 +1,6 @@
 // Feather disable all
 
 /// @param GUID
-/// @param legacy
 
 function __InputGamepadGUIDParse(_guid)
 {

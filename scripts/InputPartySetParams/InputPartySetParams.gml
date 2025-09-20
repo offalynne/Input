@@ -7,6 +7,10 @@
 /// verb is mapped to `gp_face1` on gamepad and `vk_space` on keyboard then pressing those buttons
 /// will cause the player to join the party.
 /// 
+/// You may use `INPUT_PARTY_ANY_BUTTON` in the place of `joinVerb`. Using this constant will allow
+/// players to press any button on their gamepad / key on their keyboard to join the party. Please
+/// note that the button tied to the `leaveVerb`, if specified, will be excluded.
+/// 
 /// The `minPlayers` and `maxPlayers` parameters control how many players should be in the party
 /// for the party to be considered "ready" (as returned by InputPartyGetReady()).
 /// 

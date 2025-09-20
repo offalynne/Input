@@ -53,6 +53,9 @@ function __InputRegisterPlayerDeviceChanged()
             //Immediately update status
             __UpdateStatus();
             
+            //Make sure this device isn't rebinding
+            InputDeviceSetRebinding(__device, false);
+            
             //Block other players from using this device
             if ((_device != INPUT_NO_DEVICE) && (_device != INPUT_GENERIC_DEVICE))
             {

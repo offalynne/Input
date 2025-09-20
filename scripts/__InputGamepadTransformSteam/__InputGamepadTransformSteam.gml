@@ -24,6 +24,8 @@ function __InputGamepadTransformSteam(_gamepadStruct)
             
             if (INPUT_ON_LINUX)
             {
+                if (__INPUT_DEBUG_STEAM_INPUT) __InputTrace("Running Steam Input Linux logic for gamepad index ", _gamepadIndex);
+                
                 var _gamepadHandleIndex = -1;
                 _gamepadIsVirtual = false;
                 
@@ -32,64 +34,85 @@ function __InputGamepadTransformSteam(_gamepadStruct)
                 {
                     if ((gamepad_get_description(_i) == "Valve Streaming Gamepad") || __InputStringContains(gamepad_get_guid(_i), "03000000de280000fc11", "03000000de280000ff11"))
                     {
+                        if (__INPUT_DEBUG_STEAM_INPUT) __InputTrace("Gamepad index ", _i, " is a virtual gamepad");
                         _gamepadHandleIndex++;
                         _gamepadIsVirtual = true;
                     }
                     ++_i;
                 }
                 
+                if (__INPUT_DEBUG_STEAM_INPUT) __InputTrace("Converted gamepad index from ", _gamepadIndex, " to ", _gamepadHandleIndex);
+                
                 _gamepadIndex = _gamepadHandleIndex;
             }
             
             if ((INPUT_ON_MACOS && (__guid == "030000005e0400008e02000001000000"))
-            ||  (INPUT_ON_LINUX && (__guid == "03000000de280000ff11000001000000")))
+            ||  (INPUT_ON_LINUX && (__guid == "03000000de280000ff11000001000000") && (not (_system.__onSteamDeck && _system.__usingSteam))))
             {
                 //Steam virtual controller, ignore
                 __InputTrace("Ignoring gamepad ", __gamepadIndex, " as it is a Steam virtual controller");
                 __blocked = true;
                 //Don't return! We still want to process Steam variables
             }
-            
-            __steamHandle = steam_input_get_controller_for_gamepad_index(_gamepadIndex);
-            
-            if not (_gamepadIsVirtual && is_numeric(__steamHandle) && (__steamHandle > 0))
-            {
-                __steamHandle      = undefined;
-                __steamHandleIndex = undefined;
-            }
             else
             {
-                __steamHandleIndex = steam_input_get_gamepad_index_for_controller(__steamHandle);
-                if (__steamHandleIndex == -1)
+                __steamHandle = steam_input_get_controller_for_gamepad_index(_gamepadIndex);
+            
+                var _check = steam_input_get_gamepad_index_for_controller(__steamHandle);
+                __InputTrace("Checking gamepad index: original=", __gamepadIndex, ", remapped=", _gamepadIndex, ", derived from Steam handle=", _check);
+            
+                if (__INPUT_DEBUG_STEAM_INPUT) __InputTrace("Found Steam Input handle ", __steamHandle, " for gamepad index ", _gamepadIndex);
+            
+                if not (_gamepadIsVirtual && is_numeric(__steamHandle) && (__steamHandle > 0))
                 {
-                    //Steam Input has no information for us about this gamepad, skip
-                    return;
+                    __steamHandle      = undefined;
+                    __steamHandleIndex = undefined;
+                    if (__INPUT_DEBUG_STEAM_INPUT) __InputTrace("Steam Input invalid for gamepad index ", _gamepadIndex);
                 }
-                
-                var _steamType = steam_input_get_input_type_for_handle(__steamHandle);
-                if not (is_numeric(_steamType) && (_steamType >= 0))
+                else
                 {
-                    __InputTrace("Warning! Steam gamepad type ", _steamType, " invalid");
-                    __blocked = true;
-                    return;
-                }
+                    __steamHandleIndex = steam_input_get_gamepad_index_for_controller(__steamHandle);
+                    if (__INPUT_DEBUG_STEAM_INPUT) __InputTrace("Found Steam Input index ", __steamHandleIndex, " for gamepad index ", _gamepadIndex);
+                    
+                    if not (INPUT_ON_WINDOWS)
+                    {
+                        //Steam Input type information is invalid on this platform, skip
+                        return;
+                    }
                 
-                __description = _system.__steamTypeToDescriptionMap[? _steamType];
-                if (__description == undefined)
-                {
-                    __InputTrace("Warning! Steam gamepad type ", _steamType, " has no Steam description");
-                    __description = "Missing Description";
-                    __blocked = true;
-                    return;
-                }
+                    if (__steamHandleIndex == -1)
+                    {
+                        //Steam Input has no information for us about this gamepad, skip
+                        return;
+                    }
                 
-                __type = _system.__steamTypeToInputTypeMap[? _steamType];
-                if (__type == undefined)
-                {
-                    __InputTrace("Warning! Steam-gamepad-type ", _steamType, " has no matching Input-gamepad-type");
-                    __type = INPUT_GAMEPAD_TYPE_UNKNOWN;
-                    __blocked = true;
-                    return;
+                    var _steamType = steam_input_get_input_type_for_handle(__steamHandle);
+                    if not (is_numeric(_steamType) && (_steamType >= 0))
+                    {
+                        __InputTrace("Warning! Steam gamepad type ", _steamType, " invalid");
+                        __blocked = true;
+                        return;
+                    }
+                
+                    __description = _system.__steamTypeToDescriptionMap[? _steamType];
+                    if (__description == undefined)
+                    {
+                        __InputTrace("Warning! Steam gamepad type ", _steamType, " has no Steam description");
+                        __description = "Missing Description";
+                        __blocked = true;
+                        return;
+                    }
+                
+                    __type = _system.__steamTypeToInputTypeMap[? _steamType];
+                    if (__type == undefined)
+                    {
+                        __InputTrace("Warning! Steam-gamepad-type ", _steamType, " has no matching Input-gamepad-type");
+                        __type = INPUT_GAMEPAD_TYPE_UNKNOWN;
+                        __blocked = true;
+                        return;
+                    }
+                
+                    if (__INPUT_DEBUG_STEAM_INPUT) __InputTrace("Found Steam Input data: type=", _steamType, ", description=\"", __description, "\", type=\"", __type, "\"");
                 }
             }
         }

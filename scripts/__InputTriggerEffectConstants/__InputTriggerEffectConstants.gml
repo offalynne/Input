@@ -1,3 +1,5 @@
+// Feather disable all
+
 //DualSense haptic trigger effect states
 enum INPUT_TRIGGER_STATE
 {
