@@ -12,7 +12,7 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #macro INPUT_VERSION  "10.2.2"
-#macro INPUT_DATE     "2025-09-14"
+#macro INPUT_DATE     "2025-09-20"
 
 #macro INPUT_NO_DEVICE       -666
 #macro INPUT_KBM             -1
