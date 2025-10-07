@@ -25,7 +25,7 @@
 
 #macro vk_numlock     ((INPUT_ON_APPLE &&  INPUT_ON_WEB)                    ? 0x0C : 0x90)
 #macro vk_equals      ((INPUT_ON_MACOS && !INPUT_ON_WEB)                    ? 0x18 : 0xBB)
-#macro vk_apostrophe (((INPUT_ON_MACOS || INPUT_ON_LINUX)  && !INPUT_ON_WEB)? 0xC0 : 0xDE)
+#macro vk_apostrophe  ((INPUT_ON_LINUX && !INPUT_ON_WEB)                    ? 0xC0 : 0xDE)
 #macro vk_hyphen     (((INPUT_ON_MACOS || INPUT_ON_SWITCH) && !INPUT_ON_WEB)? 0x6D : 0xBD)
 #macro vk_rmeta        (INPUT_ON_MACOS? ((INPUT_ON_APPLE   &&  INPUT_ON_WEB)? 0x5D : 0x5B) : 0x5C)
 #macro vk_backtick    (!INPUT_ON_MACOS?  (INPUT_ON_LINUX                    ? 0xDF : 0xC0) : 0x32)
