@@ -44,6 +44,11 @@ function InputPlugInDefine(_alias, _author, _version, _targetInputVersion, _init
     static _plugInArray = _system.__plugInArray;
     static _plugInDict  = _system.__plugInDict;
     
+    if (struct_get(global, "__inputPlugInGuard"))
+    {
+        __InputError("Cannot define a plug-in during initialization flow.\nTypically this occurs due to implicit initialization via `__InputConfigVerbs()`");
+    }
+    
     if (_system.__plugInsInitializeState != 0)
     {
         __InputError("`InputPlugInDefine()` must only be called on boot");
