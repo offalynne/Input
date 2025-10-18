@@ -590,30 +590,6 @@ A list of valid gamepad types can be found [here](Functions-(Player)?id=getgamep
 
 &nbsp;
 
-## …PlugInError
-
-`InputPlugInError(value1, [value2], [...])`
-
-<!-- tabs:start -->
-
-#### **Description**
-
-**Returns:** N/A (`undefined`)
-
-|Name        |Datatype       |Purpose                                |
-|------------|---------------|---------------------------------------|
-|`value[1-n]`|any            |Value to stringify                     |
-
-#### **Example**
-
-```gml
-{
-    
-}
-```
-<!-- tabs:end -->
-&nbsp;
-
 ## …PlugInWarning
 
 `InputPlugInWarning(value1, [value2], [...])`
