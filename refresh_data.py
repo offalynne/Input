@@ -63,10 +63,6 @@ try:
     	#strip ios maps
         text = response.read().decode().split("# iOS", 1)[0]
 
-        #remap dpad-only axis to thumbstick
-        #TODO: fixed upstream, deprecate upon 2024.14 monthly release
-        text = re.sub(r"dpdown:\+a(\d+),dpleft:-a(\d+),dpright:\+a\2,dpup:-a\1", r"leftx:a\2,lefty:a\1", text)
-
         open(gamecontrollerdb_path, 'w', encoding="utf-8").write(text.rstrip("\n") + "\n")
     print("\tSaved to " + gamecontrollerdb_path)
 except Exception as e:
