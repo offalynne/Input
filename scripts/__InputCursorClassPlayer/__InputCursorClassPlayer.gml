@@ -142,7 +142,7 @@ function __InputCursorClassPlayer(_playerIndex) constructor
                         _rotatedY = clamp(_rotatedY, _t + __limitMargin - _pivotY, _b - __limitMargin - _pivotY);
                         
                         __x =  _rotatedX*_cos + _rotatedY*_sin + _pivotX;
-   						__y = -_rotatedX*_sin + _rotatedY*_cos + _pivotY;
+                        __y = -_rotatedX*_sin + _rotatedY*_cos + _pivotY;
                         
                         //No need to apply the rest of the logic
                         return;
