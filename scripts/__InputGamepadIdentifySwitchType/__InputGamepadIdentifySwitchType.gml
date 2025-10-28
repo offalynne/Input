@@ -2,8 +2,9 @@
 
 /// @param gamepadIndex
 /// @param [description]
+/// @param [logWarnings=true]
 
-function __InputGamepadIdentifySwitchType(_gamepadIndex, _description = gamepad_get_description(_gamepadIndex))
+function __InputGamepadIdentifySwitchType(_gamepadIndex, _description = gamepad_get_description(_gamepadIndex), _logWarnings = true)
 {
     if (_description == "Joy-Con")
     {
@@ -14,7 +15,10 @@ function __InputGamepadIdentifySwitchType(_gamepadIndex, _description = gamepad_
         //       It also probably affects runtime:
         //       - v2024.1100.0.658
         
-        __InputTrace("Warning! Using stop-gap identification for bad description \"Joy-Con\"");
+        if (_logWarnings)
+        {
+            __InputTrace("Warning! Using stop-gap identification for bad description \"Joy-Con\"");
+        }
         
         var _left  = switch_controller_joycon_left_connected( _gamepadIndex);
         var _right = switch_controller_joycon_right_connected(_gamepadIndex);
@@ -39,7 +43,11 @@ function __InputGamepadIdentifySwitchType(_gamepadIndex, _description = gamepad_
             }
             else
             {
-                __InputTrace("Warning! Invalid left/right Joy-Con state, falling back on handheld");
+                if (_logWarnings)
+                {
+                    __InputTrace("Warning! Invalid left/right Joy-Con state, falling back on handheld");
+                }
+                
                 return INPUT_GAMEPAD_TYPE_SWITCH;
             }
         }

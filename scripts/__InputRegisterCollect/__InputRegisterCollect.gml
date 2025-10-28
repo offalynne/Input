@@ -239,7 +239,7 @@ function __InputUpdateGamepadPresence()
         {
             if (_connected)
             {
-                if (INPUT_ON_SWITCH && (_gamepad.__type != __InputGamepadIdentifySwitchType(_device)))
+                if (INPUT_ON_SWITCH && (_gamepad.__type != __InputGamepadIdentifySwitchType(_device, false)))
                 {
                     //When Switch L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
                     //Instead we have to check for changes via the gamepad description or Joy-Con left/right connected state
