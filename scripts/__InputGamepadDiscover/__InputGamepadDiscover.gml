@@ -19,7 +19,7 @@ function __InputGamepadDiscover(_gamepadStruct)
         
         if (INPUT_ON_SWITCH)
         {
-            __type = __InputGamepadIdentifySwitchType(_device, __description);
+            __type = __InputGamepadIdentifySwitchType(_device, __description, true);
             
             //Going full custom
             InputPlugInGamepadNullifyAllMappings(_device);
