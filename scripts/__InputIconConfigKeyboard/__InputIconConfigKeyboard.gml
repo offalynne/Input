@@ -44,7 +44,6 @@ InputIconDefineKeyboard("7", "7");
 InputIconDefineKeyboard("8", "8");
 InputIconDefineKeyboard("9", "9");
 
-InputIconDefineKeyboard(vk_backtick,   "`");
 InputIconDefineKeyboard(vk_hyphen,     "-");
 InputIconDefineKeyboard(vk_equals,     "=");
 InputIconDefineKeyboard(vk_semicolon,  ";");
@@ -124,22 +123,17 @@ InputIconDefineKeyboard(vk_home,     "home");
 InputIconDefineKeyboard(vk_pageup,   "page up");
 InputIconDefineKeyboard(vk_pagedown, "page down");
 InputIconDefineKeyboard(vk_end,      "end");
-   
-//Name newline character after Enter
-InputIconDefineKeyboard(10, "enter");
 
-//Reset F11 and F12 keycodes on certain platforms
+
+
+//Swap F11 and F12 keycodes on certain platforms
 if (INPUT_ON_LINUX || INPUT_ON_MACOS)
 {
-    InputIconDefineKeyboard(128, "f11");
-    InputIconDefineKeyboard(129, "f12");
+    var _f11 = InputIconGetDirect(vk_f11)
+    var _f12 = InputIconGetDirect(vk_f12)
+    InputIconDefineKeyboard(0x80, _f11);
+    InputIconDefineKeyboard(0x81, _f12);
 }
 
-//F13 to F32 on Windows and Web
-if (INPUT_ON_WINDOWS || INPUT_ON_WEB)
-{
-    for(var _i = vk_f1 + 12; _i < vk_f1 + 32; _i++)
-    {
-        InputIconDefineKeyboard(_i, "f" + string(_i));
-    }
-}
+//Newline to Enter
+InputIconDefineKeyboard(0x0A, InputIconGetDirect(vk_enter));
