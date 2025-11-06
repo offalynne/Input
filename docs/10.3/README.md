@@ -1,10 +1,10 @@
 <img src="https://raw.githubusercontent.com/offalynne/Input/main/LOGO.png" width="50%" style="display: block; margin: auto;" />
-<h1 align="center">Input 10.2</h1>
-<p align="center">Comprehensive cross-platform input for GameMaker 2024.13 by <a href="https://www.jujuadams.com/" target="_blank">Juju Adams</a>, <a href="https://twitter.com/offalynne" target="_blank">Alynne Keith</a>, and <a href="#/8.0/Credits">Friends</a></p>
+<h1 align="center">Input 10.3</h1>
+<p align="center">Comprehensive cross-platform input for GameMaker 2024.14 by <a href="https://www.jujuadams.com/" target="_blank">Juju Adams</a>, <a href="https://twitter.com/offalynne" target="_blank">Alynne Keith</a>, and <a href="#/8.0/Credits">Friends</a></p>
 
 <p align="center"><a href="https://github.com/offalynne/Input/releases/" target="_blank">Download the .yymps</a></p>
 <p align="center">Talk about Input on the <a href="https://discord.gg/s6NjaV8AnM" target="_blank">Discord server</a></p>
-
+<p align="center">Browse <a href="https://www.gamemakerkitchen.com/libraries/offalynne/input/plugins/">additional plug-ins</a></p>
 ---
 
 Input is a robust, feature-packed input library that unifies keyboard, mouse, and gamepad control under one umbrella. It handles hotswapping, rebinding, gamepad type detection, player gamepad assignment, thumbstick min/max deadzones etc. all without you lifting a finger. This library strips away the boring repetitive task of getting every gamepad for every platform set up perfectly, and accelerates the development of your game.
