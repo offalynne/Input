@@ -45,7 +45,7 @@ GAMEPAD_TYPE_MAPPING = {
     "INPUT_GAMEPAD_TYPE_SWITCH": [ "SwitchHandheld", "SwitchJoyConPair", "SwitchProController", "XInputSwitchController", "SwitchInputOnlyController", "CommunityLikeSwitch", "Community8BitDo", "HIDWiiClassic", "CommunitySNES", "CommunitySuperFamicom"],
 
     # # omit xbox, we assume this type by default
-    # "INPUT_GAMEPAD_TYPE_XBOX": ["XBoxOneController", "CommunityXBoxOne", "SteamControllerNeptune", "CommunitySteamDeck", "CommunityLuna", "CommunityStadia", "AppleController", "XBox360Controller", "CommunityXBox360", "CommunityDreamcast", "SteamController", "MobileTouch", "CommunityLikeXBox"]
+    # "INPUT_GAMEPAD_TYPE_XBOX": ["XBoxOneController", "CommunityXBoxOne", "SteamControllerNeptune", "SteamControllerTriton", "CommunitySteamDeck", "CommunityLuna", "CommunityStadia", "AppleController", "XBox360Controller", "CommunityXBox360", "CommunityDreamcast", "SteamController", "MobileTouch", "CommunityLikeXBox"]
 }
 
 # fetch gamecontrollerdb.txt
