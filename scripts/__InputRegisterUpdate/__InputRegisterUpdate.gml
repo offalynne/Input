@@ -51,8 +51,8 @@ function __InputRegisterUpdate()
                 }
                 else if ((keyboard_key != vk_nokey) 
                      ||  (mouse_button != mb_none)
-                     ||  (INPUT_ON_WINDOWS && window_has_focus())
-                     ||  (INPUT_ON_MACOS   && __pointerMoved))
+                     ||  ((INPUT_ON_WINDOWS || INPUT_ON_MACOS) && window_has_focus())
+                     ||  (INPUT_ON_MACOS && __pointerMoved))
                 {
                     //Regained focus
                     __windowFocus                   = true;
