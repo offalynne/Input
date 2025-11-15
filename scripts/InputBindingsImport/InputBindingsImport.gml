@@ -29,7 +29,7 @@ function InputBindingsImport(_forGamepad, _data, _playerIndex = 0)
         if (_exportName != undefined)
         {
             var _alternates = _data[$ _exportName];
-            _alternates = (_alternates == undefined)? [] : variable_clone(_alternates);
+            _alternates = is_array(_alternates)? variable_clone(_alternates) : [];
             _bindingArray[@ _i] = _alternates;
         }
         
