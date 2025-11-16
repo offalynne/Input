@@ -53,47 +53,50 @@ function InputXYOldest(_clusterIndex, _preferX, _playerIndex = 0)
             var _pressL = _stateL.__held? _stateL.__pressFrame : infinity;
             
             var _pressMin = min(_pressU, _pressR, _pressD, _pressL);
-            var _recentU = (_pressMin == _pressU);
-            var _recentR = (_pressMin == _pressR);
-            var _recentD = (_pressMin == _pressD);
-            var _recentL = (_pressMin == _pressL);
-            
-            if (_preferX)
+            if (not is_infinity(_pressMin))
             {
-                if (_recentL)
+                var _recentU = (_pressMin == _pressU);
+                var _recentR = (_pressMin == _pressR);
+                var _recentD = (_pressMin == _pressD);
+                var _recentL = (_pressMin == _pressL);
+                
+                if (_preferX)
                 {
-                    if (not _recentR) _result.x = -1;
+                    if (_recentL)
+                    {
+                        if (not _recentR) _result.x = -1;
+                    }
+                    else if (_recentR)
+                    {
+                        if (not _recentL) _result.x = 1;
+                    }
+                    else if (_recentU)
+                    {
+                        if (not _recentD) _result.y = -1;
+                    }
+                    else if (_recentD)
+                    {
+                        if (not _recentU) _result.y = 1;
+                    }
                 }
-                else if (_recentR)
+                else
                 {
-                    if (not _recentL) _result.x = 1;
-                }
-                else if (_recentU)
-                {
-                    if (not _recentD) _result.y = -1;
-                }
-                else if (_recentD)
-                {
-                    if (not _recentU) _result.y = 1;
-                }
-            }
-            else
-            {
-                if (_recentU)
-                {
-                    if (not _recentD) _result.y = -1;
-                }
-                else if (_recentD)
-                {
-                    if (not _recentU) _result.y = 1;
-                }
-                else if (_recentL)
-                {
-                    if (not _recentR) _result.x = -1;
-                }
-                else if (_recentR)
-                {
-                    if (not _recentL) _result.x = 1;
+                    if (_recentU)
+                    {
+                        if (not _recentD) _result.y = -1;
+                    }
+                    else if (_recentD)
+                    {
+                        if (not _recentU) _result.y = 1;
+                    }
+                    else if (_recentL)
+                    {
+                        if (not _recentR) _result.x = -1;
+                    }
+                    else if (_recentR)
+                    {
+                        if (not _recentL) _result.x = 1;
+                    }
                 }
             }
         }
