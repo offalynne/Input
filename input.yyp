@@ -386,6 +386,7 @@
     {"id":{"name":"InputVirtualDebugDraw","path":"scripts/InputVirtualDebugDraw/InputVirtualDebugDraw.yy",},},
     {"id":{"name":"InputVirtualDestroyAll","path":"scripts/InputVirtualDestroyAll/InputVirtualDestroyAll.yy",},},
     {"id":{"name":"InputX","path":"scripts/InputX/InputX.yy",},},
+    {"id":{"name":"InputXYNewest","path":"scripts/InputXYNewest/InputXYNewest.yy",},},
     {"id":{"name":"InputXYOldest","path":"scripts/InputXYOldest/InputXYOldest.yy",},},
     {"id":{"name":"InputY","path":"scripts/InputY/InputY.yy",},},
   ],
