@@ -9,9 +9,12 @@ function InputVibrateGetSupported(_playerIndex = 0)
 {
     static _deviceMap = __InputVibrateSystem().__deviceMap;
     
-    with(_deviceMap[? InputPlayerGetDevice(_playerIndex)])
+    if (InputPlayerIsConnected(_playerIndex) && InputPlayerUsingGamepad(_playerIndex))
     {
-        return __supported;
+        with(_deviceMap[? InputPlayerGetDevice(_playerIndex)])
+        {
+            return __supported;
+        }
     }
     
     return false;

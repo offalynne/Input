@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"InputVibrateSetStrength",
+  "%Name":"InputVibrateGetMagnitude",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"InputVibrateSetStrength",
+  "name":"InputVibrateGetMagnitude",
   "parent":{
     "name":"Setup",
     "path":"folders/Input Plug-Ins/Vibration/Setup.yy",

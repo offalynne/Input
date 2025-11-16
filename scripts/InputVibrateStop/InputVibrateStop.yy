@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"InputVibrateStop",
   "parent":{
-    "name":"Vibration",
-    "path":"folders/Input Plug-Ins/Vibration.yy",
+    "name":"Actions",
+    "path":"folders/Input Plug-Ins/Vibration/Actions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
