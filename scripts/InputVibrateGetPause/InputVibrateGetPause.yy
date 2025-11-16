@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"InputVibrateGetPause",
   "parent":{
-    "name":"Vibration",
-    "path":"folders/Input Plug-Ins/Vibration.yy",
+    "name":"Setup",
+    "path":"folders/Input Plug-Ins/Vibration/Setup.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
