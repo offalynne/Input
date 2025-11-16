@@ -1,13 +1,13 @@
 // Feather disable all
 
-/// Returns along which axis, and what direction on that axis, the oldest held direction is
-/// pointing in. This is helpful for games where the player will typically instead to move along
-/// grid lines and off-axis movement is erroneous.
+/// Returns along which axis, and what direction on that axis, the newest held direction is
+/// pointing in. This is helpful for games where the player is only permitted to move in cardinal
+/// directions and want to respect the most recent input for tighter-feeling controls.
 /// 
-/// For example, if the player holds `left` and then subsequently presses and holds `up` then this
-/// function will return `{ x: -1, y: 0}`. If the player releases `left` and keeps `up` held then
-/// this function will return `{ x: 0, y: -1 }`. If the player relases `up` (so no verbs are held
-/// then the function will return `{ x: 0, y: 0 }`.
+/// For example, if the player holds `right` and then subsequently presses and holds `down` then
+/// this function will return `{ x: 0, y: 1}`. If the player releases `down` and keeps `right` held
+/// then this function will return `{ x: 1, y: 0 }`. If the player relases `right` (so no verbs are
+/// held then the function will return `{ x: 0, y: 0 }`.
 /// 
 /// This function returns a struct that contains two member variables `x` and `y`. These values
 /// will always be either `0` `+1` or `-1` and only one axis cam be non-zero. This means this

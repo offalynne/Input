@@ -1,7 +1,7 @@
 // Feather disable all
 
 /// Returns along which axis, and what direction on that axis, the oldest held direction is
-/// pointing in. This is helpful for games where the player will typically instead to move along
+/// pointing in. This is helpful for games where the player will typically intend to move along
 /// grid lines and off-axis movement is erroneous.
 /// 
 /// For example, if the player holds `left` and then subsequently presses and holds `up` then this
