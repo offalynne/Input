@@ -49,6 +49,8 @@ function __InputVibrateClassGamepad(_device) constructor
         else
         {
             InputVibrateDirect(__device, 0, 0);
+            __left  = 0;
+            __right = 0;
         }
     };
 }

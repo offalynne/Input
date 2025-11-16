@@ -376,6 +376,8 @@
     {"id":{"name":"InputVibrateConstant","path":"scripts/InputVibrateConstant/InputVibrateConstant.yy",},},
     {"id":{"name":"InputVibrateCurve","path":"scripts/InputVibrateCurve/InputVibrateCurve.yy",},},
     {"id":{"name":"InputVibrateDirect","path":"scripts/InputVibrateDirect/InputVibrateDirect.yy",},},
+    {"id":{"name":"InputVibrateGetEventCount","path":"scripts/InputVibrateGetEventCount/InputVibrateGetEventCount.yy",},},
+    {"id":{"name":"InputVibrateGetMagnitude","path":"scripts/InputVibrateGetMagnitude/InputVibrateGetMagnitude.yy",},},
     {"id":{"name":"InputVibrateGetPause","path":"scripts/InputVibrateGetPause/InputVibrateGetPause.yy",},},
     {"id":{"name":"InputVibrateGetStrength","path":"scripts/InputVibrateGetStrength/InputVibrateGetStrength.yy",},},
     {"id":{"name":"InputVibrateGetSupported","path":"scripts/InputVibrateGetSupported/InputVibrateGetSupported.yy",},},
