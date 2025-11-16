@@ -10,14 +10,15 @@
 /// then the function will return `{ x: 0, y: 0 }`.
 /// 
 /// This function returns a struct that contains two member variables `x` and `y`. These values
-/// will always be either `0` `+1` or `-1` and only one axis cam be non-zero. As a result, this
-/// function is mostly instead for use with digital inputs such as a keyboard or dpad.
+/// will always be either `0` `+1` or `-1` and only one axis cam be non-zero. This means this
+/// function will never return diagonal directions. This function is instead for use with keyboard
+/// or dpad input, or situations where a thumbstick should behave like a dpad.
 /// 
 /// Set the `preferX` parameter to `true` if the x-axis should be preferred if two verbs are
 /// pressed on exactly the same frame. Set to `false` if the y-axis should be preferred.
 /// 
 /// @param {Enum.INPUT_CLUSTER,Real} clusterIndex
-/// @param preferX
+/// @param {Bool} preferX
 /// @param {Real} [playerIndex=0]
 
 function InputXYOldest(_clusterIndex, _preferX, _playerIndex = 0)
