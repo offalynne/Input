@@ -3,6 +3,8 @@ var _string = string_join("\n",
     string_concat("y = ", InputY(INPUT_CLUSTER.NAVIGATION)),
     string_concat("distance = ", InputDistance(INPUT_CLUSTER.NAVIGATION)),
     string_concat("direction = ", InputDirection(inputDirection, INPUT_CLUSTER.NAVIGATION)),
+    string_concat("xy oldest (prefer x) = ", InputXYOldest(INPUT_CLUSTER.NAVIGATION, true)),
+    string_concat("xy oldest (prefer y) = ", InputXYOldest(INPUT_CLUSTER.NAVIGATION, false)),
 );
 
 draw_text(10, 10, _string);
