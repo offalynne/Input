@@ -19,6 +19,11 @@ function __InputClassPlayer(_playerIndex) constructor
     __anyInput       = false;
     __lastInputTime  = -infinity;
     
+    //Most devices will block hotswap with any input. However, gamepads will not block hotswap for
+    //analogue (axis) input owing to the potential for false positives.
+    __hotswapBlocked = false;
+    __lastHotswapBlockedTime = -infinity;
+    
     //Set the last connected gamepad speculatively based on the platform / gamepad ban setting
     if (INPUT_BAN_GAMEPADS)
     {
@@ -313,6 +318,16 @@ function __InputClassPlayer(_playerIndex) constructor
             ++_i;
         }
         
-        if (__anyInput) __lastInputTime = current_time;
+        if (__anyInput)
+        {
+            __lastInputTime = current_time;
+            
+            //If we're not using a gampead, block hotswap for any verb input. However, if we're using a gamepad
+            //then only allow hotswap if no digital (button) input is detected.
+            if ((__device < 0) || (__INPUT_GAMEPAD_AXIS_BLOCKS_HOTSWAP || __hotswapBlocked))
+            {
+                __lastHotswapBlockedTime = current_time;
+            }
+        }
     }
 }
