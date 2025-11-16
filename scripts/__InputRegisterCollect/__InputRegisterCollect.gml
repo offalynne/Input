@@ -186,8 +186,9 @@ function __InputRegisterCollect()
         {
             if (__hotswap)
             {
-                //No active verb
-                if (InputPlayerGetInactive())
+                //No active verb within the last 0.5 seconds. If we're using a gamepad then this timer is only reset
+                //if a digital button is pressed.
+                if (current_time - _playerArray[0].__lastHotswapBlockedTime > 500)
                 {
                     //No active device input
                     if (not InputDeviceIsActive(InputPlayerGetDevice()))

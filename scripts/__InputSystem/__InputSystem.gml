@@ -1,5 +1,7 @@
 // Feather disable all
 
+#macro __INPUT_GAMEPAD_AXIS_BLOCKS_HOTSWAP  false
+
 #macro __INPUT_VERB_STATE_HEADER  "<PWP"
 #macro __INPUT_VERB_STATE_FOOTER  ">"
 
