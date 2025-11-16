@@ -280,6 +280,7 @@
     {"id":{"name":"InputMouseRoomX","path":"scripts/InputMouseRoomX/InputMouseRoomX.yy",},},
     {"id":{"name":"InputMouseRoomY","path":"scripts/InputMouseRoomY/InputMouseRoomY.yy",},},
     {"id":{"name":"InputMouseSetBlocked","path":"scripts/InputMouseSetBlocked/InputMouseSetBlocked.yy",},},
+    {"id":{"name":"InputOldest","path":"scripts/InputOldest/InputOldest.yy",},},
     {"id":{"name":"InputOpposing","path":"scripts/InputOpposing/InputOpposing.yy",},},
     {"id":{"name":"InputOpposingPressed","path":"scripts/InputOpposingPressed/InputOpposingPressed.yy",},},
     {"id":{"name":"InputOpposingRepeat","path":"scripts/InputOpposingRepeat/InputOpposingRepeat.yy",},},
