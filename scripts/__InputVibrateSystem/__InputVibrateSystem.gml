@@ -17,7 +17,7 @@ function __InputVibrateSystem()
             return new __InputVibrateClassPlayer(_index);
         });
         
-        InputPlugInDefine("InputTeam.GamepadVibration", "Input Team", "1.0", "10.0", function()
+        InputPlugInDefine("InputTeam.GamepadVibration", "Input Team", "1.1", "10.0", function()
         {
             InputPlugInRegisterCallback(INPUT_PLUG_IN_CALLBACK.GAMEPAD_CONNECTED, undefined, function(_device)
             {
