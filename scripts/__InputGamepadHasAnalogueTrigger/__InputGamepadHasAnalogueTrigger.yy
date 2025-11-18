@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__InputGamepadHasAnalogueTrigger",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__InputGamepadHasAnalogueTrigger",
+  "parent":{
+    "name":"Gamepads",
+    "path":"folders/Input/(System)/Gamepads.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

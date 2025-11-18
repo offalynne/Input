@@ -1,4 +1,4 @@
 // Feather disable all
 
-exportedKeyboardBindings = undefined;
-exportedGamepadBindings  = undefined;
+exportedKeyboardBindings = InputBindingsExport(false);
+exportedGamepadBindings  = InputBindingsExport(true);

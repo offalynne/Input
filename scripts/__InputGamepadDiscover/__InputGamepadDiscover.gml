@@ -16,6 +16,8 @@ function __InputGamepadDiscover(_gamepadStruct)
         __guid         = gamepad_get_guid(_device);
         __description  = gamepad_get_description(_device);
         __type         = INPUT_GAMEPAD_TYPE_UNKNOWN;
+
+        __hasAnalogueTrigger = false;
         
         if (INPUT_ON_SWITCH)
         {
@@ -96,6 +98,7 @@ function __InputGamepadDiscover(_gamepadStruct)
             InputPlugInGamepadNullifyMapping(_device, gp_select);
             InputPlugInGamepadSetMapping(_device, gp_touchpadbutton, function(_device) { return gamepad_button_value(_device, gp_select); });
             
+            __hasAnalogueTrigger = true;
             __type = INPUT_GAMEPAD_TYPE_PS4;
         }
         else if (INPUT_ON_PS5)
@@ -104,10 +107,12 @@ function __InputGamepadDiscover(_gamepadStruct)
             InputPlugInGamepadNullifyMapping(_device, gp_select);
             InputPlugInGamepadSetMapping(_device, gp_touchpadbutton, function(_device) { return gamepad_button_value(_device, gp_select); });
             
+            __hasAnalogueTrigger = true;
             __type = INPUT_GAMEPAD_TYPE_PS5;
         }
         else if (INPUT_ON_XBOX)
         {
+            __hasAnalogueTrigger = true;
             __type = INPUT_GAMEPAD_TYPE_XBOX;
         }
         else //Not console
@@ -150,6 +155,12 @@ function __InputGamepadDiscover(_gamepadStruct)
             
             //Perform further transforms to handle nasty edge cases
             __InputGamepadTransformQuirks(self);
+
+            //Find analogue trigger mapping
+            if (__xinput || __InputStringMatches(gamepad_get_mapping(_device), "trigger:a", "trigger:+a", "trigger:-a"))
+            {
+                __hasAnalogueTrigger = true;
+            }
         }
     }
 }

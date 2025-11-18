@@ -42,7 +42,10 @@ repeat(InputVerbCount())
 
 draw_text(300, 10, _string);
 
-draw_text(10, 300, string_join_ext("\n", eventArray, 0, 30));
+if (array_length(eventArray) > 0)
+{
+	draw_text(10, 300, string_join_ext("\n", eventArray));
+}
 
 _string = "";
 
