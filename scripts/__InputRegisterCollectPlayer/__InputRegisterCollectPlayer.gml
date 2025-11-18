@@ -87,8 +87,6 @@ function __InputRegisterCollectPlayer()
                                     if ((_absBinding == gp_shoulderlb) || (_absBinding == gp_shoulderrb))
                                     {
                                         _valueClamp = clamp((_raw - INPUT_GAMEPAD_TRIGGER_MIN_THRESHOLD) / (INPUT_GAMEPAD_TRIGGER_MAX_THRESHOLD - INPUT_GAMEPAD_TRIGGER_MIN_THRESHOLD), 0, 1);
-                                        //Technically we should detect if the trigger input is a button or not. However, this information is hard
-                                        //to obtain and it's probably fine if triggers don't block hotswap.
                                     }
                                     else if ((_absBinding == gp_axislh) || (_absBinding == gp_axislv))
                                     {

@@ -10,6 +10,8 @@ function __InputGetGamepadActive(_device)
     if (not InputGameHasFocus()) return false;
     if (not InputDeviceIsConnected(_device)) return false;
     if (not gamepad_is_connected(_device)) return false;
+
+    var _axisIndexTriggerOffset = (gp_axisrv - gp_axislh) + 1;
     
     with(_gamepadArray[_device])
     {
@@ -36,7 +38,8 @@ function __InputGetGamepadActive(_device)
             {
                 if (INPUT_GAMEPAD_TRIGGER_REPORTS_ACTIVE)
                 {
-                    if (abs(_readArray[_binding - INPUT_GAMEPAD_BINDING_MIN](_device, _binding)) > INPUT_GAMEPAD_TRIGGER_MIN_THRESHOLD)
+                    if ((_prevValueArray[_axisIndexTriggerOffset + (_binding - gp_shoulderlb)]) <= INPUT_GAMEPAD_TRIGGER_MIN_THRESHOLD)
+                    &&  (_valueArray[_axisIndexTriggerOffset + (_binding - gp_shoulderlb)] > INPUT_GAMEPAD_TRIGGER_MIN_THRESHOLD))
                     {
                         return true;
                     }

@@ -322,7 +322,7 @@ function __InputClassPlayer(_playerIndex) constructor
         {
             __lastInputTime = current_time;
             
-            //If we're not using a gampead, block hotswap for any verb input. However, if we're using a gamepad
+            //If we're not using a gamepad, block hotswap for any verb input. However, if we're using a gamepad
             //then only allow hotswap if no digital (button) input is detected.
             if ((__device < 0) || (__INPUT_GAMEPAD_AXIS_BLOCKS_HOTSWAP || __hotswapBlocked))
             {
