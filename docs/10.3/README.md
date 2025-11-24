@@ -55,4 +55,4 @@ Many, many other people have contributed to GameMaker's open source community vi
 
 **Can I support Input?**
 
-Yes, you can support the development of Input by [sponsoring on Patreon](<https://www.patreon.com/AlynneKeith>) or [tipping on Kofi](<https://ko-fi.com/offalynne>). Thank you for wanting to show your appreciation.
+Yes, you can support the development of Input by [sponsoring on Patreon](<https://www.patreon.com/AlynneKeith>) or [tipping on Kofi](<https://ko-fi.com/offalynne>). Thank you for your appreciation.
