@@ -38,7 +38,7 @@ function __InputGetGamepadActive(_device)
             {
                 if (INPUT_GAMEPAD_TRIGGER_REPORTS_ACTIVE)
                 {
-                    if ((_prevValueArray[_axisIndexTriggerOffset + (_binding - gp_shoulderlb)]) <= INPUT_GAMEPAD_TRIGGER_MIN_THRESHOLD)
+                    if (((_prevValueArray[_axisIndexTriggerOffset + (_binding - gp_shoulderlb)]) <= INPUT_GAMEPAD_TRIGGER_MIN_THRESHOLD)
                     &&  (_valueArray[_axisIndexTriggerOffset + (_binding - gp_shoulderlb)] > INPUT_GAMEPAD_TRIGGER_MIN_THRESHOLD))
                     {
                         return true;
