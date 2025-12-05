@@ -7,6 +7,7 @@
 2dc8,3017,CommunityLikeXBox // 8BitDo Ultimate C 2.4g USB DInput
 2dc8,310a,CommunityLikeXBox // 8BitDo Ultimate 2C
 2dc8,301b,CommunityLikeXBox // 8BitDo Ultimate 2C
+2dc8,301c,CommunityLikeXBox // 8BitDo Ultimate 2C
 2dc8,301d,CommunityLikeXBox // 8BitDo Ultimate 2C
 2dc8,6012,CommunityLikeXBox // 8BitDo Ultimate 2
 2563,057a,CommunityLikeXBox // Cosmic Byte Ares Wired Controller
