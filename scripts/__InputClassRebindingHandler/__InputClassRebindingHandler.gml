@@ -86,7 +86,7 @@ function __InputClassRebindingHandler(_device, _ignoreArray, _allowArray) constr
     static __Update = function()
     {
         //Timeout
-        if (__createTime - current_time > INPUT_REBIND_TIMEOUT)
+        if (current_time - __createTime > INPUT_REBIND_TIMEOUT)
         {
             InputDeviceSetRebinding(__device, false);
             return;
