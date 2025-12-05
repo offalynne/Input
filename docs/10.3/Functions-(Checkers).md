@@ -178,6 +178,33 @@ switch(InputMostRecent([INPUT_VERB.LIGHT, INPUT_VERB.MEDIUM, INPUT_VERB.HEAVY])
 
 &nbsp;
 
+## …Oldest
+
+`InputOldest([verbIndex], [playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Integer, oldest verb pressed in the specified array, or `undefined` if no verb is active
+
+|Name                |Datatype|Purpose                                             |
+|--------------------|--------|----------------------------------------------------|
+|`[verbIndexArray]`  |array   |Array of verbs to target. If not specified, all verbs are checked|
+|`[playerIndex]`     |integer |Player to target. If not specified, player 0 is used|
+
+Returns the verb pressed longest ago that is still active from among the array of verbs provided. If no verb array is provided (or the value `-1` is used in place of an array), all defined verbs will be checked instead. If no verb in the array is active, this function returns `undefined`.
+
+#### **Example**
+
+```gml
+
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
 ## …Last
 
 `InputLast([verbIndex], [playerIndex])`
