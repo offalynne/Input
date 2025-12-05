@@ -183,6 +183,63 @@ if (global.demo_mode && InputPressed(INPUT_VERB.PAUSE))
 
 &nbsp;
 
+## …VibrateGetMagnitude
+
+`InputVibrateGetMagnitude([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, the sent vibration magnitude, averaged out over the two motors
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+#### **Example**
+
+```gml
+//Visualize vibration magnitude
+if (global.debug_vibration)
+{
+	draw_text(10, 10, $"Gamepad Vibration Magnitude: {InputVibrateGetMagnitude()}");
+}
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+
+## …VibrateGetEventCount
+
+`InputVibrateGetEventCount([playerIndex])`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** Number, on-going vibration events for a player
+
+|Name           |Datatype|Purpose                                             |
+|---------------|--------|----------------------------------------------------|
+|`[playerIndex]`|integer |Player to target. If not specified, player 0 is used|
+
+#### **Example**
+
+```gml
+//Visualize vibration events
+if (global.debug_vibration)
+{
+	draw_text(10, 30, $"Gamepad Vibration Events: {InputVibrateGetEventCount()}");
+}
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
 ## …VibrateSetPause
 
 `InputVibrateSetPause(state, [playerIndex])`
@@ -309,9 +366,9 @@ draw_text(x, y, "Vibration = " + string(InputVibrateGetStrength()));
 
 &nbsp;
 
-## …VibrationGetSupported
+## …VibrateGetSupported
 
-`InputVibrationGetSupported([playerIndex])`
+`InputVibrateGetSupported([playerIndex])`
 
 <!-- tabs:start -->
 
@@ -327,7 +384,7 @@ draw_text(x, y, "Vibration = " + string(InputVibrateGetStrength()));
 
 ```gml
 //Draw gamepad vibration availability
-draw_text(x, y, "Vibration support: ", string(InputVibrationGetSupported()));
+draw_text(x, y, "Vibration support: ", string(InputVibrateGetSupported()));
 ```
 
 <!-- tabs:end -->
