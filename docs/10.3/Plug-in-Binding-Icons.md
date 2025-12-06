@@ -29,7 +29,7 @@ Sets icon data to return for a particular binding name when the player is using 
 
 ## …IconDefineGamepad
 
-`InputIconDefineGamepad(binding, iconData)`
+`InputIconDefineGamepad(gamepadType, binding, iconData)`
 
 <!-- tabs:start -->
 
@@ -39,7 +39,7 @@ Sets icon data to return for a particular binding name when the player is using 
 
 |Name           |Datatype|Purpose                                             |
 |---------------|--------|----------------------------------------------------|
-|`gamepad type` |type    |Gamepad type to set, one of the `INPUT_GAMEPAD_TYPE_*` macros |
+|`gamepadType` |type    |Gamepad type to set, one of the `INPUT_GAMEPAD_TYPE_*` macros |
 |`binding`      |binding |A [gamepad button constant](https://manual.gamemaker.io/beta/en/GameMaker_Language/GML_Reference/Game_Input/GamePad_Input/Gamepad_Input.htm) binding to label|
 |`iconData`     |any     |The value to return for an empty binding            |
 
