@@ -108,7 +108,7 @@ Once again, our Step event didn't change. However, we've now added lots more con
 
 ## Clusters
 
-Clusters are a group of four verbs that combine together to create two axes of movement. Clusters are useful to simplify two-dimensional movement and make it consistent across different input devices. Clusters are defined much in the same way as verbs. Cluster references are integers and to create a cluster you need to call the function [`InputDefineCluster()` in `__InputConfigVerbs()`](Config?id=inputdefinecluster).
+Clusters are a group of four verbs that combine together to create two axes of movement. Clusters are useful to simplify two-dimensional movement and make it consistent across different input devices. Clusters are defined much in the same way as verbs. Cluster references are integers and to create a cluster you need to call the function [`InputDefineCluster()`](Config?id=inputdefinecluster) in `__InputConfigVerbs()`.
 
 ```gml
 
