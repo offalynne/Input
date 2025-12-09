@@ -166,7 +166,6 @@
 289b,0043,CommunitySaturn // Raphnet Saturn Adapter
 05fd,0253,CommunitySaturn // InterAct ProPad
 05fd,3000,CommunitySaturn // InterAct GoPad
-0079,0122,CommunitySaturn // Retro Bit Saturn
 0583,2060,CommunitySaturn // Saturn/SNES
 0079,1824,CommunitySaturn // Mayflash MegaDrive
 0079,18ae,CommunitySaturn // Mayflash MegaDrive
