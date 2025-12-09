@@ -226,6 +226,13 @@ function __InputSystem()
             keyboard_virtual_hide();
         }
         
+        //Disable mouse input on PlayStation 5
+        if (INPUT_ON_PS5)
+        {
+            ps5_touchpad_mouse_enable(false);
+        }
+        
+        
         
         //Create a time source if the library needs to self-manage
         if (INPUT_COLLECT_MODE != 2)
