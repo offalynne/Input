@@ -29,16 +29,23 @@ function __InputRegisterCollect()
                 //Force a gamepad update otherwise we won't be aware of any connected devices
                 __InputUpdateGamepadPresence();
                 
-                var _i = 0;
-                repeat(gamepad_get_device_count())
+                if (INPUT_ON_PS5)
                 {
-                    if (InputDeviceIsConnected(_i))
+                    //Try to set player 0's device to the initial user on PS5
+                    var _initialDevice = __InputGetPS5InitialUserDevice();
+                    
+                    //Fall back on the first connected gamepad
+                    if (_initialDevice == INPUT_NO_DEVICE)
                     {
-                        InputPlayerSetDevice(_i);
-                        break;
+                        _initialDevice = __InputGetFirstConnectedGamepad();
                     }
                     
-                    ++_i;
+                    InputPlayerSetDevice(_initialDevice);
+                }
+                else
+                {
+                    //On other platforms we'll use the first connected gamepad
+                    InputDeviceIsConnected(__InputGetFirstConnectedGamepad());
                 }
             }
         })();
