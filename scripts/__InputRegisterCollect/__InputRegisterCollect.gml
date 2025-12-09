@@ -28,25 +28,22 @@ function __InputRegisterCollect()
             {
                 //Force a gamepad update otherwise we won't be aware of any connected devices
                 __InputUpdateGamepadPresence();
+
+                var _initialDevice = __InputGetFirstConnectedGamepad();
                 
                 if (INPUT_ON_PS5)
                 {
                     //Try to set player 0's device to the initial user on PS5
-                    var _initialDevice = __InputGetPS5InitialUserDevice();
+                    var _initialPS5Device = __InputGetPS5InitialUserDevice();
                     
                     //Fall back on the first connected gamepad
-                    if (_initialDevice == INPUT_NO_DEVICE)
+                    if (_initialPS5Device != INPUT_NO_DEVICE)
                     {
-                        _initialDevice = __InputGetFirstConnectedGamepad();
+                        _initialDevice = _initialPS5Device;
                     }
+                }
                     
-                    InputPlayerSetDevice(_initialDevice);
-                }
-                else
-                {
-                    //On other platforms we'll use the first connected gamepad
-                    InputDeviceIsConnected(__InputGetFirstConnectedGamepad());
-                }
+                InputPlayerSetDevice(_initialDevice);
             }
         })();
         
@@ -76,12 +73,12 @@ function __InputRegisterCollect()
                 {
                     //Meta release sticks every key pressed during hold
                     //This is "the nuclear option", but the problem is severe
-                    var _i = 8;
-                    var _len = 0x100 - _i;
+                    var _key = 0x008;
+                    var _len = 0x100 - _key;
                     repeat(_len)
                     {
-                        keyboard_key_release(_i);
-                        ++_i;
+                        keyboard_key_release(_key);
+                        ++_key;
                     }
                 }
             }
