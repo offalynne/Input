@@ -29,6 +29,22 @@ function InputPlayerSetDevice(_device, _playerIndex = 0)
         }
     }
     
+    if (INPUT_ON_PS5 && INPUT_PS5_SINGLE_USER)
+    {
+        if ((_device != INPUT_NO_DEVICE) && (_device != INPUT_GENERIC_DEVICE) && (_device != 0))
+        {
+            //Player 0 must have no device or device 0 (or a generic device if the developer is doing something custom)
+            __InputTrace($"Warning! Cannot set device {_device} for player 0 due to `INPUT_PS5_SINGLE_USER`");
+            return;
+        }
+        else if ((_playerIndex != 0) && (_device != INPUT_NO_DEVICE))
+        {
+            //No other players can have a device
+            _device = INPUT_NO_DEVICE;
+            __InputTrace($"Warning! Player {_playerIndex} cannot have a device due to `INPUT_PS5_SINGLE_USER`");
+        }
+    }
+    
     var _oldDevice = _playerArray[_playerIndex].__device;
     
     //Don't do any work if the device hasn't changed
