@@ -26,10 +26,10 @@ function InputBindingSet(_forGamepad, _verbIndex, _binding, _alternate = 0, _pla
         var _alternateArray = _bindingArray[_verbIndex];
         
         //Pad array with `undefined`
-        if (_alternate > array_length(_alternateArray))
+        if (_alternate + 1 > array_length(_alternateArray))
         {
             var _i = array_length(_alternateArray);
-            repeat((_alternate - 1) - array_length(_alternateArray))
+            repeat((_alternate + 1) - array_length(_alternateArray))
             {
                 _alternateArray[@ _i] = undefined;
                 ++_i;
