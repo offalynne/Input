@@ -49,7 +49,7 @@ Please see [Importing The Library](Importing-The-Library) for detailed instructi
 
 ## How do I save and load player bindings? {docsify-ignore}
 
-Using binding [export and import](Functions-(Rebindings)) functions. You should save bindings to a file for loading later.
+Using binding [export and import](Functions-(Rebinding)) functions. You should save bindings to a file for loading later.
 
 &nbsp;
 
