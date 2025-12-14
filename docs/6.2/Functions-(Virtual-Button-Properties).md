@@ -150,12 +150,12 @@ The struct returned from this method has the following member variables:
 var _struct = vb_thumbstick.get_threshold();
 
 if (vb_threshold_min_decr.pressed()) _struct.min = max(0, _struct.min - 0.1);
-if (vb_threshold_min_incr.pressed()) _struct.min = min(1, _struct.min + 0.1, _struct.max - 0.1);
+if (vb_threshold_min_incr.pressed()) _struct.min = min(1, _struct.min + 0.1, _struct.maxi - 0.1);
 
-if (vb_threshold_max_decr.pressed()) _struct.min = max(0, _struct.min + 0.1, _struct.max - 0.1);
-if (vb_threshold_max_incr.pressed()) _struct.min = min(1, _struct.max + 0.1);
+if (vb_threshold_max_decr.pressed()) _struct.min = max(0, _struct.min + 0.1, _struct.maxi - 0.1);
+if (vb_threshold_max_incr.pressed()) _struct.min = min(1, _struct.maxi + 0.1);
 
-vb_thumbstick.threshold(_struct.min, _struct.max);
+vb_thumbstick.threshold(_struct.min, _struct.maxi);
 ```
 
 <!-- tabs:end -->

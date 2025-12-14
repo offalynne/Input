@@ -669,12 +669,12 @@ The struct returned from this method has the following member variables:
 var _struct = vbThumbstick.GetThreshold();
 
 if (vbThresholdMinDecr.Pressed()) _struct.min = max(0, _struct.min - 0.1);
-if (vbThresholdMinIncr.Pressed()) _struct.min = min(1, _struct.min + 0.1, _struct.max - 0.1);
+if (vbThresholdMinIncr.Pressed()) _struct.min = min(1, _struct.min + 0.1, _struct.maxi - 0.1);
 
-if (vbThresholdMaxDecr.Pressed()) _struct.min = max(0, _struct.min + 0.1, _struct.max - 0.1);
-if (vbThresholdMaxIncr.Pressed()) _struct.min = min(1, _struct.max + 0.1);
+if (vbThresholdMaxDecr.Pressed()) _struct.min = max(0, _struct.min + 0.1, _struct.maxi - 0.1);
+if (vbThresholdMaxIncr.Pressed()) _struct.min = min(1, _struct.maxi + 0.1);
 
-vbThumbstick.Threshold(_struct.min, _struct.max);
+vbThumbstick.Threshold(_struct.min, _struct.maxi);
 ```
 
 <!-- tabs:end -->
