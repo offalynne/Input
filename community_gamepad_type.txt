@@ -11,6 +11,7 @@
 2dc8,301d,CommunityLikeXBox // 8BitDo Ultimate 2C
 2dc8,6012,CommunityLikeXBox // 8BitDo Ultimate 2
 2563,057a,CommunityLikeXBox // Cosmic Byte Ares Wired Controller
+2563,0527,CommunityLikeXBox // ShanWan Q36
 3537,100b,CommunityLikeXBox // GameSir Cyclone 2
 20bc,6050,CommunityLikeXBox // Xiaomi XMGP01YM
 2717,5033,CommunityLikeXBox // Xiaomi XMGP01YM
