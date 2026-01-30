@@ -1,4 +1,4 @@
-<h1 align="center">We've moved!<br>Please find the <a href="https://offalynne.grebedoc.dev/Input/">latest docs on Codeberg</a>.</h1>
+<h1 align="center">We've moved!<br>Please find the <a href="https://offalynne.grebedoc.dev/Input/" style="color:white;text-decoration:underline;">latest docs on Codeberg</a>.</h1>
 <img src="https://raw.githubusercontent.com/offalynne/Input/main/LOGO.png" width="50%" style="display: block; margin: auto;" />
 
 ---
