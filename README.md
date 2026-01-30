@@ -6,4 +6,4 @@
 
 <p align="center">Comprehensive cross-platform input for GameMaker 2024.13 by <a href="https://www.jujuadams.com/" target="_blank">Juju Adams</a>, <a href="https://offalynne.neocities.org/">Alynne Keith</a>, and <a href="https://offalynne.github.io/Input/#/10.2/Credits">Friends</a></p>
 
-<p align="center">Looking for Input 8 for GameMaker LTS 2022? <a href="https://github.com/offalynne/Input-Legacy">Code</a>, <a href="https://offalynne.github.io/Input/#/8.1/">Documentation</a>, <a href="https://github.com/offalynne/Input-Legacy/releases">Release (.yymps)</a></p>
+<p align="center">Looking for Input 8 for GameMaker LTS 2022? <a href="https://github.com/offalynne/Input-Legacy">Code</a>, <a href="https://offalynne.grebedoc.dev/Input/#/10.2/">Documentation</a>, <a href="https://github.com/offalynne/Input-Legacy/releases">Release (.yymps)</a></p>
